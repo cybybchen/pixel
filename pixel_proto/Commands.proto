@@ -208,6 +208,7 @@ message RewardInfo {
 	optional int32 countb = 6;
 	optional string item = 7;
 	optional uint32 eventid = 8;
+	optional uint32 rmbid = 9;
 }
 
 message MultiReward {
@@ -1811,6 +1812,10 @@ message Qiandao {
 	required string activity = 3;
 }
 
+message SignList_special {
+	repeated Sign id = 1;
+}
+
 message SignList {
 	repeated Sign order = 1;
 }
@@ -1821,6 +1826,7 @@ message Sign {
 	optional int32 targetcount = 4;
 	optional int32 itemid = 5;
 	optional int32 count = 7;
+	repeated RewardInfo reward = 8;
 }
 
 message RequestSevenLoginSignCommand {

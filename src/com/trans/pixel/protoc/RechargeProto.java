@@ -958,6 +958,692 @@ public final class RechargeProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Qiandao)
   }
 
+  public interface SignList_specialOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Sign id = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> 
+        getIdList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    com.trans.pixel.protoc.RechargeProto.Sign getId(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    int getIdCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
+        getIdOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    com.trans.pixel.protoc.RechargeProto.SignOrBuilder getIdOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.SignList_special}
+   */
+  public static final class SignList_special extends
+      com.google.protobuf.GeneratedMessage
+      implements SignList_specialOrBuilder {
+    // Use SignList_special.newBuilder() to construct.
+    private SignList_special(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SignList_special(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SignList_special defaultInstance;
+    public static SignList_special getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SignList_special getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SignList_special(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Sign>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              id_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.Sign.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = java.util.Collections.unmodifiableList(id_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_SignList_special_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_SignList_special_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RechargeProto.SignList_special.class, com.trans.pixel.protoc.RechargeProto.SignList_special.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SignList_special> PARSER =
+        new com.google.protobuf.AbstractParser<SignList_special>() {
+      public SignList_special parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SignList_special(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SignList_special> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.Sign id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> id_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> getIdList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
+        getIdOrBuilderList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    public int getIdCount() {
+      return id_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    public com.trans.pixel.protoc.RechargeProto.Sign getId(int index) {
+      return id_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+     */
+    public com.trans.pixel.protoc.RechargeProto.SignOrBuilder getIdOrBuilder(
+        int index) {
+      return id_.get(index);
+    }
+
+    private void initFields() {
+      id_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getIdCount(); i++) {
+        if (!getId(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < id_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, id_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.SignList_special parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RechargeProto.SignList_special prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.SignList_special}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RechargeProto.SignList_specialOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_SignList_special_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_SignList_special_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RechargeProto.SignList_special.class, com.trans.pixel.protoc.RechargeProto.SignList_special.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RechargeProto.SignList_special.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_SignList_special_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.SignList_special getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RechargeProto.SignList_special.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.SignList_special build() {
+        com.trans.pixel.protoc.RechargeProto.SignList_special result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.SignList_special buildPartial() {
+        com.trans.pixel.protoc.RechargeProto.SignList_special result = new com.trans.pixel.protoc.RechargeProto.SignList_special(this);
+        int from_bitField0_ = bitField0_;
+        if (idBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            id_ = java.util.Collections.unmodifiableList(id_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.id_ = id_;
+        } else {
+          result.id_ = idBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RechargeProto.SignList_special) {
+          return mergeFrom((com.trans.pixel.protoc.RechargeProto.SignList_special)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.SignList_special other) {
+        if (other == com.trans.pixel.protoc.RechargeProto.SignList_special.getDefaultInstance()) return this;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              idBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIdFieldBuilder() : null;
+            } else {
+              idBuilder_.addAllMessages(other.id_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getIdCount(); i++) {
+          if (!getId(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RechargeProto.SignList_special parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RechargeProto.SignList_special) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Sign id = 1;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> id_ =
+        java.util.Collections.emptyList();
+      private void ensureIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.Sign>(id_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder> idBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
+        } else {
+          return idBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
+        } else {
+          return idBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.Sign getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
+        } else {
+          return idBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.RechargeProto.Sign value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.set(index, value);
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder addId(com.trans.pixel.protoc.RechargeProto.Sign value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.RechargeProto.Sign value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(index, value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder addId(
+          com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.RechargeProto.Sign.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder addAllId(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.Sign> values) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
+          onChanged();
+        } else {
+          idBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
+          onChanged();
+        } else {
+          idBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder getIdBuilder(
+          int index) {
+        return getIdFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.SignOrBuilder getIdOrBuilder(
+          int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(id_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RechargeProto.Sign.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.Sign.Builder addIdBuilder(
+          int index) {
+        return getIdFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RechargeProto.Sign.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Sign id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.Sign.Builder> 
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder> 
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RechargeProto.Sign, com.trans.pixel.protoc.RechargeProto.Sign.Builder, com.trans.pixel.protoc.RechargeProto.SignOrBuilder>(
+                  id_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          id_ = null;
+        }
+        return idBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SignList_special)
+    }
+
+    static {
+      defaultInstance = new SignList_special(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.SignList_special)
+  }
+
   public interface SignListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -1696,6 +2382,31 @@ public final class RechargeProto {
      * <code>optional int32 count = 7;</code>
      */
     int getCount();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Sign}
@@ -1773,6 +2484,14 @@ public final class RechargeProto {
               count_ = input.readInt32();
               break;
             }
+            case 66: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1781,6 +2500,9 @@ public final class RechargeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -1893,12 +2615,49 @@ public final class RechargeProto {
       return count_;
     }
 
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
+    public static final int REWARD_FIELD_NUMBER = 8;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
     private void initFields() {
       order_ = 0;
       targetid_ = 0;
       targetcount_ = 0;
       itemid_ = 0;
       count_ = 0;
+      reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1931,6 +2690,9 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(7, count_);
       }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(8, reward_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1959,6 +2721,10 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, count_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, reward_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2068,6 +2834,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -2086,6 +2853,12 @@ public final class RechargeProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        } else {
+          rewardBuilder_.clear();
+        }
         return this;
       }
 
@@ -2134,6 +2907,15 @@ public final class RechargeProto {
           to_bitField0_ |= 0x00000010;
         }
         result.count_ = count_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2164,6 +2946,32 @@ public final class RechargeProto {
         }
         if (other.hasCount()) {
           setCount(other.getCount());
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2359,6 +3167,246 @@ public final class RechargeProto {
         count_ = 0;
         onChanged();
         return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Sign)
@@ -16359,6 +17407,11 @@ public final class RechargeProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_Qiandao_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_SignList_special_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_SignList_special_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_SignList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -16485,49 +17538,52 @@ public final class RechargeProto {
       "\n\023RechargeProto.proto\022\026com.trans.pixel.p" +
       "rotoc\032\nBase.proto\"T\n\007Qiandao\022+\n\005order\030\001 " +
       "\003(\0132\034.com.trans.pixel.protoc.Sign\022\n\n\002id\030" +
-      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\"7\n\010SignList\022+\n\005o" +
-      "rder\030\001 \003(\0132\034.com.trans.pixel.protoc.Sign" +
-      "\"[\n\004Sign\022\r\n\005order\030\001 \002(\005\022\020\n\010targetid\030\003 \001(" +
-      "\005\022\023\n\013targetcount\030\004 \001(\005\022\016\n\006itemid\030\005 \001(\005\022\r" +
-      "\n\005count\030\007 \001(\005\"0\n\034RequestSevenLoginSignCo" +
-      "mmand\022\020\n\010chooseId\030\001 \001(\005\"\250\001\n\010VipLibao\022\016\n\006" +
-      "itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\022",
-      "\014\n\004rare\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n\005va" +
-      "lue\030\006 \001(\005\022\014\n\004cost\030\007 \001(\005\0221\n\005order\030\010 \003(\0132\"" +
-      ".com.trans.pixel.protoc.RewardInfo\"<\n\014Vi" +
-      "pLibaoList\022,\n\002id\030\001 \003(\0132 .com.trans.pixel" +
-      ".protoc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip\030\001 \001(" +
-      "\005\022\013\n\003rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007dianji" +
-      "n\030\004 \001(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(\005\022\014\n\004" +
-      "quyu\030\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxiang\030\t " +
-      "\001(\005\022\016\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022\016\n\006li" +
-      "bao1\030\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuanshi\030\016 ",
-      "\001(\005\022\020\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n\003vip\030" +
-      "\001 \003(\0132\037.com.trans.pixel.protoc.VipInfo\"\237" +
-      "\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006itemi" +
-      "d\030\003 \002(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 \001(\t\022\023" +
-      "\n\013description\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n\004type" +
-      "\030\010 \001(\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030\n \001(\005" +
-      "\"2\n\007RmbList\022\'\n\002id\030\001 \003(\0132\033.com.trans.pixe" +
-      "l.protoc.Rmb\">\n\rShouchongList\022-\n\002id\030\001 \003(" +
-      "\0132!.com.trans.pixel.protoc.Shouchong\"o\n\t" +
-      "Shouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030\002 \002(\t\022",
-      "\020\n\010targetid\030\003 \002(\005\0222\n\006reward\030\005 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"\"\n\023Request" +
-      "CdkeyCommand\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubm" +
-      "itIconCommand\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCh" +
-      "eatRechargeCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026Re" +
-      "questRechargeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031" +
-      "RequestBindAccountCommand\022\022\n\noldAccount\030" +
-      "\001 \002(\t\022\022\n\nnewAccount\030\002 \002(\t\";\n\036RequestPurc" +
-      "haseVipLibaoCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type" +
-      "\030\002 \002(\005\".\n\033RequestQueryRechargeCommand\022\017\n",
-      "\007orderId\030\001 \001(\t\"\037\n\035RequestShouchongReward" +
-      "Command\"+\n\032RequestGetGrowJewelCommand\022\r\n" +
-      "\005order\030\001 \002(\005\")\n\030RequestGetGrowExpCommand" +
-      "\022\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n" +
-      "\023ResponseSignCommand\0222\n\006reward\030\001 \003(\0132\".c" +
-      "om.trans.pixel.protoc.RewardInfo"
+      "\002 \002(\005\022\020\n\010activity\030\003 \002(\t\"<\n\020SignList_spec" +
+      "ial\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc" +
+      ".Sign\"7\n\010SignList\022+\n\005order\030\001 \003(\0132\034.com.t" +
+      "rans.pixel.protoc.Sign\"\217\001\n\004Sign\022\r\n\005order" +
+      "\030\001 \002(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targetcount\030" +
+      "\004 \001(\005\022\016\n\006itemid\030\005 \001(\005\022\r\n\005count\030\007 \001(\005\0222\n\006" +
+      "reward\030\010 \003(\0132\".com.trans.pixel.protoc.Re",
+      "wardInfo\"0\n\034RequestSevenLoginSignCommand" +
+      "\022\020\n\010chooseId\030\001 \001(\005\"\250\001\n\010VipLibao\022\016\n\006itemi" +
+      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\022\014\n\004ra" +
+      "re\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n\005value\030\006" +
+      " \001(\005\022\014\n\004cost\030\007 \001(\005\0221\n\005order\030\010 \003(\0132\".com." +
+      "trans.pixel.protoc.RewardInfo\"<\n\014VipLiba" +
+      "oList\022,\n\002id\030\001 \003(\0132 .com.trans.pixel.prot" +
+      "oc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip\030\001 \001(\005\022\013\n\003" +
+      "rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007dianjin\030\004 \001" +
+      "(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(\005\022\014\n\004quyu\030",
+      "\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxiang\030\t \001(\005\022\016" +
+      "\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022\016\n\006libao1\030" +
+      "\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuanshi\030\016 \001(\005\022\020" +
+      "\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n\003vip\030\001 \003(\013" +
+      "2\037.com.trans.pixel.protoc.VipInfo\"\237\001\n\003Rm" +
+      "b\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006itemid\030\003 \002" +
+      "(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013des" +
+      "cription\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n\004type\030\010 \001(" +
+      "\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030\n \001(\005\"2\n\007R" +
+      "mbList\022\'\n\002id\030\001 \003(\0132\033.com.trans.pixel.pro",
+      "toc.Rmb\">\n\rShouchongList\022-\n\002id\030\001 \003(\0132!.c" +
+      "om.trans.pixel.protoc.Shouchong\"o\n\tShouc" +
+      "hong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030\002 \002(\t\022\020\n\010ta" +
+      "rgetid\030\003 \002(\005\0222\n\006reward\030\005 \003(\0132\".com.trans" +
+      ".pixel.protoc.RewardInfo\"\"\n\023RequestCdkey" +
+      "Command\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubmitIco" +
+      "nCommand\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCheatRe" +
+      "chargeCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026Request" +
+      "RechargeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031Reque" +
+      "stBindAccountCommand\022\022\n\noldAccount\030\001 \002(\t",
+      "\022\022\n\nnewAccount\030\002 \002(\t\";\n\036RequestPurchaseV" +
+      "ipLibaoCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(" +
+      "\005\".\n\033RequestQueryRechargeCommand\022\017\n\007orde" +
+      "rId\030\001 \001(\t\"\037\n\035RequestShouchongRewardComma" +
+      "nd\"+\n\032RequestGetGrowJewelCommand\022\r\n\005orde" +
+      "r\030\001 \002(\005\")\n\030RequestGetGrowExpCommand\022\r\n\005o" +
+      "rder\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023Resp" +
+      "onseSignCommand\0222\n\006reward\030\001 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16540,140 +17596,146 @@ public final class RechargeProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Qiandao_descriptor,
               new java.lang.String[] { "Order", "Id", "Activity", });
-          internal_static_com_trans_pixel_protoc_SignList_descriptor =
+          internal_static_com_trans_pixel_protoc_SignList_special_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_com_trans_pixel_protoc_SignList_special_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_SignList_special_descriptor,
+              new java.lang.String[] { "Id", });
+          internal_static_com_trans_pixel_protoc_SignList_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_SignList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SignList_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_Sign_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_Sign_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Sign_descriptor,
-              new java.lang.String[] { "Order", "Targetid", "Targetcount", "Itemid", "Count", });
+              new java.lang.String[] { "Order", "Targetid", "Targetcount", "Itemid", "Count", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestSevenLoginSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_RequestSevenLoginSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSevenLoginSignCommand_descriptor,
               new java.lang.String[] { "ChooseId", });
           internal_static_com_trans_pixel_protoc_VipLibao_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_VipLibao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipLibao_descriptor,
               new java.lang.String[] { "Itemid", "Name", "Img", "Rare", "Description", "Value", "Cost", "Order", });
           internal_static_com_trans_pixel_protoc_VipLibaoList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_VipLibaoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipLibaoList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_VipInfo_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_VipInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipInfo_descriptor,
               new java.lang.String[] { "Vip", "Rmb", "Effect", "Dianjin", "Tianti", "Pvp", "Quyu", "Mohua", "Baoxiang", "Zhibao", "Baohu", "Libao1", "Libao2", "Zuanshi", "Contract", });
           internal_static_com_trans_pixel_protoc_VipList_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_VipList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipList_descriptor,
               new java.lang.String[] { "Vip", });
           internal_static_com_trans_pixel_protoc_Rmb_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_Rmb_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rmb_descriptor,
               new java.lang.String[] { "Id", "Rmb", "Itemid", "Zuanshi", "Name", "Description", "Img", "Type", "Zuanshi1", "Costid", });
           internal_static_com_trans_pixel_protoc_RmbList_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_RmbList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RmbList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ShouchongList_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_ShouchongList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShouchongList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Shouchong_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_Shouchong_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Shouchong_descriptor,
               new java.lang.String[] { "Id", "Activity", "Targetid", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor,
               new java.lang.String[] { "Key", });
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor,
               new java.lang.String[] { "Icon", });
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor,
               new java.lang.String[] { "OldAccount", "NewAccount", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor,
               new java.lang.String[] { "Vip", "Type", });
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor,
               new java.lang.String[] { "OrderId", });
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor,

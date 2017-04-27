@@ -15,6 +15,7 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.SevenLogin;
 import com.trans.pixel.protoc.ActivityProto.SevenOrder;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.service.redis.SignRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -33,19 +34,18 @@ public class SignService {
 	@Resource
 	private LogService logService;
 	
-	public List<RewardBean> sign(UserBean user) {
+	public List<RewardInfo> sign(UserBean user) {
 		if (!canSign(user))
 			return null;
 		
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		user.setSignCount(user.getSignCount() + 1);
 		user.setTotalSignCount(user.getTotalSignCount() + 1);
 		Sign sign = getSign(user);
-		RewardBean reward = buildRewardBySign(sign);
-		rewardList.add(reward);
+		rewardList.addAll(buildRewardBySign(sign, user));
 		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
 		if (totalSign != null) 
-			rewardList.add(buildRewardBySign(totalSign));
+			rewardList.addAll(buildRewardBySign(totalSign, user));
 		
 		userService.updateUser(user);
 		
@@ -57,30 +57,30 @@ public class SignService {
 		return rewardList;
 	}
 	
-	public List<RewardBean> sevenSign(UserBean user) {
-		if (!canSign(user))
-			return null;
-		
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		user.setSignCount(user.getSignCount() + 1);
-		user.setTotalSignCount(user.getTotalSignCount() + 1);
-		Sign sign = getSign(user);
-		RewardBean reward = buildRewardBySign(sign);
-		rewardList.add(reward);
-		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
-		if (totalSign != null) 
-			rewardList.add(buildRewardBySign(totalSign));
-		
-		userService.updateUser(user);
-		
-		/**
-		 * send log
-		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
-		
-		return rewardList;
-	}
-	
+//	public List<RewardBean> sevenSign(UserBean user) {
+//		if (!canSign(user))
+//			return null;
+//		
+//		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+//		user.setSignCount(user.getSignCount() + 1);
+//		user.setTotalSignCount(user.getTotalSignCount() + 1);
+//		Sign sign = getSign(user);
+//		RewardBean reward = buildRewardBySign(sign);
+//		rewardList.add(reward);
+//		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
+//		if (totalSign != null) 
+//			rewardList.add(buildRewardBySign(totalSign));
+//		
+//		userService.updateUser(user);
+//		
+//		/**
+//		 * send log
+//		 */
+//		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, 0, user.getTotalSignCount());
+//		
+//		return rewardList;
+//	}
+//	
 	public List<RewardBean> sevenLoginSign(UserBean user, int chooseId) {
 		if (!canSevenLoginSign(user))
 			return null;
@@ -131,12 +131,21 @@ public class SignService {
 		return sign;
 	}
 	
-	private RewardBean buildRewardBySign(Sign sign) {
-		RewardBean reward = new RewardBean();
-		reward.setItemid(sign.getItemid());
-		reward.setCount(sign.getCount());
+	private List<RewardInfo> buildRewardBySign(Sign sign, UserBean user) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		if (sign.getItemid() > 0 && sign.getCount() > 0) {
+			RewardInfo.Builder builder = RewardInfo.newBuilder();
+			builder.setItemid(sign.getItemid());
+			builder.setCount(sign.getCount());
+			rewardList.add(builder.build());
+		} else {
+			for (RewardInfo reward : sign.getRewardList()) {
+				if (reward.getRmbid() == 0 || reward.getRmbid() == user.getUserType())
+					rewardList.add(reward);
+			}
+		}
 		
-		return reward;
+		return rewardList;
 	}
 	
 	private boolean canSign(UserBean user) {

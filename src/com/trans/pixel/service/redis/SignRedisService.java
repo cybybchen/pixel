@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.ActivityProto.SevenLogin;
 import com.trans.pixel.protoc.ActivityProto.SevenLoginList;
-import com.trans.pixel.protoc.RechargeProto.Qiandao;
 import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.protoc.RechargeProto.SignList;
+import com.trans.pixel.protoc.RechargeProto.SignList_special;
 
 @Repository
 public class SignRedisService extends RedisService{
@@ -59,14 +59,14 @@ public class SignRedisService extends RedisService{
 	
 	private Map<String, Sign> buildSignConfig(){
 		String xml = ReadConfig(SIGN_FILE_NAME1);
-		SignList.Builder builder = SignList.newBuilder();
+		SignList_special.Builder builder = SignList_special.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build " + SIGN_FILE_NAME1);
 			return null;
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+		for (Sign.Builder sign : builder.getIdBuilderList()) {
 			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
