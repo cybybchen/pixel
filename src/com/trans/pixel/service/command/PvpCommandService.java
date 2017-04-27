@@ -96,18 +96,8 @@ public class PvpCommandService extends BaseCommandService {
 		List<Event> events = levelRedisService.getEvents();
 		for(Event eventconfig : events){
 			if(eventconfig.getTargetid()%100 == cmd.getFieldid()){
-				boolean isError = false;
-				UserLevelBean userLevel = levelRedisService.getUserLevel(user.getId());
-				Map<Integer, Event.Builder> eventmap = levelRedisService.getEvents(userLevel);
-				if(eventconfig.getDaguan() > userLevel.getUnlockDaguan())
-					isError = true;
-				else
-					for(Event.Builder event : eventmap.values()) {
-						if(event.getEventid() == eventconfig.getEventid()) {
-							isError = true;
-						}
-					}
-				if(isError) {
+				boolean hasComplete = levelRedisService.hasCompleteEvent(user, eventconfig.getEventid());
+				if(!hasComplete) {
 					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
 					responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.EVENT_FIRST));
 					getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);

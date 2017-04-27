@@ -1,6 +1,7 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RewardConst;
@@ -125,9 +127,10 @@ public class LevelCommandService extends BaseCommandService {
 				for(Event.Builder event : events.getEventBuilderList()){
 					if(id == event.getDaguan() && event.getWeight() == 0){
 						event.setOrder(events.getId()*30+event.getOrder());
-						redis.saveEvent(user, event.build());
+						redis.saveEventReady(user, event.build());
 					}
 				}
+				redis.productMainEvent(user, userLevel);
 				
 				/**
 				 * 过关的活动
@@ -153,7 +156,7 @@ public class LevelCommandService extends BaseCommandService {
 				Entry<String, Loot> entry = it.next();
 				Loot loot = entry.getValue();
 				for (RewardInfo reward : loot.getItemList()) {
-					if (!redis.hasCompleteEvent(user, reward.getEventid(), userLevel))
+					if (!redis.hasCompleteEvent(user, reward.getEventid()))
 						continue;
 					
 					RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
@@ -289,6 +292,28 @@ public class LevelCommandService extends BaseCommandService {
  			pvpMapService.refreshAMine(user);
  		}
  		userService.updateUser(user);
+ 		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.RESULT, "" + cmd.getRet());
+		if(event != null) {
+		params.put(LogString.EVENTID, "" + event.getEventid());
+		params.put(LogString.LEVEL, "" + event.getLevel());
+		params.put(LogString.TYPE, "" + (cmd.getOrder()<10000 ? 0 : 1));
+		params.put(LogString.EVENTTYPE, "" + event.getType());
+		params.put(LogString.MAP, "" + event.getDaguan());
+		if(responseBuilder.hasRewardCommand()){
+			List<RewardInfo> rewards = responseBuilder.getRewardCommand().getLootList();
+		params.put(LogString.ITEMID1, "" + (rewards.size() >= 1 ? rewards.get(0).getItemid():0));
+		params.put(LogString.ITEMCOUNT1, "" + (rewards.size() >= 1 ? rewards.get(0).getCount():0));
+		params.put(LogString.ITEMID2, "" + (rewards.size() >= 2 ? rewards.get(1).getItemid():0));
+		params.put(LogString.ITEMCOUNT2, "" + (rewards.size() >= 2 ? rewards.get(1).getCount():0));
+		params.put(LogString.ITEMID3, "" + (rewards.size() >= 3 ? rewards.get(2).getItemid():0));
+		params.put(LogString.ITEMCOUNT3, "" + (rewards.size() >= 3 ? rewards.get(2).getCount():0));
+		}
+		
+		logService.sendLog(params, LogString.LOGTYPE_EVENT);
+		}
  		
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
@@ -299,7 +324,7 @@ public class LevelCommandService extends BaseCommandService {
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserLevelBean userLevel, UserBean user){
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
-		for(Event.Builder e : redis.getEvents(userLevel).values())
+		for(Event.Builder e : redis.getEvents(user, userLevel).values())
 			builder.addEvent(e);
 		if(builder.getEventCount() >= 20)
 			builder.setEventTime(0);

@@ -79,9 +79,10 @@ public class LevelRedisService extends RedisService {
 			for(Event.Builder event : events.getEventBuilderList()){
 				if(daguan.getId() == event.getDaguan() && event.getWeight() == 0){
 					event.setOrder(events.getId()*30+event.getOrder());
-					saveEvent(userId, event.build());
+					saveEventReady(userId, event.build());
 				}
 			}
+			productMainEvent(userId, userLevel);
 		}else{
 			Daguan.Builder daguan = getDaguan(userLevel.getLootDaguan());
 			userLevel.setCoin(daguan.getGold());
@@ -116,7 +117,7 @@ public class LevelRedisService extends RedisService {
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));
 		sadd(RedisKey.PUSH_MYSQL_KEY+"UserLevel", bean.getUserId()+"");
 	}
-	public Map<Integer, Event.Builder> getEvents(UserLevelBean userLevel) {
+	public Map<Integer, Event.Builder> getEvents(UserBean user, UserLevelBean userLevel) {
 		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		Map<Integer, Event.Builder> map = new TreeMap<Integer, Event.Builder>();
 		if(keyvalue.isEmpty() && now() - userLevel.getEventTime() > 24*3600){
@@ -130,10 +131,12 @@ public class LevelRedisService extends RedisService {
 				event.setCostid(config.getCostid());
 				event.setCostcount(event.getCostcount());
 				event.setCall(config.getCall());
-				saveEvent(userLevel.getUserId(), event.build());
-				map.put(event.getOrder(), event);
+				saveEventReady(user, event.build());
+//				map.put(event.getOrder(), event);
 			}
 		}
+		productMainEvent(user, userLevel);
+		keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		for(String value : keyvalue.values()){
 			Event.Builder event = Event.newBuilder();
 			if(parseJson(value, event))
@@ -142,16 +145,16 @@ public class LevelRedisService extends RedisService {
 		return map;
 	}
 	
-	public List<Event> getEventList(UserBean user) {
-		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+user.getId());
-		List<Event> eventList = new ArrayList<Event>();
-		for(String value : keyvalue.values()){
-			Event.Builder event = Event.newBuilder();
-			if(parseJson(value, event))
-				eventList.add(event.build());
-		}
-		return eventList;
-	}
+//	public List<Event> getEventList(UserBean user) {
+//		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+user.getId());
+//		List<Event> eventList = new ArrayList<Event>();
+//		for(String value : keyvalue.values()){
+//			Event.Builder event = Event.newBuilder();
+//			if(parseJson(value, event))
+//				eventList.add(event.build());
+//		}
+//		return eventList;
+//	}
 	
 	// public boolean hasEvent(UserBean user){
 	// 	for(Event.Builder event : getEvents(user).values()){
@@ -160,6 +163,29 @@ public class LevelRedisService extends RedisService {
 	// 	}
 	// 	return false;
 	// }
+	public void productMainEvent(UserBean user, UserLevelBean userLevel){
+		productMainEvent(user.getId(), userLevel);
+	}
+	public void productMainEvent(long userId, UserLevelBean userLevel){
+		Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
+		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
+		for(String value : keyvalue.values()){
+			Event.Builder event = Event.newBuilder();
+			if(parseJson(value, event))
+				eventmap.put(event.getOrder(), event);
+		}
+		keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX);
+		for(String value : keyvalue.values()) {
+			Event.Builder builder = Event.newBuilder();
+			parseJson(value, builder);
+			if(builder.getFrontid() == 0 || hasCompleteEvent(userId, builder.getFrontid(), userLevel, eventmap)) {
+				hdelete(RedisKey.USEREVENTREADY_PREFIX, builder.getOrder()+"");
+//				builder.setOrder(currentIndex()+(i++));
+				saveEvent(userId, builder.build());
+			}
+		}
+	}
+	
 	public void productEvent(UserBean user, UserLevelBean userLevel){
 		productEvent(user, userLevel,  false);
 	}
@@ -173,7 +199,7 @@ public class LevelRedisService extends RedisService {
 		}else if(time >= EVENTTIME){
 			AreaEvent.Builder events = getDaguanEvent(userLevel.getLootDaguan());
 			if(events != null){
-				for(Event.Builder myevent : getEvents(userLevel).values()){
+				for(Event.Builder myevent : getEvents(user, userLevel).values()){
 					for(Event.Builder event : events.getEventBuilderList()){
 						if(event.getCount() > 0 && myevent.getEventid() == event.getEventid()){
 							event.setCount(event.getCount()-1);
@@ -242,6 +268,16 @@ public class LevelRedisService extends RedisService {
 			mapper.updateEvent(bean);
 		}
 	}
+	public String popEventReadyKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX);
+	}
+	public void updateEventReadyToDB(long userId, int order){
+		String value = hget(RedisKey.USEREVENTREADY_PREFIX+userId, order+"");
+		if(value != null){
+			EventBean bean = EventBean.fromJson(userId, value);
+			mapper.updateEvent(bean);
+		}
+	}
 	public String popDelEventKey() {
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del");
 	}
@@ -256,6 +292,15 @@ public class LevelRedisService extends RedisService {
 	}
 	public void saveEvent(UserBean user, Event event) {
 		saveEvent(user.getId(), event);
+	}
+	public void saveEventReady(UserBean user, Event event) {
+		saveEventReady(user.getId(), event);
+	}
+	public void saveEventReady(long userId, Event event) {
+		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event));
+		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		if(event.getOrder() < 10000)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
 	}
 	public void delEvent(UserBean user, Event event) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
@@ -524,20 +569,18 @@ public class LevelRedisService extends RedisService {
 		
 		return rewardList;
 	}
-	
+
 	public boolean hasCompleteEvent(UserBean user, int eventId) {
-		return hasCompleteEvent(user, eventId, null);
+		UserLevelBean userLevel = getUserLevel(user);
+		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
+		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
 	}
-	
-	public boolean hasCompleteEvent(UserBean user, int eventId, UserLevelBean userLevel) {
-		if (userLevel == null)
-			userLevel = getUserLevel(user);
-		Event event = getEvent(eventId);
-		if (event.getDaguan() > userLevel.getUnlockDaguan())
+	public boolean hasCompleteEvent(long userId, int eventId, UserLevelBean userLevel, Map<Integer, Event.Builder> eventmap) {
+		Event eventconfig = getEvent(eventId);
+		if (eventconfig.getDaguan() > userLevel.getUnlockDaguan())
 			return false;
-		
-		List<Event> userEventList = getEventList(user);
-		for (Event userEvent : userEventList) {
+
+		for (Event.Builder userEvent : eventmap.values()) {
 			if (userEvent.getEventid() == eventId)
 				return false;
 		}
