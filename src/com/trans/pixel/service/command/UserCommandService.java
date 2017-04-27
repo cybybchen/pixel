@@ -175,7 +175,7 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	private int randomUserType() {
-		return RandomUtils.nextInt(4);
+		return RandomUtils.nextInt(4) + 1;
 	}
 	
 	private UserTalent addRegisterTalent(UserBean user, int id) {

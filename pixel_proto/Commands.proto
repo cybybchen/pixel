@@ -71,7 +71,7 @@ message UserInfo {
 	optional int64 extraHasLootTime = 83;
 	optional uint32 extraType = 84;
 	optional int64 extraLastTimeStamp = 85;
-	optional uint32 userType = 86;//0:非R， 1：小R  2，中R， 3：大R
+	optional uint32 userType = 86;//0:普通， 1:非R， 2：小R  3，中R， 4：大R
 }
 
 message CostItem {

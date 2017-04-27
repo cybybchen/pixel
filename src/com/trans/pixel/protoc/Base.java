@@ -1016,7 +1016,7 @@ public final class Base {
      * <code>optional uint32 userType = 86;</code>
      *
      * <pre>
-     *0:非R， 1：小R 2，中R， 3：大R
+     *0:普通， 1:非R， 2：小R 3，中R， 4：大R
      * </pre>
      */
     boolean hasUserType();
@@ -1024,7 +1024,7 @@ public final class Base {
      * <code>optional uint32 userType = 86;</code>
      *
      * <pre>
-     *0:非R， 1：小R 2，中R， 3：大R
+     *0:普通， 1:非R， 2：小R 3，中R， 4：大R
      * </pre>
      */
     int getUserType();
@@ -3130,7 +3130,7 @@ public final class Base {
      * <code>optional uint32 userType = 86;</code>
      *
      * <pre>
-     *0:非R， 1：小R 2，中R， 3：大R
+     *0:普通， 1:非R， 2：小R 3，中R， 4：大R
      * </pre>
      */
     public boolean hasUserType() {
@@ -3140,7 +3140,7 @@ public final class Base {
      * <code>optional uint32 userType = 86;</code>
      *
      * <pre>
-     *0:非R， 1：小R 2，中R， 3：大R
+     *0:普通， 1:非R， 2：小R 3，中R， 4：大R
      * </pre>
      */
     public int getUserType() {
@@ -8473,7 +8473,7 @@ public final class Base {
        * <code>optional uint32 userType = 86;</code>
        *
        * <pre>
-       *0:非R， 1：小R 2，中R， 3：大R
+       *0:普通， 1:非R， 2：小R 3，中R， 4：大R
        * </pre>
        */
       public boolean hasUserType() {
@@ -8483,7 +8483,7 @@ public final class Base {
        * <code>optional uint32 userType = 86;</code>
        *
        * <pre>
-       *0:非R， 1：小R 2，中R， 3：大R
+       *0:普通， 1:非R， 2：小R 3，中R， 4：大R
        * </pre>
        */
       public int getUserType() {
@@ -8493,7 +8493,7 @@ public final class Base {
        * <code>optional uint32 userType = 86;</code>
        *
        * <pre>
-       *0:非R， 1：小R 2，中R， 3：大R
+       *0:普通， 1:非R， 2：小R 3，中R， 4：大R
        * </pre>
        */
       public Builder setUserType(int value) {
@@ -8506,7 +8506,7 @@ public final class Base {
        * <code>optional uint32 userType = 86;</code>
        *
        * <pre>
-       *0:非R， 1：小R 2，中R， 3：大R
+       *0:普通， 1:非R， 2：小R 3，中R， 4：大R
        * </pre>
        */
       public Builder clearUserType() {
