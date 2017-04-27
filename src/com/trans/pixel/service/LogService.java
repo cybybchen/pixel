@@ -981,6 +981,17 @@ public class LogService {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TYPE, "0");
+		params.put(LogString.TARGETID, "" + targetId);
+		params.put(LogString.ORDER, "" + order);
+		
+		sendLog(params, LogString.LOGTYPE_MAINQUEST);
+	}
+	public void sendAchieveLog(int serverId, long userId, int targetId, int order) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.TYPE, "1");
 		params.put(LogString.TARGETID, "" + targetId);
 		params.put(LogString.ORDER, "" + order);
 		
