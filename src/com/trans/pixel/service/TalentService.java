@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -94,8 +96,16 @@ public class TalentService {
 		talentBuilder.setLevel(talentBuilder.getLevel() + 1);
 		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, talentBuilder, originalLevel));
 		
-		levelupTalentSkill(user, id, talentBuilder.getLevel() - originalLevel);
+		int skillid = levelupTalentSkill(user, id, talentBuilder.getLevel() - originalLevel);
 		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.ROLEID, "" + talentBuilder.getId());
+		params.put(LogString.LEVEL, "" + talentBuilder.getLevel());
+		params.put(LogString.TALENTID, "" + skillid);
+		
+		logService.sendLog(params, LogString.LOGTYPE_ROLELEVELUP);
 		/**
 		 * 主角升级的活动
 		 */
@@ -104,7 +114,8 @@ public class TalentService {
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
-	public void levelupTalentSkill(UserBean user, int talentId, int level) {
+	public int levelupTalentSkill(UserBean user, int talentId, int level) {
+		int skillid = 0;
 		List<UserTalentSkill> userTalentSkillList = userTalentService.getUserTalentSkillListByTalentId(user, talentId);
 		while (level > 0) {
 			int randomNum = RandomUtils.nextInt(userTalentSkillList.size());
@@ -114,11 +125,13 @@ public class TalentService {
 				continue;
 			builder.setLevel(builder.getLevel() + 1);
 			userTalentSkillList.remove(randomNum);
+			skillid = builder.getSkillId();
 			userTalentSkillList.add(builder.build());
 			level--;
 		}
 		
 		userTalentService.updateUserTalentSkillList(user, userTalentSkillList);
+		return skillid;
 	}
 	
 	private UserTalent unlockTalent(UserBean user, UserTalent.Builder utBuilder, int originalLevel) {

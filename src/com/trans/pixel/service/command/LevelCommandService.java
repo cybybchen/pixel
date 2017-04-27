@@ -292,6 +292,7 @@ public class LevelCommandService extends BaseCommandService {
  			pvpMapService.refreshAMine(user);
  		}
  		userService.updateUser(user);
+
  		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());

@@ -220,6 +220,14 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ZHANLI));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.POKEDEX));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.WPOKEDEX));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.APOKEDEX));
+				sb.append(LogString.SPLITER);
 				break;
 				
 			case LogString.LOGTYPE_ERROR:
@@ -873,17 +881,19 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_LEVELUP);
 	}
 	
-	public void sendRareupLog(int serverId, long userId, int heroid, int rare) {
+	public void sendRareupLog(int serverId, long userId, int heroid, int rare, int grade, int type) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.HEROID, "" + heroid);
+		params.put(LogString.GRADE, "" + grade);
 		params.put(LogString.RARE, "" + rare);
+		params.put(LogString.HEROTYPE, "" + type);
 		
 		sendLog(params, LogString.LOGTYPE_GRADEUP);
 	}
 	
-	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value, int consumeValue) {
+	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value, int consumeValue, int rare, int type) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
@@ -891,30 +901,39 @@ public class LogService {
 		params.put(LogString.STAR, "" + star);
 		params.put(LogString.VALUE, "" + value);
 		params.put(LogString.CONSUMEVALUE, "" + consumeValue);
+		params.put(LogString.RARE, "" + rare);
+		params.put(LogString.HEROTYPE, "" + type);
 		
 		sendLog(params, LogString.LOGTYPE_STARUP);
 	}
 	
-	public void sendSkillupLog(int serverId, long userId, int heroid, int skillid, int skilllevel) {
+	public void sendSkillupLog(int serverId, long userId, int heroid, int skillid, int skilllevel, int rare, int type) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
 		params.put(LogString.HEROID, "" + heroid);
 		params.put(LogString.SKILLID, "" + skillid);
 		params.put(LogString.SKILLLEVEL, "" + skilllevel);
+		params.put(LogString.RARE, "" + rare);
+		params.put(LogString.HEROTYPE, "" + type);
 		
 		sendLog(params, LogString.LOGTYPE_SKILLUP);
 	}
 	
-	public void sendEquipupLog(int serverId, long userId, int heroid, int equipid) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(LogString.SERVERID, "" + serverId);
-		params.put(LogString.USERID, "" + userId);
-		params.put(LogString.HEROID, "" + heroid);
-		params.put(LogString.EQUIPID, "" + equipid);
-		
-		sendLog(params, LogString.LOGTYPE_EQUIPUP);
-	}
+//	public void sendEquipupLog(int serverId, long userId, int heroid, int equipid, int result, int prelevel, int level, int equiprare, int coincost) {
+//		Map<String, String> params = new HashMap<String, String>();
+//		params.put(LogString.SERVERID, "" + serverId);
+//		params.put(LogString.USERID, "" + userId);
+//		params.put(LogString.HEROID, "" + heroid);
+//		params.put(LogString.EQUIPID, "" + equipid);
+//		params.put(LogString.RESULT, "" + result);
+//		params.put(LogString.PRELEVEL, "" + prelevel);
+//		params.put(LogString.LEVEL, "" + level);
+//		params.put(LogString.EQUIPRARE, "" + equiprare);
+//		params.put(LogString.COINCOST, "" + coincost);
+//		
+//		sendLog(params, LogString.LOGTYPE_EQUIPUP);
+//	}
 	
 	public void sendQiyueLog(int serverId, long userId, int heroid, int state) {
 		Map<String, String> params = new HashMap<String, String>();

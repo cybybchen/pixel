@@ -100,7 +100,7 @@ public class HeroRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Heroloot> getHerolootConfig() {
+	public Map<String, Heroloot> getHerolootConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.HERO_LOOT_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Heroloot> map = buildHerolootConfig();

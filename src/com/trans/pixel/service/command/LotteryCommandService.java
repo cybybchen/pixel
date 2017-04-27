@@ -16,16 +16,20 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.ActivityProto.LotteryActivity;
 import com.trans.pixel.protoc.ActivityProto.RequestLotteryCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LotteryService;
 import com.trans.pixel.service.RewardService;
+import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LotteryRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -48,6 +52,10 @@ public class LotteryCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private LotteryRedisService lotteryRedisService;
+	@Resource
+	private UserPokedeService userPokedeService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
@@ -206,6 +214,9 @@ public class LotteryCommandService extends BaseCommandService {
 		logMap.put(LogString.SERVERID, "" + serverId);
 		logMap.put(LogString.FREE, "" + free);
 		logMap.put(LogString.TYPE, "" + getLogTypeOfLottery(lotteryType, count));
+		List<UserPokedeBean> list = userPokedeService.selectUserPokedeList(userId);
+		Map<String, Heroloot> map = heroRedisService.getHerolootConfig();
+		logMap.put(LogString.POKEDEX, "" + (list.size()*100/map.size()));
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LOTTERY);
 	}
@@ -213,27 +224,27 @@ public class LotteryCommandService extends BaseCommandService {
 	private int getLogTypeOfLottery(int lotteryType, int count) {
 		switch (lotteryType) {
 			case RewardConst.COIN:
-				if (count == 1)
+//				if (count == 1)
 					return 0;
 				
-				return 1;
+//				return 1;
 			case RewardConst.JEWEL:
 				if (count == 1)
-					return 2;
+					return 1;
 				
-				return 3;
+				return 2;
 				
-			case RewardConst.EQUIPMENT:
-				if (count == 1)
-					return 8;
-							
-				return 9;
+//			case RewardConst.EQUIPMENT:
+//				if (count == 1)
+//					return 8;
+//							
+//				return 9;
 				
 			case LotteryConst.LOOTERY_SPECIAL_TYPE:
 				if (count == 1)
-					return 4;
+					return 3;
 				
-				return 5;
+				return 4;
 				
 			default:
 				if (count == 1)

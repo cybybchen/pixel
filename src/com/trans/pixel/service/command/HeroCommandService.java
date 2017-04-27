@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -24,6 +25,7 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.HeroProto.FenjieHeroInfo;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
@@ -255,6 +257,18 @@ public class HeroCommandService extends BaseCommandService {
 					if(heroInfo.getLevel() > 1)
 						addExp += heroService.getDeleteExp(heroInfo.getLevel());
 					addCoin += skillService.getResetCoin(heroInfo.getSkillInfoList());//升级技能消耗金币
+					
+					Map<String, String> params = new HashMap<String, String>();
+					params.put(LogString.SERVERID, "" + user.getServerId());
+					params.put(LogString.USERID, "" + user.getId());
+					params.put(LogString.HEROID, "" + heroInfo.getHeroId());
+					params.put(LogString.LEVEL, "" + heroInfo.getLevel());
+					params.put(LogString.GRADE, "" + heroInfo.getRank());
+					params.put(LogString.STAR, "" + heroInfo.getStarLevel());
+					Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+					params.put(LogString.RARE, "" + heroconfig.getQuality());
+					
+					logService.sendLog(params, LogString.LOGTYPE_HERORES);
 				}else{
 					isError = true;
 					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);

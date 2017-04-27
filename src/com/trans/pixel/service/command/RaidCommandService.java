@@ -1,10 +1,14 @@
 package com.trans.pixel.service.command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -41,6 +45,7 @@ public class RaidCommandService extends BaseCommandService{
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
 		Raid raid = redis.getRaid(cmd.getId());
+		int lastid = redis.getRaid(user);
 		if(costService.cost(user, raid.getCostid(), raid.getCostcount())){
 			int id = raid.getId()*100+1;
 			redis.saveRaid(user, id);
@@ -48,6 +53,15 @@ public class RaidCommandService extends BaseCommandService{
 			builder.setId(id);
 			responseBuilder.setRaidCommand(builder);
 			pusher.pushUserDataByRewardId(responseBuilder, user, raid.getCostid());
+
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.RESULT, "2");
+			params.put(LogString.INSTANCEID, "" + raid.getId());
+			params.put(LogString.BOSSID, "0");
+			params.put(LogString.PREINSTANCEID, "" + lastid);
+			logService.sendLog(params, LogString.LOGTYPE_RAID);
 		}else{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
@@ -56,8 +70,9 @@ public class RaidCommandService extends BaseCommandService{
 	}
 
 	public void startRaid(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user){
-		int id = redis.getRaid(user);
-		RaidOrder order = redis.getRaidOrder(id);
+		int myid = redis.getRaid(user);
+		int id = myid;
+		RaidOrder order = redis.getRaidOrder(myid);
 		if(id != cmd.getId() || order == null){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
@@ -89,6 +104,15 @@ public class RaidCommandService extends BaseCommandService{
 			id = 0;
 			redis.saveRaid(user, id);
 		}
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
+		params.put(LogString.INSTANCEID, "" + myid);
+		params.put(LogString.BOSSID, "" + order.getEnemyid());
+		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myid : 0));
+		logService.sendLog(params, LogString.LOGTYPE_RAID);
+
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 		builder.setId(id);
 		responseBuilder.setRaidCommand(builder);

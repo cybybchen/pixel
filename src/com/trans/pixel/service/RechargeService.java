@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
@@ -23,20 +23,26 @@ import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Armor;
+import com.trans.pixel.protoc.EquipProto.Equip;
+import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.YueKa;
+import com.trans.pixel.service.redis.EquipRedisService;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.LogUtils;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -71,6 +77,14 @@ public class RechargeService {
 	private LevelRedisService userLevelService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private UserPokedeService userPokedeService;
+	@Resource
+	private HeroRedisService heroRedisService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private EquipRedisService equipRedisService;
 
 	public int rechargeVip(UserBean user, int rmb, int jewel) {
     	int addExp = rmb * 10;
@@ -225,9 +239,35 @@ public class RechargeService {
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
 			UserLevelBean userLevel = userLevelService.getUserLevel(user);
-			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
-					company, 1, userLevel != null ? userLevel.getUnlockDaguan() : 0, user.getZhanliMax());
-			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+				Map<String, String> params = new HashMap<String, String>();	
+				params.put(LogString.USERID, "" + user.getId());
+				params.put(LogString.SERVERID, "" + user.getServerId());
+				params.put(LogString.CURRENCY, "0");
+				params.put(LogString.CURRENCYAMOUNT, "" + rmb.getRmb() * 100);
+				params.put(LogString.STAGE, "0");
+				params.put(LogString.ITEMID, "" + productid);
+				params.put(LogString.ACTION, "2");
+				params.put(LogString.VERSION, user.getVersion());
+				params.put(LogString.CHANNEL, company);
+				params.put(LogString.RECHARGE_TYPE, "1");
+				params.put(LogString.LEVEL, "" + (userLevel != null ? userLevel.getUnlockDaguan() : 0));
+				params.put(LogString.ZHANLI, "" + user.getZhanliMax());
+				params.put(LogString.VIPLEVEL, "" + user.getVip());
+				int equipCount = 0, armorCount = 0;
+				List<UserPokedeBean> pokedes = userPokedeService.selectUserPokedeList(user.getId());
+				Map<String, Heroloot> pokedemap = heroRedisService.getHerolootConfig();
+				params.put(LogString.POKEDEX, "" + (pokedes.size()*100/pokedemap.size()));
+				List<UserEquipPokedeBean> equips = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+				Map<String, Equip> equipmap = equipRedisService.getEquipConfig();
+				for(UserEquipPokedeBean pokede : equips)
+					if(pokede.getItemId() < RewardConst.ARMOR)
+						equipCount++;
+					else
+						armorCount++;
+				params.put(LogString.WPOKEDEX, "" + (equipCount*100/equipmap.size()));
+				Map<String, Armor>  armormap = equipRedisService.getArmorConfig();
+				params.put(LogString.APOKEDEX, "" + (armorCount*100/armormap.size()));
+			logService.sendLog(params, LogString.LOGTYPE_RECHARGE);
 		}
 		
 		return rmb.getRmb() * 100;

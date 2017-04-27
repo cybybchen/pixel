@@ -144,6 +144,8 @@ public class LogString {
     public static final String INSTANCEID = "instanceid";
     public static final String PREINSTANCEID = "preinstanceid";
     public static final String POKEDEX = "pokedex";
+    public static final String WPOKEDEX = "wpokedex";
+    public static final String APOKEDEX = "apokedex";
     public static final String ROLEID = "roleid";
     public static final String TALENTID = "talentid";
 	

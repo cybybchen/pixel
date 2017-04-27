@@ -1149,7 +1149,7 @@ public class ActivityService {
 		Map<String, String> logMap = new HashMap<String, String>();
 		logMap.put(LogString.USERID, "" + userId);
 		logMap.put(LogString.SERVERID, "" + serverId);
-		logMap.put(LogString.TYPE, "" + type);
+		logMap.put(LogString.MISSIONLEVEL, "" + type);
 		logMap.put(LogString.MISSIONID, "" + id);
 		logMap.put(LogString.MISSIONSTEP, "" + step);
 		

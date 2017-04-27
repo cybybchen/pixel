@@ -18,6 +18,7 @@ import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 
 @Service
@@ -192,7 +193,8 @@ public class HeroLevelUpService {
 		/**
 		 * send starup log
 		 */
-		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue);
+		Hero hero = heroService.getHero(heroInfo.getHeroId());
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, hero.getQuality(), hero.getPosition());
 		
 		return result;
 	}
@@ -258,7 +260,8 @@ public class HeroLevelUpService {
 		/**
 		 * send rareup log
 		 */
-		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getRank());
+		Hero hero = heroService.getHero(heroInfo.getHeroId());
+		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), heroInfo.getRank(), hero.getPosition());
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}
@@ -316,7 +319,8 @@ public class HeroLevelUpService {
 		/**
 		 * send skillup log
 		 */
-		logService.sendSkillupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), skillInfo.getSkillId(), skilllevel);
+		Hero hero = heroService.getHero(heroInfo.getHeroId());
+		logService.sendSkillupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), skillInfo.getSkillId(), skilllevel, hero.getQuality(), hero.getPosition());
 		
 		/**
 		 * 升级技能的活动

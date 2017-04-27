@@ -53,7 +53,7 @@ public class EquipPokedeService {
 		return rewardList;
 	}
 	
-	public ResultConst heroStrengthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards) {
+	public ResultConst strengthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards) {
 		if (pokede == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		
