@@ -606,7 +606,7 @@ public class ActivityService {
 				 * 判断活动有没有过期
 				 */
 				if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
-					userActivityService.updateUserKaifu(user.getId(), uk.build());
+					userActivityService.updateUserKaifu(user.getId(), uk.build(), kaifu.getCycle());
 					
 					if (isCompleteNewKaifu(uk.build(), user))
 						noticeService.pushNotice(user.getId(), NoticeConst.TYPE_ACTIVITY);
@@ -636,7 +636,7 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		
 		uk.addRewardOrder(order);
-		userActivityService.updateUserKaifu(user.getId(), uk.build());
+		userActivityService.updateUserKaifu(user.getId(), uk.build(), kaifu.getCycle());
 		rewards.addAllLoot(activityorder.getRewardList());
 		
 		isDeleteNotice(user);

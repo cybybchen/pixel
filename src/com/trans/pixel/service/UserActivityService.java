@@ -68,9 +68,9 @@ public class UserActivityService {
 	}
 	
 	//kaifu activity
-	public void updateUserKaifu(long userId, UserKaifu uk) {
+	public void updateUserKaifu(long userId, UserKaifu uk, int cycle) {
 		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
-		userActivityRedisService.updateUserKaifu(userId, uk, kaifu.getLasttime());
+		userActivityRedisService.updateUserKaifu(userId, uk, cycle, kaifu.getLasttime());
 	}
 	
 	public void updateToDB(long userId, int id) {
@@ -93,7 +93,7 @@ public class UserActivityService {
 				UserActivityBean uaBean = userActivityMapper.selectUserActivity(userId, type);
 				if (uaBean != null) {
 					uk = uaBean.buildUserKaifu();
-					updateUserKaifu(userId, uk);
+					updateUserKaifu(userId, uk, kaifu.getCycle());
 				}
 			}
 			

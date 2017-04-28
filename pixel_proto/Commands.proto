@@ -2213,6 +2213,7 @@ message Kaifu {
 	required int32 targetid = 3;
 	required int32 lasttime = 4;
 	repeated ActivityOrder order = 5;
+	optional uint32 cycle = 6;
 }
 
 message KaifuOrder {
@@ -2220,6 +2221,8 @@ message KaifuOrder {
 	optional string description = 4;
 	optional int32 targetcount = 1;
 	optional int32 targetcount1 = 2;
+	optional uint32 consumeid = 6;
+	optional uint32 limit = 7;
 	repeated RewardInfo reward = 5;
 }
 

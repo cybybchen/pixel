@@ -34,12 +34,15 @@ public class UserActivityRedisService extends RedisService {
 	}
 	
 	//kaifu activity
-	public void updateUserKaifu(long userId, UserKaifu uk, int lastTime) {
+	public void updateUserKaifu(long userId, UserKaifu uk, int cycle, int lastTime) {
 		String key = buildKaifuRedisKey(uk.getType(), userId);
 		this.set(key, formatJson(uk));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+		if (cycle == 1)
+			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
+		else
+			this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 		
-		if (lastTime == -1)
+		if (lastTime == -1 && cycle == 0)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_ACTIVITY_KAIFU_PREFIX, userId+"#"+uk.getType());
 	}
 	
