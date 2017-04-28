@@ -62,8 +62,7 @@ public class MessageCommandService extends BaseCommandService {
 		}else{
 			messageService.createMessageBoard(cmd, user);
 			if(cmd.getFightId() != 0) {
-				ResponseMessageCommand messageCommand = buildMessageCommand(SuccessConst.SHARE_SUCCESS);
-	            responseBuilder.setMessageCommand(messageCommand);
+	            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHARE_SUCCESS));
 			}
 		}
 		pushCommandService.pushMessageBoardListCommand(cmd.getType(), responseBuilder, user, cmd.hasItemId() ? cmd.getItemId() : 0);
