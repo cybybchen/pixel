@@ -526,6 +526,10 @@ public class UnionService extends FightService{
 		}
 		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
 	}
+
+	public void saveUnion(final Union union, UserBean user) {
+		redis.saveUnion(union, user.getServerId());
+	}
 	
 	public ResultConst attack(int attackId, long teamid, UserBean user){
 		Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());

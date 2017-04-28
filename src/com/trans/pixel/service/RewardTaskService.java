@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -106,6 +109,19 @@ public class RewardTaskService {
 		if (userEquip != null)
 			userEquipList.add(userEquip);
 		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(ut.getEnemyid(), user, 0 , 0)));
+
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.BOSSID, "" + ut.getEnemyid());
+		params.put(LogString.TEAM, "1");
+		params.put(LogString.RESULT, "1");
+		params.put(LogString.DPS, "0");
+		params.put(LogString.LEVEL, "0");
+		params.put(LogString.ZHANLI, "" + user.getZhanli());
+		params.put(LogString.VIPLEVEL, "" + user.getVip());
+		
+		logService.sendLog(params, LogString.LOGTYPE_REWARDBOSS);
 		
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
@@ -134,7 +150,6 @@ public class RewardTaskService {
 		UserRewardTask.Builder utBuilder = UserRewardTask.newBuilder(ut);
 		utBuilder.setRoomInfo(roomInfoBuilder.build());
 		userRewardTaskService.updateUserRewardTask(user, utBuilder.build());
-		
 		return builder.build();
 		
 	}
@@ -342,6 +357,19 @@ public class RewardTaskService {
 		rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		
 		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.BOSSID, "" + userRewardTask.getId());
+		params.put(LogString.TEAM, "1");
+		params.put(LogString.RESULT, "3");
+		params.put(LogString.DPS, "0");
+		params.put(LogString.LEVEL, "0");
+		params.put(LogString.ZHANLI, "" + user.getZhanli());
+		params.put(LogString.VIPLEVEL, "" + user.getVip());
+		
+		logService.sendLog(params, LogString.LOGTYPE_REWARDBOSS);
 		
 		return SuccessConst.REWARDTASK_GIVEUP_SUCCESS;
 	}

@@ -10,10 +10,12 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestAttackUnionCommand;
@@ -22,6 +24,7 @@ import com.trans.pixel.protoc.UnionProto.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
@@ -173,6 +176,27 @@ public class UnionCommandService extends BaseCommandService {
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
+	}
+	
+	public void setAnnounce(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user) {
+		Union.Builder union = unionService.getBaseUnion(user);
+		if(union == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NEED_UNION_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}else if(user.getUnionJob() != UnionConst.UNION_HUIZHANG) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PERMISSION_DENIED);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		union.setAnnounce(cmd.getAnnounce());
+		unionService.saveUnion(union.build(), user);
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(unionService.getUnion(user));
+		responseBuilder.setUnionInfoCommand(builder.build());
+		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.REWRITE_SUCCESS));
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {

@@ -186,6 +186,7 @@ import com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
 import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
+import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
@@ -376,6 +377,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -1116,6 +1118,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasKaifuListCommand()) {
 			RequestKaifuListCommand cmd = request.getKaifuListCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasUnionAnnounceCommand()) {
+			RequestSetUnionAnnounceCommand cmd = request.getUnionAnnounceCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRewardTaskRewardCommand()) {

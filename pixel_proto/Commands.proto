@@ -2786,6 +2786,7 @@ message Union {
 	repeated UnionBossRecord unionBoss = 23;
 	optional string bossRecord = 24;
 	optional string bossEndTime = 25;
+	optional string announce = 26;
 }
 
 message UnionApply {
@@ -3021,6 +3022,10 @@ message RequestReplyUnionCommand {//回复公会申请
 message RequestHandleUnionMemberCommand {//调整公会成员权限
 	required int64 id = 1;
 	required int32 job = 2;
+}
+
+message RequestSetUnionAnnounceCommand {//调整公会公告
+        optional string announce = 1;
 }
 
 message RequestUpgradeUnionCommand {//升级公会
@@ -3328,6 +3333,7 @@ message RequestCommand {
 	optional RequestUpgradeUnionCommand upgradeUnionCommand = 41;
 	optional RequestAttackUnionCommand attackUnionCommand = 100;
 	optional RequestDefendUnionCommand defendUnionCommand = 101;
+	optional RequestSetUnionAnnounceCommand unionAnnounceCommand = 162;
 	optional RequestDailyShopCommand dailyShopCommand = 102;
 	optional RequestDailyShopPurchaseCommand dailyShopPurchaseCommand = 103;
 	optional RequestDailyShopRefreshCommand dailyShopRefreshCommand = 104;
