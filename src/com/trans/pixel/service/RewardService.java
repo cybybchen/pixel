@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -332,4 +333,14 @@ public class RewardService {
 //    	
 //    	return randomRewardList;
 //	}
+	
+	public List<RewardInfo> getRewardsByRmbid(List<RewardInfo> rewardList, int rmbid) {
+		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
+		for (RewardInfo reward : rewardList) {
+			if (reward.getRmbid() == 0 || reward.getRmbid() == rmbid)
+				rewards.add(reward);
+		}
+		
+		return rewards;
+	}
 }

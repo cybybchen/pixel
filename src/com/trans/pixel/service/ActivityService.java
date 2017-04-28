@@ -95,6 +95,8 @@ public class ActivityService {
 	private LevelRedisService userLevelService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private RewardService rewardService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -670,7 +672,8 @@ public class ActivityService {
 		
 		
 		userActivityService.updateUserKaifu(user.getId(), uk.build(), kaifu.getCycle());
-		rewards.addAllLoot(activityorder.getRewardList());
+//		rewards.addAllLoot(activityorder.getRewardList());
+		rewards.addAllLoot(rewardService.getRewardsByRmbid(activityorder.getRewardList(), user.getUserType()));
 		
 		isDeleteNotice(user);
 		

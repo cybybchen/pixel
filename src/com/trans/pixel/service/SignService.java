@@ -33,6 +33,8 @@ public class SignService {
 	private ActivityService activityService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private RewardService rewardService;
 	
 	public List<RewardInfo> sign(UserBean user) {
 		if (!canSign(user))
@@ -139,10 +141,7 @@ public class SignService {
 			builder.setCount(sign.getCount());
 			rewardList.add(builder.build());
 		} else {
-			for (RewardInfo reward : sign.getRewardList()) {
-				if (reward.getRmbid() == 0 || reward.getRmbid() == user.getUserType())
-					rewardList.add(reward);
-			}
+			rewardList.addAll(rewardService.getRewardsByRmbid(sign.getRewardList(), user.getUserType()));
 		}
 		
 		return rewardList;
