@@ -624,18 +624,51 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
 		
 		ActivityOrder activityorder = kaifu.getOrder(order - 1);
-		if (kaifu.getTargetid() == ActivityConst.HERO_RARE) {
-			for (KaifuOrder orderRecord : uk.getOrderRecordList()) {
-				if (orderRecord.getTargetcount1() == activityorder.getTargetcount1()) {
-					if (orderRecord.getTargetcount() < activityorder.getTargetcount())
-						return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+		RewardOrder.Builder rewardOrderBuilder = RewardOrder.newBuilder();
+		if (kaifu.getConsumeid() > 0) {
+			if (uk.getRewardList().size() == 0) {
+				for (ActivityOrder ao :kaifu.getOrderList()) {
+					RewardOrder.Builder ro = RewardOrder.newBuilder();
+					ro.setOrder(ao.getOrder());
+					ro.setCount(0);
+					uk.addReward(ro.build());
+				}
+			}
+			for (int i = 0; i < uk.getRewardList().size(); ++i) {
+				RewardOrder reward = uk.getReward(i);
+				if (reward.getOrder() == order) {
+					rewardOrderBuilder = RewardOrder.newBuilder(reward);
 					break;
 				}
 			}
-		} else if (activityorder.getTargetcount() > uk.getCompleteCount())
-			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+					
+			if (activityorder.getLimit() > 0 && rewardOrderBuilder.getCount() >= activityorder.getLimit())
+				return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
+			
+			if (!costService.cost(user, activityorder.getConsumeid(), activityorder.getTargetcount())) {
+				return ErrorConst.NOT_ENOUGH_PROP;
+			}
+			
+			rewardOrderBuilder.setOrder(order);
+			rewardOrderBuilder.setCount(rewardOrderBuilder.getCount() + 1);
+			uk.setReward(order - 1, rewardOrderBuilder.build());
+		} else {
+//			ActivityOrder activityorder = kaifu.getOrder(order - 1);
+			if (kaifu.getTargetid() == ActivityConst.HERO_RARE) {
+				for (KaifuOrder orderRecord : uk.getOrderRecordList()) {
+					if (orderRecord.getTargetcount1() == activityorder.getTargetcount1()) {
+						if (orderRecord.getTargetcount() < activityorder.getTargetcount())
+							return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+						break;
+					}
+				}
+			} else if (activityorder.getTargetcount() > uk.getCompleteCount())
+				return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
+			
+			uk.addRewardOrder(order);
+		}
 		
-		uk.addRewardOrder(order);
+		
 		userActivityService.updateUserKaifu(user.getId(), uk.build(), kaifu.getCycle());
 		rewards.addAllLoot(activityorder.getRewardList());
 		

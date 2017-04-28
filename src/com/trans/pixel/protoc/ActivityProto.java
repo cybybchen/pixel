@@ -12899,6 +12899,16 @@ public final class ActivityProto {
      * <code>optional uint32 cycle = 6;</code>
      */
     int getCycle();
+
+    // optional uint32 consumeid = 7;
+    /**
+     * <code>optional uint32 consumeid = 7;</code>
+     */
+    boolean hasConsumeid();
+    /**
+     * <code>optional uint32 consumeid = 7;</code>
+     */
+    int getConsumeid();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Kaifu}
@@ -12982,6 +12992,11 @@ public final class ActivityProto {
             case 48: {
               bitField0_ |= 0x00000010;
               cycle_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              consumeid_ = input.readUInt32();
               break;
             }
           }
@@ -13170,6 +13185,22 @@ public final class ActivityProto {
       return cycle_;
     }
 
+    // optional uint32 consumeid = 7;
+    public static final int CONSUMEID_FIELD_NUMBER = 7;
+    private int consumeid_;
+    /**
+     * <code>optional uint32 consumeid = 7;</code>
+     */
+    public boolean hasConsumeid() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional uint32 consumeid = 7;</code>
+     */
+    public int getConsumeid() {
+      return consumeid_;
+    }
+
     private void initFields() {
       id_ = 0;
       activity_ = "";
@@ -13177,6 +13208,7 @@ public final class ActivityProto {
       lasttime_ = 0;
       order_ = java.util.Collections.emptyList();
       cycle_ = 0;
+      consumeid_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13230,6 +13262,9 @@ public final class ActivityProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(6, cycle_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(7, consumeid_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13262,6 +13297,10 @@ public final class ActivityProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, cycle_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, consumeid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13396,6 +13435,8 @@ public final class ActivityProto {
         }
         cycle_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        consumeid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -13453,6 +13494,10 @@ public final class ActivityProto {
           to_bitField0_ |= 0x00000010;
         }
         result.cycle_ = cycle_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.consumeid_ = consumeid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -13511,6 +13556,9 @@ public final class ActivityProto {
         }
         if (other.hasCycle()) {
           setCycle(other.getCycle());
+        }
+        if (other.hasConsumeid()) {
+          setConsumeid(other.getConsumeid());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14007,6 +14055,39 @@ public final class ActivityProto {
         return this;
       }
 
+      // optional uint32 consumeid = 7;
+      private int consumeid_ ;
+      /**
+       * <code>optional uint32 consumeid = 7;</code>
+       */
+      public boolean hasConsumeid() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional uint32 consumeid = 7;</code>
+       */
+      public int getConsumeid() {
+        return consumeid_;
+      }
+      /**
+       * <code>optional uint32 consumeid = 7;</code>
+       */
+      public Builder setConsumeid(int value) {
+        bitField0_ |= 0x00000040;
+        consumeid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 consumeid = 7;</code>
+       */
+      public Builder clearConsumeid() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        consumeid_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Kaifu)
     }
 
@@ -14065,26 +14146,6 @@ public final class ActivityProto {
      * <code>optional int32 targetcount1 = 2;</code>
      */
     int getTargetcount1();
-
-    // optional uint32 consumeid = 6;
-    /**
-     * <code>optional uint32 consumeid = 6;</code>
-     */
-    boolean hasConsumeid();
-    /**
-     * <code>optional uint32 consumeid = 6;</code>
-     */
-    int getConsumeid();
-
-    // optional uint32 limit = 7;
-    /**
-     * <code>optional uint32 limit = 7;</code>
-     */
-    boolean hasLimit();
-    /**
-     * <code>optional uint32 limit = 7;</code>
-     */
-    int getLimit();
 
     // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
     /**
@@ -14183,21 +14244,11 @@ public final class ActivityProto {
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000040;
+                mutable_bitField0_ |= 0x00000010;
               }
               reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000010;
-              consumeid_ = input.readUInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000020;
-              limit_ = input.readUInt32();
               break;
             }
           }
@@ -14208,7 +14259,7 @@ public final class ActivityProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
@@ -14334,38 +14385,6 @@ public final class ActivityProto {
       return targetcount1_;
     }
 
-    // optional uint32 consumeid = 6;
-    public static final int CONSUMEID_FIELD_NUMBER = 6;
-    private int consumeid_;
-    /**
-     * <code>optional uint32 consumeid = 6;</code>
-     */
-    public boolean hasConsumeid() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional uint32 consumeid = 6;</code>
-     */
-    public int getConsumeid() {
-      return consumeid_;
-    }
-
-    // optional uint32 limit = 7;
-    public static final int LIMIT_FIELD_NUMBER = 7;
-    private int limit_;
-    /**
-     * <code>optional uint32 limit = 7;</code>
-     */
-    public boolean hasLimit() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional uint32 limit = 7;</code>
-     */
-    public int getLimit() {
-      return limit_;
-    }
-
     // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
     public static final int REWARD_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
@@ -14407,8 +14426,6 @@ public final class ActivityProto {
       description_ = "";
       targetcount_ = 0;
       targetcount1_ = 0;
-      consumeid_ = 0;
-      limit_ = 0;
       reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -14438,12 +14455,6 @@ public final class ActivityProto {
       for (int i = 0; i < reward_.size(); i++) {
         output.writeMessage(5, reward_.get(i));
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt32(6, consumeid_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeUInt32(7, limit_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -14472,14 +14483,6 @@ public final class ActivityProto {
       for (int i = 0; i < reward_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, reward_.get(i));
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, consumeid_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, limit_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -14606,13 +14609,9 @@ public final class ActivityProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         targetcount1_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        consumeid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        limit_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           rewardBuilder_.clear();
         }
@@ -14660,18 +14659,10 @@ public final class ActivityProto {
           to_bitField0_ |= 0x00000008;
         }
         result.targetcount1_ = targetcount1_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.consumeid_ = consumeid_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.limit_ = limit_;
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             reward_ = java.util.Collections.unmodifiableList(reward_);
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.reward_ = reward_;
         } else {
@@ -14707,17 +14698,11 @@ public final class ActivityProto {
         if (other.hasTargetcount1()) {
           setTargetcount1(other.getTargetcount1());
         }
-        if (other.hasConsumeid()) {
-          setConsumeid(other.getConsumeid());
-        }
-        if (other.hasLimit()) {
-          setLimit(other.getLimit());
-        }
         if (rewardBuilder_ == null) {
           if (!other.reward_.isEmpty()) {
             if (reward_.isEmpty()) {
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureRewardIsMutable();
               reward_.addAll(other.reward_);
@@ -14730,7 +14715,7 @@ public final class ActivityProto {
               rewardBuilder_.dispose();
               rewardBuilder_ = null;
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+              bitField0_ = (bitField0_ & ~0x00000010);
               rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRewardFieldBuilder() : null;
@@ -14939,79 +14924,13 @@ public final class ActivityProto {
         return this;
       }
 
-      // optional uint32 consumeid = 6;
-      private int consumeid_ ;
-      /**
-       * <code>optional uint32 consumeid = 6;</code>
-       */
-      public boolean hasConsumeid() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional uint32 consumeid = 6;</code>
-       */
-      public int getConsumeid() {
-        return consumeid_;
-      }
-      /**
-       * <code>optional uint32 consumeid = 6;</code>
-       */
-      public Builder setConsumeid(int value) {
-        bitField0_ |= 0x00000010;
-        consumeid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 consumeid = 6;</code>
-       */
-      public Builder clearConsumeid() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        consumeid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 limit = 7;
-      private int limit_ ;
-      /**
-       * <code>optional uint32 limit = 7;</code>
-       */
-      public boolean hasLimit() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional uint32 limit = 7;</code>
-       */
-      public int getLimit() {
-        return limit_;
-      }
-      /**
-       * <code>optional uint32 limit = 7;</code>
-       */
-      public Builder setLimit(int value) {
-        bitField0_ |= 0x00000020;
-        limit_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 limit = 7;</code>
-       */
-      public Builder clearLimit() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        limit_ = 0;
-        onChanged();
-        return this;
-      }
-
       // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -15160,7 +15079,7 @@ public final class ActivityProto {
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -15237,7 +15156,7 @@ public final class ActivityProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
@@ -15316,6 +15235,31 @@ public final class ActivityProto {
      * <code>repeated .com.trans.pixel.protoc.KaifuOrder orderRecord = 4;</code>
      */
     com.trans.pixel.protoc.ActivityProto.KaifuOrderOrBuilder getOrderRecordOrBuilder(
+        int index);
+
+    // repeated .com.trans.pixel.protoc.RewardOrder reward = 5;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    com.trans.pixel.protoc.ActivityProto.RewardOrder getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder getRewardOrBuilder(
         int index);
   }
   /**
@@ -15408,6 +15352,14 @@ public final class ActivityProto {
               orderRecord_.add(input.readMessage(com.trans.pixel.protoc.ActivityProto.KaifuOrder.PARSER, extensionRegistry));
               break;
             }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.RewardOrder>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.ActivityProto.RewardOrder.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -15421,6 +15373,9 @@ public final class ActivityProto {
         }
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           orderRecord_ = java.util.Collections.unmodifiableList(orderRecord_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -15545,11 +15500,48 @@ public final class ActivityProto {
       return orderRecord_.get(index);
     }
 
+    // repeated .com.trans.pixel.protoc.RewardOrder reward = 5;
+    public static final int REWARD_FIELD_NUMBER = 5;
+    private java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    public com.trans.pixel.protoc.ActivityProto.RewardOrder getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+     */
+    public com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
     private void initFields() {
       type_ = 0;
       completeCount_ = 0;
       rewardOrder_ = java.util.Collections.emptyList();
       orderRecord_ = java.util.Collections.emptyList();
+      reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -15563,6 +15555,12 @@ public final class ActivityProto {
       if (!hasCompleteCount()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      for (int i = 0; i < getRewardCount(); i++) {
+        if (!getReward(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -15582,6 +15580,9 @@ public final class ActivityProto {
       }
       for (int i = 0; i < orderRecord_.size(); i++) {
         output.writeMessage(4, orderRecord_.get(i));
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(5, reward_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -15612,6 +15613,10 @@ public final class ActivityProto {
       for (int i = 0; i < orderRecord_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, orderRecord_.get(i));
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, reward_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -15722,6 +15727,7 @@ public final class ActivityProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getOrderRecordFieldBuilder();
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -15741,6 +15747,12 @@ public final class ActivityProto {
           bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           orderRecordBuilder_.clear();
+        }
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          rewardBuilder_.clear();
         }
         return this;
       }
@@ -15791,6 +15803,15 @@ public final class ActivityProto {
           result.orderRecord_ = orderRecord_;
         } else {
           result.orderRecord_ = orderRecordBuilder_.build();
+        }
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -15850,6 +15871,32 @@ public final class ActivityProto {
             }
           }
         }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -15862,6 +15909,12 @@ public final class ActivityProto {
         if (!hasCompleteCount()) {
           
           return false;
+        }
+        for (int i = 0; i < getRewardCount(); i++) {
+          if (!getReward(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -16255,6 +16308,246 @@ public final class ActivityProto {
           orderRecord_ = null;
         }
         return orderRecordBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardOrder reward = 5;
+      private java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.RewardOrder>(reward_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ActivityProto.RewardOrder, com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder, com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.RewardOrder getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.ActivityProto.RewardOrder value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.ActivityProto.RewardOrder value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.ActivityProto.RewardOrder value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ActivityProto.RewardOrder> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ActivityProto.RewardOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ActivityProto.RewardOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardOrder reward = 5;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ActivityProto.RewardOrder, com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder, com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ActivityProto.RewardOrder, com.trans.pixel.protoc.ActivityProto.RewardOrder.Builder, com.trans.pixel.protoc.ActivityProto.RewardOrderOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserKaifu)
@@ -34373,117 +34666,118 @@ public final class ActivityProto {
       "ank\022\014\n\004type\030\001 \002(\005\022*\n\004rank\030\002 \003(\0132\034.com.tr" +
       "ans.pixel.protoc.Rank\022\016\n\006myRank\030\003 \002(\003\"6\n" +
       "\tKaifuList\022)\n\002id\030\001 \003(\0132\035.com.trans.pixel" +
-      ".protoc.Kaifu\"\216\001\n\005Kaifu\022\n\n\002id\030\001 \002(\005\022\020\n\010a" +
+      ".protoc.Kaifu\"\241\001\n\005Kaifu\022\n\n\002id\030\001 \002(\005\022\020\n\010a" +
       "ctivity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\022\020\n\010lastt" +
       "ime\030\004 \002(\005\0224\n\005order\030\005 \003(\0132%.com.trans.pix",
-      "el.protoc.ActivityOrder\022\r\n\005cycle\030\006 \001(\r\"\261" +
-      "\001\n\nKaifuOrder\022\r\n\005order\030\003 \001(\r\022\023\n\013descript" +
-      "ion\030\004 \001(\t\022\023\n\013targetcount\030\001 \001(\005\022\024\n\014target" +
-      "count1\030\002 \001(\005\022\021\n\tconsumeid\030\006 \001(\r\022\r\n\005limit" +
-      "\030\007 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\"~\n\tUserKaifu\022\014\n\004type\030" +
-      "\001 \002(\005\022\025\n\rcompleteCount\030\002 \002(\005\022\023\n\013rewardOr" +
-      "der\030\003 \003(\005\0227\n\013orderRecord\030\004 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.KaifuOrder\")\n\033RequestAch" +
-      "ieveRewardCommand\022\n\n\002id\030\001 \002(\005\"\033\n\031Request",
-      "AchieveListCommand\"V\n\032ResponseAchieveLis" +
-      "tCommand\0228\n\013userAchieve\030\001 \003(\0132#.com.tran" +
-      "s.pixel.protoc.UserAchieve\"8\n\033RequestRic" +
-      "hangRewardCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002" +
-      " \002(\005\"\033\n\031RequestRichangListCommand\"V\n\032Res" +
-      "ponseRichangListCommand\0228\n\013userRichang\030\001" +
-      " \003(\0132#.com.trans.pixel.protoc.UserRichan" +
-      "g\"\036\n\034RequestKaifu2ActivityCommand\"w\n\035Res" +
-      "ponseKaifu2ActivityCommand\0220\n\004rank\030\001 \003(\013" +
-      "2\".com.trans.pixel.protoc.Kaifu2Rank\022\017\n\007",
-      "accRcPs\030\002 \002(\005\022\023\n\013accRcPsRwRc\030\003 \002(\005\"6\n\031Re" +
-      "questKaifuRewardCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005o" +
-      "rder\030\002 \002(\005\"R\n\032ResponseKaifuRewardCommand" +
-      "\0224\n\tuserKaifu\030\001 \003(\0132!.com.trans.pixel.pr" +
-      "otoc.UserKaifu\"\031\n\027RequestKaifuListComman" +
-      "d\"\274\001\n\030ResponseKaifuListCommand\0224\n\tuserKa" +
-      "ifu\030\001 \003(\0132!.com.trans.pixel.protoc.UserK" +
-      "aifu\0220\n\004rank\030\002 \003(\0132\".com.trans.pixel.pro" +
-      "toc.Kaifu2Rank\0228\n\013userRichang\030\003 \003(\0132#.co" +
-      "m.trans.pixel.protoc.UserRichang\"\"\n\022Requ",
-      "estRankCommand\022\014\n\004type\030\001 \002(\005\"I\n\023Response" +
-      "RankCommand\0222\n\010userRank\030\001 \003(\0132 .com.tran" +
-      "s.pixel.protoc.UserRank\"O\n\023LotteryActivi" +
-      "tyList\0228\n\007lottery\030\001 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.LotteryActivity\"\300\001\n\017LotteryActi" +
-      "vity\022\014\n\004type\030\001 \002(\005\022\014\n\004cost\030\002 \002(\005\022\r\n\005coun" +
-      "t\030\003 \002(\005\022\r\n\005judge\030\004 \002(\005\022\021\n\tstarttime\030\005 \002(" +
-      "\t\022\017\n\007endtime\030\006 \002(\t\0221\n\004item\030\007 \003(\0132#.com.t" +
-      "rans.pixel.protoc.LotteryItem\022\020\n\010errorde" +
-      "s\030\010 \001(\t\022\n\n\002id\030\t \001(\005\"V\n\013LotteryItem\022\n\n\002id",
-      "\030\001 \002(\005\022\016\n\006itemid\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\016\n" +
-      "\006weight\030\004 \002(\005\022\014\n\004will\030\005 \002(\005\"4\n\025RequestLo" +
-      "tteryCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005count\030\002 \001(" +
-      "\005\"B\n\014ActivityList\0222\n\010activity\030\001 \003(\0132 .co" +
-      "m.trans.pixel.protoc.Activity\"\312\001\n\010Activi" +
-      "ty\022\n\n\002id\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\022\023\n\013targetco" +
-      "unt\030\003 \002(\005\022\013\n\003des\030\004 \002(\t\022\021\n\tstarttime\030\005 \002(" +
-      "\t\022\017\n\007endtime\030\006 \002(\t\022\024\n\014activitytype\030\007 \002(\005" +
-      "\0222\n\006reward\030\010 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\022\024\n\014serverfilter\030\t \002(\t\"@\n\016Se",
-      "venLoginList\022.\n\002id\030\001 \003(\0132\".com.trans.pix" +
-      "el.protoc.SevenLogin\"r\n\nSevenLogin\022\n\n\002id" +
-      "\030\001 \001(\r\022\020\n\010targetid\030\002 \001(\r\022\023\n\013targetcount\030" +
-      "\003 \001(\r\0221\n\005order\030\004 \003(\0132\".com.trans.pixel.p" +
-      "rotoc.SevenOrder\"Y\n\nSevenOrder\022\r\n\005order\030" +
-      "\001 \001(\r\022\016\n\006itemid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n\006" +
-      "choose\030\004 \001(\005\022\r\n\005rmbid\030\005 \001(\r\"@\n\rRankvalue" +
-      "List\022/\n\004rank\030\001 \003(\0132!.com.trans.pixel.pro" +
-      "toc.Rankvalue\"N\n\tRankvalue\022\014\n\004rank\030\001 \001(\005" +
-      "\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r",
-      "\n\005power\030\005 \001(\002*\325\016\n\rACTIVITY_TYPE\022\024\n\020TYPE_" +
-      "LEIJI_LOGIN\020\001\022\027\n\023TYPE_LEIJI_RECHARGE\020\002\022\031" +
-      "\n\025TYPE_LEIJI_COST_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022" +
-      "\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024" +
-      "TYPE_HERO_LEVELUP_50\020\007\022\016\n\nTYPE_LEVEL\020\010\022\017" +
-      "\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_LADDER_SUCCESS\020\n" +
-      "\022\033\n\027TYPE_PVP_ATTACK_SUCCESS\020\013\022\023\n\017TYPE_MO" +
-      "JING_GET\020\014\022\023\n\017TYPE_REWARDTASK\020\r\022\021\n\rTYPE_" +
-      "SHENYUAN\020\016\022\021\n\rTYPE_WUQI_GET\020\017\022\031\n\025TYPE_EQ" +
-      "UIP_LEVELUP_10\020\020\022\021\n\rTYPE_PVP_HELP\020\021\022\027\n\023T",
-      "YPE_DANBI_RECHARGE\020\022\022\024\n\020TYPE_HERO_RAREUP" +
-      "\020\023\022\027\n\022TYPE_TEAMUP_ARUISI\020\220N\022\037\n\032TYPE_ARUI" +
-      "SI_SKILL1_LEVELUP\020\221N\022\037\n\032TYPE_ARUISI_EQUI" +
-      "P_ADD10001\020\222N\022\037\n\032TYPE_ARUISI_SKILL2_LEVE" +
-      "LUP\020\223N\022\024\n\017TYPE_TASK_LEVEL\020\364N\022\031\n\024TYPE_TEA" +
-      "M_UPCHAFENQI\020\330O\022\033\n\026TYPE_PVP_BUFF_LEVELUP" +
-      "5\020\274P\022\030\n\023TYPE_EQUIP_LEVELUP1\020\241Q\022\030\n\023TYPE_E" +
-      "QUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_EQUIP_LEVELUP5\020" +
-      "\245Q\022\031\n\024TYPE_EQUIP_LEVELUP10\020\252Q\022\031\n\024TYPE_UP" +
-      "HERO_QUALITY1\020\205R\022\031\n\024TYPE_UPHERO_QUALITY2",
-      "\020\206R\022\031\n\024TYPE_UPHERO_QUALITY3\020\207R\022\031\n\024TYPE_U" +
-      "PHERO_QUALITY4\020\210R\022\031\n\024TYPE_UPHERO_QUALITY" +
-      "5\020\211R\022\027\n\022TYPE_HERO_LEVELUP5\020\355R\022\030\n\023TYPE_HE" +
-      "RO_LEVELUP10\020\362R\022\030\n\023TYPE_HERO_LEVELUP15\020\367" +
-      "R\022\030\n\023TYPE_HERO_LEVELUP20\020\374R\022\030\n\023TYPE_HERO" +
-      "_LEVELUP22\020\376R\022\030\n\023TYPE_HERO_LEVELUP25\020\201S\022" +
-      "\030\n\023TYPE_HERO_LEVELUP30\020\206S\022\030\n\023TYPE_HERO_L" +
-      "EVELUP35\020\213S\022\030\n\023TYPE_HERO_LEVELUP40\020\220S\022\030\n" +
-      "\023TYPE_HERO_LEVELUP45\020\225S\022\030\n\023TYPE_HERO_LEV" +
-      "ELUP50\020\232S\022\030\n\023TYPE_HERO_LEVELUP55\020\237S\022\030\n\023T",
-      "YPE_HERO_LEVELUP60\020\244S\022\025\n\020TYPE_FIGHT_FUBE" +
-      "N\020\314S\022\026\n\021TYPE_HERO_RAREUP1\020\261T\022\026\n\021TYPE_HER" +
-      "O_RAREUP2\020\262T\022\026\n\021TYPE_HERO_RAREUP3\020\263T\022\026\n\021" +
-      "TYPE_HERO_RAREUP5\020\265T\022\026\n\021TYPE_HERO_RAREUP" +
-      "7\020\267T\022\026\n\021TYPE_HERO_RAREUP9\020\271T\022\027\n\022TYPE_HER" +
-      "O_RAREUP11\020\273T\022\027\n\022TYPE_HERO_RAREUP12\020\274T\022\027" +
-      "\n\022TYPE_HERO_RAREUP13\020\275T\022\027\n\022TYPE_HERO_RAR" +
-      "EUP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELUP\020\224U\022\031\n\024TY" +
-      "PE_ZHUJUE_LEVELUP5\020\375U\022\026\n\021TYPE_FETTERS_OP" +
-      "EN\020\334V\022\021\n\rTYPE_GET_HERO\020y\022\031\n\025TYPE_TASK_HE",
-      "RO_RAREUP\020z\022\036\n\031TYPE_EVENT_COMPLETE_DAILY" +
-      "\020\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312\001\022\026\n\021TY" +
-      "PE_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI_MINE\020\314" +
-      "\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYPE_SKILL" +
-      "_LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020\317\001\022\026\n\021T" +
-      "YPE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTONGSHOP_B" +
-      "UY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022\023\n\016TYPE" +
-      "_DAILY_ALL\020\323\001"
+      "el.protoc.ActivityOrder\022\r\n\005cycle\030\006 \001(\r\022\021" +
+      "\n\tconsumeid\030\007 \001(\r\"\217\001\n\nKaifuOrder\022\r\n\005orde" +
+      "r\030\003 \001(\r\022\023\n\013description\030\004 \001(\t\022\023\n\013targetco" +
+      "unt\030\001 \001(\005\022\024\n\014targetcount1\030\002 \001(\005\0222\n\006rewar" +
+      "d\030\005 \003(\0132\".com.trans.pixel.protoc.RewardI" +
+      "nfo\"\263\001\n\tUserKaifu\022\014\n\004type\030\001 \002(\005\022\025\n\rcompl" +
+      "eteCount\030\002 \002(\005\022\023\n\013rewardOrder\030\003 \003(\005\0227\n\013o" +
+      "rderRecord\030\004 \003(\0132\".com.trans.pixel.proto" +
+      "c.KaifuOrder\0223\n\006reward\030\005 \003(\0132#.com.trans" +
+      ".pixel.protoc.RewardOrder\")\n\033RequestAchi",
+      "eveRewardCommand\022\n\n\002id\030\001 \002(\005\"\033\n\031RequestA" +
+      "chieveListCommand\"V\n\032ResponseAchieveList" +
+      "Command\0228\n\013userAchieve\030\001 \003(\0132#.com.trans" +
+      ".pixel.protoc.UserAchieve\"8\n\033RequestRich" +
+      "angRewardCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002 " +
+      "\002(\005\"\033\n\031RequestRichangListCommand\"V\n\032Resp" +
+      "onseRichangListCommand\0228\n\013userRichang\030\001 " +
+      "\003(\0132#.com.trans.pixel.protoc.UserRichang" +
+      "\"\036\n\034RequestKaifu2ActivityCommand\"w\n\035Resp" +
+      "onseKaifu2ActivityCommand\0220\n\004rank\030\001 \003(\0132",
+      "\".com.trans.pixel.protoc.Kaifu2Rank\022\017\n\007a" +
+      "ccRcPs\030\002 \002(\005\022\023\n\013accRcPsRwRc\030\003 \002(\005\"6\n\031Req" +
+      "uestKaifuRewardCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005or" +
+      "der\030\002 \002(\005\"R\n\032ResponseKaifuRewardCommand\022" +
+      "4\n\tuserKaifu\030\001 \003(\0132!.com.trans.pixel.pro" +
+      "toc.UserKaifu\"\031\n\027RequestKaifuListCommand" +
+      "\"\274\001\n\030ResponseKaifuListCommand\0224\n\tuserKai" +
+      "fu\030\001 \003(\0132!.com.trans.pixel.protoc.UserKa" +
+      "ifu\0220\n\004rank\030\002 \003(\0132\".com.trans.pixel.prot" +
+      "oc.Kaifu2Rank\0228\n\013userRichang\030\003 \003(\0132#.com",
+      ".trans.pixel.protoc.UserRichang\"\"\n\022Reque" +
+      "stRankCommand\022\014\n\004type\030\001 \002(\005\"I\n\023ResponseR" +
+      "ankCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.UserRank\"O\n\023LotteryActivit" +
+      "yList\0228\n\007lottery\030\001 \003(\0132\'.com.trans.pixel" +
+      ".protoc.LotteryActivity\"\300\001\n\017LotteryActiv" +
+      "ity\022\014\n\004type\030\001 \002(\005\022\014\n\004cost\030\002 \002(\005\022\r\n\005count" +
+      "\030\003 \002(\005\022\r\n\005judge\030\004 \002(\005\022\021\n\tstarttime\030\005 \002(\t" +
+      "\022\017\n\007endtime\030\006 \002(\t\0221\n\004item\030\007 \003(\0132#.com.tr" +
+      "ans.pixel.protoc.LotteryItem\022\020\n\010errordes",
+      "\030\010 \001(\t\022\n\n\002id\030\t \001(\005\"V\n\013LotteryItem\022\n\n\002id\030" +
+      "\001 \002(\005\022\016\n\006itemid\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\016\n\006" +
+      "weight\030\004 \002(\005\022\014\n\004will\030\005 \002(\005\"4\n\025RequestLot" +
+      "teryCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005count\030\002 \001(\005" +
+      "\"B\n\014ActivityList\0222\n\010activity\030\001 \003(\0132 .com" +
+      ".trans.pixel.protoc.Activity\"\312\001\n\010Activit" +
+      "y\022\n\n\002id\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\022\023\n\013targetcou" +
+      "nt\030\003 \002(\005\022\013\n\003des\030\004 \002(\t\022\021\n\tstarttime\030\005 \002(\t" +
+      "\022\017\n\007endtime\030\006 \002(\t\022\024\n\014activitytype\030\007 \002(\005\022" +
+      "2\n\006reward\030\010 \003(\0132\".com.trans.pixel.protoc",
+      ".RewardInfo\022\024\n\014serverfilter\030\t \002(\t\"@\n\016Sev" +
+      "enLoginList\022.\n\002id\030\001 \003(\0132\".com.trans.pixe" +
+      "l.protoc.SevenLogin\"r\n\nSevenLogin\022\n\n\002id\030" +
+      "\001 \001(\r\022\020\n\010targetid\030\002 \001(\r\022\023\n\013targetcount\030\003" +
+      " \001(\r\0221\n\005order\030\004 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.SevenOrder\"Y\n\nSevenOrder\022\r\n\005order\030\001" +
+      " \001(\r\022\016\n\006itemid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\016\n\006c" +
+      "hoose\030\004 \001(\005\022\r\n\005rmbid\030\005 \001(\r\"@\n\rRankvalueL" +
+      "ist\022/\n\004rank\030\001 \003(\0132!.com.trans.pixel.prot" +
+      "oc.Rankvalue\"N\n\tRankvalue\022\014\n\004rank\030\001 \001(\005\022",
+      "\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n" +
+      "\005power\030\005 \001(\002*\325\016\n\rACTIVITY_TYPE\022\024\n\020TYPE_L" +
+      "EIJI_LOGIN\020\001\022\027\n\023TYPE_LEIJI_RECHARGE\020\002\022\031\n" +
+      "\025TYPE_LEIJI_COST_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020" +
+      "\n\014TYPE_LOTTERY\020\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024T" +
+      "YPE_HERO_LEVELUP_50\020\007\022\016\n\nTYPE_LEVEL\020\010\022\017\n" +
+      "\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_LADDER_SUCCESS\020\n\022" +
+      "\033\n\027TYPE_PVP_ATTACK_SUCCESS\020\013\022\023\n\017TYPE_MOJ" +
+      "ING_GET\020\014\022\023\n\017TYPE_REWARDTASK\020\r\022\021\n\rTYPE_S" +
+      "HENYUAN\020\016\022\021\n\rTYPE_WUQI_GET\020\017\022\031\n\025TYPE_EQU",
+      "IP_LEVELUP_10\020\020\022\021\n\rTYPE_PVP_HELP\020\021\022\027\n\023TY" +
+      "PE_DANBI_RECHARGE\020\022\022\024\n\020TYPE_HERO_RAREUP\020" +
+      "\023\022\027\n\022TYPE_TEAMUP_ARUISI\020\220N\022\037\n\032TYPE_ARUIS" +
+      "I_SKILL1_LEVELUP\020\221N\022\037\n\032TYPE_ARUISI_EQUIP" +
+      "_ADD10001\020\222N\022\037\n\032TYPE_ARUISI_SKILL2_LEVEL" +
+      "UP\020\223N\022\024\n\017TYPE_TASK_LEVEL\020\364N\022\031\n\024TYPE_TEAM" +
+      "_UPCHAFENQI\020\330O\022\033\n\026TYPE_PVP_BUFF_LEVELUP5" +
+      "\020\274P\022\030\n\023TYPE_EQUIP_LEVELUP1\020\241Q\022\030\n\023TYPE_EQ" +
+      "UIP_LEVELUP3\020\243Q\022\030\n\023TYPE_EQUIP_LEVELUP5\020\245" +
+      "Q\022\031\n\024TYPE_EQUIP_LEVELUP10\020\252Q\022\031\n\024TYPE_UPH",
+      "ERO_QUALITY1\020\205R\022\031\n\024TYPE_UPHERO_QUALITY2\020" +
+      "\206R\022\031\n\024TYPE_UPHERO_QUALITY3\020\207R\022\031\n\024TYPE_UP" +
+      "HERO_QUALITY4\020\210R\022\031\n\024TYPE_UPHERO_QUALITY5" +
+      "\020\211R\022\027\n\022TYPE_HERO_LEVELUP5\020\355R\022\030\n\023TYPE_HER" +
+      "O_LEVELUP10\020\362R\022\030\n\023TYPE_HERO_LEVELUP15\020\367R" +
+      "\022\030\n\023TYPE_HERO_LEVELUP20\020\374R\022\030\n\023TYPE_HERO_" +
+      "LEVELUP22\020\376R\022\030\n\023TYPE_HERO_LEVELUP25\020\201S\022\030" +
+      "\n\023TYPE_HERO_LEVELUP30\020\206S\022\030\n\023TYPE_HERO_LE" +
+      "VELUP35\020\213S\022\030\n\023TYPE_HERO_LEVELUP40\020\220S\022\030\n\023" +
+      "TYPE_HERO_LEVELUP45\020\225S\022\030\n\023TYPE_HERO_LEVE",
+      "LUP50\020\232S\022\030\n\023TYPE_HERO_LEVELUP55\020\237S\022\030\n\023TY" +
+      "PE_HERO_LEVELUP60\020\244S\022\025\n\020TYPE_FIGHT_FUBEN" +
+      "\020\314S\022\026\n\021TYPE_HERO_RAREUP1\020\261T\022\026\n\021TYPE_HERO" +
+      "_RAREUP2\020\262T\022\026\n\021TYPE_HERO_RAREUP3\020\263T\022\026\n\021T" +
+      "YPE_HERO_RAREUP5\020\265T\022\026\n\021TYPE_HERO_RAREUP7" +
+      "\020\267T\022\026\n\021TYPE_HERO_RAREUP9\020\271T\022\027\n\022TYPE_HERO" +
+      "_RAREUP11\020\273T\022\027\n\022TYPE_HERO_RAREUP12\020\274T\022\027\n" +
+      "\022TYPE_HERO_RAREUP13\020\275T\022\027\n\022TYPE_HERO_RARE" +
+      "UP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELUP\020\224U\022\031\n\024TYP" +
+      "E_ZHUJUE_LEVELUP5\020\375U\022\026\n\021TYPE_FETTERS_OPE",
+      "N\020\334V\022\021\n\rTYPE_GET_HERO\020y\022\031\n\025TYPE_TASK_HER" +
+      "O_RAREUP\020z\022\036\n\031TYPE_EVENT_COMPLETE_DAILY\020" +
+      "\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312\001\022\026\n\021TYP" +
+      "E_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI_MINE\020\314\001" +
+      "\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYPE_SKILL_" +
+      "LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020\317\001\022\026\n\021TY" +
+      "PE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTONGSHOP_BU" +
+      "Y\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022\023\n\016TYPE_" +
+      "DAILY_ALL\020\323\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34567,19 +34861,19 @@ public final class ActivityProto {
           internal_static_com_trans_pixel_protoc_Kaifu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Kaifu_descriptor,
-              new java.lang.String[] { "Id", "Activity", "Targetid", "Lasttime", "Order", "Cycle", });
+              new java.lang.String[] { "Id", "Activity", "Targetid", "Lasttime", "Order", "Cycle", "Consumeid", });
           internal_static_com_trans_pixel_protoc_KaifuOrder_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_KaifuOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_KaifuOrder_descriptor,
-              new java.lang.String[] { "Order", "Description", "Targetcount", "Targetcount1", "Consumeid", "Limit", "Reward", });
+              new java.lang.String[] { "Order", "Description", "Targetcount", "Targetcount1", "Reward", });
           internal_static_com_trans_pixel_protoc_UserKaifu_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_UserKaifu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserKaifu_descriptor,
-              new java.lang.String[] { "Type", "CompleteCount", "RewardOrder", "OrderRecord", });
+              new java.lang.String[] { "Type", "CompleteCount", "RewardOrder", "OrderRecord", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_fieldAccessorTable = new
