@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.UserInfoProto.DaguanList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
 import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
+import com.trans.pixel.protoc.UserInfoProto.EventRandom;
 import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
 import com.trans.pixel.protoc.UserInfoProto.EventRandomsList;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
@@ -219,9 +220,26 @@ public class LevelRedisService extends RedisService {
 							Event.Builder builder = Event.newBuilder(event.build());
 							builder.setOrder(currentIndex()+i);
 							builder.setDaguan(userLevel.getLootDaguan());
-							EventLevel level = nextEventLevel(userLevel);
-							builder.setLevel(level.getLevel());
-							builder.setCount(level.getCount());
+							EventRandom random = nextEventLevel(userLevel);
+							switch(user.getUserType()) {
+							case 4:
+								builder.setLevel(random.getLevel4());
+								builder.setCount(random.getCount4());
+								break;
+							case 3:
+								builder.setLevel(random.getLevel3());
+								builder.setCount(random.getCount3());
+								break;
+							case 2:
+								builder.setLevel(random.getLevel2());
+								builder.setCount(random.getCount2());
+								break;
+							case 1:
+							default:
+								builder.setLevel(random.getLevel1());
+								builder.setCount(random.getCount1());
+								break;
+							}
 							builder.clearWeight();
 							saveEvent(user, builder.build());
 							event.setCount(event.getCount()-1);
@@ -502,10 +520,10 @@ public class LevelRedisService extends RedisService {
 		return map;
 	}
 	
-	public EventLevel nextEventLevel(UserLevelBean userLevel) {
+	public EventRandom nextEventLevel(UserLevelBean userLevel) {
 		userLevel.setEventRandom(userLevel.getEventRandom()+1);
 		String value = hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
-		EventLevel.Builder builder = EventLevel.newBuilder();
+		EventRandom.Builder builder = EventRandom.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		value = get(RedisKey.EVENTLEVELSEED_CONFIG);
@@ -528,12 +546,19 @@ public class LevelRedisService extends RedisService {
 		parseXml(xml, list);
 		for(EventRandoms.Builder randoms : builder.getIdBuilderList()){
 			int i = 0;
-			for(EventLevel.Builder eventlevel : randoms.getOrderBuilderList()){
+			for(EventRandom.Builder eventlevel : randoms.getOrderBuilderList()){
 				i++;
 				for(EventLevel level : list.getLevelList()){
-					if(level.getLevel() == eventlevel.getLevel())
-						hput(RedisKey.EVENTLEVEL_CONFIG, randoms.getId()*100+i+"", formatJson(level));
+					if(level.getLevel() == eventlevel.getLevel1())
+						eventlevel.setCount1(level.getCount());
+					if(level.getLevel() == eventlevel.getLevel2())
+						eventlevel.setCount2(level.getCount());
+					if(level.getLevel() == eventlevel.getLevel3())
+						eventlevel.setCount3(level.getCount());
+					if(level.getLevel() == eventlevel.getLevel4())
+						eventlevel.setCount4(level.getCount());
 				}
+				hput(RedisKey.EVENTLEVEL_CONFIG, randoms.getId()*100+i+"", formatJson(eventlevel.build()));
 			}
 			randoms.clearOrder();
 			randoms.setId(randoms.getId()*100+1);

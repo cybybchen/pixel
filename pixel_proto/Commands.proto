@@ -2604,9 +2604,20 @@ message EventLevel {
 message EventLevelList {
 	repeated EventLevel level = 1;
 }
+
+message EventRandom {
+	optional int32 level1 = 1;
+        optional int32 count1 = 2;
+	optional int32 level2 = 3;
+        optional int32 count2 = 4;
+	optional int32 level3 = 5;
+        optional int32 count3 = 6;
+	optional int32 level4 = 7;
+        optional int32 count4 = 8;
+}
 message EventRandoms {
 	optional int32 id = 1;
-	repeated EventLevel order = 2;
+	repeated EventRandom order = 2;
 }
 message EventRandomsList {
 	repeated EventRandoms id = 1;

@@ -14901,6 +14901,969 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventLevelList)
   }
 
+  public interface EventRandomOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 level1 = 1;
+    /**
+     * <code>optional int32 level1 = 1;</code>
+     */
+    boolean hasLevel1();
+    /**
+     * <code>optional int32 level1 = 1;</code>
+     */
+    int getLevel1();
+
+    // optional int32 count1 = 2;
+    /**
+     * <code>optional int32 count1 = 2;</code>
+     */
+    boolean hasCount1();
+    /**
+     * <code>optional int32 count1 = 2;</code>
+     */
+    int getCount1();
+
+    // optional int32 level2 = 3;
+    /**
+     * <code>optional int32 level2 = 3;</code>
+     */
+    boolean hasLevel2();
+    /**
+     * <code>optional int32 level2 = 3;</code>
+     */
+    int getLevel2();
+
+    // optional int32 count2 = 4;
+    /**
+     * <code>optional int32 count2 = 4;</code>
+     */
+    boolean hasCount2();
+    /**
+     * <code>optional int32 count2 = 4;</code>
+     */
+    int getCount2();
+
+    // optional int32 level3 = 5;
+    /**
+     * <code>optional int32 level3 = 5;</code>
+     */
+    boolean hasLevel3();
+    /**
+     * <code>optional int32 level3 = 5;</code>
+     */
+    int getLevel3();
+
+    // optional int32 count3 = 6;
+    /**
+     * <code>optional int32 count3 = 6;</code>
+     */
+    boolean hasCount3();
+    /**
+     * <code>optional int32 count3 = 6;</code>
+     */
+    int getCount3();
+
+    // optional int32 level4 = 7;
+    /**
+     * <code>optional int32 level4 = 7;</code>
+     */
+    boolean hasLevel4();
+    /**
+     * <code>optional int32 level4 = 7;</code>
+     */
+    int getLevel4();
+
+    // optional int32 count4 = 8;
+    /**
+     * <code>optional int32 count4 = 8;</code>
+     */
+    boolean hasCount4();
+    /**
+     * <code>optional int32 count4 = 8;</code>
+     */
+    int getCount4();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.EventRandom}
+   */
+  public static final class EventRandom extends
+      com.google.protobuf.GeneratedMessage
+      implements EventRandomOrBuilder {
+    // Use EventRandom.newBuilder() to construct.
+    private EventRandom(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private EventRandom(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final EventRandom defaultInstance;
+    public static EventRandom getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public EventRandom getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EventRandom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              level1_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count1_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              level2_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              count2_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              level3_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              count3_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              level4_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              count4_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventRandom_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventRandom_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UserInfoProto.EventRandom.class, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<EventRandom> PARSER =
+        new com.google.protobuf.AbstractParser<EventRandom>() {
+      public EventRandom parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new EventRandom(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EventRandom> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 level1 = 1;
+    public static final int LEVEL1_FIELD_NUMBER = 1;
+    private int level1_;
+    /**
+     * <code>optional int32 level1 = 1;</code>
+     */
+    public boolean hasLevel1() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 level1 = 1;</code>
+     */
+    public int getLevel1() {
+      return level1_;
+    }
+
+    // optional int32 count1 = 2;
+    public static final int COUNT1_FIELD_NUMBER = 2;
+    private int count1_;
+    /**
+     * <code>optional int32 count1 = 2;</code>
+     */
+    public boolean hasCount1() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 count1 = 2;</code>
+     */
+    public int getCount1() {
+      return count1_;
+    }
+
+    // optional int32 level2 = 3;
+    public static final int LEVEL2_FIELD_NUMBER = 3;
+    private int level2_;
+    /**
+     * <code>optional int32 level2 = 3;</code>
+     */
+    public boolean hasLevel2() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 level2 = 3;</code>
+     */
+    public int getLevel2() {
+      return level2_;
+    }
+
+    // optional int32 count2 = 4;
+    public static final int COUNT2_FIELD_NUMBER = 4;
+    private int count2_;
+    /**
+     * <code>optional int32 count2 = 4;</code>
+     */
+    public boolean hasCount2() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 count2 = 4;</code>
+     */
+    public int getCount2() {
+      return count2_;
+    }
+
+    // optional int32 level3 = 5;
+    public static final int LEVEL3_FIELD_NUMBER = 5;
+    private int level3_;
+    /**
+     * <code>optional int32 level3 = 5;</code>
+     */
+    public boolean hasLevel3() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 level3 = 5;</code>
+     */
+    public int getLevel3() {
+      return level3_;
+    }
+
+    // optional int32 count3 = 6;
+    public static final int COUNT3_FIELD_NUMBER = 6;
+    private int count3_;
+    /**
+     * <code>optional int32 count3 = 6;</code>
+     */
+    public boolean hasCount3() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 count3 = 6;</code>
+     */
+    public int getCount3() {
+      return count3_;
+    }
+
+    // optional int32 level4 = 7;
+    public static final int LEVEL4_FIELD_NUMBER = 7;
+    private int level4_;
+    /**
+     * <code>optional int32 level4 = 7;</code>
+     */
+    public boolean hasLevel4() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 level4 = 7;</code>
+     */
+    public int getLevel4() {
+      return level4_;
+    }
+
+    // optional int32 count4 = 8;
+    public static final int COUNT4_FIELD_NUMBER = 8;
+    private int count4_;
+    /**
+     * <code>optional int32 count4 = 8;</code>
+     */
+    public boolean hasCount4() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 count4 = 8;</code>
+     */
+    public int getCount4() {
+      return count4_;
+    }
+
+    private void initFields() {
+      level1_ = 0;
+      count1_ = 0;
+      level2_ = 0;
+      count2_ = 0;
+      level3_ = 0;
+      count3_ = 0;
+      level4_ = 0;
+      count4_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, level1_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count1_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, level2_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, count2_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, level3_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, count3_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(7, level4_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(8, count4_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, level1_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count1_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, level2_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, count2_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, level3_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, count3_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, level4_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, count4_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventRandom parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.EventRandom prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.EventRandom}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventRandom_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventRandom_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UserInfoProto.EventRandom.class, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UserInfoProto.EventRandom.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        level1_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count1_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level2_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count2_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        level3_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        count3_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        level4_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        count4_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventRandom_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UserInfoProto.EventRandom.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom build() {
+        com.trans.pixel.protoc.UserInfoProto.EventRandom result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom buildPartial() {
+        com.trans.pixel.protoc.UserInfoProto.EventRandom result = new com.trans.pixel.protoc.UserInfoProto.EventRandom(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.level1_ = level1_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count1_ = count1_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.level2_ = level2_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.count2_ = count2_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.level3_ = level3_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.count3_ = count3_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.level4_ = level4_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.count4_ = count4_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UserInfoProto.EventRandom) {
+          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.EventRandom)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EventRandom other) {
+        if (other == com.trans.pixel.protoc.UserInfoProto.EventRandom.getDefaultInstance()) return this;
+        if (other.hasLevel1()) {
+          setLevel1(other.getLevel1());
+        }
+        if (other.hasCount1()) {
+          setCount1(other.getCount1());
+        }
+        if (other.hasLevel2()) {
+          setLevel2(other.getLevel2());
+        }
+        if (other.hasCount2()) {
+          setCount2(other.getCount2());
+        }
+        if (other.hasLevel3()) {
+          setLevel3(other.getLevel3());
+        }
+        if (other.hasCount3()) {
+          setCount3(other.getCount3());
+        }
+        if (other.hasLevel4()) {
+          setLevel4(other.getLevel4());
+        }
+        if (other.hasCount4()) {
+          setCount4(other.getCount4());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UserInfoProto.EventRandom parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.EventRandom) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 level1 = 1;
+      private int level1_ ;
+      /**
+       * <code>optional int32 level1 = 1;</code>
+       */
+      public boolean hasLevel1() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 level1 = 1;</code>
+       */
+      public int getLevel1() {
+        return level1_;
+      }
+      /**
+       * <code>optional int32 level1 = 1;</code>
+       */
+      public Builder setLevel1(int value) {
+        bitField0_ |= 0x00000001;
+        level1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level1 = 1;</code>
+       */
+      public Builder clearLevel1() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        level1_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count1 = 2;
+      private int count1_ ;
+      /**
+       * <code>optional int32 count1 = 2;</code>
+       */
+      public boolean hasCount1() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 count1 = 2;</code>
+       */
+      public int getCount1() {
+        return count1_;
+      }
+      /**
+       * <code>optional int32 count1 = 2;</code>
+       */
+      public Builder setCount1(int value) {
+        bitField0_ |= 0x00000002;
+        count1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count1 = 2;</code>
+       */
+      public Builder clearCount1() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count1_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level2 = 3;
+      private int level2_ ;
+      /**
+       * <code>optional int32 level2 = 3;</code>
+       */
+      public boolean hasLevel2() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 level2 = 3;</code>
+       */
+      public int getLevel2() {
+        return level2_;
+      }
+      /**
+       * <code>optional int32 level2 = 3;</code>
+       */
+      public Builder setLevel2(int value) {
+        bitField0_ |= 0x00000004;
+        level2_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level2 = 3;</code>
+       */
+      public Builder clearLevel2() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        level2_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count2 = 4;
+      private int count2_ ;
+      /**
+       * <code>optional int32 count2 = 4;</code>
+       */
+      public boolean hasCount2() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 count2 = 4;</code>
+       */
+      public int getCount2() {
+        return count2_;
+      }
+      /**
+       * <code>optional int32 count2 = 4;</code>
+       */
+      public Builder setCount2(int value) {
+        bitField0_ |= 0x00000008;
+        count2_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count2 = 4;</code>
+       */
+      public Builder clearCount2() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count2_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level3 = 5;
+      private int level3_ ;
+      /**
+       * <code>optional int32 level3 = 5;</code>
+       */
+      public boolean hasLevel3() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 level3 = 5;</code>
+       */
+      public int getLevel3() {
+        return level3_;
+      }
+      /**
+       * <code>optional int32 level3 = 5;</code>
+       */
+      public Builder setLevel3(int value) {
+        bitField0_ |= 0x00000010;
+        level3_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level3 = 5;</code>
+       */
+      public Builder clearLevel3() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        level3_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count3 = 6;
+      private int count3_ ;
+      /**
+       * <code>optional int32 count3 = 6;</code>
+       */
+      public boolean hasCount3() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 count3 = 6;</code>
+       */
+      public int getCount3() {
+        return count3_;
+      }
+      /**
+       * <code>optional int32 count3 = 6;</code>
+       */
+      public Builder setCount3(int value) {
+        bitField0_ |= 0x00000020;
+        count3_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count3 = 6;</code>
+       */
+      public Builder clearCount3() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        count3_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level4 = 7;
+      private int level4_ ;
+      /**
+       * <code>optional int32 level4 = 7;</code>
+       */
+      public boolean hasLevel4() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 level4 = 7;</code>
+       */
+      public int getLevel4() {
+        return level4_;
+      }
+      /**
+       * <code>optional int32 level4 = 7;</code>
+       */
+      public Builder setLevel4(int value) {
+        bitField0_ |= 0x00000040;
+        level4_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level4 = 7;</code>
+       */
+      public Builder clearLevel4() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        level4_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count4 = 8;
+      private int count4_ ;
+      /**
+       * <code>optional int32 count4 = 8;</code>
+       */
+      public boolean hasCount4() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 count4 = 8;</code>
+       */
+      public int getCount4() {
+        return count4_;
+      }
+      /**
+       * <code>optional int32 count4 = 8;</code>
+       */
+      public Builder setCount4(int value) {
+        bitField0_ |= 0x00000080;
+        count4_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count4 = 8;</code>
+       */
+      public Builder clearCount4() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        count4_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EventRandom)
+    }
+
+    static {
+      defaultInstance = new EventRandom(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventRandom)
+  }
+
   public interface EventRandomsOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -14914,29 +15877,29 @@ public final class UserInfoProto {
      */
     int getId();
 
-    // repeated .com.trans.pixel.protoc.EventLevel order = 2;
+    // repeated .com.trans.pixel.protoc.EventRandom order = 2;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> 
+    java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom> 
         getOrderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventLevel getOrder(int index);
+    com.trans.pixel.protoc.UserInfoProto.EventRandom getOrder(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
     int getOrderCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder> 
         getOrderOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getOrderOrBuilder(
+    com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder getOrderOrBuilder(
         int index);
   }
   /**
@@ -14997,10 +15960,10 @@ public final class UserInfoProto {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                order_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>();
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventRandom>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              order_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventLevel.PARSER, extensionRegistry));
+              order_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventRandom.PARSER, extensionRegistry));
               break;
             }
           }
@@ -15062,38 +16025,38 @@ public final class UserInfoProto {
       return id_;
     }
 
-    // repeated .com.trans.pixel.protoc.EventLevel order = 2;
+    // repeated .com.trans.pixel.protoc.EventRandom order = 2;
     public static final int ORDER_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> order_;
+    private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom> order_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getOrderList() {
+    public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom> getOrderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder> 
         getOrderOrBuilderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
     public int getOrderCount() {
       return order_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventLevel getOrder(int index) {
+    public com.trans.pixel.protoc.UserInfoProto.EventRandom getOrder(int index) {
       return order_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getOrderOrBuilder(
+    public com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder getOrderOrBuilder(
         int index) {
       return order_.get(index);
     }
@@ -15408,23 +16371,23 @@ public final class UserInfoProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.EventLevel order = 2;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> order_ =
+      // repeated .com.trans.pixel.protoc.EventRandom order = 2;
+      private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom> order_ =
         java.util.Collections.emptyList();
       private void ensureOrderIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          order_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>(order_);
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventRandom>(order_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> orderBuilder_;
+          com.trans.pixel.protoc.UserInfoProto.EventRandom, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder, com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder> orderBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getOrderList() {
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom> getOrderList() {
         if (orderBuilder_ == null) {
           return java.util.Collections.unmodifiableList(order_);
         } else {
@@ -15432,7 +16395,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public int getOrderCount() {
         if (orderBuilder_ == null) {
@@ -15442,9 +16405,9 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel getOrder(int index) {
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom getOrder(int index) {
         if (orderBuilder_ == null) {
           return order_.get(index);
         } else {
@@ -15452,10 +16415,10 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder setOrder(
-          int index, com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
+          int index, com.trans.pixel.protoc.UserInfoProto.EventRandom value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15469,10 +16432,10 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder setOrder(
-          int index, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.set(index, builderForValue.build());
@@ -15483,9 +16446,9 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public Builder addOrder(com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
+      public Builder addOrder(com.trans.pixel.protoc.UserInfoProto.EventRandom value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15499,10 +16462,10 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder addOrder(
-          int index, com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
+          int index, com.trans.pixel.protoc.UserInfoProto.EventRandom value) {
         if (orderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -15516,10 +16479,10 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder addOrder(
-          com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
+          com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.add(builderForValue.build());
@@ -15530,10 +16493,10 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder addOrder(
-          int index, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder builderForValue) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           order_.add(index, builderForValue.build());
@@ -15544,10 +16507,10 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder addAllOrder(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventLevel> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventRandom> values) {
         if (orderBuilder_ == null) {
           ensureOrderIsMutable();
           super.addAll(values, order_);
@@ -15558,7 +16521,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
@@ -15571,7 +16534,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
       public Builder removeOrder(int index) {
         if (orderBuilder_ == null) {
@@ -15584,16 +16547,16 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder getOrderBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder getOrderBuilder(
           int index) {
         return getOrderFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getOrderOrBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder getOrderOrBuilder(
           int index) {
         if (orderBuilder_ == null) {
           return order_.get(index);  } else {
@@ -15601,9 +16564,9 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder> 
            getOrderOrBuilderList() {
         if (orderBuilder_ != null) {
           return orderBuilder_.getMessageOrBuilderList();
@@ -15612,33 +16575,33 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addOrderBuilder() {
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder addOrderBuilder() {
         return getOrderFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UserInfoProto.EventLevel.getDefaultInstance());
+            com.trans.pixel.protoc.UserInfoProto.EventRandom.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addOrderBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder addOrderBuilder(
           int index) {
         return getOrderFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UserInfoProto.EventLevel.getDefaultInstance());
+            index, com.trans.pixel.protoc.UserInfoProto.EventRandom.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventRandom order = 2;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder> 
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder> 
            getOrderBuilderList() {
         return getOrderFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
+          com.trans.pixel.protoc.UserInfoProto.EventRandom, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder, com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder> 
           getOrderFieldBuilder() {
         if (orderBuilder_ == null) {
           orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder>(
+              com.trans.pixel.protoc.UserInfoProto.EventRandom, com.trans.pixel.protoc.UserInfoProto.EventRandom.Builder, com.trans.pixel.protoc.UserInfoProto.EventRandomOrBuilder>(
                   order_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -26689,6 +27652,11 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EventLevelList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_EventRandom_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_EventRandom_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_EventRandoms_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -26818,42 +27786,46 @@ public final class UserInfoProto {
       "otoc.Daguan\"*\n\nEventLevel\022\r\n\005level\030\001 \001(\005" +
       "\022\r\n\005count\030\002 \001(\005\"C\n\016EventLevelList\0221\n\005lev",
       "el\030\001 \003(\0132\".com.trans.pixel.protoc.EventL" +
-      "evel\"M\n\014EventRandoms\022\n\n\002id\030\001 \001(\005\0221\n\005orde" +
-      "r\030\002 \003(\0132\".com.trans.pixel.protoc.EventLe" +
-      "vel\"D\n\020EventRandomsList\0220\n\002id\030\001 \003(\0132$.co" +
-      "m.trans.pixel.protoc.EventRandoms\"v\n\013Eve" +
-      "ntReward\022\020\n\010rewardid\030\001 \001(\005\022\023\n\013rewardcoun" +
-      "t\030\002 \001(\005\022\024\n\014rewardcount1\030\003 \001(\005\022\024\n\014rewardw" +
-      "eight\030\004 \001(\005\022\024\n\014rewarddouble\030\005 \001(\005\"\227\002\n\005Ev" +
-      "ent\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n\006d" +
-      "aguan\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\022\013\n\003des\030\005 \001(\t\022\016",
-      "\n\006weight\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022\016\n\006costid\030\010" +
-      " \001(\005\022\021\n\tcostcount\030\t \001(\005\0223\n\006reward\030\n \003(\0132" +
-      "#.com.trans.pixel.protoc.EventReward\022\020\n\010" +
-      "targetid\030\013 \001(\005\022\r\n\005level\030\014 \001(\005\022\r\n\005count\030\r" +
-      " \001(\005\022\014\n\004call\030\016 \001(\005\022\017\n\007frontid\030\017 \001(\005\"U\n\tA" +
-      "reaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.co" +
-      "m.trans.pixel.protoc.Event\022\016\n\006weight\030\003 \001" +
-      "(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.tr" +
-      "ans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005or" +
-      "der\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixe",
-      "l.protoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 " +
-      "\003(\0132\034.com.trans.pixel.protoc.Loot\"&\n\030Req" +
-      "uestLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Req" +
-      "uestEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005orde" +
-      "r\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005event" +
-      "\030\001 \001(\0132\035.com.trans.pixel.protoc.Event\"\037\n" +
-      "\035RequestLevelLootResultCommand\"j\n\031Reques" +
-      "tEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010te" +
-      "amInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030" +
-      "\004 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResul",
-      "tCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\"\252\001\n\030ResponseLevelLo" +
-      "otCommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftC" +
-      "ount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTi" +
-      "me\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003" +
-      "(\0132\035.com.trans.pixel.protoc.Event\"\030\n\026Req" +
-      "uestEventBuyCommand"
+      "evel\"\215\001\n\013EventRandom\022\016\n\006level1\030\001 \001(\005\022\016\n\006" +
+      "count1\030\002 \001(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006count2\030\004" +
+      " \001(\005\022\016\n\006level3\030\005 \001(\005\022\016\n\006count3\030\006 \001(\005\022\016\n\006" +
+      "level4\030\007 \001(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014EventRan" +
+      "doms\022\n\n\002id\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#.com.tr" +
+      "ans.pixel.protoc.EventRandom\"D\n\020EventRan" +
+      "domsList\0220\n\002id\030\001 \003(\0132$.com.trans.pixel.p" +
+      "rotoc.EventRandoms\"v\n\013EventReward\022\020\n\010rew" +
+      "ardid\030\001 \001(\005\022\023\n\013rewardcount\030\002 \001(\005\022\024\n\014rewa",
+      "rdcount1\030\003 \001(\005\022\024\n\014rewardweight\030\004 \001(\005\022\024\n\014" +
+      "rewarddouble\030\005 \001(\005\"\227\002\n\005Event\022\r\n\005order\030\001 " +
+      "\001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n\006daguan\030\003 \001(\005\022\014\n\004" +
+      "name\030\004 \001(\t\022\013\n\003des\030\005 \001(\t\022\016\n\006weight\030\006 \001(\005\022" +
+      "\014\n\004type\030\007 \001(\005\022\016\n\006costid\030\010 \001(\005\022\021\n\tcostcou" +
+      "nt\030\t \001(\005\0223\n\006reward\030\n \003(\0132#.com.trans.pix" +
+      "el.protoc.EventReward\022\020\n\010targetid\030\013 \001(\005\022" +
+      "\r\n\005level\030\014 \001(\005\022\r\n\005count\030\r \001(\005\022\014\n\004call\030\016 " +
+      "\001(\005\022\017\n\007frontid\030\017 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030" +
+      "\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.p",
+      "rotoc.Event\022\016\n\006weight\030\003 \001(\005\">\n\rAreaEvent" +
+      "List\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.AreaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004it" +
+      "em\030\002 \003(\0132\".com.trans.pixel.protoc.Reward" +
+      "Info\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans" +
+      ".pixel.protoc.Loot\"&\n\030RequestLevelStartC" +
+      "ommand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventComman" +
+      "d\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Resp" +
+      "onseEventCommand\022,\n\005event\030\001 \001(\0132\035.com.tr" +
+      "ans.pixel.protoc.Event\"\037\n\035RequestLevelLo",
+      "otResultCommand\"j\n\031RequestEventResultCom" +
+      "mand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n" +
+      "\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 " +
+      "\001(\010\"P\n\032ResponseEventResultCommand\0222\n\006rew" +
+      "ard\030\001 \003(\0132\".com.trans.pixel.protoc.Rewar" +
+      "dInfo\"\252\001\n\030ResponseLevelLootCommand\022\024\n\014un" +
+      "lockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nl" +
+      "ootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teve" +
+      "ntTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans." +
+      "pixel.protoc.Event\"\030\n\026RequestEventBuyCom",
+      "mand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -26986,98 +27958,104 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventLevelList_descriptor,
               new java.lang.String[] { "Level", });
-          internal_static_com_trans_pixel_protoc_EventRandoms_descriptor =
+          internal_static_com_trans_pixel_protoc_EventRandom_descriptor =
             getDescriptor().getMessageTypes().get(21);
+          internal_static_com_trans_pixel_protoc_EventRandom_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_EventRandom_descriptor,
+              new java.lang.String[] { "Level1", "Count1", "Level2", "Count2", "Level3", "Count3", "Level4", "Count4", });
+          internal_static_com_trans_pixel_protoc_EventRandoms_descriptor =
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_EventRandoms_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventRandoms_descriptor,
               new java.lang.String[] { "Id", "Order", });
           internal_static_com_trans_pixel_protoc_EventRandomsList_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_EventRandomsList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventRandomsList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_EventReward_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventReward_descriptor,
               new java.lang.String[] { "Rewardid", "Rewardcount", "Rewardcount1", "Rewardweight", "Rewarddouble", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
               new java.lang.String[] { "Order", "Eventid", "Daguan", "Name", "Des", "Weight", "Type", "Costid", "Costcount", "Reward", "Targetid", "Level", "Count", "Call", "Frontid", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Order", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "Event", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,
