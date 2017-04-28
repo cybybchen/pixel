@@ -82,7 +82,7 @@ public class LevelRedisService extends RedisService {
 					saveEventReady(userId, event.build());
 				}
 			}
-			productMainEvent(userId, userLevel);
+			productMainEvent(userLevel);
 		}else{
 			Daguan.Builder daguan = getDaguan(userLevel.getLootDaguan());
 			userLevel.setCoin(daguan.getGold());
@@ -135,7 +135,7 @@ public class LevelRedisService extends RedisService {
 //				map.put(event.getOrder(), event);
 			}
 		}
-		productMainEvent(user, userLevel);
+		productMainEvent(userLevel);
 		keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		for(String value : keyvalue.values()){
 			Event.Builder event = Event.newBuilder();
@@ -163,10 +163,10 @@ public class LevelRedisService extends RedisService {
 	// 	}
 	// 	return false;
 	// }
-	public void productMainEvent(UserBean user, UserLevelBean userLevel){
-		productMainEvent(user.getId(), userLevel);
-	}
-	public void productMainEvent(long userId, UserLevelBean userLevel){
+//	public void productMainEvent(UserBean user, UserLevelBean userLevel){
+//		productMainEvent(user.getId(), userLevel);
+//	}
+	public void productMainEvent(UserLevelBean userLevel){
 		Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		for(String value : keyvalue.values()){
@@ -174,14 +174,14 @@ public class LevelRedisService extends RedisService {
 			if(parseJson(value, event))
 				eventmap.put(event.getOrder(), event);
 		}
-		keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX + userId);
+		keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId());
 		for(String value : keyvalue.values()) {
 			Event.Builder builder = Event.newBuilder();
 			parseJson(value, builder);
-			if(builder.getFrontid() == 0 || hasCompleteEvent(userId, builder.getFrontid(), userLevel, eventmap)) {
-				hdelete(RedisKey.USEREVENTREADY_PREFIX + userId, builder.getOrder()+"");
+			if(builder.getFrontid() == 0 || hasCompleteEvent(userLevel.getUserId(), builder.getFrontid(), userLevel, eventmap)) {
+				hdelete(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId(), builder.getOrder()+"");
 //				builder.setOrder(currentIndex()+(i++));
-				saveEvent(userId, builder.build());
+				saveEvent(userLevel.getUserId(), builder.build());
 			}
 		}
 	}

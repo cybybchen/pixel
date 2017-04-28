@@ -130,7 +130,7 @@ public class LevelCommandService extends BaseCommandService {
 						redis.saveEventReady(user, event.build());
 					}
 				}
-				redis.productMainEvent(user, userLevel);
+				redis.productMainEvent(userLevel);
 				
 				/**
 				 * 过关的活动
