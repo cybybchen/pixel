@@ -647,7 +647,7 @@ public class ActivityService {
 			if (activityorder.getLimit() > 0 && rewardOrderBuilder.getCount() >= activityorder.getLimit())
 				return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 			
-			if (!costService.cost(user, activityorder.getConsumeid(), activityorder.getTargetcount())) {
+			if (!costService.cost(user, kaifu.getConsumeid(), activityorder.getTargetcount())) {
 				return ErrorConst.NOT_ENOUGH_PROP;
 			}
 			
