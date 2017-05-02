@@ -83,7 +83,15 @@ public class TaskService {
 				if (isAdded)
 					ut.setProcess(ut.getProcess() + count);
 				else if (targetId == ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE || targetId == ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE) {
-					ut.addHeroid(count);
+					boolean hasAdded = false;
+					for (int heroId : ut.getHeroidList()) {
+						if (heroId == count) {
+							hasAdded = true;
+							break;
+						}
+					}
+					if (!hasAdded)
+						ut.addHeroid(count);
 				} /*else if (targetId == ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE) {
 					for (TaskOrder taskOrder : task.getOrderList()) {
 						if (taskOrder.getTargetcount() == count) {
