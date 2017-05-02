@@ -420,7 +420,8 @@ public class UserTeamService {
 		for (HeroInfo heroInfo : heroList) 
 			team = team + "," + heroInfo.getHeroId();
 		
-		team = team.substring(1);
+		if (team.length() > 1)
+			team = team.substring(1);
 		
 		return team;
 	}
