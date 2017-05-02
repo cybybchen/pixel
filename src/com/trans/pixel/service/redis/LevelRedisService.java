@@ -176,10 +176,14 @@ public class LevelRedisService extends RedisService {
 //		productMainEvent(user.getId(), userLevel);
 //	}
 	public void productMainEvent(UserBean user, int eventid){
-		Event event = getEventReady(user, eventid);
-		if(event != null) {
-			saveEvent(user, event);
-			delEventReady(user, event);
+		Map<String, String> keyvalue = hget(RedisKey.USEREVENTREADY_PREFIX + user.getId());
+		for(String value : keyvalue.values()) {
+			Event.Builder builder = Event.newBuilder();
+			parseJson(value, builder);
+			if(builder.getCondition() == eventid) {
+				saveEvent(user, builder.build());
+				delEventReady(user, builder.build());
+			}
 		}
 	}
 	public void productMainEvent(UserLevelBean userLevel, Map<Integer, Event.Builder> map){
