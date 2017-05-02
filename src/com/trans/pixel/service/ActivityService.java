@@ -1032,7 +1032,7 @@ public class ActivityService {
 	 */
 	public void addHeroEquip(UserBean user, int heroId, int equipId) {
 		if (heroId == 20 && equipId == 10001)
-			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_EQUIP_ADD10001_VALUE, false);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_EQUIP_ADD10001_VALUE, equipId, false);
 	}
 	
 	/**
