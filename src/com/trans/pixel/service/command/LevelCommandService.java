@@ -120,20 +120,21 @@ public class LevelCommandService extends BaseCommandService {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MERLEVEL_FIRST);
 	            responseBuilder.setErrorCommand(errorCommand);
 	        }else{//goto next level
-				AreaEvent.Builder events = redis.getDaguanEvent(id);
+				AreaEvent.Builder events = redis.getMainEvent(id);
 				userLevel.setUnlockDaguan(userLevel.getUnlockDaguan()+1);
 				userLevel.setLootDaguan(userLevel.getUnlockDaguan());
 				userLevel.setLeftCount(daguan.getCount());
 				userLevel.setCoin(daguan.getGold());
 				userLevel.setExp(daguan.getExperience());
 				redis.saveUserLevel(userLevel);
+				Map<Integer, Event> eventmap = new HashMap<Integer, Event>();
 				for(Event.Builder event : events.getEventBuilderList()){
-					if(id == event.getDaguan() && event.getWeight() == 0){
-						event.setOrder(events.getId()*30+event.getOrder());
-						redis.saveEventReady(user, event.build());
-					}
+//					if(id == event.getDaguan() && event.getWeight() == 0){
+						event.setOrder(events.getId()*300+event.getEventid());
+						eventmap.put(event.getOrder(), event.build());
+//					}
 				}
-				redis.productMainEvent(userLevel);
+				redis.productMainEvent(userLevel, eventmap);
 				
 				/**
 				 * 过关的活动
