@@ -494,7 +494,7 @@ public class LevelRedisService extends RedisService {
 					AreaEvent.Builder builder = AreaEvent.newBuilder();
 					builder = AreaEvent.newBuilder();
 					builder.setId(id);
-					map1.put(builder.getId(), builder);
+					map2.put(builder.getId(), builder);
 				}
 			}
 			for(Event.Builder event : area.getEventBuilderList()){
@@ -524,7 +524,7 @@ public class LevelRedisService extends RedisService {
 				}
 			}
 		}
-		Map<String, String> keyvalue1 = new HashMap<String, String>();
+		Map<String, String> keyvalue` = new HashMap<String, String>();
 		for(AreaEvent.Builder daguan : map1.values())
 			keyvalue1.put(daguan.getId()+"", formatJson(daguan.build()));
 		Map<String, String> keyvalue2 = new HashMap<String, String>();
