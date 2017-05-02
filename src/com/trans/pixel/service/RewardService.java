@@ -149,7 +149,7 @@ public class RewardService {
 //		doRewards(bean, rewards);
 //	}
 	
-	public void doFilterRewards(UserBean user, List<RewardBean> rewards) {
+	public void doFilter(UserBean user, List<RewardBean> rewards) {
 		for(int i = rewards.size() - 1; i >= 0; i--) {
 			int itemid = rewards.get(i).getItemid();
 			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -162,6 +162,9 @@ public class RewardService {
 					rewards.remove(i);
 			}
 		}
+	}
+	public void doFilterRewards(UserBean user, List<RewardBean> rewards) {
+		doFilter(user, rewards);
 		doRewards(user, rewards);
 	}
 	

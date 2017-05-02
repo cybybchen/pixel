@@ -77,7 +77,9 @@ public class RedisKey {
 	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
 	public static final String DAGUAN_CONFIG = PREFIX+CONFIG_PREFIX+"Daguan";
 	public static final String DAGUANEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"DaguanEvent";
+	public static final String MAINEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"MainEvent";
 	public static final String EVENT_CONFIG = PREFIX+CONFIG_PREFIX+"Event";
+	public static final String EVENTEXP_CONFIG = PREFIX+CONFIG_PREFIX+"EventExp";
 	public static final String EVENTLEVEL_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevel";
 	public static final String EVENTLEVELSEED_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevelSeed";
 	public final static String RAID_CONFIG = PREFIX+CONFIG_PREFIX+"Raid";

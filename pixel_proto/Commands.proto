@@ -2581,7 +2581,8 @@ message AreaList {
 message Daguan {
 	optional int32 id = 1;
 	optional string name = 2;
-	optional string des = 3;
+	//optional string des = 3;
+	optional int32 lv = 3;
 	optional int32 count = 4;
 	optional int32 gold = 5;
 	optional int32 experience = 6;
@@ -2593,6 +2594,7 @@ message Daguan {
 	optional uint32 loot2 = 13;
 	optional uint32 loot3 = 14;
 	optional uint32 loot4 = 15;
+	optional int32 lootlist = 16;
 }
 message DaguanList {
 	repeated Daguan id = 1;
@@ -2622,29 +2624,52 @@ message EventRandoms {
 message EventRandomsList {
 	repeated EventRandoms id = 1;
 }
+message EventExp {
+	optional int32 lv = 1;
+	optional int32 itemid = 2;
+	optional int32 count = 3;
+}
+message EventExpList {
+	repeated EventExp id = 1;
+}
 message EventReward {
-	optional int32 rewardid = 1;
-	optional int32 rewardcount = 2;
-	optional int32 rewardcount1 = 3;
-	optional int32 rewardweight = 4;
-	optional int32 rewarddouble = 5;
+	optional int32 mustloot = 1;
+	optional int32 lootcount = 2;
+}
+message EventCost {
+	optional int32 costid = 1;
+	optional int32 costcount = 2;
+}
+message EventQuestion {
+	optional int32 answerid = 1;
+	optional string answer = 2;
+	optional int32 eventid = 3;
+}
+message EventConfig {
+	optional int32 id = 1;
+	optional string name = 4;
+	optional int32 daguan = 5;
+	optional int32 type = 7;
+	optional EventCost cost = 8;
+	repeated EventReward loot = 10;
+	repeated EventQuestion question = 11;
+	optional int32 call = 14;
+}
+message EventConfigList {
+	repeated EventConfig id = 1;
 }
 message Event {
 	optional int32 order = 1;
 	optional int32 eventid = 2;
-	optional int32 daguan = 3;
-	optional string name = 4;
-	optional string des = 5;
-	optional int32 weight = 6;
-	optional int32 type = 7;
-	optional int32 costid = 8;
-	optional int32 costcount = 9;
-	repeated EventReward reward = 10;
-	optional int32 targetid = 11;
-	optional int32 level = 12;
-	optional int32 count = 13;
-	optional int32 call = 14;
-	optional int32 frontid = 15;
+	optional string name = 3;
+	optional int32 daguan = 4;
+	optional int32 conditiontype = 5;
+	optional int32 condition = 6;
+	optional int32 targetid = 7;
+	optional string targetdes = 8;
+	optional int32 weight = 9;
+        optional int32 level = 10;
+        optional int32 count = 11;
 }
 message AreaEvent {
 	optional int32 id = 1;

@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.annotation.Resource;
+import javax.management.RuntimeErrorException;
 
 import org.springframework.stereotype.Repository;
 
@@ -28,6 +29,10 @@ import com.trans.pixel.protoc.UserInfoProto.AreaList;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.DaguanList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.EventConfig;
+import com.trans.pixel.protoc.UserInfoProto.EventConfigList;
+import com.trans.pixel.protoc.UserInfoProto.EventExp;
+import com.trans.pixel.protoc.UserInfoProto.EventExpList;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
 import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
 import com.trans.pixel.protoc.UserInfoProto.EventRandom;
@@ -125,13 +130,13 @@ public class LevelRedisService extends RedisService {
 			List<EventBean> list = mapper.getEvents(userLevel.getUserId());
 			for(EventBean bean : list){
 				Event.Builder event = bean.build();
-				Event config = getEvent(event.getEventid());
-				event.setOrder(config.getDaguan()*30+config.getOrder());
+				EventConfig config = getEvent(event.getEventid());
+				event.setOrder(event.getDaguan()*300+event.getEventid());
 				event.setName(config.getName());
-				event.setType(config.getType());
-				event.setCostid(config.getCostid());
-				event.setCostcount(event.getCostcount());
-				event.setCall(config.getCall());
+//				event.setType(config.getType());
+//				event.setCostid(config.getCostid());
+//				event.setCostcount(event.getCostcount());
+//				event.setCall(config.getCall());
 				saveEventReady(user, event.build());
 //				map.put(event.getOrder(), event);
 			}
@@ -179,7 +184,7 @@ public class LevelRedisService extends RedisService {
 		for(String value : keyvalue.values()) {
 			Event.Builder builder = Event.newBuilder();
 			parseJson(value, builder);
-			if(builder.getFrontid() == 0 || hasCompleteEvent(userLevel.getUserId(), builder.getFrontid(), userLevel, eventmap)) {
+			if((builder.getConditiontype() != 1 || builder.getCondition() == 0) || hasCompleteEvent(userLevel.getUserId(), builder.getCondition(), userLevel, eventmap)) {
 				hdelete(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId(), builder.getOrder()+"");
 //				builder.setOrder(currentIndex()+(i++));
 				saveEvent(userLevel.getUserId(), builder.build());
@@ -325,105 +330,162 @@ public class LevelRedisService extends RedisService {
 		if(event.getOrder() < 10000)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getEventid());
 	}
-	public Event getEvent(int eventid){
+
+	public EventConfig getEvent(int eventid){
 		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");
-		Event.Builder builder = Event.newBuilder();
+		EventConfig.Builder builder = EventConfig.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		buildEvent();
+		buildDaguanEvent();
 		value = hget(RedisKey.EVENT_CONFIG, eventid+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else
 			return null;
 	}
-	public List<Event> getEvents(){
-		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
-		if(keyvalue.isEmpty())
-			buildEvent();
-		keyvalue = hget(RedisKey.EVENT_CONFIG);
-		List<Event> events = new ArrayList<Event>();
-		for(String value : keyvalue.values()) {
-			Event.Builder builder = Event.newBuilder();
-			if(parseJson(value, builder))
-				events.add(builder.build());
-		}
-		return events;
-	}
-	public Map<String, Event> getEventMap(){
-		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
-		if(keyvalue.isEmpty()){
-			buildEvent();
-			keyvalue = hget(RedisKey.EVENT_CONFIG);
-			
-		}
-		
-		Map<String, Event> map = new HashMap<String, Event>();
-		for(Entry<String, String> entry : keyvalue.entrySet()){
-			Event.Builder builder = Event.newBuilder();
-			if(parseJson(entry.getValue(), builder))
-				map.put(entry.getKey(), builder.build());
-		}
-		return map;
-		
-	}
+//	public List<Event> getEvents(){
+//		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+//		if(keyvalue.isEmpty())
+//			buildEvent();
+//		keyvalue = hget(RedisKey.EVENT_CONFIG);
+//		List<Event> events = new ArrayList<Event>();
+//		for(String value : keyvalue.values()) {
+//			Event.Builder builder = Event.newBuilder();
+//			if(parseJson(value, builder))
+//				events.add(builder.build());
+//		}
+//		return events;
+//	}
+//	public Map<String, Event> getEventMap(){
+//		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+//		if(keyvalue.isEmpty()){
+//			buildEvent();
+//			keyvalue = hget(RedisKey.EVENT_CONFIG);
+//			
+//		}
+//		
+//		Map<String, Event> map = new HashMap<String, Event>();
+//		for(Entry<String, String> entry : keyvalue.entrySet()){
+//			Event.Builder builder = Event.newBuilder();
+//			if(parseJson(entry.getValue(), builder))
+//				map.put(entry.getKey(), builder.build());
+//		}
+//		return map;
+//		
+//	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
 		String value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		AreaEvent.Builder builder = AreaEvent.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
-		buildEvent();
+		buildDaguanEvent();
 		value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else
 			return null;
 	}
-	private void buildEvent(){
+	public AreaEvent.Builder getMainEvent(int daguanid){
+		String value = hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		AreaEvent.Builder builder = AreaEvent.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder;
+		buildDaguanEvent();
+		value = hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		if(value != null && parseJson(value, builder))
+			return builder;
+		else
+			return null;
+	}
+	public EventExp getEventExp(int level){
+		String value = hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		EventExp.Builder builder = EventExp.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
 		Map<String, String> keyvalue = new HashMap<String, String>();
-		Map<String, String> keyvalue2 = new HashMap<String, String>();
-		String xml = ReadConfig("ld_event.xml");
-		AreaEventList.Builder list = AreaEventList.newBuilder();
+		String xml = ReadConfig("event/ld_lvexp.xml");
+		EventExpList.Builder list = EventExpList.newBuilder();
 		parseXml(xml, list);
-		String xml1 = ReadConfig("ld_event1.xml");
+		for(EventExp exp : list.getIdList()){
+			keyvalue.put(exp.getLv()+"", formatJson(exp));
+		}
+		hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
+		value = hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		else
+			return null;
+	}
+	private Map<Integer, EventConfig.Builder> buildEvent(){
+		Map<Integer, EventConfig.Builder> map = new HashMap<Integer, EventConfig.Builder>();
+//		Map<String, String> keyvalue = new HashMap<String, String>();
+		String xml = ReadConfig("event/ld_event.xml");
+		EventConfigList.Builder list = EventConfigList.newBuilder();
+		parseXml(xml, list);
+		for(EventConfig.Builder event : list.getIdBuilderList()){
+			map.put(event.getId(), event);
+//			keyvalue.put(event.getId()+"", formatJson(event));
+		}
+//		hputAll(RedisKey.EVENT_CONFIG, keyvalue);
+		return map;
+	}
+	private void buildDaguanEvent(){
+		String xml1 = ReadConfig("event/ld_event1.xml");
 		AreaEventList.Builder list1 = AreaEventList.newBuilder();
 		parseXml(xml1, list1);
-		Map<Integer, AreaEvent.Builder> map = new HashMap<Integer, AreaEvent.Builder>();
+		String xml2 = ReadConfig("event/ld_event2.xml");
+		AreaEventList.Builder list2 = AreaEventList.newBuilder();
+		parseXml(xml2, list2);
+		Map<Integer, EventConfig.Builder> eventmap = buildEvent();
+		for(AreaEvent.Builder area1 : list1.getIdBuilderList()){
+			for(Event.Builder event1 : area1.getEventBuilderList()){
+				for(AreaEvent.Builder area2 : list2.getIdBuilderList()){
+					for(Event.Builder event2 : area2.getEventBuilderList()){
+						if((event1.getTargetid() != 0 && event1.getCondition() != 0 ) 
+								|| (event1.getTargetid() != 0 && event1.getEventid() == event2.getEventid()) 
+								|| (event1.getCondition() == event2.getEventid() && event1.getDaguan() < event2.getDaguan())) {
+							throw new RuntimeErrorException(null, "Error eventid "+event1.getEventid());
+						}
+					}
+				}
+			}
+		}
 		Map<Integer, Integer> areaMap = getAreaConfig();
-		for(AreaEvent.Builder area : list.getIdBuilderList()){
+		Map<Integer, AreaEvent.Builder> map1 = new HashMap<Integer, AreaEvent.Builder>();
+		for(AreaEvent.Builder area : list1.getIdBuilderList()){
 			for(int id : areaMap.keySet()){
 				if(areaMap.get(id) == area.getId()){
 					AreaEvent.Builder builder = AreaEvent.newBuilder();
 					builder = AreaEvent.newBuilder();
 					builder.setId(id);
-					map.put(builder.getId(), builder);
+					map1.put(builder.getId(), builder);
 				}
 			}
 			for(Event.Builder event : area.getEventBuilderList()){
-				// event.clearName();
-				event.clearDes();
-				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
-				event.clearReward();
 				if(event.getDaguan() != 0){
-					AreaEvent.Builder builder = map.get(event.getDaguan());
+					AreaEvent.Builder builder = map1.get(event.getDaguan());
 					if(builder != null){
-						event.setWeight(0);
+						EventConfig.Builder config = eventmap.get(event.getEventid());
+						if(config.getDaguan() != 0)
+							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
+						config.setDaguan(event.getDaguan());
+						event.setName(config.getName());
 						builder.addEvent(event);
-						// builder.setWeight(builder.getWeight()+event.getWeight());
 					}
 				}
 			}
 		}
-		for(AreaEvent.Builder area : list1.getIdBuilderList()){
+		Map<Integer, AreaEvent.Builder> map2 = new HashMap<Integer, AreaEvent.Builder>();
+		for(AreaEvent.Builder area : list2.getIdBuilderList()){
 			for(Event.Builder event : area.getEventBuilderList()){
-				// event.clearName();
-				event.clearDes();
-				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
-				event.clearReward();
 				if(event.getDaguan() != 0){
-					AreaEvent.Builder builder = map.get(event.getDaguan());
+					AreaEvent.Builder builder = map2.get(event.getDaguan());
 					if(builder != null){
-//						event.setWeight(0);
+						EventConfig.Builder config = eventmap.get(event.getEventid());
+						if(config.getDaguan() != 0)
+							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
+						config.setDaguan(event.getDaguan());
+						event.setName(config.getName());
 						builder.addEvent(event);
 						builder.setWeight(builder.getWeight()+event.getWeight());
 					}
@@ -431,8 +493,10 @@ public class LevelRedisService extends RedisService {
 			}
 			for(Event.Builder event : area.getEventBuilderList()){
 				if(event.getDaguan() == 0){
-					for(AreaEvent.Builder builder : map.values()){
+					for(AreaEvent.Builder builder : map2.values()){
 						if(areaMap.get(builder.getId()) == area.getId()){
+							event.setName(eventmap.get(event.getEventid()).getName());
+							event.setDaguan(builder.getId());
 							builder.addEvent(event);
 							builder.setWeight(builder.getWeight()+event.getWeight());
 						}
@@ -440,10 +504,18 @@ public class LevelRedisService extends RedisService {
 				}
 			}
 		}
-		for(AreaEvent.Builder daguan : map.values())
-			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
-		hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue);
-		hputAll(RedisKey.EVENT_CONFIG, keyvalue2);
+		Map<String, String> keyvalue1 = new HashMap<String, String>();
+		for(AreaEvent.Builder daguan : map1.values())
+			keyvalue1.put(daguan.getId()+"", formatJson(daguan.build()));
+		Map<String, String> keyvalue2 = new HashMap<String, String>();
+		for(AreaEvent.Builder daguan : map2.values())
+			keyvalue2.put(daguan.getId()+"", formatJson(daguan.build()));
+		Map<String, String> keyvalue3 = new HashMap<String, String>();
+		for(EventConfig.Builder eventconfig : eventmap.values())
+			keyvalue3.put(eventconfig.getId()+"", formatJson(eventconfig.build()));
+		hputAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
+		hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
+		hputAll(RedisKey.EVENT_CONFIG, keyvalue3);
 	}
 
 	public Daguan.Builder getDaguan(int id){
@@ -460,7 +532,7 @@ public class LevelRedisService extends RedisService {
 		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
 		for(Daguan.Builder daguan : list.getIdBuilderList()){
 			// daguan.clearName();
-			daguan.clearDes();
+//			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
 			daguan.setMerlevel(merlevelMap.get(daguan.getId()));
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
@@ -469,6 +541,150 @@ public class LevelRedisService extends RedisService {
 		hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
 		return map.get(id);
 	}
+// 	public Event getEvent(int eventid){
+// 		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");
+// 		Event.Builder builder = Event.newBuilder();
+// 		if(value != null && parseJson(value, builder))
+// 			return builder.build();
+// 		buildEvent();
+// 		value = hget(RedisKey.EVENT_CONFIG, eventid+"");
+// 		if(value != null && parseJson(value, builder))
+// 			return builder.build();
+// 		else
+// 			return null;
+// 	}
+// 	public List<Event> getEvents(){
+// 		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+// 		if(keyvalue.isEmpty())
+// 			buildEvent();
+// 		keyvalue = hget(RedisKey.EVENT_CONFIG);
+// 		List<Event> events = new ArrayList<Event>();
+// 		for(String value : keyvalue.values()) {
+// 			Event.Builder builder = Event.newBuilder();
+// 			if(parseJson(value, builder))
+// 				events.add(builder.build());
+// 		}
+// 		return events;
+// 	}
+// 	public Map<String, Event> getEventMap(){
+// 		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+// 		if(keyvalue.isEmpty()){
+// 			buildEvent();
+// 			keyvalue = hget(RedisKey.EVENT_CONFIG);
+			
+// 		}
+		
+// 		Map<String, Event> map = new HashMap<String, Event>();
+// 		for(Entry<String, String> entry : keyvalue.entrySet()){
+// 			Event.Builder builder = Event.newBuilder();
+// 			if(parseJson(entry.getValue(), builder))
+// 				map.put(entry.getKey(), builder.build());
+// 		}
+// 		return map;
+		
+// 	}
+// 	public AreaEvent.Builder getDaguanEvent(int daguanid){
+// 		String value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+// 		AreaEvent.Builder builder = AreaEvent.newBuilder();
+// 		if(value != null && parseJson(value, builder))
+// 			return builder;
+// 		buildEvent();
+// 		value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+// 		if(value != null && parseJson(value, builder))
+// 			return builder;
+// 		else
+// 			return null;
+// 	}
+// 	private void buildEvent(){
+// 		Map<String, String> keyvalue = new HashMap<String, String>();
+// 		Map<String, String> keyvalue2 = new HashMap<String, String>();
+// 		String xml = ReadConfig("event/ld_event.xml");
+// 		AreaEventList.Builder list = AreaEventList.newBuilder();
+// 		parseXml(xml, list);
+// 		String xml1 = ReadConfig("event/ld_event1.xml");
+// 		AreaEventList.Builder list1 = AreaEventList.newBuilder();
+// 		parseXml(xml1, list1);
+// 		Map<Integer, AreaEvent.Builder> map = new HashMap<Integer, AreaEvent.Builder>();
+// 		Map<Integer, Integer> areaMap = getAreaConfig();
+// 		for(AreaEvent.Builder area : list.getIdBuilderList()){
+// 			for(int id : areaMap.keySet()){
+// 				if(areaMap.get(id) == area.getId()){
+// 					AreaEvent.Builder builder = AreaEvent.newBuilder();
+// 					builder = AreaEvent.newBuilder();
+// 					builder.setId(id);
+// 					map.put(builder.getId(), builder);
+// 				}
+// 			}
+// 			for(Event.Builder event : area.getEventBuilderList()){
+// 				// event.clearName();
+// 				event.clearDes();
+// 				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
+// 				event.clearReward();
+// 				if(event.getDaguan() != 0){
+// 					AreaEvent.Builder builder = map.get(event.getDaguan());
+// 					if(builder != null){
+// 						event.setWeight(0);
+// 						builder.addEvent(event);
+// 						// builder.setWeight(builder.getWeight()+event.getWeight());
+// 					}
+// 				}
+// 			}
+// 		}
+// 		for(AreaEvent.Builder area : list1.getIdBuilderList()){
+// 			for(Event.Builder event : area.getEventBuilderList()){
+// 				// event.clearName();
+// 				event.clearDes();
+// 				keyvalue2.put(event.getEventid()+"", formatJson(event.build()));
+// 				event.clearReward();
+// 				if(event.getDaguan() != 0){
+// 					AreaEvent.Builder builder = map.get(event.getDaguan());
+// 					if(builder != null){
+// //						event.setWeight(0);
+// 						builder.addEvent(event);
+// 						builder.setWeight(builder.getWeight()+event.getWeight());
+// 					}
+// 				}
+// 			}
+// 			for(Event.Builder event : area.getEventBuilderList()){
+// 				if(event.getDaguan() == 0){
+// 					for(AreaEvent.Builder builder : map.values()){
+// 						if(areaMap.get(builder.getId()) == area.getId()){
+// 							builder.addEvent(event);
+// 							builder.setWeight(builder.getWeight()+event.getWeight());
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 		for(AreaEvent.Builder daguan : map.values())
+// 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
+// 		hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue);
+// 		hputAll(RedisKey.EVENT_CONFIG, keyvalue2);
+// 	}
+
+// 	public Daguan.Builder getDaguan(int id){
+// 		String value = hget(RedisKey.DAGUAN_CONFIG, id+"");
+// 		Daguan.Builder builder = Daguan.newBuilder();
+// 		if(value != null && parseJson(value, builder))
+// 			return builder;
+// 		Map<String, String> keyvalue = new HashMap<String, String>();
+// 		String xml = ReadConfig("ld_daguan.xml");
+// 		DaguanList.Builder list = DaguanList.newBuilder();
+// 		parseXml(xml, list);
+// 		Map<Integer, Integer> areaMap = getAreaConfig();
+// 		Map<Integer, Integer> merlevelMap = getMerlevelConfig();
+// 		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
+// 		for(Daguan.Builder daguan : list.getIdBuilderList()){
+// 			// daguan.clearName();
+// 			daguan.clearDes();
+// 			daguan.setAreaid(areaMap.get(daguan.getId()));
+// 			daguan.setMerlevel(merlevelMap.get(daguan.getId()));
+// 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
+// 			map.put(daguan.getId(), daguan);
+// 		}
+// 		hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
+// 		return map.get(id);
+// 	}
 
 	public Map<String, Loot> getLootConfig(){
 		Map<String, String> keyvalue = hget(RedisKey.LOOT_CONFIG);
@@ -601,7 +817,7 @@ public class LevelRedisService extends RedisService {
 		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
 	}
 	public boolean hasCompleteEvent(long userId, int eventId, UserLevelBean userLevel, Map<Integer, Event.Builder> eventmap) {
-		Event eventconfig = getEvent(eventId);
+		EventConfig eventconfig = getEvent(eventId);
 		if (eventconfig.getDaguan() > userLevel.getUnlockDaguan())
 			return false;
 
