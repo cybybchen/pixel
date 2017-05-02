@@ -305,7 +305,9 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				eventReward(eventconfig, event, user, event.getCount());
+				List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
+				rewardService.doFilterRewards(user, rewards);
+				pusher.pushRewardCommand(responseBuilder, user, rewards);
 				redis.delEvent(user, event);
 				
 				/**
