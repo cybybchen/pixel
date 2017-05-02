@@ -203,4 +203,10 @@ public class UserRedisService extends RedisService{
 		}
 		return null;
 	}
+	
+	public Map<String, String> getUserTypeMap() {
+		Map<String, String> map = this.hget(RedisKey.USERTYPE_KEY);
+		
+		return map;
+	}
 }

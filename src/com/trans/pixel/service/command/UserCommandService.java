@@ -129,7 +129,7 @@ public class UserCommandService extends BaseCommandService {
 		UserBean user = new UserBean();
 		user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
 		user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
-		user.setUserType(randomUserType());
+		user.setUserType(userService.randomUserType());
 		boolean hasRegistered = false;
 		try{
 			userService.addNewUser(user);
@@ -172,10 +172,6 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		pushCommand(responseBuilder, user);
-	}
-	
-	private int randomUserType() {
-		return RandomUtils.nextInt(4) + 1;
 	}
 	
 	private UserTalent addRegisterTalent(UserBean user, int id) {

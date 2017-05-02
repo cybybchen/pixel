@@ -23,6 +23,7 @@ public class RedisKey {
 	public final static String BLACKLIST = "BlackList";
 	public final static String BLACKLIST_ACCOUNT = "BlackList_Account";
 	public final static String BLACKLIST_IDFA = "BlackList_Idfa";
+	public final static String USERTYPE_KEY = PREFIX + "User_type";
 	
 	//user key prefix
 	public final static String USER_PREFIX = "user_";

@@ -12,6 +12,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -575,5 +576,27 @@ public class UserService {
 		
 		updateUser(user);
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
+	}
+	
+	public int randomUserType() {
+		Map<String, String> map = userRedisService.getUserTypeMap();
+		if (map != null && !map.isEmpty()) {
+			int weightall = 0;
+			for (String weight : map.values()) {
+				weightall += TypeTranslatedUtil.stringToInt(weight);
+			}
+			
+			Iterator<Entry<String, String>> it = map.entrySet().iterator();
+			while (it.hasNext()) {
+				Entry<String, String> entry = it.next();
+				int weight = TypeTranslatedUtil.stringToInt(entry.getValue());
+				if (RandomUtils.nextInt(weightall) < weight)
+					return TypeTranslatedUtil.stringToInt(entry.getKey());
+				
+				weightall -= weight;
+			}
+		}
+		
+		return RandomUtils.nextInt(4) + 1;
 	}
 }
