@@ -1289,6 +1289,7 @@ public class UserBean {
 		builder.setName(name);
 		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
+		builder.setUnionName(unionName);
 		builder.setUnionJob(unionJob);
 		builder.setJewel(jewel);
 		builder.setCoin(coin);

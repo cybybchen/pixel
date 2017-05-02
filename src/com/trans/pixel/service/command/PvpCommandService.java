@@ -1,7 +1,6 @@
 package com.trans.pixel.service.command;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,7 +15,6 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -37,7 +35,7 @@ import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand;
-import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
@@ -93,19 +91,19 @@ public class PvpCommandService extends BaseCommandService {
 	}
 
 	public void unlockMap(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user) {
-		List<Event> events = levelRedisService.getEvents();
-		for(Event eventconfig : events){
-			if(eventconfig.getTargetid()%100 == cmd.getFieldid()){
-				boolean hasComplete = levelRedisService.hasCompleteEvent(user, eventconfig.getEventid());
-				if(!hasComplete) {
-					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
-					responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.EVENT_FIRST));
-					getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
-					return;
-				}
-				break;
-			}
-		}
+//		List<EventConfig> events = levelRedisService.getEvents();
+//		for(EventConfig eventconfig : events){
+//			if(eventconfig.getTargetid()%100 == cmd.getFieldid()){
+//				boolean hasComplete = levelRedisService.hasCompleteEvent(user, eventconfig.getEventid());
+//				if(!hasComplete) {
+//					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
+//					responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.EVENT_FIRST));
+//					getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
+//					return;
+//				}
+//				break;
+//			}
+//		}
 		ResultConst result = pvpMapService.unlockMap(cmd.getFieldid(), cmd.getZhanli(), user);
 		if(result instanceof SuccessConst)
 			responseBuilder.setMessageCommand(buildMessageCommand(result));

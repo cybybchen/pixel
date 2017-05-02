@@ -343,19 +343,19 @@ public class LevelRedisService extends RedisService {
 		else
 			return null;
 	}
-//	public List<Event> getEvents(){
-//		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
-//		if(keyvalue.isEmpty())
-//			buildEvent();
-//		keyvalue = hget(RedisKey.EVENT_CONFIG);
-//		List<Event> events = new ArrayList<Event>();
-//		for(String value : keyvalue.values()) {
-//			Event.Builder builder = Event.newBuilder();
-//			if(parseJson(value, builder))
-//				events.add(builder.build());
-//		}
-//		return events;
-//	}
+	public List<EventConfig> getEvents(){
+		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
+		if(keyvalue.isEmpty())
+			buildDaguanEvent();
+		keyvalue = hget(RedisKey.EVENT_CONFIG);
+		List<EventConfig> events = new ArrayList<EventConfig>();
+		for(String value : keyvalue.values()) {
+			EventConfig.Builder builder = EventConfig.newBuilder();
+			if(parseJson(value, builder))
+				events.add(builder.build());
+		}
+		return events;
+	}
 //	public Map<String, Event> getEventMap(){
 //		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
 //		if(keyvalue.isEmpty()){
