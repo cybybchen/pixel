@@ -1039,7 +1039,7 @@ public class ActivityService {
 	 * 提升征战天下区域buff
 	 */
 	public void upPvpBuff(UserBean user, int fieldId, int buff) {
-		if (buff == 5) {
+		if (buff >= 5) {
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE, fieldId, false);
 		}
 	}
