@@ -269,7 +269,7 @@ public class LevelCommandService extends BaseCommandService {
 				pvpMapService.unlockMap(event.getTargetid()%100, 0, user);
 			if(eventconfig.getType() == 1){//buy event
 				if(cmd.getRet()){
-					if(costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
+					if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
 			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
 						List<RewardBean> rewards = eventReward(eventconfig, responseBuilder, user, event.getCount());
 						rewardService.doFilterRewards(user, rewards);
