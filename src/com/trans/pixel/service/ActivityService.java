@@ -1021,7 +1021,7 @@ public class ActivityService {
 		}
 		
 		if (heroId == 20 && skillIndex == 2) {
-			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_SKILL1_LEVELUP_VALUE, skillLevel, false);
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ARUISI_SKILL2_LEVELUP_VALUE, skillLevel, false);
 		}
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_SKILL_LEVELUP_VALUE);
