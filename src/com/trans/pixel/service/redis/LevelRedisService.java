@@ -524,7 +524,7 @@ public class LevelRedisService extends RedisService {
 				}
 			}
 		}
-		Map<String, String> keyvalue` = new HashMap<String, String>();
+		Map<String, String> keyvalue1 = new HashMap<String, String>();
 		for(AreaEvent.Builder daguan : map1.values())
 			keyvalue1.put(daguan.getId()+"", formatJson(daguan.build()));
 		Map<String, String> keyvalue2 = new HashMap<String, String>();
