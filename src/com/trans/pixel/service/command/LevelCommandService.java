@@ -313,6 +313,7 @@ public class LevelCommandService extends BaseCommandService {
 				userService.handleRewardTaskDailyReward(user);
 			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
 				redis.delEvent(user, event);
+			redis.productMainEvent(user, event.getCondition());
 		}
 		user.addMyactive();
  		if(user.getMyactive() >= 100){
