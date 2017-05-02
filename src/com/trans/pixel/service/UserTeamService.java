@@ -121,8 +121,8 @@ public class UserTeamService {
 		/**
 		 * 装备差分器的活动
 		 */
-		if (!teamEngineList.isEmpty())
-			activityService.equipChafenqi(user, teamEngineList);
+//		if (!teamEngineList.isEmpty())
+//			activityService.equipChafenqi(user, teamEngineList);
 	}
 
 	public void changeUserTeam(UserBean user, int teamId) {

@@ -18,6 +18,8 @@ public class RewardConst {
 	
 	public static final int ARMOR = 15000;
 	
+	public static final int ENGINE = 18000;
+	
 	public static final int CHIP = 20000;
 	
 	public static final int CAILIAO = 24000;

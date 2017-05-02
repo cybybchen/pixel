@@ -1144,6 +1144,9 @@ public class ActivityService {
 	public void getEquip(UserBean user, int itemId) {
 		if (itemId < RewardConst.ARMOR)
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_WUQI_GET_VALUE);
+		
+		if (itemId > RewardConst.ENGINE)
+			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ADD_CHAFENQI_VALUE);
 	}
 	
 	public void zhujueLevelup(UserBean user, int talentId, int level) {
@@ -1174,9 +1177,9 @@ public class ActivityService {
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_ZHANLI_VALUE, level);
 	}
 	
-	public void equipChafenqi(UserBean user, List<TeamEngine> teamEngineList) {
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TEAM_UPCHAFENQI_VALUE, teamEngineList.size(), false);
-	}
+//	public void addChafenqi(UserBean user) {
+//		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ADD_CHAFENQI_VALUE);
+//	}
 	
 	/**
 	 * activity and achieve log
