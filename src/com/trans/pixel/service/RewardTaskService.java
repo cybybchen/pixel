@@ -84,11 +84,11 @@ public class RewardTaskService {
 	}
 	
 	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, List<UserInfo> errorUserList, List<UserEquipBean> userEquipList) {
-		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
-		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || ut.getEnemyid() == 0) {
+		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user, index);
+		if (userRewardTask == null || userRewardTask.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || userRewardTask.getEnemyid() == 0) {
 			return ErrorConst.SUBMIT_BOSS_SCORE_ERROR;
 		}
-		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(ut.getId());
+		RewardTask rewardTask = rewardTaskRedisService.getRewardTask(userRewardTask.getId());
 		int costId = costService.canCostOnly(user, rewardTask.getCostList());
 		ResultConst result = SuccessConst.BOSS_SUBMIT_SUCCESS;
 		if (costId == 0) {
@@ -101,23 +101,28 @@ public class RewardTaskService {
 			return result;
 		
 		costService.costOnly(user, rewardTask.getCostList());
-		UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+		UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
 		builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 		userRewardTaskService.updateUserRewardTask(user, builder.build());
 		
 		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), costId);
 		if (userEquip != null)
 			userEquipList.add(userEquip);
-		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(ut.getEnemyid(), user, 0 , 0)));
+		rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(userRewardTask.getEnemyid(), user, 0 , 0)));
 
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
-		params.put(LogString.BOSSID, "" + ut.getEnemyid());
-		params.put(LogString.TEAM, "1");
+		params.put(LogString.BOSSID, "" + userRewardTask.getEnemyid());
+		if(userRewardTask.hasRoomInfo()) {
+			params.put(LogString.TEAM, "1");
+		} else {
+			params.put(LogString.TEAM, "0");
+		}
 		params.put(LogString.RESULT, "1");
 		params.put(LogString.DPS, "0");
-		params.put(LogString.LEVEL, "0");
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		params.put(LogString.LEVEL, "" + userLevel.getUnlockDaguan());
 		params.put(LogString.ZHANLI, "" + user.getZhanli());
 		params.put(LogString.VIPLEVEL, "" + user.getVip());
 		
@@ -362,10 +367,15 @@ public class RewardTaskService {
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
 		params.put(LogString.BOSSID, "" + userRewardTask.getId());
-		params.put(LogString.TEAM, "1");
+		if(userRewardTask.hasRoomInfo()) {
+			params.put(LogString.TEAM, "1");
+		} else {
+			params.put(LogString.TEAM, "0");
+		}
 		params.put(LogString.RESULT, "3");
 		params.put(LogString.DPS, "0");
-		params.put(LogString.LEVEL, "0");
+		UserLevelBean userLevel = userLevelService.getUserLevel(user);
+		params.put(LogString.LEVEL, "" + userLevel.getUnlockDaguan());
 		params.put(LogString.ZHANLI, "" + user.getZhanli());
 		params.put(LogString.VIPLEVEL, "" + user.getVip());
 		
@@ -380,6 +390,20 @@ public class RewardTaskService {
 			builder.mergeFrom(userRewardTask);
 			builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
+			
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.BOSSID, "" + userRewardTask.getEnemyid());
+			params.put(LogString.TEAM, "2");
+			params.put(LogString.RESULT, "2");
+			params.put(LogString.DPS, "0");
+			UserLevelBean userLevel = userLevelService.getUserLevel(user);
+			params.put(LogString.LEVEL, "" + userLevel.getUnlockDaguan());
+			params.put(LogString.ZHANLI, "" + user.getZhanli());
+			params.put(LogString.VIPLEVEL, "" + user.getVip());
+			
+			logService.sendLog(params, LogString.LOGTYPE_REWARDBOSS);
 			
 			return getBossloot(userRewardTask.getEnemyid(), user, 0, 0);
 		}
