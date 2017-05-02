@@ -2645,6 +2645,12 @@ message EventQuestion {
 	optional string answer = 2;
 	optional int32 eventid = 3;
 }
+message EventEnemy {
+	optional int32 order = 1;
+	optional int32 enemyid = 2;
+	optional int32 enemycount = 3;
+	optional int32 enemylv = 4;
+}
 message EventConfig {
 	optional int32 id = 1;
 	optional string name = 4;
@@ -2653,6 +2659,7 @@ message EventConfig {
 	optional EventCost cost = 8;
 	repeated EventReward loot = 10;
 	repeated EventQuestion question = 11;
+	repeated EventEnemy enemy = 12;
 	optional int32 call = 14;
 }
 message EventConfigList {
