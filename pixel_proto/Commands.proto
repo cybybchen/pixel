@@ -2703,6 +2703,7 @@ message RequestEventResultCommand {
 	optional string teamInfo = 2;
 	optional string fightInfo = 3;
 	optional int32 turn = 4;
+	optional int32 finalid = 6;
 	optional bool ret = 5;
 }
 message ResponseEventResultCommand {

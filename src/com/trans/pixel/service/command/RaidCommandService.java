@@ -96,7 +96,7 @@ public class RaidCommandService extends BaseCommandService{
 			activityService.raidKill(user, id);
 			
 			id++;
-			order = redis.getRaidOrder(id);
+//			order = redis.getRaidOrder(id);
 			if(!redis.hasRaidOrder(id))
 				id = 0;
 			redis.saveRaid(user, id);
@@ -104,6 +104,7 @@ public class RaidCommandService extends BaseCommandService{
 			id = 0;
 			redis.saveRaid(user, id);
 		}
+		if(order != null) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
@@ -112,6 +113,7 @@ public class RaidCommandService extends BaseCommandService{
 		params.put(LogString.BOSSID, "" + order.getEnemyid());
 		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myid : 0));
 		logService.sendLog(params, LogString.LOGTYPE_RAID);
+		}
 
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 		builder.setId(id);

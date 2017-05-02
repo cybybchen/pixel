@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
+import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
 import com.trans.pixel.protoc.UserInfoProto.EventReward;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
@@ -232,7 +233,19 @@ public class LevelCommandService extends BaseCommandService {
 		eventCommand.setEvent(event);
 		responseBuilder.setEventCommand(eventCommand);
 	}
-	
+	private EventConfig getFinalEvent(EventConfig eventconfig, int finalid) {
+		for(EventQuestion question : eventconfig.getQuestionList()) {
+			EventConfig config = redis.getEvent(question.getEventid());
+			if(finalid == question.getEventid()){
+				return config;
+			}else if(config.getType() == 3) {
+				config = getFinalEvent(config, finalid);
+				if(config != null)
+					return config;
+			}
+		}
+		return null;
+	}
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = redis.getEvent(user, cmd.getOrder());
@@ -243,6 +256,9 @@ public class LevelCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 10000 || cmd.getRet()){
 			EventConfig eventconfig = redis.getEvent(event.getEventid());
+			if(eventconfig.getType() == 3) {//选择分支事件
+				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
+			}
 			if(eventconfig == null){
 				redis.delEvent(user, event);
 				pushLevelLootCommand(responseBuilder, userLevel, user);

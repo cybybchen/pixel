@@ -28581,6 +28581,16 @@ public final class UserInfoProto {
      */
     int getTurn();
 
+    // optional int32 finalid = 6;
+    /**
+     * <code>optional int32 finalid = 6;</code>
+     */
+    boolean hasFinalid();
+    /**
+     * <code>optional int32 finalid = 6;</code>
+     */
+    int getFinalid();
+
     // optional bool ret = 5;
     /**
      * <code>optional bool ret = 5;</code>
@@ -28663,8 +28673,13 @@ public final class UserInfoProto {
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               ret_ = input.readBool();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000010;
+              finalid_ = input.readInt32();
               break;
             }
           }
@@ -28825,6 +28840,22 @@ public final class UserInfoProto {
       return turn_;
     }
 
+    // optional int32 finalid = 6;
+    public static final int FINALID_FIELD_NUMBER = 6;
+    private int finalid_;
+    /**
+     * <code>optional int32 finalid = 6;</code>
+     */
+    public boolean hasFinalid() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 finalid = 6;</code>
+     */
+    public int getFinalid() {
+      return finalid_;
+    }
+
     // optional bool ret = 5;
     public static final int RET_FIELD_NUMBER = 5;
     private boolean ret_;
@@ -28832,7 +28863,7 @@ public final class UserInfoProto {
      * <code>optional bool ret = 5;</code>
      */
     public boolean hasRet() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional bool ret = 5;</code>
@@ -28846,6 +28877,7 @@ public final class UserInfoProto {
       teamInfo_ = "";
       fightInfo_ = "";
       turn_ = 0;
+      finalid_ = 0;
       ret_ = false;
     }
     private byte memoizedIsInitialized = -1;
@@ -28872,8 +28904,11 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, turn_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBool(5, ret_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(6, finalid_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -28900,9 +28935,13 @@ public final class UserInfoProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, turn_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(5, ret_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, finalid_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -29028,8 +29067,10 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         turn_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        ret_ = false;
+        finalid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        ret_ = false;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -29077,6 +29118,10 @@ public final class UserInfoProto {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
+        result.finalid_ = finalid_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.ret_ = ret_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -29109,6 +29154,9 @@ public final class UserInfoProto {
         }
         if (other.hasTurn()) {
           setTurn(other.getTurn());
+        }
+        if (other.hasFinalid()) {
+          setFinalid(other.getFinalid());
         }
         if (other.hasRet()) {
           setRet(other.getRet());
@@ -29354,13 +29402,46 @@ public final class UserInfoProto {
         return this;
       }
 
+      // optional int32 finalid = 6;
+      private int finalid_ ;
+      /**
+       * <code>optional int32 finalid = 6;</code>
+       */
+      public boolean hasFinalid() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 finalid = 6;</code>
+       */
+      public int getFinalid() {
+        return finalid_;
+      }
+      /**
+       * <code>optional int32 finalid = 6;</code>
+       */
+      public Builder setFinalid(int value) {
+        bitField0_ |= 0x00000010;
+        finalid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 finalid = 6;</code>
+       */
+      public Builder clearFinalid() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        finalid_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional bool ret = 5;
       private boolean ret_ ;
       /**
        * <code>optional bool ret = 5;</code>
        */
       public boolean hasRet() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional bool ret = 5;</code>
@@ -29372,7 +29453,7 @@ public final class UserInfoProto {
        * <code>optional bool ret = 5;</code>
        */
       public Builder setRet(boolean value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         ret_ = value;
         onChanged();
         return this;
@@ -29381,7 +29462,7 @@ public final class UserInfoProto {
        * <code>optional bool ret = 5;</code>
        */
       public Builder clearRet() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         ret_ = false;
         onChanged();
         return this;
@@ -31772,17 +31853,17 @@ public final class UserInfoProto {
       "ntCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005" +
       "\"D\n\024ResponseEventCommand\022,\n\005event\030\001 \001(\0132" +
       "\035.com.trans.pixel.protoc.Event\"\037\n\035Reques",
-      "tLevelLootResultCommand\"j\n\031RequestEventR" +
+      "tLevelLootResultCommand\"{\n\031RequestEventR" +
       "esultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030" +
-      "\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013" +
-      "\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultComman" +
-      "d\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.prot" +
-      "oc.RewardInfo\"\252\001\n\030ResponseLevelLootComma" +
-      "nd\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 " +
-      "\001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(" +
-      "\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.co" +
-      "m.trans.pixel.protoc.Event\"\030\n\026RequestEve",
-      "ntBuyCommand"
+      "\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017" +
+      "\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032Response" +
+      "EventResultCommand\0222\n\006reward\030\001 \003(\0132\".com" +
+      ".trans.pixel.protoc.RewardInfo\"\252\001\n\030Respo" +
+      "nseLevelLootCommand\022\024\n\014unlockDaguan\030\001 \001(" +
+      "\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005" +
+      "\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n" +
+      "\005event\030\006 \003(\0132\035.com.trans.pixel.protoc.Ev",
+      "ent\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -32034,7 +32115,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
-              new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Ret", });
+              new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
             getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
