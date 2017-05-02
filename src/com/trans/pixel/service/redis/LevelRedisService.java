@@ -82,11 +82,11 @@ public class LevelRedisService extends RedisService {
 			userLevel.setCoin(daguan.getGold());
 			userLevel.setExp(daguan.getExperience());
 			AreaEvent.Builder events = getMainEvent(daguan.getId());
-			Map<Integer, Event> eventmap = new HashMap<Integer, Event>();
+			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 			for(Event.Builder event : events.getEventBuilderList()){
 //				if(daguan.getId() == event.getDaguan() && event.getWeight() == 0){
 					event.setOrder(events.getId()*300+event.getEventid());
-					eventmap.put(event.getOrder(), event.build());
+					eventmap.put(event.getOrder(), event);
 //				}
 			}
 			productMainEvent(userLevel, eventmap);
@@ -129,7 +129,7 @@ public class LevelRedisService extends RedisService {
 		Map<Integer, Event.Builder> map = new TreeMap<Integer, Event.Builder>();
 		if(keyvalue.isEmpty() && now() - userLevel.getEventTime() > 24*3600){
 			List<EventBean> list = mapper.getEvents(userLevel.getUserId());
-			Map<Integer, Event> eventmap = new HashMap<Integer, Event>();
+			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 			for(EventBean bean : list){
 				Event.Builder event = bean.build();
 				EventConfig config = getEvent(event.getEventid());
@@ -139,7 +139,7 @@ public class LevelRedisService extends RedisService {
 //				event.setCostid(config.getCostid());
 //				event.setCostcount(event.getCostcount());
 //				event.setCall(config.getCall());
-				eventmap.put(event.getOrder(), event.build());
+				eventmap.put(event.getOrder(), event);
 //				map.put(event.getOrder(), event);
 			}
 			productMainEvent(userLevel, eventmap);
@@ -174,7 +174,7 @@ public class LevelRedisService extends RedisService {
 //	public void productMainEvent(UserBean user, UserLevelBean userLevel){
 //		productMainEvent(user.getId(), userLevel);
 //	}
-	public void productMainEvent(UserLevelBean userLevel, Map<Integer, Event> map){
+	public void productMainEvent(UserLevelBean userLevel, Map<Integer, Event.Builder> map){
 		Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		for(String value : keyvalue.values()){
@@ -182,12 +182,15 @@ public class LevelRedisService extends RedisService {
 			if(parseJson(value, event))
 				eventmap.put(event.getOrder(), event);
 		}
-		for(Event builder : map.values()) {
-			if((builder.getConditiontype() != 1 || builder.getCondition() == 0) || !isMainEvent(builder.getCondition()) || hasCompleteEvent(userLevel.getUserId(), builder.getCondition(), userLevel, eventmap)) {
+		for(Event.Builder builder : map.values()) {
+			eventmap.put(builder.getOrder(), builder);
+		}
+		for(Event.Builder builder : map.values()) {
+			if((builder.getConditiontype() != 1 || builder.getCondition() == 0) || (isMainEvent(builder.getCondition()) && hasCompleteEvent(userLevel.getUserId(), builder.getCondition(), userLevel, eventmap))) {
 				hdelete(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId(), builder.getOrder()+"");
-				saveEvent(userLevel.getUserId(), builder);
+				saveEvent(userLevel.getUserId(), builder.build());
 			}else {
-				saveEventReady(userLevel.getUserId(), builder);
+				saveEventReady(userLevel.getUserId(), builder.build());
 			}
 		}
 	}

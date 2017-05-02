@@ -127,11 +127,11 @@ public class LevelCommandService extends BaseCommandService {
 				userLevel.setCoin(daguan.getGold());
 				userLevel.setExp(daguan.getExperience());
 				redis.saveUserLevel(userLevel);
-				Map<Integer, Event> eventmap = new HashMap<Integer, Event>();
+				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 				for(Event.Builder event : events.getEventBuilderList()){
 //					if(id == event.getDaguan() && event.getWeight() == 0){
 						event.setOrder(events.getId()*300+event.getEventid());
-						eventmap.put(event.getOrder(), event.build());
+						eventmap.put(event.getOrder(), event);
 //					}
 				}
 				redis.productMainEvent(userLevel, eventmap);
