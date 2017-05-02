@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
+import com.trans.pixel.protoc.UserInfoProto.EventEnemy;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
 import com.trans.pixel.protoc.UserInfoProto.EventReward;
@@ -198,9 +199,9 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 
-	public List<RewardBean> eventReward(EventConfig event, Builder responseBuilder, UserBean user, int count){
+	public List<RewardBean> eventReward(EventConfig eventconfig, Event event, UserBean user, int count){
 		List<RewardBean> rewards = new ArrayList<RewardBean>();
-		for(EventReward eventreward : event.getLootList()){
+		for(EventReward eventreward : eventconfig.getLootList()){
 			RewardBean bean = new RewardBean();
 			bean.setItemid(eventreward.getMustloot());
 			bean.setCount(eventreward.getLootcount());
@@ -216,7 +217,19 @@ public class LevelCommandService extends BaseCommandService {
 		bean.setItemid(exp.getItemid());
 		bean.setCount(exp.getCount());
 		rewards.add(bean);}
-		rewards.addAll(redis.getNewplayReward(user, event.getId()));
+		for(EventEnemy enemy : eventconfig.getEnemyList()) {
+			int rewardcount = 0;
+			for(int i = 0; i < enemy.getEnemycount(); i++)
+			if(RedisService.nextInt(100) < enemy.getLootweight())
+				rewardcount++;
+			if(enemy.getLoot() != 0 && rewardcount > 0) {
+				RewardBean bean = new RewardBean();
+				bean.setItemid(enemy.getLoot());
+				bean.setCount(rewardcount);
+				rewards.add(bean);
+			}
+		}
+		rewards.addAll(redis.getNewplayReward(user, eventconfig.getId()));
 //		rewardService.doFilterRewards(user, rewards);
 //		pusher.pushRewardCommand(responseBuilder, user, rewards);
 		return rewards;
@@ -271,7 +284,7 @@ public class LevelCommandService extends BaseCommandService {
 				if(cmd.getRet()){
 					if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
 			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
-						List<RewardBean> rewards = eventReward(eventconfig, responseBuilder, user, event.getCount());
+						List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
 						rewardService.doFilterRewards(user, rewards);
 						pusher.pushRewardCommand(responseBuilder, user, rewards);
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
@@ -292,7 +305,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				eventReward(eventconfig, responseBuilder, user, event.getCount());
+				eventReward(eventconfig, event, user, event.getCount());
 				redis.delEvent(user, event);
 				
 				/**
@@ -357,7 +370,7 @@ public class LevelCommandService extends BaseCommandService {
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder e : redis.getEvents(user, userLevel).values())
 			builder.addEvent(e);
-		if(builder.getEventCount() >= 20)
+		if(builder.getEventCount() >= redis.EVENTSIZE)
 			builder.setEventTime(0);
 		else
 			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
@@ -406,7 +419,7 @@ public class LevelCommandService extends BaseCommandService {
 //					bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
 //					rewardList.add(bean);
 //				}
-				List<RewardBean> rewards = eventReward(eventconfig, responseBuilder, friend, event.getCount());
+				List<RewardBean> rewards = eventReward(eventconfig, event, friend, event.getCount());
 				rewardService.doFilter(friend, rewards);
 //				pusher.pushRewardCommand(responseBuilder, friend, rewards);
 //				if (winBean != null)

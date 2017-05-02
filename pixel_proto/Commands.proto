@@ -2650,6 +2650,8 @@ message EventEnemy {
 	optional int32 enemyid = 2;
 	optional int32 enemycount = 3;
 	optional int32 enemylv = 4;
+	optional int32 lootweight = 5;
+	optional int32 loot = 6;
 }
 message EventConfig {
 	optional int32 id = 1;

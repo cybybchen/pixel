@@ -20195,6 +20195,26 @@ public final class UserInfoProto {
      * <code>optional int32 enemylv = 4;</code>
      */
     int getEnemylv();
+
+    // optional int32 lootweight = 5;
+    /**
+     * <code>optional int32 lootweight = 5;</code>
+     */
+    boolean hasLootweight();
+    /**
+     * <code>optional int32 lootweight = 5;</code>
+     */
+    int getLootweight();
+
+    // optional int32 loot = 6;
+    /**
+     * <code>optional int32 loot = 6;</code>
+     */
+    boolean hasLoot();
+    /**
+     * <code>optional int32 loot = 6;</code>
+     */
+    int getLoot();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.EventEnemy}
@@ -20265,6 +20285,16 @@ public final class UserInfoProto {
             case 32: {
               bitField0_ |= 0x00000008;
               enemylv_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              lootweight_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              loot_ = input.readInt32();
               break;
             }
           }
@@ -20371,11 +20401,45 @@ public final class UserInfoProto {
       return enemylv_;
     }
 
+    // optional int32 lootweight = 5;
+    public static final int LOOTWEIGHT_FIELD_NUMBER = 5;
+    private int lootweight_;
+    /**
+     * <code>optional int32 lootweight = 5;</code>
+     */
+    public boolean hasLootweight() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional int32 lootweight = 5;</code>
+     */
+    public int getLootweight() {
+      return lootweight_;
+    }
+
+    // optional int32 loot = 6;
+    public static final int LOOT_FIELD_NUMBER = 6;
+    private int loot_;
+    /**
+     * <code>optional int32 loot = 6;</code>
+     */
+    public boolean hasLoot() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 loot = 6;</code>
+     */
+    public int getLoot() {
+      return loot_;
+    }
+
     private void initFields() {
       order_ = 0;
       enemyid_ = 0;
       enemycount_ = 0;
       enemylv_ = 0;
+      lootweight_ = 0;
+      loot_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -20401,6 +20465,12 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, enemylv_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, lootweight_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, loot_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -20425,6 +20495,14 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, enemylv_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, lootweight_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, loot_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -20550,6 +20628,10 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         enemylv_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        lootweight_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        loot_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -20594,6 +20676,14 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000008;
         }
         result.enemylv_ = enemylv_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.lootweight_ = lootweight_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.loot_ = loot_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -20621,6 +20711,12 @@ public final class UserInfoProto {
         }
         if (other.hasEnemylv()) {
           setEnemylv(other.getEnemylv());
+        }
+        if (other.hasLootweight()) {
+          setLootweight(other.getLootweight());
+        }
+        if (other.hasLoot()) {
+          setLoot(other.getLoot());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -20777,6 +20873,72 @@ public final class UserInfoProto {
       public Builder clearEnemylv() {
         bitField0_ = (bitField0_ & ~0x00000008);
         enemylv_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 lootweight = 5;
+      private int lootweight_ ;
+      /**
+       * <code>optional int32 lootweight = 5;</code>
+       */
+      public boolean hasLootweight() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional int32 lootweight = 5;</code>
+       */
+      public int getLootweight() {
+        return lootweight_;
+      }
+      /**
+       * <code>optional int32 lootweight = 5;</code>
+       */
+      public Builder setLootweight(int value) {
+        bitField0_ |= 0x00000010;
+        lootweight_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 lootweight = 5;</code>
+       */
+      public Builder clearLootweight() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        lootweight_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 loot = 6;
+      private int loot_ ;
+      /**
+       * <code>optional int32 loot = 6;</code>
+       */
+      public boolean hasLoot() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 loot = 6;</code>
+       */
+      public int getLoot() {
+        return loot_;
+      }
+      /**
+       * <code>optional int32 loot = 6;</code>
+       */
+      public Builder setLoot(int value) {
+        bitField0_ |= 0x00000020;
+        loot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 loot = 6;</code>
+       */
+      public Builder clearLoot() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        loot_ = 0;
         onChanged();
         return this;
       }
@@ -32835,45 +32997,45 @@ public final class UserInfoProto {
       " \001(\005\".\n\tEventCost\022\016\n\006costid\030\001 \001(\005\022\021\n\tcos" +
       "tcount\030\002 \001(\005\"B\n\rEventQuestion\022\020\n\010answeri" +
       "d\030\001 \001(\005\022\016\n\006answer\030\002 \001(\t\022\017\n\007eventid\030\003 \001(\005" +
-      "\"Q\n\nEventEnemy\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid" +
+      "\"s\n\nEventEnemy\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid" +
       "\030\002 \001(\005\022\022\n\nenemycount\030\003 \001(\005\022\017\n\007enemylv\030\004 " +
-      "\001(\005\"\243\002\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030" +
-      "\004 \001(\t\022\016\n\006daguan\030\005 \001(\005\022\014\n\004type\030\007 \001(\005\022/\n\004c",
-      "ost\030\010 \001(\0132!.com.trans.pixel.protoc.Event" +
-      "Cost\0221\n\004loot\030\n \003(\0132#.com.trans.pixel.pro" +
-      "toc.EventReward\0227\n\010question\030\013 \003(\0132%.com." +
-      "trans.pixel.protoc.EventQuestion\0221\n\005enem" +
-      "y\030\014 \003(\0132\".com.trans.pixel.protoc.EventEn" +
-      "emy\022\014\n\004call\030\016 \001(\005\"B\n\017EventConfigList\022/\n\002" +
-      "id\030\001 \003(\0132#.com.trans.pixel.protoc.EventC" +
-      "onfig\"\302\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventi" +
-      "d\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n" +
-      "\rconditiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022",
-      "\020\n\010targetid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006" +
-      "weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001" +
-      "(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003" +
-      "(\0132\035.com.trans.pixel.protoc.Event\022\016\n\006wei" +
-      "ght\030\003 \001(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!" +
-      ".com.trans.pixel.protoc.AreaEvent\"G\n\004Loo" +
-      "t\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.RewardInfo\"4\n\010LootList\022(" +
-      "\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.Loot" +
-      "\"&\n\030RequestLevelStartCommand\022\n\n\002id\030\001 \001(\005",
-      "\"4\n\023RequestEventCommand\022\016\n\006userId\030\001 \001(\005\022" +
-      "\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventCommand\022," +
-      "\n\005event\030\001 \001(\0132\035.com.trans.pixel.protoc.E" +
-      "vent\"\037\n\035RequestLevelLootResultCommand\"{\n" +
-      "\031RequestEventResultCommand\022\r\n\005order\030\001 \001(" +
-      "\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014" +
-      "\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001" +
-      "(\010\"P\n\032ResponseEventResultCommand\0222\n\006rewa" +
-      "rd\030\001 \003(\0132\".com.trans.pixel.protoc.Reward" +
-      "Info\"\252\001\n\030ResponseLevelLootCommand\022\024\n\014unl",
-      "ockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlo" +
-      "otDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teven" +
-      "tTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.p" +
-      "ixel.protoc.Event\"\030\n\026RequestEventBuyComm" +
-      "and"
+      "\001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"\243\002" +
+      "\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\004 \001(\t\022",
+      "\016\n\006daguan\030\005 \001(\005\022\014\n\004type\030\007 \001(\005\022/\n\004cost\030\010 " +
+      "\001(\0132!.com.trans.pixel.protoc.EventCost\0221" +
+      "\n\004loot\030\n \003(\0132#.com.trans.pixel.protoc.Ev" +
+      "entReward\0227\n\010question\030\013 \003(\0132%.com.trans." +
+      "pixel.protoc.EventQuestion\0221\n\005enemy\030\014 \003(" +
+      "\0132\".com.trans.pixel.protoc.EventEnemy\022\014\n" +
+      "\004call\030\016 \001(\005\"B\n\017EventConfigList\022/\n\002id\030\001 \003" +
+      "(\0132#.com.trans.pixel.protoc.EventConfig\"" +
+      "\302\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(" +
+      "\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rcondi",
+      "tiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010tar" +
+      "getid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight" +
+      "\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"U\n\t" +
+      "AreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.c" +
+      "om.trans.pixel.protoc.Event\022\016\n\006weight\030\003 " +
+      "\001(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.t" +
+      "rans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005o" +
+      "rder\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pix" +
+      "el.protoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001" +
+      " \003(\0132\034.com.trans.pixel.protoc.Loot\"&\n\030Re",
+      "questLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Re" +
+      "questEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005ord" +
+      "er\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005even" +
+      "t\030\001 \001(\0132\035.com.trans.pixel.protoc.Event\"\037" +
+      "\n\035RequestLevelLootResultCommand\"{\n\031Reque" +
+      "stEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010t" +
+      "eamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn" +
+      "\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032" +
+      "ResponseEventResultCommand\0222\n\006reward\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"\252",
+      "\001\n\030ResponseLevelLootCommand\022\024\n\014unlockDag" +
+      "uan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDagu" +
+      "an\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030" +
+      "\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.pixel.p" +
+      "rotoc.Event\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33059,7 +33221,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_EventEnemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventEnemy_descriptor,
-              new java.lang.String[] { "Order", "Enemyid", "Enemycount", "Enemylv", });
+              new java.lang.String[] { "Order", "Enemyid", "Enemycount", "Enemylv", "Lootweight", "Loot", });
           internal_static_com_trans_pixel_protoc_EventConfig_descriptor =
             getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_EventConfig_fieldAccessorTable = new

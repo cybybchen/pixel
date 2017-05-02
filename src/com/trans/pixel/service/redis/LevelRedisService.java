@@ -48,7 +48,8 @@ public class LevelRedisService extends RedisService {
 	private static final int NEWPLAY_LEVEL_1 = 1012;
 	private static final int NEWPLAY_LEVEL_2 = 1013;
 	private static final int NEWPLAY_LEVEL_3 = 1014;
-	public static final int EVENTTIME = 1200;
+	public static final int EVENTTIME = 480;
+	public static final int EVENTSIZE = 50;
 	private static final long EVENT_BUY_COUNT = 5;
 	@Resource
 	private UserLevelMapper mapper;
@@ -216,7 +217,7 @@ public class LevelRedisService extends RedisService {
 	public void productEvent(UserBean user, UserLevelBean userLevel, boolean isBuy){
 		long time = now() - userLevel.getEventTime();
 		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
-		if(!isBuy && eventsize >= 20){
+		if(!isBuy && eventsize >= EVENTSIZE){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
 		}else if(time >= EVENTTIME){
@@ -285,7 +286,7 @@ public class LevelRedisService extends RedisService {
 		if (isBuy)
 			return EVENT_BUY_COUNT;
 		
-		return Math.min(20 - eventsize, time / EVENTTIME);
+		return Math.min(EVENTSIZE - eventsize, time / EVENTTIME);
 	}
 	
 	public Event getEvent(long userId, int order) {
