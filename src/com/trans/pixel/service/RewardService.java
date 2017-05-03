@@ -152,10 +152,10 @@ public class RewardService {
 	public void doFilter(UserBean user, List<RewardBean> rewards) {
 		for(int i = rewards.size() - 1; i >= 0; i--) {
 			int itemid = rewards.get(i).getItemid();
-			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
-				Synthetise synthetise = propRedisService.getSynthetise(itemid);
-				itemid = synthetise.getTarget();
-			}
+//			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+//				Synthetise synthetise = propRedisService.getSynthetise(itemid);
+//				itemid = synthetise.getTarget();
+//			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 				UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 				if(bean != null)
@@ -188,10 +188,10 @@ public class RewardService {
 	public void doFilterRewards(UserBean user, MultiReward.Builder rewards) {
 		for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 			int itemid = rewards.getLoot(i).getItemid();
-			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
-				Synthetise synthetise = propRedisService.getSynthetise(itemid);
-				itemid = synthetise.getTarget();
-			}
+//			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+//				Synthetise synthetise = propRedisService.getSynthetise(itemid);
+//				itemid = synthetise.getTarget();
+//			}
 			if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 				UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 				if(bean != null)
