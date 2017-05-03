@@ -252,7 +252,7 @@ public class LevelCommandService extends BaseCommandService {
 			EventConfig config = redis.getEvent(question.getEventid());
 			if(finalid == question.getEventid()){
 				return config;
-			}else if(config.getType() == 3) {
+			}else if(config.getType() == 2) {
 				config = getFinalEvent(config, finalid);
 				if(config != null)
 					return config;
@@ -270,7 +270,7 @@ public class LevelCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 10000 || cmd.getRet()){
 			EventConfig eventconfig = redis.getEvent(event.getEventid());
-			if(eventconfig.getType() == 3) {//选择分支事件
+			if(eventconfig.getType() == 2) {//选择分支事件
 				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
 			}
 			if(eventconfig == null){
