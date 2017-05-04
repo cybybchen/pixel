@@ -15,6 +15,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
@@ -22,7 +23,6 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
@@ -51,6 +51,7 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.NoticeMessageService;
+import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
@@ -101,6 +102,8 @@ public class LevelCommandService extends BaseCommandService {
 	 private NoticeMessageService noticeMessageService;
 	 @Resource
 	 private RankRedisService rankRedisService;
+	 @Resource
+	 private PropService propService;
 	
 	public void levelStart(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
@@ -378,13 +381,13 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	
 	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {
-		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
-		if (userProp == null || userProp.getPropCount() < 1) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
+//		ResultConst ret = propService.canUseProp(user, RewardConst.HELP_ATTACK_PROP_ID);
+//		if (ret instanceof ErrorConst) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+//			ErrorCommand errorCommand = buildErrorCommand(ret);
+//            responseBuilder.setErrorCommand(errorCommand);
+//            return;
+//		}
 		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getOther(friendUserId);
@@ -427,8 +430,8 @@ public class LevelCommandService extends BaseCommandService {
 //				
 //				rewardList.addAll(levelService.getNewplayReward(user, levelId));
 				
-				userProp.setPropCount(userProp.getPropCount() - 1);
-				userPropService.updateUserProp(userProp);
+//				userProp.setPropCount(userProp.getPropCount() - 1);
+//				userPropService.updateUserProp(userProp);
 			
 				sendHelpMail(friend, user, rewards);
 			

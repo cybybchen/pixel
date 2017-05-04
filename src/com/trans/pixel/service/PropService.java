@@ -186,4 +186,13 @@ public class PropService {
 		multiReward.addAllLoot(rewards);
 		return multiReward;
 	}
+	
+	public ResultConst canUseProp(UserBean user, int propId) {
+		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
+		if (userProp == null || userProp.getPropCount() < 1) {
+			return ErrorConst.PROP_USE_ERROR;
+		}
+		
+		return SuccessConst.USE_PROP;
+	}
 }

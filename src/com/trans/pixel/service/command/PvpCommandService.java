@@ -145,14 +145,14 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
-		if (userProp.getPropCount() < 1) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
-            return;
-		}
+//		UserPropBean userProp = userPropService.selectUserProp(user.getId(), RewardConst.HELP_ATTACK_PROP_ID);
+//		if (userProp.getPropCount() < 1) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+//			
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
+//            responseBuilder.setErrorCommand(errorCommand);
+//            return;
+//		}
 		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getOther(friendUserId);
@@ -171,8 +171,8 @@ public class PvpCommandService extends BaseCommandService {
 		}
 		
 		if (cmd.getRet()) {
-			userProp.setPropCount(userProp.getPropCount() - 1);
-			userPropService.updateUserProp(userProp);
+//			userProp.setPropCount(userProp.getPropCount() - 1);
+//			userPropService.updateUserProp(userProp);
 		
 			sendHelpMail(friend, user);
 			handleRewards(responseBuilder, friend, reward.getItemid(), reward.getCount(), false);
