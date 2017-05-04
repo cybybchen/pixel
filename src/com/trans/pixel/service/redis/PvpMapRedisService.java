@@ -395,7 +395,7 @@ public class PvpMapRedisService extends RedisService{
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
 		}else{
-			String xml = ReadConfig("lol_pvphuodong.xml");
+			String xml = ReadConfig("ld_pvphuodong.xml");
 			parseXml(xml, builder);
 			set(RedisKey.PVPACTIVITYMONSTER_CONFIG, formatJson(builder.build()));
 			return builder.build();
