@@ -1,16 +1,13 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -33,7 +30,6 @@ import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.RewardTaskService;
 import com.trans.pixel.service.UserRewardTaskService;
 import com.trans.pixel.service.redis.RedisService;
@@ -45,8 +41,6 @@ public class RewardTaskCommandService extends BaseCommandService {
 	private RewardTaskService rewardTaskService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private LogService logService;
 	@Resource
@@ -72,8 +66,7 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doRewards(user, rewards);
-		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		handleRewards(responseBuilder, user, rewards.build());
 
 
 		pusher.pushUserRewardTask(responseBuilder, user);
@@ -192,8 +185,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder);
 		if (rewardList != null && rewardList.size() > 0) {
-			rewardService.doRewards(user, rewardList);
-			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 			
 			ResponseUserRewardTaskCommand.Builder userRewardTaskBuilder = ResponseUserRewardTaskCommand.newBuilder();
 			userRewardTaskBuilder.addUserRewardTask(builder.build());

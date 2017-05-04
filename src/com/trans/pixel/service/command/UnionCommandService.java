@@ -35,7 +35,6 @@ import com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -53,8 +52,6 @@ public class UnionCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private UnionMapper unionMapper;
-	@Resource
-	private RewardService rewardService;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions = unionService.getBaseUnions(user);
@@ -253,11 +250,11 @@ public class UnionCommandService extends BaseCommandService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, percent, rewards);
 		
-		rewardService.doRewards(user, rewards);
+		handleRewards(responseBuilder, user, rewards.build());
+		
 		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
 		builder.addUnionBoss(unionBoss);
 		responseBuilder.setUnionBossCommand(builder.build());
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 }

@@ -10,7 +10,6 @@ import com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand;
 import com.trans.pixel.service.BloodfightService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserBattletowerService;
 
 @Service
@@ -18,8 +17,6 @@ public class BloodfightCommandService extends BaseCommandService {
 
 	@Resource
 	private PushCommandService push;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private BloodfightService bloodfightService;
 	@Resource

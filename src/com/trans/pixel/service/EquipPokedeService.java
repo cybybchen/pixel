@@ -34,8 +34,6 @@ public class EquipPokedeService {
 	private EquipPokedeRedisService equipPokedeRedisService;
 	@Resource
 	private CostService costService;
-//	@Resource
-//	private RewardService rewardService;
 	@Resource
 	private EquipService equipService;
 	@Resource

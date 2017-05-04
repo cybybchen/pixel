@@ -26,7 +26,6 @@ import com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
 import com.trans.pixel.service.BossService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -37,15 +36,12 @@ public class BossCommandService extends BaseCommandService {
 	@Resource
 	private PushCommandService pusher;
 	@Resource
-	private RewardService rewardService;
-	@Resource
 	private LogService logService;
 	
 	public void bossKill(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> rewardList = bossService.submitBosskill(user, cmd.getGroupId(), cmd.getBossId());
 		if (rewardList != null && rewardList.size() > 0) {
-			rewardService.doFilterRewards(user, rewardList);
-			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 		} else {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_IS_NOT_EXIST_ERROR);
@@ -188,8 +184,7 @@ public class BossCommandService extends BaseCommandService {
 			responseBuilder.setBossRoomRecordCommand(roombuilder.build());
 		}
 		if (!rewardList.isEmpty()) {
-			rewardService.doFilterRewards(user, rewardList);
-			pusher.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 			
 			pusher.pushUserBosskillRecord(responseBuilder, user);
 		}

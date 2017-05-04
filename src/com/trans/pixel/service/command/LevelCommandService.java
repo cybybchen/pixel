@@ -72,9 +72,9 @@ public class LevelCommandService extends BaseCommandService {
 	@Resource
 	private LevelRedisService redis;
 	@Resource
-	private RewardService rewardService;
-	@Resource
 	private CostService costService;
+	@Resource
+	private RewardService rewardService;
 	// @Resource
 	// private WinService winService;
 	// @Resource
@@ -175,8 +175,8 @@ public class LevelCommandService extends BaseCommandService {
 			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
-			rewardService.doRewards(user, rewards);
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+
+			handleRewards(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
 		}
@@ -285,8 +285,7 @@ public class LevelCommandService extends BaseCommandService {
 					if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
 			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
 						List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
-						rewardService.doFilterRewards(user, rewards);
-						pusher.pushRewardCommand(responseBuilder, user, rewards);
+						handleRewards(responseBuilder, user, rewards);
 						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 							userLevel.setLeftCount(userLevel.getLeftCount()-1);
 							redis.saveUserLevel(userLevel);
@@ -306,8 +305,7 @@ public class LevelCommandService extends BaseCommandService {
 					redis.saveUserLevel(userLevel);
 				}
 				List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
-				rewardService.doFilterRewards(user, rewards);
-				pusher.pushRewardCommand(responseBuilder, user, rewards);
+				handleRewards(responseBuilder, user, rewards);
 				redis.delEvent(user, event);
 				
 				/**

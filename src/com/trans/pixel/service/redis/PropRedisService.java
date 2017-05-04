@@ -39,7 +39,7 @@ public class PropRedisService extends RedisService {
 		return null;
 	}
 	
-	private Map<String, Prop> getPackageConfig() {
+	public Map<String, Prop> getPackageConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.PROP_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Prop> map = buildPackageConfig();

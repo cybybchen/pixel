@@ -7,12 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.Commands.ResponseMessageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand;

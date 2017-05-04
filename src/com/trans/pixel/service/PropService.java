@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.annotation.Resource;
@@ -52,7 +53,7 @@ public class PropService {
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
-				if(reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
+				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
 					randomReward(rewardList, getProp(reward.getItemid()), (int)rewardService.randomRewardCount(reward));
 				}else
 					rewardService.mergeReward(rewardList, reward);
@@ -154,5 +155,35 @@ public class PropService {
 		}
 		
 		return costList;
+	}
+	
+	public MultiReward.Builder handleRewards(List<RewardBean> rewardList) {
+		return rewardsHandle(RewardBean.buildRewardInfoList(rewardList));
+	}
+	
+	public MultiReward.Builder handleRewards(MultiReward.Builder builder) {
+		return rewardsHandle(builder.getLootList());
+	}
+	
+	public MultiReward.Builder handleRewards(MultiReward multi) {
+		return rewardsHandle(multi.getLootList());
+	}
+	
+	private MultiReward.Builder rewardsHandle(List<RewardInfo> rewardList) {
+		MultiReward.Builder multiReward = MultiReward.newBuilder();
+		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
+		Map<String, Prop> map = propRedisService.getPackageConfig();
+		for (RewardInfo reward : rewardList) {
+			Prop prop = map.get("" + reward.getItemid());
+			if (prop == null || prop.getAutoopen() == 0) {
+				rewards.add(reward);
+				continue;
+			}
+			
+			randomReward(rewards, prop, (int)reward.getCount());
+		}
+		
+		multiReward.addAllLoot(rewards);
+		return multiReward;
 	}
 }

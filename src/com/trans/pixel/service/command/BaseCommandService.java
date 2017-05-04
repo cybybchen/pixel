@@ -29,6 +29,7 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.ActivityProto.UserAchieve;
 import com.trans.pixel.protoc.Base.ClearInfo;
 import com.trans.pixel.protoc.Base.HeroInfo;
+import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserEquipPokede;
 import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -43,9 +44,10 @@ import com.trans.pixel.protoc.MailProto.Mail;
 import com.trans.pixel.protoc.MailProto.MailList;
 import com.trans.pixel.protoc.MailProto.UserFriend;
 import com.trans.pixel.protoc.MessageBoardProto.MessageBoard;
-import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.UserHead;
 import com.trans.pixel.service.LadderService;
+import com.trans.pixel.service.PropService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -55,6 +57,12 @@ public class BaseCommandService {
 	private LadderService ladderService;
 	@Resource
 	private UserClearService userClearService;
+	@Resource
+	private PropService propService;
+	@Resource
+	private RewardService rewardService;
+	@Resource
+	private PushCommandService pushCommandService;
 	
 //	protected void buildUserInfo(ResponseUserInfoCommand.Builder builder, UserBean user) {
 //		builder.setUser(user.build());
@@ -326,5 +334,34 @@ public class BaseCommandService {
 		}
 		
 		return clearInfoList;
+	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, int rewardId, long rewardCount) {
+		handleRewards(responseBuilder, user, rewardId, rewardCount, true);
+	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, int rewardId, long rewardCount, boolean isSelf) {
+		MultiReward.Builder rewards = propService.handleRewards(RewardBean.initRewardList(rewardId, rewardCount));
+		rewardService.doFilterRewards(user, rewards);
+		if (isSelf)
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, List<RewardBean> rewardList) {
+		MultiReward.Builder rewards = propService.handleRewards(rewardList);
+		rewardService.doFilterRewards(user, rewards);
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, MultiReward.Builder builder) {
+		MultiReward.Builder rewards = propService.handleRewards(builder);
+		rewardService.doFilterRewards(user, rewards);
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, MultiReward multi) {
+		MultiReward.Builder rewards = propService.handleRewards(multi);
+		rewardService.doFilterRewards(user, rewards);
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 }

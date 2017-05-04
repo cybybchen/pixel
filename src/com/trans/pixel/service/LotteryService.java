@@ -27,8 +27,6 @@ public class LotteryService {
 	@Resource
 	private CostService costService;
 	@Resource
-	private RewardService rewardService;
-	@Resource
 	private UserService userService;
 	@Resource
 	private NoticeMessageService noticeMessageService;

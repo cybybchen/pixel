@@ -21,7 +21,6 @@ import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
 import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.HttpUtil;
 
@@ -30,8 +29,6 @@ public class CdkeyCommandService extends BaseCommandService {
 	private Logger log = Logger.getLogger(CdkeyCommandService.class);
 	@Resource
 	private CdkeyService service;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private PushCommandService pusher;
 	@Resource
@@ -81,9 +78,9 @@ public class CdkeyCommandService extends BaseCommandService {
 			rewards.setId(cdkey.getId());
 			rewards.setName(cdkey.getName());
 			rewards.addAllLoot(cdkey.getRewardList());
-			rewardService.doRewards(user, rewards);
+			handleRewards(responseBuilder, user, rewards.build());
 			service.saveCdkeyRewarded(user, rewarded);
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+			
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.CDKEY_SUCCESS));
 		}
 	}

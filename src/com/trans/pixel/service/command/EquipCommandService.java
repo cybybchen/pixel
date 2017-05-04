@@ -22,7 +22,6 @@ import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -33,8 +32,6 @@ public class EquipCommandService extends BaseCommandService {
 	private EquipService equipService;
 	@Resource
 	private PushCommandService pushCommandService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserEquipService userEquipService;
 	@Resource
@@ -101,8 +98,8 @@ public class EquipCommandService extends BaseCommandService {
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.addAllLoot(rewardList);
 			rewards.setName("恭喜获得");
-			rewardService.doRewards(user, rewards);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+
+			handleRewards(responseBuilder, user, rewards.build());
 		}
 		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build(), false);
 	}

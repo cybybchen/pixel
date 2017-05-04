@@ -16,7 +16,6 @@ import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.redis.BossRedisService;
 import com.trans.pixel.service.redis.RedisService;
@@ -28,8 +27,6 @@ public class PropCommandService extends BaseCommandService {
 	private PropService propService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserPropService userPropService;
 	@Resource
@@ -75,8 +72,7 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		if (rewards.getLootCount() > 0) {
-			rewardService.doRewards(user, rewards);
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+			handleRewards(responseBuilder, user, rewards.build());
 		}
 		
 		
@@ -101,8 +97,7 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		
-		rewardService.doFilterRewards(user, rewards);
-		pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		handleRewards(responseBuilder, user, rewards.build());
 		pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
 	}
 }

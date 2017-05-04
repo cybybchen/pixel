@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,6 @@ import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
@@ -73,8 +71,6 @@ public class UserCommandService extends BaseCommandService {
 	private ServerService serverService;
 	@Resource
 	private UserTalentService userTalentService;
-	@Resource
-	private RewardService rewardService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -278,8 +274,7 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 		}
 		if (!rewardList.isEmpty()) {
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 		}
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

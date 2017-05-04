@@ -29,7 +29,6 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipPokedeService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.redis.RedisService;
@@ -49,8 +48,6 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	private UserClearService userClearService;
 	@Resource
 	private EquipPokedeService equipPokedeService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private ActivityService activityService;
 	@Resource
@@ -106,6 +103,6 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 		builder.addUserEquipPokede(pokede.build());
 		responseBuilder.setEquipPokedeCommand(builder.build());
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build(), false);
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build(), false);//cost
 	}
 }

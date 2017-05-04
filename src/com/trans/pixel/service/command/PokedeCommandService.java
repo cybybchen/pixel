@@ -32,7 +32,6 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.FoodService;
 import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.redis.RedisService;
@@ -54,8 +53,6 @@ public class PokedeCommandService extends BaseCommandService {
 	private UserClearService userClearService;
 	@Resource
 	private ClearService clearService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private HeroService heroService;
 	@Resource

@@ -49,8 +49,6 @@ public class PvpMapService {
 	@Resource
 	private UserService userService;
 	@Resource
-	private RewardService rewardService;
-	@Resource
 	private RankRedisService rankRedisService;
 //	@Resource
 //	private UserFriendRedisService userFriendRedisService;
@@ -70,6 +68,8 @@ public class PvpMapService {
 	private NoticeMessageService noticeMessageService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private RewardService rewardService;
 
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user) {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
@@ -355,7 +355,6 @@ public class PvpMapService {
 						rewards.addLoot(rewardinfo);
 				}
 			}
-			rewardService.doFilterRewards(user, rewards);
 			int buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
 			if (monster.getId()/1000 == 2) {
 				/**
@@ -460,7 +459,6 @@ public class PvpMapService {
 					redis.addUserBuff(user, 0, 1);
 					UserInfo owner = userService.getCache(user.getServerId(), userId);
 					reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
-					rewardService.doReward(user, reward.build());
 				}
 			}
 		}

@@ -20,7 +20,6 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
@@ -35,13 +34,11 @@ import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand;
-import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
 import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
@@ -69,8 +66,6 @@ public class HeroCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private EquipService equipService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private CostService costService;
 	@Resource
@@ -164,8 +159,7 @@ public class HeroCommandService extends BaseCommandService {
 				userHeroService.delUserHero(user.getId(), costInfoIds);
 				
 				if (rewardList.size() > 0) {
-					rewardService.doRewards(user, rewardList);
-					pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+					handleRewards(responseBuilder, user, rewardList);
 				}
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
@@ -295,8 +289,7 @@ public class HeroCommandService extends BaseCommandService {
 				rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
 			
 			if (rewardList.size() > 0) {
-				rewardService.doRewards(user, rewardList);
-				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+				handleRewards(responseBuilder, user, rewardList);
 			}
 			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 		}
@@ -341,8 +334,7 @@ public class HeroCommandService extends BaseCommandService {
 			userHeroService.updateUserHero(heroInfo);
 			
 			List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.COIN, resetCoin);
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 		}
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		builder.setHeroId(heroId);

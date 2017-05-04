@@ -16,7 +16,6 @@ import com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand;
 import com.trans.pixel.service.BattletowerService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserBattletowerService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -25,8 +24,6 @@ public class BattletowerCommandService extends BaseCommandService {
 
 	@Resource
 	private PushCommandService push;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private BattletowerService battletowerService;
 	@Resource
@@ -49,8 +46,7 @@ public class BattletowerCommandService extends BaseCommandService {
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());
 		if (!rewards.getLootList().isEmpty()) {
-			rewardService.doRewards(user, rewards);
-			push.pushRewardCommand(responseBuilder, user, rewards.build());
+			handleRewards(responseBuilder, user, rewards.build());
 		}
 	}
 	
@@ -67,8 +63,7 @@ public class BattletowerCommandService extends BaseCommandService {
 		builder.setUbt(ubt.build());
 		responseBuilder.setUserBattletowerCommand(builder.build());
 		if (!rewards.getLootList().isEmpty()) {
-			rewardService.doRewards(user, rewards);
-			push.pushRewardCommand(responseBuilder, user, rewards.build());
+			handleRewards(responseBuilder, user, rewards.build());
 		}
 	}
 	

@@ -20,7 +20,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.service.AchieveService;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -31,8 +30,6 @@ public class AchieveCommandService extends BaseCommandService {
 	private AchieveService achieveService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserAchieveService userAchieveService;
 	@Resource
@@ -52,8 +49,7 @@ public class AchieveCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward);
-			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			handleRewards(responseBuilder, user, multiReward.build());
 			/**
 			 * send log
 			 */

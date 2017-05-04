@@ -22,8 +22,6 @@ public class MailService {
 	@Resource
 	private UserService userService;
 	@Resource
-	private RewardService rewardService;
-	@Resource
 	private NoticeService noticeService;
 	
 	public void addMail(MailBean mail) {

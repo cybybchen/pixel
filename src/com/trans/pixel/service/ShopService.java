@@ -46,8 +46,6 @@ public class ShopService {
 	@Resource
     private UserService userService;
 	@Resource
-    private RewardService rewardService;
-	@Resource
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private ServerService serverService;

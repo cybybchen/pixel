@@ -15,7 +15,6 @@ import com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand;
 import com.trans.pixel.protoc.TaskProto.ResponseUserTaskCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.NoticeService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.TaskService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.redis.RedisService;
@@ -27,8 +26,6 @@ public class TaskCommandService extends BaseCommandService {
 	private TaskService taskService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserTaskService userTaskService;
 	@Resource
@@ -48,8 +45,7 @@ public class TaskCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward);
-			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			handleRewards(responseBuilder, user, multiReward.build());
 			pusher.pushUserInfoCommand(responseBuilder, user);
 			/**
 			 * send log

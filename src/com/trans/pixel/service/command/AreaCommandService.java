@@ -98,8 +98,8 @@ public class AreaCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
-		} else
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+		} else 
+			handleRewards(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 		Collection<AreaEquip> equips = service.AreaEquips(user);
@@ -118,7 +118,7 @@ public class AreaCommandService extends BaseCommandService{
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		} else if(rewards.getLootCount() > 0)
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+			handleRewards(responseBuilder, user, rewards.build());
 		pusher.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setAreaCommand(getAreas(user));
 		Collection<AreaEquip> equips = service.AreaEquips(user);

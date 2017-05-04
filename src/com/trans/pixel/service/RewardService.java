@@ -14,7 +14,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -180,6 +179,18 @@ public class RewardService {
 		}
 	}
 	
+	public void doRewards(UserBean user, MultiReward rewards) {
+		boolean needUpdateUser = false;
+		for (RewardInfo reward : rewards.getLootList()) {
+			if(doReward(user, reward.getItemid(), reward.getCount()))
+			needUpdateUser = true;
+		}
+		
+		if (needUpdateUser) {
+			userService.updateUser(user);
+		}
+	}
+	
 //	public void doRewards(long userId, List<RewardBean> rewardList) {
 //		UserBean bean = userService.getOther(userId);
 //		doRewards(bean, rewardList);
@@ -213,6 +224,8 @@ public class RewardService {
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
+		if (mergeReward == null || mergeReward.getItemid() == 0)
+			return rewardList;
 		RewardInfo.Builder builder = RewardInfo.newBuilder(mergeReward);
 		builder.setCount(randomRewardCount(mergeReward));
 		for (int i = 0; i < rewardList.size(); i++) {

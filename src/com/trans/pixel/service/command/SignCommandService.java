@@ -17,7 +17,6 @@ import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
 import com.trans.pixel.protoc.RechargeProto.ResponseSignCommand;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.SignService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
@@ -29,8 +28,6 @@ public class SignCommandService extends BaseCommandService {
 	private SignService signService;
 	@Resource
 	private PushCommandService pushCommandService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -48,10 +45,9 @@ public class SignCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 		}else{
 			rewards.addAllLoot(rewardList);
-			rewardService.doRewards(user, rewards);
+			handleRewards(responseBuilder, user, rewards);
 			builder.addAllReward(rewardList);
 			responseBuilder.setSignCommand(builder.build());
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 		}
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
@@ -68,8 +64,7 @@ public class SignCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, rewardList);
-			pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+			handleRewards(responseBuilder, user, rewardList);
 		}
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);

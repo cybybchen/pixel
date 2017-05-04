@@ -23,7 +23,6 @@ import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -35,8 +34,6 @@ public class RaidCommandService extends BaseCommandService{
     private PushCommandService pusher;
 	@Resource
     private CostService costService;
-	@Resource
-    private RewardService rewardService;
 	@Resource
 	private LogService logService;
 	@Resource
@@ -87,8 +84,7 @@ public class RaidCommandService extends BaseCommandService{
 					rewards.addLoot(reward);
 				}
 			}
-			rewardService.doFilterRewards(user, rewards);
-			pusher.pushRewardCommand(responseBuilder, user, rewards.build());
+			handleRewards(responseBuilder, user, rewards.build());
 			
 			id++;
 //			order = redis.getRaidOrder(id);

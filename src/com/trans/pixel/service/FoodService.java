@@ -21,8 +21,6 @@ public class FoodService {
 	private ClearRedisService clearRedisService;
 	@Resource
 	private UserFoodService userFoodService;
-	@Resource
-	private RewardService rewardService;
 	
 	private static final float FOOD_VERYLOVE_PERCENT = 1.5f;
 	private static final float FOOD_LOVE_PERCENT = 1.2f;

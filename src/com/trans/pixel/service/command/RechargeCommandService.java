@@ -14,7 +14,6 @@ import com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RechargeService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RedisService;
@@ -26,8 +25,6 @@ public class RechargeCommandService extends BaseCommandService {
 	private ActivityService activityService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private LogService logService;
 	@Resource

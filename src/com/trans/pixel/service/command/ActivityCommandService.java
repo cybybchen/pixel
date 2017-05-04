@@ -31,7 +31,6 @@ import com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.NoticeService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserActivityService;
 import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.redis.ActivityRedisService;
@@ -44,8 +43,6 @@ public class ActivityCommandService extends BaseCommandService {
 	private ActivityService activityService;
 	@Resource
 	private PushCommandService pusher;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserActivityService userActivityService;
 	@Resource
@@ -69,8 +66,7 @@ public class ActivityCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward);
-			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			handleRewards(responseBuilder, user, multiReward.build());
 			/**
 			 * send log
 			 */
@@ -129,8 +125,7 @@ public class ActivityCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward);
-			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			handleRewards(responseBuilder, user, multiReward.build());
 			/**
 			 * send log
 			 */
@@ -163,9 +158,7 @@ public class ActivityCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand((ErrorConst)result);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			rewardService.doRewards(user, multiReward);
-			
-			pusher.pushRewardCommand(responseBuilder, user, multiReward.build());
+			handleRewards(responseBuilder, user, multiReward.build());
 		}
 		
 		pusher.pushUserInfoCommand(responseBuilder, user);

@@ -12,7 +12,6 @@ import com.trans.pixel.protoc.RechargeProto.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowJewelCommand;
 import com.trans.pixel.service.LibaoService;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -22,8 +21,6 @@ public class LibaoCommandService extends BaseCommandService{
     private LibaoService service;
 	@Resource
     private UserService userService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private PushCommandService pusher;
 	@Resource
@@ -161,14 +158,13 @@ public class LibaoCommandService extends BaseCommandService{
 			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
 			user.setGrowJewelCountStatus(index + user.getGrowJewelCountStatus());
-			rewardService.doReward(user, pool.getRewardid(), pool.getRewardcount());
+			handleRewards(responseBuilder, user, pool.getRewardid(), pool.getRewardcount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
 			// reward.setItemid(pool.getRewardid());
 			// reward.setCount(pool.getRewardcount());
 			// MultiReward.Builder rewards = MultiReward.newBuilder();
 			// rewards.addLoot(reward);
-			pusher.pushRewardCommand(responseBuilder, user, pool.getRewardid(), "", pool.getRewardcount());
 		}else{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));
@@ -182,14 +178,13 @@ public class LibaoCommandService extends BaseCommandService{
 			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
 			user.setGrowExpCountStatus(index + user.getGrowExpCountStatus());
-			rewardService.doReward(user, pool.getRewardid(), pool.getRewardcount());
+			handleRewards(responseBuilder, user, pool.getRewardid(), pool.getRewardcount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
 			// reward.setItemid(pool.getRewardid());
 			// reward.setCount(pool.getRewardcount());
 			// MultiReward.Builder rewards = MultiReward.newBuilder();
 			// rewards.addLoot(reward);
-			pusher.pushRewardCommand(responseBuilder, user, pool.getRewardid(), "", pool.getRewardcount());
 		}else{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.GET_REWARD_AGAIN);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.GET_REWARD_AGAIN));

@@ -23,7 +23,6 @@ import com.trans.pixel.protoc.MailProto.RequestReadMailCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
@@ -39,8 +38,6 @@ public class MailCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private PushCommandService pushCommandService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private LogService logService;
 	
@@ -64,8 +61,7 @@ public class MailCommandService extends BaseCommandService {
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 			
 			if (rewardList.size() > 0) {
-				rewardService.doRewards(user, rewardList);
-				pushCommandService.pushRewardCommand(responseBuilder, user, rewardList);
+				handleRewards(responseBuilder, user, rewardList);
 			}
 		}
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);

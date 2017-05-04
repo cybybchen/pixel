@@ -982,6 +982,7 @@ message Prop {
 	optional int32 itemcount = 10;
 	optional int32 weightall = 11;
 	repeated RewardInfo item = 12;
+	optional uint32 autoopen = 13;
 }
 
 message ChipList {

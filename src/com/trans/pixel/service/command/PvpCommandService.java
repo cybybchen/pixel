@@ -1,7 +1,5 @@
 package com.trans.pixel.service.command;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -35,7 +33,6 @@ import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand;
-import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
@@ -124,7 +121,7 @@ public class PvpCommandService extends BaseCommandService {
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		} else if(rewards.getLootCount() > 0)
-			pusher.pushRewardCommand(responseBuilder, user, rewards);
+			handleRewards(responseBuilder, user, rewards);
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
@@ -142,7 +139,7 @@ public class PvpCommandService extends BaseCommandService {
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}else if(reward.getCount() > 0){
-			pusher.pushRewardCommand(responseBuilder, user, reward.getItemid(), "", reward.getCount());
+			handleRewards(responseBuilder, user, reward.getItemid(), reward.getCount());
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
@@ -178,6 +175,7 @@ public class PvpCommandService extends BaseCommandService {
 			userPropService.updateUserProp(userProp);
 		
 			sendHelpMail(friend, user);
+			handleRewards(responseBuilder, friend, reward.getItemid(), reward.getCount(), false);
 		
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 			pusher.pushUserPropListCommand(responseBuilder, user);

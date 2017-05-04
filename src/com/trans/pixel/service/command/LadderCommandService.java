@@ -32,7 +32,6 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -48,8 +47,6 @@ public class LadderCommandService extends BaseCommandService {
 	private MailService mailService;
 	@Resource
 	private ActivityService activityService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private CostService costService;
 	@Resource
@@ -100,8 +97,7 @@ public class LadderCommandService extends BaseCommandService {
 				if(!rewards.hasName())
 					rewards.setName("天梯获胜奖励");
 				if (rewards.getLootList().size() > 0) {
-					rewardService.doFilterRewards(user, rewards);
-					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+					handleRewards(responseBuilder, user, rewards.build());
 				}
 			} else if(result.getCode() == SuccessConst.LADDER_ATTACK_FAIL.getCode()) {
 				MultiReward.Builder rewards = MultiReward.newBuilder();
@@ -110,8 +106,7 @@ public class LadderCommandService extends BaseCommandService {
 				if(!rewards.hasName())
 					rewards.setName("天梯参与奖励");
 				if (rewards.getLootList().size() > 0) {
-					rewardService.doFilterRewards(user, rewards);
-					pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+					handleRewards(responseBuilder, user, rewards.build());
 				}
 			}
 			

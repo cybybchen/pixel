@@ -26,7 +26,6 @@ import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LotteryService;
-import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.UserPokedeService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.HeroRedisService;
@@ -42,8 +41,6 @@ public class LotteryCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private LotteryService lotteryService;
-	@Resource
-	private RewardService rewardService;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -144,8 +141,7 @@ public class LotteryCommandService extends BaseCommandService {
 		 */
 		activityService.lotteryActivity(user, count, type, cost, free);
 		
-		rewardService.doRewards(user, lotteryList);
-		pushCommandService.pushRewardCommand(responseBuilder, user, lotteryList);
+		handleRewards(responseBuilder, user, lotteryList);
 		
 		pushUserData(responseBuilder, user, type);
 		/**

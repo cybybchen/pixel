@@ -46,7 +46,6 @@ import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.Rank;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Shouchong;
