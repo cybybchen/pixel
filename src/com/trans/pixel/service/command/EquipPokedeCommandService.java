@@ -74,6 +74,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
             
             return;
 		}
+		
+		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		activityService.levelupEquip(user, pokede.getLevel());
 		
 		Map<String, String> params = new HashMap<String, String>();
@@ -99,7 +101,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		params.put(LogString.COINCOST, "" + (rewards.getLootCount()>0 ? rewards.getLoot(0).getCount() :0));
 		
 		logService.sendLog(params, LogString.LOGTYPE_EQUIPUP);
-		userEquipPokedeService.updateUserEquipPokede(pokede, user);
+		
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 		builder.addUserEquipPokede(pokede.build());
 		responseBuilder.setEquipPokedeCommand(builder.build());
