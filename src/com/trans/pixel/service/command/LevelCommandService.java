@@ -302,6 +302,10 @@ public class LevelCommandService extends BaseCommandService {
 					}
 				}
 				redis.delEvent(user, event);
+				/**
+				 * 完成事件的活动
+				 */
+				activityService.completeEvent(user, event.getEventid());
 			}else if(cmd.getRet()){//fight event
 				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
