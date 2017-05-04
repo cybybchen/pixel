@@ -275,12 +275,12 @@ public class LotteryCommandService extends BaseCommandService {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		switch (type) {
 			case RewardConst.COIN :
-				rewardList.add(RewardBean.init(52020, 1));
+				rewardList.add(RewardBean.init(52046, 1));
 				user.setLotteryStatus(user.getLotteryStatus() + (1 << 1));
 				break;
 			case RewardConst.JEWEL :
 				user.setLotteryStatus(user.getLotteryStatus() + (1 << 2));
-				rewardList.add(RewardBean.init(53046, 1));
+				rewardList.add(RewardBean.init(53020, 1));
 				user.setJewelPRD(user.getJewelPRD() + 1);
 				break;
 			default:
