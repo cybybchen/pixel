@@ -552,11 +552,6 @@ message HeroRareLevelupRank {
 	optional int32 count2 = 7;
 	optional int32 equip3 = 8;
 	optional int32 count3 = 9;
-	optional int32 equip4 = 10;
-	optional int32 count4 = 11;
-	optional int32 equip5 = 12;
-	optional int32 count5 = 13;
-	optional int32 zhanli = 14;
 	optional int32 levelrequire = 15;
 }
 

@@ -2962,56 +2962,6 @@ public final class HeroProto {
      */
     int getCount3();
 
-    // optional int32 equip4 = 10;
-    /**
-     * <code>optional int32 equip4 = 10;</code>
-     */
-    boolean hasEquip4();
-    /**
-     * <code>optional int32 equip4 = 10;</code>
-     */
-    int getEquip4();
-
-    // optional int32 count4 = 11;
-    /**
-     * <code>optional int32 count4 = 11;</code>
-     */
-    boolean hasCount4();
-    /**
-     * <code>optional int32 count4 = 11;</code>
-     */
-    int getCount4();
-
-    // optional int32 equip5 = 12;
-    /**
-     * <code>optional int32 equip5 = 12;</code>
-     */
-    boolean hasEquip5();
-    /**
-     * <code>optional int32 equip5 = 12;</code>
-     */
-    int getEquip5();
-
-    // optional int32 count5 = 13;
-    /**
-     * <code>optional int32 count5 = 13;</code>
-     */
-    boolean hasCount5();
-    /**
-     * <code>optional int32 count5 = 13;</code>
-     */
-    int getCount5();
-
-    // optional int32 zhanli = 14;
-    /**
-     * <code>optional int32 zhanli = 14;</code>
-     */
-    boolean hasZhanli();
-    /**
-     * <code>optional int32 zhanli = 14;</code>
-     */
-    int getZhanli();
-
     // optional int32 levelrequire = 15;
     /**
      * <code>optional int32 levelrequire = 15;</code>
@@ -3108,33 +3058,8 @@ public final class HeroProto {
               count3_ = input.readInt32();
               break;
             }
-            case 80: {
-              bitField0_ |= 0x00000080;
-              equip4_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000100;
-              count4_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000200;
-              equip5_ = input.readInt32();
-              break;
-            }
-            case 104: {
-              bitField0_ |= 0x00000400;
-              count5_ = input.readInt32();
-              break;
-            }
-            case 112: {
-              bitField0_ |= 0x00000800;
-              zhanli_ = input.readInt32();
-              break;
-            }
             case 120: {
-              bitField0_ |= 0x00001000;
+              bitField0_ |= 0x00000080;
               levelrequire_ = input.readInt32();
               break;
             }
@@ -3290,86 +3215,6 @@ public final class HeroProto {
       return count3_;
     }
 
-    // optional int32 equip4 = 10;
-    public static final int EQUIP4_FIELD_NUMBER = 10;
-    private int equip4_;
-    /**
-     * <code>optional int32 equip4 = 10;</code>
-     */
-    public boolean hasEquip4() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 equip4 = 10;</code>
-     */
-    public int getEquip4() {
-      return equip4_;
-    }
-
-    // optional int32 count4 = 11;
-    public static final int COUNT4_FIELD_NUMBER = 11;
-    private int count4_;
-    /**
-     * <code>optional int32 count4 = 11;</code>
-     */
-    public boolean hasCount4() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 count4 = 11;</code>
-     */
-    public int getCount4() {
-      return count4_;
-    }
-
-    // optional int32 equip5 = 12;
-    public static final int EQUIP5_FIELD_NUMBER = 12;
-    private int equip5_;
-    /**
-     * <code>optional int32 equip5 = 12;</code>
-     */
-    public boolean hasEquip5() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 equip5 = 12;</code>
-     */
-    public int getEquip5() {
-      return equip5_;
-    }
-
-    // optional int32 count5 = 13;
-    public static final int COUNT5_FIELD_NUMBER = 13;
-    private int count5_;
-    /**
-     * <code>optional int32 count5 = 13;</code>
-     */
-    public boolean hasCount5() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 count5 = 13;</code>
-     */
-    public int getCount5() {
-      return count5_;
-    }
-
-    // optional int32 zhanli = 14;
-    public static final int ZHANLI_FIELD_NUMBER = 14;
-    private int zhanli_;
-    /**
-     * <code>optional int32 zhanli = 14;</code>
-     */
-    public boolean hasZhanli() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional int32 zhanli = 14;</code>
-     */
-    public int getZhanli() {
-      return zhanli_;
-    }
-
     // optional int32 levelrequire = 15;
     public static final int LEVELREQUIRE_FIELD_NUMBER = 15;
     private int levelrequire_;
@@ -3377,7 +3222,7 @@ public final class HeroProto {
      * <code>optional int32 levelrequire = 15;</code>
      */
     public boolean hasLevelrequire() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 levelrequire = 15;</code>
@@ -3394,11 +3239,6 @@ public final class HeroProto {
       count2_ = 0;
       equip3_ = 0;
       count3_ = 0;
-      equip4_ = 0;
-      count4_ = 0;
-      equip5_ = 0;
-      count5_ = 0;
-      zhanli_ = 0;
       levelrequire_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -3435,21 +3275,6 @@ public final class HeroProto {
         output.writeInt32(9, count3_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(10, equip4_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(11, count4_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(12, equip5_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(13, count5_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(14, zhanli_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeInt32(15, levelrequire_);
       }
       getUnknownFields().writeTo(output);
@@ -3490,26 +3315,6 @@ public final class HeroProto {
           .computeInt32Size(9, count3_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, equip4_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, count4_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, equip5_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, count5_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, zhanli_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, levelrequire_);
       }
@@ -3643,18 +3448,8 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000020);
         count3_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        equip4_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        count4_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        equip5_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        count5_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        zhanli_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
         levelrequire_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -3714,26 +3509,6 @@ public final class HeroProto {
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.equip4_ = equip4_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.count4_ = count4_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.equip5_ = equip5_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.count5_ = count5_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.zhanli_ = zhanli_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
         result.levelrequire_ = levelrequire_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -3771,21 +3546,6 @@ public final class HeroProto {
         }
         if (other.hasCount3()) {
           setCount3(other.getCount3());
-        }
-        if (other.hasEquip4()) {
-          setEquip4(other.getEquip4());
-        }
-        if (other.hasCount4()) {
-          setCount4(other.getCount4());
-        }
-        if (other.hasEquip5()) {
-          setEquip5(other.getEquip5());
-        }
-        if (other.hasCount5()) {
-          setCount5(other.getCount5());
-        }
-        if (other.hasZhanli()) {
-          setZhanli(other.getZhanli());
         }
         if (other.hasLevelrequire()) {
           setLevelrequire(other.getLevelrequire());
@@ -4048,178 +3808,13 @@ public final class HeroProto {
         return this;
       }
 
-      // optional int32 equip4 = 10;
-      private int equip4_ ;
-      /**
-       * <code>optional int32 equip4 = 10;</code>
-       */
-      public boolean hasEquip4() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 equip4 = 10;</code>
-       */
-      public int getEquip4() {
-        return equip4_;
-      }
-      /**
-       * <code>optional int32 equip4 = 10;</code>
-       */
-      public Builder setEquip4(int value) {
-        bitField0_ |= 0x00000080;
-        equip4_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 equip4 = 10;</code>
-       */
-      public Builder clearEquip4() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        equip4_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count4 = 11;
-      private int count4_ ;
-      /**
-       * <code>optional int32 count4 = 11;</code>
-       */
-      public boolean hasCount4() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 count4 = 11;</code>
-       */
-      public int getCount4() {
-        return count4_;
-      }
-      /**
-       * <code>optional int32 count4 = 11;</code>
-       */
-      public Builder setCount4(int value) {
-        bitField0_ |= 0x00000100;
-        count4_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count4 = 11;</code>
-       */
-      public Builder clearCount4() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        count4_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 equip5 = 12;
-      private int equip5_ ;
-      /**
-       * <code>optional int32 equip5 = 12;</code>
-       */
-      public boolean hasEquip5() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 equip5 = 12;</code>
-       */
-      public int getEquip5() {
-        return equip5_;
-      }
-      /**
-       * <code>optional int32 equip5 = 12;</code>
-       */
-      public Builder setEquip5(int value) {
-        bitField0_ |= 0x00000200;
-        equip5_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 equip5 = 12;</code>
-       */
-      public Builder clearEquip5() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        equip5_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count5 = 13;
-      private int count5_ ;
-      /**
-       * <code>optional int32 count5 = 13;</code>
-       */
-      public boolean hasCount5() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 count5 = 13;</code>
-       */
-      public int getCount5() {
-        return count5_;
-      }
-      /**
-       * <code>optional int32 count5 = 13;</code>
-       */
-      public Builder setCount5(int value) {
-        bitField0_ |= 0x00000400;
-        count5_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count5 = 13;</code>
-       */
-      public Builder clearCount5() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        count5_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 zhanli = 14;
-      private int zhanli_ ;
-      /**
-       * <code>optional int32 zhanli = 14;</code>
-       */
-      public boolean hasZhanli() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 zhanli = 14;</code>
-       */
-      public int getZhanli() {
-        return zhanli_;
-      }
-      /**
-       * <code>optional int32 zhanli = 14;</code>
-       */
-      public Builder setZhanli(int value) {
-        bitField0_ |= 0x00000800;
-        zhanli_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 zhanli = 14;</code>
-       */
-      public Builder clearZhanli() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        zhanli_ = 0;
-        onChanged();
-        return this;
-      }
-
       // optional int32 levelrequire = 15;
       private int levelrequire_ ;
       /**
        * <code>optional int32 levelrequire = 15;</code>
        */
       public boolean hasLevelrequire() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 levelrequire = 15;</code>
@@ -4231,7 +3826,7 @@ public final class HeroProto {
        * <code>optional int32 levelrequire = 15;</code>
        */
       public Builder setLevelrequire(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000080;
         levelrequire_ = value;
         onChanged();
         return this;
@@ -4240,7 +3835,7 @@ public final class HeroProto {
        * <code>optional int32 levelrequire = 15;</code>
        */
       public Builder clearLevelrequire() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000080);
         levelrequire_ = 0;
         onChanged();
         return this;
@@ -53860,19 +53455,17 @@ public final class HeroProto {
       ".trans.pixel.protoc.HeroRareLevelup\"j\n\017H" +
       "eroRareLevelup\022\n\n\002id\030\001 \001(\005\022\020\n\010position\030\002" +
       " \001(\005\0229\n\004rank\030\003 \003(\0132+.com.trans.pixel.pro" +
-      "toc.HeroRareLevelupRank\"\351\001\n\023HeroRareLeve",
+      "toc.HeroRareLevelupRank\"\231\001\n\023HeroRareLeve",
       "lupRank\022\014\n\004rank\030\001 \001(\005\022\016\n\006equip1\030\004 \001(\005\022\016\n" +
       "\006count1\030\005 \001(\005\022\016\n\006equip2\030\006 \001(\005\022\016\n\006count2\030" +
-      "\007 \001(\005\022\016\n\006equip3\030\010 \001(\005\022\016\n\006count3\030\t \001(\005\022\016\n" +
-      "\006equip4\030\n \001(\005\022\016\n\006count4\030\013 \001(\005\022\016\n\006equip5\030" +
-      "\014 \001(\005\022\016\n\006count5\030\r \001(\005\022\016\n\006zhanli\030\016 \001(\005\022\024\n" +
+      "\007 \001(\005\022\016\n\006equip3\030\010 \001(\005\022\016\n\006count3\030\t \001(\005\022\024\n" +
       "\014levelrequire\030\017 \001(\005\"O\n\024HeroFettersOrderL" +
       "ist\0227\n\005order\030\001 \003(\0132(.com.trans.pixel.pro" +
       "toc.HeroFettersOrder\"c\n\020HeroFettersOrder" +
       "\022\r\n\005order\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\0224\n\007fetters\030\003" +
-      " \003(\0132#.com.trans.pixel.protoc.HeroFetter",
+      " \003(\0132#.com.trans.pixel.protoc.HeroFetter" +
       "s\"f\n\013HeroFetters\022\021\n\tfettersid\030\001 \001(\005\022\022\n\nf" +
-      "ettersdes\030\002 \001(\t\0220\n\004hero\030\003 \003(\0132\".com.tran" +
+      "ettersdes\030\002 \001(\t\0220\n\004hero\030\003 \003(\0132\".com.tran",
       "s.pixel.protoc.HeroFetter\"@\n\nHeroFetter\022" +
       "\016\n\006heroid\030\001 \001(\005\022\020\n\010herostar\030\002 \001(\005\022\020\n\010her" +
       "orank\030\003 \001(\005\"@\n\016HeroChoiceList\022.\n\002id\030\001 \003(" +
@@ -53880,9 +53473,9 @@ public final class HeroProto {
       "\nHeroChoice\022\r\n\005order\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\022\016" +
       "\n\006event1\030\004 \002(\r\022\016\n\006event2\030\005 \002(\r\022\016\n\006event3" +
       "\030\006 \002(\r\022\016\n\006event4\030\007 \002(\r\022\016\n\006event5\030\010 \002(\r\"C" +
-      "\n\016ClearLevelList\0221\n\005level\030\001 \003(\0132\".com.tr",
+      "\n\016ClearLevelList\0221\n\005level\030\001 \003(\0132\".com.tr" +
       "ans.pixel.protoc.ClearLevel\":\n\nClearLeve" +
-      "l\022\r\n\005level\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\r\n\005coun" +
+      "l\022\r\n\005level\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\r\n\005coun",
       "t\030\003 \001(\005\"@\n\rClearFoodList\022/\n\004food\030\001 \003(\0132!" +
       ".com.trans.pixel.protoc.ClearFood\"4\n\tCle" +
       "arFood\022\n\n\002id\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\014\n\004cos" +
@@ -53890,9 +53483,9 @@ public final class HeroProto {
       ".com.trans.pixel.protoc.ClearHero\"\215\001\n\tCl" +
       "earHero\022\n\n\002id\030\001 \001(\005\022\020\n\010handbook\030\002 \001(\005\022\021\n" +
       "\tverylove1\030\003 \001(\005\022\r\n\005love1\030\004 \001(\005\022\r\n\005love2" +
-      "\030\006 \001(\005\022\017\n\007normal1\030\005 \001(\005\022\017\n\007normal2\030\007 \001(\005",
+      "\030\006 \001(\005\022\017\n\007normal1\030\005 \001(\005\022\017\n\007normal2\030\007 \001(\005" +
       "\022\017\n\007normal3\030\010 \001(\005\"O\n\022ClearAttributeList\022" +
-      "9\n\tattribute\030\001 \003(\0132&.com.trans.pixel.pro" +
+      "9\n\tattribute\030\001 \003(\0132&.com.trans.pixel.pro",
       "toc.ClearAttribute\"{\n\016ClearAttribute\022\n\n\002" +
       "id\030\001 \001(\005\022\020\n\010position\030\002 \001(\005\022\017\n\007zuanshi\030\003 " +
       "\001(\005\022:\n\005order\030\004 \003(\0132+.com.trans.pixel.pro" +
@@ -53900,9 +53493,9 @@ public final class HeroProto {
       "teOrder\022\r\n\005order\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\016\n\006" +
       "weight\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\016\n\006count2\030\005" +
       " \001(\005\022\020\n\010interval\030\006 \001(\005\022\014\n\004rare\030\007 \001(\005\">\n\r" +
-      "ClearCostList\022-\n\002id\030\001 \003(\0132!.com.trans.pi",
+      "ClearCostList\022-\n\002id\030\001 \003(\0132!.com.trans.pi" +
       "xel.protoc.ClearCost\"\227\001\n\tClearCost\022\n\n\002id" +
-      "\030\001 \001(\005\022\017\n\007quality\030\002 \001(\005\022\017\n\007itemid1\030\003 \001(\005" +
+      "\030\001 \001(\005\022\017\n\007quality\030\002 \001(\005\022\017\n\007itemid1\030\003 \001(\005",
       "\022\022\n\nitemcount1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n" +
       "\nitemcount2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\022\n\nit" +
       "emcount3\030\010 \001(\005\">\n\013AllheroData\022/\n\002id\030\001 \003(" +
@@ -53910,9 +53503,9 @@ public final class HeroProto {
       "\n\013AllheroList\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022" +
       "\013\n\003img\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022-\n\004hero\030\005 \003(\013" +
       "2\037.com.trans.pixel.protoc.Allhero\"\031\n\007All" +
-      "hero\022\016\n\006heroid\030\001 \001(\005\"L\n\013TalentOrder\022\r\n\005o",
+      "hero\022\016\n\006heroid\030\001 \001(\005\"L\n\013TalentOrder\022\r\n\005o" +
       "rder\030\001 \001(\005\022\016\n\006skill1\030\002 \001(\005\022\016\n\006skill2\030\003 \001" +
-      "(\005\022\016\n\006skill3\030\004 \001(\005\"c\n\006Talent\022\n\n\002id\030\001 \001(\005" +
+      "(\005\022\016\n\006skill3\030\004 \001(\005\"c\n\006Talent\022\n\n\002id\030\001 \001(\005",
       "\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\0222\n\005order\030\004 \003" +
       "(\0132#.com.trans.pixel.protoc.TalentOrder\"" +
       "8\n\nTalentList\022*\n\002id\030\001 \003(\0132\036.com.trans.pi" +
@@ -53920,9 +53513,9 @@ public final class HeroProto {
       "vel\030\001 \001(\005\022\016\n\006itemid\030\002 \001(\005\022\021\n\titemcount\030\003" +
       " \001(\005\"I\n\021TalentupgradeList\0224\n\005level\030\001 \003(\013" +
       "2%.com.trans.pixel.protoc.Talentupgrade\"" +
-      ",\n\014Talentunlock\022\r\n\005order\030\001 \001(\005\022\r\n\005level\030",
+      ",\n\014Talentunlock\022\r\n\005order\030\001 \001(\005\022\r\n\005level\030" +
       "\002 \001(\005\"G\n\020TalentunlockList\0223\n\005order\030\001 \003(\013" +
-      "2$.com.trans.pixel.protoc.Talentunlock\"H" +
+      "2$.com.trans.pixel.protoc.Talentunlock\"H",
       "\n\016UserTalentList\0226\n\nuserTalent\030\001 \003(\0132\".c" +
       "om.trans.pixel.protoc.UserTalent\"T\n\017User" +
       "TalentSkill\022\020\n\010talentId\030\001 \002(\005\022\017\n\007orderId" +
@@ -53930,9 +53523,9 @@ public final class HeroProto {
       "\n\010HeroList\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel" +
       ".protoc.Hero\"\217\002\n\004Hero\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
       "e\030\002 \001(\t\022\013\n\003img\030\003 \001(\005\022\023\n\013description\030\004 \001(" +
-      "\t\022\017\n\007quality\030\005 \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010",
+      "\t\022\017\n\007quality\030\005 \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010" +
       "handbook\030\007 \001(\005\022\n\n\002hp\030\010 \001(\005\022\013\n\003vit\030\t \001(\005\022" +
-      "\r\n\005power\030\n \001(\005\022\013\n\003def\030\013 \001(\005\022\n\n\002ad\030\014 \001(\005\022" +
+      "\r\n\005power\030\n \001(\005\022\013\n\003def\030\013 \001(\005\022\n\n\002ad\030\014 \001(\005\022",
       "\n\n\002ap\030\r \001(\005\022\013\n\003arm\030\016 \001(\005\022\n\n\002mr\030\017 \001(\005\0220\n\005" +
       "skill\030\020 \003(\0132!.com.trans.pixel.protoc.Her" +
       "oSkill\";\n\tHeroSkill\022\017\n\007skillid\030\001 \001(\005\022\r\n\005" +
@@ -53940,9 +53533,9 @@ public final class HeroProto {
       "st\022.\n\005level\030\001 \003(\0132\037.com.trans.pixel.prot" +
       "oc.Upgrade\"n\n\007Upgrade\022\r\n\005level\030\001 \001(\005\022\n\n\002" +
       "sp\030\002 \001(\005\022\013\n\003exp\030\003 \001(\003\022\n\n\002hp\030\004 \001(\002\022\013\n\003arm" +
-      "\030\005 \001(\002\022\n\n\002mr\030\006 \001(\002\022\n\n\002ad\030\007 \001(\002\022\n\n\002ap\030\010 \001",
+      "\030\005 \001(\002\022\n\n\002mr\030\006 \001(\002\022\n\n\002ad\030\007 \001(\002\022\n\n\002ap\030\010 \001" +
       "(\002\")\n\010UserFood\022\016\n\006foodId\030\001 \002(\005\022\r\n\005count\030" +
-      "\002 \002(\005\"@\n\016StrengthenList\022.\n\002id\030\001 \003(\0132\".co" +
+      "\002 \002(\005\"@\n\016StrengthenList\022.\n\002id\030\001 \003(\0132\".co",
       "m.trans.pixel.protoc.Strengthen\"\\\n\nStren" +
       "gthen\022\n\n\002id\030\001 \001(\005\022\022\n\nzhanli_per\030\002 \001(\005\022\016\n" +
       "\006itemid\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\017\n\007success\030" +
@@ -53950,9 +53543,9 @@ public final class HeroProto {
       "trans.pixel.protoc.Heroloot\"j\n\010Heroloot\022" +
       "\016\n\006itemid\030\001 \001(\005\022\016\n\006heroid\030\002 \001(\005\022\014\n\004star\030" +
       "\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013de" +
-      "scription\030\006 \001(\t\"H\n\026RequestLockHeroComman",
+      "scription\030\006 \001(\t\"H\n\026RequestLockHeroComman" +
       "d\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022\016\n\006isL" +
-      "ock\030\004 \001(\010\"N\n\033RequestHeroLevelUpToCommand" +
+      "ock\030\004 \001(\010\"N\n\033RequestHeroLevelUpToCommand",
       "\022\017\n\007levelUp\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006inf" +
       "oId\030\003 \002(\003\"u\n\031RequestHeroLevelUpCommand\022\023" +
       "\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006i" +
@@ -53960,9 +53553,9 @@ public final class HeroProto {
       "Id\030\005 \003(\003\"_\n\031ResponseHeroResultCommand\022\016\n" +
       "\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \003(\0132 .com.tr" +
       "ans.pixel.protoc.HeroInfo\"U\n\031ResponseDel" +
-      "eteHeroCommand\0228\n\010heroInfo\030\001 \003(\0132&.com.t",
+      "eteHeroCommand\0228\n\010heroInfo\030\001 \003(\0132&.com.t" +
       "rans.pixel.protoc.FenjieHeroInfo\">\n\034Requ" +
-      "estResetHeroSkillCommand\022\016\n\006heroId\030\001 \002(\005" +
+      "estResetHeroSkillCommand\022\016\n\006heroId\030\001 \002(\005",
       "\022\016\n\006infoId\030\002 \002(\003\"\210\001\n\010UserTeam\022\n\n\002id\030\001 \002(" +
       "\003\022\020\n\010teaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003(\0132" +
       "\".com.trans.pixel.protoc.TeamEngine\022\024\n\014r" +
@@ -53970,9 +53563,9 @@ public final class HeroProto {
       "equestGetTeamCommand\022\016\n\006userId\030\001 \002(\003\"D\n\026" +
       "ResponseGetTeamCommand\022*\n\004team\030\001 \002(\0132\034.c" +
       "om.trans.pixel.protoc.Team\"\'\n\nTeamUnlock" +
-      "\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestU",
+      "\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestU" +
       "pdateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo" +
-      "\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngi" +
+      "\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngi",
       "ne\030\005 \003(\0132\".com.trans.pixel.protoc.TeamEn" +
       "gine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032RequestUserTea" +
       "mListCommand\"Q\n\033ResponseUserTeamListComm" +
@@ -53980,9 +53573,9 @@ public final class HeroProto {
       "protoc.UserTeam\"F\n\016TeamUnlockList\0224\n\010xia" +
       "oguan\030\001 \003(\0132\".com.trans.pixel.protoc.Tea" +
       "mUnlock\"P\n\032ResponseGetUserHeroCommand\0222\n" +
-      "\010userHero\030\001 \003(\0132 .com.trans.pixel.protoc",
+      "\010userHero\030\001 \003(\0132 .com.trans.pixel.protoc" +
       ".HeroInfo\"V\n\030RequestFenjieHeroCommand\022:\n" +
-      "\nfenjieHero\030\001 \003(\0132&.com.trans.pixel.prot" +
+      "\nfenjieHero\030\001 \003(\0132&.com.trans.pixel.prot",
       "oc.FenjieHeroInfo\"\032\n\030RequestUserPokedeCo" +
       "mmand\"M\n\031ResponseUserPokedeCommand\0220\n\006po" +
       "kede\030\001 \003(\0132 .com.trans.pixel.protoc.Hero" +
@@ -53990,9 +53583,9 @@ public final class HeroProto {
       "RequestSubmitComposeSkillCommand\022\024\n\014comp" +
       "oseSkill\030\001 \002(\t\"K\n\026RequestFeedFoodCommand" +
       "\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfood" +
-      "Count\030\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016",
+      "Count\030\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016" +
       "\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type" +
-      "\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoo" +
+      "\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoo",
       "dCommand\0222\n\010userFood\030\001 \003(\0132 .com.trans.p" +
       "ixel.protoc.UserFood\"P\n\030ResponseClearInf" +
       "oCommand\0224\n\tclearInfo\030\001 \003(\0132!.com.trans." +
@@ -54000,9 +53593,9 @@ public final class HeroProto {
       "earInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 " +
       "\001(\005\".\n\034RequestHeroStrengthenCommand\022\016\n\006h" +
       "eroId\030\001 \002(\005\"<\n\030RequestOpenFetterCommand\022" +
-      "\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!Req",
+      "\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!Req" +
       "uestZanHeroMessageBoardCommand\022\016\n\006itemId" +
-      "\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Reque" +
+      "\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Reque",
       "stTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035Re" +
       "questTalentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"" +
       "M\n\037RequestTalentChangeSkillCommand\022\n\n\002id" +
@@ -54046,7 +53639,7 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_HeroRareLevelupRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroRareLevelupRank_descriptor,
-              new java.lang.String[] { "Rank", "Equip1", "Count1", "Equip2", "Count2", "Equip3", "Count3", "Equip4", "Count4", "Equip5", "Count5", "Zhanli", "Levelrequire", });
+              new java.lang.String[] { "Rank", "Equip1", "Count1", "Equip2", "Count2", "Equip3", "Count3", "Levelrequire", });
           internal_static_com_trans_pixel_protoc_HeroFettersOrderList_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_HeroFettersOrderList_fieldAccessorTable = new
