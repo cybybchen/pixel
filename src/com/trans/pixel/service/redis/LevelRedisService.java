@@ -449,7 +449,7 @@ public class LevelRedisService extends RedisService {
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		Map<String, String> keyvalue = new HashMap<String, String>();
-		String xml = ReadConfig("event/ld_lvexp.xml");
+		String xml = ReadConfig("ld_lvexp.xml");
 		EventExpList.Builder list = EventExpList.newBuilder();
 		parseXml(xml, list);
 		for(EventExp exp : list.getIdList()){
@@ -465,7 +465,7 @@ public class LevelRedisService extends RedisService {
 	private Map<Integer, EventConfig.Builder> buildEvent(){
 		Map<Integer, EventConfig.Builder> map = new HashMap<Integer, EventConfig.Builder>();
 //		Map<String, String> keyvalue = new HashMap<String, String>();
-		String xml = ReadConfig("event/ld_event.xml");
+		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
 		parseXml(xml, list);
 		for(EventConfig.Builder event : list.getIdBuilderList()){
@@ -476,10 +476,10 @@ public class LevelRedisService extends RedisService {
 		return map;
 	}
 	private void buildDaguanEvent(){
-		String xml1 = ReadConfig("event/ld_event1.xml");
+		String xml1 = ReadConfig("ld_event1.xml");
 		AreaEventList.Builder list1 = AreaEventList.newBuilder();
 		parseXml(xml1, list1);
-		String xml2 = ReadConfig("event/ld_event2.xml");
+		String xml2 = ReadConfig("ld_event2.xml");
 		AreaEventList.Builder list2 = AreaEventList.newBuilder();
 		parseXml(xml2, list2);
 		Map<Integer, EventConfig.Builder> eventmap = buildEvent();
