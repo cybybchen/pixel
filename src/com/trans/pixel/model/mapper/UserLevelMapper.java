@@ -11,6 +11,6 @@ public interface UserLevelMapper {
 	public UserLevelBean getUserLevel(long userId);
 	public int updateUserLevel(UserLevelBean userLevelRecord);
 	public List<EventBean> getEvents(long userId);
-	public void delEvent(@Param("userId")long userId, @Param("eventid")int eventid);
+	public void delEvent(@Param("userId")long userId, @Param("order")int order);
 	public int updateEvent(EventBean bean);
 }

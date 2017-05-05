@@ -6,10 +6,17 @@ import net.sf.json.JSONObject;
 
 public class EventBean {
 	private long userId = 0;
+	private int order = 0;
 	private int eventid = 0;
 	private int daguan = 0;
 	private int level = 0;
 	private int count = 0;
+	public int getOrder() {
+		return order;
+	}
+	public void setOrder(int order) {
+		this.order = order;
+	}
 	public long getUserId() {
 		return userId;
 	}

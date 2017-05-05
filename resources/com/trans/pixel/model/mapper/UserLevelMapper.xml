@@ -12,6 +12,7 @@
 	</resultMap>
 	<resultMap id="eventMap" type="com.trans.pixel.model.userinfo.EventBean">
 		<id property="userId" column="userId" />
+		<result property="order" column="order" />
 		<result property="eventid" column="eventid" />
 		<result property="daguan" column="daguan" />
 		<result property="level" column="level" />
@@ -32,11 +33,11 @@
 	</select>
 
 	<update id="updateEvent" parameterType="com.trans.pixel.model.userinfo.EventBean">
-		INSERT INTO user_event(userId, eventid, daguan, level, count)
-	    VALUES(#{userId}, #{eventid}, #{daguan}, #{level}, #{count})
+		INSERT INTO user_event(userId, order, eventid, daguan, level, count)
+	    VALUES(#{userId}, #{order}, #{eventid}, #{daguan}, #{level}, #{count})
 	    ON 
 	    duplicate key update
-	    daguan=#{daguan},level=#{level},count=#{count}
+	    eventid=#{eventid},daguan=#{daguan},level=#{level},count=#{count}
 	</update>
 
 	<select id="getEvents" parameterType="long" resultMap="eventMap">
@@ -46,6 +47,6 @@
 
 	<select id="delEvent">
 		DELETE
-		from user_event where userId = #{userId} and eventid = #{eventid}
+		from user_event where userId = #{userId} and order = #{order}
 	</select>
 </mapper>

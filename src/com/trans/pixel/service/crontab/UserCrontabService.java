@@ -127,8 +127,8 @@ public class UserCrontabService {
 		while((key=userLevelService.popDelEventKey()) != null){
 			String keys[] = key.split("#");
 			long userId = Long.parseLong(keys[0]);
-			int eventid = Integer.parseInt(keys[1]);
-			userLevelService.updateDelEventToDB(userId, eventid);
+			int order = Integer.parseInt(keys[1]);
+			userLevelService.updateDelEventToDB(userId, order);
 		}
 		while ((key = rechargeRedisService.popDBKey()) != null) {
 			JSONObject json = JSONObject.fromObject(key);

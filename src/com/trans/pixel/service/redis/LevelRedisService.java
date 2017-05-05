@@ -326,8 +326,8 @@ public class LevelRedisService extends RedisService {
 	public String popDelEventKey() {
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del");
 	}
-	public void updateDelEventToDB(long userId, int eventid){
-		mapper.delEvent(userId, eventid);
+	public void updateDelEventToDB(long userId, int order){
+		mapper.delEvent(userId, order);
 	}
 	public void saveEvent(long userId, Event event) {
 		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
@@ -362,7 +362,7 @@ public class LevelRedisService extends RedisService {
 	public void delEvent(UserBean user, Event event) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
 		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getEventid());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getOrder());
 	}
 
 	public EventConfig getEvent(int eventid){
@@ -512,9 +512,9 @@ public class LevelRedisService extends RedisService {
 					AreaEvent.Builder builder = map1.get(event.getDaguan());
 					if(builder != null){
 						EventConfig.Builder config = eventmap.get(event.getEventid());
-						if(config.getDaguan() != 0)
-							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
-						config.setDaguan(event.getDaguan());
+						if(config.getDaguan() == 0)
+//							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
+							config.setDaguan(event.getDaguan());
 						event.setName(config.getName());
 						builder.addEvent(event);
 					}
