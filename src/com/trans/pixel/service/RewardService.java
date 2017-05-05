@@ -255,26 +255,17 @@ public class RewardService {
 		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta()) + 1) + Math.min(reward.getCountb(), reward.getCounta());
 	}
 	
-//	public List<RewardBean> mergeReward(List<RewardBean> rewardList, List<RewardBean> mergeRewardList) {
-//		if (mergeRewardList == null || mergeRewardList.size() == 0)
-//			return rewardList;
-//		
-//		for (RewardBean mergeReward : mergeRewardList) {
-//			boolean hasMerge = false;
-//			for (RewardBean reward : rewardList) {
-//				if (reward.getItemid() == mergeReward.getItemid()) {
-//					reward.setCount(reward.getCount() + mergeReward.getCount());
-//					hasMerge = true;
-//					break;
-//				}
-//			}
-//			
-//			if (!hasMerge)
-//				rewardList.add(mergeReward);
-//		}
-//		
-//		return rewardList;
-//	}
+	public void mergeReward(List<RewardBean> rewardList) {
+		for(int i = rewardList.size()-1; i >= 0; i--) {
+			for(int j = i-1; j >= 0; j--) {
+				if(rewardList.get(i).getItemid() == rewardList.get(j).getItemid()) {
+					rewardList.get(j).setCount(rewardList.get(i).getCount()+rewardList.get(j).getCount());
+					rewardList.remove(i);
+				}
+			}
+				
+		}
+	}
 	
 	public void updateUser(UserBean user){
 		userService.updateUser(user);

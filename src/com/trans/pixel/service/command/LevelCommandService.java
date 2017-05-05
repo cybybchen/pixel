@@ -233,6 +233,7 @@ public class LevelCommandService extends BaseCommandService {
 			}
 		}
 		rewards.addAll(redis.getNewplayReward(user, eventconfig.getId()));
+		rewardService.mergeReward(rewards);
 //		rewardService.doFilterRewards(user, rewards);
 //		pusher.pushRewardCommand(responseBuilder, user, rewards);
 		return rewards;
