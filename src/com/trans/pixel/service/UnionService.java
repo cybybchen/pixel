@@ -161,6 +161,10 @@ public class UnionService extends FightService{
 				zhanli += member.getZhanli()/10;
 			index++;
 		}
+		if(!union.getName().equals(user.getUnionName())){
+			user.setUnionName(union.getName());
+			userService.updateUser(user);
+		}
 		if(zhanli != union.getZhanli()){
 			union.setZhanli(zhanli);
 			needupdate = true;
