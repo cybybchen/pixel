@@ -422,8 +422,8 @@ public class RewardTaskService {
 		int itemcount4 = 0;
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		BosslootGroup bosslootGroup = rewardTaskRedisService.getBosslootGroup(id);
-		for (int i = 0; i < bosslootGroup.getLootList().size(); ++i) {
-			Bossloot bossloot = bosslootGroup.getLoot(i);
+		for (int i = 0; i < bosslootGroup.getOrderList().size(); ++i) {
+			Bossloot bossloot = bosslootGroup.getOrder(i);
 			int randomWeight = RandomUtils.nextInt(bossloot.getWeightall()) + 1;
 			if (randomWeight <= bossloot.getWeight1()) {
 				if (i == 0) {

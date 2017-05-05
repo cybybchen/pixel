@@ -2888,7 +2888,7 @@ message BosslootGroupList {
 
 message BosslootGroup {
 	optional int32 id = 1;
-	repeated Bossloot loot = 2;
+	repeated Bossloot order = 2;
 }
 
 message Bossloot {
