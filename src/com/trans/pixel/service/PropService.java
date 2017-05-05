@@ -27,6 +27,7 @@ import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
 public class PropService {
+//	private static final Logger log = LoggerFactory.getLogger(PropService.class);
 	
 	@Resource
 	private UserPropService userPropService;
@@ -49,12 +50,13 @@ public class PropService {
 		return prop;
 	}
 	
-	private void randomReward(List<RewardInfo> rewardList, Prop prop, int propCount){
+	private void randomReward(List<RewardInfo> rewardList, int propId, int propCount, Map<String, Prop> map){
+		Prop prop = map.get("" + propId);
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
 				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
-					randomReward(rewardList, getProp(reward.getItemid()), (int)rewardService.randomRewardCount(reward));
+					randomReward(rewardList, reward.getItemid(), (int)rewardService.randomRewardCount(reward), map);
 				}else
 					rewardService.mergeReward(rewardList, reward);
 			}
@@ -68,7 +70,8 @@ public class PropService {
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return ErrorConst.PROP_USE_ERROR;
 		
-		Prop prop = getProp(userProp.getPropId());
+		Map<String, Prop> map = propRedisService.getPackageConfig();
+		Prop prop = map.get("" + propId);
 		if (prop == null)
 			return ErrorConst.PROP_USE_ERROR;
 		
@@ -81,8 +84,9 @@ public class PropService {
 			return ret;
 		}
 		
+		
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		randomReward(rewardList, prop, propCount);
+		randomReward(rewardList, propId, propCount, map);
 		
 		if (!rewardList.isEmpty()) {
 			rewards.addAllLoot(rewardList);
@@ -180,9 +184,8 @@ public class PropService {
 				continue;
 			}
 			
-			randomReward(rewards, prop, (int)reward.getCount());
+			randomReward(rewards, reward.getItemid(), (int)reward.getCount(), map);
 		}
-		
 		multiReward.addAllLoot(rewards);
 		return multiReward;
 	}

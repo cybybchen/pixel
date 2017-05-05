@@ -53,6 +53,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class BaseCommandService {
+//	private static final Logger log = LoggerFactory.getLogger(BaseCommandService.class);
 	@Resource
 	private LadderService ladderService;
 	@Resource

@@ -15,7 +15,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
-import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
@@ -315,19 +314,17 @@ public class LevelCommandService extends BaseCommandService {
 				List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
 				handleRewards(responseBuilder, user, rewards);
 				redis.delEvent(user, event);
-				
 				/**
 				 * 完成事件的活动
 				 */
 				activityService.completeEvent(user, event.getEventid());
-				
 				/**
 				 * 解锁主角
 				 */
 				List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
 				if (!userTalentList.isEmpty())
 					pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
-				
+
 				/**
 				 * 完成事件解锁每日奖励
 				 */

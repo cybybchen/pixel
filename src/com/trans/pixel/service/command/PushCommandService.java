@@ -427,6 +427,7 @@ public class PushCommandService extends BaseCommandService {
 		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		List<UserEquipPokedeBean> equipPokedeList = new ArrayList<UserEquipPokedeBean>();
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
+		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(user.getId());
 		boolean isUserUpdated = false;
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
@@ -446,7 +447,8 @@ public class PushCommandService extends BaseCommandService {
 				else
 					propList.add(userPropService.selectUserProp(userId, rewardId));
 			} else if (rewardId > RewardConst.CHIP) {
-				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
+//				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
+				equipList.add(userEquipService.selectUserEquipByEquipList(userEquipList, rewardId));
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 //				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {

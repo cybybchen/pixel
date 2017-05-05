@@ -50,6 +50,15 @@ public class UserEquipService {
 		return userEquipRedisService.popDBKey();
 	}
 	
+	public UserEquipBean selectUserEquipByEquipList(List<UserEquipBean> userEquipList, int equipId) {
+		for (UserEquipBean userEquip : userEquipList) {
+			if (userEquip.getEquipId() == equipId)
+				return userEquip;
+		}
+		
+		return null;
+	}
+	
 	public List<UserEquipBean> selectUserEquipList(long userId) {
 		List<UserEquipBean> userEquipList = userEquipRedisService.selectUserEquipList(userId);
 		if (userEquipList.size() == 0) {
