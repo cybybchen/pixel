@@ -20967,137 +20967,137 @@ public final class UserInfoProto {
      */
     int getId();
 
-    // optional string name = 4;
+    // optional string name = 2;
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     boolean hasName();
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional int32 daguan = 5;
+    // optional int32 type = 3;
     /**
-     * <code>optional int32 daguan = 5;</code>
-     */
-    boolean hasDaguan();
-    /**
-     * <code>optional int32 daguan = 5;</code>
-     */
-    int getDaguan();
-
-    // optional int32 type = 7;
-    /**
-     * <code>optional int32 type = 7;</code>
+     * <code>optional int32 type = 3;</code>
      */
     boolean hasType();
     /**
-     * <code>optional int32 type = 7;</code>
+     * <code>optional int32 type = 3;</code>
      */
     int getType();
 
-    // optional .com.trans.pixel.protoc.EventCost cost = 8;
+    // optional int32 daguan = 4;
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional int32 daguan = 4;</code>
+     */
+    boolean hasDaguan();
+    /**
+     * <code>optional int32 daguan = 4;</code>
+     */
+    int getDaguan();
+
+    // optional .com.trans.pixel.protoc.EventCost cost = 5;
+    /**
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     boolean hasCost();
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventCost getCost();
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder getCostOrBuilder();
 
-    // repeated .com.trans.pixel.protoc.EventReward loot = 10;
+    // repeated .com.trans.pixel.protoc.EventReward loot = 6;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward> 
         getLootList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventReward getLoot(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     int getLootCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder> 
         getLootOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder getLootOrBuilder(
         int index);
 
-    // repeated .com.trans.pixel.protoc.EventQuestion question = 11;
+    // repeated .com.trans.pixel.protoc.EventQuestion question = 7;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion> 
         getQuestionList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventQuestion getQuestion(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     int getQuestionCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder> 
         getQuestionOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder getQuestionOrBuilder(
         int index);
 
-    // repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;
+    // repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> 
         getEnemyList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventEnemy getEnemy(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     int getEnemyCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
         getEnemyOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getEnemyOrBuilder(
         int index);
 
-    // optional int32 call = 14;
+    // optional int32 call = 9;
     /**
-     * <code>optional int32 call = 14;</code>
+     * <code>optional int32 call = 9;</code>
      */
     boolean hasCall();
     /**
-     * <code>optional int32 call = 14;</code>
+     * <code>optional int32 call = 9;</code>
      */
     int getCall();
   }
@@ -21157,22 +21157,22 @@ public final class UserInfoProto {
               id_ = input.readInt32();
               break;
             }
-            case 34: {
+            case 18: {
               bitField0_ |= 0x00000002;
               name_ = input.readBytes();
               break;
             }
-            case 40: {
+            case 24: {
               bitField0_ |= 0x00000004;
-              daguan_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000008;
               type_ = input.readInt32();
               break;
             }
-            case 66: {
+            case 32: {
+              bitField0_ |= 0x00000008;
+              daguan_ = input.readInt32();
+              break;
+            }
+            case 42: {
               com.trans.pixel.protoc.UserInfoProto.EventCost.Builder subBuilder = null;
               if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = cost_.toBuilder();
@@ -21185,7 +21185,7 @@ public final class UserInfoProto {
               bitField0_ |= 0x00000010;
               break;
             }
-            case 82: {
+            case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
                 loot_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventReward>();
                 mutable_bitField0_ |= 0x00000020;
@@ -21193,7 +21193,7 @@ public final class UserInfoProto {
               loot_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventReward.PARSER, extensionRegistry));
               break;
             }
-            case 90: {
+            case 58: {
               if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 question_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventQuestion>();
                 mutable_bitField0_ |= 0x00000040;
@@ -21201,7 +21201,7 @@ public final class UserInfoProto {
               question_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventQuestion.PARSER, extensionRegistry));
               break;
             }
-            case 98: {
+            case 66: {
               if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 enemy_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventEnemy>();
                 mutable_bitField0_ |= 0x00000080;
@@ -21209,7 +21209,7 @@ public final class UserInfoProto {
               enemy_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventEnemy.PARSER, extensionRegistry));
               break;
             }
-            case 112: {
+            case 72: {
               bitField0_ |= 0x00000020;
               call_ = input.readInt32();
               break;
@@ -21279,17 +21279,17 @@ public final class UserInfoProto {
       return id_;
     }
 
-    // optional string name = 4;
-    public static final int NAME_FIELD_NUMBER = 4;
+    // optional string name = 2;
+    public static final int NAME_FIELD_NUMBER = 2;
     private java.lang.Object name_;
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     public boolean hasName() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -21306,7 +21306,7 @@ public final class UserInfoProto {
       }
     }
     /**
-     * <code>optional string name = 4;</code>
+     * <code>optional string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -21322,179 +21322,179 @@ public final class UserInfoProto {
       }
     }
 
-    // optional int32 daguan = 5;
-    public static final int DAGUAN_FIELD_NUMBER = 5;
-    private int daguan_;
+    // optional int32 type = 3;
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
     /**
-     * <code>optional int32 daguan = 5;</code>
+     * <code>optional int32 type = 3;</code>
      */
-    public boolean hasDaguan() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional int32 daguan = 5;</code>
-     */
-    public int getDaguan() {
-      return daguan_;
-    }
-
-    // optional int32 type = 7;
-    public static final int TYPE_FIELD_NUMBER = 7;
-    private int type_;
-    /**
-     * <code>optional int32 type = 7;</code>
-     */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 type = 7;</code>
+     * <code>optional int32 type = 3;</code>
      */
     public int getType() {
       return type_;
     }
 
-    // optional .com.trans.pixel.protoc.EventCost cost = 8;
-    public static final int COST_FIELD_NUMBER = 8;
+    // optional int32 daguan = 4;
+    public static final int DAGUAN_FIELD_NUMBER = 4;
+    private int daguan_;
+    /**
+     * <code>optional int32 daguan = 4;</code>
+     */
+    public boolean hasDaguan() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 daguan = 4;</code>
+     */
+    public int getDaguan() {
+      return daguan_;
+    }
+
+    // optional .com.trans.pixel.protoc.EventCost cost = 5;
+    public static final int COST_FIELD_NUMBER = 5;
     private com.trans.pixel.protoc.UserInfoProto.EventCost cost_;
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     public boolean hasCost() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventCost getCost() {
       return cost_;
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+     * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder getCostOrBuilder() {
       return cost_;
     }
 
-    // repeated .com.trans.pixel.protoc.EventReward loot = 10;
-    public static final int LOOT_FIELD_NUMBER = 10;
+    // repeated .com.trans.pixel.protoc.EventReward loot = 6;
+    public static final int LOOT_FIELD_NUMBER = 6;
     private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward> loot_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward> getLootList() {
       return loot_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder> 
         getLootOrBuilderList() {
       return loot_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     public int getLootCount() {
       return loot_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventReward getLoot(int index) {
       return loot_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder getLootOrBuilder(
         int index) {
       return loot_.get(index);
     }
 
-    // repeated .com.trans.pixel.protoc.EventQuestion question = 11;
-    public static final int QUESTION_FIELD_NUMBER = 11;
+    // repeated .com.trans.pixel.protoc.EventQuestion question = 7;
+    public static final int QUESTION_FIELD_NUMBER = 7;
     private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion> question_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion> getQuestionList() {
       return question_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder> 
         getQuestionOrBuilderList() {
       return question_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     public int getQuestionCount() {
       return question_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventQuestion getQuestion(int index) {
       return question_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder getQuestionOrBuilder(
         int index) {
       return question_.get(index);
     }
 
-    // repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;
-    public static final int ENEMY_FIELD_NUMBER = 12;
+    // repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;
+    public static final int ENEMY_FIELD_NUMBER = 8;
     private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> enemy_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> getEnemyList() {
       return enemy_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
         getEnemyOrBuilderList() {
       return enemy_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     public int getEnemyCount() {
       return enemy_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventEnemy getEnemy(int index) {
       return enemy_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
      */
     public com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getEnemyOrBuilder(
         int index) {
       return enemy_.get(index);
     }
 
-    // optional int32 call = 14;
-    public static final int CALL_FIELD_NUMBER = 14;
+    // optional int32 call = 9;
+    public static final int CALL_FIELD_NUMBER = 9;
     private int call_;
     /**
-     * <code>optional int32 call = 14;</code>
+     * <code>optional int32 call = 9;</code>
      */
     public boolean hasCall() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional int32 call = 14;</code>
+     * <code>optional int32 call = 9;</code>
      */
     public int getCall() {
       return call_;
@@ -21503,8 +21503,8 @@ public final class UserInfoProto {
     private void initFields() {
       id_ = 0;
       name_ = "";
-      daguan_ = 0;
       type_ = 0;
+      daguan_ = 0;
       cost_ = com.trans.pixel.protoc.UserInfoProto.EventCost.getDefaultInstance();
       loot_ = java.util.Collections.emptyList();
       question_ = java.util.Collections.emptyList();
@@ -21527,28 +21527,28 @@ public final class UserInfoProto {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(4, getNameBytes());
+        output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(5, daguan_);
+        output.writeInt32(3, type_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(7, type_);
+        output.writeInt32(4, daguan_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(8, cost_);
+        output.writeMessage(5, cost_);
       }
       for (int i = 0; i < loot_.size(); i++) {
-        output.writeMessage(10, loot_.get(i));
+        output.writeMessage(6, loot_.get(i));
       }
       for (int i = 0; i < question_.size(); i++) {
-        output.writeMessage(11, question_.get(i));
+        output.writeMessage(7, question_.get(i));
       }
       for (int i = 0; i < enemy_.size(); i++) {
-        output.writeMessage(12, enemy_.get(i));
+        output.writeMessage(8, enemy_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(14, call_);
+        output.writeInt32(9, call_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -21565,35 +21565,35 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getNameBytes());
+          .computeBytesSize(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, daguan_);
+          .computeInt32Size(3, type_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, type_);
+          .computeInt32Size(4, daguan_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, cost_);
+          .computeMessageSize(5, cost_);
       }
       for (int i = 0; i < loot_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, loot_.get(i));
+          .computeMessageSize(6, loot_.get(i));
       }
       for (int i = 0; i < question_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, question_.get(i));
+          .computeMessageSize(7, question_.get(i));
       }
       for (int i = 0; i < enemy_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, enemy_.get(i));
+          .computeMessageSize(8, enemy_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, call_);
+          .computeInt32Size(9, call_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -21719,9 +21719,9 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        daguan_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        daguan_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
         if (costBuilder_ == null) {
           cost_ = com.trans.pixel.protoc.UserInfoProto.EventCost.getDefaultInstance();
@@ -21788,11 +21788,11 @@ public final class UserInfoProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.daguan_ = daguan_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.type_ = type_;
+        result.daguan_ = daguan_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
@@ -21856,11 +21856,11 @@ public final class UserInfoProto {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasDaguan()) {
-          setDaguan(other.getDaguan());
-        }
         if (other.hasType()) {
           setType(other.getType());
+        }
+        if (other.hasDaguan()) {
+          setDaguan(other.getDaguan());
         }
         if (other.hasCost()) {
           mergeCost(other.getCost());
@@ -22006,16 +22006,16 @@ public final class UserInfoProto {
         return this;
       }
 
-      // optional string name = 4;
+      // optional string name = 2;
       private java.lang.Object name_ = "";
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public boolean hasName() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -22029,7 +22029,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -22045,7 +22045,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -22058,7 +22058,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -22067,7 +22067,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional string name = 4;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -22080,84 +22080,84 @@ public final class UserInfoProto {
         return this;
       }
 
-      // optional int32 daguan = 5;
-      private int daguan_ ;
+      // optional int32 type = 3;
+      private int type_ ;
       /**
-       * <code>optional int32 daguan = 5;</code>
+       * <code>optional int32 type = 3;</code>
        */
-      public boolean hasDaguan() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional int32 daguan = 5;</code>
-       */
-      public int getDaguan() {
-        return daguan_;
-      }
-      /**
-       * <code>optional int32 daguan = 5;</code>
-       */
-      public Builder setDaguan(int value) {
-        bitField0_ |= 0x00000004;
-        daguan_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 daguan = 5;</code>
-       */
-      public Builder clearDaguan() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        daguan_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 type = 7;
-      private int type_ ;
-      /**
-       * <code>optional int32 type = 7;</code>
-       */
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 type = 7;</code>
+       * <code>optional int32 type = 3;</code>
        */
       public int getType() {
         return type_;
       }
       /**
-       * <code>optional int32 type = 7;</code>
+       * <code>optional int32 type = 3;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 type = 7;</code>
+       * <code>optional int32 type = 3;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         type_ = 0;
         onChanged();
         return this;
       }
 
-      // optional .com.trans.pixel.protoc.EventCost cost = 8;
+      // optional int32 daguan = 4;
+      private int daguan_ ;
+      /**
+       * <code>optional int32 daguan = 4;</code>
+       */
+      public boolean hasDaguan() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 daguan = 4;</code>
+       */
+      public int getDaguan() {
+        return daguan_;
+      }
+      /**
+       * <code>optional int32 daguan = 4;</code>
+       */
+      public Builder setDaguan(int value) {
+        bitField0_ |= 0x00000008;
+        daguan_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 daguan = 4;</code>
+       */
+      public Builder clearDaguan() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        daguan_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.EventCost cost = 5;
       private com.trans.pixel.protoc.UserInfoProto.EventCost cost_ = com.trans.pixel.protoc.UserInfoProto.EventCost.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.UserInfoProto.EventCost, com.trans.pixel.protoc.UserInfoProto.EventCost.Builder, com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder> costBuilder_;
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public boolean hasCost() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventCost getCost() {
         if (costBuilder_ == null) {
@@ -22167,7 +22167,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public Builder setCost(com.trans.pixel.protoc.UserInfoProto.EventCost value) {
         if (costBuilder_ == null) {
@@ -22183,7 +22183,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public Builder setCost(
           com.trans.pixel.protoc.UserInfoProto.EventCost.Builder builderForValue) {
@@ -22197,7 +22197,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public Builder mergeCost(com.trans.pixel.protoc.UserInfoProto.EventCost value) {
         if (costBuilder_ == null) {
@@ -22216,7 +22216,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public Builder clearCost() {
         if (costBuilder_ == null) {
@@ -22229,7 +22229,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventCost.Builder getCostBuilder() {
         bitField0_ |= 0x00000010;
@@ -22237,7 +22237,7 @@ public final class UserInfoProto {
         return getCostFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder getCostOrBuilder() {
         if (costBuilder_ != null) {
@@ -22247,7 +22247,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.EventCost cost = 8;</code>
+       * <code>optional .com.trans.pixel.protoc.EventCost cost = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.UserInfoProto.EventCost, com.trans.pixel.protoc.UserInfoProto.EventCost.Builder, com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder> 
@@ -22263,7 +22263,7 @@ public final class UserInfoProto {
         return costBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.EventReward loot = 10;
+      // repeated .com.trans.pixel.protoc.EventReward loot = 6;
       private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward> loot_ =
         java.util.Collections.emptyList();
       private void ensureLootIsMutable() {
@@ -22277,7 +22277,7 @@ public final class UserInfoProto {
           com.trans.pixel.protoc.UserInfoProto.EventReward, com.trans.pixel.protoc.UserInfoProto.EventReward.Builder, com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder> lootBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward> getLootList() {
         if (lootBuilder_ == null) {
@@ -22287,7 +22287,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public int getLootCount() {
         if (lootBuilder_ == null) {
@@ -22297,7 +22297,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventReward getLoot(int index) {
         if (lootBuilder_ == null) {
@@ -22307,7 +22307,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder setLoot(
           int index, com.trans.pixel.protoc.UserInfoProto.EventReward value) {
@@ -22324,7 +22324,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder setLoot(
           int index, com.trans.pixel.protoc.UserInfoProto.EventReward.Builder builderForValue) {
@@ -22338,7 +22338,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder addLoot(com.trans.pixel.protoc.UserInfoProto.EventReward value) {
         if (lootBuilder_ == null) {
@@ -22354,7 +22354,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder addLoot(
           int index, com.trans.pixel.protoc.UserInfoProto.EventReward value) {
@@ -22371,7 +22371,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder addLoot(
           com.trans.pixel.protoc.UserInfoProto.EventReward.Builder builderForValue) {
@@ -22385,7 +22385,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder addLoot(
           int index, com.trans.pixel.protoc.UserInfoProto.EventReward.Builder builderForValue) {
@@ -22399,7 +22399,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder addAllLoot(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventReward> values) {
@@ -22413,7 +22413,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder clearLoot() {
         if (lootBuilder_ == null) {
@@ -22426,7 +22426,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public Builder removeLoot(int index) {
         if (lootBuilder_ == null) {
@@ -22439,14 +22439,14 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventReward.Builder getLootBuilder(
           int index) {
         return getLootFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder getLootOrBuilder(
           int index) {
@@ -22456,7 +22456,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder> 
            getLootOrBuilderList() {
@@ -22467,14 +22467,14 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventReward.Builder addLootBuilder() {
         return getLootFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UserInfoProto.EventReward.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventReward.Builder addLootBuilder(
           int index) {
@@ -22482,7 +22482,7 @@ public final class UserInfoProto {
             index, com.trans.pixel.protoc.UserInfoProto.EventReward.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 10;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventReward loot = 6;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventReward.Builder> 
            getLootBuilderList() {
@@ -22503,7 +22503,7 @@ public final class UserInfoProto {
         return lootBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.EventQuestion question = 11;
+      // repeated .com.trans.pixel.protoc.EventQuestion question = 7;
       private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion> question_ =
         java.util.Collections.emptyList();
       private void ensureQuestionIsMutable() {
@@ -22517,7 +22517,7 @@ public final class UserInfoProto {
           com.trans.pixel.protoc.UserInfoProto.EventQuestion, com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder, com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder> questionBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion> getQuestionList() {
         if (questionBuilder_ == null) {
@@ -22527,7 +22527,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public int getQuestionCount() {
         if (questionBuilder_ == null) {
@@ -22537,7 +22537,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventQuestion getQuestion(int index) {
         if (questionBuilder_ == null) {
@@ -22547,7 +22547,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder setQuestion(
           int index, com.trans.pixel.protoc.UserInfoProto.EventQuestion value) {
@@ -22564,7 +22564,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder setQuestion(
           int index, com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder builderForValue) {
@@ -22578,7 +22578,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder addQuestion(com.trans.pixel.protoc.UserInfoProto.EventQuestion value) {
         if (questionBuilder_ == null) {
@@ -22594,7 +22594,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder addQuestion(
           int index, com.trans.pixel.protoc.UserInfoProto.EventQuestion value) {
@@ -22611,7 +22611,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder addQuestion(
           com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder builderForValue) {
@@ -22625,7 +22625,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder addQuestion(
           int index, com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder builderForValue) {
@@ -22639,7 +22639,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder addAllQuestion(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventQuestion> values) {
@@ -22653,7 +22653,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder clearQuestion() {
         if (questionBuilder_ == null) {
@@ -22666,7 +22666,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public Builder removeQuestion(int index) {
         if (questionBuilder_ == null) {
@@ -22679,14 +22679,14 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder getQuestionBuilder(
           int index) {
         return getQuestionFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder getQuestionOrBuilder(
           int index) {
@@ -22696,7 +22696,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventQuestionOrBuilder> 
            getQuestionOrBuilderList() {
@@ -22707,14 +22707,14 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder addQuestionBuilder() {
         return getQuestionFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UserInfoProto.EventQuestion.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder addQuestionBuilder(
           int index) {
@@ -22722,7 +22722,7 @@ public final class UserInfoProto {
             index, com.trans.pixel.protoc.UserInfoProto.EventQuestion.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventQuestion question = 7;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventQuestion.Builder> 
            getQuestionBuilderList() {
@@ -22743,7 +22743,7 @@ public final class UserInfoProto {
         return questionBuilder_;
       }
 
-      // repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;
+      // repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;
       private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> enemy_ =
         java.util.Collections.emptyList();
       private void ensureEnemyIsMutable() {
@@ -22757,7 +22757,7 @@ public final class UserInfoProto {
           com.trans.pixel.protoc.UserInfoProto.EventEnemy, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder, com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> enemyBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> getEnemyList() {
         if (enemyBuilder_ == null) {
@@ -22767,7 +22767,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public int getEnemyCount() {
         if (enemyBuilder_ == null) {
@@ -22777,7 +22777,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventEnemy getEnemy(int index) {
         if (enemyBuilder_ == null) {
@@ -22787,7 +22787,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder setEnemy(
           int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
@@ -22804,7 +22804,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder setEnemy(
           int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
@@ -22818,7 +22818,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder addEnemy(com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
         if (enemyBuilder_ == null) {
@@ -22834,7 +22834,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder addEnemy(
           int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
@@ -22851,7 +22851,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder addEnemy(
           com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
@@ -22865,7 +22865,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder addEnemy(
           int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
@@ -22879,7 +22879,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder addAllEnemy(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemy> values) {
@@ -22893,7 +22893,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder clearEnemy() {
         if (enemyBuilder_ == null) {
@@ -22906,7 +22906,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public Builder removeEnemy(int index) {
         if (enemyBuilder_ == null) {
@@ -22919,14 +22919,14 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder getEnemyBuilder(
           int index) {
         return getEnemyFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getEnemyOrBuilder(
           int index) {
@@ -22936,7 +22936,7 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
            getEnemyOrBuilderList() {
@@ -22947,14 +22947,14 @@ public final class UserInfoProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder addEnemyBuilder() {
         return getEnemyFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UserInfoProto.EventEnemy.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder addEnemyBuilder(
           int index) {
@@ -22962,7 +22962,7 @@ public final class UserInfoProto {
             index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 12;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy enemy = 8;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder> 
            getEnemyBuilderList() {
@@ -22983,22 +22983,22 @@ public final class UserInfoProto {
         return enemyBuilder_;
       }
 
-      // optional int32 call = 14;
+      // optional int32 call = 9;
       private int call_ ;
       /**
-       * <code>optional int32 call = 14;</code>
+       * <code>optional int32 call = 9;</code>
        */
       public boolean hasCall() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 call = 14;</code>
+       * <code>optional int32 call = 9;</code>
        */
       public int getCall() {
         return call_;
       }
       /**
-       * <code>optional int32 call = 14;</code>
+       * <code>optional int32 call = 9;</code>
        */
       public Builder setCall(int value) {
         bitField0_ |= 0x00000100;
@@ -23007,7 +23007,7 @@ public final class UserInfoProto {
         return this;
       }
       /**
-       * <code>optional int32 call = 14;</code>
+       * <code>optional int32 call = 9;</code>
        */
       public Builder clearCall() {
         bitField0_ = (bitField0_ & ~0x00000100);
@@ -23823,6 +23823,16 @@ public final class UserInfoProto {
      * <code>optional int32 count = 11;</code>
      */
     int getCount();
+
+    // optional int32 eventcount = 12;
+    /**
+     * <code>optional int32 eventcount = 12;</code>
+     */
+    boolean hasEventcount();
+    /**
+     * <code>optional int32 eventcount = 12;</code>
+     */
+    int getEventcount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Event}
@@ -23928,6 +23938,11 @@ public final class UserInfoProto {
             case 88: {
               bitField0_ |= 0x00000400;
               count_ = input.readInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000800;
+              eventcount_ = input.readInt32();
               break;
             }
           }
@@ -24200,6 +24215,22 @@ public final class UserInfoProto {
       return count_;
     }
 
+    // optional int32 eventcount = 12;
+    public static final int EVENTCOUNT_FIELD_NUMBER = 12;
+    private int eventcount_;
+    /**
+     * <code>optional int32 eventcount = 12;</code>
+     */
+    public boolean hasEventcount() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional int32 eventcount = 12;</code>
+     */
+    public int getEventcount() {
+      return eventcount_;
+    }
+
     private void initFields() {
       order_ = 0;
       eventid_ = 0;
@@ -24212,6 +24243,7 @@ public final class UserInfoProto {
       weight_ = 0;
       level_ = 0;
       count_ = 0;
+      eventcount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -24257,6 +24289,9 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(11, count_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeInt32(12, eventcount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -24310,6 +24345,10 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, count_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, eventcount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -24449,6 +24488,8 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000200);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        eventcount_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -24521,6 +24562,10 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000400;
         }
         result.count_ = count_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.eventcount_ = eventcount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -24573,6 +24618,9 @@ public final class UserInfoProto {
         }
         if (other.hasCount()) {
           setCount(other.getCount());
+        }
+        if (other.hasEventcount()) {
+          setEventcount(other.getEventcount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -25042,6 +25090,39 @@ public final class UserInfoProto {
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000400);
         count_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 eventcount = 12;
+      private int eventcount_ ;
+      /**
+       * <code>optional int32 eventcount = 12;</code>
+       */
+      public boolean hasEventcount() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional int32 eventcount = 12;</code>
+       */
+      public int getEventcount() {
+        return eventcount_;
+      }
+      /**
+       * <code>optional int32 eventcount = 12;</code>
+       */
+      public Builder setEventcount(int value) {
+        bitField0_ |= 0x00000800;
+        eventcount_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 eventcount = 12;</code>
+       */
+      public Builder clearEventcount() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        eventcount_ = 0;
         onChanged();
         return this;
       }
@@ -33000,42 +33081,43 @@ public final class UserInfoProto {
       "\"s\n\nEventEnemy\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid" +
       "\030\002 \001(\005\022\022\n\nenemycount\030\003 \001(\005\022\017\n\007enemylv\030\004 " +
       "\001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"\243\002" +
-      "\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\004 \001(\t\022",
-      "\016\n\006daguan\030\005 \001(\005\022\014\n\004type\030\007 \001(\005\022/\n\004cost\030\010 " +
+      "\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022",
+      "\014\n\004type\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\022/\n\004cost\030\005 " +
       "\001(\0132!.com.trans.pixel.protoc.EventCost\0221" +
-      "\n\004loot\030\n \003(\0132#.com.trans.pixel.protoc.Ev" +
-      "entReward\0227\n\010question\030\013 \003(\0132%.com.trans." +
-      "pixel.protoc.EventQuestion\0221\n\005enemy\030\014 \003(" +
+      "\n\004loot\030\006 \003(\0132#.com.trans.pixel.protoc.Ev" +
+      "entReward\0227\n\010question\030\007 \003(\0132%.com.trans." +
+      "pixel.protoc.EventQuestion\0221\n\005enemy\030\010 \003(" +
       "\0132\".com.trans.pixel.protoc.EventEnemy\022\014\n" +
-      "\004call\030\016 \001(\005\"B\n\017EventConfigList\022/\n\002id\030\001 \003" +
+      "\004call\030\t \001(\005\"B\n\017EventConfigList\022/\n\002id\030\001 \003" +
       "(\0132#.com.trans.pixel.protoc.EventConfig\"" +
-      "\302\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(" +
+      "\326\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(" +
       "\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rcondi",
       "tiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010tar" +
       "getid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight" +
-      "\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"U\n\t" +
-      "AreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.c" +
-      "om.trans.pixel.protoc.Event\022\016\n\006weight\030\003 " +
-      "\001(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!.com.t" +
-      "rans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005o" +
-      "rder\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001" +
-      " \003(\0132\034.com.trans.pixel.protoc.Loot\"&\n\030Re",
-      "questLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Re" +
-      "questEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005ord" +
-      "er\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005even" +
-      "t\030\001 \001(\0132\035.com.trans.pixel.protoc.Event\"\037" +
-      "\n\035RequestLevelLootResultCommand\"{\n\031Reque" +
-      "stEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010t" +
-      "eamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn" +
-      "\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032" +
-      "ResponseEventResultCommand\0222\n\006reward\030\001 \003" +
-      "(\0132\".com.trans.pixel.protoc.RewardInfo\"\252",
-      "\001\n\030ResponseLevelLootCommand\022\024\n\014unlockDag" +
-      "uan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDagu" +
-      "an\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030" +
-      "\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.pixel.p" +
-      "rotoc.Event\"\030\n\026RequestEventBuyCommand"
+      "\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\n" +
+      "eventcount\030\014 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(" +
+      "\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.proto" +
+      "c.Event\022\016\n\006weight\030\003 \001(\005\">\n\rAreaEventList" +
+      "\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc.Ar" +
+      "eaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
+      "\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans.pix",
+      "el.protoc.Loot\"&\n\030RequestLevelStartComma" +
+      "nd\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand\022\016\n" +
+      "\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Response" +
+      "EventCommand\022,\n\005event\030\001 \001(\0132\035.com.trans." +
+      "pixel.protoc.Event\"\037\n\035RequestLevelLootRe" +
+      "sultCommand\"{\n\031RequestEventResultCommand" +
+      "\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfig" +
+      "htInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 " +
+      "\001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultC" +
+      "ommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel",
+      ".protoc.RewardInfo\"\252\001\n\030ResponseLevelLoot" +
+      "Command\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCou" +
+      "nt\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime" +
+      "\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\013" +
+      "2\035.com.trans.pixel.protoc.Event\"\030\n\026Reque" +
+      "stEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33227,7 +33309,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_EventConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfig_descriptor,
-              new java.lang.String[] { "Id", "Name", "Daguan", "Type", "Cost", "Loot", "Question", "Enemy", "Call", });
+              new java.lang.String[] { "Id", "Name", "Type", "Daguan", "Cost", "Loot", "Question", "Enemy", "Call", });
           internal_static_com_trans_pixel_protoc_EventConfigList_descriptor =
             getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_EventConfigList_fieldAccessorTable = new
@@ -33239,7 +33321,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
-              new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Conditiontype", "Condition", "Targetid", "Targetdes", "Weight", "Level", "Count", });
+              new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Conditiontype", "Condition", "Targetid", "Targetdes", "Weight", "Level", "Count", "Eventcount", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
             getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new

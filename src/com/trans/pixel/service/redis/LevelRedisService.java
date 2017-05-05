@@ -512,6 +512,8 @@ public class LevelRedisService extends RedisService {
 					AreaEvent.Builder builder = map1.get(event.getDaguan());
 					if(builder != null){
 						EventConfig.Builder config = eventmap.get(event.getEventid());
+						if(config == null)
+							throw new RuntimeErrorException(null, "Error eventconfig eventid "+event.getEventid());
 						if(config.getDaguan() == 0)
 //							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
 							config.setDaguan(event.getDaguan());
@@ -536,8 +538,9 @@ public class LevelRedisService extends RedisService {
 					AreaEvent.Builder builder = map2.get(event.getDaguan());
 					if(builder != null){
 						EventConfig.Builder config = eventmap.get(event.getEventid());
+						if(config == null)
+							throw new RuntimeErrorException(null, "Error eventconfig eventid "+event.getEventid());
 						if(config.getDaguan() == 0)
-//							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
 							config.setDaguan(event.getDaguan());
 						event.setName(config.getName());
 						builder.addEvent(event);
@@ -549,7 +552,10 @@ public class LevelRedisService extends RedisService {
 				if(event.getDaguan() == 0){
 					for(AreaEvent.Builder builder : map2.values()){
 						if(areaMap.get(builder.getId()) == area.getId()){
-							event.setName(eventmap.get(event.getEventid()).getName());
+							EventConfig.Builder config = eventmap.get(event.getEventid());
+							if(config == null)
+								throw new RuntimeErrorException(null, "Error eventconfig eventid "+event.getEventid());
+							event.setName(config.getName());
 							event.setDaguan(builder.getId());
 							builder.addEvent(event);
 							builder.setWeight(builder.getWeight()+event.getWeight());
