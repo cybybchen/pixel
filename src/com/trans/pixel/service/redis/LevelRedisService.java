@@ -906,6 +906,21 @@ public class LevelRedisService extends RedisService {
 		}
 		return false;
 	}
+	public boolean hasCompleteTarget(UserBean user, int targetId) {
+		UserLevelBean userLevel = getUserLevel(user);
+		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
+		Map<Integer, AreaEvent.Builder> areaevents = getMainEvent();
+		int eventId = 0;
+		for(AreaEvent.Builder areaevent : areaevents.values())
+			for(Event event : areaevent.getEventList())
+				if(event.getTargetid() == targetId) {
+					eventId = event.getEventid();
+					break;
+				}
+		if(eventId == 0)
+			return false;
+		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
+	}
 	public boolean hasCompleteEvent(UserBean user, int eventId) {
 		UserLevelBean userLevel = getUserLevel(user);
 		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);

@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.PVPProto.PVPMonster;
 import com.trans.pixel.protoc.PVPProto.PVPMonsterReward;
 import com.trans.pixel.protoc.PVPProto.PVPMonsterRewardLoot;
 import com.trans.pixel.service.command.PushCommandService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
@@ -70,13 +71,21 @@ public class PvpMapService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private LevelRedisService levelRedisService;
 
+	private int getTarget(int fieldid) {
+		if(fieldid > 1)
+			return 200+fieldid;
+		return 1;
+	}
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user) {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			if(map.getFieldid() == fieldid){
 //				if(zhanli >= map.getZhanli()){
 //				if(user.getMerlevel() >= map.getMerlevel()){
+				if(levelRedisService.hasCompleteTarget(user, getTarget(fieldid))) {
 					map.setOpened(true);
 					redis.saveMapList(maplist.build(), user.getId());
 					if(map.getFieldid() > user.getPvpUnlock()){
@@ -99,8 +108,8 @@ public class PvpMapService {
 						redis.saveMines(user.getId(), mineMap);
 					}
 					return SuccessConst.UNLOCK_AREA;
-//				}else
-//					return ErrorConst.MERLEVEL_FIRST;
+				}else
+					return ErrorConst.EVENT_FIRST;
 			}
 		}
 		return ErrorConst.UNLOCK_ORDER_ERROR;
