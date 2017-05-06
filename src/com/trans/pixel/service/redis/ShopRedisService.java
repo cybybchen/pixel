@@ -316,7 +316,7 @@ public class ShopRedisService extends RedisService{
 	public long getBlackShopEndTime(){
 //		long times[] = {today(0), today(3), today(6), today(9), today(12), today(15), today(18), today(21)};
 		long now = now();
-		for(int time = 0; time < 24; time+=3){
+		for(int time = 0; time < 24; time+=2){
 			if(now < today(time))
 				return today(time);
 		}
