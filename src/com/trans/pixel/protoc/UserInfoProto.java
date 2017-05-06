@@ -20954,6 +20954,680 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventEnemy)
   }
 
+  public interface EventEnemyListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.EventEnemy id = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> 
+        getIdList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.EventEnemy getId(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    int getIdCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
+        getIdOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getIdOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.EventEnemyList}
+   */
+  public static final class EventEnemyList extends
+      com.google.protobuf.GeneratedMessage
+      implements EventEnemyListOrBuilder {
+    // Use EventEnemyList.newBuilder() to construct.
+    private EventEnemyList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private EventEnemyList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final EventEnemyList defaultInstance;
+    public static EventEnemyList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public EventEnemyList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EventEnemyList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                id_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventEnemy>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              id_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventEnemy.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = java.util.Collections.unmodifiableList(id_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventEnemyList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UserInfoProto.EventEnemyList.class, com.trans.pixel.protoc.UserInfoProto.EventEnemyList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<EventEnemyList> PARSER =
+        new com.google.protobuf.AbstractParser<EventEnemyList>() {
+      public EventEnemyList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new EventEnemyList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EventEnemyList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.EventEnemy id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> id_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> getIdList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
+        getIdOrBuilderList() {
+      return id_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    public int getIdCount() {
+      return id_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.EventEnemy getId(int index) {
+      return id_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getIdOrBuilder(
+        int index) {
+      return id_.get(index);
+    }
+
+    private void initFields() {
+      id_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < id_.size(); i++) {
+        output.writeMessage(1, id_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < id_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, id_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.EventEnemyList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.EventEnemyList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.EventEnemyList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UserInfoProto.EventEnemyListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventEnemyList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UserInfoProto.EventEnemyList.class, com.trans.pixel.protoc.UserInfoProto.EventEnemyList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UserInfoProto.EventEnemyList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getIdFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemyList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UserInfoProto.EventEnemyList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemyList build() {
+        com.trans.pixel.protoc.UserInfoProto.EventEnemyList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemyList buildPartial() {
+        com.trans.pixel.protoc.UserInfoProto.EventEnemyList result = new com.trans.pixel.protoc.UserInfoProto.EventEnemyList(this);
+        int from_bitField0_ = bitField0_;
+        if (idBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            id_ = java.util.Collections.unmodifiableList(id_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.id_ = id_;
+        } else {
+          result.id_ = idBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UserInfoProto.EventEnemyList) {
+          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.EventEnemyList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EventEnemyList other) {
+        if (other == com.trans.pixel.protoc.UserInfoProto.EventEnemyList.getDefaultInstance()) return this;
+        if (idBuilder_ == null) {
+          if (!other.id_.isEmpty()) {
+            if (id_.isEmpty()) {
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureIdIsMutable();
+              id_.addAll(other.id_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.id_.isEmpty()) {
+            if (idBuilder_.isEmpty()) {
+              idBuilder_.dispose();
+              idBuilder_ = null;
+              id_ = other.id_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              idBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getIdFieldBuilder() : null;
+            } else {
+              idBuilder_.addAllMessages(other.id_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UserInfoProto.EventEnemyList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.EventEnemyList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.EventEnemy id = 1;
+      private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> id_ =
+        java.util.Collections.emptyList();
+      private void ensureIdIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          id_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventEnemy>(id_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.EventEnemy, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder, com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> idBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy> getIdList() {
+        if (idBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(id_);
+        } else {
+          return idBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public int getIdCount() {
+        if (idBuilder_ == null) {
+          return id_.size();
+        } else {
+          return idBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemy getId(int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);
+        } else {
+          return idBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.set(index, value);
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder setId(
+          int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder addId(com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy value) {
+        if (idBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureIdIsMutable();
+          id_.add(index, value);
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder addId(
+          com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder addId(
+          int index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder builderForValue) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          idBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder addAllId(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemy> values) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          super.addAll(values, id_);
+          onChanged();
+        } else {
+          idBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder clearId() {
+        if (idBuilder_ == null) {
+          id_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          idBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public Builder removeId(int index) {
+        if (idBuilder_ == null) {
+          ensureIdIsMutable();
+          id_.remove(index);
+          onChanged();
+        } else {
+          idBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder getIdBuilder(
+          int index) {
+        return getIdFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder getIdOrBuilder(
+          int index) {
+        if (idBuilder_ == null) {
+          return id_.get(index);  } else {
+          return idBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
+           getIdOrBuilderList() {
+        if (idBuilder_ != null) {
+          return idBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(id_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder addIdBuilder() {
+        return getIdFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.UserInfoProto.EventEnemy.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder addIdBuilder(
+          int index) {
+        return getIdFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.UserInfoProto.EventEnemy.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EventEnemy id = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder> 
+           getIdBuilderList() {
+        return getIdFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.EventEnemy, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder, com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder> 
+          getIdFieldBuilder() {
+        if (idBuilder_ == null) {
+          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.UserInfoProto.EventEnemy, com.trans.pixel.protoc.UserInfoProto.EventEnemy.Builder, com.trans.pixel.protoc.UserInfoProto.EventEnemyOrBuilder>(
+                  id_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          id_ = null;
+        }
+        return idBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EventEnemyList)
+    }
+
+    static {
+      defaultInstance = new EventEnemyList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventEnemyList)
+  }
+
   public interface EventConfigOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -32939,6 +33613,11 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EventEnemy_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_EventEnemyList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_EventConfig_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -33080,44 +33759,46 @@ public final class UserInfoProto {
       "d\030\001 \001(\005\022\016\n\006answer\030\002 \001(\t\022\017\n\007eventid\030\003 \001(\005" +
       "\"s\n\nEventEnemy\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid" +
       "\030\002 \001(\005\022\022\n\nenemycount\030\003 \001(\005\022\017\n\007enemylv\030\004 " +
-      "\001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"\243\002" +
-      "\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022",
-      "\014\n\004type\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\022/\n\004cost\030\005 " +
-      "\001(\0132!.com.trans.pixel.protoc.EventCost\0221" +
-      "\n\004loot\030\006 \003(\0132#.com.trans.pixel.protoc.Ev" +
-      "entReward\0227\n\010question\030\007 \003(\0132%.com.trans." +
-      "pixel.protoc.EventQuestion\0221\n\005enemy\030\010 \003(" +
-      "\0132\".com.trans.pixel.protoc.EventEnemy\022\014\n" +
-      "\004call\030\t \001(\005\"B\n\017EventConfigList\022/\n\002id\030\001 \003" +
-      "(\0132#.com.trans.pixel.protoc.EventConfig\"" +
-      "\326\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(" +
-      "\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rcondi",
-      "tiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010tar" +
-      "getid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight" +
-      "\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\n" +
-      "eventcount\030\014 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(" +
-      "\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.proto" +
-      "c.Event\022\016\n\006weight\030\003 \001(\005\">\n\rAreaEventList" +
-      "\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc.Ar" +
-      "eaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002" +
-      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
-      "\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans.pix",
-      "el.protoc.Loot\"&\n\030RequestLevelStartComma" +
-      "nd\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand\022\016\n" +
-      "\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Response" +
-      "EventCommand\022,\n\005event\030\001 \001(\0132\035.com.trans." +
-      "pixel.protoc.Event\"\037\n\035RequestLevelLootRe" +
-      "sultCommand\"{\n\031RequestEventResultCommand" +
-      "\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfig" +
-      "htInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 " +
-      "\001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultC" +
-      "ommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel",
-      ".protoc.RewardInfo\"\252\001\n\030ResponseLevelLoot" +
-      "Command\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCou" +
-      "nt\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime" +
-      "\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\013" +
-      "2\035.com.trans.pixel.protoc.Event\"\030\n\026Reque" +
-      "stEventBuyCommand"
+      "\001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"@\n" +
+      "\016EventEnemyList\022.\n\002id\030\001 \003(\0132\".com.trans.",
+      "pixel.protoc.EventEnemy\"\243\002\n\013EventConfig\022" +
+      "\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022" +
+      "\016\n\006daguan\030\004 \001(\005\022/\n\004cost\030\005 \001(\0132!.com.tran" +
+      "s.pixel.protoc.EventCost\0221\n\004loot\030\006 \003(\0132#" +
+      ".com.trans.pixel.protoc.EventReward\0227\n\010q" +
+      "uestion\030\007 \003(\0132%.com.trans.pixel.protoc.E" +
+      "ventQuestion\0221\n\005enemy\030\010 \003(\0132\".com.trans." +
+      "pixel.protoc.EventEnemy\022\014\n\004call\030\t \001(\005\"B\n" +
+      "\017EventConfigList\022/\n\002id\030\001 \003(\0132#.com.trans" +
+      ".pixel.protoc.EventConfig\"\326\001\n\005Event\022\r\n\005o",
+      "rder\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(" +
+      "\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005" +
+      "\022\021\n\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n" +
+      "\ttargetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005leve" +
+      "l\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001" +
+      "(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003" +
+      "(\0132\035.com.trans.pixel.protoc.Event\022\016\n\006wei" +
+      "ght\030\003 \001(\005\">\n\rAreaEventList\022-\n\002id\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.AreaEvent\"G\n\004Loo" +
+      "t\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.tra",
+      "ns.pixel.protoc.RewardInfo\"4\n\010LootList\022(" +
+      "\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.Loot" +
+      "\"&\n\030RequestLevelStartCommand\022\n\n\002id\030\001 \001(\005" +
+      "\"4\n\023RequestEventCommand\022\016\n\006userId\030\001 \001(\005\022" +
+      "\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventCommand\022," +
+      "\n\005event\030\001 \001(\0132\035.com.trans.pixel.protoc.E" +
+      "vent\"\037\n\035RequestLevelLootResultCommand\"{\n" +
+      "\031RequestEventResultCommand\022\r\n\005order\030\001 \001(" +
+      "\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014" +
+      "\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001",
+      "(\010\"P\n\032ResponseEventResultCommand\0222\n\006rewa" +
+      "rd\030\001 \003(\0132\".com.trans.pixel.protoc.Reward" +
+      "Info\"\252\001\n\030ResponseLevelLootCommand\022\024\n\014unl" +
+      "ockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlo" +
+      "otDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teven" +
+      "tTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.p" +
+      "ixel.protoc.Event\"\030\n\026RequestEventBuyComm" +
+      "and"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33304,92 +33985,98 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventEnemy_descriptor,
               new java.lang.String[] { "Order", "Enemyid", "Enemycount", "Enemylv", "Lootweight", "Loot", });
-          internal_static_com_trans_pixel_protoc_EventConfig_descriptor =
+          internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor =
             getDescriptor().getMessageTypes().get(30);
+          internal_static_com_trans_pixel_protoc_EventEnemyList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_EventEnemyList_descriptor,
+              new java.lang.String[] { "Id", });
+          internal_static_com_trans_pixel_protoc_EventConfig_descriptor =
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_EventConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfig_descriptor,
               new java.lang.String[] { "Id", "Name", "Type", "Daguan", "Cost", "Loot", "Question", "Enemy", "Call", });
           internal_static_com_trans_pixel_protoc_EventConfigList_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_EventConfigList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfigList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
               new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Conditiontype", "Condition", "Targetid", "Targetdes", "Weight", "Level", "Count", "Eventcount", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Order", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "Event", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,

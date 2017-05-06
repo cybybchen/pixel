@@ -2649,6 +2649,9 @@ message EventEnemy {
 	optional int32 lootweight = 5;
 	optional int32 loot = 6;
 }
+message EventEnemyList {
+	repeated EventEnemy id = 1;
+}
 message EventConfig {
 	optional int32 id = 1;
 	optional string name = 2;

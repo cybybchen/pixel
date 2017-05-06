@@ -218,8 +218,8 @@ public class LevelCommandService extends BaseCommandService {
 			for(EventEnemy enemy : eventconfig.getEnemyList()) {
 				int rewardcount = 0;
 				for(int i = 0; i < enemy.getEnemycount(); i++)
-				if(RedisService.nextInt(100) < enemy.getLootweight())
-					rewardcount++;
+					if(RedisService.nextInt(100) < enemy.getLootweight())
+						rewardcount++;
 				if(enemy.getLoot() != 0 && rewardcount > 0) {
 					RewardBean reward = new RewardBean();
 					reward.setItemid(enemy.getLoot());

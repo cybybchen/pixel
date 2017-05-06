@@ -31,6 +31,8 @@ import com.trans.pixel.protoc.UserInfoProto.DaguanList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.protoc.UserInfoProto.EventConfigList;
+import com.trans.pixel.protoc.UserInfoProto.EventEnemy;
+import com.trans.pixel.protoc.UserInfoProto.EventEnemyList;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventExpList;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
@@ -468,7 +470,16 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
 		parseXml(xml, list);
+		String xml2 = ReadConfig("ld_eventenemy.xml");
+		EventEnemyList.Builder list2 = EventEnemyList.newBuilder();
+		parseXml(xml2, list2);
 		for(EventConfig.Builder event : list.getIdBuilderList()){
+			for(EventEnemy.Builder enemy : event.getEnemyBuilderList()){
+				for(EventEnemy.Builder enemyconfig : list2.getIdBuilderList()){
+					enemy.setLoot(enemyconfig.getLoot());
+					enemy.setLootweight(enemyconfig.getLootweight());
+				}
+			}
 			map.put(event.getId(), event);
 //			keyvalue.put(event.getId()+"", formatJson(event));
 		}
