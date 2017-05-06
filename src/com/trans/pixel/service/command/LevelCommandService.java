@@ -210,27 +210,29 @@ public class LevelCommandService extends BaseCommandService {
 			rewards.add(bean);
 		}
 		Daguan.Builder daguan = redis.getDaguan(event.getDaguan());
-		{RewardBean bean = new RewardBean();
-		bean.setItemid(daguan.getLootlist());
-		bean.setCount(count);
-		rewards.add(bean);}
+		if(eventconfig.getType() == 0) {//only fight event
+			RewardBean bean = new RewardBean();
+			bean.setItemid(daguan.getLootlist());
+			bean.setCount(count);
+			rewards.add(bean);
+			for(EventEnemy enemy : eventconfig.getEnemyList()) {
+				int rewardcount = 0;
+				for(int i = 0; i < enemy.getEnemycount(); i++)
+				if(RedisService.nextInt(100) < enemy.getLootweight())
+					rewardcount++;
+				if(enemy.getLoot() != 0 && rewardcount > 0) {
+					RewardBean reward = new RewardBean();
+					reward.setItemid(enemy.getLoot());
+					reward.setCount(rewardcount);
+					rewards.add(reward);
+				}
+			}
+		}
 		EventExp exp = redis.getEventExp(daguan.getLv());
 		{RewardBean bean = new RewardBean();
 		bean.setItemid(exp.getItemid());
 		bean.setCount(exp.getCount());
 		rewards.add(bean);}
-		for(EventEnemy enemy : eventconfig.getEnemyList()) {
-			int rewardcount = 0;
-			for(int i = 0; i < enemy.getEnemycount(); i++)
-			if(RedisService.nextInt(100) < enemy.getLootweight())
-				rewardcount++;
-			if(enemy.getLoot() != 0 && rewardcount > 0) {
-				RewardBean bean = new RewardBean();
-				bean.setItemid(enemy.getLoot());
-				bean.setCount(rewardcount);
-				rewards.add(bean);
-			}
-		}
 		rewards.addAll(redis.getNewplayReward(user, eventconfig.getId()));
 		rewardService.mergeReward(rewards);
 //		rewardService.doFilterRewards(user, rewards);
