@@ -280,7 +280,7 @@ public class LevelCommandService extends BaseCommandService {
 				pushLevelLootCommand(responseBuilder, userLevel, user);
 				return;
 			}
-			if(eventconfig.getType() == 2) {//选择分支事件
+			if(eventconfig.getType() == 2 && cmd.getFinalid() > 0) {//选择分支事件
 				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
 			}
 			if(cmd.getRet() && (event.getTargetid() == 1 || event.getTargetid() == 202 || event.getTargetid() == 203))
