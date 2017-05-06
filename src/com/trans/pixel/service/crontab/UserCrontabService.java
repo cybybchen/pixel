@@ -115,8 +115,8 @@ public class UserCrontabService {
 		while((key=userLevelService.popEventReadyKey()) != null){
 			String keys[] = key.split("#");
 			long userId = Long.parseLong(keys[0]);
-			int id = Integer.parseInt(keys[1]);
-			userLevelService.updateEventReadyToDB(userId, id);
+			int order = Integer.parseInt(keys[1]);
+			userLevelService.updateEventReadyToDB(userId, order);
 		}
 		while((key=userLevelService.popEventKey()) != null){
 			String keys[] = key.split("#");

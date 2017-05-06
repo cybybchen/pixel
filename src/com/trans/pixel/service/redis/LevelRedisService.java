@@ -206,7 +206,7 @@ public class LevelRedisService extends RedisService {
 		}
 		for(Event.Builder builder : map.values()) {
 			if((builder.getConditiontype() != 1 || builder.getCondition() == 0) || (isMainEvent(builder.getCondition()) && hasCompleteEvent(userLevel.getUserId(), builder.getCondition(), userLevel, eventmap))) {
-				hdelete(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId(), builder.getEventid()+"");
+				hdelete(RedisKey.USEREVENTREADY_PREFIX + userLevel.getUserId(), builder.getOrder()+"");
 				saveEvent(userLevel.getUserId(), builder.build());
 			}else {
 				saveEventReady(userLevel.getUserId(), builder.build());
@@ -316,8 +316,8 @@ public class LevelRedisService extends RedisService {
 	public String popEventReadyKey() {
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX);
 	}
-	public void updateEventReadyToDB(long userId, int id){
-		String value = hget(RedisKey.USEREVENTREADY_PREFIX+userId, id+"");
+	public void updateEventReadyToDB(long userId, int order){
+		String value = hget(RedisKey.USEREVENTREADY_PREFIX+userId, order+"");
 		if(value != null){
 			EventBean bean = EventBean.fromJson(userId, value);
 			mapper.updateEvent(bean);
@@ -342,20 +342,20 @@ public class LevelRedisService extends RedisService {
 		saveEventReady(user.getId(), event);
 	}
 	public void saveEventReady(long userId, Event event) {
-		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getEventid()+"", formatJson(event));
+		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event));
 		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getEventid());
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
 	}
-	public Event getEventReady(UserBean user, int eventid) {
-		String value = hget(RedisKey.USEREVENTREADY_PREFIX+user.getId(), eventid+"");
-		Event.Builder builder = Event.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		return null;
-	}
+//	public Event getEventReady(UserBean user, int eventid) {
+//		String value = hget(RedisKey.USEREVENTREADY_PREFIX+user.getId(), eventid+"");
+//		Event.Builder builder = Event.newBuilder();
+//		if(value != null && parseJson(value, builder))
+//			return builder.build();
+//		return null;
+//	}
 	public void delEventReady(UserBean user, Event event) {
-		hdelete(RedisKey.USEREVENTREADY_PREFIX+user.getId(),event.getEventid()+"");
+		hdelete(RedisKey.USEREVENTREADY_PREFIX+user.getId(),event.getOrder()+"");
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX+"Del", user.getId()+"#"+event.getEventid());
 	}
@@ -520,6 +520,11 @@ public class LevelRedisService extends RedisService {
 						event.setName(config.getName());
 						event.setOrder(builder.getEventCount());
 						builder.addEvent(event);
+						for(int i = 1; i < event.getEventcount(); i++) {
+							Event.Builder newevent = Event.newBuilder(event.build());
+							newevent.setOrder(builder.getEventCount());
+							builder.addEvent(newevent);
+						}
 					}
 				}
 			}
