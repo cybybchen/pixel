@@ -273,7 +273,10 @@ public class LevelCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if(event.getOrder() >= 10000 || cmd.getRet()){
+		}else if(!cmd.getRet()) {
+			if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up event
+				redis.delEvent(user, event);
+		}else {//event success
 			EventConfig eventconfig = redis.getEvent(event.getEventid());
 			if(eventconfig == null){
 				redis.delEvent(user, event);
@@ -283,56 +286,49 @@ public class LevelCommandService extends BaseCommandService {
 			if(eventconfig.getType() == 2 && cmd.getFinalid() > 0) {//选择分支事件
 				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
 			}
-			if(cmd.getRet() && (event.getTargetid() == 1 || event.getTargetid() == 202 || event.getTargetid() == 203))
+			if(event.getTargetid() == 1 || event.getTargetid()/100 == 2)
 				pvpMapService.unlockMap(event.getTargetid()%100, 0, user);
 			if(eventconfig.getType() == 1){//buy event
-				if(cmd.getRet()){
-					if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
-			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
-						List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
-						handleRewards(responseBuilder, user, rewards);
-						if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
-							userLevel.setLeftCount(userLevel.getLeftCount()-1);
-							redis.saveUserLevel(userLevel);
-						}
-					}else{
-						ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(eventconfig.getCost().getCostid()));
-			            responseBuilder.setErrorCommand(errorCommand);
-			            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
-						pushLevelLootCommand(responseBuilder, userLevel, user);
-						return;
+				if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
+		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
+					List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
+					handleRewards(responseBuilder, user, rewards);
+					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
+						userLevel.setLeftCount(userLevel.getLeftCount()-1);
+						redis.saveUserLevel(userLevel);
 					}
+				}else{
+					ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(eventconfig.getCost().getCostid()));
+		            responseBuilder.setErrorCommand(errorCommand);
+		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
+					pushLevelLootCommand(responseBuilder, userLevel, user);
+					return;
 				}
-				redis.delEvent(user, event);
-				/**
-				 * 完成事件的活动
-				 */
-				activityService.completeEvent(user, event.getEventid());
-			}else if(cmd.getRet()){//fight event
+			}else {//fight event
 				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
 				List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
 				handleRewards(responseBuilder, user, rewards);
-				redis.delEvent(user, event);
-				/**
-				 * 完成事件的活动
-				 */
-				activityService.completeEvent(user, event.getEventid());
-				/**
-				 * 解锁主角
-				 */
-				List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
-				if (!userTalentList.isEmpty())
-					pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
+			}
+			redis.delEvent(user, event);
+			/**
+			 * 完成事件的活动
+			 */
+			activityService.completeEvent(user, event.getEventid());
+			/**
+			 * 解锁主角
+			 */
+			List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
+			if (!userTalentList.isEmpty())
+				pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
 
-				/**
-				 * 完成事件解锁每日奖励
-				 */
-				userService.handleRewardTaskDailyReward(user);
-			}else if(event.getOrder() >= 10000 && !cmd.hasTurn())//give up fight event
-				redis.delEvent(user, event);
+			/**
+			 * 完成事件解锁每日奖励
+			 */
+			userService.handleRewardTaskDailyReward(user);
+			
 			redis.productMainEvent(user, event.getEventid());
 		}
 		user.addMyactive();
