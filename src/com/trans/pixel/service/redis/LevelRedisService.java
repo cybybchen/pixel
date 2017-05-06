@@ -10,6 +10,7 @@ import java.util.TreeMap;
 import javax.annotation.Resource;
 import javax.management.RuntimeErrorException;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -46,7 +47,7 @@ import com.trans.pixel.service.UserTalentService;
 
 @Repository
 public class LevelRedisService extends RedisService {
-//	private static Logger logger = Logger.getLogger(LevelRedisService.class);
+	private static Logger logger = Logger.getLogger(LevelRedisService.class);
 	private static final int NEWPLAY_LEVEL_1 = 1012;
 	private static final int NEWPLAY_LEVEL_2 = 1013;
 	private static final int NEWPLAY_LEVEL_3 = 1014;
@@ -482,6 +483,8 @@ public class LevelRedisService extends RedisService {
 						break;
 					}
 				}
+				if(!enemy.hasLoot())
+					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
 			}
 			map.put(event.getId(), event);
 //			keyvalue.put(event.getId()+"", formatJson(event));
