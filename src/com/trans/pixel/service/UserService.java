@@ -357,11 +357,10 @@ public class UserService {
 		int result = userMapper.addNewUser(user);
 		user.setPvpMineRefreshTime((int)userRedisService.today(0));
 		user.setPvpMineGainTime(userRedisService.now());
-		refreshUserDailyData(user);
-		userRedisService.updateUser(user);
+//		userRedisService.updateUser(user);
 		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
 		userRedisService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
-		userRedisService.cache(user.getServerId(), user.buildShort());
+//		userRedisService.cache(user.getServerId(), user.buildShort());
 		return result;
 	}
 
