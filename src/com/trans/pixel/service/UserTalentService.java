@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -20,7 +20,6 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserTalentBean;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Base.UserTalent;
-import com.trans.pixel.protoc.Base.UserTalent.Builder;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talent;
@@ -120,16 +119,17 @@ public class UserTalentService {
 		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(user.getId());
 		if (userTalentList.isEmpty()) {
 			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
-			if (utBeanList != null && !utBeanList.isEmpty()) {
-//				Map<String, Talent> map = talentRedisService.getTalentConfig();
-//				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
-//				while (it.hasNext()) {
-//					Entry<String, Talent> entry = it.next();
-//					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
-//					userTalentList.add(userTalent.build());
-//					updateUserTalent(user.getId(), userTalent.build());
-//				}
-//			} else {
+			if (utBeanList == null || utBeanList.isEmpty()) {
+				Map<String, Talent> map = talentRedisService.getTalentConfig();
+				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
+				while (it.hasNext()) {
+					Entry<String, Talent> entry = it.next();
+					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
+					userTalentList.add(userTalent.build());
+					updateUserTalent(user.getId(), userTalent.build());
+					break;
+				}
+			} else {
 				for (UserTalentBean ut : utBeanList) {
 					UserTalent userTalent = ut.buildUserTalent();
 					if (userTalent != null) {
