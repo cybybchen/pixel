@@ -476,8 +476,11 @@ public class LevelRedisService extends RedisService {
 		for(EventConfig.Builder event : list.getIdBuilderList()){
 			for(EventEnemy.Builder enemy : event.getEnemyBuilderList()){
 				for(EventEnemy.Builder enemyconfig : list2.getIdBuilderList()){
-					enemy.setLoot(enemyconfig.getLoot());
-					enemy.setLootweight(enemyconfig.getLootweight());
+					if(enemy.getEnemyid() == enemyconfig.getEnemyid()) {
+						enemy.setLoot(enemyconfig.getLoot());
+						enemy.setLootweight(enemyconfig.getLootweight());
+						break;
+					}
 				}
 			}
 			map.put(event.getId(), event);
