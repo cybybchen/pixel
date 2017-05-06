@@ -120,16 +120,16 @@ public class UserTalentService {
 		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(user.getId());
 		if (userTalentList.isEmpty()) {
 			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
-			if (utBeanList == null || utBeanList.isEmpty()) {
-				Map<String, Talent> map = talentRedisService.getTalentConfig();
-				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
-				while (it.hasNext()) {
-					Entry<String, Talent> entry = it.next();
-					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
-					userTalentList.add(userTalent.build());
-					updateUserTalent(user.getId(), userTalent.build());
-				}
-			} else {
+			if (utBeanList != null && !utBeanList.isEmpty()) {
+//				Map<String, Talent> map = talentRedisService.getTalentConfig();
+//				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
+//				while (it.hasNext()) {
+//					Entry<String, Talent> entry = it.next();
+//					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
+//					userTalentList.add(userTalent.build());
+//					updateUserTalent(user.getId(), userTalent.build());
+//				}
+//			} else {
 				for (UserTalentBean ut : utBeanList) {
 					UserTalent userTalent = ut.buildUserTalent();
 					if (userTalent != null) {
