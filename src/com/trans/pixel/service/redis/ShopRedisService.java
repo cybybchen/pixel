@@ -605,11 +605,18 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getPVPShopEndTime(){
-		long time = today(21);
-		if(now() < time)
-			return time;
-		else//第二天21点
-			return time+24*3600;
+		long time[] = {today(0), today(12), today(18), today(21)};
+		long now = now();
+		if(now < time[0])
+			return time[0];
+		else if(now < time[1])
+			return time[1];
+		else if(now < time[2])
+			return time[2];
+		else if(now < time[3])
+			return time[3];
+		else//第二天9点
+			return time[0]+24*3600;
 	}
 	
 	public ShopList buildPVPShop(UserBean user){
@@ -785,11 +792,18 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getLadderShopEndTime(){
-		long time = today(21);
-		if(now() < time)
-			return time;
-		else//第二天21点
-			return time+24*3600;
+		long time[] = {today(0), today(12), today(18), today(21)};
+		long now = now();
+		if(now < time[0])
+			return time[0];
+		else if(now < time[1])
+			return time[1];
+		else if(now < time[2])
+			return time[2];
+		else if(now < time[3])
+			return time[3];
+		else//第二天9点
+			return time[0]+24*3600;
 	}
 	
 //	class CommCreater {
