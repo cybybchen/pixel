@@ -86,7 +86,7 @@ public class LevelRedisService extends RedisService {
 			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 			for(Event.Builder event : events.getEventBuilderList()){
 //				if(daguan.getId() == event.getDaguan() && event.getWeight() == 0){
-					event.setOrder(events.getId()*300+event.getEventid());
+					event.setOrder(events.getId()*300+event.getOrder());
 					eventmap.put(event.getOrder(), event);
 //				}
 			}
@@ -134,7 +134,7 @@ public class LevelRedisService extends RedisService {
 			for(EventBean bean : list){
 				Event.Builder event = bean.build();
 				EventConfig config = getEvent(event.getEventid());
-				event.setOrder(event.getDaguan()*300+event.getEventid());
+//				event.setOrder(event.getDaguan()*300+event.getOrder());
 				event.setName(config.getName());
 //				event.setType(config.getType());
 //				event.setCostid(config.getCostid());
@@ -518,6 +518,7 @@ public class LevelRedisService extends RedisService {
 //							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
 							config.setDaguan(event.getDaguan());
 						event.setName(config.getName());
+						event.setOrder(builder.getEventCount());
 						builder.addEvent(event);
 					}
 				}
@@ -543,6 +544,7 @@ public class LevelRedisService extends RedisService {
 						if(config.getDaguan() == 0)
 							config.setDaguan(event.getDaguan());
 						event.setName(config.getName());
+						event.setOrder(builder.getEventCount());
 						builder.addEvent(event);
 						builder.setWeight(builder.getWeight()+event.getWeight());
 					}
@@ -557,6 +559,7 @@ public class LevelRedisService extends RedisService {
 								throw new RuntimeErrorException(null, "Error eventconfig eventid "+event.getEventid());
 							event.setName(config.getName());
 							event.setDaguan(builder.getId());
+							event.setOrder(builder.getEventCount());
 							builder.addEvent(event);
 							builder.setWeight(builder.getWeight()+event.getWeight());
 						}

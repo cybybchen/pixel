@@ -133,7 +133,7 @@ public class LevelCommandService extends BaseCommandService {
 				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 				for(Event.Builder event : events.getEventBuilderList()){
 //					if(id == event.getDaguan() && event.getWeight() == 0){
-						event.setOrder(events.getId()*300+event.getEventid());
+						event.setOrder(events.getId()*300+event.getOrder());
 						eventmap.put(event.getOrder(), event);
 //					}
 				}
@@ -273,13 +273,13 @@ public class LevelCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 		}else if(event.getOrder() >= 10000 || cmd.getRet()){
 			EventConfig eventconfig = redis.getEvent(event.getEventid());
-			if(eventconfig.getType() == 2) {//选择分支事件
-				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
-			}
 			if(eventconfig == null){
 				redis.delEvent(user, event);
 				pushLevelLootCommand(responseBuilder, userLevel, user);
 				return;
+			}
+			if(eventconfig.getType() == 2) {//选择分支事件
+				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
 			}
 			if(cmd.getRet() && (event.getTargetid() == 1 || event.getTargetid() == 202 || event.getTargetid() == 203))
 				pvpMapService.unlockMap(event.getTargetid()%100, 0, user);
