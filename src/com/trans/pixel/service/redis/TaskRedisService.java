@@ -146,13 +146,13 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	//task2
-	private TaskTarget getTask2Target(int targetId) {
+	private Task2TargetHero getTask2TargetHero(int targetId) {
 		String value = hget(RedisKey.TASK2_CONFIG_KEY, "" + targetId);
 		if (value == null) {
-			Map<String, TaskTarget> config = getTask2TargetConfig();
+			Map<String, Task2TargetHero> config = getTask2TargetConfig();
 			return config.get("" + targetId);
 		} else {
-			TaskTarget.Builder builder = TaskTarget.newBuilder();
+			Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
 			if(parseJson(value, builder))
 				return builder.build();
 		}
@@ -160,20 +160,20 @@ public class TaskRedisService extends RedisService {
 		return null;
 	}
 	
-	public Map<String, TaskTarget> getTask2TargetConfig() {
+	public Map<String, Task2TargetHero> getTask2TargetConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.TASK2_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
-			Map<String, TaskTarget> map = buildTask2TargetConfig();
+			Map<String, Task2TargetHero> map = buildTask2TargetConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, TaskTarget> entry : map.entrySet()){
+			for(Entry<String, Task2TargetHero> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TASK2_CONFIG_KEY, redismap);
 			return map;
 		}else{
-			Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
+			Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
-				TaskTarget.Builder builder = TaskTarget.newBuilder();
+				Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
 				if(parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
@@ -181,7 +181,7 @@ public class TaskRedisService extends RedisService {
 		}
 	}
 	
-	private Map<String, TaskTarget> buildTask2TargetConfig(){
+	private Map<String, Task2TargetHero> buildTask2TargetConfig(){
 		String xml = ReadConfig(TASK2_FILE_NAME);
 		Task2TargetList.Builder builder = Task2TargetList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -189,11 +189,11 @@ public class TaskRedisService extends RedisService {
 			return null;
 		}
 		
-		Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
+		Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
 		for (Task2TargetHero.Builder hero : builder.getIdBuilderList()) {
 			Map<String, String> redismap = new HashMap<String, String>();
 			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
-				map.put("" + hero.getHeroid() + task.getTargetid(), task.build());
+				map.put("" + hero.getHeroid(), hero.build());
 				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 					order.setTargetid(task.getTargetid());
 					redismap.put("" + order.getOrder(), formatJson(order.build()));
