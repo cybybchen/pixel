@@ -380,70 +380,42 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
-		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
-		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
-		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
-		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
-		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
-		List<UserEquipPokedeBean> equipPokedeList = new ArrayList<UserEquipPokedeBean>();
-		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
-		long userId = user.getId();
-		if (rewardId > RewardConst.FOOD) {
-			foodList.add(userFoodService.selectUserFood(user, rewardId));
-			this.pushUserFoodListCommand(responseBuilder, user, foodList);
-		} else if (rewardId > RewardConst.HEAD) {
-			headList.add(userHeadService.selectUserHead(userId, rewardId));
-			this.pushUserHeadCommand(responseBuilder, user, headList);
-		} else if (rewardId > RewardConst.HERO) {
-			heroList.addAll(userHeroService.selectUserNewHero(userId));
-			this.pushUserHeroListCommand(responseBuilder, user, heroList);
-		} else if (rewardId > RewardConst.PACKAGE) {
-			propList.add(userPropService.selectUserProp(userId, rewardId));
-			this.pushUserPropListCommand(responseBuilder, user, propList);
-		} else if (rewardId > RewardConst.CHIP) {
-			equipList.add(userEquipService.selectUserEquip(userId, rewardId));
-			this.pushUserEquipListCommand(responseBuilder, user, equipList);
-		} else if (rewardId > RewardConst.EQUIPMENT) {
-//			equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
-//			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
-		} else if (rewardId == RewardConst.ZHUJUEEXP) {
-			userTalentList.add(userTalentService.getUsingTalent(user));
-			this.pushUserTalentList(responseBuilder, user, userTalentList);
-		} else {
-			this.pushUserInfoCommand(responseBuilder, user);
-		}
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.addLoot(RewardInfo.newBuilder());
+		rewards.getLootBuilder(0).setItemid(rewardId);
+		pushRewardCommand(responseBuilder, user, rewards.build(), false);
 	}
 
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {
 		pushRewardCommand(responseBuilder, user, rewards, true);
 	}
 	
-	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards, boolean isreward) {
+	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards, boolean needPushReward) {
 		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
 		List<UserHeadBean> headList = new ArrayList<UserHeadBean>();
-		List<Integer> pushRewardIdList = new ArrayList<Integer>();
+//		List<Integer> pushRewardIdList = new ArrayList<Integer>();
 		List<UserFoodBean> foodList = new ArrayList<UserFoodBean>();
 		List<UserEquipPokedeBean> equipPokedeList = new ArrayList<UserEquipPokedeBean>();
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		List<UserEquipBean> userEquipList = userEquipService.selectUserEquipList(user.getId());
-		boolean isUserUpdated = false;
+		boolean needUpdateUser = false;
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
-			if (pushRewardIdList.contains(rewardId))
-				continue;
+//			if (pushRewardIdList.contains(rewardId))
+//				continue;
 			
 			if (rewardId > RewardConst.FOOD) {
 				foodList.add(userFoodService.selectUserFood(user, rewardId));
 			} else if (rewardId > RewardConst.HEAD) {
 				headList.add(userHeadService.selectUserHead(userId, rewardId));
-			} if (rewardId > RewardConst.HERO) {
+			} else if (rewardId > RewardConst.HERO) {
 				heroList.addAll(userHeroService.selectUserNewHero(userId));
 			} else if (rewardId > RewardConst.PACKAGE) {
 				if(rewardId / 1000 == 44)
-					isUserUpdated = true;
+					needUpdateUser = true;
 				else
 					propList.add(userPropService.selectUserProp(userId, rewardId));
 			} else if (rewardId > RewardConst.CHIP) {
@@ -456,12 +428,12 @@ public class PushCommandService extends BaseCommandService {
 				if (userTalent != null)
 					userTalentList.add(userTalent);
 			} else {
-				isUserUpdated = true;
+				needUpdateUser = true;
 			}
 			
-			pushRewardIdList.add(rewardId);
+//			pushRewardIdList.add(rewardId);
 		}
-		if (isreward) {
+		if (needPushReward) {
 			RewardCommand.Builder reward = RewardCommand.newBuilder();
 			reward.setTitle(rewards.getName());
 			reward.addAllLoot(rewards.getLootList());
@@ -481,7 +453,7 @@ public class PushCommandService extends BaseCommandService {
 			this.pushUserEquipPokedeList(responseBuilder, user, equipPokedeList);
 		if (!userTalentList.isEmpty())
 			this.pushUserTalentList(responseBuilder, user, userTalentList);
-		if(isUserUpdated)
+		if(needUpdateUser)
 			this.pushUserInfoCommand(responseBuilder, user);
 	}
 	
