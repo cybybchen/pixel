@@ -298,6 +298,13 @@ public class TaskService {
 		if (ut.getTargetid() != taskOrder.getTargetid())
 			return false;
 		
+		if (taskOrder.getTargetid() == ACTIVITY_TYPE.TYPE_PVP_BUFF_LEVELUP5_VALUE
+				|| taskOrder.getTargetid() == ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE) {
+			if (ut.getHeroidList().contains(taskOrder.getTargetcount())) {
+				return true;
+			}
+		}
+		
 		if (taskOrder.getTargetcount() <= ut.getProcess())
 			return true;
 		
@@ -317,11 +324,11 @@ public class TaskService {
 		int nextOrder = (user.getTask2Record() >> (4 * (task.getTargetid() / 10000 - 1)) & 15) + 1;
 		for (TaskOrder taskOrder : task.getOrderList()) {
 			if (taskOrder.getOrder() == nextOrder) {
-				if (task.getTargetid() % 1000 == 700) {
+//				if (task.getTargetid() % 1000 == 700) {
 					if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
 							return true;
-				} else if (ut.getProcess() >= taskOrder.getTargetcount())
-					return true;
+//				} else if (ut.getProcess() >= taskOrder.getTargetcount())
+//					return true;
 			}
 		}
 		
@@ -338,11 +345,11 @@ public class TaskService {
 			if (taskOrder == null)
 				continue;
 			UserTask ut = userTaskService.selectUserTask2(user.getId(), taskOrder.getTargetid());
-			if (taskOrder.getTargetid() % 1000 == 700) {
+//			if (taskOrder.getTargetid() % 1000 == 700) {
 				if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
 						return;
-			} else if (ut.getProcess() >= taskOrder.getTargetcount())
-				return;
+//			} else if (ut.getProcess() >= taskOrder.getTargetcount())
+//				return;
 		}
 				
 		//task 1
