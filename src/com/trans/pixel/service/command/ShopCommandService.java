@@ -280,6 +280,7 @@ public class ShopCommandService extends BaseCommandService{
 	      pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
 	      logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), cost);
 		}
+		handleRewards(responseBuilder, user, commbuilder.getCurrency(), cost);
 		
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 		shop.addAllItems(shoplist.getItemsList());
