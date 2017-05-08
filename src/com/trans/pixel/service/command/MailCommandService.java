@@ -14,7 +14,6 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
-import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.MailProto.RequestDeleteMailCommand;
@@ -74,14 +73,14 @@ public class MailCommandService extends BaseCommandService {
 		int type = cmd.getType();
 		
 		if (type == MailConst.TYPE_CALL_BROTHER_MAILL || type == MailConst.TYPE_HELP_EVENT) {
-			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
-			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
-				
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
-	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}
+//			UserInfo userCache = userService.getCache(user.getServerId(), toUserId);
+//			if (userCache == null || userCache.getVip() < LIMIT_VIP_LEVEL) {
+//				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
+//				
+//				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BROTHER_VIP_IS_NOT_ENOUGH);
+//	            responseBuilder.setErrorCommand(errorCommand);
+//	            return;
+//			}
 			if (!userFriendService.canCallBrother(user.getId(), toUserId)) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.CALL_BROTHER_TIME_NOT_ENOUGH_ERROR);
 				
