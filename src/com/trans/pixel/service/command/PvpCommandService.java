@@ -9,15 +9,12 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
-import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
@@ -205,9 +202,7 @@ public class PvpCommandService extends BaseCommandService {
 		}else{
 			Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 			ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
-			builder.addAllHeroInfo(team.getHeroInfoList());
-			if(team.hasUser())
-				builder.setUser(team.getUser());
+			builder.setTeam(team);
 			builder.setMineInfo(mine);
 			
 			responseBuilder.setPvpMineInfoCommand(builder);
@@ -243,8 +238,7 @@ public class PvpCommandService extends BaseCommandService {
 			} else{
 				Team team = userTeamService.getTeamCache(mine.getOwner().getId());
 				ResponsePVPMineInfoCommand.Builder builder= ResponsePVPMineInfoCommand.newBuilder();
-				builder.addAllHeroInfo(team.getHeroInfoList());
-				builder.setUser(team.getUser());
+				builder.setTeam(team);
 				builder.setMineInfo(mine);
 				responseBuilder.setPvpMineInfoCommand(builder);
 				pusher.pushUserInfoCommand(responseBuilder, user);

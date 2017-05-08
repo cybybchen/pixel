@@ -16713,44 +16713,19 @@ public final class PVPProto {
   public interface ResponsePVPMineInfoCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;
+    // optional .com.trans.pixel.protoc.Team team = 5;
     /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    java.util.List<com.trans.pixel.protoc.Base.HeroInfo> 
-        getHeroInfoList();
+    boolean hasTeam();
     /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index);
+    com.trans.pixel.protoc.Base.Team getTeam();
     /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    int getHeroInfoCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-        getHeroInfoOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-        int index);
-
-    // optional .com.trans.pixel.protoc.UserInfo user = 2;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    boolean hasUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfo getUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
+    com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
 
     // optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;
     /**
@@ -16765,21 +16740,6 @@ public final class PVPProto {
      * <code>optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;</code>
      */
     com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder getMineInfoOrBuilder();
-
-    // optional string composeSkill = 4;
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    boolean hasComposeSkill();
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    java.lang.String getComposeSkill();
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getComposeSkillBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponsePVPMineInfoCommand}
@@ -16832,27 +16792,6 @@ public final class PVPProto {
               }
               break;
             }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                heroInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.HeroInfo>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              heroInfo_.add(input.readMessage(com.trans.pixel.protoc.Base.HeroInfo.PARSER, extensionRegistry));
-              break;
-            }
-            case 18: {
-              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = user_.toBuilder();
-              }
-              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(user_);
-                user_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
             case 26: {
               com.trans.pixel.protoc.PVPProto.PVPMine.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
@@ -16866,9 +16805,17 @@ public final class PVPProto {
               bitField0_ |= 0x00000002;
               break;
             }
-            case 34: {
-              bitField0_ |= 0x00000004;
-              composeSkill_ = input.readBytes();
+            case 42: {
+              com.trans.pixel.protoc.Base.Team.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = team_.toBuilder();
+              }
+              team_ = input.readMessage(com.trans.pixel.protoc.Base.Team.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(team_);
+                team_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
               break;
             }
           }
@@ -16879,9 +16826,6 @@ public final class PVPProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          heroInfo_ = java.util.Collections.unmodifiableList(heroInfo_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -16914,62 +16858,26 @@ public final class PVPProto {
     }
 
     private int bitField0_;
-    // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;
-    public static final int HEROINFO_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.Base.HeroInfo> heroInfo_;
+    // optional .com.trans.pixel.protoc.Team team = 5;
+    public static final int TEAM_FIELD_NUMBER = 5;
+    private com.trans.pixel.protoc.Base.Team team_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Base.HeroInfo> getHeroInfoList() {
-      return heroInfo_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-        getHeroInfoOrBuilderList() {
-      return heroInfo_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    public int getHeroInfoCount() {
-      return heroInfo_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    public com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index) {
-      return heroInfo_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-     */
-    public com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-        int index) {
-      return heroInfo_.get(index);
-    }
-
-    // optional .com.trans.pixel.protoc.UserInfo user = 2;
-    public static final int USER_FIELD_NUMBER = 2;
-    private com.trans.pixel.protoc.Base.UserInfo user_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
-     */
-    public boolean hasUser() {
+    public boolean hasTeam() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    public com.trans.pixel.protoc.Base.UserInfo getUser() {
-      return user_;
+    public com.trans.pixel.protoc.Base.Team getTeam() {
+      return team_;
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
      */
-    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-      return user_;
+    public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
+      return team_;
     }
 
     // optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;
@@ -16994,68 +16902,17 @@ public final class PVPProto {
       return mineInfo_;
     }
 
-    // optional string composeSkill = 4;
-    public static final int COMPOSESKILL_FIELD_NUMBER = 4;
-    private java.lang.Object composeSkill_;
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    public boolean hasComposeSkill() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    public java.lang.String getComposeSkill() {
-      java.lang.Object ref = composeSkill_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          composeSkill_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string composeSkill = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getComposeSkillBytes() {
-      java.lang.Object ref = composeSkill_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        composeSkill_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
-      heroInfo_ = java.util.Collections.emptyList();
-      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
       mineInfo_ = com.trans.pixel.protoc.PVPProto.PVPMine.getDefaultInstance();
-      composeSkill_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getHeroInfoCount(); i++) {
-        if (!getHeroInfo(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasUser()) {
-        if (!getUser().isInitialized()) {
+      if (hasTeam()) {
+        if (!getTeam().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -17073,17 +16930,11 @@ public final class PVPProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < heroInfo_.size(); i++) {
-        output.writeMessage(1, heroInfo_.get(i));
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(2, user_);
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(3, mineInfo_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(4, getComposeSkillBytes());
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(5, team_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -17094,21 +16945,13 @@ public final class PVPProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < heroInfo_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, heroInfo_.get(i));
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, user_);
-      }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, mineInfo_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getComposeSkillBytes());
+          .computeMessageSize(5, team_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -17218,8 +17061,7 @@ public final class PVPProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getHeroInfoFieldBuilder();
-          getUserFieldBuilder();
+          getTeamFieldBuilder();
           getMineInfoFieldBuilder();
         }
       }
@@ -17229,26 +17071,18 @@ public final class PVPProto {
 
       public Builder clear() {
         super.clear();
-        if (heroInfoBuilder_ == null) {
-          heroInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+        if (teamBuilder_ == null) {
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
         } else {
-          heroInfoBuilder_.clear();
+          teamBuilder_.clear();
         }
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (mineInfoBuilder_ == null) {
           mineInfo_ = com.trans.pixel.protoc.PVPProto.PVPMine.getDefaultInstance();
         } else {
           mineInfoBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
-        composeSkill_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -17277,24 +17111,15 @@ public final class PVPProto {
         com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand result = new com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (heroInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            heroInfo_ = java.util.Collections.unmodifiableList(heroInfo_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.heroInfo_ = heroInfo_;
-        } else {
-          result.heroInfo_ = heroInfoBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        if (userBuilder_ == null) {
-          result.user_ = user_;
+        if (teamBuilder_ == null) {
+          result.team_ = team_;
         } else {
-          result.user_ = userBuilder_.build();
+          result.team_ = teamBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
         if (mineInfoBuilder_ == null) {
@@ -17302,10 +17127,6 @@ public final class PVPProto {
         } else {
           result.mineInfo_ = mineInfoBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.composeSkill_ = composeSkill_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -17322,56 +17143,19 @@ public final class PVPProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand other) {
         if (other == com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand.getDefaultInstance()) return this;
-        if (heroInfoBuilder_ == null) {
-          if (!other.heroInfo_.isEmpty()) {
-            if (heroInfo_.isEmpty()) {
-              heroInfo_ = other.heroInfo_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureHeroInfoIsMutable();
-              heroInfo_.addAll(other.heroInfo_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.heroInfo_.isEmpty()) {
-            if (heroInfoBuilder_.isEmpty()) {
-              heroInfoBuilder_.dispose();
-              heroInfoBuilder_ = null;
-              heroInfo_ = other.heroInfo_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              heroInfoBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getHeroInfoFieldBuilder() : null;
-            } else {
-              heroInfoBuilder_.addAllMessages(other.heroInfo_);
-            }
-          }
-        }
-        if (other.hasUser()) {
-          mergeUser(other.getUser());
+        if (other.hasTeam()) {
+          mergeTeam(other.getTeam());
         }
         if (other.hasMineInfo()) {
           mergeMineInfo(other.getMineInfo());
-        }
-        if (other.hasComposeSkill()) {
-          bitField0_ |= 0x00000008;
-          composeSkill_ = other.composeSkill_;
-          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getHeroInfoCount(); i++) {
-          if (!getHeroInfo(i).isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasUser()) {
-          if (!getUser().isInitialized()) {
+        if (hasTeam()) {
+          if (!getTeam().isInitialized()) {
             
             return false;
           }
@@ -17404,361 +17188,121 @@ public final class PVPProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;
-      private java.util.List<com.trans.pixel.protoc.Base.HeroInfo> heroInfo_ =
-        java.util.Collections.emptyList();
-      private void ensureHeroInfoIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          heroInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.HeroInfo>(heroInfo_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder> heroInfoBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.HeroInfo> getHeroInfoList() {
-        if (heroInfoBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(heroInfo_);
-        } else {
-          return heroInfoBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public int getHeroInfoCount() {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.size();
-        } else {
-          return heroInfoBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo getHeroInfo(int index) {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.get(index);
-        } else {
-          return heroInfoBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder setHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.set(index, value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder setHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder addHeroInfo(com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder addHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo value) {
-        if (heroInfoBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(index, value);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder addHeroInfo(
-          com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder addHeroInfo(
-          int index, com.trans.pixel.protoc.Base.HeroInfo.Builder builderForValue) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          heroInfoBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder addAllHeroInfo(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.HeroInfo> values) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          super.addAll(values, heroInfo_);
-          onChanged();
-        } else {
-          heroInfoBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder clearHeroInfo() {
-        if (heroInfoBuilder_ == null) {
-          heroInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          heroInfoBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public Builder removeHeroInfo(int index) {
-        if (heroInfoBuilder_ == null) {
-          ensureHeroInfoIsMutable();
-          heroInfo_.remove(index);
-          onChanged();
-        } else {
-          heroInfoBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder getHeroInfoBuilder(
-          int index) {
-        return getHeroInfoFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfoOrBuilder getHeroInfoOrBuilder(
-          int index) {
-        if (heroInfoBuilder_ == null) {
-          return heroInfo_.get(index);  } else {
-          return heroInfoBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-           getHeroInfoOrBuilderList() {
-        if (heroInfoBuilder_ != null) {
-          return heroInfoBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(heroInfo_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder addHeroInfoBuilder() {
-        return getHeroInfoFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.HeroInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public com.trans.pixel.protoc.Base.HeroInfo.Builder addHeroInfoBuilder(
-          int index) {
-        return getHeroInfoFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.HeroInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.HeroInfo heroInfo = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.HeroInfo.Builder> 
-           getHeroInfoBuilderList() {
-        return getHeroInfoFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder> 
-          getHeroInfoFieldBuilder() {
-        if (heroInfoBuilder_ == null) {
-          heroInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.HeroInfo, com.trans.pixel.protoc.Base.HeroInfo.Builder, com.trans.pixel.protoc.Base.HeroInfoOrBuilder>(
-                  heroInfo_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          heroInfo_ = null;
-        }
-        return heroInfoBuilder_;
-      }
-
-      // optional .com.trans.pixel.protoc.UserInfo user = 2;
-      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      // optional .com.trans.pixel.protoc.Team team = 5;
+      private com.trans.pixel.protoc.Base.Team team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> teamBuilder_;
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public boolean hasUser() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+      public boolean hasTeam() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public com.trans.pixel.protoc.Base.UserInfo getUser() {
-        if (userBuilder_ == null) {
-          return user_;
+      public com.trans.pixel.protoc.Base.Team getTeam() {
+        if (teamBuilder_ == null) {
+          return team_;
         } else {
-          return userBuilder_.getMessage();
+          return teamBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
+      public Builder setTeam(com.trans.pixel.protoc.Base.Team value) {
+        if (teamBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          user_ = value;
+          team_ = value;
           onChanged();
         } else {
-          userBuilder_.setMessage(value);
+          teamBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public Builder setUser(
-          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          user_ = builderForValue.build();
+      public Builder setTeam(
+          com.trans.pixel.protoc.Base.Team.Builder builderForValue) {
+        if (teamBuilder_ == null) {
+          team_ = builderForValue.build();
           onChanged();
         } else {
-          userBuilder_.setMessage(builderForValue.build());
+          teamBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
-            user_ =
-              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+      public Builder mergeTeam(com.trans.pixel.protoc.Base.Team value) {
+        if (teamBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              team_ != com.trans.pixel.protoc.Base.Team.getDefaultInstance()) {
+            team_ =
+              com.trans.pixel.protoc.Base.Team.newBuilder(team_).mergeFrom(value).buildPartial();
           } else {
-            user_ = value;
+            team_ = value;
           }
           onChanged();
         } else {
-          userBuilder_.mergeFrom(value);
+          teamBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      public Builder clearTeam() {
+        if (teamBuilder_ == null) {
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
           onChanged();
         } else {
-          userBuilder_.clear();
+          teamBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
-        bitField0_ |= 0x00000002;
+      public com.trans.pixel.protoc.Base.Team.Builder getTeamBuilder() {
+        bitField0_ |= 0x00000001;
         onChanged();
-        return getUserFieldBuilder().getBuilder();
+        return getTeamFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
-      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilder();
+      public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
+        if (teamBuilder_ != null) {
+          return teamBuilder_.getMessageOrBuilder();
         } else {
-          return user_;
+          return team_;
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.Team team = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
-                  user_,
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> 
+          getTeamFieldBuilder() {
+        if (teamBuilder_ == null) {
+          teamBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder>(
+                  team_,
                   getParentForChildren(),
                   isClean());
-          user_ = null;
+          team_ = null;
         }
-        return userBuilder_;
+        return teamBuilder_;
       }
 
       // optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;
@@ -17769,7 +17313,7 @@ public final class PVPProto {
        * <code>optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;</code>
        */
       public boolean hasMineInfo() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;</code>
@@ -17794,7 +17338,7 @@ public final class PVPProto {
         } else {
           mineInfoBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17808,7 +17352,7 @@ public final class PVPProto {
         } else {
           mineInfoBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17816,7 +17360,7 @@ public final class PVPProto {
        */
       public Builder mergeMineInfo(com.trans.pixel.protoc.PVPProto.PVPMine value) {
         if (mineInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
               mineInfo_ != com.trans.pixel.protoc.PVPProto.PVPMine.getDefaultInstance()) {
             mineInfo_ =
               com.trans.pixel.protoc.PVPProto.PVPMine.newBuilder(mineInfo_).mergeFrom(value).buildPartial();
@@ -17827,7 +17371,7 @@ public final class PVPProto {
         } else {
           mineInfoBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
@@ -17840,14 +17384,14 @@ public final class PVPProto {
         } else {
           mineInfoBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.PVPMine mineInfo = 3;</code>
        */
       public com.trans.pixel.protoc.PVPProto.PVPMine.Builder getMineInfoBuilder() {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
         return getMineInfoFieldBuilder().getBuilder();
       }
@@ -17876,80 +17420,6 @@ public final class PVPProto {
           mineInfo_ = null;
         }
         return mineInfoBuilder_;
-      }
-
-      // optional string composeSkill = 4;
-      private java.lang.Object composeSkill_ = "";
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public boolean hasComposeSkill() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public java.lang.String getComposeSkill() {
-        java.lang.Object ref = composeSkill_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          composeSkill_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getComposeSkillBytes() {
-        java.lang.Object ref = composeSkill_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          composeSkill_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public Builder setComposeSkill(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        composeSkill_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public Builder clearComposeSkill() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        composeSkill_ = getDefaultInstance().getComposeSkill();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string composeSkill = 4;</code>
-       */
-      public Builder setComposeSkillBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        composeSkill_ = value;
-        onChanged();
-        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponsePVPMineInfoCommand)
@@ -22785,27 +22255,25 @@ public final class PVPProto {
       "MapListCommand\"O\n\036RequestAttackPVPMonste" +
       "rCommand\022\022\n\npositionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(" +
       "\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineInfoCom" +
-      "mand\022\n\n\002id\030\001 \002(\005\"\311\001\n\032ResponsePVPMineInfo" +
-      "Command\0222\n\010heroInfo\030\001 \003(\0132 .com.trans.pi",
-      "xel.protoc.HeroInfo\022.\n\004user\030\002 \001(\0132 .com." +
-      "trans.pixel.protoc.UserInfo\0221\n\010mineInfo\030" +
-      "\003 \001(\0132\037.com.trans.pixel.protoc.PVPMine\022\024" +
-      "\n\014composeSkill\030\004 \001(\t\"T\n\033RequestAttackPVP" +
-      "MineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022" +
-      "\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHel" +
-      "pAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006tea" +
-      "mid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014" +
-      "\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelCommand\022" +
-      "\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010",
-      "\022\016\n\006userId\030\004 \002(\003\"\\\n\026RequestSendMailComma" +
-      "nd\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n" +
-      "\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035Reques" +
-      "tBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tb" +
-      "rotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineC" +
-      "ommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapList" +
-      "Command\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel" +
-      ".protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030" +
-      "\003 \001(\005"
+      "mand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoC" +
+      "ommand\022*\n\004team\030\005 \001(\0132\034.com.trans.pixel.p",
+      "rotoc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com.trans" +
+      ".pixel.protoc.PVPMine\"T\n\033RequestAttackPV" +
+      "PMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003" +
+      "\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHe" +
+      "lpAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006te" +
+      "amid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022" +
+      "\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelCommand" +
+      "\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(" +
+      "\010\022\016\n\006userId\030\004 \002(\003\"\\\n\026RequestSendMailComm" +
+      "and\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021",
+      "\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035Reque" +
+      "stBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\t" +
+      "brotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMine" +
+      "Command\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapLis" +
+      "tCommand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixe" +
+      "l.protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff" +
+      "\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22943,7 +22411,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor,
-              new java.lang.String[] { "HeroInfo", "User", "MineInfo", "ComposeSkill", });
+              new java.lang.String[] { "Team", "MineInfo", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor =
             getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_fieldAccessorTable = new

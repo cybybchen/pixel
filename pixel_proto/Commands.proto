@@ -1329,10 +1329,8 @@ message RequestPVPMineInfoCommand {//pvp矿点对手信息
 }
 
 message ResponsePVPMineInfoCommand {
-	repeated HeroInfo heroInfo = 1;
-	optional UserInfo user = 2;
+	optional Team team = 5;
 	optional PVPMine mineInfo = 3;
-	optional string composeSkill = 4;
 }
 
 message RequestAttackPVPMineCommand {//攻击pvp矿点对手
