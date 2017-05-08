@@ -81,6 +81,8 @@ public class UserTaskBean {
 	}
 	private List<Integer> splitHeroId(String record) {
 		List<Integer> heroIdList = new ArrayList<Integer>();
+		if (record.isEmpty())
+			return heroIdList;
 		String[] heroIds = record.split(SPLIT);
 		for (String heroIdStr : heroIds) {
 			heroIdList.add(TypeTranslatedUtil.stringToInt(heroIdStr));

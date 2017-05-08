@@ -169,22 +169,6 @@ public class TaskService {
 				if (task.getTargetid() == targetId) {
 					UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, task.getTargetid()));
 					boolean hasModify = false;
-	//				if (task.getTargetid() % 1000 == 700 && !ut.getHeroidList().contains(heroId)) {
-	//				if (task.getTargetid() == ACTIVITY_TYPE.TYPE_GET_HERO_VALUE && !ut.getHeroidList().contains(heroId)) {
-	//					for (TaskOrder order : task.getOrderList()) {
-	//						if (order.getTargetcount() == heroId) {
-	//							ut.addHeroid(heroId);
-	//							hasModify = true;
-	//							break;
-	//						} 
-	//					}
-	//				}
-	//				for (TaskOrder order : task.getOrderList()) {
-	//					if (order.getTargetcount() == heroId && order.getTargetcount1() <= count) {
-	//						ut.setProcess(heroId);
-	//						hasModify = true;
-	//					}
-	//				}
 					
 					if (ut.getHeroidList().contains(heroId)) {
 						return;
@@ -327,6 +311,8 @@ public class TaskService {
 	private boolean isCompleteNewTaskByTask2(UserTask ut, UserBean user, Task2TargetHero taskHero) {
 		int nextOrder = getTask2NextOrder(taskHero.getHeroid(), user.getTask2Record());
 		for (TaskTarget task : taskHero.getTargetList()) {
+			if (task.getTargetid() != ut.getTargetid())
+				continue;
 			for (TaskOrder taskOrder : task.getOrderList()) {
 				if (taskOrder.getOrder() == nextOrder) {
 	//				if (task.getTargetid() % 1000 == 700) {
