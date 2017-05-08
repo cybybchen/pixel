@@ -157,7 +157,7 @@ public class LogService {
 				break;
 
 			case LogString.LOGTYPE_RAID:
-				sb.append(LogString.LOGTYPE_EVENT_STR);
+				sb.append(LogString.LOGTYPE_RAID_STR);
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.USERID));
 				sb.append(LogString.SPLITER);

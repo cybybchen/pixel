@@ -71,8 +71,16 @@ public class TalentService {
 		
 		userTalentService.updateUserTalent(user.getId(), unlockTalent(user, builder, userTalent.getLevel()));
 		
-		levelupTalentSkill(user, builder.getId(), builder.getLevel() - userTalent.getLevel());
+		int skillid = levelupTalentSkill(user, builder.getId(), builder.getLevel() - userTalent.getLevel());
+
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.ROLEID, "" + builder.getId());
+		params.put(LogString.LEVEL, "" + builder.getLevel());
+		params.put(LogString.TALENTID, "" + skillid);
 		
+		logService.sendLog(params, LogString.LOGTYPE_ROLELEVELUP);
 		/**
 		 * 主角升级的活动
 		 */

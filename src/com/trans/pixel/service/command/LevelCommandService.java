@@ -343,23 +343,25 @@ public class LevelCommandService extends BaseCommandService {
 		params.put(LogString.SERVERID, "" + user.getServerId());
 		params.put(LogString.RESULT, "" + cmd.getRet());
 		if(event != null) {
-		EventConfig eventconfig = redis.getEvent(event.getEventid());
-		params.put(LogString.EVENTID, "" + event.getEventid());
-		params.put(LogString.LEVEL, "" + event.getLevel());
-		params.put(LogString.TYPE, "" + (cmd.getOrder()<10000 ? 0 : 1));
-		params.put(LogString.EVENTTYPE, "" + eventconfig.getType());
-		params.put(LogString.MAP, "" + event.getDaguan());
-		if(responseBuilder.hasRewardCommand()){
-			List<RewardInfo> rewards = responseBuilder.getRewardCommand().getLootList();
-		params.put(LogString.ITEMID1, "" + (rewards.size() >= 1 ? rewards.get(0).getItemid():0));
-		params.put(LogString.ITEMCOUNT1, "" + (rewards.size() >= 1 ? rewards.get(0).getCount():0));
-		params.put(LogString.ITEMID2, "" + (rewards.size() >= 2 ? rewards.get(1).getItemid():0));
-		params.put(LogString.ITEMCOUNT2, "" + (rewards.size() >= 2 ? rewards.get(1).getCount():0));
-		params.put(LogString.ITEMID3, "" + (rewards.size() >= 3 ? rewards.get(2).getItemid():0));
-		params.put(LogString.ITEMCOUNT3, "" + (rewards.size() >= 3 ? rewards.get(2).getCount():0));
-		}
-		
-		logService.sendLog(params, LogString.LOGTYPE_EVENT);
+			EventConfig eventconfig = redis.getEvent(event.getEventid());
+			if(eventconfig != null) {
+				params.put(LogString.EVENTID, "" + event.getEventid());
+				params.put(LogString.LEVEL, "" + event.getLevel());
+				params.put(LogString.TYPE, "" + (cmd.getOrder()<10000 ? 0 : 1));
+				params.put(LogString.EVENTTYPE, "" + eventconfig.getType());
+				params.put(LogString.MAP, "" + event.getDaguan());
+				if(responseBuilder.hasRewardCommand()){
+					List<RewardInfo> rewards = responseBuilder.getRewardCommand().getLootList();
+				params.put(LogString.ITEMID1, "" + (rewards.size() >= 1 ? rewards.get(0).getItemid():0));
+				params.put(LogString.ITEMCOUNT1, "" + (rewards.size() >= 1 ? rewards.get(0).getCount():0));
+				params.put(LogString.ITEMID2, "" + (rewards.size() >= 2 ? rewards.get(1).getItemid():0));
+				params.put(LogString.ITEMCOUNT2, "" + (rewards.size() >= 2 ? rewards.get(1).getCount():0));
+				params.put(LogString.ITEMID3, "" + (rewards.size() >= 3 ? rewards.get(2).getItemid():0));
+				params.put(LogString.ITEMCOUNT3, "" + (rewards.size() >= 3 ? rewards.get(2).getCount():0));
+				}
+				
+				logService.sendLog(params, LogString.LOGTYPE_EVENT);
+			}
 		}
  		
 		pushLevelLootCommand(responseBuilder, userLevel, user);
