@@ -1985,6 +1985,7 @@ message RequestGreenhandCommand {
 	optional int32 advance = 2;
 	optional int32 skill = 3;
 	optional int32 failed = 4;
+	optional bool result = 5;
 }
 
 message RequestLogCommand {

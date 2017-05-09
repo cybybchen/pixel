@@ -17,6 +17,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -40,6 +41,7 @@ import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -71,6 +73,8 @@ public class UserCommandService extends BaseCommandService {
 	private ServerService serverService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private LevelRedisService userLevelService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -241,10 +245,11 @@ public class UserCommandService extends BaseCommandService {
 		if (cmd.hasGreenhand()) {
 			user.setGreenhand(cmd.getGreenhand());
 			
+			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			/**
 			 * send greenhand log
-			 */
-//			logService.sendGreenhandLog(user.getServerId(), user.getId(), cmd.getGreenhand());
+			 */ 
+			logService.sendGreenhandLog(user.getServerId(), user.getId(), userLevel.getUnlockDaguan(), cmd.getGreenhand(), cmd.hasResult() ? cmd.getResult():true);
 		}
 		if (cmd.hasAdvance())
 			user.setAdvance(cmd.getAdvance());

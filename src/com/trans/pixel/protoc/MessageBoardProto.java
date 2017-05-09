@@ -4901,6 +4901,16 @@ public final class MessageBoardProto {
      * <code>optional int32 failed = 4;</code>
      */
     int getFailed();
+
+    // optional bool result = 5;
+    /**
+     * <code>optional bool result = 5;</code>
+     */
+    boolean hasResult();
+    /**
+     * <code>optional bool result = 5;</code>
+     */
+    boolean getResult();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestGreenhandCommand}
@@ -4971,6 +4981,11 @@ public final class MessageBoardProto {
             case 32: {
               bitField0_ |= 0x00000008;
               failed_ = input.readInt32();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              result_ = input.readBool();
               break;
             }
           }
@@ -5104,11 +5119,28 @@ public final class MessageBoardProto {
       return failed_;
     }
 
+    // optional bool result = 5;
+    public static final int RESULT_FIELD_NUMBER = 5;
+    private boolean result_;
+    /**
+     * <code>optional bool result = 5;</code>
+     */
+    public boolean hasResult() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional bool result = 5;</code>
+     */
+    public boolean getResult() {
+      return result_;
+    }
+
     private void initFields() {
       greenhand_ = "";
       advance_ = 0;
       skill_ = 0;
       failed_ = 0;
+      result_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5134,6 +5166,9 @@ public final class MessageBoardProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, failed_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, result_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -5158,6 +5193,10 @@ public final class MessageBoardProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, failed_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, result_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5283,6 +5322,8 @@ public final class MessageBoardProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         failed_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        result_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -5327,6 +5368,10 @@ public final class MessageBoardProto {
           to_bitField0_ |= 0x00000008;
         }
         result.failed_ = failed_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.result_ = result_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5356,6 +5401,9 @@ public final class MessageBoardProto {
         }
         if (other.hasFailed()) {
           setFailed(other.getFailed());
+        }
+        if (other.hasResult()) {
+          setResult(other.getResult());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5553,6 +5601,39 @@ public final class MessageBoardProto {
       public Builder clearFailed() {
         bitField0_ = (bitField0_ & ~0x00000008);
         failed_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bool result = 5;
+      private boolean result_ ;
+      /**
+       * <code>optional bool result = 5;</code>
+       */
+      public boolean hasResult() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional bool result = 5;</code>
+       */
+      public boolean getResult() {
+        return result_;
+      }
+      /**
+       * <code>optional bool result = 5;</code>
+       */
+      public Builder setResult(boolean value) {
+        bitField0_ |= 0x00000010;
+        result_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool result = 5;</code>
+       */
+      public Builder clearResult() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        result_ = false;
         onChanged();
         return this;
       }
@@ -11362,28 +11443,29 @@ public final class MessageBoardProto {
       "trans.pixel.protoc.Notice\022\017\n\007message\030\002 \003" +
       "(\t\"3\n\036RequestQueryNoticeBoardCommand\022\021\n\t" +
       "messageId\030\001 \002(\t\"\031\n\027RequestHeartBeatComma" +
-      "nd\"\\\n\027RequestGreenhandCommand\022\021\n\tgreenha" +
+      "nd\"l\n\027RequestGreenhandCommand\022\021\n\tgreenha" +
       "nd\030\001 \001(\t\022\017\n\007advance\030\002 \001(\005\022\r\n\005skill\030\003 \001(\005" +
-      "\022\016\n\006failed\030\004 \001(\005\"\232\002\n\021RequestLogCommand\022\017" +
-      "\n\007logtype\030\001 \002(\005\022\021\n\tphoneuuid\030\002 \001(\t\022\021\n\tlo" +
-      "gintype\030\003 \001(\005\022\020\n\010platform\030\004 \001(\t\022\016\n\006vendo" +
-      "r\030\005 \001(\t\022\r\n\005model\030\006 \001(\t\022\017\n\007version\030\007 \001(\t\022",
-      "\020\n\010currency\030\010 \001(\005\022\026\n\016currencyamount\030\t \001(" +
-      "\005\022\r\n\005stage\030\n \001(\005\022\016\n\006itemid\030\013 \001(\005\022\016\n\006acti" +
-      "on\030\014 \001(\005\022\017\n\007channel\030\016 \001(\t\022\024\n\014rechargetyp" +
-      "e\030\017 \001(\005\022\014\n\004idfa\030\020 \001(\t\">\n\036RequestMessageB" +
-      "oardListCommand\022\014\n\004type\030\001 \002(\005\022\016\n\006itemId\030" +
-      "\002 \001(\005\"k\n\037ResponseMessageBoardListCommand" +
-      "\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002 \003(\0132$.c" +
-      "om.trans.pixel.protoc.MessageBoard\"\203\001\n R" +
-      "equestCreateMessageBoardCommand\022\014\n\004type\030" +
-      "\001 \002(\005\022\017\n\007message\030\002 \001(\t\022\017\n\007groupId\030\003 \001(\005\022",
-      "\016\n\006bossId\030\004 \001(\005\022\017\n\007fightId\030\005 \001(\005\022\016\n\006item" +
-      "Id\030\006 \001(\005\"G\n\032RequestReplyMessageCommand\022\014" +
-      "\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\017\n\007message\030\003 \002(" +
-      "\t\"g\n\033ResponseMessageBoardCommand\022\014\n\004type" +
-      "\030\001 \002(\005\022:\n\014messageBoard\030\002 \002(\0132$.com.trans" +
-      ".pixel.protoc.MessageBoard"
+      "\022\016\n\006failed\030\004 \001(\005\022\016\n\006result\030\005 \001(\010\"\232\002\n\021Req" +
+      "uestLogCommand\022\017\n\007logtype\030\001 \002(\005\022\021\n\tphone" +
+      "uuid\030\002 \001(\t\022\021\n\tlogintype\030\003 \001(\005\022\020\n\010platfor" +
+      "m\030\004 \001(\t\022\016\n\006vendor\030\005 \001(\t\022\r\n\005model\030\006 \001(\t\022\017",
+      "\n\007version\030\007 \001(\t\022\020\n\010currency\030\010 \001(\005\022\026\n\016cur" +
+      "rencyamount\030\t \001(\005\022\r\n\005stage\030\n \001(\005\022\016\n\006item" +
+      "id\030\013 \001(\005\022\016\n\006action\030\014 \001(\005\022\017\n\007channel\030\016 \001(" +
+      "\t\022\024\n\014rechargetype\030\017 \001(\005\022\014\n\004idfa\030\020 \001(\t\">\n" +
+      "\036RequestMessageBoardListCommand\022\014\n\004type\030" +
+      "\001 \002(\005\022\016\n\006itemId\030\002 \001(\005\"k\n\037ResponseMessage" +
+      "BoardListCommand\022\014\n\004type\030\001 \002(\005\022:\n\014messag" +
+      "eBoard\030\002 \003(\0132$.com.trans.pixel.protoc.Me" +
+      "ssageBoard\"\203\001\n RequestCreateMessageBoard" +
+      "Command\022\014\n\004type\030\001 \002(\005\022\017\n\007message\030\002 \001(\t\022\017",
+      "\n\007groupId\030\003 \001(\005\022\016\n\006bossId\030\004 \001(\005\022\017\n\007fight" +
+      "Id\030\005 \001(\005\022\016\n\006itemId\030\006 \001(\005\"G\n\032RequestReply" +
+      "MessageCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \002(\t" +
+      "\022\017\n\007message\030\003 \002(\t\"g\n\033ResponseMessageBoar" +
+      "dCommand\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002" +
+      " \002(\0132$.com.trans.pixel.protoc.MessageBoa" +
+      "rd"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11431,7 +11513,7 @@ public final class MessageBoardProto {
           internal_static_com_trans_pixel_protoc_RequestGreenhandCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGreenhandCommand_descriptor,
-              new java.lang.String[] { "Greenhand", "Advance", "Skill", "Failed", });
+              new java.lang.String[] { "Greenhand", "Advance", "Skill", "Failed", "Result", });
           internal_static_com_trans_pixel_protoc_RequestLogCommand_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_RequestLogCommand_fieldAccessorTable = new

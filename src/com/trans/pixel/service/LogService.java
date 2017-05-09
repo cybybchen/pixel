@@ -862,14 +862,16 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_SHOP);
 	}
 	
-//	public void sendGreenhandLog(int serverId, long userId, String greenhand) {
-//		Map<String, String> params = new HashMap<String, String>();
-//		params.put(LogString.SERVERID, "" + serverId);
-//		params.put(LogString.USERID, "" + userId);
-//		params.put(LogString.GREENHAND, greenhand);
-//		
-//		sendLog(params, LogString.LOGTYPE_GREENHAND);
-//	}
+	public void sendGreenhandLog(int serverId, long userId, int unlockDaguan, String greenhand, boolean result) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.SERVERID, "" + serverId);
+		params.put(LogString.USERID, "" + userId);
+		params.put(LogString.ID, "" + unlockDaguan);
+		params.put(LogString.ORDERID, "" + greenhand);
+		params.put(LogString.RESULT, result ? "1":"0");
+		
+		sendLog(params, LogString.LOGTYPE_GREENHAND);
+	}
 	
 	public void sendLevelupLog(int serverId, long userId, int heroid, int level) {
 		Map<String, String> params = new HashMap<String, String>();
