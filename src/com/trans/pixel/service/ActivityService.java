@@ -374,7 +374,7 @@ public class ActivityService {
 		while (it.hasNext()) {
 			Entry<String, Kaifu2> entry = it.next();
 			Kaifu2 kaifu2 = entry.getValue();
-			if (isInKaifuActivityTime(kaifu2.getLasttime(), serverId) && kaifu2.getTargetid() == type) {
+			if (serverService.isInKaifuActivityTime(kaifu2.getLasttime(), serverId) && kaifu2.getTargetid() == type) {
 				activityRedisService.deleteKaifu2Score(userId, serverId, kaifu2.getId(), kaifu2.getTargetid());
 			}
 		}
@@ -386,7 +386,7 @@ public class ActivityService {
 		while (it.hasNext()) {
 			Entry<String, Kaifu2> entry = it.next();
 			Kaifu2 kaifu2 = entry.getValue();
-			if (isInKaifuActivityTime(kaifu2.getLasttime(), user.getServerId()) && kaifu2.getTargetid() == type) {
+			if (serverService.isInKaifuActivityTime(kaifu2.getLasttime(), user.getServerId()) && kaifu2.getTargetid() == type) {
 				activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), kaifu2.getId(), kaifu2.getTargetid(), score);
 			}
 		}
@@ -397,7 +397,7 @@ public class ActivityService {
 		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Kaifu2 kaifu2 = it.next().getValue();
-			if (kaifu2.getLasttime() <= 0 || getKaifuDays(serverId) != kaifu2.getLasttime()) 
+			if (kaifu2.getLasttime() <= 0 || serverService.getKaifuDays(serverId) != kaifu2.getLasttime()) 
 				return;
 			int id = kaifu2.getId();
 			if (!activityRedisService.hasKaifu2RewardSend(serverId, id)) {
@@ -488,10 +488,10 @@ public class ActivityService {
 		int serverId = user.getServerId();
 		
 		List<Kaifu2Rank> rankList = new ArrayList<Kaifu2Rank>();
-		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
+		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
 		if (map == null)
 			return rankList;
-		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
+		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
 			Kaifu2Rank.Builder kaifu2Rank = Kaifu2Rank.newBuilder();
@@ -543,17 +543,6 @@ public class ActivityService {
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private boolean isInKaifuActivityTime(int lastTime, int serverId) {
-		if (lastTime <= 0)
-			return true;
-		
-		return getKaifuDays(serverId) < lastTime;
-	}
-	
-	private int getKaifuDays(int serverId) {
-		String kaifuTime = serverService.getKaifuTime(serverId);
-		return DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
-	}
 	
 	/***********************************************************************************/
 	/** kaifu activity **/
@@ -606,7 +595,7 @@ public class ActivityService {
 				/**
 				 * 判断活动有没有过期
 				 */
-				if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= getKaifuDays(user.getServerId())) {
+				if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= serverService.getKaifuDays(user.getServerId())) {
 					userActivityService.updateUserKaifu(user.getId(), uk.build(), kaifu.getCycle());
 					
 					if (isCompleteNewKaifu(uk.build(), user))
@@ -621,7 +610,7 @@ public class ActivityService {
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
 		Kaifu kaifu = activityRedisService.getKaifu(id);
-		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
+		if (!serverService.isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
 			return ErrorConst.ACTIVITY_IS_OVER_ERROR;
 		
 		ActivityOrder activityorder = kaifu.getOrder(order - 1);
@@ -681,7 +670,7 @@ public class ActivityService {
 	
 	public void isDeleteNotice(UserBean user) {
 		long userId = user.getId();
-		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(userId);
+		List<UserKaifu> ukList = userActivityService.selectUserKaifuList(user);
 		for (UserKaifu uk : ukList) {
 			if (isCompleteNewKaifu(uk, user))
 				return;
@@ -698,7 +687,7 @@ public class ActivityService {
 	
 	private boolean isCompleteNewKaifu(UserKaifu uk, UserBean user) {
 		Kaifu kaifu = activityRedisService.getKaifu(uk.getType());
-		if (kaifu.getLasttime() > 0 && kaifu.getLasttime() <= getKaifuDays(user.getServerId()))
+		if (kaifu.getLasttime() > 0 && kaifu.getLasttime() <= serverService.getKaifuDays(user.getServerId()))
 //		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
 			return false;
 		

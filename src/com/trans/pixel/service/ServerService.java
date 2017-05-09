@@ -59,4 +59,16 @@ public class ServerService {
 	public int getOnlineStatus(String version) {
 		return serverRedisService.getOnlineStatus(version);
 	}
+	
+	public boolean isInKaifuActivityTime(int lastTime, int serverId) {
+		if (lastTime <= 0)
+			return true;
+		
+		return getKaifuDays(serverId) < lastTime;
+	}
+	
+	public int getKaifuDays(int serverId) {
+		String kaifuTime = getKaifuTime(serverId);
+		return DateUtil.intervalDays(DateUtil.getDate(DateUtil.getCurrentDateString()), DateUtil.getDate(kaifuTime));
+	}
 }

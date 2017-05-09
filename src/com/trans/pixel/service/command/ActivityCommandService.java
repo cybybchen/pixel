@@ -74,7 +74,7 @@ public class ActivityCommandService extends BaseCommandService {
 			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
 		}
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
-		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		responseBuilder.setKaifuListCommand(builder.build());
@@ -134,7 +134,7 @@ public class ActivityCommandService extends BaseCommandService {
 		}
 		
 		
-		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user));
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		responseBuilder.setKaifuListCommand(builder.build());
@@ -148,8 +148,8 @@ public class ActivityCommandService extends BaseCommandService {
 	public void kaifuList(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		
-		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user.getId()));
-		builder.addAllRank(activityService.getKaifu2RankList(user));
+		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user));
+//		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		activityService.isDeleteNotice(user);
 		responseBuilder.setKaifuListCommand(builder.build());

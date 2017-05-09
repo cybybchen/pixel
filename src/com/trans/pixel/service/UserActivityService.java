@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserActivityMapper;
 import com.trans.pixel.model.userinfo.UserActivityBean;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.Kaifu;
 import com.trans.pixel.protoc.ActivityProto.Richang;
 import com.trans.pixel.protoc.ActivityProto.UserKaifu;
 import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.UserActivityRedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -29,6 +31,8 @@ public class UserActivityService {
 	private ActivityRedisService activityRedisService;
 	@Resource
 	private UserActivityMapper userActivityMapper;
+	@Resource
+	private ServerService serverService;
 	
 	//richang activity
 	public void updateUserRichang(long userId, UserRichang ur, String endTime) {
@@ -51,9 +55,13 @@ public class UserActivityService {
 			return new ArrayList<UserRichang>();
 		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
-			UserRichang ur = selectUserRichang(userId, type);
-			urList.add(ur);
+			Entry<String, Richang> entry = it.next();
+			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
+			Richang richang = entry.getValue();
+			if (DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime())) {
+				UserRichang ur = selectUserRichang(userId, type);
+				urList.add(ur);
+			}
 		}
 		
 		return urList;
@@ -104,7 +112,7 @@ public class UserActivityService {
 		return uk;
 	}
 	
-	public List<UserKaifu> selectUserKaifuList(long userId) {
+	public List<UserKaifu> selectUserKaifuList(UserBean user) {
 		List<UserKaifu> ukList = new ArrayList<UserKaifu>();
 		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
 		if (map == null)
@@ -112,9 +120,12 @@ public class UserActivityService {
 		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, Kaifu> entry = it.next();
+			Kaifu kaifu = entry.getValue();
 			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
-			UserKaifu uk = selectUserKaifu(userId, type);
-			ukList.add(uk);
+			if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= serverService.getKaifuDays(user.getServerId())) {
+				UserKaifu uk = selectUserKaifu(user.getId(), type);
+				ukList.add(uk);
+			}
 		}
 		
 		return ukList;
