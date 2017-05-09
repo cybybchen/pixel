@@ -691,6 +691,9 @@ public class ActivityService {
 //		if (!isInKaifuActivityTime(kaifu.getLasttime(), user.getServerId()))
 			return false;
 		
+		if (kaifu.getCycle() == 1 && uk.getRewardOrderCount() > 0)
+			return false;
+		
 		List<ActivityOrder> orderList = kaifu.getOrderList();
 		for (ActivityOrder order : orderList) {
 			if (uk.getRewardOrderList().contains(order.getOrder()))
