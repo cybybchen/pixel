@@ -154,39 +154,22 @@ public class RewardTaskRedisService extends RedisService {
 	}
 	
 	//rewardtask daily
-	public Map<String, RewardTaskDaily> getRewardTaskDailyConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.REWARDTASKDAILY_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, RewardTaskDaily> map = buildRewardTaskDailyConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, RewardTaskDaily> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.REWARDTASKDAILY_KEY, redismap);
-			return map;
+	public RewardTaskDailyList getRewardTaskDailyConfig() {
+		String value = get(RedisKey.REWARDTASKDAILY_KEY);
+		if(value == null){
+			return buildRewardTaskDailyConfig();
 		}else{
-			Map<String, RewardTaskDaily> map = new HashMap<String, RewardTaskDaily>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				RewardTaskDaily.Builder builder = RewardTaskDaily.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
+			RewardTaskDailyList.Builder builder = RewardTaskDailyList.newBuilder();
+			parseJson(value, builder);
+			return builder.build();
 		}
 	}
 	
-	private Map<String, RewardTaskDaily> buildRewardTaskDailyConfig(){
+	private RewardTaskDailyList buildRewardTaskDailyConfig(){
 		String xml = ReadConfig(REWARDTASKDAILY_FILE_NAME);
 		RewardTaskDailyList.Builder builder = RewardTaskDailyList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build " + REWARDTASKDAILY_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, RewardTaskDaily> map = new HashMap<String, RewardTaskDaily>();
-		for(RewardTaskDaily.Builder rewardtask : builder.getIdBuilderList()){
-			map.put("" + rewardtask.getId(), rewardtask.build());
-		}
-		return map;
+		parseXml(xml, builder);
+		set(RedisKey.REWARDTASKDAILY_KEY, formatJson(builder.build()));
+		return builder.build();
 	}
 }

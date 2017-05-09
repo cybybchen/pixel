@@ -327,7 +327,7 @@ public class LevelCommandService extends BaseCommandService {
 			/**
 			 * 完成事件解锁每日奖励
 			 */
-			userService.handleRewardTaskDailyReward(user);
+			userService.handleRewardTaskDailyReward(user, event.getEventid());
 			
 			redis.productMainEvent(user, event.getEventid());
 		}

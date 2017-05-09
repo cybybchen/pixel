@@ -29,17 +29,16 @@ import com.trans.pixel.model.mapper.UserLibaoMapper;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
-import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserLibaoBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.YueKa;
-import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -199,31 +198,32 @@ public class UserService {
 			userPropService.updateUserProp(userProp);
 		}
 	}
-	
-	public void handleRewardTaskDailyReward(UserBean user) {
-		int addCount = 0;
-		int addId = 0;
-		Map<String, RewardTaskDaily> map = rewardTaskRedisService.getRewardTaskDailyConfig();
-		Iterator<Entry<String, RewardTaskDaily>> it = map.entrySet().iterator();
-		while (it.hasNext()) {
-			Entry<String, RewardTaskDaily> entry = it.next();
-			
-			boolean hasComplete = levelRedisService.hasCompleteEvent(user, TypeTranslatedUtil.stringToInt(entry.getKey()));
-			if (!hasComplete)
-				continue;
-			
-			addId = entry.getValue().getItemid();
-			addCount = Math.max(addCount, entry.getValue().getCount());
-		}
+
+	public void addtoUserEquip(UserBean user, int addId, int addCount){
+		UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), addId);
+		if (userEquip != null && userEquip.getEquipCount() >= addCount)
+			return;
 		
-		if (addId > 0 && addCount > 0) {
-			UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), addId);
-			if (userEquip != null && userEquip.getEquipCount() >= addCount)
-				return;
-			
-			userEquip = UserEquipBean.initUserEquip(addId, addCount);
-			userEquip.setUserId(user.getId());
-			userEquipService.updateUserEquip(userEquip);
+		userEquip = UserEquipBean.initUserEquip(addId, addCount);
+		userEquip.setUserId(user.getId());
+		userEquipService.updateUserEquip(userEquip);
+	}
+	public void handleRewardTaskDailyReward(UserBean user, int eventid) {
+		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
+		for(int i = config.getIdCount()-1; i >= 0; i--) {
+			if(config.getId(i).getId() == eventid) {
+				addtoUserEquip(user, config.getId(i).getCount(), config.getId(i).getItemid());
+				break;
+			}
+		}
+	}
+	public void handleRewardTaskDailyReward(UserBean user) {
+		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
+		for(int i = config.getIdCount()-1; i >= 0; i--) {
+			if(levelRedisService.hasCompleteEvent(user, config.getId(i).getId())) {
+				addtoUserEquip(user, config.getId(i).getCount(), config.getId(i).getItemid());
+				break;
+			}
 		}
 	}
 	
