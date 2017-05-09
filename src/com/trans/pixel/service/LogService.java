@@ -724,6 +724,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.LASTTIME));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.KNOWCOUNT));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.DAILYPLAYTIME));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.WHATTIME));

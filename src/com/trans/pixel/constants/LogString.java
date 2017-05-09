@@ -127,6 +127,7 @@ public class LogString {
 	public static final String DAILYPLAYTIME = "dailyplaytime";
 	public static final String WHATTIME = "whattime";
 	public static final String KNOW = "know";
+	public static final String KNOWCOUNT = "knowcount";
 	public static final String ANIME = "anime";
 	public static final String GAMES = "games";
 	public static final String REQUIRES = "requires";
