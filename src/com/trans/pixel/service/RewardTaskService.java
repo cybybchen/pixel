@@ -163,8 +163,10 @@ public class RewardTaskService {
 	
 	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList) {
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
-		if (room == null)
-			return SuccessConst.BOSS_SUBMIT_SUCCESS;;
+		if (room == null) {
+			activityService.completeRewardTask(user.getId(), rewardTask.getType());//单独完成悬赏任务
+			return SuccessConst.BOSS_SUBMIT_SUCCESS;
+		}
 		
 		boolean enoughProp = true;
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
