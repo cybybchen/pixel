@@ -12,6 +12,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
+import com.trans.pixel.protoc.ActivityProto.Kaifu;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand;
@@ -137,6 +138,11 @@ public class ActivityCommandService extends BaseCommandService {
 		builder.addAllRank(activityService.getKaifu2RankList(user));
 		builder.addAllUserRichang(userActivityService.selectUserRichangList(user.getId()));
 		responseBuilder.setKaifuListCommand(builder.build());
+		
+		Kaifu kaifu = activityRedisService.getKaifu(id);
+		if (kaifu.getConsumeid() > 0) {
+			pusher.pushUserDataByRewardId(responseBuilder, user, kaifu.getConsumeid());
+		}
 	}
 	
 	public void kaifuList(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user) {

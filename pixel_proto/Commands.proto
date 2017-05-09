@@ -2141,9 +2141,9 @@ message ActivityOrder {
 	optional int32 rewardid3 = 14;
 	optional string rewardname3 = 15;
 	optional int32 rewardcount3 = 16;
-	optional int32 consumeid = 19;
 	optional int32 limit = 18;
 	repeated RewardInfo reward = 20;
+	optional uint32 consumeid = 19;
 }
 
 message RichangList {
@@ -2159,6 +2159,7 @@ message Richang {
 	repeated ActivityOrder order = 5;
 	optional string noserverid = 7;
 	optional string serverid = 8;
+	optional uint32 consumeid = 9;
 }
 
 message RewardOrder {
