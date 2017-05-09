@@ -1158,6 +1158,8 @@ public class ActivityService {
 	public void completeEvent(UserBean user, int eventId) {
 //		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE, eventId, false);
 		
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE);
+		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_DAILY_VALUE);
 	}
 	
