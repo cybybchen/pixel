@@ -131,13 +131,13 @@ public class UserHeroService {
 	public void addUserHero(UserBean user, int heroId, int star, int count) {
 		long userId = user.getId();
 		HeroInfoBean newHero = initUserHero(userId, heroId, star);
-		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
-		if (oldHero == null) {
+//		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
+//		if (oldHero == null) {
 			/**
 			 * 更新图鉴
 			 */
 			userPokedeService.updateUserPokede(newHero, user);
-		} 
+//		} 
 		
 		int addCount = 0;
 		while (addCount < count) {
