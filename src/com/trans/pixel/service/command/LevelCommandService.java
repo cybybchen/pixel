@@ -201,7 +201,7 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 
-	public List<RewardBean> eventReward(EventConfig eventconfig, Event event, UserBean user, int count){
+	public List<RewardBean> eventReward(EventConfig eventconfig, Event event, UserBean user){
 		List<RewardBean> rewards = new ArrayList<RewardBean>();
 		for(EventReward eventreward : eventconfig.getLootList()){
 			RewardBean bean = new RewardBean();
@@ -213,7 +213,7 @@ public class LevelCommandService extends BaseCommandService {
 		if(eventconfig.getType() == 0) {//only fight event
 			RewardBean bean = new RewardBean();
 			bean.setItemid(daguan.getLootlist());
-			bean.setCount(count);
+			bean.setCount(Math.max(1, event.getCount()));
 			rewards.add(bean);
 			for(EventEnemy enemy : eventconfig.getEnemyList()) {
 				int rewardcount = 0;
@@ -291,7 +291,7 @@ public class LevelCommandService extends BaseCommandService {
 			if(eventconfig.getType() == 1){//buy event
 				if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
 		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
-					List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
+					List<RewardBean> rewards = eventReward(eventconfig, event, user);
 					handleRewards(responseBuilder, user, rewards);
 					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 						userLevel.setLeftCount(userLevel.getLeftCount()-1);
@@ -309,7 +309,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				List<RewardBean> rewards = eventReward(eventconfig, event, user, event.getCount());
+				List<RewardBean> rewards = eventReward(eventconfig, event, user);
 				handleRewards(responseBuilder, user, rewards);
 			}
 			redis.delEvent(user, event);
@@ -424,7 +424,7 @@ public class LevelCommandService extends BaseCommandService {
 //					bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
 //					rewardList.add(bean);
 //				}
-				List<RewardBean> rewards = eventReward(eventconfig, event, friend, event.getCount());
+				List<RewardBean> rewards = eventReward(eventconfig, event, friend);
 				rewardService.doFilter(friend, rewards);
 //				pusher.pushRewardCommand(responseBuilder, friend, rewards);
 //				if (winBean != null)
