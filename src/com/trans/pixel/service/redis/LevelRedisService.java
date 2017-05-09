@@ -373,6 +373,8 @@ public class LevelRedisService extends RedisService {
 		EventConfig.Builder builder = EventConfig.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
+		else if(exists(RedisKey.EVENT_CONFIG))
+			return null;
 		buildDaguanEvent();
 		value = hget(RedisKey.EVENT_CONFIG, eventid+"");
 		if(value != null && parseJson(value, builder))
