@@ -281,7 +281,7 @@ public class ActivityService {
 		/**
 		 * 累计抽奖的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_DAY_2, count);
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LOTTERY_VALUE, count);
 		
 		if (costType == RewardConst.COIN) {
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LOTTERY_COIN_VALUE);
