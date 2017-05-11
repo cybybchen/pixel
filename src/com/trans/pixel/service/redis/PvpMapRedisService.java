@@ -41,7 +41,7 @@ public class PvpMapRedisService extends RedisService{
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
 		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		if(value != null && parseJson(value, builder) && builder.getField(0).getKuangdian(0).getId() > 100){
+		if(value != null && parseJson(value, builder) && builder.getField(0).getKuangdian(0).getId() > 100 && builder.getField(2).getKuangdianCount() == 4){
 //			for(PVPMap.Builder map : builder.getFieldBuilderList()){
 //				// if(map.getFieldid() <= pvpUnlock)
 //					map.setOpened(true);
