@@ -212,7 +212,7 @@ public class UserService {
 		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
 		for(int i = config.getIdCount()-1; i >= 0; i--) {
 			if(config.getId(i).getId() == eventid) {
-				addtoUserEquip(user, config.getId(i).getCount(), config.getId(i).getItemid());
+				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
 				break;
 			}
 		}
@@ -221,7 +221,7 @@ public class UserService {
 		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
 		for(int i = config.getIdCount()-1; i >= 0; i--) {
 			if(levelRedisService.hasCompleteEvent(user, config.getId(i).getId())) {
-				addtoUserEquip(user, config.getId(i).getCount(), config.getId(i).getItemid());
+				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
 				break;
 			}
 		}
