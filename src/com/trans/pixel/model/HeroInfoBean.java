@@ -223,8 +223,12 @@ public class HeroInfoBean {
 		builder.setStrengthen(userPokede.getStrengthen());
 		builder.setRank(rank);
 		builder.setFetters(userPokede.getFetters());
-		if (userEquipPokede != null)
-			builder.setEquipPokede(userEquipPokede.build());
+		if (userEquipPokede == null) {
+			userEquipPokede = new UserEquipPokedeBean();
+			userEquipPokede.setItemId(equipId);
+			userEquipPokede.setLevel(0);
+		}
+		builder.setEquipPokede(userEquipPokede.build());
 		
 		return builder.build();
 	}

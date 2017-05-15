@@ -41,14 +41,16 @@ public class PvpMapRedisService extends RedisService{
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
 		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		if(value != null && parseJson(value, builder) && builder.getField(0).getKuangdian(0).getId() > 100 && builder.getField(2).getKuangdianCount() == 4){
-//			for(PVPMap.Builder map : builder.getFieldBuilderList()){
-//				// if(map.getFieldid() <= pvpUnlock)
-//					map.setOpened(true);
-//			}
-			return builder;
-		}
 		PVPMapList.Builder maplist = getBasePvpMapList();
+		if(value != null && parseJson(value, builder)) {
+			for(PVPMap.Builder map : maplist.getFieldBuilderList()){
+				for(PVPMap.Builder map2 : builder.getFieldBuilderList()){
+					 if(map.getFieldid() == map2.getFieldid())
+						map.setOpened(map2.getOpened());
+				}
+			}
+			return maplist;
+		}
 //		maplist.getFieldBuilder(0).setOpened(true);
 		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
 			 if(map.getFieldid() <= pvpUnlock)
@@ -68,7 +70,12 @@ public class PvpMapRedisService extends RedisService{
 //	}
 	
 	public void saveMapList(PVPMapList maplist, long userId) {
-		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(maplist));
+		PVPMapList.Builder builder = PVPMapList.newBuilder(maplist);
+		for(PVPMap.Builder field : builder.getFieldBuilderList()) {
+			field.clearKuangdian();
+			field.clearBuffimg();
+		}
+		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(builder.build()));
 	}
 
 	public Map<String, String> getUserBuffs(UserBean user) {

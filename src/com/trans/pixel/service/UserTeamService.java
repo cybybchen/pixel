@@ -88,12 +88,12 @@ public class UserTeamService {
 	public void delUserTeam(long userId, int id) {
 		// userTeamMapper.delUserTeam(id);
 		// userTeamRedisService.delUserTeam(userId, id);
-		updateUserTeam(userId, id, "", null, 0);
+		updateUserTeam(userId, id, "", null, 0, new ArrayList<TeamEngine>(), 1);
 	}
 	
-	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition) {
-		updateUserTeam(userId, id, record, user, rolePosition, new ArrayList<TeamEngine>(), 1);
-	}
+//	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition) {
+//		updateUserTeam(userId, id, record, user, rolePosition, new ArrayList<TeamEngine>(), 1);
+//	}
 	
 	public void updateUserTeam(long userId, int id, String record, UserBean user, int rolePosition, List<TeamEngine> teamEngineList, int talentId) {
 		UserTeamBean userTeam = new UserTeamBean();
@@ -172,6 +172,7 @@ public class UserTeamService {
 			for(UserTeamBean team : userTeamList){
 				ids.add(team.getId());
 			}
+			UserTalent talent = userTalentService.getUsingTalent(user);
 			if(ids.isEmpty()){
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				String teamRecord = "0,0|";
@@ -179,20 +180,20 @@ public class UserTeamService {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;
 				}
-				updateUserTeam(userId, 1, teamRecord, null, 0);
+				updateUserTeam(userId, 1, teamRecord, null, 0, new ArrayList<TeamEngine>(), talent.getId());
 				ids.add(1);
 			}else if(!ids.contains(1))
-				updateUserTeam(userId, 1, "", null, 0);
+				updateUserTeam(userId, 1, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			if(!ids.contains(2))
-				updateUserTeam(userId, 2, "", null, 0);
+				updateUserTeam(userId, 2, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			if(!ids.contains(3))
-				updateUserTeam(userId, 3, "",  null, 0);
+				updateUserTeam(userId, 3, "",  null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			if(!ids.contains(4))
-				updateUserTeam(userId, 4, "", null, 0);
+				updateUserTeam(userId, 4, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			if(!ids.contains(5))
-				updateUserTeam(userId, 5, "", null, 0);
+				updateUserTeam(userId, 5, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			if(!ids.contains(1000))
-				updateUserTeam(userId, 1000, "", null, 0);
+				updateUserTeam(userId, 1000, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
 			userTeamList = userTeamRedisService.selectUserTeamList(userId);
 		}
 		
