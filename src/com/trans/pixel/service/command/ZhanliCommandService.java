@@ -35,6 +35,8 @@ public class ZhanliCommandService extends BaseCommandService {
 	private AreaFightService areaService;
 	@Resource
 	private ZhanliRedisService redis;
+	@Resource
+	private PushCommandService pusher;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		log.debug("00 ||" + System.currentTimeMillis());
@@ -79,5 +81,6 @@ public class ZhanliCommandService extends BaseCommandService {
 		userService.updateUser(user);
 		log.debug("22||" + System.currentTimeMillis());
 //		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_ZHANLI_SUCCESS));
+		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 }
