@@ -119,7 +119,6 @@ public class UnionService extends FightService{
 		    			for(Merlevel level : list.getLevelList()){
 		    				if(bean.getZhanliMax() >= level.getScore() && bean.getMerlevel() < level.getLevel()) {
 		    					bean.setMerlevel(level.getLevel());
-		    					activityService.merLevel(bean, bean.getMerlevel());
 		    				}
 		    			}
 						userService.cache(bean.getServerId(), userinfo);

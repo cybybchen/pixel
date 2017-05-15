@@ -29,9 +29,11 @@ public class UserTaskRedisService extends RedisService {
 		String key = RedisKey.USER_TASK_1_PREFIX + userId;
 		String value = hget(key, "" + targetId);
 		UserTask.Builder builder = UserTask.newBuilder();
-		if(value!= null && parseJson(value, builder))
+		if(value!= null && parseJson(value, builder)) {
+			if(builder.getHeroidCount() > 0)
+				builder.setProcess(0);
 			return builder.build();
-		else
+		}else
 			return null;
 	}
 	
@@ -43,8 +45,11 @@ public class UserTaskRedisService extends RedisService {
 		while (it.hasNext()) {
 			String value = it.next().getValue();
 			UserTask.Builder builder = UserTask.newBuilder();
-			if(value!= null && parseJson(value, builder))
+			if(value!= null && parseJson(value, builder)) {
+				if(builder.getHeroidCount() > 0)
+					builder.setProcess(0);
 				userTaskList.add(builder.build());
+			}
 		}
 		
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
@@ -79,9 +84,11 @@ public class UserTaskRedisService extends RedisService {
 		String key = RedisKey.USER_TASK_3_PREFIX + userId;
 		String value = hget(key, "" + targetId);
 		UserTask.Builder builder = UserTask.newBuilder();
-		if(value!= null && parseJson(value, builder))
+		if(value!= null && parseJson(value, builder)) {
+			if(builder.getHeroidCount() > 0)
+				builder.setProcess(0);
 			return builder.build();
-		else
+		}else
 			return null;
 	}
 	
@@ -93,8 +100,11 @@ public class UserTaskRedisService extends RedisService {
 		while (it.hasNext()) {
 			String value = it.next().getValue();
 			UserTask.Builder builder = UserTask.newBuilder();
-			if(value!= null && parseJson(value, builder))
+			if(value!= null && parseJson(value, builder)){
+				if(builder.getHeroidCount() > 0)
+					builder.setProcess(0);
 				userTaskList.add(builder.build());
+			}
 		}
 		
 		return userTaskList;
@@ -115,9 +125,11 @@ public class UserTaskRedisService extends RedisService {
 		String key = RedisKey.USER_TASK_2_PREFIX + userId;
 		String value = hget(key, "" + targetId);
 		UserTask.Builder builder = UserTask.newBuilder();
-		if(value!= null && parseJson(value, builder))
+		if(value!= null && parseJson(value, builder)) {
+			if(builder.getHeroidCount() > 0)
+				builder.setProcess(0);
 			return builder.build();
-		else
+		}else
 			return null;
 	}
 	
@@ -129,8 +141,11 @@ public class UserTaskRedisService extends RedisService {
 		while (it.hasNext()) {
 			String value = it.next().getValue();
 			UserTask.Builder builder = UserTask.newBuilder();
-			if(value!= null && parseJson(value, builder))
+			if(value!= null && parseJson(value, builder)){
+				if(builder.getHeroidCount() > 0)
+					builder.setProcess(0);
 				userTaskList.add(builder.build());
+			}
 		}
 		
 		return userTaskList;

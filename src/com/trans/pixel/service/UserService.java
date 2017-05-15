@@ -117,7 +117,6 @@ public class UserService {
     			for(Merlevel level : list.getLevelList()){
     				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
     					user.setMerlevel(level.getLevel());
-    					activityService.merLevel(user, user.getMerlevel());
     				}
     			}
     			userRedisService.cache(user.getServerId(), user.buildShort());
@@ -339,7 +338,6 @@ public class UserService {
     			for(Merlevel level : list.getLevelList()){
     				if(user.getZhanliMax() >= level.getScore() && user.getMerlevel() < level.getLevel()) {
     					user.setMerlevel(level.getLevel());
-    					activityService.merLevel(user, user.getMerlevel());
     				}
     			}
 				userRedisService.cache(serverId, user.buildShort());
