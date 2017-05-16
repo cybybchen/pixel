@@ -1210,6 +1210,8 @@ public class UserBean {
 		this.extraLastTimeStamp = extraLastTimeStamp;
 	}
 	public int getUserType() {
+		if(userType < 1)
+			userType = 1;
 		return userType;
 	}
 	public void setUserType(int userType) {
