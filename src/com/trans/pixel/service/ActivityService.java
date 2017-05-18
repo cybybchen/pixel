@@ -276,12 +276,11 @@ public class ActivityService {
 			if (free) {
 				sendRichangScore(user, ActivityConst.FREE_JEWEL_LOTTERY, count);
 			}
+			/**
+			 * 累计召唤石抽奖的开服活动
+			 */
+			sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LOTTERY_VALUE, count);
 		}
-		
-		/**
-		 * 累计抽奖的开服活动
-		 */
-		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LOTTERY_VALUE, count);
 		
 		if (costType == RewardConst.COIN) {
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LOTTERY_COIN_VALUE);

@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -63,7 +65,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class LevelCommandService extends BaseCommandService {
-//	private static final Logger log = LoggerFactory.getLogger(LevelCommandService.class);
+	private static final Logger log = LoggerFactory.getLogger(LevelCommandService.class);
 	
 //	private static final int BUY_LOOT_PACKAGE_COST = 30;
 //	private static final int BUY_LOOT_PACKAGE_COUNT = 1;
@@ -177,7 +179,6 @@ public class LevelCommandService extends BaseCommandService {
 			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 			rewardService.updateUser(user);
 			pusher.pushUserInfoCommand(responseBuilder, user);
-
 			handleRewards(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
