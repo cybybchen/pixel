@@ -92,7 +92,7 @@ public class RaidCommandService extends BaseCommandService{
 				/**
 				 * 通关副本的活动
 				 */
-				activityService.raidKill(user, id);
+				activityService.raidKill(user, id / 100);
 				id = 0;
 			}
 			redis.saveRaid(user, id);
