@@ -78,7 +78,7 @@ public class ActivityConst {
 	/**
 	 * 开服竞技榜
 	 */
-	public static final int KAIFU2_LADDER = 31;
+	public static final int KAIFU2_LADDER = 41;
 	
 	/**
 	 * 开服战力榜
