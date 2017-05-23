@@ -173,7 +173,7 @@ public class LogService {
 		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.PREINSTANCEID));
 		        sb.append(LogString.SPLITER);
-				
+				break;
 			case LogString.LOGTYPE_MISSION:
 				sb.append(LogString.LOGTYPE_MISSION_STR);
 				sb.append(LogString.SPLITER);
