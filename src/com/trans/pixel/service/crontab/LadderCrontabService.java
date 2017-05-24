@@ -46,4 +46,9 @@ public class LadderCrontabService {
 			logger.error("send ladder daily error:" + e);
 		}
 	}
+	
+//	@Scheduled(cron = "0 0 0 ? * MON")
+//	public void seasonUpdate() {
+//		ladderService.seasonUpdate();
+//	}
 }

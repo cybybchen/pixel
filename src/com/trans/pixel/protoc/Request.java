@@ -2528,6 +2528,90 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommandOrBuilder getEventBuyCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    boolean hasLadderInfoCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand getLadderInfoCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder getLadderInfoCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    boolean hasRefreshLadderEnemyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand getRefreshLadderEnemyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder getRefreshLadderEnemyCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    boolean hasSubmitLadderResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand getSubmitLadderResultCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder getSubmitLadderResultCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    boolean hasLadderTaskRewardCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand getLadderTaskRewardCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder getLadderTaskRewardCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    boolean hasLadderSeasonRewardCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand getLadderSeasonRewardCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder getLadderSeasonRewardCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    boolean hasLadderEnemyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand getLadderEnemyCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder getLadderEnemyCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -4914,6 +4998,84 @@ public final class Request {
                 eventBuyCommand_ = subBuilder.buildPartial();
               }
               bitField5_ |= 0x00040000;
+              break;
+            }
+            case 1946: {
+              com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00080000) == 0x00080000)) {
+                subBuilder = ladderInfoCommand_.toBuilder();
+              }
+              ladderInfoCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ladderInfoCommand_);
+                ladderInfoCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00080000;
+              break;
+            }
+            case 1954: {
+              com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00100000) == 0x00100000)) {
+                subBuilder = refreshLadderEnemyCommand_.toBuilder();
+              }
+              refreshLadderEnemyCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(refreshLadderEnemyCommand_);
+                refreshLadderEnemyCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00100000;
+              break;
+            }
+            case 1962: {
+              com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00200000) == 0x00200000)) {
+                subBuilder = submitLadderResultCommand_.toBuilder();
+              }
+              submitLadderResultCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(submitLadderResultCommand_);
+                submitLadderResultCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00200000;
+              break;
+            }
+            case 1970: {
+              com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00400000) == 0x00400000)) {
+                subBuilder = ladderTaskRewardCommand_.toBuilder();
+              }
+              ladderTaskRewardCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ladderTaskRewardCommand_);
+                ladderTaskRewardCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00400000;
+              break;
+            }
+            case 1978: {
+              com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x00800000) == 0x00800000)) {
+                subBuilder = ladderSeasonRewardCommand_.toBuilder();
+              }
+              ladderSeasonRewardCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ladderSeasonRewardCommand_);
+                ladderSeasonRewardCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x00800000;
+              break;
+            }
+            case 1986: {
+              com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder subBuilder = null;
+              if (((bitField5_ & 0x01000000) == 0x01000000)) {
+                subBuilder = ladderEnemyCommand_.toBuilder();
+              }
+              ladderEnemyCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(ladderEnemyCommand_);
+                ladderEnemyCommand_ = subBuilder.buildPartial();
+              }
+              bitField5_ |= 0x01000000;
               break;
             }
           }
@@ -8911,6 +9073,138 @@ public final class Request {
       return eventBuyCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;
+    public static final int LADDERINFOCOMMAND_FIELD_NUMBER = 243;
+    private com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand ladderInfoCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    public boolean hasLadderInfoCommand() {
+      return ((bitField5_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand getLadderInfoCommand() {
+      return ladderInfoCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder getLadderInfoCommandOrBuilder() {
+      return ladderInfoCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;
+    public static final int REFRESHLADDERENEMYCOMMAND_FIELD_NUMBER = 244;
+    private com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    public boolean hasRefreshLadderEnemyCommand() {
+      return ((bitField5_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand getRefreshLadderEnemyCommand() {
+      return refreshLadderEnemyCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder getRefreshLadderEnemyCommandOrBuilder() {
+      return refreshLadderEnemyCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;
+    public static final int SUBMITLADDERRESULTCOMMAND_FIELD_NUMBER = 245;
+    private com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand submitLadderResultCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    public boolean hasSubmitLadderResultCommand() {
+      return ((bitField5_ & 0x00200000) == 0x00200000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand getSubmitLadderResultCommand() {
+      return submitLadderResultCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder getSubmitLadderResultCommandOrBuilder() {
+      return submitLadderResultCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;
+    public static final int LADDERTASKREWARDCOMMAND_FIELD_NUMBER = 246;
+    private com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand ladderTaskRewardCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    public boolean hasLadderTaskRewardCommand() {
+      return ((bitField5_ & 0x00400000) == 0x00400000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand getLadderTaskRewardCommand() {
+      return ladderTaskRewardCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder getLadderTaskRewardCommandOrBuilder() {
+      return ladderTaskRewardCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
+    public static final int LADDERSEASONREWARDCOMMAND_FIELD_NUMBER = 247;
+    private com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    public boolean hasLadderSeasonRewardCommand() {
+      return ((bitField5_ & 0x00800000) == 0x00800000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand getLadderSeasonRewardCommand() {
+      return ladderSeasonRewardCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder getLadderSeasonRewardCommandOrBuilder() {
+      return ladderSeasonRewardCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;
+    public static final int LADDERENEMYCOMMAND_FIELD_NUMBER = 248;
+    private com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand ladderEnemyCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    public boolean hasLadderEnemyCommand() {
+      return ((bitField5_ & 0x01000000) == 0x01000000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand getLadderEnemyCommand() {
+      return ladderEnemyCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder getLadderEnemyCommandOrBuilder() {
+      return ladderEnemyCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.UserInfoProto.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand.getDefaultInstance();
@@ -9091,6 +9385,12 @@ public final class Request {
       giveupRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.getDefaultInstance();
       extraRewardCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.getDefaultInstance();
       eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
+      ladderInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance();
+      refreshLadderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance();
+      submitLadderResultCommand_ = com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance();
+      ladderTaskRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance();
+      ladderSeasonRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance();
+      ladderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9723,6 +10023,18 @@ public final class Request {
           return false;
         }
       }
+      if (hasRefreshLadderEnemyCommand()) {
+        if (!getRefreshLadderEnemyCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasSubmitLadderResultCommand()) {
+        if (!getSubmitLadderResultCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -10266,6 +10578,24 @@ public final class Request {
       }
       if (((bitField5_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(242, eventBuyCommand_);
+      }
+      if (((bitField5_ & 0x00080000) == 0x00080000)) {
+        output.writeMessage(243, ladderInfoCommand_);
+      }
+      if (((bitField5_ & 0x00100000) == 0x00100000)) {
+        output.writeMessage(244, refreshLadderEnemyCommand_);
+      }
+      if (((bitField5_ & 0x00200000) == 0x00200000)) {
+        output.writeMessage(245, submitLadderResultCommand_);
+      }
+      if (((bitField5_ & 0x00400000) == 0x00400000)) {
+        output.writeMessage(246, ladderTaskRewardCommand_);
+      }
+      if (((bitField5_ & 0x00800000) == 0x00800000)) {
+        output.writeMessage(247, ladderSeasonRewardCommand_);
+      }
+      if (((bitField5_ & 0x01000000) == 0x01000000)) {
+        output.writeMessage(248, ladderEnemyCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -10992,6 +11322,30 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(242, eventBuyCommand_);
       }
+      if (((bitField5_ & 0x00080000) == 0x00080000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(243, ladderInfoCommand_);
+      }
+      if (((bitField5_ & 0x00100000) == 0x00100000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(244, refreshLadderEnemyCommand_);
+      }
+      if (((bitField5_ & 0x00200000) == 0x00200000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(245, submitLadderResultCommand_);
+      }
+      if (((bitField5_ & 0x00400000) == 0x00400000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(246, ladderTaskRewardCommand_);
+      }
+      if (((bitField5_ & 0x00800000) == 0x00800000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(247, ladderSeasonRewardCommand_);
+      }
+      if (((bitField5_ & 0x01000000) == 0x01000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(248, ladderEnemyCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -11283,6 +11637,12 @@ public final class Request {
           getGiveupRewardTaskCommandFieldBuilder();
           getExtraRewardCommandFieldBuilder();
           getEventBuyCommandFieldBuilder();
+          getLadderInfoCommandFieldBuilder();
+          getRefreshLadderEnemyCommandFieldBuilder();
+          getSubmitLadderResultCommandFieldBuilder();
+          getLadderTaskRewardCommandFieldBuilder();
+          getLadderSeasonRewardCommandFieldBuilder();
+          getLadderEnemyCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12365,6 +12725,42 @@ public final class Request {
           eventBuyCommandBuilder_.clear();
         }
         bitField5_ = (bitField5_ & ~0x00040000);
+        if (ladderInfoCommandBuilder_ == null) {
+          ladderInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance();
+        } else {
+          ladderInfoCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00080000);
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          refreshLadderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance();
+        } else {
+          refreshLadderEnemyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00100000);
+        if (submitLadderResultCommandBuilder_ == null) {
+          submitLadderResultCommand_ = com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance();
+        } else {
+          submitLadderResultCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00200000);
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          ladderTaskRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance();
+        } else {
+          ladderTaskRewardCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00400000);
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          ladderSeasonRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance();
+        } else {
+          ladderSeasonRewardCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00800000);
+        if (ladderEnemyCommandBuilder_ == null) {
+          ladderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance();
+        } else {
+          ladderEnemyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x01000000);
         return this;
       }
 
@@ -13835,6 +14231,54 @@ public final class Request {
         } else {
           result.eventBuyCommand_ = eventBuyCommandBuilder_.build();
         }
+        if (((from_bitField5_ & 0x00080000) == 0x00080000)) {
+          to_bitField5_ |= 0x00080000;
+        }
+        if (ladderInfoCommandBuilder_ == null) {
+          result.ladderInfoCommand_ = ladderInfoCommand_;
+        } else {
+          result.ladderInfoCommand_ = ladderInfoCommandBuilder_.build();
+        }
+        if (((from_bitField5_ & 0x00100000) == 0x00100000)) {
+          to_bitField5_ |= 0x00100000;
+        }
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          result.refreshLadderEnemyCommand_ = refreshLadderEnemyCommand_;
+        } else {
+          result.refreshLadderEnemyCommand_ = refreshLadderEnemyCommandBuilder_.build();
+        }
+        if (((from_bitField5_ & 0x00200000) == 0x00200000)) {
+          to_bitField5_ |= 0x00200000;
+        }
+        if (submitLadderResultCommandBuilder_ == null) {
+          result.submitLadderResultCommand_ = submitLadderResultCommand_;
+        } else {
+          result.submitLadderResultCommand_ = submitLadderResultCommandBuilder_.build();
+        }
+        if (((from_bitField5_ & 0x00400000) == 0x00400000)) {
+          to_bitField5_ |= 0x00400000;
+        }
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          result.ladderTaskRewardCommand_ = ladderTaskRewardCommand_;
+        } else {
+          result.ladderTaskRewardCommand_ = ladderTaskRewardCommandBuilder_.build();
+        }
+        if (((from_bitField5_ & 0x00800000) == 0x00800000)) {
+          to_bitField5_ |= 0x00800000;
+        }
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          result.ladderSeasonRewardCommand_ = ladderSeasonRewardCommand_;
+        } else {
+          result.ladderSeasonRewardCommand_ = ladderSeasonRewardCommandBuilder_.build();
+        }
+        if (((from_bitField5_ & 0x01000000) == 0x01000000)) {
+          to_bitField5_ |= 0x01000000;
+        }
+        if (ladderEnemyCommandBuilder_ == null) {
+          result.ladderEnemyCommand_ = ladderEnemyCommand_;
+        } else {
+          result.ladderEnemyCommand_ = ladderEnemyCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -14392,6 +14836,24 @@ public final class Request {
         }
         if (other.hasEventBuyCommand()) {
           mergeEventBuyCommand(other.getEventBuyCommand());
+        }
+        if (other.hasLadderInfoCommand()) {
+          mergeLadderInfoCommand(other.getLadderInfoCommand());
+        }
+        if (other.hasRefreshLadderEnemyCommand()) {
+          mergeRefreshLadderEnemyCommand(other.getRefreshLadderEnemyCommand());
+        }
+        if (other.hasSubmitLadderResultCommand()) {
+          mergeSubmitLadderResultCommand(other.getSubmitLadderResultCommand());
+        }
+        if (other.hasLadderTaskRewardCommand()) {
+          mergeLadderTaskRewardCommand(other.getLadderTaskRewardCommand());
+        }
+        if (other.hasLadderSeasonRewardCommand()) {
+          mergeLadderSeasonRewardCommand(other.getLadderSeasonRewardCommand());
+        }
+        if (other.hasLadderEnemyCommand()) {
+          mergeLadderEnemyCommand(other.getLadderEnemyCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -15020,6 +15482,18 @@ public final class Request {
         }
         if (hasExtraRewardCommand()) {
           if (!getExtraRewardCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasRefreshLadderEnemyCommand()) {
+          if (!getRefreshLadderEnemyCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSubmitLadderResultCommand()) {
+          if (!getSubmitLadderResultCommand().isInitialized()) {
             
             return false;
           }
@@ -36030,6 +36504,708 @@ public final class Request {
         return eventBuyCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;
+      private com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand ladderInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder> ladderInfoCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public boolean hasLadderInfoCommand() {
+        return ((bitField5_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand getLadderInfoCommand() {
+        if (ladderInfoCommandBuilder_ == null) {
+          return ladderInfoCommand_;
+        } else {
+          return ladderInfoCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public Builder setLadderInfoCommand(com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand value) {
+        if (ladderInfoCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ladderInfoCommand_ = value;
+          onChanged();
+        } else {
+          ladderInfoCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public Builder setLadderInfoCommand(
+          com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder builderForValue) {
+        if (ladderInfoCommandBuilder_ == null) {
+          ladderInfoCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          ladderInfoCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public Builder mergeLadderInfoCommand(com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand value) {
+        if (ladderInfoCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00080000) == 0x00080000) &&
+              ladderInfoCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance()) {
+            ladderInfoCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.newBuilder(ladderInfoCommand_).mergeFrom(value).buildPartial();
+          } else {
+            ladderInfoCommand_ = value;
+          }
+          onChanged();
+        } else {
+          ladderInfoCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00080000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public Builder clearLadderInfoCommand() {
+        if (ladderInfoCommandBuilder_ == null) {
+          ladderInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          ladderInfoCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00080000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder getLadderInfoCommandBuilder() {
+        bitField5_ |= 0x00080000;
+        onChanged();
+        return getLadderInfoCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder getLadderInfoCommandOrBuilder() {
+        if (ladderInfoCommandBuilder_ != null) {
+          return ladderInfoCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return ladderInfoCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder> 
+          getLadderInfoCommandFieldBuilder() {
+        if (ladderInfoCommandBuilder_ == null) {
+          ladderInfoCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommandOrBuilder>(
+                  ladderInfoCommand_,
+                  getParentForChildren(),
+                  isClean());
+          ladderInfoCommand_ = null;
+        }
+        return ladderInfoCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;
+      private com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder> refreshLadderEnemyCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public boolean hasRefreshLadderEnemyCommand() {
+        return ((bitField5_ & 0x00100000) == 0x00100000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand getRefreshLadderEnemyCommand() {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          return refreshLadderEnemyCommand_;
+        } else {
+          return refreshLadderEnemyCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public Builder setRefreshLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand value) {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          refreshLadderEnemyCommand_ = value;
+          onChanged();
+        } else {
+          refreshLadderEnemyCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public Builder setRefreshLadderEnemyCommand(
+          com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder builderForValue) {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          refreshLadderEnemyCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          refreshLadderEnemyCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public Builder mergeRefreshLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand value) {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00100000) == 0x00100000) &&
+              refreshLadderEnemyCommand_ != com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance()) {
+            refreshLadderEnemyCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.newBuilder(refreshLadderEnemyCommand_).mergeFrom(value).buildPartial();
+          } else {
+            refreshLadderEnemyCommand_ = value;
+          }
+          onChanged();
+        } else {
+          refreshLadderEnemyCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public Builder clearRefreshLadderEnemyCommand() {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          refreshLadderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          refreshLadderEnemyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00100000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder getRefreshLadderEnemyCommandBuilder() {
+        bitField5_ |= 0x00100000;
+        onChanged();
+        return getRefreshLadderEnemyCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder getRefreshLadderEnemyCommandOrBuilder() {
+        if (refreshLadderEnemyCommandBuilder_ != null) {
+          return refreshLadderEnemyCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return refreshLadderEnemyCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder> 
+          getRefreshLadderEnemyCommandFieldBuilder() {
+        if (refreshLadderEnemyCommandBuilder_ == null) {
+          refreshLadderEnemyCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommandOrBuilder>(
+                  refreshLadderEnemyCommand_,
+                  getParentForChildren(),
+                  isClean());
+          refreshLadderEnemyCommand_ = null;
+        }
+        return refreshLadderEnemyCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;
+      private com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand submitLadderResultCommand_ = com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder> submitLadderResultCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public boolean hasSubmitLadderResultCommand() {
+        return ((bitField5_ & 0x00200000) == 0x00200000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand getSubmitLadderResultCommand() {
+        if (submitLadderResultCommandBuilder_ == null) {
+          return submitLadderResultCommand_;
+        } else {
+          return submitLadderResultCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public Builder setSubmitLadderResultCommand(com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand value) {
+        if (submitLadderResultCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          submitLadderResultCommand_ = value;
+          onChanged();
+        } else {
+          submitLadderResultCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public Builder setSubmitLadderResultCommand(
+          com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder builderForValue) {
+        if (submitLadderResultCommandBuilder_ == null) {
+          submitLadderResultCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          submitLadderResultCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public Builder mergeSubmitLadderResultCommand(com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand value) {
+        if (submitLadderResultCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00200000) == 0x00200000) &&
+              submitLadderResultCommand_ != com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance()) {
+            submitLadderResultCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.newBuilder(submitLadderResultCommand_).mergeFrom(value).buildPartial();
+          } else {
+            submitLadderResultCommand_ = value;
+          }
+          onChanged();
+        } else {
+          submitLadderResultCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public Builder clearSubmitLadderResultCommand() {
+        if (submitLadderResultCommandBuilder_ == null) {
+          submitLadderResultCommand_ = com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          submitLadderResultCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00200000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder getSubmitLadderResultCommandBuilder() {
+        bitField5_ |= 0x00200000;
+        onChanged();
+        return getSubmitLadderResultCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder getSubmitLadderResultCommandOrBuilder() {
+        if (submitLadderResultCommandBuilder_ != null) {
+          return submitLadderResultCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return submitLadderResultCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder> 
+          getSubmitLadderResultCommandFieldBuilder() {
+        if (submitLadderResultCommandBuilder_ == null) {
+          submitLadderResultCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommandOrBuilder>(
+                  submitLadderResultCommand_,
+                  getParentForChildren(),
+                  isClean());
+          submitLadderResultCommand_ = null;
+        }
+        return submitLadderResultCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;
+      private com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand ladderTaskRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder> ladderTaskRewardCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public boolean hasLadderTaskRewardCommand() {
+        return ((bitField5_ & 0x00400000) == 0x00400000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand getLadderTaskRewardCommand() {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          return ladderTaskRewardCommand_;
+        } else {
+          return ladderTaskRewardCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public Builder setLadderTaskRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand value) {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ladderTaskRewardCommand_ = value;
+          onChanged();
+        } else {
+          ladderTaskRewardCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public Builder setLadderTaskRewardCommand(
+          com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder builderForValue) {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          ladderTaskRewardCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          ladderTaskRewardCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public Builder mergeLadderTaskRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand value) {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00400000) == 0x00400000) &&
+              ladderTaskRewardCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance()) {
+            ladderTaskRewardCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.newBuilder(ladderTaskRewardCommand_).mergeFrom(value).buildPartial();
+          } else {
+            ladderTaskRewardCommand_ = value;
+          }
+          onChanged();
+        } else {
+          ladderTaskRewardCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00400000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public Builder clearLadderTaskRewardCommand() {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          ladderTaskRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          ladderTaskRewardCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00400000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder getLadderTaskRewardCommandBuilder() {
+        bitField5_ |= 0x00400000;
+        onChanged();
+        return getLadderTaskRewardCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder getLadderTaskRewardCommandOrBuilder() {
+        if (ladderTaskRewardCommandBuilder_ != null) {
+          return ladderTaskRewardCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return ladderTaskRewardCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder> 
+          getLadderTaskRewardCommandFieldBuilder() {
+        if (ladderTaskRewardCommandBuilder_ == null) {
+          ladderTaskRewardCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommandOrBuilder>(
+                  ladderTaskRewardCommand_,
+                  getParentForChildren(),
+                  isClean());
+          ladderTaskRewardCommand_ = null;
+        }
+        return ladderTaskRewardCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
+      private com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder> ladderSeasonRewardCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public boolean hasLadderSeasonRewardCommand() {
+        return ((bitField5_ & 0x00800000) == 0x00800000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand getLadderSeasonRewardCommand() {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          return ladderSeasonRewardCommand_;
+        } else {
+          return ladderSeasonRewardCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public Builder setLadderSeasonRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand value) {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ladderSeasonRewardCommand_ = value;
+          onChanged();
+        } else {
+          ladderSeasonRewardCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public Builder setLadderSeasonRewardCommand(
+          com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder builderForValue) {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          ladderSeasonRewardCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          ladderSeasonRewardCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public Builder mergeLadderSeasonRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand value) {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          if (((bitField5_ & 0x00800000) == 0x00800000) &&
+              ladderSeasonRewardCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance()) {
+            ladderSeasonRewardCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.newBuilder(ladderSeasonRewardCommand_).mergeFrom(value).buildPartial();
+          } else {
+            ladderSeasonRewardCommand_ = value;
+          }
+          onChanged();
+        } else {
+          ladderSeasonRewardCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public Builder clearLadderSeasonRewardCommand() {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          ladderSeasonRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          ladderSeasonRewardCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x00800000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder getLadderSeasonRewardCommandBuilder() {
+        bitField5_ |= 0x00800000;
+        onChanged();
+        return getLadderSeasonRewardCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder getLadderSeasonRewardCommandOrBuilder() {
+        if (ladderSeasonRewardCommandBuilder_ != null) {
+          return ladderSeasonRewardCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return ladderSeasonRewardCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder> 
+          getLadderSeasonRewardCommandFieldBuilder() {
+        if (ladderSeasonRewardCommandBuilder_ == null) {
+          ladderSeasonRewardCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommandOrBuilder>(
+                  ladderSeasonRewardCommand_,
+                  getParentForChildren(),
+                  isClean());
+          ladderSeasonRewardCommand_ = null;
+        }
+        return ladderSeasonRewardCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;
+      private com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand ladderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder> ladderEnemyCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public boolean hasLadderEnemyCommand() {
+        return ((bitField5_ & 0x01000000) == 0x01000000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand getLadderEnemyCommand() {
+        if (ladderEnemyCommandBuilder_ == null) {
+          return ladderEnemyCommand_;
+        } else {
+          return ladderEnemyCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public Builder setLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand value) {
+        if (ladderEnemyCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ladderEnemyCommand_ = value;
+          onChanged();
+        } else {
+          ladderEnemyCommandBuilder_.setMessage(value);
+        }
+        bitField5_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public Builder setLadderEnemyCommand(
+          com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder builderForValue) {
+        if (ladderEnemyCommandBuilder_ == null) {
+          ladderEnemyCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          ladderEnemyCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField5_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public Builder mergeLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand value) {
+        if (ladderEnemyCommandBuilder_ == null) {
+          if (((bitField5_ & 0x01000000) == 0x01000000) &&
+              ladderEnemyCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance()) {
+            ladderEnemyCommand_ =
+              com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.newBuilder(ladderEnemyCommand_).mergeFrom(value).buildPartial();
+          } else {
+            ladderEnemyCommand_ = value;
+          }
+          onChanged();
+        } else {
+          ladderEnemyCommandBuilder_.mergeFrom(value);
+        }
+        bitField5_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public Builder clearLadderEnemyCommand() {
+        if (ladderEnemyCommandBuilder_ == null) {
+          ladderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          ladderEnemyCommandBuilder_.clear();
+        }
+        bitField5_ = (bitField5_ & ~0x01000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder getLadderEnemyCommandBuilder() {
+        bitField5_ |= 0x01000000;
+        onChanged();
+        return getLadderEnemyCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder getLadderEnemyCommandOrBuilder() {
+        if (ladderEnemyCommandBuilder_ != null) {
+          return ladderEnemyCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return ladderEnemyCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder> 
+          getLadderEnemyCommandFieldBuilder() {
+        if (ladderEnemyCommandBuilder_ == null) {
+          ladderEnemyCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder, com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommandOrBuilder>(
+                  ladderEnemyCommand_,
+                  getParentForChildren(),
+                  isClean());
+          ladderEnemyCommand_ = null;
+        }
+        return ladderEnemyCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -36063,7 +37239,7 @@ public final class Request {
       "oto.proto\032\021LadderProto.proto\032\023UserInfoPr" +
       "oto.proto\032\017MailProto.proto\032\020UnionProto.p" +
       "roto\032\025RewardTaskProto.proto\032\017TaskProto.p" +
-      "roto\"\300s\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 ." +
+      "roto\"\322w\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 ." +
       "com.trans.pixel.protoc.HeadInfo\022G\n\017regis",
       "terCommand\030\002 \001(\0132..com.trans.pixel.proto" +
       "c.RequestRegisterCommand\022A\n\014loginCommand" +
@@ -36432,7 +37608,21 @@ public final class Request {
       "\022extraRewardCommand\030\361\001 \001(\01321.com.trans.p" +
       "ixel.protoc.RequestExtraRewardCommand\022H\n" +
       "\017eventBuyCommand\030\362\001 \001(\0132..com.trans.pixe" +
-      "l.protoc.RequestEventBuyCommand"
+      "l.protoc.RequestEventBuyCommand\022L\n\021ladde" +
+      "rInfoCommand\030\363\001 \001(\01320.com.trans.pixel.pr" +
+      "otoc.RequestLadderInfoCommand\022\\\n\031refresh",
+      "LadderEnemyCommand\030\364\001 \001(\01328.com.trans.pi" +
+      "xel.protoc.RequestRefreshLadderEnemyComm" +
+      "and\022\\\n\031submitLadderResultCommand\030\365\001 \001(\0132" +
+      "8.com.trans.pixel.protoc.RequestSubmitLa" +
+      "dderResultCommand\022X\n\027ladderTaskRewardCom" +
+      "mand\030\366\001 \001(\01326.com.trans.pixel.protoc.Req" +
+      "uestLadderTaskRewardCommand\022\\\n\031ladderSea" +
+      "sonRewardCommand\030\367\001 \001(\01328.com.trans.pixe" +
+      "l.protoc.RequestLadderSeasonRewardComman" +
+      "d\022N\n\022ladderEnemyCommand\030\370\001 \001(\01321.com.tra",
+      "ns.pixel.protoc.RequestLadderEnemyComman" +
+      "d"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -36444,7 +37634,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", });
           return null;
         }
       };

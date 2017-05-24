@@ -2277,6 +2277,34 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommandOrBuilder getOtherUserInfoCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    boolean hasEnemyLadderCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand getEnemyLadderCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder getEnemyLadderCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    boolean hasUserLadderCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand getUserLadderCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder getUserLadderCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseCommand}
@@ -2992,6 +3020,32 @@ public final class Commands {
                 otherUserInfoCommand_ = subBuilder.buildPartial();
               }
               bitField2_ |= 0x00000200;
+              break;
+            }
+            case 546: {
+              com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder subBuilder = null;
+              if (((bitField2_ & 0x00000400) == 0x00000400)) {
+                subBuilder = enemyLadderCommand_.toBuilder();
+              }
+              enemyLadderCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemyLadderCommand_);
+                enemyLadderCommand_ = subBuilder.buildPartial();
+              }
+              bitField2_ |= 0x00000400;
+              break;
+            }
+            case 554: {
+              com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder subBuilder = null;
+              if (((bitField2_ & 0x00000800) == 0x00000800)) {
+                subBuilder = userLadderCommand_.toBuilder();
+              }
+              userLadderCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(userLadderCommand_);
+                userLadderCommand_ = subBuilder.buildPartial();
+              }
+              bitField2_ |= 0x00000800;
               break;
             }
             case 810: {
@@ -4975,6 +5029,50 @@ public final class Commands {
       return otherUserInfoCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;
+    public static final int ENEMYLADDERCOMMAND_FIELD_NUMBER = 68;
+    private com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand enemyLadderCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    public boolean hasEnemyLadderCommand() {
+      return ((bitField2_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand getEnemyLadderCommand() {
+      return enemyLadderCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder getEnemyLadderCommandOrBuilder() {
+      return enemyLadderCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;
+    public static final int USERLADDERCOMMAND_FIELD_NUMBER = 69;
+    private com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand userLadderCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    public boolean hasUserLadderCommand() {
+      return ((bitField2_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand getUserLadderCommand() {
+      return userLadderCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder getUserLadderCommandOrBuilder() {
+      return userLadderCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.UserInfoProto.HeadInfo.getDefaultInstance();
       errorCommand_ = com.trans.pixel.protoc.Commands.ErrorCommand.getDefaultInstance();
@@ -5050,6 +5148,8 @@ public final class Commands {
       userRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.getDefaultInstance();
       userRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.getDefaultInstance();
       otherUserInfoCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.getDefaultInstance();
+      enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
+      userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5418,6 +5518,18 @@ public final class Commands {
           return false;
         }
       }
+      if (hasEnemyLadderCommand()) {
+        if (!getEnemyLadderCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUserLadderCommand()) {
+        if (!getUserLadderCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5577,6 +5689,12 @@ public final class Commands {
       }
       if (((bitField2_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(67, otherUserInfoCommand_);
+      }
+      if (((bitField2_ & 0x00000400) == 0x00000400)) {
+        output.writeMessage(68, enemyLadderCommand_);
+      }
+      if (((bitField2_ & 0x00000800) == 0x00000800)) {
+        output.writeMessage(69, userLadderCommand_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(101, rewardCommand_);
@@ -5860,6 +5978,14 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(67, otherUserInfoCommand_);
       }
+      if (((bitField2_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(68, enemyLadderCommand_);
+      }
+      if (((bitField2_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(69, userLadderCommand_);
+      }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(101, rewardCommand_);
@@ -6134,6 +6260,8 @@ public final class Commands {
           getUserRewardTaskCommandFieldBuilder();
           getUserRewardTaskRoomCommandFieldBuilder();
           getOtherUserInfoCommandFieldBuilder();
+          getEnemyLadderCommandFieldBuilder();
+          getUserLadderCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6586,6 +6714,18 @@ public final class Commands {
           otherUserInfoCommandBuilder_.clear();
         }
         bitField2_ = (bitField2_ & ~0x00000200);
+        if (enemyLadderCommandBuilder_ == null) {
+          enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
+        } else {
+          enemyLadderCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00000400);
+        if (userLadderCommandBuilder_ == null) {
+          userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
+        } else {
+          userLadderCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00000800);
         return this;
       }
 
@@ -7210,6 +7350,22 @@ public final class Commands {
         } else {
           result.otherUserInfoCommand_ = otherUserInfoCommandBuilder_.build();
         }
+        if (((from_bitField2_ & 0x00000400) == 0x00000400)) {
+          to_bitField2_ |= 0x00000400;
+        }
+        if (enemyLadderCommandBuilder_ == null) {
+          result.enemyLadderCommand_ = enemyLadderCommand_;
+        } else {
+          result.enemyLadderCommand_ = enemyLadderCommandBuilder_.build();
+        }
+        if (((from_bitField2_ & 0x00000800) == 0x00000800)) {
+          to_bitField2_ |= 0x00000800;
+        }
+        if (userLadderCommandBuilder_ == null) {
+          result.userLadderCommand_ = userLadderCommand_;
+        } else {
+          result.userLadderCommand_ = userLadderCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -7449,6 +7605,12 @@ public final class Commands {
         }
         if (other.hasOtherUserInfoCommand()) {
           mergeOtherUserInfoCommand(other.getOtherUserInfoCommand());
+        }
+        if (other.hasEnemyLadderCommand()) {
+          mergeEnemyLadderCommand(other.getEnemyLadderCommand());
+        }
+        if (other.hasUserLadderCommand()) {
+          mergeUserLadderCommand(other.getUserLadderCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -7813,6 +7975,18 @@ public final class Commands {
         }
         if (hasOtherUserInfoCommand()) {
           if (!getOtherUserInfoCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasEnemyLadderCommand()) {
+          if (!getEnemyLadderCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUserLadderCommand()) {
+          if (!getUserLadderCommand().isInitialized()) {
             
             return false;
           }
@@ -16535,6 +16709,240 @@ public final class Commands {
         return otherUserInfoCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;
+      private com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder> enemyLadderCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public boolean hasEnemyLadderCommand() {
+        return ((bitField2_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand getEnemyLadderCommand() {
+        if (enemyLadderCommandBuilder_ == null) {
+          return enemyLadderCommand_;
+        } else {
+          return enemyLadderCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public Builder setEnemyLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand value) {
+        if (enemyLadderCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemyLadderCommand_ = value;
+          onChanged();
+        } else {
+          enemyLadderCommandBuilder_.setMessage(value);
+        }
+        bitField2_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public Builder setEnemyLadderCommand(
+          com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder builderForValue) {
+        if (enemyLadderCommandBuilder_ == null) {
+          enemyLadderCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemyLadderCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField2_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public Builder mergeEnemyLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand value) {
+        if (enemyLadderCommandBuilder_ == null) {
+          if (((bitField2_ & 0x00000400) == 0x00000400) &&
+              enemyLadderCommand_ != com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance()) {
+            enemyLadderCommand_ =
+              com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.newBuilder(enemyLadderCommand_).mergeFrom(value).buildPartial();
+          } else {
+            enemyLadderCommand_ = value;
+          }
+          onChanged();
+        } else {
+          enemyLadderCommandBuilder_.mergeFrom(value);
+        }
+        bitField2_ |= 0x00000400;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public Builder clearEnemyLadderCommand() {
+        if (enemyLadderCommandBuilder_ == null) {
+          enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          enemyLadderCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00000400);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder getEnemyLadderCommandBuilder() {
+        bitField2_ |= 0x00000400;
+        onChanged();
+        return getEnemyLadderCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder getEnemyLadderCommandOrBuilder() {
+        if (enemyLadderCommandBuilder_ != null) {
+          return enemyLadderCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return enemyLadderCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder> 
+          getEnemyLadderCommandFieldBuilder() {
+        if (enemyLadderCommandBuilder_ == null) {
+          enemyLadderCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommandOrBuilder>(
+                  enemyLadderCommand_,
+                  getParentForChildren(),
+                  isClean());
+          enemyLadderCommand_ = null;
+        }
+        return enemyLadderCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;
+      private com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder> userLadderCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public boolean hasUserLadderCommand() {
+        return ((bitField2_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand getUserLadderCommand() {
+        if (userLadderCommandBuilder_ == null) {
+          return userLadderCommand_;
+        } else {
+          return userLadderCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public Builder setUserLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand value) {
+        if (userLadderCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          userLadderCommand_ = value;
+          onChanged();
+        } else {
+          userLadderCommandBuilder_.setMessage(value);
+        }
+        bitField2_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public Builder setUserLadderCommand(
+          com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder builderForValue) {
+        if (userLadderCommandBuilder_ == null) {
+          userLadderCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          userLadderCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField2_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public Builder mergeUserLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand value) {
+        if (userLadderCommandBuilder_ == null) {
+          if (((bitField2_ & 0x00000800) == 0x00000800) &&
+              userLadderCommand_ != com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance()) {
+            userLadderCommand_ =
+              com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.newBuilder(userLadderCommand_).mergeFrom(value).buildPartial();
+          } else {
+            userLadderCommand_ = value;
+          }
+          onChanged();
+        } else {
+          userLadderCommandBuilder_.mergeFrom(value);
+        }
+        bitField2_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public Builder clearUserLadderCommand() {
+        if (userLadderCommandBuilder_ == null) {
+          userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          userLadderCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00000800);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder getUserLadderCommandBuilder() {
+        bitField2_ |= 0x00000800;
+        onChanged();
+        return getUserLadderCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder getUserLadderCommandOrBuilder() {
+        if (userLadderCommandBuilder_ != null) {
+          return userLadderCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return userLadderCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder> 
+          getUserLadderCommandFieldBuilder() {
+        if (userLadderCommandBuilder_ == null) {
+          userLadderCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder, com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommandOrBuilder>(
+                  userLadderCommand_,
+                  getParentForChildren(),
+                  isClean());
+          userLadderCommand_ = null;
+        }
+        return userLadderCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCommand)
     }
 
@@ -16580,7 +16988,7 @@ public final class Commands {
       "proto\032\025RewardTaskProto.proto\032\017TaskProto." +
       "proto\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007m" +
       "essage\030\002 \002(\t\"3\n\026ResponseMessageCommand\022\014",
-      "\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\311-\n\017ResponseCo" +
+      "\n\004code\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\347.\n\017ResponseCo" +
       "mmand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.pr" +
       "otoc.HeadInfo\022:\n\014errorCommand\030\002 \001(\0132$.co" +
       "m.trans.pixel.protoc.ErrorCommand\022<\n\rrew" +
@@ -16726,7 +17134,11 @@ public final class Commands {
       ".com.trans.pixel.protoc.ResponseUserRewa" +
       "rdTaskRoomCommand\022R\n\024otherUserInfoComman" +
       "d\030C \001(\01324.com.trans.pixel.protoc.Respons" +
-      "eOtherUserInfoCommand"
+      "eOtherUserInfoCommand\022N\n\022enemyLadderComm" +
+      "and\030D \001(\01322.com.trans.pixel.protoc.Respo" +
+      "nseEnemyLadderCommand\022L\n\021userLadderComma" +
+      "nd\030E \001(\01321.com.trans.pixel.protoc.Respon",
+      "seUserLadderCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16750,7 +17162,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "ErrorCommand", "RewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "EventCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", });
+              new java.lang.String[] { "Head", "ErrorCommand", "RewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "EventCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", });
           return null;
         }
       };

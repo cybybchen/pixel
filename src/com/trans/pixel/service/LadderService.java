@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
@@ -34,13 +35,18 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.Task;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
+import com.trans.pixel.protoc.LadderProto.LadderMode;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
+import com.trans.pixel.protoc.LadderProto.LadderSeason;
+import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
+import com.trans.pixel.protoc.LadderProto.UserLadder;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderDaily;
 import com.trans.pixel.protoc.ShopProto.LadderDailyList;
@@ -81,21 +87,95 @@ public class LadderService {
 	private PropRedisService propRedisService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private UserLadderService userLadderService;
 	
-//	Comparator<LadderDailyBean> comparator = new Comparator<LadderDailyBean>() {
-//        public int compare(LadderDailyBean bean1, LadderDailyBean bean2) {
-//        			 if (bean1.getRanking() == -1)
-//        				 return 1;
-//        			 if (bean2.getRanking() == -1)
-//        				 return -1;
-//                if (bean1.getRanking() < bean2.getRanking()) {
-//                        return -1;
-//                } else {
-//                        return 1;
-//                }
-//        }
-//	};
-
+	public List<UserLadder> ladderInfo(Map<Integer, UserLadder> enemyMap, UserBean user, boolean total, int type) {
+		List<UserLadder> userLadders = new ArrayList<UserLadder>();
+		if (total) {
+			List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
+			for (UserLadder userLadder : userLadderList) {
+				UserLadder.Builder builder = UserLadder.newBuilder();
+				if (userLadderService.isNextSeasonAndUpdateUserLadder(userLadder, builder)) {
+					userLadders.add(builder.build());
+				} else
+					userLadders.add(userLadder);
+			}
+		} else {
+			enemyMap.putAll(userLadderService.getUserEnemy(user, type, false));
+			userLadders.add(userLadderService.getUserLadder(user, type));
+		}
+		
+		return userLadders;
+	}
+	
+	public Map<Integer, UserLadder> refreshEnemy(UserBean user, int type) {
+		return userLadderService.getUserEnemy(user, type, true);
+	}
+	
+	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position) {
+		UserLadder userLadder = userLadderService.getUserLadder(user, type);
+		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+		builder.setLastScore(builder.getScore());
+		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret));
+		builder.setGrade(userLadderService.calGrade(builder.getScore()));
+		if (type == LadderConst.TYPE_LADDER_NORMAL)
+			builder.setTaskProcess(builder.getTaskProcess() + 1);
+		userLadderService.updateUserLadder(builder.build());
+		
+		return builder.build();
+	}
+	
+	public List<RewardInfo> ladderTaskReward(UserBean user) {
+		UserLadder userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
+		int rewardProcess = 0;
+		for (Task task : ladderSeasonConfig.getTaskList()) {
+			if (task.getTargetcount() > userLadder.getTaskRewardProcess())
+				rewardProcess = rewardProcess == 0 ? task.getTargetcount() : Math.min(rewardProcess, task.getTargetcount());
+		}
+		
+		if (rewardProcess < userLadder.getTaskProcess())
+			return null;
+		
+		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+		builder.setTaskRewardProcess(rewardProcess);
+		userLadderService.updateUserLadder(builder.build());
+		
+		for (Task task : ladderSeasonConfig.getTaskList()) {
+			if (task.getTargetcount() == rewardProcess)
+				return task.getRewardList();
+		}
+		
+		return null;
+	}
+	
+	public List<RewardInfo> handleLadderSeasonReward(UserBean user) {
+		UserLadder userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
+		if (userLadder == null || userLadder.getSeasonRewardStatus() == 1)
+			return null;
+		
+		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+		builder.setSeasonRewardStatus(1);
+		userLadderService.updateUserLadder(builder.build());
+		
+		return seasonReward(user);
+	}
+	
+	private List<RewardInfo> seasonReward(UserBean user) {
+		int maxGrade = 0;
+		List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
+		for (UserLadder userLadder : userLadderList) {
+			maxGrade = Math.max(maxGrade, userLadder.getGrade());
+		}
+		LadderMode laddermode = ladderRedisService.getLadderMode(maxGrade);
+		if (laddermode != null)
+			return laddermode.getRewardList();
+		
+		return null;
+	}
+	
 	public LadderChongzhi getLadderChongzhi(int count){
 		return ladderRedisService.getLadderChongzhi(count);
 	}
@@ -361,30 +441,6 @@ public class LadderService {
 			log.error("send ladder daily:" + ladderDailyList);
 			log.error("error:" + e);
 		}
-//		Collections.sort(ladderDailyList, comparator);
-//		int index = 0;
-//		while (index < ladderDailyList.size() - 1) {
-//			LadderDailyBean startRanking = ladderDailyList.get(index);
-//			LadderDailyBean endRanking = ladderDailyList.get(++index);
-//			long startRank = startRanking.getRanking();
-//			long endRank = endRanking.getRanking();
-//			if (endRank >= 2500) {
-//				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, endRank);
-//				if (userRank != null && userRank.getUserId() > 0) {
-//					MailBean mail = buildLadderDailyMail(userRank.getUserId(), endRanking);
-//					mailService.addMail(mail);
-//				}
-//				continue;
-//			}
-//			
-//			for (long i = startRank; i < endRank; ++i) {
-//				UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
-//				if (userRank != null && userRank.getUserId() > 0) {
-//					MailBean mail = buildLadderDailyMail(userRank.getUserId(), startRanking);
-//					mailService.addMail(mail);
-//				}
-//			}
-//		}
 	}
 	
 	private void createLadderData(int serverId) {
@@ -516,10 +572,6 @@ public class LadderService {
 		ladderRedisService.updateUserRank(serverId, userRank);
 		ladderRedisService.updateUserRankInfo(serverId, userRank);
 	}
-	
-//	private boolean attackResult(UserRankBean myRankBean, UserRankBean attackRankBean) {
-//		return true;
-//	}
 	
 	private void updateRewardList(List<RewardBean> rewardList, RewardBean reward) {
 		for (RewardBean oldReward : rewardList) {

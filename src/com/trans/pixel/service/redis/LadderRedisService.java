@@ -23,9 +23,15 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderEnemyList;
+import com.trans.pixel.protoc.LadderProto.LadderEquip;
+import com.trans.pixel.protoc.LadderProto.LadderEquipList;
+import com.trans.pixel.protoc.LadderProto.LadderMode;
+import com.trans.pixel.protoc.LadderProto.LadderModeList;
 import com.trans.pixel.protoc.LadderProto.LadderName;
 import com.trans.pixel.protoc.LadderProto.LadderNameList;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
+import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
+import com.trans.pixel.protoc.LadderProto.LadderSeasonConfigList;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
@@ -39,6 +45,10 @@ public class LadderRedisService extends RedisService{
 	private static final String LADDER_RANKING_FILE_NAME = "ld_ladderenemy.xml";
 	private static final String LADDER_NAME_FILE_NAME = "ld_name1.xml";
 	private static final String LADDER_NAME_FILE_NAME2 = "ld_name2.xml";
+	private static final String LADDER_MODE_FILE_NAME = "ld_laddermode.xml";
+	private static final String LADDER_LD_FILE_NAME = "ld_ladderld.xml";
+	private static final String LADDER_EQUIP_FILE_NAME = "ld_ladderequip.xml";
+	private static final String LADDER_SEASON_FILE_NAME = "ld_ladderseason.xml";
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
@@ -200,49 +210,7 @@ public class LadderRedisService extends RedisService{
 		String xml = ReadConfig("ld_ladderdaily.xml");
 		parseXml(xml, builder);
 		return builder.build();
-//		return redisTemplate.execute(new RedisCallback<List<LadderDailyBean>>() {
-//			@Override
-//			public List<LadderDailyBean> doInRedis(RedisConnection arg0)
-//					throws DataAccessException {
-//				BoundHashOperations<String, String, String> bhOps = redisTemplate
-//						.boundHashOps();
-//				
-//				List<LadderDailyBean> ladderDailyList = new ArrayList<LadderDailyBean>();
-//				Iterator<Entry<String, String>> it = bhOps.entries().entrySet().iterator();
-//				while (it.hasNext()) {
-//					Entry<String, String> entry = it.next();
-//					LadderDailyBean ladderRanking = LadderDailyBean.fromJson(entry.getValue());
-////					if (ladderRanking != null)
-//						ladderDailyList.add(ladderRanking);
-//				}
-//				return ladderDailyList;
-//			}
-//		});
 	}
-	
-//	public void setLadderDailyList(final List<LadderDailyBean> ladderDailyList) {
-//		redisTemplate.execute(new RedisCallback<Object>() {
-//			@Override
-//			public Object doInRedis(RedisConnection arg0)
-//					throws DataAccessException {
-//				BoundHashOperations<String, String, String> bhOps = redisTemplate
-//						.boundHashOps(RedisKey.LADDER_DAILY_CONFIG_KEY);
-//				
-//				bhOps.putAll(convertLadderDailyMap(ladderDailyList));
-//				
-//				return null;
-//			}
-//		});
-//	}
-	
-//	private Map<String, String> convertLadderDailyMap(List<LadderDailyBean> ladderDailyList) {
-//		Map<String, String> map = new HashMap<String, String>();
-//		for (LadderDaily ladderRanking : ladderDailyList) {
-//			map.put("" + ladderRanking.getId(), ladderRanking.toJson());
-//		}
-//		
-//		return map;
-//	}
 	
 	public boolean lockRankRedis(int serverId, int second) {
 		return this.setLock(buildRankRedisKey(serverId), second);
@@ -344,5 +312,158 @@ public class LadderRedisService extends RedisService{
 			list.add(ladderEnemy.build());
 		}
 		return list;
+	}
+	
+	//laddermode
+	public LadderMode getLadderMode(int id) {
+		String value = hget(RedisKey.LADDER_MODE_KEY, "" + id);
+		if (value == null) {
+			Map<String, LadderMode> config = getLadderModeConfig();
+			return config.get("" + id);
+		} else {
+			LadderMode.Builder builder = LadderMode.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, LadderMode> getLadderModeConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.LADDER_MODE_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, LadderMode> map = buildLadderModeConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, LadderMode> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.LADDER_MODE_KEY, redismap);
+			return map;
+		}else{
+			Map<String, LadderMode> map = new HashMap<String, LadderMode>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				LadderMode.Builder builder = LadderMode.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, LadderMode> buildLadderModeConfig(){
+		String xml = ReadConfig(LADDER_MODE_FILE_NAME);
+		LadderModeList.Builder builder = LadderModeList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_MODE_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, LadderMode> map = new HashMap<String, LadderMode>();
+		for(LadderMode.Builder ladderMode : builder.getDataBuilderList()){
+			map.put("" + ladderMode.getMode(), ladderMode.build());
+		}
+		return map;
+	}
+	
+	//ladderequip
+	public LadderEquip getLadderEquip(int id) {
+		String value = hget(RedisKey.LADDER_EQUIP_KEY, "" + id);
+		if (value == null) {
+			Map<String, LadderEquip> config = getLadderEquipConfig();
+			return config.get("" + id);
+		} else {
+			LadderEquip.Builder builder = LadderEquip.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, LadderEquip> getLadderEquipConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.LADDER_EQUIP_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, LadderEquip> map = buildLadderEquipConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, LadderEquip> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.LADDER_EQUIP_KEY, redismap);
+			return map;
+		}else{
+			Map<String, LadderEquip> map = new HashMap<String, LadderEquip>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				LadderEquip.Builder builder = LadderEquip.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, LadderEquip> buildLadderEquipConfig(){
+		String xml = ReadConfig(LADDER_EQUIP_FILE_NAME);
+		LadderEquipList.Builder builder = LadderEquipList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_EQUIP_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, LadderEquip> map = new HashMap<String, LadderEquip>();
+		for(LadderEquip.Builder ladder : builder.getDataBuilderList()){
+			map.put("" + ladder.getLadder(), ladder.build());
+		}
+		return map;
+	}
+	
+	//ladderseason
+	public LadderSeasonConfig getLadderSeason(int id) {
+		String value = hget(RedisKey.LADDER_SEASON_CONFIG_KEY, "" + id);
+		if (value == null) {
+			Map<String, LadderSeasonConfig> config = getLadderSeasonConfig();
+			return config.get("" + id);
+		} else {
+			LadderSeasonConfig.Builder builder = LadderSeasonConfig.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, LadderSeasonConfig> getLadderSeasonConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.LADDER_SEASON_CONFIG_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, LadderSeasonConfig> map = buildLadderSeasonConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, LadderSeasonConfig> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.LADDER_SEASON_CONFIG_KEY, redismap);
+			return map;
+		}else{
+			Map<String, LadderSeasonConfig> map = new HashMap<String, LadderSeasonConfig>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				LadderSeasonConfig.Builder builder = LadderSeasonConfig.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, LadderSeasonConfig> buildLadderSeasonConfig(){
+		String xml = ReadConfig(LADDER_SEASON_FILE_NAME);
+		LadderSeasonConfigList.Builder builder = LadderSeasonConfigList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_SEASON_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, LadderSeasonConfig> map = new HashMap<String, LadderSeasonConfig>();
+		for(LadderSeasonConfig.Builder ladder : builder.getDataBuilderList()){
+			map.put("" + ladder.getSeason(), ladder.build());
+		}
+		return map;
 	}
 }

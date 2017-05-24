@@ -1,8 +1,10 @@
 package com.trans.pixel.service;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
@@ -34,7 +37,6 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
-import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
@@ -42,6 +44,7 @@ import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
@@ -85,6 +88,8 @@ public class UserService {
 	private UserEquipService userEquipService;
 	@Resource
 	private ZhanliRedisService zhanliRedisService;
+	@Resource
+	private RankRedisService rankRedisService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -436,6 +441,45 @@ public class UserService {
 		while(userinfo.getId() == user.getId())
 			userinfo = userRedisService.getRandUser(user.getServerId());
 		return userinfo;
+	}
+	
+	public List<UserInfo> getRandUser(int index1, int index2, UserBean user){
+		long myrank = rankRedisService.getMyZhanliRank(user);
+		List<UserInfo> ranks = new ArrayList<UserInfo>();
+		if(myrank < 0)
+			ranks = rankRedisService.getZhanliRanks(user, Math.min(index1, -10), -1);
+		else if(myrank+index1 > 0)
+			ranks = rankRedisService.getZhanliRanks(user, myrank+index1, myrank+index2);
+		else
+			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+index2);
+		// List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
+		// Set<String> members = unionRedisService.getMemberIds(user);
+		Iterator<UserInfo> it = ranks.iterator();
+		while(it.hasNext()){
+			UserInfo rank = it.next();
+			if(rank.getId() == user.getId()/* || friends.contains(rank.getId()) || members.contains(rank.getId()+"")*/){
+				it.remove();
+				continue;
+			}
+			boolean timeout = true;
+			if (rank.hasLastLoginTime()) {
+				try {
+					Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(rank.getLastLoginTime());
+					if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
+						timeout = false;
+				} catch (ParseException e) {
+				}
+			}
+			if(timeout){
+				rankRedisService.delZhanliRank(user.getServerId(), rank.getId());
+				if(ranks.size() > index2 - index1)
+					it.remove();
+			}
+		}
+		while(ranks.size() > index2 - index1){
+			ranks.remove(ranks.size()-1);
+		}
+		return ranks;
 	}
 	
 	public void cache(int serverId, UserInfo user){

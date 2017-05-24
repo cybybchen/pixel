@@ -18,7 +18,7 @@ public enum ErrorConst implements ResultConst {
 	UNLOCK_ORDER_ERROR(2042, "请按顺序解锁"),NOT_ENOUGH_ZHANLI(2043, "需要更高的战力"),USER_HAS_UNION(2044, "该玩家已加入其他公会"),
     GET_REWARD_AGAIN(2045, "请勿重复领取"), LADDER_RANK_ISCHANGED_ERROR(2046, "天梯排行榜已更新"), BROTHER_VIP_IS_NOT_ENOUGH(2047, "你的大哥VIP等级不足"),
     CREATE_UNION_ERROR(2048, "公会创建失败"),AREA_OWNER_BUSY(2049, "领主不能退出公会"),EVENT_FIRST(2050, "请继续通关相关事件"),MERLEVEL_FIRST(2051, "请先提升您的佣兵团等级"),
-    SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"),
+    SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"),
     
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
@@ -53,6 +53,8 @@ public enum ErrorConst implements ResultConst {
     ROOM_IS_NOT_EXIST_ERROR(4023, "房间不存在"), ROOM_NEED_CREATE_ERROR(4024, "请先创建一个房间"), BOSS_ROOM_HAS_BEIN_ERROR(4025, "已经加入该房间"),
     CAN_NOT_GIVEUP_REWARDTASK_ERROR(4026, "无法放弃该悬赏"), REWARDTASK_IS_LIMIT_ERROR(4027, "悬赏任务已达上限"), EQUIP_LEVEL_IS_LIMIT_ERROR(4028, "装备等级已达上限"),
     EQUIP_IS_EXIST_ERROR(4029, "装备已存在，无法合成第二件"), TIME_IS_NOT_OVER_ERROR(4030, "等待时间未到，请耐心一会"),
+    
+    LADDER_SEASON_IS_END_ERROR(5001, "该赛季已结束，请退出天梯重新进入！"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

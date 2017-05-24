@@ -8,6 +8,688 @@ public final class TaskProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface TaskListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Task data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.Task> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.Task getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.TaskOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.TaskOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.TaskList}
+   *
+   * <pre>
+   *&#47;/////// TaskProto
+   * </pre>
+   */
+  public static final class TaskList extends
+      com.google.protobuf.GeneratedMessage
+      implements TaskListOrBuilder {
+    // Use TaskList.newBuilder() to construct.
+    private TaskList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private TaskList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final TaskList defaultInstance;
+    public static TaskList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public TaskList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TaskList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Task>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.Base.Task.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_TaskList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_TaskList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.TaskProto.TaskList.class, com.trans.pixel.protoc.TaskProto.TaskList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<TaskList> PARSER =
+        new com.google.protobuf.AbstractParser<TaskList>() {
+      public TaskList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TaskList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TaskList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.Task data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Base.Task> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.Task> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.TaskOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.Task getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.TaskOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.TaskList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.TaskProto.TaskList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.TaskList}
+     *
+     * <pre>
+     *&#47;/////// TaskProto
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.TaskProto.TaskListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_TaskList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_TaskList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.TaskProto.TaskList.class, com.trans.pixel.protoc.TaskProto.TaskList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.TaskProto.TaskList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_TaskList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.TaskProto.TaskList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.TaskProto.TaskList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.TaskProto.TaskList build() {
+        com.trans.pixel.protoc.TaskProto.TaskList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.TaskProto.TaskList buildPartial() {
+        com.trans.pixel.protoc.TaskProto.TaskList result = new com.trans.pixel.protoc.TaskProto.TaskList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.TaskProto.TaskList) {
+          return mergeFrom((com.trans.pixel.protoc.TaskProto.TaskList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.TaskProto.TaskList other) {
+        if (other == com.trans.pixel.protoc.TaskProto.TaskList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.TaskProto.TaskList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.TaskProto.TaskList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Task data = 1;
+      private java.util.List<com.trans.pixel.protoc.Base.Task> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Task>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.Task, com.trans.pixel.protoc.Base.Task.Builder, com.trans.pixel.protoc.Base.TaskOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.Task> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Task getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.Base.Task value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.Base.Task.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.Base.Task value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.Base.Task value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.Base.Task.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.Base.Task.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Task> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Task.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.TaskOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.TaskOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Task.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Task.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.Task.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Task data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.Task.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.Task, com.trans.pixel.protoc.Base.Task.Builder, com.trans.pixel.protoc.Base.TaskOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.Task, com.trans.pixel.protoc.Base.Task.Builder, com.trans.pixel.protoc.Base.TaskOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.TaskList)
+    }
+
+    static {
+      defaultInstance = new TaskList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.TaskList)
+  }
+
   public interface TaskTargetListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -38,10 +720,6 @@ public final class TaskProto {
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.TaskTargetList}
-   *
-   * <pre>
-   *&#47;/////// TaskProto
-   * </pre>
    */
   public static final class TaskTargetList extends
       com.google.protobuf.GeneratedMessage
@@ -288,10 +966,6 @@ public final class TaskProto {
     }
     /**
      * Protobuf type {@code com.trans.pixel.protoc.TaskTargetList}
-     *
-     * <pre>
-     *&#47;/////// TaskProto
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -13458,6 +14132,11 @@ public final class TaskProto {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_TaskList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_TaskList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_TaskTargetList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13552,150 +14231,158 @@ public final class TaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\017TaskProto.proto\022\026com.trans.pixel.proto" +
-      "c\032\nBase.proto\"@\n\016TaskTargetList\022.\n\002id\030\001 " +
-      "\003(\0132\".com.trans.pixel.protoc.TaskTarget\"" +
-      "^\n\nTaskTarget\022\020\n\010targetid\030\001 \001(\005\0220\n\005order" +
-      "\030\002 \003(\0132!.com.trans.pixel.protoc.TaskOrde" +
-      "r\022\014\n\004skip\030\003 \001(\r\"\275\002\n\tTaskOrder\022\r\n\005order\030\001" +
-      " \001(\005\022\014\n\004type\030\002 \001(\005\022\013\n\003des\030\003 \001(\t\022\023\n\013targe" +
-      "tcount\030\004 \001(\005\022\021\n\trewardid1\030\005 \001(\005\022\024\n\014rewar" +
-      "dcount1\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\trewar" +
-      "did2\030\010 \001(\005\022\024\n\014rewardcount2\030\t \001(\005\022\024\n\014targ",
-      "etcount1\030\n \001(\005\022\021\n\trewardid3\030\013 \001(\005\022\024\n\014rew" +
-      "ardcount3\030\014 \001(\005\022\014\n\004name\030\r \001(\t\0222\n\006reward\030" +
-      "\016 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
-      "o\022\014\n\004skip\030\017 \001(\r\"?\n\016Task3OrderList\022-\n\002id\030" +
-      "\001 \003(\0132!.com.trans.pixel.protoc.TaskOrder" +
-      "\"U\n\017Task2TargetHero\022\016\n\006heroid\030\001 \001(\005\0222\n\006t" +
-      "arget\030\002 \003(\0132\".com.trans.pixel.protoc.Tas" +
-      "kTarget\"F\n\017Task2TargetList\0223\n\002id\030\001 \003(\0132\'" +
-      ".com.trans.pixel.protoc.Task2TargetHero\"" +
-      "M\n\010UserTask\022\020\n\010targetid\030\001 \001(\005\022\017\n\007process",
-      "\030\002 \001(\005\022\016\n\006status\030\003 \001(\005\022\016\n\006heroid\030\004 \003(\005\"\030" +
-      "\n\026RequestUserTaskCommand\"\270\001\n\027ResponseUse" +
-      "rTaskCommand\0223\n\tuserTask1\030\001 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.UserTask\0223\n\tuserTask2\030\002" +
-      " \003(\0132 .com.trans.pixel.protoc.UserTask\0223" +
-      "\n\tuserTask3\030\003 \003(\0132 .com.trans.pixel.prot" +
-      "oc.UserTask\"J\n\033RequestGetTaskRewardComma" +
-      "nd\022\014\n\004type\030\001 \002(\005\022\r\n\005order\030\002 \001(\005\022\016\n\006heroi" +
-      "d\030\003 \001(\005\"?\n\nRaidReward\022\016\n\006lootid\030\001 \001(\005\022\021\n" +
-      "\tlootcount\030\002 \001(\005\022\016\n\006weight\030\003 \001(\005\"]\n\tRaid",
-      "Order\022\r\n\005order\030\001 \001(\005\022\017\n\007enemyid\030\002 \001(\005\0220\n" +
-      "\004loot\030\003 \003(\0132\".com.trans.pixel.protoc.Rai" +
-      "dReward\"u\n\004Raid\022\n\n\002id\030\001 \001(\005\022\016\n\006costid\030\002 " +
-      "\001(\005\022\021\n\tcostcount\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\0220\n\005" +
-      "order\030\005 \003(\0132!.com.trans.pixel.protoc.Rai" +
-      "dOrder\"4\n\010RaidList\022(\n\002id\030\001 \003(\0132\034.com.tra" +
-      "ns.pixel.protoc.Raid\"$\n\026RequestOpenRaidC" +
-      "ommand\022\n\n\002id\030\001 \001(\005\"e\n\027RequestStartRaidCo" +
-      "mmand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tf" +
-      "ightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(",
-      "\010\"!\n\023ResponseRaidCommand\022\n\n\002id\030\001 \001(\005"
+      "c\032\nBase.proto\"6\n\010TaskList\022*\n\004data\030\001 \003(\0132" +
+      "\034.com.trans.pixel.protoc.Task\"@\n\016TaskTar" +
+      "getList\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.TaskTarget\"^\n\nTaskTarget\022\020\n\010targeti" +
+      "d\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!.com.trans.pixel" +
+      ".protoc.TaskOrder\022\014\n\004skip\030\003 \001(\r\"\275\002\n\tTask" +
+      "Order\022\r\n\005order\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\013\n\003de" +
+      "s\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\005\022\021\n\trewardid" +
+      "1\030\005 \001(\005\022\024\n\014rewardcount1\030\006 \001(\005\022\020\n\010targeti",
+      "d\030\007 \001(\005\022\021\n\trewardid2\030\010 \001(\005\022\024\n\014rewardcoun" +
+      "t2\030\t \001(\005\022\024\n\014targetcount1\030\n \001(\005\022\021\n\treward" +
+      "id3\030\013 \001(\005\022\024\n\014rewardcount3\030\014 \001(\005\022\014\n\004name\030" +
+      "\r \001(\t\0222\n\006reward\030\016 \003(\0132\".com.trans.pixel." +
+      "protoc.RewardInfo\022\014\n\004skip\030\017 \001(\r\"?\n\016Task3" +
+      "OrderList\022-\n\002id\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.TaskOrder\"U\n\017Task2TargetHero\022\016\n\006h" +
+      "eroid\030\001 \001(\005\0222\n\006target\030\002 \003(\0132\".com.trans." +
+      "pixel.protoc.TaskTarget\"F\n\017Task2TargetLi" +
+      "st\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.protoc.",
+      "Task2TargetHero\"M\n\010UserTask\022\020\n\010targetid\030" +
+      "\001 \001(\005\022\017\n\007process\030\002 \001(\005\022\016\n\006status\030\003 \001(\005\022\016" +
+      "\n\006heroid\030\004 \003(\005\"\030\n\026RequestUserTaskCommand" +
+      "\"\270\001\n\027ResponseUserTaskCommand\0223\n\tuserTask" +
+      "1\030\001 \003(\0132 .com.trans.pixel.protoc.UserTas" +
+      "k\0223\n\tuserTask2\030\002 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132 .com." +
+      "trans.pixel.protoc.UserTask\"J\n\033RequestGe" +
+      "tTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005orde" +
+      "r\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"?\n\nRaidReward\022\016\n",
+      "\006lootid\030\001 \001(\005\022\021\n\tlootcount\030\002 \001(\005\022\016\n\006weig" +
+      "ht\030\003 \001(\005\"]\n\tRaidOrder\022\r\n\005order\030\001 \001(\005\022\017\n\007" +
+      "enemyid\030\002 \001(\005\0220\n\004loot\030\003 \003(\0132\".com.trans." +
+      "pixel.protoc.RaidReward\"u\n\004Raid\022\n\n\002id\030\001 " +
+      "\001(\005\022\016\n\006costid\030\002 \001(\005\022\021\n\tcostcount\030\003 \001(\005\022\014" +
+      "\n\004name\030\004 \001(\t\0220\n\005order\030\005 \003(\0132!.com.trans." +
+      "pixel.protoc.RaidOrder\"4\n\010RaidList\022(\n\002id" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"$\n\026" +
+      "RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\"e\n\027Re" +
+      "questStartRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010tea",
+      "mInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004" +
+      " \001(\005\022\013\n\003ret\030\005 \001(\010\"!\n\023ResponseRaidCommand" +
+      "\022\n\n\002id\030\001 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_trans_pixel_protoc_TaskTargetList_descriptor =
+          internal_static_com_trans_pixel_protoc_TaskList_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_com_trans_pixel_protoc_TaskList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_TaskList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_TaskTargetList_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_TaskTargetList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TaskTargetList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_TaskTarget_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_TaskTarget_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TaskTarget_descriptor,
               new java.lang.String[] { "Targetid", "Order", "Skip", });
           internal_static_com_trans_pixel_protoc_TaskOrder_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_TaskOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TaskOrder_descriptor,
               new java.lang.String[] { "Order", "Type", "Des", "Targetcount", "Rewardid1", "Rewardcount1", "Targetid", "Rewardid2", "Rewardcount2", "Targetcount1", "Rewardid3", "Rewardcount3", "Name", "Reward", "Skip", });
           internal_static_com_trans_pixel_protoc_Task3OrderList_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_Task3OrderList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task3OrderList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_Task2TargetHero_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_Task2TargetHero_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task2TargetHero_descriptor,
               new java.lang.String[] { "Heroid", "Target", });
           internal_static_com_trans_pixel_protoc_Task2TargetList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_Task2TargetList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task2TargetList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_UserTask_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_UserTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTask_descriptor,
               new java.lang.String[] { "Targetid", "Process", "Status", "Heroid", });
           internal_static_com_trans_pixel_protoc_RequestUserTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_RequestUserTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserTaskCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_ResponseUserTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserTaskCommand_descriptor,
               new java.lang.String[] { "UserTask1", "UserTask2", "UserTask3", });
           internal_static_com_trans_pixel_protoc_RequestGetTaskRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_RequestGetTaskRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetTaskRewardCommand_descriptor,
               new java.lang.String[] { "Type", "Order", "Heroid", });
           internal_static_com_trans_pixel_protoc_RaidReward_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RaidReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RaidReward_descriptor,
               new java.lang.String[] { "Lootid", "Lootcount", "Weight", });
           internal_static_com_trans_pixel_protoc_RaidOrder_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RaidOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RaidOrder_descriptor,
               new java.lang.String[] { "Order", "Enemyid", "Loot", });
           internal_static_com_trans_pixel_protoc_Raid_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_Raid_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Raid_descriptor,
               new java.lang.String[] { "Id", "Costid", "Costcount", "Name", "Order", });
           internal_static_com_trans_pixel_protoc_RaidList_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RaidList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor,
               new java.lang.String[] { "Id", "TeamInfo", "FightInfo", "Turn", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor,

@@ -216,6 +216,15 @@ message MultiReward {
 	optional string name = 2;
 	repeated RewardInfo loot = 3;
 }
+
+message Task {
+        optional uint32 targetid = 1;
+        optional string name = 2;
+        optional string des = 3;
+        optional uint32 targetcount = 4;
+        repeated RewardInfo reward = 5;
+}
+
 ////////// ShopProto
 message ContractWeightList {
 	repeated ContractWeight quality = 1;
@@ -2430,6 +2439,112 @@ message LadderEnemy {
 	optional uint32 score1 = 20;
 }
 
+message LadderEquipList {
+	repeated LadderEquip data = 1;
+}
+
+message LadderEquip {
+	required uint32 ladder = 1;
+	required uint32 grade = 2;
+}
+
+message LadderModeList {
+	repeated LadderMode data = 1;
+}
+
+message LadderMode {
+	optional uint32 mode = 1;
+	optional string name = 2;
+	optional string des = 3;
+	optional uint32 score = 4;
+	optional float losepercent = 5;
+	optional uint32 k = 6;
+	repeated RewardInfo reward = 7;
+	repeated LadderModeLevel level = 8;
+}
+
+message LadderModeLevel {
+	required uint32 level = 1;
+	required uint32 score = 2;
+}
+
+message LadderLd {
+	optional uint32 targetid = 1;
+	optional string name = 2;
+	optional string des = 3;
+	optional uint32 equipid = 4;
+}
+
+message LadderLdList {
+	repeated LadderLd data = 1;
+}
+
+message LadderSeasonConfig {
+	required uint32 season = 1;
+	required string starttime = 2;
+	required uint32 taskid = 3;
+	repeated Task task = 4;
+	required LadderMode ladder = 5;
+	repeated LadderLd ld = 6;
+}
+
+message LadderSeasonConfigList {
+	repeated LadderSeasonConfig data = 1;
+}
+
+message LadderSeason {
+	required uint32 season = 1;
+	required string startTime = 2;
+	optional string endTime = 3;
+}
+
+message UserLadder {
+	optional uint32 type = 1;//0：普通 1：乱斗
+	optional uint32 score = 2;
+	optional uint32 season = 3;//赛季
+	optional uint32 taskProcess = 4;
+	optional uint32 taskRewardProcess = 5;
+	optional Team team = 6;
+	optional uint32 position = 7;
+	optional UserInfo user = 8;
+	optional uint32 lastScore = 9;
+	optional uint32 grade = 10;
+	optional uint32 level = 11;
+	optional uint32 seasonRewardStatus = 12;//0：未领取奖励 1：已领取
+}
+
+message RequestLadderSeasonRewardCommand {
+
+}
+
+message RequestLadderEnemyCommand {
+	optional uint32 type = 1;//0:normal 1:ld
+}
+
+message RequestLadderInfoCommand {
+}
+
+message RequestRefreshLadderEnemyCommand {
+	required uint32 type = 1;
+}
+
+message ResponseEnemyLadderCommand {
+	repeated UserLadder enemy = 1;
+}
+
+message RequestSubmitLadderResultCommand {
+	required uint32 position = 1;
+	required uint32 ret = 2;//0:win 1:lost 2:drow
+	required uint32 type = 3;
+}
+
+message RequestLadderTaskRewardCommand {
+}
+
+message ResponseUserLadderCommand {
+	repeated UserLadder user = 1;
+}
+
 message FightInfo {
 	optional int32 id = 3;
 	optional UserInfo enemy = 4;
@@ -3240,6 +3355,10 @@ message RequestGiveupRewardTaskCommand {
 	required uint32 index = 1;
 }
 ////////// TaskProto
+message TaskList {
+	repeated Task data = 1;
+}
+
 message TaskTargetList {
 	repeated TaskTarget id = 1;
 }
@@ -3518,6 +3637,12 @@ message RequestCommand {
 	optional RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;
 	optional RequestExtraRewardCommand extraRewardCommand = 241;
 	optional RequestEventBuyCommand eventBuyCommand = 242;
+	optional RequestLadderInfoCommand ladderInfoCommand = 243;
+	optional RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;
+	optional RequestSubmitLadderResultCommand submitLadderResultCommand = 245;
+	optional RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;
+	optional RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
+	optional RequestLadderEnemyCommand ladderEnemyCommand = 248;
 }
 ////////// Commands
 message ErrorCommand {
@@ -3605,6 +3730,8 @@ message ResponseCommand {
 	optional ResponseUserRewardTaskCommand userRewardTaskCommand = 65;
 	optional ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;
 	optional ResponseOtherUserInfoCommand otherUserInfoCommand = 67;
+	optional ResponseEnemyLadderCommand enemyLadderCommand = 68;
+	optional ResponseUserLadderCommand userLadderCommand = 69;
 }
 
 ////////// End

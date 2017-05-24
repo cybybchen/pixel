@@ -29,11 +29,11 @@ public class BaseTest {
     protected static int GAME_VERSION = 1;
     protected static int VERSION = 1;
     protected static int SERVER_ID = 1;
-    protected static String ACCOUNT = "conghui";
+    protected static String ACCOUNT = "cyb1";
     protected static String USER_NAME = ACCOUNT;
-    protected static long USER_ID = 791;
+    protected static long USER_ID = 545;
     protected static String DEVICE_ID = "iphone5";
-    protected static String SESSION = "";
+    protected static String SESSION = "6779bbedbba76e817f5b3e20614a38db";
 //    protected static final String TOKEN = "";
 //    protected static final String SCORE = "100";
 //    protected static final String ROOM = "2";
@@ -113,7 +113,7 @@ public class BaseTest {
 		return builder.build();
     }
     
-    @Test
+//    @Test
     public void test(){
     	login();
     }
@@ -129,7 +129,7 @@ public class BaseTest {
         	if(extraLog)	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
-    		registerbuilder.setHeroId(42);
+    		registerbuilder.setHeroId(1);
     		response = request("registerCommand", registerbuilder.build(), request);
         }
         if(response.hasUserInfoCommand()){

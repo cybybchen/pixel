@@ -257,6 +257,15 @@ public class RedisKey {
 	public static final String LADDER_NAME2_KEY = PREFIX + CONFIG_PREFIX + "ladder_name2";
 	public static final String LADDER_ENEMY_KEY = PREFIX + CONFIG_PREFIX + "ladder_enemy";
 	
+	//ladder
+	public static final String LADDER_SEASON_KEY = PREFIX + "ladder:season";
+	public static final String LADDER_ENEMY_ROOM_PREFIX = PREFIX + "ladderroom_";
+	public static final String LADDER_USER_ENEMY_PREFIX = PREFIX + "ladder:userenemy_";
+	public static final String LADDER_USERINFO_PREFIX = PREFIX + "ladder:user_";
+	public static final String LADDER_MODE_KEY = PREFIX + CONFIG_PREFIX + "ladder_mode";
+	public static final String LADDER_EQUIP_KEY = PREFIX + CONFIG_PREFIX + "ladder_equip";
+	public static final String LADDER_SEASON_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "ladder_season";
+	
 	//team unlock redis
 	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";
 	

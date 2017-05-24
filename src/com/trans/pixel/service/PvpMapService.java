@@ -1,9 +1,6 @@
 package com.trans.pixel.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -17,11 +14,9 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.PvpMapConst;
-import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
@@ -93,7 +88,7 @@ public class PvpMapService {
 						userService.updateUser(user);
 					}
 					
-					List<UserInfo> ranks = getRandUser(-10, 0, user);
+					List<UserInfo> ranks = userService.getRandUser(-10, 0, user);
 					if(ranks.size() > 0){
 						Map<String, PVPMine> mineMap = new HashMap<String, PVPMine>();
 						for(PVPMine mine : map.getKuangdianList()){
@@ -113,45 +108,6 @@ public class PvpMapService {
 			}
 		}
 		return ErrorConst.UNLOCK_ORDER_ERROR;
-	}
-	
-	public List<UserInfo> getRandUser(int index1, int index2, UserBean user){
-		long myrank = rankRedisService.getMyZhanliRank(user);
-		List<UserInfo> ranks = new ArrayList<UserInfo>();
-		if(myrank < 0)
-			ranks = rankRedisService.getZhanliRanks(user, Math.min(index1, -10), -1);
-		else if(myrank+index1 > 0)
-			ranks = rankRedisService.getZhanliRanks(user, myrank+index1, myrank+index2);
-		else
-			ranks = rankRedisService.getZhanliRanks(user, 0, myrank+index2);
-		// List<Long> friends = userFriendRedisService.getFriendIds(user.getId());
-		// Set<String> members = unionRedisService.getMemberIds(user);
-		Iterator<UserInfo> it = ranks.iterator();
-		while(it.hasNext()){
-			UserInfo rank = it.next();
-			if(rank.getId() == user.getId()/* || friends.contains(rank.getId()) || members.contains(rank.getId()+"")*/){
-				it.remove();
-				continue;
-			}
-			boolean timeout = true;
-			if (rank.hasLastLoginTime()) {
-				try {
-					Date date = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).parse(rank.getLastLoginTime());
-					if(new Date().getTime() - date.getTime() < RedisExpiredConst.EXPIRED_USERINFO_7DAY)
-						timeout = false;
-				} catch (ParseException e) {
-				}
-			}
-			if(timeout){
-				rankRedisService.delZhanliRank(user.getServerId(), rank.getId());
-				if(ranks.size() > index2 - index1)
-					it.remove();
-			}
-		}
-		while(ranks.size() > index2 - index1){
-			ranks.remove(ranks.size()-1);
-		}
-		return ranks;
 	}
 	
 	public int getRefreshCount(UserBean user){
@@ -185,7 +141,7 @@ public class PvpMapService {
 	public void refreshAMine(UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-		List<UserInfo> ranks = getRandUser(-5, 10, user);//刷新一个对手
+		List<UserInfo> ranks = userService.getRandUser(-5, 10, user);//刷新一个对手
 		List<PVPMap> fields = new ArrayList<PVPMap>();
 		for(PVPMap map : maplist.getFieldList()){
 			if(map.getOpened())
@@ -225,7 +181,7 @@ public class PvpMapService {
 		}
 		int count = getRefreshCount(user);//count=3*enemy
 		if(count > 0){//刷新对手
-			List<UserInfo> ranks = getRandUser(-5, 10, user);//每张地图刷新一个对手
+			List<UserInfo> ranks = userService.getRandUser(-5, 10, user);//每张地图刷新一个对手
 			if(ranks.isEmpty())
 				return;
 			for(PVPMap map : maplist.getFieldList())
@@ -512,7 +468,7 @@ public class PvpMapService {
 		if(user.getPvpMineLeftTime() > 0){
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime()-1);
 			userService.updateUser(user);
-			List<UserInfo> ranks = getRandUser(0, 10, user);
+			List<UserInfo> ranks = userService.getRandUser(0, 10, user);
 			// UserInfo owner = builder.getOwner();
 			if(!ranks.isEmpty()){
 				UserInfo owner = ranks.get(redis.nextInt(ranks.size()));

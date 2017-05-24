@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.LadderProto.RequestAttackLadderModeCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
@@ -18,12 +19,13 @@ import com.trans.pixel.protoc.Request.RequestCommand;
 public class LadderTest extends BaseTest {
 	private static Logger logger = Logger.getLogger(LadderTest.class);
 
-	@Test
+//	@Test
 	public void testLadder() {
-		login();
-		getUserLadder();
-		attackLadder();
+//		login();
+//		getUserLadder();
+//		attackLadder();
 //		getLadderUserInfo();
+		ladderInfo();
 	}
 	private void attackLadder() {
 		int teamid = 1;
@@ -68,6 +70,21 @@ public class LadderTest extends BaseTest {
 		RequestGetLadderUserInfoCommand.Builder builder = RequestGetLadderUserInfoCommand.newBuilder();
 		builder.setRank(9);
 		requestBuilder.setLadderUserInfoCommand(builder.build());
+		
+		RequestCommand reqcmd = requestBuilder.build();
+		byte[] reqData = reqcmd.toByteArray();
+        InputStream input = new ByteArrayInputStream(reqData);
+        ResponseCommand response = http.post(url, input);
+        Assert.assertNotNull(response);
+        logger.info(response.getAllFields());
+	}
+	
+	@Test
+	public void ladderInfo() {
+		RequestCommand.Builder requestBuilder = RequestCommand.newBuilder();
+		requestBuilder.setHead(head());
+		RequestLadderInfoCommand.Builder builder = RequestLadderInfoCommand.newBuilder();
+		requestBuilder.setLadderInfoCommand(builder.build());
 		
 		RequestCommand reqcmd = requestBuilder.build();
 		byte[] reqData = reqcmd.toByteArray();

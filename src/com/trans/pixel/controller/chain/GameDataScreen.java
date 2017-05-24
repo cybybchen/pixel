@@ -63,8 +63,14 @@ import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderRankListCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand;
+import com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand;
+import com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand;
 import com.trans.pixel.protoc.MailProto.RequestAddFriendCommand;
 import com.trans.pixel.protoc.MailProto.RequestDelFriendCommand;
 import com.trans.pixel.protoc.MailProto.RequestDeleteMailCommand;
@@ -198,6 +204,7 @@ import com.trans.pixel.service.command.FriendCommandService;
 import com.trans.pixel.service.command.HeartBeatCommandService;
 import com.trans.pixel.service.command.HeroCommandService;
 import com.trans.pixel.service.command.LadderCommandService;
+import com.trans.pixel.service.command.LadderModeCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LibaoCommandService;
 import com.trans.pixel.service.command.LogCommandService;
@@ -299,6 +306,8 @@ public class GameDataScreen extends RequestScreen {
 	private RaidCommandService raidCommandService;
 	@Resource
 	private RewardTaskCommandService rewardTaskCommandService;
+	@Resource
+	private LadderModeCommandService ladderModeCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -1346,6 +1355,48 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestEventBuyCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		levelCommandService.eventBuy(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSubmitLadderResultCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.submitLadderResult(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRefreshLadderEnemyCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.refreshLadderEnemy(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLadderInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.ladderInfo(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLadderTaskRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.ladderTaskReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLadderSeasonRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.ladderSeasonReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLadderEnemyCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		ladderModeCommandService.ladderenemy(cmd, responseBuilder, user);
 		return true;
 	}
 

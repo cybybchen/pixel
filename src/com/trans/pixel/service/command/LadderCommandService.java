@@ -151,18 +151,6 @@ public class LadderCommandService extends BaseCommandService {
 		responseBuilder.setLadderUserInfoCommand(builder.build());
 	}
 	
-//	private void updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
-//		long oldRank = user.getLadderModeHistoryTop();
-//		if (oldRank > newRank) {
-//			user.setLadderModeHistoryTop(newRank);
-//			userService.updateUser(user);
-//			String content = "天梯奖励";
-//			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
-//			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
-//			mailService.addMail(mail);
-//		}
-//	}
-	
 	private MultiReward.Builder updateUserLadderHistoryTop(UserBean user, long newRank, Builder responseBuilder) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		long oldRank = user.getLadderModeHistoryTop();
@@ -174,8 +162,6 @@ public class LadderCommandService extends BaseCommandService {
 			List<RewardBean> rewardList = ladderService.getRankChangeReward(newRank, oldRank);
 			rewards.addAllLoot(RewardBean.buildRewardInfoList(rewardList));
 			rewards.setName(content);
-//			MailBean mail = super.buildMail(user.getId(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
-//			mailService.addMail(mail);
 		}
 		
 		return rewards;

@@ -163,7 +163,6 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
-					;
 					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;

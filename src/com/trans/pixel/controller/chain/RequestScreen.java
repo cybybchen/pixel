@@ -125,7 +125,9 @@ import com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.MailProto.RequestDeleteMailCommand;
+import com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
 import com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopPurchaseCommand;
@@ -134,6 +136,7 @@ import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
+import com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopRefreshCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAttackBossCommand;
@@ -157,16 +160,19 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomComma
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.protoc.UnionProto.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAreaResourceCommand;
+import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopCommand;
@@ -316,7 +322,9 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCheatRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDeleteMailCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSubmitLadderResultCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRegisterCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
@@ -325,6 +333,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRefreshLadderEnemyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBosskillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRaidShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackBossCommand cmd, Builder responseBuilder, UserBean user);
@@ -348,16 +357,19 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderSeasonRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGiveupRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestIsAreaOwnerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEndMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSendMailCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLadderTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -876,8 +888,16 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestDeleteMailCommand cmd = request.getDeleteMailCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasSubmitLadderResultCommand()) {
+			RequestSubmitLadderResultCommand cmd = request.getSubmitLadderResultCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasRegisterCommand()) {
 			RequestRegisterCommand cmd = request.getRegisterCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasLadderEnemyCommand()) {
+			RequestLadderEnemyCommand cmd = request.getLadderEnemyCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHelpAttackPVPMineCommand()) {
@@ -910,6 +930,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasHeroLevelUpToCommand()) {
 			RequestHeroLevelUpToCommand cmd = request.getHeroLevelUpToCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasRefreshLadderEnemyCommand()) {
+			RequestRefreshLadderEnemyCommand cmd = request.getRefreshLadderEnemyCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBosskillCommand()) {
@@ -1004,6 +1028,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestUnionListCommand cmd = request.getUnionListCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasLadderSeasonRewardCommand()) {
+			RequestLadderSeasonRewardCommand cmd = request.getLadderSeasonRewardCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasGiveupRewardTaskCommand()) {
 			RequestGiveupRewardTaskCommand cmd = request.getGiveupRewardTaskCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
@@ -1024,6 +1052,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestEndMohuaMapCommand cmd = request.getEndMohuaMapCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasLadderInfoCommand()) {
+			RequestLadderInfoCommand cmd = request.getLadderInfoCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasDailyShopRefreshCommand()) {
 			RequestDailyShopRefreshCommand cmd = request.getDailyShopRefreshCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
@@ -1042,6 +1074,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasAreaResourceCommand()) {
 			RequestAreaResourceCommand cmd = request.getAreaResourceCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasLadderTaskRewardCommand()) {
+			RequestLadderTaskRewardCommand cmd = request.getLadderTaskRewardCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLevelStartCommand()) {
