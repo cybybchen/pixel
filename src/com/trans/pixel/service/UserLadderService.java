@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.LadderProto.LadderMode;
+import com.trans.pixel.protoc.LadderProto.LadderModeLevel;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
@@ -79,7 +81,10 @@ public class UserLadderService {
 	}
 	
 	public List<UserLadder> getUserLadderList(UserBean user) {
-		return userLadderRedisService.getUserLadderList(user.getId());
+		List<UserLadder> userLadderList = new ArrayList<UserLadder>();
+		userLadderList.add(getUserLadder(user, 0));
+		userLadderList.add(getUserLadder(user, 1));
+		return userLadderList;
 	}
 	
 	public int calScore(UserBean user, UserLadder userLadder, int type, int position, int ret) {
@@ -115,13 +120,23 @@ public class UserLadderService {
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
 		builder.setSeason(ladderSeason.getSeason());
 		builder.setLastScore(userLadder.getScore());
-		builder.setScore(calNextSeasonScore(userLadder.getScore(), ladderSeason.getSeason() - userLadder.getSeason()));
+		builder.setGrade(calNextSeasonGrade(userLadder, ladderSeason));
+		builder.setScore(calNextSeasonScore(builder.getGrade(), builder.getLevel()));
 		
 		return builder;
 	}
 	
-	private int calNextSeasonScore(int score, int season) {
-		return score - 200 * season;
+	private int calNextSeasonGrade(UserLadder userLadder, LadderSeason ladderSeason) {
+		return Math.max(1, userLadder.getGrade() - 2 * (ladderSeason.getSeason() - userLadder.getSeason()));
+	}
+	
+	private int calNextSeasonScore(int grade, int level) {
+		LadderMode ladderMode = ladderRedisService.getLadderMode(grade);
+		for (LadderModeLevel ladderModeLevel : ladderMode.getLevelList()) {
+			if (ladderModeLevel.getLevel() == level)
+				return ladderModeLevel.getScore();
+		}
+		return 0;
 	}
 	
 	public int calGrade(int score) {
@@ -132,6 +147,17 @@ public class UserLadderService {
 				grade = Math.max(grade, ladderMode.getMode());
 		}
 		return grade;
+	}
+	
+	public int calLevel(int score, int grade) {
+		LadderMode ladderMode = ladderRedisService.getLadderMode(grade);
+		int level = 0;
+		for (LadderModeLevel ladderModeLevel : ladderMode.getLevelList()) {
+			if (ladderModeLevel.getScore() <= score)
+				level = Math.max(level, ladderModeLevel.getLevel());
+		}
+		
+		return level;
 	}
 	
 	public LadderSeason getLadderSeason() {

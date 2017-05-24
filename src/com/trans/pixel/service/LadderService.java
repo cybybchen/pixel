@@ -119,6 +119,7 @@ public class LadderService {
 		builder.setLastScore(builder.getScore());
 		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
+		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
 		if (type == LadderConst.TYPE_LADDER_NORMAL)
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
