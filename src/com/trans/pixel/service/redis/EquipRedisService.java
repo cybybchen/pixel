@@ -174,7 +174,7 @@ public class EquipRedisService extends RedisService {
 		}
 		
 		Map<String, Equip> map = new HashMap<String, Equip>();
-		for(Equip.Builder chip : builder.getIdBuilderList()){
+		for(Equip.Builder chip : builder.getDataBuilderList()){
 			map.put("" + chip.getId(), chip.build());
 		}
 		return map;

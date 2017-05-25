@@ -93,7 +93,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		params.put(LogString.LEVEL, "" + pokede.getLevel());
 		if(itemId < RewardConst.ARMOR){
 			Equip equip = equipService.getEquip(itemId);
-			params.put(LogString.EQUIPRARE, "" + equip.getRare());
+			params.put(LogString.EQUIPRARE, "" + equip.getIrare());
 		}else{
 			Armor equip = equipService.getArmor(itemId);
 			params.put(LogString.EQUIPRARE, "" + equip.getRare());

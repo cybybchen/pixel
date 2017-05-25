@@ -9,6 +9,7 @@ public class UserEquipPokedeBean {
 	private long userId = 0;
 	private int itemId = 0;
 	private int level = 0;
+	private int order = 0;
 	public long getUserId() {
 		return userId;
 	}
@@ -27,7 +28,12 @@ public class UserEquipPokedeBean {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
+	public int getOrder() {
+		return order;
+	}
+	public void setOrder(int order) {
+		this.order = order;
+	}
 	public static UserEquipPokedeBean fromJson(String value) {
 		if (value == null)
 			return null;
@@ -40,6 +46,7 @@ public class UserEquipPokedeBean {
 		
 		builder.setItemId(itemId);
 		builder.setLevel(level);
+		builder.setOrder(order);
 		
 		return builder.build();
 	}

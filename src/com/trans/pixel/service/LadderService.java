@@ -41,6 +41,8 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
+import com.trans.pixel.protoc.LadderProto.LadderEquip;
+import com.trans.pixel.protoc.LadderProto.LadderLd;
 import com.trans.pixel.protoc.LadderProto.LadderMode;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
@@ -89,6 +91,8 @@ public class LadderService {
 	private UserTalentService userTalentService;
 	@Resource
 	private UserLadderService userLadderService;
+	@Resource
+	private EquipPokedeService equipPokedeService;
 	
 	public List<UserLadder> ladderInfo(Map<Integer, UserLadder> enemyMap, UserBean user, boolean total, int type) {
 		List<UserLadder> userLadders = new ArrayList<UserLadder>();
@@ -184,6 +188,31 @@ public class LadderService {
 		return null;
 	}
 	
+	public UserEquipPokedeBean handleLadderEquip(UserBean user, UserLadder userLadder) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null)
+			return null;
+		
+		int ld = getCurrentLd(ladderSeason.getStartTime());
+		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
+		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
+		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
+		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), ladderEquip.getGrade(), user);
+		
+		return pokede;
+	}
+	
+	private int getCurrentLd(String startTime) {
+		int days = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(startTime));
+		if (days < 7)
+			return 1;
+		else if (days < 14)
+			return 2;
+		
+		return 3;
+	}
+	
+	//old ladder
 	public LadderChongzhi getLadderChongzhi(int count){
 		return ladderRedisService.getLadderChongzhi(count);
 	}

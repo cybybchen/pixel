@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
+import com.trans.pixel.protoc.EquipProto.EquipOrder;
 import com.trans.pixel.protoc.EquipProto.IncreaseLevel;
 import com.trans.pixel.protoc.EquipProto.IncreaseRare;
 import com.trans.pixel.service.redis.EquipPokedeRedisService;
@@ -38,6 +39,8 @@ public class EquipPokedeService {
 	private EquipService equipService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 
 	public List<RewardInfo> convertCost(List<CostItem> costList) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
@@ -64,8 +67,9 @@ public class EquipPokedeService {
 		String name = "";
 		if (pokede.getItemId() < RewardConst.ARMOR) {
 			Equip equip = equipService.getEquip(pokede.getItemId());
-			name = equip.getName();
-			rare = equip.getRare();
+			EquipOrder equipOrder = equip.getList(pokede.getOrder() - 1);
+			name = equipOrder.getName();
+			rare = equipOrder.getRare();
 			ilevel = equip.getIlevel();
 		} else {
 			Armor armor = equipService.getArmor(pokede.getItemId());
@@ -96,5 +100,27 @@ public class EquipPokedeService {
 		noticeMessageService.composeEquipStrengthen(user, name, pokede.getLevel(), rare);
 		
 		return SuccessConst.EQUIP_STRENGTHEN_SUCCESS;
+	}
+	
+	public UserEquipPokedeBean handleUserEquipPokede(int itemId, int order, UserBean user) {
+		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
+		if (pokede == null)
+			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId);
+		
+		if (order <= pokede.getOrder())
+			return null;
+		
+		Equip equip = equipService.getEquip(itemId);
+		
+		for (EquipOrder equipOrder : equip.getListList()) {
+			if (equipOrder.getOrder() == order) {
+				pokede.setOrder(order);
+				userEquipPokedeService.updateUserEquipPokede(pokede, user);
+				return pokede;
+			}
+		}
+		
+		
+		return null;
 	}
 }

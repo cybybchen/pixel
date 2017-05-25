@@ -11,10 +11,12 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
@@ -141,7 +143,8 @@ public class LadderModeCommandService extends BaseCommandService {
 		}
 		
 		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
-		userLadderBuilder.addUser(ladderService.submitLadderResult(user, cmd.getRet(), cmd.getType(), cmd.getPosition()));
+		userLadder = ladderService.submitLadderResult(user, cmd.getRet(), cmd.getType(), cmd.getPosition());
+		userLadderBuilder.addUser(userLadder);
 		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
 		
 		if (cmd.getRet() == 0) {
@@ -149,6 +152,13 @@ public class LadderModeCommandService extends BaseCommandService {
 			ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
 			enemyBuilder.addAllEnemy(enemyMap.values());
 			responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
+			
+			UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, userLadder);
+			if (pokede != null) {
+				ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
+				builder.addUserEquipPokede(pokede.build());
+				responseBuilder.setEquipPokedeCommand(builder.build());
+			}
 		}
 	}
 	

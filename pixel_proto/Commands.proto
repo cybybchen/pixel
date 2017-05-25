@@ -178,6 +178,7 @@ message SkillInfo {
 message UserEquipPokede {
 	required int32 itemId = 1;
 	required int32 level = 2;
+	optional uint32 order = 3;
 }
 
 message HeroInfo {
@@ -1025,21 +1026,39 @@ message Material {
 }
 
 message EquipList {
-	repeated Equip id = 1;
+	repeated Equip data = 1;
 }
 
 message Equip {
 	optional int32 id = 1;
-	optional string name = 2;
 	optional int32 level = 3;
-	optional int32 rare = 4;
-	optional string description = 5;
 	optional int32 type = 6;
-	optional int32 zhanli = 7;
-	optional int32 ad = 8;
-	optional int32 ap = 9;
-	optional int32 skill = 10;
 	optional int32 ilevel = 11;
+	optional uint32 irare = 12;
+	optional uint32 heroid = 13;
+	repeated EquipOrder list = 14;
+}
+
+message EquipOrder {
+	optional uint32 order = 1;
+	optional string name = 2;
+	optional string des = 3;
+	optional uint32 handbook = 4;
+	optional uint32 equiplevel = 5;
+	optional uint32 rare = 6;
+	optional uint32 img = 7;
+	optional uint32 ad = 8;
+	optional uint32 ap = 9;
+	repeated EquipState states = 10;
+}
+
+message EquipState {
+	optional uint32 stateid = 1;
+	optional string statename = 2;
+	optional uint32 para1 = 3;
+	optional uint32 para2 = 4;
+	optional uint32 skill = 5;
+	optional uint32 skilllevel = 6;
 }
 
 message EquiptucaoList {

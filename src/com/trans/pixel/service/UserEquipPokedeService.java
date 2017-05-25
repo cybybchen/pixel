@@ -81,7 +81,7 @@ public class UserEquipPokedeService {
 		}
 	}
 	
-	private UserEquipPokedeBean initUserPokede(long userId, int itemId) {
+	public UserEquipPokedeBean initUserPokede(long userId, int itemId) {
 		UserEquipPokedeBean UserPokede = new UserEquipPokedeBean();
 		UserPokede.setItemId(itemId);
 		UserPokede.setUserId(userId);
