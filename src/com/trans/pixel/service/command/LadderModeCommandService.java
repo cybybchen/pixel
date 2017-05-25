@@ -117,6 +117,16 @@ public class LadderModeCommandService extends BaseCommandService {
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
+		
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.addAllLoot(rewardList);
+		handleRewards(responseBuilder, user, rewards);
+		
+		userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
+		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
+		userLadderBuilder.addUser(userLadder);
+		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
+		
 	}
 	
 	public void submitLadderResult(RequestSubmitLadderResultCommand cmd, Builder responseBuilder, UserBean user) {

@@ -101,11 +101,13 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+import com.trans.pixel.protoc.UserInfoProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -138,10 +140,14 @@ done
 
 echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
-		nHead.setServerstarttime(serverService.getKaifuTime(head.getServerId()));
+		ServerBean server = serverService.getServer(head.getServerId());
+		if (server == null)
+			return null;
+		nHead.setServerstarttime(server.getKaifuTime());
 		nHead.setDatetime(System.currentTimeMillis() / 1000);
 		nHead.setOnlineStatus(serverService.getOnlineStatus(head.getVersion()+\"\"));
 		nHead.setGameVersion(serverService.getGameVersion());
+		nHead.setServerStatus(server.getStatus());
 		
 		return nHead.build();
 	}
@@ -150,7 +156,28 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
 		RequestCommand request = req.command;
 		HeadInfo head = buildHeadInfo(request.getHead());
+		if (head == null) {
+			rep.command.setHead(request.getHead());
+			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_NOT_OPEN_ERROR.getCode()));
+			erBuilder.setMessage(ErrorConst.SRVER_NOT_OPEN_ERROR.getMesssage());
+			if(!request.hasLogCommand())
+				rep.command.setErrorCommand(erBuilder.build());
+			log.error(\"cmd server not open:\" + req);
+			return false;
+		}
+		
 		rep.command.setHead(head);
+		if (head.getServerStatus() == SERVER_STATUS.SERVER_MAINTENANCE_VALUE) {
+			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getCode()));
+			erBuilder.setMessage(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getMesssage());
+			if(!request.hasLogCommand())
+				rep.command.setErrorCommand(erBuilder.build());
+			log.error(\"cmd server maintenance:\" + req);
+			return false;
+		}
+
 		ResponseCommand.Builder responseBuilder = rep.command;
 		UserBean user = null;
 

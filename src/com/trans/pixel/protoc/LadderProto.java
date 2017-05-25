@@ -16256,20 +16256,6 @@ public final class LadderProto {
      */
     int getPosition();
 
-    // optional .com.trans.pixel.protoc.UserInfo user = 8;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    boolean hasUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfo getUser();
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
-
     // optional uint32 lastScore = 9;
     /**
      * <code>optional uint32 lastScore = 9;</code>
@@ -16412,36 +16398,23 @@ public final class LadderProto {
               position_ = input.readUInt32();
               break;
             }
-            case 66: {
-              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
-                subBuilder = user_.toBuilder();
-              }
-              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(user_);
-                user_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000080;
-              break;
-            }
             case 72: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000080;
               lastScore_ = input.readUInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000100;
               grade_ = input.readUInt32();
               break;
             }
             case 88: {
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000200;
               level_ = input.readUInt32();
               break;
             }
             case 96: {
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00000400;
               seasonRewardStatus_ = input.readUInt32();
               break;
             }
@@ -16619,28 +16592,6 @@ public final class LadderProto {
       return position_;
     }
 
-    // optional .com.trans.pixel.protoc.UserInfo user = 8;
-    public static final int USER_FIELD_NUMBER = 8;
-    private com.trans.pixel.protoc.Base.UserInfo user_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    public boolean hasUser() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfo getUser() {
-      return user_;
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-     */
-    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-      return user_;
-    }
-
     // optional uint32 lastScore = 9;
     public static final int LASTSCORE_FIELD_NUMBER = 9;
     private int lastScore_;
@@ -16648,7 +16599,7 @@ public final class LadderProto {
      * <code>optional uint32 lastScore = 9;</code>
      */
     public boolean hasLastScore() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional uint32 lastScore = 9;</code>
@@ -16664,7 +16615,7 @@ public final class LadderProto {
      * <code>optional uint32 grade = 10;</code>
      */
     public boolean hasGrade() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional uint32 grade = 10;</code>
@@ -16680,7 +16631,7 @@ public final class LadderProto {
      * <code>optional uint32 level = 11;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional uint32 level = 11;</code>
@@ -16700,7 +16651,7 @@ public final class LadderProto {
      * </pre>
      */
     public boolean hasSeasonRewardStatus() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional uint32 seasonRewardStatus = 12;</code>
@@ -16721,7 +16672,6 @@ public final class LadderProto {
       taskRewardProcess_ = 0;
       team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
       position_ = 0;
-      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       lastScore_ = 0;
       grade_ = 0;
       level_ = 0;
@@ -16734,12 +16684,6 @@ public final class LadderProto {
 
       if (hasTeam()) {
         if (!getTeam().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasUser()) {
-        if (!getUser().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -16773,18 +16717,15 @@ public final class LadderProto {
         output.writeUInt32(7, position_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(8, user_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeUInt32(9, lastScore_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeUInt32(10, grade_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeUInt32(11, level_);
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeUInt32(12, seasonRewardStatus_);
       }
       getUnknownFields().writeTo(output);
@@ -16826,21 +16767,17 @@ public final class LadderProto {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, user_);
+          .computeUInt32Size(9, lastScore_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(9, lastScore_);
+          .computeUInt32Size(10, grade_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(10, grade_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(11, level_);
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(12, seasonRewardStatus_);
       }
@@ -16953,7 +16890,6 @@ public final class LadderProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getTeamFieldBuilder();
-          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -16980,20 +16916,14 @@ public final class LadderProto {
         bitField0_ = (bitField0_ & ~0x00000020);
         position_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
         lastScore_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000080);
         grade_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000100);
         level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000200);
         seasonRewardStatus_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -17057,25 +16987,17 @@ public final class LadderProto {
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        if (userBuilder_ == null) {
-          result.user_ = user_;
-        } else {
-          result.user_ = userBuilder_.build();
-        }
+        result.lastScore_ = lastScore_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.lastScore_ = lastScore_;
+        result.grade_ = grade_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.grade_ = grade_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
         }
         result.seasonRewardStatus_ = seasonRewardStatus_;
         result.bitField0_ = to_bitField0_;
@@ -17115,9 +17037,6 @@ public final class LadderProto {
         if (other.hasPosition()) {
           setPosition(other.getPosition());
         }
-        if (other.hasUser()) {
-          mergeUser(other.getUser());
-        }
         if (other.hasLastScore()) {
           setLastScore(other.getLastScore());
         }
@@ -17137,12 +17056,6 @@ public final class LadderProto {
       public final boolean isInitialized() {
         if (hasTeam()) {
           if (!getTeam().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasUser()) {
-          if (!getUser().isInitialized()) {
             
             return false;
           }
@@ -17516,130 +17429,13 @@ public final class LadderProto {
         return this;
       }
 
-      // optional .com.trans.pixel.protoc.UserInfo user = 8;
-      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public boolean hasUser() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo getUser() {
-        if (userBuilder_ == null) {
-          return user_;
-        } else {
-          return userBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          user_ = value;
-          onChanged();
-        } else {
-          userBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public Builder setUser(
-          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          user_ = builderForValue.build();
-          onChanged();
-        } else {
-          userBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
-        if (userBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
-            user_ =
-              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
-          } else {
-            user_ = value;
-          }
-          onChanged();
-        } else {
-          userBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000080;
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
-          onChanged();
-        } else {
-          userBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000080);
-        return this;
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
-        bitField0_ |= 0x00000080;
-        onChanged();
-        return getUserFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilder();
-        } else {
-          return user_;
-        }
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.UserInfo user = 8;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
-                  user_,
-                  getParentForChildren(),
-                  isClean());
-          user_ = null;
-        }
-        return userBuilder_;
-      }
-
       // optional uint32 lastScore = 9;
       private int lastScore_ ;
       /**
        * <code>optional uint32 lastScore = 9;</code>
        */
       public boolean hasLastScore() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional uint32 lastScore = 9;</code>
@@ -17651,7 +17447,7 @@ public final class LadderProto {
        * <code>optional uint32 lastScore = 9;</code>
        */
       public Builder setLastScore(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000080;
         lastScore_ = value;
         onChanged();
         return this;
@@ -17660,7 +17456,7 @@ public final class LadderProto {
        * <code>optional uint32 lastScore = 9;</code>
        */
       public Builder clearLastScore() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000080);
         lastScore_ = 0;
         onChanged();
         return this;
@@ -17672,7 +17468,7 @@ public final class LadderProto {
        * <code>optional uint32 grade = 10;</code>
        */
       public boolean hasGrade() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional uint32 grade = 10;</code>
@@ -17684,7 +17480,7 @@ public final class LadderProto {
        * <code>optional uint32 grade = 10;</code>
        */
       public Builder setGrade(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000100;
         grade_ = value;
         onChanged();
         return this;
@@ -17693,7 +17489,7 @@ public final class LadderProto {
        * <code>optional uint32 grade = 10;</code>
        */
       public Builder clearGrade() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000100);
         grade_ = 0;
         onChanged();
         return this;
@@ -17705,7 +17501,7 @@ public final class LadderProto {
        * <code>optional uint32 level = 11;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional uint32 level = 11;</code>
@@ -17717,7 +17513,7 @@ public final class LadderProto {
        * <code>optional uint32 level = 11;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000200;
         level_ = value;
         onChanged();
         return this;
@@ -17726,7 +17522,7 @@ public final class LadderProto {
        * <code>optional uint32 level = 11;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000200);
         level_ = 0;
         onChanged();
         return this;
@@ -17742,7 +17538,7 @@ public final class LadderProto {
        * </pre>
        */
       public boolean hasSeasonRewardStatus() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional uint32 seasonRewardStatus = 12;</code>
@@ -17762,7 +17558,7 @@ public final class LadderProto {
        * </pre>
        */
       public Builder setSeasonRewardStatus(int value) {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00000400;
         seasonRewardStatus_ = value;
         onChanged();
         return this;
@@ -17775,7 +17571,7 @@ public final class LadderProto {
        * </pre>
        */
       public Builder clearSeasonRewardStatus() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         seasonRewardStatus_ = 0;
         onChanged();
         return this;
@@ -29016,48 +28812,47 @@ public final class LadderProto {
       "Ld\"R\n\026LadderSeasonConfigList\0228\n\004data\030\001 \003" +
       "(\0132*.com.trans.pixel.protoc.LadderSeason" +
       "Config\"B\n\014LadderSeason\022\016\n\006season\030\001 \002(\r\022\021" +
-      "\n\tstartTime\030\002 \002(\t\022\017\n\007endTime\030\003 \001(\t\"\244\002\n\nU" +
+      "\n\tstartTime\030\002 \002(\t\022\017\n\007endTime\030\003 \001(\t\"\364\001\n\nU" +
       "serLadder\022\014\n\004type\030\001 \001(\r\022\r\n\005score\030\002 \001(\r\022\016",
       "\n\006season\030\003 \001(\r\022\023\n\013taskProcess\030\004 \001(\r\022\031\n\021t" +
       "askRewardProcess\030\005 \001(\r\022*\n\004team\030\006 \001(\0132\034.c" +
       "om.trans.pixel.protoc.Team\022\020\n\010position\030\007" +
-      " \001(\r\022.\n\004user\030\010 \001(\0132 .com.trans.pixel.pro" +
-      "toc.UserInfo\022\021\n\tlastScore\030\t \001(\r\022\r\n\005grade" +
-      "\030\n \001(\r\022\r\n\005level\030\013 \001(\r\022\032\n\022seasonRewardSta" +
-      "tus\030\014 \001(\r\"\"\n RequestLadderSeasonRewardCo" +
-      "mmand\")\n\031RequestLadderEnemyCommand\022\014\n\004ty" +
-      "pe\030\001 \001(\r\"\032\n\030RequestLadderInfoCommand\"0\n " +
-      "RequestRefreshLadderEnemyCommand\022\014\n\004type",
-      "\030\001 \002(\r\"O\n\032ResponseEnemyLadderCommand\0221\n\005" +
-      "enemy\030\001 \003(\0132\".com.trans.pixel.protoc.Use" +
-      "rLadder\"O\n RequestSubmitLadderResultComm" +
-      "and\022\020\n\010position\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004ty" +
-      "pe\030\003 \002(\r\" \n\036RequestLadderTaskRewardComma" +
-      "nd\"M\n\031ResponseUserLadderCommand\0220\n\004user\030" +
-      "\001 \003(\0132\".com.trans.pixel.protoc.UserLadde" +
-      "r\"n\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(" +
-      "\0132 .com.trans.pixel.protoc.UserInfo\022\021\n\tf" +
-      "ightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032Req",
-      "uestGetFightInfoCommand\"J\n\027RequestFightI" +
-      "nfoCommand\022/\n\004info\030\001 \002(\0132!.com.trans.pix" +
-      "el.protoc.FightInfo\"K\n\030ResponseFightInfo" +
-      "Command\022/\n\004info\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.FightInfo\"!\n\037RequestGetLadderRank" +
-      "ListCommand\"%\n#RequestGetUserLadderRankL" +
-      "istCommand\"V\n ResponseGetLadderRankListC" +
-      "ommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pix" +
-      "el.protoc.UserRank\"Z\n$ResponseGetUserLad" +
-      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c",
-      "om.trans.pixel.protoc.UserRank\"a\n\036Reques" +
-      "tAttackLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013" +
-      "\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUse" +
-      "rId\030\004 \001(\003\";\n\037ResponseAttackLadderModeCom" +
-      "mand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037Reques" +
-      "tReadyAttackLadderCommand\"/\n\037RequestGetL" +
-      "adderUserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n Re" +
-      "questPurchaseLadderTimeCommand\"V\n Respon" +
-      "seGetLadderUserInfoCommand\0222\n\010userRank\030\001" +
-      " \002(\0132 .com.trans.pixel.protoc.UserRank"
+      " \001(\r\022\021\n\tlastScore\030\t \001(\r\022\r\n\005grade\030\n \001(\r\022\r" +
+      "\n\005level\030\013 \001(\r\022\032\n\022seasonRewardStatus\030\014 \001(" +
+      "\r\"\"\n RequestLadderSeasonRewardCommand\")\n" +
+      "\031RequestLadderEnemyCommand\022\014\n\004type\030\001 \001(\r" +
+      "\"\032\n\030RequestLadderInfoCommand\"0\n RequestR" +
+      "efreshLadderEnemyCommand\022\014\n\004type\030\001 \002(\r\"O" +
+      "\n\032ResponseEnemyLadderCommand\0221\n\005enemy\030\001 ",
+      "\003(\0132\".com.trans.pixel.protoc.UserLadder\"" +
+      "O\n RequestSubmitLadderResultCommand\022\020\n\010p" +
+      "osition\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004type\030\003 \002(\r" +
+      "\" \n\036RequestLadderTaskRewardCommand\"M\n\031Re" +
+      "sponseUserLadderCommand\0220\n\004user\030\001 \003(\0132\"." +
+      "com.trans.pixel.protoc.UserLadder\"n\n\tFig" +
+      "htInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\022\021\n\tfightInfo" +
+      "\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032RequestGetF" +
+      "ightInfoCommand\"J\n\027RequestFightInfoComma",
+      "nd\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.proto" +
+      "c.FightInfo\"K\n\030ResponseFightInfoCommand\022" +
+      "/\n\004info\030\001 \003(\0132!.com.trans.pixel.protoc.F" +
+      "ightInfo\"!\n\037RequestGetLadderRankListComm" +
+      "and\"%\n#RequestGetUserLadderRankListComma" +
+      "nd\"V\n ResponseGetLadderRankListCommand\0222" +
+      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
+      "c.UserRank\"Z\n$ResponseGetUserLadderRankL" +
+      "istCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.UserRank\"a\n\036RequestAttackL",
+      "adderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 " +
+      "\002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(" +
+      "\003\";\n\037ResponseAttackLadderModeCommand\022\013\n\003" +
+      "ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAt" +
+      "tackLadderCommand\"/\n\037RequestGetLadderUse" +
+      "rInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPur" +
+      "chaseLadderTimeCommand\"V\n ResponseGetLad" +
+      "derUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .c" +
+      "om.trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29183,7 +28978,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_UserLadder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserLadder_descriptor,
-              new java.lang.String[] { "Type", "Score", "Season", "TaskProcess", "TaskRewardProcess", "Team", "Position", "User", "LastScore", "Grade", "Level", "SeasonRewardStatus", });
+              new java.lang.String[] { "Type", "Score", "Season", "TaskProcess", "TaskRewardProcess", "Team", "Position", "LastScore", "Grade", "Level", "SeasonRewardStatus", });
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_fieldAccessorTable = new

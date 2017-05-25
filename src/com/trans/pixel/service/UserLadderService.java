@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.LadderProto.LadderMode;
 import com.trans.pixel.protoc.LadderProto.LadderModeLevel;
@@ -33,11 +34,14 @@ public class UserLadderService {
 	private UserService userService;
 	@Resource
 	private LadderRedisService ladderRedisService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public UserLadder getUserLadder(UserBean user, int type) {
 		UserLadder userLadder = userLadderRedisService.getUserLadder(user.getId(), type);
 		if (userLadder == null) {
-			userLadder = initUserLadder(user.buildShort(), type, 1, true);
+			Team team = userTeamService.getTeamCache(user);
+			userLadder = initUserLadder(type, 1, team, true);
 			if (userLadder != null)
 				userLadderRedisService.setUserLadder(userLadder);
 		}
@@ -53,7 +57,12 @@ public class UserLadderService {
 		UserLadder userLadder = getUserLadder(user, type);
 		Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
 		if (!isRefresh)
-			return userLadderRedisService.getUserEnemy(user.getId(), type);
+			map = userLadderRedisService.getUserEnemy(user.getId(), type);
+		
+		if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
+			return map;
+		
+		map = new HashMap<Integer, UserLadder>();
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
 			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT);
@@ -63,9 +72,11 @@ public class UserLadderService {
 			map.putAll(userLadderRedisService.randomEnemy(type, userLadder.getGrade() - 1, LadderConst.RANDOM_ENEMY_COUNT - map.size()));
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//从战力排行榜上随机对手
-			List<UserInfo> randomUserList = userService.getRandUser(1, LadderConst.RANDOM_ENEMY_COUNT - map.size() + 1, user);
+			int randomStart = -3 + RandomUtils.nextInt(7);
+			List<UserInfo> randomUserList = userService.getRandUser(randomStart, LadderConst.RANDOM_ENEMY_COUNT - map.size() + randomStart, user);
 			for (UserInfo userinfo : randomUserList) {
-				UserLadder enemyLadder = initUserLadder(userinfo, type, userLadder.getGrade(), false);
+				Team team = userTeamService.getTeamCache(userinfo.getId());
+				UserLadder enemyLadder = initUserLadder(type, userLadder.getGrade(), team, false);
 				int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
 				if (position != enemyLadder.getPosition()) {
 					UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
@@ -78,6 +89,10 @@ public class UserLadderService {
 		userLadderRedisService.storeUserEnemy(user.getId(), type, map);
 		
 		return map;
+	}
+	
+	public void storeRoomData(UserLadder userLadder, int type, int grade) {
+		userLadderRedisService.storeRoomData(userLadder, type, grade);
 	}
 	
 	public List<UserLadder> getUserLadderList(UserBean user) {
@@ -220,7 +235,7 @@ public class UserLadderService {
 		return null;
 	}
 	
-	private UserLadder initUserLadder(UserInfo user, int type, int grade, boolean isSelf) {
+	private UserLadder initUserLadder(int type, int grade, Team team, boolean isSelf) {
 		LadderSeason ladderSeason = seasonUpdate();
 		if (ladderSeason == null)
 			return null;
@@ -228,7 +243,6 @@ public class UserLadderService {
 		LadderMode current = ladderRedisService.getLadderMode(grade);
 		LadderMode next = ladderRedisService.getLadderMode(grade + 1);
 		UserLadder.Builder builder = UserLadder.newBuilder();
-		builder.setUser(user);
 		builder.setType(type);
 		builder.setGrade(grade);
 		if (!isSelf)
@@ -237,6 +251,7 @@ public class UserLadderService {
 			builder.setScore(0);
 		
 		builder.setSeason(ladderSeason.getSeason());
+		builder.setTeam(team);
 		
 		return builder.build();
 	}

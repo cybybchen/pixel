@@ -2506,7 +2506,6 @@ message UserLadder {
 	optional uint32 taskRewardProcess = 5;
 	optional Team team = 6;
 	optional uint32 position = 7;
-	optional UserInfo user = 8;
 	optional uint32 lastScore = 9;
 	optional uint32 grade = 10;
 	optional uint32 level = 11;

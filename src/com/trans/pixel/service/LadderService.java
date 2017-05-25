@@ -120,9 +120,12 @@ public class LadderService {
 		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
+		builder.setPosition(position);
 		if (type == LadderConst.TYPE_LADDER_NORMAL)
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
+		
+		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
 		
 		return builder.build();
 	}
@@ -137,7 +140,11 @@ public class LadderService {
 				rewardProcess = rewardProcess == 0 ? task.getTargetcount() : Math.min(rewardProcess, task.getTargetcount());
 		}
 		
-		if (rewardProcess < userLadder.getTaskProcess())
+		log.debug("reward process is" + rewardProcess);
+		
+		if (rewardProcess == 0)
+			return null;
+		if (rewardProcess > userLadder.getTaskProcess())
 			return null;
 		
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);

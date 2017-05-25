@@ -57,12 +57,15 @@ public class UserLadderRedisService extends RedisService{
 					return map;
 				
 				int randomtimes = 0;
+				List<Long> userIds = new ArrayList<Long>();
 				while (map.size() < count && randomtimes < LadderConst.RANDOM_TIMES) {
 					String value = bhOps.get("" + RandomUtils.nextInt((int)size));
 					UserLadder.Builder builder = UserLadder.newBuilder();
 					if (value != null && RedisService.parseJson(value, builder)) {
-						if (!map.containsKey(builder.getPosition()))
+						if (!map.containsKey(builder.getPosition()) && !userIds.contains(builder.getTeam().getUser().getId())) {
 							map.put(builder.getPosition(), builder.build());
+							userIds.add(builder.getTeam().getUser().getId());
+						}
 					}
 					
 					randomtimes++;
@@ -145,7 +148,7 @@ public class UserLadderRedisService extends RedisService{
 	}
 	
 	public void setUserLadder(UserLadder userLadder) {
-		String key = RedisKey.LADDER_USERINFO_PREFIX + userLadder.getUser().getId();
+		String key = RedisKey.LADDER_USERINFO_PREFIX + userLadder.getTeam().getUser().getId();
 		this.hput(key, "" + userLadder.getType(), RedisService.formatJson(userLadder));
 		
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
