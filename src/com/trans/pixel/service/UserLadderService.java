@@ -13,7 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LadderConst;
+import com.trans.pixel.model.mapper.UserLadderMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLadderBean;
+import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.LadderProto.LadderMode;
@@ -21,6 +24,8 @@ import com.trans.pixel.protoc.LadderProto.LadderModeLevel;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -36,12 +41,21 @@ public class UserLadderService {
 	private LadderRedisService ladderRedisService;
 	@Resource
 	private UserTeamService userTeamService;
+	@Resource
+	private UserLadderMapper userLadderMapper;
 	
 	public UserLadder getUserLadder(UserBean user, int type) {
 		UserLadder userLadder = userLadderRedisService.getUserLadder(user.getId(), type);
 		if (userLadder == null) {
 			Team team = userTeamService.getTeamCache(user);
-			userLadder = initUserLadder(type, 1, team, true);
+			UserLadderBean userLadderBean = userLadderMapper.selectUserLadder(user.getId(), type);
+			if (userLadderBean != null) {
+				UserLadder.Builder builder = UserLadder.newBuilder(userLadderBean.build());
+				builder.setTeam(team);
+				userLadder = builder.build();
+			} else 
+				userLadder = initUserLadder(type, 1, team, true);
+			
 			if (userLadder != null)
 				userLadderRedisService.setUserLadder(userLadder);
 		}
@@ -51,6 +65,17 @@ public class UserLadderService {
 	
 	public void updateUserLadder(UserLadder userLadder) {
 		userLadderRedisService.setUserLadder(userLadder);
+	}
+	
+	public void updateToDB(long userId, int type) {
+		UserLadder userLadder = userLadderRedisService.getUserLadder(userId, type);
+		if(userLadder != null ) {
+			userLadderMapper.updateUserLadder(UserLadderBean.init(userId, userLadder));
+		}
+	}
+	
+	public String popDBKey(){
+		return userLadderRedisService.popDBKey();
 	}
 	
 	public Map<Integer, UserLadder> getUserEnemy(UserBean user, int type, boolean isRefresh) {
@@ -65,11 +90,11 @@ public class UserLadderService {
 		map = new HashMap<Integer, UserLadder>();
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
-			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT);
+			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT, user.getId());
 		}
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT)//查找前一个段位的对手
-			map.putAll(userLadderRedisService.randomEnemy(type, userLadder.getGrade() - 1, LadderConst.RANDOM_ENEMY_COUNT - map.size()));
+			map.putAll(userLadderRedisService.randomEnemy(type, userLadder.getGrade() - 1, LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId()));
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//从战力排行榜上随机对手
 			int randomStart = -3 + RandomUtils.nextInt(7);
@@ -97,8 +122,8 @@ public class UserLadderService {
 	
 	public List<UserLadder> getUserLadderList(UserBean user) {
 		List<UserLadder> userLadderList = new ArrayList<UserLadder>();
-		userLadderList.add(getUserLadder(user, 0));
-		userLadderList.add(getUserLadder(user, 1));
+		userLadderList.add(getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL));
+		userLadderList.add(getUserLadder(user, LadderConst.TYPE_LADDER_LD));
 		return userLadderList;
 	}
 	

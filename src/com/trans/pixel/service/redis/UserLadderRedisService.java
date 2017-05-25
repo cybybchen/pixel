@@ -43,7 +43,7 @@ public class UserLadderRedisService extends RedisService{
 		this.set(RedisKey.LADDER_SEASON_KEY, RedisService.formatJson(ladderSeason));
 	}
 	
-	public Map<Integer, UserLadder> randomEnemy(final int type, final int grade, final int count) {
+	public Map<Integer, UserLadder> randomEnemy(final int type, final int grade, final int count, final long userId) {
 		return redisTemplate.execute(new RedisCallback<Map<Integer, UserLadder>>() {
 			@Override
 			public Map<Integer, UserLadder> doInRedis(RedisConnection arg0)
@@ -62,7 +62,8 @@ public class UserLadderRedisService extends RedisService{
 					String value = bhOps.get("" + RandomUtils.nextInt((int)size));
 					UserLadder.Builder builder = UserLadder.newBuilder();
 					if (value != null && RedisService.parseJson(value, builder)) {
-						if (!map.containsKey(builder.getPosition()) && !userIds.contains(builder.getTeam().getUser().getId())) {
+						if (!map.containsKey(builder.getPosition()) && !userIds.contains(builder.getTeam().getUser().getId())
+								&& builder.getTeam().getUser().getId() != userId) {
 							map.put(builder.getPosition(), builder.build());
 							userIds.add(builder.getTeam().getUser().getId());
 						}
@@ -152,6 +153,12 @@ public class UserLadderRedisService extends RedisService{
 		this.hput(key, "" + userLadder.getType(), RedisService.formatJson(userLadder));
 		
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
+		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.LADDER_USERINFO_PREFIX, userLadder.getTeam().getUser().getId() + "#" + userLadder.getType());
+	}
+	
+	public String popDBKey(){
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.LADDER_USERINFO_PREFIX);
 	}
 	
 	private Map<String, String> convert(Map<Integer, UserLadder> map) {

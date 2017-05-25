@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserLadderMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserLadderBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="type" column="type" />
+		<result property="score" column="score" />
+		<result property="lastScore" column="lastscore" />
+		<result property="season" column="season" />
+	</resultMap>
+	
+	<select id="selectUserLadder" resultMap="resultMap">
+		SELECT *
+		from user_ladder where user_id=#{userId} and type=#{type}
+	</select>
+	
+	<insert id="updateUserLadder" parameterType="com.trans.pixel.model.userinfo.UserLadderBean">
+	    INSERT INTO user_ladder(user_id, type, score, lastscore, season)
+	    VALUES(#{userId}, #{type}, #{score}, #{lastScore}, #{season})
+	    ON 
+	    duplicate key update
+	    score=#{score}, lastscore=#{lastScore}, season=#{season}
+	</insert>
+	
+	<select id="selectUserLadderList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_ladder where user_id=#{userId}
+	</select>
+	
+</mapper>
