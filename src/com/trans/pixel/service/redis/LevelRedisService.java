@@ -89,7 +89,7 @@ public class LevelRedisService extends RedisService {
 			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 			for(Event.Builder event : events.getEventBuilderList()){
 //				if(daguan.getId() == event.getDaguan() && event.getWeight() == 0){
-					event.setOrder(events.getId()*300+event.getOrder());
+					event.setOrder(events.getId()*30+event.getOrder());
 					eventmap.put(event.getOrder(), event);
 //				}
 			}

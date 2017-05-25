@@ -135,7 +135,7 @@ public class LevelCommandService extends BaseCommandService {
 				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 				for(Event.Builder event : events.getEventBuilderList()){
 //					if(id == event.getDaguan() && event.getWeight() == 0){
-						event.setOrder(events.getId()*300+event.getOrder());
+						event.setOrder(events.getId()*30+event.getOrder());
 						eventmap.put(event.getOrder(), event);
 //					}
 				}
@@ -342,7 +342,12 @@ public class LevelCommandService extends BaseCommandService {
  		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
-		params.put(LogString.RESULT, "" + cmd.getRet());
+		if(cmd.getRet())
+			params.put(LogString.RESULT, "1");
+		else if(cmd.hasTurn())
+			params.put(LogString.RESULT, "0");
+		else
+			params.put(LogString.RESULT, "2");
 		if(event != null) {
 			EventConfig eventconfig = redis.getEvent(event.getEventid());
 			if(eventconfig != null) {
