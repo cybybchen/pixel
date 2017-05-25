@@ -2,18 +2,19 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.protoc.UserInfoProto.ServerData;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -28,7 +29,7 @@ public class ServerRedisService extends RedisService{
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				BoundSetOperations<String, String> bsOps = redisTemplate
-						.boundSetOps(RedisKey.PREFIX + RedisKey.SERVER_KEY);
+						.boundSetOps(RedisKey.SERVER_KEY);
 				
 				return bsOps.isMember(serverId);
 			}
@@ -40,12 +41,11 @@ public class ServerRedisService extends RedisService{
 			@Override
 			public List<Integer> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, String> bsOps = redisTemplate
-						.boundSetOps(RedisKey.PREFIX + RedisKey.SERVER_KEY);
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
+						.boundHashOps(RedisKey.SERVER_KEY);
 				
 				List<Integer> serverIds = new ArrayList<Integer>();
-				Set<String> serverIdSet = bsOps.members();
-				for (String serverId : serverIdSet) {
+				for (String serverId : bhOps.keys()) {
 					serverIds.add(TypeTranslatedUtil.stringToInt(serverId));
 				}
 				return serverIds;
@@ -53,15 +53,15 @@ public class ServerRedisService extends RedisService{
 		});
 	}
 	
-	public void setServerId(final Integer serverId) {
-		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
-		this.sadd(key, "" + serverId);
-	}
+//	public void setServerId(final Integer serverId) {
+//		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
+//		this.sadd(key, "" + serverId);
+//	}
 	
-	public void setServerIdList(final List<Integer> serverIds) {
-		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
-		for (int serverId : serverIds)
-			this.sadd(key, "" + serverId);
+	public void setServerList(final List<ServerBean> serverList) {
+		String key = RedisKey.SERVER_KEY;
+		for (ServerBean server : serverList)
+			this.hput(key, "" + server.getServerId(), server.toJson());
 	}
 	
 	public int canRefreshAreaBoss(int serverId){
@@ -83,10 +83,10 @@ public class ServerRedisService extends RedisService{
 		return -1;
 	}
 	
-	public String getKaifuTime(int serverId) {
-		String value = hget(RedisKey.SERVER_KAIFU_TIME, "" + serverId);
+	public ServerBean getServer(int serverId) {
+		String value = hget(RedisKey.SERVER_KEY, "" + serverId);
 		
-		return value;
+		return ServerBean.getServer(value);
 	}
 	
 	public String getGameVersion() {
@@ -95,8 +95,8 @@ public class ServerRedisService extends RedisService{
 		return value;
 	}
 	
-	public void setKaifuTime(int serverId, String kaifuTime) {
-		hput(RedisKey.SERVER_KAIFU_TIME, "" + serverId, kaifuTime);
+	public void setServer(ServerBean server) {
+		hput(RedisKey.SERVER_KEY, "" + server.getServerId(), server.toJson());
 	}
 	
 	public int getOnlineStatus(String version) {

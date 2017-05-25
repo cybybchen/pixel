@@ -2605,6 +2605,10 @@ message ResponseGetLadderUserInfoCommand {
 ////////// UserInfoProto
 message HeadInfo 
 {
+	enum SERVER_STATUS {
+		SERVER_MAINTENANCE = 1;
+	}
+	
 	required int32 version = 1;		//  0: version1.1.1 1: version1.2.0 2013-3-28
 	required int64 datetime = 2;
 	required int32 gameVersion = 3;
@@ -2613,7 +2617,8 @@ message HeadInfo
 	optional int64 userId = 6;
 	optional string session = 7;
 	optional string serverstarttime = 8;
-	optional int32 onlineStatus = 9;	
+	optional int32 onlineStatus = 9;
+	optional int32 serverStatus = 10;	
 }
 
 message ServerData {

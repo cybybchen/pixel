@@ -11,13 +11,13 @@ public class RedisKey {
 	
 	
 	//server key prefix
-	public static final String SERVER_KEY = "server";
+	public static final String SERVER_KEY = PREFIX + "server";
 	public static final String SERVER_PREFIX = "S";
 	public final static String ACCOUNT_PREFIX = "Account_S";
 	public final static String USERNAME_PREFIX = "UserName_S";
 	public final static String USERCACHE_PREFIX = "UserCache_S";
 	public static final String SERVERDATA = PREFIX+"ServerData_";
-	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
+//	public static final String SERVER_KAIFU_TIME = PREFIX + "server_kaifu_time";
 	public static final String VERSIONCONTROLLER_PREFIX = PREFIX + "VersionController";
 	public static final String GAME_VERSION_KEY = PREFIX + "game_version";
 	public final static String BLACKLIST = "BlackList";

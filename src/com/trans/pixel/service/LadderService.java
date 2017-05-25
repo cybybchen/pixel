@@ -449,7 +449,7 @@ public class LadderService {
 		if (!ladderRedisService.lockRankRedis(serverId, 60))
 			return;
 		
-		serverRedisService.setServerId(serverId);
+//		serverRedisService.setServerId(serverId);
 		
 		long startTime = System.currentTimeMillis();
 		List<LadderEnemy> enemyList = ladderRedisService.getLadderEnemy();

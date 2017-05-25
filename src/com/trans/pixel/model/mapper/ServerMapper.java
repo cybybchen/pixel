@@ -2,13 +2,13 @@ package com.trans.pixel.model.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import com.trans.pixel.model.ServerBean;
 
 public interface ServerMapper {
 	
-	public List<Integer> selectServerIdList();
+	public List<ServerBean> selectServerList();
 	
-	public String selectServerKaifuTime(int serverId);
+	public ServerBean selectServer(int serverId);
 	
-	public int insertServerKaifuTime(@Param("serverId") int serverId, @Param("kaifuTime") String kaifuTime);
+	public int updateServer(ServerBean server);
 }

@@ -2,22 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.ServerMapper">
 	
-	<select id="selectServerIdList" resultType="int">
-		SELECT server_id
+	<resultMap id="resultMap" type="com.trans.pixel.model.ServerBean">
+		<id property="serverId" column="server_id" />
+		<result property="kaifuTime" column="kaifu_time" />
+		<result property="status" column="status" />
+	</resultMap>
+	
+	<select id="selectServerList" resultMap="resultMap">
+		SELECT *
 		from server
 	</select>
 	
-	<select id="selectServerKaifuTime" resultType="String">
-		SELECT kaifu_time
+	<select id="selectServer" resultMap="resultMap">
+		SELECT *
 		from server where server_id=#{serverId}
 	</select>
 	
-	<update id="insertServerKaifuTime">
-		INSERT INTO server(server_id, kaifu_time)
-		VALUES(#{serverId}, #{kaifuTime})
+	<update id="updateServer" parameterType="com.trans.pixel.model.ServerBean">
+		INSERT INTO server(server_id, kaifu_time, status)
+		VALUES(#{serverId}, #{kaifuTime}, #{status})
 		ON 
 	   duplicate key update
-   	kaifu_time=#{kaifuTime}
+   	kaifu_time=#{kaifuTime}, status=#{status}
 	</update>
 	
 </mapper>

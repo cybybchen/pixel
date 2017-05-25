@@ -21,7 +21,8 @@ public enum ErrorConst implements ResultConst {
     SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"),
     
 	
-	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
+	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放，请选择其他服务器游戏"), 
+	SRVER_MAINTENANCE_OPEN_ERROR(3033, "服务器维护中，请稍后再试"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),
     NOT_ENOUGH_EQUIP(1007, "装备不足"), EQUIP_HAS_ADD(1008, "已添加过"), PVP_MAP_ERROR(1009, "PVP地图异常"), NOT_ENOUGH_COIN(1010, "金币不足"),
     NOT_ENOUGH_JEWEL(1011, "钻石不足"), NOT_ENOUGH_LADDER_MODE_TIMES(1012, "今日剩余挑战次数为0"), MAIL_IS_NOT_EXIST(1013, "邮件不存在"),
