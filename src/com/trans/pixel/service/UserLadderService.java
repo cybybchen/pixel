@@ -51,6 +51,8 @@ public class UserLadderService {
 			UserLadderBean userLadderBean = userLadderMapper.selectUserLadder(user.getId(), type);
 			if (userLadderBean != null) {
 				UserLadder.Builder builder = UserLadder.newBuilder(userLadderBean.build());
+				builder.setGrade(calGrade(builder.getScore()));
+				builder.setLevel(calLevel(builder.getScore(), builder.getGrade()));
 				builder.setTeam(team);
 				userLadder = builder.build();
 			} else 
