@@ -120,9 +120,9 @@ public class LevelRedisService extends RedisService {
 		UserLevelBean userLevel = getUserLevel(user);
 		return (int)(now()-userLevel.getLootTime())*userLevel.getCoin();
 	}
-	public int getExp(UserBean user){
+	public long getExp(UserBean user){
 		UserLevelBean userLevel = getUserLevel(user);
-		return (int)(now()-userLevel.getLootTime())*userLevel.getExp();
+		return (now()-userLevel.getLootTime())*userLevel.getExp();
 	}
 	public void saveUserLevel(UserLevelBean bean){
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));

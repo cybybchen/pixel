@@ -178,10 +178,10 @@ public class LevelCommandService extends BaseCommandService {
 			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
 			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 			rewardService.updateUser(user);
-			pusher.pushUserInfoCommand(responseBuilder, user);
 			handleRewards(responseBuilder, user, rewards.build());
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
+			pusher.pushUserInfoCommand(responseBuilder, user);
 		}
 	}
 
