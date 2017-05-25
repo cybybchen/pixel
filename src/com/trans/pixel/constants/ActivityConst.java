@@ -83,7 +83,7 @@ public class ActivityConst {
 	/**
 	 * 开服战力榜
 	 */
-	public static final int KAIFU2_ZHANLI = 24;
+	public static final int KAIFU2_ZHANLI = 42;
 	
 	/**
 	 * 开服推图榜

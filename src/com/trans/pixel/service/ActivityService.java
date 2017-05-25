@@ -124,7 +124,7 @@ public class ActivityService {
 			}
 			if (richang.getTargetid() == type && DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime())) {
 				UserRichang.Builder ur = UserRichang.newBuilder(userActivityService.selectUserRichang(userId, richang.getId()));
-				if (type == ActivityConst.DANBI_RECHARGE)
+				if (type == ACTIVITY_TYPE.TYPE_DANBI_RECHARGE_VALUE)
 					ur.setCompleteCount(Math.max(count, ur.getCompleteCount()));
 				else
 					ur.setCompleteCount(ur.getCompleteCount() + count);
@@ -213,34 +213,36 @@ public class ActivityService {
 	}
 	
 	private List<RewardInfo> getRewardList(ActivityOrder order) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		RewardInfo.Builder reward = RewardInfo.newBuilder();
+//		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+//		RewardInfo.Builder reward = RewardInfo.newBuilder();
+//		
+//		if (order.getRewardid0() > 0) {
+//			reward.setItemid(order.getRewardid0());
+//			reward.setCount(order.getRewardcount0());
+//			rewardList.add(reward.build());
+//		}
+//		
+//		if (order.getRewardid1() > 0) {
+//			reward.setItemid(order.getRewardid1());
+//			reward.setCount(order.getRewardcount1());
+//			rewardList.add(reward.build());
+//		}
+//		
+//		if (order.getRewardid2() > 0) {
+//			reward.setItemid(order.getRewardid2());
+//			reward.setCount(order.getRewardcount2());
+//			rewardList.add(reward.build());
+//		}
+//		
+//		if (order.getRewardid3() > 0) {
+//			reward.setItemid(order.getRewardid3());
+//			reward.setCount(order.getRewardcount3());
+//			rewardList.add(reward.build());
+//		}
+//		
+//		return rewardList;
 		
-		if (order.getRewardid0() > 0) {
-			reward.setItemid(order.getRewardid0());
-			reward.setCount(order.getRewardcount0());
-			rewardList.add(reward.build());
-		}
-		
-		if (order.getRewardid1() > 0) {
-			reward.setItemid(order.getRewardid1());
-			reward.setCount(order.getRewardcount1());
-			rewardList.add(reward.build());
-		}
-		
-		if (order.getRewardid2() > 0) {
-			reward.setItemid(order.getRewardid2());
-			reward.setCount(order.getRewardcount2());
-			rewardList.add(reward.build());
-		}
-		
-		if (order.getRewardid3() > 0) {
-			reward.setItemid(order.getRewardid3());
-			reward.setCount(order.getRewardcount3());
-			rewardList.add(reward.build());
-		}
-		
-		return rewardList;
+		return order.getRewardList();
 	}
 	
 	public void costJewelActivity(UserBean user, int count) {
