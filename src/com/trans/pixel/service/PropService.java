@@ -55,7 +55,7 @@ public class PropService {
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
-				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001){
+				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001 && reward.getItemid() < 36000){
 					randomReward(rewardList, reward.getItemid(), (int)rewardService.randomRewardCount(reward), map);
 				}else
 					rewardService.mergeReward(rewardList, reward);
