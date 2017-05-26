@@ -414,24 +414,26 @@ public abstract class RequestScreen implements RequestHandle {
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
 		RequestCommand request = req.command;
 		HeadInfo head = buildHeadInfo(request.getHead());
-		if (head == null) {
+		if (head == null && !request.hasLogCommand()) {
 			rep.command.setHead(request.getHead());
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_NOT_OPEN_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.SRVER_NOT_OPEN_ERROR.getMesssage());
-			if(!request.hasLogCommand())
-				rep.command.setErrorCommand(erBuilder.build());
+			rep.command.setErrorCommand(erBuilder.build());
 			log.error("cmd server not open:" + req);
 			return false;
 		}
+	
+		if (head != null)
+			rep.command.setHead(head);
+		else 
+			rep.command.setHead(request.getHead());	
 		
-		rep.command.setHead(head);
 		if (head.getServerStatus() == SERVER_STATUS.SERVER_MAINTENANCE_VALUE) {
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getMesssage());
-			if(!request.hasLogCommand())
-				rep.command.setErrorCommand(erBuilder.build());
+			rep.command.setErrorCommand(erBuilder.build());
 			log.error("cmd server maintenance:" + req);
 			return false;
 		}
