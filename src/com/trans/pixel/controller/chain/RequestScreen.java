@@ -448,7 +448,7 @@ public abstract class RequestScreen implements RequestHandle {
 			handleLoginCommand(request, responseBuilder);
 			return false;
 		} else {
-		    long userId = head.getUserId();
+		    long userId = head != null ? head.getUserId() : 0;
 		    req.user = userService.getUser(userId);
 			user = req.user;
 
