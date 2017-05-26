@@ -1108,34 +1108,17 @@ message ResponseGetUserEquipCommand {
 }
 
 message ArmorList {
-	repeated Armor id = 1;
+	repeated Armor data = 1;
 }
 
 message Armor {
 	optional int32 id = 1;
-	optional string name = 2;
+	optional uint32 ilevel = 2;
 	optional int32 level = 3;
-	optional int32 rare = 4;
-	optional string description = 5;
+	optional int32 irare = 4;
 	optional int32 type = 6;
-	optional int32 zhanli = 7;
-	optional int32 arm = 8;
-	optional int32 mr = 9;
-	optional int32 reelement = 10;
-	optional int32 ad = 11;
-	optional int32 ap = 12;
-	optional int32 adi = 13;
-	optional int32 api = 14;
-	optional int32 rating = 15;
-	optional int32 ratingdamage = 16;
-	optional int32 fireup = 17;
-	optional int32 iceup = 18;
-	optional int32 lightup = 19;
-	optional int32 darkup = 20;
-	optional int32 atk_damage = 21;
-	optional int32 duochong = 22;
-	optional string skill = 23;
-	optional int32 ilevel = 24;
+	optional uint32 heroid = 7;
+	repeated EquipOrder list = 14;
 }
 
 message EquipIncreaseList {

@@ -96,7 +96,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 			params.put(LogString.EQUIPRARE, "" + equip.getIrare());
 		}else{
 			Armor equip = equipService.getArmor(itemId);
-			params.put(LogString.EQUIPRARE, "" + equip.getRare());
+			params.put(LogString.EQUIPRARE, "" + equip.getIrare());
 		}
 		params.put(LogString.COINCOST, "" + (rewards.getLootCount()>0 ? rewards.getLoot(0).getCount() :0));
 		

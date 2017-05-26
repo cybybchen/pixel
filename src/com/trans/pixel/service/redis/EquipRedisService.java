@@ -225,7 +225,7 @@ public class EquipRedisService extends RedisService {
 		}
 		
 		Map<String, Armor> map = new HashMap<String, Armor>();
-		for(Armor.Builder armor : builder.getIdBuilderList()){
+		for(Armor.Builder armor : builder.getDataBuilderList()){
 			map.put("" + armor.getId(), armor.build());
 		}
 		return map;

@@ -73,8 +73,9 @@ public class EquipPokedeService {
 			ilevel = equip.getIlevel();
 		} else {
 			Armor armor = equipService.getArmor(pokede.getItemId());
-			name = armor.getName();
-			rare = armor.getRare();
+			EquipOrder equipOrder = armor.getList(Math.max(pokede.getOrder() - 1, 0));
+			name = equipOrder.getName();
+			rare = equipOrder.getRare();
 			ilevel = armor.getIlevel();
 		}
 		IncreaseLevel increaseLevel = equipPokedeRedisService.getIncreaseLevel(ilevel);

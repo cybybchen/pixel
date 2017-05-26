@@ -16504,29 +16504,29 @@ public final class EquipProto {
   public interface ArmorListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Armor id = 1;
+    // repeated .com.trans.pixel.protoc.Armor data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.EquipProto.Armor> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    com.trans.pixel.protoc.EquipProto.Armor getId(int index);
+    com.trans.pixel.protoc.EquipProto.Armor getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -16582,10 +16582,10 @@ public final class EquipProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Armor>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Armor>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.Armor.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.Armor.PARSER, extensionRegistry));
               break;
             }
           }
@@ -16597,7 +16597,7 @@ public final class EquipProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -16630,44 +16630,44 @@ public final class EquipProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Armor id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.EquipProto.Armor> id_;
+    // repeated .com.trans.pixel.protoc.Armor data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.EquipProto.Armor> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.EquipProto.Armor> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.EquipProto.Armor> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.Armor getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.EquipProto.Armor getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -16681,8 +16681,8 @@ public final class EquipProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -16693,9 +16693,9 @@ public final class EquipProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -16805,7 +16805,7 @@ public final class EquipProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -16814,11 +16814,11 @@ public final class EquipProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -16847,14 +16847,14 @@ public final class EquipProto {
       public com.trans.pixel.protoc.EquipProto.ArmorList buildPartial() {
         com.trans.pixel.protoc.EquipProto.ArmorList result = new com.trans.pixel.protoc.EquipProto.ArmorList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -16871,29 +16871,29 @@ public final class EquipProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.EquipProto.ArmorList other) {
         if (other == com.trans.pixel.protoc.EquipProto.ArmorList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -16924,244 +16924,244 @@ public final class EquipProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Armor id = 1;
-      private java.util.List<com.trans.pixel.protoc.EquipProto.Armor> id_ =
+      // repeated .com.trans.pixel.protoc.Armor data = 1;
+      private java.util.List<com.trans.pixel.protoc.EquipProto.Armor> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Armor>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Armor>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.Armor, com.trans.pixel.protoc.EquipProto.Armor.Builder, com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.EquipProto.Armor, com.trans.pixel.protoc.EquipProto.Armor.Builder, com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.Armor> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.EquipProto.Armor> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Armor getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.EquipProto.Armor getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.EquipProto.Armor value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.EquipProto.Armor.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.EquipProto.Armor value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.EquipProto.Armor value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.EquipProto.Armor value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.EquipProto.Armor.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.EquipProto.Armor.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.EquipProto.Armor> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Armor.Builder getIdBuilder(
+      public com.trans.pixel.protoc.EquipProto.Armor.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.EquipProto.ArmorOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Armor.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.EquipProto.Armor.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.EquipProto.Armor.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Armor.Builder addIdBuilder(
+      public com.trans.pixel.protoc.EquipProto.Armor.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.EquipProto.Armor.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Armor id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Armor data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.EquipProto.Armor.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.EquipProto.Armor, com.trans.pixel.protoc.EquipProto.Armor.Builder, com.trans.pixel.protoc.EquipProto.ArmorOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.EquipProto.Armor, com.trans.pixel.protoc.EquipProto.Armor.Builder, com.trans.pixel.protoc.EquipProto.ArmorOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ArmorList)
@@ -17188,20 +17188,15 @@ public final class EquipProto {
      */
     int getId();
 
-    // optional string name = 2;
+    // optional uint32 ilevel = 2;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>optional uint32 ilevel = 2;</code>
      */
-    boolean hasName();
+    boolean hasIlevel();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>optional uint32 ilevel = 2;</code>
      */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
+    int getIlevel();
 
     // optional int32 level = 3;
     /**
@@ -17213,30 +17208,15 @@ public final class EquipProto {
      */
     int getLevel();
 
-    // optional int32 rare = 4;
+    // optional int32 irare = 4;
     /**
-     * <code>optional int32 rare = 4;</code>
+     * <code>optional int32 irare = 4;</code>
      */
-    boolean hasRare();
+    boolean hasIrare();
     /**
-     * <code>optional int32 rare = 4;</code>
+     * <code>optional int32 irare = 4;</code>
      */
-    int getRare();
-
-    // optional string description = 5;
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    boolean hasDescription();
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    java.lang.String getDescription();
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
+    int getIrare();
 
     // optional int32 type = 6;
     /**
@@ -17248,190 +17228,40 @@ public final class EquipProto {
      */
     int getType();
 
-    // optional int32 zhanli = 7;
+    // optional uint32 heroid = 7;
     /**
-     * <code>optional int32 zhanli = 7;</code>
+     * <code>optional uint32 heroid = 7;</code>
      */
-    boolean hasZhanli();
+    boolean hasHeroid();
     /**
-     * <code>optional int32 zhanli = 7;</code>
+     * <code>optional uint32 heroid = 7;</code>
      */
-    int getZhanli();
+    int getHeroid();
 
-    // optional int32 arm = 8;
+    // repeated .com.trans.pixel.protoc.EquipOrder list = 14;
     /**
-     * <code>optional int32 arm = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    boolean hasArm();
+    java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder> 
+        getListList();
     /**
-     * <code>optional int32 arm = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    int getArm();
-
-    // optional int32 mr = 9;
+    com.trans.pixel.protoc.EquipProto.EquipOrder getList(int index);
     /**
-     * <code>optional int32 mr = 9;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    boolean hasMr();
+    int getListCount();
     /**
-     * <code>optional int32 mr = 9;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    int getMr();
-
-    // optional int32 reelement = 10;
+    java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder> 
+        getListOrBuilderList();
     /**
-     * <code>optional int32 reelement = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    boolean hasReelement();
-    /**
-     * <code>optional int32 reelement = 10;</code>
-     */
-    int getReelement();
-
-    // optional int32 ad = 11;
-    /**
-     * <code>optional int32 ad = 11;</code>
-     */
-    boolean hasAd();
-    /**
-     * <code>optional int32 ad = 11;</code>
-     */
-    int getAd();
-
-    // optional int32 ap = 12;
-    /**
-     * <code>optional int32 ap = 12;</code>
-     */
-    boolean hasAp();
-    /**
-     * <code>optional int32 ap = 12;</code>
-     */
-    int getAp();
-
-    // optional int32 adi = 13;
-    /**
-     * <code>optional int32 adi = 13;</code>
-     */
-    boolean hasAdi();
-    /**
-     * <code>optional int32 adi = 13;</code>
-     */
-    int getAdi();
-
-    // optional int32 api = 14;
-    /**
-     * <code>optional int32 api = 14;</code>
-     */
-    boolean hasApi();
-    /**
-     * <code>optional int32 api = 14;</code>
-     */
-    int getApi();
-
-    // optional int32 rating = 15;
-    /**
-     * <code>optional int32 rating = 15;</code>
-     */
-    boolean hasRating();
-    /**
-     * <code>optional int32 rating = 15;</code>
-     */
-    int getRating();
-
-    // optional int32 ratingdamage = 16;
-    /**
-     * <code>optional int32 ratingdamage = 16;</code>
-     */
-    boolean hasRatingdamage();
-    /**
-     * <code>optional int32 ratingdamage = 16;</code>
-     */
-    int getRatingdamage();
-
-    // optional int32 fireup = 17;
-    /**
-     * <code>optional int32 fireup = 17;</code>
-     */
-    boolean hasFireup();
-    /**
-     * <code>optional int32 fireup = 17;</code>
-     */
-    int getFireup();
-
-    // optional int32 iceup = 18;
-    /**
-     * <code>optional int32 iceup = 18;</code>
-     */
-    boolean hasIceup();
-    /**
-     * <code>optional int32 iceup = 18;</code>
-     */
-    int getIceup();
-
-    // optional int32 lightup = 19;
-    /**
-     * <code>optional int32 lightup = 19;</code>
-     */
-    boolean hasLightup();
-    /**
-     * <code>optional int32 lightup = 19;</code>
-     */
-    int getLightup();
-
-    // optional int32 darkup = 20;
-    /**
-     * <code>optional int32 darkup = 20;</code>
-     */
-    boolean hasDarkup();
-    /**
-     * <code>optional int32 darkup = 20;</code>
-     */
-    int getDarkup();
-
-    // optional int32 atk_damage = 21;
-    /**
-     * <code>optional int32 atk_damage = 21;</code>
-     */
-    boolean hasAtkDamage();
-    /**
-     * <code>optional int32 atk_damage = 21;</code>
-     */
-    int getAtkDamage();
-
-    // optional int32 duochong = 22;
-    /**
-     * <code>optional int32 duochong = 22;</code>
-     */
-    boolean hasDuochong();
-    /**
-     * <code>optional int32 duochong = 22;</code>
-     */
-    int getDuochong();
-
-    // optional string skill = 23;
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    boolean hasSkill();
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    java.lang.String getSkill();
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    com.google.protobuf.ByteString
-        getSkillBytes();
-
-    // optional int32 ilevel = 24;
-    /**
-     * <code>optional int32 ilevel = 24;</code>
-     */
-    boolean hasIlevel();
-    /**
-     * <code>optional int32 ilevel = 24;</code>
-     */
-    int getIlevel();
+    com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder getListOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Armor}
@@ -17489,9 +17319,9 @@ public final class EquipProto {
               id_ = input.readInt32();
               break;
             }
-            case 18: {
+            case 16: {
               bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
+              ilevel_ = input.readUInt32();
               break;
             }
             case 24: {
@@ -17501,107 +17331,25 @@ public final class EquipProto {
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              rare_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              description_ = input.readBytes();
+              irare_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000010;
               type_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
-              zhanli_ = input.readInt32();
+              bitField0_ |= 0x00000020;
+              heroid_ = input.readUInt32();
               break;
             }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              arm_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              mr_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              reelement_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              ad_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              ap_ = input.readInt32();
-              break;
-            }
-            case 104: {
-              bitField0_ |= 0x00001000;
-              adi_ = input.readInt32();
-              break;
-            }
-            case 112: {
-              bitField0_ |= 0x00002000;
-              api_ = input.readInt32();
-              break;
-            }
-            case 120: {
-              bitField0_ |= 0x00004000;
-              rating_ = input.readInt32();
-              break;
-            }
-            case 128: {
-              bitField0_ |= 0x00008000;
-              ratingdamage_ = input.readInt32();
-              break;
-            }
-            case 136: {
-              bitField0_ |= 0x00010000;
-              fireup_ = input.readInt32();
-              break;
-            }
-            case 144: {
-              bitField0_ |= 0x00020000;
-              iceup_ = input.readInt32();
-              break;
-            }
-            case 152: {
-              bitField0_ |= 0x00040000;
-              lightup_ = input.readInt32();
-              break;
-            }
-            case 160: {
-              bitField0_ |= 0x00080000;
-              darkup_ = input.readInt32();
-              break;
-            }
-            case 168: {
-              bitField0_ |= 0x00100000;
-              atkDamage_ = input.readInt32();
-              break;
-            }
-            case 176: {
-              bitField0_ |= 0x00200000;
-              duochong_ = input.readInt32();
-              break;
-            }
-            case 186: {
-              bitField0_ |= 0x00400000;
-              skill_ = input.readBytes();
-              break;
-            }
-            case 192: {
-              bitField0_ |= 0x00800000;
-              ilevel_ = input.readInt32();
+            case 114: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                list_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.EquipOrder>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              list_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.EquipOrder.PARSER, extensionRegistry));
               break;
             }
           }
@@ -17612,6 +17360,9 @@ public final class EquipProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          list_ = java.util.Collections.unmodifiableList(list_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -17660,47 +17411,20 @@ public final class EquipProto {
       return id_;
     }
 
-    // optional string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
+    // optional uint32 ilevel = 2;
+    public static final int ILEVEL_FIELD_NUMBER = 2;
+    private int ilevel_;
     /**
-     * <code>optional string name = 2;</code>
+     * <code>optional uint32 ilevel = 2;</code>
      */
-    public boolean hasName() {
+    public boolean hasIlevel() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional string name = 2;</code>
+     * <code>optional uint32 ilevel = 2;</code>
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getIlevel() {
+      return ilevel_;
     }
 
     // optional int32 level = 3;
@@ -17719,63 +17443,20 @@ public final class EquipProto {
       return level_;
     }
 
-    // optional int32 rare = 4;
-    public static final int RARE_FIELD_NUMBER = 4;
-    private int rare_;
+    // optional int32 irare = 4;
+    public static final int IRARE_FIELD_NUMBER = 4;
+    private int irare_;
     /**
-     * <code>optional int32 rare = 4;</code>
+     * <code>optional int32 irare = 4;</code>
      */
-    public boolean hasRare() {
+    public boolean hasIrare() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 rare = 4;</code>
+     * <code>optional int32 irare = 4;</code>
      */
-    public int getRare() {
-      return rare_;
-    }
-
-    // optional string description = 5;
-    public static final int DESCRIPTION_FIELD_NUMBER = 5;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getIrare() {
+      return irare_;
     }
 
     // optional int32 type = 6;
@@ -17785,7 +17466,7 @@ public final class EquipProto {
      * <code>optional int32 type = 6;</code>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 type = 6;</code>
@@ -17794,346 +17475,66 @@ public final class EquipProto {
       return type_;
     }
 
-    // optional int32 zhanli = 7;
-    public static final int ZHANLI_FIELD_NUMBER = 7;
-    private int zhanli_;
+    // optional uint32 heroid = 7;
+    public static final int HEROID_FIELD_NUMBER = 7;
+    private int heroid_;
     /**
-     * <code>optional int32 zhanli = 7;</code>
+     * <code>optional uint32 heroid = 7;</code>
      */
-    public boolean hasZhanli() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+    public boolean hasHeroid() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional int32 zhanli = 7;</code>
+     * <code>optional uint32 heroid = 7;</code>
      */
-    public int getZhanli() {
-      return zhanli_;
-    }
-
-    // optional int32 arm = 8;
-    public static final int ARM_FIELD_NUMBER = 8;
-    private int arm_;
-    /**
-     * <code>optional int32 arm = 8;</code>
-     */
-    public boolean hasArm() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 arm = 8;</code>
-     */
-    public int getArm() {
-      return arm_;
+    public int getHeroid() {
+      return heroid_;
     }
 
-    // optional int32 mr = 9;
-    public static final int MR_FIELD_NUMBER = 9;
-    private int mr_;
+    // repeated .com.trans.pixel.protoc.EquipOrder list = 14;
+    public static final int LIST_FIELD_NUMBER = 14;
+    private java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder> list_;
     /**
-     * <code>optional int32 mr = 9;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    public boolean hasMr() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+    public java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder> getListList() {
+      return list_;
     }
     /**
-     * <code>optional int32 mr = 9;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    public int getMr() {
-      return mr_;
-    }
-
-    // optional int32 reelement = 10;
-    public static final int REELEMENT_FIELD_NUMBER = 10;
-    private int reelement_;
-    /**
-     * <code>optional int32 reelement = 10;</code>
-     */
-    public boolean hasReelement() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+    public java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder> 
+        getListOrBuilderList() {
+      return list_;
     }
     /**
-     * <code>optional int32 reelement = 10;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    public int getReelement() {
-      return reelement_;
-    }
-
-    // optional int32 ad = 11;
-    public static final int AD_FIELD_NUMBER = 11;
-    private int ad_;
-    /**
-     * <code>optional int32 ad = 11;</code>
-     */
-    public boolean hasAd() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+    public int getListCount() {
+      return list_.size();
     }
     /**
-     * <code>optional int32 ad = 11;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    public int getAd() {
-      return ad_;
-    }
-
-    // optional int32 ap = 12;
-    public static final int AP_FIELD_NUMBER = 12;
-    private int ap_;
-    /**
-     * <code>optional int32 ap = 12;</code>
-     */
-    public boolean hasAp() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+    public com.trans.pixel.protoc.EquipProto.EquipOrder getList(int index) {
+      return list_.get(index);
     }
     /**
-     * <code>optional int32 ap = 12;</code>
+     * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
      */
-    public int getAp() {
-      return ap_;
-    }
-
-    // optional int32 adi = 13;
-    public static final int ADI_FIELD_NUMBER = 13;
-    private int adi_;
-    /**
-     * <code>optional int32 adi = 13;</code>
-     */
-    public boolean hasAdi() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    /**
-     * <code>optional int32 adi = 13;</code>
-     */
-    public int getAdi() {
-      return adi_;
-    }
-
-    // optional int32 api = 14;
-    public static final int API_FIELD_NUMBER = 14;
-    private int api_;
-    /**
-     * <code>optional int32 api = 14;</code>
-     */
-    public boolean hasApi() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
-    }
-    /**
-     * <code>optional int32 api = 14;</code>
-     */
-    public int getApi() {
-      return api_;
-    }
-
-    // optional int32 rating = 15;
-    public static final int RATING_FIELD_NUMBER = 15;
-    private int rating_;
-    /**
-     * <code>optional int32 rating = 15;</code>
-     */
-    public boolean hasRating() {
-      return ((bitField0_ & 0x00004000) == 0x00004000);
-    }
-    /**
-     * <code>optional int32 rating = 15;</code>
-     */
-    public int getRating() {
-      return rating_;
-    }
-
-    // optional int32 ratingdamage = 16;
-    public static final int RATINGDAMAGE_FIELD_NUMBER = 16;
-    private int ratingdamage_;
-    /**
-     * <code>optional int32 ratingdamage = 16;</code>
-     */
-    public boolean hasRatingdamage() {
-      return ((bitField0_ & 0x00008000) == 0x00008000);
-    }
-    /**
-     * <code>optional int32 ratingdamage = 16;</code>
-     */
-    public int getRatingdamage() {
-      return ratingdamage_;
-    }
-
-    // optional int32 fireup = 17;
-    public static final int FIREUP_FIELD_NUMBER = 17;
-    private int fireup_;
-    /**
-     * <code>optional int32 fireup = 17;</code>
-     */
-    public boolean hasFireup() {
-      return ((bitField0_ & 0x00010000) == 0x00010000);
-    }
-    /**
-     * <code>optional int32 fireup = 17;</code>
-     */
-    public int getFireup() {
-      return fireup_;
-    }
-
-    // optional int32 iceup = 18;
-    public static final int ICEUP_FIELD_NUMBER = 18;
-    private int iceup_;
-    /**
-     * <code>optional int32 iceup = 18;</code>
-     */
-    public boolean hasIceup() {
-      return ((bitField0_ & 0x00020000) == 0x00020000);
-    }
-    /**
-     * <code>optional int32 iceup = 18;</code>
-     */
-    public int getIceup() {
-      return iceup_;
-    }
-
-    // optional int32 lightup = 19;
-    public static final int LIGHTUP_FIELD_NUMBER = 19;
-    private int lightup_;
-    /**
-     * <code>optional int32 lightup = 19;</code>
-     */
-    public boolean hasLightup() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
-    }
-    /**
-     * <code>optional int32 lightup = 19;</code>
-     */
-    public int getLightup() {
-      return lightup_;
-    }
-
-    // optional int32 darkup = 20;
-    public static final int DARKUP_FIELD_NUMBER = 20;
-    private int darkup_;
-    /**
-     * <code>optional int32 darkup = 20;</code>
-     */
-    public boolean hasDarkup() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
-    }
-    /**
-     * <code>optional int32 darkup = 20;</code>
-     */
-    public int getDarkup() {
-      return darkup_;
-    }
-
-    // optional int32 atk_damage = 21;
-    public static final int ATK_DAMAGE_FIELD_NUMBER = 21;
-    private int atkDamage_;
-    /**
-     * <code>optional int32 atk_damage = 21;</code>
-     */
-    public boolean hasAtkDamage() {
-      return ((bitField0_ & 0x00100000) == 0x00100000);
-    }
-    /**
-     * <code>optional int32 atk_damage = 21;</code>
-     */
-    public int getAtkDamage() {
-      return atkDamage_;
-    }
-
-    // optional int32 duochong = 22;
-    public static final int DUOCHONG_FIELD_NUMBER = 22;
-    private int duochong_;
-    /**
-     * <code>optional int32 duochong = 22;</code>
-     */
-    public boolean hasDuochong() {
-      return ((bitField0_ & 0x00200000) == 0x00200000);
-    }
-    /**
-     * <code>optional int32 duochong = 22;</code>
-     */
-    public int getDuochong() {
-      return duochong_;
-    }
-
-    // optional string skill = 23;
-    public static final int SKILL_FIELD_NUMBER = 23;
-    private java.lang.Object skill_;
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    public boolean hasSkill() {
-      return ((bitField0_ & 0x00400000) == 0x00400000);
-    }
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    public java.lang.String getSkill() {
-      java.lang.Object ref = skill_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          skill_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string skill = 23;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSkillBytes() {
-      java.lang.Object ref = skill_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        skill_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 ilevel = 24;
-    public static final int ILEVEL_FIELD_NUMBER = 24;
-    private int ilevel_;
-    /**
-     * <code>optional int32 ilevel = 24;</code>
-     */
-    public boolean hasIlevel() {
-      return ((bitField0_ & 0x00800000) == 0x00800000);
-    }
-    /**
-     * <code>optional int32 ilevel = 24;</code>
-     */
-    public int getIlevel() {
-      return ilevel_;
+    public com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder getListOrBuilder(
+        int index) {
+      return list_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      name_ = "";
-      level_ = 0;
-      rare_ = 0;
-      description_ = "";
-      type_ = 0;
-      zhanli_ = 0;
-      arm_ = 0;
-      mr_ = 0;
-      reelement_ = 0;
-      ad_ = 0;
-      ap_ = 0;
-      adi_ = 0;
-      api_ = 0;
-      rating_ = 0;
-      ratingdamage_ = 0;
-      fireup_ = 0;
-      iceup_ = 0;
-      lightup_ = 0;
-      darkup_ = 0;
-      atkDamage_ = 0;
-      duochong_ = 0;
-      skill_ = "";
       ilevel_ = 0;
+      level_ = 0;
+      irare_ = 0;
+      type_ = 0;
+      heroid_ = 0;
+      list_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -18151,73 +17552,22 @@ public final class EquipProto {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
+        output.writeUInt32(2, ilevel_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, level_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, rare_);
+        output.writeInt32(4, irare_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getDescriptionBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, type_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, zhanli_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(7, heroid_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, arm_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, mr_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, reelement_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, ad_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, ap_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeInt32(13, adi_);
-      }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        output.writeInt32(14, api_);
-      }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        output.writeInt32(15, rating_);
-      }
-      if (((bitField0_ & 0x00008000) == 0x00008000)) {
-        output.writeInt32(16, ratingdamage_);
-      }
-      if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        output.writeInt32(17, fireup_);
-      }
-      if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        output.writeInt32(18, iceup_);
-      }
-      if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeInt32(19, lightup_);
-      }
-      if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        output.writeInt32(20, darkup_);
-      }
-      if (((bitField0_ & 0x00100000) == 0x00100000)) {
-        output.writeInt32(21, atkDamage_);
-      }
-      if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        output.writeInt32(22, duochong_);
-      }
-      if (((bitField0_ & 0x00400000) == 0x00400000)) {
-        output.writeBytes(23, getSkillBytes());
-      }
-      if (((bitField0_ & 0x00800000) == 0x00800000)) {
-        output.writeInt32(24, ilevel_);
+      for (int i = 0; i < list_.size(); i++) {
+        output.writeMessage(14, list_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -18234,7 +17584,7 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
+          .computeUInt32Size(2, ilevel_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -18242,87 +17592,19 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, rare_);
+          .computeInt32Size(4, irare_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getDescriptionBytes());
+          .computeInt32Size(6, type_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, type_);
+          .computeUInt32Size(7, heroid_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      for (int i = 0; i < list_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, zhanli_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, arm_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, mr_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, reelement_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, ad_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, ap_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(13, adi_);
-      }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(14, api_);
-      }
-      if (((bitField0_ & 0x00004000) == 0x00004000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(15, rating_);
-      }
-      if (((bitField0_ & 0x00008000) == 0x00008000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(16, ratingdamage_);
-      }
-      if (((bitField0_ & 0x00010000) == 0x00010000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(17, fireup_);
-      }
-      if (((bitField0_ & 0x00020000) == 0x00020000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(18, iceup_);
-      }
-      if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(19, lightup_);
-      }
-      if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(20, darkup_);
-      }
-      if (((bitField0_ & 0x00100000) == 0x00100000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(21, atkDamage_);
-      }
-      if (((bitField0_ & 0x00200000) == 0x00200000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(22, duochong_);
-      }
-      if (((bitField0_ & 0x00400000) == 0x00400000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(23, getSkillBytes());
-      }
-      if (((bitField0_ & 0x00800000) == 0x00800000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(24, ilevel_);
+          .computeMessageSize(14, list_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -18432,6 +17714,7 @@ public final class EquipProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getListFieldBuilder();
         }
       }
       private static Builder create() {
@@ -18442,52 +17725,22 @@ public final class EquipProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
+        ilevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        rare_ = 0;
+        irare_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        heroid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        zhanli_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        arm_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        mr_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        reelement_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        ad_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        ap_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        adi_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
-        api_ = 0;
-        bitField0_ = (bitField0_ & ~0x00002000);
-        rating_ = 0;
-        bitField0_ = (bitField0_ & ~0x00004000);
-        ratingdamage_ = 0;
-        bitField0_ = (bitField0_ & ~0x00008000);
-        fireup_ = 0;
-        bitField0_ = (bitField0_ & ~0x00010000);
-        iceup_ = 0;
-        bitField0_ = (bitField0_ & ~0x00020000);
-        lightup_ = 0;
-        bitField0_ = (bitField0_ & ~0x00040000);
-        darkup_ = 0;
-        bitField0_ = (bitField0_ & ~0x00080000);
-        atkDamage_ = 0;
-        bitField0_ = (bitField0_ & ~0x00100000);
-        duochong_ = 0;
-        bitField0_ = (bitField0_ & ~0x00200000);
-        skill_ = "";
-        bitField0_ = (bitField0_ & ~0x00400000);
-        ilevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00800000);
+        if (listBuilder_ == null) {
+          list_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          listBuilder_.clear();
+        }
         return this;
       }
 
@@ -18523,7 +17776,7 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.name_ = name_;
+        result.ilevel_ = ilevel_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -18531,87 +17784,24 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.rare_ = rare_;
+        result.irare_ = irare_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.description_ = description_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
+        result.heroid_ = heroid_;
+        if (listBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            list_ = java.util.Collections.unmodifiableList(list_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.list_ = list_;
+        } else {
+          result.list_ = listBuilder_.build();
         }
-        result.zhanli_ = zhanli_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.arm_ = arm_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.mr_ = mr_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.reelement_ = reelement_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.ad_ = ad_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.ap_ = ap_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.adi_ = adi_;
-        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
-          to_bitField0_ |= 0x00002000;
-        }
-        result.api_ = api_;
-        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-          to_bitField0_ |= 0x00004000;
-        }
-        result.rating_ = rating_;
-        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
-          to_bitField0_ |= 0x00008000;
-        }
-        result.ratingdamage_ = ratingdamage_;
-        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
-          to_bitField0_ |= 0x00010000;
-        }
-        result.fireup_ = fireup_;
-        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
-          to_bitField0_ |= 0x00020000;
-        }
-        result.iceup_ = iceup_;
-        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
-          to_bitField0_ |= 0x00040000;
-        }
-        result.lightup_ = lightup_;
-        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
-          to_bitField0_ |= 0x00080000;
-        }
-        result.darkup_ = darkup_;
-        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
-          to_bitField0_ |= 0x00100000;
-        }
-        result.atkDamage_ = atkDamage_;
-        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
-          to_bitField0_ |= 0x00200000;
-        }
-        result.duochong_ = duochong_;
-        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
-          to_bitField0_ |= 0x00400000;
-        }
-        result.skill_ = skill_;
-        if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
-          to_bitField0_ |= 0x00800000;
-        }
-        result.ilevel_ = ilevel_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -18631,80 +17821,46 @@ public final class EquipProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000002;
-          name_ = other.name_;
-          onChanged();
+        if (other.hasIlevel()) {
+          setIlevel(other.getIlevel());
         }
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
-        if (other.hasRare()) {
-          setRare(other.getRare());
-        }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000010;
-          description_ = other.description_;
-          onChanged();
+        if (other.hasIrare()) {
+          setIrare(other.getIrare());
         }
         if (other.hasType()) {
           setType(other.getType());
         }
-        if (other.hasZhanli()) {
-          setZhanli(other.getZhanli());
+        if (other.hasHeroid()) {
+          setHeroid(other.getHeroid());
         }
-        if (other.hasArm()) {
-          setArm(other.getArm());
-        }
-        if (other.hasMr()) {
-          setMr(other.getMr());
-        }
-        if (other.hasReelement()) {
-          setReelement(other.getReelement());
-        }
-        if (other.hasAd()) {
-          setAd(other.getAd());
-        }
-        if (other.hasAp()) {
-          setAp(other.getAp());
-        }
-        if (other.hasAdi()) {
-          setAdi(other.getAdi());
-        }
-        if (other.hasApi()) {
-          setApi(other.getApi());
-        }
-        if (other.hasRating()) {
-          setRating(other.getRating());
-        }
-        if (other.hasRatingdamage()) {
-          setRatingdamage(other.getRatingdamage());
-        }
-        if (other.hasFireup()) {
-          setFireup(other.getFireup());
-        }
-        if (other.hasIceup()) {
-          setIceup(other.getIceup());
-        }
-        if (other.hasLightup()) {
-          setLightup(other.getLightup());
-        }
-        if (other.hasDarkup()) {
-          setDarkup(other.getDarkup());
-        }
-        if (other.hasAtkDamage()) {
-          setAtkDamage(other.getAtkDamage());
-        }
-        if (other.hasDuochong()) {
-          setDuochong(other.getDuochong());
-        }
-        if (other.hasSkill()) {
-          bitField0_ |= 0x00400000;
-          skill_ = other.skill_;
-          onChanged();
-        }
-        if (other.hasIlevel()) {
-          setIlevel(other.getIlevel());
+        if (listBuilder_ == null) {
+          if (!other.list_.isEmpty()) {
+            if (list_.isEmpty()) {
+              list_ = other.list_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureListIsMutable();
+              list_.addAll(other.list_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.list_.isEmpty()) {
+            if (listBuilder_.isEmpty()) {
+              listBuilder_.dispose();
+              listBuilder_ = null;
+              list_ = other.list_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              listBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getListFieldBuilder() : null;
+            } else {
+              listBuilder_.addAllMessages(other.list_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -18766,76 +17922,35 @@ public final class EquipProto {
         return this;
       }
 
-      // optional string name = 2;
-      private java.lang.Object name_ = "";
+      // optional uint32 ilevel = 2;
+      private int ilevel_ ;
       /**
-       * <code>optional string name = 2;</code>
+       * <code>optional uint32 ilevel = 2;</code>
        */
-      public boolean hasName() {
+      public boolean hasIlevel() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>optional uint32 ilevel = 2;</code>
        */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getIlevel() {
+        return ilevel_;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>optional uint32 ilevel = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
+      public Builder setIlevel(int value) {
+        bitField0_ |= 0x00000002;
+        ilevel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string name = 2;</code>
+       * <code>optional uint32 ilevel = 2;</code>
        */
-      public Builder clearName() {
+      public Builder clearIlevel() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
+        ilevel_ = 0;
         onChanged();
         return this;
       }
@@ -18873,109 +17988,35 @@ public final class EquipProto {
         return this;
       }
 
-      // optional int32 rare = 4;
-      private int rare_ ;
+      // optional int32 irare = 4;
+      private int irare_ ;
       /**
-       * <code>optional int32 rare = 4;</code>
+       * <code>optional int32 irare = 4;</code>
        */
-      public boolean hasRare() {
+      public boolean hasIrare() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 rare = 4;</code>
+       * <code>optional int32 irare = 4;</code>
        */
-      public int getRare() {
-        return rare_;
+      public int getIrare() {
+        return irare_;
       }
       /**
-       * <code>optional int32 rare = 4;</code>
+       * <code>optional int32 irare = 4;</code>
        */
-      public Builder setRare(int value) {
+      public Builder setIrare(int value) {
         bitField0_ |= 0x00000008;
-        rare_ = value;
+        irare_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 rare = 4;</code>
+       * <code>optional int32 irare = 4;</code>
        */
-      public Builder clearRare() {
+      public Builder clearIrare() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        rare_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string description = 5;
-      private java.lang.Object description_ = "";
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
+        irare_ = 0;
         onChanged();
         return this;
       }
@@ -18986,7 +18027,7 @@ public final class EquipProto {
        * <code>optional int32 type = 6;</code>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 type = 6;</code>
@@ -18998,7 +18039,7 @@ public final class EquipProto {
        * <code>optional int32 type = 6;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000010;
         type_ = value;
         onChanged();
         return this;
@@ -19007,645 +18048,283 @@ public final class EquipProto {
        * <code>optional int32 type = 6;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         type_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 zhanli = 7;
-      private int zhanli_ ;
+      // optional uint32 heroid = 7;
+      private int heroid_ ;
       /**
-       * <code>optional int32 zhanli = 7;</code>
+       * <code>optional uint32 heroid = 7;</code>
        */
-      public boolean hasZhanli() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+      public boolean hasHeroid() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional int32 zhanli = 7;</code>
+       * <code>optional uint32 heroid = 7;</code>
        */
-      public int getZhanli() {
-        return zhanli_;
+      public int getHeroid() {
+        return heroid_;
       }
       /**
-       * <code>optional int32 zhanli = 7;</code>
+       * <code>optional uint32 heroid = 7;</code>
        */
-      public Builder setZhanli(int value) {
-        bitField0_ |= 0x00000040;
-        zhanli_ = value;
+      public Builder setHeroid(int value) {
+        bitField0_ |= 0x00000020;
+        heroid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 zhanli = 7;</code>
+       * <code>optional uint32 heroid = 7;</code>
        */
-      public Builder clearZhanli() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        zhanli_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 arm = 8;
-      private int arm_ ;
-      /**
-       * <code>optional int32 arm = 8;</code>
-       */
-      public boolean hasArm() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 arm = 8;</code>
-       */
-      public int getArm() {
-        return arm_;
-      }
-      /**
-       * <code>optional int32 arm = 8;</code>
-       */
-      public Builder setArm(int value) {
-        bitField0_ |= 0x00000080;
-        arm_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 arm = 8;</code>
-       */
-      public Builder clearArm() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        arm_ = 0;
+      public Builder clearHeroid() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        heroid_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 mr = 9;
-      private int mr_ ;
-      /**
-       * <code>optional int32 mr = 9;</code>
-       */
-      public boolean hasMr() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 mr = 9;</code>
-       */
-      public int getMr() {
-        return mr_;
-      }
-      /**
-       * <code>optional int32 mr = 9;</code>
-       */
-      public Builder setMr(int value) {
-        bitField0_ |= 0x00000100;
-        mr_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 mr = 9;</code>
-       */
-      public Builder clearMr() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        mr_ = 0;
-        onChanged();
-        return this;
+      // repeated .com.trans.pixel.protoc.EquipOrder list = 14;
+      private java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder> list_ =
+        java.util.Collections.emptyList();
+      private void ensureListIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          list_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.EquipOrder>(list_);
+          bitField0_ |= 0x00000040;
+         }
       }
 
-      // optional int32 reelement = 10;
-      private int reelement_ ;
-      /**
-       * <code>optional int32 reelement = 10;</code>
-       */
-      public boolean hasReelement() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 reelement = 10;</code>
-       */
-      public int getReelement() {
-        return reelement_;
-      }
-      /**
-       * <code>optional int32 reelement = 10;</code>
-       */
-      public Builder setReelement(int value) {
-        bitField0_ |= 0x00000200;
-        reelement_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 reelement = 10;</code>
-       */
-      public Builder clearReelement() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        reelement_ = 0;
-        onChanged();
-        return this;
-      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.EquipProto.EquipOrder, com.trans.pixel.protoc.EquipProto.EquipOrder.Builder, com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder> listBuilder_;
 
-      // optional int32 ad = 11;
-      private int ad_ ;
       /**
-       * <code>optional int32 ad = 11;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public boolean hasAd() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 ad = 11;</code>
-       */
-      public int getAd() {
-        return ad_;
-      }
-      /**
-       * <code>optional int32 ad = 11;</code>
-       */
-      public Builder setAd(int value) {
-        bitField0_ |= 0x00000400;
-        ad_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 ad = 11;</code>
-       */
-      public Builder clearAd() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        ad_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 ap = 12;
-      private int ap_ ;
-      /**
-       * <code>optional int32 ap = 12;</code>
-       */
-      public boolean hasAp() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 ap = 12;</code>
-       */
-      public int getAp() {
-        return ap_;
-      }
-      /**
-       * <code>optional int32 ap = 12;</code>
-       */
-      public Builder setAp(int value) {
-        bitField0_ |= 0x00000800;
-        ap_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 ap = 12;</code>
-       */
-      public Builder clearAp() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        ap_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 adi = 13;
-      private int adi_ ;
-      /**
-       * <code>optional int32 adi = 13;</code>
-       */
-      public boolean hasAdi() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
-      }
-      /**
-       * <code>optional int32 adi = 13;</code>
-       */
-      public int getAdi() {
-        return adi_;
-      }
-      /**
-       * <code>optional int32 adi = 13;</code>
-       */
-      public Builder setAdi(int value) {
-        bitField0_ |= 0x00001000;
-        adi_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 adi = 13;</code>
-       */
-      public Builder clearAdi() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        adi_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 api = 14;
-      private int api_ ;
-      /**
-       * <code>optional int32 api = 14;</code>
-       */
-      public boolean hasApi() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
-      }
-      /**
-       * <code>optional int32 api = 14;</code>
-       */
-      public int getApi() {
-        return api_;
-      }
-      /**
-       * <code>optional int32 api = 14;</code>
-       */
-      public Builder setApi(int value) {
-        bitField0_ |= 0x00002000;
-        api_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 api = 14;</code>
-       */
-      public Builder clearApi() {
-        bitField0_ = (bitField0_ & ~0x00002000);
-        api_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rating = 15;
-      private int rating_ ;
-      /**
-       * <code>optional int32 rating = 15;</code>
-       */
-      public boolean hasRating() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
-      }
-      /**
-       * <code>optional int32 rating = 15;</code>
-       */
-      public int getRating() {
-        return rating_;
-      }
-      /**
-       * <code>optional int32 rating = 15;</code>
-       */
-      public Builder setRating(int value) {
-        bitField0_ |= 0x00004000;
-        rating_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rating = 15;</code>
-       */
-      public Builder clearRating() {
-        bitField0_ = (bitField0_ & ~0x00004000);
-        rating_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 ratingdamage = 16;
-      private int ratingdamage_ ;
-      /**
-       * <code>optional int32 ratingdamage = 16;</code>
-       */
-      public boolean hasRatingdamage() {
-        return ((bitField0_ & 0x00008000) == 0x00008000);
-      }
-      /**
-       * <code>optional int32 ratingdamage = 16;</code>
-       */
-      public int getRatingdamage() {
-        return ratingdamage_;
-      }
-      /**
-       * <code>optional int32 ratingdamage = 16;</code>
-       */
-      public Builder setRatingdamage(int value) {
-        bitField0_ |= 0x00008000;
-        ratingdamage_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 ratingdamage = 16;</code>
-       */
-      public Builder clearRatingdamage() {
-        bitField0_ = (bitField0_ & ~0x00008000);
-        ratingdamage_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 fireup = 17;
-      private int fireup_ ;
-      /**
-       * <code>optional int32 fireup = 17;</code>
-       */
-      public boolean hasFireup() {
-        return ((bitField0_ & 0x00010000) == 0x00010000);
-      }
-      /**
-       * <code>optional int32 fireup = 17;</code>
-       */
-      public int getFireup() {
-        return fireup_;
-      }
-      /**
-       * <code>optional int32 fireup = 17;</code>
-       */
-      public Builder setFireup(int value) {
-        bitField0_ |= 0x00010000;
-        fireup_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 fireup = 17;</code>
-       */
-      public Builder clearFireup() {
-        bitField0_ = (bitField0_ & ~0x00010000);
-        fireup_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 iceup = 18;
-      private int iceup_ ;
-      /**
-       * <code>optional int32 iceup = 18;</code>
-       */
-      public boolean hasIceup() {
-        return ((bitField0_ & 0x00020000) == 0x00020000);
-      }
-      /**
-       * <code>optional int32 iceup = 18;</code>
-       */
-      public int getIceup() {
-        return iceup_;
-      }
-      /**
-       * <code>optional int32 iceup = 18;</code>
-       */
-      public Builder setIceup(int value) {
-        bitField0_ |= 0x00020000;
-        iceup_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 iceup = 18;</code>
-       */
-      public Builder clearIceup() {
-        bitField0_ = (bitField0_ & ~0x00020000);
-        iceup_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 lightup = 19;
-      private int lightup_ ;
-      /**
-       * <code>optional int32 lightup = 19;</code>
-       */
-      public boolean hasLightup() {
-        return ((bitField0_ & 0x00040000) == 0x00040000);
-      }
-      /**
-       * <code>optional int32 lightup = 19;</code>
-       */
-      public int getLightup() {
-        return lightup_;
-      }
-      /**
-       * <code>optional int32 lightup = 19;</code>
-       */
-      public Builder setLightup(int value) {
-        bitField0_ |= 0x00040000;
-        lightup_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 lightup = 19;</code>
-       */
-      public Builder clearLightup() {
-        bitField0_ = (bitField0_ & ~0x00040000);
-        lightup_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 darkup = 20;
-      private int darkup_ ;
-      /**
-       * <code>optional int32 darkup = 20;</code>
-       */
-      public boolean hasDarkup() {
-        return ((bitField0_ & 0x00080000) == 0x00080000);
-      }
-      /**
-       * <code>optional int32 darkup = 20;</code>
-       */
-      public int getDarkup() {
-        return darkup_;
-      }
-      /**
-       * <code>optional int32 darkup = 20;</code>
-       */
-      public Builder setDarkup(int value) {
-        bitField0_ |= 0x00080000;
-        darkup_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 darkup = 20;</code>
-       */
-      public Builder clearDarkup() {
-        bitField0_ = (bitField0_ & ~0x00080000);
-        darkup_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 atk_damage = 21;
-      private int atkDamage_ ;
-      /**
-       * <code>optional int32 atk_damage = 21;</code>
-       */
-      public boolean hasAtkDamage() {
-        return ((bitField0_ & 0x00100000) == 0x00100000);
-      }
-      /**
-       * <code>optional int32 atk_damage = 21;</code>
-       */
-      public int getAtkDamage() {
-        return atkDamage_;
-      }
-      /**
-       * <code>optional int32 atk_damage = 21;</code>
-       */
-      public Builder setAtkDamage(int value) {
-        bitField0_ |= 0x00100000;
-        atkDamage_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 atk_damage = 21;</code>
-       */
-      public Builder clearAtkDamage() {
-        bitField0_ = (bitField0_ & ~0x00100000);
-        atkDamage_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 duochong = 22;
-      private int duochong_ ;
-      /**
-       * <code>optional int32 duochong = 22;</code>
-       */
-      public boolean hasDuochong() {
-        return ((bitField0_ & 0x00200000) == 0x00200000);
-      }
-      /**
-       * <code>optional int32 duochong = 22;</code>
-       */
-      public int getDuochong() {
-        return duochong_;
-      }
-      /**
-       * <code>optional int32 duochong = 22;</code>
-       */
-      public Builder setDuochong(int value) {
-        bitField0_ |= 0x00200000;
-        duochong_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 duochong = 22;</code>
-       */
-      public Builder clearDuochong() {
-        bitField0_ = (bitField0_ & ~0x00200000);
-        duochong_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string skill = 23;
-      private java.lang.Object skill_ = "";
-      /**
-       * <code>optional string skill = 23;</code>
-       */
-      public boolean hasSkill() {
-        return ((bitField0_ & 0x00400000) == 0x00400000);
-      }
-      /**
-       * <code>optional string skill = 23;</code>
-       */
-      public java.lang.String getSkill() {
-        java.lang.Object ref = skill_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          skill_ = s;
-          return s;
+      public java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder> getListList() {
+        if (listBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(list_);
         } else {
-          return (java.lang.String) ref;
+          return listBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional string skill = 23;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public com.google.protobuf.ByteString
-          getSkillBytes() {
-        java.lang.Object ref = skill_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          skill_ = b;
-          return b;
+      public int getListCount() {
+        if (listBuilder_ == null) {
+          return list_.size();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          return listBuilder_.getCount();
         }
       }
       /**
-       * <code>optional string skill = 23;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public Builder setSkill(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00400000;
-        skill_ = value;
-        onChanged();
+      public com.trans.pixel.protoc.EquipProto.EquipOrder getList(int index) {
+        if (listBuilder_ == null) {
+          return list_.get(index);
+        } else {
+          return listBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder setList(
+          int index, com.trans.pixel.protoc.EquipProto.EquipOrder value) {
+        if (listBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureListIsMutable();
+          list_.set(index, value);
+          onChanged();
+        } else {
+          listBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>optional string skill = 23;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public Builder clearSkill() {
-        bitField0_ = (bitField0_ & ~0x00400000);
-        skill_ = getDefaultInstance().getSkill();
-        onChanged();
+      public Builder setList(
+          int index, com.trans.pixel.protoc.EquipProto.EquipOrder.Builder builderForValue) {
+        if (listBuilder_ == null) {
+          ensureListIsMutable();
+          list_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          listBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
       }
       /**
-       * <code>optional string skill = 23;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public Builder setSkillBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00400000;
-        skill_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 ilevel = 24;
-      private int ilevel_ ;
-      /**
-       * <code>optional int32 ilevel = 24;</code>
-       */
-      public boolean hasIlevel() {
-        return ((bitField0_ & 0x00800000) == 0x00800000);
-      }
-      /**
-       * <code>optional int32 ilevel = 24;</code>
-       */
-      public int getIlevel() {
-        return ilevel_;
-      }
-      /**
-       * <code>optional int32 ilevel = 24;</code>
-       */
-      public Builder setIlevel(int value) {
-        bitField0_ |= 0x00800000;
-        ilevel_ = value;
-        onChanged();
+      public Builder addList(com.trans.pixel.protoc.EquipProto.EquipOrder value) {
+        if (listBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureListIsMutable();
+          list_.add(value);
+          onChanged();
+        } else {
+          listBuilder_.addMessage(value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 ilevel = 24;</code>
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
        */
-      public Builder clearIlevel() {
-        bitField0_ = (bitField0_ & ~0x00800000);
-        ilevel_ = 0;
-        onChanged();
+      public Builder addList(
+          int index, com.trans.pixel.protoc.EquipProto.EquipOrder value) {
+        if (listBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureListIsMutable();
+          list_.add(index, value);
+          onChanged();
+        } else {
+          listBuilder_.addMessage(index, value);
+        }
         return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder addList(
+          com.trans.pixel.protoc.EquipProto.EquipOrder.Builder builderForValue) {
+        if (listBuilder_ == null) {
+          ensureListIsMutable();
+          list_.add(builderForValue.build());
+          onChanged();
+        } else {
+          listBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder addList(
+          int index, com.trans.pixel.protoc.EquipProto.EquipOrder.Builder builderForValue) {
+        if (listBuilder_ == null) {
+          ensureListIsMutable();
+          list_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          listBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder addAllList(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.EquipProto.EquipOrder> values) {
+        if (listBuilder_ == null) {
+          ensureListIsMutable();
+          super.addAll(values, list_);
+          onChanged();
+        } else {
+          listBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder clearList() {
+        if (listBuilder_ == null) {
+          list_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          listBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public Builder removeList(int index) {
+        if (listBuilder_ == null) {
+          ensureListIsMutable();
+          list_.remove(index);
+          onChanged();
+        } else {
+          listBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public com.trans.pixel.protoc.EquipProto.EquipOrder.Builder getListBuilder(
+          int index) {
+        return getListFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder getListOrBuilder(
+          int index) {
+        if (listBuilder_ == null) {
+          return list_.get(index);  } else {
+          return listBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder> 
+           getListOrBuilderList() {
+        if (listBuilder_ != null) {
+          return listBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(list_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public com.trans.pixel.protoc.EquipProto.EquipOrder.Builder addListBuilder() {
+        return getListFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.EquipProto.EquipOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public com.trans.pixel.protoc.EquipProto.EquipOrder.Builder addListBuilder(
+          int index) {
+        return getListFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.EquipProto.EquipOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.EquipOrder list = 14;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.EquipProto.EquipOrder.Builder> 
+           getListBuilderList() {
+        return getListFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.EquipProto.EquipOrder, com.trans.pixel.protoc.EquipProto.EquipOrder.Builder, com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder> 
+          getListFieldBuilder() {
+        if (listBuilder_ == null) {
+          listBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.EquipProto.EquipOrder, com.trans.pixel.protoc.EquipProto.EquipOrder.Builder, com.trans.pixel.protoc.EquipProto.EquipOrderOrBuilder>(
+                  list_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          list_ = null;
+        }
+        return listBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Armor)
@@ -31595,52 +30274,46 @@ public final class EquipProto {
       "\033ResponseEquipComposeCommand\022\017\n\007equipId\030" +
       "\001 \002(\005\022\r\n\005count\030\002 \002(\005\"S\n\033ResponseGetUserE" +
       "quipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.tra" +
-      "ns.pixel.protoc.UserEquip\"6\n\tArmorList\022)",
-      "\n\002id\030\001 \003(\0132\035.com.trans.pixel.protoc.Armo" +
-      "r\"\372\002\n\005Armor\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n" +
-      "\005level\030\003 \001(\005\022\014\n\004rare\030\004 \001(\005\022\023\n\013descriptio" +
-      "n\030\005 \001(\t\022\014\n\004type\030\006 \001(\005\022\016\n\006zhanli\030\007 \001(\005\022\013\n" +
-      "\003arm\030\010 \001(\005\022\n\n\002mr\030\t \001(\005\022\021\n\treelement\030\n \001(" +
-      "\005\022\n\n\002ad\030\013 \001(\005\022\n\n\002ap\030\014 \001(\005\022\013\n\003adi\030\r \001(\005\022\013" +
-      "\n\003api\030\016 \001(\005\022\016\n\006rating\030\017 \001(\005\022\024\n\014ratingdam" +
-      "age\030\020 \001(\005\022\016\n\006fireup\030\021 \001(\005\022\r\n\005iceup\030\022 \001(\005" +
-      "\022\017\n\007lightup\030\023 \001(\005\022\016\n\006darkup\030\024 \001(\005\022\022\n\natk" +
-      "_damage\030\025 \001(\005\022\020\n\010duochong\030\026 \001(\005\022\r\n\005skill",
-      "\030\027 \001(\t\022\016\n\006ilevel\030\030 \001(\005\"I\n\021EquipIncreaseL" +
-      "ist\0224\n\005level\030\001 \003(\0132%.com.trans.pixel.pro" +
-      "toc.EquipIncrease\"L\n\rEquipIncrease\022\r\n\005le" +
-      "vel\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n\004rate\030\003 \001(" +
-      "\005\022\014\n\004zero\030\004 \001(\005\"I\n\021IncreaseLevelList\0224\n\005" +
-      "level\030\001 \003(\0132%.com.trans.pixel.protoc.Inc" +
-      "reaseLevel\"R\n\rIncreaseLevel\022\r\n\005level\030\001 \001" +
-      "(\005\0222\n\004rare\030\002 \003(\0132$.com.trans.pixel.proto" +
-      "c.IncreaseRare\"L\n\014IncreaseRare\022\014\n\004rare\030\001" +
-      " \001(\005\022.\n\004cost\030\002 \003(\0132 .com.trans.pixel.pro",
-      "toc.CostItem\")\n\004Item\022\016\n\006itemId\030\001 \002(\005\022\021\n\t" +
-      "itemCount\030\002 \002(\005\"E\n\027RequestSaleEquipComma" +
-      "nd\022*\n\004item\030\001 \003(\0132\034.com.trans.pixel.proto" +
-      "c.Item\",\n\032RequestSubmitZhanliCommand\022\016\n\006" +
-      "zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007equipId\030\001 \002" +
-      "(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010UserProp\022\016\n\006pr" +
-      "opId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013expired" +
-      "Time\030\003 \001(\t\"M\n\027ResponseUserPropCommand\0222\n" +
-      "\010userProp\030\001 \003(\0132 .com.trans.pixel.protoc" +
-      ".UserProp\":\n\025RequestUsePropCommand\022\016\n\006pr",
-      "opId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\"L\n\026Respons" +
-      "eUsePropCommand\0222\n\010userProp\030\001 \003(\0132 .com." +
-      "trans.pixel.protoc.UserProp\"@\n\031RequestFe" +
-      "njieEquipCommand\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequ" +
-      "ipCount\030\002 \002(\005\"R\n\032ResponseEquipResultComm" +
-      "and\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.pixel" +
-      ".protoc.UserEquip\".\n\034RequestEquipStrenth" +
-      "enCommand\022\016\n\006itemId\030\001 \002(\005\"\033\n\031RequestEqui" +
-      "pPokedeCommand\"^\n\032ResponseEquipPokedeCom" +
-      "mand\022@\n\017userEquipPokede\030\001 \003(\0132\'.com.tran",
-      "s.pixel.protoc.UserEquipPokede\"O\n\037Reques" +
-      "tTalentChangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020\n" +
-      "\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"7\n\037Reque" +
-      "stSynthetiseComposeCommand\022\024\n\014synthetise" +
-      "Id\030\001 \002(\r"
+      "ns.pixel.protoc.UserEquip\"8\n\tArmorList\022+",
+      "\n\004data\030\001 \003(\0132\035.com.trans.pixel.protoc.Ar" +
+      "mor\"\221\001\n\005Armor\022\n\n\002id\030\001 \001(\005\022\016\n\006ilevel\030\002 \001(" +
+      "\r\022\r\n\005level\030\003 \001(\005\022\r\n\005irare\030\004 \001(\005\022\014\n\004type\030" +
+      "\006 \001(\005\022\016\n\006heroid\030\007 \001(\r\0220\n\004list\030\016 \003(\0132\".co" +
+      "m.trans.pixel.protoc.EquipOrder\"I\n\021Equip" +
+      "IncreaseList\0224\n\005level\030\001 \003(\0132%.com.trans." +
+      "pixel.protoc.EquipIncrease\"L\n\rEquipIncre" +
+      "ase\022\r\n\005level\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n\004" +
+      "rate\030\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"I\n\021IncreaseLeve" +
+      "lList\0224\n\005level\030\001 \003(\0132%.com.trans.pixel.p",
+      "rotoc.IncreaseLevel\"R\n\rIncreaseLevel\022\r\n\005" +
+      "level\030\001 \001(\005\0222\n\004rare\030\002 \003(\0132$.com.trans.pi" +
+      "xel.protoc.IncreaseRare\"L\n\014IncreaseRare\022" +
+      "\014\n\004rare\030\001 \001(\005\022.\n\004cost\030\002 \003(\0132 .com.trans." +
+      "pixel.protoc.CostItem\")\n\004Item\022\016\n\006itemId\030" +
+      "\001 \002(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027RequestSaleE" +
+      "quipCommand\022*\n\004item\030\001 \003(\0132\034.com.trans.pi" +
+      "xel.protoc.Item\",\n\032RequestSubmitZhanliCo" +
+      "mmand\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007eq" +
+      "uipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010UserP",
+      "rop\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\023" +
+      "\n\013expiredTime\030\003 \001(\t\"M\n\027ResponseUserPropC" +
+      "ommand\0222\n\010userProp\030\001 \003(\0132 .com.trans.pix" +
+      "el.protoc.UserProp\":\n\025RequestUsePropComm" +
+      "and\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\"L" +
+      "\n\026ResponseUsePropCommand\0222\n\010userProp\030\001 \003" +
+      "(\0132 .com.trans.pixel.protoc.UserProp\"@\n\031" +
+      "RequestFenjieEquipCommand\022\017\n\007equipId\030\001 \002" +
+      "(\005\022\022\n\nequipCount\030\002 \002(\005\"R\n\032ResponseEquipR" +
+      "esultCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.tr",
+      "ans.pixel.protoc.UserEquip\".\n\034RequestEqu" +
+      "ipStrenthenCommand\022\016\n\006itemId\030\001 \002(\005\"\033\n\031Re" +
+      "questEquipPokedeCommand\"^\n\032ResponseEquip" +
+      "PokedeCommand\022@\n\017userEquipPokede\030\001 \003(\0132\'" +
+      ".com.trans.pixel.protoc.UserEquipPokede\"" +
+      "O\n\037RequestTalentChangeEquipCommand\022\n\n\002id" +
+      "\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005" +
+      "\"7\n\037RequestSynthetiseComposeCommand\022\024\n\014s" +
+      "ynthetiseId\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -31766,13 +30439,13 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_ArmorList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ArmorList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Armor_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_Armor_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Armor_descriptor,
-              new java.lang.String[] { "Id", "Name", "Level", "Rare", "Description", "Type", "Zhanli", "Arm", "Mr", "Reelement", "Ad", "Ap", "Adi", "Api", "Rating", "Ratingdamage", "Fireup", "Iceup", "Lightup", "Darkup", "AtkDamage", "Duochong", "Skill", "Ilevel", });
+              new java.lang.String[] { "Id", "Ilevel", "Level", "Irare", "Type", "Heroid", "List", });
           internal_static_com_trans_pixel_protoc_EquipIncreaseList_descriptor =
             getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_EquipIncreaseList_fieldAccessorTable = new
