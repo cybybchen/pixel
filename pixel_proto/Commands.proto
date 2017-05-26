@@ -2503,7 +2503,7 @@ message LadderSeasonConfig {
 	required string starttime = 2;
 	required uint32 taskid = 3;
 	repeated Task task = 4;
-	required LadderMode ladder = 5;
+	repeated LadderMode ladder = 5;
 	repeated LadderLd ld = 6;
 }
 

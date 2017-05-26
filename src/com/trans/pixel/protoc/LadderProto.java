@@ -13227,19 +13227,30 @@ public final class LadderProto {
     com.trans.pixel.protoc.Base.TaskOrBuilder getTaskOrBuilder(
         int index);
 
-    // required .com.trans.pixel.protoc.LadderMode ladder = 5;
+    // repeated .com.trans.pixel.protoc.LadderMode ladder = 5;
     /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
      */
-    boolean hasLadder();
+    java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode> 
+        getLadderList();
     /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
      */
-    com.trans.pixel.protoc.LadderProto.LadderMode getLadder();
+    com.trans.pixel.protoc.LadderProto.LadderMode getLadder(int index);
     /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
      */
-    com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder();
+    int getLadderCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> 
+        getLadderOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder(
+        int index);
 
     // repeated .com.trans.pixel.protoc.LadderLd ld = 6;
     /**
@@ -13341,16 +13352,11 @@ public final class LadderProto {
               break;
             }
             case 42: {
-              com.trans.pixel.protoc.LadderProto.LadderMode.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = ladder_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                ladder_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderMode>();
+                mutable_bitField0_ |= 0x00000010;
               }
-              ladder_ = input.readMessage(com.trans.pixel.protoc.LadderProto.LadderMode.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(ladder_);
-                ladder_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
+              ladder_.add(input.readMessage(com.trans.pixel.protoc.LadderProto.LadderMode.PARSER, extensionRegistry));
               break;
             }
             case 50: {
@@ -13371,6 +13377,9 @@ public final class LadderProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           task_ = java.util.Collections.unmodifiableList(task_);
+        }
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          ladder_ = java.util.Collections.unmodifiableList(ladder_);
         }
         if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
           ld_ = java.util.Collections.unmodifiableList(ld_);
@@ -13518,26 +13527,40 @@ public final class LadderProto {
       return task_.get(index);
     }
 
-    // required .com.trans.pixel.protoc.LadderMode ladder = 5;
+    // repeated .com.trans.pixel.protoc.LadderMode ladder = 5;
     public static final int LADDER_FIELD_NUMBER = 5;
-    private com.trans.pixel.protoc.LadderProto.LadderMode ladder_;
+    private java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode> ladder_;
     /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
      */
-    public boolean hasLadder() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
-     */
-    public com.trans.pixel.protoc.LadderProto.LadderMode getLadder() {
+    public java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode> getLadderList() {
       return ladder_;
     }
     /**
-     * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
      */
-    public com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder() {
+    public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> 
+        getLadderOrBuilderList() {
       return ladder_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     */
+    public int getLadderCount() {
+      return ladder_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.LadderMode getLadder(int index) {
+      return ladder_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder(
+        int index) {
+      return ladder_.get(index);
     }
 
     // repeated .com.trans.pixel.protoc.LadderLd ld = 6;
@@ -13581,7 +13604,7 @@ public final class LadderProto {
       starttime_ = "";
       taskid_ = 0;
       task_ = java.util.Collections.emptyList();
-      ladder_ = com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance();
+      ladder_ = java.util.Collections.emptyList();
       ld_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -13601,13 +13624,11 @@ public final class LadderProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasLadder()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getLadder().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      for (int i = 0; i < getLadderCount(); i++) {
+        if (!getLadder(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -13628,8 +13649,8 @@ public final class LadderProto {
       for (int i = 0; i < task_.size(); i++) {
         output.writeMessage(4, task_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(5, ladder_);
+      for (int i = 0; i < ladder_.size(); i++) {
+        output.writeMessage(5, ladder_.get(i));
       }
       for (int i = 0; i < ld_.size(); i++) {
         output.writeMessage(6, ld_.get(i));
@@ -13659,9 +13680,9 @@ public final class LadderProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, task_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      for (int i = 0; i < ladder_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, ladder_);
+          .computeMessageSize(5, ladder_.get(i));
       }
       for (int i = 0; i < ld_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -13799,11 +13820,11 @@ public final class LadderProto {
           taskBuilder_.clear();
         }
         if (ladderBuilder_ == null) {
-          ladder_ = com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance();
+          ladder_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           ladderBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
         if (ldBuilder_ == null) {
           ld_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000020);
@@ -13859,10 +13880,11 @@ public final class LadderProto {
         } else {
           result.task_ = taskBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
-        }
         if (ladderBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            ladder_ = java.util.Collections.unmodifiableList(ladder_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
           result.ladder_ = ladder_;
         } else {
           result.ladder_ = ladderBuilder_.build();
@@ -13929,8 +13951,31 @@ public final class LadderProto {
             }
           }
         }
-        if (other.hasLadder()) {
-          mergeLadder(other.getLadder());
+        if (ladderBuilder_ == null) {
+          if (!other.ladder_.isEmpty()) {
+            if (ladder_.isEmpty()) {
+              ladder_ = other.ladder_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureLadderIsMutable();
+              ladder_.addAll(other.ladder_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.ladder_.isEmpty()) {
+            if (ladderBuilder_.isEmpty()) {
+              ladderBuilder_.dispose();
+              ladderBuilder_ = null;
+              ladder_ = other.ladder_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              ladderBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getLadderFieldBuilder() : null;
+            } else {
+              ladderBuilder_.addAllMessages(other.ladder_);
+            }
+          }
         }
         if (ldBuilder_ == null) {
           if (!other.ld_.isEmpty()) {
@@ -13975,13 +14020,11 @@ public final class LadderProto {
           
           return false;
         }
-        if (!hasLadder()) {
-          
-          return false;
-        }
-        if (!getLadder().isInitialized()) {
-          
-          return false;
+        for (int i = 0; i < getLadderCount(); i++) {
+          if (!getLadder(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -14385,116 +14428,239 @@ public final class LadderProto {
         return taskBuilder_;
       }
 
-      // required .com.trans.pixel.protoc.LadderMode ladder = 5;
-      private com.trans.pixel.protoc.LadderProto.LadderMode ladder_ = com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.LadderProto.LadderMode, com.trans.pixel.protoc.LadderProto.LadderMode.Builder, com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> ladderBuilder_;
-      /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
-       */
-      public boolean hasLadder() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      // repeated .com.trans.pixel.protoc.LadderMode ladder = 5;
+      private java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode> ladder_ =
+        java.util.Collections.emptyList();
+      private void ensureLadderIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          ladder_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderMode>(ladder_);
+          bitField0_ |= 0x00000010;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.LadderMode, com.trans.pixel.protoc.LadderProto.LadderMode.Builder, com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> ladderBuilder_;
+
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      public com.trans.pixel.protoc.LadderProto.LadderMode getLadder() {
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode> getLadderList() {
         if (ladderBuilder_ == null) {
-          return ladder_;
+          return java.util.Collections.unmodifiableList(ladder_);
         } else {
-          return ladderBuilder_.getMessage();
+          return ladderBuilder_.getMessageList();
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      public Builder setLadder(com.trans.pixel.protoc.LadderProto.LadderMode value) {
+      public int getLadderCount() {
+        if (ladderBuilder_ == null) {
+          return ladder_.size();
+        } else {
+          return ladderBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderMode getLadder(int index) {
+        if (ladderBuilder_ == null) {
+          return ladder_.get(index);
+        } else {
+          return ladderBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public Builder setLadder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderMode value) {
         if (ladderBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ladder_ = value;
+          ensureLadderIsMutable();
+          ladder_.set(index, value);
           onChanged();
         } else {
-          ladderBuilder_.setMessage(value);
+          ladderBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
       public Builder setLadder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderMode.Builder builderForValue) {
+        if (ladderBuilder_ == null) {
+          ensureLadderIsMutable();
+          ladder_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          ladderBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public Builder addLadder(com.trans.pixel.protoc.LadderProto.LadderMode value) {
+        if (ladderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLadderIsMutable();
+          ladder_.add(value);
+          onChanged();
+        } else {
+          ladderBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public Builder addLadder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderMode value) {
+        if (ladderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLadderIsMutable();
+          ladder_.add(index, value);
+          onChanged();
+        } else {
+          ladderBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public Builder addLadder(
           com.trans.pixel.protoc.LadderProto.LadderMode.Builder builderForValue) {
         if (ladderBuilder_ == null) {
-          ladder_ = builderForValue.build();
+          ensureLadderIsMutable();
+          ladder_.add(builderForValue.build());
           onChanged();
         } else {
-          ladderBuilder_.setMessage(builderForValue.build());
+          ladderBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      public Builder mergeLadder(com.trans.pixel.protoc.LadderProto.LadderMode value) {
+      public Builder addLadder(
+          int index, com.trans.pixel.protoc.LadderProto.LadderMode.Builder builderForValue) {
         if (ladderBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              ladder_ != com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance()) {
-            ladder_ =
-              com.trans.pixel.protoc.LadderProto.LadderMode.newBuilder(ladder_).mergeFrom(value).buildPartial();
-          } else {
-            ladder_ = value;
-          }
+          ensureLadderIsMutable();
+          ladder_.add(index, builderForValue.build());
           onChanged();
         } else {
-          ladderBuilder_.mergeFrom(value);
+          ladderBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public Builder addAllLadder(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.LadderProto.LadderMode> values) {
+        if (ladderBuilder_ == null) {
+          ensureLadderIsMutable();
+          super.addAll(values, ladder_);
+          onChanged();
+        } else {
+          ladderBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
       public Builder clearLadder() {
         if (ladderBuilder_ == null) {
-          ladder_ = com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance();
+          ladder_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           ladderBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      public com.trans.pixel.protoc.LadderProto.LadderMode.Builder getLadderBuilder() {
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return getLadderFieldBuilder().getBuilder();
+      public Builder removeLadder(int index) {
+        if (ladderBuilder_ == null) {
+          ensureLadderIsMutable();
+          ladder_.remove(index);
+          onChanged();
+        } else {
+          ladderBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      public com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder() {
-        if (ladderBuilder_ != null) {
-          return ladderBuilder_.getMessageOrBuilder();
-        } else {
-          return ladder_;
+      public com.trans.pixel.protoc.LadderProto.LadderMode.Builder getLadderBuilder(
+          int index) {
+        return getLadderFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder getLadderOrBuilder(
+          int index) {
+        if (ladderBuilder_ == null) {
+          return ladder_.get(index);  } else {
+          return ladderBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> 
+           getLadderOrBuilderList() {
+        if (ladderBuilder_ != null) {
+          return ladderBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(ladder_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderMode.Builder addLadderBuilder() {
+        return getLadderFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderMode.Builder addLadderBuilder(
+          int index) {
+        return getLadderFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.LadderProto.LadderMode.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderMode ladder = 5;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderMode.Builder> 
+           getLadderBuilderList() {
+        return getLadderFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.LadderProto.LadderMode, com.trans.pixel.protoc.LadderProto.LadderMode.Builder, com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder> 
           getLadderFieldBuilder() {
         if (ladderBuilder_ == null) {
-          ladderBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          ladderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.LadderProto.LadderMode, com.trans.pixel.protoc.LadderProto.LadderMode.Builder, com.trans.pixel.protoc.LadderProto.LadderModeOrBuilder>(
                   ladder_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           ladder_ = null;
@@ -28806,7 +28972,7 @@ public final class LadderProto {
       "rans.pixel.protoc.LadderLd\"\325\001\n\022LadderSea",
       "sonConfig\022\016\n\006season\030\001 \002(\r\022\021\n\tstarttime\030\002" +
       " \002(\t\022\016\n\006taskid\030\003 \002(\r\022*\n\004task\030\004 \003(\0132\034.com" +
-      ".trans.pixel.protoc.Task\0222\n\006ladder\030\005 \002(\013" +
+      ".trans.pixel.protoc.Task\0222\n\006ladder\030\005 \003(\013" +
       "2\".com.trans.pixel.protoc.LadderMode\022,\n\002" +
       "ld\030\006 \003(\0132 .com.trans.pixel.protoc.Ladder" +
       "Ld\"R\n\026LadderSeasonConfigList\0228\n\004data\030\001 \003" +

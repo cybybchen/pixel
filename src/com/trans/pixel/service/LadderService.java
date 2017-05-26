@@ -172,16 +172,17 @@ public class LadderService {
 		builder.setSeasonRewardStatus(1);
 		userLadderService.updateUserLadder(builder.build());
 		
-		return seasonReward(user);
+		return seasonReward(user, userLadder.getSeason() - 1);
 	}
 	
-	private List<RewardInfo> seasonReward(UserBean user) {
+	private List<RewardInfo> seasonReward(UserBean user, int season) {
 		int maxGrade = 0;
 		List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
 		for (UserLadder userLadder : userLadderList) {
 			maxGrade = Math.max(maxGrade, userLadder.getGrade());
 		}
-		LadderMode laddermode = ladderRedisService.getLadderMode(maxGrade);
+		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(season);
+		LadderMode laddermode = ladderSeasonConfig.getLadder(maxGrade - 1);
 		if (laddermode != null)
 			return laddermode.getRewardList();
 		
