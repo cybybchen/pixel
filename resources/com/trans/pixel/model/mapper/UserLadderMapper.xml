@@ -10,6 +10,7 @@
 		<result property="lastScore" column="lastscore" />
 		<result property="season" column="season" />
 		<result property="seasonRewardStatus" column="season_reward_status" />
+		<result property="lastSeason" column="last_season" />
 	</resultMap>
 	
 	<select id="selectUserLadder" resultMap="resultMap">
@@ -18,11 +19,12 @@
 	</select>
 	
 	<insert id="updateUserLadder" parameterType="com.trans.pixel.model.userinfo.UserLadderBean">
-	    INSERT INTO user_ladder(user_id, type, score, lastscore, season, season_reward_status)
-	    VALUES(#{userId}, #{type}, #{score}, #{lastScore}, #{season}, #{seasonRewardStatus})
+	    INSERT INTO user_ladder(user_id, type, score, lastscore, season, season_reward_status, last_season)
+	    VALUES(#{userId}, #{type}, #{score}, #{lastScore}, #{season}, #{seasonRewardStatus}, #{lastSeason})
 	    ON 
 	    duplicate key update
-	    score=#{score}, lastscore=#{lastScore}, season=#{season}, season_reward_status=#{seasonRewardStatus}
+	    score=#{score}, lastscore=#{lastScore}, season=#{season}, season_reward_status=#{seasonRewardStatus},
+	    last_season=#{lastSeason}
 	</insert>
 	
 	<select id="selectUserLadderList" parameterType="long" resultMap="resultMap">
