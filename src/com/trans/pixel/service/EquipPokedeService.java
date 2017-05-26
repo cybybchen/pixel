@@ -67,7 +67,7 @@ public class EquipPokedeService {
 		String name = "";
 		if (pokede.getItemId() < RewardConst.ARMOR) {
 			Equip equip = equipService.getEquip(pokede.getItemId());
-			EquipOrder equipOrder = equip.getList(pokede.getOrder() - 1);
+			EquipOrder equipOrder = equip.getList(Math.max(pokede.getOrder() - 1, 0));
 			name = equipOrder.getName();
 			rare = equipOrder.getRare();
 			ilevel = equip.getIlevel();
