@@ -1144,7 +1144,7 @@ public class ActivityService {
 	public void zhujueLevelup(UserBean user, int talentId, int level) {
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP_VALUE, level, false);
 		
-		if (talentId >=5)
+		if (level >=5)
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE, talentId, false);
 	}
 	
