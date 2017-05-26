@@ -171,7 +171,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		else 
 			rep.command.setHead(request.getHead());	
 		
-		if (head.getServerStatus() == SERVER_STATUS.SERVER_MAINTENANCE_VALUE) {
+		if (head != null && head.getServerStatus() == SERVER_STATUS.SERVER_MAINTENANCE_VALUE) {
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.SRVER_MAINTENANCE_OPEN_ERROR.getMesssage());
