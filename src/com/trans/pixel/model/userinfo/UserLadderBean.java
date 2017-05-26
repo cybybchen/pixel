@@ -9,6 +9,7 @@ public class UserLadderBean {
 	private int score = 0;
 	private int lastScore = 0;
 	private int season = 0;
+	private int seasonRewardStatus = 0;
 	public long getId() {
 		return id;
 	}
@@ -45,6 +46,12 @@ public class UserLadderBean {
 	public void setSeason(int season) {
 		this.season = season;
 	}
+	public int getSeasonRewardStatus() {
+		return seasonRewardStatus;
+	}
+	public void setSeasonRewardStatus(int seasonRewardStatus) {
+		this.seasonRewardStatus = seasonRewardStatus;
+	}
 	public static UserLadderBean init(long userId, UserLadder ul) {
 		UserLadderBean bean = new UserLadderBean();
 		bean.setScore(ul.getScore());
@@ -52,6 +59,7 @@ public class UserLadderBean {
 		bean.setType(ul.getType());
 		bean.setUserId(ul.getTeam().getUser().getId());
 		bean.setLastScore(ul.getLastScore());
+		bean.setSeasonRewardStatus(ul.getSeasonRewardStatus());
 		
 		return bean;
 	}
@@ -61,6 +69,7 @@ public class UserLadderBean {
 		builder.setLastScore(lastScore);
 		builder.setSeason(season);
 		builder.setType(type);
+		builder.setSeasonRewardStatus(seasonRewardStatus);
 		
 		return builder.build();
 	}

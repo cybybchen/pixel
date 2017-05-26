@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
+import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
@@ -64,6 +65,15 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void ladderenemy(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
+		UserLadder userLadder = userLadderService.getUserLadder(user, cmd.getType());
+		if (userLadderService.isNextSeason(userLadder)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_END_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
 		int type = cmd.getType();
 		
 		Map<Integer, UserLadder> enemyMap = new HashMap<Integer, UserLadder>();
@@ -153,11 +163,13 @@ public class LadderModeCommandService extends BaseCommandService {
 			enemyBuilder.addAllEnemy(enemyMap.values());
 			responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
 			
-			UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, userLadder);
-			if (pokede != null) {
-				ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
-				builder.addUserEquipPokede(pokede.build());
-				responseBuilder.setEquipPokedeCommand(builder.build());
+			if (cmd.getType() == LadderConst.TYPE_LADDER_LD) {
+				UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, userLadder);
+				if (pokede != null) {
+					ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
+					builder.addUserEquipPokede(pokede.build());
+					responseBuilder.setEquipPokedeCommand(builder.build());
+				}
 			}
 		}
 	}

@@ -104,14 +104,15 @@ public class EquipPokedeService {
 	
 	public UserEquipPokedeBean handleUserEquipPokede(int itemId, int order, UserBean user) {
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
-		if (pokede == null)
-			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId);
-		
-		if (order <= pokede.getOrder())
+		if (pokede != null && order <= pokede.getOrder())
 			return null;
 		
-		Equip equip = equipService.getEquip(itemId);
+		if (pokede == null)
+			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId);
+		log.debug("11:" + itemId + ":22:" + order);
 		
+		Equip equip = equipService.getEquip(itemId);
+		log.debug("equip is:" + equip);
 		for (EquipOrder equipOrder : equip.getListList()) {
 			if (equipOrder.getOrder() == order) {
 				pokede.setOrder(order);

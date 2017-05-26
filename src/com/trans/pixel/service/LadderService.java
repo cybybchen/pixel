@@ -179,9 +179,11 @@ public class LadderService {
 		int maxGrade = 0;
 		List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
 		for (UserLadder userLadder : userLadderList) {
-			maxGrade = Math.max(maxGrade, userLadder.getGrade());
+			maxGrade = Math.max(maxGrade, userLadderService.calGrade(userLadder.getLastScore()));
 		}
 		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(season);
+		if (ladderSeasonConfig == null)
+			return null;
 		LadderMode laddermode = ladderSeasonConfig.getLadder(maxGrade - 1);
 		if (laddermode != null)
 			return laddermode.getRewardList();
@@ -191,15 +193,19 @@ public class LadderService {
 	
 	public UserEquipPokedeBean handleLadderEquip(UserBean user, UserLadder userLadder) {
 		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		log.debug("000");
 		if (ladderSeason == null)
 			return null;
 		
+		log.debug("111");
+		
 		int ld = getCurrentLd(ladderSeason.getStartTime());
+		log.debug("ld is:" + ld);
 		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
 		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
 		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
-		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), ladderEquip.getGrade(), user);
-		
+		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), ladderEquip != null ? ladderEquip.getGrade()	: 1, user);
+		log.debug("222");
 		return pokede;
 	}
 	

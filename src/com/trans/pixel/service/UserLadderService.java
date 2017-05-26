@@ -229,6 +229,9 @@ public class UserLadderService {
 			builder.mergeFrom(updateToNextSeason(userLadder, ladderSeason).build());
 			if (builder.getType() == LadderConst.TYPE_LADDER_NORMAL)
 				builder.setSeasonRewardStatus(0);
+			
+			updateUserLadder(builder.build());
+			
 			return true;
 		}
 		
@@ -276,6 +279,7 @@ public class UserLadderService {
 		
 		builder.setSeason(ladderSeason.getSeason());
 		builder.setTeam(team);
+		builder.setSeasonRewardStatus(1);
 		
 		return builder.build();
 	}
