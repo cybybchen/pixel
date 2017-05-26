@@ -161,6 +161,7 @@ public class UserLadderService {
 		builder.setLastScore(userLadder.getScore());
 		builder.setGrade(calNextSeasonGrade(userLadder, ladderSeason));
 		builder.setScore(calNextSeasonScore(builder.getGrade(), builder.getLevel()));
+		builder.setLastSeason(userLadder.getSeason());
 		
 		return builder;
 	}

@@ -16469,6 +16469,16 @@ public final class LadderProto {
      * </pre>
      */
     int getSeasonRewardStatus();
+
+    // optional uint32 lastSeason = 13;
+    /**
+     * <code>optional uint32 lastSeason = 13;</code>
+     */
+    boolean hasLastSeason();
+    /**
+     * <code>optional uint32 lastSeason = 13;</code>
+     */
+    int getLastSeason();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserLadder}
@@ -16582,6 +16592,11 @@ public final class LadderProto {
             case 96: {
               bitField0_ |= 0x00000400;
               seasonRewardStatus_ = input.readUInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000800;
+              lastSeason_ = input.readUInt32();
               break;
             }
           }
@@ -16830,6 +16845,22 @@ public final class LadderProto {
       return seasonRewardStatus_;
     }
 
+    // optional uint32 lastSeason = 13;
+    public static final int LASTSEASON_FIELD_NUMBER = 13;
+    private int lastSeason_;
+    /**
+     * <code>optional uint32 lastSeason = 13;</code>
+     */
+    public boolean hasLastSeason() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional uint32 lastSeason = 13;</code>
+     */
+    public int getLastSeason() {
+      return lastSeason_;
+    }
+
     private void initFields() {
       type_ = 0;
       score_ = 0;
@@ -16842,6 +16873,7 @@ public final class LadderProto {
       grade_ = 0;
       level_ = 0;
       seasonRewardStatus_ = 0;
+      lastSeason_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -16893,6 +16925,9 @@ public final class LadderProto {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeUInt32(12, seasonRewardStatus_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeUInt32(13, lastSeason_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -16946,6 +16981,10 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(12, seasonRewardStatus_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(13, lastSeason_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -17090,6 +17129,8 @@ public final class LadderProto {
         bitField0_ = (bitField0_ & ~0x00000200);
         seasonRewardStatus_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        lastSeason_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -17166,6 +17207,10 @@ public final class LadderProto {
           to_bitField0_ |= 0x00000400;
         }
         result.seasonRewardStatus_ = seasonRewardStatus_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.lastSeason_ = lastSeason_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -17214,6 +17259,9 @@ public final class LadderProto {
         }
         if (other.hasSeasonRewardStatus()) {
           setSeasonRewardStatus(other.getSeasonRewardStatus());
+        }
+        if (other.hasLastSeason()) {
+          setLastSeason(other.getLastSeason());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -17739,6 +17787,39 @@ public final class LadderProto {
       public Builder clearSeasonRewardStatus() {
         bitField0_ = (bitField0_ & ~0x00000400);
         seasonRewardStatus_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 lastSeason = 13;
+      private int lastSeason_ ;
+      /**
+       * <code>optional uint32 lastSeason = 13;</code>
+       */
+      public boolean hasLastSeason() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional uint32 lastSeason = 13;</code>
+       */
+      public int getLastSeason() {
+        return lastSeason_;
+      }
+      /**
+       * <code>optional uint32 lastSeason = 13;</code>
+       */
+      public Builder setLastSeason(int value) {
+        bitField0_ |= 0x00000800;
+        lastSeason_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 lastSeason = 13;</code>
+       */
+      public Builder clearLastSeason() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        lastSeason_ = 0;
         onChanged();
         return this;
       }
@@ -28978,47 +29059,48 @@ public final class LadderProto {
       "Ld\"R\n\026LadderSeasonConfigList\0228\n\004data\030\001 \003" +
       "(\0132*.com.trans.pixel.protoc.LadderSeason" +
       "Config\"B\n\014LadderSeason\022\016\n\006season\030\001 \002(\r\022\021" +
-      "\n\tstartTime\030\002 \002(\t\022\017\n\007endTime\030\003 \001(\t\"\364\001\n\nU" +
+      "\n\tstartTime\030\002 \002(\t\022\017\n\007endTime\030\003 \001(\t\"\210\002\n\nU" +
       "serLadder\022\014\n\004type\030\001 \001(\r\022\r\n\005score\030\002 \001(\r\022\016",
       "\n\006season\030\003 \001(\r\022\023\n\013taskProcess\030\004 \001(\r\022\031\n\021t" +
       "askRewardProcess\030\005 \001(\r\022*\n\004team\030\006 \001(\0132\034.c" +
       "om.trans.pixel.protoc.Team\022\020\n\010position\030\007" +
       " \001(\r\022\021\n\tlastScore\030\t \001(\r\022\r\n\005grade\030\n \001(\r\022\r" +
       "\n\005level\030\013 \001(\r\022\032\n\022seasonRewardStatus\030\014 \001(" +
-      "\r\"\"\n RequestLadderSeasonRewardCommand\")\n" +
-      "\031RequestLadderEnemyCommand\022\014\n\004type\030\001 \001(\r" +
-      "\"\032\n\030RequestLadderInfoCommand\"0\n RequestR" +
-      "efreshLadderEnemyCommand\022\014\n\004type\030\001 \002(\r\"O" +
-      "\n\032ResponseEnemyLadderCommand\0221\n\005enemy\030\001 ",
-      "\003(\0132\".com.trans.pixel.protoc.UserLadder\"" +
-      "O\n RequestSubmitLadderResultCommand\022\020\n\010p" +
-      "osition\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004type\030\003 \002(\r" +
-      "\" \n\036RequestLadderTaskRewardCommand\"M\n\031Re" +
-      "sponseUserLadderCommand\0220\n\004user\030\001 \003(\0132\"." +
-      "com.trans.pixel.protoc.UserLadder\"n\n\tFig" +
-      "htInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com." +
-      "trans.pixel.protoc.UserInfo\022\021\n\tfightInfo" +
-      "\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\"\034\n\032RequestGetF" +
-      "ightInfoCommand\"J\n\027RequestFightInfoComma",
-      "nd\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.proto" +
-      "c.FightInfo\"K\n\030ResponseFightInfoCommand\022" +
-      "/\n\004info\030\001 \003(\0132!.com.trans.pixel.protoc.F" +
-      "ightInfo\"!\n\037RequestGetLadderRankListComm" +
-      "and\"%\n#RequestGetUserLadderRankListComma" +
-      "nd\"V\n ResponseGetLadderRankListCommand\0222" +
-      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
-      "c.UserRank\"Z\n$ResponseGetUserLadderRankL" +
-      "istCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
-      ".pixel.protoc.UserRank\"a\n\036RequestAttackL",
-      "adderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 " +
-      "\002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(" +
-      "\003\";\n\037ResponseAttackLadderModeCommand\022\013\n\003" +
-      "ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAt" +
-      "tackLadderCommand\"/\n\037RequestGetLadderUse" +
-      "rInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPur" +
-      "chaseLadderTimeCommand\"V\n ResponseGetLad" +
-      "derUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .c" +
-      "om.trans.pixel.protoc.UserRank"
+      "\r\022\022\n\nlastSeason\030\r \001(\r\"\"\n RequestLadderSe" +
+      "asonRewardCommand\")\n\031RequestLadderEnemyC" +
+      "ommand\022\014\n\004type\030\001 \001(\r\"\032\n\030RequestLadderInf" +
+      "oCommand\"0\n RequestRefreshLadderEnemyCom" +
+      "mand\022\014\n\004type\030\001 \002(\r\"O\n\032ResponseEnemyLadde",
+      "rCommand\0221\n\005enemy\030\001 \003(\0132\".com.trans.pixe" +
+      "l.protoc.UserLadder\"O\n RequestSubmitLadd" +
+      "erResultCommand\022\020\n\010position\030\001 \002(\r\022\013\n\003ret" +
+      "\030\002 \002(\r\022\014\n\004type\030\003 \002(\r\" \n\036RequestLadderTas" +
+      "kRewardCommand\"M\n\031ResponseUserLadderComm" +
+      "and\0220\n\004user\030\001 \003(\0132\".com.trans.pixel.prot" +
+      "oc.UserLadder\"n\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/" +
+      "\n\005enemy\030\004 \001(\0132 .com.trans.pixel.protoc.U" +
+      "serInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030" +
+      "\002 \002(\t\"\034\n\032RequestGetFightInfoCommand\"J\n\027R",
+      "equestFightInfoCommand\022/\n\004info\030\001 \002(\0132!.c" +
+      "om.trans.pixel.protoc.FightInfo\"K\n\030Respo" +
+      "nseFightInfoCommand\022/\n\004info\030\001 \003(\0132!.com." +
+      "trans.pixel.protoc.FightInfo\"!\n\037RequestG" +
+      "etLadderRankListCommand\"%\n#RequestGetUse" +
+      "rLadderRankListCommand\"V\n ResponseGetLad" +
+      "derRankListCommand\0222\n\010userRank\030\001 \003(\0132 .c" +
+      "om.trans.pixel.protoc.UserRank\"Z\n$Respon" +
+      "seGetUserLadderRankListCommand\0222\n\010userRa" +
+      "nk\030\001 \003(\0132 .com.trans.pixel.protoc.UserRa",
+      "nk\"a\n\036RequestAttackLadderModeCommand\022\014\n\004" +
+      "rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022" +
+      "\024\n\014attackUserId\030\004 \001(\003\";\n\037ResponseAttackL" +
+      "adderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002" +
+      "(\t\"!\n\037RequestReadyAttackLadderCommand\"/\n" +
+      "\037RequestGetLadderUserInfoCommand\022\014\n\004rank" +
+      "\030\001 \002(\004\"\"\n RequestPurchaseLadderTimeComma" +
+      "nd\"V\n ResponseGetLadderUserInfoCommand\0222" +
+      "\n\010userRank\030\001 \002(\0132 .com.trans.pixel.proto" +
+      "c.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29144,7 +29226,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_UserLadder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserLadder_descriptor,
-              new java.lang.String[] { "Type", "Score", "Season", "TaskProcess", "TaskRewardProcess", "Team", "Position", "LastScore", "Grade", "Level", "SeasonRewardStatus", });
+              new java.lang.String[] { "Type", "Score", "Season", "TaskProcess", "TaskRewardProcess", "Team", "Position", "LastScore", "Grade", "Level", "SeasonRewardStatus", "LastSeason", });
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_fieldAccessorTable = new
