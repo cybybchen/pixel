@@ -265,6 +265,7 @@ public class RedisKey {
 	public static final String LADDER_MODE_KEY = PREFIX + CONFIG_PREFIX + "ladder_mode";
 	public static final String LADDER_EQUIP_KEY = PREFIX + CONFIG_PREFIX + "ladder_equip";
 	public static final String LADDER_SEASON_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "ladder_season";
+	public static final String LADDER_USER_HISTORY_ENEMY_KEY = PREFIX + "ladder_history_enemy_";
 	
 	//team unlock redis
 	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";

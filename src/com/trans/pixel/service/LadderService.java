@@ -120,7 +120,7 @@ public class LadderService {
 	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, type);
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
-		builder.setLastScore(builder.getScore());
+//		builder.setLastScore(builder.getScore());
 		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
@@ -172,7 +172,7 @@ public class LadderService {
 		builder.setSeasonRewardStatus(1);
 		userLadderService.updateUserLadder(builder.build());
 		
-		return seasonReward(user, userLadder.getSeason() - 1);
+		return seasonReward(user, userLadder.getLastSeason());
 	}
 	
 	private List<RewardInfo> seasonReward(UserBean user, int season) {

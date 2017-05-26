@@ -163,14 +163,14 @@ public class LadderModeCommandService extends BaseCommandService {
 			enemyBuilder.addAllEnemy(enemyMap.values());
 			responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
 			
-			if (cmd.getType() == LadderConst.TYPE_LADDER_LD) {
+//			if (cmd.getType() == LadderConst.TYPE_LADDER_LD) {
 				UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, userLadder);
 				if (pokede != null) {
 					ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 					builder.addUserEquipPokede(pokede.build());
 					responseBuilder.setEquipPokedeCommand(builder.build());
 				}
-			}
+//			}
 		}
 	}
 	
@@ -193,5 +193,10 @@ public class LadderModeCommandService extends BaseCommandService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addAllLoot(rewardList);
 		handleRewards(responseBuilder, user, rewards);
+		
+		UserLadder userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
+		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
+		userLadderBuilder.addUser(userLadder);
+		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
 	}
 }

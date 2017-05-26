@@ -86,19 +86,27 @@ public class UserLadderService {
 		if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
 			return map;
 		
+		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
-			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT, user.getId());
+			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT, user.getId(), enemyUserIdList);
 		}
 		
-		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT)//查找前一个段位的对手
-			map.putAll(userLadderRedisService.randomEnemy(type, userLadder.getGrade() - 1, LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId()));
+		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找前一个段位的对手 {
+			Map<Integer, UserLadder> beforeMap =userLadderRedisService.randomEnemy(type, userLadder.getGrade() - 1, LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId(), enemyUserIdList);
+			for (UserLadder beforeUserLadder : beforeMap.values()) {
+				if (!isExists(map, beforeUserLadder))
+					map.put(beforeUserLadder.getPosition(), beforeUserLadder);
+			}
+		}
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//从战力排行榜上随机对手
-			int randomStart = -3 + RandomUtils.nextInt(7);
-			List<UserInfo> randomUserList = userService.getRandUser(randomStart, LadderConst.RANDOM_ENEMY_COUNT - map.size() + randomStart, user);
+			int randomStart = -6 + RandomUtils.nextInt(12);
+			List<UserInfo> randomUserList = userService.getRandUser(randomStart, 12 + randomStart, user);
 			for (UserInfo userinfo : randomUserList) {
+				if (enemyUserIdList.contains(userinfo.getId()))
+					continue;
 				Team team = userTeamService.getTeamCache(userinfo.getId());
 				UserLadder enemyLadder = initUserLadder(type, userLadder.getGrade(), team, false);
 				int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
@@ -107,9 +115,13 @@ public class UserLadderService {
 					builder.setPosition(position);
 					map.put(builder.getPosition(), builder.build());
 				}
+				
+				if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
+					break;
 			}
 		}
 		
+		userLadderRedisService.addUserEnemyUserId(user, map.values());
 		userLadderRedisService.storeUserEnemy(user.getId(), type, map);
 		
 		return map;
@@ -243,6 +255,15 @@ public class UserLadderService {
 		LadderSeason ladderSeason = getLadderSeason();
 		if (userLadder == null || ladderSeason == null || userLadder.getSeason() != ladderSeason.getSeason()) {
 			return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean isExists(Map<Integer, UserLadder> map, UserLadder userLadder) {
+		for (UserLadder ul : map.values()) {
+			if (ul.getTeam().getUser().getId() == userLadder.getTeam().getUser().getId())
+				return true;
 		}
 		
 		return false;

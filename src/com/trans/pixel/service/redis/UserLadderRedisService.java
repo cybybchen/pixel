@@ -1,9 +1,11 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -12,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
+import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,8 +22,10 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class UserLadderRedisService extends RedisService{
@@ -43,7 +48,44 @@ public class UserLadderRedisService extends RedisService{
 		this.set(RedisKey.LADDER_SEASON_KEY, RedisService.formatJson(ladderSeason));
 	}
 	
-	public Map<Integer, UserLadder> randomEnemy(final int type, final int grade, final int count, final long userId) {
+	public void addUserEnemyUserId(final UserBean user, final Collection<UserLadder> userLadderList) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				
+				String key = RedisKey.LADDER_USER_HISTORY_ENEMY_KEY + user.getId();
+				BoundListOperations<String, String> blOps = redisTemplate
+						.boundListOps(key);
+				
+				
+				for (UserLadder userLadder : userLadderList)
+					blOps.rightPush("" + userLadder.getTeam().getUser().getId());
+				
+				logger.debug("bl size:" + blOps.size());
+				while (blOps.size() > 9)
+					blOps.leftPop();
+				
+				blOps.expire(RedisExpiredConst.EXPIRED_USERINFO_7DAY, TimeUnit.MILLISECONDS);
+				
+				return null;
+			}
+		});
+	}
+	
+	public List<Long> getUserEnemyUserIds(UserBean user) {
+		String key = RedisKey.LADDER_USER_HISTORY_ENEMY_KEY + user.getId();
+		List<String> userIds = this.lrange(key);
+		
+		List<Long> userIdList = new ArrayList<Long>();
+		for (String userId : userIds) {
+			userIdList.add(TypeTranslatedUtil.stringToLong(userId));
+		}
+		
+		return userIdList;
+	}
+	
+	public Map<Integer, UserLadder> randomEnemy(final int type, final int grade, final int count, final long userId, final List<Long> enemyUserIds) {
 		return redisTemplate.execute(new RedisCallback<Map<Integer, UserLadder>>() {
 			@Override
 			public Map<Integer, UserLadder> doInRedis(RedisConnection arg0)
@@ -62,8 +104,10 @@ public class UserLadderRedisService extends RedisService{
 					String value = bhOps.get("" + RandomUtils.nextInt((int)size));
 					UserLadder.Builder builder = UserLadder.newBuilder();
 					if (value != null && RedisService.parseJson(value, builder)) {
-						if (!map.containsKey(builder.getPosition()) && !userIds.contains(builder.getTeam().getUser().getId())
-								&& builder.getTeam().getUser().getId() != userId) {
+						if (!map.containsKey(builder.getPosition()) 
+								&& !userIds.contains(builder.getTeam().getUser().getId())
+								&& builder.getTeam().getUser().getId() != userId
+								&& !enemyUserIds.contains(builder.getTeam().getUser().getId())) {
 							map.put(builder.getPosition(), builder.build());
 							userIds.add(builder.getTeam().getUser().getId());
 						}
