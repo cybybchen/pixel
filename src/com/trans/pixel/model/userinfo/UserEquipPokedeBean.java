@@ -46,7 +46,7 @@ public class UserEquipPokedeBean {
 		
 		builder.setItemId(itemId);
 		builder.setLevel(level);
-		builder.setOrder(order);
+		builder.setOrder(Math.max(1, order));
 		
 		return builder.build();
 	}

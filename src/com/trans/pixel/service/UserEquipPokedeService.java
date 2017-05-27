@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.mapper.UserEquipPokedeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
-import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.service.redis.UserEquipPokedeRedisService;
 
 @Service
@@ -82,10 +80,12 @@ public class UserEquipPokedeService {
 	}
 	
 	public UserEquipPokedeBean initUserPokede(long userId, int itemId) {
-		UserEquipPokedeBean UserPokede = new UserEquipPokedeBean();
-		UserPokede.setItemId(itemId);
-		UserPokede.setUserId(userId);
+		UserEquipPokedeBean userPokede = new UserEquipPokedeBean();
+		userPokede.setItemId(itemId);
+		userPokede.setUserId(userId);
+		userPokede.setOrder(1);
 		
-		return UserPokede;
+		
+		return userPokede;
 	}
 }
