@@ -56,6 +56,7 @@ import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ServerRedisService;
+import com.trans.pixel.service.redis.UserLadderRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -93,6 +94,8 @@ public class LadderService {
 	private UserLadderService userLadderService;
 	@Resource
 	private EquipPokedeService equipPokedeService;
+	@Resource
+	private UserLadderRedisService userLadderRedisService;
 	
 	public List<UserLadder> ladderInfo(Map<Integer, UserLadder> enemyMap, UserBean user, boolean total, int type) {
 		List<UserLadder> userLadders = new ArrayList<UserLadder>();
@@ -120,8 +123,11 @@ public class LadderService {
 	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, type);
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
-//		builder.setLastScore(builder.getScore());
-		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret));
+		Map<Integer, UserLadder> map = userLadderRedisService.getUserEnemy(user.getId(), type);
+		UserLadder enemy = map.get(position);
+		if (enemy == null)
+			return null;
+		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret, enemy));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
 		builder.setPosition(position);

@@ -138,17 +138,15 @@ public class UserLadderService {
 		return userLadderList;
 	}
 	
-	public int calScore(UserBean user, UserLadder userLadder, int type, int position, int ret) {
-		Map<Integer, UserLadder> map = userLadderRedisService.getUserEnemy(user.getId(), type);
-		UserLadder enemy = map.get(position);
+	public int calScore(UserBean user, UserLadder userLadder, int type, int position, int ret, UserLadder enemy) {
 		LadderMode ladderMode = ladderRedisService.getLadderMode(userLadder.getGrade());
 		switch (ret) {
 			case 0:
 				return getWinScore(userLadder.getScore(), enemy.getScore(), ladderMode.getK());
 			case 1:
-				return getFailScore(userLadder.getScore(), enemy.getScore(), ladderMode.getK(), ladderMode.getLosepercent());
+				return Math.max(getFailScore(userLadder.getScore(), enemy.getScore(), ladderMode.getK(), ladderMode.getLosepercent()), ladderMode.getScore());
 			default:
-				return getDrawScore(userLadder.getScore(), enemy.getScore(), ladderMode.getK());
+				return Math.max(getDrawScore(userLadder.getScore(), enemy.getScore(), ladderMode.getK()), ladderMode.getScore());
 		}
 	}
 	
