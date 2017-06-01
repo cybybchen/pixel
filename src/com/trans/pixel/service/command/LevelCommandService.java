@@ -129,7 +129,7 @@ public class LevelCommandService extends BaseCommandService {
 				userLevel.setLootDaguan(userLevel.getUnlockDaguan());
 				userLevel.setLeftCount(daguan.getCount());
 				userLevel.setCoin(daguan.getGold());
-				userLevel.setExp(daguan.getExperience());
+				userLevel.setExp(daguan.getExp());
 				redis.saveUserLevel(userLevel);
 				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 				for(Event.Builder event : events.getEventBuilderList()){
@@ -228,7 +228,7 @@ public class LevelCommandService extends BaseCommandService {
 				}
 			}
 		}
-		EventExp exp = redis.getEventExp(daguan.getLv());
+		EventExp exp = redis.getEventExp(daguan.getLevel());
 		{RewardBean bean = new RewardBean();
 		bean.setItemid(exp.getItemid());
 		bean.setCount(exp.getCount());

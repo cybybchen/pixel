@@ -2699,10 +2699,10 @@ message Daguan {
 	optional int32 id = 1;
 	optional string name = 2;
 	//optional string des = 3;
-	optional int32 lv = 3;
+	optional int32 level = 3;
 	optional int32 count = 4;
 	optional int32 gold = 5;
-	optional int32 experience = 6;
+	optional int32 exp = 6;
 	optional int32 areaid = 9;
 	optional int32 merlevel = 11;
 	optional uint32 loot1 = 12;
@@ -2783,7 +2783,7 @@ message EventConfig {
 	optional int32 call = 9;
 }
 message EventConfigList {
-	repeated EventConfig id = 1;
+	repeated EventConfig data = 1;
 }
 message Event {
 	optional int32 order = 1;

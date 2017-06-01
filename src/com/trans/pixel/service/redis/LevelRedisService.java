@@ -84,7 +84,7 @@ public class LevelRedisService extends RedisService {
 			userLevel.setLeftCount(daguan.getCount());
 			userLevel.setLootDaguan(daguan.getId());
 			userLevel.setCoin(daguan.getGold());
-			userLevel.setExp(daguan.getExperience());
+			userLevel.setExp(daguan.getExp());
 			AreaEvent.Builder events = getMainEvent(daguan.getId());
 			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 			for(Event.Builder event : events.getEventBuilderList()){
@@ -97,7 +97,7 @@ public class LevelRedisService extends RedisService {
 		}else{
 			Daguan.Builder daguan = getDaguan(userLevel.getLootDaguan());
 			userLevel.setCoin(daguan.getGold());
-			userLevel.setExp(daguan.getExperience());
+			userLevel.setExp(daguan.getExp());
 		}
 		saveUserLevel(userLevel);
 		return userLevel;
@@ -469,14 +469,13 @@ public class LevelRedisService extends RedisService {
 	}
 	private Map<Integer, EventConfig.Builder> buildEvent(){
 		Map<Integer, EventConfig.Builder> map = new HashMap<Integer, EventConfig.Builder>();
-//		Map<String, String> keyvalue = new HashMap<String, String>();
 		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
 		parseXml(xml, list);
 		String xml2 = ReadConfig("ld_enemy.xml");
 		EnemyList.Builder list2 = EnemyList.newBuilder();
 		parseXml(xml2, list2);
-		for(EventConfig.Builder event : list.getIdBuilderList()){
+		for(EventConfig.Builder event : list.getDataBuilderList()){
 			for(Enemy.Builder enemy : event.getEnemyBuilderList()){
 				for(Enemy.Builder enemyconfig : list2.getDataBuilderList()){
 					if(enemy.getEnemyid() == enemyconfig.getEnemyid()) {
@@ -489,9 +488,7 @@ public class LevelRedisService extends RedisService {
 					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
 			}
 			map.put(event.getId(), event);
-//			keyvalue.put(event.getId()+"", formatJson(event));
 		}
-//		hputAll(RedisKey.EVENT_CONFIG, keyvalue);
 		return map;
 	}
 	private void buildDaguanEvent(){
