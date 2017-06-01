@@ -29,11 +29,11 @@ import com.trans.pixel.protoc.UserInfoProto.AreaEventList;
 import com.trans.pixel.protoc.UserInfoProto.AreaList;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.DaguanList;
+import com.trans.pixel.protoc.UserInfoProto.Enemy;
+import com.trans.pixel.protoc.UserInfoProto.EnemyList;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.protoc.UserInfoProto.EventConfigList;
-import com.trans.pixel.protoc.UserInfoProto.EventEnemy;
-import com.trans.pixel.protoc.UserInfoProto.EventEnemyList;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventExpList;
 import com.trans.pixel.protoc.UserInfoProto.EventLevel;
@@ -473,12 +473,12 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
 		parseXml(xml, list);
-		String xml2 = ReadConfig("ld_eventenemy.xml");
-		EventEnemyList.Builder list2 = EventEnemyList.newBuilder();
+		String xml2 = ReadConfig("ld_enemy.xml");
+		EnemyList.Builder list2 = EnemyList.newBuilder();
 		parseXml(xml2, list2);
 		for(EventConfig.Builder event : list.getIdBuilderList()){
-			for(EventEnemy.Builder enemy : event.getEnemyBuilderList()){
-				for(EventEnemy.Builder enemyconfig : list2.getIdBuilderList()){
+			for(Enemy.Builder enemy : event.getEnemyBuilderList()){
+				for(Enemy.Builder enemyconfig : list2.getDataBuilderList()){
 					if(enemy.getEnemyid() == enemyconfig.getEnemyid()) {
 						enemy.setLoot(enemyconfig.getLoot());
 						enemy.setLootweight(enemyconfig.getLootweight());
@@ -502,9 +502,9 @@ public class LevelRedisService extends RedisService {
 		AreaEventList.Builder list2 = AreaEventList.newBuilder();
 		parseXml(xml2, list2);
 		Map<Integer, EventConfig.Builder> eventmap = buildEvent();
-		for(AreaEvent.Builder area1 : list1.getIdBuilderList()){
+		for(AreaEvent.Builder area1 : list1.getDataBuilderList()){
 			for(Event.Builder event1 : area1.getEventBuilderList()){
-				for(AreaEvent.Builder area2 : list2.getIdBuilderList()){
+				for(AreaEvent.Builder area2 : list2.getDataBuilderList()){
 					for(Event.Builder event2 : area2.getEventBuilderList()){
 						if((event1.getTargetid() != 0 && event1.getCondition() != 0 ) 
 								|| (event1.getTargetid() != 0 && event1.getEventid() == event2.getEventid()) 
@@ -517,7 +517,7 @@ public class LevelRedisService extends RedisService {
 		}
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, AreaEvent.Builder> map1 = new HashMap<Integer, AreaEvent.Builder>();
-		for(AreaEvent.Builder area : list1.getIdBuilderList()){
+		for(AreaEvent.Builder area : list1.getDataBuilderList()){
 			for(int id : areaMap.keySet()){
 				if(areaMap.get(id) == area.getId()){
 					AreaEvent.Builder builder = AreaEvent.newBuilder();
@@ -549,7 +549,7 @@ public class LevelRedisService extends RedisService {
 			}
 		}
 		Map<Integer, AreaEvent.Builder> map2 = new HashMap<Integer, AreaEvent.Builder>();
-		for(AreaEvent.Builder area : list2.getIdBuilderList()){
+		for(AreaEvent.Builder area : list2.getDataBuilderList()){
 			for(int id : areaMap.keySet()){
 				if(areaMap.get(id) == area.getId()){
 					AreaEvent.Builder builder = AreaEvent.newBuilder();
@@ -617,7 +617,7 @@ public class LevelRedisService extends RedisService {
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, Integer> merlevelMap = getMerlevelConfig();
 		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
-		for(Daguan.Builder daguan : list.getIdBuilderList()){
+		for(Daguan.Builder daguan : list.getDataBuilderList()){
 			// daguan.clearName();
 //			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
@@ -802,8 +802,8 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_area.xml");
 		AreaList.Builder list = AreaList.newBuilder();
 		parseXml(xml, list);
-		for(Area.Builder area : list.getAreaBuilderList()){
-			for(Daguan.Builder daguan : area.getIdBuilderList()){
+		for(Area.Builder area : list.getDataBuilderList()){
+			for(Daguan.Builder daguan : area.getDaguanBuilderList()){
 				map.put(daguan.getId(), area.getAreaid());
 			}
 		}
@@ -815,8 +815,8 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_area.xml");
 		AreaList.Builder list = AreaList.newBuilder();
 		parseXml(xml, list);
-		for(Area.Builder area : list.getAreaBuilderList()){
-			for(Daguan.Builder daguan : area.getIdBuilderList()){
+		for(Area.Builder area : list.getDataBuilderList()){
+			for(Daguan.Builder daguan : area.getDaguanBuilderList()){
 				map.put(daguan.getId(), area.getMerlevel());
 			}
 		}

@@ -1146,8 +1146,6 @@ message IncreaseRare {
 	repeated CostItem cost = 2;
 }
 
-
-
 message Item {
 	required int32 itemId = 1;
 	required int32 itemCount = 2;
@@ -2691,11 +2689,11 @@ message MerlevelList {
 message Area {
 	optional int32 areaid = 1;
 	optional string name = 2;
-	repeated Daguan id = 3;
+	repeated Daguan daguan = 3;
 	optional int32 merlevel = 4;
 }
 message AreaList {
-	repeated Area area = 1;
+	repeated Area data = 1;
 }
 message Daguan {
 	optional int32 id = 1;
@@ -2705,18 +2703,16 @@ message Daguan {
 	optional int32 count = 4;
 	optional int32 gold = 5;
 	optional int32 experience = 6;
-	optional string bg = 7;
-	optional string layer = 8;
 	optional int32 areaid = 9;
 	optional int32 merlevel = 11;
 	optional uint32 loot1 = 12;
 	optional uint32 loot2 = 13;
 	optional uint32 loot3 = 14;
 	optional uint32 loot4 = 15;
-	optional int32 lootlist = 16;
+	optional RewardInfo lootlist = 16;
 }
 message DaguanList {
-	repeated Daguan id = 1;
+	repeated Daguan data = 1;
 }
 message EventLevel {
 	optional int32 level = 1;
@@ -2760,30 +2756,30 @@ message EventCost {
 	optional int32 costcount = 2;
 }
 message EventQuestion {
-	optional int32 answerid = 1;
 	optional string answer = 2;
 	optional int32 eventid = 3;
 }
-message EventEnemy {
-	optional int32 order = 1;
+message Enemy {
+	//optional int32 order = 1;
 	optional int32 enemyid = 2;
 	optional int32 enemycount = 3;
 	optional int32 enemylv = 4;
 	optional int32 lootweight = 5;
 	optional int32 loot = 6;
+	optional int32 count = 7;
 }
-message EventEnemyList {
-	repeated EventEnemy id = 1;
+message EnemyList {
+	repeated Enemy data = 1;
 }
 message EventConfig {
 	optional int32 id = 1;
 	optional string name = 2;
 	optional int32 type = 3;
 	optional int32 daguan = 4;
-	optional EventCost cost = 5;
-	repeated EventReward loot = 6;
+	optional RewardInfo cost = 5;
+	repeated RewardInfo lootlist = 6;
 	repeated EventQuestion question = 7;
-	repeated EventEnemy enemy = 8;
+	repeated Enemy enemy = 8;
 	optional int32 call = 9;
 }
 message EventConfigList {
@@ -2809,7 +2805,7 @@ message AreaEvent {
 	optional int32 weight = 3;
 }
 message AreaEventList {
-	repeated AreaEvent id = 1;
+	repeated AreaEvent data = 1;
 }
 message Loot {
 	optional int32 order = 1;

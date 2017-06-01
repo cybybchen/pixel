@@ -33,12 +33,11 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
+import com.trans.pixel.protoc.UserInfoProto.Enemy;
 import com.trans.pixel.protoc.UserInfoProto.Event;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
-import com.trans.pixel.protoc.UserInfoProto.EventEnemy;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
-import com.trans.pixel.protoc.UserInfoProto.EventReward;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
@@ -204,19 +203,19 @@ public class LevelCommandService extends BaseCommandService {
 
 	public List<RewardBean> eventReward(EventConfig eventconfig, Event event, UserBean user){
 		List<RewardBean> rewards = new ArrayList<RewardBean>();
-		for(EventReward eventreward : eventconfig.getLootList()){
+		for(RewardInfo eventreward : eventconfig.getLootlistList()){
 			RewardBean bean = new RewardBean();
-			bean.setItemid(eventreward.getMustloot());
-			bean.setCount(eventreward.getLootcount());
+			bean.setItemid(eventreward.getItemid());
+			bean.setCount(eventreward.getCount());
 			rewards.add(bean);
 		}
 		Daguan.Builder daguan = redis.getDaguan(event.getDaguan());
 		if(eventconfig.getType() == 0) {//only fight event
 			RewardBean bean = new RewardBean();
-			bean.setItemid(daguan.getLootlist());
+			bean.setItemid(daguan.getLootlist().getItemid());
 			bean.setCount(Math.max(1, event.getCount()));
 			rewards.add(bean);
-			for(EventEnemy enemy : eventconfig.getEnemyList()) {
+			for(Enemy enemy : eventconfig.getEnemyList()) {
 				int rewardcount = 0;
 				for(int i = 0; i < enemy.getEnemycount(); i++)
 					if(RedisService.nextInt(100) < enemy.getLootweight())
@@ -290,8 +289,8 @@ public class LevelCommandService extends BaseCommandService {
 			if(event.getTargetid() == 1 || event.getTargetid()/100 == 2)
 				pvpMapService.unlockMap(event.getTargetid()%100, 0, user);
 			if(eventconfig.getType() == 1){//buy event
-				if(eventconfig.getCost().getCostcount() == 0 || costService.cost(user, eventconfig.getCost().getCostid(), eventconfig.getCost().getCostcount())){
-		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
+				if(!eventconfig.hasCost() || eventconfig.getCost().getCount() == 0 || costService.cost(user, eventconfig.getCost().getItemid(), eventconfig.getCost().getCount())){
+		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getItemid());
 					List<RewardBean> rewards = eventReward(eventconfig, event, user);
 					handleRewards(responseBuilder, user, rewards);
 					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
@@ -299,9 +298,9 @@ public class LevelCommandService extends BaseCommandService {
 						redis.saveUserLevel(userLevel);
 					}
 				}else{
-					ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(eventconfig.getCost().getCostid()));
+					ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(eventconfig.getCost().getItemid()));
 		            responseBuilder.setErrorCommand(errorCommand);
-		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getCostid());
+		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getItemid());
 					pushLevelLootCommand(responseBuilder, userLevel, user);
 					return;
 				}
