@@ -53,7 +53,7 @@ public class UserLadderService {
 				builder.setTeam(team);
 				userLadder = builder.build();
 			} else 
-				userLadder = initUserLadder(type, 1, team, true);
+				userLadder = initUserLadder(type, 1, team, true, 0);
 			
 			if (userLadder != null)
 				userLadderRedisService.setUserLadder(userLadder);
@@ -108,7 +108,7 @@ public class UserLadderService {
 				if (enemyUserIdList.contains(userinfo.getId()))
 					continue;
 				Team team = userTeamService.getTeamCache(userinfo.getId());
-				UserLadder enemyLadder = initUserLadder(type, userLadder.getGrade(), team, false);
+				UserLadder enemyLadder = initUserLadder(type, Math.max(userLadder.getGrade() - 1, 1), team, false, userLadder.getScore());
 				int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
 				if (position != enemyLadder.getPosition()) {
 					UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
@@ -282,7 +282,7 @@ public class UserLadderService {
 		return null;
 	}
 	
-	private UserLadder initUserLadder(int type, int grade, Team team, boolean isSelf) {
+	private UserLadder initUserLadder(int type, int grade, Team team, boolean isSelf, int selfScore) {
 		LadderSeason ladderSeason = seasonUpdate();
 		if (ladderSeason == null)
 			return null;
@@ -293,7 +293,7 @@ public class UserLadderService {
 		builder.setType(type);
 		builder.setGrade(grade);
 		if (!isSelf)
-			builder.setScore(current.getScore() + RandomUtils.nextInt(next != null ? (next.getScore() - current.getScore()) : 500));
+			builder.setScore(Math.min(Math.max(current.getScore(), selfScore + RandomUtils.nextInt(200) - 100), next != null ? next.getScore() - 1 : selfScore));
 		else
 			builder.setScore(0);
 		
