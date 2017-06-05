@@ -109,6 +109,7 @@ public class LevelCommandService extends BaseCommandService {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		int id = cmd.getId();
 		redis.productEvent(user, userLevel);
+		levelLoot(userLevel, responseBuilder, user);
 		if(id > userLevel.getUnlockDaguan() && userLevel.getLeftCount() > 0){//illegal next level
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
@@ -146,7 +147,6 @@ public class LevelCommandService extends BaseCommandService {
 				activityService.levelActivity(user, id, daguan.getAreaid());
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){
-			levelLoot(userLevel, responseBuilder, user);
 			userLevel.setLootDaguan(id);
 			redis.saveUserLevel(userLevel);
 		}
@@ -177,7 +177,7 @@ public class LevelCommandService extends BaseCommandService {
 			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
 			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 			rewardService.updateUser(user);
-			handleRewards(responseBuilder, user, rewards.build());
+			pusher.pushRewardCommand(responseBuilder, user, rewards.build(), false);
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
 			pusher.pushUserInfoCommand(responseBuilder, user);
