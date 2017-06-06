@@ -197,8 +197,13 @@ public class CostService {
 					user.setPointUnion((int)(user.getPointUnion() - itemCount));
 					return true;
 				case RewardConst.ZHAOHUANSHI:
-					if(itemCount > user.getZhaohuanshi()) return false;
-					user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
+					if(itemCount > user.getZhaohuanshi() + user.getZhaohuanshi1()) return false;
+					if(itemCount > user.getZhaohuanshi()) {
+						itemCount -= user.getZhaohuanshi();
+						user.setZhaohuanshi(0);
+						user.setZhaohuanshi1((int)(user.getZhaohuanshi1() - itemCount));
+					}else
+						user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
 					return true;
 				case RewardConst.ZHUJUEEXP:
 					if (itemCount > user.getZhujueExp()) return false;
@@ -275,8 +280,13 @@ public class CostService {
 					user.setPointUnion((int)(user.getPointUnion() - itemCount));
 					return true;
 				case RewardConst.ZHAOHUANSHI:
-					if(itemCount > user.getZhaohuanshi()) return false;
-					user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
+					if(itemCount > user.getZhaohuanshi() + user.getZhaohuanshi1()) return false;
+					if(itemCount > user.getZhaohuanshi()) {
+						itemCount -= user.getZhaohuanshi();
+						user.setZhaohuanshi(0);
+						user.setZhaohuanshi1((int)(user.getZhaohuanshi1() - itemCount));
+					}else
+						user.setZhaohuanshi((int)(user.getZhaohuanshi() - itemCount));
 					return true;
 				case RewardConst.ZHUJUEEXP:
 					if (itemCount > user.getZhujueExp()) return false;
@@ -336,7 +346,7 @@ public class CostService {
 					if(itemCount > user.getPointUnion()) return false;
 					return true;
 				case RewardConst.ZHAOHUANSHI:
-					if(itemCount > user.getZhaohuanshi()) return false;
+					if(itemCount > user.getZhaohuanshi() + user.getZhaohuanshi1()) return false;
 					return true;
 				case RewardConst.ZHUJUEEXP:
 					if (itemCount > user.getZhujueExp()) return false;

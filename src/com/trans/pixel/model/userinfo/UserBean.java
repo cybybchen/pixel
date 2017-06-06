@@ -112,6 +112,7 @@ public class UserBean {
 	private int questStatus = 0;
 	private long bossRoomUserId = 0;
 	private int zhaohuanshi = 0;
+	private int zhaohuanshi1 = 0;
 	private int zhujueExp = 0;
 	private int vipExp = 0;
 	private int rewardTaskIndex = 0;
@@ -1137,6 +1138,12 @@ public class UserBean {
 	public void setZhaohuanshi(int zhaohuanshi) {
 		this.zhaohuanshi = zhaohuanshi;
 	}
+	public int getZhaohuanshi1() {
+		return zhaohuanshi1;
+	}
+	public void setZhaohuanshi1(int zhaohuanshi1) {
+		this.zhaohuanshi1 = zhaohuanshi1;
+	}
 	public int getZhujueExp() {
 		return zhujueExp;
 	}
@@ -1364,7 +1371,7 @@ public class UserBean {
 		builder.setTask1Order(task1Order);
 		builder.setTask2Record(task2Record);
 		builder.setQuestStatus(questStatus);
-		builder.setZhaohuanshi(zhaohuanshi);
+		builder.setZhaohuanshi(zhaohuanshi+zhaohuanshi1);
 		builder.setZhujueExp(zhujueExp);
 		builder.setVipExp(vipExp);
 		builder.setMerlevel(merlevel);

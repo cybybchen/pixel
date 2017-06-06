@@ -1011,7 +1011,6 @@ message Prop {
 	optional int32 judge = 7;
 	optional string endtime = 8;
 	optional int32 bossid = 9;
-	optional int32 itemcount = 10;
 	optional int32 weightall = 11;
 	repeated RewardInfo reward = 12;
 	optional uint32 autoopen = 13;
@@ -1061,6 +1060,7 @@ message Equip {
 	optional int32 ilevel = 11;
 	optional uint32 irare = 12;
 	optional uint32 heroid = 13;
+	optional int64 endtime = 10;
 	repeated EquipOrder list = 14;
 }
 
