@@ -22,7 +22,7 @@ public class LuaJTest {
 		Team.Builder builder  = Team.newBuilder();
 		HeroInfoBean heroInfo = HeroInfoBean.initHeroInfo(Hero.newBuilder().build());
 		heroInfo.setHeroId(1);
-		builder.addHeroInfo(heroInfo.buildRankHeroInfo());
+//		builder.addHeroInfo(heroInfo.buildRankHeroInfo());
 		attackteams.add(builder.build());
 		LuaValue attack = LuaValue.valueOf(userTeamService.luaTeamList(attackteams));
 		LuaValue defend = LuaValue.valueOf(userTeamService.luaTeamList(attackteams));

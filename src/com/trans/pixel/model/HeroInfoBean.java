@@ -144,6 +144,7 @@ public class HeroInfoBean {
 		json.put(HERO_ID, heroId);
 		json.put(USER_ID, userId);
 		json.put(RANK, rank);
+		json.put("sp", sp);
 		
 		return json.toString();
 	}
@@ -202,19 +203,19 @@ public class HeroInfoBean {
 		return builder.build();
 	}
 	
-	public HeroInfo buildRankHeroInfo() {
-		HeroInfo.Builder builder = HeroInfo.newBuilder();
-		builder.setEquipId(equipId);
-		builder.setHeroId(heroId);
-		builder.setLevel(level);
-//		builder.setRare(rare);
-		builder.setValue(value);
-		builder.setStar(starLevel);
-		builder.addAllSkill(buildSkillList());
-		builder.setRank(rank);
-		
-		return builder.build();
-	}
+//	public HeroInfo buildRankHeroInfo() {
+//		HeroInfo.Builder builder = HeroInfo.newBuilder();
+//		builder.setEquipId(equipId);
+//		builder.setHeroId(heroId);
+//		builder.setLevel(level);
+////		builder.setRare(rare);
+//		builder.setValue(value);
+//		builder.setStar(starLevel);
+//		builder.addAllSkill(buildSkillList());
+//		builder.setRank(rank);
+//		
+//		return builder.build();
+//	}
 	
 	public HeroInfo buildTeamHeroInfo(List<UserClearBean> userClearList, UserPokedeBean userPokede, UserEquipPokedeBean userEquipPokede) {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
