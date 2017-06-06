@@ -97,7 +97,7 @@ public class LotteryService {
     	return randomRewardList;
 	}
 	
-	public List<RewardBean> randomLotteryList(int type, int count, UserBean user) {
+	public List<RewardBean> randomLotteryList(int type, int count, UserBean user, int rmbCount) {
     	List<RewardBean> lotteryList = getLotteryList(type);
     	List<RewardBean> willLotteryList = new ArrayList<RewardBean>();
     	List<RewardBean> prdLotteryList = new ArrayList<RewardBean>();
@@ -135,9 +135,10 @@ public class LotteryService {
     					user.setHunxiaPRD(0);
     				continue;
     			} else {
-    				if (type == RewardConst.JEWEL)
-    					user.setJewelPRD(user.getJewelPRD() + 1);
-    				else
+    				if (type == RewardConst.JEWEL){
+    					if(user.getRechargeRecord() == 0 || randomLotteryList.size() < rmbCount)
+    						user.setJewelPRD(user.getJewelPRD() + 1);
+    				}else
     					user.setHunxiaPRD(user.getHunxiaPRD() + 1);
     			}	
     		}

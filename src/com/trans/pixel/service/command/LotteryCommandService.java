@@ -98,6 +98,7 @@ public class LotteryCommandService extends BaseCommandService {
 			}
 		} else {
 			cost = getLotteryCost(type, count, user);
+			int rmbCount = 0;
 			int costtype = RewardConst.COIN;
 			if (type == LotteryConst.LOOTERY_SPECIAL_TYPE)
 				costtype = RewardConst.ZHAOHUANSHI;
@@ -110,6 +111,8 @@ public class LotteryCommandService extends BaseCommandService {
 					costtype = RewardConst.ZHAOHUANSHI;
 			}
 			if (!free) {
+				if(costtype == RewardConst.ZHAOHUANSHI)
+					rmbCount = Math.max(0, count - user.getZhaohuanshi());
 				if (!costService.costAndUpdate(user, costtype, cost)) {
 					ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 					if (costtype == RewardConst.ZHAOHUANSHI)
@@ -133,7 +136,7 @@ public class LotteryCommandService extends BaseCommandService {
 			if (type != LotteryConst.LOOTERY_SPECIAL_TYPE && type != RewardConst.EQUIPMENT && ifFirstLottery(user, type) && count == 1)
 				lotteryList = firstLotteryReward(user, type);
 			else
-				lotteryList = lotteryService.randomLotteryList(type, count, user);
+				lotteryList = lotteryService.randomLotteryList(type, count, user, rmbCount);
 		}
 		
 		/**

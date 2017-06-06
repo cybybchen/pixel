@@ -319,6 +319,16 @@ public class RechargeService {
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
 		rewardList = viplibao.getOrderList();
+		RewardInfo zhsreward = null;
+		for(RewardInfo reward : rewardList) {
+			if(reward.getItemid() == RewardConst.ZHAOHUANSHI) {
+				zhsreward = reward;
+				rewardList.remove(reward);
+				user.setZhaohuanshi1(user.getZhaohuanshi1() + (int)reward.getCount());
+				userService.updateUser(user);
+				break;
+			}
+		}
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(rewardList.isEmpty()){
@@ -336,7 +346,8 @@ public class RechargeService {
 //					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
 //			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
 		}
-		
+		if(zhsreward != null)
+			rewards.addLoot(zhsreward);
 		return rewards.build();
 	}
 }
