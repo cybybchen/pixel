@@ -100,7 +100,7 @@ public class PropService {
 		Random rand = new Random();
 		int randWeight = rand.nextInt(prop.getWeightall());
 		for (int i = 0; i < prop.getItemcount(); ++i) {
-			RewardInfo item = prop.getItem(i);
+			RewardInfo item = prop.getReward(i);
 			if (randWeight < item.getWeight())
 				return item;
 			

@@ -454,7 +454,7 @@ public class PvpMapRedisService extends RedisService{
 				logger.warn("cannot build PVPBossLists");
 				return builder.build();
 			}
-			for(PVPBossConfig config : configlist.getIdList()){
+			for(PVPBossConfig config : configlist.getDataList()){
 				for(PVPDayConfig day : config.getDayList()){
 					PVPBoss.Builder boss = PVPBoss.newBuilder();
 					boss.setDay(day.getDay());

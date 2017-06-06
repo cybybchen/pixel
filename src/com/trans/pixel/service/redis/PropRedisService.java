@@ -69,7 +69,7 @@ public class PropRedisService extends RedisService {
 		}
 		
 		Map<String, Prop> map = new HashMap<String, Prop>();
-		for(Prop.Builder prop : builder.getLootBuilderList()){
+		for(Prop.Builder prop : builder.getDataBuilderList()){
 			map.put("" + prop.getItemid(), prop.build());
 		}
 		return map;
