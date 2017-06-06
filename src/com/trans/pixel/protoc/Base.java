@@ -21482,6 +21482,16 @@ public final class Base {
      * <code>optional .com.trans.pixel.protoc.UserEquipPokede equipPokede = 16;</code>
      */
     com.trans.pixel.protoc.Base.UserEquipPokedeOrBuilder getEquipPokedeOrBuilder();
+
+    // optional int32 sp = 17;
+    /**
+     * <code>optional int32 sp = 17;</code>
+     */
+    boolean hasSp();
+    /**
+     * <code>optional int32 sp = 17;</code>
+     */
+    int getSp();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.HeroInfo}
@@ -21626,6 +21636,11 @@ public final class Base {
                 equipPokede_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00002000;
+              break;
+            }
+            case 136: {
+              bitField0_ |= 0x00004000;
+              sp_ = input.readInt32();
               break;
             }
           }
@@ -22011,6 +22026,22 @@ public final class Base {
       return equipPokede_;
     }
 
+    // optional int32 sp = 17;
+    public static final int SP_FIELD_NUMBER = 17;
+    private int sp_;
+    /**
+     * <code>optional int32 sp = 17;</code>
+     */
+    public boolean hasSp() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional int32 sp = 17;</code>
+     */
+    public int getSp() {
+      return sp_;
+    }
+
     private void initFields() {
       infoId_ = 0L;
       level_ = 0;
@@ -22028,6 +22059,7 @@ public final class Base {
       rank_ = 0;
       fetters_ = "";
       equipPokede_ = com.trans.pixel.protoc.Base.UserEquipPokede.getDefaultInstance();
+      sp_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -22107,6 +22139,9 @@ public final class Base {
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(16, equipPokede_);
       }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeInt32(17, sp_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -22179,6 +22214,10 @@ public final class Base {
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(16, equipPokede_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(17, sp_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22343,6 +22382,8 @@ public final class Base {
           equipPokedeBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00008000);
+        sp_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -22449,6 +22490,10 @@ public final class Base {
         } else {
           result.equipPokede_ = equipPokedeBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.sp_ = sp_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -22560,6 +22605,9 @@ public final class Base {
         }
         if (other.hasEquipPokede()) {
           mergeEquipPokede(other.getEquipPokede());
+        }
+        if (other.hasSp()) {
+          setSp(other.getSp());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -23687,6 +23735,39 @@ public final class Base {
           equipPokede_ = null;
         }
         return equipPokedeBuilder_;
+      }
+
+      // optional int32 sp = 17;
+      private int sp_ ;
+      /**
+       * <code>optional int32 sp = 17;</code>
+       */
+      public boolean hasSp() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>optional int32 sp = 17;</code>
+       */
+      public int getSp() {
+        return sp_;
+      }
+      /**
+       * <code>optional int32 sp = 17;</code>
+       */
+      public Builder setSp(int value) {
+        bitField0_ |= 0x00010000;
+        sp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 sp = 17;</code>
+       */
+      public Builder clearSp() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        sp_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.HeroInfo)
@@ -27149,7 +27230,7 @@ public final class Base {
       "unt\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tS" +
       "killInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030",
       "\002 \002(\005\"?\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005" +
-      "\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\"\373\002\n\010HeroI" +
+      "\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\"\207\003\n\010HeroI" +
       "nfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004ra" +
       "re\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\013" +
       "2!.com.trans.pixel.protoc.SkillInfo\022\r\n\005v" +
@@ -27159,16 +27240,16 @@ public final class Base {
       "el.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022" +
       "\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipP",
       "okede\030\020 \001(\0132\'.com.trans.pixel.protoc.Use" +
-      "rEquipPokede\"\233\001\n\nRewardInfo\022\016\n\006itemid\030\001 " +
-      "\001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006" +
-      "weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006" +
-      " \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005r" +
-      "mbid\030\t \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\"|\n\004Task\022\020\n\010targeti" +
-      "d\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013ta" +
-      "rgetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.tr",
-      "ans.pixel.protoc.RewardInfo"
+      "rEquipPokede\022\n\n\002sp\030\021 \001(\005\"\233\001\n\nRewardInfo\022" +
+      "\016\n\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005cou" +
+      "nt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005" +
+      "\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventi" +
+      "d\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\"Y\n\013MultiReward\022\n\n" +
+      "\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\"|\n\004Tas" +
+      "k\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des" +
+      "\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 ",
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -27276,7 +27357,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
-              new java.lang.String[] { "InfoId", "Level", "Rare", "EquipId", "Skill", "Value", "Star", "HeroId", "Position", "IsLock", "Count", "Clear", "Strengthen", "Rank", "Fetters", "EquipPokede", });
+              new java.lang.String[] { "InfoId", "Level", "Rare", "EquipId", "Skill", "Value", "Star", "HeroId", "Position", "IsLock", "Count", "Clear", "Strengthen", "Rank", "Fetters", "EquipPokede", "Sp", });
           internal_static_com_trans_pixel_protoc_RewardInfo_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new

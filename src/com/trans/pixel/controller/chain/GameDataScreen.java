@@ -45,6 +45,7 @@ import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
+import com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.HeroProto.RequestLockHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand;
@@ -1398,6 +1399,12 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		ladderModeCommandService.ladderenemy(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHeroSpUpCommand cmd, Builder responseBuilder, UserBean user) {
+		heroCommandService.heroSpUp(cmd, responseBuilder, user);
+		return false;
 	}
 
 }

@@ -50,11 +50,12 @@ public class CostService {
 	};
 	
 	public boolean costAndUpdate(UserBean user, int itemId, long itemCount) {
-		boolean needUpdateUser = cost(user, itemId, itemCount);
-		if (needUpdateUser)
+		if(cost(user, itemId, itemCount)) {
 			userService.updateUser(user);
+			return true;
+		}
 		
-		return needUpdateUser;
+		return false;
 	}
 	
 	public boolean cost(UserBean user, MultiReward costs) {

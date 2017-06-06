@@ -18,7 +18,8 @@ public enum ErrorConst implements ResultConst {
 	UNLOCK_ORDER_ERROR(2042, "请按顺序解锁"),NOT_ENOUGH_ZHANLI(2043, "需要更高的战力"),USER_HAS_UNION(2044, "该玩家已加入其他公会"),
     GET_REWARD_AGAIN(2045, "请勿重复领取"), LADDER_RANK_ISCHANGED_ERROR(2046, "天梯排行榜已更新"), BROTHER_VIP_IS_NOT_ENOUGH(2047, "你的大哥VIP等级不足"),
     CREATE_UNION_ERROR(2048, "公会创建失败"),AREA_OWNER_BUSY(2049, "领主不能退出公会"),EVENT_FIRST(2050, "请继续通关相关事件"),MERLEVEL_FIRST(2051, "请先提升您的佣兵团等级"),
-    SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"),
+    SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"), HERO_STAR_FIRST(2055, "请先提升英雄星级"), 
+    ERROR_SKILL_STONE(2056, "技能石不足"), 
     
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放，请选择其他服务器游戏"), 
@@ -37,7 +38,7 @@ public enum ErrorConst implements ResultConst {
     UPDATE_TEAM_ERROR(1038, "更新队伍信息异常"), HERO_LIMIT_ERROR(1039, "人物数量已达上限"), YOUR_FRIEND_MAX_ERROR(1040, "你的好友数已达上限"), THE_PERSON_FRIEND_MAX_ERROR(1041, "该玩家好友数已达上限"),
     LOOT_PACKAGE_LIMIT_ERROR(1042, "挂机背包数量已达上限"), HEAD_NOT_EXIST(1043, "不存在该头像"), LOTTERY_ACTIVITY_TIME_ERROR(1044, "不在活动周期内"),
     BLACK_NOSAY_ERROR(1045, "你已被禁止发言"), BLACK_USER_ERROR(1046, "该角色已被封"), BLACK_ACCOUNT_ERROR(1047, "该帐号已被封"),
-    ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "充值异常"), LEVELUP_RARE_NOT_ENOUGH_EQUIP_ERROR(1050, "装备不足，升阶异常"),
+    ACTIVITY_IS_OVER_ERROR(1048, "活动已过期"), NOT_WRITE_USER_ERROR(1049, "充值异常"), LEVELUP_RARE_NOT_ENOUGH_EQUIP_ERROR(1050, "材料不足"),
     
     FOOD_CAN_NOT_ADDED_ERROR(3001, "无法食用"), FOOD_NOT_ENOUGH(3002, "食物数量不足"), CLEAR_IS_LOCKED_ERROR(3003, "该洗练位还未解锁"), FOOD_SALE_ERROR(3004, "食物出售异常"), 
     HERO_CLEAR_LEVEL_IS_LIMIT_ERROR(3005, "英雄等级已达上限"), CLEAR_CHOSE_ERROR(3006, "洗练结果异常"), HERO_STRENGTHEN_ERROR(3007, "英雄强化异常"),

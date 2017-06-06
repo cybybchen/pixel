@@ -15,11 +15,14 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.SkillInfoBean;
 import com.trans.pixel.model.SkillLevelBean;
-import com.trans.pixel.model.StarBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.EquipProto.Material;
+import com.trans.pixel.protoc.ExtraProto.Star;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
+import com.trans.pixel.service.redis.EquipRedisService;
+import com.trans.pixel.service.redis.StarRedisService;
 
 @Service
 public class HeroLevelUpService {
@@ -32,7 +35,7 @@ public class HeroLevelUpService {
 	
 	private static final int HERO_MAX_LEVEL = 60;
 	
-	private static final int RESET_SKILL_COST_JEWEL = 200;
+	private static final int RESET_SKILL_COST = 10000;
 	
 	@Resource
 	private UserService userService;
@@ -47,11 +50,13 @@ public class HeroLevelUpService {
 	@Resource
 	private UserEquipService userEquipService;
 	@Resource
+	private EquipRedisService equipRedisService;
+	@Resource
 	private HeroRareService heroRareService;
 	@Resource
 	private SkillService skillService;
 	@Resource
-	private StarService starService;
+	private StarRedisService starService;
 	@Resource
 	private ActivityService activityService;
 	@Resource
@@ -97,8 +102,8 @@ public class HeroLevelUpService {
 	}
 	
 	public ResultConst resetHeroSkill(UserBean user, HeroInfoBean heroInfo) {
-		if (!costService.cost(user, RewardConst.JEWEL, RESET_SKILL_COST_JEWEL))
-			return ErrorConst.NOT_ENOUGH_JEWEL;
+		if (!costService.cost(user, RewardConst.COIN , RESET_SKILL_COST))
+			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
@@ -120,6 +125,9 @@ public class HeroLevelUpService {
 		if (heroInfo.getLevel() >= HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
+		Star star = starService.getStar(heroInfo.getStarLevel());
+		if(star != null && heroInfo.getLevel() >= star.getMaxlevel())
+			return ErrorConst.HERO_STAR_FIRST;
 		long useExp = heroService.getLevelUpExp(heroInfo.getLevel() + 1);
 		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
 			return ErrorConst.NOT_ENOUGH_EXP;
@@ -144,6 +152,9 @@ public class HeroLevelUpService {
 		if (heroInfo.getLevel() >= HERO_MAX_LEVEL || heroInfo.getLevel() + level > HERO_MAX_LEVEL) {
 			return ErrorConst.HERO_LEVEL_MAX;
 		}
+		Star star = starService.getStar(heroInfo.getStarLevel());
+		if(star != null && heroInfo.getLevel() + level > star.getMaxlevel())
+			return ErrorConst.HERO_STAR_FIRST;
 		long useExp = heroService.getLevelUpExp(heroInfo.getLevel(), level);
 		if (!costService.costAndUpdate(user, RewardConst.EXP, useExp)) {
 			return ErrorConst.NOT_ENOUGH_EXP;
@@ -170,15 +181,31 @@ public class HeroLevelUpService {
 		if (heroInfo.getStarLevel() == 7)
 			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
-		ResultConst result = ErrorConst.HERO_STAR_NOT_LEVELUP;
+		Star star = starService.getStar(heroInfo.getStarLevel());
+		if (heroInfo.getLevel() < star.getMaxlevel())
+			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
-		int addValue = calValues(user, costInfoIds);
-		if(addValue < 0)
-			return ErrorConst.HERO_LOCKED; 
+		int addValue = 0;
+		for (long infoId : costInfoIds) {
+			HeroInfoBean hero = userHeroService.selectUserHero(user.getId(), infoId);
+			if (hero != null) {
+				if(hero.isLock()){//不能分解
+					costInfoIds.clear();
+					return ErrorConst.HERO_LOCKED;
+				}else if(hero.getStarLevel() != star.getStar() && hero.getLevel() < star.getLevel()){
+					costInfoIds.clear();
+					return ErrorConst.HERO_STAR_NOT_LEVELUP;
+				}
+				addValue += 1;
+			}
+		}
 
 		heroInfo.setValue(heroInfo.getValue() + addValue);
-		calHeroStar(heroInfo);
-		result = SuccessConst.STAR_LEVELUP_SUCCESS;
+		
+		if (star != null && heroInfo.getValue() >= star.getCount() && heroInfo.getStarLevel() < 7) {
+			heroInfo.setValue(0);
+			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
+		}
 		
 		/**
 		 * 更新图鉴
@@ -196,43 +223,37 @@ public class HeroLevelUpService {
 		Hero hero = heroService.getHero(heroInfo.getHeroId());
 		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, hero.getQuality(), hero.getPosition());
 		
-		return result;
-	}
-	
-	private void calHeroStar(HeroInfoBean heroInfo) {
-		StarBean star = starService.getStarBean(heroInfo.getStarLevel() + 1);
-		while (star != null && heroInfo.getValue() >= star.getUpvalue() && heroInfo.getStarLevel() < 7) {
-			heroInfo.setValue(heroInfo.getValue() - star.getUpvalue());
-			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
-			star = starService.getStarBean(heroInfo.getStarLevel() + 1);
-		}
-	}
-	
-	private int calValues(UserBean user, List<Long> costInfoIds) {
-		int addValue = 0;
-		for (long infoId : costInfoIds) {
-			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
-			if (heroInfo != null) {
-				if(heroInfo.isLock()){//不能分解
-					costInfoIds.clear();
-					return -1;
-				}
-				StarBean star = starService.getStarBean(heroInfo.getStarLevel());
-				addValue += star.getValue();
-			}
-		}
-		
-		return addValue;
+		return SuccessConst.STAR_LEVELUP_SUCCESS;
 	}
 	
 	private ResultConst levelUpRare(UserBean user, HeroInfoBean heroInfo, List<UserEquipBean> equipList) {
-		HeroRareLevelupRank herorareRank = heroRareService.getHeroRare(heroInfo);
-		if (herorareRank == null) {
+		HeroRareLevelupRank herorare = heroRareService.getHeroRare(heroInfo);
+		if (herorare == null) {
 			return ErrorConst.LEVELUP_RARE_ERROR;
 		}
+//		Hero hero = heroService.getHero(heroInfo.getHeroId());
 		
-		if (!equipService.canHeroRareLevelup(user, heroInfo, herorareRank, equipList))
-			return ErrorConst.LEVELUP_RARE_NOT_ENOUGH_EQUIP_ERROR;
+		equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip1(), 
+				userEquipService.selectUserEquip(user.getId(), herorare.getEquip1()).getEquipCount() - herorare.getCount1()));
+//		if (hero.getQuality() >= 2)
+			equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip2(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip2()).getEquipCount() - herorare.getCount2()));
+		
+//		if (hero.getQuality() >= 3)
+			equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip3(), 
+					userEquipService.selectUserEquip(user.getId(), herorare.getEquip3()).getEquipCount() - herorare.getCount3()));
+		
+		int fordiamond = 0;
+		for (UserEquipBean userEquip : equipList) {
+			if (userEquip.getEquipCount() < 0) {
+				Material material = equipRedisService.getMaterial(userEquip.getEquipId());
+				fordiamond -= material.getFordiamond() * userEquip.getEquipCount();
+				userEquip.setEquipCount(0);
+			}
+		}
+		
+		if(fordiamond != 0 && costService.costAndUpdate(user, RewardConst.JEWEL, fordiamond))
+			return ErrorConst.NOT_ENOUGH_JEWEL;
 		
 		heroInfo.levelUpRare();
 		
@@ -303,16 +324,18 @@ public class HeroLevelUpService {
 			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
 		}
 		
-		if (!skillService.hasEnoughSP(heroInfo, skillInfo.getId(), heroInfo.getRank())) {
+		int needSP = skillService.getSkillLevel(skillInfo.getId()).getSp();
+		if (needSP <= heroInfo.getSp())
+			heroInfo.setSp(heroInfo.getSp() - needSP);
+		else
 			return ErrorConst.SP_NOT_ENOUGH;
-		}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 		
-		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getId());
-		int costCoin = skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel();
-		log.debug("levelup skill level is:" + skillInfo.getSkillLevel());
-		log.debug("skill level up cost is:" + costCoin);
-		if (!costService.costAndUpdate(user, RewardConst.COIN, costCoin))
-				return ErrorConst.NOT_ENOUGH_COIN;
+//		SkillLevelBean skillLevel = skillService.getSkillLevel(skillInfo.getId());
+//		int costCoin = skillLevel.getGold() + skillLevel.getGoldlv() * skillInfo.getSkillLevel();
+//		log.debug("levelup skill level is:" + skillInfo.getSkillLevel());
+//		log.debug("skill level up cost is:" + costCoin);
+//		if (!costService.costAndUpdate(user, RewardConst.COIN, costCoin))
+//				return ErrorConst.NOT_ENOUGH_COIN;
 				
 		int skilllevel = heroInfo.upgradeSkill(skillId);
 		

@@ -44,8 +44,8 @@ public class EquipService {
 	private UserPropService userPropService;
 	@Resource
 	private EquipRedisService equipRedisService;
-	@Resource
-	private FenjieService fenjieService;
+//	@Resource
+//	private FenjieService fenjieService;
 	@Resource
 	private RewardService rewardService;
 	@Resource
@@ -158,8 +158,7 @@ public class EquipService {
 			it = updateEquipMap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<Integer, Integer> entry = it.next();
-				UserEquipBean userEquip = UserEquipBean.initUserEquip(entry.getKey(), entry.getValue());
-				userEquip.setUserId(userId);
+				UserEquipBean userEquip = UserEquipBean.initUserEquip(userId, entry.getKey(), entry.getValue());
 				userEquipService.updateUserEquip(userEquip);
 				returnUserEquipList.add(userEquip);
 			}
@@ -200,27 +199,6 @@ public class EquipService {
 			
 		}
 		return rewardList;
-	}
-	
-	public boolean canHeroRareLevelup(UserBean user, HeroInfoBean heroInfo, HeroRareLevelupRank herorare, List<UserEquipBean> equipList) {
-		Hero hero = heroService.getHero(heroInfo.getHeroId());
-			
-		equipList.add(UserEquipBean.initUserEquip(herorare.getEquip1(), 
-				userEquipService.selectUserEquip(user.getId(), herorare.getEquip1()).getEquipCount() - herorare.getCount1()));
-//		if (hero.getQuality() >= 2)
-			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip2(), 
-					userEquipService.selectUserEquip(user.getId(), herorare.getEquip2()).getEquipCount() - herorare.getCount2()));
-		
-//		if (hero.getQuality() >= 3)
-			equipList.add(UserEquipBean.initUserEquip(herorare.getEquip3(), 
-					userEquipService.selectUserEquip(user.getId(), herorare.getEquip3()).getEquipCount() - herorare.getCount3()));
-		
-		for (UserEquipBean userEquip : equipList) {
-			if (userEquip.getEquipCount() < 0)
-				return false;
-		}
-		
-		return true;
 	}
 	
 	private int getSaleRewardCount(int itemId, int itemCount) {

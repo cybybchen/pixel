@@ -89,20 +89,13 @@ public class SkillService {
 		return true;
 	}
 	
-	public boolean hasEnoughSP(HeroInfoBean heroInfo, int id, int rank) {
-		Upgrade upgrade = heroService.getUpgrade(heroInfo.getLevel());
-		
-		int needSP = getSkillLevel(id).getSp();
+	public int getSP(HeroInfoBean heroInfo) {
+		int sp = 0;
 		for (SkillInfoBean skillInfo : heroInfo.getSkillInfoList()) {
 			SkillLevelBean skillLevel = getSkillLevel(skillInfo.getId());
-			needSP += skillLevel.getSp() * skillInfo.getSkillLevel();
+			sp += skillLevel.getSp() * skillInfo.getSkillLevel();
 		}
-		
-		Rankvalue rankvalue = heroRedisService.getRankvalu(rank);
-		if (needSP <= upgrade.getSp() + rankvalue.getSp())
-			return true;
-		
-		return false;
+		return sp;
 	}
 	
 	public int getResetCoin(List<SkillInfoBean> skillInfoList) {

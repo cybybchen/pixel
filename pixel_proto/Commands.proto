@@ -198,6 +198,7 @@ message HeroInfo {
 	optional int32 rank = 14;
 	optional string fetters = 15;
 	optional UserEquipPokede equipPokede = 16;
+	optional int32 sp = 17;
 }
 
 message RewardInfo {
@@ -532,6 +533,26 @@ message ResponsePurchaseCoinCommand {
 	optional int32 leftTime = 4;//当日剩余次数
 	optional int32 totalTime = 5;//次数
 }
+////////// ExtraProto
+message Star {
+	optional int32 id = 1;
+	optional int32 maxlevel = 2;
+	optional int32 maxskill = 3;
+	optional int32 star = 4;
+	optional int32 level = 5;
+	optional int32 count = 6;
+}
+message StarList {
+	repeated Star data = 1;
+}
+
+message Fenjie {
+	optional int32 id = 1;
+	optional RewardInfo lootlist = 2;
+}
+message FenjieList {
+	repeated Fenjie data = 1;
+}
 ////////// HeroProto
 message UserHero {
 	required int64 userId = 1;
@@ -811,8 +832,8 @@ message Heroloot {
 }
 
 message RequestLockHeroCommand {
-	required int32 heroId = 2;
-	required int64 infoId = 3;
+	optional int32 heroId = 2;
+	optional int64 infoId = 3;
 	optional bool isLock = 4;
 }
 
@@ -842,6 +863,12 @@ message ResponseDeleteHeroCommand {
 message RequestResetHeroSkillCommand {
 	required int32 heroId = 1;
 	required int64 infoId = 2;
+}
+
+message RequestHeroSpUpCommand {
+	required int32 heroId = 1;
+	required int64 infoId = 2;
+	required int32 count = 3;
 }
 
 message UserTeam {
@@ -970,14 +997,14 @@ message ResponseUserTalentCommand {
 }
 ////////// EquipProto
 message PropList {
-	repeated Prop loot = 1;
+	repeated Prop data = 1;
 }
 
 message Prop {
 	optional int32 itemid = 1;
 	optional string name = 2;
-	optional int32 img = 3;
-	optional int32 rare = 4;
+	//optional int32 img = 3;
+	//optional int32 rare = 4;
 	optional int32 cost = 5;
 	//optional string description = 5;
 	optional int32 hashero = 6;
@@ -986,7 +1013,7 @@ message Prop {
 	optional int32 bossid = 9;
 	optional int32 itemcount = 10;
 	optional int32 weightall = 11;
-	repeated RewardInfo item = 12;
+	repeated RewardInfo reward = 12;
 	optional uint32 autoopen = 13;
 }
 
@@ -1012,16 +1039,14 @@ message Chip {
 }
 
 message MaterialList {
-	repeated Material id = 1;
+	repeated Material data = 1;
 }
-
 message Material {
-	optional uint32 id = 1;
+	optional int32 itemid = 1;
 	optional string name = 2;
-	optional uint32 img = 3;
-	optional uint32 rare = 4;
-	optional uint32 cost = 5;
-	optional uint32 des = 6;
+	optional int32 rare = 4;
+	optional int32 cost = 5;
+	optional int32 fordiamond = 6;
 	optional string endtime = 7;
 }
 
@@ -1266,7 +1291,7 @@ message PVPBossConfig {
 	repeated PVPDayConfig day = 2;
 }
 message PVPBossConfigList {
-	repeated PVPBossConfig id = 1;
+	repeated PVPBossConfig data = 1;
 }
 
 message PVPPosition {//pvp位置
@@ -3561,6 +3586,7 @@ message RequestCommand {
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
+	optional RequestHeroSpUpCommand heroSpUpCommand = 49;
 	optional RequestSendMailCommand sendMailCommand = 58;
 	optional RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;
 	optional RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;

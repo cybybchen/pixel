@@ -208,8 +208,7 @@ public class UserService {
 		if (userEquip != null && userEquip.getEquipCount() >= addCount)
 			return;
 		
-		userEquip = UserEquipBean.initUserEquip(addId, addCount);
-		userEquip.setUserId(user.getId());
+		userEquip = UserEquipBean.initUserEquip(user.getId(), addId, addCount);
 		userEquipService.updateUserEquip(userEquip);
 	}
 	public void handleRewardTaskDailyReward(UserBean user, int eventid) {

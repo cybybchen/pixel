@@ -20,14 +20,21 @@ public class HeroInfoBean {
 	private int heroId = 0;
 	private int level = 1;
 	private int starLevel = 1;
-	private int value = 1;
+	private int value = 1;//升星进度
 //	private int rare = 1;
 	private boolean isLock = false;
 	private int equipId = 0;
 	private List<SkillInfoBean> skillInfoList = new ArrayList<SkillInfoBean>();
 	private long userId = 0;
+	private int sp = 0;//技能点
 	private String skillInfo = "";
 	private int rank = 0;
+	public int getSp() {
+		return sp;
+	}
+	public void setSp(int skillpoint) {
+		this.sp = skillpoint;
+	}
 	public String getSkillInfo() {
 		return skillInfo;
 	}
@@ -163,6 +170,7 @@ public class HeroInfoBean {
 		bean.setLock(TypeTranslatedUtil.jsonGetBoolean(json, LOCK));
 		bean.setHeroId(TypeTranslatedUtil.jsonGetInt(json, HERO_ID));
 		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
+		bean.setSp(TypeTranslatedUtil.jsonGetInt(json, "sp"));
 //		bean.setPosition(TypeTranslatedUtil.jsonGetInt(json, POSITION));
 		
 		List<SkillInfoBean> list = new ArrayList<SkillInfoBean>();
@@ -187,6 +195,7 @@ public class HeroInfoBean {
 		builder.setStar(starLevel);
 		builder.setIsLock(isLock);
 		builder.setHeroId(heroId);
+		builder.setSp(sp);
 		builder.addAllSkill(buildSkillList());
 		builder.setRank(rank);
 		
@@ -341,7 +350,7 @@ public class HeroInfoBean {
 	public boolean unlockSkill(Hero hero, List<SkillLevelBean> skillLevelList) {
 		boolean addNewSkill = false;
 		for (SkillLevelBean skillLevel : skillLevelList) {
-			if (starLevel >= skillLevel.getUnlock()) {
+//			if (starLevel >= skillLevel.getUnlock()) {
 				if (!contains(skillLevel)) {
 					SkillInfoBean skillInfo = SkillInfoBean.initSkillInfo(hero.getSkillList(), skillLevel.getUnlock(), skillInfoList.size());
 					if (skillInfo != null)
@@ -349,7 +358,7 @@ public class HeroInfoBean {
 					
 					addNewSkill = true;
 				}
-			}
+//			}
 		}
 		
 		return addNewSkill;

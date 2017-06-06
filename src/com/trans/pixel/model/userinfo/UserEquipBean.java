@@ -5,16 +5,9 @@ import net.sf.json.JSONObject;
 import com.trans.pixel.protoc.EquipProto.UserEquip;
 
 public class UserEquipBean {
-	private long id = 0;
 	private long userId = 0;
 	private int equipId = 0;
 	private int equipCount = 0;
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public long getUserId() {
 		return userId;
 	}
@@ -36,7 +29,6 @@ public class UserEquipBean {
 	
 	public String toJson() {
 		JSONObject json = new JSONObject();
-		json.put(ID, id);
 		json.put(USER_ID, userId);
 		json.put(EQUIP_ID, equipId);
 		json.put(EQUIP_COUNT, equipCount);
@@ -49,7 +41,6 @@ public class UserEquipBean {
 		UserEquipBean bean = new UserEquipBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
 		
-		bean.setId(json.getLong(ID));
 		bean.setUserId(json.getLong(USER_ID));
 		bean.setEquipId(json.getInt(EQUIP_ID));
 		bean.setEquipCount(json.getInt(EQUIP_COUNT));
@@ -66,15 +57,15 @@ public class UserEquipBean {
 		return builder.build();
 	}
 	
-	public static UserEquipBean initUserEquip(int equipId, int equipCount) {
-		UserEquipBean userEquip = new UserEquipBean();
-		userEquip.setEquipId(equipId);
-		userEquip.setEquipCount(equipCount);
+	public static UserEquipBean initUserEquip(long userId, int equipId, int equipCount) {
+		UserEquipBean bean = new UserEquipBean();
+		bean.setUserId(userId);
+		bean.setEquipId(equipId);
+		bean.setEquipCount(equipCount);
 		
-		return userEquip;
+		return bean;
 	}
 	
-	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String EQUIP_ID = "equip_id";
 	private static final String EQUIP_COUNT = "equip_count";

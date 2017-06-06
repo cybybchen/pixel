@@ -175,6 +175,7 @@ import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.protoc.UnionProto.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
+import com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopCommand;
@@ -372,6 +373,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestHeroSpUpCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFenjieEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -1107,6 +1109,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasLadderTaskRewardCommand()) {
 			RequestLadderTaskRewardCommand cmd = request.getLadderTaskRewardCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasHeroSpUpCommand()) {
+			RequestHeroSpUpCommand cmd = request.getHeroSpUpCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLevelStartCommand()) {

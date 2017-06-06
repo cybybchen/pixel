@@ -276,8 +276,8 @@ public class EquipRedisService extends RedisService {
 		}
 		
 		Map<String, Material> map = new HashMap<String, Material>();
-		for(Material.Builder material : builder.getIdBuilderList()){
-			map.put("" + material.getId(), material.build());
+		for(Material.Builder material : builder.getDataBuilderList()){
+			map.put("" + material.getItemid(), material.build());
 		}
 		return map;
 	}
