@@ -128,8 +128,8 @@ public class HeroCommandService extends BaseCommandService {
 		logger.debug(System.currentTimeMillis());
 		if (heroInfo != null) {
 			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, equipList);
-			if (result instanceof SuccessConst)
-				skillService.unlockHeroSkill(heroId, heroInfo);
+//			if (result instanceof SuccessConst)
+//				skillService.unlockHeroSkill(heroId, heroInfo);
 		}
 		logger.debug(System.currentTimeMillis());
 		if (result instanceof ErrorConst) {

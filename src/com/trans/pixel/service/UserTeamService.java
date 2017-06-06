@@ -20,7 +20,6 @@ import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.TeamEngine;
-import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
