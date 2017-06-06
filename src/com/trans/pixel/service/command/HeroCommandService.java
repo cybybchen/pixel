@@ -397,8 +397,8 @@ public class HeroCommandService extends BaseCommandService {
             pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}else {
 //			int resetCoin = skillService.getResetCoin(heroInfo.getSkillInfoList());
-			heroInfo.resetHeroSkill();
 			heroInfo.setSp(heroInfo.getSp()+skillService.getSP(heroInfo));
+			heroInfo.resetHeroSkill();
 			userHeroService.updateUserHero(heroInfo);
 			
 //			List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.COIN, resetCoin);
