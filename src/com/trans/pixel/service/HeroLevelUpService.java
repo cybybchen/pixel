@@ -14,7 +14,6 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.SkillInfoBean;
-import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.EquipProto.Material;
@@ -247,6 +246,7 @@ public class HeroLevelUpService {
 		for (UserEquipBean userEquip : equipList) {
 			if (userEquip.getEquipCount() < 0) {
 				Material material = equipRedisService.getMaterial(userEquip.getEquipId());
+				//EquipCount为负所以用-=
 				fordiamond -= material.getFordiamond() * userEquip.getEquipCount();
 				userEquip.setEquipCount(0);
 			}

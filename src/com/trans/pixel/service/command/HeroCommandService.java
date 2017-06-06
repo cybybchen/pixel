@@ -17,7 +17,6 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -144,7 +143,7 @@ public class HeroCommandService extends BaseCommandService {
 			if (costInfoIds.size() > 0){
 				long addExp = 0;
 				int addCoin = 0;
-				List<RewardBean> rewardList = new ArrayList<RewardBean>();
+//				List<RewardBean> rewardList = new ArrayList<RewardBean>();
 				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
 				for(long costId : costInfoIds){
 					HeroInfoBean delHeroInfo = userHeroService.selectUserHero(userId, costId);
@@ -165,16 +164,16 @@ public class HeroCommandService extends BaseCommandService {
 					herobuilder.setInfoId(costId);
 					deleteHeroBuilder.addHeroInfo(herobuilder.build());
 				}
-				if (addExp > 0)
-					rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
-				if (addCoin > 0)
-					rewardList.add(RewardBean.init(RewardConst.COIN, addCoin));
+//				if (addExp > 0)
+//					rewardList.add(RewardBean.init(RewardConst.EXP, addExp));
+//				if (addCoin > 0)
+//					rewardList.add(RewardBean.init(RewardConst.COIN, addCoin));
 				
 				userHeroService.delUserHero(user.getId(), costInfoIds);
 				
-				if (rewardList.size() > 0) {
-					handleRewards(responseBuilder, user, rewardList);
-				}
+//				if (rewardList.size() > 0) {
+//					handleRewards(responseBuilder, user, rewardList);
+//				}
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
 		}
@@ -264,6 +263,7 @@ public class HeroCommandService extends BaseCommandService {
 					if(reward == null){
 						reward = RewardInfo.newBuilder();
 						reward.setItemid(fenjie.getLootlist().getItemid());
+						rewardmap.put(heroconf.getQuality(), reward);
 					}
 					reward.setCount(reward.getCount() + fenjie.getLootlist().getCount());
 //					if (heroInfo.getRank() > 0) {
