@@ -318,7 +318,7 @@ public class RechargeService {
 			return null;	
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
-		rewardList = viplibao.getRewardList();
+		rewardList.addAll(viplibao.getRewardList());
 		RewardInfo zhsreward = null;
 		for(RewardInfo reward : rewardList) {
 			if(reward.getItemid() == RewardConst.ZHAOHUANSHI) {
