@@ -171,7 +171,7 @@ public class TaskService {
 					boolean hasModify = false;
 					
 					if (ut.getHeroidList().contains(heroId)) {
-						return;
+						continue;
 					}
 					
 					for (TaskOrder order : task.getOrderList()) {
