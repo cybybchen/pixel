@@ -78,6 +78,9 @@ public class RewardService {
 	/**
 	 * need updateuser when return true
 	 */
+	public boolean doReward(UserBean user, int rewardId, long rewardCount) {
+		return doReward(user, rewardId, rewardCount, 0);
+	}
 	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime) {
 		if (rewardId > RewardConst.AREAEQUIPMENT) {
 			areaService.addAreaEquip(user, rewardId, (int)rewardCount);

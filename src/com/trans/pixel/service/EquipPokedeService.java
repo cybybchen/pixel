@@ -109,7 +109,7 @@ public class EquipPokedeService {
 			return null;
 		
 		if (pokede == null)
-			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId);
+			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId, 0);
 		log.debug("11:" + itemId + ":22:" + order);
 		
 		Equip equip = equipService.getEquip(itemId);
