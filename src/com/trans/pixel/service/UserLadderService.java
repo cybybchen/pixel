@@ -66,6 +66,16 @@ public class UserLadderService {
 		userLadderRedisService.setUserLadder(userLadder);
 	}
 	
+	public void refreshUserLadder(UserBean user) {
+		UserLadder userLadder = userLadderRedisService.getUserLadder(user.getId(), LadderConst.TYPE_LADDER_NORMAL);
+		if (userLadder != null) {
+			UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+			builder.setTaskProcess(0);
+			builder.setTaskRewardProcess(0);
+			updateUserLadder(builder.build());
+		}
+	}
+	
 	public void updateToDB(long userId, int type) {
 		UserLadder userLadder = userLadderRedisService.getUserLadder(userId, type);
 		if(userLadder != null ) {

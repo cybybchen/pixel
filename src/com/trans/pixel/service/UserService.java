@@ -90,6 +90,8 @@ public class UserService {
 	private ZhanliRedisService zhanliRedisService;
 	@Resource
 	private RankRedisService rankRedisService;
+	@Resource
+	private UserLadderService userLadderService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -175,6 +177,7 @@ public class UserService {
 		handleVipDailyReward(user);
 		handleLibaoDailyReward(user, today0);
 		handleRewardTaskDailyReward(user);	
+		userLadderService.refreshUserLadder(user);
 		
 		//累计登录的活动
 		activityService.loginActivity(user);
