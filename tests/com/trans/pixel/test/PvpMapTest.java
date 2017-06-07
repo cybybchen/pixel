@@ -75,8 +75,8 @@ public class PvpMapTest extends BaseTest {
 	private void attackMonster(RequestCommand request) {
 		int monsterid = 0;
 		for(PVPMap map : maplist.getFieldList()){
-			if (map.getMonsterCount() > 0) {
-				monsterid = map.getMonster(0).getPositionid();
+			if (map.getEventCount() > 0) {
+				monsterid = map.getEvent(0).getPositionid();
 				break;
 			}
 		}

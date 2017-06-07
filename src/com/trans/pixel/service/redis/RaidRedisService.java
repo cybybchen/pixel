@@ -10,7 +10,6 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RaidList;
-import com.trans.pixel.protoc.TaskProto.RaidOrder;
 
 @Repository
 public class RaidRedisService extends RedisService{
@@ -860,34 +859,34 @@ public class RaidRedisService extends RedisService{
 	public boolean hasRaidOrder(int id){
 		return hget(RedisKey.RAIDORDER_CONFIG, id+"") != null;
 	}
-	public RaidOrder getRaidOrder(int id){
-		String value = hget(RedisKey.RAIDORDER_CONFIG, id+"");
-		RaidOrder.Builder builder = RaidOrder.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		else{
-			buildRaid();
-			value = hget(RedisKey.RAIDORDER_CONFIG, id+"");
-			if(value != null && parseJson(value, builder))
-				return builder.build();
-		}
-		return null;
-	}
+//	public RaidOrder getRaidOrder(int id){
+//		String value = hget(RedisKey.RAIDORDER_CONFIG, id+"");
+//		RaidOrder.Builder builder = RaidOrder.newBuilder();
+//		if(value != null && parseJson(value, builder))
+//			return builder.build();
+//		else{
+//			buildRaid();
+//			value = hget(RedisKey.RAIDORDER_CONFIG, id+"");
+//			if(value != null && parseJson(value, builder))
+//				return builder.build();
+//		}
+//		return null;
+//	}
 
 	public void buildRaid(){
-		Map<String, String> raidvalue = new HashMap<String, String>();
-		Map<String, String> ordervalue = new HashMap<String, String>();
-		String xml = ReadConfig("ld_raidloot.xml");
-		RaidList.Builder list = RaidList.newBuilder();
-		parseXml(xml, list);
-		for(Raid.Builder raid : list.getIdBuilderList()){
-			for(RaidOrder.Builder order : raid.getOrderBuilderList()){
-				ordervalue.put(raid.getId()*100+order.getOrder()+"", formatJson(order.build()));
-			}
-			raid.clearOrder();
-			raidvalue.put(raid.getId()+"", formatJson(raid.build()));
-		}
-		hputAll(RedisKey.RAID_CONFIG, raidvalue);
-		hputAll(RedisKey.RAIDORDER_CONFIG, ordervalue);
+//		Map<String, String> raidvalue = new HashMap<String, String>();
+//		Map<String, String> ordervalue = new HashMap<String, String>();
+//		String xml = ReadConfig("ld_raidloot.xml");
+//		RaidList.Builder list = RaidList.newBuilder();
+//		parseXml(xml, list);
+//		for(Raid.Builder raid : list.getIdBuilderList()){
+//			for(RaidOrder.Builder order : raid.getOrderBuilderList()){
+//				ordervalue.put(raid.getId()*100+order.getOrder()+"", formatJson(order.build()));
+//			}
+//			raid.clearOrder();
+//			raidvalue.put(raid.getId()+"", formatJson(raid.build()));
+//		}
+//		hputAll(RedisKey.RAID_CONFIG, raidvalue);
+//		hputAll(RedisKey.RAIDORDER_CONFIG, ordervalue);
 	}
 }

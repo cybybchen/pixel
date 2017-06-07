@@ -1144,7 +1144,7 @@ public class ShopRedisService extends RedisService{
 		VipLibaoList.Builder list = VipLibaoList.newBuilder();
 		Map<String, String> keyvalue = new HashMap<String, String>();
 		parseXml(xml, list);
-		for(VipLibao libao : list.getIdList()){
+		for(VipLibao libao : list.getDataList()){
 			keyvalue.put(libao.getItemid()+"", formatJson(libao));
 			if(libao.getItemid() == id)
 				builder = VipLibao.newBuilder(libao);

@@ -132,7 +132,7 @@ public class PushCommandService extends BaseCommandService {
 	public void pushPvpMapListCommand(Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
-		builder.addAllField(maplist.getFieldList());
+		builder.addAllField(maplist.getDataList());
 		builder.setBuff(maplist.getBuff());
 		builder.setEndTime(user.getRefreshPvpMapTime());
 		responseBuilder.setPvpMapListCommand(builder);

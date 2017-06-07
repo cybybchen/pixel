@@ -76,7 +76,7 @@ public class PvpMapService {
 	}
 	public ResultConst unlockMap(int fieldid, int zhanli, UserBean user) {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
-		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
+		for(PVPMap.Builder map : maplist.getDataBuilderList()){
 			if(map.getFieldid() == fieldid){
 //				if(zhanli >= map.getZhanli()){
 //				if(user.getMerlevel() >= map.getMerlevel()){
@@ -143,7 +143,7 @@ public class PvpMapService {
 		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<UserInfo> ranks = userService.getRandUser(-5, 10, user);//刷新一个对手
 		List<PVPMap> fields = new ArrayList<PVPMap>();
-		for(PVPMap map : maplist.getFieldList()){
+		for(PVPMap map : maplist.getDataList()){
 			if(map.getOpened())
 				fields.add(map);
 		}
@@ -151,7 +151,7 @@ public class PvpMapService {
 			PVPMap map = fields.get(redis.nextInt(fields.size()));
 			refreshMine(map, ranks, mineMap, user, 3);
 		}
-		for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+		for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
 			if(!mapBuilder.getOpened())
 				continue;
 			for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
@@ -184,7 +184,7 @@ public class PvpMapService {
 			List<UserInfo> ranks = userService.getRandUser(-5, 10, user);//每张地图刷新一个对手
 			if(ranks.isEmpty())
 				return;
-			for(PVPMap map : maplist.getFieldList())
+			for(PVPMap map : maplist.getDataList())
 				refreshMine(map, ranks, mineMap, user, count);
 		}
 	}
@@ -240,7 +240,7 @@ public class PvpMapService {
 				maplist.setBuff(Integer.parseInt(buff));
 			else
 				maplist.setBuff(0);
-			for(PVPMap.Builder mapBuilder : maplist.getFieldBuilderList()){
+			for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
 				if(!mapBuilder.getOpened())
 					continue;
 				buff = pvpMap.get(mapBuilder.getFieldid()+"");
@@ -256,8 +256,8 @@ public class PvpMapService {
 						mineBuilder.mergeFrom(mine);
 				}
 				for(PVPMonster monster : monsters){
-					if(monster.getFieldid() == mapBuilder.getFieldid())
-						mapBuilder.addMonster(monster);
+//					if(monster.getFieldid() == mapBuilder.getFieldid())
+//						mapBuilder.addEvent(monster);
 				}
 			}
 		}
@@ -271,7 +271,7 @@ public class PvpMapService {
 		long time = redis.now()/3600*3600;
 		if(time > user.getPvpMineGainTime()){//收取资源
 			int resource = 0;
-			for(PVPMap map : maplist.getFieldList()){
+			for(PVPMap map : maplist.getDataList()){
 				if(!map.getOpened())
 					continue;
 				resource += map.getYield();
@@ -401,7 +401,7 @@ public class PvpMapService {
 					PVPMine othermine = redis.getMine(userId, id);
 					if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId()) {
 						PVPMapList.Builder maplist = redis.getMapList(userId, 0);
-						for (PVPMap map : maplist.getFieldList()) {
+						for (PVPMap map : maplist.getDataList()) {
 							if (map.getFieldid() == id / 100 && map.getOpened()) {
 								mine.setEndTime(redis.now()+24*3600);
 

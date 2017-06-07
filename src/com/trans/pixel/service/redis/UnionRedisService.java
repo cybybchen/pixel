@@ -434,7 +434,7 @@ public class UnionRedisService extends RedisService{
 		}
 		
 		Map<String, UnionBosswin> map = new HashMap<String, UnionBosswin>();
-		for(UnionBosswin.Builder boss : builder.getBossBuilderList()){
+		for(UnionBosswin.Builder boss : builder.getDataBuilderList()){
 			map.put("" + boss.getId(), boss.build());
 		}
 		return map;

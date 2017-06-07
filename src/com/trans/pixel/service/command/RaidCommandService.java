@@ -10,13 +10,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.TaskProto.Raid;
-import com.trans.pixel.protoc.TaskProto.RaidOrder;
-import com.trans.pixel.protoc.TaskProto.RaidReward;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
 import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
@@ -43,13 +39,13 @@ public class RaidCommandService extends BaseCommandService{
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
 		Raid raid = redis.getRaid(cmd.getId());
 		int lastid = redis.getRaid(user);
-		if(costService.cost(user, raid.getCostid(), raid.getCostcount())){
+		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount())){
 			int id = raid.getId()*100+1;
 			redis.saveRaid(user, id);
 			ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 			builder.setId(id);
 			responseBuilder.setRaidCommand(builder);
-			pusher.pushUserDataByRewardId(responseBuilder, user, raid.getCostid());
+			pusher.pushUserDataByRewardId(responseBuilder, user, raid.getCost().getItemid());
 
 			Map<String, String> params = new HashMap<String, String>();
 			params.put(LogString.USERID, "" + user.getId());
@@ -69,47 +65,47 @@ public class RaidCommandService extends BaseCommandService{
 	public void startRaid(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user){
 		int myid = redis.getRaid(user);
 		int id = myid;
-		RaidOrder order = redis.getRaidOrder(myid);
-		if(id != cmd.getId() || order == null){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else if(cmd.getRet()){
-			MultiReward.Builder rewards = MultiReward.newBuilder();
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			for(RaidReward raidReward : order.getLootList()){
-				if(RedisService.nextInt(100) < raidReward.getWeight()) {
-					reward.setItemid(raidReward.getLootid());
-					reward.setCount(raidReward.getLootcount());
-					rewards.addLoot(reward);
-				}
-			}
-			handleRewards(responseBuilder, user, rewards.build());
-			
-			id++;
-//			order = redis.getRaidOrder(id);
-			if(!redis.hasRaidOrder(id)) {
-				/**
-				 * 通关副本的活动
-				 */
-				activityService.raidKill(user, id / 100);
-				id = 0;
-			}
-			redis.saveRaid(user, id);
-		}else if(!cmd.getRet() && cmd.getTurn() == 0){
-			id = 0;
-			redis.saveRaid(user, id);
-		}
-		if(order != null) {
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(LogString.USERID, "" + user.getId());
-		params.put(LogString.SERVERID, "" + user.getServerId());
-		params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
-		params.put(LogString.INSTANCEID, "" + myid);
-		params.put(LogString.BOSSID, "" + order.getEnemyid());
-		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myid : 0));
-		logService.sendLog(params, LogString.LOGTYPE_RAID);
-		}
+//		RaidOrder order = redis.getRaidOrder(myid);
+//		if(id != cmd.getId() || order == null){
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
+//            responseBuilder.setErrorCommand(errorCommand);
+//		}else if(cmd.getRet()){
+//			MultiReward.Builder rewards = MultiReward.newBuilder();
+//			RewardInfo.Builder reward = RewardInfo.newBuilder();
+//			for(RaidReward raidReward : order.getLootList()){
+//				if(RedisService.nextInt(100) < raidReward.getWeight()) {
+//					reward.setItemid(raidReward.getLootid());
+//					reward.setCount(raidReward.getLootcount());
+//					rewards.addLoot(reward);
+//				}
+//			}
+//			handleRewards(responseBuilder, user, rewards.build());
+//			
+//			id++;
+////			order = redis.getRaidOrder(id);
+//			if(!redis.hasRaidOrder(id)) {
+//				/**
+//				 * 通关副本的活动
+//				 */
+//				activityService.raidKill(user, id / 100);
+//				id = 0;
+//			}
+//			redis.saveRaid(user, id);
+//		}else if(!cmd.getRet() && cmd.getTurn() == 0){
+//			id = 0;
+//			redis.saveRaid(user, id);
+//		}
+//		if(order != null) {
+//		Map<String, String> params = new HashMap<String, String>();
+//		params.put(LogString.USERID, "" + user.getId());
+//		params.put(LogString.SERVERID, "" + user.getServerId());
+//		params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
+//		params.put(LogString.INSTANCEID, "" + myid);
+//		params.put(LogString.BOSSID, "" + order.getEnemyid());
+//		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myid : 0));
+//		logService.sendLog(params, LogString.LOGTYPE_RAID);
+//		}
 
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 		builder.setId(id);

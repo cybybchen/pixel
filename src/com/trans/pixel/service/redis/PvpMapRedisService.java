@@ -43,8 +43,8 @@ public class PvpMapRedisService extends RedisService{
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		PVPMapList.Builder maplist = getBasePvpMapList();
 		if(value != null && parseJson(value, builder)) {
-			for(PVPMap.Builder map : maplist.getFieldBuilderList()){
-				for(PVPMap.Builder map2 : builder.getFieldBuilderList()){
+			for(PVPMap.Builder map : maplist.getDataBuilderList()){
+				for(PVPMap.Builder map2 : builder.getDataBuilderList()){
 					 if(map.getFieldid() == map2.getFieldid())
 						map.setOpened(map2.getOpened());
 				}
@@ -52,7 +52,7 @@ public class PvpMapRedisService extends RedisService{
 			return maplist;
 		}
 //		maplist.getFieldBuilder(0).setOpened(true);
-		for(PVPMap.Builder map : maplist.getFieldBuilderList()){
+		for(PVPMap.Builder map : maplist.getDataBuilderList()){
 			 if(map.getFieldid() <= pvpUnlock)
 				map.setOpened(true);
 		}
@@ -71,7 +71,7 @@ public class PvpMapRedisService extends RedisService{
 	
 	public void saveMapList(PVPMapList maplist, long userId) {
 		PVPMapList.Builder builder = PVPMapList.newBuilder(maplist);
-		for(PVPMap.Builder field : builder.getFieldBuilderList()) {
+		for(PVPMap.Builder field : builder.getDataBuilderList()) {
 			field.clearKuangdian();
 			field.clearBuffimg();
 		}
@@ -100,7 +100,7 @@ public class PvpMapRedisService extends RedisService{
 			return buff;
 		}
 		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
-		for(PVPMap map : maplist.getFieldList()){
+		for(PVPMap map : maplist.getDataList()){
 			if(map.getFieldid() == id){
 				buff += buffcount;
 				if(buff > map.getBufflimit())
@@ -226,14 +226,14 @@ public class PvpMapRedisService extends RedisService{
 			PVPMapList.Builder pvpmap = getMapList(user.getId(), user.getPvpUnlock());
 			if(refreshBoss){
 				List<Integer> fieldids = new ArrayList<Integer>();
-				for(PVPMap map : pvpmap.getFieldList()){
+				for(PVPMap map : pvpmap.getDataList()){
 					if(map.getOpened())
 						fieldids.add(map.getFieldid());
 				}
 				if(fieldids.isEmpty())
-					fieldids.add(pvpmap.getField(0).getFieldid());
+					fieldids.add(pvpmap.getData(0).getFieldid());
 				bosses.clearId();
-				for(PVPBoss boss : getBossConfig().getBossList()) {
+				for(PVPBoss boss : getBossConfig().getDataList()) {
 					if(boss.getDay() == weekday()){
 						PVPMonster.Builder builder = PVPMonster.newBuilder();
 						builder.setId(boss.getId());
@@ -459,7 +459,7 @@ public class PvpMapRedisService extends RedisService{
 					PVPBoss.Builder boss = PVPBoss.newBuilder();
 					boss.setDay(day.getDay());
 					boss.setId(config.getId());
-					builder.addBoss(boss);
+					builder.addData(boss);
 				}
 			}
 			set(RedisKey.PVPBOSS_CONFIG, formatJson(builder.build()));
@@ -507,14 +507,14 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public Map<String, PVPPositionList> buildPositionConfig(){
-		String xml = ReadConfig("ld_pvppoint.xml");
+		String xml = ReadConfig("ld_pvpposition.xml");
 		PVPPositionLists.Builder builder = PVPPositionLists.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build PVPPositionLists");
 			return null;
 		}
 		Map<String, PVPPositionList> map = new HashMap<String, PVPPositionList>();
-		for(PVPPositionList.Builder positionlist : builder.getIdBuilderList()){
+		for(PVPPositionList.Builder positionlist : builder.getDataBuilderList()){
 			for(PVPPosition.Builder position : positionlist.getOrderBuilderList())
 				position.setOrder(position.getOrder()+positionlist.getFieldid()*100);
 			map.put(positionlist.getFieldid()+"", positionlist.build());

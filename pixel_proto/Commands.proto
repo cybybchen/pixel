@@ -229,6 +229,21 @@ message Task {
         repeated RewardInfo reward = 5;
 }
 
+message Event {
+        optional int32 order = 1;
+        optional int32 eventid = 2;
+        optional string name = 3;
+        optional int32 daguan = 4;
+        optional int32 conditiontype = 5;
+        optional int32 condition = 6;
+        optional int32 targetid = 7;
+        optional string targetdes = 8;
+        optional int32 weight = 9;
+        optional int32 level = 10;
+        optional int32 count = 11;
+        optional int32 eventcount = 12;
+}
+
 ////////// ShopProto
 message ContractWeightList {
 	repeated ContractWeight quality = 1;
@@ -778,18 +793,13 @@ message HeroSkill {
 }
 
 message UpgradeList {
-	repeated Upgrade level = 1;
+	repeated Upgrade data = 1;
 }
 
 message Upgrade {
 	optional int32 level = 1;
 	optional int32 sp = 2;
 	optional int64 exp = 3;
-	optional float hp = 4;
-	optional float arm = 5;
-	optional float mr = 6;
-	optional float ad = 7;
-	optional float ap = 8;
 }
 
 message UserFood {
@@ -810,7 +820,7 @@ message Strengthen {
 }
 
 message HerolootList {
-	repeated Heroloot id = 1;
+	repeated Heroloot data = 1;
 }
 
 message Heroloot {
@@ -819,7 +829,7 @@ message Heroloot {
 	optional int32 star = 3;
 	optional int32 count = 4;
 	optional string name = 5;
-	optional string description = 6;
+	//optional string des = 6;
 }
 
 message RequestLockHeroCommand {
@@ -1008,24 +1018,16 @@ message Prop {
 }
 
 message ChipList {
-	repeated Chip id = 1;
+	repeated Chip data = 1;
 }
 
 message Chip {
 	required int32 itemid = 1;
-	required string itemname = 2;
-	required int32 img = 3;
+	required string name = 2;
 	required int32 rare = 4;
 	required int32 cost = 5;
-	optional string description = 7;
 	optional int32 aim = 8;
 	optional int32 count = 9;
-	optional int32 lootid1 = 10;
-	optional int32 loot1 = 11;
-	optional int32 lootid2 = 12;
-	optional int32 loot2 = 13;
-	optional int32 lootid3 = 14;
-	optional int32 loot3 = 15;
 }
 
 message MaterialList {
@@ -1138,7 +1140,7 @@ message Armor {
 }
 
 message EquipIncreaseList {
-	repeated EquipIncrease level = 1;
+	repeated EquipIncrease data = 1;
 }
 
 message EquipIncrease {
@@ -1149,17 +1151,17 @@ message EquipIncrease {
 }
 
 message IncreaseLevelList {
-	repeated IncreaseLevel level = 1;
+	repeated IncreaseLevel data = 1;
 }
 
 message IncreaseLevel {
 	optional int32 level = 1;
-	repeated IncreaseRare rare = 2;
+	repeated IncreaseRare rares = 2;
 }
 
 message IncreaseRare {
 	optional int32 rare = 1;
-	repeated CostItem cost = 2;
+	repeated RewardInfo cost = 2;
 }
 
 message Item {
@@ -1248,10 +1250,9 @@ message PVPMonsterRewardList {
 	repeated PVPMonsterReward enemy = 1;
 }
 
-message PVPMonster {//pvp怪物Config
-	required int32 id = 1;
+message PVPEvent {//pvp事件Config
+	required int32 eventid = 1;
 	optional string name = 2;
-	optional int32 boss = 3;//站立
 	optional int32 fieldid = 4;//区域ID
 	optional int32 buffcount = 5;//增加的buff层数
 	optional int32 weight = 12;//出现几率
@@ -1262,6 +1263,21 @@ message PVPMonster {//pvp怪物Config
 	optional string starttime = 13;
 	optional string endtime = 14;
 }
+message PVPMonster {//pvp怪物Config
+        required int32 id = 1;
+        optional string name = 2;
+        optional int32 boss = 3;//站立
+        optional int32 fieldid = 4;//区域ID
+        optional int32 buffcount = 5;//增加的buff层数
+        optional int32 weight = 12;//出现几率
+        optional int32 x = 8;//坐标x
+        optional int32 y = 9;//坐标y
+        optional int32 positionid = 10;
+        optional int32 level = 11;
+        optional string starttime = 13;
+        optional string endtime = 14;
+}
+
 message PVPMonsterList {
 	repeated PVPMonster id = 1;
 }
@@ -1271,7 +1287,7 @@ message PVPBoss {
 	optional int32 day = 2;
 }
 message PVPBossList {
-	repeated PVPBoss boss = 1;
+	repeated PVPBoss data = 1;
 }
 
 message PVPDayConfig {
@@ -1295,7 +1311,7 @@ message PVPPositionList {
 	repeated PVPPosition order = 3;
 }
 message PVPPositionLists {
-	repeated PVPPositionList id = 1;
+	repeated PVPPositionList data = 1;
 }
 
 message PVPMine {//pvp矿点
@@ -1324,10 +1340,10 @@ message PVPMap {
 	optional string img = 12;
 	optional string buffimg = 13;
 	repeated PVPMine kuangdian = 3;
-	repeated PVPMonster monster = 4;
+	repeated PVPEvent event = 4;
 }
 message PVPMapList {
-	repeated PVPMap field = 1;
+	repeated PVPMap data = 1;
 	optional int32 buff = 2;
 }
 
@@ -1855,16 +1871,13 @@ message RequestSevenLoginSignCommand {
 message VipLibao {
 	optional int32 itemid = 1;
 	optional string name = 2;
-	optional string img = 3;
-	optional int32 rare = 4;
-	optional string description = 5;
 	optional int32 value = 6;
 	optional int32 cost = 7;
-	repeated RewardInfo order = 8;
+	repeated RewardInfo reward = 8;
 }
 
 message VipLibaoList {
-	repeated VipLibao id = 1;
+	repeated VipLibao data = 1;
 }
 
 message VipInfo {
@@ -2801,20 +2814,6 @@ message EventConfig {
 message EventConfigList {
 	repeated EventConfig data = 1;
 }
-message Event {
-	optional int32 order = 1;
-	optional int32 eventid = 2;
-	optional string name = 3;
-	optional int32 daguan = 4;
-	optional int32 conditiontype = 5;
-	optional int32 condition = 6;
-	optional int32 targetid = 7;
-	optional string targetdes = 8;
-	optional int32 weight = 9;
-        optional int32 level = 10;
-        optional int32 count = 11;
-	optional int32 eventcount = 12;
-}
 message AreaEvent {
 	optional int32 id = 1;
 	repeated Event event = 2;
@@ -3171,7 +3170,7 @@ message UnionBosslootItem {
 }
 
 message UnionBosswinList {
-	repeated UnionBosswin boss = 1;
+	repeated UnionBosswin data = 1;
 }
 
 message UnionBosswin {
@@ -3441,25 +3440,15 @@ message RequestGetTaskRewardCommand {
 	optional int32 heroid = 3;//支线任务的排序
 }
 
-message RaidReward {
-	optional int32 lootid = 1;
-	optional int32 lootcount = 2;
-	optional int32 weight = 3;
-}
-message RaidOrder {
-	optional int32 order = 1;
-	optional int32 enemyid = 2;
-	repeated RaidReward loot = 3;
-}
 message Raid {
 	optional int32 id = 1;
-	optional int32 costid = 2;
-	optional int32 costcount = 3;
+	optional RewardInfo cost = 2;
 	optional string name = 4;
-	repeated RaidOrder order = 5;
+	optional int32 lv = 3;
+	repeated Event event = 5;
 }
 message RaidList {
-        repeated Raid id = 1;
+        repeated Raid data = 1;
 }
 message RequestOpenRaidCommand {
 	optional int32 id = 1;

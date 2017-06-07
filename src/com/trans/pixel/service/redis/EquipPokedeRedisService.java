@@ -63,7 +63,7 @@ public class EquipPokedeRedisService extends RedisService {
 		}
 		
 		Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
-		for(EquipIncrease.Builder chip : builder.getLevelBuilderList()){
+		for(EquipIncrease.Builder chip : builder.getDataBuilderList()){
 			map.put("" + chip.getLevel(), chip.build());
 		}
 		return map;
@@ -114,7 +114,7 @@ public class EquipPokedeRedisService extends RedisService {
 		}
 		
 		Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
-		for(IncreaseLevel.Builder increase : builder.getLevelBuilderList()){
+		for(IncreaseLevel.Builder increase : builder.getDataBuilderList()){
 			map.put("" + increase.getLevel(), increase.build());
 		}
 		return map;

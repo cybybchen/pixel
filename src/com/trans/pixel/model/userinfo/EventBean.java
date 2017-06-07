@@ -1,6 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
-import com.trans.pixel.protoc.UserInfoProto.Event;
+import com.trans.pixel.protoc.Base.Event;
 
 import net.sf.json.JSONObject;
 

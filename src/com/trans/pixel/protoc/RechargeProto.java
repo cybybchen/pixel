@@ -3844,46 +3844,6 @@ public final class RechargeProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional string img = 3;
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    boolean hasImg();
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    java.lang.String getImg();
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getImgBytes();
-
-    // optional int32 rare = 4;
-    /**
-     * <code>optional int32 rare = 4;</code>
-     */
-    boolean hasRare();
-    /**
-     * <code>optional int32 rare = 4;</code>
-     */
-    int getRare();
-
-    // optional string description = 5;
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    boolean hasDescription();
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    java.lang.String getDescription();
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
-
     // optional int32 value = 6;
     /**
      * <code>optional int32 value = 6;</code>
@@ -3904,29 +3864,29 @@ public final class RechargeProto {
      */
     int getCost();
 
-    // repeated .com.trans.pixel.protoc.RewardInfo order = 8;
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
     java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
-        getOrderList();
+        getRewardList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    com.trans.pixel.protoc.Base.RewardInfo getOrder(int index);
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    int getOrderCount();
+    int getRewardCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getOrderOrBuilderList();
+        getRewardOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getOrderOrBuilder(
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
         int index);
   }
   /**
@@ -3990,37 +3950,22 @@ public final class RechargeProto {
               name_ = input.readBytes();
               break;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              img_ = input.readBytes();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              rare_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              description_ = input.readBytes();
-              break;
-            }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000004;
               value_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000008;
               cost_ = input.readInt32();
               break;
             }
             case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-                order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000080;
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000010;
               }
-              order_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -4031,8 +3976,8 @@ public final class RechargeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
-          order_ = java.util.Collections.unmodifiableList(order_);
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4125,108 +4070,6 @@ public final class RechargeProto {
       }
     }
 
-    // optional string img = 3;
-    public static final int IMG_FIELD_NUMBER = 3;
-    private java.lang.Object img_;
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    public boolean hasImg() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    public java.lang.String getImg() {
-      java.lang.Object ref = img_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          img_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getImgBytes() {
-      java.lang.Object ref = img_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        img_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 rare = 4;
-    public static final int RARE_FIELD_NUMBER = 4;
-    private int rare_;
-    /**
-     * <code>optional int32 rare = 4;</code>
-     */
-    public boolean hasRare() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 rare = 4;</code>
-     */
-    public int getRare() {
-      return rare_;
-    }
-
-    // optional string description = 5;
-    public static final int DESCRIPTION_FIELD_NUMBER = 5;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string description = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // optional int32 value = 6;
     public static final int VALUE_FIELD_NUMBER = 6;
     private int value_;
@@ -4234,7 +4077,7 @@ public final class RechargeProto {
      * <code>optional int32 value = 6;</code>
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 value = 6;</code>
@@ -4250,7 +4093,7 @@ public final class RechargeProto {
      * <code>optional int32 cost = 7;</code>
      */
     public boolean hasCost() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 cost = 7;</code>
@@ -4259,51 +4102,48 @@ public final class RechargeProto {
       return cost_;
     }
 
-    // repeated .com.trans.pixel.protoc.RewardInfo order = 8;
-    public static final int ORDER_FIELD_NUMBER = 8;
-    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> order_;
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
+    public static final int REWARD_FIELD_NUMBER = 8;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getOrderList() {
-      return order_;
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getOrderOrBuilderList() {
-      return order_;
+        getRewardOrBuilderList() {
+      return reward_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    public int getOrderCount() {
-      return order_.size();
+    public int getRewardCount() {
+      return reward_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    public com.trans.pixel.protoc.Base.RewardInfo getOrder(int index) {
-      return order_.get(index);
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
      */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getOrderOrBuilder(
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
         int index) {
-      return order_.get(index);
+      return reward_.get(index);
     }
 
     private void initFields() {
       itemid_ = 0;
       name_ = "";
-      img_ = "";
-      rare_ = 0;
-      description_ = "";
       value_ = 0;
       cost_ = 0;
-      order_ = java.util.Collections.emptyList();
+      reward_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4324,22 +4164,13 @@ public final class RechargeProto {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getImgBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, rare_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getDescriptionBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, value_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(7, cost_);
       }
-      for (int i = 0; i < order_.size(); i++) {
-        output.writeMessage(8, order_.get(i));
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(8, reward_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4360,27 +4191,15 @@ public final class RechargeProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getImgBytes());
+          .computeInt32Size(6, value_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, rare_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getDescriptionBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, value_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, cost_);
       }
-      for (int i = 0; i < order_.size(); i++) {
+      for (int i = 0; i < reward_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, order_.get(i));
+          .computeMessageSize(8, reward_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4490,7 +4309,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getOrderFieldBuilder();
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4503,21 +4322,15 @@ public final class RechargeProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        img_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        rare_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         value_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000004);
         cost_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
-          orderBuilder_.clear();
+          rewardBuilder_.clear();
         }
         return this;
       }
@@ -4558,31 +4371,19 @@ public final class RechargeProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.img_ = img_;
+        result.value_ = value_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.rare_ = rare_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.description_ = description_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.value_ = value_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
         result.cost_ = cost_;
-        if (orderBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
-            order_ = java.util.Collections.unmodifiableList(order_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
-          result.order_ = order_;
+          result.reward_ = reward_;
         } else {
-          result.order_ = orderBuilder_.build();
+          result.reward_ = rewardBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4608,48 +4409,35 @@ public final class RechargeProto {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasImg()) {
-          bitField0_ |= 0x00000004;
-          img_ = other.img_;
-          onChanged();
-        }
-        if (other.hasRare()) {
-          setRare(other.getRare());
-        }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000010;
-          description_ = other.description_;
-          onChanged();
-        }
         if (other.hasValue()) {
           setValue(other.getValue());
         }
         if (other.hasCost()) {
           setCost(other.getCost());
         }
-        if (orderBuilder_ == null) {
-          if (!other.order_.isEmpty()) {
-            if (order_.isEmpty()) {
-              order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
-              ensureOrderIsMutable();
-              order_.addAll(other.order_);
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
             }
             onChanged();
           }
         } else {
-          if (!other.order_.isEmpty()) {
-            if (orderBuilder_.isEmpty()) {
-              orderBuilder_.dispose();
-              orderBuilder_ = null;
-              order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000080);
-              orderBuilder_ = 
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getOrderFieldBuilder() : null;
+                   getRewardFieldBuilder() : null;
             } else {
-              orderBuilder_.addAllMessages(other.order_);
+              rewardBuilder_.addAllMessages(other.reward_);
             }
           }
         }
@@ -4787,194 +4575,13 @@ public final class RechargeProto {
         return this;
       }
 
-      // optional string img = 3;
-      private java.lang.Object img_ = "";
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public boolean hasImg() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public java.lang.String getImg() {
-        java.lang.Object ref = img_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          img_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getImgBytes() {
-        java.lang.Object ref = img_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          img_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder setImg(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        img_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder clearImg() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        img_ = getDefaultInstance().getImg();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder setImgBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        img_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rare = 4;
-      private int rare_ ;
-      /**
-       * <code>optional int32 rare = 4;</code>
-       */
-      public boolean hasRare() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 rare = 4;</code>
-       */
-      public int getRare() {
-        return rare_;
-      }
-      /**
-       * <code>optional int32 rare = 4;</code>
-       */
-      public Builder setRare(int value) {
-        bitField0_ |= 0x00000008;
-        rare_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rare = 4;</code>
-       */
-      public Builder clearRare() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rare_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string description = 5;
-      private java.lang.Object description_ = "";
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 5;</code>
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        description_ = value;
-        onChanged();
-        return this;
-      }
-
       // optional int32 value = 6;
       private int value_ ;
       /**
        * <code>optional int32 value = 6;</code>
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 value = 6;</code>
@@ -4986,7 +4593,7 @@ public final class RechargeProto {
        * <code>optional int32 value = 6;</code>
        */
       public Builder setValue(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000004;
         value_ = value;
         onChanged();
         return this;
@@ -4995,7 +4602,7 @@ public final class RechargeProto {
        * <code>optional int32 value = 6;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0;
         onChanged();
         return this;
@@ -5007,7 +4614,7 @@ public final class RechargeProto {
        * <code>optional int32 cost = 7;</code>
        */
       public boolean hasCost() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 cost = 7;</code>
@@ -5019,7 +4626,7 @@ public final class RechargeProto {
        * <code>optional int32 cost = 7;</code>
        */
       public Builder setCost(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000008;
         cost_ = value;
         onChanged();
         return this;
@@ -5028,250 +4635,250 @@ public final class RechargeProto {
        * <code>optional int32 cost = 7;</code>
        */
       public Builder clearCost() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000008);
         cost_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.RewardInfo order = 8;
-      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> order_ =
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 8;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
-      private void ensureOrderIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
-          order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(order_);
-          bitField0_ |= 0x00000080;
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000010;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> orderBuilder_;
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getOrderList() {
-        if (orderBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(order_);
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
         } else {
-          return orderBuilder_.getMessageList();
+          return rewardBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public int getOrderCount() {
-        if (orderBuilder_ == null) {
-          return order_.size();
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
         } else {
-          return orderBuilder_.getCount();
+          return rewardBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public com.trans.pixel.protoc.Base.RewardInfo getOrder(int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
         } else {
-          return orderBuilder_.getMessage(index);
+          return rewardBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder setOrder(
+      public Builder setReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo value) {
-        if (orderBuilder_ == null) {
+        if (rewardBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.set(index, value);
+          ensureRewardIsMutable();
+          reward_.set(index, value);
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, value);
+          rewardBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder setOrder(
+      public Builder setReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.set(index, builderForValue.build());
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, builderForValue.build());
+          rewardBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder addOrder(com.trans.pixel.protoc.Base.RewardInfo value) {
-        if (orderBuilder_ == null) {
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(value);
+          ensureRewardIsMutable();
+          reward_.add(value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(value);
+          rewardBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder addOrder(
+      public Builder addReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo value) {
-        if (orderBuilder_ == null) {
+        if (rewardBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(index, value);
+          ensureRewardIsMutable();
+          reward_.add(index, value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, value);
+          rewardBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder addOrder(
+      public Builder addReward(
           com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(builderForValue.build());
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(builderForValue.build());
+          rewardBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder addOrder(
+      public Builder addReward(
           int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(index, builderForValue.build());
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, builderForValue.build());
+          rewardBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder addAllOrder(
+      public Builder addAllReward(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          super.addAll(values, order_);
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
           onChanged();
         } else {
-          orderBuilder_.addAllMessages(values);
+          rewardBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder clearOrder() {
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
-          orderBuilder_.clear();
+          rewardBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public Builder removeOrder(int index) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.remove(index);
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
           onChanged();
         } else {
-          orderBuilder_.remove(index);
+          rewardBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public com.trans.pixel.protoc.Base.RewardInfo.Builder getOrderBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
           int index) {
-        return getOrderFieldBuilder().getBuilder(index);
+        return getRewardFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getOrderOrBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
           int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);  } else {
-          return orderBuilder_.getMessageOrBuilder(index);
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-           getOrderOrBuilderList() {
-        if (orderBuilder_ != null) {
-          return orderBuilder_.getMessageOrBuilderList();
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(order_);
+          return java.util.Collections.unmodifiableList(reward_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public com.trans.pixel.protoc.Base.RewardInfo.Builder addOrderBuilder() {
-        return getOrderFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
-      public com.trans.pixel.protoc.Base.RewardInfo.Builder addOrderBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
           int index) {
-        return getOrderFieldBuilder().addBuilder(
+        return getRewardFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.RewardInfo order = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 8;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
-           getOrderBuilderList() {
-        return getOrderFieldBuilder().getBuilderList();
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-          getOrderFieldBuilder() {
-        if (orderBuilder_ == null) {
-          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
-                  order_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  reward_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
-          order_ = null;
+          reward_ = null;
         }
-        return orderBuilder_;
+        return rewardBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.VipLibao)
@@ -5288,29 +4895,29 @@ public final class RechargeProto {
   public interface VipLibaoListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.VipLibao id = 1;
+    // repeated .com.trans.pixel.protoc.VipLibao data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.VipLibao getId(int index);
+    com.trans.pixel.protoc.RechargeProto.VipLibao getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -5366,10 +4973,10 @@ public final class RechargeProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.VipLibao>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.VipLibao>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.VipLibao.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.VipLibao.PARSER, extensionRegistry));
               break;
             }
           }
@@ -5381,7 +4988,7 @@ public final class RechargeProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -5414,44 +5021,44 @@ public final class RechargeProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.VipLibao id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> id_;
+    // repeated .com.trans.pixel.protoc.VipLibao data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.VipLibao getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.RechargeProto.VipLibao getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
      */
-    public com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5465,8 +5072,8 @@ public final class RechargeProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -5477,9 +5084,9 @@ public final class RechargeProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5589,7 +5196,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5598,11 +5205,11 @@ public final class RechargeProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -5631,14 +5238,14 @@ public final class RechargeProto {
       public com.trans.pixel.protoc.RechargeProto.VipLibaoList buildPartial() {
         com.trans.pixel.protoc.RechargeProto.VipLibaoList result = new com.trans.pixel.protoc.RechargeProto.VipLibaoList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -5655,29 +5262,29 @@ public final class RechargeProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.VipLibaoList other) {
         if (other == com.trans.pixel.protoc.RechargeProto.VipLibaoList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -5708,244 +5315,244 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.VipLibao id = 1;
-      private java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> id_ =
+      // repeated .com.trans.pixel.protoc.VipLibao data = 1;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.VipLibao>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.VipLibao>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.RechargeProto.VipLibao, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder, com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.RechargeProto.VipLibao, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder, com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.VipLibao getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.RechargeProto.VipLibao getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.RechargeProto.VipLibao value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.RechargeProto.VipLibao value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.RechargeProto.VipLibao value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.RechargeProto.VipLibao value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.RechargeProto.VipLibao.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.VipLibao> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder getIdBuilder(
+      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.RechargeProto.VipLibao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
-      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder addIdBuilder(
+      public com.trans.pixel.protoc.RechargeProto.VipLibao.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.RechargeProto.VipLibao.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.VipLibao id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.VipLibao data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.RechargeProto.VipLibao.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.RechargeProto.VipLibao, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder, com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.RechargeProto.VipLibao, com.trans.pixel.protoc.RechargeProto.VipLibao.Builder, com.trans.pixel.protoc.RechargeProto.VipLibaoOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.VipLibaoList)
@@ -17546,44 +17153,43 @@ public final class RechargeProto {
       "\004 \001(\005\022\016\n\006itemid\030\005 \001(\005\022\r\n\005count\030\007 \001(\005\0222\n\006" +
       "reward\030\010 \003(\0132\".com.trans.pixel.protoc.Re",
       "wardInfo\"0\n\034RequestSevenLoginSignCommand" +
-      "\022\020\n\010chooseId\030\001 \001(\005\"\250\001\n\010VipLibao\022\016\n\006itemi" +
-      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\t\022\014\n\004ra" +
-      "re\030\004 \001(\005\022\023\n\013description\030\005 \001(\t\022\r\n\005value\030\006" +
-      " \001(\005\022\014\n\004cost\030\007 \001(\005\0221\n\005order\030\010 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"<\n\014VipLiba" +
-      "oList\022,\n\002id\030\001 \003(\0132 .com.trans.pixel.prot" +
-      "oc.VipLibao\"\362\001\n\007VipInfo\022\013\n\003vip\030\001 \001(\005\022\013\n\003" +
-      "rmb\030\002 \001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007dianjin\030\004 \001" +
-      "(\005\022\016\n\006tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(\005\022\014\n\004quyu\030",
-      "\007 \001(\005\022\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxiang\030\t \001(\005\022\016" +
-      "\n\006zhibao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022\016\n\006libao1\030" +
-      "\014 \001(\005\022\016\n\006libao2\030\r \001(\005\022\017\n\007zuanshi\030\016 \001(\005\022\020" +
-      "\n\010contract\030\017 \001(\005\"7\n\007VipList\022,\n\003vip\030\001 \003(\013" +
-      "2\037.com.trans.pixel.protoc.VipInfo\"\237\001\n\003Rm" +
-      "b\022\n\n\002id\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006itemid\030\003 \002" +
-      "(\005\022\017\n\007zuanshi\030\004 \002(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013des" +
-      "cription\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n\004type\030\010 \001(" +
-      "\005\022\020\n\010zuanshi1\030\t \001(\005\022\016\n\006costid\030\n \001(\005\"2\n\007R" +
-      "mbList\022\'\n\002id\030\001 \003(\0132\033.com.trans.pixel.pro",
-      "toc.Rmb\">\n\rShouchongList\022-\n\002id\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.Shouchong\"o\n\tShouc" +
-      "hong\022\n\n\002id\030\001 \002(\005\022\020\n\010activity\030\002 \002(\t\022\020\n\010ta" +
-      "rgetid\030\003 \002(\005\0222\n\006reward\030\005 \003(\0132\".com.trans" +
-      ".pixel.protoc.RewardInfo\"\"\n\023RequestCdkey" +
-      "Command\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubmitIco" +
-      "nCommand\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCheatRe" +
-      "chargeCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026Request" +
-      "RechargeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031Reque" +
-      "stBindAccountCommand\022\022\n\noldAccount\030\001 \002(\t",
-      "\022\022\n\nnewAccount\030\002 \002(\t\";\n\036RequestPurchaseV" +
-      "ipLibaoCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(" +
-      "\005\".\n\033RequestQueryRechargeCommand\022\017\n\007orde" +
-      "rId\030\001 \001(\t\"\037\n\035RequestShouchongRewardComma" +
-      "nd\"+\n\032RequestGetGrowJewelCommand\022\r\n\005orde" +
-      "r\030\001 \002(\005\")\n\030RequestGetGrowExpCommand\022\r\n\005o" +
-      "rder\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023Resp" +
-      "onseSignCommand\0222\n\006reward\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo"
+      "\022\020\n\010chooseId\030\001 \001(\005\"y\n\010VipLibao\022\016\n\006itemid" +
+      "\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005value\030\006 \001(\005\022\014\n\004c" +
+      "ost\030\007 \001(\005\0222\n\006reward\030\010 \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\">\n\014VipLibaoList\022.\n" +
+      "\004data\030\001 \003(\0132 .com.trans.pixel.protoc.Vip" +
+      "Libao\"\362\001\n\007VipInfo\022\013\n\003vip\030\001 \001(\005\022\013\n\003rmb\030\002 " +
+      "\001(\005\022\016\n\006effect\030\003 \001(\t\022\017\n\007dianjin\030\004 \001(\005\022\016\n\006" +
+      "tianti\030\005 \001(\005\022\013\n\003pvp\030\006 \001(\005\022\014\n\004quyu\030\007 \001(\005\022" +
+      "\r\n\005mohua\030\010 \001(\005\022\020\n\010baoxiang\030\t \001(\005\022\016\n\006zhib",
+      "ao\030\n \001(\005\022\r\n\005baohu\030\013 \001(\005\022\016\n\006libao1\030\014 \001(\005\022" +
+      "\016\n\006libao2\030\r \001(\005\022\017\n\007zuanshi\030\016 \001(\005\022\020\n\010cont" +
+      "ract\030\017 \001(\005\"7\n\007VipList\022,\n\003vip\030\001 \003(\0132\037.com" +
+      ".trans.pixel.protoc.VipInfo\"\237\001\n\003Rmb\022\n\n\002i" +
+      "d\030\001 \002(\005\022\013\n\003rmb\030\002 \002(\005\022\016\n\006itemid\030\003 \002(\005\022\017\n\007" +
+      "zuanshi\030\004 \002(\005\022\014\n\004name\030\005 \001(\t\022\023\n\013descripti" +
+      "on\030\006 \001(\t\022\013\n\003img\030\007 \001(\t\022\014\n\004type\030\010 \001(\005\022\020\n\010z" +
+      "uanshi1\030\t \001(\005\022\016\n\006costid\030\n \001(\005\"2\n\007RmbList" +
+      "\022\'\n\002id\030\001 \003(\0132\033.com.trans.pixel.protoc.Rm" +
+      "b\">\n\rShouchongList\022-\n\002id\030\001 \003(\0132!.com.tra",
+      "ns.pixel.protoc.Shouchong\"o\n\tShouchong\022\n" +
+      "\n\002id\030\001 \002(\005\022\020\n\010activity\030\002 \002(\t\022\020\n\010targetid" +
+      "\030\003 \002(\005\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\"\"\n\023RequestCdkeyComman" +
+      "d\022\013\n\003key\030\001 \002(\t\"(\n\030RequestSubmitIconComma" +
+      "nd\022\014\n\004icon\030\001 \002(\005\"-\n\033RequestCheatRecharge" +
+      "Command\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRechar" +
+      "geCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031RequestBind" +
+      "AccountCommand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nne" +
+      "wAccount\030\002 \002(\t\";\n\036RequestPurchaseVipLiba",
+      "oCommand\022\013\n\003vip\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\".\n\033R" +
+      "equestQueryRechargeCommand\022\017\n\007orderId\030\001 " +
+      "\001(\t\"\037\n\035RequestShouchongRewardCommand\"+\n\032" +
+      "RequestGetGrowJewelCommand\022\r\n\005order\030\001 \002(" +
+      "\005\")\n\030RequestGetGrowExpCommand\022\r\n\005order\030\001" +
+      " \002(\005\"\024\n\022RequestSignCommand\"I\n\023ResponseSi" +
+      "gnCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17625,13 +17231,13 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_VipLibao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipLibao_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Img", "Rare", "Description", "Value", "Cost", "Order", });
+              new java.lang.String[] { "Itemid", "Name", "Value", "Cost", "Reward", });
           internal_static_com_trans_pixel_protoc_VipLibaoList_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_VipLibaoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_VipLibaoList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_VipInfo_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_VipInfo_fieldAccessorTable = new

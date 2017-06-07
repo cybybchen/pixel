@@ -27255,29 +27255,29 @@ public final class HeroProto {
   public interface UpgradeListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Upgrade level = 1;
+    // repeated .com.trans.pixel.protoc.Upgrade data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> 
-        getLevelList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.Upgrade getLevel(int index);
+    com.trans.pixel.protoc.HeroProto.Upgrade getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    int getLevelCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> 
-        getLevelOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getLevelOrBuilder(
+    com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -27333,10 +27333,10 @@ public final class HeroProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                level_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Upgrade>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Upgrade>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              level_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Upgrade.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Upgrade.PARSER, extensionRegistry));
               break;
             }
           }
@@ -27348,7 +27348,7 @@ public final class HeroProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          level_ = java.util.Collections.unmodifiableList(level_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -27381,44 +27381,44 @@ public final class HeroProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Upgrade level = 1;
-    public static final int LEVEL_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> level_;
+    // repeated .com.trans.pixel.protoc.Upgrade data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> getLevelList() {
-      return level_;
+    public java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> 
-        getLevelOrBuilderList() {
-      return level_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    public int getLevelCount() {
-      return level_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.Upgrade getLevel(int index) {
-      return level_.get(index);
+    public com.trans.pixel.protoc.HeroProto.Upgrade getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getLevelOrBuilder(
+    public com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getDataOrBuilder(
         int index) {
-      return level_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      level_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -27432,8 +27432,8 @@ public final class HeroProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < level_.size(); i++) {
-        output.writeMessage(1, level_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -27444,9 +27444,9 @@ public final class HeroProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < level_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, level_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27556,7 +27556,7 @@ public final class HeroProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLevelFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -27565,11 +27565,11 @@ public final class HeroProto {
 
       public Builder clear() {
         super.clear();
-        if (levelBuilder_ == null) {
-          level_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          levelBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -27598,14 +27598,14 @@ public final class HeroProto {
       public com.trans.pixel.protoc.HeroProto.UpgradeList buildPartial() {
         com.trans.pixel.protoc.HeroProto.UpgradeList result = new com.trans.pixel.protoc.HeroProto.UpgradeList(this);
         int from_bitField0_ = bitField0_;
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            level_ = java.util.Collections.unmodifiableList(level_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.level_ = level_;
+          result.data_ = data_;
         } else {
-          result.level_ = levelBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -27622,29 +27622,29 @@ public final class HeroProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.UpgradeList other) {
         if (other == com.trans.pixel.protoc.HeroProto.UpgradeList.getDefaultInstance()) return this;
-        if (levelBuilder_ == null) {
-          if (!other.level_.isEmpty()) {
-            if (level_.isEmpty()) {
-              level_ = other.level_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureLevelIsMutable();
-              level_.addAll(other.level_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.level_.isEmpty()) {
-            if (levelBuilder_.isEmpty()) {
-              levelBuilder_.dispose();
-              levelBuilder_ = null;
-              level_ = other.level_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              levelBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getLevelFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              levelBuilder_.addAllMessages(other.level_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -27675,244 +27675,244 @@ public final class HeroProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Upgrade level = 1;
-      private java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> level_ =
+      // repeated .com.trans.pixel.protoc.Upgrade data = 1;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> data_ =
         java.util.Collections.emptyList();
-      private void ensureLevelIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          level_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Upgrade>(level_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Upgrade>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.Upgrade, com.trans.pixel.protoc.HeroProto.Upgrade.Builder, com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> levelBuilder_;
+          com.trans.pixel.protoc.HeroProto.Upgrade, com.trans.pixel.protoc.HeroProto.Upgrade.Builder, com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> getLevelList() {
-        if (levelBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(level_);
+      public java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return levelBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public int getLevelCount() {
-        if (levelBuilder_ == null) {
-          return level_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return levelBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Upgrade getLevel(int index) {
-        if (levelBuilder_ == null) {
-          return level_.get(index);
+      public com.trans.pixel.protoc.HeroProto.Upgrade getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return levelBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder setLevel(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Upgrade value) {
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          levelBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder setLevel(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Upgrade.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder addLevel(com.trans.pixel.protoc.HeroProto.Upgrade value) {
-        if (levelBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.HeroProto.Upgrade value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          levelBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Upgrade value) {
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          levelBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           com.trans.pixel.protoc.HeroProto.Upgrade.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Upgrade.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder addAllLevel(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.Upgrade> values) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          super.addAll(values, level_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          levelBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder clearLevel() {
-        if (levelBuilder_ == null) {
-          level_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          levelBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public Builder removeLevel(int index) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          levelBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder getLevelBuilder(
+      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder getDataBuilder(
           int index) {
-        return getLevelFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getLevelOrBuilder(
+      public com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder getDataOrBuilder(
           int index) {
-        if (levelBuilder_ == null) {
-          return level_.get(index);  } else {
-          return levelBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> 
-           getLevelOrBuilderList() {
-        if (levelBuilder_ != null) {
-          return levelBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(level_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder addLevelBuilder() {
-        return getLevelFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.HeroProto.Upgrade.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder addLevelBuilder(
+      public com.trans.pixel.protoc.HeroProto.Upgrade.Builder addDataBuilder(
           int index) {
-        return getLevelFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.HeroProto.Upgrade.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Upgrade level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Upgrade data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.HeroProto.Upgrade.Builder> 
-           getLevelBuilderList() {
-        return getLevelFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.HeroProto.Upgrade, com.trans.pixel.protoc.HeroProto.Upgrade.Builder, com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder> 
-          getLevelFieldBuilder() {
-        if (levelBuilder_ == null) {
-          levelBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.HeroProto.Upgrade, com.trans.pixel.protoc.HeroProto.Upgrade.Builder, com.trans.pixel.protoc.HeroProto.UpgradeOrBuilder>(
-                  level_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          level_ = null;
+          data_ = null;
         }
-        return levelBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UpgradeList)
@@ -27958,56 +27958,6 @@ public final class HeroProto {
      * <code>optional int64 exp = 3;</code>
      */
     long getExp();
-
-    // optional float hp = 4;
-    /**
-     * <code>optional float hp = 4;</code>
-     */
-    boolean hasHp();
-    /**
-     * <code>optional float hp = 4;</code>
-     */
-    float getHp();
-
-    // optional float arm = 5;
-    /**
-     * <code>optional float arm = 5;</code>
-     */
-    boolean hasArm();
-    /**
-     * <code>optional float arm = 5;</code>
-     */
-    float getArm();
-
-    // optional float mr = 6;
-    /**
-     * <code>optional float mr = 6;</code>
-     */
-    boolean hasMr();
-    /**
-     * <code>optional float mr = 6;</code>
-     */
-    float getMr();
-
-    // optional float ad = 7;
-    /**
-     * <code>optional float ad = 7;</code>
-     */
-    boolean hasAd();
-    /**
-     * <code>optional float ad = 7;</code>
-     */
-    float getAd();
-
-    // optional float ap = 8;
-    /**
-     * <code>optional float ap = 8;</code>
-     */
-    boolean hasAp();
-    /**
-     * <code>optional float ap = 8;</code>
-     */
-    float getAp();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Upgrade}
@@ -28073,31 +28023,6 @@ public final class HeroProto {
             case 24: {
               bitField0_ |= 0x00000004;
               exp_ = input.readInt64();
-              break;
-            }
-            case 37: {
-              bitField0_ |= 0x00000008;
-              hp_ = input.readFloat();
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000010;
-              arm_ = input.readFloat();
-              break;
-            }
-            case 53: {
-              bitField0_ |= 0x00000020;
-              mr_ = input.readFloat();
-              break;
-            }
-            case 61: {
-              bitField0_ |= 0x00000040;
-              ad_ = input.readFloat();
-              break;
-            }
-            case 69: {
-              bitField0_ |= 0x00000080;
-              ap_ = input.readFloat();
               break;
             }
           }
@@ -28188,95 +28113,10 @@ public final class HeroProto {
       return exp_;
     }
 
-    // optional float hp = 4;
-    public static final int HP_FIELD_NUMBER = 4;
-    private float hp_;
-    /**
-     * <code>optional float hp = 4;</code>
-     */
-    public boolean hasHp() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional float hp = 4;</code>
-     */
-    public float getHp() {
-      return hp_;
-    }
-
-    // optional float arm = 5;
-    public static final int ARM_FIELD_NUMBER = 5;
-    private float arm_;
-    /**
-     * <code>optional float arm = 5;</code>
-     */
-    public boolean hasArm() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional float arm = 5;</code>
-     */
-    public float getArm() {
-      return arm_;
-    }
-
-    // optional float mr = 6;
-    public static final int MR_FIELD_NUMBER = 6;
-    private float mr_;
-    /**
-     * <code>optional float mr = 6;</code>
-     */
-    public boolean hasMr() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional float mr = 6;</code>
-     */
-    public float getMr() {
-      return mr_;
-    }
-
-    // optional float ad = 7;
-    public static final int AD_FIELD_NUMBER = 7;
-    private float ad_;
-    /**
-     * <code>optional float ad = 7;</code>
-     */
-    public boolean hasAd() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional float ad = 7;</code>
-     */
-    public float getAd() {
-      return ad_;
-    }
-
-    // optional float ap = 8;
-    public static final int AP_FIELD_NUMBER = 8;
-    private float ap_;
-    /**
-     * <code>optional float ap = 8;</code>
-     */
-    public boolean hasAp() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional float ap = 8;</code>
-     */
-    public float getAp() {
-      return ap_;
-    }
-
     private void initFields() {
       level_ = 0;
       sp_ = 0;
       exp_ = 0L;
-      hp_ = 0F;
-      arm_ = 0F;
-      mr_ = 0F;
-      ad_ = 0F;
-      ap_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -28299,21 +28139,6 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt64(3, exp_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, hp_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeFloat(5, arm_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeFloat(6, mr_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeFloat(7, ad_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeFloat(8, ap_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -28334,26 +28159,6 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(3, exp_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, hp_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(5, arm_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, mr_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(7, ad_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(8, ap_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -28477,16 +28282,6 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         exp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        hp_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        arm_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        mr_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        ad_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        ap_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -28527,26 +28322,6 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000004;
         }
         result.exp_ = exp_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.hp_ = hp_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.arm_ = arm_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.mr_ = mr_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.ad_ = ad_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.ap_ = ap_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -28571,21 +28346,6 @@ public final class HeroProto {
         }
         if (other.hasExp()) {
           setExp(other.getExp());
-        }
-        if (other.hasHp()) {
-          setHp(other.getHp());
-        }
-        if (other.hasArm()) {
-          setArm(other.getArm());
-        }
-        if (other.hasMr()) {
-          setMr(other.getMr());
-        }
-        if (other.hasAd()) {
-          setAd(other.getAd());
-        }
-        if (other.hasAp()) {
-          setAp(other.getAp());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -28709,171 +28469,6 @@ public final class HeroProto {
       public Builder clearExp() {
         bitField0_ = (bitField0_ & ~0x00000004);
         exp_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional float hp = 4;
-      private float hp_ ;
-      /**
-       * <code>optional float hp = 4;</code>
-       */
-      public boolean hasHp() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional float hp = 4;</code>
-       */
-      public float getHp() {
-        return hp_;
-      }
-      /**
-       * <code>optional float hp = 4;</code>
-       */
-      public Builder setHp(float value) {
-        bitField0_ |= 0x00000008;
-        hp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float hp = 4;</code>
-       */
-      public Builder clearHp() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        hp_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float arm = 5;
-      private float arm_ ;
-      /**
-       * <code>optional float arm = 5;</code>
-       */
-      public boolean hasArm() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional float arm = 5;</code>
-       */
-      public float getArm() {
-        return arm_;
-      }
-      /**
-       * <code>optional float arm = 5;</code>
-       */
-      public Builder setArm(float value) {
-        bitField0_ |= 0x00000010;
-        arm_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float arm = 5;</code>
-       */
-      public Builder clearArm() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        arm_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float mr = 6;
-      private float mr_ ;
-      /**
-       * <code>optional float mr = 6;</code>
-       */
-      public boolean hasMr() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional float mr = 6;</code>
-       */
-      public float getMr() {
-        return mr_;
-      }
-      /**
-       * <code>optional float mr = 6;</code>
-       */
-      public Builder setMr(float value) {
-        bitField0_ |= 0x00000020;
-        mr_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float mr = 6;</code>
-       */
-      public Builder clearMr() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        mr_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float ad = 7;
-      private float ad_ ;
-      /**
-       * <code>optional float ad = 7;</code>
-       */
-      public boolean hasAd() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional float ad = 7;</code>
-       */
-      public float getAd() {
-        return ad_;
-      }
-      /**
-       * <code>optional float ad = 7;</code>
-       */
-      public Builder setAd(float value) {
-        bitField0_ |= 0x00000040;
-        ad_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float ad = 7;</code>
-       */
-      public Builder clearAd() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        ad_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      // optional float ap = 8;
-      private float ap_ ;
-      /**
-       * <code>optional float ap = 8;</code>
-       */
-      public boolean hasAp() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional float ap = 8;</code>
-       */
-      public float getAp() {
-        return ap_;
-      }
-      /**
-       * <code>optional float ap = 8;</code>
-       */
-      public Builder setAp(float value) {
-        bitField0_ |= 0x00000080;
-        ap_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional float ap = 8;</code>
-       */
-      public Builder clearAp() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        ap_ = 0F;
         onChanged();
         return this;
       }
@@ -30779,29 +30374,29 @@ public final class HeroProto {
   public interface HerolootListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Heroloot id = 1;
+    // repeated .com.trans.pixel.protoc.Heroloot data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.Heroloot getId(int index);
+    com.trans.pixel.protoc.HeroProto.Heroloot getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -30857,10 +30452,10 @@ public final class HeroProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Heroloot>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Heroloot>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Heroloot.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Heroloot.PARSER, extensionRegistry));
               break;
             }
           }
@@ -30872,7 +30467,7 @@ public final class HeroProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -30905,44 +30500,44 @@ public final class HeroProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Heroloot id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> id_;
+    // repeated .com.trans.pixel.protoc.Heroloot data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.Heroloot getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.HeroProto.Heroloot getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -30956,8 +30551,8 @@ public final class HeroProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -30968,9 +30563,9 @@ public final class HeroProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -31080,7 +30675,7 @@ public final class HeroProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -31089,11 +30684,11 @@ public final class HeroProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -31122,14 +30717,14 @@ public final class HeroProto {
       public com.trans.pixel.protoc.HeroProto.HerolootList buildPartial() {
         com.trans.pixel.protoc.HeroProto.HerolootList result = new com.trans.pixel.protoc.HeroProto.HerolootList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -31146,29 +30741,29 @@ public final class HeroProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.HerolootList other) {
         if (other == com.trans.pixel.protoc.HeroProto.HerolootList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -31199,244 +30794,244 @@ public final class HeroProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Heroloot id = 1;
-      private java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> id_ =
+      // repeated .com.trans.pixel.protoc.Heroloot data = 1;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Heroloot>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Heroloot>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.Heroloot, com.trans.pixel.protoc.HeroProto.Heroloot.Builder, com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.HeroProto.Heroloot, com.trans.pixel.protoc.HeroProto.Heroloot.Builder, com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Heroloot getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.HeroProto.Heroloot getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Heroloot value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Heroloot.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.HeroProto.Heroloot value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.HeroProto.Heroloot value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Heroloot value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.HeroProto.Heroloot.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Heroloot.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.Heroloot> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder getIdBuilder(
+      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.HeroProto.HerolootOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.HeroProto.Heroloot.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder addIdBuilder(
+      public com.trans.pixel.protoc.HeroProto.Heroloot.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.HeroProto.Heroloot.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Heroloot id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Heroloot data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.HeroProto.Heroloot.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.HeroProto.Heroloot, com.trans.pixel.protoc.HeroProto.Heroloot.Builder, com.trans.pixel.protoc.HeroProto.HerolootOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.HeroProto.Heroloot, com.trans.pixel.protoc.HeroProto.Heroloot.Builder, com.trans.pixel.protoc.HeroProto.HerolootOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.HerolootList)
@@ -31496,32 +31091,29 @@ public final class HeroProto {
     // optional string name = 5;
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     boolean hasName();
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     java.lang.String getName();
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     com.google.protobuf.ByteString
         getNameBytes();
-
-    // optional string description = 6;
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    boolean hasDescription();
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    java.lang.String getDescription();
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Heroloot}
@@ -31597,11 +31189,6 @@ public final class HeroProto {
             case 42: {
               bitField0_ |= 0x00000010;
               name_ = input.readBytes();
-              break;
-            }
-            case 50: {
-              bitField0_ |= 0x00000020;
-              description_ = input.readBytes();
               break;
             }
           }
@@ -31713,12 +31300,20 @@ public final class HeroProto {
     private java.lang.Object name_;
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     public boolean hasName() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -31736,6 +31331,10 @@ public final class HeroProto {
     }
     /**
      * <code>optional string name = 5;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -31751,56 +31350,12 @@ public final class HeroProto {
       }
     }
 
-    // optional string description = 6;
-    public static final int DESCRIPTION_FIELD_NUMBER = 6;
-    private java.lang.Object description_;
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    public boolean hasDescription() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string description = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     private void initFields() {
       itemid_ = 0;
       heroid_ = 0;
       star_ = 0;
       count_ = 0;
       name_ = "";
-      description_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -31828,9 +31383,6 @@ public final class HeroProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(5, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(6, getDescriptionBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -31860,10 +31412,6 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(5, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getDescriptionBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -31991,8 +31539,6 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
-        description_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -32041,10 +31587,6 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000010;
         }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.description_ = description_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -32076,11 +31618,6 @@ public final class HeroProto {
         if (other.hasName()) {
           bitField0_ |= 0x00000010;
           name_ = other.name_;
-          onChanged();
-        }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000020;
-          description_ = other.description_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -32246,12 +31783,20 @@ public final class HeroProto {
       private java.lang.Object name_ = "";
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public boolean hasName() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -32266,6 +31811,10 @@ public final class HeroProto {
       }
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -32282,6 +31831,10 @@ public final class HeroProto {
       }
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public Builder setName(
           java.lang.String value) {
@@ -32295,6 +31848,10 @@ public final class HeroProto {
       }
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -32304,6 +31861,10 @@ public final class HeroProto {
       }
       /**
        * <code>optional string name = 5;</code>
+       *
+       * <pre>
+       *optional string des = 6;
+       * </pre>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -32312,80 +31873,6 @@ public final class HeroProto {
   }
   bitField0_ |= 0x00000010;
         name_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional string description = 6;
-      private java.lang.Object description_ = "";
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public boolean hasDescription() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        description_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public Builder clearDescription() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string description = 6;</code>
-       */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-        description_ = value;
         onChanged();
         return this;
       }
@@ -53055,83 +52542,81 @@ public final class HeroProto {
       "ame\030\002 \001(\t\022\017\n\007quality\030\005 \001(\005\022\020\n\010position\030\006" +
       " \001(\005\022\020\n\010handbook\030\007 \001(\005\0220\n\005skill\030\010 \003(\0132!." +
       "com.trans.pixel.protoc.HeroSkill\",\n\tHero" +
-      "Skill\022\017\n\007skillid\030\001 \001(\005\022\016\n\006unlock\030\003 \001(\005\"=",
-      "\n\013UpgradeList\022.\n\005level\030\001 \003(\0132\037.com.trans" +
-      ".pixel.protoc.Upgrade\"n\n\007Upgrade\022\r\n\005leve" +
-      "l\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003exp\030\003 \001(\003\022\n\n\002hp\030\004" +
-      " \001(\002\022\013\n\003arm\030\005 \001(\002\022\n\n\002mr\030\006 \001(\002\022\n\n\002ad\030\007 \001(" +
-      "\002\022\n\n\002ap\030\010 \001(\002\")\n\010UserFood\022\016\n\006foodId\030\001 \002(" +
-      "\005\022\r\n\005count\030\002 \002(\005\"@\n\016StrengthenList\022.\n\002id" +
-      "\030\001 \003(\0132\".com.trans.pixel.protoc.Strength" +
-      "en\"\\\n\nStrengthen\022\n\n\002id\030\001 \001(\005\022\022\n\nzhanli_p" +
-      "er\030\002 \001(\005\022\016\n\006itemid\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022" +
-      "\017\n\007success\030\005 \001(\005\"<\n\014HerolootList\022,\n\002id\030\001",
-      " \003(\0132 .com.trans.pixel.protoc.Heroloot\"j" +
-      "\n\010Heroloot\022\016\n\006itemid\030\001 \001(\005\022\016\n\006heroid\030\002 \001" +
-      "(\005\022\014\n\004star\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004name\030" +
-      "\005 \001(\t\022\023\n\013description\030\006 \001(\t\"H\n\026RequestLoc" +
-      "kHeroCommand\022\016\n\006heroId\030\002 \001(\005\022\016\n\006infoId\030\003" +
-      " \001(\003\022\016\n\006isLock\030\004 \001(\010\"N\n\033RequestHeroLevel" +
-      "UpToCommand\022\017\n\007levelUp\030\001 \002(\005\022\016\n\006heroId\030\002" +
-      " \002(\005\022\016\n\006infoId\030\003 \002(\003\"u\n\031RequestHeroLevel" +
-      "UpCommand\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId" +
-      "\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022\017\n\007skillId\030\004 \001(\005\022",
-      "\022\n\ncostInfoId\030\005 \003(\003\"_\n\031ResponseHeroResul" +
-      "tCommand\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \003" +
-      "(\0132 .com.trans.pixel.protoc.HeroInfo\"U\n\031" +
-      "ResponseDeleteHeroCommand\0228\n\010heroInfo\030\001 " +
-      "\003(\0132&.com.trans.pixel.protoc.FenjieHeroI" +
-      "nfo\">\n\034RequestResetHeroSkillCommand\022\016\n\006h" +
-      "eroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\"G\n\026RequestHe" +
-      "roSpUpCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030" +
-      "\002 \002(\003\022\r\n\005count\030\003 \002(\005\"\210\001\n\010UserTeam\022\n\n\002id\030" +
-      "\001 \002(\003\022\020\n\010teaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 ",
-      "\003(\0132\".com.trans.pixel.protoc.TeamEngine\022" +
-      "\024\n\014rolePosition\030\004 \001(\r\022\020\n\010talentId\030\005 \001(\r\"" +
-      "\'\n\025RequestGetTeamCommand\022\016\n\006userId\030\001 \002(\003" +
-      "\"D\n\026ResponseGetTeamCommand\022*\n\004team\030\001 \002(\013" +
-      "2\034.com.trans.pixel.protoc.Team\"\'\n\nTeamUn" +
-      "lock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030Requ" +
-      "estUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010team" +
-      "Info\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteam" +
-      "Engine\030\005 \003(\0132\".com.trans.pixel.protoc.Te" +
-      "amEngine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032RequestUse",
-      "rTeamListCommand\"Q\n\033ResponseUserTeamList" +
-      "Command\0222\n\010userTeam\030\001 \003(\0132 .com.trans.pi" +
-      "xel.protoc.UserTeam\"F\n\016TeamUnlockList\0224\n" +
-      "\010xiaoguan\030\001 \003(\0132\".com.trans.pixel.protoc" +
-      ".TeamUnlock\"P\n\032ResponseGetUserHeroComman" +
-      "d\0222\n\010userHero\030\001 \003(\0132 .com.trans.pixel.pr" +
-      "otoc.HeroInfo\"V\n\030RequestFenjieHeroComman" +
-      "d\022:\n\nfenjieHero\030\001 \003(\0132&.com.trans.pixel." +
-      "protoc.FenjieHeroInfo\"\032\n\030RequestUserPoke" +
-      "deCommand\"M\n\031ResponseUserPokedeCommand\0220",
-      "\n\006pokede\030\001 \003(\0132 .com.trans.pixel.protoc." +
-      "HeroInfo\"\036\n\034RequestBuyHeroPackageCommand" +
-      "\"8\n RequestSubmitComposeSkillCommand\022\024\n\014" +
-      "composeSkill\030\001 \002(\t\"K\n\026RequestFeedFoodCom" +
-      "mand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\t" +
-      "foodCount\030\003 \002(\005\"X\n\027RequestClearHeroComma" +
-      "nd\022\016\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004" +
-      "type\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUse" +
-      "rFoodCommand\0222\n\010userFood\030\001 \003(\0132 .com.tra" +
-      "ns.pixel.protoc.UserFood\"P\n\030ResponseClea",
-      "rInfoCommand\0224\n\tclearInfo\030\001 \003(\0132!.com.tr" +
-      "ans.pixel.protoc.ClearInfo\";\n\034RequestCho" +
-      "seClearInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002i" +
-      "d\030\002 \001(\005\".\n\034RequestHeroStrengthenCommand\022" +
-      "\016\n\006heroId\030\001 \002(\005\"<\n\030RequestOpenFetterComm" +
-      "and\022\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n" +
-      "!RequestZanHeroMessageBoardCommand\022\016\n\006it" +
-      "emId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033R" +
-      "equestTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+" +
-      "\n\035RequestTalentChangeUseCommand\022\n\n\002id\030\001 ",
-      "\002(\005\"M\n\037RequestTalentChangeSkillCommand\022\n" +
-      "\n\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002" +
-      "(\005\"\225\001\n\031ResponseUserTalentCommand\0226\n\nuser" +
-      "Talent\030\001 \003(\0132\".com.trans.pixel.protoc.Us" +
-      "erTalent\022@\n\017userTalentSkill\030\002 \003(\0132\'.com." +
-      "trans.pixel.protoc.UserTalentSkill"
+      "Skill\022\017\n\007skillid\030\001 \001(\005\022\016\n\006unlock\030\003 \001(\005\"<",
+      "\n\013UpgradeList\022-\n\004data\030\001 \003(\0132\037.com.trans." +
+      "pixel.protoc.Upgrade\"1\n\007Upgrade\022\r\n\005level" +
+      "\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003exp\030\003 \001(\003\")\n\010UserF" +
+      "ood\022\016\n\006foodId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"@\n\016St" +
+      "rengthenList\022.\n\002id\030\001 \003(\0132\".com.trans.pix" +
+      "el.protoc.Strengthen\"\\\n\nStrengthen\022\n\n\002id" +
+      "\030\001 \001(\005\022\022\n\nzhanli_per\030\002 \001(\005\022\016\n\006itemid\030\003 \001" +
+      "(\005\022\r\n\005count\030\004 \001(\005\022\017\n\007success\030\005 \001(\005\">\n\014He" +
+      "rolootList\022.\n\004data\030\001 \003(\0132 .com.trans.pix" +
+      "el.protoc.Heroloot\"U\n\010Heroloot\022\016\n\006itemid",
+      "\030\001 \001(\005\022\016\n\006heroid\030\002 \001(\005\022\014\n\004star\030\003 \001(\005\022\r\n\005" +
+      "count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\"H\n\026RequestLock" +
+      "HeroCommand\022\016\n\006heroId\030\002 \001(\005\022\016\n\006infoId\030\003 " +
+      "\001(\003\022\016\n\006isLock\030\004 \001(\010\"N\n\033RequestHeroLevelU" +
+      "pToCommand\022\017\n\007levelUp\030\001 \002(\005\022\016\n\006heroId\030\002 " +
+      "\002(\005\022\016\n\006infoId\030\003 \002(\003\"u\n\031RequestHeroLevelU" +
+      "pCommand\022\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030" +
+      "\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022\017\n\007skillId\030\004 \001(\005\022\022" +
+      "\n\ncostInfoId\030\005 \003(\003\"_\n\031ResponseHeroResult" +
+      "Command\022\016\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \003(",
+      "\0132 .com.trans.pixel.protoc.HeroInfo\"U\n\031R" +
+      "esponseDeleteHeroCommand\0228\n\010heroInfo\030\001 \003" +
+      "(\0132&.com.trans.pixel.protoc.FenjieHeroIn" +
+      "fo\">\n\034RequestResetHeroSkillCommand\022\016\n\006he" +
+      "roId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\"G\n\026RequestHer" +
+      "oSpUpCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002" +
+      " \002(\003\022\r\n\005count\030\003 \002(\005\"\210\001\n\010UserTeam\022\n\n\002id\030\001" +
+      " \002(\003\022\020\n\010teaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003" +
+      "(\0132\".com.trans.pixel.protoc.TeamEngine\022\024" +
+      "\n\014rolePosition\030\004 \001(\r\022\020\n\010talentId\030\005 \001(\r\"\'",
+      "\n\025RequestGetTeamCommand\022\016\n\006userId\030\001 \002(\003\"" +
+      "D\n\026ResponseGetTeamCommand\022*\n\004team\030\001 \002(\0132" +
+      "\034.com.trans.pixel.protoc.Team\"\'\n\nTeamUnl" +
+      "ock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030Reque" +
+      "stUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamI" +
+      "nfo\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamE" +
+      "ngine\030\005 \003(\0132\".com.trans.pixel.protoc.Tea" +
+      "mEngine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032RequestUser" +
+      "TeamListCommand\"Q\n\033ResponseUserTeamListC" +
+      "ommand\0222\n\010userTeam\030\001 \003(\0132 .com.trans.pix",
+      "el.protoc.UserTeam\"F\n\016TeamUnlockList\0224\n\010" +
+      "xiaoguan\030\001 \003(\0132\".com.trans.pixel.protoc." +
+      "TeamUnlock\"P\n\032ResponseGetUserHeroCommand" +
+      "\0222\n\010userHero\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.HeroInfo\"V\n\030RequestFenjieHeroCommand" +
+      "\022:\n\nfenjieHero\030\001 \003(\0132&.com.trans.pixel.p" +
+      "rotoc.FenjieHeroInfo\"\032\n\030RequestUserPoked" +
+      "eCommand\"M\n\031ResponseUserPokedeCommand\0220\n" +
+      "\006pokede\030\001 \003(\0132 .com.trans.pixel.protoc.H" +
+      "eroInfo\"\036\n\034RequestBuyHeroPackageCommand\"",
+      "8\n RequestSubmitComposeSkillCommand\022\024\n\014c" +
+      "omposeSkill\030\001 \002(\t\"K\n\026RequestFeedFoodComm" +
+      "and\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tf" +
+      "oodCount\030\003 \002(\005\"X\n\027RequestClearHeroComman" +
+      "d\022\016\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004t" +
+      "ype\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUser" +
+      "FoodCommand\0222\n\010userFood\030\001 \003(\0132 .com.tran" +
+      "s.pixel.protoc.UserFood\"P\n\030ResponseClear" +
+      "InfoCommand\0224\n\tclearInfo\030\001 \003(\0132!.com.tra" +
+      "ns.pixel.protoc.ClearInfo\";\n\034RequestChos",
+      "eClearInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id" +
+      "\030\002 \001(\005\".\n\034RequestHeroStrengthenCommand\022\016" +
+      "\n\006heroId\030\001 \002(\005\"<\n\030RequestOpenFetterComma" +
+      "nd\022\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!" +
+      "RequestZanHeroMessageBoardCommand\022\016\n\006ite" +
+      "mId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Re" +
+      "questTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n" +
+      "\035RequestTalentChangeUseCommand\022\n\n\002id\030\001 \002" +
+      "(\005\"M\n\037RequestTalentChangeSkillCommand\022\n\n" +
+      "\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(",
+      "\005\"\225\001\n\031ResponseUserTalentCommand\0226\n\nuserT" +
+      "alent\030\001 \003(\0132\".com.trans.pixel.protoc.Use" +
+      "rTalent\022@\n\017userTalentSkill\030\002 \003(\0132\'.com.t" +
+      "rans.pixel.protoc.UserTalentSkill"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -53365,13 +52850,13 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_UpgradeList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UpgradeList_descriptor,
-              new java.lang.String[] { "Level", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Upgrade_descriptor =
             getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_Upgrade_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Upgrade_descriptor,
-              new java.lang.String[] { "Level", "Sp", "Exp", "Hp", "Arm", "Mr", "Ad", "Ap", });
+              new java.lang.String[] { "Level", "Sp", "Exp", });
           internal_static_com_trans_pixel_protoc_UserFood_descriptor =
             getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_UserFood_fieldAccessorTable = new
@@ -53395,13 +52880,13 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_HerolootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HerolootList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Heroloot_descriptor =
             getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_Heroloot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Heroloot_descriptor,
-              new java.lang.String[] { "Itemid", "Heroid", "Star", "Count", "Name", "Description", });
+              new java.lang.String[] { "Itemid", "Heroid", "Star", "Count", "Name", });
           internal_static_com_trans_pixel_protoc_RequestLockHeroCommand_descriptor =
             getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestLockHeroCommand_fieldAccessorTable = new

@@ -1011,7 +1011,7 @@ public class ShopCommandService extends BaseCommandService{
 			user.setViplibao1(user.getViplibao1() | state);
 		}
 		MultiReward.Builder builder = MultiReward.newBuilder();
-		for(RewardInfo reward : libao.getOrderList()){
+		for(RewardInfo reward : libao.getRewardList()){
 			builder.addLoot(reward);
 		}
 		handleRewards(responseBuilder, user, builder);

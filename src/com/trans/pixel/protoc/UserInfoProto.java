@@ -24279,1443 +24279,6 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventConfigList)
   }
 
-  public interface EventOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 order = 1;
-    /**
-     * <code>optional int32 order = 1;</code>
-     */
-    boolean hasOrder();
-    /**
-     * <code>optional int32 order = 1;</code>
-     */
-    int getOrder();
-
-    // optional int32 eventid = 2;
-    /**
-     * <code>optional int32 eventid = 2;</code>
-     */
-    boolean hasEventid();
-    /**
-     * <code>optional int32 eventid = 2;</code>
-     */
-    int getEventid();
-
-    // optional string name = 3;
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    boolean hasName();
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    // optional int32 daguan = 4;
-    /**
-     * <code>optional int32 daguan = 4;</code>
-     */
-    boolean hasDaguan();
-    /**
-     * <code>optional int32 daguan = 4;</code>
-     */
-    int getDaguan();
-
-    // optional int32 conditiontype = 5;
-    /**
-     * <code>optional int32 conditiontype = 5;</code>
-     */
-    boolean hasConditiontype();
-    /**
-     * <code>optional int32 conditiontype = 5;</code>
-     */
-    int getConditiontype();
-
-    // optional int32 condition = 6;
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    boolean hasCondition();
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    int getCondition();
-
-    // optional int32 targetid = 7;
-    /**
-     * <code>optional int32 targetid = 7;</code>
-     */
-    boolean hasTargetid();
-    /**
-     * <code>optional int32 targetid = 7;</code>
-     */
-    int getTargetid();
-
-    // optional string targetdes = 8;
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    boolean hasTargetdes();
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    java.lang.String getTargetdes();
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    com.google.protobuf.ByteString
-        getTargetdesBytes();
-
-    // optional int32 weight = 9;
-    /**
-     * <code>optional int32 weight = 9;</code>
-     */
-    boolean hasWeight();
-    /**
-     * <code>optional int32 weight = 9;</code>
-     */
-    int getWeight();
-
-    // optional int32 level = 10;
-    /**
-     * <code>optional int32 level = 10;</code>
-     */
-    boolean hasLevel();
-    /**
-     * <code>optional int32 level = 10;</code>
-     */
-    int getLevel();
-
-    // optional int32 count = 11;
-    /**
-     * <code>optional int32 count = 11;</code>
-     */
-    boolean hasCount();
-    /**
-     * <code>optional int32 count = 11;</code>
-     */
-    int getCount();
-
-    // optional int32 eventcount = 12;
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    boolean hasEventcount();
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    int getEventcount();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.Event}
-   */
-  public static final class Event extends
-      com.google.protobuf.GeneratedMessage
-      implements EventOrBuilder {
-    // Use Event.newBuilder() to construct.
-    private Event(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Event(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Event defaultInstance;
-    public static Event getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Event getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Event(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              order_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              eventid_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              name_ = input.readBytes();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              daguan_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              conditiontype_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              condition_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              targetid_ = input.readInt32();
-              break;
-            }
-            case 66: {
-              bitField0_ |= 0x00000080;
-              targetdes_ = input.readBytes();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              weight_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              level_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              count_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              eventcount_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Event_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UserInfoProto.Event.class, com.trans.pixel.protoc.UserInfoProto.Event.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Event> PARSER =
-        new com.google.protobuf.AbstractParser<Event>() {
-      public Event parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Event(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Event> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 order = 1;
-    public static final int ORDER_FIELD_NUMBER = 1;
-    private int order_;
-    /**
-     * <code>optional int32 order = 1;</code>
-     */
-    public boolean hasOrder() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 order = 1;</code>
-     */
-    public int getOrder() {
-      return order_;
-    }
-
-    // optional int32 eventid = 2;
-    public static final int EVENTID_FIELD_NUMBER = 2;
-    private int eventid_;
-    /**
-     * <code>optional int32 eventid = 2;</code>
-     */
-    public boolean hasEventid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 eventid = 2;</code>
-     */
-    public int getEventid() {
-      return eventid_;
-    }
-
-    // optional string name = 3;
-    public static final int NAME_FIELD_NUMBER = 3;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 daguan = 4;
-    public static final int DAGUAN_FIELD_NUMBER = 4;
-    private int daguan_;
-    /**
-     * <code>optional int32 daguan = 4;</code>
-     */
-    public boolean hasDaguan() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 daguan = 4;</code>
-     */
-    public int getDaguan() {
-      return daguan_;
-    }
-
-    // optional int32 conditiontype = 5;
-    public static final int CONDITIONTYPE_FIELD_NUMBER = 5;
-    private int conditiontype_;
-    /**
-     * <code>optional int32 conditiontype = 5;</code>
-     */
-    public boolean hasConditiontype() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 conditiontype = 5;</code>
-     */
-    public int getConditiontype() {
-      return conditiontype_;
-    }
-
-    // optional int32 condition = 6;
-    public static final int CONDITION_FIELD_NUMBER = 6;
-    private int condition_;
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    public boolean hasCondition() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    public int getCondition() {
-      return condition_;
-    }
-
-    // optional int32 targetid = 7;
-    public static final int TARGETID_FIELD_NUMBER = 7;
-    private int targetid_;
-    /**
-     * <code>optional int32 targetid = 7;</code>
-     */
-    public boolean hasTargetid() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 targetid = 7;</code>
-     */
-    public int getTargetid() {
-      return targetid_;
-    }
-
-    // optional string targetdes = 8;
-    public static final int TARGETDES_FIELD_NUMBER = 8;
-    private java.lang.Object targetdes_;
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public boolean hasTargetdes() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public java.lang.String getTargetdes() {
-      java.lang.Object ref = targetdes_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          targetdes_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTargetdesBytes() {
-      java.lang.Object ref = targetdes_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        targetdes_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 weight = 9;
-    public static final int WEIGHT_FIELD_NUMBER = 9;
-    private int weight_;
-    /**
-     * <code>optional int32 weight = 9;</code>
-     */
-    public boolean hasWeight() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 weight = 9;</code>
-     */
-    public int getWeight() {
-      return weight_;
-    }
-
-    // optional int32 level = 10;
-    public static final int LEVEL_FIELD_NUMBER = 10;
-    private int level_;
-    /**
-     * <code>optional int32 level = 10;</code>
-     */
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 level = 10;</code>
-     */
-    public int getLevel() {
-      return level_;
-    }
-
-    // optional int32 count = 11;
-    public static final int COUNT_FIELD_NUMBER = 11;
-    private int count_;
-    /**
-     * <code>optional int32 count = 11;</code>
-     */
-    public boolean hasCount() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 count = 11;</code>
-     */
-    public int getCount() {
-      return count_;
-    }
-
-    // optional int32 eventcount = 12;
-    public static final int EVENTCOUNT_FIELD_NUMBER = 12;
-    private int eventcount_;
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    public boolean hasEventcount() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    public int getEventcount() {
-      return eventcount_;
-    }
-
-    private void initFields() {
-      order_ = 0;
-      eventid_ = 0;
-      name_ = "";
-      daguan_ = 0;
-      conditiontype_ = 0;
-      condition_ = 0;
-      targetid_ = 0;
-      targetdes_ = "";
-      weight_ = 0;
-      level_ = 0;
-      count_ = 0;
-      eventcount_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, order_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, eventid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, daguan_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, conditiontype_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, condition_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, targetid_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBytes(8, getTargetdesBytes());
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, weight_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, level_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, count_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, eventcount_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, order_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, eventid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, daguan_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, conditiontype_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, condition_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, targetid_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(8, getTargetdesBytes());
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, weight_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, level_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, count_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, eventcount_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Event parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.Event prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.Event}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UserInfoProto.EventOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Event_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UserInfoProto.Event.class, com.trans.pixel.protoc.UserInfoProto.Event.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UserInfoProto.Event.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        order_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        daguan_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        conditiontype_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        condition_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        targetid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        targetdes_ = "";
-        bitField0_ = (bitField0_ & ~0x00000080);
-        weight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        count_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        eventcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Event_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Event getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Event build() {
-        com.trans.pixel.protoc.UserInfoProto.Event result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Event buildPartial() {
-        com.trans.pixel.protoc.UserInfoProto.Event result = new com.trans.pixel.protoc.UserInfoProto.Event(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.order_ = order_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.eventid_ = eventid_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.daguan_ = daguan_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.conditiontype_ = conditiontype_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.condition_ = condition_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.targetid_ = targetid_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.targetdes_ = targetdes_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.weight_ = weight_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.count_ = count_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.eventcount_ = eventcount_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UserInfoProto.Event) {
-          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.Event)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.Event other) {
-        if (other == com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance()) return this;
-        if (other.hasOrder()) {
-          setOrder(other.getOrder());
-        }
-        if (other.hasEventid()) {
-          setEventid(other.getEventid());
-        }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000004;
-          name_ = other.name_;
-          onChanged();
-        }
-        if (other.hasDaguan()) {
-          setDaguan(other.getDaguan());
-        }
-        if (other.hasConditiontype()) {
-          setConditiontype(other.getConditiontype());
-        }
-        if (other.hasCondition()) {
-          setCondition(other.getCondition());
-        }
-        if (other.hasTargetid()) {
-          setTargetid(other.getTargetid());
-        }
-        if (other.hasTargetdes()) {
-          bitField0_ |= 0x00000080;
-          targetdes_ = other.targetdes_;
-          onChanged();
-        }
-        if (other.hasWeight()) {
-          setWeight(other.getWeight());
-        }
-        if (other.hasLevel()) {
-          setLevel(other.getLevel());
-        }
-        if (other.hasCount()) {
-          setCount(other.getCount());
-        }
-        if (other.hasEventcount()) {
-          setEventcount(other.getEventcount());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UserInfoProto.Event parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.Event) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 order = 1;
-      private int order_ ;
-      /**
-       * <code>optional int32 order = 1;</code>
-       */
-      public boolean hasOrder() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 order = 1;</code>
-       */
-      public int getOrder() {
-        return order_;
-      }
-      /**
-       * <code>optional int32 order = 1;</code>
-       */
-      public Builder setOrder(int value) {
-        bitField0_ |= 0x00000001;
-        order_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 order = 1;</code>
-       */
-      public Builder clearOrder() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        order_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 eventid = 2;
-      private int eventid_ ;
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public boolean hasEventid() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public int getEventid() {
-        return eventid_;
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public Builder setEventid(int value) {
-        bitField0_ |= 0x00000002;
-        eventid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        eventid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string name = 3;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 daguan = 4;
-      private int daguan_ ;
-      /**
-       * <code>optional int32 daguan = 4;</code>
-       */
-      public boolean hasDaguan() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 daguan = 4;</code>
-       */
-      public int getDaguan() {
-        return daguan_;
-      }
-      /**
-       * <code>optional int32 daguan = 4;</code>
-       */
-      public Builder setDaguan(int value) {
-        bitField0_ |= 0x00000008;
-        daguan_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 daguan = 4;</code>
-       */
-      public Builder clearDaguan() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        daguan_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 conditiontype = 5;
-      private int conditiontype_ ;
-      /**
-       * <code>optional int32 conditiontype = 5;</code>
-       */
-      public boolean hasConditiontype() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 conditiontype = 5;</code>
-       */
-      public int getConditiontype() {
-        return conditiontype_;
-      }
-      /**
-       * <code>optional int32 conditiontype = 5;</code>
-       */
-      public Builder setConditiontype(int value) {
-        bitField0_ |= 0x00000010;
-        conditiontype_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 conditiontype = 5;</code>
-       */
-      public Builder clearConditiontype() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        conditiontype_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 condition = 6;
-      private int condition_ ;
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public boolean hasCondition() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public int getCondition() {
-        return condition_;
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public Builder setCondition(int value) {
-        bitField0_ |= 0x00000020;
-        condition_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public Builder clearCondition() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        condition_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 targetid = 7;
-      private int targetid_ ;
-      /**
-       * <code>optional int32 targetid = 7;</code>
-       */
-      public boolean hasTargetid() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 targetid = 7;</code>
-       */
-      public int getTargetid() {
-        return targetid_;
-      }
-      /**
-       * <code>optional int32 targetid = 7;</code>
-       */
-      public Builder setTargetid(int value) {
-        bitField0_ |= 0x00000040;
-        targetid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 targetid = 7;</code>
-       */
-      public Builder clearTargetid() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        targetid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string targetdes = 8;
-      private java.lang.Object targetdes_ = "";
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public boolean hasTargetdes() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public java.lang.String getTargetdes() {
-        java.lang.Object ref = targetdes_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          targetdes_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTargetdesBytes() {
-        java.lang.Object ref = targetdes_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          targetdes_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder setTargetdes(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000080;
-        targetdes_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder clearTargetdes() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        targetdes_ = getDefaultInstance().getTargetdes();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder setTargetdesBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000080;
-        targetdes_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight = 9;
-      private int weight_ ;
-      /**
-       * <code>optional int32 weight = 9;</code>
-       */
-      public boolean hasWeight() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 weight = 9;</code>
-       */
-      public int getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>optional int32 weight = 9;</code>
-       */
-      public Builder setWeight(int value) {
-        bitField0_ |= 0x00000100;
-        weight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight = 9;</code>
-       */
-      public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        weight_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level = 10;
-      private int level_ ;
-      /**
-       * <code>optional int32 level = 10;</code>
-       */
-      public boolean hasLevel() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 level = 10;</code>
-       */
-      public int getLevel() {
-        return level_;
-      }
-      /**
-       * <code>optional int32 level = 10;</code>
-       */
-      public Builder setLevel(int value) {
-        bitField0_ |= 0x00000200;
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level = 10;</code>
-       */
-      public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        level_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count = 11;
-      private int count_ ;
-      /**
-       * <code>optional int32 count = 11;</code>
-       */
-      public boolean hasCount() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 count = 11;</code>
-       */
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>optional int32 count = 11;</code>
-       */
-      public Builder setCount(int value) {
-        bitField0_ |= 0x00000400;
-        count_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count = 11;</code>
-       */
-      public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 eventcount = 12;
-      private int eventcount_ ;
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public boolean hasEventcount() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public int getEventcount() {
-        return eventcount_;
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public Builder setEventcount(int value) {
-        bitField0_ |= 0x00000800;
-        eventcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public Builder clearEventcount() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        eventcount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Event)
-    }
-
-    static {
-      defaultInstance = new Event(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Event)
-  }
-
   public interface AreaEventOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -25733,12 +24296,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> 
+    java.util.List<com.trans.pixel.protoc.Base.Event> 
         getEventList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index);
+    com.trans.pixel.protoc.Base.Event getEvent(int index);
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
@@ -25746,12 +24309,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index);
 
     // optional int32 weight = 3;
@@ -25822,10 +24385,10 @@ public final class UserInfoProto {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                event_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Event>();
+                event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              event_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Event.PARSER, extensionRegistry));
+              event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
               break;
             }
             case 24: {
@@ -25894,17 +24457,17 @@ public final class UserInfoProto {
 
     // repeated .com.trans.pixel.protoc.Event event = 2;
     public static final int EVENT_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> event_;
+    private java.util.List<com.trans.pixel.protoc.Base.Event> event_;
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> getEventList() {
+    public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
       return event_;
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList() {
       return event_;
     }
@@ -25917,13 +24480,13 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index) {
+    public com.trans.pixel.protoc.Base.Event getEvent(int index) {
       return event_.get(index);
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index) {
       return event_.get(index);
     }
@@ -26272,22 +24835,22 @@ public final class UserInfoProto {
       }
 
       // repeated .com.trans.pixel.protoc.Event event = 2;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> event_ =
+      private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          event_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Event>(event_);
+          event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> eventBuilder_;
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
 
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> getEventList() {
+      public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
         if (eventBuilder_ == null) {
           return java.util.Collections.unmodifiableList(event_);
         } else {
@@ -26307,7 +24870,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index) {
+      public com.trans.pixel.protoc.Base.Event getEvent(int index) {
         if (eventBuilder_ == null) {
           return event_.get(index);
         } else {
@@ -26318,7 +24881,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder setEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event value) {
+          int index, com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -26335,7 +24898,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder setEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.set(index, builderForValue.build());
@@ -26348,7 +24911,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public Builder addEvent(com.trans.pixel.protoc.UserInfoProto.Event value) {
+      public Builder addEvent(com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -26365,7 +24928,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder addEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event value) {
+          int index, com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -26382,7 +24945,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder addEvent(
-          com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.add(builderForValue.build());
@@ -26396,7 +24959,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder addEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.add(index, builderForValue.build());
@@ -26410,7 +24973,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
       public Builder addAllEvent(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.Event> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           super.addAll(values, event_);
@@ -26449,14 +25012,14 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder getEventBuilder(
+      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder(
           int index) {
         return getEventFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
           int index) {
         if (eventBuilder_ == null) {
           return event_.get(index);  } else {
@@ -26466,7 +25029,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
            getEventOrBuilderList() {
         if (eventBuilder_ != null) {
           return eventBuilder_.getMessageOrBuilderList();
@@ -26477,31 +25040,31 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder addEventBuilder() {
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder() {
         return getEventFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance());
+            com.trans.pixel.protoc.Base.Event.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder addEventBuilder(
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder(
           int index) {
         return getEventFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance());
+            index, com.trans.pixel.protoc.Base.Event.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 2;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event.Builder> 
+      public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
            getEventBuilderList() {
         return getEventFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder>(
+              com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -29545,11 +28108,11 @@ public final class UserInfoProto {
     /**
      * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.Event getEvent();
+    com.trans.pixel.protoc.Base.Event getEvent();
     /**
      * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder();
+    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseEventCommand}
@@ -29603,11 +28166,11 @@ public final class UserInfoProto {
               break;
             }
             case 10: {
-              com.trans.pixel.protoc.UserInfoProto.Event.Builder subBuilder = null;
+              com.trans.pixel.protoc.Base.Event.Builder subBuilder = null;
               if (((bitField0_ & 0x00000001) == 0x00000001)) {
                 subBuilder = event_.toBuilder();
               }
-              event_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.Event.PARSER, extensionRegistry);
+              event_ = input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(event_);
                 event_ = subBuilder.buildPartial();
@@ -29657,7 +28220,7 @@ public final class UserInfoProto {
     private int bitField0_;
     // optional .com.trans.pixel.protoc.Event event = 1;
     public static final int EVENT_FIELD_NUMBER = 1;
-    private com.trans.pixel.protoc.UserInfoProto.Event event_;
+    private com.trans.pixel.protoc.Base.Event event_;
     /**
      * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
      */
@@ -29667,18 +28230,18 @@ public final class UserInfoProto {
     /**
      * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.Event getEvent() {
+    public com.trans.pixel.protoc.Base.Event getEvent() {
       return event_;
     }
     /**
      * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder() {
+    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder() {
       return event_;
     }
 
     private void initFields() {
-      event_ = com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance();
+      event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -29826,7 +28389,7 @@ public final class UserInfoProto {
       public Builder clear() {
         super.clear();
         if (eventBuilder_ == null) {
-          event_ = com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance();
+          event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
         } else {
           eventBuilder_.clear();
         }
@@ -29914,9 +28477,9 @@ public final class UserInfoProto {
       private int bitField0_;
 
       // optional .com.trans.pixel.protoc.Event event = 1;
-      private com.trans.pixel.protoc.UserInfoProto.Event event_ = com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance();
+      private com.trans.pixel.protoc.Base.Event event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> eventBuilder_;
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
@@ -29926,7 +28489,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event getEvent() {
+      public com.trans.pixel.protoc.Base.Event getEvent() {
         if (eventBuilder_ == null) {
           return event_;
         } else {
@@ -29936,7 +28499,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public Builder setEvent(com.trans.pixel.protoc.UserInfoProto.Event value) {
+      public Builder setEvent(com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -29953,7 +28516,7 @@ public final class UserInfoProto {
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
       public Builder setEvent(
-          com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           event_ = builderForValue.build();
           onChanged();
@@ -29966,12 +28529,12 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public Builder mergeEvent(com.trans.pixel.protoc.UserInfoProto.Event value) {
+      public Builder mergeEvent(com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              event_ != com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance()) {
+              event_ != com.trans.pixel.protoc.Base.Event.getDefaultInstance()) {
             event_ =
-              com.trans.pixel.protoc.UserInfoProto.Event.newBuilder(event_).mergeFrom(value).buildPartial();
+              com.trans.pixel.protoc.Base.Event.newBuilder(event_).mergeFrom(value).buildPartial();
           } else {
             event_ = value;
           }
@@ -29987,7 +28550,7 @@ public final class UserInfoProto {
        */
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
-          event_ = com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance();
+          event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -29998,7 +28561,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder getEventBuilder() {
+      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder() {
         bitField0_ |= 0x00000001;
         onChanged();
         return getEventFieldBuilder().getBuilder();
@@ -30006,7 +28569,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder() {
+      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder() {
         if (eventBuilder_ != null) {
           return eventBuilder_.getMessageOrBuilder();
         } else {
@@ -30017,11 +28580,11 @@ public final class UserInfoProto {
        * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
           eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder>(
+              com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
                   getParentForChildren(),
                   isClean());
@@ -32032,12 +30595,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> 
+    java.util.List<com.trans.pixel.protoc.Base.Event> 
         getEventList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index);
+    com.trans.pixel.protoc.Base.Event getEvent(int index);
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
@@ -32045,12 +30608,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index);
   }
   /**
@@ -32131,10 +30694,10 @@ public final class UserInfoProto {
             }
             case 50: {
               if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                event_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Event>();
+                event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
                 mutable_bitField0_ |= 0x00000020;
               }
-              event_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Event.PARSER, extensionRegistry));
+              event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
               break;
             }
           }
@@ -32262,17 +30825,17 @@ public final class UserInfoProto {
 
     // repeated .com.trans.pixel.protoc.Event event = 6;
     public static final int EVENT_FIELD_NUMBER = 6;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> event_;
+    private java.util.List<com.trans.pixel.protoc.Base.Event> event_;
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> getEventList() {
+    public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
       return event_;
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList() {
       return event_;
     }
@@ -32285,13 +30848,13 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index) {
+    public com.trans.pixel.protoc.Base.Event getEvent(int index) {
       return event_.get(index);
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index) {
       return event_.get(index);
     }
@@ -32807,22 +31370,22 @@ public final class UserInfoProto {
       }
 
       // repeated .com.trans.pixel.protoc.Event event = 6;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> event_ =
+      private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
         if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          event_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Event>(event_);
+          event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
           bitField0_ |= 0x00000020;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> eventBuilder_;
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
 
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event> getEventList() {
+      public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
         if (eventBuilder_ == null) {
           return java.util.Collections.unmodifiableList(event_);
         } else {
@@ -32842,7 +31405,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event getEvent(int index) {
+      public com.trans.pixel.protoc.Base.Event getEvent(int index) {
         if (eventBuilder_ == null) {
           return event_.get(index);
         } else {
@@ -32853,7 +31416,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder setEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event value) {
+          int index, com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -32870,7 +31433,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder setEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.set(index, builderForValue.build());
@@ -32883,7 +31446,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public Builder addEvent(com.trans.pixel.protoc.UserInfoProto.Event value) {
+      public Builder addEvent(com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -32900,7 +31463,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder addEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event value) {
+          int index, com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -32917,7 +31480,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder addEvent(
-          com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.add(builderForValue.build());
@@ -32931,7 +31494,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder addEvent(
-          int index, com.trans.pixel.protoc.UserInfoProto.Event.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           event_.add(index, builderForValue.build());
@@ -32945,7 +31508,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
       public Builder addAllEvent(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.Event> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
         if (eventBuilder_ == null) {
           ensureEventIsMutable();
           super.addAll(values, event_);
@@ -32984,14 +31547,14 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder getEventBuilder(
+      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder(
           int index) {
         return getEventFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventOrBuilder getEventOrBuilder(
+      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
           int index) {
         if (eventBuilder_ == null) {
           return event_.get(index);  } else {
@@ -33001,7 +31564,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
            getEventOrBuilderList() {
         if (eventBuilder_ != null) {
           return eventBuilder_.getMessageOrBuilderList();
@@ -33012,31 +31575,31 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder addEventBuilder() {
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder() {
         return getEventFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance());
+            com.trans.pixel.protoc.Base.Event.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Event.Builder addEventBuilder(
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder(
           int index) {
         return getEventFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UserInfoProto.Event.getDefaultInstance());
+            index, com.trans.pixel.protoc.Base.Event.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Event.Builder> 
+      public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
            getEventBuilderList() {
         return getEventFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder> 
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.Event, com.trans.pixel.protoc.UserInfoProto.Event.Builder, com.trans.pixel.protoc.UserInfoProto.EventOrBuilder>(
+              com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
                   ((bitField0_ & 0x00000020) == 0x00000020),
                   getParentForChildren(),
@@ -33532,11 +32095,6 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EventConfigList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_Event_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_AreaEvent_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -33675,35 +32233,29 @@ public final class UserInfoProto {
       "rotoc.EventQuestion\022,\n\005enemy\030\010 \003(\0132\035.com" +
       ".trans.pixel.protoc.Enemy\022\014\n\004call\030\t \001(\005\"" +
       "D\n\017EventConfigList\0221\n\004data\030\001 \003(\0132#.com.t",
-      "rans.pixel.protoc.EventConfig\"\326\001\n\005Event\022" +
-      "\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030" +
-      "\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005" +
-      " \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(" +
-      "\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005" +
-      "level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount" +
-      "\030\014 \001(\005\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event" +
-      "\030\002 \003(\0132\035.com.trans.pixel.protoc.Event\022\016\n" +
-      "\006weight\030\003 \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001" +
-      " \003(\0132!.com.trans.pixel.protoc.AreaEvent\"",
-      "G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".c" +
-      "om.trans.pixel.protoc.RewardInfo\"4\n\010Loot" +
-      "List\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.proto" +
-      "c.Loot\"&\n\030RequestLevelStartCommand\022\n\n\002id" +
-      "\030\001 \001(\005\"4\n\023RequestEventCommand\022\016\n\006userId\030" +
-      "\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventCom" +
-      "mand\022,\n\005event\030\001 \001(\0132\035.com.trans.pixel.pr" +
-      "otoc.Event\"\037\n\035RequestLevelLootResultComm" +
-      "and\"{\n\031RequestEventResultCommand\022\r\n\005orde" +
-      "r\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003",
-      " \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003r" +
-      "et\030\005 \001(\010\"P\n\032ResponseEventResultCommand\0222" +
-      "\n\006reward\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "RewardInfo\"\252\001\n\030ResponseLevelLootCommand\022" +
-      "\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005" +
-      "\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021" +
-      "\n\teventTime\030\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.t" +
-      "rans.pixel.protoc.Event\"\030\n\026RequestEventB" +
-      "uyCommand"
+      "rans.pixel.protoc.EventConfig\"U\n\tAreaEve" +
+      "nt\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.tran" +
+      "s.pixel.protoc.Event\022\016\n\006weight\030\003 \001(\005\"@\n\r" +
+      "AreaEventList\022/\n\004data\030\001 \003(\0132!.com.trans." +
+      "pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005order\030" +
+      "\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132" +
+      "\034.com.trans.pixel.protoc.Loot\"&\n\030Request" +
+      "LevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Request" +
+      "EventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 ",
+      "\001(\005\"D\n\024ResponseEventCommand\022,\n\005event\030\001 \001" +
+      "(\0132\035.com.trans.pixel.protoc.Event\"\037\n\035Req" +
+      "uestLevelLootResultCommand\"{\n\031RequestEve" +
+      "ntResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamIn" +
+      "fo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(" +
+      "\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032Respo" +
+      "nseEventResultCommand\0222\n\006reward\030\001 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\"\252\001\n\030Re" +
+      "sponseLevelLootCommand\022\024\n\014unlockDaguan\030\001" +
+      " \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDaguan\030\003 ",
+      "\001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005" +
+      "\022,\n\005event\030\006 \003(\0132\035.com.trans.pixel.protoc" +
+      ".Event\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33908,80 +32460,74 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfigList_descriptor,
               new java.lang.String[] { "Data", });
-          internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(33);
-          internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_Event_descriptor,
-              new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Conditiontype", "Condition", "Targetid", "Targetdes", "Weight", "Level", "Count", "Eventcount", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Order", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "Event", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,

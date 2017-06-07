@@ -130,7 +130,7 @@ public class HeroRedisService extends RedisService {
 		}
 		
 		Map<String, Heroloot> map = new HashMap<String, Heroloot>();
-		for(Heroloot.Builder heroloot : builder.getIdBuilderList()){
+		for(Heroloot.Builder heroloot : builder.getDataBuilderList()){
 			map.put("" + heroloot.getItemid(), heroloot.build());
 		}
 		return map;
@@ -334,7 +334,7 @@ public class HeroRedisService extends RedisService {
 		}
 		
 		Map<String, Upgrade> map = new HashMap<String, Upgrade>();
-		for(Upgrade.Builder upgrade : builder.getLevelBuilderList()){
+		for(Upgrade.Builder upgrade : builder.getDataBuilderList()){
 			map.put("" + upgrade.getLevel(), upgrade.build());
 		}
 		return map;

@@ -79,9 +79,9 @@ public class EquipPokedeService {
 			ilevel = armor.getIlevel();
 		}
 		IncreaseLevel increaseLevel = equipPokedeRedisService.getIncreaseLevel(ilevel);
-		for (IncreaseRare increaseRare : increaseLevel.getRareList()) {
+		for (IncreaseRare increaseRare : increaseLevel.getRaresList()) {
 			if (increaseRare.getRare() == rare) {
-				rewards.addAllLoot(convertCost(increaseRare.getCostList()));
+				rewards.addAllLoot(increaseRare.getCostList());
 				break;
 			}
 		}
