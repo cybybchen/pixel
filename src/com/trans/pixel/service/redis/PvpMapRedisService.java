@@ -218,7 +218,7 @@ public class PvpMapRedisService extends RedisService{
 		if(value != null)
 			parseJson(value, bosses);
 		if(refreshEvent){
-			Map<String, PVPEventList> eventmap = getEventConfig();
+			Map<String, PVPMap> eventmap = getPvpMap();
 			PVPEventList activityevents = getActivityEventConfig();
 			Map<String, PVPPositionList> positionMap = getPositionConfig();
 			PVPMapList.Builder pvpmap = getMapList(user.getId(), user.getPvpUnlock());
@@ -241,17 +241,17 @@ public class PvpMapRedisService extends RedisService{
 					}
 				}
 			}
-			for(PVPEventList list : eventmap.values()){
+			for(PVPMap list : eventmap.values()){
 				List<Integer> positionValues = new ArrayList<Integer>();
 				int count = 0;
 				for(PVPEvent event : events){
-					if(event.getFieldid() == list.getData(0).getFieldid()){
+					if(event.getFieldid() == list.getFieldid()){
 						positionValues.add(event.getPositionid());
 						count++;
 					}
 				}
 				for(PVPEvent.Builder bossbuilder : bosses.getDataBuilderList()){
-					if(bossbuilder.getFieldid() == list.getData(0).getFieldid()){
+					if(bossbuilder.getFieldid() == list.getFieldid()){
 						if(!bossbuilder.hasPositionid()) {//随机boss位置
 							PVPPositionList positions = positionMap.get(bossbuilder.getFieldid()+"");
 							PVPPosition position = positions.getOrder(nextInt(positions.getOrderCount()));
@@ -279,12 +279,12 @@ public class PvpMapRedisService extends RedisService{
 				
 				while(count < 5){//添加怪物
 					int weight = 0;
-					for(PVPEvent event : list.getDataList()){
+					for(PVPEvent event : list.getEventList()){
 						weight += event.getWeight();
 					}
 					weight = nextInt(weight);
 					PVPEvent.Builder eventbuilder = null;
-					for(PVPEvent event : list.getDataList()){
+					for(PVPEvent event : list.getEventList()){
 						if(weight < event.getWeight()){
 							eventbuilder = PVPEvent.newBuilder(event);
 							break;
@@ -320,7 +320,7 @@ public class PvpMapRedisService extends RedisService{
 						continue;
 					for(int i = 0; i < 2; i++){
 						PVPEvent.Builder eventbuilder = PVPEvent.newBuilder(event);
-						eventbuilder.setFieldid(list.getData(0).getFieldid());
+						eventbuilder.setFieldid(list.getFieldid());
 						PVPPositionList positions = positionMap.get(eventbuilder.getFieldid()+"");
 						PVPPosition position = positions.getOrder(nextInt(positions.getOrderCount()));
 						while(positionValues.contains(position.getOrder())){
@@ -353,26 +353,26 @@ public class PvpMapRedisService extends RedisService{
 		return events;
 	}
 
-	public Map<String, PVPEventList> getEventConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.PVPMONSTER_CONFIG);
-		if(keyvalue.isEmpty()){
-			Map<String, PVPEventList> map = buildEventConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, PVPEventList> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.PVPMONSTER_CONFIG, redismap);
-			return map;
-		}else{
-			Map<String, PVPEventList> map = new HashMap<String, PVPEventList>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				PVPEventList.Builder builder = PVPEventList.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
+//	public Map<String, PVPEventList> getEventConfig() {
+//		Map<String, String> keyvalue = hget(RedisKey.PVPMONSTER_CONFIG);
+//		if(keyvalue.isEmpty()){
+//			Map<String, PVPEventList> map = buildEventConfig();
+//			Map<String, String> redismap = new HashMap<String, String>();
+//			for(Entry<String, PVPEventList> entry : map.entrySet()){
+//				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+//			}
+//			hputAll(RedisKey.PVPMONSTER_CONFIG, redismap);
+//			return map;
+//		}else{
+//			Map<String, PVPEventList> map = new HashMap<String, PVPEventList>();
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				PVPEventList.Builder builder = PVPEventList.newBuilder();
+//				if(parseJson(entry.getValue(), builder))
+//					map.put(entry.getKey(), builder.build());
+//			}
+//			return map;
+//		}
+//	}
 	
 	public PVPEventList getActivityEventConfig() {
 		String value = get(RedisKey.PVPACTIVITYMONSTER_CONFIG);
@@ -445,24 +445,24 @@ public class PvpMapRedisService extends RedisService{
 		}
 	}
 
-	public PVPMap getPvpMap(int id){
-		String value = hget(RedisKey.PVPFIELD_CONFIG, id+"");
-		PVPMap.Builder builder = PVPMap.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
+	public Map<String, PVPMap> getPvpMap(){
+		Map<String, String> keyvalue = hget(RedisKey.PVPFIELD_CONFIG);
+		Map<String, PVPMap> map = new HashMap<String, PVPMap>();
+		if(!keyvalue.isEmpty()) {
+			for(String value : keyvalue.values()) {
+				PVPMap.Builder builder = PVPMap.newBuilder();
+				parseJson(value, builder);
+				map.put(builder.getFieldid()+"", builder.build());
+			}
+		}else {
 			PVPMapList.Builder list = buildPvpMapList();
-			Map<String, String> keyvalue = new HashMap<String, String>();
-			for(PVPMap map : list.getDataList()) {
-				keyvalue.put(map.getFieldid()+"", formatJson(map));
+			for(PVPMap pvpmap : list.getDataList()) {
+				keyvalue.put(pvpmap.getFieldid()+"", formatJson(pvpmap));
+				map.put(pvpmap.getFieldid()+"", pvpmap);
 			}
 			hputAll(RedisKey.PVPFIELD_CONFIG, keyvalue);
-			for(PVPMap map : list.getDataList()) {
-				if(map.getFieldid() == id)
-					return map;
-			}
 		}
-		return null;
+		return map;
 	}
 
 	public PVPMapList.Builder getBasePvpMapList(){
@@ -487,23 +487,23 @@ public class PvpMapRedisService extends RedisService{
 		return builder;
 	}
 
-	public Map<String, PVPEventList> buildEventConfig(){
-		String xml = ReadConfig("ld_pvpenemy.xml");
-		PVPEventList.Builder builder = PVPEventList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build PVPEventLists");
-			return null;
-		}
-		Map<String, PVPEventList> map = new HashMap<String, PVPEventList>();
-		for(PVPEvent.Builder event : builder.getDataBuilderList()){
-			PVPEventList.Builder nbuilder = PVPEventList.newBuilder();
-			if(map.containsKey(event.getFieldid()+""))
-				nbuilder = PVPEventList.newBuilder(map.get(event.getFieldid()+""));
-			nbuilder.addData(event);
-			map.put(event.getFieldid()+"", nbuilder.build());
-		}
-		return map;
-	}
+//	public Map<String, PVPEventList> buildEventConfig(){
+//		String xml = ReadConfig("ld_pvpenemy.xml");
+//		PVPEventList.Builder builder = PVPEventList.newBuilder();
+//		if(!parseXml(xml, builder)){
+//			logger.warn("cannot build PVPEventLists");
+//			return null;
+//		}
+//		Map<String, PVPEventList> map = new HashMap<String, PVPEventList>();
+//		for(PVPEvent.Builder event : builder.getDataBuilderList()){
+//			PVPEventList.Builder nbuilder = PVPEventList.newBuilder();
+//			if(map.containsKey(event.getFieldid()+""))
+//				nbuilder = PVPEventList.newBuilder(map.get(event.getFieldid()+""));
+//			nbuilder.addData(event);
+//			map.put(event.getFieldid()+"", nbuilder.build());
+//		}
+//		return map;
+//	}
 
 	public Map<String, PVPPositionList> buildPositionConfig(){
 		String xml = ReadConfig("ld_pvpposition.xml");

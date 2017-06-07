@@ -192,7 +192,7 @@ public class PvpMapService {
 		if(!map.getOpened())
 			return;
 		for(int i = 0, enemy = count;i < 10 && enemy > 0; i++){
-			PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(redis.nextInt(map.getKuangdianCount())));
+			PVPMine.Builder builder = PVPMine.newBuilder(map.getKuangdian(RedisService.nextInt(map.getKuangdianCount())));
 			PVPMine mine = mineMap.get(builder.getId()+"");
 			// if(mine != null && mine.getEndTime() > redis.now() )
 			// 	continue;
