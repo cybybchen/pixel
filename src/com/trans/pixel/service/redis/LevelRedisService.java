@@ -13,8 +13,12 @@ import javax.management.RuntimeErrorException;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.EventBean;
@@ -43,6 +47,9 @@ import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
 import com.trans.pixel.protoc.UserInfoProto.EventRandomsList;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
 import com.trans.pixel.protoc.UserInfoProto.LootList;
+import com.trans.pixel.protoc.UserInfoProto.SavingBox;
+import com.trans.pixel.service.CostService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 
 @Repository
@@ -60,6 +67,12 @@ public class LevelRedisService extends RedisService {
 	private HeroRedisService heroRedisService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private LootRedisService lootRedisService;
+	@Resource
+	private CostService costService;
+	@Resource
+	private UserService userService;
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
@@ -79,6 +92,7 @@ public class LevelRedisService extends RedisService {
 			Daguan.Builder daguan = getDaguan(1);
 			userLevel.setUserId(userId);
 			userLevel.setLootTime((int)now());
+			userLevel.setLootTime(RedisService.now());
 			userLevel.setEventTime((int)now());
 			userLevel.setUnlockDaguan(daguan.getId());
 			userLevel.setLeftCount(daguan.getCount());
@@ -116,14 +130,14 @@ public class LevelRedisService extends RedisService {
 	public void saveLootReward(MultiReward.Builder rewards, UserBean user){
 		hput(RedisKey.USERDATA+user.getId(), "LootReward", formatJson(rewards.build()));
 	}
-	public int getCoin(UserBean user){
-		UserLevelBean userLevel = getUserLevel(user);
-		return (int)(now()-userLevel.getLootTime())*userLevel.getCoin();
-	}
-	public long getExp(UserBean user){
-		UserLevelBean userLevel = getUserLevel(user);
-		return (now()-userLevel.getLootTime())*userLevel.getExp();
-	}
+//	public int getCoin(UserBean user){
+//		UserLevelBean userLevel = getUserLevel(user);
+//		return (int)(now()-userLevel.getLootTime())*userLevel.getCoin();
+//	}
+//	public long getExp(UserBean user){
+//		UserLevelBean userLevel = getUserLevel(user);
+//		return (now()-userLevel.getLootTime())*userLevel.getExp();
+//	}
 	public void saveUserLevel(UserLevelBean bean){
 		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));
 		sadd(RedisKey.PUSH_MYSQL_KEY+"UserLevel", bean.getUserId()+"");
@@ -949,5 +963,28 @@ public class LevelRedisService extends RedisService {
 		}
 		
 		return userTalentList;
+	}
+	
+	public ResultConst buySavingBox(UserBean user, int type) {
+		SavingBox savingBox = null;
+		if (type == RewardConst.EXP) {
+			user.setExpSavingBox(user.getExpSavingBox() + 1);
+			savingBox = lootRedisService.getSavingBox(user.getExpSavingBox());
+			if (!costService.cost(user, savingBox.getExp().getCost().getItemid(), savingBox.getExp().getCost().getCount()))
+				return ErrorConst.NOT_ENOUGH_COIN;
+		} else if (type == RewardConst.COIN) {
+			user.setGoldSavingBox(user.getGoldSavingBox() + 1);
+			savingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
+			if (!costService.cost(user, savingBox.getGold().getCost().getItemid(), savingBox.getGold().getCost().getCount()))
+				return ErrorConst.NOT_ENOUGH_JEWEL;
+		}
+		
+		if (savingBox == null) {
+			return ErrorConst.SAVINGBOX_BUY_TYPE_ERROR;
+		}
+		
+		userService.updateUser(user);
+		
+		return SuccessConst.PURCHASE_SUCCESS;
 	}
 }

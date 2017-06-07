@@ -1042,8 +1042,8 @@ public class RedisService {
 	/**
 	 * 当前秒数
 	 */
-	public static long now(){
-		return System.currentTimeMillis()/1000L;
+	public static int now(){
+		return (int)(System.currentTimeMillis()/1000L);
 	}
 	/**
 	 * 当前周几

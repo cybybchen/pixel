@@ -33,11 +33,11 @@ public class CostService {
 	@Resource
 	private UserPropService userPropService;
 	@Resource
-	private LevelRedisService lootService;
-	@Resource
 	private UserFoodService userFoodService;
 	@Resource
 	private UnionService unionService;
+	@Resource
+	private LootService lootService;
 	
 	private Comparator<CostItem.Builder> comparator = new Comparator<CostItem.Builder>() {
         public int compare(CostItem.Builder cost1, CostItem.Builder cost2) {
@@ -164,11 +164,13 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
-					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getExp()) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;
 				case RewardConst.COIN:
-					if(itemCount > user.getCoin()+lootService.getCoin(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getCoin()) return false;
 					user.setCoin(user.getCoin() - itemCount);
 					return true;
 				case RewardConst.JEWEL:
@@ -246,12 +248,13 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
-					;
-					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getExp()) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;
 				case RewardConst.COIN:
-					if(itemCount > user.getCoin()+lootService.getCoin(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getCoin()) return false;
 					user.setCoin(user.getCoin() - itemCount);
 					return true;
 				case RewardConst.JEWEL:
@@ -324,10 +327,12 @@ public class CostService {
 		} else {
 			switch (itemId) {
 				case RewardConst.EXP:
-					if(itemCount > user.getExp()+lootService.getExp(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getExp()) return false;
 					return true;
 				case RewardConst.COIN:
-					if(itemCount > user.getCoin()+lootService.getCoin(user)) return false;
+					lootService.calLoot(user);
+					if(itemCount > user.getCoin()) return false;
 					return true;
 				case RewardConst.JEWEL:
 					if(itemCount > user.getJewel()) return false;

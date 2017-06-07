@@ -126,6 +126,8 @@ public class UserBean {
 	private int extraType = 0;
 	private long extraLastTimeStamp = 0;
 	private int userType = 0;
+	private int goldSavingBox = 0;
+	private int expSavingBox = 0;
 	/**
 	 * 佣兵团等级
 	 */
@@ -1224,6 +1226,18 @@ public class UserBean {
 	public void setUserType(int userType) {
 		this.userType = userType;
 	}
+	public int getGoldSavingBox() {
+		return goldSavingBox;
+	}
+	public void setGoldSavingBox(int goldSavingBox) {
+		this.goldSavingBox = goldSavingBox;
+	}
+	public int getExpSavingBox() {
+		return expSavingBox;
+	}
+	public void setExpSavingBox(int expSavingBox) {
+		this.expSavingBox = expSavingBox;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1238,6 +1252,8 @@ public class UserBean {
 		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 1)));
 		setFreeContractTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (70 - 1)));
 		setJewelPRD(1000);
+		setGoldSavingBox(1);
+		setExpSavingBox(1);
 		return this;
 	}
 	public UserInfo buildShort() {
@@ -1387,6 +1403,8 @@ public class UserBean {
 		builder.setExtraHasLootTime(extraHasLootTime);
 		builder.setExtraLastTimeStamp(extraLastTimeStamp + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
 		builder.setUserType(userType);
+		builder.setGoldSavingBox(goldSavingBox);
+		builder.setExpSavingBox(expSavingBox);
 		
 		return builder.build();
 	}

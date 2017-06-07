@@ -104,9 +104,11 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
@@ -133,6 +135,8 @@ public abstract class RequestScreen implements RequestHandle {
 	private ServerTitleService serverTitleService;
 	@Resource
 	private PushCommandService pushCommandService;
+	@Resource
+	private LootService lootService;
 
 	protected abstract boolean handleRegisterCommand(RequestCommand cmd, Builder responseBuilder);
 	protected abstract boolean handleLoginCommand(RequestCommand cmd, Builder responseBuilder);
@@ -229,15 +233,14 @@ do
 		}" >> $proto_java
 done 
 
-echo -e "		if (responseBuilder.hasErrorCommand()) {
-			int errorCode = TypeTranslatedUtil.stringToInt(responseBuilder.getErrorCommand().getCode());
-			if (errorCode == ErrorConst.NOT_ENOUGH_COIN.getCode() || errorCode == ErrorConst.NOT_ENOUGH_EXP.getCode()
-					|| errorCode == ErrorConst.NOT_ENOUGH_JEWEL.getCode())
-				pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		}
-
-		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
+echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
 			pushNoticeCommand(responseBuilder, user);
+
+		UserLevelBean userLevel = lootService.calLoot(user);
+		if (userLevel != null) {
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			rep.command.setLevelLootCommand(userLevel.build());
+		}
 
 		return result;
 	}

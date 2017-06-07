@@ -112,6 +112,8 @@ public class RedisKey {
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
 	public static final String LEVEL_DIFF_PREDIX = CONFIG_PREFIX+"level_diff_"; 
 	
+	public static final String SAVINGBOX_KEY = PREFIX + CONFIG_PREFIX + "savingbox";
+	
 	//cdkey
 	public static final String CDKEY_CONFIG = PREFIX+CONFIG_PREFIX+"cdkey";
 	public static final String CDKEY = PREFIX+"cdkey";

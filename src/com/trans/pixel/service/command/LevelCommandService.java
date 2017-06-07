@@ -17,6 +17,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
@@ -39,6 +40,7 @@ import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
 import com.trans.pixel.protoc.UserInfoProto.Loot;
+import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
@@ -490,6 +492,17 @@ public class LevelCommandService extends BaseCommandService {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		redis.productEvent(user, userLevel, true);
 		pushLevelLootCommand(responseBuilder, userLevel, user);
+	}
+	
+	public void buySavingBox(RequestBuySavingBoxCommand cmd, Builder responseBuilder, UserBean user) {
+		ResultConst ret = redis.buySavingBox(user, cmd.getType());
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {

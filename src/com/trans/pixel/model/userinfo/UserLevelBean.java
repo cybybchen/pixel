@@ -3,6 +3,7 @@ package com.trans.pixel.model.userinfo;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
+import com.trans.pixel.service.redis.RedisService;
 
 public class UserLevelBean {
 	private long userId = 0;
@@ -14,6 +15,7 @@ public class UserLevelBean {
 	private int coin = 0;
 	private int exp = 0;
 	private int eventRandom = 0;
+	private int lootTimeNormal = 0;//计算金币和经验
 	public long getUserId() {
 		return userId;
 	}
@@ -68,6 +70,12 @@ public class UserLevelBean {
 	public void setEventRandom(int eventRandom) {
 		this.eventRandom = eventRandom;
 	}
+	public int getLootTimeNormal() {
+		return lootTimeNormal;
+	}
+	public void setLootTimeNormal(int lootTimeNormal) {
+		this.lootTimeNormal = lootTimeNormal;
+	}
 	public static UserLevelBean fromJson(String value) {
 		JSONObject json = JSONObject.fromObject(value);
 		Object object = JSONObject.toBean(json, UserLevelBean.class);
@@ -80,6 +88,8 @@ public class UserLevelBean {
 		builder.setUnlockDaguan(unlockDaguan);
 		builder.setLeftCount(leftCount);
 		builder.setLootDaguan(lootDaguan);
+		int current = RedisService.now();
+		builder.setLootTimeNormal(current - lootTimeNormal);
 		return builder;
 	}
 }

@@ -9,6 +9,7 @@
 		<result property="unlockDaguan" column="unlockDaguan" />
 		<result property="leftCount" column="leftCount" />
 		<result property="lootDaguan" column="lootDaguan" />
+		<result property="lootTimeNormal" column="loot_time_normal" />
 	</resultMap>
 	<resultMap id="eventMap" type="com.trans.pixel.model.userinfo.EventBean">
 		<id property="userId" column="userId" />
@@ -20,11 +21,12 @@
 	</resultMap>
 
 	<update id="updateUserLevel" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
-		INSERT INTO user_level(userId, lootTime, eventTime, unlockDaguan, leftCount, lootDaguan)
-	    VALUES(#{userId}, #{lootTime}, #{eventTime}, #{unlockDaguan}, #{leftCount}, #{lootDaguan})
+		INSERT INTO user_level(userId, lootTime, eventTime, unlockDaguan, leftCount, lootDaguan, loot_time_normal)
+	    VALUES(#{userId}, #{lootTime}, #{eventTime}, #{unlockDaguan}, #{leftCount}, #{lootDaguan}, #{lootTimeNormal})
 	    ON 
 	    duplicate key update
-	    lootTime=#{lootTime},eventTime=#{eventTime},unlockDaguan=#{unlockDaguan},leftCount=#{leftCount},lootDaguan=#{lootDaguan}
+	    lootTime=#{lootTime},eventTime=#{eventTime},unlockDaguan=#{unlockDaguan},leftCount=#{leftCount},lootDaguan=#{lootDaguan},
+	    loot_time_normal=#{lootTimeNormal}
 	</update>
 
 	<select id="getUserLevel" parameterType="long" resultMap="resultMap">
