@@ -7,15 +7,13 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.junit.Test;
-
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
-import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.test.pressure.TimeBean;
