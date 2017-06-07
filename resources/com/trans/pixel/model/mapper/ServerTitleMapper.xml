@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.ServerMapper">
+	
+	<resultMap id="resultMap" type="com.trans.pixel.model.ServerTitleBean">
+		<id property="serverId" column="server_id" />
+		<result property="titleId" column="title_id" />
+		<result property="userId" column="user_id" />
+	</resultMap>
+	
+	<select id="selectServerTileListByServerId" parameterType="int" resultMap="resultMap">
+		SELECT *
+		from server_title where server_id=#{serverId}
+	</select>
+	
+	<select id="selectServerTitleList" resultMap="resultMap">
+		SELECT *
+		from server_title
+	</select>
+	
+	<update id="updateServerTitle" parameterType="com.trans.pixel.model.ServerTitleBean">
+		INSERT INTO server_title(server_id, title_id, user_id)
+		VALUES(#{serverId}, #{titleId}, #{userId})
+	</update>
+	
+	<delete id="deleteServerTileByTitleId" parameterType="int">
+		DELETE from server_title where title_id=#{titleId}
+	</delete>
+	
+</mapper>

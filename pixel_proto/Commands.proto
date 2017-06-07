@@ -2631,7 +2631,8 @@ message RequestPurchaseLadderTimeCommand {
 message ResponseGetLadderUserInfoCommand {
 	required UserRank userRank = 1;
 }
-////////// UserInfoProto
+
+////////// ServerProto
 message HeadInfo 
 {
 	enum SERVER_STATUS {
@@ -2650,6 +2651,15 @@ message HeadInfo
 	optional int32 serverStatus = 10;	
 }
 
+message ServerTitleInfo {
+	message TitleInfo {
+		required uint32 titleId = 1;
+		required uint64 userId = 2;
+	}
+	repeated TitleInfo title = 1;
+}
+
+////////// UserInfoProto
 message ServerData {
 	optional int64 AreaBossRefreshTime = 1;
 }
@@ -2791,14 +2801,16 @@ message EventQuestion {
 message Enemy {
 	//optional int32 order = 1;
 	optional int32 enemyid = 2;
-	optional int32 enemycount = 3;
+	optional int32 count = 3;
 	optional int32 enemylv = 4;
 	optional int32 lootweight = 5;
 	optional int32 loot = 6;
-	optional int32 count = 7;
 }
 message EnemyList {
 	repeated Enemy data = 1;
+}
+message EnemyGroup {
+	repeated Enemy enemy = 1;
 }
 message EventConfig {
 	optional int32 id = 1;
@@ -2808,7 +2820,7 @@ message EventConfig {
 	optional RewardInfo cost = 5;
 	repeated RewardInfo lootlist = 6;
 	repeated EventQuestion question = 7;
-	repeated Enemy enemy = 8;
+	optional EnemyGroup enemygroup = 8;
 	optional int32 call = 9;
 }
 message EventConfigList {
@@ -3446,6 +3458,7 @@ message Raid {
 	optional string name = 4;
 	optional int32 lv = 3;
 	repeated Event event = 5;
+	optional int32 eventid = 6;
 }
 message RaidList {
         repeated Raid data = 1;
@@ -3459,9 +3472,11 @@ message RequestStartRaidCommand {
         optional string fightInfo = 3;
         optional int32 turn = 4;
         optional bool ret = 5;
+	optional int32 eventid = 6;
 }
 message ResponseRaidCommand {
 	optional int32 id = 1;
+	optional int32 eventid = 2;
 }
 ////////// Request
 message RequestCommand {
@@ -3665,6 +3680,7 @@ message ResponseMessageCommand {
 }
 message ResponseCommand {
 	required HeadInfo head = 1;
+	optional ServerTitleInfo title = 10001;
 	optional ErrorCommand errorCommand = 2;
 	optional RewardCommand rewardCommand = 101;
 	optional ResponseDailyShopCommand dailyShopCommand = 102;

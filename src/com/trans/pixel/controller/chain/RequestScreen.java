@@ -4,13 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.ServerBean;
+import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-import com.trans.pixel.protoc.UserInfoProto.HeadInfo.SERVER_STATUS;
-import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
+import com.trans.pixel.protoc.ServerProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -204,9 +207,11 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 public abstract class RequestScreen implements RequestHandle {
 	private static final Logger log = LoggerFactory.getLogger(RequestScreen.class);
 	@Resource
-    private UserService userService;
+	private UserService userService;
 	@Resource
 	private ServerService serverService;
+	@Resource
+	private ServerTitleService serverTitleService;
 	@Resource
 	private PushCommandService pushCommandService;
 
@@ -439,6 +444,10 @@ public abstract class RequestScreen implements RequestHandle {
 			log.error("cmd server maintenance:" + req);
 			return false;
 		}
+
+		ServerTitleInfo.Builder serverTitleBuilder = ServerTitleInfo.newBuilder();
+		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(head.getServerId()));
+		rep.command.setTitle(serverTitleBuilder.build());
 
 		ResponseCommand.Builder responseBuilder = rep.command;
 		UserBean user = null;

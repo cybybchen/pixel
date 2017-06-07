@@ -26,7 +26,7 @@ import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
-import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;

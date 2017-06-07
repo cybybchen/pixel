@@ -11,7 +11,7 @@ import javax.websocket.WebSocketContainer;
 
 import org.apache.log4j.Logger;
 
-import com.trans.pixel.protoc.UserInfoProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.HeadInfo;
 
 public class MyClientApp {
 
