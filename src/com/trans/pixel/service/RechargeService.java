@@ -331,11 +331,11 @@ public class RechargeService {
 		}
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		if(rewardList.isEmpty()){
-			return null;
-		}else{
+		if(!rewardList.isEmpty()){
 			rewards.addAllLoot(rewardList);
 			rewardService.doRewards(user, rewards);
+		}else if(zhsreward == null){
+			return null;
 		}
 		
 		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getItemid(), rmb.getCostid(), rmb.getRmb());
