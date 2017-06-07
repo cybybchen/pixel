@@ -10,6 +10,7 @@ import com.trans.pixel.model.mapper.UserEquipPokedeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.service.redis.UserEquipPokedeRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserEquipPokedeService {
@@ -67,19 +68,26 @@ public class UserEquipPokedeService {
 		mapper.updateUserEquipPokede(userPokede);
 	}
 	
-	public void updateUserEquipPokede(int itemId, UserBean user) {
+	public void updateUserEquipPokede(int itemId, UserBean user, int lasttime) {
 		UserEquipPokedeBean pokede = selectUserEquipPokede(user, itemId);
-		if (pokede == null) {
-			pokede = initUserPokede(user.getId(), itemId);
-			updateUserEquipPokede(pokede, user);
+		if (pokede == null || !pokede.getEndTime().isEmpty()) {
 			/**
 			 * 获得新装备
 			 */
-			activityService.getEquip(user, itemId);
+			if (pokede == null) {
+				activityService.getEquip(user, itemId);
+			
+				pokede = initUserPokede(user.getId(), itemId, lasttime);
+			}
+			
+			pokede.setEndTime(lasttime == 0 ? 
+					"" : DateUtil.forDatetime(DateUtil.getFutureDay(pokede.getEndTime().isEmpty() ?
+							DateUtil.getDate() : DateUtil.getDate(pokede.getEndTime()), lasttime)));
+			updateUserEquipPokede(pokede, user);
 		}
 	}
 	
-	public UserEquipPokedeBean initUserPokede(long userId, int itemId) {
+	public UserEquipPokedeBean initUserPokede(long userId, int itemId, int lasttime) {
 		UserEquipPokedeBean userPokede = new UserEquipPokedeBean();
 		userPokede.setItemId(itemId);
 		userPokede.setUserId(userId);

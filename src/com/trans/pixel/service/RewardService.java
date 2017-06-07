@@ -68,17 +68,17 @@ public class RewardService {
 	
 	public void doReward(long userId, int rewardId, long rewardCount) {
 		UserBean bean = userService.getOther(userId);
-		if(doReward(bean, rewardId, rewardCount))
+		if(doReward(bean, rewardId, rewardCount, 0))
 			userService.updateUser(bean);
 	}
 	public void doReward(UserBean user, RewardInfo reward) {
-		if(doReward(user, reward.getItemid(), reward.getCount()))
+		if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
 			userService.updateUser(user);
 	}
 	/**
 	 * need updateuser when return true
 	 */
-	public boolean doReward(UserBean user, int rewardId, long rewardCount) {
+	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime) {
 		if (rewardId > RewardConst.AREAEQUIPMENT) {
 			areaService.addAreaEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.FOOD) {
@@ -93,9 +93,9 @@ public class RewardService {
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.CHIP) {
-			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
+			userEquipService.addUserEquip(user, rewardId, (int)rewardCount, lasttime);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
-			userEquipService.addUserEquip(user, rewardId, (int)rewardCount);
+			userEquipService.addUserEquip(user, rewardId, (int)rewardCount, lasttime);
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:
@@ -170,7 +170,7 @@ public class RewardService {
 	public void doRewards(UserBean user, List<RewardBean> rewards) {
 		boolean needUpdateUser = false;
 		for (RewardBean reward : rewards) {
-			if(doReward(user, reward.getItemid(), reward.getCount()))
+			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLasttime()))
 			needUpdateUser = true;
 		}
 		
@@ -182,7 +182,7 @@ public class RewardService {
 	public void doRewards(UserBean user, MultiReward rewards) {
 		boolean needUpdateUser = false;
 		for (RewardInfo reward : rewards.getLootList()) {
-			if(doReward(user, reward.getItemid(), reward.getCount()))
+			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
 			needUpdateUser = true;
 		}
 		
@@ -214,7 +214,7 @@ public class RewardService {
 	public void doRewards(UserBean user, MultiReward.Builder rewards) {
 		boolean needUpdateUser = false;
 		for (RewardInfo reward : rewards.getLootList()) {
-			if(doReward(user, reward.getItemid(), reward.getCount()))
+			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
 				needUpdateUser = true;
 		}
 		

@@ -25,6 +25,7 @@ public class RewardBean {
 	private int weight = 0;
 	private long count = 0;
 	private int will = 0;
+	private int lasttime = 0;
 	public int getId() {
 		return id;
 	}
@@ -61,12 +62,19 @@ public class RewardBean {
 	public void setWill(int will) {
 		this.will = will;
 	}
+	public int getLasttime() {
+		return lasttime;
+	}
+	public void setLasttime(int lasttime) {
+		this.lasttime = lasttime;
+	}
 	public static List<RewardBean> buildRewardBeanList(List<RewardInfo> rewardList) {
 		List<RewardBean> rewardBeanList = new ArrayList<RewardBean>();
 		for (RewardInfo reward : rewardList) {
 			RewardBean rewardBean = new RewardBean();
 			rewardBean.setItemid(reward.getItemid());
 			rewardBean.setCount(reward.getCount());
+			rewardBean.setLasttime(reward.getLastime());
 			rewardBeanList.add(rewardBean);
 		}
 		
@@ -78,6 +86,7 @@ public class RewardBean {
 		reward.setItemid(itemid);
 //		reward.setItemname(name);
 		reward.setCount(count);
+		reward.setLastime(lasttime);
 		
 		return reward.build();
 	}
@@ -90,6 +99,7 @@ public class RewardBean {
 		json.put(WEIGHT, weight);
 		json.put(COUNT, count);
 		json.put(WILL, will);
+		json.put(LASTTIME, lasttime);
 		
 		return json.toString();
 	}
@@ -105,6 +115,7 @@ public class RewardBean {
 		bean.setWeight(json.getInt(WEIGHT));
 		bean.setCount(json.getLong(COUNT));
 		bean.setWill(TypeTranslatedUtil.jsonGetInt(json, WILL));
+		bean.setLasttime(TypeTranslatedUtil.jsonGetInt(json, LASTTIME));
 
 		return bean;
 	}
@@ -153,6 +164,7 @@ public class RewardBean {
 			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
 			rewardInfo.setItemid(reward.getItemid());
 			rewardInfo.setCount(reward.getCount());
+			rewardInfo.setLastime(reward.getLasttime());
 			rewardInfoList.add(rewardInfo.build());
 		}
 		
@@ -198,4 +210,5 @@ public class RewardBean {
 	private static final String WEIGHT = "weight";
 	private static final String COUNT = "count";
 	private static final String WILL = "will";
+	private static final String LASTTIME = "lasttime";
 }

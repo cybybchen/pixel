@@ -179,6 +179,7 @@ message UserEquipPokede {
 	required int32 itemId = 1;
 	required int32 level = 2;
 	optional uint32 order = 3;
+	optional uint32 lastTime = 4;
 }
 
 message HeroInfo {
@@ -211,6 +212,7 @@ message RewardInfo {
 	optional string item = 7;
 	optional uint32 eventid = 8;
 	optional uint32 rmbid = 9;
+	optional uint32 lastime = 10;
 }
 
 message MultiReward {

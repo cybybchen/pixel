@@ -82,9 +82,9 @@ public class UserEquipService {
 		return userEquip;
 	}
 	
-	public void addUserEquip(UserBean user, int equipId, int equipCount) {
+	public void addUserEquip(UserBean user, int equipId, int equipCount, int lasttime) {
 		if (equipId < RewardConst.CHIP)
-			userEquipPokedeService.updateUserEquipPokede(equipId, user);
+			userEquipPokedeService.updateUserEquipPokede(equipId, user, lasttime);
 		else {
 			long userId = user.getId();
 			UserEquipBean userEquip = selectUserEquip(userId, equipId);

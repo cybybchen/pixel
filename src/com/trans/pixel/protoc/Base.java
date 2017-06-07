@@ -20731,6 +20731,16 @@ public final class Base {
      * <code>optional uint32 order = 3;</code>
      */
     int getOrder();
+
+    // optional uint32 lastTime = 4;
+    /**
+     * <code>optional uint32 lastTime = 4;</code>
+     */
+    boolean hasLastTime();
+    /**
+     * <code>optional uint32 lastTime = 4;</code>
+     */
+    int getLastTime();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserEquipPokede}
@@ -20796,6 +20806,11 @@ public final class Base {
             case 24: {
               bitField0_ |= 0x00000004;
               order_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              lastTime_ = input.readUInt32();
               break;
             }
           }
@@ -20886,10 +20901,27 @@ public final class Base {
       return order_;
     }
 
+    // optional uint32 lastTime = 4;
+    public static final int LASTTIME_FIELD_NUMBER = 4;
+    private int lastTime_;
+    /**
+     * <code>optional uint32 lastTime = 4;</code>
+     */
+    public boolean hasLastTime() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint32 lastTime = 4;</code>
+     */
+    public int getLastTime() {
+      return lastTime_;
+    }
+
     private void initFields() {
       itemId_ = 0;
       level_ = 0;
       order_ = 0;
+      lastTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -20920,6 +20952,9 @@ public final class Base {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(3, order_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt32(4, lastTime_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -20940,6 +20975,10 @@ public final class Base {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, order_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, lastTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -21063,6 +21102,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000002);
         order_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        lastTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -21103,6 +21144,10 @@ public final class Base {
           to_bitField0_ |= 0x00000004;
         }
         result.order_ = order_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.lastTime_ = lastTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -21127,6 +21172,9 @@ public final class Base {
         }
         if (other.hasOrder()) {
           setOrder(other.getOrder());
+        }
+        if (other.hasLastTime()) {
+          setLastTime(other.getLastTime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -21258,6 +21306,39 @@ public final class Base {
       public Builder clearOrder() {
         bitField0_ = (bitField0_ & ~0x00000004);
         order_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 lastTime = 4;
+      private int lastTime_ ;
+      /**
+       * <code>optional uint32 lastTime = 4;</code>
+       */
+      public boolean hasLastTime() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint32 lastTime = 4;</code>
+       */
+      public int getLastTime() {
+        return lastTime_;
+      }
+      /**
+       * <code>optional uint32 lastTime = 4;</code>
+       */
+      public Builder setLastTime(int value) {
+        bitField0_ |= 0x00000008;
+        lastTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 lastTime = 4;</code>
+       */
+      public Builder clearLastTime() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        lastTime_ = 0;
         onChanged();
         return this;
       }
@@ -23883,6 +23964,16 @@ public final class Base {
      * <code>optional uint32 rmbid = 9;</code>
      */
     int getRmbid();
+
+    // optional uint32 lastime = 10;
+    /**
+     * <code>optional uint32 lastime = 10;</code>
+     */
+    boolean hasLastime();
+    /**
+     * <code>optional uint32 lastime = 10;</code>
+     */
+    int getLastime();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RewardInfo}
@@ -23978,6 +24069,11 @@ public final class Base {
             case 72: {
               bitField0_ |= 0x00000100;
               rmbid_ = input.readUInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              lastime_ = input.readUInt32();
               break;
             }
           }
@@ -24218,6 +24314,22 @@ public final class Base {
       return rmbid_;
     }
 
+    // optional uint32 lastime = 10;
+    public static final int LASTIME_FIELD_NUMBER = 10;
+    private int lastime_;
+    /**
+     * <code>optional uint32 lastime = 10;</code>
+     */
+    public boolean hasLastime() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional uint32 lastime = 10;</code>
+     */
+    public int getLastime() {
+      return lastime_;
+    }
+
     private void initFields() {
       itemid_ = 0;
       itemname_ = "";
@@ -24228,6 +24340,7 @@ public final class Base {
       item_ = "";
       eventid_ = 0;
       rmbid_ = 0;
+      lastime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -24267,6 +24380,9 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeUInt32(9, rmbid_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeUInt32(10, lastime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -24312,6 +24428,10 @@ public final class Base {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(9, rmbid_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, lastime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -24447,6 +24567,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000080);
         rmbid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        lastime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -24511,6 +24633,10 @@ public final class Base {
           to_bitField0_ |= 0x00000100;
         }
         result.rmbid_ = rmbid_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.lastime_ = lastime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -24557,6 +24683,9 @@ public final class Base {
         }
         if (other.hasRmbid()) {
           setRmbid(other.getRmbid());
+        }
+        if (other.hasLastime()) {
+          setLastime(other.getLastime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -24960,6 +25089,39 @@ public final class Base {
       public Builder clearRmbid() {
         bitField0_ = (bitField0_ & ~0x00000100);
         rmbid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 lastime = 10;
+      private int lastime_ ;
+      /**
+       * <code>optional uint32 lastime = 10;</code>
+       */
+      public boolean hasLastime() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional uint32 lastime = 10;</code>
+       */
+      public int getLastime() {
+        return lastime_;
+      }
+      /**
+       * <code>optional uint32 lastime = 10;</code>
+       */
+      public Builder setLastime(int value) {
+        bitField0_ |= 0x00000200;
+        lastime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 lastime = 10;</code>
+       */
+      public Builder clearLastime() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        lastime_ = 0;
         onChanged();
         return this;
       }
@@ -27229,27 +27391,28 @@ public final class Base {
       "\020\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005co" +
       "unt\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tS" +
       "killInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030",
-      "\002 \002(\005\"?\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005" +
-      "\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\"\207\003\n\010HeroI" +
-      "nfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004ra" +
-      "re\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\013" +
-      "2!.com.trans.pixel.protoc.SkillInfo\022\r\n\005v" +
-      "alue\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005" +
-      "\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005co" +
-      "unt\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pix" +
-      "el.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022" +
-      "\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipP",
-      "okede\030\020 \001(\0132\'.com.trans.pixel.protoc.Use" +
-      "rEquipPokede\022\n\n\002sp\030\021 \001(\005\"\233\001\n\nRewardInfo\022" +
-      "\016\n\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\r\n\005cou" +
-      "nt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\016\n\006counta\030\005 \001(\005" +
-      "\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventi" +
-      "d\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\"Y\n\013MultiReward\022\n\n" +
-      "\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\"|\n\004Tas" +
-      "k\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des" +
-      "\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 ",
-      "\003(\0132\".com.trans.pixel.protoc.RewardInfo"
+      "\002 \002(\005\"Q\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005" +
+      "\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTi" +
+      "me\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n" +
+      "\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 " +
+      "\001(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.pro" +
+      "toc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001" +
+      "(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006" +
+      "isLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003" +
+      "(\0132!.com.trans.pixel.protoc.ClearInfo\022\022\n" +
+      "\nstrengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fette",
+      "rs\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.tran" +
+      "s.pixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001" +
+      "(\005\"\254\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\020\n\010ite" +
+      "mname\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001" +
+      "(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004it" +
+      "em\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r" +
+      "\022\017\n\007lastime\030\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001" +
+      " \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.t" +
+      "rans.pixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010" +
+      "targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(",
+      "\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\"" +
+      ".com.trans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -27351,7 +27514,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserEquipPokede_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor,
-              new java.lang.String[] { "ItemId", "Level", "Order", });
+              new java.lang.String[] { "ItemId", "Level", "Order", "LastTime", });
           internal_static_com_trans_pixel_protoc_HeroInfo_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
@@ -27363,7 +27526,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
-              new java.lang.String[] { "Itemid", "Itemname", "Count", "Weight", "Counta", "Countb", "Item", "Eventid", "Rmbid", });
+              new java.lang.String[] { "Itemid", "Itemname", "Count", "Weight", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
           internal_static_com_trans_pixel_protoc_MultiReward_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_MultiReward_fieldAccessorTable = new
