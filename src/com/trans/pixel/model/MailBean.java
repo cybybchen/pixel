@@ -103,7 +103,7 @@ public class MailBean {
 		for(RewardInfo rewardinfo : rewardList){
 			RewardBean reward = new RewardBean();
 			reward.setItemid(rewardinfo.getItemid());
-			reward.setName(rewardinfo.getItemname());
+			reward.setName(rewardinfo.getName());
 			reward.setCount((int)rewardinfo.getCount());
 			list.add(reward);
 		}

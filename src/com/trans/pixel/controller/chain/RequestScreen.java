@@ -59,6 +59,7 @@ import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
@@ -259,6 +260,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBloodXiazhuCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBuySavingBoxCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
@@ -642,6 +644,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasCreateBossRoomCommand()) {
 			RequestCreateBossRoomCommand cmd = request.getCreateBossRoomCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasBuySavingBoxCommand()) {
+			RequestBuySavingBoxCommand cmd = request.getBuySavingBoxCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSevenLoginSignCommand()) {

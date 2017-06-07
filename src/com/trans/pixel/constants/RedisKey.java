@@ -37,12 +37,13 @@ public class RedisKey {
 	public final static String PVPMINE_PREFIX = PREFIX+"PVPMine_";
 	public final static String PVPMAPBUFF_PREFIX = PREFIX+"PVPMapBuff_";
 	public final static String MOHUA_USERDATA = "mohua_userdata";
+	public final static String PVPFIELD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPField";
 	public final static String PVPMAP_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMap";
 	public final static String PVPMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonster";
 	public final static String PVPACTIVITYMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPActivityMonster";
 	public final static String PVPBOSS_CONFIG = PREFIX+CONFIG_PREFIX+"PVPBoss";
 	public final static String PVPPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"PVPPosition";
-	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
+//	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
 	public static final String USER_POKEDE_PREFIX = PREFIX + "user_pokede_"; 
 	public final static String USER_LIBAOCOUNT_PREFIX = PREFIX+"UserLibaoCount_";
 	public static final String USER_FOOD_PREFIX = PREFIX + "user_food_";

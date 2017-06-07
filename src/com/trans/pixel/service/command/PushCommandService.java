@@ -360,17 +360,17 @@ public class PushCommandService extends BaseCommandService {
 	/**
 	 * Include RewardCommand
 	 */
-	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId, String rewardName, long rewardCount) {
-		RewardCommand.Builder reward = RewardCommand.newBuilder();
-		RewardInfo.Builder builder = RewardInfo.newBuilder();
-		builder.setItemid(rewardId);
-		builder.setItemname(rewardName);
-		builder.setCount(rewardCount);
-		reward.addLoot(builder);
-		reward.setTitle("恭喜获得");
-		responseBuilder.setRewardCommand(reward);
-		pushUserDataByRewardId(responseBuilder, user, rewardId);
-	}
+//	public void pushRewardCommand(Builder responseBuilder, UserBean user, int rewardId, String rewardName, long rewardCount) {
+//		RewardCommand.Builder reward = RewardCommand.newBuilder();
+//		RewardInfo.Builder builder = RewardInfo.newBuilder();
+//		builder.setItemid(rewardId);
+//		builder.setName(rewardName);
+//		builder.setCount(rewardCount);
+//		reward.addLoot(builder);
+//		reward.setTitle("恭喜获得");
+//		responseBuilder.setRewardCommand(reward);
+//		pushUserDataByRewardId(responseBuilder, user, rewardId);
+//	}
 	
 	/**
 	 * No RewardCommand include

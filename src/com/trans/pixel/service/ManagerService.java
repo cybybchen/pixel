@@ -2294,16 +2294,6 @@ public class ManagerService extends RedisService{
 			result.put("AreaResourceConfig", object);
 		}
 
-		if(req.containsKey("del-PvpMonsterRewardConfig")){
-			delete(RedisKey.PVPMONSTERREWARD_CONFIG);
-			req.put("PvpMonsterRewardConfig", 1);
-		}
-		if(req.containsKey("PvpMonsterRewardConfig")){
-			Map<String, String> map = hget(RedisKey.PVPMONSTERREWARD_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PvpMonsterRewardConfig", object);
-		}
 		if(req.containsKey("del-PvpMonsterConfig")){
 			delete(RedisKey.PVPMONSTER_CONFIG);
 			req.put("PvpMonsterConfig", 1);

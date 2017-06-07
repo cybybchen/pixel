@@ -72,6 +72,8 @@ message UserInfo {
 	optional uint32 extraType = 84;
 	optional int64 extraLastTimeStamp = 85;
 	optional uint32 userType = 86;//0:普通， 1:非R， 2：小R  3，中R， 4：大R
+	optional uint32 goldSavingBox = 87;
+	optional uint32 expSavingBox = 88;
 }
 
 message CostItem {
@@ -204,9 +206,10 @@ message HeroInfo {
 
 message RewardInfo {
 	optional int32 itemid = 1;
-	optional string itemname = 2;
+	optional string name = 2;
 	optional int64 count = 3;
 	optional int32 weight = 4;
+	optional int32 weightb = 11;
 	optional int32 counta = 5;
 	optional int32 countb = 6;
 	optional string item = 7;
@@ -1263,23 +1266,9 @@ message PVPEvent {//pvp事件Config
 	optional string starttime = 13;
 	optional string endtime = 14;
 }
-message PVPMonster {//pvp怪物Config
-        required int32 id = 1;
-        optional string name = 2;
-        optional int32 boss = 3;//站立
-        optional int32 fieldid = 4;//区域ID
-        optional int32 buffcount = 5;//增加的buff层数
-        optional int32 weight = 12;//出现几率
-        optional int32 x = 8;//坐标x
-        optional int32 y = 9;//坐标y
-        optional int32 positionid = 10;
-        optional int32 level = 11;
-        optional string starttime = 13;
-        optional string endtime = 14;
-}
 
-message PVPMonsterList {
-	repeated PVPMonster id = 1;
+message PVPEventList {
+	repeated PVPEvent data = 1;
 }
 
 message PVPBoss {
@@ -2670,6 +2659,30 @@ message RewardCommand {
 	repeated RewardInfo loot = 3;//奖励列表
 }
 
+message SavingBoxGold {
+	required uint32 count = 1;
+	required RewardInfo cost = 2;
+}
+
+message SavingBoxExp {
+	required uint32 count = 1;
+	required RewardInfo cost = 2;
+}
+
+message SavingBox {
+	required SavingBoxGold gold = 1;
+	required SavingBoxExp exp = 2;
+	required uint32 id = 3;
+}
+
+message SavingBoxList {
+	repeated SavingBox data = 1;
+}
+
+message RequestBuySavingBoxCommand {
+	required uint32 type = 1;//1000:exp 1001:gold
+}
+
 message ResponseNeedRegisterCommand {
 
 }
@@ -2864,6 +2877,7 @@ message RequestEventResultCommand {
 message ResponseEventResultCommand {
 	repeated RewardInfo reward = 1;
 }
+
 message ResponseLevelLootCommand {
 	optional int32 unlockDaguan = 1;
 	optional int32 leftCount = 2;
@@ -2871,6 +2885,7 @@ message ResponseLevelLootCommand {
 	optional int32 lootTime = 4;
 	optional int32 eventTime = 5;
 	repeated Event event = 6;
+	optional uint32 lootTimeNormal = 7;
 }
 
 message RequestEventBuyCommand {
@@ -3667,6 +3682,7 @@ message RequestCommand {
 	optional RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;
 	optional RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
 	optional RequestLadderEnemyCommand ladderEnemyCommand = 248;
+	optional RequestBuySavingBoxCommand buySavingBoxCommand = 249;
 }
 ////////// Commands
 message ErrorCommand {

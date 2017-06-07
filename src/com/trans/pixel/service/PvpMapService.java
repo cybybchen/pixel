@@ -24,12 +24,11 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.PVPProto.PVPEvent;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
-import com.trans.pixel.protoc.PVPProto.PVPMonster;
-import com.trans.pixel.protoc.PVPProto.PVPMonsterReward;
-import com.trans.pixel.protoc.PVPProto.PVPMonsterRewardLoot;
+import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
@@ -233,7 +232,7 @@ public class PvpMapService {
 		}else{
 			Map<String, String> pvpMap = redis.getUserBuffs(user);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
-			List<PVPMonster> monsters = redis.getMonsters(user, pvpMap);
+			List<PVPEvent> events = redis.getEvents(user, pvpMap);
 			refreshMine(maplist, mineMap, user);
 			String buff = pvpMap.get("0");
 			if(buff != null)
@@ -255,9 +254,9 @@ public class PvpMapService {
 					if(mine != null)
 						mineBuilder.mergeFrom(mine);
 				}
-				for(PVPMonster monster : monsters){
-//					if(monster.getFieldid() == mapBuilder.getFieldid())
-//						mapBuilder.addEvent(monster);
+				for(PVPEvent event : events){
+					if(event.getFieldid() == mapBuilder.getFieldid())
+						mapBuilder.addEvent(event);
 				}
 			}
 		}
@@ -291,37 +290,41 @@ public class PvpMapService {
 		return false;
 	}
 	
-	public MultiReward attackMonster(UserBean user, int positionid, boolean ret, int time){
+	public MultiReward attackEvent(UserBean user, int positionid, boolean ret, int time){
 		int logType = PvpMapConst.TYPE_MONSTER;
-		PVPMonster monster = redis.getMonster(user, positionid);
-		if(monster == null)
+		PVPEvent event = redis.getEvent(user, positionid);
+		if(event == null)
 			return null;
-		if(monster.hasEndtime() && !DateUtil.timeIsAvailable(monster.getStarttime(), monster.getEndtime()))
+		if(event.hasEndtime() && !DateUtil.timeIsAvailable(event.getStarttime(), event.getEndtime()))
 			return null;
 		
-		if (monster.getId()/1000 == 2) {
+		if (event.getEventid()/1000 == 21) {
 			logType = PvpMapConst.TYPE_BOSS;
 		}
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		int buff = -1;
 		if(ret){
-			if(monster.getId()/1000 == 2)
+			if(event.getEventid()/1000 == 21)
 				redis.deleteBoss(user, positionid);
 			else
-				redis.deleteMonster(user, positionid);
-			PVPMonsterReward reward = redis.getMonsterReward(monster.getId());
+				redis.deleteEvent(user, positionid);
+			EventConfig config = levelRedisService.getEvent(event.getEventid());
 			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
-			for(PVPMonsterRewardLoot loot : reward.getLootList()){
-				if(loot.getWeighta()+(int)(loot.getWeightb()*monster.getLevel()) > redis.nextInt(loot.getWeightall())){
+			for(RewardInfo loot : config.getLootlistList()){
+				int weight = loot.getWeight()+(int)(loot.getWeightb()*event.getLevel());
+				int count = Math.max(0, weight/100);
+				if(count > 0)
+					weight -= weight%100;
+				if(loot.getWeight()+(int)(loot.getWeightb()*event.getLevel()) > redis.nextInt(100)){
 					rewardinfo.setItemid(loot.getItemid());
-					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*monster.getLevel()));
+					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*event.getLevel()));
 					if(rewardinfo.getCount() > 0)
 						rewards.addLoot(rewardinfo);
 				}
 			}
-			int buff = redis.addUserBuff(user, monster.getFieldid(), monster.getBuffcount());
-			if (monster.getId()/1000 == 2) {
+			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
+			if (event.getEventid()/1000 == 21) {
 				/**
 				 * PVP攻击BOSS的活动
 				 */
@@ -332,11 +335,11 @@ public class PvpMapService {
 			 */
 			activityService.attackMonster(user);
 			
-			unionService.killMonsterBossActivity(user, monster.getId(), 1);
+			unionService.killMonsterBossActivity(user, event.getEventid(), 1);
 			/**
 			 * buff的活动
 			 */
-			activityService.upPvpBuff(user, monster.getFieldid(), buff);
+			activityService.upPvpBuff(user, event.getFieldid(), buff);
 		}
 
 		user.addMyactive();
@@ -349,9 +352,8 @@ public class PvpMapService {
 		/**
 		 * send log
 		 */
-		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, monster.getId(), 0);
+		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, event.getEventid(), 0);
 		
-//		logger.warn(monster.getFieldid()+":+"+monster.getName()+ret+":"+monster.getBuffcount()+"->"+buff);
 		return rewards.build();
 	}
 
@@ -451,9 +453,9 @@ public class PvpMapService {
 		if(user.getRefreshPvpMapTime() > now)
 			return false;
 		
-		redis.deleteMonsters(user);
+		redis.deleteEvents(user);
 		redis.deleteUserBuff(user);
-		redis.getMonsters(user, new HashMap<String, String>(), true);
+		redis.getEvents(user, new HashMap<String, String>(), true);
 
 		user.setRefreshPvpMapTime(now+48*3600);
 		userService.updateUser(user);

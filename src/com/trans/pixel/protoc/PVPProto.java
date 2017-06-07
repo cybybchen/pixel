@@ -4113,1773 +4113,53 @@ public final class PVPProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.PVPEvent)
   }
 
-  public interface PVPMonsterOrBuilder
+  public interface PVPEventListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+    // repeated .com.trans.pixel.protoc.PVPEvent data = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    boolean hasId();
+    java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> 
+        getDataList();
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    int getId();
-
-    // optional string name = 2;
+    com.trans.pixel.protoc.PVPProto.PVPEvent getData(int index);
     /**
-     * <code>optional string name = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    boolean hasName();
+    int getDataCount();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    java.lang.String getName();
+    java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder> 
+        getDataOrBuilderList();
     /**
-     * <code>optional string name = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    // optional int32 boss = 3;
-    /**
-     * <code>optional int32 boss = 3;</code>
-     *
-     * <pre>
-     *站立
-     * </pre>
-     */
-    boolean hasBoss();
-    /**
-     * <code>optional int32 boss = 3;</code>
-     *
-     * <pre>
-     *站立
-     * </pre>
-     */
-    int getBoss();
-
-    // optional int32 fieldid = 4;
-    /**
-     * <code>optional int32 fieldid = 4;</code>
-     *
-     * <pre>
-     *区域ID
-     * </pre>
-     */
-    boolean hasFieldid();
-    /**
-     * <code>optional int32 fieldid = 4;</code>
-     *
-     * <pre>
-     *区域ID
-     * </pre>
-     */
-    int getFieldid();
-
-    // optional int32 buffcount = 5;
-    /**
-     * <code>optional int32 buffcount = 5;</code>
-     *
-     * <pre>
-     *增加的buff层数
-     * </pre>
-     */
-    boolean hasBuffcount();
-    /**
-     * <code>optional int32 buffcount = 5;</code>
-     *
-     * <pre>
-     *增加的buff层数
-     * </pre>
-     */
-    int getBuffcount();
-
-    // optional int32 weight = 12;
-    /**
-     * <code>optional int32 weight = 12;</code>
-     *
-     * <pre>
-     *出现几率
-     * </pre>
-     */
-    boolean hasWeight();
-    /**
-     * <code>optional int32 weight = 12;</code>
-     *
-     * <pre>
-     *出现几率
-     * </pre>
-     */
-    int getWeight();
-
-    // optional int32 x = 8;
-    /**
-     * <code>optional int32 x = 8;</code>
-     *
-     * <pre>
-     *坐标x
-     * </pre>
-     */
-    boolean hasX();
-    /**
-     * <code>optional int32 x = 8;</code>
-     *
-     * <pre>
-     *坐标x
-     * </pre>
-     */
-    int getX();
-
-    // optional int32 y = 9;
-    /**
-     * <code>optional int32 y = 9;</code>
-     *
-     * <pre>
-     *坐标y
-     * </pre>
-     */
-    boolean hasY();
-    /**
-     * <code>optional int32 y = 9;</code>
-     *
-     * <pre>
-     *坐标y
-     * </pre>
-     */
-    int getY();
-
-    // optional int32 positionid = 10;
-    /**
-     * <code>optional int32 positionid = 10;</code>
-     */
-    boolean hasPositionid();
-    /**
-     * <code>optional int32 positionid = 10;</code>
-     */
-    int getPositionid();
-
-    // optional int32 level = 11;
-    /**
-     * <code>optional int32 level = 11;</code>
-     */
-    boolean hasLevel();
-    /**
-     * <code>optional int32 level = 11;</code>
-     */
-    int getLevel();
-
-    // optional string starttime = 13;
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    boolean hasStarttime();
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    java.lang.String getStarttime();
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    com.google.protobuf.ByteString
-        getStarttimeBytes();
-
-    // optional string endtime = 14;
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    boolean hasEndtime();
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    java.lang.String getEndtime();
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    com.google.protobuf.ByteString
-        getEndtimeBytes();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.PVPMonster}
-   *
-   * <pre>
-   *pvp怪物Config
-   * </pre>
-   */
-  public static final class PVPMonster extends
-      com.google.protobuf.GeneratedMessage
-      implements PVPMonsterOrBuilder {
-    // Use PVPMonster.newBuilder() to construct.
-    private PVPMonster(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private PVPMonster(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final PVPMonster defaultInstance;
-    public static PVPMonster getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public PVPMonster getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PVPMonster(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              boss_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              fieldid_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              buffcount_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000040;
-              x_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000080;
-              y_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000100;
-              positionid_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000200;
-              level_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000020;
-              weight_ = input.readInt32();
-              break;
-            }
-            case 106: {
-              bitField0_ |= 0x00000400;
-              starttime_ = input.readBytes();
-              break;
-            }
-            case 114: {
-              bitField0_ |= 0x00000800;
-              endtime_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonster_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonster_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.PVPProto.PVPMonster.class, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<PVPMonster> PARSER =
-        new com.google.protobuf.AbstractParser<PVPMonster>() {
-      public PVPMonster parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PVPMonster(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PVPMonster> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int32 id = 1;</code>
-     */
-    public int getId() {
-      return id_;
-    }
-
-    // optional string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 boss = 3;
-    public static final int BOSS_FIELD_NUMBER = 3;
-    private int boss_;
-    /**
-     * <code>optional int32 boss = 3;</code>
-     *
-     * <pre>
-     *站立
-     * </pre>
-     */
-    public boolean hasBoss() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int32 boss = 3;</code>
-     *
-     * <pre>
-     *站立
-     * </pre>
-     */
-    public int getBoss() {
-      return boss_;
-    }
-
-    // optional int32 fieldid = 4;
-    public static final int FIELDID_FIELD_NUMBER = 4;
-    private int fieldid_;
-    /**
-     * <code>optional int32 fieldid = 4;</code>
-     *
-     * <pre>
-     *区域ID
-     * </pre>
-     */
-    public boolean hasFieldid() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 fieldid = 4;</code>
-     *
-     * <pre>
-     *区域ID
-     * </pre>
-     */
-    public int getFieldid() {
-      return fieldid_;
-    }
-
-    // optional int32 buffcount = 5;
-    public static final int BUFFCOUNT_FIELD_NUMBER = 5;
-    private int buffcount_;
-    /**
-     * <code>optional int32 buffcount = 5;</code>
-     *
-     * <pre>
-     *增加的buff层数
-     * </pre>
-     */
-    public boolean hasBuffcount() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 buffcount = 5;</code>
-     *
-     * <pre>
-     *增加的buff层数
-     * </pre>
-     */
-    public int getBuffcount() {
-      return buffcount_;
-    }
-
-    // optional int32 weight = 12;
-    public static final int WEIGHT_FIELD_NUMBER = 12;
-    private int weight_;
-    /**
-     * <code>optional int32 weight = 12;</code>
-     *
-     * <pre>
-     *出现几率
-     * </pre>
-     */
-    public boolean hasWeight() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 weight = 12;</code>
-     *
-     * <pre>
-     *出现几率
-     * </pre>
-     */
-    public int getWeight() {
-      return weight_;
-    }
-
-    // optional int32 x = 8;
-    public static final int X_FIELD_NUMBER = 8;
-    private int x_;
-    /**
-     * <code>optional int32 x = 8;</code>
-     *
-     * <pre>
-     *坐标x
-     * </pre>
-     */
-    public boolean hasX() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 x = 8;</code>
-     *
-     * <pre>
-     *坐标x
-     * </pre>
-     */
-    public int getX() {
-      return x_;
-    }
-
-    // optional int32 y = 9;
-    public static final int Y_FIELD_NUMBER = 9;
-    private int y_;
-    /**
-     * <code>optional int32 y = 9;</code>
-     *
-     * <pre>
-     *坐标y
-     * </pre>
-     */
-    public boolean hasY() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 y = 9;</code>
-     *
-     * <pre>
-     *坐标y
-     * </pre>
-     */
-    public int getY() {
-      return y_;
-    }
-
-    // optional int32 positionid = 10;
-    public static final int POSITIONID_FIELD_NUMBER = 10;
-    private int positionid_;
-    /**
-     * <code>optional int32 positionid = 10;</code>
-     */
-    public boolean hasPositionid() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 positionid = 10;</code>
-     */
-    public int getPositionid() {
-      return positionid_;
-    }
-
-    // optional int32 level = 11;
-    public static final int LEVEL_FIELD_NUMBER = 11;
-    private int level_;
-    /**
-     * <code>optional int32 level = 11;</code>
-     */
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 level = 11;</code>
-     */
-    public int getLevel() {
-      return level_;
-    }
-
-    // optional string starttime = 13;
-    public static final int STARTTIME_FIELD_NUMBER = 13;
-    private java.lang.Object starttime_;
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    public boolean hasStarttime() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    public java.lang.String getStarttime() {
-      java.lang.Object ref = starttime_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          starttime_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string starttime = 13;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStarttimeBytes() {
-      java.lang.Object ref = starttime_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        starttime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional string endtime = 14;
-    public static final int ENDTIME_FIELD_NUMBER = 14;
-    private java.lang.Object endtime_;
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    public boolean hasEndtime() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    public java.lang.String getEndtime() {
-      java.lang.Object ref = endtime_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          endtime_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string endtime = 14;</code>
-     */
-    public com.google.protobuf.ByteString
-        getEndtimeBytes() {
-      java.lang.Object ref = endtime_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        endtime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private void initFields() {
-      id_ = 0;
-      name_ = "";
-      boss_ = 0;
-      fieldid_ = 0;
-      buffcount_ = 0;
-      weight_ = 0;
-      x_ = 0;
-      y_ = 0;
-      positionid_ = 0;
-      level_ = 0;
-      starttime_ = "";
-      endtime_ = "";
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, boss_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, fieldid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, buffcount_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(8, x_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(9, y_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(10, positionid_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(11, level_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(12, weight_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeBytes(13, getStarttimeBytes());
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeBytes(14, getEndtimeBytes());
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, boss_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, fieldid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, buffcount_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, x_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, y_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, positionid_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, level_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, weight_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(13, getStarttimeBytes());
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(14, getEndtimeBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonster parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.PVPMonster prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.PVPMonster}
-     *
-     * <pre>
-     *pvp怪物Config
-     * </pre>
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonster_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonster_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.PVPProto.PVPMonster.class, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.PVPProto.PVPMonster.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        id_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        boss_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        fieldid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        buffcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        weight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        x_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        y_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        positionid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        starttime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000400);
-        endtime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000800);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonster_descriptor;
-      }
-
-      public com.trans.pixel.protoc.PVPProto.PVPMonster getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.PVPProto.PVPMonster.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.PVPProto.PVPMonster build() {
-        com.trans.pixel.protoc.PVPProto.PVPMonster result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.PVPProto.PVPMonster buildPartial() {
-        com.trans.pixel.protoc.PVPProto.PVPMonster result = new com.trans.pixel.protoc.PVPProto.PVPMonster(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.boss_ = boss_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.fieldid_ = fieldid_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.buffcount_ = buffcount_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.weight_ = weight_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.x_ = x_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.y_ = y_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.positionid_ = positionid_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.starttime_ = starttime_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.endtime_ = endtime_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.PVPProto.PVPMonster) {
-          return mergeFrom((com.trans.pixel.protoc.PVPProto.PVPMonster)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.PVPMonster other) {
-        if (other == com.trans.pixel.protoc.PVPProto.PVPMonster.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000002;
-          name_ = other.name_;
-          onChanged();
-        }
-        if (other.hasBoss()) {
-          setBoss(other.getBoss());
-        }
-        if (other.hasFieldid()) {
-          setFieldid(other.getFieldid());
-        }
-        if (other.hasBuffcount()) {
-          setBuffcount(other.getBuffcount());
-        }
-        if (other.hasWeight()) {
-          setWeight(other.getWeight());
-        }
-        if (other.hasX()) {
-          setX(other.getX());
-        }
-        if (other.hasY()) {
-          setY(other.getY());
-        }
-        if (other.hasPositionid()) {
-          setPositionid(other.getPositionid());
-        }
-        if (other.hasLevel()) {
-          setLevel(other.getLevel());
-        }
-        if (other.hasStarttime()) {
-          bitField0_ |= 0x00000400;
-          starttime_ = other.starttime_;
-          onChanged();
-        }
-        if (other.hasEndtime()) {
-          bitField0_ |= 0x00000800;
-          endtime_ = other.endtime_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.PVPProto.PVPMonster parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.PVPProto.PVPMonster) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required int32 id = 1;
-      private int id_ ;
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 id = 1;</code>
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string name = 2;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 2;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 boss = 3;
-      private int boss_ ;
-      /**
-       * <code>optional int32 boss = 3;</code>
-       *
-       * <pre>
-       *站立
-       * </pre>
-       */
-      public boolean hasBoss() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 boss = 3;</code>
-       *
-       * <pre>
-       *站立
-       * </pre>
-       */
-      public int getBoss() {
-        return boss_;
-      }
-      /**
-       * <code>optional int32 boss = 3;</code>
-       *
-       * <pre>
-       *站立
-       * </pre>
-       */
-      public Builder setBoss(int value) {
-        bitField0_ |= 0x00000004;
-        boss_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 boss = 3;</code>
-       *
-       * <pre>
-       *站立
-       * </pre>
-       */
-      public Builder clearBoss() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        boss_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 fieldid = 4;
-      private int fieldid_ ;
-      /**
-       * <code>optional int32 fieldid = 4;</code>
-       *
-       * <pre>
-       *区域ID
-       * </pre>
-       */
-      public boolean hasFieldid() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 fieldid = 4;</code>
-       *
-       * <pre>
-       *区域ID
-       * </pre>
-       */
-      public int getFieldid() {
-        return fieldid_;
-      }
-      /**
-       * <code>optional int32 fieldid = 4;</code>
-       *
-       * <pre>
-       *区域ID
-       * </pre>
-       */
-      public Builder setFieldid(int value) {
-        bitField0_ |= 0x00000008;
-        fieldid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 fieldid = 4;</code>
-       *
-       * <pre>
-       *区域ID
-       * </pre>
-       */
-      public Builder clearFieldid() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        fieldid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 buffcount = 5;
-      private int buffcount_ ;
-      /**
-       * <code>optional int32 buffcount = 5;</code>
-       *
-       * <pre>
-       *增加的buff层数
-       * </pre>
-       */
-      public boolean hasBuffcount() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 buffcount = 5;</code>
-       *
-       * <pre>
-       *增加的buff层数
-       * </pre>
-       */
-      public int getBuffcount() {
-        return buffcount_;
-      }
-      /**
-       * <code>optional int32 buffcount = 5;</code>
-       *
-       * <pre>
-       *增加的buff层数
-       * </pre>
-       */
-      public Builder setBuffcount(int value) {
-        bitField0_ |= 0x00000010;
-        buffcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 buffcount = 5;</code>
-       *
-       * <pre>
-       *增加的buff层数
-       * </pre>
-       */
-      public Builder clearBuffcount() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        buffcount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight = 12;
-      private int weight_ ;
-      /**
-       * <code>optional int32 weight = 12;</code>
-       *
-       * <pre>
-       *出现几率
-       * </pre>
-       */
-      public boolean hasWeight() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 weight = 12;</code>
-       *
-       * <pre>
-       *出现几率
-       * </pre>
-       */
-      public int getWeight() {
-        return weight_;
-      }
-      /**
-       * <code>optional int32 weight = 12;</code>
-       *
-       * <pre>
-       *出现几率
-       * </pre>
-       */
-      public Builder setWeight(int value) {
-        bitField0_ |= 0x00000020;
-        weight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight = 12;</code>
-       *
-       * <pre>
-       *出现几率
-       * </pre>
-       */
-      public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        weight_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 x = 8;
-      private int x_ ;
-      /**
-       * <code>optional int32 x = 8;</code>
-       *
-       * <pre>
-       *坐标x
-       * </pre>
-       */
-      public boolean hasX() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 x = 8;</code>
-       *
-       * <pre>
-       *坐标x
-       * </pre>
-       */
-      public int getX() {
-        return x_;
-      }
-      /**
-       * <code>optional int32 x = 8;</code>
-       *
-       * <pre>
-       *坐标x
-       * </pre>
-       */
-      public Builder setX(int value) {
-        bitField0_ |= 0x00000040;
-        x_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 x = 8;</code>
-       *
-       * <pre>
-       *坐标x
-       * </pre>
-       */
-      public Builder clearX() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        x_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 y = 9;
-      private int y_ ;
-      /**
-       * <code>optional int32 y = 9;</code>
-       *
-       * <pre>
-       *坐标y
-       * </pre>
-       */
-      public boolean hasY() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 y = 9;</code>
-       *
-       * <pre>
-       *坐标y
-       * </pre>
-       */
-      public int getY() {
-        return y_;
-      }
-      /**
-       * <code>optional int32 y = 9;</code>
-       *
-       * <pre>
-       *坐标y
-       * </pre>
-       */
-      public Builder setY(int value) {
-        bitField0_ |= 0x00000080;
-        y_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 y = 9;</code>
-       *
-       * <pre>
-       *坐标y
-       * </pre>
-       */
-      public Builder clearY() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        y_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 positionid = 10;
-      private int positionid_ ;
-      /**
-       * <code>optional int32 positionid = 10;</code>
-       */
-      public boolean hasPositionid() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 positionid = 10;</code>
-       */
-      public int getPositionid() {
-        return positionid_;
-      }
-      /**
-       * <code>optional int32 positionid = 10;</code>
-       */
-      public Builder setPositionid(int value) {
-        bitField0_ |= 0x00000100;
-        positionid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 positionid = 10;</code>
-       */
-      public Builder clearPositionid() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        positionid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 level = 11;
-      private int level_ ;
-      /**
-       * <code>optional int32 level = 11;</code>
-       */
-      public boolean hasLevel() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 level = 11;</code>
-       */
-      public int getLevel() {
-        return level_;
-      }
-      /**
-       * <code>optional int32 level = 11;</code>
-       */
-      public Builder setLevel(int value) {
-        bitField0_ |= 0x00000200;
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 level = 11;</code>
-       */
-      public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        level_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string starttime = 13;
-      private java.lang.Object starttime_ = "";
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public boolean hasStarttime() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public java.lang.String getStarttime() {
-        java.lang.Object ref = starttime_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          starttime_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public com.google.protobuf.ByteString
-          getStarttimeBytes() {
-        java.lang.Object ref = starttime_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          starttime_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public Builder setStarttime(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000400;
-        starttime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public Builder clearStarttime() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        starttime_ = getDefaultInstance().getStarttime();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string starttime = 13;</code>
-       */
-      public Builder setStarttimeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000400;
-        starttime_ = value;
-        onChanged();
-        return this;
-      }
-
-      // optional string endtime = 14;
-      private java.lang.Object endtime_ = "";
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public boolean hasEndtime() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public java.lang.String getEndtime() {
-        java.lang.Object ref = endtime_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          endtime_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public com.google.protobuf.ByteString
-          getEndtimeBytes() {
-        java.lang.Object ref = endtime_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          endtime_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public Builder setEndtime(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000800;
-        endtime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public Builder clearEndtime() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        endtime_ = getDefaultInstance().getEndtime();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string endtime = 14;</code>
-       */
-      public Builder setEndtimeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000800;
-        endtime_ = value;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.PVPMonster)
-    }
-
-    static {
-      defaultInstance = new PVPMonster(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.PVPMonster)
-  }
-
-  public interface PVPMonsterListOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // repeated .com.trans.pixel.protoc.PVPMonster id = 1;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster> 
-        getIdList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
-     */
-    com.trans.pixel.protoc.PVPProto.PVPMonster getId(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
-     */
-    int getIdCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder> 
-        getIdOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
-     */
-    com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder getDataOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code com.trans.pixel.protoc.PVPMonsterList}
+   * Protobuf type {@code com.trans.pixel.protoc.PVPEventList}
    */
-  public static final class PVPMonsterList extends
+  public static final class PVPEventList extends
       com.google.protobuf.GeneratedMessage
-      implements PVPMonsterListOrBuilder {
-    // Use PVPMonsterList.newBuilder() to construct.
-    private PVPMonsterList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      implements PVPEventListOrBuilder {
+    // Use PVPEventList.newBuilder() to construct.
+    private PVPEventList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private PVPMonsterList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private PVPEventList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final PVPMonsterList defaultInstance;
-    public static PVPMonsterList getDefaultInstance() {
+    private static final PVPEventList defaultInstance;
+    public static PVPEventList getDefaultInstance() {
       return defaultInstance;
     }
 
-    public PVPMonsterList getDefaultInstanceForType() {
+    public PVPEventList getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -5889,7 +4169,7 @@ public final class PVPProto {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private PVPMonsterList(
+    private PVPEventList(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5914,10 +4194,10 @@ public final class PVPProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMonster>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPMonster.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPEvent.PARSER, extensionRegistry));
               break;
             }
           }
@@ -5929,7 +4209,7 @@ public final class PVPProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -5937,77 +4217,77 @@ public final class PVPProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor;
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPEventList_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonsterList_fieldAccessorTable
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPEventList_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.PVPProto.PVPMonsterList.class, com.trans.pixel.protoc.PVPProto.PVPMonsterList.Builder.class);
+              com.trans.pixel.protoc.PVPProto.PVPEventList.class, com.trans.pixel.protoc.PVPProto.PVPEventList.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<PVPMonsterList> PARSER =
-        new com.google.protobuf.AbstractParser<PVPMonsterList>() {
-      public PVPMonsterList parsePartialFrom(
+    public static com.google.protobuf.Parser<PVPEventList> PARSER =
+        new com.google.protobuf.AbstractParser<PVPEventList>() {
+      public PVPEventList parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PVPMonsterList(input, extensionRegistry);
+        return new PVPEventList(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PVPMonsterList> getParserForType() {
+    public com.google.protobuf.Parser<PVPEventList> getParserForType() {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.PVPMonster id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster> id_;
+    // repeated .com.trans.pixel.protoc.PVPEvent data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    public com.trans.pixel.protoc.PVPProto.PVPMonster getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.PVPProto.PVPEvent getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
      */
-    public com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getIdCount(); i++) {
-        if (!getId(i).isInitialized()) {
+      for (int i = 0; i < getDataCount(); i++) {
+        if (!getData(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -6019,8 +4299,8 @@ public final class PVPProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -6031,9 +4311,9 @@ public final class PVPProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6047,53 +4327,53 @@ public final class PVPProto {
       return super.writeReplace();
     }
 
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(byte[] data)
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(java.io.InputStream input)
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseDelimitedFrom(java.io.InputStream input)
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseDelimitedFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static com.trans.pixel.protoc.PVPProto.PVPMonsterList parseFrom(
+    public static com.trans.pixel.protoc.PVPProto.PVPEventList parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6102,7 +4382,7 @@ public final class PVPProto {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.PVPMonsterList prototype) {
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.PVPEventList prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -6114,24 +4394,24 @@ public final class PVPProto {
       return builder;
     }
     /**
-     * Protobuf type {@code com.trans.pixel.protoc.PVPMonsterList}
+     * Protobuf type {@code com.trans.pixel.protoc.PVPEventList}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.PVPProto.PVPMonsterListOrBuilder {
+       implements com.trans.pixel.protoc.PVPProto.PVPEventListOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor;
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPEventList_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonsterList_fieldAccessorTable
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPEventList_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.PVPProto.PVPMonsterList.class, com.trans.pixel.protoc.PVPProto.PVPMonsterList.Builder.class);
+                com.trans.pixel.protoc.PVPProto.PVPEventList.class, com.trans.pixel.protoc.PVPProto.PVPEventList.Builder.class);
       }
 
-      // Construct using com.trans.pixel.protoc.PVPProto.PVPMonsterList.newBuilder()
+      // Construct using com.trans.pixel.protoc.PVPProto.PVPEventList.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6143,7 +4423,7 @@ public final class PVPProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6152,11 +4432,11 @@ public final class PVPProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -6167,71 +4447,71 @@ public final class PVPProto {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor;
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_PVPEventList_descriptor;
       }
 
-      public com.trans.pixel.protoc.PVPProto.PVPMonsterList getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.PVPProto.PVPMonsterList.getDefaultInstance();
+      public com.trans.pixel.protoc.PVPProto.PVPEventList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.PVPEventList.getDefaultInstance();
       }
 
-      public com.trans.pixel.protoc.PVPProto.PVPMonsterList build() {
-        com.trans.pixel.protoc.PVPProto.PVPMonsterList result = buildPartial();
+      public com.trans.pixel.protoc.PVPProto.PVPEventList build() {
+        com.trans.pixel.protoc.PVPProto.PVPEventList result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public com.trans.pixel.protoc.PVPProto.PVPMonsterList buildPartial() {
-        com.trans.pixel.protoc.PVPProto.PVPMonsterList result = new com.trans.pixel.protoc.PVPProto.PVPMonsterList(this);
+      public com.trans.pixel.protoc.PVPProto.PVPEventList buildPartial() {
+        com.trans.pixel.protoc.PVPProto.PVPEventList result = new com.trans.pixel.protoc.PVPProto.PVPEventList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.PVPProto.PVPMonsterList) {
-          return mergeFrom((com.trans.pixel.protoc.PVPProto.PVPMonsterList)other);
+        if (other instanceof com.trans.pixel.protoc.PVPProto.PVPEventList) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.PVPEventList)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.PVPMonsterList other) {
-        if (other == com.trans.pixel.protoc.PVPProto.PVPMonsterList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.PVPEventList other) {
+        if (other == com.trans.pixel.protoc.PVPProto.PVPEventList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -6240,8 +4520,8 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getIdCount(); i++) {
-          if (!getId(i).isInitialized()) {
+        for (int i = 0; i < getDataCount(); i++) {
+          if (!getData(i).isInitialized()) {
             
             return false;
           }
@@ -6253,11 +4533,11 @@ public final class PVPProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.trans.pixel.protoc.PVPProto.PVPMonsterList parsedMessage = null;
+        com.trans.pixel.protoc.PVPProto.PVPEventList parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.PVPProto.PVPMonsterList) e.getUnfinishedMessage();
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.PVPEventList) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -6268,255 +4548,255 @@ public final class PVPProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.PVPMonster id = 1;
-      private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster> id_ =
+      // repeated .com.trans.pixel.protoc.PVPEvent data = 1;
+      private java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMonster>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.PVPProto.PVPMonster, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder, com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.PVPProto.PVPEvent, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder, com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public com.trans.pixel.protoc.PVPProto.PVPMonster getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.PVPProto.PVPEvent getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder setId(
-          int index, com.trans.pixel.protoc.PVPProto.PVPMonster value) {
-        if (idBuilder_ == null) {
+      public Builder setData(
+          int index, com.trans.pixel.protoc.PVPProto.PVPEvent value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder setId(
-          int index, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+      public Builder setData(
+          int index, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.PVPProto.PVPMonster value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.PVPProto.PVPEvent value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder addId(
-          int index, com.trans.pixel.protoc.PVPProto.PVPMonster value) {
-        if (idBuilder_ == null) {
+      public Builder addData(
+          int index, com.trans.pixel.protoc.PVPProto.PVPEvent value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder addId(
-          com.trans.pixel.protoc.PVPProto.PVPMonster.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+      public Builder addData(
+          com.trans.pixel.protoc.PVPProto.PVPEvent.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder addId(
-          int index, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+      public Builder addData(
+          int index, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder addAllId(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.PVPMonster> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.PVPEvent> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public com.trans.pixel.protoc.PVPProto.PVPMonster.Builder getIdBuilder(
+      public com.trans.pixel.protoc.PVPProto.PVPEvent.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public com.trans.pixel.protoc.PVPProto.PVPMonster.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.PVPProto.PVPMonster.getDefaultInstance());
+      public com.trans.pixel.protoc.PVPProto.PVPEvent.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.PVPProto.PVPEvent.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public com.trans.pixel.protoc.PVPProto.PVPMonster.Builder addIdBuilder(
+      public com.trans.pixel.protoc.PVPProto.PVPEvent.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.PVPProto.PVPMonster.getDefaultInstance());
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.PVPProto.PVPEvent.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.PVPMonster id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.PVPEvent data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMonster.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.PVPProto.PVPMonster, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder, com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.PVPProto.PVPMonster, com.trans.pixel.protoc.PVPProto.PVPMonster.Builder, com.trans.pixel.protoc.PVPProto.PVPMonsterOrBuilder>(
-                  id_,
+          com.trans.pixel.protoc.PVPProto.PVPEvent, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder, com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.PVPProto.PVPEvent, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder, com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder>(
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.PVPMonsterList)
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.PVPEventList)
     }
 
     static {
-      defaultInstance = new PVPMonsterList(true);
+      defaultInstance = new PVPEventList(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.PVPMonsterList)
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.PVPEventList)
   }
 
   public interface PVPBossOrBuilder
@@ -23681,15 +21961,10 @@ public final class PVPProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_PVPEvent_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_PVPMonster_descriptor;
+    internal_static_com_trans_pixel_protoc_PVPEventList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_PVPMonster_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_PVPMonsterList_fieldAccessorTable;
+      internal_static_com_trans_pixel_protoc_PVPEventList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_PVPBoss_descriptor;
   private static
@@ -23833,63 +22108,58 @@ public final class PVPProto {
       "\005\022\021\n\tbuffcount\030\005 \001(\005\022\016\n\006weight\030\014 \001(\005\022\t\n\001" +
       "x\030\010 \001(\005\022\t\n\001y\030\t \001(\005\022\022\n\npositionid\030\n \001(\005\022\r" +
       "\n\005level\030\013 \001(\005\022\021\n\tstarttime\030\r \001(\t\022\017\n\007endt" +
-      "ime\030\016 \001(\t\"\305\001\n\nPVPMonster\022\n\n\002id\030\001 \002(\005\022\014\n\004" +
-      "name\030\002 \001(\t\022\014\n\004boss\030\003 \001(\005\022\017\n\007fieldid\030\004 \001(" +
-      "\005\022\021\n\tbuffcount\030\005 \001(\005\022\016\n\006weight\030\014 \001(\005\022\t\n\001" +
-      "x\030\010 \001(\005\022\t\n\001y\030\t \001(\005\022\022\n\npositionid\030\n \001(\005\022\r" +
-      "\n\005level\030\013 \001(\005\022\021\n\tstarttime\030\r \001(\t\022\017\n\007endt" +
-      "ime\030\016 \001(\t\"@\n\016PVPMonsterList\022.\n\002id\030\001 \003(\0132",
-      "\".com.trans.pixel.protoc.PVPMonster\"\"\n\007P" +
-      "VPBoss\022\n\n\002id\030\001 \002(\005\022\013\n\003day\030\002 \001(\005\"<\n\013PVPBo" +
-      "ssList\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.p" +
-      "rotoc.PVPBoss\"\033\n\014PVPDayConfig\022\013\n\003day\030\001 \001" +
-      "(\005\"N\n\rPVPBossConfig\022\n\n\002id\030\001 \002(\005\0221\n\003day\030\002" +
-      " \003(\0132$.com.trans.pixel.protoc.PVPDayConf" +
-      "ig\"H\n\021PVPBossConfigList\0223\n\004data\030\001 \003(\0132%." +
-      "com.trans.pixel.protoc.PVPBossConfig\"2\n\013" +
-      "PVPPosition\022\r\n\005order\030\001 \002(\005\022\t\n\001x\030\002 \001(\005\022\t\n" +
-      "\001y\030\003 \001(\005\"V\n\017PVPPositionList\022\017\n\007fieldid\030\001",
-      " \001(\005\0222\n\005order\030\003 \003(\0132#.com.trans.pixel.pr" +
-      "otoc.PVPPosition\"I\n\020PVPPositionLists\0225\n\004" +
-      "data\030\001 \003(\0132\'.com.trans.pixel.protoc.PVPP" +
-      "ositionList\"\311\001\n\007PVPMine\022\n\n\002id\030\001 \002(\005\022\t\n\001x" +
-      "\030\002 \001(\005\022\t\n\001y\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\022\r\n\005yield" +
-      "\030\005 \001(\005\022\017\n\007enemyid\030\006 \001(\003\022/\n\005owner\030\010 \001(\0132 " +
-      ".com.trans.pixel.protoc.UserInfo\022\017\n\007endT" +
-      "ime\030\t \001(\003\022\r\n\005level\030\n \001(\005\022\013\n\003img\030\013 \001(\t\022\020\n" +
-      "\010pvpyield\030\014 \001(\005\"\214\002\n\006PVPMap\022\017\n\007fieldid\030\001 " +
-      "\001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tbufflimit\030\006 \001(\005\022\r\n\005",
-      "yield\030\007 \001(\005\022\020\n\010merlevel\030\010 \001(\005\022\016\n\006buffid\030" +
-      "\t \001(\005\022\014\n\004buff\030\n \001(\005\022\016\n\006opened\030\013 \001(\010\022\013\n\003i" +
-      "mg\030\014 \001(\t\022\017\n\007buffimg\030\r \001(\t\0222\n\tkuangdian\030\003" +
-      " \003(\0132\037.com.trans.pixel.protoc.PVPMine\022/\n" +
-      "\005event\030\004 \003(\0132 .com.trans.pixel.protoc.PV" +
-      "PEvent\"H\n\nPVPMapList\022,\n\004data\030\001 \003(\0132\036.com" +
-      ".trans.pixel.protoc.PVPMap\022\014\n\004buff\030\002 \001(\005" +
-      "\"=\n\032RequestUnlockPVPMapCommand\022\017\n\007fieldi" +
-      "d\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033RequestRefres" +
-      "hPVPMapCommand\"\032\n\030RequestPVPMapListComma",
-      "nd\"O\n\036RequestAttackPVPMonsterCommand\022\022\n\n" +
-      "positionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 " +
-      "\001(\005\"\'\n\031RequestPVPMineInfoCommand\022\n\n\002id\030\001" +
-      " \002(\005\"{\n\032ResponsePVPMineInfoCommand\022*\n\004te" +
-      "am\030\005 \001(\0132\034.com.trans.pixel.protoc.Team\0221" +
-      "\n\010mineInfo\030\003 \001(\0132\037.com.trans.pixel.proto" +
-      "c.PVPMine\"T\n\033RequestAttackPVPMineCommand" +
-      "\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(" +
-      "\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHelpAttackPVPM" +
-      "ineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013",
-      "\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(" +
-      "\005\"R\n\027RequestHelpLevelCommand\022\n\n\002id\030\001 \002(\005" +
-      "\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030" +
-      "\004 \002(\003\"\\\n\026RequestSendMailCommand\022\020\n\010toUse" +
-      "rId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030" +
-      "\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035RequestBrotherMin" +
-      "eInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 " +
-      "\002(\003\"*\n\034RequestRefreshPVPMineCommand\022\n\n\002i" +
-      "d\030\001 \002(\005\"i\n\031ResponsePVPMapListCommand\022-\n\005" +
-      "field\030\001 \003(\0132\036.com.trans.pixel.protoc.PVP",
-      "Map\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
+      "ime\030\016 \001(\t\">\n\014PVPEventList\022.\n\004data\030\001 \003(\0132" +
+      " .com.trans.pixel.protoc.PVPEvent\"\"\n\007PVP" +
+      "Boss\022\n\n\002id\030\001 \002(\005\022\013\n\003day\030\002 \001(\005\"<\n\013PVPBoss" +
+      "List\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.PVPBoss\"\033\n\014PVPDayConfig\022\013\n\003day\030\001 \001(\005" +
+      "\"N\n\rPVPBossConfig\022\n\n\002id\030\001 \002(\005\0221\n\003day\030\002 \003",
+      "(\0132$.com.trans.pixel.protoc.PVPDayConfig" +
+      "\"H\n\021PVPBossConfigList\0223\n\004data\030\001 \003(\0132%.co" +
+      "m.trans.pixel.protoc.PVPBossConfig\"2\n\013PV" +
+      "PPosition\022\r\n\005order\030\001 \002(\005\022\t\n\001x\030\002 \001(\005\022\t\n\001y" +
+      "\030\003 \001(\005\"V\n\017PVPPositionList\022\017\n\007fieldid\030\001 \001" +
+      "(\005\0222\n\005order\030\003 \003(\0132#.com.trans.pixel.prot" +
+      "oc.PVPPosition\"I\n\020PVPPositionLists\0225\n\004da" +
+      "ta\030\001 \003(\0132\'.com.trans.pixel.protoc.PVPPos" +
+      "itionList\"\311\001\n\007PVPMine\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002" +
+      " \001(\005\022\t\n\001y\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\022\r\n\005yield\030\005",
+      " \001(\005\022\017\n\007enemyid\030\006 \001(\003\022/\n\005owner\030\010 \001(\0132 .c" +
+      "om.trans.pixel.protoc.UserInfo\022\017\n\007endTim" +
+      "e\030\t \001(\003\022\r\n\005level\030\n \001(\005\022\013\n\003img\030\013 \001(\t\022\020\n\010p" +
+      "vpyield\030\014 \001(\005\"\214\002\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
+      "\005\022\014\n\004name\030\002 \001(\t\022\021\n\tbufflimit\030\006 \001(\005\022\r\n\005yi" +
+      "eld\030\007 \001(\005\022\020\n\010merlevel\030\010 \001(\005\022\016\n\006buffid\030\t " +
+      "\001(\005\022\014\n\004buff\030\n \001(\005\022\016\n\006opened\030\013 \001(\010\022\013\n\003img" +
+      "\030\014 \001(\t\022\017\n\007buffimg\030\r \001(\t\0222\n\tkuangdian\030\003 \003" +
+      "(\0132\037.com.trans.pixel.protoc.PVPMine\022/\n\005e" +
+      "vent\030\004 \003(\0132 .com.trans.pixel.protoc.PVPE",
+      "vent\"H\n\nPVPMapList\022,\n\004data\030\001 \003(\0132\036.com.t" +
+      "rans.pixel.protoc.PVPMap\022\014\n\004buff\030\002 \001(\005\"=" +
+      "\n\032RequestUnlockPVPMapCommand\022\017\n\007fieldid\030" +
+      "\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033RequestRefreshP" +
+      "VPMapCommand\"\032\n\030RequestPVPMapListCommand" +
+      "\"O\n\036RequestAttackPVPMonsterCommand\022\022\n\npo" +
+      "sitionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(" +
+      "\005\"\'\n\031RequestPVPMineInfoCommand\022\n\n\002id\030\001 \002" +
+      "(\005\"{\n\032ResponsePVPMineInfoCommand\022*\n\004team" +
+      "\030\005 \001(\0132\034.com.trans.pixel.protoc.Team\0221\n\010",
+      "mineInfo\030\003 \001(\0132\037.com.trans.pixel.protoc." +
+      "PVPMine\"T\n\033RequestAttackPVPMineCommand\022\n" +
+      "\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022" +
+      "\014\n\004time\030\004 \001(\005\"h\n\037RequestHelpAttackPVPMin" +
+      "eCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003" +
+      "ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"" +
+      "R\n\027RequestHelpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016" +
+      "\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 " +
+      "\002(\003\"\\\n\026RequestSendMailCommand\022\020\n\010toUserI" +
+      "d\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030\003 ",
+      "\001(\005\022\014\n\004type\030\004 \002(\005\">\n\035RequestBrotherMineI" +
+      "nfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 \002(" +
+      "\003\"*\n\034RequestRefreshPVPMineCommand\022\n\n\002id\030" +
+      "\001 \002(\005\"i\n\031ResponsePVPMapListCommand\022-\n\005fi" +
+      "eld\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMa" +
+      "p\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23920,158 +22190,152 @@ public final class PVPProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPEvent_descriptor,
               new java.lang.String[] { "Eventid", "Name", "Fieldid", "Buffcount", "Weight", "X", "Y", "Positionid", "Level", "Starttime", "Endtime", });
-          internal_static_com_trans_pixel_protoc_PVPMonster_descriptor =
+          internal_static_com_trans_pixel_protoc_PVPEventList_descriptor =
             getDescriptor().getMessageTypes().get(4);
-          internal_static_com_trans_pixel_protoc_PVPMonster_fieldAccessorTable = new
+          internal_static_com_trans_pixel_protoc_PVPEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_PVPMonster_descriptor,
-              new java.lang.String[] { "Id", "Name", "Boss", "Fieldid", "Buffcount", "Weight", "X", "Y", "Positionid", "Level", "Starttime", "Endtime", });
-          internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
-          internal_static_com_trans_pixel_protoc_PVPMonsterList_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_PVPMonsterList_descriptor,
-              new java.lang.String[] { "Id", });
+              internal_static_com_trans_pixel_protoc_PVPEventList_descriptor,
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_PVPBoss_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_PVPBoss_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPBoss_descriptor,
               new java.lang.String[] { "Id", "Day", });
           internal_static_com_trans_pixel_protoc_PVPBossList_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_PVPBossList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPBossList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_PVPDayConfig_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_PVPDayConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPDayConfig_descriptor,
               new java.lang.String[] { "Day", });
           internal_static_com_trans_pixel_protoc_PVPBossConfig_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_PVPBossConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPBossConfig_descriptor,
               new java.lang.String[] { "Id", "Day", });
           internal_static_com_trans_pixel_protoc_PVPBossConfigList_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_PVPBossConfigList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPBossConfigList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_PVPPosition_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_PVPPosition_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPPosition_descriptor,
               new java.lang.String[] { "Order", "X", "Y", });
           internal_static_com_trans_pixel_protoc_PVPPositionList_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_PVPPositionList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPPositionList_descriptor,
               new java.lang.String[] { "Fieldid", "Order", });
           internal_static_com_trans_pixel_protoc_PVPPositionLists_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_PVPPositionLists_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPPositionLists_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_PVPMine_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_PVPMine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMine_descriptor,
               new java.lang.String[] { "Id", "X", "Y", "Type", "Yield", "Enemyid", "Owner", "EndTime", "Level", "Img", "Pvpyield", });
           internal_static_com_trans_pixel_protoc_PVPMap_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_PVPMap_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMap_descriptor,
               new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Opened", "Img", "Buffimg", "Kuangdian", "Event", });
           internal_static_com_trans_pixel_protoc_PVPMapList_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_PVPMapList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMapList_descriptor,
               new java.lang.String[] { "Data", "Buff", });
           internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor,
               new java.lang.String[] { "Fieldid", "Zhanli", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor,
               new java.lang.String[] { "Positionid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Team", "MineInfo", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor,
               new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", });
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", "BrotherId", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor,
