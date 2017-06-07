@@ -382,19 +382,6 @@ public class LevelRedisService extends RedisService {
 		else
 			return null;
 	}
-	public List<EventConfig> getEvents(){
-		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
-		if(keyvalue.isEmpty())
-			buildDaguanEvent();
-		keyvalue = hget(RedisKey.EVENT_CONFIG);
-		List<EventConfig> events = new ArrayList<EventConfig>();
-		for(String value : keyvalue.values()) {
-			EventConfig.Builder builder = EventConfig.newBuilder();
-			if(parseJson(value, builder))
-				events.add(builder.build());
-		}
-		return events;
-	}
 //	public Map<String, Event> getEventMap(){
 //		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
 //		if(keyvalue.isEmpty()){
@@ -467,7 +454,8 @@ public class LevelRedisService extends RedisService {
 		else
 			return null;
 	}
-	private Map<Integer, EventConfig.Builder> buildEvent(){
+
+	private Map<Integer, EventConfig.Builder> getEventConfig(){
 		Map<Integer, EventConfig.Builder> map = new HashMap<Integer, EventConfig.Builder>();
 		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
@@ -476,7 +464,8 @@ public class LevelRedisService extends RedisService {
 		EnemyList.Builder list2 = EnemyList.newBuilder();
 		parseXml(xml2, list2);
 		for(EventConfig.Builder event : list.getDataBuilderList()){
-			for(Enemy.Builder enemy : event.getEnemyBuilderList()){
+			if(event.hasEnemygroup())
+			for(Enemy.Builder enemy : event.getEnemygroupBuilder().getEnemyBuilderList()){
 				for(Enemy.Builder enemyconfig : list2.getDataBuilderList()){
 					if(enemy.getEnemyid() == enemyconfig.getEnemyid()) {
 						enemy.setLoot(enemyconfig.getLoot());
@@ -498,7 +487,7 @@ public class LevelRedisService extends RedisService {
 		String xml2 = ReadConfig("ld_event2.xml");
 		AreaEventList.Builder list2 = AreaEventList.newBuilder();
 		parseXml(xml2, list2);
-		Map<Integer, EventConfig.Builder> eventmap = buildEvent();
+		Map<Integer, EventConfig.Builder> eventmap = getEventConfig();
 		for(AreaEvent.Builder area1 : list1.getDataBuilderList()){
 			for(Event.Builder event1 : area1.getEventBuilderList()){
 				for(AreaEvent.Builder area2 : list2.getDataBuilderList()){

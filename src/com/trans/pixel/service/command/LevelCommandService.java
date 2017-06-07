@@ -215,9 +215,10 @@ public class LevelCommandService extends BaseCommandService {
 			bean.setItemid(daguan.getLootlist().getItemid());
 			bean.setCount(Math.max(1, event.getCount()));
 			rewards.add(bean);
-			for(Enemy enemy : eventconfig.getEnemyList()) {
+			if(eventconfig.hasEnemygroup())
+			for(Enemy enemy : eventconfig.getEnemygroup().getEnemyList()) {
 				int rewardcount = 0;
-				for(int i = 0; i < enemy.getEnemycount(); i++)
+				for(int i = 0; i < enemy.getCount(); i++)
 					if(RedisService.nextInt(100) < enemy.getLootweight())
 						rewardcount++;
 				if(enemy.getLoot() != 0 && rewardcount > 0) {
@@ -380,7 +381,7 @@ public class LevelCommandService extends BaseCommandService {
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
 		for(Event.Builder e : redis.getEvents(user, userLevel).values())
 			builder.addEvent(e);
-		if(builder.getEventCount() >= redis.EVENTSIZE)
+		if(builder.getEventCount() >= LevelRedisService.EVENTSIZE)
 			builder.setEventTime(0);
 		else
 			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
