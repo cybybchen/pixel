@@ -232,14 +232,14 @@ public class HeroLevelUpService {
 		}
 //		Hero hero = heroService.getHero(heroInfo.getHeroId());
 		
-		equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip1(), 
+		equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip1(), 
 				userEquipService.selectUserEquip(user.getId(), herorare.getEquip1()).getEquipCount() - herorare.getCount1()));
 //		if (hero.getQuality() >= 2)
-			equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip2(), 
+			equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip2(), 
 					userEquipService.selectUserEquip(user.getId(), herorare.getEquip2()).getEquipCount() - herorare.getCount2()));
 		
 //		if (hero.getQuality() >= 3)
-			equipList.add(UserEquipBean.initUserEquip(user.getId(), herorare.getEquip3(), 
+			equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip3(), 
 					userEquipService.selectUserEquip(user.getId(), herorare.getEquip3()).getEquipCount() - herorare.getCount3()));
 		
 		int fordiamond = 0;

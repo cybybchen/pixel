@@ -331,11 +331,11 @@ public class HeroCommandService extends BaseCommandService {
 		int itemid = fenjieRedisService.getFenjie(hero.getQuality()).getLootlist().getItemid();
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), itemid);
 		if(equip1 == null)
-			equip1 = UserEquipBean.initUserEquip(user.getId(), itemid, 0);
+			equip1 = UserEquipBean.init(user.getId(), itemid, 0);
 		itemid = fenjieRedisService.getFenjie(0).getLootlist().getItemid();
 		UserEquipBean equip2 = userEquipService.selectUserEquip(user.getId(), itemid);
 		if(equip2 == null)
-			equip2 = UserEquipBean.initUserEquip(user.getId(), itemid, 0);
+			equip2 = UserEquipBean.init(user.getId(), itemid, 0);
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		equipList.add(equip1);
 		equipList.add(equip2);

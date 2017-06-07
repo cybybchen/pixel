@@ -283,7 +283,7 @@ public class HeroRedisService extends RedisService {
 		}
 		
 		Map<String, Hero> map = new HashMap<String, Hero>();
-		for(Hero.Builder hero : builder.getIdBuilderList()){
+		for(Hero.Builder hero : builder.getDataBuilderList()){
 			map.put("" + hero.getId(), hero.build());
 		}
 		return map;

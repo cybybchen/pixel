@@ -158,7 +158,7 @@ public class EquipService {
 			it = updateEquipMap.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<Integer, Integer> entry = it.next();
-				UserEquipBean userEquip = UserEquipBean.initUserEquip(userId, entry.getKey(), entry.getValue());
+				UserEquipBean userEquip = UserEquipBean.init(userId, entry.getKey(), entry.getValue());
 				userEquipService.updateUserEquip(userEquip);
 				returnUserEquipList.add(userEquip);
 			}

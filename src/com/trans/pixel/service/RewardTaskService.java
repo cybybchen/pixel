@@ -107,7 +107,7 @@ public class RewardTaskService {
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			
 			UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), costId);
-			if (userEquip != null)
+			if (userEquip != null && userEquip.getEquipCount() > 0)
 				userEquipList.add(userEquip);
 			rewards.addAllLoot(RewardBean.buildRewardInfoList(getBossloot(userRewardTask.getEnemyid(), user, 0 , 0)));
 		}

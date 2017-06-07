@@ -25,7 +25,8 @@ public class UserEquipService {
 		UserEquipBean userEquip = userEquipRedisService.selectUserEquip(userId, equipId);
 		if (userEquip == null)
 			userEquip = userEquipMapper.selectUserEquip(userId, equipId);
-		
+		if (userEquip == null)
+			userEquip = UserEquipBean.init(userId, equipId);
 		return userEquip;
 	}
 	
@@ -73,7 +74,7 @@ public class UserEquipService {
 	public UserEquipBean useUserEquip(long userId, int equipId, int equipCount) {
 		UserEquipBean userEquip = selectUserEquip(userId, equipId);
 		if (userEquip == null) {
-			userEquip = initUserEquip(userId, equipId);
+			userEquip = UserEquipBean.init(userId, equipId);
 		}
 		
 		userEquip.setEquipCount(userEquip.getEquipCount() - equipCount);
@@ -89,20 +90,12 @@ public class UserEquipService {
 			long userId = user.getId();
 			UserEquipBean userEquip = selectUserEquip(userId, equipId);
 			if (userEquip == null) {
-				userEquip = initUserEquip(userId, equipId);
+				userEquip = UserEquipBean.init(userId, equipId);
 			}
 			
 			userEquip.setEquipCount(userEquip.getEquipCount() + equipCount);
 			updateUserEquip(userEquip);
 		}
 			
-	}
-	
-	private UserEquipBean initUserEquip(long userId, int equipId) {
-		UserEquipBean userEquip = new UserEquipBean();
-		userEquip.setUserId(userId);
-		userEquip.setEquipId(equipId);
-		
-		return userEquip;
 	}
 }

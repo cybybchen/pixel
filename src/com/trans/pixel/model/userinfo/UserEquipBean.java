@@ -57,7 +57,11 @@ public class UserEquipBean {
 		return builder.build();
 	}
 	
-	public static UserEquipBean initUserEquip(long userId, int equipId, int equipCount) {
+	public static UserEquipBean init(long userId, int equipId) {
+		return init(userId, equipId, 0);
+	}
+	
+	public static UserEquipBean init(long userId, int equipId, int equipCount) {
 		UserEquipBean bean = new UserEquipBean();
 		bean.setUserId(userId);
 		bean.setEquipId(equipId);
