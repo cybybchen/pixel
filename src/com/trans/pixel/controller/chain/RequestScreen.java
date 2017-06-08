@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand;
 import com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand;
 import com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand;
 import com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand;
+import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.MailProto.RequestDelFriendCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAttackResourceMineCommand;
@@ -225,6 +226,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestResetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestOpenFetterCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEquipupCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDelFriendCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestReplyMessageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackResourceMineCommand cmd, Builder responseBuilder, UserBean user);
@@ -498,6 +500,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasOpenFetterCommand()) {
 			RequestOpenFetterCommand cmd = request.getOpenFetterCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasEquipupCommand()) {
+			RequestEquipupCommand cmd = request.getEquipupCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDelFriendCommand()) {

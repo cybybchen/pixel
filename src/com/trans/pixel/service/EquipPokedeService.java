@@ -23,9 +23,11 @@ import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
 import com.trans.pixel.protoc.EquipProto.EquipOrder;
+import com.trans.pixel.protoc.EquipProto.Equipup;
 import com.trans.pixel.protoc.EquipProto.IncreaseLevel;
 import com.trans.pixel.protoc.EquipProto.IncreaseRare;
 import com.trans.pixel.service.redis.EquipPokedeRedisService;
+import com.trans.pixel.service.redis.EquipRedisService;
 
 @Service
 public class EquipPokedeService {
@@ -41,6 +43,8 @@ public class EquipPokedeService {
 	private NoticeMessageService noticeMessageService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private EquipRedisService equipRedisService;
 
 	public List<RewardInfo> convertCost(List<CostItem> costList) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
@@ -112,9 +116,18 @@ public class EquipPokedeService {
 			pokede = userEquipPokedeService.initUserPokede(user.getId(), itemId, 0);
 		log.debug("11:" + itemId + ":22:" + order);
 		
-		Equip equip = equipService.getEquip(itemId);
-		log.debug("equip is:" + equip);
-		for (EquipOrder equipOrder : equip.getListList()) {
+		List<EquipOrder> equipOrderList = new ArrayList<EquipOrder>();
+		if (itemId < RewardConst.ARMOR) {
+			Armor armor = equipService.getArmor(itemId);
+			if (armor != null)
+				equipOrderList.addAll(armor.getListList());
+		} else {
+			Equip equip = equipService.getEquip(itemId);
+			if (equip != null)
+				equipOrderList.addAll(equip.getListList());
+		}
+		
+		for (EquipOrder equipOrder : equipOrderList) {
 			if (equipOrder.getOrder() == order) {
 				pokede.setOrder(order);
 				userEquipPokedeService.updateUserEquipPokede(pokede, user);
@@ -124,5 +137,15 @@ public class EquipPokedeService {
 		
 		
 		return null;
+	}
+	
+	public ResultConst equipup(UserEquipPokedeBean pokede, UserBean user) {
+		pokede.setOrder(pokede.getOrder() + 1);
+		Equipup equipup = equipRedisService.getEquipup("" + pokede.getItemId() + pokede.getOrder());
+		if (equipup == null)
+			return ErrorConst.EQUIP_LEVELUP_ERROR;
+		
+		userEquipPokedeService.updateUserEquipPokede(pokede, user);
+		return SuccessConst.EQUIP_LEVELUP_SUCCESS;
 	}
 }

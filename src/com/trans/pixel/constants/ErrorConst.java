@@ -57,7 +57,7 @@ public enum ErrorConst implements ResultConst {
     EQUIP_IS_EXIST_ERROR(4029, "装备已存在，无法合成第二件"), TIME_IS_NOT_OVER_ERROR(4030, "等待时间未到，请耐心一会"),
     
     LADDER_SEASON_IS_END_ERROR(5001, "该赛季已结束，请退出天梯重新进入！"), LADDER_SEASON_IS_NOT_OPEN_ERROR(5001, "该赛季还未开启，请等待开启！"),
-    SAVINGBOX_BUY_TYPE_ERROR(5003, "淘金罐购买类型异常"),
+    SAVINGBOX_BUY_TYPE_ERROR(5003, "淘金罐购买类型异常"), EQUIP_NOT_GET_ERROR(5004, "未获得该装备！"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

@@ -31,6 +31,7 @@ import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
+import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
@@ -1412,6 +1413,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestBuySavingBoxCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		levelCommandService.buySavingBox(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEquipupCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipPokedeCommandService.equipup(cmd, responseBuilder, user);
 		return true;
 	}
 

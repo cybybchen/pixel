@@ -194,6 +194,7 @@ public class RedisKey {
 	
 	//equip
 	public static final String EQUIP_CONFIG = PREFIX + CONFIG_PREFIX+"equip";
+	public static final String EQUIPUP_CONFIG = PREFIX + CONFIG_PREFIX+"equipup";
 	public static final String CHIP_CONFIG = PREFIX + CONFIG_PREFIX+"chip";
 	public static final String EQUIP_TUCAO_CONFIG = PREFIX + CONFIG_PREFIX + "equiptucao";
 	public static final String ARMOR_CONFIG = PREFIX + CONFIG_PREFIX + "armor";

@@ -1080,6 +1080,16 @@ message EquipState {
 	optional uint32 skilllevel = 6;
 }
 
+message Equipup {
+	required uint32 id = 1;
+	required uint32 order = 2;
+	repeated RewardInfo cover = 3;
+}
+
+message EquipupList {
+	repeated Equipup data = 1;
+}	
+
 message EquiptucaoList {
 	repeated Equiptucao equip = 1;
 }
@@ -1231,6 +1241,10 @@ message RequestTalentChangeEquipCommand {
 
 message RequestSynthetiseComposeCommand {
 	required uint32 synthetiseId = 1;
+}
+
+message RequestEquipupCommand {
+	required uint32 itemid = 1;
 }
 ////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
@@ -3681,6 +3695,7 @@ message RequestCommand {
 	optional RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;
 	optional RequestLadderEnemyCommand ladderEnemyCommand = 248;
 	optional RequestBuySavingBoxCommand buySavingBoxCommand = 249;
+	optional RequestEquipupCommand equipupCommand = 250;
 }
 ////////// Commands
 message ErrorCommand {

@@ -45,7 +45,7 @@ public class ServerTitleService {
 		List<TitleInfo> titleList = selectServerTileListByServerId(serverId);
 		for (TitleInfo title : titleList) {
 			if (title.getTitleId() == titleId)
-				redis.deleteServerTitle(serverId, title.getTitleId() + title.getUserId() + "");
+				redis.deleteServerTitle(serverId, "" + title.getTitleId() + title.getUserId());
 		}
 	}
 	
