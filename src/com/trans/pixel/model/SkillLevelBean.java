@@ -137,7 +137,7 @@ public class SkillLevelBean {
 		return list;
 	}
 	
-	private static final String FILE_NAME = "lol_skilllevel.xml";
+	private static final String FILE_NAME = "ld_skilllevel.xml";
 	private static final String ID = "id";
 	private static final String UNLOCK = "unlock";
 	private static final String INILEVEL = "inilevel";
