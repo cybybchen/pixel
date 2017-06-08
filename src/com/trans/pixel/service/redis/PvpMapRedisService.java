@@ -287,6 +287,7 @@ public class PvpMapRedisService extends RedisService{
 					for(PVPEvent event : list.getEventList()){
 						if(weight < event.getWeight()){
 							eventbuilder = PVPEvent.newBuilder(event);
+							eventbuilder.setFieldid(list.getFieldid());
 							break;
 						}else{
 							weight -= event.getWeight();
