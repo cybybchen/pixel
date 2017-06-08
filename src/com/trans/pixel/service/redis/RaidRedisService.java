@@ -10,21 +10,27 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RaidList;
+import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 
 @Repository
 public class RaidRedisService extends RedisService{
 	Logger logger = Logger.getLogger(RaidRedisService.class);
 
-	public int getRaid(UserBean user){
+	public ResponseRaidCommand.Builder getRaid(UserBean user){
 		String value = get(RedisKey.USERRAID_PREFIX+user.getId());
-		if(value != null)
-			return Integer.parseInt(value);
+		ResponseRaidCommand.Builder raid = ResponseRaidCommand.newBuilder();
+		if(value != null && parseJson(value, raid))
+			return raid;
 		else
-			return 0;
+			return ResponseRaidCommand.newBuilder();
 	}
 
-	public void saveRaid(UserBean user, int id){
-		set(RedisKey.USERRAID_PREFIX+user.getId(), id+"");
+	public void saveRaid(UserBean user, ResponseRaidCommand.Builder raid){
+		set(RedisKey.USERRAID_PREFIX+user.getId(), formatJson(raid.build()));
+	}
+	
+	public void deleteRaid(UserBean user){
+		delete(RedisKey.USERRAID_PREFIX+user.getId());
 	}
 
 	public Raid getRaid(int id){

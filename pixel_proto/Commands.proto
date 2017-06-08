@@ -3504,6 +3504,7 @@ message RequestStartRaidCommand {
 message ResponseRaidCommand {
 	optional int32 id = 1;
 	optional int32 eventid = 2;
+	optional int32 turn = 3;
 }
 ////////// Request
 message RequestCommand {

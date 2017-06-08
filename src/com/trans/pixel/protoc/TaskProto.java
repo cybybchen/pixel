@@ -12633,6 +12633,16 @@ public final class TaskProto {
      * <code>optional int32 eventid = 2;</code>
      */
     int getEventid();
+
+    // optional int32 turn = 3;
+    /**
+     * <code>optional int32 turn = 3;</code>
+     */
+    boolean hasTurn();
+    /**
+     * <code>optional int32 turn = 3;</code>
+     */
+    int getTurn();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseRaidCommand}
@@ -12693,6 +12703,11 @@ public final class TaskProto {
             case 16: {
               bitField0_ |= 0x00000002;
               eventid_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              turn_ = input.readInt32();
               break;
             }
           }
@@ -12767,9 +12782,26 @@ public final class TaskProto {
       return eventid_;
     }
 
+    // optional int32 turn = 3;
+    public static final int TURN_FIELD_NUMBER = 3;
+    private int turn_;
+    /**
+     * <code>optional int32 turn = 3;</code>
+     */
+    public boolean hasTurn() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 turn = 3;</code>
+     */
+    public int getTurn() {
+      return turn_;
+    }
+
     private void initFields() {
       id_ = 0;
       eventid_ = 0;
+      turn_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12789,6 +12821,9 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, eventid_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, turn_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -12805,6 +12840,10 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, eventid_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, turn_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12926,6 +12965,8 @@ public final class TaskProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        turn_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -12962,6 +13003,10 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000002;
         }
         result.eventid_ = eventid_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.turn_ = turn_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -12983,6 +13028,9 @@ public final class TaskProto {
         }
         if (other.hasEventid()) {
           setEventid(other.getEventid());
+        }
+        if (other.hasTurn()) {
+          setTurn(other.getTurn());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -13073,6 +13121,39 @@ public final class TaskProto {
       public Builder clearEventid() {
         bitField0_ = (bitField0_ & ~0x00000002);
         eventid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 turn = 3;
+      private int turn_ ;
+      /**
+       * <code>optional int32 turn = 3;</code>
+       */
+      public boolean hasTurn() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 turn = 3;</code>
+       */
+      public int getTurn() {
+        return turn_;
+      }
+      /**
+       * <code>optional int32 turn = 3;</code>
+       */
+      public Builder setTurn(int value) {
+        bitField0_ |= 0x00000004;
+        turn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 turn = 3;</code>
+       */
+      public Builder clearTurn() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        turn_ = 0;
         onChanged();
         return this;
       }
@@ -13215,9 +13296,9 @@ public final class TaskProto {
       "$\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\"v\n" +
       "\027RequestStartRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
       "teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004tur" +
-      "n\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"2\n" +
+      "n\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"@\n" +
       "\023ResponseRaidCommand\022\n\n\002id\030\001 \001(\005\022\017\n\007even",
-      "tid\030\002 \001(\005"
+      "tid\030\002 \001(\005\022\014\n\004turn\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13319,7 +13400,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor,
-              new java.lang.String[] { "Id", "Eventid", });
+              new java.lang.String[] { "Id", "Eventid", "Turn", });
           return null;
         }
       };

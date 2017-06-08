@@ -44,9 +44,13 @@ public class RaidCommandService extends BaseCommandService{
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
 		Raid raid = redis.getRaid(cmd.getId());
-		int lastid = redis.getRaid(user);
+		ResponseRaidCommand.Builder myraid = redis.getRaid(user);
+		int lastid = myraid.getEventid();
 		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount())){
-			redis.saveRaid(user, raid.getId()*100000+raid.getEventList().get(0).getEventid());
+			myraid.setId(raid.getId());
+			myraid.setEventid(raid.getEventList().get(0).getEventid());
+			myraid.setTurn(0);
+			redis.saveRaid(user, myraid);
 			ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 			builder.setId(raid.getId());
 			builder.setEventid(raid.getEventList().get(0).getEventid());
@@ -69,13 +73,11 @@ public class RaidCommandService extends BaseCommandService{
 	}
 
 	public void startRaid(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user){
-		int myid = redis.getRaid(user);
-		int raidid = myid/100000;
-		int eventid = myid%100000;
-		int oldeventid = eventid;
-		Raid raid = redis.getRaid(myid);
-		EventConfig event = levelRedisService.getEvent(eventid);
-		if(raidid != cmd.getId() || eventid != cmd.getEventid() || raid == null || event == null){
+		ResponseRaidCommand.Builder myraid = redis.getRaid(user);
+		int oldeventid = myraid.getEventid();
+		Raid raid = redis.getRaid(myraid.getId());
+		EventConfig event = levelRedisService.getEvent(myraid.getEventid());
+		if(myraid.getId() != cmd.getId() || myraid.getEventid() != cmd.getEventid() || raid == null || event == null){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
@@ -85,49 +87,43 @@ public class RaidCommandService extends BaseCommandService{
 			handleRewards(responseBuilder, user, rewards.build());
 			
 			for(int i = 0; i < raid.getEventCount(); i++) {
-				if(eventid == raid.getEvent(i).getEventid()){
-					eventid = i+1==raid.getEventCount() ? 0 : raid.getEvent(i+1).getEventid();
+				if(myraid.getEventid() == raid.getEvent(i).getEventid()){
+					myraid.setEventid(i+1==raid.getEventCount() ? 0 : raid.getEvent(i+1).getEventid());//通关or下一关
+					myraid.setTurn(myraid.getTurn() + cmd.getTurn());
+					break;
 				}
 			}
-			if(eventid == oldeventid) {//非法值
-				raidid = 0;
-				eventid = 0;
-			} else if (eventid == 0) {//通关
+			if(myraid.getEventid() == oldeventid) {//非法值
+				myraid.clear();
+			} else if (myraid.getEventid() == 0) {//通关
 				/**
 				 * 通关副本的活动
 				 */
-				activityService.raidKill(user, raidid);
-				raidid = 0;
-				eventid = 0;
+				activityService.raidKill(user, myraid.getId());
+				myraid.clear();
 			}
 			
-			redis.saveRaid(user, raidid*100000+eventid);
+			redis.saveRaid(user, myraid);
 		}else if(!cmd.getRet() && cmd.getTurn() == 0){
-			raidid = 0;
-			eventid = 0;
-			redis.saveRaid(user, raidid*100000+eventid);
+			myraid.clear();
+			redis.saveRaid(user, myraid);
 		}
 		if(responseBuilder.hasErrorCommand()) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
 		params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
-		params.put(LogString.INSTANCEID, "" + myid);
+		params.put(LogString.INSTANCEID, "" + myraid.getId());
 		params.put(LogString.BOSSID, "" + (event.hasEnemygroup()?event.getEnemygroup().getEnemy(0).getEnemyid() : 0));
-		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myid : 0));
+		params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myraid.getEventid() : 0));
 		logService.sendLog(params, LogString.LOGTYPE_RAID);
 		}
 
-		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
-		builder.setId(raidid);
-		builder.setEventid(eventid);
-		responseBuilder.setRaidCommand(builder);
+		responseBuilder.setRaidCommand(myraid);
 	}
 	
 	public void getRaid(Builder responseBuilder, UserBean user){
-		int id = redis.getRaid(user);
-		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
-		builder.setId(id);
-		responseBuilder.setRaidCommand(builder);
+		ResponseRaidCommand.Builder myraid = redis.getRaid(user);
+		responseBuilder.setRaidCommand(myraid);
 	}
 }
