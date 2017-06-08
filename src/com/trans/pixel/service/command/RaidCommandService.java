@@ -70,11 +70,10 @@ public class RaidCommandService extends BaseCommandService{
 
 	public void startRaid(RequestStartRaidCommand cmd, Builder responseBuilder, UserBean user){
 		int myid = redis.getRaid(user);
-		int id = myid;
 		int raidid = myid/100000;
 		int eventid = myid%100000;
 		int oldeventid = eventid;
-		Raid raid = redis.getRaid(id);
+		Raid raid = redis.getRaid(myid);
 		EventConfig event = levelRedisService.getEvent(eventid);
 		if(raidid != cmd.getId() || eventid != cmd.getEventid() || raid == null || event == null){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
@@ -91,21 +90,22 @@ public class RaidCommandService extends BaseCommandService{
 				}
 			}
 			if(eventid == oldeventid) {//非法值
-				id = 0;
+				raidid = 0;
+				eventid = 0;
 			} else if (eventid == 0) {//通关
 				/**
 				 * 通关副本的活动
 				 */
 				activityService.raidKill(user, raidid);
-				id = 0;
-			} else {//下一关
-				id = raidid*100000+eventid;
+				raidid = 0;
+				eventid = 0;
 			}
 			
-			redis.saveRaid(user, id);
+			redis.saveRaid(user, raidid*100000+eventid);
 		}else if(!cmd.getRet() && cmd.getTurn() == 0){
-			id = 0;
-			redis.saveRaid(user, id);
+			raidid = 0;
+			eventid = 0;
+			redis.saveRaid(user, raidid*100000+eventid);
 		}
 		if(responseBuilder.hasErrorCommand()) {
 		Map<String, String> params = new HashMap<String, String>();
@@ -119,7 +119,8 @@ public class RaidCommandService extends BaseCommandService{
 		}
 
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
-		builder.setId(id);
+		builder.setId(raidid);
+		builder.setEventid(eventid);
 		responseBuilder.setRaidCommand(builder);
 	}
 	
