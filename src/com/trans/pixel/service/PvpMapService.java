@@ -18,6 +18,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -28,6 +29,7 @@ import com.trans.pixel.protoc.PVPProto.PVPEvent;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
+import com.trans.pixel.protoc.UserInfoProto.Enemy;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -321,6 +323,19 @@ public class PvpMapService {
 					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*event.getLevel()));
 					if(rewardinfo.getCount() > 0)
 						rewards.addLoot(rewardinfo);
+				}
+			}
+			if(config.hasEnemygroup())
+			for(Enemy enemy : config.getEnemygroup().getEnemyList()) {
+				int rewardcount = 0;
+				for(int i = 0; i < enemy.getCount(); i++)
+					if(RedisService.nextInt(100) < enemy.getLootweight())
+						rewardcount++;
+				if(enemy.getLoot() != 0 && rewardcount > 0) {
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(enemy.getLoot());
+					reward.setCount(rewardcount);
+					rewards.addLoot(reward);
 				}
 			}
 			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
