@@ -13,7 +13,6 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Component
 public class LootService {
-
 	@Resource
 	private LevelRedisService levelRedisService;
 	@Resource
@@ -28,8 +27,8 @@ public class LootService {
 			return null;
 		SavingBox goldSavingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
 		SavingBox expSavingBox = lootRedisService.getSavingBox(user.getExpSavingBox());
-		user.setCoin(user.getCoin() + Math.min(goldSavingBox.getGold().getCount(), (current - userLevel.getLootTimeNormal()) * userLevel.getCoin()));
-		user.setExp(user.getExp() + Math.min(expSavingBox.getExp().getCount(), (current - userLevel.getLootTimeNormal()) * userLevel.getExp()));
+		user.setCoin(user.getCoin() + Math.min(goldSavingBox.getGold().getCount(), 1L * (current - userLevel.getLootTimeNormal()) * userLevel.getCoin()));
+		user.setExp(user.getExp() + Math.min(expSavingBox.getExp().getCount(), 1L * (current - userLevel.getLootTimeNormal()) * userLevel.getExp()));
 		userLevel.setLootTimeNormal(current);
 		levelRedisService.saveUserLevel(userLevel);
 		userService.updateUser(user);
