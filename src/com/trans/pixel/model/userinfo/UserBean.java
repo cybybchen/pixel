@@ -1227,13 +1227,13 @@ public class UserBean {
 		this.userType = userType;
 	}
 	public int getGoldSavingBox() {
-		return goldSavingBox;
+		return Math.max(goldSavingBox, 1);
 	}
 	public void setGoldSavingBox(int goldSavingBox) {
 		this.goldSavingBox = goldSavingBox;
 	}
 	public int getExpSavingBox() {
-		return expSavingBox;
+		return Math.max(expSavingBox, 1);
 	}
 	public void setExpSavingBox(int expSavingBox) {
 		this.expSavingBox = expSavingBox;
