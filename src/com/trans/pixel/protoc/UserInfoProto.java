@@ -30178,19 +30178,30 @@ public final class UserInfoProto {
   public interface ResponseEventCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional .com.trans.pixel.protoc.Event event = 1;
+    // repeated .com.trans.pixel.protoc.Event event = 1;
     /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    boolean hasEvent();
+    java.util.List<com.trans.pixel.protoc.Base.Event> 
+        getEventList();
     /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    com.trans.pixel.protoc.Base.Event getEvent();
+    com.trans.pixel.protoc.Base.Event getEvent(int index);
     /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder();
+    int getEventCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
+        getEventOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseEventCommand}
@@ -30244,16 +30255,11 @@ public final class UserInfoProto {
               break;
             }
             case 10: {
-              com.trans.pixel.protoc.Base.Event.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = event_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
+                mutable_bitField0_ |= 0x00000001;
               }
-              event_ = input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(event_);
-                event_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
+              event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
               break;
             }
           }
@@ -30264,6 +30270,9 @@ public final class UserInfoProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          event_ = java.util.Collections.unmodifiableList(event_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -30295,31 +30304,44 @@ public final class UserInfoProto {
       return PARSER;
     }
 
-    private int bitField0_;
-    // optional .com.trans.pixel.protoc.Event event = 1;
+    // repeated .com.trans.pixel.protoc.Event event = 1;
     public static final int EVENT_FIELD_NUMBER = 1;
-    private com.trans.pixel.protoc.Base.Event event_;
+    private java.util.List<com.trans.pixel.protoc.Base.Event> event_;
     /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    public boolean hasEvent() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
-     */
-    public com.trans.pixel.protoc.Base.Event getEvent() {
+    public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
       return event_;
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
      */
-    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder() {
+    public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
+        getEventOrBuilderList() {
       return event_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+     */
+    public int getEventCount() {
+      return event_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.Event getEvent(int index) {
+      return event_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
+        int index) {
+      return event_.get(index);
     }
 
     private void initFields() {
-      event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
+      event_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -30333,8 +30355,8 @@ public final class UserInfoProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(1, event_);
+      for (int i = 0; i < event_.size(); i++) {
+        output.writeMessage(1, event_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -30345,9 +30367,9 @@ public final class UserInfoProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      for (int i = 0; i < event_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, event_);
+          .computeMessageSize(1, event_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -30467,11 +30489,11 @@ public final class UserInfoProto {
       public Builder clear() {
         super.clear();
         if (eventBuilder_ == null) {
-          event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
+          event_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           eventBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -30499,16 +30521,15 @@ public final class UserInfoProto {
       public com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand buildPartial() {
         com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand result = new com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         if (eventBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            event_ = java.util.Collections.unmodifiableList(event_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
           result.event_ = event_;
         } else {
           result.event_ = eventBuilder_.build();
         }
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -30524,8 +30545,31 @@ public final class UserInfoProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand other) {
         if (other == com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand.getDefaultInstance()) return this;
-        if (other.hasEvent()) {
-          mergeEvent(other.getEvent());
+        if (eventBuilder_ == null) {
+          if (!other.event_.isEmpty()) {
+            if (event_.isEmpty()) {
+              event_ = other.event_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureEventIsMutable();
+              event_.addAll(other.event_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.event_.isEmpty()) {
+            if (eventBuilder_.isEmpty()) {
+              eventBuilder_.dispose();
+              eventBuilder_ = null;
+              event_ = other.event_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              eventBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getEventFieldBuilder() : null;
+            } else {
+              eventBuilder_.addAllMessages(other.event_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -30554,116 +30598,239 @@ public final class UserInfoProto {
       }
       private int bitField0_;
 
-      // optional .com.trans.pixel.protoc.Event event = 1;
-      private com.trans.pixel.protoc.Base.Event event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
-      /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
-       */
-      public boolean hasEvent() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+      // repeated .com.trans.pixel.protoc.Event event = 1;
+      private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
+        java.util.Collections.emptyList();
+      private void ensureEventIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
+          bitField0_ |= 0x00000001;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
+
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.Event getEvent() {
+      public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
         if (eventBuilder_ == null) {
-          return event_;
+          return java.util.Collections.unmodifiableList(event_);
         } else {
-          return eventBuilder_.getMessage();
+          return eventBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public Builder setEvent(com.trans.pixel.protoc.Base.Event value) {
+      public int getEventCount() {
+        if (eventBuilder_ == null) {
+          return event_.size();
+        } else {
+          return eventBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Event getEvent(int index) {
+        if (eventBuilder_ == null) {
+          return event_.get(index);
+        } else {
+          return eventBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public Builder setEvent(
+          int index, com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          event_ = value;
+          ensureEventIsMutable();
+          event_.set(index, value);
           onChanged();
         } else {
-          eventBuilder_.setMessage(value);
+          eventBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
       public Builder setEvent(
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
+        if (eventBuilder_ == null) {
+          ensureEventIsMutable();
+          event_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          eventBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public Builder addEvent(com.trans.pixel.protoc.Base.Event value) {
+        if (eventBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEventIsMutable();
+          event_.add(value);
+          onChanged();
+        } else {
+          eventBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public Builder addEvent(
+          int index, com.trans.pixel.protoc.Base.Event value) {
+        if (eventBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureEventIsMutable();
+          event_.add(index, value);
+          onChanged();
+        } else {
+          eventBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public Builder addEvent(
           com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
-          event_ = builderForValue.build();
+          ensureEventIsMutable();
+          event_.add(builderForValue.build());
           onChanged();
         } else {
-          eventBuilder_.setMessage(builderForValue.build());
+          eventBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public Builder mergeEvent(com.trans.pixel.protoc.Base.Event value) {
+      public Builder addEvent(
+          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001) &&
-              event_ != com.trans.pixel.protoc.Base.Event.getDefaultInstance()) {
-            event_ =
-              com.trans.pixel.protoc.Base.Event.newBuilder(event_).mergeFrom(value).buildPartial();
-          } else {
-            event_ = value;
-          }
+          ensureEventIsMutable();
+          event_.add(index, builderForValue.build());
           onChanged();
         } else {
-          eventBuilder_.mergeFrom(value);
+          eventBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000001;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public Builder addAllEvent(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
+        if (eventBuilder_ == null) {
+          ensureEventIsMutable();
+          super.addAll(values, event_);
+          onChanged();
+        } else {
+          eventBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
-          event_ = com.trans.pixel.protoc.Base.Event.getDefaultInstance();
+          event_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           eventBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder() {
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return getEventFieldBuilder().getBuilder();
+      public Builder removeEvent(int index) {
+        if (eventBuilder_ == null) {
+          ensureEventIsMutable();
+          event_.remove(index);
+          onChanged();
+        } else {
+          eventBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder() {
-        if (eventBuilder_ != null) {
-          return eventBuilder_.getMessageOrBuilder();
-        } else {
-          return event_;
+      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder(
+          int index) {
+        return getEventFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
+          int index) {
+        if (eventBuilder_ == null) {
+          return event_.get(index);  } else {
+          return eventBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.Event event = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
+           getEventOrBuilderList() {
+        if (eventBuilder_ != null) {
+          return eventBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(event_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder() {
+        return getEventFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.Event.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder(
+          int index) {
+        return getEventFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.Event.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Event event = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
+           getEventBuilderList() {
+        return getEventFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
           getEventFieldBuilder() {
         if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -32669,31 +32836,6 @@ public final class UserInfoProto {
      */
     int getEventTime();
 
-    // repeated .com.trans.pixel.protoc.Event event = 6;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.Base.Event> 
-        getEventList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    com.trans.pixel.protoc.Base.Event getEvent(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    int getEventCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-        getEventOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
-        int index);
-
     // optional uint32 lootTimeNormal = 7;
     /**
      * <code>optional uint32 lootTimeNormal = 7;</code>
@@ -32780,14 +32922,6 @@ public final class UserInfoProto {
               eventTime_ = input.readInt32();
               break;
             }
-            case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
-                mutable_bitField0_ |= 0x00000020;
-              }
-              event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
-              break;
-            }
             case 56: {
               bitField0_ |= 0x00000020;
               lootTimeNormal_ = input.readUInt32();
@@ -32801,9 +32935,6 @@ public final class UserInfoProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-          event_ = java.util.Collections.unmodifiableList(event_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -32916,42 +33047,6 @@ public final class UserInfoProto {
       return eventTime_;
     }
 
-    // repeated .com.trans.pixel.protoc.Event event = 6;
-    public static final int EVENT_FIELD_NUMBER = 6;
-    private java.util.List<com.trans.pixel.protoc.Base.Event> event_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
-      return event_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-        getEventOrBuilderList() {
-      return event_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    public int getEventCount() {
-      return event_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    public com.trans.pixel.protoc.Base.Event getEvent(int index) {
-      return event_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-     */
-    public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
-        int index) {
-      return event_.get(index);
-    }
-
     // optional uint32 lootTimeNormal = 7;
     public static final int LOOTTIMENORMAL_FIELD_NUMBER = 7;
     private int lootTimeNormal_;
@@ -32974,7 +33069,6 @@ public final class UserInfoProto {
       lootDaguan_ = 0;
       lootTime_ = 0;
       eventTime_ = 0;
-      event_ = java.util.Collections.emptyList();
       lootTimeNormal_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -33003,9 +33097,6 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, eventTime_);
-      }
-      for (int i = 0; i < event_.size(); i++) {
-        output.writeMessage(6, event_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(7, lootTimeNormal_);
@@ -33038,10 +33129,6 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, eventTime_);
-      }
-      for (int i = 0; i < event_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, event_.get(i));
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -33155,7 +33242,6 @@ public final class UserInfoProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getEventFieldBuilder();
         }
       }
       private static Builder create() {
@@ -33174,14 +33260,8 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         eventTime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        if (eventBuilder_ == null) {
-          event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
-        } else {
-          eventBuilder_.clear();
-        }
         lootTimeNormal_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -33230,16 +33310,7 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000010;
         }
         result.eventTime_ = eventTime_;
-        if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
-            event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00000020);
-          }
-          result.event_ = event_;
-        } else {
-          result.event_ = eventBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
         result.lootTimeNormal_ = lootTimeNormal_;
@@ -33273,32 +33344,6 @@ public final class UserInfoProto {
         }
         if (other.hasEventTime()) {
           setEventTime(other.getEventTime());
-        }
-        if (eventBuilder_ == null) {
-          if (!other.event_.isEmpty()) {
-            if (event_.isEmpty()) {
-              event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000020);
-            } else {
-              ensureEventIsMutable();
-              event_.addAll(other.event_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.event_.isEmpty()) {
-            if (eventBuilder_.isEmpty()) {
-              eventBuilder_.dispose();
-              eventBuilder_ = null;
-              event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000020);
-              eventBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getEventFieldBuilder() : null;
-            } else {
-              eventBuilder_.addAllMessages(other.event_);
-            }
-          }
         }
         if (other.hasLootTimeNormal()) {
           setLootTimeNormal(other.getLootTimeNormal());
@@ -33495,253 +33540,13 @@ public final class UserInfoProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.Event event = 6;
-      private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
-        java.util.Collections.emptyList();
-      private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
-          event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
-          bitField0_ |= 0x00000020;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
-        if (eventBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(event_);
-        } else {
-          return eventBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public int getEventCount() {
-        if (eventBuilder_ == null) {
-          return event_.size();
-        } else {
-          return eventBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public com.trans.pixel.protoc.Base.Event getEvent(int index) {
-        if (eventBuilder_ == null) {
-          return event_.get(index);
-        } else {
-          return eventBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder setEvent(
-          int index, com.trans.pixel.protoc.Base.Event value) {
-        if (eventBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEventIsMutable();
-          event_.set(index, value);
-          onChanged();
-        } else {
-          eventBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder setEvent(
-          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          eventBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder addEvent(com.trans.pixel.protoc.Base.Event value) {
-        if (eventBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEventIsMutable();
-          event_.add(value);
-          onChanged();
-        } else {
-          eventBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder addEvent(
-          int index, com.trans.pixel.protoc.Base.Event value) {
-        if (eventBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEventIsMutable();
-          event_.add(index, value);
-          onChanged();
-        } else {
-          eventBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder addEvent(
-          com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.add(builderForValue.build());
-          onChanged();
-        } else {
-          eventBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder addEvent(
-          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          eventBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder addAllEvent(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          super.addAll(values, event_);
-          onChanged();
-        } else {
-          eventBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder clearEvent() {
-        if (eventBuilder_ == null) {
-          event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
-          onChanged();
-        } else {
-          eventBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public Builder removeEvent(int index) {
-        if (eventBuilder_ == null) {
-          ensureEventIsMutable();
-          event_.remove(index);
-          onChanged();
-        } else {
-          eventBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder(
-          int index) {
-        return getEventFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
-          int index) {
-        if (eventBuilder_ == null) {
-          return event_.get(index);  } else {
-          return eventBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-           getEventOrBuilderList() {
-        if (eventBuilder_ != null) {
-          return eventBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(event_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder() {
-        return getEventFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.Event.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder(
-          int index) {
-        return getEventFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.Event.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Event event = 6;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
-           getEventBuilderList() {
-        return getEventFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
-          getEventFieldBuilder() {
-        if (eventBuilder_ == null) {
-          eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
-                  event_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
-                  getParentForChildren(),
-                  isClean());
-          event_ = null;
-        }
-        return eventBuilder_;
-      }
-
       // optional uint32 lootTimeNormal = 7;
       private int lootTimeNormal_ ;
       /**
        * <code>optional uint32 lootTimeNormal = 7;</code>
        */
       public boolean hasLootTimeNormal() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional uint32 lootTimeNormal = 7;</code>
@@ -33753,7 +33558,7 @@ public final class UserInfoProto {
        * <code>optional uint32 lootTimeNormal = 7;</code>
        */
       public Builder setLootTimeNormal(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000020;
         lootTimeNormal_ = value;
         onChanged();
         return this;
@@ -33762,7 +33567,7 @@ public final class UserInfoProto {
        * <code>optional uint32 lootTimeNormal = 7;</code>
        */
       public Builder clearLootTimeNormal() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         lootTimeNormal_ = 0;
         onChanged();
         return this;
@@ -34433,19 +34238,18 @@ public final class UserInfoProto {
       "questLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Re" +
       "questEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005ord" +
       "er\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005even" +
-      "t\030\001 \001(\0132\035.com.trans.pixel.protoc.Event\"\037" +
+      "t\030\001 \003(\0132\035.com.trans.pixel.protoc.Event\"\037" +
       "\n\035RequestLevelLootResultCommand\"{\n\031Reque" +
       "stEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010t" +
       "eamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn",
       "\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032" +
       "ResponseEventResultCommand\0222\n\006reward\030\001 \003" +
-      "(\0132\".com.trans.pixel.protoc.RewardInfo\"\302" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"\224" +
       "\001\n\030ResponseLevelLootCommand\022\024\n\014unlockDag" +
       "uan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDagu" +
       "an\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030" +
-      "\005 \001(\005\022,\n\005event\030\006 \003(\0132\035.com.trans.pixel.p" +
-      "rotoc.Event\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026R" +
-      "equestEventBuyCommand"
+      "\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Request" +
+      "EventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34745,7 +34549,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
-              new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "Event", "LootTimeNormal", });
+              new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
             getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new

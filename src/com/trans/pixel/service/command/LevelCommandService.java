@@ -251,7 +251,7 @@ public class LevelCommandService extends BaseCommandService {
             return;
 		}
 		ResponseEventCommand.Builder eventCommand = ResponseEventCommand.newBuilder();
-		eventCommand.setEvent(event);
+		eventCommand.addEvent(event);
 		responseBuilder.setEventCommand(eventCommand);
 	}
 	private EventConfig getFinalEvent(EventConfig eventconfig, int finalid) {
@@ -380,13 +380,16 @@ public class LevelCommandService extends BaseCommandService {
 	
 	public void pushLevelLootCommand(Builder responseBuilder, UserLevelBean userLevel, UserBean user){
 		ResponseLevelLootCommand.Builder builder = userLevel.build();
+		ResponseEventCommand.Builder eventCommand = ResponseEventCommand.newBuilder();
 		for(Event.Builder e : redis.getEvents(user, userLevel).values())
-			builder.addEvent(e);
-		if(builder.getEventCount() >= LevelRedisService.EVENTSIZE)
+			eventCommand.addEvent(e);
+		if(eventCommand.getEventCount() >= LevelRedisService.EVENTSIZE)
 			builder.setEventTime(0);
 		else
 			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
+		
 		responseBuilder.setLevelLootCommand(builder.build());
+		responseBuilder.setEventCommand(eventCommand);
 	}
 	
 	public void helpLevelResult(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user) {

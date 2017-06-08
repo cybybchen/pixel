@@ -2862,7 +2862,7 @@ message RequestEventCommand {
         optional int32 order = 2;
 }
 message ResponseEventCommand {
-        optional Event event = 1;
+        repeated Event event = 1;
 }
 message RequestLevelLootResultCommand {
 }
@@ -2884,7 +2884,6 @@ message ResponseLevelLootCommand {
 	optional int32 lootDaguan = 3;
 	optional int32 lootTime = 4;
 	optional int32 eventTime = 5;
-	repeated Event event = 6;
 	optional uint32 lootTimeNormal = 7;
 }
 
