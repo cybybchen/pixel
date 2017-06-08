@@ -970,11 +970,17 @@ public class LevelRedisService extends RedisService {
 		if (type == RewardConst.EXP) {
 			user.setExpSavingBox(user.getExpSavingBox() + 1);
 			savingBox = lootRedisService.getSavingBox(user.getExpSavingBox());
+			if (savingBox == null) {
+				return ErrorConst.SAVINGBOX_LEVEL_IS_LIMIT_ERROR;
+			}
 			if (!costService.cost(user, savingBox.getExp().getCost().getItemid(), savingBox.getExp().getCost().getCount()))
 				return ErrorConst.NOT_ENOUGH_COIN;
 		} else if (type == RewardConst.COIN) {
 			user.setGoldSavingBox(user.getGoldSavingBox() + 1);
 			savingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
+			if (savingBox == null) {
+				return ErrorConst.SAVINGBOX_LEVEL_IS_LIMIT_ERROR;
+			}
 			if (!costService.cost(user, savingBox.getGold().getCost().getItemid(), savingBox.getGold().getCost().getCount()))
 				return ErrorConst.NOT_ENOUGH_JEWEL;
 		}
