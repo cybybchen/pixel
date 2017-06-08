@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.PackageConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -58,7 +59,7 @@ public class EquipPokedeService {
 		return rewardList;
 	}
 	
-	public ResultConst strengthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards) {
+	public ResultConst equipStrenthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards, boolean protect) {
 		if (pokede == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		
@@ -94,7 +95,7 @@ public class EquipPokedeService {
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
-			if (equipIncrease.getZero() == 1) {
+			if (equipIncrease.getZero() == 1 && !protect) {
 				pokede.setLevel(0);
 			}
 			
@@ -104,6 +105,7 @@ public class EquipPokedeService {
 		pokede.setLevel(pokede.getLevel() + 1);
 		noticeMessageService.composeEquipStrengthen(user, name, pokede.getLevel(), rare);
 		
+		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		return SuccessConst.EQUIP_STRENGTHEN_SUCCESS;
 	}
 	
@@ -147,5 +149,68 @@ public class EquipPokedeService {
 		
 		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		return SuccessConst.EQUIP_LEVELUP_SUCCESS;
+	}
+	
+	public ResultConst equipStrenthen(UserBean user, UserEquipPokedeBean pokede, int initLevel, int addLevel) {
+		if (pokede == null)
+			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+		
+		EquipIncrease equipIncrease = equipPokedeRedisService.getEquipIncrease(initLevel);
+		if (equipIncrease == null)
+			return ErrorConst.EQUIP_LEVEL_IS_LIMIT_ERROR;
+		
+		int rare = 0;
+		String name = "";
+		if (pokede.getItemId() < RewardConst.ARMOR) {
+			Equip equip = equipService.getEquip(pokede.getItemId());
+			EquipOrder equipOrder = equip.getList(Math.max(pokede.getOrder() - 1, 0));
+			name = equipOrder.getName();
+			rare = equipOrder.getRare();
+		} else {
+			Armor armor = equipService.getArmor(pokede.getItemId());
+			EquipOrder equipOrder = armor.getList(Math.max(pokede.getOrder() - 1, 0));
+			name = equipOrder.getName();
+			rare = equipOrder.getRare();
+		}
+		
+		pokede.setLevel(initLevel);
+		
+		while (pokede.getLevel() < initLevel + addLevel) {
+			equipIncrease = equipPokedeRedisService.getEquipIncrease(pokede.getLevel());
+			if (RandomUtils.nextInt(10000) >= equipIncrease.getRate()) {
+				break;
+			}
+			
+			pokede.setLevel(pokede.getLevel() + 1);
+		}
+		
+		noticeMessageService.composeEquipStrengthen(user, name, pokede.getLevel(), rare);
+		
+		userEquipPokedeService.updateUserEquipPokede(pokede, user);
+		return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
+	}
+	
+	public UserEquipPokedeBean randomPokede(UserBean user, int propId) {
+		List<UserEquipPokedeBean> pokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+		if (propId == PackageConst.RANDOM_STRENTHEN_EQUIP_ID) {
+			for (int i = 0; i < pokedeList.size(); ++i) {
+				if (pokedeList.get(i).getItemId() >= RewardConst.ARMOR) {
+					pokedeList.remove(i);
+					--i;
+				}
+			}
+		} else if (propId == PackageConst.RANDOM_STRENTHEN_ARMOR_ID) {
+			for (int i = 0; i < pokedeList.size(); ++i) {
+				if (pokedeList.get(i).getItemId() < RewardConst.ARMOR) {
+					pokedeList.remove(i);
+					--i;
+				}
+			}
+		}
+		
+		if (pokedeList.isEmpty())
+			return null;
+		
+		return pokedeList.get(RandomUtils.nextInt(pokedeList.size()));
 	}
 }

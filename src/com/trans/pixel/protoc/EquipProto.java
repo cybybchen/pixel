@@ -28245,6 +28245,16 @@ public final class EquipProto {
      * <code>required int32 itemId = 1;</code>
      */
     int getItemId();
+
+    // optional uint32 propId = 2;
+    /**
+     * <code>optional uint32 propId = 2;</code>
+     */
+    boolean hasPropId();
+    /**
+     * <code>optional uint32 propId = 2;</code>
+     */
+    int getPropId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestEquipStrenthenCommand}
@@ -28300,6 +28310,11 @@ public final class EquipProto {
             case 8: {
               bitField0_ |= 0x00000001;
               itemId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              propId_ = input.readUInt32();
               break;
             }
           }
@@ -28358,8 +28373,25 @@ public final class EquipProto {
       return itemId_;
     }
 
+    // optional uint32 propId = 2;
+    public static final int PROPID_FIELD_NUMBER = 2;
+    private int propId_;
+    /**
+     * <code>optional uint32 propId = 2;</code>
+     */
+    public boolean hasPropId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint32 propId = 2;</code>
+     */
+    public int getPropId() {
+      return propId_;
+    }
+
     private void initFields() {
       itemId_ = 0;
+      propId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -28380,6 +28412,9 @@ public final class EquipProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, itemId_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, propId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -28392,6 +28427,10 @@ public final class EquipProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, itemId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, propId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -28511,6 +28550,8 @@ public final class EquipProto {
         super.clear();
         itemId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        propId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -28543,6 +28584,10 @@ public final class EquipProto {
           to_bitField0_ |= 0x00000001;
         }
         result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.propId_ = propId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -28561,6 +28606,9 @@ public final class EquipProto {
         if (other == com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.getDefaultInstance()) return this;
         if (other.hasItemId()) {
           setItemId(other.getItemId());
+        }
+        if (other.hasPropId()) {
+          setPropId(other.getPropId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -28622,6 +28670,39 @@ public final class EquipProto {
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         itemId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 propId = 2;
+      private int propId_ ;
+      /**
+       * <code>optional uint32 propId = 2;</code>
+       */
+      public boolean hasPropId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 propId = 2;</code>
+       */
+      public int getPropId() {
+        return propId_;
+      }
+      /**
+       * <code>optional uint32 propId = 2;</code>
+       */
+      public Builder setPropId(int value) {
+        bitField0_ |= 0x00000002;
+        propId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 propId = 2;</code>
+       */
+      public Builder clearPropId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        propId_ = 0;
         onChanged();
         return this;
       }
@@ -31331,16 +31412,16 @@ public final class EquipProto {
       "enjieEquipCommand\022\017\n\007equipId\030\001 \002(\005\022\022\n\neq" +
       "uipCount\030\002 \002(\005\"R\n\032ResponseEquipResultCom" +
       "mand\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.pixe",
-      "l.protoc.UserEquip\".\n\034RequestEquipStrent" +
-      "henCommand\022\016\n\006itemId\030\001 \002(\005\"\033\n\031RequestEqu" +
-      "ipPokedeCommand\"^\n\032ResponseEquipPokedeCo" +
-      "mmand\022@\n\017userEquipPokede\030\001 \003(\0132\'.com.tra" +
-      "ns.pixel.protoc.UserEquipPokede\"O\n\037Reque" +
-      "stTalentChangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020" +
-      "\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"7\n\037Requ" +
-      "estSynthetiseComposeCommand\022\024\n\014synthetis" +
-      "eId\030\001 \002(\r\"\'\n\025RequestEquipupCommand\022\016\n\006it" +
-      "emid\030\001 \002(\r"
+      "l.protoc.UserEquip\">\n\034RequestEquipStrent" +
+      "henCommand\022\016\n\006itemId\030\001 \002(\005\022\016\n\006propId\030\002 \001" +
+      "(\r\"\033\n\031RequestEquipPokedeCommand\"^\n\032Respo" +
+      "nseEquipPokedeCommand\022@\n\017userEquipPokede" +
+      "\030\001 \003(\0132\'.com.trans.pixel.protoc.UserEqui" +
+      "pPokede\"O\n\037RequestTalentChangeEquipComma" +
+      "nd\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006item" +
+      "Id\030\003 \002(\005\"7\n\037RequestSynthetiseComposeComm" +
+      "and\022\024\n\014synthetiseId\030\001 \002(\r\"\'\n\025RequestEqui" +
+      "pupCommand\022\016\n\006itemid\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -31580,7 +31661,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_RequestEquipStrenthenCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipStrenthenCommand_descriptor,
-              new java.lang.String[] { "ItemId", });
+              new java.lang.String[] { "ItemId", "PropId", });
           internal_static_com_trans_pixel_protoc_RequestEquipPokedeCommand_descriptor =
             getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestEquipPokedeCommand_fieldAccessorTable = new
