@@ -18,7 +18,6 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -324,6 +323,10 @@ public class PvpMapService {
 					if(rewardinfo.getCount() > 0)
 						rewards.addLoot(rewardinfo);
 				}
+			}
+			Map<String, PVPMap> map = redis.getPvpMap();
+			if(map.containsKey(event.getFieldid()+"")) {
+				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
 			}
 			if(config.hasEnemygroup())
 			for(Enemy enemy : config.getEnemygroup().getEnemyList()) {

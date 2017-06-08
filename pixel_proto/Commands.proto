@@ -1328,6 +1328,7 @@ message PVPMap {
 	optional bool opened = 11;//是否开放
 	optional string img = 12;
 	optional string buffimg = 13;
+	repeated RewardInfo lootlist = 5;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPEvent event = 4;
 }
