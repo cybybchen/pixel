@@ -2660,12 +2660,12 @@ message RewardCommand {
 }
 
 message SavingBoxGold {
-	required uint32 count = 1;
+	required uint64 count = 1;
 	required RewardInfo cost = 2;
 }
 
 message SavingBoxExp {
-	required uint32 count = 1;
+	required uint64 count = 1;
 	required RewardInfo cost = 2;
 }
 

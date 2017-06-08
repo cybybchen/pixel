@@ -1521,15 +1521,15 @@ public final class UserInfoProto {
   public interface SavingBoxGoldOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 count = 1;
+    // required uint64 count = 1;
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
     boolean hasCount();
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
-    int getCount();
+    long getCount();
 
     // required .com.trans.pixel.protoc.RewardInfo cost = 2;
     /**
@@ -1598,7 +1598,7 @@ public final class UserInfoProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              count_ = input.readUInt32();
+              count_ = input.readUInt64();
               break;
             }
             case 18: {
@@ -1654,19 +1654,19 @@ public final class UserInfoProto {
     }
 
     private int bitField0_;
-    // required uint32 count = 1;
+    // required uint64 count = 1;
     public static final int COUNT_FIELD_NUMBER = 1;
-    private int count_;
+    private long count_;
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
     public boolean hasCount() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
-    public int getCount() {
+    public long getCount() {
       return count_;
     }
 
@@ -1693,7 +1693,7 @@ public final class UserInfoProto {
     }
 
     private void initFields() {
-      count_ = 0;
+      count_ = 0L;
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -1717,7 +1717,7 @@ public final class UserInfoProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, count_);
+        output.writeUInt64(1, count_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, cost_);
@@ -1733,7 +1733,7 @@ public final class UserInfoProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, count_);
+          .computeUInt64Size(1, count_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1856,7 +1856,7 @@ public final class UserInfoProto {
 
       public Builder clear() {
         super.clear();
-        count_ = 0;
+        count_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (costBuilder_ == null) {
           cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
@@ -1961,35 +1961,35 @@ public final class UserInfoProto {
       }
       private int bitField0_;
 
-      // required uint32 count = 1;
-      private int count_ ;
+      // required uint64 count = 1;
+      private long count_ ;
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
       public boolean hasCount() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
-      public int getCount() {
+      public long getCount() {
         return count_;
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
-      public Builder setCount(int value) {
+      public Builder setCount(long value) {
         bitField0_ |= 0x00000001;
         count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        count_ = 0;
+        count_ = 0L;
         onChanged();
         return this;
       }
@@ -2125,15 +2125,15 @@ public final class UserInfoProto {
   public interface SavingBoxExpOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 count = 1;
+    // required uint64 count = 1;
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
     boolean hasCount();
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
-    int getCount();
+    long getCount();
 
     // required .com.trans.pixel.protoc.RewardInfo cost = 2;
     /**
@@ -2202,7 +2202,7 @@ public final class UserInfoProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              count_ = input.readUInt32();
+              count_ = input.readUInt64();
               break;
             }
             case 18: {
@@ -2258,19 +2258,19 @@ public final class UserInfoProto {
     }
 
     private int bitField0_;
-    // required uint32 count = 1;
+    // required uint64 count = 1;
     public static final int COUNT_FIELD_NUMBER = 1;
-    private int count_;
+    private long count_;
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
     public boolean hasCount() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 count = 1;</code>
+     * <code>required uint64 count = 1;</code>
      */
-    public int getCount() {
+    public long getCount() {
       return count_;
     }
 
@@ -2297,7 +2297,7 @@ public final class UserInfoProto {
     }
 
     private void initFields() {
-      count_ = 0;
+      count_ = 0L;
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -2321,7 +2321,7 @@ public final class UserInfoProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, count_);
+        output.writeUInt64(1, count_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, cost_);
@@ -2337,7 +2337,7 @@ public final class UserInfoProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, count_);
+          .computeUInt64Size(1, count_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2460,7 +2460,7 @@ public final class UserInfoProto {
 
       public Builder clear() {
         super.clear();
-        count_ = 0;
+        count_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (costBuilder_ == null) {
           cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
@@ -2565,35 +2565,35 @@ public final class UserInfoProto {
       }
       private int bitField0_;
 
-      // required uint32 count = 1;
-      private int count_ ;
+      // required uint64 count = 1;
+      private long count_ ;
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
       public boolean hasCount() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
-      public int getCount() {
+      public long getCount() {
         return count_;
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
-      public Builder setCount(int value) {
+      public Builder setCount(long value) {
         bitField0_ |= 0x00000001;
         count_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 count = 1;</code>
+       * <code>required uint64 count = 1;</code>
        */
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        count_ = 0;
+        count_ = 0L;
         onChanged();
         return this;
       }
@@ -34352,9 +34352,9 @@ public final class UserInfoProto {
       "ossRefreshTime\030\001 \001(\003\"\\\n\rRewardCommand\022\n\n" +
       "\002id\030\001 \001(\005\022\r\n\005title\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\"" +
       ".com.trans.pixel.protoc.RewardInfo\"P\n\rSa" +
-      "vingBoxGold\022\r\n\005count\030\001 \002(\r\0220\n\004cost\030\002 \002(\013" +
+      "vingBoxGold\022\r\n\005count\030\001 \002(\004\0220\n\004cost\030\002 \002(\013" +
       "2\".com.trans.pixel.protoc.RewardInfo\"O\n\014" +
-      "SavingBoxExp\022\r\n\005count\030\001 \002(\r\0220\n\004cost\030\002 \002(" +
+      "SavingBoxExp\022\r\n\005count\030\001 \002(\004\0220\n\004cost\030\002 \002(" +
       "\0132\".com.trans.pixel.protoc.RewardInfo\"\177\n" +
       "\tSavingBox\0223\n\004gold\030\001 \002(\0132%.com.trans.pix",
       "el.protoc.SavingBoxGold\0221\n\003exp\030\002 \002(\0132$.c" +
