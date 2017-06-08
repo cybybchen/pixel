@@ -92,7 +92,7 @@ public class LevelRedisService extends RedisService {
 			Daguan.Builder daguan = getDaguan(1);
 			userLevel.setUserId(userId);
 			userLevel.setLootTime((int)now());
-			userLevel.setLootTimeNormal((int)now());
+			userLevel.setLootTimeNormal(RedisService.now());
 			userLevel.setEventTime((int)now());
 			userLevel.setUnlockDaguan(daguan.getId());
 			userLevel.setLeftCount(daguan.getCount());

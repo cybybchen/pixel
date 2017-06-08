@@ -190,7 +190,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		}
 
 		ServerTitleInfo.Builder serverTitleBuilder = ServerTitleInfo.newBuilder();
-		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(head.getServerId()));
+		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(request.getHead().getServerId()));
 		rep.command.setTitle(serverTitleBuilder.build());
 
 		ResponseCommand.Builder responseBuilder = rep.command;
