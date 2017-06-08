@@ -92,7 +92,7 @@ public class LevelRedisService extends RedisService {
 			Daguan.Builder daguan = getDaguan(1);
 			userLevel.setUserId(userId);
 			userLevel.setLootTime((int)now());
-			userLevel.setLootTime(RedisService.now());
+			userLevel.setLootTimeNormal((int)now());
 			userLevel.setEventTime((int)now());
 			userLevel.setUnlockDaguan(daguan.getId());
 			userLevel.setLeftCount(daguan.getCount());
@@ -161,7 +161,7 @@ public class LevelRedisService extends RedisService {
 //				map.put(event.getOrder(), event);
 			}
 			productMainEvent(userLevel, eventmap);
-		}
+		} 
 		keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
 		for(String value : keyvalue.values()){
 			Event.Builder event = Event.newBuilder();
