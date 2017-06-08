@@ -259,11 +259,11 @@ public class HeroCommandService extends BaseCommandService {
 					}
 					Hero heroconf = heroService.getHero(heroInfo.getHeroId());
 					Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
-					RewardInfo.Builder reward = rewardmap.get(heroconf.getQuality());
+					RewardInfo.Builder reward = rewardmap.get(fenjie.getLootlist().getItemid());
 					if(reward == null){
 						reward = RewardInfo.newBuilder();
 						reward.setItemid(fenjie.getLootlist().getItemid());
-						rewardmap.put(heroconf.getQuality(), reward);
+						rewardmap.put(fenjie.getLootlist().getItemid(), reward);
 					}
 					reward.setCount(reward.getCount() + fenjie.getLootlist().getCount());
 //					if (heroInfo.getRank() > 0) {
