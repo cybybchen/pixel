@@ -18,7 +18,6 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
@@ -176,9 +175,9 @@ public class LevelCommandService extends BaseCommandService {
 				}
 			}
 			rewards.addAllLoot(rewardList);
-			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
-			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
-			rewardService.updateUser(user);
+//			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
+//			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
+//			rewardService.updateUser(user);
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build(), false);
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 			redis.saveUserLevel(userLevel);
