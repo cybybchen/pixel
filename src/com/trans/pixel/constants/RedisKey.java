@@ -211,7 +211,7 @@ public class RedisKey {
 	
 	//skill
 	public static final String SKILL_KEY = PREFIX + CONFIG_PREFIX+"skill";
-	public static final String SKILLLEVEL_KEY = PREFIX + CONFIG_PREFIX+"skilllevel";
+	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";
 	
 	//prop
 	public static final String PROP_KEY = PREFIX + CONFIG_PREFIX + "prop";
