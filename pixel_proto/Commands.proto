@@ -594,16 +594,14 @@ message HeroRareLevelup {
 	optional int32 position = 2;
 	repeated HeroRareLevelupRank rank = 3;	
 }
-
+message HeroRareLevelupEquip {
+	optional int32 equip = 1;
+	optional int32 count = 2;
+}
 message HeroRareLevelupRank {
 	optional int32 rank = 1;
-	optional int32 equip1 = 4;
-	optional int32 count1 = 5;
-	optional int32 equip2 = 6;
-	optional int32 count2 = 7;
-	optional int32 equip3 = 8;
-	optional int32 count3 = 9;
-	optional int32 levelrequire = 15;
+	optional int32 levelrequire = 2;
+	repeated HeroRareLevelupEquip equip = 3;
 }
 
 message HeroFettersOrderList {

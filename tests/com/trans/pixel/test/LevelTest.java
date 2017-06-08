@@ -22,8 +22,8 @@ public void test() {
 	login();
 	levelLootResultTest();
 	levelStartTest(2);
-	if(loot.getEvent(0) != null)
-	eventResultTest(loot.getEvent(0).getOrder());
+//	if(loot.getEvent(0) != null)
+//	eventResultTest(loot.getEvent(0).getOrder());
 }
 ResponseLevelLootCommand loot = null;
 //	@Test

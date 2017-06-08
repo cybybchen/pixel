@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.ExtraProto.Star;
 import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.HeroProto.HeroRareLevelupEquip;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.StarRedisService;
@@ -230,17 +231,10 @@ public class HeroLevelUpService {
 		if (herorare == null) {
 			return ErrorConst.LEVELUP_RARE_ERROR;
 		}
-//		Hero hero = heroService.getHero(heroInfo.getHeroId());
-		
-		equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip1(), 
-				userEquipService.selectUserEquip(user.getId(), herorare.getEquip1()).getEquipCount() - herorare.getCount1()));
-//		if (hero.getQuality() >= 2)
-			equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip2(), 
-					userEquipService.selectUserEquip(user.getId(), herorare.getEquip2()).getEquipCount() - herorare.getCount2()));
-		
-//		if (hero.getQuality() >= 3)
-			equipList.add(UserEquipBean.init(user.getId(), herorare.getEquip3(), 
-					userEquipService.selectUserEquip(user.getId(), herorare.getEquip3()).getEquipCount() - herorare.getCount3()));
+		for(HeroRareLevelupEquip equip : herorare.getEquipList()) {
+			equipList.add(UserEquipBean.init(user.getId(), equip.getEquip(), 
+					userEquipService.selectUserEquip(user.getId(), equip.getEquip()).getEquipCount() - equip.getCount()));
+		}
 		
 		int fordiamond = 0;
 		for (UserEquipBean userEquip : equipList) {
@@ -252,7 +246,7 @@ public class HeroLevelUpService {
 			}
 		}
 		
-		if(fordiamond != 0 && costService.costAndUpdate(user, RewardConst.JEWEL, fordiamond))
+		if(fordiamond != 0 && !costService.costAndUpdate(user, RewardConst.JEWEL, fordiamond))
 			return ErrorConst.NOT_ENOUGH_JEWEL;
 		
 		heroInfo.levelUpRare();
