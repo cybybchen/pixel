@@ -248,12 +248,12 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:
-					lootService.calLoot(user);
+//					lootService.calLoot(user);
 					if(itemCount > user.getExp()) return false;
 					user.setExp(user.getExp() - itemCount);
 					return true;
 				case RewardConst.COIN:
-					lootService.calLoot(user);
+//					lootService.calLoot(user);
 					if(itemCount > user.getCoin()) return false;
 					user.setCoin(user.getCoin() - itemCount);
 					return true;
