@@ -6,6 +6,9 @@ public class ServerTitleBean {
 	private int serverId = 0;
 	private int titleId = 0;
 	private long userId = 0;
+	public ServerTitleBean() {
+	
+	}
 	public ServerTitleBean(int serverId, int titleId, long userId) {
 		this.serverId = serverId;
 		this.titleId = titleId;
