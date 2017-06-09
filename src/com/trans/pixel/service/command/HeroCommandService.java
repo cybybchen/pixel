@@ -141,22 +141,22 @@ public class HeroCommandService extends BaseCommandService {
 			userHeroService.updateUserHero(heroInfo);
 			logger.debug(System.currentTimeMillis());
 			if (costInfoIds.size() > 0){
-				long addExp = 0;
-				int addCoin = 0;
+//				long addExp = 0;
+//				int addCoin = 0;
 //				List<RewardBean> rewardList = new ArrayList<RewardBean>();
 				ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
 				for(long costId : costInfoIds){
 					HeroInfoBean delHeroInfo = userHeroService.selectUserHero(userId, costId);
 					FenjieHeroInfo.Builder herobuilder = FenjieHeroInfo.newBuilder();
 					herobuilder.setHeroId(0);
-					if (delHeroInfo != null) {				
+					if (delHeroInfo != null) {	
 //						if (delHeroInfo.getRank() > 0) {
 //							rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(delHeroInfo));
 //						}
-						if(delHeroInfo.getLevel() > 1)
-							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
-						
-						addCoin += skillService.getResetCoin(delHeroInfo.getSkillInfoList());//升级技能消耗金币
+//						if(delHeroInfo.getLevel() > 1)
+//							addExp += heroService.getDeleteExp(delHeroInfo.getLevel());
+//						
+//						addCoin += skillService.getResetCoin(delHeroInfo.getSkillInfoList());//升级技能消耗金币
 						
 						herobuilder.setHeroId(delHeroInfo.getHeroId());
 					}
@@ -232,7 +232,7 @@ public class HeroCommandService extends BaseCommandService {
 		List<FenjieHeroInfo> fenjieList = cmd.getFenjieHeroList();
 		
 		long userId = user.getId();
-		Map<Integer, Fenjie> fenjiemap = fenjieRedisService.getFenjieList();
+//		Map<Integer, Fenjie> fenjiemap = fenjieRedisService.getFenjieList();
 //		int addCoin = 0;
 //		long addExp = 0;
 //		List<RewardBean> rewardList = new ArrayList<RewardBean>();
@@ -324,10 +324,11 @@ public class HeroCommandService extends BaseCommandService {
 	public void heroSpUp(RequestHeroSpUpCommand cmd, Builder responseBuilder, UserBean user) {
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
-		int count = cmd.getCount();
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
 		Hero hero = heroService.getHero(heroId);
-		Star star = starService.getStar(Math.min(6, heroInfo.getStarLevel()));
+		Star star = starService.getStar(7);
+		int sp = skillService.getSP(heroInfo);
+		final int count = Math.max(star.getMaxskill() - sp, cmd.getCount());
 		int itemid = fenjieRedisService.getFenjie(hero.getQuality()).getLootlist().getItemid();
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), itemid);
 		if(equip1 == null)
@@ -343,9 +344,9 @@ public class HeroCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_SKILL_STONE));
 		else{
 			if(count > equip1.getEquipCount()) {
-				count -= equip1.getEquipCount();
+				int leftcount = count - equip1.getEquipCount();
 				equip1.setEquipCount(0);
-				equip2.setEquipCount(equip2.getEquipCount()-count);
+				equip2.setEquipCount(equip2.getEquipCount()-leftcount);
 				userEquipService.updateUserEquip(equip1);
 				userEquipService.updateUserEquip(equip2);
 			}else{
@@ -363,13 +364,6 @@ public class HeroCommandService extends BaseCommandService {
 	}
 	
 	public void resetHeroSkill(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user) {
-//		if (!costService.costAndUpdate(user, RewardConst.COIN, RESET_HERO_SKILL_COST)) {
-//			ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
-//			ErrorCommand errorCommand = buildErrorCommand(error);
-//            responseBuilder.setErrorCommand(errorCommand);
-//			return;	
-//		}
-		
 		int heroId = cmd.getHeroId();
 		long infoId = cmd.getInfoId();
 		long userId = user.getId();
