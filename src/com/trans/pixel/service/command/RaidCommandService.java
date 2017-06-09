@@ -109,21 +109,28 @@ public class RaidCommandService extends BaseCommandService{
 					}
 				}
 				if(myraid.getEventid() == oldeventid) {//非法值
-					myraid.clear();
+					myraid.clearEventid();
+					myraid.clearTurn();
+					myraid.clearLevel();
 				} else if (myraid.getEventid() == 0) {//通关
 					/**
 					 * 通关副本的活动
 					 */
 					activityService.raidKill(user, myraid.getId());
-					myraid.clear();
+					myraid.clearEventid();
+					myraid.clearTurn();
+					myraid.setMaxlevel(Math.max(myraid.getMaxlevel(), myraid.getLevel()+1));
+					myraid.clearLevel();
 				}
 				
 				redis.saveRaid(user, myraid);
 			}else if(!cmd.getRet() && cmd.getTurn() == 0){
-				myraid.clear();
+				myraid.clearEventid();
+				myraid.clearTurn();
+				myraid.clearLevel();
 				redis.saveRaid(user, myraid);
 			}
-			if(responseBuilder.hasErrorCommand()) {
+			if(!responseBuilder.hasErrorCommand()) {
 			Map<String, String> params = new HashMap<String, String>();
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.SERVERID, "" + user.getServerId());

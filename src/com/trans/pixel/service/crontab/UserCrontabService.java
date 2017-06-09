@@ -2,8 +2,6 @@ package com.trans.pixel.service.crontab;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,10 @@ import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+
+import net.sf.json.JSONObject;
 
 @Service
 public class UserCrontabService {
@@ -64,6 +65,8 @@ public class UserCrontabService {
 	private UserRewardTaskService userRewardTaskService;
 	@Resource
 	private UserLadderService userLadderService;
+	@Resource
+	private RaidRedisService raidService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -202,6 +205,12 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int type = Integer.parseInt(keys[1]);
 			userLadderService.updateToDB(userId, type);
+		}
+		while((key=raidService.popDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int id = Integer.parseInt(keys[1]);
+			userLadderService.updateToDB(userId, id);
 		}
 		}catch(Exception e){
 			logger.error(e.getMessage(), e);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.RaidMapper">
+
+	<resultMap id="raidMap" type="com.trans.pixel.model.userinfo.RaidBean">
+		<id property="userid" column="userid" />
+		<result property="id" column="id" />
+		<result property="maxlevel" column="maxlevel" />
+	</resultMap>
+
+	<update id="updateRaid" parameterType="com.trans.pixel.model.userinfo.RaidBean">
+		INSERT INTO user_raid(userid, id, maxlevel)
+	    VALUES(#{userid}, #{id}, #{maxlevel})
+	    ON 
+	    duplicate key update
+	    maxlevel=#{maxlevel}
+	</update>
+
+	<select id="getRaids" parameterType="long" resultMap="raidMap">
+		SELECT *
+		from user_raid where userid = #{userid}
+	</select>
+
+	<select id="delRaid">
+		DELETE
+		from user_raid where userid = #{userid} and id = #{id}
+	</select>
+</mapper>
