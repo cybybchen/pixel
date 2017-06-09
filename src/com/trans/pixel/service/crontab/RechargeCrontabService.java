@@ -28,18 +28,18 @@ public class RechargeCrontabService {
 	// @Scheduled(cron = "0 0 0 18 8 ?")
 //	@Transactional(rollbackFor=Exception.class)
 	public void updateRechargeRecord() {
-		log.debug("11");
-		List<RechargeBean> rechargeList = rechargeMapper.getRechargeRecord();
-		log.debug("size is:" + rechargeList.size());
-		if (rechargeList != null && rechargeList.size() > 0) {
-			for (RechargeBean recharge : rechargeList) {
-				if (recharge.getProductId() > 6) {
-					log.debug("222");
-					UserBean user = userService.getOther(recharge.getUserId());
-					if (user != null)
-						rechargeService.buchangVip(user, recharge.getRmb(), recharge.getRmb() / 10);
-				}
-			}
-		}
+//		log.debug("11");
+//		List<RechargeBean> rechargeList = rechargeMapper.getRechargeRecord();
+//		log.debug("size is:" + rechargeList.size());
+//		if (rechargeList != null && rechargeList.size() > 0) {
+//			for (RechargeBean recharge : rechargeList) {
+//				if (recharge.getProductId() > 6) {
+//					log.debug("222");
+//					UserBean user = userService.getOther(recharge.getUserId());
+//					if (user != null)
+//						rechargeService.buchangVip(user, recharge.getRmb(), recharge.getRmb() / 10);
+//				}
+//			}
+//		}
 	}
 }
