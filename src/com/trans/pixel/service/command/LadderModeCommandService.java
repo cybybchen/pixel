@@ -86,6 +86,15 @@ public class LadderModeCommandService extends BaseCommandService {
 		ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
 		enemyBuilder.addAllEnemy(enemyMap.values());
 		responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
+		
+		//赛季奖励
+		List<RewardInfo> rewardList = ladderService.handleLadderSeasonReward(user);
+		if (rewardList != null && !rewardList.isEmpty()) {
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addAllLoot(rewardList);
+			handleRewards(responseBuilder, user, rewards);
+		}
+		
 	}
 	
 	public void refreshLadderEnemy(RequestRefreshLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
@@ -172,6 +181,16 @@ public class LadderModeCommandService extends BaseCommandService {
 					ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 					builder.addUserEquipPokede(pokede.build());
 					responseBuilder.setEquipPokedeCommand(builder.build());
+				}
+				
+				//任务奖励
+				if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
+					List<RewardInfo> rewardList = ladderService.ladderTaskReward(user);
+					if (rewardList != null && !rewardList.isEmpty()) {
+						MultiReward.Builder rewards = MultiReward.newBuilder();
+						rewards.addAllLoot(rewardList);
+						handleRewards(responseBuilder, user, rewards);
+					}
 				}
 			}
 		}
