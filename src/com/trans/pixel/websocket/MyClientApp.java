@@ -15,6 +15,7 @@ import com.trans.pixel.protoc.ServerProto.HeadInfo;
 
 public class MyClientApp {
 
+	@SuppressWarnings("unused")
 	private static Logger log = Logger.getLogger(MyClientApp.class);
 	
 	public Session session;
@@ -73,7 +74,6 @@ public class MyClientApp {
 //			} while (!input.equals("exit"));
 //
 //		} catch (IOException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 	}

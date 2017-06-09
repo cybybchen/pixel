@@ -129,7 +129,7 @@ public class RedisKey {
 //	public static final String USER_LEVEL_LOOT_RECORD_PREFIX = "user_loot_level_";
 	
 	//win redis
-	public static final String WIN_LEVEL_KEY = CONFIG_PREFIX+"win_level";
+//	public static final String WIN_LEVEL_KEY = CONFIG_PREFIX+"win_level";
 	
 	//user team redis
 	public static final String USER_TEAM_PREFIX = "user_team_";
@@ -149,7 +149,7 @@ public class RedisKey {
 	public static final String HERO_KEY = CONFIG_PREFIX+"hero";
 	
 	//hero rare
-	public static final String HERO_RARE_KEY = CONFIG_PREFIX+"hero_rare";
+//	public static final String HERO_RARE_KEY = CONFIG_PREFIX+"hero_rare";
 	
 	//hero star
 	public static final String HERO_STAR_KEY = CONFIG_PREFIX+"hero_star";
@@ -212,7 +212,7 @@ public class RedisKey {
 	public static final String HERO_MESSAGE_BOARD_VALUE_PREFIX = "hero_message_value_";
 	
 	//skill
-	public static final String SKILL_KEY = PREFIX + CONFIG_PREFIX+"skill";
+//	public static final String SKILL_KEY = PREFIX + CONFIG_PREFIX+"skill";
 	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";
 	
 	//prop

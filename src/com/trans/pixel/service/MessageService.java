@@ -13,7 +13,6 @@ import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.service.redis.MessageRedisService;
 
 @Service

@@ -38,6 +38,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PokedeCommandService extends BaseCommandService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(PokedeCommandService.class);
 	@Resource
 	private UserPokedeService userPokedeService;

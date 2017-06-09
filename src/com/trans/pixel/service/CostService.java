@@ -19,10 +19,10 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.service.redis.LevelRedisService;
 
 @Service
 public class CostService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(CostService.class);
 	@Resource
 	private UserService userService;

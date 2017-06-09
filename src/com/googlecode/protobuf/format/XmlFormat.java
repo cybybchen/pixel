@@ -52,7 +52,6 @@ import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.ExtensionRegistry;
 import com.google.protobuf.Message;
 import com.google.protobuf.UnknownFieldSet;
-import com.trans.pixel.service.redis.AreaRedisService;
 
 /**
  * Provide ascii text parsing and formatting support for proto2 instances. The implementation
@@ -695,7 +694,8 @@ public final class XmlFormat {
          * Constructs an appropriate {@link ParseException} for the given {@code
          * NumberFormatException} when trying to parse an integer.
          */
-        private ParseException integerParseException(NumberFormatException e) {
+        @SuppressWarnings("unused")
+		private ParseException integerParseException(NumberFormatException e) {
             return parseException("Couldn't parse integer: " + e.getMessage());
         }
 
@@ -758,7 +758,7 @@ public final class XmlFormat {
 
     private static final int BUFFER_SIZE = 4096;
 
-    // TODO(chrisn): See if working around java.io.Reader#read(CharBuffer)
+    // See if working around java.io.Reader#read(CharBuffer)
     // overhead is worthwhile
     private static StringBuilder toStringBuilder(Readable input) throws IOException {
         StringBuilder text = new StringBuilder();
@@ -782,7 +782,8 @@ public final class XmlFormat {
                                   ExtensionRegistry extensionRegistry,
                                   Message.Builder builder) throws ParseException {
 
-     List list = element.attributes();     
+     @SuppressWarnings("rawtypes")
+	List list = element.attributes();     
      for (int i = 0; i < list.size(); i++)     
      {     
     	 DefaultAttribute e = (DefaultAttribute)list.get(i);   
@@ -948,7 +949,8 @@ public final class XmlFormat {
        // consumeClosingElement(tokenizer);
     }
 
-    private static String consumeOpeningElement(Tokenizer tokenizer) throws ParseException {
+    @SuppressWarnings("unused")
+	private static String consumeOpeningElement(Tokenizer tokenizer) throws ParseException {
         tokenizer.consume("<");
         String openingElement = tokenizer.consumeIdentifier();
         tokenizer.consume(">");

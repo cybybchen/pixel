@@ -10,13 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
-import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.BlackListBean;
 import com.trans.pixel.model.mapper.BlackListMapper;
 import com.trans.pixel.service.redis.BlackListRedisService;
 
 @Service
 public class BlackListService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(BlackListService.class);
 	
 	@Resource

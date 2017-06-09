@@ -1076,6 +1076,7 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_BATTLETOWER);
 	}
 	
+	@SuppressWarnings("unused")
 	private void send(String str) {
 		Socket socket = null;
 		str = str + "\n";

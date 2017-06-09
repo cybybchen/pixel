@@ -46,7 +46,7 @@ public class LadderRedisService extends RedisService{
 	private static final String LADDER_NAME_FILE_NAME = "ld_name1.xml";
 	private static final String LADDER_NAME_FILE_NAME2 = "ld_name2.xml";
 	private static final String LADDER_MODE_FILE_NAME = "ld_laddermode.xml";
-	private static final String LADDER_LD_FILE_NAME = "ld_ladderld.xml";
+//	private static final String LADDER_LD_FILE_NAME = "ld_ladderld.xml";
 	private static final String LADDER_EQUIP_FILE_NAME = "ld_ladderequip.xml";
 	private static final String LADDER_SEASON_FILE_NAME = "ld_ladderseason.xml";
 	

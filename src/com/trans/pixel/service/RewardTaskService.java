@@ -24,7 +24,6 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.RewardTaskProto.REWARDTASK_TYPE;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskEnemy;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;

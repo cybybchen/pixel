@@ -47,6 +47,7 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -172,13 +173,13 @@ public class UnionService extends FightService{
 			union.setCount(members.size());
 			needupdate = true;
 		}
-		if(union.hasAttackId() && union.getAttackCloseTime() < redis.now()){
+		if(union.hasAttackId() && union.getAttackCloseTime() < RedisService.now()){
 			union.clearAttackId();
 			union.clearAttackEndTime();
 			union.clearAttackCloseTime();
 			needupdate = true;
 		}
-		if(union.hasDefendId() && union.getDefendCloseTime() < redis.now()){
+		if(union.hasDefendId() && union.getDefendCloseTime() < RedisService.now()){
 			union.clearDefendId();
 			union.clearDefendCloseTime();
 			union.clearDefendEndTime();
@@ -537,19 +538,19 @@ public class UnionService extends FightService{
 	public ResultConst attack(int attackId, long teamid, UserBean user){
 		Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
 		if(builder.hasAttackId()){
-			if(redis.now() > builder.getAttackCloseTime()){
+			if(RedisService.now() > builder.getAttackCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
 			Team team = userTeamService.getTeam(user, teamid);
 			userTeamService.saveTeamCache(user, teamid, team);
 			redis.attack(builder.getAttackId(), user);
-		}else if(user.getUnionJob() >= UnionConst.UNION_FUHUIZHANG && attackId != 0 && redis.now() > builder.getAttackCloseTime()){
+		}else if(user.getUnionJob() >= UnionConst.UNION_FUHUIZHANG && attackId != 0 && RedisService.now() > builder.getAttackCloseTime()){
 			builder.setAttackId(attackId);
-			builder.setAttackCloseTime(redis.today(24));
+			builder.setAttackCloseTime(RedisService.today(24));
 			builder.setAttackEndTime(builder.getAttackCloseTime()+300);
 			Union.Builder defendUnion = redis.getUnion(user.getServerId(), builder.getAttackId());
 			defendUnion.setDefendId(builder.getId());
-			defendUnion.setDefendCloseTime(redis.today(24));
+			defendUnion.setDefendCloseTime(RedisService.today(24));
 			builder.setDefendEndTime(builder.getDefendCloseTime()+300);
 			if(redis.setLock("Union_"+builder.getId()) 
 				&& redis.setLock("Union_"+defendUnion.getId()))
@@ -572,7 +573,7 @@ public class UnionService extends FightService{
 	public ResultConst defend(long teamid, UserBean user){
 		Union.Builder union = redis.getUnion(user.getServerId(), user.getUnionId());
 		if(union.hasDefendId()){
-			if(redis.now() > union.getDefendCloseTime()){
+			if(RedisService.now() > union.getDefendCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
 			Team team = userTeamService.getTeam(user, teamid);
@@ -1019,8 +1020,8 @@ public class UnionService extends FightService{
 			
 			AreaResource.Builder builder = AreaResource.newBuilder(resource);
 			if (builder.getLastRewardTime() == 0)
-				builder.setLastRewardTime(areaRedisService.now());
-			int hours = DateUtil.intervalHours(builder.getLastRewardTime(), areaRedisService.now());
+				builder.setLastRewardTime(RedisService.now());
+			int hours = DateUtil.intervalHours(builder.getLastRewardTime(), RedisService.now());
 			builder.setLastRewardTime(builder.getLastRewardTime() + hours * TimeConst.SECONDS_PER_HOUR);
 			areaRedisService.saveResource(builder.build(), user.getServerId());
 			if (unionId == 0) {

@@ -11,7 +11,6 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
-import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDaily;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;

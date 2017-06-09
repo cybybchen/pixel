@@ -232,7 +232,7 @@ public class AreaFightService extends FightService{
 		}
 		if(builder == null)
 			return ErrorConst.MAPINFO_ERROR;
-		if(builder.getStarttime() > redis.now())
+		if(builder.getStarttime() > RedisService.now())
 			return ErrorConst.JOIN_NOT_START;
 		if (iskill) {//刺杀
 			if(builder.getState() != 0)
@@ -245,7 +245,7 @@ public class AreaFightService extends FightService{
 			}
 			builder.setState(1);
 			redis.addFight(user.getServerId(), builder.getId(), builder.getClosetime());
-			long time = redis.now();
+			long time = RedisService.now();
 			builder.setStarttime(time);
 			builder.setClosetime(time+/*24*3600L*/redis.WARTIME);
 			builder.setEndtime(builder.getClosetime()+redis.PROTECTTIME);
@@ -271,9 +271,9 @@ public class AreaFightService extends FightService{
 		}else{
 			if(builder.getState() == 0)
 				return ErrorConst.JOIN_NOT_START;
-			if(builder.getStarttime() > redis.now())
+			if(builder.getStarttime() > RedisService.now())
 				return ErrorConst.JOIN_NOT_START;
-			if(builder.getClosetime() < redis.now())
+			if(builder.getClosetime() < RedisService.now())
 				return ErrorConst.JOIN_END;
 			if(user.getUnionId() == builder.getOwner().getUnionId() && user.getUnionId() != 0){//防守
 				builder.addDefenses(user.buildShort());
@@ -486,7 +486,7 @@ public class AreaFightService extends FightService{
 			}
 		}
 		builder.addMessage(message);
-		long time = Math.max(redis.now(), builder.getEndtime());
+		long time = Math.max(RedisService.now(), builder.getEndtime());
 		if(builder.getWarDefended() >= 3){//防守结束
 			builder.setState(0);
 			builder.setWarDefended(0);
@@ -528,11 +528,11 @@ public class AreaFightService extends FightService{
 	}
 	
 	public boolean refreshArea(UserBean user){
-		if(user.getAreaRefreshTime() > redis.now())
+		if(user.getAreaRefreshTime() > RedisService.now())
 			return false;
 		redis.deleteMonsters(user);
-		user.setAreaMonsterRefreshTime(redis.now()-24*3600);
-		user.setAreaRefreshTime(redis.now()+24*3600);
+		user.setAreaMonsterRefreshTime(RedisService.now()-24*3600);
+		user.setAreaRefreshTime(RedisService.now()+24*3600);
 		redis.clearLevel(user);
 		userService.updateUser(user);
 		return true;
@@ -628,11 +628,11 @@ public class AreaFightService extends FightService{
 					// 	buff.setSkill(builder.getSkill());
 					// 	buff.setType(builder.getType());
 					// }
-					if(buff.getEndTime() > redis.now())
+					if(buff.getEndTime() > RedisService.now())
 						buff.setLevel(Math.min(buff.getCountlimit(), buff.getLevel()+1));
 					else
 						buff.setLevel(1);
-					buff.setEndTime(redis.now()+buff.getTime());
+					buff.setEndTime(RedisService.now()+buff.getTime());
 					if(buff.getLevel() > builder.getLayer() && builder.getLayer() > 0)
 						buff.setLevel(builder.getLayer());
 					if (user.getUnionId() > 0 && buff.getBufftype() == TYPE_UNION_BUFF)

@@ -3,14 +3,11 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
-import net.sf.json.JSONObject;
-
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.HeroProto.UserTeam;
-import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONObject;
 
 public class UserTeamBean {
 	public int id = 0;

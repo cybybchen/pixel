@@ -838,7 +838,7 @@ public class JsonFormat {
 
     private static final int BUFFER_SIZE = 4096;
 
-    // TODO(chrisn): See if working around java.io.Reader#read(CharBuffer)
+    // See if working around java.io.Reader#read(CharBuffer)
     // overhead is worthwhile
     protected static StringBuilder toStringBuilder(Readable input) throws IOException {
         StringBuilder text = new StringBuilder();
@@ -967,6 +967,7 @@ public class JsonFormat {
 		// ExtensionRegistry extensionRegistry =
 		// ExtensionRegistry.getEmptyRegistry();
 		// ExtensionRegistry.ExtensionInfo extension = null;
+		@SuppressWarnings("unused")
 		boolean unknown = false;
 
 		// String name = tokenizer.consumeIdentifier();

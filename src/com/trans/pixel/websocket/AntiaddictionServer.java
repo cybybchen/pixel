@@ -16,11 +16,9 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.context.ContextLoader;
 
 import com.trans.pixel.controller.chain.PixelRequest;
 import com.trans.pixel.protoc.Request.RequestCommand;
-import com.trans.pixel.service.UserService;
 
 /**
  * WebSocket 消息推送服务类

@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
@@ -28,14 +27,13 @@ import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.HeroProto.ClearFood;
-import com.trans.pixel.protoc.HeroProto.Hero;
-import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
 public class EquipService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(EquipService.class);
 	
 	@Resource
@@ -108,20 +106,20 @@ public class EquipService {
 		return costEquipList;
 	}
 	
-	private List<UserEquipBean> mergeEquipList(List<UserEquipBean> costEquipList, UserEquipBean costEquip) {
-		if (costEquip.getEquipId() == 0 || costEquip.getEquipCount() == 0)
-			return costEquipList;
-		
-		for (UserEquipBean userEquip : costEquipList) {
-			if (costEquip.getEquipId() == userEquip.getEquipId()) {
-				userEquip.setEquipCount(userEquip.getEquipCount() + costEquip.getEquipCount());
-				return costEquipList;
-			}
-		}
-		
-		costEquipList.add(costEquip);
-		return costEquipList;
-	}
+//	private List<UserEquipBean> mergeEquipList(List<UserEquipBean> costEquipList, UserEquipBean costEquip) {
+//		if (costEquip.getEquipId() == 0 || costEquip.getEquipCount() == 0)
+//			return costEquipList;
+//		
+//		for (UserEquipBean userEquip : costEquipList) {
+//			if (costEquip.getEquipId() == userEquip.getEquipId()) {
+//				userEquip.setEquipCount(userEquip.getEquipCount() + costEquip.getEquipCount());
+//				return costEquipList;
+//			}
+//		}
+//		
+//		costEquipList.add(costEquip);
+//		return costEquipList;
+//	}
 	
 	private Map<Integer, Integer> getCostEquipMap(List<UserEquipBean> costEquipList) {
 		Map<Integer, Integer> costEquipMap = new HashMap<Integer, Integer>();

@@ -7,12 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.model.HeroInfoBean;
-import com.trans.pixel.model.SkillBean;
 import com.trans.pixel.model.SkillInfoBean;
 import com.trans.pixel.model.SkillLevelBean;
-import com.trans.pixel.protoc.ActivityProto.Rankvalue;
 import com.trans.pixel.protoc.HeroProto.Hero;
-import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.SkillRedisService;
 
@@ -26,22 +23,22 @@ public class SkillService {
 	@Resource
 	private HeroRedisService heroRedisService;
 	
-	public SkillBean getSkill(int id) {
-		SkillBean skill = skillRedisService.getSkillById(id);
-		if (skill == null) {
-			parseAndSaveConfig();
-			skill = skillRedisService.getSkillById(id);
-		}
-		
-		return skill;
-	}
-	
-	private void parseAndSaveConfig() {
-		List<SkillBean> skillList = SkillBean.xmlParse();
-		if (skillList != null && skillList.size() != 0) {
-			skillRedisService.setSkillList(skillList);
-		}
-	}
+//	public SkillBean getSkill(int id) {
+//		SkillBean skill = skillRedisService.getSkillById(id);
+//		if (skill == null) {
+//			parseAndSaveConfig();
+//			skill = skillRedisService.getSkillById(id);
+//		}
+//		
+//		return skill;
+//	}
+//	
+//	private void parseAndSaveConfig() {
+//		List<SkillBean> skillList = SkillBean.xmlParse();
+//		if (skillList != null && skillList.size() != 0) {
+//			skillRedisService.setSkillList(skillList);
+//		}
+//	}
 	
 	public SkillLevelBean getSkillLevel(int id) {
 		SkillLevelBean skillLevel = skillRedisService.getSkillLevelById(id);

@@ -5,10 +5,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.PackageConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserEquipPokede;
@@ -18,7 +16,6 @@ import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
-import com.trans.pixel.service.EquipPokedeService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.UserPropService;

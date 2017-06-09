@@ -28,7 +28,7 @@ import com.trans.pixel.service.redis.TalentRedisService;
 
 @Service
 public class TalentService {
-	
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(TalentService.class);
 	
 	@Resource

@@ -10,10 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
-import com.trans.pixel.protoc.UserInfoProto.ServerData;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class ServerTitleRedisService extends RedisService{

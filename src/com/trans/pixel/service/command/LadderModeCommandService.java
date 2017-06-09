@@ -17,7 +17,6 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
-import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;

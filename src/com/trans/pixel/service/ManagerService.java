@@ -60,7 +60,7 @@ public class ManagerService extends RedisService{
 	private final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
 	private final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
 	private final static String AREARESOURCE = RedisKey.PREFIX+"AreaResource_";
-	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
+//	private final static String AREARESOURCEMINE = RedisKey.PREFIX+"AreaResourceMine_";
 	private final static String AREABOSSTIME = RedisKey.PREFIX+"AreaBossTime_";
 	private final static String MYAREAEQUIP = RedisKey.PREFIX+"AreaEquip_";
 	private final static String MYAREABUFF = RedisKey.PREFIX+"AreaBuff_";
@@ -1926,16 +1926,16 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("LevelDiffConfig3", object);
 		}
-		if(req.containsKey("del-WinLevelConfig")){
-			delete(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
-			req.put("WinLevelConfig", 1);
-		}
-		if(req.containsKey("WinLevelConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("WinLevelConfig", object);
-		}
+//		if(req.containsKey("del-WinLevelConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
+//			req.put("WinLevelConfig", 1);
+//		}
+//		if(req.containsKey("WinLevelConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("WinLevelConfig", object);
+//		}
 		if(req.containsKey("del-LootLevelConfig")){
 			delete(RedisKey.PREFIX + RedisKey.LOOT_LEVEL_KEY);
 			req.put("LootLevelConfig", 1);
@@ -1965,16 +1965,6 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("HeroConfig", object);
-		}
-		if(req.containsKey("del-HeroRareConfig")){
-			delete(RedisKey.PREFIX + RedisKey.HERO_RARE_KEY);
-			req.put("HeroRareConfig", 1);
-		}
-		if(req.containsKey("HeroRareConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.HERO_RARE_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("HeroRareConfig", object);
 		}
 		if(req.containsKey("del-HeroStarConfig")){
 			delete(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
@@ -2045,16 +2035,6 @@ public class ManagerService extends RedisService{
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("ChipConfig", object);
-		}
-		if(req.containsKey("del-SkillConfig")){
-			delete(RedisKey.PREFIX + RedisKey.SKILL_KEY);
-			req.put("SkillConfig", 1);
-		}
-		if(req.containsKey("SkillConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILL_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("SkillConfig", object);
 		}
 		if(req.containsKey("del-SkillLevelConfig")){
 			delete(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);

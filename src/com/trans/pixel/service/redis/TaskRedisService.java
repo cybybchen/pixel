@@ -146,19 +146,19 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	//task2
-	private Task2TargetHero getTask2TargetHero(int targetId) {
-		String value = hget(RedisKey.TASK2_CONFIG_KEY, "" + targetId);
-		if (value == null) {
-			Map<String, Task2TargetHero> config = getTask2TargetConfig();
-			return config.get("" + targetId);
-		} else {
-			Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
-	}
+//	private Task2TargetHero getTask2TargetHero(int targetId) {
+//		String value = hget(RedisKey.TASK2_CONFIG_KEY, "" + targetId);
+//		if (value == null) {
+//			Map<String, Task2TargetHero> config = getTask2TargetConfig();
+//			return config.get("" + targetId);
+//		} else {
+//			Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
+//			if(parseJson(value, builder))
+//				return builder.build();
+//		}
+//		
+//		return null;
+//	}
 	
 	public Map<String, Task2TargetHero> getTask2TargetConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.TASK2_CONFIG_KEY);

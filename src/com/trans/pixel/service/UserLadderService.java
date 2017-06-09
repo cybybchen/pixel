@@ -29,6 +29,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserLadderService {	
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(UserLadderService.class);
 	@Resource
 	private UserLadderRedisService userLadderRedisService;

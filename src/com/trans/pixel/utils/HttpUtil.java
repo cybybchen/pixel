@@ -158,7 +158,8 @@ public class HttpUtil<T> {
         }
     }
 
-    private static String generatorParamString(Map<String, String> params) throws UnsupportedEncodingException {
+    @SuppressWarnings("unused")
+	private static String generatorParamString(Map<String, String> params) throws UnsupportedEncodingException {
         String paramString = "";
         if (params != null && params.size() > 0) {
             StringBuilder sb = new StringBuilder();

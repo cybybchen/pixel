@@ -111,8 +111,8 @@ public class PvpMapService {
 	}
 	
 	public int getRefreshCount(UserBean user){
-		long time[] = {redis.today(0), redis.today(12), redis.today(18)};
-		long now = redis.now();
+		long time[] = {RedisService.today(0), RedisService.today(12), RedisService.today(18)};
+		long now = RedisService.now();
 		int count = 0;
 		if(now - user.getPvpMineRefreshTime() >= 24*3600){
 			count = (int)((now - user.getPvpMineRefreshTime())/24/3600);
@@ -148,7 +148,7 @@ public class PvpMapService {
 				fields.add(map);
 		}
 		if(!ranks.isEmpty() && !fields.isEmpty()){
-			PVPMap map = fields.get(redis.nextInt(fields.size()));
+			PVPMap map = fields.get(RedisService.nextInt(fields.size()));
 			refreshMine(map, ranks, mineMap, user, 3);
 		}
 		for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
@@ -174,7 +174,7 @@ public class PvpMapService {
 				builder.setOwner(owner);
 				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
 				entry.setValue(builder.build());
-			}else if(redis.now() > mine.getEndTime()){
+			}else if(RedisService.now() > mine.getEndTime()){
 				it.remove();
 				redis.deleteMine(user.getId(), mine.getId());
 			}
@@ -206,8 +206,8 @@ public class PvpMapService {
 			}
 			if(ranks.isEmpty())
 				return;
-			if(redis.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
-				int index = redis.nextInt(ranks.size());
+			if(RedisService.nextInt(3) < enemy && !(mine != null && mine.hasOwner())){
+				int index = RedisService.nextInt(ranks.size());
 				builder.setOwner(ranks.get(index));
 				ranks.remove(index);
 				redis.saveMine(user.getId(), builder.build());
@@ -268,7 +268,7 @@ public class PvpMapService {
 	}
 
 	public boolean gainMine(PVPMapList.Builder maplist, UserBean user){
-		long time = redis.now()/3600*3600;
+		long time = RedisService.now()/3600*3600;
 		if(time > user.getPvpMineGainTime()){//收取资源
 			int resource = 0;
 			for(PVPMap map : maplist.getDataList()){
@@ -317,7 +317,7 @@ public class PvpMapService {
 				int count = Math.max(0, weight/100);
 				if(count > 0)
 					weight -= weight%100;
-				if(loot.getWeight()+(int)(loot.getWeightb()*event.getLevel()) > redis.nextInt(100)){
+				if(loot.getWeight()+(int)(loot.getWeightb()*event.getLevel()) > RedisService.nextInt(100)){
 					rewardinfo.setItemid(loot.getItemid());
 					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*event.getLevel()));
 					if(rewardinfo.getCount() > 0)
@@ -419,11 +419,11 @@ public class PvpMapService {
 				
 				/*if(mineCount/5 >= enemyCount)*/{
 					PVPMine othermine = redis.getMine(userId, id);
-					if(othermine == null || othermine.getEndTime() <= redis.now() || othermine.getEnemyid() == user.getId()) {
+					if(othermine == null || othermine.getEndTime() <= RedisService.now() || othermine.getEnemyid() == user.getId()) {
 						PVPMapList.Builder maplist = redis.getMapList(userId, 0);
 						for (PVPMap map : maplist.getDataList()) {
 							if (map.getFieldid() == id / 100 && map.getOpened()) {
-								mine.setEndTime(redis.now()+24*3600);
+								mine.setEndTime(RedisService.now()+24*3600);
 
 								redis.saveMine(userId, mine.build());
 								String content = "霸占了你的矿点(" + map.getName() + ")";
@@ -467,7 +467,7 @@ public class PvpMapService {
 	}
 	
 	public boolean refreshMap(UserBean user){
-		long now = redis.now();
+		long now = RedisService.now();
 		if(user.getRefreshPvpMapTime() > now)
 			return false;
 		
@@ -491,9 +491,9 @@ public class PvpMapService {
 			List<UserInfo> ranks = userService.getRandUser(0, 10, user);
 			// UserInfo owner = builder.getOwner();
 			if(!ranks.isEmpty()){
-				UserInfo owner = ranks.get(redis.nextInt(ranks.size()));
+				UserInfo owner = ranks.get(RedisService.nextInt(ranks.size()));
 				if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
-					owner = ranks.get(redis.nextInt(ranks.size()));
+					owner = ranks.get(RedisService.nextInt(ranks.size()));
 				builder.setOwner(owner);
 				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
 			}else{

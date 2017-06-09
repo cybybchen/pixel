@@ -9,16 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.mapper.ServerTitleMapper;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
 import com.trans.pixel.service.redis.ServerTitleRedisService;
-import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class ServerTitleService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ServerTitleService.class);
 	
 	@Resource

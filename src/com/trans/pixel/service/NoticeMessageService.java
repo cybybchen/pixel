@@ -9,12 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RewardConst;
-import com.trans.pixel.model.EquipmentBean;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
-import com.trans.pixel.protoc.EquipProto.Equiptucao;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.NoticeMessageRedisService;
@@ -22,6 +20,7 @@ import com.trans.pixel.service.redis.NoticeMessageRedisService;
 @Service
 public class NoticeMessageService {
 	
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(NoticeMessageService.class);
 	@Resource
 	private HeroService heroService;
@@ -67,15 +66,15 @@ public class NoticeMessageService {
 		}	
 	}
 	
-	public void composeEquipLevelup(UserBean user, EquipmentBean equip) {
-		Equiptucao equiptucao = equipRedisService.getEquiptucao(equip.getItemid());
-		if (equiptucao == null)
-			return;
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(user.getUserName()).append("合成了%s").append("，").append("小伙伴们都惊呆了！").append(",").append(equiptucao.getRare()).append(",").append(equiptucao.getItemname());
-		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
-	}
+//	public void composeEquipLevelup(UserBean user, EquipmentBean equip) {
+//		Equiptucao equiptucao = equipRedisService.getEquiptucao(equip.getItemid());
+//		if (equiptucao == null)
+//			return;
+//		
+//		StringBuilder sb = new StringBuilder();
+//		sb.append(user.getUserName()).append("合成了%s").append("，").append("小伙伴们都惊呆了！").append(",").append(equiptucao.getRare()).append(",").append(equiptucao.getItemname());
+//		redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+//	}
 	
 	public void composeLadderLevelup(UserBean user, long rank) {
 		if (rank != 1)

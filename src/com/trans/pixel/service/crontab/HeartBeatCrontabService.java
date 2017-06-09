@@ -20,7 +20,8 @@ import com.trans.pixel.service.ServerService;
 
 @Service
 public class HeartBeatCrontabService {
-	private Logger logger = Logger.getLogger(HeartBeatCrontabService.class);
+	@SuppressWarnings("unused")
+	private Logger log = Logger.getLogger(HeartBeatCrontabService.class);
 	
 	@Resource
 	private HeartBeatService heartBeatService;

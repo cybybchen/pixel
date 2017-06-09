@@ -102,7 +102,7 @@ public class UserFriendRedisService extends RedisService {
 	private Map<String, String> buildUserFriendMap(List<UserFriendBean> userFriendList) {
 		Map<String, String> userFriendMap = new HashMap<String, String>();
 		for (UserFriendBean userFriend : userFriendList) {
-			userFriendMap.put("" + userFriend.getFriendId(), this.toJson(userFriend));
+			userFriendMap.put("" + userFriend.getFriendId(), toJson(userFriend));
 		}
 		
 		return userFriendMap;

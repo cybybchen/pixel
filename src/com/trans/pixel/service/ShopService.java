@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.ShopProto.ShopList;
 import com.trans.pixel.protoc.ShopProto.Status;
 import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ShopRedisService;
 
 /**
@@ -291,10 +292,10 @@ public class ShopService {
 		PurchaseCoinReward reward = redis.getPurchaseCoinReward(daguan);
 		RewardInfo.Builder rewardbuilder = RewardInfo.newBuilder();
 		rewardbuilder.setItemid(reward.getRewardid1());
-		rewardbuilder.setCount(reward.getCount11()+redis.nextInt(reward.getCount12()-reward.getCount11()));
+		rewardbuilder.setCount(reward.getCount11()+RedisService.nextInt(reward.getCount12()-reward.getCount11()));
 		builder.addLoot(rewardbuilder);
 		rewardbuilder.setItemid(reward.getRewardid2());
-		rewardbuilder.setCount(reward.getCount21()+redis.nextInt(reward.getCount22()-reward.getCount21()));
+		rewardbuilder.setCount(reward.getCount21()+RedisService.nextInt(reward.getCount22()-reward.getCount21()));
 		builder.addLoot(rewardbuilder);
 		return builder.build();
 	}

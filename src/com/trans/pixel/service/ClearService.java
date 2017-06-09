@@ -50,8 +50,8 @@ public class ClearService {
 	private NoticeMessageService noticeMessageService;
 	
 	
-	private static final int CLEAR_TYPE_COIN_COST = 10000;
-	private static final int CLEAR_TYPE_JEWEL_COST = 100;
+//	private static final int CLEAR_TYPE_COIN_COST = 10000;
+//	private static final int CLEAR_TYPE_JEWEL_COST = 100;
 	
 	private static final int USER_POKEDE_LIMIT_1 = 3;
 	private static final int USER_POKEDE_LIMIT_2 = 6;

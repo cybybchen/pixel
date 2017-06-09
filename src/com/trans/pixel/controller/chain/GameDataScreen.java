@@ -235,8 +235,6 @@ import com.trans.pixel.service.command.ZhanliCommandService;
 
 @Service
 public class GameDataScreen extends RequestScreen {
-//	@Resource
-//	private AccountCommandService accountCommandService;
 	@Resource
 	private UserCommandService userCommandService;
 	@Resource

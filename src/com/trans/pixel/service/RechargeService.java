@@ -42,6 +42,7 @@ import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -180,7 +181,7 @@ public class RechargeService {
 			user.setGrowExpCount(Math.min(7,user.getGrowExpCount()+1));
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
 			YueKa yueka = shopService.getYueKa(itemId);
-			long today0 = rechargeRedisService.today(0);
+			long today0 = RedisService.today(0);
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
 				try {

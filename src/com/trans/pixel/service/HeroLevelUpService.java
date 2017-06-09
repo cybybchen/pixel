@@ -26,6 +26,7 @@ import com.trans.pixel.service.redis.StarRedisService;
 
 @Service
 public class HeroLevelUpService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(HeroLevelUpService.class);
 	
 	private static final int TYPE_HEROLEVEL = 1;

@@ -28,7 +28,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class MailCommandService extends BaseCommandService {
-	private static final int LIMIT_VIP_LEVEL = 0;
+//	private static final int LIMIT_VIP_LEVEL = 0;
 	@Resource
 	private MailService mailService;
 	@Resource

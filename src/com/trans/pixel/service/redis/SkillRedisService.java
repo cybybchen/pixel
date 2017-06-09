@@ -17,7 +17,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.model.SkillBean;
 import com.trans.pixel.model.SkillLevelBean;
 
 @Repository
@@ -25,36 +24,36 @@ public class SkillRedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
-	public SkillBean getSkillById(final int id) {
-		return redisTemplate.execute(new RedisCallback<SkillBean>() {
-			@Override
-			public SkillBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILL_KEY);
-				
-				
-				return SkillBean.fromJson(bhOps.get("" + id));
-			}
-		});
-	}
-	
-	public void setSkillList(final List<SkillBean> skillList) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILL_KEY);
-				
-				for (SkillBean skill : skillList) {
-					bhOps.put("" + skill.getId(), skill.toJson());
-				}
-				
-				return null;
-			}
-		});
-	}
+//	public SkillBean getSkillById(final int id) {
+//		return redisTemplate.execute(new RedisCallback<SkillBean>() {
+//			@Override
+//			public SkillBean doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				BoundHashOperations<String, String, String> bhOps = redisTemplate
+//						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILL_KEY);
+//				
+//				
+//				return SkillBean.fromJson(bhOps.get("" + id));
+//			}
+//		});
+//	}
+//	
+//	public void setSkillList(final List<SkillBean> skillList) {
+//		redisTemplate.execute(new RedisCallback<Object>() {
+//			@Override
+//			public Object doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				BoundHashOperations<String, String, String> bhOps = redisTemplate
+//						.boundHashOps(RedisKey.PREFIX + RedisKey.SKILL_KEY);
+//				
+//				for (SkillBean skill : skillList) {
+//					bhOps.put("" + skill.getId(), skill.toJson());
+//				}
+//				
+//				return null;
+//			}
+//		});
+//	}
 	
 	public SkillLevelBean getSkillLevelById(final int id) {
 		return redisTemplate.execute(new RedisCallback<SkillLevelBean>() {

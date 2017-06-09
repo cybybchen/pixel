@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
@@ -20,7 +19,6 @@ import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.ActivityProto.Achieve;
 import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.service.redis.AchieveRedisService;
 
 @Service
@@ -74,35 +72,35 @@ public class AchieveService {
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	private MultiReward getMultiReward(ActivityOrder order) {
-		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		RewardInfo.Builder reward = RewardInfo.newBuilder();
-		if (order.getRewardid0() > 0) {
-			reward.setItemid(order.getRewardid0());
-			reward.setCount(order.getRewardcount0());
-			multiReward.addLoot(reward.build());
-		}
-		
-		if (order.getRewardid1() > 0) {
-			reward.setItemid(order.getRewardid1());
-			reward.setCount(order.getRewardcount1());
-			multiReward.addLoot(reward.build());
-		}
-		
-		if (order.getRewardid2() > 0) {
-			reward.setItemid(order.getRewardid2());
-			reward.setCount(order.getRewardcount2());
-			multiReward.addLoot(reward.build());
-		}
-		
-		if (order.getRewardid3() > 0) {
-			reward.setItemid(order.getRewardid3());
-			reward.setCount(order.getRewardcount3());
-			multiReward.addLoot(reward.build());
-		}
-		
-		return multiReward.build();
-	}
+//	private MultiReward getMultiReward(ActivityOrder order) {
+//		MultiReward.Builder multiReward = MultiReward.newBuilder();
+//		RewardInfo.Builder reward = RewardInfo.newBuilder();
+//		if (order.getRewardid0() > 0) {
+//			reward.setItemid(order.getRewardid0());
+//			reward.setCount(order.getRewardcount0());
+//			multiReward.addLoot(reward.build());
+//		}
+//		
+//		if (order.getRewardid1() > 0) {
+//			reward.setItemid(order.getRewardid1());
+//			reward.setCount(order.getRewardcount1());
+//			multiReward.addLoot(reward.build());
+//		}
+//		
+//		if (order.getRewardid2() > 0) {
+//			reward.setItemid(order.getRewardid2());
+//			reward.setCount(order.getRewardcount2());
+//			multiReward.addLoot(reward.build());
+//		}
+//		
+//		if (order.getRewardid3() > 0) {
+//			reward.setItemid(order.getRewardid3());
+//			reward.setCount(order.getRewardcount3());
+//			multiReward.addLoot(reward.build());
+//		}
+//		
+//		return multiReward.build();
+//	}
 	
 	private ActivityOrder getAchieveOrder(int id, int order) {
 		Achieve achieve = achieveRedisService.getAchieve(id);

@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.trans.pixel.model.userinfo.RaidBean;
-import com.trans.pixel.model.userinfo.RaidBean;
 
 public interface RaidMapper {
 	public List<RaidBean> getRaids(long userid);

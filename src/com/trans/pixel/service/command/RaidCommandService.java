@@ -11,7 +11,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.TaskProto.Raid;

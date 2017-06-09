@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.service.redis.LibaoRedisService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class LibaoService {
@@ -58,10 +59,10 @@ public class LibaoService {
 	}
 
 	public long now(){
-		return redis.now();
+		return RedisService.now();
 	}
 
 	public long caltoday(long time, int hour){
-		return redis.caltoday(time, hour);
+		return RedisService.caltoday(time, hour);
 	}
 }

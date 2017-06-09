@@ -33,7 +33,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class BloodfightService {
 	Logger logger = Logger.getLogger(BloodfightService.class);
 	
-	private static final int DAILY_RESET_TIMES = 3;
+//	private static final int DAILY_RESET_TIMES = 3;
 	
 	@Resource
 	private UserBattletowerService userBattletowerService;

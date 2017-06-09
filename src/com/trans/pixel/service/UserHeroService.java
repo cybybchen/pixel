@@ -14,6 +14,7 @@ import com.trans.pixel.service.redis.UserHeroRedisService;
 
 @Service
 public class UserHeroService {
+	@SuppressWarnings("unused")
 	private static Logger log = Logger.getLogger(UserHeroService.class);
 	@Resource
 	private UserHeroRedisService userHeroRedisService;

@@ -17,6 +17,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class ServerService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ServerService.class);
 	
 	@Resource

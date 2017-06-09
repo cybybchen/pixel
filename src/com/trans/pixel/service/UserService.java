@@ -46,6 +46,7 @@ import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
@@ -56,9 +57,9 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class UserService {
 	Logger logger = LoggerFactory.getLogger(UserService.class);
 	
-	private static final int EXTRAREWARDID1 = 40001;
-	private static final int EXTRAREWARDID2 = 40002;
-	private static final int EXTRAREWARDID3 = 40003;
+//	private static final int EXTRAREWARDID1 = 40001;
+//	private static final int EXTRAREWARDID2 = 40002;
+//	private static final int EXTRAREWARDID3 = 40003;
 	
 	@Resource
     private UserRedisService userRedisService;
@@ -146,8 +147,8 @@ public class UserService {
 		 */
 		heartBeatService.heartBeat(user);
 		
-		long now = userRedisService.now();
-		long today0 = userRedisService.caltoday(now, 0);
+		long now = RedisService.now();
+		long today0 = RedisService.caltoday(now, 0);
 		if(user.getRedisTime() >= today0){
 //			logger.warn(user.getId()+":"+user.getRedisTime() +">="+ today0);
 			// user.setRedisTime(now);
@@ -360,8 +361,8 @@ public class UserService {
 	
 	public int addNewUser(UserBean user) {
 		int result = userMapper.addNewUser(user);
-		user.setPvpMineRefreshTime((int)userRedisService.today(0));
-		user.setPvpMineGainTime(userRedisService.now());
+		user.setPvpMineRefreshTime((int)RedisService.today(0));
+		user.setPvpMineGainTime(RedisService.now());
 //		userRedisService.updateUser(user);
 		userRedisService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
 		userRedisService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
@@ -539,7 +540,7 @@ public class UserService {
 	
 	public String randUserName(int serverId, String userName, int range, int randCount){
 		for (int i = 0; i < randCount; i++) {
-			int randNum = userRedisService.nextInt(range*9/10) + range/10;
+			int randNum = RedisService.nextInt(range*9/10) + range/10;
 			String newUserName = userName + "#" + randNum;
 			if(queryUserIdByUserName(serverId, newUserName) == 0)
 				return newUserName;
@@ -565,10 +566,10 @@ public class UserService {
 		return "";
 	}
 	public int nextInt(int value){
-		return userRedisService.nextInt(value);
+		return RedisService.nextInt(value);
 	}
 	public long nextDay(int hour){
-		return userRedisService.nextDay(hour);
+		return RedisService.nextDay(hour);
 	}
 	
 	public ResultConst handleExtra(UserBean user, int status, int type, List<RewardBean> rewardList) {

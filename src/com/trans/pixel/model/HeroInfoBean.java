@@ -378,7 +378,7 @@ public class HeroInfoBean {
 	private static final String LEVEL = "level";
 	private static final String STAR_LEVEL = "starLevel";
 	private static final String VALUE = "value";
-	private static final String RARE = "rare";
+//	private static final String RARE = "rare";
 	private static final String LOCK = "lock";
 	private static final String EQUIP_ID = "equipId";
 	private static final String SKILL_INFO_LIST = "skillInfoList";
