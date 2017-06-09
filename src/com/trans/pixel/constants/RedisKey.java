@@ -220,7 +220,7 @@ public class RedisKey {
 	public static final String SYNTHETISE_KEY = PREFIX + CONFIG_PREFIX + "synthetise";
 	
 	//fenjie
-	public static final String FENJIE_KEY = PREFIX + CONFIG_PREFIX+"fenjie";
+	public static final String FENJIE_KEY = CONFIG_PREFIX+"fenjie";
 	
 	//sign
 	public static final String SIGN_KEY = PREFIX + CONFIG_PREFIX+"sign";
