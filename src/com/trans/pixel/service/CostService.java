@@ -244,7 +244,7 @@ public class CostService {
 				return true;
 			}
 		} else {
-			UserBean user = userService.getUser(userId);
+			UserBean user = userService.getOther(userId);
 			unionService.costUnionBossActivity(user, itemId, itemCount);
 			switch (itemId) {
 				case RewardConst.EXP:

@@ -62,7 +62,7 @@ public class ChatAction {
 	public void start(@PathParam("userId") long userId, Session session) {
 		log.debug("" + userId);
 		this.session = session;
-		UserBean user = userService.getUser(userId);
+		UserBean user = userService.getOther(userId);
 		if (user != null) {
 			this.nickname = user.getUserName();
 			this.serverId = user.getServerId();

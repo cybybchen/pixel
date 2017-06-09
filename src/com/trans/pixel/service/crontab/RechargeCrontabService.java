@@ -35,7 +35,7 @@ public class RechargeCrontabService {
 			for (RechargeBean recharge : rechargeList) {
 				if (recharge.getProductId() > 6) {
 					log.debug("222");
-					UserBean user = userService.getUser(recharge.getUserId());
+					UserBean user = userService.getOther(recharge.getUserId());
 					if (user != null)
 						rechargeService.buchangVip(user, recharge.getRmb(), recharge.getRmb() / 10);
 				}
