@@ -199,19 +199,15 @@ public class LadderService {
 	
 	public UserEquipPokedeBean handleLadderEquip(UserBean user, UserLadder userLadder) {
 		LadderSeason ladderSeason = userLadderService.getLadderSeason();
-		log.debug("000");
 		if (ladderSeason == null)
 			return null;
 		
-		log.debug("111");
-		
 		int ld = getCurrentLd(ladderSeason.getStartTime());
-		log.debug("ld is:" + ld);
 		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
 		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
 		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
 		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), ladderEquip != null ? ladderEquip.getGrade()	: 1, user);
-		log.debug("222");
+
 		return pokede;
 	}
 	
