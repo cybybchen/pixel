@@ -334,7 +334,6 @@ public class UserCommandService extends BaseCommandService {
 // 			user.setSignCount(0);
 // 		}
 		
-		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setSession(DigestUtils.md5Hex(user.getAccount() + System.currentTimeMillis()));
 		userService.updateUser(user);
 	}
