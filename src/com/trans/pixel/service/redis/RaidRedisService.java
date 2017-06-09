@@ -36,7 +36,7 @@ public class RaidRedisService extends RedisService{
 		for(Raid.Builder raid : builder.getRaidBuilderList()) {
 			String value = keyvalue.get(raid.getId()+"");
 			Raid.Builder myraid = Raid.newBuilder();
-			if(parseJson(value, myraid)) {
+			if(value != null && parseJson(value, myraid)) {
 				raid.setEventid(myraid.getEventid());
 				raid.setTurn(myraid.getTurn());
 				raid.setLevel(myraid.getLevel());
