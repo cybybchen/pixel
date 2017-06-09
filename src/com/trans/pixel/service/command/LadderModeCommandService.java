@@ -67,6 +67,13 @@ public class LadderModeCommandService extends BaseCommandService {
 	public void ladderenemy(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, cmd.getType());
 		if (userLadderService.isNextSeason(userLadder)) {
+			List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
+			for (UserLadder userladder : userLadderList) {
+				UserLadder.Builder builder = UserLadder.newBuilder();
+				if (userLadderService.isNextSeasonAndUpdateUserLadder(userladder, builder)) {
+					
+				} 
+			}
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_END_ERROR);
