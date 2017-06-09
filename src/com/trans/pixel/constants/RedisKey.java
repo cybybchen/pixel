@@ -86,6 +86,7 @@ public class RedisKey {
 	public static final String EVENTLEVEL_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevel";
 	public static final String EVENTLEVELSEED_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevelSeed";
 	public final static String RAID_CONFIG = PREFIX+CONFIG_PREFIX+"Raid";
+	public final static String RAIDLIST_CONFIG = PREFIX+CONFIG_PREFIX+"RaidList";
 	public final static String TEAMRAID_CONFIG = PREFIX+CONFIG_PREFIX+"TeamRaid";
 	public final static String MERLEVEL_CONFIG = PREFIX+CONFIG_PREFIX+"MerLevel";
 	public final static String MERCENARY_CONFIG = PREFIX+CONFIG_PREFIX+"Mercenary";

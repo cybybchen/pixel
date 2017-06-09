@@ -9408,6 +9408,36 @@ public final class TaskProto {
      * <code>optional int32 eventid = 6;</code>
      */
     int getEventid();
+
+    // optional int32 turn = 7;
+    /**
+     * <code>optional int32 turn = 7;</code>
+     */
+    boolean hasTurn();
+    /**
+     * <code>optional int32 turn = 7;</code>
+     */
+    int getTurn();
+
+    // optional int32 level = 8;
+    /**
+     * <code>optional int32 level = 8;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 8;</code>
+     */
+    int getLevel();
+
+    // optional int32 maxlevel = 9;
+    /**
+     * <code>optional int32 maxlevel = 9;</code>
+     */
+    boolean hasMaxlevel();
+    /**
+     * <code>optional int32 maxlevel = 9;</code>
+     */
+    int getMaxlevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Raid}
@@ -9499,6 +9529,21 @@ public final class TaskProto {
             case 48: {
               bitField0_ |= 0x00000010;
               eventid_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              turn_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000040;
+              level_ = input.readInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000080;
+              maxlevel_ = input.readInt32();
               break;
             }
           }
@@ -9693,6 +9738,54 @@ public final class TaskProto {
       return eventid_;
     }
 
+    // optional int32 turn = 7;
+    public static final int TURN_FIELD_NUMBER = 7;
+    private int turn_;
+    /**
+     * <code>optional int32 turn = 7;</code>
+     */
+    public boolean hasTurn() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 turn = 7;</code>
+     */
+    public int getTurn() {
+      return turn_;
+    }
+
+    // optional int32 level = 8;
+    public static final int LEVEL_FIELD_NUMBER = 8;
+    private int level_;
+    /**
+     * <code>optional int32 level = 8;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 level = 8;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    // optional int32 maxlevel = 9;
+    public static final int MAXLEVEL_FIELD_NUMBER = 9;
+    private int maxlevel_;
+    /**
+     * <code>optional int32 maxlevel = 9;</code>
+     */
+    public boolean hasMaxlevel() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 maxlevel = 9;</code>
+     */
+    public int getMaxlevel() {
+      return maxlevel_;
+    }
+
     private void initFields() {
       id_ = 0;
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
@@ -9700,6 +9793,9 @@ public final class TaskProto {
       lv_ = 0;
       event_ = java.util.Collections.emptyList();
       eventid_ = 0;
+      turn_ = 0;
+      level_ = 0;
+      maxlevel_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9730,6 +9826,15 @@ public final class TaskProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, eventid_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, turn_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(8, level_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(9, maxlevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -9763,6 +9868,18 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, eventid_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, turn_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, level_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, maxlevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9902,6 +10019,12 @@ public final class TaskProto {
         }
         eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        turn_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        maxlevel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -9963,6 +10086,18 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000010;
         }
         result.eventid_ = eventid_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.turn_ = turn_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.level_ = level_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.maxlevel_ = maxlevel_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10021,6 +10156,15 @@ public final class TaskProto {
         }
         if (other.hasEventid()) {
           setEventid(other.getEventid());
+        }
+        if (other.hasTurn()) {
+          setTurn(other.getTurn());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        if (other.hasMaxlevel()) {
+          setMaxlevel(other.getMaxlevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -10575,6 +10719,105 @@ public final class TaskProto {
       public Builder clearEventid() {
         bitField0_ = (bitField0_ & ~0x00000020);
         eventid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 turn = 7;
+      private int turn_ ;
+      /**
+       * <code>optional int32 turn = 7;</code>
+       */
+      public boolean hasTurn() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 turn = 7;</code>
+       */
+      public int getTurn() {
+        return turn_;
+      }
+      /**
+       * <code>optional int32 turn = 7;</code>
+       */
+      public Builder setTurn(int value) {
+        bitField0_ |= 0x00000040;
+        turn_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 turn = 7;</code>
+       */
+      public Builder clearTurn() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        turn_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 8;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 8;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 level = 8;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 8;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000080;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 8;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 maxlevel = 9;
+      private int maxlevel_ ;
+      /**
+       * <code>optional int32 maxlevel = 9;</code>
+       */
+      public boolean hasMaxlevel() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional int32 maxlevel = 9;</code>
+       */
+      public int getMaxlevel() {
+        return maxlevel_;
+      }
+      /**
+       * <code>optional int32 maxlevel = 9;</code>
+       */
+      public Builder setMaxlevel(int value) {
+        bitField0_ |= 0x00000100;
+        maxlevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 maxlevel = 9;</code>
+       */
+      public Builder clearMaxlevel() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        maxlevel_ = 0;
         onChanged();
         return this;
       }
@@ -11276,6 +11519,16 @@ public final class TaskProto {
      * <code>optional int32 id = 1;</code>
      */
     int getId();
+
+    // optional int32 level = 2;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    int getLevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestOpenRaidCommand}
@@ -11331,6 +11584,11 @@ public final class TaskProto {
             case 8: {
               bitField0_ |= 0x00000001;
               id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              level_ = input.readInt32();
               break;
             }
           }
@@ -11389,8 +11647,25 @@ public final class TaskProto {
       return id_;
     }
 
+    // optional int32 level = 2;
+    public static final int LEVEL_FIELD_NUMBER = 2;
+    private int level_;
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 level = 2;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
     private void initFields() {
       id_ = 0;
+      level_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11407,6 +11682,9 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, level_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -11419,6 +11697,10 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, level_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11538,6 +11820,8 @@ public final class TaskProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -11570,6 +11854,10 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.level_ = level_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11588,6 +11876,9 @@ public final class TaskProto {
         if (other == com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand.getDefaultInstance()) return this;
         if (other.hasId()) {
           setId(other.getId());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -11645,6 +11936,39 @@ public final class TaskProto {
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 level = 2;
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000002;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 2;</code>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
         onChanged();
         return this;
       }
@@ -12614,35 +12938,30 @@ public final class TaskProto {
   public interface ResponseRaidCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int32 id = 1;
+    // repeated .com.trans.pixel.protoc.Raid raid = 1;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    boolean hasId();
+    java.util.List<com.trans.pixel.protoc.TaskProto.Raid> 
+        getRaidList();
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    int getId();
-
-    // optional int32 eventid = 2;
+    com.trans.pixel.protoc.TaskProto.Raid getRaid(int index);
     /**
-     * <code>optional int32 eventid = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    boolean hasEventid();
+    int getRaidCount();
     /**
-     * <code>optional int32 eventid = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    int getEventid();
-
-    // optional int32 turn = 3;
+    java.util.List<? extends com.trans.pixel.protoc.TaskProto.RaidOrBuilder> 
+        getRaidOrBuilderList();
     /**
-     * <code>optional int32 turn = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    boolean hasTurn();
-    /**
-     * <code>optional int32 turn = 3;</code>
-     */
-    int getTurn();
+    com.trans.pixel.protoc.TaskProto.RaidOrBuilder getRaidOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseRaidCommand}
@@ -12695,19 +13014,12 @@ public final class TaskProto {
               }
               break;
             }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              eventid_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              turn_ = input.readInt32();
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                raid_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.Raid>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              raid_.add(input.readMessage(com.trans.pixel.protoc.TaskProto.Raid.PARSER, extensionRegistry));
               break;
             }
           }
@@ -12718,6 +13030,9 @@ public final class TaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          raid_ = java.util.Collections.unmodifiableList(raid_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -12749,59 +13064,44 @@ public final class TaskProto {
       return PARSER;
     }
 
-    private int bitField0_;
-    // optional int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    // repeated .com.trans.pixel.protoc.Raid raid = 1;
+    public static final int RAID_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.TaskProto.Raid> raid_;
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+    public java.util.List<com.trans.pixel.protoc.TaskProto.Raid> getRaidList() {
+      return raid_;
     }
     /**
-     * <code>optional int32 id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    public int getId() {
-      return id_;
-    }
-
-    // optional int32 eventid = 2;
-    public static final int EVENTID_FIELD_NUMBER = 2;
-    private int eventid_;
-    /**
-     * <code>optional int32 eventid = 2;</code>
-     */
-    public boolean hasEventid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public java.util.List<? extends com.trans.pixel.protoc.TaskProto.RaidOrBuilder> 
+        getRaidOrBuilderList() {
+      return raid_;
     }
     /**
-     * <code>optional int32 eventid = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    public int getEventid() {
-      return eventid_;
-    }
-
-    // optional int32 turn = 3;
-    public static final int TURN_FIELD_NUMBER = 3;
-    private int turn_;
-    /**
-     * <code>optional int32 turn = 3;</code>
-     */
-    public boolean hasTurn() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public int getRaidCount() {
+      return raid_.size();
     }
     /**
-     * <code>optional int32 turn = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
      */
-    public int getTurn() {
-      return turn_;
+    public com.trans.pixel.protoc.TaskProto.Raid getRaid(int index) {
+      return raid_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+     */
+    public com.trans.pixel.protoc.TaskProto.RaidOrBuilder getRaidOrBuilder(
+        int index) {
+      return raid_.get(index);
     }
 
     private void initFields() {
-      id_ = 0;
-      eventid_ = 0;
-      turn_ = 0;
+      raid_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12815,14 +13115,8 @@ public final class TaskProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, eventid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, turn_);
+      for (int i = 0; i < raid_.size(); i++) {
+        output.writeMessage(1, raid_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -12833,17 +13127,9 @@ public final class TaskProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      for (int i = 0; i < raid_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, eventid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, turn_);
+          .computeMessageSize(1, raid_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12953,6 +13239,7 @@ public final class TaskProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRaidFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12961,12 +13248,12 @@ public final class TaskProto {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        eventid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        turn_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
+        if (raidBuilder_ == null) {
+          raid_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          raidBuilder_.clear();
+        }
         return this;
       }
 
@@ -12994,20 +13281,15 @@ public final class TaskProto {
       public com.trans.pixel.protoc.TaskProto.ResponseRaidCommand buildPartial() {
         com.trans.pixel.protoc.TaskProto.ResponseRaidCommand result = new com.trans.pixel.protoc.TaskProto.ResponseRaidCommand(this);
         int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        if (raidBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            raid_ = java.util.Collections.unmodifiableList(raid_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.raid_ = raid_;
+        } else {
+          result.raid_ = raidBuilder_.build();
         }
-        result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.eventid_ = eventid_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.turn_ = turn_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -13023,14 +13305,31 @@ public final class TaskProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.TaskProto.ResponseRaidCommand other) {
         if (other == com.trans.pixel.protoc.TaskProto.ResponseRaidCommand.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (other.hasEventid()) {
-          setEventid(other.getEventid());
-        }
-        if (other.hasTurn()) {
-          setTurn(other.getTurn());
+        if (raidBuilder_ == null) {
+          if (!other.raid_.isEmpty()) {
+            if (raid_.isEmpty()) {
+              raid_ = other.raid_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureRaidIsMutable();
+              raid_.addAll(other.raid_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.raid_.isEmpty()) {
+            if (raidBuilder_.isEmpty()) {
+              raidBuilder_.dispose();
+              raidBuilder_ = null;
+              raid_ = other.raid_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              raidBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRaidFieldBuilder() : null;
+            } else {
+              raidBuilder_.addAllMessages(other.raid_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -13059,103 +13358,244 @@ public final class TaskProto {
       }
       private int bitField0_;
 
-      // optional int32 id = 1;
-      private int id_ ;
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
-        onChanged();
-        return this;
+      // repeated .com.trans.pixel.protoc.Raid raid = 1;
+      private java.util.List<com.trans.pixel.protoc.TaskProto.Raid> raid_ =
+        java.util.Collections.emptyList();
+      private void ensureRaidIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          raid_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.Raid>(raid_);
+          bitField0_ |= 0x00000001;
+         }
       }
 
-      // optional int32 eventid = 2;
-      private int eventid_ ;
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public boolean hasEventid() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public int getEventid() {
-        return eventid_;
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public Builder setEventid(int value) {
-        bitField0_ |= 0x00000002;
-        eventid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 eventid = 2;</code>
-       */
-      public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        eventid_ = 0;
-        onChanged();
-        return this;
-      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.TaskProto.Raid, com.trans.pixel.protoc.TaskProto.Raid.Builder, com.trans.pixel.protoc.TaskProto.RaidOrBuilder> raidBuilder_;
 
-      // optional int32 turn = 3;
-      private int turn_ ;
       /**
-       * <code>optional int32 turn = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
        */
-      public boolean hasTurn() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+      public java.util.List<com.trans.pixel.protoc.TaskProto.Raid> getRaidList() {
+        if (raidBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(raid_);
+        } else {
+          return raidBuilder_.getMessageList();
+        }
       }
       /**
-       * <code>optional int32 turn = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
        */
-      public int getTurn() {
-        return turn_;
+      public int getRaidCount() {
+        if (raidBuilder_ == null) {
+          return raid_.size();
+        } else {
+          return raidBuilder_.getCount();
+        }
       }
       /**
-       * <code>optional int32 turn = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
        */
-      public Builder setTurn(int value) {
-        bitField0_ |= 0x00000004;
-        turn_ = value;
-        onChanged();
+      public com.trans.pixel.protoc.TaskProto.Raid getRaid(int index) {
+        if (raidBuilder_ == null) {
+          return raid_.get(index);
+        } else {
+          return raidBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder setRaid(
+          int index, com.trans.pixel.protoc.TaskProto.Raid value) {
+        if (raidBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRaidIsMutable();
+          raid_.set(index, value);
+          onChanged();
+        } else {
+          raidBuilder_.setMessage(index, value);
+        }
         return this;
       }
       /**
-       * <code>optional int32 turn = 3;</code>
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
        */
-      public Builder clearTurn() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        turn_ = 0;
-        onChanged();
+      public Builder setRaid(
+          int index, com.trans.pixel.protoc.TaskProto.Raid.Builder builderForValue) {
+        if (raidBuilder_ == null) {
+          ensureRaidIsMutable();
+          raid_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          raidBuilder_.setMessage(index, builderForValue.build());
+        }
         return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder addRaid(com.trans.pixel.protoc.TaskProto.Raid value) {
+        if (raidBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRaidIsMutable();
+          raid_.add(value);
+          onChanged();
+        } else {
+          raidBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder addRaid(
+          int index, com.trans.pixel.protoc.TaskProto.Raid value) {
+        if (raidBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRaidIsMutable();
+          raid_.add(index, value);
+          onChanged();
+        } else {
+          raidBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder addRaid(
+          com.trans.pixel.protoc.TaskProto.Raid.Builder builderForValue) {
+        if (raidBuilder_ == null) {
+          ensureRaidIsMutable();
+          raid_.add(builderForValue.build());
+          onChanged();
+        } else {
+          raidBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder addRaid(
+          int index, com.trans.pixel.protoc.TaskProto.Raid.Builder builderForValue) {
+        if (raidBuilder_ == null) {
+          ensureRaidIsMutable();
+          raid_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          raidBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder addAllRaid(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.TaskProto.Raid> values) {
+        if (raidBuilder_ == null) {
+          ensureRaidIsMutable();
+          super.addAll(values, raid_);
+          onChanged();
+        } else {
+          raidBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder clearRaid() {
+        if (raidBuilder_ == null) {
+          raid_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          raidBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public Builder removeRaid(int index) {
+        if (raidBuilder_ == null) {
+          ensureRaidIsMutable();
+          raid_.remove(index);
+          onChanged();
+        } else {
+          raidBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public com.trans.pixel.protoc.TaskProto.Raid.Builder getRaidBuilder(
+          int index) {
+        return getRaidFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public com.trans.pixel.protoc.TaskProto.RaidOrBuilder getRaidOrBuilder(
+          int index) {
+        if (raidBuilder_ == null) {
+          return raid_.get(index);  } else {
+          return raidBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.TaskProto.RaidOrBuilder> 
+           getRaidOrBuilderList() {
+        if (raidBuilder_ != null) {
+          return raidBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(raid_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public com.trans.pixel.protoc.TaskProto.Raid.Builder addRaidBuilder() {
+        return getRaidFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.TaskProto.Raid.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public com.trans.pixel.protoc.TaskProto.Raid.Builder addRaidBuilder(
+          int index) {
+        return getRaidFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.TaskProto.Raid.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Raid raid = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.TaskProto.Raid.Builder> 
+           getRaidBuilderList() {
+        return getRaidFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.TaskProto.Raid, com.trans.pixel.protoc.TaskProto.Raid.Builder, com.trans.pixel.protoc.TaskProto.RaidOrBuilder> 
+          getRaidFieldBuilder() {
+        if (raidBuilder_ == null) {
+          raidBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.TaskProto.Raid, com.trans.pixel.protoc.TaskProto.Raid.Builder, com.trans.pixel.protoc.TaskProto.RaidOrBuilder>(
+                  raid_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          raid_ = null;
+        }
+        return raidBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseRaidCommand)
@@ -13287,18 +13727,20 @@ public final class TaskProto {
       "rotoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132 .com." +
       "trans.pixel.protoc.UserTask\"J\n\033RequestGe" +
       "tTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005orde" +
-      "r\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\235\001\n\004Raid\022\n\n\002id\030\001",
+      "r\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\314\001\n\004Raid\022\n\n\002id\030\001",
       " \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pixel.pro" +
       "toc.RewardInfo\022\014\n\004name\030\004 \001(\t\022\n\n\002lv\030\003 \001(\005" +
       "\022,\n\005event\030\005 \003(\0132\035.com.trans.pixel.protoc" +
-      ".Event\022\017\n\007eventid\030\006 \001(\005\"6\n\010RaidList\022*\n\004d" +
-      "ata\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"" +
-      "$\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\"v\n" +
-      "\027RequestStartRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010" +
-      "teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004tur" +
-      "n\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"@\n" +
-      "\023ResponseRaidCommand\022\n\n\002id\030\001 \001(\005\022\017\n\007even",
-      "tid\030\002 \001(\005\022\014\n\004turn\030\003 \001(\005"
+      ".Event\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \001(\005\022\r\n" +
+      "\005level\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidLi" +
+      "st\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.proto" +
+      "c.Raid\"3\n\026RequestOpenRaidCommand\022\n\n\002id\030\001" +
+      " \001(\005\022\r\n\005level\030\002 \001(\005\"v\n\027RequestStartRaidC" +
+      "ommand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\t" +
+      "fightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001",
+      "(\010\022\017\n\007eventid\030\006 \001(\005\"A\n\023ResponseRaidComma" +
+      "nd\022*\n\004raid\030\001 \003(\0132\034.com.trans.pixel.proto" +
+      "c.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13376,7 +13818,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_Raid_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Raid_descriptor,
-              new java.lang.String[] { "Id", "Cost", "Name", "Lv", "Event", "Eventid", });
+              new java.lang.String[] { "Id", "Cost", "Name", "Lv", "Event", "Eventid", "Turn", "Level", "Maxlevel", });
           internal_static_com_trans_pixel_protoc_RaidList_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable = new
@@ -13388,7 +13830,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Id", "Level", });
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_fieldAccessorTable = new
@@ -13400,7 +13842,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor,
-              new java.lang.String[] { "Id", "Eventid", "Turn", });
+              new java.lang.String[] { "Raid", });
           return null;
         }
       };
