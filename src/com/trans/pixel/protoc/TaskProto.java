@@ -9432,10 +9432,18 @@ public final class TaskProto {
     // optional int32 maxlevel = 9;
     /**
      * <code>optional int32 maxlevel = 9;</code>
+     *
+     * <pre>
+     *可选的最大层数
+     * </pre>
      */
     boolean hasMaxlevel();
     /**
      * <code>optional int32 maxlevel = 9;</code>
+     *
+     * <pre>
+     *可选的最大层数
+     * </pre>
      */
     int getMaxlevel();
   }
@@ -9775,12 +9783,20 @@ public final class TaskProto {
     private int maxlevel_;
     /**
      * <code>optional int32 maxlevel = 9;</code>
+     *
+     * <pre>
+     *可选的最大层数
+     * </pre>
      */
     public boolean hasMaxlevel() {
       return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 maxlevel = 9;</code>
+     *
+     * <pre>
+     *可选的最大层数
+     * </pre>
      */
     public int getMaxlevel() {
       return maxlevel_;
@@ -10793,18 +10809,30 @@ public final class TaskProto {
       private int maxlevel_ ;
       /**
        * <code>optional int32 maxlevel = 9;</code>
+       *
+       * <pre>
+       *可选的最大层数
+       * </pre>
        */
       public boolean hasMaxlevel() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 maxlevel = 9;</code>
+       *
+       * <pre>
+       *可选的最大层数
+       * </pre>
        */
       public int getMaxlevel() {
         return maxlevel_;
       }
       /**
        * <code>optional int32 maxlevel = 9;</code>
+       *
+       * <pre>
+       *可选的最大层数
+       * </pre>
        */
       public Builder setMaxlevel(int value) {
         bitField0_ |= 0x00000100;
@@ -10814,6 +10842,10 @@ public final class TaskProto {
       }
       /**
        * <code>optional int32 maxlevel = 9;</code>
+       *
+       * <pre>
+       *可选的最大层数
+       * </pre>
        */
       public Builder clearMaxlevel() {
         bitField0_ = (bitField0_ & ~0x00000100);

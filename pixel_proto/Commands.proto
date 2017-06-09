@@ -2806,12 +2806,11 @@ message EventRandomsList {
 	repeated EventRandoms id = 1;
 }
 message EventExp {
-	optional int32 lv = 1;
-	optional int32 itemid = 2;
-	optional int32 count = 3;
+	optional int32 id = 1;
+	repeated RewardInfo reward = 2;
 }
 message EventExpList {
-	repeated EventExp id = 1;
+	repeated EventExp data = 1;
 }
 message EventReward {
 	optional int32 mustloot = 1;
@@ -3489,7 +3488,7 @@ message Raid {
 	optional int32 eventid = 6;
 	optional int32 turn = 7;
 	optional int32 level = 8;
-	optional int32 maxlevel = 9;
+	optional int32 maxlevel = 9;//可选的最大层数
 }
 message RaidList {
         repeated Raid data = 1;

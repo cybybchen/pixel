@@ -65,6 +65,7 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class LevelCommandService extends BaseCommandService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(LevelCommandService.class);
 	
 //	private static final int BUY_LOOT_PACKAGE_COST = 30;
@@ -232,8 +233,8 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		EventExp exp = redis.getEventExp(daguan.getLevel());
 		{RewardBean bean = new RewardBean();
-		bean.setItemid(exp.getItemid());
-		bean.setCount(exp.getCount());
+		bean.setItemid(exp.getReward(0).getItemid());
+		bean.setCount(exp.getReward(0).getCount());
 		rewards.add(bean);}
 		rewards.addAll(redis.getNewplayReward(user, eventconfig.getId()));
 		rewardService.mergeReward(rewards);

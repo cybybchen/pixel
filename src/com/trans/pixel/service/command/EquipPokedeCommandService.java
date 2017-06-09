@@ -28,7 +28,6 @@ import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
-import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipPokedeService;
@@ -42,6 +41,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class EquipPokedeCommandService extends BaseCommandService {
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(EquipPokedeCommandService.class);
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;

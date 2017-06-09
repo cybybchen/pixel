@@ -54,6 +54,7 @@ import com.trans.pixel.service.UserTalentService;
 
 @Repository
 public class LevelRedisService extends RedisService {
+	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(LevelRedisService.class);
 	private static final int NEWPLAY_LEVEL_1 = 1012;
 	private static final int NEWPLAY_LEVEL_2 = 1013;
@@ -458,8 +459,8 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_lvexp.xml");
 		EventExpList.Builder list = EventExpList.newBuilder();
 		parseXml(xml, list);
-		for(EventExp exp : list.getIdList()){
-			keyvalue.put(exp.getLv()+"", formatJson(exp));
+		for(EventExp exp : list.getDataList()){
+			keyvalue.put(exp.getId()+"", formatJson(exp));
 		}
 		hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
 		value = hget(RedisKey.EVENTEXP_CONFIG, level+"");
