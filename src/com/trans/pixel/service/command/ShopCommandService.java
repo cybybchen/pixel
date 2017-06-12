@@ -566,7 +566,10 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
-			commbuilder.setIsOut(true);
+			if(commbuilder.getLimit() > 0)
+				commbuilder.setLimit(commbuilder.getLimit() - 1);
+			if(commbuilder.getLimit() == 0)
+				commbuilder.setIsOut(true);
 			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount());
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 			service.savePVPShop(shoplist.build(), user);
@@ -751,7 +754,10 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
-			commbuilder.setIsOut(true);
+			if(commbuilder.getLimit() > 0)
+				commbuilder.setLimit(commbuilder.getLimit() - 1);
+			if(commbuilder.getLimit() == 0)
+				commbuilder.setIsOut(true);
 			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount());
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 			service.saveLadderShop(shoplist.build(), user);

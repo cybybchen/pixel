@@ -1017,6 +1017,9 @@ public class RedisService {
 		Date date = new Date((System.currentTimeMillis()/1000L+(8+3*24)*3600)/7/24/3600L*7*24*3600L*1000L+(24*4-8)*3600L*1000L);
 		return date;
 	}
+	public static long nextWeek(int hour){
+		return (System.currentTimeMillis()/1000L+(8+3*24)*3600)/7/24/3600L*7*24*3600L+(24*4-8+hour)*3600L;
+	}
 	/**
 	 * 第二天0点
 	 */
@@ -1046,7 +1049,7 @@ public class RedisService {
 		return (int)(System.currentTimeMillis()/1000L);
 	}
 	/**
-	 * 当前周几
+	 * 当前周几(1~7)
 	*/
 	public static int weekday(){
 		return (int)((System.currentTimeMillis()/1000L+8*3600)/24/3600L+3)%7+1;

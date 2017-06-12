@@ -531,9 +531,7 @@ public class ShopRedisService extends RedisService{
 			set(RedisKey.RAIDSHOP_CONFIG, formatJson(commsbuilder.build()));
 		}
 		ShopList.Builder builder = ShopList.newBuilder();
-		for(Commodity comm : commsbuilder.getIdList()){
-			builder.addItems(comm);
-		}
+		builder.addAllItems(commsbuilder.getIdList());
 		builder.setEndTime(getRaidShopEndTime());
 		return builder.build();
 	}
@@ -605,85 +603,100 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getPVPShopEndTime(){
-		long time[] = {today(0), today(12), today(18), today(21)};
-		long now = now();
-		if(now < time[0])
-			return time[0];
-		else if(now < time[1])
-			return time[1];
-		else if(now < time[2])
-			return time[2];
-		else if(now < time[3])
-			return time[3];
-		else//第二天9点
-			return time[0]+24*3600;
+		return nextWeek(0);
+//		long time[] = {today(0), today(12), today(18), today(21)};
+//		long now = now();
+//		if(now < time[0])
+//			return time[0];
+//		else if(now < time[1])
+//			return time[1];
+//		else if(now < time[2])
+//			return time[2];
+//		else if(now < time[3])
+//			return time[3];
+//		else//第二天9点
+//			return time[0]+24*3600;
 	}
-	
+
 	public ShopList buildPVPShop(UserBean user){
-		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(RedisKey.PVPSHOP_CONFIG+"Type");
-		if(value == null || !parseJson(value, willsbuilder)){
-			String xml = ReadConfig("ld_shopmojing2.xml");
-			parseXml(xml, willsbuilder);
-			set(RedisKey.PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+		CommodityList.Builder list = CommodityList.newBuilder();
+		String value = get(RedisKey.PVPSHOP_CONFIG);
+		if(value == null || !parseJson(value, list)){
+			String xml = ReadConfig("ld_shopmojing.xml");
+			parseXml(xml, list);
+			set(RedisKey.PVPSHOP_CONFIG, formatJson(list.build()));
 		}
-		ShopWill shopwill = willsbuilder.getId(0);
-		for(ShopWill will : willsbuilder.getIdList()){
-			if(will.getMerlevel() <= user.getMerlevel())
-				shopwill = will;
-		}
-		ShopList.Builder builder = buildComms(user, shopwill, getPVPShopComms());
+		ShopList.Builder builder = ShopList.newBuilder();
+		builder.addAllItems(list.getIdList());
 		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
 	}
-
-	public Map<Integer, CommodityList.Builder> readPVPShopComms(){
-		String xml = ReadConfig("ld_shopmojing.xml");
-		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
-		parseXml(xml, commsbuilder);
-		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity.Builder comm : commsbuilder.getIdBuilderList()){
-			CommodityList.Builder comms = map.get(comm.getWill());
-			if(comms == null){
-				comms = CommodityList.newBuilder();
-			}
-			comm.clearName();
-			comms.addId(comm);
-			map.put(comm.getWill(), comms);
-		}
-		Map<String, String> resultmap = new HashMap<String, String>();
-		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
-			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
-		}
-		this.hputAll(RedisKey.PVPSHOP_CONFIG, resultmap);
-		return map;
-	}
 	
-	public Map<Integer, CommodityList.Builder> getPVPShopComms(){
-		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(RedisKey.PVPSHOP_CONFIG);
-		if(keyvalue.isEmpty()){
-			return readPVPShopComms();
-		}else{
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				CommodityList.Builder builder = CommodityList.newBuilder();
-				parseJson(entry.getValue(), builder);
-				map.put(Integer.parseInt(entry.getKey()), builder);
-			}
-			return map;
-		}
-	}
-	
-	public CommodityList getPVPShopComms(int will){
-		String value = this.hget(RedisKey.PVPSHOP_CONFIG, will+"");
-		CommodityList.Builder builder = CommodityList.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-			Map<Integer, CommodityList.Builder> map = readPVPShopComms();
-			return map.get(will).build();
-		}
-	}
+//	public ShopList buildPVPShop(UserBean user){
+//		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
+//		String value = get(RedisKey.PVPSHOP_CONFIG+"Type");
+//		if(value == null || !parseJson(value, willsbuilder)){
+//			String xml = ReadConfig("ld_shopmojing2.xml");
+//			parseXml(xml, willsbuilder);
+//			set(RedisKey.PVPSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+//		}
+//		ShopWill shopwill = willsbuilder.getId(0);
+//		for(ShopWill will : willsbuilder.getIdList()){
+//			if(will.getMerlevel() <= user.getMerlevel())
+//				shopwill = will;
+//		}
+//		ShopList.Builder builder = buildComms(user, shopwill, getPVPShopComms());
+//		builder.setEndTime(getPVPShopEndTime());
+//		return builder.build();
+//	}
+//
+//	public Map<Integer, CommodityList.Builder> readPVPShopComms(){
+//		String xml = ReadConfig("ld_shopmojing.xml");
+//		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
+//		parseXml(xml, commsbuilder);
+//		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+//		for(Commodity.Builder comm : commsbuilder.getIdBuilderList()){
+//			CommodityList.Builder comms = map.get(comm.getWill());
+//			if(comms == null){
+//				comms = CommodityList.newBuilder();
+//			}
+//			comm.clearName();
+//			comms.addId(comm);
+//			map.put(comm.getWill(), comms);
+//		}
+//		Map<String, String> resultmap = new HashMap<String, String>();
+//		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
+//			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
+//		}
+//		this.hputAll(RedisKey.PVPSHOP_CONFIG, resultmap);
+//		return map;
+//	}
+//	
+//	public Map<Integer, CommodityList.Builder> getPVPShopComms(){
+//		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+//		Map<String, String> keyvalue = this.hget(RedisKey.PVPSHOP_CONFIG);
+//		if(keyvalue.isEmpty()){
+//			return readPVPShopComms();
+//		}else{
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				CommodityList.Builder builder = CommodityList.newBuilder();
+//				parseJson(entry.getValue(), builder);
+//				map.put(Integer.parseInt(entry.getKey()), builder);
+//			}
+//			return map;
+//		}
+//	}
+//	
+//	public CommodityList getPVPShopComms(int will){
+//		String value = this.hget(RedisKey.PVPSHOP_CONFIG, will+"");
+//		CommodityList.Builder builder = CommodityList.newBuilder();
+//		if(value != null && parseJson(value, builder)){
+//			return builder.build();
+//		}else{
+//			Map<Integer, CommodityList.Builder> map = readPVPShopComms();
+//			return map.get(will).build();
+//		}
+//	}
 
 	//远征商店
 	public ShopList getExpeditionShop(UserBean user) {
@@ -792,90 +805,100 @@ public class ShopRedisService extends RedisService{
 	}
 	
 	public long getLadderShopEndTime(){
-		long time[] = {today(0), today(12), today(18), today(21)};
-		long now = now();
-		if(now < time[0])
-			return time[0];
-		else if(now < time[1])
-			return time[1];
-		else if(now < time[2])
-			return time[2];
-		else if(now < time[3])
-			return time[3];
-		else//第二天9点
-			return time[0]+24*3600;
-	}
-	
-//	class CommCreater {
-//		public void available(int value) {
-//		}
-//	}
-	 
-	public ShopList buildLadderShop(UserBean user){
-		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
-		String value = get(RedisKey.LADDERSHOP_CONFIG+"Type");
-		if(value == null || !parseJson(value, willsbuilder)){
-			String xml = ReadConfig("ld_shoptianti2.xml");
-			parseXml(xml, willsbuilder);
-			set(RedisKey.LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
-		}
-		ShopWill shopwill = willsbuilder.getId(0);
-		for(ShopWill will : willsbuilder.getIdList()){
-			if(will.getMerlevel() <= user.getMerlevel())
-				shopwill = will;
-		}
-		ShopList.Builder builder = buildComms(user, shopwill, getLadderShopComms());
-		builder.setEndTime(getLadderShopEndTime());
-		return builder.build();
+		return nextWeek(0);
+//		long time[] = {today(0), today(12), today(18), today(21)};
+//		long now = now();
+//		if(now < time[0])
+//			return time[0];
+//		else if(now < time[1])
+//			return time[1];
+//		else if(now < time[2])
+//			return time[2];
+//		else if(now < time[3])
+//			return time[3];
+//		else//第二天9点
+//			return time[0]+24*3600;
 	}
 
-	public Map<Integer, CommodityList.Builder> readLadderShopComms(){
-		String xml = ReadConfig("ld_shoptianti.xml");
-		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
-		parseXml(xml, commsbuilder);
-		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		for(Commodity.Builder comm : commsbuilder.getIdBuilderList()){
-			CommodityList.Builder comms = map.get(comm.getWill());
-			if(comms == null){
-				comms = CommodityList.newBuilder();
-			}
-			comm.clearName();
-			comms.addId(comm);
-			map.put(comm.getWill(), comms);
+	public ShopList buildLadderShop(UserBean user){
+		CommodityList.Builder list = CommodityList.newBuilder();
+		String value = get(RedisKey.LADDERSHOP_CONFIG);
+		if(value == null || !parseJson(value, list)){
+			String xml = ReadConfig("ld_shoptianti.xml");
+			parseXml(xml, list);
+			set(RedisKey.LADDERSHOP_CONFIG, formatJson(list.build()));
 		}
-		Map<String, String> resultmap = new HashMap<String, String>();
-		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
-			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
-		}
-		this.hputAll(RedisKey.LADDERSHOP_CONFIG, resultmap);
-		return map;
+		ShopList.Builder builder = ShopList.newBuilder();
+		builder.addAllItems(list.getIdList());
+		builder.setEndTime(getPVPShopEndTime());
+		return builder.build();
 	}
-	
-	public Map<Integer, CommodityList.Builder> getLadderShopComms(){
-		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
-		Map<String, String> keyvalue = this.hget(RedisKey.LADDERSHOP_CONFIG);
-		if(keyvalue.isEmpty()){
-			return readLadderShopComms();
-		}else{
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				CommodityList.Builder builder = CommodityList.newBuilder();
-				parseJson(entry.getValue(), builder);
-				map.put(Integer.parseInt(entry.getKey()), builder);
-			}
-			return map;
-		}
-	}
-	
-	public CommodityList getLadderShopComms(int will){
-		String value = this.hget(RedisKey.LADDERSHOP_CONFIG, will+"");
-		CommodityList.Builder builder = CommodityList.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-			Map<Integer, CommodityList.Builder> map = readLadderShopComms();
-			return map.get(will).build();
-		}
-	}
+	 
+//	public ShopList buildLadderShop(UserBean user){
+//		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
+//		String value = get(RedisKey.LADDERSHOP_CONFIG+"Type");
+//		if(value == null || !parseJson(value, willsbuilder)){
+//			String xml = ReadConfig("ld_shoptianti2.xml");
+//			parseXml(xml, willsbuilder);
+//			set(RedisKey.LADDERSHOP_CONFIG+"Type", formatJson(willsbuilder.build()));
+//		}
+//		ShopWill shopwill = willsbuilder.getId(0);
+//		for(ShopWill will : willsbuilder.getIdList()){
+//			if(will.getMerlevel() <= user.getMerlevel())
+//				shopwill = will;
+//		}
+//		ShopList.Builder builder = buildComms(user, shopwill, getLadderShopComms());
+//		builder.setEndTime(getLadderShopEndTime());
+//		return builder.build();
+//	}
+//
+//	public Map<Integer, CommodityList.Builder> readLadderShopComms(){
+//		String xml = ReadConfig("ld_shoptianti.xml");
+//		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
+//		parseXml(xml, commsbuilder);
+//		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+//		for(Commodity.Builder comm : commsbuilder.getIdBuilderList()){
+//			CommodityList.Builder comms = map.get(comm.getWill());
+//			if(comms == null){
+//				comms = CommodityList.newBuilder();
+//			}
+//			comm.clearName();
+//			comms.addId(comm);
+//			map.put(comm.getWill(), comms);
+//		}
+//		Map<String, String> resultmap = new HashMap<String, String>();
+//		for(Entry<Integer, CommodityList.Builder> entry : map.entrySet()){
+//			resultmap.put(entry.getKey()+"", formatJson(entry.getValue().build()));
+//		}
+//		this.hputAll(RedisKey.LADDERSHOP_CONFIG, resultmap);
+//		return map;
+//	}
+//	
+//	public Map<Integer, CommodityList.Builder> getLadderShopComms(){
+//		Map<Integer, CommodityList.Builder> map = new HashMap<Integer, CommodityList.Builder>();
+//		Map<String, String> keyvalue = this.hget(RedisKey.LADDERSHOP_CONFIG);
+//		if(keyvalue.isEmpty()){
+//			return readLadderShopComms();
+//		}else{
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				CommodityList.Builder builder = CommodityList.newBuilder();
+//				parseJson(entry.getValue(), builder);
+//				map.put(Integer.parseInt(entry.getKey()), builder);
+//			}
+//			return map;
+//		}
+//	}
+//	
+//	public CommodityList getLadderShopComms(int will){
+//		String value = this.hget(RedisKey.LADDERSHOP_CONFIG, will+"");
+//		CommodityList.Builder builder = CommodityList.newBuilder();
+//		if(value != null && parseJson(value, builder)){
+//			return builder.build();
+//		}else{
+//			Map<Integer, CommodityList.Builder> map = readLadderShopComms();
+//			return map.get(will).build();
+//		}
+//	}
 
 	//战斗塔商店
 	public ShopList getBattletowerShop(UserBean user, UserBattletowerBean ubt) {
