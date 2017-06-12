@@ -9,7 +9,7 @@ public final class Request {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   public interface RequestCommandOrBuilder
-      extends com.google.protobuf.MessageOrBuilder { 
+      extends com.google.protobuf.MessageOrBuilder {
 
     // required .com.trans.pixel.protoc.HeadInfo head = 1;
     /**

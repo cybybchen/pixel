@@ -21830,29 +21830,29 @@ public final class UnionProto {
   public interface UnionBossListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.UnionBoss boss = 1;
+    // repeated .com.trans.pixel.protoc.UnionBoss data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> 
-        getBossList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    com.trans.pixel.protoc.UnionProto.UnionBoss getBoss(int index);
+    com.trans.pixel.protoc.UnionProto.UnionBoss getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    int getBossCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> 
-        getBossOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getBossOrBuilder(
+    com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -21908,10 +21908,10 @@ public final class UnionProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              boss_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.UnionBoss.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.UnionBoss.PARSER, extensionRegistry));
               break;
             }
           }
@@ -21923,7 +21923,7 @@ public final class UnionProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = java.util.Collections.unmodifiableList(boss_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -21956,44 +21956,44 @@ public final class UnionProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.UnionBoss boss = 1;
-    public static final int BOSS_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> boss_;
+    // repeated .com.trans.pixel.protoc.UnionBoss data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> getBossList() {
-      return boss_;
+    public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> 
-        getBossOrBuilderList() {
-      return boss_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    public int getBossCount() {
-      return boss_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.UnionBoss getBoss(int index) {
-      return boss_.get(index);
+    public com.trans.pixel.protoc.UnionProto.UnionBoss getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getBossOrBuilder(
+    public com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getDataOrBuilder(
         int index) {
-      return boss_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      boss_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -22007,8 +22007,8 @@ public final class UnionProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < boss_.size(); i++) {
-        output.writeMessage(1, boss_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -22019,9 +22019,9 @@ public final class UnionProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < boss_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, boss_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22131,7 +22131,7 @@ public final class UnionProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBossFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -22140,11 +22140,11 @@ public final class UnionProto {
 
       public Builder clear() {
         super.clear();
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          bossBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -22173,14 +22173,14 @@ public final class UnionProto {
       public com.trans.pixel.protoc.UnionProto.UnionBossList buildPartial() {
         com.trans.pixel.protoc.UnionProto.UnionBossList result = new com.trans.pixel.protoc.UnionProto.UnionBossList(this);
         int from_bitField0_ = bitField0_;
-        if (bossBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            boss_ = java.util.Collections.unmodifiableList(boss_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.boss_ = boss_;
+          result.data_ = data_;
         } else {
-          result.boss_ = bossBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -22197,29 +22197,29 @@ public final class UnionProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBossList other) {
         if (other == com.trans.pixel.protoc.UnionProto.UnionBossList.getDefaultInstance()) return this;
-        if (bossBuilder_ == null) {
-          if (!other.boss_.isEmpty()) {
-            if (boss_.isEmpty()) {
-              boss_ = other.boss_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureBossIsMutable();
-              boss_.addAll(other.boss_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.boss_.isEmpty()) {
-            if (bossBuilder_.isEmpty()) {
-              bossBuilder_.dispose();
-              bossBuilder_ = null;
-              boss_ = other.boss_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              bossBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getBossFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              bossBuilder_.addAllMessages(other.boss_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -22250,244 +22250,244 @@ public final class UnionProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.UnionBoss boss = 1;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> boss_ =
+      // repeated .com.trans.pixel.protoc.UnionBoss data = 1;
+      private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> data_ =
         java.util.Collections.emptyList();
-      private void ensureBossIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss>(boss_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBoss, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder, com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> bossBuilder_;
+          com.trans.pixel.protoc.UnionProto.UnionBoss, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder, com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> getBossList() {
-        if (bossBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(boss_);
+      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return bossBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public int getBossCount() {
-        if (bossBuilder_ == null) {
-          return boss_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return bossBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss getBoss(int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);
+      public com.trans.pixel.protoc.UnionProto.UnionBoss getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return bossBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder setBoss(
+      public Builder setData(
           int index, com.trans.pixel.protoc.UnionProto.UnionBoss value) {
-        if (bossBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          bossBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder setBoss(
+      public Builder setData(
           int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder addBoss(com.trans.pixel.protoc.UnionProto.UnionBoss value) {
-        if (bossBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.UnionProto.UnionBoss value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          bossBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addData(
           int index, com.trans.pixel.protoc.UnionProto.UnionBoss value) {
-        if (bossBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureBossIsMutable();
-          boss_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          bossBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addData(
           com.trans.pixel.protoc.UnionProto.UnionBoss.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder addBoss(
+      public Builder addData(
           int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          bossBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder addAllBoss(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.UnionBoss> values) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          super.addAll(values, boss_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          bossBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder clearBoss() {
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          bossBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public Builder removeBoss(int index) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          bossBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder getBossBuilder(
+      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder getDataBuilder(
           int index) {
-        return getBossFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getBossOrBuilder(
+      public com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder getDataOrBuilder(
           int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);  } else {
-          return bossBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> 
-           getBossOrBuilderList() {
-        if (bossBuilder_ != null) {
-          return bossBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(boss_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder addBossBuilder() {
-        return getBossFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UnionProto.UnionBoss.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder addBossBuilder(
+      public com.trans.pixel.protoc.UnionProto.UnionBoss.Builder addDataBuilder(
           int index) {
-        return getBossFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.UnionProto.UnionBoss.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss boss = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.UnionBoss data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Builder> 
-           getBossBuilderList() {
-        return getBossFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.UnionProto.UnionBoss, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder, com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder> 
-          getBossFieldBuilder() {
-        if (bossBuilder_ == null) {
-          bossBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.UnionProto.UnionBoss, com.trans.pixel.protoc.UnionProto.UnionBoss.Builder, com.trans.pixel.protoc.UnionProto.UnionBossOrBuilder>(
-                  boss_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          boss_ = null;
+          data_ = null;
         }
-        return bossBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBossList)
@@ -38471,7 +38471,7 @@ public final class UnionProto {
       "ommand\"?\n\034RequestCreateBossRoomCommand\022\017" +
       "\n\007groupId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032Reque" +
       "stBossRoomInfoCommand\"@\n\rUnionBossList\022/" +
-      "\n\004boss\030\001 \003(\0132!.com.trans.pixel.protoc.Un" +
+      "\n\004data\030\001 \003(\0132!.com.trans.pixel.protoc.Un" +
       "ionBoss\"\205\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004typ" +
       "e\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targetcount",
       "\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002HP\030\006 \001(\005\0226\n\005" +
@@ -38692,7 +38692,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionBossList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossList_descriptor,
-              new java.lang.String[] { "Boss", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_UnionBoss_descriptor =
             getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_UnionBoss_fieldAccessorTable = new

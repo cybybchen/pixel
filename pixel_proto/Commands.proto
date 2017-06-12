@@ -282,6 +282,7 @@ message Commodity {
 	optional int32 judge = 10;
 	optional int32 discount = 11;
 	optional int32 discost = 12;
+	optional int32 limit = 13;
 }
 message CommodityList {
 	repeated Commodity id = 1;
@@ -3165,7 +3166,7 @@ message RequestBossRoomInfoCommand {
 }
 
 message UnionBossList {
-	repeated UnionBoss boss = 1;
+	repeated UnionBoss data = 1;
 }
 
 message UnionBoss {
