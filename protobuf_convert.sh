@@ -202,7 +202,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 			return false;
 		} else {
 		    long userId = head != null ? head.getUserId() : 0;
-		    req.user = userService.getUser(userId);
+		    req.user = userService.getUserMySelf(userId);
 			user = req.user;
 
 		    if (request.hasLogCommand()) {
