@@ -271,7 +271,7 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		if(userId != 0 && (serverId == 0 || userName.isEmpty())){
-			UserBean user = userService.getOther(userId);
+			UserBean user = userService.getUserOther(userId);
 			if(user == null){
 				result.put("error", "Cannot find user!");
 				return result;
@@ -799,7 +799,7 @@ public class ManagerService extends RedisService{
 				infoId = Math.max(infoId, (int)bean.getId());
 				map.put(key.toString(), value);
 			}
-			UserBean user = userService.getOther(userId);
+			UserBean user = userService.getUserOther(userId);
 			if(infoId > user.getHeroInfoId()){
 				user.setHeroInfoId(infoId);
 				userService.updateUser(user);
@@ -932,7 +932,7 @@ public class ManagerService extends RedisService{
 				String key = entry.getKey();
 				if(!object.keySet().contains(key)){
 					UserPokedeBean userPokede = UserPokedeBean.fromJson(map.get(key));
-					userPokedeService.delUserPokede(userPokede, userService.getOther(userId));
+					userPokedeService.delUserPokede(userPokede, userService.getUserOther(userId));
 //					hdelete(RedisKey.PREFIX + RedisKey.USER_Pokede_PREFIX + userId, key);
 					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-pokede", map.get(key));
 				}else if(entry.getValue().equals(object.getString(key))){
@@ -2428,7 +2428,7 @@ public class ManagerService extends RedisService{
 				if (DateUtil.timeIsOver(entry.getValue())) {
 					hdelete(RedisKey.BLACK_NOSAY_LIST_PREFIX + serverId, entry.getKey());
 				} else
-					map.put(entry.getKey(), userService.getOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+					map.put(entry.getKey(), userService.getUserOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
 			}
 			
 			JSONObject object = new JSONObject();
@@ -2444,7 +2444,7 @@ public class ManagerService extends RedisService{
 				if (DateUtil.timeIsOver(entry.getValue())) {
 					hdelete(RedisKey.BLACK_USER_LIST_PREFIX + serverId, entry.getKey());
 				} else
-					map.put(entry.getKey(), userService.getOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
+					map.put(entry.getKey(), userService.getUserOther(TypeTranslatedUtil.stringToLong(entry.getKey())).getUserName());
 			}
 			
 			JSONObject object = new JSONObject();

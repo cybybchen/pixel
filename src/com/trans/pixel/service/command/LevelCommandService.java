@@ -403,7 +403,7 @@ public class LevelCommandService extends BaseCommandService {
 //		}
 		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
-		UserBean friend = userService.getOther(friendUserId);
+		UserBean friend = userService.getUserOther(friendUserId);
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, teamid, team);
 		

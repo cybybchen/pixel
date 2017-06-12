@@ -465,7 +465,7 @@ public class AreaFightService extends FightService{
 
 					builder.setWarDefended(0);
 					if(owner != null){
-						Union.Builder union = unionRedisService.getUnion(userService.getOther(owner.getId()));
+						Union.Builder union = unionRedisService.getUnion(userService.getUserOther(owner.getId()));
 						UserInfo.Builder userInfoBuilder = UserInfo.newBuilder(owner);
 						if (union != null) {
 							userInfoBuilder.setUnionIcon(union.getIcon());

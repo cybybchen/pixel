@@ -97,14 +97,14 @@ public class UserService {
 	/**
 	 * 只能自己调用，不要调用其他用户
 	 */
-	public UserBean getUser(long userId) {
+	public UserBean getUserMySelf(long userId) {
 		return getUser(userId, true);
 	}
 
 	/**
 	 * 调用其他用户
 	 */
-	public UserBean getOther(long userId) {
+	public UserBean getUserOther(long userId) {
 		return getUser(userId, false);
 	}
 	
@@ -320,7 +320,7 @@ public class UserService {
 
 			return user;
 		} else {
-			return getUser(Long.parseLong(userId));
+			return getUserMySelf(Long.parseLong(userId));
 		}
     }
 	
@@ -356,7 +356,7 @@ public class UserService {
 
 			return user;
 		} else {
-			return getOther(userId);
+			return getUserOther(userId);
 		}
     }
 	

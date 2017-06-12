@@ -120,7 +120,7 @@ public class BloodfightService {
 			int random = RandomUtils.nextInt(16 - i);
 			String userIdStr = userIdList.get(random);
 			long userId = TypeTranslatedUtil.stringToLong(userIdStr);
-			UserBean user = userService.getOther(userId);
+			UserBean user = userService.getUserOther(userId);
 			BloodUserBean buser = new BloodUserBean();
 			buser.setPosition1(i);
 			buser.setCurrentPosition(i);

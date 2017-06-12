@@ -280,7 +280,7 @@ public class RechargeService {
 		if(rechargeMapper.getUserRechargeRecord(recharge.getOrderId()) != null)
 			return;
 
-		UserBean user = userService.getOther(recharge.getUserId());
+		UserBean user = userService.getUserOther(recharge.getUserId());
 		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), recharge.getOrderId(), isCheat));
 		
 		updateToDB(recharge);

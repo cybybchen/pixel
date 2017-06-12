@@ -380,7 +380,7 @@ public class UnionService extends FightService{
 		}else{
 			if(user.getUnionJob() < UnionConst.UNION_FUHUIZHANG)
 				return ErrorConst.PERMISSION_DENIED;
-			UserBean bean = userService.getOther(id);
+			UserBean bean = userService.getUserOther(id);
 			if(bean.getUnionJob() >= UnionConst.UNION_ZHANGLAO && user.getUnionJob() < UnionConst.UNION_HUIZHANG)
 				return ErrorConst.PERMISSION_DENIED;
 			redis.quit(id, user);
@@ -461,7 +461,7 @@ public class UnionService extends FightService{
 	
 	public ResultConst reply(Long userId, boolean receive, UserBean user) {
 		if(receive){
-			UserBean bean = userService.getOther(userId);
+			UserBean bean = userService.getUserOther(userId);
 			if(bean != null && bean.getUnionId() == 0){
 				if(getAreaFighting(userId, user) == 1)
 					return ErrorConst.AREA_FIGHT_BUSY;
@@ -515,7 +515,7 @@ public class UnionService extends FightService{
 			if(job == UnionConst.UNION_ZHANGLAO && eldercount >= 4)
 				return ErrorConst.UNION_ELDER_FULL;
 		}
-		UserBean bean = userService.getOther(id);
+		UserBean bean = userService.getUserOther(id);
 		if(bean.getUnionId() == user.getUnionId()){
 			if(job == UnionConst.UNION_HUIZHANG){//会长转让
 				user.setUnionJob(UnionConst.UNION_HUIZHONG);
@@ -862,7 +862,7 @@ public class UnionService extends FightService{
 					return;
 				UserRankBean userRank = userRankList.get(i);
 				if (userRank != null) {
-					UserBean user = userService.getOther(userRank.getUserId());
+					UserBean user = userService.getUserOther(userRank.getUserId());
 					if (user == null || user.getUnionId() != unionId)
 						return;
 					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);

@@ -52,7 +52,7 @@ public class QuestionAction {
 //			logger.warn("key is:" + entry.getKey());
 			logMap.put(entry.getKey(), composeQuestion(entry.getValue()));
 		}
-		UserBean user = userService.getUser(TypeTranslatedUtil.stringToLong(logMap.get("userid")));
+		UserBean user = userService.getUserMySelf(TypeTranslatedUtil.stringToLong(logMap.get("userid")));
 		if (user != null && user.getQuestStatus() == 0) {
 			logMap.put(LogString.SERVERID, "" + user.getServerId());
 			logService.sendLog(logMap, LogString.LOGTYPE_QUESTION);

@@ -348,7 +348,7 @@ public class ActivityService {
 	}
 	
 	public void unionAttackActivity(long userId, boolean ret) {
-		UserBean user = userService.getOther(userId);
+		UserBean user = userService.getUserOther(userId);
 		/**
 		 * 公会先锋
 		 */

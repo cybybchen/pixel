@@ -152,7 +152,7 @@ public class PvpCommandService extends BaseCommandService {
 //		}
 		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
-		UserBean friend = userService.getOther(friendUserId);
+		UserBean friend = userService.getUserOther(friendUserId);
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, teamid, team);
 		
@@ -210,7 +210,7 @@ public class PvpCommandService extends BaseCommandService {
 	}
 
 	public void getBrotherMineInfo(RequestBrotherMineInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		UserBean brother = userService.getOther(cmd.getBrotherId());
+		UserBean brother = userService.getUserOther(cmd.getBrotherId());
 		PVPMine mine = pvpMapService.getUserMine(brother, cmd.getId());
 		if(mine == null || !mine.hasOwner()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENEMY);

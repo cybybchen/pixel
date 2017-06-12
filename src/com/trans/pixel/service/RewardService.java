@@ -67,7 +67,7 @@ public class RewardService {
 //	}
 	
 	public void doReward(long userId, int rewardId, long rewardCount) {
-		UserBean bean = userService.getOther(userId);
+		UserBean bean = userService.getUserOther(userId);
 		if(doReward(bean, rewardId, rewardCount, 0))
 			userService.updateUser(bean);
 	}

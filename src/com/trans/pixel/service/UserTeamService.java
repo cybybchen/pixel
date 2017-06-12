@@ -233,7 +233,7 @@ public class UserTeamService {
 
 	public Team getDefendTeam(long userid){
 		Team.Builder team = Team.newBuilder();
-		UserBean user = userService.getOther(userid);
+		UserBean user = userService.getUserOther(userid);
 		if (user == null) {
 			user = new UserBean();
 			user.init(1, "someone", "某人", 0);
@@ -248,7 +248,7 @@ public class UserTeamService {
 	}
 
 	public Team getTeamCache(long userid){
-		UserBean user = userService.getOther(userid);
+		UserBean user = userService.getUserOther(userid);
 		if (user == null) {
 			user = new UserBean();
 			user.init(1, "someone", "某人", 0);

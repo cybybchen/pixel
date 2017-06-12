@@ -466,7 +466,7 @@ public abstract class RequestScreen implements RequestHandle {
 			return false;
 		} else {
 		    long userId = head != null ? head.getUserId() : 0;
-		    req.user = userService.getUser(userId);
+		    req.user = userService.getUserMySelf(userId);
 			user = req.user;
 
 		    if (request.hasLogCommand()) {

@@ -173,7 +173,7 @@ public class RewardTaskService {
 			if (userinfo.getId() == user.getId())
 				continue;
 			
-			UserBean other = userService.getOther(userinfo.getId());
+			UserBean other = userService.getUserOther(userinfo.getId());
 			int costId = costService.canCostOnly(other, rewardTask.getCostList());
 			if (costId == 0) {
 				errorUserList.add(userinfo);
@@ -207,7 +207,7 @@ public class RewardTaskService {
 		for (RoomInfo roomInfo : room.getRoomInfoList()) {
 			UserInfo userinfo = roomInfo.getUser();
 
-			UserBean other = userService.getOther(userinfo.getId());
+			UserBean other = userService.getUserOther(userinfo.getId());
 			int costId = costService.canCostOnly(other, rewardTask.getCostList());
 			if (costId == 0) {
 				userInfoList.add(userinfo);
