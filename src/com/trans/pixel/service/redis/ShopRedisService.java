@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.ShopProto.Will;
 import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.ShopProto.YueKaList;
 import com.trans.pixel.service.UserEquipPokedeService;
+import com.trans.pixel.service.UserTalentService;
 
 @Repository
 public class ShopRedisService extends RedisService{
@@ -47,6 +48,8 @@ public class ShopRedisService extends RedisService{
 	private PropRedisService propRedisService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {
@@ -628,6 +631,28 @@ public class ShopRedisService extends RedisService{
 		}
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getIdList());
+		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+			if(commbuilder.getCount() == 1) {
+				int itemid = commbuilder.getItemid();
+				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+					Synthetise synthetise = propRedisService.getSynthetise(itemid);
+					itemid = synthetise.getTarget();
+				}
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null) {
+						commbuilder.setIsOut(true);
+						commbuilder.setLimit(0);
+					}
+				}
+				if(itemid > 0 && itemid < 100) {
+					if(userTalentService.getUserTalent(user, itemid) != null){
+						commbuilder.setIsOut(true);
+						commbuilder.setLimit(0);
+					}
+				}
+			}
+		}
 		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
 	}
@@ -831,6 +856,28 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getIdList());
 		builder.setEndTime(getPVPShopEndTime());
+		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+			if(commbuilder.getCount() == 1) {
+				int itemid = commbuilder.getItemid();
+				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
+					Synthetise synthetise = propRedisService.getSynthetise(itemid);
+					itemid = synthetise.getTarget();
+				}
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null) {
+						commbuilder.setIsOut(true);
+						commbuilder.setLimit(0);
+					}
+				}
+				if(itemid > 0 && itemid < 100) {
+					if(userTalentService.getUserTalent(user, itemid) != null){
+						commbuilder.setIsOut(true);
+						commbuilder.setLimit(0);
+					}
+				}
+			}
+		}
 		return builder.build();
 	}
 	 

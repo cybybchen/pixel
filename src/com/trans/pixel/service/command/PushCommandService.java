@@ -412,7 +412,11 @@ public class PushCommandService extends BaseCommandService {
 //			if (pushRewardIdList.contains(rewardId))
 //				continue;
 			
-			if (rewardId > RewardConst.FOOD) {
+			if (rewardId < 100 && rewardId > 0) {
+				UserTalent userTalent = userTalentService.getUserTalent(user, rewardId);
+				if (userTalent != null)
+					userTalentList.add(userTalent);
+			} else if (rewardId > RewardConst.FOOD) {
 				foodList.add(userFoodService.selectUserFood(user, rewardId));
 			} else if (rewardId > RewardConst.HEAD) {
 				headList.add(userHeadService.selectUserHead(userId, rewardId));

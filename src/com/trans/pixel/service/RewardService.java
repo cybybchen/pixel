@@ -14,6 +14,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -49,6 +50,8 @@ public class RewardService {
 	private TalentService talentService;
 	@Resource
 	private PropRedisService propRedisService;
+	@Resource
+	private UserTalentService userTalentService;
 	
 //	public void doReward(long userId, RewardBean reward) {
 //		UserBean bean = userService.getOther(userId);
@@ -82,7 +85,9 @@ public class RewardService {
 		return doReward(user, rewardId, rewardCount, 0);
 	}
 	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime) {
-		if (rewardId > RewardConst.AREAEQUIPMENT) {
+		if (rewardId < 100 && rewardId > 0) {
+			userTalentService.initTalent(user, rewardId);
+		}else if (rewardId > RewardConst.AREAEQUIPMENT) {
 			areaService.addAreaEquip(user, rewardId, (int)rewardCount);
 		} else if (rewardId > RewardConst.FOOD) {
 			userFoodService.addUserFood(user, rewardId, (int)rewardCount);
