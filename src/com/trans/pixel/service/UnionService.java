@@ -807,6 +807,8 @@ public class UnionService extends FightService{
 				userRankBean = new UserRankBean(user);
 			userRankBean.setDps(userRankBean.getDps() + hp);
 			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
+		} else {
+			return null;//怪物已逃跑
 		}
 		
 		if (unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {

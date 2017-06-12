@@ -250,6 +250,12 @@ public class UnionCommandService extends BaseCommandService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UnionBossRecord unionBoss = unionService.attackUnionBoss(user, union, bossId, hp, percent, rewards);
 		
+		if (unionBoss == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			return;
+		}
+		
 		handleRewards(responseBuilder, user, rewards.build());
 		
 		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
