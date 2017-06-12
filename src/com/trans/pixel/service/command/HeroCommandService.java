@@ -326,9 +326,9 @@ public class HeroCommandService extends BaseCommandService {
 		long infoId = cmd.getInfoId();
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
 		Hero hero = heroService.getHero(heroId);
-		Star star = starService.getStar(7);
+//		Star star = starService.getStar(7);
 		int sp = skillService.getSP(heroInfo);
-		final int count = Math.max(star.getMaxskill() - sp, cmd.getCount());
+		final int count = Math.min(starService.getStar(7).getMaxskill() - sp, cmd.getCount());
 		int itemid = fenjieRedisService.getFenjie(hero.getQuality()).getLootlist().getItemid();
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), itemid);
 		if(equip1 == null)
