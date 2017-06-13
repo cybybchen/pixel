@@ -417,21 +417,30 @@ public class PushCommandService extends BaseCommandService {
 				if (userTalent != null)
 					userTalentList.add(userTalent);
 			} else if (rewardId > RewardConst.FOOD) {
-				foodList.add(userFoodService.selectUserFood(user, rewardId));
+				UserFoodBean food = userFoodService.selectUserFood(user, rewardId);
+				if(food != null)
+					foodList.add(food);
 			} else if (rewardId > RewardConst.HEAD) {
-				headList.add(userHeadService.selectUserHead(userId, rewardId));
+				UserHeadBean head = userHeadService.selectUserHead(userId, rewardId);
+				if(head != null)
+					headList.add(head);
 			} else if (rewardId > RewardConst.HERO) {
 				heroList.addAll(userHeroService.selectUserNewHero(userId));
 			} else if (rewardId > RewardConst.PACKAGE) {
 				if(rewardId / 1000 == 44)
 					needUpdateUser = true;
-				else
-					propList.add(userPropService.selectUserProp(userId, rewardId));
+				else{
+					UserPropBean prop = userPropService.selectUserProp(userId, rewardId);
+					if(prop != null)
+						propList.add(prop);
+				}
 			} else if (rewardId > RewardConst.CHIP) {
 //				equipList.add(userEquipService.selectUserEquip(userId, rewardId));
 				if(userEquipList == null)
 					userEquipList = userEquipService.selectUserEquipList(user.getId());
-				equipList.add(userEquipService.selectUserEquipByEquipList(userEquipList, rewardId));
+				UserEquipBean equip = userEquipService.selectUserEquipByEquipList(userEquipList, rewardId);
+				if(equip != null)
+					equipList.add(equip);
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 //				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {
