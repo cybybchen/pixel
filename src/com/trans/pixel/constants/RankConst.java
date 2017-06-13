@@ -20,4 +20,6 @@ public class RankConst {
 	
 	public static final int UNIONBOSS_RANK_LIST_START = 0;
 	public static final int UNIONBOSS_RANK_LIST_END = 19;
+	
+	public static final int RAID_RANK_PREFIX = 100;
 }

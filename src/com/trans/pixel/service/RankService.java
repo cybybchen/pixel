@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.RankConst;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
@@ -107,7 +109,11 @@ public class RankService {
 				if (value.getValue().equals("" + userInfo.getId())) {
 					rank.setRank(rankInit);
 					rank.initByUserCache(userInfo);
-					rank.setZhanli(value.getScore().intValue());
+					if (type > RankConst.RAID_RANK_PREFIX) {
+						rank.setZhanli(value.getScore().intValue() / 100);
+						rank.setScore2(rank.getZhanli() * 100 + 20 - value.getScore().intValue());
+					} else
+						rank.setZhanli(value.getScore().intValue());
 					rankInit--;
 					rankList.add(rank);
 					break;
@@ -116,5 +122,9 @@ public class RankService {
 		}
 		
 		return rankList;
+	}
+	
+	public void addRaidRank(UserBean user, Raid raid) {
+		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.RAID_RANK_PREFIX + raid.getId(), raid.getLevel() * 100 + 20 - raid.getTurn(), false);
 	}
 }

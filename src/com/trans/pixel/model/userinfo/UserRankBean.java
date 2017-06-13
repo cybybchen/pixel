@@ -19,6 +19,7 @@ public class UserRankBean {
 	private int icon = 0;
 	private int vip = 0;
 	private int dps = 0;
+	private int score2 = 0;
 //	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	
 	public UserRankBean() {
@@ -81,12 +82,12 @@ public class UserRankBean {
 	public void setDps(int dps) {
 		this.dps = dps;
 	}
-	//	public List<HeroInfoBean> getHeroList() {
-//		return heroList;
-//	}
-//	public void setHeroList(List<HeroInfoBean> heroList) {
-//		this.heroList = heroList;
-//	}
+	public int getScore2() {
+		return score2;
+	}
+	public void setScore2(int score2) {
+		this.score2 = score2;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -97,7 +98,6 @@ public class UserRankBean {
 		json.put(ICON, icon);
 		json.put(RANK, rank);
 		json.put(DPS, dps);
-//		json.put(HERO_LIST, heroList);
 		
 		return json.toString();
 	}
@@ -121,18 +121,6 @@ public class UserRankBean {
 		bean.setIcon(json.getInt(ICON));
 		bean.setRank(json.getInt(RANK));
 		bean.setDps(TypeTranslatedUtil.jsonGetInt(json, DPS));
-		
-//		List<HeroInfoBean> list = new ArrayList<HeroInfoBean>();
-//		JSONArray array = TypeTranslatedUtil.jsonGetArray(json, HERO_LIST);
-//		for (int i = 0;i < array.size(); ++i) {
-//			try{
-//				HeroInfoBean hero = HeroInfoBean.fromJson(array.getString(i));
-//				list.add(hero);
-//			}catch(Exception e){
-//				
-//			}
-//		}
-//		bean.setHeroList(list);
 		
 		return bean;
 	}

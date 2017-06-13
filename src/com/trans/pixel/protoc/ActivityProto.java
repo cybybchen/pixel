@@ -23708,7 +23708,7 @@ public final class ActivityProto {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     *1:ladder, 2:zhanli, 3:recharge, 4:help
+     *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
      * </pre>
      */
     boolean hasType();
@@ -23716,7 +23716,7 @@ public final class ActivityProto {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     *1:ladder, 2:zhanli, 3:recharge, 4:help
+     *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
      * </pre>
      */
     int getType();
@@ -23824,7 +23824,7 @@ public final class ActivityProto {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     *1:ladder, 2:zhanli, 3:recharge, 4:help
+     *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
      * </pre>
      */
     public boolean hasType() {
@@ -23834,7 +23834,7 @@ public final class ActivityProto {
      * <code>required int32 type = 1;</code>
      *
      * <pre>
-     *1:ladder, 2:zhanli, 3:recharge, 4:help
+     *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
      * </pre>
      */
     public int getType() {
@@ -24082,7 +24082,7 @@ public final class ActivityProto {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       *1:ladder, 2:zhanli, 3:recharge, 4:help
+       *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
        * </pre>
        */
       public boolean hasType() {
@@ -24092,7 +24092,7 @@ public final class ActivityProto {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       *1:ladder, 2:zhanli, 3:recharge, 4:help
+       *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
        * </pre>
        */
       public int getType() {
@@ -24102,7 +24102,7 @@ public final class ActivityProto {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       *1:ladder, 2:zhanli, 3:recharge, 4:help
+       *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
        * </pre>
        */
       public Builder setType(int value) {
@@ -24115,7 +24115,7 @@ public final class ActivityProto {
        * <code>required int32 type = 1;</code>
        *
        * <pre>
-       *1:ladder, 2:zhanli, 3:recharge, 4:help
+       *1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
        * </pre>
        */
       public Builder clearType() {

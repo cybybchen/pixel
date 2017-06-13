@@ -21,6 +21,7 @@ import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.RankService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RedisService;
@@ -39,6 +40,8 @@ public class RaidCommandService extends BaseCommandService{
 	private ActivityService activityService;
 	@Resource
 	private LevelRedisService levelRedisService;
+	@Resource
+	private RankService rankService;
 
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
@@ -112,6 +115,10 @@ public class RaidCommandService extends BaseCommandService{
 					myraid.clearTurn();
 					myraid.clearLevel();
 				} else if (myraid.getEventid() == 0) {//通关
+					/**
+					 * 副本排行榜
+					 */
+					rankService.addRaidRank(user, myraid.build());
 					/**
 					 * 通关副本的活动
 					 */

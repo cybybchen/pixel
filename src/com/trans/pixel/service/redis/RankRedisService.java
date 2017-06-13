@@ -62,11 +62,22 @@ public class RankRedisService extends RedisService{
 		String key = buildRankRedisKey(serverId, type);
 		if (isAdded)
 			zincrby(key, score, "" + userId);
+		else {
+			long oldScore = zscore(key, "" + userId).longValue();
+			if (score > oldScore)
+				zadd(key, score, "" + userId);
+		}
+	}
+	
+	public void addRankScore(long userId, int serverId, String type, long score, boolean isAdded) {
+		String key = buildRankRedisKey(serverId, type);
+		if (isAdded)
+			zincrby(key, score, "" + userId);
 		else
 			zadd(key, score, "" + userId);
 	}
 	
-	private String buildRankRedisKey(int serverId, int type) {
+	private <T> String buildRankRedisKey(int serverId, T type) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.RANK_PREFIX + type;
 	}
 }

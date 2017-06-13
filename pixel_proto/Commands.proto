@@ -162,6 +162,7 @@ message UserRank {
 	optional uint32 zhanli = 6;
 	optional uint32 icon = 7;
 	optional uint32 vip = 8;
+	optional uint32 score2 = 9;
 }
 
 message ClearInfo {
@@ -2327,7 +2328,7 @@ message ResponseKaifuListCommand {
 }
 
 message RequestRankCommand {
-	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help
+	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
 }
 
 message ResponseRankCommand {
