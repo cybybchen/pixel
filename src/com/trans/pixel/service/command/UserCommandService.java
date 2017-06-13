@@ -127,39 +127,44 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		UserBean user = new UserBean();
-		user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
-		user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
-		boolean hasRegistered = false;
-		try{
-			userService.addNewUser(user);
-		}catch(Exception e){
-			logger.error(e.getMessage());
-			hasRegistered = true;
-		}
-		if(hasRegistered){
-			user = userService.getUserByAccount(head.getServerId(), head.getAccount());
-			if (user == null) {
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_REGISTER_FAIL);
-				logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestRegisterCommand.class, RedisService.formatJson(head), ErrorConst.ACCOUNT_REGISTER_FAIL);
-            	responseBuilder.setErrorCommand(errorCommand);
-				return;
+		user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+		if (user == null) {
+			user = new UserBean();
+			user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
+			user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
+//		}
+			boolean hasRegistered = false;
+			try{
+				userService.addNewUser(user);
+			}catch(Exception e){
+				logger.error(e.getMessage());
+				hasRegistered = true;
 			}
-		}else{
-			user.setUserType(userService.randomUserType());
-			int addHeroId = registerCommand.getHeroId();
-			UserTalent userTalent = addRegisterTalent(user, addHeroId);
-			
-			if (userTalent != null)
-				user.setUseTalentId(addHeroId);
+			if(hasRegistered){
+				user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+				if (user == null) {
+					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_REGISTER_FAIL);
+					logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestRegisterCommand.class, RedisService.formatJson(head), ErrorConst.ACCOUNT_REGISTER_FAIL);
+	            	responseBuilder.setErrorCommand(errorCommand);
+					return;
+				}
+			}else{
+				user.setUserType(userService.randomUserType());
+				int addHeroId = registerCommand.getHeroId();
+				UserTalent userTalent = addRegisterTalent(user, addHeroId);
 				
-			user.setFirstGetHeroId(addHeroId);
-			addRegisterTeam(user, user.getUseTalentId());
-			/**
-			 * register activity
-			 */
-			activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
-			
-			userService.refreshUserDailyData(user);
+				if (userTalent != null)
+					user.setUseTalentId(addHeroId);
+					
+				user.setFirstGetHeroId(addHeroId);
+				addRegisterTeam(user, user.getUseTalentId());
+				/**
+				 * register activity
+				 */
+				activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
+				
+				userService.refreshUserDailyData(user);
+			}
 		}
 
 		user.setVersion(head.getVersion()+"");
