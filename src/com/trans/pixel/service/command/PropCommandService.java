@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.CostItem;
@@ -103,5 +104,10 @@ public class PropCommandService extends BaseCommandService {
 		MultiReward.Builder multi = MultiReward.newBuilder();
 		multi.addAllLoot(rewards);
 		handleRewards(responseBuilder, user, multi.build());
+		
+		List<RewardInfo> costInfos = RewardBean.buildCostList(costList);
+		MultiReward.Builder costMulti = MultiReward.newBuilder();
+		costMulti.addAllLoot(costInfos);
+		pusher.pushRewardCommand(responseBuilder, user, costMulti.build(), false);
 	}
 }
