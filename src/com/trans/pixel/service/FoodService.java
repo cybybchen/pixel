@@ -28,6 +28,8 @@ public class FoodService {
 	private static final int FEED_HERO_LEVEL_LIMIT = 9;
 	
 	public ResultConst feedFood(UserPokedeBean userPokede, UserBean user, int foodId, int foodCount) {
+		if(userPokede == null)
+			return ErrorConst.FOOD_CAN_NOT_ADDED_ERROR;
 		ClearHero clearHero = clearRedisService.getClearHero(userPokede.getHeroId());
 		ClearFood clearFood = clearRedisService.getClearFood(foodId);
 		

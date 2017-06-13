@@ -392,7 +392,7 @@ public class UserTeamService {
 							if(herobean.getId() == infoId){
 								log.debug("infoid is:" + infoId + "|||" + System.currentTimeMillis());
 								team.addHeroInfo(herobean.buildTeamHeroInfo(
-										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId(), user),
+										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId()),
 										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId())));
 								break;
 							}

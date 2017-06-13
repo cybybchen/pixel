@@ -121,8 +121,10 @@ public class NoticeMessageService {
 	
 	public List<String> getNoticeMessageList(UserBean user) {
 		List<String> messageList = redis.getNoticeMessageList(user.getServerId(), user.getReceiveNoticeMessageTimeStamp());
-		user.setReceiveNoticeMessageTimeStamp(System.currentTimeMillis());
-		userService.updateUser(user);
+		if(!messageList.isEmpty()) {
+			user.setReceiveNoticeMessageTimeStamp(System.currentTimeMillis());
+			userService.updateUser(user);
+		}
 		return messageList;
 	}
 }

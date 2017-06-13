@@ -170,41 +170,7 @@ public class RewardService {
 			}
 		}
 	}
-	public void doFilterRewards(UserBean user, List<RewardBean> rewards) {
-		doFilter(user, rewards);
-		doRewards(user, rewards);
-	}
-	
-	public void doRewards(UserBean user, List<RewardBean> rewards) {
-		boolean needUpdateUser = false;
-		for (RewardBean reward : rewards) {
-			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLasttime()))
-			needUpdateUser = true;
-		}
-		
-		if (needUpdateUser) {
-			userService.updateUser(user);
-		}
-	}
-	
-	public void doRewards(UserBean user, MultiReward rewards) {
-		boolean needUpdateUser = false;
-		for (RewardInfo reward : rewards.getLootList()) {
-			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
-			needUpdateUser = true;
-		}
-		
-		if (needUpdateUser) {
-			userService.updateUser(user);
-		}
-	}
-	
-//	public void doRewards(long userId, List<RewardBean> rewardList) {
-//		UserBean bean = userService.getOther(userId);
-//		doRewards(bean, rewardList);
-//	}
-	
-	public void doFilterRewards(UserBean user, MultiReward.Builder rewards) {
+	public void doFilter(UserBean user, MultiReward.Builder rewards) {
 		for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 			int itemid = rewards.getLoot(i).getItemid();
 //			if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -217,18 +183,46 @@ public class RewardService {
 					rewards.removeLoot(i);
 			}
 		}
-		doRewards(user, rewards);
 	}
+//	public void doFilterRewards(UserBean user, List<RewardBean> rewards) {
+//		doFilter(user, rewards);
+//		doRewards(user, rewards);
+//	}
+	
+//	public void doRewards(UserBean user, List<RewardBean> rewards) {
+//		boolean needUpdateUser = false;
+//		for (RewardBean reward : rewards) {
+//			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLasttime()))
+//			needUpdateUser = true;
+//		}
+//		
+//		if (needUpdateUser) {
+//			userService.updateUser(user);
+//		}
+//	}
 	public void doRewards(UserBean user, MultiReward.Builder rewards) {
 		boolean needUpdateUser = false;
+		List<RewardInfo> list = new ArrayList<RewardInfo>();
 		for (RewardInfo reward : rewards.getLootList()) {
-			if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
+			if(reward.getItemid()/10000*10000 == RewardConst.HERO){
+				list.add(reward);
+			}else if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
 				needUpdateUser = true;
 		}
+		if(!list.isEmpty())
+			userHeroService.addUserHeros(user, list);
 		
-		if (needUpdateUser) {
+		if (needUpdateUser)
 			userService.updateUser(user);
-		}
+	}
+//	public void doRewards(long userId, List<RewardBean> rewardList) {
+//		UserBean bean = userService.getOther(userId);
+//		doRewards(bean, rewardList);
+//	}
+	
+	public void doFilterRewards(UserBean user, MultiReward.Builder rewards) {
+		doFilter(user, rewards);
+		doRewards(user, rewards);
 	}
 	
 	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {

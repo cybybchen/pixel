@@ -99,17 +99,16 @@ public class UserTaskService {
 	public UserTask selectUserTask2(long userId, int targetId) {
 		UserTask ut = userTaskRedisService.getUserTask2(userId, targetId);
 		
-		if (ut == null) {
-			if (!userTaskRedisService.isExistTask2Key(userId)) {
-				List<UserTaskBean> userTaskList = userTaskMapper.selectUserTask2List(userId);
-				userTaskRedisService.setUserTask2List(userId, buildUserTaskList(userTaskList));
-				
-				ut = userTaskRedisService.getUserTask2(userId, targetId);
-			}
+		if (ut == null && !userTaskRedisService.isExistTask2Key(userId)) {
+			List<UserTaskBean> userTaskList = userTaskMapper.selectUserTask2List(userId);
+			userTaskRedisService.setUserTask2List(userId, buildUserTaskList(userTaskList));
+			
+			ut = userTaskRedisService.getUserTask2(userId, targetId);
 		}
 		
 		if (ut == null) {
 			ut = initUserTask(targetId);
+			userTaskRedisService.updateUserTask2(userId, ut);
 		}
 		
 		return ut;

@@ -61,6 +61,8 @@ public class ClearService {
 	
 	public ResultConst clearHero(UserPokedeBean userPokede, int position, int type, UserBean user, int count, 
 			List<UserClearBean> clearList, List<UserPropBean> userPropList) {
+		if(userPokede == null)
+			return ErrorConst.NOT_ENOUGH_CLEARPROP_ERROR;
 		if (userPokede.getLevel() < USER_POKEDE_LIMIT_1 
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_2 && position >= CLEAR_POSITION_2)
 				|| (userPokede.getLevel() < USER_POKEDE_LIMIT_3 && position >= CLEAR_POSITION_3))
@@ -130,6 +132,8 @@ public class ClearService {
 	}
 	
 	public ResultConst heroStrengthen(UserPokedeBean userPokede, UserBean user, List<UserPropBean> propList) {
+		if (userPokede == null)
+			return ErrorConst.HERO_STRENGTHEN_ERROR;
 		Strengthen strengthen = clearRedisService.getStrengthen(userPokede.getStrengthen() + 1);
 		if (strengthen == null)
 			return ErrorConst.HERO_STRENGTHEN_ERROR;

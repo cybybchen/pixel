@@ -148,7 +148,8 @@ public class PokedeCommandService extends BaseCommandService {
 		
 		UserPokedeBean userPokede = userPokedeService.selectUserPokede(user, userClear.getHeroId());
 		ResponseUserPokedeCommand.Builder builder = ResponseUserPokedeCommand.newBuilder();
-		builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, userClear.getHeroId())));
+		if(userPokede != null)
+			builder.addPokede(userPokede.buildUserPokede(userClearService.selectUserClear(user, userClear.getHeroId())));
 		responseBuilder.setUserPokedeCommand(builder.build());
 	}
 	

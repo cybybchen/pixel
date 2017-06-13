@@ -115,6 +115,7 @@ public class UserActivityService {
 	public List<UserKaifu> selectUserKaifuList(UserBean user) {
 		List<UserKaifu> ukList = new ArrayList<UserKaifu>();
 		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
+		int kaifudays = serverService.getKaifuDays(user.getServerId());
 		if (map == null)
 			return new ArrayList<UserKaifu>();
 		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
@@ -122,7 +123,7 @@ public class UserActivityService {
 			Entry<String, Kaifu> entry = it.next();
 			Kaifu kaifu = entry.getValue();
 			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
-			if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= serverService.getKaifuDays(user.getServerId())) {
+			if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= kaifudays) {
 				UserKaifu uk = selectUserKaifu(user.getId(), type);
 				ukList.add(uk);
 			}

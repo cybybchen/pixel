@@ -25,34 +25,26 @@ public class UserPokedeService {
 	public UserPokedeBean selectUserPokede(UserBean user, int heroId) {
 		long userId = user.getId();
 		UserPokedeBean userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
-		if (userPokede == null) {
-			if (!userPokedeRedisService.isExistPokedeKey(userId)) {
-				List<UserPokedeBean> userPokedeList = userPokedeMapper.selectUserPokedeList(userId);
-				if (userPokedeList != null && userPokedeList.size() > 0)
-					userPokedeRedisService.updateUserPokedeList(userPokedeList, userId);
-				
-				userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
-			}
+		if (userPokede == null && !userPokedeRedisService.isExistPokedeKey(userId)) {
+			List<UserPokedeBean> userPokedeList = userPokedeMapper.selectUserPokedeList(userId);
+			if (userPokedeList != null && userPokedeList.size() > 0)
+				userPokedeRedisService.updateUserPokedeList(userPokedeList, userId);
+			
+			userPokede = userPokedeRedisService.selectUserPokede(userId, heroId);
 		}
 		
-		if (userPokede == null) {
-			userPokede = initUserPokede(userId, heroId);
-			updateUserPokede(userPokede, user);
-			/**
-			 * 收集不同英雄的活动
-			 */
-			
-			activityService.heroStoreActivity(user);
-		}
+//		if (userPokede == null) {
+//			userPokede = initUserPokede(userId, heroId);
+//		}
 		
 		return userPokede;
 	}
 	
 	public List<UserPokedeBean> selectUserPokedeList(long userId) {
 		List<UserPokedeBean> userPokedeList = userPokedeRedisService.selectUserPokedeList(userId);
-		if (userPokedeList == null || userPokedeList.size() == 0) {
+		if (userPokedeList.isEmpty()) {
 			userPokedeList = userPokedeMapper.selectUserPokedeList(userId);
-			if (userPokedeList != null && userPokedeList.size() > 0)
+			if (!userPokedeList.isEmpty())
 				userPokedeRedisService.updateUserPokedeList(userPokedeList, userId);
 		}
 		
@@ -66,17 +58,16 @@ public class UserPokedeService {
 	
 	public void updateUserPokede(HeroInfoBean heroInfo, UserBean user) {
 		UserPokedeBean userPokede = selectUserPokede(user, heroInfo.getHeroId());
-//		if (userPokede.getRare() < heroInfo.getRare()) {
-//			userPokede.setRare(heroInfo.getRare());
-//			updateUserPokede(userPokede, user);
-//		}
-		if (userPokede.getRank() < heroInfo.getRank()) {
-			userPokede.setRank(heroInfo.getRank());
-			updateUserPokede(userPokede, user);
+		if (userPokede == null) {
+			userPokede = initUserPokede(user.getId(), heroInfo.getHeroId());
+			/**
+			 * 收集不同英雄的活动
+			 */
+			activityService.heroStoreActivity(user);
 		}
-		
-		if (userPokede.getStar() < heroInfo.getStarLevel()) {
-			userPokede.setStar(heroInfo.getStarLevel());
+		if (userPokede.getRank() < heroInfo.getRank() || userPokede.getStar() < heroInfo.getStarLevel()) {
+			userPokede.setRank(Math.max(userPokede.getRank(), heroInfo.getRank()));
+			userPokede.setStar(Math.max(userPokede.getStar(), heroInfo.getStarLevel()));
 			updateUserPokede(userPokede, user);
 		}
 	}
@@ -87,14 +78,13 @@ public class UserPokedeService {
 		updateUserPokede(userPokede, user);
 	}
 	
-	public UserPokedeBean getUserPokede(List<UserPokedeBean> pokedeList, int heroId, UserBean user) {
+	public UserPokedeBean getUserPokede(List<UserPokedeBean> pokedeList, int heroId) {
 		for (UserPokedeBean userPokede : pokedeList) {
 			if (userPokede.getHeroId() == heroId) {
 				return userPokede;
 			}
 		}
-		
-		return selectUserPokede(user, heroId);
+		return initUserPokede(0,heroId);
 	}
 	
 	private UserPokedeBean initUserPokede(long userId, int heroId) {

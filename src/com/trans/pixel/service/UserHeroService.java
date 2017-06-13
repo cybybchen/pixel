@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.HeroProto.Heroloot;
+import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.UserHeroRedisService;
 
 @Service
@@ -30,6 +33,8 @@ public class UserHeroService {
 	private UserService userService;
 	@Resource
 	private SkillService skillService;
+	@Resource
+	private HeroRedisService heroRedisService;
 	
 	public HeroInfoBean selectUserHero(long userId, long infoId) {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, infoId);
@@ -128,17 +133,41 @@ public class UserHeroService {
 //	public void addUserHero(UserBean user, int heroId, int star, int count) {
 //		addUserHero(user, heroId, star, count, 1);
 //	}
-	
-	public void addUserHero(UserBean user, int heroId, int star, int count) {
+	public void addUserHeros(UserBean user, List<RewardInfo> rewards) {
 		long userId = user.getId();
-		HeroInfoBean newHero = initUserHero(userId, heroId, star);
-//		HeroInfoBean oldHero = selectUserHeroByHeroId(userId, heroId);
-//		if (oldHero == null) {
+		for(RewardInfo reward : rewards) {
+			Heroloot heroloot = heroRedisService.getHeroloot(reward.getItemid());
+			int heroId = heroloot.getHeroid();
+			int star = heroloot.getStar();
+			int count = (int)(heroloot.getCount() * reward.getCount());
+			HeroInfoBean newHero = initUserHero(userId, heroId, star);
 			/**
 			 * 更新图鉴
 			 */
 			userPokedeService.updateUserPokede(newHero, user);
-//		} 
+			
+			int addCount = 0;
+			while (addCount < count) {
+				newHero.setId(user.updateHeroInfoId());
+				addUserHero(newHero);
+				/**
+				 * 获得英雄的活动
+				 */
+				activityService.getHeroActivity(user, heroId);
+				++addCount;
+			}
+		}
+		
+		userService.updateUser(user);
+	}
+	
+	public void addUserHero(UserBean user, int heroId, int star, int count) {
+		long userId = user.getId();
+		HeroInfoBean newHero = initUserHero(userId, heroId, star);
+		/**
+		 * 更新图鉴
+		 */
+		userPokedeService.updateUserPokede(newHero, user);
 		
 		int addCount = 0;
 		while (addCount < count) {

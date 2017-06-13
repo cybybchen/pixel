@@ -77,6 +77,8 @@ public class HeroService {
 	}
 	
 	public ResultConst openFetter(UserBean user, UserPokedeBean userPokede, int fetterId) {
+		if(userPokede == null)
+			return ErrorConst.OPEN_FETTER_ERROR;
 		if (userPokede.hasOpenedFetter(fetterId))
 			return ErrorConst.HAS_OPEN_FETTER_ERROR;
 		HeroFettersOrder heroFettersOrder = heroRedisService.getHeroFettersOrder(userPokede.getHeroId());
@@ -84,7 +86,7 @@ public class HeroService {
 			if (heroFetters.getFettersid() == fetterId) {
 				for (HeroFetter heroFetter : heroFetters.getHeroList()) {
 					UserPokedeBean fetterPokede = userPokedeService.selectUserPokede(user, heroFetter.getHeroid());
-					if (heroFetter.getHerorank() > fetterPokede.getRank() || heroFetter.getHerostar() > fetterPokede.getStar())
+					if (fetterPokede == null || heroFetter.getHerorank() > fetterPokede.getRank() || heroFetter.getHerostar() > fetterPokede.getStar())
 						return ErrorConst.OPEN_FETTER_ERROR;
 					
 					userPokede.addFetterId(fetterId);
