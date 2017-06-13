@@ -215,4 +215,17 @@ public class EquipPokedeService {
 		
 		return pokedeList.get(RandomUtils.nextInt(pokedeList.size()));
 	}
+	
+	public boolean canUse(UserBean user, int equipId, int itemId) {
+		if (itemId == 0)
+			return true;
+		
+		if (equipId < RewardConst.ARMOR && itemId == PackageConst.RANDOM_STRENTHEN_EQUIP_ID)
+			return true;
+		
+		if (equipId > RewardConst.ARMOR && itemId == PackageConst.RANDOM_STRENTHEN_ARMOR_ID)
+			return true;
+		
+		return false;
+	}
 }

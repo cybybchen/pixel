@@ -76,14 +76,22 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		int itemId = 0;
 		if (cmd.hasItemId())
 			itemId = cmd.getItemId();
+		
+		if (!equipPokedeService.canUse(user, equipId, itemId)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_USE_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_USE_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
+		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, equipId);
 		int prelevel = pokede.getLevel();
 		ResultConst result = null;
 		if (itemId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
 			if (!costService.canCost(user, itemId, 1))
 				result = ErrorConst.NOT_ENOUGH_PROP;
-			else if (itemId >= PackageConst.RANDOM_STRENTHEN_ARMOR_ID && itemId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+			else if (itemId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && itemId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
 				Prop prop = propService.getProp(itemId);
 				result = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid() == 0 ? 6 : prop.getBossid(), prop.getBossid() == 0 ? 6 : 0);
 			} else
@@ -113,7 +121,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		params.put(LogString.SERVERID, "" + user.getServerId());
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.HEROID, "" + 0);
-		params.put(LogString.EQUIPID, "" + itemId);
+		params.put(LogString.EQUIPID, "" + equipId);
 		if(pokede.getLevel() == 0)
 			params.put(LogString.RESULT, "1");
 		else if(pokede.getLevel() > prelevel)
@@ -122,11 +130,11 @@ public class EquipPokedeCommandService extends BaseCommandService {
 			params.put(LogString.RESULT, "0");
 		params.put(LogString.PRELEVEL, "" + prelevel);
 		params.put(LogString.LEVEL, "" + pokede.getLevel());
-		if(itemId < RewardConst.ARMOR){
-			Equip equip = equipService.getEquip(itemId);
+		if(equipId < RewardConst.ARMOR){
+			Equip equip = equipService.getEquip(equipId);
 			params.put(LogString.EQUIPRARE, "" + equip.getIrare());
 		}else{
-			Armor equip = equipService.getArmor(itemId);
+			Armor equip = equipService.getArmor(equipId);
 			params.put(LogString.EQUIPRARE, "" + equip.getIrare());
 		}
 		params.put(LogString.COINCOST, "" + (rewards.getLootCount()>0 ? rewards.getLoot(0).getCount() :0));
