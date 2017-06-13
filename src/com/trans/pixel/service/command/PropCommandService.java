@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -83,7 +84,8 @@ public class PropCommandService extends BaseCommandService {
 	}
 	
 	public void materialCompose(RequestMaterialComposeCommand cmd, Builder responseBuilder, UserBean user) {
-		List<CostItem> costList = cmd.getCostList();
+		List<CostItem> costList = new ArrayList<CostItem>();
+		costList.addAll(cmd.getCostList());
 		CostItem.Builder cost = CostItem.newBuilder();
 		cost.setCostcount(1);
 		cost.setCostid(cmd.getItemId());
