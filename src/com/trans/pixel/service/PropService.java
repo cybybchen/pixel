@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.PackageConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -21,7 +20,6 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.Base.UserEquipPokede;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.EquipProto.SynthetiseCover;
@@ -69,7 +67,7 @@ public class PropService {
 	
 	
 	
-	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards, UserEquipPokede.Builder pokedeBuilder) {
+	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return ErrorConst.PROP_USE_ERROR;
@@ -78,21 +76,6 @@ public class PropService {
 		Prop prop = map.get("" + propId);
 		if (prop == null)
 			return ErrorConst.PROP_USE_ERROR;
-		
-		if (prop.getItemid() >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID) {
-			UserEquipPokedeBean pokede = equipPokedeService.randomPokede(user, prop.getItemid());
-			if (pokede == null)
-				return ErrorConst.PROP_USE_ERROR;
-			
-			ResultConst ret = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid(), 6);
-			if (ret instanceof ErrorConst)
-				return ret;
-			
-			pokedeBuilder.mergeFrom(pokede.build());
-			userProp.setPropCount(userProp.getPropCount() - 1);
-			userPropService.updateUserProp(userProp);
-			return ret;
-		}
 		
 		if (prop.getBossid() > 0) {
 			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());

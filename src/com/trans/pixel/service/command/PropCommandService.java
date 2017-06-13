@@ -9,12 +9,10 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.UserEquipPokede;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
-import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
@@ -42,9 +40,8 @@ public class PropCommandService extends BaseCommandService {
 		int propId = cmd.getPropId();
 		int propCount = cmd.getPropCount();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserEquipPokede.Builder equipPokede = UserEquipPokede.newBuilder();
 		
-		ResultConst ret = propService.useProp(user, propId, propCount, rewards, equipPokede);
+		ResultConst ret = propService.useProp(user, propId, propCount, rewards);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			
@@ -60,12 +57,6 @@ public class PropCommandService extends BaseCommandService {
 		if (userProp != null){
 			builder.addUserProp(userProp.buildUserProp());
 			responseBuilder.setUsePropCommand(builder.build());
-		}
-		
-		if (equipPokede.getItemId() > 0) {
-			ResponseEquipPokedeCommand.Builder equipPokedeBuilder = ResponseEquipPokedeCommand.newBuilder();
-			equipPokedeBuilder.addUserEquipPokede(equipPokede.build());
-			responseBuilder.setEquipPokedeCommand(equipPokedeBuilder.build());
 		}
 	}
 	

@@ -80,12 +80,12 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
 		int prelevel = pokede.getLevel();
 		ResultConst result = null;
-		if (propId > PackageConst.RANDOM_STRENTHEN_ARMOR_ID && propId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+		if (propId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && propId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
 			if (!costService.canCost(user, propId, 1))
 				result = ErrorConst.NOT_ENOUGH_PROP;
-			else if (propId > PackageConst.RANDOM_STRENTHEN_ARMOR_ID && propId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+			else if (propId >= PackageConst.RANDOM_STRENTHEN_ARMOR_ID && propId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
 				Prop prop = propService.getProp(propId);
-				result = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid(), 0);
+				result = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid() == 0 ? 6 : prop.getBossid(), prop.getBossid() == 0 ? 6 : 0);
 			} else
 				result = equipPokedeService.equipStrenthen(pokede, user, rewards, true);
 		} else
