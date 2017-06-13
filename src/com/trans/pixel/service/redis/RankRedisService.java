@@ -63,8 +63,8 @@ public class RankRedisService extends RedisService{
 		if (isAdded)
 			zincrby(key, score, "" + userId);
 		else {
-			long oldScore = zscore(key, "" + userId).longValue();
-			if (score > oldScore)
+			Double oldScore = zscore(key, "" + userId);
+			if (oldScore == null || oldScore.longValue() < score)
 				zadd(key, score, "" + userId);
 		}
 	}
