@@ -98,7 +98,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
             
             return;
 		}
-		if (itemId > PackageConst.RANDOM_STRENTHEN_ARMOR_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+		if (itemId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
 			costService.cost(user, itemId, 1);
 			
 			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
