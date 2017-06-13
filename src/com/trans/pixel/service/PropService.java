@@ -207,7 +207,7 @@ public class PropService {
 			count += cost.getCostcount();
 		}
 		
-		if (count < 2000)
+		if (count < 1000)
 			return false;
 		
 		if (!costService.canCostAll(user, costList))
