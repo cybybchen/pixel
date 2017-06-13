@@ -409,6 +409,8 @@ public class PushCommandService extends BaseCommandService {
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
+			if(rewardId < 100)
+				continue;
 //			if (pushRewardIdList.contains(rewardId))
 //				continue;
 			
