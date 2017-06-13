@@ -1249,6 +1249,11 @@ message RequestSynthetiseComposeCommand {
 message RequestEquipupCommand {
 	required uint32 itemid = 1;
 }
+
+message RequestMaterialComposeCommand {
+	required uint32 itemId = 2;
+	repeated CostItem cost = 1;
+}
 ////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;
@@ -3701,6 +3706,7 @@ message RequestCommand {
 	optional RequestLadderEnemyCommand ladderEnemyCommand = 248;
 	optional RequestBuySavingBoxCommand buySavingBoxCommand = 249;
 	optional RequestEquipupCommand equipupCommand = 250;
+	optional RequestMaterialComposeCommand materialComposeCommand = 251;
 }
 ////////// Commands
 message ErrorCommand {

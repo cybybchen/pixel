@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
@@ -1418,6 +1419,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestEquipupCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		equipPokedeCommandService.equipup(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestMaterialComposeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		propCommandService.materialCompose(cmd, responseBuilder, user);
 		return true;
 	}
 

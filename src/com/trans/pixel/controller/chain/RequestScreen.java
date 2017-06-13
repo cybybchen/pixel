@@ -114,6 +114,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopCommand;
 import com.trans.pixel.protoc.AreaProto.RequestRefreshAreaCommand;
+import com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSignCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMapCommand;
@@ -318,6 +319,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRaidShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshAreaCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestMaterialComposeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSignCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user);
@@ -868,6 +870,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasRefreshAreaCommand()) {
 			RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasMaterialComposeCommand()) {
+			RequestMaterialComposeCommand cmd = request.getMaterialComposeCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBattletowerCommand()) {

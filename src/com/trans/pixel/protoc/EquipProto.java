@@ -31103,6 +31103,772 @@ public final class EquipProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestEquipupCommand)
   }
 
+  public interface RequestMaterialComposeCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 itemId = 2;
+    /**
+     * <code>required uint32 itemId = 2;</code>
+     */
+    boolean hasItemId();
+    /**
+     * <code>required uint32 itemId = 2;</code>
+     */
+    int getItemId();
+
+    // repeated .com.trans.pixel.protoc.CostItem cost = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.CostItem> 
+        getCostList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.CostItem getCost(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    int getCostCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+        getCostOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestMaterialComposeCommand}
+   */
+  public static final class RequestMaterialComposeCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestMaterialComposeCommandOrBuilder {
+    // Use RequestMaterialComposeCommand.newBuilder() to construct.
+    private RequestMaterialComposeCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestMaterialComposeCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestMaterialComposeCommand defaultInstance;
+    public static RequestMaterialComposeCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestMaterialComposeCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestMaterialComposeCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.CostItem>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              cost_.add(input.readMessage(com.trans.pixel.protoc.Base.CostItem.PARSER, extensionRegistry));
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000001;
+              itemId_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          cost_ = java.util.Collections.unmodifiableList(cost_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.class, com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestMaterialComposeCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestMaterialComposeCommand>() {
+      public RequestMaterialComposeCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestMaterialComposeCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestMaterialComposeCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 itemId = 2;
+    public static final int ITEMID_FIELD_NUMBER = 2;
+    private int itemId_;
+    /**
+     * <code>required uint32 itemId = 2;</code>
+     */
+    public boolean hasItemId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 itemId = 2;</code>
+     */
+    public int getItemId() {
+      return itemId_;
+    }
+
+    // repeated .com.trans.pixel.protoc.CostItem cost = 1;
+    public static final int COST_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Base.CostItem> cost_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.CostItem> getCostList() {
+      return cost_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+        getCostOrBuilderList() {
+      return cost_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    public int getCostCount() {
+      return cost_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.CostItem getCost(int index) {
+      return cost_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+        int index) {
+      return cost_.get(index);
+    }
+
+    private void initFields() {
+      itemId_ = 0;
+      cost_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasItemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < cost_.size(); i++) {
+        output.writeMessage(1, cost_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(2, itemId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < cost_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, cost_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, itemId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestMaterialComposeCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.class, com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCostFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        itemId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (costBuilder_ == null) {
+          cost_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          costBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand build() {
+        com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand buildPartial() {
+        com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand result = new com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.itemId_ = itemId_;
+        if (costBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            cost_ = java.util.Collections.unmodifiableList(cost_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.cost_ = cost_;
+        } else {
+          result.cost_ = costBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand) {
+          return mergeFrom((com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand other) {
+        if (other == com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.getDefaultInstance()) return this;
+        if (other.hasItemId()) {
+          setItemId(other.getItemId());
+        }
+        if (costBuilder_ == null) {
+          if (!other.cost_.isEmpty()) {
+            if (cost_.isEmpty()) {
+              cost_ = other.cost_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureCostIsMutable();
+              cost_.addAll(other.cost_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.cost_.isEmpty()) {
+            if (costBuilder_.isEmpty()) {
+              costBuilder_.dispose();
+              costBuilder_ = null;
+              cost_ = other.cost_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              costBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getCostFieldBuilder() : null;
+            } else {
+              costBuilder_.addAllMessages(other.cost_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasItemId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 itemId = 2;
+      private int itemId_ ;
+      /**
+       * <code>required uint32 itemId = 2;</code>
+       */
+      public boolean hasItemId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 itemId = 2;</code>
+       */
+      public int getItemId() {
+        return itemId_;
+      }
+      /**
+       * <code>required uint32 itemId = 2;</code>
+       */
+      public Builder setItemId(int value) {
+        bitField0_ |= 0x00000001;
+        itemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 itemId = 2;</code>
+       */
+      public Builder clearItemId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        itemId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.CostItem cost = 1;
+      private java.util.List<com.trans.pixel.protoc.Base.CostItem> cost_ =
+        java.util.Collections.emptyList();
+      private void ensureCostIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.CostItem>(cost_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder> costBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.CostItem> getCostList() {
+        if (costBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(cost_);
+        } else {
+          return costBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public int getCostCount() {
+        if (costBuilder_ == null) {
+          return cost_.size();
+        } else {
+          return costBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.CostItem getCost(int index) {
+        if (costBuilder_ == null) {
+          return cost_.get(index);
+        } else {
+          return costBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder setCost(
+          int index, com.trans.pixel.protoc.Base.CostItem value) {
+        if (costBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCostIsMutable();
+          cost_.set(index, value);
+          onChanged();
+        } else {
+          costBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder setCost(
+          int index, com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+        if (costBuilder_ == null) {
+          ensureCostIsMutable();
+          cost_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          costBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder addCost(com.trans.pixel.protoc.Base.CostItem value) {
+        if (costBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCostIsMutable();
+          cost_.add(value);
+          onChanged();
+        } else {
+          costBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder addCost(
+          int index, com.trans.pixel.protoc.Base.CostItem value) {
+        if (costBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureCostIsMutable();
+          cost_.add(index, value);
+          onChanged();
+        } else {
+          costBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder addCost(
+          com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+        if (costBuilder_ == null) {
+          ensureCostIsMutable();
+          cost_.add(builderForValue.build());
+          onChanged();
+        } else {
+          costBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder addCost(
+          int index, com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+        if (costBuilder_ == null) {
+          ensureCostIsMutable();
+          cost_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          costBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder addAllCost(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.CostItem> values) {
+        if (costBuilder_ == null) {
+          ensureCostIsMutable();
+          super.addAll(values, cost_);
+          onChanged();
+        } else {
+          costBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder clearCost() {
+        if (costBuilder_ == null) {
+          cost_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          costBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public Builder removeCost(int index) {
+        if (costBuilder_ == null) {
+          ensureCostIsMutable();
+          cost_.remove(index);
+          onChanged();
+        } else {
+          costBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.CostItem.Builder getCostBuilder(
+          int index) {
+        return getCostFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+          int index) {
+        if (costBuilder_ == null) {
+          return cost_.get(index);  } else {
+          return costBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+           getCostOrBuilderList() {
+        if (costBuilder_ != null) {
+          return costBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(cost_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.CostItem.Builder addCostBuilder() {
+        return getCostFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.CostItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.CostItem.Builder addCostBuilder(
+          int index) {
+        return getCostFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.CostItem.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.CostItem.Builder> 
+           getCostBuilderList() {
+        return getCostFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+          getCostFieldBuilder() {
+        if (costBuilder_ == null) {
+          costBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder>(
+                  cost_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          cost_ = null;
+        }
+        return costBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestMaterialComposeCommand)
+    }
+
+    static {
+      defaultInstance = new RequestMaterialComposeCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestMaterialComposeCommand)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_PropList_descriptor;
   private static
@@ -31323,6 +32089,11 @@ public final class EquipProto {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestEquipupCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -31421,7 +32192,10 @@ public final class EquipProto {
       "and\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006ite" +
       "mId\030\003 \002(\005\"7\n\037RequestSynthetiseComposeCom" +
       "mand\022\024\n\014synthetiseId\030\001 \002(\r\"\'\n\025RequestEqu" +
-      "ipupCommand\022\016\n\006itemid\030\001 \002(\r"
+      "ipupCommand\022\016\n\006itemid\030\001 \002(\r\"_\n\035RequestMa",
+      "terialComposeCommand\022\016\n\006itemId\030\002 \002(\r\022.\n\004" +
+      "cost\030\001 \003(\0132 .com.trans.pixel.protoc.Cost" +
+      "Item"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -31692,6 +32466,12 @@ public final class EquipProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipupCommand_descriptor,
               new java.lang.String[] { "Itemid", });
+          internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor =
+            getDescriptor().getMessageTypes().get(44);
+          internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor,
+              new java.lang.String[] { "ItemId", "Cost", });
           return null;
         }
       };

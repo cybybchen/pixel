@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -8,9 +10,12 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
+import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
@@ -75,5 +80,25 @@ public class PropCommandService extends BaseCommandService {
 		
 		handleRewards(responseBuilder, user, rewards.build());
 		pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
+	}
+	
+	public void materialCompose(RequestMaterialComposeCommand cmd, Builder responseBuilder, UserBean user) {
+		List<CostItem> costList = cmd.getCostList();
+		CostItem.Builder cost = CostItem.newBuilder();
+		cost.setCostcount(1);
+		cost.setCostid(cmd.getItemId());
+		costList.add(cost.build());
+		if (!propService.canMaterialCompose(user, costList)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		List<RewardInfo> rewards = propService.meterialCompose(user, costList);
+		MultiReward.Builder multi = MultiReward.newBuilder();
+		multi.addAllLoot(rewards);
+		handleRewards(responseBuilder, user, multi.build());
 	}
 }
