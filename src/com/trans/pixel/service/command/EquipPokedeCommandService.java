@@ -72,19 +72,19 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	}
 	
 	public void pokedeStrengthen(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user) {
-		int itemId = cmd.getItemId();
-		int propId = 0;
-		if (cmd.hasPropId())
-			propId = cmd.getPropId();
+		int equipId = cmd.getEquipId();
+		int itemId = 0;
+		if (cmd.hasItemId())
+			itemId = cmd.getItemId();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, itemId);
 		int prelevel = pokede.getLevel();
 		ResultConst result = null;
-		if (propId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && propId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
-			if (!costService.canCost(user, propId, 1))
+		if (itemId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+			if (!costService.canCost(user, itemId, 1))
 				result = ErrorConst.NOT_ENOUGH_PROP;
-			else if (propId >= PackageConst.RANDOM_STRENTHEN_ARMOR_ID && propId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
-				Prop prop = propService.getProp(propId);
+			else if (itemId >= PackageConst.RANDOM_STRENTHEN_ARMOR_ID && itemId < PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+				Prop prop = propService.getProp(itemId);
 				result = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid() == 0 ? 6 : prop.getBossid(), prop.getBossid() == 0 ? 6 : 0);
 			} else
 				result = equipPokedeService.equipStrenthen(pokede, user, rewards, true);
@@ -98,10 +98,10 @@ public class EquipPokedeCommandService extends BaseCommandService {
             
             return;
 		}
-		if (propId > PackageConst.RANDOM_STRENTHEN_ARMOR_ID && propId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
-			costService.cost(user, propId, 1);
+		if (itemId > PackageConst.RANDOM_STRENTHEN_ARMOR_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
+			costService.cost(user, itemId, 1);
 			
-			UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
+			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
 			if (userProp != null){
 				pushCommandService.pushUserPropCommand(responseBuilder, user, userProp);
 			}

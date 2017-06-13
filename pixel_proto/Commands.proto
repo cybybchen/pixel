@@ -1224,8 +1224,8 @@ message ResponseEquipResultCommand {
 }
 
 message RequestEquipStrenthenCommand {
-	required int32 itemId = 1;
-	optional uint32 propId = 2;
+	required int32 equipId = 1;
+	optional uint32 itemId = 2;
 }
 
 message RequestEquipPokedeCommand {
