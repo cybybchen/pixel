@@ -91,6 +91,7 @@ public class PropCommandService extends BaseCommandService {
 		cost.setCostid(cmd.getItemId());
 		costList.add(cost.build());
 		if (!propService.canMaterialCompose(user, costList)) {
+			pusher.pushUserEquipListCommand(responseBuilder, user);
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP);
