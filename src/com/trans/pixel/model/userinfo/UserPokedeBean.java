@@ -9,7 +9,7 @@ import com.trans.pixel.protoc.Base.HeroInfo;
 public class UserPokedeBean {
 	private long userId = 0;
 	private int heroId = 0;
-//	private int rare = 0;
+	private int rare = 0;
 	private int level = 0;
 	private int count = 0;
 	private int strengthen = 0;
@@ -28,11 +28,11 @@ public class UserPokedeBean {
 	public void setHeroId(int heroId) {
 		this.heroId = heroId;
 	}
-//	public int getRare() {
-//		return rare;
-//	}
+	public int getRare() {
+		return rare;
+	}
 	public void setRare(int rare) {
-//		this.rare = rare;
+		this.rare = rare;
 	}
 	public int getLevel() {
 		return level;
@@ -74,7 +74,7 @@ public class UserPokedeBean {
 		HeroInfo.Builder builder = HeroInfo.newBuilder();
 		
 		builder.setHeroId(heroId);
-//		builder.setRare(rare);
+		builder.setRare(rare);
 		builder.setLevel(level);
 		builder.setCount(count);
 		for (UserClearBean userClear : userClearList) {
