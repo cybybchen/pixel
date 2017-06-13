@@ -1002,8 +1002,8 @@ public class ActivityService {
 	 * 提升技能等级
 	 */
 	public void upSkillLevel(UserBean user, int heroId, int skillIndex, int skillLevel) {
-		if (heroId == user.getFirstGetHeroId() && skillIndex == 1)
-			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_SKILL_1, skillLevel, false);
+//		if (heroId == user.getFirstGetHeroId() && skillIndex == 1)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_SKILL_1, skillLevel, false);
 		
 		/**
 		 * 升级阿瑞斯技能
