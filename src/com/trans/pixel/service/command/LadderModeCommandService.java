@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
+import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
@@ -55,6 +56,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	private UserLadderService userLadderService;
 	
 	public void ladderInfo(RequestLadderInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		Map<Integer, UserLadder> enemyMap = new HashMap<Integer, UserLadder>();
 		List<UserLadder> userLadderList = ladderService.ladderInfo(enemyMap, user, true, 0);
 		
@@ -64,6 +75,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void ladderenemy(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		UserLadder userLadder = userLadderService.getUserLadder(user, cmd.getType());
 		if (userLadderService.isNextSeason(userLadder)) {
 			List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
@@ -104,6 +125,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void refreshLadderEnemy(RequestRefreshLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		UserLadder userLadder = userLadderService.getUserLadder(user, cmd.getType());
 		if (userLadderService.isNextSeason(userLadder)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
@@ -120,6 +151,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void ladderTaskReward(RequestLadderTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		UserLadder userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
 		if (userLadderService.isNextSeason(userLadder)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
@@ -157,6 +198,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void submitLadderResult(RequestSubmitLadderResultCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		UserLadder userLadder = userLadderService.getUserLadder(user,cmd.getType());
 		if (userLadderService.isNextSeason(userLadder)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
@@ -203,6 +254,16 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void ladderSeasonReward(RequestLadderSeasonRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return;
+		}
+		
 		List<RewardInfo> rewardList = ladderService.handleLadderSeasonReward(user);
 		if (rewardList == null || rewardList.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.REWARD_ERROR);

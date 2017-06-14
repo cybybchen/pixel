@@ -32,6 +32,7 @@ import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipPokedeService;
 import com.trans.pixel.service.EquipService;
+import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.UserClearService;
@@ -66,6 +67,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	private UserPropService userPropService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private LadderService ladderService;
 	
 	public void getUserEquipPokedeList(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
@@ -153,6 +156,15 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	}
 	
 	public void equipup(RequestEquipupCommand cmd, Builder responseBuilder, UserBean user) {
+		int currentLadderEquipId = ladderService.getCurrentSeasonEquipId();
+		if (currentLadderEquipId == cmd.getItemid()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_EQUIP_NOTUP_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_EQUIP_NOTUP_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
 		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, cmd.getItemid());
 		if (pokede == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_NOT_GET_ERROR);

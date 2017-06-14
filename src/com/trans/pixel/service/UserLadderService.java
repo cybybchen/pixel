@@ -235,6 +235,8 @@ public class UserLadderService {
 			ladderSeason = initLadderSeason();
 			if (ladderSeason != null)
 				userLadderRedisService.setLadderSeason(ladderSeason);
+//			else
+//				userLadderRedisService.deleteLadderSeason();
 		}
 		
 		return ladderSeason;

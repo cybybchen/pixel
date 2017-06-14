@@ -202,7 +202,7 @@ public class LadderService {
 		if (ladderSeason == null)
 			return null;
 		
-		int ld = getCurrentLd(ladderSeason.getStartTime());
+		int ld = getCurrentLd(ladderSeason);
 		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
 		if (ladderSeasonConfig == null)
 			return null;
@@ -213,8 +213,24 @@ public class LadderService {
 		return pokede;
 	}
 	
-	private int getCurrentLd(String startTime) {
-		int days = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(startTime));
+	public int getCurrentSeasonEquipId() {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null)
+			return 0;
+		
+		int ld = getCurrentLd(ladderSeason);
+		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
+		if (ladderSeasonConfig == null)
+			return 0;
+		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
+		if (ladderLd == null)
+			return 0;
+		
+		return ladderLd.getEquipid();
+	}
+	
+	private int getCurrentLd(LadderSeason ladderSeason) {
+		int days = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(ladderSeason.getStartTime()));
 		if (days < 7)
 			return 1;
 		else if (days < 14)

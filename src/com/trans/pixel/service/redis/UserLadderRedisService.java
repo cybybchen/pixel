@@ -25,6 +25,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
@@ -46,6 +47,11 @@ public class UserLadderRedisService extends RedisService{
 	
 	public void setLadderSeason(LadderSeason ladderSeason) {
 		this.set(RedisKey.LADDER_SEASON_KEY, RedisService.formatJson(ladderSeason));
+		this.expireAt(RedisKey.LADDER_SEASON_KEY, DateUtil.getDate(ladderSeason.getEndTime()));
+	}
+	
+	public void deleteLadderSeason() {
+		this.delete(RedisKey.LADDER_SEASON_KEY);
 	}
 	
 	public void addUserEnemyUserId(final UserBean user, final Collection<UserLadder> userLadderList) {
