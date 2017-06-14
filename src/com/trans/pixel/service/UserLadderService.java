@@ -120,11 +120,13 @@ public class UserLadderService {
 					continue;
 				Team team = userTeamService.getTeamCache(userinfo.getId());
 				UserLadder enemyLadder = initUserLadder(type, Math.max(userLadder.getGrade() - 1, 1), team, false, userLadder.getScore());
-				int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
-				if (position != enemyLadder.getPosition()) {
-					UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
-					builder.setPosition(position);
-					map.put(builder.getPosition(), builder.build());
+				if (enemyLadder != null) {
+					int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
+					if (position != enemyLadder.getPosition()) {
+						UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
+						builder.setPosition(position);
+						map.put(builder.getPosition(), builder.build());
+					}
 				}
 				
 				if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
