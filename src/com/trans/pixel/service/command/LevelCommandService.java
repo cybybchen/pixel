@@ -386,8 +386,6 @@ public class LevelCommandService extends BaseCommandService {
 			eventCommand.addEvent(e);
 		if(eventCommand.getEventCount() >= LevelRedisService.EVENTSIZE)
 			builder.setEventTime(0);
-//		else
-//			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
 		
 		responseBuilder.setLevelLootCommand(builder.build());
 		responseBuilder.setEventCommand(eventCommand);

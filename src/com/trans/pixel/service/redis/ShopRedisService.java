@@ -633,6 +633,7 @@ public class ShopRedisService extends RedisService{
 		builder.addAllItems(list.getIdList());
 		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
 			commbuilder.setMaxlimit(commbuilder.getLimit());
+			commbuilder.setLimit(0);
 			if(commbuilder.getCount() == 1) {
 				int itemid = commbuilder.getItemid();
 				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -643,13 +644,11 @@ public class ShopRedisService extends RedisService{
 					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 					if(bean != null) {
 						commbuilder.setIsOut(true);
-						commbuilder.setLimit(0);
 					}
 				}
 				if(itemid > 0 && itemid < 100) {
 					if(userTalentService.getUserTalent(user, itemid) != null){
 						commbuilder.setIsOut(true);
-						commbuilder.setLimit(0);
 					}
 				}
 			}
@@ -859,6 +858,7 @@ public class ShopRedisService extends RedisService{
 		builder.setEndTime(getPVPShopEndTime());
 		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
 			commbuilder.setMaxlimit(commbuilder.getLimit());
+			commbuilder.setLimit(0);
 			if(commbuilder.getCount() == 1) {
 				int itemid = commbuilder.getItemid();
 				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -869,13 +869,11 @@ public class ShopRedisService extends RedisService{
 					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 					if(bean != null) {
 						commbuilder.setIsOut(true);
-						commbuilder.setLimit(0);
 					}
 				}
 				if(itemid > 0 && itemid < 100) {
 					if(userTalentService.getUserTalent(user, itemid) != null){
 						commbuilder.setIsOut(true);
-						commbuilder.setLimit(0);
 					}
 				}
 			}

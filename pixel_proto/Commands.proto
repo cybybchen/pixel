@@ -3342,6 +3342,7 @@ message UserRewardTask {
 		HAS_IN = 4;//已经加入了
 		LIMIT = 5;//悬赏任务已达上限
 	};
+	optional int64 endtime = 6;
 	required uint32 index = 7;//boss的一个序列
 }
 

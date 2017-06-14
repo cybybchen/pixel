@@ -12,9 +12,6 @@ import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 @Service
 public class RewardTaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
-//	private static final String REWARDTASK_FILE_NAME = "ld_rewardtask.xml";
-//	private static final String REWARDTASK_REWARD_FILE_NAME = "ld_rewardloot.xml";
-//	private static final String REWARDTASKDAILY_FILE_NAME = "ld_rewardtaskdaily.xml";
 	
 	//rewardtask 
 	public RewardTaskList.Builder getRewardTaskConfig() {
@@ -83,7 +80,6 @@ public class RewardTaskRedisService extends RedisService {
 	public void setUserRewardTaskRoom(UserRewardTaskRoom room) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + room.getCreateUserId();
 		hput(key, "" + room.getIndex(), formatJson(room));
-//		expireAt(key, DateUtil.getEndDateOfD());
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	

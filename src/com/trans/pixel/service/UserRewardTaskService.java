@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserRewardTaskMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.RedisService;
@@ -48,8 +49,39 @@ public class UserRewardTaskService {
 	}
 	
 	public List<UserRewardTask> getUserRewardTaskList(UserBean user) {
-		List<UserRewardTask> utList = new ArrayList<UserRewardTask>();
-		for (UserRewardTask ut : userRewardTaskRedisService.getUserRewardTaskList(user.getId())) {
+//		List<UserRewardTask> utList = new ArrayList<UserRewardTask>();
+		List<UserRewardTask> list = userRewardTaskRedisService.getUserRewardTaskList(user.getId());
+		long today = RedisService.today(0);
+		boolean needFlash = false;
+		for (int i = list.size() - 1; i >= 0; i++) {
+			UserRewardTask ut = list.get(i);
+			if(ut.hasEndtime() && ut.getEndtime() >= today) {//过0点刷新
+				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+				list.remove(i);
+				needFlash = true;
+			}
+		}
+		if(needFlash){
+			RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
+			int index = 1;
+			for(RewardTask.Builder task : config.getDataBuilderList()){
+				for(int i = 0; i < task.getRandcount(); i++) {
+					UserRewardTask.Builder builder = UserRewardTask.newBuilder();
+					task.setEventid(task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid());
+					builder.setTask(task);
+					builder.getTaskBuilder().clearRandcount();
+					builder.getTaskBuilder().clearEvent();
+					builder.setEndtime(today+24*3600);
+					builder.setLeftcount(task.getCount());
+					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+					builder.setIndex(index);
+					index++;
+					list.add(builder.build());
+				}
+			}
+			
+		}
+		for (UserRewardTask ut : list) {
 			if (ut.hasRoomInfo()) {
 				log.debug("" + RedisService.formatJson(ut));
 				if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {

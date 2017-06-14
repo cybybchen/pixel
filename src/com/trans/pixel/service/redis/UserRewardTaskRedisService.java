@@ -56,7 +56,6 @@ public class UserRewardTaskRedisService extends RedisService {
 				userRewardTaskList.add(builder.build());
 		}
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		return userRewardTaskList;
 	}
 	
@@ -67,9 +66,9 @@ public class UserRewardTaskRedisService extends RedisService {
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	public boolean isExistRewardTaskKey(final long userId) {
-		return exists(RedisKey.USER_REWARD_TASK_PREFIX + userId);
-	}
+//	public boolean isExistRewardTaskKey(final long userId) {
+//		return exists(RedisKey.USER_REWARD_TASK_PREFIX + userId);
+//	}
 	
 	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX);
