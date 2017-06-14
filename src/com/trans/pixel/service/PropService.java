@@ -77,14 +77,14 @@ public class PropService {
 		if (prop == null)
 			return ErrorConst.PROP_USE_ERROR;
 		
-		if (prop.getBossid() > 0) {
-			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());
-			if (ret instanceof ErrorConst)
-				return ret;
-			userProp.setPropCount(userProp.getPropCount() - 1);
-			userPropService.updateUserProp(userProp);
-			return ret;
-		}
+//		if (prop.getBossid() > 0) {
+//			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());
+//			if (ret instanceof ErrorConst)
+//				return ret;
+//			userProp.setPropCount(userProp.getPropCount() - 1);
+//			userPropService.updateUserProp(userProp);
+//			return ret;
+//		}
 		
 		
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();

@@ -284,6 +284,7 @@ message Commodity {
 	optional int32 discount = 11;
 	optional int32 discost = 12;
 	optional int32 limit = 13;
+	optional int32 maxlimit = 14;
 }
 message CommodityList {
 	repeated Commodity id = 1;
@@ -3307,39 +3308,20 @@ message RequestUnionBossFightCommand {
 	optional int32 percent = 3;
 }
 ////////// RewardTaskProto
-message RewardTaskDailyList {
-	repeated RewardTaskDaily id = 1;
-}
-
-message RewardTaskDaily {
-	required uint32 id = 1;
-	required uint32 itemid = 2;
-	required uint32 count = 3;
-}
-
-enum REWARDTASK_TYPE{
-	TYPE_1 = 1;
-	TYPE_2 = 2;
-	TYPE_3 = 3;//深渊
-	TYPE_4 = 4;
-}
-
-message RewardTaskEnemy {
-	required int32 enemyid = 1;
-	required int32 weight = 2;
-}
-
 message RewardTask {
-	required uint32 id = 1;
-	required string name = 2;
-	required uint32 type = 3;
-	required uint32 renshu = 4;
-	repeated RewardTaskEnemy enemy = 5;
-	repeated CostItem cost = 6;
+	optional int32 type = 1;
+	optional int32 eventid = 2;
+	optional int32 merlevel = 3;
+	optional int32 level = 4;
+	optional int32 members = 5;
+	optional int32 randcount = 6;
+	optional int32 count = 7;
+	repeated RewardInfo lootlist = 8;
+	repeated Event event = 9;
 }
 
 message RewardTaskList {
-	repeated RewardTask id = 1;
+	repeated RewardTask data = 1;
 }
 
 message RoomInfo {
@@ -3348,10 +3330,9 @@ message RoomInfo {
 }
 
 message UserRewardTask {
-	required uint32 id = 1;//悬赏令id
-	optional uint32 enemyid = 2;
+	required RewardTask task = 1;//悬赏信息
+	optional int32 leftcount = 2;//剩余次数
 	optional uint32 status = 3;//0:没打死，1打死, 2可领奖
-	optional uint32 type = 4;
 	optional RoomInfo roomInfo = 5;
 	enum REWARDTASK_STATUS {
 		LIVE = 0;

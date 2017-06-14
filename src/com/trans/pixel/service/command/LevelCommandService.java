@@ -327,10 +327,10 @@ public class LevelCommandService extends BaseCommandService {
 			if (!userTalentList.isEmpty())
 				pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
 
-			/**
-			 * 完成事件解锁每日奖励
-			 */
-			userService.handleRewardTaskDailyReward(user, event.getEventid());
+//			/**
+//			 * 完成事件解锁每日奖励
+//			 */
+//			userService.handleRewardTaskDailyReward(user, event.getEventid());
 			
 			redis.productMainEvent(user, event.getEventid());
 		}
@@ -386,8 +386,8 @@ public class LevelCommandService extends BaseCommandService {
 			eventCommand.addEvent(e);
 		if(eventCommand.getEventCount() >= LevelRedisService.EVENTSIZE)
 			builder.setEventTime(0);
-		else
-			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
+//		else
+//			builder.setEventTime(builder.getEventTime()+LevelRedisService.EVENTTIME);
 		
 		responseBuilder.setLevelLootCommand(builder.build());
 		responseBuilder.setEventCommand(eventCommand);

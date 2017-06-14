@@ -17,9 +17,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
-import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
@@ -47,18 +45,6 @@ public class EquipPokedeService {
 	@Resource
 	private EquipRedisService equipRedisService;
 
-	public List<RewardInfo> convertCost(List<CostItem> costList) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		for (CostItem cost : costList) {
-			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(cost.getCostid());
-			reward.setCount(cost.getCostcount());
-			rewardList.add(reward.build());
-		}
-		
-		return rewardList;
-	}
-	
 	public ResultConst equipStrenthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards, boolean protect) {
 		if (pokede == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;

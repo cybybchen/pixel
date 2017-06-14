@@ -632,6 +632,7 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getIdList());
 		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+			commbuilder.setMaxlimit(commbuilder.getLimit());
 			if(commbuilder.getCount() == 1) {
 				int itemid = commbuilder.getItemid();
 				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
@@ -857,6 +858,7 @@ public class ShopRedisService extends RedisService{
 		builder.addAllItems(list.getIdList());
 		builder.setEndTime(getPVPShopEndTime());
 		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+			commbuilder.setMaxlimit(commbuilder.getLimit());
 			if(commbuilder.getCount() == 1) {
 				int itemid = commbuilder.getItemid();
 				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {

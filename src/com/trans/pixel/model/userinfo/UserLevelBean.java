@@ -1,9 +1,10 @@
 package com.trans.pixel.model.userinfo;
 
-import net.sf.json.JSONObject;
-
 import com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand;
+import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RedisService;
+
+import net.sf.json.JSONObject;
 
 public class UserLevelBean {
 	private long userId = 0;
@@ -84,7 +85,7 @@ public class UserLevelBean {
 	public ResponseLevelLootCommand.Builder build() {
 		ResponseLevelLootCommand.Builder builder = ResponseLevelLootCommand.newBuilder();
 		builder.setLootTime(lootTime);
-		builder.setEventTime(eventTime);
+		builder.setEventTime(eventTime + LevelRedisService.EVENTTIME);
 		builder.setUnlockDaguan(unlockDaguan);
 		builder.setLeftCount(leftCount);
 		builder.setLootDaguan(lootDaguan);

@@ -73,7 +73,7 @@ public class UserRewardTaskService {
 	
 	public void updateToDB(long userId, int index) {
 		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
-		if(ut != null && ut.getEnemyid() != 0) {
+		if(ut != null && ut.getTask().getEventid() != 0) {
 			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
 			
 			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)

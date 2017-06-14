@@ -25,8 +25,6 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.constants.TaskConst;
-import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -49,7 +47,6 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Shouchong;
-import com.trans.pixel.protoc.RewardTaskProto.REWARDTASK_TYPE;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -938,20 +935,20 @@ public class ActivityService {
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY4_VALUE, quality4Count, false);
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_UPHERO_QUALITY5_VALUE, quality5Count, false);
 		
-		int star2Count = 0;
-		int star3Count = 0;
-		int star5Count = 0;
-		for (int infoId : heroInfoList) {
-			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
-			if (heroInfo == null)
-				continue;
-			if (heroInfo.getStarLevel() >= 2)
-				++star2Count;
-			if (heroInfo.getStarLevel() >= 3)
-				++star3Count;
-			if (heroInfo.getStarLevel() >= 5)
-				++star5Count;
-		}
+//		int star2Count = 0;
+//		int star3Count = 0;
+//		int star5Count = 0;
+//		for (int infoId : heroInfoList) {
+//			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), infoId);
+//			if (heroInfo == null)
+//				continue;
+//			if (heroInfo.getStarLevel() >= 2)
+//				++star2Count;
+//			if (heroInfo.getStarLevel() >= 3)
+//				++star3Count;
+//			if (heroInfo.getStarLevel() >= 5)
+//				++star5Count;
+//		}
 		
 //		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_2, star2Count, false);
 //		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_3, star3Count, false);
@@ -1122,7 +1119,7 @@ public class ActivityService {
 	 */
 	public void completeRewardTask(long userId, int type) {
 		achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_VALUE);
-		if (type == REWARDTASK_TYPE.TYPE_3_VALUE)//深渊
+		if (type == 4 || type == 5)//深渊
 			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_SHENYUAN_VALUE);
 		
 		taskService.sendTask3Score(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_COMPLETE_VALUE);

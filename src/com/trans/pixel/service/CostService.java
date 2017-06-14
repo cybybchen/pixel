@@ -227,8 +227,6 @@ public class CostService {
 				return true;
 			}
 		} else if (itemId > RewardConst.HERO) {
-//			int heroId = rewardId % RewardConst.HERO_STAR;
-//			userHeroService.addUserHero(user.getId(), heroId);
 		} else if (itemId > RewardConst.PACKAGE) {
 			UserPropBean userProp = userPropService.selectUserProp(userId, itemId);
 			if (userProp != null && userProp.getPropCount() >= itemCount) {

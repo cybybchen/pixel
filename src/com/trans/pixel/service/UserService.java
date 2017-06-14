@@ -37,7 +37,6 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
-import com.trans.pixel.protoc.RewardTaskProto.RewardTaskDailyList;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.YueKa;
@@ -178,7 +177,7 @@ public class UserService {
 		
 		handleVipDailyReward(user);
 		handleLibaoDailyReward(user, today0);
-		handleRewardTaskDailyReward(user);	
+//		handleRewardTaskDailyReward(user);	
 		userLadderService.refreshUserLadder(user);
 		
 		//累计登录的活动
@@ -216,24 +215,24 @@ public class UserService {
 		userEquip = UserEquipBean.init(user.getId(), addId, addCount);
 		userEquipService.updateUserEquip(userEquip);
 	}
-	public void handleRewardTaskDailyReward(UserBean user, int eventid) {
-		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
-		for(int i = config.getIdCount()-1; i >= 0; i--) {
-			if(config.getId(i).getId() == eventid) {
-				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
-				break;
-			}
-		}
-	}
-	public void handleRewardTaskDailyReward(UserBean user) {
-		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
-		for(int i = config.getIdCount()-1; i >= 0; i--) {
-			if(levelRedisService.hasCompleteEvent(user, config.getId(i).getId())) {
-				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
-				break;
-			}
-		}
-	}
+//	public void handleRewardTaskDailyReward(UserBean user, int eventid) {
+//		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
+//		for(int i = config.getIdCount()-1; i >= 0; i--) {
+//			if(config.getId(i).getId() == eventid) {
+//				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
+//				break;
+//			}
+//		}
+//	}
+//	public void handleRewardTaskDailyReward(UserBean user) {
+//		RewardTaskDailyList config = rewardTaskRedisService.getRewardTaskDailyConfig();
+//		for(int i = config.getIdCount()-1; i >= 0; i--) {
+//			if(levelRedisService.hasCompleteEvent(user, config.getId(i).getId())) {
+//				addtoUserEquip(user, config.getId(i).getItemid(), config.getId(i).getCount());
+//				break;
+//			}
+//		}
+//	}
 	
 	private void handleLibaoDailyReward(UserBean user, long today0) {
 		LibaoList libaolist = shopService.getLibaoShop(user, true);
