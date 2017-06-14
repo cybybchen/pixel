@@ -101,6 +101,7 @@ public class EquipPokedeService {
 				pokede.setLevel(0);
 			}
 			
+			userEquipPokedeService.updateUserEquipPokede(pokede, user);
 			return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
 		}
 		

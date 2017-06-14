@@ -37,6 +37,7 @@ import com.trans.pixel.service.PropService;
 import com.trans.pixel.service.UserClearService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserPropService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -63,6 +64,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	private PropService propService;
 	@Resource
 	private UserPropService userPropService;
+	@Resource
+	private UserService userService;
 	
 	public void getUserEquipPokedeList(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
@@ -96,8 +99,10 @@ public class EquipPokedeCommandService extends BaseCommandService {
 				result = equipPokedeService.equipStrenthen(user, pokede, prop.getBossid() == 0 ? 6 : prop.getBossid(), prop.getBossid() == 0 ? 6 : 0);
 			} else
 				result = equipPokedeService.equipStrenthen(pokede, user, rewards, true);
-		} else
+		} else {
 			result = equipPokedeService.equipStrenthen(pokede, user, rewards, false);
+			userService.updateUser(user);
+		}
 		
 		if (result instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
@@ -107,7 +112,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
             return;
 		}
 		if (itemId >= PackageConst.RANDOM_STRENTHEN_EQUIP_ID && itemId <= PackageConst.EQUIP_STRENTHEN_PROTECTED_ID) {
-			costService.cost(user, itemId, 1);
+			costService.costAndUpdate(user, itemId, 1);
 			
 			UserPropBean userProp = userPropService.selectUserProp(user.getId(), itemId);
 			if (userProp != null){
