@@ -253,7 +253,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的日常
 		 */
-		sendRichangScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
+//		sendRichangScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
 		/**
 		 * 消耗钻石的开服活动
 		 */
@@ -270,13 +270,13 @@ public class ActivityService {
 			/**
 			 * 累计钻石抽奖的日常
 			 */
-			this.sendRichangScore(user, ActivityConst.LEIJI_LOTTERY_JEWEL, count);
+//			this.sendRichangScore(user, ActivityConst.LEIJI_LOTTERY_JEWEL, count);
 			
 			/**
 			 * 免费
 			 */
 			if (free) {
-				sendRichangScore(user, ActivityConst.FREE_JEWEL_LOTTERY, count);
+//				sendRichangScore(user, ActivityConst.FREE_JEWEL_LOTTERY, count);
 			}
 			/**
 			 * 累计召唤石抽奖的开服活动
@@ -299,8 +299,8 @@ public class ActivityService {
 		/**
 		 * 热血竞技
 		 */
-		if (ret)
-			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
+//		if (ret)
+//			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LADDER_FIGHT_VALUE);
 	}
@@ -315,9 +315,9 @@ public class ActivityService {
 		/**
 		 * 参与pk
 		 */
-		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
-		if (ret)
-			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
+//		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
+//		if (ret)
+//			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
 		
 		if (ret)
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_DUOHUI_MINE_VALUE);
@@ -327,12 +327,12 @@ public class ActivityService {
 		/**
 		 * 成就 boss杀手
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_KILLBOSS);
+//		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_LOOTPVP_KILLBOSS);
 		
 		/**
 		 * 挑战boss
 		 */
-		sendRichangScore(user, ActivityConst.PVP_ATTACK_BOSS_SUCCESS);
+//		sendRichangScore(user, ActivityConst.PVP_ATTACK_BOSS_SUCCESS);
 	}
 	
 	public void storeMojingActivity(UserBean user, int count) {
@@ -344,7 +344,7 @@ public class ActivityService {
 		/**
 		 * 收集魔晶
 		 */
-		sendRichangScore(user, ActivityConst.RICHANG_MOJING_STORE, count);
+//		sendRichangScore(user, ActivityConst.RICHANG_MOJING_STORE, count);
 	}
 	
 	public void unionAttackActivity(long userId, boolean ret) {
@@ -358,7 +358,7 @@ public class ActivityService {
 		/**
 		 * 浴血奋战
 		 */
-		sendRichangScore(user, ActivityConst.RICHANG_UNION_ATTACK);
+//		sendRichangScore(user, ActivityConst.RICHANG_UNION_ATTACK);
 	}
 	
 	/****************************************************************************************/
@@ -457,7 +457,7 @@ public class ActivityService {
 		/**
 		 * 开服活动第六天
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_DAY_6, zhanli);
+//		sendKaifuScore(user, ActivityConst.KAIFU_DAY_6, zhanli);
 	}
 	
 	/**
@@ -474,7 +474,7 @@ public class ActivityService {
 		/**
 		 * 开服活动第五天
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_DAY_5);
+//		sendKaifuScore(user, ActivityConst.KAIFU_DAY_5);
 		/**
 		 * 任务系统
 		 */
@@ -739,19 +739,19 @@ public class ActivityService {
 		/**
 		 * 累计充值的日常
 		 */
-		sendRichangScore(user, ActivityConst.LEIJI_RECHARGE, count);
+//		sendRichangScore(user, ActivityConst.LEIJI_RECHARGE, count);
 		/**
 		 * 单笔充值的日常
 		 */
-		sendRichangScore(user, ActivityConst.DANBI_RECHARGE, count);
+//		sendRichangScore(user, ActivityConst.DANBI_RECHARGE, count);
 		/**
 		 * 开服2的充值活动
 		 */
-		sendKaifu2Score(user, ActivityConst.KAIFU2_RECHARGE, count);
+//		sendKaifu2Score(user, ActivityConst.KAIFU2_RECHARGE, count);
 		/**
 		 * 首次充值的活动
 		 */
-		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
+//		sendKaifuScore(user, ActivityConst.DANBI_RECHARGE, count);
 	}
 	
 	public void heroStoreActivity(UserBean user) {
@@ -763,7 +763,7 @@ public class ActivityService {
 		/**
 		 * 收集不同英雄的开服活动
 		 */
-		sendKaifuScore(user, ActivityConst.KAIFU_DAY_1);
+//		sendKaifuScore(user, ActivityConst.KAIFU_DAY_1);
 	}
 	
 	public void heroLevelupRareActivity(UserBean user, int heroId, int rare) {
@@ -777,7 +777,7 @@ public class ActivityService {
 			case HeroConst.RARE_LEVEL_5:
 			case HeroConst.RARE_LEVEL_8:
 			case HeroConst.RARE_LEVEL_10:
-				sendKaifuScore(user, ActivityConst.HERO_RARE, rare);
+//				sendKaifuScore(user, ActivityConst.HERO_RARE, rare);
 				break;
 			default:
 				break;
@@ -829,7 +829,7 @@ public class ActivityService {
 		 * 开服活动第四天
 		 */
 		if (start < HeroConst.ACTIVITY_KAIFU_HERO_LEVEL && level >= HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
-			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
+//			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
 		
 		if (start < 5 && level >= 5) {
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP5_VALUE);
@@ -860,22 +860,22 @@ public class ActivityService {
 		if (start < 60 && level >= 60)
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_HERO_LEVELUP60_VALUE);
 		
-		taskService.sendTask3Score(user, TaskConst.TARGET_HERO_LEVELUP);
+//		taskService.sendTask3Score(user, TaskConst.TARGET_HERO_LEVELUP);
 	}
 	
 	public void heroLevelupStarActivity(UserBean user, int star) {
 		/**
 		 * 开服活动第七天
 		 */
-		if (star == HeroConst.ACTIVITY_KAIFU_HERO_STAR)
-			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
+//		if (star == HeroConst.ACTIVITY_KAIFU_HERO_STAR)
+//			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
 	}
 	
 	public void aidActivity(UserBean user, int type) {//0:征战天下 1:level
-		if (type == 0)
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
+//		if (type == 0)
+//			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_MINE_AID);
 		
-		sendRichangScore(user, ActivityConst.AID);
+//		sendRichangScore(user, ActivityConst.AID);
 		
 		if (type == ActivityConst.AID_LEVEL)
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_PVP_HELP_VALUE);
@@ -885,7 +885,7 @@ public class ActivityService {
 	 * 累计使用契约的活动
 	 */
 	public void qiyueActivity(UserBean user) {
-		sendRichangScore(user, ActivityConst.QIYUE);
+//		sendRichangScore(user, ActivityConst.QIYUE);
 	}
 	
 	/**
@@ -953,49 +953,49 @@ public class ActivityService {
 				++star5Count;
 		}
 		
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_2, star2Count, false);
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_3, star3Count, false);
-		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_5, star5Count, false);
+//		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_2, star2Count, false);
+//		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_3, star3Count, false);
+//		taskService.sendTask1Score(user, TaskConst.TARGET_TEAM_HERO_STAR_5, star5Count, false);
 	}
 	
 	/**
 	 * 提升装备稀有度
 	 */
 	public void levelupEquip(UserBean user, int originalRare, int currentRare) {
-		if (originalRare < 2 && currentRare >= 2)
-			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_2);
-		if (originalRare < 6 && currentRare >= 6)
-			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_6);
-		if (originalRare < 8 && currentRare >= 8)
-			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_8);
-		if (originalRare < 10 && currentRare >= 10)
-			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_10);
+//		if (originalRare < 2 && currentRare >= 2)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_2);
+//		if (originalRare < 6 && currentRare >= 6)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_6);
+//		if (originalRare < 8 && currentRare >= 8)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_8);
+//		if (originalRare < 10 && currentRare >= 10)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_RARE_10);
 		
-		taskService.sendTask3Score(user, TaskConst.TARGET_EQUIP_LEVELUP);
+//		taskService.sendTask3Score(user, TaskConst.TARGET_EQUIP_LEVELUP);
 	}
 	
 	/**
 	 * 提升英雄的装备稀有度
 	 */
 	public void upHeroEquipRare(UserBean user, int originalRare, int currentRare, int heroId) {
-		if (originalRare < 10 && currentRare >= 10)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_10);
-		if (originalRare < 15 && currentRare >= 15)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_15);
-		if (originalRare < 20 && currentRare >= 20)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_20);
-		if (originalRare < 22 && currentRare >= 22)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_22);
-		if (originalRare < 25 && currentRare >= 25)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_25);
-		
-		if (heroId == user.getFirstGetHeroId()) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_RARE_10, currentRare, false);
-		}
-		
-		if (heroId == 17) {
-			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_RARE_10, currentRare, false);
-		}
+//		if (originalRare < 10 && currentRare >= 10)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_10);
+//		if (originalRare < 15 && currentRare >= 15)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_15);
+//		if (originalRare < 20 && currentRare >= 20)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_20);
+//		if (originalRare < 22 && currentRare >= 22)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_22);
+//		if (originalRare < 25 && currentRare >= 25)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_RARE_25);
+//		
+//		if (heroId == user.getFirstGetHeroId()) {
+//			taskService.sendTask1Score(user, TaskConst.TARGET_START_HERO_RARE_10, currentRare, false);
+//		}
+//		
+//		if (heroId == 17) {
+//			taskService.sendTask1Score(user, TaskConst.TARGET_GAILUN_RARE_10, currentRare, false);
+//		}
 	}
 	
 	/**
@@ -1047,21 +1047,21 @@ public class ActivityService {
 	 * 英雄强化
 	 */
 	public void heroStrengthen(UserBean user, int strengthen) {
-		if (strengthen == 3)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_3);
-		if (strengthen == 7)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_7);
-		if (strengthen == 12)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_12);
-		if (strengthen == 15)
-			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_15);
+//		if (strengthen == 3)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_3);
+//		if (strengthen == 7)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_7);
+//		if (strengthen == 12)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_12);
+//		if (strengthen == 15)
+//			taskService.sendTask1Score(user, TaskConst.TARGET_HERO_STRENGTHEN_15);
 	}
 	
 	/**
 	 * 合成专属装备
 	 */
 	public void composeSpecialEquip(UserBean user) {
-		taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_COMPOSE_SPECIAL);
+//		taskService.sendTask1Score(user, TaskConst.TARGET_EQUIP_COMPOSE_SPECIAL);
 	}
 	
 	/**
@@ -1105,7 +1105,7 @@ public class ActivityService {
 	 * 收取挂机背包
 	 */
 	public void getLootPackageActivity(UserBean user) {
-		taskService.sendTask3Score(user, TaskConst.TARGET_LOOT_PACKAGE);
+//		taskService.sendTask3Score(user, TaskConst.TARGET_LOOT_PACKAGE);
 	}
 	
 	/**
