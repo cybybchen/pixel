@@ -60,7 +60,7 @@ public class MailCommandService extends BaseCommandService {
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_READ_SUCCESS));
 			
 			if (rewardList.size() > 0) {
-				handleRewards(responseBuilder, user, rewardList);
+				handleRewardsNoFilter(responseBuilder, user, rewardList);
 			}
 		}
 		pushCommandService.pushUserMailListCommand(responseBuilder, user, type);
