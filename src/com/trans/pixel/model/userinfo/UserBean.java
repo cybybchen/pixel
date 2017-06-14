@@ -1251,7 +1251,7 @@ public class UserBean {
 		setFreeLotteryCoinTime(System.currentTimeMillis());
 		setFreeLotteryJewelTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (22 - 1)));
 		setFreeContractTime(System.currentTimeMillis() - (long)(TimeConst.MILLIONSECONDS_PER_HOUR * (70 - 1)));
-		setJewelPRD(1000);
+		setJewelPRD(0);
 		setGoldSavingBox(1);
 		setExpSavingBox(1);
 		return this;
