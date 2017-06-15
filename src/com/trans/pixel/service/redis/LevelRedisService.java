@@ -475,21 +475,27 @@ public class LevelRedisService extends RedisService {
 		String xml = ReadConfig("ld_event.xml");
 		EventConfigList.Builder list = EventConfigList.newBuilder();
 		parseXml(xml, list);
+//		Map<Integer, EventConfig.Builder> eventmap = new HashMap<Integer, EventConfig.Builder>();
+//		for(EventConfig.Builder event : list1.getDataBuilderList()){
+//			eventmap.put(event.getId(), event);
+//		}
 		String xml2 = ReadConfig("ld_enemy.xml");
 		EnemyList.Builder list2 = EnemyList.newBuilder();
 		parseXml(xml2, list2);
+		Map<Integer, Enemy.Builder> enemymap = new HashMap<Integer, Enemy.Builder>();
+		for(Enemy.Builder enemyconfig : list2.getDataBuilderList()){
+			enemymap.put(enemyconfig.getEnemyid(), enemyconfig);
+		}
 		for(EventConfig.Builder event : list.getDataBuilderList()){
 			if(event.hasEnemygroup())
 			for(Enemy.Builder enemy : event.getEnemygroupBuilder().getEnemyBuilderList()){
-				for(Enemy.Builder enemyconfig : list2.getDataBuilderList()){
-					if(enemy.getEnemyid() == enemyconfig.getEnemyid()) {
-						enemy.setLoot(enemyconfig.getLoot());
-						enemy.setLootweight(enemyconfig.getLootweight());
-						break;
-					}
+				Enemy.Builder enemyconfig = enemymap.get(enemy.getEnemyid());
+				if(enemyconfig == null){
+					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
+				}else {
+					enemy.setLoot(enemyconfig.getLoot());
+					enemy.setLootweight(enemyconfig.getLootweight());
 				}
-//				if(!enemy.hasLoot())
-//					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
 			}
 			map.put(event.getId(), event);
 		}
