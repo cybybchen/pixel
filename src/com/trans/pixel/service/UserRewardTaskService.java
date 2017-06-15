@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -52,7 +53,9 @@ public class UserRewardTaskService {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long today = RedisService.today(0);
 		boolean needFlash = false;
-		for (Integer index : map.keySet()) {
+		Iterator<Integer> it = map.keySet().iterator();
+		while (it.hasNext()) {
+			int index = it.next();
 			UserRewardTask ut = map.get(index);
 			if(ut.hasEndtime() && ut.getEndtime() >= today) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);

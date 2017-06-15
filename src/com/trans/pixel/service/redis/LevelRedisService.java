@@ -488,8 +488,8 @@ public class LevelRedisService extends RedisService {
 						break;
 					}
 				}
-				if(!enemy.hasLoot())
-					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
+//				if(!enemy.hasLoot())
+//					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
 			}
 			map.put(event.getId(), event);
 		}
