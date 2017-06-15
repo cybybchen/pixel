@@ -1064,14 +1064,9 @@ message Equip {
 message EquipOrder {
 	optional uint32 order = 1;
 	optional string name = 2;
-	optional string des = 3;
 	optional uint32 handbook = 4;
 	optional uint32 equiplevel = 5;
 	optional uint32 rare = 6;
-	optional uint32 img = 7;
-	optional uint32 ad = 8;
-	optional uint32 ap = 9;
-	repeated EquipState states = 10;
 }
 
 message EquipState {

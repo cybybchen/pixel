@@ -7483,21 +7483,6 @@ public final class EquipProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional string des = 3;
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    boolean hasDes();
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    java.lang.String getDes();
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getDesBytes();
-
     // optional uint32 handbook = 4;
     /**
      * <code>optional uint32 handbook = 4;</code>
@@ -7527,61 +7512,6 @@ public final class EquipProto {
      * <code>optional uint32 rare = 6;</code>
      */
     int getRare();
-
-    // optional uint32 img = 7;
-    /**
-     * <code>optional uint32 img = 7;</code>
-     */
-    boolean hasImg();
-    /**
-     * <code>optional uint32 img = 7;</code>
-     */
-    int getImg();
-
-    // optional uint32 ad = 8;
-    /**
-     * <code>optional uint32 ad = 8;</code>
-     */
-    boolean hasAd();
-    /**
-     * <code>optional uint32 ad = 8;</code>
-     */
-    int getAd();
-
-    // optional uint32 ap = 9;
-    /**
-     * <code>optional uint32 ap = 9;</code>
-     */
-    boolean hasAp();
-    /**
-     * <code>optional uint32 ap = 9;</code>
-     */
-    int getAp();
-
-    // repeated .com.trans.pixel.protoc.EquipState states = 10;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.EquipProto.EquipState> 
-        getStatesList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    com.trans.pixel.protoc.EquipProto.EquipState getStates(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    int getStatesCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder> 
-        getStatesOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder getStatesOrBuilder(
-        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.EquipOrder}
@@ -7644,47 +7574,19 @@ public final class EquipProto {
               name_ = input.readBytes();
               break;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              des_ = input.readBytes();
-              break;
-            }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               handbook_ = input.readUInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000008;
               equiplevel_ = input.readUInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000010;
               rare_ = input.readUInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              img_ = input.readUInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              ad_ = input.readUInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              ap_ = input.readUInt32();
-              break;
-            }
-            case 82: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
-                states_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.EquipState>();
-                mutable_bitField0_ |= 0x00000200;
-              }
-              states_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.EquipState.PARSER, extensionRegistry));
               break;
             }
           }
@@ -7695,9 +7597,6 @@ public final class EquipProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
-          states_ = java.util.Collections.unmodifiableList(states_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -7789,49 +7688,6 @@ public final class EquipProto {
       }
     }
 
-    // optional string des = 3;
-    public static final int DES_FIELD_NUMBER = 3;
-    private java.lang.Object des_;
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    public boolean hasDes() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    public java.lang.String getDes() {
-      java.lang.Object ref = des_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          des_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string des = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDesBytes() {
-      java.lang.Object ref = des_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        des_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // optional uint32 handbook = 4;
     public static final int HANDBOOK_FIELD_NUMBER = 4;
     private int handbook_;
@@ -7839,7 +7695,7 @@ public final class EquipProto {
      * <code>optional uint32 handbook = 4;</code>
      */
     public boolean hasHandbook() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional uint32 handbook = 4;</code>
@@ -7855,7 +7711,7 @@ public final class EquipProto {
      * <code>optional uint32 equiplevel = 5;</code>
      */
     public boolean hasEquiplevel() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional uint32 equiplevel = 5;</code>
@@ -7871,7 +7727,7 @@ public final class EquipProto {
      * <code>optional uint32 rare = 6;</code>
      */
     public boolean hasRare() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional uint32 rare = 6;</code>
@@ -7880,101 +7736,12 @@ public final class EquipProto {
       return rare_;
     }
 
-    // optional uint32 img = 7;
-    public static final int IMG_FIELD_NUMBER = 7;
-    private int img_;
-    /**
-     * <code>optional uint32 img = 7;</code>
-     */
-    public boolean hasImg() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional uint32 img = 7;</code>
-     */
-    public int getImg() {
-      return img_;
-    }
-
-    // optional uint32 ad = 8;
-    public static final int AD_FIELD_NUMBER = 8;
-    private int ad_;
-    /**
-     * <code>optional uint32 ad = 8;</code>
-     */
-    public boolean hasAd() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional uint32 ad = 8;</code>
-     */
-    public int getAd() {
-      return ad_;
-    }
-
-    // optional uint32 ap = 9;
-    public static final int AP_FIELD_NUMBER = 9;
-    private int ap_;
-    /**
-     * <code>optional uint32 ap = 9;</code>
-     */
-    public boolean hasAp() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional uint32 ap = 9;</code>
-     */
-    public int getAp() {
-      return ap_;
-    }
-
-    // repeated .com.trans.pixel.protoc.EquipState states = 10;
-    public static final int STATES_FIELD_NUMBER = 10;
-    private java.util.List<com.trans.pixel.protoc.EquipProto.EquipState> states_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.EquipProto.EquipState> getStatesList() {
-      return states_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder> 
-        getStatesOrBuilderList() {
-      return states_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    public int getStatesCount() {
-      return states_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    public com.trans.pixel.protoc.EquipProto.EquipState getStates(int index) {
-      return states_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-     */
-    public com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder getStatesOrBuilder(
-        int index) {
-      return states_.get(index);
-    }
-
     private void initFields() {
       order_ = 0;
       name_ = "";
-      des_ = "";
       handbook_ = 0;
       equiplevel_ = 0;
       rare_ = 0;
-      img_ = 0;
-      ad_ = 0;
-      ap_ = 0;
-      states_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7995,28 +7762,13 @@ public final class EquipProto {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDesBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(4, handbook_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(5, equiplevel_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(6, rare_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeUInt32(7, img_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeUInt32(8, ad_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeUInt32(9, ap_);
-      }
-      for (int i = 0; i < states_.size(); i++) {
-        output.writeMessage(10, states_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -8037,35 +7789,15 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDesBytes());
+          .computeUInt32Size(4, handbook_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, handbook_);
+          .computeUInt32Size(5, equiplevel_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, equiplevel_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, rare_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, img_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, ad_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(9, ap_);
-      }
-      for (int i = 0; i < states_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, states_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8175,7 +7907,6 @@ public final class EquipProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getStatesFieldBuilder();
         }
       }
       private static Builder create() {
@@ -8188,26 +7919,12 @@ public final class EquipProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        des_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
         handbook_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         equiplevel_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rare_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        img_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        ad_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        ap_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        if (statesBuilder_ == null) {
-          states_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
-        } else {
-          statesBuilder_.clear();
-        }
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -8247,40 +7964,15 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.des_ = des_;
+        result.handbook_ = handbook_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.handbook_ = handbook_;
+        result.equiplevel_ = equiplevel_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.equiplevel_ = equiplevel_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
         result.rare_ = rare_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.img_ = img_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.ad_ = ad_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.ap_ = ap_;
-        if (statesBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200)) {
-            states_ = java.util.Collections.unmodifiableList(states_);
-            bitField0_ = (bitField0_ & ~0x00000200);
-          }
-          result.states_ = states_;
-        } else {
-          result.states_ = statesBuilder_.build();
-        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -8305,11 +7997,6 @@ public final class EquipProto {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasDes()) {
-          bitField0_ |= 0x00000004;
-          des_ = other.des_;
-          onChanged();
-        }
         if (other.hasHandbook()) {
           setHandbook(other.getHandbook());
         }
@@ -8318,41 +8005,6 @@ public final class EquipProto {
         }
         if (other.hasRare()) {
           setRare(other.getRare());
-        }
-        if (other.hasImg()) {
-          setImg(other.getImg());
-        }
-        if (other.hasAd()) {
-          setAd(other.getAd());
-        }
-        if (other.hasAp()) {
-          setAp(other.getAp());
-        }
-        if (statesBuilder_ == null) {
-          if (!other.states_.isEmpty()) {
-            if (states_.isEmpty()) {
-              states_ = other.states_;
-              bitField0_ = (bitField0_ & ~0x00000200);
-            } else {
-              ensureStatesIsMutable();
-              states_.addAll(other.states_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.states_.isEmpty()) {
-            if (statesBuilder_.isEmpty()) {
-              statesBuilder_.dispose();
-              statesBuilder_ = null;
-              states_ = other.states_;
-              bitField0_ = (bitField0_ & ~0x00000200);
-              statesBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getStatesFieldBuilder() : null;
-            } else {
-              statesBuilder_.addAllMessages(other.states_);
-            }
-          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8488,87 +8140,13 @@ public final class EquipProto {
         return this;
       }
 
-      // optional string des = 3;
-      private java.lang.Object des_ = "";
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public boolean hasDes() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public java.lang.String getDes() {
-        java.lang.Object ref = des_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          des_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDesBytes() {
-        java.lang.Object ref = des_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          des_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public Builder setDes(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        des_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public Builder clearDes() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        des_ = getDefaultInstance().getDes();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string des = 3;</code>
-       */
-      public Builder setDesBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        des_ = value;
-        onChanged();
-        return this;
-      }
-
       // optional uint32 handbook = 4;
       private int handbook_ ;
       /**
        * <code>optional uint32 handbook = 4;</code>
        */
       public boolean hasHandbook() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 handbook = 4;</code>
@@ -8580,7 +8158,7 @@ public final class EquipProto {
        * <code>optional uint32 handbook = 4;</code>
        */
       public Builder setHandbook(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         handbook_ = value;
         onChanged();
         return this;
@@ -8589,7 +8167,7 @@ public final class EquipProto {
        * <code>optional uint32 handbook = 4;</code>
        */
       public Builder clearHandbook() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         handbook_ = 0;
         onChanged();
         return this;
@@ -8601,7 +8179,7 @@ public final class EquipProto {
        * <code>optional uint32 equiplevel = 5;</code>
        */
       public boolean hasEquiplevel() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional uint32 equiplevel = 5;</code>
@@ -8613,7 +8191,7 @@ public final class EquipProto {
        * <code>optional uint32 equiplevel = 5;</code>
        */
       public Builder setEquiplevel(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         equiplevel_ = value;
         onChanged();
         return this;
@@ -8622,7 +8200,7 @@ public final class EquipProto {
        * <code>optional uint32 equiplevel = 5;</code>
        */
       public Builder clearEquiplevel() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         equiplevel_ = 0;
         onChanged();
         return this;
@@ -8634,7 +8212,7 @@ public final class EquipProto {
        * <code>optional uint32 rare = 6;</code>
        */
       public boolean hasRare() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional uint32 rare = 6;</code>
@@ -8646,7 +8224,7 @@ public final class EquipProto {
        * <code>optional uint32 rare = 6;</code>
        */
       public Builder setRare(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000010;
         rare_ = value;
         onChanged();
         return this;
@@ -8655,349 +8233,10 @@ public final class EquipProto {
        * <code>optional uint32 rare = 6;</code>
        */
       public Builder clearRare() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         rare_ = 0;
         onChanged();
         return this;
-      }
-
-      // optional uint32 img = 7;
-      private int img_ ;
-      /**
-       * <code>optional uint32 img = 7;</code>
-       */
-      public boolean hasImg() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional uint32 img = 7;</code>
-       */
-      public int getImg() {
-        return img_;
-      }
-      /**
-       * <code>optional uint32 img = 7;</code>
-       */
-      public Builder setImg(int value) {
-        bitField0_ |= 0x00000040;
-        img_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 img = 7;</code>
-       */
-      public Builder clearImg() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        img_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 ad = 8;
-      private int ad_ ;
-      /**
-       * <code>optional uint32 ad = 8;</code>
-       */
-      public boolean hasAd() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional uint32 ad = 8;</code>
-       */
-      public int getAd() {
-        return ad_;
-      }
-      /**
-       * <code>optional uint32 ad = 8;</code>
-       */
-      public Builder setAd(int value) {
-        bitField0_ |= 0x00000080;
-        ad_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 ad = 8;</code>
-       */
-      public Builder clearAd() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        ad_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 ap = 9;
-      private int ap_ ;
-      /**
-       * <code>optional uint32 ap = 9;</code>
-       */
-      public boolean hasAp() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional uint32 ap = 9;</code>
-       */
-      public int getAp() {
-        return ap_;
-      }
-      /**
-       * <code>optional uint32 ap = 9;</code>
-       */
-      public Builder setAp(int value) {
-        bitField0_ |= 0x00000100;
-        ap_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 ap = 9;</code>
-       */
-      public Builder clearAp() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        ap_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.trans.pixel.protoc.EquipState states = 10;
-      private java.util.List<com.trans.pixel.protoc.EquipProto.EquipState> states_ =
-        java.util.Collections.emptyList();
-      private void ensureStatesIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
-          states_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.EquipState>(states_);
-          bitField0_ |= 0x00000200;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.EquipState, com.trans.pixel.protoc.EquipProto.EquipState.Builder, com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder> statesBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.EquipState> getStatesList() {
-        if (statesBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(states_);
-        } else {
-          return statesBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public int getStatesCount() {
-        if (statesBuilder_ == null) {
-          return states_.size();
-        } else {
-          return statesBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public com.trans.pixel.protoc.EquipProto.EquipState getStates(int index) {
-        if (statesBuilder_ == null) {
-          return states_.get(index);
-        } else {
-          return statesBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder setStates(
-          int index, com.trans.pixel.protoc.EquipProto.EquipState value) {
-        if (statesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatesIsMutable();
-          states_.set(index, value);
-          onChanged();
-        } else {
-          statesBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder setStates(
-          int index, com.trans.pixel.protoc.EquipProto.EquipState.Builder builderForValue) {
-        if (statesBuilder_ == null) {
-          ensureStatesIsMutable();
-          states_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          statesBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder addStates(com.trans.pixel.protoc.EquipProto.EquipState value) {
-        if (statesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatesIsMutable();
-          states_.add(value);
-          onChanged();
-        } else {
-          statesBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder addStates(
-          int index, com.trans.pixel.protoc.EquipProto.EquipState value) {
-        if (statesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureStatesIsMutable();
-          states_.add(index, value);
-          onChanged();
-        } else {
-          statesBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder addStates(
-          com.trans.pixel.protoc.EquipProto.EquipState.Builder builderForValue) {
-        if (statesBuilder_ == null) {
-          ensureStatesIsMutable();
-          states_.add(builderForValue.build());
-          onChanged();
-        } else {
-          statesBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder addStates(
-          int index, com.trans.pixel.protoc.EquipProto.EquipState.Builder builderForValue) {
-        if (statesBuilder_ == null) {
-          ensureStatesIsMutable();
-          states_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          statesBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder addAllStates(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.EquipProto.EquipState> values) {
-        if (statesBuilder_ == null) {
-          ensureStatesIsMutable();
-          super.addAll(values, states_);
-          onChanged();
-        } else {
-          statesBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder clearStates() {
-        if (statesBuilder_ == null) {
-          states_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
-          onChanged();
-        } else {
-          statesBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public Builder removeStates(int index) {
-        if (statesBuilder_ == null) {
-          ensureStatesIsMutable();
-          states_.remove(index);
-          onChanged();
-        } else {
-          statesBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public com.trans.pixel.protoc.EquipProto.EquipState.Builder getStatesBuilder(
-          int index) {
-        return getStatesFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder getStatesOrBuilder(
-          int index) {
-        if (statesBuilder_ == null) {
-          return states_.get(index);  } else {
-          return statesBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder> 
-           getStatesOrBuilderList() {
-        if (statesBuilder_ != null) {
-          return statesBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(states_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public com.trans.pixel.protoc.EquipProto.EquipState.Builder addStatesBuilder() {
-        return getStatesFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.EquipProto.EquipState.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public com.trans.pixel.protoc.EquipProto.EquipState.Builder addStatesBuilder(
-          int index) {
-        return getStatesFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.EquipProto.EquipState.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.EquipState states = 10;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.EquipState.Builder> 
-           getStatesBuilderList() {
-        return getStatesFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.EquipState, com.trans.pixel.protoc.EquipProto.EquipState.Builder, com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder> 
-          getStatesFieldBuilder() {
-        if (statesBuilder_ == null) {
-          statesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.EquipProto.EquipState, com.trans.pixel.protoc.EquipProto.EquipState.Builder, com.trans.pixel.protoc.EquipProto.EquipStateOrBuilder>(
-                  states_,
-                  ((bitField0_ & 0x00000200) == 0x00000200),
-                  getParentForChildren(),
-                  isClean());
-          states_ = null;
-        }
-        return statesBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EquipOrder)
@@ -32818,79 +32057,77 @@ public final class EquipProto {
       "\n\005level\030\003 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006ilevel\030\013 " +
       "\001(\005\022\r\n\005irare\030\014 \001(\r\022\016\n\006heroid\030\r \001(\r\022\017\n\007en",
       "dtime\030\n \001(\003\0220\n\004list\030\016 \003(\0132\".com.trans.pi" +
-      "xel.protoc.EquipOrder\"\303\001\n\nEquipOrder\022\r\n\005" +
-      "order\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\020" +
-      "\n\010handbook\030\004 \001(\r\022\022\n\nequiplevel\030\005 \001(\r\022\014\n\004" +
-      "rare\030\006 \001(\r\022\013\n\003img\030\007 \001(\r\022\n\n\002ad\030\010 \001(\r\022\n\n\002a" +
-      "p\030\t \001(\r\0222\n\006states\030\n \003(\0132\".com.trans.pixe" +
-      "l.protoc.EquipState\"q\n\nEquipState\022\017\n\007sta" +
-      "teid\030\001 \001(\r\022\021\n\tstatename\030\002 \001(\t\022\r\n\005para1\030\003" +
-      " \001(\r\022\r\n\005para2\030\004 \001(\r\022\r\n\005skill\030\005 \001(\r\022\022\n\nsk" +
-      "illlevel\030\006 \001(\r\"P\n\014EquipupOrder\022\r\n\005order\030",
-      "\001 \002(\r\0221\n\005cover\030\002 \003(\0132\".com.trans.pixel.p" +
-      "rotoc.RewardInfo\"J\n\007Equipup\022\n\n\002id\030\001 \002(\r\022" +
-      "3\n\005equip\030\002 \003(\0132$.com.trans.pixel.protoc." +
-      "EquipupOrder\"<\n\013EquipupList\022-\n\004data\030\001 \003(" +
-      "\0132\037.com.trans.pixel.protoc.Equipup\"C\n\016Eq" +
-      "uiptucaoList\0221\n\005equip\030\001 \003(\0132\".com.trans." +
-      "pixel.protoc.Equiptucao\"<\n\nEquiptucao\022\016\n" +
-      "\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\014\n\004rare\030" +
-      "\003 \001(\005\"@\n\016SynthetiseList\022.\n\002id\030\001 \003(\0132\".co" +
-      "m.trans.pixel.protoc.Synthetise\"p\n\nSynth",
-      "etise\022\n\n\002id\030\001 \002(\r\022\016\n\006target\030\006 \002(\r\022\016\n\006nee" +
-      "did\030\007 \002(\r\0226\n\005cover\030\010 \003(\0132\'.com.trans.pix" +
-      "el.protoc.SynthetiseCover\"/\n\017SynthetiseC" +
-      "over\022\r\n\005cover\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\"M\n\032Re" +
-      "questAddHeroEquipCommand\022\016\n\006heroId\030\001 \002(\005" +
-      "\022\016\n\006infoId\030\002 \002(\003\022\017\n\007equipId\030\003 \001(\005\">\n\032Req" +
-      "uestEquipComposeCommand\022\021\n\tlevelUpId\030\001 \002" +
-      "(\005\022\r\n\005count\030\002 \001(\005\"=\n\033ResponseEquipCompos" +
-      "eCommand\022\017\n\007equipId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005" +
-      "\"S\n\033ResponseGetUserEquipCommand\0224\n\tuserE",
-      "quip\030\001 \003(\0132!.com.trans.pixel.protoc.User" +
-      "Equip\"8\n\tArmorList\022+\n\004data\030\001 \003(\0132\035.com.t" +
-      "rans.pixel.protoc.Armor\"\221\001\n\005Armor\022\n\n\002id\030" +
-      "\001 \001(\005\022\016\n\006ilevel\030\002 \001(\r\022\r\n\005level\030\003 \001(\005\022\r\n\005" +
-      "irare\030\004 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006heroid\030\007 \001(" +
-      "\r\0220\n\004list\030\016 \003(\0132\".com.trans.pixel.protoc" +
-      ".EquipOrder\"H\n\021EquipIncreaseList\0223\n\004data" +
-      "\030\001 \003(\0132%.com.trans.pixel.protoc.EquipInc" +
-      "rease\"L\n\rEquipIncrease\022\r\n\005level\030\001 \001(\005\022\020\n" +
-      "\010increase\030\002 \001(\002\022\014\n\004rate\030\003 \001(\005\022\014\n\004zero\030\004 ",
-      "\001(\005\"H\n\021IncreaseLevelList\0223\n\004data\030\001 \003(\0132%" +
-      ".com.trans.pixel.protoc.IncreaseLevel\"S\n" +
-      "\rIncreaseLevel\022\r\n\005level\030\001 \001(\005\0223\n\005rares\030\002" +
-      " \003(\0132$.com.trans.pixel.protoc.IncreaseRa" +
-      "re\"N\n\014IncreaseRare\022\014\n\004rare\030\001 \001(\005\0220\n\004cost" +
-      "\030\002 \003(\0132\".com.trans.pixel.protoc.RewardIn" +
-      "fo\")\n\004Item\022\016\n\006itemId\030\001 \002(\005\022\021\n\titemCount\030" +
-      "\002 \002(\005\"E\n\027RequestSaleEquipCommand\022*\n\004item" +
-      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Item\",\n\032" +
-      "RequestSubmitZhanliCommand\022\016\n\006zhanli\030\001 \002",
-      "(\005\"0\n\tUserEquip\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequi" +
-      "pCount\030\002 \002(\005\"B\n\010UserProp\022\016\n\006propId\030\001 \002(\005" +
-      "\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013expiredTime\030\003 \001(\t" +
-      "\"M\n\027ResponseUserPropCommand\0222\n\010userProp\030" +
-      "\001 \003(\0132 .com.trans.pixel.protoc.UserProp\"" +
-      ":\n\025RequestUsePropCommand\022\016\n\006propId\030\001 \002(\005" +
-      "\022\021\n\tpropCount\030\002 \002(\005\"L\n\026ResponseUsePropCo" +
-      "mmand\0222\n\010userProp\030\001 \003(\0132 .com.trans.pixe" +
-      "l.protoc.UserProp\"@\n\031RequestFenjieEquipC" +
-      "ommand\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 ",
-      "\002(\005\"R\n\032ResponseEquipResultCommand\0224\n\tuse" +
-      "rEquip\030\001 \003(\0132!.com.trans.pixel.protoc.Us" +
-      "erEquip\"?\n\034RequestEquipStrenthenCommand\022" +
-      "\017\n\007equipId\030\001 \002(\005\022\016\n\006itemId\030\002 \001(\r\"\033\n\031Requ" +
-      "estEquipPokedeCommand\"^\n\032ResponseEquipPo" +
-      "kedeCommand\022@\n\017userEquipPokede\030\001 \003(\0132\'.c" +
-      "om.trans.pixel.protoc.UserEquipPokede\"O\n" +
-      "\037RequestTalentChangeEquipCommand\022\n\n\002id\030\001" +
-      " \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"7" +
-      "\n\037RequestSynthetiseComposeCommand\022\024\n\014syn",
-      "thetiseId\030\001 \002(\r\"\'\n\025RequestEquipupCommand" +
-      "\022\016\n\006itemid\030\001 \002(\r\"_\n\035RequestMaterialCompo" +
-      "seCommand\022\016\n\006itemId\030\002 \002(\r\022.\n\004cost\030\001 \003(\0132" +
-      " .com.trans.pixel.protoc.CostItem"
+      "xel.protoc.EquipOrder\"]\n\nEquipOrder\022\r\n\005o" +
+      "rder\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\020\n\010handbook\030\004 \001" +
+      "(\r\022\022\n\nequiplevel\030\005 \001(\r\022\014\n\004rare\030\006 \001(\r\"q\n\n" +
+      "EquipState\022\017\n\007stateid\030\001 \001(\r\022\021\n\tstatename" +
+      "\030\002 \001(\t\022\r\n\005para1\030\003 \001(\r\022\r\n\005para2\030\004 \001(\r\022\r\n\005" +
+      "skill\030\005 \001(\r\022\022\n\nskilllevel\030\006 \001(\r\"P\n\014Equip" +
+      "upOrder\022\r\n\005order\030\001 \002(\r\0221\n\005cover\030\002 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\"J\n\007Equ" +
+      "ipup\022\n\n\002id\030\001 \002(\r\0223\n\005equip\030\002 \003(\0132$.com.tr",
+      "ans.pixel.protoc.EquipupOrder\"<\n\013Equipup" +
+      "List\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.Equipup\"C\n\016EquiptucaoList\0221\n\005equip\030\001" +
+      " \003(\0132\".com.trans.pixel.protoc.Equiptucao" +
+      "\"<\n\nEquiptucao\022\016\n\006itemid\030\001 \001(\005\022\020\n\010itemna" +
+      "me\030\002 \001(\t\022\014\n\004rare\030\003 \001(\005\"@\n\016SynthetiseList" +
+      "\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.protoc.Sy" +
+      "nthetise\"p\n\nSynthetise\022\n\n\002id\030\001 \002(\r\022\016\n\006ta" +
+      "rget\030\006 \002(\r\022\016\n\006needid\030\007 \002(\r\0226\n\005cover\030\010 \003(" +
+      "\0132\'.com.trans.pixel.protoc.SynthetiseCov",
+      "er\"/\n\017SynthetiseCover\022\r\n\005cover\030\001 \002(\r\022\r\n\005" +
+      "count\030\002 \002(\r\"M\n\032RequestAddHeroEquipComman" +
+      "d\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\022\017\n\007equ" +
+      "ipId\030\003 \001(\005\">\n\032RequestEquipComposeCommand" +
+      "\022\021\n\tlevelUpId\030\001 \002(\005\022\r\n\005count\030\002 \001(\005\"=\n\033Re" +
+      "sponseEquipComposeCommand\022\017\n\007equipId\030\001 \002" +
+      "(\005\022\r\n\005count\030\002 \002(\005\"S\n\033ResponseGetUserEqui" +
+      "pCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.trans." +
+      "pixel.protoc.UserEquip\"8\n\tArmorList\022+\n\004d" +
+      "ata\030\001 \003(\0132\035.com.trans.pixel.protoc.Armor",
+      "\"\221\001\n\005Armor\022\n\n\002id\030\001 \001(\005\022\016\n\006ilevel\030\002 \001(\r\022\r" +
+      "\n\005level\030\003 \001(\005\022\r\n\005irare\030\004 \001(\005\022\014\n\004type\030\006 \001" +
+      "(\005\022\016\n\006heroid\030\007 \001(\r\0220\n\004list\030\016 \003(\0132\".com.t" +
+      "rans.pixel.protoc.EquipOrder\"H\n\021EquipInc" +
+      "reaseList\0223\n\004data\030\001 \003(\0132%.com.trans.pixe" +
+      "l.protoc.EquipIncrease\"L\n\rEquipIncrease\022" +
+      "\r\n\005level\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n\004rate" +
+      "\030\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"H\n\021IncreaseLevelLis" +
+      "t\0223\n\004data\030\001 \003(\0132%.com.trans.pixel.protoc" +
+      ".IncreaseLevel\"S\n\rIncreaseLevel\022\r\n\005level",
+      "\030\001 \001(\005\0223\n\005rares\030\002 \003(\0132$.com.trans.pixel." +
+      "protoc.IncreaseRare\"N\n\014IncreaseRare\022\014\n\004r" +
+      "are\030\001 \001(\005\0220\n\004cost\030\002 \003(\0132\".com.trans.pixe" +
+      "l.protoc.RewardInfo\")\n\004Item\022\016\n\006itemId\030\001 " +
+      "\002(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027RequestSaleEqu" +
+      "ipCommand\022*\n\004item\030\001 \003(\0132\034.com.trans.pixe" +
+      "l.protoc.Item\",\n\032RequestSubmitZhanliComm" +
+      "and\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007equi" +
+      "pId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010UserPro" +
+      "p\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013",
+      "expiredTime\030\003 \001(\t\"M\n\027ResponseUserPropCom" +
+      "mand\0222\n\010userProp\030\001 \003(\0132 .com.trans.pixel" +
+      ".protoc.UserProp\":\n\025RequestUsePropComman" +
+      "d\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\"L\n\026" +
+      "ResponseUsePropCommand\0222\n\010userProp\030\001 \003(\013" +
+      "2 .com.trans.pixel.protoc.UserProp\"@\n\031Re" +
+      "questFenjieEquipCommand\022\017\n\007equipId\030\001 \002(\005" +
+      "\022\022\n\nequipCount\030\002 \002(\005\"R\n\032ResponseEquipRes" +
+      "ultCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.tran" +
+      "s.pixel.protoc.UserEquip\"?\n\034RequestEquip",
+      "StrenthenCommand\022\017\n\007equipId\030\001 \002(\005\022\016\n\006ite" +
+      "mId\030\002 \001(\r\"\033\n\031RequestEquipPokedeCommand\"^" +
+      "\n\032ResponseEquipPokedeCommand\022@\n\017userEqui" +
+      "pPokede\030\001 \003(\0132\'.com.trans.pixel.protoc.U" +
+      "serEquipPokede\"O\n\037RequestTalentChangeEqu" +
+      "ipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022" +
+      "\016\n\006itemId\030\003 \002(\005\"7\n\037RequestSynthetiseComp" +
+      "oseCommand\022\024\n\014synthetiseId\030\001 \002(\r\"\'\n\025Requ" +
+      "estEquipupCommand\022\016\n\006itemid\030\001 \002(\r\"_\n\035Req" +
+      "uestMaterialComposeCommand\022\016\n\006itemId\030\002 \002",
+      "(\r\022.\n\004cost\030\001 \003(\0132 .com.trans.pixel.proto" +
+      "c.CostItem"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -32950,7 +32187,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_EquipOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EquipOrder_descriptor,
-              new java.lang.String[] { "Order", "Name", "Des", "Handbook", "Equiplevel", "Rare", "Img", "Ad", "Ap", "States", });
+              new java.lang.String[] { "Order", "Name", "Handbook", "Equiplevel", "Rare", });
           internal_static_com_trans_pixel_protoc_EquipState_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_EquipState_fieldAccessorTable = new
