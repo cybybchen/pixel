@@ -3349,11 +3349,11 @@ message UserRewardTask {
 message UserRewardTaskRoom {
 	required uint64 createUserId = 1;
 	//repeated UserInfo user = 2;
-	required uint32 bossId = 3;
+	//required uint32 bossId = 3;
 	optional uint32 status = 4;
 	optional uint32 index = 5;
 	repeated RoomInfo roomInfo = 6; 
-	optional uint32 enemyId = 7;
+	optional uint32 eventid = 7;
 }
 
 message RequestCreateRewardTaskRoomCommand {

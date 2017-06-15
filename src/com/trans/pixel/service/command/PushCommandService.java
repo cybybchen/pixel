@@ -2,6 +2,7 @@ package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -569,8 +570,8 @@ public class PushCommandService extends BaseCommandService {
 	
 	public void pushUserRewardTask(Builder responseBuilder, UserBean user) {
 		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
-		List<UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
-		builder.addAllUserRewardTask(list);
+		Map<Integer, UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
+		builder.addAllUserRewardTask(list.values());
 		responseBuilder.setUserRewardTaskCommand(builder.build());
 	}
 }

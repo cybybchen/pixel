@@ -1,6 +1,6 @@
 package com.trans.pixel.service;
 
-import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -48,16 +48,15 @@ public class UserRewardTaskService {
 		userRewardTaskRedisService.updateUserRewardTask(userId, ut);
 	}
 	
-	public List<UserRewardTask> getUserRewardTaskList(UserBean user) {
-//		List<UserRewardTask> utList = new ArrayList<UserRewardTask>();
-		List<UserRewardTask> list = userRewardTaskRedisService.getUserRewardTaskList(user.getId());
+	public Map<Integer, UserRewardTask> getUserRewardTaskList(UserBean user) {
+		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long today = RedisService.today(0);
 		boolean needFlash = false;
-		for (int i = list.size() - 1; i >= 0; i++) {
-			UserRewardTask ut = list.get(i);
+		for (Integer index : map.keySet()) {
+			UserRewardTask ut = map.get(index);
 			if(ut.hasEndtime() && ut.getEndtime() >= today) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-				list.remove(i);
+				map.remove(index);
 				needFlash = true;
 			}
 		}
@@ -76,31 +75,33 @@ public class UserRewardTaskService {
 					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 					builder.setIndex(index);
 					index++;
-					list.add(builder.build());
+					userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
+					map.put(builder.getIndex(), builder.build());
 				}
 			}
 			
 		}
-		for (UserRewardTask ut : list) {
+		for (UserRewardTask ut : map.values()) {
 			if (ut.hasRoomInfo()) {
 				log.debug("" + RedisService.formatJson(ut));
 				if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
-					if (ut.getRoomInfo().getUser().getId() != user.getId() && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE)
+					if (ut.getRoomInfo().getUser().getId() != user.getId() && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){
 						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-					else {
-						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
-						builder.clearRoomInfo();
-						utList.add(builder.build());
 					}
+//					else {
+//						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+//						builder.clearRoomInfo();
+//						utList.add(builder.build());
+//					}
 					
 					continue;
 				}
 			}
 			
-			utList.add(ut);
+//			utList.add(ut);
 		}
 
-		return utList;
+		return map;
 	}
 	
 	public void updateToDB(long userId, int index) {

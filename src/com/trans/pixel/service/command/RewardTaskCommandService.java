@@ -2,6 +2,7 @@ package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -176,15 +177,15 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void getUserRewardTask(RequestUserRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
-		List<UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
-		builder.addAllUserRewardTask(list);
+		Map<Integer, UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
+		builder.addAllUserRewardTask(list.values());
 		responseBuilder.setUserRewardTaskCommand(builder.build());
 	}
 	
 	public void getUserRewardTaskReward(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
-		List<RewardBean> rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder);
-		if (rewardList != null && rewardList.size() > 0) {
+		MultiReward.Builder rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder);
+		if (rewardList.getLootCount() > 0) {
 			handleRewards(responseBuilder, user, rewardList);
 			
 			ResponseUserRewardTaskCommand.Builder userRewardTaskBuilder = ResponseUserRewardTaskCommand.newBuilder();

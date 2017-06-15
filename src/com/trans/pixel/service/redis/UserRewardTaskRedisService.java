@@ -1,11 +1,11 @@
 package com.trans.pixel.service.redis;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.springframework.stereotype.Service;
 
@@ -44,19 +44,19 @@ public class UserRewardTaskRedisService extends RedisService {
 			return null;
 	}
 	
-	public List<UserRewardTask> getUserRewardTaskList(long userId) {
+	public Map<Integer, UserRewardTask> getUserRewardTask(long userId) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		Map<String,String> map = hget(key);
-		List<UserRewardTask> userRewardTaskList = new ArrayList<UserRewardTask>();
+		Map<Integer, UserRewardTask> userRewardTaskMap = new TreeMap<Integer, UserRewardTask>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			String value = it.next().getValue();
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 			if(value!= null && parseJson(value, builder))
-				userRewardTaskList.add(builder.build());
+				userRewardTaskMap.put(builder.getIndex(), builder.build());
 		}
 		
-		return userRewardTaskList;
+		return userRewardTaskMap;
 	}
 	
 	public void updateUserRewardTaskList(long userId, List<UserRewardTask> utList) {
