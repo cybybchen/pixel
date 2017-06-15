@@ -217,7 +217,7 @@ public class UserLadderService {
 		int level = 0;
 		for (LadderModeLevel ladderModeLevel : ladderMode.getLevelList()) {
 			if (ladderModeLevel.getScore() <= score)
-				level = Math.max(level, ladderModeLevel.getLevel());
+				level = Math.min(level, ladderModeLevel.getLevel());
 		}
 		
 		return level;
