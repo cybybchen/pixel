@@ -98,6 +98,7 @@ public class UserRewardTaskService {
 					else {
 						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
 						builder.clearRoomInfo();
+						userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 						map.put(ut.getIndex(), builder.build());
 					}
 					
