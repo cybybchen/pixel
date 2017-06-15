@@ -28,8 +28,6 @@ import com.trans.pixel.protoc.PVPProto.PVPEvent;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
-import com.trans.pixel.protoc.UserInfoProto.Enemy;
-import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
@@ -303,43 +301,17 @@ public class PvpMapService {
 			logType = PvpMapConst.TYPE_BOSS;
 		}
 		
-		MultiReward.Builder rewards = MultiReward.newBuilder();
+		MultiReward.Builder rewards = null;
 //		int buff = -1;
 		if(ret){
 			if(event.getEventid()/1000 == 21)
 				redis.deleteBoss(user, positionid);
 			else
 				redis.deleteEvent(user, positionid);
-			EventConfig config = levelRedisService.getEvent(event.getEventid());
-			RewardInfo.Builder rewardinfo = RewardInfo.newBuilder();
-			for(RewardInfo loot : config.getLootlistList()){
-				int weight = loot.getWeight()+(int)(loot.getWeightb()*event.getLevel());
-				int count = Math.max(0, weight/100);
-				if(count > 0)
-					weight -= weight%100;
-				if(loot.getWeight()+(int)(loot.getWeightb()*event.getLevel()) > RedisService.nextInt(100)){
-					rewardinfo.setItemid(loot.getItemid());
-					rewardinfo.setCount(loot.getCounta()+(int)(loot.getCountb()*event.getLevel()));
-					if(rewardinfo.getCount() > 0)
-						rewards.addLoot(rewardinfo);
-				}
-			}
+			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
 			Map<String, PVPMap> map = redis.getPvpMap();
 			if(map.containsKey(event.getFieldid()+"")) {
 				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
-			}
-			if(config.hasEnemygroup())
-			for(Enemy enemy : config.getEnemygroup().getEnemyList()) {
-				int rewardcount = 0;
-				for(int i = 0; i < enemy.getCount(); i++)
-					if(RedisService.nextInt(100) < enemy.getLootweight())
-						rewardcount++;
-				if(enemy.getLoot() != 0 && rewardcount > 0) {
-					RewardInfo.Builder reward = RewardInfo.newBuilder();
-					reward.setItemid(enemy.getLoot());
-					reward.setCount(rewardcount);
-					rewards.addLoot(reward);
-				}
 			}
 			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
 			if (event.getEventid()/1000 == 21) {

@@ -19,13 +19,13 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLevelMapper;
 import com.trans.pixel.model.userinfo.EventBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.Event;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.HeroChoice;
 import com.trans.pixel.protoc.UserInfoProto.Area;
@@ -54,7 +54,7 @@ import com.trans.pixel.service.UserTalentService;
 
 @Repository
 public class LevelRedisService extends RedisService {
-	@SuppressWarnings("unused")
+//	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(LevelRedisService.class);
 	private static final int NEWPLAY_LEVEL_1 = 1012;
 	private static final int NEWPLAY_LEVEL_2 = 1013;
@@ -396,6 +396,45 @@ public class LevelRedisService extends RedisService {
 			return builder.build();
 		else
 			return null;
+	}
+	public MultiReward.Builder eventReward(int eventid, int level){
+		return eventReward(getEvent(eventid), level);
+	}
+	public MultiReward.Builder eventReward(EventConfig eventconfig, int level){
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		if(eventconfig == null)
+			return rewards;
+		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		for(RewardInfo loot : eventconfig.getLootlistList()){
+			int count = 1;
+			if(loot.hasWeight()) {
+				int weight = loot.getWeight()+(int)(loot.getWeightb()*level);
+				count = Math.max(0, weight/100);
+				weight = weight%100;
+				if(weight > RedisService.nextInt(100))
+					count++;
+			}
+			if(count > 0) {
+				reward.setItemid(loot.getItemid());
+				reward.setCount(loot.getCount()*count);
+				rewards.addLoot(reward);
+			}
+		}
+		if(eventconfig.getType() == 0) {//only fight event
+			if(eventconfig.hasEnemygroup())
+			for(Enemy enemy : eventconfig.getEnemygroup().getEnemyList()) {
+				int rewardcount = 0;
+				for(int i = 0; i < enemy.getCount(); i++)
+					if(RedisService.nextInt(100) < enemy.getLootweight())
+						rewardcount++;
+				if(enemy.getLoot() != 0 && rewardcount > 0) {
+					reward.setItemid(enemy.getLoot());
+					reward.setCount(rewardcount);
+					rewards.addLoot(reward);
+				}
+			}
+		}
+		return rewards;
 	}
 //	public Map<String, Event> getEventMap(){
 //		Map<String, String> keyvalue = hget(RedisKey.EVENT_CONFIG);
@@ -879,31 +918,38 @@ public class LevelRedisService extends RedisService {
 		return value;
 	}
 	
-	public List<RewardBean> getNewplayReward(UserBean user, int levelId) {
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
+	public MultiReward.Builder getNewplayReward(UserBean user, int levelId) {
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		
 		if (user.getFirstGetHeroId() == 0)
-			return rewardList;
+			return rewards;
 		HeroChoice heroChoice = heroRedisService.getHerochoice(user.getFirstGetHeroId());
 		if (heroChoice == null)
-			return rewardList;
+			return rewards;
+		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		reward.setCount(1);
 		switch (levelId) {
 			case NEWPLAY_LEVEL_1:
-				rewardList.add(RewardBean.init(heroChoice.getEvent1(), 1));
+				reward.setItemid(heroChoice.getEvent1());
+				rewards.addLoot(reward);
 				break;
 			case NEWPLAY_LEVEL_2:
-				rewardList.add(RewardBean.init(heroChoice.getEvent2(), 1));
-				rewardList.add(RewardBean.init(heroChoice.getEvent3(), 1));
+				reward.setItemid(heroChoice.getEvent2());
+				rewards.addLoot(reward);
+				reward.setItemid(heroChoice.getEvent3());
+				rewards.addLoot(reward);
 				break;
 			case NEWPLAY_LEVEL_3:
-				rewardList.add(RewardBean.init(heroChoice.getEvent4(), 1));			
-				rewardList.add(RewardBean.init(heroChoice.getEvent5(), 1));
+				reward.setItemid(heroChoice.getEvent4());
+				rewards.addLoot(reward);
+				reward.setItemid(heroChoice.getEvent5());
+				rewards.addLoot(reward);
 				break;
 			default:
 				break;
 		}
 		
-		return rewardList;
+		return rewards;
 	}
 
 	public boolean isMainEvent(int eventId) {

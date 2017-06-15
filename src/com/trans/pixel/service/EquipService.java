@@ -164,12 +164,12 @@ public class EquipService {
 		return ret;
 	}
 	
-	public List<RewardInfo> sale(UserBean user, List<Item> itemList, MultiReward.Builder costItems) {
+	public MultiReward.Builder sale(UserBean user, List<Item> itemList, MultiReward.Builder costItems) {
 		boolean canSale = canSaleEquip(user, itemList);
 		if (!canSale)
 			return null;
 		
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		for (Item item : itemList) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			
@@ -178,7 +178,7 @@ public class EquipService {
 			reward.setItemid(RewardConst.COIN);
 			reward.setCount(getSaleRewardCount(itemId, itemCount));
 			
-			rewardList = rewardService.mergeReward(rewardList, reward.build());
+			rewards.addLoot(reward);
 			RewardInfo.Builder builder = RewardInfo.newBuilder();
 			builder.setItemid(itemId);
 			if (itemId > RewardConst.FOOD) {
@@ -194,9 +194,9 @@ public class EquipService {
 				builder.setCount(userEquip.getEquipCount());
 			}
 			costItems.addLoot(builder.build());
-			
 		}
-		return rewardList;
+		rewardService.mergeReward(rewards);
+		return rewards;
 	}
 	
 	private int getSaleRewardCount(int itemId, int itemCount) {

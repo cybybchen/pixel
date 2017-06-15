@@ -105,7 +105,13 @@ public class RewardTaskService {
 			if(event.hasCost())
 				costService.costOnly(user, event.getCost());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
-			builder.setStatus(REWARDTASK_STATUS.END_VALUE);
+			if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5){
+				userRewardTaskService.refresh(builder);
+			}else{
+				builder.setLeftcount(builder.getLeftcount()-1);
+				if(builder.getLeftcount() == 0)
+					builder.setStatus(REWARDTASK_STATUS.END_VALUE);
+			}
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			if(event.hasCost()){
 				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), event.getCost().getItemid());

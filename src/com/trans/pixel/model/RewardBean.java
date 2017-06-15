@@ -4,9 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-
-import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
@@ -17,6 +16,8 @@ import com.trans.pixel.constants.DirConst;
 import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONObject;
 
 public class RewardBean {
 	private int id = 0;
@@ -68,7 +69,7 @@ public class RewardBean {
 	public void setLasttime(int lasttime) {
 		this.lasttime = lasttime;
 	}
-	public static List<RewardBean> buildRewardBeanList(List<RewardInfo> rewardList) {
+	public static List<RewardBean> buildRewardBeanList(Collection<RewardInfo> rewardList) {
 		List<RewardBean> rewardBeanList = new ArrayList<RewardBean>();
 		for (RewardInfo reward : rewardList) {
 			RewardBean rewardBean = new RewardBean();

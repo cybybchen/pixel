@@ -34,7 +34,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
-import com.trans.pixel.protoc.UserInfoProto.Enemy;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.protoc.UserInfoProto.EventExp;
 import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
@@ -158,7 +157,7 @@ public class LevelCommandService extends BaseCommandService {
 		long time = (RedisService.now()-userLevel.getLootTime())/TimeConst.SECONDS_PER_HOUR*TimeConst.SECONDS_PER_HOUR;
 		if(time >= TimeConst.SECONDS_PER_HOUR){
 			MultiReward.Builder rewards = MultiReward.newBuilder();
-			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+//			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 			Daguan.Builder unlockDaguan = redis.getDaguan(userLevel.getUnlockDaguan());
 			Map<String, Loot> lootMap = redis.getLootConfig();
 			Iterator<Entry<String, Loot>> it = lootMap.entrySet().iterator();
@@ -172,10 +171,11 @@ public class LevelCommandService extends BaseCommandService {
 					RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
 					rewardBuilder.setCount(calLootCount(TypeTranslatedUtil.stringToInt(entry.getKey()), 
 							unlockDaguan.build()) * time / TimeConst.SECONDS_PER_HOUR);
-					rewardService.mergeReward(rewardList, rewardBuilder.build());
+					rewards.addLoot(rewardBuilder);
 				}
 			}
-			rewards.addAllLoot(rewardList);
+			rewardService.mergeReward(rewards);
+//			rewards.addAllLoot(rewardList);
 //			rewardService.doReward(user, RewardConst.COIN, userLevel.getCoin()*(time));
 //			rewardService.doReward(user, RewardConst.EXP, userLevel.getExp()*(time));
 //			rewardService.updateUser(user);
@@ -203,40 +203,17 @@ public class LevelCommandService extends BaseCommandService {
 		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
 
-	public List<RewardBean> eventReward(EventConfig eventconfig, Event event, UserBean user){
-		List<RewardBean> rewards = new ArrayList<RewardBean>();
-		for(RewardInfo eventreward : eventconfig.getLootlistList()){
-			RewardBean bean = new RewardBean();
-			bean.setItemid(eventreward.getItemid());
-			bean.setCount(eventreward.getCount());
-			rewards.add(bean);
-		}
+	public MultiReward.Builder eventReward(EventConfig eventconfig, Event event, UserBean user){
+		MultiReward.Builder rewards = redis.eventReward(eventconfig, 0);
 		Daguan.Builder daguan = redis.getDaguan(event.getDaguan());
-		if(eventconfig.getType() == 0) {//only fight event
-			RewardBean bean = new RewardBean();
-			bean.setItemid(daguan.getLootlist().getItemid());
-			bean.setCount(Math.max(1, event.getCount()));
-			rewards.add(bean);
-			if(eventconfig.hasEnemygroup())
-			for(Enemy enemy : eventconfig.getEnemygroup().getEnemyList()) {
-				int rewardcount = 0;
-				for(int i = 0; i < enemy.getCount(); i++)
-					if(RedisService.nextInt(100) < enemy.getLootweight())
-						rewardcount++;
-				if(enemy.getLoot() != 0 && rewardcount > 0) {
-					RewardBean reward = new RewardBean();
-					reward.setItemid(enemy.getLoot());
-					reward.setCount(rewardcount);
-					rewards.add(reward);
-				}
-			}
-		}
+		if(eventconfig.getType() == 0) //only fight event
+			rewards.addLoot(daguan.getLootlist());
 		EventExp exp = redis.getEventExp(daguan.getLevel());
-		{RewardBean bean = new RewardBean();
+		{RewardInfo.Builder bean = RewardInfo.newBuilder();
 		bean.setItemid(exp.getReward(0).getItemid());
 		bean.setCount(exp.getReward(0).getCount());
-		rewards.add(bean);}
-		rewards.addAll(redis.getNewplayReward(user, eventconfig.getId()));
+		rewards.addLoot(bean);}
+		rewards.addAllLoot(redis.getNewplayReward(user, eventconfig.getId()).getLootList());
 		rewardService.mergeReward(rewards);
 //		rewardService.doFilterRewards(user, rewards);
 //		pusher.pushRewardCommand(responseBuilder, user, rewards);
@@ -294,7 +271,7 @@ public class LevelCommandService extends BaseCommandService {
 			if(eventconfig.getType() == 1){//buy event
 				if(!eventconfig.hasCost() || eventconfig.getCost().getCount() == 0 || costService.cost(user, eventconfig.getCost().getItemid(), eventconfig.getCost().getCount())){
 		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getItemid());
-					List<RewardBean> rewards = eventReward(eventconfig, event, user);
+					MultiReward.Builder rewards = eventReward(eventconfig, event, user);
 					handleRewards(responseBuilder, user, rewards);
 					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
 						userLevel.setLeftCount(userLevel.getLeftCount()-1);
@@ -312,7 +289,7 @@ public class LevelCommandService extends BaseCommandService {
 					userLevel.setLeftCount(userLevel.getLeftCount()-1);
 					redis.saveUserLevel(userLevel);
 				}
-				List<RewardBean> rewards = eventReward(eventconfig, event, user);
+				MultiReward.Builder rewards = eventReward(eventconfig, event, user);
 				handleRewards(responseBuilder, user, rewards);
 			}
 			redis.delEvent(user, event);
@@ -433,7 +410,7 @@ public class LevelCommandService extends BaseCommandService {
 //					bean.setCount(eventreward.getRewardcount()+RedisService.nextInt(eventreward.getRewardcount1()-eventreward.getRewardcount()));
 //					rewardList.add(bean);
 //				}
-				List<RewardBean> rewards = eventReward(eventconfig, event, friend);
+				MultiReward.Builder rewards = eventReward(eventconfig, event, friend);
 				rewardService.doFilter(friend, rewards);
 //				pusher.pushRewardCommand(responseBuilder, friend, rewards);
 //				if (winBean != null)
@@ -506,9 +483,9 @@ public class LevelCommandService extends BaseCommandService {
 		pusher.pushUserInfoCommand(responseBuilder, user);
 	}
 	
-	private void sendHelpMail(UserBean friend, UserBean user, List<RewardBean> rewardList) {
+	private void sendHelpMail(UserBean friend, UserBean user, MultiReward.Builder rewards) {
 		String content = user.getUserName() + "帮你过关啦！"; 
-		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, rewardList);
+		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, RewardBean.buildRewardBeanList(rewards.getLootList()));
 		mailService.addMail(mail);
 	}
 

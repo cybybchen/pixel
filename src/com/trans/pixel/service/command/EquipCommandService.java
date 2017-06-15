@@ -88,15 +88,15 @@ public class EquipCommandService extends BaseCommandService {
 	public void saleEquip(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Item> itemList = cmd.getItemList();
 		MultiReward.Builder costItems = MultiReward.newBuilder();
-		List<RewardInfo> rewardList = equipService.sale(user, itemList, costItems);
-		if (rewardList == null || rewardList.isEmpty()) {
+		MultiReward.Builder rewards = equipService.sale(user, itemList, costItems);
+		if (rewards == null || rewards.getLootCount() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_SALE_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_SALE_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			MultiReward.Builder rewards = MultiReward.newBuilder();
-			rewards.addAllLoot(rewardList);
+//			MultiReward.Builder rewards = MultiReward.newBuilder();
+//			rewards.addAllLoot(rewards);
 			rewards.setName("恭喜获得");
 
 			handleRewards(responseBuilder, user, rewards.build());

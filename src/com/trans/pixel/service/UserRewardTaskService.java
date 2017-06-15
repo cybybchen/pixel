@@ -50,10 +50,37 @@ public class UserRewardTaskService {
 		userRewardTaskRedisService.updateUserRewardTask(userId, ut);
 	}
 	
+	public void refresh(UserRewardTask.Builder builder) {
+		RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
+		for(RewardTask.Builder task : config.getDataBuilderList()){
+			if(builder.getTask().getType() != task.getType())
+				continue;
+//			for(int i = 0; i < task.getRandcount(); i++) {
+//				UserRewardTask.Builder builder = UserRewardTask.newBuilder();
+			int eventid = builder.getTask().getEventid();
+			while(eventid == builder.getTask().getEventid())
+				eventid = task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid();
+			task.setEventid(eventid);
+			builder.setTask(task);
+			builder.getTaskBuilder().clearRandcount();
+			builder.getTaskBuilder().clearEvent();
+//			if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5)
+//				builder.setEndtime(today+24*3600);
+			builder.setLeftcount(task.getCount());
+			builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+//			builder.setIndex(index);
+//			index++;
+//			userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
+//			map.put(builder.getIndex(), builder.build());
+//			}
+			break;
+		}
+	}
+	
 	public Map<Integer, UserRewardTask> getUserRewardTaskList(UserBean user) {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long today = RedisService.today(0);
-		boolean needFlash = false;
+		boolean needRefresh = false;
 		Iterator<Entry<Integer, UserRewardTask>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			int index = it.next().getKey();
@@ -61,12 +88,12 @@ public class UserRewardTaskService {
 			if(ut.hasEndtime() && ut.getEndtime() <= today) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 				it.remove();
-				needFlash = true;
+				needRefresh = true;
 			}
 		}
 		if(map.get(1) == null)
-			needFlash = true;
-		if(needFlash){
+			needRefresh = true;
+		if(needRefresh){
 			RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
 			int index = 1;
 			for(RewardTask.Builder task : config.getDataBuilderList()){

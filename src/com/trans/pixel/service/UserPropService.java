@@ -67,6 +67,8 @@ public class UserPropService {
 		UserPropBean userProp = selectUserProp(userId, propId);
 		if (userProp == null) {
 			Prop prop = propService.getProp(propId);
+			if(prop == null)
+				return;
 			userProp = UserPropBean.initUserProp(userId, propId, prop.getEndtime());
 		}
 		

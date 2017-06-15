@@ -52,7 +52,8 @@ public class PropService {
 		return prop;
 	}
 	
-	private void randomReward(List<RewardInfo> rewardList, int propId, int propCount, Map<String, Prop> map){
+	private void randomReward(MultiReward.Builder rewardList, int propId, int propCount, Map<String, Prop> map){
+		//TODO
 		Prop prop = map.get("" + propId);
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
@@ -60,9 +61,10 @@ public class PropService {
 				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001 && reward.getItemid() < 36000){
 					randomReward(rewardList, reward.getItemid(), (int)rewardService.randomRewardCount(reward), map);
 				}else
-					rewardService.mergeReward(rewardList, reward);
+					rewardList.addLoot(reward);
 			}
 		}
+		rewardService.mergeReward(rewardList);
 	}
 	
 	
@@ -87,11 +89,11 @@ public class PropService {
 //		}
 		
 		
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		MultiReward.Builder rewardList = MultiReward.newBuilder();
 		randomReward(rewardList, propId, propCount, map);
 		
-		if (!rewardList.isEmpty()) {
-			rewards.addAllLoot(rewardList);
+		if (rewardList.getLootCount() > 0) {
+			rewards.addAllLoot(rewardList.getLootList());
 			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
 		}
@@ -176,20 +178,19 @@ public class PropService {
 	}
 	
 	private MultiReward.Builder rewardsHandle(List<RewardInfo> rewardList) {
-		MultiReward.Builder multiReward = MultiReward.newBuilder();
-		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+//		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
 		Map<String, Prop> map = propRedisService.getPackageConfig();
 		for (RewardInfo reward : rewardList) {
 			Prop prop = map.get("" + reward.getItemid());
 			if (prop == null || prop.getAutoopen() == 0) {
-				rewards.add(reward);
+				rewards.addLoot(reward);
 				continue;
 			}
 			
 			randomReward(rewards, reward.getItemid(), (int)reward.getCount(), map);
 		}
-		multiReward.addAllLoot(rewards);
-		return multiReward;
+		return rewards;
 	}
 	
 	public ResultConst canUseProp(UserBean user, int propId) {

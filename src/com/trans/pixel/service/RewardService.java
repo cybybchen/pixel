@@ -14,7 +14,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -225,27 +224,29 @@ public class RewardService {
 		doRewards(user, rewards);
 	}
 	
-	public List<RewardInfo> mergeReward(List<RewardInfo> rewardList, RewardInfo mergeReward) {
-		if (mergeReward == null || mergeReward.getItemid() == 0)
-			return rewardList;
-		RewardInfo.Builder builder = RewardInfo.newBuilder(mergeReward);
-		builder.setCount(randomRewardCount(mergeReward));
-		for (int i = 0; i < rewardList.size(); i++) {
-			RewardInfo reward = rewardList.get(i);
-			RewardInfo.Builder nReward = RewardInfo.newBuilder(reward);
-			nReward.setItemid(reward.getItemid());
-			nReward.setCount(reward.getCount());
-			if (reward.getItemid() == builder.getItemid()) {
-				nReward.setCount(nReward.getCount() + builder.getCount());
-				rewardList.set(i, nReward.build());
-				return rewardList;
+	public void mergeReward(MultiReward.Builder rewards) {
+		for(int i = rewards.getLootCount()-1; i >= 0; i--) {
+			for(int j = i-1; j >= 0; j--) {
+				if(rewards.getLootBuilder(i).getItemid() == rewards.getLootBuilder(j).getItemid()) {
+					rewards.getLootBuilder(j).setCount(rewards.getLootBuilder(i).getCount()+rewards.getLootBuilder(j).getCount());
+					rewards.removeLoot(i);
+					break;
+				}
 			}
 		}
-		
-		rewardList.add(builder.build());
-		
-		return rewardList;
 	}
+	
+//	public void mergeReward(List<RewardBean> rewardList) {
+//		for(int i = rewardList.size()-1; i >= 0; i--) {
+//			for(int j = i-1; j >= 0; j--) {
+//				if(rewardList.get(i).getItemid() == rewardList.get(j).getItemid()) {
+//					rewardList.get(j).setCount(rewardList.get(i).getCount()+rewardList.get(j).getCount());
+//					rewardList.remove(i);
+//					break;
+//				}
+//			}
+//		}
+//	}
 	
 	public long randomRewardCount(RewardInfo reward) {
 		if (reward.getCounta() == 0 && reward.getCountb() == 0)
@@ -255,18 +256,6 @@ public class RewardService {
 			return reward.getCounta();
 		
 		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta()) + 1) + Math.min(reward.getCountb(), reward.getCounta());
-	}
-	
-	public void mergeReward(List<RewardBean> rewardList) {
-		for(int i = rewardList.size()-1; i >= 0; i--) {
-			for(int j = i-1; j >= 0; j--) {
-				if(rewardList.get(i).getItemid() == rewardList.get(j).getItemid()) {
-					rewardList.get(j).setCount(rewardList.get(i).getCount()+rewardList.get(j).getCount());
-					rewardList.remove(i);
-				}
-			}
-				
-		}
 	}
 	
 	public void updateUser(UserBean user){
