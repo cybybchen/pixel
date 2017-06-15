@@ -1112,6 +1112,10 @@ public class ActivityService {
 		taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_GET_HERO_VALUE, heroId);
 	}
 	
+	public void getHeroActivity(UserBean user, List<Integer> heroIds) {
+		taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_GET_HERO_VALUE, heroIds);
+	}
+	
 	/**
 	 * 完成悬赏任务
 	 * @param userId

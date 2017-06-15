@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -78,6 +79,26 @@ public class UserHeroRedisService extends RedisService{
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userHero.getUserId()+"#"+userHero.getId());
+	}
+	
+	public void addUserHeroList(long userId, List<HeroInfoBean> userHeroList) {
+		String key = RedisKey.PREFIX + RedisKey.USER_NEW_HERO_PREFIX + userId;
+		Map<String, String> map = convertHeroMap(userHeroList);
+//		this.hput(key, "" + userHero.getId(), userHero.toJson());	
+		this.hputAll(key, map);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		
+		for (HeroInfoBean userHero : userHeroList)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userId+"#" + userHero.getId());
+	}
+	
+	private Map<String, String> convertHeroMap(List<HeroInfoBean> userHeroList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (HeroInfoBean hero : userHeroList) {
+			map.put("" + hero.getId(), hero.toJson());
+		}
+		
+		return map;
 	}
 	
 	public void deleteUserHero(final long userId, final long id) {

@@ -1,6 +1,8 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,6 +13,7 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.mapper.UserHeroMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.UserHeroRedisService;
@@ -106,6 +109,10 @@ public class UserHeroService {
 		userHeroRedisService.addUserHero(userHero);
 	}
 	
+	private void addUserHeroList(long userId, List<HeroInfoBean> userHeroList) {
+		userHeroRedisService.addUserHeroList(userId, userHeroList);
+	}
+	
 	public void updateToDB(long userId, int id) {
 		HeroInfoBean userHero = userHeroRedisService.selectUserHero(userId, id);
 		if(userHero != null) {
@@ -135,28 +142,38 @@ public class UserHeroService {
 //	}
 	public void addUserHeros(UserBean user, List<RewardInfo> rewards) {
 		long userId = user.getId();
+		List<HeroInfoBean> addHeroList = new ArrayList<HeroInfoBean>();
+		List<Integer> newHeroIds = new ArrayList<Integer>();
+		Map<String, Heroloot> heroLootMap = heroRedisService.getHerolootConfig();
+		Map<String, Hero> heroMap = heroService.getHeroMap();
 		for(RewardInfo reward : rewards) {
-			Heroloot heroloot = heroRedisService.getHeroloot(reward.getItemid());
+			Heroloot heroloot = heroLootMap.get("" + reward.getItemid());
 			int heroId = heroloot.getHeroid();
 			int star = heroloot.getStar();
 			int count = (int)(heroloot.getCount() * reward.getCount());
-			HeroInfoBean newHero = initUserHero(userId, heroId, star);
+			HeroInfoBean newHero = initUserHero(userId, heroMap.get("" + heroId), star);
 			/**
 			 * 更新图鉴
 			 */
 			userPokedeService.updateUserPokede(newHero, user);
-			
 			int addCount = 0;
 			while (addCount < count) {
 				newHero.setId(user.updateHeroInfoId());
-				addUserHero(newHero);
-				/**
-				 * 获得英雄的活动
-				 */
-				activityService.getHeroActivity(user, heroId);
+//				addUserHero(newHero);
+				addHeroList.add(newHero);
+				
 				++addCount;
 			}
+			
+			if (!newHeroIds.contains(heroId))
+				newHeroIds.add(heroId);
 		}
+		
+		/**
+		 * 获得英雄的活动
+		 */
+		activityService.getHeroActivity(user, newHeroIds);
+		addUserHeroList(user.getId(), addHeroList);
 		
 		userService.updateUser(user);
 	}
@@ -196,6 +213,14 @@ public class UserHeroService {
 		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(heroService.getHero(heroId), star);
 		userHero.setUserId(userId);
 		skillService.unlockHeroSkill(heroId, userHero);
+		
+		return userHero;
+	}
+	
+	private HeroInfoBean initUserHero(long userId, Hero hero, int star) {
+		HeroInfoBean userHero = HeroInfoBean.initHeroInfo(hero, star);
+		userHero.setUserId(userId);
+		skillService.unlockHeroSkill(hero, userHero);
 		
 		return userHero;
 	}

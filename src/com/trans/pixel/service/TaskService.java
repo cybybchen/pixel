@@ -195,6 +195,43 @@ public class TaskService {
 		}
 	}
 	
+	public void sendTask2Score(UserBean user, int targetId, List<Integer> heroIds) {
+		long userId = user.getId();
+		Map<String, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
+		Iterator<Entry<String, Task2TargetHero>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, Task2TargetHero> entry = it.next();
+			Task2TargetHero taskHero = entry.getValue();
+			for (TaskTarget task : taskHero.getTargetList()) {
+				if (task.getTargetid() == targetId) {
+					UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, task.getTargetid()));
+					boolean hasModify = false;
+					
+					for (int heroId : heroIds) {
+						if (ut.getHeroidList().contains(heroId)) {
+							continue;
+						}
+						
+						for (TaskOrder order : task.getOrderList()) {
+							if (order.getTargetcount() == heroId) {
+//								if (order.getTargetcount1() == 0 || order.getTargetcount1() <= count) {
+									ut.addHeroid(heroId);
+									hasModify = true;
+//								}
+							}
+						}
+					}
+					if (hasModify) {
+						userTaskService.updateUserTask2(userId, ut.build());
+						
+						if (isCompleteNewTaskByTask2(ut.build(), user, taskHero))
+							noticeService.pushNotice(userId, NoticeConst.TYPE_MAINTASK);
+					}
+				}
+			}
+		}
+	}
+	
 	private boolean isAllFinished(TaskTarget task, UserBean user) {
 		List<TaskOrder> taskOrderList = task.getOrderList();
 		for (TaskOrder taskOrder : taskOrderList) {
