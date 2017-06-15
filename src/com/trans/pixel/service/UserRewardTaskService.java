@@ -95,17 +95,15 @@ public class UserRewardTaskService {
 					if (ut.getRoomInfo().getUser().getId() != user.getId() && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){
 						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 					}
-//					else {
-//						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
-//						builder.clearRoomInfo();
-//						utList.add(builder.build());
-//					}
+					else {
+						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+						builder.clearRoomInfo();
+						map.put(ut.getIndex(), builder.build());
+					}
 					
 					continue;
 				}
 			}
-			
-//			utList.add(ut);
 		}
 
 		return map;
