@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -53,13 +54,13 @@ public class UserRewardTaskService {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long today = RedisService.today(0);
 		boolean needFlash = false;
-		Iterator<Integer> it = map.keySet().iterator();
+		Iterator<Entry<Integer, UserRewardTask>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			int index = it.next();
+			int index = it.next().getKey();
 			UserRewardTask ut = map.get(index);
-			if(ut.hasEndtime() && ut.getEndtime() >= today) {//过0点刷新
+			if(ut.hasEndtime() && ut.getEndtime() <= today) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-				map.remove(index);
+				it.remove();
 				needFlash = true;
 			}
 		}
