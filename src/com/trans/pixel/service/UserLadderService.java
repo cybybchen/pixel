@@ -114,7 +114,7 @@ public class UserLadderService {
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//从战力排行榜上随机对手
 			int randomStart = -6 + RandomUtils.nextInt(12);
-			List<UserInfo> randomUserList = userService.getRandUser(randomStart, 12 + randomStart, user);
+			List<UserInfo> randomUserList = userService.getRandUserByNodelete(randomStart, 12 + randomStart, user);
 			for (UserInfo userinfo : randomUserList) {
 				if (enemyUserIdList.contains(userinfo.getId()))
 					continue;

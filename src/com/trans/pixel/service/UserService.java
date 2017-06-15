@@ -485,6 +485,30 @@ public class UserService {
 		return ranks;
 	}
 	
+	public List<UserInfo> getRandUserByNodelete(int index1, int index2, UserBean user){
+		long myrank = rankRedisService.getMyZhanliRank(user);
+		List<UserInfo> ranks = new ArrayList<UserInfo>();
+		if(myrank < 0)
+			ranks = rankRedisService.getZhanliRanksByNodelete(user, Math.min(index1, -10), -1);
+		else if(myrank+index1 > 0)
+			ranks = rankRedisService.getZhanliRanksByNodelete(user, myrank+index1, myrank+index2);
+		else
+			ranks = rankRedisService.getZhanliRanksByNodelete(user, 0, myrank+index2);
+	
+		Iterator<UserInfo> it = ranks.iterator();
+		while(it.hasNext()){
+			UserInfo rank = it.next();
+			if(rank.getId() == user.getId()/* || friends.contains(rank.getId()) || members.contains(rank.getId()+"")*/){
+				it.remove();
+				continue;
+			}
+		}
+		while(ranks.size() > index2 - index1){
+			ranks.remove(ranks.size()-1);
+		}
+		return ranks;
+	}
+	
 	public void cache(int serverId, UserInfo user){
 		userRedisService.cache(serverId, user);
 	}

@@ -47,6 +47,16 @@ public class RankRedisService extends RedisService{
 //		return userService.getCaches(, ranks);
 	}
 	
+	public List<UserInfo> getZhanliRanksByNodelete(final UserBean user, long start, long end) {
+		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), start, end);
+		List<String> userIds = new ArrayList<String>();
+		for(TypedTuple<String> rank : ranks){
+			userIds.add(rank.getValue());
+		}
+		return userRedisService.getCaches(user.getServerId(), userIds);
+//		return userService.getCaches(, ranks);
+	}
+	
 	public Set<TypedTuple<String>> getZhanliRanks(final int serverId, long start, long end) {
 		return this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE + serverId, start, end);
 	}
