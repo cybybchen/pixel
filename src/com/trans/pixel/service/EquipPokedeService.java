@@ -15,6 +15,7 @@ import com.trans.pixel.constants.PackageConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -23,6 +24,7 @@ import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipIncrease;
 import com.trans.pixel.protoc.EquipProto.EquipOrder;
 import com.trans.pixel.protoc.EquipProto.Equipup;
+import com.trans.pixel.protoc.EquipProto.EquipupOrder;
 import com.trans.pixel.protoc.EquipProto.IncreaseLevel;
 import com.trans.pixel.protoc.EquipProto.IncreaseRare;
 import com.trans.pixel.service.redis.EquipPokedeRedisService;
@@ -130,11 +132,22 @@ public class EquipPokedeService {
 		return null;
 	}
 	
-	public ResultConst equipup(UserEquipPokedeBean pokede, UserBean user) {
+	public ResultConst equipup(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder costs) {
 		pokede.setOrder(pokede.getOrder() + 1);
-		Equipup equipup = equipRedisService.getEquipup("" + pokede.getItemId() + pokede.getOrder());
+		Equipup equipup = equipRedisService.getEquipup(pokede.getItemId());
 		if (equipup == null)
 			return ErrorConst.EQUIP_LEVELUP_ERROR;
+		
+		for (EquipupOrder equipOrder : equipup.getEquipList()) {
+			if (equipOrder.getOrder() == pokede.getOrder() + 1) {
+				if (!costService.canCostAll(user, RewardBean.convertCostList(equipOrder.getCoverList())))
+					return ErrorConst.NOT_ENOUGH_CHIP;
+				
+				pokede.setOrder(pokede.getOrder() + 1);
+				costService.costAll(user, RewardBean.convertCostList(equipOrder.getCoverList()));
+				costs.addAllLoot(equipOrder.getCoverList());
+			}
+		}
 		
 		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		return SuccessConst.EQUIP_LEVELUP_SUCCESS;

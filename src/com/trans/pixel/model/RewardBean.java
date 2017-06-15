@@ -185,6 +185,20 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
+	public static List<CostItem> convertCostList(List<RewardInfo> rewardList) {
+		List<CostItem> costList = new ArrayList<CostItem>();
+		if (rewardList == null || rewardList.isEmpty())
+			return costList;
+		for (RewardInfo reward : rewardList) {
+			CostItem.Builder cost = CostItem.newBuilder();
+			cost.setCostid(reward.getItemid());
+			cost.setCostcount((int)reward.getCount());
+			costList.add(cost.build());
+		}
+		
+		return costList;
+	}
+	
 	public static RewardBean init(int type, long count) {
 		RewardBean reward = new RewardBean();
 		reward.setItemid(type);

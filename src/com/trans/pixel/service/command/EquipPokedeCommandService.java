@@ -174,7 +174,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
             return;
 		}
 		
-		ResultConst ret = equipPokedeService.equipup(pokede, user);
+		MultiReward.Builder costs = MultiReward.newBuilder();
+		ResultConst ret = equipPokedeService.equipup(pokede, user, costs);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			ErrorCommand errorCommand = buildErrorCommand(ret);
@@ -186,5 +187,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 		builder.addUserEquipPokede(pokede.build());
 		responseBuilder.setEquipPokedeCommand(builder.build());
+		if (costs.getLootCount() > 0) {
+			pushCommandService.pushRewardCommand(responseBuilder, user, costs.build(), false);
+		}
 	}
 }

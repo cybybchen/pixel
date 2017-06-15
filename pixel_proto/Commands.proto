@@ -1083,10 +1083,14 @@ message EquipState {
 	optional uint32 skilllevel = 6;
 }
 
+message EquipupOrder {
+	required uint32 order = 1;
+	repeated RewardInfo cover = 2;
+}
+
 message Equipup {
 	required uint32 id = 1;
-	required uint32 order = 2;
-	repeated RewardInfo cover = 3;
+	repeated EquipupOrder equip = 2;
 }
 
 message EquipupList {

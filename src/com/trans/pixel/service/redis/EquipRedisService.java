@@ -286,11 +286,11 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	//equipup
-	public Equipup getEquipup(String key) {
-		String value = hget(RedisKey.EQUIPUP_CONFIG, key);
+	public Equipup getEquipup(int id) {
+		String value = hget(RedisKey.EQUIPUP_CONFIG, "" + id);
 		if (value == null) {
 			Map<String, Equipup> equipConfig = getEquipupConfig();
-			return equipConfig.get(key);
+			return equipConfig.get("" + id);
 		} else {
 			Equipup.Builder builder = Equipup.newBuilder();
 			if(parseJson(value, builder))
@@ -331,7 +331,7 @@ public class EquipRedisService extends RedisService {
 		
 		Map<String, Equipup> map = new HashMap<String, Equipup>();
 		for(Equipup.Builder equipup : builder.getDataBuilderList()){
-			map.put("" + equipup.getId() + equipup.getOrder(), equipup.build());
+			map.put("" + equipup.getId(), equipup.build());
 		}
 		return map;
 	}
