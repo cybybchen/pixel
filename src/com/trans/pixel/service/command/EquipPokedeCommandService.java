@@ -156,6 +156,7 @@ public class EquipPokedeCommandService extends BaseCommandService {
 	}
 	
 	public void equipup(RequestEquipupCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 		int currentLadderEquipId = ladderService.getCurrentSeasonEquipId();
 		if (currentLadderEquipId == cmd.getItemid()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_EQUIP_NOTUP_ERROR);
@@ -176,6 +177,8 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		
 		MultiReward.Builder costs = MultiReward.newBuilder();
 		ResultConst ret = equipPokedeService.equipup(pokede, user, costs);
+		builder.addUserEquipPokede(pokede.build());
+		responseBuilder.setEquipPokedeCommand(builder.build());
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			ErrorCommand errorCommand = buildErrorCommand(ret);
@@ -184,9 +187,6 @@ public class EquipPokedeCommandService extends BaseCommandService {
             return;
 		}
 		
-		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
-		builder.addUserEquipPokede(pokede.build());
-		responseBuilder.setEquipPokedeCommand(builder.build());
 		if (costs.getLootCount() > 0) {
 			pushCommandService.pushRewardCommand(responseBuilder, user, costs.build(), false);
 		}

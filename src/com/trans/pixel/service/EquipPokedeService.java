@@ -133,11 +133,11 @@ public class EquipPokedeService {
 	}
 	
 	public ResultConst equipup(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder costs) {
-		pokede.setOrder(pokede.getOrder() + 1);
 		Equipup equipup = equipRedisService.getEquipup(pokede.getItemId());
 		if (equipup == null)
 			return ErrorConst.EQUIP_LEVELUP_ERROR;
 		
+		boolean hasOrder = false;
 		for (EquipupOrder equipOrder : equipup.getEquipList()) {
 			if (equipOrder.getOrder() == pokede.getOrder() + 1) {
 				if (!costService.canCostAll(user, RewardBean.convertCostList(equipOrder.getCoverList())))
@@ -146,8 +146,13 @@ public class EquipPokedeService {
 				pokede.setOrder(pokede.getOrder() + 1);
 				costService.costAll(user, RewardBean.convertCostList(equipOrder.getCoverList()));
 				costs.addAllLoot(equipOrder.getCoverList());
+				hasOrder = true;
+				break;
 			}
 		}
+		
+		if (!hasOrder)
+			return ErrorConst.EQUIP_LEVELUP_ERROR;
 		
 		userEquipPokedeService.updateUserEquipPokede(pokede, user);
 		return SuccessConst.EQUIP_LEVELUP_SUCCESS;
