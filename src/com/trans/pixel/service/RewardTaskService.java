@@ -275,8 +275,9 @@ public class RewardTaskService {
 				return builder.build();
 			}
 			
-			user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
 			userRewardTaskBuilder.mergeFrom(rewardTask);
+			user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
+			userRewardTaskBuilder.setIndex(user.getRewardTaskIndex());
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == createUserId) {
 					userRewardTaskBuilder.setRoomInfo(builder.getRoomInfo(i));
@@ -287,7 +288,7 @@ public class RewardTaskService {
 			userRewardTaskService.updateUserRewardTask(user, userRewardTaskBuilder.build());
 			
 			RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
-			roomInfoBuilder.setIndex(userRewardTaskBuilder.getIndex());
+			roomInfoBuilder.setIndex(rewardTask.getIndex());
 			roomInfoBuilder.setUser(userService.getCache(user.getServerId(), user.getId()));
 			builder.addRoomInfo(roomInfoBuilder.build());
 			rewardTaskRedisService.setUserRewardTaskRoom(builder.build());

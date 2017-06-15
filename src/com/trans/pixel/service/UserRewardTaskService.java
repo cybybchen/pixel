@@ -142,7 +142,7 @@ public class UserRewardTaskService {
 		if(ut != null && ut.getTask().getEventid() != 0) {
 			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
 			
-			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
+			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE && ut.getIndex()>10)
 				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
 		}
 		
