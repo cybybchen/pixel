@@ -185,16 +185,14 @@ public class EquipRedisService extends RedisService {
 	
 	//armor
 	public Armor getArmor(int itemId) {
+		Armor.Builder builder = Armor.newBuilder();
 		String value = hget(RedisKey.ARMOR_CONFIG, "" + itemId);
-		if (value == null) {
+		if (value != null && parseJson(value, builder)){
+			return builder.build();
+		}else if(!exists(RedisKey.ARMOR_CONFIG)){
 			Map<String, Armor> config = getArmorConfig();
 			return config.get("" + itemId);
-		} else {
-			Armor.Builder builder = Armor.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
 		}
-		
 		return null;
 	}
 	
@@ -202,11 +200,10 @@ public class EquipRedisService extends RedisService {
 		Map<String, String> keyvalue = hget(RedisKey.ARMOR_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Armor> map = buildArmorConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Armor> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				keyvalue.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.ARMOR_CONFIG, redismap);
+			hputAll(RedisKey.ARMOR_CONFIG, keyvalue);
 			return map;
 		}else{
 			Map<String, Armor> map = new HashMap<String, Armor>();
