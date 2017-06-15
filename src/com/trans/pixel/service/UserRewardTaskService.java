@@ -63,6 +63,8 @@ public class UserRewardTaskService {
 				needFlash = true;
 			}
 		}
+		if(map.get(1) == null)
+			needFlash = true;
 		if(needFlash){
 			RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
 			int index = 1;

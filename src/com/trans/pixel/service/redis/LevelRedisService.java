@@ -491,7 +491,8 @@ public class LevelRedisService extends RedisService {
 			for(Enemy.Builder enemy : event.getEnemygroupBuilder().getEnemyBuilderList()){
 				Enemy.Builder enemyconfig = enemymap.get(enemy.getEnemyid());
 				if(enemyconfig == null){
-					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
+					logger.error("Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
+//					throw new RuntimeErrorException(null, "Event "+event.getId()+" cannot find enemy "+enemy.getEnemyid());
 				}else {
 					enemy.setLoot(enemyconfig.getLoot());
 					enemy.setLootweight(enemyconfig.getLootweight());
