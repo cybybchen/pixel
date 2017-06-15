@@ -103,7 +103,7 @@ public class UserRewardTaskService {
 					builder.setTask(task);
 					builder.getTaskBuilder().clearRandcount();
 					builder.getTaskBuilder().clearEvent();
-					if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5)
+					if(builder.getTask().getType() != 4 && builder.getTask().getType() != 5)
 						builder.setEndtime(today+24*3600);
 					builder.setLeftcount(task.getCount());
 					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
