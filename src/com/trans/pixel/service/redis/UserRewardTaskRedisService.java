@@ -20,7 +20,8 @@ public class UserRewardTaskRedisService extends RedisService {
 	public void updateUserRewardTask(long userId, UserRewardTask ut) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		if (ut.getRoomInfo() != null && ut.getRoomInfo().getUser().getId() != userId && ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
-			hdelete(key, "" + ut.getIndex());
+			if(!deleteUserRewardTask(userId, ut))
+				this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		else
 			this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
@@ -28,10 +29,13 @@ public class UserRewardTaskRedisService extends RedisService {
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
 	}
 	
-	public void deleteUserRewardTask(long userId, UserRewardTask ut) {
-//		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-//		hdelete(key, "" + ut.getIndex());
-//		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	public boolean deleteUserRewardTask(long userId, UserRewardTask ut) {
+		if(ut.getIndex() < 10)
+			return false;
+		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
+		hdelete(key, "" + ut.getIndex());
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		return true;
 	}
 	
 	public UserRewardTask getUserRewardTask(long userId, int index) {
@@ -48,9 +52,10 @@ public class UserRewardTaskRedisService extends RedisService {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		Map<String,String> map = hget(key);
 		Map<Integer, UserRewardTask> userRewardTaskMap = new TreeMap<Integer, UserRewardTask>();
-		Iterator<Entry<String, String>> it = map.entrySet().iterator();
-		while (it.hasNext()) {
-			String value = it.next().getValue();
+//		Iterator<Entry<String, String>> it = map.entrySet().iterator();
+//		while (it.hasNext()) {
+		for(String value : map.values()) {
+//			String value = it.next().getValue();
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 			if(value!= null && parseJson(value, builder))
 				userRewardTaskMap.put(builder.getIndex(), builder.build());

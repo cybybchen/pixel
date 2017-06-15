@@ -88,7 +88,7 @@ public class UserRewardTaskService {
 			if(ut.hasEndtime() && ut.getEndtime() <= today) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 				it.remove();
-				needRefresh = true;
+//				needRefresh = true;
 			}
 		}
 		if(map.get(1) == null)
@@ -105,6 +105,8 @@ public class UserRewardTaskService {
 					builder.getTaskBuilder().clearEvent();
 					if(builder.getTask().getType() != 4 && builder.getTask().getType() != 5)
 						builder.setEndtime(today+24*3600);
+					else
+						builder.clearEndtime();
 					builder.setLeftcount(task.getCount());
 					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 					builder.setIndex(index);
@@ -142,7 +144,7 @@ public class UserRewardTaskService {
 		if(ut != null && ut.getTask().getEventid() != 0) {
 			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
 			
-			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE && ut.getIndex()>10)
+			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
 				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
 		}
 		
