@@ -105,8 +105,11 @@ public class PropService {
 		int randWeight = rand.nextInt(prop.getWeightall());
 		for (int i = 0; i < prop.getRewardCount(); ++i) {
 			RewardInfo item = prop.getReward(i);
-			if (randWeight < item.getWeight())
-				return item;
+			if (randWeight < item.getWeight()) {
+				RewardInfo.Builder builder = RewardInfo.newBuilder(item);
+				builder.setCount(rewardService.randomRewardCount(item));
+				return builder.build();
+			}
 			
 			randWeight -= item.getWeight();
 		}
