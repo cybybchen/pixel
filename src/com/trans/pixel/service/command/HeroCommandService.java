@@ -397,6 +397,7 @@ public class HeroCommandService extends BaseCommandService {
 			
 //			List<RewardBean> rewardList = RewardBean.initRewardList(RewardConst.COIN, resetCoin);
 //			handleRewards(responseBuilder, user, rewardList);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		}
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		builder.setHeroId(heroId);
