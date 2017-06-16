@@ -275,7 +275,7 @@ public class CostService {
 					if(count > user.getZhaohuanshi() + user.getZhaohuanshi1()) {
 						if (cost(user, RewardConst.JEWEL, (count - user.getZhaohuanshi() - user.getZhaohuanshi1()) * CostConst.ZHAOHUANSHI_TO_JEWEL)) {
 							user.setZhaohuanshi(0);
-							user.setZhaohuanshi(0);
+							user.setZhaohuanshi1(0);
 							return true;
 						}
 						else

@@ -1058,7 +1058,6 @@ message EquipOrder {
 	optional uint32 order = 1;
 	optional string name = 2;
 	optional uint32 handbook = 4;
-	optional uint32 equiplevel = 5;
 	optional uint32 rare = 6;
 }
 
