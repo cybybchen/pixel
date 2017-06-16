@@ -244,4 +244,8 @@ public class EquipService {
 	public Armor getArmor(int itemId) {
 		return equipRedisService.getArmor(itemId);
 	}
+	
+	public Chip getChip(int itemId) {
+		return equipRedisService.getChip(itemId);
+	}
 }

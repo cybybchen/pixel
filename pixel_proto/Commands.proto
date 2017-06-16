@@ -1002,7 +1002,7 @@ message Prop {
 	optional int32 itemid = 1;
 	optional string name = 2;
 	//optional int32 img = 3;
-	//optional int32 rare = 4;
+	optional int32 rare = 4;
 	optional int32 cost = 5;
 	//optional string description = 5;
 	optional int32 hashero = 6;
@@ -1200,6 +1200,7 @@ message ResponseUserPropCommand { //玩家道具列表
 message RequestUsePropCommand { //打开道具包
 	required int32 propId = 1;
 	required int32 propCount = 2;
+	optional uint32 chipId = 3;
 }
 
 message ResponseUsePropCommand {

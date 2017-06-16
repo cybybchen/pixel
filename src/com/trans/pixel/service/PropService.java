@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.EquipProto.SynthetiseCover;
@@ -44,6 +45,8 @@ public class PropService {
 	private CostService costService;
 	@Resource
 	private EquipPokedeService equipPokedeService;
+	@Resource
+	private EquipService equipService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -57,7 +60,12 @@ public class PropService {
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
-				if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001 && reward.getItemid() < 36000){
+				if (reward == null) {
+					RewardInfo.Builder builder = RewardInfo.newBuilder();
+					builder.setItemid(prop.getItemid());
+					builder.setCount(1);
+					rewardList.addLoot(builder.build());
+				} else if(reward != null && reward.getItemid()/10000 == RewardConst.PACKAGE/10000 && reward.getItemid() != 37001 && reward.getItemid() < 36000){
 					randomReward(rewardList, reward.getItemid(), (int)reward.getCount(), map);
 				}else {
 					RewardInfo.Builder builder = RewardInfo.newBuilder(reward);
@@ -73,7 +81,7 @@ public class PropService {
 	
 	
 	
-	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards) {
+	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards, int chipId) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return ErrorConst.PROP_USE_ERROR;
@@ -92,6 +100,24 @@ public class PropService {
 //			return ret;
 //		}
 		
+		if (propId >= 34091 && propId <= 34093) {
+			Chip chip = equipService.getChip(chipId);
+			if (chip == null)
+				return ErrorConst.CHIP_IS_NOT_EXISTS_ERROR;
+			
+			if (chip.getRare() != prop.getRare())
+				return ErrorConst.CHIP_CAN_NOT_GET_ERROR;
+			
+			RewardInfo.Builder builder = RewardInfo.newBuilder();
+			builder.setItemid(chipId);
+			builder.setCount(prop.getJudge() * propCount);
+			rewards.addLoot(builder.build());
+			
+			userProp.setPropCount(userProp.getPropCount() - propCount);
+			userPropService.updateUserProp(userProp);
+			
+			return SuccessConst.USE_PROP;
+		}
 		
 		MultiReward.Builder rewardList = MultiReward.newBuilder();
 		randomReward(rewardList, propId, propCount, map);
