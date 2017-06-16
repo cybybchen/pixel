@@ -30,7 +30,7 @@ public class UserRewardTaskRedisService extends RedisService {
 	}
 	
 	public boolean deleteUserRewardTask(long userId, UserRewardTask ut) {
-		if(ut.getIndex() < 10)
+		if(ut.getIndex() < 20)
 			return false;
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		hdelete(key, "" + ut.getIndex());

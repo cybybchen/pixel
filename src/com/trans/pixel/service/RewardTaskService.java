@@ -276,7 +276,7 @@ public class RewardTaskService {
 			}
 			
 			userRewardTaskBuilder.mergeFrom(rewardTask);
-			user.setRewardTaskIndex(user.getRewardTaskIndex() + 1);
+			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1));
 			userRewardTaskBuilder.setIndex(user.getRewardTaskIndex());
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == createUserId) {
