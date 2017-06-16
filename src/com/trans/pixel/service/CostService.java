@@ -16,6 +16,7 @@ import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Material;
 
 @Service
 public class CostService {
@@ -35,6 +36,8 @@ public class CostService {
 	private UnionService unionService;
 	@Resource
 	private LootService lootService;
+	@Resource
+	private EquipService equipService;
 	
 //	private Comparator<CostItem.Builder> comparator = new Comparator<CostItem.Builder>() {
 //        public int compare(CostItem.Builder cost1, CostItem.Builder cost2) {
@@ -202,6 +205,24 @@ public class CostService {
 				userPropService.updateUserProp(userProp);
 				return true;
 			}
+		} else if (itemId > RewardConst.CAILIAO) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
+			if (userEquip == null || userEquip.getEquipCount() < count) {
+				Material material = equipService.getMaterial(itemId);
+				if (cost(user, RewardConst.JEWEL, (count - (userEquip != null ? userEquip.getEquipCount() : 0)) * material.getFordiamond())) {
+					if (userEquip != null && userEquip.getEquipCount() > 0) {
+						userEquip.setEquipCount(0);
+						userEquipService.updateUserEquip(userEquip);
+						return true;
+					}
+				} else
+					return false;
+					
+			}
+			
+			userEquip.setEquipCount((int)(userEquip.getEquipCount() - count));
+			userEquipService.updateUserEquip(userEquip);
+			return true;
 		} else if (itemId > RewardConst.EQUIPMENT) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip != null && userEquip.getEquipCount() >= count) {
@@ -328,6 +349,14 @@ public class CostService {
 			if (userProp != null && userProp.getPropCount() >= itemCount) {
 				return true;
 			}
+		} else if (itemId > RewardConst.CAILIAO) {
+			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
+			if (userEquip == null || userEquip.getEquipCount() < itemCount) {
+				Material material = equipService.getMaterial(itemId);
+				return canCost(user, RewardConst.JEWEL, (itemCount - (userEquip != null ? userEquip.getEquipCount() : 0)) * material.getFordiamond());
+			}
+			
+			return true;
 		} else if (itemId > RewardConst.EQUIPMENT) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip != null && userEquip.getEquipCount() >= itemCount) {

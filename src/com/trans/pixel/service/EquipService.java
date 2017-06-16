@@ -248,4 +248,8 @@ public class EquipService {
 	public Chip getChip(int itemId) {
 		return equipRedisService.getChip(itemId);
 	}
+	
+	public Material getMaterial(int itemId) {
+		return equipRedisService.getMaterial(itemId);
+	}
 }
