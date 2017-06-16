@@ -134,6 +134,7 @@ public class UserRankBean {
 		builder.setUserName(userName);
 		builder.setVip(vip);
 		builder.setZhanli(zhanli);
+		builder.setScore2(score2);
 		
 		return builder.build();
 	}

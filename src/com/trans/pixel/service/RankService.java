@@ -80,7 +80,7 @@ public class RankService {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, ActivityConst.KAIFU2_RECHARGE);
 		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
-		int rankInit = values.size() + 1;
+		int rankInit = values.size();
 		for (TypedTuple<String> value : values) {
 			UserRankBean rank = new UserRankBean();
 			for (UserInfo userInfo : userInfoList) {
@@ -102,7 +102,7 @@ public class RankService {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		Set<TypedTuple<String>> values = rankRedisService.getRankList(serverId, type, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
 		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
-		int rankInit = values.size() + 1;
+		int rankInit = values.size();
 		for (TypedTuple<String> value : values) {
 			UserRankBean rank = new UserRankBean();
 			for (UserInfo userInfo : userInfoList) {
