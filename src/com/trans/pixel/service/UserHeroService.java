@@ -158,6 +158,8 @@ public class UserHeroService {
 			userPokedeService.updateUserPokede(newHero, user);
 			int addCount = 0;
 			while (addCount < count) {
+				newHero = new HeroInfoBean();
+				newHero = initUserHero(userId, heroMap.get("" + heroId), star);
 				newHero.setId(user.updateHeroInfoId());
 //				addUserHero(newHero);
 				addHeroList.add(newHero);
