@@ -431,17 +431,17 @@ public class HeroCommandService extends BaseCommandService {
 	}
 	
 	public void buyHeroPackage(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user) {
-		if (!costService.cost(user, RewardConst.JEWEL, BUY_HERO_PACKAGE_COST)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
-            responseBuilder.setErrorCommand(errorCommand);
-		}else if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
+		if (user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT > HERO_PACKAGE_LIMIT) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_LIMIT_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HERO_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
-		}else {
+		} else if (!costService.cost(user, RewardConst.JEWEL, BUY_HERO_PACKAGE_COST)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+            responseBuilder.setErrorCommand(errorCommand);
+		} else {
 			user.setHeroLimit(user.getHeroLimit() + BUY_HERO_PACKAGE_COUNT);
 			userService.updateUser(user);
 			responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
