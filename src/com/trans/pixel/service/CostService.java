@@ -205,7 +205,7 @@ public class CostService {
 				userPropService.updateUserProp(userProp);
 				return true;
 			}
-		} else if (itemId > RewardConst.CAILIAO) {
+		} else if (itemId == RewardConst.RAID_KEY) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < count) {
 				Material material = equipService.getMaterial(itemId);
@@ -349,7 +349,7 @@ public class CostService {
 			if (userProp != null && userProp.getPropCount() >= itemCount) {
 				return true;
 			}
-		} else if (itemId > RewardConst.CAILIAO) {
+		} else if (itemId == RewardConst.RAID_KEY) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < itemCount) {
 				Material material = equipService.getMaterial(itemId);
