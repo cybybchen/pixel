@@ -993,6 +993,38 @@ public class ManagerService extends RedisService{
 			result.put("areaMonster", object);
 		}
 
+		if(req.containsKey("update-rewardTask") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.REWARDTASK_KEY + userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-rewardTask"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.REWARDTASK_KEY + userId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-rewardTask", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.REWARDTASK_KEY + userId, map);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-rewardTask", map.toString());
+			}
+			req.put("rewardTask", 1);
+		}else if(req.containsKey("del-rewardTask") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.REWARDTASK_KEY + userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-rewardTask", "");
+			req.put("rewardTask", 1);
+		}
+		if(req.containsKey("rewardTask") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.REWARDTASK_KEY+userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("rewardTask", object);
+		}
+
 		if(req.containsKey("update-pvpMonster") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMONSTER_PREFIX + userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pvpMonster"));

@@ -234,13 +234,14 @@ function buildUserJson(key, value){
             json["prop"] = 1;
             json["equippokede"] = 1;
         }else if(datatype == "pvp"){
+            json["rewardTask"] = 1;
+            json["pvpMonster"] = 1;
+            json["pvpMine"] = 1;
+            json["pvpBuff"] = 1;
             json["areaMonster"] = 1;
             json["areaBossTime"] = 1;
             json["areaEquip"] = 1;
             json["areaBuff"] = 1;
-            json["pvpMonster"] = 1;
-            json["pvpMine"] = 1;
-            json["pvpBuff"] = 1;
         } else if (datatype == "talent") {
         		json["talent"] = 1;
             json["talentskill"] = 1;
@@ -326,6 +327,18 @@ function appendUserDatas(message, dirty){
     if(message["achieve"]!=null){
         appendUserData("achieve", message["achieve"]);
     }
+    if(message["rewardTask"]!=null){
+        appendUserData("rewardTask", message["rewardTask"]);
+    }
+    if(message["pvpMonster"]!=null){
+        appendUserData("pvpMonster", message["pvpMonster"]);
+    }
+    if(message["pvpMine"]!=null){
+        appendUserData("pvpMine", message["pvpMine"]);
+    }
+    if(message["pvpBuff"]!=null){
+        appendUserData("pvpBuff", message["pvpBuff"]);
+    }
     if(message["areaMonster"]!=null){
         appendUserData("areaMonster", message["areaMonster"]);
     }
@@ -337,15 +350,6 @@ function appendUserDatas(message, dirty){
     }
     if(message["areaBuff"]!=null){
         appendUserData("areaBuff", message["areaBuff"]);
-    }
-    if(message["pvpMonster"]!=null){
-        appendUserData("pvpMonster", message["pvpMonster"]);
-    }
-    if(message["pvpMine"]!=null){
-        appendUserData("pvpMine", message["pvpMine"]);
-    }
-    if(message["pvpBuff"]!=null){
-        appendUserData("pvpBuff", message["pvpBuff"]);
     }
     if(message["talent"]!=null){
         appendUserData("talent", message["talent"]);
