@@ -98,6 +98,10 @@ public class UserRewardTaskService {
 			int index = 1;
 			for(RewardTask.Builder task : config.getDataBuilderList()){
 				for(int i = 0; i < task.getRandcount(); i++) {
+					if(map.get(index) != null){
+						index++;
+						continue;
+					}
 					UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 					task.setEventid(task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid());
 					builder.setTask(task);
