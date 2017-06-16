@@ -213,8 +213,8 @@ public class CostService {
 					if (userEquip != null && userEquip.getEquipCount() > 0) {
 						userEquip.setEquipCount(0);
 						userEquipService.updateUserEquip(userEquip);
-						return true;
 					}
+					return true;
 				} else
 					return false;
 					
