@@ -131,7 +131,7 @@ public class LadderService {
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
 		builder.setPosition(position);
-		if (type == LadderConst.TYPE_LADDER_NORMAL)
+		if (type == LadderConst.TYPE_LADDER_NORMAL && ret == 0)
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
 		
