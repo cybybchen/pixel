@@ -122,7 +122,7 @@ public class UserLadderService {
 				UserLadder enemyLadder = initUserLadder(type, Math.max(userLadder.getGrade() - 1, 1), team, false, userLadder.getScore());
 				if (enemyLadder != null) {
 					int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
-					if (position != enemyLadder.getPosition()) {
+					if (position != enemyLadder.getPosition() && !isExists(map, enemyLadder)) {
 						UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
 						builder.setPosition(position);
 						map.put(builder.getPosition(), builder.build());
