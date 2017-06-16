@@ -68,7 +68,7 @@ public class UserCrontabService {
 	@Resource
 	private RaidRedisService raidService;
 	
-//	@Scheduled(cron = "0 0/5 * * * ? ")
+	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void updateUserToDB() {
 		try{

@@ -12,7 +12,7 @@ public class UnionFightCrontabService {
 	@Resource
 	private UnionService unionService;
 	
-//	@Scheduled(cron = "0 0 21 * * ? ")
+	@Scheduled(cron = "0 0 21 * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void unionFight() {
 		unionService.unionFightTask();
