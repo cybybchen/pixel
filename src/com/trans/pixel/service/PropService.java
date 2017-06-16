@@ -17,7 +17,6 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Prop;
@@ -145,28 +144,28 @@ public class PropService {
 		if (equipPokede != null)
 			return ErrorConst.EQUIP_IS_EXIST_ERROR;
 		
-		List<CostItem> costList = buildCostList(syn);
+		List<RewardInfo> costList = buildCostList(syn);
 		if (!costService.canCostAll(user, costList)) 
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
 		costService.costAll(user, costList);
 		
 		rewards.addLoot(RewardBean.init(syn.getTarget(), 1).buildRewardInfo());
-		costs.addAllLoot(RewardBean.buildCostList(costList));
+		costs.addAllLoot(costList);
 		
 		return SuccessConst.PROP_COMPOSE_SUCCESS;
 	}
 	
-	private List<CostItem> buildCostList(Synthetise syn) {
-		List<CostItem> costList = new ArrayList<CostItem>();
-		CostItem.Builder builder = CostItem.newBuilder();
-		builder.setCostid(syn.getId());
-		builder.setCostcount(1);
+	private List<RewardInfo> buildCostList(Synthetise syn) {
+		List<RewardInfo> costList = new ArrayList<RewardInfo>();
+		RewardInfo.Builder builder = RewardInfo.newBuilder();
+		builder.setItemid(syn.getId());
+		builder.setCount(1);
 		costList.add(builder.build());
 		for (SynthetiseCover cover : syn.getCoverList()) {
-			builder = CostItem.newBuilder();
-			builder.setCostid(cover.getCover());
-			builder.setCostcount(cover.getCount());
+			builder = RewardInfo.newBuilder();
+			builder.setItemid(cover.getCover());
+			builder.setCount(cover.getCount());
 			costList.add(builder.build());
 		}
 		
@@ -210,10 +209,10 @@ public class PropService {
 		return SuccessConst.USE_PROP;
 	}
 	
-	public boolean canMaterialCompose(UserBean user, List<CostItem> costList) {
+	public boolean canMaterialCompose(UserBean user, List<RewardInfo> costList) {
 		int count = 0;
-		for (CostItem cost : costList) {
-			count += cost.getCostcount();
+		for (RewardInfo cost : costList) {
+			count += cost.getCount();
 		}
 		
 		if (count < 1000)
@@ -225,7 +224,7 @@ public class PropService {
 		return true;
 	}
 	
-	public List<RewardInfo> meterialCompose(UserBean user, List<CostItem> costList) {
+	public List<RewardInfo> meterialCompose(UserBean user, List<RewardInfo> costList) {
 		costService.costAll(user, costList);
 		
 		return RewardBean.initRewardInfoList(24010, 1);

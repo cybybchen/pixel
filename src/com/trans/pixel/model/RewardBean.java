@@ -13,7 +13,6 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.trans.pixel.constants.DirConst;
-import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -172,34 +171,34 @@ public class RewardBean {
 		return rewardInfoList;
 	}
 	
-	public static List<RewardInfo> buildCostList(List<CostItem> costList) {
-		List<RewardInfo> rewardInfoList = new ArrayList<RewardInfo>();
-		if (costList == null || costList.isEmpty())
-			return rewardInfoList;
-		for (CostItem reward : costList) {
-			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
-			rewardInfo.setItemid(reward.getCostid());
-			rewardInfo.setCount(reward.getCostcount());
-			rewardInfoList.add(rewardInfo.build());
-		}
-		
-		return rewardInfoList;
-	}
+//	public static List<RewardInfo> buildCostList(List<CostItem> costList) {
+//		List<RewardInfo> rewardInfoList = new ArrayList<RewardInfo>();
+//		if (costList == null || costList.isEmpty())
+//			return rewardInfoList;
+//		for (CostItem reward : costList) {
+//			RewardInfo.Builder rewardInfo = RewardInfo.newBuilder();
+//			rewardInfo.setItemid(reward.getCostid());
+//			rewardInfo.setCount(reward.getCostcount());
+//			rewardInfoList.add(rewardInfo.build());
+//		}
+//		
+//		return rewardInfoList;
+//	}
 	
-	public static List<CostItem> convertCostList(List<RewardInfo> rewardList) {
-		List<CostItem> costList = new ArrayList<CostItem>();
-		if (rewardList == null || rewardList.isEmpty())
-			return costList;
-		for (RewardInfo reward : rewardList) {
-			CostItem.Builder cost = CostItem.newBuilder();
-			cost.setCostid(reward.getItemid());
-			cost.setCostcount((int)reward.getCount());
-			costList.add(cost.build());
-		}
-		
-		return costList;
-	}
-	
+//	public static List<CostItem> convertCostList(List<RewardInfo> rewardList) {
+//		List<CostItem> costList = new ArrayList<CostItem>();
+//		if (rewardList == null || rewardList.isEmpty())
+//			return costList;
+//		for (RewardInfo reward : rewardList) {
+//			CostItem.Builder cost = CostItem.newBuilder();
+//			cost.setCostid(reward.getItemid());
+//			cost.setCostcount((int)reward.getCount());
+//			costList.add(cost.build());
+//		}
+//		
+//		return costList;
+//	}
+//	
 	public static RewardBean init(int type, long count) {
 		RewardBean reward = new RewardBean();
 		reward.setItemid(type);

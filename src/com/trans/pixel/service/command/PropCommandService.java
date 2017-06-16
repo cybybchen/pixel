@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -85,11 +83,11 @@ public class PropCommandService extends BaseCommandService {
 	}
 	
 	public void materialCompose(RequestMaterialComposeCommand cmd, Builder responseBuilder, UserBean user) {
-		List<CostItem> costList = new ArrayList<CostItem>();
+		List<RewardInfo> costList = new ArrayList<RewardInfo>();
 		costList.addAll(cmd.getCostList());
-		CostItem.Builder cost = CostItem.newBuilder();
-		cost.setCostcount(1);
-		cost.setCostid(cmd.getItemId());
+		RewardInfo.Builder cost = RewardInfo.newBuilder();
+		cost.setCount(1);
+		cost.setItemid(cmd.getItemId());
 		costList.add(cost.build());
 		if (!propService.canMaterialCompose(user, costList)) {
 			pusher.pushUserEquipListCommand(responseBuilder, user);
@@ -105,9 +103,8 @@ public class PropCommandService extends BaseCommandService {
 		multi.addAllLoot(rewards);
 		handleRewards(responseBuilder, user, multi.build());
 		
-		List<RewardInfo> costInfos = RewardBean.buildCostList(costList);
 		MultiReward.Builder costMulti = MultiReward.newBuilder();
-		costMulti.addAllLoot(costInfos);
+		costMulti.addAllLoot(costList);
 		pusher.pushRewardCommand(responseBuilder, user, costMulti.build(), false);
 	}
 }

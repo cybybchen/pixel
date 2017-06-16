@@ -8689,645 +8689,6 @@ public final class Base {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserInfo)
   }
 
-  public interface CostItemOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 costid = 1;
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    boolean hasCostid();
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    int getCostid();
-
-    // optional int32 costcount = 2;
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    boolean hasCostcount();
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    int getCostcount();
-
-    // optional uint32 show = 3;
-    /**
-     * <code>optional uint32 show = 3;</code>
-     */
-    boolean hasShow();
-    /**
-     * <code>optional uint32 show = 3;</code>
-     */
-    int getShow();
-
-    // optional uint32 order = 4;
-    /**
-     * <code>optional uint32 order = 4;</code>
-     */
-    boolean hasOrder();
-    /**
-     * <code>optional uint32 order = 4;</code>
-     */
-    int getOrder();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.CostItem}
-   */
-  public static final class CostItem extends
-      com.google.protobuf.GeneratedMessage
-      implements CostItemOrBuilder {
-    // Use CostItem.newBuilder() to construct.
-    private CostItem(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private CostItem(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final CostItem defaultInstance;
-    public static CostItem getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public CostItem getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private CostItem(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              costid_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              costcount_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              show_ = input.readUInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              order_ = input.readUInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_CostItem_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_CostItem_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.Base.CostItem.class, com.trans.pixel.protoc.Base.CostItem.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<CostItem> PARSER =
-        new com.google.protobuf.AbstractParser<CostItem>() {
-      public CostItem parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CostItem(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<CostItem> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 costid = 1;
-    public static final int COSTID_FIELD_NUMBER = 1;
-    private int costid_;
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    public boolean hasCostid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    public int getCostid() {
-      return costid_;
-    }
-
-    // optional int32 costcount = 2;
-    public static final int COSTCOUNT_FIELD_NUMBER = 2;
-    private int costcount_;
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    public boolean hasCostcount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    public int getCostcount() {
-      return costcount_;
-    }
-
-    // optional uint32 show = 3;
-    public static final int SHOW_FIELD_NUMBER = 3;
-    private int show_;
-    /**
-     * <code>optional uint32 show = 3;</code>
-     */
-    public boolean hasShow() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint32 show = 3;</code>
-     */
-    public int getShow() {
-      return show_;
-    }
-
-    // optional uint32 order = 4;
-    public static final int ORDER_FIELD_NUMBER = 4;
-    private int order_;
-    /**
-     * <code>optional uint32 order = 4;</code>
-     */
-    public boolean hasOrder() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional uint32 order = 4;</code>
-     */
-    public int getOrder() {
-      return order_;
-    }
-
-    private void initFields() {
-      costid_ = 0;
-      costcount_ = 0;
-      show_ = 0;
-      order_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, costid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, costcount_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, show_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt32(4, order_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, costid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, costcount_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, show_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, order_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.Base.CostItem parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.Base.CostItem prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.CostItem}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.Base.CostItemOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_CostItem_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_CostItem_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.Base.CostItem.class, com.trans.pixel.protoc.Base.CostItem.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.Base.CostItem.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        costid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        costcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        show_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        order_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_CostItem_descriptor;
-      }
-
-      public com.trans.pixel.protoc.Base.CostItem getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.Base.CostItem.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.Base.CostItem build() {
-        com.trans.pixel.protoc.Base.CostItem result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.Base.CostItem buildPartial() {
-        com.trans.pixel.protoc.Base.CostItem result = new com.trans.pixel.protoc.Base.CostItem(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.costid_ = costid_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.costcount_ = costcount_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.show_ = show_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.order_ = order_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.Base.CostItem) {
-          return mergeFrom((com.trans.pixel.protoc.Base.CostItem)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.Base.CostItem other) {
-        if (other == com.trans.pixel.protoc.Base.CostItem.getDefaultInstance()) return this;
-        if (other.hasCostid()) {
-          setCostid(other.getCostid());
-        }
-        if (other.hasCostcount()) {
-          setCostcount(other.getCostcount());
-        }
-        if (other.hasShow()) {
-          setShow(other.getShow());
-        }
-        if (other.hasOrder()) {
-          setOrder(other.getOrder());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.Base.CostItem parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.Base.CostItem) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 costid = 1;
-      private int costid_ ;
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public boolean hasCostid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public int getCostid() {
-        return costid_;
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public Builder setCostid(int value) {
-        bitField0_ |= 0x00000001;
-        costid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public Builder clearCostid() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        costid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 costcount = 2;
-      private int costcount_ ;
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public boolean hasCostcount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public int getCostcount() {
-        return costcount_;
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public Builder setCostcount(int value) {
-        bitField0_ |= 0x00000002;
-        costcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public Builder clearCostcount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        costcount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 show = 3;
-      private int show_ ;
-      /**
-       * <code>optional uint32 show = 3;</code>
-       */
-      public boolean hasShow() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint32 show = 3;</code>
-       */
-      public int getShow() {
-        return show_;
-      }
-      /**
-       * <code>optional uint32 show = 3;</code>
-       */
-      public Builder setShow(int value) {
-        bitField0_ |= 0x00000004;
-        show_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 show = 3;</code>
-       */
-      public Builder clearShow() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        show_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 order = 4;
-      private int order_ ;
-      /**
-       * <code>optional uint32 order = 4;</code>
-       */
-      public boolean hasOrder() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional uint32 order = 4;</code>
-       */
-      public int getOrder() {
-        return order_;
-      }
-      /**
-       * <code>optional uint32 order = 4;</code>
-       */
-      public Builder setOrder(int value) {
-        bitField0_ |= 0x00000008;
-        order_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 order = 4;</code>
-       */
-      public Builder clearOrder() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        order_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.CostItem)
-    }
-
-    static {
-      defaultInstance = new CostItem(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.CostItem)
-  }
-
   public interface JewelPoolOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -28969,11 +28330,6 @@ public final class Base {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_CostItem_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_CostItem_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_JewelPool_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -29119,74 +28475,72 @@ public final class Base {
       "otTime\030S \001(\003\022\021\n\textraType\030T \001(\r\022\032\n\022extra",
       "LastTimeStamp\030U \001(\003\022\020\n\010userType\030V \001(\r\022\025\n" +
       "\rgoldSavingBox\030W \001(\r\022\024\n\014expSavingBox\030X \001" +
-      "(\r\"J\n\010CostItem\022\016\n\006costid\030\001 \001(\005\022\021\n\tcostco" +
-      "unt\030\002 \001(\005\022\014\n\004show\030\003 \001(\r\022\r\n\005order\030\004 \001(\r\"\213" +
-      "\001\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\016\n\006zhanli\030\002 " +
-      "\001(\005\022\023\n\013description\030\003 \001(\t\022\020\n\010rewardid\030\004 \001" +
-      "(\005\022\023\n\013rewardcount\030\005 \001(\005\022\020\n\010rewarded\030\006 \001(" +
-      "\005\022\021\n\trecharged\030\007 \001(\005\"A\n\rJewelPoolList\0220\n" +
-      "\005order\030\001 \003(\0132!.com.trans.pixel.protoc.Je" +
-      "welPool\"6\n\023UnionBossUserRecord\022\016\n\006userId",
-      "\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\367\001\n\017UnionBossRec" +
-      "ord\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007endTi" +
-      "me\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ranks\030\005 " +
-      "\003(\0132 .com.trans.pixel.protoc.UserRank\022\021\n" +
-      "\tstartTime\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007perce" +
-      "nt\030\010 \001(\005\022?\n\nuserRecord\030\t \003(\0132+.com.trans" +
-      ".pixel.protoc.UnionBossUserRecord\"S\n\004Ran" +
-      "k\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc" +
-      ".UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank\030\003 \001(\005\"\244" +
-      "\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005",
-      "\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixel.protoc" +
-      ".UserTalentOrder\0226\n\005equip\030\005 \003(\0132\'.com.tr" +
-      "ans.pixel.protoc.UserTalentEquip\022\013\n\003exp\030" +
-      "\006 \001(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014compo" +
-      "seSkill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132 .c" +
-      "om.trans.pixel.protoc.UserInfo\0222\n\010heroIn" +
-      "fo\030\002 \003(\0132 .com.trans.pixel.protoc.HeroIn" +
-      "fo\0226\n\nuserTalent\030\004 \001(\0132\".com.trans.pixel" +
-      ".protoc.UserTalent\022\024\n\014rolePosition\030\005 \001(\005" +
-      "\0226\n\nteamEngine\030\006 \003(\0132\".com.trans.pixel.p",
-      "rotoc.TeamEngine\"@\n\017UserTalentOrder\022\r\n\005o" +
-      "rder\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001" +
-      "(\005\"B\n\017UserTalentEquip\022\020\n\010position\030\001 \001(\005\022" +
-      "\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\256\001\n\010UserR" +
-      "ank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\005\022*\n\004team\030\003" +
-      " \001(\0132\034.com.trans.pixel.protoc.Team\022\016\n\006us" +
-      "erId\030\004 \001(\003\022\020\n\010userName\030\005 \001(\t\022\016\n\006zhanli\030\006" +
-      " \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip\030\010 \001(\r\022\016\n\006score" +
-      "2\030\t \001(\r\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017" +
-      "\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001",
-      "(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId" +
-      "\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipP" +
-      "okede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005" +
-      "order\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroIn" +
-      "fo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rar" +
-      "e\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132" +
-      "!.com.trans.pixel.protoc.SkillInfo\022\r\n\005va" +
-      "lue\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022" +
-      "\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005cou" +
-      "nt\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixe",
-      "l.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014" +
-      "\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPo" +
-      "kede\030\020 \001(\0132\'.com.trans.pixel.protoc.User" +
-      "EquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016" +
-      "\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 " +
-      "\001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006" +
-      "counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001" +
-      "(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007la" +
-      "stime\030\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014" +
-      "\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.p",
-      "ixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010target" +
-      "id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013t" +
-      "argetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.t" +
-      "rans.pixel.protoc.RewardInfo\"\326\001\n\005Event\022\r" +
-      "\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003" +
-      " \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 " +
-      "\001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005" +
-      "\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005l" +
-      "evel\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030" +
-      "\014 \001(\005"
+      "(\r\"\213\001\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\016\n\006zhanl" +
+      "i\030\002 \001(\005\022\023\n\013description\030\003 \001(\t\022\020\n\010rewardid" +
+      "\030\004 \001(\005\022\023\n\013rewardcount\030\005 \001(\005\022\020\n\010rewarded\030" +
+      "\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"A\n\rJewelPoolLis" +
+      "t\0220\n\005order\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.JewelPool\"6\n\023UnionBossUserRecord\022\016\n\006us" +
+      "erId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\367\001\n\017UnionBos" +
+      "sRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007e",
+      "ndTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005rank" +
+      "s\030\005 \003(\0132 .com.trans.pixel.protoc.UserRan" +
+      "k\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007p" +
+      "ercent\030\010 \001(\005\022?\n\nuserRecord\030\t \003(\0132+.com.t" +
+      "rans.pixel.protoc.UnionBossUserRecord\"S\n" +
+      "\004Rank\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.pr" +
+      "otoc.UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank\030\003 \001" +
+      "(\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002" +
+      " \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixel.pr" +
+      "otoc.UserTalentOrder\0226\n\005equip\030\005 \003(\0132\'.co",
+      "m.trans.pixel.protoc.UserTalentEquip\022\013\n\003" +
+      "exp\030\006 \001(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014c" +
+      "omposeSkill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\013" +
+      "2 .com.trans.pixel.protoc.UserInfo\0222\n\010he" +
+      "roInfo\030\002 \003(\0132 .com.trans.pixel.protoc.He" +
+      "roInfo\0226\n\nuserTalent\030\004 \001(\0132\".com.trans.p" +
+      "ixel.protoc.UserTalent\022\024\n\014rolePosition\030\005" +
+      " \001(\005\0226\n\nteamEngine\030\006 \003(\0132\".com.trans.pix" +
+      "el.protoc.TeamEngine\"@\n\017UserTalentOrder\022" +
+      "\r\n\005order\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level",
+      "\030\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010position\030\001 " +
+      "\001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\256\001\n\010U" +
+      "serRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\005\022*\n\004te" +
+      "am\030\003 \001(\0132\034.com.trans.pixel.protoc.Team\022\016" +
+      "\n\006userId\030\004 \001(\003\022\020\n\010userName\030\005 \001(\t\022\016\n\006zhan" +
+      "li\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip\030\010 \001(\r\022\016\n\006s" +
+      "core2\030\t \001(\r\"W\n\tClearInfo\022\020\n\010position\030\001 \002" +
+      "(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id" +
+      "\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007ski" +
+      "llId\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEq",
+      "uipPokede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005" +
+      "\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010He" +
+      "roInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n" +
+      "\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 " +
+      "\003(\0132!.com.trans.pixel.protoc.SkillInfo\022\r" +
+      "\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 " +
+      "\001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n" +
+      "\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans." +
+      "pixel.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001" +
+      "(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equ",
+      "ipPokede\030\020 \001(\0132\'.com.trans.pixel.protoc." +
+      "UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardIn" +
+      "fo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005coun" +
+      "t\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005" +
+      "\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item" +
+      "\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017" +
+      "\n\007lastime\030\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001" +
+      "(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010ta" +
+      "rgetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022",
+      "\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".c" +
+      "om.trans.pixel.protoc.RewardInfo\"\326\001\n\005Eve" +
+      "nt\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004na" +
+      "me\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rconditiontyp" +
+      "e\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007" +
+      " \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022" +
+      "\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventco" +
+      "unt\030\014 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29199,122 +28553,116 @@ public final class Base {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserInfo_descriptor,
               new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", });
-          internal_static_com_trans_pixel_protoc_CostItem_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_com_trans_pixel_protoc_CostItem_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_CostItem_descriptor,
-              new java.lang.String[] { "Costid", "Costcount", "Show", "Order", });
           internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPool_descriptor,
               new java.lang.String[] { "Order", "Zhanli", "Description", "Rewardid", "Rewardcount", "Rewarded", "Recharged", });
           internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_JewelPoolList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_UnionBossUserRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor,
               new java.lang.String[] { "UserId", "Percent", });
           internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UnionBossRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor,
               new java.lang.String[] { "BossId", "Hp", "EndTime", "MyAttackHp", "Ranks", "StartTime", "Count", "Percent", "UserRecord", });
           internal_static_com_trans_pixel_protoc_Rank_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_Rank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rank_descriptor,
               new java.lang.String[] { "User", "Score", "Rank", });
           internal_static_com_trans_pixel_protoc_UserTalent_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_UserTalent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalent_descriptor,
               new java.lang.String[] { "Id", "Level", "Skill", "Equip", "Exp", });
           internal_static_com_trans_pixel_protoc_TeamEngine_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_TeamEngine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TeamEngine_descriptor,
               new java.lang.String[] { "Id", "ComposeSkill", });
           internal_static_com_trans_pixel_protoc_Team_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Team_descriptor,
               new java.lang.String[] { "User", "HeroInfo", "UserTalent", "RolePosition", "TeamEngine", });
           internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_UserTalentOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor,
               new java.lang.String[] { "Order", "SkillId", "Level", });
           internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_UserTalentEquip_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor,
               new java.lang.String[] { "Position", "ItemId", "Level", });
           internal_static_com_trans_pixel_protoc_UserRank_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
               new java.lang.String[] { "Rank", "Dps", "Team", "UserId", "UserName", "Zhanli", "Icon", "Vip", "Score2", });
           internal_static_com_trans_pixel_protoc_ClearInfo_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ClearInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ClearInfo_descriptor,
               new java.lang.String[] { "Position", "ClearId", "Count", "Id", "Rare", });
           internal_static_com_trans_pixel_protoc_SkillInfo_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SkillInfo_descriptor,
               new java.lang.String[] { "SkillId", "SkillLevel", });
           internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_UserEquipPokede_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor,
               new java.lang.String[] { "ItemId", "Level", "Order", "LastTime", });
           internal_static_com_trans_pixel_protoc_HeroInfo_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
               new java.lang.String[] { "InfoId", "Level", "Rare", "EquipId", "Skill", "Value", "Star", "HeroId", "Position", "IsLock", "Count", "Clear", "Strengthen", "Rank", "Fetters", "EquipPokede", "Sp", });
           internal_static_com_trans_pixel_protoc_RewardInfo_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
               new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
           internal_static_com_trans_pixel_protoc_MultiReward_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_MultiReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MultiReward_descriptor,
               new java.lang.String[] { "Id", "Name", "Loot", });
           internal_static_com_trans_pixel_protoc_Task_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_Task_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task_descriptor,
               new java.lang.String[] { "Targetid", "Name", "Des", "Targetcount", "Reward", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,

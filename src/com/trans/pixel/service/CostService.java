@@ -1,8 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,7 +14,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.Base.CostItem;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 
@@ -40,15 +36,24 @@ public class CostService {
 	@Resource
 	private LootService lootService;
 	
-	private Comparator<CostItem.Builder> comparator = new Comparator<CostItem.Builder>() {
-        public int compare(CostItem.Builder cost1, CostItem.Builder cost2) {
-                if (cost1.getOrder() < cost2.getOrder()) {
-                        return -1;
-                } else {
-                        return 1;
-                }
-        }
-	};
+//	private Comparator<CostItem.Builder> comparator = new Comparator<CostItem.Builder>() {
+//        public int compare(CostItem.Builder cost1, CostItem.Builder cost2) {
+//                if (cost1.getOrder() < cost2.getOrder()) {
+//                        return -1;
+//                } else {
+//                        return 1;
+//                }
+//        }
+//	};
+//	private Comparator<RewardInfo.Builder> comparator = new Comparator<RewardInfo.Builder>() {
+//	  public int compare(RewardInfo.Builder cost1, RewardInfo.Builder cost2) {
+//	          if (cost1.getOrder() < cost2.getOrder()) {
+//	                  return -1;
+//	          } else {
+//	                  return 1;
+//	          }
+//	  }
+//	};
 	
 	public boolean costAndUpdate(UserBean user, int itemId, long itemCount) {
 		if(cost(user, itemId, itemCount)) {
@@ -70,68 +75,92 @@ public class CostService {
 		return true;
 	}
 	
-	public boolean canCostAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
-		List<CostItem.Builder> builderList = convertCostBuilder(costList);
-		Collections.sort(builderList, comparator);
-		for (int i = 0; i < builderList.size(); ++i) {
-			CostItem cost = builderList.get(i).build();
-			if (!canCost(user, cost.getCostid(), cost.getCostcount()))
-				return false;
-		}
-		
-		return true;
-	}
-	
-	public boolean costAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
-		List<CostItem.Builder> builderList = convertCostBuilder(costList);
-		Collections.sort(builderList, comparator);
-		for (int i = 0; i < builderList.size(); ++i) {
-			CostItem cost = builderList.get(i).build();
-			if (!costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
-				return false;
-		}
-		
-		return true;
-	}
-	
-	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
-		if (costList.isEmpty())
-			return -1;
-		List<CostItem.Builder> builderList = convertCostBuilder(costList);
-		Collections.sort(builderList, comparator);
-		for (int i = 0; i < builderList.size(); ++i) {
-			CostItem cost = builderList.get(i).build();
-			if (canCost(user, cost.getCostid(), cost.getCostcount()))
-				return cost.getCostid();
-		}
-		
-		return 0;
-	}
-	
-	public boolean costOnly(UserBean user, List<CostItem> costList) {
-		List<CostItem.Builder> builderList = convertCostBuilder(costList);
-		Collections.sort(builderList, comparator);
-		for (int i = 0; i < builderList.size(); ++i) {
-			CostItem cost = builderList.get(i).build();
-			if (costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
-				return true;
-		}
-		
-		return false;
-	}
-	
-	public boolean costOnly(long userId, List<CostItem> costList) {
-		List<CostItem.Builder> builderList = convertCostBuilder(costList);
-		Collections.sort(builderList, comparator);
-		for (int i = 0; i < builderList.size(); ++i) {
-			CostItem cost = builderList.get(i).build();
-			if (cost(userId, cost.getCostid(), cost.getCostcount()))
-				return true;
-		}
-		
-		return false;
-	}
+//	public boolean canCostAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+//		for (int i = 0; i < builderList.size(); ++i) {
+//			CostItem cost = builderList.get(i).build();
+//			if (!canCost(user, cost.getCostid(), cost.getCostcount()))
+//				return false;
+//		}
+//		
+//		return true;
+//	}
+//	
+//	public boolean costAll(UserBean user, List<CostItem> costList) { //返回消费的道具id
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+//		for (int i = 0; i < builderList.size(); ++i) {
+//			CostItem cost = builderList.get(i).build();
+//			if (!costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
+//				return false;
+//		}
+//		
+//		return true;
+//	}
+//	
+//	public int canCostOnly(UserBean user, List<CostItem> costList) { //返回消费的道具id
+//		if (costList.isEmpty())
+//			return -1;
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+//		for (int i = 0; i < builderList.size(); ++i) {
+//			CostItem cost = builderList.get(i).build();
+//			if (canCost(user, cost.getCostid(), cost.getCostcount()))
+//				return cost.getCostid();
+//		}
+//		
+//		return 0;
+//	}
+//	
+//	public boolean costOnly(UserBean user, List<CostItem> costList) {
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+//		for (int i = 0; i < builderList.size(); ++i) {
+//			CostItem cost = builderList.get(i).build();
+//			if (costAndUpdate(user, cost.getCostid(), cost.getCostcount()))
+//				return true;
+//		}
+//		
+//		return false;
+//	}
+//	
+//	public boolean costOnly(long userId, List<CostItem> costList) {
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+//		for (int i = 0; i < builderList.size(); ++i) {
+//			CostItem cost = builderList.get(i).build();
+//			if (cost(userId, cost.getCostid(), cost.getCostcount()))
+//				return true;
+//		}
+//		
+//		return false;
+//	}
 
+	public boolean canCostAll(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+		for (int i = 0; i < costList.size(); ++i) {
+			RewardInfo cost = costList.get(i);
+			if (!canCost(user, cost.getItemid(), cost.getCount()))
+				return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean costAll(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+//		List<CostItem.Builder> builderList = convertCostBuilder(costList);
+//		Collections.sort(builderList, comparator);
+		for (int i = 0; i < costList.size(); ++i) {
+			RewardInfo cost = costList.get(i);
+			if (!costAndUpdate(user, cost.getItemid(), cost.getCount()))
+				return false;
+		}
+		
+		return true;
+	}
+	
 	public int canCostOnly(UserBean user, RewardInfo cost) { //返回消费的道具id
 		if (canCost(user, cost.getItemid(), cost.getCount()))
 			return cost.getItemid();
@@ -141,7 +170,6 @@ public class CostService {
 	public boolean costOnly(UserBean user, RewardInfo cost) {
 		if (costAndUpdate(user, cost.getItemid(), cost.getCount()))
 			return true;
-		
 		return false;
 	}
 	
@@ -351,14 +379,14 @@ public class CostService {
 		return false;
 	}
 	
-	private List<CostItem.Builder> convertCostBuilder(List<CostItem> costList) {
-		List<CostItem.Builder> builderList = new ArrayList<CostItem.Builder>();
-		for (CostItem cost : costList) {
-			builderList.add(CostItem.newBuilder(cost));
-		}
-		
-		return builderList;
-	}
+//	private List<CostItem.Builder> convertCostBuilder(List<CostItem> costList) {
+//		List<CostItem.Builder> builderList = new ArrayList<CostItem.Builder>();
+//		for (CostItem cost : costList) {
+//			builderList.add(CostItem.newBuilder(cost));
+//		}
+//		
+//		return builderList;
+//	}
 	
 	private long calDivision(long x, long y) {
 		long a = x - x / y * y;

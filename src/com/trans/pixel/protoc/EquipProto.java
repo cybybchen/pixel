@@ -31044,29 +31044,29 @@ public final class EquipProto {
      */
     int getItemId();
 
-    // repeated .com.trans.pixel.protoc.CostItem cost = 1;
+    // repeated .com.trans.pixel.protoc.RewardInfo cost = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    java.util.List<com.trans.pixel.protoc.Base.CostItem> 
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
         getCostList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    com.trans.pixel.protoc.Base.CostItem getCost(int index);
+    com.trans.pixel.protoc.Base.RewardInfo getCost(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
     int getCostCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
         getCostOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder(
         int index);
   }
   /**
@@ -31122,10 +31122,10 @@ public final class EquipProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.CostItem>();
+                cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              cost_.add(input.readMessage(com.trans.pixel.protoc.Base.CostItem.PARSER, extensionRegistry));
+              cost_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 16: {
@@ -31192,38 +31192,38 @@ public final class EquipProto {
       return itemId_;
     }
 
-    // repeated .com.trans.pixel.protoc.CostItem cost = 1;
+    // repeated .com.trans.pixel.protoc.RewardInfo cost = 1;
     public static final int COST_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.Base.CostItem> cost_;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> cost_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Base.CostItem> getCostList() {
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getCostList() {
       return cost_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
         getCostOrBuilderList() {
       return cost_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
     public int getCostCount() {
       return cost_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    public com.trans.pixel.protoc.Base.CostItem getCost(int index) {
+    public com.trans.pixel.protoc.Base.RewardInfo getCost(int index) {
       return cost_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
      */
-    public com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder(
         int index) {
       return cost_.get(index);
     }
@@ -31546,23 +31546,23 @@ public final class EquipProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.CostItem cost = 1;
-      private java.util.List<com.trans.pixel.protoc.Base.CostItem> cost_ =
+      // repeated .com.trans.pixel.protoc.RewardInfo cost = 1;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> cost_ =
         java.util.Collections.emptyList();
       private void ensureCostIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.CostItem>(cost_);
+          cost_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(cost_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder> costBuilder_;
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> costBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Base.CostItem> getCostList() {
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getCostList() {
         if (costBuilder_ == null) {
           return java.util.Collections.unmodifiableList(cost_);
         } else {
@@ -31570,7 +31570,7 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public int getCostCount() {
         if (costBuilder_ == null) {
@@ -31580,9 +31580,9 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.CostItem getCost(int index) {
+      public com.trans.pixel.protoc.Base.RewardInfo getCost(int index) {
         if (costBuilder_ == null) {
           return cost_.get(index);
         } else {
@@ -31590,10 +31590,10 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder setCost(
-          int index, com.trans.pixel.protoc.Base.CostItem value) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
         if (costBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -31607,10 +31607,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder setCost(
-          int index, com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (costBuilder_ == null) {
           ensureCostIsMutable();
           cost_.set(index, builderForValue.build());
@@ -31621,9 +31621,9 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public Builder addCost(com.trans.pixel.protoc.Base.CostItem value) {
+      public Builder addCost(com.trans.pixel.protoc.Base.RewardInfo value) {
         if (costBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -31637,10 +31637,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder addCost(
-          int index, com.trans.pixel.protoc.Base.CostItem value) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
         if (costBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -31654,10 +31654,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder addCost(
-          com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (costBuilder_ == null) {
           ensureCostIsMutable();
           cost_.add(builderForValue.build());
@@ -31668,10 +31668,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder addCost(
-          int index, com.trans.pixel.protoc.Base.CostItem.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (costBuilder_ == null) {
           ensureCostIsMutable();
           cost_.add(index, builderForValue.build());
@@ -31682,10 +31682,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder addAllCost(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.CostItem> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
         if (costBuilder_ == null) {
           ensureCostIsMutable();
           super.addAll(values, cost_);
@@ -31696,7 +31696,7 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder clearCost() {
         if (costBuilder_ == null) {
@@ -31709,7 +31709,7 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
       public Builder removeCost(int index) {
         if (costBuilder_ == null) {
@@ -31722,16 +31722,16 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.CostItem.Builder getCostBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getCostBuilder(
           int index) {
         return getCostFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.CostItemOrBuilder getCostOrBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder(
           int index) {
         if (costBuilder_ == null) {
           return cost_.get(index);  } else {
@@ -31739,9 +31739,9 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
            getCostOrBuilderList() {
         if (costBuilder_ != null) {
           return costBuilder_.getMessageOrBuilderList();
@@ -31750,33 +31750,33 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.CostItem.Builder addCostBuilder() {
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addCostBuilder() {
         return getCostFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.CostItem.getDefaultInstance());
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public com.trans.pixel.protoc.Base.CostItem.Builder addCostBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addCostBuilder(
           int index) {
         return getCostFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.CostItem.getDefaultInstance());
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.CostItem cost = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cost = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Base.CostItem.Builder> 
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
            getCostBuilderList() {
         return getCostFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder> 
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
           getCostFieldBuilder() {
         if (costBuilder_ == null) {
           costBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.CostItem, com.trans.pixel.protoc.Base.CostItem.Builder, com.trans.pixel.protoc.Base.CostItemOrBuilder>(
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   cost_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -32124,10 +32124,10 @@ public final class EquipProto {
       "ipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022" +
       "\016\n\006itemId\030\003 \002(\005\"7\n\037RequestSynthetiseComp" +
       "oseCommand\022\024\n\014synthetiseId\030\001 \002(\r\"\'\n\025Requ" +
-      "estEquipupCommand\022\016\n\006itemid\030\001 \002(\r\"_\n\035Req" +
+      "estEquipupCommand\022\016\n\006itemid\030\001 \002(\r\"a\n\035Req" +
       "uestMaterialComposeCommand\022\016\n\006itemId\030\002 \002",
-      "(\r\022.\n\004cost\030\001 \003(\0132 .com.trans.pixel.proto" +
-      "c.CostItem"
+      "(\r\0220\n\004cost\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

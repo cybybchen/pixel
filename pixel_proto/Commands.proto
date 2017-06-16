@@ -76,13 +76,6 @@ message UserInfo {
 	optional uint32 expSavingBox = 88;
 }
 
-message CostItem {
-	optional int32 costid = 1;
-	optional int32 costcount = 2;
-	optional uint32 show = 3;
-	optional uint32 order = 4;
-}
-
 message JewelPool {
 	optional int32 order = 1;
 	optional int32 zhanli = 2;
@@ -1252,7 +1245,7 @@ message RequestEquipupCommand {
 
 message RequestMaterialComposeCommand {
 	required uint32 itemId = 2;
-	repeated CostItem cost = 1;
+	repeated RewardInfo cost = 1;
 }
 ////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
@@ -2818,14 +2811,6 @@ message EventExp {
 }
 message EventExpList {
 	repeated EventExp data = 1;
-}
-message EventReward {
-	optional int32 mustloot = 1;
-	optional int32 lootcount = 2;
-}
-message EventCost {
-	optional int32 costid = 1;
-	optional int32 costcount = 2;
 }
 message EventQuestion {
 	optional string answer = 2;

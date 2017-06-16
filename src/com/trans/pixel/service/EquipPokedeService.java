@@ -15,7 +15,6 @@ import com.trans.pixel.constants.PackageConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -140,11 +139,11 @@ public class EquipPokedeService {
 		boolean hasOrder = false;
 		for (EquipupOrder equipOrder : equipup.getEquipList()) {
 			if (equipOrder.getOrder() == pokede.getOrder() + 1) {
-				if (!costService.canCostAll(user, RewardBean.convertCostList(equipOrder.getCoverList())))
+				if (!costService.canCostAll(user, equipOrder.getCoverList()))
 					return ErrorConst.NOT_ENOUGH_CHIP;
 				
 				pokede.setOrder(pokede.getOrder() + 1);
-				costService.costAll(user, RewardBean.convertCostList(equipOrder.getCoverList()));
+				costService.costAll(user, equipOrder.getCoverList());
 				costs.addAllLoot(equipOrder.getCoverList());
 				hasOrder = true;
 				break;

@@ -20374,960 +20374,6 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventExpList)
   }
 
-  public interface EventRewardOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 mustloot = 1;
-    /**
-     * <code>optional int32 mustloot = 1;</code>
-     */
-    boolean hasMustloot();
-    /**
-     * <code>optional int32 mustloot = 1;</code>
-     */
-    int getMustloot();
-
-    // optional int32 lootcount = 2;
-    /**
-     * <code>optional int32 lootcount = 2;</code>
-     */
-    boolean hasLootcount();
-    /**
-     * <code>optional int32 lootcount = 2;</code>
-     */
-    int getLootcount();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.EventReward}
-   */
-  public static final class EventReward extends
-      com.google.protobuf.GeneratedMessage
-      implements EventRewardOrBuilder {
-    // Use EventReward.newBuilder() to construct.
-    private EventReward(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private EventReward(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final EventReward defaultInstance;
-    public static EventReward getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public EventReward getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private EventReward(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              mustloot_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              lootcount_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventReward_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UserInfoProto.EventReward.class, com.trans.pixel.protoc.UserInfoProto.EventReward.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<EventReward> PARSER =
-        new com.google.protobuf.AbstractParser<EventReward>() {
-      public EventReward parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EventReward(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EventReward> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 mustloot = 1;
-    public static final int MUSTLOOT_FIELD_NUMBER = 1;
-    private int mustloot_;
-    /**
-     * <code>optional int32 mustloot = 1;</code>
-     */
-    public boolean hasMustloot() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 mustloot = 1;</code>
-     */
-    public int getMustloot() {
-      return mustloot_;
-    }
-
-    // optional int32 lootcount = 2;
-    public static final int LOOTCOUNT_FIELD_NUMBER = 2;
-    private int lootcount_;
-    /**
-     * <code>optional int32 lootcount = 2;</code>
-     */
-    public boolean hasLootcount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 lootcount = 2;</code>
-     */
-    public int getLootcount() {
-      return lootcount_;
-    }
-
-    private void initFields() {
-      mustloot_ = 0;
-      lootcount_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, mustloot_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, lootcount_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, mustloot_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, lootcount_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventReward parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.EventReward prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.EventReward}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UserInfoProto.EventRewardOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventReward_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UserInfoProto.EventReward.class, com.trans.pixel.protoc.UserInfoProto.EventReward.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UserInfoProto.EventReward.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        mustloot_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        lootcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventReward_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventReward getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UserInfoProto.EventReward.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventReward build() {
-        com.trans.pixel.protoc.UserInfoProto.EventReward result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventReward buildPartial() {
-        com.trans.pixel.protoc.UserInfoProto.EventReward result = new com.trans.pixel.protoc.UserInfoProto.EventReward(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.mustloot_ = mustloot_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.lootcount_ = lootcount_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UserInfoProto.EventReward) {
-          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.EventReward)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EventReward other) {
-        if (other == com.trans.pixel.protoc.UserInfoProto.EventReward.getDefaultInstance()) return this;
-        if (other.hasMustloot()) {
-          setMustloot(other.getMustloot());
-        }
-        if (other.hasLootcount()) {
-          setLootcount(other.getLootcount());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UserInfoProto.EventReward parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.EventReward) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 mustloot = 1;
-      private int mustloot_ ;
-      /**
-       * <code>optional int32 mustloot = 1;</code>
-       */
-      public boolean hasMustloot() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 mustloot = 1;</code>
-       */
-      public int getMustloot() {
-        return mustloot_;
-      }
-      /**
-       * <code>optional int32 mustloot = 1;</code>
-       */
-      public Builder setMustloot(int value) {
-        bitField0_ |= 0x00000001;
-        mustloot_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 mustloot = 1;</code>
-       */
-      public Builder clearMustloot() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        mustloot_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 lootcount = 2;
-      private int lootcount_ ;
-      /**
-       * <code>optional int32 lootcount = 2;</code>
-       */
-      public boolean hasLootcount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 lootcount = 2;</code>
-       */
-      public int getLootcount() {
-        return lootcount_;
-      }
-      /**
-       * <code>optional int32 lootcount = 2;</code>
-       */
-      public Builder setLootcount(int value) {
-        bitField0_ |= 0x00000002;
-        lootcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 lootcount = 2;</code>
-       */
-      public Builder clearLootcount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        lootcount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EventReward)
-    }
-
-    static {
-      defaultInstance = new EventReward(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventReward)
-  }
-
-  public interface EventCostOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 costid = 1;
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    boolean hasCostid();
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    int getCostid();
-
-    // optional int32 costcount = 2;
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    boolean hasCostcount();
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    int getCostcount();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.EventCost}
-   */
-  public static final class EventCost extends
-      com.google.protobuf.GeneratedMessage
-      implements EventCostOrBuilder {
-    // Use EventCost.newBuilder() to construct.
-    private EventCost(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private EventCost(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final EventCost defaultInstance;
-    public static EventCost getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public EventCost getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private EventCost(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              costid_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              costcount_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventCost_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventCost_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UserInfoProto.EventCost.class, com.trans.pixel.protoc.UserInfoProto.EventCost.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<EventCost> PARSER =
-        new com.google.protobuf.AbstractParser<EventCost>() {
-      public EventCost parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EventCost(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EventCost> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 costid = 1;
-    public static final int COSTID_FIELD_NUMBER = 1;
-    private int costid_;
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    public boolean hasCostid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 costid = 1;</code>
-     */
-    public int getCostid() {
-      return costid_;
-    }
-
-    // optional int32 costcount = 2;
-    public static final int COSTCOUNT_FIELD_NUMBER = 2;
-    private int costcount_;
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    public boolean hasCostcount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 costcount = 2;</code>
-     */
-    public int getCostcount() {
-      return costcount_;
-    }
-
-    private void initFields() {
-      costid_ = 0;
-      costcount_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, costid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, costcount_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, costid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, costcount_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EventCost parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.EventCost prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.EventCost}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UserInfoProto.EventCostOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventCost_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventCost_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UserInfoProto.EventCost.class, com.trans.pixel.protoc.UserInfoProto.EventCost.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UserInfoProto.EventCost.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        costid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        costcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EventCost_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventCost getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UserInfoProto.EventCost.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventCost build() {
-        com.trans.pixel.protoc.UserInfoProto.EventCost result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EventCost buildPartial() {
-        com.trans.pixel.protoc.UserInfoProto.EventCost result = new com.trans.pixel.protoc.UserInfoProto.EventCost(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.costid_ = costid_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.costcount_ = costcount_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UserInfoProto.EventCost) {
-          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.EventCost)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EventCost other) {
-        if (other == com.trans.pixel.protoc.UserInfoProto.EventCost.getDefaultInstance()) return this;
-        if (other.hasCostid()) {
-          setCostid(other.getCostid());
-        }
-        if (other.hasCostcount()) {
-          setCostcount(other.getCostcount());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UserInfoProto.EventCost parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.EventCost) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 costid = 1;
-      private int costid_ ;
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public boolean hasCostid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public int getCostid() {
-        return costid_;
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public Builder setCostid(int value) {
-        bitField0_ |= 0x00000001;
-        costid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 costid = 1;</code>
-       */
-      public Builder clearCostid() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        costid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 costcount = 2;
-      private int costcount_ ;
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public boolean hasCostcount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public int getCostcount() {
-        return costcount_;
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public Builder setCostcount(int value) {
-        bitField0_ |= 0x00000002;
-        costcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 costcount = 2;</code>
-       */
-      public Builder clearCostcount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        costcount_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EventCost)
-    }
-
-    static {
-      defaultInstance = new EventCost(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventCost)
-  }
-
   public interface EventQuestionOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -34244,16 +33290,6 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EventExpList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_EventReward_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_EventCost_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_EventCost_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_EventQuestion_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -34410,46 +33446,44 @@ public final class UserInfoProto {
       "id\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pix" +
       "el.protoc.RewardInfo\">\n\014EventExpList\022.\n\004" +
       "data\030\001 \003(\0132 .com.trans.pixel.protoc.Even" +
-      "tExp\"2\n\013EventReward\022\020\n\010mustloot\030\001 \001(\005\022\021\n" +
-      "\tlootcount\030\002 \001(\005\".\n\tEventCost\022\016\n\006costid\030",
-      "\001 \001(\005\022\021\n\tcostcount\030\002 \001(\005\"0\n\rEventQuestio" +
-      "n\022\016\n\006answer\030\002 \001(\t\022\017\n\007eventid\030\003 \001(\005\"Z\n\005En" +
-      "emy\022\017\n\007enemyid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007e" +
-      "nemylv\030\004 \001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot" +
-      "\030\006 \001(\005\"8\n\tEnemyList\022+\n\004data\030\001 \003(\0132\035.com." +
-      "trans.pixel.protoc.Enemy\":\n\nEnemyGroup\022," +
-      "\n\005enemy\030\001 \003(\0132\035.com.trans.pixel.protoc.E" +
-      "nemy\"\254\002\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name" +
-      "\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\0220\n\004" +
-      "cost\030\005 \001(\0132\".com.trans.pixel.protoc.Rewa",
-      "rdInfo\0224\n\010lootlist\030\006 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\0227\n\010question\030\007 \003(\0132%" +
-      ".com.trans.pixel.protoc.EventQuestion\0226\n" +
-      "\nenemygroup\030\010 \001(\0132\".com.trans.pixel.prot" +
-      "oc.EnemyGroup\022\014\n\004call\030\t \001(\005\"D\n\017EventConf" +
-      "igList\0221\n\004data\030\001 \003(\0132#.com.trans.pixel.p" +
-      "rotoc.EventConfig\"U\n\tAreaEvent\022\n\n\002id\030\001 \001" +
-      "(\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixel.prot" +
-      "oc.Event\022\016\n\006weight\030\003 \001(\005\"@\n\rAreaEventLis" +
-      "t\022/\n\004data\030\001 \003(\0132!.com.trans.pixel.protoc",
-      ".AreaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004ite" +
-      "m\030\002 \003(\0132\".com.trans.pixel.protoc.RewardI" +
-      "nfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans." +
-      "pixel.protoc.Loot\"&\n\030RequestLevelStartCo" +
-      "mmand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand" +
-      "\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024Respo" +
-      "nseEventCommand\022,\n\005event\030\001 \003(\0132\035.com.tra" +
-      "ns.pixel.protoc.Event\"\037\n\035RequestLevelLoo" +
-      "tResultCommand\"{\n\031RequestEventResultComm" +
-      "and\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\t",
-      "fightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid" +
-      "\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResu" +
-      "ltCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\"\224\001\n\030ResponseLevelL" +
-      "ootCommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\021\n\tleft" +
-      "Count\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootT" +
-      "ime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022\026\n\016lootTime" +
-      "Normal\030\007 \001(\r\"\030\n\026RequestEventBuyCommand"
+      "tExp\"0\n\rEventQuestion\022\016\n\006answer\030\002 \001(\t\022\017\n" +
+      "\007eventid\030\003 \001(\005\"Z\n\005Enemy\022\017\n\007enemyid\030\002 \001(\005",
+      "\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005\022\022\n\nloot" +
+      "weight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"8\n\tEnemyList\022" +
+      "+\n\004data\030\001 \003(\0132\035.com.trans.pixel.protoc.E" +
+      "nemy\":\n\nEnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com." +
+      "trans.pixel.protoc.Enemy\"\254\002\n\013EventConfig" +
+      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005" +
+      "\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\".com.tra" +
+      "ns.pixel.protoc.RewardInfo\0224\n\010lootlist\030\006" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
+      "\0227\n\010question\030\007 \003(\0132%.com.trans.pixel.pro",
+      "toc.EventQuestion\0226\n\nenemygroup\030\010 \001(\0132\"." +
+      "com.trans.pixel.protoc.EnemyGroup\022\014\n\004cal" +
+      "l\030\t \001(\005\"D\n\017EventConfigList\0221\n\004data\030\001 \003(\013" +
+      "2#.com.trans.pixel.protoc.EventConfig\"U\n" +
+      "\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035." +
+      "com.trans.pixel.protoc.Event\022\016\n\006weight\030\003" +
+      " \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001 \003(\0132!.co" +
+      "m.trans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r" +
+      "\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo\"4\n\010LootList\022(\n\002i",
+      "d\030\001 \003(\0132\034.com.trans.pixel.protoc.Loot\"&\n" +
+      "\030RequestLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n" +
+      "\023RequestEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005" +
+      "order\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005e" +
+      "vent\030\001 \003(\0132\035.com.trans.pixel.protoc.Even" +
+      "t\"\037\n\035RequestLevelLootResultCommand\"{\n\031Re" +
+      "questEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020" +
+      "\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004t" +
+      "urn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"" +
+      "P\n\032ResponseEventResultCommand\0222\n\006reward\030",
+      "\001 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
+      "o\"\224\001\n\030ResponseLevelLootCommand\022\024\n\014unlock" +
+      "Daguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootD" +
+      "aguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTi" +
+      "me\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Requ" +
+      "estEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34636,122 +33670,110 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventExpList_descriptor,
               new java.lang.String[] { "Data", });
-          internal_static_com_trans_pixel_protoc_EventReward_descriptor =
-            getDescriptor().getMessageTypes().get(30);
-          internal_static_com_trans_pixel_protoc_EventReward_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_EventReward_descriptor,
-              new java.lang.String[] { "Mustloot", "Lootcount", });
-          internal_static_com_trans_pixel_protoc_EventCost_descriptor =
-            getDescriptor().getMessageTypes().get(31);
-          internal_static_com_trans_pixel_protoc_EventCost_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_EventCost_descriptor,
-              new java.lang.String[] { "Costid", "Costcount", });
           internal_static_com_trans_pixel_protoc_EventQuestion_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_EventQuestion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventQuestion_descriptor,
               new java.lang.String[] { "Answer", "Eventid", });
           internal_static_com_trans_pixel_protoc_Enemy_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Enemy_descriptor,
               new java.lang.String[] { "Enemyid", "Count", "Enemylv", "Lootweight", "Loot", });
           internal_static_com_trans_pixel_protoc_EnemyList_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_EnemyList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EnemyList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor,
               new java.lang.String[] { "Enemy", });
           internal_static_com_trans_pixel_protoc_EventConfig_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_EventConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfig_descriptor,
               new java.lang.String[] { "Id", "Name", "Type", "Daguan", "Cost", "Lootlist", "Question", "Enemygroup", "Call", });
           internal_static_com_trans_pixel_protoc_EventConfigList_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_EventConfigList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfigList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Order", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,
