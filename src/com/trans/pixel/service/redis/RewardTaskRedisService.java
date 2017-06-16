@@ -17,7 +17,7 @@ public class RewardTaskRedisService extends RedisService {
 	public RewardTaskList.Builder getRewardTaskConfig() {
 		RewardTaskList.Builder builder = RewardTaskList.newBuilder();
 		String value = get(RedisKey.REWARDTASK_KEY);
-		if(value != null && parseXml(value, builder)){
+		if(value != null && parseJson(value, builder)){
 			return builder;
 		}else {
 			String xml = ReadConfig("ld_rewardtask.xml");

@@ -75,8 +75,7 @@ public class RedisService {
 		try {
 			XmlFormat.merge(input, builder);
 		} catch (Exception e) {
-			logger.error(input);
-			logger.error(e);
+			logger.error(input, e);
 			return false;
 		}
 		return true;
