@@ -55,6 +55,7 @@ public class EquipPokedeService {
 			return ErrorConst.EQUIP_LEVEL_IS_LIMIT_ERROR;
 		
 		int rare = 0;
+		int irare = 0;
 		int ilevel = 0;
 		String name = "";
 		if (pokede.getItemId() < RewardConst.ARMOR) {
@@ -63,16 +64,18 @@ public class EquipPokedeService {
 			name = equipOrder.getName();
 			rare = equipOrder.getRare();
 			ilevel = equip.getIlevel();
+			irare = equip.getIrare();
 		} else {
 			Armor armor = equipService.getArmor(pokede.getItemId());
 			EquipOrder equipOrder = armor.getList(Math.max(pokede.getOrder() - 1, 0));
 			name = equipOrder.getName();
 			rare = equipOrder.getRare();
 			ilevel = armor.getIlevel();
+			irare = armor.getIrare();
 		}
 		IncreaseLevel increaseLevel = equipPokedeRedisService.getIncreaseLevel(ilevel);
 		for (IncreaseRare increaseRare : increaseLevel.getRaresList()) {
-			if (increaseRare.getRare() == rare) {
+			if (increaseRare.getRare() == irare) {
 				rewards.addAllLoot(increaseRare.getCostList());
 				break;
 			}
