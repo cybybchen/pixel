@@ -91,7 +91,7 @@ public class RewardTaskService {
 			ResultConst result = SuccessConst.BOSS_SUBMIT_SUCCESS;
 			EventConfig event = levelRedisService.getEvent(rewardTask.getEventid());
 			if(event.hasCost()) {
-				int costId = costService.canCostOnly(user, event.getCost());
+				int costId = costService.canCost(user, event.getCost());
 				if (costId == 0) {
 					errorUserList.add(user.buildShort());
 					result = ErrorConst.NOT_ENOUGH_PROP;
@@ -103,7 +103,7 @@ public class RewardTaskService {
 				return result;
 			
 			if(event.hasCost())
-				costService.costOnly(user, event.getCost());
+				costService.cost(user, event.getCost());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
 			if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5){
 				userRewardTaskService.refresh(builder);
@@ -185,7 +185,7 @@ public class RewardTaskService {
 				continue;
 			UserBean other = userService.getUserOther(userinfo.getId());
 			if(event.hasCost()) {
-				int costId = costService.canCostOnly(other, event.getCost());
+				int costId = costService.canCost(other, event.getCost());
 				if (costId == 0) {
 					errorUserList.add(userinfo);
 					enoughProp = false;
@@ -200,7 +200,7 @@ public class RewardTaskService {
 			UserInfo userinfo = roomInfo.getUser();
 			if (userinfo.getId() != user.getId()) {
 				if(event.hasCost())
-					costService.costOnly(userinfo.getId(), event.getCost());
+					costService.cost(userinfo.getId(), event.getCost());
 				UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
 				builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 				userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
@@ -222,7 +222,7 @@ public class RewardTaskService {
 			UserInfo userinfo = roomInfo.getUser();
 
 			UserBean other = userService.getUserOther(userinfo.getId());
-			int costId = costService.canCostOnly(other, event.getCost());
+			int costId = costService.canCost(other, event.getCost());
 			if (costId == 0) {
 				userInfoList.add(userinfo);
 			}

@@ -171,10 +171,10 @@ public class PropService {
 			return ErrorConst.EQUIP_IS_EXIST_ERROR;
 		
 		List<RewardInfo> costList = buildCostList(syn);
-		if (!costService.canCostAll(user, costList)) 
+		if (!costService.canCost(user, costList)) 
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
-		costService.costAll(user, costList);
+		costService.cost(user, costList);
 		
 		rewards.addLoot(RewardBean.init(syn.getTarget(), 1).buildRewardInfo());
 		costs.addAllLoot(costList);
@@ -244,14 +244,14 @@ public class PropService {
 		if (count < 1000)
 			return false;
 		
-		if (!costService.canCostAll(user, costList))
+		if (!costService.canCost(user, costList))
 			return false;
 		
 		return true;
 	}
 	
 	public List<RewardInfo> meterialCompose(UserBean user, List<RewardInfo> costList) {
-		costService.costAll(user, costList);
+		costService.cost(user, costList);
 		
 		return RewardBean.initRewardInfoList(24010, 1);
 	}

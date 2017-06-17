@@ -140,7 +140,7 @@ public class CostService {
 //		return false;
 //	}
 
-	public boolean canCostAll(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+	public boolean canCost(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
 //		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 //		Collections.sort(builderList, comparator);
 		for (int i = 0; i < costList.size(); ++i) {
@@ -152,7 +152,7 @@ public class CostService {
 		return true;
 	}
 	
-	public boolean costAll(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+	public boolean cost(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
 //		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 //		Collections.sort(builderList, comparator);
 		for (int i = 0; i < costList.size(); ++i) {
@@ -164,19 +164,19 @@ public class CostService {
 		return true;
 	}
 	
-	public int canCostOnly(UserBean user, RewardInfo cost) { //返回消费的道具id
+	public int canCost(UserBean user, RewardInfo cost) { //返回消费的道具id
 		if (canCost(user, cost.getItemid(), cost.getCount()))
 			return cost.getItemid();
 		return 0;
 	}
 	
-	public boolean costOnly(UserBean user, RewardInfo cost) {
+	public boolean cost(UserBean user, RewardInfo cost) {
 		if (costAndUpdate(user, cost.getItemid(), cost.getCount()))
 			return true;
 		return false;
 	}
 	
-	public boolean costOnly(long userId, RewardInfo cost) {
+	public boolean cost(long userId, RewardInfo cost) {
 		if (cost(userId, cost.getItemid(), cost.getCount()))
 			return true;
 		
