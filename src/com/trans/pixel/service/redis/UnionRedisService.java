@@ -116,6 +116,26 @@ public class UnionRedisService extends RedisService{
 		return unions;
 	}
 	
+	public List<Union> getBaseUnions(int serverId) {
+		List<Union> unions = new ArrayList<Union>();
+		Map<String, String> unionMap = this.hget(getUnionServerKey(serverId));
+		for(String value : unionMap.values()){
+			Union.Builder builder = Union.newBuilder();
+			if(parseJson(value, builder)){
+				unions.add(builder.build());
+			}
+		}
+		Collections.sort(unions, new Comparator<Union>() {
+			public int compare(Union union1, Union union2) {
+				if(union1.getZhanli() > union2.getZhanli())
+					return -1;
+				else 
+					return 1;
+			}
+		});
+		return unions;
+	}
+	
 	public void apply(final int unionId,UserBean user) {
 		String key = getUnionApplyKey(unionId);
 		Map<String, String> applyMap = this.hget(key);

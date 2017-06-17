@@ -218,8 +218,8 @@ public class UserLadderRedisService extends RedisService{
 		zadd(key, userLadder.getScore(), "" + user.getId());
 	}
 	
-	public Set<TypedTuple<String>> getLadderRankList(int serverId) {
-		return zrangewithscore(RedisKey.LADDER_RANK_PREFIX + serverId, 0, 19);
+	public Set<TypedTuple<String>> getLadderRankList(int serverId, long start, long end) {
+		return zrangewithscore(RedisKey.LADDER_RANK_PREFIX + serverId, start, end);
 	}
 	
 	public void deleteLadderRank(int serverId) {

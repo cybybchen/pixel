@@ -13,6 +13,8 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.service.ServerTitleService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class ActivityCrontabService {
@@ -24,6 +26,8 @@ public class ActivityCrontabService {
 	private ServerService serverService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private ServerTitleService serverTitleService;
 	
 	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
@@ -37,6 +41,14 @@ public class ActivityCrontabService {
 			}
 		} catch (Exception e) {
 			log.error("send activity reward error:" + e);
+		}
+	}
+	
+	@Scheduled(cron = "0 0 0 * * ? ")
+	public void handlerRechargeRank() {
+		if (DateUtil.getDayOfMonth() == 1) {
+			serverTitleService.handlerRechargeRank();
+			serverTitleService.handlerUnionRank();
 		}
 	}
 }

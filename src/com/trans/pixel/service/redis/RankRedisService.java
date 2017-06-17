@@ -64,7 +64,7 @@ public class RankRedisService extends RedisService{
 	public Set<TypedTuple<String>> getRankList(int serverId, int type, int start, int end) {
 		String key = buildRankRedisKey(serverId, type);
 		
-		return zrangewithscore(key, start, end - 1);
+		return zrangewithscore(key, start, end);
 	}
 	
 	//rank
@@ -77,14 +77,6 @@ public class RankRedisService extends RedisService{
 			if (oldScore == null || oldScore.longValue() < score)
 				zadd(key, score, "" + userId);
 		}
-	}
-	
-	public void addRankScore(long userId, int serverId, String type, long score, boolean isAdded) {
-		String key = buildRankRedisKey(serverId, type);
-		if (isAdded)
-			zincrby(key, score, "" + userId);
-		else
-			zadd(key, score, "" + userId);
 	}
 	
 	private <T> String buildRankRedisKey(int serverId, T type) {

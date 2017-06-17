@@ -726,4 +726,14 @@ public class DateUtil {
 	public static Date getEndDateOfD() {
 		return setToDayEndTime(getDate());
 	}
+	
+	/**
+     * 取当前月份的某天
+     */
+    public static int getDayOfMonth() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getDate());
+
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
 }

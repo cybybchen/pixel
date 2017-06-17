@@ -22,6 +22,7 @@ import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.NoticeConst;
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -93,6 +94,8 @@ public class ActivityService {
 	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private RankService rankService;
 	
 	/****************************************************************************************/
 	/** richang activity and achieve */
@@ -742,9 +745,10 @@ public class ActivityService {
 		 */
 //		sendRichangScore(user, ActivityConst.DANBI_RECHARGE, count);
 		/**
-		 * 开服2的充值活动
+		 * 充值排行榜
 		 */
 //		sendKaifu2Score(user, ActivityConst.KAIFU2_RECHARGE, count);
+		rankService.addRechargeRank(user, count);
 		/**
 		 * 首次充值的活动
 		 */

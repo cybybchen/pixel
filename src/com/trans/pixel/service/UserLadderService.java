@@ -4,14 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LadderConst;
@@ -25,12 +23,9 @@ import com.trans.pixel.protoc.LadderProto.LadderModeLevel;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
-import com.trans.pixel.protoc.ServerProto.Title;
 import com.trans.pixel.service.redis.LadderRedisService;
-import com.trans.pixel.service.redis.ServerTitleRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
 import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserLadderService {	
@@ -47,13 +42,7 @@ public class UserLadderService {
 	@Resource
 	private UserLadderMapper userLadderMapper;
 	@Resource
-	private ServerService serverService;
-	@Resource
 	private ServerTitleService serverTitleService;
-	@Resource
-	private ServerTitleRedisService serverTitleRedisService;
-	@Resource
-	private RewardService rewardService;
 	
 	public UserLadder getUserLadder(UserBean user, int type) {
 		UserLadder userLadder = userLadderRedisService.getUserLadder(user.getId(), type);
@@ -255,7 +244,7 @@ public class UserLadderService {
 //			else
 //				userLadderRedisService.deleteLadderSeason();
 			
-			handlerSeasonEnd();
+			serverTitleService.handlerSeasonEnd();
 		}
 		
 		return ladderSeason;
@@ -299,49 +288,6 @@ public class UserLadderService {
 		}
 		
 		return false;
-	}
-	
-	private void handlerSeasonEnd() {
-		List<Integer> serverIds = serverService.getServerIdList();
-		Map<String, Title> map = serverTitleRedisService.getTitleConfig();
-		for (int serverId : serverIds)
-			handlerSeasonEnd(serverId, map);
-	}
-	
-	private void handlerSeasonEnd(int serverId, Map<String, Title> map) {
-		Set<TypedTuple<String>> ranks = userLadderRedisService.getLadderRankList(serverId);
-		int rankInit = 1;
-		List<Long> others = new ArrayList<Long>();
-		for (TypedTuple<String> rank : ranks) {
-			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
-			UserBean user = userService.getUserOther(userId);
-			switch (rankInit) {
-				case 1:
-					serverTitleService.updateServerTitleByTitleId(serverId, 1, userId);
-					rewardService.doReward(user, map.get("" + 1).getItemid(), 1, map.get("" + 1).getTime());
-					break;
-				case 2:
-					serverTitleService.updateServerTitleByTitleId(serverId, 5, userId);
-					rewardService.doReward(user, map.get("" + 5).getItemid(), 1, map.get("" + 5).getTime());
-					break;
-				case 3:
-					serverTitleService.updateServerTitleByTitleId(serverId, 9, userId);
-					rewardService.doReward(user, map.get("" + 9).getItemid(), 1, map.get("" + 9).getTime());
-					break;
-				case 4:
-					serverTitleService.updateServerTitleByTitleId(serverId, 13, userId);
-					rewardService.doReward(user, map.get("" + 13).getItemid(), 1, map.get("" + 13).getTime());
-					break;
-				default:
-					others.add(userId);
-					rewardService.doReward(user, map.get("" + 17).getItemid(), 1, map.get("" + 17).getTime());
-					break;
-			}
-			
-			rankInit++;
-		}
-		
-		serverTitleService.updateServerTitleByTitleId(serverId, 17, others);
 	}
 	
 	private LadderSeason initLadderSeason() {

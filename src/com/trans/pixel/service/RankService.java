@@ -38,8 +38,8 @@ public class RankService {
 				return getLadderRankList(serverId);
 			case RankConst.TYPE_ZHANLI:
 				return getZhanliRankList(serverId);
-			case RankConst.TYPE_RECHARGE:
-				return getRechargeRankList(serverId);
+//			case RankConst.TYPE_RECHARGE:
+//				return getOtherRankList(serverId, type);
 			default:
 				return getOtherRankList(serverId, type);
 		}
@@ -76,33 +76,34 @@ public class RankService {
 		return rankList;
 	}
 	
-	private List<UserRankBean> getRechargeRankList(int serverId) {
-		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
-		Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, ActivityConst.KAIFU2_RECHARGE);
-		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
-		int rankInit = values.size();
-		for (TypedTuple<String> value : values) {
-			UserRankBean rank = new UserRankBean();
-			for (UserInfo userInfo : userInfoList) {
-				if (value.getValue().equals("" + userInfo.getId())) {
-					rank.setRank(rankInit);
-					rank.initByUserCache(userInfo);
-					rank.setZhanli(value.getScore().intValue());
-					rankInit--;
-					rankList.add(rank);
-					break;
-				}
-			}
-		}
-		
-		return rankList;
-	}
+//	private List<UserRankBean> getRechargeRankList(int serverId) {
+//		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+//		Set<TypedTuple<String>> values = activityRedisService.getUserIdList(serverId, ActivityConst.KAIFU2_RECHARGE);
+//		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
+//		int rankInit = values.size();
+//		for (TypedTuple<String> value : values) {
+//			UserRankBean rank = new UserRankBean();
+//			for (UserInfo userInfo : userInfoList) {
+//				if (value.getValue().equals("" + userInfo.getId())) {
+//					rank.setRank(rankInit);
+//					rank.initByUserCache(userInfo);
+//					rank.setZhanli(value.getScore().intValue());
+//					rankInit--;
+//					rankList.add(rank);
+//					break;
+//				}
+//			}
+//		}
+//		
+//		return rankList;
+//	}
 	
 	private List<UserRankBean> getOtherRankList(int serverId, int type) {
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		Set<TypedTuple<String>> values = rankRedisService.getRankList(serverId, type, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
 		List<UserInfo> userInfoList = userService.getCaches(serverId, values);
-		int rankInit = values.size();
+//		int rankInit = values.size();
+		int rankInit = 1;
 		for (TypedTuple<String> value : values) {
 			UserRankBean rank = new UserRankBean();
 			for (UserInfo userInfo : userInfoList) {
@@ -114,7 +115,7 @@ public class RankService {
 						rank.setScore2(rank.getZhanli() * 1000 + 1000 - value.getScore().intValue());
 					} else
 						rank.setZhanli(value.getScore().intValue());
-					rankInit--;
+					rankInit++;
 					rankList.add(rank);
 					break;
 				}
@@ -130,5 +131,9 @@ public class RankService {
 			turn += count;
 		}
 		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.RAID_RANK_PREFIX + raid.getId(), raid.getLevel() * 1000 + 1000 - turn, false);
+	}
+	
+	public void addRechargeRank(UserBean user, int count) {
+		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_RECHARGE, count, true);
 	}
 }
