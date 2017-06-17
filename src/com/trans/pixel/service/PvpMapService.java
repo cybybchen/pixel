@@ -250,6 +250,7 @@ public class PvpMapService {
 			mine.setId(mine.getId()+1000);
 			UserInfo userinfo = users.get(i);
 			mine.setPvpyield((int)((100+RedisService.nextInt(100))*Math.min(0.5, Math.max(1.5, userinfo.getZhanli()/user.getZhanliMax()))));
+			mine.setOwner(userinfo);
 			builder.addKuangdian(mine);
 			mineList.remove(index);
 		}
@@ -389,6 +390,8 @@ public class PvpMapService {
 		if(pvpmine == null)
 			return null;
 		PVPMine.Builder mine = PVPMine.newBuilder(pvpmine);
+		if(id > 1000 && user.getPvpInbreakTime() <= 0)
+			return null;
 		mine.setId(mine.getId()%1000);
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
@@ -445,6 +448,7 @@ public class PvpMapService {
 				mine.setEnemyid(userId);
 				if(id > 1000){
 					redis.delInbreakList(user.getId());
+					user.setPvpInbreakTime(user.getPvpInbreakTime()-1);
 				}else{
 					redis.saveMine(user.getId(), mine.build());
 				}
