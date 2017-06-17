@@ -14,8 +14,11 @@ import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.protoc.HeroProto.Hero;
+import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
+import com.trans.pixel.protoc.ServerProto.Title;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.NoticeMessageRedisService;
+import com.trans.pixel.service.redis.ServerTitleRedisService;
 
 @Service
 public class NoticeMessageService {
@@ -30,6 +33,10 @@ public class NoticeMessageService {
 	private UserService userService;
 	@Resource
 	private EquipRedisService equipRedisService;
+	@Resource
+	private ServerTitleService serverTitleService;
+	@Resource
+	private ServerTitleRedisService serverTitleRedisService;
 	
 	public void composeLotteryMessage(UserBean user, List<RewardBean> rewardList) {
 		for (RewardBean reward : rewardList) {
@@ -126,5 +133,24 @@ public class NoticeMessageService {
 			userService.updateUser(user);
 		}
 		return messageList;
+	}
+	
+	public void composeLogin(UserBean user) {
+		List<TitleInfo> titleList = serverTitleService.selectServerTileListByServerId(user.getServerId());
+		int minTitle = 100;
+		for (TitleInfo title : titleList) {
+			if (title.getUserId() == user.getId()) {
+				minTitle = Math.min(minTitle, title.getTitleId());
+			}
+		}
+		
+		if (minTitle < 16) {
+			Title title = serverTitleRedisService.getTitle(minTitle);
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("%s,").append(title.getColor()).append(",").append(title.getName()).append(user.getUserName()).append("上线了！");
+			
+			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+		}
 	}
 }
