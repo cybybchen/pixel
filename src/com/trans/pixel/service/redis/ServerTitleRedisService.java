@@ -92,7 +92,7 @@ public class ServerTitleRedisService extends RedisService {
 		}
 		
 		Map<String, Title> map = new HashMap<String, Title>();
-		for(Title.Builder title : builder.getIdBuilderList()){
+		for(Title.Builder title : builder.getDataBuilderList()){
 			map.put("" + title.getId(), title.build());
 		}
 		return map;

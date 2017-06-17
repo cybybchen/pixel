@@ -2718,15 +2718,15 @@ public final class ServerProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional uint32 color = 3;
+    // optional uint32 rare = 3;
     /**
-     * <code>optional uint32 color = 3;</code>
+     * <code>optional uint32 rare = 3;</code>
      */
-    boolean hasColor();
+    boolean hasRare();
     /**
-     * <code>optional uint32 color = 3;</code>
+     * <code>optional uint32 rare = 3;</code>
      */
-    int getColor();
+    int getRare();
 
     // optional uint32 count = 4;
     /**
@@ -2821,7 +2821,7 @@ public final class ServerProto {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              color_ = input.readUInt32();
+              rare_ = input.readUInt32();
               break;
             }
             case 32: {
@@ -2938,20 +2938,20 @@ public final class ServerProto {
       }
     }
 
-    // optional uint32 color = 3;
-    public static final int COLOR_FIELD_NUMBER = 3;
-    private int color_;
+    // optional uint32 rare = 3;
+    public static final int RARE_FIELD_NUMBER = 3;
+    private int rare_;
     /**
-     * <code>optional uint32 color = 3;</code>
+     * <code>optional uint32 rare = 3;</code>
      */
-    public boolean hasColor() {
+    public boolean hasRare() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional uint32 color = 3;</code>
+     * <code>optional uint32 rare = 3;</code>
      */
-    public int getColor() {
-      return color_;
+    public int getRare() {
+      return rare_;
     }
 
     // optional uint32 count = 4;
@@ -3005,7 +3005,7 @@ public final class ServerProto {
     private void initFields() {
       id_ = 0;
       name_ = "";
-      color_ = 0;
+      rare_ = 0;
       count_ = 0;
       itemid_ = 0;
       time_ = 0;
@@ -3029,7 +3029,7 @@ public final class ServerProto {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, color_);
+        output.writeUInt32(3, rare_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(4, count_);
@@ -3059,7 +3059,7 @@ public final class ServerProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, color_);
+          .computeUInt32Size(3, rare_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3193,7 +3193,7 @@ public final class ServerProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        color_ = 0;
+        rare_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -3240,7 +3240,7 @@ public final class ServerProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.color_ = color_;
+        result.rare_ = rare_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
@@ -3277,8 +3277,8 @@ public final class ServerProto {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasColor()) {
-          setColor(other.getColor());
+        if (other.hasRare()) {
+          setRare(other.getRare());
         }
         if (other.hasCount()) {
           setCount(other.getCount());
@@ -3423,35 +3423,35 @@ public final class ServerProto {
         return this;
       }
 
-      // optional uint32 color = 3;
-      private int color_ ;
+      // optional uint32 rare = 3;
+      private int rare_ ;
       /**
-       * <code>optional uint32 color = 3;</code>
+       * <code>optional uint32 rare = 3;</code>
        */
-      public boolean hasColor() {
+      public boolean hasRare() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional uint32 color = 3;</code>
+       * <code>optional uint32 rare = 3;</code>
        */
-      public int getColor() {
-        return color_;
+      public int getRare() {
+        return rare_;
       }
       /**
-       * <code>optional uint32 color = 3;</code>
+       * <code>optional uint32 rare = 3;</code>
        */
-      public Builder setColor(int value) {
+      public Builder setRare(int value) {
         bitField0_ |= 0x00000004;
-        color_ = value;
+        rare_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 color = 3;</code>
+       * <code>optional uint32 rare = 3;</code>
        */
-      public Builder clearColor() {
+      public Builder clearRare() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        color_ = 0;
+        rare_ = 0;
         onChanged();
         return this;
       }
@@ -3569,29 +3569,29 @@ public final class ServerProto {
   public interface TitleListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Title id = 1;
+    // repeated .com.trans.pixel.protoc.Title data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.ServerProto.Title> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    com.trans.pixel.protoc.ServerProto.Title getId(int index);
+    com.trans.pixel.protoc.ServerProto.Title getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.ServerProto.TitleOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    com.trans.pixel.protoc.ServerProto.TitleOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.ServerProto.TitleOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -3647,10 +3647,10 @@ public final class ServerProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.ServerProto.Title>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.ServerProto.Title>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.ServerProto.Title.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.ServerProto.Title.PARSER, extensionRegistry));
               break;
             }
           }
@@ -3662,7 +3662,7 @@ public final class ServerProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -3695,44 +3695,44 @@ public final class ServerProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Title id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.ServerProto.Title> id_;
+    // repeated .com.trans.pixel.protoc.Title data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ServerProto.Title> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.ServerProto.Title> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.ServerProto.Title> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.ServerProto.TitleOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    public com.trans.pixel.protoc.ServerProto.Title getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.ServerProto.Title getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
      */
-    public com.trans.pixel.protoc.ServerProto.TitleOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.ServerProto.TitleOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3746,8 +3746,8 @@ public final class ServerProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3758,9 +3758,9 @@ public final class ServerProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3870,7 +3870,7 @@ public final class ServerProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3879,11 +3879,11 @@ public final class ServerProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -3912,14 +3912,14 @@ public final class ServerProto {
       public com.trans.pixel.protoc.ServerProto.TitleList buildPartial() {
         com.trans.pixel.protoc.ServerProto.TitleList result = new com.trans.pixel.protoc.ServerProto.TitleList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -3936,29 +3936,29 @@ public final class ServerProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.ServerProto.TitleList other) {
         if (other == com.trans.pixel.protoc.ServerProto.TitleList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -3989,244 +3989,244 @@ public final class ServerProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Title id = 1;
-      private java.util.List<com.trans.pixel.protoc.ServerProto.Title> id_ =
+      // repeated .com.trans.pixel.protoc.Title data = 1;
+      private java.util.List<com.trans.pixel.protoc.ServerProto.Title> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.ServerProto.Title>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.ServerProto.Title>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.ServerProto.Title, com.trans.pixel.protoc.ServerProto.Title.Builder, com.trans.pixel.protoc.ServerProto.TitleOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.ServerProto.Title, com.trans.pixel.protoc.ServerProto.Title.Builder, com.trans.pixel.protoc.ServerProto.TitleOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.ServerProto.Title> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.ServerProto.Title> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public com.trans.pixel.protoc.ServerProto.Title getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.ServerProto.Title getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.ServerProto.Title value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.ServerProto.Title.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.ServerProto.Title value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.ServerProto.Title value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.ServerProto.Title value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.ServerProto.Title.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.ServerProto.Title.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.ServerProto.Title> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public com.trans.pixel.protoc.ServerProto.Title.Builder getIdBuilder(
+      public com.trans.pixel.protoc.ServerProto.Title.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public com.trans.pixel.protoc.ServerProto.TitleOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.ServerProto.TitleOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.ServerProto.TitleOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public com.trans.pixel.protoc.ServerProto.Title.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.ServerProto.Title.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.ServerProto.Title.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
-      public com.trans.pixel.protoc.ServerProto.Title.Builder addIdBuilder(
+      public com.trans.pixel.protoc.ServerProto.Title.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.ServerProto.Title.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Title id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Title data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.ServerProto.Title.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.ServerProto.Title, com.trans.pixel.protoc.ServerProto.Title.Builder, com.trans.pixel.protoc.ServerProto.TitleOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.ServerProto.Title, com.trans.pixel.protoc.ServerProto.Title.Builder, com.trans.pixel.protoc.ServerProto.TitleOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.TitleList)
@@ -4284,11 +4284,11 @@ public final class ServerProto {
       "\n\022SERVER_MAINTENANCE\020\001\"\201\001\n\017ServerTitleIn" +
       "fo\022@\n\005title\030\001 \003(\01321.com.trans.pixel.prot" +
       "oc.ServerTitleInfo.TitleInfo\032,\n\tTitleInf",
-      "o\022\017\n\007titleId\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"]\n\005Ti" +
-      "tle\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\r\n\005color\030\003" +
-      " \001(\r\022\r\n\005count\030\004 \001(\r\022\016\n\006itemid\030\005 \001(\r\022\014\n\004t" +
-      "ime\030\006 \001(\r\"6\n\tTitleList\022)\n\002id\030\001 \003(\0132\035.com" +
-      ".trans.pixel.protoc.Title"
+      "o\022\017\n\007titleId\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"\\\n\005Ti" +
+      "tle\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004rare\030\003 " +
+      "\001(\r\022\r\n\005count\030\004 \001(\r\022\016\n\006itemid\030\005 \001(\r\022\014\n\004ti" +
+      "me\030\006 \001(\r\"8\n\tTitleList\022+\n\004data\030\001 \003(\0132\035.co" +
+      "m.trans.pixel.protoc.Title"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4318,13 +4318,13 @@ public final class ServerProto {
           internal_static_com_trans_pixel_protoc_Title_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Title_descriptor,
-              new java.lang.String[] { "Id", "Name", "Color", "Count", "Itemid", "Time", });
+              new java.lang.String[] { "Id", "Name", "Rare", "Count", "Itemid", "Time", });
           internal_static_com_trans_pixel_protoc_TitleList_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_TitleList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TitleList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           return null;
         }
       };

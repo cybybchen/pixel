@@ -2663,14 +2663,14 @@ message ServerTitleInfo {
 message Title {
 	optional uint32 id = 1;
 	optional string name = 2;
-	optional uint32 color = 3;
+	optional uint32 rare = 3;
 	optional uint32 count = 4;
 	optional uint32 itemid = 5;
 	optional uint32 time = 6;
 }
 
 message TitleList {
-	repeated Title id = 1;
+	repeated Title data = 1;
 }
 
 ////////// UserInfoProto
