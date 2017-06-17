@@ -325,11 +325,16 @@ public class CostService {
 		UserBean user = null;
 		if(itemId/1000 == 1){
 			user = userService.getUserOther(userId);
+			if(cost(user, itemId, count)){
+				userService.updateUser(user);
+				return true;
+			}else
+				return false;
 		}else{
 			user = new UserBean();
 			user.setId(userId);
+			return cost(user, itemId, count);
 		}
-		return cost(user, itemId, count);
 	}
 	
 	/**
