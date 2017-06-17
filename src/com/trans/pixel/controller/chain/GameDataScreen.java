@@ -100,6 +100,7 @@ import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
+import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMapCommand;
@@ -1427,6 +1428,12 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		propCommandService.materialCompose(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.getInbreakList(cmd, responseBuilder, user);
+		return false;
 	}
 
 }

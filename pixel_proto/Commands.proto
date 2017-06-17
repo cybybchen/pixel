@@ -1364,6 +1364,12 @@ message RequestRefreshPVPMapCommand {
 message RequestPVPMapListCommand {//挂机PVP列表
 }
 
+message RequestPVPInbreakListCommand {//PVP入侵列表
+}
+message ResponsePVPInbreakListCommand {//PVP入侵列表
+        repeated PVPMine kuangdian = 1;
+}
+
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
 	required int32 positionid = 1;
 	optional bool ret = 2;
@@ -3559,6 +3565,7 @@ message RequestCommand {
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
 	optional RequestPVPMapListCommand pvpMapListCommand = 125;
+	optional RequestPVPInbreakListCommand pvpInbreakListCommand = 127;
 	optional RequestUnlockPVPMapCommand unlockPvpMapCommand = 132;
 	optional RequestAttackPVPMonsterCommand attackPVPMonsterCommand = 126;
 	optional RequestPVPMineInfoCommand pvpMineInfoCommand = 128;
@@ -3707,6 +3714,7 @@ message ResponseCommand {
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;
 	optional ResponsePVPMapListCommand pvpMapListCommand = 125;
+	optional ResponsePVPInbreakListCommand pvpInbreakListCommand = 126;
 	optional ResponseAreaEquipCommand areaEquipCommand = 137;
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	optional ResponseFightInfoCommand fightInfoCommand = 155;

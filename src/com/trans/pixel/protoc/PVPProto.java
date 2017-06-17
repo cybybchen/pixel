@@ -15973,6 +15973,1017 @@ public final class PVPProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestPVPMapListCommand)
   }
 
+  public interface RequestPVPInbreakListCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestPVPInbreakListCommand}
+   *
+   * <pre>
+   *PVP入侵列表
+   * </pre>
+   */
+  public static final class RequestPVPInbreakListCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestPVPInbreakListCommandOrBuilder {
+    // Use RequestPVPInbreakListCommand.newBuilder() to construct.
+    private RequestPVPInbreakListCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestPVPInbreakListCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestPVPInbreakListCommand defaultInstance;
+    public static RequestPVPInbreakListCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestPVPInbreakListCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestPVPInbreakListCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.class, com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestPVPInbreakListCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestPVPInbreakListCommand>() {
+      public RequestPVPInbreakListCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestPVPInbreakListCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestPVPInbreakListCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestPVPInbreakListCommand}
+     *
+     * <pre>
+     *PVP入侵列表
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.class, com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand build() {
+        com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand buildPartial() {
+        com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand result = new com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand other) {
+        if (other == com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestPVPInbreakListCommand)
+    }
+
+    static {
+      defaultInstance = new RequestPVPInbreakListCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestPVPInbreakListCommand)
+  }
+
+  public interface ResponsePVPInbreakListCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> 
+        getKuangdianList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.PVPMine getKuangdian(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    int getKuangdianCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder> 
+        getKuangdianOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder getKuangdianOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponsePVPInbreakListCommand}
+   *
+   * <pre>
+   *PVP入侵列表
+   * </pre>
+   */
+  public static final class ResponsePVPInbreakListCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponsePVPInbreakListCommandOrBuilder {
+    // Use ResponsePVPInbreakListCommand.newBuilder() to construct.
+    private ResponsePVPInbreakListCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponsePVPInbreakListCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponsePVPInbreakListCommand defaultInstance;
+    public static ResponsePVPInbreakListCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponsePVPInbreakListCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponsePVPInbreakListCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              kuangdian_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPMine.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.class, com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponsePVPInbreakListCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponsePVPInbreakListCommand>() {
+      public ResponsePVPInbreakListCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponsePVPInbreakListCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponsePVPInbreakListCommand> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;
+    public static final int KUANGDIAN_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> kuangdian_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> getKuangdianList() {
+      return kuangdian_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder> 
+        getKuangdianOrBuilderList() {
+      return kuangdian_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    public int getKuangdianCount() {
+      return kuangdian_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.PVPMine getKuangdian(int index) {
+      return kuangdian_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder getKuangdianOrBuilder(
+        int index) {
+      return kuangdian_.get(index);
+    }
+
+    private void initFields() {
+      kuangdian_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getKuangdianCount(); i++) {
+        if (!getKuangdian(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < kuangdian_.size(); i++) {
+        output.writeMessage(1, kuangdian_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < kuangdian_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, kuangdian_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponsePVPInbreakListCommand}
+     *
+     * <pre>
+     *PVP入侵列表
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.class, com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getKuangdianFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (kuangdianBuilder_ == null) {
+          kuangdian_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          kuangdianBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand build() {
+        com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand buildPartial() {
+        com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand result = new com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand(this);
+        int from_bitField0_ = bitField0_;
+        if (kuangdianBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.kuangdian_ = kuangdian_;
+        } else {
+          result.kuangdian_ = kuangdianBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand other) {
+        if (other == com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand.getDefaultInstance()) return this;
+        if (kuangdianBuilder_ == null) {
+          if (!other.kuangdian_.isEmpty()) {
+            if (kuangdian_.isEmpty()) {
+              kuangdian_ = other.kuangdian_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureKuangdianIsMutable();
+              kuangdian_.addAll(other.kuangdian_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.kuangdian_.isEmpty()) {
+            if (kuangdianBuilder_.isEmpty()) {
+              kuangdianBuilder_.dispose();
+              kuangdianBuilder_ = null;
+              kuangdian_ = other.kuangdian_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              kuangdianBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getKuangdianFieldBuilder() : null;
+            } else {
+              kuangdianBuilder_.addAllMessages(other.kuangdian_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getKuangdianCount(); i++) {
+          if (!getKuangdian(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;
+      private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> kuangdian_ =
+        java.util.Collections.emptyList();
+      private void ensureKuangdianIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>(kuangdian_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.PVPMine, com.trans.pixel.protoc.PVPProto.PVPMine.Builder, com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder> kuangdianBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> getKuangdianList() {
+        if (kuangdianBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(kuangdian_);
+        } else {
+          return kuangdianBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public int getKuangdianCount() {
+        if (kuangdianBuilder_ == null) {
+          return kuangdian_.size();
+        } else {
+          return kuangdianBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.PVPMine getKuangdian(int index) {
+        if (kuangdianBuilder_ == null) {
+          return kuangdian_.get(index);
+        } else {
+          return kuangdianBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder setKuangdian(
+          int index, com.trans.pixel.protoc.PVPProto.PVPMine value) {
+        if (kuangdianBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureKuangdianIsMutable();
+          kuangdian_.set(index, value);
+          onChanged();
+        } else {
+          kuangdianBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder setKuangdian(
+          int index, com.trans.pixel.protoc.PVPProto.PVPMine.Builder builderForValue) {
+        if (kuangdianBuilder_ == null) {
+          ensureKuangdianIsMutable();
+          kuangdian_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          kuangdianBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder addKuangdian(com.trans.pixel.protoc.PVPProto.PVPMine value) {
+        if (kuangdianBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureKuangdianIsMutable();
+          kuangdian_.add(value);
+          onChanged();
+        } else {
+          kuangdianBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder addKuangdian(
+          int index, com.trans.pixel.protoc.PVPProto.PVPMine value) {
+        if (kuangdianBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureKuangdianIsMutable();
+          kuangdian_.add(index, value);
+          onChanged();
+        } else {
+          kuangdianBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder addKuangdian(
+          com.trans.pixel.protoc.PVPProto.PVPMine.Builder builderForValue) {
+        if (kuangdianBuilder_ == null) {
+          ensureKuangdianIsMutable();
+          kuangdian_.add(builderForValue.build());
+          onChanged();
+        } else {
+          kuangdianBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder addKuangdian(
+          int index, com.trans.pixel.protoc.PVPProto.PVPMine.Builder builderForValue) {
+        if (kuangdianBuilder_ == null) {
+          ensureKuangdianIsMutable();
+          kuangdian_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          kuangdianBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder addAllKuangdian(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.PVPMine> values) {
+        if (kuangdianBuilder_ == null) {
+          ensureKuangdianIsMutable();
+          super.addAll(values, kuangdian_);
+          onChanged();
+        } else {
+          kuangdianBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder clearKuangdian() {
+        if (kuangdianBuilder_ == null) {
+          kuangdian_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          kuangdianBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public Builder removeKuangdian(int index) {
+        if (kuangdianBuilder_ == null) {
+          ensureKuangdianIsMutable();
+          kuangdian_.remove(index);
+          onChanged();
+        } else {
+          kuangdianBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.PVPMine.Builder getKuangdianBuilder(
+          int index) {
+        return getKuangdianFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder getKuangdianOrBuilder(
+          int index) {
+        if (kuangdianBuilder_ == null) {
+          return kuangdian_.get(index);  } else {
+          return kuangdianBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder> 
+           getKuangdianOrBuilderList() {
+        if (kuangdianBuilder_ != null) {
+          return kuangdianBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(kuangdian_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.PVPMine.Builder addKuangdianBuilder() {
+        return getKuangdianFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.PVPProto.PVPMine.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.PVPMine.Builder addKuangdianBuilder(
+          int index) {
+        return getKuangdianFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.PVPProto.PVPMine.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.PVPMine kuangdian = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine.Builder> 
+           getKuangdianBuilderList() {
+        return getKuangdianFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.PVPMine, com.trans.pixel.protoc.PVPProto.PVPMine.Builder, com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder> 
+          getKuangdianFieldBuilder() {
+        if (kuangdianBuilder_ == null) {
+          kuangdianBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.PVPProto.PVPMine, com.trans.pixel.protoc.PVPProto.PVPMine.Builder, com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder>(
+                  kuangdian_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          kuangdian_ = null;
+        }
+        return kuangdianBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponsePVPInbreakListCommand)
+    }
+
+    static {
+      defaultInstance = new ResponsePVPInbreakListCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponsePVPInbreakListCommand)
+  }
+
   public interface RequestAttackPVPMonsterCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -22398,6 +23409,16 @@ public final class PVPProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -22502,28 +23523,31 @@ public final class PVPProto {
       "\n\004buff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapComma" +
       "nd\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033R" +
       "equestRefreshPVPMapCommand\"\032\n\030RequestPVP" +
-      "MapListCommand\"O\n\036RequestAttackPVPMonste" +
-      "rCommand\022\022\n\npositionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(" +
-      "\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineInfoCom" +
-      "mand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoC",
-      "ommand\022*\n\004team\030\005 \001(\0132\034.com.trans.pixel.p" +
-      "rotoc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com.trans" +
-      ".pixel.protoc.PVPMine\"T\n\033RequestAttackPV" +
-      "PMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003" +
-      "\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHe" +
-      "lpAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006te" +
-      "amid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022" +
-      "\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelCommand" +
-      "\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(" +
-      "\010\022\016\n\006userId\030\004 \002(\003\"\\\n\026RequestSendMailComm",
-      "and\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021" +
-      "\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035Reque" +
-      "stBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\t" +
-      "brotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMine" +
-      "Command\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapLis" +
-      "tCommand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixe" +
-      "l.protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff" +
-      "\030\003 \001(\005"
+      "MapListCommand\"\036\n\034RequestPVPInbreakListC" +
+      "ommand\"S\n\035ResponsePVPInbreakListCommand\022" +
+      "2\n\tkuangdian\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.PVPMine\"O\n\036RequestAttackPVPMonsterCo",
+      "mmand\022\022\n\npositionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(\010\022\014" +
+      "\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineInfoComman" +
+      "d\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoComm" +
+      "and\022*\n\004team\030\005 \001(\0132\034.com.trans.pixel.prot" +
+      "oc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com.trans.pi" +
+      "xel.protoc.PVPMine\"T\n\033RequestAttackPVPMi" +
+      "neCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n" +
+      "\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHelpA" +
+      "ttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teami" +
+      "d\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004",
+      "time\030\005 \001(\005\"R\n\027RequestHelpLevelCommand\022\n\n" +
+      "\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016" +
+      "\n\006userId\030\004 \002(\003\"\\\n\026RequestSendMailCommand" +
+      "\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\tr" +
+      "elatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035RequestB" +
+      "rotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbro" +
+      "therId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineCom" +
+      "mand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapListCo" +
+      "mmand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.p" +
+      "rotoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 ",
+      "\001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -22644,62 +23668,74 @@ public final class PVPProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_descriptor,
               new java.lang.String[] { });
-          internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor =
             getDescriptor().getMessageTypes().get(19);
+          internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor =
+            getDescriptor().getMessageTypes().get(20);
+          internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor,
+              new java.lang.String[] { "Kuangdian", });
+          internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor,
               new java.lang.String[] { "Positionid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Team", "MineInfo", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor,
               new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", });
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", "BrotherId", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor,

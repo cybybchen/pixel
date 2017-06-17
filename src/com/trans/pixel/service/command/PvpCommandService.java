@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand;
+import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMapCommand;
@@ -65,6 +66,15 @@ public class PvpCommandService extends BaseCommandService {
 	private LevelRedisService levelRedisService;
 	
 	public void getMapList(RequestPVPMapListCommand cmd, Builder responseBuilder, UserBean user) {
+		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
+		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
+		builder.addAllField(maplist.getDataList());
+		builder.setBuff(maplist.getBuff());
+		builder.setEndTime(user.getRefreshPvpMapTime());
+		responseBuilder.setPvpMapListCommand(builder);
+	}
+	
+	public void getInbreakList(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user) {
 		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
 		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
 		builder.addAllField(maplist.getDataList());

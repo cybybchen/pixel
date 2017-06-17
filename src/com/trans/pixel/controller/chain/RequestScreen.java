@@ -65,6 +65,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
+import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand;
@@ -270,6 +271,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user);
@@ -674,6 +676,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasUnlockPvpMapCommand()) {
 			RequestUnlockPVPMapCommand cmd = request.getUnlockPvpMapCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasPvpInbreakListCommand()) {
+			RequestPVPInbreakListCommand cmd = request.getPvpInbreakListCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUpdateTeamCommand()) {
