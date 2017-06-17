@@ -6,7 +6,7 @@ public class UserRewardTaskBean {
 //	private long id = 0;
 	private long userId = 0;
 //	private int rewardTaskId = 0;
-//	private int rewardTaskIndex = 0;
+	private int rewardTaskIndex = 0;
 	private int eventid = 0;
 	private int status = 0;
 	public static UserRewardTaskBean init(long userId, UserRewardTask ut) {
@@ -14,13 +14,14 @@ public class UserRewardTaskBean {
 		utBean.setUserId(userId);
 		utBean.setEventid(ut.getTask().getEventid());
 		utBean.setStatus(ut.getStatus());
+		utBean.setRewardTaskIndex(ut.getIndex());
 		
 		return utBean;
 	}
 	public UserRewardTask build() {
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 		builder.getTaskBuilder().setEventid(eventid);
-		builder.setIndex(0);
+		builder.setIndex(rewardTaskIndex);
 		builder.setStatus(status);
 		
 		return builder.build();
@@ -43,12 +44,12 @@ public class UserRewardTaskBean {
 //	public void setRewardTaskId(int rewardTaskId) {
 //		this.rewardTaskId = rewardTaskId;
 //	}
-//	public int getRewardTaskIndex() {
-//		return rewardTaskIndex;
-//	}
-//	public void setRewardTaskIndex(int rewardTaskIndex) {
-//		this.rewardTaskIndex = rewardTaskIndex;
-//	}
+	public int getRewardTaskIndex() {
+		return rewardTaskIndex;
+	}
+	public void setRewardTaskIndex(int rewardTaskIndex) {
+		this.rewardTaskIndex = rewardTaskIndex;
+	}
 	public int getEventid() {
 		return eventid;
 	}

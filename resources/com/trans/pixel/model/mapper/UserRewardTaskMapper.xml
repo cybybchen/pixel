@@ -6,18 +6,18 @@
 <!-- 		<id property="id" column="id" /> -->
 		<result property="userId" column="user_id" />
 <!-- 		<result property="rewardTaskId" column="reward_task_id" /> -->
-<!-- 		<result property="rewardTaskIndex" column="reward_task_index" /> -->
+		<result property="rewardTaskIndex" column="reward_task_index" />
 <!-- 		<result property="enemyId" column="enemy_id" /> -->
 		<result property="eventid" column="eventid" />
 		<result property="status" column="status" />
 	</resultMap>
 	
 	<update id="updateUserRewardTask" parameterType="com.trans.pixel.model.userinfo.UserRewardTaskBean">
-		INSERT INTO user_rewardtask(user_id, eventid, status)
-	    VALUES(#{userId}, #{eventid}, #{status})
+		INSERT INTO user_rewardtask(user_id, reward_task_index, eventid, status)
+	    VALUES(#{userId}, #{rewardTaskIndex}, #{eventid}, #{status})
 		ON 
 	    duplicate key update
-	    status=#{status}
+	    eventid=#{eventid}, status=#{status}
 	</update>
 	
 	<select id="selectUserRewardTaskList" parameterType="long" resultMap="resultMap">
@@ -27,7 +27,7 @@
 	
 	<select id="selectUserRewardTask" resultMap="resultMap">
 		SELECT *
-		from user_rewardtask where user_id=#{userId} and eventid=#{eventid}
+		from user_rewardtask where user_id=#{userId} and reward_task_index=#{rewardTaskIndex}
 	</select>
 	
 </mapper>
