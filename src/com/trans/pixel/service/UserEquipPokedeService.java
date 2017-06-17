@@ -81,7 +81,7 @@ public class UserEquipPokedeService {
 			}
 			
 			pokede.setEndTime(lasttime == 0 ? 
-					"" : DateUtil.forDatetime(DateUtil.getFutureDay(pokede.getEndTime().isEmpty() ?
+					"" : DateUtil.forDatetime(DateUtil.getFutureHour(pokede.getEndTime().isEmpty() ?
 							DateUtil.getDate() : DateUtil.getDate(pokede.getEndTime()), lasttime)));
 			updateUserEquipPokede(pokede, user);
 		}

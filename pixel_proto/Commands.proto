@@ -521,7 +521,7 @@ message Libao {
 	optional int32 refresh = 7;
 }
 message LibaoList {
-	repeated Libao id = 3;
+	repeated Libao data = 1;
 }
 message RequestLibaoShopCommand {//vip礼包商店
 }
@@ -1875,10 +1875,7 @@ message RequestSevenLoginSignCommand {
 
 message VipLibao {
 	optional int32 itemid = 1;
-	optional string name = 2;
-	optional int32 value = 6;
-	optional int32 cost = 7;
-	repeated RewardInfo reward = 8;
+	repeated RewardInfo reward = 2;
 }
 
 message VipLibaoList {
@@ -1888,40 +1885,33 @@ message VipLibaoList {
 message VipInfo {
 	optional int32 vip = 1;
 	optional int32 rmb = 2;
-	optional string effect = 3;
-	optional int32 dianjin = 4;
-	optional int32 tianti = 5;
-	optional int32 pvp = 6;
-	optional int32 quyu = 7;
-	optional int32 mohua = 8;
-	optional int32 baoxiang = 9;
-	optional int32 zhibao = 10;
-	optional int32 baohu = 11;
-	optional int32 libao1 = 12;
-	optional int32 libao2 = 13;
-	optional int32 zuanshi = 14;
-	optional int32 contract = 15;
+	optional int32 zuanshi = 3;
+	//optional string des = 3;
+	optional int32 tianti = 4;
+	optional int32 pvprefresh = 5;
+	optional int32 pvpinbreak = 6;
+	optional int32 shopchipbox = 7;
+	optional int32 shopbaohu = 8;
+	optional RewardInfo skip = 12;
+	optional RewardInfo libao = 13;
 }
 
 message VipList {
-	repeated VipInfo vip = 1;
+	repeated VipInfo data = 1;
 }
 
 message Rmb {
 	required int32 id = 1;
-	required int32 rmb = 2;
-	required int32 itemid = 3;
-	required int32 zuanshi = 4;
+	required int32 type = 2;
 	optional string name = 5;
-	optional string description = 6;
-	optional string img = 7;
-	optional int32 type = 8;
-	optional int32 zuanshi1 = 9;
-	optional int32 costid = 10;
+	//optional string des = 6;
+	//optional string img = 7;
+	repeated RewardInfo cost = 9;
+	repeated RewardInfo reward = 10;
 }
 
 message RmbList {
-	repeated Rmb id = 1;
+	repeated Rmb data = 1;
 }
 
 message ShouchongList {
@@ -2662,6 +2652,19 @@ message ServerTitleInfo {
 		required uint64 userId = 2;
 	}
 	repeated TitleInfo title = 1;
+}
+
+message Title {
+	optional uint32 id = 1;
+	optional string name = 2;
+	optional uint32 color = 3;
+	optional uint32 count = 4;
+	optional uint32 itemid = 5;
+	optional uint32 time = 6;
+}
+
+message TitleList {
+	repeated Title id = 1;
 }
 
 ////////// UserInfoProto

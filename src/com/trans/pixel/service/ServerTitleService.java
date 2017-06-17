@@ -48,6 +48,7 @@ public class ServerTitleService {
 	}
 	
 	public void updateServerTitleByTitleId(int serverId, int titleId, List<Long> userIds) {
+		deleteServerTitleByTitleId(serverId, titleId);
 		List<TitleInfo> titleList = new ArrayList<TitleInfo>();
 		for (long userId : userIds) {
 			ServerTitleBean bean = new ServerTitleBean(serverId, titleId, userId);
@@ -56,5 +57,11 @@ public class ServerTitleService {
 		}
 		
 		redis.setServerTitleList(serverId, titleList);
+	}
+	
+	public void updateServerTitleByTitleId(int serverId, int titleId, long userId) {
+		List<Long> userIds = new ArrayList<Long>();
+		userIds.add(userId);
+		updateServerTitleByTitleId(serverId, titleId, userIds);
 	}
 }

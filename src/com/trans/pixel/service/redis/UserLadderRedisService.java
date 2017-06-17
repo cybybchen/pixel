@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -17,6 +18,7 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.LadderConst;
@@ -209,6 +211,20 @@ public class UserLadderRedisService extends RedisService{
 	
 	public String popDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.LADDER_USERINFO_PREFIX);
+	}
+	
+	public void addLadderRank(UserBean user, UserLadder userLadder) {
+		String key = RedisKey.LADDER_RANK_PREFIX + user.getServerId();
+		zadd(key, userLadder.getScore(), "" + user.getId());
+	}
+	
+	public Set<TypedTuple<String>> getLadderRankList(int serverId) {
+		return zrangewithscore(RedisKey.LADDER_RANK_PREFIX + serverId, 0, 19);
+	}
+	
+	public void deleteLadderRank(int serverId) {
+		String key = RedisKey.LADDER_RANK_PREFIX + serverId;
+		delete(key);
 	}
 	
 	private Map<String, String> convert(Map<Integer, UserLadder> map) {

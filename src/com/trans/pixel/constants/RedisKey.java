@@ -25,6 +25,7 @@ public class RedisKey {
 	public final static String BLACKLIST_ACCOUNT = "BlackList_Account";
 	public final static String BLACKLIST_IDFA = "BlackList_Idfa";
 	public final static String USERTYPE_KEY = PREFIX + "User_type";
+	public static final String TITLE_KEY = PREFIX + CONFIG_PREFIX + "title";
 	
 	//user key prefix
 	public final static String USER_PREFIX = "user_";
@@ -271,6 +272,7 @@ public class RedisKey {
 	public static final String LADDER_EQUIP_KEY = PREFIX + CONFIG_PREFIX + "ladder_equip";
 	public static final String LADDER_SEASON_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "ladder_season";
 	public static final String LADDER_USER_HISTORY_ENEMY_KEY = PREFIX + "ladder_history_enemy_";
+	public static final String LADDER_RANK_PREFIX = PREFIX + "ladder:rank";
 	
 	//team unlock redis
 	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";

@@ -137,6 +137,10 @@ public class LadderService {
 		
 		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
 		
+		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
+			userLadderService.addLadderRank(user, builder.build());
+		}
+		
 		return builder.build();
 	}
 	
