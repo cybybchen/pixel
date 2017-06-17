@@ -183,7 +183,7 @@ public class ShopService {
 
 	public Libao getLibaoConfig(int rechargeid){
 		LibaoList.Builder shopbuilder = redis.getLibaoShop();
-		for(Libao libao : shopbuilder.getIdList()){
+		for(Libao libao : shopbuilder.getDataList()){
 			if(libao.getRechargeid() == rechargeid)
 				return libao;
 		}
@@ -200,7 +200,7 @@ public class ShopService {
 	}
 	public LibaoList getLibaoShop(UserBean user, Map<Integer, Libao> libaoMap, boolean refresh){
 		LibaoList.Builder shopbuilder = redis.getLibaoShop();
-		for(Libao.Builder builder : shopbuilder.getIdBuilderList()){
+		for(Libao.Builder builder : shopbuilder.getDataBuilderList()){
 			int count = 0;
 			Libao libao = libaoMap.get(builder.getRechargeid());
 			if(libao != null){
@@ -249,12 +249,12 @@ public class ShopService {
 		Map<Integer, Libao> libaoMap = userService.getLibaos(user.getId());
 		LibaoList list = getLibaoShop(user, libaoMap, false);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
-		shop.addAllItems(list.getIdList());
+		shop.addAllItems(list.getDataList());
 		responseBuilder.setLibaoShopCommand(shop);
 
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
-		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).getIdList()){
-			if(rmb.getItemid() != RewardConst.JEWEL)
+		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).getDataList()){
+			if(rmb.getReward().getItemid() != RewardConst.JEWEL)
 				continue;
 			Status.Builder builder = Status.newBuilder();
 			builder.setId(rmb.getId());

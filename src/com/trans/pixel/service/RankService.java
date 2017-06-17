@@ -111,7 +111,7 @@ public class RankService {
 					rank.initByUserCache(userInfo);
 					if (type > RankConst.RAID_RANK_PREFIX) {
 						rank.setZhanli(value.getScore().intValue() / 100);
-						rank.setScore2(rank.getZhanli() * 100 + 20 - value.getScore().intValue());
+						rank.setScore2(rank.getZhanli() * 1000 + 1000 - value.getScore().intValue());
 					} else
 						rank.setZhanli(value.getScore().intValue());
 					rankInit--;
@@ -125,6 +125,10 @@ public class RankService {
 	}
 	
 	public void addRaidRank(UserBean user, Raid raid) {
-		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.RAID_RANK_PREFIX + raid.getId(), raid.getLevel() * 100 + 20 - raid.getTurn(), false);
+		int turn = 0;
+		for(int count : raid.getTurnList()) {
+			turn += count;
+		}
+		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.RAID_RANK_PREFIX + raid.getId(), raid.getLevel() * 1000 + 1000 - turn, false);
 	}
 }

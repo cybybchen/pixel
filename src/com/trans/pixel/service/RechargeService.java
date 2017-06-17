@@ -26,7 +26,6 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -87,7 +86,7 @@ public class RechargeService {
 	@Resource
 	private EquipRedisService equipRedisService;
 
-	public int rechargeVip(UserBean user, int rmb, int jewel) {
+	public int rechargeVip(UserBean user, int rmb) {
     	int addExp = rmb * 10;
 
     	addVipExp(user, addExp);
@@ -122,19 +121,22 @@ public class RechargeService {
 	    	user.setVip(user.getVip()+1);
 	    	achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_VIP_VALUE, user.getVip());
 			if(vip != null){
-				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
-				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());
+//				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
+//				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());
 				user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti() - oldvip.getTianti());
-				user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvp() - oldvip.getPvp());
-				user.setPurchaseTireLeftTime(user.getPurchaseTireLeftTime() + vip.getQuyu() - oldvip.getQuyu());
-				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
-				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
-				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
-				UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
-				if (userProp == null)
-					userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
-				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
-				userPropService.updateUserProp(userProp);
+				user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvprefresh() - oldvip.getPvprefresh());
+				user.setPvpInbreakTime(user.getPvpInbreakTime() + vip.getPvpinbreak() - oldvip.getPvpinbreak());
+				user.setShopchipboxTime(user.getPvpInbreakTime() + vip.getShopchipbox() - oldvip.getShopchipbox());
+				user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu() - oldvip.getShopbaohu());
+//				user.setPurchaseTireLeftTime(user.getPurchaseTireLeftTime() + vip.getQuyu() - oldvip.getQuyu());
+//				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
+//				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());
+//				user.setZhibaoLeftTime(user.getZhibaoLeftTime() + vip.getZhibao() - oldvip.getZhibao());
+				RewardInfo.Builder skip = RewardInfo.newBuilder(vip.getSkip());
+				skip.setCount(skip.getCount() - oldvip.getSkip().getCount());
+				rewardService.doReward(user, skip.build());
+//				userProp.setPropCount(userProp.getPropCount() + vip.getBaohu() - oldvip.getBaohu());
+//				userPropService.updateUserProp(userProp);
 			}
 	    }
 	}
@@ -160,8 +162,7 @@ public class RechargeService {
 		} else
 			rmb = rechargeRedisService.getRmb(productid);
 		
-		int itemId = rmb.getItemid();
-		int jewel = rmb.getZuanshi();
+		int itemId = rmb.getReward().getItemid();
 		
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
@@ -172,7 +173,7 @@ public class RechargeService {
 //			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
 //				reward.setCount(rmb.getZuanshi()*2);
 //			}else{
-				reward.setCount(rmb.getZuanshi() + rmb.getZuanshi1());
+				reward.setCount(rmb.getReward().getCount() + rmb.getReward().getCountb());
 //			}
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
@@ -216,7 +217,7 @@ public class RechargeService {
 			rewardList = viplibao.getRewardList();
 		}
 
-		rechargeVip(user, rmb.getRmb(), jewel);
+		rechargeVip(user, (int)rmb.getCost().getCount());
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(rewardList.isEmpty()){
@@ -244,7 +245,7 @@ public class RechargeService {
 				params.put(LogString.USERID, "" + user.getId());
 				params.put(LogString.SERVERID, "" + user.getServerId());
 				params.put(LogString.CURRENCY, "0");
-				params.put(LogString.CURRENCYAMOUNT, "" + rmb.getRmb() * 100);
+				params.put(LogString.CURRENCYAMOUNT, "" + (int)rmb.getCost().getCount() * 100);
 				params.put(LogString.STAGE, "0");
 				params.put(LogString.ITEMID, "" + productid);
 				params.put(LogString.ACTION, "2");
@@ -271,7 +272,7 @@ public class RechargeService {
 			logService.sendLog(params, LogString.LOGTYPE_RECHARGE);
 		}
 		
-		return rmb.getRmb() * 100;
+		return (int)rmb.getCost().getCount() * 100;
 	}
 	
 	//http://123.59.144.200:8082/Lol450/recharge?order_id=1111311&company=ios&player=&playerid=1066&ratio=1:100&sn=b300f2edfe5443b2a378faed3af682f3&action=1&itemid=1&zone_id=1
@@ -312,10 +313,10 @@ public class RechargeService {
 	public MultiReward buy(UserBean user, int productid){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		Rmb rmb = rechargeRedisService.getRmb(productid);
-		int costId = rmb.getCostid();
-		int itemId = rmb.getItemid();
+		int costId = rmb.getCost().getItemid();
+		int itemId = rmb.getReward().getItemid();
 		
-		if (!costService.costAndUpdate(user, costId, rmb.getRmb()))
+		if (!costService.costAndUpdate(user, costId, rmb.getCost().getCount()))
 			return null;	
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
@@ -339,7 +340,7 @@ public class RechargeService {
 			return null;
 		}
 		
-		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getItemid(), rmb.getCostid(), rmb.getRmb());
+		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getReward().getItemid(), rmb.getCost().getItemid(), (int)rmb.getCost().getCount());
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			
 //			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());

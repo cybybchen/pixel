@@ -193,11 +193,11 @@ public class UserRedisService extends RedisService{
 		VipList.Builder builder = VipList.newBuilder();
 		parseXml(xml, builder);
 		Map<String, String> keyvalue = new HashMap<String, String>();
-		for(VipInfo vip : builder.getVipList()){
+		for(VipInfo vip : builder.getDataList()){
 			keyvalue.put(vip.getVip()+"", formatJson(vip));
 		}
 		hputAll(VIP, keyvalue);
-		for(VipInfo vip : builder.getVipList()){
+		for(VipInfo vip : builder.getDataList()){
 			if(id == vip.getVip())
 				return vip;
 		}

@@ -33,7 +33,6 @@ import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserLibaoBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
@@ -92,6 +91,8 @@ public class UserService {
 	private RankRedisService rankRedisService;
 	@Resource
 	private UserLadderService userLadderService;
+	@Resource
+	private RewardService rewardService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -161,10 +162,13 @@ public class UserService {
 		user.setSignCount(0);
 		user.setLadderPurchaseTimes(0);
 		user.setLadderModeLeftTimes(5);
-		user.setPurchaseCoinLeft(1);
-		user.setPurchaseContractLeft(1);
-		user.setPurchaseCoinTime(0);
+//		user.setPurchaseCoinLeft(1);
+//		user.setPurchaseContractLeft(1);
+//		user.setPurchaseCoinTime(0);
 		user.setPvpMineLeftTime(5);
+		user.setPvpInbreakTime(3);
+		user.setShopchipboxTime(0);
+		user.setShopbaohuTime(0);
 		user.setFreeLotteryCoinLeftTime(5);
 		user.setSevenSignStatus(0);
 		user.setLotteryCoinCount(0);
@@ -191,19 +195,20 @@ public class UserService {
 	private void handleVipDailyReward(UserBean user) {
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
-			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
-			user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract());
-			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
-			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
-			user.setPurchaseTireLeftTime(vip.getQuyu());
-			user.setRefreshExpeditionLeftTime(vip.getMohua());
-			user.setBaoxiangLeftTime(vip.getBaoxiang());
-			user.setZhibaoLeftTime(vip.getZhibao());
-			UserPropBean userProp = userPropService.selectUserProp(user.getId(), 40022);
-			if (userProp == null)
-				userProp = UserPropBean.initUserProp(user.getId(), 40022, "");
-			userProp.setPropCount(userProp.getPropCount()+vip.getBaohu());
-			userPropService.updateUserProp(userProp);
+			user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvprefresh());
+			user.setPvpInbreakTime(user.getPvpInbreakTime() + vip.getPvpinbreak());
+			user.setShopchipboxTime(user.getShopchipboxTime() + vip.getShopchipbox());
+			user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu());
+			rewardService.doReward(user, vip.getSkip());
+
+//			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
+//			user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract());
+//			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
+//			user.setPvpMineLeftTime(user.getPvpMineLeftTime()+vip.getPvp());
+//			user.setPurchaseTireLeftTime(vip.getQuyu());
+//			user.setRefreshExpeditionLeftTime(vip.getMohua());
+//			user.setBaoxiangLeftTime(vip.getBaoxiang());
+//			user.setZhibaoLeftTime(vip.getZhibao());
 		}
 	}
 
@@ -237,7 +242,7 @@ public class UserService {
 	private void handleLibaoDailyReward(UserBean user, long today0) {
 		LibaoList libaolist = shopService.getLibaoShop(user, true);
 		Map<Integer, YueKa> map = shopService.getYueKas();
-		for(Libao libao : libaolist.getIdList()){
+		for(Libao libao : libaolist.getDataList()){
 			long time = 0;
 			if(libao.hasValidtime() && libao.getValidtime().length() > 5){
 				try {
@@ -248,7 +253,7 @@ public class UserService {
 			}
 			if(time >= today0){
 				Rmb rmb = rechargeRedisService.getRmb(libao.getRechargeid());
-				YueKa yueka = map.get(rmb.getItemid());
+				YueKa yueka = map.get(rmb.getReward().getItemid());
 				if(yueka == null){
 					logger.error("ivalid yueka type "+libao.getRechargeid());
 					continue;

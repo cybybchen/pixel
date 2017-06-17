@@ -1906,8 +1906,8 @@ message Rmb {
 	optional string name = 5;
 	//optional string des = 6;
 	//optional string img = 7;
-	repeated RewardInfo cost = 9;
-	repeated RewardInfo reward = 10;
+	optional RewardInfo cost = 9;
+	optional RewardInfo reward = 10;
 }
 
 message RmbList {
@@ -1948,7 +1948,7 @@ message RequestBindAccountCommand {
 
 message RequestPurchaseVipLibaoCommand {
 	required int32 vip = 1;
-	required int32 type = 2;
+	//required int32 type = 2;
 }
 
 message RequestQueryRechargeCommand {
@@ -3464,7 +3464,7 @@ message Raid {
 	optional int32 lv = 3;
 	repeated Event event = 5;
 	optional int32 eventid = 6;
-	optional int32 turn = 7;
+	repeated int32 turn = 7;
 	optional int32 level = 8;
 	optional int32 maxlevel = 9;//可选的最大层数
 }

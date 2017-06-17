@@ -25,7 +25,6 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.ExtraProto.Fenjie;
-import com.trans.pixel.protoc.ExtraProto.Star;
 import com.trans.pixel.protoc.HeroProto.FenjieHeroInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;

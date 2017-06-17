@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 
 @Service
 public class RewardTaskRedisService extends RedisService {
+	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	
 	//rewardtask 

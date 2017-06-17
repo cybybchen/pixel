@@ -38,7 +38,7 @@ public class RaidRedisService extends RedisService{
 			Raid.Builder myraid = Raid.newBuilder();
 			if(value != null && parseJson(value, myraid)) {
 				raid.setEventid(myraid.getEventid());
-				raid.setTurn(myraid.getTurn());
+				raid.addAllTurn(myraid.getTurnList());
 				raid.setLevel(myraid.getLevel());
 				raid.setMaxlevel(myraid.getMaxlevel());
 			}
@@ -93,7 +93,7 @@ public class RaidRedisService extends RedisService{
 				raid.clearEvent();
 				raid.clearCost();
 				raid.setEventid(0);
-				raid.setTurn(0);
+				raid.clearTurn();
 				raid.setMaxlevel(3);
 				raid.setLevel(0);
 			}

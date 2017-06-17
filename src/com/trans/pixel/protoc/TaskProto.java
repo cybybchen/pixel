@@ -9409,15 +9409,19 @@ public final class TaskProto {
      */
     int getEventid();
 
-    // optional int32 turn = 7;
+    // repeated int32 turn = 7;
     /**
-     * <code>optional int32 turn = 7;</code>
+     * <code>repeated int32 turn = 7;</code>
      */
-    boolean hasTurn();
+    java.util.List<java.lang.Integer> getTurnList();
     /**
-     * <code>optional int32 turn = 7;</code>
+     * <code>repeated int32 turn = 7;</code>
      */
-    int getTurn();
+    int getTurnCount();
+    /**
+     * <code>repeated int32 turn = 7;</code>
+     */
+    int getTurn(int index);
 
     // optional int32 level = 8;
     /**
@@ -9540,17 +9544,33 @@ public final class TaskProto {
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000020;
-              turn_ = input.readInt32();
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                turn_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              turn_.add(input.readInt32());
+              break;
+            }
+            case 58: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
+                turn_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                turn_.add(input.readInt32());
+              }
+              input.popLimit(limit);
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000020;
               level_ = input.readInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000040;
               maxlevel_ = input.readInt32();
               break;
             }
@@ -9564,6 +9584,9 @@ public final class TaskProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           event_ = java.util.Collections.unmodifiableList(event_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          turn_ = java.util.Collections.unmodifiableList(turn_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -9746,20 +9769,27 @@ public final class TaskProto {
       return eventid_;
     }
 
-    // optional int32 turn = 7;
+    // repeated int32 turn = 7;
     public static final int TURN_FIELD_NUMBER = 7;
-    private int turn_;
+    private java.util.List<java.lang.Integer> turn_;
     /**
-     * <code>optional int32 turn = 7;</code>
+     * <code>repeated int32 turn = 7;</code>
      */
-    public boolean hasTurn() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+    public java.util.List<java.lang.Integer>
+        getTurnList() {
+      return turn_;
     }
     /**
-     * <code>optional int32 turn = 7;</code>
+     * <code>repeated int32 turn = 7;</code>
      */
-    public int getTurn() {
-      return turn_;
+    public int getTurnCount() {
+      return turn_.size();
+    }
+    /**
+     * <code>repeated int32 turn = 7;</code>
+     */
+    public int getTurn(int index) {
+      return turn_.get(index);
     }
 
     // optional int32 level = 8;
@@ -9769,7 +9799,7 @@ public final class TaskProto {
      * <code>optional int32 level = 8;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 level = 8;</code>
@@ -9789,7 +9819,7 @@ public final class TaskProto {
      * </pre>
      */
     public boolean hasMaxlevel() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 maxlevel = 9;</code>
@@ -9809,7 +9839,7 @@ public final class TaskProto {
       lv_ = 0;
       event_ = java.util.Collections.emptyList();
       eventid_ = 0;
-      turn_ = 0;
+      turn_ = java.util.Collections.emptyList();
       level_ = 0;
       maxlevel_ = 0;
     }
@@ -9843,13 +9873,13 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, eventid_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, turn_);
+      for (int i = 0; i < turn_.size(); i++) {
+        output.writeInt32(7, turn_.get(i));
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(8, level_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(9, maxlevel_);
       }
       getUnknownFields().writeTo(output);
@@ -9885,15 +9915,20 @@ public final class TaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, eventid_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, turn_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < turn_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(turn_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getTurnList().size();
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, level_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, maxlevel_);
       }
@@ -10035,7 +10070,7 @@ public final class TaskProto {
         }
         eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        turn_ = 0;
+        turn_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000040);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
@@ -10102,16 +10137,17 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000010;
         }
         result.eventid_ = eventid_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000020;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          turn_ = java.util.Collections.unmodifiableList(turn_);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.turn_ = turn_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000040;
+          to_bitField0_ |= 0x00000020;
         }
         result.level_ = level_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000080;
+          to_bitField0_ |= 0x00000040;
         }
         result.maxlevel_ = maxlevel_;
         result.bitField0_ = to_bitField0_;
@@ -10173,8 +10209,15 @@ public final class TaskProto {
         if (other.hasEventid()) {
           setEventid(other.getEventid());
         }
-        if (other.hasTurn()) {
-          setTurn(other.getTurn());
+        if (!other.turn_.isEmpty()) {
+          if (turn_.isEmpty()) {
+            turn_ = other.turn_;
+            bitField0_ = (bitField0_ & ~0x00000040);
+          } else {
+            ensureTurnIsMutable();
+            turn_.addAll(other.turn_);
+          }
+          onChanged();
         }
         if (other.hasLevel()) {
           setLevel(other.getLevel());
@@ -10739,35 +10782,68 @@ public final class TaskProto {
         return this;
       }
 
-      // optional int32 turn = 7;
-      private int turn_ ;
-      /**
-       * <code>optional int32 turn = 7;</code>
-       */
-      public boolean hasTurn() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+      // repeated int32 turn = 7;
+      private java.util.List<java.lang.Integer> turn_ = java.util.Collections.emptyList();
+      private void ensureTurnIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          turn_ = new java.util.ArrayList<java.lang.Integer>(turn_);
+          bitField0_ |= 0x00000040;
+         }
       }
       /**
-       * <code>optional int32 turn = 7;</code>
+       * <code>repeated int32 turn = 7;</code>
        */
-      public int getTurn() {
-        return turn_;
+      public java.util.List<java.lang.Integer>
+          getTurnList() {
+        return java.util.Collections.unmodifiableList(turn_);
       }
       /**
-       * <code>optional int32 turn = 7;</code>
+       * <code>repeated int32 turn = 7;</code>
        */
-      public Builder setTurn(int value) {
-        bitField0_ |= 0x00000040;
-        turn_ = value;
+      public int getTurnCount() {
+        return turn_.size();
+      }
+      /**
+       * <code>repeated int32 turn = 7;</code>
+       */
+      public int getTurn(int index) {
+        return turn_.get(index);
+      }
+      /**
+       * <code>repeated int32 turn = 7;</code>
+       */
+      public Builder setTurn(
+          int index, int value) {
+        ensureTurnIsMutable();
+        turn_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 turn = 7;</code>
+       * <code>repeated int32 turn = 7;</code>
+       */
+      public Builder addTurn(int value) {
+        ensureTurnIsMutable();
+        turn_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 turn = 7;</code>
+       */
+      public Builder addAllTurn(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureTurnIsMutable();
+        super.addAll(values, turn_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 turn = 7;</code>
        */
       public Builder clearTurn() {
+        turn_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000040);
-        turn_ = 0;
         onChanged();
         return this;
       }
@@ -13763,7 +13839,7 @@ public final class TaskProto {
       " \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pixel.pro" +
       "toc.RewardInfo\022\014\n\004name\030\004 \001(\t\022\n\n\002lv\030\003 \001(\005" +
       "\022,\n\005event\030\005 \003(\0132\035.com.trans.pixel.protoc" +
-      ".Event\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \001(\005\022\r\n" +
+      ".Event\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n" +
       "\005level\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidLi" +
       "st\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.proto" +
       "c.Raid\"3\n\026RequestOpenRaidCommand\022\n\n\002id\030\001" +

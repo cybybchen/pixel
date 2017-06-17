@@ -63,7 +63,7 @@ public class RaidCommandService extends BaseCommandService{
 				if(myraid.getId() != raid.getId())
 					continue;
 				myraid.setEventid(raid.getEventList().get(0).getEventid());
-				myraid.setTurn(0);
+				myraid.clearTurn();
 				myraid.setLevel(cmd.getLevel());
 				redis.saveRaid(user, myraid);
 				responseBuilder.setRaidCommand(raidlist);
@@ -106,7 +106,7 @@ public class RaidCommandService extends BaseCommandService{
 				for(int i = 0; i < raid.getEventCount(); i++) {
 					if(myraid.getEventid() == raid.getEvent(i).getEventid()){
 						myraid.setEventid(i+1==raid.getEventCount() ? 0 : raid.getEvent(i+1).getEventid());//通关or下一关
-						myraid.setTurn(myraid.getTurn() + cmd.getTurn());
+						myraid.addTurn(cmd.getTurn());
 						break;
 					}
 				}

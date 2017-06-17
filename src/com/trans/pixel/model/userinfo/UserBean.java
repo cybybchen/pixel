@@ -65,10 +65,13 @@ public class UserBean {
 	private long pvpMineRefreshTime = 0;
 	private long pvpMineGainTime = 0;
 	private int pvpMineLeftTime = 0;
+	private int pvpInbreakTime = 0;
 	private long purchaseTireLeftTime = 0;
 	private long refreshExpeditionLeftTime = 0;
 	private long baoxiangLeftTime = 0;
 	private long zhibaoLeftTime = 0;
+	private int shopchipboxTime = 0;
+	private int shopbaohuTime = 0;
 	private int signCount = 0;
 	private String lastSignTime = "";
 	private int loginDays = 0;
@@ -129,6 +132,33 @@ public class UserBean {
 	private int goldSavingBox = 0;
 	private int expSavingBox = 0;
 	private int title = 0;
+	/**
+	 * 碎片箱购买次数
+	 */
+	public int getShopchipboxTime() {
+		return shopchipboxTime;
+	}
+	public void setShopchipboxTime(int shopchipboxTime) {
+		this.shopchipboxTime = shopchipboxTime;
+	}
+	/**
+	 * 强化保护券购买次数
+	 */
+	public int getShopbaohuTime() {
+		return shopbaohuTime;
+	}
+	public void setShopbaohuTime(int shopbaohuTime) {
+		this.shopbaohuTime = shopbaohuTime;
+	}
+	/**
+	 * pvp入侵
+	 */
+	public int getPvpInbreakTime() {
+		return pvpInbreakTime;
+	}
+	public void setPvpInbreakTime(int pvpInbreakTime) {
+		this.pvpInbreakTime = pvpInbreakTime;
+	}
 	/**
 	 * 佣兵团等级
 	 */
@@ -403,21 +433,21 @@ public class UserBean {
 	/**
 	 * 区域争夺疲劳购买次数
 	 */
-	public long getPurchaseTireLeftTime() {
-		return purchaseTireLeftTime;
-	}
+//	public long getPurchaseTireLeftTime() {
+//		return purchaseTireLeftTime;
+//	}
 	/**
 	 * 区域争夺疲劳购买次数
 	 */
 	public void setPurchaseTireLeftTime(long purchaseTireLeftTime) {
-		this.purchaseTireLeftTime = purchaseTireLeftTime;
+//		this.purchaseTireLeftTime = purchaseTireLeftTime;
 	}
 	/**
 	 * 远征重置次数
 	 */
-	public long getRefreshExpeditionLeftTime() {
-		return refreshExpeditionLeftTime;
-	}
+//	public long getRefreshExpeditionLeftTime() {
+//		return refreshExpeditionLeftTime;
+//	}
 	/**
 	 * 远征重置次数
 	 */
@@ -871,26 +901,26 @@ public class UserBean {
 	/**
 	 * 点石成金次数
 	 */
-	public int getPurchaseCoinTime() {
-		return purchaseCoinTime;
-	}
+//	public int getPurchaseCoinTime() {
+//		return purchaseCoinTime;
+//	}
 	/**
 	 * 点石成金次数
 	 */
 	public void setPurchaseCoinTime(int time) {
-		purchaseCoinTime = time;
+//		purchaseCoinTime = time;
 	}
 	/**
 	 * 点石成金剩余次数
 	 */
-	public int getPurchaseCoinLeft(){
-		return purchaseCoinLeft;
-	}
+//	public int getPurchaseCoinLeft(){
+//		return purchaseCoinLeft;
+//	}
 	/**
 	 * 点石成金剩余次数
 	 */
 	public void setPurchaseCoinLeft(int time){
-		purchaseCoinLeft = time;
+//		purchaseCoinLeft = time;
 	}
 	/**
 	 * 灵魂契约剩余次数
