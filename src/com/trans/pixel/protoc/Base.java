@@ -18038,6 +18038,16 @@ public final class Base {
      * <code>optional uint32 score2 = 9;</code>
      */
     int getScore2();
+
+    // optional uint32 title = 10;
+    /**
+     * <code>optional uint32 title = 10;</code>
+     */
+    boolean hasTitle();
+    /**
+     * <code>optional uint32 title = 10;</code>
+     */
+    int getTitle();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRank}
@@ -18141,6 +18151,11 @@ public final class Base {
             case 72: {
               bitField0_ |= 0x00000100;
               score2_ = input.readUInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              title_ = input.readUInt32();
               break;
             }
           }
@@ -18360,6 +18375,22 @@ public final class Base {
       return score2_;
     }
 
+    // optional uint32 title = 10;
+    public static final int TITLE_FIELD_NUMBER = 10;
+    private int title_;
+    /**
+     * <code>optional uint32 title = 10;</code>
+     */
+    public boolean hasTitle() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional uint32 title = 10;</code>
+     */
+    public int getTitle() {
+      return title_;
+    }
+
     private void initFields() {
       rank_ = 0L;
       dps_ = 0;
@@ -18370,6 +18401,7 @@ public final class Base {
       icon_ = 0;
       vip_ = 0;
       score2_ = 0;
+      title_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -18416,6 +18448,9 @@ public final class Base {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeUInt32(9, score2_);
       }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeUInt32(10, title_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -18460,6 +18495,10 @@ public final class Base {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(9, score2_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, title_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -18600,6 +18639,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000080);
         score2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        title_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -18668,6 +18709,10 @@ public final class Base {
           to_bitField0_ |= 0x00000100;
         }
         result.score2_ = score2_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.title_ = title_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -18712,6 +18757,9 @@ public final class Base {
         }
         if (other.hasScore2()) {
           setScore2(other.getScore2());
+        }
+        if (other.hasTitle()) {
+          setTitle(other.getTitle());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19164,6 +19212,39 @@ public final class Base {
       public Builder clearScore2() {
         bitField0_ = (bitField0_ & ~0x00000100);
         score2_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 title = 10;
+      private int title_ ;
+      /**
+       * <code>optional uint32 title = 10;</code>
+       */
+      public boolean hasTitle() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional uint32 title = 10;</code>
+       */
+      public int getTitle() {
+        return title_;
+      }
+      /**
+       * <code>optional uint32 title = 10;</code>
+       */
+      public Builder setTitle(int value) {
+        bitField0_ |= 0x00000200;
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 title = 10;</code>
+       */
+      public Builder clearTitle() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        title_ = 0;
         onChanged();
         return this;
       }
@@ -28618,42 +28699,42 @@ public final class Base {
       "serTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId",
       "\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip" +
       "\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005le" +
-      "vel\030\003 \001(\005\"\256\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003" +
+      "vel\030\003 \001(\005\"\275\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003" +
       "dps\030\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixe" +
       "l.protoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userNam" +
       "e\030\005 \001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n" +
-      "\003vip\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\"W\n\tClearInfo\022" +
-      "\020\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005co" +
-      "unt\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tS" +
-      "killInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030",
-      "\002 \002(\005\"Q\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005" +
-      "\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTi" +
-      "me\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n" +
-      "\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 " +
-      "\001(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.pro" +
-      "toc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001" +
-      "(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006" +
-      "isLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003" +
-      "(\0132!.com.trans.pixel.protoc.ClearInfo\022\022\n" +
-      "\nstrengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fette",
-      "rs\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.tran" +
-      "s.pixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001" +
-      "(\005\"\271\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004nam" +
-      "e\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017" +
-      "\n\007weightb\030\013 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006count" +
-      "b\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r" +
-      "\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"Y\n\013MultiR" +
-      "eward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030" +
-      "\003 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
-      "o\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(",
-      "\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006r" +
-      "eward\030\005 \003(\0132\".com.trans.pixel.protoc.Rew" +
-      "ardInfo\"\326\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007even" +
-      "tid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022" +
-      "\025\n\rconditiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(" +
-      "\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016" +
-      "\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013" +
-      " \001(\005\022\022\n\neventcount\030\014 \001(\005"
+      "\003vip\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(" +
+      "\r\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clea" +
+      "rId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004" +
+      "rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005",
+      "\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipPokede\022" +
+      "\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030" +
+      "\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006" +
+      "infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(" +
+      "\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com." +
+      "trans.pixel.protoc.SkillInfo\022\r\n\005value\030\006 " +
+      "\001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010pos" +
+      "ition\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001" +
+      "(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixel.prot" +
+      "oc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank",
+      "\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPokede\030\020" +
+      " \001(\0132\'.com.trans.pixel.protoc.UserEquipP" +
+      "okede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006item" +
+      "id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n" +
+      "\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta" +
+      "\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007" +
+      "eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030" +
+      "\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name" +
+      "\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001",
+      "(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetc" +
+      "ount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.p" +
+      "ixel.protoc.RewardInfo\"\326\001\n\005Event\022\r\n\005orde" +
+      "r\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016" +
+      "\n\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005\022\021\n" +
+      "\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\tta" +
+      "rgetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n" +
+      " \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28731,7 +28812,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
-              new java.lang.String[] { "Rank", "Dps", "Team", "UserId", "UserName", "Zhanli", "Icon", "Vip", "Score2", });
+              new java.lang.String[] { "Rank", "Dps", "Team", "UserId", "UserName", "Zhanli", "Icon", "Vip", "Score2", "Title", });
           internal_static_com_trans_pixel_protoc_ClearInfo_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ClearInfo_fieldAccessorTable = new

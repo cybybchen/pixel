@@ -157,6 +157,7 @@ message UserRank {
 	optional uint32 icon = 7;
 	optional uint32 vip = 8;
 	optional uint32 score2 = 9;
+	optional uint32 title = 10;
 }
 
 message ClearInfo {
