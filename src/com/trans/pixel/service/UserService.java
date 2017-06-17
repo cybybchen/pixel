@@ -166,7 +166,7 @@ public class UserService {
 //		user.setPurchaseContractLeft(1);
 //		user.setPurchaseCoinTime(0);
 		user.setPvpMineLeftTime(5);
-		user.setPvpInbreakTime(3);
+		user.setPvpInbreakTime(5);
 		user.setShopchipboxTime(0);
 		user.setShopbaohuTime(0);
 		user.setFreeLotteryCoinLeftTime(5);

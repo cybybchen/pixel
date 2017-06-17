@@ -29,6 +29,7 @@ import com.trans.pixel.protoc.PVPProto.RequestPVPMineInfoCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
+import com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand;
 import com.trans.pixel.service.ActivityService;
@@ -75,12 +76,8 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void getInbreakList(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user) {
-		PVPMapList maplist = pvpMapService.getMapList(responseBuilder, user);
-		ResponsePVPMapListCommand.Builder builder = ResponsePVPMapListCommand.newBuilder();
-		builder.addAllField(maplist.getDataList());
-		builder.setBuff(maplist.getBuff());
-		builder.setEndTime(user.getRefreshPvpMapTime());
-		responseBuilder.setPvpMapListCommand(builder);
+		ResponsePVPInbreakListCommand.Builder builder = pvpMapService.getInbreakList(responseBuilder, user);
+		responseBuilder.setPvpInbreakListCommand(builder);
 	}
 
 	public void refreshMap(RequestRefreshPVPMapCommand cmd, Builder responseBuilder, UserBean user) {

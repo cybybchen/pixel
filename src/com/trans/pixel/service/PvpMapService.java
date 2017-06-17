@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.PVPProto.PVPEvent;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
+import com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
@@ -224,6 +225,37 @@ public class PvpMapService {
 			enemy-=3;
 		}
 	}
+
+	public ResponsePVPInbreakListCommand.Builder getInbreakList(Builder responseBuilder, UserBean user){
+		ResponsePVPInbreakListCommand.Builder builder = ResponsePVPInbreakListCommand.newBuilder();
+		List<PVPMine.Builder> mineList = new ArrayList<PVPMine.Builder>();
+		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
+		for(PVPMap.Builder map : maplist.getDataBuilderList()) {
+			if(map.getOpened())
+			for(PVPMine.Builder mine : map.getKuangdianBuilderList()) {
+				mineList.add(mine);
+			}
+		}
+		if(mineList.size() < 3)
+			return builder;
+		List<UserInfo> users = userService.getRandUserByNodelete(-5, 10, user);
+
+		while(users.size() > 3)
+			users.remove(RedisService.nextInt(users.size()));
+		if(users.size() < 3)
+			return builder;
+		for(int i = 0; i < 3; i++) {
+			int index = RedisService.nextInt(mineList.size());
+			PVPMine.Builder mine = mineList.get(index);
+			mine.setId(mine.getId()+1000);
+			UserInfo userinfo = users.get(i);
+			mine.setPvpyield((int)((100+RedisService.nextInt(100))*Math.min(0.5, Math.max(1.5, userinfo.getZhanli()/user.getZhanliMax()))));
+			builder.addKuangdian(mine);
+			mineList.remove(index);
+		}
+		redis.saveInbreakList(user.getId(), builder.getKuangdianList());
+		return builder;
+	}
 	
 	public PVPMapList getMapList(Builder responseBuilder, UserBean user){
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
@@ -357,6 +389,7 @@ public class PvpMapService {
 		if(pvpmine == null)
 			return null;
 		PVPMine.Builder mine = PVPMine.newBuilder(pvpmine);
+		mine.setId(mine.getId()%1000);
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
 		/**
@@ -410,7 +443,11 @@ public class PvpMapService {
 				
 				mine.clearOwner();
 				mine.setEnemyid(userId);
-				redis.saveMine(user.getId(), mine.build());
+				if(id > 1000){
+					redis.delInbreakList(user.getId());
+				}else{
+					redis.saveMine(user.getId(), mine.build());
+				}
 				
 				if(isme){
 					redis.addUserBuff(user, 0, 1);

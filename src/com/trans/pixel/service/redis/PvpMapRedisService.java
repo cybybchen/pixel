@@ -158,13 +158,34 @@ public class PvpMapRedisService extends RedisService{
 
 	public PVPMine getMine(long userId, int id) {
 		PVPMine.Builder builder = PVPMine.newBuilder();
-		String value = hget(RedisKey.PVPMINE_PREFIX+userId, id+"");
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
+		if(id > 1000){
+			String value = hget(RedisKey.PVPINBREAK_PREFIX+userId, id+"");
+			if(value != null && parseJson(value, builder)){
+				return builder.build();
+			}
+		}else{
+			String value = hget(RedisKey.PVPMINE_PREFIX+userId, id+"");
+			if(value != null && parseJson(value, builder)){
+				return builder.build();
+			}
 		}
 		return null;
 	}
 
+	public void delInbreakList(long userId) {
+		delete(RedisKey.PVPINBREAK_PREFIX+userId);
+	}
+	
+	public void saveInbreakList(long userId, List<PVPMine> mines) {
+//		delete(RedisKey.PVPINBREAK_PREFIX+userId);
+		Map<String, String> map = new HashMap<String, String>();
+		for(PVPMine mine : mines){
+			map.put(mine.getId()+"", formatJson(mine));
+		}
+		hputAll(RedisKey.PVPINBREAK_PREFIX+userId, map);
+		expire(RedisKey.PVPINBREAK_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
 	public void saveMine(long userId, PVPMine mine) {
 		hput(RedisKey.PVPMINE_PREFIX+userId, mine.getId()+"", formatJson(mine));
 		expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
