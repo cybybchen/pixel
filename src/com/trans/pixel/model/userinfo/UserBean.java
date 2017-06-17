@@ -128,6 +128,7 @@ public class UserBean {
 	private int userType = 0;
 	private int goldSavingBox = 0;
 	private int expSavingBox = 0;
+	private int title = 0;
 	/**
 	 * 佣兵团等级
 	 */
@@ -1238,6 +1239,12 @@ public class UserBean {
 	public void setExpSavingBox(int expSavingBox) {
 		this.expSavingBox = expSavingBox;
 	}
+	public int getTitle() {
+		return title;
+	}
+	public void setTitle(int title) {
+		this.title = title;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1274,6 +1281,8 @@ public class UserBean {
 		builder.setUnionName(unionName);
 		builder.setUnionJob(unionJob);
 		builder.setLastLoginTime(lastLoginTime);
+		builder.setTitle(title);
+		
 		return builder.build();
 	}
 
@@ -1405,6 +1414,7 @@ public class UserBean {
 		builder.setUserType(userType);
 		builder.setGoldSavingBox(goldSavingBox);
 		builder.setExpSavingBox(expSavingBox);
+		builder.setTitle(title);
 		
 		return builder.build();
 	}

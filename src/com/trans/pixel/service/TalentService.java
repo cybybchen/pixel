@@ -165,6 +165,9 @@ public class TalentService {
 		if (userTalent != null) {
 			user.setUseTalentId(id);
 			userTeamService.changeUserTeamTalentId(user, id);
+			
+			changeTitleEquip(user, 9, userTalent.getEquip(9).getItemId());
+			
 			userService.updateUser(user);
 		}
 		
@@ -229,10 +232,34 @@ public class TalentService {
 			if (equipBuilder.getPosition() == position) {
 				equipBuilder.setItemId(itemId);
 				builder.setEquip(i, equipBuilder.build());
+				
+				if (changeTitleEquip(user, position, itemId))
+					userService.updateUser(user);
+				
 				return builder.build();
 			}
 		}
 		
 		return builder.build();
+	}
+	
+	public boolean changeTitleEquip(UserBean user, int position, int itemId) {
+		if (position == 9 && user.getTitle() != itemId) {
+			user.setTitle(itemId);
+//			userService.updateUser(user);
+			userService.cache(user.getServerId(), user.buildShort());
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean changeTitleEquip(UserBean user, int talentId) {
+		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+
+		if (userTalent == null)
+			return false;
+		
+		return changeTitleEquip(user, 9, userTalent.getEquip(9).getItemId());
 	}
 }

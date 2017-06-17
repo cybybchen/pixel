@@ -130,6 +130,8 @@ public class UserTeamService {
 			return;
 		
 		user.setUseTalentId(userTeam.getTalentId());
+		
+		talentService.changeTitleEquip(user, userTeam.getTalentId());
 	}
 	
 	public UserTeamBean changeUserTeamTalentId(UserBean user, int talentId) {

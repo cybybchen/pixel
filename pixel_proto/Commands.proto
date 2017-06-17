@@ -74,6 +74,7 @@ message UserInfo {
 	optional uint32 userType = 86;//0:普通， 1:非R， 2：小R  3，中R， 4：大R
 	optional uint32 goldSavingBox = 87;
 	optional uint32 expSavingBox = 88;
+	optional uint32 title = 89;//当前正在使用的称号
 }
 
 message JewelPool {
