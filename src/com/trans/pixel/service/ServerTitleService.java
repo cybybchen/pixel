@@ -107,24 +107,20 @@ public class ServerTitleService {
 			UserBean user = userService.getUserOther(userId);
 			switch (rankInit) {
 				case 1:
-					updateServerTitleByTitleId(serverId, 1, userId);
-					rewardService.doReward(user, map.get("" + 1).getItemid(), 1, map.get("" + 1).getTime());
+					handlerTitle(user, 1, map);
 					break;
 				case 2:
-					updateServerTitleByTitleId(serverId, 5, userId);
-					rewardService.doReward(user, map.get("" + 5).getItemid(), 1, map.get("" + 5).getTime());
+					handlerTitle(user, 5, map);
 					break;
 				case 3:
-					updateServerTitleByTitleId(serverId, 9, userId);
-					rewardService.doReward(user, map.get("" + 9).getItemid(), 1, map.get("" + 9).getTime());
+					handlerTitle(user, 9, map);
 					break;
 				case 4:
-					updateServerTitleByTitleId(serverId, 13, userId);
-					rewardService.doReward(user, map.get("" + 13).getItemid(), 1, map.get("" + 13).getTime());
+					handlerTitle(user, 13, map);
 					break;
 				default:
 					others.add(userId);
-					rewardService.doReward(user, map.get("" + 17).getItemid(), 1, map.get("" + 17).getTime());
+					handlerTitle(user, 17, map, true);
 					break;
 			}
 			
@@ -132,6 +128,9 @@ public class ServerTitleService {
 		}
 		
 		updateServerTitleByTitleId(serverId, 17, others);
+		
+		//删除排行榜
+		userLadderRedisService.deleteLadderRank(serverId);
 	}
 	
 	//handler recharge
@@ -151,24 +150,20 @@ public class ServerTitleService {
 			UserBean user = userService.getUserOther(userId);
 			switch (rankInit) {
 				case 1:
-					updateServerTitleByTitleId(serverId, 3, userId);
-					rewardService.doReward(user, map.get("" + 3).getItemid(), 1, map.get("" + 3).getTime());
+					handlerTitle(user, 3, map);
 					break;
 				case 2:
-					updateServerTitleByTitleId(serverId, 7, userId);
-					rewardService.doReward(user, map.get("" + 7).getItemid(), 1, map.get("" + 7).getTime());
+					handlerTitle(user, 7, map);
 					break;
 				case 3:
-					updateServerTitleByTitleId(serverId, 11, userId);
-					rewardService.doReward(user, map.get("" + 11).getItemid(), 1, map.get("" + 11).getTime());
+					handlerTitle(user, 11, map);
 					break;
 				case 4:
-					updateServerTitleByTitleId(serverId, 15, userId);
-					rewardService.doReward(user, map.get("" + 15).getItemid(), 1, map.get("" + 15).getTime());
+					handlerTitle(user, 15, map);
 					break;
 				default:
 					others.add(userId);
-					rewardService.doReward(user, map.get("" + 19).getItemid(), 1, map.get("" + 19).getTime());
+					handlerTitle(user, 19, map, true);
 					break;
 			}
 			
@@ -176,9 +171,12 @@ public class ServerTitleService {
 		}
 	
 		updateServerTitleByTitleId(serverId, 19, others);
+		
+		//删除排行榜
+		rankRedisService.deleteRank(serverId, RankConst.TYPE_RECHARGE);
 	}
 	
-	//handler recharge
+	//handler union
 	public void handlerUnionRank() {
 		List<Integer> serverIds = serverService.getServerIdList();
 		Map<String, Title> map = redis.getTitleConfig();
@@ -207,30 +205,81 @@ public class ServerTitleService {
 			if (user.getUnionJob() == UnionConst.UNION_HUIZHANG) {
 				switch (rank) {
 					case 1:
-						updateServerTitleByTitleId(serverId, 4, userId);
-						rewardService.doReward(user, map.get("" + 4).getItemid(), 1, map.get("" + 4).getTime());
+						handlerTitle(user, 4, map);
 						break;
 					case 2:
-						updateServerTitleByTitleId(serverId, 6, userId);
-						rewardService.doReward(user, map.get("" + 6).getItemid(), 1, map.get("" + 6).getTime());
+						handlerTitle(user, 6, map);
 						break;
 					case 3:
-						updateServerTitleByTitleId(serverId, 10, userId);
-						rewardService.doReward(user, map.get("" + 10).getItemid(), 1, map.get("" + 10).getTime());
+						handlerTitle(user, 10, map);
 						break;
 					case 4:
-						updateServerTitleByTitleId(serverId, 14, userId);
-						rewardService.doReward(user, map.get("" + 14).getItemid(), 1, map.get("" + 14).getTime());
+						handlerTitle(user, 14, map);
 						break;
 					default:
 						break;
 				}
 			} else {
 				others.add(userId);
-				rewardService.doReward(user, map.get("" + 18).getItemid(), 1, map.get("" + 18).getTime());
+				handlerTitle(user, 18, map, true);
 			}
 		}
 		
 		updateServerTitleByTitleId(serverId, 18, others);
+	}
+	
+	//handler special raid rank
+	public void handlerRaidRank() {
+		List<Integer> serverIds = serverService.getServerIdList();
+		Map<String, Title> map = redis.getTitleConfig();
+		for (int serverId : serverIds)
+			handlerRaidRank(serverId, map);
+	}
+	
+	private void handlerRaidRank(int serverId, Map<String, Title> map) {
+		int raidid = 101;
+		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, raidid, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+		int rankInit = 1;
+		List<Long> others = new ArrayList<Long>();
+		for (TypedTuple<String> rank : ranks) {
+			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
+			UserBean user = userService.getUserOther(userId);
+			switch (rankInit) {
+				case 1:
+					handlerTitle(user, 2, map);
+					break;
+				case 2:
+					handlerTitle(user, 8, map);
+					break;
+				case 3:
+					handlerTitle(user, 12, map);
+					break;
+				case 4:
+					handlerTitle(user, 16, map);
+					break;
+				default:
+					others.add(userId);
+					handlerTitle(user, 20, map, true);
+					break;
+			}
+			
+			rankInit++;
+		}
+	
+		updateServerTitleByTitleId(serverId, 20, others);
+		
+		//删除排行榜
+		rankRedisService.deleteRank(serverId, raidid);
+	}
+	
+	private void handlerTitle(UserBean user, int title, Map<String, Title> map) {
+		handlerTitle(user, title, map, false);
+	}
+	
+	private void handlerTitle(UserBean user, int title, Map<String, Title> map, boolean onlyReward) {
+		if (!onlyReward)
+			updateServerTitleByTitleId(user.getServerId(), title, user.getId());
+		
+		rewardService.doReward(user, map.get("" + title).getItemid(), 1, map.get("" + title).getTime());
 	}
 }

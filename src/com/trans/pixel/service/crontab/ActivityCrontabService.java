@@ -49,6 +49,7 @@ public class ActivityCrontabService {
 		if (DateUtil.getDayOfMonth() == 1) {
 			serverTitleService.handlerRechargeRank();
 			serverTitleService.handlerUnionRank();
+			serverTitleService.handlerRaidRank();
 		}
 	}
 }
