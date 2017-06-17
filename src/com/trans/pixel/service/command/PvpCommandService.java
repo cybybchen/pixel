@@ -145,7 +145,10 @@ public class PvpCommandService extends BaseCommandService {
 		}else if(reward.getCount() > 0){
 			handleRewards(responseBuilder, user, reward.getItemid(), reward.getCount());
 		}
-		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
+		if(cmd.getId() > 1000)
+			getInbreakList(RequestPVPInbreakListCommand.newBuilder().build(), responseBuilder, user);
+		else
+			getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void attackMine(RequestHelpAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
