@@ -11,6 +11,16 @@ public final class RewardTaskProto {
   public interface RewardTaskOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
+    // optional int32 id = 10;
+    /**
+     * <code>optional int32 id = 10;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 10;</code>
+     */
+    int getId();
+
     // optional int32 type = 1;
     /**
      * <code>optional int32 type = 1;</code>
@@ -187,54 +197,59 @@ public final class RewardTaskProto {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               type_ = input.readInt32();
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               eventid_ = input.readInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               merlevel_ = input.readInt32();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               level_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               members_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               randcount_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               count_ = input.readInt32();
               break;
             }
             case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
                 lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000100;
               }
               lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
                 event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000200;
               }
               event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
               break;
             }
           }
@@ -245,10 +260,10 @@ public final class RewardTaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
           event_ = java.util.Collections.unmodifiableList(event_);
         }
         this.unknownFields = unknownFields.build();
@@ -283,6 +298,22 @@ public final class RewardTaskProto {
     }
 
     private int bitField0_;
+    // optional int32 id = 10;
+    public static final int ID_FIELD_NUMBER = 10;
+    private int id_;
+    /**
+     * <code>optional int32 id = 10;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 10;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
     // optional int32 type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
     private int type_;
@@ -290,7 +321,7 @@ public final class RewardTaskProto {
      * <code>optional int32 type = 1;</code>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional int32 type = 1;</code>
@@ -306,7 +337,7 @@ public final class RewardTaskProto {
      * <code>optional int32 eventid = 2;</code>
      */
     public boolean hasEventid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 eventid = 2;</code>
@@ -322,7 +353,7 @@ public final class RewardTaskProto {
      * <code>optional int32 merlevel = 3;</code>
      */
     public boolean hasMerlevel() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 merlevel = 3;</code>
@@ -338,7 +369,7 @@ public final class RewardTaskProto {
      * <code>optional int32 level = 4;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 level = 4;</code>
@@ -354,7 +385,7 @@ public final class RewardTaskProto {
      * <code>optional int32 members = 5;</code>
      */
     public boolean hasMembers() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 members = 5;</code>
@@ -370,7 +401,7 @@ public final class RewardTaskProto {
      * <code>optional int32 randcount = 6;</code>
      */
     public boolean hasRandcount() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 randcount = 6;</code>
@@ -386,7 +417,7 @@ public final class RewardTaskProto {
      * <code>optional int32 count = 7;</code>
      */
     public boolean hasCount() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 count = 7;</code>
@@ -468,6 +499,7 @@ public final class RewardTaskProto {
     }
 
     private void initFields() {
+      id_ = 0;
       type_ = 0;
       eventid_ = 0;
       merlevel_ = 0;
@@ -490,25 +522,25 @@ public final class RewardTaskProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(1, type_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(2, eventid_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(3, merlevel_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(4, level_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(5, members_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(6, randcount_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(7, count_);
       }
       for (int i = 0; i < lootlist_.size(); i++) {
@@ -516,6 +548,9 @@ public final class RewardTaskProto {
       }
       for (int i = 0; i < event_.size(); i++) {
         output.writeMessage(9, event_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(10, id_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -526,31 +561,31 @@ public final class RewardTaskProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, type_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, eventid_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, merlevel_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, level_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, members_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, randcount_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, count_);
       }
@@ -561,6 +596,10 @@ public final class RewardTaskProto {
       for (int i = 0; i < event_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, event_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, id_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -684,29 +723,31 @@ public final class RewardTaskProto {
 
       public Builder clear() {
         super.clear();
-        type_ = 0;
+        id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        eventid_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        merlevel_ = 0;
+        eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        level_ = 0;
+        merlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        members_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        randcount_ = 0;
+        members_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        count_ = 0;
+        randcount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           lootlistBuilder_.clear();
         }
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
         } else {
           eventBuilder_.clear();
         }
@@ -741,44 +782,48 @@ public final class RewardTaskProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.type_ = type_;
+        result.id_ = id_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.eventid_ = eventid_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.merlevel_ = merlevel_;
+        result.eventid_ = eventid_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.level_ = level_;
+        result.merlevel_ = merlevel_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.members_ = members_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.randcount_ = randcount_;
+        result.members_ = members_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
+        result.randcount_ = randcount_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.count_ = count_;
         if (lootlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
             lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000100);
           }
           result.lootlist_ = lootlist_;
         } else {
           result.lootlist_ = lootlistBuilder_.build();
         }
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          if (((bitField0_ & 0x00000200) == 0x00000200)) {
             event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000200);
           }
           result.event_ = event_;
         } else {
@@ -800,6 +845,9 @@ public final class RewardTaskProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.RewardTask other) {
         if (other == com.trans.pixel.protoc.RewardTaskProto.RewardTask.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -825,7 +873,7 @@ public final class RewardTaskProto {
           if (!other.lootlist_.isEmpty()) {
             if (lootlist_.isEmpty()) {
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
             } else {
               ensureLootlistIsMutable();
               lootlist_.addAll(other.lootlist_);
@@ -838,7 +886,7 @@ public final class RewardTaskProto {
               lootlistBuilder_.dispose();
               lootlistBuilder_ = null;
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000100);
               lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLootlistFieldBuilder() : null;
@@ -851,7 +899,7 @@ public final class RewardTaskProto {
           if (!other.event_.isEmpty()) {
             if (event_.isEmpty()) {
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
             } else {
               ensureEventIsMutable();
               event_.addAll(other.event_);
@@ -864,7 +912,7 @@ public final class RewardTaskProto {
               eventBuilder_.dispose();
               eventBuilder_ = null;
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000200);
               eventBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEventFieldBuilder() : null;
@@ -900,13 +948,46 @@ public final class RewardTaskProto {
       }
       private int bitField0_;
 
+      // optional int32 id = 10;
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 10;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 10;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 10;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 10;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 type = 1;
       private int type_ ;
       /**
        * <code>optional int32 type = 1;</code>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional int32 type = 1;</code>
@@ -918,7 +999,7 @@ public final class RewardTaskProto {
        * <code>optional int32 type = 1;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         type_ = value;
         onChanged();
         return this;
@@ -927,7 +1008,7 @@ public final class RewardTaskProto {
        * <code>optional int32 type = 1;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         type_ = 0;
         onChanged();
         return this;
@@ -939,7 +1020,7 @@ public final class RewardTaskProto {
        * <code>optional int32 eventid = 2;</code>
        */
       public boolean hasEventid() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 eventid = 2;</code>
@@ -951,7 +1032,7 @@ public final class RewardTaskProto {
        * <code>optional int32 eventid = 2;</code>
        */
       public Builder setEventid(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         eventid_ = value;
         onChanged();
         return this;
@@ -960,7 +1041,7 @@ public final class RewardTaskProto {
        * <code>optional int32 eventid = 2;</code>
        */
       public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         eventid_ = 0;
         onChanged();
         return this;
@@ -972,7 +1053,7 @@ public final class RewardTaskProto {
        * <code>optional int32 merlevel = 3;</code>
        */
       public boolean hasMerlevel() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 merlevel = 3;</code>
@@ -984,7 +1065,7 @@ public final class RewardTaskProto {
        * <code>optional int32 merlevel = 3;</code>
        */
       public Builder setMerlevel(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         merlevel_ = value;
         onChanged();
         return this;
@@ -993,7 +1074,7 @@ public final class RewardTaskProto {
        * <code>optional int32 merlevel = 3;</code>
        */
       public Builder clearMerlevel() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         merlevel_ = 0;
         onChanged();
         return this;
@@ -1005,7 +1086,7 @@ public final class RewardTaskProto {
        * <code>optional int32 level = 4;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 level = 4;</code>
@@ -1017,7 +1098,7 @@ public final class RewardTaskProto {
        * <code>optional int32 level = 4;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         level_ = value;
         onChanged();
         return this;
@@ -1026,7 +1107,7 @@ public final class RewardTaskProto {
        * <code>optional int32 level = 4;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         level_ = 0;
         onChanged();
         return this;
@@ -1038,7 +1119,7 @@ public final class RewardTaskProto {
        * <code>optional int32 members = 5;</code>
        */
       public boolean hasMembers() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 members = 5;</code>
@@ -1050,7 +1131,7 @@ public final class RewardTaskProto {
        * <code>optional int32 members = 5;</code>
        */
       public Builder setMembers(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         members_ = value;
         onChanged();
         return this;
@@ -1059,7 +1140,7 @@ public final class RewardTaskProto {
        * <code>optional int32 members = 5;</code>
        */
       public Builder clearMembers() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         members_ = 0;
         onChanged();
         return this;
@@ -1071,7 +1152,7 @@ public final class RewardTaskProto {
        * <code>optional int32 randcount = 6;</code>
        */
       public boolean hasRandcount() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 randcount = 6;</code>
@@ -1083,7 +1164,7 @@ public final class RewardTaskProto {
        * <code>optional int32 randcount = 6;</code>
        */
       public Builder setRandcount(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         randcount_ = value;
         onChanged();
         return this;
@@ -1092,7 +1173,7 @@ public final class RewardTaskProto {
        * <code>optional int32 randcount = 6;</code>
        */
       public Builder clearRandcount() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         randcount_ = 0;
         onChanged();
         return this;
@@ -1104,7 +1185,7 @@ public final class RewardTaskProto {
        * <code>optional int32 count = 7;</code>
        */
       public boolean hasCount() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 count = 7;</code>
@@ -1116,7 +1197,7 @@ public final class RewardTaskProto {
        * <code>optional int32 count = 7;</code>
        */
       public Builder setCount(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         count_ = value;
         onChanged();
         return this;
@@ -1125,7 +1206,7 @@ public final class RewardTaskProto {
        * <code>optional int32 count = 7;</code>
        */
       public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         count_ = 0;
         onChanged();
         return this;
@@ -1135,9 +1216,9 @@ public final class RewardTaskProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
       private void ensureLootlistIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
           lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
          }
       }
 
@@ -1286,7 +1367,7 @@ public final class RewardTaskProto {
       public Builder clearLootlist() {
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000100);
           onChanged();
         } else {
           lootlistBuilder_.clear();
@@ -1363,7 +1444,7 @@ public final class RewardTaskProto {
           lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   lootlist_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000100) == 0x00000100),
                   getParentForChildren(),
                   isClean());
           lootlist_ = null;
@@ -1375,9 +1456,9 @@ public final class RewardTaskProto {
       private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
           event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
          }
       }
 
@@ -1526,7 +1607,7 @@ public final class RewardTaskProto {
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000200);
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -1603,7 +1684,7 @@ public final class RewardTaskProto {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
-                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  ((bitField0_ & 0x00000200) == 0x00000200),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -10389,43 +10470,44 @@ public final class RewardTaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\025RewardTaskProto.proto\022\026com.trans.pixel" +
-      ".protoc\032\nBase.proto\"\343\001\n\nRewardTask\022\014\n\004ty" +
-      "pe\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\020\n\010merlevel\030\003 " +
-      "\001(\005\022\r\n\005level\030\004 \001(\005\022\017\n\007members\030\005 \001(\005\022\021\n\tr" +
-      "andcount\030\006 \001(\005\022\r\n\005count\030\007 \001(\005\0224\n\010lootlis" +
-      "t\030\010 \003(\0132\".com.trans.pixel.protoc.RewardI" +
-      "nfo\022,\n\005event\030\t \003(\0132\035.com.trans.pixel.pro" +
-      "toc.Event\"B\n\016RewardTaskList\0220\n\004data\030\001 \003(" +
-      "\0132\".com.trans.pixel.protoc.RewardTask\"I\n" +
-      "\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004user\030\002 \001(\0132 ",
-      ".com.trans.pixel.protoc.UserInfo\"\221\002\n\016Use" +
-      "rRewardTask\0220\n\004task\030\001 \002(\0132\".com.trans.pi" +
-      "xel.protoc.RewardTask\022\021\n\tleftcount\030\002 \001(\005" +
-      "\022\016\n\006status\030\003 \001(\r\0222\n\010roomInfo\030\005 \001(\0132 .com" +
-      ".trans.pixel.protoc.RoomInfo\022\017\n\007endtime\030" +
-      "\006 \001(\003\022\r\n\005index\030\007 \002(\r\"V\n\021REWARDTASK_STATU" +
-      "S\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004F" +
-      "ULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\216\001\n\022UserRew" +
-      "ardTaskRoom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006sta" +
-      "tus\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006 \003",
-      "(\0132 .com.trans.pixel.protoc.RoomInfo\022\017\n\007" +
-      "eventid\030\007 \001(\r\"3\n\"RequestCreateRewardTask" +
-      "RoomCommand\022\r\n\005index\030\001 \002(\r\"A\n RequestQui" +
-      "tRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\022\016\n" +
-      "\006userId\030\002 \002(\004\"g\n$RequestInviteToRewardTa" +
-      "skRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(" +
-      "\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A" +
-      "\n#RequestSubmitRewardTaskScoreCommand\022\r\n" +
-      "\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseUse" +
-      "rRewardTaskCommand\022>\n\016userRewardTask\030\001 \003",
-      "(\0132&.com.trans.pixel.protoc.UserRewardTa" +
-      "sk\"]\n!ResponseUserRewardTaskRoomCommand\022" +
-      "8\n\004room\030\001 \003(\0132*.com.trans.pixel.protoc.U" +
-      "serRewardTaskRoom\"\036\n\034RequestUserRewardTa" +
-      "skCommand\"/\n\036RequestRewardTaskRewardComm" +
-      "and\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewardT" +
-      "askRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036Request" +
-      "GiveupRewardTaskCommand\022\r\n\005index\030\001 \002(\r"
+      ".protoc\032\nBase.proto\"\357\001\n\nRewardTask\022\n\n\002id" +
+      "\030\n \001(\005\022\014\n\004type\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\020\n" +
+      "\010merlevel\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\017\n\007member" +
+      "s\030\005 \001(\005\022\021\n\trandcount\030\006 \001(\005\022\r\n\005count\030\007 \001(" +
+      "\005\0224\n\010lootlist\030\010 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.RewardInfo\022,\n\005event\030\t \003(\0132\035.com.tra" +
+      "ns.pixel.protoc.Event\"B\n\016RewardTaskList\022" +
+      "0\n\004data\030\001 \003(\0132\".com.trans.pixel.protoc.R" +
+      "ewardTask\"I\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004",
+      "user\030\002 \001(\0132 .com.trans.pixel.protoc.User" +
+      "Info\"\221\002\n\016UserRewardTask\0220\n\004task\030\001 \002(\0132\"." +
+      "com.trans.pixel.protoc.RewardTask\022\021\n\tlef" +
+      "tcount\030\002 \001(\005\022\016\n\006status\030\003 \001(\r\0222\n\010roomInfo" +
+      "\030\005 \001(\0132 .com.trans.pixel.protoc.RoomInfo" +
+      "\022\017\n\007endtime\030\006 \001(\003\022\r\n\005index\030\007 \002(\r\"V\n\021REWA" +
+      "RDTASK_STATUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANR" +
+      "EWARD\020\002\022\010\n\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005" +
+      "\"\216\001\n\022UserRewardTaskRoom\022\024\n\014createUserId\030" +
+      "\001 \002(\004\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010",
+      "roomInfo\030\006 \003(\0132 .com.trans.pixel.protoc." +
+      "RoomInfo\022\017\n\007eventid\030\007 \001(\r\"3\n\"RequestCrea" +
+      "teRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A" +
+      "\n RequestQuitRewardTaskRoomCommand\022\r\n\005in" +
+      "dex\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInvi" +
+      "teToRewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n" +
+      "\006userId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005i" +
+      "ndex\030\004 \001(\r\"A\n#RequestSubmitRewardTaskSco" +
+      "reCommand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n" +
+      "\035ResponseUserRewardTaskCommand\022>\n\016userRe",
+      "wardTask\030\001 \003(\0132&.com.trans.pixel.protoc." +
+      "UserRewardTask\"]\n!ResponseUserRewardTask" +
+      "RoomCommand\0228\n\004room\030\001 \003(\0132*.com.trans.pi" +
+      "xel.protoc.UserRewardTaskRoom\"\036\n\034Request" +
+      "UserRewardTaskCommand\"/\n\036RequestRewardTa" +
+      "skRewardCommand\022\r\n\005index\030\002 \002(\r\"1\n Reques" +
+      "tUserRewardTaskRoomCommand\022\r\n\005index\030\001 \002(" +
+      "\r\"/\n\036RequestGiveupRewardTaskCommand\022\r\n\005i" +
+      "ndex\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10437,7 +10519,7 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_RewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTask_descriptor,
-              new java.lang.String[] { "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Lootlist", "Event", });
+              new java.lang.String[] { "Id", "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Lootlist", "Event", });
           internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_RewardTaskList_fieldAccessorTable = new

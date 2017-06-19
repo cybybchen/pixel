@@ -9,41 +9,27 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.constants.MessageConst;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.MessageBoardProto.MessageBoard;
 import com.trans.pixel.protoc.MessageBoardProto.Msg;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MessageBoardBean {
 	private long id = 0;
 	private long timeStamp = 0;
-	private long userId = 0;
-	private String userName = "";
 	private String message = "";
-	private int icon = 0;
 	private List<MessageBean> messageList = new ArrayList<MessageBean>();
-	private int vip = 0;
-	private int job = 0;//公会职位
 	private int groupId = 0;
 	private int bossId = 0;
 	private String startDate = "";
 	private int replyCount = 0;
+	private UserInfo user = null;
 	public long getTimeStamp() {
 		return timeStamp;
 	}
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
-	}
-	public long getUserId() {
-		return userId;
-	}
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 	public String getMessage() {
 		return message;
@@ -62,24 +48,6 @@ public class MessageBoardBean {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public int getIcon() {
-		return icon;
-	}
-	public void setIcon(int icon) {
-		this.icon = icon;
-	}
-	public int getVip() {
-		return vip;
-	}
-	public void setVip(int vip) {
-		this.vip = vip;
-	}
-	public int getJob() {
-		return job;
-	}
-	public void setJob(int job) {
-		this.job = job;
 	}
 	public int getGroupId() {
 		return groupId;
@@ -105,15 +73,17 @@ public class MessageBoardBean {
 	public void setReplyCount(int replyCount) {
 		this.replyCount = replyCount;
 	}
+	public UserInfo getUser() {
+		return user;
+	}
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
 	public MessageBoard buildMessageBoard() {
 		MessageBoard.Builder builder = MessageBoard.newBuilder();
 		builder.setId(id);
 		builder.setContent(message);
 		builder.setTimestamp(timeStamp);
-		builder.setUserId(userId);
-		builder.setUserName(userName);
-		builder.setIcon(icon);
-		builder.setJob(job);
 		List<Msg> msgBuilderList = new ArrayList<Msg>();
 		for (MessageBean message : messageList) {
 			msgBuilderList.add(message.buildMsg());
@@ -121,9 +91,9 @@ public class MessageBoardBean {
 		builder.addAllMsg(msgBuilderList);
 		builder.setGroupId(groupId);
 		builder.setBossId(bossId);
-		builder.setVip(vip);
 		builder.setStartDate(startDate);
 		builder.setReplyCount(replyCount);
+		builder.setUser(user);
 		
 		return builder.build();
 	}
@@ -132,17 +102,13 @@ public class MessageBoardBean {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(TIMESTAMP, timeStamp);
-		json.put(USER_ID, userId);
-		json.put(USER_NAME, userName);
 		json.put(MESSAGE, message);
 		json.put(MESSAGE_LIST, messageList);
-		json.put(ICON, icon);
-		json.put(JOB, job);
 		json.put(GROUPID, groupId);
 		json.put(BOSSID, bossId);
 		json.put(STARTDATE, startDate);
-		json.put(VIP, vip);
 		json.put(REPLYCOUNT, replyCount);
+		json.put(USER, RedisService.formatJson(user));
 		
 		return json.toString();
 	}
@@ -154,8 +120,6 @@ public class MessageBoardBean {
 		
 		bean.setId(TypeTranslatedUtil.jsonGetLong(json, ID));
 		bean.setTimeStamp(TypeTranslatedUtil.jsonGetLong(json, TIMESTAMP));
-		bean.setUserId(TypeTranslatedUtil.jsonGetLong(json, USER_ID));
-		bean.setUserName(TypeTranslatedUtil.jsonGetString(json, USER_NAME));
 		bean.setMessage(TypeTranslatedUtil.jsonGetString(json, MESSAGE));
 		
 		List<MessageBean> list = new ArrayList<MessageBean>();
@@ -165,14 +129,15 @@ public class MessageBoardBean {
 			list.add(message);
 		}
 		bean.setMessageList(list);
-		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
-		bean.setJob(TypeTranslatedUtil.jsonGetInt(json, JOB));
 		bean.setGroupId(TypeTranslatedUtil.jsonGetInt(json, GROUPID));
 		bean.setBossId(TypeTranslatedUtil.jsonGetInt(json, BOSSID));
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, STARTDATE));
-		bean.setVip(TypeTranslatedUtil.jsonGetInt(json, VIP));
 		bean.setReplyCount(TypeTranslatedUtil.jsonGetInt(json, REPLYCOUNT));
-
+		
+		UserInfo.Builder builder = UserInfo.newBuilder();
+		if (RedisService.parseJson(TypeTranslatedUtil.jsonGetString(json, USER), builder))
+			bean.setUser(builder.build());
+		
 		return bean;
 	}
 	
@@ -211,15 +176,11 @@ public class MessageBoardBean {
 	
 	private static final String ID = "id";
 	private static final String TIMESTAMP = "timestamp";
-	private static final String USER_ID = "user_id";
-	private static final String USER_NAME = "user_name";
 	private static final String MESSAGE = "message";
 	private static final String MESSAGE_LIST = "message_list";
-	private static final String ICON = "icon";
-	private static final String JOB = "job";
 	private static final String GROUPID = "groupId";
 	private static final String BOSSID = "bossId";
 	private static final String STARTDATE = "startdate";
-	private static final String VIP = "vip";
 	private static final String REPLYCOUNT = "replycount";
+	private static final String USER = "user";
 }

@@ -31,31 +31,6 @@ public final class MessageBoardProto {
      */
     long getTimestamp();
 
-    // required int64 userId = 3;
-    /**
-     * <code>required int64 userId = 3;</code>
-     */
-    boolean hasUserId();
-    /**
-     * <code>required int64 userId = 3;</code>
-     */
-    long getUserId();
-
-    // required string userName = 4;
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    boolean hasUserName();
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    java.lang.String getUserName();
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getUserNameBytes();
-
     // required string content = 5;
     /**
      * <code>required string content = 5;</code>
@@ -95,44 +70,6 @@ public final class MessageBoardProto {
      */
     com.trans.pixel.protoc.MessageBoardProto.MsgOrBuilder getMsgOrBuilder(
         int index);
-
-    // required int32 icon = 7;
-    /**
-     * <code>required int32 icon = 7;</code>
-     */
-    boolean hasIcon();
-    /**
-     * <code>required int32 icon = 7;</code>
-     */
-    int getIcon();
-
-    // optional int32 vip = 8;
-    /**
-     * <code>optional int32 vip = 8;</code>
-     */
-    boolean hasVip();
-    /**
-     * <code>optional int32 vip = 8;</code>
-     */
-    int getVip();
-
-    // optional int32 job = 9;
-    /**
-     * <code>optional int32 job = 9;</code>
-     *
-     * <pre>
-     *公会职位
-     * </pre>
-     */
-    boolean hasJob();
-    /**
-     * <code>optional int32 job = 9;</code>
-     *
-     * <pre>
-     *公会职位
-     * </pre>
-     */
-    int getJob();
 
     // optional int32 groupId = 10;
     /**
@@ -178,6 +115,20 @@ public final class MessageBoardProto {
      * <code>optional int32 replyCount = 13;</code>
      */
     int getReplyCount();
+
+    // optional .com.trans.pixel.protoc.UserInfo user = 14;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfo getUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.MessageBoard}
@@ -244,62 +195,50 @@ public final class MessageBoardProto {
               timestamp_ = input.readInt64();
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              userId_ = input.readInt64();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
-              userName_ = input.readBytes();
-              break;
-            }
             case 42: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000004;
               content_ = input.readBytes();
               break;
             }
             case 50: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 msg_ = new java.util.ArrayList<com.trans.pixel.protoc.MessageBoardProto.Msg>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000008;
               }
               msg_.add(input.readMessage(com.trans.pixel.protoc.MessageBoardProto.Msg.PARSER, extensionRegistry));
               break;
             }
-            case 56: {
-              bitField0_ |= 0x00000020;
-              icon_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000040;
-              vip_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000080;
-              job_ = input.readInt32();
-              break;
-            }
             case 80: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000008;
               groupId_ = input.readInt32();
               break;
             }
             case 88: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000010;
               bossId_ = input.readInt32();
               break;
             }
             case 98: {
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000020;
               startDate_ = input.readBytes();
               break;
             }
             case 104: {
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00000040;
               replyCount_ = input.readInt32();
+              break;
+            }
+            case 114: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000080;
               break;
             }
           }
@@ -310,7 +249,7 @@ public final class MessageBoardProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           msg_ = java.util.Collections.unmodifiableList(msg_);
         }
         this.unknownFields = unknownFields.build();
@@ -377,65 +316,6 @@ public final class MessageBoardProto {
       return timestamp_;
     }
 
-    // required int64 userId = 3;
-    public static final int USERID_FIELD_NUMBER = 3;
-    private long userId_;
-    /**
-     * <code>required int64 userId = 3;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required int64 userId = 3;</code>
-     */
-    public long getUserId() {
-      return userId_;
-    }
-
-    // required string userName = 4;
-    public static final int USERNAME_FIELD_NUMBER = 4;
-    private java.lang.Object userName_;
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    public boolean hasUserName() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    public java.lang.String getUserName() {
-      java.lang.Object ref = userName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string userName = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUserNameBytes() {
-      java.lang.Object ref = userName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        userName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // required string content = 5;
     public static final int CONTENT_FIELD_NUMBER = 5;
     private java.lang.Object content_;
@@ -443,7 +323,7 @@ public final class MessageBoardProto {
      * <code>required string content = 5;</code>
      */
     public boolean hasContent() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required string content = 5;</code>
@@ -515,62 +395,6 @@ public final class MessageBoardProto {
       return msg_.get(index);
     }
 
-    // required int32 icon = 7;
-    public static final int ICON_FIELD_NUMBER = 7;
-    private int icon_;
-    /**
-     * <code>required int32 icon = 7;</code>
-     */
-    public boolean hasIcon() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>required int32 icon = 7;</code>
-     */
-    public int getIcon() {
-      return icon_;
-    }
-
-    // optional int32 vip = 8;
-    public static final int VIP_FIELD_NUMBER = 8;
-    private int vip_;
-    /**
-     * <code>optional int32 vip = 8;</code>
-     */
-    public boolean hasVip() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 vip = 8;</code>
-     */
-    public int getVip() {
-      return vip_;
-    }
-
-    // optional int32 job = 9;
-    public static final int JOB_FIELD_NUMBER = 9;
-    private int job_;
-    /**
-     * <code>optional int32 job = 9;</code>
-     *
-     * <pre>
-     *公会职位
-     * </pre>
-     */
-    public boolean hasJob() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 job = 9;</code>
-     *
-     * <pre>
-     *公会职位
-     * </pre>
-     */
-    public int getJob() {
-      return job_;
-    }
-
     // optional int32 groupId = 10;
     public static final int GROUPID_FIELD_NUMBER = 10;
     private int groupId_;
@@ -578,7 +402,7 @@ public final class MessageBoardProto {
      * <code>optional int32 groupId = 10;</code>
      */
     public boolean hasGroupId() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 groupId = 10;</code>
@@ -594,7 +418,7 @@ public final class MessageBoardProto {
      * <code>optional int32 bossId = 11;</code>
      */
     public boolean hasBossId() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 bossId = 11;</code>
@@ -610,7 +434,7 @@ public final class MessageBoardProto {
      * <code>optional string startDate = 12;</code>
      */
     public boolean hasStartDate() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional string startDate = 12;</code>
@@ -653,7 +477,7 @@ public final class MessageBoardProto {
      * <code>optional int32 replyCount = 13;</code>
      */
     public boolean hasReplyCount() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 replyCount = 13;</code>
@@ -662,20 +486,38 @@ public final class MessageBoardProto {
       return replyCount_;
     }
 
+    // optional .com.trans.pixel.protoc.UserInfo user = 14;
+    public static final int USER_FIELD_NUMBER = 14;
+    private com.trans.pixel.protoc.Base.UserInfo user_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfo getUser() {
+      return user_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
+    }
+
     private void initFields() {
       id_ = 0L;
       timestamp_ = 0L;
-      userId_ = 0L;
-      userName_ = "";
       content_ = "";
       msg_ = java.util.Collections.emptyList();
-      icon_ = 0;
-      vip_ = 0;
-      job_ = 0;
       groupId_ = 0;
       bossId_ = 0;
       startDate_ = "";
       replyCount_ = 0;
+      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -690,24 +532,18 @@ public final class MessageBoardProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasUserId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUserName()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasContent()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasIcon()) {
         memoizedIsInitialized = 0;
         return false;
       }
       for (int i = 0; i < getMsgCount(); i++) {
         if (!getMsg(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -726,37 +562,25 @@ public final class MessageBoardProto {
         output.writeInt64(2, timestamp_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(3, userId_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getUserNameBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(5, getContentBytes());
       }
       for (int i = 0; i < msg_.size(); i++) {
         output.writeMessage(6, msg_.get(i));
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, icon_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(8, vip_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(9, job_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(10, groupId_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(11, bossId_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(12, getStartDateBytes());
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(13, replyCount_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeMessage(14, user_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -777,47 +601,31 @@ public final class MessageBoardProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, userId_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getUserNameBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(5, getContentBytes());
       }
       for (int i = 0; i < msg_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, msg_.get(i));
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, icon_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, vip_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, job_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, groupId_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, bossId_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(12, getStartDateBytes());
       }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, replyCount_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, user_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -932,6 +740,7 @@ public final class MessageBoardProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getMsgFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -944,32 +753,28 @@ public final class MessageBoardProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        userId_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        userName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         content_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (msgBuilder_ == null) {
           msg_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           msgBuilder_.clear();
         }
-        icon_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        vip_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        job_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
         groupId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000010);
         bossId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000020);
         startDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000040);
         replyCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -1009,52 +814,40 @@ public final class MessageBoardProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.userId_ = userId_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.userName_ = userName_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         result.content_ = content_;
         if (msgBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             msg_ = java.util.Collections.unmodifiableList(msg_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.msg_ = msg_;
         } else {
           result.msg_ = msgBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.groupId_ = groupId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.bossId_ = bossId_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.icon_ = icon_;
+        result.startDate_ = startDate_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.vip_ = vip_;
+        result.replyCount_ = replyCount_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.job_ = job_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000100;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
         }
-        result.groupId_ = groupId_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.bossId_ = bossId_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.startDate_ = startDate_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.replyCount_ = replyCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1077,16 +870,8 @@ public final class MessageBoardProto {
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
         }
-        if (other.hasUserId()) {
-          setUserId(other.getUserId());
-        }
-        if (other.hasUserName()) {
-          bitField0_ |= 0x00000008;
-          userName_ = other.userName_;
-          onChanged();
-        }
         if (other.hasContent()) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
           content_ = other.content_;
           onChanged();
         }
@@ -1094,7 +879,7 @@ public final class MessageBoardProto {
           if (!other.msg_.isEmpty()) {
             if (msg_.isEmpty()) {
               msg_ = other.msg_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureMsgIsMutable();
               msg_.addAll(other.msg_);
@@ -1107,7 +892,7 @@ public final class MessageBoardProto {
               msgBuilder_.dispose();
               msgBuilder_ = null;
               msg_ = other.msg_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+              bitField0_ = (bitField0_ & ~0x00000008);
               msgBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMsgFieldBuilder() : null;
@@ -1116,15 +901,6 @@ public final class MessageBoardProto {
             }
           }
         }
-        if (other.hasIcon()) {
-          setIcon(other.getIcon());
-        }
-        if (other.hasVip()) {
-          setVip(other.getVip());
-        }
-        if (other.hasJob()) {
-          setJob(other.getJob());
-        }
         if (other.hasGroupId()) {
           setGroupId(other.getGroupId());
         }
@@ -1132,12 +908,15 @@ public final class MessageBoardProto {
           setBossId(other.getBossId());
         }
         if (other.hasStartDate()) {
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00000040;
           startDate_ = other.startDate_;
           onChanged();
         }
         if (other.hasReplyCount()) {
           setReplyCount(other.getReplyCount());
+        }
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1152,24 +931,18 @@ public final class MessageBoardProto {
           
           return false;
         }
-        if (!hasUserId()) {
-          
-          return false;
-        }
-        if (!hasUserName()) {
-          
-          return false;
-        }
         if (!hasContent()) {
-          
-          return false;
-        }
-        if (!hasIcon()) {
           
           return false;
         }
         for (int i = 0; i < getMsgCount(); i++) {
           if (!getMsg(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
             
             return false;
           }
@@ -1262,120 +1035,13 @@ public final class MessageBoardProto {
         return this;
       }
 
-      // required int64 userId = 3;
-      private long userId_ ;
-      /**
-       * <code>required int64 userId = 3;</code>
-       */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required int64 userId = 3;</code>
-       */
-      public long getUserId() {
-        return userId_;
-      }
-      /**
-       * <code>required int64 userId = 3;</code>
-       */
-      public Builder setUserId(long value) {
-        bitField0_ |= 0x00000004;
-        userId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 userId = 3;</code>
-       */
-      public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        userId_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // required string userName = 4;
-      private java.lang.Object userName_ = "";
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public boolean hasUserName() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public java.lang.String getUserName() {
-        java.lang.Object ref = userName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          userName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUserNameBytes() {
-        java.lang.Object ref = userName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          userName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public Builder setUserName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        userName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public Builder clearUserName() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        userName_ = getDefaultInstance().getUserName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string userName = 4;</code>
-       */
-      public Builder setUserNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        userName_ = value;
-        onChanged();
-        return this;
-      }
-
       // required string content = 5;
       private java.lang.Object content_ = "";
       /**
        * <code>required string content = 5;</code>
        */
       public boolean hasContent() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required string content = 5;</code>
@@ -1415,7 +1081,7 @@ public final class MessageBoardProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000004;
         content_ = value;
         onChanged();
         return this;
@@ -1424,7 +1090,7 @@ public final class MessageBoardProto {
        * <code>required string content = 5;</code>
        */
       public Builder clearContent() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         content_ = getDefaultInstance().getContent();
         onChanged();
         return this;
@@ -1437,7 +1103,7 @@ public final class MessageBoardProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000004;
         content_ = value;
         onChanged();
         return this;
@@ -1447,9 +1113,9 @@ public final class MessageBoardProto {
       private java.util.List<com.trans.pixel.protoc.MessageBoardProto.Msg> msg_ =
         java.util.Collections.emptyList();
       private void ensureMsgIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           msg_ = new java.util.ArrayList<com.trans.pixel.protoc.MessageBoardProto.Msg>(msg_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -1598,7 +1264,7 @@ public final class MessageBoardProto {
       public Builder clearMsg() {
         if (msgBuilder_ == null) {
           msg_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           msgBuilder_.clear();
@@ -1675,127 +1341,12 @@ public final class MessageBoardProto {
           msgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.MessageBoardProto.Msg, com.trans.pixel.protoc.MessageBoardProto.Msg.Builder, com.trans.pixel.protoc.MessageBoardProto.MsgOrBuilder>(
                   msg_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           msg_ = null;
         }
         return msgBuilder_;
-      }
-
-      // required int32 icon = 7;
-      private int icon_ ;
-      /**
-       * <code>required int32 icon = 7;</code>
-       */
-      public boolean hasIcon() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>required int32 icon = 7;</code>
-       */
-      public int getIcon() {
-        return icon_;
-      }
-      /**
-       * <code>required int32 icon = 7;</code>
-       */
-      public Builder setIcon(int value) {
-        bitField0_ |= 0x00000040;
-        icon_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 icon = 7;</code>
-       */
-      public Builder clearIcon() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        icon_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 vip = 8;
-      private int vip_ ;
-      /**
-       * <code>optional int32 vip = 8;</code>
-       */
-      public boolean hasVip() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 vip = 8;</code>
-       */
-      public int getVip() {
-        return vip_;
-      }
-      /**
-       * <code>optional int32 vip = 8;</code>
-       */
-      public Builder setVip(int value) {
-        bitField0_ |= 0x00000080;
-        vip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 vip = 8;</code>
-       */
-      public Builder clearVip() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        vip_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 job = 9;
-      private int job_ ;
-      /**
-       * <code>optional int32 job = 9;</code>
-       *
-       * <pre>
-       *公会职位
-       * </pre>
-       */
-      public boolean hasJob() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 job = 9;</code>
-       *
-       * <pre>
-       *公会职位
-       * </pre>
-       */
-      public int getJob() {
-        return job_;
-      }
-      /**
-       * <code>optional int32 job = 9;</code>
-       *
-       * <pre>
-       *公会职位
-       * </pre>
-       */
-      public Builder setJob(int value) {
-        bitField0_ |= 0x00000100;
-        job_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 job = 9;</code>
-       *
-       * <pre>
-       *公会职位
-       * </pre>
-       */
-      public Builder clearJob() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        job_ = 0;
-        onChanged();
-        return this;
       }
 
       // optional int32 groupId = 10;
@@ -1804,7 +1355,7 @@ public final class MessageBoardProto {
        * <code>optional int32 groupId = 10;</code>
        */
       public boolean hasGroupId() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 groupId = 10;</code>
@@ -1816,7 +1367,7 @@ public final class MessageBoardProto {
        * <code>optional int32 groupId = 10;</code>
        */
       public Builder setGroupId(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000010;
         groupId_ = value;
         onChanged();
         return this;
@@ -1825,7 +1376,7 @@ public final class MessageBoardProto {
        * <code>optional int32 groupId = 10;</code>
        */
       public Builder clearGroupId() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000010);
         groupId_ = 0;
         onChanged();
         return this;
@@ -1837,7 +1388,7 @@ public final class MessageBoardProto {
        * <code>optional int32 bossId = 11;</code>
        */
       public boolean hasBossId() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 bossId = 11;</code>
@@ -1849,7 +1400,7 @@ public final class MessageBoardProto {
        * <code>optional int32 bossId = 11;</code>
        */
       public Builder setBossId(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000020;
         bossId_ = value;
         onChanged();
         return this;
@@ -1858,7 +1409,7 @@ public final class MessageBoardProto {
        * <code>optional int32 bossId = 11;</code>
        */
       public Builder clearBossId() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000020);
         bossId_ = 0;
         onChanged();
         return this;
@@ -1870,7 +1421,7 @@ public final class MessageBoardProto {
        * <code>optional string startDate = 12;</code>
        */
       public boolean hasStartDate() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional string startDate = 12;</code>
@@ -1910,7 +1461,7 @@ public final class MessageBoardProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000040;
         startDate_ = value;
         onChanged();
         return this;
@@ -1919,7 +1470,7 @@ public final class MessageBoardProto {
        * <code>optional string startDate = 12;</code>
        */
       public Builder clearStartDate() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000040);
         startDate_ = getDefaultInstance().getStartDate();
         onChanged();
         return this;
@@ -1932,7 +1483,7 @@ public final class MessageBoardProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00000040;
         startDate_ = value;
         onChanged();
         return this;
@@ -1944,7 +1495,7 @@ public final class MessageBoardProto {
        * <code>optional int32 replyCount = 13;</code>
        */
       public boolean hasReplyCount() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 replyCount = 13;</code>
@@ -1956,7 +1507,7 @@ public final class MessageBoardProto {
        * <code>optional int32 replyCount = 13;</code>
        */
       public Builder setReplyCount(int value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000080;
         replyCount_ = value;
         onChanged();
         return this;
@@ -1965,10 +1516,127 @@ public final class MessageBoardProto {
        * <code>optional int32 replyCount = 13;</code>
        */
       public Builder clearReplyCount() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000080);
         replyCount_ = 0;
         onChanged();
         return this;
+      }
+
+      // optional .com.trans.pixel.protoc.UserInfo user = 14;
+      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder setUser(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000100;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000100);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.MessageBoard)
@@ -11430,42 +11098,41 @@ public final class MessageBoardProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\027MessageBoardProto.proto\022\026com.trans.pix" +
-      "el.protoc\032\nBase.proto\"\372\001\n\014MessageBoard\022\n" +
-      "\n\002id\030\001 \002(\003\022\021\n\ttimestamp\030\002 \002(\003\022\016\n\006userId\030" +
-      "\003 \002(\003\022\020\n\010userName\030\004 \002(\t\022\017\n\007content\030\005 \002(\t" +
-      "\022(\n\003msg\030\006 \003(\0132\033.com.trans.pixel.protoc.M" +
-      "sg\022\014\n\004icon\030\007 \002(\005\022\013\n\003vip\030\010 \001(\005\022\013\n\003job\030\t \001" +
-      "(\005\022\017\n\007groupId\030\n \001(\005\022\016\n\006bossId\030\013 \001(\005\022\021\n\ts" +
-      "tartDate\030\014 \001(\t\022\022\n\nreplyCount\030\r \001(\005\"\"\n\003Ms" +
-      "g\022\n\n\002id\030\001 \002(\005\022\017\n\007content\030\002 \002(\t\"(\n\006Notice" +
-      "\022\014\n\004type\030\001 \002(\005\022\020\n\010noticeId\030\002 \003(\003\"X\n\025Resp",
-      "onseNoticeCommand\022.\n\006notice\030\001 \003(\0132\036.com." +
-      "trans.pixel.protoc.Notice\022\017\n\007message\030\002 \003" +
-      "(\t\"3\n\036RequestQueryNoticeBoardCommand\022\021\n\t" +
-      "messageId\030\001 \002(\t\"\031\n\027RequestHeartBeatComma" +
-      "nd\"l\n\027RequestGreenhandCommand\022\021\n\tgreenha" +
-      "nd\030\001 \001(\t\022\017\n\007advance\030\002 \001(\005\022\r\n\005skill\030\003 \001(\005" +
-      "\022\016\n\006failed\030\004 \001(\005\022\016\n\006result\030\005 \001(\010\"\232\002\n\021Req" +
-      "uestLogCommand\022\017\n\007logtype\030\001 \002(\005\022\021\n\tphone" +
-      "uuid\030\002 \001(\t\022\021\n\tlogintype\030\003 \001(\005\022\020\n\010platfor" +
-      "m\030\004 \001(\t\022\016\n\006vendor\030\005 \001(\t\022\r\n\005model\030\006 \001(\t\022\017",
-      "\n\007version\030\007 \001(\t\022\020\n\010currency\030\010 \001(\005\022\026\n\016cur" +
-      "rencyamount\030\t \001(\005\022\r\n\005stage\030\n \001(\005\022\016\n\006item" +
-      "id\030\013 \001(\005\022\016\n\006action\030\014 \001(\005\022\017\n\007channel\030\016 \001(" +
-      "\t\022\024\n\014rechargetype\030\017 \001(\005\022\014\n\004idfa\030\020 \001(\t\">\n" +
-      "\036RequestMessageBoardListCommand\022\014\n\004type\030" +
-      "\001 \002(\005\022\016\n\006itemId\030\002 \001(\005\"k\n\037ResponseMessage" +
-      "BoardListCommand\022\014\n\004type\030\001 \002(\005\022:\n\014messag" +
-      "eBoard\030\002 \003(\0132$.com.trans.pixel.protoc.Me" +
-      "ssageBoard\"\203\001\n RequestCreateMessageBoard" +
-      "Command\022\014\n\004type\030\001 \002(\005\022\017\n\007message\030\002 \001(\t\022\017",
-      "\n\007groupId\030\003 \001(\005\022\016\n\006bossId\030\004 \001(\005\022\017\n\007fight" +
-      "Id\030\005 \001(\005\022\016\n\006itemId\030\006 \001(\005\"G\n\032RequestReply" +
-      "MessageCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \002(\t" +
-      "\022\017\n\007message\030\003 \002(\t\"g\n\033ResponseMessageBoar" +
-      "dCommand\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002" +
-      " \002(\0132$.com.trans.pixel.protoc.MessageBoa" +
-      "rd"
+      "el.protoc\032\nBase.proto\"\340\001\n\014MessageBoard\022\n" +
+      "\n\002id\030\001 \002(\003\022\021\n\ttimestamp\030\002 \002(\003\022\017\n\007content" +
+      "\030\005 \002(\t\022(\n\003msg\030\006 \003(\0132\033.com.trans.pixel.pr" +
+      "otoc.Msg\022\017\n\007groupId\030\n \001(\005\022\016\n\006bossId\030\013 \001(" +
+      "\005\022\021\n\tstartDate\030\014 \001(\t\022\022\n\nreplyCount\030\r \001(\005" +
+      "\022.\n\004user\030\016 \001(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\"\"\n\003Msg\022\n\n\002id\030\001 \002(\005\022\017\n\007content\030\002" +
+      " \002(\t\"(\n\006Notice\022\014\n\004type\030\001 \002(\005\022\020\n\010noticeId" +
+      "\030\002 \003(\003\"X\n\025ResponseNoticeCommand\022.\n\006notic",
+      "e\030\001 \003(\0132\036.com.trans.pixel.protoc.Notice\022" +
+      "\017\n\007message\030\002 \003(\t\"3\n\036RequestQueryNoticeBo" +
+      "ardCommand\022\021\n\tmessageId\030\001 \002(\t\"\031\n\027Request" +
+      "HeartBeatCommand\"l\n\027RequestGreenhandComm" +
+      "and\022\021\n\tgreenhand\030\001 \001(\t\022\017\n\007advance\030\002 \001(\005\022" +
+      "\r\n\005skill\030\003 \001(\005\022\016\n\006failed\030\004 \001(\005\022\016\n\006result" +
+      "\030\005 \001(\010\"\232\002\n\021RequestLogCommand\022\017\n\007logtype\030" +
+      "\001 \002(\005\022\021\n\tphoneuuid\030\002 \001(\t\022\021\n\tlogintype\030\003 " +
+      "\001(\005\022\020\n\010platform\030\004 \001(\t\022\016\n\006vendor\030\005 \001(\t\022\r\n" +
+      "\005model\030\006 \001(\t\022\017\n\007version\030\007 \001(\t\022\020\n\010currenc",
+      "y\030\010 \001(\005\022\026\n\016currencyamount\030\t \001(\005\022\r\n\005stage" +
+      "\030\n \001(\005\022\016\n\006itemid\030\013 \001(\005\022\016\n\006action\030\014 \001(\005\022\017" +
+      "\n\007channel\030\016 \001(\t\022\024\n\014rechargetype\030\017 \001(\005\022\014\n" +
+      "\004idfa\030\020 \001(\t\">\n\036RequestMessageBoardListCo" +
+      "mmand\022\014\n\004type\030\001 \002(\005\022\016\n\006itemId\030\002 \001(\005\"k\n\037R" +
+      "esponseMessageBoardListCommand\022\014\n\004type\030\001" +
+      " \002(\005\022:\n\014messageBoard\030\002 \003(\0132$.com.trans.p" +
+      "ixel.protoc.MessageBoard\"\203\001\n RequestCrea" +
+      "teMessageBoardCommand\022\014\n\004type\030\001 \002(\005\022\017\n\007m" +
+      "essage\030\002 \001(\t\022\017\n\007groupId\030\003 \001(\005\022\016\n\006bossId\030",
+      "\004 \001(\005\022\017\n\007fightId\030\005 \001(\005\022\016\n\006itemId\030\006 \001(\005\"G" +
+      "\n\032RequestReplyMessageCommand\022\014\n\004type\030\001 \002" +
+      "(\005\022\n\n\002id\030\002 \002(\t\022\017\n\007message\030\003 \002(\t\"g\n\033Respo" +
+      "nseMessageBoardCommand\022\014\n\004type\030\001 \002(\005\022:\n\014" +
+      "messageBoard\030\002 \002(\0132$.com.trans.pixel.pro" +
+      "toc.MessageBoard"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11477,7 +11144,7 @@ public final class MessageBoardProto {
           internal_static_com_trans_pixel_protoc_MessageBoard_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MessageBoard_descriptor,
-              new java.lang.String[] { "Id", "Timestamp", "UserId", "UserName", "Content", "Msg", "Icon", "Vip", "Job", "GroupId", "BossId", "StartDate", "ReplyCount", });
+              new java.lang.String[] { "Id", "Timestamp", "Content", "Msg", "GroupId", "BossId", "StartDate", "ReplyCount", "User", });
           internal_static_com_trans_pixel_protoc_Msg_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_Msg_fieldAccessorTable = new

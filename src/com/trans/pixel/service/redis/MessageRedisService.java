@@ -39,9 +39,9 @@ public class MessageRedisService extends RedisService {
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
 					if (messageBoardBean != null) {
-						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-						if(userInfo != null)
-							messageBoardBean.setVip(userInfo.getVip());
+//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+//						if(userInfo != null)
+//							messageBoardBean.setVip(userInfo.getVip());
 						messageBoardList.add(messageBoardBean);
 					}
 				}
@@ -278,9 +278,9 @@ public class MessageRedisService extends RedisService {
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
 					if (messageBoardBean != null) {
-						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-						if(userInfo != null)
-							messageBoardBean.setVip(userInfo.getVip());
+//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+//						if(userInfo != null)
+//							messageBoardBean.setVip(userInfo.getVip());
 						messageBoardList.add(messageBoardBean);
 					}
 				}
@@ -303,9 +303,9 @@ public class MessageRedisService extends RedisService {
 				for (TypedTuple<String> messageBoard : messageBoarSet) {
 					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
 					if (messageBoardBean != null) {
-						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-						if(userInfo != null)
-							messageBoardBean.setVip(userInfo.getVip());
+//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
+//						if(userInfo != null)
+//							messageBoardBean.setVip(userInfo.getVip());
 						messageBoardList.add(messageBoardBean);
 					}
 				}

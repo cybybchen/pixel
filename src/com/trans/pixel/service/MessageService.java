@@ -107,7 +107,7 @@ public class MessageService {
 			messageRedisService.addMessageBoard(serverId, messageBoard);
 			messageRedisService.addMessageBoardValue(serverId, messageBoard);
 			
-			sendMessageNotice(messageBoard.getUserId(), messageBoard.getId());
+			sendMessageNotice(messageBoard.getUser().getId(), messageBoard.getId());
 			
 			return messageBoard;
 		}
@@ -169,13 +169,14 @@ public class MessageService {
 	private MessageBoardBean initMessageBoard(UserBean user, String message) {
 		MessageBoardBean messageBoard = new MessageBoardBean();
 		messageBoard.setMessage(message);
-		messageBoard.setUserId(user.getId());
-		messageBoard.setUserName(user.getUserName());
-		messageBoard.setIcon(user.getIcon());
+//		messageBoard.setUserId(user.getId());
+//		messageBoard.setUserName(user.getUserName());
+//		messageBoard.setIcon(user.getIcon());
 		messageBoard.setTimeStamp(System.currentTimeMillis());
 		messageBoard.setId(System.currentTimeMillis());
-		messageBoard.setJob(user.getUnionJob());
-		messageBoard.setVip(user.getVip());
+//		messageBoard.setJob(user.getUnionJob());
+//		messageBoard.setVip(user.getVip());
+		messageBoard.setUser(user.buildShort());
 		
 		return messageBoard;
 	}
@@ -184,7 +185,7 @@ public class MessageService {
 	private void createHeroMessageBoard(UserBean user, int itemId, String message) {
 		List<MessageBoardBean> messageBoardList = getHeroMessageBoardList(user, itemId);
 		for (MessageBoardBean messageBoard : messageBoardList) {
-			if (messageBoard.getUserId() == user.getId()) {
+			if (messageBoard.getUser().getId() == user.getId()) {
 				messageRedisService.deleteHeroMessageBoard(user.getServerId(), itemId, "" + messageBoard.getId());
 				messageRedisService.delHeroMessage_normal(user.getServerId(), itemId, "" + messageBoard.getId());
 				messageRedisService.delHeroMessage_top(user.getServerId(), itemId, "" + messageBoard.getId());

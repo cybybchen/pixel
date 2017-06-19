@@ -1984,17 +1984,13 @@ message ResponseSignCommand {
 message MessageBoard {
 	required int64 id = 1;
 	required int64 timestamp = 2;
-	required int64 userId = 3;
-	required string userName = 4;
 	required string content = 5;
 	repeated Msg msg = 6;
-	required int32 icon = 7;
-	optional int32 vip = 8;
-	optional int32 job = 9;//公会职位
 	optional int32 groupId = 10;
 	optional int32 bossId = 11;
 	optional string startDate = 12;
 	optional int32 replyCount = 13;
+	optional UserInfo user = 14;
 }
 
 message Msg {
@@ -3305,6 +3301,7 @@ message RequestUnionBossFightCommand {
 }
 ////////// RewardTaskProto
 message RewardTask {
+	optional int32 id = 10;
 	optional int32 type = 1;
 	optional int32 eventid = 2;
 	optional int32 merlevel = 3;
