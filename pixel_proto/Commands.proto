@@ -284,22 +284,22 @@ message Commodity {
 	optional int32 vip = 15;
 }
 message CommodityList {
-	repeated Commodity id = 1;
+	repeated Commodity data = 1;
 }
 message ShopList {
 	repeated Commodity items = 1;//商品列表
 	optional int64 endTime = 2;//商品列表过期时间
 	optional int32 refreshTime = 3;//刷新
 }
-message ShopRefresh {
-	optional int32 count = 1;
-	optional int32 count1 = 2;
-	optional int32 currency = 3;
-	optional int32 cost = 4;
-}
-message ShopRefreshList {
-	repeated ShopRefresh id = 1;
-}
+//message ShopRefresh {
+//	optional int32 count = 1;
+//	optional int32 count1 = 2;
+//	optional int32 currency = 3;
+//	optional int32 cost = 4;
+//}
+//message ShopRefreshList {
+//	repeated ShopRefresh id = 1;
+//}
 message Will {
 	required int32 will = 1;
 	optional int32 position = 3;
@@ -310,7 +310,7 @@ message ShopWill {
 	repeated Will will = 3;
 }
 message ShopWillList {
-	repeated ShopWill id = 1;
+	repeated ShopWill data = 1;
 }
 
 message LadderDaily {
@@ -520,7 +520,7 @@ message Libao {
 	optional string starttime = 4;
 	//optional string endtime = 5;
 	optional string validtime = 6;
-	//optional int32 refresh = 7;
+	optional int32 refresh = 7;
 }
 message LibaoList {
 	repeated Libao data = 1;
