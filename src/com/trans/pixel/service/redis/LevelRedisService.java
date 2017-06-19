@@ -590,7 +590,7 @@ public class LevelRedisService extends RedisService {
 					if(builder != null){
 						EventConfig.Builder config = eventmap.get(event.getEventid());
 						if(config == null)
-							throw new RuntimeErrorException(null, "Error eventconfig eventid "+event.getEventid());
+							throw new RuntimeErrorException(null, "Error cannot find eventconfig eventid "+event.getEventid());
 						if(config.getDaguan() == 0)
 //							throw new RuntimeErrorException(null, "Error daguan eventid "+config.getId());
 							config.setDaguan(event.getDaguan());
