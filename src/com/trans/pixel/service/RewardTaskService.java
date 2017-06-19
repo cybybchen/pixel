@@ -15,11 +15,12 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
@@ -57,6 +58,8 @@ public class RewardTaskService {
 	private UserEquipService userEquipService;
 	@Resource
 	private LevelRedisService levelRedisService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 //	public ResultConst zhaohuanTask(UserBean user, int id) {
 ////		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -120,6 +123,17 @@ public class RewardTaskService {
 			}
 			rewards.addAllLoot(rewardTask.getLootlistList());
 			rewards.addAllLoot(event.getLootlistList());
+			if(rewardTask.getType() == 2){//深渊
+				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = rewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							rewards.getLootBuilder(i).setItemid(24010);
+						}
+					}
+				}
+			}
 		}
 
 		Map<String, String> params = new HashMap<String, String>();
