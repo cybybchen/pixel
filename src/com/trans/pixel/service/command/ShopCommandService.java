@@ -238,15 +238,15 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShop(Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList shoplist = service.getBlackShop(user);
+//		ShopList shoplist = service.getBlackShop(user);
 		int refreshtime = user.getBlackShopRefreshTime();
-		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = service.refreshBlackShop(user);
-		}
+//		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+//			shoplist = service.refreshBlackShop(user);
+//		}
 
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
-		shop.addAllItems(shoplist.getItemsList());
-		shop.setEndTime(shoplist.getEndTime());
+//		shop.addAllItems(shoplist.getItemsList());
+//		shop.setEndTime(shoplist.getEndTime());
 		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
 		responseBuilder.setBlackShopCommand(shop);
 	}
