@@ -22,7 +22,6 @@ import com.trans.pixel.constants.HeroConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.NoticeConst;
-import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -1127,7 +1126,7 @@ public class ActivityService {
 	 */
 	public void completeRewardTask(long userId, int type) {
 		achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_VALUE);
-		if (type == 4 || type == 5)//深渊
+		if (type == 2)//深渊
 			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_SHENYUAN_VALUE);
 		
 		taskService.sendTask3Score(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_COMPLETE_VALUE);

@@ -313,7 +313,7 @@ public class PvpMapService {
 			}
 			resource = Math.min(resource*7*24, (int)(resource*(time - user.getPvpMineGainTime())/3600));
 			if(user.getVip() >= 10)
-				resource = (int)(resource * 1.1);
+				resource = (int)(resource * 1.2);
 			rewardService.doReward(user, RewardConst.PVPCOIN, resource);
 			user.setPvpMineGainTime(time);
 			userService.updateUser(user);

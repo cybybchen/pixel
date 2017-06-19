@@ -58,6 +58,11 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		if (rewards.getLootCount() > 0) {
+			if(propId >= 34091 && propId <= 34093){
+				for(RewardInfo.Builder reward : rewards.getLootBuilderList()){
+					reward.setCount(reward.getCount()*2);
+				}
+			}
 			handleRewards(responseBuilder, user, rewards.build());
 		}
 		

@@ -9859,12 +9859,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasAttackPVPMonsterCommand()) {
-        if (!getAttackPVPMonsterCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasPvpMineInfoCommand()) {
         if (!getPvpMineInfoCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -15461,12 +15455,6 @@ public final class Request {
         }
         if (hasUnlockPvpMapCommand()) {
           if (!getUnlockPvpMapCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasAttackPVPMonsterCommand()) {
-          if (!getAttackPVPMonsterCommand().isInitialized()) {
             
             return false;
           }

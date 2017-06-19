@@ -84,26 +84,26 @@ public class LevelCommandService extends BaseCommandService {
 	// private UserLevelLootService userLevelLootRecordService;
 	@Resource
 	private PushCommandService pusher;
-	 @Resource
-	 private LogService logService;
-	 @Resource
-	 private UserService userService;
-	 @Resource
-	 private PvpMapService pvpMapService;
-	 @Resource
-	 private ActivityService activityService;
-	 @Resource
-	 private UserPropService userPropService;
-	 @Resource
-	 private UserTeamService userTeamService;
-	 @Resource
-	 private MailService mailService;
-	 @Resource
-	 private NoticeMessageService noticeMessageService;
-	 @Resource
-	 private RankRedisService rankRedisService;
-	 @Resource
-	 private PropService propService;
+	@Resource
+	private LogService logService;
+	@Resource
+	private UserService userService;
+	@Resource
+	private PvpMapService pvpMapService;
+	@Resource
+	private ActivityService activityService;
+	@Resource
+	private UserPropService userPropService;
+	@Resource
+	private UserTeamService userTeamService;
+	@Resource
+	private MailService mailService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
+	@Resource
+	private RankRedisService rankRedisService;
+	@Resource
+	private PropService propService;
 	
 	public void levelStart(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);

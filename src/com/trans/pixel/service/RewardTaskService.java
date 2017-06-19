@@ -105,7 +105,7 @@ public class RewardTaskService {
 			if(event.hasCost())
 				costService.cost(user, event.getCost());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
-			if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5){
+			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder);
 			}else{
 				builder.setLeftcount(builder.getLeftcount()-1);

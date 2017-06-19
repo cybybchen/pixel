@@ -16987,13 +16987,13 @@ public final class PVPProto {
   public interface RequestAttackPVPMonsterCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 positionid = 1;
+    // optional int32 positionid = 1;
     /**
-     * <code>required int32 positionid = 1;</code>
+     * <code>optional int32 positionid = 1;</code>
      */
     boolean hasPositionid();
     /**
-     * <code>required int32 positionid = 1;</code>
+     * <code>optional int32 positionid = 1;</code>
      */
     int getPositionid();
 
@@ -17127,17 +17127,17 @@ public final class PVPProto {
     }
 
     private int bitField0_;
-    // required int32 positionid = 1;
+    // optional int32 positionid = 1;
     public static final int POSITIONID_FIELD_NUMBER = 1;
     private int positionid_;
     /**
-     * <code>required int32 positionid = 1;</code>
+     * <code>optional int32 positionid = 1;</code>
      */
     public boolean hasPositionid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 positionid = 1;</code>
+     * <code>optional int32 positionid = 1;</code>
      */
     public int getPositionid() {
       return positionid_;
@@ -17185,10 +17185,6 @@ public final class PVPProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasPositionid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -17422,10 +17418,6 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasPositionid()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -17448,22 +17440,22 @@ public final class PVPProto {
       }
       private int bitField0_;
 
-      // required int32 positionid = 1;
+      // optional int32 positionid = 1;
       private int positionid_ ;
       /**
-       * <code>required int32 positionid = 1;</code>
+       * <code>optional int32 positionid = 1;</code>
        */
       public boolean hasPositionid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 positionid = 1;</code>
+       * <code>optional int32 positionid = 1;</code>
        */
       public int getPositionid() {
         return positionid_;
       }
       /**
-       * <code>required int32 positionid = 1;</code>
+       * <code>optional int32 positionid = 1;</code>
        */
       public Builder setPositionid(int value) {
         bitField0_ |= 0x00000001;
@@ -17472,7 +17464,7 @@ public final class PVPProto {
         return this;
       }
       /**
-       * <code>required int32 positionid = 1;</code>
+       * <code>optional int32 positionid = 1;</code>
        */
       public Builder clearPositionid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -23527,7 +23519,7 @@ public final class PVPProto {
       "ommand\"S\n\035ResponsePVPInbreakListCommand\022" +
       "2\n\tkuangdian\030\001 \003(\0132\037.com.trans.pixel.pro" +
       "toc.PVPMine\"O\n\036RequestAttackPVPMonsterCo",
-      "mmand\022\022\n\npositionid\030\001 \002(\005\022\013\n\003ret\030\002 \001(\010\022\014" +
+      "mmand\022\022\n\npositionid\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014" +
       "\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineInfoComman" +
       "d\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoComm" +
       "and\022*\n\004team\030\005 \001(\0132\034.com.trans.pixel.prot" +

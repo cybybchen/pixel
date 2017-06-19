@@ -265,25 +265,36 @@ public class LevelRedisService extends RedisService {
 							Event.Builder builder = Event.newBuilder(event.build());
 							builder.setOrder(currentIndex()+i);
 							builder.setDaguan(userLevel.getLootDaguan());
-							EventRandom random = nextEventLevel(userLevel);
-							switch(user.getUserType()) {
-							case 4:
-								builder.setLevel(random.getLevel4());
-								builder.setCount(random.getCount4());
-								break;
-							case 3:
-								builder.setLevel(random.getLevel3());
-								builder.setCount(random.getCount3());
-								break;
-							case 2:
-								builder.setLevel(random.getLevel2());
-								builder.setCount(random.getCount2());
-								break;
-							case 1:
-							default:
-								builder.setLevel(random.getLevel1());
-								builder.setCount(random.getCount1());
-								break;
+							if(user.getVip() >= 3 && nextInt(100) < 1){
+								EventRandom random = getEventLevel(-5);
+								if(random == null) {
+									builder.setLevel(1);
+									builder.setCount(1);
+								}else{
+									builder.setLevel(random.getLevel1());
+									builder.setCount(random.getCount1());
+								}
+							}else{
+								EventRandom random = nextEventLevel(userLevel);
+								switch(user.getUserType()) {
+								case 4:
+									builder.setLevel(random.getLevel4());
+									builder.setCount(random.getCount4());
+									break;
+								case 3:
+									builder.setLevel(random.getLevel3());
+									builder.setCount(random.getCount3());
+									break;
+								case 2:
+									builder.setLevel(random.getLevel2());
+									builder.setCount(random.getCount2());
+									break;
+								case 1:
+								default:
+									builder.setLevel(random.getLevel1());
+									builder.setCount(random.getCount1());
+									break;
+								}
 							}
 							builder.clearWeight();
 							saveEvent(user, builder.build());
@@ -887,6 +898,14 @@ public class LevelRedisService extends RedisService {
 		return builder.build();
 	}
 	
+	public EventRandom getEventLevel(int id) {
+		String value = hget(RedisKey.EVENTLEVEL_CONFIG, id+"");
+		EventRandom.Builder builder = EventRandom.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		return null;
+	}
+	
 	private String buildEventLevel() {
 		String xml = ReadConfig("ld_eventrandom.xml");
 		EventRandomsList.Builder builder = EventRandomsList.newBuilder();
@@ -894,6 +913,19 @@ public class LevelRedisService extends RedisService {
 		xml = ReadConfig("ld_eventlevel.xml");
 		EventLevelList.Builder list = EventLevelList.newBuilder();
 		parseXml(xml, list);
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(EventLevel level : list.getLevelList()){
+			EventRandom.Builder eventlevel = EventRandom.newBuilder();
+			eventlevel.setLevel1(level.getLevel());
+			eventlevel.setCount1(level.getCount());
+			eventlevel.setLevel2(level.getLevel());
+			eventlevel.setCount2(level.getCount());
+			eventlevel.setLevel3(level.getLevel());
+			eventlevel.setCount3(level.getCount());
+			eventlevel.setLevel4(level.getLevel());
+			eventlevel.setCount4(level.getCount());
+			keyvalue.put("-"+level.getLevel(), formatJson(eventlevel.build()));
+		}
 		for(EventRandoms.Builder randoms : builder.getIdBuilderList()){
 			int i = 0;
 			for(EventRandom.Builder eventlevel : randoms.getOrderBuilderList()){
@@ -908,11 +940,12 @@ public class LevelRedisService extends RedisService {
 					if(level.getLevel() == eventlevel.getLevel4())
 						eventlevel.setCount4(level.getCount());
 				}
-				hput(RedisKey.EVENTLEVEL_CONFIG, randoms.getId()*100+i+"", formatJson(eventlevel.build()));
+				keyvalue.put(randoms.getId()*100+i+"", formatJson(eventlevel.build()));
 			}
 			randoms.clearOrder();
 			randoms.setId(randoms.getId()*100+1);
 		}
+		hputAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
 		String value = formatJson(builder.build());
 		set(RedisKey.EVENTLEVELSEED_CONFIG, value);
 		return value;

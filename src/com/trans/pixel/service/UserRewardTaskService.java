@@ -79,16 +79,20 @@ public class UserRewardTaskService {
 	
 	public Map<Integer, UserRewardTask> getUserRewardTaskList(UserBean user) {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
-		long today = RedisService.today(0);
+		long now = RedisService.now();
 		boolean needRefresh = false;
 		Iterator<Entry<Integer, UserRewardTask>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			int index = it.next().getKey();
 			UserRewardTask ut = map.get(index);
-			if(ut.hasEndtime() && ut.getEndtime() <= today) {//过0点刷新
+			if(ut.hasEndtime() && ut.getEndtime() <= now) {//过0点刷新
 				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 				it.remove();
 //				needRefresh = true;
+			}else if(ut.getTask().getId() == 7 && user.getVip() < 14){
+				it.remove();
+			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
+				it.remove();
 			}
 		}
 		if(map.get(1) == null)
@@ -107,8 +111,8 @@ public class UserRewardTaskService {
 					builder.setTask(task);
 					builder.getTaskBuilder().clearRandcount();
 					builder.getTaskBuilder().clearEvent();
-					if(builder.getTask().getType() != 4 && builder.getTask().getType() != 5)
-						builder.setEndtime(today+24*3600);
+					if(builder.getTask().getType() != 2)
+						builder.setEndtime(RedisService.today(24));
 					else
 						builder.clearEndtime();
 					builder.setLeftcount(task.getCount());
@@ -116,7 +120,8 @@ public class UserRewardTaskService {
 					builder.setIndex(index);
 					index++;
 					userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
-					map.put(builder.getIndex(), builder.build());
+					if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 && user.getVip() >= 7))
+						map.put(builder.getIndex(), builder.build());
 				}
 			}
 			

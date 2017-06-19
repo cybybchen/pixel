@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LadderConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -245,6 +246,14 @@ public class LadderModeCommandService extends BaseCommandService {
 					List<RewardInfo> rewardList = ladderService.ladderTaskReward(user);
 					if (rewardList != null && !rewardList.isEmpty()) {
 						MultiReward.Builder rewards = MultiReward.newBuilder();
+						if(user.getVip() >= 12)
+						for(int i = 0; i < rewardList.size(); i++) {
+							if(rewardList.get(i).getItemid() == RewardConst.LADDERCOIN) {
+								RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
+								reward.setCount(reward.getCount()*2);
+								rewardList.set(i, reward.build());
+							}
+						}
 						rewards.addAllLoot(rewardList);
 						handleRewards(responseBuilder, user, rewards);
 					}
