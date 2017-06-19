@@ -250,7 +250,7 @@ public class LadderModeCommandService extends BaseCommandService {
 						for(int i = 0; i < rewardList.size(); i++) {
 							if(rewardList.get(i).getItemid() == RewardConst.LADDERCOIN) {
 								RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
-								reward.setCount(reward.getCount()*2);
+								reward.setCount((int)(reward.getCount()*1.1));
 								rewardList.set(i, reward.build());
 							}
 						}
