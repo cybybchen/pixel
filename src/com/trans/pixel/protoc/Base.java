@@ -395,6 +395,24 @@ public final class Base {
      */
     int getPVPMineLeftTime();
 
+    // optional int32 PVPInbreakTime = 44;
+    /**
+     * <code>optional int32 PVPInbreakTime = 44;</code>
+     *
+     * <pre>
+     *pvp矿点入侵次数
+     * </pre>
+     */
+    boolean hasPVPInbreakTime();
+    /**
+     * <code>optional int32 PVPInbreakTime = 44;</code>
+     *
+     * <pre>
+     *pvp矿点入侵次数
+     * </pre>
+     */
+    int getPVPInbreakTime();
+
     // optional int32 signCount = 21;
     /**
      * <code>optional int32 signCount = 21;</code>
@@ -1225,27 +1243,27 @@ public final class Base {
               break;
             }
             case 168: {
-              bitField0_ |= 0x04000000;
+              bitField0_ |= 0x08000000;
               signCount_ = input.readInt32();
               break;
             }
             case 176: {
-              bitField0_ |= 0x08000000;
+              bitField0_ |= 0x10000000;
               loginDays_ = input.readInt32();
               break;
             }
             case 186: {
-              bitField0_ |= 0x10000000;
+              bitField0_ |= 0x20000000;
               lastSignTime_ = input.readBytes();
               break;
             }
             case 192: {
-              bitField0_ |= 0x20000000;
+              bitField0_ |= 0x40000000;
               zhanli_ = input.readInt32();
               break;
             }
             case 202: {
-              bitField0_ |= 0x40000000;
+              bitField0_ |= 0x80000000;
               lastLoginTime_ = input.readBytes();
               break;
             }
@@ -1255,7 +1273,7 @@ public final class Base {
               break;
             }
             case 248: {
-              bitField0_ |= 0x80000000;
+              bitField1_ |= 0x00000001;
               heroLimit_ = input.readInt32();
               break;
             }
@@ -1265,83 +1283,88 @@ public final class Base {
               break;
             }
             case 266: {
-              bitField1_ |= 0x00000001;
+              bitField1_ |= 0x00000002;
               composeSkill_ = input.readBytes();
               break;
             }
             case 272: {
-              bitField1_ |= 0x00000002;
+              bitField1_ |= 0x00000004;
               rechargeRecord_ = input.readInt32();
               break;
             }
             case 280: {
-              bitField1_ |= 0x00000004;
+              bitField1_ |= 0x00000008;
               vipLibao1_ = input.readInt32();
               break;
             }
             case 288: {
-              bitField1_ |= 0x00000008;
+              bitField1_ |= 0x00000010;
               vipLibao2_ = input.readInt32();
               break;
             }
             case 298: {
-              bitField1_ |= 0x00000010;
+              bitField1_ |= 0x00000020;
               registerTime_ = input.readBytes();
               break;
             }
             case 304: {
-              bitField1_ |= 0x00000020;
+              bitField1_ |= 0x00000040;
               totalSignCount_ = input.readInt32();
               break;
             }
             case 312: {
-              bitField1_ |= 0x00000040;
+              bitField1_ |= 0x00000080;
               firstGetHeroId_ = input.readInt32();
               break;
             }
             case 322: {
-              bitField1_ |= 0x00000080;
+              bitField1_ |= 0x00000100;
               greenhand_ = input.readBytes();
               break;
             }
             case 328: {
-              bitField1_ |= 0x00000100;
+              bitField1_ |= 0x00000200;
               advance_ = input.readInt32();
               break;
             }
             case 336: {
-              bitField1_ |= 0x00000200;
+              bitField1_ |= 0x00000400;
               shouchongIsComplete_ = input.readInt32();
               break;
             }
             case 344: {
-              bitField1_ |= 0x00000400;
+              bitField1_ |= 0x00000800;
               shouchongIsGetReward_ = input.readInt32();
               break;
             }
+            case 352: {
+              bitField0_ |= 0x04000000;
+              pVPInbreakTime_ = input.readInt32();
+              break;
+            }
             case 450: {
-              if (!((mutable_bitField1_ & 0x00000800) == 0x00000800)) {
+              if (!((mutable_bitField1_ & 0x00001000) == 0x00001000)) {
                 growJewelCount_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>();
-                mutable_bitField1_ |= 0x00000800;
+                mutable_bitField1_ |= 0x00001000;
               }
               growJewelCount_.add(input.readMessage(com.trans.pixel.protoc.Base.JewelPool.PARSER, extensionRegistry));
               break;
             }
             case 458: {
-              if (!((mutable_bitField1_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField1_ & 0x00002000) == 0x00002000)) {
                 growExpCount_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>();
-                mutable_bitField1_ |= 0x00001000;
+                mutable_bitField1_ |= 0x00002000;
               }
               growExpCount_.add(input.readMessage(com.trans.pixel.protoc.Base.JewelPool.PARSER, extensionRegistry));
               break;
             }
             case 464: {
-              bitField1_ |= 0x00000800;
+              bitField1_ |= 0x00001000;
               skill_ = input.readInt32();
               break;
             }
             case 472: {
-              bitField1_ |= 0x00001000;
+              bitField1_ |= 0x00002000;
               failed_ = input.readInt32();
               break;
             }
@@ -1356,7 +1379,7 @@ public final class Base {
               break;
             }
             case 496: {
-              bitField1_ |= 0x00002000;
+              bitField1_ |= 0x00004000;
               purchaseContractLeft_ = input.readInt32();
               break;
             }
@@ -1371,130 +1394,130 @@ public final class Base {
               break;
             }
             case 520: {
-              bitField1_ |= 0x00004000;
+              bitField1_ |= 0x00008000;
               zhanliMax_ = input.readInt32();
               break;
             }
             case 528: {
-              bitField1_ |= 0x00008000;
+              bitField1_ |= 0x00010000;
               sevenLoginDays_ = input.readInt32();
               break;
             }
             case 536: {
-              bitField1_ |= 0x00010000;
+              bitField1_ |= 0x00020000;
               sevenSignStatus_ = input.readInt32();
               break;
             }
             case 546: {
-              if (!((mutable_bitField1_ & 0x00080000) == 0x00080000)) {
+              if (!((mutable_bitField1_ & 0x00100000) == 0x00100000)) {
                 unionBossRecord_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UnionBossRecord>();
-                mutable_bitField1_ |= 0x00080000;
+                mutable_bitField1_ |= 0x00100000;
               }
               unionBossRecord_.add(input.readMessage(com.trans.pixel.protoc.Base.UnionBossRecord.PARSER, extensionRegistry));
               break;
             }
             case 552: {
-              bitField1_ |= 0x00020000;
+              bitField1_ |= 0x00040000;
               unionIcon_ = input.readInt32();
               break;
             }
             case 560: {
-              bitField1_ |= 0x00040000;
+              bitField1_ |= 0x00080000;
               lotteryCoinCount_ = input.readInt32();
               break;
             }
             case 568: {
-              bitField1_ |= 0x00080000;
+              bitField1_ |= 0x00100000;
               task1Order_ = input.readInt32();
               break;
             }
             case 576: {
-              bitField1_ |= 0x00100000;
+              bitField1_ |= 0x00200000;
               task2Record_ = input.readInt32();
               break;
             }
             case 584: {
-              bitField1_ |= 0x00200000;
+              bitField1_ |= 0x00400000;
               questStatus_ = input.readInt32();
               break;
             }
             case 592: {
-              bitField1_ |= 0x00400000;
+              bitField1_ |= 0x00800000;
               zhaohuanshi_ = input.readInt32();
               break;
             }
             case 600: {
-              bitField1_ |= 0x00800000;
+              bitField1_ |= 0x01000000;
               zhujueExp_ = input.readUInt32();
               break;
             }
             case 608: {
-              bitField1_ |= 0x01000000;
+              bitField1_ |= 0x02000000;
               vipExp_ = input.readUInt32();
               break;
             }
             case 616: {
-              bitField1_ |= 0x02000000;
+              bitField1_ |= 0x04000000;
               merlevel_ = input.readInt32();
               break;
             }
             case 624: {
-              bitField1_ |= 0x04000000;
+              bitField1_ |= 0x08000000;
               useTalentId_ = input.readUInt32();
               break;
             }
             case 632: {
-              bitField1_ |= 0x08000000;
+              bitField1_ |= 0x10000000;
               extraTimeStamp_ = input.readInt64();
               break;
             }
             case 640: {
-              bitField1_ |= 0x10000000;
+              bitField1_ |= 0x20000000;
               extraCount1_ = input.readUInt32();
               break;
             }
             case 648: {
-              bitField1_ |= 0x20000000;
+              bitField1_ |= 0x40000000;
               extraCount2_ = input.readUInt32();
               break;
             }
             case 656: {
-              bitField1_ |= 0x40000000;
+              bitField1_ |= 0x80000000;
               extraCount3_ = input.readUInt32();
               break;
             }
             case 664: {
-              bitField1_ |= 0x80000000;
+              bitField2_ |= 0x00000001;
               extraHasLootTime_ = input.readInt64();
               break;
             }
             case 672: {
-              bitField2_ |= 0x00000001;
+              bitField2_ |= 0x00000002;
               extraType_ = input.readUInt32();
               break;
             }
             case 680: {
-              bitField2_ |= 0x00000002;
+              bitField2_ |= 0x00000004;
               extraLastTimeStamp_ = input.readInt64();
               break;
             }
             case 688: {
-              bitField2_ |= 0x00000004;
+              bitField2_ |= 0x00000008;
               userType_ = input.readUInt32();
               break;
             }
             case 696: {
-              bitField2_ |= 0x00000008;
+              bitField2_ |= 0x00000010;
               goldSavingBox_ = input.readUInt32();
               break;
             }
             case 704: {
-              bitField2_ |= 0x00000010;
+              bitField2_ |= 0x00000020;
               expSavingBox_ = input.readUInt32();
               break;
             }
             case 712: {
-              bitField2_ |= 0x00000020;
+              bitField2_ |= 0x00000040;
               title_ = input.readUInt32();
               break;
             }
@@ -1506,13 +1529,13 @@ public final class Base {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField1_ & 0x00000800) == 0x00000800)) {
+        if (((mutable_bitField1_ & 0x00001000) == 0x00001000)) {
           growJewelCount_ = java.util.Collections.unmodifiableList(growJewelCount_);
         }
-        if (((mutable_bitField1_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField1_ & 0x00002000) == 0x00002000)) {
           growExpCount_ = java.util.Collections.unmodifiableList(growExpCount_);
         }
-        if (((mutable_bitField1_ & 0x00080000) == 0x00080000)) {
+        if (((mutable_bitField1_ & 0x00100000) == 0x00100000)) {
           unionBossRecord_ = java.util.Collections.unmodifiableList(unionBossRecord_);
         }
         this.unknownFields = unknownFields.build();
@@ -2177,6 +2200,30 @@ public final class Base {
       return pVPMineLeftTime_;
     }
 
+    // optional int32 PVPInbreakTime = 44;
+    public static final int PVPINBREAKTIME_FIELD_NUMBER = 44;
+    private int pVPInbreakTime_;
+    /**
+     * <code>optional int32 PVPInbreakTime = 44;</code>
+     *
+     * <pre>
+     *pvp矿点入侵次数
+     * </pre>
+     */
+    public boolean hasPVPInbreakTime() {
+      return ((bitField0_ & 0x04000000) == 0x04000000);
+    }
+    /**
+     * <code>optional int32 PVPInbreakTime = 44;</code>
+     *
+     * <pre>
+     *pvp矿点入侵次数
+     * </pre>
+     */
+    public int getPVPInbreakTime() {
+      return pVPInbreakTime_;
+    }
+
     // optional int32 signCount = 21;
     public static final int SIGNCOUNT_FIELD_NUMBER = 21;
     private int signCount_;
@@ -2188,7 +2235,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasSignCount() {
-      return ((bitField0_ & 0x04000000) == 0x04000000);
+      return ((bitField0_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional int32 signCount = 21;</code>
@@ -2212,7 +2259,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasLoginDays() {
-      return ((bitField0_ & 0x08000000) == 0x08000000);
+      return ((bitField0_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional int32 loginDays = 22;</code>
@@ -2236,7 +2283,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasLastSignTime() {
-      return ((bitField0_ & 0x10000000) == 0x10000000);
+      return ((bitField0_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional string lastSignTime = 23;</code>
@@ -2287,7 +2334,7 @@ public final class Base {
      * <code>optional int32 zhanli = 24;</code>
      */
     public boolean hasZhanli() {
-      return ((bitField0_ & 0x20000000) == 0x20000000);
+      return ((bitField0_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional int32 zhanli = 24;</code>
@@ -2307,7 +2354,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasLastLoginTime() {
-      return ((bitField0_ & 0x40000000) == 0x40000000);
+      return ((bitField0_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional string lastLoginTime = 25;</code>
@@ -2362,7 +2409,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasHeroLimit() {
-      return ((bitField0_ & 0x80000000) == 0x80000000);
+      return ((bitField1_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional int32 heroLimit = 31;</code>
@@ -2386,7 +2433,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasComposeSkill() {
-      return ((bitField1_ & 0x00000001) == 0x00000001);
+      return ((bitField1_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional string composeSkill = 33;</code>
@@ -2437,7 +2484,7 @@ public final class Base {
      * <code>optional int32 rechargeRecord = 34;</code>
      */
     public boolean hasRechargeRecord() {
-      return ((bitField1_ & 0x00000002) == 0x00000002);
+      return ((bitField1_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 rechargeRecord = 34;</code>
@@ -2453,7 +2500,7 @@ public final class Base {
      * <code>optional int32 vipLibao1 = 35;</code>
      */
     public boolean hasVipLibao1() {
-      return ((bitField1_ & 0x00000004) == 0x00000004);
+      return ((bitField1_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 vipLibao1 = 35;</code>
@@ -2469,7 +2516,7 @@ public final class Base {
      * <code>optional int32 vipLibao2 = 36;</code>
      */
     public boolean hasVipLibao2() {
-      return ((bitField1_ & 0x00000008) == 0x00000008);
+      return ((bitField1_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 vipLibao2 = 36;</code>
@@ -2485,7 +2532,7 @@ public final class Base {
      * <code>optional string registerTime = 37;</code>
      */
     public boolean hasRegisterTime() {
-      return ((bitField1_ & 0x00000010) == 0x00000010);
+      return ((bitField1_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional string registerTime = 37;</code>
@@ -2528,7 +2575,7 @@ public final class Base {
      * <code>optional int32 totalSignCount = 38;</code>
      */
     public boolean hasTotalSignCount() {
-      return ((bitField1_ & 0x00000020) == 0x00000020);
+      return ((bitField1_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 totalSignCount = 38;</code>
@@ -2544,7 +2591,7 @@ public final class Base {
      * <code>optional int32 firstGetHeroId = 39;</code>
      */
     public boolean hasFirstGetHeroId() {
-      return ((bitField1_ & 0x00000040) == 0x00000040);
+      return ((bitField1_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 firstGetHeroId = 39;</code>
@@ -2560,7 +2607,7 @@ public final class Base {
      * <code>optional string greenhand = 40;</code>
      */
     public boolean hasGreenhand() {
-      return ((bitField1_ & 0x00000080) == 0x00000080);
+      return ((bitField1_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional string greenhand = 40;</code>
@@ -2603,7 +2650,7 @@ public final class Base {
      * <code>optional int32 advance = 41;</code>
      */
     public boolean hasAdvance() {
-      return ((bitField1_ & 0x00000100) == 0x00000100);
+      return ((bitField1_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional int32 advance = 41;</code>
@@ -2619,7 +2666,7 @@ public final class Base {
      * <code>optional int32 shouchongIsComplete = 42;</code>
      */
     public boolean hasShouchongIsComplete() {
-      return ((bitField1_ & 0x00000200) == 0x00000200);
+      return ((bitField1_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional int32 shouchongIsComplete = 42;</code>
@@ -2635,7 +2682,7 @@ public final class Base {
      * <code>optional int32 shouchongIsGetReward = 43;</code>
      */
     public boolean hasShouchongIsGetReward() {
-      return ((bitField1_ & 0x00000400) == 0x00000400);
+      return ((bitField1_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional int32 shouchongIsGetReward = 43;</code>
@@ -2763,7 +2810,7 @@ public final class Base {
      * <code>optional int32 skill = 58;</code>
      */
     public boolean hasSkill() {
-      return ((bitField1_ & 0x00000800) == 0x00000800);
+      return ((bitField1_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional int32 skill = 58;</code>
@@ -2779,7 +2826,7 @@ public final class Base {
      * <code>optional int32 failed = 59;</code>
      */
     public boolean hasFailed() {
-      return ((bitField1_ & 0x00001000) == 0x00001000);
+      return ((bitField1_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 failed = 59;</code>
@@ -2795,7 +2842,7 @@ public final class Base {
      * <code>optional int32 purchaseContractLeft = 62;</code>
      */
     public boolean hasPurchaseContractLeft() {
-      return ((bitField1_ & 0x00002000) == 0x00002000);
+      return ((bitField1_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional int32 purchaseContractLeft = 62;</code>
@@ -2811,7 +2858,7 @@ public final class Base {
      * <code>optional int32 zhanliMax = 65;</code>
      */
     public boolean hasZhanliMax() {
-      return ((bitField1_ & 0x00004000) == 0x00004000);
+      return ((bitField1_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional int32 zhanliMax = 65;</code>
@@ -2827,7 +2874,7 @@ public final class Base {
      * <code>optional int32 sevenLoginDays = 66;</code>
      */
     public boolean hasSevenLoginDays() {
-      return ((bitField1_ & 0x00008000) == 0x00008000);
+      return ((bitField1_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional int32 sevenLoginDays = 66;</code>
@@ -2843,7 +2890,7 @@ public final class Base {
      * <code>optional int32 sevenSignStatus = 67;</code>
      */
     public boolean hasSevenSignStatus() {
-      return ((bitField1_ & 0x00010000) == 0x00010000);
+      return ((bitField1_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional int32 sevenSignStatus = 67;</code>
@@ -2895,7 +2942,7 @@ public final class Base {
      * <code>optional int32 unionIcon = 69;</code>
      */
     public boolean hasUnionIcon() {
-      return ((bitField1_ & 0x00020000) == 0x00020000);
+      return ((bitField1_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional int32 unionIcon = 69;</code>
@@ -2911,7 +2958,7 @@ public final class Base {
      * <code>optional int32 lotteryCoinCount = 70;</code>
      */
     public boolean hasLotteryCoinCount() {
-      return ((bitField1_ & 0x00040000) == 0x00040000);
+      return ((bitField1_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional int32 lotteryCoinCount = 70;</code>
@@ -2927,7 +2974,7 @@ public final class Base {
      * <code>optional int32 task1Order = 71;</code>
      */
     public boolean hasTask1Order() {
-      return ((bitField1_ & 0x00080000) == 0x00080000);
+      return ((bitField1_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional int32 task1Order = 71;</code>
@@ -2943,7 +2990,7 @@ public final class Base {
      * <code>optional int32 task2Record = 72;</code>
      */
     public boolean hasTask2Record() {
-      return ((bitField1_ & 0x00100000) == 0x00100000);
+      return ((bitField1_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional int32 task2Record = 72;</code>
@@ -2963,7 +3010,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasQuestStatus() {
-      return ((bitField1_ & 0x00200000) == 0x00200000);
+      return ((bitField1_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional int32 questStatus = 73;</code>
@@ -2987,7 +3034,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasZhaohuanshi() {
-      return ((bitField1_ & 0x00400000) == 0x00400000);
+      return ((bitField1_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional int32 zhaohuanshi = 74;</code>
@@ -3007,7 +3054,7 @@ public final class Base {
      * <code>optional uint32 zhujueExp = 75;</code>
      */
     public boolean hasZhujueExp() {
-      return ((bitField1_ & 0x00800000) == 0x00800000);
+      return ((bitField1_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional uint32 zhujueExp = 75;</code>
@@ -3023,7 +3070,7 @@ public final class Base {
      * <code>optional uint32 vipExp = 76;</code>
      */
     public boolean hasVipExp() {
-      return ((bitField1_ & 0x01000000) == 0x01000000);
+      return ((bitField1_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional uint32 vipExp = 76;</code>
@@ -3039,7 +3086,7 @@ public final class Base {
      * <code>optional int32 merlevel = 77;</code>
      */
     public boolean hasMerlevel() {
-      return ((bitField1_ & 0x02000000) == 0x02000000);
+      return ((bitField1_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional int32 merlevel = 77;</code>
@@ -3055,7 +3102,7 @@ public final class Base {
      * <code>optional uint32 useTalentId = 78;</code>
      */
     public boolean hasUseTalentId() {
-      return ((bitField1_ & 0x04000000) == 0x04000000);
+      return ((bitField1_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional uint32 useTalentId = 78;</code>
@@ -3071,7 +3118,7 @@ public final class Base {
      * <code>optional int64 extraTimeStamp = 79;</code>
      */
     public boolean hasExtraTimeStamp() {
-      return ((bitField1_ & 0x08000000) == 0x08000000);
+      return ((bitField1_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional int64 extraTimeStamp = 79;</code>
@@ -3087,7 +3134,7 @@ public final class Base {
      * <code>optional uint32 extraCount1 = 80;</code>
      */
     public boolean hasExtraCount1() {
-      return ((bitField1_ & 0x10000000) == 0x10000000);
+      return ((bitField1_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional uint32 extraCount1 = 80;</code>
@@ -3103,7 +3150,7 @@ public final class Base {
      * <code>optional uint32 extraCount2 = 81;</code>
      */
     public boolean hasExtraCount2() {
-      return ((bitField1_ & 0x20000000) == 0x20000000);
+      return ((bitField1_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional uint32 extraCount2 = 81;</code>
@@ -3119,7 +3166,7 @@ public final class Base {
      * <code>optional uint32 extraCount3 = 82;</code>
      */
     public boolean hasExtraCount3() {
-      return ((bitField1_ & 0x40000000) == 0x40000000);
+      return ((bitField1_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional uint32 extraCount3 = 82;</code>
@@ -3135,7 +3182,7 @@ public final class Base {
      * <code>optional int64 extraHasLootTime = 83;</code>
      */
     public boolean hasExtraHasLootTime() {
-      return ((bitField1_ & 0x80000000) == 0x80000000);
+      return ((bitField2_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional int64 extraHasLootTime = 83;</code>
@@ -3151,7 +3198,7 @@ public final class Base {
      * <code>optional uint32 extraType = 84;</code>
      */
     public boolean hasExtraType() {
-      return ((bitField2_ & 0x00000001) == 0x00000001);
+      return ((bitField2_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional uint32 extraType = 84;</code>
@@ -3167,7 +3214,7 @@ public final class Base {
      * <code>optional int64 extraLastTimeStamp = 85;</code>
      */
     public boolean hasExtraLastTimeStamp() {
-      return ((bitField2_ & 0x00000002) == 0x00000002);
+      return ((bitField2_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int64 extraLastTimeStamp = 85;</code>
@@ -3187,7 +3234,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasUserType() {
-      return ((bitField2_ & 0x00000004) == 0x00000004);
+      return ((bitField2_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional uint32 userType = 86;</code>
@@ -3207,7 +3254,7 @@ public final class Base {
      * <code>optional uint32 goldSavingBox = 87;</code>
      */
     public boolean hasGoldSavingBox() {
-      return ((bitField2_ & 0x00000008) == 0x00000008);
+      return ((bitField2_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional uint32 goldSavingBox = 87;</code>
@@ -3223,7 +3270,7 @@ public final class Base {
      * <code>optional uint32 expSavingBox = 88;</code>
      */
     public boolean hasExpSavingBox() {
-      return ((bitField2_ & 0x00000010) == 0x00000010);
+      return ((bitField2_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional uint32 expSavingBox = 88;</code>
@@ -3243,7 +3290,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasTitle() {
-      return ((bitField2_ & 0x00000020) == 0x00000020);
+      return ((bitField2_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional uint32 title = 89;</code>
@@ -3283,6 +3330,7 @@ public final class Base {
       ladderPurchaseTimes_ = 0;
       ladderModeLeftTimes_ = 0;
       pVPMineLeftTime_ = 0;
+      pVPInbreakTime_ = 0;
       signCount_ = 0;
       loginDays_ = 0;
       lastSignTime_ = "";
@@ -3413,62 +3461,65 @@ public final class Base {
       if (((bitField0_ & 0x02000000) == 0x02000000)) {
         output.writeInt32(20, pVPMineLeftTime_);
       }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
         output.writeInt32(21, signCount_);
       }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      if (((bitField0_ & 0x10000000) == 0x10000000)) {
         output.writeInt32(22, loginDays_);
       }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      if (((bitField0_ & 0x20000000) == 0x20000000)) {
         output.writeBytes(23, getLastSignTimeBytes());
       }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
         output.writeInt32(24, zhanli_);
       }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
         output.writeBytes(25, getLastLoginTimeBytes());
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
         output.writeInt32(26, areaEnergy_);
       }
-      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      if (((bitField1_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(31, heroLimit_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(32, getSessionBytes());
       }
-      if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(33, getComposeSkillBytes());
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(34, rechargeRecord_);
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(35, vipLibao1_);
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(36, vipLibao2_);
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(37, getRegisterTimeBytes());
       }
-      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(38, totalSignCount_);
       }
-      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      if (((bitField1_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(39, firstGetHeroId_);
       }
-      if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      if (((bitField1_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(40, getGreenhandBytes());
       }
-      if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      if (((bitField1_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(41, advance_);
       }
-      if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      if (((bitField1_ & 0x00000400) == 0x00000400)) {
         output.writeInt32(42, shouchongIsComplete_);
       }
-      if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      if (((bitField1_ & 0x00000800) == 0x00000800)) {
         output.writeInt32(43, shouchongIsGetReward_);
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        output.writeInt32(44, pVPInbreakTime_);
       }
       for (int i = 0; i < growJewelCount_.size(); i++) {
         output.writeMessage(56, growJewelCount_.get(i));
@@ -3476,10 +3527,10 @@ public final class Base {
       for (int i = 0; i < growExpCount_.size(); i++) {
         output.writeMessage(57, growExpCount_.get(i));
       }
-      if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      if (((bitField1_ & 0x00001000) == 0x00001000)) {
         output.writeInt32(58, skill_);
       }
-      if (((bitField1_ & 0x00001000) == 0x00001000)) {
+      if (((bitField1_ & 0x00002000) == 0x00002000)) {
         output.writeInt32(59, failed_);
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
@@ -3488,7 +3539,7 @@ public final class Base {
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         output.writeInt32(61, freeLotteryCoinLeftTime_);
       }
-      if (((bitField1_ & 0x00002000) == 0x00002000)) {
+      if (((bitField1_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(62, purchaseContractLeft_);
       }
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
@@ -3497,79 +3548,79 @@ public final class Base {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(64, getUnionNameBytes());
       }
-      if (((bitField1_ & 0x00004000) == 0x00004000)) {
+      if (((bitField1_ & 0x00008000) == 0x00008000)) {
         output.writeInt32(65, zhanliMax_);
       }
-      if (((bitField1_ & 0x00008000) == 0x00008000)) {
+      if (((bitField1_ & 0x00010000) == 0x00010000)) {
         output.writeInt32(66, sevenLoginDays_);
       }
-      if (((bitField1_ & 0x00010000) == 0x00010000)) {
+      if (((bitField1_ & 0x00020000) == 0x00020000)) {
         output.writeInt32(67, sevenSignStatus_);
       }
       for (int i = 0; i < unionBossRecord_.size(); i++) {
         output.writeMessage(68, unionBossRecord_.get(i));
       }
-      if (((bitField1_ & 0x00020000) == 0x00020000)) {
+      if (((bitField1_ & 0x00040000) == 0x00040000)) {
         output.writeInt32(69, unionIcon_);
       }
-      if (((bitField1_ & 0x00040000) == 0x00040000)) {
+      if (((bitField1_ & 0x00080000) == 0x00080000)) {
         output.writeInt32(70, lotteryCoinCount_);
       }
-      if (((bitField1_ & 0x00080000) == 0x00080000)) {
+      if (((bitField1_ & 0x00100000) == 0x00100000)) {
         output.writeInt32(71, task1Order_);
       }
-      if (((bitField1_ & 0x00100000) == 0x00100000)) {
+      if (((bitField1_ & 0x00200000) == 0x00200000)) {
         output.writeInt32(72, task2Record_);
       }
-      if (((bitField1_ & 0x00200000) == 0x00200000)) {
+      if (((bitField1_ & 0x00400000) == 0x00400000)) {
         output.writeInt32(73, questStatus_);
       }
-      if (((bitField1_ & 0x00400000) == 0x00400000)) {
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
         output.writeInt32(74, zhaohuanshi_);
       }
-      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
         output.writeUInt32(75, zhujueExp_);
       }
-      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
         output.writeUInt32(76, vipExp_);
       }
-      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
         output.writeInt32(77, merlevel_);
       }
-      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+      if (((bitField1_ & 0x08000000) == 0x08000000)) {
         output.writeUInt32(78, useTalentId_);
       }
-      if (((bitField1_ & 0x08000000) == 0x08000000)) {
+      if (((bitField1_ & 0x10000000) == 0x10000000)) {
         output.writeInt64(79, extraTimeStamp_);
       }
-      if (((bitField1_ & 0x10000000) == 0x10000000)) {
+      if (((bitField1_ & 0x20000000) == 0x20000000)) {
         output.writeUInt32(80, extraCount1_);
       }
-      if (((bitField1_ & 0x20000000) == 0x20000000)) {
+      if (((bitField1_ & 0x40000000) == 0x40000000)) {
         output.writeUInt32(81, extraCount2_);
       }
-      if (((bitField1_ & 0x40000000) == 0x40000000)) {
+      if (((bitField1_ & 0x80000000) == 0x80000000)) {
         output.writeUInt32(82, extraCount3_);
       }
-      if (((bitField1_ & 0x80000000) == 0x80000000)) {
+      if (((bitField2_ & 0x00000001) == 0x00000001)) {
         output.writeInt64(83, extraHasLootTime_);
       }
-      if (((bitField2_ & 0x00000001) == 0x00000001)) {
+      if (((bitField2_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(84, extraType_);
       }
-      if (((bitField2_ & 0x00000002) == 0x00000002)) {
+      if (((bitField2_ & 0x00000004) == 0x00000004)) {
         output.writeInt64(85, extraLastTimeStamp_);
       }
-      if (((bitField2_ & 0x00000004) == 0x00000004)) {
+      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(86, userType_);
       }
-      if (((bitField2_ & 0x00000008) == 0x00000008)) {
+      if (((bitField2_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(87, goldSavingBox_);
       }
-      if (((bitField2_ & 0x00000010) == 0x00000010)) {
+      if (((bitField2_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(88, expSavingBox_);
       }
-      if (((bitField2_ & 0x00000020) == 0x00000020)) {
+      if (((bitField2_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(89, title_);
       }
       getUnknownFields().writeTo(output);
@@ -3661,23 +3712,23 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(20, pVPMineLeftTime_);
       }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(21, signCount_);
       }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      if (((bitField0_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(22, loginDays_);
       }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      if (((bitField0_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(23, getLastSignTimeBytes());
       }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(24, zhanli_);
       }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(25, getLastLoginTimeBytes());
       }
@@ -3685,7 +3736,7 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(26, areaEnergy_);
       }
-      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      if (((bitField1_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(31, heroLimit_);
       }
@@ -3693,49 +3744,53 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(32, getSessionBytes());
       }
-      if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(33, getComposeSkillBytes());
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(34, rechargeRecord_);
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(35, vipLibao1_);
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(36, vipLibao2_);
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(37, getRegisterTimeBytes());
       }
-      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(38, totalSignCount_);
       }
-      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      if (((bitField1_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(39, firstGetHeroId_);
       }
-      if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      if (((bitField1_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(40, getGreenhandBytes());
       }
-      if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      if (((bitField1_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(41, advance_);
       }
-      if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      if (((bitField1_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(42, shouchongIsComplete_);
       }
-      if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      if (((bitField1_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(43, shouchongIsGetReward_);
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(44, pVPInbreakTime_);
       }
       for (int i = 0; i < growJewelCount_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -3745,11 +3800,11 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(57, growExpCount_.get(i));
       }
-      if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      if (((bitField1_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(58, skill_);
       }
-      if (((bitField1_ & 0x00001000) == 0x00001000)) {
+      if (((bitField1_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(59, failed_);
       }
@@ -3761,7 +3816,7 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(61, freeLotteryCoinLeftTime_);
       }
-      if (((bitField1_ & 0x00002000) == 0x00002000)) {
+      if (((bitField1_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(62, purchaseContractLeft_);
       }
@@ -3773,15 +3828,15 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(64, getUnionNameBytes());
       }
-      if (((bitField1_ & 0x00004000) == 0x00004000)) {
+      if (((bitField1_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(65, zhanliMax_);
       }
-      if (((bitField1_ & 0x00008000) == 0x00008000)) {
+      if (((bitField1_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(66, sevenLoginDays_);
       }
-      if (((bitField1_ & 0x00010000) == 0x00010000)) {
+      if (((bitField1_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(67, sevenSignStatus_);
       }
@@ -3789,87 +3844,87 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(68, unionBossRecord_.get(i));
       }
-      if (((bitField1_ & 0x00020000) == 0x00020000)) {
+      if (((bitField1_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(69, unionIcon_);
       }
-      if (((bitField1_ & 0x00040000) == 0x00040000)) {
+      if (((bitField1_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(70, lotteryCoinCount_);
       }
-      if (((bitField1_ & 0x00080000) == 0x00080000)) {
+      if (((bitField1_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(71, task1Order_);
       }
-      if (((bitField1_ & 0x00100000) == 0x00100000)) {
+      if (((bitField1_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(72, task2Record_);
       }
-      if (((bitField1_ & 0x00200000) == 0x00200000)) {
+      if (((bitField1_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(73, questStatus_);
       }
-      if (((bitField1_ & 0x00400000) == 0x00400000)) {
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(74, zhaohuanshi_);
       }
-      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(75, zhujueExp_);
       }
-      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(76, vipExp_);
       }
-      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(77, merlevel_);
       }
-      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+      if (((bitField1_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(78, useTalentId_);
       }
-      if (((bitField1_ & 0x08000000) == 0x08000000)) {
+      if (((bitField1_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(79, extraTimeStamp_);
       }
-      if (((bitField1_ & 0x10000000) == 0x10000000)) {
+      if (((bitField1_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(80, extraCount1_);
       }
-      if (((bitField1_ & 0x20000000) == 0x20000000)) {
+      if (((bitField1_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(81, extraCount2_);
       }
-      if (((bitField1_ & 0x40000000) == 0x40000000)) {
+      if (((bitField1_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(82, extraCount3_);
       }
-      if (((bitField1_ & 0x80000000) == 0x80000000)) {
+      if (((bitField2_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(83, extraHasLootTime_);
       }
-      if (((bitField2_ & 0x00000001) == 0x00000001)) {
+      if (((bitField2_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(84, extraType_);
       }
-      if (((bitField2_ & 0x00000002) == 0x00000002)) {
+      if (((bitField2_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(85, extraLastTimeStamp_);
       }
-      if (((bitField2_ & 0x00000004) == 0x00000004)) {
+      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(86, userType_);
       }
-      if (((bitField2_ & 0x00000008) == 0x00000008)) {
+      if (((bitField2_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(87, goldSavingBox_);
       }
-      if (((bitField2_ & 0x00000010) == 0x00000010)) {
+      if (((bitField2_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(88, expSavingBox_);
       }
-      if (((bitField2_ & 0x00000020) == 0x00000020)) {
+      if (((bitField2_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(89, title_);
       }
@@ -4048,112 +4103,114 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x01000000);
         pVPMineLeftTime_ = 0;
         bitField0_ = (bitField0_ & ~0x02000000);
-        signCount_ = 0;
+        pVPInbreakTime_ = 0;
         bitField0_ = (bitField0_ & ~0x04000000);
-        loginDays_ = 0;
+        signCount_ = 0;
         bitField0_ = (bitField0_ & ~0x08000000);
-        lastSignTime_ = "";
+        loginDays_ = 0;
         bitField0_ = (bitField0_ & ~0x10000000);
-        zhanli_ = 0;
+        lastSignTime_ = "";
         bitField0_ = (bitField0_ & ~0x20000000);
-        lastLoginTime_ = "";
+        zhanli_ = 0;
         bitField0_ = (bitField0_ & ~0x40000000);
-        heroLimit_ = 0;
+        lastLoginTime_ = "";
         bitField0_ = (bitField0_ & ~0x80000000);
-        composeSkill_ = "";
+        heroLimit_ = 0;
         bitField1_ = (bitField1_ & ~0x00000001);
-        rechargeRecord_ = 0;
+        composeSkill_ = "";
         bitField1_ = (bitField1_ & ~0x00000002);
-        vipLibao1_ = 0;
+        rechargeRecord_ = 0;
         bitField1_ = (bitField1_ & ~0x00000004);
-        vipLibao2_ = 0;
+        vipLibao1_ = 0;
         bitField1_ = (bitField1_ & ~0x00000008);
-        registerTime_ = "";
+        vipLibao2_ = 0;
         bitField1_ = (bitField1_ & ~0x00000010);
-        totalSignCount_ = 0;
+        registerTime_ = "";
         bitField1_ = (bitField1_ & ~0x00000020);
-        firstGetHeroId_ = 0;
+        totalSignCount_ = 0;
         bitField1_ = (bitField1_ & ~0x00000040);
-        greenhand_ = "";
+        firstGetHeroId_ = 0;
         bitField1_ = (bitField1_ & ~0x00000080);
-        advance_ = 0;
+        greenhand_ = "";
         bitField1_ = (bitField1_ & ~0x00000100);
-        shouchongIsComplete_ = 0;
+        advance_ = 0;
         bitField1_ = (bitField1_ & ~0x00000200);
-        shouchongIsGetReward_ = 0;
+        shouchongIsComplete_ = 0;
         bitField1_ = (bitField1_ & ~0x00000400);
+        shouchongIsGetReward_ = 0;
+        bitField1_ = (bitField1_ & ~0x00000800);
         if (growJewelCountBuilder_ == null) {
           growJewelCount_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00000800);
+          bitField1_ = (bitField1_ & ~0x00001000);
         } else {
           growJewelCountBuilder_.clear();
         }
         if (growExpCountBuilder_ == null) {
           growExpCount_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00001000);
+          bitField1_ = (bitField1_ & ~0x00002000);
         } else {
           growExpCountBuilder_.clear();
         }
         skill_ = 0;
-        bitField1_ = (bitField1_ & ~0x00002000);
-        failed_ = 0;
         bitField1_ = (bitField1_ & ~0x00004000);
-        purchaseContractLeft_ = 0;
+        failed_ = 0;
         bitField1_ = (bitField1_ & ~0x00008000);
-        zhanliMax_ = 0;
+        purchaseContractLeft_ = 0;
         bitField1_ = (bitField1_ & ~0x00010000);
-        sevenLoginDays_ = 0;
+        zhanliMax_ = 0;
         bitField1_ = (bitField1_ & ~0x00020000);
-        sevenSignStatus_ = 0;
+        sevenLoginDays_ = 0;
         bitField1_ = (bitField1_ & ~0x00040000);
+        sevenSignStatus_ = 0;
+        bitField1_ = (bitField1_ & ~0x00080000);
         if (unionBossRecordBuilder_ == null) {
           unionBossRecord_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00080000);
+          bitField1_ = (bitField1_ & ~0x00100000);
         } else {
           unionBossRecordBuilder_.clear();
         }
         unionIcon_ = 0;
-        bitField1_ = (bitField1_ & ~0x00100000);
-        lotteryCoinCount_ = 0;
         bitField1_ = (bitField1_ & ~0x00200000);
-        task1Order_ = 0;
+        lotteryCoinCount_ = 0;
         bitField1_ = (bitField1_ & ~0x00400000);
-        task2Record_ = 0;
+        task1Order_ = 0;
         bitField1_ = (bitField1_ & ~0x00800000);
-        questStatus_ = 0;
+        task2Record_ = 0;
         bitField1_ = (bitField1_ & ~0x01000000);
-        zhaohuanshi_ = 0;
+        questStatus_ = 0;
         bitField1_ = (bitField1_ & ~0x02000000);
-        zhujueExp_ = 0;
+        zhaohuanshi_ = 0;
         bitField1_ = (bitField1_ & ~0x04000000);
-        vipExp_ = 0;
+        zhujueExp_ = 0;
         bitField1_ = (bitField1_ & ~0x08000000);
-        merlevel_ = 0;
+        vipExp_ = 0;
         bitField1_ = (bitField1_ & ~0x10000000);
-        useTalentId_ = 0;
+        merlevel_ = 0;
         bitField1_ = (bitField1_ & ~0x20000000);
-        extraTimeStamp_ = 0L;
+        useTalentId_ = 0;
         bitField1_ = (bitField1_ & ~0x40000000);
-        extraCount1_ = 0;
+        extraTimeStamp_ = 0L;
         bitField1_ = (bitField1_ & ~0x80000000);
-        extraCount2_ = 0;
+        extraCount1_ = 0;
         bitField2_ = (bitField2_ & ~0x00000001);
-        extraCount3_ = 0;
+        extraCount2_ = 0;
         bitField2_ = (bitField2_ & ~0x00000002);
-        extraHasLootTime_ = 0L;
+        extraCount3_ = 0;
         bitField2_ = (bitField2_ & ~0x00000004);
-        extraType_ = 0;
+        extraHasLootTime_ = 0L;
         bitField2_ = (bitField2_ & ~0x00000008);
-        extraLastTimeStamp_ = 0L;
+        extraType_ = 0;
         bitField2_ = (bitField2_ & ~0x00000010);
-        userType_ = 0;
+        extraLastTimeStamp_ = 0L;
         bitField2_ = (bitField2_ & ~0x00000020);
-        goldSavingBox_ = 0;
+        userType_ = 0;
         bitField2_ = (bitField2_ & ~0x00000040);
-        expSavingBox_ = 0;
+        goldSavingBox_ = 0;
         bitField2_ = (bitField2_ & ~0x00000080);
-        title_ = 0;
+        expSavingBox_ = 0;
         bitField2_ = (bitField2_ & ~0x00000100);
+        title_ = 0;
+        bitField2_ = (bitField2_ & ~0x00000200);
         return this;
       }
 
@@ -4293,204 +4350,208 @@ public final class Base {
         if (((from_bitField0_ & 0x04000000) == 0x04000000)) {
           to_bitField0_ |= 0x04000000;
         }
-        result.signCount_ = signCount_;
+        result.pVPInbreakTime_ = pVPInbreakTime_;
         if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
           to_bitField0_ |= 0x08000000;
         }
-        result.loginDays_ = loginDays_;
+        result.signCount_ = signCount_;
         if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
           to_bitField0_ |= 0x10000000;
         }
-        result.lastSignTime_ = lastSignTime_;
+        result.loginDays_ = loginDays_;
         if (((from_bitField0_ & 0x20000000) == 0x20000000)) {
           to_bitField0_ |= 0x20000000;
         }
-        result.zhanli_ = zhanli_;
+        result.lastSignTime_ = lastSignTime_;
         if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
           to_bitField0_ |= 0x40000000;
         }
-        result.lastLoginTime_ = lastLoginTime_;
+        result.zhanli_ = zhanli_;
         if (((from_bitField0_ & 0x80000000) == 0x80000000)) {
           to_bitField0_ |= 0x80000000;
         }
-        result.heroLimit_ = heroLimit_;
+        result.lastLoginTime_ = lastLoginTime_;
         if (((from_bitField1_ & 0x00000001) == 0x00000001)) {
           to_bitField1_ |= 0x00000001;
         }
-        result.composeSkill_ = composeSkill_;
+        result.heroLimit_ = heroLimit_;
         if (((from_bitField1_ & 0x00000002) == 0x00000002)) {
           to_bitField1_ |= 0x00000002;
         }
-        result.rechargeRecord_ = rechargeRecord_;
+        result.composeSkill_ = composeSkill_;
         if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
           to_bitField1_ |= 0x00000004;
         }
-        result.vipLibao1_ = vipLibao1_;
+        result.rechargeRecord_ = rechargeRecord_;
         if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
           to_bitField1_ |= 0x00000008;
         }
-        result.vipLibao2_ = vipLibao2_;
+        result.vipLibao1_ = vipLibao1_;
         if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
           to_bitField1_ |= 0x00000010;
         }
-        result.registerTime_ = registerTime_;
+        result.vipLibao2_ = vipLibao2_;
         if (((from_bitField1_ & 0x00000020) == 0x00000020)) {
           to_bitField1_ |= 0x00000020;
         }
-        result.totalSignCount_ = totalSignCount_;
+        result.registerTime_ = registerTime_;
         if (((from_bitField1_ & 0x00000040) == 0x00000040)) {
           to_bitField1_ |= 0x00000040;
         }
-        result.firstGetHeroId_ = firstGetHeroId_;
+        result.totalSignCount_ = totalSignCount_;
         if (((from_bitField1_ & 0x00000080) == 0x00000080)) {
           to_bitField1_ |= 0x00000080;
         }
-        result.greenhand_ = greenhand_;
+        result.firstGetHeroId_ = firstGetHeroId_;
         if (((from_bitField1_ & 0x00000100) == 0x00000100)) {
           to_bitField1_ |= 0x00000100;
         }
-        result.advance_ = advance_;
+        result.greenhand_ = greenhand_;
         if (((from_bitField1_ & 0x00000200) == 0x00000200)) {
           to_bitField1_ |= 0x00000200;
         }
-        result.shouchongIsComplete_ = shouchongIsComplete_;
+        result.advance_ = advance_;
         if (((from_bitField1_ & 0x00000400) == 0x00000400)) {
           to_bitField1_ |= 0x00000400;
         }
+        result.shouchongIsComplete_ = shouchongIsComplete_;
+        if (((from_bitField1_ & 0x00000800) == 0x00000800)) {
+          to_bitField1_ |= 0x00000800;
+        }
         result.shouchongIsGetReward_ = shouchongIsGetReward_;
         if (growJewelCountBuilder_ == null) {
-          if (((bitField1_ & 0x00000800) == 0x00000800)) {
+          if (((bitField1_ & 0x00001000) == 0x00001000)) {
             growJewelCount_ = java.util.Collections.unmodifiableList(growJewelCount_);
-            bitField1_ = (bitField1_ & ~0x00000800);
+            bitField1_ = (bitField1_ & ~0x00001000);
           }
           result.growJewelCount_ = growJewelCount_;
         } else {
           result.growJewelCount_ = growJewelCountBuilder_.build();
         }
         if (growExpCountBuilder_ == null) {
-          if (((bitField1_ & 0x00001000) == 0x00001000)) {
+          if (((bitField1_ & 0x00002000) == 0x00002000)) {
             growExpCount_ = java.util.Collections.unmodifiableList(growExpCount_);
-            bitField1_ = (bitField1_ & ~0x00001000);
+            bitField1_ = (bitField1_ & ~0x00002000);
           }
           result.growExpCount_ = growExpCount_;
         } else {
           result.growExpCount_ = growExpCountBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00002000) == 0x00002000)) {
-          to_bitField1_ |= 0x00000800;
-        }
-        result.skill_ = skill_;
         if (((from_bitField1_ & 0x00004000) == 0x00004000)) {
           to_bitField1_ |= 0x00001000;
         }
-        result.failed_ = failed_;
+        result.skill_ = skill_;
         if (((from_bitField1_ & 0x00008000) == 0x00008000)) {
           to_bitField1_ |= 0x00002000;
         }
-        result.purchaseContractLeft_ = purchaseContractLeft_;
+        result.failed_ = failed_;
         if (((from_bitField1_ & 0x00010000) == 0x00010000)) {
           to_bitField1_ |= 0x00004000;
         }
-        result.zhanliMax_ = zhanliMax_;
+        result.purchaseContractLeft_ = purchaseContractLeft_;
         if (((from_bitField1_ & 0x00020000) == 0x00020000)) {
           to_bitField1_ |= 0x00008000;
         }
-        result.sevenLoginDays_ = sevenLoginDays_;
+        result.zhanliMax_ = zhanliMax_;
         if (((from_bitField1_ & 0x00040000) == 0x00040000)) {
           to_bitField1_ |= 0x00010000;
         }
+        result.sevenLoginDays_ = sevenLoginDays_;
+        if (((from_bitField1_ & 0x00080000) == 0x00080000)) {
+          to_bitField1_ |= 0x00020000;
+        }
         result.sevenSignStatus_ = sevenSignStatus_;
         if (unionBossRecordBuilder_ == null) {
-          if (((bitField1_ & 0x00080000) == 0x00080000)) {
+          if (((bitField1_ & 0x00100000) == 0x00100000)) {
             unionBossRecord_ = java.util.Collections.unmodifiableList(unionBossRecord_);
-            bitField1_ = (bitField1_ & ~0x00080000);
+            bitField1_ = (bitField1_ & ~0x00100000);
           }
           result.unionBossRecord_ = unionBossRecord_;
         } else {
           result.unionBossRecord_ = unionBossRecordBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00100000) == 0x00100000)) {
-          to_bitField1_ |= 0x00020000;
-        }
-        result.unionIcon_ = unionIcon_;
         if (((from_bitField1_ & 0x00200000) == 0x00200000)) {
           to_bitField1_ |= 0x00040000;
         }
-        result.lotteryCoinCount_ = lotteryCoinCount_;
+        result.unionIcon_ = unionIcon_;
         if (((from_bitField1_ & 0x00400000) == 0x00400000)) {
           to_bitField1_ |= 0x00080000;
         }
-        result.task1Order_ = task1Order_;
+        result.lotteryCoinCount_ = lotteryCoinCount_;
         if (((from_bitField1_ & 0x00800000) == 0x00800000)) {
           to_bitField1_ |= 0x00100000;
         }
-        result.task2Record_ = task2Record_;
+        result.task1Order_ = task1Order_;
         if (((from_bitField1_ & 0x01000000) == 0x01000000)) {
           to_bitField1_ |= 0x00200000;
         }
-        result.questStatus_ = questStatus_;
+        result.task2Record_ = task2Record_;
         if (((from_bitField1_ & 0x02000000) == 0x02000000)) {
           to_bitField1_ |= 0x00400000;
         }
-        result.zhaohuanshi_ = zhaohuanshi_;
+        result.questStatus_ = questStatus_;
         if (((from_bitField1_ & 0x04000000) == 0x04000000)) {
           to_bitField1_ |= 0x00800000;
         }
-        result.zhujueExp_ = zhujueExp_;
+        result.zhaohuanshi_ = zhaohuanshi_;
         if (((from_bitField1_ & 0x08000000) == 0x08000000)) {
           to_bitField1_ |= 0x01000000;
         }
-        result.vipExp_ = vipExp_;
+        result.zhujueExp_ = zhujueExp_;
         if (((from_bitField1_ & 0x10000000) == 0x10000000)) {
           to_bitField1_ |= 0x02000000;
         }
-        result.merlevel_ = merlevel_;
+        result.vipExp_ = vipExp_;
         if (((from_bitField1_ & 0x20000000) == 0x20000000)) {
           to_bitField1_ |= 0x04000000;
         }
-        result.useTalentId_ = useTalentId_;
+        result.merlevel_ = merlevel_;
         if (((from_bitField1_ & 0x40000000) == 0x40000000)) {
           to_bitField1_ |= 0x08000000;
         }
-        result.extraTimeStamp_ = extraTimeStamp_;
+        result.useTalentId_ = useTalentId_;
         if (((from_bitField1_ & 0x80000000) == 0x80000000)) {
           to_bitField1_ |= 0x10000000;
         }
-        result.extraCount1_ = extraCount1_;
+        result.extraTimeStamp_ = extraTimeStamp_;
         if (((from_bitField2_ & 0x00000001) == 0x00000001)) {
           to_bitField1_ |= 0x20000000;
         }
-        result.extraCount2_ = extraCount2_;
+        result.extraCount1_ = extraCount1_;
         if (((from_bitField2_ & 0x00000002) == 0x00000002)) {
           to_bitField1_ |= 0x40000000;
         }
-        result.extraCount3_ = extraCount3_;
+        result.extraCount2_ = extraCount2_;
         if (((from_bitField2_ & 0x00000004) == 0x00000004)) {
           to_bitField1_ |= 0x80000000;
         }
-        result.extraHasLootTime_ = extraHasLootTime_;
+        result.extraCount3_ = extraCount3_;
         if (((from_bitField2_ & 0x00000008) == 0x00000008)) {
           to_bitField2_ |= 0x00000001;
         }
-        result.extraType_ = extraType_;
+        result.extraHasLootTime_ = extraHasLootTime_;
         if (((from_bitField2_ & 0x00000010) == 0x00000010)) {
           to_bitField2_ |= 0x00000002;
         }
-        result.extraLastTimeStamp_ = extraLastTimeStamp_;
+        result.extraType_ = extraType_;
         if (((from_bitField2_ & 0x00000020) == 0x00000020)) {
           to_bitField2_ |= 0x00000004;
         }
-        result.userType_ = userType_;
+        result.extraLastTimeStamp_ = extraLastTimeStamp_;
         if (((from_bitField2_ & 0x00000040) == 0x00000040)) {
           to_bitField2_ |= 0x00000008;
         }
-        result.goldSavingBox_ = goldSavingBox_;
+        result.userType_ = userType_;
         if (((from_bitField2_ & 0x00000080) == 0x00000080)) {
           to_bitField2_ |= 0x00000010;
         }
-        result.expSavingBox_ = expSavingBox_;
+        result.goldSavingBox_ = goldSavingBox_;
         if (((from_bitField2_ & 0x00000100) == 0x00000100)) {
           to_bitField2_ |= 0x00000020;
+        }
+        result.expSavingBox_ = expSavingBox_;
+        if (((from_bitField2_ & 0x00000200) == 0x00000200)) {
+          to_bitField2_ |= 0x00000040;
         }
         result.title_ = title_;
         result.bitField0_ = to_bitField0_;
@@ -4597,6 +4658,9 @@ public final class Base {
         if (other.hasPVPMineLeftTime()) {
           setPVPMineLeftTime(other.getPVPMineLeftTime());
         }
+        if (other.hasPVPInbreakTime()) {
+          setPVPInbreakTime(other.getPVPInbreakTime());
+        }
         if (other.hasSignCount()) {
           setSignCount(other.getSignCount());
         }
@@ -4604,7 +4668,7 @@ public final class Base {
           setLoginDays(other.getLoginDays());
         }
         if (other.hasLastSignTime()) {
-          bitField0_ |= 0x10000000;
+          bitField0_ |= 0x20000000;
           lastSignTime_ = other.lastSignTime_;
           onChanged();
         }
@@ -4612,7 +4676,7 @@ public final class Base {
           setZhanli(other.getZhanli());
         }
         if (other.hasLastLoginTime()) {
-          bitField0_ |= 0x40000000;
+          bitField0_ |= 0x80000000;
           lastLoginTime_ = other.lastLoginTime_;
           onChanged();
         }
@@ -4620,7 +4684,7 @@ public final class Base {
           setHeroLimit(other.getHeroLimit());
         }
         if (other.hasComposeSkill()) {
-          bitField1_ |= 0x00000001;
+          bitField1_ |= 0x00000002;
           composeSkill_ = other.composeSkill_;
           onChanged();
         }
@@ -4634,7 +4698,7 @@ public final class Base {
           setVipLibao2(other.getVipLibao2());
         }
         if (other.hasRegisterTime()) {
-          bitField1_ |= 0x00000010;
+          bitField1_ |= 0x00000020;
           registerTime_ = other.registerTime_;
           onChanged();
         }
@@ -4645,7 +4709,7 @@ public final class Base {
           setFirstGetHeroId(other.getFirstGetHeroId());
         }
         if (other.hasGreenhand()) {
-          bitField1_ |= 0x00000080;
+          bitField1_ |= 0x00000100;
           greenhand_ = other.greenhand_;
           onChanged();
         }
@@ -4662,7 +4726,7 @@ public final class Base {
           if (!other.growJewelCount_.isEmpty()) {
             if (growJewelCount_.isEmpty()) {
               growJewelCount_ = other.growJewelCount_;
-              bitField1_ = (bitField1_ & ~0x00000800);
+              bitField1_ = (bitField1_ & ~0x00001000);
             } else {
               ensureGrowJewelCountIsMutable();
               growJewelCount_.addAll(other.growJewelCount_);
@@ -4675,7 +4739,7 @@ public final class Base {
               growJewelCountBuilder_.dispose();
               growJewelCountBuilder_ = null;
               growJewelCount_ = other.growJewelCount_;
-              bitField1_ = (bitField1_ & ~0x00000800);
+              bitField1_ = (bitField1_ & ~0x00001000);
               growJewelCountBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getGrowJewelCountFieldBuilder() : null;
@@ -4688,7 +4752,7 @@ public final class Base {
           if (!other.growExpCount_.isEmpty()) {
             if (growExpCount_.isEmpty()) {
               growExpCount_ = other.growExpCount_;
-              bitField1_ = (bitField1_ & ~0x00001000);
+              bitField1_ = (bitField1_ & ~0x00002000);
             } else {
               ensureGrowExpCountIsMutable();
               growExpCount_.addAll(other.growExpCount_);
@@ -4701,7 +4765,7 @@ public final class Base {
               growExpCountBuilder_.dispose();
               growExpCountBuilder_ = null;
               growExpCount_ = other.growExpCount_;
-              bitField1_ = (bitField1_ & ~0x00001000);
+              bitField1_ = (bitField1_ & ~0x00002000);
               growExpCountBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getGrowExpCountFieldBuilder() : null;
@@ -4732,7 +4796,7 @@ public final class Base {
           if (!other.unionBossRecord_.isEmpty()) {
             if (unionBossRecord_.isEmpty()) {
               unionBossRecord_ = other.unionBossRecord_;
-              bitField1_ = (bitField1_ & ~0x00080000);
+              bitField1_ = (bitField1_ & ~0x00100000);
             } else {
               ensureUnionBossRecordIsMutable();
               unionBossRecord_.addAll(other.unionBossRecord_);
@@ -4745,7 +4809,7 @@ public final class Base {
               unionBossRecordBuilder_.dispose();
               unionBossRecordBuilder_ = null;
               unionBossRecord_ = other.unionBossRecord_;
-              bitField1_ = (bitField1_ & ~0x00080000);
+              bitField1_ = (bitField1_ & ~0x00100000);
               unionBossRecordBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getUnionBossRecordFieldBuilder() : null;
@@ -6086,6 +6150,55 @@ public final class Base {
         return this;
       }
 
+      // optional int32 PVPInbreakTime = 44;
+      private int pVPInbreakTime_ ;
+      /**
+       * <code>optional int32 PVPInbreakTime = 44;</code>
+       *
+       * <pre>
+       *pvp矿点入侵次数
+       * </pre>
+       */
+      public boolean hasPVPInbreakTime() {
+        return ((bitField0_ & 0x04000000) == 0x04000000);
+      }
+      /**
+       * <code>optional int32 PVPInbreakTime = 44;</code>
+       *
+       * <pre>
+       *pvp矿点入侵次数
+       * </pre>
+       */
+      public int getPVPInbreakTime() {
+        return pVPInbreakTime_;
+      }
+      /**
+       * <code>optional int32 PVPInbreakTime = 44;</code>
+       *
+       * <pre>
+       *pvp矿点入侵次数
+       * </pre>
+       */
+      public Builder setPVPInbreakTime(int value) {
+        bitField0_ |= 0x04000000;
+        pVPInbreakTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 PVPInbreakTime = 44;</code>
+       *
+       * <pre>
+       *pvp矿点入侵次数
+       * </pre>
+       */
+      public Builder clearPVPInbreakTime() {
+        bitField0_ = (bitField0_ & ~0x04000000);
+        pVPInbreakTime_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 signCount = 21;
       private int signCount_ ;
       /**
@@ -6096,7 +6209,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasSignCount() {
-        return ((bitField0_ & 0x04000000) == 0x04000000);
+        return ((bitField0_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional int32 signCount = 21;</code>
@@ -6116,7 +6229,7 @@ public final class Base {
        * </pre>
        */
       public Builder setSignCount(int value) {
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x08000000;
         signCount_ = value;
         onChanged();
         return this;
@@ -6129,7 +6242,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearSignCount() {
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x08000000);
         signCount_ = 0;
         onChanged();
         return this;
@@ -6145,7 +6258,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasLoginDays() {
-        return ((bitField0_ & 0x08000000) == 0x08000000);
+        return ((bitField0_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional int32 loginDays = 22;</code>
@@ -6165,7 +6278,7 @@ public final class Base {
        * </pre>
        */
       public Builder setLoginDays(int value) {
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x10000000;
         loginDays_ = value;
         onChanged();
         return this;
@@ -6178,7 +6291,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearLoginDays() {
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x10000000);
         loginDays_ = 0;
         onChanged();
         return this;
@@ -6194,7 +6307,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasLastSignTime() {
-        return ((bitField0_ & 0x10000000) == 0x10000000);
+        return ((bitField0_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional string lastSignTime = 23;</code>
@@ -6246,7 +6359,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x10000000;
+  bitField0_ |= 0x20000000;
         lastSignTime_ = value;
         onChanged();
         return this;
@@ -6259,7 +6372,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearLastSignTime() {
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         lastSignTime_ = getDefaultInstance().getLastSignTime();
         onChanged();
         return this;
@@ -6276,7 +6389,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x10000000;
+  bitField0_ |= 0x20000000;
         lastSignTime_ = value;
         onChanged();
         return this;
@@ -6288,7 +6401,7 @@ public final class Base {
        * <code>optional int32 zhanli = 24;</code>
        */
       public boolean hasZhanli() {
-        return ((bitField0_ & 0x20000000) == 0x20000000);
+        return ((bitField0_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional int32 zhanli = 24;</code>
@@ -6300,7 +6413,7 @@ public final class Base {
        * <code>optional int32 zhanli = 24;</code>
        */
       public Builder setZhanli(int value) {
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x40000000;
         zhanli_ = value;
         onChanged();
         return this;
@@ -6309,7 +6422,7 @@ public final class Base {
        * <code>optional int32 zhanli = 24;</code>
        */
       public Builder clearZhanli() {
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x40000000);
         zhanli_ = 0;
         onChanged();
         return this;
@@ -6325,7 +6438,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasLastLoginTime() {
-        return ((bitField0_ & 0x40000000) == 0x40000000);
+        return ((bitField0_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional string lastLoginTime = 25;</code>
@@ -6377,7 +6490,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x80000000;
         lastLoginTime_ = value;
         onChanged();
         return this;
@@ -6390,7 +6503,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearLastLoginTime() {
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x80000000);
         lastLoginTime_ = getDefaultInstance().getLastLoginTime();
         onChanged();
         return this;
@@ -6407,7 +6520,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x40000000;
+  bitField0_ |= 0x80000000;
         lastLoginTime_ = value;
         onChanged();
         return this;
@@ -6423,7 +6536,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasHeroLimit() {
-        return ((bitField0_ & 0x80000000) == 0x80000000);
+        return ((bitField1_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional int32 heroLimit = 31;</code>
@@ -6443,7 +6556,7 @@ public final class Base {
        * </pre>
        */
       public Builder setHeroLimit(int value) {
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000001;
         heroLimit_ = value;
         onChanged();
         return this;
@@ -6456,7 +6569,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearHeroLimit() {
-        bitField0_ = (bitField0_ & ~0x80000000);
+        bitField1_ = (bitField1_ & ~0x00000001);
         heroLimit_ = 0;
         onChanged();
         return this;
@@ -6472,7 +6585,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasComposeSkill() {
-        return ((bitField1_ & 0x00000001) == 0x00000001);
+        return ((bitField1_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional string composeSkill = 33;</code>
@@ -6524,7 +6637,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000001;
+  bitField1_ |= 0x00000002;
         composeSkill_ = value;
         onChanged();
         return this;
@@ -6537,7 +6650,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearComposeSkill() {
-        bitField1_ = (bitField1_ & ~0x00000001);
+        bitField1_ = (bitField1_ & ~0x00000002);
         composeSkill_ = getDefaultInstance().getComposeSkill();
         onChanged();
         return this;
@@ -6554,7 +6667,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000001;
+  bitField1_ |= 0x00000002;
         composeSkill_ = value;
         onChanged();
         return this;
@@ -6566,7 +6679,7 @@ public final class Base {
        * <code>optional int32 rechargeRecord = 34;</code>
        */
       public boolean hasRechargeRecord() {
-        return ((bitField1_ & 0x00000002) == 0x00000002);
+        return ((bitField1_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 rechargeRecord = 34;</code>
@@ -6578,7 +6691,7 @@ public final class Base {
        * <code>optional int32 rechargeRecord = 34;</code>
        */
       public Builder setRechargeRecord(int value) {
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         rechargeRecord_ = value;
         onChanged();
         return this;
@@ -6587,7 +6700,7 @@ public final class Base {
        * <code>optional int32 rechargeRecord = 34;</code>
        */
       public Builder clearRechargeRecord() {
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000004);
         rechargeRecord_ = 0;
         onChanged();
         return this;
@@ -6599,7 +6712,7 @@ public final class Base {
        * <code>optional int32 vipLibao1 = 35;</code>
        */
       public boolean hasVipLibao1() {
-        return ((bitField1_ & 0x00000004) == 0x00000004);
+        return ((bitField1_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 vipLibao1 = 35;</code>
@@ -6611,7 +6724,7 @@ public final class Base {
        * <code>optional int32 vipLibao1 = 35;</code>
        */
       public Builder setVipLibao1(int value) {
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         vipLibao1_ = value;
         onChanged();
         return this;
@@ -6620,7 +6733,7 @@ public final class Base {
        * <code>optional int32 vipLibao1 = 35;</code>
        */
       public Builder clearVipLibao1() {
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000008);
         vipLibao1_ = 0;
         onChanged();
         return this;
@@ -6632,7 +6745,7 @@ public final class Base {
        * <code>optional int32 vipLibao2 = 36;</code>
        */
       public boolean hasVipLibao2() {
-        return ((bitField1_ & 0x00000008) == 0x00000008);
+        return ((bitField1_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 vipLibao2 = 36;</code>
@@ -6644,7 +6757,7 @@ public final class Base {
        * <code>optional int32 vipLibao2 = 36;</code>
        */
       public Builder setVipLibao2(int value) {
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         vipLibao2_ = value;
         onChanged();
         return this;
@@ -6653,7 +6766,7 @@ public final class Base {
        * <code>optional int32 vipLibao2 = 36;</code>
        */
       public Builder clearVipLibao2() {
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000010);
         vipLibao2_ = 0;
         onChanged();
         return this;
@@ -6665,7 +6778,7 @@ public final class Base {
        * <code>optional string registerTime = 37;</code>
        */
       public boolean hasRegisterTime() {
-        return ((bitField1_ & 0x00000010) == 0x00000010);
+        return ((bitField1_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional string registerTime = 37;</code>
@@ -6705,7 +6818,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000010;
+  bitField1_ |= 0x00000020;
         registerTime_ = value;
         onChanged();
         return this;
@@ -6714,7 +6827,7 @@ public final class Base {
        * <code>optional string registerTime = 37;</code>
        */
       public Builder clearRegisterTime() {
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000020);
         registerTime_ = getDefaultInstance().getRegisterTime();
         onChanged();
         return this;
@@ -6727,7 +6840,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000010;
+  bitField1_ |= 0x00000020;
         registerTime_ = value;
         onChanged();
         return this;
@@ -6739,7 +6852,7 @@ public final class Base {
        * <code>optional int32 totalSignCount = 38;</code>
        */
       public boolean hasTotalSignCount() {
-        return ((bitField1_ & 0x00000020) == 0x00000020);
+        return ((bitField1_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 totalSignCount = 38;</code>
@@ -6751,7 +6864,7 @@ public final class Base {
        * <code>optional int32 totalSignCount = 38;</code>
        */
       public Builder setTotalSignCount(int value) {
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000040;
         totalSignCount_ = value;
         onChanged();
         return this;
@@ -6760,7 +6873,7 @@ public final class Base {
        * <code>optional int32 totalSignCount = 38;</code>
        */
       public Builder clearTotalSignCount() {
-        bitField1_ = (bitField1_ & ~0x00000020);
+        bitField1_ = (bitField1_ & ~0x00000040);
         totalSignCount_ = 0;
         onChanged();
         return this;
@@ -6772,7 +6885,7 @@ public final class Base {
        * <code>optional int32 firstGetHeroId = 39;</code>
        */
       public boolean hasFirstGetHeroId() {
-        return ((bitField1_ & 0x00000040) == 0x00000040);
+        return ((bitField1_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 firstGetHeroId = 39;</code>
@@ -6784,7 +6897,7 @@ public final class Base {
        * <code>optional int32 firstGetHeroId = 39;</code>
        */
       public Builder setFirstGetHeroId(int value) {
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000080;
         firstGetHeroId_ = value;
         onChanged();
         return this;
@@ -6793,7 +6906,7 @@ public final class Base {
        * <code>optional int32 firstGetHeroId = 39;</code>
        */
       public Builder clearFirstGetHeroId() {
-        bitField1_ = (bitField1_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x00000080);
         firstGetHeroId_ = 0;
         onChanged();
         return this;
@@ -6805,7 +6918,7 @@ public final class Base {
        * <code>optional string greenhand = 40;</code>
        */
       public boolean hasGreenhand() {
-        return ((bitField1_ & 0x00000080) == 0x00000080);
+        return ((bitField1_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional string greenhand = 40;</code>
@@ -6845,7 +6958,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000080;
+  bitField1_ |= 0x00000100;
         greenhand_ = value;
         onChanged();
         return this;
@@ -6854,7 +6967,7 @@ public final class Base {
        * <code>optional string greenhand = 40;</code>
        */
       public Builder clearGreenhand() {
-        bitField1_ = (bitField1_ & ~0x00000080);
+        bitField1_ = (bitField1_ & ~0x00000100);
         greenhand_ = getDefaultInstance().getGreenhand();
         onChanged();
         return this;
@@ -6867,7 +6980,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField1_ |= 0x00000080;
+  bitField1_ |= 0x00000100;
         greenhand_ = value;
         onChanged();
         return this;
@@ -6879,7 +6992,7 @@ public final class Base {
        * <code>optional int32 advance = 41;</code>
        */
       public boolean hasAdvance() {
-        return ((bitField1_ & 0x00000100) == 0x00000100);
+        return ((bitField1_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional int32 advance = 41;</code>
@@ -6891,7 +7004,7 @@ public final class Base {
        * <code>optional int32 advance = 41;</code>
        */
       public Builder setAdvance(int value) {
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000200;
         advance_ = value;
         onChanged();
         return this;
@@ -6900,7 +7013,7 @@ public final class Base {
        * <code>optional int32 advance = 41;</code>
        */
       public Builder clearAdvance() {
-        bitField1_ = (bitField1_ & ~0x00000100);
+        bitField1_ = (bitField1_ & ~0x00000200);
         advance_ = 0;
         onChanged();
         return this;
@@ -6912,7 +7025,7 @@ public final class Base {
        * <code>optional int32 shouchongIsComplete = 42;</code>
        */
       public boolean hasShouchongIsComplete() {
-        return ((bitField1_ & 0x00000200) == 0x00000200);
+        return ((bitField1_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional int32 shouchongIsComplete = 42;</code>
@@ -6924,7 +7037,7 @@ public final class Base {
        * <code>optional int32 shouchongIsComplete = 42;</code>
        */
       public Builder setShouchongIsComplete(int value) {
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000400;
         shouchongIsComplete_ = value;
         onChanged();
         return this;
@@ -6933,7 +7046,7 @@ public final class Base {
        * <code>optional int32 shouchongIsComplete = 42;</code>
        */
       public Builder clearShouchongIsComplete() {
-        bitField1_ = (bitField1_ & ~0x00000200);
+        bitField1_ = (bitField1_ & ~0x00000400);
         shouchongIsComplete_ = 0;
         onChanged();
         return this;
@@ -6945,7 +7058,7 @@ public final class Base {
        * <code>optional int32 shouchongIsGetReward = 43;</code>
        */
       public boolean hasShouchongIsGetReward() {
-        return ((bitField1_ & 0x00000400) == 0x00000400);
+        return ((bitField1_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional int32 shouchongIsGetReward = 43;</code>
@@ -6957,7 +7070,7 @@ public final class Base {
        * <code>optional int32 shouchongIsGetReward = 43;</code>
        */
       public Builder setShouchongIsGetReward(int value) {
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00000800;
         shouchongIsGetReward_ = value;
         onChanged();
         return this;
@@ -6966,7 +7079,7 @@ public final class Base {
        * <code>optional int32 shouchongIsGetReward = 43;</code>
        */
       public Builder clearShouchongIsGetReward() {
-        bitField1_ = (bitField1_ & ~0x00000400);
+        bitField1_ = (bitField1_ & ~0x00000800);
         shouchongIsGetReward_ = 0;
         onChanged();
         return this;
@@ -6976,9 +7089,9 @@ public final class Base {
       private java.util.List<com.trans.pixel.protoc.Base.JewelPool> growJewelCount_ =
         java.util.Collections.emptyList();
       private void ensureGrowJewelCountIsMutable() {
-        if (!((bitField1_ & 0x00000800) == 0x00000800)) {
+        if (!((bitField1_ & 0x00001000) == 0x00001000)) {
           growJewelCount_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>(growJewelCount_);
-          bitField1_ |= 0x00000800;
+          bitField1_ |= 0x00001000;
          }
       }
 
@@ -7171,7 +7284,7 @@ public final class Base {
       public Builder clearGrowJewelCount() {
         if (growJewelCountBuilder_ == null) {
           growJewelCount_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00000800);
+          bitField1_ = (bitField1_ & ~0x00001000);
           onChanged();
         } else {
           growJewelCountBuilder_.clear();
@@ -7276,7 +7389,7 @@ public final class Base {
           growJewelCountBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.JewelPool, com.trans.pixel.protoc.Base.JewelPool.Builder, com.trans.pixel.protoc.Base.JewelPoolOrBuilder>(
                   growJewelCount_,
-                  ((bitField1_ & 0x00000800) == 0x00000800),
+                  ((bitField1_ & 0x00001000) == 0x00001000),
                   getParentForChildren(),
                   isClean());
           growJewelCount_ = null;
@@ -7288,9 +7401,9 @@ public final class Base {
       private java.util.List<com.trans.pixel.protoc.Base.JewelPool> growExpCount_ =
         java.util.Collections.emptyList();
       private void ensureGrowExpCountIsMutable() {
-        if (!((bitField1_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField1_ & 0x00002000) == 0x00002000)) {
           growExpCount_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>(growExpCount_);
-          bitField1_ |= 0x00001000;
+          bitField1_ |= 0x00002000;
          }
       }
 
@@ -7483,7 +7596,7 @@ public final class Base {
       public Builder clearGrowExpCount() {
         if (growExpCountBuilder_ == null) {
           growExpCount_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00001000);
+          bitField1_ = (bitField1_ & ~0x00002000);
           onChanged();
         } else {
           growExpCountBuilder_.clear();
@@ -7588,7 +7701,7 @@ public final class Base {
           growExpCountBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.JewelPool, com.trans.pixel.protoc.Base.JewelPool.Builder, com.trans.pixel.protoc.Base.JewelPoolOrBuilder>(
                   growExpCount_,
-                  ((bitField1_ & 0x00001000) == 0x00001000),
+                  ((bitField1_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           growExpCount_ = null;
@@ -7602,7 +7715,7 @@ public final class Base {
        * <code>optional int32 skill = 58;</code>
        */
       public boolean hasSkill() {
-        return ((bitField1_ & 0x00002000) == 0x00002000);
+        return ((bitField1_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional int32 skill = 58;</code>
@@ -7614,7 +7727,7 @@ public final class Base {
        * <code>optional int32 skill = 58;</code>
        */
       public Builder setSkill(int value) {
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00004000;
         skill_ = value;
         onChanged();
         return this;
@@ -7623,7 +7736,7 @@ public final class Base {
        * <code>optional int32 skill = 58;</code>
        */
       public Builder clearSkill() {
-        bitField1_ = (bitField1_ & ~0x00002000);
+        bitField1_ = (bitField1_ & ~0x00004000);
         skill_ = 0;
         onChanged();
         return this;
@@ -7635,7 +7748,7 @@ public final class Base {
        * <code>optional int32 failed = 59;</code>
        */
       public boolean hasFailed() {
-        return ((bitField1_ & 0x00004000) == 0x00004000);
+        return ((bitField1_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional int32 failed = 59;</code>
@@ -7647,7 +7760,7 @@ public final class Base {
        * <code>optional int32 failed = 59;</code>
        */
       public Builder setFailed(int value) {
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00008000;
         failed_ = value;
         onChanged();
         return this;
@@ -7656,7 +7769,7 @@ public final class Base {
        * <code>optional int32 failed = 59;</code>
        */
       public Builder clearFailed() {
-        bitField1_ = (bitField1_ & ~0x00004000);
+        bitField1_ = (bitField1_ & ~0x00008000);
         failed_ = 0;
         onChanged();
         return this;
@@ -7668,7 +7781,7 @@ public final class Base {
        * <code>optional int32 purchaseContractLeft = 62;</code>
        */
       public boolean hasPurchaseContractLeft() {
-        return ((bitField1_ & 0x00008000) == 0x00008000);
+        return ((bitField1_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional int32 purchaseContractLeft = 62;</code>
@@ -7680,7 +7793,7 @@ public final class Base {
        * <code>optional int32 purchaseContractLeft = 62;</code>
        */
       public Builder setPurchaseContractLeft(int value) {
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00010000;
         purchaseContractLeft_ = value;
         onChanged();
         return this;
@@ -7689,7 +7802,7 @@ public final class Base {
        * <code>optional int32 purchaseContractLeft = 62;</code>
        */
       public Builder clearPurchaseContractLeft() {
-        bitField1_ = (bitField1_ & ~0x00008000);
+        bitField1_ = (bitField1_ & ~0x00010000);
         purchaseContractLeft_ = 0;
         onChanged();
         return this;
@@ -7701,7 +7814,7 @@ public final class Base {
        * <code>optional int32 zhanliMax = 65;</code>
        */
       public boolean hasZhanliMax() {
-        return ((bitField1_ & 0x00010000) == 0x00010000);
+        return ((bitField1_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional int32 zhanliMax = 65;</code>
@@ -7713,7 +7826,7 @@ public final class Base {
        * <code>optional int32 zhanliMax = 65;</code>
        */
       public Builder setZhanliMax(int value) {
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00020000;
         zhanliMax_ = value;
         onChanged();
         return this;
@@ -7722,7 +7835,7 @@ public final class Base {
        * <code>optional int32 zhanliMax = 65;</code>
        */
       public Builder clearZhanliMax() {
-        bitField1_ = (bitField1_ & ~0x00010000);
+        bitField1_ = (bitField1_ & ~0x00020000);
         zhanliMax_ = 0;
         onChanged();
         return this;
@@ -7734,7 +7847,7 @@ public final class Base {
        * <code>optional int32 sevenLoginDays = 66;</code>
        */
       public boolean hasSevenLoginDays() {
-        return ((bitField1_ & 0x00020000) == 0x00020000);
+        return ((bitField1_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional int32 sevenLoginDays = 66;</code>
@@ -7746,7 +7859,7 @@ public final class Base {
        * <code>optional int32 sevenLoginDays = 66;</code>
        */
       public Builder setSevenLoginDays(int value) {
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00040000;
         sevenLoginDays_ = value;
         onChanged();
         return this;
@@ -7755,7 +7868,7 @@ public final class Base {
        * <code>optional int32 sevenLoginDays = 66;</code>
        */
       public Builder clearSevenLoginDays() {
-        bitField1_ = (bitField1_ & ~0x00020000);
+        bitField1_ = (bitField1_ & ~0x00040000);
         sevenLoginDays_ = 0;
         onChanged();
         return this;
@@ -7767,7 +7880,7 @@ public final class Base {
        * <code>optional int32 sevenSignStatus = 67;</code>
        */
       public boolean hasSevenSignStatus() {
-        return ((bitField1_ & 0x00040000) == 0x00040000);
+        return ((bitField1_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional int32 sevenSignStatus = 67;</code>
@@ -7779,7 +7892,7 @@ public final class Base {
        * <code>optional int32 sevenSignStatus = 67;</code>
        */
       public Builder setSevenSignStatus(int value) {
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00080000;
         sevenSignStatus_ = value;
         onChanged();
         return this;
@@ -7788,7 +7901,7 @@ public final class Base {
        * <code>optional int32 sevenSignStatus = 67;</code>
        */
       public Builder clearSevenSignStatus() {
-        bitField1_ = (bitField1_ & ~0x00040000);
+        bitField1_ = (bitField1_ & ~0x00080000);
         sevenSignStatus_ = 0;
         onChanged();
         return this;
@@ -7798,9 +7911,9 @@ public final class Base {
       private java.util.List<com.trans.pixel.protoc.Base.UnionBossRecord> unionBossRecord_ =
         java.util.Collections.emptyList();
       private void ensureUnionBossRecordIsMutable() {
-        if (!((bitField1_ & 0x00080000) == 0x00080000)) {
+        if (!((bitField1_ & 0x00100000) == 0x00100000)) {
           unionBossRecord_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UnionBossRecord>(unionBossRecord_);
-          bitField1_ |= 0x00080000;
+          bitField1_ |= 0x00100000;
          }
       }
 
@@ -7949,7 +8062,7 @@ public final class Base {
       public Builder clearUnionBossRecord() {
         if (unionBossRecordBuilder_ == null) {
           unionBossRecord_ = java.util.Collections.emptyList();
-          bitField1_ = (bitField1_ & ~0x00080000);
+          bitField1_ = (bitField1_ & ~0x00100000);
           onChanged();
         } else {
           unionBossRecordBuilder_.clear();
@@ -8026,7 +8139,7 @@ public final class Base {
           unionBossRecordBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.UnionBossRecord, com.trans.pixel.protoc.Base.UnionBossRecord.Builder, com.trans.pixel.protoc.Base.UnionBossRecordOrBuilder>(
                   unionBossRecord_,
-                  ((bitField1_ & 0x00080000) == 0x00080000),
+                  ((bitField1_ & 0x00100000) == 0x00100000),
                   getParentForChildren(),
                   isClean());
           unionBossRecord_ = null;
@@ -8040,7 +8153,7 @@ public final class Base {
        * <code>optional int32 unionIcon = 69;</code>
        */
       public boolean hasUnionIcon() {
-        return ((bitField1_ & 0x00100000) == 0x00100000);
+        return ((bitField1_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional int32 unionIcon = 69;</code>
@@ -8052,7 +8165,7 @@ public final class Base {
        * <code>optional int32 unionIcon = 69;</code>
        */
       public Builder setUnionIcon(int value) {
-        bitField1_ |= 0x00100000;
+        bitField1_ |= 0x00200000;
         unionIcon_ = value;
         onChanged();
         return this;
@@ -8061,7 +8174,7 @@ public final class Base {
        * <code>optional int32 unionIcon = 69;</code>
        */
       public Builder clearUnionIcon() {
-        bitField1_ = (bitField1_ & ~0x00100000);
+        bitField1_ = (bitField1_ & ~0x00200000);
         unionIcon_ = 0;
         onChanged();
         return this;
@@ -8073,7 +8186,7 @@ public final class Base {
        * <code>optional int32 lotteryCoinCount = 70;</code>
        */
       public boolean hasLotteryCoinCount() {
-        return ((bitField1_ & 0x00200000) == 0x00200000);
+        return ((bitField1_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional int32 lotteryCoinCount = 70;</code>
@@ -8085,7 +8198,7 @@ public final class Base {
        * <code>optional int32 lotteryCoinCount = 70;</code>
        */
       public Builder setLotteryCoinCount(int value) {
-        bitField1_ |= 0x00200000;
+        bitField1_ |= 0x00400000;
         lotteryCoinCount_ = value;
         onChanged();
         return this;
@@ -8094,7 +8207,7 @@ public final class Base {
        * <code>optional int32 lotteryCoinCount = 70;</code>
        */
       public Builder clearLotteryCoinCount() {
-        bitField1_ = (bitField1_ & ~0x00200000);
+        bitField1_ = (bitField1_ & ~0x00400000);
         lotteryCoinCount_ = 0;
         onChanged();
         return this;
@@ -8106,7 +8219,7 @@ public final class Base {
        * <code>optional int32 task1Order = 71;</code>
        */
       public boolean hasTask1Order() {
-        return ((bitField1_ & 0x00400000) == 0x00400000);
+        return ((bitField1_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional int32 task1Order = 71;</code>
@@ -8118,7 +8231,7 @@ public final class Base {
        * <code>optional int32 task1Order = 71;</code>
        */
       public Builder setTask1Order(int value) {
-        bitField1_ |= 0x00400000;
+        bitField1_ |= 0x00800000;
         task1Order_ = value;
         onChanged();
         return this;
@@ -8127,7 +8240,7 @@ public final class Base {
        * <code>optional int32 task1Order = 71;</code>
        */
       public Builder clearTask1Order() {
-        bitField1_ = (bitField1_ & ~0x00400000);
+        bitField1_ = (bitField1_ & ~0x00800000);
         task1Order_ = 0;
         onChanged();
         return this;
@@ -8139,7 +8252,7 @@ public final class Base {
        * <code>optional int32 task2Record = 72;</code>
        */
       public boolean hasTask2Record() {
-        return ((bitField1_ & 0x00800000) == 0x00800000);
+        return ((bitField1_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional int32 task2Record = 72;</code>
@@ -8151,7 +8264,7 @@ public final class Base {
        * <code>optional int32 task2Record = 72;</code>
        */
       public Builder setTask2Record(int value) {
-        bitField1_ |= 0x00800000;
+        bitField1_ |= 0x01000000;
         task2Record_ = value;
         onChanged();
         return this;
@@ -8160,7 +8273,7 @@ public final class Base {
        * <code>optional int32 task2Record = 72;</code>
        */
       public Builder clearTask2Record() {
-        bitField1_ = (bitField1_ & ~0x00800000);
+        bitField1_ = (bitField1_ & ~0x01000000);
         task2Record_ = 0;
         onChanged();
         return this;
@@ -8176,7 +8289,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasQuestStatus() {
-        return ((bitField1_ & 0x01000000) == 0x01000000);
+        return ((bitField1_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional int32 questStatus = 73;</code>
@@ -8196,7 +8309,7 @@ public final class Base {
        * </pre>
        */
       public Builder setQuestStatus(int value) {
-        bitField1_ |= 0x01000000;
+        bitField1_ |= 0x02000000;
         questStatus_ = value;
         onChanged();
         return this;
@@ -8209,7 +8322,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearQuestStatus() {
-        bitField1_ = (bitField1_ & ~0x01000000);
+        bitField1_ = (bitField1_ & ~0x02000000);
         questStatus_ = 0;
         onChanged();
         return this;
@@ -8225,7 +8338,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasZhaohuanshi() {
-        return ((bitField1_ & 0x02000000) == 0x02000000);
+        return ((bitField1_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional int32 zhaohuanshi = 74;</code>
@@ -8245,7 +8358,7 @@ public final class Base {
        * </pre>
        */
       public Builder setZhaohuanshi(int value) {
-        bitField1_ |= 0x02000000;
+        bitField1_ |= 0x04000000;
         zhaohuanshi_ = value;
         onChanged();
         return this;
@@ -8258,7 +8371,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearZhaohuanshi() {
-        bitField1_ = (bitField1_ & ~0x02000000);
+        bitField1_ = (bitField1_ & ~0x04000000);
         zhaohuanshi_ = 0;
         onChanged();
         return this;
@@ -8270,7 +8383,7 @@ public final class Base {
        * <code>optional uint32 zhujueExp = 75;</code>
        */
       public boolean hasZhujueExp() {
-        return ((bitField1_ & 0x04000000) == 0x04000000);
+        return ((bitField1_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional uint32 zhujueExp = 75;</code>
@@ -8282,7 +8395,7 @@ public final class Base {
        * <code>optional uint32 zhujueExp = 75;</code>
        */
       public Builder setZhujueExp(int value) {
-        bitField1_ |= 0x04000000;
+        bitField1_ |= 0x08000000;
         zhujueExp_ = value;
         onChanged();
         return this;
@@ -8291,7 +8404,7 @@ public final class Base {
        * <code>optional uint32 zhujueExp = 75;</code>
        */
       public Builder clearZhujueExp() {
-        bitField1_ = (bitField1_ & ~0x04000000);
+        bitField1_ = (bitField1_ & ~0x08000000);
         zhujueExp_ = 0;
         onChanged();
         return this;
@@ -8303,7 +8416,7 @@ public final class Base {
        * <code>optional uint32 vipExp = 76;</code>
        */
       public boolean hasVipExp() {
-        return ((bitField1_ & 0x08000000) == 0x08000000);
+        return ((bitField1_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional uint32 vipExp = 76;</code>
@@ -8315,7 +8428,7 @@ public final class Base {
        * <code>optional uint32 vipExp = 76;</code>
        */
       public Builder setVipExp(int value) {
-        bitField1_ |= 0x08000000;
+        bitField1_ |= 0x10000000;
         vipExp_ = value;
         onChanged();
         return this;
@@ -8324,7 +8437,7 @@ public final class Base {
        * <code>optional uint32 vipExp = 76;</code>
        */
       public Builder clearVipExp() {
-        bitField1_ = (bitField1_ & ~0x08000000);
+        bitField1_ = (bitField1_ & ~0x10000000);
         vipExp_ = 0;
         onChanged();
         return this;
@@ -8336,7 +8449,7 @@ public final class Base {
        * <code>optional int32 merlevel = 77;</code>
        */
       public boolean hasMerlevel() {
-        return ((bitField1_ & 0x10000000) == 0x10000000);
+        return ((bitField1_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional int32 merlevel = 77;</code>
@@ -8348,7 +8461,7 @@ public final class Base {
        * <code>optional int32 merlevel = 77;</code>
        */
       public Builder setMerlevel(int value) {
-        bitField1_ |= 0x10000000;
+        bitField1_ |= 0x20000000;
         merlevel_ = value;
         onChanged();
         return this;
@@ -8357,7 +8470,7 @@ public final class Base {
        * <code>optional int32 merlevel = 77;</code>
        */
       public Builder clearMerlevel() {
-        bitField1_ = (bitField1_ & ~0x10000000);
+        bitField1_ = (bitField1_ & ~0x20000000);
         merlevel_ = 0;
         onChanged();
         return this;
@@ -8369,7 +8482,7 @@ public final class Base {
        * <code>optional uint32 useTalentId = 78;</code>
        */
       public boolean hasUseTalentId() {
-        return ((bitField1_ & 0x20000000) == 0x20000000);
+        return ((bitField1_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional uint32 useTalentId = 78;</code>
@@ -8381,7 +8494,7 @@ public final class Base {
        * <code>optional uint32 useTalentId = 78;</code>
        */
       public Builder setUseTalentId(int value) {
-        bitField1_ |= 0x20000000;
+        bitField1_ |= 0x40000000;
         useTalentId_ = value;
         onChanged();
         return this;
@@ -8390,7 +8503,7 @@ public final class Base {
        * <code>optional uint32 useTalentId = 78;</code>
        */
       public Builder clearUseTalentId() {
-        bitField1_ = (bitField1_ & ~0x20000000);
+        bitField1_ = (bitField1_ & ~0x40000000);
         useTalentId_ = 0;
         onChanged();
         return this;
@@ -8402,7 +8515,7 @@ public final class Base {
        * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public boolean hasExtraTimeStamp() {
-        return ((bitField1_ & 0x40000000) == 0x40000000);
+        return ((bitField1_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional int64 extraTimeStamp = 79;</code>
@@ -8414,7 +8527,7 @@ public final class Base {
        * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public Builder setExtraTimeStamp(long value) {
-        bitField1_ |= 0x40000000;
+        bitField1_ |= 0x80000000;
         extraTimeStamp_ = value;
         onChanged();
         return this;
@@ -8423,7 +8536,7 @@ public final class Base {
        * <code>optional int64 extraTimeStamp = 79;</code>
        */
       public Builder clearExtraTimeStamp() {
-        bitField1_ = (bitField1_ & ~0x40000000);
+        bitField1_ = (bitField1_ & ~0x80000000);
         extraTimeStamp_ = 0L;
         onChanged();
         return this;
@@ -8435,7 +8548,7 @@ public final class Base {
        * <code>optional uint32 extraCount1 = 80;</code>
        */
       public boolean hasExtraCount1() {
-        return ((bitField1_ & 0x80000000) == 0x80000000);
+        return ((bitField2_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional uint32 extraCount1 = 80;</code>
@@ -8447,7 +8560,7 @@ public final class Base {
        * <code>optional uint32 extraCount1 = 80;</code>
        */
       public Builder setExtraCount1(int value) {
-        bitField1_ |= 0x80000000;
+        bitField2_ |= 0x00000001;
         extraCount1_ = value;
         onChanged();
         return this;
@@ -8456,7 +8569,7 @@ public final class Base {
        * <code>optional uint32 extraCount1 = 80;</code>
        */
       public Builder clearExtraCount1() {
-        bitField1_ = (bitField1_ & ~0x80000000);
+        bitField2_ = (bitField2_ & ~0x00000001);
         extraCount1_ = 0;
         onChanged();
         return this;
@@ -8468,7 +8581,7 @@ public final class Base {
        * <code>optional uint32 extraCount2 = 81;</code>
        */
       public boolean hasExtraCount2() {
-        return ((bitField2_ & 0x00000001) == 0x00000001);
+        return ((bitField2_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional uint32 extraCount2 = 81;</code>
@@ -8480,7 +8593,7 @@ public final class Base {
        * <code>optional uint32 extraCount2 = 81;</code>
        */
       public Builder setExtraCount2(int value) {
-        bitField2_ |= 0x00000001;
+        bitField2_ |= 0x00000002;
         extraCount2_ = value;
         onChanged();
         return this;
@@ -8489,7 +8602,7 @@ public final class Base {
        * <code>optional uint32 extraCount2 = 81;</code>
        */
       public Builder clearExtraCount2() {
-        bitField2_ = (bitField2_ & ~0x00000001);
+        bitField2_ = (bitField2_ & ~0x00000002);
         extraCount2_ = 0;
         onChanged();
         return this;
@@ -8501,7 +8614,7 @@ public final class Base {
        * <code>optional uint32 extraCount3 = 82;</code>
        */
       public boolean hasExtraCount3() {
-        return ((bitField2_ & 0x00000002) == 0x00000002);
+        return ((bitField2_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 extraCount3 = 82;</code>
@@ -8513,7 +8626,7 @@ public final class Base {
        * <code>optional uint32 extraCount3 = 82;</code>
        */
       public Builder setExtraCount3(int value) {
-        bitField2_ |= 0x00000002;
+        bitField2_ |= 0x00000004;
         extraCount3_ = value;
         onChanged();
         return this;
@@ -8522,7 +8635,7 @@ public final class Base {
        * <code>optional uint32 extraCount3 = 82;</code>
        */
       public Builder clearExtraCount3() {
-        bitField2_ = (bitField2_ & ~0x00000002);
+        bitField2_ = (bitField2_ & ~0x00000004);
         extraCount3_ = 0;
         onChanged();
         return this;
@@ -8534,7 +8647,7 @@ public final class Base {
        * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public boolean hasExtraHasLootTime() {
-        return ((bitField2_ & 0x00000004) == 0x00000004);
+        return ((bitField2_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int64 extraHasLootTime = 83;</code>
@@ -8546,7 +8659,7 @@ public final class Base {
        * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public Builder setExtraHasLootTime(long value) {
-        bitField2_ |= 0x00000004;
+        bitField2_ |= 0x00000008;
         extraHasLootTime_ = value;
         onChanged();
         return this;
@@ -8555,7 +8668,7 @@ public final class Base {
        * <code>optional int64 extraHasLootTime = 83;</code>
        */
       public Builder clearExtraHasLootTime() {
-        bitField2_ = (bitField2_ & ~0x00000004);
+        bitField2_ = (bitField2_ & ~0x00000008);
         extraHasLootTime_ = 0L;
         onChanged();
         return this;
@@ -8567,7 +8680,7 @@ public final class Base {
        * <code>optional uint32 extraType = 84;</code>
        */
       public boolean hasExtraType() {
-        return ((bitField2_ & 0x00000008) == 0x00000008);
+        return ((bitField2_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional uint32 extraType = 84;</code>
@@ -8579,7 +8692,7 @@ public final class Base {
        * <code>optional uint32 extraType = 84;</code>
        */
       public Builder setExtraType(int value) {
-        bitField2_ |= 0x00000008;
+        bitField2_ |= 0x00000010;
         extraType_ = value;
         onChanged();
         return this;
@@ -8588,7 +8701,7 @@ public final class Base {
        * <code>optional uint32 extraType = 84;</code>
        */
       public Builder clearExtraType() {
-        bitField2_ = (bitField2_ & ~0x00000008);
+        bitField2_ = (bitField2_ & ~0x00000010);
         extraType_ = 0;
         onChanged();
         return this;
@@ -8600,7 +8713,7 @@ public final class Base {
        * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public boolean hasExtraLastTimeStamp() {
-        return ((bitField2_ & 0x00000010) == 0x00000010);
+        return ((bitField2_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int64 extraLastTimeStamp = 85;</code>
@@ -8612,7 +8725,7 @@ public final class Base {
        * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public Builder setExtraLastTimeStamp(long value) {
-        bitField2_ |= 0x00000010;
+        bitField2_ |= 0x00000020;
         extraLastTimeStamp_ = value;
         onChanged();
         return this;
@@ -8621,7 +8734,7 @@ public final class Base {
        * <code>optional int64 extraLastTimeStamp = 85;</code>
        */
       public Builder clearExtraLastTimeStamp() {
-        bitField2_ = (bitField2_ & ~0x00000010);
+        bitField2_ = (bitField2_ & ~0x00000020);
         extraLastTimeStamp_ = 0L;
         onChanged();
         return this;
@@ -8637,7 +8750,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasUserType() {
-        return ((bitField2_ & 0x00000020) == 0x00000020);
+        return ((bitField2_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional uint32 userType = 86;</code>
@@ -8657,7 +8770,7 @@ public final class Base {
        * </pre>
        */
       public Builder setUserType(int value) {
-        bitField2_ |= 0x00000020;
+        bitField2_ |= 0x00000040;
         userType_ = value;
         onChanged();
         return this;
@@ -8670,7 +8783,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearUserType() {
-        bitField2_ = (bitField2_ & ~0x00000020);
+        bitField2_ = (bitField2_ & ~0x00000040);
         userType_ = 0;
         onChanged();
         return this;
@@ -8682,7 +8795,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public boolean hasGoldSavingBox() {
-        return ((bitField2_ & 0x00000040) == 0x00000040);
+        return ((bitField2_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional uint32 goldSavingBox = 87;</code>
@@ -8694,7 +8807,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public Builder setGoldSavingBox(int value) {
-        bitField2_ |= 0x00000040;
+        bitField2_ |= 0x00000080;
         goldSavingBox_ = value;
         onChanged();
         return this;
@@ -8703,7 +8816,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public Builder clearGoldSavingBox() {
-        bitField2_ = (bitField2_ & ~0x00000040);
+        bitField2_ = (bitField2_ & ~0x00000080);
         goldSavingBox_ = 0;
         onChanged();
         return this;
@@ -8715,7 +8828,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public boolean hasExpSavingBox() {
-        return ((bitField2_ & 0x00000080) == 0x00000080);
+        return ((bitField2_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional uint32 expSavingBox = 88;</code>
@@ -8727,7 +8840,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public Builder setExpSavingBox(int value) {
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000100;
         expSavingBox_ = value;
         onChanged();
         return this;
@@ -8736,7 +8849,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public Builder clearExpSavingBox() {
-        bitField2_ = (bitField2_ & ~0x00000080);
+        bitField2_ = (bitField2_ & ~0x00000100);
         expSavingBox_ = 0;
         onChanged();
         return this;
@@ -8752,7 +8865,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasTitle() {
-        return ((bitField2_ & 0x00000100) == 0x00000100);
+        return ((bitField2_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional uint32 title = 89;</code>
@@ -8772,7 +8885,7 @@ public final class Base {
        * </pre>
        */
       public Builder setTitle(int value) {
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000200;
         title_ = value;
         onChanged();
         return this;
@@ -8785,7 +8898,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearTitle() {
-        bitField2_ = (bitField2_ & ~0x00000100);
+        bitField2_ = (bitField2_ & ~0x00000200);
         title_ = 0;
         onChanged();
         return this;
@@ -28627,7 +28740,7 @@ public final class Base {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\372\014\n" +
+      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\222\r\n" +
       "\010UserInfo\022\n\n\002id\030\001 \002(\003\022\017\n\007account\030\002 \001(\t\022\017" +
       "\n\007session\030  \001(\t\022\014\n\004icon\030\r \001(\005\022\014\n\004name\030\003 " +
       "\001(\t\022\020\n\010serverId\030\004 \001(\005\022\017\n\007unionId\030\016 \001(\005\022\021" +
@@ -28641,100 +28754,101 @@ public final class Base {
       "\022\034\n\024freeLotteryJewelTime\030\022 \001(\003\022\030\n\020freeCo" +
       "ntractTime\030? \001(\003\022\033\n\023ladderPurchaseTimes\030" +
       "< \001(\005\022\033\n\023ladderModeLeftTimes\030\014 \001(\005\022\027\n\017PV" +
-      "PMineLeftTime\030\024 \001(\005\022\021\n\tsignCount\030\025 \001(\005\022\021" +
-      "\n\tloginDays\030\026 \001(\005\022\024\n\014lastSignTime\030\027 \001(\t\022" +
-      "\016\n\006zhanli\030\030 \001(\005\022\025\n\rlastLoginTime\030\031 \001(\t\022\021" +
-      "\n\theroLimit\030\037 \001(\005\022\024\n\014composeSkill\030! \001(\t\022" +
-      "\026\n\016rechargeRecord\030\" \001(\005\022\021\n\tvipLibao1\030# \001" +
-      "(\005\022\021\n\tvipLibao2\030$ \001(\005\022\024\n\014registerTime\030% ",
-      "\001(\t\022\026\n\016totalSignCount\030& \001(\005\022\026\n\016firstGetH" +
-      "eroId\030\' \001(\005\022\021\n\tgreenhand\030( \001(\t\022\017\n\007advanc" +
-      "e\030) \001(\005\022\033\n\023shouchongIsComplete\030* \001(\005\022\034\n\024" +
-      "shouchongIsGetReward\030+ \001(\005\0229\n\016growJewelC" +
-      "ount\0308 \003(\0132!.com.trans.pixel.protoc.Jewe" +
-      "lPool\0227\n\014growExpCount\0309 \003(\0132!.com.trans." +
-      "pixel.protoc.JewelPool\022\r\n\005skill\030: \001(\005\022\016\n" +
-      "\006failed\030; \001(\005\022\034\n\024purchaseContractLeft\030> " +
-      "\001(\005\022\021\n\tzhanliMax\030A \001(\005\022\026\n\016sevenLoginDays" +
-      "\030B \001(\005\022\027\n\017sevenSignStatus\030C \001(\005\022@\n\017union",
-      "BossRecord\030D \003(\0132\'.com.trans.pixel.proto" +
-      "c.UnionBossRecord\022\021\n\tunionIcon\030E \001(\005\022\030\n\020" +
-      "lotteryCoinCount\030F \001(\005\022\022\n\ntask1Order\030G \001" +
-      "(\005\022\023\n\013task2Record\030H \001(\005\022\023\n\013questStatus\030I" +
-      " \001(\005\022\023\n\013zhaohuanshi\030J \001(\005\022\021\n\tzhujueExp\030K" +
-      " \001(\r\022\016\n\006vipExp\030L \001(\r\022\020\n\010merlevel\030M \001(\005\022\023" +
-      "\n\013useTalentId\030N \001(\r\022\026\n\016extraTimeStamp\030O " +
-      "\001(\003\022\023\n\013extraCount1\030P \001(\r\022\023\n\013extraCount2\030" +
-      "Q \001(\r\022\023\n\013extraCount3\030R \001(\r\022\030\n\020extraHasLo" +
-      "otTime\030S \001(\003\022\021\n\textraType\030T \001(\r\022\032\n\022extra",
-      "LastTimeStamp\030U \001(\003\022\020\n\010userType\030V \001(\r\022\025\n" +
-      "\rgoldSavingBox\030W \001(\r\022\024\n\014expSavingBox\030X \001" +
-      "(\r\022\r\n\005title\030Y \001(\r\"\213\001\n\tJewelPool\022\r\n\005order" +
-      "\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\023\n\013description\030\003 " +
-      "\001(\t\022\020\n\010rewardid\030\004 \001(\005\022\023\n\013rewardcount\030\005 \001" +
-      "(\005\022\020\n\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"" +
-      "A\n\rJewelPoolList\0220\n\005order\030\001 \003(\0132!.com.tr" +
-      "ans.pixel.protoc.JewelPool\"6\n\023UnionBossU" +
-      "serRecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percent\030\002 \001" +
-      "(\005\"\367\001\n\017UnionBossRecord\022\016\n\006bossId\030\001 \001(\005\022\n",
-      "\n\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAttackH" +
-      "p\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans.pixel" +
-      ".protoc.UserRank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005c" +
-      "ount\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuserRecor" +
-      "d\030\t \003(\0132+.com.trans.pixel.protoc.UnionBo" +
-      "ssUserRecord\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com" +
-      ".trans.pixel.protoc.UserInfo\022\r\n\005score\030\002 " +
-      "\002(\005\022\014\n\004rank\030\003 \001(\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001" +
-      " \002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com" +
-      ".trans.pixel.protoc.UserTalentOrder\0226\n\005e",
-      "quip\030\005 \003(\0132\'.com.trans.pixel.protoc.User" +
-      "TalentEquip\022\013\n\003exp\030\006 \001(\r\".\n\nTeamEngine\022\n" +
-      "\n\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Tea" +
-      "m\022.\n\004user\030\001 \001(\0132 .com.trans.pixel.protoc" +
-      ".UserInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans." +
-      "pixel.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001(" +
-      "\0132\".com.trans.pixel.protoc.UserTalent\022\024\n" +
-      "\014rolePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\0132" +
-      "\".com.trans.pixel.protoc.TeamEngine\"@\n\017U" +
-      "serTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId",
-      "\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip" +
-      "\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005le" +
-      "vel\030\003 \001(\005\"\275\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003" +
-      "dps\030\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixe" +
-      "l.protoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userNam" +
-      "e\030\005 \001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n" +
-      "\003vip\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(" +
-      "\r\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clea" +
-      "rId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004" +
-      "rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005",
-      "\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipPokede\022" +
-      "\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030" +
-      "\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006" +
-      "infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(" +
-      "\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com." +
-      "trans.pixel.protoc.SkillInfo\022\r\n\005value\030\006 " +
-      "\001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010pos" +
-      "ition\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001" +
-      "(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixel.prot" +
-      "oc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank",
-      "\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPokede\030\020" +
-      " \001(\0132\'.com.trans.pixel.protoc.UserEquipP" +
-      "okede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006item" +
-      "id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n" +
-      "\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta" +
-      "\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007" +
-      "eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030" +
-      "\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name" +
-      "\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.p" +
-      "rotoc.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001",
-      "(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetc" +
-      "ount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.p" +
-      "ixel.protoc.RewardInfo\"\326\001\n\005Event\022\r\n\005orde" +
-      "r\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016" +
-      "\n\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005\022\021\n" +
-      "\tcondition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\tta" +
-      "rgetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n" +
-      " \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001(\005"
+      "PMineLeftTime\030\024 \001(\005\022\026\n\016PVPInbreakTime\030, " +
+      "\001(\005\022\021\n\tsignCount\030\025 \001(\005\022\021\n\tloginDays\030\026 \001(" +
+      "\005\022\024\n\014lastSignTime\030\027 \001(\t\022\016\n\006zhanli\030\030 \001(\005\022" +
+      "\025\n\rlastLoginTime\030\031 \001(\t\022\021\n\theroLimit\030\037 \001(" +
+      "\005\022\024\n\014composeSkill\030! \001(\t\022\026\n\016rechargeRecor" +
+      "d\030\" \001(\005\022\021\n\tvipLibao1\030# \001(\005\022\021\n\tvipLibao2\030",
+      "$ \001(\005\022\024\n\014registerTime\030% \001(\t\022\026\n\016totalSign" +
+      "Count\030& \001(\005\022\026\n\016firstGetHeroId\030\' \001(\005\022\021\n\tg" +
+      "reenhand\030( \001(\t\022\017\n\007advance\030) \001(\005\022\033\n\023shouc" +
+      "hongIsComplete\030* \001(\005\022\034\n\024shouchongIsGetRe" +
+      "ward\030+ \001(\005\0229\n\016growJewelCount\0308 \003(\0132!.com" +
+      ".trans.pixel.protoc.JewelPool\0227\n\014growExp" +
+      "Count\0309 \003(\0132!.com.trans.pixel.protoc.Jew" +
+      "elPool\022\r\n\005skill\030: \001(\005\022\016\n\006failed\030; \001(\005\022\034\n" +
+      "\024purchaseContractLeft\030> \001(\005\022\021\n\tzhanliMax" +
+      "\030A \001(\005\022\026\n\016sevenLoginDays\030B \001(\005\022\027\n\017sevenS",
+      "ignStatus\030C \001(\005\022@\n\017unionBossRecord\030D \003(\013" +
+      "2\'.com.trans.pixel.protoc.UnionBossRecor" +
+      "d\022\021\n\tunionIcon\030E \001(\005\022\030\n\020lotteryCoinCount" +
+      "\030F \001(\005\022\022\n\ntask1Order\030G \001(\005\022\023\n\013task2Recor" +
+      "d\030H \001(\005\022\023\n\013questStatus\030I \001(\005\022\023\n\013zhaohuan" +
+      "shi\030J \001(\005\022\021\n\tzhujueExp\030K \001(\r\022\016\n\006vipExp\030L" +
+      " \001(\r\022\020\n\010merlevel\030M \001(\005\022\023\n\013useTalentId\030N " +
+      "\001(\r\022\026\n\016extraTimeStamp\030O \001(\003\022\023\n\013extraCoun" +
+      "t1\030P \001(\r\022\023\n\013extraCount2\030Q \001(\r\022\023\n\013extraCo" +
+      "unt3\030R \001(\r\022\030\n\020extraHasLootTime\030S \001(\003\022\021\n\t",
+      "extraType\030T \001(\r\022\032\n\022extraLastTimeStamp\030U " +
+      "\001(\003\022\020\n\010userType\030V \001(\r\022\025\n\rgoldSavingBox\030W" +
+      " \001(\r\022\024\n\014expSavingBox\030X \001(\r\022\r\n\005title\030Y \001(" +
+      "\r\"\213\001\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\016\n\006zhanli" +
+      "\030\002 \001(\005\022\023\n\013description\030\003 \001(\t\022\020\n\010rewardid\030" +
+      "\004 \001(\005\022\023\n\013rewardcount\030\005 \001(\005\022\020\n\010rewarded\030\006" +
+      " \001(\005\022\021\n\trecharged\030\007 \001(\005\"A\n\rJewelPoolList" +
+      "\0220\n\005order\030\001 \003(\0132!.com.trans.pixel.protoc" +
+      ".JewelPool\"6\n\023UnionBossUserRecord\022\016\n\006use" +
+      "rId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\367\001\n\017UnionBoss",
+      "Record\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007en" +
+      "dTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ranks" +
+      "\030\005 \003(\0132 .com.trans.pixel.protoc.UserRank" +
+      "\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007pe" +
+      "rcent\030\010 \001(\005\022?\n\nuserRecord\030\t \003(\0132+.com.tr" +
+      "ans.pixel.protoc.UnionBossUserRecord\"S\n\004" +
+      "Rank\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.pro" +
+      "toc.UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank\030\003 \001(" +
+      "\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 " +
+      "\002(\005\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixel.pro",
+      "toc.UserTalentOrder\0226\n\005equip\030\005 \003(\0132\'.com" +
+      ".trans.pixel.protoc.UserTalentEquip\022\013\n\003e" +
+      "xp\030\006 \001(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014co" +
+      "mposeSkill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132" +
+      " .com.trans.pixel.protoc.UserInfo\0222\n\010her" +
+      "oInfo\030\002 \003(\0132 .com.trans.pixel.protoc.Her" +
+      "oInfo\0226\n\nuserTalent\030\004 \001(\0132\".com.trans.pi" +
+      "xel.protoc.UserTalent\022\024\n\014rolePosition\030\005 " +
+      "\001(\005\0226\n\nteamEngine\030\006 \003(\0132\".com.trans.pixe" +
+      "l.protoc.TeamEngine\"@\n\017UserTalentOrder\022\r",
+      "\n\005order\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030" +
+      "\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010position\030\001 \001" +
+      "(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\275\001\n\010Us" +
+      "erRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\005\022*\n\004tea" +
+      "m\030\003 \001(\0132\034.com.trans.pixel.protoc.Team\022\016\n" +
+      "\006userId\030\004 \001(\003\022\020\n\010userName\030\005 \001(\t\022\016\n\006zhanl" +
+      "i\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip\030\010 \001(\r\022\016\n\006sc" +
+      "ore2\030\t \001(\r\022\r\n\005title\030\n \001(\r\"W\n\tClearInfo\022\020" +
+      "\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005cou" +
+      "nt\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSk",
+      "illInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030\002" +
+      " \002(\005\"Q\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005\022" +
+      "\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTim" +
+      "e\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005" +
+      "level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001" +
+      "(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.prot" +
+      "oc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(" +
+      "\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006i" +
+      "sLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(" +
+      "\0132!.com.trans.pixel.protoc.ClearInfo\022\022\n\n",
+      "strengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetter" +
+      "s\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.trans" +
+      ".pixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001(" +
+      "\005\"\271\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name" +
+      "\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n" +
+      "\007weightb\030\013 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb" +
+      "\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n" +
+      "\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"Y\n\013MultiRe" +
+      "ward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo",
+      "\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t" +
+      "\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006re" +
+      "ward\030\005 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo\"\326\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007event" +
+      "id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025" +
+      "\n\rconditiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005" +
+      "\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n" +
+      "\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 " +
+      "\001(\005\022\022\n\neventcount\030\014 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28746,7 +28860,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserInfo_descriptor,
-              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", });
+              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", });
           internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new

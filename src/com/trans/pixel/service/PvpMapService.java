@@ -432,7 +432,9 @@ public class PvpMapService {
 						for (PVPMap map : maplist.getDataList()) {
 							if (map.getFieldid() == id / 100 && map.getOpened()) {
 								mine.setEndTime(RedisService.now()+24*3600);
-
+								UserInfo owner = userService.getCache(user.getServerId(), userId);
+								reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+							
 								redis.saveMine(userId, mine.build());
 								String content = "霸占了你的矿点(" + map.getName() + ")";
 								
@@ -455,8 +457,12 @@ public class PvpMapService {
 				
 				if(isme){
 					redis.addUserBuff(user, 0, 1);
-					UserInfo owner = userService.getCache(user.getServerId(), userId);
-					reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+					if(id > 1000) {
+						reward.setCount(mine.getPvpyield());
+					}else{
+						UserInfo owner = userService.getCache(user.getServerId(), userId);
+						reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+					}
 				}
 			}
 		}

@@ -1378,6 +1378,7 @@ public class UserBean {
 		builder.setFreeContractTime(Math.max(0, ((freeContractTime + 70 * TimeConst.MILLIONSECONDS_PER_HOUR - System.currentTimeMillis()) / TimeConst.MILLIONSECONDS_PER_SECOND)));
 		builder.setPurchaseContractLeft(purchaseContractLeft);
 		builder.setPVPMineLeftTime(pvpMineLeftTime);
+		builder.setPVPInbreakTime(pvpInbreakTime);
 		builder.setSignCount(signCount);
 		builder.setLoginDays(loginDays);
 		builder.setLastSignTime(lastSignTime);
