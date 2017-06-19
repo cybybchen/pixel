@@ -15876,29 +15876,29 @@ public final class UserInfoProto {
   public interface EventLevelListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.EventLevel level = 1;
+    // repeated .com.trans.pixel.protoc.EventLevel data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> 
-        getLevelList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventLevel getLevel(int index);
+    com.trans.pixel.protoc.UserInfoProto.EventLevel getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    int getLevelCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
-        getLevelOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getLevelOrBuilder(
+    com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -15954,10 +15954,10 @@ public final class UserInfoProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                level_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              level_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventLevel.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.EventLevel.PARSER, extensionRegistry));
               break;
             }
           }
@@ -15969,7 +15969,7 @@ public final class UserInfoProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          level_ = java.util.Collections.unmodifiableList(level_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -16002,44 +16002,44 @@ public final class UserInfoProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.EventLevel level = 1;
-    public static final int LEVEL_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> level_;
+    // repeated .com.trans.pixel.protoc.EventLevel data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getLevelList() {
-      return level_;
+    public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
-        getLevelOrBuilderList() {
-      return level_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    public int getLevelCount() {
-      return level_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventLevel getLevel(int index) {
-      return level_.get(index);
+    public com.trans.pixel.protoc.UserInfoProto.EventLevel getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getLevelOrBuilder(
+    public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getDataOrBuilder(
         int index) {
-      return level_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      level_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -16053,8 +16053,8 @@ public final class UserInfoProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < level_.size(); i++) {
-        output.writeMessage(1, level_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -16065,9 +16065,9 @@ public final class UserInfoProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < level_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, level_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -16177,7 +16177,7 @@ public final class UserInfoProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getLevelFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -16186,11 +16186,11 @@ public final class UserInfoProto {
 
       public Builder clear() {
         super.clear();
-        if (levelBuilder_ == null) {
-          level_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          levelBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -16219,14 +16219,14 @@ public final class UserInfoProto {
       public com.trans.pixel.protoc.UserInfoProto.EventLevelList buildPartial() {
         com.trans.pixel.protoc.UserInfoProto.EventLevelList result = new com.trans.pixel.protoc.UserInfoProto.EventLevelList(this);
         int from_bitField0_ = bitField0_;
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            level_ = java.util.Collections.unmodifiableList(level_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.level_ = level_;
+          result.data_ = data_;
         } else {
-          result.level_ = levelBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -16243,29 +16243,29 @@ public final class UserInfoProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EventLevelList other) {
         if (other == com.trans.pixel.protoc.UserInfoProto.EventLevelList.getDefaultInstance()) return this;
-        if (levelBuilder_ == null) {
-          if (!other.level_.isEmpty()) {
-            if (level_.isEmpty()) {
-              level_ = other.level_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureLevelIsMutable();
-              level_.addAll(other.level_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.level_.isEmpty()) {
-            if (levelBuilder_.isEmpty()) {
-              levelBuilder_.dispose();
-              levelBuilder_ = null;
-              level_ = other.level_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              levelBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getLevelFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              levelBuilder_.addAllMessages(other.level_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -16296,244 +16296,244 @@ public final class UserInfoProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.EventLevel level = 1;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> level_ =
+      // repeated .com.trans.pixel.protoc.EventLevel data = 1;
+      private java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> data_ =
         java.util.Collections.emptyList();
-      private void ensureLevelIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          level_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>(level_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.EventLevel>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> levelBuilder_;
+          com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getLevelList() {
-        if (levelBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(level_);
+      public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return levelBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public int getLevelCount() {
-        if (levelBuilder_ == null) {
-          return level_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return levelBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel getLevel(int index) {
-        if (levelBuilder_ == null) {
-          return level_.get(index);
+      public com.trans.pixel.protoc.UserInfoProto.EventLevel getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return levelBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder setLevel(
+      public Builder setData(
           int index, com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          levelBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder setLevel(
+      public Builder setData(
           int index, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder addLevel(com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
-        if (levelBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          levelBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           int index, com.trans.pixel.protoc.UserInfoProto.EventLevel value) {
-        if (levelBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLevelIsMutable();
-          level_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          levelBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder addLevel(
+      public Builder addData(
           int index, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder builderForValue) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          levelBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder addAllLevel(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.EventLevel> values) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          super.addAll(values, level_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          levelBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder clearLevel() {
-        if (levelBuilder_ == null) {
-          level_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          levelBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public Builder removeLevel(int index) {
-        if (levelBuilder_ == null) {
-          ensureLevelIsMutable();
-          level_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          levelBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder getLevelBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder getDataBuilder(
           int index) {
-        return getLevelFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getLevelOrBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder getDataOrBuilder(
           int index) {
-        if (levelBuilder_ == null) {
-          return level_.get(index);  } else {
-          return levelBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
-           getLevelOrBuilderList() {
-        if (levelBuilder_ != null) {
-          return levelBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(level_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addLevelBuilder() {
-        return getLevelFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.UserInfoProto.EventLevel.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addLevelBuilder(
+      public com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder addDataBuilder(
           int index) {
-        return getLevelFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.UserInfoProto.EventLevel.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.EventLevel level = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.EventLevel data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder> 
-           getLevelBuilderList() {
-        return getLevelFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder> 
-          getLevelFieldBuilder() {
-        if (levelBuilder_ == null) {
-          levelBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.UserInfoProto.EventLevel, com.trans.pixel.protoc.UserInfoProto.EventLevel.Builder, com.trans.pixel.protoc.UserInfoProto.EventLevelOrBuilder>(
-                  level_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          level_ = null;
+          data_ = null;
         }
-        return levelBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EventLevelList)
@@ -33433,57 +33433,57 @@ public final class UserInfoProto {
       "\0132\".com.trans.pixel.protoc.RewardInfo\":\n" +
       "\nDaguanList\022,\n\004data\030\001 \003(\0132\036.com.trans.pi" +
       "xel.protoc.Daguan\"*\n\nEventLevel\022\r\n\005level" +
-      "\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"C\n\016EventLevelList\022" +
-      "1\n\005level\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "EventLevel\"\215\001\n\013EventRandom\022\016\n\006level1\030\001 \001" +
-      "(\005\022\016\n\006count1\030\002 \001(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006co" +
-      "unt2\030\004 \001(\005\022\016\n\006level3\030\005 \001(\005\022\016\n\006count3\030\006 \001",
-      "(\005\022\016\n\006level4\030\007 \001(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014Ev" +
-      "entRandoms\022\n\n\002id\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#." +
-      "com.trans.pixel.protoc.EventRandom\"D\n\020Ev" +
-      "entRandomsList\0220\n\002id\030\001 \003(\0132$.com.trans.p" +
-      "ixel.protoc.EventRandoms\"J\n\010EventExp\022\n\n\002" +
-      "id\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\">\n\014EventExpList\022.\n\004" +
-      "data\030\001 \003(\0132 .com.trans.pixel.protoc.Even" +
-      "tExp\"0\n\rEventQuestion\022\016\n\006answer\030\002 \001(\t\022\017\n" +
-      "\007eventid\030\003 \001(\005\"Z\n\005Enemy\022\017\n\007enemyid\030\002 \001(\005",
-      "\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005\022\022\n\nloot" +
-      "weight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"8\n\tEnemyList\022" +
-      "+\n\004data\030\001 \003(\0132\035.com.trans.pixel.protoc.E" +
-      "nemy\":\n\nEnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com." +
-      "trans.pixel.protoc.Enemy\"\254\002\n\013EventConfig" +
-      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005" +
-      "\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\".com.tra" +
-      "ns.pixel.protoc.RewardInfo\0224\n\010lootlist\030\006" +
+      "\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"B\n\016EventLevelList\022" +
+      "0\n\004data\030\001 \003(\0132\".com.trans.pixel.protoc.E" +
+      "ventLevel\"\215\001\n\013EventRandom\022\016\n\006level1\030\001 \001(" +
+      "\005\022\016\n\006count1\030\002 \001(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006cou" +
+      "nt2\030\004 \001(\005\022\016\n\006level3\030\005 \001(\005\022\016\n\006count3\030\006 \001(",
+      "\005\022\016\n\006level4\030\007 \001(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014Eve" +
+      "ntRandoms\022\n\n\002id\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#.c" +
+      "om.trans.pixel.protoc.EventRandom\"D\n\020Eve" +
+      "ntRandomsList\0220\n\002id\030\001 \003(\0132$.com.trans.pi" +
+      "xel.protoc.EventRandoms\"J\n\010EventExp\022\n\n\002i" +
+      "d\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pixe" +
+      "l.protoc.RewardInfo\">\n\014EventExpList\022.\n\004d" +
+      "ata\030\001 \003(\0132 .com.trans.pixel.protoc.Event" +
+      "Exp\"0\n\rEventQuestion\022\016\n\006answer\030\002 \001(\t\022\017\n\007" +
+      "eventid\030\003 \001(\005\"Z\n\005Enemy\022\017\n\007enemyid\030\002 \001(\005\022",
+      "\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005\022\022\n\nlootw" +
+      "eight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"8\n\tEnemyList\022+" +
+      "\n\004data\030\001 \003(\0132\035.com.trans.pixel.protoc.En" +
+      "emy\":\n\nEnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com.t" +
+      "rans.pixel.protoc.Enemy\"\254\002\n\013EventConfig\022" +
+      "\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022" +
+      "\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\".com.tran" +
+      "s.pixel.protoc.RewardInfo\0224\n\010lootlist\030\006 " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\022" +
+      "7\n\010question\030\007 \003(\0132%.com.trans.pixel.prot",
+      "oc.EventQuestion\0226\n\nenemygroup\030\010 \001(\0132\".c" +
+      "om.trans.pixel.protoc.EnemyGroup\022\014\n\004call" +
+      "\030\t \001(\005\"D\n\017EventConfigList\0221\n\004data\030\001 \003(\0132" +
+      "#.com.trans.pixel.protoc.EventConfig\"U\n\t" +
+      "AreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.c" +
+      "om.trans.pixel.protoc.Event\022\016\n\006weight\030\003 " +
+      "\001(\005\"@\n\rAreaEventList\022/\n\004data\030\001 \003(\0132!.com" +
+      ".trans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n" +
+      "\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.p" +
+      "ixel.protoc.RewardInfo\"4\n\010LootList\022(\n\002id",
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Loot\"&\n\030" +
+      "RequestLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023" +
+      "RequestEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005o" +
+      "rder\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005ev" +
+      "ent\030\001 \003(\0132\035.com.trans.pixel.protoc.Event" +
+      "\"\037\n\035RequestLevelLootResultCommand\"{\n\031Req" +
+      "uestEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n" +
+      "\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004tu" +
+      "rn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P" +
+      "\n\032ResponseEventResultCommand\0222\n\006reward\030\001",
       " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
-      "\0227\n\010question\030\007 \003(\0132%.com.trans.pixel.pro",
-      "toc.EventQuestion\0226\n\nenemygroup\030\010 \001(\0132\"." +
-      "com.trans.pixel.protoc.EnemyGroup\022\014\n\004cal" +
-      "l\030\t \001(\005\"D\n\017EventConfigList\0221\n\004data\030\001 \003(\013" +
-      "2#.com.trans.pixel.protoc.EventConfig\"U\n" +
-      "\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035." +
-      "com.trans.pixel.protoc.Event\022\016\n\006weight\030\003" +
-      " \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001 \003(\0132!.co" +
-      "m.trans.pixel.protoc.AreaEvent\"G\n\004Loot\022\r" +
-      "\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans." +
-      "pixel.protoc.RewardInfo\"4\n\010LootList\022(\n\002i",
-      "d\030\001 \003(\0132\034.com.trans.pixel.protoc.Loot\"&\n" +
-      "\030RequestLevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n" +
-      "\023RequestEventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005" +
-      "order\030\002 \001(\005\"D\n\024ResponseEventCommand\022,\n\005e" +
-      "vent\030\001 \003(\0132\035.com.trans.pixel.protoc.Even" +
-      "t\"\037\n\035RequestLevelLootResultCommand\"{\n\031Re" +
-      "questEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020" +
-      "\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004t" +
-      "urn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"" +
-      "P\n\032ResponseEventResultCommand\0222\n\006reward\030",
-      "\001 \003(\0132\".com.trans.pixel.protoc.RewardInf" +
-      "o\"\224\001\n\030ResponseLevelLootCommand\022\024\n\014unlock" +
-      "Daguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootD" +
-      "aguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTi" +
-      "me\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Requ" +
-      "estEventBuyCommand"
+      "\"\224\001\n\030ResponseLevelLootCommand\022\024\n\014unlockD" +
+      "aguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDa" +
+      "guan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTim" +
+      "e\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Reque" +
+      "stEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33639,7 +33639,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_EventLevelList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventLevelList_descriptor,
-              new java.lang.String[] { "Level", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_EventRandom_descriptor =
             getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_EventRandom_fieldAccessorTable = new

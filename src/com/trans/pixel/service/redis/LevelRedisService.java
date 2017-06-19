@@ -914,7 +914,7 @@ public class LevelRedisService extends RedisService {
 		EventLevelList.Builder list = EventLevelList.newBuilder();
 		parseXml(xml, list);
 		Map<String, String> keyvalue = new HashMap<String, String>();
-		for(EventLevel level : list.getLevelList()){
+		for(EventLevel level : list.getDataList()){
 			EventRandom.Builder eventlevel = EventRandom.newBuilder();
 			eventlevel.setLevel1(level.getLevel());
 			eventlevel.setCount1(level.getCount());
@@ -930,7 +930,7 @@ public class LevelRedisService extends RedisService {
 			int i = 0;
 			for(EventRandom.Builder eventlevel : randoms.getOrderBuilderList()){
 				i++;
-				for(EventLevel level : list.getLevelList()){
+				for(EventLevel level : list.getDataList()){
 					if(level.getLevel() == eventlevel.getLevel1())
 						eventlevel.setCount1(level.getCount());
 					if(level.getLevel() == eventlevel.getLevel2())

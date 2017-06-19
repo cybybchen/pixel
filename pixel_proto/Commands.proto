@@ -2793,7 +2793,7 @@ message EventLevel {
 	optional int32 count = 2;
 }
 message EventLevelList {
-	repeated EventLevel level = 1;
+	repeated EventLevel data = 1;
 }
 
 message EventRandom {
