@@ -652,6 +652,9 @@ public class ShopRedisService extends RedisService{
 					}
 				}
 			}
+			if(commbuilder.getPosition() == 100) {
+				commbuilder.setMaxlimit(commbuilder.getMaxlimit()+user.getShopchipboxTime());
+			}
 		}
 		builder.setEndTime(getPVPShopEndTime());
 		return builder.build();
@@ -875,6 +878,9 @@ public class ShopRedisService extends RedisService{
 					if(userTalentService.getUserTalent(user, itemid) != null){
 						commbuilder.setIsOut(true);
 					}
+				}
+				if(commbuilder.getPosition() == 100) {
+					commbuilder.setMaxlimit(commbuilder.getMaxlimit()+user.getShopbaohuTime());
 				}
 			}
 		}

@@ -2930,15 +2930,15 @@ public final class ShopProto {
      */
     int getId();
 
-    // optional int32 sortid = 9;
+    // optional int32 position = 9;
     /**
-     * <code>optional int32 sortid = 9;</code>
+     * <code>optional int32 position = 9;</code>
      */
-    boolean hasSortid();
+    boolean hasPosition();
     /**
-     * <code>optional int32 sortid = 9;</code>
+     * <code>optional int32 position = 9;</code>
      */
-    int getSortid();
+    int getPosition();
 
     // optional int32 judge = 10;
     /**
@@ -3083,7 +3083,7 @@ public final class ShopProto {
             }
             case 72: {
               bitField0_ |= 0x00000100;
-              sortid_ = input.readInt32();
+              position_ = input.readInt32();
               break;
             }
             case 80: {
@@ -3306,20 +3306,20 @@ public final class ShopProto {
       return id_;
     }
 
-    // optional int32 sortid = 9;
-    public static final int SORTID_FIELD_NUMBER = 9;
-    private int sortid_;
+    // optional int32 position = 9;
+    public static final int POSITION_FIELD_NUMBER = 9;
+    private int position_;
     /**
-     * <code>optional int32 sortid = 9;</code>
+     * <code>optional int32 position = 9;</code>
      */
-    public boolean hasSortid() {
+    public boolean hasPosition() {
       return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional int32 sortid = 9;</code>
+     * <code>optional int32 position = 9;</code>
      */
-    public int getSortid() {
-      return sortid_;
+    public int getPosition() {
+      return position_;
     }
 
     // optional int32 judge = 10;
@@ -3411,7 +3411,7 @@ public final class ShopProto {
       will_ = 0;
       isOut_ = false;
       id_ = 0;
-      sortid_ = 0;
+      position_ = 0;
       judge_ = 0;
       discount_ = 0;
       discost_ = 0;
@@ -3471,7 +3471,7 @@ public final class ShopProto {
         output.writeInt32(8, id_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, sortid_);
+        output.writeInt32(9, position_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(10, judge_);
@@ -3531,7 +3531,7 @@ public final class ShopProto {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, sortid_);
+          .computeInt32Size(9, position_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3685,7 +3685,7 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000040);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        sortid_ = 0;
+        position_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
         judge_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
@@ -3760,7 +3760,7 @@ public final class ShopProto {
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.sortid_ = sortid_;
+        result.position_ = position_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
@@ -3823,8 +3823,8 @@ public final class ShopProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasSortid()) {
-          setSortid(other.getSortid());
+        if (other.hasPosition()) {
+          setPosition(other.getPosition());
         }
         if (other.hasJudge()) {
           setJudge(other.getJudge());
@@ -4189,35 +4189,35 @@ public final class ShopProto {
         return this;
       }
 
-      // optional int32 sortid = 9;
-      private int sortid_ ;
+      // optional int32 position = 9;
+      private int position_ ;
       /**
-       * <code>optional int32 sortid = 9;</code>
+       * <code>optional int32 position = 9;</code>
        */
-      public boolean hasSortid() {
+      public boolean hasPosition() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional int32 sortid = 9;</code>
+       * <code>optional int32 position = 9;</code>
        */
-      public int getSortid() {
-        return sortid_;
+      public int getPosition() {
+        return position_;
       }
       /**
-       * <code>optional int32 sortid = 9;</code>
+       * <code>optional int32 position = 9;</code>
        */
-      public Builder setSortid(int value) {
+      public Builder setPosition(int value) {
         bitField0_ |= 0x00000100;
-        sortid_ = value;
+        position_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 sortid = 9;</code>
+       * <code>optional int32 position = 9;</code>
        */
-      public Builder clearSortid() {
+      public Builder clearPosition() {
         bitField0_ = (bitField0_ & ~0x00000100);
-        sortid_ = 0;
+        position_ = 0;
         onChanged();
         return this;
       }
@@ -44792,125 +44792,125 @@ public final class ShopProto {
       "ightall\030\004 \001(\005\"L\n\022ContractRewardList\0226\n\006r" +
       "eward\030\001 \003(\0132&.com.trans.pixel.protoc.Con" +
       "tractReward\"=\n\016ContractReward\022\n\n\002id\030\001 \001(" +
-      "\005\022\020\n\010rewardid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"\344\001\n\tC",
+      "\005\022\020\n\010rewardid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"\346\001\n\tC",
       "ommodity\022\016\n\006itemid\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\r" +
       "\n\005count\030\003 \002(\005\022\020\n\010currency\030\004 \002(\005\022\014\n\004cost\030" +
       "\005 \002(\005\022\014\n\004will\030\006 \001(\005\022\r\n\005isOut\030\007 \001(\010\022\n\n\002id" +
-      "\030\010 \001(\005\022\016\n\006sortid\030\t \001(\005\022\r\n\005judge\030\n \001(\005\022\020\n" +
-      "\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\022\r\n\005limi" +
-      "t\030\r \001(\005\022\020\n\010maxlimit\030\016 \001(\005\">\n\rCommodityLi" +
-      "st\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.protoc." +
-      "Commodity\"b\n\010ShopList\0220\n\005items\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.Commodity\022\017\n\007endTi" +
-      "me\030\002 \001(\003\022\023\n\013refreshTime\030\003 \001(\005\"L\n\013ShopRef",
-      "resh\022\r\n\005count\030\001 \001(\005\022\016\n\006count1\030\002 \001(\005\022\020\n\010c" +
-      "urrency\030\003 \001(\005\022\014\n\004cost\030\004 \001(\005\"B\n\017ShopRefre" +
-      "shList\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.pro" +
-      "toc.ShopRefresh\"&\n\004Will\022\014\n\004will\030\001 \002(\005\022\020\n" +
-      "\010position\030\003 \001(\005\"T\n\010ShopWill\022\n\n\002id\030\001 \002(\005\022" +
-      "\020\n\010merlevel\030\002 \001(\005\022*\n\004will\030\003 \003(\0132\034.com.tr" +
-      "ans.pixel.protoc.Will\"<\n\014ShopWillList\022,\n" +
-      "\002id\030\001 \003(\0132 .com.trans.pixel.protoc.ShopW" +
-      "ill\"o\n\013LadderDaily\022\n\n\002id\030\001 \001(\005\022\017\n\007rankin" +
-      "g\030\002 \001(\005\022\020\n\010ranking1\030\003 \001(\005\0221\n\005order\030\004 \003(\013",
-      "2\".com.trans.pixel.protoc.RewardInfo\"B\n\017" +
-      "LadderDailyList\022/\n\002id\030\001 \003(\0132#.com.trans." +
-      "pixel.protoc.LadderDaily\"?\n\016LadderChongz" +
-      "hi\022\r\n\005count\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004c" +
-      "ost\030\003 \001(\005\"K\n\022LadderChongzhiList\0225\n\005count" +
-      "\030\001 \003(\0132&.com.trans.pixel.protoc.LadderCh" +
-      "ongzhi\"\373\001\n\005Cdkey\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \001" +
-      "(\t\022\017\n\007itemid1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007i" +
-      "temid2\030\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid3\030" +
-      "\007 \001(\005\022\016\n\006count3\030\010 \001(\005\0222\n\006reward\030\t \003(\0132\".",
-      "com.trans.pixel.protoc.RewardInfo\022\024\n\014cur" +
-      "rentCount\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\016\n\006length" +
-      "\030\014 \001(\005\022\014\n\004used\030\r \001(\005\"9\n\tCdkeyList\022,\n\005cdk" +
-      "ey\030\001 \003(\0132\035.com.trans.pixel.protoc.Cdkey\"" +
-      "F\n\017MultiRewardList\0223\n\006region\030\002 \003(\0132#.com" +
-      ".trans.pixel.protoc.MultiReward\"\216\001\n\022Purc" +
-      "haseCoinReward\022\016\n\006daguan\030\001 \001(\005\022\021\n\treward" +
-      "id1\030\002 \001(\005\022\017\n\007count11\030\003 \001(\005\022\017\n\007count12\030\004 " +
-      "\001(\005\022\021\n\trewardid2\030\005 \001(\005\022\017\n\007count21\030\006 \001(\005\022" +
-      "\017\n\007count22\030\007 \001(\005\"R\n\026PurchaseCoinRewardLi",
-      "st\0228\n\004gold\030\001 \003(\0132*.com.trans.pixel.proto" +
-      "c.PurchaseCoinReward\"A\n\020PurchaseCoinCost" +
-      "\022\r\n\005count\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cos" +
-      "t\030\003 \001(\005\"N\n\024PurchaseCoinCostList\0226\n\004gold\030" +
-      "\001 \003(\0132(.com.trans.pixel.protoc.PurchaseC" +
-      "oinCost\"\031\n\027RequestDailyShopCommand\"<\n\037Re" +
-      "questDailyShopPurchaseCommand\022\r\n\005index\030\001" +
-      " \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestDailyShopRefr" +
-      "eshCommand\"r\n\030ResponseDailyShopCommand\0220" +
-      "\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc.C",
-      "ommodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost" +
-      "\030\003 \001(\005\"\024\n\022RequestShopCommand\"(\n\032RequestS" +
-      "hopPurchaseCommand\022\n\n\002id\030\001 \002(\005\"G\n\023Respon" +
-      "seShopCommand\0220\n\005items\030\001 \003(\0132!.com.trans" +
-      ".pixel.protoc.Commodity\"\031\n\027RequestBlackS" +
-      "hopCommand\"<\n\037RequestBlackShopPurchaseCo" +
-      "mmand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036Requ" +
-      "estBlackShopRefreshCommand\"r\n\030ResponseBl" +
-      "ackShopCommand\0220\n\005items\030\001 \003(\0132!.com.tran" +
-      "s.pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(",
-      "\003\022\023\n\013refreshCost\030\003 \001(\005\"\031\n\027RequestUnionSh" +
-      "opCommand\"<\n\037RequestUnionShopPurchaseCom" +
-      "mand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036Reque" +
-      "stUnionShopRefreshCommand\"r\n\030ResponseUni" +
-      "onShopCommand\0220\n\005items\030\001 \003(\0132!.com.trans" +
-      ".pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003" +
-      "\022\023\n\013refreshCost\030\003 \001(\005\"\030\n\026RequestRaidShop" +
-      "Command\";\n\036RequestRaidShopPurchaseComman" +
-      "d\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\037\n\035RequestR" +
-      "aidShopRefreshCommand\"q\n\027ResponseRaidSho",
-      "pCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pixe" +
-      "l.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013r" +
-      "efreshCost\030\003 \001(\005\"\027\n\025RequestPVPShopComman" +
-      "d\":\n\035RequestPVPShopPurchaseCommand\022\r\n\005in" +
-      "dex\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\036\n\034RequestPVPShopR" +
-      "efreshCommand\"p\n\026ResponsePVPShopCommand\022" +
-      "0\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc." +
-      "Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCos" +
-      "t\030\003 \001(\005\"\036\n\034RequestExpeditionShopCommand\"" +
-      "A\n$RequestExpeditionShopPurchaseCommand\022",
-      "\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExp" +
-      "editionShopRefreshCommand\"w\n\035ResponseExp" +
-      "editionShopCommand\0220\n\005items\030\001 \003(\0132!.com." +
-      "trans.pixel.protoc.Commodity\022\017\n\007endTime\030" +
-      "\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\032\n\030RequestLad" +
-      "derShopCommand\"=\n RequestLadderShopPurch" +
-      "aseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n" +
-      "\037RequestLadderShopRefreshCommand\"s\n\031Resp" +
-      "onseLadderShopCommand\0220\n\005items\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.Commodity\022\017\n\007endTi",
-      "me\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\037\n\035Request" +
-      "BattletowerShopCommand\"B\n%RequestBattlet" +
-      "owerShopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n" +
-      "\n\002id\030\002 \002(\005\"&\n$RequestBattletowerShopRefr" +
-      "eshCommand\"x\n\036ResponseBattletowerShopCom" +
-      "mand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.pr" +
-      "otoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refre" +
-      "shCost\030\003 \001(\005\"\231\001\n\005YueKa\022\016\n\006itemid\030\001 \002(\005\022\020" +
-      "\n\010rewardid\030\002 \001(\005\022\023\n\013rewardcount\030\003 \001(\005\022\r\n" +
-      "\005count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\022\021\n\trewardid1\030",
-      "\006 \001(\005\022\024\n\014rewardcount1\030\007 \001(\005\022\023\n\013jingyan_p" +
-      "er\030\t \001(\005\"8\n\tYueKaList\022+\n\004item\030\001 \003(\0132\035.co" +
-      "m.trans.pixel.protoc.YueKa\"\201\001\n\005Libao\022\n\n\002" +
-      "id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010purchase" +
-      "\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022\017\n\007endtime\030\005 \001" +
-      "(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"8" +
-      "\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.pi" +
-      "xel.protoc.Libao\"\031\n\027RequestLibaoShopComm" +
-      "and\"H\n\030ResponseLibaoShopCommand\022,\n\005items" +
-      "\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\")\n",
-      "\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010" +
-      "\"T\n\"ResponseFirstRechargeStatusCommand\022." +
-      "\n\006status\030\001 \003(\0132\036.com.trans.pixel.protoc." +
-      "Status\"0\n\036RequestPurchaseContractCommand" +
-      "\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoinC" +
-      "ommand\"Q\n\033ResponsePurchaseCoinCommand\022\r\n" +
-      "\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalT" +
-      "ime\030\005 \001(\005"
+      "\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\r\n\005judge\030\n \001(\005\022" +
+      "\020\n\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\022\r\n\005li" +
+      "mit\030\r \001(\005\022\020\n\010maxlimit\030\016 \001(\005\">\n\rCommodity" +
+      "List\022-\n\002id\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.Commodity\"b\n\010ShopList\0220\n\005items\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.Commodity\022\017\n\007end" +
+      "Time\030\002 \001(\003\022\023\n\013refreshTime\030\003 \001(\005\"L\n\013ShopR",
+      "efresh\022\r\n\005count\030\001 \001(\005\022\016\n\006count1\030\002 \001(\005\022\020\n" +
+      "\010currency\030\003 \001(\005\022\014\n\004cost\030\004 \001(\005\"B\n\017ShopRef" +
+      "reshList\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.p" +
+      "rotoc.ShopRefresh\"&\n\004Will\022\014\n\004will\030\001 \002(\005\022" +
+      "\020\n\010position\030\003 \001(\005\"T\n\010ShopWill\022\n\n\002id\030\001 \002(" +
+      "\005\022\020\n\010merlevel\030\002 \001(\005\022*\n\004will\030\003 \003(\0132\034.com." +
+      "trans.pixel.protoc.Will\"<\n\014ShopWillList\022" +
+      ",\n\002id\030\001 \003(\0132 .com.trans.pixel.protoc.Sho" +
+      "pWill\"o\n\013LadderDaily\022\n\n\002id\030\001 \001(\005\022\017\n\007rank" +
+      "ing\030\002 \001(\005\022\020\n\010ranking1\030\003 \001(\005\0221\n\005order\030\004 \003",
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\"B" +
+      "\n\017LadderDailyList\022/\n\002id\030\001 \003(\0132#.com.tran" +
+      "s.pixel.protoc.LadderDaily\"?\n\016LadderChon" +
+      "gzhi\022\r\n\005count\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n" +
+      "\004cost\030\003 \001(\005\"K\n\022LadderChongzhiList\0225\n\005cou" +
+      "nt\030\001 \003(\0132&.com.trans.pixel.protoc.Ladder" +
+      "Chongzhi\"\373\001\n\005Cdkey\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002" +
+      " \001(\t\022\017\n\007itemid1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n" +
+      "\007itemid2\030\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid" +
+      "3\030\007 \001(\005\022\016\n\006count3\030\010 \001(\005\0222\n\006reward\030\t \003(\0132",
+      "\".com.trans.pixel.protoc.RewardInfo\022\024\n\014c" +
+      "urrentCount\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\016\n\006leng" +
+      "th\030\014 \001(\005\022\014\n\004used\030\r \001(\005\"9\n\tCdkeyList\022,\n\005c" +
+      "dkey\030\001 \003(\0132\035.com.trans.pixel.protoc.Cdke" +
+      "y\"F\n\017MultiRewardList\0223\n\006region\030\002 \003(\0132#.c" +
+      "om.trans.pixel.protoc.MultiReward\"\216\001\n\022Pu" +
+      "rchaseCoinReward\022\016\n\006daguan\030\001 \001(\005\022\021\n\trewa" +
+      "rdid1\030\002 \001(\005\022\017\n\007count11\030\003 \001(\005\022\017\n\007count12\030" +
+      "\004 \001(\005\022\021\n\trewardid2\030\005 \001(\005\022\017\n\007count21\030\006 \001(" +
+      "\005\022\017\n\007count22\030\007 \001(\005\"R\n\026PurchaseCoinReward",
+      "List\0228\n\004gold\030\001 \003(\0132*.com.trans.pixel.pro" +
+      "toc.PurchaseCoinReward\"A\n\020PurchaseCoinCo" +
+      "st\022\r\n\005count\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004c" +
+      "ost\030\003 \001(\005\"N\n\024PurchaseCoinCostList\0226\n\004gol" +
+      "d\030\001 \003(\0132(.com.trans.pixel.protoc.Purchas" +
+      "eCoinCost\"\031\n\027RequestDailyShopCommand\"<\n\037" +
+      "RequestDailyShopPurchaseCommand\022\r\n\005index" +
+      "\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestDailyShopRe" +
+      "freshCommand\"r\n\030ResponseDailyShopCommand" +
+      "\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc",
+      ".Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCo" +
+      "st\030\003 \001(\005\"\024\n\022RequestShopCommand\"(\n\032Reques" +
+      "tShopPurchaseCommand\022\n\n\002id\030\001 \002(\005\"G\n\023Resp" +
+      "onseShopCommand\0220\n\005items\030\001 \003(\0132!.com.tra" +
+      "ns.pixel.protoc.Commodity\"\031\n\027RequestBlac" +
+      "kShopCommand\"<\n\037RequestBlackShopPurchase" +
+      "Command\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036Re" +
+      "questBlackShopRefreshCommand\"r\n\030Response" +
+      "BlackShopCommand\0220\n\005items\030\001 \003(\0132!.com.tr" +
+      "ans.pixel.protoc.Commodity\022\017\n\007endTime\030\002 ",
+      "\001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\031\n\027RequestUnion" +
+      "ShopCommand\"<\n\037RequestUnionShopPurchaseC" +
+      "ommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036Req" +
+      "uestUnionShopRefreshCommand\"r\n\030ResponseU" +
+      "nionShopCommand\0220\n\005items\030\001 \003(\0132!.com.tra" +
+      "ns.pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001" +
+      "(\003\022\023\n\013refreshCost\030\003 \001(\005\"\030\n\026RequestRaidSh" +
+      "opCommand\";\n\036RequestRaidShopPurchaseComm" +
+      "and\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\037\n\035Reques" +
+      "tRaidShopRefreshCommand\"q\n\027ResponseRaidS",
+      "hopCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pi" +
+      "xel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n" +
+      "\013refreshCost\030\003 \001(\005\"\027\n\025RequestPVPShopComm" +
+      "and\":\n\035RequestPVPShopPurchaseCommand\022\r\n\005" +
+      "index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\036\n\034RequestPVPSho" +
+      "pRefreshCommand\"p\n\026ResponsePVPShopComman" +
+      "d\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshC" +
+      "ost\030\003 \001(\005\"\036\n\034RequestExpeditionShopComman" +
+      "d\"A\n$RequestExpeditionShopPurchaseComman",
+      "d\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestE" +
+      "xpeditionShopRefreshCommand\"w\n\035ResponseE" +
+      "xpeditionShopCommand\0220\n\005items\030\001 \003(\0132!.co" +
+      "m.trans.pixel.protoc.Commodity\022\017\n\007endTim" +
+      "e\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\032\n\030RequestL" +
+      "adderShopCommand\"=\n RequestLadderShopPur" +
+      "chaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"" +
+      "!\n\037RequestLadderShopRefreshCommand\"s\n\031Re" +
+      "sponseLadderShopCommand\0220\n\005items\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.Commodity\022\017\n\007end",
+      "Time\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\037\n\035Reque" +
+      "stBattletowerShopCommand\"B\n%RequestBattl" +
+      "etowerShopPurchaseCommand\022\r\n\005index\030\001 \002(\005" +
+      "\022\n\n\002id\030\002 \002(\005\"&\n$RequestBattletowerShopRe" +
+      "freshCommand\"x\n\036ResponseBattletowerShopC" +
+      "ommand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013ref" +
+      "reshCost\030\003 \001(\005\"\231\001\n\005YueKa\022\016\n\006itemid\030\001 \002(\005" +
+      "\022\020\n\010rewardid\030\002 \001(\005\022\023\n\013rewardcount\030\003 \001(\005\022" +
+      "\r\n\005count\030\004 \001(\005\022\014\n\004name\030\005 \001(\t\022\021\n\trewardid",
+      "1\030\006 \001(\005\022\024\n\014rewardcount1\030\007 \001(\005\022\023\n\013jingyan" +
+      "_per\030\t \001(\005\"8\n\tYueKaList\022+\n\004item\030\001 \003(\0132\035." +
+      "com.trans.pixel.protoc.YueKa\"\201\001\n\005Libao\022\n" +
+      "\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010purcha" +
+      "se\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022\017\n\007endtime\030\005" +
+      " \001(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005" +
+      "\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans." +
+      "pixel.protoc.Libao\"\031\n\027RequestLibaoShopCo" +
+      "mmand\"H\n\030ResponseLibaoShopCommand\022,\n\005ite" +
+      "ms\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\"",
+      ")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001" +
+      "(\010\"T\n\"ResponseFirstRechargeStatusCommand" +
+      "\022.\n\006status\030\001 \003(\0132\036.com.trans.pixel.proto" +
+      "c.Status\"0\n\036RequestPurchaseContractComma" +
+      "nd\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoi" +
+      "nCommand\"Q\n\033ResponsePurchaseCoinCommand\022" +
+      "\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttota" +
+      "lTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -44946,7 +44946,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Commodity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Commodity_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Count", "Currency", "Cost", "Will", "IsOut", "Id", "Sortid", "Judge", "Discount", "Discost", "Limit", "Maxlimit", });
+              new java.lang.String[] { "Itemid", "Name", "Count", "Currency", "Cost", "Will", "IsOut", "Id", "Position", "Judge", "Discount", "Discost", "Limit", "Maxlimit", });
           internal_static_com_trans_pixel_protoc_CommodityList_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_CommodityList_fieldAccessorTable = new
