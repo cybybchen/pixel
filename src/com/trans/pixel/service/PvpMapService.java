@@ -380,6 +380,70 @@ public class PvpMapService {
 		return rewards.build();
 	}
 
+	public MultiReward attackEvents(UserBean user){
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		Map<String, String> pvpMap = redis.getUserBuffs(user);
+//		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
+		List<PVPEvent> events = redis.getEvents(user, pvpMap);
+		Map<String, PVPMap> map = redis.getPvpMap();
+		for(PVPEvent event : events) {
+			if(event.hasEndtime() && !DateUtil.timeIsAvailable(event.getStarttime(), event.getEndtime())) {
+				redis.deleteEvent(user, event.getPositionid());
+				continue;
+			}
+			if(event.getEventid()/1000 == 21)
+				redis.deleteBoss(user, event.getPositionid());
+			else
+				redis.deleteEvent(user, event.getPositionid());
+			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
+			if(map.containsKey(event.getFieldid()+"")) {
+				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
+			}
+			String buffstr = pvpMap.get(event.getFieldid()+"");
+			if(buffstr == null || Integer.parseInt(buffstr) <= event.getLevel())
+				continue;
+			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
+			if (event.getEventid()/1000 == 21) {
+				/**
+				 * PVP攻击BOSS的活动
+				 */
+				activityService.pvpAttackBossSuccessActivity(user);
+			}
+			/**
+			 * 攻击怪物的活动
+			 */
+			activityService.attackMonster(user);
+			
+			unionService.killMonsterBossActivity(user, event.getEventid(), 1);
+			/**
+			 * buff的活动
+			 */
+			activityService.upPvpBuff(user, event.getFieldid(), buff);
+	
+//			user.addMyactive();
+//			if(user.getMyactive() >= 100){
+//				user.setMyactive(user.getMyactive() - 100);
+//				refreshAMine(user);
+//			}
+		}
+		userService.updateUser(user);
+
+//		int logType = PvpMapConst.TYPE_MONSTER;
+//		if (event.getEventid()/1000 == 21) {
+//			logType = PvpMapConst.TYPE_BOSS;
+//		}
+		
+//		MultiReward.Builder rewards = null;
+//		int buff = -1;
+//		
+//		/**
+//		 * send log
+//		 */
+//		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, event.getEventid(), 0);
+		
+		return rewards.build();
+	}
+
 	public RewardInfo attackMine(UserBean user, int id, boolean ret, int time, boolean isme, UserBean my){
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(RewardConst.PVPCOIN);

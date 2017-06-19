@@ -119,7 +119,11 @@ public class PvpCommandService extends BaseCommandService {
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
-		MultiReward rewards = pvpMapService.attackEvent(user, cmd.getPositionid(), cmd.getRet(), time);
+		MultiReward rewards = null;
+		if(cmd.hasPositionid())
+			rewards = pvpMapService.attackEvent(user, cmd.getPositionid(), cmd.getRet(), time);
+		else
+			rewards = pvpMapService.attackEvents(user);
 		if(rewards == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
