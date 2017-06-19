@@ -631,7 +631,8 @@ public class ShopRedisService extends RedisService{
 		}
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getIdList());
-		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+		for(int i = builder.getItemsCount()-1; i >= 0; i--) {
+			Commodity.Builder commbuilder = builder.getItemsBuilder(i);
 			commbuilder.setMaxlimit(commbuilder.getLimit());
 			commbuilder.setLimit(0);
 			if(commbuilder.getCount() == 1) {
@@ -654,6 +655,8 @@ public class ShopRedisService extends RedisService{
 			}
 			if(commbuilder.getPosition() == 100) {
 				commbuilder.setMaxlimit(commbuilder.getMaxlimit()+user.getShopchipboxTime());
+				if(commbuilder.getMaxlimit() == 0)
+					builder.removeItems(i);
 			}
 		}
 		builder.setEndTime(getPVPShopEndTime());
@@ -859,7 +862,8 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getIdList());
 		builder.setEndTime(getPVPShopEndTime());
-		for(Commodity.Builder commbuilder : builder.getItemsBuilderList()) {
+		for(int i = builder.getItemsCount()-1; i >= 0; i--) {
+			Commodity.Builder commbuilder = builder.getItemsBuilder(i);
 			commbuilder.setMaxlimit(commbuilder.getLimit());
 			commbuilder.setLimit(0);
 			if(commbuilder.getCount() == 1) {
@@ -881,6 +885,8 @@ public class ShopRedisService extends RedisService{
 				}
 				if(commbuilder.getPosition() == 100) {
 					commbuilder.setMaxlimit(commbuilder.getMaxlimit()+user.getShopbaohuTime());
+					if(commbuilder.getMaxlimit() == 0)
+						builder.removeItems(i);
 				}
 			}
 		}
