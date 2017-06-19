@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserRewardTaskService {
@@ -106,6 +107,8 @@ public class UserRewardTaskService {
 						index++;
 						continue;
 					}
+					if(!"".equals(task.getEndtime()) && !DateUtil.timeIsAvailable(task.getStarttime(), task.getEndtime()))
+						continue;//不在有效期
 					UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 					task.setEventid(task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid());
 					builder.setTask(task);

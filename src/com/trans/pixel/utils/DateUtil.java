@@ -596,12 +596,12 @@ public class DateUtil {
 		SimpleDateFormat df = new SimpleDateFormat(simpleDate);
 		Date startDate = null;
 		Date endDate = null;
-		Date currentDate = null;
-		String currentTimeStr = df.format(new Date());
+		Date currentDate = new Date();
+//		String currentTimeStr = df.format(new Date());
 		try {
 			startDate= df.parse(startTimeStr);
 			endDate = df.parse(endTimeStr);
-			currentDate = df.parse(currentTimeStr);
+//			currentDate = df.parse(currentTimeStr);
 		} catch (ParseException e) {
 			
 		}  

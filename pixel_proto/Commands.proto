@@ -3309,6 +3309,8 @@ message RewardTask {
 	optional int32 members = 5;
 	optional int32 randcount = 6;
 	optional int32 count = 7;
+	optional string starttime = 12;
+	optional string endtime = 11;
 	repeated RewardInfo lootlist = 8;
 	repeated Event event = 9;
 }

@@ -91,6 +91,36 @@ public final class RewardTaskProto {
      */
     int getCount();
 
+    // optional string starttime = 12;
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    boolean hasStarttime();
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    java.lang.String getStarttime();
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getStarttimeBytes();
+
+    // optional string endtime = 11;
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    boolean hasEndtime();
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    java.lang.String getEndtime();
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getEndtimeBytes();
+
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 8;
     /**
      * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 8;</code>
@@ -232,17 +262,17 @@ public final class RewardTaskProto {
               break;
             }
             case 66: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
                 lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00000400;
               }
               lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
                 event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000800;
               }
               event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
               break;
@@ -250,6 +280,16 @@ public final class RewardTaskProto {
             case 80: {
               bitField0_ |= 0x00000001;
               id_ = input.readInt32();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000200;
+              endtime_ = input.readBytes();
+              break;
+            }
+            case 98: {
+              bitField0_ |= 0x00000100;
+              starttime_ = input.readBytes();
               break;
             }
           }
@@ -260,10 +300,10 @@ public final class RewardTaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           event_ = java.util.Collections.unmodifiableList(event_);
         }
         this.unknownFields = unknownFields.build();
@@ -426,6 +466,92 @@ public final class RewardTaskProto {
       return count_;
     }
 
+    // optional string starttime = 12;
+    public static final int STARTTIME_FIELD_NUMBER = 12;
+    private java.lang.Object starttime_;
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    public boolean hasStarttime() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    public java.lang.String getStarttime() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          starttime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string starttime = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStarttimeBytes() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        starttime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string endtime = 11;
+    public static final int ENDTIME_FIELD_NUMBER = 11;
+    private java.lang.Object endtime_;
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public boolean hasEndtime() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public java.lang.String getEndtime() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          endtime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEndtimeBytes() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        endtime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 8;
     public static final int LOOTLIST_FIELD_NUMBER = 8;
     private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_;
@@ -507,6 +633,8 @@ public final class RewardTaskProto {
       members_ = 0;
       randcount_ = 0;
       count_ = 0;
+      starttime_ = "";
+      endtime_ = "";
       lootlist_ = java.util.Collections.emptyList();
       event_ = java.util.Collections.emptyList();
     }
@@ -551,6 +679,12 @@ public final class RewardTaskProto {
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(10, id_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(11, getEndtimeBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(12, getStarttimeBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -600,6 +734,14 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, id_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getEndtimeBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getStarttimeBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -739,15 +881,19 @@ public final class RewardTaskProto {
         bitField0_ = (bitField0_ & ~0x00000040);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        starttime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000400);
         } else {
           lootlistBuilder_.clear();
         }
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000800);
         } else {
           eventBuilder_.clear();
         }
@@ -811,19 +957,27 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000080;
         }
         result.count_ = count_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.endtime_ = endtime_;
         if (lootlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+          if (((bitField0_ & 0x00000400) == 0x00000400)) {
             lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00000400);
           }
           result.lootlist_ = lootlist_;
         } else {
           result.lootlist_ = lootlistBuilder_.build();
         }
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+          if (((bitField0_ & 0x00000800) == 0x00000800)) {
             event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000800);
           }
           result.event_ = event_;
         } else {
@@ -869,11 +1023,21 @@ public final class RewardTaskProto {
         if (other.hasCount()) {
           setCount(other.getCount());
         }
+        if (other.hasStarttime()) {
+          bitField0_ |= 0x00000100;
+          starttime_ = other.starttime_;
+          onChanged();
+        }
+        if (other.hasEndtime()) {
+          bitField0_ |= 0x00000200;
+          endtime_ = other.endtime_;
+          onChanged();
+        }
         if (lootlistBuilder_ == null) {
           if (!other.lootlist_.isEmpty()) {
             if (lootlist_.isEmpty()) {
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000400);
             } else {
               ensureLootlistIsMutable();
               lootlist_.addAll(other.lootlist_);
@@ -886,7 +1050,7 @@ public final class RewardTaskProto {
               lootlistBuilder_.dispose();
               lootlistBuilder_ = null;
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+              bitField0_ = (bitField0_ & ~0x00000400);
               lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLootlistFieldBuilder() : null;
@@ -899,7 +1063,7 @@ public final class RewardTaskProto {
           if (!other.event_.isEmpty()) {
             if (event_.isEmpty()) {
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000800);
             } else {
               ensureEventIsMutable();
               event_.addAll(other.event_);
@@ -912,7 +1076,7 @@ public final class RewardTaskProto {
               eventBuilder_.dispose();
               eventBuilder_ = null;
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000800);
               eventBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEventFieldBuilder() : null;
@@ -1212,13 +1376,161 @@ public final class RewardTaskProto {
         return this;
       }
 
+      // optional string starttime = 12;
+      private java.lang.Object starttime_ = "";
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public boolean hasStarttime() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public java.lang.String getStarttime() {
+        java.lang.Object ref = starttime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          starttime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStarttimeBytes() {
+        java.lang.Object ref = starttime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          starttime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public Builder setStarttime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public Builder clearStarttime() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        starttime_ = getDefaultInstance().getStarttime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 12;</code>
+       */
+      public Builder setStarttimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string endtime = 11;
+      private java.lang.Object endtime_ = "";
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public boolean hasEndtime() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public java.lang.String getEndtime() {
+        java.lang.Object ref = endtime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          endtime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEndtimeBytes() {
+        java.lang.Object ref = endtime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          endtime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder setEndtime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder clearEndtime() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        endtime_ = getDefaultInstance().getEndtime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder setEndtimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+
       // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 8;
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
       private void ensureLootlistIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
           lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000400;
          }
       }
 
@@ -1367,7 +1679,7 @@ public final class RewardTaskProto {
       public Builder clearLootlist() {
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00000400);
           onChanged();
         } else {
           lootlistBuilder_.clear();
@@ -1444,7 +1756,7 @@ public final class RewardTaskProto {
           lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   lootlist_,
-                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  ((bitField0_ & 0x00000400) == 0x00000400),
                   getParentForChildren(),
                   isClean());
           lootlist_ = null;
@@ -1456,9 +1768,9 @@ public final class RewardTaskProto {
       private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
           event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000800;
          }
       }
 
@@ -1607,7 +1919,7 @@ public final class RewardTaskProto {
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000800);
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -1684,7 +1996,7 @@ public final class RewardTaskProto {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
-                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  ((bitField0_ & 0x00000800) == 0x00000800),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -10470,44 +10782,45 @@ public final class RewardTaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\025RewardTaskProto.proto\022\026com.trans.pixel" +
-      ".protoc\032\nBase.proto\"\357\001\n\nRewardTask\022\n\n\002id" +
+      ".protoc\032\nBase.proto\"\223\002\n\nRewardTask\022\n\n\002id" +
       "\030\n \001(\005\022\014\n\004type\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\020\n" +
       "\010merlevel\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\017\n\007member" +
       "s\030\005 \001(\005\022\021\n\trandcount\030\006 \001(\005\022\r\n\005count\030\007 \001(" +
-      "\005\0224\n\010lootlist\030\010 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo\022,\n\005event\030\t \003(\0132\035.com.tra" +
-      "ns.pixel.protoc.Event\"B\n\016RewardTaskList\022" +
-      "0\n\004data\030\001 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardTask\"I\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004",
-      "user\030\002 \001(\0132 .com.trans.pixel.protoc.User" +
-      "Info\"\221\002\n\016UserRewardTask\0220\n\004task\030\001 \002(\0132\"." +
-      "com.trans.pixel.protoc.RewardTask\022\021\n\tlef" +
-      "tcount\030\002 \001(\005\022\016\n\006status\030\003 \001(\r\0222\n\010roomInfo" +
-      "\030\005 \001(\0132 .com.trans.pixel.protoc.RoomInfo" +
-      "\022\017\n\007endtime\030\006 \001(\003\022\r\n\005index\030\007 \002(\r\"V\n\021REWA" +
-      "RDTASK_STATUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANR" +
-      "EWARD\020\002\022\010\n\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005" +
-      "\"\216\001\n\022UserRewardTaskRoom\022\024\n\014createUserId\030" +
-      "\001 \002(\004\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010",
-      "roomInfo\030\006 \003(\0132 .com.trans.pixel.protoc." +
-      "RoomInfo\022\017\n\007eventid\030\007 \001(\r\"3\n\"RequestCrea" +
-      "teRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A" +
-      "\n RequestQuitRewardTaskRoomCommand\022\r\n\005in" +
-      "dex\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInvi" +
-      "teToRewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n" +
-      "\006userId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005i" +
-      "ndex\030\004 \001(\r\"A\n#RequestSubmitRewardTaskSco" +
-      "reCommand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n" +
-      "\035ResponseUserRewardTaskCommand\022>\n\016userRe",
-      "wardTask\030\001 \003(\0132&.com.trans.pixel.protoc." +
-      "UserRewardTask\"]\n!ResponseUserRewardTask" +
-      "RoomCommand\0228\n\004room\030\001 \003(\0132*.com.trans.pi" +
-      "xel.protoc.UserRewardTaskRoom\"\036\n\034Request" +
-      "UserRewardTaskCommand\"/\n\036RequestRewardTa" +
-      "skRewardCommand\022\r\n\005index\030\002 \002(\r\"1\n Reques" +
-      "tUserRewardTaskRoomCommand\022\r\n\005index\030\001 \002(" +
-      "\r\"/\n\036RequestGiveupRewardTaskCommand\022\r\n\005i" +
-      "ndex\030\001 \002(\r"
+      "\005\022\021\n\tstarttime\030\014 \001(\t\022\017\n\007endtime\030\013 \001(\t\0224\n" +
+      "\010lootlist\030\010 \003(\0132\".com.trans.pixel.protoc" +
+      ".RewardInfo\022,\n\005event\030\t \003(\0132\035.com.trans.p" +
+      "ixel.protoc.Event\"B\n\016RewardTaskList\0220\n\004d" +
+      "ata\030\001 \003(\0132\".com.trans.pixel.protoc.Rewar",
+      "dTask\"I\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004user" +
+      "\030\002 \001(\0132 .com.trans.pixel.protoc.UserInfo" +
+      "\"\221\002\n\016UserRewardTask\0220\n\004task\030\001 \002(\0132\".com." +
+      "trans.pixel.protoc.RewardTask\022\021\n\tleftcou" +
+      "nt\030\002 \001(\005\022\016\n\006status\030\003 \001(\r\0222\n\010roomInfo\030\005 \001" +
+      "(\0132 .com.trans.pixel.protoc.RoomInfo\022\017\n\007" +
+      "endtime\030\006 \001(\003\022\r\n\005index\030\007 \002(\r\"V\n\021REWARDTA" +
+      "SK_STATUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWAR" +
+      "D\020\002\022\010\n\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\216\001\n" +
+      "\022UserRewardTaskRoom\022\024\n\014createUserId\030\001 \002(",
+      "\004\022\016\n\006status\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010room" +
+      "Info\030\006 \003(\0132 .com.trans.pixel.protoc.Room" +
+      "Info\022\017\n\007eventid\030\007 \001(\r\"3\n\"RequestCreateRe" +
+      "wardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"A\n Re" +
+      "questQuitRewardTaskRoomCommand\022\r\n\005index\030" +
+      "\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteTo" +
+      "RewardTaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006use" +
+      "rId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index" +
+      "\030\004 \001(\r\"A\n#RequestSubmitRewardTaskScoreCo" +
+      "mmand\022\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035Res",
+      "ponseUserRewardTaskCommand\022>\n\016userReward" +
+      "Task\030\001 \003(\0132&.com.trans.pixel.protoc.User" +
+      "RewardTask\"]\n!ResponseUserRewardTaskRoom" +
+      "Command\0228\n\004room\030\001 \003(\0132*.com.trans.pixel." +
+      "protoc.UserRewardTaskRoom\"\036\n\034RequestUser" +
+      "RewardTaskCommand\"/\n\036RequestRewardTaskRe" +
+      "wardCommand\022\r\n\005index\030\002 \002(\r\"1\n RequestUse" +
+      "rRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n" +
+      "\036RequestGiveupRewardTaskCommand\022\r\n\005index" +
+      "\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -10519,7 +10832,7 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_RewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTask_descriptor,
-              new java.lang.String[] { "Id", "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Lootlist", "Event", });
+              new java.lang.String[] { "Id", "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Starttime", "Endtime", "Lootlist", "Event", });
           internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_RewardTaskList_fieldAccessorTable = new
