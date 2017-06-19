@@ -15,6 +15,7 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.service.redis.ActivityRedisService;
+import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -26,6 +27,8 @@ public class RankService {
 	private RankRedisService rankRedisService;
 	@Resource
 	private UserLadderRedisService userLadderRedisService;
+	@Resource
+	private LadderRedisService ladderRedisService;
 	@Resource
 	private ActivityRedisService activityRedisService;
 	@Resource
@@ -39,12 +42,26 @@ public class RankService {
 				return getZhanliRankList(serverId);
 //			case RankConst.TYPE_RECHARGE:
 //				return getOtherRankList(serverId, type);
+			case RankConst.TYPE_LADDER_MODE:
+				return getLadderModeRankList(serverId);
 			default:
 				return getOtherRankList(serverId, type);
 		}
 	}
 	
 	private List<UserRankBean> getLadderRankList(int serverId) {
+		List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, RankConst.RANK_LIST_START, RankConst.RANK_LIST_END);
+		for (UserRankBean userRank : rankList) {
+			if (userRank.getUserId() > 0) {
+				UserInfo userInfo = userService.getCache(serverId, userRank.getUserId());
+				userRank.initByUserCache(userInfo);
+			}
+		}
+ 		
+ 		return rankList;
+	}
+	
+	private List<UserRankBean> getLadderModeRankList(int serverId) {
 		Set<TypedTuple<String>> ranks = userLadderRedisService.getLadderRankList(serverId, RankConst.RANK_LIST_START - 1, RankConst.RANK_LIST_END - 1);
 		List<UserInfo> userInfoList = userService.getCaches(serverId, ranks);
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
