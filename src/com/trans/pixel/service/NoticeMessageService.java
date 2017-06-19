@@ -148,7 +148,7 @@ public class NoticeMessageService {
 			Title title = serverTitleRedisService.getTitle(minTitle);
 			
 			StringBuilder sb = new StringBuilder();
-			sb.append("%s,").append(title.getRare()).append(",").append(title.getName()).append(user.getUserName()).append("上线了！");
+			sb.append("%s,").append(title.getRare()).append(",").append(title.getName()).append(" ").append(user.getUserName()).append("上线了！");
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 		}
