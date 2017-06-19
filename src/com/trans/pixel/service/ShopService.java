@@ -191,7 +191,7 @@ public class ShopService {
 		builder.setRechargeid(rechargeid);
 		builder.setPurchase(0);
 		builder.setStarttime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date()));
-		builder.setEndtime(builder.getStarttime());
+//		builder.setEndtime(builder.getStarttime());
 		return builder.build();
 	}
 	public LibaoList getLibaoShop(UserBean user, boolean refresh){

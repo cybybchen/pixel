@@ -39132,32 +39132,29 @@ public final class ShopProto {
     com.google.protobuf.ByteString
         getStarttimeBytes();
 
-    // optional string endtime = 5;
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    boolean hasEndtime();
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    java.lang.String getEndtime();
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getEndtimeBytes();
-
     // optional string validtime = 6;
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     boolean hasValidtime();
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     java.lang.String getValidtime();
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     com.google.protobuf.ByteString
         getValidtimeBytes();
@@ -39243,18 +39240,13 @@ public final class ShopProto {
               starttime_ = input.readBytes();
               break;
             }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              endtime_ = input.readBytes();
-              break;
-            }
             case 50: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000010;
               validtime_ = input.readBytes();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000020;
               refresh_ = input.readInt32();
               break;
             }
@@ -39389,60 +39381,25 @@ public final class ShopProto {
       }
     }
 
-    // optional string endtime = 5;
-    public static final int ENDTIME_FIELD_NUMBER = 5;
-    private java.lang.Object endtime_;
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    public boolean hasEndtime() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    public java.lang.String getEndtime() {
-      java.lang.Object ref = endtime_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          endtime_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string endtime = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getEndtimeBytes() {
-      java.lang.Object ref = endtime_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        endtime_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // optional string validtime = 6;
     public static final int VALIDTIME_FIELD_NUMBER = 6;
     private java.lang.Object validtime_;
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     public boolean hasValidtime() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     public java.lang.String getValidtime() {
       java.lang.Object ref = validtime_;
@@ -39460,6 +39417,10 @@ public final class ShopProto {
     }
     /**
      * <code>optional string validtime = 6;</code>
+     *
+     * <pre>
+     *optional string endtime = 5;
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getValidtimeBytes() {
@@ -39482,7 +39443,7 @@ public final class ShopProto {
      * <code>optional int32 refresh = 7;</code>
      */
     public boolean hasRefresh() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 refresh = 7;</code>
@@ -39496,7 +39457,6 @@ public final class ShopProto {
       rechargeid_ = 0;
       purchase_ = 0;
       starttime_ = "";
-      endtime_ = "";
       validtime_ = "";
       refresh_ = 0;
     }
@@ -39525,12 +39485,9 @@ public final class ShopProto {
         output.writeBytes(4, getStarttimeBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getEndtimeBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getValidtimeBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(7, refresh_);
       }
       getUnknownFields().writeTo(output);
@@ -39560,13 +39517,9 @@ public final class ShopProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getEndtimeBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getValidtimeBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, refresh_);
       }
@@ -39694,12 +39647,10 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         starttime_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
-        endtime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         validtime_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         refresh_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -39747,13 +39698,9 @@ public final class ShopProto {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.endtime_ = endtime_;
+        result.validtime_ = validtime_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
-        }
-        result.validtime_ = validtime_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
         }
         result.refresh_ = refresh_;
         result.bitField0_ = to_bitField0_;
@@ -39786,13 +39733,8 @@ public final class ShopProto {
           starttime_ = other.starttime_;
           onChanged();
         }
-        if (other.hasEndtime()) {
-          bitField0_ |= 0x00000010;
-          endtime_ = other.endtime_;
-          onChanged();
-        }
         if (other.hasValidtime()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000010;
           validtime_ = other.validtime_;
           onChanged();
         }
@@ -39999,90 +39941,24 @@ public final class ShopProto {
         return this;
       }
 
-      // optional string endtime = 5;
-      private java.lang.Object endtime_ = "";
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public boolean hasEndtime() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public java.lang.String getEndtime() {
-        java.lang.Object ref = endtime_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          endtime_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getEndtimeBytes() {
-        java.lang.Object ref = endtime_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          endtime_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public Builder setEndtime(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        endtime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public Builder clearEndtime() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        endtime_ = getDefaultInstance().getEndtime();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string endtime = 5;</code>
-       */
-      public Builder setEndtimeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        endtime_ = value;
-        onChanged();
-        return this;
-      }
-
       // optional string validtime = 6;
       private java.lang.Object validtime_ = "";
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public boolean hasValidtime() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public java.lang.String getValidtime() {
         java.lang.Object ref = validtime_;
@@ -40097,6 +39973,10 @@ public final class ShopProto {
       }
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getValidtimeBytes() {
@@ -40113,35 +39993,47 @@ public final class ShopProto {
       }
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public Builder setValidtime(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000010;
         validtime_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public Builder clearValidtime() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000010);
         validtime_ = getDefaultInstance().getValidtime();
         onChanged();
         return this;
       }
       /**
        * <code>optional string validtime = 6;</code>
+       *
+       * <pre>
+       *optional string endtime = 5;
+       * </pre>
        */
       public Builder setValidtimeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000010;
         validtime_ = value;
         onChanged();
         return this;
@@ -40153,7 +40045,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public boolean hasRefresh() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 refresh = 7;</code>
@@ -40165,7 +40057,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder setRefresh(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000020;
         refresh_ = value;
         onChanged();
         return this;
@@ -40174,7 +40066,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder clearRefresh() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000020);
         refresh_ = 0;
         onChanged();
         return this;
@@ -44977,21 +44869,21 @@ public final class ShopProto {
       "\t\022\021\n\trewardid1\030\006 \001(\005\022\024\n\014rewardcount1\030\007 \001" +
       "(\005\022\023\n\013jingyan_per\030\t \001(\005\"8\n\tYueKaList\022+\n\004" +
       "item\030\001 \003(\0132\035.com.trans.pixel.protoc.YueK" +
-      "a\"\201\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 " +
-      "\001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t" +
-      "\022\017\n\007endtime\030\005 \001(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007" +
-      "refresh\030\007 \001(\005\"8\n\tLibaoList\022+\n\004data\030\001 \003(\013" +
-      "2\035.com.trans.pixel.protoc.Libao\"\031\n\027Reque" +
-      "stLibaoShopCommand\"H\n\030ResponseLibaoShopC" +
-      "ommand\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel.",
-      "protoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013ca" +
-      "npurchase\030\002 \001(\010\"T\n\"ResponseFirstRecharge" +
-      "StatusCommand\022.\n\006status\030\001 \003(\0132\036.com.tran" +
-      "s.pixel.protoc.Status\"0\n\036RequestPurchase" +
-      "ContractCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032Reque" +
-      "stPurchaseCoinCommand\"Q\n\033ResponsePurchas" +
-      "eCoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030" +
-      "\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
+      "a\"p\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001" +
+      "(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022" +
+      "\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"8\n\tL" +
+      "ibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.pixel" +
+      ".protoc.Libao\"\031\n\027RequestLibaoShopCommand" +
+      "\"H\n\030ResponseLibaoShopCommand\022,\n\005items\030\001 " +
+      "\003(\0132\035.com.trans.pixel.protoc.Libao\")\n\006St",
+      "atus\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n" +
+      "\"ResponseFirstRechargeStatusCommand\022.\n\006s" +
+      "tatus\030\001 \003(\0132\036.com.trans.pixel.protoc.Sta" +
+      "tus\"0\n\036RequestPurchaseContractCommand\022\016\n" +
+      "\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoinComm" +
+      "and\"Q\n\033ResponsePurchaseCoinCommand\022\r\n\005je" +
+      "wel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTime" +
+      "\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -45363,7 +45255,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
-              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Endtime", "Validtime", "Refresh", });
+              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Validtime", "Refresh", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
             getDescriptor().getMessageTypes().get(61);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new

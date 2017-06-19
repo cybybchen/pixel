@@ -420,7 +420,7 @@ public class UserService {
 			List<UserLibaoBean> list = userLibaoMapper.queryById(userId);
 			if(list.isEmpty()){
 				Libao.Builder libao = Libao.newBuilder();
-				libao.setRechargeid(1);
+				libao.setRechargeid(2);
 				libao.setPurchase(0);
 				map.put(libao.getRechargeid(), libao.build());
 			}else{

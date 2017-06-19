@@ -518,7 +518,7 @@ message Libao {
 	optional int32 rechargeid = 2;
 	optional int32 purchase = 3;
 	optional string starttime = 4;
-	optional string endtime = 5;
+	//optional string endtime = 5;
 	optional string validtime = 6;
 	optional int32 refresh = 7;
 }
