@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
@@ -1433,7 +1434,14 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user) {
 		pvpCommandService.getInbreakList(cmd, responseBuilder, user);
-		return false;
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUseMaterialCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipCommandService.useMaterial(cmd, responseBuilder, user);
+		return true;
 	}
 
 }

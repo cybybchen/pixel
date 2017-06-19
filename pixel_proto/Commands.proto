@@ -281,6 +281,7 @@ message Commodity {
 	optional int32 discost = 12;
 	optional int32 limit = 13;
 	optional int32 maxlimit = 14;
+	optional int32 vip = 15;
 }
 message CommodityList {
 	repeated Commodity id = 1;
@@ -1111,6 +1112,10 @@ message Synthetise {
 message SynthetiseCover {
 	required uint32 cover = 1;
 	required uint32 count = 2;
+}
+
+message RequestUseMaterialCommand {
+	repeated RewardInfo cost = 1;
 }
 
 message RequestAddHeroEquipCommand {
@@ -3685,6 +3690,7 @@ message RequestCommand {
 	optional RequestBuySavingBoxCommand buySavingBoxCommand = 249;
 	optional RequestEquipupCommand equipupCommand = 250;
 	optional RequestMaterialComposeCommand materialComposeCommand = 251;
+	optional RequestUseMaterialCommand useMaterialCommand = 252;
 }
 ////////// Commands
 message ErrorCommand {

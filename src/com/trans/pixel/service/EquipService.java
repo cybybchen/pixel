@@ -13,7 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
@@ -42,8 +45,6 @@ public class EquipService {
 	private UserPropService userPropService;
 	@Resource
 	private EquipRedisService equipRedisService;
-//	@Resource
-//	private FenjieService fenjieService;
 	@Resource
 	private RewardService rewardService;
 	@Resource
@@ -56,6 +57,8 @@ public class EquipService {
 	private UserHeroService userHeroService;
 	@Resource
 	private PropRedisService propRedisService;
+	@Resource
+	private CostService costService;
 	
 	public Equip getEquip(int itemId) {
 		return equipRedisService.getEquip(itemId);
@@ -251,5 +254,14 @@ public class EquipService {
 	
 	public Material getMaterial(int itemId) {
 		return equipRedisService.getMaterial(itemId);
+	}
+	
+	public ResultConst userMaterial(UserBean user, List<RewardInfo> costs) {
+		if (!costService.canCost(user, costs))
+			return ErrorConst.NOT_ENOUGH_CHIP;
+		
+		costService.cost(user, costs);
+		
+		return SuccessConst.USE_PROP;
 	}
 }

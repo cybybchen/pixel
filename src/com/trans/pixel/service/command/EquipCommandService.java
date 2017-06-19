@@ -8,16 +8,19 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
@@ -101,5 +104,21 @@ public class EquipCommandService extends BaseCommandService {
 			handleRewards(responseBuilder, user, rewards.build());
 		}
 		pushCommandService.pushRewardCommand(responseBuilder, user, costItems.build(), false);
+	}
+	
+	public void useMaterial(RequestUseMaterialCommand cmd, Builder responseBuilder, UserBean user) {
+		List<RewardInfo> costs = cmd.getCostList();
+		ResultConst ret = equipService.userMaterial(user, costs);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		MultiReward.Builder multi = MultiReward.newBuilder();
+		multi.addAllLoot(costs);
+		pushCommandService.pushRewardCommand(responseBuilder, user, multi.build(), false);
 	}
 }
