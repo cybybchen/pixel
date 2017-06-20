@@ -28071,83 +28071,69 @@ public final class Base {
      */
     int getEventid();
 
-    // optional string name = 3;
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    boolean hasName();
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
     // optional int32 daguan = 4;
     /**
      * <code>optional int32 daguan = 4;</code>
+     *
+     * <pre>
+     *optional string name = 3;
+     * </pre>
      */
     boolean hasDaguan();
     /**
      * <code>optional int32 daguan = 4;</code>
+     *
+     * <pre>
+     *optional string name = 3;
+     * </pre>
      */
     int getDaguan();
 
-    // optional int32 conditiontype = 5;
+    // optional int32 index = 5;
     /**
-     * <code>optional int32 conditiontype = 5;</code>
+     * <code>optional int32 index = 5;</code>
      */
-    boolean hasConditiontype();
+    boolean hasIndex();
     /**
-     * <code>optional int32 conditiontype = 5;</code>
+     * <code>optional int32 index = 5;</code>
      */
-    int getConditiontype();
-
-    // optional int32 condition = 6;
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    boolean hasCondition();
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    int getCondition();
+    int getIndex();
 
     // optional int32 targetid = 7;
     /**
      * <code>optional int32 targetid = 7;</code>
+     *
+     * <pre>
+     *optional int32 conditiontype = 5;
+     *optional int32 condition = 6;
+     * </pre>
      */
     boolean hasTargetid();
     /**
      * <code>optional int32 targetid = 7;</code>
+     *
+     * <pre>
+     *optional int32 conditiontype = 5;
+     *optional int32 condition = 6;
+     * </pre>
      */
     int getTargetid();
-
-    // optional string targetdes = 8;
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    boolean hasTargetdes();
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    java.lang.String getTargetdes();
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    com.google.protobuf.ByteString
-        getTargetdesBytes();
 
     // optional int32 weight = 9;
     /**
      * <code>optional int32 weight = 9;</code>
+     *
+     * <pre>
+     *optional string targetdes = 8;
+     * </pre>
      */
     boolean hasWeight();
     /**
      * <code>optional int32 weight = 9;</code>
+     *
+     * <pre>
+     *optional string targetdes = 8;
+     * </pre>
      */
     int getWeight();
 
@@ -28164,22 +28150,20 @@ public final class Base {
     // optional int32 count = 11;
     /**
      * <code>optional int32 count = 11;</code>
+     *
+     * <pre>
+     *optional int32 eventcount = 12;
+     * </pre>
      */
     boolean hasCount();
     /**
      * <code>optional int32 count = 11;</code>
+     *
+     * <pre>
+     *optional int32 eventcount = 12;
+     * </pre>
      */
     int getCount();
-
-    // optional int32 eventcount = 12;
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    boolean hasEventcount();
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    int getEventcount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Event}
@@ -28242,54 +28226,34 @@ public final class Base {
               eventid_ = input.readInt32();
               break;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              name_ = input.readBytes();
-              break;
-            }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000004;
               daguan_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
-              conditiontype_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              condition_ = input.readInt32();
+              bitField0_ |= 0x00000008;
+              index_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000010;
               targetid_ = input.readInt32();
               break;
             }
-            case 66: {
-              bitField0_ |= 0x00000080;
-              targetdes_ = input.readBytes();
-              break;
-            }
             case 72: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000020;
               weight_ = input.readInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000040;
               level_ = input.readInt32();
               break;
             }
             case 88: {
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000080;
               count_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              eventcount_ = input.readInt32();
               break;
             }
           }
@@ -28364,95 +28328,44 @@ public final class Base {
       return eventid_;
     }
 
-    // optional string name = 3;
-    public static final int NAME_FIELD_NUMBER = 3;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // optional int32 daguan = 4;
     public static final int DAGUAN_FIELD_NUMBER = 4;
     private int daguan_;
     /**
      * <code>optional int32 daguan = 4;</code>
+     *
+     * <pre>
+     *optional string name = 3;
+     * </pre>
      */
     public boolean hasDaguan() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 daguan = 4;</code>
+     *
+     * <pre>
+     *optional string name = 3;
+     * </pre>
      */
     public int getDaguan() {
       return daguan_;
     }
 
-    // optional int32 conditiontype = 5;
-    public static final int CONDITIONTYPE_FIELD_NUMBER = 5;
-    private int conditiontype_;
+    // optional int32 index = 5;
+    public static final int INDEX_FIELD_NUMBER = 5;
+    private int index_;
     /**
-     * <code>optional int32 conditiontype = 5;</code>
+     * <code>optional int32 index = 5;</code>
      */
-    public boolean hasConditiontype() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+    public boolean hasIndex() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 conditiontype = 5;</code>
+     * <code>optional int32 index = 5;</code>
      */
-    public int getConditiontype() {
-      return conditiontype_;
-    }
-
-    // optional int32 condition = 6;
-    public static final int CONDITION_FIELD_NUMBER = 6;
-    private int condition_;
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    public boolean hasCondition() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 condition = 6;</code>
-     */
-    public int getCondition() {
-      return condition_;
+    public int getIndex() {
+      return index_;
     }
 
     // optional int32 targetid = 7;
@@ -28460,58 +28373,25 @@ public final class Base {
     private int targetid_;
     /**
      * <code>optional int32 targetid = 7;</code>
+     *
+     * <pre>
+     *optional int32 conditiontype = 5;
+     *optional int32 condition = 6;
+     * </pre>
      */
     public boolean hasTargetid() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 targetid = 7;</code>
+     *
+     * <pre>
+     *optional int32 conditiontype = 5;
+     *optional int32 condition = 6;
+     * </pre>
      */
     public int getTargetid() {
       return targetid_;
-    }
-
-    // optional string targetdes = 8;
-    public static final int TARGETDES_FIELD_NUMBER = 8;
-    private java.lang.Object targetdes_;
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public boolean hasTargetdes() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public java.lang.String getTargetdes() {
-      java.lang.Object ref = targetdes_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          targetdes_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string targetdes = 8;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTargetdesBytes() {
-      java.lang.Object ref = targetdes_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        targetdes_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
     }
 
     // optional int32 weight = 9;
@@ -28519,12 +28399,20 @@ public final class Base {
     private int weight_;
     /**
      * <code>optional int32 weight = 9;</code>
+     *
+     * <pre>
+     *optional string targetdes = 8;
+     * </pre>
      */
     public boolean hasWeight() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 weight = 9;</code>
+     *
+     * <pre>
+     *optional string targetdes = 8;
+     * </pre>
      */
     public int getWeight() {
       return weight_;
@@ -28537,7 +28425,7 @@ public final class Base {
      * <code>optional int32 level = 10;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 level = 10;</code>
@@ -28551,46 +28439,34 @@ public final class Base {
     private int count_;
     /**
      * <code>optional int32 count = 11;</code>
+     *
+     * <pre>
+     *optional int32 eventcount = 12;
+     * </pre>
      */
     public boolean hasCount() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 count = 11;</code>
+     *
+     * <pre>
+     *optional int32 eventcount = 12;
+     * </pre>
      */
     public int getCount() {
       return count_;
     }
 
-    // optional int32 eventcount = 12;
-    public static final int EVENTCOUNT_FIELD_NUMBER = 12;
-    private int eventcount_;
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    public boolean hasEventcount() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional int32 eventcount = 12;</code>
-     */
-    public int getEventcount() {
-      return eventcount_;
-    }
-
     private void initFields() {
       order_ = 0;
       eventid_ = 0;
-      name_ = "";
       daguan_ = 0;
-      conditiontype_ = 0;
-      condition_ = 0;
+      index_ = 0;
       targetid_ = 0;
-      targetdes_ = "";
       weight_ = 0;
       level_ = 0;
       count_ = 0;
-      eventcount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -28611,34 +28487,22 @@ public final class Base {
         output.writeInt32(2, eventid_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, daguan_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(5, index_);
+      }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, conditiontype_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, condition_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(7, targetid_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeBytes(8, getTargetdesBytes());
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(9, weight_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(10, level_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(11, count_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, eventcount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -28659,43 +28523,27 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getNameBytes());
+          .computeInt32Size(4, daguan_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, daguan_);
+          .computeInt32Size(5, index_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, conditiontype_);
+          .computeInt32Size(7, targetid_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, condition_);
+          .computeInt32Size(9, weight_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, targetid_);
+          .computeInt32Size(10, level_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(8, getTargetdesBytes());
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, weight_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, level_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, count_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, eventcount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -28817,26 +28665,18 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000001);
         eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
         daguan_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        index_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        conditiontype_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        condition_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         targetid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        targetdes_ = "";
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000010);
         weight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000020);
         level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000040);
         count_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        eventcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -28876,43 +28716,27 @@ public final class Base {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.name_ = name_;
+        result.daguan_ = daguan_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.daguan_ = daguan_;
+        result.index_ = index_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.conditiontype_ = conditiontype_;
+        result.targetid_ = targetid_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.condition_ = condition_;
+        result.weight_ = weight_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.targetid_ = targetid_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.targetdes_ = targetdes_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.weight_ = weight_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
         result.count_ = count_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.eventcount_ = eventcount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -28935,27 +28759,14 @@ public final class Base {
         if (other.hasEventid()) {
           setEventid(other.getEventid());
         }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000004;
-          name_ = other.name_;
-          onChanged();
-        }
         if (other.hasDaguan()) {
           setDaguan(other.getDaguan());
         }
-        if (other.hasConditiontype()) {
-          setConditiontype(other.getConditiontype());
-        }
-        if (other.hasCondition()) {
-          setCondition(other.getCondition());
+        if (other.hasIndex()) {
+          setIndex(other.getIndex());
         }
         if (other.hasTargetid()) {
           setTargetid(other.getTargetid());
-        }
-        if (other.hasTargetdes()) {
-          bitField0_ |= 0x00000080;
-          targetdes_ = other.targetdes_;
-          onChanged();
         }
         if (other.hasWeight()) {
           setWeight(other.getWeight());
@@ -28965,9 +28776,6 @@ public final class Base {
         }
         if (other.hasCount()) {
           setCount(other.getCount());
-        }
-        if (other.hasEventcount()) {
-          setEventcount(other.getEventcount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -29062,175 +28870,84 @@ public final class Base {
         return this;
       }
 
-      // optional string name = 3;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 3;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
       // optional int32 daguan = 4;
       private int daguan_ ;
       /**
        * <code>optional int32 daguan = 4;</code>
+       *
+       * <pre>
+       *optional string name = 3;
+       * </pre>
        */
       public boolean hasDaguan() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 daguan = 4;</code>
+       *
+       * <pre>
+       *optional string name = 3;
+       * </pre>
        */
       public int getDaguan() {
         return daguan_;
       }
       /**
        * <code>optional int32 daguan = 4;</code>
+       *
+       * <pre>
+       *optional string name = 3;
+       * </pre>
        */
       public Builder setDaguan(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000004;
         daguan_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 daguan = 4;</code>
+       *
+       * <pre>
+       *optional string name = 3;
+       * </pre>
        */
       public Builder clearDaguan() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000004);
         daguan_ = 0;
         onChanged();
         return this;
       }
 
-      // optional int32 conditiontype = 5;
-      private int conditiontype_ ;
+      // optional int32 index = 5;
+      private int index_ ;
       /**
-       * <code>optional int32 conditiontype = 5;</code>
+       * <code>optional int32 index = 5;</code>
        */
-      public boolean hasConditiontype() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional int32 conditiontype = 5;</code>
+       * <code>optional int32 index = 5;</code>
        */
-      public int getConditiontype() {
-        return conditiontype_;
+      public int getIndex() {
+        return index_;
       }
       /**
-       * <code>optional int32 conditiontype = 5;</code>
+       * <code>optional int32 index = 5;</code>
        */
-      public Builder setConditiontype(int value) {
-        bitField0_ |= 0x00000010;
-        conditiontype_ = value;
+      public Builder setIndex(int value) {
+        bitField0_ |= 0x00000008;
+        index_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 conditiontype = 5;</code>
+       * <code>optional int32 index = 5;</code>
        */
-      public Builder clearConditiontype() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        conditiontype_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 condition = 6;
-      private int condition_ ;
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public boolean hasCondition() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public int getCondition() {
-        return condition_;
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public Builder setCondition(int value) {
-        bitField0_ |= 0x00000020;
-        condition_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 condition = 6;</code>
-       */
-      public Builder clearCondition() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        condition_ = 0;
+      public Builder clearIndex() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        index_ = 0;
         onChanged();
         return this;
       }
@@ -29239,105 +28956,51 @@ public final class Base {
       private int targetid_ ;
       /**
        * <code>optional int32 targetid = 7;</code>
+       *
+       * <pre>
+       *optional int32 conditiontype = 5;
+       *optional int32 condition = 6;
+       * </pre>
        */
       public boolean hasTargetid() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 targetid = 7;</code>
+       *
+       * <pre>
+       *optional int32 conditiontype = 5;
+       *optional int32 condition = 6;
+       * </pre>
        */
       public int getTargetid() {
         return targetid_;
       }
       /**
        * <code>optional int32 targetid = 7;</code>
+       *
+       * <pre>
+       *optional int32 conditiontype = 5;
+       *optional int32 condition = 6;
+       * </pre>
        */
       public Builder setTargetid(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000010;
         targetid_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 targetid = 7;</code>
+       *
+       * <pre>
+       *optional int32 conditiontype = 5;
+       *optional int32 condition = 6;
+       * </pre>
        */
       public Builder clearTargetid() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         targetid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string targetdes = 8;
-      private java.lang.Object targetdes_ = "";
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public boolean hasTargetdes() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public java.lang.String getTargetdes() {
-        java.lang.Object ref = targetdes_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          targetdes_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTargetdesBytes() {
-        java.lang.Object ref = targetdes_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          targetdes_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder setTargetdes(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000080;
-        targetdes_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder clearTargetdes() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        targetdes_ = getDefaultInstance().getTargetdes();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string targetdes = 8;</code>
-       */
-      public Builder setTargetdesBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000080;
-        targetdes_ = value;
         onChanged();
         return this;
       }
@@ -29346,30 +29009,46 @@ public final class Base {
       private int weight_ ;
       /**
        * <code>optional int32 weight = 9;</code>
+       *
+       * <pre>
+       *optional string targetdes = 8;
+       * </pre>
        */
       public boolean hasWeight() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 weight = 9;</code>
+       *
+       * <pre>
+       *optional string targetdes = 8;
+       * </pre>
        */
       public int getWeight() {
         return weight_;
       }
       /**
        * <code>optional int32 weight = 9;</code>
+       *
+       * <pre>
+       *optional string targetdes = 8;
+       * </pre>
        */
       public Builder setWeight(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000020;
         weight_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 weight = 9;</code>
+       *
+       * <pre>
+       *optional string targetdes = 8;
+       * </pre>
        */
       public Builder clearWeight() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000020);
         weight_ = 0;
         onChanged();
         return this;
@@ -29381,7 +29060,7 @@ public final class Base {
        * <code>optional int32 level = 10;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 level = 10;</code>
@@ -29393,7 +29072,7 @@ public final class Base {
        * <code>optional int32 level = 10;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000040;
         level_ = value;
         onChanged();
         return this;
@@ -29402,7 +29081,7 @@ public final class Base {
        * <code>optional int32 level = 10;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000040);
         level_ = 0;
         onChanged();
         return this;
@@ -29412,64 +29091,47 @@ public final class Base {
       private int count_ ;
       /**
        * <code>optional int32 count = 11;</code>
+       *
+       * <pre>
+       *optional int32 eventcount = 12;
+       * </pre>
        */
       public boolean hasCount() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 count = 11;</code>
+       *
+       * <pre>
+       *optional int32 eventcount = 12;
+       * </pre>
        */
       public int getCount() {
         return count_;
       }
       /**
        * <code>optional int32 count = 11;</code>
+       *
+       * <pre>
+       *optional int32 eventcount = 12;
+       * </pre>
        */
       public Builder setCount(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000080;
         count_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 count = 11;</code>
+       *
+       * <pre>
+       *optional int32 eventcount = 12;
+       * </pre>
        */
       public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000080);
         count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 eventcount = 12;
-      private int eventcount_ ;
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public boolean hasEventcount() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public int getEventcount() {
-        return eventcount_;
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public Builder setEventcount(int value) {
-        bitField0_ |= 0x00000800;
-        eventcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 eventcount = 12;</code>
-       */
-      public Builder clearEventcount() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        eventcount_ = 0;
         onChanged();
         return this;
       }
@@ -29704,13 +29366,11 @@ public final class Base {
       "ans.pixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010t" +
       "argetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t" +
       "\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\"\326\001\n\005Ev" +
-      "ent\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004n" +
-      "ame\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025\n\rconditionty" +
-      "pe\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005\022\020\n\010targetid\030" +
-      "\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005",
-      "\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventc" +
-      "ount\030\014 \001(\005"
+      "com.trans.pixel.protoc.RewardInfo\"\206\001\n\005Ev" +
+      "ent\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\016\n\006d" +
+      "aguan\030\004 \001(\005\022\r\n\005index\030\005 \001(\005\022\020\n\010targetid\030\007" +
+      " \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005c" +
+      "ount\030\013 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29842,7 +29502,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
-              new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Conditiontype", "Condition", "Targetid", "Targetdes", "Weight", "Level", "Count", "Eventcount", });
+              new java.lang.String[] { "Order", "Eventid", "Daguan", "Index", "Targetid", "Weight", "Level", "Count", });
           return null;
         }
       };

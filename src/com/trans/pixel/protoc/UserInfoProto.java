@@ -32042,15 +32042,15 @@ public final class UserInfoProto {
      */
     int getUnlockDaguan();
 
-    // optional int32 leftCount = 2;
+    // optional int32 unlockIndex = 2;
     /**
-     * <code>optional int32 leftCount = 2;</code>
+     * <code>optional int32 unlockIndex = 2;</code>
      */
-    boolean hasLeftCount();
+    boolean hasUnlockIndex();
     /**
-     * <code>optional int32 leftCount = 2;</code>
+     * <code>optional int32 unlockIndex = 2;</code>
      */
-    int getLeftCount();
+    int getUnlockIndex();
 
     // optional int32 lootDaguan = 3;
     /**
@@ -32150,7 +32150,7 @@ public final class UserInfoProto {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              leftCount_ = input.readInt32();
+              unlockIndex_ = input.readInt32();
               break;
             }
             case 24: {
@@ -32229,20 +32229,20 @@ public final class UserInfoProto {
       return unlockDaguan_;
     }
 
-    // optional int32 leftCount = 2;
-    public static final int LEFTCOUNT_FIELD_NUMBER = 2;
-    private int leftCount_;
+    // optional int32 unlockIndex = 2;
+    public static final int UNLOCKINDEX_FIELD_NUMBER = 2;
+    private int unlockIndex_;
     /**
-     * <code>optional int32 leftCount = 2;</code>
+     * <code>optional int32 unlockIndex = 2;</code>
      */
-    public boolean hasLeftCount() {
+    public boolean hasUnlockIndex() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 leftCount = 2;</code>
+     * <code>optional int32 unlockIndex = 2;</code>
      */
-    public int getLeftCount() {
-      return leftCount_;
+    public int getUnlockIndex() {
+      return unlockIndex_;
     }
 
     // optional int32 lootDaguan = 3;
@@ -32311,7 +32311,7 @@ public final class UserInfoProto {
 
     private void initFields() {
       unlockDaguan_ = 0;
-      leftCount_ = 0;
+      unlockIndex_ = 0;
       lootDaguan_ = 0;
       lootTime_ = 0;
       eventTime_ = 0;
@@ -32333,7 +32333,7 @@ public final class UserInfoProto {
         output.writeInt32(1, unlockDaguan_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, leftCount_);
+        output.writeInt32(2, unlockIndex_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, lootDaguan_);
@@ -32362,7 +32362,7 @@ public final class UserInfoProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, leftCount_);
+          .computeInt32Size(2, unlockIndex_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -32498,7 +32498,7 @@ public final class UserInfoProto {
         super.clear();
         unlockDaguan_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        leftCount_ = 0;
+        unlockIndex_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
         lootDaguan_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -32543,7 +32543,7 @@ public final class UserInfoProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.leftCount_ = leftCount_;
+        result.unlockIndex_ = unlockIndex_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -32579,8 +32579,8 @@ public final class UserInfoProto {
         if (other.hasUnlockDaguan()) {
           setUnlockDaguan(other.getUnlockDaguan());
         }
-        if (other.hasLeftCount()) {
-          setLeftCount(other.getLeftCount());
+        if (other.hasUnlockIndex()) {
+          setUnlockIndex(other.getUnlockIndex());
         }
         if (other.hasLootDaguan()) {
           setLootDaguan(other.getLootDaguan());
@@ -32654,35 +32654,35 @@ public final class UserInfoProto {
         return this;
       }
 
-      // optional int32 leftCount = 2;
-      private int leftCount_ ;
+      // optional int32 unlockIndex = 2;
+      private int unlockIndex_ ;
       /**
-       * <code>optional int32 leftCount = 2;</code>
+       * <code>optional int32 unlockIndex = 2;</code>
        */
-      public boolean hasLeftCount() {
+      public boolean hasUnlockIndex() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 leftCount = 2;</code>
+       * <code>optional int32 unlockIndex = 2;</code>
        */
-      public int getLeftCount() {
-        return leftCount_;
+      public int getUnlockIndex() {
+        return unlockIndex_;
       }
       /**
-       * <code>optional int32 leftCount = 2;</code>
+       * <code>optional int32 unlockIndex = 2;</code>
        */
-      public Builder setLeftCount(int value) {
+      public Builder setUnlockIndex(int value) {
         bitField0_ |= 0x00000002;
-        leftCount_ = value;
+        unlockIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 leftCount = 2;</code>
+       * <code>optional int32 unlockIndex = 2;</code>
        */
-      public Builder clearLeftCount() {
+      public Builder clearUnlockIndex() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        leftCount_ = 0;
+        unlockIndex_ = 0;
         onChanged();
         return this;
       }
@@ -33479,11 +33479,11 @@ public final class UserInfoProto {
       "rn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P" +
       "\n\032ResponseEventResultCommand\0222\n\006reward\030\001",
       " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
-      "\"\224\001\n\030ResponseLevelLootCommand\022\024\n\014unlockD" +
-      "aguan\030\001 \001(\005\022\021\n\tleftCount\030\002 \001(\005\022\022\n\nlootDa" +
-      "guan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventTim" +
-      "e\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Reque" +
-      "stEventBuyCommand"
+      "\"\226\001\n\030ResponseLevelLootCommand\022\024\n\014unlockD" +
+      "aguan\030\001 \001(\005\022\023\n\013unlockIndex\030\002 \001(\005\022\022\n\nloot" +
+      "Daguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventT" +
+      "ime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Req" +
+      "uestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33771,7 +33771,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
-              new java.lang.String[] { "UnlockDaguan", "LeftCount", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
+              new java.lang.String[] { "UnlockDaguan", "UnlockIndex", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
             getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new

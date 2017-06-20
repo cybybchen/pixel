@@ -105,19 +105,12 @@ public class UserFriendService {
 	
 	private UserFriend buildUserFriend(long userId, UserFriendBean userFriendBean, UserInfo userCache) {
 		UserFriend.Builder userFriend = UserFriend.newBuilder();
-		userFriend.setFriendId(userFriendBean.getFriendId());
-		userFriend.setFriendName(userCache.getName());
-		if (userCache.hasVip())
-			userFriend.setVip(userCache.getVip());
-		if (userCache.hasZhanli())
-			userFriend.setZhanli(userCache.getZhanli());
+		userFriend.setUser(userCache);
 		if (userCache.hasLastLoginTime())
 			userFriend.setLastLoginTime(userCache.getLastLoginTime());
 		
 		userFriend.setCountDown((int)(userFriendBean.getLastCallTime() + FIREND_CALL_COUNTDOWN_TIME * TimeConst.SECONDS_PER_HOUR - System.currentTimeMillis() / TimeConst.MILLIONSECONDS_PER_SECOND));
 		
-		if (userCache.hasIcon())
-			userFriend.setIcon(userCache.getIcon());
 		
 		return userFriend.build();
 	}
