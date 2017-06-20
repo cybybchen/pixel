@@ -81,16 +81,18 @@ message UserInfo {
 
 message JewelPool {
 	optional int32 order = 1;
-	optional int32 zhanli = 2;
-	optional string description = 3;
-	optional int32 rewardid = 4;
-	optional int32 rewardcount = 5;
+	optional int32 merlevel = 2;
+	//optional string des = 3;
+	optional RewardInfo reward = 4;
 	optional int32 rewarded = 6;
 	optional int32 recharged = 7;
 }
-
 message JewelPoolList {
-	repeated JewelPool order = 1;
+	optional int32 id = 1;
+	repeated JewelPool order = 2;
+}
+message JewelPoolLists {
+	repeated JewelPoolList data = 1;
 }
 
 message UnionBossUserRecord {

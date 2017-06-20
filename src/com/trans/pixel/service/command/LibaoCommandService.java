@@ -158,7 +158,7 @@ public class LibaoCommandService extends BaseCommandService{
 			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
 			user.setGrowJewelCountStatus(index + user.getGrowJewelCountStatus());
-			handleRewards(responseBuilder, user, pool.getRewardid(), pool.getRewardcount());
+			handleRewards(responseBuilder, user, pool.getReward().getItemid(), pool.getReward().getCount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
 			// reward.setItemid(pool.getRewardid());
@@ -178,7 +178,7 @@ public class LibaoCommandService extends BaseCommandService{
 			int index = 1;
 			index = index<<(3*pool.getOrder()-3);
 			user.setGrowExpCountStatus(index + user.getGrowExpCountStatus());
-			handleRewards(responseBuilder, user, pool.getRewardid(), pool.getRewardcount());
+			handleRewards(responseBuilder, user, pool.getReward().getItemid(), pool.getReward().getCount());
 			userService.updateUser(user);
 			// RewardInfo.Builder reward = RewardInfo.newBuilder();
 			// reward.setItemid(pool.getRewardid());

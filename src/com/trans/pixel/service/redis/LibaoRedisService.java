@@ -6,13 +6,14 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.protoc.Base.JewelPoolList;
+import com.trans.pixel.protoc.Base.JewelPoolLists;
 
 @Repository
 public class LibaoRedisService extends RedisService{
 	Logger logger = Logger.getLogger(LibaoRedisService.class);
 
 	public JewelPool.Builder getJewelPool(int id) {
-		JewelPoolList.Builder listbuilder = getJewelPoolList();
+		JewelPoolList.Builder listbuilder = getPoolList().getDataBuilder(0);
 		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
 			if(id == builder.getOrder())
 				return builder;
@@ -20,23 +21,23 @@ public class LibaoRedisService extends RedisService{
 		return null;
 	}
 
-	public JewelPoolList.Builder getJewelPoolList() {
-		String value = this.get(RedisKey.JEWELPOOL_CONFIG);
-		JewelPoolList.Builder builder = JewelPoolList.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder;
-		}else{
-			String xml = ReadConfig("lol_zuanshijijin.xml");
-			parseXml(xml, builder);
-			set(RedisKey.JEWELPOOL_CONFIG, formatJson(builder.build()));
-
-			return builder;
-		}
-	}
+//	public JewelPoolList.Builder getJewelPoolList() {
+//		String value = this.get(RedisKey.JEWELPOOL_CONFIG);
+//		JewelPoolList.Builder builder = JewelPoolList.newBuilder();
+//		if(value != null && parseJson(value, builder)){
+//			return builder;
+//		}else{
+//			String xml = ReadConfig("lol_zuanshijijin.xml");
+//			parseXml(xml, builder);
+//			set(RedisKey.JEWELPOOL_CONFIG, formatJson(builder.build()));
+//
+//			return builder;
+//		}
+//	}
 
 
 	public JewelPool.Builder getExpPool(int id) {
-		JewelPoolList.Builder listbuilder = getExpPoolList();
+		JewelPoolList.Builder listbuilder = getPoolList().getDataBuilder(1);
 		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
 			if(id == builder.getOrder())
 				return builder;
@@ -44,15 +45,15 @@ public class LibaoRedisService extends RedisService{
 		return null;
 	}
 
-	public JewelPoolList.Builder getExpPoolList() {
-		String value = this.get(RedisKey.EXPPOOL_CONFIG);
-		JewelPoolList.Builder builder = JewelPoolList.newBuilder();
+	public JewelPoolLists.Builder getPoolList() {
+		String value = get(RedisKey.JEWELPOOL_CONFIG);
+		JewelPoolLists.Builder builder = JewelPoolLists.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder;
 		}else{
-			String xml = ReadConfig("lol_jingyanjijin.xml");
+			String xml = ReadConfig("ld_pool.xml");
 			parseXml(xml, builder);
-			set(RedisKey.EXPPOOL_CONFIG, formatJson(builder.build()));
+			set(RedisKey.JEWELPOOL_CONFIG, formatJson(builder.build()));
 
 			return builder;
 		}

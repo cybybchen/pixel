@@ -9009,50 +9009,41 @@ public final class Base {
      */
     int getOrder();
 
-    // optional int32 zhanli = 2;
+    // optional int32 merlevel = 2;
     /**
-     * <code>optional int32 zhanli = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    boolean hasZhanli();
+    boolean hasMerlevel();
     /**
-     * <code>optional int32 zhanli = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    int getZhanli();
+    int getMerlevel();
 
-    // optional string description = 3;
+    // optional .com.trans.pixel.protoc.RewardInfo reward = 4;
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    boolean hasDescription();
+    boolean hasReward();
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    java.lang.String getDescription();
+    com.trans.pixel.protoc.Base.RewardInfo getReward();
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    com.google.protobuf.ByteString
-        getDescriptionBytes();
-
-    // optional int32 rewardid = 4;
-    /**
-     * <code>optional int32 rewardid = 4;</code>
-     */
-    boolean hasRewardid();
-    /**
-     * <code>optional int32 rewardid = 4;</code>
-     */
-    int getRewardid();
-
-    // optional int32 rewardcount = 5;
-    /**
-     * <code>optional int32 rewardcount = 5;</code>
-     */
-    boolean hasRewardcount();
-    /**
-     * <code>optional int32 rewardcount = 5;</code>
-     */
-    int getRewardcount();
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder();
 
     // optional int32 rewarded = 6;
     /**
@@ -9132,31 +9123,29 @@ public final class Base {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              zhanli_ = input.readInt32();
+              merlevel_ = input.readInt32();
               break;
             }
-            case 26: {
+            case 34: {
+              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = reward_.toBuilder();
+              }
+              reward_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reward_);
+                reward_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000004;
-              description_ = input.readBytes();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              rewardid_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              rewardcount_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000008;
               rewarded_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000010;
               recharged_ = input.readInt32();
               break;
             }
@@ -9216,95 +9205,54 @@ public final class Base {
       return order_;
     }
 
-    // optional int32 zhanli = 2;
-    public static final int ZHANLI_FIELD_NUMBER = 2;
-    private int zhanli_;
+    // optional int32 merlevel = 2;
+    public static final int MERLEVEL_FIELD_NUMBER = 2;
+    private int merlevel_;
     /**
-     * <code>optional int32 zhanli = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    public boolean hasZhanli() {
+    public boolean hasMerlevel() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 zhanli = 2;</code>
+     * <code>optional int32 merlevel = 2;</code>
      */
-    public int getZhanli() {
-      return zhanli_;
+    public int getMerlevel() {
+      return merlevel_;
     }
 
-    // optional string description = 3;
-    public static final int DESCRIPTION_FIELD_NUMBER = 3;
-    private java.lang.Object description_;
+    // optional .com.trans.pixel.protoc.RewardInfo reward = 4;
+    public static final int REWARD_FIELD_NUMBER = 4;
+    private com.trans.pixel.protoc.Base.RewardInfo reward_;
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    public boolean hasDescription() {
+    public boolean hasReward() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    public java.lang.String getDescription() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          description_ = s;
-        }
-        return s;
-      }
+    public com.trans.pixel.protoc.Base.RewardInfo getReward() {
+      return reward_;
     }
     /**
-     * <code>optional string description = 3;</code>
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+     *
+     * <pre>
+     *optional string des = 3;
+     * </pre>
      */
-    public com.google.protobuf.ByteString
-        getDescriptionBytes() {
-      java.lang.Object ref = description_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        description_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional int32 rewardid = 4;
-    public static final int REWARDID_FIELD_NUMBER = 4;
-    private int rewardid_;
-    /**
-     * <code>optional int32 rewardid = 4;</code>
-     */
-    public boolean hasRewardid() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 rewardid = 4;</code>
-     */
-    public int getRewardid() {
-      return rewardid_;
-    }
-
-    // optional int32 rewardcount = 5;
-    public static final int REWARDCOUNT_FIELD_NUMBER = 5;
-    private int rewardcount_;
-    /**
-     * <code>optional int32 rewardcount = 5;</code>
-     */
-    public boolean hasRewardcount() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 rewardcount = 5;</code>
-     */
-    public int getRewardcount() {
-      return rewardcount_;
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder() {
+      return reward_;
     }
 
     // optional int32 rewarded = 6;
@@ -9314,7 +9262,7 @@ public final class Base {
      * <code>optional int32 rewarded = 6;</code>
      */
     public boolean hasRewarded() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 rewarded = 6;</code>
@@ -9330,7 +9278,7 @@ public final class Base {
      * <code>optional int32 recharged = 7;</code>
      */
     public boolean hasRecharged() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 recharged = 7;</code>
@@ -9341,10 +9289,8 @@ public final class Base {
 
     private void initFields() {
       order_ = 0;
-      zhanli_ = 0;
-      description_ = "";
-      rewardid_ = 0;
-      rewardcount_ = 0;
+      merlevel_ = 0;
+      reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
       rewarded_ = 0;
       recharged_ = 0;
     }
@@ -9364,21 +9310,15 @@ public final class Base {
         output.writeInt32(1, order_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, zhanli_);
+        output.writeInt32(2, merlevel_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getDescriptionBytes());
+        output.writeMessage(4, reward_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, rewardid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, rewardcount_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, rewarded_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(7, recharged_);
       }
       getUnknownFields().writeTo(output);
@@ -9396,25 +9336,17 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, zhanli_);
+          .computeInt32Size(2, merlevel_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getDescriptionBytes());
+          .computeMessageSize(4, reward_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, rewardid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, rewardcount_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, rewarded_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, recharged_);
       }
@@ -9526,6 +9458,7 @@ public final class Base {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -9536,18 +9469,18 @@ public final class Base {
         super.clear();
         order_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        zhanli_ = 0;
+        merlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        description_ = "";
+        if (rewardBuilder_ == null) {
+          reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+        } else {
+          rewardBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
-        rewardid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rewardcount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
         rewarded_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         recharged_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -9583,25 +9516,21 @@ public final class Base {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.zhanli_ = zhanli_;
+        result.merlevel_ = merlevel_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.description_ = description_;
+        if (rewardBuilder_ == null) {
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.rewardid_ = rewardid_;
+        result.rewarded_ = rewarded_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
-        }
-        result.rewardcount_ = rewardcount_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.rewarded_ = rewarded_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
         }
         result.recharged_ = recharged_;
         result.bitField0_ = to_bitField0_;
@@ -9623,19 +9552,11 @@ public final class Base {
         if (other.hasOrder()) {
           setOrder(other.getOrder());
         }
-        if (other.hasZhanli()) {
-          setZhanli(other.getZhanli());
+        if (other.hasMerlevel()) {
+          setMerlevel(other.getMerlevel());
         }
-        if (other.hasDescription()) {
-          bitField0_ |= 0x00000004;
-          description_ = other.description_;
-          onChanged();
-        }
-        if (other.hasRewardid()) {
-          setRewardid(other.getRewardid());
-        }
-        if (other.hasRewardcount()) {
-          setRewardcount(other.getRewardcount());
+        if (other.hasReward()) {
+          mergeReward(other.getReward());
         }
         if (other.hasRewarded()) {
           setRewarded(other.getRewarded());
@@ -9703,177 +9624,190 @@ public final class Base {
         return this;
       }
 
-      // optional int32 zhanli = 2;
-      private int zhanli_ ;
+      // optional int32 merlevel = 2;
+      private int merlevel_ ;
       /**
-       * <code>optional int32 zhanli = 2;</code>
+       * <code>optional int32 merlevel = 2;</code>
        */
-      public boolean hasZhanli() {
+      public boolean hasMerlevel() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 zhanli = 2;</code>
+       * <code>optional int32 merlevel = 2;</code>
        */
-      public int getZhanli() {
-        return zhanli_;
+      public int getMerlevel() {
+        return merlevel_;
       }
       /**
-       * <code>optional int32 zhanli = 2;</code>
+       * <code>optional int32 merlevel = 2;</code>
        */
-      public Builder setZhanli(int value) {
+      public Builder setMerlevel(int value) {
         bitField0_ |= 0x00000002;
-        zhanli_ = value;
+        merlevel_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 zhanli = 2;</code>
+       * <code>optional int32 merlevel = 2;</code>
        */
-      public Builder clearZhanli() {
+      public Builder clearMerlevel() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        zhanli_ = 0;
+        merlevel_ = 0;
         onChanged();
         return this;
       }
 
-      // optional string description = 3;
-      private java.lang.Object description_ = "";
+      // optional .com.trans.pixel.protoc.RewardInfo reward = 4;
+      private com.trans.pixel.protoc.Base.RewardInfo reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
       /**
-       * <code>optional string description = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public boolean hasDescription() {
+      public boolean hasReward() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public java.lang.String getDescription() {
-        java.lang.Object ref = description_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          description_ = s;
-          return s;
+      public com.trans.pixel.protoc.Base.RewardInfo getReward() {
+        if (rewardBuilder_ == null) {
+          return reward_;
         } else {
-          return (java.lang.String) ref;
+          return rewardBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public com.google.protobuf.ByteString
-          getDescriptionBytes() {
-        java.lang.Object ref = description_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          description_ = b;
-          return b;
+      public Builder setReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          reward_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          rewardBuilder_.setMessage(value);
         }
-      }
-      /**
-       * <code>optional string description = 3;</code>
-       */
-      public Builder setDescription(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        description_ = value;
-        onChanged();
+        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public Builder clearDescription() {
+      public Builder setReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          reward_ = builderForValue.build();
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
+       */
+      public Builder mergeReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              reward_ != com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance()) {
+            reward_ =
+              com.trans.pixel.protoc.Base.RewardInfo.newBuilder(reward_).mergeFrom(value).buildPartial();
+          } else {
+            reward_ = value;
+          }
+          onChanged();
+        } else {
+          rewardBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000004);
-        description_ = getDefaultInstance().getDescription();
-        onChanged();
         return this;
       }
       /**
-       * <code>optional string description = 3;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public Builder setDescriptionBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        description_ = value;
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder() {
+        bitField0_ |= 0x00000004;
         onChanged();
-        return this;
-      }
-
-      // optional int32 rewardid = 4;
-      private int rewardid_ ;
-      /**
-       * <code>optional int32 rewardid = 4;</code>
-       */
-      public boolean hasRewardid() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return getRewardFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional int32 rewardid = 4;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public int getRewardid() {
-        return rewardid_;
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilder();
+        } else {
+          return reward_;
+        }
       }
       /**
-       * <code>optional int32 rewardid = 4;</code>
+       * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 4;</code>
+       *
+       * <pre>
+       *optional string des = 3;
+       * </pre>
        */
-      public Builder setRewardid(int value) {
-        bitField0_ |= 0x00000008;
-        rewardid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardid = 4;</code>
-       */
-      public Builder clearRewardid() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rewardid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardcount = 5;
-      private int rewardcount_ ;
-      /**
-       * <code>optional int32 rewardcount = 5;</code>
-       */
-      public boolean hasRewardcount() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 rewardcount = 5;</code>
-       */
-      public int getRewardcount() {
-        return rewardcount_;
-      }
-      /**
-       * <code>optional int32 rewardcount = 5;</code>
-       */
-      public Builder setRewardcount(int value) {
-        bitField0_ |= 0x00000010;
-        rewardcount_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardcount = 5;</code>
-       */
-      public Builder clearRewardcount() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rewardcount_ = 0;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
       }
 
       // optional int32 rewarded = 6;
@@ -9882,7 +9816,7 @@ public final class Base {
        * <code>optional int32 rewarded = 6;</code>
        */
       public boolean hasRewarded() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 rewarded = 6;</code>
@@ -9894,7 +9828,7 @@ public final class Base {
        * <code>optional int32 rewarded = 6;</code>
        */
       public Builder setRewarded(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000008;
         rewarded_ = value;
         onChanged();
         return this;
@@ -9903,7 +9837,7 @@ public final class Base {
        * <code>optional int32 rewarded = 6;</code>
        */
       public Builder clearRewarded() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rewarded_ = 0;
         onChanged();
         return this;
@@ -9915,7 +9849,7 @@ public final class Base {
        * <code>optional int32 recharged = 7;</code>
        */
       public boolean hasRecharged() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 recharged = 7;</code>
@@ -9927,7 +9861,7 @@ public final class Base {
        * <code>optional int32 recharged = 7;</code>
        */
       public Builder setRecharged(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000010;
         recharged_ = value;
         onChanged();
         return this;
@@ -9936,7 +9870,7 @@ public final class Base {
        * <code>optional int32 recharged = 7;</code>
        */
       public Builder clearRecharged() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         recharged_ = 0;
         onChanged();
         return this;
@@ -9956,27 +9890,37 @@ public final class Base {
   public interface JewelPoolListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.JewelPool order = 1;
+    // optional int32 id = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>optional int32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    int getId();
+
+    // repeated .com.trans.pixel.protoc.JewelPool order = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     java.util.List<com.trans.pixel.protoc.Base.JewelPool> 
         getOrderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     com.trans.pixel.protoc.Base.JewelPool getOrder(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     int getOrderCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolOrBuilder> 
         getOrderOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     com.trans.pixel.protoc.Base.JewelPoolOrBuilder getOrderOrBuilder(
         int index);
@@ -10032,10 +9976,15 @@ public final class Base {
               }
               break;
             }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000002;
               }
               order_.add(input.readMessage(com.trans.pixel.protoc.Base.JewelPool.PARSER, extensionRegistry));
               break;
@@ -10048,7 +9997,7 @@ public final class Base {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           order_ = java.util.Collections.unmodifiableList(order_);
         }
         this.unknownFields = unknownFields.build();
@@ -10082,36 +10031,53 @@ public final class Base {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.JewelPool order = 1;
-    public static final int ORDER_FIELD_NUMBER = 1;
+    private int bitField0_;
+    // optional int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // repeated .com.trans.pixel.protoc.JewelPool order = 2;
+    public static final int ORDER_FIELD_NUMBER = 2;
     private java.util.List<com.trans.pixel.protoc.Base.JewelPool> order_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     public java.util.List<com.trans.pixel.protoc.Base.JewelPool> getOrderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolOrBuilder> 
         getOrderOrBuilderList() {
       return order_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     public int getOrderCount() {
       return order_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     public com.trans.pixel.protoc.Base.JewelPool getOrder(int index) {
       return order_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
      */
     public com.trans.pixel.protoc.Base.JewelPoolOrBuilder getOrderOrBuilder(
         int index) {
@@ -10119,6 +10085,7 @@ public final class Base {
     }
 
     private void initFields() {
+      id_ = 0;
       order_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -10133,8 +10100,11 @@ public final class Base {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
       for (int i = 0; i < order_.size(); i++) {
-        output.writeMessage(1, order_.get(i));
+        output.writeMessage(2, order_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -10145,9 +10115,13 @@ public final class Base {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
       for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, order_.get(i));
+          .computeMessageSize(2, order_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10266,9 +10240,11 @@ public final class Base {
 
       public Builder clear() {
         super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (orderBuilder_ == null) {
           order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           orderBuilder_.clear();
         }
@@ -10299,15 +10275,21 @@ public final class Base {
       public com.trans.pixel.protoc.Base.JewelPoolList buildPartial() {
         com.trans.pixel.protoc.Base.JewelPoolList result = new com.trans.pixel.protoc.Base.JewelPoolList(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
         if (orderBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             order_ = java.util.Collections.unmodifiableList(order_);
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.order_ = order_;
         } else {
           result.order_ = orderBuilder_.build();
         }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -10323,11 +10305,14 @@ public final class Base {
 
       public Builder mergeFrom(com.trans.pixel.protoc.Base.JewelPoolList other) {
         if (other == com.trans.pixel.protoc.Base.JewelPoolList.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
         if (orderBuilder_ == null) {
           if (!other.order_.isEmpty()) {
             if (order_.isEmpty()) {
               order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureOrderIsMutable();
               order_.addAll(other.order_);
@@ -10340,7 +10325,7 @@ public final class Base {
               orderBuilder_.dispose();
               orderBuilder_ = null;
               order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000001);
+              bitField0_ = (bitField0_ & ~0x00000002);
               orderBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getOrderFieldBuilder() : null;
@@ -10376,13 +10361,46 @@ public final class Base {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.JewelPool order = 1;
+      // optional int32 id = 1;
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.JewelPool order = 2;
       private java.util.List<com.trans.pixel.protoc.Base.JewelPool> order_ =
         java.util.Collections.emptyList();
       private void ensureOrderIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPool>(order_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -10390,7 +10408,7 @@ public final class Base {
           com.trans.pixel.protoc.Base.JewelPool, com.trans.pixel.protoc.Base.JewelPool.Builder, com.trans.pixel.protoc.Base.JewelPoolOrBuilder> orderBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Base.JewelPool> getOrderList() {
         if (orderBuilder_ == null) {
@@ -10400,7 +10418,7 @@ public final class Base {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public int getOrderCount() {
         if (orderBuilder_ == null) {
@@ -10410,7 +10428,7 @@ public final class Base {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public com.trans.pixel.protoc.Base.JewelPool getOrder(int index) {
         if (orderBuilder_ == null) {
@@ -10420,7 +10438,7 @@ public final class Base {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder setOrder(
           int index, com.trans.pixel.protoc.Base.JewelPool value) {
@@ -10437,7 +10455,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder setOrder(
           int index, com.trans.pixel.protoc.Base.JewelPool.Builder builderForValue) {
@@ -10451,7 +10469,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder addOrder(com.trans.pixel.protoc.Base.JewelPool value) {
         if (orderBuilder_ == null) {
@@ -10467,7 +10485,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder addOrder(
           int index, com.trans.pixel.protoc.Base.JewelPool value) {
@@ -10484,7 +10502,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder addOrder(
           com.trans.pixel.protoc.Base.JewelPool.Builder builderForValue) {
@@ -10498,7 +10516,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder addOrder(
           int index, com.trans.pixel.protoc.Base.JewelPool.Builder builderForValue) {
@@ -10512,7 +10530,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder addAllOrder(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Base.JewelPool> values) {
@@ -10526,12 +10544,12 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder clearOrder() {
         if (orderBuilder_ == null) {
           order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           orderBuilder_.clear();
@@ -10539,7 +10557,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public Builder removeOrder(int index) {
         if (orderBuilder_ == null) {
@@ -10552,14 +10570,14 @@ public final class Base {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public com.trans.pixel.protoc.Base.JewelPool.Builder getOrderBuilder(
           int index) {
         return getOrderFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public com.trans.pixel.protoc.Base.JewelPoolOrBuilder getOrderOrBuilder(
           int index) {
@@ -10569,7 +10587,7 @@ public final class Base {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolOrBuilder> 
            getOrderOrBuilderList() {
@@ -10580,14 +10598,14 @@ public final class Base {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public com.trans.pixel.protoc.Base.JewelPool.Builder addOrderBuilder() {
         return getOrderFieldBuilder().addBuilder(
             com.trans.pixel.protoc.Base.JewelPool.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public com.trans.pixel.protoc.Base.JewelPool.Builder addOrderBuilder(
           int index) {
@@ -10595,7 +10613,7 @@ public final class Base {
             index, com.trans.pixel.protoc.Base.JewelPool.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.JewelPool order = 2;</code>
        */
       public java.util.List<com.trans.pixel.protoc.Base.JewelPool.Builder> 
            getOrderBuilderList() {
@@ -10608,7 +10626,7 @@ public final class Base {
           orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.JewelPool, com.trans.pixel.protoc.Base.JewelPool.Builder, com.trans.pixel.protoc.Base.JewelPoolOrBuilder>(
                   order_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           order_ = null;
@@ -10625,6 +10643,680 @@ public final class Base {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.JewelPoolList)
+  }
+
+  public interface JewelPoolListsOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.JewelPoolList data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.JewelPoolList> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.JewelPoolList getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolListOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.JewelPoolListOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.JewelPoolLists}
+   */
+  public static final class JewelPoolLists extends
+      com.google.protobuf.GeneratedMessage
+      implements JewelPoolListsOrBuilder {
+    // Use JewelPoolLists.newBuilder() to construct.
+    private JewelPoolLists(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private JewelPoolLists(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final JewelPoolLists defaultInstance;
+    public static JewelPoolLists getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public JewelPoolLists getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private JewelPoolLists(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPoolList>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.Base.JewelPoolList.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_JewelPoolLists_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Base.JewelPoolLists.class, com.trans.pixel.protoc.Base.JewelPoolLists.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<JewelPoolLists> PARSER =
+        new com.google.protobuf.AbstractParser<JewelPoolLists>() {
+      public JewelPoolLists parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new JewelPoolLists(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<JewelPoolLists> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.JewelPoolList data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.Base.JewelPoolList> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.JewelPoolList> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolListOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.JewelPoolList getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.JewelPoolListOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.JewelPoolLists parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Base.JewelPoolLists prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.JewelPoolLists}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Base.JewelPoolListsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_JewelPoolLists_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Base.JewelPoolLists.class, com.trans.pixel.protoc.Base.JewelPoolLists.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Base.JewelPoolLists.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Base.JewelPoolLists getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Base.JewelPoolLists.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Base.JewelPoolLists build() {
+        com.trans.pixel.protoc.Base.JewelPoolLists result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Base.JewelPoolLists buildPartial() {
+        com.trans.pixel.protoc.Base.JewelPoolLists result = new com.trans.pixel.protoc.Base.JewelPoolLists(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Base.JewelPoolLists) {
+          return mergeFrom((com.trans.pixel.protoc.Base.JewelPoolLists)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Base.JewelPoolLists other) {
+        if (other == com.trans.pixel.protoc.Base.JewelPoolLists.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Base.JewelPoolLists parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Base.JewelPoolLists) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.JewelPoolList data = 1;
+      private java.util.List<com.trans.pixel.protoc.Base.JewelPoolList> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.JewelPoolList>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.JewelPoolList, com.trans.pixel.protoc.Base.JewelPoolList.Builder, com.trans.pixel.protoc.Base.JewelPoolListOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.JewelPoolList> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.JewelPoolList getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.Base.JewelPoolList value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.Base.JewelPoolList.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.Base.JewelPoolList value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.Base.JewelPoolList value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.Base.JewelPoolList.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.Base.JewelPoolList.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.JewelPoolList> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.JewelPoolList.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.JewelPoolListOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.JewelPoolListOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.JewelPoolList.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.JewelPoolList.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.JewelPoolList.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.JewelPoolList.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.JewelPoolList data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.JewelPoolList.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.JewelPoolList, com.trans.pixel.protoc.Base.JewelPoolList.Builder, com.trans.pixel.protoc.Base.JewelPoolListOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.JewelPoolList, com.trans.pixel.protoc.Base.JewelPoolList.Builder, com.trans.pixel.protoc.Base.JewelPoolListOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.JewelPoolLists)
+    }
+
+    static {
+      defaultInstance = new JewelPoolLists(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.JewelPoolLists)
   }
 
   public interface UnionBossUserRecordOrBuilder
@@ -28728,6 +29420,11 @@ public final class Base {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_JewelPoolList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_JewelPoolLists_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28864,72 +29561,74 @@ public final class Base {
       "extraType\030T \001(\r\022\032\n\022extraLastTimeStamp\030U " +
       "\001(\003\022\020\n\010userType\030V \001(\r\022\025\n\rgoldSavingBox\030W" +
       " \001(\r\022\024\n\014expSavingBox\030X \001(\r\022\r\n\005title\030Y \001(" +
-      "\r\022\r\n\005frame\030Z \001(\r\"\213\001\n\tJewelPool\022\r\n\005order\030" +
-      "\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\023\n\013description\030\003 \001" +
-      "(\t\022\020\n\010rewardid\030\004 \001(\005\022\023\n\013rewardcount\030\005 \001(" +
-      "\005\022\020\n\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"A" +
-      "\n\rJewelPoolList\0220\n\005order\030\001 \003(\0132!.com.tra" +
-      "ns.pixel.protoc.JewelPool\"6\n\023UnionBossUs" +
-      "erRecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percent\030\002 \001(",
-      "\005\"\367\001\n\017UnionBossRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n" +
-      "\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAttackHp" +
-      "\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans.pixel." +
-      "protoc.UserRank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005co" +
-      "unt\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuserRecord" +
-      "\030\t \003(\0132+.com.trans.pixel.protoc.UnionBos" +
-      "sUserRecord\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com." +
-      "trans.pixel.protoc.UserInfo\022\r\n\005score\030\002 \002" +
-      "(\005\022\014\n\004rank\030\003 \001(\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 " +
-      "\002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.",
-      "trans.pixel.protoc.UserTalentOrder\0226\n\005eq" +
-      "uip\030\005 \003(\0132\'.com.trans.pixel.protoc.UserT" +
-      "alentEquip\022\013\n\003exp\030\006 \001(\r\".\n\nTeamEngine\022\n\n" +
-      "\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Team" +
-      "\022.\n\004user\030\001 \001(\0132 .com.trans.pixel.protoc." +
-      "UserInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans.p" +
-      "ixel.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001(\013" +
-      "2\".com.trans.pixel.protoc.UserTalent\022\024\n\014" +
-      "rolePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\0132\"" +
-      ".com.trans.pixel.protoc.TeamEngine\"@\n\017Us",
-      "erTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId\030" +
-      "\002 \002(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip\022" +
-      "\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005lev" +
-      "el\030\003 \001(\005\"\275\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003d" +
-      "ps\030\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel" +
-      ".protoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userName" +
-      "\030\005 \001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003" +
-      "vip\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(\r" +
-      "\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clear" +
-      "Id\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004r",
-      "are\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022" +
-      "\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipPokede\022\016" +
-      "\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003" +
-      " \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006i" +
-      "nfoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005" +
-      "\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com.t" +
-      "rans.pixel.protoc.SkillInfo\022\r\n\005value\030\006 \001" +
-      "(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010posi" +
-      "tion\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001(" +
-      "\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixel.proto",
-      "c.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank\030" +
-      "\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPokede\030\020 " +
-      "\001(\0132\'.com.trans.pixel.protoc.UserEquipPo" +
-      "kede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006itemi" +
-      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006" +
-      "weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta\030" +
-      "\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007e" +
-      "ventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n" +
-      " \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030" +
-      "\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.pr",
-      "otoc.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(" +
-      "\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetco" +
-      "unt\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\"\326\001\n\005Event\022\r\n\005order" +
-      "\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n" +
-      "\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005\022\021\n\t" +
-      "condition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttar" +
-      "getdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n " +
-      "\001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001(\005"
+      "\r\022\r\n\005frame\030Z \001(\r\"\205\001\n\tJewelPool\022\r\n\005order\030" +
+      "\001 \001(\005\022\020\n\010merlevel\030\002 \001(\005\0222\n\006reward\030\004 \001(\0132" +
+      "\".com.trans.pixel.protoc.RewardInfo\022\020\n\010r" +
+      "ewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"M\n\rJewe" +
+      "lPoolList\022\n\n\002id\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!.c" +
+      "om.trans.pixel.protoc.JewelPool\"E\n\016Jewel" +
+      "PoolLists\0223\n\004data\030\001 \003(\0132%.com.trans.pixe",
+      "l.protoc.JewelPoolList\"6\n\023UnionBossUserR" +
+      "ecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\367" +
+      "\001\n\017UnionBossRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp" +
+      "\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 " +
+      "\001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans.pixel.pro" +
+      "toc.UserRank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count" +
+      "\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuserRecord\030\t " +
+      "\003(\0132+.com.trans.pixel.protoc.UnionBossUs" +
+      "erRecord\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com.tra" +
+      "ns.pixel.protoc.UserInfo\022\r\n\005score\030\002 \002(\005\022",
+      "\014\n\004rank\030\003 \001(\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005" +
+      "\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.tra" +
+      "ns.pixel.protoc.UserTalentOrder\0226\n\005equip" +
+      "\030\005 \003(\0132\'.com.trans.pixel.protoc.UserTale" +
+      "ntEquip\022\013\n\003exp\030\006 \001(\r\".\n\nTeamEngine\022\n\n\002id" +
+      "\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Team\022.\n" +
+      "\004user\030\001 \001(\0132 .com.trans.pixel.protoc.Use" +
+      "rInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans.pixe" +
+      "l.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001(\0132\"." +
+      "com.trans.pixel.protoc.UserTalent\022\024\n\014rol",
+      "ePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\0132\".co" +
+      "m.trans.pixel.protoc.TeamEngine\"@\n\017UserT" +
+      "alentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId\030\002 \002" +
+      "(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010" +
+      "position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030" +
+      "\003 \001(\005\"\275\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030" +
+      "\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.pr" +
+      "otoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userName\030\005 " +
+      "\001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip" +
+      "\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(\r\"W\n",
+      "\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clearId\030" +
+      "\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare" +
+      "\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\n" +
+      "skillLevel\030\002 \002(\005\"Q\n\017UserEquipPokede\022\016\n\006i" +
+      "temId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(" +
+      "\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006info" +
+      "Id\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n" +
+      "\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com.tran" +
+      "s.pixel.protoc.SkillInfo\022\r\n\005value\030\006 \001(\005\022" +
+      "\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010positio",
+      "n\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220" +
+      "\n\005clear\030\014 \003(\0132!.com.trans.pixel.protoc.C" +
+      "learInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank\030\016 \001" +
+      "(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\013" +
+      "2\'.com.trans.pixel.protoc.UserEquipPoked" +
+      "e\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006itemid\030\001" +
+      " \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006wei" +
+      "ght\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta\030\005 \001" +
+      "(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007even" +
+      "tid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(",
+      "\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001" +
+      "(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014" +
+      "\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount" +
+      "\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\"\326\001\n\005Event\022\r\n\005order\030\001 " +
+      "\001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006da" +
+      "guan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005\022\021\n\tcon" +
+      "dition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttarget" +
+      "des\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005",
+      "\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28947,111 +29646,117 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPool_descriptor,
-              new java.lang.String[] { "Order", "Zhanli", "Description", "Rewardid", "Rewardcount", "Rewarded", "Recharged", });
+              new java.lang.String[] { "Order", "Merlevel", "Reward", "Rewarded", "Recharged", });
           internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_JewelPoolList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor,
-              new java.lang.String[] { "Order", });
-          internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor =
+              new java.lang.String[] { "Id", "Order", });
+          internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_com_trans_pixel_protoc_JewelPoolLists_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UnionBossUserRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor,
               new java.lang.String[] { "UserId", "Percent", });
           internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_UnionBossRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor,
               new java.lang.String[] { "BossId", "Hp", "EndTime", "MyAttackHp", "Ranks", "StartTime", "Count", "Percent", "UserRecord", });
           internal_static_com_trans_pixel_protoc_Rank_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_Rank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rank_descriptor,
               new java.lang.String[] { "User", "Score", "Rank", });
           internal_static_com_trans_pixel_protoc_UserTalent_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_UserTalent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalent_descriptor,
               new java.lang.String[] { "Id", "Level", "Skill", "Equip", "Exp", });
           internal_static_com_trans_pixel_protoc_TeamEngine_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_TeamEngine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TeamEngine_descriptor,
               new java.lang.String[] { "Id", "ComposeSkill", });
           internal_static_com_trans_pixel_protoc_Team_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Team_descriptor,
               new java.lang.String[] { "User", "HeroInfo", "UserTalent", "RolePosition", "TeamEngine", });
           internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_UserTalentOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor,
               new java.lang.String[] { "Order", "SkillId", "Level", });
           internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_UserTalentEquip_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor,
               new java.lang.String[] { "Position", "ItemId", "Level", });
           internal_static_com_trans_pixel_protoc_UserRank_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
               new java.lang.String[] { "Rank", "Dps", "Team", "UserId", "UserName", "Zhanli", "Icon", "Vip", "Score2", "Title", });
           internal_static_com_trans_pixel_protoc_ClearInfo_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_ClearInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ClearInfo_descriptor,
               new java.lang.String[] { "Position", "ClearId", "Count", "Id", "Rare", });
           internal_static_com_trans_pixel_protoc_SkillInfo_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SkillInfo_descriptor,
               new java.lang.String[] { "SkillId", "SkillLevel", });
           internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_UserEquipPokede_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor,
               new java.lang.String[] { "ItemId", "Level", "Order", "LastTime", });
           internal_static_com_trans_pixel_protoc_HeroInfo_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
               new java.lang.String[] { "InfoId", "Level", "Rare", "EquipId", "Skill", "Value", "Star", "HeroId", "Position", "IsLock", "Count", "Clear", "Strengthen", "Rank", "Fetters", "EquipPokede", "Sp", });
           internal_static_com_trans_pixel_protoc_RewardInfo_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
               new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
           internal_static_com_trans_pixel_protoc_MultiReward_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_MultiReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MultiReward_descriptor,
               new java.lang.String[] { "Id", "Name", "Loot", });
           internal_static_com_trans_pixel_protoc_Task_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_Task_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task_descriptor,
               new java.lang.String[] { "Targetid", "Name", "Des", "Targetcount", "Reward", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,

@@ -78,8 +78,8 @@ public class RedisKey {
 	public final static String PURCHASECONTRACTREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PurchaseContractReward";
 	public final static String VIPLIBAO_CONFIG = PREFIX+CONFIG_PREFIX+"VipLibao";
 	public final static String JEWELPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"JewelPool";
-	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";
-	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
+//	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";
+//	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
 	public static final String DAGUAN_CONFIG = PREFIX+CONFIG_PREFIX+"Daguan";
 	public static final String DAGUANEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"DaguanEvent";
 	public static final String MAINEVENT_CONFIG = PREFIX+CONFIG_PREFIX+"MainEvent";
