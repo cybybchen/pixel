@@ -391,6 +391,9 @@ public class PvpMapService {
 				redis.deleteEvent(user, event.getPositionid());
 				continue;
 			}
+			String buffstr = pvpMap.get(event.getFieldid()+"");
+			if(buffstr == null || Integer.parseInt(buffstr) <= event.getLevel())
+				continue;
 			if(event.getEventid()/1000 == 21)
 				redis.deleteBoss(user, event.getPositionid());
 			else
@@ -399,9 +402,6 @@ public class PvpMapService {
 			if(map.containsKey(event.getFieldid()+"")) {
 				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
 			}
-			String buffstr = pvpMap.get(event.getFieldid()+"");
-			if(buffstr == null || Integer.parseInt(buffstr) <= event.getLevel())
-				continue;
 //			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
 			if (event.getEventid()/1000 == 21) {
 				/**
