@@ -500,20 +500,6 @@ message ResponseBattletowerShopCommand {
 	optional int32 refreshCost = 3;//刷新消耗
 }
 
-message YueKa {
-	required int32 itemid = 1;
-	optional int32 rewardid = 2;
-	optional int32 rewardcount = 3;
-	optional int32 count = 4;
-	optional string name = 5;
-	optional int32 rewardid1 = 6;
-	optional int32 rewardcount1 = 7;
-	optional int32 jingyan_per = 9;
-}
-message YueKaList {
-	repeated YueKa item = 1;
-}
-
 message Libao {
 	optional int32 id = 1;
 	optional int32 rechargeid = 2;

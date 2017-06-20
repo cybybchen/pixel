@@ -98,6 +98,7 @@ public class RedisKey {
 	public final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
 	public final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
 	public final static String LIBAOSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LibaoShop";
+	public final static String SHENMISHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ShenmiShop";
 	public final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
 	public final static String BLACKSHOPCOST_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShopCost";
 	public final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";

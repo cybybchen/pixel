@@ -67,23 +67,27 @@ public class ShopService {
 		redis.saveDailyShop(shoplist, user);
 		return shoplist;
 	}
-
-	public ShopList getBlackShop(UserBean user){
+	
+	public ShopList getBlackShop(UserBean user) {
 		return redis.getBlackShop(user);
 	}
-	public int getBlackShopRefreshCost(int time){
-		return redis.getBlackShopRefreshCost(time);
-	}
 	
-	public void saveBlackShop(ShopList shoplist, UserBean user){
-		redis.saveBlackShop(shoplist, user);
-	}
-	
-	public ShopList refreshBlackShop(UserBean user){
-		ShopList shoplist = redis.buildBlackShop(user);
-		redis.saveBlackShop(shoplist, user);
-		return shoplist;
-	}
+//	public ShopList getBlackShop(UserBean user){
+//		return redis.getBlackShop(user);
+//	}
+//	public int getBlackShopRefreshCost(int time){
+//		return redis.getBlackShopRefreshCost(time);
+//	}
+//	
+//	public void saveBlackShop(ShopList shoplist, UserBean user){
+//		redis.saveBlackShop(shoplist, user);
+//	}
+//	
+//	public ShopList refreshBlackShop(UserBean user){
+//		ShopList shoplist = redis.buildBlackShop(user);
+//		redis.saveBlackShop(shoplist, user);
+//		return shoplist;
+//	}
 
 	public ShopList getUnionShop(UserBean user){
 		return redis.getUnionShop(user);

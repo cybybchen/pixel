@@ -238,82 +238,85 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShop(Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-//		ShopList shoplist = service.getBlackShop(user);
-		int refreshtime = user.getBlackShopRefreshTime();
-//		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-//			shoplist = service.refreshBlackShop(user);
-//		}
-
+		ShopList list = service.getBlackShop(user);
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
-//		shop.addAllItems(shoplist.getItemsList());
-//		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
+		shop.addAllItems(list.getItemsList());
 		responseBuilder.setBlackShopCommand(shop);
+//		ShopList shoplist = service.getBlackShop(user);
+//		int refreshtime = user.getBlackShopRefreshTime();
+////		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+////			shoplist = service.refreshBlackShop(user);
+////		}
+//
+//		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
+////		shop.addAllItems(shoplist.getItemsList());
+////		shop.setEndTime(shoplist.getEndTime());
+//		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
+//		responseBuilder.setBlackShopCommand(shop);
 	}
 
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop(user));
-		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = ShopList.newBuilder(service.refreshBlackShop(user));
-		}
-		int refreshtime = user.getBlackShopRefreshTime();
-		Commodity.Builder commbuilder = shoplist.getItemsBuilder(cmd.getIndex());
-		int cost = commbuilder.getCost();
-		if(commbuilder.hasDiscount())
-			cost = cost*commbuilder.getDiscount()/100;
-		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
-			
-            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		}else if(!costService.cost(user, commbuilder.getCurrency(), cost)){
-			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
+		ShopList shoplist = service.getBlackShop(user);
+//		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+//			shoplist = ShopList.newBuilder(service.refreshBlackShop(user));
+//		}
+//		int refreshtime = user.getBlackShopRefreshTime();
+		Commodity comm = shoplist.getItems(cmd.getIndex());
+		int cost = comm.getCost();
+//		if(commbuilder.hasDiscount())
+//			cost = cost*commbuilder.getDiscount()/100;
+//		if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
+//			
+//            responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+		if(!costService.cost(user, comm.getCurrency(), cost)){
+			ErrorConst error = getNotEnoughError(comm.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
-			commbuilder.setIsOut(true);
-			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount());
-	      responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-	      service.saveBlackShop(shoplist.build(), user);
-	      pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
-	      logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), cost);
+			handleRewards(responseBuilder, user, comm.getItemid(), comm.getCount());
+			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
+			//	      service.saveBlackShop(shoplist.build(), user);
+			pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
+			logService.sendShopLog(user.getServerId(), user.getId(), 3, comm.getItemid(), comm.getCurrency(), cost);
 		}
-		pusher.pushUserDataByRewardId(responseBuilder, user, commbuilder.getCurrency());
+		pusher.pushUserDataByRewardId(responseBuilder, user, comm.getCurrency());
 		
-		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
-		shop.addAllItems(shoplist.getItemsList());
-		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
-		responseBuilder.setBlackShopCommand(shop);
+//		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
+//		shop.addAllItems(shoplist.getItemsList());
+//		shop.setEndTime(shoplist.getEndTime());
+//		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
+//		responseBuilder.setBlackShopCommand(shop);
 	}
 
 	public void BlackShopRefresh(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList shoplist = service.getBlackShop(user);
-		int refreshtime = user.getBlackShopRefreshTime();
-		if(costService.cost(user, RewardConst.JEWEL, service.getBlackShopRefreshCost(refreshtime))) {
-            logService.sendShopLog(user.getServerId(), user.getId(), 3, 0, 1002, service.getBlackShopRefreshCost(refreshtime));
-			shoplist = service.refreshBlackShop(user);
-            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
-			refreshtime++;
-			user.setBlackShopRefreshTime(refreshtime);
-			userService.updateUser(user);
-			pusher.pushUserInfoCommand(responseBuilder, user);
-		}else{
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
-		}
-		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-			shoplist = service.refreshBlackShop(user);
-		}
-
-		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
-		shop.addAllItems(shoplist.getItemsList());
-		shop.setEndTime(shoplist.getEndTime());
-		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
-		responseBuilder.setBlackShopCommand(shop);
+//		ShopList shoplist = service.getBlackShop(user);
+//		int refreshtime = user.getBlackShopRefreshTime();
+//		if(costService.cost(user, RewardConst.JEWEL, service.getBlackShopRefreshCost(refreshtime))) {
+//            logService.sendShopLog(user.getServerId(), user.getId(), 3, 0, 1002, service.getBlackShopRefreshCost(refreshtime));
+//			shoplist = service.refreshBlackShop(user);
+//            responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SHOP_REFRESH_SUCCESS));
+//			refreshtime++;
+//			user.setBlackShopRefreshTime(refreshtime);
+//			userService.updateUser(user);
+//			pusher.pushUserInfoCommand(responseBuilder, user);
+//		}else{
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
+//		}
+//		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+//			shoplist = service.refreshBlackShop(user);
+//		}
+//
+//		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
+//		shop.addAllItems(shoplist.getItemsList());
+//		shop.setEndTime(shoplist.getEndTime());
+//		shop.setRefreshCost(service.getBlackShopRefreshCost(refreshtime));
+//		responseBuilder.setBlackShopCommand(shop);
 	}
 
 	public int getUnionShopRefreshCost(int time){
