@@ -7,7 +7,7 @@
 		<result property="lootTime" column="lootTime" />
 		<result property="eventTime" column="eventTime" />
 		<result property="unlockDaguan" column="unlockDaguan" />
-		<result property="leftCount" column="leftCount" />
+		<result property="unlockOrder" column="unlockOrder" />
 		<result property="lootDaguan" column="lootDaguan" />
 		<result property="lootTimeNormal" column="loot_time_normal" />
 	</resultMap>
@@ -21,11 +21,11 @@
 	</resultMap>
 
 	<update id="updateUserLevel" parameterType="com.trans.pixel.model.userinfo.UserLevelBean">
-		INSERT INTO user_level(userId, lootTime, eventTime, unlockDaguan, leftCount, lootDaguan, loot_time_normal)
-	    VALUES(#{userId}, #{lootTime}, #{eventTime}, #{unlockDaguan}, #{leftCount}, #{lootDaguan}, #{lootTimeNormal})
+		INSERT INTO user_level(userId, lootTime, eventTime, unlockDaguan, unlockOrder, lootDaguan, loot_time_normal)
+	    VALUES(#{userId}, #{lootTime}, #{eventTime}, #{unlockDaguan}, #{unlockOrder}, #{lootDaguan}, #{lootTimeNormal})
 	    ON 
 	    duplicate key update
-	    lootTime=#{lootTime},eventTime=#{eventTime},unlockDaguan=#{unlockDaguan},leftCount=#{leftCount},lootDaguan=#{lootDaguan},
+	    lootTime=#{lootTime},eventTime=#{eventTime},unlockDaguan=#{unlockDaguan},unlockOrder=#{unlockOrder},lootDaguan=#{lootDaguan},
 	    loot_time_normal=#{lootTimeNormal}
 	</update>
 

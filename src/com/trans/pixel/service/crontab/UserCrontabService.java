@@ -118,24 +118,24 @@ public class UserCrontabService {
 			long userId = Long.parseLong(key);
 			userLevelService.updateToDB(userId);
 		}
-		while((key=userLevelService.popEventReadyKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int order = Integer.parseInt(keys[1]);
-			userLevelService.updateEventReadyToDB(userId, order);
-		}
-		while((key=userLevelService.popEventKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int order = Integer.parseInt(keys[1]);
-			userLevelService.updateEventToDB(userId, order);
-		}
-		while((key=userLevelService.popDelEventKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int order = Integer.parseInt(keys[1]);
-			userLevelService.updateDelEventToDB(userId, order);
-		}
+//		while((key=userLevelService.popEventReadyKey()) != null){
+//			String keys[] = key.split("#");
+//			long userId = Long.parseLong(keys[0]);
+//			int order = Integer.parseInt(keys[1]);
+//			userLevelService.updateEventReadyToDB(userId, order);
+//		}
+//		while((key=userLevelService.popEventKey()) != null){
+//			String keys[] = key.split("#");
+//			long userId = Long.parseLong(keys[0]);
+//			int order = Integer.parseInt(keys[1]);
+//			userLevelService.updateEventToDB(userId, order);
+//		}
+//		while((key=userLevelService.popDelEventKey()) != null){
+//			String keys[] = key.split("#");
+//			long userId = Long.parseLong(keys[0]);
+//			int order = Integer.parseInt(keys[1]);
+//			userLevelService.updateDelEventToDB(userId, order);
+//		}
 		while ((key = rechargeRedisService.popDBKey()) != null) {
 			JSONObject json = JSONObject.fromObject(key);
 			RechargeBean recharge = (RechargeBean) JSONObject.toBean(json, RechargeBean.class);

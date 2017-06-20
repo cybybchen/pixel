@@ -20,7 +20,6 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.mapper.UserLevelMapper;
-import com.trans.pixel.model.userinfo.EventBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.Event;
@@ -332,37 +331,37 @@ public class LevelRedisService extends RedisService {
 	public Event getEvent(UserBean user, int order) {
 		return getEvent(user.getId(), order);
 	}
-	public String popEventKey() {
-		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX);
-	}
-	public void updateEventToDB(long userId, int order){
-		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
-		if(value != null){
-			EventBean bean = EventBean.fromJson(userId, value);
-			mapper.updateEvent(bean);
-		}
-	}
-	public String popEventReadyKey() {
-		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX);
-	}
-	public void updateEventReadyToDB(long userId, int order){
-		String value = hget(RedisKey.USEREVENTREADY_PREFIX+userId, order+"");
-		if(value != null){
-			EventBean bean = EventBean.fromJson(userId, value);
-			mapper.updateEvent(bean);
-		}
-	}
-	public String popDelEventKey() {
-		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del");
-	}
-	public void updateDelEventToDB(long userId, int order){
-		mapper.delEvent(userId, order);
-	}
+//	public String popEventKey() {
+//		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX);
+//	}
+//	public void updateEventToDB(long userId, int order){
+//		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
+//		if(value != null){
+//			EventBean bean = EventBean.fromJson(userId, value);
+//			mapper.updateEvent(bean);
+//		}
+//	}
+//	public String popEventReadyKey() {
+//		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX);
+//	}
+//	public void updateEventReadyToDB(long userId, int order){
+//		String value = hget(RedisKey.USEREVENTREADY_PREFIX+userId, order+"");
+//		if(value != null){
+//			EventBean bean = EventBean.fromJson(userId, value);
+//			mapper.updateEvent(bean);
+//		}
+//	}
+//	public String popDelEventKey() {
+//		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del");
+//	}
+//	public void updateDelEventToDB(long userId, int order){
+//		mapper.delEvent(userId, order);
+//	}
 	public void saveEvent(long userId, Event event) {
 		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
 		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
-		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"#"+event.getOrder());
+//		if(event.getOrder() < 10000)
+//			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"#"+event.getOrder());
 	}
 	public void saveEvent(UserBean user, Event event) {
 		saveEvent(user.getId(), event);
@@ -373,8 +372,8 @@ public class LevelRedisService extends RedisService {
 	public void saveEventReady(long userId, Event event) {
 		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event));
 		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
-		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
+//		if(event.getOrder() < 10000)
+//			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
 	}
 //	public Event getEventReady(UserBean user, int eventid) {
 //		String value = hget(RedisKey.USEREVENTREADY_PREFIX+user.getId(), eventid+"");
@@ -390,8 +389,8 @@ public class LevelRedisService extends RedisService {
 	}
 	public void delEvent(UserBean user, Event event) {
 		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
-		if(event.getOrder() < 10000)
-			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getOrder());
+//		if(event.getOrder() < 10000)
+//			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getOrder());
 	}
 
 	public EventConfig getEvent(int eventid){
