@@ -2,6 +2,7 @@ package com.trans.pixel.service.command;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
@@ -45,6 +46,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class PvpCommandService extends BaseCommandService {
+	private static Logger logger = Logger.getLogger(PvpCommandService.class);
 	@Resource
 	private UserTeamService userTeamService;
 	@Resource
@@ -128,8 +130,10 @@ public class PvpCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
-		} else if(rewards.getLootCount() > 0)
+		} else if(rewards.getLootCount() > 0){
+			logger.info(rewards.getAllFields());
 			handleRewards(responseBuilder, user, rewards);
+		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	

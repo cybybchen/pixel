@@ -398,7 +398,7 @@ public class PvpMapService {
 				redis.deleteBoss(user, event.getPositionid());
 			else
 				redis.deleteEvent(user, event.getPositionid());
-			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
+			rewards.addAllLoot(levelRedisService.eventReward(event.getEventid(), event.getLevel()).getLootList());
 			if(map.containsKey(event.getFieldid()+"")) {
 				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
 			}
@@ -427,6 +427,7 @@ public class PvpMapService {
 //			}
 		}
 		userService.updateUser(user);
+		rewardService.mergeReward(rewards);
 
 //		int logType = PvpMapConst.TYPE_MONSTER;
 //		if (event.getEventid()/1000 == 21) {
