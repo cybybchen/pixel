@@ -132,6 +132,7 @@ public class UserBean {
 	private int goldSavingBox = 0;
 	private int expSavingBox = 0;
 	private int title = 0;
+	private int frame = 0;//头像框
 	/**
 	 * 碎片箱购买次数
 	 */
@@ -1275,6 +1276,12 @@ public class UserBean {
 	public void setTitle(int title) {
 		this.title = title;
 	}
+	public int getFrame() {
+		return frame;
+	}
+	public void setFrame(int frame) {
+		this.frame = frame;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1312,6 +1319,7 @@ public class UserBean {
 		builder.setUnionJob(unionJob);
 		builder.setLastLoginTime(lastLoginTime);
 		builder.setTitle(title);
+		builder.setFrame(frame);
 		
 		return builder.build();
 	}
@@ -1342,6 +1350,8 @@ public class UserBean {
 		builder.setZhanli(zhanliMax);
 		builder.setMerlevel(merlevel);
 		builder.setLastLoginTime(lastLoginTime);
+		builder.setFrame(frame);
+		
 		return builder.build();
 	}
 
@@ -1446,6 +1456,7 @@ public class UserBean {
 		builder.setGoldSavingBox(goldSavingBox);
 		builder.setExpSavingBox(expSavingBox);
 		builder.setTitle(title);
+		builder.setFrame(frame);
 		
 		return builder.build();
 	}

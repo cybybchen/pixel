@@ -10113,12 +10113,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasSubmitIconCommand()) {
-        if (!getSubmitIconCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasBindAccountCommand()) {
         if (!getBindAccountCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -15734,12 +15728,6 @@ public final class Request {
         }
         if (hasSubmitComposeSkillCommand()) {
           if (!getSubmitComposeSkillCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasSubmitIconCommand()) {
-          if (!getSubmitIconCommand().isInitialized()) {
             
             return false;
           }

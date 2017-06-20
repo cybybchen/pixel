@@ -1084,6 +1084,16 @@ public final class Base {
      * </pre>
      */
     int getTitle();
+
+    // optional uint32 frame = 90;
+    /**
+     * <code>optional uint32 frame = 90;</code>
+     */
+    boolean hasFrame();
+    /**
+     * <code>optional uint32 frame = 90;</code>
+     */
+    int getFrame();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserInfo}
@@ -1519,6 +1529,11 @@ public final class Base {
             case 712: {
               bitField2_ |= 0x00000040;
               title_ = input.readUInt32();
+              break;
+            }
+            case 720: {
+              bitField2_ |= 0x00000080;
+              frame_ = input.readUInt32();
               break;
             }
           }
@@ -3303,6 +3318,22 @@ public final class Base {
       return title_;
     }
 
+    // optional uint32 frame = 90;
+    public static final int FRAME_FIELD_NUMBER = 90;
+    private int frame_;
+    /**
+     * <code>optional uint32 frame = 90;</code>
+     */
+    public boolean hasFrame() {
+      return ((bitField2_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional uint32 frame = 90;</code>
+     */
+    public int getFrame() {
+      return frame_;
+    }
+
     private void initFields() {
       id_ = 0L;
       account_ = "";
@@ -3378,6 +3409,7 @@ public final class Base {
       goldSavingBox_ = 0;
       expSavingBox_ = 0;
       title_ = 0;
+      frame_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3622,6 +3654,9 @@ public final class Base {
       }
       if (((bitField2_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(89, title_);
+      }
+      if (((bitField2_ & 0x00000080) == 0x00000080)) {
+        output.writeUInt32(90, frame_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3928,6 +3963,10 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(89, title_);
       }
+      if (((bitField2_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(90, frame_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -4211,6 +4250,8 @@ public final class Base {
         bitField2_ = (bitField2_ & ~0x00000100);
         title_ = 0;
         bitField2_ = (bitField2_ & ~0x00000200);
+        frame_ = 0;
+        bitField2_ = (bitField2_ & ~0x00000400);
         return this;
       }
 
@@ -4554,6 +4595,10 @@ public final class Base {
           to_bitField2_ |= 0x00000040;
         }
         result.title_ = title_;
+        if (((from_bitField2_ & 0x00000400) == 0x00000400)) {
+          to_bitField2_ |= 0x00000080;
+        }
+        result.frame_ = frame_;
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -4880,6 +4925,9 @@ public final class Base {
         }
         if (other.hasTitle()) {
           setTitle(other.getTitle());
+        }
+        if (other.hasFrame()) {
+          setFrame(other.getFrame());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8900,6 +8948,39 @@ public final class Base {
       public Builder clearTitle() {
         bitField2_ = (bitField2_ & ~0x00000200);
         title_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 frame = 90;
+      private int frame_ ;
+      /**
+       * <code>optional uint32 frame = 90;</code>
+       */
+      public boolean hasFrame() {
+        return ((bitField2_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional uint32 frame = 90;</code>
+       */
+      public int getFrame() {
+        return frame_;
+      }
+      /**
+       * <code>optional uint32 frame = 90;</code>
+       */
+      public Builder setFrame(int value) {
+        bitField2_ |= 0x00000400;
+        frame_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 frame = 90;</code>
+       */
+      public Builder clearFrame() {
+        bitField2_ = (bitField2_ & ~0x00000400);
+        frame_ = 0;
         onChanged();
         return this;
       }
@@ -28740,7 +28821,7 @@ public final class Base {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\222\r\n" +
+      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\241\r\n" +
       "\010UserInfo\022\n\n\002id\030\001 \002(\003\022\017\n\007account\030\002 \001(\t\022\017" +
       "\n\007session\030  \001(\t\022\014\n\004icon\030\r \001(\005\022\014\n\004name\030\003 " +
       "\001(\t\022\020\n\010serverId\030\004 \001(\005\022\017\n\007unionId\030\016 \001(\005\022\021" +
@@ -28783,72 +28864,72 @@ public final class Base {
       "extraType\030T \001(\r\022\032\n\022extraLastTimeStamp\030U " +
       "\001(\003\022\020\n\010userType\030V \001(\r\022\025\n\rgoldSavingBox\030W" +
       " \001(\r\022\024\n\014expSavingBox\030X \001(\r\022\r\n\005title\030Y \001(" +
-      "\r\"\213\001\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\016\n\006zhanli" +
-      "\030\002 \001(\005\022\023\n\013description\030\003 \001(\t\022\020\n\010rewardid\030" +
-      "\004 \001(\005\022\023\n\013rewardcount\030\005 \001(\005\022\020\n\010rewarded\030\006" +
-      " \001(\005\022\021\n\trecharged\030\007 \001(\005\"A\n\rJewelPoolList" +
-      "\0220\n\005order\030\001 \003(\0132!.com.trans.pixel.protoc" +
-      ".JewelPool\"6\n\023UnionBossUserRecord\022\016\n\006use" +
-      "rId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\367\001\n\017UnionBoss",
-      "Record\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007en" +
-      "dTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ranks" +
-      "\030\005 \003(\0132 .com.trans.pixel.protoc.UserRank" +
-      "\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007pe" +
-      "rcent\030\010 \001(\005\022?\n\nuserRecord\030\t \003(\0132+.com.tr" +
-      "ans.pixel.protoc.UnionBossUserRecord\"S\n\004" +
-      "Rank\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.pro" +
-      "toc.UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank\030\003 \001(" +
-      "\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 " +
-      "\002(\005\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixel.pro",
-      "toc.UserTalentOrder\0226\n\005equip\030\005 \003(\0132\'.com" +
-      ".trans.pixel.protoc.UserTalentEquip\022\013\n\003e" +
-      "xp\030\006 \001(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014co" +
-      "mposeSkill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132" +
-      " .com.trans.pixel.protoc.UserInfo\0222\n\010her" +
-      "oInfo\030\002 \003(\0132 .com.trans.pixel.protoc.Her" +
-      "oInfo\0226\n\nuserTalent\030\004 \001(\0132\".com.trans.pi" +
-      "xel.protoc.UserTalent\022\024\n\014rolePosition\030\005 " +
-      "\001(\005\0226\n\nteamEngine\030\006 \003(\0132\".com.trans.pixe" +
-      "l.protoc.TeamEngine\"@\n\017UserTalentOrder\022\r",
-      "\n\005order\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030" +
-      "\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010position\030\001 \001" +
-      "(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\"\275\001\n\010Us" +
-      "erRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\005\022*\n\004tea" +
-      "m\030\003 \001(\0132\034.com.trans.pixel.protoc.Team\022\016\n" +
-      "\006userId\030\004 \001(\003\022\020\n\010userName\030\005 \001(\t\022\016\n\006zhanl" +
-      "i\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip\030\010 \001(\r\022\016\n\006sc" +
-      "ore2\030\t \001(\r\022\r\n\005title\030\n \001(\r\"W\n\tClearInfo\022\020" +
-      "\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005cou" +
-      "nt\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSk",
-      "illInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLevel\030\002" +
-      " \002(\005\"Q\n\017UserEquipPokede\022\016\n\006itemId\030\001 \002(\005\022" +
-      "\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTim" +
-      "e\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005" +
-      "level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001" +
-      "(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.prot" +
-      "oc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(" +
-      "\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006i" +
-      "sLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(" +
-      "\0132!.com.trans.pixel.protoc.ClearInfo\022\022\n\n",
-      "strengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetter" +
-      "s\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.trans" +
-      ".pixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001(" +
-      "\005\"\271\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name" +
-      "\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n" +
-      "\007weightb\030\013 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb" +
-      "\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n" +
-      "\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"Y\n\013MultiRe" +
-      "ward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003" +
-      " \003(\0132\".com.trans.pixel.protoc.RewardInfo",
-      "\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t" +
-      "\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006re" +
-      "ward\030\005 \003(\0132\".com.trans.pixel.protoc.Rewa" +
-      "rdInfo\"\326\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007event" +
-      "id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\025" +
-      "\n\rconditiontype\030\005 \001(\005\022\021\n\tcondition\030\006 \001(\005" +
-      "\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttargetdes\030\010 \001(\t\022\016\n" +
-      "\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 " +
-      "\001(\005\022\022\n\neventcount\030\014 \001(\005"
+      "\r\022\r\n\005frame\030Z \001(\r\"\213\001\n\tJewelPool\022\r\n\005order\030" +
+      "\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\023\n\013description\030\003 \001" +
+      "(\t\022\020\n\010rewardid\030\004 \001(\005\022\023\n\013rewardcount\030\005 \001(" +
+      "\005\022\020\n\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"A" +
+      "\n\rJewelPoolList\0220\n\005order\030\001 \003(\0132!.com.tra" +
+      "ns.pixel.protoc.JewelPool\"6\n\023UnionBossUs" +
+      "erRecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percent\030\002 \001(",
+      "\005\"\367\001\n\017UnionBossRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n" +
+      "\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAttackHp" +
+      "\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans.pixel." +
+      "protoc.UserRank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005co" +
+      "unt\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuserRecord" +
+      "\030\t \003(\0132+.com.trans.pixel.protoc.UnionBos" +
+      "sUserRecord\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\022\r\n\005score\030\002 \002" +
+      "(\005\022\014\n\004rank\030\003 \001(\005\"\244\001\n\nUserTalent\022\n\n\002id\030\001 " +
+      "\002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.",
+      "trans.pixel.protoc.UserTalentOrder\0226\n\005eq" +
+      "uip\030\005 \003(\0132\'.com.trans.pixel.protoc.UserT" +
+      "alentEquip\022\013\n\003exp\030\006 \001(\r\".\n\nTeamEngine\022\n\n" +
+      "\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Team" +
+      "\022.\n\004user\030\001 \001(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans.p" +
+      "ixel.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001(\013" +
+      "2\".com.trans.pixel.protoc.UserTalent\022\024\n\014" +
+      "rolePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\0132\"" +
+      ".com.trans.pixel.protoc.TeamEngine\"@\n\017Us",
+      "erTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId\030" +
+      "\002 \002(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip\022" +
+      "\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005lev" +
+      "el\030\003 \001(\005\"\275\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003d" +
+      "ps\030\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel" +
+      ".protoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userName" +
+      "\030\005 \001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003" +
+      "vip\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(\r" +
+      "\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clear" +
+      "Id\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004r",
+      "are\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022" +
+      "\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipPokede\022\016" +
+      "\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003" +
+      " \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006i" +
+      "nfoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005" +
+      "\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com.t" +
+      "rans.pixel.protoc.SkillInfo\022\r\n\005value\030\006 \001" +
+      "(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010posi" +
+      "tion\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001(" +
+      "\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixel.proto",
+      "c.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank\030" +
+      "\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPokede\030\020 " +
+      "\001(\0132\'.com.trans.pixel.protoc.UserEquipPo" +
+      "kede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006itemi" +
+      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006" +
+      "weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta\030" +
+      "\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007e" +
+      "ventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n" +
+      " \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030" +
+      "\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.pr",
+      "otoc.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(" +
+      "\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetco" +
+      "unt\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\"\326\001\n\005Event\022\r\n\005order" +
+      "\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n" +
+      "\006daguan\030\004 \001(\005\022\025\n\rconditiontype\030\005 \001(\005\022\021\n\t" +
+      "condition\030\006 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\021\n\ttar" +
+      "getdes\030\010 \001(\t\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n " +
+      "\001(\005\022\r\n\005count\030\013 \001(\005\022\022\n\neventcount\030\014 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28860,7 +28941,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserInfo_descriptor,
-              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", });
+              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", "Frame", });
           internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new

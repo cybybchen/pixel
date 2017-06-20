@@ -205,7 +205,12 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
-		int icon = cmd.getIcon();
+		int icon = 0;
+		int frame = 0;
+		if (cmd.hasIcon())
+			icon = cmd.getIcon();
+		if (cmd.hasFrame())
+			frame = cmd.getFrame();
 		if (icon > 62000) {
 			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
 			if (userHead == null) {
@@ -217,8 +222,22 @@ public class UserCommandService extends BaseCommandService {
 				return;
 			}
 		}
-		user.setIcon(icon);
-
+		if (frame > 0 && frame != 65001) {
+			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), frame);
+			if (userHead == null) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST);
+				
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
+				responseBuilder.setErrorCommand(errorCommand);
+				pushCommandService.pushUserInfoCommand(responseBuilder, user);
+				return;
+			}
+		}
+		if (icon > 0)
+			user.setIcon(icon);
+		if (frame > 0)
+			user.setFrame(frame);
+		
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);
 		

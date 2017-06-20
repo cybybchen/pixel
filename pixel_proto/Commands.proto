@@ -76,6 +76,7 @@ message UserInfo {
 	optional uint32 goldSavingBox = 87;
 	optional uint32 expSavingBox = 88;
 	optional uint32 title = 89;//当前正在使用的称号
+	optional uint32 frame = 90;
 }
 
 message JewelPool {
@@ -1920,6 +1921,7 @@ message Rmb {
 	//optional string img = 7;
 	optional RewardInfo cost = 9;
 	optional RewardInfo reward = 10;
+	repeated RewardInfo libao = 11;
 }
 
 message RmbList {
@@ -1942,7 +1944,8 @@ message RequestCdkeyCommand {
 }
 
 message RequestSubmitIconCommand {
-	required int32 icon = 1;
+	optional uint32 icon = 1;
+	optional uint32 frame = 2;
 }
 
 message RequestCheatRechargeCommand {
@@ -2326,7 +2329,7 @@ message ResponseKaifuListCommand {
 }
 
 message RequestRankCommand {
-	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help，100+n:副本100+副本ID
+	required int32 type = 1;//1:ladder, 2:zhanli, 3:recharge, 4:help，6:laddermode，100+n:副本100+副本ID
 }
 
 message ResponseRankCommand {
