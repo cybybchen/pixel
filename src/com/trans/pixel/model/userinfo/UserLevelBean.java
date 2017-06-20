@@ -30,6 +30,8 @@ public class UserLevelBean {
 	public void setLootTime(int lootTime) {
 		this.lootTime = lootTime;
 	}
+	public void setLeftCount(int count) {
+	}
 	public int getEventTime() {
 		return eventTime;
 	}
