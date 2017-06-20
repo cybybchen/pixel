@@ -402,7 +402,7 @@ public class PvpMapService {
 			String buffstr = pvpMap.get(event.getFieldid()+"");
 			if(buffstr == null || Integer.parseInt(buffstr) <= event.getLevel())
 				continue;
-			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
+//			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
 			if (event.getEventid()/1000 == 21) {
 				/**
 				 * PVP攻击BOSS的活动
@@ -415,10 +415,10 @@ public class PvpMapService {
 			activityService.attackMonster(user);
 			
 			unionService.killMonsterBossActivity(user, event.getEventid(), 1);
-			/**
-			 * buff的活动
-			 */
-			activityService.upPvpBuff(user, event.getFieldid(), buff);
+//			/**
+//			 * buff的活动
+//			 */
+//			activityService.upPvpBuff(user, event.getFieldid(), buff);
 	
 //			user.addMyactive();
 //			if(user.getMyactive() >= 100){
