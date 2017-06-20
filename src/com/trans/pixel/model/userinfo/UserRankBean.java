@@ -21,6 +21,7 @@ public class UserRankBean {
 	private int dps = 0;
 	private int score2 = 0;
 	private int title = 0;
+	private int frame = 0;
 //	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	
 	public UserRankBean() {
@@ -96,6 +97,14 @@ public class UserRankBean {
 	public void setTitle(int title) {
 		this.title = title;
 	}
+	public int getFrame() {
+		return frame;
+	}
+
+	public void setFrame(int frame) {
+		this.frame = frame;
+	}
+
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -144,6 +153,7 @@ public class UserRankBean {
 		builder.setZhanli(zhanli);
 		builder.setScore2(score2);
 		builder.setTitle(title);
+		builder.setFrame(frame);
 		
 		return builder.build();
 	}
@@ -158,6 +168,8 @@ public class UserRankBean {
 		zhanli = userInfo.getZhanli();
 		vip = userInfo.getVip();
 		title = userInfo.getTitle();
+		frame = userInfo.getFrame();
+		
 		return true;
 	}
 	
@@ -172,6 +184,8 @@ public class UserRankBean {
 			zhanli = userInfo.getZhanliMax();
 		vip = userInfo.getVip();
 		title = userInfo.getTitle();
+		frame = userInfo.getFrame();
+		
 		return true;
 	}
 	
