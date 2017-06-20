@@ -110,11 +110,12 @@ public class LevelCommandService extends BaseCommandService {
 		int id = cmd.getId();
 		redis.productEvent(user, userLevel);
 		levelLoot(userLevel, responseBuilder, user);
-		if(id > userLevel.getUnlockDaguan() && userLevel.getLeftCount() > 0){//illegal next level
+		AreaEvent.Builder events = redis.getMainEvent(userLevel.getUnlockDaguan());
+		if(id > userLevel.getUnlockDaguan() && userLevel.getUnlockOrder() < events.getEvent(events.getEventCount()-1).getOrder()){//illegal next level
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getLeftCount() <= 0){//next level
+		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getUnlockOrder() >= events.getEvent(events.getEventCount()-1).getOrder()){//next level
 			Daguan.Builder daguan = redis.getDaguan(id);
 			if(daguan == null){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
@@ -125,21 +126,21 @@ public class LevelCommandService extends BaseCommandService {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MERLEVEL_FIRST);
 	            responseBuilder.setErrorCommand(errorCommand);
 	        }else{//goto next level
-				AreaEvent.Builder events = redis.getMainEvent(id);
+				events = redis.getMainEvent(id);
 				userLevel.setUnlockDaguan(userLevel.getUnlockDaguan()+1);
 				userLevel.setLootDaguan(userLevel.getUnlockDaguan());
-				userLevel.setLeftCount(daguan.getCount());
+				userLevel.setUnlockOrder(0);
 				userLevel.setCoin(daguan.getGold());
 				userLevel.setExp(daguan.getExp());
 				redis.saveUserLevel(userLevel);
-				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
-				for(Event.Builder event : events.getEventBuilderList()){
-//					if(id == event.getDaguan() && event.getWeight() == 0){
-						event.setOrder(events.getId()*30+event.getOrder());
-						eventmap.put(event.getOrder(), event);
-//					}
-				}
-				redis.productMainEvent(userLevel, eventmap);
+//				Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
+//				for(Event.Builder event : events.getEventBuilderList()){
+////					if(id == event.getDaguan() && event.getWeight() == 0){
+//						event.setOrder(events.getId()*30+event.getOrder());
+//						eventmap.put(event.getOrder(), event);
+////					}
+//				}
+//				redis.productMainEvent(userLevel, eventmap);
 				
 				/**
 				 * 过关的活动
@@ -246,7 +247,14 @@ public class LevelCommandService extends BaseCommandService {
 	}
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
-		Event event = redis.getEvent(user, cmd.getOrder());
+		Event event = null;
+		if(cmd.getOrder() < 10000){
+			AreaEvent.Builder events = redis.getMainEvent(userLevel.getUnlockDaguan());
+			for(Event eve : events.getEventList())
+				if(eve.getOrder() == cmd.getOrder() && cmd.getOrder() == userLevel.getUnlockOrder()+1)
+					event = eve;
+		}else
+			redis.getEvent(user, cmd.getOrder());
 		redis.productEvent(user, userLevel);
 		if(event == null){//illegal event order
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
@@ -272,10 +280,14 @@ public class LevelCommandService extends BaseCommandService {
 		            pusher.pushUserDataByRewardId(responseBuilder, user, eventconfig.getCost().getItemid());
 					MultiReward.Builder rewards = eventReward(eventconfig, event, user);
 					handleRewards(responseBuilder, user, rewards);
-					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
-						userLevel.setLeftCount(userLevel.getLeftCount()-1);
+					if(cmd.getOrder() < 10000){
+						userLevel.setUnlockOrder(cmd.getOrder());
 						redis.saveUserLevel(userLevel);
 					}
+//					if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
+//						userLevel.setLeftCount(userLevel.getLeftCount()-1);
+//						redis.saveUserLevel(userLevel);
+//					}
 				}else{
 					ErrorCommand errorCommand = buildErrorCommand(getNotEnoughError(eventconfig.getCost().getItemid()));
 		            responseBuilder.setErrorCommand(errorCommand);
@@ -284,10 +296,14 @@ public class LevelCommandService extends BaseCommandService {
 					return;
 				}
 			}else {//fight event
-				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
-					userLevel.setLeftCount(userLevel.getLeftCount()-1);
+				if(cmd.getOrder() < 10000){
+					userLevel.setUnlockOrder(cmd.getOrder());
 					redis.saveUserLevel(userLevel);
 				}
+//				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
+//					userLevel.setLeftCount(userLevel.getLeftCount()-1);
+//					redis.saveUserLevel(userLevel);
+//				}
 				MultiReward.Builder rewards = eventReward(eventconfig, event, user);
 				handleRewards(responseBuilder, user, rewards);
 			}
@@ -308,7 +324,7 @@ public class LevelCommandService extends BaseCommandService {
 //			 */
 //			userService.handleRewardTaskDailyReward(user, event.getEventid());
 			
-			redis.productMainEvent(user, event.getEventid());
+//			redis.productMainEvent(user, event.getEventid());
 		}
 		user.addMyactive();
  		if(user.getMyactive() >= 100){
@@ -382,15 +398,23 @@ public class LevelCommandService extends BaseCommandService {
 		userTeamService.saveTeamCache(user, teamid, team);
 		
 		if (cmd.getRet()) {
-			Event event = redis.getEvent(friendUserId, cmd.getId());
+			UserLevelBean userLevel = redis.getUserLevel(friendUserId);
+			Event event = null;
+			if(cmd.getId() < 10000) {
+				AreaEvent.Builder events = redis.getMainEvent(userLevel.getUnlockDaguan());
+				for(Event eve : events.getEventList())
+					if(eve.getOrder() == cmd.getId() && cmd.getId() == userLevel.getUnlockOrder()+1)
+						event = eve;
+			}else {
+				redis.getEvent(friendUserId, cmd.getId());
+			}
 			if (event == null) {
 				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else{
-				UserLevelBean userLevel = redis.getUserLevel(friendUserId);
-				if(userLevel.getUnlockDaguan() == event.getDaguan() && userLevel.getLeftCount() > 0){
-					userLevel.setLeftCount(userLevel.getLeftCount()-1);
+				if(userLevel.getUnlockDaguan() == event.getDaguan() && cmd.getId() == userLevel.getUnlockOrder()+1){
+					userLevel.setUnlockOrder(cmd.getId());
 					redis.saveUserLevel(userLevel);
 				}
 				redis.delEvent(friend, event);

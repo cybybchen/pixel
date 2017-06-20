@@ -236,9 +236,9 @@ message Task {
 message Event {
         optional int32 order = 1;
         optional int32 eventid = 2;
-        //optional string name = 3;
+        optional string name = 3;
         optional int32 daguan = 4;
-	optional int32 index = 5;
+	//optional int32 index = 5;
         //optional int32 conditiontype = 5;
         //optional int32 condition = 6;
         optional int32 targetid = 7;
@@ -2891,7 +2891,7 @@ message ResponseEventResultCommand {
 
 message ResponseLevelLootCommand {
 	optional int32 unlockDaguan = 1;
-	optional int32 unlockIndex = 2;
+	optional int32 unlockOrder = 2;
 	optional int32 lootDaguan = 3;
 	optional int32 lootTime = 4;
 	optional int32 eventTime = 5;

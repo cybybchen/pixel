@@ -11,7 +11,8 @@ public class UserLevelBean {
 	private int lootTime = 0;
 	private int eventTime = 0;
 	private int unlockDaguan = 0;
-	private int leftCount = 0;
+	private int unlockOrder = 0;
+	//	private int leftCount = 0;
 	private int lootDaguan = 0;
 	private int coin = 0;
 	private int exp = 0;
@@ -41,11 +42,12 @@ public class UserLevelBean {
 	public void setUnlockDaguan(int unlockDaguan) {
 		this.unlockDaguan = unlockDaguan;
 	}
-	public int getLeftCount() {
-		return leftCount;
+	
+	public int getUnlockOrder() {
+		return unlockOrder;
 	}
-	public void setLeftCount(int leftCount) {
-		this.leftCount = leftCount;
+	public void setUnlockOrder(int unlockIndex) {
+		this.unlockOrder = unlockIndex;
 	}
 	public int getLootDaguan() {
 		return lootDaguan;
@@ -87,7 +89,7 @@ public class UserLevelBean {
 		builder.setLootTime(lootTime);
 		builder.setEventTime(eventTime + LevelRedisService.EVENTTIME);
 		builder.setUnlockDaguan(unlockDaguan);
-		builder.setLeftCount(leftCount);
+		builder.setUnlockOrder(unlockOrder);
 		builder.setLootDaguan(lootDaguan);
 		int current = RedisService.now();
 		builder.setLootTimeNormal(current - lootTimeNormal);
