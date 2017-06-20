@@ -20,7 +20,6 @@ import com.trans.pixel.model.userinfo.UserClearBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
-import com.trans.pixel.model.userinfo.UserFriendBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
@@ -42,7 +41,6 @@ import com.trans.pixel.protoc.HeroProto.UserTeam;
 import com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.MailProto.Mail;
 import com.trans.pixel.protoc.MailProto.MailList;
-import com.trans.pixel.protoc.MailProto.UserFriend;
 import com.trans.pixel.protoc.MessageBoardProto.MessageBoard;
 import com.trans.pixel.protoc.UserInfoProto.UserHead;
 import com.trans.pixel.service.LadderService;
@@ -205,15 +203,6 @@ public class BaseCommandService {
 		mailListBuilder.addAllMail(mailBuilderList);
 		
 		return mailListBuilder.build();
-	}
-	
-	protected List<UserFriend> buildUserFriendList(List<UserFriendBean> userFriendList) {
-		List<UserFriend> userFriendBuilderList = new ArrayList<UserFriend>();
-		for (UserFriendBean userFriend : userFriendList) {
-			userFriendBuilderList.add(userFriend.buildUserFriend());
-		}
-		
-		return userFriendBuilderList;
 	}
 	
 	protected void handleGetUserLadderRankListCommand(Builder responseBuilder, UserBean user) {	

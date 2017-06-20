@@ -2,8 +2,6 @@ package com.trans.pixel.model.userinfo;
 
 import net.sf.json.JSONObject;
 
-import com.trans.pixel.protoc.MailProto.UserFriend;
-
 public class UserFriendBean {
 	private long id = 0;
 	private long friendId = 0;
@@ -28,12 +26,6 @@ public class UserFriendBean {
 	}
 	public void setLastCallTime(int lastCallTime) {
 		this.lastCallTime = lastCallTime;
-	}
-	public UserFriend buildUserFriend() {
-		UserFriend.Builder builder = UserFriend.newBuilder();
-		builder.setFriendId(friendId);
-		
-		return builder.build();
 	}
 	
 	public static UserFriendBean fromJson(String jsonString) {
