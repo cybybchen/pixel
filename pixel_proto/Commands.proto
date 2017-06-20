@@ -3178,42 +3178,16 @@ message UnionBossList {
 
 message UnionBoss {
 	optional int32 id = 1;
+	optional string name = 12;
 	optional int32 type = 2;
 	optional int32 targetid = 3;
 	optional int32 targetcount = 4;
 	optional int32 lasttime = 5;
 	optional int32 HP = 6;
-	message Skill {
-		optional int32 skilid = 1;
-		optional int32 skilllevel = 2;
-	}
-	repeated Skill skill = 7;
+	repeated RewardInfo lootlist = 7;
 	optional int32 refreshtime = 8;
 	optional int32 count = 9;
 	optional int32 handbook = 10;
-}
-
-message UnionBosslootList {
-	repeated UnionBossloot boss = 1;
-}
-
-message UnionBossloot {
-	optional int32 id = 1;
-	repeated UnionBosslootItem item = 2;
-}
-
-message UnionBosslootItem {
-	optional uint32 order = 11;
-	optional int32 weightall = 1;
-	optional int32 itemid1 = 2;
-	optional int32 count1 = 3;
-	optional int32 weight1 = 4;
-	optional int32 itemid2 = 5;
-	optional int32 count2 = 6;
-	optional int32 weight2 = 7;
-	optional int32 itemid3 = 8;
-	optional int32 count3 = 9;
-	optional int32 weight3 = 10;
 }
 
 message UnionBosswinList {

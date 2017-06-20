@@ -11,7 +11,6 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -41,8 +39,6 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RankItem;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
-import com.trans.pixel.protoc.UnionProto.UnionBossloot;
-import com.trans.pixel.protoc.UnionProto.UnionBosslootItem;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
@@ -827,7 +823,10 @@ public class UnionService extends FightService{
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 		}
 		
-		rewards.addAllLoot(calUnionBossReward(bossId));
+		for(RewardInfo reward : unionBoss.getLootlistList()) {
+			if(reward.getWeight() > RedisService.nextInt(100))
+				rewards.addLoot(reward);
+		}
 		
 		unionBossMap.put("" + bossId, unionBossMap.get("" + bossId) == null ? 1 : unionBossMap.get("" + bossId) + 1);
 		user.setUnionBossMap(unionBossMap);
@@ -881,30 +880,30 @@ public class UnionService extends FightService{
 		}
 	}
 	
-	private List<RewardInfo> calUnionBossReward(int bossId) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		UnionBossloot bossloot = redis.getUnionBossloot(bossId);
-		List<UnionBosslootItem> itemList = bossloot.getItemList();
-		for (UnionBosslootItem item : itemList) {
-			int randomWeight = RandomUtils.nextInt(item.getWeightall());
-			if (randomWeight < item.getWeight1()) {
-				rewardList.add(RewardBean.init(item.getItemid1(), item.getCount1()).buildRewardInfo());
-				continue;
-			}
-			
-			if (randomWeight < item.getWeight2()) {
-				rewardList.add(RewardBean.init(item.getItemid2(), item.getCount2()).buildRewardInfo());
-				continue;
-			}
-			
-			if (randomWeight < item.getWeight3()) {
-				rewardList.add(RewardBean.init(item.getItemid3(), item.getCount3()).buildRewardInfo());
-				continue;
-			}
-		}
-		
-		return rewardList;
-	}
+//	private List<RewardInfo> calUnionBossReward(int bossId) {
+//		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+//		UnionBossloot bossloot = redis.getUnionBossloot(bossId);
+//		List<UnionBosslootItem> itemList = bossloot.getItemList();
+//		for (UnionBosslootItem item : itemList) {
+//			int randomWeight = RandomUtils.nextInt(item.getWeightall());
+//			if (randomWeight < item.getWeight1()) {
+//				rewardList.add(RewardBean.init(item.getItemid1(), item.getCount1()).buildRewardInfo());
+//				continue;
+//			}
+//			
+//			if (randomWeight < item.getWeight2()) {
+//				rewardList.add(RewardBean.init(item.getItemid2(), item.getCount2()).buildRewardInfo());
+//				continue;
+//			}
+//			
+//			if (randomWeight < item.getWeight3()) {
+//				rewardList.add(RewardBean.init(item.getItemid3(), item.getCount3()).buildRewardInfo());
+//				continue;
+//			}
+//		}
+//		
+//		return rewardList;
+//	}
 	
 //	private List<UserRankBean> getUnionBossRankList(UserBean user, int bossId) {
 //		Set<TypedTuple<String>> ranks = redis.getUnionBossRanks(user.getUnionId(), bossId, RankConst.UNIONBOSS_RANK_LIST_START, RankConst.UNIONBOSS_RANK_LIST_END);

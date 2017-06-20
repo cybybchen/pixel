@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
-import net.sf.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -10,41 +11,63 @@ import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.RmbList;
+import com.trans.pixel.protoc.RechargeProto.VipLibao;
+import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
+
+import net.sf.json.JSONObject;
 
 @Service
 public class RechargeRedisService extends RedisService {
 //	private static Logger logger = Logger.getLogger(RechargeRedisService.class);
 	
 	public Rmb getRmb(int id) {
-		RmbList list = getRmbConfig(RedisKey.RMB_KEY);
-		for(Rmb rmb : list.getDataList()){
-			if(rmb.getId() == id)
-				return rmb;
-		}
-		return null;
+		Rmb.Builder builder = Rmb.newBuilder();
+		String value = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY, id+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB_KEY);
+		return map.get(id);
 	}
 
 	public Rmb getRmb1(int id) {
-		RmbList list = getRmbConfig(RedisKey.RMB1_KEY);
-		for(Rmb rmb : list.getDataList()){
-			if(rmb.getId() == id)
-				return rmb;
-		}
-		return null;
-	}
-	
-	public RmbList getRmbConfig(String rmbKey) {
-		String value = get(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
-		RmbList.Builder builder = RmbList.newBuilder();
+		Rmb.Builder builder = Rmb.newBuilder();
+		String value = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY, id+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		else{
+		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB1_KEY);
+		return map.get(id);
+	}
+	
+	public Map<Integer, Rmb> getRmbConfig(String rmbKey) {
+		Map<String, String> keyvalue = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
+		Map<Integer, Rmb> map = new HashMap<Integer, Rmb>();
+		if(!keyvalue.isEmpty()){
+			for(String value : keyvalue.values()){
+				Rmb.Builder builder = Rmb.newBuilder();
+				if(parseJson(value, builder)){
+					map.put(builder.getId(), builder.build());
+				}
+			}
+		}else {
+			RmbList.Builder builder = RmbList.newBuilder();
 			String xml = ReadConfig("ld_"+rmbKey+".xml");
 			parseXml(xml, builder);
-			RmbList list = builder.build();
-			set(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, formatJson(list));
-			return list;
+			xml = ReadConfig("ld_libao.xml");
+			VipLibaoList.Builder list = VipLibaoList.newBuilder();
+			parseXml(xml, list);
+			for(Rmb.Builder rmb : builder.getDataBuilderList()) {
+				for(VipLibao libao : list.getDataList()){
+					if(libao.getItemid() == rmb.getReward().getItemid()) {
+						rmb.addAllLibao(libao.getRewardList());
+						break;
+					}
+				}
+				map.put(rmb.getId(), rmb.build());
+				keyvalue.put(rmb.getId()+"", RedisService.formatJson(rmb.build()));
+			}
+			hputAll(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, keyvalue);
 		}
+		return map;
 	}
 	
 	public void addRechargeRecord(RechargeBean recharge) {

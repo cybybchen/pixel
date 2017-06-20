@@ -33,8 +33,6 @@ import com.trans.pixel.protoc.ShopProto.ShopList;
 import com.trans.pixel.protoc.ShopProto.ShopWill;
 import com.trans.pixel.protoc.ShopProto.ShopWillList;
 import com.trans.pixel.protoc.ShopProto.Will;
-import com.trans.pixel.protoc.ShopProto.YueKa;
-import com.trans.pixel.protoc.ShopProto.YueKaList;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserTalentService;
 
@@ -1233,46 +1231,46 @@ public class ShopRedisService extends RedisService{
 		return builder.build();
 	}
 	
-	public Map<Integer, YueKa> getYueKas(){
-		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
-		Map<String, String> keyvalue = this.hget(RedisKey.YUEKA_CONFIG);
-		if(!keyvalue.isEmpty()){
-			for(String value : keyvalue.values()){
-				YueKa.Builder builder = YueKa.newBuilder();
-				if(parseJson(value, builder)){
-					map.put(builder.getItemid(), builder.build());
-				}
-			}
-			return map;
-		}else{
-			return buildYueKa();
-		}
-	}
+//	public Map<Integer, YueKa> getYueKas(){
+//		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
+//		Map<String, String> keyvalue = this.hget(RedisKey.YUEKA_CONFIG);
+//		if(!keyvalue.isEmpty()){
+//			for(String value : keyvalue.values()){
+//				YueKa.Builder builder = YueKa.newBuilder();
+//				if(parseJson(value, builder)){
+//					map.put(builder.getItemid(), builder.build());
+//				}
+//			}
+//			return map;
+//		}else{
+//			return buildYueKa();
+//		}
+//	}
 
-	public YueKa getYueKa(int id){
-		String value = this.hget(RedisKey.YUEKA_CONFIG, ""+id);
-		YueKa.Builder builder = YueKa.newBuilder();
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-			Map<Integer, YueKa> map = buildYueKa();
-			YueKa yueka = map.get(id);
-			return yueka;
-		}
-	}
+//	public YueKa getYueKa(int id){
+//		String value = this.hget(RedisKey.YUEKA_CONFIG, ""+id);
+//		YueKa.Builder builder = YueKa.newBuilder();
+//		if(value != null && parseJson(value, builder)){
+//			return builder.build();
+//		}else{
+//			Map<Integer, YueKa> map = buildYueKa();
+//			YueKa yueka = map.get(id);
+//			return yueka;
+//		}
+//	}
 
-	public Map<Integer, YueKa> buildYueKa(){
-		String xml = ReadConfig("ld_yueka.xml");
-		YueKaList.Builder listbuilder = YueKaList.newBuilder();
-		Map<String, String> keyvalue = new HashMap<String, String>();
-		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
-		parseXml(xml, listbuilder);
-		for(YueKa libao : listbuilder.getItemList()){
-			map.put(libao.getItemid(), libao);
-			keyvalue.put(libao.getItemid()+"", formatJson(libao));
-		}
-		hputAll(RedisKey.YUEKA_CONFIG, keyvalue);
-		
-		return map;
-	}
+//	public Map<Integer, YueKa> buildYueKa(){
+//		String xml = ReadConfig("ld_yueka.xml");
+//		YueKaList.Builder listbuilder = YueKaList.newBuilder();
+//		Map<String, String> keyvalue = new HashMap<String, String>();
+//		Map<Integer, YueKa> map = new HashMap<Integer, YueKa>();
+//		parseXml(xml, listbuilder);
+//		for(YueKa libao : listbuilder.getItemList()){
+//			map.put(libao.getItemid(), libao);
+//			keyvalue.put(libao.getItemid()+"", formatJson(libao));
+//		}
+//		hputAll(RedisKey.YUEKA_CONFIG, keyvalue);
+//		
+//		return map;
+//	}
 }

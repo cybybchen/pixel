@@ -38,7 +38,6 @@ import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
-import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -241,7 +240,7 @@ public class UserService {
 	
 	private void handleLibaoDailyReward(UserBean user, long today0) {
 		LibaoList libaolist = shopService.getLibaoShop(user, true);
-		Map<Integer, YueKa> map = shopService.getYueKas();
+//		Map<Integer, YueKa> map = shopService.getVipLibaos();
 		for(Libao libao : libaolist.getDataList()){
 			long time = 0;
 			if(libao.hasValidtime() && libao.getValidtime().length() > 5){
@@ -253,33 +252,19 @@ public class UserService {
 			}
 			if(time >= today0){
 				Rmb rmb = rechargeRedisService.getRmb(libao.getRechargeid());
-				YueKa yueka = map.get(rmb.getReward().getItemid());
-				if(yueka == null){
+//				VipLibao viplibao = shopService.getVipLibao(rmb.getReward().getItemid());
+				if(rmb == null){
 					logger.error("ivalid yueka type "+libao.getRechargeid());
 					continue;
 				}
 				
-				if (yueka.getRewardid() > 0) {
 					MailBean mail = new MailBean();
 					mail.setContent(rmb.getName());
-					RewardBean reward = new RewardBean();
-					List<RewardBean> list = new ArrayList<RewardBean>();
-					reward.setItemid(yueka.getRewardid());
-					reward.setCount(yueka.getRewardcount());
-					list.add(reward);
-					if (yueka.getRewardid1() > 0) {
-						reward = new RewardBean();
-						reward.setItemid(yueka.getRewardid1());
-						reward.setCount(yueka.getRewardcount1());
-						list.add(reward);
-					}
-					
-					mail.setRewardList(list);
+					mail.parseRewardList(rmb.getLibaoList());
 					mail.setStartDate(DateUtil.getCurrentDateString());
 					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 					mail.setUserId(user.getId());
 					mailService.addMail(mail);
-				}
 			}
 		}
 	}

@@ -28,8 +28,6 @@ import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBossList;
-import com.trans.pixel.protoc.UnionProto.UnionBossloot;
-import com.trans.pixel.protoc.UnionProto.UnionBosslootList;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.utils.DateUtil;
@@ -37,7 +35,7 @@ import com.trans.pixel.utils.DateUtil;
 @Repository
 public class UnionRedisService extends RedisService{
 	private static final String UNION_BOSS_FILE_NAME = "ld_guildboss.xml";
-	private static final String UNION_BOSSLOOT_FILE_NAME = "ld_guildbossloot.xml";
+//	private static final String UNION_BOSSLOOT_FILE_NAME = "ld_guildbossloot.xml";
 	private static final String UNION_BOSSWIN_FILE_NAME = "ld_guildbosswin.xml";
 	private static Logger logger = Logger.getLogger(UnionRedisService.class);
 	@Resource
@@ -359,55 +357,55 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	//union bossloot
-	public UnionBossloot getUnionBossloot(int id) {
-		String value = hget(RedisKey.UNION_BOSSLOOT_KEY, "" + id);
-		if (value == null) {
-			Map<String, UnionBossloot> unionBosslootConfig = getUnionBosslootConfig();
-			return unionBosslootConfig.get("" + id);
-		} else {
-			UnionBossloot.Builder builder = UnionBossloot.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
-	}
+//	public UnionBossloot getUnionBossloot(int id) {
+//		String value = hget(RedisKey.UNION_BOSSLOOT_KEY, "" + id);
+//		if (value == null) {
+//			Map<String, UnionBossloot> unionBosslootConfig = getUnionBosslootConfig();
+//			return unionBosslootConfig.get("" + id);
+//		} else {
+//			UnionBossloot.Builder builder = UnionBossloot.newBuilder();
+//			if(parseJson(value, builder))
+//				return builder.build();
+//		}
+//		
+//		return null;
+//	}
 	
-	public Map<String, UnionBossloot> getUnionBosslootConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.UNION_BOSSLOOT_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, UnionBossloot> map = buildUnionBosslootConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, UnionBossloot> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.UNION_BOSSLOOT_KEY, redismap);
-			return map;
-		}else{
-			Map<String, UnionBossloot> map = new HashMap<String, UnionBossloot>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				UnionBossloot.Builder builder = UnionBossloot.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
+//	public Map<String, UnionBossloot> getUnionBosslootConfig() {
+//		Map<String, String> keyvalue = hget(RedisKey.UNION_BOSSLOOT_KEY);
+//		if(keyvalue.isEmpty()){
+//			Map<String, UnionBossloot> map = buildUnionBosslootConfig();
+//			Map<String, String> redismap = new HashMap<String, String>();
+//			for(Entry<String, UnionBossloot> entry : map.entrySet()){
+//				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+//			}
+//			hputAll(RedisKey.UNION_BOSSLOOT_KEY, redismap);
+//			return map;
+//		}else{
+//			Map<String, UnionBossloot> map = new HashMap<String, UnionBossloot>();
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				UnionBossloot.Builder builder = UnionBossloot.newBuilder();
+//				if(parseJson(entry.getValue(), builder))
+//					map.put(entry.getKey(), builder.build());
+//			}
+//			return map;
+//		}
+//	}
 	
-	private Map<String, UnionBossloot> buildUnionBosslootConfig(){
-		String xml = ReadConfig(UNION_BOSSLOOT_FILE_NAME);
-		UnionBosslootList.Builder builder = UnionBosslootList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build " + UNION_BOSSLOOT_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, UnionBossloot> map = new HashMap<String, UnionBossloot>();
-		for(UnionBossloot.Builder boss : builder.getBossBuilderList()){
-			map.put("" + boss.getId(), boss.build());
-		}
-		return map;
-	}
+//	private Map<String, UnionBossloot> buildUnionBosslootConfig(){
+//		String xml = ReadConfig(UNION_BOSSLOOT_FILE_NAME);
+//		UnionBosslootList.Builder builder = UnionBosslootList.newBuilder();
+//		if(!parseXml(xml, builder)){
+//			logger.warn("cannot build " + UNION_BOSSLOOT_FILE_NAME);
+//			return null;
+//		}
+//		
+//		Map<String, UnionBossloot> map = new HashMap<String, UnionBossloot>();
+//		for(UnionBossloot.Builder boss : builder.getBossBuilderList()){
+//			map.put("" + boss.getId(), boss.build());
+//		}
+//		return map;
+//	}
 	
 	//union bosswin
 	public UnionBosswin getUnionBosswin(int id) {

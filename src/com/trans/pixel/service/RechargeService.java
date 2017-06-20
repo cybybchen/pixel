@@ -20,7 +20,6 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RechargeBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -36,7 +35,6 @@ import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.ShopProto.Libao;
-import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -181,7 +179,7 @@ public class RechargeService {
 		}else if(itemId == 44008){//成长经验基金:按照玩家总战力领取不同阶段的经验
 			user.setGrowExpCount(Math.min(7,user.getGrowExpCount()+1));
 		}else if(itemId/1000 == 44){//月卡类:每天登陆游戏领取
-			YueKa yueka = shopService.getYueKa(itemId);
+			VipLibao libao = shopService.getVipLibao(itemId);
 			long today0 = RedisService.today(0);
 			long time = 0;
 			if(libaobuilder.hasValidtime()){
@@ -191,19 +189,19 @@ public class RechargeService {
 					e.printStackTrace();
 				}
 			}
-			if(time >= today0+24*3600L){
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(time*1000L + yueka.getCount()*24*3600*1000L)));
+			if(time >= today0+24*3600L){//有效期30天
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(time*1000L + 30*24*3600*1000L)));
 			}else{
-				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(today0*1000L-1000L + yueka.getCount()*24*3600*1000L)));
+				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(today0*1000L-1000L + 30*24*3600*1000L)));
 				// if(time < today0){
 					MailBean mail = new MailBean();
-					mail.setContent(yueka.getName());
-					RewardBean reward = new RewardBean();
-					List<RewardBean> list = new ArrayList<RewardBean>();
-					reward.setItemid(yueka.getRewardid());
-					reward.setCount(yueka.getRewardcount());
-					list.add(reward);
-					mail.setRewardList(list);
+					mail.setContent(rmb.getName());
+//					RewardBean reward = new RewardBean();
+//					List<RewardBean> list = new ArrayList<RewardBean>();
+//					reward.setItemid(libao.getre.getRewardid());
+//					reward.setCount(libao.getRewardcount());
+//					list.add(reward);
+					mail.parseRewardList(libao.getRewardList());
 					mail.setStartDate(DateUtil.getCurrentDateString());
 					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 					mail.setUserId(user.getId());

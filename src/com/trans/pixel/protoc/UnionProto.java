@@ -22514,6 +22514,21 @@ public final class UnionProto {
      */
     int getId();
 
+    // optional string name = 12;
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
     // optional int32 type = 2;
     /**
      * <code>optional int32 type = 2;</code>
@@ -22564,29 +22579,29 @@ public final class UnionProto {
      */
     int getHP();
 
-    // repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> 
-        getSkillList();
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getLootlistList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    com.trans.pixel.protoc.UnionProto.UnionBoss.Skill getSkill(int index);
+    com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    int getSkillCount();
+    int getLootlistCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder> 
-        getSkillOrBuilderList();
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder getSkillOrBuilder(
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
         int index);
 
     // optional int32 refreshtime = 8;
@@ -22676,51 +22691,56 @@ public final class UnionProto {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               type_ = input.readInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               targetid_ = input.readInt32();
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               targetcount_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               lasttime_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               hP_ = input.readInt32();
               break;
             }
             case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                skill_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill>();
-                mutable_bitField0_ |= 0x00000040;
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000080;
               }
-              skill_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.PARSER, extensionRegistry));
+              lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               refreshtime_ = input.readInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               count_ = input.readInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               handbook_ = input.readInt32();
+              break;
+            }
+            case 98: {
+              bitField0_ |= 0x00000002;
+              name_ = input.readBytes();
               break;
             }
           }
@@ -22731,8 +22751,8 @@ public final class UnionProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-          skill_ = java.util.Collections.unmodifiableList(skill_);
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -22765,483 +22785,6 @@ public final class UnionProto {
       return PARSER;
     }
 
-    public interface SkillOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-
-      // optional int32 skilid = 1;
-      /**
-       * <code>optional int32 skilid = 1;</code>
-       */
-      boolean hasSkilid();
-      /**
-       * <code>optional int32 skilid = 1;</code>
-       */
-      int getSkilid();
-
-      // optional int32 skilllevel = 2;
-      /**
-       * <code>optional int32 skilllevel = 2;</code>
-       */
-      boolean hasSkilllevel();
-      /**
-       * <code>optional int32 skilllevel = 2;</code>
-       */
-      int getSkilllevel();
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.UnionBoss.Skill}
-     */
-    public static final class Skill extends
-        com.google.protobuf.GeneratedMessage
-        implements SkillOrBuilder {
-      // Use Skill.newBuilder() to construct.
-      private Skill(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
-      }
-      private Skill(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final Skill defaultInstance;
-      public static Skill getDefaultInstance() {
-        return defaultInstance;
-      }
-
-      public Skill getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
-      }
-      private Skill(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 8: {
-                bitField0_ |= 0x00000001;
-                skilid_ = input.readInt32();
-                break;
-              }
-              case 16: {
-                bitField0_ |= 0x00000002;
-                skilllevel_ = input.readInt32();
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBoss_Skill_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.class, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder.class);
-      }
-
-      public static com.google.protobuf.Parser<Skill> PARSER =
-          new com.google.protobuf.AbstractParser<Skill>() {
-        public Skill parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Skill(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<Skill> getParserForType() {
-        return PARSER;
-      }
-
-      private int bitField0_;
-      // optional int32 skilid = 1;
-      public static final int SKILID_FIELD_NUMBER = 1;
-      private int skilid_;
-      /**
-       * <code>optional int32 skilid = 1;</code>
-       */
-      public boolean hasSkilid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 skilid = 1;</code>
-       */
-      public int getSkilid() {
-        return skilid_;
-      }
-
-      // optional int32 skilllevel = 2;
-      public static final int SKILLLEVEL_FIELD_NUMBER = 2;
-      private int skilllevel_;
-      /**
-       * <code>optional int32 skilllevel = 2;</code>
-       */
-      public boolean hasSkilllevel() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 skilllevel = 2;</code>
-       */
-      public int getSkilllevel() {
-        return skilllevel_;
-      }
-
-      private void initFields() {
-        skilid_ = 0;
-        skilllevel_ = 0;
-      }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeInt32(1, skilid_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeInt32(2, skilllevel_);
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(1, skilid_);
-        }
-        if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, skilllevel_);
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() { return Builder.create(); }
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(com.trans.pixel.protoc.UnionProto.UnionBoss.Skill prototype) {
-        return newBuilder().mergeFrom(prototype);
-      }
-      public Builder toBuilder() { return newBuilder(this); }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code com.trans.pixel.protoc.UnionBoss.Skill}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBoss_Skill_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.class, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder.class);
-        }
-
-        // Construct using com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          }
-        }
-        private static Builder create() {
-          return new Builder();
-        }
-
-        public Builder clear() {
-          super.clear();
-          skilid_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          skilllevel_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor;
-        }
-
-        public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill getDefaultInstanceForType() {
-          return com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.getDefaultInstance();
-        }
-
-        public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill build() {
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill buildPartial() {
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill result = new com.trans.pixel.protoc.UnionProto.UnionBoss.Skill(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.skilid_ = skilid_;
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-            to_bitField0_ |= 0x00000002;
-          }
-          result.skilllevel_ = skilllevel_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.trans.pixel.protoc.UnionProto.UnionBoss.Skill) {
-            return mergeFrom((com.trans.pixel.protoc.UnionProto.UnionBoss.Skill)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBoss.Skill other) {
-          if (other == com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.getDefaultInstance()) return this;
-          if (other.hasSkilid()) {
-            setSkilid(other.getSkilid());
-          }
-          if (other.hasSkilllevel()) {
-            setSkilllevel(other.getSkilllevel());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (com.trans.pixel.protoc.UnionProto.UnionBoss.Skill) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        // optional int32 skilid = 1;
-        private int skilid_ ;
-        /**
-         * <code>optional int32 skilid = 1;</code>
-         */
-        public boolean hasSkilid() {
-          return ((bitField0_ & 0x00000001) == 0x00000001);
-        }
-        /**
-         * <code>optional int32 skilid = 1;</code>
-         */
-        public int getSkilid() {
-          return skilid_;
-        }
-        /**
-         * <code>optional int32 skilid = 1;</code>
-         */
-        public Builder setSkilid(int value) {
-          bitField0_ |= 0x00000001;
-          skilid_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 skilid = 1;</code>
-         */
-        public Builder clearSkilid() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          skilid_ = 0;
-          onChanged();
-          return this;
-        }
-
-        // optional int32 skilllevel = 2;
-        private int skilllevel_ ;
-        /**
-         * <code>optional int32 skilllevel = 2;</code>
-         */
-        public boolean hasSkilllevel() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>optional int32 skilllevel = 2;</code>
-         */
-        public int getSkilllevel() {
-          return skilllevel_;
-        }
-        /**
-         * <code>optional int32 skilllevel = 2;</code>
-         */
-        public Builder setSkilllevel(int value) {
-          bitField0_ |= 0x00000002;
-          skilllevel_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 skilllevel = 2;</code>
-         */
-        public Builder clearSkilllevel() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          skilllevel_ = 0;
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBoss.Skill)
-      }
-
-      static {
-        defaultInstance = new Skill(true);
-        defaultInstance.initFields();
-      }
-
-      // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UnionBoss.Skill)
-    }
-
     private int bitField0_;
     // optional int32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
@@ -23259,6 +22802,49 @@ public final class UnionProto {
       return id_;
     }
 
+    // optional string name = 12;
+    public static final int NAME_FIELD_NUMBER = 12;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     // optional int32 type = 2;
     public static final int TYPE_FIELD_NUMBER = 2;
     private int type_;
@@ -23266,7 +22852,7 @@ public final class UnionProto {
      * <code>optional int32 type = 2;</code>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 type = 2;</code>
@@ -23282,7 +22868,7 @@ public final class UnionProto {
      * <code>optional int32 targetid = 3;</code>
      */
     public boolean hasTargetid() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 targetid = 3;</code>
@@ -23298,7 +22884,7 @@ public final class UnionProto {
      * <code>optional int32 targetcount = 4;</code>
      */
     public boolean hasTargetcount() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 targetcount = 4;</code>
@@ -23314,7 +22900,7 @@ public final class UnionProto {
      * <code>optional int32 lasttime = 5;</code>
      */
     public boolean hasLasttime() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 lasttime = 5;</code>
@@ -23330,7 +22916,7 @@ public final class UnionProto {
      * <code>optional int32 HP = 6;</code>
      */
     public boolean hasHP() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 HP = 6;</code>
@@ -23339,40 +22925,40 @@ public final class UnionProto {
       return hP_;
     }
 
-    // repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;
-    public static final int SKILL_FIELD_NUMBER = 7;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> skill_;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;
+    public static final int LOOTLIST_FIELD_NUMBER = 7;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> getSkillList() {
-      return skill_;
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
+      return lootlist_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder> 
-        getSkillOrBuilderList() {
-      return skill_;
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList() {
+      return lootlist_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    public int getSkillCount() {
-      return skill_.size();
+    public int getLootlistCount() {
+      return lootlist_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill getSkill(int index) {
-      return skill_.get(index);
+    public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+      return lootlist_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
      */
-    public com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder getSkillOrBuilder(
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
         int index) {
-      return skill_.get(index);
+      return lootlist_.get(index);
     }
 
     // optional int32 refreshtime = 8;
@@ -23382,7 +22968,7 @@ public final class UnionProto {
      * <code>optional int32 refreshtime = 8;</code>
      */
     public boolean hasRefreshtime() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 refreshtime = 8;</code>
@@ -23398,7 +22984,7 @@ public final class UnionProto {
      * <code>optional int32 count = 9;</code>
      */
     public boolean hasCount() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional int32 count = 9;</code>
@@ -23414,7 +23000,7 @@ public final class UnionProto {
      * <code>optional int32 handbook = 10;</code>
      */
     public boolean hasHandbook() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional int32 handbook = 10;</code>
@@ -23425,12 +23011,13 @@ public final class UnionProto {
 
     private void initFields() {
       id_ = 0;
+      name_ = "";
       type_ = 0;
       targetid_ = 0;
       targetcount_ = 0;
       lasttime_ = 0;
       hP_ = 0;
-      skill_ = java.util.Collections.emptyList();
+      lootlist_ = java.util.Collections.emptyList();
       refreshtime_ = 0;
       count_ = 0;
       handbook_ = 0;
@@ -23450,32 +23037,35 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(2, type_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(3, targetid_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(4, targetcount_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(5, lasttime_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(6, hP_);
       }
-      for (int i = 0; i < skill_.size(); i++) {
-        output.writeMessage(7, skill_.get(i));
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(8, refreshtime_);
+      for (int i = 0; i < lootlist_.size(); i++) {
+        output.writeMessage(7, lootlist_.get(i));
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(9, count_);
+        output.writeInt32(8, refreshtime_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, count_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(10, handbook_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(12, getNameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -23490,41 +23080,45 @@ public final class UnionProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, type_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, targetid_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, targetcount_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, lasttime_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, hP_);
       }
-      for (int i = 0; i < skill_.size(); i++) {
+      for (int i = 0; i < lootlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, skill_.get(i));
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, refreshtime_);
+          .computeMessageSize(7, lootlist_.get(i));
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, count_);
+          .computeInt32Size(8, refreshtime_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, count_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, handbook_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -23634,7 +23228,7 @@ public final class UnionProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getSkillFieldBuilder();
+          getLootlistFieldBuilder();
         }
       }
       private static Builder create() {
@@ -23645,28 +23239,30 @@ public final class UnionProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
+        name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        targetid_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        targetcount_ = 0;
+        targetid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        lasttime_ = 0;
+        targetcount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        hP_ = 0;
+        lasttime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        if (skillBuilder_ == null) {
-          skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+        hP_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (lootlistBuilder_ == null) {
+          lootlist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
-          skillBuilder_.clear();
+          lootlistBuilder_.clear();
         }
         refreshtime_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        handbook_ = 0;
+        count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        handbook_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -23702,42 +23298,46 @@ public final class UnionProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.type_ = type_;
+        result.name_ = name_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.targetid_ = targetid_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.targetcount_ = targetcount_;
+        result.targetid_ = targetid_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.lasttime_ = lasttime_;
+        result.targetcount_ = targetcount_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.hP_ = hP_;
-        if (skillBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040)) {
-            skill_ = java.util.Collections.unmodifiableList(skill_);
-            bitField0_ = (bitField0_ & ~0x00000040);
-          }
-          result.skill_ = skill_;
-        } else {
-          result.skill_ = skillBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+        result.lasttime_ = lasttime_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.refreshtime_ = refreshtime_;
+        result.hP_ = hP_;
+        if (lootlistBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.lootlist_ = lootlist_;
+        } else {
+          result.lootlist_ = lootlistBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.count_ = count_;
+        result.refreshtime_ = refreshtime_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000100;
+        }
+        result.count_ = count_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000200;
         }
         result.handbook_ = handbook_;
         result.bitField0_ = to_bitField0_;
@@ -23759,6 +23359,11 @@ public final class UnionProto {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000002;
+          name_ = other.name_;
+          onChanged();
+        }
         if (other.hasType()) {
           setType(other.getType());
         }
@@ -23774,29 +23379,29 @@ public final class UnionProto {
         if (other.hasHP()) {
           setHP(other.getHP());
         }
-        if (skillBuilder_ == null) {
-          if (!other.skill_.isEmpty()) {
-            if (skill_.isEmpty()) {
-              skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000040);
+        if (lootlistBuilder_ == null) {
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlist_.isEmpty()) {
+              lootlist_ = other.lootlist_;
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
-              ensureSkillIsMutable();
-              skill_.addAll(other.skill_);
+              ensureLootlistIsMutable();
+              lootlist_.addAll(other.lootlist_);
             }
             onChanged();
           }
         } else {
-          if (!other.skill_.isEmpty()) {
-            if (skillBuilder_.isEmpty()) {
-              skillBuilder_.dispose();
-              skillBuilder_ = null;
-              skill_ = other.skill_;
-              bitField0_ = (bitField0_ & ~0x00000040);
-              skillBuilder_ = 
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlistBuilder_.isEmpty()) {
+              lootlistBuilder_.dispose();
+              lootlistBuilder_ = null;
+              lootlist_ = other.lootlist_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getSkillFieldBuilder() : null;
+                   getLootlistFieldBuilder() : null;
             } else {
-              skillBuilder_.addAllMessages(other.skill_);
+              lootlistBuilder_.addAllMessages(other.lootlist_);
             }
           }
         }
@@ -23869,13 +23474,87 @@ public final class UnionProto {
         return this;
       }
 
+      // optional string name = 12;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 12;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
       // optional int32 type = 2;
       private int type_ ;
       /**
        * <code>optional int32 type = 2;</code>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 type = 2;</code>
@@ -23887,7 +23566,7 @@ public final class UnionProto {
        * <code>optional int32 type = 2;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         type_ = value;
         onChanged();
         return this;
@@ -23896,7 +23575,7 @@ public final class UnionProto {
        * <code>optional int32 type = 2;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         type_ = 0;
         onChanged();
         return this;
@@ -23908,7 +23587,7 @@ public final class UnionProto {
        * <code>optional int32 targetid = 3;</code>
        */
       public boolean hasTargetid() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 targetid = 3;</code>
@@ -23920,7 +23599,7 @@ public final class UnionProto {
        * <code>optional int32 targetid = 3;</code>
        */
       public Builder setTargetid(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         targetid_ = value;
         onChanged();
         return this;
@@ -23929,7 +23608,7 @@ public final class UnionProto {
        * <code>optional int32 targetid = 3;</code>
        */
       public Builder clearTargetid() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         targetid_ = 0;
         onChanged();
         return this;
@@ -23941,7 +23620,7 @@ public final class UnionProto {
        * <code>optional int32 targetcount = 4;</code>
        */
       public boolean hasTargetcount() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 targetcount = 4;</code>
@@ -23953,7 +23632,7 @@ public final class UnionProto {
        * <code>optional int32 targetcount = 4;</code>
        */
       public Builder setTargetcount(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         targetcount_ = value;
         onChanged();
         return this;
@@ -23962,7 +23641,7 @@ public final class UnionProto {
        * <code>optional int32 targetcount = 4;</code>
        */
       public Builder clearTargetcount() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         targetcount_ = 0;
         onChanged();
         return this;
@@ -23974,7 +23653,7 @@ public final class UnionProto {
        * <code>optional int32 lasttime = 5;</code>
        */
       public boolean hasLasttime() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 lasttime = 5;</code>
@@ -23986,7 +23665,7 @@ public final class UnionProto {
        * <code>optional int32 lasttime = 5;</code>
        */
       public Builder setLasttime(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         lasttime_ = value;
         onChanged();
         return this;
@@ -23995,7 +23674,7 @@ public final class UnionProto {
        * <code>optional int32 lasttime = 5;</code>
        */
       public Builder clearLasttime() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         lasttime_ = 0;
         onChanged();
         return this;
@@ -24007,7 +23686,7 @@ public final class UnionProto {
        * <code>optional int32 HP = 6;</code>
        */
       public boolean hasHP() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 HP = 6;</code>
@@ -24019,7 +23698,7 @@ public final class UnionProto {
        * <code>optional int32 HP = 6;</code>
        */
       public Builder setHP(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         hP_ = value;
         onChanged();
         return this;
@@ -24028,250 +23707,250 @@ public final class UnionProto {
        * <code>optional int32 HP = 6;</code>
        */
       public Builder clearHP() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         hP_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> skill_ =
+      // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
-      private void ensureSkillIsMutable() {
-        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-          skill_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill>(skill_);
-          bitField0_ |= 0x00000040;
+      private void ensureLootlistIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
+          bitField0_ |= 0x00000080;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder, com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder> skillBuilder_;
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> lootlistBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> getSkillList() {
-        if (skillBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(skill_);
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
+        if (lootlistBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(lootlist_);
         } else {
-          return skillBuilder_.getMessageList();
+          return lootlistBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public int getSkillCount() {
-        if (skillBuilder_ == null) {
-          return skill_.size();
+      public int getLootlistCount() {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.size();
         } else {
-          return skillBuilder_.getCount();
+          return lootlistBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill getSkill(int index) {
-        if (skillBuilder_ == null) {
-          return skill_.get(index);
+      public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);
         } else {
-          return skillBuilder_.getMessage(index);
+          return lootlistBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder setSkill(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill value) {
-        if (skillBuilder_ == null) {
+      public Builder setLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSkillIsMutable();
-          skill_.set(index, value);
+          ensureLootlistIsMutable();
+          lootlist_.set(index, value);
           onChanged();
         } else {
-          skillBuilder_.setMessage(index, value);
+          lootlistBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder setSkill(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder builderForValue) {
-        if (skillBuilder_ == null) {
-          ensureSkillIsMutable();
-          skill_.set(index, builderForValue.build());
+      public Builder setLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.set(index, builderForValue.build());
           onChanged();
         } else {
-          skillBuilder_.setMessage(index, builderForValue.build());
+          lootlistBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder addSkill(com.trans.pixel.protoc.UnionProto.UnionBoss.Skill value) {
-        if (skillBuilder_ == null) {
+      public Builder addLootlist(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSkillIsMutable();
-          skill_.add(value);
+          ensureLootlistIsMutable();
+          lootlist_.add(value);
           onChanged();
         } else {
-          skillBuilder_.addMessage(value);
+          lootlistBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder addSkill(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill value) {
-        if (skillBuilder_ == null) {
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSkillIsMutable();
-          skill_.add(index, value);
+          ensureLootlistIsMutable();
+          lootlist_.add(index, value);
           onChanged();
         } else {
-          skillBuilder_.addMessage(index, value);
+          lootlistBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder addSkill(
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder builderForValue) {
-        if (skillBuilder_ == null) {
-          ensureSkillIsMutable();
-          skill_.add(builderForValue.build());
+      public Builder addLootlist(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(builderForValue.build());
           onChanged();
         } else {
-          skillBuilder_.addMessage(builderForValue.build());
+          lootlistBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder addSkill(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder builderForValue) {
-        if (skillBuilder_ == null) {
-          ensureSkillIsMutable();
-          skill_.add(index, builderForValue.build());
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(index, builderForValue.build());
           onChanged();
         } else {
-          skillBuilder_.addMessage(index, builderForValue.build());
+          lootlistBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder addAllSkill(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.UnionBoss.Skill> values) {
-        if (skillBuilder_ == null) {
-          ensureSkillIsMutable();
-          super.addAll(values, skill_);
+      public Builder addAllLootlist(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          super.addAll(values, lootlist_);
           onChanged();
         } else {
-          skillBuilder_.addAllMessages(values);
+          lootlistBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder clearSkill() {
-        if (skillBuilder_ == null) {
-          skill_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000040);
+      public Builder clearLootlist() {
+        if (lootlistBuilder_ == null) {
+          lootlist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
-          skillBuilder_.clear();
+          lootlistBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public Builder removeSkill(int index) {
-        if (skillBuilder_ == null) {
-          ensureSkillIsMutable();
-          skill_.remove(index);
+      public Builder removeLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.remove(index);
           onChanged();
         } else {
-          skillBuilder_.remove(index);
+          lootlistBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder getSkillBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getLootlistBuilder(
           int index) {
-        return getSkillFieldBuilder().getBuilder(index);
+        return getLootlistFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder getSkillOrBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
           int index) {
-        if (skillBuilder_ == null) {
-          return skill_.get(index);  } else {
-          return skillBuilder_.getMessageOrBuilder(index);
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);  } else {
+          return lootlistBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder> 
-           getSkillOrBuilderList() {
-        if (skillBuilder_ != null) {
-          return skillBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getLootlistOrBuilderList() {
+        if (lootlistBuilder_ != null) {
+          return lootlistBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(skill_);
+          return java.util.Collections.unmodifiableList(lootlist_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder addSkillBuilder() {
-        return getSkillFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.getDefaultInstance());
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder() {
+        return getLootlistFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder addSkillBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder(
           int index) {
-        return getSkillFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.getDefaultInstance());
+        return getLootlistFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBoss.Skill skill = 7;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder> 
-           getSkillBuilderList() {
-        return getSkillFieldBuilder().getBuilderList();
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getLootlistBuilderList() {
+        return getLootlistFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBoss.Skill, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder, com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder> 
-          getSkillFieldBuilder() {
-        if (skillBuilder_ == null) {
-          skillBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UnionProto.UnionBoss.Skill, com.trans.pixel.protoc.UnionProto.UnionBoss.Skill.Builder, com.trans.pixel.protoc.UnionProto.UnionBoss.SkillOrBuilder>(
-                  skill_,
-                  ((bitField0_ & 0x00000040) == 0x00000040),
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getLootlistFieldBuilder() {
+        if (lootlistBuilder_ == null) {
+          lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  lootlist_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
-          skill_ = null;
+          lootlist_ = null;
         }
-        return skillBuilder_;
+        return lootlistBuilder_;
       }
 
       // optional int32 refreshtime = 8;
@@ -24280,7 +23959,7 @@ public final class UnionProto {
        * <code>optional int32 refreshtime = 8;</code>
        */
       public boolean hasRefreshtime() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 refreshtime = 8;</code>
@@ -24292,7 +23971,7 @@ public final class UnionProto {
        * <code>optional int32 refreshtime = 8;</code>
        */
       public Builder setRefreshtime(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         refreshtime_ = value;
         onChanged();
         return this;
@@ -24301,7 +23980,7 @@ public final class UnionProto {
        * <code>optional int32 refreshtime = 8;</code>
        */
       public Builder clearRefreshtime() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         refreshtime_ = 0;
         onChanged();
         return this;
@@ -24313,7 +23992,7 @@ public final class UnionProto {
        * <code>optional int32 count = 9;</code>
        */
       public boolean hasCount() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional int32 count = 9;</code>
@@ -24325,7 +24004,7 @@ public final class UnionProto {
        * <code>optional int32 count = 9;</code>
        */
       public Builder setCount(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         count_ = value;
         onChanged();
         return this;
@@ -24334,7 +24013,7 @@ public final class UnionProto {
        * <code>optional int32 count = 9;</code>
        */
       public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         count_ = 0;
         onChanged();
         return this;
@@ -24346,7 +24025,7 @@ public final class UnionProto {
        * <code>optional int32 handbook = 10;</code>
        */
       public boolean hasHandbook() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional int32 handbook = 10;</code>
@@ -24358,7 +24037,7 @@ public final class UnionProto {
        * <code>optional int32 handbook = 10;</code>
        */
       public Builder setHandbook(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         handbook_ = value;
         onChanged();
         return this;
@@ -24367,7 +24046,7 @@ public final class UnionProto {
        * <code>optional int32 handbook = 10;</code>
        */
       public Builder clearHandbook() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         handbook_ = 0;
         onChanged();
         return this;
@@ -24382,2644 +24061,6 @@ public final class UnionProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UnionBoss)
-  }
-
-  public interface UnionBosslootListOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot> 
-        getBossList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    com.trans.pixel.protoc.UnionProto.UnionBossloot getBoss(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    int getBossCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder> 
-        getBossOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder getBossOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.UnionBosslootList}
-   */
-  public static final class UnionBosslootList extends
-      com.google.protobuf.GeneratedMessage
-      implements UnionBosslootListOrBuilder {
-    // Use UnionBosslootList.newBuilder() to construct.
-    private UnionBosslootList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private UnionBosslootList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UnionBosslootList defaultInstance;
-    public static UnionBosslootList getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public UnionBosslootList getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UnionBosslootList(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBossloot>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              boss_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.UnionBossloot.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = java.util.Collections.unmodifiableList(boss_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootList_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UnionProto.UnionBosslootList.class, com.trans.pixel.protoc.UnionProto.UnionBosslootList.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<UnionBosslootList> PARSER =
-        new com.google.protobuf.AbstractParser<UnionBosslootList>() {
-      public UnionBosslootList parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnionBosslootList(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UnionBosslootList> getParserForType() {
-      return PARSER;
-    }
-
-    // repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;
-    public static final int BOSS_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot> boss_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot> getBossList() {
-      return boss_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder> 
-        getBossOrBuilderList() {
-      return boss_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    public int getBossCount() {
-      return boss_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    public com.trans.pixel.protoc.UnionProto.UnionBossloot getBoss(int index) {
-      return boss_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-     */
-    public com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder getBossOrBuilder(
-        int index) {
-      return boss_.get(index);
-    }
-
-    private void initFields() {
-      boss_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      for (int i = 0; i < boss_.size(); i++) {
-        output.writeMessage(1, boss_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < boss_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, boss_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootList parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UnionProto.UnionBosslootList prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.UnionBosslootList}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UnionProto.UnionBosslootListOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootList_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UnionProto.UnionBosslootList.class, com.trans.pixel.protoc.UnionProto.UnionBosslootList.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UnionProto.UnionBosslootList.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getBossFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          bossBuilder_.clear();
-        }
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootList getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UnionProto.UnionBosslootList.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootList build() {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootList result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootList buildPartial() {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootList result = new com.trans.pixel.protoc.UnionProto.UnionBosslootList(this);
-        int from_bitField0_ = bitField0_;
-        if (bossBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            boss_ = java.util.Collections.unmodifiableList(boss_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.boss_ = boss_;
-        } else {
-          result.boss_ = bossBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UnionProto.UnionBosslootList) {
-          return mergeFrom((com.trans.pixel.protoc.UnionProto.UnionBosslootList)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBosslootList other) {
-        if (other == com.trans.pixel.protoc.UnionProto.UnionBosslootList.getDefaultInstance()) return this;
-        if (bossBuilder_ == null) {
-          if (!other.boss_.isEmpty()) {
-            if (boss_.isEmpty()) {
-              boss_ = other.boss_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureBossIsMutable();
-              boss_.addAll(other.boss_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.boss_.isEmpty()) {
-            if (bossBuilder_.isEmpty()) {
-              bossBuilder_.dispose();
-              bossBuilder_ = null;
-              boss_ = other.boss_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              bossBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getBossFieldBuilder() : null;
-            } else {
-              bossBuilder_.addAllMessages(other.boss_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootList parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UnionProto.UnionBosslootList) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot> boss_ =
-        java.util.Collections.emptyList();
-      private void ensureBossIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          boss_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBossloot>(boss_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBossloot, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder> bossBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot> getBossList() {
-        if (bossBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(boss_);
-        } else {
-          return bossBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public int getBossCount() {
-        if (bossBuilder_ == null) {
-          return boss_.size();
-        } else {
-          return bossBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot getBoss(int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);
-        } else {
-          return bossBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder setBoss(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBossloot value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.set(index, value);
-          onChanged();
-        } else {
-          bossBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder setBoss(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder addBoss(com.trans.pixel.protoc.UnionProto.UnionBossloot value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.add(value);
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder addBoss(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBossloot value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.add(index, value);
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder addBoss(
-          com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder addBoss(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder addAllBoss(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.UnionBossloot> values) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          super.addAll(values, boss_);
-          onChanged();
-        } else {
-          bossBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder clearBoss() {
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          bossBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public Builder removeBoss(int index) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.remove(index);
-          onChanged();
-        } else {
-          bossBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder getBossBuilder(
-          int index) {
-        return getBossFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder getBossOrBuilder(
-          int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);  } else {
-          return bossBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder> 
-           getBossOrBuilderList() {
-        if (bossBuilder_ != null) {
-          return bossBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(boss_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder addBossBuilder() {
-        return getBossFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UnionProto.UnionBossloot.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder addBossBuilder(
-          int index) {
-        return getBossFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UnionProto.UnionBossloot.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBossloot boss = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder> 
-           getBossBuilderList() {
-        return getBossFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBossloot, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder> 
-          getBossFieldBuilder() {
-        if (bossBuilder_ == null) {
-          bossBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UnionProto.UnionBossloot, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder>(
-                  boss_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          boss_ = null;
-        }
-        return bossBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBosslootList)
-    }
-
-    static {
-      defaultInstance = new UnionBosslootList(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UnionBosslootList)
-  }
-
-  public interface UnionBosslootOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 id = 1;
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
-    boolean hasId();
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
-    int getId();
-
-    // repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem> 
-        getItemList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    com.trans.pixel.protoc.UnionProto.UnionBosslootItem getItem(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    int getItemCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder> 
-        getItemOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder getItemOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.UnionBossloot}
-   */
-  public static final class UnionBossloot extends
-      com.google.protobuf.GeneratedMessage
-      implements UnionBosslootOrBuilder {
-    // Use UnionBossloot.newBuilder() to construct.
-    private UnionBossloot(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private UnionBossloot(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UnionBossloot defaultInstance;
-    public static UnionBossloot getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public UnionBossloot getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UnionBossloot(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              id_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                item_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBosslootItem>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              item_.add(input.readMessage(com.trans.pixel.protoc.UnionProto.UnionBosslootItem.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          item_ = java.util.Collections.unmodifiableList(item_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBossloot_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UnionProto.UnionBossloot.class, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<UnionBossloot> PARSER =
-        new com.google.protobuf.AbstractParser<UnionBossloot>() {
-      public UnionBossloot parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnionBossloot(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UnionBossloot> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
-    public boolean hasId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 id = 1;</code>
-     */
-    public int getId() {
-      return id_;
-    }
-
-    // repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;
-    public static final int ITEM_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem> item_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem> getItemList() {
-      return item_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder> 
-        getItemOrBuilderList() {
-      return item_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    public int getItemCount() {
-      return item_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    public com.trans.pixel.protoc.UnionProto.UnionBosslootItem getItem(int index) {
-      return item_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-     */
-    public com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder getItemOrBuilder(
-        int index) {
-      return item_.get(index);
-    }
-
-    private void initFields() {
-      id_ = 0;
-      item_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, id_);
-      }
-      for (int i = 0; i < item_.size(); i++) {
-        output.writeMessage(2, item_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
-      for (int i = 0; i < item_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, item_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBossloot parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UnionProto.UnionBossloot prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.UnionBossloot}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UnionProto.UnionBosslootOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBossloot_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UnionProto.UnionBossloot.class, com.trans.pixel.protoc.UnionProto.UnionBossloot.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UnionProto.UnionBossloot.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getItemFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        id_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-        } else {
-          itemBuilder_.clear();
-        }
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UnionProto.UnionBossloot.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot build() {
-        com.trans.pixel.protoc.UnionProto.UnionBossloot result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBossloot buildPartial() {
-        com.trans.pixel.protoc.UnionProto.UnionBossloot result = new com.trans.pixel.protoc.UnionProto.UnionBossloot(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.id_ = id_;
-        if (itemBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            item_ = java.util.Collections.unmodifiableList(item_);
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.item_ = item_;
-        } else {
-          result.item_ = itemBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UnionProto.UnionBossloot) {
-          return mergeFrom((com.trans.pixel.protoc.UnionProto.UnionBossloot)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBossloot other) {
-        if (other == com.trans.pixel.protoc.UnionProto.UnionBossloot.getDefaultInstance()) return this;
-        if (other.hasId()) {
-          setId(other.getId());
-        }
-        if (itemBuilder_ == null) {
-          if (!other.item_.isEmpty()) {
-            if (item_.isEmpty()) {
-              item_ = other.item_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureItemIsMutable();
-              item_.addAll(other.item_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.item_.isEmpty()) {
-            if (itemBuilder_.isEmpty()) {
-              itemBuilder_.dispose();
-              itemBuilder_ = null;
-              item_ = other.item_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-              itemBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getItemFieldBuilder() : null;
-            } else {
-              itemBuilder_.addAllMessages(other.item_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UnionProto.UnionBossloot parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UnionProto.UnionBossloot) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 id = 1;
-      private int id_ ;
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public boolean hasId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public int getId() {
-        return id_;
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
-        id_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 id = 1;</code>
-       */
-      public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;
-      private java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem> item_ =
-        java.util.Collections.emptyList();
-      private void ensureItemIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          item_ = new java.util.ArrayList<com.trans.pixel.protoc.UnionProto.UnionBosslootItem>(item_);
-          bitField0_ |= 0x00000002;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBosslootItem, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder> itemBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem> getItemList() {
-        if (itemBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(item_);
-        } else {
-          return itemBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public int getItemCount() {
-        if (itemBuilder_ == null) {
-          return item_.size();
-        } else {
-          return itemBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem getItem(int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);
-        } else {
-          return itemBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder setItem(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBosslootItem value) {
-        if (itemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemIsMutable();
-          item_.set(index, value);
-          onChanged();
-        } else {
-          itemBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder setItem(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder addItem(com.trans.pixel.protoc.UnionProto.UnionBosslootItem value) {
-        if (itemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemIsMutable();
-          item_.add(value);
-          onChanged();
-        } else {
-          itemBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder addItem(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBosslootItem value) {
-        if (itemBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureItemIsMutable();
-          item_.add(index, value);
-          onChanged();
-        } else {
-          itemBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder addItem(
-          com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(builderForValue.build());
-          onChanged();
-        } else {
-          itemBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder addItem(
-          int index, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder builderForValue) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          itemBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder addAllItem(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootItem> values) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          super.addAll(values, item_);
-          onChanged();
-        } else {
-          itemBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder clearItem() {
-        if (itemBuilder_ == null) {
-          item_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-        } else {
-          itemBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public Builder removeItem(int index) {
-        if (itemBuilder_ == null) {
-          ensureItemIsMutable();
-          item_.remove(index);
-          onChanged();
-        } else {
-          itemBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder getItemBuilder(
-          int index) {
-        return getItemFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder getItemOrBuilder(
-          int index) {
-        if (itemBuilder_ == null) {
-          return item_.get(index);  } else {
-          return itemBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder> 
-           getItemOrBuilderList() {
-        if (itemBuilder_ != null) {
-          return itemBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(item_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder addItemBuilder() {
-        return getItemFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UnionProto.UnionBosslootItem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder addItemBuilder(
-          int index) {
-        return getItemFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.UnionBosslootItem item = 2;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder> 
-           getItemBuilderList() {
-        return getItemFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UnionProto.UnionBosslootItem, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder> 
-          getItemFieldBuilder() {
-        if (itemBuilder_ == null) {
-          itemBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UnionProto.UnionBosslootItem, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder, com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder>(
-                  item_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
-                  getParentForChildren(),
-                  isClean());
-          item_ = null;
-        }
-        return itemBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBossloot)
-    }
-
-    static {
-      defaultInstance = new UnionBossloot(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UnionBossloot)
-  }
-
-  public interface UnionBosslootItemOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional uint32 order = 11;
-    /**
-     * <code>optional uint32 order = 11;</code>
-     */
-    boolean hasOrder();
-    /**
-     * <code>optional uint32 order = 11;</code>
-     */
-    int getOrder();
-
-    // optional int32 weightall = 1;
-    /**
-     * <code>optional int32 weightall = 1;</code>
-     */
-    boolean hasWeightall();
-    /**
-     * <code>optional int32 weightall = 1;</code>
-     */
-    int getWeightall();
-
-    // optional int32 itemid1 = 2;
-    /**
-     * <code>optional int32 itemid1 = 2;</code>
-     */
-    boolean hasItemid1();
-    /**
-     * <code>optional int32 itemid1 = 2;</code>
-     */
-    int getItemid1();
-
-    // optional int32 count1 = 3;
-    /**
-     * <code>optional int32 count1 = 3;</code>
-     */
-    boolean hasCount1();
-    /**
-     * <code>optional int32 count1 = 3;</code>
-     */
-    int getCount1();
-
-    // optional int32 weight1 = 4;
-    /**
-     * <code>optional int32 weight1 = 4;</code>
-     */
-    boolean hasWeight1();
-    /**
-     * <code>optional int32 weight1 = 4;</code>
-     */
-    int getWeight1();
-
-    // optional int32 itemid2 = 5;
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    boolean hasItemid2();
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    int getItemid2();
-
-    // optional int32 count2 = 6;
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    boolean hasCount2();
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    int getCount2();
-
-    // optional int32 weight2 = 7;
-    /**
-     * <code>optional int32 weight2 = 7;</code>
-     */
-    boolean hasWeight2();
-    /**
-     * <code>optional int32 weight2 = 7;</code>
-     */
-    int getWeight2();
-
-    // optional int32 itemid3 = 8;
-    /**
-     * <code>optional int32 itemid3 = 8;</code>
-     */
-    boolean hasItemid3();
-    /**
-     * <code>optional int32 itemid3 = 8;</code>
-     */
-    int getItemid3();
-
-    // optional int32 count3 = 9;
-    /**
-     * <code>optional int32 count3 = 9;</code>
-     */
-    boolean hasCount3();
-    /**
-     * <code>optional int32 count3 = 9;</code>
-     */
-    int getCount3();
-
-    // optional int32 weight3 = 10;
-    /**
-     * <code>optional int32 weight3 = 10;</code>
-     */
-    boolean hasWeight3();
-    /**
-     * <code>optional int32 weight3 = 10;</code>
-     */
-    int getWeight3();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.UnionBosslootItem}
-   */
-  public static final class UnionBosslootItem extends
-      com.google.protobuf.GeneratedMessage
-      implements UnionBosslootItemOrBuilder {
-    // Use UnionBosslootItem.newBuilder() to construct.
-    private UnionBosslootItem(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private UnionBosslootItem(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final UnionBosslootItem defaultInstance;
-    public static UnionBosslootItem getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public UnionBosslootItem getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UnionBosslootItem(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000002;
-              weightall_ = input.readInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000004;
-              itemid1_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000008;
-              count1_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000010;
-              weight1_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000020;
-              itemid2_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000040;
-              count2_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000080;
-              weight2_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000100;
-              itemid3_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000200;
-              count3_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000400;
-              weight3_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000001;
-              order_ = input.readUInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootItem_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UnionProto.UnionBosslootItem.class, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<UnionBosslootItem> PARSER =
-        new com.google.protobuf.AbstractParser<UnionBosslootItem>() {
-      public UnionBosslootItem parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UnionBosslootItem(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<UnionBosslootItem> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional uint32 order = 11;
-    public static final int ORDER_FIELD_NUMBER = 11;
-    private int order_;
-    /**
-     * <code>optional uint32 order = 11;</code>
-     */
-    public boolean hasOrder() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional uint32 order = 11;</code>
-     */
-    public int getOrder() {
-      return order_;
-    }
-
-    // optional int32 weightall = 1;
-    public static final int WEIGHTALL_FIELD_NUMBER = 1;
-    private int weightall_;
-    /**
-     * <code>optional int32 weightall = 1;</code>
-     */
-    public boolean hasWeightall() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 weightall = 1;</code>
-     */
-    public int getWeightall() {
-      return weightall_;
-    }
-
-    // optional int32 itemid1 = 2;
-    public static final int ITEMID1_FIELD_NUMBER = 2;
-    private int itemid1_;
-    /**
-     * <code>optional int32 itemid1 = 2;</code>
-     */
-    public boolean hasItemid1() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int32 itemid1 = 2;</code>
-     */
-    public int getItemid1() {
-      return itemid1_;
-    }
-
-    // optional int32 count1 = 3;
-    public static final int COUNT1_FIELD_NUMBER = 3;
-    private int count1_;
-    /**
-     * <code>optional int32 count1 = 3;</code>
-     */
-    public boolean hasCount1() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 count1 = 3;</code>
-     */
-    public int getCount1() {
-      return count1_;
-    }
-
-    // optional int32 weight1 = 4;
-    public static final int WEIGHT1_FIELD_NUMBER = 4;
-    private int weight1_;
-    /**
-     * <code>optional int32 weight1 = 4;</code>
-     */
-    public boolean hasWeight1() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 weight1 = 4;</code>
-     */
-    public int getWeight1() {
-      return weight1_;
-    }
-
-    // optional int32 itemid2 = 5;
-    public static final int ITEMID2_FIELD_NUMBER = 5;
-    private int itemid2_;
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    public boolean hasItemid2() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 itemid2 = 5;</code>
-     */
-    public int getItemid2() {
-      return itemid2_;
-    }
-
-    // optional int32 count2 = 6;
-    public static final int COUNT2_FIELD_NUMBER = 6;
-    private int count2_;
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    public boolean hasCount2() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional int32 count2 = 6;</code>
-     */
-    public int getCount2() {
-      return count2_;
-    }
-
-    // optional int32 weight2 = 7;
-    public static final int WEIGHT2_FIELD_NUMBER = 7;
-    private int weight2_;
-    /**
-     * <code>optional int32 weight2 = 7;</code>
-     */
-    public boolean hasWeight2() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 weight2 = 7;</code>
-     */
-    public int getWeight2() {
-      return weight2_;
-    }
-
-    // optional int32 itemid3 = 8;
-    public static final int ITEMID3_FIELD_NUMBER = 8;
-    private int itemid3_;
-    /**
-     * <code>optional int32 itemid3 = 8;</code>
-     */
-    public boolean hasItemid3() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 itemid3 = 8;</code>
-     */
-    public int getItemid3() {
-      return itemid3_;
-    }
-
-    // optional int32 count3 = 9;
-    public static final int COUNT3_FIELD_NUMBER = 9;
-    private int count3_;
-    /**
-     * <code>optional int32 count3 = 9;</code>
-     */
-    public boolean hasCount3() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 count3 = 9;</code>
-     */
-    public int getCount3() {
-      return count3_;
-    }
-
-    // optional int32 weight3 = 10;
-    public static final int WEIGHT3_FIELD_NUMBER = 10;
-    private int weight3_;
-    /**
-     * <code>optional int32 weight3 = 10;</code>
-     */
-    public boolean hasWeight3() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 weight3 = 10;</code>
-     */
-    public int getWeight3() {
-      return weight3_;
-    }
-
-    private void initFields() {
-      order_ = 0;
-      weightall_ = 0;
-      itemid1_ = 0;
-      count1_ = 0;
-      weight1_ = 0;
-      itemid2_ = 0;
-      count2_ = 0;
-      weight2_ = 0;
-      itemid3_ = 0;
-      count3_ = 0;
-      weight3_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(1, weightall_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(2, itemid1_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(3, count1_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(4, weight1_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(5, itemid2_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(6, count2_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(7, weight2_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(8, itemid3_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(9, count3_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(10, weight3_);
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(11, order_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, weightall_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, itemid1_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count1_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, weight1_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, itemid2_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, count2_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, weight2_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, itemid3_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, count3_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, weight3_);
-      }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(11, order_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UnionProto.UnionBosslootItem parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UnionProto.UnionBosslootItem prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.UnionBosslootItem}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UnionProto.UnionBosslootItemOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootItem_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UnionProto.UnionBosslootItem.class, com.trans.pixel.protoc.UnionProto.UnionBosslootItem.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UnionProto.UnionBosslootItem.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        order_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        weightall_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        itemid1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        count1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        weight1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        itemid2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        count2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        weight2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        itemid3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        count3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        weight3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UnionProto.UnionBosslootItem.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem build() {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootItem result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UnionProto.UnionBosslootItem buildPartial() {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootItem result = new com.trans.pixel.protoc.UnionProto.UnionBosslootItem(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.order_ = order_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.weightall_ = weightall_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.itemid1_ = itemid1_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.count1_ = count1_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.weight1_ = weight1_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.itemid2_ = itemid2_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.count2_ = count2_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.weight2_ = weight2_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.itemid3_ = itemid3_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.count3_ = count3_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.weight3_ = weight3_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UnionProto.UnionBosslootItem) {
-          return mergeFrom((com.trans.pixel.protoc.UnionProto.UnionBosslootItem)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.UnionBosslootItem other) {
-        if (other == com.trans.pixel.protoc.UnionProto.UnionBosslootItem.getDefaultInstance()) return this;
-        if (other.hasOrder()) {
-          setOrder(other.getOrder());
-        }
-        if (other.hasWeightall()) {
-          setWeightall(other.getWeightall());
-        }
-        if (other.hasItemid1()) {
-          setItemid1(other.getItemid1());
-        }
-        if (other.hasCount1()) {
-          setCount1(other.getCount1());
-        }
-        if (other.hasWeight1()) {
-          setWeight1(other.getWeight1());
-        }
-        if (other.hasItemid2()) {
-          setItemid2(other.getItemid2());
-        }
-        if (other.hasCount2()) {
-          setCount2(other.getCount2());
-        }
-        if (other.hasWeight2()) {
-          setWeight2(other.getWeight2());
-        }
-        if (other.hasItemid3()) {
-          setItemid3(other.getItemid3());
-        }
-        if (other.hasCount3()) {
-          setCount3(other.getCount3());
-        }
-        if (other.hasWeight3()) {
-          setWeight3(other.getWeight3());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UnionProto.UnionBosslootItem parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UnionProto.UnionBosslootItem) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional uint32 order = 11;
-      private int order_ ;
-      /**
-       * <code>optional uint32 order = 11;</code>
-       */
-      public boolean hasOrder() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional uint32 order = 11;</code>
-       */
-      public int getOrder() {
-        return order_;
-      }
-      /**
-       * <code>optional uint32 order = 11;</code>
-       */
-      public Builder setOrder(int value) {
-        bitField0_ |= 0x00000001;
-        order_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 order = 11;</code>
-       */
-      public Builder clearOrder() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        order_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weightall = 1;
-      private int weightall_ ;
-      /**
-       * <code>optional int32 weightall = 1;</code>
-       */
-      public boolean hasWeightall() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 weightall = 1;</code>
-       */
-      public int getWeightall() {
-        return weightall_;
-      }
-      /**
-       * <code>optional int32 weightall = 1;</code>
-       */
-      public Builder setWeightall(int value) {
-        bitField0_ |= 0x00000002;
-        weightall_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weightall = 1;</code>
-       */
-      public Builder clearWeightall() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        weightall_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 itemid1 = 2;
-      private int itemid1_ ;
-      /**
-       * <code>optional int32 itemid1 = 2;</code>
-       */
-      public boolean hasItemid1() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 itemid1 = 2;</code>
-       */
-      public int getItemid1() {
-        return itemid1_;
-      }
-      /**
-       * <code>optional int32 itemid1 = 2;</code>
-       */
-      public Builder setItemid1(int value) {
-        bitField0_ |= 0x00000004;
-        itemid1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid1 = 2;</code>
-       */
-      public Builder clearItemid1() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        itemid1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count1 = 3;
-      private int count1_ ;
-      /**
-       * <code>optional int32 count1 = 3;</code>
-       */
-      public boolean hasCount1() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 count1 = 3;</code>
-       */
-      public int getCount1() {
-        return count1_;
-      }
-      /**
-       * <code>optional int32 count1 = 3;</code>
-       */
-      public Builder setCount1(int value) {
-        bitField0_ |= 0x00000008;
-        count1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count1 = 3;</code>
-       */
-      public Builder clearCount1() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        count1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight1 = 4;
-      private int weight1_ ;
-      /**
-       * <code>optional int32 weight1 = 4;</code>
-       */
-      public boolean hasWeight1() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 weight1 = 4;</code>
-       */
-      public int getWeight1() {
-        return weight1_;
-      }
-      /**
-       * <code>optional int32 weight1 = 4;</code>
-       */
-      public Builder setWeight1(int value) {
-        bitField0_ |= 0x00000010;
-        weight1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight1 = 4;</code>
-       */
-      public Builder clearWeight1() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        weight1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 itemid2 = 5;
-      private int itemid2_ ;
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public boolean hasItemid2() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public int getItemid2() {
-        return itemid2_;
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public Builder setItemid2(int value) {
-        bitField0_ |= 0x00000020;
-        itemid2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid2 = 5;</code>
-       */
-      public Builder clearItemid2() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        itemid2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count2 = 6;
-      private int count2_ ;
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public boolean hasCount2() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public int getCount2() {
-        return count2_;
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public Builder setCount2(int value) {
-        bitField0_ |= 0x00000040;
-        count2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count2 = 6;</code>
-       */
-      public Builder clearCount2() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        count2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight2 = 7;
-      private int weight2_ ;
-      /**
-       * <code>optional int32 weight2 = 7;</code>
-       */
-      public boolean hasWeight2() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 weight2 = 7;</code>
-       */
-      public int getWeight2() {
-        return weight2_;
-      }
-      /**
-       * <code>optional int32 weight2 = 7;</code>
-       */
-      public Builder setWeight2(int value) {
-        bitField0_ |= 0x00000080;
-        weight2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight2 = 7;</code>
-       */
-      public Builder clearWeight2() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        weight2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 itemid3 = 8;
-      private int itemid3_ ;
-      /**
-       * <code>optional int32 itemid3 = 8;</code>
-       */
-      public boolean hasItemid3() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 itemid3 = 8;</code>
-       */
-      public int getItemid3() {
-        return itemid3_;
-      }
-      /**
-       * <code>optional int32 itemid3 = 8;</code>
-       */
-      public Builder setItemid3(int value) {
-        bitField0_ |= 0x00000100;
-        itemid3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 itemid3 = 8;</code>
-       */
-      public Builder clearItemid3() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        itemid3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count3 = 9;
-      private int count3_ ;
-      /**
-       * <code>optional int32 count3 = 9;</code>
-       */
-      public boolean hasCount3() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      /**
-       * <code>optional int32 count3 = 9;</code>
-       */
-      public int getCount3() {
-        return count3_;
-      }
-      /**
-       * <code>optional int32 count3 = 9;</code>
-       */
-      public Builder setCount3(int value) {
-        bitField0_ |= 0x00000200;
-        count3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count3 = 9;</code>
-       */
-      public Builder clearCount3() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        count3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 weight3 = 10;
-      private int weight3_ ;
-      /**
-       * <code>optional int32 weight3 = 10;</code>
-       */
-      public boolean hasWeight3() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 weight3 = 10;</code>
-       */
-      public int getWeight3() {
-        return weight3_;
-      }
-      /**
-       * <code>optional int32 weight3 = 10;</code>
-       */
-      public Builder setWeight3(int value) {
-        bitField0_ |= 0x00000400;
-        weight3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 weight3 = 10;</code>
-       */
-      public Builder clearWeight3() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        weight3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBosslootItem)
-    }
-
-    static {
-      defaultInstance = new UnionBosslootItem(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UnionBosslootItem)
   }
 
   public interface UnionBosswinListOrBuilder
@@ -38261,26 +35302,6 @@ public final class UnionProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UnionBoss_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_UnionBoss_Skill_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_UnionBosslootList_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_UnionBossloot_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_UnionBosslootItem_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_UnionBosswinList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -38472,53 +35493,44 @@ public final class UnionProto {
       "\n\007groupId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032Reque" +
       "stBossRoomInfoCommand\"@\n\rUnionBossList\022/" +
       "\n\004data\030\001 \003(\0132!.com.trans.pixel.protoc.Un" +
-      "ionBoss\"\205\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004typ" +
-      "e\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targetcount",
-      "\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002HP\030\006 \001(\005\0226\n\005" +
-      "skill\030\007 \003(\0132\'.com.trans.pixel.protoc.Uni" +
-      "onBoss.Skill\022\023\n\013refreshtime\030\010 \001(\005\022\r\n\005cou" +
-      "nt\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\032+\n\005Skill\022\016\n\006s" +
-      "kilid\030\001 \001(\005\022\022\n\nskilllevel\030\002 \001(\005\"H\n\021Union" +
-      "BosslootList\0223\n\004boss\030\001 \003(\0132%.com.trans.p" +
-      "ixel.protoc.UnionBossloot\"T\n\rUnionBosslo" +
-      "ot\022\n\n\002id\030\001 \001(\005\0227\n\004item\030\002 \003(\0132).com.trans" +
-      ".pixel.protoc.UnionBosslootItem\"\313\001\n\021Unio" +
-      "nBosslootItem\022\r\n\005order\030\013 \001(\r\022\021\n\tweightal",
-      "l\030\001 \001(\005\022\017\n\007itemid1\030\002 \001(\005\022\016\n\006count1\030\003 \001(\005" +
-      "\022\017\n\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\016\n\006co" +
-      "unt2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007itemid3\030\010" +
-      " \001(\005\022\016\n\006count3\030\t \001(\005\022\017\n\007weight3\030\n \001(\005\"F\n" +
-      "\020UnionBosswinList\0222\n\004data\030\001 \003(\0132$.com.tr" +
-      "ans.pixel.protoc.UnionBosswin\"J\n\014UnionBo" +
-      "sswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.RankItem\"h\n\010RankItem\022\014\n" +
-      "\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\022" +
-      "2\n\006reward\030\n \003(\0132\".com.trans.pixel.protoc",
-      ".RewardInfo\"7\n\031RequestCreateUnionCommand" +
-      "\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"+\n\030RequestA" +
-      "pplyUnionCommand\022\017\n\007unionId\030\001 \002(\005\"7\n\030Req" +
-      "uestReplyUnionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007rec" +
-      "eive\030\002 \002(\010\":\n\037RequestHandleUnionMemberCo" +
-      "mmand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036Reques" +
-      "tSetUnionAnnounceCommand\022\020\n\010announce\030\001 \001" +
-      "(\t\"\034\n\032RequestUpgradeUnionCommand\"%\n\027Requ" +
-      "estQuitUnionCommand\022\n\n\002id\030\001 \001(\003\"\031\n\027Reque" +
-      "stUnionInfoCommand\"<\n\031RequestAttackUnion",
-      "Command\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003" +
-      "\"+\n\031RequestDefendUnionCommand\022\016\n\006teamid\030" +
-      "\002 \002(\003\"H\n\030ResponseUnionInfoCommand\022,\n\005uni" +
-      "on\030\001 \001(\0132\035.com.trans.pixel.protoc.Union\"" +
-      "\031\n\027RequestUnionListCommand\"H\n\030ResponseUn" +
-      "ionListCommand\022,\n\005union\030\001 \003(\0132\035.com.tran" +
-      "s.pixel.protoc.Union\"?\n\034RequestSubmitBos" +
-      "skillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030" +
-      "\002 \002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Respo" +
-      "nseBosskillCommand\0227\n\006record\030\001 \003(\0132\'.com",
-      ".trans.pixel.protoc.BossGroupRecord\"V\n\030R" +
-      "esponseUnionBossCommand\022:\n\tunionBoss\030\001 \003" +
-      "(\0132\'.com.trans.pixel.protoc.UnionBossRec" +
-      "ord\"K\n\034RequestUnionBossFightCommand\022\016\n\006b" +
-      "ossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007percent\030\003 \001(\005"
+      "ionBoss\"\344\001\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
+      "e\030\014 \001(\t\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022",
+      "\023\n\013targetcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n" +
+      "\n\002HP\030\006 \001(\005\0224\n\010lootlist\030\007 \003(\0132\".com.trans" +
+      ".pixel.protoc.RewardInfo\022\023\n\013refreshtime\030" +
+      "\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\"F" +
+      "\n\020UnionBosswinList\0222\n\004data\030\001 \003(\0132$.com.t" +
+      "rans.pixel.protoc.UnionBosswin\"J\n\014UnionB" +
+      "osswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.t" +
+      "rans.pixel.protoc.RankItem\"h\n\010RankItem\022\014" +
+      "\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t" +
+      "\0222\n\006reward\030\n \003(\0132\".com.trans.pixel.proto",
+      "c.RewardInfo\"7\n\031RequestCreateUnionComman" +
+      "d\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"+\n\030Request" +
+      "ApplyUnionCommand\022\017\n\007unionId\030\001 \002(\005\"7\n\030Re" +
+      "questReplyUnionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007re" +
+      "ceive\030\002 \002(\010\":\n\037RequestHandleUnionMemberC" +
+      "ommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036Reque" +
+      "stSetUnionAnnounceCommand\022\020\n\010announce\030\001 " +
+      "\001(\t\"\034\n\032RequestUpgradeUnionCommand\"%\n\027Req" +
+      "uestQuitUnionCommand\022\n\n\002id\030\001 \001(\003\"\031\n\027Requ" +
+      "estUnionInfoCommand\"<\n\031RequestAttackUnio",
+      "nCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(" +
+      "\003\"+\n\031RequestDefendUnionCommand\022\016\n\006teamid" +
+      "\030\002 \002(\003\"H\n\030ResponseUnionInfoCommand\022,\n\005un" +
+      "ion\030\001 \001(\0132\035.com.trans.pixel.protoc.Union" +
+      "\"\031\n\027RequestUnionListCommand\"H\n\030ResponseU" +
+      "nionListCommand\022,\n\005union\030\001 \003(\0132\035.com.tra" +
+      "ns.pixel.protoc.Union\"?\n\034RequestSubmitBo" +
+      "sskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId" +
+      "\030\002 \002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Resp" +
+      "onseBosskillCommand\0227\n\006record\030\001 \003(\0132\'.co",
+      "m.trans.pixel.protoc.BossGroupRecord\"V\n\030" +
+      "ResponseUnionBossCommand\022:\n\tunionBoss\030\001 " +
+      "\003(\0132\'.com.trans.pixel.protoc.UnionBossRe" +
+      "cord\"K\n\034RequestUnionBossFightCommand\022\016\n\006" +
+      "bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007percent\030\003 \001(" +
+      "\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38698,153 +35710,129 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionBoss_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBoss_descriptor,
-              new java.lang.String[] { "Id", "Type", "Targetid", "Targetcount", "Lasttime", "HP", "Skill", "Refreshtime", "Count", "Handbook", });
-          internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor =
-            internal_static_com_trans_pixel_protoc_UnionBoss_descriptor.getNestedTypes().get(0);
-          internal_static_com_trans_pixel_protoc_UnionBoss_Skill_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_UnionBoss_Skill_descriptor,
-              new java.lang.String[] { "Skilid", "Skilllevel", });
-          internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor =
-            getDescriptor().getMessageTypes().get(29);
-          internal_static_com_trans_pixel_protoc_UnionBosslootList_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_UnionBosslootList_descriptor,
-              new java.lang.String[] { "Boss", });
-          internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor =
-            getDescriptor().getMessageTypes().get(30);
-          internal_static_com_trans_pixel_protoc_UnionBossloot_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_UnionBossloot_descriptor,
-              new java.lang.String[] { "Id", "Item", });
-          internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor =
-            getDescriptor().getMessageTypes().get(31);
-          internal_static_com_trans_pixel_protoc_UnionBosslootItem_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_UnionBosslootItem_descriptor,
-              new java.lang.String[] { "Order", "Weightall", "Itemid1", "Count1", "Weight1", "Itemid2", "Count2", "Weight2", "Itemid3", "Count3", "Weight3", });
+              new java.lang.String[] { "Id", "Name", "Type", "Targetid", "Targetcount", "Lasttime", "HP", "Lootlist", "Refreshtime", "Count", "Handbook", });
           internal_static_com_trans_pixel_protoc_UnionBosswinList_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_UnionBosswinList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBosswinList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_UnionBosswin_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_UnionBosswin_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBosswin_descriptor,
               new java.lang.String[] { "Id", "Rank", });
           internal_static_com_trans_pixel_protoc_RankItem_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RankItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RankItem_descriptor,
               new java.lang.String[] { "Rank", "Rank1", "Des", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCreateUnionCommand_descriptor,
               new java.lang.String[] { "Icon", "Name", });
           internal_static_com_trans_pixel_protoc_RequestApplyUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestApplyUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestApplyUnionCommand_descriptor,
               new java.lang.String[] { "UnionId", });
           internal_static_com_trans_pixel_protoc_RequestReplyUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RequestReplyUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReplyUnionCommand_descriptor,
               new java.lang.String[] { "Id", "Receive", });
           internal_static_com_trans_pixel_protoc_RequestHandleUnionMemberCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestHandleUnionMemberCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHandleUnionMemberCommand_descriptor,
               new java.lang.String[] { "Id", "Job", });
           internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor,
               new java.lang.String[] { "Announce", });
           internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_descriptor,
               new java.lang.String[] { "UnionId", "Teamid", });
           internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_descriptor,
               new java.lang.String[] { "Teamid", });
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_descriptor,
               new java.lang.String[] { "Union", });
           internal_static_com_trans_pixel_protoc_RequestUnionListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestUnionListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_descriptor,
               new java.lang.String[] { "Union", });
           internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_descriptor,
               new java.lang.String[] { "GroupId", "BossId", });
           internal_static_com_trans_pixel_protoc_RequestBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_RequestBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBosskillCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_descriptor,
               new java.lang.String[] { "Record", });
           internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_descriptor,
               new java.lang.String[] { "UnionBoss", });
           internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_descriptor =
-            getDescriptor().getMessageTypes().get(52);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_descriptor,

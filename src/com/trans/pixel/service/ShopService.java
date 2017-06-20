@@ -31,7 +31,6 @@ import com.trans.pixel.protoc.ShopProto.ResponseFirstRechargeStatusCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.ShopList;
 import com.trans.pixel.protoc.ShopProto.Status;
-import com.trans.pixel.protoc.ShopProto.YueKa;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.ShopRedisService;
@@ -239,9 +238,9 @@ public class ShopService {
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
 		}
-		for(Libao libao : libaoMap.values()){
-			rechargeRedisService.getRmb(libao.getRechargeid());
-		}
+//		for(Libao libao : libaoMap.values()){
+//			rechargeRedisService.getRmb(libao.getRechargeid());
+//		}
 		return shopbuilder.build();
 	}
 	
@@ -253,7 +252,7 @@ public class ShopService {
 		responseBuilder.setLibaoShopCommand(shop);
 
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
-		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).getDataList()){
+		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).values()){
 			if(rmb.getReward().getItemid() != RewardConst.JEWEL)
 				continue;
 			Status.Builder builder = Status.newBuilder();
@@ -304,11 +303,11 @@ public class ShopService {
 		return redis.getVipLibao(id);
 	}
 	
-	public YueKa getYueKa(int id){
-		return redis.getYueKa(id);
-	}
-	
-	public Map<Integer, YueKa> getYueKas(){
-		return redis.getYueKas();
-	}
+//	public YueKa getYueKa(int id){
+//		return redis.getYueKa(id);
+//	}
+//	
+//	public Map<Integer, YueKa> getYueKas(){
+//		return redis.getYueKas();
+//	}
 }
