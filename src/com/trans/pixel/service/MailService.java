@@ -25,7 +25,7 @@ public class MailService {
 	private NoticeService noticeService;
 	
 	public void addMail(MailBean mail) {
-		if (hasSend(mail.getUserId(), mail.getType(), mail.getUser().getId()))//好友邮件已发送
+		if (mail.getUser() != null && hasSend(mail.getUserId(), mail.getType(), mail.getUser().getId()))//好友邮件已发送
 			return;
 		
 		mailRedisService.addMail(mail);
