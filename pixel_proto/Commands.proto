@@ -81,7 +81,7 @@ message UserInfo {
 
 message JewelPool {
 	optional int32 order = 1;
-	optional int32 merlevel = 2;
+	optional int32 targetcount = 2;
 	//optional string des = 3;
 	optional RewardInfo reward = 4;
 	optional int32 rewarded = 6;
@@ -282,6 +282,9 @@ message Commodity {
 	optional int32 limit = 13;
 	optional int32 maxlimit = 14;
 	optional int32 vip = 15;
+	repeated RewardInfo reward = 16;
+	optional string img = 17;
+	optional string des = 18;
 }
 message CommodityList {
 	repeated Commodity data = 1;

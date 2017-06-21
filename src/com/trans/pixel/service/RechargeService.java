@@ -339,13 +339,13 @@ public class RechargeService {
 		}
 		
 		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getReward().getItemid(), rmb.getCost().getItemid(), (int)rmb.getCost().getCount());
-		if(serverService.getOnlineStatus(user.getVersion()) == 0){
-			
-//			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
-//			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
-//					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
-//			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
-		}
+//		if(serverService.getOnlineStatus(user.getVersion()) == 0){
+//			
+////			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());
+////			Map<String, String> logMap = LogUtils.buildRechargeMap(user.getId(), user.getServerId(), rmb.getRmb() * 100, 0, productid, 2, "", 
+////					company, 1, userLevel != null ? userLevel.getPutongLevel() : 0, user.getZhanliMax());
+////			logService.sendLog(logMap, LogString.LOGTYPE_RECHARGE);
+//		}
 		if(zhsreward != null)
 			rewards.addLoot(zhsreward);
 		return rewards.build();

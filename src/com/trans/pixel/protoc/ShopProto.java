@@ -2999,6 +2999,61 @@ public final class ShopProto {
      * <code>optional int32 vip = 15;</code>
      */
     int getVip();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 16;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
+
+    // optional string img = 17;
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    boolean hasImg();
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    java.lang.String getImg();
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    com.google.protobuf.ByteString
+        getImgBytes();
+
+    // optional string des = 18;
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    boolean hasDes();
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    java.lang.String getDes();
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    com.google.protobuf.ByteString
+        getDesBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Commodity}
@@ -3126,6 +3181,24 @@ public final class ShopProto {
               vip_ = input.readInt32();
               break;
             }
+            case 130: {
+              if (!((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00008000;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+            case 138: {
+              bitField0_ |= 0x00008000;
+              img_ = input.readBytes();
+              break;
+            }
+            case 146: {
+              bitField0_ |= 0x00010000;
+              des_ = input.readBytes();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3134,6 +3207,9 @@ public final class ShopProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -3433,6 +3509,128 @@ public final class ShopProto {
       return vip_;
     }
 
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 16;
+    public static final int REWARD_FIELD_NUMBER = 16;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
+    // optional string img = 17;
+    public static final int IMG_FIELD_NUMBER = 17;
+    private java.lang.Object img_;
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    public boolean hasImg() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    public java.lang.String getImg() {
+      java.lang.Object ref = img_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          img_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string img = 17;</code>
+     */
+    public com.google.protobuf.ByteString
+        getImgBytes() {
+      java.lang.Object ref = img_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        img_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string des = 18;
+    public static final int DES_FIELD_NUMBER = 18;
+    private java.lang.Object des_;
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    public boolean hasDes() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    public java.lang.String getDes() {
+      java.lang.Object ref = des_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          des_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string des = 18;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDesBytes() {
+      java.lang.Object ref = des_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        des_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       itemid_ = 0;
       name_ = "";
@@ -3449,6 +3647,9 @@ public final class ShopProto {
       limit_ = 0;
       maxlimit_ = 0;
       vip_ = 0;
+      reward_ = java.util.Collections.emptyList();
+      img_ = "";
+      des_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3523,6 +3724,15 @@ public final class ShopProto {
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         output.writeInt32(15, vip_);
       }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(16, reward_.get(i));
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeBytes(17, getImgBytes());
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeBytes(18, getDesBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3591,6 +3801,18 @@ public final class ShopProto {
       if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, vip_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, reward_.get(i));
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(17, getImgBytes());
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(18, getDesBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3700,6 +3922,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3738,6 +3961,16 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00002000);
         vip_ = 0;
         bitField0_ = (bitField0_ & ~0x00004000);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+        } else {
+          rewardBuilder_.clear();
+        }
+        img_ = "";
+        bitField0_ = (bitField0_ & ~0x00010000);
+        des_ = "";
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
 
@@ -3826,6 +4059,23 @@ public final class ShopProto {
           to_bitField0_ |= 0x00004000;
         }
         result.vip_ = vip_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00008000) == 0x00008000)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00008000);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        result.img_ = img_;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        result.des_ = des_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3888,6 +4138,42 @@ public final class ShopProto {
         }
         if (other.hasVip()) {
           setVip(other.getVip());
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
+        if (other.hasImg()) {
+          bitField0_ |= 0x00010000;
+          img_ = other.img_;
+          onChanged();
+        }
+        if (other.hasDes()) {
+          bitField0_ |= 0x00020000;
+          des_ = other.des_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4464,6 +4750,394 @@ public final class ShopProto {
       public Builder clearVip() {
         bitField0_ = (bitField0_ & ~0x00004000);
         vip_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 16;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00008000) == 0x00008000)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00008000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 16;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00008000) == 0x00008000),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
+      }
+
+      // optional string img = 17;
+      private java.lang.Object img_ = "";
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public boolean hasImg() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public java.lang.String getImg() {
+        java.lang.Object ref = img_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          img_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public com.google.protobuf.ByteString
+          getImgBytes() {
+        java.lang.Object ref = img_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          img_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public Builder setImg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00010000;
+        img_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public Builder clearImg() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        img_ = getDefaultInstance().getImg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string img = 17;</code>
+       */
+      public Builder setImgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00010000;
+        img_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string des = 18;
+      private java.lang.Object des_ = "";
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public boolean hasDes() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public java.lang.String getDes() {
+        java.lang.Object ref = des_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          des_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDesBytes() {
+        java.lang.Object ref = des_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          des_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public Builder setDes(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00020000;
+        des_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public Builder clearDes() {
+        bitField0_ = (bitField0_ & ~0x00020000);
+        des_ = getDefaultInstance().getDes();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string des = 18;</code>
+       */
+      public Builder setDesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00020000;
+        des_ = value;
         onChanged();
         return this;
       }
@@ -41724,116 +42398,118 @@ public final class ShopProto {
       "ightall\030\004 \001(\005\"L\n\022ContractRewardList\0226\n\006r" +
       "eward\030\001 \003(\0132&.com.trans.pixel.protoc.Con" +
       "tractReward\"=\n\016ContractReward\022\n\n\002id\030\001 \001(" +
-      "\005\022\020\n\010rewardid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"\363\001\n\tC",
+      "\005\022\020\n\010rewardid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"\301\002\n\tC",
       "ommodity\022\016\n\006itemid\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\r" +
       "\n\005count\030\003 \002(\005\022\020\n\010currency\030\004 \002(\005\022\014\n\004cost\030" +
       "\005 \002(\005\022\014\n\004will\030\006 \001(\005\022\r\n\005isOut\030\007 \001(\010\022\n\n\002id" +
       "\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\r\n\005judge\030\n \001(\005\022" +
       "\020\n\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\022\r\n\005li" +
       "mit\030\r \001(\005\022\020\n\010maxlimit\030\016 \001(\005\022\013\n\003vip\030\017 \001(\005" +
-      "\"@\n\rCommodityList\022/\n\004data\030\001 \003(\0132!.com.tr" +
-      "ans.pixel.protoc.Commodity\"b\n\010ShopList\0220" +
-      "\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc.C" +
-      "ommodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshTime",
-      "\030\003 \001(\005\"&\n\004Will\022\014\n\004will\030\001 \002(\005\022\020\n\010position" +
-      "\030\003 \001(\005\"T\n\010ShopWill\022\n\n\002id\030\001 \002(\005\022\020\n\010merlev" +
-      "el\030\002 \001(\005\022*\n\004will\030\003 \003(\0132\034.com.trans.pixel" +
-      ".protoc.Will\">\n\014ShopWillList\022.\n\004data\030\001 \003" +
-      "(\0132 .com.trans.pixel.protoc.ShopWill\"o\n\013" +
-      "LadderDaily\022\n\n\002id\030\001 \001(\005\022\017\n\007ranking\030\002 \001(\005" +
-      "\022\020\n\010ranking1\030\003 \001(\005\0221\n\005order\030\004 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"B\n\017LadderD" +
-      "ailyList\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.p" +
-      "rotoc.LadderDaily\"?\n\016LadderChongzhi\022\r\n\005c",
-      "ount\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001" +
-      "(\005\"K\n\022LadderChongzhiList\0225\n\005count\030\001 \003(\0132" +
-      "&.com.trans.pixel.protoc.LadderChongzhi\"" +
-      "\373\001\n\005Cdkey\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007i" +
-      "temid1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007itemid2\030" +
-      "\005 \001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\016" +
-      "\n\006count3\030\010 \001(\005\0222\n\006reward\030\t \003(\0132\".com.tra" +
-      "ns.pixel.protoc.RewardInfo\022\024\n\014currentCou" +
-      "nt\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\016\n\006length\030\014 \001(\005\022" +
-      "\014\n\004used\030\r \001(\005\"9\n\tCdkeyList\022,\n\005cdkey\030\001 \003(",
-      "\0132\035.com.trans.pixel.protoc.Cdkey\"F\n\017Mult" +
-      "iRewardList\0223\n\006region\030\002 \003(\0132#.com.trans." +
-      "pixel.protoc.MultiReward\"\216\001\n\022PurchaseCoi" +
-      "nReward\022\016\n\006daguan\030\001 \001(\005\022\021\n\trewardid1\030\002 \001" +
-      "(\005\022\017\n\007count11\030\003 \001(\005\022\017\n\007count12\030\004 \001(\005\022\021\n\t" +
-      "rewardid2\030\005 \001(\005\022\017\n\007count21\030\006 \001(\005\022\017\n\007coun" +
-      "t22\030\007 \001(\005\"R\n\026PurchaseCoinRewardList\0228\n\004g" +
-      "old\030\001 \003(\0132*.com.trans.pixel.protoc.Purch" +
-      "aseCoinReward\"A\n\020PurchaseCoinCost\022\r\n\005cou" +
-      "nt\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005",
-      "\"N\n\024PurchaseCoinCostList\0226\n\004gold\030\001 \003(\0132(" +
-      ".com.trans.pixel.protoc.PurchaseCoinCost" +
-      "\"\031\n\027RequestDailyShopCommand\"<\n\037RequestDa" +
-      "ilyShopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n" +
-      "\002id\030\002 \002(\005\" \n\036RequestDailyShopRefreshComm" +
-      "and\"r\n\030ResponseDailyShopCommand\0220\n\005items" +
-      "\030\001 \003(\0132!.com.trans.pixel.protoc.Commodit" +
-      "y\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"" +
-      "\024\n\022RequestShopCommand\"(\n\032RequestShopPurc" +
-      "haseCommand\022\n\n\002id\030\001 \002(\005\"G\n\023ResponseShopC",
-      "ommand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.Commodity\"\031\n\027RequestBlackShopComm" +
-      "and\"<\n\037RequestBlackShopPurchaseCommand\022\r" +
-      "\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestBlac" +
-      "kShopRefreshCommand\"r\n\030ResponseBlackShop" +
-      "Command\0220\n\005items\030\001 \003(\0132!.com.trans.pixel" +
-      ".protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013re" +
-      "freshCost\030\003 \001(\005\"\031\n\027RequestUnionShopComma" +
-      "nd\"<\n\037RequestUnionShopPurchaseCommand\022\r\n" +
-      "\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestUnion",
-      "ShopRefreshCommand\"r\n\030ResponseUnionShopC" +
-      "ommand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013ref" +
-      "reshCost\030\003 \001(\005\"\030\n\026RequestRaidShopCommand" +
-      "\";\n\036RequestRaidShopPurchaseCommand\022\r\n\005in" +
-      "dex\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\037\n\035RequestRaidShop" +
-      "RefreshCommand\"q\n\027ResponseRaidShopComman" +
-      "d\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.proto" +
-      "c.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshC" +
-      "ost\030\003 \001(\005\"\027\n\025RequestPVPShopCommand\":\n\035Re",
-      "questPVPShopPurchaseCommand\022\r\n\005index\030\001 \002" +
-      "(\005\022\n\n\002id\030\002 \002(\005\"\036\n\034RequestPVPShopRefreshC" +
-      "ommand\"p\n\026ResponsePVPShopCommand\0220\n\005item" +
-      "s\030\001 \003(\0132!.com.trans.pixel.protoc.Commodi" +
-      "ty\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005" +
-      "\"\036\n\034RequestExpeditionShopCommand\"A\n$Requ" +
-      "estExpeditionShopPurchaseCommand\022\r\n\005inde" +
-      "x\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExpedition" +
-      "ShopRefreshCommand\"w\n\035ResponseExpedition" +
-      "ShopCommand\0220\n\005items\030\001 \003(\0132!.com.trans.p",
-      "ixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023" +
-      "\n\013refreshCost\030\003 \001(\005\"\032\n\030RequestLadderShop" +
-      "Command\"=\n RequestLadderShopPurchaseComm" +
-      "and\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n\037Reques" +
-      "tLadderShopRefreshCommand\"s\n\031ResponseLad" +
-      "derShopCommand\0220\n\005items\030\001 \003(\0132!.com.tran" +
-      "s.pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(" +
-      "\003\022\023\n\013refreshCost\030\003 \001(\005\"\037\n\035RequestBattlet" +
-      "owerShopCommand\"B\n%RequestBattletowerSho" +
-      "pPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 ",
-      "\002(\005\"&\n$RequestBattletowerShopRefreshComm" +
-      "and\"x\n\036ResponseBattletowerShopCommand\0220\n" +
-      "\005items\030\001 \003(\0132!.com.trans.pixel.protoc.Co" +
-      "mmodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030" +
-      "\003 \001(\005\"p\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid" +
-      "\030\002 \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 " +
-      "\001(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"" +
-      "8\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.p" +
-      "ixel.protoc.Libao\"\031\n\027RequestLibaoShopCom" +
-      "mand\"H\n\030ResponseLibaoShopCommand\022,\n\005item",
-      "s\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\")" +
-      "\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(" +
-      "\010\"T\n\"ResponseFirstRechargeStatusCommand\022" +
-      ".\n\006status\030\001 \003(\0132\036.com.trans.pixel.protoc" +
-      ".Status\"0\n\036RequestPurchaseContractComman" +
-      "d\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoin" +
-      "Command\"Q\n\033ResponsePurchaseCoinCommand\022\r" +
-      "\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotal" +
-      "Time\030\005 \001(\005"
+      "\0222\n\006reward\030\020 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\022\013\n\003img\030\021 \001(\t\022\013\n\003des\030\022 \001(\t\"@" +
+      "\n\rCommodityList\022/\n\004data\030\001 \003(\0132!.com.tran" +
+      "s.pixel.protoc.Commodity\"b\n\010ShopList\0220\n\005",
+      "items\030\001 \003(\0132!.com.trans.pixel.protoc.Com" +
+      "modity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshTime\030\003" +
+      " \001(\005\"&\n\004Will\022\014\n\004will\030\001 \002(\005\022\020\n\010position\030\003" +
+      " \001(\005\"T\n\010ShopWill\022\n\n\002id\030\001 \002(\005\022\020\n\010merlevel" +
+      "\030\002 \001(\005\022*\n\004will\030\003 \003(\0132\034.com.trans.pixel.p" +
+      "rotoc.Will\">\n\014ShopWillList\022.\n\004data\030\001 \003(\013" +
+      "2 .com.trans.pixel.protoc.ShopWill\"o\n\013La" +
+      "dderDaily\022\n\n\002id\030\001 \001(\005\022\017\n\007ranking\030\002 \001(\005\022\020" +
+      "\n\010ranking1\030\003 \001(\005\0221\n\005order\030\004 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\"B\n\017LadderDai",
+      "lyList\022/\n\002id\030\001 \003(\0132#.com.trans.pixel.pro" +
+      "toc.LadderDaily\"?\n\016LadderChongzhi\022\r\n\005cou" +
+      "nt\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005" +
+      "\"K\n\022LadderChongzhiList\0225\n\005count\030\001 \003(\0132&." +
+      "com.trans.pixel.protoc.LadderChongzhi\"\373\001" +
+      "\n\005Cdkey\022\n\n\002id\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007ite" +
+      "mid1\030\003 \001(\005\022\016\n\006count1\030\004 \001(\005\022\017\n\007itemid2\030\005 " +
+      "\001(\005\022\016\n\006count2\030\006 \001(\005\022\017\n\007itemid3\030\007 \001(\005\022\016\n\006" +
+      "count3\030\010 \001(\005\0222\n\006reward\030\t \003(\0132\".com.trans" +
+      ".pixel.protoc.RewardInfo\022\024\n\014currentCount",
+      "\030\n \001(\005\022\r\n\005count\030\013 \001(\005\022\016\n\006length\030\014 \001(\005\022\014\n" +
+      "\004used\030\r \001(\005\"9\n\tCdkeyList\022,\n\005cdkey\030\001 \003(\0132" +
+      "\035.com.trans.pixel.protoc.Cdkey\"F\n\017MultiR" +
+      "ewardList\0223\n\006region\030\002 \003(\0132#.com.trans.pi" +
+      "xel.protoc.MultiReward\"\216\001\n\022PurchaseCoinR" +
+      "eward\022\016\n\006daguan\030\001 \001(\005\022\021\n\trewardid1\030\002 \001(\005" +
+      "\022\017\n\007count11\030\003 \001(\005\022\017\n\007count12\030\004 \001(\005\022\021\n\tre" +
+      "wardid2\030\005 \001(\005\022\017\n\007count21\030\006 \001(\005\022\017\n\007count2" +
+      "2\030\007 \001(\005\"R\n\026PurchaseCoinRewardList\0228\n\004gol" +
+      "d\030\001 \003(\0132*.com.trans.pixel.protoc.Purchas",
+      "eCoinReward\"A\n\020PurchaseCoinCost\022\r\n\005count" +
+      "\030\001 \001(\005\022\020\n\010currency\030\002 \001(\005\022\014\n\004cost\030\003 \001(\005\"N" +
+      "\n\024PurchaseCoinCostList\0226\n\004gold\030\001 \003(\0132(.c" +
+      "om.trans.pixel.protoc.PurchaseCoinCost\"\031" +
+      "\n\027RequestDailyShopCommand\"<\n\037RequestDail" +
+      "yShopPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002i" +
+      "d\030\002 \002(\005\" \n\036RequestDailyShopRefreshComman" +
+      "d\"r\n\030ResponseDailyShopCommand\0220\n\005items\030\001" +
+      " \003(\0132!.com.trans.pixel.protoc.Commodity\022" +
+      "\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\024\n",
+      "\022RequestShopCommand\"(\n\032RequestShopPurcha" +
+      "seCommand\022\n\n\002id\030\001 \002(\005\"G\n\023ResponseShopCom" +
+      "mand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.pr" +
+      "otoc.Commodity\"\031\n\027RequestBlackShopComman" +
+      "d\"<\n\037RequestBlackShopPurchaseCommand\022\r\n\005" +
+      "index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestBlackS" +
+      "hopRefreshCommand\"r\n\030ResponseBlackShopCo" +
+      "mmand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.p" +
+      "rotoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refr" +
+      "eshCost\030\003 \001(\005\"\031\n\027RequestUnionShopCommand",
+      "\"<\n\037RequestUnionShopPurchaseCommand\022\r\n\005i" +
+      "ndex\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\" \n\036RequestUnionSh" +
+      "opRefreshCommand\"r\n\030ResponseUnionShopCom" +
+      "mand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.pr" +
+      "otoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refre" +
+      "shCost\030\003 \001(\005\"\030\n\026RequestRaidShopCommand\";" +
+      "\n\036RequestRaidShopPurchaseCommand\022\r\n\005inde" +
+      "x\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"\037\n\035RequestRaidShopRe" +
+      "freshCommand\"q\n\027ResponseRaidShopCommand\022" +
+      "0\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc.",
+      "Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCos" +
+      "t\030\003 \001(\005\"\027\n\025RequestPVPShopCommand\":\n\035Requ" +
+      "estPVPShopPurchaseCommand\022\r\n\005index\030\001 \002(\005" +
+      "\022\n\n\002id\030\002 \002(\005\"\036\n\034RequestPVPShopRefreshCom" +
+      "mand\"p\n\026ResponsePVPShopCommand\0220\n\005items\030" +
+      "\001 \003(\0132!.com.trans.pixel.protoc.Commodity" +
+      "\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\036" +
+      "\n\034RequestExpeditionShopCommand\"A\n$Reques" +
+      "tExpeditionShopPurchaseCommand\022\r\n\005index\030" +
+      "\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExpeditionSh",
+      "opRefreshCommand\"w\n\035ResponseExpeditionSh" +
+      "opCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pix" +
+      "el.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013" +
+      "refreshCost\030\003 \001(\005\"\032\n\030RequestLadderShopCo" +
+      "mmand\"=\n RequestLadderShopPurchaseComman" +
+      "d\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n\037RequestL" +
+      "adderShopRefreshCommand\"s\n\031ResponseLadde" +
+      "rShopCommand\0220\n\005items\030\001 \003(\0132!.com.trans." +
+      "pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022" +
+      "\023\n\013refreshCost\030\003 \001(\005\"\037\n\035RequestBattletow",
+      "erShopCommand\"B\n%RequestBattletowerShopP" +
+      "urchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(" +
+      "\005\"&\n$RequestBattletowerShopRefreshComman" +
+      "d\"x\n\036ResponseBattletowerShopCommand\0220\n\005i" +
+      "tems\030\001 \003(\0132!.com.trans.pixel.protoc.Comm" +
+      "odity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 " +
+      "\001(\005\"p\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002" +
+      " \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(" +
+      "\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"8\n" +
+      "\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.pix",
+      "el.protoc.Libao\"\031\n\027RequestLibaoShopComma" +
+      "nd\"H\n\030ResponseLibaoShopCommand\022,\n\005items\030" +
+      "\001 \003(\0132\035.com.trans.pixel.protoc.Libao\")\n\006" +
+      "Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"" +
+      "T\n\"ResponseFirstRechargeStatusCommand\022.\n" +
+      "\006status\030\001 \003(\0132\036.com.trans.pixel.protoc.S" +
+      "tatus\"0\n\036RequestPurchaseContractCommand\022" +
+      "\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoinCo" +
+      "mmand\"Q\n\033ResponsePurchaseCoinCommand\022\r\n\005" +
+      "jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTi",
+      "me\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -41869,7 +42545,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Commodity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Commodity_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Count", "Currency", "Cost", "Will", "IsOut", "Id", "Position", "Judge", "Discount", "Discost", "Limit", "Maxlimit", "Vip", });
+              new java.lang.String[] { "Itemid", "Name", "Count", "Currency", "Cost", "Will", "IsOut", "Id", "Position", "Judge", "Discount", "Discost", "Limit", "Maxlimit", "Vip", "Reward", "Img", "Des", });
           internal_static_com_trans_pixel_protoc_CommodityList_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_CommodityList_fieldAccessorTable = new

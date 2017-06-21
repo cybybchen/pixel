@@ -1088,41 +1088,41 @@ public class ShopRedisService extends RedisService{
 	}
 
 	public ShopList getShop() {
-		Map<String, String> keyvalue = this.hget(RedisKey.SHOP_CONFIG);
-		if(keyvalue.isEmpty()){
-			return buildShop();
-		}
+//		Map<String, String> keyvalue = this.hget(RedisKey.SHOP_CONFIG);
+//		if(keyvalue.isEmpty()){
+//			return buildShop();
+//		}
 		ShopList.Builder shopbuilder = ShopList.newBuilder();
-		for(String value : keyvalue.values()){
-			Commodity.Builder builder = Commodity.newBuilder();
-			if(parseJson(value, builder)){
-				shopbuilder.addItems(builder);
-			}
-		}
+//		for(String value : keyvalue.values()){
+//			Commodity.Builder builder = Commodity.newBuilder();
+//			if(parseJson(value, builder)){
+//				shopbuilder.addItems(builder);
+//			}
+//		}
 		return shopbuilder.build();
 	}
 	
-	private void saveShop(ShopList shoplist) {
-		if(shoplist.getItemsCount() > 0){
-			Map<String, String> map = new HashMap<String, String>();
-			for(Commodity comm : shoplist.getItemsList())
-				map.put(comm.getId()+"", formatJson(comm));
-			this.hputAll(RedisKey.SHOP_CONFIG, map);
-		}
-	}
+//	private void saveShop(ShopList shoplist) {
+//		if(shoplist.getItemsCount() > 0){
+//			Map<String, String> map = new HashMap<String, String>();
+//			for(Commodity comm : shoplist.getItemsList())
+//				map.put(comm.getId()+"", formatJson(comm));
+//			this.hputAll(RedisKey.SHOP_CONFIG, map);
+//		}
+//	}
 	
-	public ShopList buildShop(){
-		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
-		String xml = ReadConfig("lol_shop2.xml");
-		parseXml(xml, commsbuilder);
-		ShopList.Builder shoplist = ShopList.newBuilder();
-		for(Commodity.Builder comm : commsbuilder.getDataBuilderList()){
-			comm.clearName();
-			shoplist.addItems(comm);
-		}
-		saveShop(shoplist.build());
-		return shoplist.build();
-	}
+//	public ShopList buildShop(){
+//		CommodityList.Builder commsbuilder = CommodityList.newBuilder();
+//		String xml = ReadConfig("lol_shop2.xml");
+//		parseXml(xml, commsbuilder);
+//		ShopList.Builder shoplist = ShopList.newBuilder();
+//		for(Commodity.Builder comm : commsbuilder.getDataBuilderList()){
+//			comm.clearName();
+//			shoplist.addItems(comm);
+//		}
+//		saveShop(shoplist.build());
+//		return shoplist.build();
+//	}
 	
 	//contract activity
 	public ContractWeight getContract(int quality) {

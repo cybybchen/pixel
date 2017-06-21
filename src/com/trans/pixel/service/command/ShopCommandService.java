@@ -276,7 +276,8 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
-			handleRewards(responseBuilder, user, comm.getItemid(), comm.getCount());
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			handleRewards(responseBuilder, user, rewards);
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 			//	      service.saveBlackShop(shoplist.build(), user);
 			pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
