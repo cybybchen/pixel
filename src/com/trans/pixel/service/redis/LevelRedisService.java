@@ -120,16 +120,16 @@ public class LevelRedisService extends RedisService {
 		return getUserLevel(user.getId());
 	}
 	
-	public MultiReward.Builder getLootReward(UserBean user){
-		MultiReward.Builder builder = MultiReward.newBuilder();
-		String value = hget(RedisKey.USERDATA+user.getId(), "LootReward");
-		if(value != null)
-			parseJson(value, builder);
-		return builder;
-	}
-	public void saveLootReward(MultiReward.Builder rewards, UserBean user){
-		hput(RedisKey.USERDATA+user.getId(), "LootReward", formatJson(rewards.build()));
-	}
+//	public MultiReward.Builder getLootReward(UserBean user){
+//		MultiReward.Builder builder = MultiReward.newBuilder();
+//		String value = hget(RedisKey.USERDATA+user.getId(), "LootReward");
+//		if(value != null)
+//			parseJson(value, builder);
+//		return builder;
+//	}
+//	public void saveLootReward(MultiReward.Builder rewards, UserBean user){
+//		hput(RedisKey.USERDATA+user.getId(), "LootReward", formatJson(rewards.build()));
+//	}
 //	public int getCoin(UserBean user){
 //		UserLevelBean userLevel = getUserLevel(user);
 //		return (int)(now()-userLevel.getLootTime())*userLevel.getCoin();

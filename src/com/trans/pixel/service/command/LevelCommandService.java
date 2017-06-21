@@ -216,8 +216,16 @@ public class LevelCommandService extends BaseCommandService {
 	}
 
 	public void getEvent(RequestEventCommand cmd, Builder responseBuilder, UserBean user) {
-		Event event = redis.getEvent(cmd.getUserId(), cmd.getOrder());
-		if(event == null){
+		Event event /*= null;
+		if(cmd.getOrder() < 10000) {
+			UserLevelBean userLevel = redis.getUserLevel(cmd.getUserId());
+			AreaEvent.Builder events = redis.getMainEvent(userLevel.getUnlockDaguan());
+			for(Event eve : events.getEventList())
+				if(eve.getOrder() == cmd.getOrder() && cmd.getOrder() == userLevel.getUnlockOrder()+1)
+					event = eve;
+		}else {
+			event*/ = redis.getEvent(cmd.getUserId(), cmd.getOrder());
+		if(event == null){ 
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
             responseBuilder.setErrorCommand(errorCommand);
