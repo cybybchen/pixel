@@ -84,6 +84,8 @@ public class TeamCommandService extends BaseCommandService {
 	}
 	
 	public void getTeamCache(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
+		if (cmd.getUserId() == 0)
+			return;
 		Team team = userTeamService.getTeamCache(cmd.getUserId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 		builder.setTeam(team);
