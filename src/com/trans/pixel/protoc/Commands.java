@@ -5276,54 +5276,6 @@ public final class Commands {
           return false;
         }
       }
-      if (hasDailyShopCommand()) {
-        if (!getDailyShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasShopCommand()) {
-        if (!getShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasBlackShopCommand()) {
-        if (!getBlackShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasUnionShopCommand()) {
-        if (!getUnionShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasPVPShopCommand()) {
-        if (!getPVPShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasRaidShopCommand()) {
-        if (!getRaidShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasExpeditionShopCommand()) {
-        if (!getExpeditionShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasLadderShopCommand()) {
-        if (!getLadderShopCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasTeamCommand()) {
         if (!getTeamCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -5584,12 +5536,6 @@ public final class Commands {
       }
       if (hasUnionBossCommand()) {
         if (!getUnionBossCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
-      if (hasBattletowerShopCommand()) {
-        if (!getBattletowerShopCommand().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -7799,54 +7745,6 @@ public final class Commands {
             return false;
           }
         }
-        if (hasDailyShopCommand()) {
-          if (!getDailyShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasShopCommand()) {
-          if (!getShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasBlackShopCommand()) {
-          if (!getBlackShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasUnionShopCommand()) {
-          if (!getUnionShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasPVPShopCommand()) {
-          if (!getPVPShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasRaidShopCommand()) {
-          if (!getRaidShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasExpeditionShopCommand()) {
-          if (!getExpeditionShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasLadderShopCommand()) {
-          if (!getLadderShopCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
         if (hasTeamCommand()) {
           if (!getTeamCommand().isInitialized()) {
             
@@ -8107,12 +8005,6 @@ public final class Commands {
         }
         if (hasUnionBossCommand()) {
           if (!getUnionBossCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasBattletowerShopCommand()) {
-          if (!getBattletowerShopCommand().isInitialized()) {
             
             return false;
           }

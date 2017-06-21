@@ -267,11 +267,11 @@ message ContractReward {
 }
 
 message Commodity {
-	required int32 itemid = 1;
+	optional int32 itemid = 1;
 	optional string name = 2;
-	required int32 count = 3;
-	required int32 currency = 4;
-	required int32 cost = 5;
+	optional int32 count = 3;
+	optional int32 currency = 4;
+	optional int32 cost = 5;
 	optional int32 will = 6;
 	optional bool isOut = 7;
 	optional int32 id = 8;

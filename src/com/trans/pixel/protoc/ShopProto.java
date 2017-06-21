@@ -2845,13 +2845,13 @@ public final class ShopProto {
   public interface CommodityOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 itemid = 1;
+    // optional int32 itemid = 1;
     /**
-     * <code>required int32 itemid = 1;</code>
+     * <code>optional int32 itemid = 1;</code>
      */
     boolean hasItemid();
     /**
-     * <code>required int32 itemid = 1;</code>
+     * <code>optional int32 itemid = 1;</code>
      */
     int getItemid();
 
@@ -2870,33 +2870,33 @@ public final class ShopProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // required int32 count = 3;
+    // optional int32 count = 3;
     /**
-     * <code>required int32 count = 3;</code>
+     * <code>optional int32 count = 3;</code>
      */
     boolean hasCount();
     /**
-     * <code>required int32 count = 3;</code>
+     * <code>optional int32 count = 3;</code>
      */
     int getCount();
 
-    // required int32 currency = 4;
+    // optional int32 currency = 4;
     /**
-     * <code>required int32 currency = 4;</code>
+     * <code>optional int32 currency = 4;</code>
      */
     boolean hasCurrency();
     /**
-     * <code>required int32 currency = 4;</code>
+     * <code>optional int32 currency = 4;</code>
      */
     int getCurrency();
 
-    // required int32 cost = 5;
+    // optional int32 cost = 5;
     /**
-     * <code>required int32 cost = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
     boolean hasCost();
     /**
-     * <code>required int32 cost = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
     int getCost();
 
@@ -3242,17 +3242,17 @@ public final class ShopProto {
     }
 
     private int bitField0_;
-    // required int32 itemid = 1;
+    // optional int32 itemid = 1;
     public static final int ITEMID_FIELD_NUMBER = 1;
     private int itemid_;
     /**
-     * <code>required int32 itemid = 1;</code>
+     * <code>optional int32 itemid = 1;</code>
      */
     public boolean hasItemid() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 itemid = 1;</code>
+     * <code>optional int32 itemid = 1;</code>
      */
     public int getItemid() {
       return itemid_;
@@ -3301,49 +3301,49 @@ public final class ShopProto {
       }
     }
 
-    // required int32 count = 3;
+    // optional int32 count = 3;
     public static final int COUNT_FIELD_NUMBER = 3;
     private int count_;
     /**
-     * <code>required int32 count = 3;</code>
+     * <code>optional int32 count = 3;</code>
      */
     public boolean hasCount() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 count = 3;</code>
+     * <code>optional int32 count = 3;</code>
      */
     public int getCount() {
       return count_;
     }
 
-    // required int32 currency = 4;
+    // optional int32 currency = 4;
     public static final int CURRENCY_FIELD_NUMBER = 4;
     private int currency_;
     /**
-     * <code>required int32 currency = 4;</code>
+     * <code>optional int32 currency = 4;</code>
      */
     public boolean hasCurrency() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required int32 currency = 4;</code>
+     * <code>optional int32 currency = 4;</code>
      */
     public int getCurrency() {
       return currency_;
     }
 
-    // required int32 cost = 5;
+    // optional int32 cost = 5;
     public static final int COST_FIELD_NUMBER = 5;
     private int cost_;
     /**
-     * <code>required int32 cost = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
     public boolean hasCost() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required int32 cost = 5;</code>
+     * <code>optional int32 cost = 5;</code>
      */
     public int getCost() {
       return cost_;
@@ -3656,22 +3656,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasItemid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCount()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCurrency()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCost()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4180,22 +4164,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasItemid()) {
-          
-          return false;
-        }
-        if (!hasCount()) {
-          
-          return false;
-        }
-        if (!hasCurrency()) {
-          
-          return false;
-        }
-        if (!hasCost()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -4218,22 +4186,22 @@ public final class ShopProto {
       }
       private int bitField0_;
 
-      // required int32 itemid = 1;
+      // optional int32 itemid = 1;
       private int itemid_ ;
       /**
-       * <code>required int32 itemid = 1;</code>
+       * <code>optional int32 itemid = 1;</code>
        */
       public boolean hasItemid() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 itemid = 1;</code>
+       * <code>optional int32 itemid = 1;</code>
        */
       public int getItemid() {
         return itemid_;
       }
       /**
-       * <code>required int32 itemid = 1;</code>
+       * <code>optional int32 itemid = 1;</code>
        */
       public Builder setItemid(int value) {
         bitField0_ |= 0x00000001;
@@ -4242,7 +4210,7 @@ public final class ShopProto {
         return this;
       }
       /**
-       * <code>required int32 itemid = 1;</code>
+       * <code>optional int32 itemid = 1;</code>
        */
       public Builder clearItemid() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -4325,22 +4293,22 @@ public final class ShopProto {
         return this;
       }
 
-      // required int32 count = 3;
+      // optional int32 count = 3;
       private int count_ ;
       /**
-       * <code>required int32 count = 3;</code>
+       * <code>optional int32 count = 3;</code>
        */
       public boolean hasCount() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 count = 3;</code>
+       * <code>optional int32 count = 3;</code>
        */
       public int getCount() {
         return count_;
       }
       /**
-       * <code>required int32 count = 3;</code>
+       * <code>optional int32 count = 3;</code>
        */
       public Builder setCount(int value) {
         bitField0_ |= 0x00000004;
@@ -4349,7 +4317,7 @@ public final class ShopProto {
         return this;
       }
       /**
-       * <code>required int32 count = 3;</code>
+       * <code>optional int32 count = 3;</code>
        */
       public Builder clearCount() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -4358,22 +4326,22 @@ public final class ShopProto {
         return this;
       }
 
-      // required int32 currency = 4;
+      // optional int32 currency = 4;
       private int currency_ ;
       /**
-       * <code>required int32 currency = 4;</code>
+       * <code>optional int32 currency = 4;</code>
        */
       public boolean hasCurrency() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required int32 currency = 4;</code>
+       * <code>optional int32 currency = 4;</code>
        */
       public int getCurrency() {
         return currency_;
       }
       /**
-       * <code>required int32 currency = 4;</code>
+       * <code>optional int32 currency = 4;</code>
        */
       public Builder setCurrency(int value) {
         bitField0_ |= 0x00000008;
@@ -4382,7 +4350,7 @@ public final class ShopProto {
         return this;
       }
       /**
-       * <code>required int32 currency = 4;</code>
+       * <code>optional int32 currency = 4;</code>
        */
       public Builder clearCurrency() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -4391,22 +4359,22 @@ public final class ShopProto {
         return this;
       }
 
-      // required int32 cost = 5;
+      // optional int32 cost = 5;
       private int cost_ ;
       /**
-       * <code>required int32 cost = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
       public boolean hasCost() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required int32 cost = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
       public int getCost() {
         return cost_;
       }
       /**
-       * <code>required int32 cost = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
       public Builder setCost(int value) {
         bitField0_ |= 0x00000010;
@@ -4415,7 +4383,7 @@ public final class ShopProto {
         return this;
       }
       /**
-       * <code>required int32 cost = 5;</code>
+       * <code>optional int32 cost = 5;</code>
        */
       public Builder clearCost() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -5326,12 +5294,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getDataCount(); i++) {
-        if (!getData(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5560,12 +5522,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getDataCount(); i++) {
-          if (!getData(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -6149,12 +6105,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6417,12 +6367,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -19103,12 +19047,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -19371,12 +19309,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -20794,12 +20726,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -21028,12 +20954,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -22856,12 +22776,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -23124,12 +23038,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -25050,12 +24958,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -25318,12 +25220,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -27244,12 +27140,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -27512,12 +27402,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -29438,12 +29322,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -29706,12 +29584,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -31632,12 +31504,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -31900,12 +31766,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -33826,12 +33686,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -34094,12 +33948,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -36020,12 +35868,6 @@ public final class ShopProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getItemsCount(); i++) {
-        if (!getItems(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -36288,12 +36130,6 @@ public final class ShopProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getItemsCount(); i++) {
-          if (!getItems(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -42399,9 +42235,9 @@ public final class ShopProto {
       "eward\030\001 \003(\0132&.com.trans.pixel.protoc.Con" +
       "tractReward\"=\n\016ContractReward\022\n\n\002id\030\001 \001(" +
       "\005\022\020\n\010rewardid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"\301\002\n\tC",
-      "ommodity\022\016\n\006itemid\030\001 \002(\005\022\014\n\004name\030\002 \001(\t\022\r" +
-      "\n\005count\030\003 \002(\005\022\020\n\010currency\030\004 \002(\005\022\014\n\004cost\030" +
-      "\005 \002(\005\022\014\n\004will\030\006 \001(\005\022\r\n\005isOut\030\007 \001(\010\022\n\n\002id" +
+      "ommodity\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r" +
+      "\n\005count\030\003 \001(\005\022\020\n\010currency\030\004 \001(\005\022\014\n\004cost\030" +
+      "\005 \001(\005\022\014\n\004will\030\006 \001(\005\022\r\n\005isOut\030\007 \001(\010\022\n\n\002id" +
       "\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\r\n\005judge\030\n \001(\005\022" +
       "\020\n\010discount\030\013 \001(\005\022\017\n\007discost\030\014 \001(\005\022\r\n\005li" +
       "mit\030\r \001(\005\022\020\n\010maxlimit\030\016 \001(\005\022\013\n\003vip\030\017 \001(\005" +
