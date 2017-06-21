@@ -133,12 +133,12 @@ public class FriendCommandService extends BaseCommandService {
 	
 	private boolean doAddFriends(long userId, List<MailBean> mailList) {
 		for (MailBean mail : mailList) {
-			if (!userFriendService.isFriend(userId, mail.getFromUserId())) {
-				if (userFriendService.getFriendCount(mail.getFromUserId()) >= FriendConst.FRIEND_COUNT_MAX) {
+			if (!userFriendService.isFriend(userId, mail.getUser().getId())) {
+				if (userFriendService.getFriendCount(mail.getUser().getId()) >= FriendConst.FRIEND_COUNT_MAX) {
 		            return false;
 				}
-				userFriendService.insertUserFriend(userId, mail.getFromUserId());
-				userFriendService.insertUserFriend(mail.getFromUserId(), userId);
+				userFriendService.insertUserFriend(userId, mail.getUser().getId());
+				userFriendService.insertUserFriend(mail.getUser().getId(), userId);
 			}
 			
 			mailService.delMail(userId, MailConst.TYPE_ADDFRIEND_MAIL, mail.getId());
@@ -149,7 +149,7 @@ public class FriendCommandService extends BaseCommandService {
 	
 	private void buildAddFriendMail(long userId, UserBean user) {
 		String content = "添加你为好友";
-		MailBean mail = buildMail(userId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_ADDFRIEND_MAIL);
+		MailBean mail = buildMail(userId, user, content, MailConst.TYPE_ADDFRIEND_MAIL);
 		mailService.addMail(mail);
 	}
 }

@@ -225,31 +225,25 @@ public class BaseCommandService {
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, int vip, int icon, String friendName, String content, int type) {
+	protected MailBean buildMail(long userId, UserBean user, String content, int type) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
-		mail.setFromUserId(friendId);
-		mail.setFromUserName(friendName);
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setStartDate(DateUtil.getCurrentDateString());
-		mail.setVip(vip);
-		mail.setIcon(icon);
+		mail.setUser(user.buildShort());
 		
 		return mail;
 	}
 	
-	protected MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, int relatedId) {
+	protected MailBean buildMail(long userId, UserBean user, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
-		mail.setFromUserId(friendId);
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setRelatedId(relatedId);
-		mail.setFromUserName(usreName);
 		mail.setStartDate(DateUtil.getCurrentDateString());
-		mail.setVip(vip);
-		mail.setIcon(icon);
+		mail.setUser(user.buildShort());
 		
 		return mail;
 	}

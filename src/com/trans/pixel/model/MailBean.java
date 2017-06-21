@@ -7,25 +7,25 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import com.trans.pixel.constants.MailConst;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.MailProto.Mail;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class MailBean {
 	private int id = 0;
 	private long userId = 0;
-	private long fromUserId = 0;
-	private String fromUserName = "";
 	private int type = 0;
 	private String startDate = "";
 	private String endDate = "";
 	private String content = "";
 	private int relatedId = 0;
-	private int icon = 0;
-	private int vip = 0;
 	private List<RewardBean> rewardList = new ArrayList<RewardBean>();
 	boolean isRead = false;
+	private UserInfo user = null;
 	public int getId() {
 		return id;
 	}
@@ -37,18 +37,6 @@ public class MailBean {
 	}
 	public void setUserId(long userId) {
 		this.userId = userId;
-	}
-	public long getFromUserId() {
-		return fromUserId;
-	}
-	public void setFromUserId(long fromUserId) {
-		this.fromUserId = fromUserId;
-	}
-	public String getFromUserName() {
-		return fromUserName;
-	}
-	public void setFromUserName(String fromUserName) {
-		this.fromUserName = fromUserName;
 	}
 	public int getType() {
 		return type;
@@ -86,18 +74,6 @@ public class MailBean {
 	public void setRewardList(List<RewardBean> rewardList) {
 		this.rewardList = rewardList;
 	}
-	public int getIcon() {
-		return icon;
-	}
-	public void setIcon(int icon) {
-		this.icon = icon;
-	}
-	public int getVip() {
-		return vip;
-	}
-	public void setVip(int vip) {
-		this.vip = vip;
-	}
 	public void parseRewardList(List<RewardInfo> rewardList) {
 		List<RewardBean> list = new ArrayList<RewardBean>();
 		for(RewardInfo rewardinfo : rewardList){
@@ -115,12 +91,16 @@ public class MailBean {
 	public void setRead(boolean isRead) {
 		this.isRead = isRead;
 	}
+	public UserInfo getUser() {
+		return user;
+	}
+	public void setUser(UserInfo user) {
+		this.user = user;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
 		json.put(USER_ID, userId);
-		json.put(FROM_USER_ID, fromUserId);
-		json.put(FROM_USER_NAME, fromUserName);
 		json.put(TYPE, type);
 		json.put(START_DATE, startDate);
 		json.put(END_DATE, endDate);
@@ -128,8 +108,8 @@ public class MailBean {
 		json.put(REWARD_LIST, rewardList);
 		json.put(IS_READ, isRead);
 		json.put(RELATED_ID, relatedId);
-		json.put(ICON, icon);
-		json.put(VIP, vip);
+		if (user != null)
+			json.put(USER, RedisService.formatJson(user));
 		
 		return json.toString();
 	}
@@ -141,8 +121,6 @@ public class MailBean {
 		
 		bean.setId(TypeTranslatedUtil.jsonGetInt(json, ID));
 		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
-		bean.setFromUserId(TypeTranslatedUtil.jsonGetInt(json, FROM_USER_ID));
-		bean.setFromUserName(TypeTranslatedUtil.jsonGetString(json, FROM_USER_NAME));
 		bean.setType(TypeTranslatedUtil.jsonGetInt(json, TYPE));
 		bean.setStartDate(TypeTranslatedUtil.jsonGetString(json, START_DATE));
 		bean.setEndDate(TypeTranslatedUtil.jsonGetString(json, END_DATE));
@@ -157,26 +135,26 @@ public class MailBean {
 		bean.setRewardList(list);
 		bean.setRead(TypeTranslatedUtil.jsonGetBoolean(json, IS_READ));
 		bean.setRelatedId(TypeTranslatedUtil.jsonGetInt(json, RELATED_ID));
-		bean.setIcon(TypeTranslatedUtil.jsonGetInt(json, ICON));
-		bean.setVip(TypeTranslatedUtil.jsonGetInt(json, VIP));
-
+		
+		String userValue = TypeTranslatedUtil.jsonGetString(json, USER);
+		if (userValue != null && !userValue.isEmpty()) {
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			if (RedisService.parseJson(userValue, builder))
+				bean.setUser(builder.build());
+		}
+		
 		return bean;
 	}
 	
 	public Mail buildMail() {
 		Mail.Builder builder = Mail.newBuilder();
 		builder.setContent(content);
-		builder.setFromUserId(fromUserId);
-		builder.setFromUserName(fromUserName);
 		builder.setId(id);
 		builder.setStartDate(startDate);
 		builder.setEndDate(endDate);
 		builder.setType(type);
 		builder.setUserId(userId);
 		builder.setRelatedId(relatedId);
-		if (icon != 0)
-			builder.setIcon(icon);
-		builder.setVip(vip);
 		builder.setIsRead(isRead);
 		
 		List<RewardInfo> rewardInfoBuilderList = new ArrayList<RewardInfo>();
@@ -184,6 +162,7 @@ public class MailBean {
 			rewardInfoBuilderList.add(reward.buildRewardInfo());
 		}
 		builder.addAllReward(rewardInfoBuilderList);
+		builder.setUser(user);
 		
 		return builder.build();
 	}
@@ -233,40 +212,32 @@ public class MailBean {
 		return mail;
 	}
 	
-	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, int relatedId) {
+	public static MailBean buildMail(long userId, UserBean user, String content, int type, int relatedId) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
-		mail.setFromUserId(friendId);
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setRelatedId(relatedId);
-		mail.setFromUserName(usreName);
 		mail.setStartDate(DateUtil.getCurrentDateString());
-		mail.setVip(vip);
-		mail.setIcon(icon);
+		mail.setUser(user.buildShort());
 		
 		return mail;
 	}
 	
-	public static MailBean buildMail(long userId, long friendId, int vip, int icon, String usreName, String content, int type, List<RewardBean> rewardList) {
+	public static MailBean buildMail(long userId, UserBean user, String content, int type, List<RewardBean> rewardList) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
-		mail.setFromUserId(friendId);
 		mail.setContent(content);
 		mail.setType(type);
 		mail.setRewardList(rewardList);
-		mail.setFromUserName(usreName);
 		mail.setStartDate(DateUtil.getCurrentDateString());
-		mail.setVip(vip);
-		mail.setIcon(icon);
+		mail.setUser(user.buildShort());
 		
 		return mail;
 	}
 	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
-	private static final String FROM_USER_ID = "from_user_id";
-	private static final String FROM_USER_NAME = "from_user_name";
 	private static final String TYPE = "type";
 	private static final String START_DATE = "start_date";
 	private static final String END_DATE = "end_date";
@@ -274,6 +245,5 @@ public class MailBean {
 	private static final String REWARD_LIST = "reward_list";
 	private static final String IS_READ = "is_read";
 	private static final String RELATED_ID = "related_id";
-	private static final String ICON = "icon";
-	private static final String VIP = "vip";
+	private static final String USER = "user";
 }

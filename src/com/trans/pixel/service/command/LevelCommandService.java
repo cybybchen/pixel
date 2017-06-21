@@ -511,7 +511,7 @@ public class LevelCommandService extends BaseCommandService {
 	
 	private void sendHelpMail(UserBean friend, UserBean user, MultiReward.Builder rewards) {
 		String content = user.getUserName() + "帮你过关啦！"; 
-		MailBean mail = MailBean.buildMail(friend.getId(), user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_SYSTEM_MAIL, RewardBean.buildRewardBeanList(rewards.getLootList()));
+		MailBean mail = MailBean.buildMail(friend.getId(), user, content, MailConst.TYPE_SYSTEM_MAIL, RewardBean.buildRewardBeanList(rewards.getLootList()));
 		mailService.addMail(mail);
 	}
 

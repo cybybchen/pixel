@@ -2899,17 +2899,14 @@ message RequestEventBuyCommand {
 message Mail {
 	required int32 id = 1;
 	required int64 userId = 2;
-	required int64 fromUserId = 3;
-	required string fromUserName = 4;
 	required int32 type = 5;
 	required string startDate = 6;
 	required string endDate = 7;
 	required string content = 8;
 	required int32 relatedId = 10;
 	repeated RewardInfo reward = 9;
-	optional int32 icon = 11;
-	optional int32 vip = 12;
 	optional bool isRead = 13;
+	optional UserInfo user = 14;
 }
 
 message MailList {

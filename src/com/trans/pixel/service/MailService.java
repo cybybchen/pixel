@@ -25,7 +25,7 @@ public class MailService {
 	private NoticeService noticeService;
 	
 	public void addMail(MailBean mail) {
-		if (hasSend(mail.getUserId(), mail.getType(), mail.getFromUserId()))//好友邮件已发送
+		if (hasSend(mail.getUserId(), mail.getType(), mail.getUser().getId()))//好友邮件已发送
 			return;
 		
 		mailRedisService.addMail(mail);
@@ -96,7 +96,7 @@ public class MailService {
 		if (type == MailConst.TYPE_ADDFRIEND_MAIL) {
 			List<MailBean> mailList = getMailList(userId, type);
 			for (MailBean mail : mailList) {
-				if (mail.getFromUserId() == friendId)
+				if (mail.getUser().getId() == friendId)
 					return true;
 			}
 		}

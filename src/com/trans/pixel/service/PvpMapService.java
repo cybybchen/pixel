@@ -613,7 +613,7 @@ public class PvpMapService {
 	}
 	
 	private void sendMineAttackedMail(long userId, UserBean enemy, String content, int id) {
-		MailBean mail = MailBean.buildMail(userId, enemy.getId(), enemy.getVip(), enemy.getIcon(), enemy.getUserName(), content, MailConst.TYPE_MINE_ATTACKED_MAIL, id);
+		MailBean mail = MailBean.buildMail(userId, enemy, content, MailConst.TYPE_MINE_ATTACKED_MAIL, id);
 		mailService.addMail(mail);
 	}
 }

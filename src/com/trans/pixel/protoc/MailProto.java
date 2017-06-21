@@ -31,31 +31,6 @@ public final class MailProto {
      */
     long getUserId();
 
-    // required int64 fromUserId = 3;
-    /**
-     * <code>required int64 fromUserId = 3;</code>
-     */
-    boolean hasFromUserId();
-    /**
-     * <code>required int64 fromUserId = 3;</code>
-     */
-    long getFromUserId();
-
-    // required string fromUserName = 4;
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    boolean hasFromUserName();
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    java.lang.String getFromUserName();
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getFromUserNameBytes();
-
     // required int32 type = 5;
     /**
      * <code>required int32 type = 5;</code>
@@ -146,26 +121,6 @@ public final class MailProto {
     com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
         int index);
 
-    // optional int32 icon = 11;
-    /**
-     * <code>optional int32 icon = 11;</code>
-     */
-    boolean hasIcon();
-    /**
-     * <code>optional int32 icon = 11;</code>
-     */
-    int getIcon();
-
-    // optional int32 vip = 12;
-    /**
-     * <code>optional int32 vip = 12;</code>
-     */
-    boolean hasVip();
-    /**
-     * <code>optional int32 vip = 12;</code>
-     */
-    int getVip();
-
     // optional bool isRead = 13;
     /**
      * <code>optional bool isRead = 13;</code>
@@ -175,6 +130,20 @@ public final class MailProto {
      * <code>optional bool isRead = 13;</code>
      */
     boolean getIsRead();
+
+    // optional .com.trans.pixel.protoc.UserInfo user = 14;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfo getUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Mail}
@@ -241,62 +210,55 @@ public final class MailProto {
               userId_ = input.readInt64();
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              fromUserId_ = input.readInt64();
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000008;
-              fromUserName_ = input.readBytes();
-              break;
-            }
             case 40: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000004;
               type_ = input.readInt32();
               break;
             }
             case 50: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000008;
               startDate_ = input.readBytes();
               break;
             }
             case 58: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000010;
               endDate_ = input.readBytes();
               break;
             }
             case 66: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000020;
               content_ = input.readBytes();
               break;
             }
             case 74: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
                 reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000080;
               }
               reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000040;
               relatedId_ = input.readInt32();
               break;
             }
-            case 88: {
-              bitField0_ |= 0x00000200;
-              icon_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000400;
-              vip_ = input.readInt32();
-              break;
-            }
             case 104: {
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00000080;
               isRead_ = input.readBool();
+              break;
+            }
+            case 114: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000100;
               break;
             }
           }
@@ -307,7 +269,7 @@ public final class MailProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
           reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
@@ -374,65 +336,6 @@ public final class MailProto {
       return userId_;
     }
 
-    // required int64 fromUserId = 3;
-    public static final int FROMUSERID_FIELD_NUMBER = 3;
-    private long fromUserId_;
-    /**
-     * <code>required int64 fromUserId = 3;</code>
-     */
-    public boolean hasFromUserId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required int64 fromUserId = 3;</code>
-     */
-    public long getFromUserId() {
-      return fromUserId_;
-    }
-
-    // required string fromUserName = 4;
-    public static final int FROMUSERNAME_FIELD_NUMBER = 4;
-    private java.lang.Object fromUserName_;
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    public boolean hasFromUserName() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    public java.lang.String getFromUserName() {
-      java.lang.Object ref = fromUserName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          fromUserName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>required string fromUserName = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getFromUserNameBytes() {
-      java.lang.Object ref = fromUserName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        fromUserName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // required int32 type = 5;
     public static final int TYPE_FIELD_NUMBER = 5;
     private int type_;
@@ -440,7 +343,7 @@ public final class MailProto {
      * <code>required int32 type = 5;</code>
      */
     public boolean hasType() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required int32 type = 5;</code>
@@ -456,7 +359,7 @@ public final class MailProto {
      * <code>required string startDate = 6;</code>
      */
     public boolean hasStartDate() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>required string startDate = 6;</code>
@@ -499,7 +402,7 @@ public final class MailProto {
      * <code>required string endDate = 7;</code>
      */
     public boolean hasEndDate() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>required string endDate = 7;</code>
@@ -542,7 +445,7 @@ public final class MailProto {
      * <code>required string content = 8;</code>
      */
     public boolean hasContent() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>required string content = 8;</code>
@@ -585,7 +488,7 @@ public final class MailProto {
      * <code>required int32 relatedId = 10;</code>
      */
     public boolean hasRelatedId() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>required int32 relatedId = 10;</code>
@@ -630,38 +533,6 @@ public final class MailProto {
       return reward_.get(index);
     }
 
-    // optional int32 icon = 11;
-    public static final int ICON_FIELD_NUMBER = 11;
-    private int icon_;
-    /**
-     * <code>optional int32 icon = 11;</code>
-     */
-    public boolean hasIcon() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    /**
-     * <code>optional int32 icon = 11;</code>
-     */
-    public int getIcon() {
-      return icon_;
-    }
-
-    // optional int32 vip = 12;
-    public static final int VIP_FIELD_NUMBER = 12;
-    private int vip_;
-    /**
-     * <code>optional int32 vip = 12;</code>
-     */
-    public boolean hasVip() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 vip = 12;</code>
-     */
-    public int getVip() {
-      return vip_;
-    }
-
     // optional bool isRead = 13;
     public static final int ISREAD_FIELD_NUMBER = 13;
     private boolean isRead_;
@@ -669,7 +540,7 @@ public final class MailProto {
      * <code>optional bool isRead = 13;</code>
      */
     public boolean hasIsRead() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional bool isRead = 13;</code>
@@ -678,20 +549,39 @@ public final class MailProto {
       return isRead_;
     }
 
+    // optional .com.trans.pixel.protoc.UserInfo user = 14;
+    public static final int USER_FIELD_NUMBER = 14;
+    private com.trans.pixel.protoc.Base.UserInfo user_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfo getUser() {
+      return user_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
+    }
+
     private void initFields() {
       id_ = 0;
       userId_ = 0L;
-      fromUserId_ = 0L;
-      fromUserName_ = "";
       type_ = 0;
       startDate_ = "";
       endDate_ = "";
       content_ = "";
       relatedId_ = 0;
       reward_ = java.util.Collections.emptyList();
-      icon_ = 0;
-      vip_ = 0;
       isRead_ = false;
+      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -703,14 +593,6 @@ public final class MailProto {
         return false;
       }
       if (!hasUserId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasFromUserId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasFromUserName()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -734,6 +616,12 @@ public final class MailProto {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -748,37 +636,28 @@ public final class MailProto {
         output.writeInt64(2, userId_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(3, fromUserId_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeBytes(4, getFromUserNameBytes());
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, type_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(6, getStartDateBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(7, getEndDateBytes());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(8, getContentBytes());
       }
       for (int i = 0; i < reward_.size(); i++) {
         output.writeMessage(9, reward_.get(i));
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(10, relatedId_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(11, icon_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(12, vip_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBool(13, isRead_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeMessage(14, user_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -799,25 +678,17 @@ public final class MailProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, fromUserId_);
+          .computeInt32Size(5, type_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getFromUserNameBytes());
+          .computeBytesSize(6, getStartDateBytes());
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, type_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getStartDateBytes());
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getEndDateBytes());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(8, getContentBytes());
       }
@@ -825,21 +696,17 @@ public final class MailProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, reward_.get(i));
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, relatedId_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, icon_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, vip_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(13, isRead_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, user_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -954,6 +821,7 @@ public final class MailProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getRewardFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -966,32 +834,30 @@ public final class MailProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        fromUserId_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        fromUserName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
         type_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         startDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         endDate_ = "";
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         content_ = "";
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000020);
         relatedId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           rewardBuilder_.clear();
         }
-        icon_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        vip_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
         isRead_ = false;
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000100);
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -1031,52 +897,44 @@ public final class MailProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.fromUserId_ = fromUserId_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.fromUserName_ = fromUserName_;
+        result.startDate_ = startDate_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.type_ = type_;
+        result.endDate_ = endDate_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.startDate_ = startDate_;
+        result.content_ = content_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.endDate_ = endDate_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.content_ = content_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
         result.relatedId_ = relatedId_;
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
             reward_ = java.util.Collections.unmodifiableList(reward_);
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000080);
           }
           result.reward_ = reward_;
         } else {
           result.reward_ = rewardBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.icon_ = icon_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.vip_ = vip_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00000800;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000080;
         }
         result.isRead_ = isRead_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1099,29 +957,21 @@ public final class MailProto {
         if (other.hasUserId()) {
           setUserId(other.getUserId());
         }
-        if (other.hasFromUserId()) {
-          setFromUserId(other.getFromUserId());
-        }
-        if (other.hasFromUserName()) {
-          bitField0_ |= 0x00000008;
-          fromUserName_ = other.fromUserName_;
-          onChanged();
-        }
         if (other.hasType()) {
           setType(other.getType());
         }
         if (other.hasStartDate()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000008;
           startDate_ = other.startDate_;
           onChanged();
         }
         if (other.hasEndDate()) {
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000010;
           endDate_ = other.endDate_;
           onChanged();
         }
         if (other.hasContent()) {
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000020;
           content_ = other.content_;
           onChanged();
         }
@@ -1132,7 +982,7 @@ public final class MailProto {
           if (!other.reward_.isEmpty()) {
             if (reward_.isEmpty()) {
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000080);
             } else {
               ensureRewardIsMutable();
               reward_.addAll(other.reward_);
@@ -1145,7 +995,7 @@ public final class MailProto {
               rewardBuilder_.dispose();
               rewardBuilder_ = null;
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000080);
               rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRewardFieldBuilder() : null;
@@ -1154,14 +1004,11 @@ public final class MailProto {
             }
           }
         }
-        if (other.hasIcon()) {
-          setIcon(other.getIcon());
-        }
-        if (other.hasVip()) {
-          setVip(other.getVip());
-        }
         if (other.hasIsRead()) {
           setIsRead(other.getIsRead());
+        }
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1173,14 +1020,6 @@ public final class MailProto {
           return false;
         }
         if (!hasUserId()) {
-          
-          return false;
-        }
-        if (!hasFromUserId()) {
-          
-          return false;
-        }
-        if (!hasFromUserName()) {
           
           return false;
         }
@@ -1203,6 +1042,12 @@ public final class MailProto {
         if (!hasRelatedId()) {
           
           return false;
+        }
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -1292,120 +1137,13 @@ public final class MailProto {
         return this;
       }
 
-      // required int64 fromUserId = 3;
-      private long fromUserId_ ;
-      /**
-       * <code>required int64 fromUserId = 3;</code>
-       */
-      public boolean hasFromUserId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required int64 fromUserId = 3;</code>
-       */
-      public long getFromUserId() {
-        return fromUserId_;
-      }
-      /**
-       * <code>required int64 fromUserId = 3;</code>
-       */
-      public Builder setFromUserId(long value) {
-        bitField0_ |= 0x00000004;
-        fromUserId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 fromUserId = 3;</code>
-       */
-      public Builder clearFromUserId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        fromUserId_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // required string fromUserName = 4;
-      private java.lang.Object fromUserName_ = "";
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public boolean hasFromUserName() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public java.lang.String getFromUserName() {
-        java.lang.Object ref = fromUserName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          fromUserName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getFromUserNameBytes() {
-        java.lang.Object ref = fromUserName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          fromUserName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public Builder setFromUserName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        fromUserName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public Builder clearFromUserName() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        fromUserName_ = getDefaultInstance().getFromUserName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required string fromUserName = 4;</code>
-       */
-      public Builder setFromUserNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        fromUserName_ = value;
-        onChanged();
-        return this;
-      }
-
       // required int32 type = 5;
       private int type_ ;
       /**
        * <code>required int32 type = 5;</code>
        */
       public boolean hasType() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required int32 type = 5;</code>
@@ -1417,7 +1155,7 @@ public final class MailProto {
        * <code>required int32 type = 5;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000004;
         type_ = value;
         onChanged();
         return this;
@@ -1426,7 +1164,7 @@ public final class MailProto {
        * <code>required int32 type = 5;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000004);
         type_ = 0;
         onChanged();
         return this;
@@ -1438,7 +1176,7 @@ public final class MailProto {
        * <code>required string startDate = 6;</code>
        */
       public boolean hasStartDate() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>required string startDate = 6;</code>
@@ -1478,7 +1216,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000008;
         startDate_ = value;
         onChanged();
         return this;
@@ -1487,7 +1225,7 @@ public final class MailProto {
        * <code>required string startDate = 6;</code>
        */
       public Builder clearStartDate() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         startDate_ = getDefaultInstance().getStartDate();
         onChanged();
         return this;
@@ -1500,7 +1238,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000008;
         startDate_ = value;
         onChanged();
         return this;
@@ -1512,7 +1250,7 @@ public final class MailProto {
        * <code>required string endDate = 7;</code>
        */
       public boolean hasEndDate() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>required string endDate = 7;</code>
@@ -1552,7 +1290,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000010;
         endDate_ = value;
         onChanged();
         return this;
@@ -1561,7 +1299,7 @@ public final class MailProto {
        * <code>required string endDate = 7;</code>
        */
       public Builder clearEndDate() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         endDate_ = getDefaultInstance().getEndDate();
         onChanged();
         return this;
@@ -1574,7 +1312,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000010;
         endDate_ = value;
         onChanged();
         return this;
@@ -1586,7 +1324,7 @@ public final class MailProto {
        * <code>required string content = 8;</code>
        */
       public boolean hasContent() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>required string content = 8;</code>
@@ -1626,7 +1364,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000020;
         content_ = value;
         onChanged();
         return this;
@@ -1635,7 +1373,7 @@ public final class MailProto {
        * <code>required string content = 8;</code>
        */
       public Builder clearContent() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000020);
         content_ = getDefaultInstance().getContent();
         onChanged();
         return this;
@@ -1648,7 +1386,7 @@ public final class MailProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000020;
         content_ = value;
         onChanged();
         return this;
@@ -1660,7 +1398,7 @@ public final class MailProto {
        * <code>required int32 relatedId = 10;</code>
        */
       public boolean hasRelatedId() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>required int32 relatedId = 10;</code>
@@ -1672,7 +1410,7 @@ public final class MailProto {
        * <code>required int32 relatedId = 10;</code>
        */
       public Builder setRelatedId(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000040;
         relatedId_ = value;
         onChanged();
         return this;
@@ -1681,7 +1419,7 @@ public final class MailProto {
        * <code>required int32 relatedId = 10;</code>
        */
       public Builder clearRelatedId() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000040);
         relatedId_ = 0;
         onChanged();
         return this;
@@ -1691,9 +1429,9 @@ public final class MailProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000080;
          }
       }
 
@@ -1842,7 +1580,7 @@ public final class MailProto {
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -1919,78 +1657,12 @@ public final class MailProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
         }
         return rewardBuilder_;
-      }
-
-      // optional int32 icon = 11;
-      private int icon_ ;
-      /**
-       * <code>optional int32 icon = 11;</code>
-       */
-      public boolean hasIcon() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 icon = 11;</code>
-       */
-      public int getIcon() {
-        return icon_;
-      }
-      /**
-       * <code>optional int32 icon = 11;</code>
-       */
-      public Builder setIcon(int value) {
-        bitField0_ |= 0x00000400;
-        icon_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 icon = 11;</code>
-       */
-      public Builder clearIcon() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        icon_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 vip = 12;
-      private int vip_ ;
-      /**
-       * <code>optional int32 vip = 12;</code>
-       */
-      public boolean hasVip() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 vip = 12;</code>
-       */
-      public int getVip() {
-        return vip_;
-      }
-      /**
-       * <code>optional int32 vip = 12;</code>
-       */
-      public Builder setVip(int value) {
-        bitField0_ |= 0x00000800;
-        vip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 vip = 12;</code>
-       */
-      public Builder clearVip() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        vip_ = 0;
-        onChanged();
-        return this;
       }
 
       // optional bool isRead = 13;
@@ -1999,7 +1671,7 @@ public final class MailProto {
        * <code>optional bool isRead = 13;</code>
        */
       public boolean hasIsRead() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional bool isRead = 13;</code>
@@ -2011,7 +1683,7 @@ public final class MailProto {
        * <code>optional bool isRead = 13;</code>
        */
       public Builder setIsRead(boolean value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000100;
         isRead_ = value;
         onChanged();
         return this;
@@ -2020,10 +1692,127 @@ public final class MailProto {
        * <code>optional bool isRead = 13;</code>
        */
       public Builder clearIsRead() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000100);
         isRead_ = false;
         onChanged();
         return this;
+      }
+
+      // optional .com.trans.pixel.protoc.UserInfo user = 14;
+      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder setUser(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Mail)
@@ -9068,33 +8857,32 @@ public final class MailProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\017MailProto.proto\022\026com.trans.pixel.proto" +
-      "c\032\nBase.proto\"\201\002\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006us" +
-      "erId\030\002 \002(\003\022\022\n\nfromUserId\030\003 \002(\003\022\024\n\014fromUs" +
-      "erName\030\004 \002(\t\022\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030" +
-      "\006 \002(\t\022\017\n\007endDate\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\022" +
-      "\021\n\trelatedId\030\n \002(\005\0222\n\006reward\030\t \003(\0132\".com" +
-      ".trans.pixel.protoc.RewardInfo\022\014\n\004icon\030\013" +
-      " \001(\005\022\013\n\003vip\030\014 \001(\005\022\016\n\006isRead\030\r \001(\010\"D\n\010Mai" +
-      "lList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.com." +
-      "trans.pixel.protoc.Mail\"-\n\035RequestGetUse",
-      "rMailListCommand\022\014\n\004type\030\001 \001(\005\"T\n\036Respon" +
-      "seGetUserMailListCommand\0222\n\010mailList\030\001 \003" +
-      "(\0132 .com.trans.pixel.protoc.MailList\"2\n\026" +
-      "RequestReadMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002" +
-      "id\030\002 \003(\005\"O\n\031ResponseSendRewardCommand\0222\n" +
-      "\006reward\030\001 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardInfo\"4\n\030RequestDeleteMailCommand\022\014\n" +
-      "\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\";\n\027RequestAddFri" +
-      "endCommand\022\016\n\006userId\030\001 \001(\003\022\020\n\010userName\030\002" +
-      " \001(\t\":\n\033RequestReceiveFriendCommand\022\n\n\002i",
-      "d\030\001 \003(\005\022\017\n\007receive\030\002 \002(\010\")\n\027RequestDelFr" +
-      "iendCommand\022\016\n\006userId\030\001 \002(\003\"f\n\nUserFrien" +
-      "d\022\025\n\rlastLoginTime\030\005 \001(\t\022\021\n\tcountDown\030\006 " +
-      "\001(\005\022.\n\004user\030\010 \001(\0132 .com.trans.pixel.prot" +
-      "oc.UserInfo\"!\n\037RequestGetUserFriendListC" +
-      "ommand\"V\n ResponseGetUserFriendListComma" +
-      "nd\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel.pro" +
-      "toc.UserFriend"
+      "c\032\nBase.proto\"\354\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\016\n\006us" +
+      "erId\030\002 \002(\003\022\014\n\004type\030\005 \002(\005\022\021\n\tstartDate\030\006 " +
+      "\002(\t\022\017\n\007endDate\030\007 \002(\t\022\017\n\007content\030\010 \002(\t\022\021\n" +
+      "\trelatedId\030\n \002(\005\0222\n\006reward\030\t \003(\0132\".com.t" +
+      "rans.pixel.protoc.RewardInfo\022\016\n\006isRead\030\r" +
+      " \001(\010\022.\n\004user\030\016 \001(\0132 .com.trans.pixel.pro" +
+      "toc.UserInfo\"D\n\010MailList\022\014\n\004type\030\001 \002(\005\022*" +
+      "\n\004mail\030\002 \003(\0132\034.com.trans.pixel.protoc.Ma" +
+      "il\"-\n\035RequestGetUserMailListCommand\022\014\n\004t",
+      "ype\030\001 \001(\005\"T\n\036ResponseGetUserMailListComm" +
+      "and\0222\n\010mailList\030\001 \003(\0132 .com.trans.pixel." +
+      "protoc.MailList\"2\n\026RequestReadMailComman" +
+      "d\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\"O\n\031ResponseS" +
+      "endRewardCommand\0222\n\006reward\030\001 \003(\0132\".com.t" +
+      "rans.pixel.protoc.RewardInfo\"4\n\030RequestD" +
+      "eleteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003" +
+      "(\005\";\n\027RequestAddFriendCommand\022\016\n\006userId\030" +
+      "\001 \001(\003\022\020\n\010userName\030\002 \001(\t\":\n\033RequestReceiv" +
+      "eFriendCommand\022\n\n\002id\030\001 \003(\005\022\017\n\007receive\030\002 ",
+      "\002(\010\")\n\027RequestDelFriendCommand\022\016\n\006userId" +
+      "\030\001 \002(\003\"f\n\nUserFriend\022\025\n\rlastLoginTime\030\005 " +
+      "\001(\t\022\021\n\tcountDown\030\006 \001(\005\022.\n\004user\030\010 \001(\0132 .c" +
+      "om.trans.pixel.protoc.UserInfo\"!\n\037Reques" +
+      "tGetUserFriendListCommand\"V\n ResponseGet" +
+      "UserFriendListCommand\0222\n\006friend\030\001 \003(\0132\"." +
+      "com.trans.pixel.protoc.UserFriend"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -9106,7 +8894,7 @@ public final class MailProto {
           internal_static_com_trans_pixel_protoc_Mail_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mail_descriptor,
-              new java.lang.String[] { "Id", "UserId", "FromUserId", "FromUserName", "Type", "StartDate", "EndDate", "Content", "RelatedId", "Reward", "Icon", "Vip", "IsRead", });
+              new java.lang.String[] { "Id", "UserId", "Type", "StartDate", "EndDate", "Content", "RelatedId", "Reward", "IsRead", "User", });
           internal_static_com_trans_pixel_protoc_MailList_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable = new

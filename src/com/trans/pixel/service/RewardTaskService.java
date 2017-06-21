@@ -546,7 +546,7 @@ public class RewardTaskService {
 	
 	private void sendInviteMail(UserBean user, long userId, int id) {
 		String content = "邀请你一起伐木boss！";
-		MailBean mail = MailBean.buildMail(userId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, id);
+		MailBean mail = MailBean.buildMail(userId, user, content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, id);
 		mailService.addMail(mail);
 		log.debug("mail is:" + mail.toJson());
 	}

@@ -499,7 +499,7 @@ public class BossService {
 	
 	private void sendInviteMail(UserBean user, long userId, int groupId, int bossId, String createTime) {
 		String content = "邀请你一起伐木boss！";
-		MailBean mail = MailBean.buildMail(userId, user.getId(), user.getVip(), user.getIcon(), user.getUserName(), content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, groupId * 1000000 + bossId);
+		MailBean mail = MailBean.buildMail(userId, user, content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, groupId * 1000000 + bossId);
 		mail.setStartDate(createTime);
 		mailService.addMail(mail);
 		log.debug("mail is:" + mail.toJson());

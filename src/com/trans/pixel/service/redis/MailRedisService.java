@@ -187,7 +187,7 @@ public class MailRedisService {
 				type);
 		if (mailList != null && mailList.size() > 0) {
 			for (MailBean mail : mailList) {
-				if (mail.getFromUserId() == fromUserId) {
+				if (mail.getUser().getId() == fromUserId) {
 					return mail;
 				}
 			}
