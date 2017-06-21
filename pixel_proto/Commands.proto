@@ -155,14 +155,9 @@ message UserRank {
 	optional int64 rank = 1;
 	optional int32 dps = 2;
 	optional Team team = 3;
-	optional int64 userId = 4;
-	optional string userName = 5;
 	optional uint32 zhanli = 6;
-	optional uint32 icon = 7;
-	optional uint32 vip = 8;
 	optional uint32 score2 = 9;
-	optional uint32 title = 10;
-	optional uint32 frame = 11;
+	optional UserInfo user = 10;
 }
 
 message ClearInfo {

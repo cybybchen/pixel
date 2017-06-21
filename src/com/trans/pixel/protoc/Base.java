@@ -18860,31 +18860,6 @@ public final class Base {
      */
     com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
 
-    // optional int64 userId = 4;
-    /**
-     * <code>optional int64 userId = 4;</code>
-     */
-    boolean hasUserId();
-    /**
-     * <code>optional int64 userId = 4;</code>
-     */
-    long getUserId();
-
-    // optional string userName = 5;
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    boolean hasUserName();
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    java.lang.String getUserName();
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getUserNameBytes();
-
     // optional uint32 zhanli = 6;
     /**
      * <code>optional uint32 zhanli = 6;</code>
@@ -18894,26 +18869,6 @@ public final class Base {
      * <code>optional uint32 zhanli = 6;</code>
      */
     int getZhanli();
-
-    // optional uint32 icon = 7;
-    /**
-     * <code>optional uint32 icon = 7;</code>
-     */
-    boolean hasIcon();
-    /**
-     * <code>optional uint32 icon = 7;</code>
-     */
-    int getIcon();
-
-    // optional uint32 vip = 8;
-    /**
-     * <code>optional uint32 vip = 8;</code>
-     */
-    boolean hasVip();
-    /**
-     * <code>optional uint32 vip = 8;</code>
-     */
-    int getVip();
 
     // optional uint32 score2 = 9;
     /**
@@ -18925,25 +18880,19 @@ public final class Base {
      */
     int getScore2();
 
-    // optional uint32 title = 10;
+    // optional .com.trans.pixel.protoc.UserInfo user = 10;
     /**
-     * <code>optional uint32 title = 10;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    boolean hasTitle();
+    boolean hasUser();
     /**
-     * <code>optional uint32 title = 10;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    int getTitle();
-
-    // optional uint32 frame = 11;
+    com.trans.pixel.protoc.Base.UserInfo getUser();
     /**
-     * <code>optional uint32 frame = 11;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    boolean hasFrame();
-    /**
-     * <code>optional uint32 frame = 11;</code>
-     */
-    int getFrame();
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRank}
@@ -19019,44 +18968,27 @@ public final class Base {
               bitField0_ |= 0x00000004;
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              userId_ = input.readInt64();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000010;
-              userName_ = input.readBytes();
-              break;
-            }
             case 48: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000008;
               zhanli_ = input.readUInt32();
               break;
             }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              icon_ = input.readUInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              vip_ = input.readUInt32();
-              break;
-            }
             case 72: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000010;
               score2_ = input.readUInt32();
               break;
             }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              title_ = input.readUInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              frame_ = input.readUInt32();
+            case 82: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
               break;
             }
           }
@@ -19153,65 +19085,6 @@ public final class Base {
       return team_;
     }
 
-    // optional int64 userId = 4;
-    public static final int USERID_FIELD_NUMBER = 4;
-    private long userId_;
-    /**
-     * <code>optional int64 userId = 4;</code>
-     */
-    public boolean hasUserId() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int64 userId = 4;</code>
-     */
-    public long getUserId() {
-      return userId_;
-    }
-
-    // optional string userName = 5;
-    public static final int USERNAME_FIELD_NUMBER = 5;
-    private java.lang.Object userName_;
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    public boolean hasUserName() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    public java.lang.String getUserName() {
-      java.lang.Object ref = userName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          userName_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string userName = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUserNameBytes() {
-      java.lang.Object ref = userName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        userName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
     // optional uint32 zhanli = 6;
     public static final int ZHANLI_FIELD_NUMBER = 6;
     private int zhanli_;
@@ -19219,45 +19092,13 @@ public final class Base {
      * <code>optional uint32 zhanli = 6;</code>
      */
     public boolean hasZhanli() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional uint32 zhanli = 6;</code>
      */
     public int getZhanli() {
       return zhanli_;
-    }
-
-    // optional uint32 icon = 7;
-    public static final int ICON_FIELD_NUMBER = 7;
-    private int icon_;
-    /**
-     * <code>optional uint32 icon = 7;</code>
-     */
-    public boolean hasIcon() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    /**
-     * <code>optional uint32 icon = 7;</code>
-     */
-    public int getIcon() {
-      return icon_;
-    }
-
-    // optional uint32 vip = 8;
-    public static final int VIP_FIELD_NUMBER = 8;
-    private int vip_;
-    /**
-     * <code>optional uint32 vip = 8;</code>
-     */
-    public boolean hasVip() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional uint32 vip = 8;</code>
-     */
-    public int getVip() {
-      return vip_;
     }
 
     // optional uint32 score2 = 9;
@@ -19267,7 +19108,7 @@ public final class Base {
      * <code>optional uint32 score2 = 9;</code>
      */
     public boolean hasScore2() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional uint32 score2 = 9;</code>
@@ -19276,50 +19117,35 @@ public final class Base {
       return score2_;
     }
 
-    // optional uint32 title = 10;
-    public static final int TITLE_FIELD_NUMBER = 10;
-    private int title_;
+    // optional .com.trans.pixel.protoc.UserInfo user = 10;
+    public static final int USER_FIELD_NUMBER = 10;
+    private com.trans.pixel.protoc.Base.UserInfo user_;
     /**
-     * <code>optional uint32 title = 10;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    public boolean hasTitle() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional uint32 title = 10;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    public int getTitle() {
-      return title_;
-    }
-
-    // optional uint32 frame = 11;
-    public static final int FRAME_FIELD_NUMBER = 11;
-    private int frame_;
-    /**
-     * <code>optional uint32 frame = 11;</code>
-     */
-    public boolean hasFrame() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+    public com.trans.pixel.protoc.Base.UserInfo getUser() {
+      return user_;
     }
     /**
-     * <code>optional uint32 frame = 11;</code>
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
      */
-    public int getFrame() {
-      return frame_;
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
     }
 
     private void initFields() {
       rank_ = 0L;
       dps_ = 0;
       team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
-      userId_ = 0L;
-      userName_ = "";
       zhanli_ = 0;
-      icon_ = 0;
-      vip_ = 0;
       score2_ = 0;
-      title_ = 0;
-      frame_ = 0;
+      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -19328,6 +19154,12 @@ public final class Base {
 
       if (hasTeam()) {
         if (!getTeam().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -19349,28 +19181,13 @@ public final class Base {
         output.writeMessage(3, team_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt64(4, userId_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getUserNameBytes());
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(6, zhanli_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeUInt32(7, icon_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeUInt32(8, vip_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(9, score2_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeUInt32(10, title_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeUInt32(11, frame_);
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(10, user_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -19395,35 +19212,15 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(4, userId_);
+          .computeUInt32Size(6, zhanli_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getUserNameBytes());
+          .computeUInt32Size(9, score2_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, zhanli_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, icon_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, vip_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(9, score2_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(10, title_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(11, frame_);
+          .computeMessageSize(10, user_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19534,6 +19331,7 @@ public final class Base {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getTeamFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -19552,22 +19350,16 @@ public final class Base {
           teamBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
-        userId_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        userName_ = "";
-        bitField0_ = (bitField0_ & ~0x00000010);
         zhanli_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        icon_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        vip_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000008);
         score2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        title_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        frame_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -19615,35 +19407,19 @@ public final class Base {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.userId_ = userId_;
+        result.zhanli_ = zhanli_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.userName_ = userName_;
+        result.score2_ = score2_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.zhanli_ = zhanli_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
         }
-        result.icon_ = icon_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.vip_ = vip_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.score2_ = score2_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.title_ = title_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.frame_ = frame_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -19669,31 +19445,14 @@ public final class Base {
         if (other.hasTeam()) {
           mergeTeam(other.getTeam());
         }
-        if (other.hasUserId()) {
-          setUserId(other.getUserId());
-        }
-        if (other.hasUserName()) {
-          bitField0_ |= 0x00000010;
-          userName_ = other.userName_;
-          onChanged();
-        }
         if (other.hasZhanli()) {
           setZhanli(other.getZhanli());
-        }
-        if (other.hasIcon()) {
-          setIcon(other.getIcon());
-        }
-        if (other.hasVip()) {
-          setVip(other.getVip());
         }
         if (other.hasScore2()) {
           setScore2(other.getScore2());
         }
-        if (other.hasTitle()) {
-          setTitle(other.getTitle());
-        }
-        if (other.hasFrame()) {
-          setFrame(other.getFrame());
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19702,6 +19461,12 @@ public final class Base {
       public final boolean isInitialized() {
         if (hasTeam()) {
           if (!getTeam().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
             
             return false;
           }
@@ -19911,120 +19676,13 @@ public final class Base {
         return teamBuilder_;
       }
 
-      // optional int64 userId = 4;
-      private long userId_ ;
-      /**
-       * <code>optional int64 userId = 4;</code>
-       */
-      public boolean hasUserId() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int64 userId = 4;</code>
-       */
-      public long getUserId() {
-        return userId_;
-      }
-      /**
-       * <code>optional int64 userId = 4;</code>
-       */
-      public Builder setUserId(long value) {
-        bitField0_ |= 0x00000008;
-        userId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int64 userId = 4;</code>
-       */
-      public Builder clearUserId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        userId_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional string userName = 5;
-      private java.lang.Object userName_ = "";
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public boolean hasUserName() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public java.lang.String getUserName() {
-        java.lang.Object ref = userName_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          userName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUserNameBytes() {
-        java.lang.Object ref = userName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          userName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public Builder setUserName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        userName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public Builder clearUserName() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        userName_ = getDefaultInstance().getUserName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string userName = 5;</code>
-       */
-      public Builder setUserNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
-        userName_ = value;
-        onChanged();
-        return this;
-      }
-
       // optional uint32 zhanli = 6;
       private int zhanli_ ;
       /**
        * <code>optional uint32 zhanli = 6;</code>
        */
       public boolean hasZhanli() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional uint32 zhanli = 6;</code>
@@ -20036,7 +19694,7 @@ public final class Base {
        * <code>optional uint32 zhanli = 6;</code>
        */
       public Builder setZhanli(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000008;
         zhanli_ = value;
         onChanged();
         return this;
@@ -20045,74 +19703,8 @@ public final class Base {
        * <code>optional uint32 zhanli = 6;</code>
        */
       public Builder clearZhanli() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000008);
         zhanli_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 icon = 7;
-      private int icon_ ;
-      /**
-       * <code>optional uint32 icon = 7;</code>
-       */
-      public boolean hasIcon() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      /**
-       * <code>optional uint32 icon = 7;</code>
-       */
-      public int getIcon() {
-        return icon_;
-      }
-      /**
-       * <code>optional uint32 icon = 7;</code>
-       */
-      public Builder setIcon(int value) {
-        bitField0_ |= 0x00000040;
-        icon_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 icon = 7;</code>
-       */
-      public Builder clearIcon() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        icon_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 vip = 8;
-      private int vip_ ;
-      /**
-       * <code>optional uint32 vip = 8;</code>
-       */
-      public boolean hasVip() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional uint32 vip = 8;</code>
-       */
-      public int getVip() {
-        return vip_;
-      }
-      /**
-       * <code>optional uint32 vip = 8;</code>
-       */
-      public Builder setVip(int value) {
-        bitField0_ |= 0x00000080;
-        vip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 vip = 8;</code>
-       */
-      public Builder clearVip() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        vip_ = 0;
         onChanged();
         return this;
       }
@@ -20123,7 +19715,7 @@ public final class Base {
        * <code>optional uint32 score2 = 9;</code>
        */
       public boolean hasScore2() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional uint32 score2 = 9;</code>
@@ -20135,7 +19727,7 @@ public final class Base {
        * <code>optional uint32 score2 = 9;</code>
        */
       public Builder setScore2(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000010;
         score2_ = value;
         onChanged();
         return this;
@@ -20144,76 +19736,127 @@ public final class Base {
        * <code>optional uint32 score2 = 9;</code>
        */
       public Builder clearScore2() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000010);
         score2_ = 0;
         onChanged();
         return this;
       }
 
-      // optional uint32 title = 10;
-      private int title_ ;
+      // optional .com.trans.pixel.protoc.UserInfo user = 10;
+      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
       /**
-       * <code>optional uint32 title = 10;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
        */
-      public boolean hasTitle() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional uint32 title = 10;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
        */
-      public int getTitle() {
-        return title_;
+      public com.trans.pixel.protoc.Base.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional uint32 title = 10;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
        */
-      public Builder setTitle(int value) {
-        bitField0_ |= 0x00000200;
-        title_ = value;
-        onChanged();
+      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
-       * <code>optional uint32 title = 10;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
        */
-      public Builder clearTitle() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        title_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 frame = 11;
-      private int frame_ ;
-      /**
-       * <code>optional uint32 frame = 11;</code>
-       */
-      public boolean hasFrame() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional uint32 frame = 11;</code>
-       */
-      public int getFrame() {
-        return frame_;
-      }
-      /**
-       * <code>optional uint32 frame = 11;</code>
-       */
-      public Builder setFrame(int value) {
-        bitField0_ |= 0x00000400;
-        frame_ = value;
-        onChanged();
+      public Builder setUser(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
-       * <code>optional uint32 frame = 11;</code>
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
        */
-      public Builder clearFrame() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        frame_ = 0;
-        onChanged();
+      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
         return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 10;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserRank)
@@ -29387,41 +29030,40 @@ public final class Base {
       "alentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillId\030\002 \002" +
       "(\005\022\r\n\005level\030\003 \001(\005\"B\n\017UserTalentEquip\022\020\n\010" +
       "position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005level\030" +
-      "\003 \001(\005\"\314\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030" +
+      "\003 \001(\005\"\241\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030" +
       "\002 \001(\005\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.pr" +
-      "otoc.Team\022\016\n\006userId\030\004 \001(\003\022\020\n\010userName\030\005 " +
-      "\001(\t\022\016\n\006zhanli\030\006 \001(\r\022\014\n\004icon\030\007 \001(\r\022\013\n\003vip" +
-      "\030\010 \001(\r\022\016\n\006score2\030\t \001(\r\022\r\n\005title\030\n \001(\r\022\r\n",
-      "\005frame\030\013 \001(\r\"W\n\tClearInfo\022\020\n\010position\030\001 " +
-      "\002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002i" +
-      "d\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007sk" +
-      "illId\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserE" +
-      "quipPokede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(" +
-      "\005\022\r\n\005order\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010H" +
-      "eroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014" +
-      "\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005" +
-      " \003(\0132!.com.trans.pixel.protoc.SkillInfo\022" +
-      "\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010",
-      " \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r" +
-      "\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans" +
-      ".pixel.protoc.ClearInfo\022\022\n\nstrengthen\030\r " +
-      "\001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013eq" +
-      "uipPokede\030\020 \001(\0132\'.com.trans.pixel.protoc" +
-      ".UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardI" +
-      "nfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005cou" +
-      "nt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(" +
-      "\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004ite" +
-      "m\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022",
-      "\017\n\007lastime\030\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 " +
-      "\001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010t" +
-      "argetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t" +
-      "\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\"\205\001\n\005Ev" +
-      "ent\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004n" +
-      "ame\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010targetid\030\007 " +
-      "\001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005co" +
-      "unt\030\013 \001(\005"
+      "otoc.Team\022\016\n\006zhanli\030\006 \001(\r\022\016\n\006score2\030\t \001(" +
+      "\r\022.\n\004user\030\n \001(\0132 .com.trans.pixel.protoc" +
+      ".UserInfo\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005",
+      "\022\017\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004" +
+      " \001(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skill" +
+      "Id\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEqui" +
+      "pPokede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r" +
+      "\n\005order\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010Hero" +
+      "Info\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004r" +
+      "are\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(" +
+      "\0132!.com.trans.pixel.protoc.SkillInfo\022\r\n\005" +
+      "value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(" +
+      "\005\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005c",
+      "ount\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pi" +
+      "xel.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005" +
+      "\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equip" +
+      "Pokede\030\020 \001(\0132\'.com.trans.pixel.protoc.Us" +
+      "erEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo" +
+      "\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030" +
+      "\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016" +
+      "\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007" +
+      " \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007" +
+      "lastime\030\n \001(\r\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005",
+      "\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans" +
+      ".pixel.protoc.RewardInfo\"|\n\004Task\022\020\n\010targ" +
+      "etid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n" +
+      "\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com" +
+      ".trans.pixel.protoc.RewardInfo\"\205\001\n\005Event" +
+      "\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name" +
+      "\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010targetid\030\007 \001(\005" +
+      "\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count" +
+      "\030\013 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29505,7 +29147,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
-              new java.lang.String[] { "Rank", "Dps", "Team", "UserId", "UserName", "Zhanli", "Icon", "Vip", "Score2", "Title", "Frame", });
+              new java.lang.String[] { "Rank", "Dps", "Team", "Zhanli", "Score2", "User", });
           internal_static_com_trans_pixel_protoc_ClearInfo_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_ClearInfo_fieldAccessorTable = new

@@ -21,6 +21,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.LadderRankingBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
 import com.trans.pixel.protoc.LadderProto.LadderEnemyList;
 import com.trans.pixel.protoc.LadderProto.LadderEquip;
@@ -37,6 +38,7 @@ import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhiList;
 import com.trans.pixel.protoc.ShopProto.LadderDailyList;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
@@ -52,6 +54,8 @@ public class LadderRedisService extends RedisService{
 	
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
+	@Resource
+	private UserService userService;
 	
 	public LadderChongzhi getLadderChongzhi(int count){
 		String value = hget(RedisKey.LADDER_CHONGZHI_CONFIG, count+"");
@@ -110,8 +114,12 @@ public class LadderRedisService extends RedisService{
 				List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 				for (int i = start; i <= end; ++i) {
 					UserRankBean userRank = UserRankBean.fromJson(bhOps.get("" + i));
-					if (userRank != null)
+					if (userRank != null) {
+						UserInfo cache = userService.getCache(serverId, userRank.getUserId());
+						if (cache != null)
+							userRank.initByUserCache(cache);
 						rankList.add(userRank);
+					}
 				}
 				
 				return rankList;
@@ -149,19 +157,19 @@ public class LadderRedisService extends RedisService{
 		return UserRankBean.fromJson(value);
 	}
 	
-	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildRankInfoRedisKey(serverId));
-				
-				bhOps.put("" + userRank.getUserId(), userRank.toJson());
-				return null;
-			}
-		});
-	}
+//	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {
+//		redisTemplate.execute(new RedisCallback<Object>() {
+//			@Override
+//			public Object doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				BoundHashOperations<String, String, String> bhOps = redisTemplate
+//						.boundHashOps(buildRankInfoRedisKey(serverId));
+//				
+//				bhOps.put("" + userRank.getUserId(), userRank.toJson());
+//				return null;
+//			}
+//		});
+//	}
 	
 	public Map<Integer, LadderRankingBean> getLadderRankingMap() {
 		return redisTemplate.execute(new RedisCallback<Map<Integer, LadderRankingBean>>() {
