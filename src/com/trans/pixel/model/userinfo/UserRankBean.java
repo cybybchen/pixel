@@ -5,36 +5,27 @@ import java.util.List;
 
 import net.sf.json.JSONObject;
 
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserRank;
+import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserRankBean {
 	private int id = 0;
 	private long userId = 0;
-//	private String userName = "";
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
-//	private int icon = 0;
-//	private int vip = 0;
 	private int dps = 0;
 	private int score2 = 0;
-//	private int title = 0;
-//	private int frame = 0;
 	private UserInfo user = null;
-//	private List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 	
 	public UserRankBean() {
 		
 	}
 	
 	public UserRankBean(UserBean user) {
-//		userId = user.getId();
-//		userName = user.getUserName();
-//		icon = user.getIcon();
-//		zhanli = user.getZhanliMax();
-//		vip = user.getVip();
-//		title = user.getTitle();
 		setUser(user.buildShort());
 	}
 	
@@ -87,11 +78,41 @@ public class UserRankBean {
 		this.user = user;
 	}
 	public String toJson() {
-		return JSONObject.fromObject(this).toString();
+		JSONObject json = new JSONObject();
+		json.put(ID, id);
+		json.put(USER_ID, userId);
+		json.put(LEVEL, level);
+		json.put(RANK, rank);
+		json.put(ZHANLI, zhanli);
+		json.put(SCORE2, score2);
+		json.put(DPS, dps);
+		if (user != null)
+			json.put(USER, RedisService.formatJson(user));
+		
+		return json.toString();
 	}
 	public static UserRankBean fromJson(String jsonString) {
+		if (jsonString == null)
+			return null;
+		UserRankBean bean = new UserRankBean();
 		JSONObject json = JSONObject.fromObject(jsonString);
-		return (UserRankBean) JSONObject.toBean(json, UserRankBean.class);
+		
+		bean.setId(TypeTranslatedUtil.jsonGetInt(json, ID));
+		bean.setUserId(TypeTranslatedUtil.jsonGetInt(json, USER_ID));
+		bean.setLevel(TypeTranslatedUtil.jsonGetInt(json, LEVEL));
+		bean.setRank(TypeTranslatedUtil.jsonGetInt(json, RANK));
+		bean.setZhanli(TypeTranslatedUtil.jsonGetInt(json, ZHANLI));
+		bean.setScore2(TypeTranslatedUtil.jsonGetInt(json, SCORE2));
+		bean.setDps(TypeTranslatedUtil.jsonGetInt(json, DPS));
+		
+		String userValue = TypeTranslatedUtil.jsonGetString(json, USER);
+		if (userValue != null && !userValue.isEmpty()) {
+			UserInfo.Builder builder = UserInfo.newBuilder();
+			if (RedisService.parseJson(userValue, builder))
+				bean.setUser(builder.build());
+		}
+		
+		return bean;
 	}
 	
 	public UserRank buildUserRank() {
@@ -123,4 +144,13 @@ public class UserRankBean {
 		
 		return userRankBuilderList;
 	}
+	
+	private static final String ID = "id";
+	private static final String USER_ID = "user_id";
+	private static final String LEVEL = "level";
+	private static final String ZHANLI = "zhanli";
+	private static final String RANK = "rank";
+	private static final String DPS = "dps";
+	private static final String SCORE2 = "score2";
+	private static final String USER = "user";
 }
