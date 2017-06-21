@@ -320,7 +320,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserFriendListCommand(responseBuilder, user);
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
-		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
+//		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		pushCommandService.pushShopCommand(responseBuilder, user);
 		pushCommandService.pushDailyShopCommand(responseBuilder, user);
