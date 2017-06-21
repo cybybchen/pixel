@@ -162,7 +162,8 @@ public class MailBean {
 			rewardInfoBuilderList.add(reward.buildRewardInfo());
 		}
 		builder.addAllReward(rewardInfoBuilderList);
-		builder.setUser(user);
+		if (user != null)
+			builder.setUser(user);
 		
 		return builder.build();
 	}
