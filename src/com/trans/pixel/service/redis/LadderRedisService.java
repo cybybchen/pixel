@@ -115,9 +115,11 @@ public class LadderRedisService extends RedisService{
 				for (int i = start; i <= end; ++i) {
 					UserRankBean userRank = UserRankBean.fromJson(bhOps.get("" + i));
 					if (userRank != null) {
-						UserInfo cache = userService.getCache(serverId, userRank.getUserId());
-						if (cache != null)
-							userRank.initByUserCache(cache);
+						if (userRank.getUserId() > 0) {
+							UserInfo cache = userService.getCache(serverId, userRank.getUserId());
+							if (cache != null)
+								userRank.initByUserCache(cache);
+						}
 						rankList.add(userRank);
 					}
 				}

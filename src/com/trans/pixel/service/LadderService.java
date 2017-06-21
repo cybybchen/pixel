@@ -597,6 +597,7 @@ public class LadderService {
 		UserRankBean myRank = new UserRankBean();
 		myRank.setUserId(robot.getId());
 		myRank.setRank(rank);
+		myRank.setUser(robot.buildShort());
 
 		return myRank;
 	}
