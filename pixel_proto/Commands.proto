@@ -2901,7 +2901,6 @@ message RequestEventBuyCommand {
 ////////// MailProto
 message Mail {
 	required int32 id = 1;
-	required int64 userId = 2;
 	required int32 type = 5;
 	required string startDate = 6;
 	required string endDate = 7;

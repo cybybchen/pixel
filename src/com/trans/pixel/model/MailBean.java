@@ -153,7 +153,6 @@ public class MailBean {
 		builder.setStartDate(startDate);
 		builder.setEndDate(endDate);
 		builder.setType(type);
-		builder.setUserId(userId);
 		builder.setRelatedId(relatedId);
 		builder.setIsRead(isRead);
 		
