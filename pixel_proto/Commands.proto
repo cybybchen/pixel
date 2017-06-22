@@ -2776,10 +2776,10 @@ message Daguan {
 	optional int32 exp = 6;
 	optional int32 areaid = 9;
 	optional int32 merlevel = 11;
-	optional uint32 loot1 = 12;
-	optional uint32 loot2 = 13;
-	optional uint32 loot3 = 14;
-	optional uint32 loot4 = 15;
+	//optional uint32 loot1 = 12;
+	//optional uint32 loot2 = 13;
+	//optional uint32 loot3 = 14;
+	//optional uint32 loot4 = 15;
 	optional RewardInfo lootlist = 16;
 }
 message DaguanList {
