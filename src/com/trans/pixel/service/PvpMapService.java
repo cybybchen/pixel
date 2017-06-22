@@ -278,13 +278,14 @@ public class PvpMapService {
 			for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
 				if(!mapBuilder.getOpened())
 					continue;
-				buff = pvpMap.get(mapBuilder.getFieldid()+"");
+				buff = pvpMap.get(mapBuilder.getFieldid());
 				if(buff != null){
 					mapBuilder.setBuff(buff.getBuff());
 					mapBuilder.setMaxbuff(buff.getMaxbuff());
 				}else{
 					redis.addUserBuff(user, mapBuilder.getFieldid(), 1);
 					mapBuilder.setBuff(1);
+					mapBuilder.setMaxbuff(1);
 				}
 				for(PVPMine.Builder mineBuilder : mapBuilder.getKuangdianBuilderList()){
 					PVPMine mine = mineMap.get(mineBuilder.getId()+"");

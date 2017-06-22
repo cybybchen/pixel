@@ -59,13 +59,13 @@ public class TimeAspect {
        for(int i=0;i<o.length;i++){  
     	   if(o[i] != null){
     		   String str = o[i].toString().replace("\n","").replace(" ", "");
-    		   arg += str.substring(0, Math.min(15, str.length()))+" | ";  
+    		   arg += str.substring(0, Math.min(15, str.length()))+"#";  
     	   }
        }       
         if(time > 2)
-        log.debug("当前方法为\t"  
+        log.debug("执行时间为\t"+time+"\t"
         + pjp.getTarget().getClass().getName() + "."  
-        + pjp.getSignature().getName()+"\t  执行时间为\t"+time+"\t"+arg);  
+        + pjp.getSignature().getName()+"\t"+arg);  
         return retVal;  
     }       
 
