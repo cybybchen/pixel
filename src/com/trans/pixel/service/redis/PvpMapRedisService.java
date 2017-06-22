@@ -120,7 +120,14 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public void deleteUserBuff(UserBean user) {
-		delete(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+//		delete(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+		Map<String, String> keyvalue = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+		for(String value : keyvalue.values()) {
+			UserPvpBuffBean bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+			bean.setBuff(0);
+			keyvalue.put(bean.getBuffid()+"", toJson(bean));
+		}
+		hputAll(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), keyvalue);
 	}
 	
 	public void saveUserBuff(UserBean user, UserPvpBuffBean buff) {
