@@ -11566,6 +11566,24 @@ public final class PVPProto {
      */
     int getBuff();
 
+    // optional int32 maxbuff = 14;
+    /**
+     * <code>optional int32 maxbuff = 14;</code>
+     *
+     * <pre>
+     *buff最大层数
+     * </pre>
+     */
+    boolean hasMaxbuff();
+    /**
+     * <code>optional int32 maxbuff = 14;</code>
+     *
+     * <pre>
+     *buff最大层数
+     * </pre>
+     */
+    int getMaxbuff();
+
     // optional bool opened = 11;
     /**
      * <code>optional bool opened = 11;</code>
@@ -11751,25 +11769,25 @@ public final class PVPProto {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
                 kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>();
-                mutable_bitField0_ |= 0x00000800;
+                mutable_bitField0_ |= 0x00001000;
               }
               kuangdian_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPMine.PARSER, extensionRegistry));
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 event_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00002000;
               }
               event_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPEvent.PARSER, extensionRegistry));
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
                 lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000400;
+                mutable_bitField0_ |= 0x00000800;
               }
               lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
@@ -11800,18 +11818,23 @@ public final class PVPProto {
               break;
             }
             case 88: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               opened_ = input.readBool();
               break;
             }
             case 98: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               img_ = input.readBytes();
               break;
             }
             case 106: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               buffimg_ = input.readBytes();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00000080;
+              maxbuff_ = input.readInt32();
               break;
             }
           }
@@ -11822,13 +11845,13 @@ public final class PVPProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
         }
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           event_ = java.util.Collections.unmodifiableList(event_);
         }
-        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
         this.unknownFields = unknownFields.build();
@@ -12034,6 +12057,30 @@ public final class PVPProto {
       return buff_;
     }
 
+    // optional int32 maxbuff = 14;
+    public static final int MAXBUFF_FIELD_NUMBER = 14;
+    private int maxbuff_;
+    /**
+     * <code>optional int32 maxbuff = 14;</code>
+     *
+     * <pre>
+     *buff最大层数
+     * </pre>
+     */
+    public boolean hasMaxbuff() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 maxbuff = 14;</code>
+     *
+     * <pre>
+     *buff最大层数
+     * </pre>
+     */
+    public int getMaxbuff() {
+      return maxbuff_;
+    }
+
     // optional bool opened = 11;
     public static final int OPENED_FIELD_NUMBER = 11;
     private boolean opened_;
@@ -12045,7 +12092,7 @@ public final class PVPProto {
      * </pre>
      */
     public boolean hasOpened() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional bool opened = 11;</code>
@@ -12065,7 +12112,7 @@ public final class PVPProto {
      * <code>optional string img = 12;</code>
      */
     public boolean hasImg() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional string img = 12;</code>
@@ -12108,7 +12155,7 @@ public final class PVPProto {
      * <code>optional string buffimg = 13;</code>
      */
     public boolean hasBuffimg() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional string buffimg = 13;</code>
@@ -12260,6 +12307,7 @@ public final class PVPProto {
       merlevel_ = 0;
       buffid_ = 0;
       buff_ = 0;
+      maxbuff_ = 0;
       opened_ = false;
       img_ = "";
       buffimg_ = "";
@@ -12321,14 +12369,17 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(10, buff_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBool(11, opened_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeBytes(12, getImgBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeBytes(13, getBuffimgBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(14, maxbuff_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -12379,17 +12430,21 @@ public final class PVPProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, buff_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(11, opened_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(12, getImgBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(13, getBuffimgBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, maxbuff_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12524,27 +12579,29 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000020);
         buff_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        opened_ = false;
+        maxbuff_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        img_ = "";
+        opened_ = false;
         bitField0_ = (bitField0_ & ~0x00000100);
-        buffimg_ = "";
+        img_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
+        buffimg_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000800);
         } else {
           lootlistBuilder_.clear();
         }
         if (kuangdianBuilder_ == null) {
           kuangdian_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
         } else {
           kuangdianBuilder_.clear();
         }
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         } else {
           eventBuilder_.clear();
         }
@@ -12607,37 +12664,41 @@ public final class PVPProto {
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.opened_ = opened_;
+        result.maxbuff_ = maxbuff_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.img_ = img_;
+        result.opened_ = opened_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
+        result.img_ = img_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
         result.buffimg_ = buffimg_;
         if (lootlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) == 0x00000400)) {
+          if (((bitField0_ & 0x00000800) == 0x00000800)) {
             lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
-            bitField0_ = (bitField0_ & ~0x00000400);
+            bitField0_ = (bitField0_ & ~0x00000800);
           }
           result.lootlist_ = lootlist_;
         } else {
           result.lootlist_ = lootlistBuilder_.build();
         }
         if (kuangdianBuilder_ == null) {
-          if (((bitField0_ & 0x00000800) == 0x00000800)) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
             kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
-            bitField0_ = (bitField0_ & ~0x00000800);
+            bitField0_ = (bitField0_ & ~0x00001000);
           }
           result.kuangdian_ = kuangdian_;
         } else {
           result.kuangdian_ = kuangdianBuilder_.build();
         }
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
             event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           }
           result.event_ = event_;
         } else {
@@ -12682,16 +12743,19 @@ public final class PVPProto {
         if (other.hasBuff()) {
           setBuff(other.getBuff());
         }
+        if (other.hasMaxbuff()) {
+          setMaxbuff(other.getMaxbuff());
+        }
         if (other.hasOpened()) {
           setOpened(other.getOpened());
         }
         if (other.hasImg()) {
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
           img_ = other.img_;
           onChanged();
         }
         if (other.hasBuffimg()) {
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000400;
           buffimg_ = other.buffimg_;
           onChanged();
         }
@@ -12699,7 +12763,7 @@ public final class PVPProto {
           if (!other.lootlist_.isEmpty()) {
             if (lootlist_.isEmpty()) {
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000800);
             } else {
               ensureLootlistIsMutable();
               lootlist_.addAll(other.lootlist_);
@@ -12712,7 +12776,7 @@ public final class PVPProto {
               lootlistBuilder_.dispose();
               lootlistBuilder_ = null;
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000400);
+              bitField0_ = (bitField0_ & ~0x00000800);
               lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLootlistFieldBuilder() : null;
@@ -12725,7 +12789,7 @@ public final class PVPProto {
           if (!other.kuangdian_.isEmpty()) {
             if (kuangdian_.isEmpty()) {
               kuangdian_ = other.kuangdian_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
             } else {
               ensureKuangdianIsMutable();
               kuangdian_.addAll(other.kuangdian_);
@@ -12738,7 +12802,7 @@ public final class PVPProto {
               kuangdianBuilder_.dispose();
               kuangdianBuilder_ = null;
               kuangdian_ = other.kuangdian_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
               kuangdianBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getKuangdianFieldBuilder() : null;
@@ -12751,7 +12815,7 @@ public final class PVPProto {
           if (!other.event_.isEmpty()) {
             if (event_.isEmpty()) {
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
             } else {
               ensureEventIsMutable();
               event_.addAll(other.event_);
@@ -12764,7 +12828,7 @@ public final class PVPProto {
               eventBuilder_.dispose();
               eventBuilder_ = null;
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
               eventBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEventFieldBuilder() : null;
@@ -13148,6 +13212,55 @@ public final class PVPProto {
         return this;
       }
 
+      // optional int32 maxbuff = 14;
+      private int maxbuff_ ;
+      /**
+       * <code>optional int32 maxbuff = 14;</code>
+       *
+       * <pre>
+       *buff最大层数
+       * </pre>
+       */
+      public boolean hasMaxbuff() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 maxbuff = 14;</code>
+       *
+       * <pre>
+       *buff最大层数
+       * </pre>
+       */
+      public int getMaxbuff() {
+        return maxbuff_;
+      }
+      /**
+       * <code>optional int32 maxbuff = 14;</code>
+       *
+       * <pre>
+       *buff最大层数
+       * </pre>
+       */
+      public Builder setMaxbuff(int value) {
+        bitField0_ |= 0x00000080;
+        maxbuff_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 maxbuff = 14;</code>
+       *
+       * <pre>
+       *buff最大层数
+       * </pre>
+       */
+      public Builder clearMaxbuff() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        maxbuff_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional bool opened = 11;
       private boolean opened_ ;
       /**
@@ -13158,7 +13271,7 @@ public final class PVPProto {
        * </pre>
        */
       public boolean hasOpened() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional bool opened = 11;</code>
@@ -13178,7 +13291,7 @@ public final class PVPProto {
        * </pre>
        */
       public Builder setOpened(boolean value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         opened_ = value;
         onChanged();
         return this;
@@ -13191,7 +13304,7 @@ public final class PVPProto {
        * </pre>
        */
       public Builder clearOpened() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         opened_ = false;
         onChanged();
         return this;
@@ -13203,7 +13316,7 @@ public final class PVPProto {
        * <code>optional string img = 12;</code>
        */
       public boolean hasImg() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional string img = 12;</code>
@@ -13243,7 +13356,7 @@ public final class PVPProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         img_ = value;
         onChanged();
         return this;
@@ -13252,7 +13365,7 @@ public final class PVPProto {
        * <code>optional string img = 12;</code>
        */
       public Builder clearImg() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         img_ = getDefaultInstance().getImg();
         onChanged();
         return this;
@@ -13265,7 +13378,7 @@ public final class PVPProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         img_ = value;
         onChanged();
         return this;
@@ -13277,7 +13390,7 @@ public final class PVPProto {
        * <code>optional string buffimg = 13;</code>
        */
       public boolean hasBuffimg() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional string buffimg = 13;</code>
@@ -13317,7 +13430,7 @@ public final class PVPProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         buffimg_ = value;
         onChanged();
         return this;
@@ -13326,7 +13439,7 @@ public final class PVPProto {
        * <code>optional string buffimg = 13;</code>
        */
       public Builder clearBuffimg() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         buffimg_ = getDefaultInstance().getBuffimg();
         onChanged();
         return this;
@@ -13339,7 +13452,7 @@ public final class PVPProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         buffimg_ = value;
         onChanged();
         return this;
@@ -13349,9 +13462,9 @@ public final class PVPProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
       private void ensureLootlistIsMutable() {
-        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
           lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000800;
          }
       }
 
@@ -13500,7 +13613,7 @@ public final class PVPProto {
       public Builder clearLootlist() {
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000400);
+          bitField0_ = (bitField0_ & ~0x00000800);
           onChanged();
         } else {
           lootlistBuilder_.clear();
@@ -13577,7 +13690,7 @@ public final class PVPProto {
           lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   lootlist_,
-                  ((bitField0_ & 0x00000400) == 0x00000400),
+                  ((bitField0_ & 0x00000800) == 0x00000800),
                   getParentForChildren(),
                   isClean());
           lootlist_ = null;
@@ -13589,9 +13702,9 @@ public final class PVPProto {
       private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> kuangdian_ =
         java.util.Collections.emptyList();
       private void ensureKuangdianIsMutable() {
-        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
           kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>(kuangdian_);
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00001000;
          }
       }
 
@@ -13740,7 +13853,7 @@ public final class PVPProto {
       public Builder clearKuangdian() {
         if (kuangdianBuilder_ == null) {
           kuangdian_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
           onChanged();
         } else {
           kuangdianBuilder_.clear();
@@ -13817,7 +13930,7 @@ public final class PVPProto {
           kuangdianBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.PVPProto.PVPMine, com.trans.pixel.protoc.PVPProto.PVPMine.Builder, com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder>(
                   kuangdian_,
-                  ((bitField0_ & 0x00000800) == 0x00000800),
+                  ((bitField0_ & 0x00001000) == 0x00001000),
                   getParentForChildren(),
                   isClean());
           kuangdian_ = null;
@@ -13829,9 +13942,9 @@ public final class PVPProto {
       private java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           event_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>(event_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00002000;
          }
       }
 
@@ -13980,7 +14093,7 @@ public final class PVPProto {
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -14057,7 +14170,7 @@ public final class PVPProto {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.PVPProto.PVPEvent, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder, com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder>(
                   event_,
-                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  ((bitField0_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -23502,44 +23615,44 @@ public final class PVPProto {
       " \001(\005\022\017\n\007enemyid\030\006 \001(\003\022/\n\005owner\030\010 \001(\0132 .c" +
       "om.trans.pixel.protoc.UserInfo\022\017\n\007endTim" +
       "e\030\t \001(\003\022\r\n\005level\030\n \001(\005\022\013\n\003img\030\013 \001(\t\022\020\n\010p" +
-      "vpyield\030\014 \001(\005\"\302\002\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
+      "vpyield\030\014 \001(\005\"\323\002\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
       "\005\022\014\n\004name\030\002 \001(\t\022\021\n\tbufflimit\030\006 \001(\005\022\r\n\005yi" +
       "eld\030\007 \001(\005\022\020\n\010merlevel\030\010 \001(\005\022\016\n\006buffid\030\t " +
-      "\001(\005\022\014\n\004buff\030\n \001(\005\022\016\n\006opened\030\013 \001(\010\022\013\n\003img" +
-      "\030\014 \001(\t\022\017\n\007buffimg\030\r \001(\t\0224\n\010lootlist\030\005 \003(" +
-      "\0132\".com.trans.pixel.protoc.RewardInfo\0222\n" +
-      "\tkuangdian\030\003 \003(\0132\037.com.trans.pixel.proto",
-      "c.PVPMine\022/\n\005event\030\004 \003(\0132 .com.trans.pix" +
-      "el.protoc.PVPEvent\"H\n\nPVPMapList\022,\n\004data" +
-      "\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMap\022\014" +
-      "\n\004buff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapComma" +
-      "nd\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033R" +
-      "equestRefreshPVPMapCommand\"\032\n\030RequestPVP" +
-      "MapListCommand\"\036\n\034RequestPVPInbreakListC" +
-      "ommand\"S\n\035ResponsePVPInbreakListCommand\022" +
-      "2\n\tkuangdian\030\001 \003(\0132\037.com.trans.pixel.pro" +
-      "toc.PVPMine\"O\n\036RequestAttackPVPMonsterCo",
-      "mmand\022\022\n\npositionid\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014" +
-      "\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineInfoComman" +
-      "d\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoComm" +
-      "and\022*\n\004team\030\005 \001(\0132\034.com.trans.pixel.prot" +
-      "oc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com.trans.pi" +
-      "xel.protoc.PVPMine\"T\n\033RequestAttackPVPMi" +
-      "neCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n" +
-      "\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHelpA" +
-      "ttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teami" +
-      "d\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004",
-      "time\030\005 \001(\005\"R\n\027RequestHelpLevelCommand\022\n\n" +
-      "\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016" +
-      "\n\006userId\030\004 \002(\003\"\\\n\026RequestSendMailCommand" +
-      "\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\tr" +
-      "elatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035RequestB" +
-      "rotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbro" +
-      "therId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineCom" +
-      "mand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapListCo" +
-      "mmand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.p" +
-      "rotoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 ",
-      "\001(\005"
+      "\001(\005\022\014\n\004buff\030\n \001(\005\022\017\n\007maxbuff\030\016 \001(\005\022\016\n\006op" +
+      "ened\030\013 \001(\010\022\013\n\003img\030\014 \001(\t\022\017\n\007buffimg\030\r \001(\t" +
+      "\0224\n\010lootlist\030\005 \003(\0132\".com.trans.pixel.pro" +
+      "toc.RewardInfo\0222\n\tkuangdian\030\003 \003(\0132\037.com.",
+      "trans.pixel.protoc.PVPMine\022/\n\005event\030\004 \003(" +
+      "\0132 .com.trans.pixel.protoc.PVPEvent\"H\n\nP" +
+      "VPMapList\022,\n\004data\030\001 \003(\0132\036.com.trans.pixe" +
+      "l.protoc.PVPMap\022\014\n\004buff\030\002 \001(\005\"=\n\032Request" +
+      "UnlockPVPMapCommand\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006" +
+      "zhanli\030\002 \002(\005\"\035\n\033RequestRefreshPVPMapComm" +
+      "and\"\032\n\030RequestPVPMapListCommand\"\036\n\034Reque" +
+      "stPVPInbreakListCommand\"S\n\035ResponsePVPIn" +
+      "breakListCommand\0222\n\tkuangdian\030\001 \003(\0132\037.co" +
+      "m.trans.pixel.protoc.PVPMine\"O\n\036RequestA",
+      "ttackPVPMonsterCommand\022\022\n\npositionid\030\001 \001" +
+      "(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031Request" +
+      "PVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032Respon" +
+      "sePVPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034.com" +
+      ".trans.pixel.protoc.Team\0221\n\010mineInfo\030\003 \001" +
+      "(\0132\037.com.trans.pixel.protoc.PVPMine\"T\n\033R" +
+      "equestAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016" +
+      "\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(" +
+      "\005\"h\n\037RequestHelpAttackPVPMineCommand\022\n\n\002" +
+      "id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n",
+      "\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHe" +
+      "lpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002" +
+      "(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"\\\n\026Reque" +
+      "stSendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007c" +
+      "ontent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030" +
+      "\004 \002(\005\">\n\035RequestBrotherMineInfoCommand\022\n" +
+      "\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*\n\034Request" +
+      "RefreshPVPMineCommand\022\n\n\002id\030\001 \002(\005\"i\n\031Res" +
+      "ponsePVPMapListCommand\022-\n\005field\030\001 \003(\0132\036." +
+      "com.trans.pixel.protoc.PVPMap\022\017\n\007endTime",
+      "\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23635,7 +23748,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_PVPMap_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMap_descriptor,
-              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Opened", "Img", "Buffimg", "Lootlist", "Kuangdian", "Event", });
+              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Maxbuff", "Opened", "Img", "Buffimg", "Lootlist", "Kuangdian", "Event", });
           internal_static_com_trans_pixel_protoc_PVPMapList_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_PVPMapList_fieldAccessorTable = new

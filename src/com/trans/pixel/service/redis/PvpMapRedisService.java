@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPvpBuffBean;
 import com.trans.pixel.protoc.PVPProto.PVPBoss;
 import com.trans.pixel.protoc.PVPProto.PVPBossConfig;
 import com.trans.pixel.protoc.PVPProto.PVPBossConfigList;
@@ -76,8 +77,23 @@ public class PvpMapRedisService extends RedisService{
 		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(builder.build()));
 	}
 
-	public Map<String, String> getUserBuffs(UserBean user) {
-		return hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+	public Map<Integer, UserPvpBuffBean> getUserBuffs(UserBean user, PVPMapList.Builder maplist) {
+		Map<String, String> keyvalue = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+		Map<Integer, UserPvpBuffBean> buffmap = new HashMap<Integer, UserPvpBuffBean>();
+		for(String value : keyvalue.values()) {
+			UserPvpBuffBean bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+			for(PVPMap map : maplist.getDataList()){
+				if(map.getFieldid() == bean.getBuffid() || bean.getBuffid() == 0){
+					if(bean.getBuff() > map.getBufflimit())
+						bean.setBuff(map.getBufflimit());
+					if(bean.getMaxbuff() > map.getBufflimit())
+						bean.setMaxbuff(map.getBufflimit());
+					break;
+				}
+			}
+			buffmap.put(bean.getBuffid(), bean);
+		}
+		return buffmap;
 	}
 
 //	public int getUserBuff(UserBean user, int id) {
@@ -87,35 +103,28 @@ public class PvpMapRedisService extends RedisService{
 //		return 0;
 //	}
 
-	public int addUserBuff(UserBean user, int id, int buffcount) {
-		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), id+"");
-		int buff = 0;
-		if(value != null)
-			buff = Integer.parseInt(value);
-		if(id == 0){
-			buff += buffcount;
-			saveUserBuff(user, id, buff);
-			return buff;
+	public int addUserBuff(UserBean user, int buffid, int buffcount) {
+		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buffid+"");
+		UserPvpBuffBean bean = new UserPvpBuffBean();
+		if(value != null){
+			bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+		}else{
+			bean.setUserid(user.getId());
+			bean.setBuffid(buffid);
 		}
-		PVPMapList.Builder maplist = getMapList(user.getId(), user.getPvpUnlock());
-		for(PVPMap map : maplist.getDataList()){
-			if(map.getFieldid() == id){
-				buff += buffcount;
-				if(buff > map.getBufflimit())
-					buff = map.getBufflimit();
-				saveUserBuff(user, id, buff);
-				return buff;
-			}
-		}
-		return 0;
+		bean.setBuff(bean.getBuff() + buffcount);
+		if(bean.getBuff() > bean.getMaxbuff())
+			bean.setMaxbuff(bean.getBuff());
+		saveUserBuff(user, bean);
+		return bean.getBuff();
 	}
 
 	public void deleteUserBuff(UserBean user) {
 		delete(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
 	}
 	
-	public void saveUserBuff(UserBean user, int mapid, int buff) {
-		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), mapid+"", buff+"");
+	public void saveUserBuff(UserBean user, UserPvpBuffBean buff) {
+		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buff.getBuffid()+"", toJson(buff));
 		expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
@@ -208,11 +217,11 @@ public class PvpMapRedisService extends RedisService{
 		delete(RedisKey.PVPMONSTER_PREFIX+user.getId());
 	}
 
-	public List<PVPEvent> getEvents(UserBean user, Map<String, String> pvpMap){
+	public List<PVPEvent> getEvents(UserBean user, Map<Integer, UserPvpBuffBean> pvpMap){
 		return getEvents(user, pvpMap, false);
 	}
 
-	public List<PVPEvent> getEvents(UserBean user, Map<String, String> pvpMap, boolean forceRefresh) {
+	public List<PVPEvent> getEvents(UserBean user, Map<Integer, UserPvpBuffBean> pvpMap, boolean forceRefresh) {
 		boolean refreshBoss = today(0) > user.getPvpMonsterRefreshTime();
 		boolean refreshEvent = canRefreshEvent(user);
 		if(forceRefresh){
@@ -282,10 +291,10 @@ public class PvpMapRedisService extends RedisService{
 							bossbuilder.setPositionid(position.getOrder());
 							bossbuilder.setX(position.getX());
 							bossbuilder.setY(position.getY());
-							String buff = pvpMap.get(bossbuilder.getFieldid()+"");
+							UserPvpBuffBean buff = pvpMap.get(bossbuilder.getFieldid());
 							int level = nextInt(11)-5;
 							if(buff != null)
-								level += Integer.parseInt(buff);
+								level += buff.getBuff();
 							if(level > 300)
 								level = 300;
 							else if(level < 1)
@@ -323,10 +332,10 @@ public class PvpMapRedisService extends RedisService{
 					eventbuilder.setPositionid(position.getOrder());
 					eventbuilder.setX(position.getX());
 					eventbuilder.setY(position.getY());
-					String buff = pvpMap.get(eventbuilder.getFieldid()+"");
+					UserPvpBuffBean buff = pvpMap.get(eventbuilder.getFieldid());
 					int level = nextInt(11)-5;
 					if(buff != null)
-						level += Integer.parseInt(buff);
+						level += buff.getBuff();
 					if(level > 300)
 						level = 300;
 					else if(level < 1)
@@ -352,10 +361,10 @@ public class PvpMapRedisService extends RedisService{
 						eventbuilder.setPositionid(position.getOrder());
 						eventbuilder.setX(position.getX());
 						eventbuilder.setY(position.getY());
-						String buff = pvpMap.get(eventbuilder.getFieldid()+"");
+						UserPvpBuffBean buff = pvpMap.get(eventbuilder.getFieldid());
 						int level = nextInt(11)-5;
 						if(buff != null)
-							level += Integer.parseInt(buff);
+							level += buff.getBuff();
 						if(level > 300)
 							level = 300;
 						else if(level < 1)

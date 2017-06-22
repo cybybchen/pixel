@@ -1335,6 +1335,7 @@ message PVPMap {
 	optional int32 merlevel = 8;
 	optional int32 buffid = 9;//buffid
 	optional int32 buff = 10;//buff层数
+	optional int32 maxbuff = 14;//buff最大层数
 	optional bool opened = 11;//是否开放
 	optional string img = 12;
 	optional string buffimg = 13;

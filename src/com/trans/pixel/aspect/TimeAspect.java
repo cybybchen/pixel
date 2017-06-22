@@ -15,7 +15,7 @@ public class TimeAspect {
 
 	private static final Logger log = LoggerFactory.getLogger(TimeAspect.class);
 	
-	@Pointcut("execution(* com.trans.pixel.service.command.*.*(..)) || execution(* com.trans.pixel.service.*.*(..))")
+	@Pointcut("execution(* com.trans.pixel.service.command.*.*(..)) || execution(* com.trans.pixel.service.*.*(..)) || execution(* com.trans.pixel.service.redis.*.*(..))")
 	public void anyService() {
 		
 	}
@@ -62,7 +62,7 @@ public class TimeAspect {
     		   arg += str.substring(0, Math.min(15, str.length()))+" | ";  
     	   }
        }       
-        if(time > 0)
+        if(time > 2)
         log.debug("当前方法为\t"  
         + pjp.getTarget().getClass().getName() + "."  
         + pjp.getSignature().getName()+"\t  执行时间为\t"+time+"\t"+arg);  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserPvpBuffMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserPvpBuffBean">
+		<id property="userid" column="userid" />
+		<result property="buffid" column="buffid" />
+		<result property="buff" column="buff" />
+		<result property="maxbuff" column="maxbuff" />
+	</resultMap>
+
+	<update id="updateUserPvpBuff" parameterType="com.trans.pixel.model.userinfo.UserPvpBuffBean">
+		INSERT INTO user_level(userid, buffid, buff, maxbuff)
+	    VALUES(#{userid}, #{buffid}, #{buff}, #{maxbuff})
+	    ON 
+	    duplicate key update
+	    buff=#{buff},maxbuff=#{maxbuff}
+	</update>
+
+	<select id="getUserPvpBuff" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_level where userid = #{userid}
+	</select>
+</mapper>

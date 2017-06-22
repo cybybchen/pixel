@@ -15,8 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -37,6 +35,8 @@ import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
+
+import net.sf.json.JSONObject;
 
 @Repository
 public class RedisService {
@@ -104,6 +104,7 @@ public class RedisService {
 	 * 导出到文件
 	 */
 	public static void WriteToFile(String msg, String filePath){
+		logger.info("Writing "+filePath);
 		File file = new File(filePath);
 		if (!file.exists()) {
 			try {
@@ -147,6 +148,7 @@ public class RedisService {
 	 * 从文件导入
 	 */
 	public static String ReadFromFile(String filePath){
+		logger.warn("Reading "+filePath);
 		String msg = "";
 		File file = new File(filePath);
 		if (!file.exists()) {
@@ -1066,7 +1068,11 @@ public class RedisService {
 	
 	public static String toJson(Object object) {
 		JSONObject json = JSONObject.fromObject(object);
-		
+
 		return json.toString();
+	}
+	public static Object fromJson(String value, Class<?> beanClass) {
+		JSONObject json = JSONObject.fromObject(value);
+		return JSONObject.toBean(json, beanClass);
 	}
 }

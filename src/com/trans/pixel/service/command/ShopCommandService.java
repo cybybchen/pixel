@@ -277,6 +277,7 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
 			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addAllLoot(comm.getRewardList());
 			handleRewards(responseBuilder, user, rewards);
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
 			//	      service.saveBlackShop(shoplist.build(), user);

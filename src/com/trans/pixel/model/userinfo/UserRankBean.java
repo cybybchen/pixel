@@ -3,13 +3,12 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.json.JSONObject;
-
-import com.trans.pixel.model.MailBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserRank;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONObject;
 
 public class UserRankBean {
 	private int id = 0;

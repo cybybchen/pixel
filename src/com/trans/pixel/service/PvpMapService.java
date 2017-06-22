@@ -18,7 +18,9 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.mapper.UserPvpBuffMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserPvpBuffBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -67,6 +69,8 @@ public class PvpMapService {
 	private RewardService rewardService;
 	@Resource
 	private LevelRedisService levelRedisService;
+	@Resource
+	private UserPvpBuffMapper mapper;
 
 	private int getTarget(int fieldid) {
 		if(fieldid > 1)
@@ -262,22 +266,23 @@ public class PvpMapService {
 		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
 		if(user.getPvpUnlock() == 0){
 		}else{
-			Map<String, String> pvpMap = redis.getUserBuffs(user);
+			Map<Integer, UserPvpBuffBean> pvpMap = redis.getUserBuffs(user, maplist);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPEvent> events = redis.getEvents(user, pvpMap);
 			refreshMine(maplist, mineMap, user);
-			String buff = pvpMap.get("0");
-			if(buff != null)
-				maplist.setBuff(Integer.parseInt(buff));
-			else
+			UserPvpBuffBean buff = pvpMap.get(0);
+			if(buff != null){
+				maplist.setBuff(buff.getBuff());
+			}else
 				maplist.setBuff(0);
 			for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
 				if(!mapBuilder.getOpened())
 					continue;
 				buff = pvpMap.get(mapBuilder.getFieldid()+"");
-				if(buff != null)
-					mapBuilder.setBuff(Integer.parseInt(buff));
-				else{
+				if(buff != null){
+					mapBuilder.setBuff(buff.getBuff());
+					mapBuilder.setMaxbuff(buff.getMaxbuff());
+				}else{
 					redis.addUserBuff(user, mapBuilder.getFieldid(), 1);
 					mapBuilder.setBuff(1);
 				}
@@ -382,7 +387,8 @@ public class PvpMapService {
 
 	public MultiReward attackEvents(UserBean user){
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		Map<String, String> pvpMap = redis.getUserBuffs(user);
+		PVPMapList.Builder maplist = redis.getMapList(user.getId(), user.getPvpUnlock());
+		Map<Integer, UserPvpBuffBean> pvpMap = redis.getUserBuffs(user, maplist);
 //		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPEvent> events = redis.getEvents(user, pvpMap);
 		Map<String, PVPMap> map = redis.getPvpMap();
@@ -391,8 +397,8 @@ public class PvpMapService {
 				redis.deleteEvent(user, event.getPositionid());
 				continue;
 			}
-			String buffstr = pvpMap.get(event.getFieldid()+"");
-			if(buffstr == null || Integer.parseInt(buffstr) <= event.getLevel())
+			UserPvpBuffBean buff = pvpMap.get(event.getFieldid());
+			if(buff == null || buff.getBuff() <= event.getLevel())
 				continue;
 			if(event.getEventid()/1000 == 21)
 				redis.deleteBoss(user, event.getPositionid());
@@ -402,7 +408,7 @@ public class PvpMapService {
 			if(map.containsKey(event.getFieldid()+"")) {
 				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
 			}
-//			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
+			buff.setBuff(Math.min(buff.getMaxbuff(), buff.getBuff()+event.getBuffcount()));
 			if (event.getEventid()/1000 == 21) {
 				/**
 				 * PVP攻击BOSS的活动
@@ -425,6 +431,9 @@ public class PvpMapService {
 //				user.setMyactive(user.getMyactive() - 100);
 //				refreshAMine(user);
 //			}
+		}
+		for(UserPvpBuffBean bean : pvpMap.values()) {
+			redis.saveUserBuff(user, bean);
 		}
 		userService.updateUser(user);
 		rewardService.mergeReward(rewards);
@@ -557,7 +566,7 @@ public class PvpMapService {
 		
 		redis.deleteEvents(user);
 		redis.deleteUserBuff(user);
-		redis.getEvents(user, new HashMap<String, String>(), true);
+		redis.getEvents(user, new HashMap<Integer, UserPvpBuffBean>(), true);
 
 		user.setRefreshPvpMapTime(now+48*3600);
 		userService.updateUser(user);
