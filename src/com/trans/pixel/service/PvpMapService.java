@@ -399,7 +399,7 @@ public class PvpMapService {
 				continue;
 			}
 			UserPvpBuffBean buff = pvpMap.get(event.getFieldid());
-			if(buff == null || buff.getBuff() <= event.getLevel())
+			if(buff == null || buff.getMaxbuff() <= event.getLevel())
 				continue;
 			if(event.getEventid()/1000 == 21)
 				redis.deleteBoss(user, event.getPositionid());
