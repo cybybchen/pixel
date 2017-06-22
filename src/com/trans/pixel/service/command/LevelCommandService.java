@@ -257,7 +257,7 @@ public class LevelCommandService extends BaseCommandService {
 				if(eve.getOrder() == cmd.getOrder() && cmd.getOrder() == userLevel.getUnlockOrder()+1)
 					event = eve;
 		}else
-			redis.getEvent(user, cmd.getOrder());
+			event = redis.getEvent(user, cmd.getOrder());
 		redis.productEvent(user, userLevel);
 		if(event == null){//illegal event order
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
@@ -409,7 +409,7 @@ public class LevelCommandService extends BaseCommandService {
 					if(eve.getOrder() == cmd.getId() && cmd.getId() == userLevel.getUnlockOrder()+1)
 						event = eve;
 			}else {
-				redis.getEvent(friendUserId, cmd.getId());
+				event = redis.getEvent(friendUserId, cmd.getId());
 			}
 			if (event == null) {
 				logService.sendErrorLog(friendUserId, user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
