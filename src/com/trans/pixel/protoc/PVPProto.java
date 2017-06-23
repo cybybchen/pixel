@@ -11632,6 +11632,20 @@ public final class PVPProto {
     com.google.protobuf.ByteString
         getBuffimgBytes();
 
+    // optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    boolean hasDaguanreward();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo2 getDaguanreward();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo2OrBuilder getDaguanrewardOrBuilder();
+
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 5;
     /**
      * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 5;</code>
@@ -11769,25 +11783,25 @@ public final class PVPProto {
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
                 kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>();
-                mutable_bitField0_ |= 0x00001000;
+                mutable_bitField0_ |= 0x00002000;
               }
               kuangdian_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPMine.PARSER, extensionRegistry));
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
                 event_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>();
-                mutable_bitField0_ |= 0x00002000;
+                mutable_bitField0_ |= 0x00004000;
               }
               event_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.PVPEvent.PARSER, extensionRegistry));
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
                 lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000800;
+                mutable_bitField0_ |= 0x00001000;
               }
               lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
@@ -11837,6 +11851,19 @@ public final class PVPProto {
               maxbuff_ = input.readInt32();
               break;
             }
+            case 122: {
+              com.trans.pixel.protoc.Base.RewardInfo2.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000800) == 0x00000800)) {
+                subBuilder = daguanreward_.toBuilder();
+              }
+              daguanreward_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo2.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(daguanreward_);
+                daguanreward_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000800;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11845,13 +11872,13 @@ public final class PVPProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
         }
-        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
           event_ = java.util.Collections.unmodifiableList(event_);
         }
-        if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
         this.unknownFields = unknownFields.build();
@@ -12191,6 +12218,28 @@ public final class PVPProto {
       }
     }
 
+    // optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;
+    public static final int DAGUANREWARD_FIELD_NUMBER = 15;
+    private com.trans.pixel.protoc.Base.RewardInfo2 daguanreward_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    public boolean hasDaguanreward() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo2 getDaguanreward() {
+      return daguanreward_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo2OrBuilder getDaguanrewardOrBuilder() {
+      return daguanreward_;
+    }
+
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 5;
     public static final int LOOTLIST_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_;
@@ -12311,6 +12360,7 @@ public final class PVPProto {
       opened_ = false;
       img_ = "";
       buffimg_ = "";
+      daguanreward_ = com.trans.pixel.protoc.Base.RewardInfo2.getDefaultInstance();
       lootlist_ = java.util.Collections.emptyList();
       kuangdian_ = java.util.Collections.emptyList();
       event_ = java.util.Collections.emptyList();
@@ -12381,6 +12431,9 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(14, maxbuff_);
       }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeMessage(15, daguanreward_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -12445,6 +12498,10 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(14, maxbuff_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, daguanreward_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12554,6 +12611,7 @@ public final class PVPProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDaguanrewardFieldBuilder();
           getLootlistFieldBuilder();
           getKuangdianFieldBuilder();
           getEventFieldBuilder();
@@ -12587,21 +12645,27 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000200);
         buffimg_ = "";
         bitField0_ = (bitField0_ & ~0x00000400);
+        if (daguanrewardBuilder_ == null) {
+          daguanreward_ = com.trans.pixel.protoc.Base.RewardInfo2.getDefaultInstance();
+        } else {
+          daguanrewardBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
         } else {
           lootlistBuilder_.clear();
         }
         if (kuangdianBuilder_ == null) {
           kuangdian_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
         } else {
           kuangdianBuilder_.clear();
         }
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00004000);
         } else {
           eventBuilder_.clear();
         }
@@ -12677,28 +12741,36 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000400;
         }
         result.buffimg_ = buffimg_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        if (daguanrewardBuilder_ == null) {
+          result.daguanreward_ = daguanreward_;
+        } else {
+          result.daguanreward_ = daguanrewardBuilder_.build();
+        }
         if (lootlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000800) == 0x00000800)) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
             lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
-            bitField0_ = (bitField0_ & ~0x00000800);
+            bitField0_ = (bitField0_ & ~0x00001000);
           }
           result.lootlist_ = lootlist_;
         } else {
           result.lootlist_ = lootlistBuilder_.build();
         }
         if (kuangdianBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+          if (((bitField0_ & 0x00002000) == 0x00002000)) {
             kuangdian_ = java.util.Collections.unmodifiableList(kuangdian_);
-            bitField0_ = (bitField0_ & ~0x00001000);
+            bitField0_ = (bitField0_ & ~0x00002000);
           }
           result.kuangdian_ = kuangdian_;
         } else {
           result.kuangdian_ = kuangdianBuilder_.build();
         }
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00002000) == 0x00002000)) {
+          if (((bitField0_ & 0x00004000) == 0x00004000)) {
             event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00002000);
+            bitField0_ = (bitField0_ & ~0x00004000);
           }
           result.event_ = event_;
         } else {
@@ -12759,11 +12831,14 @@ public final class PVPProto {
           buffimg_ = other.buffimg_;
           onChanged();
         }
+        if (other.hasDaguanreward()) {
+          mergeDaguanreward(other.getDaguanreward());
+        }
         if (lootlistBuilder_ == null) {
           if (!other.lootlist_.isEmpty()) {
             if (lootlist_.isEmpty()) {
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
             } else {
               ensureLootlistIsMutable();
               lootlist_.addAll(other.lootlist_);
@@ -12776,7 +12851,7 @@ public final class PVPProto {
               lootlistBuilder_.dispose();
               lootlistBuilder_ = null;
               lootlist_ = other.lootlist_;
-              bitField0_ = (bitField0_ & ~0x00000800);
+              bitField0_ = (bitField0_ & ~0x00001000);
               lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getLootlistFieldBuilder() : null;
@@ -12789,7 +12864,7 @@ public final class PVPProto {
           if (!other.kuangdian_.isEmpty()) {
             if (kuangdian_.isEmpty()) {
               kuangdian_ = other.kuangdian_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
             } else {
               ensureKuangdianIsMutable();
               kuangdian_.addAll(other.kuangdian_);
@@ -12802,7 +12877,7 @@ public final class PVPProto {
               kuangdianBuilder_.dispose();
               kuangdianBuilder_ = null;
               kuangdian_ = other.kuangdian_;
-              bitField0_ = (bitField0_ & ~0x00001000);
+              bitField0_ = (bitField0_ & ~0x00002000);
               kuangdianBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getKuangdianFieldBuilder() : null;
@@ -12815,7 +12890,7 @@ public final class PVPProto {
           if (!other.event_.isEmpty()) {
             if (event_.isEmpty()) {
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00004000);
             } else {
               ensureEventIsMutable();
               event_.addAll(other.event_);
@@ -12828,7 +12903,7 @@ public final class PVPProto {
               eventBuilder_.dispose();
               eventBuilder_ = null;
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00004000);
               eventBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEventFieldBuilder() : null;
@@ -13458,13 +13533,130 @@ public final class PVPProto {
         return this;
       }
 
+      // optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;
+      private com.trans.pixel.protoc.Base.RewardInfo2 daguanreward_ = com.trans.pixel.protoc.Base.RewardInfo2.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo2, com.trans.pixel.protoc.Base.RewardInfo2.Builder, com.trans.pixel.protoc.Base.RewardInfo2OrBuilder> daguanrewardBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public boolean hasDaguanreward() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo2 getDaguanreward() {
+        if (daguanrewardBuilder_ == null) {
+          return daguanreward_;
+        } else {
+          return daguanrewardBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public Builder setDaguanreward(com.trans.pixel.protoc.Base.RewardInfo2 value) {
+        if (daguanrewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          daguanreward_ = value;
+          onChanged();
+        } else {
+          daguanrewardBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public Builder setDaguanreward(
+          com.trans.pixel.protoc.Base.RewardInfo2.Builder builderForValue) {
+        if (daguanrewardBuilder_ == null) {
+          daguanreward_ = builderForValue.build();
+          onChanged();
+        } else {
+          daguanrewardBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public Builder mergeDaguanreward(com.trans.pixel.protoc.Base.RewardInfo2 value) {
+        if (daguanrewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000800) == 0x00000800) &&
+              daguanreward_ != com.trans.pixel.protoc.Base.RewardInfo2.getDefaultInstance()) {
+            daguanreward_ =
+              com.trans.pixel.protoc.Base.RewardInfo2.newBuilder(daguanreward_).mergeFrom(value).buildPartial();
+          } else {
+            daguanreward_ = value;
+          }
+          onChanged();
+        } else {
+          daguanrewardBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public Builder clearDaguanreward() {
+        if (daguanrewardBuilder_ == null) {
+          daguanreward_ = com.trans.pixel.protoc.Base.RewardInfo2.getDefaultInstance();
+          onChanged();
+        } else {
+          daguanrewardBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo2.Builder getDaguanrewardBuilder() {
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return getDaguanrewardFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo2OrBuilder getDaguanrewardOrBuilder() {
+        if (daguanrewardBuilder_ != null) {
+          return daguanrewardBuilder_.getMessageOrBuilder();
+        } else {
+          return daguanreward_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo2 daguanreward = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo2, com.trans.pixel.protoc.Base.RewardInfo2.Builder, com.trans.pixel.protoc.Base.RewardInfo2OrBuilder> 
+          getDaguanrewardFieldBuilder() {
+        if (daguanrewardBuilder_ == null) {
+          daguanrewardBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo2, com.trans.pixel.protoc.Base.RewardInfo2.Builder, com.trans.pixel.protoc.Base.RewardInfo2OrBuilder>(
+                  daguanreward_,
+                  getParentForChildren(),
+                  isClean());
+          daguanreward_ = null;
+        }
+        return daguanrewardBuilder_;
+      }
+
       // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 5;
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
       private void ensureLootlistIsMutable() {
-        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
           lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00001000;
          }
       }
 
@@ -13613,7 +13805,7 @@ public final class PVPProto {
       public Builder clearLootlist() {
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000800);
+          bitField0_ = (bitField0_ & ~0x00001000);
           onChanged();
         } else {
           lootlistBuilder_.clear();
@@ -13690,7 +13882,7 @@ public final class PVPProto {
           lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   lootlist_,
-                  ((bitField0_ & 0x00000800) == 0x00000800),
+                  ((bitField0_ & 0x00001000) == 0x00001000),
                   getParentForChildren(),
                   isClean());
           lootlist_ = null;
@@ -13702,9 +13894,9 @@ public final class PVPProto {
       private java.util.List<com.trans.pixel.protoc.PVPProto.PVPMine> kuangdian_ =
         java.util.Collections.emptyList();
       private void ensureKuangdianIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
           kuangdian_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPMine>(kuangdian_);
-          bitField0_ |= 0x00001000;
+          bitField0_ |= 0x00002000;
          }
       }
 
@@ -13853,7 +14045,7 @@ public final class PVPProto {
       public Builder clearKuangdian() {
         if (kuangdianBuilder_ == null) {
           kuangdian_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
+          bitField0_ = (bitField0_ & ~0x00002000);
           onChanged();
         } else {
           kuangdianBuilder_.clear();
@@ -13930,7 +14122,7 @@ public final class PVPProto {
           kuangdianBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.PVPProto.PVPMine, com.trans.pixel.protoc.PVPProto.PVPMine.Builder, com.trans.pixel.protoc.PVPProto.PVPMineOrBuilder>(
                   kuangdian_,
-                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  ((bitField0_ & 0x00002000) == 0x00002000),
                   getParentForChildren(),
                   isClean());
           kuangdian_ = null;
@@ -13942,9 +14134,9 @@ public final class PVPProto {
       private java.util.List<com.trans.pixel.protoc.PVPProto.PVPEvent> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
           event_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.PVPEvent>(event_);
-          bitField0_ |= 0x00002000;
+          bitField0_ |= 0x00004000;
          }
       }
 
@@ -14093,7 +14285,7 @@ public final class PVPProto {
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00004000);
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -14170,7 +14362,7 @@ public final class PVPProto {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.PVPProto.PVPEvent, com.trans.pixel.protoc.PVPProto.PVPEvent.Builder, com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder>(
                   event_,
-                  ((bitField0_ & 0x00002000) == 0x00002000),
+                  ((bitField0_ & 0x00004000) == 0x00004000),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -23615,44 +23807,45 @@ public final class PVPProto {
       " \001(\005\022\017\n\007enemyid\030\006 \001(\003\022/\n\005owner\030\010 \001(\0132 .c" +
       "om.trans.pixel.protoc.UserInfo\022\017\n\007endTim" +
       "e\030\t \001(\003\022\r\n\005level\030\n \001(\005\022\013\n\003img\030\013 \001(\t\022\020\n\010p" +
-      "vpyield\030\014 \001(\005\"\323\002\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
+      "vpyield\030\014 \001(\005\"\216\003\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
       "\005\022\014\n\004name\030\002 \001(\t\022\021\n\tbufflimit\030\006 \001(\005\022\r\n\005yi" +
       "eld\030\007 \001(\005\022\020\n\010merlevel\030\010 \001(\005\022\016\n\006buffid\030\t " +
       "\001(\005\022\014\n\004buff\030\n \001(\005\022\017\n\007maxbuff\030\016 \001(\005\022\016\n\006op" +
       "ened\030\013 \001(\010\022\013\n\003img\030\014 \001(\t\022\017\n\007buffimg\030\r \001(\t" +
-      "\0224\n\010lootlist\030\005 \003(\0132\".com.trans.pixel.pro" +
-      "toc.RewardInfo\0222\n\tkuangdian\030\003 \003(\0132\037.com.",
-      "trans.pixel.protoc.PVPMine\022/\n\005event\030\004 \003(" +
-      "\0132 .com.trans.pixel.protoc.PVPEvent\"H\n\nP" +
-      "VPMapList\022,\n\004data\030\001 \003(\0132\036.com.trans.pixe" +
-      "l.protoc.PVPMap\022\014\n\004buff\030\002 \001(\005\"=\n\032Request" +
-      "UnlockPVPMapCommand\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006" +
-      "zhanli\030\002 \002(\005\"\035\n\033RequestRefreshPVPMapComm" +
-      "and\"\032\n\030RequestPVPMapListCommand\"\036\n\034Reque" +
-      "stPVPInbreakListCommand\"S\n\035ResponsePVPIn" +
-      "breakListCommand\0222\n\tkuangdian\030\001 \003(\0132\037.co" +
-      "m.trans.pixel.protoc.PVPMine\"O\n\036RequestA",
-      "ttackPVPMonsterCommand\022\022\n\npositionid\030\001 \001" +
-      "(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031Request" +
-      "PVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032Respon" +
-      "sePVPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034.com" +
-      ".trans.pixel.protoc.Team\0221\n\010mineInfo\030\003 \001" +
-      "(\0132\037.com.trans.pixel.protoc.PVPMine\"T\n\033R" +
-      "equestAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016" +
-      "\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(" +
-      "\005\"h\n\037RequestHelpAttackPVPMineCommand\022\n\n\002" +
-      "id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n",
-      "\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHe" +
-      "lpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002" +
-      "(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"\\\n\026Reque" +
-      "stSendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007c" +
-      "ontent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030" +
-      "\004 \002(\005\">\n\035RequestBrotherMineInfoCommand\022\n" +
-      "\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*\n\034Request" +
-      "RefreshPVPMineCommand\022\n\n\002id\030\001 \002(\005\"i\n\031Res" +
-      "ponsePVPMapListCommand\022-\n\005field\030\001 \003(\0132\036." +
-      "com.trans.pixel.protoc.PVPMap\022\017\n\007endTime",
-      "\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
+      "\0229\n\014daguanreward\030\017 \001(\0132#.com.trans.pixel" +
+      ".protoc.RewardInfo2\0224\n\010lootlist\030\005 \003(\0132\".",
+      "com.trans.pixel.protoc.RewardInfo\0222\n\tkua" +
+      "ngdian\030\003 \003(\0132\037.com.trans.pixel.protoc.PV" +
+      "PMine\022/\n\005event\030\004 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.PVPEvent\"H\n\nPVPMapList\022,\n\004data\030\001 \003" +
+      "(\0132\036.com.trans.pixel.protoc.PVPMap\022\014\n\004bu" +
+      "ff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapCommand\022\017" +
+      "\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033Reque" +
+      "stRefreshPVPMapCommand\"\032\n\030RequestPVPMapL" +
+      "istCommand\"\036\n\034RequestPVPInbreakListComma" +
+      "nd\"S\n\035ResponsePVPInbreakListCommand\0222\n\tk",
+      "uangdian\030\001 \003(\0132\037.com.trans.pixel.protoc." +
+      "PVPMine\"O\n\036RequestAttackPVPMonsterComman" +
+      "d\022\022\n\npositionid\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004ti" +
+      "me\030\003 \001(\005\"\'\n\031RequestPVPMineInfoCommand\022\n\n" +
+      "\002id\030\001 \002(\005\"{\n\032ResponsePVPMineInfoCommand\022" +
+      "*\n\004team\030\005 \001(\0132\034.com.trans.pixel.protoc.T" +
+      "eam\0221\n\010mineInfo\030\003 \001(\0132\037.com.trans.pixel." +
+      "protoc.PVPMine\"T\n\033RequestAttackPVPMineCo" +
+      "mmand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret" +
+      "\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037RequestHelpAttac",
+      "kPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 " +
+      "\002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time" +
+      "\030\005 \001(\005\"R\n\027RequestHelpLevelCommand\022\n\n\002id\030" +
+      "\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006us" +
+      "erId\030\004 \002(\003\"\\\n\026RequestSendMailCommand\022\020\n\010" +
+      "toUserId\030\001 \002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\trelat" +
+      "edId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\">\n\035RequestBroth" +
+      "erMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrother" +
+      "Id\030\002 \002(\003\"*\n\034RequestRefreshPVPMineCommand" +
+      "\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapListComman",
+      "d\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.proto" +
+      "c.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -23748,7 +23941,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_PVPMap_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMap_descriptor,
-              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Maxbuff", "Opened", "Img", "Buffimg", "Lootlist", "Kuangdian", "Event", });
+              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Maxbuff", "Opened", "Img", "Buffimg", "Daguanreward", "Lootlist", "Kuangdian", "Event", });
           internal_static_com_trans_pixel_protoc_PVPMapList_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_PVPMapList_fieldAccessorTable = new

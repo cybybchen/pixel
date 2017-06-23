@@ -214,6 +214,16 @@ message RewardInfo {
 	optional uint32 lastime = 10;
 }
 
+message RewardInfo2 {
+        optional int32 itemid = 1;
+        optional string name = 2;
+        optional float count = 3;
+        optional float weight = 4;
+        optional float weightb = 11;
+        //optional float counta = 5;
+        optional float countb = 6;
+}
+
 message MultiReward {
 	optional int32 id = 1;
 	optional string name = 2;
@@ -509,7 +519,7 @@ message Libao {
 	optional string starttime = 4;
 	//optional string endtime = 5;
 	optional string validtime = 6;
-	optional int32 refresh = 7;
+	//optional int32 refresh = 7;
 }
 message LibaoList {
 	repeated Libao data = 1;
@@ -1339,6 +1349,7 @@ message PVPMap {
 	optional bool opened = 11;//是否开放
 	optional string img = 12;
 	optional string buffimg = 13;
+	optional RewardInfo2 daguanreward = 15;
 	repeated RewardInfo lootlist = 5;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPEvent event = 4;

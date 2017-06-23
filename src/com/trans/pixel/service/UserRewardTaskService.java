@@ -123,7 +123,7 @@ public class UserRewardTaskService {
 					builder.setIndex(index);
 					index++;
 					userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
-					if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 && user.getVip() >= 7))
+					if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 || user.getVip() >= 7))
 						map.put(builder.getIndex(), builder.build());
 				}
 			}
