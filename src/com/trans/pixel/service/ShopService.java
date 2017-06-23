@@ -241,6 +241,7 @@ public class ShopService {
 				}
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
+			builder.clearStarttime();
 		}
 //		for(Libao libao : libaoMap.values()){
 //			rechargeRedisService.getRmb(libao.getRechargeid());
