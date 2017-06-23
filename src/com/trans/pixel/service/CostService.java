@@ -234,12 +234,12 @@ public class CostService {
 			unionService.costUnionBossActivity(user, itemId, count);
 			switch (itemId) {
 				case RewardConst.EXP:
-					lootService.calLoot(user);
+					lootService.calLoot(user, null);
 					if(count > user.getExp()) return false;
 					user.setExp(user.getExp() - count);
 					return true;
 				case RewardConst.COIN:
-					lootService.calLoot(user);
+					lootService.calLoot(user, null);
 					if(count > user.getCoin()) {
 						if (cost(user, RewardConst.JEWEL, calDivision(count - user.getCoin(),  CostConst.JEWEL_TO_COIN))) {
 							user.setCoin(calCurrency(user.getCoin(),  count, CostConst.JEWEL_TO_COIN));
@@ -370,11 +370,11 @@ public class CostService {
 		} else {
 			switch (itemId) {
 				case RewardConst.EXP:
-					lootService.calLoot(user);
+					lootService.calLoot(user, null);
 					if(itemCount > user.getExp()) return false;
 					return true;
 				case RewardConst.COIN:
-					lootService.calLoot(user);
+					lootService.calLoot(user, null);
 					if(itemCount > user.getCoin()) {
 						return canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getCoin(),  CostConst.JEWEL_TO_COIN));
 					}
