@@ -227,10 +227,10 @@ public class EquipPokedeService {
 		if (itemId == 0)
 			return true;
 		
-		if (equipId < RewardConst.ARMOR && itemId == PackageConst.RANDOM_STRENTHEN_EQUIP_ID)
+		if (equipId < RewardConst.ARMOR && itemId != PackageConst.RANDOM_STRENTHEN_ARMOR_ID)
 			return true;
 		
-		if (equipId > RewardConst.ARMOR && itemId == PackageConst.RANDOM_STRENTHEN_ARMOR_ID)
+		if (equipId > RewardConst.ARMOR && itemId != PackageConst.RANDOM_STRENTHEN_EQUIP_ID)
 			return true;
 		
 		return false;
