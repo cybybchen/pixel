@@ -155,23 +155,23 @@ public class LadderRedisService extends RedisService{
 		String value = hget(buildRankInfoRedisKey(serverId), userId+"");
 		if(value == null)
 			return null;
-//		logger.debug(value);
+		logger.debug(value);
 		return UserRankBean.fromJson(value);
 	}
 	
-//	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {
-//		redisTemplate.execute(new RedisCallback<Object>() {
-//			@Override
-//			public Object doInRedis(RedisConnection arg0)
-//					throws DataAccessException {
-//				BoundHashOperations<String, String, String> bhOps = redisTemplate
-//						.boundHashOps(buildRankInfoRedisKey(serverId));
-//				
-//				bhOps.put("" + userRank.getUserId(), userRank.toJson());
-//				return null;
-//			}
-//		});
-//	}
+	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {
+		redisTemplate.execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> bhOps = redisTemplate
+						.boundHashOps(buildRankInfoRedisKey(serverId));
+				
+				bhOps.put("" + userRank.getUserId(), userRank.toJson());
+				return null;
+			}
+		});
+	}
 	
 	public Map<Integer, LadderRankingBean> getLadderRankingMap() {
 		return redisTemplate.execute(new RedisCallback<Map<Integer, LadderRankingBean>>() {

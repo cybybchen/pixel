@@ -626,7 +626,7 @@ public class LadderService {
 	
 	private void updateUserRank(int serverId, UserRankBean userRank) {
 		ladderRedisService.updateUserRank(serverId, userRank);
-//		ladderRedisService.updateUserRankInfo(serverId, userRank);
+		ladderRedisService.updateUserRankInfo(serverId, userRank);
 	}
 	
 	private void updateRewardList(List<RewardBean> rewardList, RewardBean reward) {
