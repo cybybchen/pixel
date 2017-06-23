@@ -6,6 +6,7 @@ packages=()
 content=""
 proto_dir=pixel_proto/pb/
 mkdir -p $proto_dir
+rm $proto_dir/*.proto
 function pushCommand()
 {
 	while [ 0 -lt $# ];

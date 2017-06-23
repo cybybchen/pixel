@@ -276,7 +276,7 @@ public class PushCommandService extends BaseCommandService {
 //		responseBuilder.setUserLootLevelCommand(builder.build());
 //	}
 	
-	public void pushLadderRankListCommand(Builder responseBuilder, UserBean user) {	
+	public void pushLadderRankListCommand(Builder responseBuilder, UserBean user) {
 		super.handleGetUserLadderRankListCommand(responseBuilder, user);
 	}
 	

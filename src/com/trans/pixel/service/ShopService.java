@@ -254,7 +254,7 @@ public class ShopService {
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(list.getDataList());
 		responseBuilder.setLibaoShopCommand(shop);
-
+		int onlinestatus = serverService.getOnlineStatus(user.getVersion());
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
 		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).values()){
 			if(rmb.getReward().getItemid() != RewardConst.JEWEL)
@@ -262,7 +262,7 @@ public class ShopService {
 			Status.Builder builder = Status.newBuilder();
 			builder.setId(rmb.getId());
 			Libao libao = libaoMap.get(rmb.getId());
-			if(serverService.getOnlineStatus(user.getVersion()) != 0)
+			if(onlinestatus != 0)
 				builder.setCanpurchase(false);
 			else
 				builder.setCanpurchase(libao == null || libao.getPurchase() == 0);

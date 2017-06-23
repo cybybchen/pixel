@@ -1,6 +1,7 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,10 +23,13 @@ import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserEquipService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class EquipCommandService extends BaseCommandService {
@@ -36,6 +40,8 @@ public class EquipCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private UserService userService;
 	@Resource
 	private LogService logService;
 	
@@ -107,11 +113,21 @@ public class EquipCommandService extends BaseCommandService {
 	}
 	
 	public void useMaterial(RequestUseMaterialCommand cmd, Builder responseBuilder, UserBean user) {
-		List<RewardInfo> costs = cmd.getCostList();
+		List<RewardInfo> costs = new ArrayList<RewardInfo>();
+		costs.addAll(cmd.getCostList());
+		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));
+		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+			for(int i = costs.size()-1; i >=0; i--){
+				if(costs.get(i).getItemid() == 28002)
+					costs.remove(i);
+			}
+		}
 		ResultConst ret = equipService.userMaterial(user, costs);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			
+			if(cmd.getCostCount() == 1 && cmd.getCost(0).getItemid() == 28002)
+				return;
 			ErrorCommand errorCommand = buildErrorCommand(ret);
             responseBuilder.setErrorCommand(errorCommand);
             return;

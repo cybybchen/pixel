@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -243,8 +244,10 @@ public class LadderModeCommandService extends BaseCommandService {
 				
 				//任务奖励
 				if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
-					List<RewardInfo> rewardList = ladderService.ladderTaskReward(user);
-					if (rewardList != null && !rewardList.isEmpty()) {
+					List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+					List<RewardInfo> list = ladderService.ladderTaskReward(user);
+					if (list != null && !list.isEmpty()) {
+						rewardList.addAll(list);
 						MultiReward.Builder rewards = MultiReward.newBuilder();
 						if(user.getVip() >= 12)
 						for(int i = 0; i < rewardList.size(); i++) {
