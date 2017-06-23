@@ -120,7 +120,8 @@ public class UserRankBean {
 		builder.setDps(dps);
 		builder.setZhanli(zhanli);
 		builder.setScore2(score2);
-		builder.setUser(user);
+		if (user != null)
+			builder.setUser(user);
 		
 		return builder.build();
 	}
