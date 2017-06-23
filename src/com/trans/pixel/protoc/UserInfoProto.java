@@ -13232,9 +13232,9 @@ public final class UserInfoProto {
      */
     int getMerlevel();
 
-    // optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
      *
      * <pre>
      *optional uint32 loot1 = 12;
@@ -13243,9 +13243,10 @@ public final class UserInfoProto {
      *optional uint32 loot4 = 15;
      * </pre>
      */
-    boolean hasLootlist();
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getLootlistList();
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
      *
      * <pre>
      *optional uint32 loot1 = 12;
@@ -13254,9 +13255,9 @@ public final class UserInfoProto {
      *optional uint32 loot4 = 15;
      * </pre>
      */
-    com.trans.pixel.protoc.Base.RewardInfo getLootlist();
+    com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index);
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
      *
      * <pre>
      *optional uint32 loot1 = 12;
@@ -13265,7 +13266,31 @@ public final class UserInfoProto {
      *optional uint32 loot4 = 15;
      * </pre>
      */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder();
+    int getLootlistCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     *
+     * <pre>
+     *optional uint32 loot1 = 12;
+     *optional uint32 loot2 = 13;
+     *optional uint32 loot3 = 14;
+     *optional uint32 loot4 = 15;
+     * </pre>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     *
+     * <pre>
+     *optional uint32 loot1 = 12;
+     *optional uint32 loot2 = 13;
+     *optional uint32 loot3 = 14;
+     *optional uint32 loot4 = 15;
+     * </pre>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Daguan}
@@ -13359,16 +13384,11 @@ public final class UserInfoProto {
               break;
             }
             case 130: {
-              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
-                subBuilder = lootlist_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000100;
               }
-              lootlist_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(lootlist_);
-                lootlist_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000100;
+              lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -13379,6 +13399,9 @@ public final class UserInfoProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -13574,11 +13597,11 @@ public final class UserInfoProto {
       return merlevel_;
     }
 
-    // optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;
     public static final int LOOTLIST_FIELD_NUMBER = 16;
-    private com.trans.pixel.protoc.Base.RewardInfo lootlist_;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_;
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
      *
      * <pre>
      *optional uint32 loot1 = 12;
@@ -13587,24 +13610,11 @@ public final class UserInfoProto {
      *optional uint32 loot4 = 15;
      * </pre>
      */
-    public boolean hasLootlist() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
-     *
-     * <pre>
-     *optional uint32 loot1 = 12;
-     *optional uint32 loot2 = 13;
-     *optional uint32 loot3 = 14;
-     *optional uint32 loot4 = 15;
-     * </pre>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfo getLootlist() {
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
       return lootlist_;
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
      *
      * <pre>
      *optional uint32 loot1 = 12;
@@ -13613,8 +13623,49 @@ public final class UserInfoProto {
      *optional uint32 loot4 = 15;
      * </pre>
      */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder() {
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList() {
       return lootlist_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     *
+     * <pre>
+     *optional uint32 loot1 = 12;
+     *optional uint32 loot2 = 13;
+     *optional uint32 loot3 = 14;
+     *optional uint32 loot4 = 15;
+     * </pre>
+     */
+    public int getLootlistCount() {
+      return lootlist_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     *
+     * <pre>
+     *optional uint32 loot1 = 12;
+     *optional uint32 loot2 = 13;
+     *optional uint32 loot3 = 14;
+     *optional uint32 loot4 = 15;
+     * </pre>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+      return lootlist_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+     *
+     * <pre>
+     *optional uint32 loot1 = 12;
+     *optional uint32 loot2 = 13;
+     *optional uint32 loot3 = 14;
+     *optional uint32 loot4 = 15;
+     * </pre>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
+        int index) {
+      return lootlist_.get(index);
     }
 
     private void initFields() {
@@ -13626,7 +13677,7 @@ public final class UserInfoProto {
       exp_ = 0;
       areaid_ = 0;
       merlevel_ = 0;
-      lootlist_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      lootlist_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13664,8 +13715,8 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(11, merlevel_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeMessage(16, lootlist_);
+      for (int i = 0; i < lootlist_.size(); i++) {
+        output.writeMessage(16, lootlist_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -13708,9 +13759,9 @@ public final class UserInfoProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, merlevel_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      for (int i = 0; i < lootlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(16, lootlist_);
+          .computeMessageSize(16, lootlist_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13846,11 +13897,11 @@ public final class UserInfoProto {
         merlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
         if (lootlistBuilder_ == null) {
-          lootlist_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+          lootlist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
         } else {
           lootlistBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -13911,10 +13962,11 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000080;
         }
         result.merlevel_ = merlevel_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
         if (lootlistBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+            lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
           result.lootlist_ = lootlist_;
         } else {
           result.lootlist_ = lootlistBuilder_.build();
@@ -13961,8 +14013,31 @@ public final class UserInfoProto {
         if (other.hasMerlevel()) {
           setMerlevel(other.getMerlevel());
         }
-        if (other.hasLootlist()) {
-          mergeLootlist(other.getLootlist());
+        if (lootlistBuilder_ == null) {
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlist_.isEmpty()) {
+              lootlist_ = other.lootlist_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureLootlistIsMutable();
+              lootlist_.addAll(other.lootlist_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlistBuilder_.isEmpty()) {
+              lootlistBuilder_.dispose();
+              lootlistBuilder_ = null;
+              lootlist_ = other.lootlist_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              lootlistBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getLootlistFieldBuilder() : null;
+            } else {
+              lootlistBuilder_.addAllMessages(other.lootlist_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14312,12 +14387,21 @@ public final class UserInfoProto {
         return this;
       }
 
-      // optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;
-      private com.trans.pixel.protoc.Base.RewardInfo lootlist_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
+      // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
+        java.util.Collections.emptyList();
+      private void ensureLootlistIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> lootlistBuilder_;
+
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14326,28 +14410,15 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      public boolean hasLootlist() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
-       *
-       * <pre>
-       *optional uint32 loot1 = 12;
-       *optional uint32 loot2 = 13;
-       *optional uint32 loot3 = 14;
-       *optional uint32 loot4 = 15;
-       * </pre>
-       */
-      public com.trans.pixel.protoc.Base.RewardInfo getLootlist() {
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
         if (lootlistBuilder_ == null) {
-          return lootlist_;
+          return java.util.Collections.unmodifiableList(lootlist_);
         } else {
-          return lootlistBuilder_.getMessage();
+          return lootlistBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14356,21 +14427,32 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      public Builder setLootlist(com.trans.pixel.protoc.Base.RewardInfo value) {
+      public int getLootlistCount() {
         if (lootlistBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          lootlist_ = value;
-          onChanged();
+          return lootlist_.size();
         } else {
-          lootlistBuilder_.setMessage(value);
+          return lootlistBuilder_.getCount();
         }
-        bitField0_ |= 0x00000100;
-        return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);
+        } else {
+          return lootlistBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14380,18 +14462,21 @@ public final class UserInfoProto {
        * </pre>
        */
       public Builder setLootlist(
-          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
         if (lootlistBuilder_ == null) {
-          lootlist_ = builderForValue.build();
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLootlistIsMutable();
+          lootlist_.set(index, value);
           onChanged();
         } else {
-          lootlistBuilder_.setMessage(builderForValue.build());
+          lootlistBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000100;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14400,24 +14485,129 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      public Builder mergeLootlist(com.trans.pixel.protoc.Base.RewardInfo value) {
+      public Builder setLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (lootlistBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100) &&
-              lootlist_ != com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance()) {
-            lootlist_ =
-              com.trans.pixel.protoc.Base.RewardInfo.newBuilder(lootlist_).mergeFrom(value).buildPartial();
-          } else {
-            lootlist_ = value;
-          }
+          ensureLootlistIsMutable();
+          lootlist_.set(index, builderForValue.build());
           onChanged();
         } else {
-          lootlistBuilder_.mergeFrom(value);
+          lootlistBuilder_.setMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000100;
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public Builder addLootlist(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLootlistIsMutable();
+          lootlist_.add(value);
+          onChanged();
+        } else {
+          lootlistBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureLootlistIsMutable();
+          lootlist_.add(index, value);
+          onChanged();
+        } else {
+          lootlistBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public Builder addLootlist(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(builderForValue.build());
+          onChanged();
+        } else {
+          lootlistBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          lootlistBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public Builder addAllLootlist(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          super.addAll(values, lootlist_);
+          onChanged();
+        } else {
+          lootlistBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14428,16 +14618,16 @@ public final class UserInfoProto {
        */
       public Builder clearLootlist() {
         if (lootlistBuilder_ == null) {
-          lootlist_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+          lootlist_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
           onChanged();
         } else {
           lootlistBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14446,13 +14636,18 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      public com.trans.pixel.protoc.Base.RewardInfo.Builder getLootlistBuilder() {
-        bitField0_ |= 0x00000100;
-        onChanged();
-        return getLootlistFieldBuilder().getBuilder();
+      public Builder removeLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.remove(index);
+          onChanged();
+        } else {
+          lootlistBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14461,15 +14656,29 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder() {
-        if (lootlistBuilder_ != null) {
-          return lootlistBuilder_.getMessageOrBuilder();
-        } else {
-          return lootlist_;
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getLootlistBuilder(
+          int index) {
+        return getLootlistFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
+          int index) {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);  } else {
+          return lootlistBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
        *
        * <pre>
        *optional uint32 loot1 = 12;
@@ -14478,13 +14687,65 @@ public final class UserInfoProto {
        *optional uint32 loot4 = 15;
        * </pre>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getLootlistOrBuilderList() {
+        if (lootlistBuilder_ != null) {
+          return lootlistBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(lootlist_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder() {
+        return getLootlistFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder(
+          int index) {
+        return getLootlistFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 16;</code>
+       *
+       * <pre>
+       *optional uint32 loot1 = 12;
+       *optional uint32 loot2 = 13;
+       *optional uint32 loot3 = 14;
+       *optional uint32 loot4 = 15;
+       * </pre>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getLootlistBuilderList() {
+        return getLootlistFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
           getLootlistFieldBuilder() {
         if (lootlistBuilder_ == null) {
-          lootlistBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   lootlist_,
+                  ((bitField0_ & 0x00000100) == 0x00000100),
                   getParentForChildren(),
                   isClean());
           lootlist_ = null;
@@ -33209,7 +33470,7 @@ public final class UserInfoProto {
       "Daguan\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005leve" +
       "l\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004gold\030\005 \001(\005\022\013\n\003" +
       "exp\030\006 \001(\005\022\016\n\006areaid\030\t \001(\005\022\020\n\010merlevel\030\013 ",
-      "\001(\005\0224\n\010lootlist\030\020 \001(\0132\".com.trans.pixel." +
+      "\001(\005\0224\n\010lootlist\030\020 \003(\0132\".com.trans.pixel." +
       "protoc.RewardInfo\":\n\nDaguanList\022,\n\004data\030" +
       "\001 \003(\0132\036.com.trans.pixel.protoc.Daguan\"*\n" +
       "\nEventLevel\022\r\n\005level\030\001 \001(\005\022\r\n\005count\030\002 \001(" +

@@ -2780,7 +2780,7 @@ message Daguan {
 	//optional uint32 loot2 = 13;
 	//optional uint32 loot3 = 14;
 	//optional uint32 loot4 = 15;
-	optional RewardInfo lootlist = 16;
+	repeated RewardInfo lootlist = 16;
 }
 message DaguanList {
 	repeated Daguan data = 1;
