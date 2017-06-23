@@ -37,6 +37,13 @@ public class RankRedisService extends RedisService{
 		return rank;
 	}
 	
+	public long getMyZhanliRankByNodelete(final UserBean user) {
+		Long rank = this.zrank(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), user.getId()+"");
+		if(rank == null)
+			rank = -1L;
+		return rank;
+	}
+	
 	public List<UserInfo> getZhanliRanks(final UserBean user, long start, long end) {
 		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
 		List<String> userIds = new ArrayList<String>();

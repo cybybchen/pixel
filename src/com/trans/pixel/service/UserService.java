@@ -476,7 +476,7 @@ public class UserService {
 	}
 	
 	public List<UserInfo> getRandUserByNodelete(int index1, int index2, UserBean user){
-		long myrank = rankRedisService.getMyZhanliRank(user);
+		long myrank = rankRedisService.getMyZhanliRankByNodelete(user);
 		List<UserInfo> ranks = new ArrayList<UserInfo>();
 		if(myrank < 0)
 			ranks = rankRedisService.getZhanliRanksByNodelete(user, Math.min(index1, -10), -1);
