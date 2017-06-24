@@ -139,7 +139,7 @@ public class RankService {
 					rank.setRank(rankInit);
 					rank.initByUserCache(userInfo);
 					if (type > RankConst.RAID_RANK_PREFIX) {
-						rank.setZhanli(value.getScore().intValue() / 100);
+						rank.setZhanli(value.getScore().intValue() / 1000);
 						rank.setScore2(rank.getZhanli() * 1000 + 1000 - value.getScore().intValue());
 					} else
 						rank.setZhanli(value.getScore().intValue());
