@@ -223,6 +223,8 @@ public class PropService {
 			
 			randomReward(rewards, reward.getItemid(), (int)reward.getCount(), map);
 		}
+		
+		rewardService.mergeReward(rewards);
 		return rewards;
 	}
 	
