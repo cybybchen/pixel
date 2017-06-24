@@ -19206,16 +19206,6 @@ public final class HeroProto {
      * <code>optional int32 skill2 = 3;</code>
      */
     int getSkill2();
-
-    // optional int32 skill3 = 4;
-    /**
-     * <code>optional int32 skill3 = 4;</code>
-     */
-    boolean hasSkill3();
-    /**
-     * <code>optional int32 skill3 = 4;</code>
-     */
-    int getSkill3();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.TalentOrder}
@@ -19281,11 +19271,6 @@ public final class HeroProto {
             case 24: {
               bitField0_ |= 0x00000004;
               skill2_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              skill3_ = input.readInt32();
               break;
             }
           }
@@ -19376,27 +19361,10 @@ public final class HeroProto {
       return skill2_;
     }
 
-    // optional int32 skill3 = 4;
-    public static final int SKILL3_FIELD_NUMBER = 4;
-    private int skill3_;
-    /**
-     * <code>optional int32 skill3 = 4;</code>
-     */
-    public boolean hasSkill3() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 skill3 = 4;</code>
-     */
-    public int getSkill3() {
-      return skill3_;
-    }
-
     private void initFields() {
       order_ = 0;
       skill1_ = 0;
       skill2_ = 0;
-      skill3_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -19419,9 +19387,6 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, skill2_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, skill3_);
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -19442,10 +19407,6 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, skill2_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, skill3_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19569,8 +19530,6 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         skill2_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        skill3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -19611,10 +19570,6 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000004;
         }
         result.skill2_ = skill2_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.skill3_ = skill3_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -19639,9 +19594,6 @@ public final class HeroProto {
         }
         if (other.hasSkill2()) {
           setSkill2(other.getSkill2());
-        }
-        if (other.hasSkill3()) {
-          setSkill3(other.getSkill3());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19769,39 +19721,6 @@ public final class HeroProto {
         return this;
       }
 
-      // optional int32 skill3 = 4;
-      private int skill3_ ;
-      /**
-       * <code>optional int32 skill3 = 4;</code>
-       */
-      public boolean hasSkill3() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 skill3 = 4;</code>
-       */
-      public int getSkill3() {
-        return skill3_;
-      }
-      /**
-       * <code>optional int32 skill3 = 4;</code>
-       */
-      public Builder setSkill3(int value) {
-        bitField0_ |= 0x00000008;
-        skill3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 skill3 = 4;</code>
-       */
-      public Builder clearSkill3() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        skill3_ = 0;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.TalentOrder)
     }
 
@@ -19841,44 +19760,29 @@ public final class HeroProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // optional string img = 3;
+    // repeated .com.trans.pixel.protoc.TalentOrder skill = 4;
     /**
-     * <code>optional string img = 3;</code>
-     */
-    boolean hasImg();
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    java.lang.String getImg();
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getImgBytes();
-
-    // repeated .com.trans.pixel.protoc.TalentOrder order = 4;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
     java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> 
-        getOrderList();
+        getSkillList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    com.trans.pixel.protoc.HeroProto.TalentOrder getOrder(int index);
+    com.trans.pixel.protoc.HeroProto.TalentOrder getSkill(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    int getOrderCount();
+    int getSkillCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> 
-        getOrderOrBuilderList();
+        getSkillOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getOrderOrBuilder(
+    com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getSkillOrBuilder(
         int index);
   }
   /**
@@ -19942,17 +19846,12 @@ public final class HeroProto {
               name_ = input.readBytes();
               break;
             }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              img_ = input.readBytes();
-              break;
-            }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                order_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.TalentOrder>();
-                mutable_bitField0_ |= 0x00000008;
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                skill_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.TalentOrder>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              order_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.TalentOrder.PARSER, extensionRegistry));
+              skill_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.TalentOrder.PARSER, extensionRegistry));
               break;
             }
           }
@@ -19963,8 +19862,8 @@ public final class HeroProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          order_ = java.util.Collections.unmodifiableList(order_);
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+          skill_ = java.util.Collections.unmodifiableList(skill_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -20057,90 +19956,46 @@ public final class HeroProto {
       }
     }
 
-    // optional string img = 3;
-    public static final int IMG_FIELD_NUMBER = 3;
-    private java.lang.Object img_;
+    // repeated .com.trans.pixel.protoc.TalentOrder skill = 4;
+    public static final int SKILL_FIELD_NUMBER = 4;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> skill_;
     /**
-     * <code>optional string img = 3;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    public boolean hasImg() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> getSkillList() {
+      return skill_;
     }
     /**
-     * <code>optional string img = 3;</code>
-     */
-    public java.lang.String getImg() {
-      java.lang.Object ref = img_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          img_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string img = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getImgBytes() {
-      java.lang.Object ref = img_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        img_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // repeated .com.trans.pixel.protoc.TalentOrder order = 4;
-    public static final int ORDER_FIELD_NUMBER = 4;
-    private java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> order_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> getOrderList() {
-      return order_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> 
-        getOrderOrBuilderList() {
-      return order_;
+        getSkillOrBuilderList() {
+      return skill_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    public int getOrderCount() {
-      return order_.size();
+    public int getSkillCount() {
+      return skill_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.TalentOrder getOrder(int index) {
-      return order_.get(index);
+    public com.trans.pixel.protoc.HeroProto.TalentOrder getSkill(int index) {
+      return skill_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getOrderOrBuilder(
+    public com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getSkillOrBuilder(
         int index) {
-      return order_.get(index);
+      return skill_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
       name_ = "";
-      img_ = "";
-      order_ = java.util.Collections.emptyList();
+      skill_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -20160,11 +20015,8 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getNameBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getImgBytes());
-      }
-      for (int i = 0; i < order_.size(); i++) {
-        output.writeMessage(4, order_.get(i));
+      for (int i = 0; i < skill_.size(); i++) {
+        output.writeMessage(4, skill_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -20183,13 +20035,9 @@ public final class HeroProto {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getNameBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      for (int i = 0; i < skill_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getImgBytes());
-      }
-      for (int i = 0; i < order_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, order_.get(i));
+          .computeMessageSize(4, skill_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -20299,7 +20147,7 @@ public final class HeroProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getOrderFieldBuilder();
+          getSkillFieldBuilder();
         }
       }
       private static Builder create() {
@@ -20312,13 +20160,11 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        img_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+        if (skillBuilder_ == null) {
+          skill_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
-          orderBuilder_.clear();
+          skillBuilder_.clear();
         }
         return this;
       }
@@ -20356,18 +20202,14 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000002;
         }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.img_ = img_;
-        if (orderBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
-            order_ = java.util.Collections.unmodifiableList(order_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+        if (skillBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            skill_ = java.util.Collections.unmodifiableList(skill_);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
-          result.order_ = order_;
+          result.skill_ = skill_;
         } else {
-          result.order_ = orderBuilder_.build();
+          result.skill_ = skillBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -20393,34 +20235,29 @@ public final class HeroProto {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasImg()) {
-          bitField0_ |= 0x00000004;
-          img_ = other.img_;
-          onChanged();
-        }
-        if (orderBuilder_ == null) {
-          if (!other.order_.isEmpty()) {
-            if (order_.isEmpty()) {
-              order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+        if (skillBuilder_ == null) {
+          if (!other.skill_.isEmpty()) {
+            if (skill_.isEmpty()) {
+              skill_ = other.skill_;
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
-              ensureOrderIsMutable();
-              order_.addAll(other.order_);
+              ensureSkillIsMutable();
+              skill_.addAll(other.skill_);
             }
             onChanged();
           }
         } else {
-          if (!other.order_.isEmpty()) {
-            if (orderBuilder_.isEmpty()) {
-              orderBuilder_.dispose();
-              orderBuilder_ = null;
-              order_ = other.order_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-              orderBuilder_ = 
+          if (!other.skill_.isEmpty()) {
+            if (skillBuilder_.isEmpty()) {
+              skillBuilder_.dispose();
+              skillBuilder_ = null;
+              skill_ = other.skill_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              skillBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getOrderFieldBuilder() : null;
+                   getSkillFieldBuilder() : null;
             } else {
-              orderBuilder_.addAllMessages(other.order_);
+              skillBuilder_.addAllMessages(other.skill_);
             }
           }
         }
@@ -20558,318 +20395,244 @@ public final class HeroProto {
         return this;
       }
 
-      // optional string img = 3;
-      private java.lang.Object img_ = "";
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public boolean hasImg() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public java.lang.String getImg() {
-        java.lang.Object ref = img_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          img_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getImgBytes() {
-        java.lang.Object ref = img_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          img_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder setImg(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        img_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder clearImg() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        img_ = getDefaultInstance().getImg();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string img = 3;</code>
-       */
-      public Builder setImgBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        img_ = value;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.trans.pixel.protoc.TalentOrder order = 4;
-      private java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> order_ =
+      // repeated .com.trans.pixel.protoc.TalentOrder skill = 4;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> skill_ =
         java.util.Collections.emptyList();
-      private void ensureOrderIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          order_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.TalentOrder>(order_);
-          bitField0_ |= 0x00000008;
+      private void ensureSkillIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          skill_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.TalentOrder>(skill_);
+          bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.TalentOrder, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder, com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> orderBuilder_;
+          com.trans.pixel.protoc.HeroProto.TalentOrder, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder, com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> skillBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> getOrderList() {
-        if (orderBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(order_);
+      public java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder> getSkillList() {
+        if (skillBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skill_);
         } else {
-          return orderBuilder_.getMessageList();
+          return skillBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public int getOrderCount() {
-        if (orderBuilder_ == null) {
-          return order_.size();
+      public int getSkillCount() {
+        if (skillBuilder_ == null) {
+          return skill_.size();
         } else {
-          return orderBuilder_.getCount();
+          return skillBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrder getOrder(int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);
+      public com.trans.pixel.protoc.HeroProto.TalentOrder getSkill(int index) {
+        if (skillBuilder_ == null) {
+          return skill_.get(index);
         } else {
-          return orderBuilder_.getMessage(index);
+          return skillBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder setOrder(
+      public Builder setSkill(
           int index, com.trans.pixel.protoc.HeroProto.TalentOrder value) {
-        if (orderBuilder_ == null) {
+        if (skillBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.set(index, value);
+          ensureSkillIsMutable();
+          skill_.set(index, value);
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, value);
+          skillBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder setOrder(
+      public Builder setSkill(
           int index, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.set(index, builderForValue.build());
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.set(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, builderForValue.build());
+          skillBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder addOrder(com.trans.pixel.protoc.HeroProto.TalentOrder value) {
-        if (orderBuilder_ == null) {
+      public Builder addSkill(com.trans.pixel.protoc.HeroProto.TalentOrder value) {
+        if (skillBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(value);
+          ensureSkillIsMutable();
+          skill_.add(value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(value);
+          skillBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder addOrder(
+      public Builder addSkill(
           int index, com.trans.pixel.protoc.HeroProto.TalentOrder value) {
-        if (orderBuilder_ == null) {
+        if (skillBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(index, value);
+          ensureSkillIsMutable();
+          skill_.add(index, value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, value);
+          skillBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder addOrder(
+      public Builder addSkill(
           com.trans.pixel.protoc.HeroProto.TalentOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(builderForValue.build());
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.add(builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(builderForValue.build());
+          skillBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder addOrder(
+      public Builder addSkill(
           int index, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(index, builderForValue.build());
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.add(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, builderForValue.build());
+          skillBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder addAllOrder(
+      public Builder addAllSkill(
           java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.TalentOrder> values) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          super.addAll(values, order_);
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          super.addAll(values, skill_);
           onChanged();
         } else {
-          orderBuilder_.addAllMessages(values);
+          skillBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder clearOrder() {
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+      public Builder clearSkill() {
+        if (skillBuilder_ == null) {
+          skill_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
-          orderBuilder_.clear();
+          skillBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public Builder removeOrder(int index) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.remove(index);
+      public Builder removeSkill(int index) {
+        if (skillBuilder_ == null) {
+          ensureSkillIsMutable();
+          skill_.remove(index);
           onChanged();
         } else {
-          orderBuilder_.remove(index);
+          skillBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder getOrderBuilder(
+      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder getSkillBuilder(
           int index) {
-        return getOrderFieldBuilder().getBuilder(index);
+        return getSkillFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getOrderOrBuilder(
+      public com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder getSkillOrBuilder(
           int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);  } else {
-          return orderBuilder_.getMessageOrBuilder(index);
+        if (skillBuilder_ == null) {
+          return skill_.get(index);  } else {
+          return skillBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> 
-           getOrderOrBuilderList() {
-        if (orderBuilder_ != null) {
-          return orderBuilder_.getMessageOrBuilderList();
+           getSkillOrBuilderList() {
+        if (skillBuilder_ != null) {
+          return skillBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(order_);
+          return java.util.Collections.unmodifiableList(skill_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder addOrderBuilder() {
-        return getOrderFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder addSkillBuilder() {
+        return getSkillFieldBuilder().addBuilder(
             com.trans.pixel.protoc.HeroProto.TalentOrder.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder addOrderBuilder(
+      public com.trans.pixel.protoc.HeroProto.TalentOrder.Builder addSkillBuilder(
           int index) {
-        return getOrderFieldBuilder().addBuilder(
+        return getSkillFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.HeroProto.TalentOrder.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TalentOrder order = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.TalentOrder skill = 4;</code>
        */
       public java.util.List<com.trans.pixel.protoc.HeroProto.TalentOrder.Builder> 
-           getOrderBuilderList() {
-        return getOrderFieldBuilder().getBuilderList();
+           getSkillBuilderList() {
+        return getSkillFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.HeroProto.TalentOrder, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder, com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder> 
-          getOrderFieldBuilder() {
-        if (orderBuilder_ == null) {
-          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getSkillFieldBuilder() {
+        if (skillBuilder_ == null) {
+          skillBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.HeroProto.TalentOrder, com.trans.pixel.protoc.HeroProto.TalentOrder.Builder, com.trans.pixel.protoc.HeroProto.TalentOrderOrBuilder>(
-                  order_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  skill_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
-          order_ = null;
+          skill_ = null;
         }
-        return orderBuilder_;
+        return skillBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Talent)
@@ -20886,29 +20649,29 @@ public final class HeroProto {
   public interface TalentListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Talent id = 1;
+    // repeated .com.trans.pixel.protoc.Talent data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.HeroProto.Talent> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.Talent getId(int index);
+    com.trans.pixel.protoc.HeroProto.Talent getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    com.trans.pixel.protoc.HeroProto.TalentOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.HeroProto.TalentOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -20964,10 +20727,10 @@ public final class HeroProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Talent>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Talent>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Talent.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.Talent.PARSER, extensionRegistry));
               break;
             }
           }
@@ -20979,7 +20742,7 @@ public final class HeroProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -21012,44 +20775,44 @@ public final class HeroProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Talent id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.HeroProto.Talent> id_;
+    // repeated .com.trans.pixel.protoc.Talent data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.Talent> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.HeroProto.Talent> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.HeroProto.Talent> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.Talent getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.HeroProto.Talent getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.TalentOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.HeroProto.TalentOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -21063,8 +20826,8 @@ public final class HeroProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -21075,9 +20838,9 @@ public final class HeroProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -21187,7 +20950,7 @@ public final class HeroProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -21196,11 +20959,11 @@ public final class HeroProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -21229,14 +20992,14 @@ public final class HeroProto {
       public com.trans.pixel.protoc.HeroProto.TalentList buildPartial() {
         com.trans.pixel.protoc.HeroProto.TalentList result = new com.trans.pixel.protoc.HeroProto.TalentList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -21253,29 +21016,29 @@ public final class HeroProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.TalentList other) {
         if (other == com.trans.pixel.protoc.HeroProto.TalentList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -21306,244 +21069,244 @@ public final class HeroProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Talent id = 1;
-      private java.util.List<com.trans.pixel.protoc.HeroProto.Talent> id_ =
+      // repeated .com.trans.pixel.protoc.Talent data = 1;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.Talent> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Talent>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.Talent>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.HeroProto.Talent, com.trans.pixel.protoc.HeroProto.Talent.Builder, com.trans.pixel.protoc.HeroProto.TalentOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.HeroProto.Talent, com.trans.pixel.protoc.HeroProto.Talent.Builder, com.trans.pixel.protoc.HeroProto.TalentOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.HeroProto.Talent> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.HeroProto.Talent> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Talent getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.HeroProto.Talent getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Talent value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.HeroProto.Talent.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.HeroProto.Talent value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.HeroProto.Talent value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Talent value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.HeroProto.Talent.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.HeroProto.Talent.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.Talent> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Talent.Builder getIdBuilder(
+      public com.trans.pixel.protoc.HeroProto.Talent.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.TalentOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.HeroProto.TalentOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.HeroProto.TalentOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Talent.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.HeroProto.Talent.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.HeroProto.Talent.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.Talent.Builder addIdBuilder(
+      public com.trans.pixel.protoc.HeroProto.Talent.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.HeroProto.Talent.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Talent id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Talent data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.HeroProto.Talent.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.HeroProto.Talent, com.trans.pixel.protoc.HeroProto.Talent.Builder, com.trans.pixel.protoc.HeroProto.TalentOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.HeroProto.Talent, com.trans.pixel.protoc.HeroProto.Talent.Builder, com.trans.pixel.protoc.HeroProto.TalentOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.TalentList)
@@ -52878,104 +52641,103 @@ public final class HeroProto {
       "otoc.AllheroList\"q\n\013AllheroList\022\n\n\002id\030\001 " +
       "\001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030\003 \001(\005\022\014\n\004rare\030\004" +
       " \001(\005\022-\n\004hero\030\005 \003(\0132\037.com.trans.pixel.pro" +
-      "toc.Allhero\"\031\n\007Allhero\022\016\n\006heroid\030\001 \001(\005\"L" +
+      "toc.Allhero\"\031\n\007Allhero\022\016\n\006heroid\030\001 \001(\005\"<" +
       "\n\013TalentOrder\022\r\n\005order\030\001 \001(\005\022\016\n\006skill1\030\002" +
-      " \001(\005\022\016\n\006skill2\030\003 \001(\005\022\016\n\006skill3\030\004 \001(\005\"c\n\006",
-      "Talent\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003img\030" +
-      "\003 \001(\t\0222\n\005order\030\004 \003(\0132#.com.trans.pixel.p" +
-      "rotoc.TalentOrder\"8\n\nTalentList\022*\n\002id\030\001 " +
-      "\003(\0132\036.com.trans.pixel.protoc.Talent\"A\n\rT" +
-      "alentupgrade\022\r\n\005level\030\001 \001(\005\022\016\n\006itemid\030\002 " +
-      "\001(\005\022\021\n\titemcount\030\003 \001(\005\"I\n\021TalentupgradeL" +
-      "ist\0224\n\005level\030\001 \003(\0132%.com.trans.pixel.pro" +
-      "toc.Talentupgrade\",\n\014Talentunlock\022\r\n\005ord" +
-      "er\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"G\n\020TalentunlockL" +
-      "ist\0223\n\005order\030\001 \003(\0132$.com.trans.pixel.pro",
-      "toc.Talentunlock\"H\n\016UserTalentList\0226\n\nus" +
-      "erTalent\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "UserTalent\"T\n\017UserTalentSkill\022\020\n\010talentI" +
-      "d\030\001 \002(\005\022\017\n\007orderId\030\002 \002(\005\022\017\n\007skillId\030\003 \002(" +
-      "\005\022\r\n\005level\030\004 \002(\005\"6\n\010HeroList\022*\n\004data\030\001 \003" +
-      "(\0132\034.com.trans.pixel.protoc.Hero\"\207\001\n\004Her" +
-      "o\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\017\n\007quality\030\005" +
-      " \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010handbook\030\007 \001(\005" +
-      "\0220\n\005skill\030\010 \003(\0132!.com.trans.pixel.protoc" +
-      ".HeroSkill\",\n\tHeroSkill\022\017\n\007skillid\030\001 \001(\005",
-      "\022\016\n\006unlock\030\003 \001(\005\"<\n\013UpgradeList\022-\n\004data\030" +
-      "\001 \003(\0132\037.com.trans.pixel.protoc.Upgrade\"1" +
-      "\n\007Upgrade\022\r\n\005level\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003" +
-      "exp\030\003 \001(\003\")\n\010UserFood\022\016\n\006foodId\030\001 \002(\005\022\r\n" +
-      "\005count\030\002 \002(\005\"@\n\016StrengthenList\022.\n\002id\030\001 \003" +
-      "(\0132\".com.trans.pixel.protoc.Strengthen\"\\" +
-      "\n\nStrengthen\022\n\n\002id\030\001 \001(\005\022\022\n\nzhanli_per\030\002" +
-      " \001(\005\022\016\n\006itemid\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\017\n\007s" +
-      "uccess\030\005 \001(\005\">\n\014HerolootList\022.\n\004data\030\001 \003" +
-      "(\0132 .com.trans.pixel.protoc.Heroloot\"U\n\010",
-      "Heroloot\022\016\n\006itemid\030\001 \001(\005\022\016\n\006heroid\030\002 \001(\005" +
-      "\022\014\n\004star\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004name\030\005 " +
-      "\001(\t\"H\n\026RequestLockHeroCommand\022\016\n\006heroId\030" +
-      "\002 \001(\005\022\016\n\006infoId\030\003 \001(\003\022\016\n\006isLock\030\004 \001(\010\"N\n" +
-      "\033RequestHeroLevelUpToCommand\022\017\n\007levelUp\030" +
-      "\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\"u\n" +
-      "\031RequestHeroLevelUpCommand\022\023\n\013levelUpTyp" +
-      "e\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006infoId\030\003 \002(\003\022" +
-      "\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInfoId\030\005 \003(\003\"_\n\031" +
-      "ResponseHeroResultCommand\022\016\n\006heroId\030\001 \002(",
-      "\005\0222\n\010heroInfo\030\002 \003(\0132 .com.trans.pixel.pr" +
-      "otoc.HeroInfo\"U\n\031ResponseDeleteHeroComma" +
-      "nd\0228\n\010heroInfo\030\001 \003(\0132&.com.trans.pixel.p" +
-      "rotoc.FenjieHeroInfo\">\n\034RequestResetHero" +
-      "SkillCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002" +
-      " \002(\003\"G\n\026RequestHeroSpUpCommand\022\016\n\006heroId" +
-      "\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\022\r\n\005count\030\003 \002(\005\"\210\001" +
-      "\n\010UserTeam\022\n\n\002id\030\001 \002(\003\022\020\n\010teaminfo\030\002 \002(\t" +
-      "\0226\n\nteamEngine\030\003 \003(\0132\".com.trans.pixel.p" +
-      "rotoc.TeamEngine\022\024\n\014rolePosition\030\004 \001(\r\022\020",
-      "\n\010talentId\030\005 \001(\r\"\'\n\025RequestGetTeamComman" +
-      "d\022\016\n\006userId\030\001 \002(\003\"D\n\026ResponseGetTeamComm" +
-      "and\022*\n\004team\030\001 \002(\0132\034.com.trans.pixel.prot" +
-      "oc.Team\"\'\n\nTeamUnlock\022\n\n\002id\030\001 \002(\005\022\r\n\005cou" +
-      "nt\030\002 \002(\005\"\230\001\n\030RequestUpdateTeamCommand\022\n\n" +
-      "\002id\030\001 \002(\003\022\020\n\010teamInfo\030\002 \002(\t\022\024\n\014rolePosit" +
-      "ion\030\004 \001(\005\0226\n\nteamEngine\030\005 \003(\0132\".com.tran" +
-      "s.pixel.protoc.TeamEngine\022\020\n\010talentId\030\006 " +
-      "\001(\r\"\034\n\032RequestUserTeamListCommand\"Q\n\033Res" +
-      "ponseUserTeamListCommand\0222\n\010userTeam\030\001 \003",
-      "(\0132 .com.trans.pixel.protoc.UserTeam\"F\n\016" +
-      "TeamUnlockList\0224\n\010xiaoguan\030\001 \003(\0132\".com.t" +
-      "rans.pixel.protoc.TeamUnlock\"P\n\032Response" +
-      "GetUserHeroCommand\0222\n\010userHero\030\001 \003(\0132 .c" +
-      "om.trans.pixel.protoc.HeroInfo\"V\n\030Reques" +
-      "tFenjieHeroCommand\022:\n\nfenjieHero\030\001 \003(\0132&" +
-      ".com.trans.pixel.protoc.FenjieHeroInfo\"\032" +
-      "\n\030RequestUserPokedeCommand\"M\n\031ResponseUs" +
-      "erPokedeCommand\0220\n\006pokede\030\001 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.HeroInfo\"\036\n\034RequestBuyH",
-      "eroPackageCommand\"8\n RequestSubmitCompos" +
-      "eSkillCommand\022\024\n\014composeSkill\030\001 \002(\t\"K\n\026R" +
-      "equestFeedFoodCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n" +
-      "\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003 \002(\005\"X\n\027Requ" +
-      "estClearHeroCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010p" +
-      "osition\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\r\n\005count\030\004 \001" +
-      "(\005\"M\n\027ResponseUserFoodCommand\0222\n\010userFoo" +
-      "d\030\001 \003(\0132 .com.trans.pixel.protoc.UserFoo" +
-      "d\"P\n\030ResponseClearInfoCommand\0224\n\tclearIn" +
-      "fo\030\001 \003(\0132!.com.trans.pixel.protoc.ClearI",
-      "nfo\";\n\034RequestChoseClearInfoCommand\022\017\n\007r" +
-      "efused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034RequestHeroS" +
-      "trengthenCommand\022\016\n\006heroId\030\001 \002(\005\"<\n\030Requ" +
-      "estOpenFetterCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010" +
-      "fetterid\030\002 \002(\005\"L\n!RequestZanHeroMessageB" +
-      "oardCommand\022\016\n\006itemId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022" +
-      "\013\n\003zan\030\003 \002(\010\")\n\033RequestTalentupgradeComm" +
-      "and\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTalentChangeUs" +
-      "eCommand\022\n\n\002id\030\001 \002(\005\"M\n\037RequestTalentCha" +
-      "ngeSkillCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002 \002",
-      "(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031ResponseUserTale" +
-      "ntCommand\0226\n\nuserTalent\030\001 \003(\0132\".com.tran" +
-      "s.pixel.protoc.UserTalent\022@\n\017userTalentS" +
-      "kill\030\002 \003(\0132\'.com.trans.pixel.protoc.User" +
-      "TalentSkill"
+      " \001(\005\022\016\n\006skill2\030\003 \001(\005\"V\n\006Talent\022\n\n\002id\030\001 \001",
+      "(\005\022\014\n\004name\030\002 \001(\t\0222\n\005skill\030\004 \003(\0132#.com.tr" +
+      "ans.pixel.protoc.TalentOrder\":\n\nTalentLi" +
+      "st\022,\n\004data\030\001 \003(\0132\036.com.trans.pixel.proto" +
+      "c.Talent\"A\n\rTalentupgrade\022\r\n\005level\030\001 \001(\005" +
+      "\022\016\n\006itemid\030\002 \001(\005\022\021\n\titemcount\030\003 \001(\005\"I\n\021T" +
+      "alentupgradeList\0224\n\005level\030\001 \003(\0132%.com.tr" +
+      "ans.pixel.protoc.Talentupgrade\",\n\014Talent" +
+      "unlock\022\r\n\005order\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"G\n\020" +
+      "TalentunlockList\0223\n\005order\030\001 \003(\0132$.com.tr" +
+      "ans.pixel.protoc.Talentunlock\"H\n\016UserTal",
+      "entList\0226\n\nuserTalent\030\001 \003(\0132\".com.trans." +
+      "pixel.protoc.UserTalent\"T\n\017UserTalentSki" +
+      "ll\022\020\n\010talentId\030\001 \002(\005\022\017\n\007orderId\030\002 \002(\005\022\017\n" +
+      "\007skillId\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\"6\n\010HeroLis" +
+      "t\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.protoc" +
+      ".Hero\"\207\001\n\004Hero\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t" +
+      "\022\017\n\007quality\030\005 \001(\005\022\020\n\010position\030\006 \001(\005\022\020\n\010h" +
+      "andbook\030\007 \001(\005\0220\n\005skill\030\010 \003(\0132!.com.trans" +
+      ".pixel.protoc.HeroSkill\",\n\tHeroSkill\022\017\n\007" +
+      "skillid\030\001 \001(\005\022\016\n\006unlock\030\003 \001(\005\"<\n\013Upgrade",
+      "List\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.Upgrade\"1\n\007Upgrade\022\r\n\005level\030\001 \001(\005\022\n\n" +
+      "\002sp\030\002 \001(\005\022\013\n\003exp\030\003 \001(\003\")\n\010UserFood\022\016\n\006fo" +
+      "odId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"@\n\016StrengthenL" +
+      "ist\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.protoc" +
+      ".Strengthen\"\\\n\nStrengthen\022\n\n\002id\030\001 \001(\005\022\022\n" +
+      "\nzhanli_per\030\002 \001(\005\022\016\n\006itemid\030\003 \001(\005\022\r\n\005cou" +
+      "nt\030\004 \001(\005\022\017\n\007success\030\005 \001(\005\">\n\014HerolootLis" +
+      "t\022.\n\004data\030\001 \003(\0132 .com.trans.pixel.protoc" +
+      ".Heroloot\"U\n\010Heroloot\022\016\n\006itemid\030\001 \001(\005\022\016\n",
+      "\006heroid\030\002 \001(\005\022\014\n\004star\030\003 \001(\005\022\r\n\005count\030\004 \001" +
+      "(\005\022\014\n\004name\030\005 \001(\t\"H\n\026RequestLockHeroComma" +
+      "nd\022\016\n\006heroId\030\002 \001(\005\022\016\n\006infoId\030\003 \001(\003\022\016\n\006is" +
+      "Lock\030\004 \001(\010\"N\n\033RequestHeroLevelUpToComman" +
+      "d\022\017\n\007levelUp\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006in" +
+      "foId\030\003 \002(\003\"u\n\031RequestHeroLevelUpCommand\022" +
+      "\023\n\013levelUpType\030\001 \002(\005\022\016\n\006heroId\030\002 \002(\005\022\016\n\006" +
+      "infoId\030\003 \002(\003\022\017\n\007skillId\030\004 \001(\005\022\022\n\ncostInf" +
+      "oId\030\005 \003(\003\"_\n\031ResponseHeroResultCommand\022\016" +
+      "\n\006heroId\030\001 \002(\005\0222\n\010heroInfo\030\002 \003(\0132 .com.t",
+      "rans.pixel.protoc.HeroInfo\"U\n\031ResponseDe" +
+      "leteHeroCommand\0228\n\010heroInfo\030\001 \003(\0132&.com." +
+      "trans.pixel.protoc.FenjieHeroInfo\">\n\034Req" +
+      "uestResetHeroSkillCommand\022\016\n\006heroId\030\001 \002(" +
+      "\005\022\016\n\006infoId\030\002 \002(\003\"G\n\026RequestHeroSpUpComm" +
+      "and\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\022\r\n\005c" +
+      "ount\030\003 \002(\005\"\210\001\n\010UserTeam\022\n\n\002id\030\001 \002(\003\022\020\n\010t" +
+      "eaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003(\0132\".com." +
+      "trans.pixel.protoc.TeamEngine\022\024\n\014rolePos" +
+      "ition\030\004 \001(\r\022\020\n\010talentId\030\005 \001(\r\"\'\n\025Request",
+      "GetTeamCommand\022\016\n\006userId\030\001 \002(\003\"D\n\026Respon" +
+      "seGetTeamCommand\022*\n\004team\030\001 \002(\0132\034.com.tra" +
+      "ns.pixel.protoc.Team\"\'\n\nTeamUnlock\022\n\n\002id" +
+      "\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestUpdateT" +
+      "eamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030\002 \002(\t" +
+      "\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngine\030\005 \003" +
+      "(\0132\".com.trans.pixel.protoc.TeamEngine\022\020" +
+      "\n\010talentId\030\006 \001(\r\"\034\n\032RequestUserTeamListC" +
+      "ommand\"Q\n\033ResponseUserTeamListCommand\0222\n" +
+      "\010userTeam\030\001 \003(\0132 .com.trans.pixel.protoc",
+      ".UserTeam\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030" +
+      "\001 \003(\0132\".com.trans.pixel.protoc.TeamUnloc" +
+      "k\"P\n\032ResponseGetUserHeroCommand\0222\n\010userH" +
+      "ero\030\001 \003(\0132 .com.trans.pixel.protoc.HeroI" +
+      "nfo\"V\n\030RequestFenjieHeroCommand\022:\n\nfenji" +
+      "eHero\030\001 \003(\0132&.com.trans.pixel.protoc.Fen" +
+      "jieHeroInfo\"\032\n\030RequestUserPokedeCommand\"" +
+      "M\n\031ResponseUserPokedeCommand\0220\n\006pokede\030\001" +
+      " \003(\0132 .com.trans.pixel.protoc.HeroInfo\"\036" +
+      "\n\034RequestBuyHeroPackageCommand\"8\n Reques",
+      "tSubmitComposeSkillCommand\022\024\n\014composeSki" +
+      "ll\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006he" +
+      "roId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030" +
+      "\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006hero" +
+      "Id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005" +
+      "\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodComma" +
+      "nd\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.UserFood\"P\n\030ResponseClearInfoComma" +
+      "nd\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.ClearInfo\";\n\034RequestChoseClearInf",
+      "oCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n" +
+      "\034RequestHeroStrengthenCommand\022\016\n\006heroId\030" +
+      "\001 \002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006her" +
+      "oId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZa" +
+      "nHeroMessageBoardCommand\022\016\n\006itemId\030\001 \002(\005" +
+      "\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTale" +
+      "ntupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestT" +
+      "alentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037Req" +
+      "uestTalentChangeSkillCommand\022\n\n\002id\030\001 \002(\005" +
+      "\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031Res",
+      "ponseUserTalentCommand\0226\n\nuserTalent\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.UserTalent\022@" +
+      "\n\017userTalentSkill\030\002 \003(\0132\'.com.trans.pixe" +
+      "l.protoc.UserTalentSkill"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -53143,19 +52905,19 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_TalentOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TalentOrder_descriptor,
-              new java.lang.String[] { "Order", "Skill1", "Skill2", "Skill3", });
+              new java.lang.String[] { "Order", "Skill1", "Skill2", });
           internal_static_com_trans_pixel_protoc_Talent_descriptor =
             getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_Talent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Talent_descriptor,
-              new java.lang.String[] { "Id", "Name", "Img", "Order", });
+              new java.lang.String[] { "Id", "Name", "Skill", });
           internal_static_com_trans_pixel_protoc_TalentList_descriptor =
             getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_TalentList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TalentList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Talentupgrade_descriptor =
             getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_Talentupgrade_fieldAccessorTable = new

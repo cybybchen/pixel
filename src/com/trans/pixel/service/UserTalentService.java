@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talent;
+import com.trans.pixel.protoc.HeroProto.TalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
 import com.trans.pixel.protoc.LadderProto.LadderEnemy;
@@ -278,8 +279,13 @@ public class UserTalentService {
 	}
 	
 	public void unlockUserTalentSkill(UserBean user, int talentId, int orderId) {
-		for (int i = 1; i < 4; i++) {
-			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, i);
+		Talent talent = talentRedisService.getTalent(talentId);
+		TalentOrder talentOrder = talent.getSkill(orderId - 1);
+		if (talentOrder.getSkill1() > 0) {
+			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, 1);
+			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
+		} else if (talentOrder.getSkill2() > 0) {
+			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, 2);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
 		}
 	}
@@ -333,6 +339,7 @@ public class UserTalentService {
 		builder.setLevel(ladderEnemy.getLeadlv());
 		
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Talent talent = talentRedisService.getTalent(builder.getId());
 		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, Talentunlock> entry = it.next();
@@ -340,7 +347,11 @@ public class UserTalentService {
 			if (talentunlock.getLevel() <= builder.getLevel()) {
 				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
 				skillBuilder.setOrder(talentunlock.getOrder());
-				skillBuilder.setSkillId(rand.nextInt(3) + 1);
+				TalentOrder talentOrder = talent.getSkill(skillBuilder.getOrder() - 1);
+				if (talentOrder.getSkill2() == 0)
+					skillBuilder.setSkillId(rand.nextInt(1) + 1);
+				else
+					skillBuilder.setSkillId(rand.nextInt(2) + 1);
 				skillBuilder.setLevel(ladderEnemy.getLeadskill());
 				builder.addSkill(skillBuilder.build());
 			}

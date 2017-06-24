@@ -89,6 +89,8 @@ public class TalentService {
 	
 	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {
 		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		if (userTalent == null)
+			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		
 		int originalLevel = userTalent.getLevel();
 		Talentupgrade talentupgrade = talentRedisService.getTalentupgrade(userTalent.getLevel()+1);
