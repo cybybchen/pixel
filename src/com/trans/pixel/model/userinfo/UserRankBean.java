@@ -25,6 +25,7 @@ public class UserRankBean {
 	}
 	
 	public UserRankBean(UserBean user) {
+		userId = user.getId();
 		setUser(user.buildShort());
 	}
 	
