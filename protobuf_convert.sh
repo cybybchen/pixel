@@ -200,6 +200,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 			return false;
 		} else if (request.hasLoginCommand()) {
 			handleLoginCommand(request, responseBuilder);
+			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
 			return false;
 		} else {
 		    long userId = head != null ? head.getUserId() : 0;
@@ -235,7 +236,7 @@ done
 echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
 			pushNoticeCommand(responseBuilder, user);
 
-		lootService.calLoot(user, responseBuilder);
+		lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
 
 		return result;
 	}

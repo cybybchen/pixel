@@ -3674,6 +3674,7 @@ message ResponseCommand {
 	optional ServerTitleInfo title = 10001;
 	optional ErrorCommand errorCommand = 2;
 	optional RewardCommand rewardCommand = 101;
+	optional RewardCommand extraRewardCommand = 139;
 	optional ResponseDailyShopCommand dailyShopCommand = 102;
 	optional ResponseShopCommand shopCommand = 103;
 	optional ResponseBlackShopCommand blackShopCommand = 104;

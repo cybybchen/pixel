@@ -15,6 +15,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.ShopProto.Libao;
+import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -37,17 +38,21 @@ public class LootService {
 	private PvpMapRedisService pvpMapRedisService;
 	@Resource
 	private PushCommandService pusher;
-	
-	public MultiReward.Builder calLoot(UserBean user, ResponseCommand.Builder responseBuilder) {
+
+	public MultiReward.Builder calLoot(UserBean user) {
+		return calLoot(user, null, false);
+	}
+	public MultiReward.Builder calLoot(UserBean user, ResponseCommand.Builder responseBuilder, boolean islogin) {
 		UserLevelBean userLevel = levelRedisService.getUserLevel(user);
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		long current = RedisService.now();
-		if (current <= userLevel.getLootTimeNormal())
+		long loottime = current - userLevel.getLootTimeNormal();
+		if (loottime <= 0)
 			return rewards;
 		SavingBox goldSavingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
 		SavingBox expSavingBox = lootRedisService.getSavingBox(user.getExpSavingBox());
-		long coin = (current - userLevel.getLootTimeNormal()) * userLevel.getCoin();
-		long exp = (current - userLevel.getLootTimeNormal()) * userLevel.getExp();
+		long coin = loottime * userLevel.getCoin();
+		long exp = loottime * userLevel.getExp();
 		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));
 		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
 			coin += coin/10;
@@ -77,6 +82,12 @@ public class LootService {
 		if(responseBuilder != null) {
 			responseBuilder.setLevelLootCommand(userLevel.build());
 			pusher.pushUserInfoCommand(responseBuilder, user);
+			if(islogin){
+				RewardCommand.Builder reward = RewardCommand.newBuilder();
+				reward.setTitle("离线奖励");
+				reward.addAllLoot(rewards.getLootList());
+				responseBuilder.setExtraRewardCommand(reward);
+			}
 		}
 		
 		return rewards;
