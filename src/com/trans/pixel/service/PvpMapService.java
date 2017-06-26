@@ -350,7 +350,17 @@ public class PvpMapService {
 			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
 			Map<String, PVPMap> map = redis.getPvpMap();
 			if(map.containsKey(event.getFieldid()+"")) {
-				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
+				List<RewardInfo> list = map.get(event.getFieldid()+"").getLootlistList();
+				for(RewardInfo rd : list) {
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(rd.getItemid());
+					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
+						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100+1);
+					else
+						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
+					
+					rewards.addLoot(reward);
+				}
 			}
 			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
 			if (event.getEventid()/1000 == 21) {
@@ -407,7 +417,17 @@ public class PvpMapService {
 				redis.deleteEvent(user, event.getPositionid());
 			rewards.addAllLoot(levelRedisService.eventReward(event.getEventid(), event.getLevel()).getLootList());
 			if(map.containsKey(event.getFieldid()+"")) {
-				rewards.addAllLoot(map.get(event.getFieldid()+"").getLootlistList());
+				List<RewardInfo> list = map.get(event.getFieldid()+"").getLootlistList();
+				for(RewardInfo rd : list) {
+					RewardInfo.Builder reward = RewardInfo.newBuilder();
+					reward.setItemid(rd.getItemid());
+					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
+						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100+1);
+					else
+						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
+					
+					rewards.addLoot(reward);
+				}
 			}
 			buff.setBuff(Math.min(buff.getMaxbuff(), buff.getBuff()+event.getBuffcount()));
 			if (event.getEventid()/1000 == 21) {
