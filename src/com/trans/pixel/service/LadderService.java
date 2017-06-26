@@ -497,7 +497,7 @@ public class LadderService {
 					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
 	//				if (serverId == 10)
 	//					log.debug("userRanking is:" + userRank.toJson());
-					if (userRank != null && (userRank.getUserId() > 0 || serverId == 10)) {
+					if (userRank != null && userRank.getUserId() > 0) {
 						
 							log.error("userRanking is:" + userRank.toJson());
 						MailBean mail = buildLadderDailyMail(userRank.getUserId(), ladderDaily);
