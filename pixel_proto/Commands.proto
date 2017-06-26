@@ -730,16 +730,18 @@ message TalentOrder {
 	optional int32 order = 1;
 	optional int32 skill1 = 2;
 	optional int32 skill2 = 3;
+	optional int32 skill3 = 4;
 }
 
 message Talent {
 	optional int32 id = 1;
 	optional string name = 2;
-	repeated TalentOrder skill = 4;
+	optional string img = 3;
+	repeated TalentOrder order = 4;
 }
 
 message TalentList {
-	repeated Talent data = 1;
+	repeated Talent id = 1;
 }
 
 message Talentupgrade {
