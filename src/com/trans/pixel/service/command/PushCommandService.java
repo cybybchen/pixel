@@ -410,11 +410,11 @@ public class PushCommandService extends BaseCommandService {
 		long userId = user.getId();
 		for(RewardInfo reward : rewards.getLootList()){
 			int rewardId = reward.getItemid();
-			if(rewardId < 100)
-				continue;
+//			if(rewardId < 100)
+//				continue;
 //			if (pushRewardIdList.contains(rewardId))
 //				continue;
-			
+			 
 			if (rewardId < 100 && rewardId > 0) {
 				UserTalent userTalent = userTalentService.getUserTalent(user, rewardId);
 				if (userTalent != null)
@@ -460,6 +460,10 @@ public class PushCommandService extends BaseCommandService {
 			RewardCommand.Builder reward = RewardCommand.newBuilder();
 			reward.setTitle(rewards.getName());
 			reward.addAllLoot(rewards.getLootList());
+			for(int i = reward.getLootCount()-1; i >= 0; i--) {
+				if(reward.getLoot(i).getItemid() < 100)//主角不返回
+					reward.removeLoot(i);
+			}
 			responseBuilder.setRewardCommand(reward);
 		}
 		if (headList.size() > 0)
