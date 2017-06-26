@@ -149,6 +149,7 @@ message UserTalentEquip {
 	optional int32 position = 1;
 	optional int32 itemId = 2;
 	optional int32 level = 3;
+	optional uint32 order = 4;
 }
 
 message UserRank {

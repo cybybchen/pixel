@@ -68,6 +68,7 @@ public class UserTalentService {
 				UserEquipPokedeBean ueBean = userEquipPokedeService.getUserEquipPokede(ueList, uteBuilder.getItemId());
 				if (ueBean != null) {
 					uteBuilder.setLevel(ueBean.getLevel());
+					uteBuilder.setOrder(ueBean.getOrder());
 					builder.setEquip(i, uteBuilder.build());
 				}
 			}
