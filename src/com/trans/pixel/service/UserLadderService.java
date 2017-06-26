@@ -114,7 +114,7 @@ public class UserLadderService {
 			}
 		}
 		
-		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//从战力排行榜上随机对手
+		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT && userLadder.getGrade() <= 4) {//从战力排行榜上随机对手,段位黄金以下才随
 			int randomStart = -6 + RandomUtils.nextInt(12);
 			List<UserInfo> randomUserList = userService.getRandUserByNodelete(randomStart, 12 + randomStart, user);
 			for (UserInfo userinfo : randomUserList) {
