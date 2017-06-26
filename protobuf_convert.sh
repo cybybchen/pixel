@@ -235,11 +235,7 @@ done
 echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
 			pushNoticeCommand(responseBuilder, user);
 
-		UserLevelBean userLevel = lootService.calLoot(user);
-		if (userLevel != null) {
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-			rep.command.setLevelLootCommand(userLevel.build());
-		}
+		lootService.calLoot(user, responseBuilder);
 
 		return result;
 	}

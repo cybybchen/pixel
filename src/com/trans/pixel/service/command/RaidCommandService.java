@@ -99,8 +99,7 @@ public class RaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(cmd.getRet()){
-				MultiReward.Builder rewards = MultiReward.newBuilder();
-				rewards.addAllLoot(event.getLootlistList());
+				MultiReward.Builder rewards = levelRedisService.eventReward(event, raid.getLevel());
 				handleRewards(responseBuilder, user, rewards.build());
 				
 				for(int i = 0; i < raid.getEventCount(); i++) {

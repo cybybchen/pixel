@@ -122,7 +122,7 @@ public class RewardTaskService {
 					userEquipList.add(userEquip);
 			}
 			rewards.addAllLoot(rewardTask.getLootlistList());
-			rewards.addAllLoot(event.getLootlistList());
+			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
 			if(rewardTask.getType() == 2){//深渊
 				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 					int itemid = rewards.getLoot(i).getItemid();
@@ -433,7 +433,7 @@ public class RewardTaskService {
 			
 			EventConfig event = levelRedisService.getEvent(userRewardTask.getTask().getEventid());
 			rewards.addAllLoot(userRewardTask.getTask().getLootlistList());
-			rewards.addAllLoot(event.getLootlistList());
+			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
 			return rewards;
 		}
 		
