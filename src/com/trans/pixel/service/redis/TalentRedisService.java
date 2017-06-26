@@ -67,7 +67,7 @@ public class TalentRedisService extends RedisService {
 		}
 		
 		Map<String, Talent> map = new HashMap<String, Talent>();
-		for(Talent.Builder talent : builder.getIdBuilderList()){
+		for(Talent.Builder talent : builder.getDataBuilderList()){
 			map.put("" + talent.getId(), talent.build());
 		}
 		
