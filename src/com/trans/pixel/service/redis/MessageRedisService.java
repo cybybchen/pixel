@@ -325,14 +325,17 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	private String buildHeroMessageBoardNormalKeyRedisKey(int serverId, int itemId) {
-		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_NORMAL_PREFIX + itemId;
+//		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_NORMAL_PREFIX + itemId;
+		return RedisKey.PREFIX + RedisKey.HERO_MESSAGE_BOARD_NORMAL_PREFIX + itemId;
 	}
 	
 	private String buildHeroMessageBoardTopKeyRedisKey(int serverId, int itemId) {
-		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_TOP_PREFIX + itemId;
+//		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_TOP_PREFIX + itemId;
+		return RedisKey.PREFIX + RedisKey.HERO_MESSAGE_BOARD_TOP_PREFIX + itemId;
 	}
 	
 	private String buildHeroMessageBoardValueRedisKey(int serverId, int itemId) {
-		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_VALUE_PREFIX + itemId;
+//		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.HERO_MESSAGE_BOARD_VALUE_PREFIX + itemId;
+		return RedisKey.PREFIX + RedisKey.HERO_MESSAGE_BOARD_VALUE_PREFIX + itemId;
 	}
 }
