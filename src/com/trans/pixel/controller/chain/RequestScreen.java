@@ -469,7 +469,6 @@ public abstract class RequestScreen implements RequestHandle {
 			return false;
 		} else if (request.hasLoginCommand()) {
 			handleLoginCommand(request, responseBuilder);
-			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
 			return false;
 		} else {
 		    long userId = head != null ? head.getUserId() : 0;

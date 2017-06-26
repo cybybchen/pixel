@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
@@ -78,6 +79,8 @@ public class UserCommandService extends BaseCommandService {
 	private LevelRedisService userLevelService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private LootService lootService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -120,6 +123,8 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		noticeMessageService.composeLogin(user);
+
+		lootService.calLoot(user, responseBuilder, true);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {
