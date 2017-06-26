@@ -171,17 +171,17 @@ public class UserLadderService {
 	
 	private int getWinScore(int winScore1, int winScore2, int k) {
 		return (int) (winScore1 + k * (1 - 
-				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400))));
+				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400.f))));
 	}
 	
 	private int getFailScore(int winScore1, int winScore2, int k, float losepercent) {
 		return (int) (winScore1 + losepercent * k * (0 - 
-				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400))));
+				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400.f))));
 	}
 	
 	private int getDrawScore(int winScore1, int winScore2, int k) {
 		return (int) (winScore1 + k * (0.5 - 
-				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400))));
+				1.f / (1 + Math.pow(10, (winScore2 - winScore1) / 400.f))));
 	}
 	
 	public UserLadder.Builder updateToNextSeason(UserLadder userLadder, LadderSeason ladderSeason) {
