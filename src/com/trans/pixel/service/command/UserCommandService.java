@@ -119,12 +119,11 @@ public class UserCommandService extends BaseCommandService {
 		activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_LOGIN);
 		
 		userService.cache(user.getServerId(), user.buildShort());
+		lootService.calLoot(user, responseBuilder, true);
 		pushCommand(responseBuilder, user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		
 		noticeMessageService.composeLogin(user);
-
-		lootService.calLoot(user, responseBuilder, true);
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {

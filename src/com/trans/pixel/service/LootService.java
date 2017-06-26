@@ -4,8 +4,10 @@ import java.util.Date;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
@@ -18,6 +20,7 @@ import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.command.PushCommandService;
+import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.LootRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
@@ -26,6 +29,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Component
 public class LootService {
+	private static Logger logger = Logger.getLogger(LootService.class);
 	@Resource
 	private LevelRedisService levelRedisService;
 	@Resource
@@ -74,8 +78,15 @@ public class LootService {
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build(), false);
 			userLevel.setLootTime(userLevel.getLootTime()+(int)time);
 		}
-		user.setCoin(user.getCoin() + Math.min(goldSavingBox.getGold().getCount(), coin));
-		user.setExp(user.getExp() + Math.min(expSavingBox.getExp().getCount(), exp));
+		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		reward.setItemid(RewardConst.COIN);
+		reward.setCount(Math.min(goldSavingBox.getGold().getCount(), coin));
+		user.setCoin(user.getCoin() + reward.getCount());
+		rewards.addLoot(reward);
+		reward.setItemid(RewardConst.EXP);
+		reward.setCount(Math.min(expSavingBox.getExp().getCount(), exp));
+		user.setExp(user.getExp() + reward.getCount());
+		rewards.addLoot(reward);
 		userLevel.setLootTimeNormal((int)current);
 		levelRedisService.saveUserLevel(userLevel);
 		userService.updateUser(user);
@@ -83,10 +94,11 @@ public class LootService {
 			responseBuilder.setLevelLootCommand(userLevel.build());
 			pusher.pushUserInfoCommand(responseBuilder, user);
 			if(islogin){
-				RewardCommand.Builder reward = RewardCommand.newBuilder();
-				reward.setTitle("离线奖励");
-				reward.addAllLoot(rewards.getLootList());
-				responseBuilder.setExtraRewardCommand(reward);
+				RewardCommand.Builder rewardCmd = RewardCommand.newBuilder();
+				rewardCmd.setTitle("离线奖励");
+				rewardCmd.addAllLoot(rewards.getLootList());
+				rewardCmd.setExtra((int)loottime);
+				responseBuilder.setExtraRewardCommand(rewardCmd);
 			}
 		}
 		

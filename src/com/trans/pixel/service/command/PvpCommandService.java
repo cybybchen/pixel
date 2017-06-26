@@ -126,12 +126,12 @@ public class PvpCommandService extends BaseCommandService {
 			rewards = pvpMapService.attackEvent(user, cmd.getPositionid(), cmd.getRet(), time);
 		else
 			rewards = pvpMapService.attackEvents(user);
+		
 		if(rewards == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
 		} else if(rewards.getLootCount() > 0){
-			logger.info(rewards.getAllFields());
 			handleRewards(responseBuilder, user, rewards);
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);
