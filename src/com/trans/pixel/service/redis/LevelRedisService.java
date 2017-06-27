@@ -559,17 +559,17 @@ public class LevelRedisService extends RedisService {
 		AreaEventList.Builder list2 = AreaEventList.newBuilder();
 		parseXml(xml2, list2);
 		Map<Integer, EventConfig.Builder> eventmap = getEventConfig();
-		for(AreaEvent.Builder area1 : list1.getDataBuilderList()){
-			for(Event.Builder event1 : area1.getEventBuilderList()){
-				for(AreaEvent.Builder area2 : list2.getDataBuilderList()){
-					for(Event.Builder event2 : area2.getEventBuilderList()){
-						if(event1.getTargetid() != 0 && event1.getEventid() == event2.getEventid()) {
-							throw new RuntimeErrorException(null, "Error:Found targetid in event2 "+event1.getEventid());
-						}
-					}
-				}
-			}
-		}
+//		for(AreaEvent.Builder area1 : list1.getDataBuilderList()){
+//			for(Event.Builder event1 : area1.getEventBuilderList()){
+//				for(AreaEvent.Builder area2 : list2.getDataBuilderList()){
+//					for(Event.Builder event2 : area2.getEventBuilderList()){
+//						if(event1.getTargetid() != 0 && event1.getEventid() == event2.getEventid()) {
+//							throw new RuntimeErrorException(null, "Error:Found targetid in event2 "+event1.getEventid());
+//						}
+//					}
+//				}
+//			}
+//		}
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, AreaEvent.Builder> map1 = new HashMap<Integer, AreaEvent.Builder>();
 		for(AreaEvent.Builder daguan : list1.getDataBuilderList()){
