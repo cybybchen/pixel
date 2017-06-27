@@ -233,7 +233,7 @@ public class TalentService {
 				equipBuilder.setItemId(itemId);
 				builder.setEquip(i, equipBuilder.build());
 				
-				if (changeTitleEquip(user, position, itemId))
+				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, itemId))
 					userService.updateUser(user);
 				
 				return builder.build();
