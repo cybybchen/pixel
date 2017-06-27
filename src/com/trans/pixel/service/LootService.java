@@ -69,7 +69,7 @@ public class LootService {
 				if(map.getOpened()){
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(map.getDaguanreward().getItemid());
-					reward.setCount((int)(map.getDaguanreward().getCount()+map.getDaguanreward().getCountb()*userLevel.getUnlockDaguan()));
+					reward.setCount((int)((map.getDaguanreward().getCount()+map.getDaguanreward().getCountb()*userLevel.getUnlockDaguan())/TimeConst.SECONDS_PER_HOUR*time));
 					rewards.addLoot(reward);
 				}
 			}
