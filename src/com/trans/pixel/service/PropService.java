@@ -131,6 +131,8 @@ public class PropService {
 	}
 	
 	private RewardInfo randomItem(Prop prop) {
+		if (prop.getWeightall() <= 0)
+			return null;
 		Random rand = new Random();
 		int randWeight = rand.nextInt(prop.getWeightall());
 		for (int i = 0; i < prop.getRewardCount(); ++i) {
