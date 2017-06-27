@@ -194,6 +194,7 @@ public class UserService {
 	private void handleVipDailyReward(UserBean user) {
 		VipInfo vip = getVip(user.getVip());
 		if(vip != null){
+			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvprefresh());
 			user.setPvpInbreakTime(user.getPvpInbreakTime() + vip.getPvpinbreak());
 			user.setShopchipboxTime(user.getShopchipboxTime() + vip.getShopchipbox());
