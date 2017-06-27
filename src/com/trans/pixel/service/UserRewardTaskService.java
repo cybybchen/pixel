@@ -110,7 +110,9 @@ public class UserRewardTaskService {
 					if(!"".equals(task.getEndtime()) && !DateUtil.timeIsAvailable(task.getStarttime(), task.getEndtime()))
 						continue;//不在有效期
 					UserRewardTask.Builder builder = UserRewardTask.newBuilder();
-					task.setEventid(task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid());
+					int eventindex = RedisService.nextInt(task.getEventCount());
+					task.setEventid(task.getEvent(eventindex).getEventid());
+					task.removeEvent(eventindex);
 					builder.setTask(task);
 					builder.getTaskBuilder().clearRandcount();
 					builder.getTaskBuilder().clearEvent();
