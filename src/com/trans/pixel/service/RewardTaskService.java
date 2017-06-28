@@ -315,7 +315,7 @@ public class RewardTaskService {
 			RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
 			roomInfoBuilder.setIndex(rewardTask.getIndex());
 			roomInfoBuilder.setUser(userService.getCache(user.getServerId(), user.getId()));
-			for (int position = 0; position < 4; ++position) {
+			for (int position = 1; position < 5; ++position) {
 				if (!hasPosition(position, builder.getRoomInfoList())) {
 					roomInfoBuilder.setPosition(position);
 					break;
