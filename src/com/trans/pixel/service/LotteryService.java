@@ -66,6 +66,10 @@ public class LotteryService {
 			totalWeight += reward.getWeight();
 		}
 		Random rand = new Random();
+		
+		if (totalWeight <= 0)
+			return rewardList.get(rand.nextInt(rewardList.size()));
+		
 		int randomNum = rand.nextInt(totalWeight);
 		totalWeight = 0;
 		for (RewardBean reward : rewardList) {
