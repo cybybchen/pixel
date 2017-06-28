@@ -3297,6 +3297,7 @@ message RewardTaskList {
 message RoomInfo {
 	optional uint32 index = 1;
 	optional UserInfo user = 2;
+	optional uint32 position = 3;
 }
 
 message UserRewardTask {
@@ -3369,6 +3370,12 @@ message RequestUserRewardTaskRoomCommand {
 
 message RequestGiveupRewardTaskCommand {
 	required uint32 index = 1;
+}
+
+message RequestChangePositionCommand {
+	required uint32 position1 = 1;
+	required uint32 position2 = 2;
+	required uint32 index = 3;
 }
 ////////// TaskProto
 message TaskList {
@@ -3661,6 +3668,7 @@ message RequestCommand {
 	optional RequestEquipupCommand equipupCommand = 250;
 	optional RequestMaterialComposeCommand materialComposeCommand = 251;
 	optional RequestUseMaterialCommand useMaterialCommand = 252;
+	optional RequestChangePositionCommand changePositionCommand = 253;
 }
 ////////// Commands
 message ErrorCommand {

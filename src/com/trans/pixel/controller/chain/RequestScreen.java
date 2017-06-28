@@ -199,6 +199,7 @@ import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
 import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
@@ -406,6 +407,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestChangePositionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
@@ -1214,6 +1216,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasAchieveRewardCommand()) {
 			RequestAchieveRewardCommand cmd = request.getAchieveRewardCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasChangePositionCommand()) {
+			RequestChangePositionCommand cmd = request.getChangePositionCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetBattletowerCommand()) {

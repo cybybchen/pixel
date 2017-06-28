@@ -16,6 +16,7 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
@@ -230,5 +231,23 @@ public class RewardTaskCommandService extends BaseCommandService {
 		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
 		builder.addUserRewardTask(rewardTaskBuilder.build());
 		responseBuilder.setUserRewardTaskCommand(builder.build());
+	}
+	
+	public void changePosition(RequestChangePositionCommand cmd, Builder responseBuilder, UserBean user) {
+		int position1 = cmd.getPosition1();
+		int position2 = cmd.getPosition2();
+		int index = cmd.getIndex();
+		UserRewardTaskRoom.Builder roomBuilder = UserRewardTaskRoom.newBuilder();
+		ResultConst ret = rewardTaskService.changePosition(user, index, position1, position2, roomBuilder);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		
+		ResponseUserRewardTaskRoomCommand.Builder builder = ResponseUserRewardTaskRoomCommand.newBuilder();
+		builder.addRoom(roomBuilder.build());
+		responseBuilder.setUserRewardTaskRoomCommand(builder.build());
 	}
 }

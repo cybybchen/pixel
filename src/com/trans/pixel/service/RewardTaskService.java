@@ -183,6 +183,7 @@ public class RewardTaskService {
 		RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
 		roomInfoBuilder.setIndex(ut.getIndex());
 		roomInfoBuilder.setUser(create);
+		roomInfoBuilder.setPosition(1);//排序位置
 		builder.addRoomInfo(roomInfoBuilder.build());
 		builder.setEventid(ut.getTask().getEventid());
 		rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
@@ -314,6 +315,12 @@ public class RewardTaskService {
 			RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
 			roomInfoBuilder.setIndex(rewardTask.getIndex());
 			roomInfoBuilder.setUser(userService.getCache(user.getServerId(), user.getId()));
+			for (int position = 0; position < 4; ++position) {
+				if (!hasPosition(position, builder.getRoomInfoList())) {
+					roomInfoBuilder.setPosition(position);
+					break;
+				}
+			}
 			builder.addRoomInfo(roomInfoBuilder.build());
 			rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
 			
@@ -450,6 +457,31 @@ public class RewardTaskService {
 		return rewards;
 	}
 	
+	public ResultConst changePosition(UserBean user, int index, int position1, int position2, UserRewardTaskRoom.Builder roomBuilder) {
+		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
+		if (room == null)
+			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
+		
+		if (room.getCreateUserId() != user.getId()) {
+			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
+		}
+	
+		roomBuilder.mergeFrom(room);
+		for (int i = 0; i < roomBuilder.getRoomInfoCount(); ++i) {
+			RoomInfo.Builder builder = RoomInfo.newBuilder(roomBuilder.getRoomInfo(i));
+			if (builder.getPosition() == position1)
+				builder.setPosition(position2);
+			else if (builder.getPosition() == position2)
+				builder.setPosition(position1);
+			
+			roomBuilder.setRoomInfo(i, builder.build());
+		}
+		rewardTaskRedisService.setUserRewardTaskRoom(roomBuilder.build());
+		
+		return SuccessConst.CHANGE_POSITION_SUCCESS;
+			
+	}
+	
 //	private List<RewardBean> getBossloot(int id, UserBean user, int team, int dps) {
 //		int itemid1 = 0;
 //		int itemcount1 = 0;
@@ -559,5 +591,14 @@ public class RewardTaskService {
 		MailBean mail = MailBean.buildMail(userId, user, content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, id);
 		mailService.addMail(mail);
 		log.debug("mail is:" + mail.toJson());
+	}
+	
+	private boolean hasPosition(int position, List<RoomInfo> roomList) {
+		for (RoomInfo room : roomList) {
+			if (position == room.getPosition())
+				return true;
+		}
+		
+		return false;
 	}
 }
