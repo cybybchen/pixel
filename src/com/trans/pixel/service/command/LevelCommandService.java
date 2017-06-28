@@ -218,6 +218,7 @@ public class LevelCommandService extends BaseCommandService {
 						rewards.addLoot(reward);
 					}
 				}else{
+					reward.setCount(reward.getCount()*event.getCount());
 					rewards.addLoot(reward);
 				}
 			}
