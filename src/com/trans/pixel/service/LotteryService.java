@@ -126,7 +126,7 @@ public class LotteryService {
 	    		user.setHunxiaPRD(user.getHunxiaPRD() + 1);
     	}
     		
-    	while (randomLotteryList.size() < count) {
+    	while (randomLotteryList.size() < (count > 1 ? (count + 1) : count)) {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
     			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
     				RewardBean reward = randomReward(prdLotteryList);
