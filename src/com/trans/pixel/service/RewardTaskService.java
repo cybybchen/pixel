@@ -123,7 +123,17 @@ public class RewardTaskService {
 			}
 			rewards.addAllLoot(rewardTask.getLootlistList());
 			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
-			if(rewardTask.getType() == 2){//深渊
+			if(rewardTask.getType() == 1){//普通悬赏
+				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = rewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							rewards.getLootBuilder(i).setItemid(24006);
+						}
+					}
+				}
+			}else if(rewardTask.getType() == 2){//深渊
 				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 					int itemid = rewards.getLoot(i).getItemid();
 					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {

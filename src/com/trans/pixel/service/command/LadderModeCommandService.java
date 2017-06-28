@@ -34,6 +34,7 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserLadderService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
@@ -56,6 +57,8 @@ public class LadderModeCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private UserLadderService userLadderService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public void ladderInfo(RequestLadderInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		LadderSeason ladderSeason = userLadderService.getLadderSeason();
@@ -251,7 +254,15 @@ public class LadderModeCommandService extends BaseCommandService {
 						MultiReward.Builder rewards = MultiReward.newBuilder();
 						if(user.getVip() >= 12)
 						for(int i = 0; i < rewardList.size(); i++) {
-							if(rewardList.get(i).getItemid() == RewardConst.LADDERCOIN) {
+							int itemid = rewardList.get(i).getItemid();
+							if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+								UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+								if(bean != null){
+									RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
+									reward.setItemid(24007);
+									rewardList.set(i, reward.build());
+								}
+							}else if(itemid == RewardConst.LADDERCOIN) {
 								RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
 								reward.setCount((int)(reward.getCount()*2));
 								rewardList.set(i, reward.build());

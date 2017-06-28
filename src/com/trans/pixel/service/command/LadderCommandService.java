@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.Team;
@@ -32,6 +34,7 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
+import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -51,6 +54,8 @@ public class LadderCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public void handleGetLadderRankListCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user) {	
 		ResponseGetLadderRankListCommand.Builder builder = ResponseGetLadderRankListCommand.newBuilder();
@@ -97,6 +102,15 @@ public class LadderCommandService extends BaseCommandService {
 				if(!rewards.hasName())
 					rewards.setName("天梯获胜奖励");
 				if (rewards.getLootList().size() > 0) {
+					for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+						int itemid = rewards.getLoot(i).getItemid();
+						if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+							UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+							if(bean != null){
+								rewards.getLootBuilder(i).setItemid(24007);
+							}
+						}
+					}
 					handleRewards(responseBuilder, user, rewards.build());
 				}
 			} else if(result.getCode() == SuccessConst.LADDER_ATTACK_FAIL.getCode()) {
