@@ -130,7 +130,7 @@ public class UserRankBean {
 	public boolean initByUserCache(UserInfo userInfo) {
 		if (userInfo == null)
 			return false;
-		
+		setZhanli(userInfo.getZhanli());
 		setUser(userInfo);
 		
 		return true;
