@@ -207,14 +207,14 @@ public class LevelCommandService extends BaseCommandService {
 		if(eventconfig.getType() == 0){ //only fight event
 			for(RewardInfo.Builder reward : daguan.getLootlistBuilderList()){
 				if(reward.hasWeight()){
-					int weight = reward.getWeight()*event.getCount();
-					int count = reward.getWeight()/100;
+					int weight = reward.getWeight();
+					int count = weight/100;
 					weight = weight % 100;
 					if(weight > RedisService.nextInt(100))
 						count++;
 					if(count > 0){
 						reward.clearWeight();
-						reward.setCount(reward.getCount()*count);
+						reward.setCount(reward.getCount()*count*event.getCount());
 						rewards.addLoot(reward);
 					}
 				}else{
