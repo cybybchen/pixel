@@ -17,22 +17,21 @@ public class UserRewardTaskRedisService extends RedisService {
 
 	public void updateUserRewardTask(long userId, UserRewardTask ut) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		if (ut.getRoomInfo() != null && ut.getRoomInfo().getUser().getId() != userId && ut.getStatus() == REWARDTASK_STATUS.END_VALUE){
-			if(!deleteUserRewardTask(userId, ut))
-				this.hput(key, "" + ut.getIndex(), formatJson(ut));
-		}else
+//		if (ut.getRoomInfo() != null && ut.getRoomInfo().getUser().getId() != userId && ut.getStatus() == REWARDTASK_STATUS.END_VALUE){
+////			if(!deleteUserRewardTask(userId, ut))
+//				this.hput(key, "" + ut.getIndex(), formatJson(ut));
+//		}else
 			this.hput(key, "" + ut.getIndex(), formatJson(ut));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		
-		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
+//		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
 	}
 	
 	public boolean deleteUserRewardTask(long userId, UserRewardTask ut) {
-		if(ut.getIndex() < 20)
-			return false;
+//		if(ut.getIndex() < 20)
+//			return false;
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		hdelete(key, "" + ut.getIndex());
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		return true;
 	}
 	

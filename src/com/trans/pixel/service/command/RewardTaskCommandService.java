@@ -132,18 +132,18 @@ public class RewardTaskCommandService extends BaseCommandService {
 //            responseBuilder.setErrorCommand(errorCommand);
 //			return;
 //		}
-		UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder();
-		room = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, id, index, userRewardTaskBuilder);
+//		UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder();
+		UserRewardTask userRewardTaskBuilder = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, id, index);
 		
-		if (room == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_NOT);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_NOT);
+		if (userRewardTaskBuilder == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HAS_START);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HAS_START);
             responseBuilder.setErrorCommand(errorCommand);
             
             return;
 		} 
 		
-		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.LIMIT_VALUE) { // 悬赏任务已达上限
+		if (userRewardTaskBuilder.hasStatus() && userRewardTaskBuilder.getStatus() == REWARDTASK_STATUS.LIMIT_VALUE) { // 悬赏任务已达上限
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.REWARDTASK_IS_LIMIT_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.REWARDTASK_IS_LIMIT_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -151,7 +151,7 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		}
 		
-		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.FULL_VALUE) { // 房间人数已满
+		if (userRewardTaskBuilder.hasStatus() && userRewardTaskBuilder.getStatus() == REWARDTASK_STATUS.FULL_VALUE) { // 房间人数已满
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_IS_FULL_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -159,7 +159,7 @@ public class RewardTaskCommandService extends BaseCommandService {
             return;
 		}
 		
-		if (room.hasStatus() && room.getStatus() == REWARDTASK_STATUS.HAS_IN_VALUE) { // 已经加入该房间
+		if (userRewardTaskBuilder.hasStatus() && userRewardTaskBuilder.getStatus() == REWARDTASK_STATUS.HAS_IN_VALUE) { // 已经加入该房间
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HAS_BEIN_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HAS_BEIN_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -168,12 +168,12 @@ public class RewardTaskCommandService extends BaseCommandService {
 		}
 		
 		ResponseUserRewardTaskRoomCommand.Builder builder = ResponseUserRewardTaskRoomCommand.newBuilder();
-		builder.addRoom(room);
+		builder.addRoom(rewardTaskService.getUserRoom(user, userRewardTaskBuilder.getIndex()));
 		responseBuilder.setUserRewardTaskRoomCommand(builder.build());
 		
 		if (userIds.isEmpty()) {
 			ResponseUserRewardTaskCommand.Builder commandBuilder = ResponseUserRewardTaskCommand.newBuilder();
-			commandBuilder.addUserRewardTask(userRewardTaskBuilder.build());
+			commandBuilder.addUserRewardTask(userRewardTaskBuilder);
 			responseBuilder.setUserRewardTaskCommand(commandBuilder.build());
 		}
 	}

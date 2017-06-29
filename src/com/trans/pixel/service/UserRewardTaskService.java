@@ -32,6 +32,8 @@ public class UserRewardTaskService {
 	private UserRewardTaskMapper mapper;
 	@Resource
 	private RewardTaskRedisService rewardTaskRedisService;
+	@Resource
+	private UserService userService;
 	
 	public UserRewardTask getUserRewardTask(UserBean user, int index) {
 		return getUserRewardTask(user.getId(), index);
@@ -51,29 +53,29 @@ public class UserRewardTaskService {
 		userRewardTaskRedisService.updateUserRewardTask(userId, ut);
 	}
 	
-	public void refresh(UserRewardTask.Builder builder) {
+	public void refresh(UserRewardTask.Builder builder, UserBean user) {
 		RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
 		for(RewardTask.Builder task : config.getDataBuilderList()){
-			if(builder.getTask().getType() != task.getType())
+			if(builder.getTaskBuilder().getId() != task.getId() || builder.getTaskBuilder().getRandcount() != task.getRandcount())
 				continue;
-//			for(int i = 0; i < task.getRandcount(); i++) {
-//				UserRewardTask.Builder builder = UserRewardTask.newBuilder();
-			int eventid = builder.getTask().getEventid();
-			while(eventid == builder.getTask().getEventid())
+			int eventid = builder.getTaskBuilder().getEventid();
+			while(eventid == builder.getTaskBuilder().getEventid())
 				eventid = task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid();
 			task.setEventid(eventid);
+			task.clearEvent();
+			task.clearStarttime();
+			task.clearEndtime();
 			builder.setTask(task);
-			builder.getTaskBuilder().clearRandcount();
-			builder.getTaskBuilder().clearEvent();
-//			if(builder.getTask().getType() == 4 || builder.getTask().getType() == 5)
-//				builder.setEndtime(today+24*3600);
-			builder.setLeftcount(task.getCount());
+			if(task.getType() != 2)
+				builder.setEndtime(RedisService.today(24));
+			else
+				builder.clearEndtime();
+//			builder.setLeftcount(task.getCount());
 			builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
-//			builder.setIndex(index);
-//			index++;
-//			userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
-//			map.put(builder.getIndex(), builder.build());
-//			}
+			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%1000);
+			builder.setIndex(user.getRewardTaskIndex());
+			userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
+			userService.updateUser(user);
 			break;
 		}
 	}
@@ -87,67 +89,92 @@ public class UserRewardTaskService {
 			int index = it.next().getKey();
 			UserRewardTask ut = map.get(index);
 			if(ut.hasEndtime() && ut.getEndtime() <= now) {//过0点刷新
-				userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-				it.remove();
-//				needRefresh = true;
+				needRefresh = true;
+				if (ut.hasRoomInfo()) {//保留组队
+					if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
+						if (ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
+							userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+							it.remove();
+//						}else {//可以领奖
+//							UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
+//							builder.clearRoomInfo();
+//							builder.setEndtime(RedisService.today(24));
+//							userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
+//							map.put(ut.getIndex(), builder.build());
+						}
+					}
+				}else {
+					userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+					it.remove();
+				}
 			}else if(ut.getTask().getId() == 7 && user.getVip() < 14){
 				it.remove();
 			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
 				it.remove();
 			}
 		}
-		if(map.get(1) == null)
-			needRefresh = true;
 		if(needRefresh){
 			RewardTaskList.Builder config = rewardTaskRedisService.getRewardTaskConfig();
-			int index = 1;
-			for(RewardTask.Builder task : config.getDataBuilderList()){
-				for(int i = 0; i < task.getRandcount(); i++) {
-					if(map.get(index) != null){
-						index++;
-						continue;
-					}
-					if(!"".equals(task.getEndtime()) && !DateUtil.timeIsAvailable(task.getStarttime(), task.getEndtime()))
-						continue;//不在有效期
-					UserRewardTask.Builder builder = UserRewardTask.newBuilder();
-					int eventindex = RedisService.nextInt(task.getEventCount());
-					task.setEventid(task.getEvent(eventindex).getEventid());
-					task.removeEvent(eventindex);
-					builder.setTask(task);
-					builder.getTaskBuilder().clearRandcount();
-					builder.getTaskBuilder().clearEvent();
-					if(builder.getTask().getType() != 2)
-						builder.setEndtime(RedisService.today(24));
-					else
-						builder.clearEndtime();
-					builder.setLeftcount(task.getCount());
-					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
-					builder.setIndex(index);
-					index++;
-					userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
-					if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 || user.getVip() >= 7))
-						map.put(builder.getIndex(), builder.build());
-				}
-			}
-			
-		}
-		for (UserRewardTask ut : map.values()) {
-			if (ut.hasRoomInfo()) {
-				log.debug("" + RedisService.formatJson(ut));
-				if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
-					if (ut.getRoomInfo().getUser().getId() != user.getId() && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){
-						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-					}
-					else {
+			it = map.entrySet().iterator();
+			while (it.hasNext()) {//过滤深渊和组队
+				int index = it.next().getKey();
+				UserRewardTask ut = map.get(index);
+				int i = config.getDataCount()-1;
+				for(; i >= 0; i--){
+					RewardTask.Builder task = config.getDataBuilder(i);
+					if(task.getId() == ut.getTask().getId() && task.getRandcount() == ut.getTask().getRandcount()) {
 						UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
-						builder.clearRoomInfo();
+						if (ut.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE)//可以领奖
+							builder.clearRoomInfo();
+//						if(task.getType() == 2 && ut.getStatus() == REWARDTASK_STATUS.LIVE_VALUE){
+						if(task.getType() != 2){//补充次数
+							if (ut.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
+								builder.setLeftcount(task.getCount()+1);
+							}else{
+								builder.setLeftcount(task.getCount());
+							}
+						}
+						builder.setEndtime(RedisService.today(24));
 						userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 						map.put(ut.getIndex(), builder.build());
+						config.removeData(i);
+						break;
 					}
-					
-					continue;
+				}
+				if(i < 0){//配置更新
+					userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+					it.remove();
 				}
 			}
+			for(int i = 0; i < config.getDataCount(); i++) {
+				RewardTask.Builder task = config.getDataBuilder(i);
+				if(!"".equals(task.getEndtime()) && !DateUtil.timeIsAvailable(task.getStarttime(), task.getEndtime()))
+					continue;//不在有效期
+				
+				UserRewardTask.Builder builder = UserRewardTask.newBuilder();
+				int eventindex = RedisService.nextInt(task.getEventCount());
+				for(int j = i+1; j < config.getDataCount() && task.getId() == config.getDataBuilder(j).getId(); j++)
+					config.getDataBuilder(j).removeEvent(eventindex);
+				task.setEventid(task.getEvent(eventindex).getEventid());
+				task.clearEvent();
+				task.clearStarttime();
+				task.clearEndtime();
+				builder.setTask(task);
+//				builder.getTaskBuilder().clearRandcount();
+//				builder.getTaskBuilder().clearEvent();
+				if(task.getType() != 2)
+					builder.setEndtime(RedisService.today(24));
+				else
+					builder.clearEndtime();
+				builder.setLeftcount(task.getCount());
+				builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+				user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%1000);
+				builder.setIndex(user.getRewardTaskIndex());
+				userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
+				if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 || user.getVip() >= 7))
+					map.put(builder.getIndex(), builder.build());
+			}
+			userService.updateUser(user);
 		}
 
 		return map;
@@ -158,8 +185,8 @@ public class UserRewardTaskService {
 		if(ut != null && ut.getTask().getEventid() != 0) {
 			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
 			
-			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
-				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
+//			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
+//				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
 		}
 		
 	}

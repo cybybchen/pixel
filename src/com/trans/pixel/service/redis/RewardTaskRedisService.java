@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 
@@ -23,8 +24,15 @@ public class RewardTaskRedisService extends RedisService {
 		}else {
 			String xml = ReadConfig("ld_rewardtask.xml");
 			parseXml(xml, builder);
-			set(RedisKey.REWARDTASK_KEY, formatJson(builder.build()));
-			return builder;
+			RewardTaskList.Builder list = RewardTaskList.newBuilder();
+			for(RewardTask.Builder task : builder.getDataBuilderList()){
+				for(int i = 0; i < task.getRandcount(); i++) {
+					list.addData(task);
+					list.getDataBuilder(list.getDataCount()-1).setRandcount(i+1);
+				}
+			}
+			set(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
+			return list;
 		}
 	}
 	

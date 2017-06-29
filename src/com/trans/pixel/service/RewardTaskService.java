@@ -109,13 +109,15 @@ public class RewardTaskService {
 				costService.cost(user, event.getCost());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
 			if(builder.getTask().getType() == 2){
-				userRewardTaskService.refresh(builder);
+				userRewardTaskService.refresh(builder, user);
 			}else{
 				builder.setLeftcount(builder.getLeftcount()-1);
 				if(builder.getLeftcount() == 0)
 					builder.setStatus(REWARDTASK_STATUS.END_VALUE);
+				else
+					builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+				userRewardTaskService.updateUserRewardTask(user, builder.build());
 			}
-			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			if(event.hasCost()){
 				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), event.getCost().getItemid());
 				if (userEquip != null && userEquip.getEquipCount() > 0)
@@ -169,12 +171,15 @@ public class RewardTaskService {
 	
 	public UserRewardTaskRoom createRoom(UserBean user, int index) {
 		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
-		if (ut == null || ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
+		if (ut == null) {
 			return null;
 		}
 		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
 		if (room != null)
 			return room;
+		if (ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
+			return null;
+		}
 		
 		UserInfo create = userService.getCache(user.getServerId(), user.getId());
 		UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder();
@@ -266,65 +271,69 @@ public class RewardTaskService {
 		return room;
 	}
 	
-	public UserRewardTaskRoom inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int id, int index, UserRewardTask.Builder userRewardTaskBuilder) {
+	public UserRewardTask inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int id, int index) {
 		if (userIds.isEmpty()) {//接收邀请
-			UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
+			UserRewardTaskRoom.Builder room = UserRewardTaskRoom.newBuilder(rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index));
 			if (room == null)
 				return null;
-			UserRewardTask rewardTask = userRewardTaskService.getUserRewardTask(createUserId, index);
+			UserRewardTask.Builder rewardTask = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(createUserId, index));
 			if (rewardTask == null)
 				return null;
 			
-			UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder(room);
-			
 			Map<Integer, UserRewardTask> map = userRewardTaskService.getUserRewardTaskList(user);
-			int rewardTaskCount = 0;
 			for (UserRewardTask urt : map.values()) {
-				if (urt.getStatus() != REWARDTASK_STATUS.END_VALUE)
-					rewardTaskCount++;
-			}
-			if (rewardTaskCount >= 20) {
-				builder.setStatus(REWARDTASK_STATUS.LIMIT_VALUE);
-				return builder.build();
-			}
-			
-			
-			for (RoomInfo roomInfo : builder.getRoomInfoList()) {
-				if (roomInfo.getUser().getId() == user.getId()) {
-					builder.setStatus(REWARDTASK_STATUS.HAS_IN_VALUE);
-					return builder.build();
-				}
-			}
-			if (builder.getRoomInfoCount() >= rewardTask.getTask().getMembers()) {
-				builder.setStatus(REWARDTASK_STATUS.FULL_VALUE);//房间人数已满
-				return builder.build();
-			}
-			
-			userRewardTaskBuilder.mergeFrom(rewardTask);
-			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1));
-			userRewardTaskBuilder.setIndex(user.getRewardTaskIndex());
-			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
-				if (builder.getRoomInfo(i).getUser().getId() == createUserId) {
-					userRewardTaskBuilder.setRoomInfo(builder.getRoomInfo(i));
+				if(urt.getTask().getId() == rewardTask.getTaskBuilder().getId() && urt.getTask().getRandcount() == rewardTask.getTaskBuilder().getRandcount()) {
+					rewardTask.setLeftcount(urt.getLeftcount());
+					rewardTask.setIndex(urt.getIndex());
 					break;
 				}
-					
 			}
-			userRewardTaskService.updateUserRewardTask(user, userRewardTaskBuilder.build());
+//			int rewardTaskCount = 0;
+//			for (UserRewardTask urt : map.values()) {
+//				if (urt.getStatus() != REWARDTASK_STATUS.END_VALUE)
+//					rewardTaskCount++;
+//			}
+			if (rewardTask.getLeftcount() == 0) {
+				rewardTask.setStatus(REWARDTASK_STATUS.LIMIT_VALUE);
+				return rewardTask.build();
+			}
+			
+			for (RoomInfo roomInfo : room.getRoomInfoList()) {
+				if (roomInfo.getUser().getId() == user.getId()) {
+					rewardTask.setStatus(REWARDTASK_STATUS.HAS_IN_VALUE);
+//					rewardTask.setRoomInfo(roomInfo);
+					return rewardTask.build();
+				}
+			}
+			if (room.getRoomInfoCount() >= rewardTask.getTask().getMembers()) {
+				rewardTask.setStatus(REWARDTASK_STATUS.FULL_VALUE);//房间人数已满
+//				rewardTask.setRoomInfo(roomInfo);
+				return rewardTask.build();
+			}
+			
+//			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1));
+//			rewardTask.setIndex(user.getRewardTaskIndex());
+			for (int i = 0; i < room.getRoomInfoCount(); ++i) {
+				if (room.getRoomInfo(i).getUser().getId() == createUserId) {
+					rewardTask.setRoomInfo(room.getRoomInfo(i));
+					break;
+				}
+			}
+			userRewardTaskService.updateUserRewardTask(user, rewardTask.build());
 			
 			RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
 			roomInfoBuilder.setIndex(rewardTask.getIndex());
 			roomInfoBuilder.setUser(userService.getCache(user.getServerId(), user.getId()));
 			for (int position = 1; position < 5; ++position) {
-				if (!hasPosition(position, builder.getRoomInfoList())) {
+				if (!hasPosition(position, room.getRoomInfoList())) {
 					roomInfoBuilder.setPosition(position);
 					break;
 				}
 			}
-			builder.addRoomInfo(roomInfoBuilder.build());
-			rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
+			room.addRoomInfo(roomInfoBuilder.build());
+			rewardTaskRedisService.setUserRewardTaskRoom(room.build());
 			
-			return builder.build();
+			return rewardTask.build();
 		} else { //邀请别人
 			UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null) {
@@ -334,8 +343,7 @@ public class RewardTaskService {
 			for (long userId : userIds) {
 				sendInviteMail(user, userId, index);
 			}
-			
-			return room;
+			return userRewardTaskService.getUserRewardTask(createUserId, index);
 		}
 	}
 	
@@ -355,12 +363,13 @@ public class RewardTaskService {
 		
 		rewardTaskBuilder.mergeFrom(userRewardTask);
 		builder.mergeFrom(room);
-		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {
+		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {//退出自己的房间
 			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getIndex());
 			for (RoomInfo roomInfo :builder.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() != user.getId()) {
 					UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(roomInfo.getUser().getId(), roomInfo.getIndex()));
-					userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+//					userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+					userRewardTaskBuilder.clearRoomInfo();
 					userRewardTaskService.updateUserRewardTask(roomInfo.getUser().getId(), userRewardTaskBuilder.build());
 				}
 			}
@@ -372,7 +381,7 @@ public class RewardTaskService {
 					if (quitUserId != user.getId()) {
 						UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex()));
 						userRewardTaskBuilder.clearRoomInfo();
-						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+//						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 						userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
 					}
 					builder.removeRoomInfo(i);
@@ -382,7 +391,7 @@ public class RewardTaskService {
 			rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
 			if (quitUserId == user.getId()) {
 				rewardTaskBuilder.clearRoomInfo();
-				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+//				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			}
 		}
 		
@@ -401,7 +410,16 @@ public class RewardTaskService {
 		}
 		
 		rewardTaskBuilder.mergeFrom(userRewardTask);
-		rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+		if(rewardTaskBuilder.getTask().getType() != 2){
+			rewardTaskBuilder.setLeftcount(rewardTaskBuilder.getLeftcount()-1);
+			if(rewardTaskBuilder.getLeftcount() == 0)
+				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+			else{
+				userRewardTaskService.refresh(rewardTaskBuilder, user);
+				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
+			}
+		}else//深渊
+			userRewardTaskService.refresh(rewardTaskBuilder, user);
 		
 		userRewardTaskService.updateUserRewardTask(user, rewardTaskBuilder.build());
 		
@@ -431,7 +449,11 @@ public class RewardTaskService {
 		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
 			builder.mergeFrom(userRewardTask);
-			builder.setStatus(REWARDTASK_STATUS.END_VALUE);
+			builder.setLeftcount(builder.getLeftcount()-1);
+			if(builder.getLeftcount() == 0)
+				builder.setStatus(REWARDTASK_STATUS.END_VALUE);
+			else
+				builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 			userRewardTaskService.updateUserRewardTask(user, builder.build());
 			
 			Map<String, String> params = new HashMap<String, String>();
@@ -448,12 +470,32 @@ public class RewardTaskService {
 			
 			logService.sendLog(params, LogString.LOGTYPE_REWARDBOSS);
 			
+			RewardTask rewardTask = userRewardTask.getTask();
 			EventConfig event = levelRedisService.getEvent(userRewardTask.getTask().getEventid());
-			rewards.addAllLoot(userRewardTask.getTask().getLootlistList());
+			rewards.addAllLoot(rewardTask.getLootlistList());
 			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
-			return rewards;
+			if(rewardTask.getType() == 1){//普通悬赏
+				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = rewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							rewards.getLootBuilder(i).setItemid(24006);
+						}
+					}
+				}
+			}else if(rewardTask.getType() == 2){//深渊
+				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = rewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							rewards.getLootBuilder(i).setItemid(24010);
+						}
+					}
+				}
+			}
 		}
-		
 		return rewards;
 	}
 	
