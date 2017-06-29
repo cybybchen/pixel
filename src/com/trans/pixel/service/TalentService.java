@@ -224,7 +224,7 @@ public class TalentService {
 		if (userTalent == null)
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		
-		if (!costService.costAndUpdate(user, RewardConst.COIN, HeroLevelUpService.RESET_SKILL_COST))
+		if (!costService.costAndUpdate(user, RewardConst.COIN, HeroLevelUpService.RESET_SKILL_COST, true))
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		builder.mergeFrom(userTalent.build());

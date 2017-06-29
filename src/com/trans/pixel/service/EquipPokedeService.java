@@ -82,7 +82,7 @@ public class EquipPokedeService {
 		}
 
 		if (!protect) {
-			if (!costService.cost(user, rewards.build()))
+			if (!costService.cost(user, rewards.build(), true))
 				return ErrorConst.NOT_ENOUGH_COIN;
 		
 		}

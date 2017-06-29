@@ -103,7 +103,7 @@ public class HeroLevelUpService {
 	}
 	
 	public ResultConst resetHeroSkill(UserBean user, HeroInfoBean heroInfo) {
-		if (!costService.cost(user, RewardConst.COIN , RESET_SKILL_COST))
+		if (!costService.costAndUpdate(user, RewardConst.COIN , RESET_SKILL_COST, true))
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		return SuccessConst.RESET_SKILL_SUCCESS;

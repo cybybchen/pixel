@@ -1054,7 +1054,7 @@ public class LevelRedisService extends RedisService {
 			if (savingBox == null) {
 				return ErrorConst.SAVINGBOX_LEVEL_IS_LIMIT_ERROR;
 			}
-			if (!costService.cost(user, savingBox.getExp().getCost().getItemid(), savingBox.getExp().getCost().getCount()))
+			if (!costService.cost(user, savingBox.getExp().getCost().getItemid(), savingBox.getExp().getCost().getCount(), true))
 				return ErrorConst.NOT_ENOUGH_COIN;
 			
 			user.setExpSavingBox(user.getExpSavingBox() + 1);

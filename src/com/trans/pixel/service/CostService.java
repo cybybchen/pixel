@@ -59,7 +59,11 @@ public class CostService {
 //	};
 	
 	public boolean costAndUpdate(UserBean user, int itemId, long itemCount) {
-		if(cost(user, itemId, itemCount)) {
+		return costAndUpdate(user, itemId, itemCount, false);
+	}
+	
+	public boolean costAndUpdate(UserBean user, int itemId, long itemCount, boolean replace) {
+		if(cost(user, itemId, itemCount, replace)) {
 			userService.updateUser(user);
 			return true;
 		}
@@ -68,12 +72,16 @@ public class CostService {
 	}
 	
 	public boolean cost(UserBean user, MultiReward costs) {
+		return cost(user, costs, false);
+	}
+	
+	public boolean cost(UserBean user, MultiReward costs, boolean replace) {
 		for (RewardInfo cost : costs.getLootList()) {
-			if (!canCost(user, cost.getItemid(), cost.getCount()))
+			if (!canCost(user, cost.getItemid(), cost.getCount(), replace))
 				return false;
 		}
 		for (RewardInfo cost : costs.getLootList()) {
-			cost(user, cost.getItemid(), cost.getCount());
+			cost(user, cost.getItemid(), cost.getCount(), replace);
 		}
 		return true;
 	}
