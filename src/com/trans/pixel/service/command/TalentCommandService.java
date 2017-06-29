@@ -158,6 +158,6 @@ public class TalentCommandService extends BaseCommandService {
 		builder.addUserTalent(talentBuilder.build());
 		builder.addAllUserTalentSkill(skillList);
 		responseBuilder.setUserTalentCommand(builder.build());
-		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 }

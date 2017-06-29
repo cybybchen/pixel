@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
@@ -222,6 +223,9 @@ public class TalentService {
 		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 		if (userTalent == null)
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
+		
+		if (!costService.costAndUpdate(user, RewardConst.COIN, HeroLevelUpService.RESET_SKILL_COST))
+			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		builder.mergeFrom(userTalent.build());
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
