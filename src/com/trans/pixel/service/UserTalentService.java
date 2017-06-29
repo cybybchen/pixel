@@ -344,8 +344,13 @@ public class UserTalentService {
 		return builder;
 	}
 	
-	public void resetTalents(UserBean user) {
-		List<UserTalent> userTalentList = getUserTalentList(user);
+	public void resetTalents(long userId) {
+		UserBean user = userService.getUserOther(userId);
+		Map<String, Talent> map = talentRedisService.getTalentConfig();
+		for (Talent talent : map.values()) {
+			UserTalent.Builder builder = initUserTalent(user, talent.getId());
+			updateUserTalent(user.getId(), builder.build());
+		}
 	}
 	
 	public UserTalent initRobotTalent(LadderEnemy ladderEnemy) {

@@ -91,6 +91,8 @@ public class ManagerService extends RedisService{
 	private LogService logService;
 	@Resource
 	private BlackListService blackListService;
+	@Resource
+	private UserTalentService userTalentService;
 
 	protected String getJson(String key) {
 		String value = get(key);
@@ -1157,12 +1159,27 @@ public class ManagerService extends RedisService{
 			delete(RedisKey.USER_TALENT_PREFIX + userId);
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-talent", "");
 			req.put("talent", 1);
+		} else if(req.containsKey("reset-talent") && gmaccountBean.getCanwrite() == 1) {
+			userTalentService.resetTalents(userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "reset-talent", "");
+			req.put("talent", 1);
+			req.put("talentskill", 1);
 		}
 		if(req.containsKey("talent") && gmaccountBean.getCanview() == 1){
 			Map<String, String> map = hget(RedisKey.USER_TALENT_PREFIX+userId);
 			JSONObject object = new JSONObject();
 			object.putAll(map);
 			result.put("talent", object);
+			
+			if (req.containsKey("reset-talent")) {
+				Map<String, String> skillmap = hget(RedisKey.USER_TALENTSKILL_PREFIX + userId);
+				Map<String, String> treemap = new TreeMap<String, String>();
+				for(Entry<String, String> entry : skillmap.entrySet())
+					treemap.put(entry.getKey(), entry.getValue());
+				JSONObject skillObject = new JSONObject();
+				skillObject.putAll(treemap);
+				result.put("talentskill", skillObject);
+			}
 		}
 		
 		if(req.containsKey("update-talentskill") && gmaccountBean.getCanwrite() == 1){

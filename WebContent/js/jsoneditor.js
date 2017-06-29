@@ -179,6 +179,10 @@ function deleteUserJson(jsondata) {
     updateUserJson(jsondata);
 }
 
+function resetUserJson(jsondata) {
+    updateUserJson(jsondata);
+}
+
 function requestUserJson(myuserid, myusername, myserverid) {
     if(myuserid != null || myserverid != null){
         userid = myuserid;
@@ -1225,6 +1229,16 @@ $(document).ready(function() {
         jsondom.val("{}");
         updateJSON(jsondom);
         var data = buildUserJson("del-"+dom.attr("key"));
+        // date["del-"+key] = 1;
+        deleteUserJson(data);
+        hideReloadBtn($(this).parent().parent());
+    });
+    $("#user-editor").on('click', ".reset-btn", function() {
+        var dom = $( this ).parent().parent();
+        var jsondom = dom.parent().find(".json");
+        jsondom.val("{}");
+        updateJSON(jsondom);
+        var data = buildUserJson("reset-"+dom.attr("key"));
         // date["del-"+key] = 1;
         deleteUserJson(data);
         hideReloadBtn($(this).parent().parent());
