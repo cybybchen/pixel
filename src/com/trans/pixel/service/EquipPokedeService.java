@@ -141,11 +141,11 @@ public class EquipPokedeService {
 		
 		boolean hasOrder = false;
 		for (EquipupOrder equipOrder : equipup.getEquipList()) {
-			if (equipOrder.getOrder() == pokede.getOrder() + 1) {
+			if (equipOrder.getOrder() == Math.max(pokede.getOrder(), 1) + 1) {
 				if (!costService.canCost(user, equipOrder.getCoverList()))
 					return ErrorConst.NOT_ENOUGH_CHIP;
 				
-				pokede.setOrder(pokede.getOrder() + 1);
+				pokede.setOrder(Math.max(pokede.getOrder(), 1) + 1);
 				costService.cost(user, equipOrder.getCoverList());
 				costs.addAllLoot(equipOrder.getCoverList());
 				hasOrder = true;
