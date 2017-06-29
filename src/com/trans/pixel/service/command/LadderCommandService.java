@@ -108,6 +108,7 @@ public class LadderCommandService extends BaseCommandService {
 							UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 							if(bean != null){
 								rewards.getLootBuilder(i).setItemid(24007);
+								rewards.getLootBuilder(i).setCount(rewards.getLootBuilder(i).getCount()*5);
 							}
 						}
 					}

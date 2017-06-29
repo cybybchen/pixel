@@ -133,6 +133,7 @@ public class RewardTaskService {
 						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 						if(bean != null){
 							rewards.getLootBuilder(i).setItemid(24006);
+							rewards.getLootBuilder(i).setCount(rewards.getLootBuilder(i).getCount()*5);
 						}
 					}
 				}
@@ -483,6 +484,7 @@ public class RewardTaskService {
 						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 						if(bean != null){
 							rewards.getLootBuilder(i).setItemid(24006);
+							rewards.getLootBuilder(i).setCount(rewards.getLootBuilder(i).getCount()*5);
 						}
 					}
 				}

@@ -260,6 +260,7 @@ public class LadderModeCommandService extends BaseCommandService {
 								if(bean != null){
 									RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
 									reward.setItemid(24007);
+									reward.setCount(reward.getCount()*5);
 									rewardList.set(i, reward.build());
 								}
 							}else if(itemid == RewardConst.LADDERCOIN) {
