@@ -999,6 +999,24 @@ message ResponseUserTalentCommand {
 	repeated UserTalent userTalent = 1;
 	repeated UserTalentSkill userTalentSkill = 2;
 }
+
+message RequestTalentChangeEquipCommand {
+        required int32 id = 1;
+        required int32 position = 2;
+        required int32 itemId = 3;
+}
+
+message RequestTalentSpUpCommand {
+        required int32 id = 1;
+        required int32 count = 2;
+}
+
+message RequestTalentSkillLevelupCommand {
+	required uint32 id = 1;
+	required uint32 order = 2;
+	required uint32 skillid = 3;
+}
+
 ////////// EquipProto
 message PropList {
 	repeated Prop data = 1;
@@ -1239,16 +1257,6 @@ message ResponseEquipPokedeCommand {
 	repeated UserEquipPokede userEquipPokede = 1; 
 }
 
-message RequestTalentChangeEquipCommand {
-	required int32 id = 1;
-	required int32 position = 2;
-	required int32 itemId = 3;
-}
-
-message RequestTalentSpUpCommand {
-        required int32 talentId = 1;
-        required int32 count = 2;
-}
 
 message RequestSynthetiseComposeCommand {
 	required uint32 synthetiseId = 1;
@@ -3678,6 +3686,7 @@ message RequestCommand {
 	optional RequestUseMaterialCommand useMaterialCommand = 252;
 	optional RequestChangePositionCommand changePositionCommand = 253;
 	optional RequestTalentSpUpCommand talentSpUpCommand = 254;
+	optional RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
 }
 ////////// Commands
 message ErrorCommand {

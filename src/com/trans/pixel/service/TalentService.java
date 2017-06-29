@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,11 +15,13 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
@@ -183,6 +184,50 @@ public class TalentService {
 			
 			return SuccessConst.SKILL_STONE_SUCCESS;
 		}
+	}
+	
+	public ResultConst talentLevelUpSkill(UserBean user, int talentId, int orderId, int skillId, UserTalent.Builder builder, UserTalentSkill.Builder skillBuilder) {
+		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		if (userTalent == null)
+			return ErrorConst.TALENT_NOT_EXIST_ERROR;
+		
+		Talentunlock unlock = talentRedisService.getTalentunlock(orderId);
+		if (unlock == null)
+			return ErrorConst.SKILL_NOT_EXIST;
+		
+		UserTalentSkill skill = userTalentService.getUserTalentSkill(user, talentId, orderId, skillId);
+		if (skill == null) {
+			return ErrorConst.SKILL_NOT_EXIST;
+		}
+		
+		if (!canLevelup(userTalent, skill, unlock)) {
+			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
+		}
+		
+		builder.mergeFrom(userTalent);
+		int needSP = unlock.getSp();
+		if (needSP <= builder.getSp())
+			builder.setSp(builder.getSp() - needSP);
+		else
+			return ErrorConst.SP_NOT_ENOUGH;
+		
+		skillBuilder.mergeFrom(skill);
+		skillBuilder.setLevel(skillBuilder.getLevel() + 1);
+		
+		userTalentService.updateUserTalent(user.getId(), builder.build());
+		userTalentService.updateUserTalentSkill(user, skillBuilder.build());
+		
+		return SuccessConst.LEVELUP_SKILL_SUCCESS;
+	}
+	
+	private boolean canLevelup(UserTalent talent, UserTalentSkill skill, Talentunlock unlock) {
+		if (unlock.getMaxlevel() <= skill.getLevel())
+			return false;
+		
+		if (unlock.getInitlevel() + skill.getLevel() * unlock.getLevelup() > talent.getLevel())
+			return false;
+		
+		return true;
 	}
 	
 	private int getNeedSP(UserBean user, UserTalent userTalent) {

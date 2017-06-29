@@ -240,6 +240,10 @@ public class UserTalentService {
 		return userTalentSkillList2;
 	}
 	
+	public UserTalentSkill getUserTalentSkill(UserBean user, int talentId, int orderId, int skillId) {
+		return userTalentRedisService.getUserTalentSkill(user.getId(), "" + talentId + "-" + orderId + "-" + skillId);
+	}
+	
 	public List<UserTalentSkill> getUserTalentSkillList(UserBean user) {
 		List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
 		if (userTalentSkillList.isEmpty()) {

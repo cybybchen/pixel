@@ -45,7 +45,7 @@ import com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
-import com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
@@ -154,12 +154,13 @@ import com.trans.pixel.protoc.AreaProto.RequestAttackBossCommand;
 import com.trans.pixel.protoc.AreaProto.RequestUnlockAreaCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAreaCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
-import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
@@ -363,6 +364,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnlockAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroLevelUpCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTalentSkillLevelupCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
@@ -1038,6 +1040,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasHeroLevelUpCommand()) {
 			RequestHeroLevelUpCommand cmd = request.getHeroLevelUpCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasTalentSkillLevelupCommand()) {
+			RequestTalentSkillLevelupCommand cmd = request.getTalentSkillLevelupCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitRewardTaskScoreCommand()) {

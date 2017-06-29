@@ -2383,11 +2383,11 @@ public final class Request {
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
-    com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand();
+    com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand();
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
-    com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder();
+    com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder();
 
     // optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;
     /**
@@ -2719,11 +2719,25 @@ public final class Request {
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
-    com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand getTalentSpUpCommand();
+    com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand getTalentSpUpCommand();
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
-    com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder();
+    com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    boolean hasTalentSkillLevelupCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand getTalentSkillLevelupCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder getTalentSkillLevelupCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -4971,11 +4985,11 @@ public final class Request {
               break;
             }
             case 1842: {
-              com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder subBuilder = null;
+              com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder subBuilder = null;
               if (((bitField5_ & 0x00000100) == 0x00000100)) {
                 subBuilder = talentChangeEquipCommand_.toBuilder();
               }
-              talentChangeEquipCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.PARSER, extensionRegistry);
+              talentChangeEquipCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(talentChangeEquipCommand_);
                 talentChangeEquipCommand_ = subBuilder.buildPartial();
@@ -5283,16 +5297,29 @@ public final class Request {
               break;
             }
             case 2034: {
-              com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder subBuilder = null;
+              com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder subBuilder = null;
               if (((bitField6_ & 0x00000001) == 0x00000001)) {
                 subBuilder = talentSpUpCommand_.toBuilder();
               }
-              talentSpUpCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.PARSER, extensionRegistry);
+              talentSpUpCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(talentSpUpCommand_);
                 talentSpUpCommand_ = subBuilder.buildPartial();
               }
               bitField6_ |= 0x00000001;
+              break;
+            }
+            case 2042: {
+              com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder subBuilder = null;
+              if (((bitField6_ & 0x00000002) == 0x00000002)) {
+                subBuilder = talentSkillLevelupCommand_.toBuilder();
+              }
+              talentSkillLevelupCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(talentSkillLevelupCommand_);
+                talentSkillLevelupCommand_ = subBuilder.buildPartial();
+              }
+              bitField6_ |= 0x00000002;
               break;
             }
           }
@@ -9051,7 +9078,7 @@ public final class Request {
 
     // optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
     public static final int TALENTCHANGEEQUIPCOMMAND_FIELD_NUMBER = 230;
-    private com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand talentChangeEquipCommand_;
+    private com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand talentChangeEquipCommand_;
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
@@ -9061,13 +9088,13 @@ public final class Request {
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand() {
+    public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand() {
       return talentChangeEquipCommand_;
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder() {
+    public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder() {
       return talentChangeEquipCommand_;
     }
 
@@ -9579,7 +9606,7 @@ public final class Request {
 
     // optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;
     public static final int TALENTSPUPCOMMAND_FIELD_NUMBER = 254;
-    private com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand talentSpUpCommand_;
+    private com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand talentSpUpCommand_;
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
@@ -9589,14 +9616,36 @@ public final class Request {
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand getTalentSpUpCommand() {
+    public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand getTalentSpUpCommand() {
       return talentSpUpCommand_;
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder() {
+    public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder() {
       return talentSpUpCommand_;
+    }
+
+    // optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
+    public static final int TALENTSKILLLEVELUPCOMMAND_FIELD_NUMBER = 255;
+    private com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand talentSkillLevelupCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    public boolean hasTalentSkillLevelupCommand() {
+      return ((bitField6_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand getTalentSkillLevelupCommand() {
+      return talentSkillLevelupCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder getTalentSkillLevelupCommandOrBuilder() {
+      return talentSkillLevelupCommand_;
     }
 
     private void initFields() {
@@ -9768,7 +9817,7 @@ public final class Request {
       bossRoomInfoCommand_ = com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.getDefaultInstance();
       equipStrenthenCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.getDefaultInstance();
       equipPokedeCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.getDefaultInstance();
-      talentChangeEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.getDefaultInstance();
+      talentChangeEquipCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance();
       zanHeroMessageBoardCommand_ = com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.getDefaultInstance();
       createRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.getDefaultInstance();
       quitRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.getDefaultInstance();
@@ -9792,7 +9841,8 @@ public final class Request {
       materialComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.getDefaultInstance();
       useMaterialCommand_ = com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.getDefaultInstance();
       changePositionCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.getDefaultInstance();
-      talentSpUpCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.getDefaultInstance();
+      talentSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance();
+      talentSkillLevelupCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10455,6 +10505,12 @@ public final class Request {
           return false;
         }
       }
+      if (hasTalentSkillLevelupCommand()) {
+        if (!getTalentSkillLevelupCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11040,6 +11096,9 @@ public final class Request {
       }
       if (((bitField6_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(254, talentSpUpCommand_);
+      }
+      if (((bitField6_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(255, talentSkillLevelupCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -11822,6 +11881,10 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(254, talentSpUpCommand_);
       }
+      if (((bitField6_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(255, talentSkillLevelupCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -12127,6 +12190,7 @@ public final class Request {
           getUseMaterialCommandFieldBuilder();
           getChangePositionCommandFieldBuilder();
           getTalentSpUpCommandFieldBuilder();
+          getTalentSkillLevelupCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -13144,7 +13208,7 @@ public final class Request {
         }
         bitField5_ = (bitField5_ & ~0x00000080);
         if (talentChangeEquipCommandBuilder_ == null) {
-          talentChangeEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.getDefaultInstance();
+          talentChangeEquipCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance();
         } else {
           talentChangeEquipCommandBuilder_.clear();
         }
@@ -13288,11 +13352,17 @@ public final class Request {
         }
         bitField5_ = (bitField5_ & ~0x80000000);
         if (talentSpUpCommandBuilder_ == null) {
-          talentSpUpCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.getDefaultInstance();
+          talentSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance();
         } else {
           talentSpUpCommandBuilder_.clear();
         }
         bitField6_ = (bitField6_ & ~0x00000001);
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          talentSkillLevelupCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance();
+        } else {
+          talentSkillLevelupCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00000002);
         return this;
       }
 
@@ -14877,6 +14947,14 @@ public final class Request {
         } else {
           result.talentSpUpCommand_ = talentSpUpCommandBuilder_.build();
         }
+        if (((from_bitField6_ & 0x00000002) == 0x00000002)) {
+          to_bitField6_ |= 0x00000002;
+        }
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          result.talentSkillLevelupCommand_ = talentSkillLevelupCommand_;
+        } else {
+          result.talentSkillLevelupCommand_ = talentSkillLevelupCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -15477,6 +15555,9 @@ public final class Request {
         }
         if (other.hasTalentSpUpCommand()) {
           mergeTalentSpUpCommand(other.getTalentSpUpCommand());
+        }
+        if (other.hasTalentSkillLevelupCommand()) {
+          mergeTalentSkillLevelupCommand(other.getTalentSkillLevelupCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -16135,6 +16216,12 @@ public final class Request {
         }
         if (hasTalentSpUpCommand()) {
           if (!getTalentSpUpCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasTalentSkillLevelupCommand()) {
+          if (!getTalentSkillLevelupCommand().isInitialized()) {
             
             return false;
           }
@@ -35860,9 +35947,9 @@ public final class Request {
       }
 
       // optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;
-      private com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand talentChangeEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.getDefaultInstance();
+      private com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand talentChangeEquipCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder> talentChangeEquipCommandBuilder_;
+          com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder> talentChangeEquipCommandBuilder_;
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
@@ -35872,7 +35959,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand getTalentChangeEquipCommand() {
         if (talentChangeEquipCommandBuilder_ == null) {
           return talentChangeEquipCommand_;
         } else {
@@ -35882,7 +35969,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
-      public Builder setTalentChangeEquipCommand(com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand value) {
+      public Builder setTalentChangeEquipCommand(com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand value) {
         if (talentChangeEquipCommandBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -35899,7 +35986,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
       public Builder setTalentChangeEquipCommand(
-          com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder builderForValue) {
+          com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder builderForValue) {
         if (talentChangeEquipCommandBuilder_ == null) {
           talentChangeEquipCommand_ = builderForValue.build();
           onChanged();
@@ -35912,12 +35999,12 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
-      public Builder mergeTalentChangeEquipCommand(com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand value) {
+      public Builder mergeTalentChangeEquipCommand(com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand value) {
         if (talentChangeEquipCommandBuilder_ == null) {
           if (((bitField5_ & 0x00000100) == 0x00000100) &&
-              talentChangeEquipCommand_ != com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.getDefaultInstance()) {
+              talentChangeEquipCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance()) {
             talentChangeEquipCommand_ =
-              com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.newBuilder(talentChangeEquipCommand_).mergeFrom(value).buildPartial();
+              com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.newBuilder(talentChangeEquipCommand_).mergeFrom(value).buildPartial();
           } else {
             talentChangeEquipCommand_ = value;
           }
@@ -35933,7 +36020,7 @@ public final class Request {
        */
       public Builder clearTalentChangeEquipCommand() {
         if (talentChangeEquipCommandBuilder_ == null) {
-          talentChangeEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.getDefaultInstance();
+          talentChangeEquipCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance();
           onChanged();
         } else {
           talentChangeEquipCommandBuilder_.clear();
@@ -35944,7 +36031,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder getTalentChangeEquipCommandBuilder() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder getTalentChangeEquipCommandBuilder() {
         bitField5_ |= 0x00000100;
         onChanged();
         return getTalentChangeEquipCommandFieldBuilder().getBuilder();
@@ -35952,7 +36039,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder getTalentChangeEquipCommandOrBuilder() {
         if (talentChangeEquipCommandBuilder_ != null) {
           return talentChangeEquipCommandBuilder_.getMessageOrBuilder();
         } else {
@@ -35963,11 +36050,11 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder> 
+          com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder> 
           getTalentChangeEquipCommandFieldBuilder() {
         if (talentChangeEquipCommandBuilder_ == null) {
           talentChangeEquipCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommandOrBuilder>(
+              com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommandOrBuilder>(
                   talentChangeEquipCommand_,
                   getParentForChildren(),
                   isClean());
@@ -38668,9 +38755,9 @@ public final class Request {
       }
 
       // optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;
-      private com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand talentSpUpCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.getDefaultInstance();
+      private com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand talentSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder> talentSpUpCommandBuilder_;
+          com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder> talentSpUpCommandBuilder_;
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
@@ -38680,7 +38767,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand getTalentSpUpCommand() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand getTalentSpUpCommand() {
         if (talentSpUpCommandBuilder_ == null) {
           return talentSpUpCommand_;
         } else {
@@ -38690,7 +38777,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
-      public Builder setTalentSpUpCommand(com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand value) {
+      public Builder setTalentSpUpCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand value) {
         if (talentSpUpCommandBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -38707,7 +38794,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
       public Builder setTalentSpUpCommand(
-          com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder builderForValue) {
+          com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder builderForValue) {
         if (talentSpUpCommandBuilder_ == null) {
           talentSpUpCommand_ = builderForValue.build();
           onChanged();
@@ -38720,12 +38807,12 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
-      public Builder mergeTalentSpUpCommand(com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand value) {
+      public Builder mergeTalentSpUpCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand value) {
         if (talentSpUpCommandBuilder_ == null) {
           if (((bitField6_ & 0x00000001) == 0x00000001) &&
-              talentSpUpCommand_ != com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.getDefaultInstance()) {
+              talentSpUpCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance()) {
             talentSpUpCommand_ =
-              com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.newBuilder(talentSpUpCommand_).mergeFrom(value).buildPartial();
+              com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.newBuilder(talentSpUpCommand_).mergeFrom(value).buildPartial();
           } else {
             talentSpUpCommand_ = value;
           }
@@ -38741,7 +38828,7 @@ public final class Request {
        */
       public Builder clearTalentSpUpCommand() {
         if (talentSpUpCommandBuilder_ == null) {
-          talentSpUpCommand_ = com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.getDefaultInstance();
+          talentSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance();
           onChanged();
         } else {
           talentSpUpCommandBuilder_.clear();
@@ -38752,7 +38839,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder getTalentSpUpCommandBuilder() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder getTalentSpUpCommandBuilder() {
         bitField6_ |= 0x00000001;
         onChanged();
         return getTalentSpUpCommandFieldBuilder().getBuilder();
@@ -38760,7 +38847,7 @@ public final class Request {
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder() {
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder getTalentSpUpCommandOrBuilder() {
         if (talentSpUpCommandBuilder_ != null) {
           return talentSpUpCommandBuilder_.getMessageOrBuilder();
         } else {
@@ -38771,17 +38858,134 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder> 
+          com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder> 
           getTalentSpUpCommandFieldBuilder() {
         if (talentSpUpCommandBuilder_ == null) {
           talentSpUpCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommandOrBuilder>(
+              com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommandOrBuilder>(
                   talentSpUpCommand_,
                   getParentForChildren(),
                   isClean());
           talentSpUpCommand_ = null;
         }
         return talentSpUpCommandBuilder_;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
+      private com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand talentSkillLevelupCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder> talentSkillLevelupCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public boolean hasTalentSkillLevelupCommand() {
+        return ((bitField6_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand getTalentSkillLevelupCommand() {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          return talentSkillLevelupCommand_;
+        } else {
+          return talentSkillLevelupCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public Builder setTalentSkillLevelupCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand value) {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          talentSkillLevelupCommand_ = value;
+          onChanged();
+        } else {
+          talentSkillLevelupCommandBuilder_.setMessage(value);
+        }
+        bitField6_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public Builder setTalentSkillLevelupCommand(
+          com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder builderForValue) {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          talentSkillLevelupCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          talentSkillLevelupCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField6_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public Builder mergeTalentSkillLevelupCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand value) {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          if (((bitField6_ & 0x00000002) == 0x00000002) &&
+              talentSkillLevelupCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance()) {
+            talentSkillLevelupCommand_ =
+              com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.newBuilder(talentSkillLevelupCommand_).mergeFrom(value).buildPartial();
+          } else {
+            talentSkillLevelupCommand_ = value;
+          }
+          onChanged();
+        } else {
+          talentSkillLevelupCommandBuilder_.mergeFrom(value);
+        }
+        bitField6_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public Builder clearTalentSkillLevelupCommand() {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          talentSkillLevelupCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          talentSkillLevelupCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder getTalentSkillLevelupCommandBuilder() {
+        bitField6_ |= 0x00000002;
+        onChanged();
+        return getTalentSkillLevelupCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder getTalentSkillLevelupCommandOrBuilder() {
+        if (talentSkillLevelupCommandBuilder_ != null) {
+          return talentSkillLevelupCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return talentSkillLevelupCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder> 
+          getTalentSkillLevelupCommandFieldBuilder() {
+        if (talentSkillLevelupCommandBuilder_ == null) {
+          talentSkillLevelupCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommandOrBuilder>(
+                  talentSkillLevelupCommand_,
+                  getParentForChildren(),
+                  isClean());
+          talentSkillLevelupCommand_ = null;
+        }
+        return talentSkillLevelupCommandBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
@@ -38818,7 +39022,7 @@ public final class Request {
       ".proto\032\021ServerProto.proto\032\023UserInfoProto" +
       ".proto\032\017MailProto.proto\032\020UnionProto.prot" +
       "o\032\025RewardTaskProto.proto\032\017TaskProto.prot" +
-      "o\"\326|\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com",
+      "o\"\264}\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com",
       ".trans.pixel.protoc.HeadInfo\022G\n\017register" +
       "Command\030\002 \001(\0132..com.trans.pixel.protoc.R" +
       "equestRegisterCommand\022A\n\014loginCommand\030\003 " +
@@ -39217,7 +39421,9 @@ public final class Request {
       "ns.pixel.protoc.RequestChangePositionCom" +
       "mand\022L\n\021talentSpUpCommand\030\376\001 \001(\01320.com.t" +
       "rans.pixel.protoc.RequestTalentSpUpComma" +
-      "nd"
+      "nd\022\\\n\031talentSkillLevelupCommand\030\377\001 \001(\01328" +
+      ".com.trans.pixel.protoc.RequestTalentSki",
+      "llLevelupCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -39229,7 +39435,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", });
           return null;
         }
       };

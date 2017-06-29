@@ -37,8 +37,6 @@ import com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
-import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
-import com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
@@ -55,8 +53,11 @@ import com.trans.pixel.protoc.HeroProto.RequestLockHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand;
@@ -1457,6 +1458,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestTalentSpUpCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		talentCommandService.talentSpUp(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTalentSkillLevelupCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		talentCommandService.talentSkillLevelup(cmd, responseBuilder, user);
 		return true;
 	}
 
