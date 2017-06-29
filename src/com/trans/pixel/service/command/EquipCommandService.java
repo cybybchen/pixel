@@ -115,8 +115,16 @@ public class EquipCommandService extends BaseCommandService {
 	public void useMaterial(RequestUseMaterialCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardInfo> costs = new ArrayList<RewardInfo>();
 		costs.addAll(cmd.getCostList());
+		boolean ismonth = false;
 		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));
-		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date()))
+			ismonth = true;
+		if(!ismonth){
+			libao = Libao.newBuilder(userService.getLibao(user.getId(), 18));
+			if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date()))
+				ismonth = true;
+		}
+		if(ismonth){
 			for(int i = costs.size()-1; i >=0; i--){
 				if(costs.get(i).getItemid() == 28002)
 					costs.remove(i);

@@ -108,6 +108,7 @@ public class RewardTaskService {
 			if(event.hasCost())
 				costService.cost(user, event.getCost());
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
+			builder.clearRoomInfo();
 			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder, user);
 			}else{
@@ -403,7 +404,7 @@ public class RewardTaskService {
 	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
 		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
-		if (userRewardTask.hasRoomInfo() && userRewardTask.getRoomInfo() != null) {
+		if (userRewardTask.hasRoomInfo()) {
 			ResultConst ret = quitRoom(user, user.getId(), index, rewardTaskBuilder, builder);
 			if (ret instanceof ErrorConst)
 				return ret;
@@ -450,6 +451,7 @@ public class RewardTaskService {
 		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
 			builder.mergeFrom(userRewardTask);
 			builder.setLeftcount(builder.getLeftcount()-1);
+			builder.clearRoomInfo();
 			if(builder.getLeftcount() == 0)
 				builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			else
