@@ -58,6 +58,7 @@ public class UserRewardTaskService {
 		for(RewardTask.Builder task : config.getDataBuilderList()){
 			if(builder.getTaskBuilder().getId() != task.getId() || builder.getTaskBuilder().getRandcount() != task.getRandcount())
 				continue;
+			userRewardTaskRedisService.deleteUserRewardTask(user.getId(), builder.build());
 			int eventid = builder.getTaskBuilder().getEventid();
 			while(eventid == builder.getTaskBuilder().getEventid())
 				eventid = task.getEvent(RedisService.nextInt(task.getEventCount())).getEventid();
