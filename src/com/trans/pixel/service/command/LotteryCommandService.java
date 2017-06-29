@@ -113,7 +113,7 @@ public class LotteryCommandService extends BaseCommandService {
 			if (!free) {
 				if(costtype == RewardConst.ZHAOHUANSHI)
 					rmbCount = Math.max(0, count - user.getZhaohuanshi());
-				if (!costService.costAndUpdate(user, costtype, cost)) {
+				if (!costService.cost(user, costtype, cost, true)) {
 					ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 					if (costtype == RewardConst.ZHAOHUANSHI)
 						error = ErrorConst.NOT_ENOUGH_ZHAOHUANSHI;

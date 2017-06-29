@@ -187,6 +187,9 @@ public class CostService {
 	 * need updateuser when return true
 	 */
 	public boolean cost(UserBean user, int itemId, long count) {
+		return cost(user, itemId, count, false);
+	}
+	public boolean cost(UserBean user, int itemId, long count, boolean replace) {
 		long userId = user.getId();
 		if (itemId > RewardConst.FOOD) {
 			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
@@ -205,7 +208,7 @@ public class CostService {
 				userPropService.updateUserProp(userProp);
 				return true;
 			}
-		} else if (itemId == RewardConst.RAID_KEY) {
+		} else if (itemId == RewardConst.RAID_KEY && replace) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < count) {
 				Material material = equipService.getMaterial(itemId);
@@ -241,7 +244,7 @@ public class CostService {
 				case RewardConst.COIN:
 					lootService.calLoot(user);
 					if(count > user.getCoin()) {
-						if (cost(user, RewardConst.JEWEL, calDivision(count - user.getCoin(),  CostConst.JEWEL_TO_COIN))) {
+						if (replace && cost(user, RewardConst.JEWEL, calDivision(count - user.getCoin(),  CostConst.JEWEL_TO_COIN))) {
 							user.setCoin(calCurrency(user.getCoin(),  count, CostConst.JEWEL_TO_COIN));
 							return true;
 						}
@@ -262,7 +265,7 @@ public class CostService {
 					return true;
 				case RewardConst.PVPCOIN:
 					if(count > user.getPointPVP()) {
-						if (cost(user, RewardConst.JEWEL, calDivision(count - user.getPointPVP(),  CostConst.JEWEL_TO_MOJING))) {
+						if (replace && cost(user, RewardConst.JEWEL, calDivision(count - user.getPointPVP(),  CostConst.JEWEL_TO_MOJING))) {
 							user.setPointPVP((int)calCurrency(user.getPointPVP(),  count, CostConst.JEWEL_TO_MOJING));
 							return true;
 						}
@@ -278,7 +281,7 @@ public class CostService {
 					return true;
 				case RewardConst.LADDERCOIN:
 					if(count > user.getPointLadder()) {
-						if (cost(user, RewardConst.JEWEL, calDivision(count - user.getPointLadder(),  CostConst.JEWEL_TO_RONGYU))) {
+						if (replace && cost(user, RewardConst.JEWEL, calDivision(count - user.getPointLadder(),  CostConst.JEWEL_TO_RONGYU))) {
 							user.setPointLadder((int)calCurrency(user.getPointLadder(),  count, CostConst.JEWEL_TO_RONGYU));
 							return true;
 						}
@@ -294,7 +297,7 @@ public class CostService {
 					return true;
 				case RewardConst.ZHAOHUANSHI:
 					if(count > user.getZhaohuanshi() + user.getZhaohuanshi1()) {
-						if (cost(user, RewardConst.JEWEL, (count - user.getZhaohuanshi() - user.getZhaohuanshi1()) * CostConst.ZHAOHUANSHI_TO_JEWEL)) {
+						if (replace && cost(user, RewardConst.JEWEL, (count - user.getZhaohuanshi() - user.getZhaohuanshi1()) * CostConst.ZHAOHUANSHI_TO_JEWEL)) {
 							user.setZhaohuanshi(0);
 							user.setZhaohuanshi1(0);
 							return true;
@@ -341,6 +344,9 @@ public class CostService {
 	 * not update prop
 	 */
 	public boolean canCost(UserBean user, int itemId, long itemCount) {
+		return canCost(user, itemId, itemCount, false);
+	}
+	public boolean canCost(UserBean user, int itemId, long itemCount, boolean replace) {
 		long userId = user.getId();
 		if (itemId > RewardConst.FOOD) {
 			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
@@ -354,7 +360,7 @@ public class CostService {
 			if (userProp != null && userProp.getPropCount() >= itemCount) {
 				return true;
 			}
-		} else if (itemId == RewardConst.RAID_KEY) {
+		} else if (itemId == RewardConst.RAID_KEY && replace) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < itemCount) {
 				Material material = equipService.getMaterial(itemId);
@@ -376,7 +382,7 @@ public class CostService {
 				case RewardConst.COIN:
 					lootService.calLoot(user);
 					if(itemCount > user.getCoin()) {
-						return canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getCoin(),  CostConst.JEWEL_TO_COIN));
+						return replace && canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getCoin(),  CostConst.JEWEL_TO_COIN));
 					}
 					return true;
 				case RewardConst.JEWEL:
@@ -384,7 +390,7 @@ public class CostService {
 					return true;
 				case RewardConst.PVPCOIN:
 					if(itemCount > user.getPointPVP()) {
-						return canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getPointPVP(),  CostConst.JEWEL_TO_MOJING));
+						return replace && canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getPointPVP(),  CostConst.JEWEL_TO_MOJING));
 					}
 					return true;
 				case RewardConst.EXPEDITIONCOIN:
@@ -392,7 +398,7 @@ public class CostService {
 					return true;
 				case RewardConst.LADDERCOIN:
 					if(itemCount > user.getPointLadder()) {
-						return canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getPointLadder(),  CostConst.JEWEL_TO_RONGYU));
+						return replace && canCost(user, RewardConst.JEWEL, calDivision(itemCount - user.getPointLadder(),  CostConst.JEWEL_TO_RONGYU));
 					}
 					return true;
 				case RewardConst.UNIONCOIN:
@@ -400,7 +406,7 @@ public class CostService {
 					return true;
 				case RewardConst.ZHAOHUANSHI:
 					if(itemCount > user.getZhaohuanshi() + user.getZhaohuanshi1()) {
-						return canCost(user, RewardConst.JEWEL, (itemCount - user.getZhaohuanshi() - user.getZhaohuanshi1()) * CostConst.ZHAOHUANSHI_TO_JEWEL);
+						return replace && canCost(user, RewardConst.JEWEL, (itemCount - user.getZhaohuanshi() - user.getZhaohuanshi1()) * CostConst.ZHAOHUANSHI_TO_JEWEL);
 					}
 					return true;
 				case RewardConst.ZHUJUEEXP:

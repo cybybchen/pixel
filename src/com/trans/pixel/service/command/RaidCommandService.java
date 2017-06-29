@@ -48,7 +48,7 @@ public class RaidCommandService extends BaseCommandService{
 		Raid raid = redis.getRaid(cmd.getId());
 		ResponseRaidCommand.Builder raidlist = redis.getRaid(user);
 		//判断消耗和最大层数
-		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount())){
+		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount(), true)){
 			int lastid = 0;
 			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
 				if(myraid.getEventid() == 0)
