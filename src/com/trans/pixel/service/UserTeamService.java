@@ -401,7 +401,7 @@ public class UserTeamService {
 						}
 					}
 				}
-				UserTalent.Builder userTalent = userTalentService.getUserTalent(user, userTeam.getTalentId());
+				UserTalent.Builder userTalent = userTalentService.getOtherTalent(user, userTeam.getTalentId());
 				if (userTalent != null)
 					team.setUserTalent(userTalent);
 				team.setRolePosition(userTeam.getRolePosition());

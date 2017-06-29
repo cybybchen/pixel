@@ -327,17 +327,16 @@ public class TalentService {
 		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, id);
 		if (userTalent == null)
 			return null;
-		UserTalent.Builder builder = userTalent;
-		for (int i = 0; i < builder.getSkillCount(); ++i) {
-			UserTalentOrder.Builder utoBuilder = builder.getSkillBuilder(i);
+		for (int i = 0; i < userTalent.getSkillCount(); ++i) {
+			UserTalentOrder.Builder utoBuilder = userTalent.getSkillBuilder(i);
 			if (utoBuilder.getOrder() == order) {
 				utoBuilder.setSkillId(skillId);
-				builder.setSkill(i, utoBuilder.build());
-				return builder.build();
+				userTalent.setSkill(i, utoBuilder.build());
+				return userTalent.build();
 			}
 		}
 		
-		return builder.build();
+		return userTalent.build();
 	}
 	
 	public UserTalent changeTalentEquip(UserBean user, int id, int position, int itemId) {
@@ -345,29 +344,28 @@ public class TalentService {
 		if (userTalent == null)
 			return null;
 		
-		UserTalent.Builder builder = userTalent;
-		if (builder.getEquipCount() == 0) {
+		if (userTalent.getEquipCount() == 0) {
 			for (int i = 0; i < 10; ++i) {
 				UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
 				equipBuilder.setPosition(i);
 				equipBuilder.setItemId(0);
-				builder.addEquip(equipBuilder.build());
+				userTalent.addEquip(equipBuilder.build());
 			}
 		}
-		for (int i = 0; i < builder.getEquipCount(); ++i) {
-			UserTalentEquip.Builder equipBuilder = builder.getEquipBuilder(i);
+		for (int i = 0; i < userTalent.getEquipCount(); ++i) {
+			UserTalentEquip.Builder equipBuilder = userTalent.getEquipBuilder(i);
 			if (equipBuilder.getPosition() == position) {
 				equipBuilder.setItemId(itemId);
-				builder.setEquip(i, equipBuilder.build());
+				userTalent.setEquip(i, equipBuilder.build());
 				
 				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, itemId))
 					userService.updateUser(user);
 				
-				return builder.build();
+				return userTalent.build();
 			}
 		}
 		
-		return builder.build();
+		return userTalent.build();
 	}
 	
 	public boolean changeTitleEquip(UserBean user, int position, int itemId) {

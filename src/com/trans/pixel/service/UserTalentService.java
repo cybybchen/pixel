@@ -46,6 +46,32 @@ public class UserTalentService {
 	private UserService userService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+
+	public UserTalent.Builder getOtherTalent(UserBean user, int id) {
+		UserTalent.Builder userTalent = getUserTalent(user, id);
+		if (userTalent != null) {
+			List<UserEquipPokedeBean> ueList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+			for (int i = 0; i < userTalent.getEquipCount(); ++i) {
+				UserTalentEquip.Builder uteBuilder = userTalent.getEquipBuilder(i);
+				UserEquipPokedeBean ueBean = userEquipPokedeService.getUserEquipPokede(ueList, uteBuilder.getItemId());
+				if (ueBean != null) {
+					uteBuilder.setLevel(ueBean.getLevel());
+					uteBuilder.setOrder(ueBean.getOrder());
+					userTalent.setEquip(i, uteBuilder.build());
+				}
+			}
+			
+			List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
+			for (int i = 0 ; i < userTalent.getSkillCount(); ++i) {
+				UserTalentOrder.Builder skillbuilder = userTalent.getSkillBuilder(i);
+				UserTalentSkill skill = getUserTalentSkill(userTalentSkillList, id, skillbuilder.getOrder(), skillbuilder.getSkillId());
+				if (skill != null)
+					skillbuilder.setLevel(skill.getLevel());
+//				userTalent.setSkill(i, skillbuilder.build());
+			}
+		}
+		return userTalent;
+	}
 	
 	public UserTalent.Builder getUserTalent(UserBean user, int id) {
 		UserTalent.Builder userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
@@ -59,31 +85,6 @@ public class UserTalentService {
 				}
 				userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
 			}
-		}
-		
-		if (userTalent != null) {
-			List<UserEquipPokedeBean> ueList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
-			UserTalent.Builder builder = userTalent;
-			for (int i = 0; i < builder.getEquipCount(); ++i) {
-				UserTalentEquip.Builder uteBuilder = builder.getEquipBuilder(i);
-				UserEquipPokedeBean ueBean = userEquipPokedeService.getUserEquipPokede(ueList, uteBuilder.getItemId());
-				if (ueBean != null) {
-					uteBuilder.setLevel(ueBean.getLevel());
-					uteBuilder.setOrder(ueBean.getOrder());
-					builder.setEquip(i, uteBuilder.build());
-				}
-			}
-			
-			List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
-			for (int i = 0 ; i < builder.getSkillCount(); ++i) {
-				UserTalentOrder.Builder skillbuilder = UserTalentOrder.newBuilder(builder.getSkill(i));
-				UserTalentSkill skill = getUserTalentSkill(userTalentSkillList, id, skillbuilder.getOrder(), skillbuilder.getSkillId());
-				if (skill != null)
-					skillbuilder.setLevel(skill.getLevel());
-				builder.setSkill(i, skillbuilder.build());
-			}
-			
-			return builder;
 		}
 		
 //		if (userTalent == null) {
@@ -147,78 +148,7 @@ public class UserTalentService {
 	
 	public UserTalent.Builder getUsingTalent(UserBean user) {
 		return getUserTalent(user, user.getUseTalentId());
-//		long userId = user.getId();
-//		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
-//		if (userTalentList.isEmpty()) {
-//			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(userId);
-//			if (utBeanList == null || utBeanList.isEmpty()) {
-//				return null;
-//			} else {
-//				for (UserTalentBean ut : utBeanList) {
-//					UserTalent userTalent = ut.buildUserTalent();
-//					if (userTalent != null) {
-//						userTalentList.add(userTalent);
-//						updateUserTalent(userId, userTalent);
-//					}
-//				}
-//				
-//				userTalentList = userTalentRedisService.getUserTalentList(userId);
-//			}
-//		}
-//		
-//		for (UserTalent ut : userTalentList) {
-//			if (ut != null && ut.isUse()) {
-//				return ut;
-//			}
-//		}
-//		
-//		return null;
 	}
-	
-//	public UserTalent getOtherUsingTalent(long userId) {
-//		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
-//		if (userTalentList.isEmpty()) {
-//			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(userId);
-//			if (utBeanList == null || utBeanList.isEmpty()) {
-//				return null;
-//			} else {
-//				for (UserTalentBean ut : utBeanList) {
-//					UserTalent userTalent = ut.buildUserTalent();
-//					if (userTalent != null) {
-//						userTalentList.add(userTalent);
-//						updateUserTalent(userId, userTalent);
-//					}
-//				}
-//				
-//				userTalentList = userTalentRedisService.getUserTalentList(userId);
-//			}
-//		}
-//		
-//		for (UserTalent ut : userTalentList) {
-//			if (ut != null && ut.getIsUse()) {
-////				List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(userId);
-//				UserTalent.Builder utBuilder = UserTalent.newBuilder(ut);
-//				for (int i = 0 ; i < utBuilder.getSkillCount(); ++i) {
-//					UserTalentOrder.Builder builder = UserTalentOrder.newBuilder(utBuilder.getSkill(i));
-//					UserTalentSkill skill = userTalentRedisService.getUserTalentSkill(userId, utBuilder.getId(), builder.getOrder(), builder.getSkillId());
-//					if (skill != null)
-//						builder.setLevel(skill.getLevel());
-//					utBuilder.setSkill(i, builder.build());
-//				}
-//				List<UserEquipPokedeBean> userEquipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(userId);
-//				for (int i = 0; i < utBuilder.getEquipCount(); ++i) {
-//					UserTalentEquip.Builder builder = UserTalentEquip.newBuilder(utBuilder.getEquip(i));
-//					UserEquipPokedeBean userEquipPokede = userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, builder.getItemId());
-//					if (userEquipPokede != null)
-//						builder.setLevel(userEquipPokede.getLevel());
-//					utBuilder.setEquip(i, builder.build());
-//				}
-//				return utBuilder.build();
-//			}
-//		}
-//		
-//		return null;
-//	}
 	
 	public void updateUserTalentSkill(UserBean user, UserTalentSkill ut) {
 		userTalentRedisService.updateUserTalentSkill(user.getId(), ut);

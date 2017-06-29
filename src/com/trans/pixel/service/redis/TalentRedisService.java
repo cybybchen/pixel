@@ -77,7 +77,7 @@ public class TalentRedisService extends RedisService {
 	//talentupgrade
 	public Talentupgrade getTalentupgrade(int level) {
 		String value = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
-		if (value == null) {
+		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
 			Map<String, Talentupgrade> config = getTalentupgradeConfig();
 			return config.get("" + level);
 		} else {

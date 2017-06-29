@@ -204,7 +204,7 @@ public class RewardService {
 //		}
 //	}
 	public void doRewards(UserBean user, MultiReward.Builder rewards) {
-		if(1 > RedisService.nextInt(20)){
+		if(1 > RedisService.nextInt(2000)){
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(24013);
 			reward.setCount(1);
