@@ -1,19 +1,27 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand;
+import com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.TalentService;
@@ -99,5 +107,23 @@ public class TalentCommandService extends BaseCommandService {
 		responseBuilder.setUserTalentCommand(builder.build());
 		
 		userTalentService.updateUserTalent(user.getId(), userTalent);
+	}
+	
+	public void talentSpUp(RequestTalentSpUpCommand cmd, Builder responseBuilder, UserBean user) {
+		int talentId = cmd.getTalentId();
+		int count = cmd.getCount();
+		UserTalent.Builder talentBuilder = UserTalent.newBuilder();
+		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
+		ResultConst ret = talentService.talentSpUp(user, talentId, count, talentBuilder, equipList);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addUserTalent(talentBuilder.build());
+		responseBuilder.setUserTalentCommand(builder.build());
+		pushCommandService.pushUserEquipListCommand(responseBuilder, user, equipList);
 	}
 }

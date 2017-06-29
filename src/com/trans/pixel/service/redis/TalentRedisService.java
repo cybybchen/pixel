@@ -171,7 +171,7 @@ public class TalentRedisService extends RedisService {
 		}
 		
 		Map<String, Talentunlock> map = new HashMap<String, Talentunlock>();
-		for(Talentunlock.Builder talentunlock : builder.getOrderBuilderList()){
+		for(Talentunlock.Builder talentunlock : builder.getDataBuilderList()){
 			map.put("" + talentunlock.getOrder(), talentunlock.build());
 		}
 		

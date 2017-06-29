@@ -352,7 +352,7 @@ public class HeroCommandService extends BaseCommandService {
 				equip1.setEquipCount(equip1.getEquipCount()-count);
 				userEquipService.updateUserEquip(equip1);
 			}
-			heroInfo.setSp(heroInfo.getSp()+cmd.getCount());
+			heroInfo.setSp(heroInfo.getSp() + count);
 			userHeroService.updateUserHero(heroInfo);
 		}
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();

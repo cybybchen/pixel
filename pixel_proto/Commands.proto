@@ -124,6 +124,7 @@ message UserTalent {
 	repeated UserTalentOrder skill = 4;
 	repeated UserTalentEquip equip = 5;
 	optional uint32 exp = 6;//当前一级的经验，升级之后清0
+	optional uint32 sp = 7;
 }
 
 message TeamEngine {
@@ -743,6 +744,18 @@ message TalentList {
 	repeated Talent data = 1;
 }
 
+message Talentunlock {
+	required uint32 order = 1;
+	required uint32 initlevel = 2;
+	required uint32 levelup = 3;
+	required uint32 maxlevel = 4;
+	required uint32 sp = 5;
+}
+
+message TalentunlockList {
+	repeated Talentunlock data = 1;
+}	
+
 message Talentupgrade {
 	optional int32 level = 1;
 	optional int32 itemid = 2;
@@ -751,15 +764,6 @@ message Talentupgrade {
 
 message TalentupgradeList {
 	repeated Talentupgrade level = 1;
-}
-
-message Talentunlock {
-	optional int32 order = 1;
-	optional int32 level = 2;
-}
-
-message TalentunlockList {
-	repeated Talentunlock order = 1;
 }
 
 message UserTalentList {
@@ -1239,6 +1243,11 @@ message RequestTalentChangeEquipCommand {
 	required int32 id = 1;
 	required int32 position = 2;
 	required int32 itemId = 3;
+}
+
+message RequestTalentSpUpCommand {
+        required int32 talentId = 1;
+        required int32 count = 2;
 }
 
 message RequestSynthetiseComposeCommand {
@@ -3668,6 +3677,7 @@ message RequestCommand {
 	optional RequestMaterialComposeCommand materialComposeCommand = 251;
 	optional RequestUseMaterialCommand useMaterialCommand = 252;
 	optional RequestChangePositionCommand changePositionCommand = 253;
+	optional RequestTalentSpUpCommand talentSpUpCommand = 254;
 }
 ////////// Commands
 message ErrorCommand {

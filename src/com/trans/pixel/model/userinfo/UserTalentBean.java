@@ -15,6 +15,7 @@ public class UserTalentBean {
 	private long userId = 0;
 	private int talentId = 0;
 	private int level = 0;
+	private int sp = 0;
 	private String talentSkill = "";
 	private String talentEquip = "";
 	public static UserTalentBean init(long userId, UserTalent ut) {
@@ -22,6 +23,7 @@ public class UserTalentBean {
 		utBean.setLevel(ut.getLevel());
 		utBean.setUserId(userId);
 		utBean.setTalentId(ut.getId());
+		utBean.setSp(ut.getSp());
 		utBean.setTalentSkill(composeTalentSkill(ut.getSkillList()));
 		utBean.setTalentEquip(composeTalentEquip(ut.getEquipList()));
 		
@@ -48,6 +50,7 @@ public class UserTalentBean {
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		builder.setId(talentId);
 		builder.setLevel(level);
+		builder.setSp(sp);
 		@SuppressWarnings("unchecked")
 		Set<Object> set = json.keySet();
 		for (Object o : set) {
@@ -93,6 +96,12 @@ public class UserTalentBean {
 	}
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	public int getSp() {
+		return sp;
+	}
+	public void setSp(int sp) {
+		this.sp = sp;
 	}
 	public String getTalentSkill() {
 		return talentSkill;

@@ -45,6 +45,7 @@ import com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
+import com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
@@ -253,6 +254,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEventCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTalentSpUpCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUseMaterialCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestMohuaSubmitStageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestResetHeroSkillCommand cmd, Builder responseBuilder, UserBean user);
@@ -600,6 +602,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasTeamCommand()) {
 			RequestGetTeamCommand cmd = request.getTeamCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasTalentSpUpCommand()) {
+			RequestTalentSpUpCommand cmd = request.getTalentSpUpCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUseMaterialCommand()) {

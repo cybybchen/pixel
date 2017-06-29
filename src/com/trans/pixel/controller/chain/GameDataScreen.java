@@ -38,6 +38,7 @@ import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestTalentChangeEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
@@ -1449,6 +1450,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestChangePositionCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		rewardTaskCommandService.changePosition(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTalentSpUpCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		talentCommandService.talentSpUp(cmd, responseBuilder, user);
 		return true;
 	}
 

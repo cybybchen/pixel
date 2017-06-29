@@ -279,22 +279,25 @@ public class UserTalentService {
 		return userTalentRedisService.popTalentSkillDBKey();
 	}
 	
-	public void unlockUserTalentSkill(UserBean user, int talentId, int orderId) {
+	public void unlockUserTalentSkill(UserBean user, int talentId, Talentunlock unlock) {
+		int orderId = unlock.getOrder();
 		Talent talent = talentRedisService.getTalent(talentId);
 		TalentOrder talentOrder = talent.getSkill(orderId - 1);
 		if (talentOrder.getSkill1() > 0) {
-			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, 1);
+			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, unlock, 1);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
 		} else if (talentOrder.getSkill2() > 0) {
-			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, orderId, 2);
+			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, unlock, 2);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
 		}
 	}
 	
-	private UserTalentSkill initUserTalentSkill(int talentId, int orderId, int skillId) {
+	private UserTalentSkill initUserTalentSkill(int talentId, Talentunlock unlock, int skillId) {
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
-		builder.setLevel(1);
-		builder.setOrderId(orderId);
+		builder.setLevel(0);
+		if (unlock.getInitlevel() == 0)
+			builder.setLevel(1);
+		builder.setOrderId(unlock.getOrder());
 		builder.setSkillId(skillId);
 		builder.setTalentId(talentId);
 		
@@ -313,14 +316,16 @@ public class UserTalentService {
 		while (it.hasNext()) {
 			Entry<String, Talentunlock> entry = it.next();
 			Talentunlock talentunlock = entry.getValue();
-			if (talentunlock.getLevel() <= builder.getLevel()) {
-				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
-				skillBuilder.setOrder(talentunlock.getOrder());
+			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
+			skillBuilder.setOrder(talentunlock.getOrder());
+			skillBuilder.setSkillId(0);
+			if (talentunlock.getInitlevel() <= builder.getLevel()) {
 				skillBuilder.setSkillId(1);
-				builder.addSkill(skillBuilder.build());
-				
-				unlockUserTalentSkill(user, id, talentunlock.getOrder());
+				skillBuilder.setLevel(1);
 			}
+			builder.addSkill(skillBuilder.build());
+			
+			unlockUserTalentSkill(user, id, talentunlock);
 		}
 		
 		for (int i = 0; i < 10; ++i) {
@@ -345,17 +350,15 @@ public class UserTalentService {
 		while (it.hasNext()) {
 			Entry<String, Talentunlock> entry = it.next();
 			Talentunlock talentunlock = entry.getValue();
-			if (talentunlock.getLevel() <= builder.getLevel()) {
-				UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
-				skillBuilder.setOrder(talentunlock.getOrder());
-				TalentOrder talentOrder = talent.getSkill(skillBuilder.getOrder() - 1);
-				if (talentOrder.getSkill2() == 0)
-					skillBuilder.setSkillId(rand.nextInt(1) + 1);
-				else
-					skillBuilder.setSkillId(rand.nextInt(2) + 1);
-				skillBuilder.setLevel(ladderEnemy.getLeadskill());
-				builder.addSkill(skillBuilder.build());
-			}
+			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
+			skillBuilder.setOrder(talentunlock.getOrder());
+			TalentOrder talentOrder = talent.getSkill(skillBuilder.getOrder() - 1);
+			if (talentOrder.getSkill2() == 0)
+				skillBuilder.setSkillId(rand.nextInt(1) + 1);
+			else
+				skillBuilder.setSkillId(rand.nextInt(2) + 1);
+			skillBuilder.setLevel(ladderEnemy.getLeadskill());
+			builder.addSkill(skillBuilder.build());
 		}
 		
 		UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
