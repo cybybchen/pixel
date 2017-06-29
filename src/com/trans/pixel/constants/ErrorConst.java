@@ -59,7 +59,7 @@ public enum ErrorConst implements ResultConst {
     LADDER_SEASON_IS_END_ERROR(5001, "该赛季已结束，请退出天梯重新进入！"), LADDER_SEASON_IS_NOT_OPEN_ERROR(5002, "该赛季还未开启，请等待开启！"),
     SAVINGBOX_BUY_TYPE_ERROR(5003, "淘金罐购买类型异常"), EQUIP_NOT_GET_ERROR(5004, "未获得该装备！"), SAVINGBOX_LEVEL_IS_LIMIT_ERROR(5005, "淘金罐等级已达上限"),
     LADDER_SEASON_EQUIP_NOTUP_ERROR(5006, "当前赛季内无法升级该装备！"), CHIP_IS_NOT_EXISTS_ERROR(5007, "该碎片不存在！"),
-    CHIP_CAN_NOT_GET_ERROR(5007, "无法兑换该碎片！"), 
+    CHIP_CAN_NOT_GET_ERROR(5007, "无法兑换该碎片！"), EQUIP_IS_EXISTS_ERROR(5008, "装备已存在，无法合成！"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

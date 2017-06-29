@@ -88,8 +88,7 @@ public class EquipService {
 						if (composeEquipId < RewardConst.HERO)
 							userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 				}
-			}
-				
+			}	
 		}
 			
 		return composeEquipId;

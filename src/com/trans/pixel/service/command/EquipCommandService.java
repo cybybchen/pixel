@@ -13,6 +13,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -26,6 +27,7 @@ import com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
@@ -44,6 +46,8 @@ public class EquipCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 	
 	public void equipLevelup(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipComposeCommand.Builder builder = ResponseEquipComposeCommand.newBuilder();
@@ -51,6 +55,17 @@ public class EquipCommandService extends BaseCommandService {
 		int count = 1;
 		if (cmd.hasCount())
 			count = cmd.getCount();
+		
+		if (levelUpId > RewardConst.EQUIPMENT && levelUpId < RewardConst.CHIP) {
+			UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, levelUpId);
+			if (pokede != null) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_IS_EXISTS_ERROR);
+				
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_IS_EXISTS_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}
+		}
 		
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
 		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
