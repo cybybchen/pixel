@@ -108,10 +108,10 @@ public class UserRewardTaskService {
 					userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 					it.remove();
 				}
-			}else if(ut.getTask().getId() == 7 && user.getVip() < 14){
-				it.remove();
-			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
-				it.remove();
+//			}else if(ut.getTask().getId() == 7 && user.getVip() < 14){
+//				it.remove();
+//			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
+//				it.remove();
 			}
 		}
 		if(needRefresh){
@@ -176,6 +176,16 @@ public class UserRewardTaskService {
 					map.put(builder.getIndex(), builder.build());
 			}
 			userService.updateUser(user);
+		}
+		it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			int index = it.next().getKey();
+			UserRewardTask ut = map.get(index);
+			if(ut.getTask().getId() == 7 && user.getVip() < 14){
+				it.remove();
+			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
+				it.remove();
+			}
 		}
 
 		return map;
