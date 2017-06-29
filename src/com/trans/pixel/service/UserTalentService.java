@@ -290,7 +290,8 @@ public class UserTalentService {
 		if (talentOrder.getSkill1() > 0) {
 			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, unlock, 1);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
-		} else if (talentOrder.getSkill2() > 0) {
+		}
+		if (talentOrder.getSkill2() > 0) {
 			UserTalentSkill userTalentSkill = initUserTalentSkill(talentId, unlock, 2);
 			userTalentRedisService.updateUserTalentSkill(user.getId(), userTalentSkill);
 		}
@@ -341,6 +342,10 @@ public class UserTalentService {
 		}
 		
 		return builder;
+	}
+	
+	public void resetTalents(UserBean user) {
+		List<UserTalent> userTalentList = getUserTalentList(user);
 	}
 	
 	public UserTalent initRobotTalent(LadderEnemy ladderEnemy) {
