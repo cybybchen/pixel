@@ -84,6 +84,8 @@ public class UserRewardTaskService {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long now = RedisService.now();
 		boolean needRefresh = false;
+		if(map.isEmpty())
+			needRefresh = true;
 		Iterator<Entry<Integer, UserRewardTask>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			int index = it.next().getKey();

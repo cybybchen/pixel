@@ -20,7 +20,6 @@ import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.command.PushCommandService;
-import com.trans.pixel.service.command.PvpCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.LootRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;

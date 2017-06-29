@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 
 @Service
 public class UserRewardTaskRedisService extends RedisService {
