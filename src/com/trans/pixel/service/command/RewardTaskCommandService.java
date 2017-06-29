@@ -56,9 +56,12 @@ public class RewardTaskCommandService extends BaseCommandService {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
 				pusher.pushOtherUserInfoCommand(responseBuilder, errorUserList);
 				
-				ResponseUserRewardTaskRoomCommand.Builder roombuilder = ResponseUserRewardTaskRoomCommand.newBuilder();
-				roombuilder.addRoom(rewardTaskService.getUserRoom(user, cmd.getIndex()));
-				responseBuilder.setUserRewardTaskRoomCommand(roombuilder.build());
+				UserRewardTaskRoom room = rewardTaskService.getUserRoom(user, cmd.getIndex());
+				if (room != null) {
+					ResponseUserRewardTaskRoomCommand.Builder roombuilder = ResponseUserRewardTaskRoomCommand.newBuilder();
+					roombuilder.addRoom(room);
+					responseBuilder.setUserRewardTaskRoomCommand(roombuilder.build());
+				}
 			}
 			
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
