@@ -18,6 +18,7 @@ import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
+import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class RewardService {
@@ -203,16 +204,22 @@ public class RewardService {
 //		}
 //	}
 	public void doRewards(UserBean user, MultiReward.Builder rewards) {
+		if(1 > RedisService.nextInt(2000)){
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(24013);
+			reward.setCount(1);
+			rewards.addLoot(reward);
+		}
 		boolean needUpdateUser = false;
-		List<RewardInfo> list = new ArrayList<RewardInfo>();
+		List<RewardInfo> heros = new ArrayList<RewardInfo>();
 		for (RewardInfo reward : rewards.getLootList()) {
 			if(reward.getItemid()/10000*10000 == RewardConst.HERO){
-				list.add(reward);
+				heros.add(reward);
 			}else if(doReward(user, reward.getItemid(), reward.getCount(), reward.getLastime()))
 				needUpdateUser = true;
 		}
-		if(!list.isEmpty())
-			userHeroService.addUserHeros(user, list);
+		if(!heros.isEmpty())
+			userHeroService.addUserHeros(user, heros);
 		
 		if (needUpdateUser)
 			userService.updateUser(user);
