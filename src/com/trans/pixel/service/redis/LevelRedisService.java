@@ -826,29 +826,29 @@ public class LevelRedisService extends RedisService {
 // 		return map.get(id);
 // 	}
 
-	public Map<String, Loot> getLootConfig(){
-		Map<String, String> keyvalue = hget(RedisKey.LOOT_CONFIG);
-		Map<String, Loot> map = new HashMap<String, Loot>();
-		if (keyvalue.isEmpty()) {
-			Map<String, String> redismap = new HashMap<String, String>();
-			String xml = ReadConfig("ld_loot.xml");
-			LootList.Builder list = LootList.newBuilder();
-			parseXml(xml, list);
-			for(Loot loot : list.getIdList()){
-				map.put("" + loot.getOrder(), loot);
-				redismap.put("" + loot.getOrder(), formatJson(loot));
-			}
-			hputAll(RedisKey.LOOT_CONFIG, redismap);
-		} else {
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Loot.Builder builder = Loot.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-		}
-		
-		return map;
-	}
+//	public Map<String, Loot> getLootConfig(){
+//		Map<String, String> keyvalue = hget(RedisKey.LOOT_CONFIG);
+//		Map<String, Loot> map = new HashMap<String, Loot>();
+//		if (keyvalue.isEmpty()) {
+//			Map<String, String> redismap = new HashMap<String, String>();
+//			String xml = ReadConfig("ld_loot.xml");
+//			LootList.Builder list = LootList.newBuilder();
+//			parseXml(xml, list);
+//			for(Loot loot : list.getIdList()){
+//				map.put("" + loot.getOrder(), loot);
+//				redismap.put("" + loot.getOrder(), formatJson(loot));
+//			}
+//			hputAll(RedisKey.LOOT_CONFIG, redismap);
+//		} else {
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				Loot.Builder builder = Loot.newBuilder();
+//				if(parseJson(entry.getValue(), builder))
+//					map.put(entry.getKey(), builder.build());
+//			}
+//		}
+//		
+//		return map;
+//	}
 
 	public Map<Integer, Integer> getAreaConfig(){
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();

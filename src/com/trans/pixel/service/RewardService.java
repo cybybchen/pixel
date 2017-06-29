@@ -87,7 +87,7 @@ public class RewardService {
 	}
 	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime) {
 		if (rewardId < 100 && rewardId > 0) {
-			UserTalent userTalent = userTalentService.getUserTalent(user, rewardId);
+			UserTalent.Builder userTalent = userTalentService.getUserTalent(user, rewardId);
 			if (userTalent == null)
 				userTalentService.initTalent(user, rewardId);
 		}else if (rewardId > RewardConst.AREAEQUIPMENT) {

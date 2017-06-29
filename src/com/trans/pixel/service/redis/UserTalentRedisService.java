@@ -26,12 +26,12 @@ public class UserTalentRedisService extends RedisService {
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENT_PREFIX, userId + "#" + ut.getId());
 	}
 	
-	public UserTalent getUserTalent(long userId, int id) {
+	public UserTalent.Builder getUserTalent(long userId, int id) {
 		String key = RedisKey.USER_TALENT_PREFIX + userId;
 		String value = hget(key, "" + id);
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		if(value!= null && parseJson(value, builder))
-			return builder.build();
+			return builder;
 		else
 			return null;
 	}

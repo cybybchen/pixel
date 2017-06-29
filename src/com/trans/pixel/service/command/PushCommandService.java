@@ -416,9 +416,9 @@ public class PushCommandService extends BaseCommandService {
 //				continue;
 			 
 			if (rewardId < 100 && rewardId > 0) {
-				UserTalent userTalent = userTalentService.getUserTalent(user, rewardId);
+				UserTalent.Builder userTalent = userTalentService.getUserTalent(user, rewardId);
 				if (userTalent != null)
-					userTalentList.add(userTalent);
+					userTalentList.add(userTalent.build());
 			} else if (rewardId > RewardConst.FOOD) {
 				UserFoodBean food = userFoodService.selectUserFood(user, rewardId);
 				if(food != null)
@@ -447,9 +447,9 @@ public class PushCommandService extends BaseCommandService {
 			} else if (rewardId > RewardConst.EQUIPMENT) {
 //				equipPokedeList.add(userEquipPokedeService.selectUserEquipPokede(user, rewardId));
 			} else if (rewardId == RewardConst.ZHUJUEEXP) {
-				UserTalent userTalent = userTalentService.getUsingTalent(user);
+				UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
 				if (userTalent != null)
-					userTalentList.add(userTalent);
+					userTalentList.add(userTalent.build());
 			} else {
 				needUpdateUser = true;
 			}

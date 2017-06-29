@@ -59,7 +59,7 @@ public class TalentCommandService extends BaseCommandService {
 	}
 	
 	public void talentChangeUse(RequestTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
-		UserTalent userTalent = talentService.changeUseTalent(user, cmd.getId());
+		UserTalent.Builder userTalent = talentService.changeUseTalent(user, cmd.getId());
 		if (userTalent == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.TALENT_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.TALENT_NOT_EXIST_ERROR);

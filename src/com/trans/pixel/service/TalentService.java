@@ -50,11 +50,11 @@ public class TalentService {
 	private UserEquipService userEquipService;
 	
 	public void talentUpgrade(UserBean user, int exp) {
-		UserTalent userTalent = userTalentService.getUsingTalent(user);
+		UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
 		if (userTalent == null)
 			return;
 		
-		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		UserTalent.Builder builder = userTalent;
 		builder.setExp(builder.getExp() + exp);
 		Map<String,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
 		while (true) {
@@ -90,7 +90,7 @@ public class TalentService {
 	}
 	
 	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, id);
 		if (userTalent == null)
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		
@@ -103,7 +103,7 @@ public class TalentService {
 			return ErrorConst.TALENTUPGRADE_ERROR;
 		}
 		
-		talentBuilder.mergeFrom(userTalent);
+		talentBuilder.mergeFrom(userTalent.build());
 		talentBuilder.setLevel(talentBuilder.getLevel() + 1);
 //		userTalentService.updateUserTalent(user.getId(), unlockTalentSkill(user, talentBuilder, originalLevel));
 		userTalentService.updateUserTalent(user.getId(), talentBuilder.build());
@@ -151,7 +151,7 @@ public class TalentService {
 	private static final int SPECIAL_SKILL_STONE_ID = 24105;
 	public ResultConst talentSpUp(UserBean user, int talentId, int count, UserTalent.Builder builder,
 			List<UserEquipBean> equipList) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 		int sp = getNeedSP(user, userTalent);
 		count = Math.min(sp , count);
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), TALENT_SKILL_STONE_ID);
@@ -176,7 +176,7 @@ public class TalentService {
 				userEquipService.updateUserEquip(equip1);
 			}
 			
-			builder.mergeFrom(userTalent);
+			builder.mergeFrom(userTalent.build());
 			builder.setSp(builder.getSp() + count);
 			userTalentService.updateUserTalent(user.getId(), builder.build());
 			
@@ -185,7 +185,7 @@ public class TalentService {
 	}
 	
 	public ResultConst talentLevelUpSkill(UserBean user, int talentId, int orderId, int skillId, UserTalent.Builder builder, UserTalentSkill.Builder skillBuilder) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 		if (userTalent == null)
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		
@@ -202,7 +202,7 @@ public class TalentService {
 			return ErrorConst.SKILL_CAN_NOT_LEVELUP;
 		}
 		
-		builder.mergeFrom(userTalent);
+		builder.mergeFrom(userTalent.build());
 		int needSP = unlock.getSp();
 		if (needSP <= builder.getSp())
 			builder.setSp(builder.getSp() - needSP);
@@ -219,11 +219,11 @@ public class TalentService {
 	}
 	
 	public ResultConst talentResetSkill(UserBean user, int talentId, UserTalent.Builder builder, List<UserTalentSkill> skillList) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 		if (userTalent == null)
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		
-		builder.mergeFrom(userTalent);
+		builder.mergeFrom(userTalent.build());
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		for (UserTalentSkill skill : userTalentService.getUserTalentSkillListByTalentId(user, talentId)) {
 			Talentunlock unlock = map.get("" + skill.getOrderId());
@@ -243,7 +243,7 @@ public class TalentService {
 		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
 	
-	private boolean canLevelup(UserTalent talent, UserTalentSkill skill, Talentunlock unlock) {
+	private boolean canLevelup(UserTalent.Builder talent, UserTalentSkill skill, Talentunlock unlock) {
 		if (unlock.getMaxlevel() <= skill.getLevel())
 			return false;
 		
@@ -253,7 +253,7 @@ public class TalentService {
 		return true;
 	}
 	
-	private int getNeedSP(UserBean user, UserTalent userTalent) {
+	private int getNeedSP(UserBean user, UserTalent.Builder userTalent) {
 		List<UserTalentSkill> skillList = userTalentService.getUserTalentSkillListByTalentId(user, userTalent.getId());
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		int sp = 0;
@@ -283,8 +283,8 @@ public class TalentService {
 //		return utBuilder.build();
 //	}
 	
-	public UserTalent changeUseTalent(UserBean user, int id) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+	public UserTalent.Builder changeUseTalent(UserBean user, int id) {
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, id);
 		if (userTalent != null) {
 			user.setUseTalentId(id);
 			userTeamService.changeUserTeamTalentId(user, id);
@@ -320,10 +320,10 @@ public class TalentService {
 //	}
 	
 	public UserTalent changeTalentSkill(UserBean user, int id, int order, int skillId) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, id);
 		if (userTalent == null)
 			return null;
-		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		UserTalent.Builder builder = userTalent;
 		for (int i = 0; i < builder.getSkillCount(); ++i) {
 			UserTalentOrder.Builder utoBuilder = builder.getSkillBuilder(i);
 			if (utoBuilder.getOrder() == order) {
@@ -337,11 +337,11 @@ public class TalentService {
 	}
 	
 	public UserTalent changeTalentEquip(UserBean user, int id, int position, int itemId) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, id);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, id);
 		if (userTalent == null)
 			return null;
 		
-		UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+		UserTalent.Builder builder = userTalent;
 		if (builder.getEquipCount() == 0) {
 			for (int i = 0; i < 10; ++i) {
 				UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
@@ -378,7 +378,7 @@ public class TalentService {
 	}
 	
 	public boolean changeTitleEquip(UserBean user, int talentId) {
-		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 
 		if (userTalent == null)
 			return false;

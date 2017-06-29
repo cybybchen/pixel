@@ -173,7 +173,7 @@ public class UserTeamService {
 			for(UserTeamBean team : userTeamList){
 				ids.add(team.getId());
 			}
-			UserTalent talent = userTalentService.getUsingTalent(user);
+			UserTalent.Builder talent = userTalentService.getUsingTalent(user);
 			if(ids.isEmpty()){
 				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
 				String teamRecord = "0,0|";
@@ -401,7 +401,7 @@ public class UserTeamService {
 						}
 					}
 				}
-				UserTalent userTalent = userTalentService.getUserTalent(user, userTeam.getTalentId());
+				UserTalent.Builder userTalent = userTalentService.getUserTalent(user, userTeam.getTalentId());
 				if (userTalent != null)
 					team.setUserTalent(userTalent);
 				team.setRolePosition(userTeam.getRolePosition());

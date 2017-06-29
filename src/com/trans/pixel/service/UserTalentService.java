@@ -47,8 +47,8 @@ public class UserTalentService {
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
 	
-	public UserTalent getUserTalent(UserBean user, int id) {
-		UserTalent userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
+	public UserTalent.Builder getUserTalent(UserBean user, int id) {
+		UserTalent.Builder userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
 		if (userTalent == null) {
 			if (!userTalentRedisService.isExistTalentKey(user.getId())) {
 				List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
@@ -63,7 +63,7 @@ public class UserTalentService {
 		
 		if (userTalent != null) {
 			List<UserEquipPokedeBean> ueList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
-			UserTalent.Builder builder = UserTalent.newBuilder(userTalent);
+			UserTalent.Builder builder = userTalent;
 			for (int i = 0; i < builder.getEquipCount(); ++i) {
 				UserTalentEquip.Builder uteBuilder = builder.getEquipBuilder(i);
 				UserEquipPokedeBean ueBean = userEquipPokedeService.getUserEquipPokede(ueList, uteBuilder.getItemId());
@@ -83,7 +83,7 @@ public class UserTalentService {
 				builder.setSkill(i, skillbuilder.build());
 			}
 			
-			return builder.build();
+			return builder;
 		}
 		
 //		if (userTalent == null) {
@@ -145,7 +145,7 @@ public class UserTalentService {
 		return userTalentList;
 	}
 	
-	public UserTalent getUsingTalent(UserBean user) {
+	public UserTalent.Builder getUsingTalent(UserBean user) {
 		return getUserTalent(user, user.getUseTalentId());
 //		long userId = user.getId();
 //		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(userId);
@@ -264,9 +264,9 @@ public class UserTalentService {
 	}
 	
 	public void updateTalentToDB(long userId, int talentId) {
-		UserTalent ut = userTalentRedisService.getUserTalent(userId, talentId);
+		UserTalent.Builder ut = userTalentRedisService.getUserTalent(userId, talentId);
 		if(ut != null)
-			userTalentMapper.updateUserTalent(UserTalentBean.init(userId, ut));
+			userTalentMapper.updateUserTalent(UserTalentBean.init(userId, ut.build()));
 	}
 	
 	public String popTalentDBKey(){
