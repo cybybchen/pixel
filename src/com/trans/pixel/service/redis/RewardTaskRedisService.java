@@ -72,7 +72,7 @@ public class RewardTaskRedisService extends RedisService {
 //		return map;
 //	}
 	
-	public UserRewardTaskRoom getUserRewardTaskRoom(long userId, int index) {
+	public UserRewardTaskRoom.Builder getUserRewardTaskRoom(long userId, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + userId;
 		String value = hget(key, "" + index);
 		if (value == null)
@@ -80,7 +80,7 @@ public class RewardTaskRedisService extends RedisService {
 		
 		UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder();
 		if (parseJson(value, builder)){
-				return builder.build();
+				return builder;
 		}
 		
 		return null;

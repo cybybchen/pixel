@@ -35,14 +35,12 @@ public class UserRewardTaskService {
 	@Resource
 	private UserService userService;
 	
-	public UserRewardTask getUserRewardTask(UserBean user, int index) {
+	public UserRewardTask.Builder getUserRewardTask(UserBean user, int index) {
 		return getUserRewardTask(user.getId(), index);
 	}
 	
-	public UserRewardTask getUserRewardTask(long userId, int index) {
-		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
-
-		return ut;
+	public UserRewardTask.Builder getUserRewardTask(long userId, int index) {
+		return userRewardTaskRedisService.getUserRewardTask(userId, index);
 	}
 	
 	public void updateUserRewardTask(UserBean user, UserRewardTask ut) {
@@ -184,9 +182,9 @@ public class UserRewardTaskService {
 	}
 	
 	public void updateToDB(long userId, int index) {
-		UserRewardTask ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
+		UserRewardTask.Builder ut = userRewardTaskRedisService.getUserRewardTask(userId, index);
 		if(ut != null && ut.getTask().getEventid() != 0) {
-			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut));
+			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, ut.build()));
 			
 //			if (ut.getStatus() == REWARDTASK_STATUS.END_VALUE)
 //				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);

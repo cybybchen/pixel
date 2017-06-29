@@ -34,12 +34,12 @@ public class UserRewardTaskRedisService extends RedisService {
 		return true;
 	}
 	
-	public UserRewardTask getUserRewardTask(long userId, int index) {
+	public UserRewardTask.Builder getUserRewardTask(long userId, int index) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		String value = hget(key, "" + index);
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 		if(value!= null && parseJson(value, builder))
-			return builder.build();
+			return builder;
 		else
 			return null;
 	}

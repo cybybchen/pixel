@@ -85,7 +85,7 @@ public class RewardTaskService {
 //	}
 	
 	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, List<UserInfo> errorUserList, List<UserEquipBean> userEquipList) {
-		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user, index);
+		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user, index);
 		if (userRewardTask == null || userRewardTask.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || userRewardTask.getLeftcount() == 0) {
 			return ErrorConst.NOT_MONSTER;
 		}
@@ -107,7 +107,7 @@ public class RewardTaskService {
 			
 			if(event.hasCost())
 				costService.cost(user, event.getCost());
-			UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTask);
+			UserRewardTask.Builder builder = userRewardTask;
 			builder.clearRoomInfo();
 			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder, user);
@@ -170,12 +170,12 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
-	public UserRewardTaskRoom createRoom(UserBean user, int index) {
-		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
+	public UserRewardTaskRoom.Builder createRoom(UserBean user, int index) {
+		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null) {
 			return null;
 		}
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
+		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
 		if (room != null)
 			return room;
 		if (ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
@@ -194,15 +194,15 @@ public class RewardTaskService {
 		builder.setEventid(ut.getTask().getEventid());
 		rewardTaskRedisService.setUserRewardTaskRoom(builder.build());
 		
-		UserRewardTask.Builder utBuilder = UserRewardTask.newBuilder(ut);
+		UserRewardTask.Builder utBuilder = ut;
 		utBuilder.setRoomInfo(roomInfoBuilder.build());
 		userRewardTaskService.updateUserRewardTask(user, utBuilder.build());
-		return builder.build();
+		return builder;
 		
 	}
 	
 	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList) {
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
+		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null) {
 			activityService.completeRewardTask(user.getId(), rewardTask.getType());//单独完成悬赏任务
 			return SuccessConst.BOSS_SUBMIT_SUCCESS;
@@ -232,7 +232,7 @@ public class RewardTaskService {
 			if (userinfo.getId() != user.getId()) {
 				if(event.hasCost())
 					costService.cost(userinfo.getId(), event.getCost());
-				UserRewardTask.Builder builder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex()));
+				UserRewardTask.Builder builder = userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex());
 				builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
 				userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
 			}
@@ -262,22 +262,22 @@ public class RewardTaskService {
 		return userInfoList;
 	}
 	
-	public UserRewardTaskRoom getUserRoom(UserBean user, int index) {
-		UserRewardTask ut = userRewardTaskService.getUserRewardTask(user, index);
+	public UserRewardTaskRoom.Builder getUserRoom(UserBean user, int index) {
+		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null || ut.getRoomInfo() == null)
 			return null;
 		
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 		
 		return room;
 	}
 	
-	public UserRewardTask inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int id, int index) {
+	public UserRewardTask.Builder inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int id, int index) {
 		if (userIds.isEmpty()) {//接收邀请
-			UserRewardTaskRoom.Builder room = UserRewardTaskRoom.newBuilder(rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index));
+			UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null)
 				return null;
-			UserRewardTask.Builder rewardTask = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(createUserId, index));
+			UserRewardTask.Builder rewardTask = userRewardTaskService.getUserRewardTask(createUserId, index);
 			if (rewardTask == null)
 				return null;
 			
@@ -296,20 +296,20 @@ public class RewardTaskService {
 //			}
 			if (rewardTask.getLeftcount() == 0) {
 				rewardTask.setStatus(REWARDTASK_STATUS.LIMIT_VALUE);
-				return rewardTask.build();
+				return rewardTask;
 			}
 			
 			for (RoomInfo roomInfo : room.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() == user.getId()) {
 					rewardTask.setStatus(REWARDTASK_STATUS.HAS_IN_VALUE);
 //					rewardTask.setRoomInfo(roomInfo);
-					return rewardTask.build();
+					return rewardTask;
 				}
 			}
 			if (room.getRoomInfoCount() >= rewardTask.getTask().getMembers()) {
 				rewardTask.setStatus(REWARDTASK_STATUS.FULL_VALUE);//房间人数已满
 //				rewardTask.setRoomInfo(roomInfo);
-				return rewardTask.build();
+				return rewardTask;
 			}
 			
 //			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1));
@@ -334,9 +334,9 @@ public class RewardTaskService {
 			room.addRoomInfo(roomInfoBuilder.build());
 			rewardTaskRedisService.setUserRewardTaskRoom(room.build());
 			
-			return rewardTask.build();
+			return rewardTask;
 		} else { //邀请别人
-			UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
+			UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null) {
 				return null;
 			}
@@ -349,12 +349,12 @@ public class RewardTaskService {
 	}
 	
 	public ResultConst quitRoom(UserBean user, long quitUserId, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
-		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
+		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
 		if (userRewardTask.getRoomInfo() == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
+		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
 		if (room == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
@@ -362,13 +362,13 @@ public class RewardTaskService {
 			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
 		}
 		
-		rewardTaskBuilder.mergeFrom(userRewardTask);
-		builder.mergeFrom(room);
+		rewardTaskBuilder.mergeFrom(userRewardTask.build());
+		builder.mergeFrom(room.build());
 		if (builder.getCreateUserId() == user.getId() && user.getId() == quitUserId) {//退出自己的房间
 			rewardTaskRedisService.delUserRewardTaskRoom(user, builder.getIndex());
 			for (RoomInfo roomInfo :builder.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() != user.getId()) {
-					UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(roomInfo.getUser().getId(), roomInfo.getIndex()));
+					UserRewardTask.Builder userRewardTaskBuilder = userRewardTaskService.getUserRewardTask(roomInfo.getUser().getId(), roomInfo.getIndex());
 //					userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 					userRewardTaskBuilder.clearRoomInfo();
 					userRewardTaskService.updateUserRewardTask(roomInfo.getUser().getId(), userRewardTaskBuilder.build());
@@ -380,7 +380,7 @@ public class RewardTaskService {
 			for (int i = 0; i < builder.getRoomInfoCount(); ++i) {
 				if (builder.getRoomInfo(i).getUser().getId() == quitUserId) {
 					if (quitUserId != user.getId()) {
-						UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder(userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex()));
+						UserRewardTask.Builder userRewardTaskBuilder = userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex());
 						userRewardTaskBuilder.clearRoomInfo();
 //						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 						userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
@@ -402,7 +402,7 @@ public class RewardTaskService {
 	}
 	
 	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
-		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
+		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
 		if (userRewardTask.hasRoomInfo()) {
 			ResultConst ret = quitRoom(user, user.getId(), index, rewardTaskBuilder, builder);
@@ -410,7 +410,7 @@ public class RewardTaskService {
 				return ret;
 		}
 		
-		rewardTaskBuilder.mergeFrom(userRewardTask);
+		rewardTaskBuilder.mergeFrom(userRewardTask.build());
 		if(rewardTaskBuilder.getTask().getType() != 2){
 			rewardTaskBuilder.setLeftcount(rewardTaskBuilder.getLeftcount()-1);
 			if(rewardTaskBuilder.getLeftcount() == 0)
@@ -447,9 +447,9 @@ public class RewardTaskService {
 	
 	public MultiReward.Builder getRewardList(UserBean user, int index, UserRewardTask.Builder builder) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		UserRewardTask userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
+		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
-			builder.mergeFrom(userRewardTask);
+			builder.mergeFrom(userRewardTask.build());
 			builder.setLeftcount(builder.getLeftcount()-1);
 			builder.clearRoomInfo();
 			if(builder.getLeftcount() == 0)
@@ -502,7 +502,7 @@ public class RewardTaskService {
 	}
 	
 	public ResultConst changePosition(UserBean user, int index, int position1, int position2, UserRewardTaskRoom.Builder roomBuilder) {
-		UserRewardTaskRoom room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
+		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
@@ -510,7 +510,7 @@ public class RewardTaskService {
 			return ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER;
 		}
 	
-		roomBuilder.mergeFrom(room);
+		roomBuilder.mergeFrom(room.build());
 		for (int i = 0; i < roomBuilder.getRoomInfoCount(); ++i) {
 			RoomInfo.Builder builder = RoomInfo.newBuilder(roomBuilder.getRoomInfo(i));
 			if (builder.getPosition() == position1)
