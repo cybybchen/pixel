@@ -17,7 +17,7 @@
 	    VALUES(#{userId}, #{talentId}, #{level}, #{sp}, #{talentSkill}, #{talentEquip})
 		ON 
 	    duplicate key update
-	    talent_level=#{level}, s[=#{sp}, talent_skill=#{talentSkill}, talent_equip=#{talentEquip}
+	    talent_level=#{level}, sp=#{sp}, talent_skill=#{talentSkill}, talent_equip=#{talentEquip}
 	</update>
 	
 	<select id="selectUserTalentList" parameterType="long" resultMap="resultMap">
