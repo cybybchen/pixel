@@ -15,13 +15,11 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
-import com.trans.pixel.model.SkillLevelBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
-import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
@@ -218,6 +216,31 @@ public class TalentService {
 		userTalentService.updateUserTalentSkill(user, skillBuilder.build());
 		
 		return SuccessConst.LEVELUP_SKILL_SUCCESS;
+	}
+	
+	public ResultConst talentResetSkill(UserBean user, int talentId, UserTalent.Builder builder, List<UserTalentSkill> skillList) {
+		UserTalent userTalent = userTalentService.getUserTalent(user, talentId);
+		if (userTalent == null)
+			return ErrorConst.TALENT_NOT_EXIST_ERROR;
+		
+		builder.mergeFrom(userTalent);
+		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		for (UserTalentSkill skill : userTalentService.getUserTalentSkillListByTalentId(user, talentId)) {
+			Talentunlock unlock = map.get("" + skill.getOrderId());
+			if (unlock == null)
+				continue;
+			
+			UserTalentSkill.Builder skillBuilder = UserTalentSkill.newBuilder(skill);
+			
+			builder.setSp(builder.getSp() + skillBuilder.getLevel() * unlock.getSp());
+			skillBuilder.setLevel(0);
+			skillList.add(skillBuilder.build());
+		}
+		
+		userTalentService.updateUserTalent(user.getId(), builder.build());
+		userTalentService.updateUserTalentSkillList(user, skillList);
+		
+		return SuccessConst.RESET_SKILL_SUCCESS;
 	}
 	
 	private boolean canLevelup(UserTalent talent, UserTalentSkill skill, Talentunlock unlock) {

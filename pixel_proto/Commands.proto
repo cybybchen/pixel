@@ -1017,6 +1017,10 @@ message RequestTalentSkillLevelupCommand {
 	required uint32 skillid = 3;
 }
 
+message RequestTalentResetSkillCommand {
+	required uint32 id = 1;
+}
+
 ////////// EquipProto
 message PropList {
 	repeated Prop data = 1;
@@ -3687,6 +3691,7 @@ message RequestCommand {
 	optional RequestChangePositionCommand changePositionCommand = 253;
 	optional RequestTalentSpUpCommand talentSpUpCommand = 254;
 	optional RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
+	optional RequestTalentResetSkillCommand talentResetSkillCommand = 256;
 }
 ////////// Commands
 message ErrorCommand {

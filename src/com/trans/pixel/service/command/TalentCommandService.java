@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand;
@@ -139,6 +140,23 @@ public class TalentCommandService extends BaseCommandService {
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
 		builder.addUserTalent(talentBuilder.build());
 		builder.addUserTalentSkill(skillBuilder.build());
+		responseBuilder.setUserTalentCommand(builder.build());
+		
+	}
+	
+	public void talentResetSkill(RequestTalentResetSkillCommand cmd, Builder responseBuilder, UserBean user) {
+		UserTalent.Builder talentBuilder = UserTalent.newBuilder();
+		List<UserTalentSkill> skillList = new ArrayList<UserTalentSkill>();
+		ResultConst ret = talentService.talentResetSkill(user, cmd.getId(), talentBuilder, skillList);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+            responseBuilder.setErrorCommand(errorCommand);
+            return;
+		}
+		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+		builder.addUserTalent(talentBuilder.build());
+		builder.addAllUserTalentSkill(skillList);
 		responseBuilder.setUserTalentCommand(builder.build());
 		
 	}

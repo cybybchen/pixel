@@ -54137,6 +54137,410 @@ public final class HeroProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestTalentSkillLevelupCommand)
   }
 
+  public interface RequestTalentResetSkillCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 id = 1;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    int getId();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestTalentResetSkillCommand}
+   */
+  public static final class RequestTalentResetSkillCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestTalentResetSkillCommandOrBuilder {
+    // Use RequestTalentResetSkillCommand.newBuilder() to construct.
+    private RequestTalentResetSkillCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestTalentResetSkillCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestTalentResetSkillCommand defaultInstance;
+    public static RequestTalentResetSkillCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestTalentResetSkillCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestTalentResetSkillCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.class, com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestTalentResetSkillCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestTalentResetSkillCommand>() {
+      public RequestTalentResetSkillCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestTalentResetSkillCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestTalentResetSkillCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    private void initFields() {
+      id_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, id_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, id_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestTalentResetSkillCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.class, com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand build() {
+        com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand buildPartial() {
+        com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand result = new com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand) {
+          return mergeFrom((com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand other) {
+        if (other == com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 id = 1;
+      private int id_ ;
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestTalentResetSkillCommand)
+    }
+
+    static {
+      defaultInstance = new RequestTalentResetSkillCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestTalentResetSkillCommand)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_UserHero_descriptor;
   private static
@@ -54542,6 +54946,11 @@ public final class HeroProto {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestTalentSkillLevelupCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -54711,7 +55120,8 @@ public final class HeroProto {
       "questTalentSpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005co" +
       "unt\030\002 \002(\005\"N\n RequestTalentSkillLevelupCo" +
       "mmand\022\n\n\002id\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skil",
-      "lid\030\003 \002(\r"
+      "lid\030\003 \002(\r\",\n\036RequestTalentResetSkillComm" +
+      "and\022\n\n\002id\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -55204,6 +55614,12 @@ public final class HeroProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestTalentSkillLevelupCommand_descriptor,
               new java.lang.String[] { "Id", "Order", "Skillid", });
+          internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor =
+            getDescriptor().getMessageTypes().get(81);
+          internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestTalentResetSkillCommand_descriptor,
+              new java.lang.String[] { "Id", });
           return null;
         }
       };

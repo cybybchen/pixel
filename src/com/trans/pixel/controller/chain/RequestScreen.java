@@ -95,6 +95,7 @@ import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.UnionProto.RequestCreateUnionCommand;
+import com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowExpCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseCoinCommand;
@@ -305,6 +306,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUserPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTalentResetSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitBossRoomScoreCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowExpCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseCoinCommand cmd, Builder responseBuilder, UserBean user);
@@ -804,6 +806,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasCreateUnionCommand()) {
 			RequestCreateUnionCommand cmd = request.getCreateUnionCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasTalentResetSkillCommand()) {
+			RequestTalentResetSkillCommand cmd = request.getTalentResetSkillCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBossScoreCommand()) {
