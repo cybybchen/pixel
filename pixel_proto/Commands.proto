@@ -731,7 +731,6 @@ message TalentOrder {
 	optional int32 order = 1;
 	optional int32 skill1 = 2;
 	optional int32 skill2 = 3;
-	optional int32 skill3 = 4;
 }
 
 message Talent {
