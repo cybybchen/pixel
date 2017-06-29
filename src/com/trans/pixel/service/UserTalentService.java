@@ -315,6 +315,7 @@ public class UserTalentService {
 			return null;
 		builder.setId(id);
 		builder.setLevel(0);
+		builder.setSp(0);
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
