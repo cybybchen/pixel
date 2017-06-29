@@ -299,7 +299,7 @@ public class UserTalentService {
 	private UserTalentSkill initUserTalentSkill(int talentId, Talentunlock unlock, int skillId) {
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
 		builder.setLevel(0);
-		if (unlock.getInitlevel() == 0)
+		if (unlock.getInilevel() == 0)
 			builder.setLevel(1);
 		builder.setOrderId(unlock.getOrder());
 		builder.setSkillId(skillId);
@@ -323,7 +323,7 @@ public class UserTalentService {
 			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
 			skillBuilder.setOrder(talentunlock.getOrder());
 			skillBuilder.setSkillId(0);
-			if (talentunlock.getInitlevel() <= builder.getLevel()) {
+			if (talentunlock.getInilevel() <= builder.getLevel()) {
 				skillBuilder.setSkillId(1);
 				skillBuilder.setLevel(1);
 			}

@@ -224,7 +224,7 @@ public class TalentService {
 		if (unlock.getMaxlevel() <= skill.getLevel())
 			return false;
 		
-		if (unlock.getInitlevel() + skill.getLevel() * unlock.getLevelup() > talent.getLevel())
+		if (unlock.getInilevel() + skill.getLevel() * unlock.getLevelup() > talent.getLevel())
 			return false;
 		
 		return true;
