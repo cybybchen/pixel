@@ -181,7 +181,7 @@ public class UserTeamService {
 					teamRecord += hero.getHeroId() + "," + hero.getId() + "|";
 					break;
 				}
-				updateUserTeam(userId, 1, teamRecord, null, 0, new ArrayList<TeamEngine>(), talent.getId());
+				updateUserTeam(userId, 1, teamRecord, null, 0, new ArrayList<TeamEngine>(), talent == null ? 1 : talent.getId());
 				ids.add(1);
 			}else if(!ids.contains(1))
 				updateUserTeam(userId, 1, "", null, 0, new ArrayList<TeamEngine>(), talent.getId());
