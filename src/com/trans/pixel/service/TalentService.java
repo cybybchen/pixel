@@ -156,6 +156,8 @@ public class TalentService {
 	public ResultConst talentSpUp(UserBean user, int talentId, int count, UserTalent.Builder builder,
 			List<UserEquipBean> equipList) {
 		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
+		if (userTalent == null)
+			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		int sp = getNeedSP(user, userTalent);
 		count = Math.min(sp , count);
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), TALENT_SKILL_STONE_ID);
