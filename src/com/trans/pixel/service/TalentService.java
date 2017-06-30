@@ -49,45 +49,49 @@ public class TalentService {
 	private UserTeamService userTeamService;
 	@Resource
 	private UserEquipService userEquipService;
-	
-	public void talentUpgrade(UserBean user, int exp) {
-		UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
-		if (userTalent == null)
-			return;
-		
-		UserTalent.Builder builder = userTalent;
-		builder.setExp(builder.getExp() + exp);
-		Map<String,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
-		while (true) {
-			Talentupgrade nextTalentupgrade = map.get("" + (builder.getLevel() + 1));
-			if (nextTalentupgrade == null)
-				break;
-			Talentupgrade talentupgrade = map.get("" + (builder.getLevel()));
-			if (builder.getExp() >= talentupgrade.getItemcount()) {
-				builder.setLevel(builder.getLevel() + 1);
-				builder.setExp(builder.getExp() - talentupgrade.getItemcount());
-			} else
-				break;
-		}
-		
-//		userTalentService.updateUserTalent(user.getId(), unlockTalentSkill(user, builder, userTalent.getLevel()));
-		userTalentService.updateUserTalent(user.getId(), builder.build());
-		
-		int skillid = levelupTalentSkill(user, builder.getId(), builder.getLevel() - userTalent.getLevel());
 
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(LogString.USERID, "" + user.getId());
-		params.put(LogString.SERVERID, "" + user.getServerId());
-		params.put(LogString.ROLEID, "" + builder.getId());
-		params.put(LogString.LEVEL, "" + builder.getLevel());
-		params.put(LogString.TALENTID, "" + skillid);
-		
-		logService.sendLog(params, LogString.LOGTYPE_ROLELEVELUP);
-		/**
-		 * 主角升级的活动
-		 */
-		activityService.zhujueLevelup(user, builder.getId(), builder.getLevel());
-		
+	public void talentUpgrade(UserBean user, int exp) {
+//		UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
+//		if (userTalent == null)
+//			return;
+//		
+////		int level = userTalent.getLevel();
+//		userTalent.setExp(userTalent.getExp() + exp);
+////		Map<Integer,Talentupgrade> map = talentRedisService.getTalentupgradeConfig();
+////		while (true) {
+////			Talentupgrade talentupgrade = map.get(userTalent.getLevel());
+////			if (userTalent.getExp() >= talentupgrade.getItemcount()) {
+////				if(map.get(userTalent.getLevel() + 1) != null) {//升级
+////					userTalent.setLevel(userTalent.getLevel() + 1);
+////					userTalent.setExp(userTalent.getExp() - talentupgrade.getItemcount());
+////				}else{//已满级
+////					userTalent.setExp(talentupgrade.getItemcount());
+////					break;
+////				}
+////			} else{
+////				break;
+////			}
+////		}
+//		
+////		userTalentService.updateUserTalent(user.getId(), unlockTalentSkill(user, builder, userTalent.getLevel()));
+//		userTalentService.updateUserTalent(user.getId(), userTalent.build());
+//		
+////		if(userTalent.getLevel() > level) {
+////			int skillid = levelupTalentSkill(user, userTalent.getId(), userTalent.getLevel() - level);
+////	
+////			Map<String, String> params = new HashMap<String, String>();
+////			params.put(LogString.USERID, "" + user.getId());
+////			params.put(LogString.SERVERID, "" + user.getServerId());
+////			params.put(LogString.ROLEID, "" + userTalent.getId());
+////			params.put(LogString.LEVEL, "" + userTalent.getLevel());
+////			params.put(LogString.TALENTID, "" + skillid);
+////			
+////			logService.sendLog(params, LogString.LOGTYPE_ROLELEVELUP);
+////			/**
+////			 * 主角升级的活动
+////			 */
+////			activityService.zhujueLevelup(user, userTalent.getId(), userTalent.getLevel());
+////		}
 	}
 	
 	public ResultConst talentUpgrade(UserBean user, int id, UserTalent.Builder talentBuilder) {

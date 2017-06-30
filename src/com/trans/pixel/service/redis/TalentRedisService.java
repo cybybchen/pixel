@@ -78,7 +78,7 @@ public class TalentRedisService extends RedisService {
 	public Talentupgrade getTalentupgrade(int level) {
 		String value = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
 		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
-			Map<String, Talentupgrade> config = getTalentupgradeConfig();
+			Map<Integer, Talentupgrade> config = getTalentupgradeConfig();
 			return config.get("" + level);
 		} else {
 			Talentupgrade.Builder builder = Talentupgrade.newBuilder();
@@ -89,28 +89,27 @@ public class TalentRedisService extends RedisService {
 		return null;
 	}
 	
-	public Map<String, Talentupgrade> getTalentupgradeConfig() {
+	public Map<Integer, Talentupgrade> getTalentupgradeConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
-			Map<String, Talentupgrade> map = buildTalentupgradeConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Talentupgrade> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			Map<Integer, Talentupgrade> map = buildTalentupgradeConfig();
+			for(Entry<Integer, Talentupgrade> entry : map.entrySet()){
+				keyvalue.put(entry.getKey()+"", formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, redismap);
+			hputAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, keyvalue);
 			return map;
 		}else{
-			Map<String, Talentupgrade> map = new HashMap<String, Talentupgrade>();
+			Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Talentupgrade.Builder builder = Talentupgrade.newBuilder();
 				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
+					map.put(builder.getLevel(), builder.build());
 			}
 			return map;
 		}
 	}
 	
-	private Map<String, Talentupgrade> buildTalentupgradeConfig(){
+	private Map<Integer, Talentupgrade> buildTalentupgradeConfig(){
 		String xml = ReadConfig(TALENTUPGRADE_FILE_NAME);
 		TalentupgradeList.Builder builder = TalentupgradeList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -118,9 +117,9 @@ public class TalentRedisService extends RedisService {
 			return null;
 		}
 		
-		Map<String, Talentupgrade> map = new HashMap<String, Talentupgrade>();
+		Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
 		for(Talentupgrade.Builder talentupgrade : builder.getLevelBuilderList()){
-			map.put("" + talentupgrade.getLevel(), talentupgrade.build());
+			map.put(talentupgrade.getLevel(), talentupgrade.build());
 		}
 		
 		return map;
