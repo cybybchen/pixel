@@ -340,7 +340,7 @@ public class LevelCommandService extends BaseCommandService {
 			 */
 			List<UserTalent> userTalentList = redis.unlockZhujue(user, event);
 			if (!userTalentList.isEmpty())
-				pusher.pushUserTalentListNotPushSkill(responseBuilder, user, userTalentList);
+				pusher.pushUserTalentList(responseBuilder, user, userTalentList);
 
 //			/**
 //			 * 完成事件解锁每日奖励
