@@ -15,7 +15,6 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserAchieveBean;
-import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.ActivityProto.Achieve;
 import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
 import com.trans.pixel.protoc.Base.MultiReward;
@@ -34,7 +33,12 @@ public class AchieveService {
 	public void sendAchieveScore(long userId, int targetId) {
 		sendAchieveScore(userId, targetId, 1);
 	}
+	
 	public void sendAchieveScore(long userId, int targetId, int count) {
+		sendAchieveScore(userId, targetId, count, true);
+	}
+	
+	public void sendAchieveScore(long userId, int targetId, int count, boolean isAdded) {
 		Map<String, Achieve> map = achieveRedisService.getAchieveConfig();
 		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -42,8 +46,7 @@ public class AchieveService {
 			Achieve achieve = entry.getValue();
 			if (achieve.getTargetid() == targetId) {
 				UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, achieve.getId());
-				if (targetId == ACTIVITY_TYPE.TYPE_VIP_VALUE || targetId == ACTIVITY_TYPE.TYPE_ZHANLI_VALUE ||
-						targetId == ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE || targetId == ACTIVITY_TYPE.TYPE_LEVEL_VALUE)
+				if (!isAdded)
 					ua.setCompleteCount(Math.max(count, ua.getCompleteCount()));
 				else
 					ua.setCompleteCount(ua.getCompleteCount() + count);
@@ -71,36 +74,6 @@ public class AchieveService {
 		
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
-	
-//	private MultiReward getMultiReward(ActivityOrder order) {
-//		MultiReward.Builder multiReward = MultiReward.newBuilder();
-//		RewardInfo.Builder reward = RewardInfo.newBuilder();
-//		if (order.getRewardid0() > 0) {
-//			reward.setItemid(order.getRewardid0());
-//			reward.setCount(order.getRewardcount0());
-//			multiReward.addLoot(reward.build());
-//		}
-//		
-//		if (order.getRewardid1() > 0) {
-//			reward.setItemid(order.getRewardid1());
-//			reward.setCount(order.getRewardcount1());
-//			multiReward.addLoot(reward.build());
-//		}
-//		
-//		if (order.getRewardid2() > 0) {
-//			reward.setItemid(order.getRewardid2());
-//			reward.setCount(order.getRewardcount2());
-//			multiReward.addLoot(reward.build());
-//		}
-//		
-//		if (order.getRewardid3() > 0) {
-//			reward.setItemid(order.getRewardid3());
-//			reward.setCount(order.getRewardcount3());
-//			multiReward.addLoot(reward.build());
-//		}
-//		
-//		return multiReward.build();
-//	}
 	
 	private ActivityOrder getAchieveOrder(int id, int order) {
 		Achieve achieve = achieveRedisService.getAchieve(id);

@@ -2116,6 +2116,8 @@ enum ACTIVITY_TYPE{
 	TYPE_DANBI_RECHARGE = 18;
 	TYPE_HERO_RAREUP = 19;
 	TYPE_EVENT_COMPLETE = 21;
+	TYPE_LADDERMODE_LEVELUP = 24;
+	TYPE_RAID_LEVELUP = 25;
 	TYPE_TEAMUP_ARUISI = 10000;
 	TYPE_ARUISI_SKILL1_LEVELUP = 10001;
 	TYPE_ARUISI_EQUIP_ADD10001 = 10002;
@@ -2175,36 +2177,23 @@ enum ACTIVITY_TYPE{
 }
 
 message AchieveList {
-	repeated Achieve id = 1; 
+	repeated Achieve data = 1; 
 }
 
 message Achieve {
 	required uint32 id = 1;
-	required string achievement = 2;
 	required uint32 targetid = 3;
 	repeated ActivityOrder order = 4;
 }
 
 message ActivityOrder {
 	required uint32 order = 1;
-	required string description = 2;
+	required string des = 2;
 	required uint32 targetcount = 3;
-	optional int32 targetcount1 = 17;
-	optional int32 rewardid0 = 5;
-	optional string rewardname0 = 6;
-	optional int32 rewardcount0 = 7;
-	optional int32 rewardid1 = 8;
-	optional string rewardname1 = 9;
-	optional int32 rewardcount1 = 10;
-	optional int32 rewardid2 = 11;
-	optional string rewardname2 = 12;
-	optional int32 rewardcount2 = 13;
-	optional int32 rewardid3 = 14;
-	optional string rewardname3 = 15;
-	optional int32 rewardcount3 = 16;
-	optional int32 limit = 18;
 	repeated RewardInfo reward = 20;
-	optional uint32 consumeid = 19;
+	optional uint32 targetcount1 = 4;
+	optional uint32 limit = 5;
+	optional uint32 consumeid = 6;
 }
 
 message RichangList {

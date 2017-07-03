@@ -60,7 +60,7 @@ public class AchieveRedisService extends RedisService {
 		}
 		
 		Map<String, Achieve> map = new HashMap<String, Achieve>();
-		for(Achieve.Builder achieve : builder.getIdBuilderList()){
+		for(Achieve.Builder achieve : builder.getDataBuilderList()){
 			map.put("" + achieve.getId(), achieve.build());
 		}
 		return map;

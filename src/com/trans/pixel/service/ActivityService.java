@@ -422,7 +422,7 @@ public class ActivityService {
 				List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
 				for (UserRankBean userRank : rankList) {
 					if (userRank.getUserId() > 0) {
-						MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), order.getDescription(), rewardList);
+						MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), order.getDes(), rewardList);
 						log.debug("ladder activity mail is:" + mail.toJson());
 						mailService.addMail(mail);
 					}
@@ -431,7 +431,7 @@ public class ActivityService {
 				Set<TypedTuple<String>> userInfoRankList = activityRedisService.getUserIdList(serverId, id, order.getTargetcount() - 1, order.getTargetcount1());
 				for (TypedTuple<String> userinfo : userInfoRankList) {
 					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
-					MailBean mail = MailBean.buildSystemMail(userId, order.getDescription(), rewardList);
+					MailBean mail = MailBean.buildSystemMail(userId, order.getDes(), rewardList);
 					log.debug("zhanji activity mail is:" + mail.toJson());
 					mailService.addMail(mail);
 				}
@@ -463,7 +463,7 @@ public class ActivityService {
 	 * 过关的成就和开服活动
 	 */
 	public void levelActivity(UserBean user, int daguanId, int areaId) {
-		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE, areaId);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LEVEL_VALUE, areaId, false);
 		
 		/**
 		 * kaifu2 的过关排行
@@ -1084,7 +1084,7 @@ public class ActivityService {
 				++level10Count;
 		}
 		
-		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, level10Count);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP_10_VALUE, level10Count, false);
 		
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP1_VALUE, level1Count, false);
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_EQUIP_LEVELUP3_VALUE, level3Count, false);
@@ -1172,12 +1172,16 @@ public class ActivityService {
 	}
 	
 	public void merLevel(UserBean user, int level) {
-		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_ZHANLI_VALUE, level);
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_ZHANLI_VALUE, level, false);
 	}
 	
 //	public void addChafenqi(UserBean user) {
 //		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ADD_CHAFENQI_VALUE);
 //	}
+	
+	public void ladderModeLevel(UserBean user, int mode) {
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LADDERMODE_LEVELUP_VALUE, mode, false);
+	}
 	
 	/**
 	 * activity and achieve log

@@ -117,7 +117,7 @@ public class RechargeService {
 	    	if(oldvip == null)
 	    		oldvip = VipInfo.newBuilder().build();
 	    	user.setVip(user.getVip()+1);
-	    	achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_VIP_VALUE, user.getVip());
+	    	achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_VIP_VALUE, user.getVip(), false);
 			if(vip != null){
 //				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin() - oldvip.getDianjin());
 //				user.setPurchaseContractLeft(user.getPurchaseContractLeft() + vip.getContract() - oldvip.getContract());
