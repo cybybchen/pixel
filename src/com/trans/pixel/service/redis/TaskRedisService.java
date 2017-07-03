@@ -139,7 +139,7 @@ public class TaskRedisService extends RedisService {
 		}
 		
 		Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
-		for(TaskOrder.Builder task : builder.getIdBuilderList()){
+		for(TaskOrder.Builder task : builder.getDataBuilderList()){
 			map.put("" + task.getOrder(), task.build());
 		}
 		return map;

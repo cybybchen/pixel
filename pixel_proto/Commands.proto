@@ -3382,21 +3382,15 @@ message TaskOrder {
 	optional int32 type = 2;
 	optional string des = 3;
 	optional int32 targetcount = 4;
-	optional int32 rewardid1 = 5;
-	optional int32 rewardcount1 = 6;
 	optional int32 targetid = 7;
-	optional int32 rewardid2 = 8;
-	optional int32 rewardcount2 = 9;
 	optional int32 targetcount1 = 10;
-	optional int32 rewardid3 = 11;
-	optional int32 rewardcount3 = 12;
-	optional string name = 13;
 	repeated RewardInfo reward = 14;
 	optional uint32 skip = 15;
+	optional uint32 whether = 16;
 }
 
 message Task3OrderList {
-	repeated TaskOrder id = 1;
+	repeated TaskOrder data = 1;
 }
 	
 message Task2TargetHero {

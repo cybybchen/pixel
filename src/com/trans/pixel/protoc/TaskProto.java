@@ -2251,26 +2251,6 @@ public final class TaskProto {
      */
     int getTargetcount();
 
-    // optional int32 rewardid1 = 5;
-    /**
-     * <code>optional int32 rewardid1 = 5;</code>
-     */
-    boolean hasRewardid1();
-    /**
-     * <code>optional int32 rewardid1 = 5;</code>
-     */
-    int getRewardid1();
-
-    // optional int32 rewardcount1 = 6;
-    /**
-     * <code>optional int32 rewardcount1 = 6;</code>
-     */
-    boolean hasRewardcount1();
-    /**
-     * <code>optional int32 rewardcount1 = 6;</code>
-     */
-    int getRewardcount1();
-
     // optional int32 targetid = 7;
     /**
      * <code>optional int32 targetid = 7;</code>
@@ -2281,26 +2261,6 @@ public final class TaskProto {
      */
     int getTargetid();
 
-    // optional int32 rewardid2 = 8;
-    /**
-     * <code>optional int32 rewardid2 = 8;</code>
-     */
-    boolean hasRewardid2();
-    /**
-     * <code>optional int32 rewardid2 = 8;</code>
-     */
-    int getRewardid2();
-
-    // optional int32 rewardcount2 = 9;
-    /**
-     * <code>optional int32 rewardcount2 = 9;</code>
-     */
-    boolean hasRewardcount2();
-    /**
-     * <code>optional int32 rewardcount2 = 9;</code>
-     */
-    int getRewardcount2();
-
     // optional int32 targetcount1 = 10;
     /**
      * <code>optional int32 targetcount1 = 10;</code>
@@ -2310,41 +2270,6 @@ public final class TaskProto {
      * <code>optional int32 targetcount1 = 10;</code>
      */
     int getTargetcount1();
-
-    // optional int32 rewardid3 = 11;
-    /**
-     * <code>optional int32 rewardid3 = 11;</code>
-     */
-    boolean hasRewardid3();
-    /**
-     * <code>optional int32 rewardid3 = 11;</code>
-     */
-    int getRewardid3();
-
-    // optional int32 rewardcount3 = 12;
-    /**
-     * <code>optional int32 rewardcount3 = 12;</code>
-     */
-    boolean hasRewardcount3();
-    /**
-     * <code>optional int32 rewardcount3 = 12;</code>
-     */
-    int getRewardcount3();
-
-    // optional string name = 13;
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    boolean hasName();
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
 
     // repeated .com.trans.pixel.protoc.RewardInfo reward = 14;
     /**
@@ -2380,6 +2305,16 @@ public final class TaskProto {
      * <code>optional uint32 skip = 15;</code>
      */
     int getSkip();
+
+    // optional uint32 whether = 16;
+    /**
+     * <code>optional uint32 whether = 16;</code>
+     */
+    boolean hasWhether();
+    /**
+     * <code>optional uint32 whether = 16;</code>
+     */
+    int getWhether();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.TaskOrder}
@@ -2452,62 +2387,32 @@ public final class TaskProto {
               targetcount_ = input.readInt32();
               break;
             }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              rewardid1_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              rewardcount1_ = input.readInt32();
-              break;
-            }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000010;
               targetid_ = input.readInt32();
               break;
             }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              rewardid2_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              rewardcount2_ = input.readInt32();
-              break;
-            }
             case 80: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000020;
               targetcount1_ = input.readInt32();
               break;
             }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              rewardid3_ = input.readInt32();
-              break;
-            }
-            case 96: {
-              bitField0_ |= 0x00000800;
-              rewardcount3_ = input.readInt32();
-              break;
-            }
-            case 106: {
-              bitField0_ |= 0x00001000;
-              name_ = input.readBytes();
-              break;
-            }
             case 114: {
-              if (!((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00002000;
+                mutable_bitField0_ |= 0x00000040;
               }
               reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 120: {
-              bitField0_ |= 0x00002000;
+              bitField0_ |= 0x00000040;
               skip_ = input.readUInt32();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00000080;
+              whether_ = input.readUInt32();
               break;
             }
           }
@@ -2518,7 +2423,7 @@ public final class TaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
@@ -2644,38 +2549,6 @@ public final class TaskProto {
       return targetcount_;
     }
 
-    // optional int32 rewardid1 = 5;
-    public static final int REWARDID1_FIELD_NUMBER = 5;
-    private int rewardid1_;
-    /**
-     * <code>optional int32 rewardid1 = 5;</code>
-     */
-    public boolean hasRewardid1() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 rewardid1 = 5;</code>
-     */
-    public int getRewardid1() {
-      return rewardid1_;
-    }
-
-    // optional int32 rewardcount1 = 6;
-    public static final int REWARDCOUNT1_FIELD_NUMBER = 6;
-    private int rewardcount1_;
-    /**
-     * <code>optional int32 rewardcount1 = 6;</code>
-     */
-    public boolean hasRewardcount1() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    /**
-     * <code>optional int32 rewardcount1 = 6;</code>
-     */
-    public int getRewardcount1() {
-      return rewardcount1_;
-    }
-
     // optional int32 targetid = 7;
     public static final int TARGETID_FIELD_NUMBER = 7;
     private int targetid_;
@@ -2683,45 +2556,13 @@ public final class TaskProto {
      * <code>optional int32 targetid = 7;</code>
      */
     public boolean hasTargetid() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 targetid = 7;</code>
      */
     public int getTargetid() {
       return targetid_;
-    }
-
-    // optional int32 rewardid2 = 8;
-    public static final int REWARDID2_FIELD_NUMBER = 8;
-    private int rewardid2_;
-    /**
-     * <code>optional int32 rewardid2 = 8;</code>
-     */
-    public boolean hasRewardid2() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    /**
-     * <code>optional int32 rewardid2 = 8;</code>
-     */
-    public int getRewardid2() {
-      return rewardid2_;
-    }
-
-    // optional int32 rewardcount2 = 9;
-    public static final int REWARDCOUNT2_FIELD_NUMBER = 9;
-    private int rewardcount2_;
-    /**
-     * <code>optional int32 rewardcount2 = 9;</code>
-     */
-    public boolean hasRewardcount2() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    /**
-     * <code>optional int32 rewardcount2 = 9;</code>
-     */
-    public int getRewardcount2() {
-      return rewardcount2_;
     }
 
     // optional int32 targetcount1 = 10;
@@ -2731,88 +2572,13 @@ public final class TaskProto {
      * <code>optional int32 targetcount1 = 10;</code>
      */
     public boolean hasTargetcount1() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 targetcount1 = 10;</code>
      */
     public int getTargetcount1() {
       return targetcount1_;
-    }
-
-    // optional int32 rewardid3 = 11;
-    public static final int REWARDID3_FIELD_NUMBER = 11;
-    private int rewardid3_;
-    /**
-     * <code>optional int32 rewardid3 = 11;</code>
-     */
-    public boolean hasRewardid3() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    /**
-     * <code>optional int32 rewardid3 = 11;</code>
-     */
-    public int getRewardid3() {
-      return rewardid3_;
-    }
-
-    // optional int32 rewardcount3 = 12;
-    public static final int REWARDCOUNT3_FIELD_NUMBER = 12;
-    private int rewardcount3_;
-    /**
-     * <code>optional int32 rewardcount3 = 12;</code>
-     */
-    public boolean hasRewardcount3() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
-    }
-    /**
-     * <code>optional int32 rewardcount3 = 12;</code>
-     */
-    public int getRewardcount3() {
-      return rewardcount3_;
-    }
-
-    // optional string name = 13;
-    public static final int NAME_FIELD_NUMBER = 13;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00001000) == 0x00001000);
-    }
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    /**
-     * <code>optional string name = 13;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
     }
 
     // repeated .com.trans.pixel.protoc.RewardInfo reward = 14;
@@ -2858,7 +2624,7 @@ public final class TaskProto {
      * <code>optional uint32 skip = 15;</code>
      */
     public boolean hasSkip() {
-      return ((bitField0_ & 0x00002000) == 0x00002000);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional uint32 skip = 15;</code>
@@ -2867,22 +2633,32 @@ public final class TaskProto {
       return skip_;
     }
 
+    // optional uint32 whether = 16;
+    public static final int WHETHER_FIELD_NUMBER = 16;
+    private int whether_;
+    /**
+     * <code>optional uint32 whether = 16;</code>
+     */
+    public boolean hasWhether() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional uint32 whether = 16;</code>
+     */
+    public int getWhether() {
+      return whether_;
+    }
+
     private void initFields() {
       order_ = 0;
       type_ = 0;
       des_ = "";
       targetcount_ = 0;
-      rewardid1_ = 0;
-      rewardcount1_ = 0;
       targetid_ = 0;
-      rewardid2_ = 0;
-      rewardcount2_ = 0;
       targetcount1_ = 0;
-      rewardid3_ = 0;
-      rewardcount3_ = 0;
-      name_ = "";
       reward_ = java.util.Collections.emptyList();
       skip_ = 0;
+      whether_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2909,37 +2685,19 @@ public final class TaskProto {
         output.writeInt32(4, targetcount_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, rewardid1_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, rewardcount1_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(7, targetid_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, rewardid2_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, rewardcount2_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(10, targetcount1_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, rewardid3_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeInt32(12, rewardcount3_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        output.writeBytes(13, getNameBytes());
       }
       for (int i = 0; i < reward_.size(); i++) {
         output.writeMessage(14, reward_.get(i));
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(15, skip_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeUInt32(16, whether_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2968,47 +2726,23 @@ public final class TaskProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, rewardid1_);
+          .computeInt32Size(7, targetid_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, rewardcount1_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, targetid_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, rewardid2_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, rewardcount2_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, targetcount1_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, rewardid3_);
-      }
-      if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(12, rewardcount3_);
-      }
-      if (((bitField0_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(13, getNameBytes());
       }
       for (int i = 0; i < reward_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, reward_.get(i));
       }
-      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(15, skip_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(16, whether_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3135,32 +2869,20 @@ public final class TaskProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         targetcount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        rewardid1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rewardcount1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
         targetid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        rewardid2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        rewardcount2_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000010);
         targetcount1_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        rewardid3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        rewardcount3_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000800);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00000040);
         } else {
           rewardBuilder_.clear();
         }
         skip_ = 0;
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00000080);
+        whether_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -3208,52 +2930,28 @@ public final class TaskProto {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.rewardid1_ = rewardid1_;
+        result.targetid_ = targetid_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.rewardcount1_ = rewardcount1_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.targetid_ = targetid_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.rewardid2_ = rewardid2_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.rewardcount2_ = rewardcount2_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
         result.targetcount1_ = targetcount1_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.rewardid3_ = rewardid3_;
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
-        }
-        result.rewardcount3_ = rewardcount3_;
-        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
-          to_bitField0_ |= 0x00001000;
-        }
-        result.name_ = name_;
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00002000) == 0x00002000)) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
             reward_ = java.util.Collections.unmodifiableList(reward_);
-            bitField0_ = (bitField0_ & ~0x00002000);
+            bitField0_ = (bitField0_ & ~0x00000040);
           }
           result.reward_ = reward_;
         } else {
           result.reward_ = rewardBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
-          to_bitField0_ |= 0x00002000;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
         }
         result.skip_ = skip_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.whether_ = whether_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3284,40 +2982,17 @@ public final class TaskProto {
         if (other.hasTargetcount()) {
           setTargetcount(other.getTargetcount());
         }
-        if (other.hasRewardid1()) {
-          setRewardid1(other.getRewardid1());
-        }
-        if (other.hasRewardcount1()) {
-          setRewardcount1(other.getRewardcount1());
-        }
         if (other.hasTargetid()) {
           setTargetid(other.getTargetid());
         }
-        if (other.hasRewardid2()) {
-          setRewardid2(other.getRewardid2());
-        }
-        if (other.hasRewardcount2()) {
-          setRewardcount2(other.getRewardcount2());
-        }
         if (other.hasTargetcount1()) {
           setTargetcount1(other.getTargetcount1());
-        }
-        if (other.hasRewardid3()) {
-          setRewardid3(other.getRewardid3());
-        }
-        if (other.hasRewardcount3()) {
-          setRewardcount3(other.getRewardcount3());
-        }
-        if (other.hasName()) {
-          bitField0_ |= 0x00001000;
-          name_ = other.name_;
-          onChanged();
         }
         if (rewardBuilder_ == null) {
           if (!other.reward_.isEmpty()) {
             if (reward_.isEmpty()) {
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00000040);
             } else {
               ensureRewardIsMutable();
               reward_.addAll(other.reward_);
@@ -3330,7 +3005,7 @@ public final class TaskProto {
               rewardBuilder_.dispose();
               rewardBuilder_ = null;
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00002000);
+              bitField0_ = (bitField0_ & ~0x00000040);
               rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRewardFieldBuilder() : null;
@@ -3341,6 +3016,9 @@ public final class TaskProto {
         }
         if (other.hasSkip()) {
           setSkip(other.getSkip());
+        }
+        if (other.hasWhether()) {
+          setWhether(other.getWhether());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3542,79 +3220,13 @@ public final class TaskProto {
         return this;
       }
 
-      // optional int32 rewardid1 = 5;
-      private int rewardid1_ ;
-      /**
-       * <code>optional int32 rewardid1 = 5;</code>
-       */
-      public boolean hasRewardid1() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 rewardid1 = 5;</code>
-       */
-      public int getRewardid1() {
-        return rewardid1_;
-      }
-      /**
-       * <code>optional int32 rewardid1 = 5;</code>
-       */
-      public Builder setRewardid1(int value) {
-        bitField0_ |= 0x00000010;
-        rewardid1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardid1 = 5;</code>
-       */
-      public Builder clearRewardid1() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rewardid1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardcount1 = 6;
-      private int rewardcount1_ ;
-      /**
-       * <code>optional int32 rewardcount1 = 6;</code>
-       */
-      public boolean hasRewardcount1() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int32 rewardcount1 = 6;</code>
-       */
-      public int getRewardcount1() {
-        return rewardcount1_;
-      }
-      /**
-       * <code>optional int32 rewardcount1 = 6;</code>
-       */
-      public Builder setRewardcount1(int value) {
-        bitField0_ |= 0x00000020;
-        rewardcount1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardcount1 = 6;</code>
-       */
-      public Builder clearRewardcount1() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        rewardcount1_ = 0;
-        onChanged();
-        return this;
-      }
-
       // optional int32 targetid = 7;
       private int targetid_ ;
       /**
        * <code>optional int32 targetid = 7;</code>
        */
       public boolean hasTargetid() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 targetid = 7;</code>
@@ -3626,7 +3238,7 @@ public final class TaskProto {
        * <code>optional int32 targetid = 7;</code>
        */
       public Builder setTargetid(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000010;
         targetid_ = value;
         onChanged();
         return this;
@@ -3635,74 +3247,8 @@ public final class TaskProto {
        * <code>optional int32 targetid = 7;</code>
        */
       public Builder clearTargetid() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000010);
         targetid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardid2 = 8;
-      private int rewardid2_ ;
-      /**
-       * <code>optional int32 rewardid2 = 8;</code>
-       */
-      public boolean hasRewardid2() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      /**
-       * <code>optional int32 rewardid2 = 8;</code>
-       */
-      public int getRewardid2() {
-        return rewardid2_;
-      }
-      /**
-       * <code>optional int32 rewardid2 = 8;</code>
-       */
-      public Builder setRewardid2(int value) {
-        bitField0_ |= 0x00000080;
-        rewardid2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardid2 = 8;</code>
-       */
-      public Builder clearRewardid2() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        rewardid2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardcount2 = 9;
-      private int rewardcount2_ ;
-      /**
-       * <code>optional int32 rewardcount2 = 9;</code>
-       */
-      public boolean hasRewardcount2() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      /**
-       * <code>optional int32 rewardcount2 = 9;</code>
-       */
-      public int getRewardcount2() {
-        return rewardcount2_;
-      }
-      /**
-       * <code>optional int32 rewardcount2 = 9;</code>
-       */
-      public Builder setRewardcount2(int value) {
-        bitField0_ |= 0x00000100;
-        rewardcount2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardcount2 = 9;</code>
-       */
-      public Builder clearRewardcount2() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        rewardcount2_ = 0;
         onChanged();
         return this;
       }
@@ -3713,7 +3259,7 @@ public final class TaskProto {
        * <code>optional int32 targetcount1 = 10;</code>
        */
       public boolean hasTargetcount1() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 targetcount1 = 10;</code>
@@ -3725,7 +3271,7 @@ public final class TaskProto {
        * <code>optional int32 targetcount1 = 10;</code>
        */
       public Builder setTargetcount1(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000020;
         targetcount1_ = value;
         onChanged();
         return this;
@@ -3734,148 +3280,8 @@ public final class TaskProto {
        * <code>optional int32 targetcount1 = 10;</code>
        */
       public Builder clearTargetcount1() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000020);
         targetcount1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardid3 = 11;
-      private int rewardid3_ ;
-      /**
-       * <code>optional int32 rewardid3 = 11;</code>
-       */
-      public boolean hasRewardid3() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      /**
-       * <code>optional int32 rewardid3 = 11;</code>
-       */
-      public int getRewardid3() {
-        return rewardid3_;
-      }
-      /**
-       * <code>optional int32 rewardid3 = 11;</code>
-       */
-      public Builder setRewardid3(int value) {
-        bitField0_ |= 0x00000400;
-        rewardid3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardid3 = 11;</code>
-       */
-      public Builder clearRewardid3() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        rewardid3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 rewardcount3 = 12;
-      private int rewardcount3_ ;
-      /**
-       * <code>optional int32 rewardcount3 = 12;</code>
-       */
-      public boolean hasRewardcount3() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
-      }
-      /**
-       * <code>optional int32 rewardcount3 = 12;</code>
-       */
-      public int getRewardcount3() {
-        return rewardcount3_;
-      }
-      /**
-       * <code>optional int32 rewardcount3 = 12;</code>
-       */
-      public Builder setRewardcount3(int value) {
-        bitField0_ |= 0x00000800;
-        rewardcount3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 rewardcount3 = 12;</code>
-       */
-      public Builder clearRewardcount3() {
-        bitField0_ = (bitField0_ & ~0x00000800);
-        rewardcount3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional string name = 13;
-      private java.lang.Object name_ = "";
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
-      }
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00001000;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00001000);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string name = 13;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00001000;
-        name_ = value;
         onChanged();
         return this;
       }
@@ -3884,9 +3290,9 @@ public final class TaskProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00002000) == 0x00002000)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
-          bitField0_ |= 0x00002000;
+          bitField0_ |= 0x00000040;
          }
       }
 
@@ -4035,7 +3441,7 @@ public final class TaskProto {
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00002000);
+          bitField0_ = (bitField0_ & ~0x00000040);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -4112,7 +3518,7 @@ public final class TaskProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00002000) == 0x00002000),
+                  ((bitField0_ & 0x00000040) == 0x00000040),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
@@ -4126,7 +3532,7 @@ public final class TaskProto {
        * <code>optional uint32 skip = 15;</code>
        */
       public boolean hasSkip() {
-        return ((bitField0_ & 0x00004000) == 0x00004000);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional uint32 skip = 15;</code>
@@ -4138,7 +3544,7 @@ public final class TaskProto {
        * <code>optional uint32 skip = 15;</code>
        */
       public Builder setSkip(int value) {
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00000080;
         skip_ = value;
         onChanged();
         return this;
@@ -4147,8 +3553,41 @@ public final class TaskProto {
        * <code>optional uint32 skip = 15;</code>
        */
       public Builder clearSkip() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00000080);
         skip_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 whether = 16;
+      private int whether_ ;
+      /**
+       * <code>optional uint32 whether = 16;</code>
+       */
+      public boolean hasWhether() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional uint32 whether = 16;</code>
+       */
+      public int getWhether() {
+        return whether_;
+      }
+      /**
+       * <code>optional uint32 whether = 16;</code>
+       */
+      public Builder setWhether(int value) {
+        bitField0_ |= 0x00000100;
+        whether_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 whether = 16;</code>
+       */
+      public Builder clearWhether() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        whether_ = 0;
         onChanged();
         return this;
       }
@@ -4167,29 +3606,29 @@ public final class TaskProto {
   public interface Task3OrderListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.TaskOrder id = 1;
+    // repeated .com.trans.pixel.protoc.TaskOrder data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    com.trans.pixel.protoc.TaskProto.TaskOrder getId(int index);
+    com.trans.pixel.protoc.TaskProto.TaskOrder getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -4245,10 +3684,10 @@ public final class TaskProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.TaskProto.TaskOrder.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.TaskProto.TaskOrder.PARSER, extensionRegistry));
               break;
             }
           }
@@ -4260,7 +3699,7 @@ public final class TaskProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4293,44 +3732,44 @@ public final class TaskProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.TaskOrder id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> id_;
+    // repeated .com.trans.pixel.protoc.TaskOrder data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    public com.trans.pixel.protoc.TaskProto.TaskOrder getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.TaskProto.TaskOrder getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
      */
-    public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4344,8 +3783,8 @@ public final class TaskProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4356,9 +3795,9 @@ public final class TaskProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4468,7 +3907,7 @@ public final class TaskProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4477,11 +3916,11 @@ public final class TaskProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -4510,14 +3949,14 @@ public final class TaskProto {
       public com.trans.pixel.protoc.TaskProto.Task3OrderList buildPartial() {
         com.trans.pixel.protoc.TaskProto.Task3OrderList result = new com.trans.pixel.protoc.TaskProto.Task3OrderList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -4534,29 +3973,29 @@ public final class TaskProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.TaskProto.Task3OrderList other) {
         if (other == com.trans.pixel.protoc.TaskProto.Task3OrderList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -4587,244 +4026,244 @@ public final class TaskProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.TaskOrder id = 1;
-      private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> id_ =
+      // repeated .com.trans.pixel.protoc.TaskOrder data = 1;
+      private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.TaskProto.TaskOrder getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.TaskProto.TaskOrder value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.TaskProto.TaskOrder> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder getIdBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.TaskProto.TaskOrder.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addIdBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.TaskProto.TaskOrder.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskOrder data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Task3OrderList)
@@ -13843,42 +13282,39 @@ public final class TaskProto {
       "getList\022.\n\002id\030\001 \003(\0132\".com.trans.pixel.pr" +
       "otoc.TaskTarget\"^\n\nTaskTarget\022\020\n\010targeti" +
       "d\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!.com.trans.pixel" +
-      ".protoc.TaskOrder\022\014\n\004skip\030\003 \001(\r\"\275\002\n\tTask" +
+      ".protoc.TaskOrder\022\014\n\004skip\030\003 \001(\r\"\305\001\n\tTask" +
       "Order\022\r\n\005order\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\022\013\n\003de" +
-      "s\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\005\022\021\n\trewardid" +
-      "1\030\005 \001(\005\022\024\n\014rewardcount1\030\006 \001(\005\022\020\n\010targeti",
-      "d\030\007 \001(\005\022\021\n\trewardid2\030\010 \001(\005\022\024\n\014rewardcoun" +
-      "t2\030\t \001(\005\022\024\n\014targetcount1\030\n \001(\005\022\021\n\treward" +
-      "id3\030\013 \001(\005\022\024\n\014rewardcount3\030\014 \001(\005\022\014\n\004name\030" +
-      "\r \001(\t\0222\n\006reward\030\016 \003(\0132\".com.trans.pixel." +
-      "protoc.RewardInfo\022\014\n\004skip\030\017 \001(\r\"?\n\016Task3" +
-      "OrderList\022-\n\002id\030\001 \003(\0132!.com.trans.pixel." +
-      "protoc.TaskOrder\"U\n\017Task2TargetHero\022\016\n\006h" +
-      "eroid\030\001 \001(\005\0222\n\006target\030\002 \003(\0132\".com.trans." +
-      "pixel.protoc.TaskTarget\"F\n\017Task2TargetLi" +
-      "st\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.protoc.",
-      "Task2TargetHero\"M\n\010UserTask\022\020\n\010targetid\030" +
-      "\001 \001(\005\022\017\n\007process\030\002 \001(\005\022\016\n\006status\030\003 \001(\005\022\016" +
-      "\n\006heroid\030\004 \003(\005\"\030\n\026RequestUserTaskCommand" +
-      "\"\270\001\n\027ResponseUserTaskCommand\0223\n\tuserTask" +
-      "1\030\001 \003(\0132 .com.trans.pixel.protoc.UserTas" +
-      "k\0223\n\tuserTask2\030\002 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132 .com." +
-      "trans.pixel.protoc.UserTask\"J\n\033RequestGe" +
-      "tTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005orde" +
-      "r\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\300\001\n\004Raid\022\n\n\002id\030\001",
-      " \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pixel.pro" +
-      "toc.RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005event\030\005 " +
-      "\003(\0132\035.com.trans.pixel.protoc.Event\022\017\n\007ev" +
-      "entid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level\030\010 \001(\005" +
-      "\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidList\022*\n\004data\030\001" +
-      " \003(\0132\034.com.trans.pixel.protoc.Raid\"3\n\026Re" +
-      "questOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005leve" +
-      "l\030\002 \001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002id" +
-      "\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 " +
-      "\001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventi",
-      "d\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid\030\001" +
-      " \003(\0132\034.com.trans.pixel.protoc.Raid"
+      "s\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010targetid" +
+      "\030\007 \001(\005\022\024\n\014targetcount1\030\n \001(\005\0222\n\006reward\030\016",
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
+      "\022\014\n\004skip\030\017 \001(\r\022\017\n\007whether\030\020 \001(\r\"A\n\016Task3" +
+      "OrderList\022/\n\004data\030\001 \003(\0132!.com.trans.pixe" +
+      "l.protoc.TaskOrder\"U\n\017Task2TargetHero\022\016\n" +
+      "\006heroid\030\001 \001(\005\0222\n\006target\030\002 \003(\0132\".com.tran" +
+      "s.pixel.protoc.TaskTarget\"F\n\017Task2Target" +
+      "List\0223\n\002id\030\001 \003(\0132\'.com.trans.pixel.proto" +
+      "c.Task2TargetHero\"M\n\010UserTask\022\020\n\010targeti" +
+      "d\030\001 \001(\005\022\017\n\007process\030\002 \001(\005\022\016\n\006status\030\003 \001(\005" +
+      "\022\016\n\006heroid\030\004 \003(\005\"\030\n\026RequestUserTaskComma",
+      "nd\"\270\001\n\027ResponseUserTaskCommand\0223\n\tuserTa" +
+      "sk1\030\001 \003(\0132 .com.trans.pixel.protoc.UserT" +
+      "ask\0223\n\tuserTask2\030\002 \003(\0132 .com.trans.pixel" +
+      ".protoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132 .co" +
+      "m.trans.pixel.protoc.UserTask\"J\n\033Request" +
+      "GetTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005or" +
+      "der\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\300\001\n\004Raid\022\n\n\002id" +
+      "\030\001 \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005event\030" +
+      "\005 \003(\0132\035.com.trans.pixel.protoc.Event\022\017\n\007",
+      "eventid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level\030\010 \001" +
+      "(\005\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidList\022*\n\004data" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"3\n\026" +
+      "RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005le" +
+      "vel\030\002 \001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002" +
+      "id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030" +
+      "\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007even" +
+      "tid\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13908,13 +13344,13 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_TaskOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TaskOrder_descriptor,
-              new java.lang.String[] { "Order", "Type", "Des", "Targetcount", "Rewardid1", "Rewardcount1", "Targetid", "Rewardid2", "Rewardcount2", "Targetcount1", "Rewardid3", "Rewardcount3", "Name", "Reward", "Skip", });
+              new java.lang.String[] { "Order", "Type", "Des", "Targetcount", "Targetid", "Targetcount1", "Reward", "Skip", "Whether", });
           internal_static_com_trans_pixel_protoc_Task3OrderList_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_Task3OrderList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task3OrderList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Task2TargetHero_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_Task2TargetHero_fieldAccessorTable = new
