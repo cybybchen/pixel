@@ -18,6 +18,7 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
@@ -64,6 +65,18 @@ public class EquipCommandService extends BaseCommandService {
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_IS_EXISTS_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
+			}
+		} else {
+			Chip chip = equipService.getChip(levelUpId);
+			if (chip != null && chip.getAim() > RewardConst.EQUIPMENT && chip.getAim() < RewardConst.CHIP) {
+				UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, chip.getAim());
+				if (pokede != null) {
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_IS_EXISTS_ERROR);
+					
+					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_IS_EXISTS_ERROR);
+		            responseBuilder.setErrorCommand(errorCommand);
+		            return;
+				}
 			}
 		}
 		
