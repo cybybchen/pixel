@@ -1885,21 +1885,16 @@ message Qiandao {
 	required string activity = 3;
 }
 
-message SignList_special {
-	repeated Sign id = 1;
-}
-
 message SignList {
-	repeated Sign order = 1;
+	repeated Sign data = 1;
 }
 
 message Sign {
 	required int32 order = 1;
 	optional int32 targetid = 3;
 	optional int32 targetcount = 4;
-	optional int32 itemid = 5;
-	optional int32 count = 7;
 	repeated RewardInfo reward = 8;
+	optional uint32 choose = 9;
 }
 
 message RequestSevenLoginSignCommand {
@@ -2399,25 +2394,6 @@ message Activity {
 	required int32 activitytype = 7;
 	repeated RewardInfo reward = 8;
 	required string serverfilter = 9;
-}
-
-message SevenLoginList {
-	repeated SevenLogin id = 1;
-}
-
-message SevenLogin {
-	optional uint32 id = 1;
-	optional uint32 targetid = 2;
-	optional uint32 targetcount = 3;
-	repeated SevenOrder order = 4;
-}
-
-message SevenOrder {
-	optional uint32 order = 1;
-	optional int32 itemid = 2;
-	optional int32 count = 3;
-	optional int32 choose = 4;
-	optional uint32 rmbid = 5;
 }
 
 message RankvalueList {

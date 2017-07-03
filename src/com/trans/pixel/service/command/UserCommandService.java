@@ -158,7 +158,7 @@ public class UserCommandService extends BaseCommandService {
 					return;
 				}
 			}else{
-				user.setUserType(userService.randomUserType());
+//				user.setUserType(userService.randomUserType());
 				int addHeroId = registerCommand.getHeroId();
 				UserTalent userTalent = addRegisterTalent(user, addHeroId);
 				

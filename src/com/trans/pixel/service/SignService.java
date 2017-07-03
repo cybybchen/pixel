@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.ActivityProto.SevenLogin;
-import com.trans.pixel.protoc.ActivityProto.SevenOrder;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.service.redis.SignRedisService;
@@ -22,9 +19,10 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class SignService {
-	private String SIGN_TIME_1 = "00:00:00";
-	private String SIGN_TIME_2 = "12:00:00";
-	private String SIGN_TIME_3 = "18:00:00";
+	private String SIGN_TIME_1 = "11:00:00";
+	private String SIGN_TIME_2 = "13:00:00";
+	private String SIGN_TIME_3 = "17:00:00";
+	private String SIGN_TIME_4 = "19:00:00";
 	@Resource
 	private SignRedisService signRedisService;
 	@Resource
@@ -44,10 +42,10 @@ public class SignService {
 		user.setSignCount(user.getSignCount() + 1);
 		user.setTotalSignCount(user.getTotalSignCount() + 1);
 		Sign sign = getSign(user);
-		rewardList.addAll(buildRewardBySign(sign, user));
+		rewardList.addAll(sign.getRewardList());
 		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
 		if (totalSign != null) 
-			rewardList.addAll(buildRewardBySign(totalSign, user));
+			rewardList.addAll(totalSign.getRewardList());
 		
 		userService.updateUser(user);
 		
@@ -83,35 +81,30 @@ public class SignService {
 //		return rewardList;
 //	}
 //	
-	public List<RewardBean> sevenLoginSign(UserBean user, int chooseId) {
+	public List<RewardInfo> sevenLoginSign(UserBean user, int chooseId) {
 		if (!canSevenLoginSign(user))
 			return null;
 		
 		int heroId = 0;
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		SevenLogin sevenLogin = signRedisService.getSevenLogin(user.getSevenLoginDays());
+		Sign sevenLogin = signRedisService.getSevenLogin(user.getSevenLoginDays());
 		if (sevenLogin == null)
 			return null;
 		
-		List<SevenOrder> orderList = sevenLogin.getOrderList();
-		for (SevenOrder order : orderList) {
-			if (order.getChoose() == 0) {
-				if (order.getRmbid() != 0 && order.getRmbid() != user.getUserType())
-					continue;
-				
-				rewardList.add(RewardBean.init(order.getItemid(), order.getCount()));
-				continue;
-			}
-			
-			if (order.getChoose() == 1) {
-				if (chooseId > 0 && chooseId == order.getOrder()) {
-					heroId = order.getItemid();
-					rewardList.add(RewardBean.init(order.getItemid(), order.getCount()));
+		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
+		List<RewardInfo> rewardList = sevenLogin.getRewardList();
+		if (sevenLogin.getChoose() == 0) {	
+			rewards.addAll(rewardList);
+		} else if (sevenLogin.getChoose() == 1) {
+			for (RewardInfo reward : rewardList) {
+				if (chooseId == reward.getItemid()) {
+					heroId = reward.getItemid();
+					rewards.add(reward);
+					break;
 				}
 			}
 		}
-		
-		if (rewardList != null && rewardList.size() > 0)
+	
+		if (rewards != null && rewards.size() > 0)
 			userService.updateUser(user);
 		
 		/**
@@ -119,49 +112,40 @@ public class SignService {
 		 */
 		logService.sendSevenLoginSign(user.getServerId(), user.getId(), heroId, user.getSevenLoginDays());
 		
-		return rewardList;
+		return rewards;
 	}
 	
 	private Sign getSign(UserBean user) {
 		int existDays = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(user.getRegisterTime()));
-		Sign sign = signRedisService.getSign(3 * existDays + user.getSignCount());
+		Sign sign = signRedisService.getSign(2 * existDays + user.getSignCount() + 1);
 		if (sign == null) {
 			int weekDay = DateUtil.getWeekDay();
-			sign = signRedisService.getSign2(3 * (weekDay - 1) + user.getSignCount());
+			sign = signRedisService.getSign2(2 * (weekDay - 1) + user.getSignCount() + 1);
 		}
 		
 		return sign;
 	}
 	
-	private List<RewardInfo> buildRewardBySign(Sign sign, UserBean user) {
-		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		if (sign.getItemid() > 0 && sign.getCount() > 0) {
-			RewardInfo.Builder builder = RewardInfo.newBuilder();
-			builder.setItemid(sign.getItemid());
-			builder.setCount(sign.getCount());
-			rewardList.add(builder.build());
-		} else {
-			rewardList.addAll(rewardService.getRewardsByRmbid(sign.getRewardList(), user.getUserType()));
-		}
-		
-		return rewardList;
-	}
-	
 	private boolean canSign(UserBean user) {
 		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-		Date last = DateUtil.getDate(user.getLastSignTime());
 		Date current = DateUtil.getDate();
+		Date time1 = DateUtil.getCurrentDayDate(SIGN_TIME_1);
+		Date time2 = DateUtil.getCurrentDayDate(SIGN_TIME_2);
+		Date time3 = DateUtil.getCurrentDayDate(SIGN_TIME_3);
+		Date time4 = DateUtil.getCurrentDayDate(SIGN_TIME_4);
+		
+		if (current.before(time1) || (current.after(time2) && current.before(time3)) ||
+				current.after(time4)) {
+			return false;
+		}
+		
+		Date last = DateUtil.getDate(user.getLastSignTime());
 		if (last == null) {
 			user.setLastSignTime(df.format(current));
 			return true;
 		}
-		Date time1 = DateUtil.getCurrentDayDate(SIGN_TIME_1);
-		Date time2 = DateUtil.getCurrentDayDate(SIGN_TIME_2);
-		Date time3 = DateUtil.getCurrentDayDate(SIGN_TIME_3);
 		
-		if (time1.after(last) && time1.before(current) 
-				|| time2.after(last) && time2.before(current)
-				|| time3.after(last) && time3.before(current)) {
+		if (last.before(time1) || (last.before(time3) && current.after(last))) {
 			user.setLastSignTime(df.format(current));
 			return true;
 		}

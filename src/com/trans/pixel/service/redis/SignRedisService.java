@@ -8,11 +8,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.ActivityProto.SevenLogin;
-import com.trans.pixel.protoc.ActivityProto.SevenLoginList;
 import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.protoc.RechargeProto.SignList;
-import com.trans.pixel.protoc.RechargeProto.SignList_special;
 
 @Repository
 public class SignRedisService extends RedisService{
@@ -59,14 +56,14 @@ public class SignRedisService extends RedisService{
 	
 	private Map<String, Sign> buildSignConfig(){
 		String xml = ReadConfig(SIGN_FILE_NAME1);
-		SignList_special.Builder builder = SignList_special.newBuilder();
+		SignList.Builder builder = SignList.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build " + SIGN_FILE_NAME1);
 			return null;
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for (Sign.Builder sign : builder.getIdBuilderList()) {
+		for (Sign.Builder sign : builder.getDataBuilderList()) {
 			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
@@ -116,7 +113,7 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+		for (Sign.Builder sign : builder.getDataBuilderList()) {
 			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
@@ -166,20 +163,20 @@ public class SignRedisService extends RedisService{
 		}
 		
 		Map<String, Sign> map = new HashMap<String, Sign>();
-		for (Sign.Builder sign : builder.getOrderBuilderList()) {
+		for (Sign.Builder sign : builder.getDataBuilderList()) {
 			map.put("" + sign.getTargetcount(), sign.build());
 		}
 		return map;
 	}
 	
 	//task seven
-	public SevenLogin getSevenLogin(int day) {
+	public Sign getSevenLogin(int day) {
 		String value = hget(RedisKey.SEVEN_LOGIN_KEY, "" + day);
 		if (value == null) {
-			Map<String, SevenLogin> signConfig = getSevenLoginConfig();
+			Map<String, Sign> signConfig = getSevenLoginConfig();
 			return signConfig.get("" + day);
 		} else {
-			SevenLogin.Builder builder = SevenLogin.newBuilder();
+			Sign.Builder builder = Sign.newBuilder();
 			if(parseJson(value, builder))
 				return builder.build();
 		}
@@ -187,20 +184,20 @@ public class SignRedisService extends RedisService{
 		return null;
 	}
 	
-	public Map<String, SevenLogin> getSevenLoginConfig() {
+	public Map<String, Sign> getSevenLoginConfig() {
 		Map<String, String> keyvalue = hget(RedisKey.SEVEN_LOGIN_KEY);
 		if(keyvalue.isEmpty()){
-			Map<String, SevenLogin> map = buildSevenLoginConfig();
+			Map<String, Sign> map = buildSevenLoginConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, SevenLogin> entry : map.entrySet()){
+			for(Entry<String, Sign> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
 			return map;
 		}else{
-			Map<String, SevenLogin> map = new HashMap<String, SevenLogin>();
+			Map<String, Sign> map = new HashMap<String, Sign>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
-				SevenLogin.Builder builder = SevenLogin.newBuilder();
+				Sign.Builder builder = Sign.newBuilder();
 				if(parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
@@ -208,17 +205,17 @@ public class SignRedisService extends RedisService{
 		}
 	}
 	
-	private Map<String, SevenLogin> buildSevenLoginConfig(){
+	private Map<String, Sign> buildSevenLoginConfig(){
 		String xml = ReadConfig(SEVEN_SIGN_FILE_NAME);
-		SevenLoginList.Builder builder = SevenLoginList.newBuilder();
+		SignList.Builder builder = SignList.newBuilder();
 		if(!parseXml(xml, builder)){
 			logger.warn("cannot build " + SEVEN_SIGN_FILE_NAME);
 			return null;
 		}
 		
-		Map<String, SevenLogin> map = new HashMap<String, SevenLogin>();
-		for(SevenLogin.Builder sevenLogin : builder.getIdBuilderList()){
-			map.put("" + sevenLogin.getId(), sevenLogin.build());
+		Map<String, Sign> map = new HashMap<String, Sign>();
+		for(Sign.Builder sign : builder.getDataBuilderList()){
+			map.put("" + sign.getOrder(), sign.build());
 		}
 		return map;
 	}

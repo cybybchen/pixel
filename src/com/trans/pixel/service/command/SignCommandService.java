@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -57,14 +56,16 @@ public class SignCommandService extends BaseCommandService {
 		int chooseId = 0;
 		if (cmd.hasChooseId())
 			chooseId = cmd.getChooseId();
-		List<RewardBean> rewardList = signService.sevenLoginSign(user, chooseId);
+		List<RewardInfo> rewardList = signService.sevenLoginSign(user, chooseId);
 		
 		if (rewardList == null || rewardList.size() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 		}else{
-			handleRewards(responseBuilder, user, rewardList);
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addAllLoot(rewardList);
+			handleRewards(responseBuilder, user, rewards);
 		}
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
