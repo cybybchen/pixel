@@ -124,7 +124,7 @@ public class RaidCommandService extends BaseCommandService{
 					activityService.raidKill(user, myraid.getId());
 					myraid.clearEventid();
 //					myraid.clearTurn();
-					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+1)));
+					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
 				}
 				
