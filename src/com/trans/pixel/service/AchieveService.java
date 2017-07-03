@@ -62,7 +62,7 @@ public class AchieveService {
 	
 	public ResultConst getAchieveReward(MultiReward.Builder multiReward, UserAchieveBean ua, int id) {
 		ActivityOrder order = getAchieveOrder(id, ua.getCompleteId() + 1);
-		if (ua.getCompleteCount() < order.getTargetcount()) {
+		if (order == null || ua.getCompleteCount() < order.getTargetcount()) {
 			return ErrorConst.ACTIVITY_HAS_NOT_COMPLETE_ERROR;
 		}
 		multiReward.addAllLoot(order.getRewardList());
