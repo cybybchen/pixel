@@ -160,6 +160,8 @@ public class TalentService {
 			return ErrorConst.TALENT_NOT_EXIST_ERROR;
 		int sp = getNeedSP(user, userTalent);
 		count = Math.min(sp , count);
+		if (count <= 0)
+			return ErrorConst.SKILL_STONE_IS_FULL_ERROR;
 		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), TALENT_SKILL_STONE_ID);
 		if(equip1 == null)
 			equip1 = UserEquipBean.init(user.getId(), TALENT_SKILL_STONE_ID, 0);
@@ -270,7 +272,7 @@ public class TalentService {
 			Talentunlock unlock = map.get("" + skill.getOrderId());
 			sp += unlock.getSp() * (unlock.getMaxlevel() - skill.getLevel());
 		}
-		return sp;
+		return sp - userTalent.getSp();
 	}
 	
 //	private UserTalent unlockTalentSkill(UserBean user, UserTalent.Builder utBuilder, int originalLevel) {
