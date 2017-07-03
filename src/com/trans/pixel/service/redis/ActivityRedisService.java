@@ -80,7 +80,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Richang> map = new HashMap<String, Richang>();
-		for(Richang.Builder richang : builder.getRichangBuilderList()){
+		for(Richang.Builder richang : builder.getDataBuilderList()){
 			map.put("" + richang.getId(), richang.build());
 		}
 		return map;
@@ -132,7 +132,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
-		for(Kaifu2.Builder kaifu : builder.getIdBuilderList()){
+		for(Kaifu2.Builder kaifu : builder.getDataBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
@@ -183,7 +183,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
-		for(Kaifu.Builder kaifu : builder.getIdBuilderList()){
+		for(Kaifu.Builder kaifu : builder.getDataBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;

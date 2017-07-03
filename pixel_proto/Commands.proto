@@ -2197,7 +2197,7 @@ message ActivityOrder {
 }
 
 message RichangList {
-	repeated Richang richang = 1;
+	repeated Richang data = 1;
 }
 
 message Richang {
@@ -2210,6 +2210,7 @@ message Richang {
 	optional string noserverid = 7;
 	optional string serverid = 8;
 	optional uint32 consumeid = 9;
+	optional uint32 cycle = 10;
 }
 
 message RewardOrder {
@@ -2231,7 +2232,7 @@ message UserAchieve {
 }
 
 message Kaifu2List {
-	repeated Kaifu2 id = 1;
+	repeated Kaifu2 data = 1;
 }
 
 message Kaifu2 {
@@ -2249,7 +2250,7 @@ message Kaifu2Rank {
 }
 
 message KaifuList {
-	repeated Kaifu id = 1;
+	repeated Kaifu data = 1;
 }
 
 message Kaifu {
@@ -2264,7 +2265,6 @@ message Kaifu {
 
 message KaifuOrder {
 	optional uint32 order = 3;
-	optional string description = 4;
 	optional int32 targetcount = 1;
 	optional int32 targetcount1 = 2;
 	repeated RewardInfo reward = 5;
@@ -3368,7 +3368,7 @@ message TaskList {
 }
 
 message TaskTargetList {
-	repeated TaskTarget id = 1;
+	repeated TaskTarget data = 1;
 }
 
 message TaskTarget {
@@ -3395,11 +3395,14 @@ message Task3OrderList {
 	
 message Task2TargetHero {
 	optional int32 heroid = 1;
-	repeated TaskTarget target = 2;
+	repeated TaskOrder order = 2;
+	optional uint32 targetid = 3;
+	optional uint32 skip = 4;
+	//repeated TaskTarget target = 2;
 }
 
 message Task2TargetList {
-	repeated Task2TargetHero id = 1;
+	repeated Task2TargetHero data = 1;
 }
 
 message UserTask {
