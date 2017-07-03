@@ -129,6 +129,11 @@ public class LadderService {
 			return null;
 		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret, enemy));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
+		/**
+		 * 竞技场段位的活动
+		 */
+		if (builder.getGrade() > userLadder.getGrade())
+			activityService.ladderModeLevelup(user, builder.getGrade());
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
 		builder.setPosition(position);
 		if (type == LadderConst.TYPE_LADDER_NORMAL && ret == 0)

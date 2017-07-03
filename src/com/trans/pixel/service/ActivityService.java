@@ -1165,10 +1165,12 @@ public class ActivityService {
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_PUTONGSHOP_BUY_VALUE);
 	}
 	
-	public void raidKill(UserBean user, int id) {
+	public void raidKill(UserBean user, int id, int level) {
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_FUBEN_KILL_BOSS_VALUE);
 		
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_FIGHT_FUBEN_VALUE, id, false);
+		
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_RAID_LEVELUP_VALUE, level, false);
 	}
 	
 	public void merLevel(UserBean user, int level) {
@@ -1179,10 +1181,10 @@ public class ActivityService {
 //		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ADD_CHAFENQI_VALUE);
 //	}
 	
-	public void ladderModeLevel(UserBean user, int mode) {
-		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LADDERMODE_LEVELUP_VALUE, mode, false);
+	public void ladderModeLevelup(UserBean user, int grade) {
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LADDERMODE_LEVELUP_VALUE, grade, false);
 	}
-	
+
 	/**
 	 * activity and achieve log
 	 */
