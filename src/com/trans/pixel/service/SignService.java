@@ -35,24 +35,39 @@ public class SignService {
 	private RewardService rewardService;
 	
 	public List<RewardInfo> sign(UserBean user) {
-		if (!canSign(user))
-			return null;
-		
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		user.setSignCount(user.getSignCount() + 1);
-		user.setTotalSignCount(user.getTotalSignCount() + 1);
-		Sign sign = getSign(user);
-		rewardList.addAll(sign.getRewardList());
-		Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
-		if (totalSign != null) 
-			rewardList.addAll(totalSign.getRewardList());
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		Date current = DateUtil.getDate();
+		Date time1 = DateUtil.getCurrentDayDate(SIGN_TIME_1);
+		Date time2 = DateUtil.getCurrentDayDate(SIGN_TIME_2);
+		Date time3 = DateUtil.getCurrentDayDate(SIGN_TIME_3);
+		Date time4 = DateUtil.getCurrentDayDate(SIGN_TIME_4);
 		
-		userService.updateUser(user);
-		
-		/**
-		 * send log
-		 */
-		activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, user.getSignCount(), user.getTotalSignCount());
+		boolean cansign = false;
+//		Date last = DateUtil.getDate(user.getLastSignTime(), current);
+		if(current.after(time1) && current.before(time2) && user.getSignCount() == 0) {
+			user.setSignCount(1);
+			cansign = true;
+		}else if (current.after(time3) && current.before(time4) && user.getSignCount() < 2) {
+			user.setSignCount(2);
+			cansign = true;
+		}
+		if(cansign){
+			user.setLastSignTime(df.format(current));
+			user.setTotalSignCount(user.getTotalSignCount() + 1);
+			Sign sign = getSign(user);
+			rewardList.addAll(sign.getRewardList());
+			Sign totalSign = signRedisService.getTotalSign(user.getTotalSignCount());
+			if (totalSign != null) 
+				rewardList.addAll(totalSign.getRewardList());
+			
+			userService.updateUser(user);
+			
+			/**
+			 * send log
+			 */
+			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_SIGN, user.getSignCount(), user.getTotalSignCount());
+		}
 		
 		return rewardList;
 	}
@@ -117,40 +132,13 @@ public class SignService {
 	
 	private Sign getSign(UserBean user) {
 		int existDays = DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(user.getRegisterTime()));
-		Sign sign = signRedisService.getSign(2 * existDays + user.getSignCount() + 1);
+		Sign sign = signRedisService.getSign(2 * existDays + user.getSignCount());
 		if (sign == null) {
 			int weekDay = DateUtil.getWeekDay();
-			sign = signRedisService.getSign2(2 * (weekDay - 1) + user.getSignCount() + 1);
+			sign = signRedisService.getSign2(2 * (weekDay - 1) + user.getSignCount());
 		}
 		
 		return sign;
-	}
-	
-	private boolean canSign(UserBean user) {
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-		Date current = DateUtil.getDate();
-		Date time1 = DateUtil.getCurrentDayDate(SIGN_TIME_1);
-		Date time2 = DateUtil.getCurrentDayDate(SIGN_TIME_2);
-		Date time3 = DateUtil.getCurrentDayDate(SIGN_TIME_3);
-		Date time4 = DateUtil.getCurrentDayDate(SIGN_TIME_4);
-		
-		if (current.before(time1) || (current.after(time2) && current.before(time3)) ||
-				current.after(time4)) {
-			return false;
-		}
-		
-		Date last = DateUtil.getDate(user.getLastSignTime());
-		if (last == null) {
-			user.setLastSignTime(df.format(current));
-			return true;
-		}
-		
-		if (last.before(time1) || (last.before(time3) && current.after(last))) {
-			user.setLastSignTime(df.format(current));
-			return true;
-		}
-		
-		return false;
 	}
 	
 	private boolean canSevenLoginSign(UserBean user) {

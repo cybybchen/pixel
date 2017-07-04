@@ -38,7 +38,7 @@ public class SignCommandService extends BaseCommandService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		List<RewardInfo> rewardList = signService.sign(user);
 		
-		if (rewardList == null || rewardList.size() == 0) {
+		if (rewardList.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SIGN_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.SIGN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);

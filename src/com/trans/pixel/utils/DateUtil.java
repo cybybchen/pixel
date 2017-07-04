@@ -85,14 +85,17 @@ public class DateUtil {
      * @see #getDate(String, String, Date)
      */
     public static Date getDate(String date) {
-        return getDate(date, TimeConst.DEFAULT_DATETIME_FORMAT, null);
+        return getDate(date, (Date)null);
+    }
+    public static Date getDate(String date, Date defVal) {
+        return getDate(date, TimeConst.DEFAULT_DATETIME_FORMAT, defVal);
     }
 
     /**
      * 获取当前的日期对象
      */
     public static Date getDate() {
-    	return getDate(getCurrentDateString(), TimeConst.DEFAULT_DATETIME_FORMAT);
+    	return new Date();
     }
     
     /**
