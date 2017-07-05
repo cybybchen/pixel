@@ -346,7 +346,7 @@ public class ActivityService {
 	}
 	
 	public void unionAttackActivity(long userId, boolean ret) {
-		UserBean user = userService.getUserOther(userId);
+//		UserBean user = userService.getUserOther(userId);
 		/**
 		 * 公会先锋
 		 */
@@ -1039,7 +1039,7 @@ public class ActivityService {
 	 * 激活羁绊
 	 */
 	public void openFetters(UserBean user) {
-		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_FETTERS_OPEN_VALUE);
+		
 	}
 	
 	/**
@@ -1168,6 +1168,8 @@ public class ActivityService {
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_FUBEN_KILL_BOSS_VALUE);
 		
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_FIGHT_FUBEN_VALUE, id, false);
+		
+		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_RAID_LEVELUP_TASK_VALUE, level, false);
 		
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_RAID_LEVELUP_VALUE, level, false);
 	}
