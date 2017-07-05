@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserRecommandMapper">
+
+	<insert id="addRecommand">
+	    INSERT INTO user_recommand(user_id, user_id2) 
+		 VALUES(#{userId}, #{userId2})
+	</insert>
+
+	<select id="getRecommands" resultType="long">
+	    SELECT count(*) from user_recommand where user_id=#{userId}
+	</select>
+	
+</mapper>

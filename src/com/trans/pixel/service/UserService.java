@@ -92,6 +92,8 @@ public class UserService {
 	private UserLadderService userLadderService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserRecommandService userRecommandService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -657,5 +659,16 @@ public class UserService {
 		}
 		
 		return RandomUtils.nextInt(4) + 1;
+	}
+	
+	public void handlerRecommand(UserBean user, long userId) {
+		user.setRecommandUserId(userId);
+		updateUser(user);
+		
+		userRecommandService.saveRecommand(userId, user.getId());
+	}
+	
+	public int getRecommands(UserBean user) {
+		return userRecommandService.getRecommand(user);
 	}
 }

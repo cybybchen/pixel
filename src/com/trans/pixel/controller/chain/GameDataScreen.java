@@ -191,6 +191,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
@@ -199,6 +200,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.service.command.AchieveCommandService;
@@ -1473,6 +1475,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestTalentResetSkillCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		talentCommandService.talentResetSkill(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRecommandCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.recommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestBindRecommandCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.bindRecommand(cmd, responseBuilder, user);
 		return true;
 	}
 

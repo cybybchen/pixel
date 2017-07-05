@@ -133,6 +133,7 @@ public class UserBean {
 	private int expSavingBox = 0;
 	private int title = 0;
 	private int frame = 0;//头像框
+	private long recommandUserId = 0;
 	/**
 	 * 碎片箱购买次数
 	 */
@@ -1282,6 +1283,12 @@ public class UserBean {
 	public void setFrame(int frame) {
 		this.frame = frame;
 	}
+	public long getRecommandUserId() {
+		return recommandUserId;
+	}
+	public void setRecommandUserId(long recommandUserId) {
+		this.recommandUserId = recommandUserId;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1457,6 +1464,7 @@ public class UserBean {
 		builder.setExpSavingBox(expSavingBox);
 		builder.setTitle(title);
 		builder.setFrame(frame);
+		builder.setRecommandUserId(recommandUserId);
 		
 		return builder.build();
 	}

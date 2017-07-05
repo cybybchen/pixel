@@ -19,6 +19,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.TeamEngine;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -27,10 +28,13 @@ import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
+import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.LogService;
@@ -317,6 +321,30 @@ public class UserCommandService extends BaseCommandService {
 			handleRewards(responseBuilder, user, rewardList);
 		}
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void bindRecommand(RequestBindRecommandCommand cmd, Builder responseBuilder, UserBean user) {
+		if (user.getRecommandUserId() != 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_IS_EXIST_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_IS_EXIST_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		user.setRecommandUserId(cmd.getUserId());
+		userService.updateUser(user);
+	}
+	
+	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
+		if (user.getRecommandUserId() != 0) {
+			UserInfo userInfo = userService.getCache(user.getServerId(), user.getRecommandUserId());
+			if (userInfo != null)
+				builder.setUser(userInfo);
+		}
+		builder.setCount(userService.getRecommands(user));
+		responseBuilder.setRecommandCommand(builder.build());
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

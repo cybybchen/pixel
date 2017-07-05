@@ -54,9 +54,11 @@ import com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopPurchaseCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderRankListCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand;
@@ -265,9 +267,11 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBlackShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLoginCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionBossFightCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEnterMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetLadderRankListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestBindRecommandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBloodXiazhuCommand cmd, Builder responseBuilder, UserBean user);
@@ -644,6 +648,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestLoginCommand cmd = request.getLoginCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasRecommandCommand()) {
+			RequestRecommandCommand cmd = request.getRecommandCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasUnionBossFightCommand()) {
 			RequestUnionBossFightCommand cmd = request.getUnionBossFightCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
@@ -654,6 +662,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasGetLadderRankListCommand()) {
 			RequestGetLadderRankListCommand cmd = request.getGetLadderRankListCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasBindRecommandCommand()) {
+			RequestBindRecommandCommand cmd = request.getBindRecommandCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateRewardTaskRoomCommand()) {

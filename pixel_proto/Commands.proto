@@ -77,6 +77,7 @@ message UserInfo {
 	optional uint32 expSavingBox = 88;
 	optional uint32 title = 89;//当前正在使用的称号
 	optional uint32 frame = 90;
+	optional uint64 recommandUserId = 91;
 }
 
 message JewelPool {
@@ -2711,6 +2712,19 @@ message RequestRegisterCommand {
 	required int32 heroId = 3;
 }
 
+message RequestBindRecommandCommand {
+	required uint64 userId = 1;
+}
+
+message RequestRecommandCommand {
+	
+}
+
+message ResponseRecommandCommand {
+	optional UserInfo user = 1;//上家
+	optional uint32 count = 2;//下家数量
+}
+
 message RequestUserInfoCommand {
 
 }
@@ -3656,6 +3670,8 @@ message RequestCommand {
 	optional RequestTalentSpUpCommand talentSpUpCommand = 254;
 	optional RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;
 	optional RequestTalentResetSkillCommand talentResetSkillCommand = 256;
+	optional RequestBindRecommandCommand bindRecommandCommand = 257;
+	optional RequestRecommandCommand recommandCommand = 258;
 }
 ////////// Commands
 message ErrorCommand {
@@ -3748,6 +3764,7 @@ message ResponseCommand {
 	optional ResponseOtherUserInfoCommand otherUserInfoCommand = 67;
 	optional ResponseEnemyLadderCommand enemyLadderCommand = 68;
 	optional ResponseUserLadderCommand userLadderCommand = 69;
+	optional ResponseRecommandCommand recommandCommand = 70;
 }
 
 ////////// End

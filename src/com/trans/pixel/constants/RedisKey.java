@@ -57,6 +57,7 @@ public class RedisKey {
 	public static final String USEREVENTREADY_PREFIX = PREFIX+"UserEventReady_";
 	public static final String USERRAID_PREFIX = PREFIX+"UserRaid_";
 	public static final String TEAMRAID_PREFIX = PREFIX+"TeamRaid_";
+	public static final String USER_RECOMMAND_PREFIX = PREFIX + "UserRecommand_";
 
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";

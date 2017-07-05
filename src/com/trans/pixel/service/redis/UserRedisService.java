@@ -209,4 +209,14 @@ public class UserRedisService extends RedisService{
 		
 		return map;
 	}
+	
+	public void saveRecommandInfo(long userId, long userId2) {
+		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
+		this.lpush(key, "" + userId2);
+	}
+	
+	public List<String> getRecomands(long userId) {
+		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
+		return this.lrange(key);
+	}
 }
