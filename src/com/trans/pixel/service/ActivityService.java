@@ -1129,6 +1129,9 @@ public class ActivityService {
 			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_SHENYUAN_VALUE);
 		
 		taskService.sendTask3Score(userId, ACTIVITY_TYPE.TYPE_REWARDTASK_COMPLETE_VALUE);
+		
+		UserBean user = userService.getUserOther(userId);
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_REWARDTASK_VALUE);
 	}
 	
 	/**
