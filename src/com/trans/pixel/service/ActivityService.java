@@ -127,7 +127,7 @@ public class ActivityService {
 				else
 					ur.setCompleteCount(ur.getCompleteCount() + count);
 				
-				userActivityService.updateUserRichang(userId, ur.build(), richang.getEndtime());
+				userActivityService.updateUserRichang(userId, ur.build(), richang);
 				
 				if (isCompleteNewRichang(ur.build(), userId))
 					noticeService.pushNotice(userId, NoticeConst.TYPE_ACTIVITY);
@@ -146,7 +146,7 @@ public class ActivityService {
 		ActivityOrder activityorder = richang.getOrder(order - 1);
 		
 		RewardOrder.Builder rewardOrderBuilder = RewardOrder.newBuilder();
-		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
+		if (richang.getConsumeid() > 0) {
 			if (ur.getRewardList().size() == 0) {
 				for (ActivityOrder ao :richang.getOrderList()) {
 					RewardOrder.Builder ro = RewardOrder.newBuilder();
@@ -181,7 +181,7 @@ public class ActivityService {
 		}
 		
 		
-		userActivityService.updateUserRichang(user.getId(), ur.build(), richang.getEndtime());
+		userActivityService.updateUserRichang(user.getId(), ur.build(), richang);
 		rewards.addAllLoot(getRewardList(activityorder));
 		
 		isDeleteNotice(user);

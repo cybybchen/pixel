@@ -35,8 +35,8 @@ public class UserActivityService {
 	private ServerService serverService;
 	
 	//richang activity
-	public void updateUserRichang(long userId, UserRichang ur, String endTime) {
-		userActivityRedisService.updateUserRichang(userId, ur, endTime);
+	public void updateUserRichang(long userId, UserRichang ur, Richang richang) {
+		userActivityRedisService.updateUserRichang(userId, ur, richang.getCycle(), richang.getEndtime());
 	}
 	
 	public UserRichang selectUserRichang(long userId, int type) {

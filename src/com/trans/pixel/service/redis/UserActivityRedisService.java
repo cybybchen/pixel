@@ -13,10 +13,13 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 @Service
 public class UserActivityRedisService extends RedisService {
 
-	public void updateUserRichang(long userId, UserRichang ur, String endTime) {
+	public void updateUserRichang(long userId, UserRichang ur, int cycle, String endTime) {
 		String key = buildRichangRedisKey(ur.getType(), userId);
 		this.set(key, formatJson(ur));
-		this.expireAt(key, DateUtil.getDate(endTime));
+		if (cycle == 1)
+			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
+		else
+			this.expireAt(key, DateUtil.getDate(endTime));
 	}
 	
 	public UserRichang getUserRichang(long userId, int type) {
