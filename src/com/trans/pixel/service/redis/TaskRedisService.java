@@ -193,7 +193,7 @@ public class TaskRedisService extends RedisService {
 		for (Task2TargetHero.Builder hero : builder.getDataBuilderList()) {
 //			Map<String, String> redismap = new HashMap<String, String>();
 //			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
-				map.put("" + hero.getHeroid() + hero.getTargetid(), hero.build());
+				map.put("" + hero.getHeroid(), hero.build());
 //				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 //					order.setTargetid(task.getTargetid());
 //					redismap.put("" + order.getOrder(), formatJson(order.build()));
