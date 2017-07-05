@@ -310,7 +310,7 @@ public class ActivityRedisService extends RedisService {
 		}
 		
 		Map<String, Shouchong> map = new HashMap<String, Shouchong>();
-		for(Shouchong.Builder kaifu : builder.getIdBuilderList()){
+		for(Shouchong.Builder kaifu : builder.getDataBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
 		return map;
