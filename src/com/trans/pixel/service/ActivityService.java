@@ -1186,6 +1186,19 @@ public class ActivityService {
 	}
 
 	/**
+	 * 击败工会boss的活动
+	 */
+	public void handleUnionBoss(long userId, int bossId) {
+		/**
+		 * 累计击败灵能之神的活动
+		 */
+		if (bossId == 200001) {
+			UserBean user = userService.getUserOther(userId);
+			this.sendRichangScore(user, ACTIVITY_TYPE.TYPE_KILL_UNIONBOSS_200001_VALUE);
+		}
+	}
+	
+	/**
 	 * activity and achieve log
 	 */
 	public void sendLog(long userId, int serverId, int type, int id, int step) {

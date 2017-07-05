@@ -11,6 +11,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -48,8 +50,6 @@ import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-
-import net.sf.json.JSONObject;
 
 @Service
 public class UnionService extends FightService{
@@ -819,6 +819,12 @@ public class UnionService extends FightService{
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
 			redis.clearLock("UnionBoss_" + bossId);
+			/**
+			 * 累计击败工会boss的活动
+			 */
+			for (UnionBossUserRecord userRecord : unionBossRecord.getUserRecordList()) {
+				activityService.handleUnionBoss(userRecord.getUserId(), bossId);
+			}
 		} else {
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 		}
