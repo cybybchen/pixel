@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.AchieveConst;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.HeroConst;
@@ -351,8 +350,8 @@ public class ActivityService {
 		/**
 		 * 公会先锋
 		 */
-		if (ret)
-			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
+//		if (ret)
+//			achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_UNION_ATTACK_SUCCESS);
 		
 		/**
 		 * 浴血奋战
@@ -446,7 +445,7 @@ public class ActivityService {
 		/**
 		 * achieve type 108
 		 */
-		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_ZHANLI, zhanli);
+//		achieveService.sendAchieveScore(user.getId(), AchieveConst.TYPE_ZHANLI, zhanli);
 		
 		/**
 		 * kaifu2 的zhanli排行
