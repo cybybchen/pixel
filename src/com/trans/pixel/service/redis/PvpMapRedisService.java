@@ -447,7 +447,7 @@ public class PvpMapRedisService extends RedisService{
 	}
 	
 	public boolean canRefreshEvent(UserBean user){
-		long times[] = {today(18), today(12), today(0)};
+		long times[] = {today(17), today(11), today(0)};
 		for(long time : times){
 			if(time > user.getPvpMonsterRefreshTime() && time < now()){
 				user.setPvpMonsterRefreshTime(time);
