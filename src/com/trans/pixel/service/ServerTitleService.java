@@ -17,10 +17,12 @@ import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.mapper.ServerTitleMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
 import com.trans.pixel.protoc.ServerProto.Title;
+import com.trans.pixel.protoc.TaskProto.Raid;
+import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 import com.trans.pixel.protoc.UnionProto.Union;
+import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.ServerTitleRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
@@ -48,6 +50,8 @@ public class ServerTitleService {
 	private RankRedisService rankRedisService;
 	@Resource
 	private UnionRedisService unionRedisService;
+	@Resource
+	private RaidRedisService raidRedisService;
 	
 	public List<TitleInfo> selectServerTileListByServerId(int serverId) {
 		List<TitleInfo> titleList = redis.selectServerTileListByServerId(serverId);
@@ -237,39 +241,45 @@ public class ServerTitleService {
 	}
 	
 	private void handlerRaidRank(int serverId, Map<String, Title> map) {
-		int raidid = 101;
-		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, raidid, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
-		int rankInit = 1;
-		List<Long> others = new ArrayList<Long>();
-		for (TypedTuple<String> rank : ranks) {
-			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
-			UserBean user = userService.getUserOther(userId);
-			switch (rankInit) {
-				case 1:
-					handlerTitle(user, 2, map);
-					break;
-				case 2:
-					handlerTitle(user, 8, map);
-					break;
-				case 3:
-					handlerTitle(user, 12, map);
-					break;
-				case 4:
-					handlerTitle(user, 16, map);
-					break;
-				default:
-					others.add(userId);
-					handlerTitle(user, 20, map, true);
-					break;
+		ResponseRaidCommand.Builder raidList = raidRedisService.getRaidList();
+		for (Raid raid : raidList.getRaidList()) {
+			if (raid.getId() < 100)
+				continue;
+			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+			if (ranks.isEmpty())
+				continue;
+			int rankInit = 1;
+			List<Long> others = new ArrayList<Long>();
+			for (TypedTuple<String> rank : ranks) {
+				long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
+				UserBean user = userService.getUserOther(userId);
+				switch (rankInit) {
+					case 1:
+						handlerTitle(user, 2, map);
+						break;
+					case 2:
+						handlerTitle(user, 8, map);
+						break;
+					case 3:
+						handlerTitle(user, 12, map);
+						break;
+					case 4:
+						handlerTitle(user, 16, map);
+						break;
+					default:
+						others.add(userId);
+						handlerTitle(user, 20, map, true);
+						break;
+				}
+				
+				rankInit++;
 			}
-			
-			rankInit++;
-		}
-	
-		updateServerTitleByTitleId(serverId, 20, others);
 		
-		//删除排行榜
-		rankRedisService.deleteRank(serverId, raidid);
+			updateServerTitleByTitleId(serverId, 20, others);
+			
+			//删除排行榜
+			rankRedisService.deleteRank(serverId, raid.getId());
+		}
 	}
 	
 	private void handlerTitle(UserBean user, int title, Map<String, Title> map) {
