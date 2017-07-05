@@ -2164,6 +2164,7 @@ enum ACTIVITY_TYPE{
 	TYPE_RAID_LEVELUP_TASK = 11100;
 	TYPE_GET_HERO = 121;
 	TYPE_TASK_HERO_RAREUP = 122;
+	TYPE_TASK_ZHUJUE_LEVELUP60 = 123;
 	TYPE_EVENT_COMPLETE_DAILY = 201;
 	TYPE_REWARDTASK_COMPLETE = 202;
 	TYPE_KILL_MONSTER = 203;
@@ -3396,10 +3397,10 @@ message Task3OrderList {
 	
 message Task2TargetHero {
 	optional int32 heroid = 1;
-	repeated TaskOrder order = 2;
-	optional uint32 targetid = 3;
-	optional uint32 skip = 4;
-	//repeated TaskTarget target = 2;
+	//repeated TaskOrder order = 2;
+	//optional uint32 targetid = 3;
+	//optional uint32 skip = 4;
+	repeated TaskTarget target = 2;
 }
 
 message Task2TargetList {

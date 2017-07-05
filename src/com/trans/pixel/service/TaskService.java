@@ -165,8 +165,8 @@ public class TaskService {
 		while (it.hasNext()) {
 			Entry<String, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
-//			for (TaskTarget task : taskHero.getTargetList()) {
-				if (taskHero.getTargetid() == targetId) {
+			for (TaskTarget task : taskHero.getTargetList()) {
+				if (task.getTargetid() == targetId) {
 					UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, targetId));
 					boolean hasModify = false;
 					
@@ -174,7 +174,7 @@ public class TaskService {
 						continue;
 					}
 					
-					for (TaskOrder order : taskHero.getOrderList()) {
+					for (TaskOrder order : task.getOrderList()) {
 						if (order.getTargetcount() == heroId) {
 							if (order.getTargetcount1() == 0 || order.getTargetcount1() <= count) {
 	//							ut.addCompleteOrder(order.getOrder());
@@ -191,7 +191,7 @@ public class TaskService {
 							noticeService.pushNotice(userId, NoticeConst.TYPE_MAINTASK);
 					}
 				}
-//			}
+			}
 		}
 	}
 	
@@ -202,8 +202,8 @@ public class TaskService {
 		while (it.hasNext()) {
 			Entry<String, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
-//			for (TaskTarget task : taskHero.getTargetList()) {
-				if (taskHero.getTargetid() == targetId) {
+			for (TaskTarget task : taskHero.getTargetList()) {
+				if (task.getTargetid() == targetId) {
 					UserTask.Builder ut = UserTask.newBuilder(userTaskService.selectUserTask2(userId, targetId));
 					boolean hasModify = false;
 					
@@ -212,7 +212,7 @@ public class TaskService {
 							continue;
 						}
 						
-						for (TaskOrder order : taskHero.getOrderList()) {
+						for (TaskOrder order : task.getOrderList()) {
 							if (order.getTargetcount() == heroId) {
 //								if (order.getTargetcount1() == 0 || order.getTargetcount1() <= count) {
 									ut.addHeroid(heroId);
@@ -228,7 +228,7 @@ public class TaskService {
 							noticeService.pushNotice(userId, NoticeConst.TYPE_MAINTASK);
 					}
 				}
-//			}
+			}
 		}
 	}
 	
@@ -347,10 +347,10 @@ public class TaskService {
 	
 	private boolean isCompleteNewTaskByTask2(UserTask ut, UserBean user, Task2TargetHero taskHero) {
 		int nextOrder = getTask2NextOrder(taskHero.getHeroid(), user.getTask2Record());
-//		for (TaskTarget task : taskHero.getTargetList()) {
-//			if (task.getTargetid() != ut.getTargetid())
-//				continue;
-			for (TaskOrder taskOrder : taskHero.getOrderList()) {
+		for (TaskTarget task : taskHero.getTargetList()) {
+			if (task.getTargetid() != ut.getTargetid())
+				continue;
+			for (TaskOrder taskOrder : task.getOrderList()) {
 				if (taskOrder.getOrder() == nextOrder) {
 	//				if (task.getTargetid() % 1000 == 700) {
 						if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
@@ -359,7 +359,7 @@ public class TaskService {
 	//					return true;
 				}
 			}
-//		}
+		}
 		
 		return false;
 	}
@@ -374,17 +374,17 @@ public class TaskService {
 			Entry<String, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
 			int nextOrder = getTask2NextOrder(taskHero.getHeroid(), user.getTask2Record());
-//			for (TaskTarget task : taskHero.getTargetList()) {
-				for (TaskOrder taskOrder : taskHero.getOrderList()) {
+			for (TaskTarget task : taskHero.getTargetList()) {
+				for (TaskOrder taskOrder : task.getOrderList()) {
 					if (taskOrder.getOrder() == nextOrder) {
-						UserTask ut = userTaskService.selectUserTask2(user.getId(), taskHero.getTargetid());
+						UserTask ut = userTaskService.selectUserTask2(user.getId(), task.getTargetid());
 						if (ut.getHeroidList().contains(taskOrder.getTargetcount()))
 							return;
 						
 						break;
 					}
 				}
-//			}
+			}
 		}
 				
 		//task 1

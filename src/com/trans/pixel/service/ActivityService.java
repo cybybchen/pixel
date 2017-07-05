@@ -1149,6 +1149,9 @@ public class ActivityService {
 		
 		if (level >=5)
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE, talentId, false);
+		
+		if (level >= 60)
+			taskService.sendTask2Score(user, ACTIVITY_TYPE.TYPE_TASK_ZHUJUE_LEVELUP60_VALUE, talentId);
 	}
 	
 	public void completeEvent(UserBean user, int eventId) {

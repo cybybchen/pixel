@@ -4290,58 +4290,60 @@ public final class TaskProto {
      */
     int getHeroid();
 
-    // repeated .com.trans.pixel.protoc.TaskOrder order = 2;
+    // repeated .com.trans.pixel.protoc.TaskTarget target = 2;
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> 
-        getOrderList();
+    java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget> 
+        getTargetList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    com.trans.pixel.protoc.TaskProto.TaskOrder getOrder(int index);
+    com.trans.pixel.protoc.TaskProto.TaskTarget getTarget(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    int getOrderCount();
+    int getTargetCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-        getOrderOrBuilderList();
+    java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder> 
+        getTargetOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getOrderOrBuilder(
+    com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder getTargetOrBuilder(
         int index);
-
-    // optional uint32 targetid = 3;
-    /**
-     * <code>optional uint32 targetid = 3;</code>
-     */
-    boolean hasTargetid();
-    /**
-     * <code>optional uint32 targetid = 3;</code>
-     */
-    int getTargetid();
-
-    // optional uint32 skip = 4;
-    /**
-     * <code>optional uint32 skip = 4;</code>
-     *
-     * <pre>
-     *repeated TaskTarget target = 2;
-     * </pre>
-     */
-    boolean hasSkip();
-    /**
-     * <code>optional uint32 skip = 4;</code>
-     *
-     * <pre>
-     *repeated TaskTarget target = 2;
-     * </pre>
-     */
-    int getSkip();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Task2TargetHero}
@@ -4401,20 +4403,10 @@ public final class TaskProto {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                order_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>();
+                target_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskTarget>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              order_.add(input.readMessage(com.trans.pixel.protoc.TaskProto.TaskOrder.PARSER, extensionRegistry));
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000002;
-              targetid_ = input.readUInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000004;
-              skip_ = input.readUInt32();
+              target_.add(input.readMessage(com.trans.pixel.protoc.TaskProto.TaskTarget.PARSER, extensionRegistry));
               break;
             }
           }
@@ -4426,7 +4418,7 @@ public final class TaskProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          order_ = java.util.Collections.unmodifiableList(order_);
+          target_ = java.util.Collections.unmodifiableList(target_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4476,87 +4468,75 @@ public final class TaskProto {
       return heroid_;
     }
 
-    // repeated .com.trans.pixel.protoc.TaskOrder order = 2;
-    public static final int ORDER_FIELD_NUMBER = 2;
-    private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> order_;
+    // repeated .com.trans.pixel.protoc.TaskTarget target = 2;
+    public static final int TARGET_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget> target_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getOrderList() {
-      return order_;
+    public java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget> getTargetList() {
+      return target_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-        getOrderOrBuilderList() {
-      return order_;
+    public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder> 
+        getTargetOrBuilderList() {
+      return target_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    public int getOrderCount() {
-      return order_.size();
+    public int getTargetCount() {
+      return target_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    public com.trans.pixel.protoc.TaskProto.TaskOrder getOrder(int index) {
-      return order_.get(index);
+    public com.trans.pixel.protoc.TaskProto.TaskTarget getTarget(int index) {
+      return target_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+     *
+     * <pre>
+     *repeated TaskOrder order = 2;
+     *optional uint32 targetid = 3;
+     *optional uint32 skip = 4;
+     * </pre>
      */
-    public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getOrderOrBuilder(
+    public com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder getTargetOrBuilder(
         int index) {
-      return order_.get(index);
-    }
-
-    // optional uint32 targetid = 3;
-    public static final int TARGETID_FIELD_NUMBER = 3;
-    private int targetid_;
-    /**
-     * <code>optional uint32 targetid = 3;</code>
-     */
-    public boolean hasTargetid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional uint32 targetid = 3;</code>
-     */
-    public int getTargetid() {
-      return targetid_;
-    }
-
-    // optional uint32 skip = 4;
-    public static final int SKIP_FIELD_NUMBER = 4;
-    private int skip_;
-    /**
-     * <code>optional uint32 skip = 4;</code>
-     *
-     * <pre>
-     *repeated TaskTarget target = 2;
-     * </pre>
-     */
-    public boolean hasSkip() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint32 skip = 4;</code>
-     *
-     * <pre>
-     *repeated TaskTarget target = 2;
-     * </pre>
-     */
-    public int getSkip() {
-      return skip_;
+      return target_.get(index);
     }
 
     private void initFields() {
       heroid_ = 0;
-      order_ = java.util.Collections.emptyList();
-      targetid_ = 0;
-      skip_ = 0;
+      target_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4573,14 +4553,8 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, heroid_);
       }
-      for (int i = 0; i < order_.size(); i++) {
-        output.writeMessage(2, order_.get(i));
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(3, targetid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(4, skip_);
+      for (int i = 0; i < target_.size(); i++) {
+        output.writeMessage(2, target_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4595,17 +4569,9 @@ public final class TaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, heroid_);
       }
-      for (int i = 0; i < order_.size(); i++) {
+      for (int i = 0; i < target_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, order_.get(i));
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, targetid_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, skip_);
+          .computeMessageSize(2, target_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4715,7 +4681,7 @@ public final class TaskProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getOrderFieldBuilder();
+          getTargetFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4726,16 +4692,12 @@ public final class TaskProto {
         super.clear();
         heroid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
+        if (targetBuilder_ == null) {
+          target_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          orderBuilder_.clear();
+          targetBuilder_.clear();
         }
-        targetid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        skip_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -4768,23 +4730,15 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000001;
         }
         result.heroid_ = heroid_;
-        if (orderBuilder_ == null) {
+        if (targetBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002)) {
-            order_ = java.util.Collections.unmodifiableList(order_);
+            target_ = java.util.Collections.unmodifiableList(target_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.order_ = order_;
+          result.target_ = target_;
         } else {
-          result.order_ = orderBuilder_.build();
+          result.target_ = targetBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.targetid_ = targetid_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.skip_ = skip_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4804,37 +4758,31 @@ public final class TaskProto {
         if (other.hasHeroid()) {
           setHeroid(other.getHeroid());
         }
-        if (orderBuilder_ == null) {
-          if (!other.order_.isEmpty()) {
-            if (order_.isEmpty()) {
-              order_ = other.order_;
+        if (targetBuilder_ == null) {
+          if (!other.target_.isEmpty()) {
+            if (target_.isEmpty()) {
+              target_ = other.target_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureOrderIsMutable();
-              order_.addAll(other.order_);
+              ensureTargetIsMutable();
+              target_.addAll(other.target_);
             }
             onChanged();
           }
         } else {
-          if (!other.order_.isEmpty()) {
-            if (orderBuilder_.isEmpty()) {
-              orderBuilder_.dispose();
-              orderBuilder_ = null;
-              order_ = other.order_;
+          if (!other.target_.isEmpty()) {
+            if (targetBuilder_.isEmpty()) {
+              targetBuilder_.dispose();
+              targetBuilder_ = null;
+              target_ = other.target_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              orderBuilder_ = 
+              targetBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getOrderFieldBuilder() : null;
+                   getTargetFieldBuilder() : null;
             } else {
-              orderBuilder_.addAllMessages(other.order_);
+              targetBuilder_.addAllMessages(other.target_);
             }
           }
-        }
-        if (other.hasTargetid()) {
-          setTargetid(other.getTargetid());
-        }
-        if (other.hasSkip()) {
-          setSkip(other.getSkip());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4896,326 +4844,352 @@ public final class TaskProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.TaskOrder order = 2;
-      private java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> order_ =
+      // repeated .com.trans.pixel.protoc.TaskTarget target = 2;
+      private java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget> target_ =
         java.util.Collections.emptyList();
-      private void ensureOrderIsMutable() {
+      private void ensureTargetIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          order_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskOrder>(order_);
+          target_ = new java.util.ArrayList<com.trans.pixel.protoc.TaskProto.TaskTarget>(target_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> orderBuilder_;
+          com.trans.pixel.protoc.TaskProto.TaskTarget, com.trans.pixel.protoc.TaskProto.TaskTarget.Builder, com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder> targetBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder> getOrderList() {
-        if (orderBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(order_);
+      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget> getTargetList() {
+        if (targetBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(target_);
         } else {
-          return orderBuilder_.getMessageList();
+          return targetBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public int getOrderCount() {
-        if (orderBuilder_ == null) {
-          return order_.size();
+      public int getTargetCount() {
+        if (targetBuilder_ == null) {
+          return target_.size();
         } else {
-          return orderBuilder_.getCount();
+          return targetBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder getOrder(int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);
+      public com.trans.pixel.protoc.TaskProto.TaskTarget getTarget(int index) {
+        if (targetBuilder_ == null) {
+          return target_.get(index);
         } else {
-          return orderBuilder_.getMessage(index);
+          return targetBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder setOrder(
-          int index, com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (orderBuilder_ == null) {
+      public Builder setTarget(
+          int index, com.trans.pixel.protoc.TaskProto.TaskTarget value) {
+        if (targetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.set(index, value);
+          ensureTargetIsMutable();
+          target_.set(index, value);
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, value);
+          targetBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder setOrder(
-          int index, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.set(index, builderForValue.build());
+      public Builder setTarget(
+          int index, com.trans.pixel.protoc.TaskProto.TaskTarget.Builder builderForValue) {
+        if (targetBuilder_ == null) {
+          ensureTargetIsMutable();
+          target_.set(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.setMessage(index, builderForValue.build());
+          targetBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder addOrder(com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (orderBuilder_ == null) {
+      public Builder addTarget(com.trans.pixel.protoc.TaskProto.TaskTarget value) {
+        if (targetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(value);
+          ensureTargetIsMutable();
+          target_.add(value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(value);
+          targetBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder addOrder(
-          int index, com.trans.pixel.protoc.TaskProto.TaskOrder value) {
-        if (orderBuilder_ == null) {
+      public Builder addTarget(
+          int index, com.trans.pixel.protoc.TaskProto.TaskTarget value) {
+        if (targetBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureOrderIsMutable();
-          order_.add(index, value);
+          ensureTargetIsMutable();
+          target_.add(index, value);
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, value);
+          targetBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder addOrder(
-          com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(builderForValue.build());
+      public Builder addTarget(
+          com.trans.pixel.protoc.TaskProto.TaskTarget.Builder builderForValue) {
+        if (targetBuilder_ == null) {
+          ensureTargetIsMutable();
+          target_.add(builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(builderForValue.build());
+          targetBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder addOrder(
-          int index, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder builderForValue) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.add(index, builderForValue.build());
+      public Builder addTarget(
+          int index, com.trans.pixel.protoc.TaskProto.TaskTarget.Builder builderForValue) {
+        if (targetBuilder_ == null) {
+          ensureTargetIsMutable();
+          target_.add(index, builderForValue.build());
           onChanged();
         } else {
-          orderBuilder_.addMessage(index, builderForValue.build());
+          targetBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder addAllOrder(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.TaskProto.TaskOrder> values) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          super.addAll(values, order_);
+      public Builder addAllTarget(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.TaskProto.TaskTarget> values) {
+        if (targetBuilder_ == null) {
+          ensureTargetIsMutable();
+          super.addAll(values, target_);
           onChanged();
         } else {
-          orderBuilder_.addAllMessages(values);
+          targetBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder clearOrder() {
-        if (orderBuilder_ == null) {
-          order_ = java.util.Collections.emptyList();
+      public Builder clearTarget() {
+        if (targetBuilder_ == null) {
+          target_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          orderBuilder_.clear();
+          targetBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public Builder removeOrder(int index) {
-        if (orderBuilder_ == null) {
-          ensureOrderIsMutable();
-          order_.remove(index);
+      public Builder removeTarget(int index) {
+        if (targetBuilder_ == null) {
+          ensureTargetIsMutable();
+          target_.remove(index);
           onChanged();
         } else {
-          orderBuilder_.remove(index);
+          targetBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder getOrderBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskTarget.Builder getTargetBuilder(
           int index) {
-        return getOrderFieldBuilder().getBuilder(index);
+        return getTargetFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder getOrderOrBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder getTargetOrBuilder(
           int index) {
-        if (orderBuilder_ == null) {
-          return order_.get(index);  } else {
-          return orderBuilder_.getMessageOrBuilder(index);
+        if (targetBuilder_ == null) {
+          return target_.get(index);  } else {
+          return targetBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-           getOrderOrBuilderList() {
-        if (orderBuilder_ != null) {
-          return orderBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder> 
+           getTargetOrBuilderList() {
+        if (targetBuilder_ != null) {
+          return targetBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(order_);
+          return java.util.Collections.unmodifiableList(target_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addOrderBuilder() {
-        return getOrderFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.TaskProto.TaskOrder.getDefaultInstance());
+      public com.trans.pixel.protoc.TaskProto.TaskTarget.Builder addTargetBuilder() {
+        return getTargetFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.TaskProto.TaskTarget.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public com.trans.pixel.protoc.TaskProto.TaskOrder.Builder addOrderBuilder(
+      public com.trans.pixel.protoc.TaskProto.TaskTarget.Builder addTargetBuilder(
           int index) {
-        return getOrderFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.TaskProto.TaskOrder.getDefaultInstance());
+        return getTargetFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.TaskProto.TaskTarget.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.TaskOrder order = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.TaskTarget target = 2;</code>
+       *
+       * <pre>
+       *repeated TaskOrder order = 2;
+       *optional uint32 targetid = 3;
+       *optional uint32 skip = 4;
+       * </pre>
        */
-      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskOrder.Builder> 
-           getOrderBuilderList() {
-        return getOrderFieldBuilder().getBuilderList();
+      public java.util.List<com.trans.pixel.protoc.TaskProto.TaskTarget.Builder> 
+           getTargetBuilderList() {
+        return getTargetFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder> 
-          getOrderFieldBuilder() {
-        if (orderBuilder_ == null) {
-          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.TaskProto.TaskOrder, com.trans.pixel.protoc.TaskProto.TaskOrder.Builder, com.trans.pixel.protoc.TaskProto.TaskOrderOrBuilder>(
-                  order_,
+          com.trans.pixel.protoc.TaskProto.TaskTarget, com.trans.pixel.protoc.TaskProto.TaskTarget.Builder, com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder> 
+          getTargetFieldBuilder() {
+        if (targetBuilder_ == null) {
+          targetBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.TaskProto.TaskTarget, com.trans.pixel.protoc.TaskProto.TaskTarget.Builder, com.trans.pixel.protoc.TaskProto.TaskTargetOrBuilder>(
+                  target_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
-          order_ = null;
+          target_ = null;
         }
-        return orderBuilder_;
-      }
-
-      // optional uint32 targetid = 3;
-      private int targetid_ ;
-      /**
-       * <code>optional uint32 targetid = 3;</code>
-       */
-      public boolean hasTargetid() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint32 targetid = 3;</code>
-       */
-      public int getTargetid() {
-        return targetid_;
-      }
-      /**
-       * <code>optional uint32 targetid = 3;</code>
-       */
-      public Builder setTargetid(int value) {
-        bitField0_ |= 0x00000004;
-        targetid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 targetid = 3;</code>
-       */
-      public Builder clearTargetid() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        targetid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 skip = 4;
-      private int skip_ ;
-      /**
-       * <code>optional uint32 skip = 4;</code>
-       *
-       * <pre>
-       *repeated TaskTarget target = 2;
-       * </pre>
-       */
-      public boolean hasSkip() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional uint32 skip = 4;</code>
-       *
-       * <pre>
-       *repeated TaskTarget target = 2;
-       * </pre>
-       */
-      public int getSkip() {
-        return skip_;
-      }
-      /**
-       * <code>optional uint32 skip = 4;</code>
-       *
-       * <pre>
-       *repeated TaskTarget target = 2;
-       * </pre>
-       */
-      public Builder setSkip(int value) {
-        bitField0_ |= 0x00000008;
-        skip_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 skip = 4;</code>
-       *
-       * <pre>
-       *repeated TaskTarget target = 2;
-       * </pre>
-       */
-      public Builder clearSkip() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        skip_ = 0;
-        onChanged();
-        return this;
+        return targetBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Task2TargetHero)
@@ -13483,33 +13457,32 @@ public final class TaskProto {
       "\030\016 \003(\0132\".com.trans.pixel.protoc.RewardIn" +
       "fo\022\014\n\004skip\030\017 \001(\r\022\017\n\007whether\030\020 \001(\r\"A\n\016Tas" +
       "k3OrderList\022/\n\004data\030\001 \003(\0132!.com.trans.pi" +
-      "xel.protoc.TaskOrder\"s\n\017Task2TargetHero\022" +
-      "\016\n\006heroid\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!.com.tra" +
-      "ns.pixel.protoc.TaskOrder\022\020\n\010targetid\030\003 " +
-      "\001(\r\022\014\n\004skip\030\004 \001(\r\"H\n\017Task2TargetList\0225\n\004" +
-      "data\030\001 \003(\0132\'.com.trans.pixel.protoc.Task" +
-      "2TargetHero\"M\n\010UserTask\022\020\n\010targetid\030\001 \001(" +
-      "\005\022\017\n\007process\030\002 \001(\005\022\016\n\006status\030\003 \001(\005\022\016\n\006he",
-      "roid\030\004 \003(\005\"\030\n\026RequestUserTaskCommand\"\270\001\n" +
-      "\027ResponseUserTaskCommand\0223\n\tuserTask1\030\001 " +
-      "\003(\0132 .com.trans.pixel.protoc.UserTask\0223\n" +
-      "\tuserTask2\030\002 \003(\0132 .com.trans.pixel.proto" +
-      "c.UserTask\0223\n\tuserTask3\030\003 \003(\0132 .com.tran" +
-      "s.pixel.protoc.UserTask\"J\n\033RequestGetTas" +
-      "kRewardCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005order\030\002 " +
-      "\001(\005\022\016\n\006heroid\030\003 \001(\005\"\300\001\n\004Raid\022\n\n\002id\030\001 \001(\005" +
-      "\0220\n\004cost\030\002 \001(\0132\".com.trans.pixel.protoc." +
-      "RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005event\030\005 \003(\0132",
-      "\035.com.trans.pixel.protoc.Event\022\017\n\007eventi" +
-      "d\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level\030\010 \001(\005\022\020\n\010" +
-      "maxlevel\030\t \001(\005\"6\n\010RaidList\022*\n\004data\030\001 \003(\013" +
-      "2\034.com.trans.pixel.protoc.Raid\"3\n\026Reques" +
-      "tOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 " +
-      "\001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002id\030\001 \001" +
-      "(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022" +
-      "\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 " +
-      "\001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid\030\001 \003(\013" +
-      "2\034.com.trans.pixel.protoc.Raid"
+      "xel.protoc.TaskOrder\"U\n\017Task2TargetHero\022" +
+      "\016\n\006heroid\030\001 \001(\005\0222\n\006target\030\002 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.TaskTarget\"H\n\017Task2Targ" +
+      "etList\0225\n\004data\030\001 \003(\0132\'.com.trans.pixel.p" +
+      "rotoc.Task2TargetHero\"M\n\010UserTask\022\020\n\010tar" +
+      "getid\030\001 \001(\005\022\017\n\007process\030\002 \001(\005\022\016\n\006status\030\003" +
+      " \001(\005\022\016\n\006heroid\030\004 \003(\005\"\030\n\026RequestUserTaskC",
+      "ommand\"\270\001\n\027ResponseUserTaskCommand\0223\n\tus" +
+      "erTask1\030\001 \003(\0132 .com.trans.pixel.protoc.U" +
+      "serTask\0223\n\tuserTask2\030\002 \003(\0132 .com.trans.p" +
+      "ixel.protoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132" +
+      " .com.trans.pixel.protoc.UserTask\"J\n\033Req" +
+      "uestGetTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r" +
+      "\n\005order\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\300\001\n\004Raid\022\n" +
+      "\n\002id\030\001 \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pix" +
+      "el.protoc.RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005ev" +
+      "ent\030\005 \003(\0132\035.com.trans.pixel.protoc.Event",
+      "\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level" +
+      "\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidList\022*\n\004" +
+      "data\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid" +
+      "\"3\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r" +
+      "\n\005level\030\002 \001(\005\"v\n\027RequestStartRaidCommand" +
+      "\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightI" +
+      "nfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007" +
+      "eventid\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004" +
+      "raid\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13551,7 +13524,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_Task2TargetHero_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task2TargetHero_descriptor,
-              new java.lang.String[] { "Heroid", "Order", "Targetid", "Skip", });
+              new java.lang.String[] { "Heroid", "Target", });
           internal_static_com_trans_pixel_protoc_Task2TargetList_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_Task2TargetList_fieldAccessorTable = new

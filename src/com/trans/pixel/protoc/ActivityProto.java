@@ -290,49 +290,53 @@ public final class ActivityProto {
      */
     TYPE_TASK_HERO_RAREUP(67, 122),
     /**
+     * <code>TYPE_TASK_ZHUJUE_LEVELUP60 = 123;</code>
+     */
+    TYPE_TASK_ZHUJUE_LEVELUP60(68, 123),
+    /**
      * <code>TYPE_EVENT_COMPLETE_DAILY = 201;</code>
      */
-    TYPE_EVENT_COMPLETE_DAILY(68, 201),
+    TYPE_EVENT_COMPLETE_DAILY(69, 201),
     /**
      * <code>TYPE_REWARDTASK_COMPLETE = 202;</code>
      */
-    TYPE_REWARDTASK_COMPLETE(69, 202),
+    TYPE_REWARDTASK_COMPLETE(70, 202),
     /**
      * <code>TYPE_KILL_MONSTER = 203;</code>
      */
-    TYPE_KILL_MONSTER(70, 203),
+    TYPE_KILL_MONSTER(71, 203),
     /**
      * <code>TYPE_DUOHUI_MINE = 204;</code>
      */
-    TYPE_DUOHUI_MINE(71, 204),
+    TYPE_DUOHUI_MINE(72, 204),
     /**
      * <code>TYPE_EQUIP_LEVELUP = 205;</code>
      */
-    TYPE_EQUIP_LEVELUP(72, 205),
+    TYPE_EQUIP_LEVELUP(73, 205),
     /**
      * <code>TYPE_SKILL_LEVELUP = 206;</code>
      */
-    TYPE_SKILL_LEVELUP(73, 206),
+    TYPE_SKILL_LEVELUP(74, 206),
     /**
      * <code>TYPE_LADDER_FIGHT = 207;</code>
      */
-    TYPE_LADDER_FIGHT(74, 207),
+    TYPE_LADDER_FIGHT(75, 207),
     /**
      * <code>TYPE_LOTTERY_COIN = 208;</code>
      */
-    TYPE_LOTTERY_COIN(75, 208),
+    TYPE_LOTTERY_COIN(76, 208),
     /**
      * <code>TYPE_PUTONGSHOP_BUY = 209;</code>
      */
-    TYPE_PUTONGSHOP_BUY(76, 209),
+    TYPE_PUTONGSHOP_BUY(77, 209),
     /**
      * <code>TYPE_FUBEN_KILL_BOSS = 210;</code>
      */
-    TYPE_FUBEN_KILL_BOSS(77, 210),
+    TYPE_FUBEN_KILL_BOSS(78, 210),
     /**
      * <code>TYPE_DAILY_ALL = 211;</code>
      */
-    TYPE_DAILY_ALL(78, 211),
+    TYPE_DAILY_ALL(79, 211),
     ;
 
     /**
@@ -608,6 +612,10 @@ public final class ActivityProto {
      */
     public static final int TYPE_TASK_HERO_RAREUP_VALUE = 122;
     /**
+     * <code>TYPE_TASK_ZHUJUE_LEVELUP60 = 123;</code>
+     */
+    public static final int TYPE_TASK_ZHUJUE_LEVELUP60_VALUE = 123;
+    /**
      * <code>TYPE_EVENT_COMPLETE_DAILY = 201;</code>
      */
     public static final int TYPE_EVENT_COMPLETE_DAILY_VALUE = 201;
@@ -725,6 +733,7 @@ public final class ActivityProto {
         case 11100: return TYPE_RAID_LEVELUP_TASK;
         case 121: return TYPE_GET_HERO;
         case 122: return TYPE_TASK_HERO_RAREUP;
+        case 123: return TYPE_TASK_ZHUJUE_LEVELUP60;
         case 201: return TYPE_EVENT_COMPLETE_DAILY;
         case 202: return TYPE_REWARDTASK_COMPLETE;
         case 203: return TYPE_KILL_MONSTER;
@@ -30993,7 +31002,7 @@ public final class ActivityProto {
       "ilter\030\t \002(\t\"@\n\rRankvalueList\022/\n\004rank\030\001 \003" +
       "(\0132!.com.trans.pixel.protoc.Rankvalue\"N\n" +
       "\tRankvalue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003" +
-      "def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\304\017" +
+      "def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\344\017" +
       "\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n" +
       "\023TYPE_LEIJI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COS",
       "T_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020" +
@@ -31036,14 +31045,15 @@ public final class ActivityProto {
       "E_HERO_RAREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELU" +
       "P\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP5\020\375U\022\033\n\026TYPE_" +
       "RAID_LEVELUP_TASK\020\334V\022\021\n\rTYPE_GET_HERO\020y\022",
-      "\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\031TYPE_EVENT" +
-      "_COMPLETE_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_CO" +
-      "MPLETE\020\312\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYP" +
-      "E_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315" +
-      "\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDE" +
-      "R_FIGHT\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TY" +
-      "PE_PUTONGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_" +
-      "BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL\020\323\001"
+      "\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\032TYPE_TASK_" +
+      "ZHUJUE_LEVELUP60\020{\022\036\n\031TYPE_EVENT_COMPLET" +
+      "E_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312" +
+      "\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI" +
+      "_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYP" +
+      "E_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020" +
+      "\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTON" +
+      "GSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022" +
+      "\023\n\016TYPE_DAILY_ALL\020\323\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
