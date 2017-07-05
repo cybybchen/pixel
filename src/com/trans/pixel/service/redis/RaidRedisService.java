@@ -48,7 +48,8 @@ public class RaidRedisService extends RedisService{
 
 	public void saveRaid(UserBean user, Raid.Builder raid){
 		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()));
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());
+		if(raid.getId()/100 != 1)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());
 	}
 
 	public String popDBKey() {
