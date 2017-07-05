@@ -512,7 +512,7 @@ public class PvpMapRedisService extends RedisService{
 			builder = buildPvpMapList();
 			for(PVPMap.Builder map : builder.getDataBuilderList()) {
 				map.clearEvent();
-				map.clearLootlist();
+//				map.clearLootlist();
 			}
 			set(RedisKey.PVPMAP_CONFIG, formatJson(builder.build()));
 			return builder;
