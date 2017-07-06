@@ -144,7 +144,7 @@ public class RewardService {
 					talentService.talentUpgrade(user, (int)rewardCount);
 					return true;
 				case RewardConst.VIPEXP:
-					user.setVipExp(user.getRechargeRecord() + (int)rewardCount);
+					user.setVipExp(user.getVipExp() + (int)rewardCount);
 					rechargeService.handleVipExp(user, (int)rewardCount);
 					return true;
 				default:
