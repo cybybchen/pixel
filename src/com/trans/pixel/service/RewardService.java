@@ -145,7 +145,7 @@ public class RewardService {
 					return true;
 				case RewardConst.VIPEXP:
 					user.setVipExp(user.getRechargeRecord() + (int)rewardCount);
-					rechargeService.handleVipExp(user);
+					rechargeService.handleVipExp(user, (int)rewardCount);
 					return true;
 				default:
 					break;

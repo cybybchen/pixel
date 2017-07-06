@@ -103,12 +103,12 @@ public class RechargeService {
 	public void addVipExp(UserBean user, int exp) {
 		int complete = user.getVipExp() + exp;
 		user.setVipExp(complete);
-		handleVipExp(user);
+		handleVipExp(user, exp);
     	
 		userService.updateUser(user);
 	}
 	
-	public void handleVipExp(UserBean user) {
+	public void handleVipExp(UserBean user, int addExp) {
 		while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
 	    	if(vip == null || user.getVipExp() < vip.getZuanshi())
@@ -137,6 +137,22 @@ public class RechargeService {
 //				userPropService.updateUserProp(userProp);
 			}
 	    }
+		
+		handlerRecommandVipExp(user.getRecommandUserId(), addExp / 5);
+	}
+	
+	private void handlerRecommandVipExp(long userId, int addExp) {
+		if (addExp == 0)
+			return;
+		if (userId == 0)
+			return;
+		
+		UserBean user = userService.getUserOther(userId);
+		if (user == null)
+			return;
+		
+		if (rewardService.doReward(user, RewardConst.VIPEXP, addExp))//上家享受20%的活跃值奖励
+			userService.updateUser(user);
 	}
 	
 	public int buchangVip(UserBean user, int rmb, int jewel) {
