@@ -331,9 +331,15 @@ public class UserCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
+		if (user.getId() == cmd.getUserId()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		
-		user.setRecommandUserId(cmd.getUserId());
-		userService.updateUser(user);
+		userService.handlerRecommand(user, cmd.getUserId());
 	}
 	
 	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
