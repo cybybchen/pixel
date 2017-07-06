@@ -278,7 +278,7 @@ public class ServerTitleService {
 			updateServerTitleByTitleId(serverId, 20, others);
 			
 			//删除排行榜
-			rankRedisService.deleteRank(serverId, raid.getId());
+			rankRedisService.deleteRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
 		}
 	}
 	
