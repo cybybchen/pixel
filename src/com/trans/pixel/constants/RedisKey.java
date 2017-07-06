@@ -5,10 +5,10 @@ public class RedisKey {
 		return SERVER_PREFIX + serverId + "_";
 	}
 	public final static String PREFIX = "pixel:";
-	public final static String BIGPREFIX = "bigpixel:";
 	public final static String SPLIT = ":";
 	
 	public static final String CONFIG_PREFIX = "config:";
+	public static final String BIGCONFIG_PREFIX = "bigconfig:";
 	
 	
 	//server key prefix
@@ -82,10 +82,10 @@ public class RedisKey {
 	public final static String JEWELPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"JewelPool";
 //	public final static String EXPPOOL_CONFIG = PREFIX+CONFIG_PREFIX+"ExpPool";
 //	public final static String YUEKA_CONFIG = PREFIX+CONFIG_PREFIX+"YueKa";
-	public static final String DAGUAN_CONFIG = BIGPREFIX+CONFIG_PREFIX+"Daguan";
-	public static final String DAGUANEVENT_CONFIG = BIGPREFIX+CONFIG_PREFIX+"DaguanEvent";
-	public static final String MAINEVENT_CONFIG = BIGPREFIX+CONFIG_PREFIX+"MainEvent";
-	public static final String EVENT_CONFIG = BIGPREFIX+CONFIG_PREFIX+"Event";
+	public static final String DAGUAN_CONFIG = PREFIX+BIGCONFIG_PREFIX+"Daguan";
+	public static final String DAGUANEVENT_CONFIG = PREFIX+BIGCONFIG_PREFIX+"DaguanEvent";
+	public static final String MAINEVENT_CONFIG = PREFIX+BIGCONFIG_PREFIX+"MainEvent";
+	public static final String EVENT_CONFIG = PREFIX+BIGCONFIG_PREFIX+"Event";
 	public static final String EVENTEXP_CONFIG = PREFIX+CONFIG_PREFIX+"EventExp";
 	public static final String EVENTLEVEL_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevel";
 	public static final String EVENTLEVELSEED_CONFIG = PREFIX+CONFIG_PREFIX+"EventLevelSeed";
@@ -221,7 +221,7 @@ public class RedisKey {
 	public static final String SKILLLEVEL_KEY = CONFIG_PREFIX+"skilllevel";
 	
 	//prop
-	public static final String PROP_KEY = BIGPREFIX + CONFIG_PREFIX + "prop";
+	public static final String PROP_KEY = PREFIX + BIGCONFIG_PREFIX + "prop";
 	public static final String SYNTHETISE_KEY = PREFIX + CONFIG_PREFIX + "synthetise";
 	
 	//fenjie
