@@ -33,7 +33,7 @@ public class ConfigUtil {
     
     static {
         Properties props = new Properties();
-        readProps("/opt/ld/ld.properties", props);
+        readProps("/var/www/html/Pixel/ld/ld.properties", props);
 
         SERVER = props.getProperty("server");
         CRONTAB_STATUS = Boolean.valueOf(props.getProperty("crontab_status"));

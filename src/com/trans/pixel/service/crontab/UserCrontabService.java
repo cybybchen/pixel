@@ -25,6 +25,7 @@ import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
+import com.trans.pixel.utils.ConfigUtil;
 
 import net.sf.json.JSONObject;
 
@@ -71,6 +72,8 @@ public class UserCrontabService {
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void updateUserToDB() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		try{
 		String key = null;
 		while((key=userService.popDBKey()) != null){
