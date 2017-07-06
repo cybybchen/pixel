@@ -386,10 +386,15 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId) {
+		pushUserDataByRewardId(responseBuilder, user, rewardId, false);
+	}
+	
+	public void pushUserDataByRewardId(Builder responseBuilder, UserBean user, int rewardId, boolean needPushReward) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addLoot(RewardInfo.newBuilder());
 		rewards.getLootBuilder(0).setItemid(rewardId);
-		pushRewardCommand(responseBuilder, user, rewards.build(), false);
+		rewards.getLootBuilder(0).setCount(1);
+		pushRewardCommand(responseBuilder, user, rewards.build(), needPushReward);
 	}
 
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards) {

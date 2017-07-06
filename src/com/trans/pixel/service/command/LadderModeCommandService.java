@@ -243,6 +243,7 @@ public class LadderModeCommandService extends BaseCommandService {
 					ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
 					builder.addUserEquipPokede(pokede.build());
 					responseBuilder.setEquipPokedeCommand(builder.build());
+					pushCommandService.pushUserDataByRewardId(responseBuilder, user, pokede.getItemId(), true);
 				}
 				
 				//任务奖励
