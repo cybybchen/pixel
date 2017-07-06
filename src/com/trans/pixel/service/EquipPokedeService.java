@@ -112,7 +112,7 @@ public class EquipPokedeService {
 		log.debug("11:" + itemId + ":22:" + order);
 		
 		List<EquipOrder> equipOrderList = new ArrayList<EquipOrder>();
-		if (itemId < RewardConst.ARMOR) {
+		if (itemId > RewardConst.ARMOR) {
 			Armor armor = equipService.getArmor(itemId);
 			if (armor != null)
 				equipOrderList.addAll(armor.getListList());
