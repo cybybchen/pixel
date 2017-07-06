@@ -7,7 +7,7 @@ body{
      		width: 640px;
      		margin: 0 auto;
      		position: relative;
-     		background-color: #36425F;
+     		background-color: #432847;
      	}
      	.hover {
      		position: fixed;
@@ -23,7 +23,7 @@ body{
      		left: 0;
      	}
      	.main {
-     		min-height: 1323px;
+     		min-height: 1943px;
      	}
      	.down1 {
      		position: absolute;
@@ -37,7 +37,7 @@ body{
      	}
      	.freedown {
      		position: absolute;
-     		bottom: 80px;
+     		bottom: 20px;
      		left: 120px;
      	}
 			.start {

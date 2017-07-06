@@ -67,7 +67,7 @@
 		</div>
 		<div id="config-redisdata" style="display:none;margin:0 5px;">
 			<div class="ui-field-contain">
-			    <label for="redisdata-keys">表达式:</label>
+			    <label for="redisdata-keys">表达式(pixel:config*,pixel:bigconfig*):</label>
 			    <input name="keys" id="redisdata-keys" value="*" type="text">
 			</div>
 			<div class="ui-grid-a ui-responsive">
