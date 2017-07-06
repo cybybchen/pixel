@@ -7,7 +7,7 @@
 		 VALUES(#{userId}, #{userId2})
 	</insert>
 
-	<select id="getRecommands" resultType="long">
+	<select id="getRecommands" parameterType="long" resultType="int">
 	    SELECT count(*) from user_recommand where user_id=#{userId}
 	</select>
 	
