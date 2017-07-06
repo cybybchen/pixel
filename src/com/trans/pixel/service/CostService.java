@@ -198,6 +198,8 @@ public class CostService {
 		return cost(user, itemId, count, false);
 	}
 	public boolean cost(UserBean user, int itemId, long count, boolean replace) {
+		if(count == 0)
+			return true;
 		long userId = user.getId();
 		if (itemId > RewardConst.FOOD) {
 			UserFoodBean userFood = userFoodService.selectUserFood(user, itemId);
