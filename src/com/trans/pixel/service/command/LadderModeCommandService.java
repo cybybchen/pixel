@@ -240,9 +240,11 @@ public class LadderModeCommandService extends BaseCommandService {
 			if (newUserLadder != null) {
 				UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, newUserLadder);
 				if (pokede != null) {
-					ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
-					builder.addUserEquipPokede(pokede.build());
-					responseBuilder.setEquipPokedeCommand(builder.build());
+					if (pokede.getOrder() > 1) {
+						ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
+						builder.addUserEquipPokede(pokede.build());
+						responseBuilder.setEquipPokedeCommand(builder.build());
+					}
 					pushCommandService.pushUserDataByRewardId(responseBuilder, user, pokede.getItemId(), true);
 				}
 				

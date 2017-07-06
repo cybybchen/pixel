@@ -243,7 +243,7 @@ public class ServerTitleService {
 	private void handlerRaidRank(int serverId, Map<String, Title> map) {
 		ResponseRaidCommand.Builder raidList = raidRedisService.getRaidList();
 		for (Raid raid : raidList.getRaidList()) {
-			if (raid.getId() < 100)
+			if (raid.getId() < 50)
 				continue;
 			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 			if (ranks.isEmpty())
