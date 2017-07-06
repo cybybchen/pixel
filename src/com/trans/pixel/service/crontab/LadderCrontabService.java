@@ -12,6 +12,7 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class LadderCrontabService {
@@ -29,6 +30,8 @@ public class LadderCrontabService {
 //	@Transactional(rollbackFor=Exception.class)
 //	@Scheduled(cron = "0 55 10 * * ? ")
 	public void sendLadderDailyReward() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		try {
 			List<Integer> serverIds = serverService.getServerIdList();
 			for (final int serverId : serverIds) {

@@ -14,6 +14,7 @@ import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ServerTitleService;
+import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -32,6 +33,8 @@ public class ActivityCrontabService {
 	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
 	public void sendActivityReward() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		try {
 			List<Integer> serverList = serverService.getServerIdList();
 			for (int serverId : serverList) {
@@ -46,6 +49,8 @@ public class ActivityCrontabService {
 	
 	@Scheduled(cron = "0 0 0 * * ? ")
 	public void handlerRechargeRank() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		if (DateUtil.getDayOfMonth() == 1) {
 			serverTitleService.handlerRechargeRank();
 			serverTitleService.handlerUnionRank();

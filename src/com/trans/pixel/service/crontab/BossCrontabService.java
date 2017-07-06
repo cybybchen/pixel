@@ -12,6 +12,7 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class BossCrontabService {
@@ -27,6 +28,8 @@ public class BossCrontabService {
 //	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
 	public void sendActivityReward() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		try {
 			List<Integer> serverList = serverService.getServerIdList();
 			for (int serverId : serverList) {

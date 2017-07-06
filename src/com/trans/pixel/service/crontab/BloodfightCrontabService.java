@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.service.BloodfightService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class BloodfightCrontabService {
@@ -19,6 +20,8 @@ public class BloodfightCrontabService {
 	
 //	@Scheduled(cron = "0 0 0 * * ? ")
 	public void handle() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		List<Integer> serverList = serverService.getServerIdList();
 		for (int serverId : serverList) {
 			bloodfightService.handle(serverId);

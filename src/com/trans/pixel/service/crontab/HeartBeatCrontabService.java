@@ -17,6 +17,7 @@ import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.service.HeartBeatService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class HeartBeatCrontabService {
@@ -33,6 +34,8 @@ public class HeartBeatCrontabService {
 	@Scheduled(cron = "0 0/10 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void handleHeartBeatReward() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
 		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 		String time = df.format(new Date());
 		
