@@ -60,6 +60,8 @@ public class TaskCommandService extends BaseCommandService {
 	}
 
 	public void userTask(RequestUserTaskCommand cmd, Builder responseBuilder, UserBean user) {
+		taskService.isDeleteMainTaskNotice(user);
+		taskService.isDeleteDailyTaskNotice(user);
 		ResponseUserTaskCommand.Builder builder = ResponseUserTaskCommand.newBuilder();
 		builder.addAllUserTask1(userTaskService.selectUserTaskList(user.getId()));
 		builder.addAllUserTask2(userTaskService.selectUserTask2List(user.getId()));
