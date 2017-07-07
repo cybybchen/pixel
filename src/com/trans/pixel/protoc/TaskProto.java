@@ -9067,6 +9067,36 @@ public final class TaskProto {
      * </pre>
      */
     int getMaxlevel();
+
+    // optional string starttime = 10;
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    boolean hasStarttime();
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    java.lang.String getStarttime();
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    com.google.protobuf.ByteString
+        getStarttimeBytes();
+
+    // optional string endtime = 11;
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    boolean hasEndtime();
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    java.lang.String getEndtime();
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getEndtimeBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Raid}
@@ -9184,6 +9214,16 @@ public final class TaskProto {
             case 72: {
               bitField0_ |= 0x00000020;
               maxlevel_ = input.readInt32();
+              break;
+            }
+            case 82: {
+              bitField0_ |= 0x00000040;
+              starttime_ = input.readBytes();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000080;
+              endtime_ = input.readBytes();
               break;
             }
           }
@@ -9448,6 +9488,92 @@ public final class TaskProto {
       return maxlevel_;
     }
 
+    // optional string starttime = 10;
+    public static final int STARTTIME_FIELD_NUMBER = 10;
+    private java.lang.Object starttime_;
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    public boolean hasStarttime() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    public java.lang.String getStarttime() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          starttime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string starttime = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStarttimeBytes() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        starttime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string endtime = 11;
+    public static final int ENDTIME_FIELD_NUMBER = 11;
+    private java.lang.Object endtime_;
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public boolean hasEndtime() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public java.lang.String getEndtime() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          endtime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string endtime = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEndtimeBytes() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        endtime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0;
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
@@ -9457,6 +9583,8 @@ public final class TaskProto {
       turn_ = java.util.Collections.emptyList();
       level_ = 0;
       maxlevel_ = 0;
+      starttime_ = "";
+      endtime_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9493,6 +9621,12 @@ public final class TaskProto {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(9, maxlevel_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(10, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(11, getEndtimeBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -9539,6 +9673,14 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, maxlevel_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getEndtimeBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9682,6 +9824,10 @@ public final class TaskProto {
         bitField0_ = (bitField0_ & ~0x00000040);
         maxlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        starttime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -9752,6 +9898,14 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000020;
         }
         result.maxlevel_ = maxlevel_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.endtime_ = endtime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9823,6 +9977,16 @@ public final class TaskProto {
         }
         if (other.hasMaxlevel()) {
           setMaxlevel(other.getMaxlevel());
+        }
+        if (other.hasStarttime()) {
+          bitField0_ |= 0x00000100;
+          starttime_ = other.starttime_;
+          onChanged();
+        }
+        if (other.hasEndtime()) {
+          bitField0_ |= 0x00000200;
+          endtime_ = other.endtime_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -10564,6 +10728,154 @@ public final class TaskProto {
       public Builder clearMaxlevel() {
         bitField0_ = (bitField0_ & ~0x00000080);
         maxlevel_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string starttime = 10;
+      private java.lang.Object starttime_ = "";
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public boolean hasStarttime() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public java.lang.String getStarttime() {
+        java.lang.Object ref = starttime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          starttime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStarttimeBytes() {
+        java.lang.Object ref = starttime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          starttime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public Builder setStarttime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public Builder clearStarttime() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        starttime_ = getDefaultInstance().getStarttime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 10;</code>
+       */
+      public Builder setStarttimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string endtime = 11;
+      private java.lang.Object endtime_ = "";
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public boolean hasEndtime() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public java.lang.String getEndtime() {
+        java.lang.Object ref = endtime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          endtime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEndtimeBytes() {
+        java.lang.Object ref = endtime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          endtime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder setEndtime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder clearEndtime() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        endtime_ = getDefaultInstance().getEndtime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 11;</code>
+       */
+      public Builder setEndtimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        endtime_ = value;
         onChanged();
         return this;
       }
@@ -13470,19 +13782,20 @@ public final class TaskProto {
       "ixel.protoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132" +
       " .com.trans.pixel.protoc.UserTask\"J\n\033Req" +
       "uestGetTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r" +
-      "\n\005order\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\300\001\n\004Raid\022\n" +
+      "\n\005order\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\344\001\n\004Raid\022\n" +
       "\n\002id\030\001 \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pix" +
       "el.protoc.RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005ev" +
       "ent\030\005 \003(\0132\035.com.trans.pixel.protoc.Event",
       "\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level" +
-      "\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\"6\n\010RaidList\022*\n\004" +
-      "data\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid" +
-      "\"3\n\026RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r" +
-      "\n\005level\030\002 \001(\005\"v\n\027RequestStartRaidCommand" +
-      "\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightI" +
-      "nfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007" +
-      "eventid\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004" +
-      "raid\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid"
+      "\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\022\021\n\tstarttime\030\n " +
+      "\001(\t\022\017\n\007endtime\030\013 \001(\t\"6\n\010RaidList\022*\n\004data" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"3\n\026" +
+      "RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005le" +
+      "vel\030\002 \001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002" +
+      "id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030" +
+      "\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007even" +
+      "tid\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13560,7 +13873,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_Raid_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Raid_descriptor,
-              new java.lang.String[] { "Id", "Cost", "Name", "Event", "Eventid", "Turn", "Level", "Maxlevel", });
+              new java.lang.String[] { "Id", "Cost", "Name", "Event", "Eventid", "Turn", "Level", "Maxlevel", "Starttime", "Endtime", });
           internal_static_com_trans_pixel_protoc_RaidList_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable = new

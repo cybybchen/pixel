@@ -172,7 +172,7 @@ public class UserRewardTaskService {
 				user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%1000);
 				builder.setIndex(user.getRewardTaskIndex());
 				userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
-				if((builder.getTask().getId() != 7 || user.getVip() >= 14) && (builder.getTask().getId() != 6 || user.getVip() >= 7))
+				if((builder.getTask().getId() != 6 || user.getVip() >= 14) && (builder.getTask().getId() != 7 || user.getVip() >= 7))
 					map.put(builder.getIndex(), builder.build());
 			}
 			userService.updateUser(user);
@@ -181,9 +181,9 @@ public class UserRewardTaskService {
 		while (it.hasNext()) {
 			int index = it.next().getKey();
 			UserRewardTask ut = map.get(index);
-			if(ut.getTask().getId() == 7 && user.getVip() < 14){
+			if(ut.getTask().getId() == 6 && user.getVip() < 14){
 				it.remove();
-			}else if(ut.getTask().getId() == 6 && user.getVip() < 7){
+			}else if(ut.getTask().getId() == 7 && user.getVip() < 7){
 				it.remove();
 			}
 		}

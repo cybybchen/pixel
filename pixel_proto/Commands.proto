@@ -3453,6 +3453,8 @@ message Raid {
 	repeated int32 turn = 7;
 	optional int32 level = 8;
 	optional int32 maxlevel = 9;//可选的最大层数
+	optional string starttime = 10;
+	optional string endtime = 11;
 }
 message RaidList {
         repeated Raid data = 1;
