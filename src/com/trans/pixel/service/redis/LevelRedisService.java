@@ -1033,6 +1033,9 @@ public class LevelRedisService extends RedisService {
 			Map<String, HeroChoice> map = heroRedisService.getHerochoiceConfig();
 			for (HeroChoice choice : map.values()) {
 				if (choice.getId() != user.getFirstGetHeroId()) {
+					UserTalent.Builder oldTalent = userTalentService.getUserTalent(user, choice.getId());
+					if (oldTalent != null)
+						continue;
 					UserTalent userTalent = userTalentService.initTalent(user, choice.getId());
 					if (userTalent != null)
 						userTalentList.add(userTalent);
