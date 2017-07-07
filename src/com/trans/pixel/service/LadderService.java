@@ -419,7 +419,7 @@ public class LadderService {
 				int itemid = reward.getItemid();
 				if(itemid/1000*1000 == RewardConst.SYNTHETISE) {
 					Synthetise synthetise = propRedisService.getSynthetise(itemid);
-					itemid = synthetise.getTarget();
+					itemid = synthetise.getTargetid();
 				}
 				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
