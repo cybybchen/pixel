@@ -37,7 +37,7 @@ public class RaidRedisService extends RedisService{
 //		for(Raid.Builder raid : builder.getRaidBuilderList()) {
 		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
 			Raid.Builder raid = builder.getRaidBuilder(i);
-			if(raid.hasEndtime() && DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
+			if(!"".equals(raid.getEndtime()) && DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
 				builder.removeRaid(i);
 				continue;
 			}
