@@ -16,6 +16,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RaidList;
 import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class RaidRedisService extends RedisService{
@@ -33,7 +34,13 @@ public class RaidRedisService extends RedisService{
 			}
 			hputAll(RedisKey.USERRAID_PREFIX+user.getId(), keyvalue);
 		}
-		for(Raid.Builder raid : builder.getRaidBuilderList()) {
+//		for(Raid.Builder raid : builder.getRaidBuilderList()) {
+		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
+			Raid.Builder raid = builder.getRaidBuilder(i);
+			if(raid.hasEndtime() && DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
+				builder.removeRaid(i);
+				continue;
+			}
 			String value = keyvalue.get(raid.getId()+"");
 			Raid.Builder myraid = Raid.newBuilder();
 			if(value != null && parseJson(value, myraid)) {
