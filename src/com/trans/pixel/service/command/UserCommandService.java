@@ -354,7 +354,7 @@ public class UserCommandService extends BaseCommandService {
 		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
 		if (user.getRecommandUserId() != 0) {
-			builder.setUser(other.build());
+			builder.setUser(other.buildShort());
 		}
 		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
