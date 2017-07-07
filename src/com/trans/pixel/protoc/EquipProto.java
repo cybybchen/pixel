@@ -12658,29 +12658,29 @@ public final class EquipProto {
   public interface SynthetiseListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .com.trans.pixel.protoc.Synthetise id = 1;
+    // repeated .com.trans.pixel.protoc.Synthetise data = 1;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
     java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> 
-        getIdList();
+        getDataList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    com.trans.pixel.protoc.EquipProto.Synthetise getId(int index);
+    com.trans.pixel.protoc.EquipProto.Synthetise getData(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    int getIdCount();
+    int getDataCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
     java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> 
-        getIdOrBuilderList();
+        getDataOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getIdOrBuilder(
+    com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -12736,10 +12736,10 @@ public final class EquipProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                id_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Synthetise>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Synthetise>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              id_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.Synthetise.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.Synthetise.PARSER, extensionRegistry));
               break;
             }
           }
@@ -12751,7 +12751,7 @@ public final class EquipProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = java.util.Collections.unmodifiableList(id_);
+          data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -12784,52 +12784,52 @@ public final class EquipProto {
       return PARSER;
     }
 
-    // repeated .com.trans.pixel.protoc.Synthetise id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> id_;
+    // repeated .com.trans.pixel.protoc.Synthetise data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> data_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> getIdList() {
-      return id_;
+    public java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> getDataList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
     public java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> 
-        getIdOrBuilderList() {
-      return id_;
+        getDataOrBuilderList() {
+      return data_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    public int getIdCount() {
-      return id_.size();
+    public int getDataCount() {
+      return data_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.Synthetise getId(int index) {
-      return id_.get(index);
+    public com.trans.pixel.protoc.EquipProto.Synthetise getData(int index) {
+      return data_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+     * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getIdOrBuilder(
+    public com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getDataOrBuilder(
         int index) {
-      return id_.get(index);
+      return data_.get(index);
     }
 
     private void initFields() {
-      id_ = java.util.Collections.emptyList();
+      data_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getIdCount(); i++) {
-        if (!getId(i).isInitialized()) {
+      for (int i = 0; i < getDataCount(); i++) {
+        if (!getData(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -12841,8 +12841,8 @@ public final class EquipProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < id_.size(); i++) {
-        output.writeMessage(1, id_.get(i));
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -12853,9 +12853,9 @@ public final class EquipProto {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < id_.size(); i++) {
+      for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, id_.get(i));
+          .computeMessageSize(1, data_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12965,7 +12965,7 @@ public final class EquipProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getIdFieldBuilder();
+          getDataFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12974,11 +12974,11 @@ public final class EquipProto {
 
       public Builder clear() {
         super.clear();
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
@@ -13007,14 +13007,14 @@ public final class EquipProto {
       public com.trans.pixel.protoc.EquipProto.SynthetiseList buildPartial() {
         com.trans.pixel.protoc.EquipProto.SynthetiseList result = new com.trans.pixel.protoc.EquipProto.SynthetiseList(this);
         int from_bitField0_ = bitField0_;
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            id_ = java.util.Collections.unmodifiableList(id_);
+            data_ = java.util.Collections.unmodifiableList(data_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.id_ = id_;
+          result.data_ = data_;
         } else {
-          result.id_ = idBuilder_.build();
+          result.data_ = dataBuilder_.build();
         }
         onBuilt();
         return result;
@@ -13031,29 +13031,29 @@ public final class EquipProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.EquipProto.SynthetiseList other) {
         if (other == com.trans.pixel.protoc.EquipProto.SynthetiseList.getDefaultInstance()) return this;
-        if (idBuilder_ == null) {
-          if (!other.id_.isEmpty()) {
-            if (id_.isEmpty()) {
-              id_ = other.id_;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureIdIsMutable();
-              id_.addAll(other.id_);
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
             }
             onChanged();
           }
         } else {
-          if (!other.id_.isEmpty()) {
-            if (idBuilder_.isEmpty()) {
-              idBuilder_.dispose();
-              idBuilder_ = null;
-              id_ = other.id_;
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              idBuilder_ = 
+              dataBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getIdFieldBuilder() : null;
+                   getDataFieldBuilder() : null;
             } else {
-              idBuilder_.addAllMessages(other.id_);
+              dataBuilder_.addAllMessages(other.data_);
             }
           }
         }
@@ -13062,8 +13062,8 @@ public final class EquipProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getIdCount(); i++) {
-          if (!getId(i).isInitialized()) {
+        for (int i = 0; i < getDataCount(); i++) {
+          if (!getData(i).isInitialized()) {
             
             return false;
           }
@@ -13090,244 +13090,244 @@ public final class EquipProto {
       }
       private int bitField0_;
 
-      // repeated .com.trans.pixel.protoc.Synthetise id = 1;
-      private java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> id_ =
+      // repeated .com.trans.pixel.protoc.Synthetise data = 1;
+      private java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> data_ =
         java.util.Collections.emptyList();
-      private void ensureIdIsMutable() {
+      private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          id_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Synthetise>(id_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.Synthetise>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.Synthetise, com.trans.pixel.protoc.EquipProto.Synthetise.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> idBuilder_;
+          com.trans.pixel.protoc.EquipProto.Synthetise, com.trans.pixel.protoc.EquipProto.Synthetise.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> getIdList() {
-        if (idBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(id_);
+      public java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
         } else {
-          return idBuilder_.getMessageList();
+          return dataBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public int getIdCount() {
-        if (idBuilder_ == null) {
-          return id_.size();
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
         } else {
-          return idBuilder_.getCount();
+          return dataBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Synthetise getId(int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);
+      public com.trans.pixel.protoc.EquipProto.Synthetise getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
         } else {
-          return idBuilder_.getMessage(index);
+          return dataBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.EquipProto.Synthetise value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.set(index, value);
+          ensureDataIsMutable();
+          data_.set(index, value);
           onChanged();
         } else {
-          idBuilder_.setMessage(index, value);
+          dataBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder setId(
+      public Builder setData(
           int index, com.trans.pixel.protoc.EquipProto.Synthetise.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.set(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.setMessage(index, builderForValue.build());
+          dataBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder addId(com.trans.pixel.protoc.EquipProto.Synthetise value) {
-        if (idBuilder_ == null) {
+      public Builder addData(com.trans.pixel.protoc.EquipProto.Synthetise value) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(value);
+          ensureDataIsMutable();
+          data_.add(value);
           onChanged();
         } else {
-          idBuilder_.addMessage(value);
+          dataBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.EquipProto.Synthetise value) {
-        if (idBuilder_ == null) {
+        if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureIdIsMutable();
-          id_.add(index, value);
+          ensureDataIsMutable();
+          data_.add(index, value);
           onChanged();
         } else {
-          idBuilder_.addMessage(index, value);
+          dataBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           com.trans.pixel.protoc.EquipProto.Synthetise.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(builderForValue.build());
+          dataBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder addId(
+      public Builder addData(
           int index, com.trans.pixel.protoc.EquipProto.Synthetise.Builder builderForValue) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.add(index, builderForValue.build());
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
           onChanged();
         } else {
-          idBuilder_.addMessage(index, builderForValue.build());
+          dataBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder addAllId(
+      public Builder addAllData(
           java.lang.Iterable<? extends com.trans.pixel.protoc.EquipProto.Synthetise> values) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          super.addAll(values, id_);
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
           onChanged();
         } else {
-          idBuilder_.addAllMessages(values);
+          dataBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder clearId() {
-        if (idBuilder_ == null) {
-          id_ = java.util.Collections.emptyList();
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          idBuilder_.clear();
+          dataBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public Builder removeId(int index) {
-        if (idBuilder_ == null) {
-          ensureIdIsMutable();
-          id_.remove(index);
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
           onChanged();
         } else {
-          idBuilder_.remove(index);
+          dataBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder getIdBuilder(
+      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder getDataBuilder(
           int index) {
-        return getIdFieldBuilder().getBuilder(index);
+        return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getIdOrBuilder(
+      public com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder getDataOrBuilder(
           int index) {
-        if (idBuilder_ == null) {
-          return id_.get(index);  } else {
-          return idBuilder_.getMessageOrBuilder(index);
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
       public java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> 
-           getIdOrBuilderList() {
-        if (idBuilder_ != null) {
-          return idBuilder_.getMessageOrBuilderList();
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(id_);
+          return java.util.Collections.unmodifiableList(data_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder addIdBuilder() {
-        return getIdFieldBuilder().addBuilder(
+      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
             com.trans.pixel.protoc.EquipProto.Synthetise.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder addIdBuilder(
+      public com.trans.pixel.protoc.EquipProto.Synthetise.Builder addDataBuilder(
           int index) {
-        return getIdFieldBuilder().addBuilder(
+        return getDataFieldBuilder().addBuilder(
             index, com.trans.pixel.protoc.EquipProto.Synthetise.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Synthetise id = 1;</code>
+       * <code>repeated .com.trans.pixel.protoc.Synthetise data = 1;</code>
        */
       public java.util.List<com.trans.pixel.protoc.EquipProto.Synthetise.Builder> 
-           getIdBuilderList() {
-        return getIdFieldBuilder().getBuilderList();
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
           com.trans.pixel.protoc.EquipProto.Synthetise, com.trans.pixel.protoc.EquipProto.Synthetise.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder> 
-          getIdFieldBuilder() {
-        if (idBuilder_ == null) {
-          idBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.EquipProto.Synthetise, com.trans.pixel.protoc.EquipProto.Synthetise.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseOrBuilder>(
-                  id_,
+                  data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          id_ = null;
+          data_ = null;
         }
-        return idBuilder_;
+        return dataBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SynthetiseList)
@@ -13354,49 +13354,39 @@ public final class EquipProto {
      */
     int getId();
 
-    // required uint32 target = 6;
+    // required uint32 targetid = 6;
     /**
-     * <code>required uint32 target = 6;</code>
+     * <code>required uint32 targetid = 6;</code>
      */
-    boolean hasTarget();
+    boolean hasTargetid();
     /**
-     * <code>required uint32 target = 6;</code>
+     * <code>required uint32 targetid = 6;</code>
      */
-    int getTarget();
+    int getTargetid();
 
-    // required uint32 needid = 7;
+    // repeated .com.trans.pixel.protoc.RewardInfo cover = 8;
     /**
-     * <code>required uint32 needid = 7;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    boolean hasNeedid();
-    /**
-     * <code>required uint32 needid = 7;</code>
-     */
-    int getNeedid();
-
-    // repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover> 
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
         getCoverList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    com.trans.pixel.protoc.EquipProto.SynthetiseCover getCover(int index);
+    com.trans.pixel.protoc.Base.RewardInfo getCover(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
     int getCoverCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
         getCoverOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder getCoverOrBuilder(
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCoverOrBuilder(
         int index);
   }
   /**
@@ -13457,20 +13447,15 @@ public final class EquipProto {
             }
             case 48: {
               bitField0_ |= 0x00000002;
-              target_ = input.readUInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000004;
-              needid_ = input.readUInt32();
+              targetid_ = input.readUInt32();
               break;
             }
             case 66: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                cover_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.SynthetiseCover>();
-                mutable_bitField0_ |= 0x00000008;
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+                cover_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000004;
               }
-              cover_.add(input.readMessage(com.trans.pixel.protoc.EquipProto.SynthetiseCover.PARSER, extensionRegistry));
+              cover_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
           }
@@ -13481,7 +13466,7 @@ public final class EquipProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           cover_ = java.util.Collections.unmodifiableList(cover_);
         }
         this.unknownFields = unknownFields.build();
@@ -13532,78 +13517,61 @@ public final class EquipProto {
       return id_;
     }
 
-    // required uint32 target = 6;
-    public static final int TARGET_FIELD_NUMBER = 6;
-    private int target_;
+    // required uint32 targetid = 6;
+    public static final int TARGETID_FIELD_NUMBER = 6;
+    private int targetid_;
     /**
-     * <code>required uint32 target = 6;</code>
+     * <code>required uint32 targetid = 6;</code>
      */
-    public boolean hasTarget() {
+    public boolean hasTargetid() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 target = 6;</code>
+     * <code>required uint32 targetid = 6;</code>
      */
-    public int getTarget() {
-      return target_;
+    public int getTargetid() {
+      return targetid_;
     }
 
-    // required uint32 needid = 7;
-    public static final int NEEDID_FIELD_NUMBER = 7;
-    private int needid_;
-    /**
-     * <code>required uint32 needid = 7;</code>
-     */
-    public boolean hasNeedid() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required uint32 needid = 7;</code>
-     */
-    public int getNeedid() {
-      return needid_;
-    }
-
-    // repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;
+    // repeated .com.trans.pixel.protoc.RewardInfo cover = 8;
     public static final int COVER_FIELD_NUMBER = 8;
-    private java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover> cover_;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> cover_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover> getCoverList() {
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getCoverList() {
       return cover_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
         getCoverOrBuilderList() {
       return cover_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
     public int getCoverCount() {
       return cover_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.SynthetiseCover getCover(int index) {
+    public com.trans.pixel.protoc.Base.RewardInfo getCover(int index) {
       return cover_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
      */
-    public com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder getCoverOrBuilder(
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCoverOrBuilder(
         int index) {
       return cover_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      target_ = 0;
-      needid_ = 0;
+      targetid_ = 0;
       cover_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -13615,19 +13583,9 @@ public final class EquipProto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasTarget()) {
+      if (!hasTargetid()) {
         memoizedIsInitialized = 0;
         return false;
-      }
-      if (!hasNeedid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      for (int i = 0; i < getCoverCount(); i++) {
-        if (!getCover(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -13640,10 +13598,7 @@ public final class EquipProto {
         output.writeUInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(6, target_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(7, needid_);
+        output.writeUInt32(6, targetid_);
       }
       for (int i = 0; i < cover_.size(); i++) {
         output.writeMessage(8, cover_.get(i));
@@ -13663,11 +13618,7 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(6, target_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(7, needid_);
+          .computeUInt32Size(6, targetid_);
       }
       for (int i = 0; i < cover_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -13792,13 +13743,11 @@ public final class EquipProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        target_ = 0;
+        targetid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        needid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (coverBuilder_ == null) {
           cover_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           coverBuilder_.clear();
         }
@@ -13837,15 +13786,11 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.target_ = target_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.needid_ = needid_;
+        result.targetid_ = targetid_;
         if (coverBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             cover_ = java.util.Collections.unmodifiableList(cover_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.cover_ = cover_;
         } else {
@@ -13870,17 +13815,14 @@ public final class EquipProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasTarget()) {
-          setTarget(other.getTarget());
-        }
-        if (other.hasNeedid()) {
-          setNeedid(other.getNeedid());
+        if (other.hasTargetid()) {
+          setTargetid(other.getTargetid());
         }
         if (coverBuilder_ == null) {
           if (!other.cover_.isEmpty()) {
             if (cover_.isEmpty()) {
               cover_ = other.cover_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureCoverIsMutable();
               cover_.addAll(other.cover_);
@@ -13893,7 +13835,7 @@ public final class EquipProto {
               coverBuilder_.dispose();
               coverBuilder_ = null;
               cover_ = other.cover_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
               coverBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getCoverFieldBuilder() : null;
@@ -13911,19 +13853,9 @@ public final class EquipProto {
           
           return false;
         }
-        if (!hasTarget()) {
+        if (!hasTargetid()) {
           
           return false;
-        }
-        if (!hasNeedid()) {
-          
-          return false;
-        }
-        for (int i = 0; i < getCoverCount(); i++) {
-          if (!getCover(i).isInitialized()) {
-            
-            return false;
-          }
         }
         return true;
       }
@@ -13980,89 +13912,56 @@ public final class EquipProto {
         return this;
       }
 
-      // required uint32 target = 6;
-      private int target_ ;
+      // required uint32 targetid = 6;
+      private int targetid_ ;
       /**
-       * <code>required uint32 target = 6;</code>
+       * <code>required uint32 targetid = 6;</code>
        */
-      public boolean hasTarget() {
+      public boolean hasTargetid() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required uint32 target = 6;</code>
+       * <code>required uint32 targetid = 6;</code>
        */
-      public int getTarget() {
-        return target_;
+      public int getTargetid() {
+        return targetid_;
       }
       /**
-       * <code>required uint32 target = 6;</code>
+       * <code>required uint32 targetid = 6;</code>
        */
-      public Builder setTarget(int value) {
+      public Builder setTargetid(int value) {
         bitField0_ |= 0x00000002;
-        target_ = value;
+        targetid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 target = 6;</code>
+       * <code>required uint32 targetid = 6;</code>
        */
-      public Builder clearTarget() {
+      public Builder clearTargetid() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        target_ = 0;
+        targetid_ = 0;
         onChanged();
         return this;
       }
 
-      // required uint32 needid = 7;
-      private int needid_ ;
-      /**
-       * <code>required uint32 needid = 7;</code>
-       */
-      public boolean hasNeedid() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required uint32 needid = 7;</code>
-       */
-      public int getNeedid() {
-        return needid_;
-      }
-      /**
-       * <code>required uint32 needid = 7;</code>
-       */
-      public Builder setNeedid(int value) {
-        bitField0_ |= 0x00000004;
-        needid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 needid = 7;</code>
-       */
-      public Builder clearNeedid() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        needid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;
-      private java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover> cover_ =
+      // repeated .com.trans.pixel.protoc.RewardInfo cover = 8;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> cover_ =
         java.util.Collections.emptyList();
       private void ensureCoverIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          cover_ = new java.util.ArrayList<com.trans.pixel.protoc.EquipProto.SynthetiseCover>(cover_);
-          bitField0_ |= 0x00000008;
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          cover_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(cover_);
+          bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.SynthetiseCover, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder> coverBuilder_;
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> coverBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover> getCoverList() {
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getCoverList() {
         if (coverBuilder_ == null) {
           return java.util.Collections.unmodifiableList(cover_);
         } else {
@@ -14070,7 +13969,7 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public int getCoverCount() {
         if (coverBuilder_ == null) {
@@ -14080,9 +13979,9 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover getCover(int index) {
+      public com.trans.pixel.protoc.Base.RewardInfo getCover(int index) {
         if (coverBuilder_ == null) {
           return cover_.get(index);
         } else {
@@ -14090,10 +13989,10 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder setCover(
-          int index, com.trans.pixel.protoc.EquipProto.SynthetiseCover value) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
         if (coverBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14107,10 +14006,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder setCover(
-          int index, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (coverBuilder_ == null) {
           ensureCoverIsMutable();
           cover_.set(index, builderForValue.build());
@@ -14121,9 +14020,9 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public Builder addCover(com.trans.pixel.protoc.EquipProto.SynthetiseCover value) {
+      public Builder addCover(com.trans.pixel.protoc.Base.RewardInfo value) {
         if (coverBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14137,10 +14036,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder addCover(
-          int index, com.trans.pixel.protoc.EquipProto.SynthetiseCover value) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
         if (coverBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -14154,10 +14053,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder addCover(
-          com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (coverBuilder_ == null) {
           ensureCoverIsMutable();
           cover_.add(builderForValue.build());
@@ -14168,10 +14067,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder addCover(
-          int index, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
         if (coverBuilder_ == null) {
           ensureCoverIsMutable();
           cover_.add(index, builderForValue.build());
@@ -14182,10 +14081,10 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder addAllCover(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.EquipProto.SynthetiseCover> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
         if (coverBuilder_ == null) {
           ensureCoverIsMutable();
           super.addAll(values, cover_);
@@ -14196,12 +14095,12 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder clearCover() {
         if (coverBuilder_ == null) {
           cover_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           coverBuilder_.clear();
@@ -14209,7 +14108,7 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
       public Builder removeCover(int index) {
         if (coverBuilder_ == null) {
@@ -14222,16 +14121,16 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder getCoverBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getCoverBuilder(
           int index) {
         return getCoverFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder getCoverOrBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCoverOrBuilder(
           int index) {
         if (coverBuilder_ == null) {
           return cover_.get(index);  } else {
@@ -14239,9 +14138,9 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
            getCoverOrBuilderList() {
         if (coverBuilder_ != null) {
           return coverBuilder_.getMessageOrBuilderList();
@@ -14250,35 +14149,35 @@ public final class EquipProto {
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder addCoverBuilder() {
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addCoverBuilder() {
         return getCoverFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.EquipProto.SynthetiseCover.getDefaultInstance());
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder addCoverBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addCoverBuilder(
           int index) {
         return getCoverFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.EquipProto.SynthetiseCover.getDefaultInstance());
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.SynthetiseCover cover = 8;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo cover = 8;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder> 
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
            getCoverBuilderList() {
         return getCoverFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.EquipProto.SynthetiseCover, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder> 
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
           getCoverFieldBuilder() {
         if (coverBuilder_ == null) {
           coverBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.EquipProto.SynthetiseCover, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder, com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder>(
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   cover_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           cover_ = null;
@@ -14295,499 +14194,6 @@ public final class EquipProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Synthetise)
-  }
-
-  public interface SynthetiseCoverOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required uint32 cover = 1;
-    /**
-     * <code>required uint32 cover = 1;</code>
-     */
-    boolean hasCover();
-    /**
-     * <code>required uint32 cover = 1;</code>
-     */
-    int getCover();
-
-    // required uint32 count = 2;
-    /**
-     * <code>required uint32 count = 2;</code>
-     */
-    boolean hasCount();
-    /**
-     * <code>required uint32 count = 2;</code>
-     */
-    int getCount();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.SynthetiseCover}
-   */
-  public static final class SynthetiseCover extends
-      com.google.protobuf.GeneratedMessage
-      implements SynthetiseCoverOrBuilder {
-    // Use SynthetiseCover.newBuilder() to construct.
-    private SynthetiseCover(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private SynthetiseCover(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final SynthetiseCover defaultInstance;
-    public static SynthetiseCover getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public SynthetiseCover getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private SynthetiseCover(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              cover_ = input.readUInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              count_ = input.readUInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_SynthetiseCover_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.EquipProto.SynthetiseCover.class, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<SynthetiseCover> PARSER =
-        new com.google.protobuf.AbstractParser<SynthetiseCover>() {
-      public SynthetiseCover parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SynthetiseCover(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<SynthetiseCover> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required uint32 cover = 1;
-    public static final int COVER_FIELD_NUMBER = 1;
-    private int cover_;
-    /**
-     * <code>required uint32 cover = 1;</code>
-     */
-    public boolean hasCover() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required uint32 cover = 1;</code>
-     */
-    public int getCover() {
-      return cover_;
-    }
-
-    // required uint32 count = 2;
-    public static final int COUNT_FIELD_NUMBER = 2;
-    private int count_;
-    /**
-     * <code>required uint32 count = 2;</code>
-     */
-    public boolean hasCount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required uint32 count = 2;</code>
-     */
-    public int getCount() {
-      return count_;
-    }
-
-    private void initFields() {
-      cover_ = 0;
-      count_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasCover()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasCount()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, cover_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, count_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, cover_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, count_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.EquipProto.SynthetiseCover parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.EquipProto.SynthetiseCover prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.SynthetiseCover}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.EquipProto.SynthetiseCoverOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_SynthetiseCover_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.EquipProto.SynthetiseCover.class, com.trans.pixel.protoc.EquipProto.SynthetiseCover.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.EquipProto.SynthetiseCover.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        cover_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        count_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.EquipProto.internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor;
-      }
-
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.EquipProto.SynthetiseCover.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover build() {
-        com.trans.pixel.protoc.EquipProto.SynthetiseCover result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.EquipProto.SynthetiseCover buildPartial() {
-        com.trans.pixel.protoc.EquipProto.SynthetiseCover result = new com.trans.pixel.protoc.EquipProto.SynthetiseCover(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.cover_ = cover_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.count_ = count_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.EquipProto.SynthetiseCover) {
-          return mergeFrom((com.trans.pixel.protoc.EquipProto.SynthetiseCover)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.EquipProto.SynthetiseCover other) {
-        if (other == com.trans.pixel.protoc.EquipProto.SynthetiseCover.getDefaultInstance()) return this;
-        if (other.hasCover()) {
-          setCover(other.getCover());
-        }
-        if (other.hasCount()) {
-          setCount(other.getCount());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasCover()) {
-          
-          return false;
-        }
-        if (!hasCount()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.EquipProto.SynthetiseCover parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.EquipProto.SynthetiseCover) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required uint32 cover = 1;
-      private int cover_ ;
-      /**
-       * <code>required uint32 cover = 1;</code>
-       */
-      public boolean hasCover() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required uint32 cover = 1;</code>
-       */
-      public int getCover() {
-        return cover_;
-      }
-      /**
-       * <code>required uint32 cover = 1;</code>
-       */
-      public Builder setCover(int value) {
-        bitField0_ |= 0x00000001;
-        cover_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 cover = 1;</code>
-       */
-      public Builder clearCover() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        cover_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // required uint32 count = 2;
-      private int count_ ;
-      /**
-       * <code>required uint32 count = 2;</code>
-       */
-      public boolean hasCount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required uint32 count = 2;</code>
-       */
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>required uint32 count = 2;</code>
-       */
-      public Builder setCount(int value) {
-        bitField0_ |= 0x00000002;
-        count_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 count = 2;</code>
-       */
-      public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.SynthetiseCover)
-    }
-
-    static {
-      defaultInstance = new SynthetiseCover(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.SynthetiseCover)
   }
 
   public interface RequestUseMaterialCommandOrBuilder
@@ -32048,11 +31454,6 @@ public final class EquipProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_Synthetise_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_SynthetiseCover_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestUseMaterialCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -32236,63 +31637,61 @@ public final class EquipProto {
       "uipup\"C\n\016EquiptucaoList\0221\n\005equip\030\001 \003(\0132\"" +
       ".com.trans.pixel.protoc.Equiptucao\"<\n\nEq" +
       "uiptucao\022\016\n\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001" +
-      "(\t\022\014\n\004rare\030\003 \001(\005\"@\n\016SynthetiseList\022.\n\002id" +
-      "\030\001 \003(\0132\".com.trans.pixel.protoc.Syntheti" +
-      "se\"p\n\nSynthetise\022\n\n\002id\030\001 \002(\r\022\016\n\006target\030\006" +
-      " \002(\r\022\016\n\006needid\030\007 \002(\r\0226\n\005cover\030\010 \003(\0132\'.co" +
-      "m.trans.pixel.protoc.SynthetiseCover\"/\n\017",
-      "SynthetiseCover\022\r\n\005cover\030\001 \002(\r\022\r\n\005count\030" +
-      "\002 \002(\r\"M\n\031RequestUseMaterialCommand\0220\n\004co" +
-      "st\030\001 \003(\0132\".com.trans.pixel.protoc.Reward" +
-      "Info\"M\n\032RequestAddHeroEquipCommand\022\016\n\006he" +
-      "roId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\022\017\n\007equipId\030\003 " +
-      "\001(\005\">\n\032RequestEquipComposeCommand\022\021\n\tlev" +
-      "elUpId\030\001 \002(\005\022\r\n\005count\030\002 \001(\005\"=\n\033ResponseE" +
-      "quipComposeCommand\022\017\n\007equipId\030\001 \002(\005\022\r\n\005c" +
-      "ount\030\002 \002(\005\"S\n\033ResponseGetUserEquipComman" +
-      "d\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.pixel.p",
-      "rotoc.UserEquip\"8\n\tArmorList\022+\n\004data\030\001 \003" +
-      "(\0132\035.com.trans.pixel.protoc.Armor\"\221\001\n\005Ar" +
-      "mor\022\n\n\002id\030\001 \001(\005\022\016\n\006ilevel\030\002 \001(\r\022\r\n\005level" +
-      "\030\003 \001(\005\022\r\n\005irare\030\004 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006h" +
-      "eroid\030\007 \001(\r\0220\n\004list\030\016 \003(\0132\".com.trans.pi" +
-      "xel.protoc.EquipOrder\"H\n\021EquipIncreaseLi" +
-      "st\0223\n\004data\030\001 \003(\0132%.com.trans.pixel.proto" +
-      "c.EquipIncrease\"L\n\rEquipIncrease\022\r\n\005leve" +
-      "l\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n\004rate\030\003 \001(\005\022" +
-      "\014\n\004zero\030\004 \001(\005\"H\n\021IncreaseLevelList\0223\n\004da",
-      "ta\030\001 \003(\0132%.com.trans.pixel.protoc.Increa" +
-      "seLevel\"S\n\rIncreaseLevel\022\r\n\005level\030\001 \001(\005\022" +
-      "3\n\005rares\030\002 \003(\0132$.com.trans.pixel.protoc." +
-      "IncreaseRare\"N\n\014IncreaseRare\022\014\n\004rare\030\001 \001" +
-      "(\005\0220\n\004cost\030\002 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\")\n\004Item\022\016\n\006itemId\030\001 \002(\005\022\021\n\t" +
-      "itemCount\030\002 \002(\005\"E\n\027RequestSaleEquipComma" +
-      "nd\022*\n\004item\030\001 \003(\0132\034.com.trans.pixel.proto" +
-      "c.Item\",\n\032RequestSubmitZhanliCommand\022\016\n\006" +
-      "zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007equipId\030\001 \002",
-      "(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010UserProp\022\016\n\006pr" +
-      "opId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013expired" +
-      "Time\030\003 \001(\t\"M\n\027ResponseUserPropCommand\0222\n" +
-      "\010userProp\030\001 \003(\0132 .com.trans.pixel.protoc" +
-      ".UserProp\"J\n\025RequestUsePropCommand\022\016\n\006pr" +
-      "opId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\016\n\006chipId\030" +
-      "\003 \001(\r\"L\n\026ResponseUsePropCommand\0222\n\010userP" +
-      "rop\030\001 \003(\0132 .com.trans.pixel.protoc.UserP" +
-      "rop\"@\n\031RequestFenjieEquipCommand\022\017\n\007equi" +
-      "pId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"R\n\032Respons",
-      "eEquipResultCommand\0224\n\tuserEquip\030\001 \003(\0132!" +
-      ".com.trans.pixel.protoc.UserEquip\"?\n\034Req" +
-      "uestEquipStrenthenCommand\022\017\n\007equipId\030\001 \002" +
-      "(\005\022\016\n\006itemId\030\002 \001(\r\"\033\n\031RequestEquipPokede" +
-      "Command\"^\n\032ResponseEquipPokedeCommand\022@\n" +
-      "\017userEquipPokede\030\001 \003(\0132\'.com.trans.pixel" +
-      ".protoc.UserEquipPokede\"7\n\037RequestSynthe" +
-      "tiseComposeCommand\022\024\n\014synthetiseId\030\001 \002(\r" +
-      "\"\'\n\025RequestEquipupCommand\022\016\n\006itemid\030\001 \002(" +
-      "\r\"a\n\035RequestMaterialComposeCommand\022\016\n\006it",
-      "emId\030\002 \002(\r\0220\n\004cost\030\001 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo"
+      "(\t\022\014\n\004rare\030\003 \001(\005\"B\n\016SynthetiseList\0220\n\004da" +
+      "ta\030\001 \003(\0132\".com.trans.pixel.protoc.Synthe" +
+      "tise\"]\n\nSynthetise\022\n\n\002id\030\001 \002(\r\022\020\n\010target" +
+      "id\030\006 \002(\r\0221\n\005cover\030\010 \003(\0132\".com.trans.pixe" +
+      "l.protoc.RewardInfo\"M\n\031RequestUseMateria",
+      "lCommand\0220\n\004cost\030\001 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\"M\n\032RequestAddHeroEqui" +
+      "pCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003" +
+      "\022\017\n\007equipId\030\003 \001(\005\">\n\032RequestEquipCompose" +
+      "Command\022\021\n\tlevelUpId\030\001 \002(\005\022\r\n\005count\030\002 \001(" +
+      "\005\"=\n\033ResponseEquipComposeCommand\022\017\n\007equi" +
+      "pId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"S\n\033ResponseGetU" +
+      "serEquipCommand\0224\n\tuserEquip\030\001 \003(\0132!.com" +
+      ".trans.pixel.protoc.UserEquip\"8\n\tArmorLi" +
+      "st\022+\n\004data\030\001 \003(\0132\035.com.trans.pixel.proto",
+      "c.Armor\"\221\001\n\005Armor\022\n\n\002id\030\001 \001(\005\022\016\n\006ilevel\030" +
+      "\002 \001(\r\022\r\n\005level\030\003 \001(\005\022\r\n\005irare\030\004 \001(\005\022\014\n\004t" +
+      "ype\030\006 \001(\005\022\016\n\006heroid\030\007 \001(\r\0220\n\004list\030\016 \003(\0132" +
+      "\".com.trans.pixel.protoc.EquipOrder\"H\n\021E" +
+      "quipIncreaseList\0223\n\004data\030\001 \003(\0132%.com.tra" +
+      "ns.pixel.protoc.EquipIncrease\"L\n\rEquipIn" +
+      "crease\022\r\n\005level\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022" +
+      "\014\n\004rate\030\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"H\n\021IncreaseL" +
+      "evelList\0223\n\004data\030\001 \003(\0132%.com.trans.pixel" +
+      ".protoc.IncreaseLevel\"S\n\rIncreaseLevel\022\r",
+      "\n\005level\030\001 \001(\005\0223\n\005rares\030\002 \003(\0132$.com.trans" +
+      ".pixel.protoc.IncreaseRare\"N\n\014IncreaseRa" +
+      "re\022\014\n\004rare\030\001 \001(\005\0220\n\004cost\030\002 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.RewardInfo\")\n\004Item\022\016\n\006it" +
+      "emId\030\001 \002(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027Request" +
+      "SaleEquipCommand\022*\n\004item\030\001 \003(\0132\034.com.tra" +
+      "ns.pixel.protoc.Item\",\n\032RequestSubmitZha" +
+      "nliCommand\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEquip\022" +
+      "\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010" +
+      "UserProp\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 ",
+      "\002(\005\022\023\n\013expiredTime\030\003 \001(\t\"M\n\027ResponseUser" +
+      "PropCommand\0222\n\010userProp\030\001 \003(\0132 .com.tran" +
+      "s.pixel.protoc.UserProp\"J\n\025RequestUsePro" +
+      "pCommand\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 " +
+      "\002(\005\022\016\n\006chipId\030\003 \001(\r\"L\n\026ResponseUsePropCo" +
+      "mmand\0222\n\010userProp\030\001 \003(\0132 .com.trans.pixe" +
+      "l.protoc.UserProp\"@\n\031RequestFenjieEquipC" +
+      "ommand\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 " +
+      "\002(\005\"R\n\032ResponseEquipResultCommand\0224\n\tuse" +
+      "rEquip\030\001 \003(\0132!.com.trans.pixel.protoc.Us",
+      "erEquip\"?\n\034RequestEquipStrenthenCommand\022" +
+      "\017\n\007equipId\030\001 \002(\005\022\016\n\006itemId\030\002 \001(\r\"\033\n\031Requ" +
+      "estEquipPokedeCommand\"^\n\032ResponseEquipPo" +
+      "kedeCommand\022@\n\017userEquipPokede\030\001 \003(\0132\'.c" +
+      "om.trans.pixel.protoc.UserEquipPokede\"7\n" +
+      "\037RequestSynthetiseComposeCommand\022\024\n\014synt" +
+      "hetiseId\030\001 \002(\r\"\'\n\025RequestEquipupCommand\022" +
+      "\016\n\006itemid\030\001 \002(\r\"a\n\035RequestMaterialCompos" +
+      "eCommand\022\016\n\006itemId\030\002 \002(\r\0220\n\004cost\030\001 \003(\0132\"" +
+      ".com.trans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -32394,183 +31793,177 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_SynthetiseList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SynthetiseList_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Synthetise_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_Synthetise_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Synthetise_descriptor,
-              new java.lang.String[] { "Id", "Target", "Needid", "Cover", });
-          internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor =
-            getDescriptor().getMessageTypes().get(17);
-          internal_static_com_trans_pixel_protoc_SynthetiseCover_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_SynthetiseCover_descriptor,
-              new java.lang.String[] { "Cover", "Count", });
+              new java.lang.String[] { "Id", "Targetid", "Cover", });
           internal_static_com_trans_pixel_protoc_RequestUseMaterialCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestUseMaterialCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUseMaterialCommand_descriptor,
               new java.lang.String[] { "Cost", });
           internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAddHeroEquipCommand_descriptor,
               new java.lang.String[] { "HeroId", "InfoId", "EquipId", });
           internal_static_com_trans_pixel_protoc_RequestEquipComposeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestEquipComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipComposeCommand_descriptor,
               new java.lang.String[] { "LevelUpId", "Count", });
           internal_static_com_trans_pixel_protoc_ResponseEquipComposeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_ResponseEquipComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEquipComposeCommand_descriptor,
               new java.lang.String[] { "EquipId", "Count", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserEquipCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_ResponseGetUserEquipCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserEquipCommand_descriptor,
               new java.lang.String[] { "UserEquip", });
           internal_static_com_trans_pixel_protoc_ArmorList_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_ArmorList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ArmorList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Armor_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_Armor_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Armor_descriptor,
               new java.lang.String[] { "Id", "Ilevel", "Level", "Irare", "Type", "Heroid", "List", });
           internal_static_com_trans_pixel_protoc_EquipIncreaseList_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_EquipIncreaseList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EquipIncreaseList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_EquipIncrease_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_EquipIncrease_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EquipIncrease_descriptor,
               new java.lang.String[] { "Level", "Increase", "Rate", "Zero", });
           internal_static_com_trans_pixel_protoc_IncreaseLevelList_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_IncreaseLevelList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_IncreaseLevelList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_IncreaseLevel_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_IncreaseLevel_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_IncreaseLevel_descriptor,
               new java.lang.String[] { "Level", "Rares", });
           internal_static_com_trans_pixel_protoc_IncreaseRare_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_IncreaseRare_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_IncreaseRare_descriptor,
               new java.lang.String[] { "Rare", "Cost", });
           internal_static_com_trans_pixel_protoc_Item_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_Item_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Item_descriptor,
               new java.lang.String[] { "ItemId", "ItemCount", });
           internal_static_com_trans_pixel_protoc_RequestSaleEquipCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestSaleEquipCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSaleEquipCommand_descriptor,
               new java.lang.String[] { "Item", });
           internal_static_com_trans_pixel_protoc_RequestSubmitZhanliCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RequestSubmitZhanliCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitZhanliCommand_descriptor,
               new java.lang.String[] { "Zhanli", });
           internal_static_com_trans_pixel_protoc_UserEquip_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_UserEquip_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserEquip_descriptor,
               new java.lang.String[] { "EquipId", "EquipCount", });
           internal_static_com_trans_pixel_protoc_UserProp_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_UserProp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserProp_descriptor,
               new java.lang.String[] { "PropId", "PropCount", "ExpiredTime", });
           internal_static_com_trans_pixel_protoc_ResponseUserPropCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_ResponseUserPropCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserPropCommand_descriptor,
               new java.lang.String[] { "UserProp", });
           internal_static_com_trans_pixel_protoc_RequestUsePropCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestUsePropCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUsePropCommand_descriptor,
               new java.lang.String[] { "PropId", "PropCount", "ChipId", });
           internal_static_com_trans_pixel_protoc_ResponseUsePropCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_ResponseUsePropCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUsePropCommand_descriptor,
               new java.lang.String[] { "UserProp", });
           internal_static_com_trans_pixel_protoc_RequestFenjieEquipCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RequestFenjieEquipCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFenjieEquipCommand_descriptor,
               new java.lang.String[] { "EquipId", "EquipCount", });
           internal_static_com_trans_pixel_protoc_ResponseEquipResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_ResponseEquipResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEquipResultCommand_descriptor,
               new java.lang.String[] { "UserEquip", });
           internal_static_com_trans_pixel_protoc_RequestEquipStrenthenCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestEquipStrenthenCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipStrenthenCommand_descriptor,
               new java.lang.String[] { "EquipId", "ItemId", });
           internal_static_com_trans_pixel_protoc_RequestEquipPokedeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestEquipPokedeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipPokedeCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseEquipPokedeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_ResponseEquipPokedeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEquipPokedeCommand_descriptor,
               new java.lang.String[] { "UserEquipPokede", });
           internal_static_com_trans_pixel_protoc_RequestSynthetiseComposeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestSynthetiseComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSynthetiseComposeCommand_descriptor,
               new java.lang.String[] { "SynthetiseId", });
           internal_static_com_trans_pixel_protoc_RequestEquipupCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestEquipupCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEquipupCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor,

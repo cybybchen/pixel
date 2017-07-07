@@ -20,7 +20,7 @@ import com.trans.pixel.protoc.EquipProto.SynthetiseList;
 public class PropRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(PropRedisService.class);
 	private static final String PACKAGE_FILE_NAME = "ld_package.xml";
-	private static final String SYNTHETISE_FILE_NAME = "ld_synthetise.xml";
+	private static final String SYNTHETISE_FILE_NAME = "ld_equipcompose.xml";
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
@@ -120,7 +120,7 @@ public class PropRedisService extends RedisService {
 		}
 		
 		Map<String, Synthetise> map = new HashMap<String, Synthetise>();
-		for(Synthetise.Builder syn : builder.getIdBuilderList()){
+		for(Synthetise.Builder syn : builder.getDataBuilderList()){
 			map.put("" + syn.getId(), syn.build());
 		}
 		return map;

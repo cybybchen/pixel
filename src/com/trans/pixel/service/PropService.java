@@ -1,6 +1,5 @@
 package com.trans.pixel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -22,7 +21,6 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
-import com.trans.pixel.protoc.EquipProto.SynthetiseCover;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
@@ -163,42 +161,42 @@ public class PropService {
 		if (syn == null)
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
-		if (syn.getNeedid() >0) {
-			UserEquipPokedeBean needPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getNeedid());
-			if (needPokede == null)
-				return ErrorConst.NOT_ENOUGH_PROP;
-		}
-		UserEquipPokedeBean equipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getTarget());
+//		if (syn.getNeedid() >0) {
+//			UserEquipPokedeBean needPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getNeedid());
+//			if (needPokede == null)
+//				return ErrorConst.NOT_ENOUGH_PROP;
+//		}
+		UserEquipPokedeBean equipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), syn.getTargetid());
 		if (equipPokede != null)
 			return ErrorConst.EQUIP_IS_EXIST_ERROR;
 		
-		List<RewardInfo> costList = buildCostList(syn);
-		if (!costService.canCost(user, costList)) 
+//		List<RewardInfo> costList = buildCostList(syn);
+		if (!costService.canCost(user, syn.getCoverList())) 
 			return ErrorConst.NOT_ENOUGH_PROP;
 		
-		costService.cost(user, costList);
+		costService.cost(user, syn.getCoverList());
 		
-		rewards.addLoot(RewardBean.init(syn.getTarget(), 1).buildRewardInfo());
-		costs.addAllLoot(costList);
+		rewards.addLoot(RewardBean.init(syn.getTargetid(), 1).buildRewardInfo());
+		costs.addAllLoot(syn.getCoverList());
 		
 		return SuccessConst.PROP_COMPOSE_SUCCESS;
 	}
 	
-	private List<RewardInfo> buildCostList(Synthetise syn) {
-		List<RewardInfo> costList = new ArrayList<RewardInfo>();
-		RewardInfo.Builder builder = RewardInfo.newBuilder();
-		builder.setItemid(syn.getId());
-		builder.setCount(1);
-		costList.add(builder.build());
-		for (SynthetiseCover cover : syn.getCoverList()) {
-			builder = RewardInfo.newBuilder();
-			builder.setItemid(cover.getCover());
-			builder.setCount(cover.getCount());
-			costList.add(builder.build());
-		}
-		
-		return costList;
-	}
+//	private List<RewardInfo> buildCostList(Synthetise syn) {
+//		List<RewardInfo> costList = new ArrayList<RewardInfo>();
+//		RewardInfo.Builder builder = RewardInfo.newBuilder();
+//		builder.setItemid(syn.getId());
+//		builder.setCount(1);
+//		costList.add(builder.build());
+//		for (SynthetiseCover cover : syn.getCoverList()) {
+//			builder = RewardInfo.newBuilder();
+//			builder.setItemid(cover.getCover());
+//			builder.setCount(cover.getCount());
+//			costList.add(builder.build());
+//		}
+//		
+//		return costList;
+//	}
 	
 	public MultiReward.Builder handleRewards(List<RewardBean> rewardList) {
 		return rewardsHandle(RewardBean.buildRewardInfoList(rewardList));

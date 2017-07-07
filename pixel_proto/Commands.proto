@@ -1124,19 +1124,13 @@ message Equiptucao {
 }
 
 message SynthetiseList {
-	repeated Synthetise id = 1;
+	repeated Synthetise data = 1;
 }
 
 message Synthetise {
 	required uint32 id = 1;
-	required uint32 target = 6;
-	required uint32 needid = 7;
-	repeated SynthetiseCover cover = 8;
-}
-
-message SynthetiseCover {
-	required uint32 cover = 1;
-	required uint32 count = 2;
+	required uint32 targetid = 6;
+	repeated RewardInfo cover = 8;
 }
 
 message RequestUseMaterialCommand {
@@ -1902,9 +1896,15 @@ message RequestSevenLoginSignCommand {
 	optional int32 chooseId = 1;
 }
 
+message VipReward {
+	optional int32 itemid = 1;
+	optional int64 count = 3;
+	optional RewardInfo compreward = 2;
+}
+
 message VipLibao {
 	optional int32 itemid = 1;
-	repeated RewardInfo reward = 2;
+	repeated VipReward reward = 2;
 }
 
 message VipLibaoList {
