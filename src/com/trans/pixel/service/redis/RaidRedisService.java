@@ -37,7 +37,7 @@ public class RaidRedisService extends RedisService{
 //		for(Raid.Builder raid : builder.getRaidBuilderList()) {
 		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
 			Raid.Builder raid = builder.getRaidBuilder(i);
-			if(!"".equals(raid.getEndtime()) && DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
+			if(raid.hasEndtime() && !DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
 				builder.removeRaid(i);
 				continue;
 			}
@@ -104,6 +104,10 @@ public class RaidRedisService extends RedisService{
 				raid.clearTurn();
 				raid.setMaxlevel(3);
 				raid.setLevel(0);
+				if("".equals(raid.getStarttime()))
+					raid.clearStarttime();
+				if("".equals(raid.getEndtime()))
+					raid.clearEndtime();
 			}
 			builder.clearRaid();
 			builder.addAllRaid(list.getDataList());
