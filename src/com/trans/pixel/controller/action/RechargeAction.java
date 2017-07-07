@@ -30,7 +30,7 @@ public class RechargeAction {
     	Map<String, String> params = getParamsMap(request);
 		logger.debug("recall params is:" + params);
 		
-		rechargeService.doRecharge(params, false);
+		rechargeService.doRecharge(null, params, false);
 		
 		return "EXCHANGE_SUCCESS";
     }

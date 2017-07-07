@@ -44,7 +44,7 @@ public class CheatRechargeCommandService extends BaseCommandService {
 		
 		int itemid = cmd.getItemid();
 		Map<String, String> params = initParams(user.getServerId(), user.getId(), itemid);
-		rechargeService.doRecharge(params, true);
+		rechargeService.doRecharge(user, params, true);
 		
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.RECHARGE_SUCCESS));
 	}
