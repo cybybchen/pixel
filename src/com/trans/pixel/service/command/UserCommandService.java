@@ -339,13 +339,20 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		
+		UserInfo userInfo = userService.getCache(user.getServerId(), user.getRecommandUserId());
+		if (userInfo == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
 		userService.handlerRecommand(user, cmd.getUserId());
 		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
 		if (user.getRecommandUserId() != 0) {
-			UserInfo userInfo = userService.getCache(user.getServerId(), user.getRecommandUserId());
-			if (userInfo != null)
-				builder.setUser(userInfo);
+			builder.setUser(userInfo);
 		}
 		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
