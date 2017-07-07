@@ -83,9 +83,12 @@ public class RewardService {
 	 * need updateuser when return true
 	 */
 	public boolean doReward(UserBean user, int rewardId, long rewardCount) {
-		return doReward(user, rewardId, rewardCount, 0);
+		return doReward(user, rewardId, rewardCount, 0, true);
 	}
 	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime) {
+		return doReward(user, rewardId, rewardCount, lasttime, true);
+	}
+	public boolean doReward(UserBean user, int rewardId, long rewardCount, int lasttime, boolean isRewardRecommand) {
 		if (rewardId < 100 && rewardId > 0) {
 			UserTalent.Builder userTalent = userTalentService.getUserTalent(user, rewardId);
 			if (userTalent == null)
@@ -145,7 +148,7 @@ public class RewardService {
 					return true;
 				case RewardConst.VIPEXP:
 					user.setVipExp(user.getVipExp() + (int)rewardCount);
-					rechargeService.handleVipExp(user, (int)rewardCount);
+					rechargeService.handleVipExp(user, (int)rewardCount, isRewardRecommand);
 					return true;
 				default:
 					break;

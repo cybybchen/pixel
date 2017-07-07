@@ -103,12 +103,12 @@ public class RechargeService {
 	public void addVipExp(UserBean user, int exp) {
 		int complete = user.getVipExp() + exp;
 		user.setVipExp(complete);
-		handleVipExp(user, exp);
+		handleVipExp(user, exp, true);
     	
 		userService.updateUser(user);
 	}
 	
-	public void handleVipExp(UserBean user, int addExp) {
+	public void handleVipExp(UserBean user, int addExp, boolean isRewardRecommand) {
 		while(true){
 	    	VipInfo vip = userService.getVip(user.getVip()+1);
 	    	if(vip == null || user.getVipExp() < vip.getZuanshi())
@@ -138,10 +138,12 @@ public class RechargeService {
 			}
 	    }
 		
-		handlerRecommandVipExp(user.getRecommandUserId(), addExp / 5);
+		handlerRecommandVipExp(user.getRecommandUserId(), addExp / 5, isRewardRecommand);
 	}
 	
-	private void handlerRecommandVipExp(long userId, int addExp) {
+	private void handlerRecommandVipExp(long userId, int addExp, boolean isRewardRecommand) {
+		if (!isRewardRecommand)
+			return;
 		if (addExp == 0)
 			return;
 		if (userId == 0)
@@ -151,7 +153,7 @@ public class RechargeService {
 		if (user == null)
 			return;
 		
-		if (rewardService.doReward(user, RewardConst.VIPEXP, addExp))//上家享受20%的活跃值奖励
+		if (rewardService.doReward(user, RewardConst.VIPEXP, addExp, 0, false))//上家享受20%的活跃值奖励
 			userService.updateUser(user);
 	}
 	
