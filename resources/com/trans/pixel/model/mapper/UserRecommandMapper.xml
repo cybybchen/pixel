@@ -5,6 +5,9 @@
 	<insert id="addRecommand">
 	    INSERT INTO user_recommand(user_id, user_id2) 
 		 VALUES(#{userId}, #{userId2})
+		 ON 
+	    duplicate key update
+	    user_id2=#{userId2}
 	</insert>
 
 	<select id="getRecommands" parameterType="long" resultType="int">
