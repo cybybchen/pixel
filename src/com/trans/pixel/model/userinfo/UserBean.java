@@ -134,6 +134,7 @@ public class UserBean {
 	private int title = 0;
 	private int frame = 0;//头像框
 	private long recommandUserId = 0;
+	private int friendVip = 0;
 	/**
 	 * 碎片箱购买次数
 	 */
@@ -1289,6 +1290,12 @@ public class UserBean {
 	public void setRecommandUserId(long recommandUserId) {
 		this.recommandUserId = recommandUserId;
 	}
+	public int getFriendVip() {
+		return friendVip;
+	}
+	public void setFriendVip(int friendVip) {
+		this.friendVip = friendVip;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1465,6 +1472,7 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setRecommandUserId(recommandUserId);
+		builder.setFriendVip(friendVip);
 		
 		return builder.build();
 	}

@@ -13,11 +13,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
+import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
@@ -339,8 +341,8 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		
-		UserInfo userInfo = userService.getCache(user.getServerId(), user.getRecommandUserId());
-		if (userInfo == null) {
+		UserBean other = userService.getUserOther(cmd.getUserId());
+		if (other == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
@@ -352,10 +354,16 @@ public class UserCommandService extends BaseCommandService {
 		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
 		if (user.getRecommandUserId() != 0) {
-			builder.setUser(userInfo);
+			builder.setUser(other.build());
 		}
 		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
+		if (other.getFriendVip() == 1) {
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addLoot(RewardBean.init(RewardConst.JEWEL, 300).buildRewardInfo());
+			rewards.addLoot(RewardBean.init(RewardConst.ZHAOHUANSHI, 3).buildRewardInfo());
+			handleRewards(responseBuilder, user, rewards);
+		}
 	}
 	
 	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {

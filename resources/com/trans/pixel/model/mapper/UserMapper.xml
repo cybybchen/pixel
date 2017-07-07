@@ -61,6 +61,7 @@
 		<result property="expSavingBox" column="exp_savingbox" />
 		<result property="frame" column="frame" />
 		<result property="recommandUserId" column="recommand_user_id" />
+		<result property="friendVip" column="friend_vip" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
