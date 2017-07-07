@@ -47,6 +47,18 @@ public class RaidCommandService extends BaseCommandService{
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
 		Raid raid = redis.getRaid(cmd.getId());
 		ResponseRaidCommand.Builder raidlist = redis.getRaid(user);
+		int index = 0;
+		for(index = 0; index < raidlist.getRaidCount(); index++) {
+			Raid.Builder myraid = raidlist.getRaidBuilder(index);
+			if(myraid.getId() == cmd.getId())
+				break;
+		}
+		if(index >= raidlist.getRaidCount()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOT_OPEN);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_NOT_OPEN);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		//判断消耗和最大层数
 		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount(), true)){
 			int lastid = 0;

@@ -20,7 +20,7 @@ public enum ErrorConst implements ResultConst {
     CREATE_UNION_ERROR(2048, "公会创建失败"),AREA_OWNER_BUSY(2049, "领主不能退出公会"),EVENT_FIRST(2050, "请继续通关相关事件"),MERLEVEL_FIRST(2051, "请先提升您的佣兵团等级"),
     SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"), HERO_STAR_FIRST(2055, "请先提升英雄星级"), 
     ERROR_SKILL_STONE(2056, "技能石不足"), SKILL_STONE_IS_FULL_ERROR(2057, "技能点已满，无法继续添加"), RECOMMAND_IS_EXIST_ERROR(2058, "已绑定过推荐人，无法重新绑定"),
-    RECOMMAND_CAN_NOT_SELF_ERROR(2058, "无法推荐自己"),
+    RECOMMAND_CAN_NOT_SELF_ERROR(2058, "无法推荐自己"),RAID_NOT_OPEN(2059, "该副本暂未开放"),
     
 	
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放，请选择其他服务器游戏"), 
