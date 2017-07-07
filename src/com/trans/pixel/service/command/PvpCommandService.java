@@ -118,6 +118,12 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMonster(RequestAttackPVPMonsterCommand cmd, Builder responseBuilder, UserBean user) {
+		if(!cmd.hasPositionid() && user.getVip() < 5) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
+			return;
+		}
 		int time = 0;
 		if (cmd.hasTime())
 			time = cmd.getTime();
@@ -138,12 +144,12 @@ public class PvpCommandService extends BaseCommandService {
 	}
 	
 	public void attackMine(RequestAttackPVPMineCommand cmd, Builder responseBuilder, UserBean user) {
-		if(cmd.getId() > 1000 && user.getVip() < 5) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
-			
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
-			return;
-		}
+//		if(cmd.getId() > 1000 && user.getVip() < 5) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.VIP_IS_NOT_ENOUGH);
+//			
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
+//			return;
+//		}
 		long teamid = cmd.getTeamid();
 		Team team = userTeamService.getTeam(user, teamid);
 		userTeamService.saveTeamCache(user, teamid, team);
