@@ -9,10 +9,12 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.RmbList;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
+import com.trans.pixel.protoc.RechargeProto.VipReward;
 
 import net.sf.json.JSONObject;
 
@@ -58,7 +60,12 @@ public class RechargeRedisService extends RedisService {
 			for(Rmb.Builder rmb : builder.getDataBuilderList()) {
 				for(VipLibao libao : list.getDataList()){
 					if(libao.getItemid() == rmb.getReward().getItemid()) {
-						rmb.addAllLibao(libao.getRewardList());
+						for(VipReward vipreward : libao.getRewardList()) {
+							RewardInfo.Builder reward = RewardInfo.newBuilder();
+							reward.setItemid(vipreward.getItemid());
+							reward.setCount(vipreward.getCount());
+							rmb.addLibao(reward);
+						}
 						break;
 					}
 				}

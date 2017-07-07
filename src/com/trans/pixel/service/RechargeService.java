@@ -20,6 +20,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RechargeBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.RechargeMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -34,6 +35,7 @@ import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
+import com.trans.pixel.protoc.RechargeProto.VipReward;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
@@ -219,7 +221,13 @@ public class RechargeService {
 //					reward.setItemid(libao.getre.getRewardid());
 //					reward.setCount(libao.getRewardcount());
 //					list.add(reward);
-					mail.parseRewardList(libao.getRewardList());
+					for(VipReward vipreward: libao.getRewardList()) {
+						RewardBean reward = new RewardBean();
+						reward.setItemid(vipreward.getItemid());
+						reward.setCount(vipreward.getCount());
+						mail.getRewardList().add(reward);
+					}
+//					mail.parseRewardList(libao.getRewardList());
 					mail.setStartDate(DateUtil.getCurrentDateString());
 					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 					mail.setUserId(user.getId());
@@ -230,7 +238,20 @@ public class RechargeService {
 			Libao config = shopService.getLibaoConfig(productid);
 			libaobuilder.setValidtime(config.getStarttime());
 			VipLibao viplibao = shopService.getVipLibao(itemId);
-			rewardList = viplibao.getRewardList();
+			for(VipReward vipreward : viplibao.getRewardList()) {
+				int itemid = vipreward.getItemid();
+				RewardInfo.Builder reward = RewardInfo.newBuilder();
+				reward.setItemid(itemid);
+				reward.setCount(vipreward.getCount());
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT && vipreward.hasCompreward()) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null) {
+						reward.setItemid(vipreward.getCompreward().getItemid());
+						reward.setCount(vipreward.getCompreward().getCount());
+					}
+				}
+				rewardList.add(reward.build());
+			}
 		}
 
 		rechargeVip(user, (int)rmb.getCost().getCount());
@@ -336,7 +357,20 @@ public class RechargeService {
 			return null;	
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
-		rewardList.addAll(viplibao.getRewardList());
+		for(VipReward vipreward : viplibao.getRewardList()) {
+			int itemid = vipreward.getItemid();
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(itemid);
+			reward.setCount(vipreward.getCount());
+			if(itemid/10000*10000 == RewardConst.EQUIPMENT && vipreward.hasCompreward()) {
+				UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+				if(bean != null) {
+					reward.setItemid(vipreward.getCompreward().getItemid());
+					reward.setCount(vipreward.getCompreward().getCount());
+				}
+			}
+			rewardList.add(reward.build());
+		}
 		RewardInfo zhsreward = null;
 		for(RewardInfo reward : rewardList) {
 			if(reward.getItemid() == RewardConst.ZHAOHUANSHI) {

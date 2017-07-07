@@ -8,6 +8,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -15,6 +16,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RechargeProto.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
+import com.trans.pixel.protoc.RechargeProto.VipReward;
 import com.trans.pixel.protoc.ShopProto.Commodity;
 import com.trans.pixel.protoc.ShopProto.ContractWeight;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
@@ -1019,7 +1021,10 @@ public class ShopCommandService extends BaseCommandService{
 			user.setViplibao1(user.getViplibao1() | state);
 //		}
 		MultiReward.Builder builder = MultiReward.newBuilder();
-		for(RewardInfo reward : libao.getRewardList()){
+		for(VipReward vipreward: libao.getRewardList()) {
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(vipreward.getItemid());
+			reward.setCount(vipreward.getCount());
 			builder.addLoot(reward);
 		}
 		handleRewards(responseBuilder, user, builder);
