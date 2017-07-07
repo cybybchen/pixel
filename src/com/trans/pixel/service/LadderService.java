@@ -216,8 +216,17 @@ public class LadderService {
 		if (ladderSeasonConfig == null)
 			return null;
 		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
-		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
-		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), ladderEquip != null ? ladderEquip.getGrade()	: 1, user);
+//		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
+		Map<String, LadderEquip> ladderEquipMap = ladderRedisService.getLadderEquipConfig();
+		int order = 0;
+		for (LadderEquip ladderEquip : ladderEquipMap.values()) {
+			if (ladderEquip.getLadder() <= userLadder.getGrade())
+				order = Math.max(order, ladderEquip.getGrade());
+		}
+		
+		if (order == 0)
+			return null;
+		UserEquipPokedeBean pokede = equipPokedeService.handleUserEquipPokede(ladderLd.getEquipid(), order, user);
 
 		return pokede;
 	}
