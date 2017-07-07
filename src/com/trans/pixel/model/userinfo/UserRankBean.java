@@ -25,7 +25,7 @@ public class UserRankBean {
 	}
 	
 	public UserRankBean(UserBean user) {
-		userId = user.getId();
+		setUserId(user.getId());
 		setUser(user.buildShort());
 	}
 	
@@ -132,6 +132,7 @@ public class UserRankBean {
 			return false;
 		setZhanli(userInfo.getZhanli());
 		setUser(userInfo);
+		setUserId(userInfo.getId());
 		
 		return true;
 	}
