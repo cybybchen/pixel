@@ -1,7 +1,9 @@
 package com.trans.pixel.controller.chain;
 import javax.annotation.Resource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -11,6 +13,7 @@ import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.command.PushCommandService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
@@ -445,7 +448,7 @@ public abstract class RequestScreen implements RequestHandle {
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
 		RequestCommand request = req.command;
 		HeadInfo head = buildHeadInfo(request.getHead());
-		if (head == null && !request.hasLogCommand()) {
+		if ((head == null || !DateUtil.timeIsOver(head.getServerstarttime())) && !request.hasLogCommand()) {
 			rep.command.setHead(request.getHead());
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_NOT_OPEN_ERROR.getCode()));
