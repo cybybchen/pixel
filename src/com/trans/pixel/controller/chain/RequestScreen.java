@@ -1,9 +1,7 @@
 package com.trans.pixel.controller.chain;
 import javax.annotation.Resource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -453,6 +451,8 @@ public abstract class RequestScreen implements RequestHandle {
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_NOT_OPEN_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.SRVER_NOT_OPEN_ERROR.getMesssage());
+			if (head != null)
+                        	erBuilder.setMessage("服务器开放时间：" +  head.getServerstarttime());
 			rep.command.setErrorCommand(erBuilder.build());
 			log.error("cmd server not open:" + req);
 			return false;

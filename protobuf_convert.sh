@@ -110,6 +110,7 @@ import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.command.PushCommandService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
@@ -164,11 +165,13 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
 		RequestCommand request = req.command;
 		HeadInfo head = buildHeadInfo(request.getHead());
-		if (head == null && !request.hasLogCommand()) {
+		if ((head == null || !DateUtil.timeIsOver(head.getServerstarttime())) && !request.hasLogCommand()) {
 			rep.command.setHead(request.getHead());
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.SRVER_NOT_OPEN_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.SRVER_NOT_OPEN_ERROR.getMesssage());
+			if (head != null)
+                        	erBuilder.setMessage(\"服务器开放时间：\" +  head.getServerstarttime());
 			rep.command.setErrorCommand(erBuilder.build());
 			log.error(\"cmd server not open:\" + req);
 			return false;
