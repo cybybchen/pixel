@@ -369,9 +369,9 @@ public class UserCommandService extends BaseCommandService {
 	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
 		if (user.getRecommandUserId() != 0) {
-			UserInfo userInfo = userService.getCache(user.getServerId(), user.getRecommandUserId());
-			if (userInfo != null)
-				builder.setUser(userInfo);
+			UserBean userBean = userService.getUserOther(user.getRecommandUserId());
+			if (userBean != null)
+				builder.setUser(userBean.buildShort());
 		}
 		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
