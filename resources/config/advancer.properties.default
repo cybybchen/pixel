@@ -54,14 +54,14 @@
 #configpath=/var/www/html/Pixel/conf_xml_test/
 #logport=4347
 
-#qlcoud_newversion:new test server
-serverurl=http://123.207.88.112:8082/Lol450/gamedata
-jdbc.url=jdbc:mysql://10.66.110.134:3306/ldyxz_test?useUnicode=true&characterEncoding=UTF-8
-redis.default.db=4
-masterserver=http://123.207.88.112:8082/Lol450/datamanager
-slaveserver=http://123.207.88.112:8082/Lol450/datamanager
-configpath=/var/www/html/Pixel/conf_xml_ldyxz_test/
-logport=4349
+##qlcoud_newversion:new test server
+#serverurl=http://123.207.88.112:8082/Lol450/gamedata
+#jdbc.url=jdbc:mysql://10.66.110.134:3306/ldyxz_test?useUnicode=true&characterEncoding=UTF-8
+#redis.default.db=4
+#masterserver=http://123.207.88.112:8082/Lol450/datamanager
+#slaveserver=http://123.207.88.112:8082/Lol450/datamanager
+#configpath=/var/www/html/Pixel/conf_xml_ldyxz_test/
+#logport=4349
 
 #qlcoud_test
 #serverurl=http://123.207.88.112:8081/Lol450/gamedata
@@ -83,3 +83,12 @@ logport=4349
 #slaveserver=http://123.59.144.200:8082/Lol450/datamanager
 #configpath=/var/www/html/Pixel/conf_xml/
 #logport=4347
+
+#pressure test 139.199.15.177
+serverurl=http://139.199.15.177:8082/Lol450/gamedata
+jdbc.url=jdbc:mysql://10.66.110.134:3306/ldyxz_test?useUnicode=true&characterEncoding=UTF-8
+redis.default.db=4
+masterserver=http://139.199.15.177:8082/Lol450/datamanager
+slaveserver=http://139.199.15.177:8082/Lol450/datamanager
+configpath=/var/www/html/Pixel/conf_xml_ldyxz_test/
+logport=4349
