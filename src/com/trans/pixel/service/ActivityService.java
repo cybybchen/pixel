@@ -319,6 +319,9 @@ public class ActivityService {
 		
 		if (ret)
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_DUOHUI_MINE_VALUE);
+		
+		if (ret)
+			sendKaifuScore(user, ACTIVITY_TYPE.TYPE_PVP_ATTACK_SUCCESS_VALUE);
 	}
 	
 	public void pvpAttackBossSuccessActivity(UserBean user) {
@@ -827,7 +830,7 @@ public class ActivityService {
 		/**
 		 * 开服活动第四天
 		 */
-		if (start < HeroConst.ACTIVITY_KAIFU_HERO_LEVEL && level >= HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
+//		if (start < HeroConst.ACTIVITY_KAIFU_HERO_LEVEL && level >= HeroConst.ACTIVITY_KAIFU_HERO_LEVEL)
 //			sendKaifuScore(user, ActivityConst.KAIFU_DAY_4);
 		
 		if (start < 5 && level >= 5) {
