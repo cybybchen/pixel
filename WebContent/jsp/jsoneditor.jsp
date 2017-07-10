@@ -8,7 +8,7 @@
 			<div style="right:0;float:right;">
 				<a href="#"  class="del-btn editor-btn ui-btn ui-btn-inline">删除</a>
 				<a href="#"  class="update-btn editor-btn ui-btn ui-btn-inline">更新</a>
-				<a href="#"  class="reset-btn editor-btn ui-btn ui-btn-inline">重置</a>
+				<!--a href="#"  class="reset-btn editor-btn ui-btn ui-btn-inline">重置</a-->
 			</div>
 		</div>
 	    <div class="json-editor"></div>
