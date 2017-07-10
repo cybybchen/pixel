@@ -54,23 +54,23 @@
 #configpath=/var/www/html/Pixel/conf_xml_test/
 #logport=4347
 
-#qlcoud_newversion
-#serverurl=http://123.207.88.112:8082/Lol450/gamedata
-#jdbc.url=jdbc:mysql://10.66.110.134:3306/lol450_newversion?useUnicode=true&characterEncoding=UTF-8
-#redis.default.db=15
-#masterserver=http://123.207.88.112:8082/Lol450/datamanager
-#slaveserver=http://123.207.88.112:8082/Lol450/datamanager
-#configpath=/var/www/html/Pixel/conf_xml_newversion/
-#logport=4349
+#qlcoud_newversion:new test server
+serverurl=http://123.207.88.112:8082/Lol450/gamedata
+jdbc.url=jdbc:mysql://10.66.110.134:3306/ldyxz_test?useUnicode=true&characterEncoding=UTF-8
+redis.default.db=4
+masterserver=http://123.207.88.112:8082/Lol450/datamanager
+slaveserver=http://123.207.88.112:8082/Lol450/datamanager
+configpath=/var/www/html/Pixel/conf_xml_ldyxz_test/
+logport=4349
 
 #qlcoud_test
-serverurl=http://123.207.88.112:8081/Lol450/gamedata
-jdbc.url=jdbc:mysql://10.66.110.134:3306/lol450_test?useUnicode=true&characterEncoding=UTF-8
-redis.default.db=2
-masterserver=http://123.207.88.112:8081/Lol450/datamanager
-slaveserver=http://123.207.88.112:8081/Lol450/datamanager
-configpath=/var/www/html/Pixel/conf_xml_test/
-logport=4347
+#serverurl=http://123.207.88.112:8081/Lol450/gamedata
+#jdbc.url=jdbc:mysql://10.66.110.134:3306/lol450_test?useUnicode=true&characterEncoding=UTF-8
+#redis.default.db=2
+#masterserver=http://123.207.88.112:8081/Lol450/datamanager
+#slaveserver=http://123.207.88.112:8081/Lol450/datamanager
+#configpath=/var/www/html/Pixel/conf_xml_test/
+#logport=4347
 
 #127.0.0.1
 #serverurl=http://127.0.0.1:8080/pixel/gamedata
