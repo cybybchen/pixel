@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -29,6 +30,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class RaidCommandService extends BaseCommandService{
+	Logger logger = Logger.getLogger(RaidCommandService.class);
 	@Resource
     private RaidRedisService redis;
 	@Resource
@@ -105,21 +107,21 @@ public class RaidCommandService extends BaseCommandService{
 			if(myraid.getEventid() == 0)
 				continue;
 			int oldeventid = myraid.getEventid();
-			Raid raid = redis.getRaid(myraid.getId());
+			Raid raidconfig = redis.getRaid(myraid.getId());
 			EventConfig event = levelRedisService.getEvent(myraid.getEventid());
-			if(myraid.getId() != cmd.getId() || myraid.getEventid() != cmd.getEventid() || raid == null || event == null){
+			if(myraid.getId() != cmd.getId() || myraid.getEventid() != cmd.getEventid() || raidconfig == null || event == null){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(cmd.getRet()){
-				MultiReward.Builder rewards = levelRedisService.eventReward(event, raid.getLevel());
-				EventConfig config = redis.getRaidLevel(raid.getLevel());
+				MultiReward.Builder rewards = levelRedisService.eventReward(event, myraid.getLevel());
+				EventConfig config = redis.getRaidLevel(myraid.getLevel());
 				rewards.addAllLoot(config.getLootlistList());
 				handleRewards(responseBuilder, user, rewards.build());
 				
-				for(int i = 0; i < raid.getEventCount(); i++) {
-					if(myraid.getEventid() == raid.getEvent(i).getEventid()){
-						myraid.setEventid(i+1==raid.getEventCount() ? 0 : raid.getEvent(i+1).getEventid());//通关or下一关
+				for(int i = 0; i < raidconfig.getEventCount(); i++) {
+					if(myraid.getEventid() == raidconfig.getEvent(i).getEventid()){
+						myraid.setEventid(i+1==raidconfig.getEventCount() ? 0 : raidconfig.getEvent(i+1).getEventid());//通关or下一关
 						myraid.addTurn(cmd.getTurn());
 						break;
 					}
