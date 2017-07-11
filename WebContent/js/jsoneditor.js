@@ -1174,7 +1174,9 @@ function configBlackList(dom){
 }
 
 function delConfigData(type){
+	var value = $("#redisdata-keys").val();
 	var json = buildConfigJson("del-ConfigData", type);
+	json["RedisData"] = value;
 	updateConfigJson(json);
 }
 
