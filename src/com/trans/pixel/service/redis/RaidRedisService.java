@@ -83,7 +83,7 @@ public class RaidRedisService extends RedisService{
 		else{
 			EventConfigList.Builder list = EventConfigList.newBuilder();
 			Map<String, String> keyvalue = new HashMap<String, String>();
-			String xml = ReadConfig("ld_raid.xml");
+			String xml = ReadConfig("ld_raidlevel.xml");
 			parseXml(xml, list);
 			for(EventConfig config : list.getDataList()) {
 				keyvalue.put(config.getId()+"", formatJson(config));
