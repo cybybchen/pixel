@@ -193,6 +193,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
@@ -1489,6 +1490,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestBindRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		userCommandService.bindRecommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestChangeUserNameCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.changeName(cmd, responseBuilder, user);
 		return true;
 	}
 

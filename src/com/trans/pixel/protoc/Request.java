@@ -2780,6 +2780,20 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommandOrBuilder getRecommandCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    boolean hasChangeUserNameCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand getChangeUserNameCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder getChangeUserNameCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -5401,6 +5415,19 @@ public final class Request {
                 recommandCommand_ = subBuilder.buildPartial();
               }
               bitField6_ |= 0x00000010;
+              break;
+            }
+            case 2074: {
+              com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder subBuilder = null;
+              if (((bitField6_ & 0x00000020) == 0x00000020)) {
+                subBuilder = changeUserNameCommand_.toBuilder();
+              }
+              changeUserNameCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(changeUserNameCommand_);
+                changeUserNameCommand_ = subBuilder.buildPartial();
+              }
+              bitField6_ |= 0x00000020;
               break;
             }
           }
@@ -9795,6 +9822,28 @@ public final class Request {
       return recommandCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;
+    public static final int CHANGEUSERNAMECOMMAND_FIELD_NUMBER = 259;
+    private com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand changeUserNameCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    public boolean hasChangeUserNameCommand() {
+      return ((bitField6_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand getChangeUserNameCommand() {
+      return changeUserNameCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+     */
+    public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder getChangeUserNameCommandOrBuilder() {
+      return changeUserNameCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.ServerProto.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand.getDefaultInstance();
@@ -9993,6 +10042,7 @@ public final class Request {
       talentResetSkillCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.getDefaultInstance();
       bindRecommandCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.getDefaultInstance();
       recommandCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.getDefaultInstance();
+      changeUserNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10673,6 +10723,12 @@ public final class Request {
           return false;
         }
       }
+      if (hasChangeUserNameCommand()) {
+        if (!getChangeUserNameCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -11270,6 +11326,9 @@ public final class Request {
       }
       if (((bitField6_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(258, recommandCommand_);
+      }
+      if (((bitField6_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(259, changeUserNameCommand_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -12068,6 +12127,10 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(258, recommandCommand_);
       }
+      if (((bitField6_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(259, changeUserNameCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -12377,6 +12440,7 @@ public final class Request {
           getTalentResetSkillCommandFieldBuilder();
           getBindRecommandCommandFieldBuilder();
           getRecommandCommandFieldBuilder();
+          getChangeUserNameCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -13567,6 +13631,12 @@ public final class Request {
           recommandCommandBuilder_.clear();
         }
         bitField6_ = (bitField6_ & ~0x00000010);
+        if (changeUserNameCommandBuilder_ == null) {
+          changeUserNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance();
+        } else {
+          changeUserNameCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00000020);
         return this;
       }
 
@@ -15183,6 +15253,14 @@ public final class Request {
         } else {
           result.recommandCommand_ = recommandCommandBuilder_.build();
         }
+        if (((from_bitField6_ & 0x00000020) == 0x00000020)) {
+          to_bitField6_ |= 0x00000020;
+        }
+        if (changeUserNameCommandBuilder_ == null) {
+          result.changeUserNameCommand_ = changeUserNameCommand_;
+        } else {
+          result.changeUserNameCommand_ = changeUserNameCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -15795,6 +15873,9 @@ public final class Request {
         }
         if (other.hasRecommandCommand()) {
           mergeRecommandCommand(other.getRecommandCommand());
+        }
+        if (other.hasChangeUserNameCommand()) {
+          mergeChangeUserNameCommand(other.getChangeUserNameCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -16471,6 +16552,12 @@ public final class Request {
         }
         if (hasBindRecommandCommand()) {
           if (!getBindRecommandCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasChangeUserNameCommand()) {
+          if (!getChangeUserNameCommand().isInitialized()) {
             
             return false;
           }
@@ -39588,6 +39675,123 @@ public final class Request {
         return recommandCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;
+      private com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand changeUserNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder> changeUserNameCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public boolean hasChangeUserNameCommand() {
+        return ((bitField6_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand getChangeUserNameCommand() {
+        if (changeUserNameCommandBuilder_ == null) {
+          return changeUserNameCommand_;
+        } else {
+          return changeUserNameCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public Builder setChangeUserNameCommand(com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand value) {
+        if (changeUserNameCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          changeUserNameCommand_ = value;
+          onChanged();
+        } else {
+          changeUserNameCommandBuilder_.setMessage(value);
+        }
+        bitField6_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public Builder setChangeUserNameCommand(
+          com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder builderForValue) {
+        if (changeUserNameCommandBuilder_ == null) {
+          changeUserNameCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          changeUserNameCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField6_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public Builder mergeChangeUserNameCommand(com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand value) {
+        if (changeUserNameCommandBuilder_ == null) {
+          if (((bitField6_ & 0x00000020) == 0x00000020) &&
+              changeUserNameCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance()) {
+            changeUserNameCommand_ =
+              com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.newBuilder(changeUserNameCommand_).mergeFrom(value).buildPartial();
+          } else {
+            changeUserNameCommand_ = value;
+          }
+          onChanged();
+        } else {
+          changeUserNameCommandBuilder_.mergeFrom(value);
+        }
+        bitField6_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public Builder clearChangeUserNameCommand() {
+        if (changeUserNameCommandBuilder_ == null) {
+          changeUserNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          changeUserNameCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder getChangeUserNameCommandBuilder() {
+        bitField6_ |= 0x00000020;
+        onChanged();
+        return getChangeUserNameCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder getChangeUserNameCommandOrBuilder() {
+        if (changeUserNameCommandBuilder_ != null) {
+          return changeUserNameCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return changeUserNameCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder> 
+          getChangeUserNameCommandFieldBuilder() {
+        if (changeUserNameCommandBuilder_ == null) {
+          changeUserNameCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder, com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommandOrBuilder>(
+                  changeUserNameCommand_,
+                  getParentForChildren(),
+                  isClean());
+          changeUserNameCommand_ = null;
+        }
+        return changeUserNameCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -39622,414 +39826,416 @@ public final class Request {
       ".proto\032\021ServerProto.proto\032\023UserInfoProto" +
       ".proto\032\017MailProto.proto\032\020UnionProto.prot" +
       "o\032\025RewardTaskProto.proto\032\017TaskProto.prot" +
-      "o\"\256\177\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .com",
-      ".trans.pixel.protoc.HeadInfo\022G\n\017register" +
-      "Command\030\002 \001(\0132..com.trans.pixel.protoc.R" +
-      "equestRegisterCommand\022A\n\014loginCommand\030\003 " +
-      "\001(\0132+.com.trans.pixel.protoc.RequestLogi" +
-      "nCommand\022M\n\022eventResultCommand\030\004 \001(\01321.c" +
-      "om.trans.pixel.protoc.RequestEventResult" +
-      "Command\022A\n\014eventCommand\030\n \001(\0132+.com.tran" +
-      "s.pixel.protoc.RequestEventCommand\022K\n\021up" +
-      "dateTeamCommand\030\005 \001(\01320.com.trans.pixel." +
-      "protoc.RequestUpdateTeamCommand\022K\n\021level",
-      "StartCommand\030\006 \001(\01320.com.trans.pixel.pro" +
-      "toc.RequestLevelStartCommand\022U\n\026levelLoo" +
-      "tResultCommand\030\010 \001(\01325.com.trans.pixel.p" +
-      "rotoc.RequestLevelLootResultCommand\022M\n\022h" +
-      "eroLevelUpCommand\030\t \001(\01321.com.trans.pixe" +
-      "l.protoc.RequestHeroLevelUpCommand\022R\n\024he" +
-      "roLevelUpToCommand\030\227\001 \001(\01323.com.trans.pi" +
-      "xel.protoc.RequestHeroLevelUpToCommand\022H" +
-      "\n\017lockHeroCommand\030\203\001 \001(\0132..com.trans.pix" +
-      "el.protoc.RequestLockHeroCommand\022O\n\023addH",
-      "eroEquipCommand\030\013 \001(\01322.com.trans.pixel." +
-      "protoc.RequestAddHeroEquipCommand\022E\n\016lot" +
-      "teryCommand\030\016 \001(\0132-.com.trans.pixel.prot" +
-      "oc.RequestLotteryCommand\022Y\n\030getLadderRan" +
-      "kListCommand\030\017 \001(\01327.com.trans.pixel.pro" +
-      "toc.RequestGetLadderRankListCommand\022a\n\034g" +
-      "etUserLadderRankListCommand\030\020 \001(\0132;.com." +
-      "trans.pixel.protoc.RequestGetUserLadderR" +
-      "ankListCommand\022W\n\027attackLadderModeComman" +
-      "d\030\021 \001(\01326.com.trans.pixel.protoc.Request",
-      "AttackLadderModeCommand\022U\n\026getUserMailLi" +
-      "stCommand\030\022 \001(\01325.com.trans.pixel.protoc" +
-      ".RequestGetUserMailListCommand\022G\n\017readMa" +
-      "ilCommand\030\023 \001(\0132..com.trans.pixel.protoc" +
-      ".RequestReadMailCommand\022K\n\021deleteMailCom" +
-      "mand\030\024 \001(\01320.com.trans.pixel.protoc.Requ" +
-      "estDeleteMailCommand\022I\n\020addFriendCommand" +
-      "\030\025 \001(\0132/.com.trans.pixel.protoc.RequestA" +
-      "ddFriendCommand\022Q\n\024receiveFriendCommand\030" +
-      "\026 \001(\01323.com.trans.pixel.protoc.RequestRe",
-      "ceiveFriendCommand\022?\n\013areaCommand\030\032 \001(\0132" +
-      "*.com.trans.pixel.protoc.RequestAreaComm" +
-      "and\022N\n\022refreshAreaCommand\030\232\001 \001(\01321.com.t" +
-      "rans.pixel.protoc.RequestRefreshAreaComm" +
-      "and\022P\n\023useAreaEquipCommand\030\211\001 \001(\01322.com." +
-      "trans.pixel.protoc.RequestUseAreaEquipCo" +
-      "mmand\022P\n\023areaResourceCommand\030\210\001 \001(\01322.co" +
-      "m.trans.pixel.protoc.RequestAreaResource" +
-      "Command\022L\n\021unlockAreaCommand\030\205\001 \001(\01320.co" +
-      "m.trans.pixel.protoc.RequestUnlockAreaCo",
-      "mmand\022Q\n\024attackMonsterCommand\030\033 \001(\01323.co" +
-      "m.trans.pixel.protoc.RequestAttackMonste" +
-      "rCommand\022K\n\021attackBossCommand\030\034 \001(\01320.co" +
-      "m.trans.pixel.protoc.RequestAttackBossCo" +
-      "mmand\022S\n\025attackResourceCommand\030\035 \001(\01324.c" +
-      "om.trans.pixel.protoc.RequestAttackResou" +
-      "rceCommand\022[\n\031attackResourceMineCommand\030" +
-      "\036 \001(\01328.com.trans.pixel.protoc.RequestAt" +
-      "tackResourceMineCommand\022c\n\035attackResourc" +
-      "eMineInfoCommand\030| \001(\0132<.com.trans.pixel",
-      ".protoc.RequestAttackResourceMineInfoCom" +
-      "mand\022^\n\032collectResourceMineCommand\030\206\001 \001(" +
-      "\01329.com.trans.pixel.protoc.RequestCollec" +
-      "tResourceMineCommand\022I\n\020quitUnionCommand" +
-      "\030* \001(\0132/.com.trans.pixel.protoc.RequestQ" +
-      "uitUnionCommand\022I\n\020unionInfoCommand\030+ \001(" +
-      "\0132/.com.trans.pixel.protoc.RequestUnionI" +
-      "nfoCommand\022I\n\020unionListCommand\030, \001(\0132/.c" +
-      "om.trans.pixel.protoc.RequestUnionListCo" +
-      "mmand\022M\n\022createUnionCommand\030\037 \001(\01321.com.",
-      "trans.pixel.protoc.RequestCreateUnionCom" +
-      "mand\022K\n\021applyUnionCommand\030  \001(\01320.com.tr" +
-      "ans.pixel.protoc.RequestApplyUnionComman" +
-      "d\022K\n\021replyUnionCommand\030! \001(\01320.com.trans" +
-      ".pixel.protoc.RequestReplyUnionCommand\022S" +
-      "\n\022handleUnionCommand\030( \001(\01327.com.trans.p" +
-      "ixel.protoc.RequestHandleUnionMemberComm" +
-      "and\022O\n\023upgradeUnionCommand\030) \001(\01322.com.t" +
-      "rans.pixel.protoc.RequestUpgradeUnionCom" +
-      "mand\022M\n\022attackUnionCommand\030d \001(\01321.com.t",
-      "rans.pixel.protoc.RequestAttackUnionComm" +
-      "and\022M\n\022defendUnionCommand\030e \001(\01321.com.tr" +
-      "ans.pixel.protoc.RequestDefendUnionComma" +
-      "nd\022U\n\024unionAnnounceCommand\030\242\001 \001(\01326.com." +
-      "trans.pixel.protoc.RequestSetUnionAnnoun" +
-      "ceCommand\022I\n\020dailyShopCommand\030f \001(\0132/.co" +
-      "m.trans.pixel.protoc.RequestDailyShopCom" +
-      "mand\022Y\n\030dailyShopPurchaseCommand\030g \001(\01327" +
-      ".com.trans.pixel.protoc.RequestDailyShop" +
-      "PurchaseCommand\022W\n\027dailyShopRefreshComma",
-      "nd\030h \001(\01326.com.trans.pixel.protoc.Reques" +
-      "tDailyShopRefreshCommand\022?\n\013shopCommand\030" +
-      "i \001(\0132*.com.trans.pixel.protoc.RequestSh" +
-      "opCommand\022O\n\023shopPurchaseCommand\030j \001(\01322" +
-      ".com.trans.pixel.protoc.RequestShopPurch" +
-      "aseCommand\022I\n\020blackShopCommand\030k \001(\0132/.c" +
-      "om.trans.pixel.protoc.RequestBlackShopCo" +
-      "mmand\022Y\n\030blackShopPurchaseCommand\030l \001(\0132" +
-      "7.com.trans.pixel.protoc.RequestBlackSho" +
-      "pPurchaseCommand\022W\n\027blackShopRefreshComm",
-      "and\030m \001(\01326.com.trans.pixel.protoc.Reque" +
-      "stBlackShopRefreshCommand\022I\n\020unionShopCo" +
-      "mmand\030n \001(\0132/.com.trans.pixel.protoc.Req" +
-      "uestUnionShopCommand\022Y\n\030unionShopPurchas" +
-      "eCommand\030o \001(\01327.com.trans.pixel.protoc." +
-      "RequestUnionShopPurchaseCommand\022W\n\027union" +
-      "ShopRefreshCommand\030p \001(\01326.com.trans.pix" +
-      "el.protoc.RequestUnionShopRefreshCommand" +
-      "\022E\n\016PVPShopCommand\030q \001(\0132-.com.trans.pix" +
-      "el.protoc.RequestPVPShopCommand\022U\n\026PVPSh",
-      "opPurchaseCommand\030r \001(\01325.com.trans.pixe" +
-      "l.protoc.RequestPVPShopPurchaseCommand\022S" +
-      "\n\025PVPShopRefreshCommand\030s \001(\01324.com.tran" +
-      "s.pixel.protoc.RequestPVPShopRefreshComm" +
-      "and\022H\n\017raidShopCommand\030\237\001 \001(\0132..com.tran" +
-      "s.pixel.protoc.RequestRaidShopCommand\022X\n" +
-      "\027raidShopPurchaseCommand\030\240\001 \001(\01326.com.tr" +
-      "ans.pixel.protoc.RequestRaidShopPurchase" +
-      "Command\022V\n\026raidShopRefreshCommand\030\241\001 \001(\013" +
-      "25.com.trans.pixel.protoc.RequestRaidSho",
-      "pRefreshCommand\022S\n\025expeditionShopCommand" +
-      "\030t \001(\01324.com.trans.pixel.protoc.RequestE" +
-      "xpeditionShopCommand\022c\n\035expeditionShopPu" +
-      "rchaseCommand\030u \001(\0132<.com.trans.pixel.pr" +
-      "otoc.RequestExpeditionShopPurchaseComman" +
-      "d\022a\n\034expeditionShopRefreshCommand\030v \001(\0132" +
-      ";.com.trans.pixel.protoc.RequestExpediti" +
-      "onShopRefreshCommand\022K\n\021ladderShopComman" +
-      "d\030w \001(\01320.com.trans.pixel.protoc.Request" +
-      "LadderShopCommand\022[\n\031ladderShopPurchaseC",
-      "ommand\030x \001(\01328.com.trans.pixel.protoc.Re" +
-      "questLadderShopPurchaseCommand\022Y\n\030ladder" +
-      "ShopRefreshCommand\030y \001(\01327.com.trans.pix" +
-      "el.protoc.RequestLadderShopRefreshComman" +
-      "d\022J\n\020libaoShopCommand\030\216\001 \001(\0132/.com.trans" +
-      ".pixel.protoc.RequestLibaoShopCommand\022O\n" +
-      "\023purchaseCoinCommand\030z \001(\01322.com.trans.p" +
-      "ixel.protoc.RequestPurchaseCoinCommand\022B" +
-      "\n\013teamCommand\030{ \001(\0132-.com.trans.pixel.pr" +
-      "otoc.RequestGetTeamCommand\022R\n\024refreshPvp",
-      "MapCommand\030\214\001 \001(\01323.com.trans.pixel.prot" +
-      "oc.RequestRefreshPVPMapCommand\022K\n\021pvpMap" +
-      "ListCommand\030} \001(\01320.com.trans.pixel.prot" +
-      "oc.RequestPVPMapListCommand\022S\n\025pvpInbrea" +
-      "kListCommand\030\177 \001(\01324.com.trans.pixel.pro" +
-      "toc.RequestPVPInbreakListCommand\022P\n\023unlo" +
-      "ckPvpMapCommand\030\204\001 \001(\01322.com.trans.pixel" +
-      ".protoc.RequestUnlockPVPMapCommand\022W\n\027at" +
-      "tackPVPMonsterCommand\030~ \001(\01326.com.trans." +
-      "pixel.protoc.RequestAttackPVPMonsterComm",
-      "and\022N\n\022pvpMineInfoCommand\030\200\001 \001(\01321.com.t" +
-      "rans.pixel.protoc.RequestPVPMineInfoComm" +
-      "and\022R\n\024attackPVPMineCommand\030\201\001 \001(\01323.com" +
-      ".trans.pixel.protoc.RequestAttackPVPMine" +
-      "Command\022T\n\025refreshPVPMineCommand\030\202\001 \001(\0132" +
-      "4.com.trans.pixel.protoc.RequestRefreshP" +
-      "VPMineCommand\022B\n\014cdkeyCommand\030\212\001 \001(\0132+.c" +
-      "om.trans.pixel.protoc.RequestCdkeyComman" +
-      "d\022R\n\024cheatrechargeCommand\030\213\001 \001(\01323.com.t" +
-      "rans.pixel.protoc.RequestCheatRechargeCo",
-      "mmand\022X\n\027purchaseVipLibaoCommand\030\215\001 \001(\0132" +
-      "6.com.trans.pixel.protoc.RequestPurchase" +
-      "VipLibaoCommand\022P\n\023getGrowJewelCommand\030\225" +
-      "\001 \001(\01322.com.trans.pixel.protoc.RequestGe" +
-      "tGrowJewelCommand\022L\n\021getGrowExpCommand\030\226" +
-      "\001 \001(\01320.com.trans.pixel.protoc.RequestGe" +
-      "tGrowExpCommand\022\\\n\031purchaseLadderTimeCom" +
-      "mand\030\230\001 \001(\01328.com.trans.pixel.protoc.Req" +
-      "uestPurchaseLadderTimeCommand\022X\n\027purchas" +
-      "eContractCommand\030\231\001 \001(\01326.com.trans.pixe",
-      "l.protoc.RequestPurchaseContractCommand\022" +
-      "J\n\020fightInfoCommand\030\233\001 \001(\0132/.com.trans.p" +
-      "ixel.protoc.RequestFightInfoCommand\022P\n\023g" +
-      "etFightInfoCommand\030\234\001 \001(\01322.com.trans.pi" +
-      "xel.protoc.RequestGetFightInfoCommand\022H\n" +
-      "\017openRaidCommand\030\235\001 \001(\0132..com.trans.pixe" +
-      "l.protoc.RequestOpenRaidCommand\022E\n\013raidC" +
-      "ommand\030\236\001 \001(\0132/.com.trans.pixel.protoc.R" +
-      "equestStartRaidCommand\022W\n\027messageBoardLi" +
-      "stCommand\030$ \001(\01326.com.trans.pixel.protoc",
-      ".RequestMessageBoardListCommand\022[\n\031creat" +
-      "eMessageBoardCommand\030% \001(\01328.com.trans.p" +
-      "ixel.protoc.RequestCreateMessageBoardCom" +
-      "mand\022O\n\023replyMessageCommand\030& \001(\01322.com." +
-      "trans.pixel.protoc.RequestReplyMessageCo" +
-      "mmand\022O\n\023userTeamListCommand\030. \001(\01322.com" +
-      ".trans.pixel.protoc.RequestUserTeamListC" +
-      "ommand\022V\n\025ladderUserInfoCommand\030/ \001(\01327." +
-      "com.trans.pixel.protoc.RequestGetLadderU" +
-      "serInfoCommand\022V\n\025userFriendListCommand\030",
-      "0 \001(\01327.com.trans.pixel.protoc.RequestGe" +
-      "tUserFriendListCommand\022O\n\023equipComposeCo" +
-      "mmand\0302 \001(\01322.com.trans.pixel.protoc.Req" +
-      "uestEquipComposeCommand\022E\n\016usePropComman" +
-      "d\0303 \001(\0132-.com.trans.pixel.protoc.Request" +
-      "UsePropCommand\022M\n\022fenjieEquipCommand\0304 \001" +
-      "(\01321.com.trans.pixel.protoc.RequestFenji" +
-      "eEquipCommand\022?\n\013signCommand\0305 \001(\0132*.com" +
-      ".trans.pixel.protoc.RequestSignCommand\022Y" +
-      "\n\030helpAttackPVPMineCommand\0307 \001(\01327.com.t",
-      "rans.pixel.protoc.RequestHelpAttackPVPMi" +
-      "neCommand\022K\n\021fenjieHeroCommand\0308 \001(\01320.c" +
-      "om.trans.pixel.protoc.RequestFenjieHeroC" +
-      "ommand\022S\n\025resetHeroSkillCommand\0309 \001(\01324." +
-      "com.trans.pixel.protoc.RequestResetHeroS" +
-      "killCommand\022G\n\017heroSpUpCommand\0301 \001(\0132..c" +
-      "om.trans.pixel.protoc.RequestHeroSpUpCom" +
-      "mand\022G\n\017sendMailCommand\030: \001(\0132..com.tran" +
-      "s.pixel.protoc.RequestSendMailCommand\022U\n" +
-      "\026brotherMineInfoCommand\030; \001(\01325.com.tran",
-      "s.pixel.protoc.RequestBrotherMineInfoCom" +
-      "mand\022Q\n\024enterMohuaMapCommand\030< \001(\01323.com" +
-      ".trans.pixel.protoc.RequestEnterMohuaMap" +
-      "Command\022Q\n\024startMohuaMapCommand\030= \001(\01323." +
-      "com.trans.pixel.protoc.RequestStartMohua" +
-      "MapCommand\022O\n\023useMohuaCardCommand\030> \001(\0132" +
-      "2.com.trans.pixel.protoc.RequestUseMohua" +
-      "CardCommand\022W\n\027mohuaStageRewardCommand\030?" +
-      " \001(\01326.com.trans.pixel.protoc.RequestMoh" +
-      "uaStageRewardCommand\022Q\n\024mohuaHpRewardCom",
-      "mand\030@ \001(\01323.com.trans.pixel.protoc.Requ" +
-      "estMohuaHpRewardCommand\022W\n\027mohuaSubmitSt" +
-      "ageCommand\030A \001(\01326.com.trans.pixel.proto" +
-      "c.RequestMohuaSubmitStageCommand\022M\n\022endM" +
-      "ohuaMapCommand\030B \001(\01321.com.trans.pixel.p" +
-      "rotoc.RequestEndMohuaMapCommand\022I\n\020saleE" +
-      "quipCommand\030C \001(\0132/.com.trans.pixel.prot" +
-      "oc.RequestSaleEquipCommand\022I\n\020delFriendC" +
-      "ommand\030D \001(\0132/.com.trans.pixel.protoc.Re" +
-      "questDelFriendCommand\022O\n\023submitZhanliCom",
-      "mand\030E \001(\01322.com.trans.pixel.protoc.Requ" +
-      "estSubmitZhanliCommand\022Q\n\024achieveRewardC" +
-      "ommand\030F \001(\01323.com.trans.pixel.protoc.Re" +
-      "questAchieveRewardCommand\022M\n\022achieveList" +
-      "Command\030G \001(\01321.com.trans.pixel.protoc.R" +
-      "equestAchieveListCommand\022Q\n\024richangRewar" +
-      "dCommand\030I \001(\01323.com.trans.pixel.protoc." +
-      "RequestRichangRewardCommand\022M\n\022richangLi" +
-      "stCommand\030J \001(\01321.com.trans.pixel.protoc" +
-      ".RequestRichangListCommand\022S\n\025kaifu2Acti",
-      "vityCommand\030K \001(\01324.com.trans.pixel.prot" +
-      "oc.RequestKaifu2ActivityCommand\022M\n\022kaifu" +
-      "RewardCommand\030M \001(\01321.com.trans.pixel.pr" +
-      "otoc.RequestKaifuRewardCommand\022I\n\020kaifuL" +
-      "istCommand\030N \001(\0132/.com.trans.pixel.proto" +
-      "c.RequestKaifuListCommand\022K\n\021userPokedeC" +
-      "ommand\030P \001(\01320.com.trans.pixel.protoc.Re" +
-      "questUserPokedeCommand\022?\n\013rankCommand\030Q " +
-      "\001(\0132*.com.trans.pixel.protoc.RequestRank" +
-      "Command\022S\n\025buyHeroPackageCommand\030R \001(\01324",
-      ".com.trans.pixel.protoc.RequestBuyHeroPa" +
-      "ckageCommand\022[\n\031submitComposeSkillComman" +
-      "d\030S \001(\01328.com.trans.pixel.protoc.Request" +
-      "SubmitComposeSkillCommand\022K\n\021submitIconC" +
-      "ommand\030U \001(\01320.com.trans.pixel.protoc.Re" +
-      "questSubmitIconCommand\022Y\n\030readyAttackLad" +
-      "derCommand\030V \001(\01327.com.trans.pixel.proto" +
-      "c.RequestReadyAttackLadderCommand\022M\n\022bin" +
-      "dAccountCommand\030W \001(\01321.com.trans.pixel." +
-      "protoc.RequestBindAccountCommand\022Q\n\024quer",
-      "yRechargeCommand\030X \001(\01323.com.trans.pixel" +
-      ".protoc.RequestQueryRechargeCommand\022U\n\026s" +
-      "houchongRewardCommand\030Y \001(\01325.com.trans." +
-      "pixel.protoc.RequestShouchongRewardComma" +
-      "nd\022I\n\020heartBeatCommand\030Z \001(\0132/.com.trans" +
-      ".pixel.protoc.RequestHeartBeatCommand\022I\n" +
-      "\020greenhandCommand\030[ \001(\0132/.com.trans.pixe" +
-      "l.protoc.RequestGreenhandCommand\022=\n\nlogC" +
-      "ommand\030\\ \001(\0132).com.trans.pixel.protoc.Re" +
-      "questLogCommand\022G\n\017feedFoodCommand\030] \001(\013",
-      "2..com.trans.pixel.protoc.RequestFeedFoo" +
-      "dCommand\022I\n\020clearHeroCommand\030^ \001(\0132/.com" +
-      ".trans.pixel.protoc.RequestClearHeroComm" +
-      "and\022S\n\025choseClearInfoCommand\030_ \001(\01324.com" +
-      ".trans.pixel.protoc.RequestChoseClearInf" +
-      "oCommand\022S\n\025submitBosskillCommand\030` \001(\0132" +
-      "4.com.trans.pixel.protoc.RequestSubmitBo" +
-      "sskillCommand\022G\n\017bosskillCommand\030a \001(\0132." +
-      ".com.trans.pixel.protoc.RequestBosskillC" +
-      "ommand\022S\n\025unionBossFightCommand\030b \001(\01324.",
-      "com.trans.pixel.protoc.RequestUnionBossF" +
-      "ightCommand\022S\n\025heroStrengthenCommand\030c \001" +
-      "(\01324.com.trans.pixel.protoc.RequestHeroS" +
-      "trengthenCommand\022T\n\025sevenLoginSignComman" +
-      "d\030\310\001 \001(\01324.com.trans.pixel.protoc.Reques" +
-      "tSevenLoginSignCommand\022N\n\022isAreaOwnerCom" +
-      "mand\030\311\001 \001(\01321.com.trans.pixel.protoc.Req" +
-      "uestIsAreaOwnerCommand\022L\n\021openFetterComm" +
-      "and\030\312\001 \001(\01320.com.trans.pixel.protoc.Requ" +
-      "estOpenFetterCommand\022H\n\017userTaskCommand\030",
-      "\313\001 \001(\0132..com.trans.pixel.protoc.RequestU" +
-      "serTaskCommand\022R\n\024getTaskRewardCommand\030\314" +
-      "\001 \001(\01323.com.trans.pixel.protoc.RequestGe" +
-      "tTaskRewardCommand\022Z\n\030submitBattletowerC" +
-      "ommand\030\315\001 \001(\01327.com.trans.pixel.protoc.R" +
-      "equestSubmitBattletowerCommand\022X\n\027resetB" +
-      "attletowerCommand\030\316\001 \001(\01326.com.trans.pix" +
-      "el.protoc.RequestResetBattletowerCommand" +
-      "\022T\n\025getBattletowerCommand\030\317\001 \001(\01324.com.t" +
-      "rans.pixel.protoc.RequestGetBattletowerC",
-      "ommand\022V\n\026battletowerShopCommand\030\320\001 \001(\0132" +
-      "5.com.trans.pixel.protoc.RequestBattleto" +
-      "werShopCommand\022f\n\036battletowerShopPurchas" +
-      "eCommand\030\321\001 \001(\0132=.com.trans.pixel.protoc" +
-      ".RequestBattletowerShopPurchaseCommand\022d" +
-      "\n\035battletowerShopRefreshCommand\030\322\001 \001(\0132<" +
-      ".com.trans.pixel.protoc.RequestBattletow" +
-      "erShopRefreshCommand\022L\n\021bloodEnterComman" +
-      "d\030\323\001 \001(\01320.com.trans.pixel.protoc.Reques" +
-      "tBloodEnterCommand\022N\n\022bloodXiazhuCommand",
-      "\030\324\001 \001(\01321.com.trans.pixel.protoc.Request" +
-      "BloodXiazhuCommand\022X\n\027queryNoticeBoardCo" +
-      "mmand\030\325\001 \001(\01326.com.trans.pixel.protoc.Re" +
-      "questQueryNoticeBoardCommand\022J\n\020helpLeve" +
-      "lCommand\030\326\001 \001(\0132/.com.trans.pixel.protoc" +
-      ".RequestHelpLevelCommand\022V\n\026inviteFightB" +
-      "ossCommand\030\327\001 \001(\01325.com.trans.pixel.prot" +
-      "oc.RequestInviteFightBossCommand\022R\n\024quit" +
-      "FightBossCommand\030\330\001 \001(\01323.com.trans.pixe" +
-      "l.protoc.RequestQuitFightBossCommand\022Z\n\026",
-      "submitBossScoreCommand\030\331\001 \001(\01329.com.tran" +
-      "s.pixel.protoc.RequestSubmitBossRoomScor" +
-      "eCommand\022H\n\017userInfoCommand\030\332\001 \001(\0132..com" +
-      ".trans.pixel.protoc.RequestUserInfoComma" +
-      "nd\022H\n\017rechargeCommand\030\333\001 \001(\0132..com.trans" +
-      ".pixel.protoc.RequestRechargeCommand\022R\n\024" +
-      "talentupgradeCommand\030\334\001 \001(\01323.com.trans." +
-      "pixel.protoc.RequestTalentupgradeCommand" +
-      "\022V\n\026talentChangeUseCommand\030\337\001 \001(\01325.com." +
-      "trans.pixel.protoc.RequestTalentChangeUs",
-      "eCommand\022Z\n\030talentChangeSkillCommand\030\340\001 " +
-      "\001(\01327.com.trans.pixel.protoc.RequestTale" +
-      "ntChangeSkillCommand\022R\n\024startBossRoomCom" +
-      "mand\030\341\001 \001(\01323.com.trans.pixel.protoc.Req" +
-      "uestStartBossRoomCommand\022T\n\025createBossRo" +
-      "omCommand\030\342\001 \001(\01324.com.trans.pixel.proto" +
-      "c.RequestCreateBossRoomCommand\022P\n\023bossRo" +
-      "omInfoCommand\030\343\001 \001(\01322.com.trans.pixel.p" +
-      "rotoc.RequestBossRoomInfoCommand\022T\n\025equi" +
-      "pStrenthenCommand\030\344\001 \001(\01324.com.trans.pix",
-      "el.protoc.RequestEquipStrenthenCommand\022N" +
-      "\n\022equipPokedeCommand\030\345\001 \001(\01321.com.trans." +
-      "pixel.protoc.RequestEquipPokedeCommand\022Z" +
-      "\n\030talentChangeEquipCommand\030\346\001 \001(\01327.com." +
-      "trans.pixel.protoc.RequestTalentChangeEq" +
-      "uipCommand\022^\n\032zanHeroMessageBoardCommand" +
-      "\030\347\001 \001(\01329.com.trans.pixel.protoc.Request" +
-      "ZanHeroMessageBoardCommand\022`\n\033createRewa" +
-      "rdTaskRoomCommand\030\350\001 \001(\0132:.com.trans.pix" +
-      "el.protoc.RequestCreateRewardTaskRoomCom",
-      "mand\022\\\n\031quitRewardTaskRoomCommand\030\351\001 \001(\013" +
-      "28.com.trans.pixel.protoc.RequestQuitRew" +
-      "ardTaskRoomCommand\022d\n\035inviteToRewardTask" +
-      "RoomCommand\030\352\001 \001(\0132<.com.trans.pixel.pro" +
-      "toc.RequestInviteToRewardTaskRoomCommand" +
-      "\022b\n\034submitRewardTaskScoreCommand\030\353\001 \001(\0132" +
-      ";.com.trans.pixel.protoc.RequestSubmitRe" +
-      "wardTaskScoreCommand\022T\n\025userRewardTaskCo" +
-      "mmand\030\354\001 \001(\01324.com.trans.pixel.protoc.Re" +
-      "questUserRewardTaskCommand\022X\n\027rewardTask",
-      "RewardCommand\030\355\001 \001(\01326.com.trans.pixel.p" +
-      "rotoc.RequestRewardTaskRewardCommand\022\\\n\031" +
-      "userRewardTaskRoomCommand\030\356\001 \001(\01328.com.t" +
-      "rans.pixel.protoc.RequestUserRewardTaskR" +
-      "oomCommand\022Z\n\030synthetiseComposeCommand\030\357" +
-      "\001 \001(\01327.com.trans.pixel.protoc.RequestSy" +
-      "nthetiseComposeCommand\022X\n\027giveupRewardTa" +
-      "skCommand\030\360\001 \001(\01326.com.trans.pixel.proto" +
-      "c.RequestGiveupRewardTaskCommand\022N\n\022extr" +
-      "aRewardCommand\030\361\001 \001(\01321.com.trans.pixel.",
-      "protoc.RequestExtraRewardCommand\022H\n\017even" +
-      "tBuyCommand\030\362\001 \001(\0132..com.trans.pixel.pro" +
-      "toc.RequestEventBuyCommand\022L\n\021ladderInfo" +
-      "Command\030\363\001 \001(\01320.com.trans.pixel.protoc." +
-      "RequestLadderInfoCommand\022\\\n\031refreshLadde" +
-      "rEnemyCommand\030\364\001 \001(\01328.com.trans.pixel.p" +
-      "rotoc.RequestRefreshLadderEnemyCommand\022\\" +
-      "\n\031submitLadderResultCommand\030\365\001 \001(\01328.com" +
-      ".trans.pixel.protoc.RequestSubmitLadderR" +
-      "esultCommand\022X\n\027ladderTaskRewardCommand\030",
-      "\366\001 \001(\01326.com.trans.pixel.protoc.RequestL" +
-      "adderTaskRewardCommand\022\\\n\031ladderSeasonRe" +
-      "wardCommand\030\367\001 \001(\01328.com.trans.pixel.pro" +
-      "toc.RequestLadderSeasonRewardCommand\022N\n\022" +
-      "ladderEnemyCommand\030\370\001 \001(\01321.com.trans.pi" +
-      "xel.protoc.RequestLadderEnemyCommand\022P\n\023" +
-      "buySavingBoxCommand\030\371\001 \001(\01322.com.trans.p" +
-      "ixel.protoc.RequestBuySavingBoxCommand\022F" +
-      "\n\016equipupCommand\030\372\001 \001(\0132-.com.trans.pixe" +
-      "l.protoc.RequestEquipupCommand\022V\n\026materi",
-      "alComposeCommand\030\373\001 \001(\01325.com.trans.pixe" +
-      "l.protoc.RequestMaterialComposeCommand\022N" +
-      "\n\022useMaterialCommand\030\374\001 \001(\01321.com.trans." +
-      "pixel.protoc.RequestUseMaterialCommand\022T" +
-      "\n\025changePositionCommand\030\375\001 \001(\01324.com.tra" +
-      "ns.pixel.protoc.RequestChangePositionCom" +
-      "mand\022L\n\021talentSpUpCommand\030\376\001 \001(\01320.com.t" +
-      "rans.pixel.protoc.RequestTalentSpUpComma" +
-      "nd\022\\\n\031talentSkillLevelupCommand\030\377\001 \001(\01328" +
-      ".com.trans.pixel.protoc.RequestTalentSki",
-      "llLevelupCommand\022X\n\027talentResetSkillComm" +
-      "and\030\200\002 \001(\01326.com.trans.pixel.protoc.Requ" +
-      "estTalentResetSkillCommand\022R\n\024bindRecomm" +
-      "andCommand\030\201\002 \001(\01323.com.trans.pixel.prot" +
-      "oc.RequestBindRecommandCommand\022J\n\020recomm" +
-      "andCommand\030\202\002 \001(\0132/.com.trans.pixel.prot" +
-      "oc.RequestRecommandCommand"
+      "o\"\204\200\001\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .co",
+      "m.trans.pixel.protoc.HeadInfo\022G\n\017registe" +
+      "rCommand\030\002 \001(\0132..com.trans.pixel.protoc." +
+      "RequestRegisterCommand\022A\n\014loginCommand\030\003" +
+      " \001(\0132+.com.trans.pixel.protoc.RequestLog" +
+      "inCommand\022M\n\022eventResultCommand\030\004 \001(\01321." +
+      "com.trans.pixel.protoc.RequestEventResul" +
+      "tCommand\022A\n\014eventCommand\030\n \001(\0132+.com.tra" +
+      "ns.pixel.protoc.RequestEventCommand\022K\n\021u" +
+      "pdateTeamCommand\030\005 \001(\01320.com.trans.pixel" +
+      ".protoc.RequestUpdateTeamCommand\022K\n\021leve",
+      "lStartCommand\030\006 \001(\01320.com.trans.pixel.pr" +
+      "otoc.RequestLevelStartCommand\022U\n\026levelLo" +
+      "otResultCommand\030\010 \001(\01325.com.trans.pixel." +
+      "protoc.RequestLevelLootResultCommand\022M\n\022" +
+      "heroLevelUpCommand\030\t \001(\01321.com.trans.pix" +
+      "el.protoc.RequestHeroLevelUpCommand\022R\n\024h" +
+      "eroLevelUpToCommand\030\227\001 \001(\01323.com.trans.p" +
+      "ixel.protoc.RequestHeroLevelUpToCommand\022" +
+      "H\n\017lockHeroCommand\030\203\001 \001(\0132..com.trans.pi" +
+      "xel.protoc.RequestLockHeroCommand\022O\n\023add",
+      "HeroEquipCommand\030\013 \001(\01322.com.trans.pixel" +
+      ".protoc.RequestAddHeroEquipCommand\022E\n\016lo" +
+      "tteryCommand\030\016 \001(\0132-.com.trans.pixel.pro" +
+      "toc.RequestLotteryCommand\022Y\n\030getLadderRa" +
+      "nkListCommand\030\017 \001(\01327.com.trans.pixel.pr" +
+      "otoc.RequestGetLadderRankListCommand\022a\n\034" +
+      "getUserLadderRankListCommand\030\020 \001(\0132;.com" +
+      ".trans.pixel.protoc.RequestGetUserLadder" +
+      "RankListCommand\022W\n\027attackLadderModeComma" +
+      "nd\030\021 \001(\01326.com.trans.pixel.protoc.Reques",
+      "tAttackLadderModeCommand\022U\n\026getUserMailL" +
+      "istCommand\030\022 \001(\01325.com.trans.pixel.proto" +
+      "c.RequestGetUserMailListCommand\022G\n\017readM" +
+      "ailCommand\030\023 \001(\0132..com.trans.pixel.proto" +
+      "c.RequestReadMailCommand\022K\n\021deleteMailCo" +
+      "mmand\030\024 \001(\01320.com.trans.pixel.protoc.Req" +
+      "uestDeleteMailCommand\022I\n\020addFriendComman" +
+      "d\030\025 \001(\0132/.com.trans.pixel.protoc.Request" +
+      "AddFriendCommand\022Q\n\024receiveFriendCommand" +
+      "\030\026 \001(\01323.com.trans.pixel.protoc.RequestR",
+      "eceiveFriendCommand\022?\n\013areaCommand\030\032 \001(\013" +
+      "2*.com.trans.pixel.protoc.RequestAreaCom" +
+      "mand\022N\n\022refreshAreaCommand\030\232\001 \001(\01321.com." +
+      "trans.pixel.protoc.RequestRefreshAreaCom" +
+      "mand\022P\n\023useAreaEquipCommand\030\211\001 \001(\01322.com" +
+      ".trans.pixel.protoc.RequestUseAreaEquipC" +
+      "ommand\022P\n\023areaResourceCommand\030\210\001 \001(\01322.c" +
+      "om.trans.pixel.protoc.RequestAreaResourc" +
+      "eCommand\022L\n\021unlockAreaCommand\030\205\001 \001(\01320.c" +
+      "om.trans.pixel.protoc.RequestUnlockAreaC",
+      "ommand\022Q\n\024attackMonsterCommand\030\033 \001(\01323.c" +
+      "om.trans.pixel.protoc.RequestAttackMonst" +
+      "erCommand\022K\n\021attackBossCommand\030\034 \001(\01320.c" +
+      "om.trans.pixel.protoc.RequestAttackBossC" +
+      "ommand\022S\n\025attackResourceCommand\030\035 \001(\01324." +
+      "com.trans.pixel.protoc.RequestAttackReso" +
+      "urceCommand\022[\n\031attackResourceMineCommand" +
+      "\030\036 \001(\01328.com.trans.pixel.protoc.RequestA" +
+      "ttackResourceMineCommand\022c\n\035attackResour" +
+      "ceMineInfoCommand\030| \001(\0132<.com.trans.pixe",
+      "l.protoc.RequestAttackResourceMineInfoCo" +
+      "mmand\022^\n\032collectResourceMineCommand\030\206\001 \001" +
+      "(\01329.com.trans.pixel.protoc.RequestColle" +
+      "ctResourceMineCommand\022I\n\020quitUnionComman" +
+      "d\030* \001(\0132/.com.trans.pixel.protoc.Request" +
+      "QuitUnionCommand\022I\n\020unionInfoCommand\030+ \001" +
+      "(\0132/.com.trans.pixel.protoc.RequestUnion" +
+      "InfoCommand\022I\n\020unionListCommand\030, \001(\0132/." +
+      "com.trans.pixel.protoc.RequestUnionListC" +
+      "ommand\022M\n\022createUnionCommand\030\037 \001(\01321.com",
+      ".trans.pixel.protoc.RequestCreateUnionCo" +
+      "mmand\022K\n\021applyUnionCommand\030  \001(\01320.com.t" +
+      "rans.pixel.protoc.RequestApplyUnionComma" +
+      "nd\022K\n\021replyUnionCommand\030! \001(\01320.com.tran" +
+      "s.pixel.protoc.RequestReplyUnionCommand\022" +
+      "S\n\022handleUnionCommand\030( \001(\01327.com.trans." +
+      "pixel.protoc.RequestHandleUnionMemberCom" +
+      "mand\022O\n\023upgradeUnionCommand\030) \001(\01322.com." +
+      "trans.pixel.protoc.RequestUpgradeUnionCo" +
+      "mmand\022M\n\022attackUnionCommand\030d \001(\01321.com.",
+      "trans.pixel.protoc.RequestAttackUnionCom" +
+      "mand\022M\n\022defendUnionCommand\030e \001(\01321.com.t" +
+      "rans.pixel.protoc.RequestDefendUnionComm" +
+      "and\022U\n\024unionAnnounceCommand\030\242\001 \001(\01326.com" +
+      ".trans.pixel.protoc.RequestSetUnionAnnou" +
+      "nceCommand\022I\n\020dailyShopCommand\030f \001(\0132/.c" +
+      "om.trans.pixel.protoc.RequestDailyShopCo" +
+      "mmand\022Y\n\030dailyShopPurchaseCommand\030g \001(\0132" +
+      "7.com.trans.pixel.protoc.RequestDailySho" +
+      "pPurchaseCommand\022W\n\027dailyShopRefreshComm",
+      "and\030h \001(\01326.com.trans.pixel.protoc.Reque" +
+      "stDailyShopRefreshCommand\022?\n\013shopCommand" +
+      "\030i \001(\0132*.com.trans.pixel.protoc.RequestS" +
+      "hopCommand\022O\n\023shopPurchaseCommand\030j \001(\0132" +
+      "2.com.trans.pixel.protoc.RequestShopPurc" +
+      "haseCommand\022I\n\020blackShopCommand\030k \001(\0132/." +
+      "com.trans.pixel.protoc.RequestBlackShopC" +
+      "ommand\022Y\n\030blackShopPurchaseCommand\030l \001(\013" +
+      "27.com.trans.pixel.protoc.RequestBlackSh" +
+      "opPurchaseCommand\022W\n\027blackShopRefreshCom",
+      "mand\030m \001(\01326.com.trans.pixel.protoc.Requ" +
+      "estBlackShopRefreshCommand\022I\n\020unionShopC" +
+      "ommand\030n \001(\0132/.com.trans.pixel.protoc.Re" +
+      "questUnionShopCommand\022Y\n\030unionShopPurcha" +
+      "seCommand\030o \001(\01327.com.trans.pixel.protoc" +
+      ".RequestUnionShopPurchaseCommand\022W\n\027unio" +
+      "nShopRefreshCommand\030p \001(\01326.com.trans.pi" +
+      "xel.protoc.RequestUnionShopRefreshComman" +
+      "d\022E\n\016PVPShopCommand\030q \001(\0132-.com.trans.pi" +
+      "xel.protoc.RequestPVPShopCommand\022U\n\026PVPS",
+      "hopPurchaseCommand\030r \001(\01325.com.trans.pix" +
+      "el.protoc.RequestPVPShopPurchaseCommand\022" +
+      "S\n\025PVPShopRefreshCommand\030s \001(\01324.com.tra" +
+      "ns.pixel.protoc.RequestPVPShopRefreshCom" +
+      "mand\022H\n\017raidShopCommand\030\237\001 \001(\0132..com.tra" +
+      "ns.pixel.protoc.RequestRaidShopCommand\022X" +
+      "\n\027raidShopPurchaseCommand\030\240\001 \001(\01326.com.t" +
+      "rans.pixel.protoc.RequestRaidShopPurchas" +
+      "eCommand\022V\n\026raidShopRefreshCommand\030\241\001 \001(" +
+      "\01325.com.trans.pixel.protoc.RequestRaidSh",
+      "opRefreshCommand\022S\n\025expeditionShopComman" +
+      "d\030t \001(\01324.com.trans.pixel.protoc.Request" +
+      "ExpeditionShopCommand\022c\n\035expeditionShopP" +
+      "urchaseCommand\030u \001(\0132<.com.trans.pixel.p" +
+      "rotoc.RequestExpeditionShopPurchaseComma" +
+      "nd\022a\n\034expeditionShopRefreshCommand\030v \001(\013" +
+      "2;.com.trans.pixel.protoc.RequestExpedit" +
+      "ionShopRefreshCommand\022K\n\021ladderShopComma" +
+      "nd\030w \001(\01320.com.trans.pixel.protoc.Reques" +
+      "tLadderShopCommand\022[\n\031ladderShopPurchase",
+      "Command\030x \001(\01328.com.trans.pixel.protoc.R" +
+      "equestLadderShopPurchaseCommand\022Y\n\030ladde" +
+      "rShopRefreshCommand\030y \001(\01327.com.trans.pi" +
+      "xel.protoc.RequestLadderShopRefreshComma" +
+      "nd\022J\n\020libaoShopCommand\030\216\001 \001(\0132/.com.tran" +
+      "s.pixel.protoc.RequestLibaoShopCommand\022O" +
+      "\n\023purchaseCoinCommand\030z \001(\01322.com.trans." +
+      "pixel.protoc.RequestPurchaseCoinCommand\022" +
+      "B\n\013teamCommand\030{ \001(\0132-.com.trans.pixel.p" +
+      "rotoc.RequestGetTeamCommand\022R\n\024refreshPv",
+      "pMapCommand\030\214\001 \001(\01323.com.trans.pixel.pro" +
+      "toc.RequestRefreshPVPMapCommand\022K\n\021pvpMa" +
+      "pListCommand\030} \001(\01320.com.trans.pixel.pro" +
+      "toc.RequestPVPMapListCommand\022S\n\025pvpInbre" +
+      "akListCommand\030\177 \001(\01324.com.trans.pixel.pr" +
+      "otoc.RequestPVPInbreakListCommand\022P\n\023unl" +
+      "ockPvpMapCommand\030\204\001 \001(\01322.com.trans.pixe" +
+      "l.protoc.RequestUnlockPVPMapCommand\022W\n\027a" +
+      "ttackPVPMonsterCommand\030~ \001(\01326.com.trans" +
+      ".pixel.protoc.RequestAttackPVPMonsterCom",
+      "mand\022N\n\022pvpMineInfoCommand\030\200\001 \001(\01321.com." +
+      "trans.pixel.protoc.RequestPVPMineInfoCom" +
+      "mand\022R\n\024attackPVPMineCommand\030\201\001 \001(\01323.co" +
+      "m.trans.pixel.protoc.RequestAttackPVPMin" +
+      "eCommand\022T\n\025refreshPVPMineCommand\030\202\001 \001(\013" +
+      "24.com.trans.pixel.protoc.RequestRefresh" +
+      "PVPMineCommand\022B\n\014cdkeyCommand\030\212\001 \001(\0132+." +
+      "com.trans.pixel.protoc.RequestCdkeyComma" +
+      "nd\022R\n\024cheatrechargeCommand\030\213\001 \001(\01323.com." +
+      "trans.pixel.protoc.RequestCheatRechargeC",
+      "ommand\022X\n\027purchaseVipLibaoCommand\030\215\001 \001(\013" +
+      "26.com.trans.pixel.protoc.RequestPurchas" +
+      "eVipLibaoCommand\022P\n\023getGrowJewelCommand\030" +
+      "\225\001 \001(\01322.com.trans.pixel.protoc.RequestG" +
+      "etGrowJewelCommand\022L\n\021getGrowExpCommand\030" +
+      "\226\001 \001(\01320.com.trans.pixel.protoc.RequestG" +
+      "etGrowExpCommand\022\\\n\031purchaseLadderTimeCo" +
+      "mmand\030\230\001 \001(\01328.com.trans.pixel.protoc.Re" +
+      "questPurchaseLadderTimeCommand\022X\n\027purcha" +
+      "seContractCommand\030\231\001 \001(\01326.com.trans.pix",
+      "el.protoc.RequestPurchaseContractCommand" +
+      "\022J\n\020fightInfoCommand\030\233\001 \001(\0132/.com.trans." +
+      "pixel.protoc.RequestFightInfoCommand\022P\n\023" +
+      "getFightInfoCommand\030\234\001 \001(\01322.com.trans.p" +
+      "ixel.protoc.RequestGetFightInfoCommand\022H" +
+      "\n\017openRaidCommand\030\235\001 \001(\0132..com.trans.pix" +
+      "el.protoc.RequestOpenRaidCommand\022E\n\013raid" +
+      "Command\030\236\001 \001(\0132/.com.trans.pixel.protoc." +
+      "RequestStartRaidCommand\022W\n\027messageBoardL" +
+      "istCommand\030$ \001(\01326.com.trans.pixel.proto",
+      "c.RequestMessageBoardListCommand\022[\n\031crea" +
+      "teMessageBoardCommand\030% \001(\01328.com.trans." +
+      "pixel.protoc.RequestCreateMessageBoardCo" +
+      "mmand\022O\n\023replyMessageCommand\030& \001(\01322.com" +
+      ".trans.pixel.protoc.RequestReplyMessageC" +
+      "ommand\022O\n\023userTeamListCommand\030. \001(\01322.co" +
+      "m.trans.pixel.protoc.RequestUserTeamList" +
+      "Command\022V\n\025ladderUserInfoCommand\030/ \001(\01327" +
+      ".com.trans.pixel.protoc.RequestGetLadder" +
+      "UserInfoCommand\022V\n\025userFriendListCommand",
+      "\0300 \001(\01327.com.trans.pixel.protoc.RequestG" +
+      "etUserFriendListCommand\022O\n\023equipComposeC" +
+      "ommand\0302 \001(\01322.com.trans.pixel.protoc.Re" +
+      "questEquipComposeCommand\022E\n\016usePropComma" +
+      "nd\0303 \001(\0132-.com.trans.pixel.protoc.Reques" +
+      "tUsePropCommand\022M\n\022fenjieEquipCommand\0304 " +
+      "\001(\01321.com.trans.pixel.protoc.RequestFenj" +
+      "ieEquipCommand\022?\n\013signCommand\0305 \001(\0132*.co" +
+      "m.trans.pixel.protoc.RequestSignCommand\022" +
+      "Y\n\030helpAttackPVPMineCommand\0307 \001(\01327.com.",
+      "trans.pixel.protoc.RequestHelpAttackPVPM" +
+      "ineCommand\022K\n\021fenjieHeroCommand\0308 \001(\01320." +
+      "com.trans.pixel.protoc.RequestFenjieHero" +
+      "Command\022S\n\025resetHeroSkillCommand\0309 \001(\01324" +
+      ".com.trans.pixel.protoc.RequestResetHero" +
+      "SkillCommand\022G\n\017heroSpUpCommand\0301 \001(\0132.." +
+      "com.trans.pixel.protoc.RequestHeroSpUpCo" +
+      "mmand\022G\n\017sendMailCommand\030: \001(\0132..com.tra" +
+      "ns.pixel.protoc.RequestSendMailCommand\022U" +
+      "\n\026brotherMineInfoCommand\030; \001(\01325.com.tra",
+      "ns.pixel.protoc.RequestBrotherMineInfoCo" +
+      "mmand\022Q\n\024enterMohuaMapCommand\030< \001(\01323.co" +
+      "m.trans.pixel.protoc.RequestEnterMohuaMa" +
+      "pCommand\022Q\n\024startMohuaMapCommand\030= \001(\01323" +
+      ".com.trans.pixel.protoc.RequestStartMohu" +
+      "aMapCommand\022O\n\023useMohuaCardCommand\030> \001(\013" +
+      "22.com.trans.pixel.protoc.RequestUseMohu" +
+      "aCardCommand\022W\n\027mohuaStageRewardCommand\030" +
+      "? \001(\01326.com.trans.pixel.protoc.RequestMo" +
+      "huaStageRewardCommand\022Q\n\024mohuaHpRewardCo",
+      "mmand\030@ \001(\01323.com.trans.pixel.protoc.Req" +
+      "uestMohuaHpRewardCommand\022W\n\027mohuaSubmitS" +
+      "tageCommand\030A \001(\01326.com.trans.pixel.prot" +
+      "oc.RequestMohuaSubmitStageCommand\022M\n\022end" +
+      "MohuaMapCommand\030B \001(\01321.com.trans.pixel." +
+      "protoc.RequestEndMohuaMapCommand\022I\n\020sale" +
+      "EquipCommand\030C \001(\0132/.com.trans.pixel.pro" +
+      "toc.RequestSaleEquipCommand\022I\n\020delFriend" +
+      "Command\030D \001(\0132/.com.trans.pixel.protoc.R" +
+      "equestDelFriendCommand\022O\n\023submitZhanliCo",
+      "mmand\030E \001(\01322.com.trans.pixel.protoc.Req" +
+      "uestSubmitZhanliCommand\022Q\n\024achieveReward" +
+      "Command\030F \001(\01323.com.trans.pixel.protoc.R" +
+      "equestAchieveRewardCommand\022M\n\022achieveLis" +
+      "tCommand\030G \001(\01321.com.trans.pixel.protoc." +
+      "RequestAchieveListCommand\022Q\n\024richangRewa" +
+      "rdCommand\030I \001(\01323.com.trans.pixel.protoc" +
+      ".RequestRichangRewardCommand\022M\n\022richangL" +
+      "istCommand\030J \001(\01321.com.trans.pixel.proto" +
+      "c.RequestRichangListCommand\022S\n\025kaifu2Act",
+      "ivityCommand\030K \001(\01324.com.trans.pixel.pro" +
+      "toc.RequestKaifu2ActivityCommand\022M\n\022kaif" +
+      "uRewardCommand\030M \001(\01321.com.trans.pixel.p" +
+      "rotoc.RequestKaifuRewardCommand\022I\n\020kaifu" +
+      "ListCommand\030N \001(\0132/.com.trans.pixel.prot" +
+      "oc.RequestKaifuListCommand\022K\n\021userPokede" +
+      "Command\030P \001(\01320.com.trans.pixel.protoc.R" +
+      "equestUserPokedeCommand\022?\n\013rankCommand\030Q" +
+      " \001(\0132*.com.trans.pixel.protoc.RequestRan" +
+      "kCommand\022S\n\025buyHeroPackageCommand\030R \001(\0132",
+      "4.com.trans.pixel.protoc.RequestBuyHeroP" +
+      "ackageCommand\022[\n\031submitComposeSkillComma" +
+      "nd\030S \001(\01328.com.trans.pixel.protoc.Reques" +
+      "tSubmitComposeSkillCommand\022K\n\021submitIcon" +
+      "Command\030U \001(\01320.com.trans.pixel.protoc.R" +
+      "equestSubmitIconCommand\022Y\n\030readyAttackLa" +
+      "dderCommand\030V \001(\01327.com.trans.pixel.prot" +
+      "oc.RequestReadyAttackLadderCommand\022M\n\022bi" +
+      "ndAccountCommand\030W \001(\01321.com.trans.pixel" +
+      ".protoc.RequestBindAccountCommand\022Q\n\024que",
+      "ryRechargeCommand\030X \001(\01323.com.trans.pixe" +
+      "l.protoc.RequestQueryRechargeCommand\022U\n\026" +
+      "shouchongRewardCommand\030Y \001(\01325.com.trans" +
+      ".pixel.protoc.RequestShouchongRewardComm" +
+      "and\022I\n\020heartBeatCommand\030Z \001(\0132/.com.tran" +
+      "s.pixel.protoc.RequestHeartBeatCommand\022I" +
+      "\n\020greenhandCommand\030[ \001(\0132/.com.trans.pix" +
+      "el.protoc.RequestGreenhandCommand\022=\n\nlog" +
+      "Command\030\\ \001(\0132).com.trans.pixel.protoc.R" +
+      "equestLogCommand\022G\n\017feedFoodCommand\030] \001(",
+      "\0132..com.trans.pixel.protoc.RequestFeedFo" +
+      "odCommand\022I\n\020clearHeroCommand\030^ \001(\0132/.co" +
+      "m.trans.pixel.protoc.RequestClearHeroCom" +
+      "mand\022S\n\025choseClearInfoCommand\030_ \001(\01324.co" +
+      "m.trans.pixel.protoc.RequestChoseClearIn" +
+      "foCommand\022S\n\025submitBosskillCommand\030` \001(\013" +
+      "24.com.trans.pixel.protoc.RequestSubmitB" +
+      "osskillCommand\022G\n\017bosskillCommand\030a \001(\0132" +
+      "..com.trans.pixel.protoc.RequestBosskill" +
+      "Command\022S\n\025unionBossFightCommand\030b \001(\01324",
+      ".com.trans.pixel.protoc.RequestUnionBoss" +
+      "FightCommand\022S\n\025heroStrengthenCommand\030c " +
+      "\001(\01324.com.trans.pixel.protoc.RequestHero" +
+      "StrengthenCommand\022T\n\025sevenLoginSignComma" +
+      "nd\030\310\001 \001(\01324.com.trans.pixel.protoc.Reque" +
+      "stSevenLoginSignCommand\022N\n\022isAreaOwnerCo" +
+      "mmand\030\311\001 \001(\01321.com.trans.pixel.protoc.Re" +
+      "questIsAreaOwnerCommand\022L\n\021openFetterCom" +
+      "mand\030\312\001 \001(\01320.com.trans.pixel.protoc.Req" +
+      "uestOpenFetterCommand\022H\n\017userTaskCommand",
+      "\030\313\001 \001(\0132..com.trans.pixel.protoc.Request" +
+      "UserTaskCommand\022R\n\024getTaskRewardCommand\030" +
+      "\314\001 \001(\01323.com.trans.pixel.protoc.RequestG" +
+      "etTaskRewardCommand\022Z\n\030submitBattletower" +
+      "Command\030\315\001 \001(\01327.com.trans.pixel.protoc." +
+      "RequestSubmitBattletowerCommand\022X\n\027reset" +
+      "BattletowerCommand\030\316\001 \001(\01326.com.trans.pi" +
+      "xel.protoc.RequestResetBattletowerComman" +
+      "d\022T\n\025getBattletowerCommand\030\317\001 \001(\01324.com." +
+      "trans.pixel.protoc.RequestGetBattletower",
+      "Command\022V\n\026battletowerShopCommand\030\320\001 \001(\013" +
+      "25.com.trans.pixel.protoc.RequestBattlet" +
+      "owerShopCommand\022f\n\036battletowerShopPurcha" +
+      "seCommand\030\321\001 \001(\0132=.com.trans.pixel.proto" +
+      "c.RequestBattletowerShopPurchaseCommand\022" +
+      "d\n\035battletowerShopRefreshCommand\030\322\001 \001(\0132" +
+      "<.com.trans.pixel.protoc.RequestBattleto" +
+      "werShopRefreshCommand\022L\n\021bloodEnterComma" +
+      "nd\030\323\001 \001(\01320.com.trans.pixel.protoc.Reque" +
+      "stBloodEnterCommand\022N\n\022bloodXiazhuComman",
+      "d\030\324\001 \001(\01321.com.trans.pixel.protoc.Reques" +
+      "tBloodXiazhuCommand\022X\n\027queryNoticeBoardC" +
+      "ommand\030\325\001 \001(\01326.com.trans.pixel.protoc.R" +
+      "equestQueryNoticeBoardCommand\022J\n\020helpLev" +
+      "elCommand\030\326\001 \001(\0132/.com.trans.pixel.proto" +
+      "c.RequestHelpLevelCommand\022V\n\026inviteFight" +
+      "BossCommand\030\327\001 \001(\01325.com.trans.pixel.pro" +
+      "toc.RequestInviteFightBossCommand\022R\n\024qui" +
+      "tFightBossCommand\030\330\001 \001(\01323.com.trans.pix" +
+      "el.protoc.RequestQuitFightBossCommand\022Z\n",
+      "\026submitBossScoreCommand\030\331\001 \001(\01329.com.tra" +
+      "ns.pixel.protoc.RequestSubmitBossRoomSco" +
+      "reCommand\022H\n\017userInfoCommand\030\332\001 \001(\0132..co" +
+      "m.trans.pixel.protoc.RequestUserInfoComm" +
+      "and\022H\n\017rechargeCommand\030\333\001 \001(\0132..com.tran" +
+      "s.pixel.protoc.RequestRechargeCommand\022R\n" +
+      "\024talentupgradeCommand\030\334\001 \001(\01323.com.trans" +
+      ".pixel.protoc.RequestTalentupgradeComman" +
+      "d\022V\n\026talentChangeUseCommand\030\337\001 \001(\01325.com" +
+      ".trans.pixel.protoc.RequestTalentChangeU",
+      "seCommand\022Z\n\030talentChangeSkillCommand\030\340\001" +
+      " \001(\01327.com.trans.pixel.protoc.RequestTal" +
+      "entChangeSkillCommand\022R\n\024startBossRoomCo" +
+      "mmand\030\341\001 \001(\01323.com.trans.pixel.protoc.Re" +
+      "questStartBossRoomCommand\022T\n\025createBossR" +
+      "oomCommand\030\342\001 \001(\01324.com.trans.pixel.prot" +
+      "oc.RequestCreateBossRoomCommand\022P\n\023bossR" +
+      "oomInfoCommand\030\343\001 \001(\01322.com.trans.pixel." +
+      "protoc.RequestBossRoomInfoCommand\022T\n\025equ" +
+      "ipStrenthenCommand\030\344\001 \001(\01324.com.trans.pi",
+      "xel.protoc.RequestEquipStrenthenCommand\022" +
+      "N\n\022equipPokedeCommand\030\345\001 \001(\01321.com.trans" +
+      ".pixel.protoc.RequestEquipPokedeCommand\022" +
+      "Z\n\030talentChangeEquipCommand\030\346\001 \001(\01327.com" +
+      ".trans.pixel.protoc.RequestTalentChangeE" +
+      "quipCommand\022^\n\032zanHeroMessageBoardComman" +
+      "d\030\347\001 \001(\01329.com.trans.pixel.protoc.Reques" +
+      "tZanHeroMessageBoardCommand\022`\n\033createRew" +
+      "ardTaskRoomCommand\030\350\001 \001(\0132:.com.trans.pi" +
+      "xel.protoc.RequestCreateRewardTaskRoomCo",
+      "mmand\022\\\n\031quitRewardTaskRoomCommand\030\351\001 \001(" +
+      "\01328.com.trans.pixel.protoc.RequestQuitRe" +
+      "wardTaskRoomCommand\022d\n\035inviteToRewardTas" +
+      "kRoomCommand\030\352\001 \001(\0132<.com.trans.pixel.pr" +
+      "otoc.RequestInviteToRewardTaskRoomComman" +
+      "d\022b\n\034submitRewardTaskScoreCommand\030\353\001 \001(\013" +
+      "2;.com.trans.pixel.protoc.RequestSubmitR" +
+      "ewardTaskScoreCommand\022T\n\025userRewardTaskC" +
+      "ommand\030\354\001 \001(\01324.com.trans.pixel.protoc.R" +
+      "equestUserRewardTaskCommand\022X\n\027rewardTas",
+      "kRewardCommand\030\355\001 \001(\01326.com.trans.pixel." +
+      "protoc.RequestRewardTaskRewardCommand\022\\\n" +
+      "\031userRewardTaskRoomCommand\030\356\001 \001(\01328.com." +
+      "trans.pixel.protoc.RequestUserRewardTask" +
+      "RoomCommand\022Z\n\030synthetiseComposeCommand\030" +
+      "\357\001 \001(\01327.com.trans.pixel.protoc.RequestS" +
+      "ynthetiseComposeCommand\022X\n\027giveupRewardT" +
+      "askCommand\030\360\001 \001(\01326.com.trans.pixel.prot" +
+      "oc.RequestGiveupRewardTaskCommand\022N\n\022ext" +
+      "raRewardCommand\030\361\001 \001(\01321.com.trans.pixel",
+      ".protoc.RequestExtraRewardCommand\022H\n\017eve" +
+      "ntBuyCommand\030\362\001 \001(\0132..com.trans.pixel.pr" +
+      "otoc.RequestEventBuyCommand\022L\n\021ladderInf" +
+      "oCommand\030\363\001 \001(\01320.com.trans.pixel.protoc" +
+      ".RequestLadderInfoCommand\022\\\n\031refreshLadd" +
+      "erEnemyCommand\030\364\001 \001(\01328.com.trans.pixel." +
+      "protoc.RequestRefreshLadderEnemyCommand\022" +
+      "\\\n\031submitLadderResultCommand\030\365\001 \001(\01328.co" +
+      "m.trans.pixel.protoc.RequestSubmitLadder" +
+      "ResultCommand\022X\n\027ladderTaskRewardCommand",
+      "\030\366\001 \001(\01326.com.trans.pixel.protoc.Request" +
+      "LadderTaskRewardCommand\022\\\n\031ladderSeasonR" +
+      "ewardCommand\030\367\001 \001(\01328.com.trans.pixel.pr" +
+      "otoc.RequestLadderSeasonRewardCommand\022N\n" +
+      "\022ladderEnemyCommand\030\370\001 \001(\01321.com.trans.p" +
+      "ixel.protoc.RequestLadderEnemyCommand\022P\n" +
+      "\023buySavingBoxCommand\030\371\001 \001(\01322.com.trans." +
+      "pixel.protoc.RequestBuySavingBoxCommand\022" +
+      "F\n\016equipupCommand\030\372\001 \001(\0132-.com.trans.pix" +
+      "el.protoc.RequestEquipupCommand\022V\n\026mater",
+      "ialComposeCommand\030\373\001 \001(\01325.com.trans.pix" +
+      "el.protoc.RequestMaterialComposeCommand\022" +
+      "N\n\022useMaterialCommand\030\374\001 \001(\01321.com.trans" +
+      ".pixel.protoc.RequestUseMaterialCommand\022" +
+      "T\n\025changePositionCommand\030\375\001 \001(\01324.com.tr" +
+      "ans.pixel.protoc.RequestChangePositionCo" +
+      "mmand\022L\n\021talentSpUpCommand\030\376\001 \001(\01320.com." +
+      "trans.pixel.protoc.RequestTalentSpUpComm" +
+      "and\022\\\n\031talentSkillLevelupCommand\030\377\001 \001(\0132" +
+      "8.com.trans.pixel.protoc.RequestTalentSk",
+      "illLevelupCommand\022X\n\027talentResetSkillCom" +
+      "mand\030\200\002 \001(\01326.com.trans.pixel.protoc.Req" +
+      "uestTalentResetSkillCommand\022R\n\024bindRecom" +
+      "mandCommand\030\201\002 \001(\01323.com.trans.pixel.pro" +
+      "toc.RequestBindRecommandCommand\022J\n\020recom" +
+      "mandCommand\030\202\002 \001(\0132/.com.trans.pixel.pro" +
+      "toc.RequestRecommandCommand\022T\n\025changeUse" +
+      "rNameCommand\030\203\002 \001(\01324.com.trans.pixel.pr" +
+      "otoc.RequestChangeUserNameCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -40041,7 +40247,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", });
           return null;
         }
       };

@@ -21,7 +21,6 @@ import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.TeamEngine;
-import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
@@ -31,6 +30,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
@@ -39,6 +39,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.BlackListService;
+import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.NoticeMessageService;
@@ -87,6 +88,8 @@ public class UserCommandService extends BaseCommandService {
 	private NoticeMessageService noticeMessageService;
 	@Resource
 	private LootService lootService;
+	@Resource
+	private CostService costService;
 	
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
@@ -375,6 +378,30 @@ public class UserCommandService extends BaseCommandService {
 		}
 		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
+	}
+	
+	public void changeName(RequestChangeUserNameCommand cmd, Builder responseBuilder, UserBean user) {
+		if (userService.queryUserIdByUserName(user.getServerId(), cmd.getNewName()) != 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_NAME_IS_EXIST_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NAME_IS_EXIST_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		if (!costService.cost(user, RewardConst.JEWEL, 200)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		user.setUserName(cmd.getNewName());
+		userService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
+		userService.updateUser(user);
+		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

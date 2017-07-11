@@ -2707,6 +2707,10 @@ message ResponseNeedRegisterCommand {
 
 }
 
+message RequestChangeUserNameCommand {
+	required string newName = 1;
+}
+
 message RequestRegisterCommand {
 	required string userName = 1;
 	optional int32 icon = 2;
@@ -3675,6 +3679,7 @@ message RequestCommand {
 	optional RequestTalentResetSkillCommand talentResetSkillCommand = 256;
 	optional RequestBindRecommandCommand bindRecommandCommand = 257;
 	optional RequestRecommandCommand recommandCommand = 258;
+	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
 }
 ////////// Commands
 message ErrorCommand {

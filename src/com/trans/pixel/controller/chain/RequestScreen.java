@@ -164,6 +164,7 @@ import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
@@ -377,6 +378,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestMohuaStageRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestChangeUserNameCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBattletowerShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -1085,6 +1087,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasGetUserLadderRankListCommand()) {
 			RequestGetUserLadderRankListCommand cmd = request.getGetUserLadderRankListCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasChangeUserNameCommand()) {
+			RequestChangeUserNameCommand cmd = request.getChangeUserNameCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeEquipCommand()) {

@@ -671,4 +671,8 @@ public class UserService {
 	public int getRecommands(UserBean user) {
 		return userRecommandService.getRecommand(user);
 	}
+	
+	public void setUserIdByName(int serverId, String userName, long userId) {
+		
+	}
 }
