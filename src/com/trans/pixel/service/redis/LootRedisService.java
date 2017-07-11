@@ -1,8 +1,7 @@
 package com.trans.pixel.service.redis;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -17,41 +16,38 @@ public class LootRedisService extends RedisService {
 	private static final String SAVINGBOX_FILE_NAME = "ld_savingbox.xml";
 	//saving box
 	public SavingBox getSavingBox(int id) {
-		String value = hget(RedisKey.SAVINGBOX_KEY, "" + id);
-		if (value == null) {
-			Map<String, SavingBox> config = getSavingBoxConfig();
-			return config.get("" + id);
+		ConcurrentMap<String, SavingBox> map = (ConcurrentMap<String, SavingBox>)getConfig(RedisKey.SAVINGBOX_KEY);
+		if(map == null || map.get(id+"") == null) {
+			map = buildSavingBoxConfig();
+			setConfig(RedisKey.SAVINGBOX_KEY, map);
+			return map.get("" + id);
 		} else {
-			SavingBox.Builder builder = SavingBox.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
-	}
-	
-	public Map<String, SavingBox> getSavingBoxConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.SAVINGBOX_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, SavingBox> map = buildSavingBoxConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, SavingBox> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.SAVINGBOX_KEY, redismap);
-			return map;
-		}else{
-			Map<String, SavingBox> map = new HashMap<String, SavingBox>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				SavingBox.Builder builder = SavingBox.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
+			return map.get("" + id);
 		}
 	}
 	
-	private Map<String, SavingBox> buildSavingBoxConfig(){
+//	public Map<String, SavingBox> getSavingBoxConfig() {
+//		Map<String, String> keyvalue = hget(RedisKey.SAVINGBOX_KEY);
+//		if(keyvalue.isEmpty()){
+//			Map<String, SavingBox> map = buildSavingBoxConfig();
+//			Map<String, String> redismap = new HashMap<String, String>();
+//			for(Entry<String, SavingBox> entry : map.entrySet()){
+//				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+//			}
+//			hputAll(RedisKey.SAVINGBOX_KEY, redismap);
+//			return map;
+//		}else{
+//			Map<String, SavingBox> map = new HashMap<String, SavingBox>();
+//			for(Entry<String, String> entry : keyvalue.entrySet()){
+//				SavingBox.Builder builder = SavingBox.newBuilder();
+//				if(parseJson(entry.getValue(), builder))
+//					map.put(entry.getKey(), builder.build());
+//			}
+//			return map;
+//		}
+//	}
+	
+	private ConcurrentMap<String, SavingBox> buildSavingBoxConfig(){
 		String xml = ReadConfig(SAVINGBOX_FILE_NAME);
 		SavingBoxList.Builder builder = SavingBoxList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -59,7 +55,7 @@ public class LootRedisService extends RedisService {
 			return null;
 		}
 		
-		Map<String, SavingBox> map = new HashMap<String, SavingBox>();
+		ConcurrentMap<String, SavingBox> map = new ConcurrentHashMap<String, SavingBox>();
 		for(SavingBox.Builder savingbox : builder.getDataBuilderList()){
 			map.put("" + savingbox.getId(), savingbox.build());
 		}
