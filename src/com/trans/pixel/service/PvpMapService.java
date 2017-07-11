@@ -359,7 +359,8 @@ public class PvpMapService {
 					else
 						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
 					
-					rewards.addLoot(reward);
+					if(reward.getCount() > 0)
+						rewards.addLoot(reward);
 				}
 			}
 			int buff = redis.addUserBuff(user, event.getFieldid(), event.getBuffcount());
@@ -426,7 +427,8 @@ public class PvpMapService {
 					else
 						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
 					
-					rewards.addLoot(reward);
+					if(reward.getCount() > 0)
+						rewards.addLoot(reward);
 				}
 			}
 			buff.setBuff(Math.min(buff.getMaxbuff(), buff.getBuff()+event.getBuffcount()));
