@@ -1,8 +1,7 @@
 package com.trans.pixel.service.redis;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -17,41 +16,23 @@ public class AchieveRedisService extends RedisService {
 	private static final String ACHIEVE_FILE_NAME = "ld_taskchengjiu.xml";
 	
 	public Achieve getAchieve(int id) {
-		String value = hget(RedisKey.ACHIEVE_KEY, "" + id);
-		if (value == null) {
-			Map<String, Achieve> achieveConfig = getAchieveConfig();
-			return achieveConfig.get("" + id);
-		} else {
-			Achieve.Builder builder = Achieve.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
+		ConcurrentMap<String, Achieve> map = RedisKey.getConfigAchieve();
+		if (map.get(id+"") == null) {
+			map = getAchieveConfig();
 		}
-		
-		return null;
+		return map.get("" + id);
 	}
 	
-	public Map<String, Achieve> getAchieveConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ACHIEVE_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Achieve> map = buildAchieveConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Achieve> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.ACHIEVE_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Achieve> map = new HashMap<String, Achieve>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Achieve.Builder builder = Achieve.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
+	public ConcurrentMap<String, Achieve> getAchieveConfig() {
+		ConcurrentMap<String, Achieve> map = RedisKey.getConfigAchieve();
+		if(map.isEmpty()){
+			map = buildAchieveConfig();
+			RedisKey.setConfigAchieve(map);
 		}
+		return map;
 	}
 	
-	private Map<String, Achieve> buildAchieveConfig(){
+	private ConcurrentMap<String, Achieve> buildAchieveConfig(){
 		String xml = ReadConfig(ACHIEVE_FILE_NAME);
 		AchieveList.Builder builder = AchieveList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -59,7 +40,7 @@ public class AchieveRedisService extends RedisService {
 			return null;
 		}
 		
-		Map<String, Achieve> map = new HashMap<String, Achieve>();
+		ConcurrentMap<String, Achieve> map = new ConcurrentHashMap<String, Achieve>();
 		for(Achieve.Builder achieve : builder.getDataBuilderList()){
 			map.put("" + achieve.getId(), achieve.build());
 		}

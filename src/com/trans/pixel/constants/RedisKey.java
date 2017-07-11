@@ -4,6 +4,8 @@ import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import com.trans.pixel.protoc.ActivityProto.Achieve;
+import com.trans.pixel.protoc.ActivityProto.Kaifu;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 
 public class RedisKey {
@@ -253,10 +255,8 @@ public class RedisKey {
 	
 	//activity config redis
 	public static final String ACTIVITY_PREFIX = "activity_";
-	public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
 	public static final String ACTIVITY_RICHANG_KEY = PREFIX + CONFIG_PREFIX+"richang";
 	public static final String ACTIVITY_KAIFU2_KEY = PREFIX + CONFIG_PREFIX+"kaifu2";
-	public static final String ACTIVITY_KAIFU_KEY = PREFIX + CONFIG_PREFIX+"kaifu";
 	public static final String ACTIVTYY_KAIFU2_RANK_PREFIX = "kaifu2_rank_";
 	public static final String ACTIVITY_KAIFU2_REWARD_RECORD_PREFIX = "kaifu2_reward_record_";
 	public static final String ACTIVITY_KAIFU2_SEND_REWARD_RECORD_KEY = "kaifu2_send_record";
@@ -426,8 +426,8 @@ public class RedisKey {
 	   try {
 		   for (Method method : methods) {
 			    System.out.println(method);
-			    if(method.getName().startsWith("setConfig"))
-					method.invoke(new RedisKey(), null);
+			    if(method.getName().startsWith("initConfig"))
+					method.invoke(new RedisKey());
 		   }
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -449,5 +449,32 @@ public class RedisKey {
 	}
 	public static final void setConfigSavingBox(ConcurrentMap<String, SavingBox> map) {
 		ConfigSavingBox = map;
+	}
+	public static final void initConfigSavingBox() {
+		ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
+	}
+
+//	public static final String ACTIVITY_KAIFU_KEY = PREFIX + CONFIG_PREFIX+"kaifu";
+	private static ConcurrentMap<String, Kaifu> ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
+	public static final ConcurrentMap<String, Kaifu>  getConfigKaifu() {
+		return ConfigKaifu;
+	}
+	public static final void setConfigKaifu(ConcurrentMap<String, Kaifu> map) {
+		ConfigKaifu = map;
+	}
+	public static final void initConfigKaifu() {
+		ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
+	}
+
+	// public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
+	private static ConcurrentMap<String, Achieve> ConfigAchieve = new ConcurrentHashMap<String, Achieve>();
+	public static final ConcurrentMap<String, Achieve>  getConfigAchieve() {
+		return ConfigAchieve;
+	}
+	public static final void setConfigAchieve(ConcurrentMap<String, Achieve> map) {
+		ConfigAchieve = map;
+	}
+	public static final void initConfigAchieve() {
+		ConfigAchieve = new ConcurrentHashMap<String, Achieve>();
 	}
 }

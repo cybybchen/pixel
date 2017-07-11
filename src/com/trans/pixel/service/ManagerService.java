@@ -2197,46 +2197,46 @@ public class ManagerService extends RedisService{
 			result.put("MoHuaLootConfig", object);
 		}
 
-		if(req.containsKey("del-AchieveConfig")){
-			delete(RedisKey.ACHIEVE_KEY);
-			req.put("AchieveConfig", 1);
-		}
-		if(req.containsKey("AchieveConfig")){
-			Map<String, String> map = hget(RedisKey.ACHIEVE_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AchieveConfig", object);
-		}
-		if(req.containsKey("del-ActivityRiChangConfig")){
-			delete(RedisKey.ACTIVITY_RICHANG_KEY);
-			req.put("ActivityRiChangConfig", 1);
-		}
-		if(req.containsKey("ActivityRiChangConfig")){
-			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ActivityRiChangConfig", object);
-		}
-		if(req.containsKey("del-ActivityKaiFu2Config")){
-			delete(RedisKey.ACTIVITY_KAIFU2_KEY);
-			req.put("ActivityKaiFu2Config", 1);
-		}
-		if(req.containsKey("ActivityKaiFu2Config")){
-			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ActivityKaiFu2Config", object);
-		}
-		if(req.containsKey("del-ActivityKaiFuConfig")){
-			delete(RedisKey.ACTIVITY_KAIFU_KEY);
-			req.put("ActivityKaiFuConfig", 1);
-		}
-		if(req.containsKey("ActivityKaiFuConfig")){
-			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ActivityKaiFuConfig", object);
-		}
+//		if(req.containsKey("del-AchieveConfig")){
+//			delete(RedisKey.ACHIEVE_KEY);
+//			req.put("AchieveConfig", 1);
+//		}
+//		if(req.containsKey("AchieveConfig")){
+//			Map<String, String> map = hget(RedisKey.ACHIEVE_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AchieveConfig", object);
+//		}
+//		if(req.containsKey("del-ActivityRiChangConfig")){
+//			delete(RedisKey.ACTIVITY_RICHANG_KEY);
+//			req.put("ActivityRiChangConfig", 1);
+//		}
+//		if(req.containsKey("ActivityRiChangConfig")){
+//			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("ActivityRiChangConfig", object);
+//		}
+//		if(req.containsKey("del-ActivityKaiFu2Config")){
+//			delete(RedisKey.ACTIVITY_KAIFU2_KEY);
+//			req.put("ActivityKaiFu2Config", 1);
+//		}
+//		if(req.containsKey("ActivityKaiFu2Config")){
+//			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("ActivityKaiFu2Config", object);
+//		}
+//		if(req.containsKey("del-ActivityKaiFuConfig")){
+//			delete(RedisKey.ACTIVITY_KAIFU_KEY);
+//			req.put("ActivityKaiFuConfig", 1);
+//		}
+//		if(req.containsKey("ActivityKaiFuConfig")){
+//			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("ActivityKaiFuConfig", object);
+//		}
 
 		if(req.containsKey("del-AreaEquipConfig")){
 			delete(RedisKey.AREAEQUIP_CONFIG);
