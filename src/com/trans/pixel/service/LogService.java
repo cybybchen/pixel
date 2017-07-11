@@ -220,14 +220,14 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ZHANLI));
 				sb.append(LogString.SPLITER);
-//				sb.append(params.get(LogString.VIPLEVEL));
-//				sb.append(LogString.SPLITER);
-//				sb.append(params.get(LogString.POKEDEX));
-//				sb.append(LogString.SPLITER);
-//				sb.append(params.get(LogString.WPOKEDEX));
-//				sb.append(LogString.SPLITER);
-//				sb.append(params.get(LogString.APOKEDEX));
-//				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.POKEDEX));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.WPOKEDEX));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.APOKEDEX));
+				sb.append(LogString.SPLITER);
 				break;
 				
 			case LogString.LOGTYPE_ERROR:
