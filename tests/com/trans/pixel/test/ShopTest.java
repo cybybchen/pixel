@@ -51,21 +51,21 @@ public class ShopTest extends BaseTest {
 		getBlackShop(request);
 		BlackShopRefresh(request);
 		BlackShopPurchase(request, 0);
-		getUnionShop(request);
-		UnionShopRefresh(request);
-		UnionShopPurchase(request, 0);
+//		getUnionShop(request);
+//		UnionShopRefresh(request);
+//		UnionShopPurchase(request, 0);
 		getPVPShop(request);
 		PVPShopRefresh(request);
 		PVPShopPurchase(request, 0);
-		getExpeditionShop(request);
-		ExpeditionShopRefresh(request);
-		ExpeditionShopPurchase(request, 0);
+//		getExpeditionShop(request);
+//		ExpeditionShopRefresh(request);
+//		ExpeditionShopPurchase(request, 0);
 		getLadderShop(request);
 		LadderShopRefresh(request);
 		LadderShopPurchase(request, 0);
-		getShop(request);
-		ShopPurchase(request);
-		ContractPurchase(request);
+//		getShop(request);
+//		ShopPurchase(request);
+//		ContractPurchase(request);
 	}
 
 	private ResponseLibaoShopCommand libaoshop = null;

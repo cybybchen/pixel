@@ -16,15 +16,15 @@ import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
-	public static final int THREAD_COUNT = 5;//最大并发数量
-	public static final int TEST_TIME = 30;//脚本执行秒数
+	public static final int THREAD_COUNT = 100;//最大并发数量
+	public static final int TEST_TIME = 100;//脚本执行秒数
 	
 	public static void main(String[] args) {
 		extraLog = false;
 		Queue<Thread> queue = new ConcurrentLinkedQueue<Thread>();
 		long time = System.currentTimeMillis();
 		while (true) {
-//			sleep(1000);
+			sleep(500);
 			Thread thread = new Thread() {
 				public void run() {
 					PressureTest test = new PressureTest();
@@ -93,12 +93,13 @@ public class PressureTest extends BaseTest {
 		messageBoardTest(request, response);//留言板
 		
 		response = login(request);
+		request = getRequestCommand(head);
 		
 		heroTest(request, response);//英雄
 		
-		packageTest(request, response);//道具
+//		packageTest(request, response);//道具
 		
-		equipTest(request, response);//装备
+//		equipTest(request, response);//装备
 		
 		new PvpMapTest().testPvp(request);
 		
