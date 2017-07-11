@@ -16,6 +16,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RaidList;
 import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
+import com.trans.pixel.protoc.UserInfoProto.EventConfig;
+import com.trans.pixel.protoc.UserInfoProto.EventConfigList;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository
@@ -73,6 +75,27 @@ public class RaidRedisService extends RedisService{
 //		hdelete(RedisKey.USERRAID_PREFIX+user.getId(), id+"");
 //	}
 
+	public EventConfig getRaidLevel(int level) {
+		EventConfig.Builder builder = EventConfig.newBuilder();
+		String value = hget(RedisKey.RAIDLEVEL_CONFIG, level+"");
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		else{
+			EventConfigList.Builder list = EventConfigList.newBuilder();
+			Map<String, String> keyvalue = new HashMap<String, String>();
+			String xml = ReadConfig("ld_raid.xml");
+			parseXml(xml, list);
+			for(EventConfig config : list.getDataList()) {
+				keyvalue.put(config.getId()+"", formatJson(config));
+				if(level == config.getId())
+					builder = EventConfig.newBuilder(config);
+			}
+			hputAll(RedisKey.RAIDLEVEL_CONFIG, keyvalue);
+			return builder.build();
+		}
+		
+	}
+	
 	public Raid getRaid(int id){
 		String value = hget(RedisKey.RAID_CONFIG, id+"");
 		Raid.Builder builder = Raid.newBuilder();

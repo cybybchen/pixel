@@ -11,6 +11,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.TaskProto.Raid;
@@ -112,6 +113,8 @@ public class RaidCommandService extends BaseCommandService{
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(cmd.getRet()){
 				MultiReward.Builder rewards = levelRedisService.eventReward(event, raid.getLevel());
+				EventConfig config = redis.getRaidLevel(raid.getLevel());
+				rewards.addAllLoot(config.getLootlistList());
 				handleRewards(responseBuilder, user, rewards.build());
 				
 				for(int i = 0; i < raid.getEventCount(); i++) {
