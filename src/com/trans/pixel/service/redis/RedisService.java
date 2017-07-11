@@ -11,8 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
@@ -46,7 +44,7 @@ public class RedisService {
 	private static Logger logger = Logger.getLogger(RedisService.class);
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-
+	
 	/**
 	 * 只有当返回true才能使用builder
 	 */
@@ -172,22 +170,6 @@ public class RedisService {
 		}finally{
 		}
 		return msg;
-    }
-
-	//读写配置
-	private static ConcurrentMap<String, Object> configMap = new ConcurrentHashMap<String, Object>();
-	private static ConcurrentMap<String, Object> bigconfigMap = new ConcurrentHashMap<String, Object>();
-    protected void setConfig(final String key, final Object object) {
-    	if(key.startsWith("big"))
-        	bigconfigMap.put(key, object);
-    	else
-    		configMap.put(key, object);
-    }
-    protected Object getConfig(final String key) {
-    	if(key.startsWith("big"))
-    		return bigconfigMap.get(key);
-    	else
-    		return configMap.get(key);
     }
 
 //	/**

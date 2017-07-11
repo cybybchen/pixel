@@ -1173,6 +1173,11 @@ function configBlackList(dom){
     // $("#blacklist-form input[name='noidfa']").attr("checked", $(children[9]).text() == "×" ? false : true).checkboxradio("refresh");
 }
 
+function delConfigData(type){
+	var json = buildConfigJson("del-ConfigData", type);
+	updateConfigJson(json);
+}
+
 function getRedisData(){
 	var value = $("#redisdata-keys").val();
 	var json = buildConfigJson("RedisData", value);

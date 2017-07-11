@@ -455,6 +455,16 @@ public class ManagerService extends RedisService{
 			result.put("RedisData", keys);
 		}
 		
+		if(req.containsKey("del-ConfigData")){
+			String value = req.getString("del-ConfigData");
+			if(value.equals('1')){
+				RedisKey.clear();
+			}
+			if(!result.containsKey("error"))
+				result.put("success", "配置文件已更新");
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-ConfigData", value);
+		}
+		
 		if(req.containsKey("update-UserData") && gmaccountBean.getCanwrite() == 1){
 			hput(USERDATA+userId, "UserData", req.get("update-UserData").toString());
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, userId+"");

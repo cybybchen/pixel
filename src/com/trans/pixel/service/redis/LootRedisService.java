@@ -16,10 +16,10 @@ public class LootRedisService extends RedisService {
 	private static final String SAVINGBOX_FILE_NAME = "ld_savingbox.xml";
 	//saving box
 	public SavingBox getSavingBox(int id) {
-		ConcurrentMap<String, SavingBox> map = (ConcurrentMap<String, SavingBox>)getConfig(RedisKey.SAVINGBOX_KEY);
-		if(map == null || map.get(id+"") == null) {
+		ConcurrentMap<String, SavingBox> map = RedisKey.getConfigSavingBox();
+		if(map.get(id+"") == null) {
 			map = buildSavingBoxConfig();
-			setConfig(RedisKey.SAVINGBOX_KEY, map);
+			RedisKey.setConfigSavingBox(map);
 			return map.get("" + id);
 		} else {
 			return map.get("" + id);

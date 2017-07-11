@@ -1,5 +1,11 @@
 package com.trans.pixel.constants;
 
+import java.lang.reflect.Method;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import com.trans.pixel.protoc.UserInfoProto.SavingBox;
+
 public class RedisKey {
 	public static String buildServerKey(int serverId) {
 		return SERVER_PREFIX + serverId + "_";
@@ -119,7 +125,7 @@ public class RedisKey {
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
 	public static final String LEVEL_DIFF_PREDIX = CONFIG_PREFIX+"level_diff_"; 
 	
-	public static final String SAVINGBOX_KEY = PREFIX + CONFIG_PREFIX + "savingbox";
+//	public static final String SAVINGBOX_KEY = PREFIX + CONFIG_PREFIX + "savingbox";
 	
 	//cdkey
 	public static final String CDKEY_CONFIG = PREFIX+CONFIG_PREFIX+"cdkey";
@@ -399,4 +405,49 @@ public class RedisKey {
 	
 	// user reward task
 	public static final String USER_REWARD_TASK_PREFIX = PREFIX + "rewardtask_";
+	
+	
+	
+
+	public static void clear() {
+//	Class<?> clazz = Class.forName("cn.com.huixin.blogcode.Student");
+//	   //获取该类中所有的属性
+//	   Field[] fields = clazz.getDeclaredFields();
+//	   //遍历所有的属性
+//	   for (Field field : fields) {
+//	    //打印属性信息，包括访问控制修饰符，类型及属性名
+//	    System.out.println(field);
+//	    System.out.println("修饰符：" + Modifier.toString(field.getModifiers()));
+//	    System.out.println("类型：" + field.getType());
+//	    System.out.println("属性名：" + field.getName());
+//	   }
+	   //获取该类中的所有方法
+	   Method[] methods = RedisKey.class.getDeclaredMethods();
+	   try {
+		   for (Method method : methods) {
+			    System.out.println(method);
+			    if(method.getName().startsWith("setConfig"))
+					method.invoke(new RedisKey(), null);
+		   }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+////	    System.out.println("修饰符：" + Modifier.toString(method.getModifiers()));
+//	    System.out.println("方法名：" + method.getName());
+//	    System.out.println("返回类型：" + method.getReturnType());
+//	    //获取方法的参数对象
+//	    Class<?>[] clazzes = method.getParameterTypes();
+//	    for (Class<?> class1 : clazzes) {
+//	     System.out.println("参数类型：" + class1);
+//	    }
+//	   }
+	}
+	
+	private static ConcurrentMap<String, SavingBox> ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
+	public static final ConcurrentMap<String, SavingBox>  getConfigSavingBox() {
+		return ConfigSavingBox;
+	}
+	public static final void setConfigSavingBox(ConcurrentMap<String, SavingBox> map) {
+		ConfigSavingBox = map;
+	}
 }

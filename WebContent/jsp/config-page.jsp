@@ -75,6 +75,11 @@
 			    <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delRedisData()">删除redisdata</a></div>
 			</div>
 		    <div>
+		    <div class="ui-grid-b ui-responsive">
+			    <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delConfigData(0)">删除常用配置</a></div>
+			    <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delConfigData(1)">删除较大配置</a></div>
+			</div>
+		    <div>
 		    <div data-role="controlgroup" data-type="horizontal">
 		    	<label><input type="checkbox" id="selectAllData" onchange="selectAllData(this)">所有匹配的Key</label>
 				<a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all" onclick="delRedisDatas()">删除选中</a>
