@@ -37,6 +37,10 @@ public class UserEquipRedisService extends RedisService{
 			}
 		});
 	}
+
+	public boolean existUserEquip(long userId) {
+		return exists(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+	}
 	
 	public void updateUserEquip(final UserEquipBean userEquip) {
 		redisTemplate.execute(new RedisCallback<Object>() {

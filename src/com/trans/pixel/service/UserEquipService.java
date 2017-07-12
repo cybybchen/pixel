@@ -37,6 +37,12 @@ public class UserEquipService {
 	}
 	
 	public void updateUserEquip(UserEquipBean userEquip) {
+		long userId = userEquip.getUserId();
+		if(!userEquipRedisService.existUserEquip(userId)) {
+			List<UserEquipBean> userEquipList = userEquipMapper.selectUserEquipList(userId);
+			if (userEquipList != null && userEquipList.size() > 0)
+				userEquipRedisService.updateUserEquipList(userEquipList, userId);
+		}
 		userEquipRedisService.updateUserEquip(userEquip);
 //		userEquipMapper.updateUserEquip(userEquip);
 	}
