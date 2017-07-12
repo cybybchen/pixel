@@ -90,5 +90,5 @@ public class UserTaskBean {
 		
 		return heroIdList;
 	}
-	private static final String SPLIT = "|";
+	private static final String SPLIT = "\\|";
 }
