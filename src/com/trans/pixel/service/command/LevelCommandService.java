@@ -295,6 +295,11 @@ public class LevelCommandService extends BaseCommandService {
 			}
 			if(eventconfig.getType() == 2 && cmd.getFinalid() > 0) {//选择分支事件
 				eventconfig = getFinalEvent(eventconfig, cmd.getFinalid());
+				if(eventconfig == null && cmd.getOrder() >= 10000) {
+					redis.delEvent(user, event);
+					pushLevelLootCommand(responseBuilder, userLevel, user);
+					return;
+				}
 			}
 			if(event.getTargetid() == 1 || event.getTargetid()/100 == 2)
 				pvpMapService.unlockMap(event.getTargetid()%100, 0, user);
