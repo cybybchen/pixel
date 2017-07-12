@@ -119,7 +119,7 @@ public class GamedataAction {
 		actions++;
 		if(now - lastTime > 5000 && actions >= 10)
 		{
-			logger.info("actions "+actions+" with average response time: " + actionCost / actions);
+			logger.error("actions "+actions+" with average response time: " + actionCost / actions);
 			actionCost = 0;
 			actions = 0;
 			lastTime = now;

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.annotation.Resource;
+
 import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipList;
 import com.trans.pixel.protoc.ShopProto.Libao;
+import com.trans.pixel.service.cache.UserCacheService;
 
 @Repository
 public class UserRedisService extends RedisService{
@@ -28,8 +31,13 @@ public class UserRedisService extends RedisService{
 
 	public final static String VIP = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
 	
+	@Resource
+	private UserCacheService userCacheService;
+	
 	public <T> UserBean getUser(T userId) {
-		String value = hget(RedisKey.USERDATA+userId, "UserData");
+		String value = userCacheService.hget(RedisKey.USERDATA+userId, "UserData");
+		if (value == null)
+			value = hget(RedisKey.USERDATA+userId, "UserData");
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
 	}
@@ -38,9 +46,9 @@ public class UserRedisService extends RedisService{
 		if(user.getId() == 0)
 			return;
 		String key = RedisKey.USERDATA+user.getId();
-		hput(key, "UserData", JSONObject.fromObject(user).toString());
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, user.getId()+"");
+		userCacheService.hput(key, "UserData", JSONObject.fromObject(user).toString());
+//		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		userCacheService.sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, user.getId()+"");
 	}
 	
 	public void updateRobotUser(final UserBean user) {
@@ -59,17 +67,22 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public Libao getLibao(long userId, int rechargeid) {
-		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		String value = userCacheService.hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		if (value == null)
+			hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
 		Libao.Builder builder = Libao.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		builder.setRechargeid(rechargeid);
 		builder.setPurchase(0);
+		saveLibao(userId, builder.build());
 		return builder.build();
 	}
 	
 	public Map<Integer, Libao> getLibaos(long userId) {
-		Map<String, String> keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId);
+		Map<String, String> keyvalue = userCacheService.hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+		if (keyvalue == null)
+			keyvalue = userCacheService.hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
 		Map<Integer, Libao> map = new HashMap<Integer, Libao>();
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			Libao.Builder builder = Libao.newBuilder();
@@ -80,9 +93,9 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public void saveLibao(long userId, Libao libao) {
-		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao));
-		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
-		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX, userId+"#"+libao.getRechargeid());
+		userCacheService.hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao));
+//		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		userCacheService.sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX, userId+"#"+libao.getRechargeid());
 	}
 	
 	public void saveLibaos(long userId, Map<Integer, Libao> libaos) {
@@ -90,12 +103,15 @@ public class UserRedisService extends RedisService{
 		for(Libao libao : libaos.values())
 			keyvalue.put(libao.getRechargeid()+"", formatJson(libao));
 		
+		userCacheService.hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue);
 		hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue);
 		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {
-		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		String value = userCacheService.hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		if (value == null)
+			hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, rechargeid + "");
 		Libao.Builder builder = Libao.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			UserLibaoBean libao = new UserLibaoBean();
@@ -150,7 +166,11 @@ public class UserRedisService extends RedisService{
 	 * get other user(can be null)
 	 */
 	public <T> UserInfo getCache(int serverId, T userId){
-		String value = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"");
+		String value = userCacheService.hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"");
+		if (value == null) {
+			value = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"");
+			userCacheService.hput(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"", value);
+		}
 		UserInfo.Builder builder = UserInfo.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();

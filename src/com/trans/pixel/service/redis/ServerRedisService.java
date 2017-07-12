@@ -16,12 +16,15 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.protoc.UserInfoProto.ServerData;
+import com.trans.pixel.service.cache.UserCacheService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class ServerRedisService extends RedisService{
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
+	@Resource
+	private UserCacheService userCacheService;
 	
 	public boolean isInvalidServer(final int serverId) {
 		return redisTemplate.execute(new RedisCallback<Boolean>() {
@@ -53,11 +56,6 @@ public class ServerRedisService extends RedisService{
 		});
 	}
 	
-//	public void setServerId(final Integer serverId) {
-//		String key = RedisKey.PREFIX + RedisKey.SERVER_KEY;
-//		this.sadd(key, "" + serverId);
-//	}
-	
 	public void setServerList(final List<ServerBean> serverList) {
 		String key = RedisKey.SERVER_KEY;
 		for (ServerBean server : serverList)
@@ -84,14 +82,21 @@ public class ServerRedisService extends RedisService{
 	}
 	
 	public ServerBean getServer(int serverId) {
-		String value = hget(RedisKey.SERVER_KEY, "" + serverId);
-		
+		String value = userCacheService.hget(RedisKey.SERVER_KEY, "" + serverId);
+		if (value == null) {
+			value = hget(RedisKey.SERVER_KEY, "" + serverId);
+			if (value != null)
+				userCacheService.hput(RedisKey.SERVER_KEY, "" + serverId, value);
+		}
 		return ServerBean.getServer(value);
 	}
 	
 	public String getGameVersion() {
-		String value = get(RedisKey.GAME_VERSION_KEY);
-		
+		String value = userCacheService.get(RedisKey.GAME_VERSION_KEY);
+		if (value == null) {
+			value = get(RedisKey.GAME_VERSION_KEY);
+			userCacheService.set(RedisKey.GAME_VERSION_KEY, value);
+		}
 		return value;
 	}
 	
@@ -100,7 +105,12 @@ public class ServerRedisService extends RedisService{
 	}
 	
 	public int getOnlineStatus(String version) {
-		String value = hget(RedisKey.VERSIONCONTROLLER_PREFIX, version);
+		String value = userCacheService.hget(RedisKey.VERSIONCONTROLLER_PREFIX, version);
+		if (value == null) {
+			value = hget(RedisKey.VERSIONCONTROLLER_PREFIX, version);
+			if (value != null)
+				userCacheService.hput(RedisKey.VERSIONCONTROLLER_PREFIX, version, value);
+		}
 		return TypeTranslatedUtil.stringToInt(value);
 	}
 }

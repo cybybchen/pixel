@@ -65,6 +65,8 @@ public class AreaFightService extends FightService{
 	private PushCommandService pusher;
 	@Resource
 	private UnionRedisService unionRedisService;
+	@Resource
+	private RedisService redisService;
 	
 	private static final int TYPE_UNION_BUFF = 1;
 	
@@ -176,7 +178,7 @@ public class AreaFightService extends FightService{
 		AreaBoss.Builder builder = AreaBoss.newBuilder(boss);
 		builder.setHp(builder.getHp()-score);
 		if(builder.getHp() <= 0){//结算
-			if(!redis.setLock("S"+user.getServerId()+"_AreaBoss_"+builder.getId()))
+			if(!redisService.setLock("S"+user.getServerId()+"_AreaBoss_"+builder.getId()))
 				return ErrorConst.NOT_MONSTER;
 			builder.setOwner(user.buildShort());
 			//击杀奖励
@@ -262,11 +264,11 @@ public class AreaFightService extends FightService{
 				}
 				builder.setOwner(userInfoBuilder.build());
 			}
-			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
+			if(!redisService.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
-			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
+			redisService.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
 			return SuccessConst.AREA_ATTACK_SUCCESS;
 		}else{
 			if(builder.getState() == 0)
@@ -280,11 +282,11 @@ public class AreaFightService extends FightService{
 			}else{//进攻
 				builder.addAttacks(user.buildShort());
 			}
-			if(!redis.setLock("S"+user.getServerId()+"_AreaResource_"+id))
+			if(!redisService.setLock("S"+user.getServerId()+"_AreaResource_"+id))
 				return ErrorConst.ERROR_LOCKED;
 			costEnergy(user, 5);
 			redis.saveResource(builder.build(), user.getServerId());
-			redis.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
+			redisService.clearLock("S"+user.getServerId()+"_AreaResource_"+id);
 			return SuccessConst.Add_AREA_FIGHT;
 		}
 	}
@@ -437,7 +439,7 @@ public class AreaFightService extends FightService{
 	}
 
 	public void resourceFight(AreaResource.Builder builder, int serverId){
-		if(!redis.setLock("S"+serverId+"_AreaResource_"+builder.getId(), 120))
+		if(!redisService.setLock("S"+serverId+"_AreaResource_"+builder.getId(), 120))
 			return;
 		logger.info("S"+serverId+":"+RedisService.formatJson(builder.build()));
 		//防守玩家最后一个加入战斗
@@ -504,7 +506,7 @@ public class AreaFightService extends FightService{
 		builder.clearAttacks();
 		builder.clearAttackerId();
 		redis.saveResource(builder.build(), serverId);
-		redis.clearLock("S"+serverId+"_AreaResource_"+builder.getId());
+		redisService.clearLock("S"+serverId+"_AreaResource_"+builder.getId());
 	}
 	
 	private void getBossRank(AreaBoss.Builder bossbuilder, UserBean user){

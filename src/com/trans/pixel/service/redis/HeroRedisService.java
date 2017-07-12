@@ -22,9 +22,10 @@ import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.protoc.HeroProto.HerolootList;
 import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.protoc.HeroProto.UpgradeList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
-public class HeroRedisService extends RedisService {
+public class HeroRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(HeroRedisService.class);
 	private static final String HEROCHOICE_FILE_NAME = "ld_choose.xml";
 	private static final String HEROLOOT_FILE_NAME = "ld_heroloot.xml";
@@ -42,7 +43,7 @@ public class HeroRedisService extends RedisService {
 			return herochoiceConfig.get("" + heroId);
 		} else {
 			HeroChoice.Builder builder = HeroChoice.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -55,7 +56,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroChoice> map = buildHerochoiceConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroChoice> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.HERO_CHOICE_CONFIG, redismap);
 			return map;
@@ -63,7 +64,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				HeroChoice.Builder builder = HeroChoice.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -71,9 +72,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, HeroChoice> buildHerochoiceConfig(){
-		String xml = ReadConfig(HEROCHOICE_FILE_NAME);
+		String xml = RedisService.ReadConfig(HEROCHOICE_FILE_NAME);
 		HeroChoiceList.Builder builder = HeroChoiceList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + HEROCHOICE_FILE_NAME);
 			return null;
 		}
@@ -93,7 +94,7 @@ public class HeroRedisService extends RedisService {
 			return herolootConfig.get("" + heroId);
 		} else {
 			Heroloot.Builder builder = Heroloot.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -106,7 +107,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Heroloot> map = buildHerolootConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Heroloot> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.HERO_LOOT_CONFIG, redismap);
 			return map;
@@ -114,7 +115,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Heroloot> map = new HashMap<String, Heroloot>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Heroloot.Builder builder = Heroloot.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -122,9 +123,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, Heroloot> buildHerolootConfig(){
-		String xml = ReadConfig(HEROLOOT_FILE_NAME);
+		String xml = RedisService.ReadConfig(HEROLOOT_FILE_NAME);
 		HerolootList.Builder builder = HerolootList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + HEROLOOT_FILE_NAME);
 			return null;
 		}
@@ -144,7 +145,7 @@ public class HeroRedisService extends RedisService {
 			return heroRareLevelupConfig.get("" + position);
 		} else {
 			HeroRareLevelup.Builder builder = HeroRareLevelup.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -157,7 +158,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroRareLevelup> map = buildHeroRareLevelupConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroRareLevelup> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.HERO_RARE_LEVELUP_CONFIG, redismap);
 			return map;
@@ -165,7 +166,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroRareLevelup> map = new HashMap<String, HeroRareLevelup>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				HeroRareLevelup.Builder builder = HeroRareLevelup.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -173,9 +174,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, HeroRareLevelup> buildHeroRareLevelupConfig(){
-		String xml = ReadConfig(RANK_FILE_NAME);
+		String xml = RedisService.ReadConfig(RANK_FILE_NAME);
 		HeroRareLevelupList.Builder builder = HeroRareLevelupList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + RANK_FILE_NAME);
 			return null;
 		}
@@ -195,7 +196,7 @@ public class HeroRedisService extends RedisService {
 			return heroFettersConfig.get("" + heroId);
 		} else {
 			HeroFettersOrder.Builder builder = HeroFettersOrder.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -208,7 +209,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroFettersOrder> map = buildHeroFettersOrderConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroFettersOrder> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.HERO_FETTERS_CONFIG, redismap);
 			return map;
@@ -216,7 +217,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, HeroFettersOrder> map = new HashMap<String, HeroFettersOrder>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				HeroFettersOrder.Builder builder = HeroFettersOrder.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -224,9 +225,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, HeroFettersOrder> buildHeroFettersOrderConfig(){
-		String xml = ReadConfig(HERO_FETTERS_FILE_NAME);
+		String xml = RedisService.ReadConfig(HERO_FETTERS_FILE_NAME);
 		HeroFettersOrderList.Builder builder = HeroFettersOrderList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + HERO_FETTERS_FILE_NAME);
 			return null;
 		}
@@ -246,7 +247,7 @@ public class HeroRedisService extends RedisService {
 			return heroConfig.get("" + heroId);
 		} else {
 			Hero.Builder builder = Hero.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -259,7 +260,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Hero> map = buildHeroConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Hero> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.HERO_CONFIG, redismap);
 			return map;
@@ -267,7 +268,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Hero> map = new HashMap<String, Hero>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Hero.Builder builder = Hero.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -275,9 +276,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, Hero> buildHeroConfig(){
-		String xml = ReadConfig(HERO_FILE_NAME);
+		String xml = RedisService.ReadConfig(HERO_FILE_NAME);
 		HeroList.Builder builder = HeroList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + HERO_FILE_NAME);
 			return null;
 		}
@@ -297,7 +298,7 @@ public class HeroRedisService extends RedisService {
 			return upgradeConfig.get("" + level);
 		} else {
 			Upgrade.Builder builder = Upgrade.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -310,7 +311,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Upgrade> map = buildUpgradeConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Upgrade> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.UPGRADE_CONFIG, redismap);
 			return map;
@@ -318,7 +319,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Upgrade> map = new HashMap<String, Upgrade>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Upgrade.Builder builder = Upgrade.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -326,9 +327,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, Upgrade> buildUpgradeConfig(){
-		String xml = ReadConfig(UPGRADE_FILE_NAME);
+		String xml = RedisService.ReadConfig(UPGRADE_FILE_NAME);
 		UpgradeList.Builder builder = UpgradeList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + UPGRADE_FILE_NAME);
 			return null;
 		}
@@ -348,7 +349,7 @@ public class HeroRedisService extends RedisService {
 			return heroRareLevelupConfig.get("" + rank);
 		} else {
 			Rankvalue.Builder builder = Rankvalue.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -361,7 +362,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Rankvalue> map = buildRankvalueConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Rankvalue> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.RANK_VALUE_CONFIG, redismap);
 			return map;
@@ -369,7 +370,7 @@ public class HeroRedisService extends RedisService {
 			Map<String, Rankvalue> map = new HashMap<String, Rankvalue>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Rankvalue.Builder builder = Rankvalue.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -377,9 +378,9 @@ public class HeroRedisService extends RedisService {
 	}
 	
 	private Map<String, Rankvalue> buildRankvalueConfig(){
-		String xml = ReadConfig(RANKVALUE_FILE_NAME);
+		String xml = RedisService.ReadConfig(RANKVALUE_FILE_NAME);
 		RankvalueList.Builder builder = RankvalueList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + RANKVALUE_FILE_NAME);
 			return null;
 		}

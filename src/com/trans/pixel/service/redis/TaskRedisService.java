@@ -14,9 +14,10 @@ import com.trans.pixel.protoc.TaskProto.Task3OrderList;
 import com.trans.pixel.protoc.TaskProto.TaskOrder;
 import com.trans.pixel.protoc.TaskProto.TaskTarget;
 import com.trans.pixel.protoc.TaskProto.TaskTargetList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class TaskRedisService extends RedisService {
+public class TaskRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(TaskRedisService.class);
 	private static final String TASK1_FILE_NAME = "ld_task1.xml";
 	private static final String TASK2_FILE_NAME = "ld_task2.xml";
@@ -30,7 +31,7 @@ public class TaskRedisService extends RedisService {
 			return config.get("" + targetId);
 		} else {
 			TaskTarget.Builder builder = TaskTarget.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -43,7 +44,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, TaskTarget> map = buildTask1TargetConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TaskTarget> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TASK1_CONFIG_KEY, redismap);
 			return map;
@@ -51,7 +52,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				TaskTarget.Builder builder = TaskTarget.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -59,9 +60,9 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	private Map<String, TaskTarget> buildTask1TargetConfig(){
-		String xml = ReadConfig(TASK1_FILE_NAME);
+		String xml = RedisService.ReadConfig(TASK1_FILE_NAME);
 		TaskTargetList.Builder builder = TaskTargetList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TASK1_FILE_NAME);
 			return null;
 		}
@@ -72,7 +73,7 @@ public class TaskRedisService extends RedisService {
 			map.put("" + task.getTargetid(), task.build());
 			for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 				order.setTargetid(task.getTargetid());
-				redismap.put("" + order.getOrder(), formatJson(order.build()));
+				redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
 			}
 		}
 		hputAll(RedisKey.TASK1_ORDER_CONFIG_KEY, redismap);
@@ -88,7 +89,7 @@ public class TaskRedisService extends RedisService {
 		} 
 		
 		TaskOrder.Builder builder = TaskOrder.newBuilder();
-		if(parseJson(value, builder))
+		if(RedisService.parseJson(value, builder))
 			return builder.build();
 		
 		return null;
@@ -102,7 +103,7 @@ public class TaskRedisService extends RedisService {
 			return config.get("" + order);
 		} else {
 			TaskOrder.Builder builder = TaskOrder.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -115,7 +116,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, TaskOrder> map = buildTask3OrderConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TaskOrder> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TASK3_CONFIG_KEY, redismap);
 			return map;
@@ -123,7 +124,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				TaskOrder.Builder builder = TaskOrder.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -131,9 +132,9 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	private Map<String, TaskOrder> buildTask3OrderConfig(){
-		String xml = ReadConfig(TASK3_FILE_NAME);
+		String xml = RedisService.ReadConfig(TASK3_FILE_NAME);
 		Task3OrderList.Builder builder = Task3OrderList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TASK3_FILE_NAME);
 			return null;
 		}
@@ -166,7 +167,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, Task2TargetHero> map = buildTask2TargetConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Task2TargetHero> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TASK2_CONFIG_KEY, redismap);
 			return map;
@@ -174,7 +175,7 @@ public class TaskRedisService extends RedisService {
 			Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -182,9 +183,9 @@ public class TaskRedisService extends RedisService {
 	}
 	
 	private Map<String, Task2TargetHero> buildTask2TargetConfig(){
-		String xml = ReadConfig(TASK2_FILE_NAME);
+		String xml = RedisService.ReadConfig(TASK2_FILE_NAME);
 		Task2TargetList.Builder builder = Task2TargetList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TASK2_FILE_NAME);
 			return null;
 		}
@@ -196,7 +197,7 @@ public class TaskRedisService extends RedisService {
 			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
 				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 					order.setTargetid(task.getTargetid());
-					redismap.put("" + order.getOrder(), formatJson(order.build()));
+					redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
 				}
 			}
 			hputAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
@@ -214,7 +215,7 @@ public class TaskRedisService extends RedisService {
 		} 
 		
 		TaskOrder.Builder builder = TaskOrder.newBuilder();
-		if(parseJson(value, builder))
+		if(RedisService.parseJson(value, builder))
 			return builder.build();
 		
 		return null;

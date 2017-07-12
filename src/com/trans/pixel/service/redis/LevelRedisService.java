@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.annotation.Resource;
@@ -44,12 +43,11 @@ import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
 import com.trans.pixel.protoc.UserInfoProto.EventRandom;
 import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
 import com.trans.pixel.protoc.UserInfoProto.EventRandomsList;
-import com.trans.pixel.protoc.UserInfoProto.Loot;
-import com.trans.pixel.protoc.UserInfoProto.LootList;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
+import com.trans.pixel.service.cache.UserCacheService;
 
 @Repository
 public class LevelRedisService extends RedisService {
@@ -73,6 +71,8 @@ public class LevelRedisService extends RedisService {
 	private CostService costService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserCacheService userCacheService;
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
@@ -83,7 +83,9 @@ public class LevelRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY+"UserLevel");
 	}
 	public UserLevelBean getUserLevel(long userId){
-		String value = hget(RedisKey.USERDATA+userId, "UserLevel");
+		String value = userCacheService.hget(RedisKey.USERDATA + userId, "UserLevel");
+		if (value == null)
+			value = hget(RedisKey.USERDATA + userId, "UserLevel");
 		if(value != null)
 			return UserLevelBean.fromJson(value);
 		UserLevelBean userLevel = mapper.getUserLevel(userId);
@@ -139,8 +141,8 @@ public class LevelRedisService extends RedisService {
 //		return (now()-userLevel.getLootTime())*userLevel.getExp();
 //	}
 	public void saveUserLevel(UserLevelBean bean){
-		hput(RedisKey.USERDATA+bean.getUserId(), "UserLevel", toJson(bean));
-		sadd(RedisKey.PUSH_MYSQL_KEY+"UserLevel", bean.getUserId()+"");
+		userCacheService.hput(RedisKey.USERDATA + bean.getUserId(), "UserLevel", toJson(bean));
+		userCacheService.sadd(RedisKey.PUSH_MYSQL_KEY + "UserLevel", bean.getUserId() + "");
 	}
 	public Map<Integer, Event.Builder> getEvents(UserBean user, UserLevelBean userLevel) {
 		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());

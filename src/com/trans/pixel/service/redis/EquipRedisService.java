@@ -20,9 +20,10 @@ import com.trans.pixel.protoc.EquipProto.Equipup;
 import com.trans.pixel.protoc.EquipProto.EquipupList;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.EquipProto.MaterialList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class EquipRedisService extends RedisService {
+public class EquipRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(EquipRedisService.class);
 	private static final String CHIP_FILE_NAME = "ld_chip.xml";
 	private static final String EQUIP_FILE_NAME = "ld_equip.xml";
@@ -38,7 +39,7 @@ public class EquipRedisService extends RedisService {
 			return chipConfig.get("" + itemId);
 		} else {
 			Chip.Builder builder = Chip.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -51,7 +52,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Chip> map = buildChipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Chip> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.CHIP_CONFIG, redismap);
 			return map;
@@ -59,7 +60,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Chip> map = new HashMap<String, Chip>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Chip.Builder builder = Chip.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -67,9 +68,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Chip> buildChipConfig(){
-		String xml = ReadConfig(CHIP_FILE_NAME);
+		String xml = RedisService.ReadConfig(CHIP_FILE_NAME);
 		ChipList.Builder builder = ChipList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + CHIP_FILE_NAME);
 			return null;
 		}
@@ -89,7 +90,7 @@ public class EquipRedisService extends RedisService {
 			return config.get("" + itemId);
 		} else {
 			Equiptucao.Builder builder = Equiptucao.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -102,7 +103,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equiptucao> map = buildEquiptucaoConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equiptucao> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.EQUIP_TUCAO_CONFIG, redismap);
 			return map;
@@ -110,7 +111,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equiptucao> map = new HashMap<String, Equiptucao>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Equiptucao.Builder builder = Equiptucao.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -118,9 +119,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Equiptucao> buildEquiptucaoConfig(){
-		String xml = ReadConfig(EQUIPTUCAO_FILE_NAME);
+		String xml = RedisService.ReadConfig(EQUIPTUCAO_FILE_NAME);
 		EquiptucaoList.Builder builder = EquiptucaoList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + EQUIPTUCAO_FILE_NAME);
 			return null;
 		}
@@ -140,7 +141,7 @@ public class EquipRedisService extends RedisService {
 			return equipConfig.get("" + itemId);
 		} else {
 			Equip.Builder builder = Equip.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -153,7 +154,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equip> map = buildEquipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equip> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.EQUIP_CONFIG, redismap);
 			return map;
@@ -161,7 +162,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equip> map = new HashMap<String, Equip>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Equip.Builder builder = Equip.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -169,9 +170,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Equip> buildEquipConfig(){
-		String xml = ReadConfig(EQUIP_FILE_NAME);
+		String xml = RedisService.ReadConfig(EQUIP_FILE_NAME);
 		EquipList.Builder builder = EquipList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + EQUIP_FILE_NAME);
 			return null;
 		}
@@ -187,13 +188,14 @@ public class EquipRedisService extends RedisService {
 	public Armor getArmor(int itemId) {
 		Armor.Builder builder = Armor.newBuilder();
 		String value = hget(RedisKey.ARMOR_CONFIG, "" + itemId);
-		if (value != null && parseJson(value, builder)){
+		if (value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
-		}else if(!exists(RedisKey.ARMOR_CONFIG)){
+//		}else if(!exists(RedisKey.ARMOR_CONFIG)){
+		}else {
 			Map<String, Armor> config = getArmorConfig();
 			return config.get("" + itemId);
 		}
-		return null;
+//		return null;
 	}
 	
 	public Map<String, Armor> getArmorConfig() {
@@ -201,7 +203,7 @@ public class EquipRedisService extends RedisService {
 		if(keyvalue.isEmpty()){
 			Map<String, Armor> map = buildArmorConfig();
 			for(Entry<String, Armor> entry : map.entrySet()){
-				keyvalue.put(entry.getKey(), formatJson(entry.getValue()));
+				keyvalue.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.ARMOR_CONFIG, keyvalue);
 			return map;
@@ -209,7 +211,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Armor> map = new HashMap<String, Armor>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Armor.Builder builder = Armor.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -217,9 +219,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Armor> buildArmorConfig(){
-		String xml = ReadConfig(ARMOR_FILE_NAME);
+		String xml = RedisService.ReadConfig(ARMOR_FILE_NAME);
 		ArmorList.Builder builder = ArmorList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + ARMOR_FILE_NAME);
 			return null;
 		}
@@ -239,7 +241,7 @@ public class EquipRedisService extends RedisService {
 			return config.get("" + itemId);
 		} else {
 			Material.Builder builder = Material.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -252,7 +254,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Material> map = buildMaterialConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Material> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.MATERIAL_CONFIG, redismap);
 			return map;
@@ -260,7 +262,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Material> map = new HashMap<String, Material>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Material.Builder builder = Material.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -268,9 +270,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Material> buildMaterialConfig(){
-		String xml = ReadConfig(MATERIAL_FILE_NAME);
+		String xml = RedisService.ReadConfig(MATERIAL_FILE_NAME);
 		MaterialList.Builder builder = MaterialList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + MATERIAL_FILE_NAME);
 			return null;
 		}
@@ -290,7 +292,7 @@ public class EquipRedisService extends RedisService {
 			return equipConfig.get("" + id);
 		} else {
 			Equipup.Builder builder = Equipup.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -303,7 +305,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equipup> map = buildEquipupConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equipup> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.EQUIPUP_CONFIG, redismap);
 			return map;
@@ -311,7 +313,7 @@ public class EquipRedisService extends RedisService {
 			Map<String, Equipup> map = new HashMap<String, Equipup>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Equipup.Builder builder = Equipup.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -319,9 +321,9 @@ public class EquipRedisService extends RedisService {
 	}
 	
 	private Map<String, Equipup> buildEquipupConfig(){
-		String xml = ReadConfig(EQUIPUP_FILE_NAME);
+		String xml = RedisService.ReadConfig(EQUIPUP_FILE_NAME);
 		EquipupList.Builder builder = EquipupList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + EQUIPUP_FILE_NAME);
 			return null;
 		}

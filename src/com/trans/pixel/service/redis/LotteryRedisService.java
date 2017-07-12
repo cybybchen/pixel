@@ -2,11 +2,9 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -22,75 +20,35 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.protoc.ActivityProto.LotteryActivity;
 import com.trans.pixel.protoc.ActivityProto.LotteryActivityList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class LotteryRedisService extends RedisService {
+public class LotteryRedisService extends CacheService {
 	private static final String LOTTERYACTIVITY_FILE_NAME = "lol_lotteryhuodong.xml";
 	
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
 	
-	@Resource
-	public RedisTemplate<String, String> redisTemplate;
-	
 	public List<RewardBean> getLotteryList(final int type) {
-		return redisTemplate.execute(new RedisCallback<List<RewardBean>>() {
-			@Override
-			public List<RewardBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
-				
-				List<RewardBean> lotteryList = new ArrayList<RewardBean>();
-				Set<Entry<String, String>> lotterySet = bhOps.entries().entrySet();
-				Iterator<Entry<String, String>> itr = lotterySet.iterator();
-				while(itr.hasNext()) {
-					Entry<String, String> entry = itr.next();
-					RewardBean lottery = RewardBean.fromJson(entry.getValue());
-					if (lottery != null) {
-						lotteryList.add(lottery);
-					}
-				}
-				
-				return lotteryList;
+		List<String> values = lrange(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
+		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
+		for (String value : values) {
+			RewardBean lottery = RewardBean.fromJson(value);
+			if (lottery != null) {
+				lotteryList.add(lottery);
 			}
-		
-		});
+		}
+				
+		return lotteryList;
 	}
 	
 	public void setLotteryList(final List<RewardBean> lotteryList, final int type) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
-				
-				for (RewardBean lottery : lotteryList) {
-					bhOps.put("" + lottery.getId(), lottery.toJson());
-				}
-				
-				return null;
-			}
+		List<String> values = new ArrayList<String>();
+		for (RewardBean lottery : lotteryList) {
+			values.add(lottery.toJson());
+		}
 		
-		});
+		lpush(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type, values);
 	}
-	
-	public RewardBean getLottery(final int id, final int type) {
-		return redisTemplate.execute(new RedisCallback<RewardBean>() {
-			@Override
-			public RewardBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
-				
-				RewardBean lottery = RewardBean.fromJson(bhOps.get("" + id));
-				return lottery;
-			}
-		
-		});
-	}
-	
-
 	
 	public LotteryActivity getLotteryActivity(int id) {
 		String value = hget(RedisKey.LOTTERY_ACTIVITY_KEY, "" + id);
@@ -99,7 +57,7 @@ public class LotteryRedisService extends RedisService {
 			return lotteryActivityConfig.get("" + id);
 		} else {
 			LotteryActivity.Builder builder = LotteryActivity.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -112,7 +70,7 @@ public class LotteryRedisService extends RedisService {
 			Map<String, LotteryActivity> map = buildLotteryActivityConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, LotteryActivity> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.LOTTERY_ACTIVITY_KEY, redismap);
 			return map;
@@ -120,7 +78,7 @@ public class LotteryRedisService extends RedisService {
 			Map<String, LotteryActivity> map = new HashMap<String, LotteryActivity>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				LotteryActivity.Builder builder = LotteryActivity.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -128,9 +86,9 @@ public class LotteryRedisService extends RedisService {
 	}
 	
 	private Map<String, LotteryActivity > buildLotteryActivityConfig(){
-		String xml = ReadConfig(LOTTERYACTIVITY_FILE_NAME);
+		String xml = RedisService.ReadConfig(LOTTERYACTIVITY_FILE_NAME);
 		LotteryActivityList.Builder builder = LotteryActivityList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + LOTTERYACTIVITY_FILE_NAME);
 			return null;
 		}

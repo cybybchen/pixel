@@ -7,9 +7,10 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.protoc.Base.JewelPoolList;
 import com.trans.pixel.protoc.Base.JewelPoolLists;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
-public class LibaoRedisService extends RedisService{
+public class LibaoRedisService extends CacheService{
 	Logger logger = Logger.getLogger(LibaoRedisService.class);
 
 	public JewelPool.Builder getJewelPool(int id) {
@@ -48,12 +49,12 @@ public class LibaoRedisService extends RedisService{
 	public JewelPoolLists.Builder getPoolList() {
 		String value = get(RedisKey.JEWELPOOL_CONFIG);
 		JewelPoolLists.Builder builder = JewelPoolLists.newBuilder();
-		if(value != null && parseJson(value, builder)){
+		if(value != null && RedisService.parseJson(value, builder)){
 			return builder;
 		}else{
-			String xml = ReadConfig("ld_pool.xml");
-			parseXml(xml, builder);
-			set(RedisKey.JEWELPOOL_CONFIG, formatJson(builder.build()));
+			String xml = RedisService.ReadConfig("ld_pool.xml");
+			RedisService.parseXml(xml, builder);
+			set(RedisKey.JEWELPOOL_CONFIG, RedisService.formatJson(builder.build()));
 
 			return builder;
 		}

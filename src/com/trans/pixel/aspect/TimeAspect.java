@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 //@Aspect
-//@Component
-//public class TimeAspect {
+@Component
+public class TimeAspect {
 //
 //	private static final Logger log = LoggerFactory.getLogger(TimeAspect.class);
 //	
@@ -74,4 +74,4 @@ import org.springframework.stereotype.Component;
 //        + "." + jp.getSignature().getName() + " throw exception");  
 //    	log.debug(ex.getMessage());  
 //    }  
-//}
+}

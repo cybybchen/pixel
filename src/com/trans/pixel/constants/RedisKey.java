@@ -122,12 +122,13 @@ public class RedisKey {
 	//pushmysql redis
 	public final static String PUSH_MYSQL_KEY = "mysql_update:";
 	public final static String DELETE_MYSQL_KEY = "mysql_delete:";
+	public final static String PUSH_REDIS_KEY = "redis_update";
 	
 	//xiaoguan redis
 	public final static String LEVEL_KEY = CONFIG_PREFIX+"level";
 	public static final String LEVEL_DIFF_PREDIX = CONFIG_PREFIX+"level_diff_"; 
 	
-//	public static final String SAVINGBOX_KEY = PREFIX + CONFIG_PREFIX + "savingbox";
+	public static final String SAVINGBOX_KEY = PREFIX + CONFIG_PREFIX + "savingbox";
 	
 	//cdkey
 	public static final String CDKEY_CONFIG = PREFIX+CONFIG_PREFIX+"cdkey";
@@ -443,38 +444,38 @@ public class RedisKey {
 //	   }
 	}
 	
-	private static ConcurrentMap<String, SavingBox> ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
-	public static final ConcurrentMap<String, SavingBox>  getConfigSavingBox() {
-		return ConfigSavingBox;
-	}
-	public static final void setConfigSavingBox(ConcurrentMap<String, SavingBox> map) {
-		ConfigSavingBox = map;
-	}
-	public static final void initConfigSavingBox() {
-		ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
-	}
+//	private static ConcurrentMap<String, SavingBox> ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
+//	public static final ConcurrentMap<String, SavingBox>  getConfigSavingBox() {
+//		return ConfigSavingBox;
+//	}
+//	public static final void setConfigSavingBox(ConcurrentMap<String, SavingBox> map) {
+//		ConfigSavingBox = map;
+//	}
+//	public static final void initConfigSavingBox() {
+//		ConfigSavingBox = new ConcurrentHashMap<String, SavingBox>();
+//	}
 
-//	public static final String ACTIVITY_KAIFU_KEY = PREFIX + CONFIG_PREFIX+"kaifu";
-	private static ConcurrentMap<String, Kaifu> ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
-	public static final ConcurrentMap<String, Kaifu>  getConfigKaifu() {
-		return ConfigKaifu;
-	}
-	public static final void setConfigKaifu(ConcurrentMap<String, Kaifu> map) {
-		ConfigKaifu = map;
-	}
-	public static final void initConfigKaifu() {
-		ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
-	}
+	public static final String ACTIVITY_KAIFU_KEY = PREFIX + CONFIG_PREFIX+"kaifu";
+//	private static ConcurrentMap<String, Kaifu> ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
+//	public static final ConcurrentMap<String, Kaifu>  getConfigKaifu() {
+//		return ConfigKaifu;
+//	}
+//	public static final void setConfigKaifu(ConcurrentMap<String, Kaifu> map) {
+//		ConfigKaifu = map;
+//	}
+//	public static final void initConfigKaifu() {
+//		ConfigKaifu = new ConcurrentHashMap<String, Kaifu>();
+//	}
 
-	// public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
+	public static final String ACHIEVE_KEY = PREFIX + CONFIG_PREFIX+"achieve";
 	private static ConcurrentMap<String, Achieve> ConfigAchieve = new ConcurrentHashMap<String, Achieve>();
-	public static final ConcurrentMap<String, Achieve>  getConfigAchieve() {
-		return ConfigAchieve;
-	}
-	public static final void setConfigAchieve(ConcurrentMap<String, Achieve> map) {
-		ConfigAchieve = map;
-	}
-	public static final void initConfigAchieve() {
-		ConfigAchieve = new ConcurrentHashMap<String, Achieve>();
-	}
+//	public static final ConcurrentMap<String, Achieve>  getConfigAchieve() {
+//		return ConfigAchieve;
+//	}
+//	public static final void setConfigAchieve(ConcurrentMap<String, Achieve> map) {
+//		ConfigAchieve = map;
+//	}
+//	public static final void initConfigAchieve() {
+//		ConfigAchieve = new ConcurrentHashMap<String, Achieve>();
+//	}
 }

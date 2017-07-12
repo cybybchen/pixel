@@ -96,6 +96,8 @@ public class LadderService {
 	private EquipPokedeService equipPokedeService;
 	@Resource
 	private UserLadderRedisService userLadderRedisService;
+	@Resource
+	private RedisService redisService;
 	
 	public List<UserLadder> ladderInfo(Map<Integer, UserLadder> enemyMap, UserBean user, boolean total, int type) {
 		List<UserLadder> userLadders = new ArrayList<UserLadder>();
@@ -364,12 +366,12 @@ public class LadderService {
 			return ErrorConst.LADDER_RANK_ISCHANGED_ERROR;
 		}
 		long myRank = myRankBean.getRank();
-		if(!ladderRedisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank)) {
+		if(!redisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank)) {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
 			userService.updateUser(user);
 			return ErrorConst.YOU_ARE_ATTACKING;
 		}
-		if(!ladderRedisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank)) {
+		if(!redisService.setLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank)) {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() + 1);
 			userService.updateUser(user);
 			return ErrorConst.HE_IS_ATTACKING;
@@ -405,8 +407,8 @@ public class LadderService {
 			noticeMessageService.composeLadderLevelup(user, attackRank);
 		}
 		
-		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank);
-		ladderRedisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank);
+		redisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+myRank);
+		redisService.clearLock("LadderRank_"+RedisKey.buildServerKey(user.getServerId())+attackRank);
 		
 		return SuccessConst.LADDER_ATTACK_SUCCESS;
 	}

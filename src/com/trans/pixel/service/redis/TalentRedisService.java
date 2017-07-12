@@ -14,9 +14,10 @@ import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.TalentunlockList;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
 import com.trans.pixel.protoc.HeroProto.TalentupgradeList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class TalentRedisService extends RedisService {
+public class TalentRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(TalentRedisService.class);
 	private static final String TALENT_FILE_NAME = "ld_talent.xml";
 	private static final String TALENTUPGRADE_FILE_NAME = "ld_talentupgrade.xml";
@@ -30,7 +31,7 @@ public class TalentRedisService extends RedisService {
 			return config.get("" + id);
 		} else {
 			Talent.Builder builder = Talent.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -43,7 +44,7 @@ public class TalentRedisService extends RedisService {
 			Map<String, Talent> map = buildTalentConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Talent> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TALENT_CONFIG_KEY, redismap);
 			return map;
@@ -51,7 +52,7 @@ public class TalentRedisService extends RedisService {
 			Map<String, Talent> map = new HashMap<String, Talent>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Talent.Builder builder = Talent.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -59,9 +60,9 @@ public class TalentRedisService extends RedisService {
 	}
 	
 	private Map<String, Talent> buildTalentConfig(){
-		String xml = ReadConfig(TALENT_FILE_NAME);
+		String xml = RedisService.ReadConfig(TALENT_FILE_NAME);
 		TalentList.Builder builder = TalentList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TALENT_FILE_NAME);
 			return null;
 		}
@@ -77,12 +78,13 @@ public class TalentRedisService extends RedisService {
 	//talentupgrade
 	public Talentupgrade getTalentupgrade(int level) {
 		String value = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
-		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
+//		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
+		if (value == null) {
 			Map<Integer, Talentupgrade> config = getTalentupgradeConfig();
 			return config.get("" + level);
 		} else {
 			Talentupgrade.Builder builder = Talentupgrade.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -94,7 +96,7 @@ public class TalentRedisService extends RedisService {
 		if(keyvalue.isEmpty()){
 			Map<Integer, Talentupgrade> map = buildTalentupgradeConfig();
 			for(Entry<Integer, Talentupgrade> entry : map.entrySet()){
-				keyvalue.put(entry.getKey()+"", formatJson(entry.getValue()));
+				keyvalue.put(entry.getKey()+"", RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, keyvalue);
 			return map;
@@ -102,7 +104,7 @@ public class TalentRedisService extends RedisService {
 			Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Talentupgrade.Builder builder = Talentupgrade.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(builder.getLevel(), builder.build());
 			}
 			return map;
@@ -110,9 +112,9 @@ public class TalentRedisService extends RedisService {
 	}
 	
 	private Map<Integer, Talentupgrade> buildTalentupgradeConfig(){
-		String xml = ReadConfig(TALENTUPGRADE_FILE_NAME);
+		String xml = RedisService.ReadConfig(TALENTUPGRADE_FILE_NAME);
 		TalentupgradeList.Builder builder = TalentupgradeList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TALENTUPGRADE_FILE_NAME);
 			return null;
 		}
@@ -133,7 +135,7 @@ public class TalentRedisService extends RedisService {
 			return config.get("" + order);
 		} else {
 			Talentunlock.Builder builder = Talentunlock.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -146,7 +148,7 @@ public class TalentRedisService extends RedisService {
 			Map<String, Talentunlock> map = buildTalentunlockConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Talentunlock> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TALENTUNLOCK_CONFIG_KEY, redismap);
 			return map;
@@ -154,7 +156,7 @@ public class TalentRedisService extends RedisService {
 			Map<String, Talentunlock> map = new HashMap<String, Talentunlock>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Talentunlock.Builder builder = Talentunlock.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -162,9 +164,9 @@ public class TalentRedisService extends RedisService {
 	}
 	
 	private Map<String, Talentunlock> buildTalentunlockConfig(){
-		String xml = ReadConfig(TALENTUNLOCK_FILE_NAME);
+		String xml = RedisService.ReadConfig(TALENTUNLOCK_FILE_NAME);
 		TalentunlockList.Builder builder = TalentunlockList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TALENTUNLOCK_FILE_NAME);
 			return null;
 		}

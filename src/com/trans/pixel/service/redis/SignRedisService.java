@@ -10,9 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.RechargeProto.Sign;
 import com.trans.pixel.protoc.RechargeProto.SignList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
-public class SignRedisService extends RedisService{
+public class SignRedisService extends CacheService{
 	private static Logger logger = Logger.getLogger(SignRedisService.class);
 	private static final String SIGN_FILE_NAME1 = "ld_tasksanqian1.xml";
 	private static final String TOTAL_SIGN_FILE_NAME = "ld_taskleiji.xml";
@@ -26,7 +27,7 @@ public class SignRedisService extends RedisService{
 			return signConfig.get("" + count);
 		} else {
 			Sign.Builder builder = Sign.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -39,7 +40,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = buildSignConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.SIGN_KEY, redismap);
 			return map;
@@ -47,7 +48,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = new HashMap<String, Sign>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Sign.Builder builder = Sign.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -55,9 +56,9 @@ public class SignRedisService extends RedisService{
 	}
 	
 	private Map<String, Sign> buildSignConfig(){
-		String xml = ReadConfig(SIGN_FILE_NAME1);
+		String xml = RedisService.ReadConfig(SIGN_FILE_NAME1);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + SIGN_FILE_NAME1);
 			return null;
 		}
@@ -76,7 +77,7 @@ public class SignRedisService extends RedisService{
 			return signConfig.get("" + count);
 		} else {
 			Sign.Builder builder = Sign.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -89,7 +90,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = buildSign2Config();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.SIGN2_KEY, redismap);
 			return map;
@@ -97,7 +98,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = new HashMap<String, Sign>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Sign.Builder builder = Sign.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -105,9 +106,9 @@ public class SignRedisService extends RedisService{
 	}
 	
 	private Map<String, Sign> buildSign2Config(){
-		String xml = ReadConfig(SIGN_FILE_NAME2);
+		String xml = RedisService.ReadConfig(SIGN_FILE_NAME2);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + SIGN_FILE_NAME2);
 			return null;
 		}
@@ -126,7 +127,7 @@ public class SignRedisService extends RedisService{
 			return signConfig.get("" + count);
 		} else {
 			Sign.Builder builder = Sign.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -139,7 +140,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = buildTotalSignConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.TOTAL_SIGN_KEY, redismap);
 			return map;
@@ -147,7 +148,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = new HashMap<String, Sign>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Sign.Builder builder = Sign.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -155,9 +156,9 @@ public class SignRedisService extends RedisService{
 	}
 	
 	private Map<String, Sign> buildTotalSignConfig(){
-		String xml = ReadConfig(TOTAL_SIGN_FILE_NAME);
+		String xml = RedisService.ReadConfig(TOTAL_SIGN_FILE_NAME);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TOTAL_SIGN_FILE_NAME);
 			return null;
 		}
@@ -177,7 +178,7 @@ public class SignRedisService extends RedisService{
 			return signConfig.get("" + day);
 		} else {
 			Sign.Builder builder = Sign.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -190,7 +191,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = buildSevenLoginConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
 			return map;
@@ -198,7 +199,7 @@ public class SignRedisService extends RedisService{
 			Map<String, Sign> map = new HashMap<String, Sign>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				Sign.Builder builder = Sign.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -206,9 +207,9 @@ public class SignRedisService extends RedisService{
 	}
 	
 	private Map<String, Sign> buildSevenLoginConfig(){
-		String xml = ReadConfig(SEVEN_SIGN_FILE_NAME);
+		String xml = RedisService.ReadConfig(SEVEN_SIGN_FILE_NAME);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + SEVEN_SIGN_FILE_NAME);
 			return null;
 		}

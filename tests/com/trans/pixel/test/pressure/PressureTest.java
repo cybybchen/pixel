@@ -16,15 +16,16 @@ import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
-	public static final int THREAD_COUNT = 100;//最大并发数量
-	public static final int TEST_TIME = 100;//脚本执行秒数
+	public static final int THREAD_COUNT = 10000;//最大并发数量
+	public static final int TEST_TIME = 10000;//脚本执行秒数
 	
 	public static void main(String[] args) {
 		extraLog = false;
 		Queue<Thread> queue = new ConcurrentLinkedQueue<Thread>();
 		long time = System.currentTimeMillis();
+		int count = 0;
 		while (true) {
-			sleep(500);
+			sleep(200);
 			Thread thread = new Thread() {
 				public void run() {
 					PressureTest test = new PressureTest();
@@ -36,12 +37,20 @@ public class PressureTest extends BaseTest {
 			if(queue.size() >= THREAD_COUNT){
 				waitThread(queue);
 			}
+			for(Entry<String, TimeBean> entry : timemap.entrySet()){
+				count += entry.getValue().getTime();
+			}
+			System.out.println("总次数：" + count);
+			System.out.println("执行时间为:" + (System.currentTimeMillis() - time) / 1000);
+			count = 0;
 			if((System.currentTimeMillis() - time)/1000 > TEST_TIME){
 				while(!queue.isEmpty()){
 					waitThread(queue);
 				}
 				System.out.println("成功次数\t总次数\t平均时间\t发送请求");
+				
 				for(Entry<String, TimeBean> entry : timemap.entrySet()){
+					count += entry.getValue().getTime();
 					if(entry.getValue().getSuccess() == 0)
 						System.out.println(entry.getValue().getSuccess() + "\t"
 								+ entry.getValue().getTime() + "\t0\t"
@@ -52,9 +61,12 @@ public class PressureTest extends BaseTest {
 								+entry.getValue().getMsec()/entry.getValue().getSuccess()+"\t"
 								+entry.getKey());
 				}
+				
 				break;
 			}
 		}
+		System.out.println("总次数：" + count);
+		System.out.println("执行时间为:" + (System.currentTimeMillis() - time) / 1000);
 	}
 	
 	private static void waitThread(Queue<Thread> queue){
@@ -80,6 +92,8 @@ public class PressureTest extends BaseTest {
 		ResponseCommand response = login(request);//登录
 		request = getRequestCommand(head);
 		
+		while (true) {
+			sleep(200);
 		submitZhanliTest(request);
 		
 		levelTest(request, response);//挂机
@@ -107,6 +121,7 @@ public class PressureTest extends BaseTest {
 		//union
 		
 		new ShopTest().testShop(request);
+		}
 	}
 
 	private void submitZhanliTest(RequestCommand request){

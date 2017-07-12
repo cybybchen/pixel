@@ -8,7 +8,7 @@ import com.trans.pixel.constants.RedisKey;
 public class LogRedisService extends RedisService {
 	
 	public void addLogData(String log) {
-		sadd(RedisKey.LOG_KEY, log);
+//		sadd(RedisKey.LOG_KEY, log);
 	}
 	
 	public String popLog() {

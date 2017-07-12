@@ -12,9 +12,10 @@ import com.trans.pixel.protoc.EquipProto.EquipIncrease;
 import com.trans.pixel.protoc.EquipProto.EquipIncreaseList;
 import com.trans.pixel.protoc.EquipProto.IncreaseLevel;
 import com.trans.pixel.protoc.EquipProto.IncreaseLevelList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class EquipPokedeRedisService extends RedisService {
+public class EquipPokedeRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(EquipPokedeRedisService.class);
 	private static final String INCREASE_FILE_NAME = "ld_increase.xml";
 	private static final String INCREASECOST_FILE_NAME = "ld_increasecost.xml";
@@ -26,7 +27,7 @@ public class EquipPokedeRedisService extends RedisService {
 			return config.get("" + level);
 		} else {
 			EquipIncrease.Builder builder = EquipIncrease.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -39,7 +40,7 @@ public class EquipPokedeRedisService extends RedisService {
 			Map<String, EquipIncrease> map = buildEquipIncreaseConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, EquipIncrease> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.EQUIP_INCREASE_CONFIG, redismap);
 			return map;
@@ -47,7 +48,7 @@ public class EquipPokedeRedisService extends RedisService {
 			Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				EquipIncrease.Builder builder = EquipIncrease.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -55,9 +56,9 @@ public class EquipPokedeRedisService extends RedisService {
 	}
 	
 	private Map<String, EquipIncrease> buildEquipIncreaseConfig(){
-		String xml = ReadConfig(INCREASE_FILE_NAME);
+		String xml = RedisService.ReadConfig(INCREASE_FILE_NAME);
 		EquipIncreaseList.Builder builder = EquipIncreaseList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + INCREASE_FILE_NAME);
 			return null;
 		}
@@ -77,7 +78,7 @@ public class EquipPokedeRedisService extends RedisService {
 			return config.get("" + level);
 		} else {
 			IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -90,7 +91,7 @@ public class EquipPokedeRedisService extends RedisService {
 			Map<String, IncreaseLevel> map = buildIncreaseLevelConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, IncreaseLevel> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, redismap);
 			return map;
@@ -98,7 +99,7 @@ public class EquipPokedeRedisService extends RedisService {
 			Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -106,9 +107,9 @@ public class EquipPokedeRedisService extends RedisService {
 	}
 	
 	private Map<String, IncreaseLevel> buildIncreaseLevelConfig(){
-		String xml = ReadConfig(INCREASECOST_FILE_NAME);
+		String xml = RedisService.ReadConfig(INCREASECOST_FILE_NAME);
 		IncreaseLevelList.Builder builder = IncreaseLevelList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + INCREASECOST_FILE_NAME);
 			return null;
 		}
