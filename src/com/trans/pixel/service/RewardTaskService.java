@@ -265,15 +265,17 @@ public class RewardTaskService {
 	
 	public UserRewardTaskRoom.Builder getUserRoom(UserBean user, int index) {
 		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
-		if (ut == null || ut.getRoomInfo() == null)
+		if (ut == null || ut.getRoomInfo() == null) {
+			rewardTaskRedisService.delUserRewardTaskRoom(user, index);
 			return null;
+		}
 		
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 		
 		return room;
 	}
 	
-	public UserRewardTask.Builder inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int id, int index) {
+	public UserRewardTask.Builder inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int index) {
 		if (userIds.isEmpty()) {//接收邀请
 			UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null)
