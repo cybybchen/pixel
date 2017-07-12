@@ -24,12 +24,14 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
+import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 
@@ -60,6 +62,8 @@ public class RewardTaskService {
 	private LevelRedisService levelRedisService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private PushCommandService pusher;
 	
 //	public ResultConst zhaohuanTask(UserBean user, int id) {
 ////		UserRewardTask oldTask = userRewardTaskService.getUserRewardTask(user, id);
@@ -234,8 +238,10 @@ public class RewardTaskService {
 				if(event.hasCost())
 					costService.cost(userinfo.getId(), event.getCost());
 				UserRewardTask.Builder builder = userRewardTaskService.getUserRewardTask(userinfo.getId(), roomInfo.getIndex());
-				builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
-				userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
+				if(builder != null) {
+					builder.setStatus(REWARDTASK_STATUS.CANREWARD_VALUE);
+					userRewardTaskService.updateUserRewardTask(userinfo.getId(), builder.build());
+				}
 			}
 			activityService.completeRewardTask(userinfo.getId(), rewardTask.getType());
 		}
@@ -269,7 +275,7 @@ public class RewardTaskService {
 			rewardTaskRedisService.delUserRewardTaskRoom(user, index);
 			return null;
 		}
-		
+		 
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 		
 		return room;
@@ -384,9 +390,11 @@ public class RewardTaskService {
 				if (builder.getRoomInfo(i).getUser().getId() == quitUserId) {
 					if (quitUserId != user.getId()) {
 						UserRewardTask.Builder userRewardTaskBuilder = userRewardTaskService.getUserRewardTask(quitUserId, builder.getRoomInfo(i).getIndex());
-						userRewardTaskBuilder.clearRoomInfo();
-//						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
-						userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
+						if(userRewardTaskBuilder != null) {
+							userRewardTaskBuilder.clearRoomInfo();
+	//						userRewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
+							userRewardTaskService.updateUserRewardTask(quitUserId, userRewardTaskBuilder.build());	
+						}
 					}
 					builder.removeRoomInfo(i);
 					break;
@@ -448,7 +456,7 @@ public class RewardTaskService {
 		return SuccessConst.REWARDTASK_GIVEUP_SUCCESS;
 	}
 	
-	public MultiReward.Builder getRewardList(UserBean user, int index, UserRewardTask.Builder builder) {
+	public MultiReward.Builder getRewardList(UserBean user, int index, UserRewardTask.Builder builder, Builder responseBuilder) {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
@@ -479,6 +487,14 @@ public class RewardTaskService {
 			EventConfig event = levelRedisService.getEvent(userRewardTask.getTask().getEventid());
 			rewards.addAllLoot(rewardTask.getLootlistList());
 			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
+			if(event.hasCost()){
+				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), event.getCost().getItemid());
+				if (userEquip != null && userEquip.getEquipCount() > 0) {
+					List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+					userEquipList.add(userEquip);
+					pusher.pushUserEquipListCommand(responseBuilder, user, userEquipList);
+				}
+			}
 			if(rewardTask.getType() == 1){//普通悬赏
 				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
 					int itemid = rewards.getLoot(i).getItemid();

@@ -187,7 +187,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void getUserRewardTaskReward(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
-		MultiReward.Builder rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder);
+		MultiReward.Builder rewardList = rewardTaskService.getRewardList(user, cmd.getIndex(), builder, responseBuilder);
 		if (rewardList.getLootCount() > 0) {
 			handleRewards(responseBuilder, user, rewardList);
 			
