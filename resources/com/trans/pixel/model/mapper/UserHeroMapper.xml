@@ -13,6 +13,7 @@
 		<result property="skillInfo" column="skill_info" />
 		<result property="rank" column="rank" />
 		<result property="equipId" column="equip_id" />
+		<result property="sp" column="sp" />
 	</resultMap>
 	
 	<select id="selectUserHero" resultMap="resultMap">
@@ -26,13 +27,13 @@
 	</select>
 	
 	<insert id="addUserHero" useGeneratedKeys="true" keyProperty="id" parameterType="com.trans.pixel.model.HeroInfoBean">
-	    INSERT INTO user_hero(user_id, hero_id, info_id, level, star_level, value, is_lock, equip_id, skill_info, rank)
-	    VALUES(#{userId}, #{heroId}, #{id}, #{level}, #{starLevel}, #{value}, #{isLock}, #{equipId}, #{skillInfo}, #{rank})
+	    INSERT INTO user_hero(user_id, hero_id, info_id, level, star_level, value, is_lock, equip_id, skill_info, rank, sp)
+	    VALUES(#{userId}, #{heroId}, #{id}, #{level}, #{starLevel}, #{value}, #{isLock}, #{equipId}, #{skillInfo}, #{rank}, #{sp})
 	</insert>
 	
 	<update id="updateUserHero" parameterType="com.trans.pixel.model.HeroInfoBean">
 	    update user_hero set level=#{level}, star_level=#{starLevel},
-	    value=#{value}, is_lock=#{isLock}, equip_id=#{equipId}, skill_info=#{skillInfo}, rank=#{rank}
+	    value=#{value}, is_lock=#{isLock}, equip_id=#{equipId}, skill_info=#{skillInfo}, rank=#{rank}, sp=#{sp}
 	    where user_id=#{userId} and info_id=#{id}
 	</update>
 	
