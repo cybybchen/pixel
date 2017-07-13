@@ -20,8 +20,16 @@ public class UserRecommandService {
 	
 	public int getRecommand(UserBean user) {
 		List<String> userIds = userRecommandRedisService.getRecomands(user.getId());
-		if (userIds == null || userIds.isEmpty())
-			return userRecommandMapper.getRecommands(user.getId());
+		if (userIds == null || userIds.isEmpty()) {
+			List<Long> userid2s = userRecommandMapper.getRecommands(user.getId());
+			if (userid2s == null || userid2s.isEmpty())
+				return 0;
+			
+			for (Long userid2 : userid2s)
+				userRecommandRedisService.saveRecommandInfo(user.getId(), userid2);
+			
+			return userid2s.size();
+		}
 		
 		return userIds.size();
 	}
