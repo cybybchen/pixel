@@ -325,32 +325,32 @@ public class BaseCommandService {
 	}
 	
 	protected void handleRewards(Builder responseBuilder, UserBean user, int rewardId, long rewardCount, boolean isSelf) {
-		MultiReward.Builder rewards = propService.handleRewards(RewardBean.initRewardList(rewardId, rewardCount));
+		MultiReward.Builder rewards = propService.handleRewards(user, RewardBean.initRewardList(rewardId, rewardCount));
 		rewardService.doFilterRewards(user, rewards);
 		if (isSelf)
 			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 	
 	protected void handleRewards(Builder responseBuilder, UserBean user, List<RewardBean> rewardList) {
-		MultiReward.Builder rewards = propService.handleRewards(rewardList);
+		MultiReward.Builder rewards = propService.handleRewards(user, rewardList);
 		rewardService.doFilterRewards(user, rewards);
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 	
 	protected void handleRewardsNoFilter(Builder responseBuilder, UserBean user, List<RewardBean> rewardList) {
-		MultiReward.Builder rewards = propService.handleRewards(rewardList);
+		MultiReward.Builder rewards = propService.handleRewards(user, rewardList);
 		rewardService.doRewards(user, rewards);
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 	
 	protected void handleRewards(Builder responseBuilder, UserBean user, MultiReward.Builder builder) {
-		MultiReward.Builder rewards = propService.handleRewards(builder);
+		MultiReward.Builder rewards = propService.handleRewards(user, builder);
 		rewardService.doFilterRewards(user, rewards);
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 	
 	protected void handleRewards(Builder responseBuilder, UserBean user, MultiReward multi) {
-		MultiReward.Builder rewards = propService.handleRewards(multi);
+		MultiReward.Builder rewards = propService.handleRewards(user, multi);
 		rewardService.doFilterRewards(user, rewards);
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}

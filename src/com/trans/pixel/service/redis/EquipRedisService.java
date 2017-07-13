@@ -12,6 +12,8 @@ import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.ArmorList;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.ChipList;
+import com.trans.pixel.protoc.EquipProto.Engine;
+import com.trans.pixel.protoc.EquipProto.EngineList;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.EquipList;
 import com.trans.pixel.protoc.EquipProto.Equiptucao;
@@ -30,6 +32,7 @@ public class EquipRedisService extends RedisService {
 	private static final String EQUIPTUCAO_FILE_NAME = "lol_equiptucao.xml";
 	private static final String ARMOR_FILE_NAME = "ld_armor.xml";
 	private static final String MATERIAL_FILE_NAME = "ld_material.xml";
+	private static final String ENGINE_FILE_NAME = "ld_engine.xml";
 	
 	public Chip getChip(int itemId) {
 		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
@@ -77,6 +80,56 @@ public class EquipRedisService extends RedisService {
 		Map<String, Chip> map = new HashMap<String, Chip>();
 		for(Chip.Builder chip : builder.getDataBuilderList()){
 			map.put("" + chip.getItemid(), chip.build());
+		}
+		return map;
+	}
+	
+	public Engine getEngine(int itemId) {
+		String value = hget(RedisKey.ENGINE_CONFIG, "" + itemId);
+		if (value == null) {
+			Map<String, Engine> chipConfig = getEngineConfig();
+			return chipConfig.get("" + itemId);
+		} else {
+			Engine.Builder builder = Engine.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Engine> getEngineConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.ENGINE_CONFIG);
+		if(keyvalue.isEmpty()){
+			Map<String, Engine> map = buildEngineConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Engine> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.ENGINE_CONFIG, redismap);
+			return map;
+		}else{
+			Map<String, Engine> map = new HashMap<String, Engine>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Engine.Builder builder = Engine.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Engine> buildEngineConfig(){
+		String xml = ReadConfig(ENGINE_FILE_NAME);
+		EngineList.Builder builder = EngineList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + ENGINE_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Engine> map = new HashMap<String, Engine>();
+		for(Engine.Builder chip : builder.getDataBuilderList()){
+			map.put("" + chip.getId(), chip.build());
 		}
 		return map;
 	}

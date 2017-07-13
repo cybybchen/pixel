@@ -216,6 +216,7 @@ public class RedisKey {
 	public static final String EQUIP_INCREASE_CONFIG = PREFIX + CONFIG_PREFIX + "equipincrease";
 	public static final String EQUIP_INCREASELEVEL_CONFIG = PREFIX + CONFIG_PREFIX + "increaseleve";
 	public static final String MATERIAL_CONFIG = PREFIX + CONFIG_PREFIX + "material";
+	public static final String ENGINE_CONFIG = PREFIX + CONFIG_PREFIX+"engine";
 	
 	//message board
 	public static final String MESSAGE_BOARD_KEY = "message_key";

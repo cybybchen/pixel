@@ -45,6 +45,8 @@ public class PropService {
 	private EquipPokedeService equipPokedeService;
 	@Resource
 	private EquipService equipService;
+	@Resource
+	private NoticeMessageService noticeMessageService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -198,19 +200,26 @@ public class PropService {
 //		return costList;
 //	}
 	
-	public MultiReward.Builder handleRewards(List<RewardBean> rewardList) {
-		return rewardsHandle(RewardBean.buildRewardInfoList(rewardList));
+	public MultiReward.Builder handleRewards(UserBean user, List<RewardBean> rewardList) {
+		return rewardsHandle(user, RewardBean.buildRewardInfoList(rewardList));
 	}
 	
-	public MultiReward.Builder handleRewards(MultiReward.Builder builder) {
-		return rewardsHandle(builder.getLootList());
+	public MultiReward.Builder handleRewards(UserBean user, MultiReward.Builder builder) {
+		return rewardsHandle(user, builder.getLootList());
 	}
 	
-	public MultiReward.Builder handleRewards(MultiReward multi) {
-		return rewardsHandle(multi.getLootList());
+	public MultiReward.Builder handleRewards(UserBean user, MultiReward multi) {
+		return rewardsHandle(user, multi.getLootList());
 	}
 	
-	private MultiReward.Builder rewardsHandle(List<RewardInfo> rewardList) {
+	private MultiReward.Builder rewardsHandle(UserBean user, List<RewardInfo> rewardList) {
+		boolean isShenyuan = false;
+		for (RewardInfo reward : rewardList) {//判断是否深渊出装备
+			if (reward.getItemid() == 33503 || reward.getItemid() == 33504) {
+				isShenyuan = true;
+				break;
+			}
+		}
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
 		Map<String, Prop> map = propRedisService.getPackageConfig();
@@ -225,6 +234,9 @@ public class PropService {
 		}
 		
 		rewardService.mergeReward(rewards);
+		if (isShenyuan) {
+			noticeMessageService.handlerShenyuanEquipMessage(user, rewards.build());
+		}
 		return rewards;
 	}
 	
