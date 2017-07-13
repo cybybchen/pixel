@@ -1026,7 +1026,7 @@ public class LevelRedisService extends RedisService {
 	public List<UserTalent> unlockZhujue(UserBean user, Event event) {
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		int targetId = event.getTargetid();
-		if (targetId < 500 || targetId > 509) 
+		if (targetId < 500 || targetId > 510) 
 			return userTalentList;
 		
 		if (targetId == 500) {
