@@ -279,18 +279,34 @@ public class ShopRedisService extends RedisService{
 	}
 
 	//黑市
-	public ShopList getBlackShop(UserBean user) {
+	public ShopList.Builder getBlackShop(UserBean user) {
 		String value = get(RedisKey.SHENMISHOP_CONFIG);
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
-			return builder.build();
+			if(user.getFriendVip() == 1)
+				for(int index = 0; index < builder.getItemsCount();index++) {
+					Commodity.Builder comm = builder.getItemsBuilder(index);
+					if(comm.getPosition() == 3){
+						builder.removeItems(index);
+						break;
+					}
+				}
+			return builder;
 		}else{
 			CommodityList.Builder commodities = CommodityList.newBuilder();
 			String xml = ReadConfig("ld_shopshenmi.xml");
 			parseXml(xml, commodities);
 			builder.addAllItems(commodities.getDataList());
 			set(RedisKey.SHENMISHOP_CONFIG, formatJson(builder.build()));
-			return builder.build();
+			if(user.getFriendVip() == 1)
+				for(int index = 0; index < builder.getItemsCount();index++) {
+					Commodity.Builder comm = builder.getItemsBuilder(index);
+					if(comm.getPosition() == 3){
+						builder.removeItems(index);
+						break;
+					}
+				}
+			return builder;
 		}
 	}
 //	public ShopList getBlackShop(UserBean user) {
@@ -654,12 +670,13 @@ public class ShopRedisService extends RedisService{
 				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 					if(bean != null) {
-						commbuilder.setIsOut(true);
+						builder.removeItems(i);
+//						commbuilder.setIsOut(true);
 					}
-				}
-				if(itemid > 0 && itemid < 100) {
+				}else if(itemid > 0 && itemid < 100) {
 					if(userTalentService.getUserTalent(user, itemid) != null){
-						commbuilder.setIsOut(true);
+						builder.removeItems(i);
+//						commbuilder.setIsOut(true);
 					}
 				}
 			}
@@ -885,12 +902,13 @@ public class ShopRedisService extends RedisService{
 				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
 					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
 					if(bean != null) {
-						commbuilder.setIsOut(true);
+						builder.removeItems(i);
+//						commbuilder.setIsOut(true);
 					}
-				}
-				if(itemid > 0 && itemid < 100) {
+				}else if(itemid > 0 && itemid < 100) {
 					if(userTalentService.getUserTalent(user, itemid) != null){
-						commbuilder.setIsOut(true);
+						builder.removeItems(i);
+//						commbuilder.setIsOut(true);
 					}
 				}
 				if(commbuilder.getPosition() == 100) {

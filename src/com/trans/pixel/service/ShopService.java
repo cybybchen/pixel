@@ -68,7 +68,7 @@ public class ShopService {
 		return shoplist;
 	}
 	
-	public ShopList getBlackShop(UserBean user) {
+	public ShopList.Builder getBlackShop(UserBean user) {
 		return redis.getBlackShop(user);
 	}
 	
