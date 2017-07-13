@@ -284,7 +284,7 @@ public class ShopRedisService extends RedisService{
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			if(user.getFriendVip() == 1)
-				for(int index = 0; index < builder.getItemsCount();index++) {
+				for(int index = builder.getItemsCount()-1; index >= 0;index--) {
 					Commodity.Builder comm = builder.getItemsBuilder(index);
 					if(comm.getPosition() == 3){
 						builder.removeItems(index);
@@ -297,12 +297,17 @@ public class ShopRedisService extends RedisService{
 			String xml = ReadConfig("ld_shopshenmi.xml");
 			parseXml(xml, commodities);
 			builder.addAllItems(commodities.getDataList());
+			for(int index = builder.getItemsCount()-1; index >= 0;index--) {
+				Commodity.Builder commbuilder = builder.getItemsBuilder(index);
+				if(commbuilder.getLimit() > 0) {
+					commbuilder.setMaxlimit(commbuilder.getLimit());
+					commbuilder.setLimit(0);
+				}
+			}
 			set(RedisKey.SHENMISHOP_CONFIG, formatJson(builder.build()));
 			if(user.getFriendVip() == 1)
 				for(int index = builder.getItemsCount()-1; index >= 0;index--) {
 					Commodity.Builder commbuilder = builder.getItemsBuilder(index);
-					commbuilder.setMaxlimit(commbuilder.getLimit());
-					commbuilder.setLimit(0);
 					if(commbuilder.getPosition() == 3){
 						builder.removeItems(index);
 					}
