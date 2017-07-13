@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-
+<?php
+	include_once("setchannel.php");
+	store($_GET);
+?>
 <html lang="en">
 
 	<head>
@@ -13,7 +16,6 @@
      <link rel="stylesheet" href="ldyxz_files/jquery.bxslider.css" />
 
      <link rel="stylesheet" href="ldyxz_files/main.css" />
-     <script src="jquery.min.js"></script>
 
      <style>
 
@@ -39,17 +41,19 @@
 
      </style>
 
+     
+     <script src="jquery.min.js"></script>
      <script>
-	$(document).ready(function() {
-		var u = navigator.userAgent;
-		//var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-		var isiOS = u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1 || u.indexOf('iPad') > -1; //ios终端
-		if(isiOS) {
-			$("a").attr("href", "https://itunes.apple.com/us/app/%E4%B9%B1%E6%96%97%E8%8B%B1%E9%9B%84%E4%BC%A0-%E5%83%8F%E7%B4%A0%E6%8C%82%E6%9C%BA%E5%84%BF%E6%97%B6%E5%9B%9E%E5%BF%86/id1256389992?l=zh&ls=1&mt=8");
-		}else {
-			$("a").attr("href", "http://download.kalazhu.cn/download/ldyxz/ldyxz_0708.apk");
-		}
-	});
+		$(document).ready(function() {
+			var u = navigator.userAgent;
+			//var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+			var isiOS = u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1 || u.indexOf('iPad') > -1; //ios终端
+			if(isiOS) {
+				$("a").attr("href", "https://itunes.apple.com/us/app/%E4%B9%B1%E6%96%97%E8%8B%B1%E9%9B%84%E4%BC%A0-%E5%83%8F%E7%B4%A0%E6%8C%82%E6%9C%BA%E5%84%BF%E6%97%B6%E5%9B%9E%E5%BF%86/id1256389992?l=zh&ls=1&mt=8");
+			}else {
+				$("a").attr("href", "http://download.kalazhu.cn/download/ldyxz/ldyxz_0708.apk");
+			}
+		});
      </script>
 
 </head>
@@ -58,7 +62,7 @@
 
 	<div class="hover" style="background: url(ldyxz_files/hover.png) no-repeat;">
 
-		<a href=""><img src="ldyxz_files/download.png" class="down1"></a>
+		<a href="" ><img src="ldyxz_files/download.png" class="down1"></a>
 
 	</div>
 
