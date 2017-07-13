@@ -298,7 +298,7 @@ public class ManagerService extends RedisService{
 		int rewardId = TypeTranslatedUtil.jsonGetInt(req, "rewardId");
 		long rewardCount = TypeTranslatedUtil.jsonGetLong(req, "rewardCount");
 		String mailContent = TypeTranslatedUtil.jsonGetString(req, "mailContent");
-		if(rewardId > 0 && rewardCount > 0 && gmaccountBean.getCanreward() == 1){
+		if(rewardId > 0 && rewardCount != 0 && gmaccountBean.getCanreward() == 1){
 			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			if(rewardId == 999){//recharge
