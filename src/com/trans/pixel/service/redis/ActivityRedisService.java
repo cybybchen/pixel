@@ -3,8 +3,6 @@ package com.trans.pixel.service.redis;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -142,22 +140,41 @@ public class ActivityRedisService extends RedisService {
 	
 	//kaifu activity
 	public Kaifu getKaifu(int id) {
-		ConcurrentMap<String, Kaifu> map = RedisKey.getConfigKaifu();
-		if (map.get(""+id) == null)
-			map = getKaifuConfig();
-		return map.get("" + id);
-	}
-	
-	public ConcurrentMap<String, Kaifu> getKaifuConfig() {
-		ConcurrentMap<String, Kaifu> map = RedisKey.getConfigKaifu();
-		if(map.isEmpty()){
-			map = buildKaifuConfig();
-			RedisKey.setConfigKaifu(map);
+		String value = hget(RedisKey.ACTIVITY_KAIFU_KEY, "" + id);
+		if (value == null) {
+			Map<String, Kaifu> config = getKaifuConfig();
+			return config.get("" + id);
+		} else {
+			Kaifu.Builder builder = Kaifu.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
 		}
-		return map;
+		
+		return null;
 	}
 	
-	private ConcurrentMap<String, Kaifu> buildKaifuConfig(){
+	public Map<String, Kaifu> getKaifuConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Kaifu> map = buildKaifuConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Kaifu> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.ACTIVITY_KAIFU_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Kaifu> map = new HashMap<String, Kaifu>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Kaifu.Builder builder = Kaifu.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Kaifu> buildKaifuConfig(){
 		String xml = ReadConfig(ACTIVITY_KAIFU_FILE_NAME);
 		KaifuList.Builder builder = KaifuList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -165,7 +182,7 @@ public class ActivityRedisService extends RedisService {
 			return null;
 		}
 		
-		ConcurrentMap<String, Kaifu> map = new ConcurrentHashMap<String, Kaifu>();
+		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
 		for(Kaifu.Builder kaifu : builder.getDataBuilderList()){
 			map.put("" + kaifu.getId(), kaifu.build());
 		}
