@@ -3655,6 +3655,24 @@ public final class MailProto {
      * <code>repeated int32 id = 2;</code>
      */
     int getId(int index);
+
+    // optional bool isAll = 3;
+    /**
+     * <code>optional bool isAll = 3;</code>
+     *
+     * <pre>
+     *系统邮件一键领取：true领取,false无效
+     * </pre>
+     */
+    boolean hasIsAll();
+    /**
+     * <code>optional bool isAll = 3;</code>
+     *
+     * <pre>
+     *系统邮件一键领取：true领取,false无效
+     * </pre>
+     */
+    boolean getIsAll();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestReadMailCommand}
@@ -3731,6 +3749,11 @@ public final class MailProto {
                 id_.add(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              isAll_ = input.readBool();
               break;
             }
           }
@@ -3815,9 +3838,34 @@ public final class MailProto {
       return id_.get(index);
     }
 
+    // optional bool isAll = 3;
+    public static final int ISALL_FIELD_NUMBER = 3;
+    private boolean isAll_;
+    /**
+     * <code>optional bool isAll = 3;</code>
+     *
+     * <pre>
+     *系统邮件一键领取：true领取,false无效
+     * </pre>
+     */
+    public boolean hasIsAll() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bool isAll = 3;</code>
+     *
+     * <pre>
+     *系统邮件一键领取：true领取,false无效
+     * </pre>
+     */
+    public boolean getIsAll() {
+      return isAll_;
+    }
+
     private void initFields() {
       type_ = 0;
       id_ = java.util.Collections.emptyList();
+      isAll_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3841,6 +3889,9 @@ public final class MailProto {
       for (int i = 0; i < id_.size(); i++) {
         output.writeInt32(2, id_.get(i));
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(3, isAll_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3862,6 +3913,10 @@ public final class MailProto {
         }
         size += dataSize;
         size += 1 * getIdList().size();
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, isAll_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3983,6 +4038,8 @@ public final class MailProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
+        isAll_ = false;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -4020,6 +4077,10 @@ public final class MailProto {
           bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.isAll_ = isAll_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4048,6 +4109,9 @@ public final class MailProto {
             id_.addAll(other.id_);
           }
           onChanged();
+        }
+        if (other.hasIsAll()) {
+          setIsAll(other.getIsAll());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4175,6 +4239,55 @@ public final class MailProto {
       public Builder clearId() {
         id_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      // optional bool isAll = 3;
+      private boolean isAll_ ;
+      /**
+       * <code>optional bool isAll = 3;</code>
+       *
+       * <pre>
+       *系统邮件一键领取：true领取,false无效
+       * </pre>
+       */
+      public boolean hasIsAll() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional bool isAll = 3;</code>
+       *
+       * <pre>
+       *系统邮件一键领取：true领取,false无效
+       * </pre>
+       */
+      public boolean getIsAll() {
+        return isAll_;
+      }
+      /**
+       * <code>optional bool isAll = 3;</code>
+       *
+       * <pre>
+       *系统邮件一键领取：true领取,false无效
+       * </pre>
+       */
+      public Builder setIsAll(boolean value) {
+        bitField0_ |= 0x00000004;
+        isAll_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isAll = 3;</code>
+       *
+       * <pre>
+       *系统邮件一键领取：true领取,false无效
+       * </pre>
+       */
+      public Builder clearIsAll() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        isAll_ = false;
         onChanged();
         return this;
       }
@@ -8779,21 +8892,21 @@ public final class MailProto {
       "UserMailListCommand\022\014\n\004type\030\001 \001(\005\"T\n\036Res",
       "ponseGetUserMailListCommand\0222\n\010mailList\030" +
       "\001 \003(\0132 .com.trans.pixel.protoc.MailList\"" +
-      "2\n\026RequestReadMailCommand\022\014\n\004type\030\001 \002(\005\022" +
-      "\n\n\002id\030\002 \003(\005\"O\n\031ResponseSendRewardCommand" +
-      "\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\"4\n\030RequestDeleteMailCommand" +
-      "\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\";\n\027RequestAdd" +
-      "FriendCommand\022\016\n\006userId\030\001 \001(\003\022\020\n\010userNam" +
-      "e\030\002 \001(\t\":\n\033RequestReceiveFriendCommand\022\n" +
-      "\n\002id\030\001 \003(\005\022\017\n\007receive\030\002 \002(\010\")\n\027RequestDe",
-      "lFriendCommand\022\016\n\006userId\030\001 \002(\003\"f\n\nUserFr" +
-      "iend\022\025\n\rlastLoginTime\030\005 \001(\t\022\021\n\tcountDown" +
-      "\030\006 \001(\005\022.\n\004user\030\010 \001(\0132 .com.trans.pixel.p" +
-      "rotoc.UserInfo\"!\n\037RequestGetUserFriendLi" +
-      "stCommand\"V\n ResponseGetUserFriendListCo" +
-      "mmand\0222\n\006friend\030\001 \003(\0132\".com.trans.pixel." +
-      "protoc.UserFriend"
+      "A\n\026RequestReadMailCommand\022\014\n\004type\030\001 \002(\005\022" +
+      "\n\n\002id\030\002 \003(\005\022\r\n\005isAll\030\003 \001(\010\"O\n\031ResponseSe" +
+      "ndRewardCommand\0222\n\006reward\030\001 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\"4\n\030RequestDe" +
+      "leteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(" +
+      "\005\";\n\027RequestAddFriendCommand\022\016\n\006userId\030\001" +
+      " \001(\003\022\020\n\010userName\030\002 \001(\t\":\n\033RequestReceive" +
+      "FriendCommand\022\n\n\002id\030\001 \003(\005\022\017\n\007receive\030\002 \002",
+      "(\010\")\n\027RequestDelFriendCommand\022\016\n\006userId\030" +
+      "\001 \002(\003\"f\n\nUserFriend\022\025\n\rlastLoginTime\030\005 \001" +
+      "(\t\022\021\n\tcountDown\030\006 \001(\005\022.\n\004user\030\010 \001(\0132 .co" +
+      "m.trans.pixel.protoc.UserInfo\"!\n\037Request" +
+      "GetUserFriendListCommand\"V\n ResponseGetU" +
+      "serFriendListCommand\0222\n\006friend\030\001 \003(\0132\".c" +
+      "om.trans.pixel.protoc.UserFriend"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8829,7 +8942,7 @@ public final class MailProto {
           internal_static_com_trans_pixel_protoc_RequestReadMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReadMailCommand_descriptor,
-              new java.lang.String[] { "Type", "Id", });
+              new java.lang.String[] { "Type", "Id", "IsAll", });
           internal_static_com_trans_pixel_protoc_ResponseSendRewardCommand_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_ResponseSendRewardCommand_fieldAccessorTable = new

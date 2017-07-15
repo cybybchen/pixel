@@ -2959,6 +2959,7 @@ message ResponseGetUserMailListCommand {
 message RequestReadMailCommand {
 	required int32 type = 1;
 	repeated int32 id = 2;
+	optional bool isAll = 3;//系统邮件一键领取：true领取,false无效
 }
 
 message ResponseSendRewardCommand {

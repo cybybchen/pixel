@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -71,8 +72,19 @@ public class MailService {
 		return mailRedisService.getMailCountByUserIdAndType(userId, type);
 	}
 	
-	public List<MailBean> readMail(UserBean user, int type, List<Integer> ids, List<RewardBean> rewardList) {
-		List<MailBean> mailList = mailRedisService.getMailList(user.getId(), type, ids);
+	public List<MailBean> readMail(UserBean user, int type, List<Integer> ids, List<RewardBean> rewardList, boolean isAll) {
+		List<MailBean> mailList = new ArrayList<MailBean>();
+		if (isAll) {
+			for (Integer systemType : MailConst.SYSTEM_MAIL_TYPES) {
+				mailList.addAll(getMailList(user.getId(), systemType));
+			}
+			
+			isDeleteNotice(user.getId(), MailConst.TYPE_SYSTEM_MAIL);
+			
+		} else {
+			mailList = mailRedisService.getMailList(user.getId(), type, ids);
+			isDeleteNotice(user.getId(), type);
+		}
 		
 		for (MailBean mail : mailList) {
 			mail.setRead(true);
@@ -80,8 +92,6 @@ public class MailService {
 			if (rewardList != null)
 				rewardList.addAll(mail.getRewardList());
 		}
-		
-		isDeleteNotice(user.getId(), type);
 		
 		return mailList;
 	}

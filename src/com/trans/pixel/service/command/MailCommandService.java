@@ -49,9 +49,12 @@ public class MailCommandService extends BaseCommandService {
 	
 	public void handleReadMailCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user) {	
 		int type = cmd.getType();
+		boolean isAll = false;
+		if (cmd.hasIsAll())
+			isAll = cmd.getIsAll();
 		List<Integer> ids = cmd.getIdList();
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		List<MailBean> mailList = mailService.readMail(user, type, ids, rewardList);
+		List<MailBean> mailList = mailService.readMail(user, type, ids, rewardList, isAll);
 		if (mailList.size() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MAIL_IS_NOT_EXIST);
