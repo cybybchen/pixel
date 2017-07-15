@@ -79,6 +79,7 @@ message UserInfo {
 	optional uint32 frame = 90;
 	optional uint64 recommandUserId = 91;
 	optional uint32 friendVip = 92;//0:没购买基纽特权，1:已购买
+	optional int32 talentsp = 93;
 }
 
 message JewelPool {

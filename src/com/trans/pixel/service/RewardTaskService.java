@@ -182,7 +182,7 @@ public class RewardTaskService {
 			return null;
 		}
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
-		if (room != null)
+		if (room != null && ut.hasRoomInfo())
 			return room;
 		if (ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
 			return null;

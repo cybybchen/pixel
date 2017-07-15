@@ -1483,6 +1483,7 @@ public class UserBean {
 		builder.setFrame(frame);
 		builder.setRecommandUserId(recommandUserId);
 		builder.setFriendVip(friendVip);
+		builder.setTalentsp(talentsp);
 		
 		return builder.build();
 	}
