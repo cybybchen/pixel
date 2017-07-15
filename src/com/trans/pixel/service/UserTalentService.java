@@ -73,6 +73,17 @@ public class UserTalentService {
 		return userTalent;
 	}
 	
+	private int getSkillSP(UserBean user, UserTalent.Builder userTalent) {
+		List<UserTalentSkill> skillList = getUserTalentSkillListByTalentId(user, userTalent.getId());
+		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		int sp = 0;
+		for (UserTalentSkill skill : skillList) {
+			Talentunlock unlock = map.get("" + skill.getOrderId());
+			sp += unlock.getSp() * skill.getLevel();
+		}
+		return sp;
+	}
+	
 	public UserTalent.Builder getUserTalent(UserBean user, int id) {
 		UserTalent.Builder userTalent = userTalentRedisService.getUserTalent(user.getId(), id);
 		if (userTalent == null) {
@@ -87,6 +98,10 @@ public class UserTalentService {
 			}
 		}
 		
+		if (userTalent != null) {
+			int sp = getSkillSP(user, userTalent);
+			userTalent.setSp(Math.max(0, user.getTalentsp() - sp));
+		}
 //		if (userTalent == null) {
 //			UserTalent.Builder builder = initUserTalent(user, id);
 //			if (builder != null)
@@ -118,8 +133,8 @@ public class UserTalentService {
 		userTalentRedisService.updateUserTalent(userId, userTalent);
 	}
 	
-	public List<UserTalent> getUserTalentList(UserBean user) {
-		List<UserTalent> userTalentList = userTalentRedisService.getUserTalentList(user.getId());
+	public List<UserTalent.Builder> getUserTalentList(UserBean user) {
+		List<UserTalent.Builder> userTalentList = userTalentRedisService.getUserTalentList(user);
 		if (userTalentList.isEmpty()) {
 			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
 			if (utBeanList == null || utBeanList.isEmpty()) {
@@ -128,7 +143,7 @@ public class UserTalentService {
 				while (it.hasNext()) {
 					Entry<String, Talent> entry = it.next();
 					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
-					userTalentList.add(userTalent.build());
+					userTalentList.add(userTalent);
 					updateUserTalent(user.getId(), userTalent.build());
 					break;
 				}
@@ -136,11 +151,16 @@ public class UserTalentService {
 				for (UserTalentBean ut : utBeanList) {
 					UserTalent userTalent = ut.buildUserTalent();
 					if (userTalent != null) {
-						userTalentList.add(userTalent);
+						userTalentList.add(UserTalent.newBuilder(userTalent));
 						updateUserTalent(user.getId(), userTalent);
 					}
 				}
 			}
+		}
+		
+		for(UserTalent.Builder builder : userTalentList) {
+			int sp = getSkillSP(user, builder);
+			builder.setSp(Math.max(0, user.getTalentsp() - sp));
 		}
 		
 		return userTalentList;

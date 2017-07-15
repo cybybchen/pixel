@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.annotation.Resource;
@@ -44,8 +43,6 @@ import com.trans.pixel.protoc.UserInfoProto.EventLevelList;
 import com.trans.pixel.protoc.UserInfoProto.EventRandom;
 import com.trans.pixel.protoc.UserInfoProto.EventRandoms;
 import com.trans.pixel.protoc.UserInfoProto.EventRandomsList;
-import com.trans.pixel.protoc.UserInfoProto.Loot;
-import com.trans.pixel.protoc.UserInfoProto.LootList;
 import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.UserService;
