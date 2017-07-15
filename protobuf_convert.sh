@@ -235,10 +235,11 @@ do
 		}" >> $proto_java
 done 
 
-echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
+echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand()) {
 			pushNoticeCommand(responseBuilder, user);
 
-		lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
+			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
+		}
 
 		return result;
 	}
