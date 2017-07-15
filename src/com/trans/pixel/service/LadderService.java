@@ -140,8 +140,7 @@ public class LadderService {
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
 		
-		if (ret == 0)
-			userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
+		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
 		
 		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
 			userLadderService.addLadderRank(user, builder.build());
