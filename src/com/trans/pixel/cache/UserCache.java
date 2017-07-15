@@ -1,7 +1,7 @@
 package com.trans.pixel.cache;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,12 +10,12 @@ public class UserCache {
 	private static final Logger log = LoggerFactory.getLogger(UserCache.class);
 
 	private static UserCache _instance = null;
-	private static Map<String, Object> userCache = null;
+	private static ConcurrentMap<String, Object> userCache = null;
 
 	public static UserCache getInstance() {
 		if (_instance == null) {
 			_instance = new UserCache();
-			userCache = new HashMap<String, Object>();
+			userCache = new ConcurrentHashMap<String, Object>();
 			userCache.clear();
 		}
 		return _instance;

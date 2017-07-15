@@ -1,8 +1,7 @@
 package com.trans.pixel.cache;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +11,13 @@ public class InProcessCache {
 	
     private static InProcessCache _instance = null;
 //    private static ConcurrentHashMap<String, Object> _cache = null;
-    private static Map<String, Object> _cache = null;
+    private static ConcurrentMap<String, Object> _cache = null;
 
     public static InProcessCache getInstance() {
     	if (_instance == null) {
     		_instance = new InProcessCache();
 //    		_cache = new ConcurrentHashMap<String, Object>();
-    		_cache = new HashMap<String, Object>();
+    		_cache = new ConcurrentHashMap<String, Object>();
     		_cache.clear();
     	}
         return _instance;
