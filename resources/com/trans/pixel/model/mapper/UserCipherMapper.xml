@@ -4,7 +4,7 @@
 
 	<insert id="addCipher">
 	    INSERT INTO user_cipher(cipher_id, user_id) 
-		 VALUES(#{cipher_id}, #{user_id})
+		 VALUES(#{cipherId}, #{userId})
 		 ON 
 	    duplicate key update
 	    user_id=#{userId}

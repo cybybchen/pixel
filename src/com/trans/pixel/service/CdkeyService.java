@@ -123,7 +123,7 @@ public class CdkeyService {
 	public ResultConst cipherReward(UserBean user, String des, MultiReward.Builder rewards) {
 		Cipher cipher = redis.getCipher(des);
 		if (cipher == null 
-				|| !(cipher.getStarttime().isEmpty() && !cipher.getEndtime().isEmpty() && !DateUtil.timeIsAvailable(cipher.getStarttime(), cipher.getEndtime()))) {
+				|| (!cipher.getStarttime().isEmpty() && !cipher.getEndtime().isEmpty() && !DateUtil.timeIsAvailable(cipher.getStarttime(), cipher.getEndtime()))) {
 			return ErrorConst.CIPHER_IS_UNUSE_ERROR;
 		}
 		
