@@ -13,8 +13,10 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
@@ -83,5 +85,18 @@ public class CdkeyCommandService extends BaseCommandService {
 			
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.CDKEY_SUCCESS));
 		}
+	}
+	
+	public void cipherReward(RequestCipherRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		ResultConst ret = service.cipherReward(user, cmd.getCipher(), rewards);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),  RedisService.formatJson(cmd), ret);
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(ret));
+			return;
+		}
+		
+		handleRewards(responseBuilder, user, rewards);
 	}
 }

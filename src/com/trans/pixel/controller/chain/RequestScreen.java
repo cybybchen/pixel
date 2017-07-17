@@ -197,6 +197,7 @@ import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAttackResourceMineInfoCommand;
 import com.trans.pixel.protoc.MailProto.RequestReadMailCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestLotteryCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopPurchaseCommand;
@@ -411,6 +412,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestAttackResourceMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestReadMailCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCipherRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
@@ -1219,6 +1221,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasLotteryCommand()) {
 			RequestLotteryCommand cmd = request.getLotteryCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasCipherRewardCommand()) {
+			RequestCipherRewardCommand cmd = request.getCipherRewardCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipPokedeCommand()) {

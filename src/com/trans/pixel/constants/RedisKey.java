@@ -126,6 +126,8 @@ public class RedisKey {
 	public static final String CDKEY = PREFIX+"cdkey";
 	public static final String CDKEY_OLD = PREFIX+"cdkey_old";
 	public static final String CDKEY_EXCHANGE = PREFIX+"cdkey_exchange";
+	public static final String CIPHER_KEY = PREFIX + CONFIG_PREFIX + "cipher";
+	public static final String CIPHER_RECORD_PREFIX = PREFIX + "cipher_record_";
 	
 	//gm account
 	public static final String GM_SESSION_PREFIX = PREFIX+"GmSession_";

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserCipherMapper">
+
+	<insert id="addCipher">
+	    INSERT INTO user_cipher(cipher_id, user_id) 
+		 VALUES(#{cipher_id}, #{user_id})
+		 ON 
+	    duplicate key update
+	    user_id=#{userId}
+	</insert>
+
+	<select id="getUserIds" parameterType="int" resultType="long" >
+	    SELECT user_id from user_cipher where cipher_id=#{cipherId}
+	</select>
+	
+</mapper>

@@ -2296,6 +2296,22 @@ message UserKaifu {
 	repeated RewardOrder reward = 5;	
 }
 
+message Cipher {
+	optional uint32 id = 1;
+	optional string cipher = 2;
+	optional string starttime = 3;
+	optional string endtime = 4;
+	repeated RewardInfo reward = 5;
+}
+
+message CipherList {
+	repeated Cipher data = 1;
+}
+
+message RequestCipherRewardCommand {
+	required string cipher = 1;
+}
+
 message RequestAchieveRewardCommand {
 	required int32 id = 1;
 }
@@ -3695,6 +3711,7 @@ message RequestCommand {
 	optional RequestBindRecommandCommand bindRecommandCommand = 257;
 	optional RequestRecommandCommand recommandCommand = 258;
 	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
+	optional RequestCipherRewardCommand cipherRewardCommand = 260;
 }
 ////////// Commands
 message ErrorCommand {

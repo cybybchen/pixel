@@ -9,12 +9,19 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
+import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.mapper.CdkeyConfigMapper;
 import com.trans.pixel.model.mapper.CdkeyMapper;
+import com.trans.pixel.model.mapper.UserCipherMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.ActivityProto.Cipher;
+import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
 import com.trans.pixel.service.redis.CdkeyRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class CdkeyService {
@@ -24,6 +31,8 @@ public class CdkeyService {
 	private CdkeyMapper cdkeyMapper;
 	@Resource
 	private CdkeyConfigMapper configMapper;
+	@Resource
+	private UserCipherMapper userCipherMapper;
 	
 	public List<String> getCdkeyRewarded(UserBean user){
 		String value =  redis.getCdkeyRewarded(user);
@@ -109,5 +118,43 @@ public class CdkeyService {
 			return redis.getCdkeyConfigs(cdkeys);
 		}else
 			return redis.getCdkeyConfigs(map.values());
+	}
+	
+	public ResultConst cipherReward(UserBean user, String des, MultiReward.Builder rewards) {
+		Cipher cipher = redis.getCipher(des);
+		if (cipher == null 
+				|| !(cipher.getStarttime().isEmpty() && !cipher.getEndtime().isEmpty() && !DateUtil.timeIsAvailable(cipher.getStarttime(), cipher.getEndtime()))) {
+			return ErrorConst.CIPHER_IS_UNUSE_ERROR;
+		}
+		
+		if (hasCipherReward(user, cipher.getId())) {
+			return ErrorConst.CIPHER_HAS_REWARD_ERROR;
+		}
+		
+		rewards.addAllLoot(cipher.getRewardList());
+		
+		return SuccessConst.CDKEY_SUCCESS;
+	}
+	
+	private boolean hasCipherReward(UserBean user, int cipherId) {
+		boolean hasReward = redis.hasCipherReward(user, cipherId);
+		if (hasReward)
+			return hasReward;
+		
+		if (redis.hasCipherKey(cipherId)) {
+			List<Long> userIds = userCipherMapper.getUserIds(cipherId);
+			if (userIds != null && !userIds.isEmpty()) {
+				redis.setCipherUserIds(cipherId, userIds);
+				
+				hasReward = redis.hasCipherReward(user, cipherId);
+			}
+		}
+		
+		if (!hasReward) {
+			redis.setCipherUserId(cipherId, user.getId());
+			userCipherMapper.addCipher(cipherId, user.getId());
+		}
+		
+		return hasReward;
 	}
 }
