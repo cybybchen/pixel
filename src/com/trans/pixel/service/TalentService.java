@@ -186,6 +186,8 @@ public class TalentService {
 			
 			builder.mergeFrom(userTalent.build());
 			builder.setSp(builder.getSp() + count);
+			user.setTalentsp(user.getTalentsp() + count);
+			userService.updateUser(user);
 			userTalentService.updateUserTalent(user.getId(), builder.build());
 			
 			return SuccessConst.SKILL_STONE_SUCCESS;
@@ -264,7 +266,7 @@ public class TalentService {
 		return true;
 	}
 	
-	private int getNeedSP(UserBean user, UserTalent.Builder userTalent) {
+	public int getNeedSP(UserBean user, UserTalent.Builder userTalent) {
 		List<UserTalentSkill> skillList = userTalentService.getUserTalentSkillListByTalentId(user, userTalent.getId());
 		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		int sp = 0;

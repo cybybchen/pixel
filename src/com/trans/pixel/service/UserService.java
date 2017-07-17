@@ -679,6 +679,10 @@ public class UserService {
 	}
 	
 	public void setUserIdByName(int serverId, String userName, long userId) {
-		
+		userRedisService.setUserIdByName(serverId, userName, userId);
+	}
+	
+	public void deleteUserIdByName(int serverId, String userName) {
+		userRedisService.deleteUserIdByName(serverId, userName);
 	}
 }

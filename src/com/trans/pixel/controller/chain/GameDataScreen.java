@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
+import com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand;
@@ -1497,6 +1498,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestChangeUserNameCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		userCommandService.changeName(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCipherRewardCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		cdkeyCommandService.cipherReward(cmd, responseBuilder, user);
 		return true;
 	}
 

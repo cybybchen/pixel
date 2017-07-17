@@ -92,7 +92,7 @@ public class FriendCommandService extends BaseCommandService {
 	public void handleReceiveFriendCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Integer> ids = cmd.getIdList();
 		boolean receive = cmd.getReceive();
-		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids, null);
+		List<MailBean> mailList = mailService.readMail(user, MailConst.TYPE_ADDFRIEND_MAIL, ids, null, false);
 		if (mailList.size() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MAIL_IS_NOT_EXIST);
 			

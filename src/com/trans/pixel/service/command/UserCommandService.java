@@ -397,6 +397,7 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		
+		userService.deleteUserIdByName(user.getServerId(), user.getUserName());
 		user.setUserName(cmd.getNewName());
 		userService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
 		userService.cache(user.getServerId(), user.buildShort());

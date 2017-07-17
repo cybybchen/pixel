@@ -116,7 +116,8 @@ public class RewardTaskService {
 			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder, user);
 			}else{
-				builder.setLeftcount(builder.getLeftcount()-1);
+				if(builder.getLeftcount() > 0)
+					builder.setLeftcount(builder.getLeftcount()-1);
 				if(builder.getLeftcount() == 0)
 					builder.setStatus(REWARDTASK_STATUS.END_VALUE);
 				else
@@ -181,7 +182,7 @@ public class RewardTaskService {
 			return null;
 		}
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
-		if (room != null)
+		if (room != null && ut.hasRoomInfo())
 			return room;
 		if (ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
 			return null;
@@ -423,7 +424,8 @@ public class RewardTaskService {
 		
 		rewardTaskBuilder.mergeFrom(userRewardTask.build());
 		if(rewardTaskBuilder.getTask().getType() != 2){
-			rewardTaskBuilder.setLeftcount(rewardTaskBuilder.getLeftcount()-1);
+			if(rewardTaskBuilder.getLeftcount() > 0)
+				rewardTaskBuilder.setLeftcount(rewardTaskBuilder.getLeftcount()-1);
 			if(rewardTaskBuilder.getLeftcount() == 0)
 				rewardTaskBuilder.setStatus(REWARDTASK_STATUS.END_VALUE);
 			else{
@@ -461,7 +463,8 @@ public class RewardTaskService {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		if (userRewardTask.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
 			builder.mergeFrom(userRewardTask.build());
-			builder.setLeftcount(builder.getLeftcount()-1);
+			if(builder.getLeftcount() > 0)
+				builder.setLeftcount(builder.getLeftcount()-1);
 			builder.clearRoomInfo();
 			if(builder.getLeftcount() == 0)
 				builder.setStatus(REWARDTASK_STATUS.END_VALUE);

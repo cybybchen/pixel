@@ -13,6 +13,11 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
+import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.EquipProto.Armor;
+import com.trans.pixel.protoc.EquipProto.Engine;
+import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
 import com.trans.pixel.protoc.ServerProto.Title;
@@ -37,6 +42,8 @@ public class NoticeMessageService {
 	private ServerTitleService serverTitleService;
 	@Resource
 	private ServerTitleRedisService serverTitleRedisService;
+	@Resource
+	private EquipService equipService;
 	
 	public void composeLotteryMessage(UserBean user, List<RewardBean> rewardList) {
 		for (RewardBean reward : rewardList) {
@@ -149,6 +156,37 @@ public class NoticeMessageService {
 			
 			StringBuilder sb = new StringBuilder();
 			sb.append("%s,").append(title.getRare()).append(",").append(title.getName()).append(" ").append(user.getUserName()).append("上线了！");
+			
+			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
+		}
+	}
+	
+	public void handlerShenyuanEquipMessage(UserBean user, MultiReward multi) {
+		for (RewardInfo reward : multi.getLootList()) {
+			int itemId = reward.getItemid();
+			if (itemId <= RewardConst.EQUIPMENT || itemId >= RewardConst.CHIP) {
+				continue;
+			}
+			
+			String name = "";
+			int rare = 0;
+			if (itemId < RewardConst.ARMOR) {
+				Equip equip = equipService.getEquip(itemId);
+				name = equip.getList(0).getName();
+				rare = equip.getList(0).getRare();
+			} else if (itemId < RewardConst.ENGINE) {
+				Armor armor = equipService.getArmor(itemId);
+				name = armor.getList(0).getName();
+				rare = armor.getList(0).getRare();
+			} else {
+				Engine engine = equipService.getEngine(itemId);
+				name = engine.getName();
+				rare = engine.getRare();
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("恭喜").append(user.getUserName()).append("在深渊中找到了装备%s,")
+			.append(rare).append(",").append(name).append("！");
 			
 			redis.addNoticeMessage(user.getServerId(), sb.toString(), System.currentTimeMillis());
 		}

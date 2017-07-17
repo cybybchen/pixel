@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTalentSkillBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
@@ -36,16 +37,17 @@ public class UserTalentRedisService extends RedisService {
 			return null;
 	}
 	
-	public List<UserTalent> getUserTalentList(long userId) {
-		String key = RedisKey.USER_TALENT_PREFIX + userId;
+	public List<UserTalent.Builder> getUserTalentList(UserBean user) {
+		String key = RedisKey.USER_TALENT_PREFIX + user.getId();
 		Map<String,String> map = hget(key);
-		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
+		List<UserTalent.Builder> userTalentList = new ArrayList<UserTalent.Builder>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			String value = it.next().getValue();
 			UserTalent.Builder builder = UserTalent.newBuilder();
-			if(value!= null && parseJson(value, builder))
-				userTalentList.add(builder.build());
+			if(value!= null && parseJson(value, builder)){
+				userTalentList.add(builder);
+			}
 		}
 		
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);

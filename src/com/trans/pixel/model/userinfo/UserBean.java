@@ -18,7 +18,7 @@ public class UserBean {
 	private String account = "";
 	private String session = "";
 	private int icon = 0;
-	private String name = "";
+	private String userName = "";
 	private int serverId = 0;
 	private int unionId = 0;
 	private String unionName = "";
@@ -35,6 +35,7 @@ public class UserBean {
 	private int zhanliMax = 0;
 	private int viplibao1 = 0;
 	private int viplibao2 = 0;
+	private int talentsp = 0;
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
@@ -135,6 +136,15 @@ public class UserBean {
 	private int frame = 0;//头像框
 	private long recommandUserId = 0;
 	private int friendVip = 0;
+	/**
+	 * 主角sp总数
+	 */
+	public int getTalentsp() {
+		return talentsp;
+	}
+	public void setTalentsp(int talentSp) {
+		this.talentsp = talentSp;
+	}
 	/**
 	 * 碎片箱购买次数
 	 */
@@ -569,13 +579,13 @@ public class UserBean {
 	 * 用户昵称
 	 */
 	public String getUserName() {
-		return name;
+		return userName;
 	}
 	/**
 	 * 用户昵称
 	 */
 	public void setUserName(String userName) {
-		this.name = userName;
+		this.userName = userName;
 	}
 	/**
 	 * 所属服务器ID
@@ -1319,7 +1329,7 @@ public class UserBean {
 		builder.setId(id);
 //		builder.setAccount(account);
 		builder.setIcon(icon);
-		builder.setName(name);
+		builder.setName(userName);
 //		builder.setServerId(serverId);
 		builder.setVip(vip);
 		if(zhanli > 0)
@@ -1357,7 +1367,7 @@ public class UserBean {
 		builder.setId(id);
 //		builder.setAccount(account);
 		builder.setIcon(icon);
-		builder.setName(name);
+		builder.setName(userName);
 //		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
 		builder.setUnionJob(unionJob);
@@ -1375,7 +1385,7 @@ public class UserBean {
 		builder.setAccount(account);
 		builder.setSession(session);
 		builder.setIcon(icon);
-		builder.setName(name);
+		builder.setName(userName);
 		builder.setServerId(serverId);
 		builder.setUnionId(unionId);
 		builder.setUnionName(unionName);
@@ -1473,6 +1483,7 @@ public class UserBean {
 		builder.setFrame(frame);
 		builder.setRecommandUserId(recommandUserId);
 		builder.setFriendVip(friendVip);
+		builder.setTalentsp(talentsp);
 		
 		return builder.build();
 	}

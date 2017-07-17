@@ -101,6 +101,19 @@ public class LevelRedisService extends RedisService {
 			userLevel.setLootDaguan(daguan.getId());
 			userLevel.setCoin(daguan.getGold());
 			userLevel.setExp(daguan.getExp());
+			int i = 0;
+			for(int eventid : new int[]{1115,1149,1141,50013,50041}) {
+				EventConfig config = getEvent(eventid);
+				Event.Builder builder = Event.newBuilder();
+				builder.setOrder(currentIndex()+(i++));
+				builder.setEventid(eventid);
+				builder.setDaguan(1);
+				builder.setLevel(1);
+				builder.setCount(1);
+				builder.setName(config.getName());
+				saveEvent(userId, builder.build());
+			}
+			
 //			AreaEvent.Builder events = getMainEvent(daguan.getId());
 //			Map<Integer, Event.Builder> eventmap = new HashMap<Integer, Event.Builder>();
 //			for(Event.Builder event : events.getEventBuilderList()){
@@ -1028,7 +1041,7 @@ public class LevelRedisService extends RedisService {
 	public List<UserTalent> unlockZhujue(UserBean user, Event event) {
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();
 		int targetId = event.getTargetid();
-		if (targetId < 500 || targetId > 509) 
+		if (targetId < 500 || targetId > 510) 
 			return userTalentList;
 		
 		if (targetId == 500) {

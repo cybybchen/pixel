@@ -240,7 +240,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShop(Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList list = service.getBlackShop(user);
+		ShopList.Builder list = service.getBlackShop(user);
 		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 		shop.addAllItems(list.getItemsList());
 		responseBuilder.setBlackShopCommand(shop);
@@ -260,7 +260,7 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShopPurchase(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList.Builder shoplist = ShopList.newBuilder(service.getBlackShop(user));
+		ShopList.Builder shoplist = service.getBlackShop(user);
 //		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
 //			shoplist = ShopList.newBuilder(service.refreshBlackShop(user));
 //		}
@@ -297,6 +297,7 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), cost);
 		}
 		pusher.pushUserDataByRewardId(responseBuilder, user, commbuilder.getCurrency());
+		BlackShop(responseBuilder, user);
 		
 //		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 //		shop.addAllItems(shoplist.getItemsList());

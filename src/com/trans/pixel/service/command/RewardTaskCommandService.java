@@ -69,13 +69,12 @@ public class RewardTaskCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             return;
 		}
-		
+
+		pusher.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 		handleRewards(responseBuilder, user, rewards.build());
 
 
 		pusher.pushUserRewardTask(responseBuilder, user);
-		
-		pusher.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 	}
 	
 	public void createRoom(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {

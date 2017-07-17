@@ -122,7 +122,8 @@ public class TalentCommandService extends BaseCommandService {
             return;
 		}
 		ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
-		builder.addUserTalent(talentBuilder.build());
+		for(UserTalent.Builder talent : userTalentService.getUserTalentList(user))
+			builder.addUserTalent(talent);
 		responseBuilder.setUserTalentCommand(builder.build());
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user, equipList);
 	}

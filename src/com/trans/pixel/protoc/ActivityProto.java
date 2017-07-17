@@ -15176,6 +15176,2385 @@ public final class ActivityProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserKaifu)
   }
 
+  public interface CipherOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint32 id = 1;
+    /**
+     * <code>optional uint32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional uint32 id = 1;</code>
+     */
+    int getId();
+
+    // optional string cipher = 2;
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    boolean hasCipher();
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    java.lang.String getCipher();
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getCipherBytes();
+
+    // optional string starttime = 3;
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    boolean hasStarttime();
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    java.lang.String getStarttime();
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getStarttimeBytes();
+
+    // optional string endtime = 4;
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    boolean hasEndtime();
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    java.lang.String getEndtime();
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getEndtimeBytes();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.Cipher}
+   */
+  public static final class Cipher extends
+      com.google.protobuf.GeneratedMessage
+      implements CipherOrBuilder {
+    // Use Cipher.newBuilder() to construct.
+    private Cipher(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private Cipher(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final Cipher defaultInstance;
+    public static Cipher getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public Cipher getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Cipher(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              cipher_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              starttime_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              endtime_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_Cipher_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_Cipher_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ActivityProto.Cipher.class, com.trans.pixel.protoc.ActivityProto.Cipher.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<Cipher> PARSER =
+        new com.google.protobuf.AbstractParser<Cipher>() {
+      public Cipher parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Cipher(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Cipher> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional uint32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional uint32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // optional string cipher = 2;
+    public static final int CIPHER_FIELD_NUMBER = 2;
+    private java.lang.Object cipher_;
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    public boolean hasCipher() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    public java.lang.String getCipher() {
+      java.lang.Object ref = cipher_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cipher_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cipher = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCipherBytes() {
+      java.lang.Object ref = cipher_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cipher_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string starttime = 3;
+    public static final int STARTTIME_FIELD_NUMBER = 3;
+    private java.lang.Object starttime_;
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    public boolean hasStarttime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    public java.lang.String getStarttime() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          starttime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string starttime = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStarttimeBytes() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        starttime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string endtime = 4;
+    public static final int ENDTIME_FIELD_NUMBER = 4;
+    private java.lang.Object endtime_;
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    public boolean hasEndtime() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    public java.lang.String getEndtime() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          endtime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string endtime = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEndtimeBytes() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        endtime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
+    public static final int REWARD_FIELD_NUMBER = 5;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
+    private void initFields() {
+      id_ = 0;
+      cipher_ = "";
+      starttime_ = "";
+      endtime_ = "";
+      reward_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getCipherBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getEndtimeBytes());
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(5, reward_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getCipherBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getEndtimeBytes());
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, reward_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.Cipher parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ActivityProto.Cipher prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.Cipher}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ActivityProto.CipherOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_Cipher_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_Cipher_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ActivityProto.Cipher.class, com.trans.pixel.protoc.ActivityProto.Cipher.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ActivityProto.Cipher.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cipher_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        starttime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_Cipher_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.Cipher getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ActivityProto.Cipher.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.Cipher build() {
+        com.trans.pixel.protoc.ActivityProto.Cipher result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.Cipher buildPartial() {
+        com.trans.pixel.protoc.ActivityProto.Cipher result = new com.trans.pixel.protoc.ActivityProto.Cipher(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.cipher_ = cipher_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.endtime_ = endtime_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ActivityProto.Cipher) {
+          return mergeFrom((com.trans.pixel.protoc.ActivityProto.Cipher)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ActivityProto.Cipher other) {
+        if (other == com.trans.pixel.protoc.ActivityProto.Cipher.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasCipher()) {
+          bitField0_ |= 0x00000002;
+          cipher_ = other.cipher_;
+          onChanged();
+        }
+        if (other.hasStarttime()) {
+          bitField0_ |= 0x00000004;
+          starttime_ = other.starttime_;
+          onChanged();
+        }
+        if (other.hasEndtime()) {
+          bitField0_ |= 0x00000008;
+          endtime_ = other.endtime_;
+          onChanged();
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ActivityProto.Cipher parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ActivityProto.Cipher) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint32 id = 1;
+      private int id_ ;
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string cipher = 2;
+      private java.lang.Object cipher_ = "";
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public boolean hasCipher() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public java.lang.String getCipher() {
+        java.lang.Object ref = cipher_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          cipher_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCipherBytes() {
+        java.lang.Object ref = cipher_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cipher_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public Builder setCipher(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        cipher_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public Builder clearCipher() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        cipher_ = getDefaultInstance().getCipher();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cipher = 2;</code>
+       */
+      public Builder setCipherBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        cipher_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string starttime = 3;
+      private java.lang.Object starttime_ = "";
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public boolean hasStarttime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public java.lang.String getStarttime() {
+        java.lang.Object ref = starttime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          starttime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStarttimeBytes() {
+        java.lang.Object ref = starttime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          starttime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public Builder setStarttime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public Builder clearStarttime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        starttime_ = getDefaultInstance().getStarttime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 3;</code>
+       */
+      public Builder setStarttimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string endtime = 4;
+      private java.lang.Object endtime_ = "";
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public boolean hasEndtime() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public java.lang.String getEndtime() {
+        java.lang.Object ref = endtime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          endtime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEndtimeBytes() {
+        java.lang.Object ref = endtime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          endtime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public Builder setEndtime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public Builder clearEndtime() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        endtime_ = getDefaultInstance().getEndtime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 4;</code>
+       */
+      public Builder setEndtimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 5;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 5;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Cipher)
+    }
+
+    static {
+      defaultInstance = new Cipher(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Cipher)
+  }
+
+  public interface CipherListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Cipher data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    com.trans.pixel.protoc.ActivityProto.Cipher getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ActivityProto.CipherOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    com.trans.pixel.protoc.ActivityProto.CipherOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.CipherList}
+   */
+  public static final class CipherList extends
+      com.google.protobuf.GeneratedMessage
+      implements CipherListOrBuilder {
+    // Use CipherList.newBuilder() to construct.
+    private CipherList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private CipherList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final CipherList defaultInstance;
+    public static CipherList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public CipherList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private CipherList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.Cipher>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.ActivityProto.Cipher.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_CipherList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_CipherList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ActivityProto.CipherList.class, com.trans.pixel.protoc.ActivityProto.CipherList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<CipherList> PARSER =
+        new com.google.protobuf.AbstractParser<CipherList>() {
+      public CipherList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new CipherList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<CipherList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.Cipher data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.CipherOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ActivityProto.Cipher getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ActivityProto.CipherOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.CipherList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ActivityProto.CipherList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.CipherList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ActivityProto.CipherListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_CipherList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_CipherList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ActivityProto.CipherList.class, com.trans.pixel.protoc.ActivityProto.CipherList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ActivityProto.CipherList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_CipherList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.CipherList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ActivityProto.CipherList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.CipherList build() {
+        com.trans.pixel.protoc.ActivityProto.CipherList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.CipherList buildPartial() {
+        com.trans.pixel.protoc.ActivityProto.CipherList result = new com.trans.pixel.protoc.ActivityProto.CipherList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ActivityProto.CipherList) {
+          return mergeFrom((com.trans.pixel.protoc.ActivityProto.CipherList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ActivityProto.CipherList other) {
+        if (other == com.trans.pixel.protoc.ActivityProto.CipherList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ActivityProto.CipherList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ActivityProto.CipherList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Cipher data = 1;
+      private java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.ActivityProto.Cipher>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ActivityProto.Cipher, com.trans.pixel.protoc.ActivityProto.Cipher.Builder, com.trans.pixel.protoc.ActivityProto.CipherOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.Cipher getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ActivityProto.Cipher value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ActivityProto.Cipher.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.ActivityProto.Cipher value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ActivityProto.Cipher value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.ActivityProto.Cipher.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ActivityProto.Cipher.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ActivityProto.Cipher> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.Cipher.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.CipherOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ActivityProto.CipherOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.Cipher.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ActivityProto.Cipher.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ActivityProto.Cipher.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ActivityProto.Cipher.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Cipher data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ActivityProto.Cipher.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ActivityProto.Cipher, com.trans.pixel.protoc.ActivityProto.Cipher.Builder, com.trans.pixel.protoc.ActivityProto.CipherOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ActivityProto.Cipher, com.trans.pixel.protoc.ActivityProto.Cipher.Builder, com.trans.pixel.protoc.ActivityProto.CipherOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.CipherList)
+    }
+
+    static {
+      defaultInstance = new CipherList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.CipherList)
+  }
+
+  public interface RequestCipherRewardCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string cipher = 1;
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    boolean hasCipher();
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    java.lang.String getCipher();
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getCipherBytes();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestCipherRewardCommand}
+   */
+  public static final class RequestCipherRewardCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestCipherRewardCommandOrBuilder {
+    // Use RequestCipherRewardCommand.newBuilder() to construct.
+    private RequestCipherRewardCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestCipherRewardCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestCipherRewardCommand defaultInstance;
+    public static RequestCipherRewardCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestCipherRewardCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestCipherRewardCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              cipher_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.class, com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestCipherRewardCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestCipherRewardCommand>() {
+      public RequestCipherRewardCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestCipherRewardCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestCipherRewardCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string cipher = 1;
+    public static final int CIPHER_FIELD_NUMBER = 1;
+    private java.lang.Object cipher_;
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    public boolean hasCipher() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    public java.lang.String getCipher() {
+      java.lang.Object ref = cipher_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cipher_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string cipher = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCipherBytes() {
+      java.lang.Object ref = cipher_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cipher_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      cipher_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasCipher()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getCipherBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getCipherBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestCipherRewardCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.class, com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        cipher_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ActivityProto.internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand build() {
+        com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand buildPartial() {
+        com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand result = new com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.cipher_ = cipher_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand other) {
+        if (other == com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.getDefaultInstance()) return this;
+        if (other.hasCipher()) {
+          bitField0_ |= 0x00000001;
+          cipher_ = other.cipher_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasCipher()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string cipher = 1;
+      private java.lang.Object cipher_ = "";
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public boolean hasCipher() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public java.lang.String getCipher() {
+        java.lang.Object ref = cipher_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          cipher_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCipherBytes() {
+        java.lang.Object ref = cipher_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cipher_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public Builder setCipher(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        cipher_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public Builder clearCipher() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        cipher_ = getDefaultInstance().getCipher();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string cipher = 1;</code>
+       */
+      public Builder setCipherBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        cipher_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCipherRewardCommand)
+    }
+
+    static {
+      defaultInstance = new RequestCipherRewardCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestCipherRewardCommand)
+  }
+
   public interface RequestAchieveRewardCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -30797,6 +33176,21 @@ public final class ActivityProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserKaifu_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_Cipher_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_Cipher_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_CipherList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_CipherList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -30958,102 +33352,108 @@ public final class ActivityProto {
       "rdOrder\030\003 \003(\005\0227\n\013orderRecord\030\004 \003(\0132\".com" +
       ".trans.pixel.protoc.KaifuOrder\0223\n\006reward" +
       "\030\005 \003(\0132#.com.trans.pixel.protoc.RewardOr" +
-      "der\")\n\033RequestAchieveRewardCommand\022\n\n\002id" +
-      "\030\001 \002(\005\"\033\n\031RequestAchieveListCommand\"V\n\032R" +
-      "esponseAchieveListCommand\0228\n\013userAchieve" +
-      "\030\001 \003(\0132#.com.trans.pixel.protoc.UserAchi" +
-      "eve\"8\n\033RequestRichangRewardCommand\022\n\n\002id" +
-      "\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\"\033\n\031RequestRichangL" +
-      "istCommand\"V\n\032ResponseRichangListCommand",
-      "\0228\n\013userRichang\030\001 \003(\0132#.com.trans.pixel." +
-      "protoc.UserRichang\"\036\n\034RequestKaifu2Activ" +
-      "ityCommand\"w\n\035ResponseKaifu2ActivityComm" +
-      "and\0220\n\004rank\030\001 \003(\0132\".com.trans.pixel.prot" +
-      "oc.Kaifu2Rank\022\017\n\007accRcPs\030\002 \002(\005\022\023\n\013accRcP" +
-      "sRwRc\030\003 \002(\005\"6\n\031RequestKaifuRewardCommand" +
-      "\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\"R\n\032ResponseK" +
-      "aifuRewardCommand\0224\n\tuserKaifu\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.UserKaifu\"\031\n\027Reque" +
-      "stKaifuListCommand\"\274\001\n\030ResponseKaifuList",
-      "Command\0224\n\tuserKaifu\030\001 \003(\0132!.com.trans.p" +
-      "ixel.protoc.UserKaifu\0220\n\004rank\030\002 \003(\0132\".co" +
-      "m.trans.pixel.protoc.Kaifu2Rank\0228\n\013userR" +
-      "ichang\030\003 \003(\0132#.com.trans.pixel.protoc.Us" +
-      "erRichang\"\"\n\022RequestRankCommand\022\014\n\004type\030" +
-      "\001 \002(\005\"I\n\023ResponseRankCommand\0222\n\010userRank" +
-      "\030\001 \003(\0132 .com.trans.pixel.protoc.UserRank" +
-      "\"O\n\023LotteryActivityList\0228\n\007lottery\030\001 \003(\013" +
-      "2\'.com.trans.pixel.protoc.LotteryActivit" +
-      "y\"\300\001\n\017LotteryActivity\022\014\n\004type\030\001 \002(\005\022\014\n\004c",
-      "ost\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\r\n\005judge\030\004 \002(\005\022" +
-      "\021\n\tstarttime\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\0221\n\004i" +
-      "tem\030\007 \003(\0132#.com.trans.pixel.protoc.Lotte" +
-      "ryItem\022\020\n\010errordes\030\010 \001(\t\022\n\n\002id\030\t \001(\005\"V\n\013" +
-      "LotteryItem\022\n\n\002id\030\001 \002(\005\022\016\n\006itemid\030\002 \002(\005\022" +
-      "\r\n\005count\030\003 \002(\005\022\016\n\006weight\030\004 \002(\005\022\014\n\004will\030\005" +
-      " \002(\005\"4\n\025RequestLotteryCommand\022\014\n\004type\030\001 " +
-      "\002(\005\022\r\n\005count\030\002 \001(\005\"B\n\014ActivityList\0222\n\010ac" +
-      "tivity\030\001 \003(\0132 .com.trans.pixel.protoc.Ac" +
-      "tivity\"\312\001\n\010Activity\022\n\n\002id\030\001 \002(\005\022\014\n\004type\030",
-      "\002 \002(\005\022\023\n\013targetcount\030\003 \002(\005\022\013\n\003des\030\004 \002(\t\022" +
-      "\021\n\tstarttime\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\022\024\n\014a" +
-      "ctivitytype\030\007 \002(\005\0222\n\006reward\030\010 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\022\024\n\014serverf" +
-      "ilter\030\t \002(\t\"@\n\rRankvalueList\022/\n\004rank\030\001 \003" +
-      "(\0132!.com.trans.pixel.protoc.Rankvalue\"N\n" +
-      "\tRankvalue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003" +
-      "def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\344\017" +
-      "\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n" +
-      "\023TYPE_LEIJI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COS",
-      "T_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020" +
-      "\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELU" +
-      "P_50\020\007\022\016\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022" +
-      "\027\n\023TYPE_LADDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATT" +
-      "ACK_SUCCESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TY" +
-      "PE_REWARDTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTY" +
-      "PE_WUQI_GET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020" +
-      "\022\021\n\rTYPE_PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHAR" +
-      "GE\020\022\022\024\n\020TYPE_HERO_RAREUP\020\023\022\027\n\023TYPE_EVENT" +
-      "_COMPLETE\020\025\022\036\n\032TYPE_KILL_UNIONBOSS_20000",
-      "1\020\026\022\033\n\027TYPE_LADDERMODE_LEVELUP\020\030\022\025\n\021TYPE" +
-      "_RAID_LEVELUP\020\031\022\027\n\022TYPE_TEAMUP_ARUISI\020\220N" +
-      "\022\037\n\032TYPE_ARUISI_SKILL1_LEVELUP\020\221N\022\037\n\032TYP" +
-      "E_ARUISI_EQUIP_ADD10001\020\222N\022\037\n\032TYPE_ARUIS" +
-      "I_SKILL2_LEVELUP\020\223N\022\024\n\017TYPE_TASK_LEVEL\020\364" +
-      "N\022\026\n\021TYPE_ADD_CHAFENQI\020\330O\022\033\n\026TYPE_PVP_BU" +
-      "FF_LEVELUP5\020\274P\022\030\n\023TYPE_EQUIP_LEVELUP1\020\241Q" +
-      "\022\030\n\023TYPE_EQUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_EQUIP" +
-      "_LEVELUP5\020\245Q\022\031\n\024TYPE_EQUIP_LEVELUP10\020\252Q\022" +
-      "\031\n\024TYPE_UPHERO_QUALITY1\020\205R\022\031\n\024TYPE_UPHER",
-      "O_QUALITY2\020\206R\022\031\n\024TYPE_UPHERO_QUALITY3\020\207R" +
-      "\022\031\n\024TYPE_UPHERO_QUALITY4\020\210R\022\031\n\024TYPE_UPHE" +
-      "RO_QUALITY5\020\211R\022\027\n\022TYPE_HERO_LEVELUP5\020\355R\022" +
-      "\030\n\023TYPE_HERO_LEVELUP10\020\362R\022\030\n\023TYPE_HERO_L" +
-      "EVELUP15\020\367R\022\030\n\023TYPE_HERO_LEVELUP20\020\374R\022\030\n" +
-      "\023TYPE_HERO_LEVELUP22\020\376R\022\030\n\023TYPE_HERO_LEV" +
-      "ELUP25\020\201S\022\030\n\023TYPE_HERO_LEVELUP30\020\206S\022\030\n\023T" +
-      "YPE_HERO_LEVELUP35\020\213S\022\030\n\023TYPE_HERO_LEVEL" +
-      "UP40\020\220S\022\030\n\023TYPE_HERO_LEVELUP45\020\225S\022\030\n\023TYP" +
-      "E_HERO_LEVELUP50\020\232S\022\030\n\023TYPE_HERO_LEVELUP",
-      "55\020\237S\022\030\n\023TYPE_HERO_LEVELUP60\020\244S\022\025\n\020TYPE_" +
-      "FIGHT_FUBEN\020\314S\022\026\n\021TYPE_HERO_RAREUP1\020\261T\022\026" +
-      "\n\021TYPE_HERO_RAREUP2\020\262T\022\026\n\021TYPE_HERO_RARE" +
-      "UP3\020\263T\022\026\n\021TYPE_HERO_RAREUP5\020\265T\022\026\n\021TYPE_H" +
-      "ERO_RAREUP7\020\267T\022\026\n\021TYPE_HERO_RAREUP9\020\271T\022\027" +
-      "\n\022TYPE_HERO_RAREUP11\020\273T\022\027\n\022TYPE_HERO_RAR" +
-      "EUP12\020\274T\022\027\n\022TYPE_HERO_RAREUP13\020\275T\022\027\n\022TYP" +
-      "E_HERO_RAREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELU" +
-      "P\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP5\020\375U\022\033\n\026TYPE_" +
-      "RAID_LEVELUP_TASK\020\334V\022\021\n\rTYPE_GET_HERO\020y\022",
-      "\031\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\032TYPE_TASK_" +
-      "ZHUJUE_LEVELUP60\020{\022\036\n\031TYPE_EVENT_COMPLET" +
-      "E_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312" +
-      "\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI" +
-      "_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYP" +
-      "E_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020" +
-      "\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTON" +
-      "GSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022" +
-      "\023\n\016TYPE_DAILY_ALL\020\323\001"
+      "der\"|\n\006Cipher\022\n\n\002id\030\001 \001(\r\022\016\n\006cipher\030\002 \001(" +
+      "\t\022\021\n\tstarttime\030\003 \001(\t\022\017\n\007endtime\030\004 \001(\t\0222\n" +
+      "\006reward\030\005 \003(\0132\".com.trans.pixel.protoc.R" +
+      "ewardInfo\":\n\nCipherList\022,\n\004data\030\001 \003(\0132\036." +
+      "com.trans.pixel.protoc.Cipher\",\n\032Request" +
+      "CipherRewardCommand\022\016\n\006cipher\030\001 \002(\t\")\n\033R" +
+      "equestAchieveRewardCommand\022\n\n\002id\030\001 \002(\005\"\033",
+      "\n\031RequestAchieveListCommand\"V\n\032ResponseA" +
+      "chieveListCommand\0228\n\013userAchieve\030\001 \003(\0132#" +
+      ".com.trans.pixel.protoc.UserAchieve\"8\n\033R" +
+      "equestRichangRewardCommand\022\n\n\002id\030\001 \002(\005\022\r" +
+      "\n\005order\030\002 \002(\005\"\033\n\031RequestRichangListComma" +
+      "nd\"V\n\032ResponseRichangListCommand\0228\n\013user" +
+      "Richang\030\001 \003(\0132#.com.trans.pixel.protoc.U" +
+      "serRichang\"\036\n\034RequestKaifu2ActivityComma" +
+      "nd\"w\n\035ResponseKaifu2ActivityCommand\0220\n\004r" +
+      "ank\030\001 \003(\0132\".com.trans.pixel.protoc.Kaifu",
+      "2Rank\022\017\n\007accRcPs\030\002 \002(\005\022\023\n\013accRcPsRwRc\030\003 " +
+      "\002(\005\"6\n\031RequestKaifuRewardCommand\022\n\n\002id\030\001" +
+      " \002(\005\022\r\n\005order\030\002 \002(\005\"R\n\032ResponseKaifuRewa" +
+      "rdCommand\0224\n\tuserKaifu\030\001 \003(\0132!.com.trans" +
+      ".pixel.protoc.UserKaifu\"\031\n\027RequestKaifuL" +
+      "istCommand\"\274\001\n\030ResponseKaifuListCommand\022" +
+      "4\n\tuserKaifu\030\001 \003(\0132!.com.trans.pixel.pro" +
+      "toc.UserKaifu\0220\n\004rank\030\002 \003(\0132\".com.trans." +
+      "pixel.protoc.Kaifu2Rank\0228\n\013userRichang\030\003" +
+      " \003(\0132#.com.trans.pixel.protoc.UserRichan",
+      "g\"\"\n\022RequestRankCommand\022\014\n\004type\030\001 \002(\005\"I\n" +
+      "\023ResponseRankCommand\0222\n\010userRank\030\001 \003(\0132 " +
+      ".com.trans.pixel.protoc.UserRank\"O\n\023Lott" +
+      "eryActivityList\0228\n\007lottery\030\001 \003(\0132\'.com.t" +
+      "rans.pixel.protoc.LotteryActivity\"\300\001\n\017Lo" +
+      "tteryActivity\022\014\n\004type\030\001 \002(\005\022\014\n\004cost\030\002 \002(" +
+      "\005\022\r\n\005count\030\003 \002(\005\022\r\n\005judge\030\004 \002(\005\022\021\n\tstart" +
+      "time\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\0221\n\004item\030\007 \003(" +
+      "\0132#.com.trans.pixel.protoc.LotteryItem\022\020" +
+      "\n\010errordes\030\010 \001(\t\022\n\n\002id\030\t \001(\005\"V\n\013LotteryI",
+      "tem\022\n\n\002id\030\001 \002(\005\022\016\n\006itemid\030\002 \002(\005\022\r\n\005count" +
+      "\030\003 \002(\005\022\016\n\006weight\030\004 \002(\005\022\014\n\004will\030\005 \002(\005\"4\n\025" +
+      "RequestLotteryCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005c" +
+      "ount\030\002 \001(\005\"B\n\014ActivityList\0222\n\010activity\030\001" +
+      " \003(\0132 .com.trans.pixel.protoc.Activity\"\312" +
+      "\001\n\010Activity\022\n\n\002id\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\022\023\n" +
+      "\013targetcount\030\003 \002(\005\022\013\n\003des\030\004 \002(\t\022\021\n\tstart" +
+      "time\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\022\024\n\014activityt" +
+      "ype\030\007 \002(\005\0222\n\006reward\030\010 \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\022\024\n\014serverfilter\030\t ",
+      "\002(\t\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com" +
+      ".trans.pixel.protoc.Rankvalue\"N\n\tRankval" +
+      "ue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(" +
+      "\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\344\017\n\rACTIVI" +
+      "TY_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LE" +
+      "IJI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020" +
+      "\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYP" +
+      "E_HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELUP_50\020\007\022\016" +
+      "\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_" +
+      "LADDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATTACK_SUCC",
+      "ESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWAR" +
+      "DTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_" +
+      "GET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE" +
+      "_PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHARGE\020\022\022\024\n\020" +
+      "TYPE_HERO_RAREUP\020\023\022\027\n\023TYPE_EVENT_COMPLET" +
+      "E\020\025\022\036\n\032TYPE_KILL_UNIONBOSS_200001\020\026\022\033\n\027T" +
+      "YPE_LADDERMODE_LEVELUP\020\030\022\025\n\021TYPE_RAID_LE" +
+      "VELUP\020\031\022\027\n\022TYPE_TEAMUP_ARUISI\020\220N\022\037\n\032TYPE" +
+      "_ARUISI_SKILL1_LEVELUP\020\221N\022\037\n\032TYPE_ARUISI" +
+      "_EQUIP_ADD10001\020\222N\022\037\n\032TYPE_ARUISI_SKILL2",
+      "_LEVELUP\020\223N\022\024\n\017TYPE_TASK_LEVEL\020\364N\022\026\n\021TYP" +
+      "E_ADD_CHAFENQI\020\330O\022\033\n\026TYPE_PVP_BUFF_LEVEL" +
+      "UP5\020\274P\022\030\n\023TYPE_EQUIP_LEVELUP1\020\241Q\022\030\n\023TYPE" +
+      "_EQUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_EQUIP_LEVELUP" +
+      "5\020\245Q\022\031\n\024TYPE_EQUIP_LEVELUP10\020\252Q\022\031\n\024TYPE_" +
+      "UPHERO_QUALITY1\020\205R\022\031\n\024TYPE_UPHERO_QUALIT" +
+      "Y2\020\206R\022\031\n\024TYPE_UPHERO_QUALITY3\020\207R\022\031\n\024TYPE" +
+      "_UPHERO_QUALITY4\020\210R\022\031\n\024TYPE_UPHERO_QUALI" +
+      "TY5\020\211R\022\027\n\022TYPE_HERO_LEVELUP5\020\355R\022\030\n\023TYPE_" +
+      "HERO_LEVELUP10\020\362R\022\030\n\023TYPE_HERO_LEVELUP15",
+      "\020\367R\022\030\n\023TYPE_HERO_LEVELUP20\020\374R\022\030\n\023TYPE_HE" +
+      "RO_LEVELUP22\020\376R\022\030\n\023TYPE_HERO_LEVELUP25\020\201" +
+      "S\022\030\n\023TYPE_HERO_LEVELUP30\020\206S\022\030\n\023TYPE_HERO" +
+      "_LEVELUP35\020\213S\022\030\n\023TYPE_HERO_LEVELUP40\020\220S\022" +
+      "\030\n\023TYPE_HERO_LEVELUP45\020\225S\022\030\n\023TYPE_HERO_L" +
+      "EVELUP50\020\232S\022\030\n\023TYPE_HERO_LEVELUP55\020\237S\022\030\n" +
+      "\023TYPE_HERO_LEVELUP60\020\244S\022\025\n\020TYPE_FIGHT_FU" +
+      "BEN\020\314S\022\026\n\021TYPE_HERO_RAREUP1\020\261T\022\026\n\021TYPE_H" +
+      "ERO_RAREUP2\020\262T\022\026\n\021TYPE_HERO_RAREUP3\020\263T\022\026" +
+      "\n\021TYPE_HERO_RAREUP5\020\265T\022\026\n\021TYPE_HERO_RARE",
+      "UP7\020\267T\022\026\n\021TYPE_HERO_RAREUP9\020\271T\022\027\n\022TYPE_H" +
+      "ERO_RAREUP11\020\273T\022\027\n\022TYPE_HERO_RAREUP12\020\274T" +
+      "\022\027\n\022TYPE_HERO_RAREUP13\020\275T\022\027\n\022TYPE_HERO_R" +
+      "AREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELUP\020\224U\022\031\n\024" +
+      "TYPE_ZHUJUE_LEVELUP5\020\375U\022\033\n\026TYPE_RAID_LEV" +
+      "ELUP_TASK\020\334V\022\021\n\rTYPE_GET_HERO\020y\022\031\n\025TYPE_" +
+      "TASK_HERO_RAREUP\020z\022\036\n\032TYPE_TASK_ZHUJUE_L" +
+      "EVELUP60\020{\022\036\n\031TYPE_EVENT_COMPLETE_DAILY\020" +
+      "\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312\001\022\026\n\021TYP" +
+      "E_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI_MINE\020\314\001",
+      "\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYPE_SKILL_" +
+      "LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020\317\001\022\026\n\021TY" +
+      "PE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTONGSHOP_BU" +
+      "Y\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022\023\n\016TYPE_" +
+      "DAILY_ALL\020\323\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -31150,134 +33550,152 @@ public final class ActivityProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserKaifu_descriptor,
               new java.lang.String[] { "Type", "CompleteCount", "RewardOrder", "OrderRecord", "Reward", });
-          internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_Cipher_descriptor =
             getDescriptor().getMessageTypes().get(15);
+          internal_static_com_trans_pixel_protoc_Cipher_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_Cipher_descriptor,
+              new java.lang.String[] { "Id", "Cipher", "Starttime", "Endtime", "Reward", });
+          internal_static_com_trans_pixel_protoc_CipherList_descriptor =
+            getDescriptor().getMessageTypes().get(16);
+          internal_static_com_trans_pixel_protoc_CipherList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_CipherList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor =
+            getDescriptor().getMessageTypes().get(17);
+          internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestCipherRewardCommand_descriptor,
+              new java.lang.String[] { "Cipher", });
+          internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_descriptor =
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAchieveRewardCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestAchieveListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestAchieveListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAchieveListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseAchieveListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_ResponseAchieveListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAchieveListCommand_descriptor,
               new java.lang.String[] { "UserAchieve", });
           internal_static_com_trans_pixel_protoc_RequestRichangRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestRichangRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRichangRewardCommand_descriptor,
               new java.lang.String[] { "Id", "Order", });
           internal_static_com_trans_pixel_protoc_RequestRichangListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestRichangListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRichangListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseRichangListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_ResponseRichangListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRichangListCommand_descriptor,
               new java.lang.String[] { "UserRichang", });
           internal_static_com_trans_pixel_protoc_RequestKaifu2ActivityCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestKaifu2ActivityCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestKaifu2ActivityCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseKaifu2ActivityCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_ResponseKaifu2ActivityCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseKaifu2ActivityCommand_descriptor,
               new java.lang.String[] { "Rank", "AccRcPs", "AccRcPsRwRc", });
           internal_static_com_trans_pixel_protoc_RequestKaifuRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestKaifuRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestKaifuRewardCommand_descriptor,
               new java.lang.String[] { "Id", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseKaifuRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_ResponseKaifuRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseKaifuRewardCommand_descriptor,
               new java.lang.String[] { "UserKaifu", });
           internal_static_com_trans_pixel_protoc_RequestKaifuListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_RequestKaifuListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestKaifuListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseKaifuListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_ResponseKaifuListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseKaifuListCommand_descriptor,
               new java.lang.String[] { "UserKaifu", "Rank", "UserRichang", });
           internal_static_com_trans_pixel_protoc_RequestRankCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestRankCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRankCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_ResponseRankCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_ResponseRankCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRankCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_LotteryActivityList_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_LotteryActivityList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LotteryActivityList_descriptor,
               new java.lang.String[] { "Lottery", });
           internal_static_com_trans_pixel_protoc_LotteryActivity_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_LotteryActivity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LotteryActivity_descriptor,
               new java.lang.String[] { "Type", "Cost", "Count", "Judge", "Starttime", "Endtime", "Item", "Errordes", "Id", });
           internal_static_com_trans_pixel_protoc_LotteryItem_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_LotteryItem_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LotteryItem_descriptor,
               new java.lang.String[] { "Id", "Itemid", "Count", "Weight", "Will", });
           internal_static_com_trans_pixel_protoc_RequestLotteryCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestLotteryCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLotteryCommand_descriptor,
               new java.lang.String[] { "Type", "Count", });
           internal_static_com_trans_pixel_protoc_ActivityList_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_ActivityList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ActivityList_descriptor,
               new java.lang.String[] { "Activity", });
           internal_static_com_trans_pixel_protoc_Activity_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_Activity_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Activity_descriptor,
               new java.lang.String[] { "Id", "Type", "Targetcount", "Des", "Starttime", "Endtime", "Activitytype", "Reward", "Serverfilter", });
           internal_static_com_trans_pixel_protoc_RankvalueList_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RankvalueList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RankvalueList_descriptor,
               new java.lang.String[] { "Rank", });
           internal_static_com_trans_pixel_protoc_Rankvalue_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_Rankvalue_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rankvalue_descriptor,

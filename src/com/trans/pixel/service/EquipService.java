@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Chip;
+import com.trans.pixel.protoc.EquipProto.Engine;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.Material;
@@ -249,6 +250,10 @@ public class EquipService {
 	
 	public Chip getChip(int itemId) {
 		return equipRedisService.getChip(itemId);
+	}
+	
+	public Engine getEngine(int itemId) {
+		return equipRedisService.getEngine(itemId);
 	}
 	
 	public Material getMaterial(int itemId) {

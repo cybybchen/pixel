@@ -79,6 +79,7 @@ message UserInfo {
 	optional uint32 frame = 90;
 	optional uint64 recommandUserId = 91;
 	optional uint32 friendVip = 92;//0:没购买基纽特权，1:已购买
+	optional int32 talentsp = 93;
 }
 
 message JewelPool {
@@ -1069,6 +1070,18 @@ message Material {
 	optional string endtime = 7;
 }
 
+message Engine {
+	optional uint32 id = 1;
+	optional string name = 2;
+	optional uint32 handbook = 3;
+	optional uint32 rare = 4;
+	repeated EquipOrder order = 14;
+}
+
+message EngineList {
+	repeated Engine data = 1;
+}
+
 message EquipList {
 	repeated Equip data = 1;
 }
@@ -1089,6 +1102,7 @@ message EquipOrder {
 	optional string name = 2;
 	optional uint32 handbook = 4;
 	optional uint32 rare = 6;
+	optional uint32 type = 7;
 }
 
 message EquipState {
@@ -2282,6 +2296,22 @@ message UserKaifu {
 	repeated RewardOrder reward = 5;	
 }
 
+message Cipher {
+	optional uint32 id = 1;
+	optional string cipher = 2;
+	optional string starttime = 3;
+	optional string endtime = 4;
+	repeated RewardInfo reward = 5;
+}
+
+message CipherList {
+	repeated Cipher data = 1;
+}
+
+message RequestCipherRewardCommand {
+	required string cipher = 1;
+}
+
 message RequestAchieveRewardCommand {
 	required int32 id = 1;
 }
@@ -2946,6 +2976,7 @@ message ResponseGetUserMailListCommand {
 message RequestReadMailCommand {
 	required int32 type = 1;
 	repeated int32 id = 2;
+	optional bool isAll = 3;//系统邮件一键领取：true领取,false无效
 }
 
 message ResponseSendRewardCommand {
@@ -3680,6 +3711,7 @@ message RequestCommand {
 	optional RequestBindRecommandCommand bindRecommandCommand = 257;
 	optional RequestRecommandCommand recommandCommand = 258;
 	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
+	optional RequestCipherRewardCommand cipherRewardCommand = 260;
 }
 ////////// Commands
 message ErrorCommand {

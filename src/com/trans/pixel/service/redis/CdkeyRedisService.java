@@ -2,20 +2,27 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.ActivityProto.Cipher;
+import com.trans.pixel.protoc.ActivityProto.CipherList;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
 
 @Repository
 public class CdkeyRedisService extends RedisService{
+	private static Logger logger = Logger.getLogger(CdkeyRedisService.class);
+	
+	private static final String CIPHER_FILE_NAME = "ld_cipher.xml";
 	
 	public String getCdkeyRewarded(long userId){
 		return hget(RedisKey.USERDATA+userId, "CdkeyRecord");
@@ -182,5 +189,77 @@ public class CdkeyRedisService extends RedisService{
 	
 	public boolean hasinJustsingCdkRecord(String idfa, int type) {
 		return this.sismember(RedisKey.JUSTSING_CDK_PREFIX + type, idfa);
+	}
+	
+	public Cipher getCipher(String cipher) {
+		String value = hget(RedisKey.CIPHER_KEY, "" + cipher);
+		if (value == null) {
+			Map<String, Cipher> config = getCipherConfig();
+			return config.get("" + cipher);
+		} else {
+			Cipher.Builder builder = Cipher.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, Cipher> getCipherConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.CIPHER_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, Cipher> map = buildCipherConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, Cipher> entry : map.entrySet()){
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.CIPHER_KEY, redismap);
+			return map;
+		}else{
+			Map<String, Cipher> map = new HashMap<String, Cipher>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				Cipher.Builder builder = Cipher.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, Cipher> buildCipherConfig(){
+		String xml = ReadConfig(CIPHER_FILE_NAME);
+		CipherList.Builder builder = CipherList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + CIPHER_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, Cipher> map = new HashMap<String, Cipher>();
+		for(Cipher.Builder cipher : builder.getDataBuilderList()){
+			map.put("" + cipher.getCipher(), cipher.build());
+		}
+		return map;
+	}
+	
+	public boolean hasCipherReward(UserBean user, int cipherId) {
+		String key = RedisKey.CIPHER_RECORD_PREFIX + cipherId;
+		return sismember(key, "" + user.getId());
+	}
+	
+	public boolean hasCipherKey(int cipherId) {
+		String key = RedisKey.CIPHER_RECORD_PREFIX + cipherId;
+		return exists(key);
+	}
+	
+	public void setCipherUserIds(int cipherId, List<Long> userIds) {
+		String key = RedisKey.CIPHER_RECORD_PREFIX + cipherId;
+		for (long userId : userIds) {
+			sadd(key, "" + userId);
+		}
+	}
+	
+	public void setCipherUserId(int cipherId, Long userId) {
+		String key = RedisKey.CIPHER_RECORD_PREFIX + cipherId;
+		sadd(key, "" + userId);
 	}
 }

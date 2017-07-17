@@ -71,7 +71,7 @@ public class UserRewardTaskService {
 				builder.clearEndtime();
 //			builder.setLeftcount(task.getCount());
 			builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
-			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%1000);
+			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%10000000);
 			builder.setIndex(user.getRewardTaskIndex());
 			userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 			userService.updateUser(user);
@@ -83,7 +83,7 @@ public class UserRewardTaskService {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long now = RedisService.now();
 		boolean needRefresh = false;
-		if(map.isEmpty())
+		if(map.size() <= 2)
 			needRefresh = true;
 		Iterator<Entry<Integer, UserRewardTask>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -169,7 +169,7 @@ public class UserRewardTaskService {
 					builder.clearEndtime();
 				builder.setLeftcount(task.getCount());
 				builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
-				user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%1000);
+				user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%10000000);
 				builder.setIndex(user.getRewardTaskIndex());
 				userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 				if((builder.getTask().getId() != 6 || user.getVip() >= 14) && (builder.getTask().getId() != 7 || user.getVip() >= 7))

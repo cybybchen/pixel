@@ -106,11 +106,11 @@ public class LevelCommandService extends BaseCommandService {
 		redis.productEvent(user, userLevel);
 //		levelLoot(userLevel, responseBuilder, user);
 		AreaEvent.Builder events = redis.getMainEvent(userLevel.getUnlockDaguan());
-		if(id > userLevel.getUnlockDaguan() && userLevel.getUnlockOrder() < events.getEvent(events.getEventCount()-1).getOrder()){//illegal next level
+		if(id > userLevel.getUnlockDaguan() && userLevel.getUnlockOrder() < events.getEvent(events.getEventCount()-2).getOrder()){//illegal next level
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_FIRST);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_FIRST);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getUnlockOrder() >= events.getEvent(events.getEventCount()-1).getOrder()){//next level
+		}else if(id == userLevel.getUnlockDaguan()+1 && userLevel.getUnlockOrder() >= events.getEvent(events.getEventCount()-2).getOrder()){//next level
 			Daguan.Builder daguan = redis.getDaguan(id);
 			if(daguan == null){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LEVEL_ERROR);
@@ -404,8 +404,8 @@ public class LevelCommandService extends BaseCommandService {
 		ResponseEventCommand.Builder eventCommand = ResponseEventCommand.newBuilder();
 		for(Event.Builder e : redis.getEvents(user, userLevel).values())
 			eventCommand.addEvent(e);
-		if(eventCommand.getEventCount() >= LevelRedisService.EVENTSIZE)
-			builder.setEventTime(0);
+//		if(eventCommand.getEventCount() >= LevelRedisService.EVENTSIZE)
+//			builder.setEventTime(0);
 		
 		responseBuilder.setLevelLootCommand(builder.build());
 		responseBuilder.setEventCommand(eventCommand);
