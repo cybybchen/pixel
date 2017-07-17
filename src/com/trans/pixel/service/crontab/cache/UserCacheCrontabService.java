@@ -1,11 +1,16 @@
 package com.trans.pixel.service.crontab.cache;
 
+import java.util.Set;
+
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.service.CdkeyService;
 import com.trans.pixel.service.RechargeService;
@@ -22,12 +27,11 @@ import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.UserTeamService;
+import com.trans.pixel.service.cache.UserCacheService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.utils.ConfigUtil;
-
-import net.sf.json.JSONObject;
 
 @Service
 public class UserCacheCrontabService {
@@ -68,155 +72,13 @@ public class UserCacheCrontabService {
 	private UserLadderService userLadderService;
 	@Resource
 	private RaidRedisService raidService;
+	@Resource
+	private UserCacheService userCacheService;
 	
-	@Scheduled(cron = "0 0/5 * * * ? ")
+//	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void updateUserToDB() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
-		try{
-		String key = null;
-		while((key=userService.popDBKey()) != null){
-			userService.updateToDB(key);
-		}
-		while((key=userService.popLibaoDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int rechargeId = Integer.parseInt(keys[1]);
-			userService.updateToLibaoDB(userId, rechargeId);
-		}
-		while((key=userHeroService.popUpdateDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int infoId = Integer.parseInt(keys[1]);
-			
-			userHeroService.updateToDB(userId, infoId);
-		}
-		while((key=userHeroService.popDeleteDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int infoId = Integer.parseInt(keys[1]);
-			
-			userHeroService.deleteToDB(userId, infoId);
-		}
-		while((key=userEquipService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int equipId = Integer.parseInt(keys[1]);
-			userEquipService.updateToDB(userId, equipId);
-		}
-		while((key=userPropService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int propId = Integer.parseInt(keys[1]);
-			userPropService.updateToDB(userId, propId);
-		}
-		while((key=userAchieveService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int type = Integer.parseInt(keys[1]);
-			userAchieveService.updateToDB(userId, type);
-		}
-		while((key=userLevelService.popDBKey()) != null){
-			long userId = Long.parseLong(key);
-			userLevelService.updateToDB(userId);
-		}
-//		while((key=userLevelService.popEventReadyKey()) != null){
-//			String keys[] = key.split("#");
-//			long userId = Long.parseLong(keys[0]);
-//			int order = Integer.parseInt(keys[1]);
-//			userLevelService.updateEventReadyToDB(userId, order);
-//		}
-//		while((key=userLevelService.popEventKey()) != null){
-//			String keys[] = key.split("#");
-//			long userId = Long.parseLong(keys[0]);
-//			int order = Integer.parseInt(keys[1]);
-//			userLevelService.updateEventToDB(userId, order);
-//		}
-//		while((key=userLevelService.popDelEventKey()) != null){
-//			String keys[] = key.split("#");
-//			long userId = Long.parseLong(keys[0]);
-//			int order = Integer.parseInt(keys[1]);
-//			userLevelService.updateDelEventToDB(userId, order);
-//		}
-		while ((key = rechargeRedisService.popDBKey()) != null) {
-			JSONObject json = JSONObject.fromObject(key);
-			RechargeBean recharge = (RechargeBean) JSONObject.toBean(json, RechargeBean.class);
-			rechargeService.updateToDB(recharge);
-		}
-		while((key=cdkeyService.popDBKey()) != null){
-			long userId = Long.parseLong(key);
-			cdkeyService.updateToDB(userId);
-		}
-		while((key=userTeamService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int teamId = Integer.parseInt(keys[1]);
-			userTeamService.updateToDB(userId, teamId);
-		}
-		while((key=userActivityService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int activityId = Integer.parseInt(keys[1]);
-			userActivityService.updateToDB(userId, activityId);
-		}
-		while((key=userFoodService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int foodId = Integer.parseInt(keys[1]);
-			userFoodService.updateToDB(userId, foodId);
-		}
-		while((key=userClearService.popDBKey()) != null) {
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int heroId = Integer.parseInt(keys[1]);
-			int position = Integer.parseInt(keys[2]);
-			userClearService.updateToDB(userId, heroId, position);
-		}
-		while((key=userTaskService.popTask1DBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int targetId = Integer.parseInt(keys[1]);
-			userTaskService.updateTask1ToDB(userId, targetId);
-		}
-		while((key=userTaskService.popTask2DBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int targetId = Integer.parseInt(keys[1]);
-			userTaskService.updateTask2ToDB(userId, targetId);
-		}
-		while((key=userTalentService.popTalentDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int talentId = Integer.parseInt(keys[1]);
-			userTalentService.updateTalentToDB(userId, talentId);
-		}
-		while((key=userTalentService.popTalentSkillDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			String skillInfo = keys[1];
-			userTalentService.updateTalentSkillToDB(userId, skillInfo);
-		}
-		while((key=userRewardTaskService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int index = Integer.parseInt(keys[1]);
-			userRewardTaskService.updateToDB(userId, index);
-		}
-		while((key=userLadderService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int type = Integer.parseInt(keys[1]);
-			userLadderService.updateToDB(userId, type);
-		}
-		while((key=raidService.popDBKey()) != null){
-			String keys[] = key.split("#");
-			long userId = Long.parseLong(keys[0]);
-			int id = Integer.parseInt(keys[1]);
-			userLadderService.updateToDB(userId, id);
-		}
-		}catch(Exception e){
-			logger.error(e.getMessage(), e);
-		}
 	}
 }

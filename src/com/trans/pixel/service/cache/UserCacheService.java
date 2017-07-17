@@ -14,6 +14,7 @@ import com.trans.pixel.cache.UserCache;
 @Component
 public class UserCacheService {
 
+	@SuppressWarnings("unchecked")
 	public void hput(String key1, String key2, String value) {
 		Map<String, String> map = null;
 		Object object = UserCache.getInstance().get(key1);
@@ -26,6 +27,7 @@ public class UserCacheService {
 		UserCache.getInstance().set(key1, map);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String hget(String key1, String key2) {
 		Object object = UserCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
@@ -35,6 +37,7 @@ public class UserCacheService {
 		return map.get(key2);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Map<String, String> hget(String key1) {
 		Object object = UserCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
@@ -59,6 +62,7 @@ public class UserCacheService {
 		UserCache.getInstance().set(key, value);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<String> lrange(String key) {
 		Object object = UserCache.getInstance().get(key);
 		if (object == null)
@@ -67,6 +71,7 @@ public class UserCacheService {
 		return (List<String>)object;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void lpush(String key, String value) {
 		List<String> values = null;
 		Object object = UserCache.getInstance().get(key);
@@ -84,6 +89,7 @@ public class UserCacheService {
 		UserCache.getInstance().set(key, values);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void sadd(String key, String value) {
 		Set<String> sets = null;
 		Object object = UserCache.getInstance().get(key);
@@ -96,6 +102,7 @@ public class UserCacheService {
 		UserCache.getInstance().set(key, sets);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Set<String> spop(String key) {
 		Set<String> sets = null;
 		Object object = UserCache.getInstance().get(key);

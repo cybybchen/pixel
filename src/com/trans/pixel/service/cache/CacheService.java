@@ -12,6 +12,7 @@ import com.trans.pixel.cache.InProcessCache;
 @Component
 public class CacheService {
 
+	@SuppressWarnings("unchecked")
 	public void hput(String key1, String key2, String value) {
 		Map<String, String> map = null;
 		Object object = InProcessCache.getInstance().get(key1);
@@ -24,6 +25,7 @@ public class CacheService {
 		InProcessCache.getInstance().set(key1, map);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String hget(String key1, String key2) {
 		Object object = InProcessCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
@@ -33,6 +35,7 @@ public class CacheService {
 		return map.get(key2);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Map<String, String> hget(String key1) {
 		Object object = InProcessCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
@@ -57,6 +60,7 @@ public class CacheService {
 		InProcessCache.getInstance().set(key, value);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<String> lrange(String key) {
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)
@@ -65,6 +69,7 @@ public class CacheService {
 		return (List<String>)object;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void lpush(String key, String value) {
 		List<String> values = null;
 		Object object = InProcessCache.getInstance().get(key);

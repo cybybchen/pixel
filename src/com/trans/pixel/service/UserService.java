@@ -378,8 +378,10 @@ public class UserService {
 	
 	public <T> void updateToDB(T userId) {
 		UserBean user = userRedisService.getUser(userId);
-		if(user != null)
+		if(user != null) {
+//			userRedisService.updateUserToRedis(user);
 			userMapper.updateUser(user);
+		}
 	}
 	
 	public void delUserIdByAccount(final int serverId, final String account) {
@@ -389,6 +391,10 @@ public class UserService {
 	public String popDBKey(){
 		return userRedisService.popDBKey();
 	}
+	
+//	public Set<String> popDBKey(){
+//		return userRedisService.popDBKey();
+//	}
 
 	public void updateToLibaoDB(long userId, int libaoId) {
 		UserLibaoBean libao = userRedisService.getLibaoBean(userId, libaoId);

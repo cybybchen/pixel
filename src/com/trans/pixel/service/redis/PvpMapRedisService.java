@@ -29,7 +29,6 @@ import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.PVPPosition;
 import com.trans.pixel.protoc.PVPProto.PVPPositionList;
 import com.trans.pixel.protoc.PVPProto.PVPPositionLists;
-import com.trans.pixel.service.cache.UserCacheService;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository
@@ -37,11 +36,11 @@ public class PvpMapRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(PvpMapRedisService.class);
 	@Resource
 	private UserRedisService userRedisService;
-	@Resource
-	private UserCacheService userCacheService;
+//	@Resource
+//	private UserCacheService userCacheService;
 	
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
-		String value = userCacheService.hget(RedisKey.USERDATA + userId, "PvpMap");
+		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		PVPMapList.Builder maplist = getBasePvpMapList();
 		if(value != null && parseJson(value, builder)) {
@@ -77,8 +76,8 @@ public class PvpMapRedisService extends RedisService{
 			field.clearKuangdian();
 			field.clearBuffimg();
 		}
-		userCacheService.hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(builder.build()));
-		userCacheService.sadd(RedisKey.PUSH_REDIS_KEY + "PvpMap", userId+"");
+		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(builder.build()));
+//		userCacheService.sadd(RedisKey.PUSH_REDIS_KEY + "PvpMap", userId+"");
 	}
 
 	public Map<Integer, UserPvpBuffBean> getUserBuffs(UserBean user, PVPMapList.Builder maplist) {

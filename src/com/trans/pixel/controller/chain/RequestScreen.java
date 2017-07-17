@@ -1297,10 +1297,11 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestUnionInfoCommand cmd = request.getUnionInfoCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
-//		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand())
-//			pushNoticeCommand(responseBuilder, user);
-//
-//		lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
+		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand()) {
+			pushNoticeCommand(responseBuilder, user);
+
+			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
+		}
 
 		return result;
 	}

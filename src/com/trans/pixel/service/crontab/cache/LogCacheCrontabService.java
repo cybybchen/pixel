@@ -1,9 +1,10 @@
-package com.trans.pixel.service.crontab;
+package com.trans.pixel.service.crontab.cache;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -16,13 +17,13 @@ import com.trans.pixel.service.redis.LogRedisService;
 import com.trans.pixel.utils.ConfigUtil;
 
 @Service
-public class LogCrontabService {
-	private Logger utilLogger = Logger.getLogger(LogCrontabService.class);
+public class LogCacheCrontabService {
+	private Logger utilLogger = Logger.getLogger(LogCacheCrontabService.class);
 	
 	@Resource
 	private LogRedisService logRedisService;
 	
-//	@Scheduled(cron = "0 0/5 * * * ? ")
+	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void sendLog() {
 		if (!ConfigUtil.CRONTAB_STATUS)
@@ -32,15 +33,17 @@ public class LogCrontabService {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 //			DataOutputStream doc = new DataOutputStream(netOut);
-			while (true) {
+			Set<String> logs = logRedisService.popLog();
+//			while (true) {
+			for (String log : logs) {
 //				String log = logRedisService.popLog();
 //				if (log == null)
-					break;
-//				log += "\n";
+//					break;
+				log += "\n";
 				// utilLogger.debug("send to log server " + log);
 //				doc.writeChars(log);
-//				netOut.write(log.getBytes());
-//				netOut.flush();
+				netOut.write(log.getBytes());
+				netOut.flush();
 //				doc.flush();
 			}
 
