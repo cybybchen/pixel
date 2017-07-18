@@ -205,7 +205,7 @@ public class UnionService extends FightService{
 	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
 	 		union.addAllDefends(users);
 		}
-		union.addAllMembers(members);
+		
 		if(user.getUnionJob() > 0){
 			union.addAllApplies(redis.getApplies(user.getUnionId()));
 		}
@@ -220,6 +220,8 @@ public class UnionService extends FightService{
 		 * 计算镜像世界矿点奖励
 		 */
 		calAreaResourceReward(user);
+		
+		union.addAllMembers(members);
 		
 		return union.build();
 	}
