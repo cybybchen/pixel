@@ -3061,6 +3061,7 @@ message Union {
 	optional string bossEndTime = 25;
 	optional string announce = 26;
 	optional uint32 exp = 27;
+	optional uint32 maxZhanli = 28;
 }
 
 message UnionApply {

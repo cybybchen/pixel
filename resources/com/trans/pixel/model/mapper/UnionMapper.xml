@@ -14,6 +14,7 @@
 		<result property="bossRecord" column="boss_record" />
 		<result property="bossEndTime" column="boss_end_time" />
 		<result property="exp" column="exp" />
+		<result property="maxZhanli" column="max_zhanli" />
 	</resultMap>
 
 	<select id="selectUnionById" resultMap="resultMap">
@@ -39,7 +40,8 @@
 	
 	<update id="updateUnion" parameterType="com.trans.pixel.model.UnionBean">
 	    UPDATE user_union SET level=#{level}, point=#{point}, kill_monster_record=#{killMonsterRecord}, 
-	    cost_record=#{costRecord}, boss_record=#{bossRecord}, boss_end_time=#{bossEndTime}, exp=#{exp}
+	    cost_record=#{costRecord}, boss_record=#{bossRecord}, boss_end_time=#{bossEndTime}, exp=#{exp},
+	    max_zhanli=#{maxZhanli}
 		 WHERE id=#{id}
 	</update>
 	

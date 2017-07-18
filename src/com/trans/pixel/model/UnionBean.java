@@ -19,6 +19,7 @@ public class UnionBean {
 	// ArrayList<UnionUserBean>();
 	// private List<MailBean> mailList = new ArrayList<MailBean>();
 	private int exp = 0;
+	private int maxZhanli = 0;
 
 	public UnionBean() {
 
@@ -35,6 +36,7 @@ public class UnionBean {
 		setBossEndTime(union.getBossEndTime());
 		setExp(union.getExp());
 		setMaxCount(union.getMaxCount());
+		setMaxZhanli(union.getMaxZhanli());
 	}
 
 	public int getId() {
@@ -179,6 +181,14 @@ public class UnionBean {
 		this.maxCount = maxCount;
 	}
 
+	public int getMaxZhanli() {
+		return maxZhanli;
+	}
+
+	public void setMaxZhanli(int maxZhanli) {
+		this.maxZhanli = maxZhanli;
+	}
+
 	// }
 	// bossEndTime = json.toString();
 	// }
@@ -209,6 +219,7 @@ public class UnionBean {
 		union.setBossRecord(bossRecord);
 		union.setBossEndTime(bossEndTime);
 		union.setExp(exp);
+		union.setMaxZhanli(maxZhanli);
 
 		return union.build();
 	}

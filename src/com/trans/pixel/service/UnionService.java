@@ -175,6 +175,10 @@ public class UnionService extends FightService{
 		if(zhanli != union.getZhanli()){
 			union.setZhanli(zhanli);
 			needupdate = true;
+			if (union.getZhanli() > union.getMaxZhanli()) {
+				union.setMaxZhanli(union.getZhanli());
+				unionMapper.updateUnion(new UnionBean(union));
+			}
 		}
 		if(union.getCount() != members.size()){
 			union.setCount(members.size());
@@ -765,7 +769,7 @@ public class UnionService extends FightService{
 		
 		if ((unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_CRONTAB && canRefreshCrontabBoss(union, unionBoss, unionBossRecord) 
 				|| (json != null && json.has("" + unionBoss.getId()) && json.getInt("" + unionBoss.getId()) >= unionBoss.getTargetcount()))
-				|| (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_UNDEAD && union.getZhanli() >= unionBoss.getTargetcount())) {
+				|| (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_UNDEAD && union.getMaxZhanli() >= unionBoss.getTargetcount())) {
 			updateUnionBossRecord(union, unionBoss.getId());
 			if (unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_KILLMONSTER) {
 				updateKillMonsterRecord(union, unionBoss.getId(), -unionBoss.getTargetcount());
@@ -815,7 +819,7 @@ public class UnionService extends FightService{
 		}
 		
 		UnionBoss unionBoss = redis.getUnionBoss(bossId);
-		if (unionBoss.getType() == 4 && union.getZhanli() < unionBoss.getTargetcount()) {
+		if (unionBoss.getType() == 4 && union.getMaxZhanli() < unionBoss.getTargetcount()) {
 			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH);
 			return unionBossRecord.build();
 		}
