@@ -99,6 +99,21 @@ message JewelPoolLists {
 	repeated JewelPoolList data = 1;
 }
 
+message Enemy {
+        //optional int32 order = 1;
+        optional int32 enemyid = 2;
+        optional int32 count = 3;
+        optional int32 enemylv = 4;
+        optional int32 lootweight = 5;
+        optional int32 loot = 6;
+}
+
+
+message EnemyGroup {
+        repeated Enemy enemy = 1;
+        optional int32 hpbar = 2;
+}
+
 message UnionBossUserRecord {
 	optional int64 userId = 1;
         optional int32 percent = 2;
@@ -114,6 +129,11 @@ message UnionBossRecord {
 	optional int32 count = 7;
 	optional int32 percent = 8;
 	repeated UnionBossUserRecord userRecord = 9;
+	enum UNIONBOSSSTATUS {
+		UNION_ZHANLI_NOT_ENOUGH = 1;
+		UNION_BOSS_USER_HAS_NOT_TIMES = 2;	
+	}
+	optional UNIONBOSSSTATUS status = 10;
 }
 
 message Rank {
@@ -2870,20 +2890,11 @@ message EventQuestion {
 	optional string answer = 2;
 	optional int32 eventid = 3;
 }
-message Enemy {
-	//optional int32 order = 1;
-	optional int32 enemyid = 2;
-	optional int32 count = 3;
-	optional int32 enemylv = 4;
-	optional int32 lootweight = 5;
-	optional int32 loot = 6;
-}
+
 message EnemyList {
 	repeated Enemy data = 1;
 }
-message EnemyGroup {
-	repeated Enemy enemy = 1;
-}
+
 message EventConfig {
 	optional int32 id = 1;
 	optional string name = 2;
@@ -3226,11 +3237,12 @@ message UnionBoss {
 	optional int32 targetid = 3;
 	optional int32 targetcount = 4;
 	optional int32 lasttime = 5;
-	optional int32 HP = 6;
+	optional int32 lv = 6;
 	repeated RewardInfo lootlist = 7;
 	optional int32 refreshtime = 8;
 	optional int32 count = 9;
 	optional int32 handbook = 10;
+	optional EnemyGroup enemygroup = 11;
 }
 
 message UnionBosswinList {

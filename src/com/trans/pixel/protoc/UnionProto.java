@@ -24007,15 +24007,15 @@ public final class UnionProto {
      */
     int getLasttime();
 
-    // optional int32 HP = 6;
+    // optional int32 lv = 6;
     /**
-     * <code>optional int32 HP = 6;</code>
+     * <code>optional int32 lv = 6;</code>
      */
-    boolean hasHP();
+    boolean hasLv();
     /**
-     * <code>optional int32 HP = 6;</code>
+     * <code>optional int32 lv = 6;</code>
      */
-    int getHP();
+    int getLv();
 
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;
     /**
@@ -24071,6 +24071,20 @@ public final class UnionProto {
      * <code>optional int32 handbook = 10;</code>
      */
     int getHandbook();
+
+    // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    boolean hasEnemygroup();
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup();
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UnionBoss}
@@ -24150,7 +24164,7 @@ public final class UnionProto {
             }
             case 48: {
               bitField0_ |= 0x00000040;
-              hP_ = input.readInt32();
+              lv_ = input.readInt32();
               break;
             }
             case 58: {
@@ -24174,6 +24188,19 @@ public final class UnionProto {
             case 80: {
               bitField0_ |= 0x00000200;
               handbook_ = input.readInt32();
+              break;
+            }
+            case 90: {
+              com.trans.pixel.protoc.Base.EnemyGroup.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+                subBuilder = enemygroup_.toBuilder();
+              }
+              enemygroup_ = input.readMessage(com.trans.pixel.protoc.Base.EnemyGroup.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemygroup_);
+                enemygroup_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000400;
               break;
             }
             case 98: {
@@ -24347,20 +24374,20 @@ public final class UnionProto {
       return lasttime_;
     }
 
-    // optional int32 HP = 6;
-    public static final int HP_FIELD_NUMBER = 6;
-    private int hP_;
+    // optional int32 lv = 6;
+    public static final int LV_FIELD_NUMBER = 6;
+    private int lv_;
     /**
-     * <code>optional int32 HP = 6;</code>
+     * <code>optional int32 lv = 6;</code>
      */
-    public boolean hasHP() {
+    public boolean hasLv() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 HP = 6;</code>
+     * <code>optional int32 lv = 6;</code>
      */
-    public int getHP() {
-      return hP_;
+    public int getLv() {
+      return lv_;
     }
 
     // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 7;
@@ -24447,6 +24474,28 @@ public final class UnionProto {
       return handbook_;
     }
 
+    // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;
+    public static final int ENEMYGROUP_FIELD_NUMBER = 11;
+    private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    public boolean hasEnemygroup() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
+      return enemygroup_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+      return enemygroup_;
+    }
+
     private void initFields() {
       id_ = 0;
       name_ = "";
@@ -24454,11 +24503,12 @@ public final class UnionProto {
       targetid_ = 0;
       targetcount_ = 0;
       lasttime_ = 0;
-      hP_ = 0;
+      lv_ = 0;
       lootlist_ = java.util.Collections.emptyList();
       refreshtime_ = 0;
       count_ = 0;
       handbook_ = 0;
+      enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -24488,7 +24538,7 @@ public final class UnionProto {
         output.writeInt32(5, lasttime_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(6, hP_);
+        output.writeInt32(6, lv_);
       }
       for (int i = 0; i < lootlist_.size(); i++) {
         output.writeMessage(7, lootlist_.get(i));
@@ -24501,6 +24551,9 @@ public final class UnionProto {
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(10, handbook_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeMessage(11, enemygroup_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(12, getNameBytes());
@@ -24536,7 +24589,7 @@ public final class UnionProto {
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, hP_);
+          .computeInt32Size(6, lv_);
       }
       for (int i = 0; i < lootlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -24553,6 +24606,10 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, handbook_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, enemygroup_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -24667,6 +24724,7 @@ public final class UnionProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getLootlistFieldBuilder();
+          getEnemygroupFieldBuilder();
         }
       }
       private static Builder create() {
@@ -24687,7 +24745,7 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         lasttime_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        hP_ = 0;
+        lv_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
         if (lootlistBuilder_ == null) {
           lootlist_ = java.util.Collections.emptyList();
@@ -24701,6 +24759,12 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x00000200);
         handbook_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+        } else {
+          enemygroupBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -24756,7 +24820,7 @@ public final class UnionProto {
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.hP_ = hP_;
+        result.lv_ = lv_;
         if (lootlistBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080)) {
             lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
@@ -24778,6 +24842,14 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000200;
         }
         result.handbook_ = handbook_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        if (enemygroupBuilder_ == null) {
+          result.enemygroup_ = enemygroup_;
+        } else {
+          result.enemygroup_ = enemygroupBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -24814,8 +24886,8 @@ public final class UnionProto {
         if (other.hasLasttime()) {
           setLasttime(other.getLasttime());
         }
-        if (other.hasHP()) {
-          setHP(other.getHP());
+        if (other.hasLv()) {
+          setLv(other.getLv());
         }
         if (lootlistBuilder_ == null) {
           if (!other.lootlist_.isEmpty()) {
@@ -24851,6 +24923,9 @@ public final class UnionProto {
         }
         if (other.hasHandbook()) {
           setHandbook(other.getHandbook());
+        }
+        if (other.hasEnemygroup()) {
+          mergeEnemygroup(other.getEnemygroup());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -25118,35 +25193,35 @@ public final class UnionProto {
         return this;
       }
 
-      // optional int32 HP = 6;
-      private int hP_ ;
+      // optional int32 lv = 6;
+      private int lv_ ;
       /**
-       * <code>optional int32 HP = 6;</code>
+       * <code>optional int32 lv = 6;</code>
        */
-      public boolean hasHP() {
+      public boolean hasLv() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional int32 HP = 6;</code>
+       * <code>optional int32 lv = 6;</code>
        */
-      public int getHP() {
-        return hP_;
+      public int getLv() {
+        return lv_;
       }
       /**
-       * <code>optional int32 HP = 6;</code>
+       * <code>optional int32 lv = 6;</code>
        */
-      public Builder setHP(int value) {
+      public Builder setLv(int value) {
         bitField0_ |= 0x00000040;
-        hP_ = value;
+        lv_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 HP = 6;</code>
+       * <code>optional int32 lv = 6;</code>
        */
-      public Builder clearHP() {
+      public Builder clearLv() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        hP_ = 0;
+        lv_ = 0;
         onChanged();
         return this;
       }
@@ -25488,6 +25563,123 @@ public final class UnionProto {
         handbook_ = 0;
         onChanged();
         return this;
+      }
+
+      // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;
+      private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> enemygroupBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public boolean hasEnemygroup() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
+        if (enemygroupBuilder_ == null) {
+          return enemygroup_;
+        } else {
+          return enemygroupBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public Builder setEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
+        if (enemygroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemygroup_ = value;
+          onChanged();
+        } else {
+          enemygroupBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public Builder setEnemygroup(
+          com.trans.pixel.protoc.Base.EnemyGroup.Builder builderForValue) {
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemygroupBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public Builder mergeEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
+        if (enemygroupBuilder_ == null) {
+          if (((bitField0_ & 0x00000800) == 0x00000800) &&
+              enemygroup_ != com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance()) {
+            enemygroup_ =
+              com.trans.pixel.protoc.Base.EnemyGroup.newBuilder(enemygroup_).mergeFrom(value).buildPartial();
+          } else {
+            enemygroup_ = value;
+          }
+          onChanged();
+        } else {
+          enemygroupBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000800;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public Builder clearEnemygroup() {
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+          onChanged();
+        } else {
+          enemygroupBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000800);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.EnemyGroup.Builder getEnemygroupBuilder() {
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return getEnemygroupFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+        if (enemygroupBuilder_ != null) {
+          return enemygroupBuilder_.getMessageOrBuilder();
+        } else {
+          return enemygroup_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> 
+          getEnemygroupFieldBuilder() {
+        if (enemygroupBuilder_ == null) {
+          enemygroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder>(
+                  enemygroup_,
+                  getParentForChildren(),
+                  isClean());
+          enemygroup_ = null;
+        }
+        return enemygroupBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UnionBoss)
@@ -36945,43 +37137,45 @@ public final class UnionProto {
       "Id\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032RequestBossR",
       "oomInfoCommand\"@\n\rUnionBossList\022/\n\004data\030" +
       "\001 \003(\0132!.com.trans.pixel.protoc.UnionBoss" +
-      "\"\344\001\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(\t" +
+      "\"\234\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(\t" +
       "\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targ" +
-      "etcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002HP\030\006 " +
+      "etcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv\030\006 " +
       "\001(\005\0224\n\010lootlist\030\007 \003(\0132\".com.trans.pixel." +
       "protoc.RewardInfo\022\023\n\013refreshtime\030\010 \001(\005\022\r" +
-      "\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\"F\n\020Union" +
-      "BosswinList\0222\n\004data\030\001 \003(\0132$.com.trans.pi" +
-      "xel.protoc.UnionBosswin\"J\n\014UnionBosswin\022",
-      "\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans.pi" +
-      "xel.protoc.RankItem\"h\n\010RankItem\022\014\n\004rank\030" +
-      "\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006rew" +
-      "ard\030\n \003(\0132\".com.trans.pixel.protoc.Rewar" +
-      "dInfo\"7\n\031RequestCreateUnionCommand\022\014\n\004ic" +
-      "on\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"+\n\030RequestApplyUn" +
-      "ionCommand\022\017\n\007unionId\030\001 \002(\005\"7\n\030RequestRe" +
-      "plyUnionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002" +
-      " \002(\010\":\n\037RequestHandleUnionMemberCommand\022" +
-      "\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036RequestSetUn",
-      "ionAnnounceCommand\022\020\n\010announce\030\001 \001(\t\"\034\n\032" +
-      "RequestUpgradeUnionCommand\"%\n\027RequestQui" +
-      "tUnionCommand\022\n\n\002id\030\001 \001(\003\"\031\n\027RequestUnio" +
-      "nInfoCommand\"<\n\031RequestAttackUnionComman" +
-      "d\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031Re" +
-      "questDefendUnionCommand\022\016\n\006teamid\030\002 \002(\003\"" +
-      "H\n\030ResponseUnionInfoCommand\022,\n\005union\030\001 \001" +
-      "(\0132\035.com.trans.pixel.protoc.Union\"\031\n\027Req" +
-      "uestUnionListCommand\"H\n\030ResponseUnionLis" +
-      "tCommand\022,\n\005union\030\001 \003(\0132\035.com.trans.pixe",
-      "l.protoc.Union\"?\n\034RequestSubmitBosskillC" +
-      "ommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"" +
-      "\030\n\026RequestBosskillCommand\"R\n\027ResponseBos" +
-      "skillCommand\0227\n\006record\030\001 \003(\0132\'.com.trans" +
-      ".pixel.protoc.BossGroupRecord\"V\n\030Respons" +
-      "eUnionBossCommand\022:\n\tunionBoss\030\001 \003(\0132\'.c" +
-      "om.trans.pixel.protoc.UnionBossRecord\"K\n" +
-      "\034RequestUnionBossFightCommand\022\016\n\006bossId\030" +
-      "\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007percent\030\003 \001(\005"
+      "\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\0226\n\nenemy" +
+      "group\030\013 \001(\0132\".com.trans.pixel.protoc.Ene" +
+      "myGroup\"F\n\020UnionBosswinList\0222\n\004data\030\001 \003(",
+      "\0132$.com.trans.pixel.protoc.UnionBosswin\"" +
+      "J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(" +
+      "\0132 .com.trans.pixel.protoc.RankItem\"h\n\010R" +
+      "ankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003" +
+      "des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\".com.trans.pi" +
+      "xel.protoc.RewardInfo\"7\n\031RequestCreateUn" +
+      "ionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"+" +
+      "\n\030RequestApplyUnionCommand\022\017\n\007unionId\030\001 " +
+      "\002(\005\"7\n\030RequestReplyUnionCommand\022\n\n\002id\030\001 " +
+      "\002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHandleUni",
+      "onMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005" +
+      "\"2\n\036RequestSetUnionAnnounceCommand\022\020\n\010an" +
+      "nounce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionComma" +
+      "nd\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001(" +
+      "\003\"\031\n\027RequestUnionInfoCommand\"<\n\031RequestA" +
+      "ttackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006te" +
+      "amid\030\002 \002(\003\"+\n\031RequestDefendUnionCommand\022" +
+      "\016\n\006teamid\030\002 \002(\003\"H\n\030ResponseUnionInfoComm" +
+      "and\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.pro" +
+      "toc.Union\"\031\n\027RequestUnionListCommand\"H\n\030",
+      "ResponseUnionListCommand\022,\n\005union\030\001 \003(\0132" +
+      "\035.com.trans.pixel.protoc.Union\"?\n\034Reques" +
+      "tSubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005\022" +
+      "\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillComman" +
+      "d\"R\n\027ResponseBosskillCommand\0227\n\006record\030\001" +
+      " \003(\0132\'.com.trans.pixel.protoc.BossGroupR" +
+      "ecord\"V\n\030ResponseUnionBossCommand\022:\n\tuni" +
+      "onBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.Un" +
+      "ionBossRecord\"K\n\034RequestUnionBossFightCo" +
+      "mmand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007per",
+      "cent\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -37173,7 +37367,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionBoss_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBoss_descriptor,
-              new java.lang.String[] { "Id", "Name", "Type", "Targetid", "Targetcount", "Lasttime", "HP", "Lootlist", "Refreshtime", "Count", "Handbook", });
+              new java.lang.String[] { "Id", "Name", "Type", "Targetid", "Targetcount", "Lasttime", "Lv", "Lootlist", "Refreshtime", "Count", "Handbook", "Enemygroup", });
           internal_static_com_trans_pixel_protoc_UnionBosswinList_descriptor =
             getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_UnionBosswinList_fieldAccessorTable = new

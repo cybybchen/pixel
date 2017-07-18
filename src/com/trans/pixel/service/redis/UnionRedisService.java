@@ -480,10 +480,14 @@ public class UnionRedisService extends RedisService{
 			startDate = DateUtil.getPastDay(startDate, 1);
 			date = DateUtil.getPastDay(date, 1);
 		}
-		
-		builder.setStartTime(DateUtil.forDatetime(startDate));
-		builder.setEndTime(DateUtil.forDatetime(date));
-		builder.setHp(boss.getHP());
+		if (boss.getType() == UnionConst.UNION_BOSS_TYPE_UNDEAD) {
+			builder.setStartTime("");
+			builder.setEndTime("");
+		} else {
+			builder.setStartTime(DateUtil.forDatetime(startDate));
+			builder.setEndTime(DateUtil.forDatetime(date));
+		}
+		builder.setHp(boss.getEnemygroup().getHpbar());
 		builder.setBossId(boss.getId());
 		this.hput(key, "" + builder.getBossId(), formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
