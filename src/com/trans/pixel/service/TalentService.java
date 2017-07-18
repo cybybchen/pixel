@@ -186,6 +186,9 @@ public class TalentService {
 			
 			builder.mergeFrom(userTalent.build());
 			builder.setSp(builder.getSp() + count);
+			if(user.getTalentsp() == 0) {
+				List<UserTalent.Builder> list = userTalentService.getUserTalentList(user);
+			}
 			user.setTalentsp(user.getTalentsp() + count);
 			userService.updateUser(user);
 			userTalentService.updateUserTalent(user.getId(), builder.build());
