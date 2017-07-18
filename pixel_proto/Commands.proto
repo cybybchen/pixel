@@ -134,7 +134,7 @@ message UnionBossRecord {
 		UNION_BOSS_USER_HAS_NOT_TIMES = 2;	
 		UNION_BOSS_IS_END = 3;
 	}
-	optional UNIONBOSSSTATUS status = 10;
+	optional uint32 status = 10;
 }
 
 message Rank {

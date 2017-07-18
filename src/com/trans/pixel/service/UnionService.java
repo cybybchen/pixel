@@ -814,18 +814,18 @@ public class UnionService extends FightService{
 	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, long hp, int percent, MultiReward.Builder rewards) {
 		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
 		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
-			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_END);
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_END_VALUE);
 			return unionBossRecord.build();
 		}
 		
 		UnionBoss unionBoss = redis.getUnionBoss(bossId);
 		if (unionBoss.getType() == 4 && union.getMaxZhanli() < unionBoss.getTargetcount()) {
-			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH);
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH_VALUE);
 			return unionBossRecord.build();
 		}
 		Map<String, Integer> unionBossMap = user.getUnionBossMap();
 		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount()) {
-			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES);
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES_VALUE);
 			return unionBossRecord.build();
 		}
 			

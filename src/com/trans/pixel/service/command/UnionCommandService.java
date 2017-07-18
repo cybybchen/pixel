@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -41,7 +43,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class UnionCommandService extends BaseCommandService {
-//	private static final Logger log = LoggerFactory.getLogger(UnionCommandService.class);
+	private static final Logger log = LoggerFactory.getLogger(UnionCommandService.class);
 	private static final int CREATE_UNION_COST_JEWEL = 500;
 	@Resource
 	private UnionService unionService;
@@ -257,19 +259,21 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
-		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH)) {
+		log.debug("status number is:" + unionBoss.getStatus());
+		
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH_VALUE) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR));
 			return;
 		}
 		
-		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES)) {
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES_VALUE) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR));
 			return;
 		}
 		
-		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_BOSS_IS_END)) {
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_BOSS_IS_END_VALUE) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR));
 			return;
