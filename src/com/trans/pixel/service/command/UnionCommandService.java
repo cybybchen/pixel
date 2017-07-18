@@ -15,6 +15,7 @@ import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
@@ -244,7 +245,7 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		int bossId = cmd.getBossId();
-		int hp = cmd.getHp();
+		long hp = cmd.getHp();
 		int percent = cmd.getPercent();
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
@@ -253,6 +254,24 @@ public class UnionCommandService extends BaseCommandService {
 		if (unionBoss == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			return;
+		}
+		
+		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR));
+			return;
+		}
+		
+		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR));
+			return;
+		}
+		
+		if (unionBoss.getStatus().equals(UNIONBOSSSTATUS.UNION_BOSS_IS_END)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR));
 			return;
 		}
 		

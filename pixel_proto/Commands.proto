@@ -132,6 +132,7 @@ message UnionBossRecord {
 	enum UNIONBOSSSTATUS {
 		UNION_ZHANLI_NOT_ENOUGH = 1;
 		UNION_BOSS_USER_HAS_NOT_TIMES = 2;	
+		UNION_BOSS_IS_END = 3;
 	}
 	optional UNIONBOSSSTATUS status = 10;
 }
@@ -179,7 +180,7 @@ message UserTalentEquip {
 
 message UserRank {
 	optional int64 rank = 1;
-	optional int32 dps = 2;
+	optional int64 dps = 2;
 	optional Team team = 3;
 	optional uint32 zhanli = 6;
 	optional uint32 score2 = 9;
@@ -3333,7 +3334,7 @@ message ResponseUnionBossCommand {
 
 message RequestUnionBossFightCommand {
 	required int32 bossId = 1;
-	required int32 hp = 2;
+	required int64 hp = 2;
 	optional int32 percent = 3;
 }
 ////////// RewardTaskProto

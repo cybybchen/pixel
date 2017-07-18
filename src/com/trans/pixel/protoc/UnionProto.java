@@ -36225,15 +36225,15 @@ public final class UnionProto {
      */
     int getBossId();
 
-    // required int32 hp = 2;
+    // required int64 hp = 2;
     /**
-     * <code>required int32 hp = 2;</code>
+     * <code>required int64 hp = 2;</code>
      */
     boolean hasHp();
     /**
-     * <code>required int32 hp = 2;</code>
+     * <code>required int64 hp = 2;</code>
      */
-    int getHp();
+    long getHp();
 
     // optional int32 percent = 3;
     /**
@@ -36303,7 +36303,7 @@ public final class UnionProto {
             }
             case 16: {
               bitField0_ |= 0x00000002;
-              hp_ = input.readInt32();
+              hp_ = input.readInt64();
               break;
             }
             case 24: {
@@ -36367,19 +36367,19 @@ public final class UnionProto {
       return bossId_;
     }
 
-    // required int32 hp = 2;
+    // required int64 hp = 2;
     public static final int HP_FIELD_NUMBER = 2;
-    private int hp_;
+    private long hp_;
     /**
-     * <code>required int32 hp = 2;</code>
+     * <code>required int64 hp = 2;</code>
      */
     public boolean hasHp() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required int32 hp = 2;</code>
+     * <code>required int64 hp = 2;</code>
      */
-    public int getHp() {
+    public long getHp() {
       return hp_;
     }
 
@@ -36401,7 +36401,7 @@ public final class UnionProto {
 
     private void initFields() {
       bossId_ = 0;
-      hp_ = 0;
+      hp_ = 0L;
       percent_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -36428,7 +36428,7 @@ public final class UnionProto {
         output.writeInt32(1, bossId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, hp_);
+        output.writeInt64(2, hp_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, percent_);
@@ -36448,7 +36448,7 @@ public final class UnionProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, hp_);
+          .computeInt64Size(2, hp_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -36572,7 +36572,7 @@ public final class UnionProto {
         super.clear();
         bossId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        hp_ = 0;
+        hp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
         percent_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -36709,35 +36709,35 @@ public final class UnionProto {
         return this;
       }
 
-      // required int32 hp = 2;
-      private int hp_ ;
+      // required int64 hp = 2;
+      private long hp_ ;
       /**
-       * <code>required int32 hp = 2;</code>
+       * <code>required int64 hp = 2;</code>
        */
       public boolean hasHp() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 hp = 2;</code>
+       * <code>required int64 hp = 2;</code>
        */
-      public int getHp() {
+      public long getHp() {
         return hp_;
       }
       /**
-       * <code>required int32 hp = 2;</code>
+       * <code>required int64 hp = 2;</code>
        */
-      public Builder setHp(int value) {
+      public Builder setHp(long value) {
         bitField0_ |= 0x00000002;
         hp_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 hp = 2;</code>
+       * <code>required int64 hp = 2;</code>
        */
       public Builder clearHp() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        hp_ = 0;
+        hp_ = 0L;
         onChanged();
         return this;
       }
@@ -37174,7 +37174,7 @@ public final class UnionProto {
       "ecord\"V\n\030ResponseUnionBossCommand\022:\n\tuni" +
       "onBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.Un" +
       "ionBossRecord\"K\n\034RequestUnionBossFightCo" +
-      "mmand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\005\022\017\n\007per",
+      "mmand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007per",
       "cent\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =

@@ -807,9 +807,10 @@ public class UnionService extends FightService{
 		return builderList;
 	}
 	
-	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, int hp, int percent, MultiReward.Builder rewards) {
+	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, long hp, int percent, MultiReward.Builder rewards) {
 		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
 		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_END);
 			return unionBossRecord.build();
 		}
 		
@@ -819,9 +820,11 @@ public class UnionService extends FightService{
 			return unionBossRecord.build();
 		}
 		Map<String, Integer> unionBossMap = user.getUnionBossMap();
-		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount())
+		if (unionBossMap.get("" + bossId) != null && unionBossMap.get("" + bossId) >= unionBoss.getCount()) {
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES);
 			return unionBossRecord.build();
-		
+		}
+			
 		logService.sendUnionbossLog(user.getServerId(), user.getId(), union.getId(), bossId, percent);
 		
 		if (unionBoss.getEnemygroup().getHpbar() == -1 || unionBossRecord.getPercent() < 10000) {
