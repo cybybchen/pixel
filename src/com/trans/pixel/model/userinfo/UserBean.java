@@ -1351,6 +1351,7 @@ public class UserBean {
 		builder.setLastLoginTime(lastLoginTime);
 		builder.setTitle(title);
 		builder.setFrame(frame);
+		builder.setUnionExp(unionExp);
 		
 		return builder.build();
 	}
