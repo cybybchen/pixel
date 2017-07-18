@@ -435,6 +435,7 @@ public class UserCommandService extends BaseCommandService {
 //		noticeCommandService.pushNotices(responseBuilder, user);
 		pushCommandService.pushUserEquipPokedeList(responseBuilder, user);
 		pushCommandService.pushUserRaid(responseBuilder, user);
+		pushCommandService.pushUserUnion(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {

@@ -57,7 +57,10 @@ import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
+import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
+import com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand;
+import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand;
@@ -67,6 +70,7 @@ import com.trans.pixel.service.LadderService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
+import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserEquipService;
@@ -123,6 +127,8 @@ public class PushCommandService extends BaseCommandService {
 	private RaidCommandService raidCommandService;
 	@Resource
 	private UserRewardTaskService userRewardTaskService;
+	@Resource
+	private UnionService unionService;
 	
 //	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 //		user = lootService.updateLootResult(user);
@@ -583,5 +589,16 @@ public class PushCommandService extends BaseCommandService {
 		Map<Integer, UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
 		builder.addAllUserRewardTask(list.values());
 		responseBuilder.setUserRewardTaskCommand(builder.build());
+	}
+	
+	public void pushUserUnion(Builder responseBuilder, UserBean user) {
+		Union union = unionService.getUnion(user);
+		if(union == null){
+			return;
+		}
+		
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		builder.setUnion(union);
+		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 }
