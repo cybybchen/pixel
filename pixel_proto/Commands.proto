@@ -80,6 +80,7 @@ message UserInfo {
 	optional uint64 recommandUserId = 91;
 	optional uint32 friendVip = 92;//0:没购买基纽特权，1:已购买
 	optional int32 talentsp = 93;
+	optional uint32 unionExp = 94;
 }
 
 message JewelPool {
@@ -3044,6 +3045,7 @@ message Union {
 	optional string bossRecord = 24;
 	optional string bossEndTime = 25;
 	optional string announce = 26;
+	optional uint32 exp = 27;
 }
 
 message UnionApply {
@@ -3143,6 +3145,17 @@ message TowerRewardList {
 	repeated TowerReward id = 1;
 }
 
+message UnionExp {
+	required uint32 level = 1;
+	required uint32 exp = 2;
+	required uint32 lootexp = 3;
+	required uint32 unionsize = 4;
+}
+
+message UnionExpList {
+	repeated UnionExp data = 5;
+
+}
 message RequestSubmitBattletowerCommand {
 	required bool success = 1;
 	optional int32 tower = 2;

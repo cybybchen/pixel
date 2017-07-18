@@ -13,6 +13,7 @@
 		<result property="costRecord" column="cost_record" />
 		<result property="bossRecord" column="boss_record" />
 		<result property="bossEndTime" column="boss_end_time" />
+		<result property="exp" column="exp" />
 	</resultMap>
 
 	<select id="selectUnionById" resultMap="resultMap">
@@ -38,7 +39,7 @@
 	
 	<update id="updateUnion" parameterType="com.trans.pixel.model.UnionBean">
 	    UPDATE user_union SET level=#{level}, point=#{point}, kill_monster_record=#{killMonsterRecord}, 
-	    cost_record=#{costRecord}, boss_record=#{bossRecord}, boss_end_time=#{bossEndTime}
+	    cost_record=#{costRecord}, boss_record=#{bossRecord}, boss_end_time=#{bossEndTime}, exp=#{exp}
 		 WHERE id=#{id}
 	</update>
 	

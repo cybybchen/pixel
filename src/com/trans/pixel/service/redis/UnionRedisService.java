@@ -30,6 +30,8 @@ import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBossList;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
+import com.trans.pixel.protoc.UnionProto.UnionExp;
+import com.trans.pixel.protoc.UnionProto.UnionExpList;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository
@@ -37,6 +39,7 @@ public class UnionRedisService extends RedisService{
 	private static final String UNION_BOSS_FILE_NAME = "ld_guildboss.xml";
 //	private static final String UNION_BOSSLOOT_FILE_NAME = "ld_guildbossloot.xml";
 	private static final String UNION_BOSSWIN_FILE_NAME = "ld_guildbosswin.xml";
+	private static final String UNION_EXP_FILE_NAME = "ld_unionexp.xml";
 	private static Logger logger = Logger.getLogger(UnionRedisService.class);
 	@Resource
 	public UserRedisService userRedisService;
@@ -555,5 +558,55 @@ public class UnionRedisService extends RedisService{
 	public void delUnionBossRankKey(int unionId, int bossId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
 		this.delete(key);
+	}
+	
+	public UnionExp getUnionExp(int id) {
+		String value = hget(RedisKey.UNION_EXP_KEY, "" + id);
+		if (value == null) {
+			Map<String, UnionExp> unionBossConfig = getUnionExpConfig();
+			return unionBossConfig.get("" + id);
+		} else {
+			UnionExp.Builder builder = UnionExp.newBuilder();
+			if(parseJson(value, builder))
+				return builder.build();
+		}
+		
+		return null;
+	}
+	
+	public Map<String, UnionExp> getUnionExpConfig() {
+		Map<String, String> keyvalue = hget(RedisKey.UNION_EXP_KEY);
+		if(keyvalue.isEmpty()){
+			Map<String, UnionExp> map = buildUnionExpConfig();
+			Map<String, String> redismap = new HashMap<String, String>();
+			for(Entry<String, UnionExp> entry : map.entrySet()){
+				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+			}
+			hputAll(RedisKey.UNION_EXP_KEY, redismap);
+			return map;
+		}else{
+			Map<String, UnionExp> map = new HashMap<String, UnionExp>();
+			for(Entry<String, String> entry : keyvalue.entrySet()){
+				UnionExp.Builder builder = UnionExp.newBuilder();
+				if(parseJson(entry.getValue(), builder))
+					map.put(entry.getKey(), builder.build());
+			}
+			return map;
+		}
+	}
+	
+	private Map<String, UnionExp> buildUnionExpConfig(){
+		String xml = ReadConfig(UNION_EXP_FILE_NAME);
+		UnionExpList.Builder builder = UnionExpList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + UNION_EXP_FILE_NAME);
+			return null;
+		}
+		
+		Map<String, UnionExp> map = new HashMap<String, UnionExp>();
+		for(UnionExp.Builder config : builder.getDataBuilderList()){
+			map.put("" + config.getLevel(), config.build());
+		}
+		return map;
 	}
 }

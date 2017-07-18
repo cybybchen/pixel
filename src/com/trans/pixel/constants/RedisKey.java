@@ -356,12 +356,13 @@ public class RedisKey {
 	public static final String REWARDTASK_ROOM_PREFIX = PREFIX + "rewardtask_room_";
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
 	
-	//union boss
+	//union config
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";
 	public static final String UNION_BOSSLOOT_KEY = PREFIX + CONFIG_PREFIX + "union_bossloot";
 	public static final String UNION_BOSSWIN_KEY = PREFIX + CONFIG_PREFIX + "union_bosswin";
 	public static final String UNION_BOSS_PREFIX = PREFIX + "union_boss_";
 	public static final String UNION_BOSS_RANK_PREFIX = PREFIX + "union_boss_rank_";
+	public static final String UNION_EXP_KEY = PREFIX + CONFIG_PREFIX + "union_exp";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

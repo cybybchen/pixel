@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.UnionProto.RankItem;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
+import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -102,6 +103,9 @@ public class UnionService extends FightService{
 		if(union == null && user.getUnionId() != 0){//load union from db
 			UnionBean unionbean = unionMapper.selectUnionById(user.getUnionId());
 			if(unionbean != null){//load members from db
+				UnionExp unionExp = redis.getUnionExp(unionbean.getLevel());
+				if (unionExp != null)
+					unionbean.setMaxCount(unionExp.getUnionsize());
 				redis.saveUnion(unionbean.build(), user);
 				union = redis.getUnion(user);
 				List<UserInfo> members = new ArrayList<UserInfo>();
@@ -1040,6 +1044,42 @@ public class UnionService extends FightService{
 			for (UserInfo cache : members) {
 				rewardService.doReward(cache.getId(), RewardConst.UNIONCOIN, resource.getYield() * hours);
 			}
+		}
+	}
+	
+	public long calLootExp(UserBean user, long addExp) {
+		if (user.getUnionId() <= 0)
+			return addExp;
+		
+		Union.Builder union = getBaseUnion(user);
+		UnionExp unionExp = redis.getUnionExp(union.getLevel());
+		if (unionExp == null)
+			return addExp;
+		
+		return (long) (addExp * (1 + 1.0 * unionExp.getLootexp() / 100));
+	}
+	
+	public void addUnionExp(UserBean user, int exp) {
+		Union.Builder union = getBaseUnion(user);
+		if (union == null)
+			return;
+		
+		union.setExp(union.getExp() + exp);
+		calUnionLevel(union);
+		
+		redis.saveUnion(union.build(), user);
+		unionMapper.updateUnion(new UnionBean(union));
+	}
+	
+	private void calUnionLevel(Union.Builder union) {
+		UnionExp unionExp = redis.getUnionExp(union.getLevel() + 1);
+		if (unionExp == null)
+			return;
+		
+		if (union.getExp() >= unionExp.getExp()) {
+			union.setLevel(union.getLevel() + 1);
+			union.setExp(union.getExp() - unionExp.getExp());
+			union.setMaxCount(unionExp.getUnionsize());
 		}
 	}
 }

@@ -136,6 +136,7 @@ public class UserBean {
 	private int frame = 0;//头像框
 	private long recommandUserId = 0;
 	private int friendVip = 0;
+	private int unionExp = 0;
 	/**
 	 * 主角sp总数
 	 */
@@ -1306,6 +1307,12 @@ public class UserBean {
 	public void setFriendVip(int friendVip) {
 		this.friendVip = friendVip;
 	}
+	public int getUnionExp() {
+		return unionExp;
+	}
+	public void setUnionExp(int unionExp) {
+		this.unionExp = unionExp;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1375,6 +1382,7 @@ public class UserBean {
 		builder.setMerlevel(merlevel);
 		builder.setLastLoginTime(lastLoginTime);
 		builder.setFrame(frame);
+		builder.setUnionExp(unionExp);
 		
 		return builder.build();
 	}
@@ -1484,6 +1492,7 @@ public class UserBean {
 		builder.setRecommandUserId(recommandUserId);
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
+		builder.setUnionExp(unionExp);
 		
 		return builder.build();
 	}
