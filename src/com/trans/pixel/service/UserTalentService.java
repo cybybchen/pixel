@@ -163,7 +163,7 @@ public class UserTalentService {
 			for(UserTalent.Builder builder : userTalentList) {
 				talentsp += Math.max(0, getSkillSP(user, builder)+builder.getSp()-2);
 			}
-			user.setTalentsp(talentsp);
+			user.setTalentsp(Math.min(1320, talentsp));
 			userService.updateUser(user);
 		}
 		for(UserTalent.Builder builder : userTalentList) {
