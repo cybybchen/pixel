@@ -132,6 +132,12 @@ public class UnionService extends FightService{
 		}
 		if(union == null)
 			return null;
+		
+		if (union.getMaxCount() == 0) {//更新之后初始化工会最大人数
+			UnionExp unionExp = redis.getUnionExp(union.getLevel());
+			if (unionExp != null)
+				union.setMaxCount(unionExp.getUnionsize());
+		}
 		return union;
 	}
 
@@ -314,6 +320,10 @@ public class UnionService extends FightService{
 		union.setName(unionName);
 		union.setIcon(icon);
 		union.setServerId(user.getServerId());
+		union.setLevel(0);
+		UnionExp unionExp = redis.getUnionExp(union.getLevel());
+		if (unionExp != null)
+			union.setMaxCount(unionExp.getUnionsize());
 		unionMapper.createUnion(union);
 		redis.saveUnion(union.build(), user);
 		user.setUnionId(union.getId());
@@ -731,7 +741,10 @@ public class UnionService extends FightService{
 			return false;
 		
 		UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
-		if (unionBossRecord != null && unionBoss.getType() != UnionConst.UNION_BOSS_TYPE_UNDEAD) {
+		if (unionBossRecord != null && unionBoss.getType() == UnionConst.UNION_BOSS_TYPE_UNDEAD) {
+			return false;
+		}
+		if (unionBossRecord != null) {
 			if (!DateUtil.timeIsOver(unionBossRecord.getEndTime()) && unionBossRecord.getPercent() < 10000)
 				return false;
 			if (!DateUtil.timeIsOver(DateUtil.getFutureHour(DateUtil.getDate(unionBossRecord.getStartTime()), unionBoss.getRefreshtime())))
@@ -777,10 +790,8 @@ public class UnionService extends FightService{
 		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, UnionBoss> entry = it.next();
-			if (entry.getValue().getType() != UnionConst.UNION_BOSS_TYPE_UNDEAD) {
-				if (calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())), user.getUnionId(), user.getServerId()))
-					redis.saveUnion(union.build(), user);
-			}
+			if (calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())), user.getUnionId(), user.getServerId()))
+				redis.saveUnion(union.build(), user);
 		}
 		
 		List<UnionBossRecord> builderList = new ArrayList<UnionBossRecord>();

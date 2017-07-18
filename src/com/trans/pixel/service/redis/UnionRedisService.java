@@ -93,12 +93,17 @@ public class UnionRedisService extends RedisService{
 				}
 			}
 		}
+		Map<String, UnionExp> unionExpMap = this.getUnionExpConfig();
 		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
 			if(parseJson(value, builder)){
 				if(applyMap.containsKey(builder.getId()+""))
 					builder.setIsApply(true);
+				
+				UnionExp unionExp = unionExpMap.get("" + builder.getLevel());
+				if (unionExp != null)
+					builder.setMaxCount(unionExp.getUnionsize());
 				unions.add(builder.build());
 			}
 		}
@@ -114,6 +119,7 @@ public class UnionRedisService extends RedisService{
 				return dvalue;
 			}
 		});
+		
 		return unions;
 	}
 	
