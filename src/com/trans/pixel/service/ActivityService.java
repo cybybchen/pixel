@@ -251,7 +251,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的日常
 		 */
-//		sendRichangScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_LEIJI_COST_JEWEL_VALUE, count);
 		/**
 		 * 消耗钻石的开服活动
 		 */
