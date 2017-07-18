@@ -354,4 +354,19 @@ public class ActivityRedisService extends RedisService {
 		
 		return map;
 	}
+	
+	public void setRichangSendRewardRecord(int serverId, int type) {
+		String key = buildRichangSendRewardRedisKey(serverId);
+		sadd(key, "" + type);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+	}
+	
+	public boolean hasRichangRewardSend(int serverId, int type) {
+		String key = buildRichangSendRewardRedisKey(serverId);
+		return sismember(key, "" + type);
+	}
+	
+	private String buildRichangSendRewardRedisKey(int serverId) {
+		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.ACTIVITY_RICHANG_SEND_REWARD_RECORD_KEY; 
+	}
 }

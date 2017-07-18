@@ -924,12 +924,17 @@ public class UnionService extends FightService{
 				continue;
 			
 			for (Union union : unions) {
+				/**
+				 * 累计击败工会boss的活动
+				 */
+				for (UnionBossUserRecord userRecord : redis.getUnionBoss(union.getId(), unionBoss.getId()).getUserRecordList()) {
+					activityService.handleUnionBoss(userRecord.getUserId(), unionBoss.getId());
+				}
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
 				redis.delUnionBoss(union.getId(), unionBoss.getId());
 				Union.Builder builder = Union.newBuilder(union);
 				if (calUnionBossRefresh(builder, unionBoss, union.getId(), serverId))
 					redis.saveUnion(builder.build(), serverId);
-				
 			}
 		}
 		

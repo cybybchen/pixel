@@ -441,6 +441,41 @@ public class ActivityService {
 		}
 	}
 	
+	public void sendRichangActivitiesReward(int serverId) {
+		Map<String, Richang> map = activityRedisService.getRichangConfig();
+		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Richang richang = it.next().getValue();
+			if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(richang.getEndtime())) != 1) //防止重复发奖
+				continue;
+			
+			if (richang.getTargetid() != ACTIVITY_TYPE.TYPE_LADDER_RANK_VALUE)
+				continue;
+			
+			int id = richang.getId();
+			
+			if (!activityRedisService.hasRichangRewardSend(serverId, id)) {
+				activityRedisService.setRichangSendRewardRecord(serverId, id);
+				sendRichangActivityReward(serverId, richang);
+			}
+		}
+	}
+	
+	private void sendRichangActivityReward(int serverId, Richang richang) {
+		List<ActivityOrder> orderList = richang.getOrderList();
+		for (ActivityOrder order : orderList) {
+			List<RewardInfo> rewardList = getRewardList(order);
+			List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
+			for (UserRankBean userRank : rankList) {
+				if (userRank.getUserId() > 0) {
+					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), order.getDes(), rewardList);
+					log.debug("richang ladder activity mail is:" + mail.toJson());
+					mailService.addMail(mail);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * zhanli的成就和开服活动
 	 */
@@ -1181,6 +1216,8 @@ public class ActivityService {
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_RAID_LEVELUP_TASK_VALUE, level, false);
 		
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_RAID_LEVELUP_VALUE, level, false);
+		
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_RAID_SUCCSEE_VALUE);
 	}
 	
 	public void merLevel(UserBean user, int level) {
