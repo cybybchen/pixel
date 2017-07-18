@@ -534,11 +534,18 @@ public class UnionRedisService extends RedisService{
 		return null;
 	}
 	
+	public void delUnionBoss(int unionId, int bossId) {
+		String key = RedisKey.UNION_BOSS_PREFIX + unionId;
+		
+		hdelete(key, "" + bossId);
+	}
+	
 	public void addUnionBossAttackRank(UserRankBean userRank, UnionBossRecord boss, int unionId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + boss.getBossId();
 		this.hput(key, "" + userRank.getUserId(), userRank.toJson());
 		
-		this.expireAt(key, DateUtil.getDate(boss.getEndTime()));
+		if (!boss.getEndTime().isEmpty())
+			this.expireAt(key, DateUtil.getDate(boss.getEndTime()));
 	}
 	
 	public UserRankBean getUserRank(int unionId, int bossId, long userId) {

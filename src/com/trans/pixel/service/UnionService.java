@@ -476,7 +476,7 @@ public class UnionService extends FightService{
 			if(bean != null && bean.getUnionId() == 0){
 				if(getAreaFighting(userId, user) == 1)
 					return ErrorConst.AREA_FIGHT_BUSY;
-				Union.Builder builder = redis.getUnion(user.getServerId(), user.getUnionId());
+				Union.Builder builder = this.getBaseUnion(user); 
 				if(builder.getCount() >= builder.getMaxCount())
 					return ErrorConst.UNION_FULL;
 				bean.setUnionId(user.getUnionId());
@@ -790,7 +790,7 @@ public class UnionService extends FightService{
 		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, UnionBoss> entry = it.next();
-			if (calUnionBossRefresh(union, redis.getUnionBoss(TypeTranslatedUtil.stringToInt(entry.getKey())), user.getUnionId(), user.getServerId()))
+			if (calUnionBossRefresh(union, entry.getValue(), user.getUnionId(), user.getServerId()))
 				redis.saveUnion(union.build(), user);
 		}
 		
@@ -920,6 +920,7 @@ public class UnionService extends FightService{
 			
 			for (Union union : unions) {
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
+				redis.delUnionBoss(union.getId(), unionBoss.getId());
 				Union.Builder builder = Union.newBuilder(union);
 				if (calUnionBossRefresh(builder, unionBoss, union.getId(), serverId))
 					redis.saveUnion(builder.build(), serverId);
