@@ -51,7 +51,6 @@ import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UnionService extends FightService{
@@ -931,8 +930,11 @@ public class UnionService extends FightService{
 				/**
 				 * 累计击败工会boss的活动
 				 */
-				for (UnionBossUserRecord userRecord : redis.getUnionBoss(union.getId(), unionBoss.getId()).getUserRecordList()) {
-					activityService.handleUnionBoss(userRecord.getUserId(), unionBoss.getId());
+				UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
+				if (unionBossRecord != null) {
+					for (UnionBossUserRecord userRecord : unionBossRecord.getUserRecordList()) {
+						activityService.handleUnionBoss(userRecord.getUserId(), unionBoss.getId());
+					}
 				}
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
 				redis.delUnionBoss(union.getId(), unionBoss.getId());

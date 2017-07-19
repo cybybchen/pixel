@@ -26,8 +26,9 @@ public class UnionCrontabService {
 		unionService.unionFightTask();
 	}
 	
-	@Scheduled(cron = "0 0 0 * * ? ")
-//	@Scheduled(cron = "0 0/5 * * * ? ")
+//	@Scheduled(cron = "0 0 0 * * ? ")
+//	@Scheduled(cron = "0 0 13 * * ? ")
+	@Scheduled(cron = "0 0/30 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void unionBoss() {//type=4
 		if (!ConfigUtil.CRONTAB_STATUS)
