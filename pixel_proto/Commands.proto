@@ -547,6 +547,7 @@ message Libao {
 	//optional string endtime = 5;
 	optional string validtime = 6;
 	optional int32 refresh = 7;
+	optional bool isOut = 8;
 }
 message LibaoList {
 	repeated Libao data = 1;

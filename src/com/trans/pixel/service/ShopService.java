@@ -208,7 +208,7 @@ public class ShopService {
 			Libao libao = libaoMap.get(builder.getRechargeid());
 			if(libao != null){
 				count = libao.getPurchase();
-				if(refresh && count != 0){
+				if(refresh && count != 0 && libao.getRefresh() > 0){//每日礼包
 					Libao.Builder libaobuilder = Libao.newBuilder(libao);
 					libaobuilder.setPurchase(0);
 					count = 0;
@@ -216,7 +216,7 @@ public class ShopService {
 				}
 				builder.setValidtime(libao.getValidtime());
 			}
-			if(builder.getPurchase() > 0){
+			if(builder.getPurchase() > 0){//限制购买次数的礼包
 				if(count > builder.getPurchase())
 					count = builder.getPurchase();
 				if(builder.hasValidtime()){
@@ -228,7 +228,7 @@ public class ShopService {
 					} catch (Exception e) {
 						
 					}
-					if(date.before(date2)){
+					if(date.before(date2)){//礼包已过期
 						Libao.Builder libaobuilder = Libao.newBuilder(libao);
 						libaobuilder.setPurchase(0);
 						libaobuilder.clearValidtime();
@@ -241,6 +241,7 @@ public class ShopService {
 				}
 			}
 			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
+			builder.setIsOut(builder.getPurchase() == 0);
 			builder.clearStarttime();
 		}
 //		for(Libao libao : libaoMap.values()){

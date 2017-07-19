@@ -36657,6 +36657,16 @@ public final class ShopProto {
      * <code>optional int32 refresh = 7;</code>
      */
     int getRefresh();
+
+    // optional bool isOut = 8;
+    /**
+     * <code>optional bool isOut = 8;</code>
+     */
+    boolean hasIsOut();
+    /**
+     * <code>optional bool isOut = 8;</code>
+     */
+    boolean getIsOut();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Libao}
@@ -36737,6 +36747,11 @@ public final class ShopProto {
             case 56: {
               bitField0_ |= 0x00000020;
               refresh_ = input.readInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000040;
+              isOut_ = input.readBool();
               break;
             }
           }
@@ -36941,6 +36956,22 @@ public final class ShopProto {
       return refresh_;
     }
 
+    // optional bool isOut = 8;
+    public static final int ISOUT_FIELD_NUMBER = 8;
+    private boolean isOut_;
+    /**
+     * <code>optional bool isOut = 8;</code>
+     */
+    public boolean hasIsOut() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional bool isOut = 8;</code>
+     */
+    public boolean getIsOut() {
+      return isOut_;
+    }
+
     private void initFields() {
       id_ = 0;
       rechargeid_ = 0;
@@ -36948,6 +36979,7 @@ public final class ShopProto {
       starttime_ = "";
       validtime_ = "";
       refresh_ = 0;
+      isOut_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -36978,6 +37010,9 @@ public final class ShopProto {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(7, refresh_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(8, isOut_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -37011,6 +37046,10 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, refresh_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, isOut_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -37140,6 +37179,8 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         refresh_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        isOut_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -37192,6 +37233,10 @@ public final class ShopProto {
           to_bitField0_ |= 0x00000020;
         }
         result.refresh_ = refresh_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.isOut_ = isOut_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -37229,6 +37274,9 @@ public final class ShopProto {
         }
         if (other.hasRefresh()) {
           setRefresh(other.getRefresh());
+        }
+        if (other.hasIsOut()) {
+          setIsOut(other.getIsOut());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -37557,6 +37605,39 @@ public final class ShopProto {
       public Builder clearRefresh() {
         bitField0_ = (bitField0_ & ~0x00000020);
         refresh_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bool isOut = 8;
+      private boolean isOut_ ;
+      /**
+       * <code>optional bool isOut = 8;</code>
+       */
+      public boolean hasIsOut() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional bool isOut = 8;</code>
+       */
+      public boolean getIsOut() {
+        return isOut_;
+      }
+      /**
+       * <code>optional bool isOut = 8;</code>
+       */
+      public Builder setIsOut(boolean value) {
+        bitField0_ |= 0x00000040;
+        isOut_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isOut = 8;</code>
+       */
+      public Builder clearIsOut() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        isOut_ = false;
         onChanged();
         return this;
       }
@@ -42331,21 +42412,21 @@ public final class ShopProto {
       "d\"x\n\036ResponseBattletowerShopCommand\0220\n\005i" +
       "tems\030\001 \003(\0132!.com.trans.pixel.protoc.Comm" +
       "odity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 " +
-      "\001(\005\"p\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002" +
+      "\001(\005\"\177\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002" +
       " \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(" +
-      "\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\"8\n" +
-      "\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.pix",
-      "el.protoc.Libao\"\031\n\027RequestLibaoShopComma" +
-      "nd\"H\n\030ResponseLibaoShopCommand\022,\n\005items\030" +
-      "\001 \003(\0132\035.com.trans.pixel.protoc.Libao\")\n\006" +
-      "Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010\"" +
-      "T\n\"ResponseFirstRechargeStatusCommand\022.\n" +
-      "\006status\030\001 \003(\0132\036.com.trans.pixel.protoc.S" +
-      "tatus\"0\n\036RequestPurchaseContractCommand\022" +
-      "\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoinCo" +
-      "mmand\"Q\n\033ResponsePurchaseCoinCommand\022\r\n\005" +
-      "jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalTi",
-      "me\030\005 \001(\005"
+      "\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r\n" +
+      "\005isOut\030\010 \001(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132",
+      "\035.com.trans.pixel.protoc.Libao\"\031\n\027Reques" +
+      "tLibaoShopCommand\"H\n\030ResponseLibaoShopCo" +
+      "mmand\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel.p" +
+      "rotoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013can" +
+      "purchase\030\002 \001(\010\"T\n\"ResponseFirstRechargeS" +
+      "tatusCommand\022.\n\006status\030\001 \003(\0132\036.com.trans" +
+      ".pixel.protoc.Status\"0\n\036RequestPurchaseC" +
+      "ontractCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032Reques" +
+      "tPurchaseCoinCommand\"Q\n\033ResponsePurchase" +
+      "CoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004",
+      " \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -42693,7 +42774,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
-              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Validtime", "Refresh", });
+              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Validtime", "Refresh", "IsOut", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
             getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new
