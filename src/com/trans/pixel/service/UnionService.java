@@ -146,6 +146,7 @@ public class UnionService extends FightService{
 			return null;
 		if (!union.hasExp())
 			union.setExp(0);
+		
 		List<UserInfo> members = redis.getMembers(user);
 		boolean needupdate = false;
 
@@ -202,6 +203,19 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 		}
 
+		
+		
+		/**
+		 * 刷新定时工会boss
+		 */
+		crontabUnionBossActivity(user);
+		union.addAllUnionBoss(getUnionBossList(user, union));
+		
+		/**
+		 * 计算镜像世界矿点奖励
+		 */
+		calAreaResourceReward(user);
+		
 		if(union.hasAttackId()){
 			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
 			union.addAllAttacks(users);
@@ -214,17 +228,6 @@ public class UnionService extends FightService{
 		if(user.getUnionJob() > 0){
 			union.addAllApplies(redis.getApplies(user.getUnionId()));
 		}
-		
-		/**
-		 * 刷新定时工会boss
-		 */
-		crontabUnionBossActivity(user);
-		union.addAllUnionBoss(getUnionBossList(user, union));
-		
-		/**
-		 * 计算镜像世界矿点奖励
-		 */
-		calAreaResourceReward(user);
 		
 		union.addAllMembers(members);
 		
