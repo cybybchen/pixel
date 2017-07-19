@@ -144,6 +144,8 @@ public class UnionService extends FightService{
 		Union.Builder union = getBaseUnion(user);
 		if(union == null)
 			return null;
+		if (!union.hasExp())
+			union.setExp(0);
 		List<UserInfo> members = redis.getMembers(user);
 		boolean needupdate = false;
 
