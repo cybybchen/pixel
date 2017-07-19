@@ -236,7 +236,7 @@ public class CdkeyRedisService extends RedisService{
 		
 		Map<String, Cipher> map = new HashMap<String, Cipher>();
 		for(Cipher.Builder cipher : builder.getDataBuilderList()){
-			map.put("" + cipher.getCipher(), cipher.build());
+			map.put("" + cipher.getCipher().toUpperCase(), cipher.build());
 		}
 		return map;
 	}
