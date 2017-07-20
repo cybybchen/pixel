@@ -1352,6 +1352,7 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
+		builder.setMarkId(calMarkId(serverId, id));
 		
 		return builder.build();
 	}
@@ -1494,9 +1495,33 @@ public class UserBean {
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
+		builder.setMarkId(calMarkId(serverId, id));
 		
 		return builder.build();
 	}
+	
+	
+	private String calMarkId(int serverId, long userId) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("0000").append(serverId);
+		while (sb.length() > 5)
+			sb.delete(0, 0);
+		
+		sb.append(userId);
+		
+		return sb.toString();
+	}
+	
+	public static int calServerIdByMarkId(String markId) {
+		String serverIdStr = markId.substring(0, 5);
+		return TypeTranslatedUtil.stringToInt(serverIdStr);
+	}
+	
+	public static int calUserIdByMarkId(String markId) {
+		String userIdStr = markId.substring(5);
+		return TypeTranslatedUtil.stringToInt(userIdStr);
+	}
+	
 //	public Map<String, String> toMap() {
 //		Map<String, String> userMap = new HashMap<String, String>();
 //		userMap.put(ID, "" + id);

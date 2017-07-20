@@ -36599,10 +36599,18 @@ public final class ShopProto {
     // optional int32 purchase = 3;
     /**
      * <code>optional int32 purchase = 3;</code>
+     *
+     * <pre>
+     *剩余次数
+     * </pre>
      */
     boolean hasPurchase();
     /**
      * <code>optional int32 purchase = 3;</code>
+     *
+     * <pre>
+     *剩余次数
+     * </pre>
      */
     int getPurchase();
 
@@ -36661,10 +36669,18 @@ public final class ShopProto {
     // optional bool isOut = 8;
     /**
      * <code>optional bool isOut = 8;</code>
+     *
+     * <pre>
+     *是否已售完
+     * </pre>
      */
     boolean hasIsOut();
     /**
      * <code>optional bool isOut = 8;</code>
+     *
+     * <pre>
+     *是否已售完
+     * </pre>
      */
     boolean getIsOut();
   }
@@ -36831,12 +36847,20 @@ public final class ShopProto {
     private int purchase_;
     /**
      * <code>optional int32 purchase = 3;</code>
+     *
+     * <pre>
+     *剩余次数
+     * </pre>
      */
     public boolean hasPurchase() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 purchase = 3;</code>
+     *
+     * <pre>
+     *剩余次数
+     * </pre>
      */
     public int getPurchase() {
       return purchase_;
@@ -36961,12 +36985,20 @@ public final class ShopProto {
     private boolean isOut_;
     /**
      * <code>optional bool isOut = 8;</code>
+     *
+     * <pre>
+     *是否已售完
+     * </pre>
      */
     public boolean hasIsOut() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional bool isOut = 8;</code>
+     *
+     * <pre>
+     *是否已售完
+     * </pre>
      */
     public boolean getIsOut() {
       return isOut_;
@@ -37375,18 +37407,30 @@ public final class ShopProto {
       private int purchase_ ;
       /**
        * <code>optional int32 purchase = 3;</code>
+       *
+       * <pre>
+       *剩余次数
+       * </pre>
        */
       public boolean hasPurchase() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 purchase = 3;</code>
+       *
+       * <pre>
+       *剩余次数
+       * </pre>
        */
       public int getPurchase() {
         return purchase_;
       }
       /**
        * <code>optional int32 purchase = 3;</code>
+       *
+       * <pre>
+       *剩余次数
+       * </pre>
        */
       public Builder setPurchase(int value) {
         bitField0_ |= 0x00000004;
@@ -37396,6 +37440,10 @@ public final class ShopProto {
       }
       /**
        * <code>optional int32 purchase = 3;</code>
+       *
+       * <pre>
+       *剩余次数
+       * </pre>
        */
       public Builder clearPurchase() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -37613,18 +37661,30 @@ public final class ShopProto {
       private boolean isOut_ ;
       /**
        * <code>optional bool isOut = 8;</code>
+       *
+       * <pre>
+       *是否已售完
+       * </pre>
        */
       public boolean hasIsOut() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional bool isOut = 8;</code>
+       *
+       * <pre>
+       *是否已售完
+       * </pre>
        */
       public boolean getIsOut() {
         return isOut_;
       }
       /**
        * <code>optional bool isOut = 8;</code>
+       *
+       * <pre>
+       *是否已售完
+       * </pre>
        */
       public Builder setIsOut(boolean value) {
         bitField0_ |= 0x00000040;
@@ -37634,6 +37694,10 @@ public final class ShopProto {
       }
       /**
        * <code>optional bool isOut = 8;</code>
+       *
+       * <pre>
+       *是否已售完
+       * </pre>
        */
       public Builder clearIsOut() {
         bitField0_ = (bitField0_ & ~0x00000040);

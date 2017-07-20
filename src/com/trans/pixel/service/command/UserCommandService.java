@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
@@ -52,11 +55,16 @@ import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.HTTPProtobufResolver;
+import com.trans.pixel.utils.HttpUtil;
 
 @Service
 public class UserCommandService extends BaseCommandService {
 	private static final Logger logger = LoggerFactory.getLogger(UserCommandService.class);
+	
+	protected static final HttpUtil<ResponseCommand> http = new HttpUtil<ResponseCommand>(new HTTPProtobufResolver());
 	
 	@Resource
 	private UserService userService;
@@ -370,6 +378,18 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
+		if (!ConfigUtil.IS_MASTER) {
+			RequestCommand.Builder request = RequestCommand.newBuilder();
+			request.setRecommandCommand(cmd);
+			RequestCommand reqcmd = request.build();
+			byte[] reqData = reqcmd.toByteArray();
+			InputStream input = new ByteArrayInputStream(reqData);
+			ResponseCommand response = http.post(ConfigUtil.MASTER_SERVER, input);
+			responseBuilder.setRecommandCommand(response.getRecommandCommand());
+			
+			return;
+		} 
+		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
 		if (user.getRecommandUserId() != 0) {
 			UserBean userBean = userService.getUserOther(user.getRecommandUserId());
