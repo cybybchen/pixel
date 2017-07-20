@@ -2702,6 +2702,7 @@ message HeadInfo
 	optional string serverstarttime = 8;
 	optional int32 onlineStatus = 9;
 	optional int32 serverStatus = 10;	
+	optional uint32 level = 11;//权限级别，0：普通请求，1：服务器转发
 }
 
 message ServerTitleInfo {

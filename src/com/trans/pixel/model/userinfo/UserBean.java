@@ -137,6 +137,7 @@ public class UserBean {
 	private long recommandUserId = 0;
 	private int friendVip = 0;
 	private int unionExp = 0;
+	private String recommandMarkId = "";
 	/**
 	 * 主角sp总数
 	 */
@@ -1313,6 +1314,12 @@ public class UserBean {
 	public void setUnionExp(int unionExp) {
 		this.unionExp = unionExp;
 	}
+	public String getRecommandMarkId() {
+		return recommandMarkId;
+	}
+	public void setRecommandMarkId(String recommandMarkId) {
+		this.recommandMarkId = recommandMarkId;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1353,6 +1360,7 @@ public class UserBean {
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
 		builder.setMarkId(calMarkId(serverId, id));
+		builder.setRecommandMarkId(recommandMarkId);
 		
 		return builder.build();
 	}
@@ -1496,6 +1504,7 @@ public class UserBean {
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
 		builder.setMarkId(calMarkId(serverId, id));
+		builder.setRecommandMarkId(recommandMarkId);
 		
 		return builder.build();
 	}

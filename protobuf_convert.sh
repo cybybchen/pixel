@@ -102,9 +102,9 @@ import javax.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
@@ -150,6 +150,9 @@ done
 echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
 		ServerBean server = serverService.getServer(head.getServerId());
+		if (ConfigUtil.IS_MASTER)
+			server = ConfigUtil.getServer(head.getServerId());//master服务器获取服务器列表
+
 		if (server == null)
 			return null;
 		nHead.setServerstarttime(server.getKaifuTime());
@@ -214,7 +217,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		        handleCommand(cmd, responseBuilder, user);//LogCommand
 		    }//LogCommand
 		    
-			if (user == null || !user.getSession().equals(head.getSession())) {
+			if (!ConfigUtil.IS_MASTER && head.getLevel() == 0 && (user == null || !user.getSession().equals(head.getSession()))) {
 		    	ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 		        erBuilder.setCode(String.valueOf(ErrorConst.USER_NEED_LOGIN.getCode()));
 		        erBuilder.setMessage(ErrorConst.USER_NEED_LOGIN.getMesssage());
@@ -223,6 +226,11 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		        log.info(\"cmd user need login:\" + req);
 		        return false;
 		    }
+		
+			if (user == null && (ConfigUtil.IS_MASTER || head.getLevel() == 1)) {
+				user = new UserBean();
+				user.setServerId(head.getServerId());
+			}
 		}
 
 		boolean result = true;" >> $proto_java

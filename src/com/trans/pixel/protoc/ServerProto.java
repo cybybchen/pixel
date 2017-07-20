@@ -133,6 +133,24 @@ public final class ServerProto {
      * <code>optional int32 serverStatus = 10;</code>
      */
     int getServerStatus();
+
+    // optional uint32 level = 11;
+    /**
+     * <code>optional uint32 level = 11;</code>
+     *
+     * <pre>
+     *权限级别，0：普通请求，1：服务器转发
+     * </pre>
+     */
+    boolean hasLevel();
+    /**
+     * <code>optional uint32 level = 11;</code>
+     *
+     * <pre>
+     *权限级别，0：普通请求，1：服务器转发
+     * </pre>
+     */
+    int getLevel();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.HeadInfo}
@@ -237,6 +255,11 @@ public final class ServerProto {
             case 80: {
               bitField0_ |= 0x00000200;
               serverStatus_ = input.readInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000400;
+              level_ = input.readUInt32();
               break;
             }
           }
@@ -601,6 +624,30 @@ public final class ServerProto {
       return serverStatus_;
     }
 
+    // optional uint32 level = 11;
+    public static final int LEVEL_FIELD_NUMBER = 11;
+    private int level_;
+    /**
+     * <code>optional uint32 level = 11;</code>
+     *
+     * <pre>
+     *权限级别，0：普通请求，1：服务器转发
+     * </pre>
+     */
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional uint32 level = 11;</code>
+     *
+     * <pre>
+     *权限级别，0：普通请求，1：服务器转发
+     * </pre>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
     private void initFields() {
       version_ = 0;
       datetime_ = 0L;
@@ -612,6 +659,7 @@ public final class ServerProto {
       serverstarttime_ = "";
       onlineStatus_ = 0;
       serverStatus_ = 0;
+      level_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -675,6 +723,9 @@ public final class ServerProto {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(10, serverStatus_);
       }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeUInt32(11, level_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -723,6 +774,10 @@ public final class ServerProto {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(10, serverStatus_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(11, level_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -864,6 +919,8 @@ public final class ServerProto {
         bitField0_ = (bitField0_ & ~0x00000100);
         serverStatus_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -932,6 +989,10 @@ public final class ServerProto {
           to_bitField0_ |= 0x00000200;
         }
         result.serverStatus_ = serverStatus_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.level_ = level_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -983,6 +1044,9 @@ public final class ServerProto {
         }
         if (other.hasServerStatus()) {
           setServerStatus(other.getServerStatus());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1496,6 +1560,55 @@ public final class ServerProto {
       public Builder clearServerStatus() {
         bitField0_ = (bitField0_ & ~0x00000200);
         serverStatus_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 level = 11;
+      private int level_ ;
+      /**
+       * <code>optional uint32 level = 11;</code>
+       *
+       * <pre>
+       *权限级别，0：普通请求，1：服务器转发
+       * </pre>
+       */
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional uint32 level = 11;</code>
+       *
+       * <pre>
+       *权限级别，0：普通请求，1：服务器转发
+       * </pre>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional uint32 level = 11;</code>
+       *
+       * <pre>
+       *权限级别，0：普通请求，1：服务器转发
+       * </pre>
+       */
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000400;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 level = 11;</code>
+       *
+       * <pre>
+       *权限级别，0：普通请求，1：服务器转发
+       * </pre>
+       */
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        level_ = 0;
         onChanged();
         return this;
       }
@@ -4275,20 +4388,21 @@ public final class ServerProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\021ServerProto.proto\022\026com.trans.pixel.pro" +
-      "toc\032\nBase.proto\"\364\001\n\010HeadInfo\022\017\n\007version\030" +
+      "toc\032\nBase.proto\"\203\002\n\010HeadInfo\022\017\n\007version\030" +
       "\001 \002(\005\022\020\n\010datetime\030\002 \002(\003\022\023\n\013gameVersion\030\003" +
       " \002(\005\022\020\n\010serverId\030\004 \002(\005\022\017\n\007account\030\005 \002(\t\022" +
       "\016\n\006userId\030\006 \001(\003\022\017\n\007session\030\007 \001(\t\022\027\n\017serv" +
       "erstarttime\030\010 \001(\t\022\024\n\014onlineStatus\030\t \001(\005\022" +
-      "\024\n\014serverStatus\030\n \001(\005\"\'\n\rSERVER_STATUS\022\026" +
-      "\n\022SERVER_MAINTENANCE\020\001\"\201\001\n\017ServerTitleIn" +
-      "fo\022@\n\005title\030\001 \003(\01321.com.trans.pixel.prot" +
-      "oc.ServerTitleInfo.TitleInfo\032,\n\tTitleInf",
-      "o\022\017\n\007titleId\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"\\\n\005Ti" +
-      "tle\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\014\n\004rare\030\003 " +
-      "\001(\r\022\r\n\005count\030\004 \001(\r\022\016\n\006itemid\030\005 \001(\r\022\014\n\004ti" +
-      "me\030\006 \001(\r\"8\n\tTitleList\022+\n\004data\030\001 \003(\0132\035.co" +
-      "m.trans.pixel.protoc.Title"
+      "\024\n\014serverStatus\030\n \001(\005\022\r\n\005level\030\013 \001(\r\"\'\n\r" +
+      "SERVER_STATUS\022\026\n\022SERVER_MAINTENANCE\020\001\"\201\001" +
+      "\n\017ServerTitleInfo\022@\n\005title\030\001 \003(\01321.com.t" +
+      "rans.pixel.protoc.ServerTitleInfo.TitleI",
+      "nfo\032,\n\tTitleInfo\022\017\n\007titleId\030\001 \002(\r\022\016\n\006use" +
+      "rId\030\002 \002(\004\"\\\n\005Title\022\n\n\002id\030\001 \001(\r\022\014\n\004name\030\002" +
+      " \001(\t\022\014\n\004rare\030\003 \001(\r\022\r\n\005count\030\004 \001(\r\022\016\n\006ite" +
+      "mid\030\005 \001(\r\022\014\n\004time\030\006 \001(\r\"8\n\tTitleList\022+\n\004" +
+      "data\030\001 \003(\0132\035.com.trans.pixel.protoc.Titl" +
+      "e"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4300,7 +4414,7 @@ public final class ServerProto {
           internal_static_com_trans_pixel_protoc_HeadInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeadInfo_descriptor,
-              new java.lang.String[] { "Version", "Datetime", "GameVersion", "ServerId", "Account", "UserId", "Session", "Serverstarttime", "OnlineStatus", "ServerStatus", });
+              new java.lang.String[] { "Version", "Datetime", "GameVersion", "ServerId", "Account", "UserId", "Session", "Serverstarttime", "OnlineStatus", "ServerStatus", "Level", });
           internal_static_com_trans_pixel_protoc_ServerTitleInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_ServerTitleInfo_fieldAccessorTable = new

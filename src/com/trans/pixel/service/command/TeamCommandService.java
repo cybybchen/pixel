@@ -15,9 +15,11 @@ import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.RequestService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class TeamCommandService extends BaseCommandService {
@@ -31,6 +33,8 @@ public class TeamCommandService extends BaseCommandService {
 	// private UserPokedeService userPokedeService;
 	@Resource
 	private UserService userService;
+	@Resource
+	private RequestService requestService;
 	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
@@ -86,6 +90,16 @@ public class TeamCommandService extends BaseCommandService {
 	public void getTeamCache(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		if (cmd.getUserId() == 0)
 			return;
+		
+		if (ConfigUtil.IS_MASTER) {//是master就转发对应的slave
+			ResponseGetTeamCommand teamResponse = requestService.getTeamRequest(cmd.getUserId(), user.getServerId());
+			if (teamResponse != null) {
+				responseBuilder.setTeamCommand(teamResponse);
+			}
+			
+			return;
+		}
+		
 		Team team = userTeamService.getTeamCache(cmd.getUserId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
 		builder.setTeam(team);

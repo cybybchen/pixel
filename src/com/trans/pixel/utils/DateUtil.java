@@ -432,7 +432,22 @@ public class DateUtil {
         Calendar c = Calendar.getInstance();
         c.setTime(mark);
         c.add(Calendar.HOUR, interval);
-
+        
+        return c.getTime();
+    }
+    
+    /**
+     * 取得未来几秒后的时间
+     * 
+     * @param mark
+     * @param interval
+     * @return
+     */
+    public static Date getFutureSecond(Date mark, int interval) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(mark);
+        c.add(Calendar.SECOND, interval);
+        
         return c.getTime();
     }
 

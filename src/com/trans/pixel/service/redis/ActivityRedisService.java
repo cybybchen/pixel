@@ -362,13 +362,13 @@ public class ActivityRedisService extends CacheService {
 	
 	public void setRichangSendRewardRecord(int serverId, int type) {
 		String key = buildRichangSendRewardRedisKey(serverId);
-		sadd(key, "" + type);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		redisService.sadd(key, "" + type);
+		redisService.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 	}
 	
 	public boolean hasRichangRewardSend(int serverId, int type) {
 		String key = buildRichangSendRewardRedisKey(serverId);
-		return sismember(key, "" + type);
+		return redisService.sismember(key, "" + type);
 	}
 	
 	private String buildRichangSendRewardRedisKey(int serverId) {

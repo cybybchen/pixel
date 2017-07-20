@@ -63,6 +63,7 @@
 		<result property="recommandUserId" column="recommand_user_id" />
 		<result property="friendVip" column="friend_vip" />
 		<result property="talentsp" column="talentsp" />
+		<result property="recommandMarkId" column="recommand_mark_id" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -111,7 +112,8 @@
 		lottery_status=#{lotteryStatus}, zhanli_max=#{zhanliMax}, seven_login_days=#{sevenLoginDays}, quest_status=#{questStatus},
 		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}, vip_exp=#{vipExp},
 		reward_task_index=#{rewardTaskIndex}, use_talent_id=#{useTalentId}, user_type=#{userType}, gold_savingbox=#{goldSavingBox},
-		exp_savingbox=#{expSavingBox}, frame=#{frame}, recommand_user_id=#{recommandUserId}, friend_vip=#{friendVip}, talentsp=#{talentsp}
+		exp_savingbox=#{expSavingBox}, frame=#{frame}, recommand_user_id=#{recommandUserId}, friend_vip=#{friendVip}, talentsp=#{talentsp},
+		recommand_mark_id=#{recommandMarkId}
 		WHERE id=#{id}
 	</update>
 
