@@ -47,7 +47,7 @@ import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
-import com.trans.pixel.service.cache.UserCacheService;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
 public class LevelRedisService extends RedisService {
@@ -72,7 +72,7 @@ public class LevelRedisService extends RedisService {
 	@Resource
 	private UserService userService;
 	@Resource
-	private UserCacheService userCacheService;
+	private CacheService cacheService;
 	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
@@ -83,9 +83,7 @@ public class LevelRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY+"UserLevel");
 	}
 	public UserLevelBean getUserLevel(long userId){
-		String value = userCacheService.hget(RedisKey.USERDATA + userId, "UserLevel");
-		if (value == null)
-			value = hget(RedisKey.USERDATA + userId, "UserLevel");
+		String value = hget(RedisKey.USERDATA + userId, "UserLevel");
 		if(value != null)
 			return UserLevelBean.fromJson(value);
 		UserLevelBean userLevel = mapper.getUserLevel(userId);
@@ -154,8 +152,8 @@ public class LevelRedisService extends RedisService {
 //		return (now()-userLevel.getLootTime())*userLevel.getExp();
 //	}
 	public void saveUserLevel(UserLevelBean bean){
-		userCacheService.hput(RedisKey.USERDATA + bean.getUserId(), "UserLevel", toJson(bean));
-		userCacheService.sadd(RedisKey.PUSH_MYSQL_KEY + "UserLevel", bean.getUserId() + "");
+		hput(RedisKey.USERDATA + bean.getUserId(), "UserLevel", toJson(bean));
+		sadd(RedisKey.PUSH_MYSQL_KEY + "UserLevel", bean.getUserId() + "");
 	}
 	public Map<Integer, Event.Builder> getEvents(UserBean user, UserLevelBean userLevel) {
 		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
@@ -409,14 +407,14 @@ public class LevelRedisService extends RedisService {
 	}
 
 	public EventConfig getEvent(int eventid){
-		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");
+		String value = cacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
 		EventConfig.Builder builder = EventConfig.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		else if(exists(RedisKey.EVENT_CONFIG))
-			return null;
+//		else if(exists(RedisKey.EVENT_CONFIG))
+//			return null;
 		buildDaguanEvent();
-		value = hget(RedisKey.EVENT_CONFIG, eventid+"");
+		value = cacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else
@@ -479,19 +477,19 @@ public class LevelRedisService extends RedisService {
 //		
 //	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
-		String value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+		String value = cacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		AreaEvent.Builder builder = AreaEvent.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
 		buildDaguanEvent();
-		value = hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+		value = cacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else
 			return null;
 	}
 	public Map<Integer, AreaEvent.Builder> getMainEvent(){
-		Map<String, String> keyvalue = hget(RedisKey.MAINEVENT_CONFIG);
+		Map<String, String> keyvalue = cacheService.hget(RedisKey.MAINEVENT_CONFIG);
 		Map<Integer, AreaEvent.Builder> eventmap = new HashMap<Integer, AreaEvent.Builder>();
 		if(keyvalue.isEmpty())
 			buildDaguanEvent();
@@ -503,19 +501,19 @@ public class LevelRedisService extends RedisService {
 		return eventmap;
 	}
 	public AreaEvent.Builder getMainEvent(int daguanid){
-		String value = hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		String value = cacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
 		AreaEvent.Builder builder = AreaEvent.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
 		buildDaguanEvent();
-		value = hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		value = cacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else
 			return null;
 	}
 	public EventExp getEventExp(int level){
-		String value = hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		String value = cacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
 		EventExp.Builder builder = EventExp.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -526,8 +524,8 @@ public class LevelRedisService extends RedisService {
 		for(EventExp exp : list.getDataList()){
 			keyvalue.put(exp.getId()+"", formatJson(exp));
 		}
-		hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
-		value = hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		cacheService.hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
+		value = cacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else
@@ -668,13 +666,13 @@ public class LevelRedisService extends RedisService {
 		Map<String, String> keyvalue3 = new HashMap<String, String>();
 		for(EventConfig.Builder eventconfig : eventmap.values())
 			keyvalue3.put(eventconfig.getId()+"", formatJson(eventconfig.build()));
-		hputAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
-		hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
-		hputAll(RedisKey.EVENT_CONFIG, keyvalue3);
+		cacheService.hputAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
+		cacheService.hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
+		cacheService.hputAll(RedisKey.EVENT_CONFIG, keyvalue3);
 	}
 
 	public Daguan.Builder getDaguan(int id){
-		String value = hget(RedisKey.DAGUAN_CONFIG, id+"");
+		String value = cacheService.hget(RedisKey.DAGUAN_CONFIG, id+"");
 		Daguan.Builder builder = Daguan.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
@@ -693,7 +691,7 @@ public class LevelRedisService extends RedisService {
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
 			map.put(daguan.getId(), daguan);
 		}
-		hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
+		cacheService.hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
 		return map.get(id);
 	}
 // 	public Event getEvent(int eventid){
@@ -893,23 +891,23 @@ public class LevelRedisService extends RedisService {
 	
 	public EventRandom nextEventLevel(UserLevelBean userLevel) {
 		userLevel.setEventRandom(userLevel.getEventRandom()+1);
-		String value = hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
+		String value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
 		EventRandom.Builder builder = EventRandom.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		value = get(RedisKey.EVENTLEVELSEED_CONFIG);
+		value = cacheService.get(RedisKey.EVENTLEVELSEED_CONFIG);
 		if(value == null)
 			value = buildEventLevel();
 		EventRandomsList.Builder list = EventRandomsList.newBuilder();
 		parseJson(value, list);
 		userLevel.setEventRandom(list.getId((nextInt(list.getIdCount()))).getId());
-		value = hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
+		value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
 		parseJson(value, builder);
 		return builder.build();
 	}
 	
 	public EventRandom getEventLevel(int id) {
-		String value = hget(RedisKey.EVENTLEVEL_CONFIG, id+"");
+		String value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, id+"");
 		EventRandom.Builder builder = EventRandom.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -955,9 +953,9 @@ public class LevelRedisService extends RedisService {
 			randoms.clearOrder();
 			randoms.setId(randoms.getId()*100+1);
 		}
-		hputAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
+		cacheService.hputAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
 		String value = formatJson(builder.build());
-		set(RedisKey.EVENTLEVELSEED_CONFIG, value);
+		cacheService.set(RedisKey.EVENTLEVELSEED_CONFIG, value);
 		return value;
 	}
 	
