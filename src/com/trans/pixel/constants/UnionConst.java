@@ -9,4 +9,5 @@ public class UnionConst {
 	public static final int UNION_BOSS_TYPE_CRONTAB = 1;
 	public static final int UNION_BOSS_TYPE_KILLMONSTER = 2;
 	public static final int UNION_BOSS_TYPE_COST = 3;
+	public static final int UNION_BOSS_TYPE_UNDEAD = 4;
 }

@@ -32,7 +32,7 @@ public class ActivityCrontabService {
 	
 	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
-	public void sendActivityReward() {
+	public void sendKaifu2Reward() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
 		try {
@@ -44,6 +44,21 @@ public class ActivityCrontabService {
 			}
 		} catch (Exception e) {
 			log.error("send activity reward error:" + e);
+		}
+	}
+	
+	@Scheduled(cron = "0 0 0 * * ? ")
+//	@Scheduled(cron = "0 0/1 * * * ? ")
+	public void sendRichangReward() {
+		if (!ConfigUtil.CRONTAB_STATUS)
+			return;
+		try {
+			List<Integer> serverList = serverService.getServerIdList();
+			for (int serverId : serverList) {
+				activityService.sendRichangActivitiesReward(serverId);
+			}
+		} catch (Exception e) {
+			log.error("send richang reward error:" + e);
 		}
 	}
 	

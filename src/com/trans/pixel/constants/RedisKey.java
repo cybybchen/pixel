@@ -263,6 +263,7 @@ public class RedisKey {
 	public static final String ACTIVITY_REWARD_STATUS_PREFIX = PREFIX + "activityreward" + SPLIT;
 	public static final String ACTIVITY_COMPLETE_COUNT_PREFIX = PREFIX + "count" + SPLIT + ACTIVITY_PREFIX;
 	public static final String ACTIVITY_FILE_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
+	public static final String ACTIVITY_RICHANG_SEND_REWARD_RECORD_KEY = "richang_send_record";
 	
 	//log redis
 	public static final String LOG_KEY = PREFIX + "update:log";
@@ -357,12 +358,13 @@ public class RedisKey {
 	public static final String REWARDTASK_ROOM_PREFIX = PREFIX + "rewardtask_room_";
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
 	
-	//union boss
+	//union config
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";
 	public static final String UNION_BOSSLOOT_KEY = PREFIX + CONFIG_PREFIX + "union_bossloot";
 	public static final String UNION_BOSSWIN_KEY = PREFIX + CONFIG_PREFIX + "union_bosswin";
 	public static final String UNION_BOSS_PREFIX = PREFIX + "union_boss_";
 	public static final String UNION_BOSS_RANK_PREFIX = PREFIX + "union_boss_rank_";
+	public static final String UNION_EXP_KEY = PREFIX + CONFIG_PREFIX + "union_exp";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

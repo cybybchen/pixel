@@ -16,7 +16,7 @@ public class UserRankBean {
 	private int level = 0;
 	private int zhanli = 0;
 	private long rank = 0;
-	private int dps = 0;
+	private long dps = 0;
 	private int score2 = 0;
 	private UserInfo user = null;
 	
@@ -59,10 +59,10 @@ public class UserRankBean {
 	public void setRank(long rank) {
 		this.rank = rank;
 	}
-	public int getDps() {
+	public long getDps() {
 		return dps;
 	}
-	public void setDps(int dps) {
+	public void setDps(long dps) {
 		this.dps = dps;
 	}
 	public int getScore2() {
@@ -103,7 +103,7 @@ public class UserRankBean {
 		bean.setRank(TypeTranslatedUtil.jsonGetInt(json, RANK));
 		bean.setZhanli(TypeTranslatedUtil.jsonGetInt(json, ZHANLI));
 		bean.setScore2(TypeTranslatedUtil.jsonGetInt(json, SCORE2));
-		bean.setDps(TypeTranslatedUtil.jsonGetInt(json, DPS));
+		bean.setDps(TypeTranslatedUtil.jsonGetLong(json, DPS));
 		
 		String userValue = TypeTranslatedUtil.jsonGetString(json, USER);
 		if (userValue != null && !userValue.isEmpty()) {

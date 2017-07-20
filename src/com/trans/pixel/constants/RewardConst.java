@@ -14,6 +14,7 @@ public class RewardConst {
 	public static final int ZHAOHUANSHI = 1009;//召唤石
 	public static final int ZHUJUEEXP = 1010;
 	public static final int VIPEXP = 1011;
+	public static final int UNIONEXP = 1012;
 	
 	public static final int EQUIPMENT = 10000;
 	

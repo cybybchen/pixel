@@ -53,6 +53,8 @@ public class RewardService {
 	private PropRedisService propRedisService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private UnionService unionService;
 	
 //	public void doReward(long userId, RewardBean reward) {
 //		UserBean bean = userService.getOther(userId);
@@ -152,6 +154,10 @@ public class RewardService {
 					user.setVipExp(user.getVipExp() + (int)rewardCount);
 					rechargeService.handleVipExp(user, (int)rewardCount, isRewardRecommand);
 					return true;
+				case RewardConst.UNIONEXP:
+					user.setUnionExp(user.getUnionExp() + (int)rewardCount);
+					unionService.addUnionExp(user, (int)rewardCount);
+					return true;
 				default:
 					break;
 			}
@@ -209,7 +215,7 @@ public class RewardService {
 //		}
 //	}
 	public void doRewards(UserBean user, MultiReward.Builder rewards) {
-		if(1 > RedisService.nextInt(2000)){
+		if(1 > RedisService.nextInt(3000)){
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(24013);
 			reward.setCount(1);

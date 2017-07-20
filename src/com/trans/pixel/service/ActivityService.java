@@ -251,7 +251,7 @@ public class ActivityService {
 		/**
 		 * 消耗钻石的日常
 		 */
-//		sendRichangScore(user, ActivityConst.LEIJI_COST_JEWEL, count);
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_LEIJI_COST_JEWEL_VALUE, count);
 		/**
 		 * 消耗钻石的开服活动
 		 */
@@ -435,6 +435,41 @@ public class ActivityService {
 					long userId = TypeTranslatedUtil.stringToLong(userinfo.getValue());
 					MailBean mail = MailBean.buildSystemMail(userId, order.getDes(), rewardList);
 					log.debug("zhanji activity mail is:" + mail.toJson());
+					mailService.addMail(mail);
+				}
+			}
+		}
+	}
+	
+	public void sendRichangActivitiesReward(int serverId) {
+		Map<String, Richang> map = activityRedisService.getRichangConfig();
+		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		while (it.hasNext()) {
+			Richang richang = it.next().getValue();
+			if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(richang.getEndtime())) != 1) //防止重复发奖
+				continue;
+			
+			if (richang.getTargetid() != ACTIVITY_TYPE.TYPE_LADDER_RANK_VALUE)
+				continue;
+			
+			int id = richang.getId();
+			
+			if (!activityRedisService.hasRichangRewardSend(serverId, id)) {
+				activityRedisService.setRichangSendRewardRecord(serverId, id);
+				sendRichangActivityReward(serverId, richang);
+			}
+		}
+	}
+	
+	private void sendRichangActivityReward(int serverId, Richang richang) {
+		List<ActivityOrder> orderList = richang.getOrderList();
+		for (ActivityOrder order : orderList) {
+			List<RewardInfo> rewardList = getRewardList(order);
+			List<UserRankBean> rankList = ladderRedisService.getRankList(serverId, order.getTargetcount(), order.getTargetcount1());
+			for (UserRankBean userRank : rankList) {
+				if (userRank.getUserId() > 0) {
+					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), order.getDes(), rewardList);
+					log.debug("richang ladder activity mail is:" + mail.toJson());
 					mailService.addMail(mail);
 				}
 			}
@@ -1153,7 +1188,7 @@ public class ActivityService {
 	public void zhujueLevelup(UserBean user, int talentId, int level) {
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP_VALUE, level, false);
 		
-		if (level >=5)
+		if (level >=1)
 			taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_ZHUJUE_LEVELUP5_VALUE, talentId, false);
 		
 		if (level >= 60)
@@ -1181,6 +1216,8 @@ public class ActivityService {
 		taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_RAID_LEVELUP_TASK_VALUE, level, false);
 		
 		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_RAID_LEVELUP_VALUE, level, false);
+		
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_RAID_SUCCSEE_VALUE);
 	}
 	
 	public void merLevel(UserBean user, int level) {

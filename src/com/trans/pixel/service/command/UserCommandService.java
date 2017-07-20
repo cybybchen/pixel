@@ -428,13 +428,14 @@ public class UserCommandService extends BaseCommandService {
 //		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
 		pushCommandService.pushUserHeadCommand(responseBuilder, user);
 		pushCommandService.pushUserPokedeList(responseBuilder, user);
-		pushCommandService.pushUserFoodListCommand(responseBuilder, user);
+//		pushCommandService.pushUserFoodListCommand(responseBuilder, user);
 		shopService.getLibaoShop(responseBuilder, user);
 		pushCommandService.pushUserBosskillRecord(responseBuilder, user);
 		pushCommandService.pushUserTalentList(responseBuilder, user);
 //		noticeCommandService.pushNotices(responseBuilder, user);
 		pushCommandService.pushUserEquipPokedeList(responseBuilder, user);
 		pushCommandService.pushUserRaid(responseBuilder, user);
+		pushCommandService.pushUserUnion(responseBuilder, user);
 	}
 	
 	private void refreshUserLogin(UserBean user) {

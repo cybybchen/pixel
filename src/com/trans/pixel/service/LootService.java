@@ -24,6 +24,7 @@ import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.LootRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Component
@@ -41,6 +42,8 @@ public class LootService {
 	private PvpMapRedisService pvpMapRedisService;
 	@Resource
 	private PushCommandService pusher;
+	@Resource
+	private UnionService unionService;
 
 	public MultiReward.Builder calLoot(UserBean user) {
 		return calLoot(user, null, false);
@@ -84,6 +87,9 @@ public class LootService {
 		rewards.addLoot(reward);
 		reward.setItemid(RewardConst.EXP);
 		reward.setCount(Math.min(expSavingBox.getExp().getCount(), exp));
+		if (user.getUnionId() > 0) {
+			reward.setCount(Math.min(expSavingBox.getExp().getCount(), unionService.calLootExp(user, reward.getCount())));
+		}
 		user.setExp(user.getExp() + reward.getCount());
 		rewards.addLoot(reward);
 		userLevel.setLootTimeNormal((int)current);

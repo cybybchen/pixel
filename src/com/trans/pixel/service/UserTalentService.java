@@ -158,6 +158,14 @@ public class UserTalentService {
 			}
 		}
 		
+		if(user.getTalentsp() == 0) {
+			int talentsp = 2;
+			for(UserTalent.Builder builder : userTalentList) {
+				talentsp += Math.max(0, getSkillSP(user, builder)+builder.getSp()-2);
+			}
+			user.setTalentsp(Math.min(1320, talentsp));
+			userService.updateUser(user);
+		}
 		for(UserTalent.Builder builder : userTalentList) {
 			int sp = getSkillSP(user, builder);
 			builder.setSp(Math.max(0, user.getTalentsp() - sp));

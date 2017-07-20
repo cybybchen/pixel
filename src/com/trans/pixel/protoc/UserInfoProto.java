@@ -22965,758 +22965,6 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EventQuestion)
   }
 
-  public interface EnemyOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // optional int32 enemyid = 2;
-    /**
-     * <code>optional int32 enemyid = 2;</code>
-     *
-     * <pre>
-     *optional int32 order = 1;
-     * </pre>
-     */
-    boolean hasEnemyid();
-    /**
-     * <code>optional int32 enemyid = 2;</code>
-     *
-     * <pre>
-     *optional int32 order = 1;
-     * </pre>
-     */
-    int getEnemyid();
-
-    // optional int32 count = 3;
-    /**
-     * <code>optional int32 count = 3;</code>
-     */
-    boolean hasCount();
-    /**
-     * <code>optional int32 count = 3;</code>
-     */
-    int getCount();
-
-    // optional int32 enemylv = 4;
-    /**
-     * <code>optional int32 enemylv = 4;</code>
-     */
-    boolean hasEnemylv();
-    /**
-     * <code>optional int32 enemylv = 4;</code>
-     */
-    int getEnemylv();
-
-    // optional int32 lootweight = 5;
-    /**
-     * <code>optional int32 lootweight = 5;</code>
-     */
-    boolean hasLootweight();
-    /**
-     * <code>optional int32 lootweight = 5;</code>
-     */
-    int getLootweight();
-
-    // optional int32 loot = 6;
-    /**
-     * <code>optional int32 loot = 6;</code>
-     */
-    boolean hasLoot();
-    /**
-     * <code>optional int32 loot = 6;</code>
-     */
-    int getLoot();
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.Enemy}
-   */
-  public static final class Enemy extends
-      com.google.protobuf.GeneratedMessage
-      implements EnemyOrBuilder {
-    // Use Enemy.newBuilder() to construct.
-    private Enemy(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Enemy(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Enemy defaultInstance;
-    public static Enemy getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Enemy getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Enemy(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000001;
-              enemyid_ = input.readInt32();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000002;
-              count_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000004;
-              enemylv_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000008;
-              lootweight_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000010;
-              loot_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Enemy_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UserInfoProto.Enemy.class, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Enemy> PARSER =
-        new com.google.protobuf.AbstractParser<Enemy>() {
-      public Enemy parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Enemy(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Enemy> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional int32 enemyid = 2;
-    public static final int ENEMYID_FIELD_NUMBER = 2;
-    private int enemyid_;
-    /**
-     * <code>optional int32 enemyid = 2;</code>
-     *
-     * <pre>
-     *optional int32 order = 1;
-     * </pre>
-     */
-    public boolean hasEnemyid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int32 enemyid = 2;</code>
-     *
-     * <pre>
-     *optional int32 order = 1;
-     * </pre>
-     */
-    public int getEnemyid() {
-      return enemyid_;
-    }
-
-    // optional int32 count = 3;
-    public static final int COUNT_FIELD_NUMBER = 3;
-    private int count_;
-    /**
-     * <code>optional int32 count = 3;</code>
-     */
-    public boolean hasCount() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional int32 count = 3;</code>
-     */
-    public int getCount() {
-      return count_;
-    }
-
-    // optional int32 enemylv = 4;
-    public static final int ENEMYLV_FIELD_NUMBER = 4;
-    private int enemylv_;
-    /**
-     * <code>optional int32 enemylv = 4;</code>
-     */
-    public boolean hasEnemylv() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int32 enemylv = 4;</code>
-     */
-    public int getEnemylv() {
-      return enemylv_;
-    }
-
-    // optional int32 lootweight = 5;
-    public static final int LOOTWEIGHT_FIELD_NUMBER = 5;
-    private int lootweight_;
-    /**
-     * <code>optional int32 lootweight = 5;</code>
-     */
-    public boolean hasLootweight() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional int32 lootweight = 5;</code>
-     */
-    public int getLootweight() {
-      return lootweight_;
-    }
-
-    // optional int32 loot = 6;
-    public static final int LOOT_FIELD_NUMBER = 6;
-    private int loot_;
-    /**
-     * <code>optional int32 loot = 6;</code>
-     */
-    public boolean hasLoot() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional int32 loot = 6;</code>
-     */
-    public int getLoot() {
-      return loot_;
-    }
-
-    private void initFields() {
-      enemyid_ = 0;
-      count_ = 0;
-      enemylv_ = 0;
-      lootweight_ = 0;
-      loot_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(2, enemyid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(3, count_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(4, enemylv_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, lootweight_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(6, loot_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, enemyid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, count_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, enemylv_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, lootweight_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, loot_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.Enemy parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.Enemy prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.Enemy}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Enemy_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UserInfoProto.Enemy.class, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UserInfoProto.Enemy.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        enemyid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        count_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        enemylv_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        lootweight_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        loot_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_Enemy_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Enemy getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Enemy build() {
-        com.trans.pixel.protoc.UserInfoProto.Enemy result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.Enemy buildPartial() {
-        com.trans.pixel.protoc.UserInfoProto.Enemy result = new com.trans.pixel.protoc.UserInfoProto.Enemy(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.enemyid_ = enemyid_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.count_ = count_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.enemylv_ = enemylv_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.lootweight_ = lootweight_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.loot_ = loot_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UserInfoProto.Enemy) {
-          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.Enemy)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.Enemy other) {
-        if (other == com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance()) return this;
-        if (other.hasEnemyid()) {
-          setEnemyid(other.getEnemyid());
-        }
-        if (other.hasCount()) {
-          setCount(other.getCount());
-        }
-        if (other.hasEnemylv()) {
-          setEnemylv(other.getEnemylv());
-        }
-        if (other.hasLootweight()) {
-          setLootweight(other.getLootweight());
-        }
-        if (other.hasLoot()) {
-          setLoot(other.getLoot());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UserInfoProto.Enemy parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.Enemy) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // optional int32 enemyid = 2;
-      private int enemyid_ ;
-      /**
-       * <code>optional int32 enemyid = 2;</code>
-       *
-       * <pre>
-       *optional int32 order = 1;
-       * </pre>
-       */
-      public boolean hasEnemyid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional int32 enemyid = 2;</code>
-       *
-       * <pre>
-       *optional int32 order = 1;
-       * </pre>
-       */
-      public int getEnemyid() {
-        return enemyid_;
-      }
-      /**
-       * <code>optional int32 enemyid = 2;</code>
-       *
-       * <pre>
-       *optional int32 order = 1;
-       * </pre>
-       */
-      public Builder setEnemyid(int value) {
-        bitField0_ |= 0x00000001;
-        enemyid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 enemyid = 2;</code>
-       *
-       * <pre>
-       *optional int32 order = 1;
-       * </pre>
-       */
-      public Builder clearEnemyid() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        enemyid_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 count = 3;
-      private int count_ ;
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public boolean hasCount() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public int getCount() {
-        return count_;
-      }
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public Builder setCount(int value) {
-        bitField0_ |= 0x00000002;
-        count_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 count = 3;</code>
-       */
-      public Builder clearCount() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        count_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 enemylv = 4;
-      private int enemylv_ ;
-      /**
-       * <code>optional int32 enemylv = 4;</code>
-       */
-      public boolean hasEnemylv() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional int32 enemylv = 4;</code>
-       */
-      public int getEnemylv() {
-        return enemylv_;
-      }
-      /**
-       * <code>optional int32 enemylv = 4;</code>
-       */
-      public Builder setEnemylv(int value) {
-        bitField0_ |= 0x00000004;
-        enemylv_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 enemylv = 4;</code>
-       */
-      public Builder clearEnemylv() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        enemylv_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 lootweight = 5;
-      private int lootweight_ ;
-      /**
-       * <code>optional int32 lootweight = 5;</code>
-       */
-      public boolean hasLootweight() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int32 lootweight = 5;</code>
-       */
-      public int getLootweight() {
-        return lootweight_;
-      }
-      /**
-       * <code>optional int32 lootweight = 5;</code>
-       */
-      public Builder setLootweight(int value) {
-        bitField0_ |= 0x00000008;
-        lootweight_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 lootweight = 5;</code>
-       */
-      public Builder clearLootweight() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        lootweight_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int32 loot = 6;
-      private int loot_ ;
-      /**
-       * <code>optional int32 loot = 6;</code>
-       */
-      public boolean hasLoot() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional int32 loot = 6;</code>
-       */
-      public int getLoot() {
-        return loot_;
-      }
-      /**
-       * <code>optional int32 loot = 6;</code>
-       */
-      public Builder setLoot(int value) {
-        bitField0_ |= 0x00000010;
-        loot_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int32 loot = 6;</code>
-       */
-      public Builder clearLoot() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        loot_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Enemy)
-    }
-
-    static {
-      defaultInstance = new Enemy(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Enemy)
-  }
-
   public interface EnemyListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -23724,12 +22972,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> 
+    java.util.List<com.trans.pixel.protoc.Base.Enemy> 
         getDataList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.Enemy getData(int index);
+    com.trans.pixel.protoc.Base.Enemy getData(int index);
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
@@ -23737,12 +22985,12 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
+    java.util.List<? extends com.trans.pixel.protoc.Base.EnemyOrBuilder> 
         getDataOrBuilderList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getDataOrBuilder(
+    com.trans.pixel.protoc.Base.EnemyOrBuilder getDataOrBuilder(
         int index);
   }
   /**
@@ -23798,10 +23046,10 @@ public final class UserInfoProto {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                data_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Enemy>();
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Enemy>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              data_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Enemy.PARSER, extensionRegistry));
+              data_.add(input.readMessage(com.trans.pixel.protoc.Base.Enemy.PARSER, extensionRegistry));
               break;
             }
           }
@@ -23848,17 +23096,17 @@ public final class UserInfoProto {
 
     // repeated .com.trans.pixel.protoc.Enemy data = 1;
     public static final int DATA_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> data_;
+    private java.util.List<com.trans.pixel.protoc.Base.Enemy> data_;
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> getDataList() {
+    public java.util.List<com.trans.pixel.protoc.Base.Enemy> getDataList() {
       return data_;
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
+    public java.util.List<? extends com.trans.pixel.protoc.Base.EnemyOrBuilder> 
         getDataOrBuilderList() {
       return data_;
     }
@@ -23871,13 +23119,13 @@ public final class UserInfoProto {
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.Enemy getData(int index) {
+    public com.trans.pixel.protoc.Base.Enemy getData(int index) {
       return data_.get(index);
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getDataOrBuilder(
+    public com.trans.pixel.protoc.Base.EnemyOrBuilder getDataOrBuilder(
         int index) {
       return data_.get(index);
     }
@@ -24141,22 +23389,22 @@ public final class UserInfoProto {
       private int bitField0_;
 
       // repeated .com.trans.pixel.protoc.Enemy data = 1;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> data_ =
+      private java.util.List<com.trans.pixel.protoc.Base.Enemy> data_ =
         java.util.Collections.emptyList();
       private void ensureDataIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          data_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Enemy>(data_);
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Enemy>(data_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> dataBuilder_;
+          com.trans.pixel.protoc.Base.Enemy, com.trans.pixel.protoc.Base.Enemy.Builder, com.trans.pixel.protoc.Base.EnemyOrBuilder> dataBuilder_;
 
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> getDataList() {
+      public java.util.List<com.trans.pixel.protoc.Base.Enemy> getDataList() {
         if (dataBuilder_ == null) {
           return java.util.Collections.unmodifiableList(data_);
         } else {
@@ -24176,7 +23424,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy getData(int index) {
+      public com.trans.pixel.protoc.Base.Enemy getData(int index) {
         if (dataBuilder_ == null) {
           return data_.get(index);
         } else {
@@ -24187,7 +23435,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder setData(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy value) {
+          int index, com.trans.pixel.protoc.Base.Enemy value) {
         if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -24204,7 +23452,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder setData(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Enemy.Builder builderForValue) {
         if (dataBuilder_ == null) {
           ensureDataIsMutable();
           data_.set(index, builderForValue.build());
@@ -24217,7 +23465,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public Builder addData(com.trans.pixel.protoc.UserInfoProto.Enemy value) {
+      public Builder addData(com.trans.pixel.protoc.Base.Enemy value) {
         if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -24234,7 +23482,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder addData(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy value) {
+          int index, com.trans.pixel.protoc.Base.Enemy value) {
         if (dataBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -24251,7 +23499,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder addData(
-          com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.Enemy.Builder builderForValue) {
         if (dataBuilder_ == null) {
           ensureDataIsMutable();
           data_.add(builderForValue.build());
@@ -24265,7 +23513,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder addData(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
+          int index, com.trans.pixel.protoc.Base.Enemy.Builder builderForValue) {
         if (dataBuilder_ == null) {
           ensureDataIsMutable();
           data_.add(index, builderForValue.build());
@@ -24279,7 +23527,7 @@ public final class UserInfoProto {
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
       public Builder addAllData(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.Enemy> values) {
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Enemy> values) {
         if (dataBuilder_ == null) {
           ensureDataIsMutable();
           super.addAll(values, data_);
@@ -24318,14 +23566,14 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder getDataBuilder(
+      public com.trans.pixel.protoc.Base.Enemy.Builder getDataBuilder(
           int index) {
         return getDataFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getDataOrBuilder(
+      public com.trans.pixel.protoc.Base.EnemyOrBuilder getDataOrBuilder(
           int index) {
         if (dataBuilder_ == null) {
           return data_.get(index);  } else {
@@ -24335,7 +23583,7 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
+      public java.util.List<? extends com.trans.pixel.protoc.Base.EnemyOrBuilder> 
            getDataOrBuilderList() {
         if (dataBuilder_ != null) {
           return dataBuilder_.getMessageOrBuilderList();
@@ -24346,31 +23594,31 @@ public final class UserInfoProto {
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder addDataBuilder() {
+      public com.trans.pixel.protoc.Base.Enemy.Builder addDataBuilder() {
         return getDataFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance());
+            com.trans.pixel.protoc.Base.Enemy.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder addDataBuilder(
+      public com.trans.pixel.protoc.Base.Enemy.Builder addDataBuilder(
           int index) {
         return getDataFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance());
+            index, com.trans.pixel.protoc.Base.Enemy.getDefaultInstance());
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Enemy data = 1;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy.Builder> 
+      public java.util.List<com.trans.pixel.protoc.Base.Enemy.Builder> 
            getDataBuilderList() {
         return getDataFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
+          com.trans.pixel.protoc.Base.Enemy, com.trans.pixel.protoc.Base.Enemy.Builder, com.trans.pixel.protoc.Base.EnemyOrBuilder> 
           getDataFieldBuilder() {
         if (dataBuilder_ == null) {
           dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder>(
+              com.trans.pixel.protoc.Base.Enemy, com.trans.pixel.protoc.Base.Enemy.Builder, com.trans.pixel.protoc.Base.EnemyOrBuilder>(
                   data_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
@@ -24389,680 +23637,6 @@ public final class UserInfoProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EnemyList)
-  }
-
-  public interface EnemyGroupOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // repeated .com.trans.pixel.protoc.Enemy enemy = 1;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> 
-        getEnemyList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    com.trans.pixel.protoc.UserInfoProto.Enemy getEnemy(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    int getEnemyCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
-        getEnemyOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getEnemyOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code com.trans.pixel.protoc.EnemyGroup}
-   */
-  public static final class EnemyGroup extends
-      com.google.protobuf.GeneratedMessage
-      implements EnemyGroupOrBuilder {
-    // Use EnemyGroup.newBuilder() to construct.
-    private EnemyGroup(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private EnemyGroup(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final EnemyGroup defaultInstance;
-    public static EnemyGroup getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public EnemyGroup getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private EnemyGroup(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                enemy_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Enemy>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              enemy_.add(input.readMessage(com.trans.pixel.protoc.UserInfoProto.Enemy.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          enemy_ = java.util.Collections.unmodifiableList(enemy_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.trans.pixel.protoc.UserInfoProto.EnemyGroup.class, com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<EnemyGroup> PARSER =
-        new com.google.protobuf.AbstractParser<EnemyGroup>() {
-      public EnemyGroup parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new EnemyGroup(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<EnemyGroup> getParserForType() {
-      return PARSER;
-    }
-
-    // repeated .com.trans.pixel.protoc.Enemy enemy = 1;
-    public static final int ENEMY_FIELD_NUMBER = 1;
-    private java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> enemy_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> getEnemyList() {
-      return enemy_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
-        getEnemyOrBuilderList() {
-      return enemy_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    public int getEnemyCount() {
-      return enemy_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    public com.trans.pixel.protoc.UserInfoProto.Enemy getEnemy(int index) {
-      return enemy_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-     */
-    public com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getEnemyOrBuilder(
-        int index) {
-      return enemy_.get(index);
-    }
-
-    private void initFields() {
-      enemy_ = java.util.Collections.emptyList();
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      for (int i = 0; i < enemy_.size(); i++) {
-        output.writeMessage(1, enemy_.get(i));
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < enemy_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, enemy_.get(i));
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static com.trans.pixel.protoc.UserInfoProto.EnemyGroup parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.EnemyGroup prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.trans.pixel.protoc.EnemyGroup}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.trans.pixel.protoc.UserInfoProto.EnemyGroup.class, com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder.class);
-      }
-
-      // Construct using com.trans.pixel.protoc.UserInfoProto.EnemyGroup.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getEnemyFieldBuilder();
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        if (enemyBuilder_ == null) {
-          enemy_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          enemyBuilder_.clear();
-        }
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroup getDefaultInstanceForType() {
-        return com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance();
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroup build() {
-        com.trans.pixel.protoc.UserInfoProto.EnemyGroup result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroup buildPartial() {
-        com.trans.pixel.protoc.UserInfoProto.EnemyGroup result = new com.trans.pixel.protoc.UserInfoProto.EnemyGroup(this);
-        int from_bitField0_ = bitField0_;
-        if (enemyBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            enemy_ = java.util.Collections.unmodifiableList(enemy_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.enemy_ = enemy_;
-        } else {
-          result.enemy_ = enemyBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.trans.pixel.protoc.UserInfoProto.EnemyGroup) {
-          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.EnemyGroup)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.EnemyGroup other) {
-        if (other == com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance()) return this;
-        if (enemyBuilder_ == null) {
-          if (!other.enemy_.isEmpty()) {
-            if (enemy_.isEmpty()) {
-              enemy_ = other.enemy_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureEnemyIsMutable();
-              enemy_.addAll(other.enemy_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.enemy_.isEmpty()) {
-            if (enemyBuilder_.isEmpty()) {
-              enemyBuilder_.dispose();
-              enemyBuilder_ = null;
-              enemy_ = other.enemy_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              enemyBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getEnemyFieldBuilder() : null;
-            } else {
-              enemyBuilder_.addAllMessages(other.enemy_);
-            }
-          }
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.trans.pixel.protoc.UserInfoProto.EnemyGroup parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.EnemyGroup) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // repeated .com.trans.pixel.protoc.Enemy enemy = 1;
-      private java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> enemy_ =
-        java.util.Collections.emptyList();
-      private void ensureEnemyIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          enemy_ = new java.util.ArrayList<com.trans.pixel.protoc.UserInfoProto.Enemy>(enemy_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> enemyBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy> getEnemyList() {
-        if (enemyBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(enemy_);
-        } else {
-          return enemyBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public int getEnemyCount() {
-        if (enemyBuilder_ == null) {
-          return enemy_.size();
-        } else {
-          return enemyBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy getEnemy(int index) {
-        if (enemyBuilder_ == null) {
-          return enemy_.get(index);
-        } else {
-          return enemyBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder setEnemy(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy value) {
-        if (enemyBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemyIsMutable();
-          enemy_.set(index, value);
-          onChanged();
-        } else {
-          enemyBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder setEnemy(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
-        if (enemyBuilder_ == null) {
-          ensureEnemyIsMutable();
-          enemy_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemyBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder addEnemy(com.trans.pixel.protoc.UserInfoProto.Enemy value) {
-        if (enemyBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemyIsMutable();
-          enemy_.add(value);
-          onChanged();
-        } else {
-          enemyBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder addEnemy(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy value) {
-        if (enemyBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureEnemyIsMutable();
-          enemy_.add(index, value);
-          onChanged();
-        } else {
-          enemyBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder addEnemy(
-          com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
-        if (enemyBuilder_ == null) {
-          ensureEnemyIsMutable();
-          enemy_.add(builderForValue.build());
-          onChanged();
-        } else {
-          enemyBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder addEnemy(
-          int index, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder builderForValue) {
-        if (enemyBuilder_ == null) {
-          ensureEnemyIsMutable();
-          enemy_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          enemyBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder addAllEnemy(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.UserInfoProto.Enemy> values) {
-        if (enemyBuilder_ == null) {
-          ensureEnemyIsMutable();
-          super.addAll(values, enemy_);
-          onChanged();
-        } else {
-          enemyBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder clearEnemy() {
-        if (enemyBuilder_ == null) {
-          enemy_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          enemyBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public Builder removeEnemy(int index) {
-        if (enemyBuilder_ == null) {
-          ensureEnemyIsMutable();
-          enemy_.remove(index);
-          onChanged();
-        } else {
-          enemyBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder getEnemyBuilder(
-          int index) {
-        return getEnemyFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder getEnemyOrBuilder(
-          int index) {
-        if (enemyBuilder_ == null) {
-          return enemy_.get(index);  } else {
-          return enemyBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
-           getEnemyOrBuilderList() {
-        if (enemyBuilder_ != null) {
-          return enemyBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(enemy_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder addEnemyBuilder() {
-        return getEnemyFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public com.trans.pixel.protoc.UserInfoProto.Enemy.Builder addEnemyBuilder(
-          int index) {
-        return getEnemyFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.UserInfoProto.Enemy.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Enemy enemy = 1;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.UserInfoProto.Enemy.Builder> 
-           getEnemyBuilderList() {
-        return getEnemyFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder> 
-          getEnemyFieldBuilder() {
-        if (enemyBuilder_ == null) {
-          enemyBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.Enemy, com.trans.pixel.protoc.UserInfoProto.Enemy.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyOrBuilder>(
-                  enemy_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          enemy_ = null;
-        }
-        return enemyBuilder_;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.EnemyGroup)
-    }
-
-    static {
-      defaultInstance = new EnemyGroup(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.EnemyGroup)
   }
 
   public interface EventConfigOrBuilder
@@ -25185,11 +23759,11 @@ public final class UserInfoProto {
     /**
      * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EnemyGroup getEnemygroup();
+    com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup();
     /**
      * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
      */
-    com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder getEnemygroupOrBuilder();
+    com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder();
 
     // optional int32 call = 9;
     /**
@@ -25302,11 +23876,11 @@ public final class UserInfoProto {
               break;
             }
             case 66: {
-              com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder subBuilder = null;
+              com.trans.pixel.protoc.Base.EnemyGroup.Builder subBuilder = null;
               if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = enemygroup_.toBuilder();
               }
-              enemygroup_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.EnemyGroup.PARSER, extensionRegistry);
+              enemygroup_ = input.readMessage(com.trans.pixel.protoc.Base.EnemyGroup.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(enemygroup_);
                 enemygroup_ = subBuilder.buildPartial();
@@ -25552,7 +24126,7 @@ public final class UserInfoProto {
 
     // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;
     public static final int ENEMYGROUP_FIELD_NUMBER = 8;
-    private com.trans.pixel.protoc.UserInfoProto.EnemyGroup enemygroup_;
+    private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_;
     /**
      * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
      */
@@ -25562,13 +24136,13 @@ public final class UserInfoProto {
     /**
      * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EnemyGroup getEnemygroup() {
+    public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
       return enemygroup_;
     }
     /**
      * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
      */
-    public com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+    public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
       return enemygroup_;
     }
 
@@ -25596,7 +24170,7 @@ public final class UserInfoProto {
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
       lootlist_ = java.util.Collections.emptyList();
       question_ = java.util.Collections.emptyList();
-      enemygroup_ = com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance();
+      enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
       call_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -25830,7 +24404,7 @@ public final class UserInfoProto {
           questionBuilder_.clear();
         }
         if (enemygroupBuilder_ == null) {
-          enemygroup_ = com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance();
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
         } else {
           enemygroupBuilder_.clear();
         }
@@ -26808,9 +25382,9 @@ public final class UserInfoProto {
       }
 
       // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;
-      private com.trans.pixel.protoc.UserInfoProto.EnemyGroup enemygroup_ = com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance();
+      private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.EnemyGroup, com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder> enemygroupBuilder_;
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> enemygroupBuilder_;
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
@@ -26820,7 +25394,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroup getEnemygroup() {
+      public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
         if (enemygroupBuilder_ == null) {
           return enemygroup_;
         } else {
@@ -26830,7 +25404,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
-      public Builder setEnemygroup(com.trans.pixel.protoc.UserInfoProto.EnemyGroup value) {
+      public Builder setEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
         if (enemygroupBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -26847,7 +25421,7 @@ public final class UserInfoProto {
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
       public Builder setEnemygroup(
-          com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder builderForValue) {
+          com.trans.pixel.protoc.Base.EnemyGroup.Builder builderForValue) {
         if (enemygroupBuilder_ == null) {
           enemygroup_ = builderForValue.build();
           onChanged();
@@ -26860,12 +25434,12 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
-      public Builder mergeEnemygroup(com.trans.pixel.protoc.UserInfoProto.EnemyGroup value) {
+      public Builder mergeEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
         if (enemygroupBuilder_ == null) {
           if (((bitField0_ & 0x00000080) == 0x00000080) &&
-              enemygroup_ != com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance()) {
+              enemygroup_ != com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance()) {
             enemygroup_ =
-              com.trans.pixel.protoc.UserInfoProto.EnemyGroup.newBuilder(enemygroup_).mergeFrom(value).buildPartial();
+              com.trans.pixel.protoc.Base.EnemyGroup.newBuilder(enemygroup_).mergeFrom(value).buildPartial();
           } else {
             enemygroup_ = value;
           }
@@ -26881,7 +25455,7 @@ public final class UserInfoProto {
        */
       public Builder clearEnemygroup() {
         if (enemygroupBuilder_ == null) {
-          enemygroup_ = com.trans.pixel.protoc.UserInfoProto.EnemyGroup.getDefaultInstance();
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
           onChanged();
         } else {
           enemygroupBuilder_.clear();
@@ -26892,7 +25466,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder getEnemygroupBuilder() {
+      public com.trans.pixel.protoc.Base.EnemyGroup.Builder getEnemygroupBuilder() {
         bitField0_ |= 0x00000080;
         onChanged();
         return getEnemygroupFieldBuilder().getBuilder();
@@ -26900,7 +25474,7 @@ public final class UserInfoProto {
       /**
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
-      public com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+      public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
         if (enemygroupBuilder_ != null) {
           return enemygroupBuilder_.getMessageOrBuilder();
         } else {
@@ -26911,11 +25485,11 @@ public final class UserInfoProto {
        * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.trans.pixel.protoc.UserInfoProto.EnemyGroup, com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder> 
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> 
           getEnemygroupFieldBuilder() {
         if (enemygroupBuilder_ == null) {
           enemygroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.trans.pixel.protoc.UserInfoProto.EnemyGroup, com.trans.pixel.protoc.UserInfoProto.EnemyGroup.Builder, com.trans.pixel.protoc.UserInfoProto.EnemyGroupOrBuilder>(
+              com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder>(
                   enemygroup_,
                   getParentForChildren(),
                   isClean());
@@ -35354,20 +33928,10 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EventQuestion_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_Enemy_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_EnemyList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_EnemyList_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_EventConfig_descriptor;
   private static
@@ -35510,43 +34074,39 @@ public final class UserInfoProto {
       "rans.pixel.protoc.RewardInfo\">\n\014EventExp" +
       "List\022.\n\004data\030\001 \003(\0132 .com.trans.pixel.pro" +
       "toc.EventExp\"0\n\rEventQuestion\022\016\n\006answer\030" +
-      "\002 \001(\t\022\017\n\007eventid\030\003 \001(\005\"Z\n\005Enemy\022\017\n\007enemy" +
-      "id\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005" +
-      "\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"8\n\tEn" +
-      "emyList\022+\n\004data\030\001 \003(\0132\035.com.trans.pixel." +
-      "protoc.Enemy\":\n\nEnemyGroup\022,\n\005enemy\030\001 \003(" +
-      "\0132\035.com.trans.pixel.protoc.Enemy\"\254\002\n\013Eve" +
-      "ntConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004ty",
-      "pe\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\"" +
-      ".com.trans.pixel.protoc.RewardInfo\0224\n\010lo" +
-      "otlist\030\006 \003(\0132\".com.trans.pixel.protoc.Re" +
-      "wardInfo\0227\n\010question\030\007 \003(\0132%.com.trans.p" +
-      "ixel.protoc.EventQuestion\0226\n\nenemygroup\030" +
-      "\010 \001(\0132\".com.trans.pixel.protoc.EnemyGrou" +
-      "p\022\014\n\004call\030\t \001(\005\"D\n\017EventConfigList\0221\n\004da" +
-      "ta\030\001 \003(\0132#.com.trans.pixel.protoc.EventC" +
-      "onfig\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030" +
-      "\002 \003(\0132\035.com.trans.pixel.protoc.Event\022\016\n\006",
-      "weight\030\003 \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001 " +
-      "\003(\0132!.com.trans.pixel.protoc.AreaEvent\"G" +
-      "\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".co" +
-      "m.trans.pixel.protoc.RewardInfo\"4\n\010LootL" +
-      "ist\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc" +
-      ".Loot\"&\n\030RequestLevelStartCommand\022\n\n\002id\030" +
-      "\001 \001(\005\"4\n\023RequestEventCommand\022\016\n\006userId\030\001" +
-      " \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventComm" +
-      "and\022,\n\005event\030\001 \003(\0132\035.com.trans.pixel.pro" +
-      "toc.Event\"\037\n\035RequestLevelLootResultComma",
-      "nd\"{\n\031RequestEventResultCommand\022\r\n\005order" +
-      "\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 " +
-      "\001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003re" +
-      "t\030\005 \001(\010\"P\n\032ResponseEventResultCommand\0222\n" +
-      "\006reward\030\001 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardInfo\"\226\001\n\030ResponseLevelLootCommand\022\024" +
-      "\n\014unlockDaguan\030\001 \001(\005\022\023\n\013unlockOrder\030\002 \001(" +
-      "\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022" +
-      "\021\n\teventTime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001" +
-      "(\r\"\030\n\026RequestEventBuyCommand"
+      "\002 \001(\t\022\017\n\007eventid\030\003 \001(\005\"8\n\tEnemyList\022+\n\004d" +
+      "ata\030\001 \003(\0132\035.com.trans.pixel.protoc.Enemy" +
+      "\"\254\002\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001" +
+      "(\t\022\014\n\004type\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost" +
+      "\030\005 \001(\0132\".com.trans.pixel.protoc.RewardIn" +
+      "fo\0224\n\010lootlist\030\006 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\0227\n\010question\030\007 \003(\0132%.com",
+      ".trans.pixel.protoc.EventQuestion\0226\n\nene" +
+      "mygroup\030\010 \001(\0132\".com.trans.pixel.protoc.E" +
+      "nemyGroup\022\014\n\004call\030\t \001(\005\"D\n\017EventConfigLi" +
+      "st\0221\n\004data\030\001 \003(\0132#.com.trans.pixel.proto" +
+      "c.EventConfig\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022," +
+      "\n\005event\030\002 \003(\0132\035.com.trans.pixel.protoc.E" +
+      "vent\022\016\n\006weight\030\003 \001(\005\"@\n\rAreaEventList\022/\n" +
+      "\004data\030\001 \003(\0132!.com.trans.pixel.protoc.Are" +
+      "aEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"",
+      "4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com.trans.pixe" +
+      "l.protoc.Loot\"&\n\030RequestLevelStartComman" +
+      "d\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventCommand\022\016\n\006" +
+      "userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseE" +
+      "ventCommand\022,\n\005event\030\001 \003(\0132\035.com.trans.p" +
+      "ixel.protoc.Event\"\037\n\035RequestLevelLootRes" +
+      "ultCommand\"{\n\031RequestEventResultCommand\022" +
+      "\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfigh" +
+      "tInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001" +
+      "(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResultCo",
+      "mmand\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel." +
+      "protoc.RewardInfo\"\226\001\n\030ResponseLevelLootC" +
+      "ommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\023\n\013unlockOr" +
+      "der\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTim" +
+      "e\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022\026\n\016lootTimeNo" +
+      "rmal\030\007 \001(\r\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -35763,104 +34323,92 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventQuestion_descriptor,
               new java.lang.String[] { "Answer", "Eventid", });
-          internal_static_com_trans_pixel_protoc_Enemy_descriptor =
-            getDescriptor().getMessageTypes().get(35);
-          internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_Enemy_descriptor,
-              new java.lang.String[] { "Enemyid", "Count", "Enemylv", "Lootweight", "Loot", });
           internal_static_com_trans_pixel_protoc_EnemyList_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_EnemyList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EnemyList_descriptor,
               new java.lang.String[] { "Data", });
-          internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor =
-            getDescriptor().getMessageTypes().get(37);
-          internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor,
-              new java.lang.String[] { "Enemy", });
           internal_static_com_trans_pixel_protoc_EventConfig_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_EventConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfig_descriptor,
               new java.lang.String[] { "Id", "Name", "Type", "Daguan", "Cost", "Lootlist", "Question", "Enemygroup", "Call", });
           internal_static_com_trans_pixel_protoc_EventConfigList_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_EventConfigList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EventConfigList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_AreaEvent_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_AreaEvent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEvent_descriptor,
               new java.lang.String[] { "Id", "Event", "Weight", });
           internal_static_com_trans_pixel_protoc_AreaEventList_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_AreaEventList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_AreaEventList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Loot_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_Loot_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Loot_descriptor,
               new java.lang.String[] { "Order", "Item", });
           internal_static_com_trans_pixel_protoc_LootList_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_LootList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootList_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelStartCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventCommand_descriptor,
               new java.lang.String[] { "UserId", "Order", });
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_ResponseEventCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventCommand_descriptor,
               new java.lang.String[] { "Event", });
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "UnlockOrder", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,

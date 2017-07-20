@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -15,6 +17,7 @@ import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
@@ -40,7 +43,7 @@ import com.trans.pixel.service.redis.RedisService;
 
 @Service
 public class UnionCommandService extends BaseCommandService {
-//	private static final Logger log = LoggerFactory.getLogger(UnionCommandService.class);
+	private static final Logger log = LoggerFactory.getLogger(UnionCommandService.class);
 	private static final int CREATE_UNION_COST_JEWEL = 500;
 	@Resource
 	private UnionService unionService;
@@ -244,7 +247,7 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		int bossId = cmd.getBossId();
-		int hp = cmd.getHp();
+		long hp = cmd.getHp();
 		int percent = cmd.getPercent();
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
@@ -253,6 +256,26 @@ public class UnionCommandService extends BaseCommandService {
 		if (unionBoss == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_MONSTER));
+			return;
+		}
+		
+		log.debug("status number is:" + unionBoss.getStatus());
+		
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_ZHANLI_NOT_ENOUGH_VALUE) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR));
+			return;
+		}
+		
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_BOSS_USER_HAS_NOT_TIMES_VALUE) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_USER_HAS_NO_TIMES_ERROR));
+			return;
+		}
+		
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_BOSS_IS_END_VALUE) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_TIME_IS_OVER_ERROR));
 			return;
 		}
 		
