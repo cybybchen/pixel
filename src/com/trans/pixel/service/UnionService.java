@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -51,6 +52,7 @@ import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UnionService extends FightService{
@@ -860,8 +862,9 @@ public class UnionService extends FightService{
 			/**
 			 * 累计击败工会boss的活动
 			 */
-			for (UnionBossUserRecord userRecord : unionBossRecord.getUserRecordList()) {
-				activityService.handleUnionBoss(userRecord.getUserId(), bossId);
+			Set<String> userIds = redis.getMemberIds(union.getId());
+			for (String userIdStr : userIds) {
+				activityService.handleUnionBoss(TypeTranslatedUtil.stringToLong(userIdStr), bossId);
 			}
 		} else {
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
@@ -935,11 +938,9 @@ public class UnionService extends FightService{
 				/**
 				 * 累计击败工会boss的活动
 				 */
-				UnionBossRecord unionBossRecord = redis.getUnionBoss(union.getId(), unionBoss.getId());
-				if (unionBossRecord != null) {
-					for (UnionBossUserRecord userRecord : unionBossRecord.getUserRecordList()) {
-						activityService.handleUnionBoss(userRecord.getUserId(), unionBoss.getId());
-					}
+				Set<String> userIds = redis.getMemberIds(union.getId());
+				for (String userIdStr : userIds) {
+					activityService.handleUnionBoss(TypeTranslatedUtil.stringToLong(userIdStr), unionBoss.getId());
 				}
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
 				redis.delUnionBoss(union.getId(), unionBoss.getId());
