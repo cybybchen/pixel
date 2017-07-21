@@ -10767,12 +10767,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasBindRecommandCommand()) {
-        if (!getBindRecommandCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasChangeUserNameCommand()) {
         if (!getChangeUserNameCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -16627,12 +16621,6 @@ public final class Request {
         }
         if (hasTalentResetSkillCommand()) {
           if (!getTalentResetSkillCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasBindRecommandCommand()) {
-          if (!getBindRecommandCommand().isInitialized()) {
             
             return false;
           }

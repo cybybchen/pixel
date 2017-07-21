@@ -137,6 +137,7 @@ public class UserBean {
 	private long recommandUserId = 0;
 	private int friendVip = 0;
 	private int unionExp = 0;
+	private int titleOrder = 0;
 	/**
 	 * 主角sp总数
 	 */
@@ -1313,6 +1314,12 @@ public class UserBean {
 	public void setUnionExp(int unionExp) {
 		this.unionExp = unionExp;
 	}
+	public int getTitleOrder() {
+		return titleOrder;
+	}
+	public void setTitleOrder(int titleOrder) {
+		this.titleOrder = titleOrder;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1352,6 +1359,7 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
+		builder.setTitleOrder(titleOrder);
 		
 		return builder.build();
 	}
@@ -1494,6 +1502,7 @@ public class UserBean {
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
+		builder.setTitleOrder(titleOrder);
 		
 		return builder.build();
 	}

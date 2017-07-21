@@ -81,6 +81,9 @@ message UserInfo {
 	optional uint32 friendVip = 92;//0:没购买基纽特权，1:已购买
 	optional int32 talentsp = 93;
 	optional uint32 unionExp = 94;
+	optional string markId = 95;	
+	optional string recommandMarkId = 96;
+	optional uint32 titleOrder = 97;
 }
 
 message JewelPool {
@@ -542,12 +545,12 @@ message ResponseBattletowerShopCommand {
 message Libao {
 	optional int32 id = 1;
 	optional int32 rechargeid = 2;
-	optional int32 purchase = 3;
+	optional int32 purchase = 3;//剩余次数
 	optional string starttime = 4;
 	//optional string endtime = 5;
 	optional string validtime = 6;
 	optional int32 refresh = 7;
-	optional bool isOut = 8;
+	optional bool isOut = 8;//是否已售完
 }
 message LibaoList {
 	repeated Libao data = 1;
@@ -2700,6 +2703,7 @@ message HeadInfo
 	optional string serverstarttime = 8;
 	optional int32 onlineStatus = 9;
 	optional int32 serverStatus = 10;	
+	optional uint32 level = 11;//权限级别，0：普通请求，1：服务器转发
 }
 
 message ServerTitleInfo {
@@ -2774,7 +2778,8 @@ message RequestRegisterCommand {
 }
 
 message RequestBindRecommandCommand {
-	required uint64 userId = 1;
+	optional uint64 userId = 1;
+	optional string markId = 2;
 }
 
 message RequestRecommandCommand {
