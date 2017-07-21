@@ -166,7 +166,7 @@ public class RedisService {
 			InputStreamReader isr = new InputStreamReader(out);
 			BufferedReader br = new BufferedReader(isr);
 			int ch = 0;
-			String bh;
+			String bh = "";
 //			while ((ch = isr.read()) != -1) {
 			while ((bh = br.readLine()) != null) {
 				// System.out.print((char) ch);

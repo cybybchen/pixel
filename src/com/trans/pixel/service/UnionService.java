@@ -213,9 +213,9 @@ public class UnionService extends FightService{
 		crontabUnionBossActivity(user);
 		union.addAllUnionBoss(getUnionBossList(user, union));
 		
-//		/**
-//		 * 计算镜像世界矿点奖励
-//		 */
+		/**
+		 * 计算镜像世界矿点奖励
+		 */
 //		calAreaResourceReward(user);
 		
 //		if(union.hasAttackId()){
