@@ -49,6 +49,8 @@ public class TalentService {
 	private UserTeamService userTeamService;
 	@Resource
 	private UserEquipService userEquipService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
 
 	public void talentUpgrade(UserBean user, int exp) {
 		UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
@@ -380,9 +382,13 @@ public class TalentService {
 		return userTalent.build();
 	}
 	
-	public boolean changeTitleEquip(UserBean user, int position, int itemId) {
-		if (position == 9 && user.getTitle() != itemId) {
-			user.setTitle(itemId);
+	public boolean changeTitleEquip(UserBean user, int position, UserTalentEquip equip) {
+		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), equip.getItemId());
+		if (pokede == null)
+			return false;
+		if (position == 9 && (user.getTitle() != equip.getItemId() || user.getTitleOrder() != pokede.getOrder())) {
+			user.setTitle(equip.getItemId());
+			user.setTitleOrder(Math.max(1, pokede.getOrder()));
 //			userService.updateUser(user);
 			userService.cache(user.getServerId(), user.buildShort());
 			return true;
