@@ -149,8 +149,10 @@ public class RedisService {
 	 * 从文件导入
 	 */
 	public static String ReadFromFile(String filePath){
+		long startTime = System.currentTimeMillis();
 		logger.warn("Reading "+filePath);
 		String msg = "";
+		StringBuilder sb = new StringBuilder();
 		File file = new File(filePath);
 		if (!file.exists()) {
 			logger.error("Fail to find file:" + filePath);
@@ -163,18 +165,24 @@ public class RedisService {
 			BufferedReader br = new BufferedReader(isr);
 			int ch = 0;
 			String bh = "";
+			char[] chs = new char[4096];
 //			while ((ch = isr.read()) != -1) {
-			while ((bh = br.readLine()) != null) {
+//			while ((bh = br.readLine()) != null) {
+			while ((ch = br.read(chs)) != -1) {
 				// System.out.print((char) ch);
 //				msg += (char) ch;
-				msg += bh;
+//				sb.append(chs);
+				sb.append(chs, 0, ch);
 			}
 			isr.close();
 		} catch (Exception e) {
 			logger.error("Fail to read file:" + filePath);
 		}finally{
 		}
-		return msg;
+//		logger.warn("content is:" + sb.toString());
+		logger.warn("read cost:" + (System.currentTimeMillis() - startTime));
+//		return msg;
+		return sb.toString();
     }
 
 //	/**
