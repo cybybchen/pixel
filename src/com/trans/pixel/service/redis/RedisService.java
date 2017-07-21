@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,6 +15,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
@@ -35,8 +38,6 @@ import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
-
-import net.sf.json.JSONObject;
 
 @Repository
 public class RedisService {
@@ -72,12 +73,15 @@ public class RedisService {
 	 * 只有当返回true才能使用builder
 	 */
 	public static boolean parseXml(CharSequence input, Message.Builder builder){
+		long startTime = System.currentTimeMillis();
 		try {
 			XmlFormat.merge(input, builder);
 		} catch (Exception e) {
 			logger.error(input, e);
 			return false;
 		}
+		
+		logger.warn("parse time is : " + (System.currentTimeMillis() - startTime));
 		return true;
 	}
 
@@ -160,10 +164,14 @@ public class RedisService {
 			// 读取文件内容 (输入流)
 			FileInputStream out = new FileInputStream(file);
 			InputStreamReader isr = new InputStreamReader(out);
+			BufferedReader br = new BufferedReader(isr);
 			int ch = 0;
-			while ((ch = isr.read()) != -1) {
+			String bh;
+//			while ((ch = isr.read()) != -1) {
+			while ((bh = br.readLine()) != null) {
 				// System.out.print((char) ch);
-				msg += (char) ch;
+//				msg += (char) ch;
+				msg += bh;
 			}
 			isr.close();
 		} catch (Exception e) {
@@ -171,7 +179,7 @@ public class RedisService {
 		}finally{
 		}
 		
-		logger.warn("parse time is:" + (System.currentTimeMillis() - startTime));
+		logger.warn("read time is:" + (System.currentTimeMillis() - startTime));
 		return msg;
     }
 
