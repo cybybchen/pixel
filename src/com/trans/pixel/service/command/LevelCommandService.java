@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
@@ -506,9 +507,9 @@ public class LevelCommandService extends BaseCommandService {
 			
 			
 			/**
-			 * 征战世界成功支援的活动
+			 * 事件成功支援的活动
 			 */
-			activityService.aidActivity(user, 1);
+			activityService.aidActivity(user, ActivityConst.AID_LEVEL);
 		}
 		
 		/**
