@@ -217,11 +217,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<String> getLadderNames() {
-		List<String> values = this.lrange((RedisKey.LADDER_NAME_KEY));
+		List<String> values = lrange((RedisKey.LADDER_NAME_KEY));
 		if(values.isEmpty()){
 			List<String> list = buildLadderNameConfig();
 			for(String name : list){
-				this.lpush(RedisKey.LADDER_NAME_KEY, name);
+				lpush(RedisKey.LADDER_NAME_KEY, name);
 			}
 			return list;
 		}else{
@@ -245,11 +245,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<String> getLadderNames2() {
-		List<String> values = this.lrange((RedisKey.LADDER_NAME2_KEY));
+		List<String> values = lrange((RedisKey.LADDER_NAME2_KEY));
 		if(values.isEmpty()){
 			List<String> list = buildLadderNameConfig2();
 			for(String name : list){
-				this.lpush(RedisKey.LADDER_NAME2_KEY, name);
+				lpush(RedisKey.LADDER_NAME2_KEY, name);
 			}
 			return list;
 		}else{
@@ -273,11 +273,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<LadderEnemy> getLadderEnemy() {
-		List<String> values = this.lrange((RedisKey.LADDER_ENEMY_KEY));
+		List<String> values = lrange((RedisKey.LADDER_ENEMY_KEY));
 		if(values.isEmpty()){
 			List<LadderEnemy> list = buildLadderEnemyConfig();
 			for(LadderEnemy enemy : list){
-				this.lpush(RedisKey.LADDER_ENEMY_KEY, RedisService.formatJson(enemy));
+				lpush(RedisKey.LADDER_ENEMY_KEY, RedisService.formatJson(enemy));
 			}
 			return list;
 		}else{

@@ -16,7 +16,7 @@ import com.trans.pixel.cache.UserCache;
 public class CacheService {
 
 	@SuppressWarnings("unchecked")
-	public void hput(String key1, String key2, String value) {
+	public static void hput(String key1, String key2, String value) {
 		Map<String, String> map = null;
 		Object object = InProcessCache.getInstance().get(key1);
 		if (object != null) 
@@ -29,7 +29,7 @@ public class CacheService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public final String hget(String key1, String key2) {
+	public static final String hget(String key1, String key2) {
 		Object object = InProcessCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
 		if (map == null)
@@ -39,7 +39,7 @@ public class CacheService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public final Map<String, String> hget(String key1) {
+	public static final Map<String, String> hget(String key1) {
 		Object object = InProcessCache.getInstance().get(key1);
 		Map<String, String> map = (Map<String, String>)object;
 		if (map == null)
@@ -47,11 +47,11 @@ public class CacheService {
 		return map;
 	}
 	
-	public void hputAll(String key, Map<String, String> map) {
+	public static void hputAll(String key, Map<String, String> map) {
 		InProcessCache.getInstance().set(key, map);
 	}
 	
-	public final String get(String key) {
+	public static final String get(String key) {
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)
 			return null;
@@ -59,12 +59,12 @@ public class CacheService {
 		return (String)object;
 	}
 	
-	public void set(String key, String value) {
+	public static void set(String key, String value) {
 		InProcessCache.getInstance().set(key, value);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public final List<String> lrange(String key) {
+	public static final List<String> lrange(String key) {
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)
 			return new ArrayList<String>();
@@ -73,7 +73,7 @@ public class CacheService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void lpush(String key, String value) {
+	public static void lpush(String key, String value) {
 		List<String> values = null;
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)
@@ -86,12 +86,12 @@ public class CacheService {
 		InProcessCache.getInstance().set(key, values);
 	}
 	
-	public void lpush(String key, List<String> values) {
+	public static void lpush(String key, List<String> values) {
 		InProcessCache.getInstance().set(key, values);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void sadd(String key, String value) {
+	public static void sadd(String key, String value) {
 		Set<String> sets = null;
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)
@@ -104,7 +104,7 @@ public class CacheService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public Set<String> spop(String key) {
+	public static Set<String> spop(String key) {
 		Set<String> sets = null;
 		Object object = InProcessCache.getInstance().get(key);
 		if (object == null)

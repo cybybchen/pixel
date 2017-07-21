@@ -171,7 +171,7 @@ public class RedisService {
 		}finally{
 		}
 		
-		logger.debug("parse time is:" + (System.currentTimeMillis() - startTime));
+		logger.warn("parse time is:" + (System.currentTimeMillis() - startTime));
 		return msg;
     }
 

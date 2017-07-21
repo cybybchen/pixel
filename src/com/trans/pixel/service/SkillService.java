@@ -23,10 +23,6 @@ public class SkillService {
 	@Resource
 	private HeroRedisService heroRedisService;
 	
-	public SkillService() {
-		parseSkillLevelAndSaveConfig();
-	}
-	
 //	public SkillBean getSkill(int id) {
 //		SkillBean skill = skillRedisService.getSkillById(id);
 //		if (skill == null) {
@@ -46,30 +42,30 @@ public class SkillService {
 	
 	public SkillLevelBean getSkillLevel(int id) {
 		SkillLevelBean skillLevel = skillRedisService.getSkillLevelById(id);
-		if (skillLevel == null) {
-			parseSkillLevelAndSaveConfig();
-			skillLevel = skillRedisService.getSkillLevelById(id);
-		}
+//		if (skillLevel == null) {
+//			parseSkillLevelAndSaveConfig();
+//			skillLevel = skillRedisService.getSkillLevelById(id);
+//		}
 		
 		return skillLevel;
 	}
 	
 	public List<SkillLevelBean> getSkillLevelList() {
 		List<SkillLevelBean> skillLevelList = skillRedisService.getSkillLevelList();
-		if (skillLevelList == null || skillLevelList.size() == 0) {
-			parseSkillLevelAndSaveConfig();
-			skillLevelList = skillRedisService.getSkillLevelList();
-		}
+//		if (skillLevelList == null || skillLevelList.size() == 0) {
+//			parseSkillLevelAndSaveConfig();
+//			skillLevelList = skillRedisService.getSkillLevelList();
+//		}
 		
 		return skillLevelList;
 	}
 	
-	private void parseSkillLevelAndSaveConfig() {
-		List<SkillLevelBean> skillLevelList = SkillLevelBean.xmlParse();
-		if (skillLevelList != null && skillLevelList.size() != 0) {
-			skillRedisService.setSkillLevelList(skillLevelList);
-		}
-	}
+//	private void parseSkillLevelAndSaveConfig() {
+//		List<SkillLevelBean> skillLevelList = SkillLevelBean.xmlParse();
+//		if (skillLevelList != null && skillLevelList.size() != 0) {
+//			skillRedisService.setSkillLevelList(skillLevelList);
+//		}
+//	}
 	
 	public boolean unlockHeroSkill(int heroId, HeroInfoBean heroInfo) {
 		Hero hero = heroService.getHero(heroId);

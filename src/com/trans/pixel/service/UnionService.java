@@ -211,19 +211,19 @@ public class UnionService extends FightService{
 		crontabUnionBossActivity(user);
 		union.addAllUnionBoss(getUnionBossList(user, union));
 		
-		/**
-		 * 计算镜像世界矿点奖励
-		 */
-		calAreaResourceReward(user);
+//		/**
+//		 * 计算镜像世界矿点奖励
+//		 */
+//		calAreaResourceReward(user);
 		
-		if(union.hasAttackId()){
-			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
-			union.addAllAttacks(users);
-		}
-		if(union.hasDefendId()){
-	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
-	 		union.addAllDefends(users);
-		}
+//		if(union.hasAttackId()){
+//			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
+//			union.addAllAttacks(users);
+//		}
+//		if(union.hasDefendId()){
+//	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
+//	 		union.addAllDefends(users);
+//		}
 		
 		if(user.getUnionJob() > 0){
 			union.addAllApplies(redis.getApplies(user.getUnionId()));

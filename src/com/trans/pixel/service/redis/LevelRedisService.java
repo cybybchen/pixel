@@ -71,8 +71,6 @@ public class LevelRedisService extends RedisService {
 	private CostService costService;
 	@Resource
 	private UserService userService;
-	@Resource
-	private CacheService cacheService;
 	
 	public LevelRedisService() {
 		buildDaguanEvent();
@@ -413,14 +411,14 @@ public class LevelRedisService extends RedisService {
 	}
 
 	public EventConfig getEvent(int eventid){
-		String value = cacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
+		String value = CacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
 		EventConfig.Builder builder = EventConfig.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 //		else if(exists(RedisKey.EVENT_CONFIG))
 //			return null;
 		buildDaguanEvent();
-		value = cacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
+		value = CacheService.hget(RedisKey.EVENT_CONFIG, eventid+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else
@@ -483,19 +481,19 @@ public class LevelRedisService extends RedisService {
 //		
 //	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
-		String value = cacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+		String value = CacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		AreaEvent.Builder builder = AreaEvent.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
 		buildDaguanEvent();
-		value = cacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
+		value = CacheService.hget(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else
 			return null;
 	}
 	public Map<Integer, AreaEvent.Builder> getMainEvent(){
-		Map<String, String> keyvalue = cacheService.hget(RedisKey.MAINEVENT_CONFIG);
+		Map<String, String> keyvalue = CacheService.hget(RedisKey.MAINEVENT_CONFIG);
 		Map<Integer, AreaEvent.Builder> eventmap = new HashMap<Integer, AreaEvent.Builder>();
 		if(keyvalue.isEmpty())
 			buildDaguanEvent();
@@ -507,19 +505,19 @@ public class LevelRedisService extends RedisService {
 		return eventmap;
 	}
 	public AreaEvent.Builder getMainEvent(int daguanid){
-		String value = cacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		String value = CacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
 		AreaEvent.Builder builder = AreaEvent.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
 		buildDaguanEvent();
-		value = cacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
+		value = CacheService.hget(RedisKey.MAINEVENT_CONFIG, daguanid+"");
 		if(value != null && parseJson(value, builder))
 			return builder;
 		else
 			return null;
 	}
 	public EventExp getEventExp(int level){
-		String value = cacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		String value = CacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
 		EventExp.Builder builder = EventExp.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -530,8 +528,8 @@ public class LevelRedisService extends RedisService {
 		for(EventExp exp : list.getDataList()){
 			keyvalue.put(exp.getId()+"", formatJson(exp));
 		}
-		cacheService.hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
-		value = cacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
+		CacheService.hputAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
+		value = CacheService.hget(RedisKey.EVENTEXP_CONFIG, level+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else
@@ -672,13 +670,13 @@ public class LevelRedisService extends RedisService {
 		Map<String, String> keyvalue3 = new HashMap<String, String>();
 		for(EventConfig.Builder eventconfig : eventmap.values())
 			keyvalue3.put(eventconfig.getId()+"", formatJson(eventconfig.build()));
-		cacheService.hputAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
-		cacheService.hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
-		cacheService.hputAll(RedisKey.EVENT_CONFIG, keyvalue3);
+		CacheService.hputAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
+		CacheService.hputAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
+		CacheService.hputAll(RedisKey.EVENT_CONFIG, keyvalue3);
 	}
 
 	public Daguan.Builder getDaguan(int id){
-		String value = cacheService.hget(RedisKey.DAGUAN_CONFIG, id+"");
+		String value = CacheService.hget(RedisKey.DAGUAN_CONFIG, id+"");
 		Daguan.Builder builder = Daguan.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder;
@@ -697,7 +695,7 @@ public class LevelRedisService extends RedisService {
 			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
 			map.put(daguan.getId(), daguan);
 		}
-		cacheService.hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
+		CacheService.hputAll(RedisKey.DAGUAN_CONFIG, keyvalue);
 		return map.get(id);
 	}
 // 	public Event getEvent(int eventid){
@@ -897,23 +895,23 @@ public class LevelRedisService extends RedisService {
 	
 	public EventRandom nextEventLevel(UserLevelBean userLevel) {
 		userLevel.setEventRandom(userLevel.getEventRandom()+1);
-		String value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
+		String value = CacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
 		EventRandom.Builder builder = EventRandom.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
-		value = cacheService.get(RedisKey.EVENTLEVELSEED_CONFIG);
+		value = CacheService.get(RedisKey.EVENTLEVELSEED_CONFIG);
 		if(value == null)
 			value = buildEventLevel();
 		EventRandomsList.Builder list = EventRandomsList.newBuilder();
 		parseJson(value, list);
 		userLevel.setEventRandom(list.getId((nextInt(list.getIdCount()))).getId());
-		value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
+		value = CacheService.hget(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
 		parseJson(value, builder);
 		return builder.build();
 	}
 	
 	public EventRandom getEventLevel(int id) {
-		String value = cacheService.hget(RedisKey.EVENTLEVEL_CONFIG, id+"");
+		String value = CacheService.hget(RedisKey.EVENTLEVEL_CONFIG, id+"");
 		EventRandom.Builder builder = EventRandom.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -959,9 +957,9 @@ public class LevelRedisService extends RedisService {
 			randoms.clearOrder();
 			randoms.setId(randoms.getId()*100+1);
 		}
-		cacheService.hputAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
+		CacheService.hputAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
 		String value = formatJson(builder.build());
-		cacheService.set(RedisKey.EVENTLEVELSEED_CONFIG, value);
+		CacheService.set(RedisKey.EVENTLEVELSEED_CONFIG, value);
 		return value;
 	}
 	

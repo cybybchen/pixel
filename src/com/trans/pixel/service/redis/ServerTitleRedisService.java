@@ -22,9 +22,6 @@ public class ServerTitleRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(ServerTitleRedisService.class);
 	private static final String TITLE_FILE_NAME = "ld_title.xml";
 	
-	@Resource
-	private CacheService cacheService;
-	
 	public ServerTitleRedisService() {
 		getTitleConfig();
 	}
@@ -54,7 +51,7 @@ public class ServerTitleRedisService extends RedisService {
 	}
 	
 	public Title getTitle(int id) {
-		String value = cacheService.hget(RedisKey.TITLE_KEY, "" + id);
+		String value = CacheService.hget(RedisKey.TITLE_KEY, "" + id);
 		if (value == null) {
 			Map<String, Title> config = getTitleConfig();
 			return config.get("" + id);
@@ -68,14 +65,14 @@ public class ServerTitleRedisService extends RedisService {
 	}
 	
 	public Map<String, Title> getTitleConfig() {
-		Map<String, String> keyvalue = cacheService.hget(RedisKey.TITLE_KEY);
+		Map<String, String> keyvalue = CacheService.hget(RedisKey.TITLE_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Title> map = buildTitleConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Title> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			cacheService.hputAll(RedisKey.TITLE_KEY, redismap);
+			CacheService.hputAll(RedisKey.TITLE_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Title> map = new HashMap<String, Title>();

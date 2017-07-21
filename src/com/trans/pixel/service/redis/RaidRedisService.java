@@ -26,8 +26,6 @@ public class RaidRedisService extends RedisService{
 	Logger logger = Logger.getLogger(RaidRedisService.class);
 	@Resource
 	private RaidMapper mapper;
-	@Resource
-	private CacheService cacheService;
 	
 	public RaidRedisService() {
 		getRaidLevel(1);
@@ -86,7 +84,7 @@ public class RaidRedisService extends RedisService{
 
 	public EventConfig getRaidLevel(int level) {
 		EventConfig.Builder builder = EventConfig.newBuilder();
-		String value = cacheService.hget(RedisKey.RAIDLEVEL_CONFIG, level+"");
+		String value = CacheService.hget(RedisKey.RAIDLEVEL_CONFIG, level+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		else{
@@ -99,14 +97,14 @@ public class RaidRedisService extends RedisService{
 				if(level == config.getId())
 					builder = EventConfig.newBuilder(config);
 			}
-			cacheService.hputAll(RedisKey.RAIDLEVEL_CONFIG, keyvalue);
+			CacheService.hputAll(RedisKey.RAIDLEVEL_CONFIG, keyvalue);
 			return builder.build();
 		}
 		
 	}
 	
 	public Raid getRaid(int id){
-		String value = cacheService.hget(RedisKey.RAID_CONFIG, id+"");
+		String value = CacheService.hget(RedisKey.RAID_CONFIG, id+"");
 		Raid.Builder builder = Raid.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -116,16 +114,16 @@ public class RaidRedisService extends RedisService{
 			for(Raid.Builder raid : list.getDataBuilderList()){
 				raidvalue.put(raid.getId()+"", formatJson(raid.build()));
 			}
-			cacheService.hputAll(RedisKey.RAID_CONFIG, raidvalue);
+			CacheService.hputAll(RedisKey.RAID_CONFIG, raidvalue);
 			
-			value = cacheService.hget(RedisKey.RAID_CONFIG, id+"");
+			value = CacheService.hget(RedisKey.RAID_CONFIG, id+"");
 			if(value != null && parseJson(value, builder))
 				return builder.build();
 		}
 		return null;
 	}
 	public ResponseRaidCommand.Builder getRaidList(){
-		String value = cacheService.get(RedisKey.RAIDLIST_CONFIG);
+		String value = CacheService.get(RedisKey.RAIDLIST_CONFIG);
 		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
 		if(value == null || !parseJson(value, builder)) {
 			RaidList.Builder list = buildRaid();
@@ -143,7 +141,7 @@ public class RaidRedisService extends RedisService{
 			}
 			builder.clearRaid();
 			builder.addAllRaid(list.getDataList());
-			cacheService.set(RedisKey.RAIDLIST_CONFIG, formatJson(builder.build()));
+			CacheService.set(RedisKey.RAIDLIST_CONFIG, formatJson(builder.build()));
 		}
 		return builder;
 	}

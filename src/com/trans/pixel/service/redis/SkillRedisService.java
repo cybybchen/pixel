@@ -26,6 +26,10 @@ public class SkillRedisService extends CacheService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 	
+	public SkillRedisService() {
+		getSkillLevelList();
+	}
+	
 	public SkillLevelBean getSkillLevelById(final int id) {
 		String value = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, "" + id);
 		
@@ -35,6 +39,14 @@ public class SkillRedisService extends CacheService {
 	public List<SkillLevelBean> getSkillLevelList() {
 		List<SkillLevelBean> skillLevelList = new ArrayList<SkillLevelBean>();
 		Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+		if (map == null || map.isEmpty()) {
+			skillLevelList = SkillLevelBean.xmlParse();
+			if (skillLevelList != null && skillLevelList.size() != 0) {
+				setSkillLevelList(skillLevelList);
+				
+				return skillLevelList;
+			}
+		}
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, String> entry = it.next();

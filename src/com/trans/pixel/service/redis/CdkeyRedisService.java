@@ -17,13 +17,14 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.Cipher;
 import com.trans.pixel.protoc.ActivityProto.CipherList;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
 public class CdkeyRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(CdkeyRedisService.class);
 	
 	public CdkeyRedisService() {
-		buildCipherConfig();
+		getCipherConfig();
 	}
 	
 	private static final String CIPHER_FILE_NAME = "ld_cipher.xml";
@@ -196,7 +197,7 @@ public class CdkeyRedisService extends RedisService{
 	}
 	
 	public Cipher getCipher(String cipher) {
-		String value = hget(RedisKey.CIPHER_KEY, "" + cipher);
+		String value = CacheService.hget(RedisKey.CIPHER_KEY, "" + cipher);
 		if (value == null) {
 			Map<String, Cipher> config = getCipherConfig();
 			return config.get("" + cipher);
@@ -210,14 +211,14 @@ public class CdkeyRedisService extends RedisService{
 	}
 	
 	public Map<String, Cipher> getCipherConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.CIPHER_KEY);
+		Map<String, String> keyvalue = CacheService.hget(RedisKey.CIPHER_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Cipher> map = buildCipherConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Cipher> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.CIPHER_KEY, redismap);
+			CacheService.hputAll(RedisKey.CIPHER_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Cipher> map = new HashMap<String, Cipher>();

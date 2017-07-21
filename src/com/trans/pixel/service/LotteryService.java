@@ -30,18 +30,12 @@ public class LotteryService {
 	private UserService userService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
-    
-	public LotteryService() {
-		parseAndSaveLotteryList(RewardConst.COIN);
-		parseAndSaveLotteryList(RewardConst.JEWEL);
-		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);
-	}
 	
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
-        if (lotteryList == null || lotteryList.size() == 0) {
-            lotteryList = parseAndSaveLotteryList(type);
-        }
+//        if (lotteryList == null || lotteryList.size() == 0) {
+//            lotteryList = parseAndSaveLotteryList(type);
+//        }
         return lotteryList;
     }
     
@@ -196,11 +190,4 @@ public class LotteryService {
 	public LotteryActivity getLotteryActivity(int type) {
 		return lotteryRedisService.getLotteryActivity(type);
 	}
-	
-	private List<RewardBean> parseAndSaveLotteryList(int type) {
-    	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);
-    	lotteryRedisService.setLotteryList(lotteryList, type);
-        
-        return lotteryList;
-    }
 }

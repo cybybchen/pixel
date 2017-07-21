@@ -32,12 +32,9 @@ public class UserTeamRedisService extends RedisService {
 	private static final String TEAM_UNLOCK_FILE_NAME = "lol_renshu.xml";
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
-
-	@Resource
-	private CacheService cacheService;
 	
 	public UserTeamRedisService() {
-		getTeamUnlockConfig();
+//		getTeamUnlockConfig();
 	}
 	
 	public Team.Builder getTeamCache(final long userid) {
@@ -135,12 +132,12 @@ public class UserTeamRedisService extends RedisService {
 	}
 	
 	public List<TeamUnlock> getTeamUnlockConfig() {
-		List<String> values = cacheService.lrange(RedisKey.TEAM_UNLOCK_KEY);
+		List<String> values = CacheService.lrange(RedisKey.TEAM_UNLOCK_KEY);
 		if(values.isEmpty()){
 			List<TeamUnlock> list = buildTeamUnlockConfig();
 			for (TeamUnlock unlock : list)
 //				cacheService.rpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
-				cacheService.lpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
+				CacheService.lpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
 	
 			return list;
 		}else{

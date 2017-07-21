@@ -41,12 +41,12 @@ public class ActivityRedisService extends CacheService {
 	private RedisService redisService;
 	
 	public ActivityRedisService() {
-		buildRichangConfig();
-		buildKaifu2Config();
-		buildKaifuConfig();
-		buildShouchongConfig();
-		buildActivityConfig(1);
-		buildActivityConfig(2);
+		getRichangConfig();
+		getKaifu2Config();
+		getKaifuConfig();
+		getShouchongConfig();
+		getActivityConfig(1);
+		getActivityConfig(2);
 	}
 	
 	//richang activity

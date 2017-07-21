@@ -15,7 +15,7 @@ public class HeartBeatRedisService extends CacheService {
 	private RedisService redisService;
 	
 	public void heartBeat(int serverId, long userId) {
-		this.sadd(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
+		sadd(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
 	}
 	
 	public long getHeartBeatCount(int serverId) {

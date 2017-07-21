@@ -39,7 +39,7 @@ public class EquipRedisService extends CacheService {
 		buildChipConfig();
 		buildEquipConfig();
 		buildEquipupConfig();
-		buildEquiptucaoConfig();
+//		buildEquiptucaoConfig();
 		buildArmorConfig();
 		buildMaterialConfig();
 		buildEngineConfig();

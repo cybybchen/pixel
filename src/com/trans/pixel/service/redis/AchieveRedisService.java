@@ -18,7 +18,7 @@ public class AchieveRedisService extends CacheService {
 	private static final String ACHIEVE_FILE_NAME = "ld_taskchengjiu.xml";
 	
 	public AchieveRedisService() {
-		buildAchieveConfig();
+		getAchieveConfig();
 	}
 	
 	public Achieve getAchieve(int id) {

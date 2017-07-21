@@ -9,7 +9,9 @@ import java.util.Map.Entry;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LotteryConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.protoc.ActivityProto.LotteryActivity;
 import com.trans.pixel.protoc.ActivityProto.LotteryActivityList;
@@ -22,7 +24,9 @@ public class LotteryRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
 	
 	public LotteryRedisService() {
-		getLotteryActivityConfig();
+		parseAndSaveLotteryList(RewardConst.COIN);
+		parseAndSaveLotteryList(RewardConst.JEWEL);
+		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);
 	}
 	
 	public List<RewardBean> getLotteryList(final int type) {
@@ -96,4 +100,11 @@ public class LotteryRedisService extends CacheService {
 		}
 		return map;
 	}
+	
+	private List<RewardBean> parseAndSaveLotteryList(int type) {
+    	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);
+    	setLotteryList(lotteryList, type);
+        
+        return lotteryList;
+    }
 }
