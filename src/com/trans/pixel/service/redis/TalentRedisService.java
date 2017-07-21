@@ -23,6 +23,12 @@ public class TalentRedisService extends CacheService {
 	private static final String TALENTUPGRADE_FILE_NAME = "ld_talentupgrade.xml";
 	private static final String TALENTUNLOCK_FILE_NAME = "ld_talentunlock.xml";
 	
+	public TalentRedisService() {
+		getTalentConfig();
+		getTalentupgradeConfig();
+		getTalentunlockConfig();
+	}
+	
 	//talent
 	public Talent getTalent(int id) {
 		String value = hget(RedisKey.TALENT_CONFIG_KEY, "" + id);

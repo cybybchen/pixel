@@ -74,6 +74,12 @@ public class LevelRedisService extends RedisService {
 	@Resource
 	private CacheService cacheService;
 	
+	public LevelRedisService() {
+		buildDaguanEvent();
+		getEventExp(1);
+		getDaguan(1);
+	}
+	
 	public void updateToDB(long userId){
 		UserLevelBean bean = getUserLevel(userId);
 		if(bean != null)

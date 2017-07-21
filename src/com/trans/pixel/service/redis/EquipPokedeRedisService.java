@@ -20,6 +20,11 @@ public class EquipPokedeRedisService extends CacheService {
 	private static final String INCREASE_FILE_NAME = "ld_increase.xml";
 	private static final String INCREASECOST_FILE_NAME = "ld_increasecost.xml";
 	
+	public EquipPokedeRedisService() {
+		buildEquipIncreaseConfig();
+		buildIncreaseLevelConfig();
+	}
+	
 	public EquipIncrease getEquipIncrease(int level) {
 		String value = hget(RedisKey.EQUIP_INCREASE_CONFIG, "" + level);
 		if (value == null) {

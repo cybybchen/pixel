@@ -16,6 +16,11 @@ import com.trans.pixel.service.cache.CacheService;
 public class LootRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(LootRedisService.class);
 	private static final String SAVINGBOX_FILE_NAME = "ld_savingbox.xml";
+	
+	public LootRedisService() {
+		getSavingBoxConfig();
+	}
+	
 	//saving box
 //	public SavingBox getSavingBox(int id) {
 //		ConcurrentMap<String, SavingBox> map = RedisKey.getConfigSavingBox();

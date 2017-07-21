@@ -13,6 +13,10 @@ import com.trans.pixel.service.cache.CacheService;
 public class LibaoRedisService extends CacheService{
 	Logger logger = Logger.getLogger(LibaoRedisService.class);
 
+	public LibaoRedisService() {
+		getPoolList();
+	}
+	
 	public JewelPool.Builder getJewelPool(int id) {
 		JewelPoolList.Builder listbuilder = getPoolList().getDataBuilder(0);
 		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){

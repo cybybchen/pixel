@@ -35,6 +35,16 @@ public class HeroRedisService extends CacheService {
 	private static final String UPGRADE_FILE_NAME = "ld_upgrade.xml";
 	private static final String RANKVALUE_FILE_NAME = "ld_rankvalue.xml";
 	
+	public HeroRedisService() {
+		buildHerochoiceConfig();
+		buildHerolootConfig();
+		buildHeroRareLevelupConfig();
+//		buildHeroFettersOrderConfig();
+		buildHeroConfig();
+		buildUpgradeConfig();
+		buildRankvalueConfig();
+	}
+	
 	//hero choice
 	public HeroChoice getHerochoice(int heroId) {
 		String value = hget(RedisKey.HERO_CHOICE_CONFIG, "" + heroId);

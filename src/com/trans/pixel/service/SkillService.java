@@ -23,6 +23,10 @@ public class SkillService {
 	@Resource
 	private HeroRedisService heroRedisService;
 	
+	public SkillService() {
+		parseSkillLevelAndSaveConfig();
+	}
+	
 //	public SkillBean getSkill(int id) {
 //		SkillBean skill = skillRedisService.getSkillById(id);
 //		if (skill == null) {

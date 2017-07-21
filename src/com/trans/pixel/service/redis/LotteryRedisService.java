@@ -6,14 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -27,6 +20,10 @@ public class LotteryRedisService extends CacheService {
 	private static final String LOTTERYACTIVITY_FILE_NAME = "lol_lotteryhuodong.xml";
 	
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
+	
+	public LotteryRedisService() {
+		getLotteryActivityConfig();
+	}
 	
 	public List<RewardBean> getLotteryList(final int type) {
 		List<String> values = lrange(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);

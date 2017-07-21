@@ -3,6 +3,10 @@ package com.trans.pixel.service.redis;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
+
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -15,16 +19,23 @@ import com.trans.pixel.protoc.RechargeProto.RmbList;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
 import com.trans.pixel.protoc.RechargeProto.VipReward;
-
-import net.sf.json.JSONObject;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
 public class RechargeRedisService extends RedisService {
 //	private static Logger logger = Logger.getLogger(RechargeRedisService.class);
 	
+	@Resource
+	private CacheService cacheService;
+	
+	public RechargeRedisService() {
+		getRmbConfig(RedisKey.RMB_KEY);
+		getRmbConfig(RedisKey.RMB1_KEY);
+	}
+	
 	public Rmb getRmb(int id) {
 		Rmb.Builder builder = Rmb.newBuilder();
-		String value = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY, id+"");
+		String value = cacheService.hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY, id+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB_KEY);
@@ -33,7 +44,7 @@ public class RechargeRedisService extends RedisService {
 
 	public Rmb getRmb1(int id) {
 		Rmb.Builder builder = Rmb.newBuilder();
-		String value = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY, id+"");
+		String value = cacheService.hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY, id+"");
 		if(value != null && parseJson(value, builder))
 			return builder.build();
 		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB1_KEY);
@@ -41,7 +52,7 @@ public class RechargeRedisService extends RedisService {
 	}
 	
 	public Map<Integer, Rmb> getRmbConfig(String rmbKey) {
-		Map<String, String> keyvalue = hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
+		Map<String, String> keyvalue = cacheService.hget(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
 		Map<Integer, Rmb> map = new HashMap<Integer, Rmb>();
 		if(!keyvalue.isEmpty()){
 			for(String value : keyvalue.values()){
@@ -72,7 +83,7 @@ public class RechargeRedisService extends RedisService {
 				map.put(rmb.getId(), rmb.build());
 				keyvalue.put(rmb.getId()+"", RedisService.formatJson(rmb.build()));
 			}
-			hputAll(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, keyvalue);
+			cacheService.hputAll(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, keyvalue);
 		}
 		return map;
 	}

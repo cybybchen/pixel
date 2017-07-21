@@ -40,6 +40,15 @@ public class ActivityRedisService extends CacheService {
 	@Resource
 	private RedisService redisService;
 	
+	public ActivityRedisService() {
+		buildRichangConfig();
+		buildKaifu2Config();
+		buildKaifuConfig();
+		buildShouchongConfig();
+		buildActivityConfig(1);
+		buildActivityConfig(2);
+	}
+	
 	//richang activity
 	public Richang getRichang(int id) {
 		String value = hget(RedisKey.ACTIVITY_RICHANG_KEY, "" + id);

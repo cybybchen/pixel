@@ -23,6 +23,12 @@ public class TaskRedisService extends CacheService {
 	private static final String TASK2_FILE_NAME = "ld_task2.xml";
 	private static final String TASK3_FILE_NAME = "ld_task3.xml";
 	
+	public TaskRedisService() {
+		getTask1TargetConfig();
+		getTask3OrderConfig();
+		getTask2TargetConfig();
+	}
+	
 	//task1
 	public TaskTarget getTask1Target(int targetId) {
 		String value = hget(RedisKey.TASK1_CONFIG_KEY, "" + targetId);

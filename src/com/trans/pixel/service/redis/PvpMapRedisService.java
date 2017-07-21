@@ -29,21 +29,30 @@ import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.PVPPosition;
 import com.trans.pixel.protoc.PVPProto.PVPPositionList;
 import com.trans.pixel.protoc.PVPProto.PVPPositionLists;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository
-public class PvpMapRedisService extends RedisService{
+public class PvpMapRedisService extends CacheService{
 	private static Logger logger = Logger.getLogger(PvpMapRedisService.class);
 	@Resource
 	private UserRedisService userRedisService;
-//	@Resource
-//	private UserCacheService userCacheService;
+	@Resource
+	private RedisService redisService;
+	
+	public PvpMapRedisService() {
+		getActivityEventConfig();
+		getPositionConfig();
+		getBossConfig();
+		getPvpMap();
+		getBasePvpMapList();
+	}
 	
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
-		String value = hget(RedisKey.USERDATA + userId, "PvpMap");
+		String value = redisService.hget(RedisKey.USERDATA + userId, "PvpMap");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		PVPMapList.Builder maplist = getBasePvpMapList();
-		if(value != null && parseJson(value, builder)) {
+		if(value != null && RedisService.parseJson(value, builder)) {
 			for(PVPMap.Builder map : maplist.getDataBuilderList()){
 				for(PVPMap.Builder map2 : builder.getDataBuilderList()){
 					 if(map.getFieldid() == map2.getFieldid())
@@ -76,15 +85,14 @@ public class PvpMapRedisService extends RedisService{
 			field.clearKuangdian();
 			field.clearBuffimg();
 		}
-		hput(RedisKey.USERDATA + userId, "PvpMap", formatJson(builder.build()));
-//		userCacheService.sadd(RedisKey.PUSH_REDIS_KEY + "PvpMap", userId+"");
+		redisService.hput(RedisKey.USERDATA + userId, "PvpMap", RedisService.formatJson(builder.build()));
 	}
 
 	public Map<Integer, UserPvpBuffBean> getUserBuffs(UserBean user, PVPMapList.Builder maplist) {
-		Map<String, String> keyvalue = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+		Map<String, String> keyvalue = redisService.hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
 		Map<Integer, UserPvpBuffBean> buffmap = new HashMap<Integer, UserPvpBuffBean>();
 		for(String value : keyvalue.values()) {
-			UserPvpBuffBean bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+			UserPvpBuffBean bean = (UserPvpBuffBean)RedisService.fromJson(value, UserPvpBuffBean.class);
 			for(PVPMap map : maplist.getDataList()){
 				if(map.getFieldid() == bean.getBuffid() || bean.getBuffid() == 0){
 					if(bean.getBuff() > map.getBufflimit())
@@ -107,10 +115,10 @@ public class PvpMapRedisService extends RedisService{
 //	}
 
 	public int addUserBuff(UserBean user, int buffid, int buffcount) {
-		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buffid+"");
+		String value = redisService.hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buffid+"");
 		UserPvpBuffBean bean = new UserPvpBuffBean();
 		if(value != null){
-			bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+			bean = (UserPvpBuffBean)RedisService.fromJson(value, UserPvpBuffBean.class);
 		}else{
 			bean.setUserid(user.getId());
 			bean.setBuffid(buffid);
@@ -124,26 +132,26 @@ public class PvpMapRedisService extends RedisService{
 
 	public void deleteUserBuff(UserBean user) {
 //		delete(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
-		Map<String, String> keyvalue = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
+		Map<String, String> keyvalue = redisService.hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId());
 		for(String value : keyvalue.values()) {
-			UserPvpBuffBean bean = (UserPvpBuffBean)fromJson(value, UserPvpBuffBean.class);
+			UserPvpBuffBean bean = (UserPvpBuffBean)RedisService.fromJson(value, UserPvpBuffBean.class);
 			bean.setBuff(0);
-			keyvalue.put(bean.getBuffid()+"", toJson(bean));
+			keyvalue.put(bean.getBuffid()+"", RedisService.toJson(bean));
 		}
-		hputAll(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), keyvalue);
+		redisService.hputAll(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), keyvalue);
 	}
 	
 	public void saveUserBuff(UserBean user, UserPvpBuffBean buff) {
-		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buff.getBuffid()+"", toJson(buff));
-		expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		redisService.hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buff.getBuffid()+"", RedisService.toJson(buff));
+		redisService.expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public Map<String, PVPMine> getUserMines(long userId) {
 		Map<String, PVPMine> map = new HashMap<String, PVPMine>();
-		Map<String, String> keyvalue = hget(RedisKey.PVPMINE_PREFIX+userId);
+		Map<String, String> keyvalue = redisService.hget(RedisKey.PVPMINE_PREFIX+userId);
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			PVPMine.Builder builder = PVPMine.newBuilder();
-			if(parseJson(entry.getValue(), builder))
+			if(RedisService.parseJson(entry.getValue(), builder))
 				map.put(entry.getKey(), builder.build());
 		}
 		return map;
@@ -151,14 +159,14 @@ public class PvpMapRedisService extends RedisService{
 
 	public PVPEvent getEvent(UserBean user, int positionid) {
 		PVPEvent.Builder builder = PVPEvent.newBuilder();
-		String value = hget(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
-		if(value != null && parseJson(value, builder)){
+		String value = redisService.hget(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
+		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}
 		PVPEventList.Builder bosses = PVPEventList.newBuilder();
-		value = get(RedisKey.PVPBOSS_PREFIX+user.getId());
+		value = redisService.get(RedisKey.PVPBOSS_PREFIX+user.getId());
 		if(value != null){
-			parseJson(value, bosses);
+			RedisService.parseJson(value, bosses);
 			for(PVPEvent boss : bosses.getDataList()){
 				if(boss.getPositionid() == positionid)
 					return boss;
@@ -168,23 +176,23 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public void deleteEvent(UserBean user, int positionid) {
-		hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
+		redisService.hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), positionid+"");
 	}
 
 	public void deleteBoss(UserBean user, int positionid) {
-		delete(RedisKey.PVPBOSS_PREFIX+user.getId());
+		redisService.delete(RedisKey.PVPBOSS_PREFIX+user.getId());
 	}
 
 	public PVPMine getMine(long userId, int id) {
 		PVPMine.Builder builder = PVPMine.newBuilder();
 		if(id > 1000){
-			String value = hget(RedisKey.PVPINBREAK_PREFIX+userId, id+"");
-			if(value != null && parseJson(value, builder)){
+			String value = redisService.hget(RedisKey.PVPINBREAK_PREFIX+userId, id+"");
+			if(value != null && RedisService.parseJson(value, builder)){
 				return builder.build();
 			}
 		}else{
-			String value = hget(RedisKey.PVPMINE_PREFIX+userId, id+"");
-			if(value != null && parseJson(value, builder)){
+			String value = redisService.hget(RedisKey.PVPMINE_PREFIX+userId, id+"");
+			if(value != null && RedisService.parseJson(value, builder)){
 				return builder.build();
 			}
 		}
@@ -192,39 +200,39 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public void delInbreakList(long userId) {
-		delete(RedisKey.PVPINBREAK_PREFIX+userId);
+		redisService.delete(RedisKey.PVPINBREAK_PREFIX+userId);
 	}
 	
 	public void saveInbreakList(long userId, List<PVPMine> mines) {
 //		delete(RedisKey.PVPINBREAK_PREFIX+userId);
 		Map<String, String> map = new HashMap<String, String>();
 		for(PVPMine mine : mines){
-			map.put(mine.getId()+"", formatJson(mine));
+			map.put(mine.getId()+"", RedisService.formatJson(mine));
 		}
-		hputAll(RedisKey.PVPINBREAK_PREFIX+userId, map);
-		expire(RedisKey.PVPINBREAK_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		redisService.hputAll(RedisKey.PVPINBREAK_PREFIX+userId, map);
+		redisService.expire(RedisKey.PVPINBREAK_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public void saveMine(long userId, PVPMine mine) {
-		hput(RedisKey.PVPMINE_PREFIX+userId, mine.getId()+"", formatJson(mine));
-		expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		redisService.hput(RedisKey.PVPMINE_PREFIX+userId, mine.getId()+"", RedisService.formatJson(mine));
+		redisService.expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public void saveMines(long userId, Map<String, PVPMine> mines) {
 		Map<String, String> map = new HashMap<String, String>();
 		for(Entry<String, PVPMine> entry : mines.entrySet()){
-			map.put(entry.getKey(), formatJson(entry.getValue()));
+			map.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 		}
-		hputAll(RedisKey.PVPMINE_PREFIX+userId, map);
-		expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		redisService.hputAll(RedisKey.PVPMINE_PREFIX+userId, map);
+		redisService.expire(RedisKey.PVPMINE_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 
 	public void deleteMine(long userId, int id) {
-		hdelete(RedisKey.PVPMINE_PREFIX+userId, id+"");
+		redisService.hdelete(RedisKey.PVPMINE_PREFIX+userId, id+"");
 	}
 
 	public void deleteEvents(UserBean user) {
-		delete(RedisKey.PVPMONSTER_PREFIX+user.getId());
+		redisService.delete(RedisKey.PVPMONSTER_PREFIX+user.getId());
 	}
 
 	public List<PVPEvent> getEvents(UserBean user, Map<Integer, UserPvpBuffBean> pvpMap){
@@ -232,31 +240,31 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public List<PVPEvent> getEvents(UserBean user, Map<Integer, UserPvpBuffBean> pvpMap, boolean forceRefresh) {
-		boolean refreshBoss = today(0) > user.getPvpMonsterRefreshTime();
+		boolean refreshBoss = RedisService.today(0) > user.getPvpMonsterRefreshTime();
 		boolean refreshEvent = canRefreshEvent(user);
 		if(forceRefresh){
 			refreshBoss = refreshEvent = true;
 		}
 		List<PVPEvent> events = new ArrayList<PVPEvent>();
-		Map<String, String> keyvalue = this.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
+		Map<String, String> keyvalue = redisService.hget(RedisKey.PVPMONSTER_PREFIX+user.getId());
 		Iterator<Entry<String, String>> it = keyvalue.entrySet().iterator();
 		while(it.hasNext()){
 			Entry<String, String> entry = it.next();
 			String value = entry.getValue();
 			PVPEvent.Builder builder = PVPEvent.newBuilder();
-			if(parseJson(value, builder)){
+			if(RedisService.parseJson(value, builder)){
 				if(!builder.hasEndtime() || (DateUtil.timeIsAvailable(builder.getStarttime(), builder.getEndtime()) && !refreshEvent))
 					events.add(builder.build());
 				else{
-					hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), builder.getPositionid()+"");
+					redisService.hdelete(RedisKey.PVPMONSTER_PREFIX+user.getId(), builder.getPositionid()+"");
 					it.remove();
 				}
 			}
 		}
 		PVPEventList.Builder bosses = PVPEventList.newBuilder();
-		String value = get(RedisKey.PVPBOSS_PREFIX+user.getId());
+		String value = redisService.get(RedisKey.PVPBOSS_PREFIX+user.getId());
 		if(value != null)
-			parseJson(value, bosses);
+			RedisService.parseJson(value, bosses);
 		if(refreshEvent){
 			Map<String, PVPMap> eventmap = getPvpMap();
 			PVPEventList activityevents = getActivityEventConfig();
@@ -272,11 +280,11 @@ public class PvpMapRedisService extends RedisService{
 					fieldids.add(pvpmap.getData(0).getFieldid());
 				bosses.clearData();
 				for(PVPBoss boss : getBossConfig().getDataList()) {
-					if(boss.getDay() == weekday()){
+					if(boss.getDay() == RedisService.weekday()){
 						PVPEvent.Builder builder = PVPEvent.newBuilder();
 						builder.setEventid(boss.getId());
 //						Object[] fields = positionMap.keySet().toArray();
-						builder.setFieldid(fieldids.get(nextInt(fieldids.size())));
+						builder.setFieldid(fieldids.get(RedisService.nextInt(fieldids.size())));
 						bosses.addData(builder);
 					}
 				}
@@ -294,15 +302,15 @@ public class PvpMapRedisService extends RedisService{
 					if(bossbuilder.getFieldid() == list.getFieldid()){
 						if(!bossbuilder.hasPositionid()) {//随机boss位置
 							PVPPositionList positions = positionMap.get(bossbuilder.getFieldid()+"");
-							PVPPosition position = positions.getOrder(nextInt(positions.getOrderCount()));
+							PVPPosition position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 							while(positionValues.contains(position.getOrder())){
-								position = positions.getOrder(nextInt(positions.getOrderCount()));
+								position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 							}
 							bossbuilder.setPositionid(position.getOrder());
 							bossbuilder.setX(position.getX());
 							bossbuilder.setY(position.getY());
 							UserPvpBuffBean buff = pvpMap.get(bossbuilder.getFieldid());
-							int level = nextInt(11)-5;
+							int level = RedisService.nextInt(11)-5;
 							if(buff != null)
 								level += buff.getBuff();
 							if(level > 300)
@@ -310,7 +318,7 @@ public class PvpMapRedisService extends RedisService{
 							else if(level < 1)
 								level = 1;
 							bossbuilder.setLevel(level);
-							set(RedisKey.PVPBOSS_PREFIX+user.getId(), formatJson(bosses.build()));
+							redisService.set(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisService.formatJson(bosses.build()));
 						}
 						events.add(bossbuilder.build());
 						positionValues.add(bossbuilder.getPositionid());
@@ -322,7 +330,7 @@ public class PvpMapRedisService extends RedisService{
 					for(PVPEvent event : list.getEventList()){
 						weight += event.getWeight();
 					}
-					weight = nextInt(weight);
+					weight = RedisService.nextInt(weight);
 					PVPEvent.Builder eventbuilder = null;
 					for(PVPEvent event : list.getEventList()){
 						if(weight < event.getWeight()){
@@ -334,16 +342,16 @@ public class PvpMapRedisService extends RedisService{
 						}
 					}
 					PVPPositionList positions = positionMap.get(eventbuilder.getFieldid()+"");
-					PVPPosition position = positions.getOrder(nextInt(positions.getOrderCount()));
+					PVPPosition position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 					while(positionValues.contains(position.getOrder())){
-						position = positions.getOrder(nextInt(positions.getOrderCount()));
+						position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 					}
 					positionValues.add(position.getOrder());
 					eventbuilder.setPositionid(position.getOrder());
 					eventbuilder.setX(position.getX());
 					eventbuilder.setY(position.getY());
 					UserPvpBuffBean buff = pvpMap.get(eventbuilder.getFieldid());
-					int level = nextInt(11)-5;
+					int level = RedisService.nextInt(11)-5;
 					if(buff != null)
 						level += buff.getBuff();
 					if(level > 300)
@@ -352,7 +360,7 @@ public class PvpMapRedisService extends RedisService{
 						level = 1;
 					eventbuilder.setLevel(level);
 					events.add(eventbuilder.build());
-					keyvalue.put(eventbuilder.getPositionid()+"", formatJson(eventbuilder.build()));
+					keyvalue.put(eventbuilder.getPositionid()+"", RedisService.formatJson(eventbuilder.build()));
 					count++;
 				}
 
@@ -363,16 +371,16 @@ public class PvpMapRedisService extends RedisService{
 						PVPEvent.Builder eventbuilder = PVPEvent.newBuilder(event);
 						eventbuilder.setFieldid(list.getFieldid());
 						PVPPositionList positions = positionMap.get(eventbuilder.getFieldid()+"");
-						PVPPosition position = positions.getOrder(nextInt(positions.getOrderCount()));
+						PVPPosition position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 						while(positionValues.contains(position.getOrder())){
-							position = positions.getOrder(nextInt(positions.getOrderCount()));
+							position = positions.getOrder(RedisService.nextInt(positions.getOrderCount()));
 						}
 						positionValues.add(position.getOrder());
 						eventbuilder.setPositionid(position.getOrder());
 						eventbuilder.setX(position.getX());
 						eventbuilder.setY(position.getY());
 						UserPvpBuffBean buff = pvpMap.get(eventbuilder.getFieldid());
-						int level = nextInt(11)-5;
+						int level = RedisService.nextInt(11)-5;
 						if(buff != null)
 							level += buff.getBuff();
 						if(level > 300)
@@ -381,12 +389,12 @@ public class PvpMapRedisService extends RedisService{
 							level = 1;
 						eventbuilder.setLevel(level);
 						events.add(eventbuilder.build());
-						keyvalue.put(eventbuilder.getPositionid()+"", formatJson(eventbuilder.build()));
+						keyvalue.put(eventbuilder.getPositionid()+"", RedisService.formatJson(eventbuilder.build()));
 					}
 				}
 			}
-			hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
-			expire(RedisKey.PVPMONSTER_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+			redisService.hputAll(RedisKey.PVPMONSTER_PREFIX+user.getId(), keyvalue);
+			redisService.expire(RedisKey.PVPMONSTER_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		}else{
 			for(PVPEvent.Builder bossbuilder : bosses.getDataBuilderList())
 				events.add(bossbuilder.build());
@@ -418,12 +426,12 @@ public class PvpMapRedisService extends RedisService{
 	public PVPEventList getActivityEventConfig() {
 		String value = get(RedisKey.PVPACTIVITYMONSTER_CONFIG);
 		PVPEventList.Builder builder = PVPEventList.newBuilder();
-		if(value != null && parseJson(value, builder)){
+		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{
-			String xml = ReadConfig("ld_pvphuodong.xml");
-			parseXml(xml, builder);
-			set(RedisKey.PVPACTIVITYMONSTER_CONFIG, formatJson(builder.build()));
+			String xml = RedisService.ReadConfig("ld_pvphuodong.xml");
+			RedisService.parseXml(xml, builder);
+			set(RedisKey.PVPACTIVITYMONSTER_CONFIG, RedisService.formatJson(builder.build()));
 			return builder.build();
 		}
 	}
@@ -434,7 +442,7 @@ public class PvpMapRedisService extends RedisService{
 			Map<String, PVPPositionList> map = buildPositionConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, PVPPositionList> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.PVPPOSITION_CONFIG, redismap);
 			return map;
@@ -442,7 +450,7 @@ public class PvpMapRedisService extends RedisService{
 			Map<String, PVPPositionList> map = new HashMap<String, PVPPositionList>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				PVPPositionList.Builder builder = PVPPositionList.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -450,9 +458,9 @@ public class PvpMapRedisService extends RedisService{
 	}
 	
 	public boolean canRefreshEvent(UserBean user){
-		long times[] = {today(17), today(11), today(0)};
+		long times[] = {RedisService.today(17), RedisService.today(11), RedisService.today(0)};
 		for(long time : times){
-			if(time > user.getPvpMonsterRefreshTime() && time < now()){
+			if(time > user.getPvpMonsterRefreshTime() && time < RedisService.now()){
 				user.setPvpMonsterRefreshTime(time);
 				userRedisService.updateUser(user);
 				return true;
@@ -464,12 +472,12 @@ public class PvpMapRedisService extends RedisService{
 	public PVPBossList getBossConfig() {
 		PVPBossList.Builder builder = PVPBossList.newBuilder(); 
 		String value = get(RedisKey.PVPBOSS_CONFIG);
-		if(value != null && parseJson(value, builder)){
+		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{
 			PVPBossConfigList.Builder configlist = PVPBossConfigList.newBuilder(); 
-			String xml = ReadConfig("ld_pvpboss.xml");
-			if(!parseXml(xml, configlist)){
+			String xml = RedisService.ReadConfig("ld_pvpboss.xml");
+			if(!RedisService.parseXml(xml, configlist)){
 				logger.warn("cannot build PVPBossLists");
 				return builder.build();
 			}
@@ -481,7 +489,7 @@ public class PvpMapRedisService extends RedisService{
 					builder.addData(boss);
 				}
 			}
-			set(RedisKey.PVPBOSS_CONFIG, formatJson(builder.build()));
+			set(RedisKey.PVPBOSS_CONFIG, RedisService.formatJson(builder.build()));
 			return builder.build();
 		}
 	}
@@ -492,13 +500,13 @@ public class PvpMapRedisService extends RedisService{
 		if(!keyvalue.isEmpty()) {
 			for(String value : keyvalue.values()) {
 				PVPMap.Builder builder = PVPMap.newBuilder();
-				parseJson(value, builder);
+				RedisService.parseJson(value, builder);
 				map.put(builder.getFieldid()+"", builder.build());
 			}
 		}else {
 			PVPMapList.Builder list = buildPvpMapList();
 			for(PVPMap pvpmap : list.getDataList()) {
-				keyvalue.put(pvpmap.getFieldid()+"", formatJson(pvpmap));
+				keyvalue.put(pvpmap.getFieldid()+"", RedisService.formatJson(pvpmap));
 				map.put(pvpmap.getFieldid()+"", pvpmap);
 			}
 			hputAll(RedisKey.PVPFIELD_CONFIG, keyvalue);
@@ -509,7 +517,7 @@ public class PvpMapRedisService extends RedisService{
 	public PVPMapList.Builder getBasePvpMapList(){
 		String value = get(RedisKey.PVPMAP_CONFIG);
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		if(value != null && parseJson(value, builder)){
+		if(value != null && RedisService.parseJson(value, builder)){
 			return builder;
 		}else{
 			builder = buildPvpMapList();
@@ -517,15 +525,15 @@ public class PvpMapRedisService extends RedisService{
 				map.clearEvent();
 //				map.clearLootlist();
 			}
-			set(RedisKey.PVPMAP_CONFIG, formatJson(builder.build()));
+			set(RedisKey.PVPMAP_CONFIG, RedisService.formatJson(builder.build()));
 			return builder;
 		}
 	}
 
 	public PVPMapList.Builder buildPvpMapList(){
-		String xml = ReadConfig("ld_pvpfield.xml");
+		String xml = RedisService.ReadConfig("ld_pvpfield.xml");
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
-		parseXml(xml, builder);
+		RedisService.parseXml(xml, builder);
 		return builder;
 	}
 
@@ -548,9 +556,9 @@ public class PvpMapRedisService extends RedisService{
 //	}
 
 	public Map<String, PVPPositionList> buildPositionConfig(){
-		String xml = ReadConfig("ld_pvpposition.xml");
+		String xml = RedisService.ReadConfig("ld_pvpposition.xml");
 		PVPPositionLists.Builder builder = PVPPositionLists.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build PVPPositionLists");
 			return null;
 		}

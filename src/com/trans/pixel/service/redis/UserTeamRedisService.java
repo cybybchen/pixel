@@ -24,6 +24,7 @@ import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.HeroProto.TeamUnlockList;
 import com.trans.pixel.protoc.LadderProto.FightInfo;
+import com.trans.pixel.service.cache.CacheService;
 
 @Repository
 public class UserTeamRedisService extends RedisService {
@@ -32,6 +33,13 @@ public class UserTeamRedisService extends RedisService {
 	@Resource
 	private RedisTemplate<String, String> redisTemplate;
 
+	@Resource
+	private CacheService cacheService;
+	
+	public UserTeamRedisService() {
+		getTeamUnlockConfig();
+	}
+	
 	public Team.Builder getTeamCache(final long userid) {
 		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
 		Team.Builder team = Team.newBuilder();
@@ -127,11 +135,12 @@ public class UserTeamRedisService extends RedisService {
 	}
 	
 	public List<TeamUnlock> getTeamUnlockConfig() {
-		List<String> values = lrange(RedisKey.TEAM_UNLOCK_KEY);
+		List<String> values = cacheService.lrange(RedisKey.TEAM_UNLOCK_KEY);
 		if(values.isEmpty()){
 			List<TeamUnlock> list = buildTeamUnlockConfig();
 			for (TeamUnlock unlock : list)
-				this.rpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
+//				cacheService.rpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
+				cacheService.lpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
 	
 			return list;
 		}else{

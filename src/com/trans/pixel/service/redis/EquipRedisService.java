@@ -35,6 +35,16 @@ public class EquipRedisService extends CacheService {
 	private static final String MATERIAL_FILE_NAME = "ld_material.xml";
 	private static final String ENGINE_FILE_NAME = "ld_engine.xml";
 	
+	public EquipRedisService() {
+		buildChipConfig();
+		buildEquipConfig();
+		buildEquipupConfig();
+		buildEquiptucaoConfig();
+		buildArmorConfig();
+		buildMaterialConfig();
+		buildEngineConfig();
+	}
+	
 	public Chip getChip(int itemId) {
 		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
 		if (value == null) {

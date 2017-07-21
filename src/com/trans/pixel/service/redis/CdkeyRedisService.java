@@ -22,6 +22,10 @@ import com.trans.pixel.protoc.ShopProto.Cdkey;
 public class CdkeyRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(CdkeyRedisService.class);
 	
+	public CdkeyRedisService() {
+		buildCipherConfig();
+	}
+	
 	private static final String CIPHER_FILE_NAME = "ld_cipher.xml";
 	
 	public String getCdkeyRewarded(long userId){

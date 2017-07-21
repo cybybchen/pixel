@@ -148,6 +148,7 @@ public class RedisService {
 	 * 从文件导入
 	 */
 	public static String ReadFromFile(String filePath){
+		long startTime = System.currentTimeMillis();
 		logger.warn("Reading "+filePath);
 		String msg = "";
 		File file = new File(filePath);
@@ -169,6 +170,8 @@ public class RedisService {
 			logger.error("Fail to read file:" + filePath);
 		}finally{
 		}
+		
+		logger.debug("parse time is:" + (System.currentTimeMillis() - startTime));
 		return msg;
     }
 

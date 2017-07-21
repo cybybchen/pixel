@@ -25,7 +25,12 @@ public class PropRedisService extends CacheService {
 	@Resource
 	public RedisTemplate<String, String> redisTemplate;
 	
-	//hero
+	public PropRedisService() {
+		getPackageConfig();
+		getSynthetiseConfig();
+	}
+	
+	//pro
 	public Prop getPackage(int id) {
 		String value = hget(RedisKey.PROP_KEY, "" + id);
 		if (value == null) {
@@ -76,7 +81,7 @@ public class PropRedisService extends CacheService {
 		return map;
 	}
 	
-	//hero
+	//syn
 	public Synthetise getSynthetise(int id) {
 		String value = hget(RedisKey.SYNTHETISE_KEY, "" + id);
 		if (value == null) {

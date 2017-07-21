@@ -17,6 +17,10 @@ public class AchieveRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(AchieveRedisService.class);
 	private static final String ACHIEVE_FILE_NAME = "ld_taskchengjiu.xml";
 	
+	public AchieveRedisService() {
+		buildAchieveConfig();
+	}
+	
 	public Achieve getAchieve(int id) {
 		String value = hget(RedisKey.ACHIEVE_KEY, "" + id);
 		if (value == null) {

@@ -13,6 +13,10 @@ import com.trans.pixel.service.cache.CacheService;
 @Service
 public class FenjieRedisService extends CacheService {
 
+	public FenjieRedisService() {
+		getFenjieList();
+	}
+	
 	public Fenjie getFenjie(int id) {
 		Fenjie.Builder builder = Fenjie.newBuilder();
 		String value = hget(RedisKey.PREFIX + RedisKey.FENJIE_KEY, "" + id);

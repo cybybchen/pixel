@@ -13,6 +13,10 @@ import com.trans.pixel.service.cache.CacheService;
 @Service
 public class StarRedisService extends CacheService {
 
+	public StarRedisService() {
+		getStar(1);
+	}
+	
 	public Star getStar(int id) {
 		Star.Builder builder = Star.newBuilder();
 		String value = hget(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, "" + id);

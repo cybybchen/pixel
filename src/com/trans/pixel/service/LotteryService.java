@@ -31,6 +31,12 @@ public class LotteryService {
 	@Resource
 	private NoticeMessageService noticeMessageService;
     
+	public LotteryService() {
+		parseAndSaveLotteryList(RewardConst.COIN);
+		parseAndSaveLotteryList(RewardConst.JEWEL);
+		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);
+	}
+	
     private List<RewardBean> getLotteryList(int type) {
     	List<RewardBean> lotteryList = lotteryRedisService.getLotteryList(type);
         if (lotteryList == null || lotteryList.size() == 0) {

@@ -20,6 +20,13 @@ public class SignRedisService extends CacheService{
 	private static final String SIGN_FILE_NAME2 = "ld_tasksanqian2.xml";
 	private static final String SEVEN_SIGN_FILE_NAME = "ld_taskseven.xml";
 	
+	public SignRedisService() {
+		getSignConfig();
+		getSign2Config();
+		getTotalSignConfig();
+		getSevenLoginConfig();
+	}
+	
 	public Sign getSign(int count) {
 		String value = hget(RedisKey.SIGN_KEY, "" + count);
 		if (value == null) {

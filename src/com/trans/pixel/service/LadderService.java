@@ -658,10 +658,10 @@ public class LadderService {
 	
 	private Map<Integer, LadderRankingBean> getLadderRankingMap() {
 		Map<Integer, LadderRankingBean> ladderRankingMap = ladderRedisService.getLadderRankingMap();
-		if (ladderRankingMap == null || ladderRankingMap.size() == 0) {
-			ladderRankingMap = LadderRankingBean.xmlParseLadderRanking();
-			ladderRedisService.setLadderRankingMap(ladderRankingMap);
-		}
+//		if (ladderRankingMap == null || ladderRankingMap.size() == 0) {
+//			ladderRankingMap = LadderRankingBean.xmlParseLadderRanking();
+//			ladderRedisService.setLadderRankingMap(ladderRankingMap);
+//		}
 		
 		return ladderRankingMap;
 	}

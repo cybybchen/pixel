@@ -1,5 +1,7 @@
 package com.trans.pixel.service.redis;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -9,16 +11,24 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
 public class RewardTaskRedisService extends RedisService {
 	@SuppressWarnings("unused")
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	
+	@Resource
+	private CacheService cacheService;
+	
+	public RewardTaskRedisService() {
+		getRewardTaskConfig();
+	}
+	
 	//rewardtask 
 	public RewardTaskList.Builder getRewardTaskConfig() {
 		RewardTaskList.Builder builder = RewardTaskList.newBuilder();
-		String value = get(RedisKey.REWARDTASK_KEY);
+		String value = cacheService.get(RedisKey.REWARDTASK_KEY);
 		if(value != null && parseJson(value, builder)){
 			return builder;
 		}else {
@@ -31,7 +41,7 @@ public class RewardTaskRedisService extends RedisService {
 					list.getDataBuilder(list.getDataCount()-1).setRandcount(i+1);
 				}
 			}
-			set(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
+			cacheService.set(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
 			return list;
 		}
 	}
