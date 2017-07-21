@@ -138,6 +138,7 @@ public class UserBean {
 	private int friendVip = 0;
 	private int unionExp = 0;
 	private String recommandMarkId = "";
+	private int titleOrder = 0;
 	/**
 	 * 主角sp总数
 	 */
@@ -1314,11 +1315,19 @@ public class UserBean {
 	public void setUnionExp(int unionExp) {
 		this.unionExp = unionExp;
 	}
+<<<<<<< HEAD
 	public String getRecommandMarkId() {
 		return recommandMarkId;
 	}
 	public void setRecommandMarkId(String recommandMarkId) {
 		this.recommandMarkId = recommandMarkId;
+=======
+	public int getTitleOrder() {
+		return titleOrder;
+	}
+	public void setTitleOrder(int titleOrder) {
+		this.titleOrder = titleOrder;
+>>>>>>> 091b25f... add titleorder in user
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
@@ -1359,8 +1368,12 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
+<<<<<<< HEAD
 		builder.setMarkId(calMarkId(serverId, id));
 		builder.setRecommandMarkId(recommandMarkId);
+=======
+		builder.setTitleOrder(titleOrder);
+>>>>>>> 091b25f... add titleorder in user
 		
 		return builder.build();
 	}
@@ -1503,8 +1516,12 @@ public class UserBean {
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
+<<<<<<< HEAD
 		builder.setMarkId(calMarkId(serverId, id));
 		builder.setRecommandMarkId(recommandMarkId);
+=======
+		builder.setTitleOrder(titleOrder);
+>>>>>>> 091b25f... add titleorder in user
 		
 		return builder.build();
 	}

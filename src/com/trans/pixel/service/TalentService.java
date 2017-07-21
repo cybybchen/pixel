@@ -18,6 +18,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.Base.UserTalentOrder;
@@ -307,7 +308,7 @@ public class TalentService {
 			user.setUseTalentId(id);
 			userTeamService.changeUserTeamTalentId(user, id);
 			
-			changeTitleEquip(user, 9, userTalent.getEquip(9).getItemId());
+			changeTitleEquip(user, 9, userTalent.getEquip(9));
 			
 			userService.updateUser(user);
 		}
@@ -372,7 +373,7 @@ public class TalentService {
 				equipBuilder.setItemId(itemId);
 				userTalent.setEquip(i, equipBuilder.build());
 				
-				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, itemId))
+				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, equipBuilder.build()))
 					userService.updateUser(user);
 				
 				return userTalent.build();
@@ -397,12 +398,23 @@ public class TalentService {
 		return false;
 	}
 	
+	public boolean changeTitleEquip(UserBean user, UserEquipPokedeBean pokede) {
+		if (user.getTitle() == pokede.getItemId() && user.getTitleOrder() != pokede.getOrder()) {
+			user.setTitleOrder(Math.max(1, pokede.getOrder()));
+			userService.updateUser(user);
+			userService.cache(user.getServerId(), user.buildShort());
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public boolean changeTitleEquip(UserBean user, int talentId) {
 		UserTalent.Builder userTalent = userTalentService.getUserTalent(user, talentId);
 
 		if (userTalent == null)
 			return false;
 		
-		return changeTitleEquip(user, 9, userTalent.getEquip(9).getItemId());
+		return changeTitleEquip(user, 9, userTalent.getEquip(9));
 	}
 }

@@ -83,6 +83,7 @@ message UserInfo {
 	optional uint32 unionExp = 94;
 	optional string markId = 95;	
 	optional string recommandMarkId = 96;
+	optional uint32 titleOrder = 97;
 }
 
 message JewelPool {

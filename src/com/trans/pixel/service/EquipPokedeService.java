@@ -45,6 +45,8 @@ public class EquipPokedeService {
 	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private EquipRedisService equipRedisService;
+	@Resource
+	private TalentService talentService;
 
 	public ResultConst equipStrenthen(UserEquipPokedeBean pokede, UserBean user, MultiReward.Builder rewards, boolean protect) {
 		if (pokede == null)
@@ -126,6 +128,7 @@ public class EquipPokedeService {
 			if (equipOrder.getOrder() == order) {
 				pokede.setOrder(order);
 				userEquipPokedeService.updateUserEquipPokede(pokede, user);
+				talentService.changeTitleEquip(user, pokede);
 				return pokede;
 			}
 		}
@@ -149,6 +152,8 @@ public class EquipPokedeService {
 				costService.cost(user, equipOrder.getCoverList());
 				costs.addAllLoot(equipOrder.getCoverList());
 				hasOrder = true;
+				
+				talentService.changeTitleEquip(user, pokede);
 				break;
 			}
 		}
