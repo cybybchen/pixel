@@ -75,7 +75,7 @@ public class ZhanliCommandService extends BaseCommandService {
 			}
 		}
 		log.debug("11||" + System.currentTimeMillis());
-		areaService.unlockArea(zhanli, user);
+//		areaService.unlockArea(zhanli, user);
 		user.setZhanli(zhanli);
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);

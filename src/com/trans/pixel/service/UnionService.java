@@ -216,16 +216,16 @@ public class UnionService extends FightService{
 		/**
 		 * 计算镜像世界矿点奖励
 		 */
-		calAreaResourceReward(user);
+//		calAreaResourceReward(user);
 		
-		if(union.hasAttackId()){
-			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
-			union.addAllAttacks(users);
-		}
-		if(union.hasDefendId()){
-	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
-	 		union.addAllDefends(users);
-		}
+//		if(union.hasAttackId()){
+//			List<UserInfo> users = redis.getFightQueue(union.getId(), union.getAttackId());
+//			union.addAllAttacks(users);
+//		}
+//		if(union.hasDefendId()){
+//	 		List<UserInfo> users = redis.getFightQueue(union.getDefendId(), union.getId());
+//	 		union.addAllDefends(users);
+//		}
 		
 		if(user.getUnionJob() > 0){
 			union.addAllApplies(redis.getApplies(user.getUnionId()));
