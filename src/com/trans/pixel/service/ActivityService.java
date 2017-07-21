@@ -914,7 +914,7 @@ public class ActivityService {
 		
 //		sendRichangScore(user, ActivityConst.AID);
 		
-		if (type == ActivityConst.AID_LEVEL)
+		if (type == ActivityConst.AID_PVP)
 			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_PVP_HELP_VALUE);
 	}
 	
