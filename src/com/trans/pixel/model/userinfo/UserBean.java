@@ -1315,19 +1315,17 @@ public class UserBean {
 	public void setUnionExp(int unionExp) {
 		this.unionExp = unionExp;
 	}
-<<<<<<< HEAD
 	public String getRecommandMarkId() {
 		return recommandMarkId;
 	}
 	public void setRecommandMarkId(String recommandMarkId) {
 		this.recommandMarkId = recommandMarkId;
-=======
+	}
 	public int getTitleOrder() {
 		return titleOrder;
 	}
 	public void setTitleOrder(int titleOrder) {
 		this.titleOrder = titleOrder;
->>>>>>> 091b25f... add titleorder in user
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
@@ -1368,12 +1366,9 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
-<<<<<<< HEAD
-		builder.setMarkId(calMarkId(serverId, id));
+		builder.setMarkId(calMarkId());
 		builder.setRecommandMarkId(recommandMarkId);
-=======
 		builder.setTitleOrder(titleOrder);
->>>>>>> 091b25f... add titleorder in user
 		
 		return builder.build();
 	}
@@ -1516,24 +1511,21 @@ public class UserBean {
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
-<<<<<<< HEAD
-		builder.setMarkId(calMarkId(serverId, id));
+		builder.setMarkId(calMarkId());
 		builder.setRecommandMarkId(recommandMarkId);
-=======
 		builder.setTitleOrder(titleOrder);
->>>>>>> 091b25f... add titleorder in user
 		
 		return builder.build();
 	}
 	
 	
-	private String calMarkId(int serverId, long userId) {
+	public String calMarkId() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("0000").append(serverId);
 		while (sb.length() > 5)
 			sb.delete(0, 0);
 		
-		sb.append(userId);
+		sb.append(id);
 		
 		return sb.toString();
 	}

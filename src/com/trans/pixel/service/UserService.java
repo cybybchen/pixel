@@ -667,11 +667,14 @@ public class UserService {
 		return RandomUtils.nextInt(4) + 1;
 	}
 	
-	public void handlerRecommand(UserBean user, long userId) {
-		user.setRecommandUserId(userId);
-		updateUser(user);
-		
-		userRecommandService.saveRecommand(userId, user.getId());
+	public void handlerRecommand(UserBean user, long userId, String markId, String markId2) {
+//		user.setRecommandUserId(userId);
+		if (markId2.isEmpty()) {//master服务器转发到slave
+			user.setRecommandMarkId(markId);
+			updateUser(user);
+		} else {
+			userRecommandService.saveRecommand(userId, markId2);
+		}
 	}
 	
 	public int getRecommands(UserBean user) {

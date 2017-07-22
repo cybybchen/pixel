@@ -13,6 +13,9 @@ import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
+import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.utils.HTTPProtobufResolver;
 import com.trans.pixel.utils.HTTPStringResolver;
@@ -29,7 +32,7 @@ public class RequestService {
 	
 	public ResponseGetTeamCommand getTeamRequest(long userId, int serverId) {
 		RequestCommand.Builder request = RequestCommand.newBuilder();
-		request.setHead(buildHeadInfo(serverId));
+		request.setHead(buildHeadInfo(serverId, userId));
 		RequestGetTeamCommand.Builder teamBuilder = RequestGetTeamCommand.newBuilder();
 		teamBuilder.setUserId(userId);
 		request.setTeamCommand(teamBuilder.build());
@@ -41,7 +44,22 @@ public class RequestService {
 		return response.getTeamCommand();
 	}
 	
-	private HeadInfo buildHeadInfo(int serverId) {
+	public ResponseRecommandCommand requestBindRecommand(String markId, String userMarkId, int serverId, long userId) {
+		RequestCommand.Builder request = RequestCommand.newBuilder();
+		request.setHead(buildHeadInfo(serverId, userId));
+		RequestBindRecommandCommand.Builder builder = RequestBindRecommandCommand.newBuilder();
+		builder.setMarkId(markId);
+		builder.setMarkId2(userMarkId);
+		request.setBindRecommandCommand(builder.build());
+		RequestCommand reqcmd = request.build();
+		byte[] reqData = reqcmd.toByteArray();
+		InputStream input = new ByteArrayInputStream(reqData);
+		ResponseCommand response = http.post(!ConfigUtil.IS_MASTER ? ConfigUtil.MASTER_SERVER : ConfigUtil.getServer(serverId).getAddrIp(), input);//查询不同物理服务器的人物
+		
+		return response.getRecommandCommand();
+	}
+	
+	private HeadInfo buildHeadInfo(int serverId, long userId) {
 		HeadInfo.Builder head = HeadInfo.newBuilder();
 		ServerBean server = serverService.getServer(serverId);
 		if (ConfigUtil.IS_MASTER)
@@ -54,7 +72,7 @@ public class RequestService {
 		head.setLevel(1);//表示服务器转发
 		head.setServerId(serverId);
 		head.setVersion(0);
-		head.setUserId(0);
+		head.setUserId(userId);
 		head.setSession("");
 		head.setServerstarttime(server.getKaifuTime());
 		head.setDatetime(System.currentTimeMillis() / 1000);

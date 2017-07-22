@@ -55,6 +55,7 @@ import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -334,14 +335,23 @@ public class UserCommandService extends BaseCommandService {
 	}
 	
 	public void bindRecommand(RequestBindRecommandCommand cmd, Builder responseBuilder, UserBean user) {
-		if (user.getRecommandUserId() != 0) {
+		int serverId = UserBean.calServerIdByMarkId(cmd.getMarkId());
+		long userId = UserBean.calUserIdByMarkId(cmd.getMarkId());
+		if (ConfigUtil.IS_MASTER) {//master服务器
+			ResponseRecommandCommand recommand = requestService.requestBindRecommand(cmd.getMarkId(), cmd.getMarkId2(), user.getServerId(), userId);
+			responseBuilder.setRecommandCommand(recommand);
+			return;
+		}
+			
+		if (!user.getRecommandMarkId().isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_IS_EXIST_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_IS_EXIST_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		if (user.getId() == cmd.getUserId()) {
+		
+		if (!cmd.hasMarkId2() && serverId == user.getServerId() && userId == user.getId()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
@@ -349,24 +359,26 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		
-		UserBean other = userService.getUserOther(cmd.getUserId());
-		if (other == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
-			responseBuilder.setErrorCommand(errorCommand);
-			return;
-		}
-		
-		userService.handlerRecommand(user, cmd.getUserId());
-		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
-		if (user.getRecommandUserId() != 0) {
+		if (!cmd.hasMarkId2()) {
+			ResponseRecommandCommand recommand = requestService.requestBindRecommand(cmd.getMarkId(), user.calMarkId(), serverId, userId);
+			builder.mergeFrom(recommand);
+			builder.setCount(userService.getRecommands(user));	
+		} else {
+			UserBean other = userService.getUserOther(userId);
+			if (other == null) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
+				
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
+				responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}
 			builder.setUser(other.buildShort());
 		}
-		builder.setCount(userService.getRecommands(user));
+		
+		userService.handlerRecommand(user, userId, cmd.getMarkId(), cmd.getMarkId2());
 		responseBuilder.setRecommandCommand(builder.build());
-		if (other.getFriendVip() == 1) {
+		if (!cmd.hasMarkId2() && builder.getUser().getFriendVip() == 1) {
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.addLoot(RewardBean.init(RewardConst.JEWEL, 300).buildRewardInfo());
 			rewards.addLoot(RewardBean.init(RewardConst.ZHAOHUANSHI, 3).buildRewardInfo());

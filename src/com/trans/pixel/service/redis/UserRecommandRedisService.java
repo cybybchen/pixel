@@ -13,9 +13,9 @@ import com.trans.pixel.constants.RedisKey;
 public class UserRecommandRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRecommandRedisService.class);
 	
-	public void saveRecommandInfo(long userId, long userId2) {
+	public void saveRecommandInfo(long userId, String markId) {
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		this.lpush(key, "" + userId2);
+		this.lpush(key, markId);
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
