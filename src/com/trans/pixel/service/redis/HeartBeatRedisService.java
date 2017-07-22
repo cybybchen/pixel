@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Resource;
 
@@ -14,8 +15,12 @@ public class HeartBeatRedisService extends CacheService {
 	@Resource
 	private RedisService redisService;
 	
+	private HeartBeatRedisService() {
+		
+	}
+	
 	public void heartBeat(int serverId, long userId) {
-		sadd(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
+		saddcache(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
 	}
 	
 	public long getHeartBeatCount(int serverId) {
@@ -26,7 +31,7 @@ public class HeartBeatRedisService extends CacheService {
 	}
 	
 	public Set<String> spopHeartBeatUser(int serverId) {
-		return spop(RedisKey.HEART_BEAT_PREFIX + serverId);
+		return spopcache(RedisKey.HEART_BEAT_PREFIX + serverId);
 	}
 	
 	public void heartBeatToRedis(int serverId, Set<String> userIds) {

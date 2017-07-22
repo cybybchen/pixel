@@ -29,7 +29,7 @@ import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
-public class ActivityRedisService extends CacheService {
+public class ActivityRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(ActivityRedisService.class);
 	private static final String ACTIVITY_RICHANG_FILE_NAME = "ld_taskrichang.xml";
 	private static final String ACTIVITY_KAIFU2_FILE_NAME = "ld_taskkaifu2.xml";

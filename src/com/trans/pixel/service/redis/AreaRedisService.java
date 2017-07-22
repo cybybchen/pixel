@@ -85,7 +85,7 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public AreaMode.Builder getAreaMode(UserBean user) {
-		String value = this.hget(RedisKey.USERDATA+user.getId(), "Area");
+		String value = this.hgetcache(RedisKey.USERDATA+user.getId(), "Area");
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			if(builder.getRegionCount() == 5)
@@ -106,7 +106,7 @@ public class AreaRedisService extends CacheService{
 	}
 	
 	public AreaMode.Builder getBaseAreaMode(){
-		String value = get(RedisKey.AREA_CONFIG);
+		String value = getcache(RedisKey.AREA_CONFIG);
 		AreaMode.Builder builder = AreaMode.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder;
@@ -140,7 +140,7 @@ public class AreaRedisService extends CacheService{
 					}
 				}
 			}
-			set(RedisKey.AREA_CONFIG, RedisService.formatJson(builder.build()));
+			setcache(RedisKey.AREA_CONFIG, RedisService.formatJson(builder.build()));
 			return builder;
 		}
 	}
@@ -250,7 +250,7 @@ public class AreaRedisService extends CacheService{
 
 	public AreaBuff.Builder getAreaBuffConfig(int id){
 		AreaBuff.Builder builder = AreaBuff.newBuilder();
-		String value = hget(RedisKey.AREABUFF_CONFIG, id+"");
+		String value = hgetcache(RedisKey.AREABUFF_CONFIG, id+"");
 		if(value == null){
 			String xml = RedisService.ReadConfig("lol_regionskilltime.xml");
 			AreaBuffList.Builder listbuilder = AreaBuffList.newBuilder();
@@ -261,7 +261,7 @@ public class AreaRedisService extends CacheService{
 				if(buff.getSkillid() == id)
 					builder = AreaBuff.newBuilder(buff);
 			}
-			hputAll(RedisKey.AREABUFF_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREABUFF_CONFIG, keyvalue);
 		}else{
 			RedisService.parseJson(value, builder);
 		}
@@ -269,11 +269,11 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public Map<String, String> getBossTimes(UserBean user){
-		return hget(AREABOSSTIME+user.getId());
+		return hgetcache(AREABOSSTIME+user.getId());
 	}
 
 	public int getBossTime(int id,UserBean user){
-		String value = hget(AREABOSSTIME+user.getId(), id+"");
+		String value = hgetcache(AREABOSSTIME+user.getId(), id+"");
 		if(value == null)
 			return 0;
 		else
@@ -281,12 +281,12 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public void saveBossTime(int id, int time, UserBean user){
-		hput(AREABOSSTIME+user.getId(), id+"", time+"");
+		redisService.hput(AREABOSSTIME+user.getId(), id+"", time+"");
 		redisService.expireAt(AREABOSSTIME+user.getId(), RedisService.nextDay());
 	}
 	
 	public AreaBoss getBoss(int id,UserBean user){
-		String value = this.hget(AREABOSS+user.getServerId(), id+"");
+		String value = this.hgetcache(AREABOSS+user.getServerId(), id+"");
 		AreaBoss.Builder builder = AreaBoss.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
@@ -298,7 +298,7 @@ public class AreaRedisService extends CacheService{
 	}
 	
 	public void deleteBoss(int id,UserBean user){
-		if (this.hget(AREABOSS+user.getServerId(), id+"") != null) {
+		if (this.hgetcache(AREABOSS+user.getServerId(), id+"") != null) {
 			//排行奖励
 			Set<TypedTuple<String>> ranks = getBossRank(id, user);
 			AreaBossReward bossreward = getBossReward(id);
@@ -328,7 +328,7 @@ public class AreaRedisService extends CacheService{
 	
 	public void saveBoss(AreaBoss boss,UserBean user) {
 		String key = AREABOSS+user.getServerId();
-		hput(key, boss.getId()+"", RedisService.formatJson(boss));
+		redisService.hput(key, boss.getId()+"", RedisService.formatJson(boss));
 		redisService.expireAt(key, RedisService.nextDay());
 	}
 	
@@ -516,7 +516,7 @@ public class AreaRedisService extends CacheService{
 			Integer[] count = entry.getValue();
 			keyvalue.put(entry.getKey()+"", count[0]+"#"+count[1]+"#"+count[2]);
 		}
-		hputAll(RedisKey.AREALEVEL+user.getId(), keyvalue);
+		hputcacheAll(RedisKey.AREALEVEL+user.getId(), keyvalue);
 	}
 
 	public void saveMonster(AreaMonster monster,UserBean user) {
@@ -535,7 +535,7 @@ public class AreaRedisService extends CacheService{
 
 	public Map<String, AreaResource> getResources(UserBean user){
 		Map<String, AreaResource> resources= new HashMap<String, AreaResource>();
-		Map<String, String> valueMap = this.hget(AREARESOURCE+user.getServerId());
+		Map<String, String> valueMap = this.hgetcache(AREARESOURCE+user.getServerId());
 		if(!valueMap.isEmpty()){
 			for(Entry<String, String> entry : valueMap.entrySet()){
 				AreaResource.Builder builder = AreaResource.newBuilder();
@@ -550,13 +550,13 @@ public class AreaRedisService extends CacheService{
 			for(Entry<String, AreaResource> entry : resources.entrySet()){
 				keyvalue.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(AREARESOURCE+user.getServerId(), keyvalue);
+			hputcacheAll(AREARESOURCE+user.getServerId(), keyvalue);
 			return resources;
 		}
 	}
 	
 	public AreaResource getResource(int id,int serverId){
-		String value = this.hget(AREARESOURCE+serverId, id+"");
+		String value = this.hgetcache(AREARESOURCE+serverId, id+"");
 		AreaResource.Builder builder = AreaResource.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
@@ -568,7 +568,7 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public void saveMineGain(int key, int value, UserBean user) {
-		this.hput(MINEGAIN+user.getId(), key+"", value+"");
+		redisService.hput(MINEGAIN+user.getId(), key+"", value+"");
 	}
 
 	public void delMineGains(UserBean user) {
@@ -631,7 +631,7 @@ public class AreaRedisService extends CacheService{
 //	}
 
 	public Map<String, AreaResource> getAreaResourceConfig(){
-		Map<String, String> keyvalue = hget(RedisKey.AREARESOURCE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.AREARESOURCE_CONFIG);
 		Map<String, AreaResource> map = new HashMap<String, AreaResource>();
 		if(!keyvalue.isEmpty()){
 			for(Entry<String, String> entry : keyvalue.entrySet()){
@@ -648,31 +648,31 @@ public class AreaRedisService extends CacheService{
 				map.put(resource.getId()+"", resource);
 				keyvalue.put(resource.getId()+"", RedisService.formatJson(resource));
 			}
-			hputAll(RedisKey.AREARESOURCE_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREARESOURCE_CONFIG, keyvalue);
 			return map;
 		}
 	}
 
 	public AreaRefreshList getMonsterRandConfig(){
 		AreaRefreshList.Builder builder = AreaRefreshList.newBuilder();
-		String value = get(RedisKey.AREAMONSTERRAND_CONFIG);
+		String value = getcache(RedisKey.AREAMONSTERRAND_CONFIG);
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 
 		String xml = RedisService.ReadConfig("lol_regionrefresh.xml");
 		RedisService.parseXml(xml, builder);
-		set(RedisKey.AREAMONSTERRAND_CONFIG, RedisService.formatJson(builder.build()));
+		setcache(RedisKey.AREAMONSTERRAND_CONFIG, RedisService.formatJson(builder.build()));
 		return builder.build();
 	}
 	public AreaRefresh2Lists getBossRandConfig(){
 		AreaRefresh2Lists.Builder builder = AreaRefresh2Lists.newBuilder();
-		String value = get(RedisKey.AREABOSSRAND_CONFIG);
+		String value = getcache(RedisKey.AREABOSSRAND_CONFIG);
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 
 		String xml = RedisService.ReadConfig("lol_regionrefresh2.xml");
 		RedisService.parseXml(xml, builder);
-		set(RedisKey.AREABOSSRAND_CONFIG, RedisService.formatJson(builder.build()));
+		setcache(RedisKey.AREABOSSRAND_CONFIG, RedisService.formatJson(builder.build()));
 		return builder.build();
 	}
 	public AreaBossRewardList readBossRewardConfig(){
@@ -711,7 +711,7 @@ public class AreaRedisService extends CacheService{
 	}
 	public AreaBossReward getBossReward(int id){
 		AreaBossReward.Builder builder = AreaBossReward.newBuilder();
-		String value = hget(RedisKey.AREABOSSREWARD_CONFIG, id+"");
+		String value = hgetcache(RedisKey.AREABOSSREWARD_CONFIG, id+"");
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 		else{
@@ -722,13 +722,13 @@ public class AreaRedisService extends CacheService{
 				if(reward.getId() == id)
 					builder = AreaBossReward.newBuilder(reward);
 			}
-			hputAll(RedisKey.AREABOSSREWARD_CONFIG, map);
+			hputcacheAll(RedisKey.AREABOSSREWARD_CONFIG, map);
 			return builder.build();
 		}
 	}
 
 	public Map<String, AreaBoss> getAreaBossConfig(){
-		Map<String, String> keyvalue = hget(RedisKey.AREABOSS_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.AREABOSS_CONFIG);
 		Map<String, AreaBoss> map = new HashMap<String, AreaBoss>();
 		if(!keyvalue.isEmpty()){
 			for(Entry<String, String> entry : keyvalue.entrySet()){
@@ -746,13 +746,13 @@ public class AreaRedisService extends CacheService{
 				map.put(bossbuilder.getId()+"", bossbuilder.build());
 				keyvalue.put(bossbuilder.getId()+"", RedisService.formatJson(bossbuilder.build()));
 			}
-			hputAll(RedisKey.AREABOSS_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREABOSS_CONFIG, keyvalue);
 			return map;
 		}
 	}
 	
 	public Map<String, AreaPosition> getAreaPosition(){
-		Map<String, String> keyvalue = hget(RedisKey.AREAPOSITION_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.AREAPOSITION_CONFIG);
 		Map<String, AreaPosition> map = new HashMap<String, AreaPosition>();
 		if(!keyvalue.isEmpty()){
 			for(Entry<String, String> entry : keyvalue.entrySet()){
@@ -769,13 +769,13 @@ public class AreaRedisService extends CacheService{
 				map.put(position.getId()+"", position);
 				keyvalue.put(position.getId()+"", RedisService.formatJson(position));
 			}
-			hputAll(RedisKey.AREAPOSITION_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREAPOSITION_CONFIG, keyvalue);
 			return map;
 		}
 	}
 	
 	public Map<Integer, AreaMonsterList> getAreaMonsterConfig(){
-		Map<String, String> keyvalue = hget(RedisKey.AREAMONSTER_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.AREAMONSTER_CONFIG);
 		Map<Integer, AreaMonsterList> map = new HashMap<Integer, AreaMonsterList>();
 		if(!keyvalue.isEmpty()){
 			for(Entry<String, String> entry : keyvalue.entrySet()){
@@ -802,14 +802,14 @@ public class AreaRedisService extends CacheService{
 				weightall += monster.getWeight();
 				monsters.addRegion(monster);
 			}
-			hputAll(RedisKey.AREAMONSTER_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREAMONSTER_CONFIG, keyvalue);
 			return map;
 		}
 	}
 
 	public AreaMonsterReward getAreaMonsterReward(int id){
 		AreaMonsterReward.Builder builder = AreaMonsterReward.newBuilder();
-		String value = this.hget(RedisKey.AREAMONSTERREWARD_CONFIG, id+"");
+		String value = this.hgetcache(RedisKey.AREAMONSTERREWARD_CONFIG, id+"");
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{
@@ -822,7 +822,7 @@ public class AreaRedisService extends CacheService{
 				map.put(reward.getId(), reward);
 				keyvalue.put(reward.getId()+"", RedisService.formatJson(reward));
 			}
-			hputAll(RedisKey.AREAMONSTERREWARD_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.AREAMONSTERREWARD_CONFIG, keyvalue);
 			return map.get(id);
 		}
 	}
@@ -838,14 +838,14 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public AreaBuff.Builder getMyAreaBuff(UserBean user, int skill){
-		String value = hget(MYAREABUFF+user.getId(), skill+"");
+		String value = hgetcache(MYAREABUFF+user.getId(), skill+"");
 		AreaBuff.Builder builder = AreaBuff.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
 		// builder.setSkill(skill);
 		// return builder;
 		
-		value = hget(UNIONAREABUFF+user.getUnionId(), skill+"");
+		value = hgetcache(UNIONAREABUFF+user.getUnionId(), skill+"");
 		builder = AreaBuff.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
@@ -855,7 +855,7 @@ public class AreaRedisService extends CacheService{
 
 	public Collection<AreaBuff> getMyAreaBuffs(UserBean user){
 		List<AreaBuff> list = new ArrayList<AreaBuff>();
-		Map<String,String> keyvalue = hget(MYAREABUFF+user.getId());
+		Map<String,String> keyvalue = hgetcache(MYAREABUFF+user.getId());
 		for(String value : keyvalue.values()){
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(RedisService.parseJson(value, builder)){
@@ -872,7 +872,7 @@ public class AreaRedisService extends CacheService{
 	
 	public Collection<AreaBuff> getUnionAreaBuffs(UserBean user){
 		List<AreaBuff> list = new ArrayList<AreaBuff>();
-		Map<String,String> keyvalue = hget(UNIONAREABUFF+user.getUnionId());
+		Map<String,String> keyvalue = hgetcache(UNIONAREABUFF+user.getUnionId());
 		for(String value : keyvalue.values()){
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(RedisService.parseJson(value, builder)){
@@ -887,7 +887,7 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public void saveMyAreaEquip(UserBean user, AreaEquip equip){
-		hput(MYAREAEQUIP+user.getId(), equip.getId()+"", RedisService.formatJson(equip));
+		redisService.hput(MYAREAEQUIP+user.getId(), equip.getId()+"", RedisService.formatJson(equip));
 	}
 
 	public void saveMyAreaEquips(UserBean user, Collection<AreaEquip> equips){
@@ -895,10 +895,10 @@ public class AreaRedisService extends CacheService{
 		for(AreaEquip equip : equips){
 			map.put(equip.getId()+"", RedisService.formatJson(equip));
 		}
-		hputAll(MYAREAEQUIP+user.getId(), map);
+		hputcacheAll(MYAREAEQUIP+user.getId(), map);
 	}
 	public AreaEquip.Builder getMyAreaEquip(int id, UserBean user){
-		String value = hget(MYAREAEQUIP+user.getId(), id+"");
+		String value = hgetcache(MYAREAEQUIP+user.getId(), id+"");
 		AreaEquip.Builder builder = AreaEquip.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
@@ -907,7 +907,7 @@ public class AreaRedisService extends CacheService{
 		}
 	}
 	public Map<String, AreaEquip> getMyAreaEquips(UserBean user){
-		Map<String, String> keyvalue = hget(MYAREAEQUIP+user.getId());
+		Map<String, String> keyvalue = hgetcache(MYAREAEQUIP+user.getId());
 		Map<String, AreaEquip> map = new HashMap<String, AreaEquip>();
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			AreaEquip.Builder builder = AreaEquip.newBuilder();
@@ -918,7 +918,7 @@ public class AreaRedisService extends CacheService{
 	}
 
 	public Map<Integer, AreaEquip> getAreaEquipConfig(){
-		Map<String, String> keyvalue = hget(RedisKey.AREAEQUIP_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.AREAEQUIP_CONFIG);
 		Map<Integer, AreaEquip> map = new HashMap<Integer, AreaEquip>();
 		if(!keyvalue.isEmpty()){
 			for(String value : keyvalue.values()){
@@ -939,13 +939,13 @@ public class AreaRedisService extends CacheService{
 			keyvalue.put(equip.getId()+"", RedisService.formatJson(equip.build()));
 			map.put(equip.getId(), equip.build());
 		}
-		hputAll(RedisKey.AREAEQUIP_CONFIG, keyvalue);
+		hputcacheAll(RedisKey.AREAEQUIP_CONFIG, keyvalue);
 		return map;
 	}
 
 	public AreaEquip getAreaEquip(int id){
 		AreaEquip.Builder builder = AreaEquip.newBuilder();
-		String value = hget(RedisKey.AREAEQUIP_CONFIG, id+"");
+		String value = hgetcache(RedisKey.AREAEQUIP_CONFIG, id+"");
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{

@@ -49,7 +49,7 @@ public class ServerTitleRedisService extends RedisService {
 	}
 	
 	public Title getTitle(int id) {
-		String value = CacheService.hget(RedisKey.TITLE_KEY, "" + id);
+		String value = CacheService.hgetcache(RedisKey.TITLE_KEY, "" + id);
 		if (value == null) {
 			Map<String, Title> config = getTitleConfig();
 			return config.get("" + id);
@@ -63,14 +63,14 @@ public class ServerTitleRedisService extends RedisService {
 	}
 	
 	public Map<String, Title> getTitleConfig() {
-		Map<String, String> keyvalue = CacheService.hget(RedisKey.TITLE_KEY);
+		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.TITLE_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Title> map = buildTitleConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Title> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			CacheService.hputAll(RedisKey.TITLE_KEY, redismap);
+			CacheService.hputcacheAll(RedisKey.TITLE_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Title> map = new HashMap<String, Title>();

@@ -26,7 +26,7 @@ public class EquipPokedeRedisService extends CacheService {
 	}
 	
 	public EquipIncrease getEquipIncrease(int level) {
-		String value = hget(RedisKey.EQUIP_INCREASE_CONFIG, "" + level);
+		String value = hgetcache(RedisKey.EQUIP_INCREASE_CONFIG, "" + level);
 		if (value == null) {
 			Map<String, EquipIncrease> config = getEquipIncreaseConfig();
 			return config.get("" + level);
@@ -40,14 +40,14 @@ public class EquipPokedeRedisService extends CacheService {
 	}
 	
 	public Map<String, EquipIncrease> getEquipIncreaseConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.EQUIP_INCREASE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_INCREASE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, EquipIncrease> map = buildEquipIncreaseConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, EquipIncrease> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.EQUIP_INCREASE_CONFIG, redismap);
+			hputcacheAll(RedisKey.EQUIP_INCREASE_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
@@ -77,7 +77,7 @@ public class EquipPokedeRedisService extends CacheService {
 	
 	//increase cost
 	public IncreaseLevel getIncreaseLevel(int level) {
-		String value = hget(RedisKey.EQUIP_INCREASELEVEL_CONFIG, "" + level);
+		String value = hgetcache(RedisKey.EQUIP_INCREASELEVEL_CONFIG, "" + level);
 		if (value == null) {
 			Map<String, IncreaseLevel> config = getIncreaseLevelConfig();
 			return config.get("" + level);
@@ -91,14 +91,14 @@ public class EquipPokedeRedisService extends CacheService {
 	}
 	
 	public Map<String, IncreaseLevel> getIncreaseLevelConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.EQUIP_INCREASELEVEL_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_INCREASELEVEL_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, IncreaseLevel> map = buildIncreaseLevelConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, IncreaseLevel> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, redismap);
+			hputcacheAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();

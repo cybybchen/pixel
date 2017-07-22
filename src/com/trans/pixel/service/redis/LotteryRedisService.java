@@ -30,7 +30,7 @@ public class LotteryRedisService extends CacheService {
 	}
 	
 	public List<RewardBean> getLotteryList(final int type) {
-		List<String> values = lrange(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
+		List<String> values = lrangecache(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type);
 		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
 		for (String value : values) {
 			RewardBean lottery = RewardBean.fromJson(value);
@@ -48,11 +48,11 @@ public class LotteryRedisService extends CacheService {
 			values.add(lottery.toJson());
 		}
 		
-		lpush(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type, values);
+		lpushcache(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + type, values);
 	}
 	
 	public LotteryActivity getLotteryActivity(int id) {
-		String value = hget(RedisKey.LOTTERY_ACTIVITY_KEY, "" + id);
+		String value = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY, "" + id);
 		if (value == null) {
 			Map<String, LotteryActivity> lotteryActivityConfig = getLotteryActivityConfig();
 			return lotteryActivityConfig.get("" + id);
@@ -66,14 +66,14 @@ public class LotteryRedisService extends CacheService {
 	}
 	
 	public Map<String, LotteryActivity> getLotteryActivityConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.LOTTERY_ACTIVITY_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, LotteryActivity> map = buildLotteryActivityConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, LotteryActivity> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.LOTTERY_ACTIVITY_KEY, redismap);
+			hputcacheAll(RedisKey.LOTTERY_ACTIVITY_KEY, redismap);
 			return map;
 		}else{
 			Map<String, LotteryActivity> map = new HashMap<String, LotteryActivity>();

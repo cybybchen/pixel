@@ -19,7 +19,7 @@ public class FenjieRedisService extends CacheService {
 	
 	public Fenjie getFenjie(int id) {
 		Fenjie.Builder builder = Fenjie.newBuilder();
-		String value = hget(RedisKey.PREFIX + RedisKey.FENJIE_KEY, "" + id);
+		String value = hgetcache(RedisKey.PREFIX + RedisKey.FENJIE_KEY, "" + id);
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 //		else if(!exists(RedisKey.PREFIX + RedisKey.FENJIE_KEY)){
@@ -31,7 +31,7 @@ public class FenjieRedisService extends CacheService {
 	}
 	public Map<Integer, Fenjie> getFenjieList() {
 		Map<Integer, Fenjie> map = new HashMap<Integer, Fenjie>();
-		Map<String, String> keyvalue = hget(RedisKey.PREFIX + RedisKey.FENJIE_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.PREFIX + RedisKey.FENJIE_KEY);
 		if(!keyvalue.isEmpty()){
 			for(String value : keyvalue.values()) {
 				Fenjie.Builder builder = Fenjie.newBuilder();
@@ -48,7 +48,7 @@ public class FenjieRedisService extends CacheService {
 				keyvalue.put(fenjie.getId()+"", RedisService.formatJson(fenjie));
 				map.put(fenjie.getId(), fenjie);
 			}
-			hputAll(RedisKey.PREFIX + RedisKey.FENJIE_KEY, keyvalue);
+			hputcacheAll(RedisKey.PREFIX + RedisKey.FENJIE_KEY, keyvalue);
 		}
 		return map;
 	}

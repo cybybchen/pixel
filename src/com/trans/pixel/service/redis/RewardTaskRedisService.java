@@ -23,7 +23,7 @@ public class RewardTaskRedisService extends RedisService {
 	//rewardtask 
 	public RewardTaskList.Builder getRewardTaskConfig() {
 		RewardTaskList.Builder builder = RewardTaskList.newBuilder();
-		String value = CacheService.get(RedisKey.REWARDTASK_KEY);
+		String value = CacheService.getcache(RedisKey.REWARDTASK_KEY);
 		if(value != null && parseJson(value, builder)){
 			return builder;
 		}else {
@@ -36,7 +36,7 @@ public class RewardTaskRedisService extends RedisService {
 					list.getDataBuilder(list.getDataCount()-1).setRandcount(i+1);
 				}
 			}
-			CacheService.set(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
+			CacheService.setcache(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
 			return list;
 		}
 	}

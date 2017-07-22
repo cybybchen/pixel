@@ -28,7 +28,7 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Sign getSign(int count) {
-		String value = hget(RedisKey.SIGN_KEY, "" + count);
+		String value = hgetcache(RedisKey.SIGN_KEY, "" + count);
 		if (value == null) {
 			Map<String, Sign> signConfig = getSignConfig();
 			return signConfig.get("" + count);
@@ -42,14 +42,14 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Map<String, Sign> getSignConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.SIGN_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.SIGN_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Sign> map = buildSignConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.SIGN_KEY, redismap);
+			hputcacheAll(RedisKey.SIGN_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Sign> map = new HashMap<String, Sign>();
@@ -78,7 +78,7 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Sign getSign2(int count) {
-		String value = hget(RedisKey.SIGN2_KEY, "" + count);
+		String value = hgetcache(RedisKey.SIGN2_KEY, "" + count);
 		if (value == null) {
 			Map<String, Sign> signConfig = getSign2Config();
 			return signConfig.get("" + count);
@@ -92,14 +92,14 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Map<String, Sign> getSign2Config() {
-		Map<String, String> keyvalue = hget(RedisKey.SIGN2_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.SIGN2_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Sign> map = buildSign2Config();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.SIGN2_KEY, redismap);
+			hputcacheAll(RedisKey.SIGN2_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Sign> map = new HashMap<String, Sign>();
@@ -128,7 +128,7 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Sign getTotalSign(int count) {
-		String value = hget(RedisKey.TOTAL_SIGN_KEY, "" + count);
+		String value = hgetcache(RedisKey.TOTAL_SIGN_KEY, "" + count);
 		if (value == null) {
 			Map<String, Sign> signConfig = getTotalSignConfig();
 			return signConfig.get("" + count);
@@ -142,14 +142,14 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Map<String, Sign> getTotalSignConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TOTAL_SIGN_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TOTAL_SIGN_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Sign> map = buildTotalSignConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TOTAL_SIGN_KEY, redismap);
+			hputcacheAll(RedisKey.TOTAL_SIGN_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Sign> map = new HashMap<String, Sign>();
@@ -179,7 +179,7 @@ public class SignRedisService extends CacheService{
 	
 	//task seven
 	public Sign getSevenLogin(int day) {
-		String value = hget(RedisKey.SEVEN_LOGIN_KEY, "" + day);
+		String value = hgetcache(RedisKey.SEVEN_LOGIN_KEY, "" + day);
 		if (value == null) {
 			Map<String, Sign> signConfig = getSevenLoginConfig();
 			return signConfig.get("" + day);
@@ -193,14 +193,14 @@ public class SignRedisService extends CacheService{
 	}
 	
 	public Map<String, Sign> getSevenLoginConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.SEVEN_LOGIN_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.SEVEN_LOGIN_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Sign> map = buildSevenLoginConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Sign> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
+			hputcacheAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Sign> map = new HashMap<String, Sign>();

@@ -19,7 +19,7 @@ public class StarRedisService extends CacheService {
 	
 	public Star getStar(int id) {
 		Star.Builder builder = Star.newBuilder();
-		String value = hget(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, "" + id);
+		String value = hgetcache(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, "" + id);
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 //		else if(!exists(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY)){
@@ -31,7 +31,7 @@ public class StarRedisService extends CacheService {
 			for(Star star : list.getDataList()){
 				keyvalue.put(star.getId()+"", RedisService.formatJson(star));
 			}
-			hputAll(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, keyvalue);
+			hputcacheAll(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, keyvalue);
 			for(Star star : list.getDataList()){
 				if(star.getId() == id)
 					return star;

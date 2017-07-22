@@ -31,7 +31,7 @@ public class TalentRedisService extends CacheService {
 	
 	//talent
 	public Talent getTalent(int id) {
-		String value = hget(RedisKey.TALENT_CONFIG_KEY, "" + id);
+		String value = hgetcache(RedisKey.TALENT_CONFIG_KEY, "" + id);
 		if (value == null) {
 			Map<String, Talent> config = getTalentConfig();
 			return config.get("" + id);
@@ -45,14 +45,14 @@ public class TalentRedisService extends CacheService {
 	}
 	
 	public Map<String, Talent> getTalentConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TALENT_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TALENT_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Talent> map = buildTalentConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Talent> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TALENT_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.TALENT_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Talent> map = new HashMap<String, Talent>();
@@ -83,7 +83,7 @@ public class TalentRedisService extends CacheService {
 	
 	//talentupgrade
 	public Talentupgrade getTalentupgrade(int level) {
-		String value = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
+		String value = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
 //		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
 		if (value == null) {
 			Map<Integer, Talentupgrade> config = getTalentupgradeConfig();
@@ -98,13 +98,13 @@ public class TalentRedisService extends CacheService {
 	}
 	
 	public Map<Integer, Talentupgrade> getTalentupgradeConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TALENTUPGRADE_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<Integer, Talentupgrade> map = buildTalentupgradeConfig();
 			for(Entry<Integer, Talentupgrade> entry : map.entrySet()){
 				keyvalue.put(entry.getKey()+"", RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, keyvalue);
+			hputcacheAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, keyvalue);
 			return map;
 		}else{
 			Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
@@ -135,7 +135,7 @@ public class TalentRedisService extends CacheService {
 	
 	//talentunlock
 	public Talentunlock getTalentunlock(int order) {
-		String value = hget(RedisKey.TALENTUNLOCK_CONFIG_KEY, "" + order);
+		String value = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY, "" + order);
 		if (value == null) {
 			Map<String, Talentunlock> config = getTalentunlockConfig();
 			return config.get("" + order);
@@ -149,14 +149,14 @@ public class TalentRedisService extends CacheService {
 	}
 	
 	public Map<String, Talentunlock> getTalentunlockConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TALENTUNLOCK_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Talentunlock> map = buildTalentunlockConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Talentunlock> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TALENTUNLOCK_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.TALENTUNLOCK_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Talentunlock> map = new HashMap<String, Talentunlock>();

@@ -424,27 +424,27 @@ public class PvpMapRedisService extends CacheService{
 //	}
 	
 	public PVPEventList getActivityEventConfig() {
-		String value = get(RedisKey.PVPACTIVITYMONSTER_CONFIG);
+		String value = getcache(RedisKey.PVPACTIVITYMONSTER_CONFIG);
 		PVPEventList.Builder builder = PVPEventList.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{
 			String xml = RedisService.ReadConfig("ld_pvphuodong.xml");
 			RedisService.parseXml(xml, builder);
-			set(RedisKey.PVPACTIVITYMONSTER_CONFIG, RedisService.formatJson(builder.build()));
+			setcache(RedisKey.PVPACTIVITYMONSTER_CONFIG, RedisService.formatJson(builder.build()));
 			return builder.build();
 		}
 	}
 	
 	public Map<String, PVPPositionList> getPositionConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.PVPPOSITION_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.PVPPOSITION_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, PVPPositionList> map = buildPositionConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, PVPPositionList> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.PVPPOSITION_CONFIG, redismap);
+			hputcacheAll(RedisKey.PVPPOSITION_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, PVPPositionList> map = new HashMap<String, PVPPositionList>();
@@ -471,7 +471,7 @@ public class PvpMapRedisService extends CacheService{
 	
 	public PVPBossList getBossConfig() {
 		PVPBossList.Builder builder = PVPBossList.newBuilder(); 
-		String value = get(RedisKey.PVPBOSS_CONFIG);
+		String value = getcache(RedisKey.PVPBOSS_CONFIG);
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 		}else{
@@ -489,13 +489,13 @@ public class PvpMapRedisService extends CacheService{
 					builder.addData(boss);
 				}
 			}
-			set(RedisKey.PVPBOSS_CONFIG, RedisService.formatJson(builder.build()));
+			setcache(RedisKey.PVPBOSS_CONFIG, RedisService.formatJson(builder.build()));
 			return builder.build();
 		}
 	}
 
 	public Map<String, PVPMap> getPvpMap(){
-		Map<String, String> keyvalue = hget(RedisKey.PVPFIELD_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.PVPFIELD_CONFIG);
 		Map<String, PVPMap> map = new HashMap<String, PVPMap>();
 		if(!keyvalue.isEmpty()) {
 			for(String value : keyvalue.values()) {
@@ -509,13 +509,13 @@ public class PvpMapRedisService extends CacheService{
 				keyvalue.put(pvpmap.getFieldid()+"", RedisService.formatJson(pvpmap));
 				map.put(pvpmap.getFieldid()+"", pvpmap);
 			}
-			hputAll(RedisKey.PVPFIELD_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.PVPFIELD_CONFIG, keyvalue);
 		}
 		return map;
 	}
 
 	public PVPMapList.Builder getBasePvpMapList(){
-		String value = get(RedisKey.PVPMAP_CONFIG);
+		String value = getcache(RedisKey.PVPMAP_CONFIG);
 		PVPMapList.Builder builder = PVPMapList.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder;
@@ -525,7 +525,7 @@ public class PvpMapRedisService extends CacheService{
 				map.clearEvent();
 //				map.clearLootlist();
 			}
-			set(RedisKey.PVPMAP_CONFIG, RedisService.formatJson(builder.build()));
+			setcache(RedisKey.PVPMAP_CONFIG, RedisService.formatJson(builder.build()));
 			return builder;
 		}
 	}

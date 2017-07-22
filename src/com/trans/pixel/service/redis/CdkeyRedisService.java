@@ -197,7 +197,7 @@ public class CdkeyRedisService extends RedisService{
 	}
 	
 	public Cipher getCipher(String cipher) {
-		String value = CacheService.hget(RedisKey.CIPHER_KEY, "" + cipher);
+		String value = CacheService.hgetcache(RedisKey.CIPHER_KEY, "" + cipher);
 		if (value == null) {
 			Map<String, Cipher> config = getCipherConfig();
 			return config.get("" + cipher);
@@ -211,14 +211,14 @@ public class CdkeyRedisService extends RedisService{
 	}
 	
 	public Map<String, Cipher> getCipherConfig() {
-		Map<String, String> keyvalue = CacheService.hget(RedisKey.CIPHER_KEY);
+		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.CIPHER_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Cipher> map = buildCipherConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Cipher> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			CacheService.hputAll(RedisKey.CIPHER_KEY, redismap);
+			CacheService.hputcacheAll(RedisKey.CIPHER_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Cipher> map = new HashMap<String, Cipher>();

@@ -46,7 +46,7 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Chip getChip(int itemId) {
-		String value = hget(RedisKey.CHIP_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.CHIP_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Chip> chipConfig = getChipConfig();
 			return chipConfig.get("" + itemId);
@@ -60,14 +60,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Chip> getChipConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.CHIP_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.CHIP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Chip> map = buildChipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Chip> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.CHIP_CONFIG, redismap);
+			hputcacheAll(RedisKey.CHIP_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Chip> map = new HashMap<String, Chip>();
@@ -96,7 +96,7 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Engine getEngine(int itemId) {
-		String value = hget(RedisKey.ENGINE_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.ENGINE_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Engine> chipConfig = getEngineConfig();
 			return chipConfig.get("" + itemId);
@@ -110,14 +110,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Engine> getEngineConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ENGINE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.ENGINE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Engine> map = buildEngineConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Engine> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.ENGINE_CONFIG, redismap);
+			hputcacheAll(RedisKey.ENGINE_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Engine> map = new HashMap<String, Engine>();
@@ -147,7 +147,7 @@ public class EquipRedisService extends CacheService {
 	
 	//equiptucao
 	public Equiptucao getEquiptucao(int itemId) {
-		String value = hget(RedisKey.EQUIP_TUCAO_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.EQUIP_TUCAO_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Equiptucao> config = getEquiptucaoConfig();
 			return config.get("" + itemId);
@@ -161,14 +161,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Equiptucao> getEquiptucaoConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.EQUIP_TUCAO_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_TUCAO_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Equiptucao> map = buildEquiptucaoConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equiptucao> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.EQUIP_TUCAO_CONFIG, redismap);
+			hputcacheAll(RedisKey.EQUIP_TUCAO_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Equiptucao> map = new HashMap<String, Equiptucao>();
@@ -198,7 +198,7 @@ public class EquipRedisService extends CacheService {
 	
 	//equip
 	public Equip getEquip(int itemId) {
-		String value = hget(RedisKey.EQUIP_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.EQUIP_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Equip> equipConfig = getEquipConfig();
 			return equipConfig.get("" + itemId);
@@ -212,14 +212,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Equip> getEquipConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.EQUIP_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Equip> map = buildEquipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equip> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.EQUIP_CONFIG, redismap);
+			hputcacheAll(RedisKey.EQUIP_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Equip> map = new HashMap<String, Equip>();
@@ -250,7 +250,7 @@ public class EquipRedisService extends CacheService {
 	//armor
 	public Armor getArmor(int itemId) {
 		Armor.Builder builder = Armor.newBuilder();
-		String value = hget(RedisKey.ARMOR_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.ARMOR_CONFIG, "" + itemId);
 		if (value != null && RedisService.parseJson(value, builder)){
 			return builder.build();
 //		}else if(!exists(RedisKey.ARMOR_CONFIG)){
@@ -262,13 +262,13 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Armor> getArmorConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ARMOR_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.ARMOR_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Armor> map = buildArmorConfig();
 			for(Entry<String, Armor> entry : map.entrySet()){
 				keyvalue.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.ARMOR_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.ARMOR_CONFIG, keyvalue);
 			return map;
 		}else{
 			Map<String, Armor> map = new HashMap<String, Armor>();
@@ -298,7 +298,7 @@ public class EquipRedisService extends CacheService {
 	
 	//equip
 	public Material getMaterial(int itemId) {
-		String value = hget(RedisKey.MATERIAL_CONFIG, "" + itemId);
+		String value = hgetcache(RedisKey.MATERIAL_CONFIG, "" + itemId);
 		if (value == null) {
 			Map<String, Material> config = getMaterialConfig();
 			return config.get("" + itemId);
@@ -312,14 +312,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Material> getMaterialConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.MATERIAL_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.MATERIAL_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Material> map = buildMaterialConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Material> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.MATERIAL_CONFIG, redismap);
+			hputcacheAll(RedisKey.MATERIAL_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Material> map = new HashMap<String, Material>();
@@ -349,7 +349,7 @@ public class EquipRedisService extends CacheService {
 	
 	//equipup
 	public Equipup getEquipup(int id) {
-		String value = hget(RedisKey.EQUIPUP_CONFIG, "" + id);
+		String value = hgetcache(RedisKey.EQUIPUP_CONFIG, "" + id);
 		if (value == null) {
 			Map<String, Equipup> equipConfig = getEquipupConfig();
 			return equipConfig.get("" + id);
@@ -363,14 +363,14 @@ public class EquipRedisService extends CacheService {
 	}
 	
 	public Map<String, Equipup> getEquipupConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.EQUIPUP_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIPUP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Equipup> map = buildEquipupConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Equipup> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.EQUIPUP_CONFIG, redismap);
+			hputcacheAll(RedisKey.EQUIPUP_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Equipup> map = new HashMap<String, Equipup>();

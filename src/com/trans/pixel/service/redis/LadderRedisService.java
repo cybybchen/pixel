@@ -69,7 +69,7 @@ public class LadderRedisService extends CacheService{
 //	private UserCacheService userCacheService;
 	
 	public LadderChongzhi getLadderChongzhi(int count){
-		String value = hget(RedisKey.LADDER_CHONGZHI_CONFIG, count+"");
+		String value = hgetcache(RedisKey.LADDER_CHONGZHI_CONFIG, count+"");
 		LadderChongzhi.Builder builder = LadderChongzhi.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
@@ -82,7 +82,7 @@ public class LadderRedisService extends CacheService{
 			if(chongzhi.getCount() == count)
 				builder.mergeFrom(chongzhi);
 		}
-		hputAll(RedisKey.LADDER_CHONGZHI_CONFIG, keyvalue);
+		hputcacheAll(RedisKey.LADDER_CHONGZHI_CONFIG, keyvalue);
 		if(builder.getCost() == 0)
 			return null;
 		else
@@ -91,7 +91,7 @@ public class LadderRedisService extends CacheService{
 
 	public LadderWinReward.Builder getLadderWinReward(int id){
 		LadderWinReward.Builder builder = LadderWinReward.newBuilder();
-		String value = hget(RedisKey.LADDERWIN_CONFIG, id+"");
+		String value = hgetcache(RedisKey.LADDERWIN_CONFIG, id+"");
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
 		String xml = RedisService.ReadConfig("ld_ladderwin.xml");
@@ -109,7 +109,7 @@ public class LadderRedisService extends CacheService{
 				builder = win;
 			keyvalue.put(win.getId()+"", RedisService.formatJson(win.build()));
 		}
-		hputAll(RedisKey.LADDERWIN_CONFIG, keyvalue);
+		hputcacheAll(RedisKey.LADDERWIN_CONFIG, keyvalue);
 		return builder;
 	}
 	
@@ -146,7 +146,7 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public UserRankBean getUserRankByRank(final int serverId, final long rank) {
-		String value = hget(buildRankRedisKey(serverId), rank+"");
+		String value = hgetcache(buildRankRedisKey(serverId), rank+"");
 		if(value == null)
 			return null;
 //		logger.debug(value);
@@ -155,12 +155,12 @@ public class LadderRedisService extends CacheService{
 	
 	public void updateUserRank(final int serverId, final UserRankBean userRank) {
 		String key = buildRankRedisKey(serverId);
-		hput(key, "" + userRank.getRank(), userRank.toJson());
+		redisService.hput(key, "" + userRank.getRank(), userRank.toJson());
 		
 	}
 	
 	public UserRankBean getUserRankByUserId(final int serverId, final long userId) {
-		String value = hget(buildRankInfoRedisKey(serverId), userId+"");
+		String value = hgetcache(buildRankInfoRedisKey(serverId), userId+"");
 		if(value == null)
 			return null;
 		logger.debug(value);
@@ -170,13 +170,13 @@ public class LadderRedisService extends CacheService{
 	public void updateUserRankInfo(final int serverId, final UserRankBean userRank) {
 		String key = buildRankInfoRedisKey(serverId);
 				
-		hput(key,"" + userRank.getUserId(), userRank.toJson());
+		redisService.hput(key,"" + userRank.getUserId(), userRank.toJson());
 	}
 	
 	public Map<Integer, LadderRankingBean> getLadderRankingMap() {
 		Map<Integer, LadderRankingBean> ladderRankingMap = new HashMap<Integer, LadderRankingBean>();
 		String key = RedisKey.LADDER_RANKING_CONFIG_KEY;
-		Map<String, String> keyvalue = hget(key);
+		Map<String, String> keyvalue = hgetcache(key);
 		if (keyvalue == null) {
 			ladderRankingMap = LadderRankingBean.xmlParseLadderRanking();
 			setLadderRankingMap(ladderRankingMap);
@@ -202,17 +202,17 @@ public class LadderRedisService extends CacheService{
 			keyvalue.put("" + entry.getKey(), entry.getValue().toJson());
 		}
 		
-		hputAll(key, keyvalue);
+		hputcacheAll(key, keyvalue);
 	}
 	
 	public LadderDailyList getLadderDailyList() {
-		String value = get(RedisKey.LADDER_DAILY_CONFIG_KEY);
+		String value = getcache(RedisKey.LADDER_DAILY_CONFIG_KEY);
 		LadderDailyList.Builder builder = LadderDailyList.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 		String xml = RedisService.ReadConfig("ld_ladderdaily.xml");
 		RedisService.parseXml(xml, builder);
-		set(RedisKey.LADDER_DAILY_CONFIG_KEY, RedisService.formatJson(builder.build()));
+		setcache(RedisKey.LADDER_DAILY_CONFIG_KEY, RedisService.formatJson(builder.build()));
 		return builder.build();
 	}
 	
@@ -229,11 +229,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<String> getLadderNames() {
-		List<String> values = lrange((RedisKey.LADDER_NAME_KEY));
+		List<String> values = lrangecache((RedisKey.LADDER_NAME_KEY));
 		if(values.isEmpty()){
 			List<String> list = buildLadderNameConfig();
 			for(String name : list){
-				lpush(RedisKey.LADDER_NAME_KEY, name);
+				lpushcache(RedisKey.LADDER_NAME_KEY, name);
 			}
 			return list;
 		}else{
@@ -257,11 +257,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<String> getLadderNames2() {
-		List<String> values = lrange((RedisKey.LADDER_NAME2_KEY));
+		List<String> values = lrangecache((RedisKey.LADDER_NAME2_KEY));
 		if(values.isEmpty()){
 			List<String> list = buildLadderNameConfig2();
 			for(String name : list){
-				lpush(RedisKey.LADDER_NAME2_KEY, name);
+				lpushcache(RedisKey.LADDER_NAME2_KEY, name);
 			}
 			return list;
 		}else{
@@ -285,11 +285,11 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public List<LadderEnemy> getLadderEnemy() {
-		List<String> values = lrange((RedisKey.LADDER_ENEMY_KEY));
+		List<String> values = lrangecache((RedisKey.LADDER_ENEMY_KEY));
 		if(values.isEmpty()){
 			List<LadderEnemy> list = buildLadderEnemyConfig();
 			for(LadderEnemy enemy : list){
-				lpush(RedisKey.LADDER_ENEMY_KEY, RedisService.formatJson(enemy));
+				lpushcache(RedisKey.LADDER_ENEMY_KEY, RedisService.formatJson(enemy));
 			}
 			return list;
 		}else{
@@ -320,7 +320,7 @@ public class LadderRedisService extends CacheService{
 	
 	//laddermode
 	public LadderMode getLadderMode(int id) {
-		String value = hget(RedisKey.LADDER_MODE_KEY, "" + id);
+		String value = hgetcache(RedisKey.LADDER_MODE_KEY, "" + id);
 		if (value == null) {
 			Map<String, LadderMode> config = getLadderModeConfig();
 			return config.get("" + id);
@@ -334,14 +334,14 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public Map<String, LadderMode> getLadderModeConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.LADDER_MODE_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.LADDER_MODE_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, LadderMode> map = buildLadderModeConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, LadderMode> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.LADDER_MODE_KEY, redismap);
+			hputcacheAll(RedisKey.LADDER_MODE_KEY, redismap);
 			return map;
 		}else{
 			Map<String, LadderMode> map = new HashMap<String, LadderMode>();
@@ -371,7 +371,7 @@ public class LadderRedisService extends CacheService{
 	
 	//ladderequip
 	public LadderEquip getLadderEquip(int id) {
-		String value = hget(RedisKey.LADDER_EQUIP_KEY, "" + id);
+		String value = hgetcache(RedisKey.LADDER_EQUIP_KEY, "" + id);
 		if (value == null) {
 			Map<String, LadderEquip> config = getLadderEquipConfig();
 			return config.get("" + id);
@@ -385,14 +385,14 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public Map<String, LadderEquip> getLadderEquipConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.LADDER_EQUIP_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.LADDER_EQUIP_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, LadderEquip> map = buildLadderEquipConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, LadderEquip> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.LADDER_EQUIP_KEY, redismap);
+			hputcacheAll(RedisKey.LADDER_EQUIP_KEY, redismap);
 			return map;
 		}else{
 			Map<String, LadderEquip> map = new HashMap<String, LadderEquip>();
@@ -422,7 +422,7 @@ public class LadderRedisService extends CacheService{
 	
 	//ladderseason
 	public LadderSeasonConfig getLadderSeason(int id) {
-		String value = hget(RedisKey.LADDER_SEASON_CONFIG_KEY, "" + id);
+		String value = hgetcache(RedisKey.LADDER_SEASON_CONFIG_KEY, "" + id);
 		if (value == null) {
 			Map<String, LadderSeasonConfig> config = getLadderSeasonConfig();
 			return config.get("" + id);
@@ -436,14 +436,14 @@ public class LadderRedisService extends CacheService{
 	}
 	
 	public Map<String, LadderSeasonConfig> getLadderSeasonConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.LADDER_SEASON_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.LADDER_SEASON_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, LadderSeasonConfig> map = buildLadderSeasonConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, LadderSeasonConfig> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.LADDER_SEASON_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.LADDER_SEASON_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, LadderSeasonConfig> map = new HashMap<String, LadderSeasonConfig>();

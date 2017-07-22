@@ -47,7 +47,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero choice
 	public HeroChoice getHerochoice(int heroId) {
-		String value = hget(RedisKey.HERO_CHOICE_CONFIG, "" + heroId);
+		String value = hgetcache(RedisKey.HERO_CHOICE_CONFIG, "" + heroId);
 		if (value == null) {
 			Map<String, HeroChoice> herochoiceConfig = getHerochoiceConfig();
 			return herochoiceConfig.get("" + heroId);
@@ -61,14 +61,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, HeroChoice> getHerochoiceConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.HERO_CHOICE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.HERO_CHOICE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, HeroChoice> map = buildHerochoiceConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroChoice> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.HERO_CHOICE_CONFIG, redismap);
+			hputcacheAll(RedisKey.HERO_CHOICE_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, HeroChoice> map = new HashMap<String, HeroChoice>();
@@ -98,7 +98,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero loot
 	public Heroloot getHeroloot(int heroId) {
-		String value = hget(RedisKey.HERO_LOOT_CONFIG, "" + heroId);
+		String value = hgetcache(RedisKey.HERO_LOOT_CONFIG, "" + heroId);
 		if (value == null) {
 			Map<String, Heroloot> herolootConfig = getHerolootConfig();
 			return herolootConfig.get("" + heroId);
@@ -112,14 +112,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, Heroloot> getHerolootConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.HERO_LOOT_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.HERO_LOOT_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Heroloot> map = buildHerolootConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Heroloot> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.HERO_LOOT_CONFIG, redismap);
+			hputcacheAll(RedisKey.HERO_LOOT_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Heroloot> map = new HashMap<String, Heroloot>();
@@ -149,7 +149,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero rarelevelup
 	public HeroRareLevelup getHeroRareLevelup(int position) {
-		String value = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG, "" + position);
+		String value = hgetcache(RedisKey.HERO_RARE_LEVELUP_CONFIG, "" + position);
 		if (value == null) {
 			Map<String, HeroRareLevelup> heroRareLevelupConfig = getHeroRareLevelupConfig();
 			return heroRareLevelupConfig.get("" + position);
@@ -163,14 +163,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, HeroRareLevelup> getHeroRareLevelupConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.HERO_RARE_LEVELUP_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.HERO_RARE_LEVELUP_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, HeroRareLevelup> map = buildHeroRareLevelupConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroRareLevelup> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.HERO_RARE_LEVELUP_CONFIG, redismap);
+			hputcacheAll(RedisKey.HERO_RARE_LEVELUP_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, HeroRareLevelup> map = new HashMap<String, HeroRareLevelup>();
@@ -200,7 +200,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero fetters
 	public HeroFettersOrder getHeroFettersOrder(int heroId) {
-		String value = hget(RedisKey.HERO_FETTERS_CONFIG, "" + heroId);
+		String value = hgetcache(RedisKey.HERO_FETTERS_CONFIG, "" + heroId);
 		if (value == null) {
 			Map<String, HeroFettersOrder> heroFettersConfig = getHeroFettersConfig();
 			return heroFettersConfig.get("" + heroId);
@@ -214,14 +214,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	private Map<String, HeroFettersOrder> getHeroFettersConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.HERO_FETTERS_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.HERO_FETTERS_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, HeroFettersOrder> map = buildHeroFettersOrderConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, HeroFettersOrder> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.HERO_FETTERS_CONFIG, redismap);
+			hputcacheAll(RedisKey.HERO_FETTERS_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, HeroFettersOrder> map = new HashMap<String, HeroFettersOrder>();
@@ -251,7 +251,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero
 	public Hero getHero(int heroId) {
-		String value = hget(RedisKey.HERO_CONFIG, "" + heroId);
+		String value = hgetcache(RedisKey.HERO_CONFIG, "" + heroId);
 		if (value == null) {
 			Map<String, Hero> heroConfig = getHeroConfig();
 			return heroConfig.get("" + heroId);
@@ -265,14 +265,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, Hero> getHeroConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.HERO_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.HERO_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Hero> map = buildHeroConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Hero> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.HERO_CONFIG, redismap);
+			hputcacheAll(RedisKey.HERO_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Hero> map = new HashMap<String, Hero>();
@@ -302,7 +302,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero
 	public Upgrade getUpgrade(int level) {
-		String value = hget(RedisKey.UPGRADE_CONFIG, "" + level);
+		String value = hgetcache(RedisKey.UPGRADE_CONFIG, "" + level);
 		if (value == null) {
 			Map<String, Upgrade> upgradeConfig = getUpgradeConfig();
 			return upgradeConfig.get("" + level);
@@ -316,14 +316,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, Upgrade> getUpgradeConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.UPGRADE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.UPGRADE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Upgrade> map = buildUpgradeConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Upgrade> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.UPGRADE_CONFIG, redismap);
+			hputcacheAll(RedisKey.UPGRADE_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Upgrade> map = new HashMap<String, Upgrade>();
@@ -353,7 +353,7 @@ public class HeroRedisService extends CacheService {
 	
 	//hero rankvalue
 	public Rankvalue getRankvalu(int rank) {
-		String value = hget(RedisKey.RANK_VALUE_CONFIG, "" + rank);
+		String value = hgetcache(RedisKey.RANK_VALUE_CONFIG, "" + rank);
 		if (value == null) {
 			Map<String, Rankvalue> heroRareLevelupConfig = getRankvalueConfig();
 			return heroRareLevelupConfig.get("" + rank);
@@ -367,14 +367,14 @@ public class HeroRedisService extends CacheService {
 	}
 	
 	public Map<String, Rankvalue> getRankvalueConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.RANK_VALUE_CONFIG);
+		Map<String, String> keyvalue = hgetcache(RedisKey.RANK_VALUE_CONFIG);
 		if(keyvalue.isEmpty()){
 			Map<String, Rankvalue> map = buildRankvalueConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Rankvalue> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.RANK_VALUE_CONFIG, redismap);
+			hputcacheAll(RedisKey.RANK_VALUE_CONFIG, redismap);
 			return map;
 		}else{
 			Map<String, Rankvalue> map = new HashMap<String, Rankvalue>();

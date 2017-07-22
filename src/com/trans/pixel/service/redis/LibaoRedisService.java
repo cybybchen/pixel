@@ -51,14 +51,14 @@ public class LibaoRedisService extends CacheService{
 	}
 
 	public JewelPoolLists.Builder getPoolList() {
-		String value = get(RedisKey.JEWELPOOL_CONFIG);
+		String value = getcache(RedisKey.JEWELPOOL_CONFIG);
 		JewelPoolLists.Builder builder = JewelPoolLists.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder)){
 			return builder;
 		}else{
 			String xml = RedisService.ReadConfig("ld_pool.xml");
 			RedisService.parseXml(xml, builder);
-			set(RedisKey.JEWELPOOL_CONFIG, RedisService.formatJson(builder.build()));
+			setcache(RedisKey.JEWELPOOL_CONFIG, RedisService.formatJson(builder.build()));
 
 			return builder;
 		}

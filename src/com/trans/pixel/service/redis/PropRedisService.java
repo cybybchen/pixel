@@ -27,7 +27,7 @@ public class PropRedisService extends CacheService {
 	
 	//pro
 	public Prop getPackage(int id) {
-		String value = hget(RedisKey.PROP_KEY, "" + id);
+		String value = hgetcache(RedisKey.PROP_KEY, "" + id);
 		if (value == null) {
 			Map<String, Prop> packageConfig = getPackageConfig();
 			return packageConfig.get("" + id);
@@ -41,14 +41,14 @@ public class PropRedisService extends CacheService {
 	}
 	
 	public Map<String, Prop> getPackageConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.PROP_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.PROP_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Prop> map = buildPackageConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Prop> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.PROP_KEY, redismap);
+			hputcacheAll(RedisKey.PROP_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Prop> map = new HashMap<String, Prop>();
@@ -78,7 +78,7 @@ public class PropRedisService extends CacheService {
 	
 	//syn
 	public Synthetise getSynthetise(int id) {
-		String value = hget(RedisKey.SYNTHETISE_KEY, "" + id);
+		String value = hgetcache(RedisKey.SYNTHETISE_KEY, "" + id);
 		if (value == null) {
 			Map<String, Synthetise> config = getSynthetiseConfig();
 			return config.get("" + id);
@@ -92,14 +92,14 @@ public class PropRedisService extends CacheService {
 	}
 	
 	private Map<String, Synthetise> getSynthetiseConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.SYNTHETISE_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.SYNTHETISE_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Synthetise> map = buildSynthetiseConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Synthetise> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.SYNTHETISE_KEY, redismap);
+			hputcacheAll(RedisKey.SYNTHETISE_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Synthetise> map = new HashMap<String, Synthetise>();

@@ -31,7 +31,7 @@ public class TaskRedisService extends CacheService {
 	
 	//task1
 	public TaskTarget getTask1Target(int targetId) {
-		String value = hget(RedisKey.TASK1_CONFIG_KEY, "" + targetId);
+		String value = hgetcache(RedisKey.TASK1_CONFIG_KEY, "" + targetId);
 		if (value == null) {
 			Map<String, TaskTarget> config = getTask1TargetConfig();
 			return config.get("" + targetId);
@@ -45,14 +45,14 @@ public class TaskRedisService extends CacheService {
 	}
 	
 	public Map<String, TaskTarget> getTask1TargetConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TASK1_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TASK1_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, TaskTarget> map = buildTask1TargetConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TaskTarget> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TASK1_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.TASK1_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
@@ -82,16 +82,16 @@ public class TaskRedisService extends CacheService {
 				redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
 			}
 		}
-		hputAll(RedisKey.TASK1_ORDER_CONFIG_KEY, redismap);
+		hputcacheAll(RedisKey.TASK1_ORDER_CONFIG_KEY, redismap);
 		return map;
 	}
 	
 	//task1 order
 	public TaskOrder getTask1Order(int order) {
-		String value = hget(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
+		String value = hgetcache(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
 		if (value == null) {
 			buildTask1TargetConfig();
-			value = hget(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
+			value = hgetcache(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
 		} 
 		
 		TaskOrder.Builder builder = TaskOrder.newBuilder();
@@ -103,7 +103,7 @@ public class TaskRedisService extends CacheService {
 	
 	//task3
 	public TaskOrder getTask3Order(int order) {
-		String value = hget(RedisKey.TASK3_CONFIG_KEY, "" + order);
+		String value = hgetcache(RedisKey.TASK3_CONFIG_KEY, "" + order);
 		if (value == null) {
 			Map<String, TaskOrder> config = getTask3OrderConfig();
 			return config.get("" + order);
@@ -117,14 +117,14 @@ public class TaskRedisService extends CacheService {
 	}
 	
 	public Map<String, TaskOrder> getTask3OrderConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TASK3_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TASK3_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, TaskOrder> map = buildTask3OrderConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TaskOrder> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TASK3_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.TASK3_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
@@ -168,14 +168,14 @@ public class TaskRedisService extends CacheService {
 //	}
 	
 	public Map<String, Task2TargetHero> getTask2TargetConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.TASK2_CONFIG_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.TASK2_CONFIG_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, Task2TargetHero> map = buildTask2TargetConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Task2TargetHero> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.TASK2_CONFIG_KEY, redismap);
+			hputcacheAll(RedisKey.TASK2_CONFIG_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
@@ -206,7 +206,7 @@ public class TaskRedisService extends CacheService {
 					redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
 				}
 			}
-			hputAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
+			hputcacheAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
 		}
 		
 		return map;
@@ -214,10 +214,10 @@ public class TaskRedisService extends CacheService {
 	
 	//task2 order
 	public TaskOrder getTask2Order(int order, int heroId) {
-		String value = hget(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+		String value = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
 		if (value == null) {
 			buildTask2TargetConfig();
-			value = hget(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+			value = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
 		} 
 		
 		TaskOrder.Builder builder = TaskOrder.newBuilder();

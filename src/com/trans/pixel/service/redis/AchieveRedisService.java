@@ -22,7 +22,7 @@ public class AchieveRedisService extends CacheService {
 	}
 	
 	public Achieve getAchieve(int id) {
-		String value = hget(RedisKey.ACHIEVE_KEY, "" + id);
+		String value = hgetcache(RedisKey.ACHIEVE_KEY, "" + id);
 		if (value == null) {
 			Map<String, Achieve> config = getAchieveConfig();
 			return config.get("" + id);
@@ -36,14 +36,14 @@ public class AchieveRedisService extends CacheService {
 	}
 	
 	public Map<String, Achieve> getAchieveConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ACHIEVE_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.ACHIEVE_KEY);
 		if(keyvalue == null || keyvalue.isEmpty()){
 			Map<String, Achieve> map = buildAchieveConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, Achieve> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.ACHIEVE_KEY, redismap);
+			hputcacheAll(RedisKey.ACHIEVE_KEY, redismap);
 			return map;
 		}else{
 			Map<String, Achieve> map = new HashMap<String, Achieve>();

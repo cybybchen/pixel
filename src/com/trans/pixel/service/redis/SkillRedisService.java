@@ -3,6 +3,7 @@ package com.trans.pixel.service.redis;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,10 +11,6 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,14 +26,14 @@ public class SkillRedisService extends CacheService {
 	}
 	
 	public SkillLevelBean getSkillLevelById(final int id) {
-		String value = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, "" + id);
+		String value = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, "" + id);
 		
 		return SkillLevelBean.fromJson(value);
 	}
 	
 	public List<SkillLevelBean> getSkillLevelList() {
 		List<SkillLevelBean> skillLevelList = new ArrayList<SkillLevelBean>();
-		Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+		Map<String, String> map = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
 		if (map == null || map.isEmpty()) {
 			skillLevelList = SkillLevelBean.xmlParse();
 			if (skillLevelList != null && skillLevelList.size() != 0) {
@@ -65,8 +62,10 @@ public class SkillRedisService extends CacheService {
 	}
 	
 	public void setSkillLevelList(final List<SkillLevelBean> skillLevelList) {
+		Map<String, String> map = new HashMap<String, String>();
 		for (SkillLevelBean skillLevel : skillLevelList) {
-			hput(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, "" + skillLevel.getId(), skillLevel.toJson());
+			map.put(skillLevel.getId()+"", skillLevel.toJson());
 		}
+		hputcacheAll(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, map);
 	}
 }

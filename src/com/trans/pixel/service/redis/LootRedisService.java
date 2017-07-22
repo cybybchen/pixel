@@ -34,7 +34,7 @@ public class LootRedisService extends CacheService {
 //	}
 	
 	public SavingBox getSavingBox(int id) {
-		String value = hget(RedisKey.SAVINGBOX_KEY, "" + id);
+		String value = hgetcache(RedisKey.SAVINGBOX_KEY, "" + id);
 		if (value == null) {
 			Map<String, SavingBox> config = getSavingBoxConfig();
 			return config.get("" + id);
@@ -48,7 +48,7 @@ public class LootRedisService extends CacheService {
 	}
 	
 	public Map<String, SavingBox> getSavingBoxConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.SAVINGBOX_KEY);
+		Map<String, String> keyvalue = hgetcache(RedisKey.SAVINGBOX_KEY);
 //		logger.error("savingboxlist is:" + keyvalue);
 		if(keyvalue == null || keyvalue.isEmpty()){
 			Map<String, SavingBox> map = buildSavingBoxConfig();
@@ -56,7 +56,7 @@ public class LootRedisService extends CacheService {
 			for(Entry<String, SavingBox> entry : map.entrySet()){
 				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
-			hputAll(RedisKey.SAVINGBOX_KEY, redismap);
+			hputcacheAll(RedisKey.SAVINGBOX_KEY, redismap);
 			return map;
 		}else{
 			Map<String, SavingBox> map = new HashMap<String, SavingBox>();

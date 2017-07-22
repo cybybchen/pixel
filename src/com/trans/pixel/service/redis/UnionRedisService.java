@@ -323,7 +323,7 @@ public class UnionRedisService extends RedisService{
 	
 	//union boss
 	public UnionBoss getUnionBoss(int id) {
-		String value = CacheService.hget(RedisKey.UNION_BOSS_KEY, "" + id);
+		String value = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY, "" + id);
 		if (value == null) {
 			Map<String, UnionBoss> unionBossConfig = getUnionBossConfig();
 			return unionBossConfig.get("" + id);
@@ -337,14 +337,14 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public Map<String, UnionBoss> getUnionBossConfig() {
-		Map<String, String> keyvalue = CacheService.hget(RedisKey.UNION_BOSS_KEY);
+		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, UnionBoss> map = buildUnionBossConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, UnionBoss> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			CacheService.hputAll(RedisKey.UNION_BOSS_KEY, redismap);
+			CacheService.hputcacheAll(RedisKey.UNION_BOSS_KEY, redismap);
 			return map;
 		}else{
 			Map<String, UnionBoss> map = new HashMap<String, UnionBoss>();
@@ -425,7 +425,7 @@ public class UnionRedisService extends RedisService{
 	
 	//union bosswin
 	public UnionBosswin getUnionBosswin(int id) {
-		String value = CacheService.hget(RedisKey.UNION_BOSSWIN_KEY, "" + id);
+		String value = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY, "" + id);
 		if (value == null) {
 			Map<String, UnionBosswin> unionBosswinConfig = getUnionBosswinConfig();
 			return unionBosswinConfig.get("" + id);
@@ -439,14 +439,14 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public Map<String, UnionBosswin> getUnionBosswinConfig() {
-		Map<String, String> keyvalue = CacheService.hget(RedisKey.UNION_BOSSWIN_KEY);
+		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, UnionBosswin> map = buildUnionBosswinConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, UnionBosswin> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			CacheService.hputAll(RedisKey.UNION_BOSSWIN_KEY, redismap);
+			CacheService.hputcacheAll(RedisKey.UNION_BOSSWIN_KEY, redismap);
 			return map;
 		}else{
 			Map<String, UnionBosswin> map = new HashMap<String, UnionBosswin>();
@@ -585,7 +585,7 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public UnionExp getUnionExp(int id) {
-		String value = CacheService.hget(RedisKey.UNION_EXP_KEY, "" + id);
+		String value = CacheService.hgetcache(RedisKey.UNION_EXP_KEY, "" + id);
 		if (value == null) {
 			Map<String, UnionExp> unionBossConfig = getUnionExpConfig();
 			return unionBossConfig.get("" + id);
@@ -599,14 +599,14 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public Map<String, UnionExp> getUnionExpConfig() {
-		Map<String, String> keyvalue = CacheService.hget(RedisKey.UNION_EXP_KEY);
+		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_EXP_KEY);
 		if(keyvalue.isEmpty()){
 			Map<String, UnionExp> map = buildUnionExpConfig();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, UnionExp> entry : map.entrySet()){
 				redismap.put(entry.getKey(), formatJson(entry.getValue()));
 			}
-			CacheService.hputAll(RedisKey.UNION_EXP_KEY, redismap);
+			CacheService.hputcacheAll(RedisKey.UNION_EXP_KEY, redismap);
 			return map;
 		}else{
 			Map<String, UnionExp> map = new HashMap<String, UnionExp>();

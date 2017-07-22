@@ -19,7 +19,7 @@ public class ZhanliRedisService extends CacheService {
 	}
 	
 	public int getMerlevel(int level){
-		String value = hget(RedisKey.MERLEVEL_CONFIG, level+"");
+		String value = hgetcache(RedisKey.MERLEVEL_CONFIG, level+"");
 		int score = 0;
 		if(value != null){
 			score = Integer.parseInt(value);
@@ -32,20 +32,20 @@ public class ZhanliRedisService extends CacheService {
 				if(merlevel.getLevel() == level)
 					score = merlevel.getScore();
 			}
-			hputAll(RedisKey.MERLEVEL_CONFIG, keyvalue);
+			hputcacheAll(RedisKey.MERLEVEL_CONFIG, keyvalue);
 		}
 		return score;
 	}
 	
 	public MerlevelList.Builder getMerlevel(){
-		String value = get(RedisKey.MERCENARY_CONFIG);
+		String value = getcache(RedisKey.MERCENARY_CONFIG);
 		MerlevelList.Builder list = MerlevelList.newBuilder();
 		if(value != null && RedisService.parseJson(value, list)){
 			return list;
 		}
 		String xml = RedisService.ReadConfig("ld_mercenary.xml");
 		RedisService.parseXml(xml, list);
-		set(RedisKey.MERCENARY_CONFIG, RedisService.formatJson(list.build()));
+		setcache(RedisKey.MERCENARY_CONFIG, RedisService.formatJson(list.build()));
 		return list;
 	}
 }
