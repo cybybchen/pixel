@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,7 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.HeroProto.HeroChoice;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.UserInfoProto.Area;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.AreaEventList;
@@ -47,6 +49,7 @@ import com.trans.pixel.protoc.UserInfoProto.SavingBox;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
+import com.trans.pixel.utils.DateUtil;
 
 @Repository
 public class LevelRedisService extends RedisService {
@@ -56,7 +59,7 @@ public class LevelRedisService extends RedisService {
 	private static final int NEWPLAY_LEVEL_2 = 1013;
 	private static final int NEWPLAY_LEVEL_3 = 1014;
 	public static final int EVENTTIME = 480;
-	public static final int EVENTSIZE = 50;
+	public static final int EVENTSIZE = 60;
 	private static final long EVENT_BUY_COUNT = 5;
 	@Resource
 	private UserLevelMapper mapper;
@@ -248,7 +251,7 @@ public class LevelRedisService extends RedisService {
 	public void productEvent(UserBean user, UserLevelBean userLevel, boolean isBuy){
 		long time = now() - userLevel.getEventTime();
 		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
-		if(!isBuy && eventsize >= EVENTSIZE){
+		if(!isBuy && eventsize >= calEventSize(user)){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
 		}else if(time >= EVENTTIME){
@@ -266,7 +269,7 @@ public class LevelRedisService extends RedisService {
 					}
 				}
 				
-				for(int i = 0; i < getProductEvnentCount(eventsize, time, isBuy); i++){
+				for(int i = 0; i < getProductEvnentCount(user, eventsize, time, isBuy); i++){
 					int weight = nextInt(events.getWeight());
 					for(Event.Builder event : events.getEventBuilderList()){
 						weight -= event.getWeight();
@@ -324,11 +327,11 @@ public class LevelRedisService extends RedisService {
 		}
 	}
 	
-	private long getProductEvnentCount(long eventsize, long time, boolean isBuy) {
+	private long getProductEvnentCount(UserBean user, long eventsize, long time, boolean isBuy) {
 		if (isBuy)
 			return EVENT_BUY_COUNT;
 		
-		return Math.min(EVENTSIZE - eventsize, time / EVENTTIME);
+		return Math.min(calEventSize(user) - eventsize, time / EVENTTIME);
 	}
 	
 	public Event getEvent(long userId, int order) {
@@ -1089,5 +1092,20 @@ public class LevelRedisService extends RedisService {
 		userService.updateUser(user);
 		
 		return SuccessConst.PURCHASE_SUCCESS;
+	}
+	
+	private int calEventSize(UserBean user) {
+		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
+		Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+		
+		int eventSize = EVENTSIZE;
+		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+			eventSize += 10;
+		}
+		if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
+			eventSize += 20;
+		}
+		
+		return eventSize;
 	}
 }
