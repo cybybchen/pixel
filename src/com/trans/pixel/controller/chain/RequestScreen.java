@@ -512,7 +512,7 @@ public abstract class RequestScreen implements RequestHandle {
 		        return false;
 		    }
 		
-			if (user == null && (ConfigUtil.IS_MASTER || head.getLevel() == 1)) {
+			if (ConfigUtil.IS_MASTER || head.getLevel() == 1) {
 				user = new UserBean();
 				user.setServerId(head.getServerId());
 			}

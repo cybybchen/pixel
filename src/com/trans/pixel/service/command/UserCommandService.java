@@ -360,11 +360,11 @@ public class UserCommandService extends BaseCommandService {
 		}
 		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
-		if (!cmd.hasMarkId2()) {
+		if (!cmd.hasMarkId2()) {//转发到master
 			ResponseRecommandCommand recommand = requestService.requestBindRecommand(cmd.getMarkId(), user.calMarkId(), serverId, userId);
 			builder.mergeFrom(recommand);
 			builder.setCount(userService.getRecommands(user));	
-		} else {
+		} else {//上家所在服务器
 			UserBean other = userService.getUserOther(userId);
 			if (other == null) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);

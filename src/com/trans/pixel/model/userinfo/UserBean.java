@@ -1369,6 +1369,7 @@ public class UserBean {
 		builder.setMarkId(calMarkId());
 		builder.setRecommandMarkId(recommandMarkId);
 		builder.setTitleOrder(titleOrder);
+		builder.setFriendVip(friendVip);
 		
 		return builder.build();
 	}
