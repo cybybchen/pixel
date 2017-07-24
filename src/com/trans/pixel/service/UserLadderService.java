@@ -275,7 +275,7 @@ public class UserLadderService {
 	
 	public boolean isNextSeason(UserLadder userLadder) {
 		LadderSeason ladderSeason = getLadderSeason();
-		if (userLadder == null || ladderSeason == null || userLadder.getSeason() != ladderSeason.getSeason()) {
+		if (userLadder == null || ladderSeason == null || userLadder.getSeason() < ladderSeason.getSeason()) {
 			return true;
 		}
 		
