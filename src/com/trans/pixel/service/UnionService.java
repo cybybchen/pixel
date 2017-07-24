@@ -171,7 +171,6 @@ public class UnionService extends FightService{
 				zhanli += member.getZhanli()*3/10;
 			else if(index < 30)
 				zhanli += member.getZhanli()/10;
-			zhanli =(int)(zhanli/2.3);
 //			log.error("zhanli+"+member.getZhanli()+" = "+zhanli);
 			index++;
 		}
@@ -179,6 +178,7 @@ public class UnionService extends FightService{
 			user.setUnionName(union.getName());
 			userService.updateUser(user);
 		}
+		zhanli =(int)(zhanli/2.3);
 		if(zhanli != union.getZhanli()){
 			union.setZhanli(zhanli);
 			needupdate = true;
