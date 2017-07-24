@@ -78,7 +78,7 @@ public class UnionCommandService extends BaseCommandService {
 		if (isNewVersion) {
 			switch (type.getNumber()) {
 				case UNION_INFO_TYPE.TYPE_UNION_VALUE:
-					unionService.getUnion(user, isNewVersion);
+					union = unionService.getUnion(user, isNewVersion);
 					break;
 				case UNION_INFO_TYPE.TYPE_APPLY_VALUE:
 					builder.addAllApplies(unionService.getUnionApply(user));
