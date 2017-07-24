@@ -14,42 +14,24 @@ import com.trans.pixel.service.cache.CacheService;
 public class FenjieRedisService extends CacheService {
 
 	public FenjieRedisService() {
-		getFenjieList();
+		buildFenjieList();
 	}
 	
 	public Fenjie getFenjie(int id) {
-		Fenjie.Builder builder = Fenjie.newBuilder();
-		String value = hgetcache(RedisKey.PREFIX + RedisKey.FENJIE_KEY, "" + id);
-		if(value != null && RedisService.parseJson(value, builder))
-			return builder.build();
-//		else if(!exists(RedisKey.PREFIX + RedisKey.FENJIE_KEY)){
-		else {
-			Map<Integer, Fenjie> map = getFenjieList();
-			return map.get(id);
-		}
-//		return null;
+		Map<Integer, Fenjie> map = hgetcache(RedisKey.PREFIX + RedisKey.FENJIE_KEY);
+		return map.get(id);
 	}
-	public Map<Integer, Fenjie> getFenjieList() {
+	
+	public Map<Integer, Fenjie> buildFenjieList() {
+		String xml = RedisService.ReadConfig("ld_fenjie.xml");
+		FenjieList.Builder list = FenjieList.newBuilder();
+		RedisService.parseXml(xml, list);
 		Map<Integer, Fenjie> map = new HashMap<Integer, Fenjie>();
-		Map<String, String> keyvalue = hgetcache(RedisKey.PREFIX + RedisKey.FENJIE_KEY);
-		if(!keyvalue.isEmpty()){
-			for(String value : keyvalue.values()) {
-				Fenjie.Builder builder = Fenjie.newBuilder();
-				RedisService.parseJson(value, builder);
-				map.put(builder.getId(), builder.build());
-			}
-//		}else if(!exists(RedisKey.PREFIX + RedisKey.FENJIE_KEY)){
-		} else {
-			String xml = RedisService.ReadConfig("ld_fenjie.xml");
-			FenjieList.Builder list = FenjieList.newBuilder();
-			RedisService.parseXml(xml, list);
-			keyvalue = new HashMap<String, String>();
-			for(Fenjie fenjie : list.getDataList()){
-				keyvalue.put(fenjie.getId()+"", RedisService.formatJson(fenjie));
-				map.put(fenjie.getId(), fenjie);
-			}
-			hputcacheAll(RedisKey.PREFIX + RedisKey.FENJIE_KEY, keyvalue);
+		for(Fenjie fenjie : list.getDataList()){
+			map.put(fenjie.getId(), fenjie);
 		}
+		hputcacheAll(RedisKey.PREFIX + RedisKey.FENJIE_KEY, map);
+		
 		return map;
 	}
 }

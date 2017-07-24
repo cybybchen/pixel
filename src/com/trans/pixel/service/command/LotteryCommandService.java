@@ -214,7 +214,7 @@ public class LotteryCommandService extends BaseCommandService {
 		logMap.put(LogString.FREE, "" + free);
 		logMap.put(LogString.TYPE, "" + getLogTypeOfLottery(lotteryType, count));
 		List<UserPokedeBean> list = userPokedeService.selectUserPokedeList(userId);
-		Map<String, Heroloot> map = heroRedisService.getHerolootConfig();
+		Map<Integer, Heroloot> map = heroRedisService.getHerolootConfig();
 		logMap.put(LogString.POKEDEX, "" + (list.size()*100/map.size()));
 		
 		logService.sendLog(logMap, LogString.LOGTYPE_LOTTERY);

@@ -14,53 +14,33 @@ public class LibaoRedisService extends CacheService{
 	Logger logger = Logger.getLogger(LibaoRedisService.class);
 
 	public LibaoRedisService() {
-		getPoolList();
+		buildPoolConfig();
 	}
 	
 	public JewelPool.Builder getJewelPool(int id) {
-		JewelPoolList.Builder listbuilder = getPoolList().getDataBuilder(0);
-		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
-			if(id == builder.getOrder())
-				return builder;
+		JewelPoolLists list = getcache(RedisKey.JEWELPOOL_CONFIG);
+		JewelPoolList poollist = list.getData(0);
+		for(JewelPool pool : poollist.getOrderList()){
+			if(id == pool.getOrder())
+				return JewelPool.newBuilder(pool);
 		}
 		return null;
 	}
-
-//	public JewelPoolList.Builder getJewelPoolList() {
-//		String value = this.get(RedisKey.JEWELPOOL_CONFIG);
-//		JewelPoolList.Builder builder = JewelPoolList.newBuilder();
-//		if(value != null && parseJson(value, builder)){
-//			return builder;
-//		}else{
-//			String xml = ReadConfig("lol_zuanshijijin.xml");
-//			parseXml(xml, builder);
-//			set(RedisKey.JEWELPOOL_CONFIG, formatJson(builder.build()));
-//
-//			return builder;
-//		}
-//	}
-
 
 	public JewelPool.Builder getExpPool(int id) {
-		JewelPoolList.Builder listbuilder = getPoolList().getDataBuilder(1);
-		for(JewelPool.Builder builder : listbuilder.getOrderBuilderList()){
-			if(id == builder.getOrder())
-				return builder;
+		JewelPoolLists list = getcache(RedisKey.JEWELPOOL_CONFIG);
+		JewelPoolList poollist = list.getData(1);
+		for(JewelPool pool : poollist.getOrderList()){
+			if(id == pool.getOrder())
+				return JewelPool.newBuilder(pool);
 		}
 		return null;
 	}
 
-	public JewelPoolLists.Builder getPoolList() {
-		String value = getcache(RedisKey.JEWELPOOL_CONFIG);
+	private void buildPoolConfig() {
+		String xml = RedisService.ReadConfig("ld_pool.xml");
 		JewelPoolLists.Builder builder = JewelPoolLists.newBuilder();
-		if(value != null && RedisService.parseJson(value, builder)){
-			return builder;
-		}else{
-			String xml = RedisService.ReadConfig("ld_pool.xml");
-			RedisService.parseXml(xml, builder);
-			setcache(RedisKey.JEWELPOOL_CONFIG, RedisService.formatJson(builder.build()));
-
-			return builder;
-		}
+		RedisService.parseXml(xml, builder);
+		setcache(RedisKey.JEWELPOOL_CONFIG, builder.build());
 	}
 }

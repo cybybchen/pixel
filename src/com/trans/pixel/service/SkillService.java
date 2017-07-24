@@ -41,7 +41,7 @@ public class SkillService {
 //	}
 	
 	public SkillLevelBean getSkillLevel(int id) {
-		SkillLevelBean skillLevel = skillRedisService.getSkillLevelById(id);
+		final SkillLevelBean skillLevel = skillRedisService.getSkillLevelById(id);
 //		if (skillLevel == null) {
 //			parseSkillLevelAndSaveConfig();
 //			skillLevel = skillRedisService.getSkillLevelById(id);

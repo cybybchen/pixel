@@ -73,9 +73,10 @@ public class LevelRedisService extends RedisService {
 	private UserService userService;
 	
 	public LevelRedisService() {
+		buildEventExp();
+		buildEventLevel();
+		buildDaguanConfig();
 		buildDaguanEvent();
-		getEventExp(1);
-		getDaguan(1);
 	}
 	
 	public void updateToDB(long userId){
@@ -411,19 +412,10 @@ public class LevelRedisService extends RedisService {
 	}
 
 	public EventConfig getEvent(int eventid){
-		String value = CacheService.hgetcache(RedisKey.EVENT_CONFIG, eventid+"");
-		EventConfig.Builder builder = EventConfig.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-//		else if(exists(RedisKey.EVENT_CONFIG))
-//			return null;
-		buildDaguanEvent();
-		value = CacheService.hgetcache(RedisKey.EVENT_CONFIG, eventid+"");
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		else
-			return null;
+		Map<Integer, EventConfig> map = CacheService.hgetcache(RedisKey.EVENT_CONFIG);
+		return map.get(eventid);
 	}
+	
 	public MultiReward.Builder eventReward(int eventid, int level){
 		return eventReward(getEvent(eventid), level);
 	}
@@ -481,59 +473,41 @@ public class LevelRedisService extends RedisService {
 //		
 //	}
 	public AreaEvent.Builder getDaguanEvent(int daguanid){
-		String value = CacheService.hgetcache(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
-		AreaEvent.Builder builder = AreaEvent.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder;
-		buildDaguanEvent();
-		value = CacheService.hgetcache(RedisKey.DAGUANEVENT_CONFIG, daguanid+"");
-		if(value != null && parseJson(value, builder))
-			return builder;
-		else
+		Map<Integer, AreaEvent> map = CacheService.hgetcache(RedisKey.DAGUANEVENT_CONFIG);
+		AreaEvent event = map.get(daguanid);
+		if(event == null)
 			return null;
+		else
+			return AreaEvent.newBuilder(event);
 	}
-	public Map<Integer, AreaEvent.Builder> getMainEvent(){
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG);
-		Map<Integer, AreaEvent.Builder> eventmap = new HashMap<Integer, AreaEvent.Builder>();
-		if(keyvalue.isEmpty())
-			buildDaguanEvent();
-		for(String value : keyvalue.values()) {
-			AreaEvent.Builder builder = AreaEvent.newBuilder();
-			parseJson(value, builder);
-			eventmap.put(builder.getId(), builder);
-		}
-		return eventmap;
+	public Map<Integer, AreaEvent> getMainEvent(){
+		Map<Integer, AreaEvent>  map = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG);
+		return map;
 	}
 	public AreaEvent.Builder getMainEvent(int daguanid){
-		String value = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG, daguanid+"");
-		AreaEvent.Builder builder = AreaEvent.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder;
-		buildDaguanEvent();
-		value = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG, daguanid+"");
-		if(value != null && parseJson(value, builder))
-			return builder;
-		else
+		Map<Integer, AreaEvent> map = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG);
+		AreaEvent event = map.get(daguanid);
+		if(event == null)
 			return null;
+		else
+			return AreaEvent.newBuilder(event);
 	}
 	public EventExp getEventExp(int level){
-		String value = CacheService.hgetcache(RedisKey.EVENTEXP_CONFIG, level+"");
-		EventExp.Builder builder = EventExp.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		Map<String, String> keyvalue = new HashMap<String, String>();
+		Map<Integer, EventExp> map = CacheService.hgetcache(RedisKey.EVENTEXP_CONFIG);
+		return map.get(level);
+	}
+	
+	private Map<Integer, EventExp> buildEventExp(){
 		String xml = ReadConfig("ld_lvexp.xml");
+		Map<Integer, EventExp> map = new HashMap<Integer, EventExp>();
 		EventExpList.Builder list = EventExpList.newBuilder();
 		parseXml(xml, list);
 		for(EventExp exp : list.getDataList()){
-			keyvalue.put(exp.getId()+"", formatJson(exp));
+			map.put(exp.getId(), exp);
 		}
-		CacheService.hputcacheAll(RedisKey.EVENTEXP_CONFIG, keyvalue);
-		value = CacheService.hgetcache(RedisKey.EVENTEXP_CONFIG, level+"");
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		else
-			return null;
+		CacheService.hputcacheAll(RedisKey.EVENTEXP_CONFIG, map);
+		
+		return map;
 	}
 
 	private Map<Integer, EventConfig.Builder> getEventConfig(){
@@ -676,27 +650,31 @@ public class LevelRedisService extends RedisService {
 	}
 
 	public Daguan.Builder getDaguan(int id){
-		String value = CacheService.hgetcache(RedisKey.DAGUAN_CONFIG, id+"");
-		Daguan.Builder builder = Daguan.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder;
-		Map<String, String> keyvalue = new HashMap<String, String>();
+		Map<Integer, Daguan> map = CacheService.hgetcache(RedisKey.DAGUAN_CONFIG);
+		Daguan daguan = map.get(id);
+		if(daguan == null)
+			return null;
+		else
+			return Daguan.newBuilder(daguan);
+	}
+	
+	private Map<Integer, Daguan> buildDaguanConfig(){
 		String xml = ReadConfig("ld_daguan.xml");
 		DaguanList.Builder list = DaguanList.newBuilder();
 		parseXml(xml, list);
 		Map<Integer, Integer> areaMap = getAreaConfig();
 		Map<Integer, Integer> merlevelMap = getMerlevelConfig();
-		Map<Integer, Daguan.Builder> map = new HashMap<Integer, Daguan.Builder>();
+		Map<Integer, Daguan> map = new HashMap<Integer, Daguan>();
 		for(Daguan.Builder daguan : list.getDataBuilderList()){
-			// daguan.clearName();
+//			 daguan.clearName();
 //			daguan.clearDes();
 			daguan.setAreaid(areaMap.get(daguan.getId()));
 			daguan.setMerlevel(merlevelMap.get(daguan.getId()));
-			keyvalue.put(daguan.getId()+"", formatJson(daguan.build()));
-			map.put(daguan.getId(), daguan);
+			map.put(daguan.getId(), daguan.build());
 		}
-		CacheService.hputcacheAll(RedisKey.DAGUAN_CONFIG, keyvalue);
-		return map.get(id);
+		CacheService.hputcacheAll(RedisKey.DAGUAN_CONFIG, map);
+		
+		return map;
 	}
 // 	public Event getEvent(int eventid){
 // 		String value = hget(RedisKey.EVENT_CONFIG, eventid+"");
@@ -867,7 +845,7 @@ public class LevelRedisService extends RedisService {
 //		return map;
 //	}
 
-	public Map<Integer, Integer> getAreaConfig(){
+	private Map<Integer, Integer> getAreaConfig(){
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		String xml = ReadConfig("ld_area.xml");
 		AreaList.Builder list = AreaList.newBuilder();
@@ -880,7 +858,7 @@ public class LevelRedisService extends RedisService {
 		return map;
 	}
 
-	public Map<Integer, Integer> getMerlevelConfig(){
+	private Map<Integer, Integer> getMerlevelConfig(){
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		String xml = ReadConfig("ld_area.xml");
 		AreaList.Builder list = AreaList.newBuilder();
@@ -895,37 +873,29 @@ public class LevelRedisService extends RedisService {
 	
 	public EventRandom nextEventLevel(UserLevelBean userLevel) {
 		userLevel.setEventRandom(userLevel.getEventRandom()+1);
-		String value = CacheService.hgetcache(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
-		EventRandom.Builder builder = EventRandom.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		value = CacheService.getcache(RedisKey.EVENTLEVELSEED_CONFIG);
-		if(value == null)
-			value = buildEventLevel();
-		EventRandomsList.Builder list = EventRandomsList.newBuilder();
-		parseJson(value, list);
-		userLevel.setEventRandom(list.getId((nextInt(list.getIdCount()))).getId());
-		value = CacheService.hgetcache(RedisKey.EVENTLEVEL_CONFIG, userLevel.getEventRandom()+"");
-		parseJson(value, builder);
-		return builder.build();
+		Map<Integer, EventRandom> map = CacheService.hgetcache(RedisKey.EVENTLEVEL_CONFIG);
+		EventRandom random = map.get(userLevel.getEventRandom());
+		if(random != null)
+			return random;
+		EventRandomsList randlist = CacheService.getcache(RedisKey.EVENTLEVELSEED_CONFIG);
+		userLevel.setEventRandom(randlist.getId((nextInt(randlist.getIdCount()))).getId());
+		random = map.get(userLevel.getEventRandom());
+		return random;
 	}
 	
 	public EventRandom getEventLevel(int id) {
-		String value = CacheService.hgetcache(RedisKey.EVENTLEVEL_CONFIG, id+"");
-		EventRandom.Builder builder = EventRandom.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		return null;
+		Map<Integer, EventRandom> map = CacheService.hgetcache(RedisKey.EVENTLEVEL_CONFIG);
+		return map.get(id);
 	}
 	
-	private String buildEventLevel() {
+	private void buildEventLevel() {
 		String xml = ReadConfig("ld_eventrandom.xml");
 		EventRandomsList.Builder builder = EventRandomsList.newBuilder();
 		parseXml(xml, builder);
 		xml = ReadConfig("ld_eventlevel.xml");
 		EventLevelList.Builder list = EventLevelList.newBuilder();
 		parseXml(xml, list);
-		Map<String, String> keyvalue = new HashMap<String, String>();
+		Map<Integer, EventRandom> map = new HashMap<Integer, EventRandom>();
 		for(EventLevel level : list.getDataList()){
 			EventRandom.Builder eventlevel = EventRandom.newBuilder();
 			eventlevel.setLevel1(level.getLevel());
@@ -936,7 +906,7 @@ public class LevelRedisService extends RedisService {
 			eventlevel.setCount3(level.getCount());
 			eventlevel.setLevel4(level.getLevel());
 			eventlevel.setCount4(level.getCount());
-			keyvalue.put("-"+level.getLevel(), formatJson(eventlevel.build()));
+			map.put(-level.getLevel(), eventlevel.build());
 		}
 		for(EventRandoms.Builder randoms : builder.getIdBuilderList()){
 			int i = 0;
@@ -952,15 +922,13 @@ public class LevelRedisService extends RedisService {
 					if(level.getLevel() == eventlevel.getLevel4())
 						eventlevel.setCount4(level.getCount());
 				}
-				keyvalue.put(randoms.getId()*100+i+"", formatJson(eventlevel.build()));
+				map.put(randoms.getId()*100+i, eventlevel.build());
 			}
 			randoms.clearOrder();
 			randoms.setId(randoms.getId()*100+1);
 		}
-		CacheService.hputcacheAll(RedisKey.EVENTLEVEL_CONFIG, keyvalue);
-		String value = formatJson(builder.build());
-		CacheService.setcache(RedisKey.EVENTLEVELSEED_CONFIG, value);
-		return value;
+		CacheService.hputcacheAll(RedisKey.EVENTLEVEL_CONFIG, map);
+		CacheService.setcache(RedisKey.EVENTLEVELSEED_CONFIG, builder.build());
 	}
 	
 	public MultiReward.Builder getNewplayReward(UserBean user, int levelId) {
@@ -998,8 +966,8 @@ public class LevelRedisService extends RedisService {
 	}
 
 	public boolean isMainEvent(int eventId) {
-		Map<Integer, AreaEvent.Builder> eventmap = getMainEvent();
-		for(AreaEvent.Builder areaevent : eventmap.values()) {
+		Map<Integer, AreaEvent> eventmap = getMainEvent();
+		for(AreaEvent areaevent : eventmap.values()) {
 			for(Event event : areaevent.getEventList()){
 				if(eventId == event.getEventid())
 					return true;
@@ -1010,9 +978,9 @@ public class LevelRedisService extends RedisService {
 	public boolean hasCompleteTarget(UserBean user, int targetId) {
 		UserLevelBean userLevel = getUserLevel(user);
 		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
-		Map<Integer, AreaEvent.Builder> areaevents = getMainEvent();
+		Map<Integer, AreaEvent> areaevents = getMainEvent();
 		int eventId = 0;
-		for(AreaEvent.Builder areaevent : areaevents.values())
+		for(AreaEvent areaevent : areaevents.values())
 			for(Event event : areaevent.getEventList())
 				if(event.getTargetid() == targetId) {
 					eventId = event.getEventid();
@@ -1047,7 +1015,7 @@ public class LevelRedisService extends RedisService {
 			return userTalentList;
 		
 		if (targetId == 500) {
-			Map<String, HeroChoice> map = heroRedisService.getHerochoiceConfig();
+			Map<Integer, HeroChoice> map = heroRedisService.getHerochoiceConfig();
 			for (HeroChoice choice : map.values()) {
 				if (choice.getId() != user.getFirstGetHeroId()) {
 					UserTalent.Builder oldTalent = userTalentService.getUserTalent(user, choice.getId());

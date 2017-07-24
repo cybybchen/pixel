@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -24,164 +23,74 @@ public class TalentRedisService extends CacheService {
 	private static final String TALENTUNLOCK_FILE_NAME = "ld_talentunlock.xml";
 	
 	public TalentRedisService() {
-		getTalentConfig();
-		getTalentupgradeConfig();
-		getTalentunlockConfig();
+		buildTalentConfig();
+		buildTalentupgradeConfig();
+		buildTalentunlockConfig();
 	}
 	
 	//talent
 	public Talent getTalent(int id) {
-		String value = hgetcache(RedisKey.TALENT_CONFIG_KEY, "" + id);
-		if (value == null) {
-			Map<String, Talent> config = getTalentConfig();
-			return config.get("" + id);
-		} else {
-			Talent.Builder builder = Talent.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Talent> map = hgetcache(RedisKey.TALENT_CONFIG_KEY);
+		return map.get(id);
 	}
 	
-	public Map<String, Talent> getTalentConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TALENT_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Talent> map = buildTalentConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Talent> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TALENT_CONFIG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Talent> map = new HashMap<String, Talent>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Talent.Builder builder = Talent.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Talent> getTalentConfig() {
+		Map<Integer, Talent> map = hgetcache(RedisKey.TALENT_CONFIG_KEY);
+		return map;
 	}
 	
-	private Map<String, Talent> buildTalentConfig(){
+	private void buildTalentConfig(){
 		String xml = RedisService.ReadConfig(TALENT_FILE_NAME);
 		TalentList.Builder builder = TalentList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + TALENT_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Talent> map = new HashMap<String, Talent>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Talent> map = new HashMap<Integer, Talent>();
 		for(Talent.Builder talent : builder.getDataBuilderList()){
-			map.put("" + talent.getId(), talent.build());
+			map.put(talent.getId(), talent.build());
 		}
-		
-		return map;
+		hputcacheAll(RedisKey.TALENT_CONFIG_KEY, map);
 	}
 	
 	//talentupgrade
 	public Talentupgrade getTalentupgrade(int level) {
-		String value = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY, "" + level);
-//		if (value == null && !exists(RedisKey.TALENTUPGRADE_CONFIG_KEY)) {
-		if (value == null) {
-			Map<Integer, Talentupgrade> config = getTalentupgradeConfig();
-			return config.get("" + level);
-		} else {
-			Talentupgrade.Builder builder = Talentupgrade.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Talentupgrade> map = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY);
+		return map.get(level);
 	}
 	
 	public Map<Integer, Talentupgrade> getTalentupgradeConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<Integer, Talentupgrade> map = buildTalentupgradeConfig();
-			for(Entry<Integer, Talentupgrade> entry : map.entrySet()){
-				keyvalue.put(entry.getKey()+"", RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, keyvalue);
-			return map;
-		}else{
-			Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Talentupgrade.Builder builder = Talentupgrade.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(builder.getLevel(), builder.build());
-			}
-			return map;
-		}
+		Map<Integer, Talentupgrade> map = hgetcache(RedisKey.TALENTUPGRADE_CONFIG_KEY);
+		return map;
 	}
-	
-	private Map<Integer, Talentupgrade> buildTalentupgradeConfig(){
+
+	private void buildTalentupgradeConfig(){
 		String xml = RedisService.ReadConfig(TALENTUPGRADE_FILE_NAME);
 		TalentupgradeList.Builder builder = TalentupgradeList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + TALENTUPGRADE_FILE_NAME);
-			return null;
-		}
-		
+		RedisService.parseXml(xml, builder);
 		Map<Integer, Talentupgrade> map = new HashMap<Integer, Talentupgrade>();
 		for(Talentupgrade.Builder talentupgrade : builder.getLevelBuilderList()){
 			map.put(talentupgrade.getLevel(), talentupgrade.build());
 		}
-		
-		return map;
+		hputcacheAll(RedisKey.TALENTUPGRADE_CONFIG_KEY, map);
 	}
 	
 	//talentunlock
 	public Talentunlock getTalentunlock(int order) {
-		String value = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY, "" + order);
-		if (value == null) {
-			Map<String, Talentunlock> config = getTalentunlockConfig();
-			return config.get("" + order);
-		} else {
-			Talentunlock.Builder builder = Talentunlock.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Talentunlock> map = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY);
+		return map.get(order);
 	}
 	
-	public Map<String, Talentunlock> getTalentunlockConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Talentunlock> map = buildTalentunlockConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Talentunlock> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TALENTUNLOCK_CONFIG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Talentunlock> map = new HashMap<String, Talentunlock>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Talentunlock.Builder builder = Talentunlock.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Talentunlock> getTalentunlockConfig() {
+		Map<Integer, Talentunlock> map = hgetcache(RedisKey.TALENTUNLOCK_CONFIG_KEY);
+		return map;
 	}
 	
-	private Map<String, Talentunlock> buildTalentunlockConfig(){
+	private void buildTalentunlockConfig(){
 		String xml = RedisService.ReadConfig(TALENTUNLOCK_FILE_NAME);
 		TalentunlockList.Builder builder = TalentunlockList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + TALENTUNLOCK_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Talentunlock> map = new HashMap<String, Talentunlock>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Talentunlock> map = new HashMap<Integer, Talentunlock>();
 		for(Talentunlock.Builder talentunlock : builder.getDataBuilderList()){
-			map.put("" + talentunlock.getOrder(), talentunlock.build());
+			map.put(talentunlock.getOrder(), talentunlock.build());
 		}
-		
-		return map;
+		hputcacheAll(RedisKey.TALENTUNLOCK_CONFIG_KEY, map);
 	}
 }

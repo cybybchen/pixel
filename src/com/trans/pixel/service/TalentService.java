@@ -243,9 +243,9 @@ public class TalentService {
 			return ErrorConst.NOT_ENOUGH_COIN;
 		
 		builder.mergeFrom(userTalent.build());
-		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		for (UserTalentSkill skill : userTalentService.getUserTalentSkillListByTalentId(user, talentId)) {
-			Talentunlock unlock = map.get("" + skill.getOrderId());
+			Talentunlock unlock = map.get(skill.getOrderId());
 			if (unlock == null)
 				continue;
 			
@@ -274,10 +274,10 @@ public class TalentService {
 	
 	public int getNeedSP(UserBean user, UserTalent.Builder userTalent) {
 		List<UserTalentSkill> skillList = userTalentService.getUserTalentSkillListByTalentId(user, userTalent.getId());
-		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		int sp = 0;
 		for (UserTalentSkill skill : skillList) {
-			Talentunlock unlock = map.get("" + skill.getOrderId());
+			Talentunlock unlock = map.get(skill.getOrderId());
 			sp += unlock.getSp() * (unlock.getMaxlevel() - skill.getLevel());
 		}
 		return sp - userTalent.getSp();

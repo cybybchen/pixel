@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -21,210 +20,74 @@ public class SignRedisService extends CacheService{
 	private static final String SEVEN_SIGN_FILE_NAME = "ld_taskseven.xml";
 	
 	public SignRedisService() {
-		getSignConfig();
-		getSign2Config();
-		getTotalSignConfig();
-		getSevenLoginConfig();
+		buildSignConfig();
+		buildSign2Config();
+		buildTotalSignConfig();
+		buildSevenLoginConfig();
 	}
 	
 	public Sign getSign(int count) {
-		String value = hgetcache(RedisKey.SIGN_KEY, "" + count);
-		if (value == null) {
-			Map<String, Sign> signConfig = getSignConfig();
-			return signConfig.get("" + count);
-		} else {
-			Sign.Builder builder = Sign.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Sign> map = hgetcache(RedisKey.SIGN_KEY);
+		return map.get(count);
 	}
 	
-	public Map<String, Sign> getSignConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.SIGN_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Sign> map = buildSignConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.SIGN_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Sign> map = new HashMap<String, Sign>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Sign.Builder builder = Sign.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, Sign> buildSignConfig(){
+	private void buildSignConfig(){
 		String xml = RedisService.ReadConfig(SIGN_FILE_NAME1);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + SIGN_FILE_NAME1);
-			return null;
-		}
-		
-		Map<String, Sign> map = new HashMap<String, Sign>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Sign> map = new HashMap<Integer, Sign>();
 		for (Sign.Builder sign : builder.getDataBuilderList()) {
-			map.put("" + sign.getOrder(), sign.build());
+			map.put(sign.getOrder(), sign.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.SIGN_KEY, map);
 	}
 	
 	public Sign getSign2(int count) {
-		String value = hgetcache(RedisKey.SIGN2_KEY, "" + count);
-		if (value == null) {
-			Map<String, Sign> signConfig = getSign2Config();
-			return signConfig.get("" + count);
-		} else {
-			Sign.Builder builder = Sign.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Sign> map = hgetcache(RedisKey.SIGN2_KEY);
+		return map.get(count);
 	}
 	
-	public Map<String, Sign> getSign2Config() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.SIGN2_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Sign> map = buildSign2Config();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.SIGN2_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Sign> map = new HashMap<String, Sign>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Sign.Builder builder = Sign.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, Sign> buildSign2Config(){
+	private void buildSign2Config(){
 		String xml = RedisService.ReadConfig(SIGN_FILE_NAME2);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + SIGN_FILE_NAME2);
-			return null;
-		}
-		
-		Map<String, Sign> map = new HashMap<String, Sign>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Sign> map = new HashMap<Integer, Sign>();
 		for (Sign.Builder sign : builder.getDataBuilderList()) {
-			map.put("" + sign.getOrder(), sign.build());
+			map.put(sign.getOrder(), sign.build());
 		}
-		return map;
+		hputcacheAll(RedisKey.SIGN2_KEY, map);
 	}
 	
 	public Sign getTotalSign(int count) {
-		String value = hgetcache(RedisKey.TOTAL_SIGN_KEY, "" + count);
-		if (value == null) {
-			Map<String, Sign> signConfig = getTotalSignConfig();
-			return signConfig.get("" + count);
-		} else {
-			Sign.Builder builder = Sign.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Sign> map = hgetcache(RedisKey.TOTAL_SIGN_KEY);
+		return map.get(count);
 	}
 	
-	public Map<String, Sign> getTotalSignConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TOTAL_SIGN_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Sign> map = buildTotalSignConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TOTAL_SIGN_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Sign> map = new HashMap<String, Sign>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Sign.Builder builder = Sign.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, Sign> buildTotalSignConfig(){
+	private void buildTotalSignConfig(){
 		String xml = RedisService.ReadConfig(TOTAL_SIGN_FILE_NAME);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + TOTAL_SIGN_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Sign> map = new HashMap<String, Sign>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Sign> map = new HashMap<Integer, Sign>();
 		for (Sign.Builder sign : builder.getDataBuilderList()) {
-			map.put("" + sign.getTargetcount(), sign.build());
+			map.put(sign.getTargetcount(), sign.build());
 		}
-		return map;
+		hputcacheAll(RedisKey.TOTAL_SIGN_KEY, map);
 	}
 	
 	//task seven
 	public Sign getSevenLogin(int day) {
-		String value = hgetcache(RedisKey.SEVEN_LOGIN_KEY, "" + day);
-		if (value == null) {
-			Map<String, Sign> signConfig = getSevenLoginConfig();
-			return signConfig.get("" + day);
-		} else {
-			Sign.Builder builder = Sign.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Sign> map = hgetcache(RedisKey.SEVEN_LOGIN_KEY);
+		return map.get(day);
 	}
 	
-	public Map<String, Sign> getSevenLoginConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.SEVEN_LOGIN_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Sign> map = buildSevenLoginConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Sign> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.SEVEN_LOGIN_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Sign> map = new HashMap<String, Sign>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Sign.Builder builder = Sign.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, Sign> buildSevenLoginConfig(){
+	private void buildSevenLoginConfig(){
 		String xml = RedisService.ReadConfig(SEVEN_SIGN_FILE_NAME);
 		SignList.Builder builder = SignList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + SEVEN_SIGN_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Sign> map = new HashMap<String, Sign>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Sign> map = new HashMap<Integer, Sign>();
 		for(Sign.Builder sign : builder.getDataBuilderList()){
-			map.put("" + sign.getOrder(), sign.build());
+			map.put(sign.getOrder(), sign.build());
 		}
-		return map;
+		hputcacheAll(RedisKey.SEVEN_LOGIN_KEY, map);
 	}
 }

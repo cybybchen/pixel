@@ -17,28 +17,30 @@ public class RewardTaskRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(RewardTaskRedisService.class);
 	
 	public RewardTaskRedisService() {
-		getRewardTaskConfig();
+		buildRewardTaskConfig();
 	}
 	
 	//rewardtask 
 	public RewardTaskList.Builder getRewardTaskConfig() {
+		RewardTaskList list = CacheService.getcache(RedisKey.REWARDTASK_KEY);
+		if(list == null)
+			return null;
+		else
+			return RewardTaskList.newBuilder(list);
+	}
+
+	private void buildRewardTaskConfig() {
+		String xml = ReadConfig("ld_rewardtask.xml");
 		RewardTaskList.Builder builder = RewardTaskList.newBuilder();
-		String value = CacheService.getcache(RedisKey.REWARDTASK_KEY);
-		if(value != null && parseJson(value, builder)){
-			return builder;
-		}else {
-			String xml = ReadConfig("ld_rewardtask.xml");
-			parseXml(xml, builder);
-			RewardTaskList.Builder list = RewardTaskList.newBuilder();
-			for(RewardTask.Builder task : builder.getDataBuilderList()){
-				for(int i = 0; i < task.getRandcount(); i++) {
-					list.addData(task);
-					list.getDataBuilder(list.getDataCount()-1).setRandcount(i+1);
-				}
+		parseXml(xml, builder);
+		RewardTaskList.Builder list = RewardTaskList.newBuilder();
+		for(RewardTask.Builder task : builder.getDataBuilderList()){
+			for(int i = 0; i < task.getRandcount(); i++) {
+				list.addData(task);
+				list.getDataBuilder(list.getDataCount()-1).setRandcount(i+1);
 			}
-			CacheService.setcache(RedisKey.REWARDTASK_KEY, formatJson(list.build()));
-			return list;
 		}
+		CacheService.setcache(RedisKey.REWARDTASK_KEY, list.build());
 	}
 	
 //	public Map<String, RewardTask> getRewardTaskConfig() {

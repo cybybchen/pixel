@@ -52,7 +52,8 @@ public class LotteryRedisService extends CacheService {
 	}
 	
 	public LotteryActivity getLotteryActivity(int id) {
-		String value = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY, "" + id);
+		Map<String, String> keyvalue = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY);
+		String value = keyvalue.get("" + id);
 		if (value == null) {
 			Map<String, LotteryActivity> lotteryActivityConfig = getLotteryActivityConfig();
 			return lotteryActivityConfig.get("" + id);
@@ -101,7 +102,7 @@ public class LotteryRedisService extends CacheService {
 		return map;
 	}
 	
-	private List<RewardBean> parseAndSaveLotteryList(int type) {
+	private synchronized List<RewardBean> parseAndSaveLotteryList(int type) {
     	List<RewardBean> lotteryList = RewardBean.xmlParseLottery(type);
     	setLotteryList(lotteryList, type);
         

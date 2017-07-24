@@ -948,14 +948,14 @@ public class ActivityService {
 		/**
 		 * 上阵阿瑞斯
 		 */
-		Map<String, Hero> map = heroService.getHeroMap();
+		Map<Integer, Hero> map = heroService.getHeroMap();
 		for (int heroId : heroList) {
 			if (heroId == 20)
 				taskService.sendTask1Score(user, ACTIVITY_TYPE.TYPE_TEAMUP_ARUISI_VALUE, heroId, false);
 			
 			if (heroId == 0)
 				continue;
-			Hero hero = map.get("" + heroId);
+			Hero hero = map.get(heroId);
 			if (hero == null)
 				continue;
 			++quality1Count;

@@ -140,7 +140,7 @@ public class ShopService {
 	}
 	
 	public ShopList refreshExpeditionShop(UserBean user){
-		ShopList shoplist = redis.buildExpeditionShop();
+		ShopList shoplist = redis.getExpeditionShop();
 		redis.saveExpeditionShop(shoplist, user);
 		return shoplist;
 	}
@@ -170,7 +170,7 @@ public class ShopService {
 	
 	public ShopList refreshBattletowerShop(UserBean user){
 		UserBattletowerBean ubt = userBattletowerService.getUserBattletower(user);
-		ShopList shoplist = redis.buildBattletowerShop(ubt);
+		ShopList shoplist = redis.getBattletowerShopConfig(ubt);
 		redis.saveBattletowerShop(shoplist, user);
 		return shoplist;
 	}

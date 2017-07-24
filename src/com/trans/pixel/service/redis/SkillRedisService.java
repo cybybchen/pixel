@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
@@ -22,32 +19,22 @@ import com.trans.pixel.service.cache.CacheService;
 public class SkillRedisService extends CacheService {
 	
 	public SkillRedisService() {
-		getSkillLevelList();
+		buildSkillLevelConfig();
 	}
 	
 	public SkillLevelBean getSkillLevelById(final int id) {
-		String value = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, "" + id);
-		
-		return SkillLevelBean.fromJson(value);
+		Map<Integer, SkillLevelBean> map = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+		return map.get(id);
 	}
 	
 	public List<SkillLevelBean> getSkillLevelList() {
+		Map<Integer, SkillLevelBean> map = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
 		List<SkillLevelBean> skillLevelList = new ArrayList<SkillLevelBean>();
-		Map<String, String> map = hgetcache(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
-		if (map == null || map.isEmpty()) {
-			skillLevelList = SkillLevelBean.xmlParse();
-			if (skillLevelList != null && skillLevelList.size() != 0) {
-				setSkillLevelList(skillLevelList);
-				
-				return skillLevelList;
-			}
-		}
-		Iterator<Entry<String, String>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, SkillLevelBean>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, String> entry = it.next();
-			SkillLevelBean skillLevel = SkillLevelBean.fromJson(entry.getValue());
-			if (skillLevel != null)
-				skillLevelList.add(skillLevel);
+			Entry<Integer, SkillLevelBean> entry = it.next();
+			SkillLevelBean skillLevel = entry.getValue();
+			skillLevelList.add(skillLevel);
 		}
 		Collections.sort(skillLevelList, new Comparator<SkillLevelBean>() {
 	        public int compare(SkillLevelBean bean1, SkillLevelBean bean2) {
@@ -61,10 +48,11 @@ public class SkillRedisService extends CacheService {
 		return skillLevelList;
 	}
 	
-	public void setSkillLevelList(final List<SkillLevelBean> skillLevelList) {
-		Map<String, String> map = new HashMap<String, String>();
+	public void buildSkillLevelConfig() {
+		List<SkillLevelBean> skillLevelList = SkillLevelBean.xmlParse();
+		Map<Integer, SkillLevelBean> map = new HashMap<Integer, SkillLevelBean>();
 		for (SkillLevelBean skillLevel : skillLevelList) {
-			map.put(skillLevel.getId()+"", skillLevel.toJson());
+			map.put(skillLevel.getId(), skillLevel);
 		}
 		hputcacheAll(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY, map);
 	}

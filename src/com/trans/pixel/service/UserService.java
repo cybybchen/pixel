@@ -158,7 +158,7 @@ public class UserService {
 		logger.info(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
 		//每日首次登陆
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
-		user.setRedisTime(now);
+		user.setRedisTime(today0);
 		user.setLoginDays(user.getLoginDays() + 1);
 		user.setSignCount(0);
 		user.setLadderPurchaseTimes(0);

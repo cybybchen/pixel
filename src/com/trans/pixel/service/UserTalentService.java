@@ -75,10 +75,10 @@ public class UserTalentService {
 	
 	private int getSkillSP(UserBean user, UserTalent.Builder userTalent) {
 		List<UserTalentSkill> skillList = getUserTalentSkillListByTalentId(user, userTalent.getId());
-		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		int sp = 0;
 		for (UserTalentSkill skill : skillList) {
-			Talentunlock unlock = map.get("" + skill.getOrderId());
+			Talentunlock unlock = map.get(skill.getOrderId());
 			sp += unlock.getSp() * skill.getLevel();
 		}
 		return sp;
@@ -138,10 +138,10 @@ public class UserTalentService {
 		if (userTalentList.isEmpty()) {
 			List<UserTalentBean> utBeanList = userTalentMapper.selectUserTalentList(user.getId());
 			if (utBeanList == null || utBeanList.isEmpty()) {
-				Map<String, Talent> map = talentRedisService.getTalentConfig();
-				Iterator<Entry<String, Talent>> it = map.entrySet().iterator();
+				Map<Integer, Talent> map = talentRedisService.getTalentConfig();
+				Iterator<Entry<Integer, Talent>> it = map.entrySet().iterator();
 				while (it.hasNext()) {
-					Entry<String, Talent> entry = it.next();
+					Entry<Integer, Talent> entry = it.next();
 					UserTalent.Builder userTalent = initUserTalent(user, entry.getValue().getId());
 					userTalentList.add(userTalent);
 					updateUserTalent(user.getId(), userTalent.build());
@@ -275,10 +275,10 @@ public class UserTalentService {
 		builder.setId(id);
 		builder.setLevel(0);
 		builder.setSp(0);
-		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
-		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
+		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Iterator<Entry<Integer, Talentunlock>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Talentunlock> entry = it.next();
+			Entry<Integer, Talentunlock> entry = it.next();
 			Talentunlock talentunlock = entry.getValue();
 			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
 			skillBuilder.setOrder(talentunlock.getOrder());
@@ -304,7 +304,7 @@ public class UserTalentService {
 	
 	public void resetTalents(long userId) {
 		UserBean user = userService.getUserOther(userId);
-		Map<String, Talent> map = talentRedisService.getTalentConfig();
+		Map<Integer, Talent> map = talentRedisService.getTalentConfig();
 		for (Talent talent : map.values()) {
 			UserTalent.Builder builder = initUserTalent(user, talent.getId());
 			updateUserTalent(user.getId(), builder.build());
@@ -317,11 +317,11 @@ public class UserTalentService {
 		builder.setId(rand.nextInt(9) + 1);
 		builder.setLevel(ladderEnemy.getLeadlv());
 		
-		Map<String, Talentunlock> map = talentRedisService.getTalentunlockConfig();
+		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		Talent talent = talentRedisService.getTalent(builder.getId());
-		Iterator<Entry<String, Talentunlock>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, Talentunlock>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Talentunlock> entry = it.next();
+			Entry<Integer, Talentunlock> entry = it.next();
 			Talentunlock talentunlock = entry.getValue();
 			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
 			skillBuilder.setOrder(talentunlock.getOrder());

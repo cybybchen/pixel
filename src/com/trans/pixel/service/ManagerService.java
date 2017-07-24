@@ -49,13 +49,13 @@ public class ManagerService extends RedisService{
 	private final static String USERDATA = RedisKey.PREFIX+RedisKey.USERDATA_PREFIX;
 //	private final static String USERDAILYDATA = RedisKey.PREFIX+RedisKey.USERDAILYDATA_PREFIX;
 	//shop
-	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
-	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
-	private final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
-	private final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
-	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
-	private final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
-	private final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
+//	private final static String DAILYSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyShop";
+//	private final static String SHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Shop";
+//	private final static String BLACKSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"BlackShop";
+//	private final static String UNIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"UnionShop";
+//	private final static String PVPSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"PVPShop";
+//	private final static String EXPEDITIONSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"ExpeditionShop";
+//	private final static String LADDERSHOP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"LadderShop";
 	//Area
 	private final static String AREABOSS = RedisKey.PREFIX+"AreaBoss_";
 	private final static String AREAMONSTER = RedisKey.PREFIX+"AreaMonster_";
@@ -1845,597 +1845,597 @@ public class ManagerService extends RedisService{
 
 
 		//////////////////////////////////////////
-		if(req.containsKey("del-DailyShopConfig")){
-			delete(DAILYSHOP_CONFIG);
-			req.put("DailyShopConfig", 1);
-		}
-		if(req.containsKey("DailyShopConfig")){
-			Map<String, String> map = hget(DAILYSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("DailyShopConfig", object);
-		}
-		if(req.containsKey("del-ShopConfig")){
-			delete(SHOP_CONFIG);
-			req.put("ShopConfig", 1);
-		}
-		if(req.containsKey("ShopConfig")){
-			Map<String, String> map = hget(SHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ShopConfig", object);
-		}
-		if(req.containsKey("del-BlackShopConfig")){
-			delete(BLACKSHOP_CONFIG);
-			req.put("BlackShopConfig", 1);
-		}
-		if(req.containsKey("BlackShopConfig")){
-			Map<String, String> map = hget(BLACKSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("BlackShopConfig", object);
-		}
-		if(req.containsKey("del-UnionShopConfig")){
-			delete(UNIONSHOP_CONFIG);
-			req.put("UnionShopConfig", 1);
-		}
-		if(req.containsKey("UnionShopConfig")){
-			Map<String, String> map = hget(UNIONSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("UnionShopConfig", object);
-		}
-		if(req.containsKey("del-PvpShopConfig")){
-			delete(PVPSHOP_CONFIG);
-			req.put("PvpShopConfig", 1);
-		}
-		if(req.containsKey("PvpShopConfig")){
-			Map<String, String> map = hget(PVPSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PvpShopConfig", object);
-		}
-		if(req.containsKey("del-ExpeditionShopConfig")){
-			delete(EXPEDITIONSHOP_CONFIG);
-			req.put("ExpeditionShopConfig", 1);
-		}
-		if(req.containsKey("ExpeditionShopConfig")){
-			Map<String, String> map = hget(EXPEDITIONSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ExpeditionShopConfig", object);
-		}
-		if(req.containsKey("del-LadderShopConfig")){
-			delete(LADDERSHOP_CONFIG);
-			req.put("LadderShopConfig", 1);
-		}
-		if(req.containsKey("LadderShopConfig")){
-			Map<String, String> map = hget(LADDERSHOP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LadderShopConfig", object);
-		}
-		if(req.containsKey("del-AreaMonsterRewardConfig")){
-			delete(RedisKey.AREAMONSTERREWARD_CONFIG);
-			req.put("AreaMonsterRewardConfig", 1);
-		}
-		if(req.containsKey("AreaMonsterRewardConfig")){
-			Map<String, String> map = hget(RedisKey.AREAMONSTERREWARD_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaMonsterReward", object);
-		}
-		if(req.containsKey("del-LadderRankingConfig")){
-			delete(RedisKey.LADDER_RANKING_CONFIG_KEY);
-			req.put("LadderRankingConfig", 1);
-		}
-		if(req.containsKey("LadderRankingConfig")){
-			Map<String, String> map = hget(RedisKey.LADDER_RANKING_CONFIG_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LadderRankingConfig", object);
-		}
-		if(req.containsKey("del-LadderDailyConfig")){
-			delete(RedisKey.LADDER_DAILY_CONFIG_KEY);
-			req.put("LadderDailyConfig", 1);
-		}
-		if(req.containsKey("LadderDailyConfig")){
-			Map<String, String> map = hget(RedisKey.LADDER_DAILY_CONFIG_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LadderDailyConfig", object);
-		}
-		if(req.containsKey("del-LevelConfig")){
-			delete(RedisKey.PREFIX + RedisKey.LEVEL_KEY);
-			req.put("LevelConfig", 1);
-		}
-		if(req.containsKey("LevelConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LevelConfig", object);
-		}
-		if(req.containsKey("del-LevelDiffConfig1")){
-			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 1);
-			req.put("LevelDiffConfig1", 1);
-		}
-		if(req.containsKey("del-LevelDiffConfig2")){
-			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 2);
-			req.put("LevelDiffConfig2", 1);
-		}
-		if(req.containsKey("del-LevelDiffConfig3")){
-			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 3);
-			req.put("LevelDiffConfig3", 1);
-		}
-		if(req.containsKey("LevelDiffConfig1")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 1);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LevelDiffConfig1", object);
-		}
-		if(req.containsKey("LevelDiffConfig2")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 2);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LevelDiffConfig2", object);
-		}
-		if(req.containsKey("LevelDiffConfig3")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 3);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LevelDiffConfig3", object);
-		}
-//		if(req.containsKey("del-WinLevelConfig")){
-//			delete(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
-//			req.put("WinLevelConfig", 1);
+//		if(req.containsKey("del-DailyShopConfig")){
+//			delete(DAILYSHOP_CONFIG);
+//			req.put("DailyShopConfig", 1);
 //		}
-//		if(req.containsKey("WinLevelConfig")){
-//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
+//		if(req.containsKey("DailyShopConfig")){
+//			Map<String, String> map = hget(DAILYSHOP_CONFIG);
 //			JSONObject object = new JSONObject();
 //			object.putAll(map);
-//			result.put("WinLevelConfig", object);
+//			result.put("DailyShopConfig", object);
 //		}
-		if(req.containsKey("del-LootLevelConfig")){
-			delete(RedisKey.PREFIX + RedisKey.LOOT_LEVEL_KEY);
-			req.put("LootLevelConfig", 1);
-		}
-		if(req.containsKey("LootLevelConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOOT_LEVEL_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LootLevelConfig", object);
-		}
-		if(req.containsKey("del-HeroUpgradeConfig")){
-			delete(RedisKey.PREFIX + RedisKey.HERO_UPGRADE_LEVEL_key);
-			req.put("HeroUpgradeConfig", 1);
-		}
-		if(req.containsKey("HeroUpgradeConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.HERO_UPGRADE_LEVEL_key);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("HeroUpgradeConfig", object);
-		}
-		if(req.containsKey("del-HeroConfig")){
-			delete(RedisKey.PREFIX + RedisKey.HERO_KEY);
-			req.put("HeroConfig", 1);
-		}
-		if(req.containsKey("HeroConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.HERO_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("HeroConfig", object);
-		}
-		if(req.containsKey("del-HeroStarConfig")){
-			delete(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
-			req.put("HeroStarConfig", 1);
-		}
-		if(req.containsKey("HeroStarConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("HeroStarConfig", object);
-		}
-		if(req.containsKey("del-LotteryConfig1001")){
-			delete(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1001);
-			req.put("LotteryConfig1001", 1);
-		}
-		if(req.containsKey("del-LotteryConfig1002")){
-			delete(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1002);
-			req.put("LotteryConfig1002", 1);
-		}
-		if(req.containsKey("LotteryConfig1001")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1001);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LotteryConfig1001", object);
-		}
-		if(req.containsKey("LotteryConfig1002")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1002);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LotteryConfig1002", object);
-		}
-		if(req.containsKey("del-LotteryEquipConfig")){
-			delete(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1001);
-			req.put("LotteryEquipConfig", 1);
-		}
-		if(req.containsKey("del-LotteryEquipConfig1002")){
-			delete(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1002);
-			req.put("LotteryEquipConfig1002", 1);
-		}
-		if(req.containsKey("LotteryEquipConfig1001")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1001);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LotteryEquipConfig1001", object);
-		}
-		if(req.containsKey("LotteryEquipConfig1002")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1002);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("LotteryEquipConfig1002", object);
-		}
-		if(req.containsKey("del-EquipConfig")){
-			delete(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-			req.put("EquipConfig", 1);
-		}
-		if(req.containsKey("EquipConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("EquipConfig", object);
-		}
-		if(req.containsKey("del-ChipConfig")){
-			delete(RedisKey.PREFIX + RedisKey.CHIP_CONFIG);
-			req.put("ChipConfig", 1);
-		}
-		if(req.containsKey("ChipConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.CHIP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ChipConfig", object);
-		}
-		if(req.containsKey("del-SkillLevelConfig")){
-			delete(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
-			req.put("SkillLevelConfig", 1);
-		}
-		if(req.containsKey("SkillLevelConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("SkillLevelConfig", object);
-		}
-
-		if(req.containsKey("del-PropConfig")){
-			delete(RedisKey.PREFIX+RedisKey.PROP_KEY);
-			req.put("PropConfig", 1);
-		}
-		if(req.containsKey("PropConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.PROP_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PropConfig", object);
-		}
-		if(req.containsKey("del-FenJieConfig")){
-			delete(RedisKey.PREFIX+RedisKey.FENJIE_KEY);
-			req.put("FenJieConfig", 1);
-		}
-		if(req.containsKey("FenJieConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.FENJIE_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("FenJieConfig", object);
-		}
-		if(req.containsKey("del-TotalSignConfig")){
-			delete(RedisKey.TOTAL_SIGN_KEY);
-			req.put("TotalSignConfig", 1);
-		}
-		if(req.containsKey("TotalSignConfig")){
-			Map<String, String> map = hget(RedisKey.TOTAL_SIGN_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("TotalSignConfig", object);
-		}
-		if(req.containsKey("del-SignConfig")){
-			delete(RedisKey.SIGN_KEY);
-			req.put("SignConfig", 1);
-		}
-		if(req.containsKey("SignConfig")){
-			Map<String, String> map = hget(RedisKey.SIGN_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("SignConfig", object);
-		}
-		if(req.containsKey("del-Sign2Config")){
-			delete(RedisKey.SIGN2_KEY);
-			req.put("Sign2Config", 1);
-		}
-		if(req.containsKey("Sign2Config")){
-			Map<String, String> map = hget(RedisKey.SIGN2_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("Sign2Config", object);
-		}
-		if(req.containsKey("del-MoHuaConfig")){
-			delete(RedisKey.MOHUA_MAP_KEY);
-			req.put("MoHuaConfig", 1);
-		}
-		if(req.containsKey("MoHuaConfig")){
-			Map<String, String> map = hget(RedisKey.MOHUA_MAP_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("MoHuaConfig", object);
-		}
-		if(req.containsKey("del-MoHuaCardConfig")){
-			delete(RedisKey.MOHUA_CARD_KEY);
-			req.put("MoHuaCardConfig", 1);
-		}
-		if(req.containsKey("MoHuaCardConfig")){
-			Map<String, String> map = hget(RedisKey.MOHUA_CARD_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("MoHuaCardConfig", object);
-		}
-		if(req.containsKey("del-MoHuaJieDuanConfig")){
-			delete(RedisKey.MOHUA_JIEDUAN_KEY);
-			req.put("MoHuaJieDuanConfig", 1);
-		}
-		if(req.containsKey("MoHuaJieDuanConfig")){
-			Map<String, String> map = hget(RedisKey.MOHUA_JIEDUAN_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("MoHuaJieDuanConfig", object);
-		}
-		if(req.containsKey("del-MoHuaLootConfig")){
-			delete(RedisKey.MOHUA_LOOT_KEY);
-			req.put("MoHuaLootConfig", 1);
-		}
-		if(req.containsKey("MoHuaLootConfig")){
-			Map<String, String> map = hget(RedisKey.MOHUA_LOOT_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("MoHuaLootConfig", object);
-		}
-
-//		if(req.containsKey("del-AchieveConfig")){
-//			delete(RedisKey.ACHIEVE_KEY);
-//			req.put("AchieveConfig", 1);
+//		if(req.containsKey("del-ShopConfig")){
+//			delete(SHOP_CONFIG);
+//			req.put("ShopConfig", 1);
 //		}
-//		if(req.containsKey("AchieveConfig")){
-//			Map<String, String> map = hget(RedisKey.ACHIEVE_KEY);
+//		if(req.containsKey("ShopConfig")){
+//			Map<String, String> map = hget(SHOP_CONFIG);
 //			JSONObject object = new JSONObject();
 //			object.putAll(map);
-//			result.put("AchieveConfig", object);
+//			result.put("ShopConfig", object);
 //		}
-//		if(req.containsKey("del-ActivityRiChangConfig")){
+//		if(req.containsKey("del-BlackShopConfig")){
+//			delete(BLACKSHOP_CONFIG);
+//			req.put("BlackShopConfig", 1);
+//		}
+//		if(req.containsKey("BlackShopConfig")){
+//			Map<String, String> map = hget(BLACKSHOP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("BlackShopConfig", object);
+//		}
+//		if(req.containsKey("del-UnionShopConfig")){
+//			delete(UNIONSHOP_CONFIG);
+//			req.put("UnionShopConfig", 1);
+//		}
+//		if(req.containsKey("UnionShopConfig")){
+//			Map<String, String> map = hget(UNIONSHOP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("UnionShopConfig", object);
+//		}
+//		if(req.containsKey("del-PvpShopConfig")){
+//			delete(PVPSHOP_CONFIG);
+//			req.put("PvpShopConfig", 1);
+//		}
+//		if(req.containsKey("PvpShopConfig")){
+//			Map<String, String> map = hget(PVPSHOP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("PvpShopConfig", object);
+//		}
+//		if(req.containsKey("del-ExpeditionShopConfig")){
+//			delete(EXPEDITIONSHOP_CONFIG);
+//			req.put("ExpeditionShopConfig", 1);
+//		}
+//		if(req.containsKey("ExpeditionShopConfig")){
+//			Map<String, String> map = hget(EXPEDITIONSHOP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("ExpeditionShopConfig", object);
+//		}
+//		if(req.containsKey("del-LadderShopConfig")){
+//			delete(LADDERSHOP_CONFIG);
+//			req.put("LadderShopConfig", 1);
+//		}
+//		if(req.containsKey("LadderShopConfig")){
+//			Map<String, String> map = hget(LADDERSHOP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LadderShopConfig", object);
+//		}
+//		if(req.containsKey("del-AreaMonsterRewardConfig")){
+//			delete(RedisKey.AREAMONSTERREWARD_CONFIG);
+//			req.put("AreaMonsterRewardConfig", 1);
+//		}
+//		if(req.containsKey("AreaMonsterRewardConfig")){
+//			Map<String, String> map = hget(RedisKey.AREAMONSTERREWARD_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaMonsterReward", object);
+//		}
+//		if(req.containsKey("del-LadderRankingConfig")){
+//			delete(RedisKey.LADDER_RANKING_CONFIG_KEY);
+//			req.put("LadderRankingConfig", 1);
+//		}
+//		if(req.containsKey("LadderRankingConfig")){
+//			Map<String, String> map = hget(RedisKey.LADDER_RANKING_CONFIG_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LadderRankingConfig", object);
+//		}
+//		if(req.containsKey("del-LadderDailyConfig")){
+//			delete(RedisKey.LADDER_DAILY_CONFIG_KEY);
+//			req.put("LadderDailyConfig", 1);
+//		}
+//		if(req.containsKey("LadderDailyConfig")){
+//			Map<String, String> map = hget(RedisKey.LADDER_DAILY_CONFIG_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LadderDailyConfig", object);
+//		}
+//		if(req.containsKey("del-LevelConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.LEVEL_KEY);
+//			req.put("LevelConfig", 1);
+//		}
+//		if(req.containsKey("LevelConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LevelConfig", object);
+//		}
+//		if(req.containsKey("del-LevelDiffConfig1")){
+//			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 1);
+//			req.put("LevelDiffConfig1", 1);
+//		}
+//		if(req.containsKey("del-LevelDiffConfig2")){
+//			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 2);
+//			req.put("LevelDiffConfig2", 1);
+//		}
+//		if(req.containsKey("del-LevelDiffConfig3")){
+//			delete(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 3);
+//			req.put("LevelDiffConfig3", 1);
+//		}
+//		if(req.containsKey("LevelDiffConfig1")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 1);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LevelDiffConfig1", object);
+//		}
+//		if(req.containsKey("LevelDiffConfig2")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 2);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LevelDiffConfig2", object);
+//		}
+//		if(req.containsKey("LevelDiffConfig3")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LEVEL_DIFF_PREDIX + 3);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LevelDiffConfig3", object);
+//		}
+////		if(req.containsKey("del-WinLevelConfig")){
+////			delete(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
+////			req.put("WinLevelConfig", 1);
+////		}
+////		if(req.containsKey("WinLevelConfig")){
+////			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.WIN_LEVEL_KEY);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("WinLevelConfig", object);
+////		}
+//		if(req.containsKey("del-LootLevelConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.LOOT_LEVEL_KEY);
+//			req.put("LootLevelConfig", 1);
+//		}
+//		if(req.containsKey("LootLevelConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOOT_LEVEL_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LootLevelConfig", object);
+//		}
+//		if(req.containsKey("del-HeroUpgradeConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.HERO_UPGRADE_LEVEL_key);
+//			req.put("HeroUpgradeConfig", 1);
+//		}
+//		if(req.containsKey("HeroUpgradeConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.HERO_UPGRADE_LEVEL_key);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("HeroUpgradeConfig", object);
+//		}
+//		if(req.containsKey("del-HeroConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.HERO_KEY);
+//			req.put("HeroConfig", 1);
+//		}
+//		if(req.containsKey("HeroConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.HERO_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("HeroConfig", object);
+//		}
+//		if(req.containsKey("del-HeroStarConfig")){
+//			delete(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
+//			req.put("HeroStarConfig", 1);
+//		}
+//		if(req.containsKey("HeroStarConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.HERO_STAR_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("HeroStarConfig", object);
+//		}
+//		if(req.containsKey("del-LotteryConfig1001")){
+//			delete(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1001);
+//			req.put("LotteryConfig1001", 1);
+//		}
+//		if(req.containsKey("del-LotteryConfig1002")){
+//			delete(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1002);
+//			req.put("LotteryConfig1002", 1);
+//		}
+//		if(req.containsKey("LotteryConfig1001")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1001);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LotteryConfig1001", object);
+//		}
+//		if(req.containsKey("LotteryConfig1002")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_PREFIX + 1002);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LotteryConfig1002", object);
+//		}
+//		if(req.containsKey("del-LotteryEquipConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1001);
+//			req.put("LotteryEquipConfig", 1);
+//		}
+//		if(req.containsKey("del-LotteryEquipConfig1002")){
+//			delete(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1002);
+//			req.put("LotteryEquipConfig1002", 1);
+//		}
+//		if(req.containsKey("LotteryEquipConfig1001")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1001);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LotteryEquipConfig1001", object);
+//		}
+//		if(req.containsKey("LotteryEquipConfig1002")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.LOTTERY_EQUIP_PREFIX + 1002);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("LotteryEquipConfig1002", object);
+//		}
+//		if(req.containsKey("del-EquipConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
+//			req.put("EquipConfig", 1);
+//		}
+//		if(req.containsKey("EquipConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.EQUIP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("EquipConfig", object);
+//		}
+//		if(req.containsKey("del-ChipConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.CHIP_CONFIG);
+//			req.put("ChipConfig", 1);
+//		}
+//		if(req.containsKey("ChipConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.CHIP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("ChipConfig", object);
+//		}
+//		if(req.containsKey("del-SkillLevelConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+//			req.put("SkillLevelConfig", 1);
+//		}
+//		if(req.containsKey("SkillLevelConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX + RedisKey.SKILLLEVEL_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("SkillLevelConfig", object);
+//		}
+//
+//		if(req.containsKey("del-PropConfig")){
+//			delete(RedisKey.PREFIX+RedisKey.PROP_KEY);
+//			req.put("PropConfig", 1);
+//		}
+//		if(req.containsKey("PropConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.PROP_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("PropConfig", object);
+//		}
+//		if(req.containsKey("del-FenJieConfig")){
+//			delete(RedisKey.PREFIX+RedisKey.FENJIE_KEY);
+//			req.put("FenJieConfig", 1);
+//		}
+//		if(req.containsKey("FenJieConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.FENJIE_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("FenJieConfig", object);
+//		}
+//		if(req.containsKey("del-TotalSignConfig")){
+//			delete(RedisKey.TOTAL_SIGN_KEY);
+//			req.put("TotalSignConfig", 1);
+//		}
+//		if(req.containsKey("TotalSignConfig")){
+//			Map<String, String> map = hget(RedisKey.TOTAL_SIGN_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("TotalSignConfig", object);
+//		}
+//		if(req.containsKey("del-SignConfig")){
+//			delete(RedisKey.SIGN_KEY);
+//			req.put("SignConfig", 1);
+//		}
+//		if(req.containsKey("SignConfig")){
+//			Map<String, String> map = hget(RedisKey.SIGN_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("SignConfig", object);
+//		}
+//		if(req.containsKey("del-Sign2Config")){
+//			delete(RedisKey.SIGN2_KEY);
+//			req.put("Sign2Config", 1);
+//		}
+//		if(req.containsKey("Sign2Config")){
+//			Map<String, String> map = hget(RedisKey.SIGN2_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("Sign2Config", object);
+//		}
+//		if(req.containsKey("del-MoHuaConfig")){
+//			delete(RedisKey.MOHUA_MAP_KEY);
+//			req.put("MoHuaConfig", 1);
+//		}
+//		if(req.containsKey("MoHuaConfig")){
+//			Map<String, String> map = hget(RedisKey.MOHUA_MAP_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("MoHuaConfig", object);
+//		}
+//		if(req.containsKey("del-MoHuaCardConfig")){
+//			delete(RedisKey.MOHUA_CARD_KEY);
+//			req.put("MoHuaCardConfig", 1);
+//		}
+//		if(req.containsKey("MoHuaCardConfig")){
+//			Map<String, String> map = hget(RedisKey.MOHUA_CARD_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("MoHuaCardConfig", object);
+//		}
+//		if(req.containsKey("del-MoHuaJieDuanConfig")){
+//			delete(RedisKey.MOHUA_JIEDUAN_KEY);
+//			req.put("MoHuaJieDuanConfig", 1);
+//		}
+//		if(req.containsKey("MoHuaJieDuanConfig")){
+//			Map<String, String> map = hget(RedisKey.MOHUA_JIEDUAN_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("MoHuaJieDuanConfig", object);
+//		}
+//		if(req.containsKey("del-MoHuaLootConfig")){
+//			delete(RedisKey.MOHUA_LOOT_KEY);
+//			req.put("MoHuaLootConfig", 1);
+//		}
+//		if(req.containsKey("MoHuaLootConfig")){
+//			Map<String, String> map = hget(RedisKey.MOHUA_LOOT_KEY);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("MoHuaLootConfig", object);
+//		}
+//
+////		if(req.containsKey("del-AchieveConfig")){
+////			delete(RedisKey.ACHIEVE_KEY);
+////			req.put("AchieveConfig", 1);
+////		}
+////		if(req.containsKey("AchieveConfig")){
+////			Map<String, String> map = hget(RedisKey.ACHIEVE_KEY);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("AchieveConfig", object);
+////		}
+////		if(req.containsKey("del-ActivityRiChangConfig")){
+////			delete(RedisKey.ACTIVITY_RICHANG_KEY);
+////			req.put("ActivityRiChangConfig", 1);
+////		}
+////		if(req.containsKey("ActivityRiChangConfig")){
+////			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("ActivityRiChangConfig", object);
+////		}
+////		if(req.containsKey("del-ActivityKaiFu2Config")){
+////			delete(RedisKey.ACTIVITY_KAIFU2_KEY);
+////			req.put("ActivityKaiFu2Config", 1);
+////		}
+////		if(req.containsKey("ActivityKaiFu2Config")){
+////			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("ActivityKaiFu2Config", object);
+////		}
+////		if(req.containsKey("del-ActivityKaiFuConfig")){
+////			delete(RedisKey.ACTIVITY_KAIFU_KEY);
+////			req.put("ActivityKaiFuConfig", 1);
+////		}
+////		if(req.containsKey("ActivityKaiFuConfig")){
+////			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU_KEY);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("ActivityKaiFuConfig", object);
+////		}
+//
+//		if(req.containsKey("del-AreaEquipConfig")){
+//			delete(RedisKey.AREAEQUIP_CONFIG);
+//			req.put("AreaEquipConfig", 1);
+//		}
+//		if(req.containsKey("AreaEquipConfig")){
+//			Map<String, String> map = hget(RedisKey.AREAEQUIP_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaEquipConfig", object);
+//		}
+//		if(req.containsKey("del-AreaMonsterRewardConfig")){
+//			delete(RedisKey.AREAMONSTERREWARD_CONFIG);
+//			req.put("AreaMonsterRewardConfig", 1);
+//		}
+//		if(req.containsKey("AreaMonsterRewardConfig")){
+//			Map<String, String> map = hget(RedisKey.AREAMONSTERREWARD_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaMonsterRewardConfig", object);
+//		}
+//		if(req.containsKey("del-AreaConfig")){
+//			delete(RedisKey.AREA_CONFIG);
+//			req.put("AreaConfig", 1);
+//		}
+//		if(req.containsKey("AreaConfig")){
+//			String object = getJson(RedisKey.AREA_CONFIG);
+//			result.put("AreaConfig", object);
+//		}
+//		if(req.containsKey("del-AreaBossConfig")){
+//			delete(RedisKey.AREABOSS_CONFIG);
+//			req.put("AreaBossConfig", 1);
+//		}
+//		if(req.containsKey("AreaBossConfig")){
+//			Map<String, String> map = hget(RedisKey.AREABOSS_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaBossConfig", object);
+//		}
+//		if(req.containsKey("del-AreaBossRandConfig")){
+//			delete(RedisKey.AREABOSSRAND_CONFIG);
+//			req.put("AreaBossRandConfig", 1);
+//		}
+//		if(req.containsKey("AreaBossRandConfig")){
+//			String object = getJson(RedisKey.AREABOSSRAND_CONFIG);
+//			result.put("AreaBossRandConfig", object);
+//		}
+//		if(req.containsKey("del-AreaBossRewardConfig")){
+//			delete(RedisKey.AREABOSSREWARD_CONFIG);
+//			req.put("AreaBossRewardConfig", 1);
+//		}
+//		if(req.containsKey("AreaBossRewardConfig")){
+//			Map<String, String> map = hget(RedisKey.AREABOSSREWARD_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaBossRewardConfig", object);
+//		}
+//		if(req.containsKey("del-AreaMonsterConfig")){
+//			delete(RedisKey.AREAMONSTER_CONFIG);
+//			req.put("AreaMonsterConfig", 1);
+//		}
+//		if(req.containsKey("AreaMonsterConfig")){
+//			Map<String, String> map = hget(RedisKey.AREAMONSTER_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaMonsterConfig", object);
+//		}
+//		if(req.containsKey("del-AreaMonsterRandConfig")){
+//			delete(RedisKey.AREAMONSTERRAND_CONFIG);
+//			req.put("AreaMonsterRandConfig", 1);
+//		}
+//		if(req.containsKey("AreaMonsterRandConfig")){
+//			String object = getJson(RedisKey.AREAMONSTERRAND_CONFIG);
+//			result.put("AreaMonsterRandConfig", object);
+//		}
+//		if(req.containsKey("del-AreaPositionConfig")){
+//			delete(RedisKey.AREAPOSITION_CONFIG);
+//			req.put("AreaPositionConfig", 1);
+//		}
+//		if(req.containsKey("AreaPositionConfig")){
+//			Map<String, String> map = hget(RedisKey.AREAPOSITION_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaPositionConfig", object);
+//		}
+//		if(req.containsKey("del-AreaResourceConfig")){
+//			delete(RedisKey.AREARESOURCE_CONFIG);
+//			req.put("AreaResourceConfig", 1);
+//		}
+//		if(req.containsKey("AreaResourceConfig")){
+//			Map<String, String> map = hget(RedisKey.AREARESOURCE_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("AreaResourceConfig", object);
+//		}
+//
+////		if(req.containsKey("del-PvpMonsterConfig")){
+////			delete(RedisKey.PVPMONSTER_CONFIG);
+////			req.put("PvpMonsterConfig", 1);
+////		}
+////		if(req.containsKey("PvpMonsterConfig")){
+////			Map<String, String> map = hget(RedisKey.PVPMONSTER_CONFIG);
+////			JSONObject object = new JSONObject();
+////			object.putAll(map);
+////			result.put("PvpMonsterConfig", object);
+////		}
+//		if(req.containsKey("del-PvpBossConfig")){
+//			delete(RedisKey.PVPBOSS_CONFIG);
+//			req.put("PvpBossConfig", 1);
+//		}
+//		if(req.containsKey("PvpBossConfig")){
+//			Map<String, String> map = hget(RedisKey.PVPBOSS_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("PvpBossConfig", object);
+//		}
+//		if(req.containsKey("del-PvpPositionConfig")){
+//			delete(RedisKey.PVPPOSITION_CONFIG);
+//			req.put("PvpPositionConfig", 1);
+//		}
+//		if(req.containsKey("PvpPositionConfig")){
+//			Map<String, String> map = hget(RedisKey.PVPPOSITION_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("PvpPositionConfig", object);
+//		}
+//		if(req.containsKey("del-PvpMapConfig")){
+//			delete(RedisKey.PVPMAP_CONFIG);
+//			req.put("PvpMapConfig", 1);
+//		}
+//		if(req.containsKey("PvpMapConfig")){
+//			String object = getJson(RedisKey.PVPMAP_CONFIG);
+//			result.put("PvpMapConfig", object);
+//		}
+//
+//		if(req.containsKey("del-PurchaseCoinConfig")){
+//			delete(RedisKey.PURCHASECOIN_CONFIG);
+//			req.put("PurchaseCoinConfig", 1);
+//		}
+//		if(req.containsKey("PurchaseCoinConfig")){
+//			String object = getJson(RedisKey.PURCHASECOIN_CONFIG);
+//			result.put("PurchaseCoinConfig", object);
+//		}
+//		if(req.containsKey("del-PurchaseCoinRewardConfig")){
+//			delete(RedisKey.PURCHASECOINREWARD_CONFIG);
+//			req.put("PurchaseCoinRewardConfig", 1);
+//		}
+//		if(req.containsKey("PurchaseCoinRewardConfig")){
+//			Map<String, String> map = hget(RedisKey.PURCHASECOINREWARD_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("PurchaseCoinRewardConfig", object);
+//		}
+//		if(req.containsKey("del-VipLibaoConfig")){
+//			delete(RedisKey.VIPLIBAO_CONFIG);
+//			req.put("VipLibaoConfig", 1);
+//		}
+//		if(req.containsKey("VipLibaoConfig")){
+//			Map<String, String> map = hget(RedisKey.VIPLIBAO_CONFIG);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("VipLibaoConfig", object);
+//		}
+//		if(req.containsKey("del-VipConfig")){
+//			delete(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
+//			req.put("VipConfig", 1);
+//		}
+//		if(req.containsKey("VipConfig")){
+//			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("VipConfig", object);
+//		}
+//		if(req.containsKey("del-RmbConfig")){
+//			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
+//			req.put("RmbConfig", 1);
+//		}
+//		if(req.containsKey("RmbConfig")){
+//			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
+//			result.put("RmbConfig", object);
+//		}
+//		if(req.containsKey("del-Rmb1Config")){
+//			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
+//			req.put("Rmb1Config", 1);
+//		}
+//		if(req.containsKey("Rmb1Config")){
+//			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
+//			result.put("Rmb1Config", object);
+//		}
+//		if(req.containsKey("del-ActivityRichangConfig")){
 //			delete(RedisKey.ACTIVITY_RICHANG_KEY);
-//			req.put("ActivityRiChangConfig", 1);
+//			req.put("ActivityRichangConfig", 1);
 //		}
-//		if(req.containsKey("ActivityRiChangConfig")){
+//		if(req.containsKey("ActivityRichangConfig")){
 //			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
 //			JSONObject object = new JSONObject();
 //			object.putAll(map);
-//			result.put("ActivityRiChangConfig", object);
+//			result.put("ActivityRichangConfig", object);
 //		}
-//		if(req.containsKey("del-ActivityKaiFu2Config")){
-//			delete(RedisKey.ACTIVITY_KAIFU2_KEY);
-//			req.put("ActivityKaiFu2Config", 1);
-//		}
-//		if(req.containsKey("ActivityKaiFu2Config")){
-//			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
-//			JSONObject object = new JSONObject();
-//			object.putAll(map);
-//			result.put("ActivityKaiFu2Config", object);
-//		}
-//		if(req.containsKey("del-ActivityKaiFuConfig")){
-//			delete(RedisKey.ACTIVITY_KAIFU_KEY);
-//			req.put("ActivityKaiFuConfig", 1);
-//		}
-//		if(req.containsKey("ActivityKaiFuConfig")){
-//			Map<String, String> map = hget(RedisKey.ACTIVITY_KAIFU_KEY);
-//			JSONObject object = new JSONObject();
-//			object.putAll(map);
-//			result.put("ActivityKaiFuConfig", object);
-//		}
-
-		if(req.containsKey("del-AreaEquipConfig")){
-			delete(RedisKey.AREAEQUIP_CONFIG);
-			req.put("AreaEquipConfig", 1);
-		}
-		if(req.containsKey("AreaEquipConfig")){
-			Map<String, String> map = hget(RedisKey.AREAEQUIP_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaEquipConfig", object);
-		}
-		if(req.containsKey("del-AreaMonsterRewardConfig")){
-			delete(RedisKey.AREAMONSTERREWARD_CONFIG);
-			req.put("AreaMonsterRewardConfig", 1);
-		}
-		if(req.containsKey("AreaMonsterRewardConfig")){
-			Map<String, String> map = hget(RedisKey.AREAMONSTERREWARD_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaMonsterRewardConfig", object);
-		}
-		if(req.containsKey("del-AreaConfig")){
-			delete(RedisKey.AREA_CONFIG);
-			req.put("AreaConfig", 1);
-		}
-		if(req.containsKey("AreaConfig")){
-			String object = getJson(RedisKey.AREA_CONFIG);
-			result.put("AreaConfig", object);
-		}
-		if(req.containsKey("del-AreaBossConfig")){
-			delete(RedisKey.AREABOSS_CONFIG);
-			req.put("AreaBossConfig", 1);
-		}
-		if(req.containsKey("AreaBossConfig")){
-			Map<String, String> map = hget(RedisKey.AREABOSS_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaBossConfig", object);
-		}
-		if(req.containsKey("del-AreaBossRandConfig")){
-			delete(RedisKey.AREABOSSRAND_CONFIG);
-			req.put("AreaBossRandConfig", 1);
-		}
-		if(req.containsKey("AreaBossRandConfig")){
-			String object = getJson(RedisKey.AREABOSSRAND_CONFIG);
-			result.put("AreaBossRandConfig", object);
-		}
-		if(req.containsKey("del-AreaBossRewardConfig")){
-			delete(RedisKey.AREABOSSREWARD_CONFIG);
-			req.put("AreaBossRewardConfig", 1);
-		}
-		if(req.containsKey("AreaBossRewardConfig")){
-			Map<String, String> map = hget(RedisKey.AREABOSSREWARD_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaBossRewardConfig", object);
-		}
-		if(req.containsKey("del-AreaMonsterConfig")){
-			delete(RedisKey.AREAMONSTER_CONFIG);
-			req.put("AreaMonsterConfig", 1);
-		}
-		if(req.containsKey("AreaMonsterConfig")){
-			Map<String, String> map = hget(RedisKey.AREAMONSTER_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaMonsterConfig", object);
-		}
-		if(req.containsKey("del-AreaMonsterRandConfig")){
-			delete(RedisKey.AREAMONSTERRAND_CONFIG);
-			req.put("AreaMonsterRandConfig", 1);
-		}
-		if(req.containsKey("AreaMonsterRandConfig")){
-			String object = getJson(RedisKey.AREAMONSTERRAND_CONFIG);
-			result.put("AreaMonsterRandConfig", object);
-		}
-		if(req.containsKey("del-AreaPositionConfig")){
-			delete(RedisKey.AREAPOSITION_CONFIG);
-			req.put("AreaPositionConfig", 1);
-		}
-		if(req.containsKey("AreaPositionConfig")){
-			Map<String, String> map = hget(RedisKey.AREAPOSITION_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaPositionConfig", object);
-		}
-		if(req.containsKey("del-AreaResourceConfig")){
-			delete(RedisKey.AREARESOURCE_CONFIG);
-			req.put("AreaResourceConfig", 1);
-		}
-		if(req.containsKey("AreaResourceConfig")){
-			Map<String, String> map = hget(RedisKey.AREARESOURCE_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("AreaResourceConfig", object);
-		}
-
-//		if(req.containsKey("del-PvpMonsterConfig")){
-//			delete(RedisKey.PVPMONSTER_CONFIG);
-//			req.put("PvpMonsterConfig", 1);
-//		}
-//		if(req.containsKey("PvpMonsterConfig")){
-//			Map<String, String> map = hget(RedisKey.PVPMONSTER_CONFIG);
-//			JSONObject object = new JSONObject();
-//			object.putAll(map);
-//			result.put("PvpMonsterConfig", object);
-//		}
-		if(req.containsKey("del-PvpBossConfig")){
-			delete(RedisKey.PVPBOSS_CONFIG);
-			req.put("PvpBossConfig", 1);
-		}
-		if(req.containsKey("PvpBossConfig")){
-			Map<String, String> map = hget(RedisKey.PVPBOSS_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PvpBossConfig", object);
-		}
-		if(req.containsKey("del-PvpPositionConfig")){
-			delete(RedisKey.PVPPOSITION_CONFIG);
-			req.put("PvpPositionConfig", 1);
-		}
-		if(req.containsKey("PvpPositionConfig")){
-			Map<String, String> map = hget(RedisKey.PVPPOSITION_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PvpPositionConfig", object);
-		}
-		if(req.containsKey("del-PvpMapConfig")){
-			delete(RedisKey.PVPMAP_CONFIG);
-			req.put("PvpMapConfig", 1);
-		}
-		if(req.containsKey("PvpMapConfig")){
-			String object = getJson(RedisKey.PVPMAP_CONFIG);
-			result.put("PvpMapConfig", object);
-		}
-
-		if(req.containsKey("del-PurchaseCoinConfig")){
-			delete(RedisKey.PURCHASECOIN_CONFIG);
-			req.put("PurchaseCoinConfig", 1);
-		}
-		if(req.containsKey("PurchaseCoinConfig")){
-			String object = getJson(RedisKey.PURCHASECOIN_CONFIG);
-			result.put("PurchaseCoinConfig", object);
-		}
-		if(req.containsKey("del-PurchaseCoinRewardConfig")){
-			delete(RedisKey.PURCHASECOINREWARD_CONFIG);
-			req.put("PurchaseCoinRewardConfig", 1);
-		}
-		if(req.containsKey("PurchaseCoinRewardConfig")){
-			Map<String, String> map = hget(RedisKey.PURCHASECOINREWARD_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("PurchaseCoinRewardConfig", object);
-		}
-		if(req.containsKey("del-VipLibaoConfig")){
-			delete(RedisKey.VIPLIBAO_CONFIG);
-			req.put("VipLibaoConfig", 1);
-		}
-		if(req.containsKey("VipLibaoConfig")){
-			Map<String, String> map = hget(RedisKey.VIPLIBAO_CONFIG);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("VipLibaoConfig", object);
-		}
-		if(req.containsKey("del-VipConfig")){
-			delete(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
-			req.put("VipConfig", 1);
-		}
-		if(req.containsKey("VipConfig")){
-			Map<String, String> map = hget(RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip");
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("VipConfig", object);
-		}
-		if(req.containsKey("del-RmbConfig")){
-			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
-			req.put("RmbConfig", 1);
-		}
-		if(req.containsKey("RmbConfig")){
-			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY);
-			result.put("RmbConfig", object);
-		}
-		if(req.containsKey("del-Rmb1Config")){
-			delete(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
-			req.put("Rmb1Config", 1);
-		}
-		if(req.containsKey("Rmb1Config")){
-			String object = getJson(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY);
-			result.put("Rmb1Config", object);
-		}
-		if(req.containsKey("del-ActivityRichangConfig")){
-			delete(RedisKey.ACTIVITY_RICHANG_KEY);
-			req.put("ActivityRichangConfig", 1);
-		}
-		if(req.containsKey("ActivityRichangConfig")){
-			Map<String, String> map = hget(RedisKey.ACTIVITY_RICHANG_KEY);
-			JSONObject object = new JSONObject();
-			object.putAll(map);
-			result.put("ActivityRichangConfig", object);
-		}
 		
 		if (req.containsKey("del-blackDatas") && gmaccountBean.getCanwrite() == 1) {
 			String blackType = req.getString("blackType");

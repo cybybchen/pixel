@@ -14,29 +14,22 @@ import com.trans.pixel.service.cache.CacheService;
 public class StarRedisService extends CacheService {
 
 	public StarRedisService() {
-		getStar(1);
+		buildStarConfig();
 	}
 	
 	public Star getStar(int id) {
-		Star.Builder builder = Star.newBuilder();
-		String value = hgetcache(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, "" + id);
-		if(value != null && RedisService.parseJson(value, builder))
-			return builder.build();
-//		else if(!exists(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY)){
-		else {
-			String xml = RedisService.ReadConfig("ld_star.xml");
-			StarList.Builder list = StarList.newBuilder();
-			RedisService.parseXml(xml, list);
-			Map<String, String> keyvalue = new HashMap<String, String>();
-			for(Star star : list.getDataList()){
-				keyvalue.put(star.getId()+"", RedisService.formatJson(star));
-			}
-			hputcacheAll(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, keyvalue);
-			for(Star star : list.getDataList()){
-				if(star.getId() == id)
-					return star;
-			}
+		Map<Integer, Star> map = hgetcache(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY);
+		return map.get(id);
+	}
+	
+	private void buildStarConfig() {
+		String xml = RedisService.ReadConfig("ld_star.xml");
+		StarList.Builder list = StarList.newBuilder();
+		RedisService.parseXml(xml, list);
+		Map<Integer, Star> map = new HashMap<Integer, Star>();
+		for(Star star : list.getDataList()){
+			map.put(star.getId(), star);
 		}
-		return null;
+		hputcacheAll(RedisKey.PREFIX + RedisKey.HERO_STAR_KEY, map);
 	}
 }

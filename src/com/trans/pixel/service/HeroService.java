@@ -34,7 +34,7 @@ public class HeroService {
 		return hero;
 	}
 	
-	public Map<String, Hero> getHeroMap() {
+	public Map<Integer, Hero> getHeroMap() {
 		return heroRedisService.getHeroConfig();
 	}
 	
@@ -46,11 +46,11 @@ public class HeroService {
 	}
 	
 	public long getLevelUpExp(int start, int add) {
-		Map<String, Upgrade> upgradeMap = heroRedisService.getUpgradeConfig();
+		Map<Integer, Upgrade> upgradeMap = heroRedisService.getUpgradeConfig();
 		long exp = 0;
-		Iterator<Entry<String, Upgrade>> it = upgradeMap.entrySet().iterator();
+		Iterator<Entry<Integer, Upgrade>> it = upgradeMap.entrySet().iterator();
 		while (it.hasNext()) {
-		Entry<String, Upgrade> entry = it.next();
+		Entry<Integer, Upgrade> entry = it.next();
 		Upgrade upgrade = entry.getValue();
 			if (upgrade.getLevel() > start && upgrade.getLevel() <= start + add) {
 				exp += upgrade.getExp();
@@ -66,9 +66,9 @@ public class HeroService {
 	
 	public long getDeleteExp(int level) {
 		long addExp = 0;
-		Map<String, Upgrade> map = heroRedisService.getUpgradeConfig();
+		Map<Integer, Upgrade> map = heroRedisService.getUpgradeConfig();
 		while (level > 0) {
-			Upgrade upgrade = map.get("" + level);
+			Upgrade upgrade = map.get(level);
 			addExp += upgrade.getExp();
 			level--;
 		}

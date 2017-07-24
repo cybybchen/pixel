@@ -439,7 +439,7 @@ public class UnionService extends FightService{
 	}
 	
 	public int getAreaFighting(long userId, UserBean user){
-		Map<String, AreaResource> resources = areaRedisService.getResources(user);
+		Map<Integer, AreaResource> resources = areaRedisService.getResources(user);
 		for(AreaResource resource : resources.values()){
 			if(resource.hasOwner() && resource.getOwner().getId() == userId){
 				if(resource.getState() != 0)
@@ -723,10 +723,10 @@ public class UnionService extends FightService{
 		if (union == null)
 			return;
 		
-		Map<String, UnionBoss> map = redis.getUnionBossConfig();
-		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
+		Map<Integer, UnionBoss> map = redis.getUnionBossConfig();
+		Iterator<Entry<Integer, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, UnionBoss> entry = it.next();
+			Entry<Integer, UnionBoss> entry = it.next();
 			UnionBoss unionBoss = entry.getValue();
 			if (unionBoss.getHandbook() == 0)
 				continue;
@@ -798,10 +798,10 @@ public class UnionService extends FightService{
 	}
 	
 	public List<UnionBossRecord> getUnionBossList(UserBean user, Union.Builder union) {
-		Map<String, UnionBoss> map = redis.getUnionBossConfig();
-		Iterator<Entry<String, UnionBoss>> it = map.entrySet().iterator();
+		Map<Integer, UnionBoss> map = redis.getUnionBossConfig();
+		Iterator<Entry<Integer, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, UnionBoss> entry = it.next();
+			Entry<Integer, UnionBoss> entry = it.next();
 			if (calUnionBossRefresh(union, entry.getValue(), user.getUnionId(), user.getServerId()))
 				redis.saveUnion(union.build(), user);
 		}
@@ -929,7 +929,7 @@ public class UnionService extends FightService{
 	
 	public void doUndeadUnionBossRankReward(int serverId) {//type == 4
 		List<Union> unions = redis.getBaseUnions(serverId);
-		Map<String, UnionBoss> bossMap = redis.getUnionBossConfig();
+		Map<Integer, UnionBoss> bossMap = redis.getUnionBossConfig();
 		for (UnionBoss unionBoss : bossMap.values()) {
 			if (unionBoss.getType() != 4)
 				continue;
@@ -1080,7 +1080,7 @@ public class UnionService extends FightService{
 	}
 	
 	private void calAreaResourceReward(UserBean user) {
-		Map<String, AreaResource> resources = areaRedisService.getResources(user);
+		Map<Integer, AreaResource> resources = areaRedisService.getResources(user);
 		for(AreaResource resource : resources.values()){
 			if (!resource.hasOwner())
 				continue;

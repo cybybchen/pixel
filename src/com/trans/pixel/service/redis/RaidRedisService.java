@@ -28,9 +28,8 @@ public class RaidRedisService extends RedisService{
 	private RaidMapper mapper;
 	
 	public RaidRedisService() {
-		getRaidLevel(1);
-		getRaid(1);
-		getRaidList();
+		buildRaidLevelConfig();
+		buildRaidListConfig();
 	}
 
 	public ResponseRaidCommand.Builder getRaid(UserBean user){
@@ -83,78 +82,57 @@ public class RaidRedisService extends RedisService{
 //	}
 
 	public EventConfig getRaidLevel(int level) {
-		EventConfig.Builder builder = EventConfig.newBuilder();
-		String value = CacheService.hgetcache(RedisKey.RAIDLEVEL_CONFIG, level+"");
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		else{
-			EventConfigList.Builder list = EventConfigList.newBuilder();
-			Map<String, String> keyvalue = new HashMap<String, String>();
-			String xml = ReadConfig("ld_raidlevel.xml");
-			parseXml(xml, list);
-			for(EventConfig config : list.getDataList()) {
-				keyvalue.put(config.getId()+"", formatJson(config));
-				if(level == config.getId())
-					builder = EventConfig.newBuilder(config);
-			}
-			CacheService.hputcacheAll(RedisKey.RAIDLEVEL_CONFIG, keyvalue);
-			return builder.build();
+		Map<Integer, EventConfig> map = CacheService.hgetcache(RedisKey.RAIDLEVEL_CONFIG);
+		return map.get(level);
+	}
+
+	private void buildRaidLevelConfig() {
+		EventConfigList.Builder list = EventConfigList.newBuilder();
+		Map<Integer, EventConfig> map = new HashMap<Integer, EventConfig>();
+		String xml = ReadConfig("ld_raidlevel.xml");
+		parseXml(xml, list);
+		for(EventConfig config : list.getDataList()) {
+			map.put(config.getId(), config);
 		}
-		
+		CacheService.hputcacheAll(RedisKey.RAIDLEVEL_CONFIG, map);
 	}
 	
 	public Raid getRaid(int id){
-		String value = CacheService.hgetcache(RedisKey.RAID_CONFIG, id+"");
-		Raid.Builder builder = Raid.newBuilder();
-		if(value != null && parseJson(value, builder))
-			return builder.build();
-		else{
-			RaidList.Builder list = buildRaid();
-			Map<String, String> raidvalue = new HashMap<String, String>();
-			for(Raid.Builder raid : list.getDataBuilderList()){
-				raidvalue.put(raid.getId()+"", formatJson(raid.build()));
-			}
-			CacheService.hputcacheAll(RedisKey.RAID_CONFIG, raidvalue);
-			
-			value = CacheService.hgetcache(RedisKey.RAID_CONFIG, id+"");
-			if(value != null && parseJson(value, builder))
-				return builder.build();
-		}
-		return null;
+		Map<Integer, Raid> map = CacheService.hgetcache(RedisKey.RAID_CONFIG);
+		return map.get(id);
 	}
+
 	public ResponseRaidCommand.Builder getRaidList(){
-		String value = CacheService.getcache(RedisKey.RAIDLIST_CONFIG);
-		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
-		if(value == null || !parseJson(value, builder)) {
-			RaidList.Builder list = buildRaid();
-			for(Raid.Builder raid : list.getDataBuilderList()) {
-				raid.clearEvent();
-				raid.clearCost();
-				raid.setEventid(0);
-				raid.clearTurn();
-				raid.setMaxlevel(3);
-				raid.setLevel(0);
-				if("".equals(raid.getStarttime()))
-					raid.clearStarttime();
-				if("".equals(raid.getEndtime()))
-					raid.clearEndtime();
-			}
-			builder.clearRaid();
-			builder.addAllRaid(list.getDataList());
-			CacheService.setcache(RedisKey.RAIDLIST_CONFIG, formatJson(builder.build()));
-		}
+		ResponseRaidCommand raids = CacheService.getcache(RedisKey.RAIDLIST_CONFIG);
+		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder(raids);
 		return builder;
 	}
 
-	public RaidList.Builder buildRaid(){
-//		Map<String, String> raidvalue = new HashMap<String, String>();
+	private void buildRaidListConfig(){
+		RaidList.Builder list = getRaidConfig();
+		ResponseRaidCommand.Builder builder = ResponseRaidCommand.newBuilder();
+		for(Raid.Builder raid : list.getDataBuilderList()) {
+			raid.clearEvent();
+			raid.clearCost();
+			raid.setEventid(0);
+			raid.clearTurn();
+			raid.setMaxlevel(3);
+			raid.setLevel(0);
+			if("".equals(raid.getStarttime()))
+				raid.clearStarttime();
+			if("".equals(raid.getEndtime()))
+				raid.clearEndtime();
+		}
+		builder.clearRaid();
+		builder.addAllRaid(list.getDataList());
+		CacheService.setcache(RedisKey.RAIDLIST_CONFIG, builder.build());
+	}
+
+	private RaidList.Builder getRaidConfig(){
 		String xml = ReadConfig("ld_raid.xml");
 		RaidList.Builder list = RaidList.newBuilder();
 		parseXml(xml, list);
-//		for(Raid.Builder raid : list.getDataBuilderList()){
-//			raidvalue.put(raid.getId()+"", formatJson(raid.build()));
-//		}
-//		hputAll(RedisKey.RAID_CONFIG, raidvalue);
+		CacheService.setcache(RedisKey.RAID_CONFIG, list.build());
 		return list;
 	}
 }

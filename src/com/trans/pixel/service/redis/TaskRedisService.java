@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -24,48 +23,23 @@ public class TaskRedisService extends CacheService {
 	private static final String TASK3_FILE_NAME = "ld_task3.xml";
 	
 	public TaskRedisService() {
-		getTask1TargetConfig();
-		getTask3OrderConfig();
-		getTask2TargetConfig();
+		buildTask1TargetConfig();
+		buildTask2TargetConfig();
+		buildTask3OrderConfig();
 	}
 	
 	//task1
 	public TaskTarget getTask1Target(int targetId) {
-		String value = hgetcache(RedisKey.TASK1_CONFIG_KEY, "" + targetId);
-		if (value == null) {
-			Map<String, TaskTarget> config = getTask1TargetConfig();
-			return config.get("" + targetId);
-		} else {
-			TaskTarget.Builder builder = TaskTarget.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, TaskTarget> map = hgetcache(RedisKey.TASK1_CONFIG_KEY);
+			return map.get(targetId);
 	}
 	
-	public Map<String, TaskTarget> getTask1TargetConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TASK1_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, TaskTarget> map = buildTask1TargetConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, TaskTarget> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TASK1_CONFIG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				TaskTarget.Builder builder = TaskTarget.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, TaskTarget> getTask1TargetConfig() {
+		Map<Integer, TaskTarget> map = hgetcache(RedisKey.TASK1_CONFIG_KEY);
+		return map;
 	}
 	
-	private Map<String, TaskTarget> buildTask1TargetConfig(){
+	private Map<Integer, TaskTarget> buildTask1TargetConfig(){
 		String xml = RedisService.ReadConfig(TASK1_FILE_NAME);
 		TaskTargetList.Builder builder = TaskTargetList.newBuilder();
 		if(!RedisService.parseXml(xml, builder)){
@@ -73,71 +47,38 @@ public class TaskRedisService extends CacheService {
 			return null;
 		}
 		
-		Map<String, TaskTarget> map = new HashMap<String, TaskTarget>();
-		Map<String, String> redismap = new HashMap<String, String>();
+		Map<Integer, TaskTarget> map = new HashMap<Integer, TaskTarget>();
+		Map<Integer, TaskOrder> ordermap = new HashMap<Integer, TaskOrder>();
 		for(TaskTarget.Builder task : builder.getDataBuilderList()){
-			map.put("" + task.getTargetid(), task.build());
+			map.put(task.getTargetid(), task.build());
 			for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 				order.setTargetid(task.getTargetid());
-				redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
+				ordermap.put(order.getOrder(), order.build());
 			}
 		}
-		hputcacheAll(RedisKey.TASK1_ORDER_CONFIG_KEY, redismap);
+		hputcacheAll(RedisKey.TASK1_ORDER_CONFIG_KEY, ordermap);
+		hputcacheAll(RedisKey.TASK1_CONFIG_KEY, map);
 		return map;
 	}
 	
 	//task1 order
 	public TaskOrder getTask1Order(int order) {
-		String value = hgetcache(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
-		if (value == null) {
-			buildTask1TargetConfig();
-			value = hgetcache(RedisKey.TASK1_ORDER_CONFIG_KEY, "" + order);
-		} 
-		
-		TaskOrder.Builder builder = TaskOrder.newBuilder();
-		if(RedisService.parseJson(value, builder))
-			return builder.build();
-		
-		return null;
+		Map<Integer, TaskOrder> map = hgetcache(RedisKey.TASK1_ORDER_CONFIG_KEY);
+		return map.get(order);
 	}
 	
 	//task3
 	public TaskOrder getTask3Order(int order) {
-		String value = hgetcache(RedisKey.TASK3_CONFIG_KEY, "" + order);
-		if (value == null) {
-			Map<String, TaskOrder> config = getTask3OrderConfig();
-			return config.get("" + order);
-		} else {
-			TaskOrder.Builder builder = TaskOrder.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, TaskOrder> map = hgetcache(RedisKey.TASK3_CONFIG_KEY);
+		return map.get(order);
 	}
 	
-	public Map<String, TaskOrder> getTask3OrderConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TASK3_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, TaskOrder> map = buildTask3OrderConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, TaskOrder> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TASK3_CONFIG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				TaskOrder.Builder builder = TaskOrder.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, TaskOrder> getTask3OrderConfig() {
+		Map<Integer, TaskOrder> map = hgetcache(RedisKey.TASK3_CONFIG_KEY);
+		return map;
 	}
 	
-	private Map<String, TaskOrder> buildTask3OrderConfig(){
+	private Map<Integer, TaskOrder> buildTask3OrderConfig(){
 		String xml = RedisService.ReadConfig(TASK3_FILE_NAME);
 		Task3OrderList.Builder builder = Task3OrderList.newBuilder();
 		if(!RedisService.parseXml(xml, builder)){
@@ -145,10 +86,12 @@ public class TaskRedisService extends CacheService {
 			return null;
 		}
 		
-		Map<String, TaskOrder> map = new HashMap<String, TaskOrder>();
+		Map<Integer, TaskOrder> map = new HashMap<Integer, TaskOrder>();
 		for(TaskOrder.Builder task : builder.getDataBuilderList()){
-			map.put("" + task.getOrder(), task.build());
+			map.put(task.getOrder(), task.build());
 		}
+		hputcacheAll(RedisKey.TASK3_CONFIG_KEY, map);
+		
 		return map;
 	}
 	
@@ -167,28 +110,12 @@ public class TaskRedisService extends CacheService {
 //		return null;
 //	}
 	
-	public Map<String, Task2TargetHero> getTask2TargetConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.TASK2_CONFIG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Task2TargetHero> map = buildTask2TargetConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Task2TargetHero> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.TASK2_CONFIG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Task2TargetHero.Builder builder = Task2TargetHero.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Task2TargetHero> getTask2TargetConfig() {
+		Map<Integer, Task2TargetHero> map = hgetcache(RedisKey.TASK2_CONFIG_KEY);
+		return map;
 	}
 	
-	private Map<String, Task2TargetHero> buildTask2TargetConfig(){
+	private Map<Integer, Task2TargetHero> buildTask2TargetConfig(){
 		String xml = RedisService.ReadConfig(TASK2_FILE_NAME);
 		Task2TargetList.Builder builder = Task2TargetList.newBuilder();
 		if(!RedisService.parseXml(xml, builder)){
@@ -196,28 +123,30 @@ public class TaskRedisService extends CacheService {
 			return null;
 		}
 		
-		Map<String, Task2TargetHero> map = new HashMap<String, Task2TargetHero>();
+		Map<Integer, Task2TargetHero> map = new HashMap<Integer, Task2TargetHero>();
 		for (Task2TargetHero.Builder hero : builder.getDataBuilderList()) {
-			map.put("" + hero.getHeroid(), hero.build());
-			Map<String, String> redismap = new HashMap<String, String>();
+			map.put(hero.getHeroid(), hero.build());
+			Map<Integer, TaskOrder> ordermap = new HashMap<Integer, TaskOrder>();
 			for (TaskTarget.Builder task : hero.getTargetBuilderList()) {
 				for (TaskOrder.Builder order : task.getOrderBuilderList()) {
 					order.setTargetid(task.getTargetid());
-					redismap.put("" + order.getOrder(), RedisService.formatJson(order.build()));
+					ordermap.put(order.getOrder(), order.build());
 				}
 			}
-			hputcacheAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), redismap);
+			hputcacheAll(RedisKey.TASK2_ORDER_CONFIG_PREFIX + hero.getHeroid(), ordermap);
 		}
+		hputcacheAll(RedisKey.TASK2_CONFIG_KEY, map);
 		
 		return map;
 	}
 	
 	//task2 order
 	public TaskOrder getTask2Order(int order, int heroId) {
-		String value = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+		Map<String, String> map = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId);
+		String value = map.get("" + order);
 		if (value == null) {
 			buildTask2TargetConfig();
-			value = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId, "" + order);
+			value =map.get("" + order);
 		} 
 		
 		TaskOrder.Builder builder = TaskOrder.newBuilder();

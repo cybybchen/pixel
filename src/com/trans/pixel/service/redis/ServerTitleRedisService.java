@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -21,7 +20,7 @@ public class ServerTitleRedisService extends RedisService {
 	private static final String TITLE_FILE_NAME = "ld_title.xml";
 	
 	public ServerTitleRedisService() {
-		getTitleConfig();
+		buildTitleConfig();
 	}
 	
 	public List<TitleInfo> selectServerTileListByServerId(int serverId) {
@@ -49,52 +48,25 @@ public class ServerTitleRedisService extends RedisService {
 	}
 	
 	public Title getTitle(int id) {
-		String value = CacheService.hgetcache(RedisKey.TITLE_KEY, "" + id);
-		if (value == null) {
-			Map<String, Title> config = getTitleConfig();
-			return config.get("" + id);
-		} else {
-			Title.Builder builder = Title.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Title> map = CacheService.hgetcache(RedisKey.TITLE_KEY);
+		return map.get(id);
+	}
+
+	public Map<Integer, Title> getTitleConfig() {
+		Map<Integer, Title> map = CacheService.hgetcache(RedisKey.TITLE_KEY);
+		return map;
 	}
 	
-	public Map<String, Title> getTitleConfig() {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.TITLE_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Title> map = buildTitleConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Title> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			CacheService.hputcacheAll(RedisKey.TITLE_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Title> map = new HashMap<String, Title>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Title.Builder builder = Title.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, Title> buildTitleConfig(){
+	private Map<Integer, Title> buildTitleConfig(){
 		String xml = ReadConfig(TITLE_FILE_NAME);
 		TitleList.Builder builder = TitleList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build " + TITLE_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Title> map = new HashMap<String, Title>();
+		parseXml(xml, builder);
+		Map<Integer, Title> map = new HashMap<Integer, Title>();
 		for(Title.Builder title : builder.getDataBuilderList()){
-			map.put("" + title.getId(), title.build());
+			map.put(title.getId(), title.build());
 		}
+		CacheService.hputcacheAll(RedisKey.TITLE_KEY, map);
+		
 		return map;
 	}
 }

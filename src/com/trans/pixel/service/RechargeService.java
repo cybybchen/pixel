@@ -294,17 +294,17 @@ public class RechargeService {
 				params.put(LogString.VIPLEVEL, "" + user.getVip());
 				int equipCount = 0, armorCount = 0;
 				List<UserPokedeBean> pokedes = userPokedeService.selectUserPokedeList(user.getId());
-				Map<String, Heroloot> pokedemap = heroRedisService.getHerolootConfig();
+				Map<Integer, Heroloot> pokedemap = heroRedisService.getHerolootConfig();
 				params.put(LogString.POKEDEX, "" + (pokedes.size()*100/pokedemap.size()));
 				List<UserEquipPokedeBean> equips = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
-				Map<String, Equip> equipmap = equipRedisService.getEquipConfig();
+				Map<Integer, Equip> equipmap = equipRedisService.getEquipConfig();
 				for(UserEquipPokedeBean pokede : equips)
 					if(pokede.getItemId() < RewardConst.ARMOR)
 						equipCount++;
 					else
 						armorCount++;
 				params.put(LogString.WPOKEDEX, "" + (equipCount*100/equipmap.size()));
-				Map<String, Armor>  armormap = equipRedisService.getArmorConfig();
+				Map<Integer, Armor>  armormap = equipRedisService.getArmorConfig();
 				params.put(LogString.APOKEDEX, "" + (armorCount*100/armormap.size()));
 			logService.sendLog(params, LogString.LOGTYPE_RECHARGE);
 		}

@@ -116,9 +116,7 @@ public class UserTeamRedisService extends RedisService {
 		List<String> values = CacheService.lrangecache(RedisKey.TEAM_UNLOCK_KEY);
 		if(values.isEmpty()){
 			List<TeamUnlock> list = buildTeamUnlockConfig();
-			for (TeamUnlock unlock : list)
-//				cacheService.rpush(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
-				CacheService.lpushcache(RedisKey.TEAM_UNLOCK_KEY, formatJson(unlock));
+			CacheService.setcache(RedisKey.TEAM_UNLOCK_KEY, list);
 	
 			return list;
 		}else{

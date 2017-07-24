@@ -209,7 +209,7 @@ public class UserLadderService {
 	}
 	
 	public int calGrade(int score) {
-		Map<String, LadderMode> map = ladderRedisService.getLadderModeConfig();
+		Map<Integer, LadderMode> map = ladderRedisService.getLadderModeConfig();
 		int grade = 0;
 		for (LadderMode ladderMode : map.values()) {
 			if (ladderMode.getScore() <= score)
@@ -291,7 +291,7 @@ public class UserLadderService {
 	}
 	
 	private LadderSeason initLadderSeason() {
-		Map<String, LadderSeasonConfig> map = ladderRedisService.getLadderSeasonConfig();
+		Map<Integer, LadderSeasonConfig> map = ladderRedisService.getLadderSeasonConfig();
 		for (LadderSeasonConfig ladderSeason : map.values()) {
 			LadderSeason.Builder builder = LadderSeason.newBuilder();
 			builder.setSeason(ladderSeason.getSeason());

@@ -54,9 +54,9 @@ public class PropService {
 		return prop;
 	}
 	
-	private void randomReward(MultiReward.Builder rewardList, int propId, int propCount, Map<String, Prop> map){
+	private void randomReward(MultiReward.Builder rewardList, int propId, int propCount, Map<Integer, Prop> map){
 		//TODO
-		Prop prop = map.get("" + propId);
+		Prop prop = map.get(propId);
 		for (int i = 0; i < propCount; ++i) {
 			for (int j = 0; j < Math.max(prop.getJudge(), 1); ++j) {
 				RewardInfo reward = randomReward(prop);
@@ -86,8 +86,8 @@ public class PropService {
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return ErrorConst.PROP_USE_ERROR;
 		
-		Map<String, Prop> map = propRedisService.getPackageConfig();
-		Prop prop = map.get("" + propId);
+		Map<Integer, Prop> map = propRedisService.getPackageConfig();
+		Prop prop = map.get(propId);
 		if (prop == null)
 			return ErrorConst.PROP_USE_ERROR;
 		
@@ -222,9 +222,9 @@ public class PropService {
 		}
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		List<RewardInfo> rewards = new ArrayList<RewardInfo>();
-		Map<String, Prop> map = propRedisService.getPackageConfig();
+		Map<Integer, Prop> map = propRedisService.getPackageConfig();
 		for (RewardInfo reward : rewardList) {
-			Prop prop = map.get("" + reward.getItemid());
+			Prop prop = map.get(reward.getItemid());
 			if (prop == null || prop.getAutoopen() == 0) {
 				rewards.addLoot(reward);
 				continue;

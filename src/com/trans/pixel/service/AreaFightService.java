@@ -216,7 +216,7 @@ public class AreaFightService extends FightService{
 	}
 	
 	public ResultConst AttackResource(int id, boolean iskill, boolean ret, UserBean user){
-		Map<String, AreaResource> resources = redis.getResources(user);
+		Map<Integer, AreaResource> resources = redis.getResources(user);
 		AreaResource.Builder builder = null;
 		for(AreaResource resource : resources.values()){
 			if(resource.getId() == id)
@@ -663,7 +663,7 @@ public class AreaFightService extends FightService{
 		Map<String, AreaBoss.Builder> bossMap = redis.getBosses(user, positionids);
 		Map<String, AreaMonster> monsterMap = redis.getMonsters(user, positionids);
 		Map<String, String> bosstimeMap = redis.getBossTimes(user);
-		Map<String, AreaResource> resourceMap = redis.getResources(user);
+		Map<Integer, AreaResource> resourceMap = redis.getResources(user);
 //		Map<String, AreaResourceMine> mineMap = redis.getResourceMines(user);
 		Map<Integer, Integer[]> levelMap = redis.getLevels(user);
 		List<AreaInfo.Builder> areas = areamodebuilder.getRegionBuilderList();
@@ -695,7 +695,7 @@ public class AreaFightService extends FightService{
 			// 更新资源点
 //			long time = redis.now();
 			for (AreaResource.Builder resourcebuilder : areabuilder.getResourcesBuilderList()) {
-				AreaResource resource = resourceMap.get(resourcebuilder.getId() + "");
+				AreaResource resource = resourceMap.get(resourcebuilder.getId());
 				if (resource != null) {
 					AreaResource.Builder builder = AreaResource.newBuilder(resource);
 //					if (builder.getState() == 1 && time >= builder.getClosetime()) {// 攻城开始
@@ -727,7 +727,7 @@ public class AreaFightService extends FightService{
 	}
 	
 	public boolean isAreaOwner(UserBean user) {
-		Map<String, AreaResource> resources = redis.getResources(user);
+		Map<Integer, AreaResource> resources = redis.getResources(user);
 		for (AreaResource resource : resources.values()) {
 			if (resource.hasOwner()) {
 				UserInfo userInfo = resource.getOwner();

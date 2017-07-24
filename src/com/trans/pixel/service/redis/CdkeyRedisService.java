@@ -24,7 +24,7 @@ public class CdkeyRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(CdkeyRedisService.class);
 	
 	public CdkeyRedisService() {
-		getCipherConfig();
+		buildCipherConfig();
 	}
 	
 	private static final String CIPHER_FILE_NAME = "ld_cipher.xml";
@@ -197,38 +197,8 @@ public class CdkeyRedisService extends RedisService{
 	}
 	
 	public Cipher getCipher(String cipher) {
-		String value = CacheService.hgetcache(RedisKey.CIPHER_KEY, "" + cipher);
-		if (value == null) {
-			Map<String, Cipher> config = getCipherConfig();
-			return config.get("" + cipher);
-		} else {
-			Cipher.Builder builder = Cipher.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
-	}
-	
-	public Map<String, Cipher> getCipherConfig() {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.CIPHER_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Cipher> map = buildCipherConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Cipher> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			CacheService.hputcacheAll(RedisKey.CIPHER_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Cipher> map = new HashMap<String, Cipher>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Cipher.Builder builder = Cipher.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+		Map<String, Cipher> map = CacheService.hgetcache(RedisKey.CIPHER_KEY);
+		return map.get(cipher);
 	}
 	
 	private Map<String, Cipher> buildCipherConfig(){
@@ -241,8 +211,10 @@ public class CdkeyRedisService extends RedisService{
 		
 		Map<String, Cipher> map = new HashMap<String, Cipher>();
 		for(Cipher.Builder cipher : builder.getDataBuilderList()){
-			map.put("" + cipher.getCipher().toUpperCase(), cipher.build());
+			map.put(cipher.getCipher().toUpperCase(), cipher.build());
 		}
+		CacheService.hputcacheAll(RedisKey.CIPHER_KEY, map);
+		
 		return map;
 	}
 	

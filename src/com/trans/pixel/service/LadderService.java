@@ -219,7 +219,7 @@ public class LadderService {
 			return null;
 		LadderLd ladderLd = ladderSeasonConfig.getLd(ld - 1);
 //		LadderEquip ladderEquip = ladderRedisService.getLadderEquip(userLadder.getGrade());
-		Map<String, LadderEquip> ladderEquipMap = ladderRedisService.getLadderEquipConfig();
+		Map<Integer, LadderEquip> ladderEquipMap = ladderRedisService.getLadderEquipConfig();
 		int order = 0;
 		for (LadderEquip ladderEquip : ladderEquipMap.values()) {
 			if (ladderEquip.getLadder() <= userLadder.getGrade())
@@ -538,7 +538,7 @@ public class LadderService {
 		List<LadderEnemy> enemyList = ladderRedisService.getLadderEnemy();
 		List<String> nameList = ladderRedisService.getLadderNames();
 		List<String> name2List = ladderRedisService.getLadderNames2();
-		Map<String, Hero> heroMap = heroService.getHeroMap();
+		Map<Integer, Hero> heroMap = heroService.getHeroMap();
 		for (LadderEnemy ladderEnemy : enemyList) {
 			for (int i = ladderEnemy.getRanking(); i <= ladderEnemy.getRanking1(); ++i) {
 				long userId = -i;
@@ -576,10 +576,10 @@ public class LadderService {
 		return name1List.get(RandomUtils.nextInt(name1List.size())) + name2List.get(RandomUtils.nextInt(name2List.size()));
 	}
 	
-	private List<HeroInfo> getHeroInfoList(Map<String, Hero> heroMap, LadderEnemy ladderEnemy) {
+	private List<HeroInfo> getHeroInfoList(Map<Integer, Hero> heroMap, LadderEnemy ladderEnemy) {
 		List<HeroInfo> heroInfoList = new ArrayList<HeroInfo>();
 		Map<Integer, Integer> heroInfoMap = new HashMap<Integer, Integer>();
-		String[] heroIds = heroMap.keySet().toArray(new String[0]);
+		Integer[] heroIds = heroMap.keySet().toArray(new Integer[0]);
 		while (heroInfoList.size() < ladderEnemy.getHerocount()) {
 			Hero randomHero = heroMap.get(heroIds[RandomUtils.nextInt(heroIds.length)]);
 			if (randomHero.getHandbook() == 0)

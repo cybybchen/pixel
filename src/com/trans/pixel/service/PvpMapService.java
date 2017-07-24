@@ -348,9 +348,9 @@ public class PvpMapService {
 			else
 				redis.deleteEvent(user, positionid);
 			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
-			Map<String, PVPMap> map = redis.getPvpMap();
+			Map<Integer, PVPMap> map = redis.getPvpMap();
 			if(map.containsKey(event.getFieldid()+"")) {
-				List<RewardInfo> list = map.get(event.getFieldid()+"").getLootlistList();
+				List<RewardInfo> list = map.get(event.getFieldid()).getLootlistList();
 				for(RewardInfo rd : list) {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());
@@ -403,7 +403,7 @@ public class PvpMapService {
 		Map<Integer, UserPvpBuffBean> pvpMap = redis.getUserBuffs(user, maplist);
 //		Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 		List<PVPEvent> events = redis.getEvents(user, pvpMap);
-		Map<String, PVPMap> map = redis.getPvpMap();
+		Map<Integer, PVPMap> map = redis.getPvpMap();
 		for(PVPEvent event : events) {
 			if(event.hasEndtime() && !DateUtil.timeIsAvailable(event.getStarttime(), event.getEndtime())) {
 				redis.deleteEvent(user, event.getPositionid());
@@ -417,8 +417,8 @@ public class PvpMapService {
 			else
 				redis.deleteEvent(user, event.getPositionid());
 			rewards.addAllLoot(levelRedisService.eventReward(event.getEventid(), event.getLevel()).getLootList());
-			if(map.containsKey(event.getFieldid()+"")) {
-				List<RewardInfo> list = map.get(event.getFieldid()+"").getLootlistList();
+			if(map.containsKey(event.getFieldid())) {
+				List<RewardInfo> list = map.get(event.getFieldid()).getLootlistList();
 				for(RewardInfo rd : list) {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());

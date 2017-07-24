@@ -144,14 +144,14 @@ public class UserHeroService {
 		long userId = user.getId();
 		List<HeroInfoBean> addHeroList = new ArrayList<HeroInfoBean>();
 		List<Integer> newHeroIds = new ArrayList<Integer>();
-		Map<String, Heroloot> heroLootMap = heroRedisService.getHerolootConfig();
-		Map<String, Hero> heroMap = heroService.getHeroMap();
+		Map<Integer, Heroloot> heroLootMap = heroRedisService.getHerolootConfig();
+		Map<Integer, Hero> heroMap = heroService.getHeroMap();
 		for(RewardInfo reward : rewards) {
-			Heroloot heroloot = heroLootMap.get("" + reward.getItemid());
+			Heroloot heroloot = heroLootMap.get(reward.getItemid());
 			int heroId = heroloot.getHeroid();
 			int star = heroloot.getStar();
 			int count = (int)(heroloot.getCount() * reward.getCount());
-			HeroInfoBean newHero = initUserHero(userId, heroMap.get("" + heroId), star);
+			HeroInfoBean newHero = initUserHero(userId, heroMap.get(heroId), star);
 			/**
 			 * 更新图鉴
 			 */
@@ -159,7 +159,7 @@ public class UserHeroService {
 			int addCount = 0;
 			while (addCount < count) {
 				newHero = new HeroInfoBean();
-				newHero = initUserHero(userId, heroMap.get("" + heroId), star);
+				newHero = initUserHero(userId, heroMap.get(heroId), star);
 				newHero.setId(user.updateHeroInfoId());
 //				addUserHero(newHero);
 				addHeroList.add(newHero);

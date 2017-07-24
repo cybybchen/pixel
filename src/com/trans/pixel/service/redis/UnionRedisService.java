@@ -46,9 +46,9 @@ public class UnionRedisService extends RedisService{
 	public UserRedisService userRedisService;
 	
 	public UnionRedisService() {
-		getUnionBossConfig();
-		getUnionBosswinConfig();
-		getUnionExpConfig();
+		buildUnionBosswinConfig();
+		buildUnionExpConfig();
+		buildUnionBossConfig();
 	}
 	
 	public Union.Builder getUnion(UserBean user) {
@@ -100,7 +100,7 @@ public class UnionRedisService extends RedisService{
 				}
 			}
 		}
-		Map<String, UnionExp> unionExpMap = this.getUnionExpConfig();
+		Map<Integer, UnionExp> unionExpMap = this.getUnionExpConfig();
 		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
@@ -108,7 +108,7 @@ public class UnionRedisService extends RedisService{
 				if(applyMap.containsKey(builder.getId()+""))
 					builder.setIsApply(true);
 				
-				UnionExp unionExp = unionExpMap.get("" + builder.getLevel());
+				UnionExp unionExp = unionExpMap.get(builder.getLevel());
 				if (unionExp != null)
 					builder.setMaxCount(unionExp.getUnionsize());
 				unions.add(builder.build());
@@ -323,41 +323,16 @@ public class UnionRedisService extends RedisService{
 	
 	//union boss
 	public UnionBoss getUnionBoss(int id) {
-		String value = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY, "" + id);
-		if (value == null) {
-			Map<String, UnionBoss> unionBossConfig = getUnionBossConfig();
-			return unionBossConfig.get("" + id);
-		} else {
-			UnionBoss.Builder builder = UnionBoss.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, UnionBoss> map = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY);
+		return map.get(id);
 	}
 	
-	public Map<String, UnionBoss> getUnionBossConfig() {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, UnionBoss> map = buildUnionBossConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, UnionBoss> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			CacheService.hputcacheAll(RedisKey.UNION_BOSS_KEY, redismap);
-			return map;
-		}else{
-			Map<String, UnionBoss> map = new HashMap<String, UnionBoss>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				UnionBoss.Builder builder = UnionBoss.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, UnionBoss> getUnionBossConfig() {
+		Map<Integer, UnionBoss> map = CacheService.hgetcache(RedisKey.UNION_BOSS_KEY);
+		return map;
 	}
-	
-	private Map<String, UnionBoss> buildUnionBossConfig(){
+
+	private Map<Integer, UnionBoss> buildUnionBossConfig(){
 		String xml = ReadConfig(UNION_BOSS_FILE_NAME);
 		UnionBossList.Builder builder = UnionBossList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -365,10 +340,12 @@ public class UnionRedisService extends RedisService{
 			return null;
 		}
 		
-		Map<String, UnionBoss> map = new HashMap<String, UnionBoss>();
+		Map<Integer, UnionBoss> map = new HashMap<Integer, UnionBoss>();
 		for(UnionBoss.Builder boss : builder.getDataBuilderList()){
-			map.put("" + boss.getId(), boss.build());
+			map.put(boss.getId(), boss.build());
 		}
+		CacheService.hputcacheAll(RedisKey.UNION_BOSS_KEY, map);
+		
 		return map;
 	}
 	
@@ -425,41 +402,16 @@ public class UnionRedisService extends RedisService{
 	
 	//union bosswin
 	public UnionBosswin getUnionBosswin(int id) {
-		String value = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY, "" + id);
-		if (value == null) {
-			Map<String, UnionBosswin> unionBosswinConfig = getUnionBosswinConfig();
-			return unionBosswinConfig.get("" + id);
-		} else {
-			UnionBosswin.Builder builder = UnionBosswin.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, UnionBosswin> map = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY);
+		return map.get(id);
 	}
 	
-	public Map<String, UnionBosswin> getUnionBosswinConfig() {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, UnionBosswin> map = buildUnionBosswinConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, UnionBosswin> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			CacheService.hputcacheAll(RedisKey.UNION_BOSSWIN_KEY, redismap);
-			return map;
-		}else{
-			Map<String, UnionBosswin> map = new HashMap<String, UnionBosswin>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				UnionBosswin.Builder builder = UnionBosswin.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, UnionBosswin> getUnionBosswinConfig() {
+		Map<Integer, UnionBosswin> map = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY);
+		return map;
 	}
 	
-	private Map<String, UnionBosswin> buildUnionBosswinConfig(){
+	private Map<Integer, UnionBosswin> buildUnionBosswinConfig(){
 		String xml = ReadConfig(UNION_BOSSWIN_FILE_NAME);
 		UnionBosswinList.Builder builder = UnionBosswinList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -467,10 +419,12 @@ public class UnionRedisService extends RedisService{
 			return null;
 		}
 		
-		Map<String, UnionBosswin> map = new HashMap<String, UnionBosswin>();
+		Map<Integer, UnionBosswin> map = new HashMap<Integer, UnionBosswin>();
 		for(UnionBosswin.Builder boss : builder.getDataBuilderList()){
-			map.put("" + boss.getId(), boss.build());
+			map.put(boss.getId(), boss.build());
 		}
+		CacheService.hputcacheAll(RedisKey.UNION_BOSSWIN_KEY, map);
+		
 		return map;
 	}
 	
@@ -585,41 +539,16 @@ public class UnionRedisService extends RedisService{
 	}
 	
 	public UnionExp getUnionExp(int id) {
-		String value = CacheService.hgetcache(RedisKey.UNION_EXP_KEY, "" + id);
-		if (value == null) {
-			Map<String, UnionExp> unionBossConfig = getUnionExpConfig();
-			return unionBossConfig.get("" + id);
-		} else {
-			UnionExp.Builder builder = UnionExp.newBuilder();
-			if(parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, UnionExp> map = CacheService.hgetcache(RedisKey.UNION_EXP_KEY);
+		return map.get(id);
 	}
 	
-	public Map<String, UnionExp> getUnionExpConfig() {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.UNION_EXP_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, UnionExp> map = buildUnionExpConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, UnionExp> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
-			}
-			CacheService.hputcacheAll(RedisKey.UNION_EXP_KEY, redismap);
-			return map;
-		}else{
-			Map<String, UnionExp> map = new HashMap<String, UnionExp>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				UnionExp.Builder builder = UnionExp.newBuilder();
-				if(parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, UnionExp> getUnionExpConfig() {
+		Map<Integer, UnionExp> map = CacheService.hgetcache(RedisKey.UNION_EXP_KEY);
+		return map;
 	}
 	
-	private Map<String, UnionExp> buildUnionExpConfig(){
+	private Map<Integer, UnionExp> buildUnionExpConfig(){
 		String xml = ReadConfig(UNION_EXP_FILE_NAME);
 		UnionExpList.Builder builder = UnionExpList.newBuilder();
 		if(!parseXml(xml, builder)){
@@ -627,10 +556,12 @@ public class UnionRedisService extends RedisService{
 			return null;
 		}
 		
-		Map<String, UnionExp> map = new HashMap<String, UnionExp>();
+		Map<Integer, UnionExp> map = new HashMap<Integer, UnionExp>();
 		for(UnionExp.Builder config : builder.getDataBuilderList()){
-			map.put("" + config.getLevel(), config.build());
+			map.put(config.getLevel(), config.build());
 		}
+		CacheService.hputcacheAll(RedisKey.UNION_EXP_KEY, map);
+		
 		return map;
 	}
 }

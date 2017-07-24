@@ -22,7 +22,8 @@ public class AchieveRedisService extends CacheService {
 	}
 	
 	public Achieve getAchieve(int id) {
-		String value = hgetcache(RedisKey.ACHIEVE_KEY, "" + id);
+		Map<String, String> keyvalue = hgetcache(RedisKey.ACHIEVE_KEY);
+		String value = keyvalue.get("" + id);
 		if (value == null) {
 			Map<String, Achieve> config = getAchieveConfig();
 			return config.get("" + id);

@@ -26,41 +26,11 @@ public class EquipPokedeRedisService extends CacheService {
 	}
 	
 	public EquipIncrease getEquipIncrease(int level) {
-		String value = hgetcache(RedisKey.EQUIP_INCREASE_CONFIG, "" + level);
-		if (value == null) {
-			Map<String, EquipIncrease> config = getEquipIncreaseConfig();
-			return config.get("" + level);
-		} else {
-			EquipIncrease.Builder builder = EquipIncrease.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, EquipIncrease> map = hgetcache(RedisKey.EQUIP_INCREASE_CONFIG);
+		return map.get(level);
 	}
 	
-	public Map<String, EquipIncrease> getEquipIncreaseConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_INCREASE_CONFIG);
-		if(keyvalue.isEmpty()){
-			Map<String, EquipIncrease> map = buildEquipIncreaseConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, EquipIncrease> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.EQUIP_INCREASE_CONFIG, redismap);
-			return map;
-		}else{
-			Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				EquipIncrease.Builder builder = EquipIncrease.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, EquipIncrease> buildEquipIncreaseConfig(){
+	private Map<Integer, EquipIncrease> buildEquipIncreaseConfig(){
 		String xml = RedisService.ReadConfig(INCREASE_FILE_NAME);
 		EquipIncreaseList.Builder builder = EquipIncreaseList.newBuilder();
 		if(!RedisService.parseXml(xml, builder)){
@@ -68,50 +38,22 @@ public class EquipPokedeRedisService extends CacheService {
 			return null;
 		}
 		
-		Map<String, EquipIncrease> map = new HashMap<String, EquipIncrease>();
+		Map<Integer, EquipIncrease> map = new HashMap<Integer, EquipIncrease>();
 		for(EquipIncrease.Builder chip : builder.getDataBuilderList()){
-			map.put("" + chip.getLevel(), chip.build());
+			map.put(chip.getLevel(), chip.build());
 		}
+		hputcacheAll(RedisKey.EQUIP_INCREASE_CONFIG, map);
+		
 		return map;
 	}
 	
 	//increase cost
 	public IncreaseLevel getIncreaseLevel(int level) {
-		String value = hgetcache(RedisKey.EQUIP_INCREASELEVEL_CONFIG, "" + level);
-		if (value == null) {
-			Map<String, IncreaseLevel> config = getIncreaseLevelConfig();
-			return config.get("" + level);
-		} else {
-			IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, IncreaseLevel> map = hgetcache(RedisKey.EQUIP_INCREASELEVEL_CONFIG);
+		return map.get(level);
 	}
 	
-	public Map<String, IncreaseLevel> getIncreaseLevelConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.EQUIP_INCREASELEVEL_CONFIG);
-		if(keyvalue.isEmpty()){
-			Map<String, IncreaseLevel> map = buildIncreaseLevelConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, IncreaseLevel> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, redismap);
-			return map;
-		}else{
-			Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				IncreaseLevel.Builder builder = IncreaseLevel.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, IncreaseLevel> buildIncreaseLevelConfig(){
+	private Map<Integer, IncreaseLevel> buildIncreaseLevelConfig(){
 		String xml = RedisService.ReadConfig(INCREASECOST_FILE_NAME);
 		IncreaseLevelList.Builder builder = IncreaseLevelList.newBuilder();
 		if(!RedisService.parseXml(xml, builder)){
@@ -119,10 +61,12 @@ public class EquipPokedeRedisService extends CacheService {
 			return null;
 		}
 		
-		Map<String, IncreaseLevel> map = new HashMap<String, IncreaseLevel>();
+		Map<Integer, IncreaseLevel> map = new HashMap<Integer, IncreaseLevel>();
 		for(IncreaseLevel.Builder increase : builder.getDataBuilderList()){
-			map.put("" + increase.getLevel(), increase.build());
+			map.put(increase.getLevel(), increase.build());
 		}
+		hputcacheAll(RedisKey.EQUIP_INCREASELEVEL_CONFIG, map);
+		
 		return map;
 	}
 }

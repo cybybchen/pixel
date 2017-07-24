@@ -24,63 +24,48 @@ public class RechargeRedisService extends RedisService {
 //	private static Logger logger = Logger.getLogger(RechargeRedisService.class);
 	
 	public RechargeRedisService() {
-		getRmbConfig(RedisKey.RMB_KEY);
-		getRmbConfig(RedisKey.RMB1_KEY);
+		buildRmbConfig(RedisKey.RMB_KEY);
+		buildRmbConfig(RedisKey.RMB1_KEY);
 	}
 	
 	public Rmb getRmb(int id) {
-		Rmb.Builder builder = Rmb.newBuilder();
-		String value = CacheService.hgetcache(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB_KEY, id+"");
-		if(value != null && parseJson(value, builder))
-			return builder.build();
 		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB_KEY);
 		return map.get(id);
 	}
 
 	public Rmb getRmb1(int id) {
-		Rmb.Builder builder = Rmb.newBuilder();
-		String value = CacheService.hgetcache(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + RedisKey.RMB1_KEY, id+"");
-		if(value != null && parseJson(value, builder))
-			return builder.build();
 		Map<Integer, Rmb> map = getRmbConfig(RedisKey.RMB1_KEY);
 		return map.get(id);
 	}
 	
 	public Map<Integer, Rmb> getRmbConfig(String rmbKey) {
-		Map<String, String> keyvalue = CacheService.hgetcache(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
-		Map<Integer, Rmb> map = new HashMap<Integer, Rmb>();
-		if(!keyvalue.isEmpty()){
-			for(String value : keyvalue.values()){
-				Rmb.Builder builder = Rmb.newBuilder();
-				if(parseJson(value, builder)){
-					map.put(builder.getId(), builder.build());
-				}
-			}
-		}else {
-			RmbList.Builder builder = RmbList.newBuilder();
-			String xml = ReadConfig("ld_"+rmbKey+".xml");
-			parseXml(xml, builder);
-			xml = ReadConfig("ld_libao.xml");
-			VipLibaoList.Builder list = VipLibaoList.newBuilder();
-			parseXml(xml, list);
-			for(Rmb.Builder rmb : builder.getDataBuilderList()) {
-				for(VipLibao libao : list.getDataList()){
-					if(libao.getItemid() == rmb.getReward().getItemid()) {
-						for(VipReward vipreward : libao.getRewardList()) {
-							RewardInfo.Builder reward = RewardInfo.newBuilder();
-							reward.setItemid(vipreward.getItemid());
-							reward.setCount(vipreward.getCount());
-							rmb.addLibao(reward);
-						}
-						break;
-					}
-				}
-				map.put(rmb.getId(), rmb.build());
-				keyvalue.put(rmb.getId()+"", RedisService.formatJson(rmb.build()));
-			}
-			CacheService.hputcacheAll(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, keyvalue);
-		}
+		Map<Integer, Rmb> map = CacheService.hgetcache(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey);
 		return map;
+	}
+	
+	private void buildRmbConfig(String rmbKey) {
+		String xml = ReadConfig("ld_"+rmbKey+".xml");
+		Map<Integer, Rmb> map = new HashMap<Integer, Rmb>();
+		RmbList.Builder builder = RmbList.newBuilder();
+		parseXml(xml, builder);
+		xml = ReadConfig("ld_libao.xml");
+		VipLibaoList.Builder list = VipLibaoList.newBuilder();
+		parseXml(xml, list);
+		for(Rmb.Builder rmb : builder.getDataBuilderList()) {
+			for(VipLibao libao : list.getDataList()){
+				if(libao.getItemid() == rmb.getReward().getItemid()) {
+					for(VipReward vipreward : libao.getRewardList()) {
+						RewardInfo.Builder reward = RewardInfo.newBuilder();
+						reward.setItemid(vipreward.getItemid());
+						reward.setCount(vipreward.getCount());
+						rmb.addLibao(reward);
+					}
+					break;
+				}
+			}
+			map.put(rmb.getId(), rmb.build());
+		}
+		CacheService.hputcacheAll(RedisKey.PREFIX + RedisKey.CONFIG_PREFIX + rmbKey, map);
 	}
 	
 	public void addRechargeRecord(RechargeBean recharge) {

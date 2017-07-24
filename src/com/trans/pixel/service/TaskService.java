@@ -71,10 +71,10 @@ public class TaskService {
 	
 	public void sendTask1Score(UserBean user, int targetId, int count, boolean isAdded) {
 		long userId = user.getId();
-		Map<String, TaskTarget> map = taskRedisService.getTask1TargetConfig();
-		Iterator<Entry<String, TaskTarget>> it = map.entrySet().iterator();
+		Map<Integer, TaskTarget> map = taskRedisService.getTask1TargetConfig();
+		Iterator<Entry<Integer, TaskTarget>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, TaskTarget> entry = it.next();
+			Entry<Integer, TaskTarget> entry = it.next();
 			TaskTarget task = entry.getValue();
 			
 			if (task.getTargetid() == targetId) {
@@ -132,10 +132,10 @@ public class TaskService {
 	}
 	
 	public void sendTask3Score(long userId, int targetId, int count) {
-		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
-		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
+		Map<Integer, TaskOrder> map = taskRedisService.getTask3OrderConfig();
+		Iterator<Entry<Integer, TaskOrder>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, TaskOrder> entry = it.next();
+			Entry<Integer, TaskOrder> entry = it.next();
 			TaskOrder task = entry.getValue();
 			
 			if (task.getTargetid() == targetId) {
@@ -160,10 +160,10 @@ public class TaskService {
 	
 	public void sendTask2Score(UserBean user, int targetId, int heroId, int count) {
 		long userId = user.getId();
-		Map<String, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
-		Iterator<Entry<String, Task2TargetHero>> it = map.entrySet().iterator();
+		Map<Integer, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
+		Iterator<Entry<Integer, Task2TargetHero>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Task2TargetHero> entry = it.next();
+			Entry<Integer, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
 			for (TaskTarget task : taskHero.getTargetList()) {
 				if (task.getTargetid() == targetId) {
@@ -197,10 +197,10 @@ public class TaskService {
 	
 	public void sendTask2Score(UserBean user, int targetId, List<Integer> heroIds) {
 		long userId = user.getId();
-		Map<String, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
-		Iterator<Entry<String, Task2TargetHero>> it = map.entrySet().iterator();
+		Map<Integer, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
+		Iterator<Entry<Integer, Task2TargetHero>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Task2TargetHero> entry = it.next();
+			Entry<Integer, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
 			for (TaskTarget task : taskHero.getTargetList()) {
 				if (task.getTargetid() == targetId) {
@@ -368,10 +368,10 @@ public class TaskService {
 		long userId = user.getId();
 		
 		//task 2
-		Map<String, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
-		Iterator<Entry<String, Task2TargetHero>> it = map.entrySet().iterator();
+		Map<Integer, Task2TargetHero> map = taskRedisService.getTask2TargetConfig();
+		Iterator<Entry<Integer, Task2TargetHero>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Task2TargetHero> entry = it.next();
+			Entry<Integer, Task2TargetHero> entry = it.next();
 			Task2TargetHero taskHero = entry.getValue();
 			int nextOrder = getTask2NextOrder(taskHero.getHeroid(), user.getTask2Record());
 			for (TaskTarget task : taskHero.getTargetList()) {
@@ -403,10 +403,10 @@ public class TaskService {
 		
 		log.debug("333");
 		//task 3
-		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
-		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
+		Map<Integer, TaskOrder> map = taskRedisService.getTask3OrderConfig();
+		Iterator<Entry<Integer, TaskOrder>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, TaskOrder> entry = it.next();
+			Entry<Integer, TaskOrder> entry = it.next();
 			TaskOrder taskOrder = entry.getValue();
 			UserTask ut = userTaskService.selectUserTask3(userId, taskOrder.getTargetid());
 			if (isCompleteNewTaskByTask3(ut, taskOrder))
