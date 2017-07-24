@@ -3390,6 +3390,7 @@ message UserRewardTask {
 	};
 	optional int64 endtime = 6;
 	required uint32 index = 7;//boss的一个序列
+	optional uint32 isOver = 8;//0：未通关，1：已通关 
 }
 
 message UserRewardTaskRoom {

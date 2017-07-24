@@ -9,12 +9,14 @@ public class UserRewardTaskBean {
 	private int rewardTaskIndex = 0;
 	private int eventid = 0;
 	private int status = 0;
+	public int isOver = 0;
 	public static UserRewardTaskBean init(long userId, UserRewardTask ut) {
 		UserRewardTaskBean utBean = new UserRewardTaskBean();
 		utBean.setUserId(userId);
 		utBean.setEventid(ut.getTask().getEventid());
 		utBean.setStatus(ut.getStatus());
 		utBean.setRewardTaskIndex(ut.getIndex());
+		utBean.setIsOver(ut.getIsOver());
 		
 		return utBean;
 	}
@@ -23,6 +25,7 @@ public class UserRewardTaskBean {
 		builder.getTaskBuilder().setEventid(eventid);
 		builder.setIndex(rewardTaskIndex);
 		builder.setStatus(status);
+		builder.setIsOver(isOver);
 		
 		return builder.build();
 	}
@@ -61,5 +64,11 @@ public class UserRewardTaskBean {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public int getIsOver() {
+		return isOver;
+	}
+	public void setIsOver(int isOver) {
+		this.isOver = isOver;
 	}
 }

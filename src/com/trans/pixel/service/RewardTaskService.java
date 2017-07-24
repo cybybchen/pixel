@@ -105,13 +105,14 @@ public class RewardTaskService {
 				}
 			}
 			
-			ResultConst result2 = handleRewardTaskRoom(user, index, rewardTask, errorUserList);
+			UserRewardTask.Builder builder = userRewardTask;
+			ResultConst result2 = handleRewardTaskRoom(user, index, rewardTask, errorUserList, builder);
 			if (result instanceof ErrorConst || result2 instanceof ErrorConst)
 				return result;
 			
 			if(event.hasCost())
 				costService.cost(user, event.getCost());
-			UserRewardTask.Builder builder = userRewardTask;
+			
 			builder.clearRoomInfo();
 			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder, user);
@@ -207,10 +208,11 @@ public class RewardTaskService {
 		
 	}
 	
-	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList) {
+	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList, UserRewardTask.Builder urbuilder) {
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null) {
 			activityService.completeRewardTask(user.getId(), rewardTask.getType());//单独完成悬赏任务
+			urbuilder.setIsOver(1);
 			return SuccessConst.BOSS_SUBMIT_SUCCESS;
 		}
 		EventConfig event = levelRedisService.getEvent(rewardTask.getEventid());
