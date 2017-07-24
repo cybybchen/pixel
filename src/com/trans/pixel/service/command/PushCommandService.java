@@ -592,7 +592,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserUnion(Builder responseBuilder, UserBean user) {
-		Union union = unionService.getUnion(user);
+		Union union = unionService.getUnion(user, false);
 		if(union == null){
 			return;
 		}
