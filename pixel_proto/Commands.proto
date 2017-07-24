@@ -3305,6 +3305,14 @@ message RequestQuitUnionCommand {//退出公会
 }
 
 message RequestUnionInfoCommand {//公会
+	optional bool isNewVersion = 1;
+	optional UNION_INFO_TYPE type = 2;
+}
+
+enum UNION_INFO_TYPE {
+	TYPE_UNION = 1;//信息
+	TYPE_APPLY = 2;//申请列表
+	TYPE_BOSS = 3;//boss列表
 }
 
 message RequestAttackUnionCommand {//进攻其他公会
@@ -3318,6 +3326,8 @@ message RequestDefendUnionCommand {//防守其他公会
 
 message ResponseUnionInfoCommand {
 	optional Union union = 1;
+	repeated UnionApply applies = 2;
+	repeated UnionBossRecord unionBoss = 3;
 }
 
 message RequestUnionListCommand {

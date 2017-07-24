@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand;
+import com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
@@ -65,14 +66,40 @@ public class UnionCommandService extends BaseCommandService {
 	}
 	
 	public void getUnion(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		Union union = unionService.getUnion(user);
-		if(union == null){
+		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+		boolean isNewVersion = false;
+		UNION_INFO_TYPE type = UNION_INFO_TYPE.TYPE_UNION;
+		if (cmd.hasIsNewVersion())
+			isNewVersion = true;
+		if (cmd.hasType())
+			type = cmd.getType();
+		
+		Union union = null;
+		if (isNewVersion) {
+			switch (type.getNumber()) {
+				case UNION_INFO_TYPE.TYPE_UNION_VALUE:
+					unionService.getUnion(user, isNewVersion);
+					break;
+				case UNION_INFO_TYPE.TYPE_APPLY_VALUE:
+					builder.addAllApplies(unionService.getUnionApply(user));
+					break;
+				case UNION_INFO_TYPE.TYPE_BOSS_VALUE:
+					builder.addAllUnionBoss(unionService.getUnionBossList(user));
+					break;
+				default:
+					break;
+					
+			}
+		} else
+			union = unionService.getUnion(user, isNewVersion);
+		
+		if(type.equals(UNION_INFO_TYPE.TYPE_UNION) && union == null){
 			getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
 			return;
-		}
+		} 
+		if (union != null)
+			builder.setUnion(union);
 		
-		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(union);
 		responseBuilder.setUnionInfoCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
@@ -124,7 +151,7 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
 
-		Union union = unionService.getUnion(user);
+		Union union = unionService.getUnion(user, false);
 		if (union != null) {
 			builder.setUnion(union);
 			responseBuilder.setUnionInfoCommand(builder.build());
@@ -161,7 +188,7 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user));
+		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	
@@ -169,7 +196,7 @@ public class UnionCommandService extends BaseCommandService {
 		ResultConst result = unionService.handleMember(cmd.getId(), cmd.getJob(), user);
 		if(result instanceof SuccessConst){
 			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-			builder.setUnion(unionService.getUnion(user));
+			builder.setUnion(unionService.getUnion(user, false));
 			responseBuilder.setUnionInfoCommand(builder.build());
 			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
 		}else {
@@ -195,7 +222,7 @@ public class UnionCommandService extends BaseCommandService {
 		union.setAnnounce(cmd.getAnnounce());
 		unionService.saveUnion(union.build(), user);
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user));
+		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.REWRITE_SUCCESS));
 	}
@@ -209,7 +236,7 @@ public class UnionCommandService extends BaseCommandService {
 		} else
 			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user));
+		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 
@@ -222,7 +249,7 @@ public class UnionCommandService extends BaseCommandService {
 		} else
 			responseBuilder.setMessageCommand(buildMessageCommand(result));
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user));
+		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	
@@ -235,7 +262,7 @@ public class UnionCommandService extends BaseCommandService {
 		}
 			
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user));
+		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	

@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RankItem;
 import com.trans.pixel.protoc.UnionProto.Union;
+import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
@@ -142,7 +143,7 @@ public class UnionService extends FightService{
 		return union;
 	}
 
-	public Union getUnion(UserBean user) {
+	public Union getUnion(UserBean user, boolean isNewVersion) {
 		Union.Builder union = getBaseUnion(user);
 		if(union == null)
 			return null;
@@ -205,14 +206,6 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 		}
 
-		
-		
-		/**
-		 * 刷新定时工会boss
-		 */
-		crontabUnionBossActivity(user);
-		union.addAllUnionBoss(getUnionBossList(user, union));
-		
 		/**
 		 * 计算镜像世界矿点奖励
 		 */
@@ -227,13 +220,36 @@ public class UnionService extends FightService{
 //	 		union.addAllDefends(users);
 //		}
 		
-		if(user.getUnionJob() > 0){
-			union.addAllApplies(redis.getApplies(user.getUnionId()));
+		if (!isNewVersion) {
+			/**
+			 * 刷新定时工会boss
+			 */
+			crontabUnionBossActivity(user);
+			union.addAllUnionBoss(getUnionBossList(user, union));
+			
+			if(user.getUnionJob() > 0){
+				union.addAllApplies(redis.getApplies(user.getUnionId()));
+			}
 		}
-		
 		union.addAllMembers(members);
 		
 		return union.build();
+	}
+	
+	public List<UnionApply> getUnionApply(UserBean user) {
+		if(user.getUnionJob() > 0){
+			return redis.getApplies(user.getUnionId());
+		}
+		
+		return new ArrayList<UnionApply>();
+	}
+	
+	public List<UnionBossRecord> getUnionBossList(UserBean user) {
+		Union.Builder union = getBaseUnion(user);
+		if(union == null)
+			return new ArrayList<UnionBossRecord>();
+		
+		return getUnionBossList(user, union);
 	}
 	
 	/**
@@ -326,7 +342,7 @@ public class UnionService extends FightService{
 	
 	public Union create(int icon, String unionName, UserBean user) {
 		if(user.getUnionId() != 0)
-			return getUnion(user);
+			return getUnion(user, false);
 		
 		UnionBean union = new UnionBean();
 		union.setName(unionName);
