@@ -136,7 +136,7 @@ public class ServerTitleService {
 		updateServerTitleByTitleId(serverId, 17, others);
 		
 		//删除排行榜
-		userLadderRedisService.deleteLadderRank(serverId);
+		userLadderRedisService.renameLadderRank(serverId);
 	}
 	
 	//handler recharge
@@ -179,8 +179,8 @@ public class ServerTitleService {
 		updateServerTitleByTitleId(serverId, 19, others);
 		
 		//删除排行榜
-		rankRedisService.deleteRank(serverId, RankConst.TYPE_RECHARGE);
-		rankRedisService.deleteRank(serverId, RankConst.TYPE_VIP_HUOYUE);
+		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
+		rankRedisService.renameRank(serverId, RankConst.TYPE_VIP_HUOYUE);
 	}
 	
 	//handler union
@@ -281,7 +281,7 @@ public class ServerTitleService {
 			updateServerTitleByTitleId(serverId, 20, others);
 			
 			//删除排行榜
-			rankRedisService.deleteRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
+			rankRedisService.renameRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
 		}
 	}
 	

@@ -91,6 +91,11 @@ public class RankRedisService extends RedisService{
 		delete(key);
 	}
 	
+	public void renameRank(int serverId, int type) {
+		String key = buildRankRedisKey(serverId, type);
+		rename(key, "last:" + key);
+	}
+	
 	private <T> String buildRankRedisKey(int serverId, T type) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.RANK_PREFIX + type;
 	}

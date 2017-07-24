@@ -227,6 +227,11 @@ public class UserLadderRedisService extends RedisService{
 		delete(key);
 	}
 	
+	public void renameLadderRank(int serverId) {
+		String key = RedisKey.LADDER_RANK_PREFIX + serverId;
+		rename(key, "last:" + key);
+	}
+	
 	private Map<String, String> convert(Map<Integer, UserLadder> map) {
 		Map<String, String> redisMap = new HashMap<String, String>();
 		for (UserLadder userLadder : map.values()) {
