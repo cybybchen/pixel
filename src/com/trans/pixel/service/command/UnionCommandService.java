@@ -144,6 +144,7 @@ public class UnionCommandService extends BaseCommandService {
 		int unionId = cmd.getUnionId();
 		unionService.apply(unionId, user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.APPLY_UNION_SUCCESS));
+		getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
