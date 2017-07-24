@@ -45,11 +45,11 @@ public class UserRewardTaskRedisService extends RedisService {
 			return null;
 	}
 	
-	public void updateUserRewardTaskEventidStatus(long userId, UserRewardTask ut) {
+	public void updateUserRewardTaskEventidStatus(long userId, int eventid, int isOver) {
 		String key = RedisKey.USER_REWARDTASK_EVENTID_STATUS_PREFIX + userId;
-		if (ut.hasIsOver() && ut.getIsOver() == 1)
-			this.hput(key, "" + ut.getTask().getEventid(), "" + ut.getIsOver());
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		if (TypeTranslatedUtil.stringToInt(hget(key, "" + eventid)) != 1)
+			hput(key, "" + eventid, "" + isOver);
+		 expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public int getUserRewardTaskEventidStatus(long userId, int eventid) {

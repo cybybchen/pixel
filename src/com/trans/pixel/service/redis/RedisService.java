@@ -446,6 +446,22 @@ public class RedisService {
 			}
 		});
     }
+    
+    /**
+     * 判断hash里某个值是否存在
+     */
+    protected boolean hasKey(final String key, final String key2) {
+    	return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.hasKey(key2);
+			}
+		});
+    }
 
     /**
      * 获取hashMap大小

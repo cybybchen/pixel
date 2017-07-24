@@ -7,9 +7,9 @@ public class UserRewardTaskBean {
 //	private long id = 0;
 	private long userId = 0;
 //	private int rewardTaskId = 0;
-	private int rewardTaskIndex = 0;
+//	private int rewardTaskIndex = 0;
 	private int eventid = 0;
-	private int status = 0;
+//	private int status = 0;
 	public int isOver = 0;
 	public static UserRewardTaskBean init(long userId, UserRewardTask ut) {
 		UserRewardTaskBean utBean = new UserRewardTaskBean();
@@ -26,8 +26,8 @@ public class UserRewardTaskBean {
 		RewardTask.Builder task = RewardTask.newBuilder();
 		builder.setTask(task);
 		builder.getTaskBuilder().setEventid(eventid);
-//		builder.setIndex(rewardTaskIndex);
-//		builder.setStatus(status);
+		builder.setIndex(0);
+		builder.setStatus(0);
 		builder.setIsOver(isOver);
 		
 		return builder.build();
@@ -50,24 +50,24 @@ public class UserRewardTaskBean {
 //	public void setRewardTaskId(int rewardTaskId) {
 //		this.rewardTaskId = rewardTaskId;
 //	}
-	public int getRewardTaskIndex() {
-		return rewardTaskIndex;
-	}
-	public void setRewardTaskIndex(int rewardTaskIndex) {
-		this.rewardTaskIndex = rewardTaskIndex;
-	}
+//	public int getRewardTaskIndex() {
+//		return rewardTaskIndex;
+//	}
+//	public void setRewardTaskIndex(int rewardTaskIndex) {
+//		this.rewardTaskIndex = rewardTaskIndex;
+//	}
 	public int getEventid() {
 		return eventid;
 	}
 	public void setEventid(int enemyId) {
 		this.eventid = enemyId;
 	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
+//	public int getStatus() {
+//		return status;
+//	}
+//	public void setStatus(int status) {
+//		this.status = status;
+//	}
 	public int getIsOver() {
 		return isOver;
 	}

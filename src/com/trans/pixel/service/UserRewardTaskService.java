@@ -205,7 +205,7 @@ public class UserRewardTaskService {
 	}
 	
 	public void updateEventidStatus(long userId, UserRewardTask urt) {
-		userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt);
+		userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt.getTask().getEventid(), urt.getIsOver());
 		mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, urt));
 	}
 	
@@ -213,12 +213,15 @@ public class UserRewardTaskService {
 		int status = userRewardTaskRedisService.getUserRewardTaskEventidStatus(userId, eventid);
 		if (status == 0 && !userRewardTaskRedisService.isExistEventidStatusKey(userId)) {
 			List<UserRewardTaskBean> utList = mapper.selectUserRewardTaskList(userId);
+			if (utList == null || utList.isEmpty()) {
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, 1, 0);
+			}
 			for (UserRewardTaskBean utBean : utList) {
 				UserRewardTask builder = utBean.build();
 				if (utBean.getEventid() == eventid) {
 					status = utBean.getIsOver();
 				}
-				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, builder);
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, builder.getTask().getEventid(), builder.getIsOver());
 			}
 		}
 		
