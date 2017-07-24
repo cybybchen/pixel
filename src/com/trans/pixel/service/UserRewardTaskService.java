@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -161,6 +162,7 @@ public class UserRewardTaskService {
 				task.clearStarttime();
 				task.clearEndtime();
 				builder.setTask(task);
+				builder.setIsOver(getEventidStatus(user.getId(), task.getEventid()));
 //				builder.getTaskBuilder().clearRandcount();
 //				builder.getTaskBuilder().clearEvent();
 				if(task.getType() != 2)
@@ -200,6 +202,27 @@ public class UserRewardTaskService {
 //				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
 		}
 		
+	}
+	
+	public void updateEventidStatus(long userId, UserRewardTask urt) {
+		userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt);
+		mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, urt));
+	}
+	
+	public int getEventidStatus(long userId, int eventid) {
+		int status = userRewardTaskRedisService.getUserRewardTaskEventidStatus(userId, eventid);
+		if (status == 0 && !userRewardTaskRedisService.isExistEventidStatusKey(userId)) {
+			List<UserRewardTaskBean> utList = mapper.selectUserRewardTaskList(userId);
+			for (UserRewardTaskBean utBean : utList) {
+				UserRewardTask builder = utBean.build();
+				if (utBean.getEventid() == eventid) {
+					status = utBean.getIsOver();
+				}
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, builder);
+			}
+		}
+		
+		return status;
 	}
 	
 	public String popDBKey(){

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserRewardTaskRedisService extends RedisService {
@@ -42,6 +43,23 @@ public class UserRewardTaskRedisService extends RedisService {
 			return builder;
 		else
 			return null;
+	}
+	
+	public void updateUserRewardTaskEventidStatus(long userId, UserRewardTask ut) {
+		String key = RedisKey.USER_REWARDTASK_EVENTID_STATUS_PREFIX + userId;
+		if (ut.hasIsOver() && ut.getIsOver() == 1)
+			this.hput(key, "" + ut.getTask().getEventid(), "" + ut.getIsOver());
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public int getUserRewardTaskEventidStatus(long userId, int eventid) {
+		String key = RedisKey.USER_REWARDTASK_EVENTID_STATUS_PREFIX + userId;
+		return TypeTranslatedUtil.stringToInt(hget(key, "" + eventid));
+	}
+	
+	public boolean isExistEventidStatusKey(long userId) {
+		String key = RedisKey.USER_REWARDTASK_EVENTID_STATUS_PREFIX + userId;
+		return exists(key);
 	}
 	
 	public Map<Integer, UserRewardTask> getUserRewardTask(long userId) {

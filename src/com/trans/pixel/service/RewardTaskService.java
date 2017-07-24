@@ -212,7 +212,10 @@ public class RewardTaskService {
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null) {
 			activityService.completeRewardTask(user.getId(), rewardTask.getType());//单独完成悬赏任务
-			urbuilder.setIsOver(1);
+			if (!urbuilder.hasIsOver() || urbuilder.getIsOver() == 0) {
+				urbuilder.setIsOver(1);
+				userRewardTaskService.updateEventidStatus(user.getId(), urbuilder.build());
+			}
 			return SuccessConst.BOSS_SUBMIT_SUCCESS;
 		}
 		EventConfig event = levelRedisService.getEvent(rewardTask.getEventid());

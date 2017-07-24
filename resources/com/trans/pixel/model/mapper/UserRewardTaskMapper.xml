@@ -6,19 +6,19 @@
 <!-- 		<id property="id" column="id" /> -->
 		<result property="userId" column="user_id" />
 <!-- 		<result property="rewardTaskId" column="reward_task_id" /> -->
-		<result property="rewardTaskIndex" column="reward_task_index" />
+<!-- 		<result property="rewardTaskIndex" column="reward_task_index" /> -->
 <!-- 		<result property="enemyId" column="enemy_id" /> -->
 		<result property="eventid" column="eventid" />
-		<result property="status" column="status" />
+<!-- 		<result property="status" column="status" /> -->
 		<result property="isOver" column="is_over" />
 	</resultMap>
 	
 	<update id="updateUserRewardTask" parameterType="com.trans.pixel.model.userinfo.UserRewardTaskBean">
-		INSERT INTO user_rewardtask(user_id, reward_task_index, eventid, status, is_over)
-	    VALUES(#{userId}, #{rewardTaskIndex}, #{eventid}, #{status}, #{isOver})
+		INSERT INTO user_rewardtask(user_id, eventid, is_over)
+	    VALUES(#{userId}, #{eventid}, #{isOver})
 		ON 
 	    duplicate key update
-	    eventid=#{eventid}, status=#{status}, is_over=#{isOver}
+	    eventid=#{eventid}, is_over=#{isOver}
 	</update>
 	
 	<select id="selectUserRewardTaskList" parameterType="long" resultMap="resultMap">

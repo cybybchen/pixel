@@ -1,5 +1,6 @@
 package com.trans.pixel.model.userinfo;
 
+import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 
 public class UserRewardTaskBean {
@@ -14,17 +15,19 @@ public class UserRewardTaskBean {
 		UserRewardTaskBean utBean = new UserRewardTaskBean();
 		utBean.setUserId(userId);
 		utBean.setEventid(ut.getTask().getEventid());
-		utBean.setStatus(ut.getStatus());
-		utBean.setRewardTaskIndex(ut.getIndex());
+//		utBean.setStatus(ut.getStatus());
+//		utBean.setRewardTaskIndex(ut.getIndex());
 		utBean.setIsOver(ut.getIsOver());
 		
 		return utBean;
 	}
 	public UserRewardTask build() {
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
+		RewardTask.Builder task = RewardTask.newBuilder();
+		builder.setTask(task);
 		builder.getTaskBuilder().setEventid(eventid);
-		builder.setIndex(rewardTaskIndex);
-		builder.setStatus(status);
+//		builder.setIndex(rewardTaskIndex);
+//		builder.setStatus(status);
 		builder.setIsOver(isOver);
 		
 		return builder.build();
