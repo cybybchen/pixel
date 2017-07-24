@@ -355,9 +355,7 @@ public class LevelCommandService extends BaseCommandService {
 			
 //			redis.productMainEvent(user, event.getEventid());
 		}
-		user.addMyactive();
- 		if(user.getMyactive() >= 100){
- 			user.setMyactive(user.getMyactive() - 100);
+ 		if(user.addMyactive()){
  			pvpMapService.refreshAMine(user);
  		}
  		userService.updateUser(user);

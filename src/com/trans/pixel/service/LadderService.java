@@ -375,9 +375,7 @@ public class LadderService {
 			return ErrorConst.HE_IS_ATTACKING;
 		}
 
-		user.addMyactive();
-		if(user.getMyactive() >= 100){
-			user.setMyactive(user.getMyactive() - 100);
+		if(user.addMyactive()) {
 			pvpMapService.refreshAMine(user);
 		}
 		userService.updateUser(user);

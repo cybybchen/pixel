@@ -101,6 +101,7 @@ public class UserBean {
 	private int growExpCountStatus = 0;
 	private String version = "";
 	private int myactive = 0;
+	private int nextactive = 100;
 	private String idfa = "";
 	private int lotteryStatus = 0;
 	private int sevenLoginDays = 0;
@@ -189,19 +190,42 @@ public class UserBean {
 	public int getMyactive() {
 		return myactive;
 	}
-	public void addMyactive() {
+	/**
+	 * 获得活跃度(需要updateUser)
+	 */
+	public boolean addMyactive() {
 		if(zhanliMax < 20000)
 			myactive += 1+RedisService.nextInt(5);
 		else if(zhanliMax < 90000)
 			myactive += 5+RedisService.nextInt(6);
 		else
 			myactive += 5+RedisService.nextInt(11);
+		
+		if(myactive >= nextactive) {
+			nextactive += 100;
+			myactive = 0;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	/**
 	 * 当前活跃度
 	 */
 	public void setMyactive(int myactive) {
 		this.myactive = myactive;
+	}
+	/**
+	 * 下次刷新活跃度
+	 */
+	public int getNextactive() {
+		return nextactive;
+	}
+	/**
+	 * 下次刷新活跃度
+	 */
+	public void setNextactive(int myactive) {
+		this.nextactive = myactive;
 	}
 	/**
 	 * 当前游戏版本
