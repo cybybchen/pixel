@@ -229,7 +229,8 @@ public class UserLadderRedisService extends RedisService{
 	
 	public void renameLadderRank(int serverId) {
 		String key = RedisKey.LADDER_RANK_PREFIX + serverId;
-		rename(key, "last:" + key);
+		if (exists(key))
+			rename(key, "last:" + key);
 	}
 	
 	private Map<String, String> convert(Map<Integer, UserLadder> map) {
