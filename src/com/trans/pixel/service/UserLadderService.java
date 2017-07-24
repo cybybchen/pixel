@@ -243,8 +243,6 @@ public class UserLadderService {
 				userLadderRedisService.setLadderSeason(ladderSeason);
 //			else
 //				userLadderRedisService.deleteLadderSeason();
-			
-			serverTitleService.handlerSeasonEnd();
 		}
 		
 		return ladderSeason;
@@ -253,6 +251,9 @@ public class UserLadderService {
 	public boolean isNextSeason(LadderSeason ladderSeason) {
 		if (DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime()))
 			return false;
+		
+		serverTitleService.handlerSeasonEnd();
+		userLadderRedisService.deleteLadderSeason();
 		
 		return true;
 	}
