@@ -71,6 +71,7 @@ public class UserRewardTaskService {
 			else
 				builder.clearEndtime();
 //			builder.setLeftcount(task.getCount());
+			builder.setIsOver(getEventidStatus(user.getId(), task.getEventid()));
 			builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%10000000);
 			builder.setIndex(user.getRewardTaskIndex());
