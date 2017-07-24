@@ -85,7 +85,9 @@ public class RechargeService {
 	private UserEquipPokedeService userEquipPokedeService;
 	@Resource
 	private EquipRedisService equipRedisService;
-
+	@Resource
+	private RankService rankService;
+	
 	public int rechargeVip(UserBean user, int rmb) {
     	int addExp = rmb * 10;
 
@@ -141,6 +143,11 @@ public class RechargeService {
 	    }
 		
 		handlerRecommandVipExp(user.getRecommandUserId(), addExp / 5, isRewardRecommand);
+		
+		/**
+		 * 活跃值排行榜
+		 */
+		rankService.addVipRank(user, addExp);
 	}
 	
 	private void handlerRecommandVipExp(long userId, int addExp, boolean isRewardRecommand) {
