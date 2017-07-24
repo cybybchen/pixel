@@ -263,8 +263,8 @@ public class RechargeService {
 			reward.setCount(1);
 			rewards.addLoot(reward);
 			userService.updateUser(user);
-			logger.debug("jewel is" + user.getGrowJewelCount());
-			logger.debug("exp is" + user.getGrowExpCount());
+			logger.warn("jewel is" + user.getGrowJewelCount());
+			logger.warn("exp is" + user.getGrowExpCount());
 		}else{
 			rewards.addAllLoot(rewardList);
 			rewardService.doRewards(user, rewards);

@@ -783,7 +783,7 @@ public class LogService {
 		}
 
 		if (!sb.toString().trim().equals("")) {
-			log.debug("log is:" + sb.toString());
+			log.warn("log is:" + sb.toString());
 			logRedisService.addLogData(sb.toString());
 //			new Thread(new Runnable() {
 //				
@@ -806,7 +806,7 @@ public class LogService {
 		params.put(LogString.ERRORMSG, "" + error.getMesssage());
 		params.put(LogString.REQUEST, "" + request);
 		
-		log.debug("error params is:" + params);
+		log.warn("error params is:" + params);
 		
 		sendLog(params, LogString.LOGTYPE_ERROR);
 	}
@@ -1084,7 +1084,7 @@ public class LogService {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 			DataOutputStream doc = new DataOutputStream(netOut);
-			log.debug("send to log server " + str);
+			log.warn("send to log server " + str);
 			doc.writeBytes(str);
 			doc.flush();
 

@@ -563,7 +563,7 @@ public class LadderService {
 			}
 		}
 		long endTime = System.currentTimeMillis();
-		log.debug("deltime :" + (endTime - startTime));
+		log.warn("deltime :" + (endTime - startTime));
 	}
 	
 	

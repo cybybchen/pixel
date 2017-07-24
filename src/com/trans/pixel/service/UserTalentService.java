@@ -205,7 +205,6 @@ public class UserTalentService {
 	public List<UserTalentSkill> getUserTalentSkillList(UserBean user) {
 		List<UserTalentSkill> userTalentSkillList = userTalentRedisService.getUserTalentSkillList(user.getId());
 		if (userTalentSkillList.isEmpty()) {
-			log.debug("11");
 			List<UserTalentSkillBean> utBeanList = userTalentSkillMapper.selectUserTalentSkillList(user.getId());
 			log.debug("12 + size:" + utBeanList.size());
 			if (utBeanList != null && !utBeanList.isEmpty()) {

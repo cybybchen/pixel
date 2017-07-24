@@ -401,7 +401,6 @@ public class TaskService {
 	public void isDeleteDailyTaskNotice(UserBean user) {
 		long userId = user.getId();
 		
-		log.debug("333");
 		//task 3
 		Map<String, TaskOrder> map = taskRedisService.getTask3OrderConfig();
 		Iterator<Entry<String, TaskOrder>> it = map.entrySet().iterator();
@@ -412,7 +411,6 @@ public class TaskService {
 			if (isCompleteNewTaskByTask3(ut, taskOrder))
 				return;
 		}
-		log.debug("444");
 		noticeService.deleteNotice(userId, NoticeConst.TYPE_DAILYTASK);
 	}
 	

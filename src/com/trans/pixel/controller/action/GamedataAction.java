@@ -111,7 +111,7 @@ public class GamedataAction {
 
 		long now = System.currentTimeMillis();
 		if(now - startTime > 100)
-			logger.warn("response time:{},request={}", now - startTime, req.toString().replaceAll("\n", ""));
+			logger.info("response time:{},request={}", now - startTime, req.toString().replaceAll("\n", ""));
 		else
 			logger.info("response time:{}", now - startTime);
 		
@@ -184,7 +184,7 @@ public class GamedataAction {
     		}
 			JSONObject req = JSONObject.fromObject(msg);
 			result = managerService.getData(req);
-			logger.debug("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time)+" msec");
+			logger.warn("Manager Data:"+result.toString().getBytes().length+" within "+(System.currentTimeMillis() - time)+" msec");
 
 			try {
 //				if(result.containsKey("addCdkey")){

@@ -275,7 +275,6 @@ public class BossService {
 				return builder.build();
 			}
 			
-			log.debug("11111111");
 			user.setBossRoomUserId(createUserId);
 			userService.updateUser(user);
 			
