@@ -340,7 +340,7 @@ public class PvpMapService {
 			logType = PvpMapConst.TYPE_BOSS;
 		}
 		
-		MultiReward.Builder rewards = null;
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		int buff = -1;
 		if(ret){
 			if(event.getEventid()/1000 == 21)
