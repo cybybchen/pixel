@@ -395,6 +395,16 @@ public final class UnionProto {
      * <code>optional uint32 maxZhanli = 28;</code>
      */
     int getMaxZhanli();
+
+    // optional uint32 applyEndTime = 29;
+    /**
+     * <code>optional uint32 applyEndTime = 29;</code>
+     */
+    boolean hasApplyEndTime();
+    /**
+     * <code>optional uint32 applyEndTime = 29;</code>
+     */
+    int getApplyEndTime();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Union}
@@ -604,6 +614,11 @@ public final class UnionProto {
             case 224: {
               bitField0_ |= 0x00400000;
               maxZhanli_ = input.readUInt32();
+              break;
+            }
+            case 232: {
+              bitField0_ |= 0x00800000;
+              applyEndTime_ = input.readUInt32();
               break;
             }
           }
@@ -1371,6 +1386,22 @@ public final class UnionProto {
       return maxZhanli_;
     }
 
+    // optional uint32 applyEndTime = 29;
+    public static final int APPLYENDTIME_FIELD_NUMBER = 29;
+    private int applyEndTime_;
+    /**
+     * <code>optional uint32 applyEndTime = 29;</code>
+     */
+    public boolean hasApplyEndTime() {
+      return ((bitField0_ & 0x00800000) == 0x00800000);
+    }
+    /**
+     * <code>optional uint32 applyEndTime = 29;</code>
+     */
+    public int getApplyEndTime() {
+      return applyEndTime_;
+    }
+
     private void initFields() {
       id_ = 0;
       name_ = "";
@@ -1400,6 +1431,7 @@ public final class UnionProto {
       announce_ = "";
       exp_ = 0;
       maxZhanli_ = 0;
+      applyEndTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1543,6 +1575,9 @@ public final class UnionProto {
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
         output.writeUInt32(28, maxZhanli_);
       }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        output.writeUInt32(29, applyEndTime_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1663,6 +1698,10 @@ public final class UnionProto {
       if (((bitField0_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(28, maxZhanli_);
+      }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(29, applyEndTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1865,6 +1904,8 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x04000000);
         maxZhanli_ = 0;
         bitField0_ = (bitField0_ & ~0x08000000);
+        applyEndTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x10000000);
         return this;
       }
 
@@ -2030,6 +2071,10 @@ public final class UnionProto {
           to_bitField0_ |= 0x00400000;
         }
         result.maxZhanli_ = maxZhanli_;
+        if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
+          to_bitField0_ |= 0x00800000;
+        }
+        result.applyEndTime_ = applyEndTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2256,6 +2301,9 @@ public final class UnionProto {
         }
         if (other.hasMaxZhanli()) {
           setMaxZhanli(other.getMaxZhanli());
+        }
+        if (other.hasApplyEndTime()) {
+          setApplyEndTime(other.getApplyEndTime());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4531,6 +4579,39 @@ public final class UnionProto {
       public Builder clearMaxZhanli() {
         bitField0_ = (bitField0_ & ~0x08000000);
         maxZhanli_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 applyEndTime = 29;
+      private int applyEndTime_ ;
+      /**
+       * <code>optional uint32 applyEndTime = 29;</code>
+       */
+      public boolean hasApplyEndTime() {
+        return ((bitField0_ & 0x10000000) == 0x10000000);
+      }
+      /**
+       * <code>optional uint32 applyEndTime = 29;</code>
+       */
+      public int getApplyEndTime() {
+        return applyEndTime_;
+      }
+      /**
+       * <code>optional uint32 applyEndTime = 29;</code>
+       */
+      public Builder setApplyEndTime(int value) {
+        bitField0_ |= 0x10000000;
+        applyEndTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 applyEndTime = 29;</code>
+       */
+      public Builder clearApplyEndTime() {
+        bitField0_ = (bitField0_ & ~0x10000000);
+        applyEndTime_ = 0;
         onChanged();
         return this;
       }
@@ -37137,7 +37218,7 @@ public final class UnionProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\020UnionProto.proto\022\026com.trans.pixel.prot" +
-      "oc\032\nBase.proto\"\265\005\n\005Union\022\n\n\002id\030\001 \002(\005\022\014\n\004" +
+      "oc\032\nBase.proto\"\313\005\n\005Union\022\n\n\002id\030\001 \002(\005\022\014\n\004" +
       "name\030\002 \002(\t\022\014\n\004icon\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022" +
       "\016\n\006zhanli\030\005 \001(\005\022\014\n\004rank\030\006 \001(\005\022\r\n\005point\030\007" +
       " \001(\005\022\r\n\005count\030\010 \001(\005\022\020\n\010maxCount\030\t \001(\005\0221\n" +
@@ -37154,109 +37235,110 @@ public final class UnionProto {
       ":\n\tunionBoss\030\027 \003(\0132\'.com.trans.pixel.pro" +
       "toc.UnionBossRecord\022\022\n\nbossRecord\030\030 \001(\t\022" +
       "\023\n\013bossEndTime\030\031 \001(\t\022\020\n\010announce\030\032 \001(\t\022\013" +
-      "\n\003exp\030\033 \001(\r\022\021\n\tmaxZhanli\030\034 \001(\r\"l\n\nUnionA" +
-      "pply\022\n\n\002id\030\001 \002(\003\022.\n\004user\030\002 \002(\0132 .com.tra",
-      "ns.pixel.protoc.UserInfo\022\017\n\007endTime\030\003 \002(" +
-      "\003\022\021\n\ttimestamp\030\004 \001(\003\"\323\001\n\016BossRoomRecord\022" +
-      "\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\022\024\n\014crea" +
-      "teUserId\030\003 \002(\003\0226\n\nbossRecord\030\004 \003(\0132\".com" +
-      ".trans.pixel.protoc.BossRecord\022.\n\004user\030\005" +
-      " \003(\0132 .com.trans.pixel.protoc.UserInfo\022\016" +
-      "\n\006status\030\006 \001(\005\022\022\n\ncreateTime\030\007 \002(\t\"Z\n\017Bo" +
-      "ssGroupRecord\022\017\n\007groupId\030\001 \002(\005\0226\n\nbossRe" +
-      "cord\030\002 \003(\0132\".com.trans.pixel.protoc.Boss" +
-      "Record\"L\n\nBossRecord\022\016\n\006bossId\030\001 \001(\005\022\r\n\005",
-      "count\030\002 \001(\005\022\016\n\006userId\030\003 \001(\003\022\017\n\007endTime\030\004" +
-      " \001(\t\"A\n\rBossgroupList\0220\n\005group\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.Bossgroup\"\203\001\n\tBoss" +
-      "group\022\n\n\002id\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\021\n\tbos" +
-      "scount\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022*\n\004boss\030\005 \003(" +
-      "\0132\034.com.trans.pixel.protoc.Boss\022\014\n\004time\030" +
-      "\006 \001(\005\"\026\n\004Boss\022\016\n\006bossid\030\001 \001(\005\"F\n\021Bossloo" +
-      "tGroupList\0221\n\002id\030\001 \003(\0132%.com.trans.pixel" +
-      ".protoc.BosslootGroup\"L\n\rBosslootGroup\022\n" +
-      "\n\002id\030\001 \001(\005\022/\n\005order\030\002 \003(\0132 .com.trans.pi",
-      "xel.protoc.Bossloot\"\316\001\n\010Bossloot\022\021\n\tweig" +
-      "htall\030\001 \001(\005\022\017\n\007itemid1\030\002 \001(\005\022\022\n\nitemcoun" +
-      "t1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001" +
-      "(\005\022\022\n\nitemcount2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022" +
-      "\017\n\007itemid3\030\010 \001(\005\022\022\n\nitemcount3\030\t \001(\005\022\017\n\007" +
-      "weight3\030\n \001(\005\022\r\n\005order\030\013 \001(\005\"\200\001\n\017UserBat" +
-      "tletower\022\016\n\006userId\030\001 \001(\003\022\020\n\010toptower\030\002 \001" +
-      "(\005\022\024\n\014currenttower\030\003 \001(\005\022\022\n\nresettimes\030\004" +
-      " \001(\005\022\021\n\tlefttimes\030\005 \001(\005\022\016\n\006random\030\006 \001(\005\"" +
-      "\352\001\n\013TowerReward\022\n\n\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001",
-      "(\005\022\016\n\006floora\030\003 \001(\005\022\016\n\006floorb\030\004 \001(\005\022\020\n\010re" +
-      "wardid\030\005 \001(\005\022\023\n\013rewardcount\030\006 \001(\005\022\021\n\trew" +
-      "ardid1\030\007 \001(\005\022\024\n\014rewardcount1\030\010 \001(\005\022\021\n\tre" +
-      "wardid2\030\t \001(\005\022\024\n\014rewardcount2\030\n \001(\005\022\021\n\tr" +
-      "ewardid3\030\013 \001(\005\022\024\n\014rewardcount3\030\014 \001(\005\"B\n\017" +
-      "TowerRewardList\022/\n\002id\030\001 \003(\0132#.com.trans." +
-      "pixel.protoc.TowerReward\"J\n\010UnionExp\022\r\n\005" +
-      "level\030\001 \002(\r\022\013\n\003exp\030\002 \002(\r\022\017\n\007lootexp\030\003 \002(" +
-      "\r\022\021\n\tunionsize\030\004 \002(\r\">\n\014UnionExpList\022.\n\004" +
-      "data\030\005 \003(\0132 .com.trans.pixel.protoc.Unio",
-      "nExp\"R\n\037RequestSubmitBattletowerCommand\022" +
-      "\017\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005\022\017\n\007enemy" +
-      "Id\030\003 \001(\005\"1\n\036RequestResetBattletowerComma" +
-      "nd\022\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestGetBattlet" +
-      "owerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pix" +
-      "el.protoc.UserBattletower\"V\n\036ResponseUse" +
-      "rBattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.t" +
-      "rans.pixel.protoc.UserBattletower\"\032\n\030Req" +
-      "uestBloodEnterCommand\"1\n\031RequestBloodXia" +
-      "zhuCommand\022\024\n\014xiazhuUserId\030\001 \002(\003\"y\n\035Requ",
-      "estInviteFightBossCommand\022\016\n\006userId\030\001 \003(" +
-      "\003\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 \001(\005\022\024\n\014cr" +
-      "eateUserId\030\004 \001(\003\022\021\n\tstartDate\030\005 \001(\t\"-\n\033R" +
-      "equestQuitFightBossCommand\022\016\n\006userId\030\001 \002" +
-      "(\003\"Y\n\035ResponseBossRoomRecordCommand\0228\n\010b" +
-      "ossRoom\030\001 \002(\0132&.com.trans.pixel.protoc.B" +
-      "ossRoomRecord\"4\n!RequestSubmitBossRoomSc" +
-      "oreCommand\022\017\n\007percent\030\001 \002(\005\"\035\n\033RequestSt" +
-      "artBossRoomCommand\"?\n\034RequestCreateBossR" +
-      "oomCommand\022\017\n\007groupId\030\002 \002(\005\022\016\n\006bossId\030\003 ",
-      "\002(\005\"\034\n\032RequestBossRoomInfoCommand\"@\n\rUni" +
-      "onBossList\022/\n\004data\030\001 \003(\0132!.com.trans.pix" +
-      "el.protoc.UnionBoss\"\234\002\n\tUnionBoss\022\n\n\002id\030" +
-      "\001 \001(\005\022\014\n\004name\030\014 \001(\t\022\014\n\004type\030\002 \001(\005\022\020\n\010tar" +
-      "getid\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010last" +
-      "time\030\005 \001(\005\022\n\n\002lv\030\006 \001(\005\0224\n\010lootlist\030\007 \003(\013" +
-      "2\".com.trans.pixel.protoc.RewardInfo\022\023\n\013" +
-      "refreshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010hand" +
-      "book\030\n \001(\005\0226\n\nenemygroup\030\013 \001(\0132\".com.tra" +
-      "ns.pixel.protoc.EnemyGroup\"F\n\020UnionBossw",
-      "inList\0222\n\004data\030\001 \003(\0132$.com.trans.pixel.p" +
-      "rotoc.UnionBosswin\"J\n\014UnionBosswin\022\n\n\002id" +
-      "\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.RankItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005" +
-      "\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n" +
-      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
-      "\"7\n\031RequestCreateUnionCommand\022\014\n\004icon\030\001 " +
-      "\001(\005\022\014\n\004name\030\002 \002(\t\"+\n\030RequestApplyUnionCo" +
-      "mmand\022\017\n\007unionId\030\001 \002(\005\"7\n\030RequestReplyUn" +
-      "ionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\"",
-      ":\n\037RequestHandleUnionMemberCommand\022\n\n\002id" +
-      "\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036RequestSetUnionAn" +
-      "nounceCommand\022\020\n\010announce\030\001 \001(\t\"\034\n\032Reque" +
-      "stUpgradeUnionCommand\"%\n\027RequestQuitUnio" +
-      "nCommand\022\n\n\002id\030\001 \001(\003\"\031\n\027RequestUnionInfo" +
-      "Command\"<\n\031RequestAttackUnionCommand\022\017\n\007" +
-      "unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031Request" +
-      "DefendUnionCommand\022\016\n\006teamid\030\002 \002(\003\"H\n\030Re" +
-      "sponseUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035." +
-      "com.trans.pixel.protoc.Union\"\031\n\027RequestU",
-      "nionListCommand\"H\n\030ResponseUnionListComm" +
-      "and\022,\n\005union\030\001 \003(\0132\035.com.trans.pixel.pro" +
-      "toc.Union\"?\n\034RequestSubmitBosskillComman" +
-      "d\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026Re" +
-      "questBosskillCommand\"R\n\027ResponseBosskill" +
-      "Command\0227\n\006record\030\001 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.BossGroupRecord\"V\n\030ResponseUnio" +
-      "nBossCommand\022:\n\tunionBoss\030\001 \003(\0132\'.com.tr" +
-      "ans.pixel.protoc.UnionBossRecord\"K\n\034Requ" +
-      "estUnionBossFightCommand\022\016\n\006bossId\030\001 \002(\005",
-      "\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005"
+      "\n\003exp\030\033 \001(\r\022\021\n\tmaxZhanli\030\034 \001(\r\022\024\n\014applyE" +
+      "ndTime\030\035 \001(\r\"l\n\nUnionApply\022\n\n\002id\030\001 \002(\003\022.",
+      "\n\004user\030\002 \002(\0132 .com.trans.pixel.protoc.Us" +
+      "erInfo\022\017\n\007endTime\030\003 \002(\003\022\021\n\ttimestamp\030\004 \001" +
+      "(\003\"\323\001\n\016BossRoomRecord\022\017\n\007groupId\030\001 \002(\005\022\016" +
+      "\n\006bossId\030\002 \002(\005\022\024\n\014createUserId\030\003 \002(\003\0226\n\n" +
+      "bossRecord\030\004 \003(\0132\".com.trans.pixel.proto" +
+      "c.BossRecord\022.\n\004user\030\005 \003(\0132 .com.trans.p" +
+      "ixel.protoc.UserInfo\022\016\n\006status\030\006 \001(\005\022\022\n\n" +
+      "createTime\030\007 \002(\t\"Z\n\017BossGroupRecord\022\017\n\007g" +
+      "roupId\030\001 \002(\005\0226\n\nbossRecord\030\002 \003(\0132\".com.t" +
+      "rans.pixel.protoc.BossRecord\"L\n\nBossReco",
+      "rd\022\016\n\006bossId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006use" +
+      "rId\030\003 \001(\003\022\017\n\007endTime\030\004 \001(\t\"A\n\rBossgroupL" +
+      "ist\0220\n\005group\030\001 \003(\0132!.com.trans.pixel.pro" +
+      "toc.Bossgroup\"\203\001\n\tBossgroup\022\n\n\002id\030\001 \001(\005\022" +
+      "\016\n\006zhanli\030\002 \001(\005\022\021\n\tbosscount\030\003 \001(\005\022\r\n\005co" +
+      "unt\030\004 \001(\005\022*\n\004boss\030\005 \003(\0132\034.com.trans.pixe" +
+      "l.protoc.Boss\022\014\n\004time\030\006 \001(\005\"\026\n\004Boss\022\016\n\006b" +
+      "ossid\030\001 \001(\005\"F\n\021BosslootGroupList\0221\n\002id\030\001" +
+      " \003(\0132%.com.trans.pixel.protoc.BosslootGr" +
+      "oup\"L\n\rBosslootGroup\022\n\n\002id\030\001 \001(\005\022/\n\005orde",
+      "r\030\002 \003(\0132 .com.trans.pixel.protoc.Bossloo" +
+      "t\"\316\001\n\010Bossloot\022\021\n\tweightall\030\001 \001(\005\022\017\n\007ite" +
+      "mid1\030\002 \001(\005\022\022\n\nitemcount1\030\003 \001(\005\022\017\n\007weight" +
+      "1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n\nitemcount2\030\006" +
+      " \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007itemid3\030\010 \001(\005\022\022" +
+      "\n\nitemcount3\030\t \001(\005\022\017\n\007weight3\030\n \001(\005\022\r\n\005o" +
+      "rder\030\013 \001(\005\"\200\001\n\017UserBattletower\022\016\n\006userId" +
+      "\030\001 \001(\003\022\020\n\010toptower\030\002 \001(\005\022\024\n\014currenttower" +
+      "\030\003 \001(\005\022\022\n\nresettimes\030\004 \001(\005\022\021\n\tlefttimes\030" +
+      "\005 \001(\005\022\016\n\006random\030\006 \001(\005\"\352\001\n\013TowerReward\022\n\n",
+      "\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001(\005\022\016\n\006floora\030\003 \001(\005" +
+      "\022\016\n\006floorb\030\004 \001(\005\022\020\n\010rewardid\030\005 \001(\005\022\023\n\013re" +
+      "wardcount\030\006 \001(\005\022\021\n\trewardid1\030\007 \001(\005\022\024\n\014re" +
+      "wardcount1\030\010 \001(\005\022\021\n\trewardid2\030\t \001(\005\022\024\n\014r" +
+      "ewardcount2\030\n \001(\005\022\021\n\trewardid3\030\013 \001(\005\022\024\n\014" +
+      "rewardcount3\030\014 \001(\005\"B\n\017TowerRewardList\022/\n" +
+      "\002id\030\001 \003(\0132#.com.trans.pixel.protoc.Tower" +
+      "Reward\"J\n\010UnionExp\022\r\n\005level\030\001 \002(\r\022\013\n\003exp" +
+      "\030\002 \002(\r\022\017\n\007lootexp\030\003 \002(\r\022\021\n\tunionsize\030\004 \002" +
+      "(\r\">\n\014UnionExpList\022.\n\004data\030\005 \003(\0132 .com.t",
+      "rans.pixel.protoc.UnionExp\"R\n\037RequestSub" +
+      "mitBattletowerCommand\022\017\n\007success\030\001 \002(\010\022\r" +
+      "\n\005tower\030\002 \001(\005\022\017\n\007enemyId\030\003 \001(\005\"1\n\036Reques" +
+      "tResetBattletowerCommand\022\017\n\007enemyId\030\001 \001(" +
+      "\005\"T\n\034RequestGetBattletowerCommand\0224\n\003ubt" +
+      "\030\001 \001(\0132\'.com.trans.pixel.protoc.UserBatt" +
+      "letower\"V\n\036ResponseUserBattletowerComman" +
+      "d\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pixel.protoc." +
+      "UserBattletower\"\032\n\030RequestBloodEnterComm" +
+      "and\"1\n\031RequestBloodXiazhuCommand\022\024\n\014xiaz",
+      "huUserId\030\001 \002(\003\"y\n\035RequestInviteFightBoss" +
+      "Command\022\016\n\006userId\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005" +
+      "\022\016\n\006bossId\030\003 \001(\005\022\024\n\014createUserId\030\004 \001(\003\022\021" +
+      "\n\tstartDate\030\005 \001(\t\"-\n\033RequestQuitFightBos" +
+      "sCommand\022\016\n\006userId\030\001 \002(\003\"Y\n\035ResponseBoss" +
+      "RoomRecordCommand\0228\n\010bossRoom\030\001 \002(\0132&.co" +
+      "m.trans.pixel.protoc.BossRoomRecord\"4\n!R" +
+      "equestSubmitBossRoomScoreCommand\022\017\n\007perc" +
+      "ent\030\001 \002(\005\"\035\n\033RequestStartBossRoomCommand" +
+      "\"?\n\034RequestCreateBossRoomCommand\022\017\n\007grou",
+      "pId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032RequestBoss" +
+      "RoomInfoCommand\"@\n\rUnionBossList\022/\n\004data" +
+      "\030\001 \003(\0132!.com.trans.pixel.protoc.UnionBos" +
+      "s\"\234\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(" +
+      "\t\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013tar" +
+      "getcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv\030\006" +
+      " \001(\005\0224\n\010lootlist\030\007 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\022\023\n\013refreshtime\030\010 \001(\005\022" +
+      "\r\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\0226\n\nenem" +
+      "ygroup\030\013 \001(\0132\".com.trans.pixel.protoc.En",
+      "emyGroup\"F\n\020UnionBosswinList\0222\n\004data\030\001 \003" +
+      "(\0132$.com.trans.pixel.protoc.UnionBosswin" +
+      "\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003" +
+      "(\0132 .com.trans.pixel.protoc.RankItem\"h\n\010" +
+      "RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n" +
+      "\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\".com.trans.p" +
+      "ixel.protoc.RewardInfo\"7\n\031RequestCreateU" +
+      "nionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"" +
+      "+\n\030RequestApplyUnionCommand\022\017\n\007unionId\030\001" +
+      " \002(\005\"7\n\030RequestReplyUnionCommand\022\n\n\002id\030\001",
+      " \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHandleUn" +
+      "ionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(" +
+      "\005\"2\n\036RequestSetUnionAnnounceCommand\022\020\n\010a" +
+      "nnounce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionComm" +
+      "and\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001" +
+      "(\003\"\031\n\027RequestUnionInfoCommand\"<\n\031Request" +
+      "AttackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006t" +
+      "eamid\030\002 \002(\003\"+\n\031RequestDefendUnionCommand" +
+      "\022\016\n\006teamid\030\002 \002(\003\"H\n\030ResponseUnionInfoCom" +
+      "mand\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.pr",
+      "otoc.Union\"\031\n\027RequestUnionListCommand\"H\n" +
+      "\030ResponseUnionListCommand\022,\n\005union\030\001 \003(\013" +
+      "2\035.com.trans.pixel.protoc.Union\"?\n\034Reque" +
+      "stSubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005" +
+      "\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillComma" +
+      "nd\"R\n\027ResponseBosskillCommand\0227\n\006record\030" +
+      "\001 \003(\0132\'.com.trans.pixel.protoc.BossGroup" +
+      "Record\"V\n\030ResponseUnionBossCommand\022:\n\tun" +
+      "ionBoss\030\001 \003(\0132\'.com.trans.pixel.protoc.U" +
+      "nionBossRecord\"K\n\034RequestUnionBossFightC",
+      "ommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007pe" +
+      "rcent\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -37268,7 +37350,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_Union_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Union_descriptor,
-              new java.lang.String[] { "Id", "Name", "Icon", "Level", "Zhanli", "Rank", "Point", "Count", "MaxCount", "Members", "Applies", "AttackId", "AttackEndTime", "AttackCloseTime", "DefendId", "DefendEndTime", "DefendCloseTime", "Attacks", "Defends", "IsApply", "KillMonsterRecord", "CostRecord", "UnionBoss", "BossRecord", "BossEndTime", "Announce", "Exp", "MaxZhanli", });
+              new java.lang.String[] { "Id", "Name", "Icon", "Level", "Zhanli", "Rank", "Point", "Count", "MaxCount", "Members", "Applies", "AttackId", "AttackEndTime", "AttackCloseTime", "DefendId", "DefendEndTime", "DefendCloseTime", "Attacks", "Defends", "IsApply", "KillMonsterRecord", "CostRecord", "UnionBoss", "BossRecord", "BossEndTime", "Announce", "Exp", "MaxZhanli", "ApplyEndTime", });
           internal_static_com_trans_pixel_protoc_UnionApply_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_UnionApply_fieldAccessorTable = new

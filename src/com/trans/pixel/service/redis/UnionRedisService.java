@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionExpList;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class UnionRedisService extends RedisService{
@@ -98,8 +99,10 @@ public class UnionRedisService extends RedisService{
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
 			if(parseJson(value, builder)){
-				if(applyMap.containsKey(builder.getId()+""))
+				if(applyMap.containsKey(builder.getId()+"")) {
 					builder.setIsApply(true);
+					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
+				}
 				
 				UnionExp unionExp = unionExpMap.get("" + builder.getLevel());
 				if (unionExp != null)

@@ -2780,6 +2780,7 @@ message RequestRegisterCommand {
 message RequestBindRecommandCommand {
 	optional uint64 userId = 1;
 	optional string markId = 2;
+	optional string markId2 = 3;//转发到master服务器的时候使用,客户端不用管
 }
 
 message RequestRecommandCommand {
@@ -3068,6 +3069,7 @@ message Union {
 	optional string announce = 26;
 	optional uint32 exp = 27;
 	optional uint32 maxZhanli = 28;
+	optional uint32 applyEndTime = 29;
 }
 
 message UnionApply {
