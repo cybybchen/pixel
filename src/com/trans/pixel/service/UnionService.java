@@ -1118,6 +1118,9 @@ public class UnionService extends FightService{
 			return addExp;
 		
 		Union.Builder union = getBaseUnion(user);
+		if (union == null)
+			return addExp;
+		
 		UnionExp unionExp = redis.getUnionExp(union.getLevel());
 		if (unionExp == null)
 			return addExp;
