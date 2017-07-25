@@ -187,9 +187,9 @@ public class UnionCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
-		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		builder.setUnion(unionService.getUnion(user, false));
-		responseBuilder.setUnionInfoCommand(builder.build());
+//		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+//		builder.setUnion(unionService.getUnion(user, false));
+//		responseBuilder.setUnionInfoCommand(builder.build());
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
