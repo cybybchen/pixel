@@ -41,6 +41,8 @@ public class RewardTaskService {
 	private static final Logger log = LoggerFactory.getLogger(RewardTaskService.class);
 	
 	@Resource
+	private PropService propService;
+	@Resource
 	private RewardTaskRedisService rewardTaskRedisService;
 	@Resource
 	private UserRewardTaskService userRewardTaskService;
@@ -130,7 +132,7 @@ public class RewardTaskService {
 				if (userEquip != null && userEquip.getEquipCount() > 0)
 					userEquipList.add(userEquip);
 			}
-			rewards.addAllLoot(rewardTask.getLootlistList());
+			rewards.addAllLoot(propService.rewardsHandle(user, rewardTask.getLootlistList()).getLootList());
 			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
 			if(rewardTask.getType() == 1){//普通悬赏
 				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
