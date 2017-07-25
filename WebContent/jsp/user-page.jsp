@@ -61,7 +61,16 @@
 		</div>
 		<form id="rewardForm" class="ui-grid-a" style="display:none;">
 			<div class="ui-block-a">
-			<label>RewardId:</label>
+				<label>RewardId:</label>
+        	</div>
+	        <div class="ui-block-b">
+	        	<label>RewardCount:</label>
+        	</div>
+        	<div class="quickReward" style="width:98%">
+        		<span class="info0-btn thank-btn" onclick="quickReward(1002, 2000)">感谢</span>
+				<span class="info0-btn prostrate-btn" onclick="quickReward(1009, 20)">膜拜</span>
+        	</div>
+			<div class="ui-block-a">
 			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
 			        <input name="rewardid" data-type="search" data-enhanced="true" data-inset="false" id="rewardid-input" placeholder="rewardId">
 			    </div>
@@ -72,7 +81,6 @@
 			    </div>
 		    </div>
 	        <div class="ui-block-b">
-	        	<label>RewardCount:</label>
 		        <input type="text" name="rewardcount" value="" placeholder="rewardCount">
 
 	        	<label>MailContent:</label>

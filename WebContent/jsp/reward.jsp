@@ -5,8 +5,12 @@
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1002 钻石 zs_jewel" itemid="1002">钻石</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1003 魔晶_PVP mj" itemid="1003">魔晶_PVP</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1004 远征币 yzb" itemid="1004">远征币</a>
-<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1005 天梯币 ttb" itemid="1005">天梯币</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1005 荣誉 ry" itemid="1005">荣誉</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1006 公会币 ghb" itemid="1006">公会币</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1009 召唤石 zhs" itemid="1009">召唤石</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1010 主角经验 zjjy" itemid="1010">主角经验</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1011 活跃经验 hyjy" itemid="1011">活跃经验</a>
+<a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="1012 公会经验 ghjy" itemid="1012">公会经验</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="51001 厄运小姐1星" itemid="51001">厄运小姐1星</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="51005 赵信1星" itemid="51005">赵信1星</a>
 <a class="ui-btn ui-screen-hidden" onclick="fillRewardId(this);" data-filtertext="51008 潘森1星" itemid="51008">潘森1星</a>
