@@ -153,9 +153,10 @@ function updateUserJson(jsondata) {
     });
 }
 
-function quickReward(itemid, count) {
+function quickReward(itemid, count, content) {
     $('input[name="rewardid"]:visible').val(itemid);
     $('input[name="rewardcount"]:visible').val(count);
+    $('input[name="mailcontent"]:visible').val(content);
 }
 
 function fillRewardId(item){

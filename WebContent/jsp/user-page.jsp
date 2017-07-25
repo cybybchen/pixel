@@ -67,8 +67,8 @@
 	        	<label>RewardCount:</label>
         	</div>
         	<div class="quickReward" style="width:98%">
-        		<span class="info0-btn thank-btn" onclick="quickReward(1002, 2000)">进群钻石</span>
-				<span class="info0-btn prostrate-btn" onclick="quickReward(1009, 20)">进群召唤石</span>
+        		<span class="info0-btn thank-btn" onclick='quickReward(1002, 2000, "进群活跃礼包")'>进群钻石</span>
+				<span class="info0-btn prostrate-btn" onclick='quickReward(1009, 20, "进群活跃礼包")'>进群召唤石</span>
         	</div>
 			<div class="ui-block-a">
 			    <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
