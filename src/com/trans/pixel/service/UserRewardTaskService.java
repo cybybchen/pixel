@@ -16,7 +16,9 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
+import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
@@ -81,6 +83,16 @@ public class UserRewardTaskService {
 		}
 	}
 	
+	public static boolean hasMeInRoom(UserBean user, UserRewardTaskRoom.Builder room) {
+		if(room == null)
+			return false;
+		for(RoomInfo roominfo : room.getRoomInfoList()) {
+			if(roominfo.getUser().getId() == user.getId())
+				return true;
+		}
+		return false;
+	}
+	
 	public Map<Integer, UserRewardTask> getUserRewardTaskList(UserBean user) {
 		Map<Integer, UserRewardTask> map = userRewardTaskRedisService.getUserRewardTask(user.getId());
 		long now = RedisService.now();
@@ -94,17 +106,22 @@ public class UserRewardTaskService {
 			if(ut.hasEndtime() && ut.getEndtime() <= now) {//过0点刷新
 				needRefresh = true;
 				if (ut.hasRoomInfo()) {//保留组队
-					if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
-						if (ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
-							userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-							it.remove();
+					UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+					if (room == null && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
+						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+						it.remove();
 //						}else {//可以领奖
 //							UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
 //							builder.clearRoomInfo();
 //							builder.setEndtime(RedisService.today(24));
 //							userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 //							map.put(ut.getIndex(), builder.build());
-						}
+//					}else if(room != null && !hasMeInRoom(user, room)) {
+//						UserRewardTask.Builder utbuilder = UserRewardTask.newBuilder(ut);
+//						utbuilder.clearRoomInfo();
+//						ut = utbuilder.build();
+//						map.put(index, ut);
+//						userRewardTaskRedisService.updateUserRewardTask(user.getId(), ut);
 					}
 				}else {
 					userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);

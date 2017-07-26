@@ -286,6 +286,14 @@ public class RewardTaskService {
 		 
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 		
+		if(!UserRewardTaskService.hasMeInRoom(user, room)) {
+			ut.clearRoomInfo();
+			userRewardTaskService.updateUserRewardTask(user.getId(), ut.build());
+			if(room.getCreateUserId() == user.getId()) {
+				rewardTaskRedisService.delUserRewardTaskRoom(user, ut.getIndex());
+			}
+		}
+
 		return room;
 	}
 	
