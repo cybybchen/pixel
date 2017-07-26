@@ -23,6 +23,7 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
@@ -89,7 +90,39 @@ public class RewardTaskService {
 //		
 //		return SuccessConst.USE_PROP;
 //	}
-	
+	private List<RewardInfo> getTaskReward(UserBean user, RewardTask rewardTask, EventConfig event) {
+		List<RewardInfo> rewardlist = new ArrayList<RewardInfo>();
+		rewardlist.addAll(propService.rewardsHandle(user, rewardTask.getLootlistList()).getLootList());
+		rewardlist.addAll(levelRedisService.eventReward(event, 0).getLootList());
+		if(rewardTask.getType() == 1){//普通悬赏
+			for(int i = rewardlist.size() - 1; i >= 0; i--) {
+				int itemid = rewardlist.get(i).getItemid();
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null){
+						RewardInfo.Builder builder = RewardInfo.newBuilder(rewardlist.get(i));
+						builder.setItemid(24006);
+						builder.setCount(builder.getCount()*5);
+						rewardlist.set(i, builder.build());
+					}
+				}
+			}
+		}else if(rewardTask.getType() == 2){//深渊
+			for(int i = rewardlist.size() - 1; i >= 0; i--) {
+				int itemid = rewardlist.get(i).getItemid();
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null){
+						RewardInfo.Builder builder = RewardInfo.newBuilder(rewardlist.get(i));
+						builder.setItemid(24010);
+						rewardlist.set(i, builder.build());
+					}
+				}
+			}
+		}
+		
+		return rewardlist;
+	}
 	public ResultConst submitRewardTaskScore(UserBean user, int index, boolean ret, MultiReward.Builder rewards, List<UserInfo> errorUserList, List<UserEquipBean> userEquipList) {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user, index);
 		if (userRewardTask == null || userRewardTask.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || userRewardTask.getLeftcount() == 0) {
@@ -132,30 +165,7 @@ public class RewardTaskService {
 				if (userEquip != null && userEquip.getEquipCount() > 0)
 					userEquipList.add(userEquip);
 			}
-			rewards.addAllLoot(propService.rewardsHandle(user, rewardTask.getLootlistList()).getLootList());
-			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
-			if(rewardTask.getType() == 1){//普通悬赏
-				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = rewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							rewards.getLootBuilder(i).setItemid(24006);
-							rewards.getLootBuilder(i).setCount(rewards.getLootBuilder(i).getCount()*5);
-						}
-					}
-				}
-			}else if(rewardTask.getType() == 2){//深渊
-				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = rewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							rewards.getLootBuilder(i).setItemid(24010);
-						}
-					}
-				}
-			}
+			rewards.addAllLoot(getTaskReward(user, rewardTask, event));
 		}
 
 		Map<String, String> params = new HashMap<String, String>();
@@ -503,8 +513,6 @@ public class RewardTaskService {
 			
 			RewardTask rewardTask = userRewardTask.getTask();
 			EventConfig event = levelRedisService.getEvent(userRewardTask.getTask().getEventid());
-			rewards.addAllLoot(rewardTask.getLootlistList());
-			rewards.addAllLoot(levelRedisService.eventReward(event, 0).getLootList());
 			if(event.hasCost()){
 				UserEquipBean userEquip = userEquipService.selectUserEquip(user.getId(), event.getCost().getItemid());
 				if (userEquip != null && userEquip.getEquipCount() > 0) {
@@ -513,28 +521,7 @@ public class RewardTaskService {
 					pusher.pushUserEquipListCommand(responseBuilder, user, userEquipList);
 				}
 			}
-			if(rewardTask.getType() == 1){//普通悬赏
-				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = rewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							rewards.getLootBuilder(i).setItemid(24006);
-							rewards.getLootBuilder(i).setCount(rewards.getLootBuilder(i).getCount()*5);
-						}
-					}
-				}
-			}else if(rewardTask.getType() == 2){//深渊
-				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = rewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							rewards.getLootBuilder(i).setItemid(24010);
-						}
-					}
-				}
-			}
+			rewards.addAllLoot(getTaskReward(user, rewardTask, event));
 		}
 		return rewards;
 	}
