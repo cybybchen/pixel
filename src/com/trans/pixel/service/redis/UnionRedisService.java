@@ -90,12 +90,12 @@ public class UnionRedisService extends RedisService{
 			applyMap = new HashMap<String, String>();
 		else
 		{
-			applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId());
+			applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId(), user.getId());
 			Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
 			while(it.hasNext()){
 				Entry<String, String> entry = it.next();
 				if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()/1000){
-					hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey());
+					hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey(), user.getId());
 					it.remove();
 				}
 			}
@@ -170,8 +170,8 @@ public class UnionRedisService extends RedisService{
 		this.hput(key, builder.getId()+"", formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 		key = RedisKey.USERDATA+"Apply_"+user.getId();
-		hput(key, unionId+"", builder.getEndTime()+"");
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		hput(key, unionId+"", builder.getEndTime()+"", user.getId());
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY, user.getId());
 	}
 
 	public boolean reply( final long id, final boolean receive,UserBean user) {

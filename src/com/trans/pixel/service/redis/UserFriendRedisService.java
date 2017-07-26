@@ -6,15 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -23,59 +15,50 @@ import com.trans.pixel.model.userinfo.UserFriendBean;
 
 @Repository
 public class UserFriendRedisService extends RedisService {
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
 	
 	public boolean isUserFriend(final long userId, final long friendId) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
-			@Override
-			public Boolean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildRedisKey(userId));
-				
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return bhOps.hasKey("" + friendId);
-			}
-		});
+		String key = buildRedisKey(userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		
+		return hexist(key, "" + friendId, userId);
 	}
 	
 	public UserFriendBean selectUserFriend(final long userId, final long friendId) {
 		String key = buildRedisKey(userId);
-		String value = this.hget(key, "" + friendId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		String value = hget(key, "" + friendId, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		return UserFriendBean.fromJson(value);
 	}
 	
 	public void insertUserFriend(final long userId, final long friendId) {
 		UserFriendBean userFriend = new UserFriendBean(friendId);
 		String key = buildRedisKey(userId);
-		hput(key, "" + friendId, toJson(userFriend));
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "" + friendId, toJson(userFriend), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public void insertUserFriend(final long userId, UserFriendBean friend) {
 		String key = buildRedisKey(userId);
-		hput(key, "" + friend.getFriendId(), toJson(friend));
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "" + friend.getFriendId(), toJson(friend), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public void insertUserFriendList(final long userId, final List<UserFriendBean> friendList) {
 		Map<String, String> keyvalue = buildUserFriendMap(friendList);
 		String key = buildRedisKey(userId);
-		hputAll(key, keyvalue);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hputAll(key, keyvalue, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public void deleteUserFriend(final long userId, final long friendId) {
 		String key = buildRedisKey(userId);
-		this.hdelete(key, "" + friendId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hdelete(key, "" + friendId, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public List<UserFriendBean> selectUserFriendList(final long userId) {
 			List<UserFriendBean> friendList = new ArrayList<UserFriendBean>();
-			Iterator<Entry<String, String>> it = this.hget(buildRedisKey(userId)).entrySet().iterator();
+			Iterator<Entry<String, String>> it = hget(buildRedisKey(userId), userId).entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<String, String> entry = it.next();
 				UserFriendBean userFriend = UserFriendBean.fromJson(entry.getValue());
@@ -87,7 +70,7 @@ public class UserFriendRedisService extends RedisService {
 	
 	public List<Long> getFriendIds(final long userId) {
 			List<Long> friendList = new ArrayList<Long>();
-			Iterator<String> it = this.hget(buildRedisKey(userId)).keySet().iterator();
+			Iterator<String> it = hget(buildRedisKey(userId), userId).keySet().iterator();
 			while (it.hasNext()) {
 				friendList.add(Long.parseLong(it.next()));
 			}

@@ -17,12 +17,12 @@ public class UserBattletowerRedisService extends RedisService {
 	
 	public UserBattletowerBean selectUserBattletower(final long userId) {
 		String key = RedisKey.USER_BATTLETOWER_PREFIX + userId;
-		String value = get(key);
+		String value = get(key, userId);
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBattletowerBean) JSONObject.toBean(json, UserBattletowerBean.class);
 	}
 	
 	public void setUserBattletower(UserBattletowerBean userBattletower) {
-		this.set(RedisKey.USER_BATTLETOWER_PREFIX + userBattletower.getUserId(), JSONObject.fromObject(userBattletower).toString());
+		this.set(RedisKey.USER_BATTLETOWER_PREFIX + userBattletower.getUserId(), JSONObject.fromObject(userBattletower).toString(), userBattletower.getUserId());
 	}
 }

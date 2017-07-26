@@ -1,7 +1,5 @@
 package com.trans.pixel.service.redis;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -81,7 +79,7 @@ public class RewardTaskRedisService extends RedisService {
 	
 	public UserRewardTaskRoom.Builder getUserRewardTaskRoom(long userId, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + userId;
-		String value = hget(key, "" + index);
+		String value = hget(key, "" + index, userId);
 		if (value == null)
 			return null;
 		
@@ -95,13 +93,13 @@ public class RewardTaskRedisService extends RedisService {
 	
 	public void setUserRewardTaskRoom(UserRewardTaskRoom room) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + room.getCreateUserId();
-		hput(key, "" + room.getIndex(), formatJson(room));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "" + room.getIndex(), formatJson(room), room.getCreateUserId());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, room.getCreateUserId());
 	}
 	
 	public void delUserRewardTaskRoom(UserBean user, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + user.getId();
-		hdelete(key, "" + index);
+		hdelete(key, "" + index, user.getId());
 	}
 	
 	//rewardtask reward

@@ -1,19 +1,13 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-
-import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -30,15 +24,13 @@ import com.trans.pixel.service.cache.CacheService;
 public class UserTeamRedisService extends RedisService {
 	private static Logger logger = Logger.getLogger(UserTeamRedisService.class);
 	private static final String TEAM_UNLOCK_FILE_NAME = "lol_renshu.xml";
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
 	
 	public UserTeamRedisService() {
 //		getTeamUnlockConfig();
 	}
 	
-	public Team.Builder getTeamCache(final long userid) {
-		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userid);
+	public Team.Builder getTeamCache(final long userId) {
+		String value = get(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + userId, userId);
 		Team.Builder team = Team.newBuilder();
 		if(value != null)
 			parseJson(value, team);
@@ -49,25 +41,25 @@ public class UserTeamRedisService extends RedisService {
 		if(team.getHeroInfoList().isEmpty())
 			return;
 	
-		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), formatJson(team));
+		set(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), formatJson(team), user.getId());
 	}
 	
 	public void saveTeamCache(final UserBean user, Team team) {
 		saveTeamCacheWithoutExpire(user, team);
-		expire(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+		expire(RedisKey.PREFIX + RedisKey.TEAM_CACHE_PREFIX + user.getId(), RedisExpiredConst.EXPIRED_USERINFO_30DAY, user.getId());
 	}
 
 	public void updateUserTeam(final UserTeamBean userTeam) {
 		if((userTeam.getId() < 1 || userTeam.getId() > 5) && userTeam.getId() != 1000)
 			return;
-		hput(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), "" + userTeam.getId(), userTeam.toJson());
-		expire(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), "" + userTeam.getId(), userTeam.toJson(), userTeam.getUserId());
+		expire(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userTeam.getUserId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, userTeam.getUserId());
 		if(userTeam.getTeamRecord().length() > 1)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_TEAM_PREFIX, userTeam.getUserId()+"#"+userTeam.getId());
 	}
 	
 	public UserTeamBean getUserTeam(final long userId, final long id) {
-		String value = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, "" + id);
+		String value = hget(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId, "" + id, userId);
 		if(value != null)
 			return UserTeamBean.fromJson(value);
 		else
@@ -75,16 +67,9 @@ public class UserTeamRedisService extends RedisService {
 	}
 
 	public void delUserTeam(final long userId, final long id) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0) throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId;
 
-				bhOps.delete("" + id);
-
-				return null;
-			}
-		});
+		hdelete(key, "" + id, userId);
 	}
 	
 	public String popDBKey(){
@@ -96,39 +81,35 @@ public class UserTeamRedisService extends RedisService {
 	}
 
 	public void updateUserTeamList(final List<UserTeamBean> userTeamList, final long userId) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0) throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId;
+		Map<String, String> map = convertTeamMap(userTeamList);		
 
-				for (UserTeamBean userTeam : userTeamList) {
-					bhOps.put("" + userTeam.getId(), userTeam.toJson());
-				}
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-
-				return null;
-			}
-		});
+		hputAll(key, map, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 
+	private Map<String, String> convertTeamMap(List<UserTeamBean> userTeamList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (UserTeamBean team : userTeamList) {
+			map.put("" + team.getId(), team.toJson());
+		}
+		
+		return map;
+	}
+		
 	public List<UserTeamBean> selectUserTeamList(final long userId) {
-		return redisTemplate.execute(new RedisCallback<List<UserTeamBean>>() {
-			@Override
-			public List<UserTeamBean> doInRedis(RedisConnection arg0) throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate.boundHashOps(RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_TEAM_PREFIX + userId;
 
-				List<UserTeamBean> userTeamList = new ArrayList<UserTeamBean>();
-				Iterator<Entry<String, String>> ite = bhOps.entries().entrySet().iterator();
-				while (ite.hasNext()) {
-					Entry<String, String> entry = ite.next();
-					UserTeamBean userTeam = UserTeamBean.fromJson(entry.getValue());
-					if (userTeam != null)
-						userTeamList.add(userTeam);
-				}
+		List<UserTeamBean> userTeamList = new ArrayList<UserTeamBean>();
+		Iterator<Entry<String, String>> ite = hget(key, userId).entrySet().iterator();
+		while (ite.hasNext()) {
+			Entry<String, String> entry = ite.next();
+			UserTeamBean userTeam = UserTeamBean.fromJson(entry.getValue());
+			if (userTeam != null)
+				userTeamList.add(userTeam);
+		}
 
-				return userTeamList;
-			}
-		});
+		return userTeamList;
 	}
 	
 	public List<TeamUnlock> getTeamUnlockConfig() {
@@ -168,17 +149,17 @@ public class UserTeamRedisService extends RedisService {
 
 	public void saveFightInfo(String info, UserBean user){
 		String key = RedisKey.USER_FIGHT_PREFIX+user.getId();
-		lpush(key, info);
+		lpush(key, info, user.getId());
 		long size = llen(key);
 		for(; size > 10; size--){
 			rpop(key);
 		}
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
 
 	public List<FightInfo.Builder> getFightInfoList(UserBean user){
 		List<FightInfo.Builder> list = new ArrayList<FightInfo.Builder>();
-		List<String> values = lrange(RedisKey.USER_FIGHT_PREFIX+user.getId());
+		List<String> values = lrange(RedisKey.USER_FIGHT_PREFIX+user.getId(), user.getId());
 		for(String value : values){
 			FightInfo.Builder builder = FightInfo.newBuilder();
 			if(parseJson(value, builder))

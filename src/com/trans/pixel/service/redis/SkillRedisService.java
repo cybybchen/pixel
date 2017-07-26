@@ -23,8 +23,6 @@ import com.trans.pixel.service.cache.CacheService;
 
 @Repository
 public class SkillRedisService extends CacheService {
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
 	
 	public SkillRedisService() {
 		getSkillLevelList();

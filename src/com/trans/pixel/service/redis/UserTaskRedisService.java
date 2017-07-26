@@ -19,15 +19,15 @@ public class UserTaskRedisService extends RedisService {
 
 	public void updateUserTask(long userId, UserTask ut) {
 		String key = RedisKey.USER_TASK_1_PREFIX + userId;
-		this.hput(key, "" + ut.getTargetid(), formatJson(ut));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hput(key, "" + ut.getTargetid(), formatJson(ut), userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TASK_1_PREFIX, userId + "#" + ut.getTargetid());
 	}
 	
 	public UserTask getUserTask(long userId, int targetId) {
 		String key = RedisKey.USER_TASK_1_PREFIX + userId;
-		String value = hget(key, "" + targetId);
+		String value = hget(key, "" + targetId, userId);
 		UserTask.Builder builder = UserTask.newBuilder();
 		if(value!= null && parseJson(value, builder)) {
 			if(builder.getHeroidCount() > 0)
@@ -39,7 +39,7 @@ public class UserTaskRedisService extends RedisService {
 	
 	public List<UserTask> getUserTaskList(long userId) {
 		String key = RedisKey.USER_TASK_1_PREFIX + userId;
-		Map<String,String> map = hget(key);
+		Map<String,String> map = hget(key, userId);
 		List<UserTask> userTaskList = new ArrayList<UserTask>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -52,19 +52,19 @@ public class UserTaskRedisService extends RedisService {
 			}
 		}
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		return userTaskList;
 	}
 	
 	public void setUserTaskList(long userId, List<UserTask> utList) {
 		String key = RedisKey.USER_TASK_1_PREFIX + userId;
 		Map<String,String> map = composeUserTaskMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public boolean isExistTask1Key(final long userId) {
-		return exists(RedisKey.USER_TASK_1_PREFIX + userId);
+		return exists(RedisKey.USER_TASK_1_PREFIX + userId, userId);
 	}
 	
 	public String popTask1DBKey(){
@@ -76,13 +76,13 @@ public class UserTaskRedisService extends RedisService {
 	 */
 	public void updateUserTask3(long userId, UserTask ut) {
 		String key = RedisKey.USER_TASK_3_PREFIX + userId;
-		this.hput(key, "" + ut.getTargetid(), formatJson(ut));
-		this.expireAt(key, DateUtil.getEndDateOfD());
+		this.hput(key, "" + ut.getTargetid(), formatJson(ut), userId);
+		this.expireAt(key, DateUtil.getEndDateOfD(), userId);
 	}
 	
 	public UserTask getUserTask3(long userId, int targetId) {
 		String key = RedisKey.USER_TASK_3_PREFIX + userId;
-		String value = hget(key, "" + targetId);
+		String value = hget(key, "" + targetId, userId);
 		UserTask.Builder builder = UserTask.newBuilder();
 		if(value!= null && parseJson(value, builder)) {
 			if(builder.getHeroidCount() > 0)
@@ -94,7 +94,7 @@ public class UserTaskRedisService extends RedisService {
 	
 	public List<UserTask> getUserTask3List(long userId) {
 		String key = RedisKey.USER_TASK_3_PREFIX + userId;
-		Map<String, String> map = hget(key);
+		Map<String, String> map = hget(key, userId);
 		List<UserTask> userTaskList = new ArrayList<UserTask>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -106,7 +106,7 @@ public class UserTaskRedisService extends RedisService {
 				userTaskList.add(builder.build());
 			}
 		}
-		
+		expireAt(key, DateUtil.getEndDateOfD(), userId);
 		return userTaskList;
 	}
 	
@@ -115,15 +115,15 @@ public class UserTaskRedisService extends RedisService {
 	 */
 	public void updateUserTask2(long userId, UserTask ut) {
 		String key = RedisKey.USER_TASK_2_PREFIX + userId;
-		this.hput(key, "" + ut.getTargetid(), formatJson(ut));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hput(key, "" + ut.getTargetid(), formatJson(ut), userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TASK_2_PREFIX, userId + "#" + ut.getTargetid());
 	}
 	
 	public UserTask getUserTask2(long userId, int targetId) {
 		String key = RedisKey.USER_TASK_2_PREFIX + userId;
-		String value = hget(key, "" + targetId);
+		String value = hget(key, "" + targetId, userId);
 		UserTask.Builder builder = UserTask.newBuilder();
 		if(value!= null && parseJson(value, builder)) {
 			if(builder.getHeroidCount() > 0)
@@ -135,7 +135,7 @@ public class UserTaskRedisService extends RedisService {
 	
 	public List<UserTask> getUserTask2List(long userId) {
 		String key = RedisKey.USER_TASK_2_PREFIX + userId;
-		Map<String, String> map = hget(key);
+		Map<String, String> map = hget(key, userId);
 		List<UserTask> userTaskList = new ArrayList<UserTask>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -154,12 +154,12 @@ public class UserTaskRedisService extends RedisService {
 	public void setUserTask2List(long userId, List<UserTask> utList) {
 		String key = RedisKey.USER_TASK_2_PREFIX + userId;
 		Map<String,String> map = composeUserTaskMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public boolean isExistTask2Key(final long userId) {
-		return exists(RedisKey.USER_TASK_2_PREFIX + userId);
+		return exists(RedisKey.USER_TASK_2_PREFIX + userId, userId);
 	}
 	
 	public String popTask2DBKey(){

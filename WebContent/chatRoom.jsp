@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         Chat.initialize = function() {  
             if (window.location.protocol == 'http:') {  
-                Chat.connect('ws://' + window.location.host + '/Lol450/websocket/chat/1172'); //'/socket2/websocket/chat'
+                Chat.connect('ws://' + window.location.host + '/pixel/websocket/chat/1172'); //'/socket2/websocket/chat'
             } else {  
                 Chat.connect('wss://' + window.location.host + '/pixel/websocket/chat');  
             }  

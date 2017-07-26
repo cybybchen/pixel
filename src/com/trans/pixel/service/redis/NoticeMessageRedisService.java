@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.MessageConst;
@@ -18,10 +15,6 @@ import com.trans.pixel.constants.RedisKey;
 
 @Repository
 public class NoticeMessageRedisService extends RedisService {
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
-	@Resource
-	private UserRedisService userRedisService;
 	
 	public List<String> getNoticeMessageList(final int serverId, final long timeStamp) {
 		String key = RedisKey.NOTICE_MESSAGE_PREFIX + serverId;
@@ -35,11 +28,11 @@ public class NoticeMessageRedisService extends RedisService {
 	}
 	
 	public boolean addNoticeMessage(final int serverId, final String message, final long timeStamp) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return getRedis(0).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
+				BoundZSetOperations<String, String> bzOps = getRedis(0)
 						.boundZSetOps(RedisKey.NOTICE_MESSAGE_PREFIX + serverId);
 				
 				if (bzOps.size() >= MessageConst.NOTICE_MESSAGE_MAX) {

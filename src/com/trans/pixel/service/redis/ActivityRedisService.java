@@ -242,7 +242,7 @@ public class ActivityRedisService extends CacheService {
 	
 	public void setKaifu2RwRc(UserBean user, int activityId, int record) {
 		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), activityId);
-		this.hput(key, "" + user.getId(), "" + record);
+		redisService.hput(key, "" + user.getId(), "" + record);
 		redisService.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 	

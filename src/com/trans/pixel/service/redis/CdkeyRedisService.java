@@ -30,15 +30,15 @@ public class CdkeyRedisService extends RedisService{
 	private static final String CIPHER_FILE_NAME = "ld_cipher.xml";
 	
 	public String getCdkeyRewarded(long userId){
-		return hget(RedisKey.USERDATA+userId, "CdkeyRecord");
+		return hget(RedisKey.USERDATA+userId, "CdkeyRecord", userId);
 	}
 	
 	public String getCdkeyRewarded(UserBean user){
-		return hget(RedisKey.USERDATA+user.getId(), "CdkeyRecord");
+		return hget(RedisKey.USERDATA+user.getId(), "CdkeyRecord", user.getId());
 	}
 	
 	public void saveCdkeyRewarded(UserBean user, String value){
-		hput(RedisKey.USERDATA+user.getId(), "CdkeyRecord", value);
+		hput(RedisKey.USERDATA+user.getId(), "CdkeyRecord", value, user.getId());
 		sadd(RedisKey.PUSH_MYSQL_KEY+"CdkeyRecord", user.getId()+"");
 	}
 	

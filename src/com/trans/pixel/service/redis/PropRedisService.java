@@ -4,10 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.annotation.Resource;
-
 import org.apache.log4j.Logger;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -22,8 +19,6 @@ public class PropRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(PropRedisService.class);
 	private static final String PACKAGE_FILE_NAME = "ld_package.xml";
 	private static final String SYNTHETISE_FILE_NAME = "ld_equipcompose.xml";
-	@Resource
-	public RedisTemplate<String, String> redisTemplate;
 	
 	public PropRedisService() {
 		getPackageConfig();

@@ -87,7 +87,7 @@ public class LevelRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY+"UserLevel");
 	}
 	public UserLevelBean getUserLevel(long userId){
-		String value = hget(RedisKey.USERDATA + userId, "UserLevel");
+		String value = hget(RedisKey.USERDATA + userId, "UserLevel", userId);
 		if(value != null)
 			return UserLevelBean.fromJson(value);
 		UserLevelBean userLevel = mapper.getUserLevel(userId);
@@ -156,11 +156,11 @@ public class LevelRedisService extends RedisService {
 //		return (now()-userLevel.getLootTime())*userLevel.getExp();
 //	}
 	public void saveUserLevel(UserLevelBean bean){
-		hput(RedisKey.USERDATA + bean.getUserId(), "UserLevel", toJson(bean));
+		hput(RedisKey.USERDATA + bean.getUserId(), "UserLevel", toJson(bean), bean.getUserId());
 		sadd(RedisKey.PUSH_MYSQL_KEY + "UserLevel", bean.getUserId() + "");
 	}
 	public Map<Integer, Event.Builder> getEvents(UserBean user, UserLevelBean userLevel) {
-		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId());
+		Map<String, String> keyvalue = hget(RedisKey.USEREVENT_PREFIX+userLevel.getUserId(), userLevel.getUserId());
 		Map<Integer, Event.Builder> map = new TreeMap<Integer, Event.Builder>();
 //		if(keyvalue.isEmpty() && now() - userLevel.getEventTime() > 24*3600){
 //			List<EventBean> list = mapper.getEvents(userLevel.getUserId());
@@ -254,7 +254,7 @@ public class LevelRedisService extends RedisService {
 	
 	public void productEvent(UserBean user, UserLevelBean userLevel, boolean isBuy){
 		long time = now() - userLevel.getEventTime();
-		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId());
+		long eventsize = hlen(RedisKey.USEREVENT_PREFIX+user.getId(), user.getId());
 		if(!isBuy && eventsize >= EVENTSIZE){
 			userLevel.setEventTime((int)now());
 			saveUserLevel(userLevel);
@@ -339,7 +339,7 @@ public class LevelRedisService extends RedisService {
 	}
 	
 	public Event getEvent(long userId, int order) {
-		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"");
+		String value = hget(RedisKey.USEREVENT_PREFIX+userId, order+"", userId);
 		Event.Builder builder = Event.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -375,7 +375,7 @@ public class LevelRedisService extends RedisService {
 //		mapper.delEvent(userId, order);
 //	}
 	public void saveEvent(long userId, Event event) {
-		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event));
+		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event), userId);
 		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"#"+event.getOrder());
@@ -387,7 +387,7 @@ public class LevelRedisService extends RedisService {
 		saveEventReady(user.getId(), event);
 	}
 	public void saveEventReady(long userId, Event event) {
-		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event));
+		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event), userId);
 		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
@@ -400,12 +400,12 @@ public class LevelRedisService extends RedisService {
 //		return null;
 //	}
 	public void delEventReady(UserBean user, Event event) {
-		hdelete(RedisKey.USEREVENTREADY_PREFIX+user.getId(),event.getOrder()+"");
+		hdelete(RedisKey.USEREVENTREADY_PREFIX+user.getId(),event.getOrder()+"", user.getId());
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX+"Del", user.getId()+"#"+event.getEventid());
 	}
 	public void delEvent(UserBean user, Event event) {
-		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"");
+		hdelete(RedisKey.USEREVENT_PREFIX+user.getId(), event.getOrder()+"", user.getId());
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX+"Del", user.getId()+"#"+event.getOrder());
 	}

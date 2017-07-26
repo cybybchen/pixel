@@ -8,8 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -17,7 +15,6 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundListOperations;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
@@ -34,11 +31,8 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class UserLadderRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(UserLadderRedisService.class);
 	
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
-	
 	public LadderSeason getLadderSeason() {
-		String value = this.get(RedisKey.LADDER_SEASON_KEY);
+		String value = get(RedisKey.LADDER_SEASON_KEY);
 		LadderSeason.Builder builder = LadderSeason.newBuilder();
 		if (value != null && RedisService.parseJson(value, builder)) {
 			return builder.build();
@@ -48,22 +42,22 @@ public class UserLadderRedisService extends RedisService{
 	}
 	
 	public void setLadderSeason(LadderSeason ladderSeason) {
-		this.set(RedisKey.LADDER_SEASON_KEY, RedisService.formatJson(ladderSeason));
-		this.expireAt(RedisKey.LADDER_SEASON_KEY, DateUtil.getDate(ladderSeason.getEndTime()));
+		set(RedisKey.LADDER_SEASON_KEY, RedisService.formatJson(ladderSeason));
+		expireAt(RedisKey.LADDER_SEASON_KEY, DateUtil.getDate(ladderSeason.getEndTime()));
 	}
 	
 	public void deleteLadderSeason() {
-		this.delete(RedisKey.LADDER_SEASON_KEY);
+		delete(RedisKey.LADDER_SEASON_KEY);
 	}
 	
 	public void addUserEnemyUserId(final UserBean user, final Collection<UserLadder> userLadderList) {
-		redisTemplate.execute(new RedisCallback<Object>() {
+		getRedis(user.getId()).execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				
 				String key = RedisKey.LADDER_USER_HISTORY_ENEMY_KEY + user.getId();
-				BoundListOperations<String, String> blOps = redisTemplate
+				BoundListOperations<String, String> blOps = getRedis(user.getId())
 						.boundListOps(key);
 				
 				
@@ -83,7 +77,7 @@ public class UserLadderRedisService extends RedisService{
 	
 	public List<Long> getUserEnemyUserIds(UserBean user) {
 		String key = RedisKey.LADDER_USER_HISTORY_ENEMY_KEY + user.getId();
-		List<String> userIds = this.lrange(key);
+		List<String> userIds = lrange(key, user.getId());
 		
 		List<Long> userIdList = new ArrayList<Long>();
 		for (String userId : userIds) {
@@ -94,11 +88,11 @@ public class UserLadderRedisService extends RedisService{
 	}
 	
 	public Map<Integer, UserLadder> randomEnemy(final int type, final int grade, final int count, final long userId, final List<Long> enemyUserIds) {
-		return redisTemplate.execute(new RedisCallback<Map<Integer, UserLadder>>() {
+		return getRedis(0).execute(new RedisCallback<Map<Integer, UserLadder>>() {
 			@Override
 			public Map<Integer, UserLadder> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(0)
 						.boundHashOps(buildLadderEnemyRoomKey(type, grade));
 				
 				Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
@@ -130,11 +124,11 @@ public class UserLadderRedisService extends RedisService{
 	}
 	
 	public int storeRoomData(final UserLadder userLadder, final int type, final int grade) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
+		return getRedis(0).execute(new RedisCallback<Integer>() {
 			@Override
 			public Integer doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(0)
 						.boundHashOps(buildLadderEnemyRoomKey(type, grade));
 				
 				long size = bhOps.size();
@@ -158,7 +152,7 @@ public class UserLadderRedisService extends RedisService{
 	public Map<Integer, UserLadder> getUserEnemy(long userId, int type) {
 		String key = buildUserEnemyKey(userId, type);
 		Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
-		Map<String, String> redisMap = this.hget(key);
+		Map<String, String> redisMap = hget(key, userId);
 		for (String value : redisMap.values()) {
 			UserLadder.Builder builder = UserLadder.newBuilder();
 			if (value != null && RedisService.parseJson(value, builder))
@@ -170,16 +164,16 @@ public class UserLadderRedisService extends RedisService{
 	
 	public void storeUserEnemy(long userId, int type, Map<Integer, UserLadder> map) {
 		String key = buildUserEnemyKey(userId, type);
-		this.delete(key);
+		delete(key, userId);
 		Map<String, String> redisMap = convert(map);
-		this.hputAll(key, redisMap);
+		hputAll(key, redisMap, userId);
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY, userId);
 	}
 	
 	public UserLadder getUserLadder(long userId, int type) {
 		String key = RedisKey.LADDER_USERINFO_PREFIX + userId;
-		String value = this.hget(key, "" + type);
+		String value = hget(key, "" + type, userId);
 		UserLadder.Builder builder = UserLadder.newBuilder();
 		if (value != null && RedisService.parseJson(value, builder))
 			return builder.build();
@@ -190,7 +184,7 @@ public class UserLadderRedisService extends RedisService{
 	public List<UserLadder> getUserLadderList(long userId) {
 		List<UserLadder> userLadderList = new ArrayList<UserLadder>();
 		String key = RedisKey.LADDER_USERINFO_PREFIX + userId;
-		Map<String, String> map = this.hget(key);
+		Map<String, String> map = hget(key, userId);
 		for (String value : map.values()) {
 			UserLadder.Builder builder = UserLadder.newBuilder();
 			if (value != null && RedisService.parseJson(value, builder))
@@ -202,9 +196,9 @@ public class UserLadderRedisService extends RedisService{
 	
 	public void setUserLadder(UserLadder userLadder) {
 		String key = RedisKey.LADDER_USERINFO_PREFIX + userLadder.getTeam().getUser().getId();
-		this.hput(key, "" + userLadder.getType(), RedisService.formatJson(userLadder));
+		hput(key, "" + userLadder.getType(), RedisService.formatJson(userLadder), userLadder.getTeam().getUser().getId());
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userLadder.getTeam().getUser().getId());
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.LADDER_USERINFO_PREFIX, userLadder.getTeam().getUser().getId() + "#" + userLadder.getType());
 	}

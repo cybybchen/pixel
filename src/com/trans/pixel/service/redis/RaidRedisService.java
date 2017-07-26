@@ -35,13 +35,13 @@ public class RaidRedisService extends RedisService{
 
 	public ResponseRaidCommand.Builder getRaid(UserBean user){
 		ResponseRaidCommand.Builder builder = getRaidList();
-		Map<String, String> keyvalue = hget(RedisKey.USERRAID_PREFIX+user.getId());
+		Map<String, String> keyvalue = hget(RedisKey.USERRAID_PREFIX+user.getId(), user.getId());
 		if(keyvalue.isEmpty()) {
 			List<RaidBean> list = mapper.getRaids(user.getId());
 			for(RaidBean bean : list) {
 				keyvalue.put(bean.getId()+"", bean.toJson());
 			}
-			hputAll(RedisKey.USERRAID_PREFIX+user.getId(), keyvalue);
+			hputAll(RedisKey.USERRAID_PREFIX+user.getId(), keyvalue, user.getId());
 		}
 //		for(Raid.Builder raid : builder.getRaidBuilderList()) {
 		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
@@ -63,7 +63,7 @@ public class RaidRedisService extends RedisService{
 	}
 
 	public void saveRaid(UserBean user, Raid.Builder raid){
-		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()));
+		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()), user.getId());
 //		if(raid.getId() < 50)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());
 	}
@@ -72,7 +72,7 @@ public class RaidRedisService extends RedisService{
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX);
 	}
 	public void updateToDB(long userId, int id){
-		String value = hget(RedisKey.USERRAID_PREFIX+userId, id+"");
+		String value = hget(RedisKey.USERRAID_PREFIX+userId, id+"", userId);
 		RaidBean bean = RaidBean.fromJson(userId, value);
 		if(bean != null)
 			mapper.updateRaid(bean);

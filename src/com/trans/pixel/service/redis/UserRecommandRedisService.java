@@ -15,12 +15,12 @@ public class UserRecommandRedisService extends RedisService{
 	
 	public void saveRecommandInfo(long userId, String markId) {
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		this.lpush(key, markId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		lpush(key, markId, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public List<String> getRecomands(long userId) {
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		return this.lrange(key);
+		return lrange(key, userId);
 	}
 }

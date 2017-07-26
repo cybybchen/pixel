@@ -6,13 +6,10 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.MailConst;
@@ -22,16 +19,14 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.utils.DateUtil;
 
 @Repository
-public class MailRedisService {
-	@Resource
-	public RedisTemplate<String, String> redisTemplate;
+public class MailRedisService extends RedisService {//邮件因为要其他计算，并没有使用redisservice的方法，防止连接太多次
 	
 	public void addMail(final MailBean mail) {
-		redisTemplate.execute(new RedisCallback<MailBean>() {
+		getRedis(mail.getUserId()).execute(new RedisCallback<MailBean>() {
 			@Override
 			public MailBean doInRedis(RedisConnection conn)
 					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(mail.getUserId())
 						.boundHashOps(buildMailRedisKey(mail.getUserId(), mail.getType()));
 				int mailId = mail.getId();
 				while (bhOps.hasKey("" + mailId)) {
@@ -56,12 +51,12 @@ public class MailRedisService {
 
 	
 	public List<MailBean> getMailListByUserIdAndType(final long userId, final int type) {
-		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
+		return getRedis(userId).execute(new RedisCallback<List<MailBean>>() {
 			@Override
 			public List<MailBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(userId)
 						.boundHashOps(buildMailRedisKey(userId, type));
 				
 				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
@@ -85,63 +80,30 @@ public class MailRedisService {
 	}
 
 	public void deleteMail(final long userId, final int type, final int id) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildMailRedisKey(userId, type));
-				bhOps.delete("" + id);
-				return null;
-			}
-		});
+		hdelete(buildMailRedisKey(userId, type), "" + id, userId);
 	}
 	
 	public void updateMail(final MailBean mail) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildMailRedisKey(mail.getUserId(), mail.getType()));
-				bhOps.put("" + mail.getId(), mail.toJson());
-				return null;
-			}
-		});
+		hput(buildMailRedisKey(mail.getUserId(), mail.getType()), "" + mail.getId(), mail.toJson(), mail.getUserId());
 	}
 
 	public MailBean getMailByTypeAndId(final long userId, final int type, final int id) {
-		return redisTemplate.execute(new RedisCallback<MailBean>() {
-			@Override
-			public MailBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildMailRedisKey(userId, type));
-				return MailBean.fromJson(bhOps.get("" + id));
-			}
-		});
+		String value = hget(buildMailRedisKey(userId, type), "" + id, userId);
+		
+		return MailBean.fromJson(value);
 	}
 
 	public int getMailCountByUserIdAndType(final long userId, final int type) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
-			@Override
-			public Integer doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildMailRedisKey(userId, type));
-				
-				return bhOps.size().intValue();
-			}
-		});
+		return hlen(buildMailRedisKey(userId, type), userId).intValue();
 	}
 
 	public List<MailBean> getMailList(final long userId, final int type, final List<Integer> idList) {
-		return redisTemplate.execute(new RedisCallback<List<MailBean>>() {
+		return getRedis(userId).execute(new RedisCallback<List<MailBean>>() {
 			@Override
 			public List<MailBean> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				List<MailBean> mailList = new ArrayList<MailBean>();
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(userId)
 						.boundHashOps(buildMailRedisKey(userId, type));
 				
 				Iterator<Entry<String, String>> it= bhOps.entries().entrySet().iterator();
@@ -165,11 +127,11 @@ public class MailRedisService {
 	}
 	
 	public int deleteMail(final long userId, final int type, final List<Integer> idList) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
+		return getRedis(userId).execute(new RedisCallback<Integer>() {
 			@Override
 			public Integer doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
+				BoundHashOperations<String, String, String> bhOps = getRedis(userId)
 						.boundHashOps(buildMailRedisKey(userId, type));;
 				int deleteCount = 0;
 				for (Integer i : idList) {
@@ -197,16 +159,7 @@ public class MailRedisService {
 	}
 	
 	public int getNextMailIdByUserIdAndType(final long userId, final int type) {
-		return redisTemplate.execute(new RedisCallback<Integer>() {
-			@Override
-			public Integer doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildMailRedisKey(userId, type));
-
-				return (int)(bhOps.size() + 1);
-			}
-		});
+		return hlen(buildMailRedisKey(userId, type), userId).intValue() + 1;
 	}
 	
 	private String buildMailRedisKey(long userId, int type) {

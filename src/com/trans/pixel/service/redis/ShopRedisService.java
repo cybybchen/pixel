@@ -61,7 +61,7 @@ public class ShopRedisService extends RedisService{
 	
 	//普通商店
 	public ShopList getDailyShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "DAILYSHOP");
+		String value = this.hget(USERDATA+user.getId(), "DAILYSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -74,7 +74,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveDailyShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "DAILYSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "DAILYSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public ShopList.Builder buildComms(UserBean user, ShopWill shopwill, Map<Integer, CommodityList.Builder> commsmap){
@@ -470,7 +470,7 @@ public class ShopRedisService extends RedisService{
 
 	//公会商店
 	public ShopList getUnionShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "UNIONSHOP");
+		String value = this.hget(USERDATA+user.getId(), "UNIONSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -483,7 +483,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveUnionShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "UNIONSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "UNIONSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getUnionShopEndTime(){
@@ -558,7 +558,7 @@ public class ShopRedisService extends RedisService{
 
 	//挂机副本商店
 	public ShopList getRaidShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "RAIDSHOP");
+		String value = this.hget(USERDATA+user.getId(), "RAIDSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -571,7 +571,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveRaidShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "RAIDSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "RAIDSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getRaidShopEndTime(){
@@ -646,7 +646,7 @@ public class ShopRedisService extends RedisService{
 
 	//挂机PVP商店
 	public ShopList getPVPShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "PVPSHOP");
+		String value = this.hget(USERDATA+user.getId(), "PVPSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -659,7 +659,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void savePVPShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "PVPSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "PVPSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getPVPShopEndTime(){
@@ -795,7 +795,7 @@ public class ShopRedisService extends RedisService{
 
 	//远征商店
 	public ShopList getExpeditionShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "EXPEDITIONSHOP");
+		String value = this.hget(USERDATA+user.getId(), "EXPEDITIONSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -808,7 +808,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveExpeditionShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "EXPEDITIONSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "EXPEDITIONSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getExpeditionShopEndTime(){
@@ -883,7 +883,7 @@ public class ShopRedisService extends RedisService{
 
 	//天梯商店
 	public ShopList getLadderShop(UserBean user) {
-		String value = this.hget(USERDATA+user.getId(), "LADDERSHOP");
+		String value = this.hget(USERDATA+user.getId(), "LADDERSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -896,7 +896,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveLadderShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "LADDERSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "LADDERSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getLadderShopEndTime(){
@@ -1032,7 +1032,7 @@ public class ShopRedisService extends RedisService{
 
 	//战斗塔商店
 	public ShopList getBattletowerShop(UserBean user, UserBattletowerBean ubt) {
-		String value = this.hget(USERDATA+user.getId(), "BATTLETOWERSHOP");
+		String value = this.hget(USERDATA+user.getId(), "BATTLETOWERSHOP", user.getId());
 		ShopList.Builder builder = ShopList.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			return builder.build();
@@ -1045,7 +1045,7 @@ public class ShopRedisService extends RedisService{
 	
 	public void saveBattletowerShop(ShopList shoplist, UserBean user) {
 		if(shoplist.getItemsCount() > 0)
-			this.hput(USERDATA+user.getId(), "BATTLETOWERSHOP", formatJson(shoplist));
+			this.hput(USERDATA+user.getId(), "BATTLETOWERSHOP", formatJson(shoplist), user.getId());
 	}
 	
 	public long getBattletowerShopEndTime(){

@@ -3,8 +3,6 @@ package com.trans.pixel.service.redis;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Service;
@@ -96,16 +94,16 @@ public class RechargeRedisService extends RedisService {
 	
 	public void addUserRecharge(long userId, MultiReward rewards) {
 		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
-		this.set(key, formatJson(rewards));
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1HOUR);
+		this.set(key, formatJson(rewards), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1HOUR, userId);
 	}
 	
 	public MultiReward getUserRecharge(long userId) {
 		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
-		String value = get(key);
+		String value = get(key, userId);
 		if (value == null)
 			return null;
-		this.delete(key);//查询之后删除，防止又一次查询
+		delete(key, userId);//查询之后删除，防止又一次查询
 		MultiReward.Builder builder = MultiReward.newBuilder();
 		if(parseJson(value, builder))
 			return builder.build();

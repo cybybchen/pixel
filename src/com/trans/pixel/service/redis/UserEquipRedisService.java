@@ -4,15 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -21,43 +13,24 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 
 @Repository
 public class UserEquipRedisService extends RedisService{
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
 	
 	public UserEquipBean selectUserEquip(final long userId, final int equipId) {
-		return redisTemplate.execute(new RedisCallback<UserEquipBean>() {
-			@Override
-			public UserEquipBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId;
 				
 				
-				return UserEquipBean.fromJson(bhOps.get("" + equipId));
-			}
-		});
+		return UserEquipBean.fromJson(hget(key, "" + equipId, userId));
 	}
 
 	public boolean existUserEquip(long userId) {
-		return exists(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+		return exists(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId, userId);
 	}
 	
 	public void updateUserEquip(final UserEquipBean userEquip) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userEquip.getUserId());
+		String key = RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userEquip.getUserId();
 				
+		hput(key,"" + userEquip.getEquipId(), userEquip.toJson(), userEquip.getUserId());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userEquip.getUserId());
 				
-				bhOps.put("" + userEquip.getEquipId(), userEquip.toJson());
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				
-				return null;
-			}
-		});
-
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_EQUIP_PREFIX, userEquip.getUserId()+"#"+userEquip.getEquipId());
 	}
 	
@@ -66,42 +39,27 @@ public class UserEquipRedisService extends RedisService{
 	}
 	
 	public void updateUserEquipList(final List<UserEquipBean> userEquipList, final long userId) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId;
 				
-				for (UserEquipBean userEquip : userEquipList) {
-					bhOps.put("" + userEquip.getEquipId(), userEquip.toJson());
-				}
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
+		for (UserEquipBean userEquip : userEquipList) {
+			hput(key, "" + userEquip.getEquipId(), userEquip.toJson(), userId);
+		}
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 				
-				return null;
-			}
-		});
 	}
 	
 	public List<UserEquipBean> selectUserEquipList(final long userId) {
-		return redisTemplate.execute(new RedisCallback<List<UserEquipBean>>() {
-			@Override
-			public List<UserEquipBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId);
+		String key = RedisKey.PREFIX + RedisKey.USER_EQUIP_PREFIX + userId;
 				
-				List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-				Iterator<Entry<String, String>> ite = bhOps.entries().entrySet().iterator();
-				while (ite.hasNext()) {
-					Entry<String, String> entry = ite.next();
-					UserEquipBean userEquip = UserEquipBean.fromJson(entry.getValue());
-					if (userEquip != null)
-						userEquipList.add(userEquip);
-				}
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return userEquipList;
-			}
-		});
+		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
+		Iterator<Entry<String, String>> ite = hget(key, userId).entrySet().iterator();
+		while (ite.hasNext()) {
+			Entry<String, String> entry = ite.next();
+			UserEquipBean userEquip = UserEquipBean.fromJson(entry.getValue());
+			if (userEquip != null)
+				userEquipList.add(userEquip);
+		}
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		return userEquipList;
 	}
 }

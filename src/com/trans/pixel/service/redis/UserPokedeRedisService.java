@@ -20,23 +20,23 @@ public class UserPokedeRedisService extends RedisService {
 	
 	public void updateUserPokede(final UserPokedeBean userPokede, final long userId) {
 		String key = RedisKey.USER_POKEDE_PREFIX + userId;
-		hput(key, "" + userPokede.getHeroId(), JSONObject.fromObject(userPokede).toString());
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "" + userPokede.getHeroId(), JSONObject.fromObject(userPokede).toString(), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public UserPokedeBean selectUserPokede(final long userId, final int heroId) {
-		String value = hget(RedisKey.USER_POKEDE_PREFIX + userId, "" + heroId);
+		String value = hget(RedisKey.USER_POKEDE_PREFIX + userId, "" + heroId, userId);
 		if (value == null)
 			return null;
 		
-		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 		return UserPokedeBean.fromJson(value);
 	}
 	
 	public List<UserPokedeBean> selectUserPokedeList(final long userId) {
 		List<UserPokedeBean> userPokedeList = new ArrayList<UserPokedeBean>();
-		Iterator<Entry<String, String>> it = this.hget(RedisKey.USER_POKEDE_PREFIX + userId).entrySet().iterator();
+		Iterator<Entry<String, String>> it = hget(RedisKey.USER_POKEDE_PREFIX + userId, userId).entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, String> entry = it.next();
 			JSONObject json = JSONObject.fromObject(entry.getValue());
@@ -45,19 +45,19 @@ public class UserPokedeRedisService extends RedisService {
 				userPokedeList.add(userPokede);
 		}
 		
-		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 		return userPokedeList;
 	}
 	
 	public void updateUserPokedeList(final List<UserPokedeBean> userPokedeList, final long userId) {
 		Map<String, String> map = convertUserPokedeListToMap(userPokedeList);
-		this.hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map);
-		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hputAll(RedisKey.USER_POKEDE_PREFIX + userId, map, userId);
+		expire(RedisKey.USER_POKEDE_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public boolean isExistPokedeKey(final long userId) {
-		return exists(RedisKey.USER_POKEDE_PREFIX + userId);
+		return exists(RedisKey.USER_POKEDE_PREFIX + userId, userId);
 	}
 	
 	private Map<String, String> convertUserPokedeListToMap(List<UserPokedeBean> userPokedeList) {

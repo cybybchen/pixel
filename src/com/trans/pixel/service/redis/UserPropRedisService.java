@@ -1,18 +1,12 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
-
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -21,41 +15,19 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 
 @Repository
 public class UserPropRedisService extends RedisService{
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
-	
+
 	public UserPropBean selectUserProp(final long userId, final int propId) {
-		return redisTemplate.execute(new RedisCallback<UserPropBean>() {
-			@Override
-			public UserPropBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUserPropRedisKey(userId));
+		String key = buildUserPropRedisKey(userId);
 				
-				
-				return UserPropBean.fromJson(bhOps.get("" + propId));
-			}
-		});
+		return UserPropBean.fromJson(hget(key, "" + propId, userId));
 	}
 	
 	public void updateUserProp(final UserPropBean userProp) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUserPropRedisKey(userProp.getUserId()));
+		String key = buildUserPropRedisKey(userProp.getUserId());
 				
+		hput(key, "" + userProp.getPropId(), userProp.toJson(), userProp.getUserId());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userProp.getUserId());
 				
-				bhOps.put("" + userProp.getPropId(), userProp.toJson());
-				// if (!userProp.getExpiredTime().equals(""))
-				// 	bhOps.expireAt(DateUtil.getDate(userProp.getExpiredTime()));
-				// else
-					bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				
-				return null;
-			}
-		});
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_PROP_PREFIX, userProp.getUserId()+"#"+userProp.getPropId());
 	}
 	
@@ -64,43 +36,34 @@ public class UserPropRedisService extends RedisService{
 	}
 	
 	public void updateUserPropList(final List<UserPropBean> userPropList, final long userId) {
-		redisTemplate.execute(new RedisCallback<Object>() {
-			@Override
-			public Object doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUserPropRedisKey(userId));
-				
-				for (UserPropBean userProp : userPropList) {
-					bhOps.put("" + userProp.getPropId(), userProp.toJson());
-				}
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				
-				return null;
-			}
-		});
+		String key = buildUserPropRedisKey(userId);
+		Map<String, String> map = convertUserPropMap(userPropList);	
+		hputAll(key, map, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
+	
+	private Map<String, String> convertUserPropMap(List<UserPropBean> propList) {
+		Map<String, String> map = new HashMap<String, String>();
+		for (UserPropBean prop : propList)
+			map.put("" + prop.getPropId(), prop.toJson());
+		
+		return map;
 	}
 	
 	public List<UserPropBean> selectUserPropList(final long userId) {
-		return redisTemplate.execute(new RedisCallback<List<UserPropBean>>() {
-			@Override
-			public List<UserPropBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> bhOps = redisTemplate
-						.boundHashOps(buildUserPropRedisKey(userId));
+		String key = buildUserPropRedisKey(userId);
 				
-				List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
-				Iterator<Entry<String, String>> ite = bhOps.entries().entrySet().iterator();
-				while (ite.hasNext()) {
-					Entry<String, String> entry = ite.next();
-					UserPropBean userProp = UserPropBean.fromJson(entry.getValue());
-					if (userProp != null)
-						userPropList.add(userProp);
-				}
-				bhOps.expire(RedisExpiredConst.EXPIRED_USERINFO_DAYS, TimeUnit.DAYS);
-				return userPropList;
-			}
-		});
+		List<UserPropBean> userPropList = new ArrayList<UserPropBean>();
+		Iterator<Entry<String, String>> ite = hget(key, userId).entrySet().iterator();
+		while (ite.hasNext()) {
+			Entry<String, String> entry = ite.next();
+			UserPropBean userProp = UserPropBean.fromJson(entry.getValue());
+			if (userProp != null)
+				userPropList.add(userProp);
+		}
+		
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		return userPropList;
 	}
 	
 	private String buildUserPropRedisKey(long userId) {

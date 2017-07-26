@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -19,6 +20,11 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.BoundValueOperations;
+import org.springframework.data.redis.core.RedisCallback;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.context.ContextLoader;
 
 import com.trans.pixel.controller.chain.PixelRequest;
@@ -54,6 +60,12 @@ public class ChatAction {
 
 	private static final UserService userService = (UserService) ContextLoader
 			.getCurrentWebApplicationContext().getBean("userService");
+//	@Resource(name = "redisTemplate")
+	private RedisTemplate<String, String> redis = (RedisTemplate<String, String>) ContextLoader
+			.getCurrentWebApplicationContext().getBean("redisTemplate");
+//	@Resource(name = "redisTemplate1")
+	private RedisTemplate<String, String> redis1 = (RedisTemplate<String, String>) ContextLoader
+			.getCurrentWebApplicationContext().getBean("redisTemplate1");
 
 	@OnOpen
 	// public void start(@PathParam("relationId") String relationId,
@@ -61,6 +73,7 @@ public class ChatAction {
 	// config) {
 	public void start(@PathParam("userId") long userId, Session session) {
 		log.debug("" + userId);
+		
 		this.session = session;
 		UserBean user = userService.getUserOther(userId);
 		if (user != null) {
@@ -77,8 +90,42 @@ public class ChatAction {
 		String message = String.format("%s %s", nickname,
 				" :from websocket 上线了...");
 		broadcast(message, serverId);
+		
+		long i = 0;
+		while (true) {
+			try {
+				log.debug("i is:" + i);
+				set("haha", "" + i, i);
+				++i;
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
+	private void set(final String key, final String value, final long i) {
+    	getRedis(i).execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundValueOperations<String, String> Ops = getRedis(i)
+						.boundValueOps(key);
+				
+				Ops.set(value);
+				return null;
+			}
+		});
+    }
+	
+	private RedisTemplate<String, String> getRedis(long i) {
+		if (i % 2 == 0)
+			return redis;
+		
+		return redis1;
+	}
+	
 	@OnClose
 	public void end(@PathParam("userId") long userId, Session session) {
 		onlineUsers.remove(this);

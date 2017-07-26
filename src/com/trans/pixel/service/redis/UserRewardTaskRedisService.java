@@ -20,8 +20,8 @@ public class UserRewardTaskRedisService extends RedisService {
 ////			if(!deleteUserRewardTask(userId, ut))
 //				this.hput(key, "" + ut.getIndex(), formatJson(ut));
 //		}else
-			this.hput(key, "" + ut.getIndex(), formatJson(ut));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+			this.hput(key, "" + ut.getIndex(), formatJson(ut), userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 //		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARD_TASK_PREFIX, userId + "#" + ut.getIndex());
 	}
@@ -30,13 +30,13 @@ public class UserRewardTaskRedisService extends RedisService {
 //		if(ut.getIndex() < 20)
 //			return false;
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		hdelete(key, "" + ut.getIndex());
+		hdelete(key, "" + ut.getIndex(), userId);
 		return true;
 	}
 	
 	public UserRewardTask.Builder getUserRewardTask(long userId, int index) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		String value = hget(key, "" + index);
+		String value = hget(key, "" + index, userId);
 		UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder;
@@ -46,7 +46,7 @@ public class UserRewardTaskRedisService extends RedisService {
 	
 	public Map<Integer, UserRewardTask> getUserRewardTask(long userId) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
-		Map<String,String> map = hget(key);
+		Map<String,String> map = hget(key, userId);
 		Map<Integer, UserRewardTask> userRewardTaskMap = new TreeMap<Integer, UserRewardTask>();
 //		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 //		while (it.hasNext()) {
@@ -63,8 +63,8 @@ public class UserRewardTaskRedisService extends RedisService {
 	public void updateUserRewardTaskList(long userId, List<UserRewardTask> utList) {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		Map<String,String> map = composeUserRewardTaskMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 //	public boolean isExistRewardTaskKey(final long userId) {

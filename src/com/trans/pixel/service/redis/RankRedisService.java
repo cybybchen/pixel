@@ -31,41 +31,39 @@ public class RankRedisService extends RedisService{
 	 * return -1 when cannot find in rank
 	 */
 	public long getMyZhanliRank(final UserBean user) {
-		Long rank = this.zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
+		Long rank = zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
 		if(rank == null)
 			rank = -1L;
 		return rank;
 	}
 	
 	public long getMyZhanliRankByNodelete(final UserBean user) {
-		Long rank = this.zrank(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), user.getId()+"");
+		Long rank = zrank(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), user.getId()+"");
 		if(rank == null)
 			rank = -1L;
 		return rank;
 	}
 	
 	public List<UserInfo> getZhanliRanks(final UserBean user, long start, long end) {
-		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
+		Set<TypedTuple<String>> ranks = zrangewithscore(RedisKey.ZHANLI_RANK+user.getServerId(), start, end);
 		List<String> userIds = new ArrayList<String>();
 		for(TypedTuple<String> rank : ranks){
 			userIds.add(rank.getValue());
 		}
 		return userRedisService.getCaches(user.getServerId(), userIds);
-//		return userService.getCaches(, ranks);
 	}
 	
 	public List<UserInfo> getZhanliRanksByNodelete(final UserBean user, long start, long end) {
-		Set<TypedTuple<String>> ranks = this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), start, end);
+		Set<TypedTuple<String>> ranks = zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE+user.getServerId(), start, end);
 		List<String> userIds = new ArrayList<String>();
 		for(TypedTuple<String> rank : ranks){
 			userIds.add(rank.getValue());
 		}
 		return userRedisService.getCaches(user.getServerId(), userIds);
-//		return userService.getCaches(, ranks);
 	}
 	
 	public Set<TypedTuple<String>> getZhanliRanks(final int serverId, long start, long end) {
-		return this.zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE + serverId, start, end);
+		return zrangewithscore(RedisKey.ZHANLI_RANK_NODELETE + serverId, start, end);
 	}
 	
 	public Set<TypedTuple<String>> getRankList(int serverId, int type, int start, int end) {

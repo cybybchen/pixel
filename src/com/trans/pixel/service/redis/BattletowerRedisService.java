@@ -10,9 +10,10 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.protoc.UnionProto.TowerReward;
 import com.trans.pixel.protoc.UnionProto.TowerRewardList;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class BattletowerRedisService extends RedisService {
+public class BattletowerRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(BattletowerRedisService.class);
 	private static final String TOWERREWARD1_FILE_NAME = "lol_towerreward1.xml";
 	private static final String TOWERREWARD2_FILE_NAME = "lol_towerreward2.xml";
@@ -25,7 +26,7 @@ public class BattletowerRedisService extends RedisService {
 			return config.get("" + floor);
 		} else {
 			TowerReward.Builder builder = TowerReward.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -38,7 +39,7 @@ public class BattletowerRedisService extends RedisService {
 			Map<String, TowerReward> map = buildTowerReward1Config();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TowerReward> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.BATTLETOWER_REWARD1_KEY, redismap);
 			return map;
@@ -46,7 +47,7 @@ public class BattletowerRedisService extends RedisService {
 			Map<String, TowerReward> map = new HashMap<String, TowerReward>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				TowerReward.Builder builder = TowerReward.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -54,9 +55,9 @@ public class BattletowerRedisService extends RedisService {
 	}
 	
 	private Map<String, TowerReward> buildTowerReward1Config(){
-		String xml = ReadConfig(TOWERREWARD1_FILE_NAME);
+		String xml = RedisService.ReadConfig(TOWERREWARD1_FILE_NAME);
 		TowerRewardList.Builder builder = TowerRewardList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TOWERREWARD1_FILE_NAME);
 			return null;
 		}
@@ -76,7 +77,7 @@ public class BattletowerRedisService extends RedisService {
 			return config.get("" + floor);
 		} else {
 			TowerReward.Builder builder = TowerReward.newBuilder();
-			if(parseJson(value, builder))
+			if(RedisService.parseJson(value, builder))
 				return builder.build();
 		}
 		
@@ -89,7 +90,7 @@ public class BattletowerRedisService extends RedisService {
 			Map<String, TowerReward> map = buildTowerReward2Config();
 			Map<String, String> redismap = new HashMap<String, String>();
 			for(Entry<String, TowerReward> entry : map.entrySet()){
-				redismap.put(entry.getKey(), formatJson(entry.getValue()));
+				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
 			}
 			hputAll(RedisKey.BATTLETOWER_REWARD2_KEY, redismap);
 			return map;
@@ -97,7 +98,7 @@ public class BattletowerRedisService extends RedisService {
 			Map<String, TowerReward> map = new HashMap<String, TowerReward>();
 			for(Entry<String, String> entry : keyvalue.entrySet()){
 				TowerReward.Builder builder = TowerReward.newBuilder();
-				if(parseJson(entry.getValue(), builder))
+				if(RedisService.parseJson(entry.getValue(), builder))
 					map.put(entry.getKey(), builder.build());
 			}
 			return map;
@@ -105,9 +106,9 @@ public class BattletowerRedisService extends RedisService {
 	}
 	
 	private Map<String, TowerReward> buildTowerReward2Config(){
-		String xml = ReadConfig(TOWERREWARD2_FILE_NAME);
+		String xml = RedisService.ReadConfig(TOWERREWARD2_FILE_NAME);
 		TowerRewardList.Builder builder = TowerRewardList.newBuilder();
-		if(!parseXml(xml, builder)){
+		if(!RedisService.parseXml(xml, builder)){
 			logger.warn("cannot build " + TOWERREWARD2_FILE_NAME);
 			return null;
 		}

@@ -21,15 +21,15 @@ public class UserTalentRedisService extends RedisService {
 
 	public void updateUserTalent(long userId, UserTalent ut) {
 		String key = RedisKey.USER_TALENT_PREFIX + userId;
-		this.hput(key, "" + ut.getId(), formatJson(ut));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hput(key, "" + ut.getId(), formatJson(ut), userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENT_PREFIX, userId + "#" + ut.getId());
 	}
 	
 	public UserTalent.Builder getUserTalent(long userId, int id) {
 		String key = RedisKey.USER_TALENT_PREFIX + userId;
-		String value = hget(key, "" + id);
+		String value = hget(key, "" + id, userId);
 		UserTalent.Builder builder = UserTalent.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder;
@@ -39,7 +39,7 @@ public class UserTalentRedisService extends RedisService {
 	
 	public List<UserTalent.Builder> getUserTalentList(UserBean user) {
 		String key = RedisKey.USER_TALENT_PREFIX + user.getId();
-		Map<String,String> map = hget(key);
+		Map<String,String> map = hget(key, user.getId());
 		List<UserTalent.Builder> userTalentList = new ArrayList<UserTalent.Builder>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -50,19 +50,19 @@ public class UserTalentRedisService extends RedisService {
 			}
 		}
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 		return userTalentList;
 	}
 	
 	public void updateUserTalentList(long userId, List<UserTalent> utList) {
 		String key = RedisKey.USER_TALENT_PREFIX + userId;
 		Map<String,String> map = composeUserTalentMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public boolean isExistTalentKey(final long userId) {
-		return exists(RedisKey.USER_TALENT_PREFIX + userId);
+		return exists(RedisKey.USER_TALENT_PREFIX + userId, userId);
 	}
 	
 	public String popTalentDBKey(){
@@ -84,15 +84,15 @@ public class UserTalentRedisService extends RedisService {
 	
 	public void updateUserTalentSkill(long userId, UserTalentSkill ut) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
-		this.hput(key, "" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut));
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hput(key, "" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId(), formatJson(ut), userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENTSKILL_PREFIX, userId + "#" + ut.getTalentId() + "-" + ut.getOrderId() + "-" + ut.getSkillId());
 	}
 	
 	public UserTalentSkill getUserTalentSkill(long userId, int talentId, int orderId, int skillId) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
-		String value = hget(key, "" + talentId + "-" + orderId + "-" + skillId);
+		String value = hget(key, "" + talentId + "-" + orderId + "-" + skillId, userId);
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder.build();
@@ -102,7 +102,7 @@ public class UserTalentRedisService extends RedisService {
 	
 	public UserTalentSkill getUserTalentSkill(long userId, String talentInfo) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
-		String value = hget(key, talentInfo);
+		String value = hget(key, talentInfo, userId);
 		UserTalentSkill.Builder builder = UserTalentSkill.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder.build();
@@ -112,7 +112,7 @@ public class UserTalentRedisService extends RedisService {
 	
 	public List<UserTalentSkill> getUserTalentSkillList(long userId) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
-		Map<String,String> map = hget(key);
+		Map<String,String> map = hget(key, userId);
 		List<UserTalentSkill> userTalentSkillList = new ArrayList<UserTalentSkill>();
 		Iterator<Entry<String, String>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -122,22 +122,22 @@ public class UserTalentRedisService extends RedisService {
 				userTalentSkillList.add(builder.build());
 		}
 		
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		return userTalentSkillList;
 	}
 	
 	public void updateUserTalentSkillBeanList(long userId, List<UserTalentSkillBean> utList) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
 		Map<String,String> map = composeUserTalentSkillBeanMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public void updateUserTalentSkillList(long userId, List<UserTalentSkill> utList) {
 		String key = RedisKey.USER_TALENTSKILL_PREFIX + userId;
 		Map<String,String> map = composeUserTalentSkillMap(utList);
-		this.hputAll(key, map);
-		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		this.hputAll(key, map, userId);
+		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		for (UserTalentSkill uts : utList) {
 			sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_TALENTSKILL_PREFIX, userId + "#" + uts.getTalentId() + "-" + uts.getOrderId() + "-" + uts.getSkillId());
 		}

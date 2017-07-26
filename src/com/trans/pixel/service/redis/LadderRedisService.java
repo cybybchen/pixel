@@ -116,15 +116,27 @@ public class LadderRedisService extends CacheService{
 	
 	public List<UserRankBean> getRankList(final int serverId, final int start, final int end) {
 		String key = buildRankRedisKey(serverId);
-		Map<String, String> map = hget(key);	
+		Map<String, String> map = hget(key);
+		List<Long> userIds = new ArrayList<Long>();
+		for (String value : map.values()) {
+			UserRankBean userRank = UserRankBean.fromJson(value);
+			if (userRank != null) {
+				userIds.add(userRank.getUserId());
+			}
+		}
+		List<UserInfo> userCaches = userService.getCaches(serverId, userIds);
 		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
 		for (int i = start; i <= end; ++i) {
 			UserRankBean userRank = UserRankBean.fromJson(map.get("" + i));
 			if (userRank != null) {
 				if (userRank.getUserId() > 0) {
-					UserInfo cache = userService.getCache(serverId, userRank.getUserId());
-					if (cache != null)
-						userRank.initByUserCache(cache);
+					for (UserInfo cache : userCaches) {
+//					UserInfo cache = userService.getCache(serverId, userRank.getUserId());
+						if (cache != null && cache.getId() == userRank.getUserId()) {
+							userRank.initByUserCache(cache);
+							break;
+						}
+					}
 				}
 				rankList.add(userRank);
 			}

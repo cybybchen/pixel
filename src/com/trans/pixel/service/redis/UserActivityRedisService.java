@@ -15,16 +15,16 @@ public class UserActivityRedisService extends RedisService {
 
 	public void updateUserRichang(long userId, UserRichang ur, int cycle, String endTime) {
 		String key = buildRichangRedisKey(ur.getType(), userId);
-		this.set(key, formatJson(ur));
+		this.set(key, formatJson(ur), userId);
 		if (cycle == 1)
-			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
+			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()), userId);
 		else
-			this.expireAt(key, DateUtil.getDate(endTime));
+			this.expireAt(key, DateUtil.getDate(endTime), userId);
 	}
 	
 	public UserRichang getUserRichang(long userId, int type) {
 		String key = buildRichangRedisKey(type, userId);
-		String value = get(key);
+		String value = get(key, userId);
 		UserRichang.Builder builder = UserRichang.newBuilder();
 		if(value!= null && parseJson(value, builder))
 			return builder.build();
@@ -39,11 +39,11 @@ public class UserActivityRedisService extends RedisService {
 	//kaifu activity
 	public void updateUserKaifu(long userId, UserKaifu uk, int cycle, int lastTime) {
 		String key = buildKaifuRedisKey(uk.getType(), userId);
-		this.set(key, formatJson(uk));
+		set(key, formatJson(uk), userId);
 		if (cycle == 1)
-			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
+			expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()), userId);
 		else
-			this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+			expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY, userId);
 		
 		if (lastTime == -1 && cycle == 0)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_ACTIVITY_KAIFU_PREFIX, userId+"#"+uk.getType());
@@ -55,7 +55,7 @@ public class UserActivityRedisService extends RedisService {
 	
 	public UserKaifu getUserKaifu(long userId, int type) {
 		String key = buildKaifuRedisKey(type, userId);
-		String value = get(key);
+		String value = get(key, userId);
 		UserKaifu.Builder builder = UserKaifu.newBuilder();
 		if (value != null && parseJson(value, builder))
 			return builder.build();

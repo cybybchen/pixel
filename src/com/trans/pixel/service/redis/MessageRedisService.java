@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.annotation.Resource;
-
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
@@ -20,69 +17,47 @@ import com.trans.pixel.model.MessageBoardBean;
 
 @Repository
 public class MessageRedisService extends RedisService {
-	@Resource
-	private RedisTemplate<String, String> redisTemplate;
-	@Resource
-	private UserRedisService userRedisService;
 	
 	public List<MessageBoardBean> getMessageBoardList(final int serverId, final long userTimeStamp) {
-		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
-			@Override
-			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
-				
-				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
-				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
-					if (messageBoardBean != null) {
-//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-//						if(userInfo != null)
-//							messageBoardBean.setVip(userInfo.getVip());
-						messageBoardList.add(messageBoardBean);
-					}
-				}
-				
-				return messageBoardList;
+		String key = buildMessageBoardKeyRedisKey(serverId);		
+		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+		Set<TypedTuple<String>> messageBoarSet = zrangewithscore(key, MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
+		for (TypedTuple<String> messageBoard : messageBoarSet) {
+			MessageBoardBean messageBoardBean = getMessageBoard(serverId, messageBoard.getValue());
+			if (messageBoardBean != null) {
+				messageBoardList.add(messageBoardBean);
 			}
-		});
+		}
+		
+		return messageBoardList;
 	}
 	
 	private MessageBoardBean getMessageBoard(int serverId, String id) {
-		String value = this.hget(buildMessageBoardValueRedisKey(serverId), id);
+		String value = hget(buildMessageBoardValueRedisKey(serverId), id);
 		return MessageBoardBean.fromJson(value);
 	}
 	
 	public MessageBoardBean getMessageBoard(final int serverId, final long timeStamp) {
-		return redisTemplate.execute(new RedisCallback<MessageBoardBean>() {
-			@Override
-			public MessageBoardBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
+		String key = buildMessageBoardKeyRedisKey(serverId);
 				
-				Set<String> messageBoardSet = bzOps.rangeByScore(timeStamp, timeStamp);
-				for (String messageBoard : messageBoardSet) {
-					return getMessageBoard(serverId, messageBoard);
-				}
-				
-				return null;
-			}
-		});
+		Set<String> messageBoardSet = zrangeByScore(key, timeStamp, timeStamp);
+		for (String messageBoard : messageBoardSet) {
+			return getMessageBoard(serverId, messageBoard);
+		}
+		
+		return null;
 	}
 	
 	public MessageBoardBean getMessageBoardById(final int serverId, final String id) {
-		return MessageBoardBean.fromJson(this.hget(buildMessageBoardValueRedisKey(serverId), id));
+		return MessageBoardBean.fromJson(hget(buildMessageBoardValueRedisKey(serverId), id));
 	}
 	
 	public boolean addMessageBoard(final int serverId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return getRedis(0).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
+				BoundZSetOperations<String, String> bzOps = getRedis(0)
 						.boundZSetOps(buildMessageBoardKeyRedisKey(serverId));
 				
 
@@ -119,25 +94,17 @@ public class MessageRedisService extends RedisService {
 	
 	//union message
 	public List<MessageBoardBean> getMessageBoardListOfUnion(final int unionId, final long userTimeStamp) {
-		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
-			@Override
-			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
+		String key = buildUnionMessageBoardRedisKey(unionId);
 				
-				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-//				Set<TypedTuple<String>> messageBoarSet = bzOps.rangeByScoreWithScores(userTimeStamp, System.currentTimeMillis());
-				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
-				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					MessageBoardBean messageBoardBean = getUnionMessageBoard(unionId, messageBoard.getValue());
-					if (messageBoardBean != null)
-						messageBoardList.add(messageBoardBean);
-				}
-				
-				return messageBoardList;
-			}
-		});
+		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+		Set<TypedTuple<String>> messageBoarSet = zrangewithscore(key, MessageConst.MESSAGE_LIST_START, MessageConst.MESSAGE_LIST_END);
+		for (TypedTuple<String> messageBoard : messageBoarSet) {
+			MessageBoardBean messageBoardBean = getUnionMessageBoard(unionId, messageBoard.getValue());
+			if (messageBoardBean != null)
+				messageBoardList.add(messageBoardBean);
+		}
+		
+		return messageBoardList;
 	}
 	
 	private MessageBoardBean getUnionMessageBoard(int unionId, String id) {
@@ -146,29 +113,22 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	public MessageBoardBean getMessageBoardOfUnion(final int unionId, final long timeStamp) {
-		return redisTemplate.execute(new RedisCallback<MessageBoardBean>() {
-			@Override
-			public MessageBoardBean doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
+		String key = buildUnionMessageBoardRedisKey(unionId);
 				
-				Set<String> messageBoardSet = bzOps.rangeByScore(timeStamp, timeStamp);
-				for (String messageBoard : messageBoardSet) {
-					return getUnionMessageBoard(unionId, messageBoard);
-				}
-				
-				return null;
-			}
-		});
+		Set<String> messageBoardSet = zrangeByScore(key, timeStamp, timeStamp);
+		for (String messageBoard : messageBoardSet) {
+			return getUnionMessageBoard(unionId, messageBoard);
+		}
+		
+		return null;
 	}
 	
 	public boolean addMessageBoardOfUnion(final int unionId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return getRedis(0).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
+				BoundZSetOperations<String, String> bzOps = getRedis(0)
 						.boundZSetOps(buildUnionMessageBoardRedisKey(unionId));
 				
 				if (bzOps.size() >= MessageConst.MESSAGE_BOARD_MAX) {
@@ -206,11 +166,11 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	public boolean addHeroMessageBoardNormal(final int serverId, final int itemId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return getRedis(0).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
+				BoundZSetOperations<String, String> bzOps = getRedis(0)
 						.boundZSetOps(buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId));
 				
 
@@ -227,11 +187,11 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	public boolean addHeroMessageBoardTop(final int serverId, final int itemId, final MessageBoardBean messageBoard) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return getRedis(0).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
+				BoundZSetOperations<String, String> bzOps = getRedis(0)
 						.boundZSetOps(buildHeroMessageBoardTopKeyRedisKey(serverId, itemId));
 				
 				boolean ret = bzOps.add("" + messageBoard.getId(), messageBoard.getReplyCount());
@@ -265,53 +225,33 @@ public class MessageRedisService extends RedisService {
 	}
 	
 	public List<MessageBoardBean> getHeroMessageBoardList_normal(final int serverId, final int itemId) {
-		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
-			@Override
-			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId));
+		String key = buildHeroMessageBoardNormalKeyRedisKey(serverId, itemId);
 				
-				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(0, -1);
-				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
-					if (messageBoardBean != null) {
-//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-//						if(userInfo != null)
-//							messageBoardBean.setVip(userInfo.getVip());
-						messageBoardList.add(messageBoardBean);
-					}
-				}
-				
-				return messageBoardList;
+		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+		Set<TypedTuple<String>> messageBoarSet = zrangewithscore(key, 0, -1);
+		for (TypedTuple<String> messageBoard : messageBoarSet) {
+			MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
+			if (messageBoardBean != null) {
+				messageBoardList.add(messageBoardBean);
 			}
-		});
+		}
+		
+		return messageBoardList;
 	}
 	
 	public List<MessageBoardBean> getHeroMessageBoardList_top(final int serverId, final int itemId) {
-		return redisTemplate.execute(new RedisCallback<List<MessageBoardBean>>() {
-			@Override
-			public List<MessageBoardBean> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundZSetOperations<String, String> bzOps = redisTemplate
-						.boundZSetOps(buildHeroMessageBoardTopKeyRedisKey(serverId, itemId));
+		String key = buildHeroMessageBoardTopKeyRedisKey(serverId, itemId);
 				
-				List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
-				Set<TypedTuple<String>> messageBoarSet = bzOps.reverseRangeWithScores(0, -1);
-				for (TypedTuple<String> messageBoard : messageBoarSet) {
-					MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
-					if (messageBoardBean != null) {
-//						UserInfo userInfo = userRedisService.getCache(serverId, messageBoardBean.getUserId());
-//						if(userInfo != null)
-//							messageBoardBean.setVip(userInfo.getVip());
-						messageBoardList.add(messageBoardBean);
-					}
-				}
-				
-				return messageBoardList;
+		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
+		Set<TypedTuple<String>> messageBoarSet = zrangewithscore(key, 0, -1);
+		for (TypedTuple<String> messageBoard : messageBoarSet) {
+			MessageBoardBean messageBoardBean = getHeroMessageBoard(serverId, itemId, messageBoard.getValue());
+			if (messageBoardBean != null) {
+				messageBoardList.add(messageBoardBean);
 			}
-		});
+		}
+		
+		return messageBoardList;
 	}
 	
 	public void delHeroMessage_normal(int serverId, int itemId, String id) {

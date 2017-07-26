@@ -29,7 +29,7 @@ public class UserRedisService extends RedisService{
 	public final static String VIP = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
 	
 	public <T> UserBean getUser(T userId) {
-		String value = hget(RedisKey.USERDATA+userId, "UserData");
+		String value = hget(RedisKey.USERDATA+userId, "UserData", Long.parseLong("" + userId));
 		JSONObject json = JSONObject.fromObject(value);
 		return (UserBean) JSONObject.toBean(json, UserBean.class);
 	}
@@ -38,8 +38,8 @@ public class UserRedisService extends RedisService{
 		if(user.getId() == 0)
 			return;
 		String key = RedisKey.USERDATA+user.getId();
-		hput(key, "UserData", JSONObject.fromObject(user).toString());
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "UserData", JSONObject.fromObject(user).toString(), user.getId());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERDATA_PREFIX, user.getId()+"");
 	}
 	
@@ -55,7 +55,7 @@ public class UserRedisService extends RedisService{
 		if(user.getId() == 0)
 			return;
 		String key = RedisKey.USERDATA+user.getId();
-		hput(key, "UserData", JSONObject.fromObject(user).toString());
+		hput(key, "UserData", JSONObject.fromObject(user).toString(), user.getId());
 	}
 	
 	public String popDBKey(){
@@ -71,9 +71,7 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public Libao getLibao(long userId, int rechargeid) {
-		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
-		if (value == null)
-			hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"", userId);
 		Libao.Builder builder = Libao.newBuilder();
 		if(value != null && parseJson(value, builder))
 			return builder.build();
@@ -84,9 +82,9 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public Map<Integer, Libao> getLibaos(long userId) {
-		Map<String, String> keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+		Map<String, String> keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, userId);
 		if (keyvalue == null)
-			keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId);
+			keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, userId);
 		Map<Integer, Libao> map = new HashMap<Integer, Libao>();
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			Libao.Builder builder = Libao.newBuilder();
@@ -97,8 +95,8 @@ public class UserRedisService extends RedisService{
 	}
 	
 	public void saveLibao(long userId, Libao libao) {
-		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao));
-		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, libao.getRechargeid()+"", formatJson(libao), userId);
+		expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX, userId+"#"+libao.getRechargeid());
 	}
 	
@@ -107,12 +105,12 @@ public class UserRedisService extends RedisService{
 		for(Libao libao : libaos.values())
 			keyvalue.put(libao.getRechargeid()+"", formatJson(libao));
 		
-		hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue);
-		this.expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hputAll(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, keyvalue, userId);
+		expire(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 
 	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {
-		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"");
+		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"", userId);
 		Libao.Builder builder = Libao.newBuilder();
 		if(value != null && parseJson(value, builder)){
 			UserLibaoBean libao = new UserLibaoBean();
@@ -229,15 +227,5 @@ public class UserRedisService extends RedisService{
 		Map<String, String> map = this.hget(RedisKey.USERTYPE_KEY);
 		
 		return map;
-	}
-	
-	public void saveRecommandInfo(long userId, long userId2) {
-		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		this.lpush(key, "" + userId2);
-	}
-	
-	public List<String> getRecomands(long userId) {
-		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		return this.lrange(key);
 	}
 }
