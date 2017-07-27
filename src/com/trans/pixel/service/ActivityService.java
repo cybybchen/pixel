@@ -198,6 +198,9 @@ public class ActivityService {
 		if (!DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime()))
 			return false;
 		
+		if (richang.getCycle() == 1 && ur.getRewardOrderCount() > 0)
+			return false;
+		
 		List<ActivityOrder> orderList = richang.getOrderList();
 		for (ActivityOrder order : orderList) {
 			if (ur.getRewardOrderList().contains(order.getOrder()))
