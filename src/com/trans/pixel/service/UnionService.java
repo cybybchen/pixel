@@ -242,8 +242,11 @@ public class UnionService extends FightService{
 	}
 	
 	public List<UnionApply> getUnionApply(UserBean user) {
+		List<UnionApply> applylist = new ArrayList<UnionApply>();
 		if(user.getUnionJob() > 0){
-			return redis.getApplies(user.getUnionId());
+			applylist.addAll(redis.getApplies(user.getUnionId()));
+			return applylist.subList(0, Math.min(20, applylist.size()));
+//			return redis.getApplies();
 		}
 		
 		return new ArrayList<UnionApply>();
