@@ -680,4 +680,8 @@ public class UserService {
 	public void deleteUserIdByName(int serverId, String userName) {
 		userRedisService.deleteUserIdByName(serverId, userName);
 	}
+	
+	public void setUserIdByAccount(int serverId, String account, long userId) {
+		userRedisService.setUserIdByAccount(serverId, account, userId);
+	}
 }
