@@ -96,7 +96,10 @@ public class UnionService extends FightService{
 	};
 	
 	public List<Union> getBaseUnions(UserBean user) {
-		return redis.getBaseUnions(user);
+		return redis.getBaseUnions(user, 20);
+	}
+	public List<Union> getUnionsRank(UserBean user) {
+		return redis.getBaseUnions(user, 0);
 	}
 	
 	public Union.Builder getBaseUnion(UserBean user) {

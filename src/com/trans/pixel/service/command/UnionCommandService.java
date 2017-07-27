@@ -58,7 +58,11 @@ public class UnionCommandService extends BaseCommandService {
 	private UnionMapper unionMapper;
 
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
-		List<Union> unions = unionService.getBaseUnions(user);
+		List<Union> unions;
+		if(cmd.getType() == 1)
+			unions = unionService.getBaseUnions(user);
+		else
+			unions = unionService.getUnionsRank(user);
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
 		builder.addAllUnion(unions);
 		responseBuilder.setUnionListCommand(builder.build());

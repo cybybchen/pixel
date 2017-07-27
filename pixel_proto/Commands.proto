@@ -3331,6 +3331,7 @@ message ResponseUnionInfoCommand {
 }
 
 message RequestUnionListCommand {
+	optional int32 type = 1;//type=1公会列表type=0公会排行
 }
 
 message ResponseUnionListCommand {

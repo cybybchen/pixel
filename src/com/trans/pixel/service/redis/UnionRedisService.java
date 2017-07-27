@@ -77,13 +77,12 @@ public class UnionRedisService extends RedisService{
 		return unionbuilder;
 	}
 	
-	public List<Union> getBaseUnions(UserBean user) {
+	public List<Union> getBaseUnions(UserBean user, int count) {//count=0表示所有
 		List<Union> unions = new ArrayList<Union>();
 		Map<String, String> applyMap;
 		if(user.getUnionId() != 0)
 			applyMap = new HashMap<String, String>();
-		else
-		{
+		else {
 			applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId());
 			Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
 			while(it.hasNext()){
@@ -107,7 +106,10 @@ public class UnionRedisService extends RedisService{
 				UnionExp unionExp = unionExpMap.get("" + builder.getLevel());
 				if (unionExp != null)
 					builder.setMaxCount(unionExp.getUnionsize());
-				unions.add(builder.build());
+				if(count > 0 || unionMap.size() < 100 || builder.getZhanli() > 20000)
+					unions.add(builder.build());
+				if(count > 0 && unions.size() >= count)
+					break;
 			}
 		}
 		Collections.sort(unions, new Comparator<Union>() {
@@ -186,6 +188,8 @@ public class UnionRedisService extends RedisService{
 			UnionApply.Builder builder = UnionApply.newBuilder();
 			if(parseJson(value.getValue(), builder))
 				list.add(builder.build());
+			if(list.size() >= 20)
+				break;
 		}
 		return list;
 	}

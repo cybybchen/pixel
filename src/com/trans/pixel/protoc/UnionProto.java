@@ -34247,6 +34247,24 @@ public final class UnionProto {
 
   public interface RequestUnionListCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 type = 1;
+    /**
+     * <code>optional int32 type = 1;</code>
+     *
+     * <pre>
+     *type=1公会列表type=0公会排行
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 1;</code>
+     *
+     * <pre>
+     *type=1公会列表type=0公会排行
+     * </pre>
+     */
+    int getType();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestUnionListCommand}
@@ -34281,6 +34299,7 @@ public final class UnionProto {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -34296,6 +34315,11 @@ public final class UnionProto {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
               break;
             }
           }
@@ -34337,7 +34361,33 @@ public final class UnionProto {
       return PARSER;
     }
 
+    private int bitField0_;
+    // optional int32 type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>optional int32 type = 1;</code>
+     *
+     * <pre>
+     *type=1公会列表type=0公会排行
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 type = 1;</code>
+     *
+     * <pre>
+     *type=1公会列表type=0公会排行
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
     private void initFields() {
+      type_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -34351,6 +34401,9 @@ public final class UnionProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, type_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -34360,6 +34413,10 @@ public final class UnionProto {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, type_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -34476,6 +34533,8 @@ public final class UnionProto {
 
       public Builder clear() {
         super.clear();
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -34502,6 +34561,13 @@ public final class UnionProto {
 
       public com.trans.pixel.protoc.UnionProto.RequestUnionListCommand buildPartial() {
         com.trans.pixel.protoc.UnionProto.RequestUnionListCommand result = new com.trans.pixel.protoc.UnionProto.RequestUnionListCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -34517,6 +34583,9 @@ public final class UnionProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.RequestUnionListCommand other) {
         if (other == com.trans.pixel.protoc.UnionProto.RequestUnionListCommand.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -34540,6 +34609,56 @@ public final class UnionProto {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 type = 1;
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 1;</code>
+       *
+       * <pre>
+       *type=1公会列表type=0公会排行
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 type = 1;</code>
+       *
+       * <pre>
+       *type=1公会列表type=0公会排行
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 1;</code>
+       *
+       * <pre>
+       *type=1公会列表type=0公会排行
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 1;</code>
+       *
+       * <pre>
+       *type=1公会列表type=0公会排行
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
         return this;
       }
 
@@ -38372,19 +38491,20 @@ public final class UnionProto {
       "oc.Union\0223\n\007applies\030\002 \003(\0132\".com.trans.pi" +
       "xel.protoc.UnionApply\022:\n\tunionBoss\030\003 \003(\013" +
       "2\'.com.trans.pixel.protoc.UnionBossRecor" +
-      "d\"\031\n\027RequestUnionListCommand\"H\n\030Response" +
-      "UnionListCommand\022,\n\005union\030\001 \003(\0132\035.com.tr" +
-      "ans.pixel.protoc.Union\"?\n\034RequestSubmitB" +
-      "osskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossI" +
-      "d\030\002 \002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Res",
-      "ponseBosskillCommand\0227\n\006record\030\001 \003(\0132\'.c" +
-      "om.trans.pixel.protoc.BossGroupRecord\"V\n" +
-      "\030ResponseUnionBossCommand\022:\n\tunionBoss\030\001" +
-      " \003(\0132\'.com.trans.pixel.protoc.UnionBossR" +
-      "ecord\"K\n\034RequestUnionBossFightCommand\022\016\n" +
-      "\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001" +
-      "(\005*@\n\017UNION_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022\016\n" +
-      "\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
+      "d\"\'\n\027RequestUnionListCommand\022\014\n\004type\030\001 \001" +
+      "(\005\"H\n\030ResponseUnionListCommand\022,\n\005union\030" +
+      "\001 \003(\0132\035.com.trans.pixel.protoc.Union\"?\n\034" +
+      "RequestSubmitBosskillCommand\022\017\n\007groupId\030" +
+      "\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskill",
+      "Command\"R\n\027ResponseBosskillCommand\0227\n\006re" +
+      "cord\030\001 \003(\0132\'.com.trans.pixel.protoc.Boss" +
+      "GroupRecord\"V\n\030ResponseUnionBossCommand\022" +
+      ":\n\tunionBoss\030\001 \003(\0132\'.com.trans.pixel.pro" +
+      "toc.UnionBossRecord\"K\n\034RequestUnionBossF" +
+      "ightCommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022" +
+      "\017\n\007percent\030\003 \001(\005*@\n\017UNION_INFO_TYPE\022\016\n\nT" +
+      "YPE_UNION\020\001\022\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS" +
+      "\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38666,7 +38786,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_RequestUnionListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionListCommand_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_descriptor =
             getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_fieldAccessorTable = new
