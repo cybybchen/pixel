@@ -197,6 +197,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
@@ -1505,6 +1506,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestCipherRewardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		cdkeyCommandService.cipherReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEventQuickFightCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		levelCommandService.eventQuickFight(cmd, responseBuilder, user);
 		return true;
 	}
 

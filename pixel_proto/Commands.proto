@@ -2947,6 +2947,11 @@ message ResponseEventCommand {
 }
 message RequestLevelLootResultCommand {
 }
+
+message RequestEventQuickFightCommand {
+
+}
+
 message RequestEventResultCommand {
 	optional int32 order = 1;
 	optional string teamInfo = 2;
@@ -3762,6 +3767,7 @@ message RequestCommand {
 	optional RequestRecommandCommand recommandCommand = 258;
 	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
 	optional RequestCipherRewardCommand cipherRewardCommand = 260;
+	optional RequestEventQuickFightCommand eventQuickFightCommand = 261;
 }
 ////////// Commands
 message ErrorCommand {

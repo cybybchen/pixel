@@ -31369,6 +31369,315 @@ public final class UserInfoProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestLevelLootResultCommand)
   }
 
+  public interface RequestEventQuickFightCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestEventQuickFightCommand}
+   */
+  public static final class RequestEventQuickFightCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestEventQuickFightCommandOrBuilder {
+    // Use RequestEventQuickFightCommand.newBuilder() to construct.
+    private RequestEventQuickFightCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestEventQuickFightCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestEventQuickFightCommand defaultInstance;
+    public static RequestEventQuickFightCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestEventQuickFightCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestEventQuickFightCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.class, com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestEventQuickFightCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestEventQuickFightCommand>() {
+      public RequestEventQuickFightCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestEventQuickFightCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestEventQuickFightCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestEventQuickFightCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.class, com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UserInfoProto.internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand build() {
+        com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand buildPartial() {
+        com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand result = new com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand) {
+          return mergeFrom((com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand other) {
+        if (other == com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestEventQuickFightCommand)
+    }
+
+    static {
+      defaultInstance = new RequestEventQuickFightCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestEventQuickFightCommand)
+  }
+
   public interface RequestEventResultCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -34335,6 +34644,11 @@ public final class UserInfoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -34450,16 +34764,17 @@ public final class UserInfoProto {
       "\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventCom" +
       "mand\022,\n\005event\030\001 \003(\0132\035.com.trans.pixel.pr" +
       "otoc.Event\"\037\n\035RequestLevelLootResultComm" +
-      "and\"{\n\031RequestEventResultCommand\022\r\n\005orde" +
-      "r\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003" +
-      " \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003r",
-      "et\030\005 \001(\010\"P\n\032ResponseEventResultCommand\0222" +
-      "\n\006reward\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "RewardInfo\"\226\001\n\030ResponseLevelLootCommand\022" +
-      "\024\n\014unlockDaguan\030\001 \001(\005\022\023\n\013unlockOrder\030\002 \001" +
-      "(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005" +
-      "\022\021\n\teventTime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 " +
-      "\001(\r\"\030\n\026RequestEventBuyCommand"
+      "and\"\037\n\035RequestEventQuickFightCommand\"{\n\031" +
+      "RequestEventResultCommand\022\r\n\005order\030\001 \001(\005" +
+      "\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n",
+      "\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(" +
+      "\010\"P\n\032ResponseEventResultCommand\0222\n\006rewar" +
+      "d\030\001 \003(\0132\".com.trans.pixel.protoc.RewardI" +
+      "nfo\"\226\001\n\030ResponseLevelLootCommand\022\024\n\014unlo" +
+      "ckDaguan\030\001 \001(\005\022\023\n\013unlockOrder\030\002 \001(\005\022\022\n\nl" +
+      "ootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teve" +
+      "ntTime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026" +
+      "RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34742,26 +35057,32 @@ public final class UserInfoProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLevelLootResultCommand_descriptor,
               new java.lang.String[] { });
-          internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor =
             getDescriptor().getMessageTypes().get(46);
+          internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestEventQuickFightCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor =
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_RequestEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventResultCommand_descriptor,
               new java.lang.String[] { "Order", "TeamInfo", "FightInfo", "Turn", "Finalid", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEventResultCommand_descriptor,
               new java.lang.String[] { "Reward", });
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLevelLootCommand_descriptor,
               new java.lang.String[] { "UnlockDaguan", "UnlockOrder", "LootDaguan", "LootTime", "EventTime", "LootTimeNormal", });
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestEventBuyCommand_descriptor,

@@ -201,6 +201,7 @@ import com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopPurchaseCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
@@ -416,6 +417,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEquipPokedeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestStartBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestExpeditionShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEventQuickFightCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentChangeSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestKaifu2ActivityCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user);
@@ -1237,6 +1239,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasExpeditionShopPurchaseCommand()) {
 			RequestExpeditionShopPurchaseCommand cmd = request.getExpeditionShopPurchaseCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasEventQuickFightCommand()) {
+			RequestEventQuickFightCommand cmd = request.getEventQuickFightCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeSkillCommand()) {
