@@ -354,6 +354,12 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		
+		if (cmd.hasIsFirst() && cmd.getIsFirst() && user.getFriendVip() == 0) {
+			ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
+			builder.setUser(other.buildShort());
+			return;
+		}
+		
 		userService.handlerRecommand(user, cmd.getUserId());
 		
 		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();

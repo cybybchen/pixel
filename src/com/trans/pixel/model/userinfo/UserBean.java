@@ -1384,6 +1384,7 @@ public class UserBean {
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
 		builder.setTitleOrder(titleOrder);
+		builder.setFriendVip(friendVip);
 		
 		return builder.build();
 	}

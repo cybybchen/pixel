@@ -6234,14 +6234,26 @@ public final class UserInfoProto {
     // optional string markId = 2;
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     boolean hasMarkId();
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     java.lang.String getMarkId();
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     com.google.protobuf.ByteString
         getMarkIdBytes();
@@ -6272,6 +6284,24 @@ public final class UserInfoProto {
      */
     com.google.protobuf.ByteString
         getMarkId2Bytes();
+
+    // optional bool isFirst = 4;
+    /**
+     * <code>optional bool isFirst = 4;</code>
+     *
+     * <pre>
+     *首次输入是true，用来获取玩家信息，第二次确认的时候false
+     * </pre>
+     */
+    boolean hasIsFirst();
+    /**
+     * <code>optional bool isFirst = 4;</code>
+     *
+     * <pre>
+     *首次输入是true，用来获取玩家信息，第二次确认的时候false
+     * </pre>
+     */
+    boolean getIsFirst();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestBindRecommandCommand}
@@ -6339,6 +6369,11 @@ public final class UserInfoProto {
               markId2_ = input.readBytes();
               break;
             }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              isFirst_ = input.readBool();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6400,12 +6435,20 @@ public final class UserInfoProto {
     private java.lang.Object markId_;
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     public boolean hasMarkId() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     public java.lang.String getMarkId() {
       java.lang.Object ref = markId_;
@@ -6423,6 +6466,10 @@ public final class UserInfoProto {
     }
     /**
      * <code>optional string markId = 2;</code>
+     *
+     * <pre>
+     *客户端暂时不用管
+     * </pre>
      */
     public com.google.protobuf.ByteString
         getMarkIdBytes() {
@@ -6493,10 +6540,35 @@ public final class UserInfoProto {
       }
     }
 
+    // optional bool isFirst = 4;
+    public static final int ISFIRST_FIELD_NUMBER = 4;
+    private boolean isFirst_;
+    /**
+     * <code>optional bool isFirst = 4;</code>
+     *
+     * <pre>
+     *首次输入是true，用来获取玩家信息，第二次确认的时候false
+     * </pre>
+     */
+    public boolean hasIsFirst() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional bool isFirst = 4;</code>
+     *
+     * <pre>
+     *首次输入是true，用来获取玩家信息，第二次确认的时候false
+     * </pre>
+     */
+    public boolean getIsFirst() {
+      return isFirst_;
+    }
+
     private void initFields() {
       userId_ = 0L;
       markId_ = "";
       markId2_ = "";
+      isFirst_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6519,6 +6591,9 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getMarkId2Bytes());
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, isFirst_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -6539,6 +6614,10 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getMarkId2Bytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isFirst_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6662,6 +6741,8 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         markId2_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        isFirst_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -6702,6 +6783,10 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000004;
         }
         result.markId2_ = markId2_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.isFirst_ = isFirst_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6730,6 +6815,9 @@ public final class UserInfoProto {
           bitField0_ |= 0x00000004;
           markId2_ = other.markId2_;
           onChanged();
+        }
+        if (other.hasIsFirst()) {
+          setIsFirst(other.getIsFirst());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -6795,12 +6883,20 @@ public final class UserInfoProto {
       private java.lang.Object markId_ = "";
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public boolean hasMarkId() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public java.lang.String getMarkId() {
         java.lang.Object ref = markId_;
@@ -6815,6 +6911,10 @@ public final class UserInfoProto {
       }
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public com.google.protobuf.ByteString
           getMarkIdBytes() {
@@ -6831,6 +6931,10 @@ public final class UserInfoProto {
       }
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public Builder setMarkId(
           java.lang.String value) {
@@ -6844,6 +6948,10 @@ public final class UserInfoProto {
       }
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public Builder clearMarkId() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -6853,6 +6961,10 @@ public final class UserInfoProto {
       }
       /**
        * <code>optional string markId = 2;</code>
+       *
+       * <pre>
+       *客户端暂时不用管
+       * </pre>
        */
       public Builder setMarkIdBytes(
           com.google.protobuf.ByteString value) {
@@ -6959,6 +7071,55 @@ public final class UserInfoProto {
   }
   bitField0_ |= 0x00000004;
         markId2_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional bool isFirst = 4;
+      private boolean isFirst_ ;
+      /**
+       * <code>optional bool isFirst = 4;</code>
+       *
+       * <pre>
+       *首次输入是true，用来获取玩家信息，第二次确认的时候false
+       * </pre>
+       */
+      public boolean hasIsFirst() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional bool isFirst = 4;</code>
+       *
+       * <pre>
+       *首次输入是true，用来获取玩家信息，第二次确认的时候false
+       * </pre>
+       */
+      public boolean getIsFirst() {
+        return isFirst_;
+      }
+      /**
+       * <code>optional bool isFirst = 4;</code>
+       *
+       * <pre>
+       *首次输入是true，用来获取玩家信息，第二次确认的时候false
+       * </pre>
+       */
+      public Builder setIsFirst(boolean value) {
+        bitField0_ |= 0x00000008;
+        isFirst_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isFirst = 4;</code>
+       *
+       * <pre>
+       *首次输入是true，用来获取玩家信息，第二次确认的时候false
+       * </pre>
+       */
+      public Builder clearIsFirst() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        isFirst_ = false;
         onChanged();
         return this;
       }
@@ -34696,85 +34857,85 @@ public final class UserInfoProto {
       "nd\"/\n\034RequestChangeUserNameCommand\022\017\n\007ne" +
       "wName\030\001 \002(\t\"H\n\026RequestRegisterCommand\022\020\n" +
       "\010userName\030\001 \002(\t\022\014\n\004icon\030\002 \001(\005\022\016\n\006heroId\030" +
-      "\003 \002(\005\"N\n\033RequestBindRecommandCommand\022\016\n\006",
+      "\003 \002(\005\"_\n\033RequestBindRecommandCommand\022\016\n\006",
       "userId\030\001 \001(\004\022\016\n\006markId\030\002 \001(\t\022\017\n\007markId2\030" +
-      "\003 \001(\t\"\031\n\027RequestRecommandCommand\"Y\n\030Resp" +
-      "onseRecommandCommand\022.\n\004user\030\001 \001(\0132 .com" +
-      ".trans.pixel.protoc.UserInfo\022\r\n\005count\030\002 " +
-      "\001(\r\"\030\n\026RequestUserInfoCommand\">\n\031Request" +
-      "ExtraRewardCommand\022\016\n\006status\030\001 \002(\r\022\021\n\tex" +
-      "traType\030\002 \001(\r\"\025\n\023RequestLoginCommand\"I\n\027" +
-      "ResponseUserInfoCommand\022.\n\004user\030\001 \002(\0132 ." +
-      "com.trans.pixel.protoc.UserInfo\"N\n\034Respo" +
-      "nseOtherUserInfoCommand\022.\n\004user\030\001 \003(\0132 .",
-      "com.trans.pixel.protoc.UserInfo\"\032\n\010UserH" +
-      "ead\022\016\n\006headId\030\002 \002(\005\"M\n\027ResponseUserHeadC" +
-      "ommand\0222\n\010userHead\030\001 \003(\0132 .com.trans.pix" +
-      "el.protoc.UserHead\"\201\001\n\024ResponsePopupComm" +
-      "and\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014" +
-      "\n\004text\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButt" +
-      "onID\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"(\n\010Merlev" +
-      "el\022\r\n\005level\030\001 \001(\005\022\r\n\005score\030\002 \001(\005\"?\n\014Merl" +
-      "evelList\022/\n\005level\030\001 \003(\0132 .com.trans.pixe" +
-      "l.protoc.Merlevel\"f\n\004Area\022\016\n\006areaid\030\001 \001(",
-      "\005\022\014\n\004name\030\002 \001(\t\022.\n\006daguan\030\003 \003(\0132\036.com.tr" +
-      "ans.pixel.protoc.Daguan\022\020\n\010merlevel\030\004 \001(" +
-      "\005\"6\n\010AreaList\022*\n\004data\030\001 \003(\0132\034.com.trans." +
-      "pixel.protoc.Area\"\263\001\n\006Daguan\022\n\n\002id\030\001 \001(\005" +
-      "\022\014\n\004name\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\r\n\005count\030\004" +
-      " \001(\005\022\014\n\004gold\030\005 \001(\005\022\013\n\003exp\030\006 \001(\005\022\016\n\006areai" +
-      "d\030\t \001(\005\022\020\n\010merlevel\030\013 \001(\005\0224\n\010lootlist\030\020 " +
-      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
-      ":\n\nDaguanList\022,\n\004data\030\001 \003(\0132\036.com.trans." +
-      "pixel.protoc.Daguan\"*\n\nEventLevel\022\r\n\005lev",
-      "el\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"B\n\016EventLevelLis" +
-      "t\0220\n\004data\030\001 \003(\0132\".com.trans.pixel.protoc" +
-      ".EventLevel\"\215\001\n\013EventRandom\022\016\n\006level1\030\001 " +
-      "\001(\005\022\016\n\006count1\030\002 \001(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006c" +
-      "ount2\030\004 \001(\005\022\016\n\006level3\030\005 \001(\005\022\016\n\006count3\030\006 " +
-      "\001(\005\022\016\n\006level4\030\007 \001(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014E" +
-      "ventRandoms\022\n\n\002id\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#" +
-      ".com.trans.pixel.protoc.EventRandom\"D\n\020E" +
-      "ventRandomsList\0220\n\002id\030\001 \003(\0132$.com.trans." +
-      "pixel.protoc.EventRandoms\"J\n\010EventExp\022\n\n",
-      "\002id\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\">\n\014EventExpList\022.\n" +
-      "\004data\030\001 \003(\0132 .com.trans.pixel.protoc.Eve" +
-      "ntExp\"0\n\rEventQuestion\022\016\n\006answer\030\002 \001(\t\022\017" +
-      "\n\007eventid\030\003 \001(\005\"8\n\tEnemyList\022+\n\004data\030\001 \003" +
-      "(\0132\035.com.trans.pixel.protoc.Enemy\"\254\002\n\013Ev" +
-      "entConfig\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004t" +
-      "ype\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132" +
-      "\".com.trans.pixel.protoc.RewardInfo\0224\n\010l" +
-      "ootlist\030\006 \003(\0132\".com.trans.pixel.protoc.R",
-      "ewardInfo\0227\n\010question\030\007 \003(\0132%.com.trans." +
-      "pixel.protoc.EventQuestion\0226\n\nenemygroup" +
-      "\030\010 \001(\0132\".com.trans.pixel.protoc.EnemyGro" +
-      "up\022\014\n\004call\030\t \001(\005\"D\n\017EventConfigList\0221\n\004d" +
-      "ata\030\001 \003(\0132#.com.trans.pixel.protoc.Event" +
-      "Config\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event" +
-      "\030\002 \003(\0132\035.com.trans.pixel.protoc.Event\022\016\n" +
-      "\006weight\030\003 \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001" +
-      " \003(\0132!.com.trans.pixel.protoc.AreaEvent\"" +
-      "G\n\004Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".c",
-      "om.trans.pixel.protoc.RewardInfo\"4\n\010Loot" +
-      "List\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.proto" +
-      "c.Loot\"&\n\030RequestLevelStartCommand\022\n\n\002id" +
-      "\030\001 \001(\005\"4\n\023RequestEventCommand\022\016\n\006userId\030" +
-      "\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventCom" +
-      "mand\022,\n\005event\030\001 \003(\0132\035.com.trans.pixel.pr" +
-      "otoc.Event\"\037\n\035RequestLevelLootResultComm" +
-      "and\"\037\n\035RequestEventQuickFightCommand\"{\n\031" +
-      "RequestEventResultCommand\022\r\n\005order\030\001 \001(\005" +
-      "\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n",
-      "\004turn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(" +
-      "\010\"P\n\032ResponseEventResultCommand\0222\n\006rewar" +
-      "d\030\001 \003(\0132\".com.trans.pixel.protoc.RewardI" +
-      "nfo\"\226\001\n\030ResponseLevelLootCommand\022\024\n\014unlo" +
-      "ckDaguan\030\001 \001(\005\022\023\n\013unlockOrder\030\002 \001(\005\022\022\n\nl" +
-      "ootDaguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teve" +
-      "ntTime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026" +
-      "RequestEventBuyCommand"
+      "\003 \001(\t\022\017\n\007isFirst\030\004 \001(\010\"\031\n\027RequestRecomma" +
+      "ndCommand\"Y\n\030ResponseRecommandCommand\022.\n" +
+      "\004user\030\001 \001(\0132 .com.trans.pixel.protoc.Use" +
+      "rInfo\022\r\n\005count\030\002 \001(\r\"\030\n\026RequestUserInfoC" +
+      "ommand\">\n\031RequestExtraRewardCommand\022\016\n\006s" +
+      "tatus\030\001 \002(\r\022\021\n\textraType\030\002 \001(\r\"\025\n\023Reques" +
+      "tLoginCommand\"I\n\027ResponseUserInfoCommand" +
+      "\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\"N\n\034ResponseOtherUserInfoCommand",
+      "\022.\n\004user\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\"\032\n\010UserHead\022\016\n\006headId\030\002 \002(\005\"M\n\027" +
+      "ResponseUserHeadCommand\0222\n\010userHead\030\001 \003(" +
+      "\0132 .com.trans.pixel.protoc.UserHead\"\201\001\n\024" +
+      "ResponsePopupCommand\022\021\n\tpopScreen\030\001 \002(\005\022" +
+      "\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007heading" +
+      "\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoButtonI" +
+      "D\030\006 \001(\t\"(\n\010Merlevel\022\r\n\005level\030\001 \001(\005\022\r\n\005sc" +
+      "ore\030\002 \001(\005\"?\n\014MerlevelList\022/\n\005level\030\001 \003(\013" +
+      "2 .com.trans.pixel.protoc.Merlevel\"f\n\004Ar",
+      "ea\022\016\n\006areaid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022.\n\006dagu" +
+      "an\030\003 \003(\0132\036.com.trans.pixel.protoc.Daguan" +
+      "\022\020\n\010merlevel\030\004 \001(\005\"6\n\010AreaList\022*\n\004data\030\001" +
+      " \003(\0132\034.com.trans.pixel.protoc.Area\"\263\001\n\006D" +
+      "aguan\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005level" +
+      "\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004gold\030\005 \001(\005\022\013\n\003e" +
+      "xp\030\006 \001(\005\022\016\n\006areaid\030\t \001(\005\022\020\n\010merlevel\030\013 \001" +
+      "(\005\0224\n\010lootlist\030\020 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\":\n\nDaguanList\022,\n\004data\030\001" +
+      " \003(\0132\036.com.trans.pixel.protoc.Daguan\"*\n\n",
+      "EventLevel\022\r\n\005level\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
+      "\"B\n\016EventLevelList\0220\n\004data\030\001 \003(\0132\".com.t" +
+      "rans.pixel.protoc.EventLevel\"\215\001\n\013EventRa" +
+      "ndom\022\016\n\006level1\030\001 \001(\005\022\016\n\006count1\030\002 \001(\005\022\016\n\006" +
+      "level2\030\003 \001(\005\022\016\n\006count2\030\004 \001(\005\022\016\n\006level3\030\005" +
+      " \001(\005\022\016\n\006count3\030\006 \001(\005\022\016\n\006level4\030\007 \001(\005\022\016\n\006" +
+      "count4\030\010 \001(\005\"N\n\014EventRandoms\022\n\n\002id\030\001 \001(\005" +
+      "\0222\n\005order\030\002 \003(\0132#.com.trans.pixel.protoc" +
+      ".EventRandom\"D\n\020EventRandomsList\0220\n\002id\030\001" +
+      " \003(\0132$.com.trans.pixel.protoc.EventRando",
+      "ms\"J\n\010EventExp\022\n\n\002id\030\001 \001(\005\0222\n\006reward\030\002 \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo\">" +
+      "\n\014EventExpList\022.\n\004data\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.EventExp\"0\n\rEventQuestion\022" +
+      "\016\n\006answer\030\002 \001(\t\022\017\n\007eventid\030\003 \001(\005\"8\n\tEnem" +
+      "yList\022+\n\004data\030\001 \003(\0132\035.com.trans.pixel.pr" +
+      "otoc.Enemy\"\254\002\n\013EventConfig\022\n\n\002id\030\001 \001(\005\022\014" +
+      "\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022\016\n\006daguan\030\004 \001" +
+      "(\005\0220\n\004cost\030\005 \001(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\0224\n\010lootlist\030\006 \003(\0132\".com.tra",
+      "ns.pixel.protoc.RewardInfo\0227\n\010question\030\007" +
+      " \003(\0132%.com.trans.pixel.protoc.EventQuest" +
+      "ion\0226\n\nenemygroup\030\010 \001(\0132\".com.trans.pixe" +
+      "l.protoc.EnemyGroup\022\014\n\004call\030\t \001(\005\"D\n\017Eve" +
+      "ntConfigList\0221\n\004data\030\001 \003(\0132#.com.trans.p" +
+      "ixel.protoc.EventConfig\"U\n\tAreaEvent\022\n\n\002" +
+      "id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.trans.pixe" +
+      "l.protoc.Event\022\016\n\006weight\030\003 \001(\005\"@\n\rAreaEv" +
+      "entList\022/\n\004data\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.AreaEvent\"G\n\004Loot\022\r\n\005order\030\001 \001(\005\022",
+      "0\n\004item\030\002 \003(\0132\".com.trans.pixel.protoc.R" +
+      "ewardInfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132\034.com." +
+      "trans.pixel.protoc.Loot\"&\n\030RequestLevelS" +
+      "tartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023RequestEventC" +
+      "ommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 \001(\005\"D\n" +
+      "\024ResponseEventCommand\022,\n\005event\030\001 \003(\0132\035.c" +
+      "om.trans.pixel.protoc.Event\"\037\n\035RequestLe" +
+      "velLootResultCommand\"\037\n\035RequestEventQuic" +
+      "kFightCommand\"{\n\031RequestEventResultComma" +
+      "nd\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tf",
+      "ightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007finalid\030" +
+      "\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEventResul" +
+      "tCommand\0222\n\006reward\030\001 \003(\0132\".com.trans.pix" +
+      "el.protoc.RewardInfo\"\226\001\n\030ResponseLevelLo" +
+      "otCommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\023\n\013unloc" +
+      "kOrder\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020\n\010loot" +
+      "Time\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022\026\n\016lootTim" +
+      "eNormal\030\007 \001(\r\"\030\n\026RequestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34846,7 +35007,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_RequestBindRecommandCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBindRecommandCommand_descriptor,
-              new java.lang.String[] { "UserId", "MarkId", "MarkId2", });
+              new java.lang.String[] { "UserId", "MarkId", "MarkId2", "IsFirst", });
           internal_static_com_trans_pixel_protoc_RequestRecommandCommand_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestRecommandCommand_fieldAccessorTable = new

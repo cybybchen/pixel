@@ -2779,8 +2779,9 @@ message RequestRegisterCommand {
 
 message RequestBindRecommandCommand {
 	optional uint64 userId = 1;
-	optional string markId = 2;
+	optional string markId = 2;//客户端暂时不用管
 	optional string markId2 = 3;//转发到master服务器的时候使用,客户端不用管
+	optional bool isFirst = 4;//首次输入是true，用来获取玩家信息，第二次确认的时候false
 }
 
 message RequestRecommandCommand {
