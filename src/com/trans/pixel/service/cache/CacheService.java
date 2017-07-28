@@ -60,12 +60,15 @@ public class CacheService {
 	
 	
 	public static final<K, V> void hputcacheAll(String key, Map<K, V> map) {
+		logger.warn("update map cache: "+key);
 		_cache.put(key, map);
 	}
 	public static final<K> void lpushcache(String key, List<K> list) {
+		logger.warn("update list cache: "+key);
 		_cache.put(key, list);
 	}
 	public static final<T> void setcache(String key, T value) {
+		logger.warn("update key cache: "+key);
 		_cache.put(key, value);
 	}
 
@@ -94,13 +97,22 @@ public class CacheService {
 			return list;
 	}
 
+	private static Object object = new Object();
 	@SuppressWarnings("unchecked")
 	public static final<T> void saddcache(String key, T value) {
-		Set<Object> set = (Set<Object>)_setcache.get(key);
+		Set<T> set = (Set<T>)_setcache.get(key);
 		if (set != null) {
 			set.add(value);
 		}else {
-			logger.error("Not support Set key:"+key);
+			logger.error("No available Set key:"+key);
+			synchronized(object) {
+				set = (Set<T>)_setcache.get(key);
+				if (set == null) {
+					set = Collections.synchronizedSet(new HashSet<T>());
+					_setcache.put(key, set);
+				}
+				set.add(value);
+			}
 		}
 	}
 

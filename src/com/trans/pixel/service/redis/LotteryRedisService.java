@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -24,6 +23,7 @@ public class LotteryRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
 	
 	public LotteryRedisService() {
+		buildLotteryActivityConfig();
 		parseAndSaveLotteryList(RewardConst.COIN);
 		parseAndSaveLotteryList(RewardConst.JEWEL);
 		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);
@@ -42,7 +42,7 @@ public class LotteryRedisService extends CacheService {
 		return lotteryList;
 	}
 	
-	public void setLotteryList(final List<RewardBean> lotteryList, final int type) {
+	private void setLotteryList(final List<RewardBean> lotteryList, final int type) {
 		List<String> values = new ArrayList<String>();
 		for (RewardBean lottery : lotteryList) {
 			values.add(lottery.toJson());
@@ -52,54 +52,19 @@ public class LotteryRedisService extends CacheService {
 	}
 	
 	public LotteryActivity getLotteryActivity(int id) {
-		Map<String, String> keyvalue = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY);
-		String value = keyvalue.get("" + id);
-		if (value == null) {
-			Map<String, LotteryActivity> lotteryActivityConfig = getLotteryActivityConfig();
-			return lotteryActivityConfig.get("" + id);
-		} else {
-			LotteryActivity.Builder builder = LotteryActivity.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, LotteryActivity> map = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY);
+		return map.get(id);
 	}
 	
-	public Map<String, LotteryActivity> getLotteryActivityConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.LOTTERY_ACTIVITY_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, LotteryActivity> map = buildLotteryActivityConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, LotteryActivity> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.LOTTERY_ACTIVITY_KEY, redismap);
-			return map;
-		}else{
-			Map<String, LotteryActivity> map = new HashMap<String, LotteryActivity>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				LotteryActivity.Builder builder = LotteryActivity.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
-	}
-	
-	private Map<String, LotteryActivity > buildLotteryActivityConfig(){
+	private void buildLotteryActivityConfig(){
 		String xml = RedisService.ReadConfig(LOTTERYACTIVITY_FILE_NAME);
 		LotteryActivityList.Builder builder = LotteryActivityList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + LOTTERYACTIVITY_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, LotteryActivity> map = new HashMap<String, LotteryActivity>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, LotteryActivity> map = new HashMap<Integer, LotteryActivity>();
 		for(LotteryActivity.Builder lottery : builder.getLotteryBuilderList()){
-			map.put("" + lottery.getId(), lottery.build());
+			map.put(lottery.getId(), lottery.build());
 		}
-		return map;
+		hputcacheAll(RedisKey.LOTTERY_ACTIVITY_KEY, map);
 	}
 	
 	private synchronized List<RewardBean> parseAndSaveLotteryList(int type) {

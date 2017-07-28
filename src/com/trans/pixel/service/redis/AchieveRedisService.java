@@ -13,62 +13,32 @@ import com.trans.pixel.protoc.ActivityProto.AchieveList;
 import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class AchieveRedisService extends CacheService {
+public class AchieveRedisService {
 	private static Logger logger = Logger.getLogger(AchieveRedisService.class);
 	private static final String ACHIEVE_FILE_NAME = "ld_taskchengjiu.xml";
 	
 	public AchieveRedisService() {
-		getAchieveConfig();
+		buildAchieveConfig();
 	}
 	
 	public Achieve getAchieve(int id) {
-		Map<String, String> keyvalue = hgetcache(RedisKey.ACHIEVE_KEY);
-		String value = keyvalue.get("" + id);
-		if (value == null) {
-			Map<String, Achieve> config = getAchieveConfig();
-			return config.get("" + id);
-		} else {
-			Achieve.Builder builder = Achieve.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Achieve> map = getAchieveConfig();
+		return map.get(id);
 	}
 	
-	public Map<String, Achieve> getAchieveConfig() {
-		Map<String, String> keyvalue = hgetcache(RedisKey.ACHIEVE_KEY);
-		if(keyvalue == null || keyvalue.isEmpty()){
-			Map<String, Achieve> map = buildAchieveConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Achieve> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputcacheAll(RedisKey.ACHIEVE_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Achieve> map = new HashMap<String, Achieve>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Achieve.Builder builder = Achieve.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Achieve> getAchieveConfig() {
+		Map<Integer, Achieve> map = CacheService.hgetcache(RedisKey.ACHIEVE_KEY);
+		return map;
 	}
 	
-	private Map<String, Achieve> buildAchieveConfig(){
+	private void buildAchieveConfig(){
 		String xml = RedisService.ReadConfig(ACHIEVE_FILE_NAME);
 		AchieveList.Builder builder = AchieveList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACHIEVE_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Achieve> map = new HashMap<String, Achieve>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Achieve> map = new HashMap<Integer, Achieve>();
 		for(Achieve.Builder achieve : builder.getDataBuilderList()){
-			map.put("" + achieve.getId(), achieve.build());
+			map.put(achieve.getId(), achieve.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACHIEVE_KEY, map);
 	}
 }

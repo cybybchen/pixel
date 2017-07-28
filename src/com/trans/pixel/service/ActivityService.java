@@ -105,10 +105,10 @@ public class ActivityService {
 	
 	public void sendRichangScore(UserBean user, int type, int count) {
 		long userId = user.getId();
-		Map<String, Richang> map = activityRedisService.getRichangConfig();
-		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		Map<Integer, Richang> map = activityRedisService.getRichangConfig();
+		Iterator<Entry<Integer, Richang>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Richang> entry = it.next();
+			Entry<Integer, Richang> entry = it.next();
 			Richang richang = entry.getValue();
 			if (!richang.getNoserverid().equals("")) {
 				List<Integer> noserveridList = convertServerIdList(richang.getNoserverid());
@@ -371,10 +371,10 @@ public class ActivityService {
 	}
 	
 	public void deleteKaifu2Score(long userId, int serverId, int type) {
-		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
-		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		Map<Integer, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<Integer, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Kaifu2> entry = it.next();
+			Entry<Integer, Kaifu2> entry = it.next();
 			Kaifu2 kaifu2 = entry.getValue();
 			if (serverService.isInKaifuActivityTime(kaifu2.getLasttime(), serverId) && kaifu2.getTargetid() == type) {
 				activityRedisService.deleteKaifu2Score(userId, serverId, kaifu2.getId(), kaifu2.getTargetid());
@@ -383,10 +383,10 @@ public class ActivityService {
 	}
 	
 	public void sendKaifu2Score(UserBean user, int type, int score) {
-		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
-		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		Map<Integer, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<Integer, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Kaifu2> entry = it.next();
+			Entry<Integer, Kaifu2> entry = it.next();
 			Kaifu2 kaifu2 = entry.getValue();
 			if (serverService.isInKaifuActivityTime(kaifu2.getLasttime(), user.getServerId()) && kaifu2.getTargetid() == type) {
 				activityRedisService.addKaifu2Score(user.getId(), user.getServerId(), kaifu2.getId(), kaifu2.getTargetid(), score);
@@ -395,8 +395,8 @@ public class ActivityService {
 	}
 	
 	public void sendKaifu2ActivitiesReward(int serverId) {
-		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
-		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		Map<Integer, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Iterator<Entry<Integer, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Kaifu2 kaifu2 = it.next().getValue();
 			if (kaifu2.getLasttime() <= 0 || serverService.getKaifuDays(serverId) != kaifu2.getLasttime()) 
@@ -442,8 +442,8 @@ public class ActivityService {
 	}
 	
 	public void sendRichangActivitiesReward(int serverId) {
-		Map<String, Richang> map = activityRedisService.getRichangConfig();
-		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		Map<Integer, Richang> map = activityRedisService.getRichangConfig();
+		Iterator<Entry<Integer, Richang>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Richang richang = it.next().getValue();
 			if (DateUtil.intervalDays(DateUtil.getDate(), DateUtil.getDate(richang.getEndtime())) != 1) //防止重复发奖
@@ -525,12 +525,12 @@ public class ActivityService {
 		int serverId = user.getServerId();
 		
 		List<Kaifu2Rank> rankList = new ArrayList<Kaifu2Rank>();
-		Map<String, Kaifu2> map = activityRedisService.getKaifu2Config();
+		Map<Integer, Kaifu2> map = activityRedisService.getKaifu2Config();
 		if (map == null)
 			return rankList;
-		Iterator<Entry<String, Kaifu2>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, Kaifu2>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			int type = TypeTranslatedUtil.stringToInt(it.next().getKey());
+			int type = it.next().getKey();
 			Kaifu2Rank.Builder kaifu2Rank = Kaifu2Rank.newBuilder();
 			kaifu2Rank.setType(type);
 			kaifu2Rank.setMyRank(activityRedisService.getKaifu2MyRank(user, type));
@@ -589,10 +589,10 @@ public class ActivityService {
 	}
 	
 	public void sendKaifuScore(UserBean user, int type, int count) {
-		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
-		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
+		Map<Integer, Kaifu> map = activityRedisService.getKaifuConfig();
+		Iterator<Entry<Integer, Kaifu>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Kaifu> entry = it.next();
+			Entry<Integer, Kaifu> entry = it.next();
 			Kaifu kaifu = entry.getValue();
 			if (kaifu.getTargetid() == type) {
 				UserKaifu.Builder uk = UserKaifu.newBuilder(userActivityService.selectUserKaifu(user.getId(), kaifu.getId()));
@@ -1273,10 +1273,10 @@ public class ActivityService {
 		if (user.getShouchongIsGetReward() == 1)
 			return ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR;
 		
-		Map<String, Shouchong> shouchongMap = activityRedisService.getShouchongConfig();
-		Iterator<Entry<String, Shouchong>> it = shouchongMap.entrySet().iterator();
+		Map<Integer, Shouchong> shouchongMap = activityRedisService.getShouchongConfig();
+		Iterator<Entry<Integer, Shouchong>> it = shouchongMap.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Shouchong> entry = it.next();
+			Entry<Integer, Shouchong> entry = it.next();
 			Shouchong shouchong = entry.getValue();
 			
 			rewards.addAllLoot(shouchong.getRewardList());
@@ -1304,7 +1304,7 @@ public class ActivityService {
 	}
 	
 	public void handleActivity(UserBean user, int type, int count) {
-		Map<String, Activity> map = activityRedisService.getActivityConfig(type);
+		Map<Integer, Activity> map = activityRedisService.getActivityConfig(type);
 		if (map == null || map.size() == 0) {
 			return;
 		}
@@ -1312,7 +1312,7 @@ public class ActivityService {
 		if (type != ActivityConst.ACTIVITY_TYPE_REGISTER)
 			count = userActivityRedisService.addActivityCount(user.getId(), count, type);
 		
-		Iterator<Entry<String, Activity>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, Activity>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Activity activity = it.next().getValue();
 			String serverFilter = activity.getServerfilter();

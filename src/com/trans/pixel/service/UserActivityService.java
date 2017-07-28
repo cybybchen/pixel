@@ -20,7 +20,6 @@ import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.UserActivityRedisService;
 import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserActivityService {
@@ -50,13 +49,13 @@ public class UserActivityService {
 	
 	public List<UserRichang> selectUserRichangList(long userId) {
 		List<UserRichang> urList = new ArrayList<UserRichang>();
-		Map<String, Richang> map = activityRedisService.getRichangConfig();
+		Map<Integer, Richang> map = activityRedisService.getRichangConfig();
 		if (map == null)
 			return new ArrayList<UserRichang>();
-		Iterator<Entry<String, Richang>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, Richang>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Richang> entry = it.next();
-			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
+			Entry<Integer, Richang> entry = it.next();
+			int type = entry.getKey();
 			Richang richang = entry.getValue();
 			if (DateUtil.timeIsAvailable(richang.getStarttime(), richang.getEndtime())) {
 				UserRichang ur = selectUserRichang(userId, type);
@@ -114,15 +113,15 @@ public class UserActivityService {
 	
 	public List<UserKaifu> selectUserKaifuList(UserBean user) {
 		List<UserKaifu> ukList = new ArrayList<UserKaifu>();
-		Map<String, Kaifu> map = activityRedisService.getKaifuConfig();
+		Map<Integer, Kaifu> map = activityRedisService.getKaifuConfig();
 		int kaifudays = serverService.getKaifuDays(user.getServerId());
 		if (map == null)
 			return new ArrayList<UserKaifu>();
-		Iterator<Entry<String, Kaifu>> it = map.entrySet().iterator();
+		Iterator<Entry<Integer, Kaifu>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Kaifu> entry = it.next();
+			Entry<Integer, Kaifu> entry = it.next();
 			Kaifu kaifu = entry.getValue();
-			int type = TypeTranslatedUtil.stringToInt(entry.getKey());
+			int type = entry.getKey();
 			if (kaifu.getLasttime() < 0 || kaifu.getLasttime() >= kaifudays) {
 				UserKaifu uk = selectUserKaifu(user.getId(), type);
 				ukList.add(uk);

@@ -487,9 +487,10 @@ public class LevelRedisService extends RedisService {
 	public AreaEvent.Builder getMainEvent(int daguanid){
 		Map<Integer, AreaEvent> map = CacheService.hgetcache(RedisKey.MAINEVENT_CONFIG);
 		AreaEvent event = map.get(daguanid);
-		if(event == null)
+		if(event == null) {
+			logger.warn("Error getMainEvent: no daguan "+daguanid);
 			return null;
-		else
+		}else
 			return AreaEvent.newBuilder(event);
 	}
 	public EventExp getEventExp(int level){
@@ -635,18 +636,18 @@ public class LevelRedisService extends RedisService {
 				}
 			}
 		}
-		Map<String, String> keyvalue1 = new HashMap<String, String>();
+		Map<Integer, AreaEvent> cachemap1 = new HashMap<Integer, AreaEvent>();
 		for(AreaEvent.Builder daguan : map1.values())
-			keyvalue1.put(daguan.getId()+"", formatJson(daguan.build()));
-		Map<String, String> keyvalue2 = new HashMap<String, String>();
+			cachemap1.put(daguan.getId(), daguan.build());
+		Map<Integer, AreaEvent> cachemap2 = new HashMap<Integer, AreaEvent>();
 		for(AreaEvent.Builder daguan : map2.values())
-			keyvalue2.put(daguan.getId()+"", formatJson(daguan.build()));
-		Map<String, String> keyvalue3 = new HashMap<String, String>();
+			cachemap2.put(daguan.getId(), daguan.build());
+		Map<Integer, EventConfig> cachemap3 = new HashMap<Integer, EventConfig>();
 		for(EventConfig.Builder eventconfig : eventmap.values())
-			keyvalue3.put(eventconfig.getId()+"", formatJson(eventconfig.build()));
-		CacheService.hputcacheAll(RedisKey.MAINEVENT_CONFIG, keyvalue1);
-		CacheService.hputcacheAll(RedisKey.DAGUANEVENT_CONFIG, keyvalue2);
-		CacheService.hputcacheAll(RedisKey.EVENT_CONFIG, keyvalue3);
+			cachemap3.put(eventconfig.getId(), eventconfig.build());
+		CacheService.hputcacheAll(RedisKey.MAINEVENT_CONFIG, cachemap1);
+		CacheService.hputcacheAll(RedisKey.DAGUANEVENT_CONFIG, cachemap2);
+		CacheService.hputcacheAll(RedisKey.EVENT_CONFIG, cachemap3);
 	}
 
 	public Daguan.Builder getDaguan(int id){

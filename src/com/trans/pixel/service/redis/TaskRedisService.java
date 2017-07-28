@@ -39,14 +39,10 @@ public class TaskRedisService extends CacheService {
 		return map;
 	}
 	
-	private Map<Integer, TaskTarget> buildTask1TargetConfig(){
+	private void buildTask1TargetConfig(){
 		String xml = RedisService.ReadConfig(TASK1_FILE_NAME);
 		TaskTargetList.Builder builder = TaskTargetList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + TASK1_FILE_NAME);
-			return null;
-		}
-		
+		RedisService.parseXml(xml, builder);
 		Map<Integer, TaskTarget> map = new HashMap<Integer, TaskTarget>();
 		Map<Integer, TaskOrder> ordermap = new HashMap<Integer, TaskOrder>();
 		for(TaskTarget.Builder task : builder.getDataBuilderList()){
@@ -58,7 +54,6 @@ public class TaskRedisService extends CacheService {
 		}
 		hputcacheAll(RedisKey.TASK1_ORDER_CONFIG_KEY, ordermap);
 		hputcacheAll(RedisKey.TASK1_CONFIG_KEY, map);
-		return map;
 	}
 	
 	//task1 order

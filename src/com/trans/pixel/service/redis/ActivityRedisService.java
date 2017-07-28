@@ -2,10 +2,7 @@ package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-
-import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -37,198 +34,111 @@ public class ActivityRedisService extends RedisService {
 	private static final String ACTIVITY_SHOUCHONG_FILE_NAME = "ld_taskshouchong.xml";
 	private static final String ACTIVITY_FILE_PREFIX = "activity/activity_";
 	
-	@Resource
-	private RedisService redisService;
+//	@Resource
+//	private RedisService redisService;
 	
 	public ActivityRedisService() {
-		getRichangConfig();
-		getKaifu2Config();
-		getKaifuConfig();
-		getShouchongConfig();
-		getActivityConfig(1);
-		getActivityConfig(2);
+		buildRichangConfig();
+		buildKaifu2Config();
+		buildKaifuConfig();
+		buildShouchongConfig();
+		buildActivityConfig(1);
+		buildActivityConfig(2);
 	}
 	
 	//richang activity
 	public Richang getRichang(int id) {
-		String value = hget(RedisKey.ACTIVITY_RICHANG_KEY, "" + id);
-		if (value == null) {
-			Map<String, Richang> config = getRichangConfig();
-			return config.get("" + id);
-		} else {
-			Richang.Builder builder = Richang.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Richang> map = getRichangConfig();
+		return map.get(id);
 	}
 	
-	public Map<String, Richang> getRichangConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_RICHANG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Richang> map = buildRichangConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Richang> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.ACTIVITY_RICHANG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Richang> map = new HashMap<String, Richang>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Richang.Builder builder = Richang.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Richang> getRichangConfig() {
+		Map<Integer, Richang> map = CacheService.hgetcache(RedisKey.ACTIVITY_RICHANG_KEY);
+		return map;
 	}
 	
-	private Map<String, Richang> buildRichangConfig(){
+	private void buildRichangConfig(){
 		String xml = RedisService.ReadConfig(ACTIVITY_RICHANG_FILE_NAME);
 		RichangList.Builder builder = RichangList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACTIVITY_RICHANG_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Richang> map = new HashMap<String, Richang>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Richang> map = new HashMap<Integer, Richang>();
 		for(Richang.Builder richang : builder.getDataBuilderList()){
-			map.put("" + richang.getId(), richang.build());
+			map.put(richang.getId(), richang.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACTIVITY_RICHANG_KEY, map);
 	}
 	
 	
 	//kaifu2 activity
 	public Kaifu2 getKaifu2(int id) {
-		String value = hget(RedisKey.ACTIVITY_KAIFU2_KEY, "" + id);
-		if (value == null) {
-			Map<String, Kaifu2> config = getKaifu2Config();
-			return config.get("" + id);
-		} else {
-			Kaifu2.Builder builder = Kaifu2.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Kaifu2> map = getKaifu2Config();
+		return map.get(id);
 	}
 	
-	public Map<String, Kaifu2> getKaifu2Config() {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU2_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Kaifu2> map = buildKaifu2Config();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Kaifu2> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.ACTIVITY_KAIFU2_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Kaifu2.Builder builder = Kaifu2.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Kaifu2> getKaifu2Config() {
+		Map<Integer, Kaifu2> map = CacheService.hgetcache(RedisKey.ACTIVITY_KAIFU2_KEY);
+		return map;
 	}
-	
-	private Map<String, Kaifu2> buildKaifu2Config(){
+
+	private void buildKaifu2Config(){
 		String xml = RedisService.ReadConfig(ACTIVITY_KAIFU2_FILE_NAME);
 		Kaifu2List.Builder builder = Kaifu2List.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACTIVITY_KAIFU2_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Kaifu2> map = new HashMap<String, Kaifu2>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Kaifu2> map = new HashMap<Integer, Kaifu2>();
 		for(Kaifu2.Builder kaifu : builder.getDataBuilderList()){
-			map.put("" + kaifu.getId(), kaifu.build());
+			map.put(kaifu.getId(), kaifu.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACTIVITY_KAIFU2_KEY, map);
 	}
 	
 	//kaifu activity
 	public Kaifu getKaifu(int id) {
-		String value = hget(RedisKey.ACTIVITY_KAIFU_KEY, "" + id);
-		if (value == null) {
-			Map<String, Kaifu> config = getKaifuConfig();
-			return config.get("" + id);
-		} else {
-			Kaifu.Builder builder = Kaifu.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Kaifu> map = getKaifuConfig();
+		return map.get(id);
 	}
 	
-	public Map<String, Kaifu> getKaifuConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_KAIFU_KEY);
-		if(keyvalue == null || keyvalue.isEmpty()){
-			Map<String, Kaifu> map = buildKaifuConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Kaifu> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.ACTIVITY_KAIFU_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Kaifu> map = new HashMap<String, Kaifu>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Kaifu.Builder builder = Kaifu.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Kaifu> getKaifuConfig() {
+		Map<Integer, Kaifu> map = CacheService.hgetcache(RedisKey.ACTIVITY_KAIFU_KEY);
+		return map;
 	}
 	
-	private Map<String, Kaifu> buildKaifuConfig(){
+	private void buildKaifuConfig(){
 		String xml = RedisService.ReadConfig(ACTIVITY_KAIFU_FILE_NAME);
 		KaifuList.Builder builder = KaifuList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACTIVITY_KAIFU_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Kaifu> map = new HashMap<String, Kaifu>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Kaifu> map = new HashMap<Integer, Kaifu>();
 		for(Kaifu.Builder config : builder.getDataBuilderList()){
-			map.put("" + config.getId(), config.build());
+			map.put(config.getId(), config.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACTIVITY_KAIFU_KEY, map);
 	}
 	
 	//kaifu2 activity rank
 	public void addKaifu2Score(long userId, int serverId, int id, int type, long score) {
 		String key = buildKaifu2RankRedisKey(serverId, id);
 		if (type == ActivityConst.KAIFU2_ZHANLI)
-			redisService.zadd(key, score, "" + userId);
+			zadd(key, score, "" + userId);
 		else
-			redisService.zincrby(key, score, "" + userId);
+			zincrby(key, score, "" + userId);
 		
-		redisService.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 
 	public void deleteKaifu2Score(long userId, int serverId, int id, int type) {
 		String key = buildKaifu2RankRedisKey(serverId, id);
-		redisService.zremove(key, "" + userId);
+		zremove(key, "" + userId);
 	}
 	
 	public int getRankListSize(int serverId, int type) {
 		String key = buildKaifu2RankRedisKey(serverId, type);
 		
-		return redisService.zcard(key);
+		return zcard(key);
 	}
 	
 	public Set<TypedTuple<String>> getUserIdList(int serverId, int type, int start, int end) {
 		String key = buildKaifu2RankRedisKey(serverId, type);
 		
-		return redisService.zrangewithscore(key, start, end - 1);
+		return zrangewithscore(key, start, end - 1);
 	}
 	
 	public Set<TypedTuple<String>> getUserIdList(int serverId, int type) {
@@ -242,14 +152,14 @@ public class ActivityRedisService extends RedisService {
 	
 	public void setKaifu2RwRc(UserBean user, int activityId, int record) {
 		String key = buildKaifu2RewardRecordRedisKey(user.getServerId(), activityId);
-		redisService.hput(key, "" + user.getId(), "" + record);
-		redisService.expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
+		hput(key, "" + user.getId(), "" + record);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 	
 	public long getKaifu2MyRank(UserBean user, int type) {
 		String key = buildKaifu2RankRedisKey(user.getServerId(), type);
 		
-		Long rank = redisService.zrank(key, "" + user.getId());
+		Long rank = zrank(key, "" + user.getId());
 		if (rank == null)
 			return 0;
 		else
@@ -258,13 +168,13 @@ public class ActivityRedisService extends RedisService {
 	
 	public void setKaifu2SendRewardRecord(int serverId, int type) {
 		String key = buildKaifu2SendRewardRedisKey(serverId);
-		redisService.sadd(key, "" + type);
+		sadd(key, "" + type);
 //		expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY);
 	}
 	
 	public boolean hasKaifu2RewardSend(int serverId, int type) {
 		String key = buildKaifu2SendRewardRedisKey(serverId);
-		return redisService.sismember(key, "" + type);
+		return sismember(key, "" + type);
 	}
 	
 	private String buildKaifu2RankRedisKey(int serverId, int type) {
@@ -281,103 +191,52 @@ public class ActivityRedisService extends RedisService {
 	
 	//shouchong activity
 	public Shouchong getShouchong(int id) {
-		String value = hget(RedisKey.ACTIVITY_SHOUCHONG_KEY, "" + id);
-		if (value == null) {
-			Map<String, Shouchong> config = getShouchongConfig();
-			return config.get("" + id);
-		} else {
-			Shouchong.Builder builder = Shouchong.newBuilder();
-			if(RedisService.parseJson(value, builder))
-				return builder.build();
-		}
-		
-		return null;
+		Map<Integer, Shouchong> map = getShouchongConfig();
+		return map.get(id);
 	}
 	
-	public Map<String, Shouchong> getShouchongConfig() {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_SHOUCHONG_KEY);
-		if(keyvalue.isEmpty()){
-			Map<String, Shouchong> map = buildShouchongConfig();
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Shouchong> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-			}
-			hputAll(RedisKey.ACTIVITY_SHOUCHONG_KEY, redismap);
-			return map;
-		}else{
-			Map<String, Shouchong> map = new HashMap<String, Shouchong>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Shouchong.Builder builder = Shouchong.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Shouchong> getShouchongConfig() {
+		Map<Integer, Shouchong> map = CacheService.hgetcache(RedisKey.ACTIVITY_SHOUCHONG_KEY);
+		return map;
 	}
 	
-	private Map<String, Shouchong> buildShouchongConfig(){
+	private void buildShouchongConfig(){
 		String xml = RedisService.ReadConfig(ACTIVITY_SHOUCHONG_FILE_NAME);
 		ShouchongList.Builder builder = ShouchongList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACTIVITY_SHOUCHONG_FILE_NAME);
-			return null;
-		}
-		
-		Map<String, Shouchong> map = new HashMap<String, Shouchong>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Shouchong> map = new HashMap<Integer, Shouchong>();
 		for(Shouchong.Builder kaifu : builder.getDataBuilderList()){
-			map.put("" + kaifu.getId(), kaifu.build());
+			map.put(kaifu.getId(), kaifu.build());
 		}
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACTIVITY_SHOUCHONG_KEY, map);
 	}
 	
 	//activity + type
-	public Map<String, Activity> getActivityConfig(int type) {
-		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_FILE_PREFIX + type);
-		if(keyvalue.isEmpty()){
-			Map<String, Activity> map = buildActivityConfig(type);
-			Map<String, String> redismap = new HashMap<String, String>();
-			for(Entry<String, Activity> entry : map.entrySet()){
-				redismap.put(entry.getKey(), RedisService.formatJson(entry.getValue()));
-//				expireAt(RedisKey.ACTIVITY_FILE_PREFIX + type, DateUtil.getDate(entry.getValue().getEndtime()));
-			}
-			hputAll(RedisKey.ACTIVITY_FILE_PREFIX + type, redismap);
-			return map;
-		}else{
-			Map<String, Activity> map = new HashMap<String, Activity>();
-			for(Entry<String, String> entry : keyvalue.entrySet()){
-				Activity.Builder builder = Activity.newBuilder();
-				if(RedisService.parseJson(entry.getValue(), builder))
-					map.put(entry.getKey(), builder.build());
-			}
-			return map;
-		}
+	public Map<Integer, Activity> getActivityConfig(int type) {
+		Map<Integer, Activity> map = CacheService.hgetcache(RedisKey.ACTIVITY_FILE_PREFIX + type);
+		return map;
 	}
 	
-	private Map<String, Activity> buildActivityConfig(int type){
+	private void buildActivityConfig(int type){
 		String xml = RedisService.ReadConfig(ACTIVITY_FILE_PREFIX + type + ".xml");
 		ActivityList.Builder builder = ActivityList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + ACTIVITY_FILE_PREFIX + type + ".xml");
-			return null;
-		}
-		
-		Map<String, Activity> map = new HashMap<String, Activity>();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Activity> map = new HashMap<Integer, Activity>();
 		for(Activity.Builder activity : builder.getActivityBuilderList()){
-			map.put("" + activity.getId(), activity.build());
+			map.put(activity.getId(), activity.build());
 		}
-		
-		return map;
+		CacheService.hputcacheAll(RedisKey.ACTIVITY_FILE_PREFIX + type, map);
 	}
 	
 	public void setRichangSendRewardRecord(int serverId, int type) {
 		String key = buildRichangSendRewardRedisKey(serverId);
-		redisService.sadd(key, "" + type);
-		redisService.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
+		sadd(key, "" + type);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 	}
 	
 	public boolean hasRichangRewardSend(int serverId, int type) {
 		String key = buildRichangSendRewardRedisKey(serverId);
-		return redisService.sismember(key, "" + type);
+		return sismember(key, "" + type);
 	}
 	
 	private String buildRichangSendRewardRedisKey(int serverId) {

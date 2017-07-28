@@ -18,8 +18,8 @@ public class BattletowerRedisService extends CacheService {
 	private static final String TOWERREWARD2_FILE_NAME = "lol_towerreward2.xml";
 	
 	public BattletowerRedisService() {
-		buildTowerReward1Config();
-		buildTowerReward2Config();
+		// buildTowerReward1Config();
+		// buildTowerReward2Config();
 	}
 	
 	//tower reward1

@@ -39,10 +39,10 @@ public class AchieveService {
 	}
 	
 	public void sendAchieveScore(long userId, int targetId, int count, boolean isAdded) {
-		Map<String, Achieve> map = achieveRedisService.getAchieveConfig();
-		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
+		Map<Integer, Achieve> map = achieveRedisService.getAchieveConfig();
+		Iterator<Entry<Integer, Achieve>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Achieve> entry = it.next();
+			Entry<Integer, Achieve> entry = it.next();
 			Achieve achieve = entry.getValue();
 			if (achieve.getTargetid() == targetId) {
 				UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, achieve.getId());
@@ -108,10 +108,10 @@ public class AchieveService {
 	}
 	
 	private void isDeleteNotice(long userId) {
-		Map<String, Achieve> map = achieveRedisService.getAchieveConfig();
-		Iterator<Entry<String, Achieve>> it = map.entrySet().iterator();
+		Map<Integer, Achieve> map = achieveRedisService.getAchieveConfig();
+		Iterator<Entry<Integer, Achieve>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
-			Entry<String, Achieve> entry = it.next();
+			Entry<Integer, Achieve> entry = it.next();
 			UserAchieveBean ua = userAchieveService.selectUserAchieve(userId, entry.getValue().getId());
 			if (isCompleteNew(ua)) 
 				return;

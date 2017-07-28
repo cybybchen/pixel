@@ -50,10 +50,12 @@ public class ShopRedisService extends RedisService{
 	
 	public ShopRedisService() {
 		// buildExpeditionShopConfig();
+		// readExpeditionShopComms();
 		// buildBattletowerShopConfig();
-		// buildContractRewardList();
+		// readBattletowerShopComms();
 		// buildPurchaseCoinCostList();
 		// readUnionShopConfig();
+		// readUnionShopCommsConfig();
 		buildDailyShopConfig();
 		readDailyShopComms();
 		buildBlackShopConfig();
@@ -61,12 +63,10 @@ public class ShopRedisService extends RedisService{
 		buildLadderShopConfig();
 		buildLibaoShop();
 		buildVipLibao();
-		buildPurchaseCoinReward();
-		readExpeditionShopComms();
-		readUnionShopCommsConfig();
-		readBattletowerShopComms();
-		readRaidShopConfig();
-		buildContractConfig();
+		// buildPurchaseCoinReward();
+//		readRaidShopConfig();
+		// buildContractRewardList();
+		// buildContractConfig();
 	}
 	
 	//普通商店
@@ -1137,14 +1137,10 @@ public class ShopRedisService extends RedisService{
 		return map.get(quality);
 	}
 	
-	private Map<Integer, ContractWeight> buildContractConfig(){
+	private void buildContractConfig(){
 		String xml = ReadConfig("lol_soulcontract.xml");
 		ContractWeightList.Builder builder = ContractWeightList.newBuilder();
-		if(!parseXml(xml, builder)){
-			logger.warn("cannot build " + "lol_soulcontract.xml");
-			return null;
-		}
-		
+		parseXml(xml, builder);
 		Map<Integer, ContractWeight> map = new HashMap<Integer, ContractWeight>();
 		for(ContractWeight.Builder weight : builder.getQualityBuilderList()){
 			int weightall = 0;
@@ -1155,8 +1151,6 @@ public class ShopRedisService extends RedisService{
 			map.put(weight.getQuality(), weight.build());
 		}
 		CacheService.hputcacheAll(RedisKey.PURCHASECONTRACTWEIGHT_CONFIG, map);
-		
-		return map;
 	}
 	
 	public MultiReward.Builder getContractRewardList(){

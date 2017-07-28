@@ -74,17 +74,17 @@ public class AreaRedisService extends RedisService{
 	private MailRedisService mailRedisService;
 	
 	public AreaRedisService() {
-		buildAreaResourceConfig();
-		buildAreaMode();//after buildAreaResourceConfig
-		buildAreaBuffConfig();
-		buildMonsterRandConfig();
-		buildBossRandConfig();
-		buildBossRewardConfig();
-		buildAreaBossConfig();
-		buildAreaPosition();
-		buildAreaMonsterConfig();
-		buildAreaMonsterReward();
-		buildAreaEquipConfig();
+//		buildAreaResourceConfig();
+//		buildAreaMode();//after buildAreaResourceConfig
+//		buildAreaBuffConfig();
+//		buildMonsterRandConfig();
+//		buildBossRandConfig();
+//		buildBossRewardConfig();
+//		buildAreaBossConfig();
+//		buildAreaPosition();
+//		buildAreaMonsterConfig();
+//		buildAreaMonsterReward();
+//		buildAreaEquipConfig();
 	}
 	
 	public boolean isAreaOpen(UserBean user, int areaId){
@@ -777,7 +777,7 @@ public class AreaRedisService extends RedisService{
 		return map;
 	}
 
-	public Map<Integer, AreaMonsterList> buildAreaMonsterConfig(){
+	private void buildAreaMonsterConfig(){
 		Map<Integer, AreaMonsterList> map = new HashMap<Integer, AreaMonsterList>();
 		String xml = RedisService.ReadConfig("lol_regionpve.xml");
 		AreaMonsterList.Builder builder = AreaMonsterList.newBuilder();
@@ -796,7 +796,6 @@ public class AreaRedisService extends RedisService{
 			monsters.addRegion(monster);
 		}
 		CacheService.hputcacheAll(RedisKey.AREAMONSTER_CONFIG, map);
-		return map;
 	}
 
 	public AreaMonsterReward getAreaMonsterReward(int id){

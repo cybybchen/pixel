@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
 import javax.websocket.OnMessage;
@@ -35,9 +33,6 @@ import com.trans.pixel.service.UserService;
 /**
  * WebSocket 消息推送服务类
  * 
- * @author XXX
- * 
- *         2016-7-26 00:00:00
  */
 @ServerEndpoint(value = "/websocket/chat/{userId}")
 // @ServerEndpoint(value = "/websocket/chat/{relationId}/{userCode}",
@@ -55,15 +50,17 @@ public class ChatAction {
 	private static final CopyOnWriteArraySet<ChatAction> onlineUsers = new CopyOnWriteArraySet<ChatAction>();
 	private String nickname;
 	private Session session;
-	private HttpSession httpSession;
+//	private HttpSession httpSession;
 	private int serverId;
 
 	private static final UserService userService = (UserService) ContextLoader
 			.getCurrentWebApplicationContext().getBean("userService");
 //	@Resource(name = "redisTemplate")
+	@SuppressWarnings("unchecked")
 	private RedisTemplate<String, String> redis = (RedisTemplate<String, String>) ContextLoader
 			.getCurrentWebApplicationContext().getBean("redisTemplate");
 //	@Resource(name = "redisTemplate1")
+	@SuppressWarnings("unchecked")
 	private RedisTemplate<String, String> redis1 = (RedisTemplate<String, String>) ContextLoader
 			.getCurrentWebApplicationContext().getBean("redisTemplate1");
 
@@ -99,7 +96,6 @@ public class ChatAction {
 				++i;
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -244,7 +240,6 @@ public class ChatAction {
 			try {
 				in.close();
 			} catch (final IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

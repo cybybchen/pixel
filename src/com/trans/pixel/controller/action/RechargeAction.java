@@ -28,7 +28,7 @@ public class RechargeAction {
     @ResponseBody
     public String rechrage(HttpServletRequest request, HttpServletResponse response) {
     	Map<String, String> params = getParamsMap(request);
-		logger.debug("recall params is:" + params);
+		logger.error("recall params is:" + params);
 		
 		rechargeService.doRecharge(null, params, false);
 		
@@ -37,7 +37,7 @@ public class RechargeAction {
     
     private Map<String, String> getParamsMap(HttpServletRequest request) {
 		Map<String, String> paramsMap = HmacSHA1Encryption.parseRequest(request);
-		logger.info("params " + paramsMap);
+		logger.error("params " + paramsMap);
 		
 		return paramsMap;
 	}
