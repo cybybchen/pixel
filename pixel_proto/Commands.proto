@@ -84,6 +84,7 @@ message UserInfo {
 	optional string markId = 95;	
 	optional string recommandMarkId = 96;
 	optional uint32 titleOrder = 97;
+	optional string signName = 98;
 }
 
 message JewelPool {
@@ -2805,6 +2806,10 @@ message RequestExtraRewardCommand {
 message RequestLoginCommand {
 }
 
+message RequestSignNameCommand {
+	required string signName = 1;
+}
+
 message ResponseUserInfoCommand {
 	required UserInfo user = 1;
 }
@@ -3770,6 +3775,7 @@ message RequestCommand {
 	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
 	optional RequestCipherRewardCommand cipherRewardCommand = 260;
 	optional RequestEventQuickFightCommand eventQuickFightCommand = 261;
+	optional RequestSignNameCommand signNameCommand = 262;
 }
 ////////// Commands
 message ErrorCommand {

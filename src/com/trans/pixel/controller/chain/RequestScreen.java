@@ -111,6 +111,7 @@ import com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowJewelCommand;
@@ -327,6 +328,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetLadderUserInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSignNameCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestStartMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
@@ -879,6 +881,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasLadderUserInfoCommand()) {
 			RequestGetLadderUserInfoCommand cmd = request.getLadderUserInfoCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasSignNameCommand()) {
+			RequestSignNameCommand cmd = request.getSignNameCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeroStrengthenCommand()) {

@@ -35,6 +35,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.service.ActivityService;
@@ -407,8 +408,16 @@ public class UserCommandService extends BaseCommandService {
 		userService.deleteUserIdByName(user.getServerId(), user.getUserName());
 		user.setUserName(cmd.getNewName());
 		userService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
-		userService.cache(user.getServerId(), user.buildShort());
+		
 		userService.updateUser(user);
+		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void signName(RequestSignNameCommand cmd, Builder responseBuilder, UserBean user) {
+		user.setSignName(cmd.getSignName());
+		userService.updateUser(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

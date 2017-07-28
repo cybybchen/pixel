@@ -139,6 +139,7 @@ public class UserBean {
 	private int friendVip = 0;
 	private int unionExp = 0;
 	private int titleOrder = 0;
+	private String signName = "";
 	/**
 	 * 主角sp总数
 	 */
@@ -1344,6 +1345,12 @@ public class UserBean {
 	public void setTitleOrder(int titleOrder) {
 		this.titleOrder = titleOrder;
 	}
+	public String getSignName() {
+		return signName;
+	}
+	public void setSignName(String signName) {
+		this.signName = signName;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1385,6 +1392,7 @@ public class UserBean {
 		builder.setUnionExp(unionExp);
 		builder.setTitleOrder(titleOrder);
 		builder.setFriendVip(friendVip);
+		builder.setSignName(signName);
 		
 		return builder.build();
 	}
@@ -1528,6 +1536,7 @@ public class UserBean {
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
 		builder.setTitleOrder(titleOrder);
+		builder.setSignName(signName);
 		
 		return builder.build();
 	}
