@@ -285,6 +285,13 @@ message Event {
         //optional int32 eventcount = 12;
 }
 
+message FightInfo {
+        optional int32 id = 3;
+        optional UserInfo enemy = 4;
+        required string fightInfo = 1;
+        required string fightData = 2;
+}
+
 ////////// ShopProto
 message ContractWeightList {
 	repeated ContractWeight quality = 1;
@@ -1476,6 +1483,7 @@ message RequestSendMailCommand {
 	required string content = 2;
 	optional int32 relatedId = 3;
 	required int32 type = 4; //5:call brother	
+	optional uint32 fightId = 5;
 }
 
 message RequestBrotherMineInfoCommand {
@@ -2629,12 +2637,6 @@ message ResponseUserLadderCommand {
 	repeated UserLadder user = 1;
 }
 
-message FightInfo {
-	optional int32 id = 3;
-	optional UserInfo enemy = 4;
-	required string fightInfo = 1;
-	required string fightData = 2;
-}
 message RequestGetFightInfoCommand {
 }
 message RequestFightInfoCommand {
@@ -2992,6 +2994,7 @@ message Mail {
 	repeated RewardInfo reward = 9;
 	optional bool isRead = 13;
 	optional UserInfo user = 14;
+	optional string fightInfo = 15;
 }
 
 message MailList {
