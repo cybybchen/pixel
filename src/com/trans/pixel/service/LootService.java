@@ -108,6 +108,7 @@ public class LootService {
 		levelRedisService.saveUserLevel(userLevel);
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		userService.updateUser(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		if(responseBuilder != null) {
 			responseBuilder.setLevelLootCommand(userLevel.build());
 			pusher.pushUserInfoCommand(responseBuilder, user);
