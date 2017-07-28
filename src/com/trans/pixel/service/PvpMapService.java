@@ -349,7 +349,7 @@ public class PvpMapService {
 				redis.deleteEvent(user, positionid);
 			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
 			Map<Integer, PVPMap> map = redis.getPvpMap();
-			if(map.containsKey(event.getFieldid()+"")) {
+			if(map.containsKey(event.getFieldid())) {
 				List<RewardInfo> list = map.get(event.getFieldid()).getLootlistList();
 				for(RewardInfo rd : list) {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
