@@ -3313,6 +3313,7 @@ message RequestQuitUnionCommand {//退出公会
 message RequestUnionInfoCommand {//公会
 	optional bool isNewVersion = 1;
 	optional UNION_INFO_TYPE type = 2;
+	optional uint32 unionId = 3;//查看其他工会
 }
 
 enum UNION_INFO_TYPE {

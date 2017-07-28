@@ -71,36 +71,40 @@ public class UnionCommandService extends BaseCommandService {
 	
 	public void getUnion(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
-		boolean isNewVersion = false;
-		UNION_INFO_TYPE type = UNION_INFO_TYPE.TYPE_UNION;
-		if (cmd.hasIsNewVersion())
-			isNewVersion = true;
-		if (cmd.hasType())
-			type = cmd.getType();
-		
 		Union union = null;
-		if (isNewVersion) {
-			switch (type.getNumber()) {
-				case UNION_INFO_TYPE.TYPE_UNION_VALUE:
-					union = unionService.getUnion(user, isNewVersion);
-					break;
-				case UNION_INFO_TYPE.TYPE_APPLY_VALUE:
-					builder.addAllApplies(unionService.getUnionApply(user));
-					break;
-				case UNION_INFO_TYPE.TYPE_BOSS_VALUE:
-					builder.addAllUnionBoss(unionService.getUnionBossList(user));
-					break;
-				default:
-					break;
-					
-			}
-		} else
-			union = unionService.getUnion(user, isNewVersion);
-		
-		if(type.equals(UNION_INFO_TYPE.TYPE_UNION) && union == null){
-			getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
-			return;
-		} 
+		if (cmd.hasUnionId()) {
+			union = unionService.getUnionById(user.getServerId(), cmd.getUnionId());
+		} else {
+			boolean isNewVersion = false;
+			UNION_INFO_TYPE type = UNION_INFO_TYPE.TYPE_UNION;
+			if (cmd.hasIsNewVersion())
+				isNewVersion = true;
+			if (cmd.hasType())
+				type = cmd.getType();
+			
+			if (isNewVersion) {
+				switch (type.getNumber()) {
+					case UNION_INFO_TYPE.TYPE_UNION_VALUE:
+						union = unionService.getUnion(user, isNewVersion);
+						break;
+					case UNION_INFO_TYPE.TYPE_APPLY_VALUE:
+						builder.addAllApplies(unionService.getUnionApply(user));
+						break;
+					case UNION_INFO_TYPE.TYPE_BOSS_VALUE:
+						builder.addAllUnionBoss(unionService.getUnionBossList(user));
+						break;
+					default:
+						break;
+						
+				}
+			} else
+				union = unionService.getUnion(user, isNewVersion);
+			
+			if(type.equals(UNION_INFO_TYPE.TYPE_UNION) && union == null){
+				getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
+				return;
+			} 
+		}
 		if (union != null)
 			builder.setUnion(union);
 		

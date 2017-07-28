@@ -31601,6 +31601,24 @@ public final class UnionProto {
      * <code>optional .com.trans.pixel.protoc.UNION_INFO_TYPE type = 2;</code>
      */
     com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE getType();
+
+    // optional uint32 unionId = 3;
+    /**
+     * <code>optional uint32 unionId = 3;</code>
+     *
+     * <pre>
+     *查看其他工会
+     * </pre>
+     */
+    boolean hasUnionId();
+    /**
+     * <code>optional uint32 unionId = 3;</code>
+     *
+     * <pre>
+     *查看其他工会
+     * </pre>
+     */
+    int getUnionId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestUnionInfoCommand}
@@ -31671,6 +31689,11 @@ public final class UnionProto {
                 bitField0_ |= 0x00000002;
                 type_ = value;
               }
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              unionId_ = input.readUInt32();
               break;
             }
           }
@@ -31745,9 +31768,34 @@ public final class UnionProto {
       return type_;
     }
 
+    // optional uint32 unionId = 3;
+    public static final int UNIONID_FIELD_NUMBER = 3;
+    private int unionId_;
+    /**
+     * <code>optional uint32 unionId = 3;</code>
+     *
+     * <pre>
+     *查看其他工会
+     * </pre>
+     */
+    public boolean hasUnionId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 unionId = 3;</code>
+     *
+     * <pre>
+     *查看其他工会
+     * </pre>
+     */
+    public int getUnionId() {
+      return unionId_;
+    }
+
     private void initFields() {
       isNewVersion_ = false;
       type_ = com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE.TYPE_UNION;
+      unionId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -31767,6 +31815,9 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, type_.getNumber());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, unionId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -31783,6 +31834,10 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, unionId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -31908,6 +31963,8 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         type_ = com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE.TYPE_UNION;
         bitField0_ = (bitField0_ & ~0x00000002);
+        unionId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -31944,6 +32001,10 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000002;
         }
         result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.unionId_ = unionId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -31965,6 +32026,9 @@ public final class UnionProto {
         }
         if (other.hasType()) {
           setType(other.getType());
+        }
+        if (other.hasUnionId()) {
+          setUnionId(other.getUnionId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -32058,6 +32122,55 @@ public final class UnionProto {
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000002);
         type_ = com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE.TYPE_UNION;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 unionId = 3;
+      private int unionId_ ;
+      /**
+       * <code>optional uint32 unionId = 3;</code>
+       *
+       * <pre>
+       *查看其他工会
+       * </pre>
+       */
+      public boolean hasUnionId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 unionId = 3;</code>
+       *
+       * <pre>
+       *查看其他工会
+       * </pre>
+       */
+      public int getUnionId() {
+        return unionId_;
+      }
+      /**
+       * <code>optional uint32 unionId = 3;</code>
+       *
+       * <pre>
+       *查看其他工会
+       * </pre>
+       */
+      public Builder setUnionId(int value) {
+        bitField0_ |= 0x00000004;
+        unionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 unionId = 3;</code>
+       *
+       * <pre>
+       *查看其他工会
+       * </pre>
+       */
+      public Builder clearUnionId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        unionId_ = 0;
         onChanged();
         return this;
       }
@@ -38481,30 +38594,30 @@ public final class UnionProto {
       "\005\"2\n\036RequestSetUnionAnnounceCommand\022\020\n\010a" +
       "nnounce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionComm" +
       "and\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001" +
-      "(\003\"f\n\027RequestUnionInfoCommand\022\024\n\014isNewVe" +
+      "(\003\"w\n\027RequestUnionInfoCommand\022\024\n\014isNewVe" +
       "rsion\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.pi" +
-      "xel.protoc.UNION_INFO_TYPE\"<\n\031RequestAtt" +
-      "ackUnionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006team" +
-      "id\030\002 \002(\003\"+\n\031RequestDefendUnionCommand\022\016\n",
-      "\006teamid\030\002 \002(\003\"\271\001\n\030ResponseUnionInfoComma" +
-      "nd\022,\n\005union\030\001 \001(\0132\035.com.trans.pixel.prot" +
-      "oc.Union\0223\n\007applies\030\002 \003(\0132\".com.trans.pi" +
-      "xel.protoc.UnionApply\022:\n\tunionBoss\030\003 \003(\013" +
-      "2\'.com.trans.pixel.protoc.UnionBossRecor" +
-      "d\"\'\n\027RequestUnionListCommand\022\014\n\004type\030\001 \001" +
-      "(\005\"H\n\030ResponseUnionListCommand\022,\n\005union\030" +
-      "\001 \003(\0132\035.com.trans.pixel.protoc.Union\"?\n\034" +
-      "RequestSubmitBosskillCommand\022\017\n\007groupId\030" +
-      "\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskill",
-      "Command\"R\n\027ResponseBosskillCommand\0227\n\006re" +
-      "cord\030\001 \003(\0132\'.com.trans.pixel.protoc.Boss" +
-      "GroupRecord\"V\n\030ResponseUnionBossCommand\022" +
-      ":\n\tunionBoss\030\001 \003(\0132\'.com.trans.pixel.pro" +
-      "toc.UnionBossRecord\"K\n\034RequestUnionBossF" +
-      "ightCommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022" +
-      "\017\n\007percent\030\003 \001(\005*@\n\017UNION_INFO_TYPE\022\016\n\nT" +
-      "YPE_UNION\020\001\022\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS" +
-      "\020\003"
+      "xel.protoc.UNION_INFO_TYPE\022\017\n\007unionId\030\003 " +
+      "\001(\r\"<\n\031RequestAttackUnionCommand\022\017\n\007unio" +
+      "nId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDefe",
+      "ndUnionCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030Respo" +
+      "nseUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035.com" +
+      ".trans.pixel.protoc.Union\0223\n\007applies\030\002 \003" +
+      "(\0132\".com.trans.pixel.protoc.UnionApply\022:" +
+      "\n\tunionBoss\030\003 \003(\0132\'.com.trans.pixel.prot" +
+      "oc.UnionBossRecord\"\'\n\027RequestUnionListCo" +
+      "mmand\022\014\n\004type\030\001 \001(\005\"H\n\030ResponseUnionList" +
+      "Command\022,\n\005union\030\001 \003(\0132\035.com.trans.pixel" +
+      ".protoc.Union\"?\n\034RequestSubmitBosskillCo" +
+      "mmand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030",
+      "\n\026RequestBosskillCommand\"R\n\027ResponseBoss" +
+      "killCommand\0227\n\006record\030\001 \003(\0132\'.com.trans." +
+      "pixel.protoc.BossGroupRecord\"V\n\030Response" +
+      "UnionBossCommand\022:\n\tunionBoss\030\001 \003(\0132\'.co" +
+      "m.trans.pixel.protoc.UnionBossRecord\"K\n\034" +
+      "RequestUnionBossFightCommand\022\016\n\006bossId\030\001" +
+      " \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*@\n\017UNI" +
+      "ON_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022\016\n\nTYPE_APP" +
+      "LY\020\002\022\r\n\tTYPE_BOSS\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -38762,7 +38875,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_descriptor,
-              new java.lang.String[] { "IsNewVersion", "Type", });
+              new java.lang.String[] { "IsNewVersion", "Type", "UnionId", });
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_descriptor =
             getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_fieldAccessorTable = new
