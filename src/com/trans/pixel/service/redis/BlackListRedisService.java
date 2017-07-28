@@ -8,6 +8,7 @@ import net.sf.json.JSONObject;
 
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.BlackListBean;
 
@@ -63,6 +64,8 @@ public class BlackListRedisService extends RedisService{
 	public void deleteRank(BlackListBean bean) {
 		zremove(RedisKey.ZHANLI_RANK+bean.getServerId(), bean.getUserId()+"");
 		zremove(RedisKey.ZHANLI_RANK_NODELETE+bean.getServerId(), bean.getUserId()+"");
+		zremove(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + bean.getServerId() + RedisKey.SPLIT + RedisKey.RANK_PREFIX + RankConst.TYPE_VIP_HUOYUE, bean.getUserId() + "");
+		zremove(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + bean.getServerId() + RedisKey.SPLIT + RedisKey.RANK_PREFIX + RankConst.TYPE_RECHARGE, bean.getUserId() + "");
 	}
 
 	public boolean isNoaccount(String account){
