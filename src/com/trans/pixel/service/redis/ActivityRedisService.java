@@ -42,8 +42,6 @@ public class ActivityRedisService extends RedisService {
 		buildKaifu2Config();
 		buildKaifuConfig();
 		buildShouchongConfig();
-		buildActivityConfig(1);
-		buildActivityConfig(2);
 	}
 	
 	//richang activity
@@ -213,19 +211,28 @@ public class ActivityRedisService extends RedisService {
 	
 	//activity + type
 	public Map<Integer, Activity> getActivityConfig(int type) {
-		Map<Integer, Activity> map = CacheService.hgetcache(RedisKey.ACTIVITY_FILE_PREFIX + type);
-		return map;
-	}
-	
-	private void buildActivityConfig(int type){
-		String xml = RedisService.ReadConfig(ACTIVITY_FILE_PREFIX + type + ".xml");
-		ActivityList.Builder builder = ActivityList.newBuilder();
-		RedisService.parseXml(xml, builder);
-		Map<Integer, Activity> map = new HashMap<Integer, Activity>();
-		for(Activity.Builder activity : builder.getActivityBuilderList()){
-			map.put(activity.getId(), activity.build());
+		Map<String, String> keyvalue = hget(RedisKey.ACTIVITY_FILE_PREFIX + type);
+		if(keyvalue.isEmpty()) {
+			String xml = RedisService.ReadConfig(ACTIVITY_FILE_PREFIX + type + ".xml");
+			ActivityList.Builder builder = ActivityList.newBuilder();
+			RedisService.parseXml(xml, builder);
+			Map<Integer, Activity> map = new HashMap<Integer, Activity>();
+			keyvalue = new HashMap<String, String>();
+			for(Activity.Builder activity : builder.getActivityBuilderList()){
+				map.put(activity.getId(), activity.build());
+				keyvalue.put(activity.getId()+"", RedisService.formatJson(activity.build()));
+			}
+			hputAll(RedisKey.ACTIVITY_FILE_PREFIX + type, keyvalue);
+			return map;
+		}else {
+			Map<Integer, Activity> map = new HashMap<Integer, Activity>();
+			for(String value : keyvalue.values()){
+				Activity.Builder builder = Activity.newBuilder();
+				parseJson(value, builder);
+				map.put(builder.getId(), builder.build());
+			}
+			return map;
 		}
-		CacheService.hputcacheAll(RedisKey.ACTIVITY_FILE_PREFIX + type, map);
 	}
 	
 	public void setRichangSendRewardRecord(int serverId, int type) {
