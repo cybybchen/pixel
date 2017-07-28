@@ -106,6 +106,7 @@ public class LootService {
 		rewards.addLoot(reward);
 		userLevel.setLootTimeNormal((int)current);
 		levelRedisService.saveUserLevel(userLevel);
+		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		userService.updateUser(user);
 		if(responseBuilder != null) {
 			responseBuilder.setLevelLootCommand(userLevel.build());
