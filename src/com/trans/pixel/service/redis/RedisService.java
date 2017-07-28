@@ -16,8 +16,6 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -39,6 +37,8 @@ import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
 
+import net.sf.json.JSONObject;
+
 @Repository
 public class RedisService {
 	final public static String PROPERTIES = "resources/config/";
@@ -48,10 +48,10 @@ public class RedisService {
 	@Resource(name = "redisTemplate1")
 	private RedisTemplate<String, String> redisTemplate1;
 
-	@Resource
-	private RedisTemplate0Service t0Service;
-	@Resource
-	private RedisTemplate1Service t1Service;
+//	@Resource
+//	private RedisTemplate0Service t0Service;
+//	@Resource
+//	private RedisTemplate1Service t1Service;
 
 	/**
 	 * 只有当返回true才能使用builder
