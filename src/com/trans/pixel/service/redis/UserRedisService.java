@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.sf.json.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -21,12 +19,17 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipList;
 import com.trans.pixel.protoc.ShopProto.Libao;
+import com.trans.pixel.service.cache.CacheService;
+
+import net.sf.json.JSONObject;
 
 @Repository
 public class UserRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRedisService.class);
-
-	public final static String VIP = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
+	
+	public UserRedisService() {
+		buildVip();
+	}
 	
 	public <T> UserBean getUser(T userId) {
 		String value = hget(RedisKey.USERDATA+userId, "UserData", Long.parseLong("" + userId));
@@ -196,31 +199,19 @@ public class UserRedisService extends RedisService{
 	}
 
 	public VipInfo getVip(int id){
-		if(id <= 0)
-			return null;
-		VipInfo.Builder builder = VipInfo.newBuilder();
-		String value = hget(VIP, id+"");
-		if(value != null && parseJson(value, builder)){
-			return builder.build();
-		}else{
-			return buildVip(id);
-		}
+		Map<Integer, VipInfo> map = CacheService.hgetcache(RedisKey.VIP_CONFIG);
+		return map.get(id);
 	}
 	
-	public VipInfo buildVip(int id){
+	private void buildVip(){
 		String xml = ReadConfig("ld_vip.xml");
 		VipList.Builder builder = VipList.newBuilder();
 		parseXml(xml, builder);
-		Map<String, String> keyvalue = new HashMap<String, String>();
+		Map<Integer, VipInfo> map = new HashMap<Integer, VipInfo>();
 		for(VipInfo vip : builder.getDataList()){
-			keyvalue.put(vip.getVip()+"", formatJson(vip));
+			map.put(vip.getVip(), vip);
 		}
-		hputAll(VIP, keyvalue);
-		for(VipInfo vip : builder.getDataList()){
-			if(id == vip.getVip())
-				return vip;
-		}
-		return null;
+		CacheService.hputcacheAll(RedisKey.VIP_CONFIG, map);
 	}
 	
 	public Map<String, String> getUserTypeMap() {

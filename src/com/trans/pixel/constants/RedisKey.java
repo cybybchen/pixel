@@ -60,6 +60,8 @@ public class RedisKey {
 	public static final String TEAMRAID_PREFIX = PREFIX+"TeamRaid_";
 	public static final String USER_RECOMMAND_PREFIX = PREFIX + "UserRecommand_";
 
+
+	public final static String VIP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";
 	public final static String AREAPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"AreaPosition";
