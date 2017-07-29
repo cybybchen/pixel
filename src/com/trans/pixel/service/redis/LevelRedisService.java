@@ -428,19 +428,20 @@ public class LevelRedisService extends RedisService {
 			return rewards;
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		for(RewardInfo loot : eventconfig.getLootlistList()){
-			int count = 1;
-			if(loot.hasWeight()) {
+			reward.setItemid(loot.getItemid());
+			if (loot.hasCounta()) {
+				reward.setCount(loot.getCount() + (level - 1) * loot.getCounta());
+			} else if (loot.hasWeight()) {
 				int weight = loot.getWeight()+(int)(loot.getWeightb()*level);
-				count = Math.max(0, weight/100);
+				int count = Math.max(0, weight/100);
 				weight = weight%100;
 				if(weight > RedisService.nextInt(100))
 					count++;
+				if(count > 0) {
+					reward.setCount(loot.getCount()*count);
+				}
 			}
-			if(count > 0) {
-				reward.setItemid(loot.getItemid());
-				reward.setCount(loot.getCount()*count);
-				rewards.addLoot(reward);
-			}
+			rewards.addLoot(reward);
 		}
 		if(eventconfig.getType() == 0) {//only fight event
 			if(eventconfig.hasEnemygroup())
