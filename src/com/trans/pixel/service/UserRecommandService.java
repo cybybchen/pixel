@@ -19,23 +19,23 @@ public class UserRecommandService {
 	private UserRecommandMapper userRecommandMapper;
 	
 	public int getRecommand(UserBean user) {
-		List<String> markIds = userRecommandRedisService.getRecomands(user.getId());
-		if (markIds == null || markIds.isEmpty()) {
-			markIds = userRecommandMapper.getRecommands(user.getId());
-			if (markIds == null || markIds.isEmpty())
+		List<String> userIds = userRecommandRedisService.getRecomands(user.getId());
+		if (userIds == null || userIds.isEmpty()) {
+			List<Long> userid2s = userRecommandMapper.getRecommands(user.getId());
+			if (userid2s == null || userid2s.isEmpty())
 				return 0;
 			
-			for (String markId : markIds)
-				userRecommandRedisService.saveRecommandInfo(user.getId(), markId);
+			for (Long userid2 : userid2s)
+				userRecommandRedisService.saveRecommandInfo(user.getId(), userid2);
 			
-			return markIds.size();
+			return userid2s.size();
 		}
 		
-		return markIds.size();
+		return userIds.size();
 	}
 	
-	public void saveRecommand(long userId, String markId) {
-		userRecommandRedisService.saveRecommandInfo(userId, markId);
-		userRecommandMapper.addRecommand(userId, markId);
+	public void saveRecommand(long userId, long userId2) {
+		userRecommandRedisService.saveRecommandInfo(userId, userId2);
+		userRecommandMapper.addRecommand(userId, userId2);
 	}
 }

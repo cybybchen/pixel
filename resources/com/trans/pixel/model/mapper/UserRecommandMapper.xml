@@ -3,15 +3,15 @@
 <mapper namespace="com.trans.pixel.model.mapper.UserRecommandMapper">
 
 	<insert id="addRecommand">
-	    INSERT INTO user_recommand(user_id, markId) 
-		 VALUES(#{userId}, #{markId})
+	    INSERT INTO user_recommand(user_id, user_id2) 
+		 VALUES(#{userId}, #{userId2})
 		 ON 
 	    duplicate key update
-	    markId=#{markId}
+	    user_id2=#{userId2}
 	</insert>
 
-	<select id="getRecommands" parameterType="long" resultType="string" >
-	    SELECT markId from user_recommand where user_id=#{userId}
+	<select id="getRecommands" parameterType="long" resultType="long" >
+	    SELECT user_id2 from user_recommand where user_id=#{userId}
 	</select>
 	
 </mapper>

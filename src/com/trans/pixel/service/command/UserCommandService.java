@@ -46,7 +46,6 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.NoticeMessageService;
-import com.trans.pixel.service.RequestService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
@@ -61,8 +60,9 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class UserCommandService extends BaseCommandService {
-	private static final Logger logger = LoggerFactory.getLogger(UserCommandService.class);
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(UserCommandService.class);
+
 	@Resource
 	private UserService userService;
 	@Resource
@@ -95,50 +95,56 @@ public class UserCommandService extends BaseCommandService {
 	private LootService lootService;
 	@Resource
 	private CostService costService;
-	@Resource
-	private RequestService requestService;
-	
-	
+
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
 		if (blackService.isNoaccount(head.getAccount())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
-			logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
+			logService.sendErrorLog(/* head.getAccount() */0,
+					head.getServerId(), RequestLoginCommand.class,
+					RedisService.formatJson(head),
+					ErrorConst.BLACK_ACCOUNT_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		UserBean user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+		UserBean user = userService.getUserByAccount(head.getServerId(),
+				head.getAccount());
 		if (user == null) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
-			logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.USER_NOT_EXIST);
-            responseBuilder.setErrorCommand(errorCommand);
+			logService.sendErrorLog(/* head.getAccount() */0,
+					head.getServerId(), RequestLoginCommand.class,
+					RedisService.formatJson(head), ErrorConst.USER_NOT_EXIST);
+			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		if (blackService.isNologin(user.getId()) || blackService.isNoidfa(user.getIdfa())) {
+		if (blackService.isNologin(user.getId())
+				|| blackService.isNoidfa(user.getIdfa())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_USER_ERROR);
-            logService.sendErrorLog(user.getId(), user.getServerId(), RequestLoginCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_USER_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					RequestLoginCommand.class, RedisService.formatJson(head),
+					ErrorConst.BLACK_USER_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-//		RequestLoginCommand cmd = request.getLoginCommand();
-//		if(cmd.getZhanli() > user.getZhanli()){
-//			user.setZhanli(cmd.getZhanli());
-//			userService.updateUserDailyData(user);
-//		}
-		user.setVersion(head.getVersion()+"");
+		// RequestLoginCommand cmd = request.getLoginCommand();
+		// if(cmd.getZhanli() > user.getZhanli()){
+		// user.setZhanli(cmd.getZhanli());
+		// userService.updateUserDailyData(user);
+		// }
+		user.setVersion(head.getVersion() + "");
 		userHeroService.selectUserNewHero(user.getId());
 		refreshUserLogin(user);
-		
+
 		/**
 		 * login activity
 		 */
 		activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_LOGIN);
-		
+
 		userService.cache(user.getServerId(), user.buildShort());
 		lootService.calLoot(user, responseBuilder, true);
 		pushCommand(responseBuilder, user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
+
 		noticeMessageService.composeLogin(user);
 	}
 
@@ -147,53 +153,66 @@ public class UserCommandService extends BaseCommandService {
 		HeadInfo head = request.getHead();
 		if (blackService.isNoaccount(head.getAccount())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_ACCOUNT_ERROR);
-            logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestRegisterCommand.class, RedisService.formatJson(head), ErrorConst.BLACK_ACCOUNT_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
+			logService.sendErrorLog(/* head.getAccount() */0,
+					head.getServerId(), RequestRegisterCommand.class,
+					RedisService.formatJson(head),
+					ErrorConst.BLACK_ACCOUNT_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		UserBean user = new UserBean();
-		user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+		user = userService.getUserByAccount(head.getServerId(),
+				head.getAccount());
 		if (user == null) {
 			user = new UserBean();
-			user.init(head.getServerId(), head.getAccount(), userService.handleUserName(head.getServerId(), registerCommand.getUserName()), registerCommand.getIcon());
-			user.setRegisterTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
-//		}
+			user.init(head.getServerId(), head.getAccount(), userService
+					.handleUserName(head.getServerId(),
+							registerCommand.getUserName()), registerCommand
+					.getIcon());
+			user.setRegisterTime(DateUtil
+					.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
+			// }
 			boolean hasRegistered = false;
-			try{
+			try {
 				userService.addNewUser(user);
-			}catch(Exception e){
+			} catch (Exception e) {
 				logger.error(e.getMessage());
 				hasRegistered = true;
 			}
-			if(hasRegistered){
-				user = userService.getUserByAccount(head.getServerId(), head.getAccount());
+			if (hasRegistered) {
+				user = userService.getUserByAccount(head.getServerId(),
+						head.getAccount());
 				if (user == null) {
 					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACCOUNT_REGISTER_FAIL);
-					logService.sendErrorLog(/*head.getAccount()*/0, head.getServerId(), RequestRegisterCommand.class, RedisService.formatJson(head), ErrorConst.ACCOUNT_REGISTER_FAIL);
-	            	responseBuilder.setErrorCommand(errorCommand);
+					logService.sendErrorLog(/* head.getAccount() */0,
+							head.getServerId(), RequestRegisterCommand.class,
+							RedisService.formatJson(head),
+							ErrorConst.ACCOUNT_REGISTER_FAIL);
+					responseBuilder.setErrorCommand(errorCommand);
 					return;
 				}
-			}else{
-//				user.setUserType(userService.randomUserType());
+			} else {
+				// user.setUserType(userService.randomUserType());
 				int addHeroId = registerCommand.getHeroId();
 				UserTalent userTalent = addRegisterTalent(user, addHeroId);
-				
+
 				if (userTalent != null)
 					user.setUseTalentId(addHeroId);
-					
+
 				user.setFirstGetHeroId(addHeroId);
 				addRegisterTeam(user, user.getUseTalentId());
 				/**
 				 * register activity
 				 */
-				activityService.handleActivity(user, ActivityConst.ACTIVITY_TYPE_REGISTER);
-				
+				activityService.handleActivity(user,
+						ActivityConst.ACTIVITY_TYPE_REGISTER);
+
 				userService.refreshUserDailyData(user);
 			}
 		}
 
-		user.setVersion(head.getVersion()+"");
-		if(serverService.getOnlineStatus(user.getVersion()) != 0){
+		user.setVersion(head.getVersion() + "");
+		if (serverService.getOnlineStatus(user.getVersion()) != 0) {
 			user.setGreenhand("14");
 			user.setSkill(1);
 			user.setAdvance(1);
@@ -202,29 +221,35 @@ public class UserCommandService extends BaseCommandService {
 		refreshUserLogin(user);
 		userService.cache(user.getServerId(), user.buildShort());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
+
 		pushCommand(responseBuilder, user);
 	}
-	
+
 	private UserTalent addRegisterTalent(UserBean user, int id) {
 		return userTalentService.initTalent(user, id);
 	}
-	
+
 	private void addRegisterTeam(UserBean user, int roleId) {
 		String teamRecord = "0,0|";
-		
-//		userTeamService.updateUserTeam(user.getId(), 2, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
-//		userTeamService.updateUserTeam(user.getId(), 3, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
-//		userTeamService.updateUserTeam(user.getId(), 4, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
-//		userTeamService.updateUserTeam(user.getId(), 5, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
-		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, user, 1, new ArrayList<TeamEngine>(), roleId);
-//		userTeamService.updateUserTeam(user.getId(), 2, "", "");
-//		userTeamService.updateUserTeam(user.getId(), 3, "", "");
-//		userTeamService.updateUserTeam(user.getId(), 4, "", "");
-//		userTeamService.updateUserTeam(user.getId(), 5, "", "");
+
+		// userTeamService.updateUserTeam(user.getId(), 2, teamRecord, user, 1,
+		// new ArrayList<TeamEngine>(), roleId);
+		// userTeamService.updateUserTeam(user.getId(), 3, teamRecord, user, 1,
+		// new ArrayList<TeamEngine>(), roleId);
+		// userTeamService.updateUserTeam(user.getId(), 4, teamRecord, user, 1,
+		// new ArrayList<TeamEngine>(), roleId);
+		// userTeamService.updateUserTeam(user.getId(), 5, teamRecord, user, 1,
+		// new ArrayList<TeamEngine>(), roleId);
+		userTeamService.updateUserTeam(user.getId(), 1, teamRecord, user, 1,
+				new ArrayList<TeamEngine>(), roleId);
+		// userTeamService.updateUserTeam(user.getId(), 2, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 3, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 4, "", "");
+		// userTeamService.updateUserTeam(user.getId(), 5, "", "");
 	}
-	
-	public void submitIcon(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void submitIcon(RequestSubmitIconCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		int icon = 0;
 		int frame = 0;
 		if (cmd.hasIcon())
@@ -232,10 +257,13 @@ public class UserCommandService extends BaseCommandService {
 		if (cmd.hasFrame())
 			frame = cmd.getFrame();
 		if (icon > 62000) {
-			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), icon);
+			UserHeadBean userHead = userHeadService.selectUserHead(
+					user.getId(), icon);
 			if (userHead == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST);
-				
+				logService.sendErrorLog(user.getId(), user.getServerId(),
+						cmd.getClass(), RedisService.formatJson(cmd),
+						ErrorConst.HEAD_NOT_EXIST);
+
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
 				responseBuilder.setErrorCommand(errorCommand);
 				pushCommandService.pushUserInfoCommand(responseBuilder, user);
@@ -243,10 +271,13 @@ public class UserCommandService extends BaseCommandService {
 			}
 		}
 		if (frame > 0 && frame != 65001) {
-			UserHeadBean userHead = userHeadService.selectUserHead(user.getId(), frame);
+			UserHeadBean userHead = userHeadService.selectUserHead(
+					user.getId(), frame);
 			if (userHead == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HEAD_NOT_EXIST);
-				
+				logService.sendErrorLog(user.getId(), user.getServerId(),
+						cmd.getClass(), RedisService.formatJson(cmd),
+						ErrorConst.HEAD_NOT_EXIST);
+
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.HEAD_NOT_EXIST);
 				responseBuilder.setErrorCommand(errorCommand);
 				pushCommandService.pushUserInfoCommand(responseBuilder, user);
@@ -257,27 +288,33 @@ public class UserCommandService extends BaseCommandService {
 			user.setIcon(icon);
 		if (frame > 0)
 			user.setFrame(frame);
-		
+
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);
-		
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-//		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
+		// responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}
-	
-	public void bindAccount(RequestBindAccountCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void bindAccount(RequestBindAccountCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		if (!user.getAccount().equals(cmd.getOldAccount())) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_NOT_EXIST);
-			
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.USER_NOT_EXIST);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
-//			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			// pushCommandService.pushUserInfoCommand(responseBuilder, user);
 			return;
 		}
-		UserBean olduser = userService.getUserByAccount(user.getServerId(), cmd.getNewAccount());
+		UserBean olduser = userService.getUserByAccount(user.getServerId(),
+				cmd.getNewAccount());
 		if (olduser != null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_HAS_EXIST);
-			
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.USER_HAS_EXIST);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_HAS_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
@@ -286,20 +323,24 @@ public class UserCommandService extends BaseCommandService {
 		user.setAccount(cmd.getNewAccount());
 		userService.updateUserToMysql(user);
 		userService.delUserIdByAccount(user.getServerId(), cmd.getOldAccount());
-		userService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
-		
+		userService.setUserIdByAccount(user.getServerId(), user.getAccount(),
+				user.getId());
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
-	public void submitGreenhand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void submitGreenhand(RequestGreenhandCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		if (cmd.hasGreenhand()) {
 			user.setGreenhand(cmd.getGreenhand());
-			
+
 			UserLevelBean userLevel = userLevelService.getUserLevel(user);
 			/**
 			 * send greenhand log
-			 */ 
-			logService.sendGreenhandLog(user.getServerId(), user.getId(), userLevel.getUnlockDaguan(), cmd.getGreenhand(), cmd.hasResult() ? cmd.getResult():true);
+			 */
+			logService.sendGreenhandLog(user.getServerId(), user.getId(),
+					userLevel.getUnlockDaguan(), cmd.getGreenhand(),
+					cmd.hasResult() ? cmd.getResult() : true);
 		}
 		if (cmd.hasAdvance())
 			user.setAdvance(cmd.getAdvance());
@@ -307,26 +348,30 @@ public class UserCommandService extends BaseCommandService {
 			user.setSkill(cmd.getSkill());
 		if (cmd.hasFailed())
 			user.setFailed(cmd.getFailed());
-		
+
 		userService.updateUser(user);
-		
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
-	public void userInfo(RequestUserInfoCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void userInfo(RequestUserInfoCommand cmd, Builder responseBuilder,
+			UserBean user) {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
-	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder,
+			UserBean user) {
 		int status = cmd.getStatus();
 		int type = 0;
 		if (cmd.hasExtraType())
 			type = cmd.getExtraType();
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		ResultConst ret = userService.handleExtra(user, status, type, rewardList);
+		ResultConst ret = userService.handleExtra(user, status, type,
+				rewardList);
 		if (ret instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
-			
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd), ret);
+
 			ErrorCommand errorCommand = buildErrorCommand(ret);
 			responseBuilder.setErrorCommand(errorCommand);
 		}
@@ -335,165 +380,173 @@ public class UserCommandService extends BaseCommandService {
 		}
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
-	public void bindRecommand(RequestBindRecommandCommand cmd, Builder responseBuilder, UserBean user) {
-		int serverId = UserBean.calServerIdByMarkId(cmd.getMarkId());
-		long userId = UserBean.calUserIdByMarkId(cmd.getMarkId());
-		if (!cmd.hasMarkId2() && serverId == user.getServerId() && userId == user.getId()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
-			
+
+	public void bindRecommand(RequestBindRecommandCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		if (user.getRecommandUserId() != 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.RECOMMAND_IS_EXIST_ERROR);
+
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_IS_EXIST_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		if (user.getId() == cmd.getUserId()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		
+
 		UserBean other = userService.getUserOther(cmd.getUserId());
 		if (other == null) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
-			
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.FRIEND_NOT_EXIST);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		
+
 		if (cmd.hasIsFirst() && cmd.getIsFirst() && other.getFriendVip() == 0) {
-			ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
+			ResponseRecommandCommand.Builder builder = ResponseRecommandCommand
+					.newBuilder();
 			builder.setUser(other.buildShort());
 			return;
 		}
-		
-		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
-		if (!cmd.hasMarkId2()) {//转发到master
-			ResponseRecommandCommand recommand = requestService.requestBindRecommand(cmd.getMarkId(), user.calMarkId(), serverId, userId);
-			builder.mergeFrom(recommand);
-			builder.setCount(userService.getRecommands(user));	
-		} else {//上家所在服务器
-			other = userService.getUserOther(userId);
-			if (other == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
-				
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
-				responseBuilder.setErrorCommand(errorCommand);
-				return;
-			}
+
+		userService.handlerRecommand(user, cmd.getUserId());
+
+		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand
+				.newBuilder();
+		if (user.getRecommandUserId() != 0) {
 			builder.setUser(other.buildShort());
 		}
-		
-		userService.handlerRecommand(user, userId, cmd.getMarkId(), cmd.getMarkId2());
+		builder.setCount(userService.getRecommands(user));
 		responseBuilder.setRecommandCommand(builder.build());
-		if (!cmd.hasMarkId2() && builder.getUser().getFriendVip() == 1) {
+		if (other.getFriendVip() == 1) {
 			MultiReward.Builder rewards = MultiReward.newBuilder();
-			rewards.addLoot(RewardBean.init(RewardConst.JEWEL, 300).buildRewardInfo());
-			rewards.addLoot(RewardBean.init(RewardConst.ZHAOHUANSHI, 3).buildRewardInfo());
+			rewards.addLoot(RewardBean.init(RewardConst.JEWEL, 300)
+					.buildRewardInfo());
+			rewards.addLoot(RewardBean.init(RewardConst.ZHAOHUANSHI, 3)
+					.buildRewardInfo());
 			handleRewards(responseBuilder, user, rewards);
 		}
 	}
-	
-//	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
-//		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
-//		int serverId = UserBean.calServerIdByMarkId(user.getRecommandMarkId());
-//		long userId = UserBean.calUserIdByMarkId(user.getRecommandMarkId());
-//		if (serverId == user.getServerId()) {//同个server
-//			UserBean userBean = userService.getUserOther(userId);
-//			if (userBean != null)
-//				builder.setUser(userBean.buildShort());
-//		} else {//不同server
-//			ResponseGetTeamCommand teamResponse = requestService.getTeamRequest(userId, serverId);
-//				if (teamResponse != null) {
-//				UserInfo userInfo = teamResponse.getTeam().getUser();
-//				if (userInfo != null)
-//					builder.setUser(userInfo);
-//			}
-//		}
-//		
-//		builder.setCount(userService.getRecommands(user));
-//		responseBuilder.setRecommandCommand(builder.build());
-//	}
-	
-	public void changeName(RequestChangeUserNameCommand cmd, Builder responseBuilder, UserBean user) {
-		if (userService.queryUserIdByUserName(user.getServerId(), cmd.getNewName()) != 0) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_NAME_IS_EXIST_ERROR);
-			
+
+	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder,
+			UserBean user) {
+		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand
+				.newBuilder();
+		if (user.getRecommandUserId() != 0) {
+			UserBean userBean = userService.getUserOther(user
+					.getRecommandUserId());
+			if (userBean != null)
+				builder.setUser(userBean.buildShort());
+		}
+		builder.setCount(userService.getRecommands(user));
+		responseBuilder.setRecommandCommand(builder.build());
+	}
+
+	public void changeName(RequestChangeUserNameCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		if (userService.queryUserIdByUserName(user.getServerId(),
+				cmd.getNewName()) != 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.USER_NAME_IS_EXIST_ERROR);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.USER_NAME_IS_EXIST_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		
+
 		if (!costService.cost(user, RewardConst.JEWEL, 200)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
-			
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.NOT_ENOUGH_JEWEL);
+
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
 			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-		
+
 		userService.deleteUserIdByName(user.getServerId(), user.getUserName());
 		user.setUserName(cmd.getNewName());
-		userService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
-		
+		userService.setUserIdByName(user.getServerId(), user.getUserName(),
+				user.getId());
+
 		userService.updateUser(user);
-		
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
-	public void signName(RequestSignNameCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void signName(RequestSignNameCommand cmd, Builder responseBuilder,
+			UserBean user) {
 		user.setSignName(cmd.getSignName());
 		userService.updateUser(user);
 		userService.cache(user.getServerId(), user.buildShort());
-		
+
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-	
+
 	private void pushCommand(Builder responseBuilder, UserBean user) {
 		pushCommandService.pushLevelLootCommand(responseBuilder, user);
 		pushCommandService.pushUserFriendListCommand(responseBuilder, user);
 		pushCommandService.pushUserHeroListCommand(responseBuilder, user);
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user);
-//		pushCommandService.pushLadderRankListCommand(responseBuilder, user);
+		// pushCommandService.pushLadderRankListCommand(responseBuilder, user);
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
-//		pushCommandService.pushShopCommand(responseBuilder, user);
-//		pushCommandService.pushDailyShopCommand(responseBuilder, user);
-//		pushCommandService.pushBlackShopCommand(responseBuilder, user);
-//		pushCommandService.pushPVPShopCommand(responseBuilder, user);
+		// pushCommandService.pushShopCommand(responseBuilder, user);
+		// pushCommandService.pushDailyShopCommand(responseBuilder, user);
+		// pushCommandService.pushBlackShopCommand(responseBuilder, user);
+		// pushCommandService.pushPVPShopCommand(responseBuilder, user);
 		// pushCommandService.pushExpeditionShopCommand(responseBuilder, user);
-//		pushCommandService.pushLadderShopCommand(responseBuilder, user);
+		// pushCommandService.pushLadderShopCommand(responseBuilder, user);
 		// pushCommandService.pushUnionShopCommand(responseBuilder, user);
 		// pushCommandService.pushBattletowerShopCommand(responseBuilder, user);
-//		pushCommandService.pushUserMailListCommand(responseBuilder, user);
-//		pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
+		// pushCommandService.pushUserMailListCommand(responseBuilder, user);
+		// pushCommandService.pushPurchaseCoinCommand(responseBuilder, user);
 		pushCommandService.pushUserPropListCommand(responseBuilder, user);
 		pushCommandService.pushPvpMapListCommand(responseBuilder, user);
-//		pushCommandService.pushUserAchieveCommand(responseBuilder, user);
+		// pushCommandService.pushUserAchieveCommand(responseBuilder, user);
 		pushCommandService.pushUserHeadCommand(responseBuilder, user);
 		pushCommandService.pushUserPokedeList(responseBuilder, user);
-//		pushCommandService.pushUserFoodListCommand(responseBuilder, user);
+		// pushCommandService.pushUserFoodListCommand(responseBuilder, user);
 		shopService.getLibaoShop(responseBuilder, user);
-//		pushCommandService.pushUserBosskillRecord(responseBuilder, user);
+		// pushCommandService.pushUserBosskillRecord(responseBuilder, user);
 		pushCommandService.pushUserTalentList(responseBuilder, user);
-//		noticeCommandService.pushNotices(responseBuilder, user);
+		// noticeCommandService.pushNotices(responseBuilder, user);
 		pushCommandService.pushUserEquipPokedeList(responseBuilder, user);
 		pushCommandService.pushUserRaid(responseBuilder, user);
 		pushCommandService.pushUserUnion(responseBuilder, user);
 	}
-	
+
 	private void refreshUserLogin(UserBean user) {
-// 		if (DateUtil.isNextDay(user.getLastLoginTime())) {
-// 			//每日首次登陆
-// //			VipInfo vip = userService.getVip(user.getVip());
-// //			if(vip != null){
-// ////				user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());
-// //			}
-// 			user.setLoginDays(user.getLoginDays() + 1);
-			
-// 			/**
-// 			 * 累计登录的活动
-// 			 */
-// 			activityService.loginActivity(user);
-			
-// 			user.setSignCount(0);
-// 		}
-		
-		user.setSession(DigestUtils.md5Hex(user.getAccount() + System.currentTimeMillis()));
+		// if (DateUtil.isNextDay(user.getLastLoginTime())) {
+		// //每日首次登陆
+		// // VipInfo vip = userService.getVip(user.getVip());
+		// // if(vip != null){
+		// //// user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() +
+		// vip.getDianjin());
+		// // }
+		// user.setLoginDays(user.getLoginDays() + 1);
+
+		// /**
+		// * 累计登录的活动
+		// */
+		// activityService.loginActivity(user);
+
+		// user.setSignCount(0);
+		// }
+
+		user.setSession(DigestUtils.md5Hex(user.getAccount()
+				+ System.currentTimeMillis()));
 		userService.updateUser(user);
 	}
 }

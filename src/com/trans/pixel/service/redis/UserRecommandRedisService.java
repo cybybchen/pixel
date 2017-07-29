@@ -13,14 +13,14 @@ import com.trans.pixel.constants.RedisKey;
 public class UserRecommandRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserRecommandRedisService.class);
 	
-	public void saveRecommandInfo(long userId, String markId) {
+	public void saveRecommandInfo(long userId, long userId2) {
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		lpush(key, markId, userId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		this.lpush(key, "" + userId2);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public List<String> getRecomands(long userId) {
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
-		return lrange(key, userId);
+		return this.lrange(key);
 	}
 }

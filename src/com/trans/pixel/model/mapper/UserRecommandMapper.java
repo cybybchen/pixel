@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserRecommandMapper {
 	
-	public int addRecommand(@Param("userId") long userId, @Param("markId") String markId);
+	public int addRecommand(@Param("userId") long userId, @Param("userId2") long userId2);
 	
-	public List<String> getRecommands(long userId);
+	public List<Long> getRecommands(long userId);
 }
