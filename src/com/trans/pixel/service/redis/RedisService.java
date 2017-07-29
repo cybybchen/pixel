@@ -1344,7 +1344,7 @@ public class RedisService {
 //			return redisTemplate;
 //		else
 //			return redisTemplate1;
-		if (userId < 100000)
+		if (userId % 2 == 0 || userId <= 0)
 			return redisTemplate;
 		else
 			return redisTemplate1;

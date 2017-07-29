@@ -16,8 +16,8 @@ import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
 	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
-	public static final int THREAD_COUNT = 10000;//最大并发数量
-	public static final int TEST_TIME = 10000;//脚本执行秒数
+	public static final int THREAD_COUNT = 100;//最大并发数量
+	public static final int TEST_TIME = 100;//脚本执行秒数
 	
 	public static void main(String[] args) {
 		extraLog = false;
@@ -126,7 +126,7 @@ public class PressureTest extends BaseTest {
 
 	private void submitZhanliTest(RequestCommand request){
 		RequestSubmitZhanliCommand.Builder builder = RequestSubmitZhanliCommand.newBuilder();
-		builder.setZhanli(50000);
+		builder.setZhanli(8000);
 //		builder.setZhanli(20000+(int)(System.currentTimeMillis()%30000));
 
 		ResponseCommand response = request("submitZhanliCommand", builder.build(), request);
