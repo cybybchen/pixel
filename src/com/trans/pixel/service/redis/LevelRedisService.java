@@ -380,7 +380,7 @@ public class LevelRedisService extends RedisService {
 //	}
 	public void saveEvent(long userId, Event event) {
 		hput(RedisKey.USEREVENT_PREFIX+userId, event.getOrder()+"", formatJson(event), userId);
-		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(RedisKey.USEREVENT_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENT_PREFIX, userId+"#"+event.getOrder());
 	}
@@ -392,7 +392,7 @@ public class LevelRedisService extends RedisService {
 	}
 	public void saveEventReady(long userId, Event event) {
 		hput(RedisKey.USEREVENTREADY_PREFIX+userId, event.getOrder()+"", formatJson(event), userId);
-		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(RedisKey.USEREVENTREADY_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 //		if(event.getOrder() < 10000)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USEREVENTREADY_PREFIX, userId+"#"+event.getOrder());
 	}

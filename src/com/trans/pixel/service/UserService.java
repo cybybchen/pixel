@@ -646,7 +646,7 @@ public class UserService {
 		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
-	public int randomUserType() {
+	private int randomUserType() {
 		Map<String, String> map = userRedisService.getUserTypeMap();
 		if (map != null && !map.isEmpty()) {
 			int weightall = 0;

@@ -19,7 +19,7 @@ public class NoticeRedisService extends RedisService {
 			return;
 		String key = buildRedisKey(userId);
 		hput(key, "" + notice.getType(), formatJson(notice), userId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public List<Notice> selectUserNoticeList(final long userId) {
@@ -53,7 +53,7 @@ public class NoticeRedisService extends RedisService {
 	public void deleteNotice(final long userId, final int type) {
 		String key = buildRedisKey(userId);
 		this.hdelete(key, "" + type, userId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	private String buildRedisKey(long userId) {

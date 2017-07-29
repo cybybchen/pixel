@@ -179,7 +179,6 @@ public class RedisService {
 			InputStreamReader isr = new InputStreamReader(out);
 			BufferedReader br = new BufferedReader(isr);
 			int ch = 0;
-			String bh = "";
 			char[] chs = new char[4096];
 //			while ((ch = isr.read()) != -1) {
 //			while ((bh = br.readLine()) != null) {
@@ -246,12 +245,12 @@ public class RedisService {
 	}
 
 	public boolean setLock(final String key, final int seconds) {
-		return getRedis(0).execute(new RedisCallback<Boolean>() {
+		return redisTemplate.execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				String lockey = "LOCK_" + key;
-				BoundValueOperations<String, String> Ops = getRedis(0)
+				BoundValueOperations<String, String> Ops = redisTemplate
 						.boundValueOps(lockey);
 
 				if (Ops.setIfAbsent("" + seconds)) {
@@ -429,16 +428,11 @@ public class RedisService {
 	 */
 	protected void hincrby(final String key, final String key2,
 			final long addvalue) {
-		hincrby(key, key2, addvalue, 0);
-	}
-	
-	protected void hincrby(final String key, final String key2,
-			final long addvalue, final long userId) {
-		getRedis(userId).execute(new RedisCallback<Object>() {
+		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundHashOperations<String, String, String> Ops = getRedis(userId)
+				BoundHashOperations<String, String, String> Ops = redisTemplate
 						.boundHashOps(key);
 
 				Ops.increment(key2, addvalue);

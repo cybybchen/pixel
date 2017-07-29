@@ -31,7 +31,7 @@ public class UserHeadRedisService extends RedisService {
 	}
 	
 	public void setUserHeadList(final List<UserHeadBean> userHeadList, final long userId) {
-		hputAll(buildUserHeadRedisKey(userId), convertListToMap(userHeadList));
+		hputAll(buildUserHeadRedisKey(userId), convertListToMap(userHeadList), userId);
 		expire(buildUserHeadRedisKey(userId), RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
