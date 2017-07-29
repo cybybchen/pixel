@@ -273,7 +273,7 @@ public class UserTalentService {
 			return null;
 		builder.setId(id);
 		builder.setLevel(0);
-		builder.setSp(0);
+		builder.setSp(Math.max(0, user.getTalentsp()-2));
 		Map<Integer, Talentunlock> map = talentRedisService.getTalentunlockConfig();
 		Iterator<Entry<Integer, Talentunlock>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
