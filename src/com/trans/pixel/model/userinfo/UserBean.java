@@ -1555,6 +1555,7 @@ public class UserBean {
 		builder.setUnionExp(unionExp);
 		builder.setTitleOrder(titleOrder);
 		builder.setSignName(signName);
+		builder.setRite(rite);
 		
 		return builder.build();
 	}
