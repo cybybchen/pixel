@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -151,6 +153,13 @@ public class RewardTaskService {
 			builder.clearRoomInfo();
 			if(builder.getTask().getType() == 2){
 				userRewardTaskService.refresh(builder, user);
+				
+				user.setShenyuanPRD(user.getShenyuanPRD() + (rewardTask.getId() == 4 ? 6 : 10));
+				if (RandomUtils.nextInt(10000) < user.getShenyuanPRD()) {
+					user.setShenyuanPRD(0);
+					rewards.addLoot(RewardBean.init(39012, 1).buildRewardInfo());
+				}
+				userService.updateUser(user);
 			}else{
 				if(builder.getLeftcount() > 0)
 					builder.setLeftcount(builder.getLeftcount()-1);
@@ -228,6 +237,7 @@ public class RewardTaskService {
 				urbuilder.setIsOver(1);
 				userRewardTaskService.updateEventidStatus(user.getId(), urbuilder.build());
 			}
+			
 			return SuccessConst.BOSS_SUBMIT_SUCCESS;
 		}
 		EventConfig event = levelRedisService.getEvent(rewardTask.getEventid());
@@ -522,6 +532,15 @@ public class RewardTaskService {
 				}
 			}
 			rewards.addAllLoot(getTaskReward(user, rewardTask, event));
+			
+			if (rewardTask.getType() == 2) {
+				user.setShenyuanPRD(user.getShenyuanPRD() + (rewardTask.getId() == 4 ? 6 : 10));
+				if (RandomUtils.nextInt(10000) < user.getShenyuanPRD()) {
+					user.setShenyuanPRD(0);
+					rewards.addLoot(RewardBean.init(39012, 1).buildRewardInfo());
+				}
+				userService.updateUser(user);
+			}
 		}
 		return rewards;
 	}

@@ -140,6 +140,7 @@ public class UserBean {
 	private int unionExp = 0;
 	private int titleOrder = 0;
 	private String signName = "";
+	private int shenyuanPRD = 0;
 	/**
 	 * 主角sp总数
 	 */
@@ -1354,6 +1355,12 @@ public class UserBean {
 	public void setSignName(String signName) {
 		this.signName = signName;
 	}
+	public int getShenyuanPRD() {
+		return shenyuanPRD;
+	}
+	public void setShenyuanPRD(int shenyuanPRD) {
+		this.shenyuanPRD = shenyuanPRD;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1370,6 +1377,7 @@ public class UserBean {
 		setJewelPRD(100);
 		setGoldSavingBox(1);
 		setExpSavingBox(1);
+		setShenyuanPRD(100);
 		return this;
 	}
 	public UserInfo buildShort() {

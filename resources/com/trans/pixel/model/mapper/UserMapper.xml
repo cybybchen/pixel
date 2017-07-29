@@ -63,7 +63,9 @@
 		<result property="recommandUserId" column="recommand_user_id" />
 		<result property="friendVip" column="friend_vip" />
 		<result property="talentsp" column="talentsp" />
-		<result property="recommandMarkId" column="recommand_mark_id" />
+		<result property="shenyuanPRD" column="shenyuanPRD" />
+		<result property="jewelPRD" column="jewelPRD" />
+		<result property="hunxiaPRD" column="hunxiaPRD" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -91,12 +93,12 @@
 		point_union, receive_message_timestamp, last_loot_time, last_login_time, ladder_mode_history_top, login_days, 
 		register_time, hero_limit, compose_skill, recharge_record, hero_info_id, total_sign_count, greenhand, advance,
 		skill, failed, shouchong_is_complete, shouchong_is_get_reward, current_teamid, use_talent_id, user_type, gold_savingbox, exp_savingbox,
-		frame, recommand_user_id, talentsp)
+		frame, recommand_user_id, talentsp, shenyuanPRD, jewelPRD, hunxiaPRD)
 		VALUES(#{account}, #{icon}, #{userName}, #{serverId}, #{unionId}, #{jewel}, #{coin}, #{exp}, #{pointPVP}, #{pointLadder},
 		#{pointExpedition}, #{pointUnion}, #{receiveMessageTimeStamp}, #{lastLootTime}, #{lastLoginTime},
 		#{ladderModeHistoryTop}, #{loginDays}, #{registerTime}, #{heroLimit}, #{composeSkill}, #{rechargeRecord}, #{heroInfoId},
 		#{totalSignCount}, #{greenhand}, #{advance}, #{skill}, #{failed}, #{shouchongIsComplete}, #{shouchongIsGetReward}, #{currentTeamid}, #{useTalentId}, #{userType},
-		#{goldSavingBox}, #{expSavingBox}, #{frame}, #{recommandUserId}, #{talentsp})
+		#{goldSavingBox}, #{expSavingBox}, #{frame}, #{recommandUserId}, #{talentsp}, #{shenyuanPRD}, #{jewelPRD}, #{hunxiaPRD})
 	</insert>
 	
 	<update id="updateUser" parameterType="com.trans.pixel.model.userinfo.UserBean">
@@ -113,7 +115,7 @@
 		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}, vip_exp=#{vipExp},
 		reward_task_index=#{rewardTaskIndex}, use_talent_id=#{useTalentId}, user_type=#{userType}, gold_savingbox=#{goldSavingBox},
 		exp_savingbox=#{expSavingBox}, frame=#{frame}, recommand_user_id=#{recommandUserId}, friend_vip=#{friendVip}, talentsp=#{talentsp},
-		recommand_mark_id=#{recommandMarkId}
+		shenyuanPRD=#{shenyuanPRD}, jewelPRD=#{jewelPRD}, hunxiaPRD=#{hunxiaPRD}
 		WHERE id=#{id}
 	</update>
 
