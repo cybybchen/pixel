@@ -1250,13 +1250,6 @@ public class RedisService {
 
 	}
 
-	public int getRedisId(long userId) {
-		if (userId < 50000)
-			return 0;
-
-		return 1;
-	}
-
 	// /**
 	// * default:RedisExpiredConst.EXPIRED_USERINFO_7DAY
 	// */
