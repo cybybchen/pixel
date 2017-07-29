@@ -212,7 +212,7 @@ public class PropService {
 		return rewardsHandle(user, multi.getLootList());
 	}
 	
-	private MultiReward.Builder rewardsHandle(UserBean user, List<RewardInfo> rewardList) {
+	public MultiReward.Builder rewardsHandle(UserBean user, List<RewardInfo> rewardList) {
 		boolean isShenyuan = false;
 		for (RewardInfo reward : rewardList) {//判断是否深渊出装备
 			if (reward.getItemid() == 33503 || reward.getItemid() == 33504) {

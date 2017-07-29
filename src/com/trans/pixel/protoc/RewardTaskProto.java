@@ -3476,6 +3476,24 @@ public final class RewardTaskProto {
      * </pre>
      */
     int getIndex();
+
+    // optional uint32 isOver = 8;
+    /**
+     * <code>optional uint32 isOver = 8;</code>
+     *
+     * <pre>
+     *0：未通关，1：已通关
+     * </pre>
+     */
+    boolean hasIsOver();
+    /**
+     * <code>optional uint32 isOver = 8;</code>
+     *
+     * <pre>
+     *0：未通关，1：已通关
+     * </pre>
+     */
+    int getIsOver();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserRewardTask}
@@ -3572,6 +3590,11 @@ public final class RewardTaskProto {
             case 56: {
               bitField0_ |= 0x00000020;
               index_ = input.readUInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000040;
+              isOver_ = input.readUInt32();
               break;
             }
           }
@@ -3900,6 +3923,30 @@ public final class RewardTaskProto {
       return index_;
     }
 
+    // optional uint32 isOver = 8;
+    public static final int ISOVER_FIELD_NUMBER = 8;
+    private int isOver_;
+    /**
+     * <code>optional uint32 isOver = 8;</code>
+     *
+     * <pre>
+     *0：未通关，1：已通关
+     * </pre>
+     */
+    public boolean hasIsOver() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional uint32 isOver = 8;</code>
+     *
+     * <pre>
+     *0：未通关，1：已通关
+     * </pre>
+     */
+    public int getIsOver() {
+      return isOver_;
+    }
+
     private void initFields() {
       task_ = com.trans.pixel.protoc.RewardTaskProto.RewardTask.getDefaultInstance();
       leftcount_ = 0;
@@ -3907,6 +3954,7 @@ public final class RewardTaskProto {
       roomInfo_ = com.trans.pixel.protoc.RewardTaskProto.RoomInfo.getDefaultInstance();
       endtime_ = 0L;
       index_ = 0;
+      isOver_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3952,6 +4000,9 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(7, index_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeUInt32(8, isOver_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3984,6 +4035,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(7, index_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, isOver_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4123,6 +4178,8 @@ public final class RewardTaskProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         index_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        isOver_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -4183,6 +4240,10 @@ public final class RewardTaskProto {
           to_bitField0_ |= 0x00000020;
         }
         result.index_ = index_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.isOver_ = isOver_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4216,6 +4277,9 @@ public final class RewardTaskProto {
         }
         if (other.hasIndex()) {
           setIndex(other.getIndex());
+        }
+        if (other.hasIsOver()) {
+          setIsOver(other.getIsOver());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -4704,6 +4768,55 @@ public final class RewardTaskProto {
       public Builder clearIndex() {
         bitField0_ = (bitField0_ & ~0x00000020);
         index_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 isOver = 8;
+      private int isOver_ ;
+      /**
+       * <code>optional uint32 isOver = 8;</code>
+       *
+       * <pre>
+       *0：未通关，1：已通关
+       * </pre>
+       */
+      public boolean hasIsOver() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional uint32 isOver = 8;</code>
+       *
+       * <pre>
+       *0：未通关，1：已通关
+       * </pre>
+       */
+      public int getIsOver() {
+        return isOver_;
+      }
+      /**
+       * <code>optional uint32 isOver = 8;</code>
+       *
+       * <pre>
+       *0：未通关，1：已通关
+       * </pre>
+       */
+      public Builder setIsOver(int value) {
+        bitField0_ |= 0x00000040;
+        isOver_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 isOver = 8;</code>
+       *
+       * <pre>
+       *0：未通关，1：已通关
+       * </pre>
+       */
+      public Builder clearIsOver() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        isOver_ = 0;
         onChanged();
         return this;
       }
@@ -11461,36 +11574,37 @@ public final class RewardTaskProto {
       "ata\030\001 \003(\0132\".com.trans.pixel.protoc.Rewar",
       "dTask\"[\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004user" +
       "\030\002 \001(\0132 .com.trans.pixel.protoc.UserInfo" +
-      "\022\020\n\010position\030\003 \001(\r\"\221\002\n\016UserRewardTask\0220\n" +
+      "\022\020\n\010position\030\003 \001(\r\"\241\002\n\016UserRewardTask\0220\n" +
       "\004task\030\001 \002(\0132\".com.trans.pixel.protoc.Rew" +
       "ardTask\022\021\n\tleftcount\030\002 \001(\005\022\016\n\006status\030\003 \001" +
       "(\r\0222\n\010roomInfo\030\005 \001(\0132 .com.trans.pixel.p" +
       "rotoc.RoomInfo\022\017\n\007endtime\030\006 \001(\003\022\r\n\005index" +
-      "\030\007 \002(\r\"V\n\021REWARDTASK_STATUS\022\010\n\004LIVE\020\000\022\007\n" +
-      "\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004FULL\020\003\022\n\n\006HAS_I" +
-      "N\020\004\022\t\n\005LIMIT\020\005\"\216\001\n\022UserRewardTaskRoom\022\024\n",
-      "\014createUserId\030\001 \002(\004\022\016\n\006status\030\004 \001(\r\022\r\n\005i" +
-      "ndex\030\005 \001(\r\0222\n\010roomInfo\030\006 \003(\0132 .com.trans" +
-      ".pixel.protoc.RoomInfo\022\017\n\007eventid\030\007 \001(\r\"" +
-      "3\n\"RequestCreateRewardTaskRoomCommand\022\r\n" +
-      "\005index\030\001 \002(\r\"A\n RequestQuitRewardTaskRoo" +
-      "mCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"" +
-      "g\n$RequestInviteToRewardTaskRoomCommand\022" +
-      "\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014createUse" +
-      "rId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#RequestSubmi" +
-      "tRewardTaskScoreCommand\022\r\n\005index\030\001 \002(\r\022\013",
-      "\n\003ret\030\002 \002(\010\"_\n\035ResponseUserRewardTaskCom" +
-      "mand\022>\n\016userRewardTask\030\001 \003(\0132&.com.trans" +
-      ".pixel.protoc.UserRewardTask\"]\n!Response" +
-      "UserRewardTaskRoomCommand\0228\n\004room\030\001 \003(\0132" +
-      "*.com.trans.pixel.protoc.UserRewardTaskR" +
-      "oom\"\036\n\034RequestUserRewardTaskCommand\"/\n\036R" +
-      "equestRewardTaskRewardCommand\022\r\n\005index\030\002" +
-      " \002(\r\"1\n RequestUserRewardTaskRoomCommand" +
-      "\022\r\n\005index\030\001 \002(\r\"/\n\036RequestGiveupRewardTa" +
-      "skCommand\022\r\n\005index\030\001 \002(\r\"S\n\034RequestChang",
-      "ePositionCommand\022\021\n\tposition1\030\001 \002(\r\022\021\n\tp" +
-      "osition2\030\002 \002(\r\022\r\n\005index\030\003 \002(\r"
+      "\030\007 \002(\r\022\016\n\006isOver\030\010 \001(\r\"V\n\021REWARDTASK_STA" +
+      "TUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n" +
+      "\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\216\001\n\022UserR",
+      "ewardTaskRoom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006s" +
+      "tatus\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006" +
+      " \003(\0132 .com.trans.pixel.protoc.RoomInfo\022\017" +
+      "\n\007eventid\030\007 \001(\r\"3\n\"RequestCreateRewardTa" +
+      "skRoomCommand\022\r\n\005index\030\001 \002(\r\"A\n RequestQ" +
+      "uitRewardTaskRoomCommand\022\r\n\005index\030\001 \002(\r\022" +
+      "\016\n\006userId\030\002 \002(\004\"g\n$RequestInviteToReward" +
+      "TaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 " +
+      "\003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r" +
+      "\"A\n#RequestSubmitRewardTaskScoreCommand\022",
+      "\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseU" +
+      "serRewardTaskCommand\022>\n\016userRewardTask\030\001" +
+      " \003(\0132&.com.trans.pixel.protoc.UserReward" +
+      "Task\"]\n!ResponseUserRewardTaskRoomComman" +
+      "d\0228\n\004room\030\001 \003(\0132*.com.trans.pixel.protoc" +
+      ".UserRewardTaskRoom\"\036\n\034RequestUserReward" +
+      "TaskCommand\"/\n\036RequestRewardTaskRewardCo" +
+      "mmand\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewar" +
+      "dTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036Reque" +
+      "stGiveupRewardTaskCommand\022\r\n\005index\030\001 \002(\r",
+      "\"S\n\034RequestChangePositionCommand\022\021\n\tposi" +
+      "tion1\030\001 \002(\r\022\021\n\tposition2\030\002 \002(\r\022\r\n\005index\030" +
+      "\003 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11520,7 +11634,7 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_UserRewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor,
-              new java.lang.String[] { "Task", "Leftcount", "Status", "RoomInfo", "Endtime", "Index", });
+              new java.lang.String[] { "Task", "Leftcount", "Status", "RoomInfo", "Endtime", "Index", "IsOver", });
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable = new

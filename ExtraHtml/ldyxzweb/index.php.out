@@ -51,7 +51,7 @@
 			if(isiOS) {
 				$("a").attr("href", "https://itunes.apple.com/us/app/%E4%B9%B1%E6%96%97%E8%8B%B1%E9%9B%84%E4%BC%A0-%E5%83%8F%E7%B4%A0%E6%8C%82%E6%9C%BA%E5%84%BF%E6%97%B6%E5%9B%9E%E5%BF%86/id1256389992?l=zh&ls=1&mt=8");
 			}else {
-				$("a").attr("href", "http://download.kalazhu.cn/download/ldyxz/ldyxz_0721.apk");
+				$("a").attr("href", "http://download.kalazhu.cn/download/ldyxz/ldyxz_0728.apk");
 			}
 		});
      </script>

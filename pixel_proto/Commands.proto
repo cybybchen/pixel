@@ -84,6 +84,7 @@ message UserInfo {
 	optional string markId = 95;	
 	optional string recommandMarkId = 96;
 	optional uint32 titleOrder = 97;
+	optional string signName = 98;
 }
 
 message JewelPool {
@@ -282,6 +283,13 @@ message Event {
         optional int32 level = 10;
         optional int32 count = 11;
         //optional int32 eventcount = 12;
+}
+
+message FightInfo {
+        optional int32 id = 3;
+        optional UserInfo enemy = 4;
+        required string fightInfo = 1;
+        required string fightData = 2;
 }
 
 ////////// ShopProto
@@ -1475,6 +1483,7 @@ message RequestSendMailCommand {
 	required string content = 2;
 	optional int32 relatedId = 3;
 	required int32 type = 4; //5:call brother	
+	optional uint32 fightId = 5;
 }
 
 message RequestBrotherMineInfoCommand {
@@ -2628,12 +2637,6 @@ message ResponseUserLadderCommand {
 	repeated UserLadder user = 1;
 }
 
-message FightInfo {
-	optional int32 id = 3;
-	optional UserInfo enemy = 4;
-	required string fightInfo = 1;
-	required string fightData = 2;
-}
 message RequestGetFightInfoCommand {
 }
 message RequestFightInfoCommand {
@@ -2779,8 +2782,9 @@ message RequestRegisterCommand {
 
 message RequestBindRecommandCommand {
 	optional uint64 userId = 1;
-	optional string markId = 2;
+	optional string markId = 2;//客户端暂时不用管
 	optional string markId2 = 3;//转发到master服务器的时候使用,客户端不用管
+	optional bool isFirst = 4;//首次输入是true，用来获取玩家信息，第二次确认的时候false
 }
 
 message RequestRecommandCommand {
@@ -2802,6 +2806,10 @@ message RequestExtraRewardCommand {
 }
 
 message RequestLoginCommand {
+}
+
+message RequestSignNameCommand {
+	required string signName = 1;
 }
 
 message ResponseUserInfoCommand {
@@ -2947,6 +2955,11 @@ message ResponseEventCommand {
 }
 message RequestLevelLootResultCommand {
 }
+
+message RequestEventQuickFightCommand {
+
+}
+
 message RequestEventResultCommand {
 	optional int32 order = 1;
 	optional string teamInfo = 2;
@@ -2981,6 +2994,7 @@ message Mail {
 	repeated RewardInfo reward = 9;
 	optional bool isRead = 13;
 	optional UserInfo user = 14;
+	optional string fightInfo = 15;
 }
 
 message MailList {
@@ -3069,6 +3083,7 @@ message Union {
 	optional string announce = 26;
 	optional uint32 exp = 27;
 	optional uint32 maxZhanli = 28;
+	optional uint32 applyEndTime = 29;
 }
 
 message UnionApply {
@@ -3304,6 +3319,15 @@ message RequestQuitUnionCommand {//退出公会
 }
 
 message RequestUnionInfoCommand {//公会
+	optional bool isNewVersion = 1;
+	optional UNION_INFO_TYPE type = 2;
+	optional uint32 unionId = 3;//查看其他工会
+}
+
+enum UNION_INFO_TYPE {
+	TYPE_UNION = 1;//信息
+	TYPE_APPLY = 2;//申请列表
+	TYPE_BOSS = 3;//boss列表
 }
 
 message RequestAttackUnionCommand {//进攻其他公会
@@ -3317,9 +3341,12 @@ message RequestDefendUnionCommand {//防守其他公会
 
 message ResponseUnionInfoCommand {
 	optional Union union = 1;
+	repeated UnionApply applies = 2;
+	repeated UnionBossRecord unionBoss = 3;
 }
 
 message RequestUnionListCommand {
+	optional int32 type = 1;//type=1公会列表type=0公会排行
 }
 
 message ResponseUnionListCommand {
@@ -3389,6 +3416,7 @@ message UserRewardTask {
 	};
 	optional int64 endtime = 6;
 	required uint32 index = 7;//boss的一个序列
+	optional uint32 isOver = 8;//0：未通关，1：已通关 
 }
 
 message UserRewardTaskRoom {
@@ -3749,6 +3777,8 @@ message RequestCommand {
 	optional RequestRecommandCommand recommandCommand = 258;
 	optional RequestChangeUserNameCommand changeUserNameCommand = 259;
 	optional RequestCipherRewardCommand cipherRewardCommand = 260;
+	optional RequestEventQuickFightCommand eventQuickFightCommand = 261;
+	optional RequestSignNameCommand signNameCommand = 262;
 }
 ////////// Commands
 message ErrorCommand {

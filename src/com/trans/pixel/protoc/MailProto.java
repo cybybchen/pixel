@@ -134,6 +134,21 @@ public final class MailProto {
      * <code>optional .com.trans.pixel.protoc.UserInfo user = 14;</code>
      */
     com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
+
+    // optional string fightInfo = 15;
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    boolean hasFightInfo();
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    java.lang.String getFightInfo();
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    com.google.protobuf.ByteString
+        getFightInfoBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Mail}
@@ -244,6 +259,11 @@ public final class MailProto {
                 user_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000080;
+              break;
+            }
+            case 122: {
+              bitField0_ |= 0x00000100;
+              fightInfo_ = input.readBytes();
               break;
             }
           }
@@ -540,6 +560,49 @@ public final class MailProto {
       return user_;
     }
 
+    // optional string fightInfo = 15;
+    public static final int FIGHTINFO_FIELD_NUMBER = 15;
+    private java.lang.Object fightInfo_;
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    public boolean hasFightInfo() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    public java.lang.String getFightInfo() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fightInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string fightInfo = 15;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFightInfoBytes() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fightInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0;
       type_ = 0;
@@ -550,6 +613,7 @@ public final class MailProto {
       reward_ = java.util.Collections.emptyList();
       isRead_ = false;
       user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      fightInfo_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -620,6 +684,9 @@ public final class MailProto {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(14, user_);
       }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(15, getFightInfoBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -664,6 +731,10 @@ public final class MailProto {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, user_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(15, getFightInfoBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -813,6 +884,8 @@ public final class MailProto {
           userBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000100);
+        fightInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -886,6 +959,10 @@ public final class MailProto {
         } else {
           result.user_ = userBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.fightInfo_ = fightInfo_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -957,6 +1034,11 @@ public final class MailProto {
         }
         if (other.hasUser()) {
           mergeUser(other.getUser());
+        }
+        if (other.hasFightInfo()) {
+          bitField0_ |= 0x00000200;
+          fightInfo_ = other.fightInfo_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1724,6 +1806,80 @@ public final class MailProto {
           user_ = null;
         }
         return userBuilder_;
+      }
+
+      // optional string fightInfo = 15;
+      private java.lang.Object fightInfo_ = "";
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public boolean hasFightInfo() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public java.lang.String getFightInfo() {
+        java.lang.Object ref = fightInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          fightInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFightInfoBytes() {
+        java.lang.Object ref = fightInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fightInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public Builder setFightInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        fightInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public Builder clearFightInfo() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        fightInfo_ = getDefaultInstance().getFightInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fightInfo = 15;</code>
+       */
+      public Builder setFightInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        fightInfo_ = value;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Mail)
@@ -8881,32 +9037,33 @@ public final class MailProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\017MailProto.proto\022\026com.trans.pixel.proto" +
-      "c\032\nBase.proto\"\334\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\014\n\004ty" +
+      "c\032\nBase.proto\"\357\001\n\004Mail\022\n\n\002id\030\001 \002(\005\022\014\n\004ty" +
       "pe\030\005 \002(\005\022\021\n\tstartDate\030\006 \002(\t\022\017\n\007endDate\030\007" +
       " \002(\t\022\017\n\007content\030\010 \002(\t\022\021\n\trelatedId\030\n \002(\005" +
       "\0222\n\006reward\030\t \003(\0132\".com.trans.pixel.proto" +
       "c.RewardInfo\022\016\n\006isRead\030\r \001(\010\022.\n\004user\030\016 \001" +
-      "(\0132 .com.trans.pixel.protoc.UserInfo\"D\n\010" +
-      "MailList\022\014\n\004type\030\001 \002(\005\022*\n\004mail\030\002 \003(\0132\034.c" +
-      "om.trans.pixel.protoc.Mail\"-\n\035RequestGet" +
-      "UserMailListCommand\022\014\n\004type\030\001 \001(\005\"T\n\036Res",
-      "ponseGetUserMailListCommand\0222\n\010mailList\030" +
-      "\001 \003(\0132 .com.trans.pixel.protoc.MailList\"" +
-      "A\n\026RequestReadMailCommand\022\014\n\004type\030\001 \002(\005\022" +
-      "\n\n\002id\030\002 \003(\005\022\r\n\005isAll\030\003 \001(\010\"O\n\031ResponseSe" +
-      "ndRewardCommand\0222\n\006reward\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo\"4\n\030RequestDe" +
-      "leteMailCommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(" +
-      "\005\";\n\027RequestAddFriendCommand\022\016\n\006userId\030\001" +
-      " \001(\003\022\020\n\010userName\030\002 \001(\t\":\n\033RequestReceive" +
-      "FriendCommand\022\n\n\002id\030\001 \003(\005\022\017\n\007receive\030\002 \002",
-      "(\010\")\n\027RequestDelFriendCommand\022\016\n\006userId\030" +
-      "\001 \002(\003\"f\n\nUserFriend\022\025\n\rlastLoginTime\030\005 \001" +
-      "(\t\022\021\n\tcountDown\030\006 \001(\005\022.\n\004user\030\010 \001(\0132 .co" +
-      "m.trans.pixel.protoc.UserInfo\"!\n\037Request" +
-      "GetUserFriendListCommand\"V\n ResponseGetU" +
-      "serFriendListCommand\0222\n\006friend\030\001 \003(\0132\".c" +
-      "om.trans.pixel.protoc.UserFriend"
+      "(\0132 .com.trans.pixel.protoc.UserInfo\022\021\n\t" +
+      "fightInfo\030\017 \001(\t\"D\n\010MailList\022\014\n\004type\030\001 \002(" +
+      "\005\022*\n\004mail\030\002 \003(\0132\034.com.trans.pixel.protoc" +
+      ".Mail\"-\n\035RequestGetUserMailListCommand\022\014",
+      "\n\004type\030\001 \001(\005\"T\n\036ResponseGetUserMailListC" +
+      "ommand\0222\n\010mailList\030\001 \003(\0132 .com.trans.pix" +
+      "el.protoc.MailList\"A\n\026RequestReadMailCom" +
+      "mand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\022\r\n\005isAll\030" +
+      "\003 \001(\010\"O\n\031ResponseSendRewardCommand\0222\n\006re" +
+      "ward\030\001 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo\"4\n\030RequestDeleteMailCommand\022\014\n\004ty" +
+      "pe\030\001 \002(\005\022\n\n\002id\030\002 \003(\005\";\n\027RequestAddFriend" +
+      "Command\022\016\n\006userId\030\001 \001(\003\022\020\n\010userName\030\002 \001(" +
+      "\t\":\n\033RequestReceiveFriendCommand\022\n\n\002id\030\001",
+      " \003(\005\022\017\n\007receive\030\002 \002(\010\")\n\027RequestDelFrien" +
+      "dCommand\022\016\n\006userId\030\001 \002(\003\"f\n\nUserFriend\022\025" +
+      "\n\rlastLoginTime\030\005 \001(\t\022\021\n\tcountDown\030\006 \001(\005" +
+      "\022.\n\004user\030\010 \001(\0132 .com.trans.pixel.protoc." +
+      "UserInfo\"!\n\037RequestGetUserFriendListComm" +
+      "and\"V\n ResponseGetUserFriendListCommand\022" +
+      "2\n\006friend\030\001 \003(\0132\".com.trans.pixel.protoc" +
+      ".UserFriend"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8918,7 +9075,7 @@ public final class MailProto {
           internal_static_com_trans_pixel_protoc_Mail_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mail_descriptor,
-              new java.lang.String[] { "Id", "Type", "StartDate", "EndDate", "Content", "RelatedId", "Reward", "IsRead", "User", });
+              new java.lang.String[] { "Id", "Type", "StartDate", "EndDate", "Content", "RelatedId", "Reward", "IsRead", "User", "FightInfo", });
           internal_static_com_trans_pixel_protoc_MailList_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_MailList_fieldAccessorTable = new

@@ -188,6 +188,7 @@ public class UserLadderService {
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
 		builder.setSeason(ladderSeason.getSeason());
 		builder.setLastScore(userLadder.getScore());
+		builder.setLevel(calLevel(userLadder.getScore(), userLadder.getGrade()));
 		builder.setGrade(calNextSeasonGrade(userLadder, ladderSeason));
 		builder.setScore(calNextSeasonScore(builder.getGrade(), builder.getLevel()));
 		builder.setLastSeason(userLadder.getSeason());
@@ -205,7 +206,7 @@ public class UserLadderService {
 			if (ladderModeLevel.getLevel() == level)
 				return ladderModeLevel.getScore();
 		}
-		return 0;
+		return ladderMode.getLevel(0).getScore();
 	}
 	
 	public int calGrade(int score) {
@@ -220,7 +221,7 @@ public class UserLadderService {
 	
 	public int calLevel(int score, int grade) {
 		LadderMode ladderMode = ladderRedisService.getLadderMode(grade);
-		int level = 0;
+		int level = 5;
 		for (LadderModeLevel ladderModeLevel : ladderMode.getLevelList()) {
 			if (ladderModeLevel.getScore() <= score)
 				level = Math.min(level, ladderModeLevel.getLevel());
@@ -243,8 +244,6 @@ public class UserLadderService {
 				userLadderRedisService.setLadderSeason(ladderSeason);
 //			else
 //				userLadderRedisService.deleteLadderSeason();
-			
-			serverTitleService.handlerSeasonEnd();
 		}
 		
 		return ladderSeason;
@@ -253,6 +252,9 @@ public class UserLadderService {
 	public boolean isNextSeason(LadderSeason ladderSeason) {
 		if (DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime()))
 			return false;
+		
+		serverTitleService.handlerSeasonEnd();
+		userLadderRedisService.deleteLadderSeason();
 		
 		return true;
 	}
@@ -274,7 +276,7 @@ public class UserLadderService {
 	
 	public boolean isNextSeason(UserLadder userLadder) {
 		LadderSeason ladderSeason = getLadderSeason();
-		if (userLadder == null || ladderSeason == null || userLadder.getSeason() != ladderSeason.getSeason()) {
+		if (userLadder == null || ladderSeason == null || userLadder.getSeason() < ladderSeason.getSeason()) {
 			return true;
 		}
 		

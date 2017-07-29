@@ -14,6 +14,7 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFriendBean;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.MailProto.RequestDeleteMailCommand;
@@ -24,6 +25,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -39,6 +41,8 @@ public class MailCommandService extends BaseCommandService {
 	private PushCommandService pushCommandService;
 	@Resource
 	private LogService logService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = 0;
@@ -107,6 +111,15 @@ public class MailCommandService extends BaseCommandService {
 		if (cmd.hasRelatedId())
 			relatedId = cmd.getRelatedId();
 		MailBean mail = buildMail(toUserId, user, content, type, relatedId);
+		if (cmd.hasFightId() && cmd.getFightId() > 0) {
+			List<FightInfo.Builder> list = userTeamService.getFightInfoList(user);
+			for(FightInfo.Builder info : list){
+				if(cmd.getFightId() == info.getId()){
+					mail.setFightInfo(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
+					break;
+				}
+			}
+		}
 		mailService.addMail(mail);
 		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.MAIL_SEND_SUCCESS));
 		

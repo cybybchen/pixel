@@ -66,6 +66,7 @@ public class ActivityCrontabService {
 	public void handlerRechargeRank() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
+		log.error("current day is:" + DateUtil.getDayOfMonth());
 		if (DateUtil.getDayOfMonth() == 1) {
 			serverTitleService.handlerRechargeRank();
 			serverTitleService.handlerUnionRank();

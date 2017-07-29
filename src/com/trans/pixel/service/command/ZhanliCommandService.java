@@ -39,7 +39,6 @@ public class ZhanliCommandService extends BaseCommandService {
 	private PushCommandService pusher;
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
-		log.debug("00 ||" + System.currentTimeMillis());
 		int zhanli = cmd.getZhanli();
 		if(user.getZhanliMax() < zhanli || user.getFirstAddedtoZhanli() == 0){
 			user.setFirstAddedtoZhanli(1);
@@ -74,12 +73,10 @@ public class ZhanliCommandService extends BaseCommandService {
 				activityService.zhanliActivity(user, zhanli);
 			}
 		}
-		log.debug("11||" + System.currentTimeMillis());
 //		areaService.unlockArea(zhanli, user);
 		user.setZhanli(zhanli);
 		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);
-		log.debug("22||" + System.currentTimeMillis());
 //		responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.SUBMIT_ZHANLI_SUCCESS));
 		pusher.pushUserInfoCommand(responseBuilder, user);
 	}

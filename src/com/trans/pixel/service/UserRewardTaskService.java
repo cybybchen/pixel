@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -15,7 +16,9 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
+import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
@@ -70,6 +73,7 @@ public class UserRewardTaskService {
 			else
 				builder.clearEndtime();
 //			builder.setLeftcount(task.getCount());
+			builder.setIsOver(getEventidStatus(user.getId(), task.getEventid()));
 			builder.setStatus(REWARDTASK_STATUS.LIVE_VALUE);
 			user.setRewardTaskIndex(Math.max(20, user.getRewardTaskIndex() + 1)%10000000);
 			builder.setIndex(user.getRewardTaskIndex());
@@ -77,6 +81,16 @@ public class UserRewardTaskService {
 			userService.updateUser(user);
 			break;
 		}
+	}
+	
+	public static boolean hasMeInRoom(UserBean user, UserRewardTaskRoom.Builder room) {
+		if(room == null)
+			return false;
+		for(RoomInfo roominfo : room.getRoomInfoList()) {
+			if(roominfo.getUser().getId() == user.getId())
+				return true;
+		}
+		return false;
 	}
 	
 	public Map<Integer, UserRewardTask> getUserRewardTaskList(UserBean user) {
@@ -92,17 +106,22 @@ public class UserRewardTaskService {
 			if(ut.hasEndtime() && ut.getEndtime() <= now) {//过0点刷新
 				needRefresh = true;
 				if (ut.hasRoomInfo()) {//保留组队
-					if (rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex()) == null) {
-						if (ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
-							userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
-							it.remove();
+					UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+					if (room == null && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
+						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
+						it.remove();
 //						}else {//可以领奖
 //							UserRewardTask.Builder builder = UserRewardTask.newBuilder(ut);
 //							builder.clearRoomInfo();
 //							builder.setEndtime(RedisService.today(24));
 //							userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 //							map.put(ut.getIndex(), builder.build());
-						}
+//					}else if(room != null && !hasMeInRoom(user, room)) {
+//						UserRewardTask.Builder utbuilder = UserRewardTask.newBuilder(ut);
+//						utbuilder.clearRoomInfo();
+//						ut = utbuilder.build();
+//						map.put(index, ut);
+//						userRewardTaskRedisService.updateUserRewardTask(user.getId(), ut);
 					}
 				}else {
 					userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
@@ -161,6 +180,7 @@ public class UserRewardTaskService {
 				task.clearStarttime();
 				task.clearEndtime();
 				builder.setTask(task);
+				builder.setIsOver(getEventidStatus(user.getId(), task.getEventid()));
 //				builder.getTaskBuilder().clearRandcount();
 //				builder.getTaskBuilder().clearEvent();
 				if(task.getType() != 2)
@@ -200,6 +220,30 @@ public class UserRewardTaskService {
 //				userRewardTaskRedisService.deleteUserRewardTask(userId, ut);
 		}
 		
+	}
+	
+	public void updateEventidStatus(long userId, UserRewardTask urt) {
+		userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt.getTask().getEventid(), urt.getIsOver());
+		mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, urt));
+	}
+	
+	public int getEventidStatus(long userId, int eventid) {
+		int status = userRewardTaskRedisService.getUserRewardTaskEventidStatus(userId, eventid);
+		if (status == 0 && !userRewardTaskRedisService.isExistEventidStatusKey(userId)) {
+			List<UserRewardTaskBean> utList = mapper.selectUserRewardTaskList(userId);
+			if (utList == null || utList.isEmpty()) {
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, 1, 0);
+			}
+			for (UserRewardTaskBean utBean : utList) {
+				UserRewardTask builder = utBean.build();
+				if (utBean.getEventid() == eventid) {
+					status = utBean.getIsOver();
+				}
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, builder.getTask().getEventid(), builder.getIsOver());
+			}
+		}
+		
+		return status;
 	}
 	
 	public String popDBKey(){

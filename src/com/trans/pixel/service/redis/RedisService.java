@@ -16,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
@@ -36,8 +38,6 @@ import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
 import com.googlecode.protobuf.format.XmlFormat;
 import com.trans.pixel.constants.DirConst;
-
-import net.sf.json.JSONObject;
 
 @Repository
 public class RedisService {
@@ -163,10 +163,11 @@ public class RedisService {
 	/**
 	 * 从文件导入
 	 */
-	public static String ReadFromFile(String filePath) {
+	public static String ReadFromFile(String filePath){
 		long startTime = System.currentTimeMillis();
-		logger.warn("Reading " + filePath);
+		logger.warn("Reading "+filePath);
 		String msg = "";
+		StringBuilder sb = new StringBuilder();
 		File file = new File(filePath);
 		if (!file.exists()) {
 			logger.error("Fail to find file:" + filePath);
@@ -179,62 +180,64 @@ public class RedisService {
 			BufferedReader br = new BufferedReader(isr);
 			int ch = 0;
 			String bh = "";
-			// while ((ch = isr.read()) != -1) {
-			while ((bh = br.readLine()) != null) {
+			char[] chs = new char[4096];
+//			while ((ch = isr.read()) != -1) {
+//			while ((bh = br.readLine()) != null) {
+			while ((ch = br.read(chs)) != -1) {
 				// System.out.print((char) ch);
-				// msg += (char) ch;
-				msg += bh;
+//				msg += (char) ch;
+//				sb.append(chs);
+				sb.append(chs, 0, ch);
 			}
 			isr.close();
 		} catch (Exception e) {
 			logger.error("Fail to read file:" + filePath);
 		} finally {
 		}
+//		logger.warn("content is:" + sb.toString());
+		logger.warn("read cost:" + (System.currentTimeMillis() - startTime));
+//		return msg;
+		return sb.toString();
+    }
 
-		logger.warn("read time is:" + (System.currentTimeMillis() - startTime));
-		return msg;
-	}
+//	/**
+//	 * 从工程导入XML
+//	 */
+//	public static Element ReadXMlProperties(String fileName){
+//    	return ReadFromFile(PROPERTIES + fileName);
+//    }
+//	/**
+//	 * 从配置导入XML
+//	 */
+//	public static Element ReadXmlConfig(String fileName){
+//    	return ReadFromFile(DirConst.getConfigXmlPath(fileName));
+//    }
+//	/**
+//	 * 从文件导入XML
+//	 */
+//	public static Element ReadFromXMlFile(String filePath){
+//		SAXReader reader = new SAXReader();
+//		try {
+//			InputStream inStream = new FileInputStream(new File(filePath));
+//			Document doc = reader.read(inStream);
+//			return doc.getRootElement();
+//		} catch (Exception e) {
+//			logger.error("Fail to read file:" + filePath);
+//			return null;
+//		}
+//    }
 
-	// /**
-	// * 从工程导入XML
-	// */
-	// public static Element ReadXMlProperties(String fileName){
-	// return ReadFromFile(PROPERTIES + fileName);
-	// }
-	// /**
-	// * 从配置导入XML
-	// */
-	// public static Element ReadXmlConfig(String fileName){
-	// return ReadFromFile(DirConst.getConfigXmlPath(fileName));
-	// }
-	// /**
-	// * 从文件导入XML
-	// */
-	// public static Element ReadFromXMlFile(String filePath){
-	// SAXReader reader = new SAXReader();
-	// try {
-	// InputStream inStream = new FileInputStream(new File(filePath));
-	// Document doc = reader.read(inStream);
-	// return doc.getRootElement();
-	// } catch (Exception e) {
-	// logger.error("Fail to read file:" + filePath);
-	// return null;
-	// }
-	// }
-
-	// private static ConcurrentHashMap<String, Long> lockMap = new
-	// ConcurrentHashMap<String, Long>();
-	// public /*synchronized*/ boolean setLock(final String key, final long
-	// lock) {
-	// Long oldLock = lockMap.get(key);
-	// if (oldLock == null || lock - oldLock >= 4000) {
-	// lockMap.put(key, lock);
-	// logger.debug(key + " : " + oldLock + " succeed to setLock "+ lock);
-	// return true;
-	// }
-	// logger.debug(key + " : " + oldLock + " fail to setLock "+ lock);
-	// return false;
-	// }
+//	private static ConcurrentHashMap<String, Long> lockMap = new ConcurrentHashMap<String, Long>(); 
+//	public /*synchronized*/ boolean setLock(final String key, final long lock) {
+//		Long oldLock = lockMap.get(key);
+//		if (oldLock == null || lock - oldLock >= 4000) {
+//			lockMap.put(key, lock);
+//			logger.debug(key + " : " + oldLock + " succeed to setLock "+ lock);
+//			return true;
+//		}
+//		logger.debug(key + " : " + oldLock + " fail to setLock "+ lock);
+//		return false;
+//	}
 	/**
 	 * 设置同步锁，返回true才能进行操作
 	 */
@@ -513,7 +516,23 @@ public class RedisService {
 				return Ops.get(key2);
 			}
 		});
-	}
+    }
+    
+    /**
+     * 判断hash里某个值是否存在
+     */
+    protected boolean hasKey(final String key, final String key2) {
+    	return redisTemplate.execute(new RedisCallback<Boolean>() {
+			@Override
+			public Boolean doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundHashOperations<String, String, String> Ops = redisTemplate
+						.boundHashOps(key);
+				
+				return Ops.hasKey(key2);
+			}
+		});
+    }
 
 	/**
 	 * 获取hashMap大小

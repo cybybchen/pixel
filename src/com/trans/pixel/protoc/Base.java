@@ -1182,6 +1182,21 @@ public final class Base {
      * <code>optional uint32 titleOrder = 97;</code>
      */
     int getTitleOrder();
+
+    // optional string signName = 98;
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    boolean hasSignName();
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    java.lang.String getSignName();
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    com.google.protobuf.ByteString
+        getSignNameBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserInfo}
@@ -1657,6 +1672,11 @@ public final class Base {
             case 776: {
               bitField2_ |= 0x00004000;
               titleOrder_ = input.readUInt32();
+              break;
+            }
+            case 786: {
+              bitField2_ |= 0x00008000;
+              signName_ = input.readBytes();
               break;
             }
           }
@@ -3631,6 +3651,49 @@ public final class Base {
       return titleOrder_;
     }
 
+    // optional string signName = 98;
+    public static final int SIGNNAME_FIELD_NUMBER = 98;
+    private java.lang.Object signName_;
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    public boolean hasSignName() {
+      return ((bitField2_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    public java.lang.String getSignName() {
+      java.lang.Object ref = signName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          signName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string signName = 98;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSignNameBytes() {
+      java.lang.Object ref = signName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        signName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0L;
       account_ = "";
@@ -3714,6 +3777,7 @@ public final class Base {
       markId_ = "";
       recommandMarkId_ = "";
       titleOrder_ = 0;
+      signName_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3982,6 +4046,9 @@ public final class Base {
       }
       if (((bitField2_ & 0x00004000) == 0x00004000)) {
         output.writeUInt32(97, titleOrder_);
+      }
+      if (((bitField2_ & 0x00008000) == 0x00008000)) {
+        output.writeBytes(98, getSignNameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -4320,6 +4387,10 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(97, titleOrder_);
       }
+      if (((bitField2_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(98, getSignNameBytes());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -4619,6 +4690,8 @@ public final class Base {
         bitField2_ = (bitField2_ & ~0x00010000);
         titleOrder_ = 0;
         bitField2_ = (bitField2_ & ~0x00020000);
+        signName_ = "";
+        bitField2_ = (bitField2_ & ~0x00040000);
         return this;
       }
 
@@ -4994,6 +5067,10 @@ public final class Base {
           to_bitField2_ |= 0x00004000;
         }
         result.titleOrder_ = titleOrder_;
+        if (((from_bitField2_ & 0x00040000) == 0x00040000)) {
+          to_bitField2_ |= 0x00008000;
+        }
+        result.signName_ = signName_;
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -5348,6 +5425,11 @@ public final class Base {
         }
         if (other.hasTitleOrder()) {
           setTitleOrder(other.getTitleOrder());
+        }
+        if (other.hasSignName()) {
+          bitField2_ |= 0x00040000;
+          signName_ = other.signName_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9730,6 +9812,80 @@ public final class Base {
       public Builder clearTitleOrder() {
         bitField2_ = (bitField2_ & ~0x00020000);
         titleOrder_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string signName = 98;
+      private java.lang.Object signName_ = "";
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public boolean hasSignName() {
+        return ((bitField2_ & 0x00040000) == 0x00040000);
+      }
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public java.lang.String getSignName() {
+        java.lang.Object ref = signName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          signName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSignNameBytes() {
+        java.lang.Object ref = signName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          signName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public Builder setSignName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField2_ |= 0x00040000;
+        signName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public Builder clearSignName() {
+        bitField2_ = (bitField2_ & ~0x00040000);
+        signName_ = getDefaultInstance().getSignName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string signName = 98;</code>
+       */
+      public Builder setSignNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField2_ |= 0x00040000;
+        signName_ = value;
         onChanged();
         return this;
       }
@@ -32342,6 +32498,934 @@ public final class Base {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Event)
   }
 
+  public interface FightInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 id = 3;
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    int getId();
+
+    // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    boolean hasEnemy();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfo getEnemy();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder();
+
+    // required string fightInfo = 1;
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    boolean hasFightInfo();
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    java.lang.String getFightInfo();
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFightInfoBytes();
+
+    // required string fightData = 2;
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    boolean hasFightData();
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    java.lang.String getFightData();
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getFightDataBytes();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.FightInfo}
+   */
+  public static final class FightInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements FightInfoOrBuilder {
+    // Use FightInfo.newBuilder() to construct.
+    private FightInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private FightInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final FightInfo defaultInstance;
+    public static FightInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public FightInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FightInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000004;
+              fightInfo_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000008;
+              fightData_ = input.readBytes();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = enemy_.toBuilder();
+              }
+              enemy_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemy_);
+                enemy_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_FightInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Base.FightInfo.class, com.trans.pixel.protoc.Base.FightInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<FightInfo> PARSER =
+        new com.google.protobuf.AbstractParser<FightInfo>() {
+      public FightInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FightInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FightInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 id = 3;
+    public static final int ID_FIELD_NUMBER = 3;
+    private int id_;
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 3;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+    public static final int ENEMY_FIELD_NUMBER = 4;
+    private com.trans.pixel.protoc.Base.UserInfo enemy_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public boolean hasEnemy() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfo getEnemy() {
+      return enemy_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder() {
+      return enemy_;
+    }
+
+    // required string fightInfo = 1;
+    public static final int FIGHTINFO_FIELD_NUMBER = 1;
+    private java.lang.Object fightInfo_;
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    public boolean hasFightInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    public java.lang.String getFightInfo() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fightInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string fightInfo = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFightInfoBytes() {
+      java.lang.Object ref = fightInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fightInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string fightData = 2;
+    public static final int FIGHTDATA_FIELD_NUMBER = 2;
+    private java.lang.Object fightData_;
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    public boolean hasFightData() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    public java.lang.String getFightData() {
+      java.lang.Object ref = fightData_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fightData_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string fightData = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFightDataBytes() {
+      java.lang.Object ref = fightData_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fightData_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      id_ = 0;
+      enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      fightInfo_ = "";
+      fightData_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasFightInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFightData()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasEnemy()) {
+        if (!getEnemy().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(1, getFightInfoBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(2, getFightDataBytes());
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(3, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(4, enemy_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getFightInfoBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getFightDataBytes());
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, enemy_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.FightInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Base.FightInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.FightInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Base.FightInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_FightInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Base.FightInfo.class, com.trans.pixel.protoc.Base.FightInfo.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Base.FightInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getEnemyFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (enemyBuilder_ == null) {
+          enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          enemyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        fightInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        fightData_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_FightInfo_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Base.FightInfo getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Base.FightInfo build() {
+        com.trans.pixel.protoc.Base.FightInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Base.FightInfo buildPartial() {
+        com.trans.pixel.protoc.Base.FightInfo result = new com.trans.pixel.protoc.Base.FightInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (enemyBuilder_ == null) {
+          result.enemy_ = enemy_;
+        } else {
+          result.enemy_ = enemyBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.fightInfo_ = fightInfo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.fightData_ = fightData_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Base.FightInfo) {
+          return mergeFrom((com.trans.pixel.protoc.Base.FightInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Base.FightInfo other) {
+        if (other == com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasEnemy()) {
+          mergeEnemy(other.getEnemy());
+        }
+        if (other.hasFightInfo()) {
+          bitField0_ |= 0x00000004;
+          fightInfo_ = other.fightInfo_;
+          onChanged();
+        }
+        if (other.hasFightData()) {
+          bitField0_ |= 0x00000008;
+          fightData_ = other.fightData_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasFightInfo()) {
+          
+          return false;
+        }
+        if (!hasFightData()) {
+          
+          return false;
+        }
+        if (hasEnemy()) {
+          if (!getEnemy().isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Base.FightInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Base.FightInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 id = 3;
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 3;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 3;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 3;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 3;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.UserInfo enemy = 4;
+      private com.trans.pixel.protoc.Base.UserInfo enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> enemyBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public boolean hasEnemy() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getEnemy() {
+        if (enemyBuilder_ == null) {
+          return enemy_;
+        } else {
+          return enemyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder setEnemy(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (enemyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemy_ = value;
+          onChanged();
+        } else {
+          enemyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder setEnemy(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (enemyBuilder_ == null) {
+          enemy_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder mergeEnemy(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (enemyBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              enemy_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            enemy_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(enemy_).mergeFrom(value).buildPartial();
+          } else {
+            enemy_ = value;
+          }
+          onChanged();
+        } else {
+          enemyBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public Builder clearEnemy() {
+        if (enemyBuilder_ == null) {
+          enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          enemyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getEnemyBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getEnemyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getEnemyOrBuilder() {
+        if (enemyBuilder_ != null) {
+          return enemyBuilder_.getMessageOrBuilder();
+        } else {
+          return enemy_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo enemy = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getEnemyFieldBuilder() {
+        if (enemyBuilder_ == null) {
+          enemyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  enemy_,
+                  getParentForChildren(),
+                  isClean());
+          enemy_ = null;
+        }
+        return enemyBuilder_;
+      }
+
+      // required string fightInfo = 1;
+      private java.lang.Object fightInfo_ = "";
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public boolean hasFightInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public java.lang.String getFightInfo() {
+        java.lang.Object ref = fightInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          fightInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFightInfoBytes() {
+        java.lang.Object ref = fightInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fightInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public Builder setFightInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        fightInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public Builder clearFightInfo() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        fightInfo_ = getDefaultInstance().getFightInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string fightInfo = 1;</code>
+       */
+      public Builder setFightInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        fightInfo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string fightData = 2;
+      private java.lang.Object fightData_ = "";
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public boolean hasFightData() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public java.lang.String getFightData() {
+        java.lang.Object ref = fightData_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          fightData_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFightDataBytes() {
+        java.lang.Object ref = fightData_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fightData_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public Builder setFightData(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        fightData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public Builder clearFightData() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        fightData_ = getDefaultInstance().getFightData();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string fightData = 2;</code>
+       */
+      public Builder setFightDataBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        fightData_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.FightInfo)
+    }
+
+    static {
+      defaultInstance = new FightInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.FightInfo)
+  }
+
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_UserInfo_descriptor;
   private static
@@ -32462,6 +33546,11 @@ public final class Base {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_FightInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -32471,7 +33560,7 @@ public final class Base {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\256\016\n" +
+      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\300\016\n" +
       "\010UserInfo\022\n\n\002id\030\001 \002(\003\022\017\n\007account\030\002 \001(\t\022\017" +
       "\n\007session\030  \001(\t\022\014\n\004icon\030\r \001(\005\022\014\n\004name\030\003 " +
       "\001(\t\022\020\n\010serverId\030\004 \001(\005\022\017\n\007unionId\030\016 \001(\005\022\021" +
@@ -32517,83 +33606,86 @@ public final class Base {
       "\r\022\r\n\005frame\030Z \001(\r\022\027\n\017recommandUserId\030[ \001(" +
       "\004\022\021\n\tfriendVip\030\\ \001(\r\022\020\n\010talentsp\030] \001(\005\022\020" +
       "\n\010unionExp\030^ \001(\r\022\016\n\006markId\030_ \001(\t\022\027\n\017reco" +
-      "mmandMarkId\030` \001(\t\022\022\n\ntitleOrder\030a \001(\r\"\210\001" +
-      "\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\023\n\013targetcoun" +
-      "t\030\002 \001(\005\0222\n\006reward\030\004 \001(\0132\".com.trans.pixe" +
-      "l.protoc.RewardInfo\022\020\n\010rewarded\030\006 \001(\005\022\021\n",
-      "\trecharged\030\007 \001(\005\"M\n\rJewelPoolList\022\n\n\002id\030" +
-      "\001 \001(\005\0220\n\005order\030\002 \003(\0132!.com.trans.pixel.p" +
-      "rotoc.JewelPool\"E\n\016JewelPoolLists\0223\n\004dat" +
-      "a\030\001 \003(\0132%.com.trans.pixel.protoc.JewelPo" +
-      "olList\"Z\n\005Enemy\022\017\n\007enemyid\030\002 \001(\005\022\r\n\005coun" +
-      "t\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005\022\022\n\nlootweight\030\005" +
-      " \001(\005\022\014\n\004loot\030\006 \001(\005\"I\n\nEnemyGroup\022,\n\005enem" +
-      "y\030\001 \003(\0132\035.com.trans.pixel.protoc.Enemy\022\r" +
-      "\n\005hpbar\030\002 \001(\005\"6\n\023UnionBossUserRecord\022\016\n\006" +
-      "userId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\361\002\n\017UnionB",
-      "ossRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n" +
-      "\007endTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ra" +
-      "nks\030\005 \003(\0132 .com.trans.pixel.protoc.UserR" +
-      "ank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n" +
-      "\007percent\030\010 \001(\005\022?\n\nuserRecord\030\t \003(\0132+.com" +
-      ".trans.pixel.protoc.UnionBossUserRecord\022" +
-      "\016\n\006status\030\n \001(\r\"h\n\017UNIONBOSSSTATUS\022\033\n\027UN" +
-      "ION_ZHANLI_NOT_ENOUGH\020\001\022!\n\035UNION_BOSS_US" +
-      "ER_HAS_NOT_TIMES\020\002\022\025\n\021UNION_BOSS_IS_END\020" +
-      "\003\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com.trans.pixe",
-      "l.protoc.UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank" +
-      "\030\003 \001(\005\"\260\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005lev" +
-      "el\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.UserTalentOrder\0226\n\005equip\030\005 \003(\0132" +
-      "\'.com.trans.pixel.protoc.UserTalentEquip" +
-      "\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 \001(\r\".\n\nTeamEngine\022" +
-      "\n\n\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Te" +
-      "am\022.\n\004user\030\001 \001(\0132 .com.trans.pixel.proto" +
-      "c.UserInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans" +
-      ".pixel.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001",
-      "(\0132\".com.trans.pixel.protoc.UserTalent\022\024" +
-      "\n\014rolePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\013" +
-      "2\".com.trans.pixel.protoc.TeamEngine\"@\n\017" +
-      "UserTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillI" +
-      "d\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"Q\n\017UserTalentEqui" +
-      "p\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005l" +
-      "evel\030\003 \001(\005\022\r\n\005order\030\004 \001(\r\"\241\001\n\010UserRank\022\014" +
-      "\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\003\022*\n\004team\030\003 \001(\0132" +
-      "\034.com.trans.pixel.protoc.Team\022\016\n\006zhanli\030" +
-      "\006 \001(\r\022\016\n\006score2\030\t \001(\r\022.\n\004user\030\n \001(\0132 .co",
-      "m.trans.pixel.protoc.UserInfo\"W\n\tClearIn" +
-      "fo\022\020\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n" +
-      "\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0" +
-      "\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLev" +
-      "el\030\002 \002(\005\"Q\n\017UserEquipPokede\022\016\n\006itemId\030\001 " +
-      "\002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010las" +
-      "tTime\030\004 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003" +
-      "\022\r\n\005level\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId" +
-      "\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel." +
-      "protoc.SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030",
-      "\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022" +
-      "\016\n\006isLock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030" +
-      "\014 \003(\0132!.com.trans.pixel.protoc.ClearInfo" +
-      "\022\022\n\nstrengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fe" +
-      "tters\030\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.t" +
-      "rans.pixel.protoc.UserEquipPokede\022\n\n\002sp\030" +
-      "\021 \001(\005\"\271\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004" +
-      "name\030\002 \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(" +
-      "\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006co" +
-      "untb\030\006 \001(\005\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(",
-      "\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"k\n\013Rew" +
-      "ardInfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r" +
-      "\n\005count\030\003 \001(\002\022\016\n\006weight\030\004 \001(\002\022\017\n\007weightb" +
-      "\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013MultiReward\022\n\n" +
-      "\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\"|\n\004Tas" +
-      "k\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des" +
-      "\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 " +
-      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
-      "\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(",
-      "\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010targe" +
-      "tid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005" +
-      "\022\r\n\005count\030\013 \001(\005"
+      "mmandMarkId\030` \001(\t\022\022\n\ntitleOrder\030a \001(\r\022\020\n" +
+      "\010signName\030b \001(\t\"\210\001\n\tJewelPool\022\r\n\005order\030\001" +
+      " \001(\005\022\023\n\013targetcount\030\002 \001(\005\0222\n\006reward\030\004 \001(" +
+      "\0132\".com.trans.pixel.protoc.RewardInfo\022\020\n",
+      "\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"M\n\rJe" +
+      "welPoolList\022\n\n\002id\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!" +
+      ".com.trans.pixel.protoc.JewelPool\"E\n\016Jew" +
+      "elPoolLists\0223\n\004data\030\001 \003(\0132%.com.trans.pi" +
+      "xel.protoc.JewelPoolList\"Z\n\005Enemy\022\017\n\007ene" +
+      "myid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001" +
+      "(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"I\n\n" +
+      "EnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com.trans.pi" +
+      "xel.protoc.Enemy\022\r\n\005hpbar\030\002 \001(\005\"6\n\023Union" +
+      "BossUserRecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percen",
+      "t\030\002 \001(\005\"\361\002\n\017UnionBossRecord\022\016\n\006bossId\030\001 " +
+      "\001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAt" +
+      "tackHp\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans." +
+      "pixel.protoc.UserRank\022\021\n\tstartTime\030\006 \001(\t" +
+      "\022\r\n\005count\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuser" +
+      "Record\030\t \003(\0132+.com.trans.pixel.protoc.Un" +
+      "ionBossUserRecord\022\016\n\006status\030\n \001(\r\"h\n\017UNI" +
+      "ONBOSSSTATUS\022\033\n\027UNION_ZHANLI_NOT_ENOUGH\020" +
+      "\001\022!\n\035UNION_BOSS_USER_HAS_NOT_TIMES\020\002\022\025\n\021" +
+      "UNION_BOSS_IS_END\020\003\"S\n\004Rank\022.\n\004user\030\001 \002(",
+      "\0132 .com.trans.pixel.protoc.UserInfo\022\r\n\005s" +
+      "core\030\002 \002(\005\022\014\n\004rank\030\003 \001(\005\"\260\001\n\nUserTalent\022" +
+      "\n\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(" +
+      "\0132\'.com.trans.pixel.protoc.UserTalentOrd" +
+      "er\0226\n\005equip\030\005 \003(\0132\'.com.trans.pixel.prot" +
+      "oc.UserTalentEquip\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 " +
+      "\001(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014compose" +
+      "Skill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132 .com" +
+      ".trans.pixel.protoc.UserInfo\0222\n\010heroInfo" +
+      "\030\002 \003(\0132 .com.trans.pixel.protoc.HeroInfo",
+      "\0226\n\nuserTalent\030\004 \001(\0132\".com.trans.pixel.p" +
+      "rotoc.UserTalent\022\024\n\014rolePosition\030\005 \001(\005\0226" +
+      "\n\nteamEngine\030\006 \003(\0132\".com.trans.pixel.pro" +
+      "toc.TeamEngine\"@\n\017UserTalentOrder\022\r\n\005ord" +
+      "er\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001(\005" +
+      "\"Q\n\017UserTalentEquip\022\020\n\010position\030\001 \001(\005\022\016\n" +
+      "\006itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022\r\n\005order\030\004 " +
+      "\001(\r\"\241\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 " +
+      "\001(\003\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.prot" +
+      "oc.Team\022\016\n\006zhanli\030\006 \001(\r\022\016\n\006score2\030\t \001(\r\022",
+      ".\n\004user\030\n \001(\0132 .com.trans.pixel.protoc.U" +
+      "serInfo\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017" +
+      "\n\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001" +
+      "(\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId" +
+      "\030\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"Q\n\017UserEquipP" +
+      "okede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005" +
+      "order\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\"\207\003\n\010HeroIn" +
+      "fo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rar" +
+      "e\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132" +
+      "!.com.trans.pixel.protoc.SkillInfo\022\r\n\005va",
+      "lue\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022" +
+      "\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005cou" +
+      "nt\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixe" +
+      "l.protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014" +
+      "\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPo" +
+      "kede\030\020 \001(\0132\'.com.trans.pixel.protoc.User" +
+      "EquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nRewardInfo\022\016" +
+      "\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 " +
+      "\001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\005\022\016\n\006" +
+      "counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004item\030\007 \001",
+      "(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007la" +
+      "stime\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006itemid\030\001 \001" +
+      "(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n\006weigh" +
+      "t\030\004 \001(\002\022\017\n\007weightb\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002" +
+      "\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel.protoc" +
+      ".RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n" +
+      "\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030" +
+      "\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel." +
+      "protoc.RewardInfo\"\205\001\n\005Event\022\r\n\005order\030\001 \001",
+      "(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006dag" +
+      "uan\030\004 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n\006weight\030\t " +
+      "\001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"n\n\tFig" +
+      "htInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\022\021\n\tfightInfo" +
+      "\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -32605,7 +33697,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserInfo_descriptor,
-              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", "Frame", "RecommandUserId", "FriendVip", "Talentsp", "UnionExp", "MarkId", "RecommandMarkId", "TitleOrder", });
+              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", "Frame", "RecommandUserId", "FriendVip", "Talentsp", "UnionExp", "MarkId", "RecommandMarkId", "TitleOrder", "SignName", });
           internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new
@@ -32744,6 +33836,12 @@ public final class Base {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
               new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Targetid", "Weight", "Level", "Count", });
+          internal_static_com_trans_pixel_protoc_FightInfo_descriptor =
+            getDescriptor().getMessageTypes().get(24);
+          internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
+              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", });
           return null;
         }
       };

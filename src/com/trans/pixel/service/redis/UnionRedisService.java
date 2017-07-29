@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionExpList;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class UnionRedisService extends RedisService{
@@ -83,7 +84,7 @@ public class UnionRedisService extends RedisService{
 		return unionbuilder;
 	}
 	
-	public List<Union> getBaseUnions(UserBean user) {
+	public List<Union> getBaseUnions(UserBean user, int count) {//count=0表示所有
 		List<Union> unions = new ArrayList<Union>();
 		Map<String, String> applyMap;
 		if(user.getUnionId() != 0)
@@ -105,13 +106,18 @@ public class UnionRedisService extends RedisService{
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
 			if(parseJson(value, builder)){
-				if(applyMap.containsKey(builder.getId()+""))
+				if(applyMap.containsKey(builder.getId()+"")) {
 					builder.setIsApply(true);
+					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
+				}
 				
 				UnionExp unionExp = unionExpMap.get(builder.getLevel());
 				if (unionExp != null)
 					builder.setMaxCount(unionExp.getUnionsize());
-				unions.add(builder.build());
+				if(count > 0 || unionMap.size() < 100 || builder.getZhanli() > 20000)
+					unions.add(builder.build());
+				if(count > 0 && unions.size() >= count)
+					break;
 			}
 		}
 		Collections.sort(unions, new Comparator<Union>() {
@@ -190,6 +196,8 @@ public class UnionRedisService extends RedisService{
 			UnionApply.Builder builder = UnionApply.newBuilder();
 			if(parseJson(value.getValue(), builder))
 				list.add(builder.build());
+			if(list.size() >= 20)
+				break;
 		}
 		return list;
 	}

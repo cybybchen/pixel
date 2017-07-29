@@ -340,7 +340,7 @@ public class PvpMapService {
 			logType = PvpMapConst.TYPE_BOSS;
 		}
 		
-		MultiReward.Builder rewards = null;
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 //		int buff = -1;
 		if(ret){
 			if(event.getEventid()/1000 == 21)
@@ -382,9 +382,7 @@ public class PvpMapService {
 			activityService.upPvpBuff(user, event.getFieldid(), buff);
 		}
 
-		user.addMyactive();
-		if(user.getMyactive() >= 100){
-			user.setMyactive(user.getMyactive() - 100);
+		if(user.addMyactive()){
 			refreshAMine(user);
 		}
 		userService.updateUser(user);
@@ -565,9 +563,7 @@ public class PvpMapService {
 		}
 
 		if(isme){
-			user.addMyactive();
-			if(user.getMyactive() >= 100){
-				user.setMyactive(user.getMyactive() - 100);
+			if(user.addMyactive()){
 				refreshAMine(user);
 			}
 			userService.updateUser(user);

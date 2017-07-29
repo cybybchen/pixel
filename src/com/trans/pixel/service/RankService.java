@@ -164,4 +164,8 @@ public class RankService {
 	public void addRechargeRank(UserBean user, int count) {
 		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_RECHARGE, count, true);
 	}
+	
+	public void addVipRank(UserBean user, int count) {//活跃榜，包含所有活跃值
+		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_VIP_HUOYUE, count, true);
+	}
 }

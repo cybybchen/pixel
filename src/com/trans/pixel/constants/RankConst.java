@@ -7,6 +7,7 @@ public class RankConst {
 	public static final int TYPE_HELP = 4;
 	public static final int TYPE_BATTLETOWER = 5;
 	public static final int TYPE_LADDER_MODE = 6;
+	public static final int TYPE_VIP_HUOYUE = 7;
 	
 	public static final int RANK_SIZE = 10;
 	

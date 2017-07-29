@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.UnionProto.RankItem;
 import com.trans.pixel.protoc.UnionProto.Union;
+import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
@@ -95,7 +96,18 @@ public class UnionService extends FightService{
 	};
 	
 	public List<Union> getBaseUnions(UserBean user) {
-		return redis.getBaseUnions(user);
+		return redis.getBaseUnions(user, 20);
+	}
+	public List<Union> getUnionsRank(UserBean user) {
+		return redis.getBaseUnions(user, 0);
+	}
+	
+	public Union getUnionById(int serverId, int unionId) {
+		Union.Builder union = redis.getUnion(serverId, unionId);
+		List<UserInfo> members = redis.getMembers(unionId, serverId);
+		union.addAllMembers(members);
+		
+		return union.build();
 	}
 	
 	public Union.Builder getBaseUnion(UserBean user) {
@@ -142,7 +154,7 @@ public class UnionService extends FightService{
 		return union;
 	}
 
-	public Union getUnion(UserBean user) {
+	public Union getUnion(UserBean user, boolean isNewVersion) {
 		Union.Builder union = getBaseUnion(user);
 		if(union == null)
 			return null;
@@ -152,30 +164,32 @@ public class UnionService extends FightService{
 		List<UserInfo> members = redis.getMembers(user);
 		boolean needupdate = false;
 
-		int index = 0;
-		int zhanli = 0;
 		members.sort(new Comparator<UserInfo>() {
 			public int compare(UserInfo bean1, UserInfo bean2) {
 				if (bean1.getZhanli() < bean2.getZhanli()) {
-					return -1;
-				} else {
 					return 1;
+				} else {
+					return -1;
 				}
 			}
 		});
+		int index = 0;
+		int zhanli = 0;
 		for(UserInfo member : members){
-			if(index < 10)
+			if(index < 10) {
 				zhanli += member.getZhanli()*6/10;
-			else if(index < 20)
+			}else if(index < 20)
 				zhanli += member.getZhanli()*3/10;
 			else if(index < 30)
 				zhanli += member.getZhanli()/10;
+//			log.error("zhanli+"+member.getZhanli()+" = "+zhanli);
 			index++;
 		}
 		if(!union.getName().equals(user.getUnionName())){
 			user.setUnionName(union.getName());
 			userService.updateUser(user);
 		}
+		zhanli =(int)(zhanli/2.3);
 		if(zhanli != union.getZhanli()){
 			union.setZhanli(zhanli);
 			needupdate = true;
@@ -205,14 +219,6 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 		}
 
-		
-		
-		/**
-		 * 刷新定时工会boss
-		 */
-		crontabUnionBossActivity(user);
-		union.addAllUnionBoss(getUnionBossList(user, union));
-		
 		/**
 		 * 计算镜像世界矿点奖励
 		 */
@@ -227,13 +233,39 @@ public class UnionService extends FightService{
 //	 		union.addAllDefends(users);
 //		}
 		
-		if(user.getUnionJob() > 0){
-			union.addAllApplies(redis.getApplies(user.getUnionId()));
+		if (!isNewVersion) {
+			/**
+			 * 刷新定时工会boss
+			 */
+			crontabUnionBossActivity(user);
+			union.addAllUnionBoss(getUnionBossList(user, union));
+			
+			if(user.getUnionJob() > 0){
+				union.addAllApplies(redis.getApplies(user.getUnionId()));
+			}
 		}
-		
 		union.addAllMembers(members);
 		
 		return union.build();
+	}
+	
+	public List<UnionApply> getUnionApply(UserBean user) {
+		List<UnionApply> applylist = new ArrayList<UnionApply>();
+		if(user.getUnionJob() > 0){
+			applylist.addAll(redis.getApplies(user.getUnionId()));
+			return applylist.subList(0, Math.min(20, applylist.size()));
+//			return redis.getApplies();
+		}
+		
+		return new ArrayList<UnionApply>();
+	}
+	
+	public List<UnionBossRecord> getUnionBossList(UserBean user) {
+		Union.Builder union = getBaseUnion(user);
+		if(union == null)
+			return new ArrayList<UnionBossRecord>();
+		
+		return getUnionBossList(user, union);
 	}
 	
 	/**
@@ -326,7 +358,7 @@ public class UnionService extends FightService{
 	
 	public Union create(int icon, String unionName, UserBean user) {
 		if(user.getUnionId() != 0)
-			return getUnion(user);
+			return getUnion(user, false);
 		
 		UnionBean union = new UnionBean();
 		union.setName(unionName);
@@ -371,26 +403,12 @@ public class UnionService extends FightService{
 			redis.quit(id, user);
 
 			Union.Builder union = getBaseUnion(user);
-			List<UserInfo> members = redis.getMembers(user);
+//			List<UserInfo> members = redis.getMembers(user);
 
-			int index = 0;
-			int zhanli = 0;
-			for(UserInfo member : members){
-				if(index < 10)
-					zhanli += member.getZhanli()*6/10;
-				else if(index < 20)
-					zhanli += member.getZhanli()*3/10;
-				else if(index < 30)
-					zhanli += member.getZhanli()/10;
-				index++;
-			}
 			union.setCount(union.getCount() - 1);
-			if(zhanli != union.getZhanli()){
-				union.setZhanli(zhanli);
-				if(redis.setLock("Union_"+union.getId())){
-					redis.saveUnion(union.build(), user);
-					redis.clearLock("Union_"+union.getId());
-				}
+			if(redis.setLock("Union_"+union.getId())){
+				redis.saveUnion(union.build(), user);
+				redis.clearLock("Union_"+union.getId());
 			}
 			
 			user.setUnionId(0);
@@ -1114,6 +1132,9 @@ public class UnionService extends FightService{
 			return addExp;
 		
 		Union.Builder union = getBaseUnion(user);
+		if (union == null)
+			return addExp;
+		
 		UnionExp unionExp = redis.getUnionExp(union.getLevel());
 		if (unionExp == null)
 			return addExp;

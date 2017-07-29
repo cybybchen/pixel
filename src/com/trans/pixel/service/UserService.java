@@ -159,6 +159,7 @@ public class UserService {
 		//每日首次登陆
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setRedisTime(today0);
+		user.setNextactive(100);
 		user.setLoginDays(user.getLoginDays() + 1);
 		user.setSignCount(0);
 		user.setLadderPurchaseTimes(0);
@@ -670,7 +671,7 @@ public class UserService {
 	public void handlerRecommand(UserBean user, long userId, String markId, String markId2) {
 //		user.setRecommandUserId(userId);
 		if (markId2.isEmpty()) {//master服务器转发到slave
-			user.setRecommandMarkId(markId);
+//			user.setRecommandMarkId(markId);
 			updateUser(user);
 		} else {
 			userRecommandService.saveRecommand(userId, markId2);
@@ -687,5 +688,9 @@ public class UserService {
 	
 	public void deleteUserIdByName(int serverId, String userName) {
 		userRedisService.deleteUserIdByName(serverId, userName);
+	}
+	
+	public void setUserIdByAccount(int serverId, String account, long userId) {
+		userRedisService.setUserIdByAccount(serverId, account, userId);
 	}
 }

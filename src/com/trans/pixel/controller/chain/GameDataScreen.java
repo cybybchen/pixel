@@ -197,6 +197,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
@@ -204,6 +205,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.service.command.AchieveCommandService;
 import com.trans.pixel.service.command.ActivityCommandService;
@@ -1483,7 +1485,8 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		userCommandService.recommand(cmd, responseBuilder, user);
+		// TODO RequestRecommandCommand method
+//		userCommandService.recommand(cmd, responseBuilder, user);
 		return true;
 	}
 
@@ -1505,6 +1508,20 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestCipherRewardCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		cdkeyCommandService.cipherReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEventQuickFightCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		levelCommandService.eventQuickFight(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSignNameCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.signName(cmd, responseBuilder, user);
 		return true;
 	}
 

@@ -54,9 +54,9 @@ public class FightService {
 			LuaValue luaresult = chunk.call(attack, defend);
 			RedisService.parseJson(luaresult.toString(), resultlist);
 		}catch(Exception e){
-			logger.debug(e);
+			logger.warn(e);
 		}
-		logger.debug("cost time:"+(System.currentTimeMillis()-time));
+		logger.warn("cost time:"+(System.currentTimeMillis()-time));
 		return resultlist;
 	}
 }

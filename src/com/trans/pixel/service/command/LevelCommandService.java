@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.UserInfoProto.EventQuestion;
 import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestEventResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelLootResultCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLevelStartCommand;
@@ -269,6 +270,62 @@ public class LevelCommandService extends BaseCommandService {
 		}
 		return null;
 	}
+	
+	public void eventQuickFight(RequestEventQuickFightCommand cmd, Builder responseBuilder, UserBean user) {
+		UserLevelBean userLevel = redis.getUserLevel(user);
+		redis.productEvent(user, userLevel);
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		Map<Integer, Event.Builder> eventMap = redis.getEvents(user, userLevel);
+		for (Event.Builder builder : eventMap.values()) {
+			EventConfig config = redis.getEvent(builder.getEventid());
+			if(config == null){
+				redis.delEvent(user, builder.build());
+				continue;
+			}
+			if (config.getType() != 0) 
+				continue;
+			
+			MultiReward.Builder currentRewards = eventReward(config, builder.build(), user); 
+			rewards.addAllLoot(currentRewards.getLootList());
+			redis.delEvent(user, builder.build());
+			/**
+			 * 完成事件的活动
+			 */
+			activityService.completeEvent(user, builder.getEventid());
+			
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.RESULT, "1");
+			
+			params.put(LogString.EVENTID, "" + builder.getEventid());
+			params.put(LogString.LEVEL, "" + builder.getLevel());
+			params.put(LogString.TYPE, "" + 1);
+			params.put(LogString.EVENTTYPE, "" + config.getType());
+			params.put(LogString.MAP, "" + builder.getDaguan());
+			
+			List<RewardInfo> logRewards = currentRewards.getLootList();
+			params.put(LogString.ITEMID1, "" + (logRewards.size() >= 1 ? logRewards.get(0).getItemid():0));
+			params.put(LogString.ITEMCOUNT1, "" + (logRewards.size() >= 1 ? logRewards.get(0).getCount():0));
+			params.put(LogString.ITEMID2, "" + (logRewards.size() >= 2 ? logRewards.get(1).getItemid():0));
+			params.put(LogString.ITEMCOUNT2, "" + (logRewards.size() >= 2 ? logRewards.get(1).getCount():0));
+			params.put(LogString.ITEMID3, "" + (logRewards.size() >= 3 ? logRewards.get(2).getItemid():0));
+			params.put(LogString.ITEMCOUNT3, "" + (logRewards.size() >= 3 ? logRewards.get(2).getCount():0));
+			
+			logService.sendLog(params, LogString.LOGTYPE_EVENT);
+				
+		}
+		
+		if(user.addMyactive()){
+ 			pvpMapService.refreshAMine(user);
+ 		}
+ 		userService.updateUser(user);
+
+ 		handleRewards(responseBuilder, user, rewards);
+ 		
+ 		pushLevelLootCommand(responseBuilder, userLevel, user);
+	}
+	
 	public void eventResult(RequestEventResultCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLevelBean userLevel = redis.getUserLevel(user);
 		Event event = null;
@@ -355,9 +412,7 @@ public class LevelCommandService extends BaseCommandService {
 			
 //			redis.productMainEvent(user, event.getEventid());
 		}
-		user.addMyactive();
- 		if(user.getMyactive() >= 100){
- 			user.setMyactive(user.getMyactive() - 100);
+ 		if(user.addMyactive()){
  			pvpMapService.refreshAMine(user);
  		}
  		userService.updateUser(user);

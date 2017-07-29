@@ -441,7 +441,7 @@ public class AreaFightService extends FightService{
 	public void resourceFight(AreaResource.Builder builder, int serverId){
 		if(!redisService.setLock("S"+serverId+"_AreaResource_"+builder.getId(), 120))
 			return;
-		logger.info("S"+serverId+":"+RedisService.formatJson(builder.build()));
+		logger.warn("S"+serverId+":"+RedisService.formatJson(builder.build()));
 		//防守玩家最后一个加入战斗
 		List<UserInfo> attacks = new ArrayList<UserInfo>();
 		attacks.addAll(builder.getAttacksList());

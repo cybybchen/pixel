@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.service.ActivityService;
@@ -285,6 +286,7 @@ public class UserCommandService extends BaseCommandService {
 		user.setAccount(cmd.getNewAccount());
 		userService.updateUserToMysql(user);
 		userService.delUserIdByAccount(user.getServerId(), cmd.getOldAccount());
+		userService.setUserIdByAccount(user.getServerId(), user.getAccount(), user.getId());
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
@@ -337,25 +339,26 @@ public class UserCommandService extends BaseCommandService {
 	public void bindRecommand(RequestBindRecommandCommand cmd, Builder responseBuilder, UserBean user) {
 		int serverId = UserBean.calServerIdByMarkId(cmd.getMarkId());
 		long userId = UserBean.calUserIdByMarkId(cmd.getMarkId());
-		if (ConfigUtil.IS_MASTER) {//master服务器
-			ResponseRecommandCommand recommand = requestService.requestBindRecommand(cmd.getMarkId(), cmd.getMarkId2(), user.getServerId(), userId);
-			responseBuilder.setRecommandCommand(recommand);
-			return;
-		}
-			
-		if (!user.getRecommandMarkId().isEmpty()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_IS_EXIST_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_IS_EXIST_ERROR);
-			responseBuilder.setErrorCommand(errorCommand);
-			return;
-		}
-		
 		if (!cmd.hasMarkId2() && serverId == user.getServerId() && userId == user.getId()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_CAN_NOT_SELF_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		UserBean other = userService.getUserOther(cmd.getUserId());
+		if (other == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FRIEND_NOT_EXIST);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		if (cmd.hasIsFirst() && cmd.getIsFirst() && other.getFriendVip() == 0) {
+			ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
+			builder.setUser(other.buildShort());
 			return;
 		}
 		
@@ -365,7 +368,7 @@ public class UserCommandService extends BaseCommandService {
 			builder.mergeFrom(recommand);
 			builder.setCount(userService.getRecommands(user));	
 		} else {//上家所在服务器
-			UserBean other = userService.getUserOther(userId);
+			other = userService.getUserOther(userId);
 			if (other == null) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.FRIEND_NOT_EXIST);
 				
@@ -386,29 +389,26 @@ public class UserCommandService extends BaseCommandService {
 		}
 	}
 	
-	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
-		if (user.getRecommandMarkId().isEmpty())
-			return;
-		
-		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
-		int serverId = UserBean.calServerIdByMarkId(user.getRecommandMarkId());
-		long userId = UserBean.calUserIdByMarkId(user.getRecommandMarkId());
-		if (serverId == user.getServerId()) {//同个server
-			UserBean userBean = userService.getUserOther(userId);
-			if (userBean != null)
-				builder.setUser(userBean.buildShort());
-		} else {//不同server
-			ResponseGetTeamCommand teamResponse = requestService.getTeamRequest(userId, serverId);
-				if (teamResponse != null) {
-				UserInfo userInfo = teamResponse.getTeam().getUser();
-				if (userInfo != null)
-					builder.setUser(userInfo);
-			}
-		}
-		
-		builder.setCount(userService.getRecommands(user));
-		responseBuilder.setRecommandCommand(builder.build());
-	}
+//	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder, UserBean user) {
+//		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand.newBuilder();
+//		int serverId = UserBean.calServerIdByMarkId(user.getRecommandMarkId());
+//		long userId = UserBean.calUserIdByMarkId(user.getRecommandMarkId());
+//		if (serverId == user.getServerId()) {//同个server
+//			UserBean userBean = userService.getUserOther(userId);
+//			if (userBean != null)
+//				builder.setUser(userBean.buildShort());
+//		} else {//不同server
+//			ResponseGetTeamCommand teamResponse = requestService.getTeamRequest(userId, serverId);
+//				if (teamResponse != null) {
+//				UserInfo userInfo = teamResponse.getTeam().getUser();
+//				if (userInfo != null)
+//					builder.setUser(userInfo);
+//			}
+//		}
+//		
+//		builder.setCount(userService.getRecommands(user));
+//		responseBuilder.setRecommandCommand(builder.build());
+//	}
 	
 	public void changeName(RequestChangeUserNameCommand cmd, Builder responseBuilder, UserBean user) {
 		if (userService.queryUserIdByUserName(user.getServerId(), cmd.getNewName()) != 0) {
@@ -430,8 +430,16 @@ public class UserCommandService extends BaseCommandService {
 		userService.deleteUserIdByName(user.getServerId(), user.getUserName());
 		user.setUserName(cmd.getNewName());
 		userService.setUserIdByName(user.getServerId(), user.getUserName(), user.getId());
-		userService.cache(user.getServerId(), user.buildShort());
+		
 		userService.updateUser(user);
+		
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void signName(RequestSignNameCommand cmd, Builder responseBuilder, UserBean user) {
+		user.setSignName(cmd.getSignName());
+		userService.updateUser(user);
+		userService.cache(user.getServerId(), user.buildShort());
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}

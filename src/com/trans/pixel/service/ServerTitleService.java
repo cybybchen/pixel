@@ -71,8 +71,10 @@ public class ServerTitleService {
 	public void deleteServerTitleByTitleId(int serverId, int titleId) {
 		List<TitleInfo> titleList = selectServerTileListByServerId(serverId);
 		for (TitleInfo title : titleList) {
-			if (title.getTitleId() == titleId)
+			if (title.getTitleId() == titleId) {
 				redis.deleteServerTitle(serverId, "" + title.getTitleId() + title.getUserId());
+				mapper.deleteServerTileByTitleId(titleId);
+			}
 		}
 	}
 	
@@ -134,7 +136,7 @@ public class ServerTitleService {
 		updateServerTitleByTitleId(serverId, 17, others);
 		
 		//删除排行榜
-		userLadderRedisService.deleteLadderRank(serverId);
+		userLadderRedisService.renameLadderRank(serverId);
 	}
 	
 	//handler recharge
@@ -177,7 +179,8 @@ public class ServerTitleService {
 		updateServerTitleByTitleId(serverId, 19, others);
 		
 		//删除排行榜
-		rankRedisService.deleteRank(serverId, RankConst.TYPE_RECHARGE);
+		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
+		rankRedisService.renameRank(serverId, RankConst.TYPE_VIP_HUOYUE);
 	}
 	
 	//handler union
@@ -245,7 +248,7 @@ public class ServerTitleService {
 		for (Raid raid : raidList.getRaidList()) {
 			if (raid.getId() < 50)
 				continue;
-			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.RAID_RANK_PREFIX + raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 			if (ranks.isEmpty())
 				continue;
 			int rankInit = 1;
@@ -278,7 +281,7 @@ public class ServerTitleService {
 			updateServerTitleByTitleId(serverId, 20, others);
 			
 			//删除排行榜
-			rankRedisService.deleteRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
+			rankRedisService.renameRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
 		}
 	}
 	

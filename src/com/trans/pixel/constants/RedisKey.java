@@ -405,5 +405,5 @@ public class RedisKey {
 	
 	// user reward task
 	public static final String USER_REWARD_TASK_PREFIX = PREFIX + "rewardtask_";
-	
+	public static final String USER_REWARDTASK_EVENTID_STATUS_PREFIX = PREFIX + "rewardtask_eventid_status_";
 }

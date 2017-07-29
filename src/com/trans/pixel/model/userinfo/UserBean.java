@@ -101,6 +101,7 @@ public class UserBean {
 	private int growExpCountStatus = 0;
 	private String version = "";
 	private int myactive = 0;
+	private int nextactive = 100;
 	private String idfa = "";
 	private int lotteryStatus = 0;
 	private int sevenLoginDays = 0;
@@ -137,8 +138,8 @@ public class UserBean {
 	private long recommandUserId = 0;
 	private int friendVip = 0;
 	private int unionExp = 0;
-	private String recommandMarkId = "";
 	private int titleOrder = 0;
+	private String signName = "";
 	/**
 	 * 主角sp总数
 	 */
@@ -190,19 +191,42 @@ public class UserBean {
 	public int getMyactive() {
 		return myactive;
 	}
-	public void addMyactive() {
+	/**
+	 * 获得活跃度(需要updateUser)
+	 */
+	public boolean addMyactive() {
 		if(zhanliMax < 20000)
 			myactive += 1+RedisService.nextInt(5);
 		else if(zhanliMax < 90000)
 			myactive += 5+RedisService.nextInt(6);
 		else
 			myactive += 5+RedisService.nextInt(11);
+		
+		if(myactive >= nextactive) {
+			nextactive += 100;
+			myactive = 0;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	/**
 	 * 当前活跃度
 	 */
 	public void setMyactive(int myactive) {
 		this.myactive = myactive;
+	}
+	/**
+	 * 下次刷新活跃度
+	 */
+	public int getNextactive() {
+		return nextactive;
+	}
+	/**
+	 * 下次刷新活跃度
+	 */
+	public void setNextactive(int myactive) {
+		this.nextactive = myactive;
 	}
 	/**
 	 * 当前游戏版本
@@ -1315,17 +1339,17 @@ public class UserBean {
 	public void setUnionExp(int unionExp) {
 		this.unionExp = unionExp;
 	}
-	public String getRecommandMarkId() {
-		return recommandMarkId;
-	}
-	public void setRecommandMarkId(String recommandMarkId) {
-		this.recommandMarkId = recommandMarkId;
-	}
 	public int getTitleOrder() {
 		return titleOrder;
 	}
 	public void setTitleOrder(int titleOrder) {
 		this.titleOrder = titleOrder;
+	}
+	public String getSignName() {
+		return signName;
+	}
+	public void setSignName(String signName) {
+		this.signName = signName;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
@@ -1366,10 +1390,9 @@ public class UserBean {
 		builder.setTitle(title);
 		builder.setFrame(frame);
 		builder.setUnionExp(unionExp);
-		builder.setMarkId(calMarkId());
-		builder.setRecommandMarkId(recommandMarkId);
 		builder.setTitleOrder(titleOrder);
 		builder.setFriendVip(friendVip);
+		builder.setSignName(signName);
 		
 		return builder.build();
 	}
@@ -1512,9 +1535,8 @@ public class UserBean {
 		builder.setFriendVip(friendVip);
 		builder.setTalentsp(talentsp);
 		builder.setUnionExp(unionExp);
-		builder.setMarkId(calMarkId());
-		builder.setRecommandMarkId(recommandMarkId);
 		builder.setTitleOrder(titleOrder);
+		builder.setSignName(signName);
 		
 		return builder.build();
 	}

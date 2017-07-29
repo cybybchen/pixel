@@ -25,6 +25,7 @@ import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
@@ -38,7 +39,6 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand;
-import com.trans.pixel.protoc.LadderProto.FightInfo;
 import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.MailProto.MailList;
 import com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand;
@@ -57,7 +57,6 @@ import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.BossGroupRecord;
-import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.Union;
@@ -592,7 +591,7 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushUserUnion(Builder responseBuilder, UserBean user) {
-		Union union = unionService.getUnion(user);
+		Union union = unionService.getUnion(user, false);
 		if(union == null){
 			return;
 		}

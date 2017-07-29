@@ -26,6 +26,7 @@ public class MailBean {
 	private List<RewardBean> rewardList = new ArrayList<RewardBean>();
 	boolean isRead = false;
 	private UserInfo user = null;
+	private String fightInfo = "";
 	public int getId() {
 		return id;
 	}
@@ -74,6 +75,12 @@ public class MailBean {
 	public void setRewardList(List<RewardBean> rewardList) {
 		this.rewardList = rewardList;
 	}
+	public String getFightInfo() {
+		return fightInfo;
+	}
+	public void setFightInfo(String fightInfo) {
+		this.fightInfo = fightInfo;
+	}
 	public void parseRewardList(List<RewardInfo> rewardList) {
 		List<RewardBean> list = new ArrayList<RewardBean>();
 		for(RewardInfo rewardinfo : rewardList){
@@ -110,6 +117,7 @@ public class MailBean {
 		json.put(RELATED_ID, relatedId);
 		if (user != null)
 			json.put(USER, RedisService.formatJson(user));
+		json.put(FIGHT_INFO, fightInfo);
 		
 		return json.toString();
 	}
@@ -143,6 +151,7 @@ public class MailBean {
 				bean.setUser(builder.build());
 		}
 		
+		bean.setFightInfo(TypeTranslatedUtil.jsonGetString(json, FIGHT_INFO));
 		return bean;
 	}
 	
@@ -163,6 +172,7 @@ public class MailBean {
 		builder.addAllReward(rewardInfoBuilderList);
 		if (user != null)
 			builder.setUser(user);
+		builder.setFightInfo(fightInfo);
 		
 		return builder.build();
 	}
@@ -246,4 +256,5 @@ public class MailBean {
 	private static final String IS_READ = "is_read";
 	private static final String RELATED_ID = "related_id";
 	private static final String USER = "user";
+	private static final String FIGHT_INFO = "fight_info";
 }

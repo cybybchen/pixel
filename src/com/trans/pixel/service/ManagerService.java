@@ -216,7 +216,7 @@ public class ManagerService extends RedisService{
 //					parameters.put("session", session);
 					parameters.put("update-GmRight-slave", req.getString("update-GmRight"));
 					String message = HttpUtil.post(slaveserver, parameters);
-					logger.info(slaveserver+" : "+message);
+					logger.warn(slaveserver+" : "+message);
 				}
 				result.put("success", "GM权限设置成功");
 				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "update-GmRight", req.getString("update-GmRight"));
@@ -340,7 +340,7 @@ public class ManagerService extends RedisService{
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters.put("del-Cdkey-master", req.getString("del-Cdkey"));
 				String message = HttpUtil.post(masterserver, parameters);
-				logger.info(masterserver+" : "+message);
+				logger.warn(masterserver+" : "+message);
 				result = JSONObject.fromObject(message);
 				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-Cdkey", req.getString("del-Cdkey"));
 				return result;
@@ -356,7 +356,7 @@ public class ManagerService extends RedisService{
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters.put("add-Cdkey-master", req.getString("add-Cdkey"));
 				String message = HttpUtil.post(masterserver, parameters);
-				logger.info(masterserver+" : "+message);
+				logger.warn(masterserver+" : "+message);
 				result = JSONObject.fromObject(message);
 				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "add-Cdkey", req.getString("add-Cdkey"));
 				return result;
@@ -373,7 +373,7 @@ public class ManagerService extends RedisService{
 				Map<String, String> parameters = new HashMap<String, String>();
 				parameters.put("Cdkey-master", req.getString("Cdkey"));
 				String message = HttpUtil.post(masterserver, parameters);
-				logger.info(masterserver+" : "+message);
+				logger.warn(masterserver+" : "+message);
 				result = JSONObject.fromObject(message);
 				return result;
 			} catch (Exception e) {
