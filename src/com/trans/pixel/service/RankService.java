@@ -12,11 +12,13 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
@@ -153,6 +155,18 @@ public class RankService {
 		return rankList;
 	}
 	
+	public List<FightInfo> getFightInfoList() {
+		List<String> fights = rankRedisService.getFightInfoList();
+		List<FightInfo> fightList = new ArrayList<FightInfo>();
+		for (String fight : fights) {
+			FightInfo.Builder builder = FightInfo.newBuilder();
+			if (RedisService.parseJson(fight, builder))
+				fightList.add(builder.build());
+		}
+		
+		return fightList;
+	}
+	
 	public void addRaidRank(UserBean user, Raid raid) {
 		int turn = 0;
 		for(int count : raid.getTurnList()) {
@@ -167,5 +181,9 @@ public class RankService {
 	
 	public void addVipRank(UserBean user, int count) {//活跃榜，包含所有活跃值
 		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_VIP_HUOYUE, count, true);
+	}
+	
+	public void addFightInfoRank(FightInfo fight) {
+		rankRedisService.addFightInfoRank(fight);
 	}
 }

@@ -8,6 +8,7 @@ public class RankConst {
 	public static final int TYPE_BATTLETOWER = 5;
 	public static final int TYPE_LADDER_MODE = 6;
 	public static final int TYPE_VIP_HUOYUE = 7;
+	public static final int TYPE_FIGHTINFO = 20;
 	
 	public static final int RANK_SIZE = 10;
 	
@@ -24,6 +25,8 @@ public class RankConst {
 	public static final int UNIONBOSS_RANK_LIST_END = 19;
 	
 	public static final int RAID_RANK_PREFIX = 100;
+	
+	public static final int FIGHTINFO_RANK_LIMIT = 50;
 	
 	public static final int TITLE_RANK_START = 0;
 	public static final int TITLE_RANK_END = 19;

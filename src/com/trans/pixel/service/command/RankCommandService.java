@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.ActivityProto.RequestRankCommand;
@@ -23,9 +24,13 @@ public class RankCommandService extends BaseCommandService {
 	public void getRankList(RequestRankCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseRankCommand.Builder builder = ResponseRankCommand.newBuilder();
 		int type = cmd.getType();
-		List<UserRankBean> rankList = rankService.getRankList(user.getServerId(), type);
-		List<UserRank> userRankBuilderList = buildUserRankList(rankList);
-		builder.addAllUserRank(userRankBuilderList);
+		if (type == RankConst.TYPE_FIGHTINFO) {
+			builder.addAllFightInfo(rankService.getFightInfoList());
+		} else {
+			List<UserRankBean> rankList = rankService.getRankList(user.getServerId(), type);
+			List<UserRank> userRankBuilderList = buildUserRankList(rankList);
+			builder.addAllUserRank(userRankBuilderList);
+		}
 		
 		responseBuilder.setRankCommand(builder.build());
 	}

@@ -15,12 +15,11 @@ import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.service.LogService;
-import com.trans.pixel.service.RequestService;
+import com.trans.pixel.service.RankService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
-import com.trans.pixel.utils.ConfigUtil;
-
+import com.trans.pixel.utils.DateUtil;
 @Service
 public class TeamCommandService extends BaseCommandService {
 	@Resource
@@ -34,7 +33,7 @@ public class TeamCommandService extends BaseCommandService {
 	@Resource
 	private UserService userService;
 	@Resource
-	private RequestService requestService;
+	private RankService rankService;
 	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
@@ -62,6 +61,11 @@ public class TeamCommandService extends BaseCommandService {
 		}
 		builder.setId((int)((System.currentTimeMillis()+12345)%10000000));
 		userTeamService.saveFightInfo(RedisService.formatJson(builder.build()), user);
+		if (cmd.hasScore() && cmd.getScore() > 80) {
+			builder.setUser(user.buildShort());
+			builder.setTime(DateUtil.getCurrentDateString());
+			rankService.addFightInfoRank(builder.build());
+		}
 	}
 
 	public void getFightInfo(/*RequestGetFightInfoCommand cmd,*/ Builder responseBuilder, UserBean user) {
@@ -91,14 +95,7 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.getUserId() == 0)
 			return;
 		
-		if (ConfigUtil.IS_MASTER) {//是master就转发对应的slave
-			ResponseGetTeamCommand teamResponse = requestService.getTeamRequest(cmd.getUserId(), user.getServerId());
-			if (teamResponse != null) {
-				responseBuilder.setTeamCommand(teamResponse);
-			}
-			
-			return;
-		}
+		
 		
 		Team team = userTeamService.getTeamCache(cmd.getUserId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();

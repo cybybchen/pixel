@@ -9,8 +9,10 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 
 @Service
@@ -93,6 +95,17 @@ public class RankRedisService extends RedisService{
 		String key = buildRankRedisKey(serverId, type);
 		if (exists(key))
 			rename(key, "last:" + key);
+	}
+	
+	public void addFightInfoRank(FightInfo fight) {
+		lpush(RedisKey.FIGHTINFO_RANK, RedisService.formatJson(fight));
+		if (llen(RedisKey.FIGHTINFO_RANK) > RankConst.FIGHTINFO_RANK_LIMIT) {
+			rpop(RedisKey.FIGHTINFO_RANK);
+		}
+	}
+	
+	public List<String> getFightInfoList() {
+		return this.lrange(RedisKey.FIGHTINFO_RANK);
 	}
 	
 	private <T> String buildRankRedisKey(int serverId, T type) {

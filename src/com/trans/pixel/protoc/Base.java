@@ -32554,6 +32554,35 @@ public final class Base {
      */
     com.google.protobuf.ByteString
         getFightDataBytes();
+
+    // optional .com.trans.pixel.protoc.UserInfo user = 5;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    boolean hasUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfo getUser();
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder();
+
+    // optional string time = 6;
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    boolean hasTime();
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    java.lang.String getTime();
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    com.google.protobuf.ByteString
+        getTimeBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.FightInfo}
@@ -32632,6 +32661,24 @@ public final class Base {
                 enemy_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
+              break;
+            }
+            case 42: {
+              com.trans.pixel.protoc.Base.UserInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = user_.toBuilder();
+              }
+              user_ = input.readMessage(com.trans.pixel.protoc.Base.UserInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(user_);
+                user_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000020;
+              time_ = input.readBytes();
               break;
             }
           }
@@ -32798,11 +32845,78 @@ public final class Base {
       }
     }
 
+    // optional .com.trans.pixel.protoc.UserInfo user = 5;
+    public static final int USER_FIELD_NUMBER = 5;
+    private com.trans.pixel.protoc.Base.UserInfo user_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    public boolean hasUser() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfo getUser() {
+      return user_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+      return user_;
+    }
+
+    // optional string time = 6;
+    public static final int TIME_FIELD_NUMBER = 6;
+    private java.lang.Object time_;
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    public java.lang.String getTime() {
+      java.lang.Object ref = time_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          time_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string time = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTimeBytes() {
+      java.lang.Object ref = time_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        time_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0;
       enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       fightInfo_ = "";
       fightData_ = "";
+      user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      time_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -32819,6 +32933,12 @@ public final class Base {
       }
       if (hasEnemy()) {
         if (!getEnemy().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasUser()) {
+        if (!getUser().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -32841,6 +32961,12 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(4, enemy_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, user_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getTimeBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -32866,6 +32992,14 @@ public final class Base {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, enemy_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, user_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getTimeBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -32976,6 +33110,7 @@ public final class Base {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getEnemyFieldBuilder();
+          getUserFieldBuilder();
         }
       }
       private static Builder create() {
@@ -32996,6 +33131,14 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000004);
         fightData_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        time_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -33044,6 +33187,18 @@ public final class Base {
           to_bitField0_ |= 0x00000008;
         }
         result.fightData_ = fightData_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (userBuilder_ == null) {
+          result.user_ = user_;
+        } else {
+          result.user_ = userBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.time_ = time_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -33076,6 +33231,14 @@ public final class Base {
           fightData_ = other.fightData_;
           onChanged();
         }
+        if (other.hasUser()) {
+          mergeUser(other.getUser());
+        }
+        if (other.hasTime()) {
+          bitField0_ |= 0x00000020;
+          time_ = other.time_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -33091,6 +33254,12 @@ public final class Base {
         }
         if (hasEnemy()) {
           if (!getEnemy().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUser()) {
+          if (!getUser().isInitialized()) {
             
             return false;
           }
@@ -33415,6 +33584,197 @@ public final class Base {
         return this;
       }
 
+      // optional .com.trans.pixel.protoc.UserInfo user = 5;
+      private com.trans.pixel.protoc.Base.UserInfo user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> userBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public boolean hasUser() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo getUser() {
+        if (userBuilder_ == null) {
+          return user_;
+        } else {
+          return userBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public Builder setUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          user_ = value;
+          onChanged();
+        } else {
+          userBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public Builder setUser(
+          com.trans.pixel.protoc.Base.UserInfo.Builder builderForValue) {
+        if (userBuilder_ == null) {
+          user_ = builderForValue.build();
+          onChanged();
+        } else {
+          userBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public Builder mergeUser(com.trans.pixel.protoc.Base.UserInfo value) {
+        if (userBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              user_ != com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance()) {
+            user_ =
+              com.trans.pixel.protoc.Base.UserInfo.newBuilder(user_).mergeFrom(value).buildPartial();
+          } else {
+            user_ = value;
+          }
+          onChanged();
+        } else {
+          userBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public Builder clearUser() {
+        if (userBuilder_ == null) {
+          user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          userBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfo.Builder getUserBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getUserFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserInfoOrBuilder getUserOrBuilder() {
+        if (userBuilder_ != null) {
+          return userBuilder_.getMessageOrBuilder();
+        } else {
+          return user_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.UserInfo user = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder> 
+          getUserFieldBuilder() {
+        if (userBuilder_ == null) {
+          userBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.UserInfo, com.trans.pixel.protoc.Base.UserInfo.Builder, com.trans.pixel.protoc.Base.UserInfoOrBuilder>(
+                  user_,
+                  getParentForChildren(),
+                  isClean());
+          user_ = null;
+        }
+        return userBuilder_;
+      }
+
+      // optional string time = 6;
+      private java.lang.Object time_ = "";
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public java.lang.String getTime() {
+        java.lang.Object ref = time_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          time_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTimeBytes() {
+        java.lang.Object ref = time_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          time_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public Builder setTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        time_ = getDefaultInstance().getTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string time = 6;</code>
+       */
+      public Builder setTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.FightInfo)
     }
 
@@ -33682,10 +34042,12 @@ public final class Base {
       "protoc.RewardInfo\"\205\001\n\005Event\022\r\n\005order\030\001 \001",
       "(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006dag" +
       "uan\030\004 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n\006weight\030\t " +
-      "\001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"n\n\tFig" +
-      "htInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com." +
-      "trans.pixel.protoc.UserInfo\022\021\n\tfightInfo" +
-      "\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t"
+      "\001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"\254\001\n\tFi" +
+      "ghtInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com" +
+      ".trans.pixel.protoc.UserInfo\022\021\n\tfightInf" +
+      "o\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\022.\n\004user\030\005 \001(\013" +
+      "2 .com.trans.pixel.protoc.UserInfo\022\014\n\004ti" +
+      "me\030\006 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33841,7 +34203,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
-              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", });
+              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", "User", "Time", });
           return null;
         }
       };

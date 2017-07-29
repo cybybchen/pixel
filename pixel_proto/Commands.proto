@@ -290,6 +290,8 @@ message FightInfo {
         optional UserInfo enemy = 4;
         required string fightInfo = 1;
         required string fightData = 2;
+	optional UserInfo user = 5;
+	optional string time = 6;
 }
 
 ////////// ShopProto
@@ -2413,6 +2415,7 @@ message RequestRankCommand {
 
 message ResponseRankCommand {
 	repeated UserRank userRank = 1;
+	repeated FightInfo fightInfo = 2;
 }
 
 message LotteryActivityList {
@@ -2644,6 +2647,7 @@ message RequestGetFightInfoCommand {
 }
 message RequestFightInfoCommand {
 	required FightInfo info = 1;
+	optional uint32 score = 2;
 }
 message ResponseFightInfoCommand {
 	repeated FightInfo info = 1;

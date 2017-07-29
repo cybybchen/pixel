@@ -21905,6 +21905,16 @@ public final class LadderProto {
      * <code>required .com.trans.pixel.protoc.FightInfo info = 1;</code>
      */
     com.trans.pixel.protoc.Base.FightInfoOrBuilder getInfoOrBuilder();
+
+    // optional uint32 score = 2;
+    /**
+     * <code>optional uint32 score = 2;</code>
+     */
+    boolean hasScore();
+    /**
+     * <code>optional uint32 score = 2;</code>
+     */
+    int getScore();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestFightInfoCommand}
@@ -21970,6 +21980,11 @@ public final class LadderProto {
               bitField0_ |= 0x00000001;
               break;
             }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              score_ = input.readUInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -22032,8 +22047,25 @@ public final class LadderProto {
       return info_;
     }
 
+    // optional uint32 score = 2;
+    public static final int SCORE_FIELD_NUMBER = 2;
+    private int score_;
+    /**
+     * <code>optional uint32 score = 2;</code>
+     */
+    public boolean hasScore() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint32 score = 2;</code>
+     */
+    public int getScore() {
+      return score_;
+    }
+
     private void initFields() {
       info_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+      score_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -22058,6 +22090,9 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(1, info_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, score_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -22070,6 +22105,10 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, info_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, score_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22194,6 +22233,8 @@ public final class LadderProto {
           infoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
+        score_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -22230,6 +22271,10 @@ public final class LadderProto {
         } else {
           result.info_ = infoBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.score_ = score_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -22248,6 +22293,9 @@ public final class LadderProto {
         if (other == com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand.getDefaultInstance()) return this;
         if (other.hasInfo()) {
           mergeInfo(other.getInfo());
+        }
+        if (other.hasScore()) {
+          setScore(other.getScore());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -22399,6 +22447,39 @@ public final class LadderProto {
           info_ = null;
         }
         return infoBuilder_;
+      }
+
+      // optional uint32 score = 2;
+      private int score_ ;
+      /**
+       * <code>optional uint32 score = 2;</code>
+       */
+      public boolean hasScore() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 score = 2;</code>
+       */
+      public int getScore() {
+        return score_;
+      }
+      /**
+       * <code>optional uint32 score = 2;</code>
+       */
+      public Builder setScore(int value) {
+        bitField0_ |= 0x00000002;
+        score_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 score = 2;</code>
+       */
+      public Builder clearScore() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        score_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestFightInfoCommand)
@@ -28145,26 +28226,26 @@ public final class LadderProto {
       "kRewardCommand\"M\n\031ResponseUserLadderComm" +
       "and\0220\n\004user\030\001 \003(\0132\".com.trans.pixel.prot" +
       "oc.UserLadder\"\034\n\032RequestGetFightInfoComm" +
-      "and\"J\n\027RequestFightInfoCommand\022/\n\004info\030\001" +
-      " \002(\0132!.com.trans.pixel.protoc.FightInfo\"" +
-      "K\n\030ResponseFightInfoCommand\022/\n\004info\030\001 \003(",
-      "\0132!.com.trans.pixel.protoc.FightInfo\"!\n\037" +
-      "RequestGetLadderRankListCommand\"%\n#Reque" +
-      "stGetUserLadderRankListCommand\"V\n Respon" +
-      "seGetLadderRankListCommand\0222\n\010userRank\030\001" +
-      " \003(\0132 .com.trans.pixel.protoc.UserRank\"Z" +
-      "\n$ResponseGetUserLadderRankListCommand\0222" +
-      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
-      "c.UserRank\"a\n\036RequestAttackLadderModeCom" +
-      "mand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamI" +
-      "d\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037Respons",
-      "eAttackLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n" +
-      "\003msg\030\002 \002(\t\"!\n\037RequestReadyAttackLadderCo" +
-      "mmand\"/\n\037RequestGetLadderUserInfoCommand" +
-      "\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurchaseLadderT" +
-      "imeCommand\"V\n ResponseGetLadderUserInfoC" +
-      "ommand\0222\n\010userRank\030\001 \002(\0132 .com.trans.pix" +
-      "el.protoc.UserRank"
+      "and\"Y\n\027RequestFightInfoCommand\022/\n\004info\030\001" +
+      " \002(\0132!.com.trans.pixel.protoc.FightInfo\022" +
+      "\r\n\005score\030\002 \001(\r\"K\n\030ResponseFightInfoComma",
+      "nd\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.proto" +
+      "c.FightInfo\"!\n\037RequestGetLadderRankListC" +
+      "ommand\"%\n#RequestGetUserLadderRankListCo" +
+      "mmand\"V\n ResponseGetLadderRankListComman" +
+      "d\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pr" +
+      "otoc.UserRank\"Z\n$ResponseGetUserLadderRa" +
+      "nkListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tr" +
+      "ans.pixel.protoc.UserRank\"a\n\036RequestAtta" +
+      "ckLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret" +
+      "\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004",
+      " \001(\003\";\n\037ResponseAttackLadderModeCommand\022" +
+      "\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestRead" +
+      "yAttackLadderCommand\"/\n\037RequestGetLadder" +
+      "UserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n Request" +
+      "PurchaseLadderTimeCommand\"V\n ResponseGet" +
+      "LadderUserInfoCommand\0222\n\010userRank\030\001 \002(\0132" +
+      " .com.trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28350,7 +28431,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor,
-              new java.lang.String[] { "Info", });
+              new java.lang.String[] { "Info", "Score", });
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_fieldAccessorTable = new

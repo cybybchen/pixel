@@ -25111,6 +25111,31 @@ public final class ActivityProto {
      */
     com.trans.pixel.protoc.Base.UserRankOrBuilder getUserRankOrBuilder(
         int index);
+
+    // repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.FightInfo> 
+        getFightInfoList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.FightInfo getFightInfo(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    int getFightInfoCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
+        getFightInfoOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightInfoOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseRankCommand}
@@ -25171,6 +25196,14 @@ public final class ActivityProto {
               userRank_.add(input.readMessage(com.trans.pixel.protoc.Base.UserRank.PARSER, extensionRegistry));
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                fightInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.FightInfo>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              fightInfo_.add(input.readMessage(com.trans.pixel.protoc.Base.FightInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -25181,6 +25214,9 @@ public final class ActivityProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           userRank_ = java.util.Collections.unmodifiableList(userRank_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -25249,8 +25285,45 @@ public final class ActivityProto {
       return userRank_.get(index);
     }
 
+    // repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;
+    public static final int FIGHTINFO_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.Base.FightInfo> fightInfo_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.FightInfo> getFightInfoList() {
+      return fightInfo_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
+        getFightInfoOrBuilderList() {
+      return fightInfo_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    public int getFightInfoCount() {
+      return fightInfo_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.FightInfo getFightInfo(int index) {
+      return fightInfo_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightInfoOrBuilder(
+        int index) {
+      return fightInfo_.get(index);
+    }
+
     private void initFields() {
       userRank_ = java.util.Collections.emptyList();
+      fightInfo_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -25259,6 +25332,12 @@ public final class ActivityProto {
 
       for (int i = 0; i < getUserRankCount(); i++) {
         if (!getUserRank(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getFightInfoCount(); i++) {
+        if (!getFightInfo(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -25273,6 +25352,9 @@ public final class ActivityProto {
       for (int i = 0; i < userRank_.size(); i++) {
         output.writeMessage(1, userRank_.get(i));
       }
+      for (int i = 0; i < fightInfo_.size(); i++) {
+        output.writeMessage(2, fightInfo_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -25285,6 +25367,10 @@ public final class ActivityProto {
       for (int i = 0; i < userRank_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, userRank_.get(i));
+      }
+      for (int i = 0; i < fightInfo_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, fightInfo_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -25395,6 +25481,7 @@ public final class ActivityProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getUserRankFieldBuilder();
+          getFightInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -25408,6 +25495,12 @@ public final class ActivityProto {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           userRankBuilder_.clear();
+        }
+        if (fightInfoBuilder_ == null) {
+          fightInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          fightInfoBuilder_.clear();
         }
         return this;
       }
@@ -25444,6 +25537,15 @@ public final class ActivityProto {
           result.userRank_ = userRank_;
         } else {
           result.userRank_ = userRankBuilder_.build();
+        }
+        if (fightInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.fightInfo_ = fightInfo_;
+        } else {
+          result.fightInfo_ = fightInfoBuilder_.build();
         }
         onBuilt();
         return result;
@@ -25486,6 +25588,32 @@ public final class ActivityProto {
             }
           }
         }
+        if (fightInfoBuilder_ == null) {
+          if (!other.fightInfo_.isEmpty()) {
+            if (fightInfo_.isEmpty()) {
+              fightInfo_ = other.fightInfo_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureFightInfoIsMutable();
+              fightInfo_.addAll(other.fightInfo_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.fightInfo_.isEmpty()) {
+            if (fightInfoBuilder_.isEmpty()) {
+              fightInfoBuilder_.dispose();
+              fightInfoBuilder_ = null;
+              fightInfo_ = other.fightInfo_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              fightInfoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getFightInfoFieldBuilder() : null;
+            } else {
+              fightInfoBuilder_.addAllMessages(other.fightInfo_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -25493,6 +25621,12 @@ public final class ActivityProto {
       public final boolean isInitialized() {
         for (int i = 0; i < getUserRankCount(); i++) {
           if (!getUserRank(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getFightInfoCount(); i++) {
+          if (!getFightInfo(i).isInitialized()) {
             
             return false;
           }
@@ -25757,6 +25891,246 @@ public final class ActivityProto {
           userRank_ = null;
         }
         return userRankBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;
+      private java.util.List<com.trans.pixel.protoc.Base.FightInfo> fightInfo_ =
+        java.util.Collections.emptyList();
+      private void ensureFightInfoIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          fightInfo_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.FightInfo>(fightInfo_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> fightInfoBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.FightInfo> getFightInfoList() {
+        if (fightInfoBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(fightInfo_);
+        } else {
+          return fightInfoBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public int getFightInfoCount() {
+        if (fightInfoBuilder_ == null) {
+          return fightInfo_.size();
+        } else {
+          return fightInfoBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo getFightInfo(int index) {
+        if (fightInfoBuilder_ == null) {
+          return fightInfo_.get(index);
+        } else {
+          return fightInfoBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder setFightInfo(
+          int index, com.trans.pixel.protoc.Base.FightInfo value) {
+        if (fightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFightInfoIsMutable();
+          fightInfo_.set(index, value);
+          onChanged();
+        } else {
+          fightInfoBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder setFightInfo(
+          int index, com.trans.pixel.protoc.Base.FightInfo.Builder builderForValue) {
+        if (fightInfoBuilder_ == null) {
+          ensureFightInfoIsMutable();
+          fightInfo_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          fightInfoBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder addFightInfo(com.trans.pixel.protoc.Base.FightInfo value) {
+        if (fightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFightInfoIsMutable();
+          fightInfo_.add(value);
+          onChanged();
+        } else {
+          fightInfoBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder addFightInfo(
+          int index, com.trans.pixel.protoc.Base.FightInfo value) {
+        if (fightInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureFightInfoIsMutable();
+          fightInfo_.add(index, value);
+          onChanged();
+        } else {
+          fightInfoBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder addFightInfo(
+          com.trans.pixel.protoc.Base.FightInfo.Builder builderForValue) {
+        if (fightInfoBuilder_ == null) {
+          ensureFightInfoIsMutable();
+          fightInfo_.add(builderForValue.build());
+          onChanged();
+        } else {
+          fightInfoBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder addFightInfo(
+          int index, com.trans.pixel.protoc.Base.FightInfo.Builder builderForValue) {
+        if (fightInfoBuilder_ == null) {
+          ensureFightInfoIsMutable();
+          fightInfo_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          fightInfoBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder addAllFightInfo(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.FightInfo> values) {
+        if (fightInfoBuilder_ == null) {
+          ensureFightInfoIsMutable();
+          super.addAll(values, fightInfo_);
+          onChanged();
+        } else {
+          fightInfoBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder clearFightInfo() {
+        if (fightInfoBuilder_ == null) {
+          fightInfo_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          fightInfoBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public Builder removeFightInfo(int index) {
+        if (fightInfoBuilder_ == null) {
+          ensureFightInfoIsMutable();
+          fightInfo_.remove(index);
+          onChanged();
+        } else {
+          fightInfoBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo.Builder getFightInfoBuilder(
+          int index) {
+        return getFightInfoFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightInfoOrBuilder(
+          int index) {
+        if (fightInfoBuilder_ == null) {
+          return fightInfo_.get(index);  } else {
+          return fightInfoBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
+           getFightInfoOrBuilderList() {
+        if (fightInfoBuilder_ != null) {
+          return fightInfoBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(fightInfo_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo.Builder addFightInfoBuilder() {
+        return getFightInfoFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo.Builder addFightInfoBuilder(
+          int index) {
+        return getFightInfoFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.FightInfo fightInfo = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.FightInfo.Builder> 
+           getFightInfoBuilderList() {
+        return getFightInfoFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
+          getFightInfoFieldBuilder() {
+        if (fightInfoBuilder_ == null) {
+          fightInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder>(
+                  fightInfo_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          fightInfo_ = null;
+        }
+        return fightInfoBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseRankCommand)
@@ -33423,83 +33797,84 @@ public final class ActivityProto {
       "toc.UserKaifu\0220\n\004rank\030\002 \003(\0132\".com.trans." +
       "pixel.protoc.Kaifu2Rank\0228\n\013userRichang\030\003" +
       " \003(\0132#.com.trans.pixel.protoc.UserRichan",
-      "g\"\"\n\022RequestRankCommand\022\014\n\004type\030\001 \002(\005\"I\n" +
+      "g\"\"\n\022RequestRankCommand\022\014\n\004type\030\001 \002(\005\"\177\n" +
       "\023ResponseRankCommand\0222\n\010userRank\030\001 \003(\0132 " +
-      ".com.trans.pixel.protoc.UserRank\"O\n\023Lott" +
-      "eryActivityList\0228\n\007lottery\030\001 \003(\0132\'.com.t" +
-      "rans.pixel.protoc.LotteryActivity\"\300\001\n\017Lo" +
-      "tteryActivity\022\014\n\004type\030\001 \002(\005\022\014\n\004cost\030\002 \002(" +
-      "\005\022\r\n\005count\030\003 \002(\005\022\r\n\005judge\030\004 \002(\005\022\021\n\tstart" +
-      "time\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\0221\n\004item\030\007 \003(" +
-      "\0132#.com.trans.pixel.protoc.LotteryItem\022\020" +
-      "\n\010errordes\030\010 \001(\t\022\n\n\002id\030\t \001(\005\"V\n\013LotteryI",
-      "tem\022\n\n\002id\030\001 \002(\005\022\016\n\006itemid\030\002 \002(\005\022\r\n\005count" +
-      "\030\003 \002(\005\022\016\n\006weight\030\004 \002(\005\022\014\n\004will\030\005 \002(\005\"4\n\025" +
-      "RequestLotteryCommand\022\014\n\004type\030\001 \002(\005\022\r\n\005c" +
-      "ount\030\002 \001(\005\"B\n\014ActivityList\0222\n\010activity\030\001" +
-      " \003(\0132 .com.trans.pixel.protoc.Activity\"\312" +
-      "\001\n\010Activity\022\n\n\002id\030\001 \002(\005\022\014\n\004type\030\002 \002(\005\022\023\n" +
-      "\013targetcount\030\003 \002(\005\022\013\n\003des\030\004 \002(\t\022\021\n\tstart" +
-      "time\030\005 \002(\t\022\017\n\007endtime\030\006 \002(\t\022\024\n\014activityt" +
-      "ype\030\007 \002(\005\0222\n\006reward\030\010 \003(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\022\024\n\014serverfilter\030\t ",
-      "\002(\t\"@\n\rRankvalueList\022/\n\004rank\030\001 \003(\0132!.com" +
-      ".trans.pixel.protoc.Rankvalue\"N\n\tRankval" +
-      "ue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001(\005\022\013\n\003def\030\003 \001(" +
-      "\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 \001(\002*\277\020\n\rACTIVI" +
-      "TY_TYPE\022\024\n\020TYPE_LEIJI_LOGIN\020\001\022\027\n\023TYPE_LE" +
-      "IJI_RECHARGE\020\002\022\031\n\025TYPE_LEIJI_COST_JEWEL\020" +
-      "\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LOTTERY\020\005\022\021\n\rTYP" +
-      "E_HERO_GET\020\006\022\030\n\024TYPE_HERO_LEVELUP_50\020\007\022\016" +
-      "\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHANLI\020\t\022\027\n\023TYPE_" +
-      "LADDER_SUCCESS\020\n\022\033\n\027TYPE_PVP_ATTACK_SUCC",
-      "ESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014\022\023\n\017TYPE_REWAR" +
-      "DTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016\022\021\n\rTYPE_WUQI_" +
-      "GET\020\017\022\031\n\025TYPE_EQUIP_LEVELUP_10\020\020\022\021\n\rTYPE" +
-      "_PVP_HELP\020\021\022\027\n\023TYPE_DANBI_RECHARGE\020\022\022\024\n\020" +
-      "TYPE_HERO_RAREUP\020\023\022\027\n\023TYPE_EVENT_COMPLET" +
-      "E\020\025\022\036\n\032TYPE_KILL_UNIONBOSS_200001\020\026\022\033\n\027T" +
-      "YPE_LADDERMODE_LEVELUP\020\030\022\025\n\021TYPE_RAID_LE" +
-      "VELUP\020\031\022\025\n\021TYPE_RAID_SUCCSEE\020\033\022\026\n\022TYPE_L" +
-      "ADDER_ATTACK\020\034\022\027\n\022TYPE_TEAMUP_ARUISI\020\220N\022" +
-      "\037\n\032TYPE_ARUISI_SKILL1_LEVELUP\020\221N\022\037\n\032TYPE",
-      "_ARUISI_EQUIP_ADD10001\020\222N\022\037\n\032TYPE_ARUISI" +
-      "_SKILL2_LEVELUP\020\223N\022\024\n\017TYPE_TASK_LEVEL\020\364N" +
-      "\022\026\n\021TYPE_ADD_CHAFENQI\020\330O\022\033\n\026TYPE_PVP_BUF" +
-      "F_LEVELUP5\020\274P\022\030\n\023TYPE_EQUIP_LEVELUP1\020\241Q\022" +
-      "\030\n\023TYPE_EQUIP_LEVELUP3\020\243Q\022\030\n\023TYPE_EQUIP_" +
-      "LEVELUP5\020\245Q\022\031\n\024TYPE_EQUIP_LEVELUP10\020\252Q\022\031" +
-      "\n\024TYPE_UPHERO_QUALITY1\020\205R\022\031\n\024TYPE_UPHERO" +
-      "_QUALITY2\020\206R\022\031\n\024TYPE_UPHERO_QUALITY3\020\207R\022" +
-      "\031\n\024TYPE_UPHERO_QUALITY4\020\210R\022\031\n\024TYPE_UPHER" +
-      "O_QUALITY5\020\211R\022\027\n\022TYPE_HERO_LEVELUP5\020\355R\022\030",
-      "\n\023TYPE_HERO_LEVELUP10\020\362R\022\030\n\023TYPE_HERO_LE" +
-      "VELUP15\020\367R\022\030\n\023TYPE_HERO_LEVELUP20\020\374R\022\030\n\023" +
-      "TYPE_HERO_LEVELUP22\020\376R\022\030\n\023TYPE_HERO_LEVE" +
-      "LUP25\020\201S\022\030\n\023TYPE_HERO_LEVELUP30\020\206S\022\030\n\023TY" +
-      "PE_HERO_LEVELUP35\020\213S\022\030\n\023TYPE_HERO_LEVELU" +
-      "P40\020\220S\022\030\n\023TYPE_HERO_LEVELUP45\020\225S\022\030\n\023TYPE" +
-      "_HERO_LEVELUP50\020\232S\022\030\n\023TYPE_HERO_LEVELUP5" +
-      "5\020\237S\022\030\n\023TYPE_HERO_LEVELUP60\020\244S\022\025\n\020TYPE_F" +
-      "IGHT_FUBEN\020\314S\022\026\n\021TYPE_HERO_RAREUP1\020\261T\022\026\n" +
-      "\021TYPE_HERO_RAREUP2\020\262T\022\026\n\021TYPE_HERO_RAREU",
-      "P3\020\263T\022\026\n\021TYPE_HERO_RAREUP5\020\265T\022\026\n\021TYPE_HE" +
-      "RO_RAREUP7\020\267T\022\026\n\021TYPE_HERO_RAREUP9\020\271T\022\027\n" +
-      "\022TYPE_HERO_RAREUP11\020\273T\022\027\n\022TYPE_HERO_RARE" +
-      "UP12\020\274T\022\027\n\022TYPE_HERO_RAREUP13\020\275T\022\027\n\022TYPE" +
-      "_HERO_RAREUP15\020\277T\022\030\n\023TYPE_ZHUJUE_LEVELUP" +
-      "\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP5\020\375U\022\033\n\026TYPE_R" +
-      "AID_LEVELUP_TASK\020\334V\022\021\n\rTYPE_GET_HERO\020y\022\031" +
-      "\n\025TYPE_TASK_HERO_RAREUP\020z\022\036\n\032TYPE_TASK_Z" +
-      "HUJUE_LEVELUP60\020{\022\036\n\031TYPE_EVENT_COMPLETE" +
-      "_DAILY\020\311\001\022\035\n\030TYPE_REWARDTASK_COMPLETE\020\312\001",
-      "\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025\n\020TYPE_DUOHUI_" +
-      "MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVELUP\020\315\001\022\027\n\022TYPE" +
-      "_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT\020\317" +
-      "\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTONG" +
-      "SHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001\022\023" +
-      "\n\016TYPE_DAILY_ALL\020\323\001\022\024\n\020TYPE_LADDER_RANK\020" +
-      ")\022\024\n\020TYPE_ZHANLI_RANK\020*"
+      ".com.trans.pixel.protoc.UserRank\0224\n\tfigh" +
+      "tInfo\030\002 \003(\0132!.com.trans.pixel.protoc.Fig" +
+      "htInfo\"O\n\023LotteryActivityList\0228\n\007lottery" +
+      "\030\001 \003(\0132\'.com.trans.pixel.protoc.LotteryA" +
+      "ctivity\"\300\001\n\017LotteryActivity\022\014\n\004type\030\001 \002(" +
+      "\005\022\014\n\004cost\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\r\n\005judge\030" +
+      "\004 \002(\005\022\021\n\tstarttime\030\005 \002(\t\022\017\n\007endtime\030\006 \002(" +
+      "\t\0221\n\004item\030\007 \003(\0132#.com.trans.pixel.protoc",
+      ".LotteryItem\022\020\n\010errordes\030\010 \001(\t\022\n\n\002id\030\t \001" +
+      "(\005\"V\n\013LotteryItem\022\n\n\002id\030\001 \002(\005\022\016\n\006itemid\030" +
+      "\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\016\n\006weight\030\004 \002(\005\022\014\n\004" +
+      "will\030\005 \002(\005\"4\n\025RequestLotteryCommand\022\014\n\004t" +
+      "ype\030\001 \002(\005\022\r\n\005count\030\002 \001(\005\"B\n\014ActivityList" +
+      "\0222\n\010activity\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.Activity\"\312\001\n\010Activity\022\n\n\002id\030\001 \002(\005\022\014\n" +
+      "\004type\030\002 \002(\005\022\023\n\013targetcount\030\003 \002(\005\022\013\n\003des\030" +
+      "\004 \002(\t\022\021\n\tstarttime\030\005 \002(\t\022\017\n\007endtime\030\006 \002(" +
+      "\t\022\024\n\014activitytype\030\007 \002(\005\0222\n\006reward\030\010 \003(\0132",
+      "\".com.trans.pixel.protoc.RewardInfo\022\024\n\014s" +
+      "erverfilter\030\t \002(\t\"@\n\rRankvalueList\022/\n\004ra" +
+      "nk\030\001 \003(\0132!.com.trans.pixel.protoc.Rankva" +
+      "lue\"N\n\tRankvalue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001" +
+      "(\005\022\013\n\003def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 " +
+      "\001(\002*\277\020\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGI" +
+      "N\020\001\022\027\n\023TYPE_LEIJI_RECHARGE\020\002\022\031\n\025TYPE_LEI" +
+      "JI_COST_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LO" +
+      "TTERY\020\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024TYPE_HERO_" +
+      "LEVELUP_50\020\007\022\016\n\nTYPE_LEVEL\020\010\022\017\n\013TYPE_ZHA",
+      "NLI\020\t\022\027\n\023TYPE_LADDER_SUCCESS\020\n\022\033\n\027TYPE_P" +
+      "VP_ATTACK_SUCCESS\020\013\022\023\n\017TYPE_MOJING_GET\020\014" +
+      "\022\023\n\017TYPE_REWARDTASK\020\r\022\021\n\rTYPE_SHENYUAN\020\016" +
+      "\022\021\n\rTYPE_WUQI_GET\020\017\022\031\n\025TYPE_EQUIP_LEVELU" +
+      "P_10\020\020\022\021\n\rTYPE_PVP_HELP\020\021\022\027\n\023TYPE_DANBI_" +
+      "RECHARGE\020\022\022\024\n\020TYPE_HERO_RAREUP\020\023\022\027\n\023TYPE" +
+      "_EVENT_COMPLETE\020\025\022\036\n\032TYPE_KILL_UNIONBOSS" +
+      "_200001\020\026\022\033\n\027TYPE_LADDERMODE_LEVELUP\020\030\022\025" +
+      "\n\021TYPE_RAID_LEVELUP\020\031\022\025\n\021TYPE_RAID_SUCCS" +
+      "EE\020\033\022\026\n\022TYPE_LADDER_ATTACK\020\034\022\027\n\022TYPE_TEA",
+      "MUP_ARUISI\020\220N\022\037\n\032TYPE_ARUISI_SKILL1_LEVE" +
+      "LUP\020\221N\022\037\n\032TYPE_ARUISI_EQUIP_ADD10001\020\222N\022" +
+      "\037\n\032TYPE_ARUISI_SKILL2_LEVELUP\020\223N\022\024\n\017TYPE" +
+      "_TASK_LEVEL\020\364N\022\026\n\021TYPE_ADD_CHAFENQI\020\330O\022\033" +
+      "\n\026TYPE_PVP_BUFF_LEVELUP5\020\274P\022\030\n\023TYPE_EQUI" +
+      "P_LEVELUP1\020\241Q\022\030\n\023TYPE_EQUIP_LEVELUP3\020\243Q\022" +
+      "\030\n\023TYPE_EQUIP_LEVELUP5\020\245Q\022\031\n\024TYPE_EQUIP_" +
+      "LEVELUP10\020\252Q\022\031\n\024TYPE_UPHERO_QUALITY1\020\205R\022" +
+      "\031\n\024TYPE_UPHERO_QUALITY2\020\206R\022\031\n\024TYPE_UPHER" +
+      "O_QUALITY3\020\207R\022\031\n\024TYPE_UPHERO_QUALITY4\020\210R",
+      "\022\031\n\024TYPE_UPHERO_QUALITY5\020\211R\022\027\n\022TYPE_HERO" +
+      "_LEVELUP5\020\355R\022\030\n\023TYPE_HERO_LEVELUP10\020\362R\022\030" +
+      "\n\023TYPE_HERO_LEVELUP15\020\367R\022\030\n\023TYPE_HERO_LE" +
+      "VELUP20\020\374R\022\030\n\023TYPE_HERO_LEVELUP22\020\376R\022\030\n\023" +
+      "TYPE_HERO_LEVELUP25\020\201S\022\030\n\023TYPE_HERO_LEVE" +
+      "LUP30\020\206S\022\030\n\023TYPE_HERO_LEVELUP35\020\213S\022\030\n\023TY" +
+      "PE_HERO_LEVELUP40\020\220S\022\030\n\023TYPE_HERO_LEVELU" +
+      "P45\020\225S\022\030\n\023TYPE_HERO_LEVELUP50\020\232S\022\030\n\023TYPE" +
+      "_HERO_LEVELUP55\020\237S\022\030\n\023TYPE_HERO_LEVELUP6" +
+      "0\020\244S\022\025\n\020TYPE_FIGHT_FUBEN\020\314S\022\026\n\021TYPE_HERO",
+      "_RAREUP1\020\261T\022\026\n\021TYPE_HERO_RAREUP2\020\262T\022\026\n\021T" +
+      "YPE_HERO_RAREUP3\020\263T\022\026\n\021TYPE_HERO_RAREUP5" +
+      "\020\265T\022\026\n\021TYPE_HERO_RAREUP7\020\267T\022\026\n\021TYPE_HERO" +
+      "_RAREUP9\020\271T\022\027\n\022TYPE_HERO_RAREUP11\020\273T\022\027\n\022" +
+      "TYPE_HERO_RAREUP12\020\274T\022\027\n\022TYPE_HERO_RAREU" +
+      "P13\020\275T\022\027\n\022TYPE_HERO_RAREUP15\020\277T\022\030\n\023TYPE_" +
+      "ZHUJUE_LEVELUP\020\224U\022\031\n\024TYPE_ZHUJUE_LEVELUP" +
+      "5\020\375U\022\033\n\026TYPE_RAID_LEVELUP_TASK\020\334V\022\021\n\rTYP" +
+      "E_GET_HERO\020y\022\031\n\025TYPE_TASK_HERO_RAREUP\020z\022" +
+      "\036\n\032TYPE_TASK_ZHUJUE_LEVELUP60\020{\022\036\n\031TYPE_",
+      "EVENT_COMPLETE_DAILY\020\311\001\022\035\n\030TYPE_REWARDTA" +
+      "SK_COMPLETE\020\312\001\022\026\n\021TYPE_KILL_MONSTER\020\313\001\022\025" +
+      "\n\020TYPE_DUOHUI_MINE\020\314\001\022\027\n\022TYPE_EQUIP_LEVE" +
+      "LUP\020\315\001\022\027\n\022TYPE_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_" +
+      "LADDER_FIGHT\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022" +
+      "\030\n\023TYPE_PUTONGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_" +
+      "KILL_BOSS\020\322\001\022\023\n\016TYPE_DAILY_ALL\020\323\001\022\024\n\020TYP" +
+      "E_LADDER_RANK\020)\022\024\n\020TYPE_ZHANLI_RANK\020*"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33697,7 +34072,7 @@ public final class ActivityProto {
           internal_static_com_trans_pixel_protoc_ResponseRankCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRankCommand_descriptor,
-              new java.lang.String[] { "UserRank", });
+              new java.lang.String[] { "UserRank", "FightInfo", });
           internal_static_com_trans_pixel_protoc_LotteryActivityList_descriptor =
             getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_LotteryActivityList_fieldAccessorTable = new
