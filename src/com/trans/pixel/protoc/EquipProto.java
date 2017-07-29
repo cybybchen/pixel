@@ -32436,13 +32436,13 @@ public final class EquipProto {
   public interface RequestMaterialComposeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 itemId = 2;
+    // optional uint32 itemId = 2;
     /**
-     * <code>required uint32 itemId = 2;</code>
+     * <code>optional uint32 itemId = 2;</code>
      */
     boolean hasItemId();
     /**
-     * <code>required uint32 itemId = 2;</code>
+     * <code>optional uint32 itemId = 2;</code>
      */
     int getItemId();
 
@@ -32470,6 +32470,16 @@ public final class EquipProto {
      */
     com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder(
         int index);
+
+    // optional uint32 rewardId = 3;
+    /**
+     * <code>optional uint32 rewardId = 3;</code>
+     */
+    boolean hasRewardId();
+    /**
+     * <code>optional uint32 rewardId = 3;</code>
+     */
+    int getRewardId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestMaterialComposeCommand}
@@ -32535,6 +32545,11 @@ public final class EquipProto {
               itemId_ = input.readUInt32();
               break;
             }
+            case 24: {
+              bitField0_ |= 0x00000002;
+              rewardId_ = input.readUInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -32578,17 +32593,17 @@ public final class EquipProto {
     }
 
     private int bitField0_;
-    // required uint32 itemId = 2;
+    // optional uint32 itemId = 2;
     public static final int ITEMID_FIELD_NUMBER = 2;
     private int itemId_;
     /**
-     * <code>required uint32 itemId = 2;</code>
+     * <code>optional uint32 itemId = 2;</code>
      */
     public boolean hasItemId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 itemId = 2;</code>
+     * <code>optional uint32 itemId = 2;</code>
      */
     public int getItemId() {
       return itemId_;
@@ -32630,19 +32645,32 @@ public final class EquipProto {
       return cost_.get(index);
     }
 
+    // optional uint32 rewardId = 3;
+    public static final int REWARDID_FIELD_NUMBER = 3;
+    private int rewardId_;
+    /**
+     * <code>optional uint32 rewardId = 3;</code>
+     */
+    public boolean hasRewardId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint32 rewardId = 3;</code>
+     */
+    public int getRewardId() {
+      return rewardId_;
+    }
+
     private void initFields() {
       itemId_ = 0;
       cost_ = java.util.Collections.emptyList();
+      rewardId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasItemId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -32655,6 +32683,9 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(2, itemId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(3, rewardId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -32672,6 +32703,10 @@ public final class EquipProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, itemId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, rewardId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -32798,6 +32833,8 @@ public final class EquipProto {
         } else {
           costBuilder_.clear();
         }
+        rewardId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -32839,6 +32876,10 @@ public final class EquipProto {
         } else {
           result.cost_ = costBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.rewardId_ = rewardId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -32884,15 +32925,14 @@ public final class EquipProto {
             }
           }
         }
+        if (other.hasRewardId()) {
+          setRewardId(other.getRewardId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasItemId()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -32915,22 +32955,22 @@ public final class EquipProto {
       }
       private int bitField0_;
 
-      // required uint32 itemId = 2;
+      // optional uint32 itemId = 2;
       private int itemId_ ;
       /**
-       * <code>required uint32 itemId = 2;</code>
+       * <code>optional uint32 itemId = 2;</code>
        */
       public boolean hasItemId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 itemId = 2;</code>
+       * <code>optional uint32 itemId = 2;</code>
        */
       public int getItemId() {
         return itemId_;
       }
       /**
-       * <code>required uint32 itemId = 2;</code>
+       * <code>optional uint32 itemId = 2;</code>
        */
       public Builder setItemId(int value) {
         bitField0_ |= 0x00000001;
@@ -32939,7 +32979,7 @@ public final class EquipProto {
         return this;
       }
       /**
-       * <code>required uint32 itemId = 2;</code>
+       * <code>optional uint32 itemId = 2;</code>
        */
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -33186,6 +33226,39 @@ public final class EquipProto {
           cost_ = null;
         }
         return costBuilder_;
+      }
+
+      // optional uint32 rewardId = 3;
+      private int rewardId_ ;
+      /**
+       * <code>optional uint32 rewardId = 3;</code>
+       */
+      public boolean hasRewardId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 rewardId = 3;</code>
+       */
+      public int getRewardId() {
+        return rewardId_;
+      }
+      /**
+       * <code>optional uint32 rewardId = 3;</code>
+       */
+      public Builder setRewardId(int value) {
+        bitField0_ |= 0x00000004;
+        rewardId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 rewardId = 3;</code>
+       */
+      public Builder clearRewardId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        rewardId_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestMaterialComposeCommand)
@@ -33535,9 +33608,10 @@ public final class EquipProto {
       "s.pixel.protoc.UserEquipPokede\"7\n\037Reques",
       "tSynthetiseComposeCommand\022\024\n\014synthetiseI" +
       "d\030\001 \002(\r\"\'\n\025RequestEquipupCommand\022\016\n\006item" +
-      "id\030\001 \002(\r\"a\n\035RequestMaterialComposeComman" +
-      "d\022\016\n\006itemId\030\002 \002(\r\0220\n\004cost\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo"
+      "id\030\001 \002(\r\"s\n\035RequestMaterialComposeComman" +
+      "d\022\016\n\006itemId\030\002 \001(\r\0220\n\004cost\030\001 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\022\020\n\010rewardId\030" +
+      "\003 \001(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33825,7 +33899,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor,
-              new java.lang.String[] { "ItemId", "Cost", });
+              new java.lang.String[] { "ItemId", "Cost", "RewardId", });
           return null;
         }
       };

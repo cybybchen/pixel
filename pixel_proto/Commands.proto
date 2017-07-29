@@ -1315,9 +1315,11 @@ message RequestEquipupCommand {
 }
 
 message RequestMaterialComposeCommand {
-	required uint32 itemId = 2;
+	optional uint32 itemId = 2;
 	repeated RewardInfo cost = 1;
+	optional uint32 rewardId = 3;
 }
+
 ////////// PVPProto
 message PVPMonsterReward {//pvp怪物奖励
 	required int32 id = 1;

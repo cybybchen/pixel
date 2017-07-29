@@ -10837,12 +10837,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasMaterialComposeCommand()) {
-        if (!getMaterialComposeCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasChangePositionCommand()) {
         if (!getChangePositionCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -16747,12 +16741,6 @@ public final class Request {
         }
         if (hasEquipupCommand()) {
           if (!getEquipupCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasMaterialComposeCommand()) {
-          if (!getMaterialComposeCommand().isInitialized()) {
             
             return false;
           }

@@ -249,13 +249,14 @@ public class PropService {
 		return SuccessConst.USE_PROP;
 	}
 	
-	public boolean canMaterialCompose(UserBean user, List<RewardInfo> costList) {
+	public boolean canMaterialCompose(UserBean user, List<RewardInfo> costList, int rewardId) {
 		int count = 0;
 		for (RewardInfo cost : costList) {
 			count += cost.getCount();
 		}
 		
-		if (count < 1000)
+		if ((rewardId == 0 && count < 1000)
+				|| (rewardId > 0 && count < 50))
 			return false;
 		
 		if (!costService.canCost(user, costList))
@@ -264,8 +265,11 @@ public class PropService {
 		return true;
 	}
 	
-	public List<RewardInfo> meterialCompose(UserBean user, List<RewardInfo> costList) {
+	public List<RewardInfo> meterialCompose(UserBean user, List<RewardInfo> costList, int rewardId) {
 		costService.cost(user, costList);
+		
+		if (rewardId > 0)
+			return RewardBean.initRewardInfoList(rewardId, 5);
 		
 		return RewardBean.initRewardInfoList(24010, 1);
 	}
