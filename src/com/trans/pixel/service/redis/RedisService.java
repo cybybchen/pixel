@@ -659,15 +659,11 @@ public class RedisService {
 	 * 添加set
 	 */
 	protected void sadd(final String key, final String value) {
-		sadd(key, value, 0);
-	}
-	
-	protected void sadd(final String key, final String value, final long userId) {
-		getRedis(userId).execute(new RedisCallback<Object>() {
+		redisTemplate.execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, String> Ops = getRedis(userId)
+				BoundSetOperations<String, String> Ops = redisTemplate
 						.boundSetOps(key);
 
 				Ops.add(value);
