@@ -141,6 +141,7 @@ public class UserBean {
 	private int titleOrder = 0;
 	private String signName = "";
 	private int shenyuanPRD = 0;
+	private int rite = 0;
 	/**
 	 * 主角sp总数
 	 */
@@ -1360,6 +1361,12 @@ public class UserBean {
 	}
 	public void setShenyuanPRD(int shenyuanPRD) {
 		this.shenyuanPRD = shenyuanPRD;
+	}
+	public int getRite() {
+		return rite;
+	}
+	public void setRite(int rite) {
+		this.rite = rite;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

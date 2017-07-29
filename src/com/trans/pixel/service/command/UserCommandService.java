@@ -20,6 +20,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
@@ -38,6 +39,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand;
 import com.trans.pixel.service.ActivityService;
@@ -494,7 +496,23 @@ public class UserCommandService extends BaseCommandService {
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
-
+	
+	public void submitRite(RequestSubmitRiteCommand cmd, Builder responseBuilder, UserBean user) {
+		if (user.getRite() == 1) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ACTIVITY_REWARD_HAS_GET_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		user.setRite(1);
+		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 1000000);
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		rewards.addAllLoot(rewardList);
+		handleRewards(responseBuilder, user, rewards.build());
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
 	private void pushCommand(Builder responseBuilder, UserBean user) {
 		pushCommandService.pushLevelLootCommand(responseBuilder, user);
 		pushCommandService.pushUserFriendListCommand(responseBuilder, user);
