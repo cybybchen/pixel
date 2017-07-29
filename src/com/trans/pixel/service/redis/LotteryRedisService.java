@@ -23,7 +23,7 @@ public class LotteryRedisService extends CacheService {
 	private static Logger logger = Logger.getLogger(LotteryRedisService.class);
 	
 	public LotteryRedisService() {
-		buildLotteryActivityConfig();
+//		buildLotteryActivityConfig();
 		parseAndSaveLotteryList(RewardConst.COIN);
 		parseAndSaveLotteryList(RewardConst.JEWEL);
 		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);

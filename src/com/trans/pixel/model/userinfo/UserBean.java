@@ -1163,6 +1163,9 @@ public class UserBean {
 	public void setFirstAddedtoZhanli(int firstAddedtoZhanli) {
 		this.firstAddedtoZhanli = firstAddedtoZhanli;
 	}
+	public void setRecommandMarkId(int recommandMarkId) {
+		
+	}
 	public int getLotteryCoinCount() {
 		return lotteryCoinCount;
 	}
