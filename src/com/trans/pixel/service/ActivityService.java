@@ -304,6 +304,8 @@ public class ActivityService {
 //			sendRichangScore(user, ActivityConst.LADDER_ATTACK);
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_LADDER_FIGHT_VALUE);
+		
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_LADDER_ATTACK_VALUE);
 	}
 	
 	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
