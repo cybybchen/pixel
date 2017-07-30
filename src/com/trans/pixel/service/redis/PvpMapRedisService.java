@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
 import com.trans.pixel.protoc.PVPProto.PVPBoss;
@@ -316,6 +318,7 @@ public class PvpMapRedisService extends RedisService{
 								level = 1;
 							bossbuilder.setLevel(level);
 							set(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisService.formatJson(bosses.build()), user.getId());
+							expire(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 						}
 						events.add(bossbuilder.build());
 						positionValues.add(bossbuilder.getPositionid());
