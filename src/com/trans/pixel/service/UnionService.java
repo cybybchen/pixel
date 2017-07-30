@@ -164,7 +164,7 @@ public class UnionService extends FightService{
 		List<UserInfo> members = redis.getMembers(user);
 		boolean needupdate = false;
 
-		members.sort(new Comparator<UserInfo>() {
+		Collections.sort(members, new Comparator<UserInfo>() {
 			public int compare(UserInfo bean1, UserInfo bean2) {
 				if (bean1.getZhanli() < bean2.getZhanli()) {
 					return 1;
@@ -866,7 +866,7 @@ public class UnionService extends FightService{
 		}
 		
 		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
-			if (!redis.setLock("UnionBoss_" + bossId, 10))
+			if (!redis.setLock("UnionBoss_"+union.getId()+":" + bossId, 10))
 				return unionBossRecord.build();
 			if(!redis.waitLock("Union_"+union.getId()))
 				return unionBossRecord.build();
@@ -876,7 +876,7 @@ public class UnionService extends FightService{
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user.getUnionId(), user.getServerId());
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
-			redis.clearLock("UnionBoss_" + bossId);
+			redis.clearLock("UnionBoss_"+union.getId()+":" + bossId);
 			/**
 			 * 累计击败工会boss的活动
 			 */

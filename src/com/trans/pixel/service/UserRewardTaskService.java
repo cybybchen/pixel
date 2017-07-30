@@ -147,14 +147,14 @@ public class UserRewardTaskService {
 						if (ut.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE)//可以领奖
 							builder.clearRoomInfo();
 //						if(task.getType() == 2 && ut.getStatus() == REWARDTASK_STATUS.LIVE_VALUE){
-						if(task.getType() != 2){//补充次数
+						if(task.getType() != 2 && ut.hasEndtime() && ut.getEndtime() <= now){//补充次数
 							if (ut.getStatus() == REWARDTASK_STATUS.CANREWARD_VALUE) {
 								builder.setLeftcount(task.getCount()+1);
 							}else{
 								builder.setLeftcount(task.getCount());
 							}
 						}
-						builder.setEndtime(RedisService.today(24));
+						builder.setEndtime(RedisService.caltoday(now, 24));
 						userRewardTaskRedisService.updateUserRewardTask(user.getId(), builder.build());
 						map.put(ut.getIndex(), builder.build());
 						config.removeData(i);

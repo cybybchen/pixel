@@ -27,6 +27,7 @@ import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
@@ -36,6 +37,7 @@ import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 
 @Service
@@ -129,6 +131,8 @@ public class RewardTaskService {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user, index);
 		if (userRewardTask == null || userRewardTask.getStatus() != REWARDTASK_STATUS.LIVE_VALUE || userRewardTask.getLeftcount() == 0) {
 			return ErrorConst.NOT_MONSTER;
+		} else if(userRewardTask.getTask().getMerlevel() > user.getMerlevel()) {
+			return ErrorConst.MERLEVEL_FIRST;
 		}
 		RewardTask rewardTask = userRewardTask.getTask();
 		if(ret) {
@@ -201,6 +205,8 @@ public class RewardTaskService {
 	public UserRewardTaskRoom.Builder createRoom(UserBean user, int index) {
 		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null) {
+			return null;
+		} else if(ut.getTask().getMerlevel() > user.getMerlevel()) {
 			return null;
 		}
 		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
@@ -325,12 +331,16 @@ public class RewardTaskService {
 			UserRewardTask.Builder rewardTask = userRewardTaskService.getUserRewardTask(createUserId, index);
 			if (rewardTask == null)
 				return null;
+			if(rewardTask.getTask().getMerlevel() > user.getMerlevel())
+				return rewardTask;
 			
 			Map<Integer, UserRewardTask> map = userRewardTaskService.getUserRewardTaskList(user);
 			for (UserRewardTask urt : map.values()) {
 				if(urt.getTask().getId() == rewardTask.getTaskBuilder().getId() && urt.getTask().getRandcount() == rewardTask.getTaskBuilder().getRandcount()) {
 					rewardTask.setLeftcount(urt.getLeftcount());
 					rewardTask.setIndex(urt.getIndex());
+					if(rewardTask.hasEndtime())
+						rewardTask.setEndtime(urt.getEndtime());
 					break;
 				}
 			}

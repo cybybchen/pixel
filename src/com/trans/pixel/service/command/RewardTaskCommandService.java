@@ -140,7 +140,13 @@ public class RewardTaskCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
             
             return;
-		} 
+		} else if(userRewardTaskBuilder.getTask().getMerlevel() > user.getMerlevel()) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.MERLEVEL_FIRST);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.MERLEVEL_FIRST);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
 		
 		if (userRewardTaskBuilder.hasStatus() && userRewardTaskBuilder.getStatus() == REWARDTASK_STATUS.LIMIT_VALUE) { // 悬赏任务已达上限
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.REWARDTASK_IS_LIMIT_ERROR);

@@ -57,7 +57,10 @@ public class CdkeyService {
 	}
 	
 	public void saveCdkeyRewarded(UserBean user, List<String> rewarded){
-		String value = String.join(",", rewarded);
+		String value = rewarded.size() > 0 ? rewarded.get(0) : "";
+		for(int i = 1; i < rewarded.size(); i++) {
+			value += ","+rewarded.get(i);
+		}
 		cdkeyMapper.update(user.getId(), value);
 		redis.saveCdkeyRewarded(user, value);
 	}
