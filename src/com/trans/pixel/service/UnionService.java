@@ -930,7 +930,7 @@ public class UnionService extends FightService{
 				if (userRank != null) {
 					UserBean user = userService.getUserOther(userRank.getUserId());
 					if (user == null || user.getUnionId() != unionId)
-						return;
+						continue;
 					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);
 					log.debug("unionboss rank mail is:" + mail.toJson());
 					mailService.addMail(mail);
