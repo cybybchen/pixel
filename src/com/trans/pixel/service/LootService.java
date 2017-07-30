@@ -24,7 +24,6 @@ import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.LootRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RedisService;
-import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Component

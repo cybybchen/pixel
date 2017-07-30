@@ -354,4 +354,11 @@ public class BaseCommandService {
 		rewardService.doFilterRewards(user, rewards);
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
+	
+	protected void handleRewards(Builder responseBuilder, UserBean user, MultiReward multi, boolean isPush) {
+		MultiReward.Builder rewards = propService.handleRewards(user, multi);
+		rewardService.doFilterRewards(user, rewards);
+		if (isPush)
+			pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+	}
 }

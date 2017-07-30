@@ -117,7 +117,7 @@ public class RewardService {
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:
-					rechargeService.recharge(user, (int)rewardCount, "gm", "", true);
+					rechargeService.recharge(user, (int)rewardCount, "gm", "gm" + System.currentTimeMillis());
 					return true;
 				case RewardConst.EXP:
 					user.setExp(user.getExp() + rewardCount);

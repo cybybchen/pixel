@@ -1,6 +1,8 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
@@ -77,22 +79,66 @@ public class RechargeRedisService extends RedisService {
 		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.RECHARGE_KEY);
 	}
 	
-	public void addUserRecharge(long userId, MultiReward rewards) {
+//	public void addUserRecharge(long userId, MultiReward rewards) {
+//		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
+//		this.set(key, formatJson(rewards));
+//		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1HOUR);
+//	}
+	
+//	public MultiReward getUserRecharge(long userId) {
+//		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
+//		String value = get(key);
+//		if (value == null)
+//			return null;
+//		this.delete(key);//查询之后删除，防止又一次查询
+//		MultiReward.Builder builder = MultiReward.newBuilder();
+//		if(parseJson(value, builder))
+//			return builder.build();
+//		
+//		return null;
+//	}
+	
+	public void addUserRecharge(long userId, RechargeBean recharge) {
 		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
-		this.set(key, formatJson(rewards), userId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_1HOUR, userId);
+		hput(key, recharge.getOrderId(), RedisService.toJson(recharge), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
-	public MultiReward getUserRecharge(long userId) {
+	public List<RechargeBean> getUserRecharge(long userId) {
 		String key = RedisKey.USER_RECHARGE_PREFIX + userId;
-		String value = get(key, userId);
-		if (value == null)
-			return null;
-		delete(key, userId);//查询之后删除，防止又一次查询
-		MultiReward.Builder builder = MultiReward.newBuilder();
-		if(parseJson(value, builder))
-			return builder.build();
+		Map<String, String> map = hget(key, userId);
+		if (map == null || map.isEmpty())
+			return new ArrayList<RechargeBean>();
+		this.delete(key, userId);//查询之后删除，防止又一次查询
+		List<RechargeBean> rechargeList = new ArrayList<RechargeBean>();
+		for (String value : map.values()) {
+			Object object = RedisService.fromJson(value, RechargeBean.class);
+			if (object != null)
+				rechargeList.add((RechargeBean)object);
+		}
 		
-		return null;
+		return rechargeList;
+	}
+	
+	public void addUserLoginReward(long userId, MultiReward rewards) {
+		String key = RedisKey.USER_LOGINREWARD_PREFIX + userId;
+		lpush(key, RedisService.formatJson(rewards), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
+	
+	public MultiReward getUserLoginReward(long userId) {
+		String key = RedisKey.USER_LOGINREWARD_PREFIX + userId;
+		List<String> values = lrange(key, userId);
+		if (values == null || values.isEmpty())
+			return null;
+		this.delete(key, userId);//查询之后删除，防止又一次查询
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		for (String value : values) {
+			MultiReward.Builder builder = MultiReward.newBuilder();
+			if (RedisService.parseJson(value, builder))
+				rewards.addAllLoot(builder.getLootList());
+		}
+		
+		return rewards.build();
 	}
 }

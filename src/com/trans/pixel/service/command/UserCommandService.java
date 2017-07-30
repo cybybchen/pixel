@@ -48,6 +48,7 @@ import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.NoticeMessageService;
+import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
@@ -56,6 +57,7 @@ import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.utils.DateUtil;
@@ -97,7 +99,12 @@ public class UserCommandService extends BaseCommandService {
 	private LootService lootService;
 	@Resource
 	private CostService costService;
-
+	@Resource
+	private RechargeService rechargeService;
+	@Resource
+	private RechargeRedisService rechargeRedisService;
+	
+	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
 		if (blackService.isNoaccount(head.getAccount())) {
@@ -136,7 +143,18 @@ public class UserCommandService extends BaseCommandService {
 		user.setVersion(head.getVersion() + "");
 		userHeroService.selectUserNewHero(user.getId());
 		refreshUserLogin(user);
-
+		
+		MultiReward rewards = rechargeService.handlerRecharge(user);
+		
+		if (rewards != null) {
+			handleRewards(responseBuilder, user, rewards, false);
+		}
+		
+		MultiReward rewards1 = rechargeRedisService.getUserLoginReward(user.getId());
+		if (rewards1 != null && rewards1.getLootCount() > 0) {
+			handleRewards(responseBuilder, user, rewards1, false);
+		}
+		
 		/**
 		 * login activity
 		 */

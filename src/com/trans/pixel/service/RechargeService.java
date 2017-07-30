@@ -158,12 +158,18 @@ public class RechargeService {
 		if (userId == 0)
 			return;
 		
-		UserBean user = userService.getUserOther(userId);
-		if (user == null)
-			return;
+//		UserBean user = userService.getUserOther(userId);
+//		if (user == null)
+//			return;
 		
-		if (rewardService.doReward(user, RewardConst.VIPEXP, addExp, 0, false))//上家享受20%的活跃值奖励
-			userService.updateUser(user);
+		MultiReward.Builder builder = MultiReward.newBuilder();
+		RewardInfo.Builder reward = RewardInfo.newBuilder();
+		reward.setItemid(RewardConst.VIPEXP);
+		reward.setCount(addExp);
+		builder.addLoot(reward.build());
+		rechargeRedisService.addUserLoginReward(userId, builder.build());
+//		if (rewardService.doReward(user, RewardConst.VIPEXP, addExp, 0, false))//上家享受20%的活跃值奖励
+//			userService.updateUser(user);
 	}
 	
 	public int buchangVip(UserBean user, int rmb, int jewel) {
@@ -179,8 +185,23 @@ public class RechargeService {
 		return rmb;
 	}
 	
-	public int recharge(UserBean user, int productid, String company, String orderId, boolean isCheat){
+	public void recharge(UserBean user, int productId, String company, String orderId){
+		RechargeBean recharge = new RechargeBean();
+		recharge.setProductId(productId);
+		recharge.setCompany(company);
+		recharge.setOrderId(orderId);
+		recharge.setOrderTime(DateUtil.getCurrentDateString());
+		recharge.setUserId(user.getId());
+		recharge.setServerId(user.getServerId());
+		
+		rechargeRedisService.addUserRecharge(user.getId(), recharge);
+	}
+	
+	public List<RewardInfo> recharge(UserBean user, RechargeBean recharge, boolean isCheat){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		int productid = recharge.getProductId();
+		String orderId = recharge.getOrderId();
+		String company = recharge.getCompany();
 		Rmb rmb = null;
 		if(serverService.getOnlineStatus(user.getVersion()) != 0){
 			rmb = rechargeRedisService.getRmb1(productid);
@@ -269,18 +290,18 @@ public class RechargeService {
 			reward.setItemid(itemId);
 			reward.setCount(1);
 			rewards.addLoot(reward);
-			userService.updateUser(user);
+//			userService.updateUser(user);
 			logger.warn("jewel is" + user.getGrowJewelCount());
 			logger.warn("exp is" + user.getGrowExpCount());
 		}else{
-			rewards.addAllLoot(rewardList);
-			rewardService.doRewards(user, rewards);
+//			rewards.addAllLoot(rewardList);
+//			rewardService.doRewards(user, rewards);
 		}
 		
 		activityService.sendShouchongScore(user);
 		if (orderId != null && !orderId.isEmpty())
 			rewards.setName(orderId);
-		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
+//		rechargeRedisService.addUserRecharge(user.getId(), rewards.build());
 		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 			userService.saveLibao(user.getId(), libaobuilder.build());
 			
@@ -315,8 +336,11 @@ public class RechargeService {
 				params.put(LogString.APOKEDEX, "" + (armorCount*100/armormap.size()));
 			logService.sendLog(params, LogString.LOGTYPE_RECHARGE);
 		}
+		recharge.setRmb((int)rmb.getCost().getCount() * 100);
+//		if (!isCheat)
+			updateToDB(recharge);
 		
-		return (int)rmb.getCost().getCount() * 100;
+		return rewardList;
 	}
 	
 	//http://123.59.144.200:8082/Lol450/recharge?order_id=1111311&company=ios&player=&playerid=1066&ratio=1:100&sn=b300f2edfe5443b2a378faed3af682f3&action=1&itemid=1&zone_id=1
@@ -325,11 +349,13 @@ public class RechargeService {
 		if(rechargeMapper.getUserRechargeRecord(recharge.getOrderId()) != null)
 			return;
 
-		if (user == null)
-			user = userService.getUserOther(recharge.getUserId());
-		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), recharge.getOrderId(), isCheat));
+//		if (user == null)
+//			user = userService.getUserOther(recharge.getUserId());
+		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
+//		rechargeRedisService.addRechargeRecord(recharge);
+//		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), recharge.getOrderId(), isCheat));
 		
-		updateToDB(recharge);
+//		updateToDB(recharge);
 		// rechargeRedisService.addRechargeRecord(recharge); 
 	}
 	
@@ -339,6 +365,15 @@ public class RechargeService {
 	 */
 	public void updateToDB(RechargeBean recharge) {
 		rechargeMapper.insertUserRechargeRecord(recharge);
+	}
+	
+	public MultiReward handlerRecharge(UserBean user) {
+		List<RechargeBean> rechargeList = rechargeRedisService.getUserRecharge(user.getId());
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		for (RechargeBean recharge : rechargeList)
+			rewards.addAllLoot(recharge(user, recharge, false));
+		
+		return rewards.build();
 	}
 	
 	private RechargeBean initRechargeBean(Map<String, String> params) {
