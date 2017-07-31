@@ -80,14 +80,14 @@ public class ActivityCommandService extends BaseCommandService {
 		responseBuilder.setKaifuListCommand(builder.build());
 		
 		Richang richang = activityRedisService.getRichang(id);
-		ActivityOrder activityorder = richang.getOrder(order - 1);
-		if (richang.getTargetid() == ActivityConst.CONSUME_ACTIVITY) {
-			ResponseUsePropCommand.Builder propbuilder = ResponseUsePropCommand.newBuilder();
-			UserPropBean userProp = userPropService.selectUserProp(user.getId(), activityorder.getConsumeid());
-			if (userProp != null){
-				propbuilder.addUserProp(userProp.buildUserProp());
-				responseBuilder.setUsePropCommand(propbuilder.build());
-			}
+		if (richang.getConsumeid() > 0) {
+			pusher.pushUserDataByRewardId(responseBuilder, user, richang.getConsumeid(), false);
+//			ResponseUsePropCommand.Builder propbuilder = ResponseUsePropCommand.newBuilder();
+//			UserPropBean userProp = userPropService.selectUserProp(user.getId(), richang.getConsumeid());
+//			if (userProp != null){
+//				propbuilder.addUserProp(userProp.buildUserProp());
+//				responseBuilder.setUsePropCommand(propbuilder.build());
+//			}
 		}
 	}
 	
