@@ -144,7 +144,7 @@ public class CdkeyService {
 		if (hasReward)
 			return hasReward;
 		
-		if (redis.hasCipherKey(cipherId)) {
+		if (!redis.hasCipherKey(cipherId)) {
 			List<Long> userIds = userCipherMapper.getUserIds(cipherId);
 			if (userIds != null && !userIds.isEmpty()) {
 				redis.setCipherUserIds(cipherId, userIds);
