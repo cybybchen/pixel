@@ -60,7 +60,7 @@ public class LootService {
 		long exp = loottime * userLevel.getExp();
 		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
 		Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
-		long addCoin = 0;
+		long addCoin = 0; 
 		long addExp = 0;
 		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
 			addCoin += coin/20;
@@ -68,7 +68,7 @@ public class LootService {
 		}
 		if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
 			addCoin += coin/10;
-			addCoin += exp/10;
+			addExp += exp/10;
 		}
 		long time = (RedisService.now()-userLevel.getLootTime())/TimeConst.SECONDS_PER_HOUR*TimeConst.SECONDS_PER_HOUR;
 		if(time >= TimeConst.SECONDS_PER_HOUR){

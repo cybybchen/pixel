@@ -1154,7 +1154,7 @@ public class UnionService extends FightService{
 		if (unionExp == null)
 			return addExp;
 		
-		return (long) (addExp * (1 + 1.0 * unionExp.getLootexp() / 100));
+		return (long) (addExp * (1.0 * unionExp.getLootexp() / 100));
 	}
 	
 	public void addUnionExp(UserBean user, int exp) {
