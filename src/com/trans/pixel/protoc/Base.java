@@ -27199,25 +27199,25 @@ public final class Base {
      */
     int getWeightb();
 
-    // optional int32 counta = 5;
+    // optional float counta = 5;
     /**
-     * <code>optional int32 counta = 5;</code>
+     * <code>optional float counta = 5;</code>
      */
     boolean hasCounta();
     /**
-     * <code>optional int32 counta = 5;</code>
+     * <code>optional float counta = 5;</code>
      */
-    int getCounta();
+    float getCounta();
 
-    // optional int32 countb = 6;
+    // optional float countb = 6;
     /**
-     * <code>optional int32 countb = 6;</code>
+     * <code>optional float countb = 6;</code>
      */
     boolean hasCountb();
     /**
-     * <code>optional int32 countb = 6;</code>
+     * <code>optional float countb = 6;</code>
      */
-    int getCountb();
+    float getCountb();
 
     // optional string item = 7;
     /**
@@ -27335,14 +27335,14 @@ public final class Base {
               weight_ = input.readInt32();
               break;
             }
-            case 40: {
+            case 45: {
               bitField0_ |= 0x00000020;
-              counta_ = input.readInt32();
+              counta_ = input.readFloat();
               break;
             }
-            case 48: {
+            case 53: {
               bitField0_ |= 0x00000040;
-              countb_ = input.readInt32();
+              countb_ = input.readFloat();
               break;
             }
             case 58: {
@@ -27517,35 +27517,35 @@ public final class Base {
       return weightb_;
     }
 
-    // optional int32 counta = 5;
+    // optional float counta = 5;
     public static final int COUNTA_FIELD_NUMBER = 5;
-    private int counta_;
+    private float counta_;
     /**
-     * <code>optional int32 counta = 5;</code>
+     * <code>optional float counta = 5;</code>
      */
     public boolean hasCounta() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional int32 counta = 5;</code>
+     * <code>optional float counta = 5;</code>
      */
-    public int getCounta() {
+    public float getCounta() {
       return counta_;
     }
 
-    // optional int32 countb = 6;
+    // optional float countb = 6;
     public static final int COUNTB_FIELD_NUMBER = 6;
-    private int countb_;
+    private float countb_;
     /**
-     * <code>optional int32 countb = 6;</code>
+     * <code>optional float countb = 6;</code>
      */
     public boolean hasCountb() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional int32 countb = 6;</code>
+     * <code>optional float countb = 6;</code>
      */
-    public int getCountb() {
+    public float getCountb() {
       return countb_;
     }
 
@@ -27646,8 +27646,8 @@ public final class Base {
       count_ = 0L;
       weight_ = 0;
       weightb_ = 0;
-      counta_ = 0;
-      countb_ = 0;
+      counta_ = 0F;
+      countb_ = 0F;
       item_ = "";
       eventid_ = 0;
       rmbid_ = 0;
@@ -27678,10 +27678,10 @@ public final class Base {
         output.writeInt32(4, weight_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(5, counta_);
+        output.writeFloat(5, counta_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(6, countb_);
+        output.writeFloat(6, countb_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(7, getItemBytes());
@@ -27725,11 +27725,11 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, counta_);
+          .computeFloatSize(5, counta_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, countb_);
+          .computeFloatSize(6, countb_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
@@ -27877,9 +27877,9 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000008);
         weightb_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        counta_ = 0;
+        counta_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000020);
-        countb_ = 0;
+        countb_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000040);
         item_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
@@ -28247,68 +28247,68 @@ public final class Base {
         return this;
       }
 
-      // optional int32 counta = 5;
-      private int counta_ ;
+      // optional float counta = 5;
+      private float counta_ ;
       /**
-       * <code>optional int32 counta = 5;</code>
+       * <code>optional float counta = 5;</code>
        */
       public boolean hasCounta() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional int32 counta = 5;</code>
+       * <code>optional float counta = 5;</code>
        */
-      public int getCounta() {
+      public float getCounta() {
         return counta_;
       }
       /**
-       * <code>optional int32 counta = 5;</code>
+       * <code>optional float counta = 5;</code>
        */
-      public Builder setCounta(int value) {
+      public Builder setCounta(float value) {
         bitField0_ |= 0x00000020;
         counta_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 counta = 5;</code>
+       * <code>optional float counta = 5;</code>
        */
       public Builder clearCounta() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        counta_ = 0;
+        counta_ = 0F;
         onChanged();
         return this;
       }
 
-      // optional int32 countb = 6;
-      private int countb_ ;
+      // optional float countb = 6;
+      private float countb_ ;
       /**
-       * <code>optional int32 countb = 6;</code>
+       * <code>optional float countb = 6;</code>
        */
       public boolean hasCountb() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional int32 countb = 6;</code>
+       * <code>optional float countb = 6;</code>
        */
-      public int getCountb() {
+      public float getCountb() {
         return countb_;
       }
       /**
-       * <code>optional int32 countb = 6;</code>
+       * <code>optional float countb = 6;</code>
        */
-      public Builder setCountb(int value) {
+      public Builder setCountb(float value) {
         bitField0_ |= 0x00000040;
         countb_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 countb = 6;</code>
+       * <code>optional float countb = 6;</code>
        */
       public Builder clearCountb() {
         bitField0_ = (bitField0_ & ~0x00000040);
-        countb_ = 0;
+        countb_ = 0F;
         onChanged();
         return this;
       }
@@ -34152,7 +34152,7 @@ public final class Base {
       "c.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nReward" +
       "Info\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005co" +
       "unt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001",
-      "(\005\022\016\n\006counta\030\005 \001(\005\022\016\n\006countb\030\006 \001(\005\022\014\n\004it" +
+      "(\005\022\016\n\006counta\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004it" +
       "em\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r" +
       "\022\017\n\007lastime\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006item" +
       "id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n" +

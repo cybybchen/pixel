@@ -239,8 +239,8 @@ message RewardInfo {
 	optional int64 count = 3;
 	optional int32 weight = 4;
 	optional int32 weightb = 11;
-	optional int32 counta = 5;
-	optional int32 countb = 6;
+	optional float counta = 5;
+	optional float countb = 6;
 	optional string item = 7;
 	optional uint32 eventid = 8;
 	optional uint32 rmbid = 9;

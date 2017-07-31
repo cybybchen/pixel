@@ -274,9 +274,9 @@ public class RewardService {
 			return reward.getCount();
 		
 		if (reward.getCounta() == reward.getCountb())
-			return reward.getCounta();
+			return (int)reward.getCounta();
 		
-		return RandomUtils.nextInt(Math.abs(reward.getCountb() - reward.getCounta()) + 1) + Math.min(reward.getCountb(), reward.getCounta());
+		return RandomUtils.nextInt((int)Math.abs(reward.getCountb() - reward.getCounta()) + 1) + (int)Math.min(reward.getCountb(), reward.getCounta());
 	}
 	
 	public void updateUser(UserBean user){

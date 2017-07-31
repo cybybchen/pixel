@@ -219,7 +219,7 @@ public class RechargeService {
 //			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
 //				reward.setCount(rmb.getZuanshi()*2);
 //			}else{
-				reward.setCount(rmb.getReward().getCount() + rmb.getReward().getCountb());
+				reward.setCount(rmb.getReward().getCount() + (int)rmb.getReward().getCountb());
 //			}
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
