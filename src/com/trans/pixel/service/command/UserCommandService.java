@@ -524,7 +524,8 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		user.setRite(1);
-		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 1000000);
+		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(34092, 25);
+		rewardList.add(RewardBean.init(1002, 500).buildRewardInfo());
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		rewards.addAllLoot(rewardList);
 		handleRewards(responseBuilder, user, rewards.build());
