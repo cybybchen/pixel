@@ -269,7 +269,7 @@ public class PropService {
 		costService.cost(user, costList);
 		
 		if (rewardId > 0)
-			return RewardBean.initRewardInfoList(rewardId, 5);
+			return RewardBean.initRewardInfoList(rewardId, 10);
 		
 		return RewardBean.initRewardInfoList(24010, 1);
 	}
