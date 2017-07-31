@@ -98,8 +98,14 @@ public class RaidRedisService extends RedisService{
 	}
 	
 	public Raid getRaid(int id){
-		Map<Integer, Raid> map = CacheService.hgetcache(RedisKey.RAID_CONFIG);
-		return map.get(id);
+//		Map<Integer, Raid> map = CacheService.hgetcache(RedisKey.RAID_CONFIG);
+		RaidList raidList = CacheService.getcache(RedisKey.RAID_CONFIG);
+		for (Raid raid : raidList.getDataList()) {
+			if (raid.getId() == id)
+				return raid;
+		}
+//		return map.get(id);
+		return null;
 	}
 
 	public ResponseRaidCommand.Builder getRaidList(){
