@@ -118,6 +118,13 @@ public class ShopService {
 	}
 
 	public ShopList getPVPShop(UserBean user){
+		ShopList shopList = redis.getPVPShop(user);
+		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
+			ShopList.Builder builder = ShopList.newBuilder(redis.buildPVPShop(user));
+			builder.setEndTime(builder.getEndTime() + 1);
+			redis.savePVPShop(builder.build(), user);
+			return builder.build();
+		}
 		return redis.getPVPShop(user);
 	}
 	
@@ -146,6 +153,13 @@ public class ShopService {
 	}
 
 	public ShopList getLadderShop(UserBean user){
+		ShopList shopList = redis.getLadderShop(user);
+		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
+			ShopList.Builder builder = ShopList.newBuilder(redis.buildLadderShop(user));
+			builder.setEndTime(builder.getEndTime() + 1);
+			redis.saveLadderShop(builder.build(), user);
+			return builder.build();
+		}
 		return redis.getLadderShop(user);
 	}
 	
