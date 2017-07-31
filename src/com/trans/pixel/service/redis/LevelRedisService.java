@@ -422,6 +422,7 @@ public class LevelRedisService extends RedisService {
 	public MultiReward.Builder eventReward(int eventid, int level){
 		return eventReward(getEvent(eventid), level);
 	}
+	/**副本传层数，关卡传品质*/
 	public MultiReward.Builder eventReward(EventConfig eventconfig, int level){
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(eventconfig == null)
@@ -429,7 +430,7 @@ public class LevelRedisService extends RedisService {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		for(RewardInfo loot : eventconfig.getLootlistList()){
 			reward.setItemid(loot.getItemid());
-			if (loot.hasCounta()) {
+			if (loot.getCounta() > 0 && level > 1) {
 				reward.setCount(loot.getCount() + (int)((level - 1) * loot.getCounta()));
 			} else if (loot.hasWeight()) {
 				int weight = loot.getWeight()+(int)(loot.getWeightb()*level);

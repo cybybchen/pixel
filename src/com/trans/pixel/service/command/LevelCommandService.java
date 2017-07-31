@@ -204,7 +204,7 @@ public class LevelCommandService extends BaseCommandService {
 	}
 
 	public MultiReward.Builder eventReward(EventConfig eventconfig, Event event, UserBean user){
-		MultiReward.Builder rewards = redis.eventReward(eventconfig, 0);
+		MultiReward.Builder rewards = redis.eventReward(eventconfig, event.getLevel());
 		Daguan.Builder daguan = redis.getDaguan(event.getDaguan());
 		if(eventconfig.getType() == 0){ //only fight event
 			for(RewardInfo.Builder reward : daguan.getLootlistBuilderList()){
