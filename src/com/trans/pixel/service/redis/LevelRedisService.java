@@ -431,6 +431,7 @@ public class LevelRedisService extends RedisService {
 		for(RewardInfo loot : eventconfig.getLootlistList()){
 			reward.clear();
 			reward.setItemid(loot.getItemid());
+			reward.setCount(loot.getCount());
 			if (loot.getCounta() != 0 && level > 1) {
 				reward.setCount(loot.getCount() + (int)((level - 1) * loot.getCounta()));
 			} else if (loot.hasWeight()) {
