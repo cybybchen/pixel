@@ -1487,7 +1487,7 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO RequestRecommandCommand method
-//		userCommandService.recommand(cmd, responseBuilder, user);
+		userCommandService.recommand(cmd, responseBuilder, user);
 		return true;
 	}
 
