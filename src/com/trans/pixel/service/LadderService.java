@@ -142,6 +142,8 @@ public class LadderService {
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
 		
+		Team team = userTeamService.getTeamCache(user);
+		builder.setTeam(team);
 		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
 		
 		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
