@@ -867,10 +867,14 @@ public class UnionService extends FightService{
 		}
 		
 		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
-			if (!redis.setLock("UnionBoss_" + union.getId() + ":" + bossId, 10))
+			if (!redis.setLock("UnionBoss_" + union.getId() + ":" + bossId, 10)) {
+				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
 				return unionBossRecord.build();
-			if(!redis.waitLock("Union_"+union.getId()))
+			}
+			if(!redis.waitLock("Union_"+union.getId())) {
+				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
 				return unionBossRecord.build();
+			}
 			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
 			if (userRankBean == null)
 				userRankBean = new UserRankBean(user);

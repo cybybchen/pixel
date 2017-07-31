@@ -315,6 +315,12 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
+		if (unionBoss.getStatus() == UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_BOSS_IS_BEING_FIGHT_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_BOSS_IS_BEING_FIGHT_ERROR));
+			return;
+		}
+		
 		handleRewards(responseBuilder, user, rewards.build());
 		
 		ResponseUnionBossCommand.Builder builder = ResponseUnionBossCommand.newBuilder();
