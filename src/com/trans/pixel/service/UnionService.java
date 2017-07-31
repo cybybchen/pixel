@@ -855,28 +855,34 @@ public class UnionService extends FightService{
 			
 		logService.sendUnionbossLog(user.getServerId(), user.getId(), union.getId(), bossId, percent);
 		
-		if (unionBoss.getEnemygroup().getHpbar() == -1 || unionBossRecord.getPercent() < 10000) {
+//		if (unionBoss.getEnemygroup().getHpbar() == -1 || unionBossRecord.getPercent() < 10000) {
+//			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
+//			if (userRankBean == null)
+//				userRankBean = new UserRankBean(user);
+//			userRankBean.setDps(userRankBean.getDps() + hp);
+//			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
+//		} else {
+		if (unionBoss.getEnemygroup().getHpbar() != -1 || unionBossRecord.getPercent() >= 10000) {
+			return null;//怪物已逃跑
+		}
+		
+		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
+			if (!redis.setLock("UnionBoss_" + union.getId() + ":" + bossId, 10))
+				return unionBossRecord.build();
+			if(!redis.waitLock("Union_"+union.getId()))
+				return unionBossRecord.build();
 			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
 			if (userRankBean == null)
 				userRankBean = new UserRankBean(user);
 			userRankBean.setDps(userRankBean.getDps() + hp);
 			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
-		} else {
-			return null;//怪物已逃跑
-		}
-		
-		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
-			if (!redis.setLock("UnionBoss_"+union.getId()+":" + bossId, 10))
-				return unionBossRecord.build();
-			if(!redis.waitLock("Union_"+union.getId()))
-				return unionBossRecord.build();
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
 			doUnionBossRankReward(user.getUnionId(), bossId, user.getServerId());
 			updateUnionBossEndTime(union, bossId);
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user.getUnionId(), user.getServerId());
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
-			redis.clearLock("UnionBoss_"+union.getId()+":" + bossId);
+			redis.clearLock("UnionBoss_" + union.getId() + ":" + bossId);
 			/**
 			 * 累计击败工会boss的活动
 			 */
@@ -886,6 +892,11 @@ public class UnionService extends FightService{
 			}
 		} else {
 			unionBossRecord.setPercent(unionBossRecord.getPercent() + percent);
+			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
+			if (userRankBean == null)
+				userRankBean = new UserRankBean(user);
+			userRankBean.setDps(userRankBean.getDps() + hp);
+			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 		}
 		
 		for(RewardInfo reward : unionBoss.getLootlistList()) {
