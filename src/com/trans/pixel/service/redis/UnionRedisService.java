@@ -126,9 +126,9 @@ public class UnionRedisService extends RedisService{
 					return -1;
 				else if(union2.getIsApply() && !union1.getIsApply())
 					return 1;
-				int dvalue = union2.getLevel() - union1.getLevel();
+				int dvalue = union2.getZhanli() - union1.getZhanli();
 				if (dvalue == 0)
-					dvalue = union1.getId() - union2.getId();
+					dvalue = union1.getZhanli() - union2.getZhanli();
 				return dvalue;
 			}
 		});

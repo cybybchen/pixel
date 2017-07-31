@@ -94,9 +94,7 @@ public class LootService {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(RewardConst.COIN);
 		reward.setCount(Math.min(goldSavingBox.getGold().getCount(), coin));
-		logger.debug("before:" + user.getCoin());
 		user.setCoin(user.getCoin() + reward.getCount());
-		logger.debug("after:" + user.getCoin());
 		rewards.addLoot(reward);
 		reward.setItemid(RewardConst.EXP);
 //		reward.setCount(Math.min(expSavingBox.getExp().getCount(), exp));

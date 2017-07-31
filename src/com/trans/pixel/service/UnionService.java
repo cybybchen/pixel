@@ -102,6 +102,10 @@ public class UnionService extends FightService{
 		return redis.getBaseUnions(user, 0);
 	}
 	
+	public List<Union> getUnionsByServerId(int serverId) {
+		return redis.getBaseUnions(serverId);
+	}
+	
 	public Union getUnionById(int serverId, int unionId) {
 		Union.Builder union = redis.getUnion(serverId, unionId);
 		List<UserInfo> members = redis.getMembers(unionId, serverId);

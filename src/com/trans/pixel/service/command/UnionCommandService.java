@@ -62,9 +62,12 @@ public class UnionCommandService extends BaseCommandService {
 		if(cmd.getType() == 1)
 			unions = unionService.getBaseUnions(user);
 		else
-			unions = unionService.getUnionsRank(user);
+			unions = unionService.getUnionsByServerId(user.getServerId());
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
-		builder.addAllUnion(unions);
+		if (cmd.getType() == 0 && unions.size() > 50)
+			builder.addAllUnion(unions.subList(0, 50));
+		else
+			builder.addAllUnion(unions);
 		responseBuilder.setUnionListCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
