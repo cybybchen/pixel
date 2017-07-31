@@ -52,8 +52,10 @@ public class LootService {
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		long current = RedisService.now();
 		long loottime = current - userLevel.getLootTimeNormal();
-		if (loottime <= 0)
+		if (loottime <= 0) {
+			userService.updateUser(user);
 			return rewards;
+		}
 		SavingBox goldSavingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
 		SavingBox expSavingBox = lootRedisService.getSavingBox(user.getExpSavingBox());
 		long coin = loottime * userLevel.getCoin();
@@ -92,7 +94,9 @@ public class LootService {
 		RewardInfo.Builder reward = RewardInfo.newBuilder();
 		reward.setItemid(RewardConst.COIN);
 		reward.setCount(Math.min(goldSavingBox.getGold().getCount(), coin));
+		logger.debug("before:" + user.getCoin());
 		user.setCoin(user.getCoin() + reward.getCount());
+		logger.debug("after:" + user.getCoin());
 		rewards.addLoot(reward);
 		reward.setItemid(RewardConst.EXP);
 //		reward.setCount(Math.min(expSavingBox.getExp().getCount(), exp));
