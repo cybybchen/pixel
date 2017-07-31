@@ -862,7 +862,7 @@ public class UnionService extends FightService{
 //			userRankBean.setDps(userRankBean.getDps() + hp);
 //			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 //		} else {
-		if (unionBoss.getEnemygroup().getHpbar() != -1 || unionBossRecord.getPercent() >= 10000) {
+		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() >= 10000) {
 			return null;//怪物已逃跑
 		}
 		
