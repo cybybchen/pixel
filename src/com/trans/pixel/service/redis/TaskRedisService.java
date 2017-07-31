@@ -137,17 +137,18 @@ public class TaskRedisService extends CacheService {
 	
 	//task2 order
 	public TaskOrder getTask2Order(int order, int heroId) {
-		Map<String, String> map = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId);
-		String value = map.get("" + order);
+		Map<Integer, TaskOrder> map = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId);
+		TaskOrder value = map.get(order);
 		if (value == null) {
 			buildTask2TargetConfig();
-			value =map.get("" + order);
+			map = hgetcache(RedisKey.TASK2_ORDER_CONFIG_PREFIX + heroId);
+			value = map.get(order);
 		} 
 		
-		TaskOrder.Builder builder = TaskOrder.newBuilder();
-		if(RedisService.parseJson(value, builder))
-			return builder.build();
+//		TaskOrder.Builder builder = TaskOrder.newBuilder();
+//		if(RedisService.parseJson(value, builder))
+//			return builder.build();
 		
-		return null;
+		return value;
 	}
 }
