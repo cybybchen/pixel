@@ -315,7 +315,7 @@ public class RewardTaskService {
 		if(!UserRewardTaskService.hasMeInRoom(user, room)) {
 			ut.clearRoomInfo();
 			userRewardTaskService.updateUserRewardTask(user.getId(), ut.build());
-			if(room.getCreateUserId() == user.getId()) {
+			if(room != null && room.getCreateUserId() == user.getId()) {
 				rewardTaskRedisService.delUserRewardTaskRoom(user, ut.getIndex());
 			}
 		}

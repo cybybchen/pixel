@@ -47,6 +47,8 @@ public class RedisService {
 	private RedisTemplate<String, String> redisTemplate;
 	@Resource(name = "redisTemplate1")
 	private RedisTemplate<String, String> redisTemplate1;
+	@Resource(name = "redisTemplate2")
+	private RedisTemplate<String, String> redisTemplate2;
 
 //	@Resource
 //	private RedisTemplate0Service t0Service;
@@ -1346,9 +1348,11 @@ public class RedisService {
 //			return redisTemplate;
 //		else
 //			return redisTemplate1;
-		if (userId % 2 == 0 || userId <= 0)
+		if (userId <= 0)
 			return redisTemplate;
-		else
+		else if (userId <= 60000)
 			return redisTemplate1;
+		else
+			return redisTemplate2;
 	}
 }
