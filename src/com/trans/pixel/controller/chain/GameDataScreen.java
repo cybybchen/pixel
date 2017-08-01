@@ -183,6 +183,7 @@ import com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand;
 import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand;
+import com.trans.pixel.protoc.UnionProto.RequestSearchUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand;
@@ -1531,6 +1532,12 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		userCommandService.submitRite(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.searchUnion(cmd, responseBuilder, user);
+		return false;
 	}
 
 }

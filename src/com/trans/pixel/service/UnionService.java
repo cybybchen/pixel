@@ -12,8 +12,6 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -55,6 +53,8 @@ import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
+import net.sf.json.JSONObject;
+
 @Service
 public class UnionService extends FightService{
 
@@ -94,13 +94,16 @@ public class UnionService extends FightService{
             	 }
         }
 	};
-	
+
+	public List<Union> searchUnions(UserBean user, String name) {
+		return redis.getBaseUnions(user, name);
+	}
 	public List<Union> getBaseUnions(UserBean user) {
-		return redis.getBaseUnions(user, 20);
+		return redis.getBaseUnions(user);
 	}
-	public List<Union> getUnionsRank(UserBean user) {
-		return redis.getBaseUnions(user, 0);
-	}
+//	public List<Union> getUnionsRank(UserBean user) {
+//		return redis.getBaseUnions(user, 0);
+//	}
 	
 	public List<Union> getUnionsByServerId(int serverId) {
 		return redis.getBaseUnions(serverId);
@@ -948,7 +951,7 @@ public class UnionService extends FightService{
 				UserRankBean userRank = userRankList.get(i);
 				if (userRank != null) {
 					UserBean user = userService.getUserOther(userRank.getUserId());
-					if (user == null || user.getUnionId() != unionId)
+					if (user == null || user.getUnionId() != unionId || redis.canReward(user, bossId))
 						continue;
 					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);
 					log.debug("unionboss rank mail is:" + mail.toJson());

@@ -190,6 +190,7 @@ import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.protoc.UnionProto.RequestDefendUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestSearchUnionCommand;
 import com.trans.pixel.protoc.AreaProto.RequestAreaResourceCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand;
@@ -408,6 +409,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestDailyShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSendMailCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDefendUnionCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAreaResourceCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroSpUpCommand cmd, Builder responseBuilder, UserBean user);
@@ -1207,6 +1209,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasDefendUnionCommand()) {
 			RequestDefendUnionCommand cmd = request.getDefendUnionCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasSearchUnionCommand()) {
+			RequestSearchUnionCommand cmd = request.getSearchUnionCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAreaResourceCommand()) {

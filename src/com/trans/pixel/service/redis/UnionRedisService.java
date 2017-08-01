@@ -83,8 +83,11 @@ public class UnionRedisService extends RedisService{
 		}
 		return unionbuilder;
 	}
-	
-	public List<Union> getBaseUnions(UserBean user, int count) {//count=0表示所有
+
+	public List<Union> getBaseUnions(UserBean user) {
+		return getBaseUnions(user, null);
+	}
+	public List<Union> getBaseUnions(UserBean user, String name) {
 		List<Union> unions = new ArrayList<Union>();
 		Map<String, String> applyMap;
 		if(user.getUnionId() != 0)
@@ -106,6 +109,8 @@ public class UnionRedisService extends RedisService{
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
 			if(parseJson(value, builder)){
+				if(name != null && builder.getName().indexOf(name) < 0)
+					continue;
 				if(applyMap.containsKey(builder.getId()+"")) {
 					builder.setIsApply(true);
 					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
@@ -114,9 +119,8 @@ public class UnionRedisService extends RedisService{
 				UnionExp unionExp = unionExpMap.get(builder.getLevel());
 				if (unionExp != null)
 					builder.setMaxCount(unionExp.getUnionsize());
-				if(count > 0 || unionMap.size() < 100 || builder.getZhanli() > 20000)
-					unions.add(builder.build());
-				if(count > 0 && unions.size() >= count)
+				unions.add(builder.build());
+				if(unions.size() >= 20)
 					break;
 			}
 		}
@@ -408,6 +412,18 @@ public class UnionRedisService extends RedisService{
 //		return map;
 //	}
 	
+	public boolean canReward(UserBean user, int bossId) {
+		String value = hget(RedisKey.UNION_BOSS_REWARD_TIME+user.getId(), bossId+"");
+		int count = 0;
+		if(value != null) {
+			count = Integer.parseInt(value);
+			if(count >= 2)
+				return false;
+		}
+		count += 1;
+		hput(RedisKey.UNION_BOSS_REWARD_TIME+user.getId(), bossId+"", count+"");
+		return true;
+	}
 	//union bosswin
 	public UnionBosswin getUnionBosswin(int id) {
 		Map<Integer, UnionBosswin> map = CacheService.hgetcache(RedisKey.UNION_BOSSWIN_KEY);

@@ -3362,6 +3362,10 @@ message RequestUnionListCommand {
 	optional int32 type = 1;//type=1公会列表type=0公会排行
 }
 
+message RequestSearchUnionCommand {
+        optional string name = 1;
+}
+
 message ResponseUnionListCommand {
 	repeated Union union = 1;
 }
@@ -3625,6 +3629,7 @@ message RequestCommand {
 	optional RequestQuitUnionCommand quitUnionCommand = 42;
 	optional RequestUnionInfoCommand unionInfoCommand = 43;
 	optional RequestUnionListCommand unionListCommand = 44;
+	optional RequestSearchUnionCommand searchUnionCommand = 45;
 	optional RequestCreateUnionCommand createUnionCommand = 31;
 	optional RequestApplyUnionCommand applyUnionCommand = 32;
 	optional RequestReplyUnionCommand replyUnionCommand = 33;

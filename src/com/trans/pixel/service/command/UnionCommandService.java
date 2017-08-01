@@ -27,6 +27,7 @@ import com.trans.pixel.protoc.UnionProto.RequestDefendUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestHandleUnionMemberCommand;
 import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestReplyUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestSearchUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
@@ -57,6 +58,14 @@ public class UnionCommandService extends BaseCommandService {
 	@Resource
 	private UnionMapper unionMapper;
 
+	public void searchUnion(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user) {
+		List<Union> unions = unionService.searchUnions(user, cmd.getName());
+		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
+		builder.addAllUnion(unions);
+		responseBuilder.setUnionListCommand(builder.build());
+//		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions;
 		if(cmd.getType() == 1)
