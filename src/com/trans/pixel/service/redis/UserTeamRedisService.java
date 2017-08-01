@@ -148,7 +148,7 @@ public class UserTeamRedisService extends RedisService {
 	public void saveFightInfo(String info, UserBean user){
 		String key = RedisKey.USER_FIGHT_PREFIX+user.getId();
 		lpush(key, info, user.getId());
-		long size = llen(key);
+		long size = llen(key, user.getId());
 		for(; size > 10; size--){
 			rpop(key, user.getId());
 		}
