@@ -655,11 +655,14 @@ public class RedisService {
 	 * 添加set
 	 */
 	protected void sadd(final String key, final String value) {
-		redisTemplate.execute(new RedisCallback<Object>() {
+		sadd(key, value, 0);
+	}
+	protected void sadd(final String key, final String value, final long userId) {
+		getRedis(userId).execute(new RedisCallback<Object>() {
 			@Override
 			public Object doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				BoundSetOperations<String, String> Ops = redisTemplate
+				BoundSetOperations<String, String> Ops = getRedis(userId)
 						.boundSetOps(key);
 
 				Ops.add(value);
@@ -674,7 +677,6 @@ public class RedisService {
 	protected String spop(final String key) {
 		return spop(key, 0);
 	}
-	
 	protected String spop(final String key, final long userId) {
 		return getRedis(userId).execute(new RedisCallback<String>() {
 			@Override
@@ -694,7 +696,6 @@ public class RedisService {
 	protected Set<String> smember(final String key) {
 		return smember(key, 0);
 	}
-	
 	protected Set<String> smember(final String key, final long userId) {
 		return getRedis(userId).execute(new RedisCallback<Set<String>>() {
 			@Override
@@ -714,7 +715,6 @@ public class RedisService {
 	protected boolean sismember(final String key, final String member) {
 		return sismember(key, member, 0);
 	}
-	
 	protected boolean sismember(final String key, final String member, final long userId) {
 		return getRedis(userId).execute(new RedisCallback<Boolean>() {
 			@Override
@@ -734,7 +734,6 @@ public class RedisService {
 	protected long scard(final String key) {
 		return scard(key, 0);
 	}
-	
 	protected long scard(final String key, final long userId) {
 		return getRedis(userId).execute(new RedisCallback<Long>() {
 			@Override
@@ -756,7 +755,6 @@ public class RedisService {
 	public boolean sremove(final String key, final String value) {
 		return sremove(key, value, 0);
 	}
-	
 	public boolean sremove(final String key, final String value, final long userId) {
 		return getRedis(userId).execute(new RedisCallback<Boolean>() {
 			@Override
@@ -1182,15 +1180,15 @@ public class RedisService {
 				return redisTemplate.keys(pattern);
 			}
 		});
-		Set<String> keys1 = redisTemplate1.execute(new RedisCallback<Set<String>>() {
-			@Override
-			public Set<String> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				return redisTemplate.keys(pattern);
-			}
-		});
-		keys1.addAll(keys0);
-		return keys1;
+//		Set<String> keys1 = redisTemplate1.execute(new RedisCallback<Set<String>>() {
+//			@Override
+//			public Set<String> doInRedis(RedisConnection arg0)
+//					throws DataAccessException {
+//				return redisTemplate1.keys(pattern);
+//			}
+//		});
+//		keys1.addAll(keys0);
+		return keys0;
 	}
 
 	/**
