@@ -150,7 +150,7 @@ public class UserTeamRedisService extends RedisService {
 		lpush(key, info, user.getId());
 		long size = llen(key);
 		for(; size > 10; size--){
-			rpop(key);
+			rpop(key, user.getId());
 		}
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
