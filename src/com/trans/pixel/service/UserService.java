@@ -169,8 +169,8 @@ public class UserService {
 //		user.setPurchaseCoinTime(0);
 		user.setPvpMineLeftTime(5);
 		user.setPvpInbreakTime(5);
-		user.setShopchipboxTime(0);
-		user.setShopbaohuTime(0);
+//		user.setShopchipboxTime(0);
+//		user.setShopbaohuTime(0);
 		user.setFreeLotteryCoinLeftTime(5);
 		user.setSevenSignStatus(0);
 		user.setLotteryCoinCount(0);
@@ -200,8 +200,8 @@ public class UserService {
 			user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti());
 			user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvprefresh());
 			user.setPvpInbreakTime(user.getPvpInbreakTime() + vip.getPvpinbreak());
-			user.setShopchipboxTime(user.getShopchipboxTime() + vip.getShopchipbox());
-			user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu());
+//			user.setShopchipboxTime(user.getShopchipboxTime() + vip.getShopchipbox());
+//			user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu());
 			rewardService.doReward(user, vip.getSkip());
 
 //			user.setPurchaseCoinLeft(user.getPurchaseCoinLeft() + vip.getDianjin());

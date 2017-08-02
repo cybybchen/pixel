@@ -128,8 +128,8 @@ public class RechargeService {
 				user.setLadderModeLeftTimes(user.getLadderModeLeftTimes()+vip.getTianti() - oldvip.getTianti());
 				user.setPvpMineLeftTime(user.getPvpMineLeftTime() + vip.getPvprefresh() - oldvip.getPvprefresh());
 				user.setPvpInbreakTime(user.getPvpInbreakTime() + vip.getPvpinbreak() - oldvip.getPvpinbreak());
-				user.setShopchipboxTime(user.getPvpInbreakTime() + vip.getShopchipbox() - oldvip.getShopchipbox());
-				user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu() - oldvip.getShopbaohu());
+//				user.setShopchipboxTime(user.getShopchipboxTime() + vip.getShopchipbox() - oldvip.getShopchipbox());
+//				user.setShopbaohuTime(user.getShopbaohuTime() + vip.getShopbaohu() - oldvip.getShopbaohu());
 //				user.setPurchaseTireLeftTime(user.getPurchaseTireLeftTime() + vip.getQuyu() - oldvip.getQuyu());
 //				user.setRefreshExpeditionLeftTime(user.getRefreshExpeditionLeftTime() + vip.getMohua() - oldvip.getMohua());
 //				user.setBaoxiangLeftTime(user.getBaoxiangLeftTime() + vip.getBaoxiang() - oldvip.getBaoxiang());

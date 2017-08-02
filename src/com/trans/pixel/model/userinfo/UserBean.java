@@ -154,18 +154,18 @@ public class UserBean {
 	/**
 	 * 碎片箱购买次数
 	 */
-	public int getShopchipboxTime() {
-		return shopchipboxTime;
-	}
+//	public int getShopchipboxTime() {
+//		return shopchipboxTime;
+//	}
 	public void setShopchipboxTime(int shopchipboxTime) {
 		this.shopchipboxTime = shopchipboxTime;
 	}
 	/**
 	 * 强化保护券购买次数
 	 */
-	public int getShopbaohuTime() {
-		return shopbaohuTime;
-	}
+//	public int getShopbaohuTime() {
+//		return shopbaohuTime;
+//	}
 	public void setShopbaohuTime(int shopbaohuTime) {
 		this.shopbaohuTime = shopbaohuTime;
 	}
