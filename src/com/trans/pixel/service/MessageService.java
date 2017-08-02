@@ -26,7 +26,7 @@ public class MessageService {
 	@Resource
 	private RewardTaskService rewardTaskService;
 	@Resource
-	private UserTeamService userTeamService;
+	private FightInfoService fightInfoService;
 
 	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user, int itemId) {
 		switch (type) {
@@ -136,7 +136,7 @@ public class MessageService {
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 		}else if(fightId !=0) {
-			List<FightInfo.Builder> list = userTeamService.getFightInfoList(user);
+			List<FightInfo.Builder> list = fightInfoService.getFightInfoList(user);
 			for(FightInfo.Builder info : list){
 				if(fightId == info.getId()){
 					messageBoard.setMessage(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());

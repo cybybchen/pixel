@@ -145,7 +145,7 @@ public class FightInfoRedisService extends RedisService {
 		return list;
 	}
 
-	public void saveFightInfo(String info, UserBean user){
+	public void setFightInfo(String info, UserBean user){
 		String key = RedisKey.USER_FIGHT_PREFIX+user.getId();
 		lpush(key, info, user.getId());
 		long size = llen(key, user.getId());
@@ -163,6 +163,31 @@ public class FightInfoRedisService extends RedisService {
 			if(parseJson(value, builder))
 				list.add(builder);
 		}
+		expire(RedisKey.USER_FIGHT_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
+		return list;
+	}
+	
+	public void saveFightInfo(UserBean user, FightInfo fightinfo) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		hput(key, fightinfo.getId() + "", RedisService.formatJson(fightinfo), user.getId());
+		expire(RedisKey.USER_FIGHT_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
+	}
+	
+	public long hlenFightInfo(UserBean user) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		return hlen(key, user.getId());
+	}
+	
+	public List<FightInfo> getSaveFightInfoList(UserBean user){
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		List<FightInfo> list = new ArrayList<FightInfo>();
+		Map<String, String> map = hget(key, user.getId());
+		for(String value : map.values()){
+			FightInfo.Builder builder = FightInfo.newBuilder();
+			if(parseJson(value, builder))
+				list.add(builder.build());
+		}
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 		return list;
 	}
 }

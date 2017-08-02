@@ -21582,6 +21582,24 @@ public final class LadderProto {
 
   public interface RequestGetFightInfoCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
+
+    // optional bool isSave = 1;
+    /**
+     * <code>optional bool isSave = 1;</code>
+     *
+     * <pre>
+     *1：收藏的录像
+     * </pre>
+     */
+    boolean hasIsSave();
+    /**
+     * <code>optional bool isSave = 1;</code>
+     *
+     * <pre>
+     *1：收藏的录像
+     * </pre>
+     */
+    boolean getIsSave();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestGetFightInfoCommand}
@@ -21616,6 +21634,7 @@ public final class LadderProto {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       initFields();
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -21631,6 +21650,11 @@ public final class LadderProto {
                                      extensionRegistry, tag)) {
                 done = true;
               }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              isSave_ = input.readBool();
               break;
             }
           }
@@ -21672,7 +21696,33 @@ public final class LadderProto {
       return PARSER;
     }
 
+    private int bitField0_;
+    // optional bool isSave = 1;
+    public static final int ISSAVE_FIELD_NUMBER = 1;
+    private boolean isSave_;
+    /**
+     * <code>optional bool isSave = 1;</code>
+     *
+     * <pre>
+     *1：收藏的录像
+     * </pre>
+     */
+    public boolean hasIsSave() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional bool isSave = 1;</code>
+     *
+     * <pre>
+     *1：收藏的录像
+     * </pre>
+     */
+    public boolean getIsSave() {
+      return isSave_;
+    }
+
     private void initFields() {
+      isSave_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -21686,6 +21736,9 @@ public final class LadderProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, isSave_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -21695,6 +21748,10 @@ public final class LadderProto {
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, isSave_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -21811,6 +21868,8 @@ public final class LadderProto {
 
       public Builder clear() {
         super.clear();
+        isSave_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -21837,6 +21896,13 @@ public final class LadderProto {
 
       public com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand buildPartial() {
         com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand result = new com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.isSave_ = isSave_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -21852,6 +21918,9 @@ public final class LadderProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand other) {
         if (other == com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand.getDefaultInstance()) return this;
+        if (other.hasIsSave()) {
+          setIsSave(other.getIsSave());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -21875,6 +21944,56 @@ public final class LadderProto {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional bool isSave = 1;
+      private boolean isSave_ ;
+      /**
+       * <code>optional bool isSave = 1;</code>
+       *
+       * <pre>
+       *1：收藏的录像
+       * </pre>
+       */
+      public boolean hasIsSave() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional bool isSave = 1;</code>
+       *
+       * <pre>
+       *1：收藏的录像
+       * </pre>
+       */
+      public boolean getIsSave() {
+        return isSave_;
+      }
+      /**
+       * <code>optional bool isSave = 1;</code>
+       *
+       * <pre>
+       *1：收藏的录像
+       * </pre>
+       */
+      public Builder setIsSave(boolean value) {
+        bitField0_ |= 0x00000001;
+        isSave_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isSave = 1;</code>
+       *
+       * <pre>
+       *1：收藏的录像
+       * </pre>
+       */
+      public Builder clearIsSave() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isSave_ = false;
+        onChanged();
         return this;
       }
 
@@ -28834,30 +28953,30 @@ public final class LadderProto {
       "\030\002 \002(\r\022\014\n\004type\030\003 \002(\r\" \n\036RequestLadderTas" +
       "kRewardCommand\"M\n\031ResponseUserLadderComm" +
       "and\0220\n\004user\030\001 \003(\0132\".com.trans.pixel.prot" +
-      "oc.UserLadder\"\034\n\032RequestGetFightInfoComm" +
-      "and\"Y\n\027RequestFightInfoCommand\022/\n\004info\030\001" +
-      " \002(\0132!.com.trans.pixel.protoc.FightInfo\022" +
-      "\r\n\005score\030\002 \001(\r\"K\n\030ResponseFightInfoComma",
-      "nd\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.proto" +
-      "c.FightInfo\"a\n\033RequestSaveFightInfoComma" +
-      "nd\0220\n\005fight\030\001 \002(\0132!.com.trans.pixel.prot" +
-      "oc.FightInfo\022\020\n\010isDelete\030\002 \001(\010\"!\n\037Reques" +
-      "tGetLadderRankListCommand\"%\n#RequestGetU" +
-      "serLadderRankListCommand\"V\n ResponseGetL" +
-      "adderRankListCommand\0222\n\010userRank\030\001 \003(\0132 " +
-      ".com.trans.pixel.protoc.UserRank\"Z\n$Resp" +
-      "onseGetUserLadderRankListCommand\0222\n\010user" +
-      "Rank\030\001 \003(\0132 .com.trans.pixel.protoc.User",
-      "Rank\"a\n\036RequestAttackLadderModeCommand\022\014" +
-      "\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(" +
-      "\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037ResponseAttac" +
-      "kLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002" +
-      " \002(\t\"!\n\037RequestReadyAttackLadderCommand\"" +
-      "/\n\037RequestGetLadderUserInfoCommand\022\014\n\004ra" +
-      "nk\030\001 \002(\004\"\"\n RequestPurchaseLadderTimeCom" +
-      "mand\"V\n ResponseGetLadderUserInfoCommand" +
-      "\0222\n\010userRank\030\001 \002(\0132 .com.trans.pixel.pro" +
-      "toc.UserRank"
+      "oc.UserLadder\",\n\032RequestGetFightInfoComm" +
+      "and\022\016\n\006isSave\030\001 \001(\010\"Y\n\027RequestFightInfoC" +
+      "ommand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.p" +
+      "rotoc.FightInfo\022\r\n\005score\030\002 \001(\r\"K\n\030Respon",
+      "seFightInfoCommand\022/\n\004info\030\001 \003(\0132!.com.t" +
+      "rans.pixel.protoc.FightInfo\"a\n\033RequestSa" +
+      "veFightInfoCommand\0220\n\005fight\030\001 \002(\0132!.com." +
+      "trans.pixel.protoc.FightInfo\022\020\n\010isDelete" +
+      "\030\002 \001(\010\"!\n\037RequestGetLadderRankListComman" +
+      "d\"%\n#RequestGetUserLadderRankListCommand" +
+      "\"V\n ResponseGetLadderRankListCommand\0222\n\010" +
+      "userRank\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "UserRank\"Z\n$ResponseGetUserLadderRankLis" +
+      "tCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.p",
+      "ixel.protoc.UserRank\"a\n\036RequestAttackLad" +
+      "derModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(" +
+      "\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\"" +
+      ";\n\037ResponseAttackLadderModeCommand\022\013\n\003re" +
+      "t\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAtta" +
+      "ckLadderCommand\"/\n\037RequestGetLadderUserI" +
+      "nfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurch" +
+      "aseLadderTimeCommand\"V\n ResponseGetLadde" +
+      "rUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .com" +
+      ".trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29037,7 +29156,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor,
-              new java.lang.String[] { });
+              new java.lang.String[] { "IsSave", });
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_fieldAccessorTable = new

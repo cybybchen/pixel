@@ -4,10 +4,13 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
@@ -23,6 +26,7 @@ import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
+
 @Service
 public class TeamCommandService extends BaseCommandService {
 	@Resource
@@ -39,33 +43,40 @@ public class TeamCommandService extends BaseCommandService {
 	private RankService rankService;
 	@Resource
 	private FightInfoService fightInfoService;
-	
-	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void updateUserTeam(RequestUpdateTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
-		int id = (int)cmd.getId();
+		int id = (int) cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
 		int rolePosition = cmd.getRolePosition();
 		// if (!userTeamService.canUpdateTeam(user, teamInfo)) {
-		// 	logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
-			
-		// 	ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
-  //           responseBuilder.setErrorCommand(errorCommand);
+		// logService.sendErrorLog(user.getId(), user.getServerId(),
+		// cmd.getClass(), RedisService.formatJson(cmd),
+		// ErrorConst.UPDATE_TEAM_ERROR);
+
+		// ErrorCommand errorCommand =
+		// buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
+		// responseBuilder.setErrorCommand(errorCommand);
 		// }else
-			userTeamService.updateUserTeam(userId, id, teamInfo, user, rolePosition, cmd.getTeamEngineList(), cmd.getTalentId());
-			
+		userTeamService.updateUserTeam(userId, id, teamInfo, user,
+				rolePosition, cmd.getTeamEngineList(), cmd.getTalentId());
+
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 
-	public void submitFightInfo(RequestFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+	public void submitFightInfo(RequestFightInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		FightInfo.Builder builder = FightInfo.newBuilder(cmd.getInfo());
-		if(builder.hasId()) {
+		if (builder.hasId()) {
 			UserInfo.Builder userinfo = UserInfo.newBuilder();
 			userinfo.setId(builder.getId());
 			builder.setEnemy(userinfo);
 		}
-		builder.setId((int)((System.currentTimeMillis()+12345)%10000000));
-		fightInfoService.saveFightInfo(RedisService.formatJson(builder.build()), user);
+		builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
+		fightInfoService.setFightInfo(RedisService.formatJson(builder.build()),
+				user);
 		if (cmd.hasScore() && cmd.getScore() > 80) {
 			builder.setUser(user.buildShort());
 			builder.setTime(DateUtil.getCurrentDateString());
@@ -73,42 +84,66 @@ public class TeamCommandService extends BaseCommandService {
 		}
 	}
 
-	public void saveFightInfo(RequestSaveFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+	public void saveFightInfo(RequestSaveFightInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {// 收藏录像
+		ResultConst ret = fightInfoService.save(user, cmd.getFight());
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ret);
+
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
 		
+		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
+				.newBuilder();
+		
+		builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
 	}
-	
-	public void getFightInfo(/*RequestGetFightInfoCommand cmd,*/ Builder responseBuilder, UserBean user) {
-		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
-		for(FightInfo.Builder info : fightInfoService.getFightInfoList(user))
+
+	public void getFightInfo(
+			/* RequestGetFightInfoCommand cmd, */Builder responseBuilder,
+			UserBean user) {
+		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
+				.newBuilder();
+		for (FightInfo.Builder info : fightInfoService.getFightInfoList(user))
 			builder.addInfo(info);
 		responseBuilder.setFightInfoCommand(builder.build());
 	}
-	
-//	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
-//		String teamInfo = cmd.getTeamInfo();
-//		String composeSkill = "";
-//		if (cmd.hasComposeSkill())
-//			composeSkill = cmd.getComposeSkill();
-//		if (!userTeamService.canUpdateTeam(user, teamInfo)) {
-//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
-//			
-//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
-//            responseBuilder.setErrorCommand(errorCommand);
-//		}else
-//			userTeamService.addUserTeam(user, teamInfo, composeSkill);
-//		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
-//	}
-	
-	public void getUserTeamList(RequestUserTeamListCommand cmd, Builder responseBuilder, UserBean user) {
+
+	// public void addUserTeam(RequestAddTeamCommand cmd, Builder
+	// responseBuilder, UserBean user) {
+	// String teamInfo = cmd.getTeamInfo();
+	// String composeSkill = "";
+	// if (cmd.hasComposeSkill())
+	// composeSkill = cmd.getComposeSkill();
+	// if (!userTeamService.canUpdateTeam(user, teamInfo)) {
+	// logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(),
+	// RedisService.formatJson(cmd), ErrorConst.UPDATE_TEAM_ERROR);
+	//
+	// ErrorCommand errorCommand =
+	// buildErrorCommand(ErrorConst.UPDATE_TEAM_ERROR);
+	// responseBuilder.setErrorCommand(errorCommand);
+	// }else
+	// userTeamService.addUserTeam(user, teamInfo, composeSkill);
+	// pushCommandService.pushUserTeamListCommand(responseBuilder, user);
+	// }
+
+	public void getUserTeamList(RequestUserTeamListCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
-	
-	public void getTeamCache(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
+
+	public void getTeamCache(RequestGetTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
 		if (cmd.getUserId() == 0)
 			return;
-		
+
 		Team team = userTeamService.getTeamCache(cmd.getUserId());
-		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
+		ResponseGetTeamCommand.Builder builder = ResponseGetTeamCommand
+				.newBuilder();
 		builder.setTeam(team);
 		responseBuilder.setTeamCommand(builder.build());
 	}

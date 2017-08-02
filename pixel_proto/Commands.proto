@@ -2647,6 +2647,7 @@ message ResponseUserLadderCommand {
 }
 
 message RequestGetFightInfoCommand {
+	optional bool isSave = 1;//1：收藏的录像
 }
 message RequestFightInfoCommand {
 	required FightInfo info = 1;

@@ -14,7 +14,6 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
-import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.HeroProto.TeamUnlockList;
@@ -141,27 +140,6 @@ public class UserTeamRedisService extends RedisService {
 		List<TeamUnlock> list = new ArrayList<TeamUnlock>();
 		for(TeamUnlock.Builder teamunlock : builder.getXiaoguanBuilderList()){
 			list.add(teamunlock.build());
-		}
-		return list;
-	}
-
-	public void saveFightInfo(String info, UserBean user){
-		String key = RedisKey.USER_FIGHT_PREFIX+user.getId();
-		lpush(key, info, user.getId());
-		long size = llen(key, user.getId());
-		for(; size > 10; size--){
-			rpop(key, user.getId());
-		}
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
-	}
-
-	public List<FightInfo.Builder> getFightInfoList(UserBean user){
-		List<FightInfo.Builder> list = new ArrayList<FightInfo.Builder>();
-		List<String> values = lrange(RedisKey.USER_FIGHT_PREFIX+user.getId(), user.getId());
-		for(String value : values){
-			FightInfo.Builder builder = FightInfo.newBuilder();
-			if(parseJson(value, builder))
-				list.add(builder);
 		}
 		return list;
 	}

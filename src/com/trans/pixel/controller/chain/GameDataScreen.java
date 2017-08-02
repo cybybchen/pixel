@@ -78,6 +78,7 @@ import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestPurchaseLadderTimeCommand;
 import com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand;
+import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand;
 import com.trans.pixel.protoc.MailProto.RequestAddFriendCommand;
 import com.trans.pixel.protoc.MailProto.RequestDelFriendCommand;
@@ -1545,6 +1546,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestRemoveRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		userCommandService.removeRecommand(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSaveFightInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		teamCommandService.saveFightInfo(cmd, responseBuilder, user);
 		return true;
 	}
 
