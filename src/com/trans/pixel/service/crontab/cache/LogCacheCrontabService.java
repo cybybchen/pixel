@@ -26,8 +26,8 @@ public class LogCacheCrontabService {
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void sendLog() {
-		if (!ConfigUtil.CRONTAB_STATUS)
-			return;
+//		if (!ConfigUtil.CRONTAB_STATUS)
+//			return;
 		Socket socket = null;
 		try {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
