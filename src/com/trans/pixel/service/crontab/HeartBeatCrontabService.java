@@ -34,8 +34,7 @@ public class HeartBeatCrontabService {
 	@Scheduled(cron = "0 0/10 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void handleHeartBeatReward() {
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-		String time = df.format(new Date());
+		
 		
 		List<Integer> serverList = serverService.getServerIdList();
 		for (int serverId : serverList) {
@@ -50,11 +49,14 @@ public class HeartBeatCrontabService {
 		 * 等待另外的服务器把数据更新了
 		 */
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		String time = df.format(new Date());
 		for (int serverId : serverList) {
 			Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
 			logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);

@@ -5,16 +5,16 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.service.cache.UserCacheService;
+import com.trans.pixel.service.cache.CacheService;
 
 @Service
-public class LogRedisService extends UserCacheService {
+public class LogRedisService extends CacheService {
 	
 	public void addLogData(String log) {
-		sadd(RedisKey.LOG_KEY, log);
+		saddcache(RedisKey.LOG_KEY, log);
 	}
 	
 	public Set<String> popLog() {
-		return spop(RedisKey.LOG_KEY);
+		return spopcache(RedisKey.LOG_KEY);
 	}
 }
