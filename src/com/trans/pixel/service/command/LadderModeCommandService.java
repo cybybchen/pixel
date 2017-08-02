@@ -247,35 +247,35 @@ public class LadderModeCommandService extends BaseCommandService {
 					}
 					pushCommandService.pushUserDataByRewardId(responseBuilder, user, pokede.getItemId(), true);
 				}
-				
-				//任务奖励
-				if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
-					List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-					List<RewardInfo> list = ladderService.ladderTaskReward(user);
-					if (list != null && !list.isEmpty()) {
-						rewardList.addAll(list);
-						MultiReward.Builder rewards = MultiReward.newBuilder();
-						if(user.getVip() >= 12)
-						for(int i = 0; i < rewardList.size(); i++) {
-							int itemid = rewardList.get(i).getItemid();
-							if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-								UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-								if(bean != null){
-									RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
-									reward.setItemid(24007);
-									reward.setCount(reward.getCount()*5);
-									rewardList.set(i, reward.build());
-								}
-							}else if(itemid == RewardConst.LADDERCOIN) {
-								RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
-								reward.setCount((int)(reward.getCount()*2));
-								rewardList.set(i, reward.build());
-							}
+			}
+		}
+		
+		//任务奖励
+		if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
+			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+			List<RewardInfo> list = ladderService.ladderTaskReward(user);
+			if (list != null && !list.isEmpty()) {
+				rewardList.addAll(list);
+				MultiReward.Builder rewards = MultiReward.newBuilder();
+				if(user.getVip() >= 12)
+				for(int i = 0; i < rewardList.size(); i++) {
+					int itemid = rewardList.get(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
+							reward.setItemid(24007);
+							reward.setCount(reward.getCount()*5);
+							rewardList.set(i, reward.build());
 						}
-						rewards.addAllLoot(rewardList);
-						handleRewards(responseBuilder, user, rewards);
+					}else if(itemid == RewardConst.LADDERCOIN) {
+						RewardInfo.Builder reward = RewardInfo.newBuilder(rewardList.get(i));
+						reward.setCount((int)(reward.getCount()*2));
+						rewardList.set(i, reward.build());
 					}
 				}
+				rewards.addAllLoot(rewardList);
+				handleRewards(responseBuilder, user, rewards);
 			}
 		}
 	}
