@@ -422,6 +422,7 @@ public class UnionRedisService extends RedisService{
 		}
 		count += 1;
 		hput(RedisKey.UNION_BOSS_REWARD_TIME+user.getId(), bossId+"", count+"");
+		expireAt(RedisKey.UNION_BOSS_REWARD_TIME+user.getId(), nextDay());
 		return true;
 	}
 	//union bosswin
