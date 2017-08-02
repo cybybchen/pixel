@@ -182,7 +182,15 @@ public class UnionService extends FightService{
 		});
 		int index = 0;
 		int zhanli = 0;
-		for(UserInfo member : members){
+//		for(UserInfo member : members){
+		for(int i = 0; i < members.size(); ++ i){
+			UserInfo member = members.get(i);
+			if (member.getUnionId() != union.getId()) {
+				redis.quit(member.getId(), user);
+				members.remove(member);
+				--i;
+				continue;
+			}
 			if(index < 10) {
 				zhanli += member.getZhanli()*6/10;
 			}else if(index < 20)
