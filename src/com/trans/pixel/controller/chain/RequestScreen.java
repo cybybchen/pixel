@@ -214,6 +214,7 @@ import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand;
 import com.trans.pixel.protoc.ShopProto.RequestRaidShopPurchaseCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand;
 import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
@@ -433,6 +434,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestChangePositionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetBattletowerCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRemoveRecommandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user);
@@ -1305,6 +1307,10 @@ public abstract class RequestScreen implements RequestHandle {
 		}
 		if (request.hasRaidShopPurchaseCommand()) {
 			RequestRaidShopPurchaseCommand cmd = request.getRaidShopPurchaseCommand();
+			if (result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasRemoveRecommandCommand()) {
+			RequestRemoveRecommandCommand cmd = request.getRemoveRecommandCommand();
 			if (result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetTaskRewardCommand()) {

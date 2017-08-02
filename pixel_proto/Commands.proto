@@ -2800,6 +2800,9 @@ message RequestBindRecommandCommand {
 	optional bool isFirst = 4;//首次输入是true，用来获取玩家信息，第二次确认的时候false
 }
 
+message RequestRemoveRecommandCommand {
+}
+
 message RequestRecommandCommand {
 	
 }
@@ -3798,6 +3801,7 @@ message RequestCommand {
 	optional RequestEventQuickFightCommand eventQuickFightCommand = 261;
 	optional RequestSignNameCommand signNameCommand = 262;
 	optional RequestSubmitRiteCommand submitRiteCommand = 263;
+	optional RequestRemoveRecommandCommand removeRecommandCommand = 264;
 }
 ////////// Commands
 message ErrorCommand {

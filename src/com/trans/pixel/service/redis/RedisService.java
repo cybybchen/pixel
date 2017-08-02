@@ -1033,6 +1033,26 @@ public class RedisService {
 			}
 		});
 	}
+	
+	protected Long lrem(final String key, final String value) {
+		return lrem(key, value, 0);
+	}
+	
+	protected Long lrem(final String key, final String value, final long userId) {
+		return getRedis(userId).execute(new RedisCallback<Long>() {
+			@Override
+			public Long doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+				BoundListOperations<String, String> Ops = getRedis(userId)
+						.boundListOps(key);
+
+				// Date date = expireDateAndInit();
+				// if (date != null)
+				// Ops.expireAt(date);
+				return Ops.remove(0, value);
+			}
+		});
+	}
 
 	/**
 	 * 获取list

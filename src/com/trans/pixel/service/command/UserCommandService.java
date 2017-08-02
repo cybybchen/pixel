@@ -36,6 +36,7 @@ import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestLoginCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand;
+import com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand;
@@ -455,6 +456,37 @@ public class UserCommandService extends BaseCommandService {
 			handleRewards(responseBuilder, user, rewards);
 		}
 	}
+	
+	public void removeRecommand(RequestRemoveRecommandCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		if (user.getRecommandUserId() == 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.RECOMMAND_IS_NOT_EXIST_ERROR);
+
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RECOMMAND_IS_NOT_EXIST_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		if (!costService.cost(user, RewardConst.JEWEL, 1500)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.NOT_ENOUGH_JEWEL);
+
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+
+		userService.handlerRemoveRecommand(user);
+
+		ResponseRecommandCommand.Builder builder = ResponseRecommandCommand
+				.newBuilder();
+		builder.setCount(userService.getRecommands(user));
+		responseBuilder.setRecommandCommand(builder.build());
+	}
+
 
 	public void recommand(RequestRecommandCommand cmd, Builder responseBuilder,
 			UserBean user) {

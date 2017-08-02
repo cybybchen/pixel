@@ -23,4 +23,10 @@ public class UserRecommandRedisService extends RedisService{
 		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
 		return this.lrange(key, userId);
 	}
+	
+	public void removeRecommandInfo(long userId, long userId2) {
+		String key = RedisKey.USER_RECOMMAND_PREFIX + userId;
+		this.lrem(key, "" + userId2, userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
 }

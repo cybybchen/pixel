@@ -38,4 +38,9 @@ public class UserRecommandService {
 		userRecommandRedisService.saveRecommandInfo(userId, userId2);
 		userRecommandMapper.addRecommand(userId, userId2);
 	}
+	
+	public void removeRecommand(long userId, long userId2) {
+		userRecommandRedisService.removeRecommandInfo(userId, userId2);
+		userRecommandMapper.removeRecommand(userId, userId2);
+	}
 }

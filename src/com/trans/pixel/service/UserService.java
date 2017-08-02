@@ -678,6 +678,13 @@ public class UserService {
 		userRecommandService.saveRecommand(userId, user.getId());
 	}
 	
+	public void handlerRemoveRecommand(UserBean user) {
+		userRecommandService.removeRecommand(user.getRecommandUserId(), user.getId());
+		
+		user.setRecommandUserId(0);
+		updateUser(user);
+	}
+	
 	public int getRecommands(UserBean user) {
 		return userRecommandService.getRecommand(user);
 	}
