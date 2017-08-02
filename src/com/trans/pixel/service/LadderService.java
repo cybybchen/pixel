@@ -138,7 +138,8 @@ public class LadderService {
 			activityService.ladderModeLevelup(user, builder.getGrade());
 		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
 		builder.setPosition(position);
-		if (type == LadderConst.TYPE_LADDER_NORMAL && ret == 0)
+//		if (type == LadderConst.TYPE_LADDER_NORMAL && ret == 0)
+		if (type == LadderConst.TYPE_LADDER_NORMAL)
 			builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
 		
