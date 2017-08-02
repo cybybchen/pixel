@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserFightInfoMapper">
+
+	<insert id="saveFightInfo">
+	    INSERT INTO user_fightinfo(user_id, fightinfo_id, fightinfo) 
+		 VALUES(#{userId}, #{fightinfoId}, #{fightinfo})
+		 ON 
+	    duplicate key update
+	    fightinfo=#{fightinfo}
+	</insert>
+
+	<select id="getRecommands" parameterType="long" resultType="long" >
+	    SELECT user_id2 from user_recommand where user_id=#{userId}
+	</select>
+	
+	<delete id="removeRecommand">
+	    DELETE FROM user_recommand
+	    WHERE user_id=#{userId}
+	    AND user_id2=#{userId2}
+	</delete>
+	
+</mapper>
