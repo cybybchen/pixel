@@ -560,11 +560,12 @@ public class ShopCommandService extends BaseCommandService{
 		for(int i = shopList.getItemsCount()-1; i >= 0; i--) {
 			Commodity.Builder commbuilder = shopList.getItemsBuilder(i);
 			if(commbuilder.getPosition() == 100) {
+				commbuilder.setMaxlimit(0);
 				if(vip != null) commbuilder.setMaxlimit(commbuilder.getMaxlimit()+vip.getShopchipbox());
 				if(commbuilder.getMaxlimit() == 0)
 					shopList.removeItems(i);
 			}
-			if(commbuilder.getLimit() >= commbuilder.getMaxlimit())
+			if(commbuilder.getLimit() >= commbuilder.getMaxlimit() && commbuilder.getMaxlimit() >= 0)
 				commbuilder.setIsOut(true);
 			else
 				commbuilder.setIsOut(false);
@@ -598,7 +599,7 @@ public class ShopCommandService extends BaseCommandService{
 			VipInfo vip = userService.getVip(user.getVip());
 			if(vip != null) othertime = vip.getShopchipbox();
 		}
-		if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime || commbuilder.getId() != cmd.getId()){
+		if((commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime && commbuilder.getMaxlimit() >= 0) || commbuilder.getId() != cmd.getId()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -606,11 +607,12 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
-		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
+		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
+			commbuilder.setLimit(commbuilder.getLimit() + 1);
 			if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime)
 				commbuilder.setIsOut(true);
 			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount());
@@ -771,11 +773,12 @@ public class ShopCommandService extends BaseCommandService{
 		for(int i = shopList.getItemsCount()-1; i >= 0; i--) {
 			Commodity.Builder commbuilder = shopList.getItemsBuilder(i);
 			if(commbuilder.getPosition() == 100) {
+				commbuilder.setMaxlimit(0);
 				if(vip != null) commbuilder.setMaxlimit(commbuilder.getMaxlimit()+vip.getShopbaohu());
 				if(commbuilder.getMaxlimit() == 0)
 					shopList.removeItems(i);
 			}
-			if(commbuilder.getLimit() >= commbuilder.getMaxlimit())
+			if(commbuilder.getLimit() >= commbuilder.getMaxlimit() && commbuilder.getMaxlimit() >= 0)
 				commbuilder.setIsOut(true);
 			else
 				commbuilder.setIsOut(false);
@@ -810,7 +813,7 @@ public class ShopCommandService extends BaseCommandService{
 			VipInfo vip = userService.getVip(user.getVip());
 			if(vip != null) othertime = vip.getShopbaohu();
 		}
-		if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime || commbuilder.getId() != cmd.getId()){
+		if((commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime && commbuilder.getMaxlimit() >= 0) || commbuilder.getId() != cmd.getId()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -818,7 +821,7 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
-		}else*/ if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
+		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
