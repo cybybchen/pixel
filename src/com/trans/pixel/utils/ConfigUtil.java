@@ -70,7 +70,7 @@ public class ConfigUtil {
 			SERVER = props.getProperty("server");
 			CRONTAB_STATUS = Boolean.valueOf(props.getProperty("crontab_status"));
 			IS_MASTER = Boolean.valueOf(props.getProperty("is_master"));
-			logger.debug("crontab_status is:" + CRONTAB_STATUS);
+			logger.warn("crontab_status is:" + CRONTAB_STATUS);
 		} catch (Throwable t) {
 			logger.error("parse ld.properties failed");
 		}

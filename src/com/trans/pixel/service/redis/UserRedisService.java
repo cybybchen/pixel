@@ -174,9 +174,11 @@ public class UserRedisService extends RedisService{
 	public <T> UserInfo getCache(int serverId, T userId){
 		String value = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, userId+"");
 		UserInfo.Builder builder = UserInfo.newBuilder();
-		if(value != null && parseJson(value, builder))
+		if(value != null && parseJson(value, builder)) {
+			if (!builder.hasSignName())
+				builder.setSignName("");
 			return builder.build();
-		else
+		}else
 			return null;
 	}
 
@@ -192,8 +194,11 @@ public class UserRedisService extends RedisService{
 		List<UserInfo> users = new ArrayList<UserInfo>();
 		for(String value : values){
 			UserInfo.Builder builder = UserInfo.newBuilder();
-			if(value != null && parseJson(value, builder))
+			if(value != null && parseJson(value, builder)) {
+				if (!builder.hasSignName())
+					builder.setSignName("");
 				users.add(builder.build());
+			}
 		}
 		return users;
 	}
