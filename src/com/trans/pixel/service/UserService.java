@@ -407,6 +407,9 @@ public class UserService {
 		return userRedisService.popLibaoDBKey();
 	}
 	public Libao getLibao(long userId, int rechargeid) {
+		if(!userRedisService.existLibao(userId)) {
+			getLibaos(userId);
+		}
 		return userRedisService.getLibao(userId, rechargeid);
 	}
 	public Map<Integer, Libao> getLibaos(long userId) {

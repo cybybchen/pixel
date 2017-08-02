@@ -72,6 +72,10 @@ public class UserRedisService extends RedisService{
 	public String popLibaoDBKey(){
 		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_LIBAOCOUNT_PREFIX);
 	}
+
+	public boolean existLibao(long userId) {
+		return exists(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, userId);
+	}
 	
 	public Libao getLibao(long userId, int rechargeid) {
 		String value = hget(RedisKey.USER_LIBAOCOUNT_PREFIX+userId, rechargeid+"", userId);
@@ -86,8 +90,7 @@ public class UserRedisService extends RedisService{
 	
 	public Map<Integer, Libao> getLibaos(long userId) {
 		Map<String, String> keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, userId);
-		if (keyvalue == null)
-			keyvalue = hget(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, userId);
+		expire(RedisKey.USER_LIBAOCOUNT_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		Map<Integer, Libao> map = new HashMap<Integer, Libao>();
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			Libao.Builder builder = Libao.newBuilder();
