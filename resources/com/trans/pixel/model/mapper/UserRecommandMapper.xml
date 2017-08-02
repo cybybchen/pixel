@@ -15,8 +15,9 @@
 	</select>
 	
 	<delete id="removeRecommand">
-	    DELETE #{userId2} FROM user_recommand
+	    DELETE FROM user_recommand
 	    WHERE user_id=#{userId}
+	    AND user_id2=#{userId2}
 	</delete>
 	
 </mapper>
