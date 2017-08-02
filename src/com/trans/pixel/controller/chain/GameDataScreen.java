@@ -350,7 +350,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestLevelStartCommand cmd, Builder responseBuilder, UserBean user) {
 		levelCommandService.levelStart(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -491,7 +491,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user) {
 		unionCommandService.setAnnounce(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 	
 	@Override
@@ -667,19 +667,19 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRaidShopCommand cmd, Builder responseBuilder, UserBean user) {
 		shopCommandService.RaidShop(responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestRaidShopRefreshCommand cmd, Builder responseBuilder, UserBean user) {
 		shopCommandService.RaidShopRefresh(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestRaidShopPurchaseCommand cmd, Builder responseBuilder, UserBean user) {
 		shopCommandService.RaidShopPurchase(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 	@Override//ExpeditionShopCommand
 	protected boolean handleCommand(RequestExpeditionShopCommand cmd, Builder responseBuilder, UserBean user) {
@@ -1351,7 +1351,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestEventCommand cmd, Builder responseBuilder, UserBean user) {
 		levelCommandService.getEvent(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -1420,7 +1420,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestHeroSpUpCommand cmd, Builder responseBuilder, UserBean user) {
 		heroCommandService.heroSpUp(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override

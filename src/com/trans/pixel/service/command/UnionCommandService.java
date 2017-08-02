@@ -113,7 +113,9 @@ public class UnionCommandService extends BaseCommandService {
 				union = unionService.getUnion(user, isNewVersion);
 			
 			if(type.equals(UNION_INFO_TYPE.TYPE_UNION) && union == null){
-				getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
+				RequestUnionListCommand.Builder request = RequestUnionListCommand.newBuilder();
+				request.setType(1);
+				getUnions(request.build(), responseBuilder, user);
 				return;
 			} 
 		}
@@ -191,7 +193,7 @@ public class UnionCommandService extends BaseCommandService {
 		int unionId = cmd.getUnionId();
 		unionService.apply(unionId, user);
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.APPLY_UNION_SUCCESS));
-		getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
+//		getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
 	}
 	
 	public void reply(RequestReplyUnionCommand cmd, Builder responseBuilder, UserBean user) {

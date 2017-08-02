@@ -106,9 +106,17 @@ public class UnionRedisService extends RedisService{
 		}
 		Map<Integer, UnionExp> unionExpMap = this.getUnionExpConfig();
 		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
-		for(String value : unionMap.values()){
+		Object[] values = unionMap.values().toArray();
+		int size = values.length;
+		for(int i = 0; i < size; i ++) {//随机打乱
+			int index = nextInt(size);
+			Object object = values[i];
+			values[i] = values[index];
+			values[index] = object;
+		}
+		for(Object value : values){
 			Union.Builder builder = Union.newBuilder();
-			if(parseJson(value, builder)){
+			if(parseJson((String)value, builder)){
 				if(name != null && builder.getName().indexOf(name) < 0)
 					continue;
 				if(applyMap.containsKey(builder.getId()+"")) {
