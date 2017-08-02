@@ -465,10 +465,10 @@ public class UnionService extends FightService{
 		return false;
 	}
 	
-	public void apply(int unionId, UserBean user) {
+	public void apply(int unionId, UserBean user, String content) {
 		if(user.getUnionId() != 0)
 			return;
-		redis.apply(unionId, user);
+		redis.apply(unionId, user, content);
 	}
 	
 	public int getAreaFighting(long userId, UserBean user){

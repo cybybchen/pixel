@@ -191,7 +191,7 @@ public class UnionCommandService extends BaseCommandService {
 	
 	public void apply(RequestApplyUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		int unionId = cmd.getUnionId();
-		unionService.apply(unionId, user);
+		unionService.apply(unionId, user, cmd.getContent());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.APPLY_UNION_SUCCESS));
 //		getUnions(RequestUnionListCommand.newBuilder().build(), responseBuilder, user);
 	}

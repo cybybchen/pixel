@@ -4788,6 +4788,21 @@ public final class UnionProto {
      * <code>optional int64 timestamp = 4;</code>
      */
     long getTimestamp();
+
+    // optional string content = 5;
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    boolean hasContent();
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    java.lang.String getContent();
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getContentBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UnionApply}
@@ -4866,6 +4881,11 @@ public final class UnionProto {
             case 32: {
               bitField0_ |= 0x00000008;
               timestamp_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              content_ = input.readBytes();
               break;
             }
           }
@@ -4978,11 +4998,55 @@ public final class UnionProto {
       return timestamp_;
     }
 
+    // optional string content = 5;
+    public static final int CONTENT_FIELD_NUMBER = 5;
+    private java.lang.Object content_;
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    public boolean hasContent() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    public java.lang.String getContent() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          content_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string content = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        content_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       id_ = 0L;
       user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       endTime_ = 0L;
       timestamp_ = 0L;
+      content_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5024,6 +5088,9 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt64(4, timestamp_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getContentBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -5048,6 +5115,10 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(4, timestamp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getContentBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5178,6 +5249,8 @@ public final class UnionProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         timestamp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
+        content_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -5226,6 +5299,10 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000008;
         }
         result.timestamp_ = timestamp_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.content_ = content_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5253,6 +5330,11 @@ public final class UnionProto {
         }
         if (other.hasTimestamp()) {
           setTimestamp(other.getTimestamp());
+        }
+        if (other.hasContent()) {
+          bitField0_ |= 0x00000010;
+          content_ = other.content_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5509,6 +5591,80 @@ public final class UnionProto {
       public Builder clearTimestamp() {
         bitField0_ = (bitField0_ & ~0x00000008);
         timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional string content = 5;
+      private java.lang.Object content_ = "";
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public boolean hasContent() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public java.lang.String getContent() {
+        java.lang.Object ref = content_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          content_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContentBytes() {
+        java.lang.Object ref = content_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          content_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public Builder setContent(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        content_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public Builder clearContent() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        content_ = getDefaultInstance().getContent();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string content = 5;</code>
+       */
+      public Builder setContentBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        content_ = value;
         onChanged();
         return this;
       }
@@ -28977,6 +29133,21 @@ public final class UnionProto {
      * <code>required int32 unionId = 1;</code>
      */
     int getUnionId();
+
+    // optional string content = 2;
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    boolean hasContent();
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    java.lang.String getContent();
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getContentBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestApplyUnionCommand}
@@ -29038,6 +29209,11 @@ public final class UnionProto {
               unionId_ = input.readInt32();
               break;
             }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              content_ = input.readBytes();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -29094,8 +29270,52 @@ public final class UnionProto {
       return unionId_;
     }
 
+    // optional string content = 2;
+    public static final int CONTENT_FIELD_NUMBER = 2;
+    private java.lang.Object content_;
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    public boolean hasContent() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    public java.lang.String getContent() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          content_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string content = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        content_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       unionId_ = 0;
+      content_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -29116,6 +29336,9 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, unionId_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getContentBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -29128,6 +29351,10 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, unionId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getContentBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -29251,6 +29478,8 @@ public final class UnionProto {
         super.clear();
         unionId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        content_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -29283,6 +29512,10 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000001;
         }
         result.unionId_ = unionId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.content_ = content_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -29301,6 +29534,11 @@ public final class UnionProto {
         if (other == com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand.getDefaultInstance()) return this;
         if (other.hasUnionId()) {
           setUnionId(other.getUnionId());
+        }
+        if (other.hasContent()) {
+          bitField0_ |= 0x00000002;
+          content_ = other.content_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -29362,6 +29600,80 @@ public final class UnionProto {
       public Builder clearUnionId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         unionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string content = 2;
+      private java.lang.Object content_ = "";
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public boolean hasContent() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public java.lang.String getContent() {
+        java.lang.Object ref = content_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          content_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContentBytes() {
+        java.lang.Object ref = content_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          content_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public Builder setContent(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        content_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public Builder clearContent() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        content_ = getDefaultInstance().getContent();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string content = 2;</code>
+       */
+      public Builder setContentBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        content_ = value;
         onChanged();
         return this;
       }
@@ -38984,117 +39296,118 @@ public final class UnionProto {
       "toc.UnionBossRecord\022\022\n\nbossRecord\030\030 \001(\t\022" +
       "\023\n\013bossEndTime\030\031 \001(\t\022\020\n\010announce\030\032 \001(\t\022\013" +
       "\n\003exp\030\033 \001(\r\022\021\n\tmaxZhanli\030\034 \001(\r\022\024\n\014applyE" +
-      "ndTime\030\035 \001(\r\"l\n\nUnionApply\022\n\n\002id\030\001 \002(\003\022.",
+      "ndTime\030\035 \001(\r\"}\n\nUnionApply\022\n\n\002id\030\001 \002(\003\022.",
       "\n\004user\030\002 \002(\0132 .com.trans.pixel.protoc.Us" +
       "erInfo\022\017\n\007endTime\030\003 \002(\003\022\021\n\ttimestamp\030\004 \001" +
-      "(\003\"\323\001\n\016BossRoomRecord\022\017\n\007groupId\030\001 \002(\005\022\016" +
-      "\n\006bossId\030\002 \002(\005\022\024\n\014createUserId\030\003 \002(\003\0226\n\n" +
-      "bossRecord\030\004 \003(\0132\".com.trans.pixel.proto" +
-      "c.BossRecord\022.\n\004user\030\005 \003(\0132 .com.trans.p" +
-      "ixel.protoc.UserInfo\022\016\n\006status\030\006 \001(\005\022\022\n\n" +
-      "createTime\030\007 \002(\t\"Z\n\017BossGroupRecord\022\017\n\007g" +
-      "roupId\030\001 \002(\005\0226\n\nbossRecord\030\002 \003(\0132\".com.t" +
-      "rans.pixel.protoc.BossRecord\"L\n\nBossReco",
-      "rd\022\016\n\006bossId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006use" +
-      "rId\030\003 \001(\003\022\017\n\007endTime\030\004 \001(\t\"A\n\rBossgroupL" +
-      "ist\0220\n\005group\030\001 \003(\0132!.com.trans.pixel.pro" +
-      "toc.Bossgroup\"\203\001\n\tBossgroup\022\n\n\002id\030\001 \001(\005\022" +
-      "\016\n\006zhanli\030\002 \001(\005\022\021\n\tbosscount\030\003 \001(\005\022\r\n\005co" +
-      "unt\030\004 \001(\005\022*\n\004boss\030\005 \003(\0132\034.com.trans.pixe" +
-      "l.protoc.Boss\022\014\n\004time\030\006 \001(\005\"\026\n\004Boss\022\016\n\006b" +
-      "ossid\030\001 \001(\005\"F\n\021BosslootGroupList\0221\n\002id\030\001" +
-      " \003(\0132%.com.trans.pixel.protoc.BosslootGr" +
-      "oup\"L\n\rBosslootGroup\022\n\n\002id\030\001 \001(\005\022/\n\005orde",
-      "r\030\002 \003(\0132 .com.trans.pixel.protoc.Bossloo" +
-      "t\"\316\001\n\010Bossloot\022\021\n\tweightall\030\001 \001(\005\022\017\n\007ite" +
-      "mid1\030\002 \001(\005\022\022\n\nitemcount1\030\003 \001(\005\022\017\n\007weight" +
-      "1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(\005\022\022\n\nitemcount2\030\006" +
-      " \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017\n\007itemid3\030\010 \001(\005\022\022" +
-      "\n\nitemcount3\030\t \001(\005\022\017\n\007weight3\030\n \001(\005\022\r\n\005o" +
-      "rder\030\013 \001(\005\"\200\001\n\017UserBattletower\022\016\n\006userId" +
-      "\030\001 \001(\003\022\020\n\010toptower\030\002 \001(\005\022\024\n\014currenttower" +
-      "\030\003 \001(\005\022\022\n\nresettimes\030\004 \001(\005\022\021\n\tlefttimes\030" +
-      "\005 \001(\005\022\016\n\006random\030\006 \001(\005\"\352\001\n\013TowerReward\022\n\n",
-      "\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001(\005\022\016\n\006floora\030\003 \001(\005" +
-      "\022\016\n\006floorb\030\004 \001(\005\022\020\n\010rewardid\030\005 \001(\005\022\023\n\013re" +
-      "wardcount\030\006 \001(\005\022\021\n\trewardid1\030\007 \001(\005\022\024\n\014re" +
-      "wardcount1\030\010 \001(\005\022\021\n\trewardid2\030\t \001(\005\022\024\n\014r" +
-      "ewardcount2\030\n \001(\005\022\021\n\trewardid3\030\013 \001(\005\022\024\n\014" +
-      "rewardcount3\030\014 \001(\005\"B\n\017TowerRewardList\022/\n" +
-      "\002id\030\001 \003(\0132#.com.trans.pixel.protoc.Tower" +
-      "Reward\"J\n\010UnionExp\022\r\n\005level\030\001 \002(\r\022\013\n\003exp" +
-      "\030\002 \002(\r\022\017\n\007lootexp\030\003 \002(\r\022\021\n\tunionsize\030\004 \002" +
-      "(\r\">\n\014UnionExpList\022.\n\004data\030\005 \003(\0132 .com.t",
-      "rans.pixel.protoc.UnionExp\"R\n\037RequestSub" +
-      "mitBattletowerCommand\022\017\n\007success\030\001 \002(\010\022\r" +
-      "\n\005tower\030\002 \001(\005\022\017\n\007enemyId\030\003 \001(\005\"1\n\036Reques" +
-      "tResetBattletowerCommand\022\017\n\007enemyId\030\001 \001(" +
-      "\005\"T\n\034RequestGetBattletowerCommand\0224\n\003ubt" +
-      "\030\001 \001(\0132\'.com.trans.pixel.protoc.UserBatt" +
-      "letower\"V\n\036ResponseUserBattletowerComman" +
-      "d\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pixel.protoc." +
-      "UserBattletower\"\032\n\030RequestBloodEnterComm" +
-      "and\"1\n\031RequestBloodXiazhuCommand\022\024\n\014xiaz",
-      "huUserId\030\001 \002(\003\"y\n\035RequestInviteFightBoss" +
-      "Command\022\016\n\006userId\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005" +
-      "\022\016\n\006bossId\030\003 \001(\005\022\024\n\014createUserId\030\004 \001(\003\022\021" +
-      "\n\tstartDate\030\005 \001(\t\"-\n\033RequestQuitFightBos" +
-      "sCommand\022\016\n\006userId\030\001 \002(\003\"Y\n\035ResponseBoss" +
-      "RoomRecordCommand\0228\n\010bossRoom\030\001 \002(\0132&.co" +
-      "m.trans.pixel.protoc.BossRoomRecord\"4\n!R" +
-      "equestSubmitBossRoomScoreCommand\022\017\n\007perc" +
-      "ent\030\001 \002(\005\"\035\n\033RequestStartBossRoomCommand" +
-      "\"?\n\034RequestCreateBossRoomCommand\022\017\n\007grou",
-      "pId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032RequestBoss" +
-      "RoomInfoCommand\"@\n\rUnionBossList\022/\n\004data" +
-      "\030\001 \003(\0132!.com.trans.pixel.protoc.UnionBos" +
-      "s\"\234\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(" +
-      "\t\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013tar" +
-      "getcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv\030\006" +
-      " \001(\005\0224\n\010lootlist\030\007 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\022\023\n\013refreshtime\030\010 \001(\005\022" +
-      "\r\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\0226\n\nenem" +
-      "ygroup\030\013 \001(\0132\".com.trans.pixel.protoc.En",
-      "emyGroup\"F\n\020UnionBosswinList\0222\n\004data\030\001 \003" +
-      "(\0132$.com.trans.pixel.protoc.UnionBosswin" +
-      "\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003" +
-      "(\0132 .com.trans.pixel.protoc.RankItem\"h\n\010" +
-      "RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n" +
-      "\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\".com.trans.p" +
-      "ixel.protoc.RewardInfo\"7\n\031RequestCreateU" +
-      "nionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"" +
-      "+\n\030RequestApplyUnionCommand\022\017\n\007unionId\030\001" +
-      " \002(\005\"7\n\030RequestReplyUnionCommand\022\n\n\002id\030\001",
-      " \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHandleUn" +
-      "ionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(" +
-      "\005\"2\n\036RequestSetUnionAnnounceCommand\022\020\n\010a" +
-      "nnounce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionComm" +
-      "and\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001" +
-      "(\003\"w\n\027RequestUnionInfoCommand\022\024\n\014isNewVe" +
-      "rsion\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.pi" +
-      "xel.protoc.UNION_INFO_TYPE\022\017\n\007unionId\030\003 " +
-      "\001(\r\"<\n\031RequestAttackUnionCommand\022\017\n\007unio" +
-      "nId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDefe",
-      "ndUnionCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030Respo" +
-      "nseUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035.com" +
-      ".trans.pixel.protoc.Union\0223\n\007applies\030\002 \003" +
-      "(\0132\".com.trans.pixel.protoc.UnionApply\022:" +
-      "\n\tunionBoss\030\003 \003(\0132\'.com.trans.pixel.prot" +
-      "oc.UnionBossRecord\"\'\n\027RequestUnionListCo" +
-      "mmand\022\014\n\004type\030\001 \001(\005\")\n\031RequestSearchUnio" +
-      "nCommand\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseUnionL" +
-      "istCommand\022,\n\005union\030\001 \003(\0132\035.com.trans.pi" +
-      "xel.protoc.Union\"?\n\034RequestSubmitBosskil",
-      "lCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(" +
-      "\005\"\030\n\026RequestBosskillCommand\"R\n\027ResponseB" +
-      "osskillCommand\0227\n\006record\030\001 \003(\0132\'.com.tra" +
-      "ns.pixel.protoc.BossGroupRecord\"V\n\030Respo" +
-      "nseUnionBossCommand\022:\n\tunionBoss\030\001 \003(\0132\'" +
-      ".com.trans.pixel.protoc.UnionBossRecord\"" +
-      "K\n\034RequestUnionBossFightCommand\022\016\n\006bossI" +
-      "d\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*@\n\017" +
-      "UNION_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022\016\n\nTYPE_" +
-      "APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
+      "(\003\022\017\n\007content\030\005 \001(\t\"\323\001\n\016BossRoomRecord\022\017" +
+      "\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\022\024\n\014creat" +
+      "eUserId\030\003 \002(\003\0226\n\nbossRecord\030\004 \003(\0132\".com." +
+      "trans.pixel.protoc.BossRecord\022.\n\004user\030\005 " +
+      "\003(\0132 .com.trans.pixel.protoc.UserInfo\022\016\n" +
+      "\006status\030\006 \001(\005\022\022\n\ncreateTime\030\007 \002(\t\"Z\n\017Bos" +
+      "sGroupRecord\022\017\n\007groupId\030\001 \002(\005\0226\n\nbossRec" +
+      "ord\030\002 \003(\0132\".com.trans.pixel.protoc.BossR",
+      "ecord\"L\n\nBossRecord\022\016\n\006bossId\030\001 \001(\005\022\r\n\005c" +
+      "ount\030\002 \001(\005\022\016\n\006userId\030\003 \001(\003\022\017\n\007endTime\030\004 " +
+      "\001(\t\"A\n\rBossgroupList\0220\n\005group\030\001 \003(\0132!.co" +
+      "m.trans.pixel.protoc.Bossgroup\"\203\001\n\tBossg" +
+      "roup\022\n\n\002id\030\001 \001(\005\022\016\n\006zhanli\030\002 \001(\005\022\021\n\tboss" +
+      "count\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022*\n\004boss\030\005 \003(\013" +
+      "2\034.com.trans.pixel.protoc.Boss\022\014\n\004time\030\006" +
+      " \001(\005\"\026\n\004Boss\022\016\n\006bossid\030\001 \001(\005\"F\n\021Bossloot" +
+      "GroupList\0221\n\002id\030\001 \003(\0132%.com.trans.pixel." +
+      "protoc.BosslootGroup\"L\n\rBosslootGroup\022\n\n",
+      "\002id\030\001 \001(\005\022/\n\005order\030\002 \003(\0132 .com.trans.pix" +
+      "el.protoc.Bossloot\"\316\001\n\010Bossloot\022\021\n\tweigh" +
+      "tall\030\001 \001(\005\022\017\n\007itemid1\030\002 \001(\005\022\022\n\nitemcount" +
+      "1\030\003 \001(\005\022\017\n\007weight1\030\004 \001(\005\022\017\n\007itemid2\030\005 \001(" +
+      "\005\022\022\n\nitemcount2\030\006 \001(\005\022\017\n\007weight2\030\007 \001(\005\022\017" +
+      "\n\007itemid3\030\010 \001(\005\022\022\n\nitemcount3\030\t \001(\005\022\017\n\007w" +
+      "eight3\030\n \001(\005\022\r\n\005order\030\013 \001(\005\"\200\001\n\017UserBatt" +
+      "letower\022\016\n\006userId\030\001 \001(\003\022\020\n\010toptower\030\002 \001(" +
+      "\005\022\024\n\014currenttower\030\003 \001(\005\022\022\n\nresettimes\030\004 " +
+      "\001(\005\022\021\n\tlefttimes\030\005 \001(\005\022\016\n\006random\030\006 \001(\005\"\352",
+      "\001\n\013TowerReward\022\n\n\002id\030\001 \001(\005\022\r\n\005floor\030\002 \001(" +
+      "\005\022\016\n\006floora\030\003 \001(\005\022\016\n\006floorb\030\004 \001(\005\022\020\n\010rew" +
+      "ardid\030\005 \001(\005\022\023\n\013rewardcount\030\006 \001(\005\022\021\n\trewa" +
+      "rdid1\030\007 \001(\005\022\024\n\014rewardcount1\030\010 \001(\005\022\021\n\trew" +
+      "ardid2\030\t \001(\005\022\024\n\014rewardcount2\030\n \001(\005\022\021\n\tre" +
+      "wardid3\030\013 \001(\005\022\024\n\014rewardcount3\030\014 \001(\005\"B\n\017T" +
+      "owerRewardList\022/\n\002id\030\001 \003(\0132#.com.trans.p" +
+      "ixel.protoc.TowerReward\"J\n\010UnionExp\022\r\n\005l" +
+      "evel\030\001 \002(\r\022\013\n\003exp\030\002 \002(\r\022\017\n\007lootexp\030\003 \002(\r" +
+      "\022\021\n\tunionsize\030\004 \002(\r\">\n\014UnionExpList\022.\n\004d",
+      "ata\030\005 \003(\0132 .com.trans.pixel.protoc.Union" +
+      "Exp\"R\n\037RequestSubmitBattletowerCommand\022\017" +
+      "\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005\022\017\n\007enemyI" +
+      "d\030\003 \001(\005\"1\n\036RequestResetBattletowerComman" +
+      "d\022\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestGetBattleto" +
+      "werCommand\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pixe" +
+      "l.protoc.UserBattletower\"V\n\036ResponseUser" +
+      "BattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.tr" +
+      "ans.pixel.protoc.UserBattletower\"\032\n\030Requ" +
+      "estBloodEnterCommand\"1\n\031RequestBloodXiaz",
+      "huCommand\022\024\n\014xiazhuUserId\030\001 \002(\003\"y\n\035Reque" +
+      "stInviteFightBossCommand\022\016\n\006userId\030\001 \003(\003" +
+      "\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 \001(\005\022\024\n\014cre" +
+      "ateUserId\030\004 \001(\003\022\021\n\tstartDate\030\005 \001(\t\"-\n\033Re" +
+      "questQuitFightBossCommand\022\016\n\006userId\030\001 \002(" +
+      "\003\"Y\n\035ResponseBossRoomRecordCommand\0228\n\010bo" +
+      "ssRoom\030\001 \002(\0132&.com.trans.pixel.protoc.Bo" +
+      "ssRoomRecord\"4\n!RequestSubmitBossRoomSco" +
+      "reCommand\022\017\n\007percent\030\001 \002(\005\"\035\n\033RequestSta" +
+      "rtBossRoomCommand\"?\n\034RequestCreateBossRo",
+      "omCommand\022\017\n\007groupId\030\002 \002(\005\022\016\n\006bossId\030\003 \002" +
+      "(\005\"\034\n\032RequestBossRoomInfoCommand\"@\n\rUnio" +
+      "nBossList\022/\n\004data\030\001 \003(\0132!.com.trans.pixe" +
+      "l.protoc.UnionBoss\"\234\002\n\tUnionBoss\022\n\n\002id\030\001" +
+      " \001(\005\022\014\n\004name\030\014 \001(\t\022\014\n\004type\030\002 \001(\005\022\020\n\010targ" +
+      "etid\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010lastt" +
+      "ime\030\005 \001(\005\022\n\n\002lv\030\006 \001(\005\0224\n\010lootlist\030\007 \003(\0132" +
+      "\".com.trans.pixel.protoc.RewardInfo\022\023\n\013r" +
+      "efreshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010handb" +
+      "ook\030\n \001(\005\0226\n\nenemygroup\030\013 \001(\0132\".com.tran",
+      "s.pixel.protoc.EnemyGroup\"F\n\020UnionBosswi" +
+      "nList\0222\n\004data\030\001 \003(\0132$.com.trans.pixel.pr" +
+      "otoc.UnionBosswin\"J\n\014UnionBosswin\022\n\n\002id\030" +
+      "\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans.pixel.pr" +
+      "otoc.RankItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022" +
+      "\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
+      "7\n\031RequestCreateUnionCommand\022\014\n\004icon\030\001 \001" +
+      "(\005\022\014\n\004name\030\002 \002(\t\"<\n\030RequestApplyUnionCom" +
+      "mand\022\017\n\007unionId\030\001 \002(\005\022\017\n\007content\030\002 \001(\t\"7",
+      "\n\030RequestReplyUnionCommand\022\n\n\002id\030\001 \002(\003\022\017" +
+      "\n\007receive\030\002 \002(\010\":\n\037RequestHandleUnionMem" +
+      "berCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036R" +
+      "equestSetUnionAnnounceCommand\022\020\n\010announc" +
+      "e\030\001 \001(\t\"\034\n\032RequestUpgradeUnionCommand\"%\n" +
+      "\027RequestQuitUnionCommand\022\n\n\002id\030\001 \001(\003\"w\n\027" +
+      "RequestUnionInfoCommand\022\024\n\014isNewVersion\030" +
+      "\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.pixel.pr" +
+      "otoc.UNION_INFO_TYPE\022\017\n\007unionId\030\003 \001(\r\"<\n" +
+      "\031RequestAttackUnionCommand\022\017\n\007unionId\030\001 ",
+      "\001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDefendUnio" +
+      "nCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030ResponseUni" +
+      "onInfoCommand\022,\n\005union\030\001 \001(\0132\035.com.trans" +
+      ".pixel.protoc.Union\0223\n\007applies\030\002 \003(\0132\".c" +
+      "om.trans.pixel.protoc.UnionApply\022:\n\tunio" +
+      "nBoss\030\003 \003(\0132\'.com.trans.pixel.protoc.Uni" +
+      "onBossRecord\"\'\n\027RequestUnionListCommand\022" +
+      "\014\n\004type\030\001 \001(\005\")\n\031RequestSearchUnionComma" +
+      "nd\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseUnionListCom" +
+      "mand\022,\n\005union\030\001 \003(\0132\035.com.trans.pixel.pr",
+      "otoc.Union\"?\n\034RequestSubmitBosskillComma" +
+      "nd\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026R" +
+      "equestBosskillCommand\"R\n\027ResponseBosskil" +
+      "lCommand\0227\n\006record\030\001 \003(\0132\'.com.trans.pix" +
+      "el.protoc.BossGroupRecord\"V\n\030ResponseUni" +
+      "onBossCommand\022:\n\tunionBoss\030\001 \003(\0132\'.com.t" +
+      "rans.pixel.protoc.UnionBossRecord\"K\n\034Req" +
+      "uestUnionBossFightCommand\022\016\n\006bossId\030\001 \002(" +
+      "\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*@\n\017UNION_" +
+      "INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022\016\n\nTYPE_APPLY\020",
+      "\002\022\r\n\tTYPE_BOSS\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -39112,7 +39425,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_UnionApply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionApply_descriptor,
-              new java.lang.String[] { "Id", "User", "EndTime", "Timestamp", });
+              new java.lang.String[] { "Id", "User", "EndTime", "Timestamp", "Content", });
           internal_static_com_trans_pixel_protoc_BossRoomRecord_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_BossRoomRecord_fieldAccessorTable = new
@@ -39316,7 +39629,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_RequestApplyUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestApplyUnionCommand_descriptor,
-              new java.lang.String[] { "UnionId", });
+              new java.lang.String[] { "UnionId", "Content", });
           internal_static_com_trans_pixel_protoc_RequestReplyUnionCommand_descriptor =
             getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_RequestReplyUnionCommand_fieldAccessorTable = new

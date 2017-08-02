@@ -3113,6 +3113,7 @@ message UnionApply {
 	required UserInfo user = 2;
 	required int64 endTime = 3;
 	optional int64 timestamp = 4;
+	optional string content = 5;
 }
 
 message BossRoomRecord {
@@ -3317,6 +3318,7 @@ message RequestCreateUnionCommand {//创建公会
 
 message RequestApplyUnionCommand {//提交公会申请
 	required int32 unionId = 1;
+	optional string content = 2;
 }
 
 message RequestReplyUnionCommand {//回复公会申请

@@ -168,7 +168,7 @@ public class UnionRedisService extends RedisService{
 		return unions;
 	}
 	
-	public void apply(final int unionId,UserBean user) {
+	public void apply(final int unionId,UserBean user, String content) {
 		String key = getUnionApplyKey(unionId);
 		Map<String, String> applyMap = this.hget(key);
 		Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
@@ -185,6 +185,7 @@ public class UnionRedisService extends RedisService{
 		builder.setUser(user.buildShort());
 		builder.setEndTime((System.currentTimeMillis()+RedisExpiredConst.EXPIRED_USERINFO_1DAY)/1000);
 		builder.setTimestamp(System.currentTimeMillis());
+		builder.setContent(content);
 		this.hput(key, builder.getId()+"", formatJson(builder.build()));
 		this.expire(key, RedisExpiredConst.EXPIRED_USERINFO_1DAY);
 		key = RedisKey.USERDATA+"Apply_"+user.getId();
