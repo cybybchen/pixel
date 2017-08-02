@@ -25,7 +25,6 @@ import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand;
-import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
@@ -39,7 +38,6 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand;
-import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.MailProto.MailList;
 import com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand;
 import com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand;
@@ -561,13 +559,6 @@ public class PushCommandService extends BaseCommandService {
 		builder.addUserTalent(userTalent);
 		
 		responseBuilder.setUserTalentCommand(builder.build());
-	}
-	
-	public void pushFightInfoList(Builder responseBuilder, UserBean user) {
-		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
-		for(FightInfo.Builder info : userTeamService.getFightInfoList(user))
-			builder.addInfo(info);
-		responseBuilder.setFightInfoCommand(builder.build());
 	}
 	
 	public void pushUserEquipPokedeList(Builder responseBuilder, UserBean user) {

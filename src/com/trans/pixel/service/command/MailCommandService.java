@@ -21,11 +21,11 @@ import com.trans.pixel.protoc.MailProto.RequestDeleteMailCommand;
 import com.trans.pixel.protoc.MailProto.RequestGetUserMailListCommand;
 import com.trans.pixel.protoc.MailProto.RequestReadMailCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
+import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserFriendService;
 import com.trans.pixel.service.UserService;
-import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -42,7 +42,7 @@ public class MailCommandService extends BaseCommandService {
 	@Resource
 	private LogService logService;
 	@Resource
-	private UserTeamService userTeamService;
+	private FightInfoService fightInfoService;
 	
 	public void handleGetUserMailListCommand(RequestGetUserMailListCommand cmd, Builder responseBuilder, UserBean user) {
 		int type = 0;
@@ -112,7 +112,7 @@ public class MailCommandService extends BaseCommandService {
 			relatedId = cmd.getRelatedId();
 		MailBean mail = buildMail(toUserId, user, content, type, relatedId);
 		if (cmd.hasFightId() && cmd.getFightId() > 0) {
-			List<FightInfo.Builder> list = userTeamService.getFightInfoList(user);
+			List<FightInfo.Builder> list = fightInfoService.getFightInfoList(user);
 			for(FightInfo.Builder info : list){
 				if(cmd.getFightId() == info.getId()){
 					mail.setFightInfo(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());

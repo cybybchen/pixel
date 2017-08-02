@@ -23179,6 +23179,610 @@ public final class LadderProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseFightInfoCommand)
   }
 
+  public interface RequestSaveFightInfoCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required .com.trans.pixel.protoc.FightInfo fight = 1;
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    boolean hasFight();
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.FightInfo getFight();
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder();
+
+    // optional bool isDelete = 2;
+    /**
+     * <code>optional bool isDelete = 2;</code>
+     */
+    boolean hasIsDelete();
+    /**
+     * <code>optional bool isDelete = 2;</code>
+     */
+    boolean getIsDelete();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestSaveFightInfoCommand}
+   */
+  public static final class RequestSaveFightInfoCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestSaveFightInfoCommandOrBuilder {
+    // Use RequestSaveFightInfoCommand.newBuilder() to construct.
+    private RequestSaveFightInfoCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestSaveFightInfoCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestSaveFightInfoCommand defaultInstance;
+    public static RequestSaveFightInfoCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestSaveFightInfoCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestSaveFightInfoCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.trans.pixel.protoc.Base.FightInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = fight_.toBuilder();
+              }
+              fight_ = input.readMessage(com.trans.pixel.protoc.Base.FightInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(fight_);
+                fight_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              isDelete_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.class, com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestSaveFightInfoCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestSaveFightInfoCommand>() {
+      public RequestSaveFightInfoCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestSaveFightInfoCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestSaveFightInfoCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required .com.trans.pixel.protoc.FightInfo fight = 1;
+    public static final int FIGHT_FIELD_NUMBER = 1;
+    private com.trans.pixel.protoc.Base.FightInfo fight_;
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    public boolean hasFight() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.FightInfo getFight() {
+      return fight_;
+    }
+    /**
+     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     */
+    public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder() {
+      return fight_;
+    }
+
+    // optional bool isDelete = 2;
+    public static final int ISDELETE_FIELD_NUMBER = 2;
+    private boolean isDelete_;
+    /**
+     * <code>optional bool isDelete = 2;</code>
+     */
+    public boolean hasIsDelete() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bool isDelete = 2;</code>
+     */
+    public boolean getIsDelete() {
+      return isDelete_;
+    }
+
+    private void initFields() {
+      fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+      isDelete_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasFight()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getFight().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, fight_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(2, isDelete_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, fight_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, isDelete_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestSaveFightInfoCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.class, com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getFightFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (fightBuilder_ == null) {
+          fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+        } else {
+          fightBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isDelete_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand build() {
+        com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand buildPartial() {
+        com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand result = new com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (fightBuilder_ == null) {
+          result.fight_ = fight_;
+        } else {
+          result.fight_ = fightBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.isDelete_ = isDelete_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand) {
+          return mergeFrom((com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand other) {
+        if (other == com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.getDefaultInstance()) return this;
+        if (other.hasFight()) {
+          mergeFight(other.getFight());
+        }
+        if (other.hasIsDelete()) {
+          setIsDelete(other.getIsDelete());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasFight()) {
+          
+          return false;
+        }
+        if (!getFight().isInitialized()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required .com.trans.pixel.protoc.FightInfo fight = 1;
+      private com.trans.pixel.protoc.Base.FightInfo fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> fightBuilder_;
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public boolean hasFight() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo getFight() {
+        if (fightBuilder_ == null) {
+          return fight_;
+        } else {
+          return fightBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public Builder setFight(com.trans.pixel.protoc.Base.FightInfo value) {
+        if (fightBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fight_ = value;
+          onChanged();
+        } else {
+          fightBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public Builder setFight(
+          com.trans.pixel.protoc.Base.FightInfo.Builder builderForValue) {
+        if (fightBuilder_ == null) {
+          fight_ = builderForValue.build();
+          onChanged();
+        } else {
+          fightBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public Builder mergeFight(com.trans.pixel.protoc.Base.FightInfo value) {
+        if (fightBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              fight_ != com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance()) {
+            fight_ =
+              com.trans.pixel.protoc.Base.FightInfo.newBuilder(fight_).mergeFrom(value).buildPartial();
+          } else {
+            fight_ = value;
+          }
+          onChanged();
+        } else {
+          fightBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public Builder clearFight() {
+        if (fightBuilder_ == null) {
+          fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          fightBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfo.Builder getFightBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getFightFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder() {
+        if (fightBuilder_ != null) {
+          return fightBuilder_.getMessageOrBuilder();
+        } else {
+          return fight_;
+        }
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
+          getFightFieldBuilder() {
+        if (fightBuilder_ == null) {
+          fightBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder>(
+                  fight_,
+                  getParentForChildren(),
+                  isClean());
+          fight_ = null;
+        }
+        return fightBuilder_;
+      }
+
+      // optional bool isDelete = 2;
+      private boolean isDelete_ ;
+      /**
+       * <code>optional bool isDelete = 2;</code>
+       */
+      public boolean hasIsDelete() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bool isDelete = 2;</code>
+       */
+      public boolean getIsDelete() {
+        return isDelete_;
+      }
+      /**
+       * <code>optional bool isDelete = 2;</code>
+       */
+      public Builder setIsDelete(boolean value) {
+        bitField0_ |= 0x00000002;
+        isDelete_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool isDelete = 2;</code>
+       */
+      public Builder clearIsDelete() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isDelete_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestSaveFightInfoCommand)
+    }
+
+    static {
+      defaultInstance = new RequestSaveFightInfoCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestSaveFightInfoCommand)
+  }
+
   public interface RequestGetLadderRankListCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
   }
@@ -28101,6 +28705,11 @@ public final class LadderProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28230,22 +28839,25 @@ public final class LadderProto {
       " \002(\0132!.com.trans.pixel.protoc.FightInfo\022" +
       "\r\n\005score\030\002 \001(\r\"K\n\030ResponseFightInfoComma",
       "nd\022/\n\004info\030\001 \003(\0132!.com.trans.pixel.proto" +
-      "c.FightInfo\"!\n\037RequestGetLadderRankListC" +
-      "ommand\"%\n#RequestGetUserLadderRankListCo" +
-      "mmand\"V\n ResponseGetLadderRankListComman" +
-      "d\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixel.pr" +
-      "otoc.UserRank\"Z\n$ResponseGetUserLadderRa" +
-      "nkListCommand\0222\n\010userRank\030\001 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.UserRank\"a\n\036RequestAtta" +
-      "ckLadderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret" +
-      "\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004",
-      " \001(\003\";\n\037ResponseAttackLadderModeCommand\022" +
-      "\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestRead" +
-      "yAttackLadderCommand\"/\n\037RequestGetLadder" +
-      "UserInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n Request" +
-      "PurchaseLadderTimeCommand\"V\n ResponseGet" +
-      "LadderUserInfoCommand\0222\n\010userRank\030\001 \002(\0132" +
-      " .com.trans.pixel.protoc.UserRank"
+      "c.FightInfo\"a\n\033RequestSaveFightInfoComma" +
+      "nd\0220\n\005fight\030\001 \002(\0132!.com.trans.pixel.prot" +
+      "oc.FightInfo\022\020\n\010isDelete\030\002 \001(\010\"!\n\037Reques" +
+      "tGetLadderRankListCommand\"%\n#RequestGetU" +
+      "serLadderRankListCommand\"V\n ResponseGetL" +
+      "adderRankListCommand\0222\n\010userRank\030\001 \003(\0132 " +
+      ".com.trans.pixel.protoc.UserRank\"Z\n$Resp" +
+      "onseGetUserLadderRankListCommand\0222\n\010user" +
+      "Rank\030\001 \003(\0132 .com.trans.pixel.protoc.User",
+      "Rank\"a\n\036RequestAttackLadderModeCommand\022\014" +
+      "\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(" +
+      "\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037ResponseAttac" +
+      "kLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002" +
+      " \002(\t\"!\n\037RequestReadyAttackLadderCommand\"" +
+      "/\n\037RequestGetLadderUserInfoCommand\022\014\n\004ra" +
+      "nk\030\001 \002(\004\"\"\n RequestPurchaseLadderTimeCom" +
+      "mand\"V\n ResponseGetLadderUserInfoCommand" +
+      "\0222\n\010userRank\030\001 \002(\0132 .com.trans.pixel.pro" +
+      "toc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28438,62 +29050,68 @@ public final class LadderProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor,
               new java.lang.String[] { "Info", });
-          internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(31);
+          internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor,
+              new java.lang.String[] { "Fight", "IsDelete", });
+          internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Rank", "Ret", "TeamId", "AttackUserId", });
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Ret", "Msg", });
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor,
               new java.lang.String[] { "Rank", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor,

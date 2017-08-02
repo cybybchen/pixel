@@ -443,16 +443,4 @@ public class UserTeamService {
 		
 		return false;
 	}
-
-	public void saveFightInfo(String info, UserBean user){
-		userTeamRedisService.saveFightInfo(info, user);
-	}
-	public List<FightInfo.Builder> getFightInfoList(UserBean user){
-		List<FightInfo.Builder> infos = userTeamRedisService.getFightInfoList(user);
-		for(FightInfo.Builder info : infos) {
-			if(info.hasEnemy())
-				info.setEnemy(userService.getCache(user.getServerId(), info.getEnemy().getId()));
-		}
-		return infos;
-	}
 }

@@ -2655,6 +2655,11 @@ message ResponseFightInfoCommand {
 	repeated FightInfo info = 1;
 }
 
+message RequestSaveFightInfoCommand {
+	required FightInfo fight = 1;
+	optional bool isDelete = 2;
+}
+
 message RequestGetLadderRankListCommand {
 
 }
@@ -3802,6 +3807,7 @@ message RequestCommand {
 	optional RequestSignNameCommand signNameCommand = 262;
 	optional RequestSubmitRiteCommand submitRiteCommand = 263;
 	optional RequestRemoveRecommandCommand removeRecommandCommand = 264;
+	optional RequestSaveFightInfoCommand saveFightInfoCommand = 265;
 }
 ////////// Commands
 message ErrorCommand {

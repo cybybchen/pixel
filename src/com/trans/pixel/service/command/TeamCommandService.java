@@ -14,6 +14,9 @@ import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
+import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
+import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
+import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
 import com.trans.pixel.service.UserService;
@@ -34,6 +37,8 @@ public class TeamCommandService extends BaseCommandService {
 	private UserService userService;
 	@Resource
 	private RankService rankService;
+	@Resource
+	private FightInfoService fightInfoService;
 	
 	public void updateUserTeam(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		long userId = user.getId();
@@ -60,7 +65,7 @@ public class TeamCommandService extends BaseCommandService {
 			builder.setEnemy(userinfo);
 		}
 		builder.setId((int)((System.currentTimeMillis()+12345)%10000000));
-		userTeamService.saveFightInfo(RedisService.formatJson(builder.build()), user);
+		fightInfoService.saveFightInfo(RedisService.formatJson(builder.build()), user);
 		if (cmd.hasScore() && cmd.getScore() > 80) {
 			builder.setUser(user.buildShort());
 			builder.setTime(DateUtil.getCurrentDateString());
@@ -68,8 +73,15 @@ public class TeamCommandService extends BaseCommandService {
 		}
 	}
 
+	public void saveFightInfo(RequestSaveFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		
+	}
+	
 	public void getFightInfo(/*RequestGetFightInfoCommand cmd,*/ Builder responseBuilder, UserBean user) {
-		pushCommandService.pushFightInfoList(responseBuilder, user);
+		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand.newBuilder();
+		for(FightInfo.Builder info : fightInfoService.getFightInfoList(user))
+			builder.addInfo(info);
+		responseBuilder.setFightInfoCommand(builder.build());
 	}
 	
 //	public void addUserTeam(RequestAddTeamCommand cmd, Builder responseBuilder, UserBean user) {
@@ -94,8 +106,6 @@ public class TeamCommandService extends BaseCommandService {
 	public void getTeamCache(RequestGetTeamCommand cmd, Builder responseBuilder, UserBean user) {
 		if (cmd.getUserId() == 0)
 			return;
-		
-		
 		
 		Team team = userTeamService.getTeamCache(cmd.getUserId());
 		ResponseGetTeamCommand.Builder builder= ResponseGetTeamCommand.newBuilder();
