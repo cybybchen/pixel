@@ -32480,6 +32480,16 @@ public final class EquipProto {
      * <code>optional uint32 rewardId = 3;</code>
      */
     int getRewardId();
+
+    // optional uint32 count = 4;
+    /**
+     * <code>optional uint32 count = 4;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional uint32 count = 4;</code>
+     */
+    int getCount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestMaterialComposeCommand}
@@ -32548,6 +32558,11 @@ public final class EquipProto {
             case 24: {
               bitField0_ |= 0x00000002;
               rewardId_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readUInt32();
               break;
             }
           }
@@ -32661,10 +32676,27 @@ public final class EquipProto {
       return rewardId_;
     }
 
+    // optional uint32 count = 4;
+    public static final int COUNT_FIELD_NUMBER = 4;
+    private int count_;
+    /**
+     * <code>optional uint32 count = 4;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 count = 4;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
     private void initFields() {
       itemId_ = 0;
       cost_ = java.util.Collections.emptyList();
       rewardId_ = 0;
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -32687,6 +32719,9 @@ public final class EquipProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(3, rewardId_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(4, count_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -32707,6 +32742,10 @@ public final class EquipProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, rewardId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -32835,6 +32874,8 @@ public final class EquipProto {
         }
         rewardId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -32880,6 +32921,10 @@ public final class EquipProto {
           to_bitField0_ |= 0x00000002;
         }
         result.rewardId_ = rewardId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -32927,6 +32972,9 @@ public final class EquipProto {
         }
         if (other.hasRewardId()) {
           setRewardId(other.getRewardId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -33257,6 +33305,39 @@ public final class EquipProto {
       public Builder clearRewardId() {
         bitField0_ = (bitField0_ & ~0x00000004);
         rewardId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 count = 4;
+      private int count_ ;
+      /**
+       * <code>optional uint32 count = 4;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint32 count = 4;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional uint32 count = 4;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000008;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 count = 4;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count_ = 0;
         onChanged();
         return this;
       }
@@ -33608,10 +33689,10 @@ public final class EquipProto {
       "s.pixel.protoc.UserEquipPokede\"7\n\037Reques",
       "tSynthetiseComposeCommand\022\024\n\014synthetiseI" +
       "d\030\001 \002(\r\"\'\n\025RequestEquipupCommand\022\016\n\006item" +
-      "id\030\001 \002(\r\"s\n\035RequestMaterialComposeComman" +
-      "d\022\016\n\006itemId\030\002 \001(\r\0220\n\004cost\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo\022\020\n\010rewardId\030" +
-      "\003 \001(\r"
+      "id\030\001 \002(\r\"\202\001\n\035RequestMaterialComposeComma" +
+      "nd\022\016\n\006itemId\030\002 \001(\r\0220\n\004cost\030\001 \003(\0132\".com.t" +
+      "rans.pixel.protoc.RewardInfo\022\020\n\010rewardId" +
+      "\030\003 \001(\r\022\r\n\005count\030\004 \001(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -33899,7 +33980,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestMaterialComposeCommand_descriptor,
-              new java.lang.String[] { "ItemId", "Cost", "RewardId", });
+              new java.lang.String[] { "ItemId", "Cost", "RewardId", "Count", });
           return null;
         }
       };

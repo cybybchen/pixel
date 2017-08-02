@@ -1322,6 +1322,7 @@ message RequestMaterialComposeCommand {
 	optional uint32 itemId = 2;
 	repeated RewardInfo cost = 1;
 	optional uint32 rewardId = 3;
+	optional uint32 count = 4;
 }
 
 ////////// PVPProto

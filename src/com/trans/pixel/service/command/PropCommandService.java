@@ -88,11 +88,14 @@ public class PropCommandService extends BaseCommandService {
 	public void materialCompose(RequestMaterialComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardInfo> costList = new ArrayList<RewardInfo>();
 		costList.addAll(cmd.getCostList());
+		int count = 1;
+		if (cmd.hasCount())
+			count = cmd.getCount();
 		RewardInfo.Builder cost = RewardInfo.newBuilder();
-		cost.setCount(1);
+		cost.setCount(1 * count);
 		cost.setItemid(cmd.getItemId());
 		costList.add(cost.build());
-		if (!propService.canMaterialCompose(user, costList,cmd.getRewardId())) {
+		if (!propService.canMaterialCompose(user, costList,cmd.getRewardId(), count)) {
 			pusher.pushUserEquipListCommand(responseBuilder, user);
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
 			
@@ -101,7 +104,7 @@ public class PropCommandService extends BaseCommandService {
             return;
 		}
 		
-		List<RewardInfo> rewards = propService.meterialCompose(user, costList, cmd.getRewardId());
+		List<RewardInfo> rewards = propService.meterialCompose(user, costList, cmd.getRewardId(), count);
 		MultiReward.Builder multi = MultiReward.newBuilder();
 		multi.addAllLoot(rewards);
 		handleRewards(responseBuilder, user, multi.build());
