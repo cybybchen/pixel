@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,16 +15,18 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.model.mapper.UserRewardTaskMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRewardTaskBean;
+import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
+import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class UserRewardTaskService {
@@ -244,6 +247,35 @@ public class UserRewardTaskService {
 		}
 		
 		return status;
+	}
+	
+	public List<EventStatus> getEventStatus(long userId) {
+		List<EventStatus> list = new ArrayList<EventStatus>();
+		Map<String, String> map = userRewardTaskRedisService.getUserRewardTaskEventidStatus(userId);
+		if ((map == null || map.isEmpty()) && !userRewardTaskRedisService.isExistEventidStatusKey(userId)) {
+			List<UserRewardTaskBean> utList = mapper.selectUserRewardTaskList(userId);
+			if (utList == null || utList.isEmpty()) {
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, 1, 0);
+			}
+			for (UserRewardTaskBean utBean : utList) {
+				EventStatus.Builder builder = EventStatus.newBuilder();
+				builder.setEventid(utBean.getEventid());
+				builder.setStatus(utBean.getIsOver());
+				list.add(builder.build());
+				userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, utBean.getEventid(), utBean.getIsOver());
+			}
+		} else {
+			Iterator<Entry<String, String>> it = map.entrySet().iterator();
+			while (it.hasNext()) {
+				EventStatus.Builder builder = EventStatus.newBuilder();
+				Entry<String, String> entry = it.next();
+				builder.setEventid(TypeTranslatedUtil.stringToInt(entry.getKey()));
+				builder.setStatus(TypeTranslatedUtil.stringToInt(entry.getValue()));
+				list.add(builder.build());
+			}
+		}
+		
+		return list;
 	}
 	
 	public String popDBKey(){

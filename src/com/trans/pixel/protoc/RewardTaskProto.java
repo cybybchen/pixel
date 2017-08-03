@@ -8025,6 +8025,31 @@ public final class RewardTaskProto {
      */
     com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskOrBuilder getUserRewardTaskOrBuilder(
         int index);
+
+    // repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> 
+        getStatusList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus getStatus(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    int getStatusCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder> 
+        getStatusOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder getStatusOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseUserRewardTaskCommand}
@@ -8085,6 +8110,14 @@ public final class RewardTaskProto {
               userRewardTask_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.PARSER, extensionRegistry));
               break;
             }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                status_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              status_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -8095,6 +8128,9 @@ public final class RewardTaskProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           userRewardTask_ = java.util.Collections.unmodifiableList(userRewardTask_);
+        }
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          status_ = java.util.Collections.unmodifiableList(status_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -8125,6 +8161,499 @@ public final class RewardTaskProto {
     @java.lang.Override
     public com.google.protobuf.Parser<ResponseUserRewardTaskCommand> getParserForType() {
       return PARSER;
+    }
+
+    public interface EventStatusOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // required uint32 eventid = 1;
+      /**
+       * <code>required uint32 eventid = 1;</code>
+       */
+      boolean hasEventid();
+      /**
+       * <code>required uint32 eventid = 1;</code>
+       */
+      int getEventid();
+
+      // required uint32 status = 2;
+      /**
+       * <code>required uint32 status = 2;</code>
+       */
+      boolean hasStatus();
+      /**
+       * <code>required uint32 status = 2;</code>
+       */
+      int getStatus();
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus}
+     */
+    public static final class EventStatus extends
+        com.google.protobuf.GeneratedMessage
+        implements EventStatusOrBuilder {
+      // Use EventStatus.newBuilder() to construct.
+      private EventStatus(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private EventStatus(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final EventStatus defaultInstance;
+      public static EventStatus getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public EventStatus getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private EventStatus(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                eventid_ = input.readUInt32();
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                status_ = input.readUInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.class, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<EventStatus> PARSER =
+          new com.google.protobuf.AbstractParser<EventStatus>() {
+        public EventStatus parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new EventStatus(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<EventStatus> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // required uint32 eventid = 1;
+      public static final int EVENTID_FIELD_NUMBER = 1;
+      private int eventid_;
+      /**
+       * <code>required uint32 eventid = 1;</code>
+       */
+      public boolean hasEventid() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 eventid = 1;</code>
+       */
+      public int getEventid() {
+        return eventid_;
+      }
+
+      // required uint32 status = 2;
+      public static final int STATUS_FIELD_NUMBER = 2;
+      private int status_;
+      /**
+       * <code>required uint32 status = 2;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 status = 2;</code>
+       */
+      public int getStatus() {
+        return status_;
+      }
+
+      private void initFields() {
+        eventid_ = 0;
+        status_ = 0;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        if (!hasEventid()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasStatus()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeUInt32(1, eventid_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeUInt32(2, status_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, eventid_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, status_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.class, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder.class);
+        }
+
+        // Construct using com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          eventid_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          status_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor;
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus getDefaultInstanceForType() {
+          return com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.getDefaultInstance();
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus build() {
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus buildPartial() {
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus result = new com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.eventid_ = eventid_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.status_ = status_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus) {
+            return mergeFrom((com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus other) {
+          if (other == com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.getDefaultInstance()) return this;
+          if (other.hasEventid()) {
+            setEventid(other.getEventid());
+          }
+          if (other.hasStatus()) {
+            setStatus(other.getStatus());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          if (!hasEventid()) {
+            
+            return false;
+          }
+          if (!hasStatus()) {
+            
+            return false;
+          }
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // required uint32 eventid = 1;
+        private int eventid_ ;
+        /**
+         * <code>required uint32 eventid = 1;</code>
+         */
+        public boolean hasEventid() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>required uint32 eventid = 1;</code>
+         */
+        public int getEventid() {
+          return eventid_;
+        }
+        /**
+         * <code>required uint32 eventid = 1;</code>
+         */
+        public Builder setEventid(int value) {
+          bitField0_ |= 0x00000001;
+          eventid_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required uint32 eventid = 1;</code>
+         */
+        public Builder clearEventid() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          eventid_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // required uint32 status = 2;
+        private int status_ ;
+        /**
+         * <code>required uint32 status = 2;</code>
+         */
+        public boolean hasStatus() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>required uint32 status = 2;</code>
+         */
+        public int getStatus() {
+          return status_;
+        }
+        /**
+         * <code>required uint32 status = 2;</code>
+         */
+        public Builder setStatus(int value) {
+          bitField0_ |= 0x00000002;
+          status_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required uint32 status = 2;</code>
+         */
+        public Builder clearStatus() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          status_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus)
+      }
+
+      static {
+        defaultInstance = new EventStatus(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus)
     }
 
     // repeated .com.trans.pixel.protoc.UserRewardTask userRewardTask = 1;
@@ -8163,8 +8692,45 @@ public final class RewardTaskProto {
       return userRewardTask_.get(index);
     }
 
+    // repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> status_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> getStatusList() {
+      return status_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder> 
+        getStatusOrBuilderList() {
+      return status_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    public int getStatusCount() {
+      return status_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus getStatus(int index) {
+      return status_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder getStatusOrBuilder(
+        int index) {
+      return status_.get(index);
+    }
+
     private void initFields() {
       userRewardTask_ = java.util.Collections.emptyList();
+      status_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -8173,6 +8739,12 @@ public final class RewardTaskProto {
 
       for (int i = 0; i < getUserRewardTaskCount(); i++) {
         if (!getUserRewardTask(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getStatusCount(); i++) {
+        if (!getStatus(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -8187,6 +8759,9 @@ public final class RewardTaskProto {
       for (int i = 0; i < userRewardTask_.size(); i++) {
         output.writeMessage(1, userRewardTask_.get(i));
       }
+      for (int i = 0; i < status_.size(); i++) {
+        output.writeMessage(2, status_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -8199,6 +8774,10 @@ public final class RewardTaskProto {
       for (int i = 0; i < userRewardTask_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, userRewardTask_.get(i));
+      }
+      for (int i = 0; i < status_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, status_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8309,6 +8888,7 @@ public final class RewardTaskProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getUserRewardTaskFieldBuilder();
+          getStatusFieldBuilder();
         }
       }
       private static Builder create() {
@@ -8322,6 +8902,12 @@ public final class RewardTaskProto {
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           userRewardTaskBuilder_.clear();
+        }
+        if (statusBuilder_ == null) {
+          status_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          statusBuilder_.clear();
         }
         return this;
       }
@@ -8358,6 +8944,15 @@ public final class RewardTaskProto {
           result.userRewardTask_ = userRewardTask_;
         } else {
           result.userRewardTask_ = userRewardTaskBuilder_.build();
+        }
+        if (statusBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            status_ = java.util.Collections.unmodifiableList(status_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.status_ = status_;
+        } else {
+          result.status_ = statusBuilder_.build();
         }
         onBuilt();
         return result;
@@ -8400,6 +8995,32 @@ public final class RewardTaskProto {
             }
           }
         }
+        if (statusBuilder_ == null) {
+          if (!other.status_.isEmpty()) {
+            if (status_.isEmpty()) {
+              status_ = other.status_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureStatusIsMutable();
+              status_.addAll(other.status_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.status_.isEmpty()) {
+            if (statusBuilder_.isEmpty()) {
+              statusBuilder_.dispose();
+              statusBuilder_ = null;
+              status_ = other.status_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              statusBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getStatusFieldBuilder() : null;
+            } else {
+              statusBuilder_.addAllMessages(other.status_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -8407,6 +9028,12 @@ public final class RewardTaskProto {
       public final boolean isInitialized() {
         for (int i = 0; i < getUserRewardTaskCount(); i++) {
           if (!getUserRewardTask(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getStatusCount(); i++) {
+          if (!getStatus(i).isInitialized()) {
             
             return false;
           }
@@ -8671,6 +9298,246 @@ public final class RewardTaskProto {
           userRewardTask_ = null;
         }
         return userRewardTaskBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;
+      private java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> status_ =
+        java.util.Collections.emptyList();
+      private void ensureStatusIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          status_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus>(status_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder> statusBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> getStatusList() {
+        if (statusBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(status_);
+        } else {
+          return statusBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public int getStatusCount() {
+        if (statusBuilder_ == null) {
+          return status_.size();
+        } else {
+          return statusBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus getStatus(int index) {
+        if (statusBuilder_ == null) {
+          return status_.get(index);
+        } else {
+          return statusBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder setStatus(
+          int index, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatusIsMutable();
+          status_.set(index, value);
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder setStatus(
+          int index, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          ensureStatusIsMutable();
+          status_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          statusBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder addStatus(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatusIsMutable();
+          status_.add(value);
+          onChanged();
+        } else {
+          statusBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder addStatus(
+          int index, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus value) {
+        if (statusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureStatusIsMutable();
+          status_.add(index, value);
+          onChanged();
+        } else {
+          statusBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder addStatus(
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          ensureStatusIsMutable();
+          status_.add(builderForValue.build());
+          onChanged();
+        } else {
+          statusBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder addStatus(
+          int index, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder builderForValue) {
+        if (statusBuilder_ == null) {
+          ensureStatusIsMutable();
+          status_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          statusBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder addAllStatus(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus> values) {
+        if (statusBuilder_ == null) {
+          ensureStatusIsMutable();
+          super.addAll(values, status_);
+          onChanged();
+        } else {
+          statusBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder clearStatus() {
+        if (statusBuilder_ == null) {
+          status_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          statusBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public Builder removeStatus(int index) {
+        if (statusBuilder_ == null) {
+          ensureStatusIsMutable();
+          status_.remove(index);
+          onChanged();
+        } else {
+          statusBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder getStatusBuilder(
+          int index) {
+        return getStatusFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder getStatusOrBuilder(
+          int index) {
+        if (statusBuilder_ == null) {
+          return status_.get(index);  } else {
+          return statusBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder> 
+           getStatusOrBuilderList() {
+        if (statusBuilder_ != null) {
+          return statusBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(status_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder addStatusBuilder() {
+        return getStatusFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder addStatusBuilder(
+          int index) {
+        return getStatusFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.ResponseUserRewardTaskCommand.EventStatus status = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder> 
+           getStatusBuilderList() {
+        return getStatusFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder> 
+          getStatusFieldBuilder() {
+        if (statusBuilder_ == null) {
+          statusBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatus.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.EventStatusOrBuilder>(
+                  status_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          status_ = null;
+        }
+        return statusBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseUserRewardTaskCommand)
@@ -11524,6 +12391,11 @@ public final class RewardTaskProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -11592,19 +12464,22 @@ public final class RewardTaskProto {
       "TaskRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 " +
       "\003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r" +
       "\"A\n#RequestSubmitRewardTaskScoreCommand\022",
-      "\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"_\n\035ResponseU" +
-      "serRewardTaskCommand\022>\n\016userRewardTask\030\001" +
-      " \003(\0132&.com.trans.pixel.protoc.UserReward" +
-      "Task\"]\n!ResponseUserRewardTaskRoomComman" +
-      "d\0228\n\004room\030\001 \003(\0132*.com.trans.pixel.protoc" +
-      ".UserRewardTaskRoom\"\036\n\034RequestUserReward" +
-      "TaskCommand\"/\n\036RequestRewardTaskRewardCo" +
-      "mmand\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewar" +
-      "dTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036Reque" +
-      "stGiveupRewardTaskCommand\022\r\n\005index\030\001 \002(\r",
-      "\"S\n\034RequestChangePositionCommand\022\021\n\tposi" +
-      "tion1\030\001 \002(\r\022\021\n\tposition2\030\002 \002(\r\022\r\n\005index\030" +
-      "\003 \002(\r"
+      "\r\n\005index\030\001 \002(\r\022\013\n\003ret\030\002 \002(\010\"\342\001\n\035Response" +
+      "UserRewardTaskCommand\022>\n\016userRewardTask\030" +
+      "\001 \003(\0132&.com.trans.pixel.protoc.UserRewar" +
+      "dTask\022Q\n\006status\030\002 \003(\0132A.com.trans.pixel." +
+      "protoc.ResponseUserRewardTaskCommand.Eve" +
+      "ntStatus\032.\n\013EventStatus\022\017\n\007eventid\030\001 \002(\r" +
+      "\022\016\n\006status\030\002 \002(\r\"]\n!ResponseUserRewardTa" +
+      "skRoomCommand\0228\n\004room\030\001 \003(\0132*.com.trans." +
+      "pixel.protoc.UserRewardTaskRoom\"\036\n\034Reque" +
+      "stUserRewardTaskCommand\"/\n\036RequestReward",
+      "TaskRewardCommand\022\r\n\005index\030\002 \002(\r\"1\n Requ" +
+      "estUserRewardTaskRoomCommand\022\r\n\005index\030\001 " +
+      "\002(\r\"/\n\036RequestGiveupRewardTaskCommand\022\r\n" +
+      "\005index\030\001 \002(\r\"S\n\034RequestChangePositionCom" +
+      "mand\022\021\n\tposition1\030\001 \002(\r\022\021\n\tposition2\030\002 \002" +
+      "(\r\022\r\n\005index\030\003 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11670,7 +12545,13 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor,
-              new java.lang.String[] { "UserRewardTask", });
+              new java.lang.String[] { "UserRewardTask", "Status", });
+          internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor =
+            internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor.getNestedTypes().get(0);
+          internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor,
+              new java.lang.String[] { "Eventid", "Status", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_fieldAccessorTable = new

@@ -187,6 +187,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 		ResponseUserRewardTaskCommand.Builder builder = ResponseUserRewardTaskCommand.newBuilder();
 		Map<Integer, UserRewardTask> list = userRewardTaskService.getUserRewardTaskList(user);
 		builder.addAllUserRewardTask(list.values());
+		builder.addAllStatus(userRewardTaskService.getEventStatus(user.getId()));
 		responseBuilder.setUserRewardTaskCommand(builder.build());
 	}
 	

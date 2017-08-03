@@ -18,7 +18,7 @@
 	    VALUES(#{userId}, #{eventid}, #{isOver})
 		ON 
 	    duplicate key update
-	    eventid=#{eventid}, is_over=#{isOver}
+	    is_over=#{isOver}
 	</update>
 	
 	<select id="selectUserRewardTaskList" parameterType="long" resultMap="resultMap">
