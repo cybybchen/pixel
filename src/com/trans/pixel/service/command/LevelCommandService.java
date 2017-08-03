@@ -146,9 +146,9 @@ public class LevelCommandService extends BaseCommandService {
 			}
 		}else if(id != userLevel.getLootDaguan() && id != 0){
 			userLevel.setLootDaguan(id);
-			Daguan.Builder daguan = redis.getDaguan(userLevel.getUnlockDaguan());
-			userLevel.setCoin(daguan.getGold());
-			userLevel.setExp(daguan.getExp());
+			Daguan.Builder unlockdaguan = redis.getDaguan(userLevel.getUnlockDaguan());
+			userLevel.setCoin(unlockdaguan.getGold());
+			userLevel.setExp(unlockdaguan.getExp());
 			redis.saveUserLevel(userLevel);
 		}
 		pushLevelLootCommand(responseBuilder, userLevel, user);
