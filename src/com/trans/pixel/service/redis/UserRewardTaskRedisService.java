@@ -54,6 +54,7 @@ public class UserRewardTaskRedisService extends RedisService {
 	
 	public int getUserRewardTaskEventidStatus(long userId, int eventid) {
 		String key = RedisKey.USER_REWARDTASK_EVENTID_STATUS_PREFIX + userId;
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		return TypeTranslatedUtil.stringToInt(hget(key, "" + eventid, userId));
 	}
 	
