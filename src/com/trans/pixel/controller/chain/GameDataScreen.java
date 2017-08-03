@@ -1091,7 +1091,7 @@ public class GameDataScreen extends RequestScreen {
 	
 	@Override
 	protected boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
-		teamCommandService.getFightInfo(responseBuilder, user);
+		teamCommandService.getFightInfo(cmd, responseBuilder, user);
 		return true;
 	}
 	

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.mapper.UserFightInfoMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserFightInfoBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.service.redis.FightInfoRedisService;
 
@@ -22,6 +24,8 @@ public class FightInfoService {
 	private FightInfoRedisService redis;
 	@Resource
 	private UserService userService;
+	@Resource
+	private UserFightInfoMapper mapper;
 	
 	public void setFightInfo(String info, UserBean user){
 		redis.setFightInfo(info, user);
@@ -41,14 +45,27 @@ public class FightInfoService {
 			return ErrorConst.FIGHTINFO_IS_LIMIT_ERROR;
 		}
 		redis.saveFightInfo(user, fightinfo);
+		mapper.saveFightInfo(new UserFightInfoBean(fightinfo));
 		
 		return SuccessConst.SAVE_SUCCESS;
+	}
+	
+	public void delete(UserBean user, int fightInfoId) {
+		redis.deleteFightInfo(user, fightInfoId);
+		mapper.removeFightInfo(user.getId(), fightInfoId);
 	}
 	
 	public List<FightInfo> getSaveFightInfoList(UserBean user){
 		List<FightInfo> infos = redis.getSaveFightInfoList(user);
 		if (infos.isEmpty()) {
-			
+			List<UserFightInfoBean> list = mapper.getFightInfos(user.getId());
+			if (list != null && !list.isEmpty()) {
+				for (UserFightInfoBean bean : list) {
+					FightInfo fight = bean.build();
+					redis.saveFightInfo(user, fight);
+					infos.add(fight);
+				}
+			}
 		}
 		
 		return infos;

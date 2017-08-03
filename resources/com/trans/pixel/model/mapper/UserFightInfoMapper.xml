@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trans.pixel.model.mapper.UserFightInfoMapper">
 
-	<insert id="saveFightInfo">
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserFightInfoBean">
+		<result property="userId" column="user_id" />
+		<result property="fightinfoId" column="fightinfo_id" />
+		<result property="fightinfo" column="fightinfo" />
+	</resultMap>
+	<insert id="saveFightInfo" parameterType="com.trans.pixel.model.userinfo.UserFightInfoBean">
 	    INSERT INTO user_fightinfo(user_id, fightinfo_id, fightinfo) 
 		 VALUES(#{userId}, #{fightinfoId}, #{fightinfo})
 		 ON 
@@ -10,14 +15,14 @@
 	    fightinfo=#{fightinfo}
 	</insert>
 
-	<select id="getRecommands" parameterType="long" resultType="long" >
-	    SELECT user_id2 from user_recommand where user_id=#{userId}
+	<select id="getFightInfos" parameterType="long" resultMap="resultMap" >
+	    SELECT * from user_fightinfo where user_id=#{userId}
 	</select>
 	
-	<delete id="removeRecommand">
-	    DELETE FROM user_recommand
+	<delete id="removeFightInfo">
+	    DELETE FROM user_fightinfo
 	    WHERE user_id=#{userId}
-	    AND user_id2=#{userId2}
+	    AND fightinfo_id=#{fightinfoId}
 	</delete>
 	
 </mapper>

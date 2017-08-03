@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
+import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.service.FightInfoService;
@@ -86,30 +87,37 @@ public class TeamCommandService extends BaseCommandService {
 
 	public void saveFightInfo(RequestSaveFightInfoCommand cmd,
 			Builder responseBuilder, UserBean user) {// 收藏录像
-		ResultConst ret = fightInfoService.save(user, cmd.getFight());
-		if (ret instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(),
-					cmd.getClass(), RedisService.formatJson(cmd),
-					ret);
-
-			ErrorCommand errorCommand = buildErrorCommand(ret);
-			responseBuilder.setErrorCommand(errorCommand);
-			return;
+		if (cmd.hasIsDelete() && cmd.getIsDelete()) {
+			fightInfoService.delete(user, cmd.getFightinfoId());
+		} else {
+			ResultConst ret = fightInfoService.save(user, cmd.getFight());
+			if (ret instanceof ErrorConst) {
+				logService.sendErrorLog(user.getId(), user.getServerId(),
+						cmd.getClass(), RedisService.formatJson(cmd),
+						ret);
+	
+				ErrorCommand errorCommand = buildErrorCommand(ret);
+				responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}
+			
+			ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
+					.newBuilder();
+			
+			builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
 		}
-		
-		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
-				.newBuilder();
-		
-		builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
 	}
 
-	public void getFightInfo(
-			/* RequestGetFightInfoCommand cmd, */Builder responseBuilder,
+	public void getFightInfo(RequestGetFightInfoCommand cmd, Builder responseBuilder,
 			UserBean user) {
 		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
 				.newBuilder();
-		for (FightInfo.Builder info : fightInfoService.getFightInfoList(user))
-			builder.addInfo(info);
+		if (cmd.hasIsSave() && cmd.getIsSave()) {
+			builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
+		} else {
+			for (FightInfo.Builder info : fightInfoService.getFightInfoList(user))
+				builder.addInfo(info);
+		}
 		responseBuilder.setFightInfoCommand(builder.build());
 	}
 

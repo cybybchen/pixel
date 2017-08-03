@@ -2660,6 +2660,7 @@ message ResponseFightInfoCommand {
 message RequestSaveFightInfoCommand {
 	required FightInfo fight = 1;
 	optional bool isDelete = 2;
+	optional uint32 fightinfoId = 3;
 }
 
 message RequestGetLadderRankListCommand {

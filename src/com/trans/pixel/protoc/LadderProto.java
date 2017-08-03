@@ -23324,6 +23324,16 @@ public final class LadderProto {
      * <code>optional bool isDelete = 2;</code>
      */
     boolean getIsDelete();
+
+    // optional uint32 fightinfoId = 3;
+    /**
+     * <code>optional uint32 fightinfoId = 3;</code>
+     */
+    boolean hasFightinfoId();
+    /**
+     * <code>optional uint32 fightinfoId = 3;</code>
+     */
+    int getFightinfoId();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestSaveFightInfoCommand}
@@ -23392,6 +23402,11 @@ public final class LadderProto {
             case 16: {
               bitField0_ |= 0x00000002;
               isDelete_ = input.readBool();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              fightinfoId_ = input.readUInt32();
               break;
             }
           }
@@ -23472,9 +23487,26 @@ public final class LadderProto {
       return isDelete_;
     }
 
+    // optional uint32 fightinfoId = 3;
+    public static final int FIGHTINFOID_FIELD_NUMBER = 3;
+    private int fightinfoId_;
+    /**
+     * <code>optional uint32 fightinfoId = 3;</code>
+     */
+    public boolean hasFightinfoId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 fightinfoId = 3;</code>
+     */
+    public int getFightinfoId() {
+      return fightinfoId_;
+    }
+
     private void initFields() {
       fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
       isDelete_ = false;
+      fightinfoId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -23502,6 +23534,9 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBool(2, isDelete_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(3, fightinfoId_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -23518,6 +23553,10 @@ public final class LadderProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(2, isDelete_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, fightinfoId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -23644,6 +23683,8 @@ public final class LadderProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         isDelete_ = false;
         bitField0_ = (bitField0_ & ~0x00000002);
+        fightinfoId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -23684,6 +23725,10 @@ public final class LadderProto {
           to_bitField0_ |= 0x00000002;
         }
         result.isDelete_ = isDelete_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.fightinfoId_ = fightinfoId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -23705,6 +23750,9 @@ public final class LadderProto {
         }
         if (other.hasIsDelete()) {
           setIsDelete(other.getIsDelete());
+        }
+        if (other.hasFightinfoId()) {
+          setFightinfoId(other.getFightinfoId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -23887,6 +23935,39 @@ public final class LadderProto {
       public Builder clearIsDelete() {
         bitField0_ = (bitField0_ & ~0x00000002);
         isDelete_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 fightinfoId = 3;
+      private int fightinfoId_ ;
+      /**
+       * <code>optional uint32 fightinfoId = 3;</code>
+       */
+      public boolean hasFightinfoId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 fightinfoId = 3;</code>
+       */
+      public int getFightinfoId() {
+        return fightinfoId_;
+      }
+      /**
+       * <code>optional uint32 fightinfoId = 3;</code>
+       */
+      public Builder setFightinfoId(int value) {
+        bitField0_ |= 0x00000004;
+        fightinfoId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 fightinfoId = 3;</code>
+       */
+      public Builder clearFightinfoId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        fightinfoId_ = 0;
         onChanged();
         return this;
       }
@@ -28958,25 +29039,26 @@ public final class LadderProto {
       "ommand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.p" +
       "rotoc.FightInfo\022\r\n\005score\030\002 \001(\r\"K\n\030Respon",
       "seFightInfoCommand\022/\n\004info\030\001 \003(\0132!.com.t" +
-      "rans.pixel.protoc.FightInfo\"a\n\033RequestSa" +
+      "rans.pixel.protoc.FightInfo\"v\n\033RequestSa" +
       "veFightInfoCommand\0220\n\005fight\030\001 \002(\0132!.com." +
       "trans.pixel.protoc.FightInfo\022\020\n\010isDelete" +
-      "\030\002 \001(\010\"!\n\037RequestGetLadderRankListComman" +
-      "d\"%\n#RequestGetUserLadderRankListCommand" +
-      "\"V\n ResponseGetLadderRankListCommand\0222\n\010" +
-      "userRank\030\001 \003(\0132 .com.trans.pixel.protoc." +
-      "UserRank\"Z\n$ResponseGetUserLadderRankLis" +
-      "tCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.p",
-      "ixel.protoc.UserRank\"a\n\036RequestAttackLad" +
-      "derModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(" +
-      "\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\"" +
-      ";\n\037ResponseAttackLadderModeCommand\022\013\n\003re" +
-      "t\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAtta" +
-      "ckLadderCommand\"/\n\037RequestGetLadderUserI" +
-      "nfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurch" +
-      "aseLadderTimeCommand\"V\n ResponseGetLadde" +
-      "rUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .com" +
-      ".trans.pixel.protoc.UserRank"
+      "\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\"!\n\037RequestGe" +
+      "tLadderRankListCommand\"%\n#RequestGetUser" +
+      "LadderRankListCommand\"V\n ResponseGetLadd" +
+      "erRankListCommand\0222\n\010userRank\030\001 \003(\0132 .co" +
+      "m.trans.pixel.protoc.UserRank\"Z\n$Respons" +
+      "eGetUserLadderRankListCommand\0222\n\010userRan",
+      "k\030\001 \003(\0132 .com.trans.pixel.protoc.UserRan" +
+      "k\"a\n\036RequestAttackLadderModeCommand\022\014\n\004r" +
+      "ank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024" +
+      "\n\014attackUserId\030\004 \001(\003\";\n\037ResponseAttackLa" +
+      "dderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(" +
+      "\t\"!\n\037RequestReadyAttackLadderCommand\"/\n\037" +
+      "RequestGetLadderUserInfoCommand\022\014\n\004rank\030" +
+      "\001 \002(\004\"\"\n RequestPurchaseLadderTimeComman" +
+      "d\"V\n ResponseGetLadderUserInfoCommand\0222\n" +
+      "\010userRank\030\001 \002(\0132 .com.trans.pixel.protoc",
+      ".UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29174,7 +29256,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor,
-              new java.lang.String[] { "Fight", "IsDelete", });
+              new java.lang.String[] { "Fight", "IsDelete", "FightinfoId", });
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
             getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_fieldAccessorTable = new

@@ -173,6 +173,12 @@ public class FightInfoRedisService extends RedisService {
 		expire(RedisKey.USER_FIGHT_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
 	
+	public void deleteFightInfo(UserBean user, int fightInfoId) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		hdelete(key, "" + fightInfoId, user.getId());
+		expire(RedisKey.USER_FIGHT_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
+	}
+	
 	public long hlenFightInfo(UserBean user) {
 		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
 		return hlen(key, user.getId());
