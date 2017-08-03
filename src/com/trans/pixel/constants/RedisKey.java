@@ -199,6 +199,8 @@ public class RedisKey {
 	
 	//union
 	public static final String UNION_SERVER_PREFIX = "unions_";
+	public static final String UNION_NAME_PREFIX = PREFIX+"unionsName_";
+	public static final String UNION_RANK_PREFIX = PREFIX+"unionsRank_";
 	public static final String UNION_PREFIX = "union_";
 	public static final String UNION_FIGHT_PREFIX = "union_fight_";
 	public static final String UNION_FIGHTRESULT_PREFIX = "union_fightresult_";

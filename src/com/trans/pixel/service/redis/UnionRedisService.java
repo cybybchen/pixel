@@ -1,6 +1,7 @@
 package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -84,11 +85,36 @@ public class UnionRedisService extends RedisService{
 		return unionbuilder;
 	}
 
-	public List<Union> getBaseUnions(UserBean user) {
-		return getBaseUnions(user, null);
+	public void updateUnionName(final int serverId, Union.Builder union) {
+		hput(RedisKey.UNION_NAME_PREFIX+serverId, union.getName(), union.getId()+"");
 	}
-	public List<Union> getBaseUnions(UserBean user, String name) {
+	public Union.Builder getUnionByName(final int serverId, String name) {
+		String value = hget(RedisKey.UNION_NAME_PREFIX+serverId, name);
+		if(value == null)
+			return null;
+		return getUnion(serverId, Integer.parseInt(value));
+	}
+	public void updateUnionRank(final int serverId, Union.Builder union) {
+		zadd(RedisKey.UNION_RANK_PREFIX+serverId, union.getZhanli(), union.getId()+"");
+	}
+	//前50公会
+	public List<Union> getUnionsRank(final int serverId) {
+		Set<String> unionIds = zrange(RedisKey.UNION_RANK_PREFIX+serverId, 0, 49);
+		return getUnions(serverId, unionIds);
+	}
+	private List<Union> getUnions(final int serverId, Collection<String> ids) {
 		List<Union> unions = new ArrayList<Union>();
+		List<String> values = hmget(getUnionServerKey(serverId), ids);
+		for(String value : values) {
+			Union.Builder builder = Union.newBuilder();
+			if(parseJson(value, builder))
+				unions.add(builder.build());
+		}
+		return unions;
+	}
+	
+	public List<Union> getRandUnions(UserBean user) {
+//		List<Union> unions = new ArrayList<Union>();
 		Map<String, String> applyMap;
 		if(user.getUnionId() != 0)
 			applyMap = new HashMap<String, String>();
@@ -105,8 +131,8 @@ public class UnionRedisService extends RedisService{
 			}
 		}
 		Map<Integer, UnionExp> unionExpMap = this.getUnionExpConfig();
-		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
-		Object[] values = unionMap.values().toArray();
+		Map<String, String> keyvalue = hget(RedisKey.UNION_NAME_PREFIX+user.getServerId());
+		Object[] values = keyvalue.values().toArray();
 		int size = values.length;
 		for(int i = 0; i < size; i ++) {//随机打乱
 			int index = nextInt(size);
@@ -114,24 +140,40 @@ public class UnionRedisService extends RedisService{
 			values[i] = values[index];
 			values[index] = object;
 		}
+//		Map<String, String> unionMap = this.hget(getUnionServerKey(user.getServerId()));
+//		Object[] values = unionMap.values().toArray();
+//		int size = values.length;
+//		for(int i = 0; i < size; i ++) {//随机打乱
+//			int index = nextInt(size);
+//			Object object = values[i];
+//			values[i] = values[index];
+//			values[index] = object;
+//		}
+		List<String> ids = new ArrayList<String>();
 		for(Object value : values){
-			Union.Builder builder = Union.newBuilder();
-			if(parseJson((String)value, builder)){
-				if(name != null && builder.getName().indexOf(name) < 0)
-					continue;
-				if(applyMap.containsKey(builder.getId()+"")) {
-					builder.setIsApply(true);
-					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
-				}
-				
-				UnionExp unionExp = unionExpMap.get(builder.getLevel());
-				if (unionExp != null)
-					builder.setMaxCount(unionExp.getUnionsize());
-				unions.add(builder.build());
-				if(unions.size() >= 20)
-					break;
-			}
+			ids.add((String)value);
+			if(ids.size() >= 20)
+				break;
 		}
+		List<Union> unions = getUnions(user.getServerId(), ids);
+//		for(Object value : values){
+//			Union.Builder builder = Union.newBuilder();
+//			if(parseJson((String)value, builder)){
+////				if(name != null && !builder.getName().equals(name))
+////					continue;
+//				if(applyMap.containsKey(builder.getId()+"")) {
+//					builder.setIsApply(true);
+//					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
+//				}
+//				
+//				UnionExp unionExp = unionExpMap.get(builder.getLevel());
+//				if (unionExp != null)
+//					builder.setMaxCount(unionExp.getUnionsize());
+//				unions.add(builder.build());
+//				if(unions.size() >= 20)
+//					break;
+//			}
+//		}
 		Collections.sort(unions, new Comparator<Union>() {
 			public int compare(Union union1, Union union2) {
 				if(union1.getIsApply() && !union2.getIsApply())
@@ -217,6 +259,8 @@ public class UnionRedisService extends RedisService{
 	
 	public void deleteUnion(UserBean user){
 		this.hdelete(getUnionServerKey(user.getServerId()), user.getUnionId()+"");
+		zremove(RedisKey.UNION_RANK_PREFIX, user.getUnionId()+"");
+		hdelete(RedisKey.UNION_NAME_PREFIX, user.getUnionName());
 	}
 	
 	public void saveUnion(final Union union, int serverId) {

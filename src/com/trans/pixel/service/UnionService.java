@@ -95,18 +95,18 @@ public class UnionService extends FightService{
         }
 	};
 
-	public List<Union> searchUnions(UserBean user, String name) {
-		return redis.getBaseUnions(user, name);
+	public Union.Builder searchUnions(UserBean user, String name) {
+		return redis.getUnionByName(user.getServerId(), name);
 	}
-	public List<Union> getBaseUnions(UserBean user) {
-		return redis.getBaseUnions(user);
+	public List<Union> getRandUnions(UserBean user) {
+		return redis.getRandUnions(user);
 	}
 //	public List<Union> getUnionsRank(UserBean user) {
 //		return redis.getBaseUnions(user, 0);
 //	}
 	
 	public List<Union> getUnionsByServerId(int serverId) {
-		return redis.getBaseUnions(serverId);
+		return redis.getUnionsRank(serverId);
 	}
 	
 	public Union getUnionById(int serverId, int unionId) {
@@ -232,6 +232,8 @@ public class UnionService extends FightService{
 		if(needupdate && redis.setLock("Union_"+union.getId())){
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
+			redis.updateUnionName(user.getServerId(), union);
+			redis.updateUnionRank(user.getServerId(), union);
 		}
 
 		/**

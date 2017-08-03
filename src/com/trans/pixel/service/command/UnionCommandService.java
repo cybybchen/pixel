@@ -59,9 +59,9 @@ public class UnionCommandService extends BaseCommandService {
 	private UnionMapper unionMapper;
 
 	public void searchUnion(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user) {
-		List<Union> unions = unionService.searchUnions(user, cmd.getName());
+		Union.Builder union = unionService.searchUnions(user, cmd.getName());
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
-		builder.addAllUnion(unions);
+		builder.addUnion(union);
 		responseBuilder.setUnionListCommand(builder.build());
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
@@ -69,7 +69,7 @@ public class UnionCommandService extends BaseCommandService {
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Union> unions;
 		if(cmd.getType() == 1)
-			unions = unionService.getBaseUnions(user);
+			unions = unionService.getRandUnions(user);
 		else
 			unions = unionService.getUnionsByServerId(user.getServerId());
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
