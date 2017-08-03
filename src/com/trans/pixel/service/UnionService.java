@@ -232,9 +232,9 @@ public class UnionService extends FightService{
 		if(needupdate && redis.setLock("Union_"+union.getId())){
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
-			redis.updateUnionName(user.getServerId(), union);
-			redis.updateUnionRank(user.getServerId(), union);
 		}
+		redis.updateUnionName(user.getServerId(), union);
+		redis.updateUnionRank(user.getServerId(), union);
 
 		/**
 		 * 计算镜像世界矿点奖励

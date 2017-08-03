@@ -61,7 +61,11 @@ public class UnionCommandService extends BaseCommandService {
 	public void searchUnion(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		Union.Builder union = unionService.searchUnions(user, cmd.getName());
 		ResponseUnionListCommand.Builder builder = ResponseUnionListCommand.newBuilder();
-		builder.addUnion(union);
+		if(union != null)
+			builder.addUnion(union);
+		else {
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NO_UNION_ERROR));
+		}
 		responseBuilder.setUnionListCommand(builder.build());
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
