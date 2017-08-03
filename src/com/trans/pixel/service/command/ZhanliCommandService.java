@@ -40,8 +40,8 @@ public class ZhanliCommandService extends BaseCommandService {
 	
 	public void submitZhanli(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user) {
 		int zhanli = cmd.getZhanli();
-		if(user.getZhanliMax() < zhanli || user.getFirstAddedtoZhanli() == 0){
-			user.setFirstAddedtoZhanli(1);
+		if(user.getZhanliMax() < zhanli/* || user.getFirstAddedtoZhanli() == 0*/){
+//			user.setFirstAddedtoZhanli(1);
 //			Team team = userTeamService.getTeamCache(user);
 //			log.debug("33|| " + System.currentTimeMillis());
 //			if(team.getUser().getZhanli() < zhanli){
@@ -65,7 +65,7 @@ public class ZhanliCommandService extends BaseCommandService {
 					activityService.merLevel(user, user.getMerlevel());
 				}
 			}
-			if(!blackService.isNoranklist(user.getId())) {
+			if(!blackService.isNoranklist(user.getId()) && zhanli > 1000) {
 				rankRedisService.updateZhanliRank(user);
 				/**
 				 * zhanli activity
