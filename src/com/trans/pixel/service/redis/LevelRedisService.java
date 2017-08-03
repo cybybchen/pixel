@@ -985,36 +985,52 @@ public class LevelRedisService extends RedisService {
 	}
 	public boolean hasCompleteTarget(UserBean user, int targetId) {
 		UserLevelBean userLevel = getUserLevel(user);
-		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
+//		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
 		Map<Integer, AreaEvent> areaevents = getMainEvent();
-		int eventId = 0;
+//		int eventId = 0;
 		for(AreaEvent areaevent : areaevents.values())
 			for(Event event : areaevent.getEventList())
 				if(event.getTargetid() == targetId) {
-					eventId = event.getEventid();
-					break;
+					if(userLevel.getUnlockDaguan() > areaevent.getId()
+					|| (userLevel.getUnlockOrder() >= event.getOrder() && userLevel.getUnlockDaguan() == areaevent.getId())) {
+						return true;
+					}
 				}
-		if(eventId == 0)
-			return false;
-		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
+		return false;
 	}
-	public boolean hasCompleteEvent(UserBean user, int eventId) {
-		UserLevelBean userLevel = getUserLevel(user);
-		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
-		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
-	}
-	public boolean hasCompleteEvent(long userId, int eventId, UserLevelBean userLevel, Map<Integer, Event.Builder> eventmap) {
-		EventConfig eventconfig = getEvent(eventId);
-		if (eventconfig.getDaguan() > userLevel.getUnlockDaguan())
-			return false;
 
-		for (Event.Builder userEvent : eventmap.values()) {
-			if (userEvent.getEventid() == eventId)
-				return false;
-		}
-		
-		return true;
-	}
+//	public boolean hasCompleteTarget(UserBean user, int targetId) {
+//		UserLevelBean userLevel = getUserLevel(user);
+//		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
+//		Map<Integer, AreaEvent> areaevents = getMainEvent();
+//		int eventId = 0;
+//		for(AreaEvent areaevent : areaevents.values())
+//			for(Event event : areaevent.getEventList())
+//				if(event.getTargetid() == targetId) {
+//					eventId = event.getEventid();
+//					break;
+//				}
+//		if(eventId == 0)
+//			return false;
+//		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
+//	}
+//	public boolean hasCompleteEvent(UserBean user, int eventId) {
+//		UserLevelBean userLevel = getUserLevel(user);
+//		Map<Integer, Event.Builder> eventmap = getEvents(user, userLevel);
+//		return hasCompleteEvent(user.getId(), eventId, userLevel, eventmap);
+//	}
+//	public boolean hasCompleteEvent(long userId, int eventId, UserLevelBean userLevel, Map<Integer, Event.Builder> eventmap) {
+//		EventConfig eventconfig = getEvent(eventId);
+//		if (eventconfig.getDaguan() > userLevel.getUnlockDaguan())
+//			return false;
+//
+//		for (Event.Builder userEvent : eventmap.values()) {
+//			if (userEvent.getEventid() == eventId)
+//				return false;
+//		}
+//		
+//		return true;
+//	}
 	
 	public List<UserTalent> unlockZhujue(UserBean user, Event event) {
 		List<UserTalent> userTalentList = new ArrayList<UserTalent>();

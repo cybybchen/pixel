@@ -236,6 +236,7 @@ function buildUserJson(key, value){
             json["teamCache"] = 1;
             json["achieve"] = 1;
             json["LibaoCount"] = 1;
+            json["PvpMap"] = 1;
         }else if(datatype == "hero"){
             json["hero"] = 1;
             json["pokede"] = 1;
@@ -333,6 +334,9 @@ function appendUserDatas(message, dirty){
     }
     if(message["LibaoCount"]!=null){
         appendUserData("LibaoCount", message["LibaoCount"]);
+    }
+    if(message["PvpMap"]!=null){
+        appendUserData("PvpMap", message["PvpMap"]);
     }
     if(message["achieve"]!=null){
         appendUserData("achieve", message["achieve"]);
