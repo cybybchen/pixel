@@ -339,6 +339,7 @@ public class RewardTaskService {
 				if(urt.getTask().getId() == rewardTask.getTaskBuilder().getId() && urt.getTask().getRandcount() == rewardTask.getTaskBuilder().getRandcount()) {
 					rewardTask.setLeftcount(urt.getLeftcount());
 					rewardTask.setIndex(urt.getIndex());
+					rewardTask.setIsOver(urt.getIsOver());
 					if(rewardTask.hasEndtime())
 						rewardTask.setEndtime(urt.getEndtime());
 					break;
