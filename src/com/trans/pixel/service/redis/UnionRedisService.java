@@ -113,6 +113,18 @@ public class UnionRedisService extends RedisService{
 		return unions;
 	}
 	
+	//destory atfer 20170804
+	public void updateUnionsRank() {
+		int serverId = 1;
+		Set<String> unionIds = zrange(RedisKey.UNION_RANK_PREFIX+serverId, 0, -1);
+		List<Union> unions = getUnions(serverId, unionIds);
+		for(Union union : unions) {
+			Union.Builder builder = Union.newBuilder(union);
+			updateUnionName(serverId, builder);
+			updateUnionRank(serverId, builder);
+		}
+	}
+	
 	public List<Union> getRandUnions(UserBean user) {
 //		List<Union> unions = new ArrayList<Union>();
 		Map<String, String> applyMap;
@@ -155,25 +167,19 @@ public class UnionRedisService extends RedisService{
 			if(ids.size() >= 20)
 				break;
 		}
-		List<Union> unions = getUnions(user.getServerId(), ids);
-//		for(Object value : values){
-//			Union.Builder builder = Union.newBuilder();
-//			if(parseJson((String)value, builder)){
-////				if(name != null && !builder.getName().equals(name))
-////					continue;
-//				if(applyMap.containsKey(builder.getId()+"")) {
-//					builder.setIsApply(true);
-//					builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
-//				}
-//				
-//				UnionExp unionExp = unionExpMap.get(builder.getLevel());
-//				if (unionExp != null)
-//					builder.setMaxCount(unionExp.getUnionsize());
-//				unions.add(builder.build());
-//				if(unions.size() >= 20)
-//					break;
-//			}
-//		}
+		List<Union> unions = new ArrayList<Union>();
+		for(Union union : getUnions(user.getServerId(), ids)){
+			Union.Builder builder = Union.newBuilder(union);
+			if(applyMap.containsKey(builder.getId()+"")) {
+				builder.setIsApply(true);
+				builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
+			}
+			
+			UnionExp unionExp = unionExpMap.get(builder.getLevel());
+			if (unionExp != null)
+				builder.setMaxCount(unionExp.getUnionsize());
+			unions.add(builder.build());
+		}
 		Collections.sort(unions, new Comparator<Union>() {
 			public int compare(Union union1, Union union2) {
 				if(union1.getIsApply() && !union2.getIsApply())

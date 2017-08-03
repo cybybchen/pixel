@@ -14,9 +14,6 @@ import java.util.TreeMap;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.apache.log4j.Logger;
 import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
@@ -36,9 +33,13 @@ import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.HttpUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  * 后台管理
@@ -93,6 +94,8 @@ public class ManagerService extends RedisService{
 	private BlackListService blackListService;
 	@Resource
 	private UserTalentService userTalentService;
+	@Resource
+	private UnionRedisService unionRedisService;
 
 	protected String getJson(String key, long userId) {
 		String value = get(key, userId);
@@ -120,6 +123,15 @@ public class ManagerService extends RedisService{
 			result.put("success", "GM权限设置成功");
 			logService.sendGmLog(0, 0, "master-server", "update-GmRight-slave", req.getString("update-GmRight-slave"));
 			return result;
+		}
+		
+		if (req.containsKey("quickManager")) {
+			String type = req.getString("quickManager");
+			if("updateunionrank".equals(type)) {
+				unionRedisService.updateUnionsRank();
+				result.put("quickManager", "公会排行生成成功");
+				result.put("success", "公会排行生成成功");
+			}
 		}
 		
 		if(req.containsKey("use-Cdkey-master")){

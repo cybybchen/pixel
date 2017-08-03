@@ -699,26 +699,6 @@ function buildConfigJson(key, value){
             json["VipConfig"] = "{}";
             json["ActivityRichangConfig"] = "{}";
         }else if(datatype == "base"){
-            json["DailyShopConfig"] = "{}";
-            json["ShopConfig"] = "{}";
-            json["BlackShopConfig"] = "{}";
-            json["UnionShopConfig"] = "{}";
-            json["PvpShopConfig"] = "{}";
-            json["ExpeditionShopConfig"] = "{}";
-            json["LadderShopConfig"] = "{}";
-            json["AreaMonsterReward"] = "{}";
-            json["LadderRankingConfig"] = "{}";
-            json["LadderDailyConfig"] = "{}";
-            json["LevelConfig"] = "{}";
-            json["LevelDiffConfig1"] = "{}";
-            json["LevelDiffConfig2"] = "{}";
-            json["LevelDiffConfig3"] = "{}";
-            json["DaguanConfig"] = "{}";
-            json["WinLevelConfig"] = "{}";
-            json["LootLevelConfig"] = "{}";
-            json["HeroUpgradeConfig"] = "{}";
-            json["HeroConfig"] = "{}";
-            json["HeroRareConfig"] = "{}";
         }else if(datatype == "cdkey"){
             json["Cdkey"] = "{}";
         }else if(datatype == "blacklist"){
@@ -796,189 +776,6 @@ function appendConfigDatas(message, visible){
     if(message["VipConfig"]!=null){
         appendConfigData("VipConfig", message["VipConfig"], visible);
     }
-    if(message["ActivityRichangConfig"]!=null){
-        appendConfigData("ActivityRichangConfig", message["ActivityRichangConfig"], visible);
-    }
-    if(message["DailyShopConfig"]!=null){
-        appendConfigData("DailyShopConfig", message["DailyShopConfig"], visible);
-    }
-    if(message["ShopConfig"]!=null){
-        appendConfigData("ShopConfig", message["ShopConfig"], visible);
-    }
-    if(message["BlackShopConfig"]!=null){
-        appendConfigData("BlackShopConfig", message["BlackShopConfig"], visible);
-    }
-    if(message["UnionShopConfig"]!=null){
-        appendConfigData("UnionShopConfig", message["UnionShopConfig"], visible);
-    }
-    if(message["PvpShopConfig"]!=null){
-        appendConfigData("PvpShopConfig", message["PvpShopConfig"], visible);
-    }
-    if(message["ExpeditionShopConfig"]!=null){
-        appendConfigData("ExpeditionShopConfig", message["ExpeditionShopConfig"], visible);
-    }
-    if(message["LadderShopConfig"]!=null){
-        appendConfigData("LadderShopConfig", message["LadderShopConfig"], visible);
-    }
-    if(message["AreaMonsterReward"]!=null){
-        appendConfigData("AreaMonsterReward", message["AreaMonsterReward"], visible);
-    }
-    if(message["LadderRankingConfig"]!=null){
-        appendConfigData("LadderRankingConfig", message["LadderRankingConfig"], visible);
-    }
-    if(message["LadderDailyConfig"]!=null){
-        appendConfigData("LadderDailyConfig", message["LadderDailyConfig"], visible);
-    }
-    if(message["LevelConfig"]!=null){
-        appendConfigData("LevelConfig", message["LevelConfig"], visible);
-    }
-    if(message["LevelDiffConfig1"]!=null){
-        appendConfigData("LevelDiffConfig1", message["LevelDiffConfig1"], visible);
-    }
-    if(message["LevelDiffConfig2"]!=null){
-        appendConfigData("LevelDiffConfig2", message["LevelDiffConfig2"], visible);
-    }
-    if(message["LevelDiffConfig3"]!=null){
-        appendConfigData("LevelDiffConfig3", message["LevelDiffConfig3"], visible);
-    }
-    if(message["DaguanConfig"]!=null){
-        appendConfigData("DaguanConfig", message["DaguanConfig"], visible);
-    }
-    if(message["WinLevelConfig"]!=null){
-        appendConfigData("WinLevelConfig", message["WinLevelConfig"], visible);
-    }
-    if(message["LootLevelConfig"]!=null){
-        appendConfigData("LootLevelConfig", message["LootLevelConfig"], visible);
-    }
-    if(message["HeroUpgradeConfig"]!=null){
-        appendConfigData("HeroUpgradeConfig", message["HeroUpgradeConfig"], visible);
-    }
-    if(message["HeroConfig"]!=null){
-        appendConfigData("HeroConfig", message["HeroConfig"], visible);
-    }
-    if(message["HeroRareConfig"]!=null){
-        appendConfigData("HeroRareConfig", message["HeroRareConfig"], visible);
-    }
-    if(message["HeroStarConfig"]!=null){
-        appendConfigData("HeroStarConfig", message["HeroStarConfig"], visible);
-    }
-    if(message["LotteryConfig1001"]!=null){
-        appendConfigData("LotteryConfig1001", message["LotteryConfig1001"], visible);
-    }
-    if(message["LotteryConfig1002"]!=null){
-        appendConfigData("LotteryConfig1002", message["LotteryConfig1002"], visible);
-    }
-    if(message["LotteryEquipConfig1001"]!=null){
-        appendConfigData("LotteryEquipConfig1001", message["LotteryEquipConfig1001"], visible);
-    }
-    if(message["LotteryEquipConfig1002"]!=null){
-        appendConfigData("LotteryEquipConfig1002", message["LotteryEquipConfig1002"], visible);
-    }
-    if(message["EquipConfig"]!=null){
-        appendConfigData("EquipConfig", message["EquipConfig"], visible);
-    }
-    if(message["ChipConfig"]!=null){
-        appendConfigData("ChipConfig", message["ChipConfig"], visible);
-    }
-    if(message["SkillConfig"]!=null){
-        appendConfigData("SkillConfig", message["SkillConfig"], visible);
-    }
-    if(message["SkillLevelConfig"]!=null){
-        appendConfigData("SkillLevelConfig", message["SkillLevelConfig"], visible);
-    }
-    if(message["PropConfig"]!=null){
-        appendConfigData("PropConfig", message["PropConfig"], visible);
-    }
-    if(message["FenJieConfig"]!=null){
-        appendConfigData("FenJieConfig", message["FenJieConfig"], visible);
-    }
-    if(message["TotalSignConfig"]!=null){
-        appendConfigData("TotalSignConfig", message["TotalSignConfig"], visible);
-    }
-    if(message["SignConfig"]!=null){
-        appendConfigData("SignConfig", message["SignConfig"], visible);
-    }
-    if(message["Sign2Config"]!=null){
-        appendConfigData("Sign2Config", message["Sign2Config"], visible);
-    }
-    if(message["VipLibaoConfig"]!=null){
-        appendConfigData("VipLibaoConfig", message["VipLibaoConfig"], visible);
-    }
-    if(message["MoHuaConfig"]!=null){
-        appendConfigData("MoHuaConfig", message["MoHuaConfig"], visible);
-    }
-    if(message["MoHuaCardConfig"]!=null){
-        appendConfigData("MoHuaCardConfig", message["MoHuaCardConfig"], visible);
-    }
-    if(message["MoHuaJieDuanConfig"]!=null){
-        appendConfigData("MoHuaJieDuanConfig", message["MoHuaJieDuanConfig"], visible);
-    }
-    if(message["MoHuaLootConfig"]!=null){
-        appendConfigData("MoHuaLootConfig", message["MoHuaLootConfig"], visible);
-    }
-    if(message["AchieveConfig"]!=null){
-        appendConfigData("AchieveConfig", message["AchieveConfig"], visible);
-    }
-    if(message["ActivityRiChangConfig"]!=null){
-        appendConfigData("ActivityRiChangConfig", message["ActivityRiChangConfig"], visible);
-    }
-    if(message["ActivityKaiFu2Config"]!=null){
-        appendConfigData("ActivityKaiFu2Config", message["ActivityKaiFu2Config"], visible);
-    }
-    if(message["ActivityKaiFuConfig"]!=null){
-        appendConfigData("ActivityKaiFuConfig", message["ActivityKaiFuConfig"], visible);
-    }
-    if(message["AreaEquipConfig"]!=null){
-        appendConfigData("AreaEquipConfig", message["AreaEquipConfig"], visible);
-    }
-    if(message["AreaMonsterRewardConfig"]!=null){
-        appendConfigData("AreaMonsterRewardConfig", message["AreaMonsterRewardConfig"], visible);
-    }
-    if(message["AreaConfig"]!=null){
-        appendConfigData("AreaConfig", message["AreaConfig"], visible);
-    }
-    if(message["AreaBossConfig"]!=null){
-        appendConfigData("AreaBossConfig", message["AreaBossConfig"], visible);
-    }
-    if(message["AreaBossRandConfig"]!=null){
-        appendConfigData("AreaBossRandConfig", message["AreaBossRandConfig"], visible);
-    }
-    if(message["AreaBossRewardConfig"]!=null){
-        appendConfigData("AreaBossRewardConfig", message["AreaBossRewardConfig"], visible);
-    }
-    if(message["AreaMonsterConfig"]!=null){
-        appendConfigData("AreaMonsterConfig", message["AreaMonsterConfig"], visible);
-    }
-    if(message["AreaMonsterRandConfig"]!=null){
-        appendConfigData("AreaMonsterRandConfig", message["AreaMonsterRandConfig"], visible);
-    }
-    if(message["AreaPositionConfig"]!=null){
-        appendConfigData("AreaPositionConfig", message["AreaPositionConfig"], visible);
-    }
-    if(message["AreaResourceConfig"]!=null){
-        appendConfigData("AreaResourceConfig", message["AreaResourceConfig"], visible);
-    }
-    if(message["PvpMonsterRewardConfig"]!=null){
-        appendConfigData("PvpMonsterRewardConfig", message["PvpMonsterRewardConfig"], visible);
-    }
-    if(message["PvpMonsterConfig"]!=null){
-        appendConfigData("PvpMonsterConfig", message["PvpMonsterConfig"], visible);
-    }
-    if(message["PvpBossConfig"]!=null){
-        appendConfigData("PvpBossConfig", message["PvpBossConfig"], visible);
-    }
-    if(message["PvpPositionConfig"]!=null){
-        appendConfigData("PvpPositionConfig", message["PvpPositionConfig"], visible);
-    }
-    if(message["PvpMapConfig"]!=null){
-        appendConfigData("PvpMapConfig", message["PvpMapConfig"], visible);
-    }
-    if(message["PurchaseCoinConfig"]!=null){
-        appendConfigData("PurchaseCoinConfig", message["PurchaseCoinConfig"], visible);
-    }
-    if(message["PurchaseCoinRewardConfig"]!=null){
-        appendConfigData("PurchaseCoinRewardConfig", message["PurchaseCoinRewardConfig"], visible);
-    }
     if(message["GmRight"]!=null){
         appendConfigData("GmRight", message["GmRight"], visible);
     }
@@ -994,6 +791,11 @@ function appendConfigDatas(message, visible){
         });
     }else{
     	$("#config-cdkey").hide();
+    }
+    if(message["quickManager"]!=null){
+    	$("#config-quickManager").show();
+    }else{
+    	$("#config-quickManager").hide();
     }
     if(message["BlackList"]!=null){
         $("#config-blacklist").show();
@@ -1212,6 +1014,11 @@ function delRedisDatas(){
 	json["RedisData"] = value;
 	if(keys.length > 0)
 		updateConfigJson(json);
+}
+
+function quickManager(value){
+	var json = buildConfigJson("quickManager", value);
+	updateConfigJson(json);
 }
 
 $(document).ready(function() {

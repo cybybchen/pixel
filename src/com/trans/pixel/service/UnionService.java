@@ -995,8 +995,11 @@ public class UnionService extends FightService{
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
 				redis.delUnionBoss(union.getId(), unionBoss.getId());
 				Union.Builder builder = Union.newBuilder(union);
-				if (calUnionBossRefresh(builder, unionBoss, union.getId(), serverId))
+				if (calUnionBossRefresh(builder, unionBoss, union.getId(), serverId)) {
+					redis.waitLock("Union_"+builder.getId());
 					redis.saveUnion(builder.build(), serverId);
+					redis.clearLock("Union_"+builder.getId());
+				}
 			}
 		}
 		
