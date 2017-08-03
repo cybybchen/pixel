@@ -213,7 +213,7 @@ public class UserCrontabService {
 			String keys[] = key.split("#");
 			long userId = Long.parseLong(keys[0]);
 			int id = Integer.parseInt(keys[1]);
-			userLadderService.updateToDB(userId, id);
+			raidService.updateToDB(userId, id);
 		}
 		}catch(Exception e){
 			logger.error(e.getMessage(), e);
