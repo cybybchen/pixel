@@ -107,7 +107,7 @@ public class UnionRedisService extends RedisService{
 		List<String> values = hmget(getUnionServerKey(serverId), ids);
 		for(String value : values) {
 			Union.Builder builder = Union.newBuilder();
-			if(parseJson(value, builder))
+			if(value != null && parseJson(value, builder))
 				unions.add(builder.build());
 		}
 		return unions;
@@ -201,7 +201,7 @@ public class UnionRedisService extends RedisService{
 		Map<String, String> unionMap = this.hget(getUnionServerKey(serverId));
 		for(String value : unionMap.values()){
 			Union.Builder builder = Union.newBuilder();
-			if(parseJson(value, builder)){
+			if(value != null && parseJson(value, builder)){
 				unions.add(builder.build());
 			}
 		}

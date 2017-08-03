@@ -698,6 +698,8 @@ function buildConfigJson(key, value){
             json["Rmb1Config"] = "{}";
             json["VipConfig"] = "{}";
             json["ActivityRichangConfig"] = "{}";
+        }else if(datatype == "quickManager"){
+        	json["quickManager"] = "{}";
         }else if(datatype == "base"){
         }else if(datatype == "cdkey"){
             json["Cdkey"] = "{}";

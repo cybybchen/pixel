@@ -5,7 +5,7 @@
     	<ul data-role="listview" id="config-nav" class="jqm-list ui-alt-icon ui-nodisc-icon">
 			<li  class="nav-locate" style="background-color: #F6F6F6;">配置</li>
 			<li data-theme="b" data-icon="home"><a href="#menu-panel">导航【配置】</a></li>
-			<li ><a href="#" data-type="manager">维护</a></li>
+			<li ><a href="#" data-type="quickManager">维护</a></li>
 			<li ><a href="#" data-type="common">常用</a></li>
 			<li ><a href="#" data-type="base">基本</a></li>
 			<li ><a href="#" data-type="0">其他</a></li>
@@ -23,7 +23,7 @@
 		<div id="config-quickManager" style="display:none;">
 		<div class="ui-grid-d">
 			<div class="ui-block-a">
-			<span class="info0-btn thank-btn" onclick='quickManager("updateunionrank")'>生成公会排行</span>
+			<a class="ui-btn" onclick='quickManager("updateunionrank")'>生成公会排行</a>
 			</div>
 			<div class="ui-block-b">
 			<!-- <span class="info0-btn thank-btn" onclick='quickReward(1002, 2000, "进群活跃礼包")'>进群钻石</span> -->

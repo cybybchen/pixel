@@ -128,6 +128,7 @@ public class ManagerService extends RedisService{
 		if (req.containsKey("quickManager")) {
 			String type = req.getString("quickManager");
 			if("updateunionrank".equals(type)) {
+				logger.warn("公会排行生成。。。。。。");
 				unionRedisService.updateUnionsRank();
 				result.put("quickManager", "公会排行生成成功");
 				result.put("success", "公会排行生成成功");
