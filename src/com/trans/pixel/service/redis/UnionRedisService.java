@@ -93,6 +93,8 @@ public class UnionRedisService extends RedisService{
 		if(value == null)
 			return null;
 		Union.Builder builder = getUnion(user.getServerId(), Integer.parseInt(value));
+		if(builder == null)
+			return null;
 		Map<String, String> applyMap;
 		if(user.getUnionId() != 0)
 			applyMap = new HashMap<String, String>();
