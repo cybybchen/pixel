@@ -96,7 +96,7 @@ public class UnionService extends FightService{
 	};
 
 	public Union.Builder searchUnions(UserBean user, String name) {
-		return redis.getUnionByName(user.getServerId(), name);
+		return redis.getUnionByName(user, name);
 	}
 	public List<Union> getRandUnions(UserBean user) {
 		return redis.getRandUnions(user);

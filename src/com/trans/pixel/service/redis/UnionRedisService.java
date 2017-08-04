@@ -88,11 +88,36 @@ public class UnionRedisService extends RedisService{
 	public void updateUnionName(final int serverId, Union.Builder union) {
 		hput(RedisKey.UNION_NAME_PREFIX+serverId, union.getName(), union.getId()+"");
 	}
-	public Union.Builder getUnionByName(final int serverId, String name) {
-		String value = hget(RedisKey.UNION_NAME_PREFIX+serverId, name);
+	public Union.Builder getUnionByName(UserBean user, String name) {
+		String value = hget(RedisKey.UNION_NAME_PREFIX+user.getServerId(), name);
 		if(value == null)
 			return null;
-		return getUnion(serverId, Integer.parseInt(value));
+		Union.Builder builder = getUnion(user.getServerId(), Integer.parseInt(value));
+		Map<String, String> applyMap;
+		if(user.getUnionId() != 0)
+			applyMap = new HashMap<String, String>();
+		else
+		{
+			applyMap = this.hget(RedisKey.USERDATA+"Apply_"+user.getId(), user.getId());
+			Iterator<Map.Entry<String, String>> it = applyMap.entrySet().iterator();
+			while(it.hasNext()){
+				Entry<String, String> entry = it.next();
+				if(Long.parseLong(entry.getValue()) < System.currentTimeMillis()/1000){
+					hdelete(RedisKey.USERDATA+"Apply_"+user.getId(), entry.getKey(), user.getId());
+					it.remove();
+				}
+			}
+		}
+		if(applyMap.containsKey(builder.getId()+"")) {
+			builder.setIsApply(true);
+			builder.setApplyEndTime(TypeTranslatedUtil.stringToInt(applyMap.get(builder.getId()+"")));
+		}
+
+		Map<Integer, UnionExp> unionExpMap = this.getUnionExpConfig();
+		UnionExp unionExp = unionExpMap.get(builder.getLevel());
+		if (unionExp != null)
+			builder.setMaxCount(unionExp.getUnionsize());
+		return builder;
 	}
 	public void updateUnionRank(final int serverId, Union.Builder union) {
 		zadd(RedisKey.UNION_RANK_PREFIX+serverId, union.getZhanli(), union.getId()+"");
