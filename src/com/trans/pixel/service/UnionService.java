@@ -961,7 +961,7 @@ public class UnionService extends FightService{
 				UserRankBean userRank = userRankList.get(i);
 				if (userRank != null) {
 					UserBean user = userService.getUserOther(userRank.getUserId());
-					if (user == null || user.getUnionId() != unionId || redis.canReward(user, bossId))
+					if (user == null || user.getUnionId() != unionId || !redis.canReward(user, bossId))
 						continue;
 					MailBean mail = MailBean.buildSystemMail(userRank.getUserId(), item.getDes(), rewardList);
 					log.debug("unionboss rank mail is:" + mail.toJson());
