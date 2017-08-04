@@ -125,16 +125,6 @@ public class ManagerService extends RedisService{
 			return result;
 		}
 		
-		if (req.containsKey("quickManager")) {
-			String type = req.getString("quickManager");
-			if("updateunionrank".equals(type)) {
-				logger.warn("公会排行生成。。。。。。");
-				unionRedisService.updateUnionsRank();
-				result.put("quickManager", "公会排行生成成功");
-				result.put("success", "公会排行生成成功");
-			}
-		}
-		
 		if(req.containsKey("use-Cdkey-master")){
 			String key = req.getString("use-Cdkey-master");
 			String rewardedstr = req.getString("rewarded");
@@ -244,6 +234,17 @@ public class ManagerService extends RedisService{
 			result.put("GmRight", object);
 		}
 
+		if (req.containsKey("quickManager") && gmaccountBean.getMaster() == 1) {
+			String type = req.getString("quickManager");
+			logger.warn("quickManager:"+type);
+			if("updateunionrank".equals(type)) {
+				logger.warn("公会排行生成。。。。。。");
+				unionRedisService.updateUnionsRank();
+				result.put("quickManager", "公会排行生成成功");
+				result.put("success", "公会排行生成成功");
+			}
+		}
+		
 		if(req.containsKey("update-VersionController") && gmaccountBean.getMaster() == 1){
 			Map<String, String> map = hget(RedisKey.VERSIONCONTROLLER_PREFIX);
 			JSONObject object = JSONObject.fromObject(req.get("update-VersionController"));

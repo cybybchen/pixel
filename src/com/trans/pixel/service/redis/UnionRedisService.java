@@ -116,8 +116,9 @@ public class UnionRedisService extends RedisService{
 	//destory atfer 20170804
 	public void updateUnionsRank() {
 		int serverId = 1;
-		Set<String> unionIds = zrange(RedisKey.UNION_RANK_PREFIX+serverId, 0, -1);
-		List<Union> unions = getUnions(serverId, unionIds);
+//		Set<String> unionIds = zrange(RedisKey.UNION_RANK_PREFIX+serverId, 0, -1);
+//		List<Union> unions = getUnions(serverId, unionIds);
+		List<Union> unions = getBaseUnions(serverId);
 		for(Union union : unions) {
 			Union.Builder builder = Union.newBuilder(union);
 			updateUnionName(serverId, builder);
