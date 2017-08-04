@@ -109,8 +109,8 @@ public class UnionService extends FightService{
 		return redis.getUnionsRank(serverId);
 	}
 	public boolean canUseUnionName(int serverId, String name) {
-		if(unionMapper.selectUnionByServerIdAndName(serverId, name) == null)
-			return true;
+		if(unionMapper.selectUnionByServerIdAndName(serverId, name) != null)
+			return false;
 		else 
 			return redis.setLock("unionname"+serverId+"_"+name);
 	}
