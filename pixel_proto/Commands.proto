@@ -3219,6 +3219,19 @@ message UnionExpList {
 	repeated UnionExp data = 5;
 
 }
+
+message UnionFightApplyRecord {
+	required uint64 userId = 1;
+}
+
+message RequestUnionFightApplyCommand {
+
+}
+
+message ResponseUnionFightApplyRecordCommand {
+	repeated UnionFightApplyRecord applyRecord = 1;
+}
+
 message RequestSubmitBattletowerCommand {
 	required bool success = 1;
 	optional int32 tower = 2;
@@ -3482,6 +3495,11 @@ message RequestSubmitRewardTaskScoreCommand {
 
 message ResponseUserRewardTaskCommand {
 	repeated UserRewardTask userRewardTask = 1;
+	message EventStatus {
+		required uint32 eventid = 1;
+		required uint32 status = 2;
+	}
+	repeated EventStatus status = 2;
 }
 
 message ResponseUserRewardTaskRoomCommand {
@@ -3813,6 +3831,7 @@ message RequestCommand {
 	optional RequestSubmitRiteCommand submitRiteCommand = 263;
 	optional RequestRemoveRecommandCommand removeRecommandCommand = 264;
 	optional RequestSaveFightInfoCommand saveFightInfoCommand = 265;
+	optional RequestUnionFightApplyCommand unionFightApplyCommand = 266;
 }
 ////////// Commands
 message ErrorCommand {
@@ -3906,6 +3925,7 @@ message ResponseCommand {
 	optional ResponseEnemyLadderCommand enemyLadderCommand = 68;
 	optional ResponseUserLadderCommand userLadderCommand = 69;
 	optional ResponseRecommandCommand recommandCommand = 70;
+	optional ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
 }
 
 ////////// End

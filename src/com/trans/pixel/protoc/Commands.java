@@ -2361,6 +2361,20 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
      */
     com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommandOrBuilder getRecommandCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    boolean hasUnionFightApplyRecordCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand getUnionFightApplyRecordCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder getUnionFightApplyRecordCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseCommand}
@@ -3115,6 +3129,19 @@ public final class Commands {
                 recommandCommand_ = subBuilder.buildPartial();
               }
               bitField2_ |= 0x00008000;
+              break;
+            }
+            case 570: {
+              com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder subBuilder = null;
+              if (((bitField2_ & 0x00010000) == 0x00010000)) {
+                subBuilder = unionFightApplyRecordCommand_.toBuilder();
+              }
+              unionFightApplyRecordCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(unionFightApplyRecordCommand_);
+                unionFightApplyRecordCommand_ = subBuilder.buildPartial();
+              }
+              bitField2_ |= 0x00010000;
               break;
             }
             case 810: {
@@ -5269,6 +5296,28 @@ public final class Commands {
       return recommandCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
+    public static final int UNIONFIGHTAPPLYRECORDCOMMAND_FIELD_NUMBER = 71;
+    private com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    public boolean hasUnionFightApplyRecordCommand() {
+      return ((bitField2_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand getUnionFightApplyRecordCommand() {
+      return unionFightApplyRecordCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+     */
+    public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder getUnionFightApplyRecordCommandOrBuilder() {
+      return unionFightApplyRecordCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.ServerProto.HeadInfo.getDefaultInstance();
       title_ = com.trans.pixel.protoc.ServerProto.ServerTitleInfo.getDefaultInstance();
@@ -5350,6 +5399,7 @@ public final class Commands {
       enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
       userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
       recommandCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.getDefaultInstance();
+      unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5694,6 +5744,12 @@ public final class Commands {
           return false;
         }
       }
+      if (hasUnionFightApplyRecordCommand()) {
+        if (!getUnionFightApplyRecordCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5862,6 +5918,9 @@ public final class Commands {
       }
       if (((bitField2_ & 0x00008000) == 0x00008000)) {
         output.writeMessage(70, recommandCommand_);
+      }
+      if (((bitField2_ & 0x00010000) == 0x00010000)) {
+        output.writeMessage(71, unionFightApplyRecordCommand_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(101, rewardCommand_);
@@ -6166,6 +6225,10 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(70, recommandCommand_);
       }
+      if (((bitField2_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(71, unionFightApplyRecordCommand_);
+      }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(101, rewardCommand_);
@@ -6458,6 +6521,7 @@ public final class Commands {
           getEnemyLadderCommandFieldBuilder();
           getUserLadderCommandFieldBuilder();
           getRecommandCommandFieldBuilder();
+          getUnionFightApplyRecordCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -6946,6 +7010,12 @@ public final class Commands {
           recommandCommandBuilder_.clear();
         }
         bitField2_ = (bitField2_ & ~0x00008000);
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
+        } else {
+          unionFightApplyRecordCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00010000);
         return this;
       }
 
@@ -7618,6 +7688,14 @@ public final class Commands {
         } else {
           result.recommandCommand_ = recommandCommandBuilder_.build();
         }
+        if (((from_bitField2_ & 0x00010000) == 0x00010000)) {
+          to_bitField2_ |= 0x00010000;
+        }
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          result.unionFightApplyRecordCommand_ = unionFightApplyRecordCommand_;
+        } else {
+          result.unionFightApplyRecordCommand_ = unionFightApplyRecordCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -7875,6 +7953,9 @@ public final class Commands {
         }
         if (other.hasRecommandCommand()) {
           mergeRecommandCommand(other.getRecommandCommand());
+        }
+        if (other.hasUnionFightApplyRecordCommand()) {
+          mergeUnionFightApplyRecordCommand(other.getUnionFightApplyRecordCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -8215,6 +8296,12 @@ public final class Commands {
         }
         if (hasRecommandCommand()) {
           if (!getRecommandCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasUnionFightApplyRecordCommand()) {
+          if (!getUnionFightApplyRecordCommand().isInitialized()) {
             
             return false;
           }
@@ -17639,6 +17726,123 @@ public final class Commands {
         return recommandCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
+      private com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder> unionFightApplyRecordCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public boolean hasUnionFightApplyRecordCommand() {
+        return ((bitField2_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand getUnionFightApplyRecordCommand() {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          return unionFightApplyRecordCommand_;
+        } else {
+          return unionFightApplyRecordCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public Builder setUnionFightApplyRecordCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand value) {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          unionFightApplyRecordCommand_ = value;
+          onChanged();
+        } else {
+          unionFightApplyRecordCommandBuilder_.setMessage(value);
+        }
+        bitField2_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public Builder setUnionFightApplyRecordCommand(
+          com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder builderForValue) {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          unionFightApplyRecordCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          unionFightApplyRecordCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField2_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public Builder mergeUnionFightApplyRecordCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand value) {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          if (((bitField2_ & 0x00010000) == 0x00010000) &&
+              unionFightApplyRecordCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance()) {
+            unionFightApplyRecordCommand_ =
+              com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.newBuilder(unionFightApplyRecordCommand_).mergeFrom(value).buildPartial();
+          } else {
+            unionFightApplyRecordCommand_ = value;
+          }
+          onChanged();
+        } else {
+          unionFightApplyRecordCommandBuilder_.mergeFrom(value);
+        }
+        bitField2_ |= 0x00010000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public Builder clearUnionFightApplyRecordCommand() {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          unionFightApplyRecordCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00010000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder getUnionFightApplyRecordCommandBuilder() {
+        bitField2_ |= 0x00010000;
+        onChanged();
+        return getUnionFightApplyRecordCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder getUnionFightApplyRecordCommandOrBuilder() {
+        if (unionFightApplyRecordCommandBuilder_ != null) {
+          return unionFightApplyRecordCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return unionFightApplyRecordCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder> 
+          getUnionFightApplyRecordCommandFieldBuilder() {
+        if (unionFightApplyRecordCommandBuilder_ == null) {
+          unionFightApplyRecordCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder, com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommandOrBuilder>(
+                  unionFightApplyRecordCommand_,
+                  getParentForChildren(),
+                  isClean());
+          unionFightApplyRecordCommand_ = null;
+        }
+        return unionFightApplyRecordCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCommand)
     }
 
@@ -17685,7 +17889,7 @@ public final class Commands {
       "to\032\025RewardTaskProto.proto\032\017TaskProto.pro" +
       "to\"-\n\014ErrorCommand\022\014\n\004code\030\001 \002(\t\022\017\n\007mess",
       "age\030\002 \002(\t\"3\n\026ResponseMessageCommand\022\014\n\004c" +
-      "ode\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\2061\n\017ResponseComma" +
+      "ode\030\001 \002(\005\022\013\n\003msg\030\002 \002(\t\"\3521\n\017ResponseComma" +
       "nd\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.proto" +
       "c.HeadInfo\0227\n\005title\030\221N \001(\0132\'.com.trans.p" +
       "ixel.protoc.ServerTitleInfo\022:\n\014errorComm" +
@@ -17842,7 +18046,10 @@ public final class Commands {
       "derCommand\030E \001(\01321.com.trans.pixel.proto" +
       "c.ResponseUserLadderCommand\022J\n\020recommand" +
       "Command\030F \001(\01320.com.trans.pixel.protoc.R" +
-      "esponseRecommandCommand"
+      "esponseRecommandCommand\022b\n\034unionFightApp" +
+      "lyRecordCommand\030G \001(\0132<.com.trans.pixel.",
+      "protoc.ResponseUnionFightApplyRecordComm" +
+      "and"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17866,7 +18073,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "EventCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", });
+              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "EventCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", "UnionFightApplyRecordCommand", });
           return null;
         }
       };
