@@ -137,7 +137,7 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
-		if (unionMapper.selectUnionByServerIdAndName(user.getServerId(), cmd.getName()) != null) {
+		if (!unionService.canUseUnionName(user.getServerId(), cmd.getName())) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNIONNAME_IS_EXIST_ERROR);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNIONNAME_IS_EXIST_ERROR));
 			return;
