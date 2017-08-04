@@ -530,8 +530,10 @@ public class UnionService extends FightService{
 			if(bean != null && bean.getUnionId() == 0){
 				if(getAreaFighting(userId, user) == 1)
 					return ErrorConst.AREA_FIGHT_BUSY;
-				Union.Builder builder = this.getBaseUnion(user); 
-				if(builder.getCount() >= builder.getMaxCount())
+				Union.Builder builder = this.getBaseUnion(user);
+				if(!redis.waitLock(redis.getUnionMemberKey(user.getUnionId())))
+					return ErrorConst.REDISKEY_BUSY_ERROR;
+				if(redis.getNumOfMembers(user) >= builder.getMaxCount())
 					return ErrorConst.UNION_FULL;
 				bean.setUnionId(user.getUnionId());
 				bean.setUnionName(builder.getName());
@@ -539,6 +541,7 @@ public class UnionService extends FightService{
 				userService.updateUser(bean);
 				userService.cache(user.getServerId(), bean.buildShort());
 				redis.saveMember(bean.getId(), user);
+				redis.clearLock(redis.getUnionMemberKey(user.getUnionId()));
 			}else{
 				redis.reply(userId, receive, user);
 				return ErrorConst.USER_HAS_UNION;
@@ -582,6 +585,8 @@ public class UnionService extends FightService{
 		}
 		UserBean bean = userService.getUserOther(id);
 		if(bean.getUnionId() == user.getUnionId()){
+			if(!redis.waitLock(redis.getUnionMemberKey(user.getUnionId())))
+				return ErrorConst.REDISKEY_BUSY_ERROR;
 			if(job == UnionConst.UNION_HUIZHANG){//会长转让
 				user.setUnionJob(UnionConst.UNION_HUIZHONG);
 				redis.saveMember(user.getId(), user);
@@ -592,6 +597,7 @@ public class UnionService extends FightService{
 			redis.saveMember(bean.getId(), user);
 			userService.updateUser(bean);
 			userService.cache(user.getServerId(), bean.buildShort());
+			redis.clearLock(redis.getUnionMemberKey(user.getUnionId()));
 		}
 		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
 	}
@@ -1188,6 +1194,7 @@ public class UnionService extends FightService{
 		Union.Builder union = getBaseUnion(user);
 		if (union == null)
 			return;
+		
 		
 		union.setExp(union.getExp() + exp);
 		calUnionLevel(union);

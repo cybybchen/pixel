@@ -416,7 +416,7 @@ public class UnionRedisService extends RedisService{
 	private String getUnionMemberKey(UserBean user) {
 		return getUnionRedisKey(user.getUnionId())+"_member";
 	}
-	private String getUnionMemberKey(int unionId) {
+	public String getUnionMemberKey(int unionId) {
 		return getUnionRedisKey(unionId)+"_member";
 	}
 	
