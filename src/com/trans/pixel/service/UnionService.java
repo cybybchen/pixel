@@ -883,11 +883,11 @@ public class UnionService extends FightService{
 			return null;//怪物已逃跑
 		}
 		
+		if (!redis.setLock("UnionBoss_" + union.getId() + ":" + bossId, 10)) {
+			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
+			return unionBossRecord.build();
+		}
 		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
-			if (!redis.setLock("UnionBoss_" + union.getId() + ":" + bossId, 10)) {
-				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
-				return unionBossRecord.build();
-			}
 			if(!redis.waitLock("Union_"+union.getId())) {
 				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
 				return unionBossRecord.build();
