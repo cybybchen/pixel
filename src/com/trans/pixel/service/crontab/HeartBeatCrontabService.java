@@ -34,19 +34,18 @@ public class HeartBeatCrontabService {
 	@Scheduled(cron = "0 0/10 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
 	public void handleHeartBeatReward() {
-		
-		
 		List<Integer> serverList = serverService.getServerIdList();
-		for (int serverId : serverList) {
-			heartBeatService.heartBeatToRedis(serverId);
-		}
-		
-		if (!ConfigUtil.CRONTAB_STATUS) {
-			return;
+		if (ConfigUtil.CRONTAB_STATUS) {
+			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+			String time = df.format(new Date());
+			for (int serverId : serverList) {
+				Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
+				logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);
+			}
 		}
 		
 		/**
-		 * 等待另外的服务器把数据更新了
+		 * 等待数据更新
 		 */
 		try {
 			Thread.sleep(5000);
@@ -55,12 +54,22 @@ public class HeartBeatCrontabService {
 			e.printStackTrace();
 		}
 		
-		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-		String time = df.format(new Date());
 		for (int serverId : serverList) {
-			Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
-			logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);
+			heartBeatService.heartBeatToRedis(serverId);
 		}
+		
+//		if (!ConfigUtil.CRONTAB_STATUS) {
+//			return;
+//		}
+//		
+//		
+//		
+//		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+//		String time = df.format(new Date());
+//		for (int serverId : serverList) {
+//			Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
+//			logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);
+//		}
 	}
 	
 	private Map<String, String> buildLogParams(int serverId, long count, String time) {

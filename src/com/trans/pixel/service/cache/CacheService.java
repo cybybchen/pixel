@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -125,6 +126,36 @@ public class CacheService {
 		}else {
 			logger.error("Not support Set key:"+key);
 			return Collections.synchronizedSet(new HashSet<T>());
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public synchronized static final<T> T spop(String key) {
+		LinkedList<T> list = (LinkedList<T>)_setcache.get(key);
+//		_setcache.put(key, Collections.synchronizedList(new LinkedList<T>()));
+		if (list != null && !list.isEmpty()) {
+			return list.pop();
+		}else {
+			logger.error("Not support Set key:"+key);
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static final<T> void sadd(String key, T value) {
+		LinkedList<T> list = (LinkedList<T>)_setcache.get(key);
+		if (list != null) {
+			list.add(value);
+		}else {
+			logger.error("No available Set key:"+key);
+			synchronized(object) {
+				list = (LinkedList<T>)_setcache.get(key);
+				if (list == null) {
+					list = (LinkedList<T>) Collections.synchronizedList(new LinkedList<T>());
+					_setcache.put(key, list);
+				}
+				list.add(value);
+			}
 		}
 	}
 }
