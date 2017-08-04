@@ -259,14 +259,14 @@ public class PropService {
 				|| (rewardId > 0 && count < 50 * composeCount))
 			return false;
 		
-		if (!costService.canCost(user, costList))
+		if (!costService.canCost(user, costList, true))
 			return false;
 		
 		return true;
 	}
 	
 	public List<RewardInfo> meterialCompose(UserBean user, List<RewardInfo> costList, int rewardId, int composeCount) {
-		costService.cost(user, costList);
+		costService.cost(user, costList, true);
 		
 		if (rewardId > 0)
 			return RewardBean.initRewardInfoList(rewardId, 10 * composeCount);

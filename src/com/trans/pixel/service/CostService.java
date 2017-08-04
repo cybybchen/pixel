@@ -149,11 +149,15 @@ public class CostService {
 //	}
 
 	public boolean canCost(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+		return canCost(user, costList, false);
+	}
+	
+	public boolean canCost(UserBean user, List<RewardInfo> costList, boolean replace) { //返回消费的道具id
 //		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 //		Collections.sort(builderList, comparator);
 		for (int i = 0; i < costList.size(); ++i) {
 			RewardInfo cost = costList.get(i);
-			if (!canCost(user, cost.getItemid(), cost.getCount()))
+			if (!canCost(user, cost.getItemid(), cost.getCount(), replace))
 				return false;
 		}
 		
@@ -161,11 +165,15 @@ public class CostService {
 	}
 	
 	public boolean cost(UserBean user, List<RewardInfo> costList) { //返回消费的道具id
+		return cost(user, costList, false);
+	}
+	
+	public boolean cost(UserBean user, List<RewardInfo> costList, boolean replace) { //返回消费的道具id
 //		List<CostItem.Builder> builderList = convertCostBuilder(costList);
 //		Collections.sort(builderList, comparator);
 		for (int i = 0; i < costList.size(); ++i) {
 			RewardInfo cost = costList.get(i);
-			if (!costAndUpdate(user, cost.getItemid(), cost.getCount()))
+			if (!costAndUpdate(user, cost.getItemid(), cost.getCount(), replace))
 				return false;
 		}
 		
@@ -218,7 +226,7 @@ public class CostService {
 				userPropService.updateUserProp(userProp);
 				return true;
 			}
-		} else if (itemId == RewardConst.RAID_KEY && replace) {
+		} else if (itemId > RewardConst.CAILIAO && replace) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < count) {
 				Material material = equipService.getMaterial(itemId);
