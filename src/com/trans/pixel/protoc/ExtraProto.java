@@ -8,6 +8,1240 @@ public final class ExtraProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface RequestLockOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional string fun = 1;
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    boolean hasFun();
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    java.lang.String getFun();
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getFunBytes();
+
+    // optional int32 isopen = 2;
+    /**
+     * <code>optional int32 isopen = 2;</code>
+     */
+    boolean hasIsopen();
+    /**
+     * <code>optional int32 isopen = 2;</code>
+     */
+    int getIsopen();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestLock}
+   *
+   * <pre>
+   *&#47;/////// ExtraProto
+   * </pre>
+   */
+  public static final class RequestLock extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestLockOrBuilder {
+    // Use RequestLock.newBuilder() to construct.
+    private RequestLock(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestLock(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestLock defaultInstance;
+    public static RequestLock getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestLock getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestLock(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              fun_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              isopen_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLock_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLock_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ExtraProto.RequestLock.class, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestLock> PARSER =
+        new com.google.protobuf.AbstractParser<RequestLock>() {
+      public RequestLock parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestLock(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestLock> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional string fun = 1;
+    public static final int FUN_FIELD_NUMBER = 1;
+    private java.lang.Object fun_;
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    public boolean hasFun() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    public java.lang.String getFun() {
+      java.lang.Object ref = fun_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fun_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string fun = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFunBytes() {
+      java.lang.Object ref = fun_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fun_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 isopen = 2;
+    public static final int ISOPEN_FIELD_NUMBER = 2;
+    private int isopen_;
+    /**
+     * <code>optional int32 isopen = 2;</code>
+     */
+    public boolean hasIsopen() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 isopen = 2;</code>
+     */
+    public int getIsopen() {
+      return isopen_;
+    }
+
+    private void initFields() {
+      fun_ = "";
+      isopen_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getFunBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, isopen_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getFunBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, isopen_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLock parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ExtraProto.RequestLock prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestLock}
+     *
+     * <pre>
+     *&#47;/////// ExtraProto
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLock_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLock_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ExtraProto.RequestLock.class, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ExtraProto.RequestLock.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        fun_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        isopen_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLock_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLock getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ExtraProto.RequestLock.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLock build() {
+        com.trans.pixel.protoc.ExtraProto.RequestLock result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLock buildPartial() {
+        com.trans.pixel.protoc.ExtraProto.RequestLock result = new com.trans.pixel.protoc.ExtraProto.RequestLock(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.fun_ = fun_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.isopen_ = isopen_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ExtraProto.RequestLock) {
+          return mergeFrom((com.trans.pixel.protoc.ExtraProto.RequestLock)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ExtraProto.RequestLock other) {
+        if (other == com.trans.pixel.protoc.ExtraProto.RequestLock.getDefaultInstance()) return this;
+        if (other.hasFun()) {
+          bitField0_ |= 0x00000001;
+          fun_ = other.fun_;
+          onChanged();
+        }
+        if (other.hasIsopen()) {
+          setIsopen(other.getIsopen());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ExtraProto.RequestLock parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ExtraProto.RequestLock) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional string fun = 1;
+      private java.lang.Object fun_ = "";
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public boolean hasFun() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public java.lang.String getFun() {
+        java.lang.Object ref = fun_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          fun_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFunBytes() {
+        java.lang.Object ref = fun_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fun_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public Builder setFun(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        fun_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public Builder clearFun() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        fun_ = getDefaultInstance().getFun();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string fun = 1;</code>
+       */
+      public Builder setFunBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        fun_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 isopen = 2;
+      private int isopen_ ;
+      /**
+       * <code>optional int32 isopen = 2;</code>
+       */
+      public boolean hasIsopen() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 isopen = 2;</code>
+       */
+      public int getIsopen() {
+        return isopen_;
+      }
+      /**
+       * <code>optional int32 isopen = 2;</code>
+       */
+      public Builder setIsopen(int value) {
+        bitField0_ |= 0x00000002;
+        isopen_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 isopen = 2;</code>
+       */
+      public Builder clearIsopen() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        isopen_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestLock)
+    }
+
+    static {
+      defaultInstance = new RequestLock(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestLock)
+  }
+
+  public interface RequestLockListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.RequestLock data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.RequestLock getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestLockList}
+   */
+  public static final class RequestLockList extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestLockListOrBuilder {
+    // Use RequestLockList.newBuilder() to construct.
+    private RequestLockList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestLockList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestLockList defaultInstance;
+    public static RequestLockList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestLockList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestLockList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.ExtraProto.RequestLock>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.ExtraProto.RequestLock.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLockList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLockList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ExtraProto.RequestLockList.class, com.trans.pixel.protoc.ExtraProto.RequestLockList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestLockList> PARSER =
+        new com.google.protobuf.AbstractParser<RequestLockList>() {
+      public RequestLockList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestLockList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestLockList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.RequestLock data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.RequestLock getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ExtraProto.RequestLockList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ExtraProto.RequestLockList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestLockList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ExtraProto.RequestLockListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLockList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLockList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ExtraProto.RequestLockList.class, com.trans.pixel.protoc.ExtraProto.RequestLockList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ExtraProto.RequestLockList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ExtraProto.internal_static_com_trans_pixel_protoc_RequestLockList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLockList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ExtraProto.RequestLockList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLockList build() {
+        com.trans.pixel.protoc.ExtraProto.RequestLockList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ExtraProto.RequestLockList buildPartial() {
+        com.trans.pixel.protoc.ExtraProto.RequestLockList result = new com.trans.pixel.protoc.ExtraProto.RequestLockList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ExtraProto.RequestLockList) {
+          return mergeFrom((com.trans.pixel.protoc.ExtraProto.RequestLockList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ExtraProto.RequestLockList other) {
+        if (other == com.trans.pixel.protoc.ExtraProto.RequestLockList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ExtraProto.RequestLockList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ExtraProto.RequestLockList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.RequestLock data = 1;
+      private java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.ExtraProto.RequestLock>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.RequestLock, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder, com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestLock getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ExtraProto.RequestLock value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.ExtraProto.RequestLock value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ExtraProto.RequestLock value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.ExtraProto.RequestLock.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ExtraProto.RequestLock> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestLock.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestLock.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ExtraProto.RequestLock.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestLock.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ExtraProto.RequestLock.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RequestLock data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ExtraProto.RequestLock.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.RequestLock, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder, com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ExtraProto.RequestLock, com.trans.pixel.protoc.ExtraProto.RequestLock.Builder, com.trans.pixel.protoc.ExtraProto.RequestLockOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestLockList)
+    }
+
+    static {
+      defaultInstance = new RequestLockList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestLockList)
+  }
+
   public interface StarOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -73,10 +1307,6 @@ public final class ExtraProto {
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Star}
-   *
-   * <pre>
-   *&#47;/////// ExtraProto
-   * </pre>
    */
   public static final class Star extends
       com.google.protobuf.GeneratedMessage
@@ -443,10 +1673,6 @@ public final class ExtraProto {
     }
     /**
      * Protobuf type {@code com.trans.pixel.protoc.Star}
-     *
-     * <pre>
-     *&#47;/////// ExtraProto
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -2754,6 +3980,16 @@ public final class ExtraProto {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestLock_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestLock_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestLockList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestLockList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_Star_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2783,40 +4019,55 @@ public final class ExtraProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\020ExtraProto.proto\022\026com.trans.pixel.prot" +
-      "oc\032\nBase.proto\"b\n\004Star\022\n\n\002id\030\001 \001(\005\022\020\n\010ma" +
-      "xlevel\030\002 \001(\005\022\020\n\010maxskill\030\003 \001(\005\022\014\n\004star\030\004" +
-      " \001(\005\022\r\n\005level\030\005 \001(\005\022\r\n\005count\030\006 \001(\005\"6\n\010St" +
-      "arList\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.p" +
-      "rotoc.Star\"J\n\006Fenjie\022\n\n\002id\030\001 \001(\005\0224\n\010loot" +
-      "list\030\002 \001(\0132\".com.trans.pixel.protoc.Rewa" +
-      "rdInfo\":\n\nFenjieList\022,\n\004data\030\001 \003(\0132\036.com" +
-      ".trans.pixel.protoc.Fenjie"
+      "oc\032\nBase.proto\"*\n\013RequestLock\022\013\n\003fun\030\001 \001" +
+      "(\t\022\016\n\006isopen\030\002 \001(\005\"D\n\017RequestLockList\0221\n" +
+      "\004data\030\001 \003(\0132#.com.trans.pixel.protoc.Req" +
+      "uestLock\"b\n\004Star\022\n\n\002id\030\001 \001(\005\022\020\n\010maxlevel" +
+      "\030\002 \001(\005\022\020\n\010maxskill\030\003 \001(\005\022\014\n\004star\030\004 \001(\005\022\r" +
+      "\n\005level\030\005 \001(\005\022\r\n\005count\030\006 \001(\005\"6\n\010StarList" +
+      "\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.protoc." +
+      "Star\"J\n\006Fenjie\022\n\n\002id\030\001 \001(\005\0224\n\010lootlist\030\002" +
+      " \001(\0132\".com.trans.pixel.protoc.RewardInfo",
+      "\":\n\nFenjieList\022,\n\004data\030\001 \003(\0132\036.com.trans" +
+      ".pixel.protoc.Fenjie"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_trans_pixel_protoc_Star_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestLock_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_com_trans_pixel_protoc_RequestLock_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestLock_descriptor,
+              new java.lang.String[] { "Fun", "Isopen", });
+          internal_static_com_trans_pixel_protoc_RequestLockList_descriptor =
+            getDescriptor().getMessageTypes().get(1);
+          internal_static_com_trans_pixel_protoc_RequestLockList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestLockList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_Star_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_Star_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Star_descriptor,
               new java.lang.String[] { "Id", "Maxlevel", "Maxskill", "Star", "Level", "Count", });
           internal_static_com_trans_pixel_protoc_StarList_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_StarList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_StarList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Fenjie_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_Fenjie_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Fenjie_descriptor,
               new java.lang.String[] { "Id", "Lootlist", });
           internal_static_com_trans_pixel_protoc_FenjieList_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_FenjieList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FenjieList_descriptor,

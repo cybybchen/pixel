@@ -503,6 +503,7 @@ message RequestPVPShopCommand {//挂机PVP商店
 message RequestPVPShopPurchaseCommand {//挂机PVP商店购买
 	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
+	optional int32 count = 3;
 }
 message RequestPVPShopRefreshCommand {//挂机PVP商店刷新
 }
@@ -531,6 +532,7 @@ message RequestLadderShopCommand {//天梯商店
 message RequestLadderShopPurchaseCommand {//天梯商店购买
 	required int32 index = 1;//第几个商品(0~7)
 	required int32 id = 2;
+	optional int32 count = 3;
 }
 message RequestLadderShopRefreshCommand {//天梯商店刷新
 }
@@ -596,6 +598,13 @@ message ResponsePurchaseCoinCommand {
 	optional int32 totalTime = 5;//次数
 }
 ////////// ExtraProto
+message RequestLock {
+        optional string fun = 1;
+        optional int32 isopen = 2;
+}
+message RequestLockList {
+        repeated RequestLock data = 1;
+}
 message Star {
 	optional int32 id = 1;
 	optional int32 maxlevel = 2;

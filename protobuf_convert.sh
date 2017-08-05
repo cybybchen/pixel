@@ -77,6 +77,7 @@ protoc -I=${proto_dir}/ --java_out=${proto_dir}/../../src/ ${proto_dir}/*proto
 #protoc -I=${proto_dir}/ --plugin=protoc-gen-lua=${proto_dir}/protoc-gen-lua/protoc-gen-lua --lua_out=${proto_dir}/ ${proto_dir}/*proto
 
 proto_java=src/com/trans/pixel/controller/chain/RequestScreen.java
+func_lock=../ldyxz/xmlnew/ld_Request.xml
 
 
 
@@ -99,6 +100,7 @@ do
 done
 echo -e "package com.trans.pixel.controller.chain;
 import javax.annotation.Resource;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
@@ -114,6 +116,7 @@ import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -163,6 +166,21 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		
 		return nHead.build();
 	}
+
+	private boolean isFuncAvailable(Builder responseBuilder, String command) {
+		Map<String, Integer> cmdmap = CacheService.hgetcache(\"RequestLock\");
+		if(cmdmap.get(command) != 1)
+			log.error(\"Request:\"+command+cmdmap.get(command));
+		if(cmdmap.get(command) == 0) {//close func
+			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+	        erBuilder.setCode(String.valueOf(ErrorConst.FUN_CLOSE_ERROR.getCode()));
+	        erBuilder.setMessage(ErrorConst.FUN_CLOSE_ERROR.getMesssage());
+			responseBuilder.setErrorCommand(erBuilder);
+			return false;
+		}else
+			return true;
+        
+    }
 
 	@Override
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
@@ -234,14 +252,16 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		}
 
 		boolean result = true;" >> $proto_java
-
+echo -e "<data>" >> $func_lock
 for key in ${!commandNames[@]}  
 do  
     echo -e "		if (request.has${commandNames[$key]}()) {
 			$key cmd = request.get${commandNames[$key]}();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, \"${commandNames[$key]}\") && result) result = handleCommand(cmd, responseBuilder, user);
 		}" >> $proto_java
-done 
+	echo -e "<data fun=\"${commandNames[$key]}\" isopen=\"1\"></data>" >> $func_lock
+done
+echo -e "</data>" >> $func_lock
 
 echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand()) {
 			pushNoticeCommand(responseBuilder, user);

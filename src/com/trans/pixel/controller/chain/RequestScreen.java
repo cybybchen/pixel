@@ -1,5 +1,6 @@
 package com.trans.pixel.controller.chain;
 import javax.annotation.Resource;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
@@ -15,6 +16,7 @@ import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
@@ -463,6 +465,21 @@ public abstract class RequestScreen implements RequestHandle {
 		return nHead.build();
 	}
 
+	private boolean isFuncAvailable(Builder responseBuilder, String command) {
+		Map<String, Integer> cmdmap = CacheService.hgetcache("RequestLock");
+		if(cmdmap.get(command) != 1)
+			log.error("Request:"+command+cmdmap.get(command));
+		if(cmdmap.get(command) == 0) {//close func
+			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+	        erBuilder.setCode(String.valueOf(ErrorConst.FUN_CLOSE_ERROR.getCode()));
+	        erBuilder.setMessage(ErrorConst.FUN_CLOSE_ERROR.getMesssage());
+			responseBuilder.setErrorCommand(erBuilder);
+			return false;
+		}else
+			return true;
+        
+    }
+
 	@Override
 	public boolean handleRequest(PixelRequest req, PixelResponse rep) {
 		RequestCommand request = req.command;
@@ -535,823 +552,823 @@ public abstract class RequestScreen implements RequestHandle {
 		boolean result = true;
 		if (request.hasInviteFightBossCommand()) {
 			RequestInviteFightBossCommand cmd = request.getInviteFightBossCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "InviteFightBossCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasResetBattletowerCommand()) {
 			RequestResetBattletowerCommand cmd = request.getResetBattletowerCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ResetBattletowerCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserTaskCommand()) {
 			RequestUserTaskCommand cmd = request.getUserTaskCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserTaskCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasOpenFetterCommand()) {
 			RequestOpenFetterCommand cmd = request.getOpenFetterCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "OpenFetterCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipupCommand()) {
 			RequestEquipupCommand cmd = request.getEquipupCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EquipupCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDelFriendCommand()) {
 			RequestDelFriendCommand cmd = request.getDelFriendCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DelFriendCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasReplyMessageCommand()) {
 			RequestReplyMessageCommand cmd = request.getReplyMessageCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ReplyMessageCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackResourceMineCommand()) {
 			RequestAttackResourceMineCommand cmd = request.getAttackResourceMineCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackResourceMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEventResultCommand()) {
 			RequestEventResultCommand cmd = request.getEventResultCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EventResultCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRichangListCommand()) {
 			RequestRichangListCommand cmd = request.getRichangListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RichangListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackResourceCommand()) {
 			RequestAttackResourceCommand cmd = request.getAttackResourceCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackResourceCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRechargeCommand()) {
 			RequestRechargeCommand cmd = request.getRechargeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RechargeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBosskillCommand()) {
 			RequestBosskillCommand cmd = request.getBosskillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BosskillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserFriendListCommand()) {
 			RequestGetUserFriendListCommand cmd = request.getUserFriendListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserFriendListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAddFriendCommand()) {
 			RequestAddFriendCommand cmd = request.getAddFriendCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AddFriendCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitZhanliCommand()) {
 			RequestSubmitZhanliCommand cmd = request.getSubmitZhanliCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitZhanliCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionFightApplyCommand()) {
 			RequestUnionFightApplyCommand cmd = request.getUnionFightApplyCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionFightApplyCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipStrenthenCommand()) {
 			RequestEquipStrenthenCommand cmd = request.getEquipStrenthenCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EquipStrenthenCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQueryRechargeCommand()) {
 			RequestQueryRechargeCommand cmd = request.getQueryRechargeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "QueryRechargeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDailyShopCommand()) {
 			RequestDailyShopCommand cmd = request.getDailyShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DailyShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRefreshPVPMineCommand()) {
 			RequestRefreshPVPMineCommand cmd = request.getRefreshPVPMineCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RefreshPVPMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPurchaseContractCommand()) {
 			RequestPurchaseContractCommand cmd = request.getPurchaseContractCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PurchaseContractCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBlackShopCommand()) {
 			RequestBlackShopCommand cmd = request.getBlackShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BlackShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAddHeroEquipCommand()) {
 			RequestAddHeroEquipCommand cmd = request.getAddHeroEquipCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AddHeroEquipCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeartBeatCommand()) {
 			RequestHeartBeatCommand cmd = request.getHeartBeatCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HeartBeatCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEventCommand()) {
 			RequestEventCommand cmd = request.getEventCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EventCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSaveFightInfoCommand()) {
 			RequestSaveFightInfoCommand cmd = request.getSaveFightInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SaveFightInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasFenjieHeroCommand()) {
 			RequestFenjieHeroCommand cmd = request.getFenjieHeroCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "FenjieHeroCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTeamCommand()) {
 			RequestGetTeamCommand cmd = request.getTeamCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TeamCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentSpUpCommand()) {
 			RequestTalentSpUpCommand cmd = request.getTalentSpUpCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentSpUpCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUseMaterialCommand()) {
 			RequestUseMaterialCommand cmd = request.getUseMaterialCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UseMaterialCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMohuaSubmitStageCommand()) {
 			RequestMohuaSubmitStageCommand cmd = request.getMohuaSubmitStageCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "MohuaSubmitStageCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasResetHeroSkillCommand()) {
 			RequestResetHeroSkillCommand cmd = request.getResetHeroSkillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ResetHeroSkillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasReadyAttackLadderCommand()) {
 			RequestReadyAttackLadderCommand cmd = request.getReadyAttackLadderCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ReadyAttackLadderCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAchieveListCommand()) {
 			RequestAchieveListCommand cmd = request.getAchieveListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AchieveListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBlackShopRefreshCommand()) {
 			RequestBlackShopRefreshCommand cmd = request.getBlackShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BlackShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderShopPurchaseCommand()) {
 			RequestLadderShopPurchaseCommand cmd = request.getLadderShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLoginCommand()) {
 			RequestLoginCommand cmd = request.getLoginCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LoginCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRecommandCommand()) {
 			RequestRecommandCommand cmd = request.getRecommandCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RecommandCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionBossFightCommand()) {
 			RequestUnionBossFightCommand cmd = request.getUnionBossFightCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionBossFightCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEnterMohuaMapCommand()) {
 			RequestEnterMohuaMapCommand cmd = request.getEnterMohuaMapCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EnterMohuaMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetLadderRankListCommand()) {
 			RequestGetLadderRankListCommand cmd = request.getGetLadderRankListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetLadderRankListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBindRecommandCommand()) {
 			RequestBindRecommandCommand cmd = request.getBindRecommandCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BindRecommandCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateRewardTaskRoomCommand()) {
 			RequestCreateRewardTaskRoomCommand cmd = request.getCreateRewardTaskRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CreateRewardTaskRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHelpLevelCommand()) {
 			RequestHelpLevelCommand cmd = request.getHelpLevelCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HelpLevelCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBloodXiazhuCommand()) {
 			RequestBloodXiazhuCommand cmd = request.getBloodXiazhuCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BloodXiazhuCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitIconCommand()) {
 			RequestSubmitIconCommand cmd = request.getSubmitIconCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitIconCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitRiteCommand()) {
 			RequestSubmitRiteCommand cmd = request.getSubmitRiteCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitRiteCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateBossRoomCommand()) {
 			RequestCreateBossRoomCommand cmd = request.getCreateBossRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CreateBossRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBuySavingBoxCommand()) {
 			RequestBuySavingBoxCommand cmd = request.getBuySavingBoxCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BuySavingBoxCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSevenLoginSignCommand()) {
 			RequestSevenLoginSignCommand cmd = request.getSevenLoginSignCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SevenLoginSignCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRichangRewardCommand()) {
 			RequestRichangRewardCommand cmd = request.getRichangRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RichangRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipComposeCommand()) {
 			RequestEquipComposeCommand cmd = request.getEquipComposeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EquipComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnlockPvpMapCommand()) {
 			RequestUnlockPVPMapCommand cmd = request.getUnlockPvpMapCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnlockPvpMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPvpInbreakListCommand()) {
 			RequestPVPInbreakListCommand cmd = request.getPvpInbreakListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PvpInbreakListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUpdateTeamCommand()) {
 			RequestUpdateTeamCommand cmd = request.getUpdateTeamCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UpdateTeamCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserRewardTaskCommand()) {
 			RequestUserRewardTaskCommand cmd = request.getUserRewardTaskCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserRewardTaskCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMessageBoardListCommand()) {
 			RequestMessageBoardListCommand cmd = request.getMessageBoardListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "MessageBoardListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLibaoShopCommand()) {
 			RequestLibaoShopCommand cmd = request.getLibaoShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LibaoShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackUnionCommand()) {
 			RequestAttackUnionCommand cmd = request.getAttackUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBattletowerShopRefreshCommand()) {
 			RequestBattletowerShopRefreshCommand cmd = request.getBattletowerShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BattletowerShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPurchaseLadderTimeCommand()) {
 			RequestPurchaseLadderTimeCommand cmd = request.getPurchaseLadderTimeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PurchaseLadderTimeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetUserMailListCommand()) {
 			RequestGetUserMailListCommand cmd = request.getGetUserMailListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetUserMailListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasKaifuRewardCommand()) {
 			RequestKaifuRewardCommand cmd = request.getKaifuRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "KaifuRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMohuaHpRewardCommand()) {
 			RequestMohuaHpRewardCommand cmd = request.getMohuaHpRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "MohuaHpRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPVPShopPurchaseCommand()) {
 			RequestPVPShopPurchaseCommand cmd = request.getPVPShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PVPShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLockHeroCommand()) {
 			RequestLockHeroCommand cmd = request.getLockHeroCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LockHeroCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSynthetiseComposeCommand()) {
 			RequestSynthetiseComposeCommand cmd = request.getSynthetiseComposeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SynthetiseComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBindAccountCommand()) {
 			RequestBindAccountCommand cmd = request.getBindAccountCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BindAccountCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasFightInfoCommand()) {
 			RequestFightInfoCommand cmd = request.getFightInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "FightInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackMonsterCommand()) {
 			RequestAttackMonsterCommand cmd = request.getAttackMonsterCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackMonsterCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRankCommand()) {
 			RequestRankCommand cmd = request.getRankCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RankCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRaidCommand()) {
 			RequestStartRaidCommand cmd = request.getRaidCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RaidCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeUseCommand()) {
 			RequestTalentChangeUseCommand cmd = request.getTalentChangeUseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentChangeUseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasReplyUnionCommand()) {
 			RequestReplyUnionCommand cmd = request.getReplyUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ReplyUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackLadderModeCommand()) {
 			RequestAttackLadderModeCommand cmd = request.getAttackLadderModeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackLadderModeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackPVPMonsterCommand()) {
 			RequestAttackPVPMonsterCommand cmd = request.getAttackPVPMonsterCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackPVPMonsterCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasExpeditionShopRefreshCommand()) {
 			RequestExpeditionShopRefreshCommand cmd = request.getExpeditionShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ExpeditionShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQuitUnionCommand()) {
 			RequestQuitUnionCommand cmd = request.getQuitUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "QuitUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserPokedeCommand()) {
 			RequestUserPokedeCommand cmd = request.getUserPokedeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserPokedeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateMessageBoardCommand()) {
 			RequestCreateMessageBoardCommand cmd = request.getCreateMessageBoardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CreateMessageBoardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateUnionCommand()) {
 			RequestCreateUnionCommand cmd = request.getCreateUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CreateUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentResetSkillCommand()) {
 			RequestTalentResetSkillCommand cmd = request.getTalentResetSkillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentResetSkillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBossScoreCommand()) {
 			RequestSubmitBossRoomScoreCommand cmd = request.getSubmitBossScoreCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitBossScoreCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetGrowExpCommand()) {
 			RequestGetGrowExpCommand cmd = request.getGetGrowExpCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetGrowExpCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPurchaseCoinCommand()) {
 			RequestPurchaseCoinCommand cmd = request.getPurchaseCoinCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PurchaseCoinCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUseAreaEquipCommand()) {
 			RequestUseAreaEquipCommand cmd = request.getUseAreaEquipCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UseAreaEquipCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasClearHeroCommand()) {
 			RequestClearHeroCommand cmd = request.getClearHeroCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ClearHeroCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackPVPMineCommand()) {
 			RequestAttackPVPMineCommand cmd = request.getAttackPVPMineCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackPVPMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentupgradeCommand()) {
 			RequestTalentupgradeCommand cmd = request.getTalentupgradeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentupgradeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQueryNoticeBoardCommand()) {
 			RequestQueryNoticeBoardCommand cmd = request.getQueryNoticeBoardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "QueryNoticeBoardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLogCommand()) {
 			RequestLogCommand cmd = request.getLogCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LogCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCdkeyCommand()) {
 			RequestCdkeyCommand cmd = request.getCdkeyCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CdkeyCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitComposeSkillCommand()) {
 			RequestSubmitComposeSkillCommand cmd = request.getSubmitComposeSkillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitComposeSkillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderUserInfoCommand()) {
 			RequestGetLadderUserInfoCommand cmd = request.getLadderUserInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderUserInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSignNameCommand()) {
 			RequestSignNameCommand cmd = request.getSignNameCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SignNameCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeroStrengthenCommand()) {
 			RequestHeroStrengthenCommand cmd = request.getHeroStrengthenCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HeroStrengthenCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasStartMohuaMapCommand()) {
 			RequestStartMohuaMapCommand cmd = request.getStartMohuaMapCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "StartMohuaMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetGrowJewelCommand()) {
 			RequestGetGrowJewelCommand cmd = request.getGetGrowJewelCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetGrowJewelCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBrotherMineInfoCommand()) {
 			RequestBrotherMineInfoCommand cmd = request.getBrotherMineInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BrotherMineInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasReceiveFriendCommand()) {
 			RequestReceiveFriendCommand cmd = request.getReceiveFriendCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ReceiveFriendCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLevelLootResultCommand()) {
 			RequestLevelLootResultCommand cmd = request.getLevelLootResultCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LevelLootResultCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEventBuyCommand()) {
 			RequestEventBuyCommand cmd = request.getEventBuyCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EventBuyCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasOpenRaidCommand()) {
 			RequestOpenRaidCommand cmd = request.getOpenRaidCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "OpenRaidCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRaidShopCommand()) {
 			RequestRaidShopCommand cmd = request.getRaidShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RaidShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRefreshAreaCommand()) {
 			RequestRefreshAreaCommand cmd = request.getRefreshAreaCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RefreshAreaCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMaterialComposeCommand()) {
 			RequestMaterialComposeCommand cmd = request.getMaterialComposeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "MaterialComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBattletowerCommand()) {
 			RequestSubmitBattletowerCommand cmd = request.getSubmitBattletowerCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitBattletowerCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSignCommand()) {
 			RequestSignCommand cmd = request.getSignCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SignCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRefreshPvpMapCommand()) {
 			RequestRefreshPVPMapCommand cmd = request.getRefreshPvpMapCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RefreshPvpMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHandleUnionCommand()) {
 			RequestHandleUnionMemberCommand cmd = request.getHandleUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HandleUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasZanHeroMessageBoardCommand()) {
 			RequestZanHeroMessageBoardCommand cmd = request.getZanHeroMessageBoardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ZanHeroMessageBoardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBloodEnterCommand()) {
 			RequestBloodEnterCommand cmd = request.getBloodEnterCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BloodEnterCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBattletowerShopPurchaseCommand()) {
 			RequestBattletowerShopPurchaseCommand cmd = request.getBattletowerShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BattletowerShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserTeamListCommand()) {
 			RequestUserTeamListCommand cmd = request.getUserTeamListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserTeamListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionShopRefreshCommand()) {
 			RequestUnionShopRefreshCommand cmd = request.getUnionShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserInfoCommand()) {
 			RequestUserInfoCommand cmd = request.getUserInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPvpMineInfoCommand()) {
 			RequestPVPMineInfoCommand cmd = request.getPvpMineInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PvpMineInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasApplyUnionCommand()) {
 			RequestApplyUnionCommand cmd = request.getApplyUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ApplyUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCollectResourceMineCommand()) {
 			RequestCollectResourceMineCommand cmd = request.getCollectResourceMineCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CollectResourceMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQuitFightBossCommand()) {
 			RequestQuitFightBossCommand cmd = request.getQuitFightBossCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "QuitFightBossCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasFeedFoodCommand()) {
 			RequestFeedFoodCommand cmd = request.getFeedFoodCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "FeedFoodCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCheatrechargeCommand()) {
 			RequestCheatRechargeCommand cmd = request.getCheatrechargeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CheatrechargeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPvpMapListCommand()) {
 			RequestPVPMapListCommand cmd = request.getPvpMapListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PvpMapListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDeleteMailCommand()) {
 			RequestDeleteMailCommand cmd = request.getDeleteMailCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DeleteMailCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitLadderResultCommand()) {
 			RequestSubmitLadderResultCommand cmd = request.getSubmitLadderResultCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitLadderResultCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRegisterCommand()) {
 			RequestRegisterCommand cmd = request.getRegisterCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RegisterCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderEnemyCommand()) {
 			RequestLadderEnemyCommand cmd = request.getLadderEnemyCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderEnemyCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHelpAttackPVPMineCommand()) {
 			RequestHelpAttackPVPMineCommand cmd = request.getHelpAttackPVPMineCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HelpAttackPVPMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSaleEquipCommand()) {
 			RequestSaleEquipCommand cmd = request.getSaleEquipCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SaleEquipCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasShopPurchaseCommand()) {
 			RequestShopPurchaseCommand cmd = request.getShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUpgradeUnionCommand()) {
 			RequestUpgradeUnionCommand cmd = request.getUpgradeUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UpgradeUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGreenhandCommand()) {
 			RequestGreenhandCommand cmd = request.getGreenhandCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GreenhandCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBuyHeroPackageCommand()) {
 			RequestBuyHeroPackageCommand cmd = request.getBuyHeroPackageCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BuyHeroPackageCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPVPShopCommand()) {
 			RequestPVPShopCommand cmd = request.getPVPShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PVPShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeroLevelUpToCommand()) {
 			RequestHeroLevelUpToCommand cmd = request.getHeroLevelUpToCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HeroLevelUpToCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRefreshLadderEnemyCommand()) {
 			RequestRefreshLadderEnemyCommand cmd = request.getRefreshLadderEnemyCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RefreshLadderEnemyCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitBosskillCommand()) {
 			RequestSubmitBosskillCommand cmd = request.getSubmitBosskillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitBosskillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRaidShopRefreshCommand()) {
 			RequestRaidShopRefreshCommand cmd = request.getRaidShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RaidShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackBossCommand()) {
 			RequestAttackBossCommand cmd = request.getAttackBossCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackBossCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnlockAreaCommand()) {
 			RequestUnlockAreaCommand cmd = request.getUnlockAreaCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnlockAreaCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAreaCommand()) {
 			RequestAreaCommand cmd = request.getAreaCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AreaCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeroLevelUpCommand()) {
 			RequestHeroLevelUpCommand cmd = request.getHeroLevelUpCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HeroLevelUpCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentSkillLevelupCommand()) {
 			RequestTalentSkillLevelupCommand cmd = request.getTalentSkillLevelupCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentSkillLevelupCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitRewardTaskScoreCommand()) {
 			RequestSubmitRewardTaskScoreCommand cmd = request.getSubmitRewardTaskScoreCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SubmitRewardTaskScoreCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetFightInfoCommand()) {
 			RequestGetFightInfoCommand cmd = request.getGetFightInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetFightInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBlackShopPurchaseCommand()) {
 			RequestBlackShopPurchaseCommand cmd = request.getBlackShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BlackShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMohuaStageRewardCommand()) {
 			RequestMohuaStageRewardCommand cmd = request.getMohuaStageRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "MohuaStageRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetUserLadderRankListCommand()) {
 			RequestGetUserLadderRankListCommand cmd = request.getGetUserLadderRankListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetUserLadderRankListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasChangeUserNameCommand()) {
 			RequestChangeUserNameCommand cmd = request.getChangeUserNameCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ChangeUserNameCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeEquipCommand()) {
 			RequestTalentChangeEquipCommand cmd = request.getTalentChangeEquipCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentChangeEquipCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasShopCommand()) {
 			RequestShopCommand cmd = request.getShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBattletowerShopCommand()) {
 			RequestBattletowerShopCommand cmd = request.getBattletowerShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BattletowerShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserRewardTaskRoomCommand()) {
 			RequestUserRewardTaskRoomCommand cmd = request.getUserRewardTaskRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UserRewardTaskRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasExtraRewardCommand()) {
 			RequestExtraRewardCommand cmd = request.getExtraRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ExtraRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasShouchongRewardCommand()) {
 			RequestShouchongRewardCommand cmd = request.getShouchongRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ShouchongRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUsePropCommand()) {
 			RequestUsePropCommand cmd = request.getUsePropCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UsePropCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderShopCommand()) {
 			RequestLadderShopCommand cmd = request.getLadderShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasInviteToRewardTaskRoomCommand()) {
 			RequestInviteToRewardTaskRoomCommand cmd = request.getInviteToRewardTaskRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "InviteToRewardTaskRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasChoseClearInfoCommand()) {
 			RequestChoseClearInfoCommand cmd = request.getChoseClearInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ChoseClearInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPVPShopRefreshCommand()) {
 			RequestPVPShopRefreshCommand cmd = request.getPVPShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PVPShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionListCommand()) {
 			RequestUnionListCommand cmd = request.getUnionListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderSeasonRewardCommand()) {
 			RequestLadderSeasonRewardCommand cmd = request.getLadderSeasonRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderSeasonRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGiveupRewardTaskCommand()) {
 			RequestGiveupRewardTaskCommand cmd = request.getGiveupRewardTaskCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GiveupRewardTaskCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasQuitRewardTaskRoomCommand()) {
 			RequestQuitRewardTaskRoomCommand cmd = request.getQuitRewardTaskRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "QuitRewardTaskRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasIsAreaOwnerCommand()) {
 			RequestIsAreaOwnerCommand cmd = request.getIsAreaOwnerCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "IsAreaOwnerCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionShopPurchaseCommand()) {
 			RequestUnionShopPurchaseCommand cmd = request.getUnionShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEndMohuaMapCommand()) {
 			RequestEndMohuaMapCommand cmd = request.getEndMohuaMapCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EndMohuaMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderInfoCommand()) {
 			RequestLadderInfoCommand cmd = request.getLadderInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDailyShopRefreshCommand()) {
 			RequestDailyShopRefreshCommand cmd = request.getDailyShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DailyShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDailyShopPurchaseCommand()) {
 			RequestDailyShopPurchaseCommand cmd = request.getDailyShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DailyShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSendMailCommand()) {
 			RequestSendMailCommand cmd = request.getSendMailCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SendMailCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasDefendUnionCommand()) {
 			RequestDefendUnionCommand cmd = request.getDefendUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "DefendUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSearchUnionCommand()) {
 			RequestSearchUnionCommand cmd = request.getSearchUnionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "SearchUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAreaResourceCommand()) {
 			RequestAreaResourceCommand cmd = request.getAreaResourceCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AreaResourceCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderTaskRewardCommand()) {
 			RequestLadderTaskRewardCommand cmd = request.getLadderTaskRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderTaskRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasHeroSpUpCommand()) {
 			RequestHeroSpUpCommand cmd = request.getHeroSpUpCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "HeroSpUpCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLevelStartCommand()) {
 			RequestLevelStartCommand cmd = request.getLevelStartCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LevelStartCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasFenjieEquipCommand()) {
 			RequestFenjieEquipCommand cmd = request.getFenjieEquipCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "FenjieEquipCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasExpeditionShopCommand()) {
 			RequestExpeditionShopCommand cmd = request.getExpeditionShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ExpeditionShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAttackResourceMineInfoCommand()) {
 			RequestAttackResourceMineInfoCommand cmd = request.getAttackResourceMineInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AttackResourceMineInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasReadMailCommand()) {
 			RequestReadMailCommand cmd = request.getReadMailCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ReadMailCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLotteryCommand()) {
 			RequestLotteryCommand cmd = request.getLotteryCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LotteryCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCipherRewardCommand()) {
 			RequestCipherRewardCommand cmd = request.getCipherRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "CipherRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipPokedeCommand()) {
 			RequestEquipPokedeCommand cmd = request.getEquipPokedeCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EquipPokedeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasStartBossRoomCommand()) {
 			RequestStartBossRoomCommand cmd = request.getStartBossRoomCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "StartBossRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasExpeditionShopPurchaseCommand()) {
 			RequestExpeditionShopPurchaseCommand cmd = request.getExpeditionShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ExpeditionShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEventQuickFightCommand()) {
 			RequestEventQuickFightCommand cmd = request.getEventQuickFightCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "EventQuickFightCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeSkillCommand()) {
 			RequestTalentChangeSkillCommand cmd = request.getTalentChangeSkillCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "TalentChangeSkillCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasKaifu2ActivityCommand()) {
 			RequestKaifu2ActivityCommand cmd = request.getKaifu2ActivityCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "Kaifu2ActivityCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUseMohuaCardCommand()) {
 			RequestUseMohuaCardCommand cmd = request.getUseMohuaCardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UseMohuaCardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasLadderShopRefreshCommand()) {
 			RequestLadderShopRefreshCommand cmd = request.getLadderShopRefreshCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "LadderShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBossRoomInfoCommand()) {
 			RequestBossRoomInfoCommand cmd = request.getBossRoomInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "BossRoomInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasAchieveRewardCommand()) {
 			RequestAchieveRewardCommand cmd = request.getAchieveRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "AchieveRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasChangePositionCommand()) {
 			RequestChangePositionCommand cmd = request.getChangePositionCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "ChangePositionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetBattletowerCommand()) {
 			RequestGetBattletowerCommand cmd = request.getGetBattletowerCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetBattletowerCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRaidShopPurchaseCommand()) {
 			RequestRaidShopPurchaseCommand cmd = request.getRaidShopPurchaseCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RaidShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRemoveRecommandCommand()) {
 			RequestRemoveRecommandCommand cmd = request.getRemoveRecommandCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RemoveRecommandCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetTaskRewardCommand()) {
 			RequestGetTaskRewardCommand cmd = request.getGetTaskRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "GetTaskRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasKaifuListCommand()) {
 			RequestKaifuListCommand cmd = request.getKaifuListCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "KaifuListCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionAnnounceCommand()) {
 			RequestSetUnionAnnounceCommand cmd = request.getUnionAnnounceCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionAnnounceCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasRewardTaskRewardCommand()) {
 			RequestRewardTaskRewardCommand cmd = request.getRewardTaskRewardCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "RewardTaskRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPurchaseVipLibaoCommand()) {
 			RequestPurchaseVipLibaoCommand cmd = request.getPurchaseVipLibaoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "PurchaseVipLibaoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionShopCommand()) {
 			RequestUnionShopCommand cmd = request.getUnionShopCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionInfoCommand()) {
 			RequestUnionInfoCommand cmd = request.getUnionInfoCommand();
-			if (result) result = handleCommand(cmd, responseBuilder, user);
+			if (isFuncAvailable(responseBuilder, "UnionInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand()) {
 			pushNoticeCommand(responseBuilder, user);

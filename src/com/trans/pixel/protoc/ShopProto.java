@@ -28192,6 +28192,16 @@ public final class ShopProto {
      * <code>required int32 id = 2;</code>
      */
     int getId();
+
+    // optional int32 count = 3;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    int getCount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestPVPShopPurchaseCommand}
@@ -28256,6 +28266,11 @@ public final class ShopProto {
             case 16: {
               bitField0_ |= 0x00000002;
               id_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readInt32();
               break;
             }
           }
@@ -28338,9 +28353,26 @@ public final class ShopProto {
       return id_;
     }
 
+    // optional int32 count = 3;
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
     private void initFields() {
       index_ = 0;
       id_ = 0;
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -28368,6 +28400,9 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, id_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, count_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -28384,6 +28419,10 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, id_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -28509,6 +28548,8 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -28545,6 +28586,10 @@ public final class ShopProto {
           to_bitField0_ |= 0x00000002;
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -28566,6 +28611,9 @@ public final class ShopProto {
         }
         if (other.hasId()) {
           setId(other.getId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -28680,6 +28728,39 @@ public final class ShopProto {
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count = 3;
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000004;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
         onChanged();
         return this;
       }
@@ -32556,6 +32637,16 @@ public final class ShopProto {
      * <code>required int32 id = 2;</code>
      */
     int getId();
+
+    // optional int32 count = 3;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    int getCount();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestLadderShopPurchaseCommand}
@@ -32620,6 +32711,11 @@ public final class ShopProto {
             case 16: {
               bitField0_ |= 0x00000002;
               id_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              count_ = input.readInt32();
               break;
             }
           }
@@ -32702,9 +32798,26 @@ public final class ShopProto {
       return id_;
     }
 
+    // optional int32 count = 3;
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
     private void initFields() {
       index_ = 0;
       id_ = 0;
+      count_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -32732,6 +32845,9 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(2, id_);
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, count_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -32748,6 +32864,10 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, id_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, count_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -32873,6 +32993,8 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -32909,6 +33031,10 @@ public final class ShopProto {
           to_bitField0_ |= 0x00000002;
         }
         result.id_ = id_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.count_ = count_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -32930,6 +33056,9 @@ public final class ShopProto {
         }
         if (other.hasId()) {
           setId(other.getId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -33044,6 +33173,39 @@ public final class ShopProto {
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000002);
         id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 count = 3;
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000004;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
         onChanged();
         return this;
       }
@@ -42451,46 +42613,47 @@ public final class ShopProto {
       "freshCommand\"q\n\027ResponseRaidShopCommand\022" +
       "0\n\005items\030\001 \003(\0132!.com.trans.pixel.protoc.",
       "Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCos" +
-      "t\030\003 \001(\005\"\027\n\025RequestPVPShopCommand\":\n\035Requ" +
+      "t\030\003 \001(\005\"\027\n\025RequestPVPShopCommand\"I\n\035Requ" +
       "estPVPShopPurchaseCommand\022\r\n\005index\030\001 \002(\005" +
-      "\022\n\n\002id\030\002 \002(\005\"\036\n\034RequestPVPShopRefreshCom" +
-      "mand\"p\n\026ResponsePVPShopCommand\0220\n\005items\030" +
-      "\001 \003(\0132!.com.trans.pixel.protoc.Commodity" +
-      "\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\036" +
-      "\n\034RequestExpeditionShopCommand\"A\n$Reques" +
-      "tExpeditionShopPurchaseCommand\022\r\n\005index\030" +
-      "\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#RequestExpeditionSh",
-      "opRefreshCommand\"w\n\035ResponseExpeditionSh" +
-      "opCommand\0220\n\005items\030\001 \003(\0132!.com.trans.pix" +
-      "el.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013" +
-      "refreshCost\030\003 \001(\005\"\032\n\030RequestLadderShopCo" +
-      "mmand\"=\n RequestLadderShopPurchaseComman" +
-      "d\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"!\n\037RequestL" +
-      "adderShopRefreshCommand\"s\n\031ResponseLadde" +
-      "rShopCommand\0220\n\005items\030\001 \003(\0132!.com.trans." +
-      "pixel.protoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022" +
-      "\023\n\013refreshCost\030\003 \001(\005\"\037\n\035RequestBattletow",
-      "erShopCommand\"B\n%RequestBattletowerShopP" +
-      "urchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(" +
-      "\005\"&\n$RequestBattletowerShopRefreshComman" +
-      "d\"x\n\036ResponseBattletowerShopCommand\0220\n\005i" +
-      "tems\030\001 \003(\0132!.com.trans.pixel.protoc.Comm" +
-      "odity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 " +
-      "\001(\005\"\177\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002" +
-      " \001(\005\022\020\n\010purchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(" +
-      "\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r\n" +
-      "\005isOut\030\010 \001(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132",
-      "\035.com.trans.pixel.protoc.Libao\"\031\n\027Reques" +
-      "tLibaoShopCommand\"H\n\030ResponseLibaoShopCo" +
-      "mmand\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel.p" +
-      "rotoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013can" +
-      "purchase\030\002 \001(\010\"T\n\"ResponseFirstRechargeS" +
-      "tatusCommand\022.\n\006status\030\001 \003(\0132\036.com.trans" +
-      ".pixel.protoc.Status\"0\n\036RequestPurchaseC" +
-      "ontractCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032Reques" +
-      "tPurchaseCoinCommand\"Q\n\033ResponsePurchase" +
-      "CoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004",
-      " \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
+      "\022\n\n\002id\030\002 \002(\005\022\r\n\005count\030\003 \001(\005\"\036\n\034RequestPV" +
+      "PShopRefreshCommand\"p\n\026ResponsePVPShopCo" +
+      "mmand\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.p" +
+      "rotoc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refr" +
+      "eshCost\030\003 \001(\005\"\036\n\034RequestExpeditionShopCo" +
+      "mmand\"A\n$RequestExpeditionShopPurchaseCo" +
+      "mmand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"%\n#Requ",
+      "estExpeditionShopRefreshCommand\"w\n\035Respo" +
+      "nseExpeditionShopCommand\0220\n\005items\030\001 \003(\0132" +
+      "!.com.trans.pixel.protoc.Commodity\022\017\n\007en" +
+      "dTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\032\n\030Requ" +
+      "estLadderShopCommand\"L\n RequestLadderSho" +
+      "pPurchaseCommand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 " +
+      "\002(\005\022\r\n\005count\030\003 \001(\005\"!\n\037RequestLadderShopR" +
+      "efreshCommand\"s\n\031ResponseLadderShopComma" +
+      "nd\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.prot" +
+      "oc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refresh",
+      "Cost\030\003 \001(\005\"\037\n\035RequestBattletowerShopComm" +
+      "and\"B\n%RequestBattletowerShopPurchaseCom" +
+      "mand\022\r\n\005index\030\001 \002(\005\022\n\n\002id\030\002 \002(\005\"&\n$Reque" +
+      "stBattletowerShopRefreshCommand\"x\n\036Respo" +
+      "nseBattletowerShopCommand\0220\n\005items\030\001 \003(\013" +
+      "2!.com.trans.pixel.protoc.Commodity\022\017\n\007e" +
+      "ndTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\177\n\005Lib" +
+      "ao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010pu" +
+      "rchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022\021\n\tvalid" +
+      "time\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r\n\005isOut\030\010 \001",
+      "(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.tran" +
+      "s.pixel.protoc.Libao\"\031\n\027RequestLibaoShop" +
+      "Command\"H\n\030ResponseLibaoShopCommand\022,\n\005i" +
+      "tems\030\001 \003(\0132\035.com.trans.pixel.protoc.Liba" +
+      "o\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002" +
+      " \001(\010\"T\n\"ResponseFirstRechargeStatusComma" +
+      "nd\022.\n\006status\030\001 \003(\0132\036.com.trans.pixel.pro" +
+      "toc.Status\"0\n\036RequestPurchaseContractCom" +
+      "mand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseC" +
+      "oinCommand\"Q\n\033ResponsePurchaseCoinComman",
+      "d\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\tto" +
+      "talTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -42748,7 +42911,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_RequestPVPShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPShopPurchaseCommand_descriptor,
-              new java.lang.String[] { "Index", "Id", });
+              new java.lang.String[] { "Index", "Id", "Count", });
           internal_static_com_trans_pixel_protoc_RequestPVPShopRefreshCommand_descriptor =
             getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestPVPShopRefreshCommand_fieldAccessorTable = new
@@ -42796,7 +42959,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_RequestLadderShopPurchaseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderShopPurchaseCommand_descriptor,
-              new java.lang.String[] { "Index", "Id", });
+              new java.lang.String[] { "Index", "Id", "Count", });
           internal_static_com_trans_pixel_protoc_RequestLadderShopRefreshCommand_descriptor =
             getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_RequestLadderShopRefreshCommand_fieldAccessorTable = new

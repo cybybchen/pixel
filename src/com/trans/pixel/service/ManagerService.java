@@ -31,7 +31,10 @@ import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.ExtraProto.RequestLock;
+import com.trans.pixel.protoc.ExtraProto.RequestLockList;
 import com.trans.pixel.protoc.ShopProto.Cdkey;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -96,6 +99,21 @@ public class ManagerService extends RedisService{
 	private UserTalentService userTalentService;
 	@Resource
 	private UnionRedisService unionRedisService;
+	
+	public ManagerService() {
+		buildRequest();
+	}
+	
+	public void buildRequest(){
+		String xml = RedisService.ReadConfig("ld_Request.xml");
+		RequestLockList.Builder builder = RequestLockList.newBuilder();
+		RedisService.parseXml(xml, builder);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		for(RequestLock request : builder.getDataList()){
+			map.put(request.getFun(), request.getIsopen());
+		}
+		CacheService.hputcacheAll("RequestLock", map);
+	}
 
 	protected String getJson(String key, long userId) {
 		String value = get(key, userId);
