@@ -44,8 +44,11 @@ public class FightInfoService {
 		if (redis.hlenFightInfo(user) >= 10) {
 			return ErrorConst.FIGHTINFO_IS_LIMIT_ERROR;
 		}
-		redis.saveFightInfo(user, fightinfo);
-		mapper.saveFightInfo(new UserFightInfoBean(fightinfo));
+		FightInfo.Builder builder = FightInfo.newBuilder(fightinfo);
+		builder.setUser(user.buildShort());
+		builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
+		redis.saveFightInfo(user, builder.build());
+		mapper.saveFightInfo(new UserFightInfoBean(builder.build()));
 		
 		return SuccessConst.SAVE_SUCCESS;
 	}
