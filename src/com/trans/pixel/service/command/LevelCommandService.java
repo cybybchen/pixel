@@ -234,11 +234,12 @@ public class LevelCommandService extends BaseCommandService {
 		bean.setCount(exp.getReward(0).getCount());
 		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
 		Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+		long expcount = bean.getCount();
 		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
-			bean.setCount(bean.getCount()+(int)(bean.getCount()*0.1));
+			bean.setCount(bean.getCount()+(int)(expcount*0.1));
 		}
 		if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
-			bean.setCount(bean.getCount()+(int)(bean.getCount()*0.2));
+			bean.setCount(bean.getCount()+(int)(expcount*0.2));
 		}
 		rewards.addLoot(bean);}
 		rewards.addAllLoot(redis.getNewplayReward(user, eventconfig.getId()).getLootList());

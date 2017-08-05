@@ -126,13 +126,14 @@ public class RaidCommandService extends BaseCommandService{
 				for(RewardInfo.Builder reward : config.getLootlistBuilderList()) {
 					if(reward.getItemid() != RewardConst.ZHUJUEEXP)
 						continue;
+					long expcount = reward.getCount();
 					Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
 					Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
 					if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
-						reward.setCount(reward.getCount()+(int)(reward.getCount()*0.1));
+						reward.setCount(reward.getCount()+(int)(expcount*0.1));
 					}
 					if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
-						reward.setCount(reward.getCount()+(int)(reward.getCount()*0.2));
+						reward.setCount(reward.getCount()+(int)(expcount*0.2));
 					}
 				}
 				rewards.addAllLoot(config.getLootlistList());
