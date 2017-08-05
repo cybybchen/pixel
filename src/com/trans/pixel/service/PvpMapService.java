@@ -347,7 +347,7 @@ public class PvpMapService {
 				redis.deleteBoss(user, positionid);
 			else
 				redis.deleteEvent(user, positionid);
-			rewards = levelRedisService.eventReward(event.getEventid(), event.getLevel());
+			rewards = levelRedisService.eventReward(user, event.getEventid(), event.getLevel());
 			Map<Integer, PVPMap> map = redis.getPvpMap();
 			if(map.containsKey(event.getFieldid())) {
 				List<RewardInfo> list = map.get(event.getFieldid()).getLootlistList();
@@ -414,7 +414,7 @@ public class PvpMapService {
 				redis.deleteBoss(user, event.getPositionid());
 			else
 				redis.deleteEvent(user, event.getPositionid());
-			rewards.addAllLoot(levelRedisService.eventReward(event.getEventid(), event.getLevel()).getLootList());
+			rewards.addAllLoot(levelRedisService.eventReward(user, event.getEventid(), event.getLevel()).getLootList());
 			if(map.containsKey(event.getFieldid())) {
 				List<RewardInfo> list = map.get(event.getFieldid()).getLootlistList();
 				for(RewardInfo rd : list) {

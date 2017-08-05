@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
+import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
@@ -24,9 +27,11 @@ import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class RaidCommandService extends BaseCommandService{
@@ -45,6 +50,8 @@ public class RaidCommandService extends BaseCommandService{
 	private LevelRedisService levelRedisService;
 	@Resource
 	private RankService rankService;
+	@Resource
+	private UserService userService;
 
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
@@ -114,8 +121,20 @@ public class RaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(cmd.getRet()){
-				MultiReward.Builder rewards = levelRedisService.eventReward(event, myraid.getLevel());
-				EventConfig config = redis.getRaidLevel(myraid.getLevel());
+				MultiReward.Builder rewards = levelRedisService.eventReward(user, event, myraid.getLevel());
+				EventConfig.Builder config = EventConfig.newBuilder(redis.getRaidLevel(myraid.getLevel()));
+				for(RewardInfo.Builder reward : config.getLootlistBuilderList()) {
+					if(reward.getItemid() != RewardConst.ZHUJUEEXP)
+						continue;
+					Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
+					Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+					if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+						reward.setCount(reward.getCount()+(int)(reward.getCount()*0.1));
+					}
+					if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
+						reward.setCount(reward.getCount()+(int)(reward.getCount()*0.2));
+					}
+				}
 				rewards.addAllLoot(config.getLootlistList());
 				handleRewards(responseBuilder, user, rewards.build());
 				

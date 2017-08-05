@@ -97,7 +97,7 @@ public class RewardTaskService {
 	private List<RewardInfo> getTaskReward(UserBean user, RewardTask rewardTask, EventConfig event) {
 		List<RewardInfo> rewardlist = new ArrayList<RewardInfo>();
 		rewardlist.addAll(propService.rewardsHandle(user, rewardTask.getLootlistList()).getLootList());
-		rewardlist.addAll(levelRedisService.eventReward(event, 0).getLootList());
+		rewardlist.addAll(levelRedisService.eventReward(user, event, 0).getLootList());
 		if(rewardTask.getType() == 1){//普通悬赏
 			for(int i = rewardlist.size() - 1; i >= 0; i--) {
 				int itemid = rewardlist.get(i).getItemid();

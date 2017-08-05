@@ -419,11 +419,11 @@ public class LevelRedisService extends RedisService {
 		return map.get(eventid);
 	}
 	
-	public MultiReward.Builder eventReward(int eventid, int level){
-		return eventReward(getEvent(eventid), level);
+	public MultiReward.Builder eventReward(UserBean user, int eventid, int level){
+		return eventReward(user, getEvent(eventid), level);
 	}
 	/**副本传层数，关卡传品质*/
-	public MultiReward.Builder eventReward(EventConfig eventconfig, int level){
+	public MultiReward.Builder eventReward(UserBean user, EventConfig eventconfig, int level){
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(eventconfig == null)
 			return rewards;
@@ -443,8 +443,19 @@ public class LevelRedisService extends RedisService {
 					reward.setCount(loot.getCount()*count);
 				}
 			}
-			if(reward.getCount() > 0)
+			if(reward.getCount() > 0) {
+				if(reward.getItemid() != RewardConst.ZHUJUEEXP)
+					continue;
+				Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
+				Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+				if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+					reward.setCount(reward.getCount()+(int)(reward.getCount()*0.1));
+				}
+				if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
+					reward.setCount(reward.getCount()+(int)(reward.getCount()*0.2));
+				}
 				rewards.addLoot(reward);
+			}
 		}
 		if(eventconfig.getType() == 0) {//only fight event
 			if(eventconfig.hasEnemygroup())

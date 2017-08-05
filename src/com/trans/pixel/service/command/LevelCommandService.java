@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.UserInfoProto.AreaEvent;
 import com.trans.pixel.protoc.UserInfoProto.Daguan;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
@@ -57,6 +59,7 @@ import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class LevelCommandService extends BaseCommandService {
@@ -204,7 +207,7 @@ public class LevelCommandService extends BaseCommandService {
 	}
 
 	public MultiReward.Builder eventReward(EventConfig eventconfig, Event event, UserBean user){
-		MultiReward.Builder rewards = redis.eventReward(eventconfig, event.getLevel());
+		MultiReward.Builder rewards = redis.eventReward(user, eventconfig, event.getLevel());
 		Daguan.Builder daguan = redis.getDaguan(event.getDaguan());
 		if(eventconfig.getType() == 0){ //only fight event
 			for(RewardInfo.Builder reward : daguan.getLootlistBuilderList()){
@@ -229,6 +232,14 @@ public class LevelCommandService extends BaseCommandService {
 		{RewardInfo.Builder bean = RewardInfo.newBuilder();
 		bean.setItemid(exp.getReward(0).getItemid());
 		bean.setCount(exp.getReward(0).getCount());
+		Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
+		Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+		if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+			bean.setCount(bean.getCount()+(int)(bean.getCount()*0.1));
+		}
+		if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
+			bean.setCount(bean.getCount()+(int)(bean.getCount()*0.2));
+		}
 		rewards.addLoot(bean);}
 		rewards.addAllLoot(redis.getNewplayReward(user, eventconfig.getId()).getLootList());
 		rewardService.mergeReward(rewards);
