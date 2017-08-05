@@ -154,6 +154,7 @@ public class UnionService extends FightService{
 					members.add(userinfo);
 				}
 				redis.saveMembers(memberIds, user);
+				union.setCount(members.size());
 			}
 		}
 		if(union == null)
