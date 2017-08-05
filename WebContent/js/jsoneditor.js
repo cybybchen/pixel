@@ -624,7 +624,7 @@ function appendConfigData(key, value, visible){
     editor.find(".update-btn").hide();
     if(visible){
         editor.find(".json-editor").show();
-        if(key == "GmRight" || key == "VersionController") editor.find(".update-btn").show();
+        if(key == "GmRight" || key == "VersionController" || key == "RequestLock") editor.find(".update-btn").show();
         editor.find(".json").show();
         editor.find(".json-editor").jsonEditor(value, { change: updateJSON, propertyclick: showPath });
         editor.find(".json").val(JSON.stringify(value));
@@ -710,6 +710,7 @@ function buildConfigJson(key, value){
         }else if(datatype == "gmright"){
             json["GmRight"] = "{}";
             json["VersionController"] = "{}";
+            json["RequestLock"] = "{}";
         }else{
             json["HeroStarConfig"] = "{}";
             json["LotteryConfig1001"] = "{}";
@@ -783,6 +784,9 @@ function appendConfigDatas(message, visible){
     }
     if(message["VersionController"]!=null){
         appendConfigData("VersionController", message["VersionController"], visible);
+    }
+    if(message["RequestLock"]!=null){
+        appendConfigData("RequestLock", message["RequestLock"], visible);
     }
     if(message["Cdkey"]!=null){
     	$("#config-cdkey").show();
@@ -1162,6 +1166,7 @@ $(document).ready(function() {
         }else if(json.hasOwnProperty("GmRight")){
             json = buildConfigJson("GmRight", "1");
             json["VersionController"] = 1;
+            json["RequestLock"] = 1;
             updateConfigJson(json);
         }else
         	appendConfigDatas(json, false);

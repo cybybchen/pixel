@@ -105,14 +105,25 @@ public class ManagerService extends RedisService{
 	}
 	
 	public void buildRequest(){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+//		if(CacheService.getcache("RequestLock") == null) {
 		String xml = RedisService.ReadConfig("ld_Request.xml");
 		RequestLockList.Builder builder = RequestLockList.newBuilder();
 		RedisService.parseXml(xml, builder);
-		Map<String, Integer> map = new HashMap<String, Integer>();
 		for(RequestLock request : builder.getDataList()){
 			map.put(request.getFun(), request.getIsopen());
 		}
+//		}
+//		Map<String, String> keyvalue = hget(RedisKey.REQUESTLOCK_PREFIX);
+//		for(Entry<String, String> entry : keyvalue.entrySet()) {
+//			int value = Integer.parseInt(entry.getValue());
+//			map.put(entry.getKey(), value);
+//		}
 		CacheService.hputcacheAll("RequestLock", map);
+//		for(Entry<String, Integer> entry : map.entrySet()) {
+//			keyvalue.put(entry.getKey(), entry.getValue()+"");
+//		}
+//		hputAll(RedisKey.REQUESTLOCK_PREFIX, keyvalue);
 	}
 
 	protected String getJson(String key, long userId) {
@@ -294,6 +305,38 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("VersionController", object);
 		}
+		
+//		if(req.containsKey("update-RequestLock") && gmaccountBean.getMaster() == 1){
+//			Map<String, String> map = hget(RedisKey.REQUESTLOCK_PREFIX);
+//			JSONObject object = JSONObject.fromObject(req.get("update-RequestLock"));
+//			for(String key : map.keySet()){
+//				if(!object.keySet().contains(key)){
+//					hdelete(RedisKey.REQUESTLOCK_PREFIX, key);
+//					logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-RequestLock", map.get(key));
+//				}else if(map.get(key).equals(object.getString(key))){
+//					object.remove(key);
+//				}
+//			}
+//			map = new HashMap<String, String>();
+//			for(Object key : object.keySet()){
+//				map.put(key.toString(), object.get(key).toString());
+//			}
+//			if(!map.isEmpty()){
+//				hputAll(RedisKey.REQUESTLOCK_PREFIX, map);
+//				logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "update-RequestLock", map.toString());
+//			}
+//			req.put("RequestLock", 1);
+//		}else if(req.containsKey("del-RequestLock") && gmaccountBean.getMaster() == 1){
+//			delete(RedisKey.REQUESTLOCK_PREFIX);
+//			logService.sendGmLog(0, 0, gmaccountBean.getAccount(), "del-RequestLock", "");
+//			req.put("RequestLock", 1);
+//		}
+//		if(req.containsKey("RequestLock") && gmaccountBean.getMaster() == 1){
+//			Map<String, String> map = hget(RedisKey.REQUESTLOCK_PREFIX);
+//			JSONObject object = new JSONObject();
+//			object.putAll(map);
+//			result.put("RequestLock", object);
+//		}
 		
 		Long userId = TypeTranslatedUtil.jsonGetLong(req, "userId");
 		String userName = TypeTranslatedUtil.jsonGetString(req, "userName");
