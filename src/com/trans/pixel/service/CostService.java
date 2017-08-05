@@ -378,7 +378,7 @@ public class CostService {
 			if (userProp != null && userProp.getPropCount() >= itemCount) {
 				return true;
 			}
-		} else if (itemId == RewardConst.RAID_KEY && replace) {
+		} else if (itemId > RewardConst.CAILIAO && replace) {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < itemCount) {
 				Material material = equipService.getMaterial(itemId);
