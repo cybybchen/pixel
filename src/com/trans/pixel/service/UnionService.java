@@ -916,7 +916,6 @@ public class UnionService extends FightService{
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user.getUnionId(), user.getServerId());
 			redis.saveUnion(union.build(), user);
 			redis.clearLock("Union_"+union.getId());
-			redis.clearLock("UnionBoss_" + union.getId() + ":" + bossId);
 			/**
 			 * 累计击败工会boss的活动
 			 */
@@ -932,6 +931,7 @@ public class UnionService extends FightService{
 			userRankBean.setDps(userRankBean.getDps() + hp);
 			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 		}
+		redis.clearLock("UnionBoss_" + union.getId() + ":" + bossId);
 		
 		for(RewardInfo reward : unionBoss.getLootlistList()) {
 			if(reward.getWeight() > RedisService.nextInt(100))
