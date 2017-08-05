@@ -2658,7 +2658,7 @@ message ResponseFightInfoCommand {
 }
 
 message RequestSaveFightInfoCommand {
-	required FightInfo fight = 1;
+	optional FightInfo fight = 1;
 	optional bool isDelete = 2;
 	optional uint32 fightinfoId = 3;
 }
@@ -3497,7 +3497,7 @@ message ResponseUserRewardTaskCommand {
 	repeated UserRewardTask userRewardTask = 1;
 	message EventStatus {
 		required uint32 eventid = 1;
-		required uint32 status = 2;
+		required uint32 status = 2;//1可以跳过
 	}
 	repeated EventStatus status = 2;
 }

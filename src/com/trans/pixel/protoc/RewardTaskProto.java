@@ -8179,10 +8179,18 @@ public final class RewardTaskProto {
       // required uint32 status = 2;
       /**
        * <code>required uint32 status = 2;</code>
+       *
+       * <pre>
+       *1可以跳过
+       * </pre>
        */
       boolean hasStatus();
       /**
        * <code>required uint32 status = 2;</code>
+       *
+       * <pre>
+       *1可以跳过
+       * </pre>
        */
       int getStatus();
     }
@@ -8308,12 +8316,20 @@ public final class RewardTaskProto {
       private int status_;
       /**
        * <code>required uint32 status = 2;</code>
+       *
+       * <pre>
+       *1可以跳过
+       * </pre>
        */
       public boolean hasStatus() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>required uint32 status = 2;</code>
+       *
+       * <pre>
+       *1可以跳过
+       * </pre>
        */
       public int getStatus() {
         return status_;
@@ -8616,18 +8632,30 @@ public final class RewardTaskProto {
         private int status_ ;
         /**
          * <code>required uint32 status = 2;</code>
+         *
+         * <pre>
+         *1可以跳过
+         * </pre>
          */
         public boolean hasStatus() {
           return ((bitField0_ & 0x00000002) == 0x00000002);
         }
         /**
          * <code>required uint32 status = 2;</code>
+         *
+         * <pre>
+         *1可以跳过
+         * </pre>
          */
         public int getStatus() {
           return status_;
         }
         /**
          * <code>required uint32 status = 2;</code>
+         *
+         * <pre>
+         *1可以跳过
+         * </pre>
          */
         public Builder setStatus(int value) {
           bitField0_ |= 0x00000002;
@@ -8637,6 +8665,10 @@ public final class RewardTaskProto {
         }
         /**
          * <code>required uint32 status = 2;</code>
+         *
+         * <pre>
+         *1可以跳过
+         * </pre>
          */
         public Builder clearStatus() {
           bitField0_ = (bitField0_ & ~0x00000002);

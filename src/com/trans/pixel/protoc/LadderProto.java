@@ -23301,17 +23301,17 @@ public final class LadderProto {
   public interface RequestSaveFightInfoCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required .com.trans.pixel.protoc.FightInfo fight = 1;
+    // optional .com.trans.pixel.protoc.FightInfo fight = 1;
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     boolean hasFight();
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     com.trans.pixel.protoc.Base.FightInfo getFight();
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder();
 
@@ -23449,23 +23449,23 @@ public final class LadderProto {
     }
 
     private int bitField0_;
-    // required .com.trans.pixel.protoc.FightInfo fight = 1;
+    // optional .com.trans.pixel.protoc.FightInfo fight = 1;
     public static final int FIGHT_FIELD_NUMBER = 1;
     private com.trans.pixel.protoc.Base.FightInfo fight_;
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     public boolean hasFight() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     public com.trans.pixel.protoc.Base.FightInfo getFight() {
       return fight_;
     }
     /**
-     * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+     * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
      */
     public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder() {
       return fight_;
@@ -23513,13 +23513,11 @@ public final class LadderProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasFight()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!getFight().isInitialized()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasFight()) {
+        if (!getFight().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -23759,13 +23757,11 @@ public final class LadderProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasFight()) {
-          
-          return false;
-        }
-        if (!getFight().isInitialized()) {
-          
-          return false;
+        if (hasFight()) {
+          if (!getFight().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -23789,18 +23785,18 @@ public final class LadderProto {
       }
       private int bitField0_;
 
-      // required .com.trans.pixel.protoc.FightInfo fight = 1;
+      // optional .com.trans.pixel.protoc.FightInfo fight = 1;
       private com.trans.pixel.protoc.Base.FightInfo fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> fightBuilder_;
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public boolean hasFight() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public com.trans.pixel.protoc.Base.FightInfo getFight() {
         if (fightBuilder_ == null) {
@@ -23810,7 +23806,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public Builder setFight(com.trans.pixel.protoc.Base.FightInfo value) {
         if (fightBuilder_ == null) {
@@ -23826,7 +23822,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public Builder setFight(
           com.trans.pixel.protoc.Base.FightInfo.Builder builderForValue) {
@@ -23840,7 +23836,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public Builder mergeFight(com.trans.pixel.protoc.Base.FightInfo value) {
         if (fightBuilder_ == null) {
@@ -23859,7 +23855,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public Builder clearFight() {
         if (fightBuilder_ == null) {
@@ -23872,7 +23868,7 @@ public final class LadderProto {
         return this;
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public com.trans.pixel.protoc.Base.FightInfo.Builder getFightBuilder() {
         bitField0_ |= 0x00000001;
@@ -23880,7 +23876,7 @@ public final class LadderProto {
         return getFightFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       public com.trans.pixel.protoc.Base.FightInfoOrBuilder getFightOrBuilder() {
         if (fightBuilder_ != null) {
@@ -23890,7 +23886,7 @@ public final class LadderProto {
         }
       }
       /**
-       * <code>required .com.trans.pixel.protoc.FightInfo fight = 1;</code>
+       * <code>optional .com.trans.pixel.protoc.FightInfo fight = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.trans.pixel.protoc.Base.FightInfo, com.trans.pixel.protoc.Base.FightInfo.Builder, com.trans.pixel.protoc.Base.FightInfoOrBuilder> 
@@ -29040,7 +29036,7 @@ public final class LadderProto {
       "rotoc.FightInfo\022\r\n\005score\030\002 \001(\r\"K\n\030Respon",
       "seFightInfoCommand\022/\n\004info\030\001 \003(\0132!.com.t" +
       "rans.pixel.protoc.FightInfo\"v\n\033RequestSa" +
-      "veFightInfoCommand\0220\n\005fight\030\001 \002(\0132!.com." +
+      "veFightInfoCommand\0220\n\005fight\030\001 \001(\0132!.com." +
       "trans.pixel.protoc.FightInfo\022\020\n\010isDelete" +
       "\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\"!\n\037RequestGe" +
       "tLadderRankListCommand\"%\n#RequestGetUser" +
