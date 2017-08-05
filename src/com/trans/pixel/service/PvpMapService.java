@@ -313,7 +313,7 @@ public class PvpMapService {
 					continue;
 				resource += map.getYield();
 				for(PVPMine mine : map.getKuangdianList()){
-					if(!mine.hasOwner())
+//					if(!mine.hasOwner())
 						resource += mine.getYield();
 				}
 			}
