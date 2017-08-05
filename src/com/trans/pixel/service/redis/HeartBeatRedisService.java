@@ -20,7 +20,7 @@ public class HeartBeatRedisService extends CacheService {
 	}
 	
 	public void heartBeat(int serverId, long userId) {
-		saddcache(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
+		saddSet(RedisKey.HEART_BEAT_PREFIX + serverId, "" + userId);
 	}
 	
 	public long getHeartBeatCount(int serverId) {
@@ -31,7 +31,7 @@ public class HeartBeatRedisService extends CacheService {
 	}
 	
 	public Set<String> spopHeartBeatUser(int serverId) {
-		return spopcache(RedisKey.HEART_BEAT_PREFIX + serverId);
+		return spopSet(RedisKey.HEART_BEAT_PREFIX + serverId);
 	}
 	
 	public void heartBeatToRedis(int serverId, Set<String> userIds) {

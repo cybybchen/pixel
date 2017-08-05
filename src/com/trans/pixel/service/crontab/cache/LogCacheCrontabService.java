@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.Set;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.service.redis.LogRedisService;
-import com.trans.pixel.utils.ConfigUtil;
 
 @Service
 public class LogCacheCrontabService {
@@ -33,10 +32,10 @@ public class LogCacheCrontabService {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 //			DataOutputStream doc = new DataOutputStream(netOut);
-//			Set<String> logs = logRedisService.popLog();
-			while (true) {
-//			for (String log : logs) {
-				String log = logRedisService.popLog();
+			List<String> logs = logRedisService.popLog();
+//			while (true) {
+			for (String log : logs) {
+//				String log = logRedisService.popLog();
 				if (log == null)
 					break;
 				log += "\n";

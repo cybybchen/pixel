@@ -1,13 +1,11 @@
 package com.trans.pixel.service.cache;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -100,16 +98,16 @@ public class CacheService {
 
 	private static Object object = new Object();
 	@SuppressWarnings("unchecked")
-	public static final<T> void saddcache(String key, T value) {
-		Set<T> set = (Set<T>)_setcache.get(key);
-		if (set != null) {
-			set.add(value);
-		}else {
-			logger.error("No available Set key:"+key);
-			synchronized(object) {
-				set = (Set<T>)_setcache.get(key);
+	public static final<T> void saddSet(String key, T value) {
+		synchronized(object) {
+			Set<T> set = (TreeSet<T>)_setcache.get(key);
+			if (set != null) {
+				set.add(value);
+			}else {
+				logger.error("No available Set key:"+key);
+				set = (TreeSet<T>)_setcache.get(key);
 				if (set == null) {
-					set = Collections.synchronizedSet(new HashSet<T>());
+					set = new TreeSet<T>();
 					_setcache.put(key, set);
 				}
 				set.add(value);
@@ -118,43 +116,77 @@ public class CacheService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public synchronized static final<T> Set<T> spopcache(String key) {
-		Set<T> set = (Set<T>)_setcache.get(key);
-		_setcache.put(key, Collections.synchronizedSet(new HashSet<T>()));
-		if (set != null) {
-			return set;
-		}else {
-			logger.error("Not support Set key:"+key);
-			return Collections.synchronizedSet(new HashSet<T>());
+	public static final<T> Set<T> spopSet(String key) {
+		synchronized(object) {
+			Set<T> set = (TreeSet<T>)_setcache.get(key);
+			_setcache.put(key, new TreeSet<T>());
+			if (set != null) {
+				return set;
+			}else {
+				logger.error("Not support Set key:"+key);
+				return new TreeSet<T>();
+			}
 		}
 	}
 	
+//	@SuppressWarnings("unchecked")
+//	public static final<T> T spopHeartBeat(String key) {
+//		ConcurrentLinkedQueue<T> list = (ConcurrentLinkedQueue<T>)_setcache.get(key);
+////		_setcache.put(key, Collections.synchronizedList(new LinkedList<T>()));
+//		logger.debug("list size is" + list.size());
+//		if (list != null && !list.isEmpty()) {
+//			return list.poll();
+//		}else {
+//			logger.error("Not support Set key:"+key);
+//			return null;
+//		}
+//	}
+//	
+//	@SuppressWarnings("unchecked")
+//	public static final<T> void saddHeartBeat(String key, T value) {
+//		ConcurrentLinkedQueue<T> list = (ConcurrentLinkedQueue<T>)_setcache.get(key);
+//		if (list != null) {
+//			list.offer(value);
+//		}else {
+//			logger.error("No available Set key:"+key);
+//			synchronized(object) {
+//				list = (ConcurrentLinkedQueue<T>)_setcache.get(key);
+//				if (list == null) {
+//					list = new ConcurrentLinkedQueue<T>();
+////					list = (LinkedList<T>) Collections.synchronizedList(new LinkedList<T>());
+//					_setcache.put(key, list);
+//				}
+//				list.offer(value);
+//			}
+//		}
+//	}
+	
+	private static Object object1 = new Object();
 	@SuppressWarnings("unchecked")
-	public synchronized static final<T> T spop(String key) {
-		LinkedList<T> list = (LinkedList<T>)_setcache.get(key);
-//		_setcache.put(key, Collections.synchronizedList(new LinkedList<T>()));
-		if (list != null && !list.isEmpty()) {
-			return list.pop();
-		}else {
-			logger.error("Not support Set key:"+key);
-			return null;
+	public static final<T> void saddList(String key, T value) {
+		synchronized(object1) {
+			List<T> set = (ArrayList<T>)_setcache.get(key);
+			if (set != null) {
+				set.add(value);
+			}else {
+				logger.error("No available List key:"+key);
+				set = new ArrayList<T>();
+				_setcache.put(key, set);
+				set.add(value);
+			}
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public static final<T> void sadd(String key, T value) {
-		LinkedList<T> list = (LinkedList<T>)_setcache.get(key);
-		if (list != null) {
-			list.add(value);
-		}else {
-			logger.error("No available Set key:"+key);
-			synchronized(object) {
-				list = (LinkedList<T>)_setcache.get(key);
-				if (list == null) {
-					list = (LinkedList<T>) Collections.synchronizedList(new LinkedList<T>());
-					_setcache.put(key, list);
-				}
-				list.add(value);
+	public static final<T> List<T> spopList(String key) {
+		synchronized(object1) {
+			List<T> set = (ArrayList<T>)_setcache.get(key);
+			_setcache.put(key, new ArrayList<T>());
+			if (set != null) {
+				return set;
+			}else {
+				logger.error("Not support List key:"+key);
+				return new ArrayList<T>();
 			}
 		}
 	}
