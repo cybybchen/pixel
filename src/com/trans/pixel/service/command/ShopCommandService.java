@@ -607,7 +607,7 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_PVPCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_PVPCONDITION));
-		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
+		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost()*Math.max(1, cmd.getCount()), true)){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
@@ -821,7 +821,7 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_LADDERCONDITION);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_LADDERCONDITION));
-		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost(), true)){
+		}else*/else if(!costService.cost(user, commbuilder.getCurrency(), commbuilder.getCost()*Math.max(1, cmd.getCount()), true)){
 			ErrorConst error = getNotEnoughError(commbuilder.getCurrency());
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), error);
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
