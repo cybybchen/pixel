@@ -850,8 +850,12 @@ public class UnionService extends FightService{
 		Iterator<Entry<Integer, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<Integer, UnionBoss> entry = it.next();
-			if (calUnionBossRefresh(union, entry.getValue(), user.getUnionId(), user.getServerId()))
-				redis.saveUnion(union.build(), user);
+			if (calUnionBossRefresh(union, entry.getValue(), user.getUnionId(), user.getServerId())) {
+				if(redis.setLock("Union_"+union.getId())) {
+					redis.saveUnion(union.build(), user);
+					redis.clearLock("Union_"+union.getId());
+				}
+			}
 		}
 		
 		List<UnionBossRecord> builderList = new ArrayList<UnionBossRecord>();
@@ -1198,8 +1202,10 @@ public class UnionService extends FightService{
 		
 		union.setExp(union.getExp() + exp);
 		calUnionLevel(union);
-		
-		redis.saveUnion(union.build(), user);
+		if(redis.waitLock("Union_"+union.getId())) {
+			redis.saveUnion(union.build(), user);
+			redis.clearLock("Union_"+union.getId());
+		}
 		unionMapper.updateUnion(new UnionBean(union));
 	}
 	
