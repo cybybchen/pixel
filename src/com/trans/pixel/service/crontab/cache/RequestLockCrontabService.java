@@ -14,7 +14,7 @@ public class RequestLockCrontabService {
 	@Resource
 	private ManagerService managerService;
 	
-	@Scheduled(cron = "0 0/1 * * * ? ")
+	@Scheduled(cron = "0 0/5 * * * ? ")
 	public void buildConfig() {
 		managerService.buildRequest();
 	}

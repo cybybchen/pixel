@@ -252,6 +252,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		}
 
 		boolean result = true;" >> $proto_java
+rm $func_lock
 echo -e "<data>" >> $func_lock
 for key in ${!commandNames[@]}  
 do  
