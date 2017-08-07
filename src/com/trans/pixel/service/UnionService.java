@@ -47,8 +47,8 @@ import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
-import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord;
-import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord.FIGHT_STATUS;
+import com.trans.pixel.protoc.UnionProto.UnionFightRecord;
+import com.trans.pixel.protoc.UnionProto.UnionFightRecord.FIGHT_STATUS;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -1219,10 +1219,10 @@ public class UnionService extends FightService{
 	
 	public void handlerFightMembers(UserBean user, List<Long> userIds) {
 		Map<String, String> map = new HashMap<String, String>();
-		List<UnionFightApplyRecord> applyList = getUnionFightApply(user);
-		for (UnionFightApplyRecord record : applyList) {
+		List<UnionFightRecord> applyList = getUnionFightApply(user);
+		for (UnionFightRecord record : applyList) {
 			if (userIds.contains(record.getUser().getId())) {
-				UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder(record);
+				UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(record);
 				builder.setStatus(FIGHT_STATUS.CAN_FIGHT);
 				map.put("" + builder.getUser().getId(), RedisService.formatJson(builder.build()));
 			}
@@ -1231,8 +1231,43 @@ public class UnionService extends FightService{
 		redis.updateApplyFight(user, map);
 	}
 	
-	public List<UnionFightApplyRecord> getUnionFightApply(UserBean user) {
-		return redis.getUnionFightApply(user);
+	public List<UnionFightRecord> getUnionFightApply(int unionId) {
+		return redis.getUnionFightApply(unionId);
+	}
+	
+	public ResultConst unionFight(UserBean user, long userId) {
+		String lockKey = "unionfight:" + userId;
+		if (!redis.setLock(lockKey, 4))
+			return ErrorConst.USER_IS_BEING_ATTACKED_ERROR;
+		
+		String selfLockKey = "unionfight:" + user.getId();
+		if (!redis.setLock(selfLockKey, 4))
+			return ErrorConst.SELF_IS_BEING_ATTACKED_ERROR;
+		
+		UnionFightRecord record = redis.getUnionFightRecord(user.getUnionId(), user.getId());
+		if (record == null)
+			return ErrorConst.SELF_CAN_NOT_ATTACKED_ERROR;
+		
+		if (record.getAttackCount() >= 2)
+			return ErrorConst.USER_HAS_NO_ATTACK_TIMES_ERROR;
+		
+		UnionFightRecord otherRecord = redis.getUnionFightRecord(user.getUnionId(), userId);
+		if (otherRecord == null)
+			return ErrorConst.USER_CAN_NOT_ATTACKED_ERROR;
+		
+		if (otherRecord.getBeAttackedCount() >= 2)
+			return ErrorConst.USER_HAS_NO_BEING_ATTACKED_TIMES_ERROR;
+		
+		UnionFightRecord.Builder recordBuilder = UnionFightRecord.newBuilder(record);
+		recordBuilder.setAttackCount(recordBuilder.getAttackCount() + 1);
+		
+		UnionFightRecord.Builder otherBuilder = UnionFightRecord.newBuilder(record);
+		otherBuilder.setBeAttackedCount(otherBuilder.getBeAttackedCount() + 1);
+		
+		redis.updateApplyFight(user.getUnionId(), recordBuilder.build());
+		redis.updateApplyFight(user.getUnionId(), otherBuilder.build());
+		
+		return SuccessConst.ATTACK_SUCCESS;
 	}
 	
 	private void calUnionLevel(Union.Builder union) {

@@ -193,6 +193,7 @@ import com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
@@ -1572,6 +1573,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestLootRewardTaskCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		lootRewardTaskCommandService.lootRewardTask(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUnionFightCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		unionCommandService.unionFight(cmd, responseBuilder, user);
 		return true;
 	}
 

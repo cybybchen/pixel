@@ -169,6 +169,7 @@ import com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetUserLadderRankListCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
@@ -392,6 +393,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSubmitRewardTaskScoreCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBlackShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUnionFightCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestMohuaStageRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetUserLadderRankListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChangeUserNameCommand cmd, Builder responseBuilder, UserBean user);
@@ -1145,6 +1147,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasBlackShopPurchaseCommand()) {
 			RequestBlackShopPurchaseCommand cmd = request.getBlackShopPurchaseCommand();
 			if (isFuncAvailable(responseBuilder, "BlackShopPurchaseCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasUnionFightCommand()) {
+			RequestUnionFightCommand cmd = request.getUnionFightCommand();
+			if (isFuncAvailable(responseBuilder, "UnionFightCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasMohuaStageRewardCommand()) {
 			RequestMohuaStageRewardCommand cmd = request.getMohuaStageRewardCommand();

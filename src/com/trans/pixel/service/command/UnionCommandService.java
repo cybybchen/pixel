@@ -32,6 +32,7 @@ import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.UNIONFIGHTAPPLY_STATUS;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
@@ -374,7 +375,27 @@ public class UnionCommandService extends BaseCommandService {
 		}
 		
 		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
-		builder.addAllApplyRecord(unionService.getUnionFightApply(user));
+		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
+		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
+	}
+	
+	public void unionFight(RequestUnionFightCommand cmd, Builder responseBuilder, UserBean user) {
+		if (user.getUnionId() <= 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_HAS_NO_UNION_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.USER_HAS_NO_UNION_ERROR));
+			return;
+		}
+		
+		ResultConst ret = unionService.unionFight(user, cmd.getUserId());
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+			responseBuilder.setErrorCommand(buildErrorCommand(ret));
+			return;
+		}
+		
+		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
+		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
+		builder.addAllEnemyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 }

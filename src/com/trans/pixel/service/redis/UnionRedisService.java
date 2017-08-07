@@ -33,7 +33,7 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionExpList;
-import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord;
+import com.trans.pixel.protoc.UnionProto.UnionFightRecord;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -661,7 +661,7 @@ public class UnionRedisService extends RedisService{
 		if (hexist(key, "" + user.getId()))
 			return;
 		
-		UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder();
+		UnionFightRecord.Builder builder = UnionFightRecord.newBuilder();
 		builder.setUser(user.buildShort());
 		hput(key, "" + user.getId(), RedisService.formatJson(builder.build()));
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
@@ -673,12 +673,28 @@ public class UnionRedisService extends RedisService{
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	public List<UnionFightApplyRecord> getUnionFightApply(UserBean user) {
-		List<UnionFightApplyRecord> applyList = new ArrayList<UnionFightApplyRecord>();
-		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + user.getUnionId();
+	public void updateApplyFight(int unionId, UnionFightRecord record) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
+		hput(key, "" + unionId, RedisService.formatJson(record));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public UnionFightRecord getUnionFightRecord(int unionId, long userId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
+		String value = hget(key, "" + userId);
+		UnionFightRecord.Builder builder = UnionFightRecord.newBuilder();
+		if (value != null && RedisService.parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
+	
+	public List<UnionFightRecord> getUnionFightApply(int unionId) {
+		List<UnionFightRecord> applyList = new ArrayList<UnionFightRecord>();
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
 		Map<String, String> map = hget(key);
 		for (String value : map.values()) {
-			UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder();
+			UnionFightRecord.Builder builder = UnionFightRecord.newBuilder();
 			if (RedisService.parseJson(value, builder))
 				applyList.add(builder.build());
 		}
