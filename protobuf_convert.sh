@@ -171,8 +171,6 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		Map<String, Integer> cmdmap = CacheService.hgetcache(\"RequestLock\");
 		if (cmdmap.get(command) == null)
 			return true;
-		if(cmdmap.get(command) != 1)
-			log.error(\"Request:\"+command+cmdmap.get(command));
 		if(cmdmap.get(command) == 0) {//close func
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 	        erBuilder.setCode(String.valueOf(ErrorConst.FUN_CLOSE_ERROR.getCode()));
