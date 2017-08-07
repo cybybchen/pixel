@@ -15,7 +15,7 @@ public enum ErrorConst implements ResultConst {
 	YOU_ARE_ATTACKING(2031, "你正在被其他玩家挑战"),HE_IS_ATTACKING(2032, "该玩家正在被其他玩家挑战"),CDKEY_USED(2033, "CDKEY已被使用"),CDKEY_INVALID(2034, "无效的CDKEY"),
 	CDKEY_REWARDED(2035, "已领取过相同类型的CDKEY"),SHOP_LADDERCONDITION(2036, "购买条件不足，请先提升天梯排名"),SHOP_PVPCONDITION(2037, "购买条件不足，请先解锁相应区域"),
 	TIME_RETRY(2038, "时间未到,请稍后在试"),NEED_VIP6(2039, "尚未开启,VIP6后开放"),HERO_HAS_FENJIE(2040, "请勿重复分解英雄"),PURCHASE_VIPLIBAO_AGAIN(2041, "请勿重复领取VIP礼包"),
-	UNLOCK_ORDER_ERROR(2042, "请按顺序解锁"),NOT_ENOUGH_ZHANLI(2043, "需要更高的战力"),USER_HAS_UNION(2044, "该玩家已加入其他公会"),
+	UNLOCK_ORDER_ERROR(2042, "请按顺序解锁"),NOT_ENOUGH_ZHANLI(2043, "需要更高的战力"),USER_HAS_UNION(2044, "该玩家已加入其他公会"),YOU_HAS_UNION(2044, "已加入其他公会"),
     GET_REWARD_AGAIN(2045, "请勿重复领取"), LADDER_RANK_ISCHANGED_ERROR(2046, "天梯排行榜已更新"), BROTHER_VIP_IS_NOT_ENOUGH(2047, "你的大哥VIP等级不足"),
     CREATE_UNION_ERROR(2048, "公会创建失败"),AREA_OWNER_BUSY(2049, "领主不能退出公会"),EVENT_FIRST(2050, "请继续通关相关事件"),MERLEVEL_FIRST(2051, "请先提升您的佣兵团等级"),
     SHARE_SUCCESS(2052, "分享成功"),ROOM_ERROR(2053, "战斗已开始，不能查看队伍"), REWARD_ERROR(2054, "奖励领取异常"), HERO_STAR_FIRST(2055, "请先提升英雄星级"), 

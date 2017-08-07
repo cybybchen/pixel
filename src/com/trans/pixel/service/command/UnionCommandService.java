@@ -143,12 +143,17 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
+		if(user.getUnionId() != 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.YOU_HAS_UNION);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.YOU_HAS_UNION));
+		}
+		
 		if (!costService.costAndUpdate(user, RewardConst.JEWEL, CREATE_UNION_COST_JEWEL)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_JEWEL);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_JEWEL));
 			return;
 		}
-		
+			
 		Union union = unionService.create(cmd.getIcon(), cmd.getName(), user);
 		if(union == null){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.CREATE_UNION_ERROR);
