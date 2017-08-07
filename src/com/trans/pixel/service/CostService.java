@@ -230,6 +230,9 @@ public class CostService {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < count) {
 				Material material = equipService.getMaterial(itemId);
+				if (material.getFordiamond() == 0) {
+					return false;
+				}
 				if (cost(user, RewardConst.JEWEL, (count - (userEquip != null ? userEquip.getEquipCount() : 0)) * material.getFordiamond())) {
 					if (userEquip != null && userEquip.getEquipCount() > 0) {
 						userEquip.setEquipCount(0);
@@ -382,6 +385,9 @@ public class CostService {
 			UserEquipBean userEquip = userEquipService.selectUserEquip(userId, itemId);
 			if (userEquip == null || userEquip.getEquipCount() < itemCount) {
 				Material material = equipService.getMaterial(itemId);
+				if (material.getFordiamond() == 0) {
+					return false;
+				}
 				return canCost(user, RewardConst.JEWEL, (itemCount - (userEquip != null ? userEquip.getEquipCount() : 0)) * material.getFordiamond());
 			}
 			
