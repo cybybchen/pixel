@@ -1267,6 +1267,9 @@ public class UnionService extends FightService{
 		redis.updateApplyFight(user.getUnionId(), recordBuilder.build());
 		redis.updateApplyFight(user.getUnionId(), otherBuilder.build());
 		
+		redis.clearLock(lockKey);
+		redis.clearLock(selfLockKey);
+		
 		return SuccessConst.ATTACK_SUCCESS;
 	}
 	
