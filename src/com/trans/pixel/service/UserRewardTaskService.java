@@ -226,8 +226,9 @@ public class UserRewardTaskService {
 	}
 	
 	public void updateEventidStatus(long userId, UserRewardTask urt) {
-		userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt.getTask().getEventid(), urt.getIsOver());
-		mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, urt));
+		boolean ret = userRewardTaskRedisService.updateUserRewardTaskEventidStatus(userId, urt.getTask().getEventid(), urt.getIsOver());
+		if (ret)
+			mapper.updateUserRewardTask(UserRewardTaskBean.init(userId, urt));
 	}
 	
 	public int getEventidStatus(long userId, int eventid) {
