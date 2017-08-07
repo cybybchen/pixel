@@ -1159,9 +1159,9 @@ public class UserBean {
 	public void setHunxiaPRD(int hunxiaPRD) {
 		this.hunxiaPRD = hunxiaPRD;
 	}
-	public int getFirstAddedtoZhanli() {
-		return firstAddedtoZhanli;
-	}
+//	public int getFirstAddedtoZhanli() {
+//		return firstAddedtoZhanli;
+//	}
 	public void setFirstAddedtoZhanli(int firstAddedtoZhanli) {
 		this.firstAddedtoZhanli = firstAddedtoZhanli;
 	}
