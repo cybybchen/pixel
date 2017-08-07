@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserLootRewardTaskMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserLootRewardTaskBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="taskId" column="task_id" />
+		<result property="count" column="count" />
+		<result property="lootTime" column="loot_time" />
+	</resultMap>
+	
+	<insert id="updateUserLoot" parameterType="com.trans.pixel.model.userinfo.UserLootRewardTaskBean">
+	    INSERT INTO user_loot_rewardtask(user_id, task_id, count, loot_time)
+	    VALUES(#{userId}, #{taskId}, #{count}, #{lootTime})
+	    ON 
+	    duplicate key update
+	    count=#{count}, loot_time=#{lootTime}
+	</insert>
+	
+	<select id="selectUserLootList" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_loot_rewardtask where user_id=#{userId}
+	</select>
+	
+</mapper>

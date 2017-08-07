@@ -3481,6 +3481,34 @@ message UserRewardTaskRoom {
 	optional uint32 eventid = 7;
 }
 
+message LootShenyuan {
+	required uint32 id = 1;
+	required uint32 time = 2;
+	required uint32 targetid = 3;
+	required uint32 limit = 4;
+	required RewardInfo cost = 5;
+	repeated RewardInfo lootlist = 6;
+}
+
+message LootShenyuanList {
+	repeated LootShenyuan data = 1;
+}
+
+message UserLootRewardTask {
+	required uint32 id = 1;
+	required uint32 count = 2;//深渊票的数量
+	required uint32 lootTime = 3;//已经挂机的时间 
+}
+
+message RequestLootRewardTaskCommand {
+	optional uint32 id = 2;
+	optional uint32 count = 1;//count 为空时拉取列表，不为空时补充深渊票
+}
+
+message ResponseLootRewardTaskCommand {
+	repeated UserLootRewardTask loot = 1;
+}
+
 message RequestCreateRewardTaskRoomCommand {
 	required uint32 index = 1;
 }
@@ -3841,6 +3869,7 @@ message RequestCommand {
 	optional RequestRemoveRecommandCommand removeRecommandCommand = 264;
 	optional RequestSaveFightInfoCommand saveFightInfoCommand = 265;
 	optional RequestUnionFightApplyCommand unionFightApplyCommand = 266;
+	optional RequestLootRewardTaskCommand lootRewardTaskCommand = 267;
 }
 ////////// Commands
 message ErrorCommand {
@@ -3935,6 +3964,7 @@ message ResponseCommand {
 	optional ResponseUserLadderCommand userLadderCommand = 69;
 	optional ResponseRecommandCommand recommandCommand = 70;
 	optional ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
+	optional ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;
 }
 
 ////////// End

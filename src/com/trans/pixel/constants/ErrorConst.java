@@ -65,7 +65,7 @@ public enum ErrorConst implements ResultConst {
     CIPHER_IS_UNUSE_ERROR(5010, "无效的兑换口令"), CIPHER_HAS_REWARD_ERROR(5011, "无法重复兑换该口令"),
     UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR(5012, "公会战力不够，无法解锁该boss"), UNION_USER_HAS_NO_TIMES_ERROR(5013, "今天该boss剩余攻击次数为0"),
     UNION_BOSS_TIME_IS_OVER_ERROR(5014, "该boss已结束，敬请期待下一次的开启"), UNION_BOSS_IS_BEING_FIGHT_ERROR(5015, "boss正在被攻击，请稍后再试"),
-    FIGHTINFO_IS_LIMIT_ERROR(5016, "收藏录像数已达上限，无法继续收藏"),
+    FIGHTINFO_IS_LIMIT_ERROR(5016, "收藏录像数已达上限，无法继续收藏"), LOOT_SHENYUAN_COST_IS_LIMIT(5017, "添加的深渊票已达上限"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

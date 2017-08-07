@@ -169,6 +169,8 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 
 	private boolean isFuncAvailable(Builder responseBuilder, String command) {
 		Map<String, Integer> cmdmap = CacheService.hgetcache(\"RequestLock\");
+		if (cmdmap.get(command) == null)
+			return true;
 		if(cmdmap.get(command) != 1)
 			log.error(\"Request:\"+command+cmdmap.get(command));
 		if(cmdmap.get(command) == 0) {//close func

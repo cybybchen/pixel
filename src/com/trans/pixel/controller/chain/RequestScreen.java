@@ -153,6 +153,7 @@ import com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.ShopProto.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
@@ -375,6 +376,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSaleEquipCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestShopPurchaseCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLootRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -467,6 +469,8 @@ public abstract class RequestScreen implements RequestHandle {
 
 	private boolean isFuncAvailable(Builder responseBuilder, String command) {
 		Map<String, Integer> cmdmap = CacheService.hgetcache("RequestLock");
+		if (cmdmap.get(command) == null)
+			return true;
 		if(cmdmap.get(command) != 1)
 			log.error("Request:"+command+cmdmap.get(command));
 		if(cmdmap.get(command) == 0) {//close func
@@ -1077,6 +1081,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasUpgradeUnionCommand()) {
 			RequestUpgradeUnionCommand cmd = request.getUpgradeUnionCommand();
 			if (isFuncAvailable(responseBuilder, "UpgradeUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasLootRewardTaskCommand()) {
+			RequestLootRewardTaskCommand cmd = request.getLootRewardTaskCommand();
+			if (isFuncAvailable(responseBuilder, "LootRewardTaskCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGreenhandCommand()) {
 			RequestGreenhandCommand cmd = request.getGreenhandCommand();

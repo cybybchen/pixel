@@ -130,6 +130,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
@@ -229,6 +230,7 @@ import com.trans.pixel.service.command.LadderModeCommandService;
 import com.trans.pixel.service.command.LevelCommandService;
 import com.trans.pixel.service.command.LibaoCommandService;
 import com.trans.pixel.service.command.LogCommandService;
+import com.trans.pixel.service.command.LootRewardTaskCommandService;
 import com.trans.pixel.service.command.LotteryCommandService;
 import com.trans.pixel.service.command.MailCommandService;
 import com.trans.pixel.service.command.MessageCommandService;
@@ -327,6 +329,8 @@ public class GameDataScreen extends RequestScreen {
 	private RewardTaskCommandService rewardTaskCommandService;
 	@Resource
 	private LadderModeCommandService ladderModeCommandService;
+	@Resource
+	private LootRewardTaskCommandService lootRewardTaskCommandService;
 	
 	@Override
 	protected boolean handleRegisterCommand(RequestCommand cmd,
@@ -1561,6 +1565,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUnionFightApplyCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLootRewardTaskCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		lootRewardTaskCommandService.lootRewardTask(cmd, responseBuilder, user);
 		return true;
 	}
 

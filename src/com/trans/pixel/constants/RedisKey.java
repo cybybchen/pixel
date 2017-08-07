@@ -356,7 +356,7 @@ public class RedisKey {
 	public static final String JUSTSING_CDK_PREFIX = PREFIX + "justsing_cdk_";
 	public static final String JUSTSING_ACTIVITY_AVAILABLE_TIME_KEY = PREFIX + "justsing_activity_available_time";
 	
-	//bosskill
+	//rewardtask
 	public static final String BOSSKILL_RECORD_PREFIX = PREFIX + "bosskill_";
 	public static final String BOSSGROUP_KEY = PREFIX + CONFIG_PREFIX + "bossgroup";
 	public static final String BOSSGROUP_DAILY_PREFIX = PREFIX + "daily_bossgroup_";
@@ -366,6 +366,7 @@ public class RedisKey {
 	public static final String REWARDTASK_KEY = PREFIX + CONFIG_PREFIX + "RewardTask";
 	public static final String REWARDTASK_ROOM_PREFIX = PREFIX + "rewardtask_room_";
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
+	public static final String LOOT_SHENYUAN_KEY = PREFIX + CONFIG_PREFIX+"loot_shenyuan";
 	
 	//union config
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";
@@ -416,4 +417,5 @@ public class RedisKey {
 	// user reward task
 	public static final String USER_REWARD_TASK_PREFIX = PREFIX + "rewardtask_";
 	public static final String USER_REWARDTASK_EVENTID_STATUS_PREFIX = PREFIX + "rewardtask_eventid_status_";
+	public static final String USER_REWARDTASK_LOOT_PREFIX = PREFIX + "rewardtask_loot_";
 }
