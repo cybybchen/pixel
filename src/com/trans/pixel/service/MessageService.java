@@ -192,8 +192,8 @@ public class MessageService {
 			}
 		}
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
-		messageRedisService.addHeroMessageBoardTop(user.getServerId(), itemId, messageBoard);
 		messageRedisService.addHeroMessageBoardValue(user.getServerId(), itemId, messageBoard);
+		messageRedisService.addHeroMessageBoardTop(user.getServerId(), itemId, messageBoard);
 	}
 	
 	private MessageBoardBean zanHeroMessage(int serverId, int itemId, String id, boolean zan) {
