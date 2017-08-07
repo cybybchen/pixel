@@ -1219,7 +1219,7 @@ public class UnionService extends FightService{
 	
 	public void handlerFightMembers(UserBean user, List<Long> userIds) {
 		Map<String, String> map = new HashMap<String, String>();
-		List<UnionFightRecord> applyList = getUnionFightApply(user);
+		List<UnionFightRecord> applyList = getUnionFightApply(user.getUnionId());
 		for (UnionFightRecord record : applyList) {
 			if (userIds.contains(record.getUser().getId())) {
 				UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(record);
