@@ -66,6 +66,7 @@ public enum ErrorConst implements ResultConst {
     UNION_BOSS_ZHANLI_NOT_ENOUGH_ERROR(5012, "公会战力不够，无法解锁该boss"), UNION_USER_HAS_NO_TIMES_ERROR(5013, "今天该boss剩余攻击次数为0"),
     UNION_BOSS_TIME_IS_OVER_ERROR(5014, "该boss已结束，敬请期待下一次的开启"), UNION_BOSS_IS_BEING_FIGHT_ERROR(5015, "boss正在被攻击，请稍后再试"),
     FIGHTINFO_IS_LIMIT_ERROR(5016, "收藏录像数已达上限，无法继续收藏"), LOOT_SHENYUAN_COST_IS_LIMIT(5017, "添加的深渊票已达上限"),
+    USER_HAS_NO_UNION_ERROR(5018, "请先加入一个公会"), UNION_IS_NOT_HUIZHANG(5019, "您不是会长，无法进行该操作"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 

@@ -1564,7 +1564,7 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestUnionFightApplyCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
+		unionCommandService.applyFight(cmd, responseBuilder, user);
 		return true;
 	}
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,6 +47,8 @@ import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
+import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord;
+import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord.FIGHT_STATUS;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -52,8 +57,6 @@ import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-
-import net.sf.json.JSONObject;
 
 @Service
 public class UnionService extends FightService{
@@ -1207,6 +1210,29 @@ public class UnionService extends FightService{
 			redis.clearLock("Union_"+union.getId());
 		}
 		unionMapper.updateUnion(new UnionBean(union));
+	}
+	
+	public void applyFight(UserBean user) {
+		redis.applyFight(user);
+		redis.addApplyUnion(user);
+	}
+	
+	public void handlerFightMembers(UserBean user, List<Long> userIds) {
+		Map<String, String> map = new HashMap<String, String>();
+		List<UnionFightApplyRecord> applyList = getUnionFightApply(user);
+		for (UnionFightApplyRecord record : applyList) {
+			if (userIds.contains(record.getUser().getId())) {
+				UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder(record);
+				builder.setStatus(FIGHT_STATUS.CAN_FIGHT);
+				map.put("" + builder.getUser().getId(), RedisService.formatJson(builder.build()));
+			}
+		}
+		
+		redis.updateApplyFight(user, map);
+	}
+	
+	public List<UnionFightApplyRecord> getUnionFightApply(UserBean user) {
+		return redis.getUnionFightApply(user);
 	}
 	
 	private void calUnionLevel(Union.Builder union) {

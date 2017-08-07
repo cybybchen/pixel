@@ -30,10 +30,13 @@ import com.trans.pixel.protoc.UnionProto.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSearchUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.UNIONFIGHTAPPLY_STATUS;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand;
+import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE;
@@ -350,5 +353,28 @@ public class UnionCommandService extends BaseCommandService {
 		builder.addUnionBoss(unionBoss);
 		responseBuilder.setUnionBossCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+	}
+	
+	public void applyFight(RequestUnionFightApplyCommand cmd, Builder responseBuilder, UserBean user) {
+		if (user.getUnionId() <= 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_HAS_NO_UNION_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.USER_HAS_NO_UNION_ERROR));
+			return;
+		}
+		
+		if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.APPLY))
+			unionService.applyFight(user);
+		else if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.HANDLER_FIGHT_MEMBER)) {
+			if(user.getUnionJob() != UnionConst.UNION_HUIZHANG){
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_IS_NOT_HUIZHANG);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_IS_NOT_HUIZHANG));
+				return;
+			}
+			unionService.handlerFightMembers(user, cmd.getUserIdList());
+		}
+		
+		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
+		builder.addAllApplyRecord(unionService.getUnionFightApply(user));
+		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 }

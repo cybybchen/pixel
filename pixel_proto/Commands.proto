@@ -3230,11 +3230,22 @@ message UnionExpList {
 }
 
 message UnionFightApplyRecord {
-	required uint64 userId = 1;
+	enum FIGHT_STATUS {
+		NOT_FIGHT = 0;
+		CAN_FIGHT = 1;
+	}
+	required UserInfo user = 1;
+	optional FIGHT_STATUS status = 2;//有没有被会长选中参加战斗
 }
 
 message RequestUnionFightApplyCommand {
-
+	enum UNIONFIGHTAPPLY_STATUS {
+		APPLY_LIST = 1;//申请列表
+		APPLY = 2;//申请
+		HANDLER_FIGHT_MEMBER = 3;//会长挑选出战人员
+	}
+	optional UNIONFIGHTAPPLY_STATUS status = 1;
+	repeated uint64 userId = 2;
 }
 
 message ResponseUnionFightApplyRecordCommand {

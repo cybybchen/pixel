@@ -368,7 +368,7 @@ public class RedisKey {
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
 	public static final String LOOT_SHENYUAN_KEY = PREFIX + CONFIG_PREFIX+"loot_shenyuan";
 	
-	//union config
+	//union
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";
 	public static final String UNION_BOSSLOOT_KEY = PREFIX + CONFIG_PREFIX + "union_bossloot";
 	public static final String UNION_BOSSWIN_KEY = PREFIX + CONFIG_PREFIX + "union_bosswin";
@@ -376,6 +376,8 @@ public class RedisKey {
 	public static final String UNION_BOSS_RANK_PREFIX = PREFIX + "union_boss_rank_";
 	public static final String UNION_EXP_KEY = PREFIX + CONFIG_PREFIX + "union_exp";
 	public static final String UNION_BOSS_REWARD_TIME = PREFIX + "union_bossrewards_";
+	public static final String UNION_FIGHT_APPLY_PREFIX = PREFIX + "union_fight_apply_";
+	public static final String UNION_FIGHT_APPLY_UNIONS_KEY = PREFIX + "fight_apply_unions";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

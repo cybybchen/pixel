@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionExpList;
+import com.trans.pixel.protoc.UnionProto.UnionFightApplyRecord;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -648,6 +649,41 @@ public class UnionRedisService extends RedisService{
 	public void delUnionBossRankKey(int unionId, int bossId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
 		this.delete(key);
+	}
+	
+	public void addApplyUnion(UserBean user) {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		sadd(key, "" + user.getUnionId());
+	}
+	
+	public void applyFight(UserBean user) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + user.getUnionId();
+		if (hexist(key, "" + user.getId()))
+			return;
+		
+		UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder();
+		builder.setUser(user.buildShort());
+		hput(key, "" + user.getId(), RedisService.formatJson(builder.build()));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public void updateApplyFight(UserBean user, Map<String, String> applyMap) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + user.getUnionId();
+		hputAll(key, applyMap);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public List<UnionFightApplyRecord> getUnionFightApply(UserBean user) {
+		List<UnionFightApplyRecord> applyList = new ArrayList<UnionFightApplyRecord>();
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + user.getUnionId();
+		Map<String, String> map = hget(key);
+		for (String value : map.values()) {
+			UnionFightApplyRecord.Builder builder = UnionFightApplyRecord.newBuilder();
+			if (RedisService.parseJson(value, builder))
+				applyList.add(builder.build());
+		}
+		
+		return applyList;
 	}
 	
 	public UnionExp getUnionExp(int id) {
