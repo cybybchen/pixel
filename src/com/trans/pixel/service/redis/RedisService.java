@@ -349,38 +349,38 @@ public class RedisService {
 		});
 	}
 
-	// /**
-	// * 设置多个值(不超时),暂不支持
-	// */
-	// protected void mset(final Map<String, String> keyvalue) {
-	// redisTemplate.execute(new RedisCallback<Object>() {
-	// @Override
-	// public Object doInRedis(RedisConnection arg0) throws DataAccessException
-	// {
-	//
-	// redisTemplate.opsForValue().multiSet(keyvalue);
-	//
-	// // Date date = expireDateAndInit();
-	// // if (date != null)
-	// // throw new RuntimeException("mset中不能设置超时时间");
-	// return null;
-	// }
-	// });
-	// }
+	 /**
+	 * 设置多个值(不超时),暂不支持
+	 */
+	protected void mset(final Map<String, String> keyvalue) {
+		getRedis(0).execute(new RedisCallback<Object>() {
+			@Override
+			public Object doInRedis(RedisConnection arg0)
+					throws DataAccessException {
 
-	// /**
-	// * 获取多个值，暂不支持
-	// */
-	// protected List<String> mget(final List<String> key) {
-	// return redisTemplate.execute(new RedisCallback<List<String>>() {
-	// @Override
-	// public List<String> doInRedis(RedisConnection arg0) throws
-	// DataAccessException {
-	//
-	// return redisTemplate.opsForValue().multiGet(key);
-	// }
-	// });
-	// }
+				getRedis(0).opsForValue().multiSet(keyvalue);
+
+				// Date date = expireDateAndInit();
+				// if (date != null)
+				// throw new RuntimeException("mset中不能设置超时时间");
+				return null;
+			}
+		});
+	}
+
+	 /**
+	 * 获取多个值，暂不支持
+	 */
+	protected List<String> mget(final Collection<String> key) {
+		return getRedis(0).execute(new RedisCallback<List<String>>() {
+			@Override
+			public List<String> doInRedis(RedisConnection arg0)
+					throws DataAccessException {
+		
+				return getRedis(0).opsForValue().multiGet(key);
+			}
+		});
+	}
 
 	/**
 	 * 判断hashmap是否存在某个key

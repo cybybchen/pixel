@@ -208,6 +208,8 @@ public class RedisKey {
 	public static final String BLACK_NOSAY_LIST_PREFIX = PREFIX + "nosayblack_";
 	public static final String BLACK_USER_LIST_PREFIX = PREFIX + "userblack_";
 	public static final String BLACK_ACCOUNT_LIST = PREFIX + "accountblack";
+	public static final String UNION_INFO_PREFIX = PREFIX + "union_info_";//公会详情
+	public static final String UNION_ID_SET_KEY = PREFIX + "union_set";
 	
 	//equip
 	public static final String EQUIP_CONFIG = PREFIX + CONFIG_PREFIX+"equip";

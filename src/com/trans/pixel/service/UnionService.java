@@ -130,6 +130,9 @@ public class UnionService extends FightService{
 		if(user.getUnionId() == 0)
 			return null;
 		Union.Builder union = redis.getUnion(user);
+		if (union != null)
+			union = redis.getUnionInfo(union);//补充额外信息
+		
 		if(union == null && user.getUnionId() != 0){//load union from db
 			UnionBean unionbean = unionMapper.selectUnionById(user.getUnionId());
 			if(unionbean != null){//load members from db
@@ -703,6 +706,8 @@ public class UnionService extends FightService{
 		json.put("" + targetId, targetCount);
 		union.setKillMonsterRecord(json.toString());
 		
+		redis.updateUnionValue(union.getId(), UnionBean.KILL_MONSTER_RECORD, union.getKillMonsterRecord());
+		
 		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public void updateCostRecord(Union.Builder union, int targetId, int count) {
@@ -717,6 +722,8 @@ public class UnionService extends FightService{
 		json.put("" + targetId, targetCount);
 		union.setCostRecord(json.toString());
 		
+		redis.updateUnionValue(union.getId(), UnionBean.COST_RECORD, union.getCostRecord());
+		
 		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public void updateUnionBossRecord(Union.Builder union, int bossId) {
@@ -730,6 +737,8 @@ public class UnionService extends FightService{
 		}
 		json.put("" + bossId, bossCount);
 		union.setBossRecord(json.toString());
+		
+		redis.updateUnionValue(union.getId(), UnionBean.BOSS_RECORD, union.getBossRecord());
 		
 		unionMapper.updateUnion(new UnionBean(union));
 	}
@@ -755,6 +764,8 @@ public class UnionService extends FightService{
 		}
 		union.setBossEndTime(json.toString());
 		
+		redis.updateUnionValue(union.getId(), UnionBean.BOSS_ENDTIME, union.getBossEndTime());
+		
 		unionMapper.updateUnion(new UnionBean(union));
 	}
 	public String getUnionBossEndTime(Union.Builder union, int bossId) {
@@ -770,7 +781,7 @@ public class UnionService extends FightService{
 	}
 	
 	public void doUnionBossRecord(UserBean user, int type, int targetId, long count) {
-		Union.Builder union = redis.getUnion(user);
+		Union.Builder union = getBaseUnion(user);
 		if (union == null)
 			return;
 		
@@ -790,10 +801,10 @@ public class UnionService extends FightService{
 					}
 					if (unionBoss.getType() != UnionConst.UNION_BOSS_TYPE_UNDEAD)
 						calUnionBossRefresh(union, unionBoss, user.getUnionId(), user.getServerId());
-					if (redis.waitLock("Union_"+union.getId())){
-						redis.saveUnion(union.build(), user);
-						redis.clearLock("Union_"+union.getId());
-					}
+//					if (redis.waitLock("Union_"+union.getId())){
+//						redis.saveUnion(union.build(), user);
+//						redis.clearLock("Union_"+union.getId());
+//					}
 				}
 			}
 		}
@@ -854,10 +865,10 @@ public class UnionService extends FightService{
 		while (it.hasNext()) {
 			Entry<Integer, UnionBoss> entry = it.next();
 			if (calUnionBossRefresh(union, entry.getValue(), user.getUnionId(), user.getServerId())) {
-				if(redis.setLock("Union_"+union.getId())) {
-					redis.saveUnion(union.build(), user);
-					redis.clearLock("Union_"+union.getId());
-				}
+//				if(redis.setLock("Union_"+union.getId())) {
+//					redis.saveUnion(union.build(), user);
+//					redis.clearLock("Union_"+union.getId());
+//				}
 			}
 		}
 		
@@ -908,10 +919,10 @@ public class UnionService extends FightService{
 			return unionBossRecord.build();
 		}
 		if (unionBoss.getEnemygroup().getHpbar() != -1 && unionBossRecord.getPercent() < 10000 && unionBossRecord.getPercent() + percent >= 10000) {
-			if(!redis.waitLock("Union_"+union.getId())) {
-				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
-				return unionBossRecord.build();
-			}
+//			if(!redis.waitLock("Union_"+union.getId())) {
+//				unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_BEING_FIGHT_VALUE);
+//				return unionBossRecord.build();
+//			}
 			UserRankBean userRankBean = redis.getUserRank(union.getId(), bossId, user.getId());
 			if (userRankBean == null)
 				userRankBean = new UserRankBean(user);
@@ -921,8 +932,8 @@ public class UnionService extends FightService{
 			doUnionBossRankReward(user.getUnionId(), bossId, user.getServerId());
 			updateUnionBossEndTime(union, bossId);
 			calUnionBossRefresh(union, redis.getUnionBoss(bossId), user.getUnionId(), user.getServerId());
-			redis.saveUnion(union.build(), user);
-			redis.clearLock("Union_"+union.getId());
+//			redis.saveUnion(union.build(), user);
+//			redis.clearLock("Union_"+union.getId());
 			/**
 			 * 累计击败工会boss的活动
 			 */

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.UnionConst;
+import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
@@ -53,6 +54,44 @@ public class UnionRedisService extends RedisService{
 		buildUnionExpConfig();
 		buildUnionBossConfig();
 	}
+	
+	public Union.Builder getUnionInfo(Union.Builder union) {
+		String key = RedisKey.UNION_INFO_PREFIX + union.getId();
+		Map<String, String> map = hget(key);
+		
+		return UnionBean.fromJson(union, map);
+	}
+	
+	public void setUnionInfo(Union union) {
+		String key = RedisKey.UNION_INFO_PREFIX + union.getId();
+		hputAll(key, UnionBean.toJson(union));
+	}
+	
+	public String getUnionValue(int unionId, String key2) {
+		String key = RedisKey.UNION_INFO_PREFIX + unionId;
+		return hget(key, key2);
+	}
+	
+	public <T> void updateUnionValue(int unionId, String key2, T value) {
+		String key = RedisKey.UNION_INFO_PREFIX + unionId;
+		hput(key, key2, "" + value);
+	}
+	
+//	public void addUnionId(int unionId) {
+//		String key = RedisKey.UNION_ID_SET_KEY;
+//		sadd(key, "" + unionId);
+//	}
+//	
+//	public List<Integer> getUnionIds() {
+//		String key = RedisKey.UNION_ID_SET_KEY;
+//		Set<String> unionIdStr = smember(key);
+//		List<Integer> unionIds = new ArrayList<Integer>();
+//		for (String str : unionIdStr) {
+//			unionIds.add(TypeTranslatedUtil.stringToInt(str));
+//		}
+//		
+//		return unionIds;
+//	}
 	
 	public Union.Builder getUnion(UserBean user) {
 		return getUnion(user.getServerId(), user.getUnionId());

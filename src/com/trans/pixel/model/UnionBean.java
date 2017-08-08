@@ -1,6 +1,10 @@
 package com.trans.pixel.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.trans.pixel.protoc.UnionProto.Union;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UnionBean {
 	private int id = 0;
@@ -240,6 +244,69 @@ public class UnionBean {
 		this.level = level;
 	}
 
+	public static Map<String, String> toJson(Union union) {
+		Map<String, String> map = new HashMap<String, String>();
+//		map.put(ANNOUNCE, union.getAnnounce());
+//		map.put(ID, "" + union.getId());
+//		map.put(NAME, union.getName());
+//		map.put(ICON, "" + union.getIcon());
+//		map.put(LEVEL, "" + union.getLevel());
+//		map.put(ZHANLI, "" + union.getZhanli());
+//		map.put(RANK, "" + union.getRank());
+//		map.put(POINT, "" + union.getPoint());
+//		map.put(COUNT, "" + union.getCount());
+//		map.put(MAXCOUNT, "" + union.getMaxCount());
+		map.put(KILL_MONSTER_RECORD, union.getKillMonsterRecord());
+		map.put(COST_RECORD, union.getCostRecord());
+		map.put(BOSS_RECORD, union.getBossRecord());
+		map.put(BOSS_ENDTIME, union.getBossEndTime());
+//		map.put(EXP, "" + union.getExp());
+//		map.put(MAXZHANLI, "" + union.getMaxZhanli());
+		
+		return map;
+	}
+	
+	public static Union.Builder fromJson(Union.Builder union, Map<String, String> map) {
+		if (map == null || map.isEmpty())
+			return union;
+		
+//		builder.setAnnounce(map.get(ANNOUNCE));
+//		builder.setId(TypeTranslatedUtil.stringToInt(map.get(ID)));
+//		builder.setName(map.get(NAME));
+//		builder.setIcon(TypeTranslatedUtil.stringToInt(map.get(ICON)));
+//		builder.setLevel(TypeTranslatedUtil.stringToInt(map.get(LEVEL)));
+//		builder.setZhanli(TypeTranslatedUtil.stringToInt(map.get(ZHANLI)));
+//		builder.setRank(TypeTranslatedUtil.stringToInt(map.get(RANK)));
+//		builder.setPoint(TypeTranslatedUtil.stringToInt(map.get(POINT)));
+//		builder.setCount(TypeTranslatedUtil.stringToInt(map.get(COUNT)));
+//		builder.setMaxCount(TypeTranslatedUtil.stringToInt(map.get(MAXCOUNT)));
+		union.setKillMonsterRecord(map.get(KILL_MONSTER_RECORD));
+		union.setCostRecord(map.get(COST_RECORD));
+		union.setBossRecord(map.get(BOSS_RECORD));
+		union.setBossEndTime(map.get(BOSS_ENDTIME));
+//		builder.setExp(TypeTranslatedUtil.stringToInt(map.get(EXP)));
+//		builder.setMaxZhanli(TypeTranslatedUtil.stringToInt(map.get(MAXZHANLI)));
+		
+		return union;
+	}
+	
+	public static final String ANNOUNCE = "announce";
+	public static final String ID = "id";
+	public static final String NAME = "name";
+	public static final String ICON = "icon";
+	public static final String LEVEL = "level";
+	public static final String ZHANLI = "zhanli";
+	public static final String RANK = "rank";
+	public static final String POINT = "point";
+	public static final String COUNT = "count";
+	public static final String MAXCOUNT = "maxcount";
+	public static final String KILL_MONSTER_RECORD = "kill_monster_record";
+	public static final String COST_RECORD = "cost_record";
+	public static final String BOSS_RECORD = "boss_record";
+	public static final String BOSS_ENDTIME = "boss_endtime";
+	public static final String EXP = "exp";
+	public static final String MAXZHANLI = "maxzhanli";
+	
 	// private static final String ID = "id";
 	// private static final String NAME = "name";
 	// private static final String ICON = "icon";
