@@ -32,10 +32,10 @@ public class LogCacheCrontabService {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
 			OutputStream netOut = socket.getOutputStream();
 //			DataOutputStream doc = new DataOutputStream(netOut);
-			List<String> logs = logRedisService.popLog();
-//			while (true) {
-			for (String log : logs) {
-//				String log = logRedisService.popLog();
+//			List<String> logs = logRedisService.popLog();
+			while (true) {
+//			for (String log : logs) {
+				String log = logRedisService.popLog();
 				if (log == null)
 					break;
 				log += "\n";

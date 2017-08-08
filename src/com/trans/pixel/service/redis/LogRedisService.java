@@ -1,7 +1,5 @@
 package com.trans.pixel.service.redis;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -14,7 +12,7 @@ public class LogRedisService extends CacheService {
 		saddList(RedisKey.LOG_KEY, log);
 	}
 	
-	public List<String> popLog() {
-		return spopList(RedisKey.LOG_KEY);
+	public String popLog() {
+		return spop(RedisKey.LOG_KEY);
 	}
 }

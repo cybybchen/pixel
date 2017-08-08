@@ -178,15 +178,16 @@ public class CacheService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static final<T> List<T> spopList(String key) {
+	public static final<T> T spop(String key) {
 		synchronized(object1) {
 			List<T> set = (ArrayList<T>)_setcache.get(key);
-			_setcache.put(key, new ArrayList<T>());
-			if (set != null) {
-				return set;
+			T t = set.get(0);
+			set.remove(0);
+			if (t != null) {
+				return t;
 			}else {
 				logger.error("Not support List key:"+key);
-				return new ArrayList<T>();
+				return null;
 			}
 		}
 	}
