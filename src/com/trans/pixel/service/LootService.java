@@ -54,7 +54,8 @@ public class LootService {
 		long loottime = current - userLevel.getLootTimeNormal();
 		if (loottime <= 0) {
 			userService.updateUser(user);
-			pusher.pushUserInfoCommand(responseBuilder, user);
+			if(responseBuilder != null)
+				pusher.pushUserInfoCommand(responseBuilder, user);
 			return rewards;
 		}
 		SavingBox goldSavingBox = lootRedisService.getSavingBox(user.getGoldSavingBox());
