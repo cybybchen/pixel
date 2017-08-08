@@ -333,7 +333,12 @@ public class LevelCommandService extends BaseCommandService {
  		}
  		userService.updateUser(user);
 
- 		handleRewards(responseBuilder, user, rewards);
+ 		if (rewards.getLootCount() == 0) {
+ 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EVENT_HAS_NO_FIGHT_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EVENT_HAS_NO_FIGHT_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+ 		} else
+ 			handleRewards(responseBuilder, user, rewards);
  		
  		pushLevelLootCommand(responseBuilder, userLevel, user);
 	}
