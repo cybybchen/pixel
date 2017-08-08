@@ -158,7 +158,7 @@ public class RaidCommandService extends BaseCommandService{
 					/**
 					 * 通关副本的活动
 					 */
-					activityService.raidKill(user, myraid.getId(), myraid.getMaxlevel());
+					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getMaxlevel()-2, myraid.getLevel()));
 					myraid.clearEventid();
 //					myraid.clearTurn();
 					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
