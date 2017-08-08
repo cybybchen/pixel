@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.trans.pixel.protoc.UnionProto.Union;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UnionBean {
 	private int id = 0;
@@ -280,10 +279,14 @@ public class UnionBean {
 //		builder.setPoint(TypeTranslatedUtil.stringToInt(map.get(POINT)));
 //		builder.setCount(TypeTranslatedUtil.stringToInt(map.get(COUNT)));
 //		builder.setMaxCount(TypeTranslatedUtil.stringToInt(map.get(MAXCOUNT)));
-		union.setKillMonsterRecord(map.get(KILL_MONSTER_RECORD));
-		union.setCostRecord(map.get(COST_RECORD));
-		union.setBossRecord(map.get(BOSS_RECORD));
-		union.setBossEndTime(map.get(BOSS_ENDTIME));
+		if (map.get(KILL_MONSTER_RECORD) != null)
+			union.setKillMonsterRecord(map.get(KILL_MONSTER_RECORD));
+		if (map.get(COST_RECORD) != null)
+			union.setCostRecord(map.get(COST_RECORD));
+		if (map.get(BOSS_RECORD) != null)
+			union.setBossRecord(map.get(BOSS_RECORD));
+		if (map.get(BOSS_ENDTIME) != null)
+			union.setBossEndTime(map.get(BOSS_ENDTIME));
 //		builder.setExp(TypeTranslatedUtil.stringToInt(map.get(EXP)));
 //		builder.setMaxZhanli(TypeTranslatedUtil.stringToInt(map.get(MAXZHANLI)));
 		
