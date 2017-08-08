@@ -405,6 +405,8 @@ public class PushCommandService extends BaseCommandService {
 	}
 	
 	public void pushRewardCommand(Builder responseBuilder, UserBean user, MultiReward rewards, boolean needPushReward) {
+		if (rewards == null || rewards.getLootCount() == 0)
+			return;
 		List<HeroInfoBean> heroList = new ArrayList<HeroInfoBean>();
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
 		List<UserPropBean> propList = new ArrayList<UserPropBean>(); 
