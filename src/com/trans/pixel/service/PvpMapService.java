@@ -355,7 +355,7 @@ public class PvpMapService {
 				for(RewardInfo rd : list) {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());
-					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
+					if(RedisService.nextInt(100) < (rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))%100)
 						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100+1);
 					else
 						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100);
@@ -421,7 +421,7 @@ public class PvpMapService {
 				for(RewardInfo rd : list) {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());
-					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
+					if(RedisService.nextInt(100) < (rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))%100)
 						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100+1);
 					else
 						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100);
