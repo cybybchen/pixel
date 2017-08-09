@@ -1382,6 +1382,19 @@ public class UnionService extends FightService{
 	}
 	
 	public UNION_FIGHT_STATUS calUnionFightStatus(int unionId) {
+		int cheatStatus = redis.getUnionFightCheatStatus();
+		if (cheatStatus != 0) {
+			switch (cheatStatus) {
+				case 1:
+					return UNION_FIGHT_STATUS.APPLY_TIME;
+				case 2:
+					return UNION_FIGHT_STATUS.HUIZHANG_TIME;
+				case 3:
+					return UNION_FIGHT_STATUS.FIGHT_TIME;
+				default:
+					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+			}
+		}
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
 		int day = DateUtil.getDayOfWeek();
 		if (day == UnionConst.FIGHT_APPLY_DAY)

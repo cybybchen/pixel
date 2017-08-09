@@ -800,6 +800,11 @@ public class UnionRedisService extends RedisService{
 		delete(key);
 	}
 	
+	public int getUnionFightCheatStatus() {
+		String key = RedisKey.UNION_FIGHT_CHEAT_STATUS_KEY;
+		return TypeTranslatedUtil.stringToInt(get(key));
+	}
+	
 	public UnionExp getUnionExp(int id) {
 		Map<Integer, UnionExp> map = CacheService.hgetcache(RedisKey.UNION_EXP_KEY);
 		return map.get(id);
