@@ -3265,7 +3265,8 @@ message ResponseUnionFightApplyRecordCommand {
 		APPLY_TIME = 1;//报名
 		HUIZHANG_TIME = 2;//会长选人
 		FIGHT_TIME = 3;//战斗
-		NOT_IN_FIGHT_UNIONS = 4;//未成功参与此次公会战
+		SEND_REWARD_TIME = 4;//发奖时间
+		NOT_IN_FIGHT_UNIONS = 5;//未成功参与此次公会战
 	}
 
 	optional UNION_FIGHT_STATUS status = 3;

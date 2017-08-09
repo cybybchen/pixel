@@ -12,9 +12,10 @@ public class UnionConst {
 	public static final int UNION_BOSS_TYPE_UNDEAD = 4;
 	
 	
-	public static final int FIGHT_APPLY_DAY = 4;
-	public static final int FIGHT_HUIZHANG_DAY = 5;
-	public static final int FIGHT_DAY = 6;
+	public static final int FIGHT_APPLY_DAY = 5;
+	public static final int FIGHT_HUIZHANG_DAY = 6;
+	public static final int FIGHT_DAY = 7;
+	public static final int FIGHT_SENDREWARD_DAY = 1;
 	
 	public static final int UNION_FIGHT_MEMBER_LIMIT = 2;
 }

@@ -723,6 +723,11 @@ public class UnionRedisService extends RedisService{
 		return hkeys(key);
 	}
 	
+	public Map<String, String> getApplyUnionMap() {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		return hget(key);
+	}
+	
 	public boolean isInFightUnions(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 		return hexist(key, "" + unionId);
@@ -797,6 +802,22 @@ public class UnionRedisService extends RedisService{
 	
 	public void delUnionFightFightInfo(String unionId) {
 		String key = RedisKey.UNION_FIGHTINFO_RECORD_PREFIX + unionId;
+		delete(key);
+	}
+	
+	public <T> void addUnionFightRewardUnionId(T unionId) {
+		String key = RedisKey.UNION_FIGHT_REWARD_RECORD_KEY;
+		sadd(key, "" + unionId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public <T> boolean hasRewardUnionFight(T unionId) {
+		String key = RedisKey.UNION_FIGHT_REWARD_RECORD_KEY;
+		return sismember(key, "" + unionId);
+	}
+	
+	public void delUnionFightRewardRecord() {
+		String key = RedisKey.UNION_FIGHT_REWARD_RECORD_KEY;
 		delete(key);
 	}
 	

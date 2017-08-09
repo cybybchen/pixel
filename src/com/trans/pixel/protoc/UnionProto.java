@@ -20634,13 +20634,21 @@ public final class UnionProto {
        */
       FIGHT_TIME(3, 3),
       /**
-       * <code>NOT_IN_FIGHT_UNIONS = 4;</code>
+       * <code>SEND_REWARD_TIME = 4;</code>
+       *
+       * <pre>
+       *发奖时间
+       * </pre>
+       */
+      SEND_REWARD_TIME(4, 4),
+      /**
+       * <code>NOT_IN_FIGHT_UNIONS = 5;</code>
        *
        * <pre>
        *未成功参与此次公会战
        * </pre>
        */
-      NOT_IN_FIGHT_UNIONS(4, 4),
+      NOT_IN_FIGHT_UNIONS(5, 5),
       ;
 
       /**
@@ -20676,13 +20684,21 @@ public final class UnionProto {
        */
       public static final int FIGHT_TIME_VALUE = 3;
       /**
-       * <code>NOT_IN_FIGHT_UNIONS = 4;</code>
+       * <code>SEND_REWARD_TIME = 4;</code>
+       *
+       * <pre>
+       *发奖时间
+       * </pre>
+       */
+      public static final int SEND_REWARD_TIME_VALUE = 4;
+      /**
+       * <code>NOT_IN_FIGHT_UNIONS = 5;</code>
        *
        * <pre>
        *未成功参与此次公会战
        * </pre>
        */
-      public static final int NOT_IN_FIGHT_UNIONS_VALUE = 4;
+      public static final int NOT_IN_FIGHT_UNIONS_VALUE = 5;
 
 
       public final int getNumber() { return value; }
@@ -20693,7 +20709,8 @@ public final class UnionProto {
           case 1: return APPLY_TIME;
           case 2: return HUIZHANG_TIME;
           case 3: return FIGHT_TIME;
-          case 4: return NOT_IN_FIGHT_UNIONS;
+          case 4: return SEND_REWARD_TIME;
+          case 5: return NOT_IN_FIGHT_UNIONS;
           default: return null;
         }
       }
@@ -44724,95 +44741,95 @@ public final class UnionProto {
       "US\022\016\n\006userId\030\002 \003(\004\0229\n\013fightStatus\030\003 \001(\0162" +
       "$.com.trans.pixel.protoc.FIGHT_STATUS\"M\n" +
       "\026UNIONFIGHTAPPLY_STATUS\022\016\n\nAPPLY_LIST\020\001\022" +
-      "\t\n\005APPLY\020\002\022\030\n\024HANDLER_FIGHT_MEMBER\020\003\"\364\002\n" +
+      "\t\n\005APPLY\020\002\022\030\n\024HANDLER_FIGHT_MEMBER\020\003\"\213\003\n" +
       "$ResponseUnionFightApplyRecordCommand\022=\n" +
       "\013applyRecord\030\001 \003(\0132(.com.trans.pixel.pro" +
       "toc.UnionFightRecord\022=\n\013enemyRecord\030\002 \003(" +
       "\0132(.com.trans.pixel.protoc.UnionFightRec",
       "ord\022_\n\006status\030\003 \001(\0162O.com.trans.pixel.pr" +
       "otoc.ResponseUnionFightApplyRecordComman" +
-      "d.UNION_FIGHT_STATUS\"m\n\022UNION_FIGHT_STAT" +
-      "US\022\013\n\007NO_TIME\020\000\022\016\n\nAPPLY_TIME\020\001\022\021\n\rHUIZH" +
-      "ANG_TIME\020\002\022\016\n\nFIGHT_TIME\020\003\022\027\n\023NOT_IN_FIG" +
-      "HT_UNIONS\020\004\"\337\001\n\030RequestUnionFightCommand" +
-      "\022\016\n\006userId\030\001 \002(\004\022M\n\003ret\030\002 \002(\0162@.com.tran" +
-      "s.pixel.protoc.RequestUnionFightCommand." +
-      "UNION_FIGHT_RET\0224\n\tfightinfo\030\003 \002(\0132!.com" +
-      ".trans.pixel.protoc.FightInfo\".\n\017UNION_F",
-      "IGHT_RET\022\007\n\003WIN\020\000\022\010\n\004LOSE\020\001\022\010\n\004DRAW\020\002\"E\n" +
-      "%RequestViewUnionFightFightInfoCommand\022\016" +
-      "\n\006userId\030\001 \002(\004\022\014\n\004time\030\002 \002(\r\"R\n\037RequestS" +
-      "ubmitBattletowerCommand\022\017\n\007success\030\001 \002(\010" +
-      "\022\r\n\005tower\030\002 \001(\005\022\017\n\007enemyId\030\003 \001(\005\"1\n\036Requ" +
-      "estResetBattletowerCommand\022\017\n\007enemyId\030\001 " +
-      "\001(\005\"T\n\034RequestGetBattletowerCommand\0224\n\003u" +
-      "bt\030\001 \001(\0132\'.com.trans.pixel.protoc.UserBa" +
-      "ttletower\"V\n\036ResponseUserBattletowerComm" +
-      "and\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pixel.proto",
-      "c.UserBattletower\"\032\n\030RequestBloodEnterCo" +
-      "mmand\"1\n\031RequestBloodXiazhuCommand\022\024\n\014xi" +
-      "azhuUserId\030\001 \002(\003\"y\n\035RequestInviteFightBo" +
-      "ssCommand\022\016\n\006userId\030\001 \003(\003\022\017\n\007groupId\030\002 \001" +
-      "(\005\022\016\n\006bossId\030\003 \001(\005\022\024\n\014createUserId\030\004 \001(\003" +
-      "\022\021\n\tstartDate\030\005 \001(\t\"-\n\033RequestQuitFightB" +
-      "ossCommand\022\016\n\006userId\030\001 \002(\003\"Y\n\035ResponseBo" +
-      "ssRoomRecordCommand\0228\n\010bossRoom\030\001 \002(\0132&." +
-      "com.trans.pixel.protoc.BossRoomRecord\"4\n" +
-      "!RequestSubmitBossRoomScoreCommand\022\017\n\007pe",
-      "rcent\030\001 \002(\005\"\035\n\033RequestStartBossRoomComma" +
-      "nd\"?\n\034RequestCreateBossRoomCommand\022\017\n\007gr" +
-      "oupId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005\"\034\n\032RequestBo" +
-      "ssRoomInfoCommand\"@\n\rUnionBossList\022/\n\004da" +
-      "ta\030\001 \003(\0132!.com.trans.pixel.protoc.UnionB" +
-      "oss\"\234\002\n\tUnionBoss\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 " +
-      "\001(\t\022\014\n\004type\030\002 \001(\005\022\020\n\010targetid\030\003 \001(\005\022\023\n\013t" +
-      "argetcount\030\004 \001(\005\022\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv" +
-      "\030\006 \001(\005\0224\n\010lootlist\030\007 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\022\023\n\013refreshtime\030\010 \001(",
-      "\005\022\r\n\005count\030\t \001(\005\022\020\n\010handbook\030\n \001(\005\0226\n\nen" +
-      "emygroup\030\013 \001(\0132\".com.trans.pixel.protoc." +
-      "EnemyGroup\"F\n\020UnionBosswinList\0222\n\004data\030\001" +
-      " \003(\0132$.com.trans.pixel.protoc.UnionBossw" +
-      "in\"J\n\014UnionBosswin\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002" +
-      " \003(\0132 .com.trans.pixel.protoc.RankItem\"h" +
-      "\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022" +
-      "\013\n\003des\030\t \001(\t\0222\n\006reward\030\n \003(\0132\".com.trans" +
-      ".pixel.protoc.RewardInfo\"7\n\031RequestCreat" +
-      "eUnionCommand\022\014\n\004icon\030\001 \001(\005\022\014\n\004name\030\002 \002(",
-      "\t\"<\n\030RequestApplyUnionCommand\022\017\n\007unionId" +
-      "\030\001 \002(\005\022\017\n\007content\030\002 \001(\t\"7\n\030RequestReplyU" +
-      "nionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010" +
-      "\":\n\037RequestHandleUnionMemberCommand\022\n\n\002i" +
-      "d\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036RequestSetUnionA" +
-      "nnounceCommand\022\020\n\010announce\030\001 \001(\t\"\034\n\032Requ" +
-      "estUpgradeUnionCommand\"%\n\027RequestQuitUni" +
-      "onCommand\022\n\n\002id\030\001 \001(\003\"w\n\027RequestUnionInf" +
-      "oCommand\022\024\n\014isNewVersion\030\001 \001(\010\0225\n\004type\030\002" +
-      " \001(\0162\'.com.trans.pixel.protoc.UNION_INFO",
-      "_TYPE\022\017\n\007unionId\030\003 \001(\r\"<\n\031RequestAttackU" +
-      "nionCommand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002" +
-      " \002(\003\"+\n\031RequestDefendUnionCommand\022\016\n\006tea" +
-      "mid\030\002 \002(\003\"\271\001\n\030ResponseUnionInfoCommand\022," +
-      "\n\005union\030\001 \001(\0132\035.com.trans.pixel.protoc.U" +
-      "nion\0223\n\007applies\030\002 \003(\0132\".com.trans.pixel." +
-      "protoc.UnionApply\022:\n\tunionBoss\030\003 \003(\0132\'.c" +
-      "om.trans.pixel.protoc.UnionBossRecord\"\'\n" +
-      "\027RequestUnionListCommand\022\014\n\004type\030\001 \001(\005\")" +
-      "\n\031RequestSearchUnionCommand\022\014\n\004name\030\001 \001(",
-      "\t\"H\n\030ResponseUnionListCommand\022,\n\005union\030\001" +
-      " \003(\0132\035.com.trans.pixel.protoc.Union\"?\n\034R" +
-      "equestSubmitBosskillCommand\022\017\n\007groupId\030\001" +
-      " \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillC" +
-      "ommand\"R\n\027ResponseBosskillCommand\0227\n\006rec" +
-      "ord\030\001 \003(\0132\'.com.trans.pixel.protoc.BossG" +
-      "roupRecord\"V\n\030ResponseUnionBossCommand\022:" +
-      "\n\tunionBoss\030\001 \003(\0132\'.com.trans.pixel.prot" +
-      "oc.UnionBossRecord\"K\n\034RequestUnionBossFi" +
-      "ghtCommand\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017",
-      "\n\007percent\030\003 \001(\005*,\n\014FIGHT_STATUS\022\r\n\tNOT_F" +
-      "IGHT\020\000\022\r\n\tCAN_FIGHT\020\001*@\n\017UNION_INFO_TYPE" +
-      "\022\016\n\nTYPE_UNION\020\001\022\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE" +
-      "_BOSS\020\003"
+      "d.UNION_FIGHT_STATUS\"\203\001\n\022UNION_FIGHT_STA" +
+      "TUS\022\013\n\007NO_TIME\020\000\022\016\n\nAPPLY_TIME\020\001\022\021\n\rHUIZ" +
+      "HANG_TIME\020\002\022\016\n\nFIGHT_TIME\020\003\022\024\n\020SEND_REWA" +
+      "RD_TIME\020\004\022\027\n\023NOT_IN_FIGHT_UNIONS\020\005\"\337\001\n\030R" +
+      "equestUnionFightCommand\022\016\n\006userId\030\001 \002(\004\022" +
+      "M\n\003ret\030\002 \002(\0162@.com.trans.pixel.protoc.Re" +
+      "questUnionFightCommand.UNION_FIGHT_RET\0224" +
+      "\n\tfightinfo\030\003 \002(\0132!.com.trans.pixel.prot",
+      "oc.FightInfo\".\n\017UNION_FIGHT_RET\022\007\n\003WIN\020\000" +
+      "\022\010\n\004LOSE\020\001\022\010\n\004DRAW\020\002\"E\n%RequestViewUnion" +
+      "FightFightInfoCommand\022\016\n\006userId\030\001 \002(\004\022\014\n" +
+      "\004time\030\002 \002(\r\"R\n\037RequestSubmitBattletowerC" +
+      "ommand\022\017\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005\022\017" +
+      "\n\007enemyId\030\003 \001(\005\"1\n\036RequestResetBattletow" +
+      "erCommand\022\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestGet" +
+      "BattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.tr" +
+      "ans.pixel.protoc.UserBattletower\"V\n\036Resp" +
+      "onseUserBattletowerCommand\0224\n\003ubt\030\001 \001(\0132",
+      "\'.com.trans.pixel.protoc.UserBattletower" +
+      "\"\032\n\030RequestBloodEnterCommand\"1\n\031RequestB" +
+      "loodXiazhuCommand\022\024\n\014xiazhuUserId\030\001 \002(\003\"" +
+      "y\n\035RequestInviteFightBossCommand\022\016\n\006user" +
+      "Id\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 \001(" +
+      "\005\022\024\n\014createUserId\030\004 \001(\003\022\021\n\tstartDate\030\005 \001" +
+      "(\t\"-\n\033RequestQuitFightBossCommand\022\016\n\006use" +
+      "rId\030\001 \002(\003\"Y\n\035ResponseBossRoomRecordComma" +
+      "nd\0228\n\010bossRoom\030\001 \002(\0132&.com.trans.pixel.p" +
+      "rotoc.BossRoomRecord\"4\n!RequestSubmitBos",
+      "sRoomScoreCommand\022\017\n\007percent\030\001 \002(\005\"\035\n\033Re" +
+      "questStartBossRoomCommand\"?\n\034RequestCrea" +
+      "teBossRoomCommand\022\017\n\007groupId\030\002 \002(\005\022\016\n\006bo" +
+      "ssId\030\003 \002(\005\"\034\n\032RequestBossRoomInfoCommand" +
+      "\"@\n\rUnionBossList\022/\n\004data\030\001 \003(\0132!.com.tr" +
+      "ans.pixel.protoc.UnionBoss\"\234\002\n\tUnionBoss" +
+      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(\t\022\014\n\004type\030\002 \001(\005" +
+      "\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022" +
+      "\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv\030\006 \001(\005\0224\n\010lootlis" +
+      "t\030\007 \003(\0132\".com.trans.pixel.protoc.RewardI",
+      "nfo\022\023\n\013refreshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022" +
+      "\020\n\010handbook\030\n \001(\005\0226\n\nenemygroup\030\013 \001(\0132\"." +
+      "com.trans.pixel.protoc.EnemyGroup\"F\n\020Uni" +
+      "onBosswinList\0222\n\004data\030\001 \003(\0132$.com.trans." +
+      "pixel.protoc.UnionBosswin\"J\n\014UnionBosswi" +
+      "n\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans." +
+      "pixel.protoc.RankItem\"h\n\010RankItem\022\014\n\004ran" +
+      "k\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006r" +
+      "eward\030\n \003(\0132\".com.trans.pixel.protoc.Rew" +
+      "ardInfo\"7\n\031RequestCreateUnionCommand\022\014\n\004",
+      "icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"<\n\030RequestApply" +
+      "UnionCommand\022\017\n\007unionId\030\001 \002(\005\022\017\n\007content" +
+      "\030\002 \001(\t\"7\n\030RequestReplyUnionCommand\022\n\n\002id" +
+      "\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHandle" +
+      "UnionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 " +
+      "\002(\005\"2\n\036RequestSetUnionAnnounceCommand\022\020\n" +
+      "\010announce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionCo" +
+      "mmand\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001" +
+      " \001(\003\"w\n\027RequestUnionInfoCommand\022\024\n\014isNew" +
+      "Version\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.",
+      "pixel.protoc.UNION_INFO_TYPE\022\017\n\007unionId\030" +
+      "\003 \001(\r\"<\n\031RequestAttackUnionCommand\022\017\n\007un" +
+      "ionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDe" +
+      "fendUnionCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030Res" +
+      "ponseUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035.c" +
+      "om.trans.pixel.protoc.Union\0223\n\007applies\030\002" +
+      " \003(\0132\".com.trans.pixel.protoc.UnionApply" +
+      "\022:\n\tunionBoss\030\003 \003(\0132\'.com.trans.pixel.pr" +
+      "otoc.UnionBossRecord\"\'\n\027RequestUnionList" +
+      "Command\022\014\n\004type\030\001 \001(\005\")\n\031RequestSearchUn",
+      "ionCommand\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseUnio" +
+      "nListCommand\022,\n\005union\030\001 \003(\0132\035.com.trans." +
+      "pixel.protoc.Union\"?\n\034RequestSubmitBossk" +
+      "illCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 " +
+      "\002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Respons" +
+      "eBosskillCommand\0227\n\006record\030\001 \003(\0132\'.com.t" +
+      "rans.pixel.protoc.BossGroupRecord\"V\n\030Res" +
+      "ponseUnionBossCommand\022:\n\tunionBoss\030\001 \003(\013" +
+      "2\'.com.trans.pixel.protoc.UnionBossRecor" +
+      "d\"K\n\034RequestUnionBossFightCommand\022\016\n\006bos",
+      "sId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*," +
+      "\n\014FIGHT_STATUS\022\r\n\tNOT_FIGHT\020\000\022\r\n\tCAN_FIG" +
+      "HT\020\001*@\n\017UNION_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022" +
+      "\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

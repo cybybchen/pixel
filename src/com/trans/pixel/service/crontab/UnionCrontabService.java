@@ -57,5 +57,7 @@ public class UnionCrontabService {
 			unionService.deleteLastRecord();
 		else if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
 			unionService.calUnionFight();
+		else if (status.equals(UNION_FIGHT_STATUS.SEND_REWARD_TIME))
+			unionService.sendUnionFightReward();
 	}
 }

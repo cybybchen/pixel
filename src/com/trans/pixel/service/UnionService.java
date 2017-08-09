@@ -26,6 +26,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -1347,6 +1348,7 @@ public class UnionService extends FightService{
 			redis.delUnionFightApply(unionId);
 		}
 		redis.deleteApplyUnionRecord();
+		redis.delUnionFightRewardRecord();
 	}
 	
 	public void calUnionFight() {
@@ -1391,12 +1393,15 @@ public class UnionService extends FightService{
 					return UNION_FIGHT_STATUS.HUIZHANG_TIME;
 				case 3:
 					return UNION_FIGHT_STATUS.FIGHT_TIME;
+				case 4:
+					return UNION_FIGHT_STATUS.SEND_REWARD_TIME;
 				default:
 					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 			}
 		}
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
 		int day = DateUtil.getDayOfWeek();
+		log.error("current week day is:" + DateUtil.getDayOfWeek());
 		if (day == UnionConst.FIGHT_APPLY_DAY)
 			status = UNION_FIGHT_STATUS.APPLY_TIME;
 		else if (day == UnionConst.FIGHT_HUIZHANG_DAY)
@@ -1405,9 +1410,82 @@ public class UnionService extends FightService{
 			status = UNION_FIGHT_STATUS.FIGHT_TIME;
 			if (unionId != 0 && isInFightUnions(unionId))
 				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+		} else if (unionId == 0 && day == UnionConst.FIGHT_SENDREWARD_DAY) {
+			status = UNION_FIGHT_STATUS.SEND_REWARD_TIME;
 		}
 		
 		return status;
+	}
+	
+	/**
+	 * 公会战结算奖励
+	 */
+	public void sendUnionFightReward() {
+		Map<String, String> unionMap = redis.getApplyUnionMap();
+		Iterator<Entry<String, String>> it = unionMap.entrySet().iterator();
+		while (it.hasNext()) {
+			Entry<String, String> entry = it.next();
+			String unionId1 = entry.getKey();
+			String unionId2 = entry.getValue();
+			if (unionId2.isEmpty()) {
+				sendUnionFightWinReward(unionId1);
+				continue;
+			}
+			if (isWin(unionId1, unionId2)) {
+				sendUnionFightWinReward(unionId1);
+				sendUnionFightLoseReward(unionId2);
+			}
+			
+		}
+	}
+	
+	private void sendUnionFightWinReward(String unionId) {
+		if (redis.hasRewardUnionFight(unionId))
+			return;
+		
+		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 10000);
+		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
+		for (UserInfo user : members) {
+			sendUnionFightMail(user, true, rewardList);
+		}
+	}
+	
+	private void sendUnionFightLoseReward(String unionId) {
+		if (redis.hasRewardUnionFight(unionId))
+			return;
+		
+		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 100);
+		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
+		for (UserInfo user : members) {
+			sendUnionFightMail(user, false, rewardList);
+		}
+	}
+	
+	private void sendUnionFightMail(UserInfo user, boolean ret, List<RewardInfo> rewardList) {
+		String content = ret ? "恭喜您的公会获得公会战胜利！" : "很可惜您的公会在公会战中输给了对手，请再接再厉！";
+		MailBean mail = MailBean.buildSystemMail(user.getId(), content, rewardList);
+		mailService.addMail(mail);
+	}
+	
+	private boolean isWin(String unionId, String enemyUnionId) {
+		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+		int winStar = 0;
+		int loseStar = 0;
+		for (UnionFightRecord record : applyList) {
+			for (EnemyRecord enemy : record.getEnemyRecordList())
+				winStar += enemy.getStar();
+		}
+		
+		List<UnionFightRecord> enemyApplyList = getUnionFightApply(unionId);
+		for (UnionFightRecord record : enemyApplyList) {
+			for (EnemyRecord enemy : record.getEnemyRecordList())
+				loseStar += enemy.getStar();
+		}
+		
+		if (winStar >= loseStar)
+			return true;
+		else 
+			return false;
 	}
 	
 	private boolean isInFightUnions(int unionId) {
