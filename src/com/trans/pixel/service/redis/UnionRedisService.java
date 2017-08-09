@@ -24,6 +24,7 @@ import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.UnionProto.Union;
@@ -169,7 +170,7 @@ public class UnionRedisService extends RedisService{
 		Set<String> unionIds = zrange(RedisKey.UNION_RANK_PREFIX+serverId, 0, 49);
 		return getUnions(serverId, unionIds);
 	}
-	private List<Union> getUnions(final int serverId, Collection<String> ids) {
+	public List<Union> getUnions(final int serverId, Collection<String> ids) {
 		List<Union> unions = new ArrayList<Union>();
 		List<String> values = hmget(getUnionServerKey(serverId), ids);
 		for(String value : values) {
@@ -687,12 +688,44 @@ public class UnionRedisService extends RedisService{
 	
 	public void delUnionBossRankKey(int unionId, int bossId) {
 		String key = RedisKey.UNION_BOSS_RANK_PREFIX + unionId + RedisKey.SPLIT + bossId;
-		this.delete(key);
+		delete(key);
 	}
 	
-	public void addApplyUnion(UserBean user) {
+	public void addApplyUnion(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
-		sadd(key, "" + user.getUnionId());
+//		sadd(key, "" + user.getUnionId());
+		hput(key, "" + unionId, "");
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public void deleteApplyUnion(String unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		hdelete(key, unionId);
+	}
+	
+	public void updateApplyUnion(int unionId, int enemyUnionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		hput(key, "" + unionId, "" + enemyUnionId);
+	}
+	
+	public void deleteApplyUnionRecord() {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		delete(key);
+	}
+	
+	public int getEnemyUnionId(int unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		return TypeTranslatedUtil.stringToInt(hget(key, "" + unionId));
+	}
+	
+	public Set<String> getApplyUnionIds() {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		return hkeys(key);
+	}
+	
+	public boolean isInFightUnions(int unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
+		return hexist(key, "" + unionId);
 	}
 	
 	public void applyFight(UserBean user) {
@@ -728,7 +761,7 @@ public class UnionRedisService extends RedisService{
 		return null;
 	}
 	
-	public List<UnionFightRecord> getUnionFightApply(int unionId) {
+	public <T> List<UnionFightRecord> getUnionFightApply(T unionId) {
 		List<UnionFightRecord> applyList = new ArrayList<UnionFightRecord>();
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
 		Map<String, String> map = hget(key);
@@ -739,6 +772,32 @@ public class UnionRedisService extends RedisService{
 		}
 		
 		return applyList;
+	}
+	
+	public void delUnionFightApply(String unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
+		delete(key);
+	}
+	
+	public void saveUnionFightFightInfo(int unionId, long userId, int time, FightInfo fightinfo) {
+		String key = RedisKey.UNION_FIGHTINFO_RECORD_PREFIX + unionId;
+		hput(key, userId + ":" + time, RedisService.formatJson(fightinfo));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public FightInfo getFightInfo(int unionId, long userId, int time) {
+		String key = RedisKey.UNION_FIGHTINFO_RECORD_PREFIX + unionId;
+		String value = hget(key, userId + ":" + time);
+		FightInfo.Builder builder = FightInfo.newBuilder();
+		if (value != null && RedisService.parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
+	
+	public void delUnionFightFightInfo(String unionId) {
+		String key = RedisKey.UNION_FIGHTINFO_RECORD_PREFIX + unionId;
+		delete(key);
 	}
 	
 	public UnionExp getUnionExp(int id) {

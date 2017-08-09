@@ -380,6 +380,7 @@ public class RedisKey {
 	public static final String UNION_BOSS_REWARD_TIME = PREFIX + "union_bossrewards_";
 	public static final String UNION_FIGHT_APPLY_PREFIX = PREFIX + "union_fight_apply_";
 	public static final String UNION_FIGHT_APPLY_UNIONS_KEY = PREFIX + "fight_apply_unions";
+	public static final String UNION_FIGHTINFO_RECORD_PREFIX = PREFIX + "union_fightinfo_";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

@@ -754,4 +754,14 @@ public class DateUtil {
 
         return cal.get(Calendar.DAY_OF_MONTH);
     }
+    
+    /**
+     * 取当前星期的某天
+     */
+    public static int getDayOfWeek() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(getDate());
+
+        return cal.get(Calendar.DAY_OF_WEEK);
+    }
 }

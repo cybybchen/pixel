@@ -10,4 +10,11 @@ public class UnionConst {
 	public static final int UNION_BOSS_TYPE_KILLMONSTER = 2;
 	public static final int UNION_BOSS_TYPE_COST = 3;
 	public static final int UNION_BOSS_TYPE_UNDEAD = 4;
+	
+	
+	public static final int FIGHT_APPLY_DAY = 4;
+	public static final int FIGHT_HUIZHANG_DAY = 5;
+	public static final int FIGHT_DAY = 6;
+	
+	public static final int UNION_FIGHT_MEMBER_LIMIT = 2;
 }

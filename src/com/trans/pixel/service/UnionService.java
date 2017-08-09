@@ -33,6 +33,7 @@ import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.AreaProto.AreaResource;
 import com.trans.pixel.protoc.AreaProto.FightResult;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.Team;
@@ -41,14 +42,17 @@ import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
 import com.trans.pixel.protoc.Base.UnionBossUserRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.UnionProto.FIGHT_STATUS;
 import com.trans.pixel.protoc.UnionProto.RankItem;
+import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.UNION_FIGHT_RET;
+import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.protoc.UnionProto.UnionApply;
 import com.trans.pixel.protoc.UnionProto.UnionBoss;
 import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionFightRecord;
-import com.trans.pixel.protoc.UnionProto.UnionFightRecord.FIGHT_STATUS;
+import com.trans.pixel.protoc.UnionProto.UnionFightRecord.EnemyRecord;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -98,6 +102,16 @@ public class UnionService extends FightService{
         }
 	};
 
+	Comparator<Union> unionComparator = new Comparator<Union>() {
+		public int compare(Union union1, Union union2) {
+			int dvalue = union2.getZhanli() - union1.getZhanli();
+			if (dvalue == 0)
+				return 1;
+			
+			return dvalue;
+		}
+	};
+	
 	public Union.Builder searchUnions(UserBean user, String name) {
 		return redis.getUnionByName(user, name);
 	}
@@ -1225,28 +1239,41 @@ public class UnionService extends FightService{
 	
 	public void applyFight(UserBean user) {
 		redis.applyFight(user);
-		redis.addApplyUnion(user);
 	}
 	
-	public void handlerFightMembers(UserBean user, List<Long> userIds) {
+	public ResultConst handlerFightMembers(UserBean user, List<Long> userIds, FIGHT_STATUS fightStatus) {
 		Map<String, String> map = new HashMap<String, String>();
 		List<UnionFightRecord> applyList = getUnionFightApply(user.getUnionId());
+		int fightCount = 0;
 		for (UnionFightRecord record : applyList) {
+			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
+				fightCount++; 
 			if (userIds.contains(record.getUser().getId())) {
 				UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(record);
-				builder.setStatus(FIGHT_STATUS.CAN_FIGHT);
+				builder.setStatus(fightStatus);
 				map.put("" + builder.getUser().getId(), RedisService.formatJson(builder.build()));
+				if (record.getStatus().equals(FIGHT_STATUS.NOT_FIGHT) && builder.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
+					fightCount++;
+				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT) && builder.getStatus().equals(FIGHT_STATUS.NOT_FIGHT))
+					fightCount--;
 			}
 		}
 		
+		if (fightCount > UnionConst.UNION_FIGHT_MEMBER_LIMIT)
+			return ErrorConst.UNION_FIGHT_MEMBER_IS_LIMIT_ERROR;
+		
 		redis.updateApplyFight(user, map);
+		
+		redis.addApplyUnion(user.getUnionId());
+		
+		return SuccessConst.HANDLER_SUCCESS;
 	}
 	
-	public List<UnionFightRecord> getUnionFightApply(int unionId) {
-		return redis.getUnionFightApply(unionId);
+	public <T> List<UnionFightRecord> getUnionFightApply(T unionId) {
+		return redis.getUnionFightApply("" + unionId);
 	}
 	
-	public ResultConst unionFight(UserBean user, long userId) {
+	public ResultConst unionFight(UserBean user, long userId, UNION_FIGHT_RET ret, FightInfo fightinfo) {
 		String lockKey = "unionfight:" + userId;
 		if (!redis.setLock(lockKey, 4))
 			return ErrorConst.USER_IS_BEING_ATTACKED_ERROR;
@@ -1262,26 +1289,116 @@ public class UnionService extends FightService{
 		if (record.getAttackCount() >= 2)
 			return ErrorConst.USER_HAS_NO_ATTACK_TIMES_ERROR;
 		
-		UnionFightRecord otherRecord = redis.getUnionFightRecord(user.getUnionId(), userId);
+		int enemyUnionId = redis.getEnemyUnionId(user.getUnionId());
+		if (enemyUnionId == 0 || enemyUnionId == user.getUnionId()) 
+			return ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR;
+		
+		UnionFightRecord otherRecord = redis.getUnionFightRecord(enemyUnionId, userId);
 		if (otherRecord == null)
 			return ErrorConst.USER_CAN_NOT_ATTACKED_ERROR;
 		
-		if (otherRecord.getBeAttackedCount() >= 2)
+		if (otherRecord.getEnemyRecordCount() >= 2)
 			return ErrorConst.USER_HAS_NO_BEING_ATTACKED_TIMES_ERROR;
 		
 		UnionFightRecord.Builder recordBuilder = UnionFightRecord.newBuilder(record);
 		recordBuilder.setAttackCount(recordBuilder.getAttackCount() + 1);
 		
-		UnionFightRecord.Builder otherBuilder = UnionFightRecord.newBuilder(record);
-		otherBuilder.setBeAttackedCount(otherBuilder.getBeAttackedCount() + 1);
+		UnionFightRecord.Builder otherBuilder = UnionFightRecord.newBuilder(otherRecord);
+		EnemyRecord.Builder enemy = EnemyRecord.newBuilder();
+		enemy.setEnemy(user.buildShort());
+		enemy.setTime(otherBuilder.getEnemyRecordCount() + 1);
+		switch (ret.getNumber()) {
+			case UNION_FIGHT_RET.WIN_VALUE:
+				enemy.setStar(3);
+				break;
+			case UNION_FIGHT_RET.LOSE_VALUE:
+				enemy.setStar(0);
+				break;
+			case UNION_FIGHT_RET.DRAW_VALUE:
+				enemy.setStar(1);
+				break;
+			default:
+				enemy.setStar(0);
+				break;
+		}
+		otherBuilder.addEnemyRecord(enemy.build());
 		
 		redis.updateApplyFight(user.getUnionId(), recordBuilder.build());
 		redis.updateApplyFight(user.getUnionId(), otherBuilder.build());
+		
+		redis.saveUnionFightFightInfo(enemyUnionId, otherBuilder.getUser().getId(), otherBuilder.getEnemyRecordCount(), fightinfo);
 		
 		redis.clearLock(lockKey);
 		redis.clearLock(selfLockKey);
 		
 		return SuccessConst.ATTACK_SUCCESS;
+	}
+	
+	public FightInfo viewUnionFightFightInfo(UserBean user, long userId, int time) {
+		int enemyUnionId = redis.getEnemyUnionId(user.getUnionId());
+		
+		return redis.getFightInfo(enemyUnionId, userId, time);
+	}
+	
+	public void deleteLastRecord() {
+		Set<String> unions = redis.getApplyUnionIds();
+		for (String unionId : unions) {
+			redis.delUnionFightFightInfo(unionId);
+			redis.delUnionFightApply(unionId);
+		}
+		redis.deleteApplyUnionRecord();
+	}
+	
+	public void calUnionFight() {
+		Set<String> unionIds = redis.getApplyUnionIds();
+		for (String unionId : unionIds) {
+			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT)//人数不够，无法参加
+				redis.deleteApplyUnion(unionId);
+		}
+		unionIds = redis.getApplyUnionIds();
+		List<Union> unions = redis.getUnions(1, unionIds);
+		Collections.sort(unions, unionComparator);
+		for (int i = 0; i < unions.size(); ++ i) {
+			if (i + 1 >= unions.size())
+				continue;
+			
+			Union union = unions.get(i);
+			Union nextUnion = unions.get(i + 1);
+			
+			redis.updateApplyUnion(union.getId(), nextUnion.getId());
+			redis.updateApplyUnion(nextUnion.getId(), union.getId());
+		}
+	}
+	
+	private int calFightMemberCount(String unionId) {
+		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+		int fightCount = 0;
+		for (UnionFightRecord record : applyList) {
+			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
+				fightCount++; 
+		}
+		
+		return fightCount;
+	}
+	
+	public UNION_FIGHT_STATUS calUnionFightStatus(int unionId) {
+		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
+		int day = DateUtil.getDayOfWeek();
+		if (day == UnionConst.FIGHT_APPLY_DAY)
+			status = UNION_FIGHT_STATUS.APPLY_TIME;
+		else if (day == UnionConst.FIGHT_HUIZHANG_DAY)
+			status = UNION_FIGHT_STATUS.HUIZHANG_TIME;
+		else if (day == UnionConst.FIGHT_DAY) {
+			status = UNION_FIGHT_STATUS.FIGHT_TIME;
+			if (unionId != 0 && isInFightUnions(unionId))
+				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+		}
+		
+		return status;
+	}
+	
+	private boolean isInFightUnions(int unionId) {
+		return redis.isInFightUnions(unionId);
 	}
 	
 	private void calUnionLevel(Union.Builder union) {

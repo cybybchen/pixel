@@ -15,11 +15,14 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
 import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
+import com.trans.pixel.protoc.UnionProto.FIGHT_STATUS;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestCreateUnionCommand;
@@ -36,8 +39,10 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
+import com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand;
+import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand;
 import com.trans.pixel.protoc.UnionProto.UNION_INFO_TYPE;
@@ -363,19 +368,38 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
-		if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.APPLY))
+		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(user.getUnionId());
+		if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.APPLY)) {
+			if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR));
+				return;
+			}
 			unionService.applyFight(user);
-		else if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.HANDLER_FIGHT_MEMBER)) {
+		}else if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.HANDLER_FIGHT_MEMBER)) {
+			if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR));
+				return;
+			}
 			if(user.getUnionJob() != UnionConst.UNION_HUIZHANG){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_IS_NOT_HUIZHANG);
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_IS_NOT_HUIZHANG));
 				return;
 			}
-			unionService.handlerFightMembers(user, cmd.getUserIdList());
+			FIGHT_STATUS fightStatus = FIGHT_STATUS.CAN_FIGHT;
+			if (cmd.hasFightStatus())
+				fightStatus = cmd.getFightStatus();
+			unionService.handlerFightMembers(user, cmd.getUserIdList(), fightStatus);
 		}
 		
 		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
 		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
+		builder.setStatus(unionService.calUnionFightStatus(user.getUnionId()));
+		if (builder.getStatus().equals(UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_IN_FIGHT_UNIONS_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_IN_FIGHT_UNIONS_ERROR));
+		}
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 	
@@ -386,7 +410,14 @@ public class UnionCommandService extends BaseCommandService {
 			return;
 		}
 		
-		ResultConst ret = unionService.unionFight(user, cmd.getUserId());
+		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(user.getUnionId());
+		if (!status.equals(UNION_FIGHT_STATUS.FIGHT_TIME)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
+			return;
+		}
+		
+		ResultConst ret = unionService.unionFight(user, cmd.getUserId(), cmd.getRet(), cmd.getFightinfo());
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			responseBuilder.setErrorCommand(buildErrorCommand(ret));
@@ -397,5 +428,21 @@ public class UnionCommandService extends BaseCommandService {
 		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		builder.addAllEnemyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
+	}
+	
+	public void viewFightInfo(RequestViewUnionFightFightInfoCommand cmd, Builder responseBuilder, UserBean user) {
+		if (user.getUnionId() <= 0) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.USER_HAS_NO_UNION_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.USER_HAS_NO_UNION_ERROR));
+			return;
+		}
+		
+		FightInfo fightinfo = unionService.viewUnionFightFightInfo(user, cmd.getUserId(), cmd.getTime());
+		if (fightinfo != null) {
+			ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
+					.newBuilder();
+			
+			builder.addInfo(fightinfo);
+		}
 	}
 }

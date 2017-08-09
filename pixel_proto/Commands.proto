@@ -3229,16 +3229,21 @@ message UnionExpList {
 
 }
 
+enum FIGHT_STATUS {
+	NOT_FIGHT = 0;
+	CAN_FIGHT = 1;
+}
+
 message UnionFightRecord {
-	enum FIGHT_STATUS {
-		NOT_FIGHT = 0;
-		CAN_FIGHT = 1;
-	}
 	required UserInfo user = 1;
 	optional FIGHT_STATUS status = 2;//有没有被会长选中参加战斗
 	optional uint32 attackCount = 3;//攻击2次
-	optional uint32 beAttackedCount = 4;//被攻击2次
-	repeated uint32 star = 5;//被攻击的星级,0 1 3
+	message EnemyRecord {
+		required UserInfo enemy = 1;
+		required uint32 time = 2;//场次1 or 2
+		required uint32 star = 3;
+	}
+	repeated EnemyRecord enemyRecord = 5;
 }
 
 message RequestUnionFightApplyCommand {
@@ -3249,15 +3254,37 @@ message RequestUnionFightApplyCommand {
 	}
 	optional UNIONFIGHTAPPLY_STATUS status = 1;
 	repeated uint64 userId = 2;
+	optional FIGHT_STATUS fightStatus = 3;
 }
 
 message ResponseUnionFightApplyRecordCommand {
 	repeated UnionFightRecord applyRecord = 1;
 	repeated UnionFightRecord enemyRecord = 2;
+	enum UNION_FIGHT_STATUS {
+		NO_TIME = 0;//平时
+		APPLY_TIME = 1;//报名
+		HUIZHANG_TIME = 2;//会长选人
+		FIGHT_TIME = 3;//战斗
+		NOT_IN_FIGHT_UNIONS = 4;//未成功参与此次公会战
+	}
+
+	optional UNION_FIGHT_STATUS status = 3;
 }
 
 message RequestUnionFightCommand {
 	required uint64 userId = 1;
+	enum UNION_FIGHT_RET {
+		WIN = 0;
+		LOSE = 1;
+		DRAW = 2;
+	}
+	required UNION_FIGHT_RET ret = 2;
+	required FightInfo fightinfo = 3;
+}
+
+message RequestViewUnionFightFightInfoCommand {
+	required uint64 userId = 1;
+	required uint32 time = 2;//场次 1 or 2
 }
 
 message RequestSubmitBattletowerCommand {
@@ -3890,6 +3917,7 @@ message RequestCommand {
 	optional RequestUnionFightApplyCommand unionFightApplyCommand = 266;
 	optional RequestLootRewardTaskCommand lootRewardTaskCommand = 267;
 	optional RequestUnionFightCommand unionFightCommand = 268;
+	optional RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;
 }
 ////////// Commands
 message ErrorCommand {
