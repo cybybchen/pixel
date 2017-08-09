@@ -19,6 +19,7 @@ public class HmacSHA1Encryption {
 	private static Logger logger = Logger.getLogger(HmacSHA1Encryption.class);
 	private static final String MAC_NAME = "HmacSHA1";
 	private static final String ENCODING = "UTF-8";
+	public static final String JEWEL_SHA = "jewel_sha";
 	
 	public static Map<String, String> parseRequest(HttpServletRequest request) {
 		Map<String, String[]> params = request.getParameterMap();

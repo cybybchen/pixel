@@ -11,6 +11,7 @@ import com.trans.pixel.protoc.Base.UnionBossRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.service.LibaoService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.utils.HmacSHA1Encryption;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 public class UserBean {
@@ -142,6 +143,7 @@ public class UserBean {
 	private String signName = "";
 	private int shenyuanPRD = 0;
 	private int rite = 0;
+	private String jewelkey = "";
 	/**
 	 * 主角sp总数
 	 */
@@ -1368,6 +1370,12 @@ public class UserBean {
 	public void setRite(int rite) {
 		this.rite = rite;
 	}
+	public String getJewelkey() {
+		return jewelkey;
+	}
+	public void setJewelkey(String jewelkey) {
+		this.jewelkey = jewelkey;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1580,6 +1588,19 @@ public class UserBean {
 	public static int calUserIdByMarkId(String markId) {
 		String userIdStr = markId.substring(5);
 		return TypeTranslatedUtil.stringToInt(userIdStr);
+	}
+	
+	public String calJewelKey() {
+		String jewelkey = "";
+		try {
+			String key = HmacSHA1Encryption.HmacSHA1Encrypt(account, HmacSHA1Encryption.JEWEL_SHA);
+			jewelkey = HmacSHA1Encryption.HmacSHA1Encrypt("" + jewel, key);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return jewelkey;
 	}
 	
 //	public Map<String, String> toMap() {

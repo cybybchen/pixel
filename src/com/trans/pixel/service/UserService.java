@@ -48,6 +48,7 @@ import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.MailUtils;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -131,6 +132,10 @@ public class UserService {
     			userRedisService.cache(user.getServerId(), user.buildShort());
     			userRedisService.updateUser(user);
     		}
+    	}
+    	
+    	if (!user.getJewelkey().isEmpty() && !user.calJewelKey().equals(user.getJewelkey())) {
+    		sendMail("userid is:" + user.getId() + ",钻石异常");
     	}
     	
         if(isme && user != null && refreshUserDailyData(user))
@@ -365,6 +370,7 @@ public class UserService {
 	}
 
 	public void updateUser(UserBean user) {
+		user.setJewelkey(user.calJewelKey());
 		userRedisService.updateUser(user);
 	}
 	
@@ -699,5 +705,10 @@ public class UserService {
 	
 	public void setUserIdByAccount(int serverId, String account, long userId) {
 		userRedisService.setUserIdByAccount(serverId, account, userId);
+	}
+	
+	private void sendMail(String mail) {
+		MailUtils cn = new MailUtils();
+		cn.sendMail("xinji.wang@transmension.com", "帐号异常通知", mail);
 	}
 }
