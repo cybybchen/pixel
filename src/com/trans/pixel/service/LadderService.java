@@ -621,7 +621,7 @@ public class LadderService {
 	
 	private MailBean buildLadderDailyMail(long userId, LadderDaily ladderDaily) {
 		MailBean mail = new MailBean();
-		mail.setContent("天梯每日奖励");
+		mail.setContent("切磋每日奖励");
 		mail.setRewardList(buildRewardList(ladderDaily));
 		mail.setStartDate(DateUtil.getCurrentDateString());
 		mail.setType(MailConst.TYPE_SYSTEM_MAIL);
