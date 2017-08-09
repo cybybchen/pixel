@@ -1271,7 +1271,15 @@ public class UnionService extends FightService{
 	}
 	
 	public <T> List<UnionFightRecord> getUnionFightApply(T unionId) {
-		return redis.getUnionFightApply("" + unionId);
+		return redis.getUnionFightApply(unionId);
+	}
+	
+	public <T> List<UnionFightRecord> getUnionFightEnemy(T unionId) {
+		int enemyUnionId = redis.getEnemyUnionId(unionId);
+		if (enemyUnionId == 0)
+			return new ArrayList<UnionFightRecord>();
+		
+		return redis.getUnionFightApply(enemyUnionId);
 	}
 	
 	public ResultConst unionFight(UserBean user, long userId, UNION_FIGHT_RET ret, FightInfo fightinfo) {

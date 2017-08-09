@@ -713,7 +713,7 @@ public class UnionRedisService extends RedisService{
 		delete(key);
 	}
 	
-	public int getEnemyUnionId(int unionId) {
+	public <T> int getEnemyUnionId(T unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 		return TypeTranslatedUtil.stringToInt(hget(key, "" + unionId));
 	}
