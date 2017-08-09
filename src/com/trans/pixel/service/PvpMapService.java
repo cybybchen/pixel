@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -40,7 +41,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class PvpMapService {
-//	private static Logger logger = Logger.getLogger(PvpMapService.class);
+	private static Logger logger = Logger.getLogger(PvpMapService.class);
 	@Resource
 	private PvpMapRedisService redis;
 	@Resource
@@ -355,9 +356,9 @@ public class PvpMapService {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());
 					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
-						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100+1);
+						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100+1);
 					else
-						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
+						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100);
 					
 					if(reward.getCount() > 0)
 						rewards.addLoot(reward);
@@ -421,9 +422,9 @@ public class PvpMapService {
 					RewardInfo.Builder reward = RewardInfo.newBuilder();
 					reward.setItemid(rd.getItemid());
 					if(RedisService.nextInt(100) < (rd.getWeight() + rd.getWeightb()*event.getLevel())%100)
-						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100+1);
+						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100+1);
 					else
-						reward.setCount((rd.getWeight() + rd.getWeightb()*event.getLevel())/100);
+						reward.setCount((rd.getWeight() + (int)(rd.getWeightb()*event.getLevel()))/100);
 					
 					if(reward.getCount() > 0)
 						rewards.addLoot(reward);

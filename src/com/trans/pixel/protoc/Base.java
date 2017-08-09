@@ -27189,15 +27189,15 @@ public final class Base {
      */
     int getWeight();
 
-    // optional int32 weightb = 11;
+    // optional float weightb = 11;
     /**
-     * <code>optional int32 weightb = 11;</code>
+     * <code>optional float weightb = 11;</code>
      */
     boolean hasWeightb();
     /**
-     * <code>optional int32 weightb = 11;</code>
+     * <code>optional float weightb = 11;</code>
      */
-    int getWeightb();
+    float getWeightb();
 
     // optional float counta = 5;
     /**
@@ -27365,9 +27365,9 @@ public final class Base {
               lastime_ = input.readUInt32();
               break;
             }
-            case 88: {
+            case 93: {
               bitField0_ |= 0x00000010;
-              weightb_ = input.readInt32();
+              weightb_ = input.readFloat();
               break;
             }
           }
@@ -27501,19 +27501,19 @@ public final class Base {
       return weight_;
     }
 
-    // optional int32 weightb = 11;
+    // optional float weightb = 11;
     public static final int WEIGHTB_FIELD_NUMBER = 11;
-    private int weightb_;
+    private float weightb_;
     /**
-     * <code>optional int32 weightb = 11;</code>
+     * <code>optional float weightb = 11;</code>
      */
     public boolean hasWeightb() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional int32 weightb = 11;</code>
+     * <code>optional float weightb = 11;</code>
      */
-    public int getWeightb() {
+    public float getWeightb() {
       return weightb_;
     }
 
@@ -27645,7 +27645,7 @@ public final class Base {
       name_ = "";
       count_ = 0L;
       weight_ = 0;
-      weightb_ = 0;
+      weightb_ = 0F;
       counta_ = 0F;
       countb_ = 0F;
       item_ = "";
@@ -27696,7 +27696,7 @@ public final class Base {
         output.writeUInt32(10, lastime_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(11, weightb_);
+        output.writeFloat(11, weightb_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -27749,7 +27749,7 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, weightb_);
+          .computeFloatSize(11, weightb_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27875,7 +27875,7 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000004);
         weight_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        weightb_ = 0;
+        weightb_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
         counta_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -28214,35 +28214,35 @@ public final class Base {
         return this;
       }
 
-      // optional int32 weightb = 11;
-      private int weightb_ ;
+      // optional float weightb = 11;
+      private float weightb_ ;
       /**
-       * <code>optional int32 weightb = 11;</code>
+       * <code>optional float weightb = 11;</code>
        */
       public boolean hasWeightb() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 weightb = 11;</code>
+       * <code>optional float weightb = 11;</code>
        */
-      public int getWeightb() {
+      public float getWeightb() {
         return weightb_;
       }
       /**
-       * <code>optional int32 weightb = 11;</code>
+       * <code>optional float weightb = 11;</code>
        */
-      public Builder setWeightb(int value) {
+      public Builder setWeightb(float value) {
         bitField0_ |= 0x00000010;
         weightb_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 weightb = 11;</code>
+       * <code>optional float weightb = 11;</code>
        */
       public Builder clearWeightb() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        weightb_ = 0;
+        weightb_ = 0F;
         onChanged();
         return this;
       }
@@ -34152,7 +34152,7 @@ public final class Base {
       "c.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nReward" +
       "Info\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005co" +
       "unt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001",
-      "(\005\022\016\n\006counta\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004it" +
+      "(\002\022\016\n\006counta\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004it" +
       "em\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r" +
       "\022\017\n\007lastime\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006item" +
       "id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n" +
