@@ -67,7 +67,7 @@
 		<result property="jewelPRD" column="jewelPRD" />
 		<result property="hunxiaPRD" column="hunxiaPRD" />
 		<result property="rite" column="rite" />
-		<result property="jewelKey" column="jewel_key" />
+		<result property="jewelkey" column="jewel_key" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="userMap">
@@ -117,7 +117,7 @@
 		zhaohuanshi=#{zhaohuanshi}, task1_order=#{task1Order}, task2_record=#{task2Record}, zhujue_exp=#{zhujueExp}, vip_exp=#{vipExp},
 		reward_task_index=#{rewardTaskIndex}, use_talent_id=#{useTalentId}, user_type=#{userType}, gold_savingbox=#{goldSavingBox},
 		exp_savingbox=#{expSavingBox}, frame=#{frame}, recommand_user_id=#{recommandUserId}, friend_vip=#{friendVip}, talentsp=#{talentsp},
-		shenyuanPRD=#{shenyuanPRD}, jewelPRD=#{jewelPRD}, hunxiaPRD=#{hunxiaPRD}, rite=#{rite}, jewel_key=#{jewelKey}
+		shenyuanPRD=#{shenyuanPRD}, jewelPRD=#{jewelPRD}, hunxiaPRD=#{hunxiaPRD}, rite=#{rite}, jewel_key=#{jewelkey}
 		WHERE id=#{id}
 	</update>
 
