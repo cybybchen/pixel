@@ -134,8 +134,8 @@ public class UserService {
     		}
     	}
     	
-    	if (!user.getJewelkey().isEmpty() && !user.calJewelKey().equals(user.getJewelkey())) {
-    		sendMail("userid is:" + user.getId() + ",钻石异常");
+    	if (user != null && !user.getJewelkey().isEmpty() && !user.calJewelKey().equals(user.getJewelkey())) {
+    		sendMail("userid is:" + user.getId() + ",钻石异常，钻石：" + user.getJewel() + "，钻石key：" + user.getJewelkey());
     	}
     	
         if(isme && user != null && refreshUserDailyData(user))
