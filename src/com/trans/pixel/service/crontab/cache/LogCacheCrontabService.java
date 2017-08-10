@@ -32,6 +32,7 @@ public class LogCacheCrontabService {
 		Socket socket = null;
 		BufferedInputStream input = null;
 		OutputStream netOut = null;
+		String log = null;
 		try {
 			socket = new Socket(LogString.SERVER, LogString.getPort());
 			input = new BufferedInputStream(
@@ -41,32 +42,30 @@ public class LogCacheCrontabService {
 			// List<String> logs = logRedisService.popLog();
 			while (true) {
 				// for (String log : logs) {
-				String log = logRedisService.popLog();
+				log = logRedisService.popLog();
 				if (log == null)
 					break;
-				log += "\n";
-				logger.warn("send to log server " + log);
-				doc.write(log.getBytes());
+				String sendLog = log + "\n";
+				logger.warn("send to log server " + sendLog);
+				doc.write(sendLog.getBytes());
 				// netOut.write(log.getBytes());
 				// netOut.flush();
 				doc.flush();
-				logger.warn("after send to log server " + log);
+				logger.warn("after send to log server " + sendLog);
 				StringBuilder sb = new StringBuilder();
-				byte[] b = new byte[1024];
+				byte[] b = new byte[64];
 				int len = 0;
-//				String message = "";
-				while ((len = input.read(b)) != -1) {
-					sb.append(new String(b, 0, len));
-				}
+				len = input.read(b);
+				sb.append(new String(b, 0, len));
 				logger.debug("log ret is:" + sb.toString());
-				if (!sb.toString().equals("[[0]]"))
-					logRedisService.addLogData(log);
 			}
 			// doc.close();
 		} catch (UnknownHostException e) {
 			logger.error(e.getMessage());
+			logRedisService.addLogData(log);
 		} catch (IOException e) {
 			logger.error(e.getMessage());
+			logRedisService.addLogData(log);
 		} finally {
 			if (socket != null) {
 				try {

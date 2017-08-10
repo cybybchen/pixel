@@ -181,13 +181,10 @@ public class CacheService {
 	public static final<T> T spop(String key) {
 		synchronized(object1) {
 			List<T> set = (ArrayList<T>)_setcache.get(key);
-			if (set.size() > 0) {
+			if (set != null && set.size() > 0) {
 				T t = set.get(0);
 				set.remove(0);
-				if (t != null) {
-					return t;
-			} else
-				return null;
+				return t;
 			}else {
 				logger.error("Not support List key:"+key);
 				return null;
