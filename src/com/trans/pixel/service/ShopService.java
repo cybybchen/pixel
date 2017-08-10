@@ -231,8 +231,8 @@ public class ShopService {
 				builder.setValidtime(libao.getValidtime());
 			}
 			if(builder.getMaxlimit() > 0){//限制购买次数的礼包
-				if(count > builder.getPurchase())
-					count = builder.getPurchase();
+				if(count > builder.getMaxlimit())
+					count = builder.getMaxlimit();
 				if(builder.hasValidtime()){
 					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
