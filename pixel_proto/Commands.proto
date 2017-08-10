@@ -331,8 +331,8 @@ message Commodity {
 	optional int32 judge = 10;
 	optional int32 discount = 11;
 	optional int32 discost = 12;
-	optional int32 limit = 13;
-	optional int32 maxlimit = 14;
+	optional int32 limit = 13;//已购买次数
+	optional int32 maxlimit = 14;//限购次数
 	optional int32 vip = 15;
 	repeated RewardInfo reward = 16;
 	optional string img = 17;
@@ -559,7 +559,8 @@ message ResponseBattletowerShopCommand {
 message Libao {
 	optional int32 id = 1;
 	optional int32 rechargeid = 2;
-	optional int32 purchase = 3;//剩余次数
+	optional int32 purchase = 3;//已购买次数
+	optional int32 maxlimit = 5;//限购次数
 	optional string starttime = 4;
 	//optional string endtime = 5;
 	optional string validtime = 6;

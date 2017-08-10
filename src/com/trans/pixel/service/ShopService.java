@@ -230,9 +230,9 @@ public class ShopService {
 				}
 				builder.setValidtime(libao.getValidtime());
 			}
-			if(builder.getPurchase() > 0){//限制购买次数的礼包
-				if(count > builder.getPurchase())
-					count = builder.getPurchase();
+			if(builder.getMaxlimit() > 0){//限制购买次数的礼包
+//				if(count > builder.getPurchase())
+//					count = builder.getPurchase();
 				if(builder.hasValidtime()){
 					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
@@ -254,7 +254,7 @@ public class ShopService {
 					count = 0;
 				}
 			}
-			builder.setPurchase(Math.max(-1, builder.getPurchase() - count));
+			builder.setPurchase(count);
 			builder.setIsOut(builder.getPurchase() == 0);
 			builder.clearStarttime();
 		}

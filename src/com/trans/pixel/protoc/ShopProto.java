@@ -2973,20 +2973,36 @@ public final class ShopProto {
     // optional int32 limit = 13;
     /**
      * <code>optional int32 limit = 13;</code>
+     *
+     * <pre>
+     *已购买次数
+     * </pre>
      */
     boolean hasLimit();
     /**
      * <code>optional int32 limit = 13;</code>
+     *
+     * <pre>
+     *已购买次数
+     * </pre>
      */
     int getLimit();
 
     // optional int32 maxlimit = 14;
     /**
      * <code>optional int32 maxlimit = 14;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
      */
     boolean hasMaxlimit();
     /**
      * <code>optional int32 maxlimit = 14;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
      */
     int getMaxlimit();
 
@@ -3466,12 +3482,20 @@ public final class ShopProto {
     private int limit_;
     /**
      * <code>optional int32 limit = 13;</code>
+     *
+     * <pre>
+     *已购买次数
+     * </pre>
      */
     public boolean hasLimit() {
       return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional int32 limit = 13;</code>
+     *
+     * <pre>
+     *已购买次数
+     * </pre>
      */
     public int getLimit() {
       return limit_;
@@ -3482,12 +3506,20 @@ public final class ShopProto {
     private int maxlimit_;
     /**
      * <code>optional int32 maxlimit = 14;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
      */
     public boolean hasMaxlimit() {
       return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional int32 maxlimit = 14;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
      */
     public int getMaxlimit() {
       return maxlimit_;
@@ -4627,18 +4659,30 @@ public final class ShopProto {
       private int limit_ ;
       /**
        * <code>optional int32 limit = 13;</code>
+       *
+       * <pre>
+       *已购买次数
+       * </pre>
        */
       public boolean hasLimit() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional int32 limit = 13;</code>
+       *
+       * <pre>
+       *已购买次数
+       * </pre>
        */
       public int getLimit() {
         return limit_;
       }
       /**
        * <code>optional int32 limit = 13;</code>
+       *
+       * <pre>
+       *已购买次数
+       * </pre>
        */
       public Builder setLimit(int value) {
         bitField0_ |= 0x00001000;
@@ -4648,6 +4692,10 @@ public final class ShopProto {
       }
       /**
        * <code>optional int32 limit = 13;</code>
+       *
+       * <pre>
+       *已购买次数
+       * </pre>
        */
       public Builder clearLimit() {
         bitField0_ = (bitField0_ & ~0x00001000);
@@ -4660,18 +4708,30 @@ public final class ShopProto {
       private int maxlimit_ ;
       /**
        * <code>optional int32 maxlimit = 14;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
        */
       public boolean hasMaxlimit() {
         return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional int32 maxlimit = 14;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
        */
       public int getMaxlimit() {
         return maxlimit_;
       }
       /**
        * <code>optional int32 maxlimit = 14;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
        */
       public Builder setMaxlimit(int value) {
         bitField0_ |= 0x00002000;
@@ -4681,6 +4741,10 @@ public final class ShopProto {
       }
       /**
        * <code>optional int32 maxlimit = 14;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
        */
       public Builder clearMaxlimit() {
         bitField0_ = (bitField0_ & ~0x00002000);
@@ -36763,7 +36827,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *剩余次数
+     *已购买次数
      * </pre>
      */
     boolean hasPurchase();
@@ -36771,10 +36835,28 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *剩余次数
+     *已购买次数
      * </pre>
      */
     int getPurchase();
+
+    // optional int32 maxlimit = 5;
+    /**
+     * <code>optional int32 maxlimit = 5;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
+     */
+    boolean hasMaxlimit();
+    /**
+     * <code>optional int32 maxlimit = 5;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
+     */
+    int getMaxlimit();
 
     // optional string starttime = 4;
     /**
@@ -36913,22 +36995,27 @@ public final class ShopProto {
               break;
             }
             case 34: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               starttime_ = input.readBytes();
               break;
             }
+            case 40: {
+              bitField0_ |= 0x00000008;
+              maxlimit_ = input.readInt32();
+              break;
+            }
             case 50: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               validtime_ = input.readBytes();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               refresh_ = input.readInt32();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               isOut_ = input.readBool();
               break;
             }
@@ -37011,7 +37098,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *剩余次数
+     *已购买次数
      * </pre>
      */
     public boolean hasPurchase() {
@@ -37021,11 +37108,35 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *剩余次数
+     *已购买次数
      * </pre>
      */
     public int getPurchase() {
       return purchase_;
+    }
+
+    // optional int32 maxlimit = 5;
+    public static final int MAXLIMIT_FIELD_NUMBER = 5;
+    private int maxlimit_;
+    /**
+     * <code>optional int32 maxlimit = 5;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
+     */
+    public boolean hasMaxlimit() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 maxlimit = 5;</code>
+     *
+     * <pre>
+     *限购次数
+     * </pre>
+     */
+    public int getMaxlimit() {
+      return maxlimit_;
     }
 
     // optional string starttime = 4;
@@ -37035,7 +37146,7 @@ public final class ShopProto {
      * <code>optional string starttime = 4;</code>
      */
     public boolean hasStarttime() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional string starttime = 4;</code>
@@ -37082,7 +37193,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasValidtime() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional string validtime = 6;</code>
@@ -37133,7 +37244,7 @@ public final class ShopProto {
      * <code>optional int32 refresh = 7;</code>
      */
     public boolean hasRefresh() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 refresh = 7;</code>
@@ -37153,7 +37264,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasIsOut() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional bool isOut = 8;</code>
@@ -37170,6 +37281,7 @@ public final class ShopProto {
       id_ = 0;
       rechargeid_ = 0;
       purchase_ = 0;
+      maxlimit_ = 0;
       starttime_ = "";
       validtime_ = "";
       refresh_ = 0;
@@ -37196,16 +37308,19 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, purchase_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeBytes(4, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(6, getValidtimeBytes());
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(5, maxlimit_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, refresh_);
+        output.writeBytes(6, getValidtimeBytes());
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(7, refresh_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBool(8, isOut_);
       }
       getUnknownFields().writeTo(output);
@@ -37229,19 +37344,23 @@ public final class ShopProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, purchase_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getValidtimeBytes());
+          .computeInt32Size(5, maxlimit_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, refresh_);
+          .computeBytesSize(6, getValidtimeBytes());
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, refresh_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, isOut_);
       }
@@ -37367,14 +37486,16 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         purchase_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        starttime_ = "";
+        maxlimit_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        validtime_ = "";
+        starttime_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
-        refresh_ = 0;
+        validtime_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
-        isOut_ = false;
+        refresh_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        isOut_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -37418,17 +37539,21 @@ public final class ShopProto {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.starttime_ = starttime_;
+        result.maxlimit_ = maxlimit_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.validtime_ = validtime_;
+        result.starttime_ = starttime_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.refresh_ = refresh_;
+        result.validtime_ = validtime_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
+        }
+        result.refresh_ = refresh_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
         }
         result.isOut_ = isOut_;
         result.bitField0_ = to_bitField0_;
@@ -37456,13 +37581,16 @@ public final class ShopProto {
         if (other.hasPurchase()) {
           setPurchase(other.getPurchase());
         }
+        if (other.hasMaxlimit()) {
+          setMaxlimit(other.getMaxlimit());
+        }
         if (other.hasStarttime()) {
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
           starttime_ = other.starttime_;
           onChanged();
         }
         if (other.hasValidtime()) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
           validtime_ = other.validtime_;
           onChanged();
         }
@@ -37571,7 +37699,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *剩余次数
+       *已购买次数
        * </pre>
        */
       public boolean hasPurchase() {
@@ -37581,7 +37709,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *剩余次数
+       *已购买次数
        * </pre>
        */
       public int getPurchase() {
@@ -37591,7 +37719,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *剩余次数
+       *已购买次数
        * </pre>
        */
       public Builder setPurchase(int value) {
@@ -37604,12 +37732,61 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *剩余次数
+       *已购买次数
        * </pre>
        */
       public Builder clearPurchase() {
         bitField0_ = (bitField0_ & ~0x00000004);
         purchase_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 maxlimit = 5;
+      private int maxlimit_ ;
+      /**
+       * <code>optional int32 maxlimit = 5;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
+       */
+      public boolean hasMaxlimit() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 maxlimit = 5;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
+       */
+      public int getMaxlimit() {
+        return maxlimit_;
+      }
+      /**
+       * <code>optional int32 maxlimit = 5;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
+       */
+      public Builder setMaxlimit(int value) {
+        bitField0_ |= 0x00000008;
+        maxlimit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 maxlimit = 5;</code>
+       *
+       * <pre>
+       *限购次数
+       * </pre>
+       */
+      public Builder clearMaxlimit() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        maxlimit_ = 0;
         onChanged();
         return this;
       }
@@ -37620,7 +37797,7 @@ public final class ShopProto {
        * <code>optional string starttime = 4;</code>
        */
       public boolean hasStarttime() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string starttime = 4;</code>
@@ -37660,7 +37837,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         starttime_ = value;
         onChanged();
         return this;
@@ -37669,7 +37846,7 @@ public final class ShopProto {
        * <code>optional string starttime = 4;</code>
        */
       public Builder clearStarttime() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         starttime_ = getDefaultInstance().getStarttime();
         onChanged();
         return this;
@@ -37682,7 +37859,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000010;
         starttime_ = value;
         onChanged();
         return this;
@@ -37698,7 +37875,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasValidtime() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional string validtime = 6;</code>
@@ -37750,7 +37927,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         validtime_ = value;
         onChanged();
         return this;
@@ -37763,7 +37940,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearValidtime() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         validtime_ = getDefaultInstance().getValidtime();
         onChanged();
         return this;
@@ -37780,7 +37957,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         validtime_ = value;
         onChanged();
         return this;
@@ -37792,7 +37969,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public boolean hasRefresh() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 refresh = 7;</code>
@@ -37804,7 +37981,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder setRefresh(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         refresh_ = value;
         onChanged();
         return this;
@@ -37813,7 +37990,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder clearRefresh() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         refresh_ = 0;
         onChanged();
         return this;
@@ -37829,7 +38006,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasIsOut() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional bool isOut = 8;</code>
@@ -37849,7 +38026,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder setIsOut(boolean value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         isOut_ = value;
         onChanged();
         return this;
@@ -37862,7 +38039,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearIsOut() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         isOut_ = false;
         onChanged();
         return this;
@@ -42638,22 +42815,22 @@ public final class ShopProto {
       "stBattletowerShopRefreshCommand\"x\n\036Respo" +
       "nseBattletowerShopCommand\0220\n\005items\030\001 \003(\013" +
       "2!.com.trans.pixel.protoc.Commodity\022\017\n\007e" +
-      "ndTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\177\n\005Lib" +
-      "ao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010pu" +
-      "rchase\030\003 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022\021\n\tvalid" +
-      "time\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r\n\005isOut\030\010 \001",
-      "(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.tran" +
-      "s.pixel.protoc.Libao\"\031\n\027RequestLibaoShop" +
-      "Command\"H\n\030ResponseLibaoShopCommand\022,\n\005i" +
-      "tems\030\001 \003(\0132\035.com.trans.pixel.protoc.Liba" +
-      "o\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002" +
-      " \001(\010\"T\n\"ResponseFirstRechargeStatusComma" +
-      "nd\022.\n\006status\030\001 \003(\0132\036.com.trans.pixel.pro" +
-      "toc.Status\"0\n\036RequestPurchaseContractCom" +
-      "mand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseC" +
-      "oinCommand\"Q\n\033ResponsePurchaseCoinComman",
-      "d\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\tto" +
-      "talTime\030\005 \001(\005"
+      "ndTime\030\002 \001(\003\022\023\n\013refreshCost\030\003 \001(\005\"\221\001\n\005Li" +
+      "bao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010p" +
+      "urchase\030\003 \001(\005\022\020\n\010maxlimit\030\005 \001(\005\022\021\n\tstart" +
+      "time\030\004 \001(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh",
+      "\030\007 \001(\005\022\r\n\005isOut\030\010 \001(\010\"8\n\tLibaoList\022+\n\004da" +
+      "ta\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\"" +
+      "\031\n\027RequestLibaoShopCommand\"H\n\030ResponseLi" +
+      "baoShopCommand\022,\n\005items\030\001 \003(\0132\035.com.tran" +
+      "s.pixel.protoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001" +
+      "(\005\022\023\n\013canpurchase\030\002 \001(\010\"T\n\"ResponseFirst" +
+      "RechargeStatusCommand\022.\n\006status\030\001 \003(\0132\036." +
+      "com.trans.pixel.protoc.Status\"0\n\036Request" +
+      "PurchaseContractCommand\022\016\n\006heroid\030\001 \002(\005\"" +
+      "\034\n\032RequestPurchaseCoinCommand\"Q\n\033Respons",
+      "ePurchaseCoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010l" +
+      "eftTime\030\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43001,7 +43178,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
-              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Starttime", "Validtime", "Refresh", "IsOut", });
+              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Maxlimit", "Starttime", "Validtime", "Refresh", "IsOut", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
             getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new

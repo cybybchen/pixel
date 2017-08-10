@@ -2,7 +2,6 @@ package com.trans.pixel.service.redis;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 
@@ -25,6 +24,7 @@ import com.trans.pixel.protoc.ShopProto.ContractReward;
 import com.trans.pixel.protoc.ShopProto.ContractRewardList;
 import com.trans.pixel.protoc.ShopProto.ContractWeight;
 import com.trans.pixel.protoc.ShopProto.ContractWeightList;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.PurchaseCoinCostList;
 import com.trans.pixel.protoc.ShopProto.PurchaseCoinReward;
@@ -1083,6 +1083,10 @@ public class ShopRedisService extends RedisService{
 		LibaoList.Builder itemsbuilder = LibaoList.newBuilder();
 		String xml = ReadConfig("ld_shoplibao.xml");
 		parseXml(xml, itemsbuilder);
+		for(Libao.Builder libao : itemsbuilder.getDataBuilderList()) {
+			libao.setMaxlimit(libao.getPurchase());
+			libao.setPurchase(0);
+		}
 		CacheService.setcache(RedisKey.LIBAOSHOP_CONFIG, itemsbuilder.build());
 		
 		return itemsbuilder.build();
