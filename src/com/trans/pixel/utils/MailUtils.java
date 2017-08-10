@@ -66,7 +66,7 @@ public class MailUtils {
 			}
 			messageHelper.setTo(USERNAME);
 			messageHelper.addCc(to);
-			messageHelper.addCc("lolzj@transmension.com");
+//			messageHelper.addCc("lolzj@transmension.com");
 			messageHelper.setSubject(subject);
 			messageHelper.setText(content, true);
 			mailSender.send(mimeMessage);
