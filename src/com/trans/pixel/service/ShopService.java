@@ -222,7 +222,7 @@ public class ShopService {
 			Libao libao = libaoMap.get(builder.getRechargeid());
 			if(libao != null){
 				count = libao.getPurchase();
-				if(refresh && count != 0 && libao.getRefresh() > 0){//每日礼包
+				if(refresh && count != 0 && builder.getRefresh() > 0){//每日礼包
 					Libao.Builder libaobuilder = Libao.newBuilder(libao);
 					libaobuilder.setPurchase(0);
 					count = 0;
