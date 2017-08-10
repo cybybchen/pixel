@@ -390,7 +390,11 @@ public class UnionCommandService extends BaseCommandService {
 			FIGHT_STATUS fightStatus = FIGHT_STATUS.CAN_FIGHT;
 			if (cmd.hasFightStatus())
 				fightStatus = cmd.getFightStatus();
-			unionService.handlerFightMembers(user, cmd.getUserIdList(), fightStatus);
+			ResultConst ret = unionService.handlerFightMembers(user, cmd.getUserIdList(), fightStatus);
+			if (ret instanceof ErrorConst) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+				responseBuilder.setErrorCommand(buildErrorCommand(ret));
+			}
 		}
 		
 		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
