@@ -114,6 +114,7 @@ import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestSendMailCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCheatRechargeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowExpCommand;
@@ -1588,6 +1589,12 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestViewUnionFightFightInfoCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		unionCommandService.viewFightInfo(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		rechargeCommandService.canRecharge(cmd, responseBuilder, user);
 		return true;
 	}
 

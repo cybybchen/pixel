@@ -206,7 +206,7 @@ public class ShopService {
 		}
 		Libao.Builder builder = Libao.newBuilder();
 		builder.setRechargeid(rechargeid);
-		builder.setPurchase(0);
+		builder.setMaxlimit(0);
 		builder.setStarttime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date()));
 //		builder.setEndtime(builder.getStarttime());
 		return builder.build();
@@ -231,8 +231,8 @@ public class ShopService {
 				builder.setValidtime(libao.getValidtime());
 			}
 			if(builder.getMaxlimit() > 0){//限制购买次数的礼包
-//				if(count > builder.getPurchase())
-//					count = builder.getPurchase();
+				if(count > builder.getPurchase())
+					count = builder.getPurchase();
 				if(builder.hasValidtime()){
 					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
@@ -254,7 +254,7 @@ public class ShopService {
 					count = 0;
 				}
 			}
-			builder.setPurchase(count);
+			builder.setPurchase(Math.max(-1, builder.getMaxlimit() - count));
 			builder.setIsOut(builder.getPurchase() == 0);
 			builder.clearStarttime();
 		}

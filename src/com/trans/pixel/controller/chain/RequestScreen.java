@@ -184,6 +184,7 @@ import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
+import com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionListCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
@@ -409,6 +410,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLadderShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestInviteToRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChoseClearInfoCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderSeasonRewardCommand cmd, Builder responseBuilder, UserBean user);
@@ -1207,6 +1209,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasChoseClearInfoCommand()) {
 			RequestChoseClearInfoCommand cmd = request.getChoseClearInfoCommand();
 			if (isFuncAvailable(responseBuilder, "ChoseClearInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasCanRechargeCommand()) {
+			RequestCanRechargeCommand cmd = request.getCanRechargeCommand();
+			if (isFuncAvailable(responseBuilder, "CanRechargeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPVPShopRefreshCommand()) {
 			RequestPVPShopRefreshCommand cmd = request.getPVPShopRefreshCommand();

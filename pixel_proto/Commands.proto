@@ -559,7 +559,7 @@ message ResponseBattletowerShopCommand {
 message Libao {
 	optional int32 id = 1;
 	optional int32 rechargeid = 2;
-	optional int32 purchase = 3;//已购买次数
+	optional int32 purchase = 3;//剩余购买次数
 	optional int32 maxlimit = 5;//限购次数
 	optional string starttime = 4;
 	//optional string endtime = 5;
@@ -2034,9 +2034,14 @@ message RequestSubmitIconCommand {
 message RequestCheatRechargeCommand {
 	optional int32 itemid = 1;
 }
-
+message RequestCanRechargeCommand {
+	optional int32 rechargeid = 1;
+}
 message RequestRechargeCommand {
 	required int32 itemid = 1;
+}
+message ResponseCanRechargeCommand {
+        optional int32 canrecharge = 1;//canrecharge=0表示不能买
 }
 
 message RequestBindAccountCommand {
@@ -3799,6 +3804,7 @@ message RequestCommand {
 	optional RequestGetFightInfoCommand getFightInfoCommand = 156;
 	optional RequestOpenRaidCommand openRaidCommand = 157;
 	optional RequestStartRaidCommand raidCommand = 158;
+	optional RequestCanRechargeCommand canRechargeCommand = 170;
 	//////////////////////////////////////////////////////
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
@@ -3955,7 +3961,8 @@ message ResponseCommand {
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	optional ResponseFightInfoCommand fightInfoCommand = 155;
 	optional ResponseRaidCommand raidCommand = 158;
-	optional ResponseEventCommand eventCommand = 159;        
+	optional ResponseEventCommand eventCommand = 159;
+	optional ResponseCanRechargeCommand canRechargeCommand = 170;        
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

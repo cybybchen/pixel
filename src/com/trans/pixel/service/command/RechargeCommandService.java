@@ -9,12 +9,17 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand;
+import com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand;
+import com.trans.pixel.protoc.ShopProto.Libao;
+import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.ShopService;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.RedisService;
 
@@ -35,6 +40,24 @@ public class RechargeCommandService extends BaseCommandService {
 	private ShopService shopService;
 	@Resource
 	private RechargeService rechargeService;
+	@Resource
+	private UserService userService;
+
+	public void canRecharge(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user) {
+		Libao mylibao = userService.getLibao(user.getId(), cmd.getRechargeid());
+		Libao libaoconfig = shopService.getLibaoConfig(cmd.getRechargeid());
+		if(libaoconfig.getMaxlimit() >= 0 && mylibao.getPurchase() >= libaoconfig.getMaxlimit()) {
+			ResponseCanRechargeCommand.Builder canRechargeCommand = ResponseCanRechargeCommand.newBuilder();
+			canRechargeCommand.setCanrecharge(0);
+			responseBuilder.setCanRechargeCommand(canRechargeCommand);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_PURCHASE_TIME);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_PURCHASE_TIME));
+		}else {
+			ResponseCanRechargeCommand.Builder canRechargeCommand = ResponseCanRechargeCommand.newBuilder();
+			canRechargeCommand.setCanrecharge(1);
+			responseBuilder.setCanRechargeCommand(canRechargeCommand);
+		}
+	}
 	
 	public void queryRecharge(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		MultiReward rewards = rechargeService.handlerRecharge(user);

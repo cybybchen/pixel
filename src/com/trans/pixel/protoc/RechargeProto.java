@@ -12416,6 +12416,402 @@ public final class RechargeProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestCheatRechargeCommand)
   }
 
+  public interface RequestCanRechargeCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 rechargeid = 1;
+    /**
+     * <code>optional int32 rechargeid = 1;</code>
+     */
+    boolean hasRechargeid();
+    /**
+     * <code>optional int32 rechargeid = 1;</code>
+     */
+    int getRechargeid();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestCanRechargeCommand}
+   */
+  public static final class RequestCanRechargeCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestCanRechargeCommandOrBuilder {
+    // Use RequestCanRechargeCommand.newBuilder() to construct.
+    private RequestCanRechargeCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestCanRechargeCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestCanRechargeCommand defaultInstance;
+    public static RequestCanRechargeCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestCanRechargeCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestCanRechargeCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              rechargeid_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.class, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestCanRechargeCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestCanRechargeCommand>() {
+      public RequestCanRechargeCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestCanRechargeCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestCanRechargeCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 rechargeid = 1;
+    public static final int RECHARGEID_FIELD_NUMBER = 1;
+    private int rechargeid_;
+    /**
+     * <code>optional int32 rechargeid = 1;</code>
+     */
+    public boolean hasRechargeid() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 rechargeid = 1;</code>
+     */
+    public int getRechargeid() {
+      return rechargeid_;
+    }
+
+    private void initFields() {
+      rechargeid_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, rechargeid_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, rechargeid_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestCanRechargeCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.class, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        rechargeid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand build() {
+        com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand buildPartial() {
+        com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand result = new com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.rechargeid_ = rechargeid_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand) {
+          return mergeFrom((com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand other) {
+        if (other == com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance()) return this;
+        if (other.hasRechargeid()) {
+          setRechargeid(other.getRechargeid());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 rechargeid = 1;
+      private int rechargeid_ ;
+      /**
+       * <code>optional int32 rechargeid = 1;</code>
+       */
+      public boolean hasRechargeid() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 rechargeid = 1;</code>
+       */
+      public int getRechargeid() {
+        return rechargeid_;
+      }
+      /**
+       * <code>optional int32 rechargeid = 1;</code>
+       */
+      public Builder setRechargeid(int value) {
+        bitField0_ |= 0x00000001;
+        rechargeid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 rechargeid = 1;</code>
+       */
+      public Builder clearRechargeid() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        rechargeid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCanRechargeCommand)
+    }
+
+    static {
+      defaultInstance = new RequestCanRechargeCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestCanRechargeCommand)
+  }
+
   public interface RequestRechargeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -12818,6 +13214,434 @@ public final class RechargeProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestRechargeCommand)
+  }
+
+  public interface ResponseCanRechargeCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 canrecharge = 1;
+    /**
+     * <code>optional int32 canrecharge = 1;</code>
+     *
+     * <pre>
+     *canrecharge=0表示不能买
+     * </pre>
+     */
+    boolean hasCanrecharge();
+    /**
+     * <code>optional int32 canrecharge = 1;</code>
+     *
+     * <pre>
+     *canrecharge=0表示不能买
+     * </pre>
+     */
+    int getCanrecharge();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseCanRechargeCommand}
+   */
+  public static final class ResponseCanRechargeCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseCanRechargeCommandOrBuilder {
+    // Use ResponseCanRechargeCommand.newBuilder() to construct.
+    private ResponseCanRechargeCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseCanRechargeCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseCanRechargeCommand defaultInstance;
+    public static ResponseCanRechargeCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseCanRechargeCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseCanRechargeCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              canrecharge_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.class, com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseCanRechargeCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseCanRechargeCommand>() {
+      public ResponseCanRechargeCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseCanRechargeCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseCanRechargeCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 canrecharge = 1;
+    public static final int CANRECHARGE_FIELD_NUMBER = 1;
+    private int canrecharge_;
+    /**
+     * <code>optional int32 canrecharge = 1;</code>
+     *
+     * <pre>
+     *canrecharge=0表示不能买
+     * </pre>
+     */
+    public boolean hasCanrecharge() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 canrecharge = 1;</code>
+     *
+     * <pre>
+     *canrecharge=0表示不能买
+     * </pre>
+     */
+    public int getCanrecharge() {
+      return canrecharge_;
+    }
+
+    private void initFields() {
+      canrecharge_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, canrecharge_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, canrecharge_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseCanRechargeCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.class, com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        canrecharge_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand build() {
+        com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand buildPartial() {
+        com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand result = new com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.canrecharge_ = canrecharge_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand) {
+          return mergeFrom((com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand other) {
+        if (other == com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.getDefaultInstance()) return this;
+        if (other.hasCanrecharge()) {
+          setCanrecharge(other.getCanrecharge());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 canrecharge = 1;
+      private int canrecharge_ ;
+      /**
+       * <code>optional int32 canrecharge = 1;</code>
+       *
+       * <pre>
+       *canrecharge=0表示不能买
+       * </pre>
+       */
+      public boolean hasCanrecharge() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 canrecharge = 1;</code>
+       *
+       * <pre>
+       *canrecharge=0表示不能买
+       * </pre>
+       */
+      public int getCanrecharge() {
+        return canrecharge_;
+      }
+      /**
+       * <code>optional int32 canrecharge = 1;</code>
+       *
+       * <pre>
+       *canrecharge=0表示不能买
+       * </pre>
+       */
+      public Builder setCanrecharge(int value) {
+        bitField0_ |= 0x00000001;
+        canrecharge_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 canrecharge = 1;</code>
+       *
+       * <pre>
+       *canrecharge=0表示不能买
+       * </pre>
+       */
+      public Builder clearCanrecharge() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        canrecharge_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCanRechargeCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseCanRechargeCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseCanRechargeCommand)
   }
 
   public interface RequestBindAccountCommandOrBuilder
@@ -16551,10 +17375,20 @@ public final class RechargeProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor;
   private static
@@ -16641,18 +17475,20 @@ public final class RechargeProto {
       "ardInfo\"\"\n\023RequestCdkeyCommand\022\013\n\003key\030\001 " +
       "\002(\t\"7\n\030RequestSubmitIconCommand\022\014\n\004icon\030" +
       "\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"-\n\033RequestCheatRech" +
-      "argeCommand\022\016\n\006itemid\030\001 \001(\005\"(\n\026RequestRe" +
-      "chargeCommand\022\016\n\006itemid\030\001 \002(\005\"C\n\031Request" +
-      "BindAccountCommand\022\022\n\noldAccount\030\001 \002(\t\022\022",
-      "\n\nnewAccount\030\002 \002(\t\"-\n\036RequestPurchaseVip" +
-      "LibaoCommand\022\013\n\003vip\030\001 \002(\005\".\n\033RequestQuer" +
-      "yRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n\035Req" +
-      "uestShouchongRewardCommand\"+\n\032RequestGet" +
-      "GrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030Reque" +
-      "stGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024\n\022Re" +
-      "questSignCommand\"I\n\023ResponseSignCommand\022" +
-      "2\n\006reward\030\001 \003(\0132\".com.trans.pixel.protoc" +
-      ".RewardInfo"
+      "argeCommand\022\016\n\006itemid\030\001 \001(\005\"/\n\031RequestCa" +
+      "nRechargeCommand\022\022\n\nrechargeid\030\001 \001(\005\"(\n\026" +
+      "RequestRechargeCommand\022\016\n\006itemid\030\001 \002(\005\"1",
+      "\n\032ResponseCanRechargeCommand\022\023\n\013canrecha" +
+      "rge\030\001 \001(\005\"C\n\031RequestBindAccountCommand\022\022" +
+      "\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccount\030\002 \002(\t\"-" +
+      "\n\036RequestPurchaseVipLibaoCommand\022\013\n\003vip\030" +
+      "\001 \002(\005\".\n\033RequestQueryRechargeCommand\022\017\n\007" +
+      "orderId\030\001 \001(\t\"\037\n\035RequestShouchongRewardC" +
+      "ommand\"+\n\032RequestGetGrowJewelCommand\022\r\n\005" +
+      "order\030\001 \002(\005\")\n\030RequestGetGrowExpCommand\022" +
+      "\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023" +
+      "ResponseSignCommand\0222\n\006reward\030\001 \003(\0132\".co",
+      "m.trans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16755,56 +17591,68 @@ public final class RechargeProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
-          internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor =
             getDescriptor().getMessageTypes().get(16);
+          internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor,
+              new java.lang.String[] { "Rechargeid", });
+          internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
+          internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor =
+            getDescriptor().getMessageTypes().get(18);
+          internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor,
+              new java.lang.String[] { "Canrecharge", });
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor,
               new java.lang.String[] { "OldAccount", "NewAccount", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor,
               new java.lang.String[] { "Vip", });
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor,
               new java.lang.String[] { "OrderId", });
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor,

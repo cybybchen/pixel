@@ -1257,6 +1257,20 @@ public final class Request {
      */
     com.trans.pixel.protoc.TaskProto.RequestStartRaidCommandOrBuilder getRaidCommandOrBuilder();
 
+    // optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    boolean hasCanRechargeCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand getCanRechargeCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder getCanRechargeCommandOrBuilder();
+
     // optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;</code>
@@ -3363,7 +3377,7 @@ public final class Request {
             }
             case 290: {
               com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x02000000) == 0x02000000)) {
+              if (((bitField2_ & 0x04000000) == 0x04000000)) {
                 subBuilder = messageBoardListCommand_.toBuilder();
               }
               messageBoardListCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.PARSER, extensionRegistry);
@@ -3371,12 +3385,12 @@ public final class Request {
                 subBuilder.mergeFrom(messageBoardListCommand_);
                 messageBoardListCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x02000000;
+              bitField2_ |= 0x04000000;
               break;
             }
             case 298: {
               com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x04000000) == 0x04000000)) {
+              if (((bitField2_ & 0x08000000) == 0x08000000)) {
                 subBuilder = createMessageBoardCommand_.toBuilder();
               }
               createMessageBoardCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.PARSER, extensionRegistry);
@@ -3384,12 +3398,12 @@ public final class Request {
                 subBuilder.mergeFrom(createMessageBoardCommand_);
                 createMessageBoardCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x04000000;
+              bitField2_ |= 0x08000000;
               break;
             }
             case 306: {
               com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x08000000) == 0x08000000)) {
+              if (((bitField2_ & 0x10000000) == 0x10000000)) {
                 subBuilder = replyMessageCommand_.toBuilder();
               }
               replyMessageCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.PARSER, extensionRegistry);
@@ -3397,7 +3411,7 @@ public final class Request {
                 subBuilder.mergeFrom(replyMessageCommand_);
                 replyMessageCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x08000000;
+              bitField2_ |= 0x10000000;
               break;
             }
             case 322: {
@@ -3480,7 +3494,7 @@ public final class Request {
             }
             case 370: {
               com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x10000000) == 0x10000000)) {
+              if (((bitField2_ & 0x20000000) == 0x20000000)) {
                 subBuilder = userTeamListCommand_.toBuilder();
               }
               userTeamListCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.PARSER, extensionRegistry);
@@ -3488,12 +3502,12 @@ public final class Request {
                 subBuilder.mergeFrom(userTeamListCommand_);
                 userTeamListCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x10000000;
+              bitField2_ |= 0x20000000;
               break;
             }
             case 378: {
               com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x20000000) == 0x20000000)) {
+              if (((bitField2_ & 0x40000000) == 0x40000000)) {
                 subBuilder = ladderUserInfoCommand_.toBuilder();
               }
               ladderUserInfoCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.PARSER, extensionRegistry);
@@ -3501,12 +3515,12 @@ public final class Request {
                 subBuilder.mergeFrom(ladderUserInfoCommand_);
                 ladderUserInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x20000000;
+              bitField2_ |= 0x40000000;
               break;
             }
             case 386: {
               com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x40000000) == 0x40000000)) {
+              if (((bitField2_ & 0x80000000) == 0x80000000)) {
                 subBuilder = userFriendListCommand_.toBuilder();
               }
               userFriendListCommand_ = input.readMessage(com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.PARSER, extensionRegistry);
@@ -3514,12 +3528,12 @@ public final class Request {
                 subBuilder.mergeFrom(userFriendListCommand_);
                 userFriendListCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x40000000;
+              bitField2_ |= 0x80000000;
               break;
             }
             case 394: {
               com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000040) == 0x00000040)) {
+              if (((bitField3_ & 0x00000080) == 0x00000080)) {
                 subBuilder = heroSpUpCommand_.toBuilder();
               }
               heroSpUpCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.PARSER, extensionRegistry);
@@ -3527,12 +3541,12 @@ public final class Request {
                 subBuilder.mergeFrom(heroSpUpCommand_);
                 heroSpUpCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000040;
+              bitField3_ |= 0x00000080;
               break;
             }
             case 402: {
               com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x80000000) == 0x80000000)) {
+              if (((bitField3_ & 0x00000001) == 0x00000001)) {
                 subBuilder = equipComposeCommand_.toBuilder();
               }
               equipComposeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.PARSER, extensionRegistry);
@@ -3540,12 +3554,12 @@ public final class Request {
                 subBuilder.mergeFrom(equipComposeCommand_);
                 equipComposeCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x80000000;
+              bitField3_ |= 0x00000001;
               break;
             }
             case 410: {
               com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000001) == 0x00000001)) {
+              if (((bitField3_ & 0x00000002) == 0x00000002)) {
                 subBuilder = usePropCommand_.toBuilder();
               }
               usePropCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.PARSER, extensionRegistry);
@@ -3553,12 +3567,12 @@ public final class Request {
                 subBuilder.mergeFrom(usePropCommand_);
                 usePropCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000001;
+              bitField3_ |= 0x00000002;
               break;
             }
             case 418: {
               com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000002) == 0x00000002)) {
+              if (((bitField3_ & 0x00000004) == 0x00000004)) {
                 subBuilder = fenjieEquipCommand_.toBuilder();
               }
               fenjieEquipCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.PARSER, extensionRegistry);
@@ -3566,12 +3580,12 @@ public final class Request {
                 subBuilder.mergeFrom(fenjieEquipCommand_);
                 fenjieEquipCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000002;
+              bitField3_ |= 0x00000004;
               break;
             }
             case 426: {
               com.trans.pixel.protoc.RechargeProto.RequestSignCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000004) == 0x00000004)) {
+              if (((bitField3_ & 0x00000008) == 0x00000008)) {
                 subBuilder = signCommand_.toBuilder();
               }
               signCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestSignCommand.PARSER, extensionRegistry);
@@ -3579,12 +3593,12 @@ public final class Request {
                 subBuilder.mergeFrom(signCommand_);
                 signCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000004;
+              bitField3_ |= 0x00000008;
               break;
             }
             case 442: {
               com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000008) == 0x00000008)) {
+              if (((bitField3_ & 0x00000010) == 0x00000010)) {
                 subBuilder = helpAttackPVPMineCommand_.toBuilder();
               }
               helpAttackPVPMineCommand_ = input.readMessage(com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.PARSER, extensionRegistry);
@@ -3592,12 +3606,12 @@ public final class Request {
                 subBuilder.mergeFrom(helpAttackPVPMineCommand_);
                 helpAttackPVPMineCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000008;
+              bitField3_ |= 0x00000010;
               break;
             }
             case 450: {
               com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000010) == 0x00000010)) {
+              if (((bitField3_ & 0x00000020) == 0x00000020)) {
                 subBuilder = fenjieHeroCommand_.toBuilder();
               }
               fenjieHeroCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.PARSER, extensionRegistry);
@@ -3605,12 +3619,12 @@ public final class Request {
                 subBuilder.mergeFrom(fenjieHeroCommand_);
                 fenjieHeroCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000010;
+              bitField3_ |= 0x00000020;
               break;
             }
             case 458: {
               com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000020) == 0x00000020)) {
+              if (((bitField3_ & 0x00000040) == 0x00000040)) {
                 subBuilder = resetHeroSkillCommand_.toBuilder();
               }
               resetHeroSkillCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.PARSER, extensionRegistry);
@@ -3618,12 +3632,12 @@ public final class Request {
                 subBuilder.mergeFrom(resetHeroSkillCommand_);
                 resetHeroSkillCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000020;
+              bitField3_ |= 0x00000040;
               break;
             }
             case 466: {
               com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000080) == 0x00000080)) {
+              if (((bitField3_ & 0x00000100) == 0x00000100)) {
                 subBuilder = sendMailCommand_.toBuilder();
               }
               sendMailCommand_ = input.readMessage(com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.PARSER, extensionRegistry);
@@ -3631,12 +3645,12 @@ public final class Request {
                 subBuilder.mergeFrom(sendMailCommand_);
                 sendMailCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000080;
+              bitField3_ |= 0x00000100;
               break;
             }
             case 474: {
               com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000100) == 0x00000100)) {
+              if (((bitField3_ & 0x00000200) == 0x00000200)) {
                 subBuilder = brotherMineInfoCommand_.toBuilder();
               }
               brotherMineInfoCommand_ = input.readMessage(com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.PARSER, extensionRegistry);
@@ -3644,12 +3658,12 @@ public final class Request {
                 subBuilder.mergeFrom(brotherMineInfoCommand_);
                 brotherMineInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000100;
+              bitField3_ |= 0x00000200;
               break;
             }
             case 482: {
               com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000200) == 0x00000200)) {
+              if (((bitField3_ & 0x00000400) == 0x00000400)) {
                 subBuilder = enterMohuaMapCommand_.toBuilder();
               }
               enterMohuaMapCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.PARSER, extensionRegistry);
@@ -3657,12 +3671,12 @@ public final class Request {
                 subBuilder.mergeFrom(enterMohuaMapCommand_);
                 enterMohuaMapCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000200;
+              bitField3_ |= 0x00000400;
               break;
             }
             case 490: {
               com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000400) == 0x00000400)) {
+              if (((bitField3_ & 0x00000800) == 0x00000800)) {
                 subBuilder = startMohuaMapCommand_.toBuilder();
               }
               startMohuaMapCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.PARSER, extensionRegistry);
@@ -3670,12 +3684,12 @@ public final class Request {
                 subBuilder.mergeFrom(startMohuaMapCommand_);
                 startMohuaMapCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000400;
+              bitField3_ |= 0x00000800;
               break;
             }
             case 498: {
               com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00000800) == 0x00000800)) {
+              if (((bitField3_ & 0x00001000) == 0x00001000)) {
                 subBuilder = useMohuaCardCommand_.toBuilder();
               }
               useMohuaCardCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.PARSER, extensionRegistry);
@@ -3683,12 +3697,12 @@ public final class Request {
                 subBuilder.mergeFrom(useMohuaCardCommand_);
                 useMohuaCardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00000800;
+              bitField3_ |= 0x00001000;
               break;
             }
             case 506: {
               com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00001000) == 0x00001000)) {
+              if (((bitField3_ & 0x00002000) == 0x00002000)) {
                 subBuilder = mohuaStageRewardCommand_.toBuilder();
               }
               mohuaStageRewardCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.PARSER, extensionRegistry);
@@ -3696,12 +3710,12 @@ public final class Request {
                 subBuilder.mergeFrom(mohuaStageRewardCommand_);
                 mohuaStageRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00001000;
+              bitField3_ |= 0x00002000;
               break;
             }
             case 514: {
               com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00002000) == 0x00002000)) {
+              if (((bitField3_ & 0x00004000) == 0x00004000)) {
                 subBuilder = mohuaHpRewardCommand_.toBuilder();
               }
               mohuaHpRewardCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.PARSER, extensionRegistry);
@@ -3709,12 +3723,12 @@ public final class Request {
                 subBuilder.mergeFrom(mohuaHpRewardCommand_);
                 mohuaHpRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00002000;
+              bitField3_ |= 0x00004000;
               break;
             }
             case 522: {
               com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00004000) == 0x00004000)) {
+              if (((bitField3_ & 0x00008000) == 0x00008000)) {
                 subBuilder = mohuaSubmitStageCommand_.toBuilder();
               }
               mohuaSubmitStageCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.PARSER, extensionRegistry);
@@ -3722,12 +3736,12 @@ public final class Request {
                 subBuilder.mergeFrom(mohuaSubmitStageCommand_);
                 mohuaSubmitStageCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00004000;
+              bitField3_ |= 0x00008000;
               break;
             }
             case 530: {
               com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00008000) == 0x00008000)) {
+              if (((bitField3_ & 0x00010000) == 0x00010000)) {
                 subBuilder = endMohuaMapCommand_.toBuilder();
               }
               endMohuaMapCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.PARSER, extensionRegistry);
@@ -3735,12 +3749,12 @@ public final class Request {
                 subBuilder.mergeFrom(endMohuaMapCommand_);
                 endMohuaMapCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00008000;
+              bitField3_ |= 0x00010000;
               break;
             }
             case 538: {
               com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00010000) == 0x00010000)) {
+              if (((bitField3_ & 0x00020000) == 0x00020000)) {
                 subBuilder = saleEquipCommand_.toBuilder();
               }
               saleEquipCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.PARSER, extensionRegistry);
@@ -3748,12 +3762,12 @@ public final class Request {
                 subBuilder.mergeFrom(saleEquipCommand_);
                 saleEquipCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00010000;
+              bitField3_ |= 0x00020000;
               break;
             }
             case 546: {
               com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00020000) == 0x00020000)) {
+              if (((bitField3_ & 0x00040000) == 0x00040000)) {
                 subBuilder = delFriendCommand_.toBuilder();
               }
               delFriendCommand_ = input.readMessage(com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.PARSER, extensionRegistry);
@@ -3761,12 +3775,12 @@ public final class Request {
                 subBuilder.mergeFrom(delFriendCommand_);
                 delFriendCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00020000;
+              bitField3_ |= 0x00040000;
               break;
             }
             case 554: {
               com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00040000) == 0x00040000)) {
+              if (((bitField3_ & 0x00080000) == 0x00080000)) {
                 subBuilder = submitZhanliCommand_.toBuilder();
               }
               submitZhanliCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.PARSER, extensionRegistry);
@@ -3774,12 +3788,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitZhanliCommand_);
                 submitZhanliCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00040000;
+              bitField3_ |= 0x00080000;
               break;
             }
             case 562: {
               com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00080000) == 0x00080000)) {
+              if (((bitField3_ & 0x00100000) == 0x00100000)) {
                 subBuilder = achieveRewardCommand_.toBuilder();
               }
               achieveRewardCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.PARSER, extensionRegistry);
@@ -3787,12 +3801,12 @@ public final class Request {
                 subBuilder.mergeFrom(achieveRewardCommand_);
                 achieveRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00080000;
+              bitField3_ |= 0x00100000;
               break;
             }
             case 570: {
               com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00100000) == 0x00100000)) {
+              if (((bitField3_ & 0x00200000) == 0x00200000)) {
                 subBuilder = achieveListCommand_.toBuilder();
               }
               achieveListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.PARSER, extensionRegistry);
@@ -3800,12 +3814,12 @@ public final class Request {
                 subBuilder.mergeFrom(achieveListCommand_);
                 achieveListCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00100000;
+              bitField3_ |= 0x00200000;
               break;
             }
             case 586: {
               com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00200000) == 0x00200000)) {
+              if (((bitField3_ & 0x00400000) == 0x00400000)) {
                 subBuilder = richangRewardCommand_.toBuilder();
               }
               richangRewardCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.PARSER, extensionRegistry);
@@ -3813,12 +3827,12 @@ public final class Request {
                 subBuilder.mergeFrom(richangRewardCommand_);
                 richangRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00200000;
+              bitField3_ |= 0x00400000;
               break;
             }
             case 594: {
               com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00400000) == 0x00400000)) {
+              if (((bitField3_ & 0x00800000) == 0x00800000)) {
                 subBuilder = richangListCommand_.toBuilder();
               }
               richangListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.PARSER, extensionRegistry);
@@ -3826,12 +3840,12 @@ public final class Request {
                 subBuilder.mergeFrom(richangListCommand_);
                 richangListCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00400000;
+              bitField3_ |= 0x00800000;
               break;
             }
             case 602: {
               com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x00800000) == 0x00800000)) {
+              if (((bitField3_ & 0x01000000) == 0x01000000)) {
                 subBuilder = kaifu2ActivityCommand_.toBuilder();
               }
               kaifu2ActivityCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.PARSER, extensionRegistry);
@@ -3839,12 +3853,12 @@ public final class Request {
                 subBuilder.mergeFrom(kaifu2ActivityCommand_);
                 kaifu2ActivityCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x00800000;
+              bitField3_ |= 0x01000000;
               break;
             }
             case 618: {
               com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x01000000) == 0x01000000)) {
+              if (((bitField3_ & 0x02000000) == 0x02000000)) {
                 subBuilder = kaifuRewardCommand_.toBuilder();
               }
               kaifuRewardCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.PARSER, extensionRegistry);
@@ -3852,12 +3866,12 @@ public final class Request {
                 subBuilder.mergeFrom(kaifuRewardCommand_);
                 kaifuRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x01000000;
+              bitField3_ |= 0x02000000;
               break;
             }
             case 626: {
               com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x02000000) == 0x02000000)) {
+              if (((bitField3_ & 0x04000000) == 0x04000000)) {
                 subBuilder = kaifuListCommand_.toBuilder();
               }
               kaifuListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.PARSER, extensionRegistry);
@@ -3865,12 +3879,12 @@ public final class Request {
                 subBuilder.mergeFrom(kaifuListCommand_);
                 kaifuListCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x02000000;
+              bitField3_ |= 0x04000000;
               break;
             }
             case 642: {
               com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x04000000) == 0x04000000)) {
+              if (((bitField3_ & 0x08000000) == 0x08000000)) {
                 subBuilder = userPokedeCommand_.toBuilder();
               }
               userPokedeCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.PARSER, extensionRegistry);
@@ -3878,12 +3892,12 @@ public final class Request {
                 subBuilder.mergeFrom(userPokedeCommand_);
                 userPokedeCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x04000000;
+              bitField3_ |= 0x08000000;
               break;
             }
             case 650: {
               com.trans.pixel.protoc.ActivityProto.RequestRankCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x08000000) == 0x08000000)) {
+              if (((bitField3_ & 0x10000000) == 0x10000000)) {
                 subBuilder = rankCommand_.toBuilder();
               }
               rankCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestRankCommand.PARSER, extensionRegistry);
@@ -3891,12 +3905,12 @@ public final class Request {
                 subBuilder.mergeFrom(rankCommand_);
                 rankCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x08000000;
+              bitField3_ |= 0x10000000;
               break;
             }
             case 658: {
               com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x10000000) == 0x10000000)) {
+              if (((bitField3_ & 0x20000000) == 0x20000000)) {
                 subBuilder = buyHeroPackageCommand_.toBuilder();
               }
               buyHeroPackageCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.PARSER, extensionRegistry);
@@ -3904,12 +3918,12 @@ public final class Request {
                 subBuilder.mergeFrom(buyHeroPackageCommand_);
                 buyHeroPackageCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x10000000;
+              bitField3_ |= 0x20000000;
               break;
             }
             case 666: {
               com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x20000000) == 0x20000000)) {
+              if (((bitField3_ & 0x40000000) == 0x40000000)) {
                 subBuilder = submitComposeSkillCommand_.toBuilder();
               }
               submitComposeSkillCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.PARSER, extensionRegistry);
@@ -3917,12 +3931,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitComposeSkillCommand_);
                 submitComposeSkillCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x20000000;
+              bitField3_ |= 0x40000000;
               break;
             }
             case 682: {
               com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x40000000) == 0x40000000)) {
+              if (((bitField3_ & 0x80000000) == 0x80000000)) {
                 subBuilder = submitIconCommand_.toBuilder();
               }
               submitIconCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.PARSER, extensionRegistry);
@@ -3930,12 +3944,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitIconCommand_);
                 submitIconCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x40000000;
+              bitField3_ |= 0x80000000;
               break;
             }
             case 690: {
               com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.Builder subBuilder = null;
-              if (((bitField3_ & 0x80000000) == 0x80000000)) {
+              if (((bitField4_ & 0x00000001) == 0x00000001)) {
                 subBuilder = readyAttackLadderCommand_.toBuilder();
               }
               readyAttackLadderCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.PARSER, extensionRegistry);
@@ -3943,12 +3957,12 @@ public final class Request {
                 subBuilder.mergeFrom(readyAttackLadderCommand_);
                 readyAttackLadderCommand_ = subBuilder.buildPartial();
               }
-              bitField3_ |= 0x80000000;
+              bitField4_ |= 0x00000001;
               break;
             }
             case 698: {
               com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000001) == 0x00000001)) {
+              if (((bitField4_ & 0x00000002) == 0x00000002)) {
                 subBuilder = bindAccountCommand_.toBuilder();
               }
               bindAccountCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.PARSER, extensionRegistry);
@@ -3956,12 +3970,12 @@ public final class Request {
                 subBuilder.mergeFrom(bindAccountCommand_);
                 bindAccountCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000001;
+              bitField4_ |= 0x00000002;
               break;
             }
             case 706: {
               com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000002) == 0x00000002)) {
+              if (((bitField4_ & 0x00000004) == 0x00000004)) {
                 subBuilder = queryRechargeCommand_.toBuilder();
               }
               queryRechargeCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.PARSER, extensionRegistry);
@@ -3969,12 +3983,12 @@ public final class Request {
                 subBuilder.mergeFrom(queryRechargeCommand_);
                 queryRechargeCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000002;
+              bitField4_ |= 0x00000004;
               break;
             }
             case 714: {
               com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000004) == 0x00000004)) {
+              if (((bitField4_ & 0x00000008) == 0x00000008)) {
                 subBuilder = shouchongRewardCommand_.toBuilder();
               }
               shouchongRewardCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.PARSER, extensionRegistry);
@@ -3982,12 +3996,12 @@ public final class Request {
                 subBuilder.mergeFrom(shouchongRewardCommand_);
                 shouchongRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000004;
+              bitField4_ |= 0x00000008;
               break;
             }
             case 722: {
               com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000008) == 0x00000008)) {
+              if (((bitField4_ & 0x00000010) == 0x00000010)) {
                 subBuilder = heartBeatCommand_.toBuilder();
               }
               heartBeatCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.PARSER, extensionRegistry);
@@ -3995,12 +4009,12 @@ public final class Request {
                 subBuilder.mergeFrom(heartBeatCommand_);
                 heartBeatCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000008;
+              bitField4_ |= 0x00000010;
               break;
             }
             case 730: {
               com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000010) == 0x00000010)) {
+              if (((bitField4_ & 0x00000020) == 0x00000020)) {
                 subBuilder = greenhandCommand_.toBuilder();
               }
               greenhandCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.PARSER, extensionRegistry);
@@ -4008,12 +4022,12 @@ public final class Request {
                 subBuilder.mergeFrom(greenhandCommand_);
                 greenhandCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000010;
+              bitField4_ |= 0x00000020;
               break;
             }
             case 738: {
               com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000020) == 0x00000020)) {
+              if (((bitField4_ & 0x00000040) == 0x00000040)) {
                 subBuilder = logCommand_.toBuilder();
               }
               logCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.PARSER, extensionRegistry);
@@ -4021,12 +4035,12 @@ public final class Request {
                 subBuilder.mergeFrom(logCommand_);
                 logCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000020;
+              bitField4_ |= 0x00000040;
               break;
             }
             case 746: {
               com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000040) == 0x00000040)) {
+              if (((bitField4_ & 0x00000080) == 0x00000080)) {
                 subBuilder = feedFoodCommand_.toBuilder();
               }
               feedFoodCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.PARSER, extensionRegistry);
@@ -4034,12 +4048,12 @@ public final class Request {
                 subBuilder.mergeFrom(feedFoodCommand_);
                 feedFoodCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000040;
+              bitField4_ |= 0x00000080;
               break;
             }
             case 754: {
               com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000080) == 0x00000080)) {
+              if (((bitField4_ & 0x00000100) == 0x00000100)) {
                 subBuilder = clearHeroCommand_.toBuilder();
               }
               clearHeroCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.PARSER, extensionRegistry);
@@ -4047,12 +4061,12 @@ public final class Request {
                 subBuilder.mergeFrom(clearHeroCommand_);
                 clearHeroCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000080;
+              bitField4_ |= 0x00000100;
               break;
             }
             case 762: {
               com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000100) == 0x00000100)) {
+              if (((bitField4_ & 0x00000200) == 0x00000200)) {
                 subBuilder = choseClearInfoCommand_.toBuilder();
               }
               choseClearInfoCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.PARSER, extensionRegistry);
@@ -4060,12 +4074,12 @@ public final class Request {
                 subBuilder.mergeFrom(choseClearInfoCommand_);
                 choseClearInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000100;
+              bitField4_ |= 0x00000200;
               break;
             }
             case 770: {
               com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000200) == 0x00000200)) {
+              if (((bitField4_ & 0x00000400) == 0x00000400)) {
                 subBuilder = submitBosskillCommand_.toBuilder();
               }
               submitBosskillCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.PARSER, extensionRegistry);
@@ -4073,12 +4087,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitBosskillCommand_);
                 submitBosskillCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000200;
+              bitField4_ |= 0x00000400;
               break;
             }
             case 778: {
               com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000400) == 0x00000400)) {
+              if (((bitField4_ & 0x00000800) == 0x00000800)) {
                 subBuilder = bosskillCommand_.toBuilder();
               }
               bosskillCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.PARSER, extensionRegistry);
@@ -4086,12 +4100,12 @@ public final class Request {
                 subBuilder.mergeFrom(bosskillCommand_);
                 bosskillCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000400;
+              bitField4_ |= 0x00000800;
               break;
             }
             case 786: {
               com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00000800) == 0x00000800)) {
+              if (((bitField4_ & 0x00001000) == 0x00001000)) {
                 subBuilder = unionBossFightCommand_.toBuilder();
               }
               unionBossFightCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.PARSER, extensionRegistry);
@@ -4099,12 +4113,12 @@ public final class Request {
                 subBuilder.mergeFrom(unionBossFightCommand_);
                 unionBossFightCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00000800;
+              bitField4_ |= 0x00001000;
               break;
             }
             case 794: {
               com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00001000) == 0x00001000)) {
+              if (((bitField4_ & 0x00002000) == 0x00002000)) {
                 subBuilder = heroStrengthenCommand_.toBuilder();
               }
               heroStrengthenCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.PARSER, extensionRegistry);
@@ -4112,7 +4126,7 @@ public final class Request {
                 subBuilder.mergeFrom(heroStrengthenCommand_);
                 heroStrengthenCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00001000;
+              bitField4_ |= 0x00002000;
               break;
             }
             case 802: {
@@ -4843,9 +4857,22 @@ public final class Request {
               bitField1_ |= 0x00000800;
               break;
             }
+            case 1362: {
+              com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder subBuilder = null;
+              if (((bitField2_ & 0x02000000) == 0x02000000)) {
+                subBuilder = canRechargeCommand_.toBuilder();
+              }
+              canRechargeCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(canRechargeCommand_);
+                canRechargeCommand_ = subBuilder.buildPartial();
+              }
+              bitField2_ |= 0x02000000;
+              break;
+            }
             case 1602: {
               com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00002000) == 0x00002000)) {
+              if (((bitField4_ & 0x00004000) == 0x00004000)) {
                 subBuilder = sevenLoginSignCommand_.toBuilder();
               }
               sevenLoginSignCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.PARSER, extensionRegistry);
@@ -4853,12 +4880,12 @@ public final class Request {
                 subBuilder.mergeFrom(sevenLoginSignCommand_);
                 sevenLoginSignCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00002000;
+              bitField4_ |= 0x00004000;
               break;
             }
             case 1610: {
               com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00004000) == 0x00004000)) {
+              if (((bitField4_ & 0x00008000) == 0x00008000)) {
                 subBuilder = isAreaOwnerCommand_.toBuilder();
               }
               isAreaOwnerCommand_ = input.readMessage(com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.PARSER, extensionRegistry);
@@ -4866,12 +4893,12 @@ public final class Request {
                 subBuilder.mergeFrom(isAreaOwnerCommand_);
                 isAreaOwnerCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00004000;
+              bitField4_ |= 0x00008000;
               break;
             }
             case 1618: {
               com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00008000) == 0x00008000)) {
+              if (((bitField4_ & 0x00010000) == 0x00010000)) {
                 subBuilder = openFetterCommand_.toBuilder();
               }
               openFetterCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.PARSER, extensionRegistry);
@@ -4879,12 +4906,12 @@ public final class Request {
                 subBuilder.mergeFrom(openFetterCommand_);
                 openFetterCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00008000;
+              bitField4_ |= 0x00010000;
               break;
             }
             case 1626: {
               com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00010000) == 0x00010000)) {
+              if (((bitField4_ & 0x00020000) == 0x00020000)) {
                 subBuilder = userTaskCommand_.toBuilder();
               }
               userTaskCommand_ = input.readMessage(com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.PARSER, extensionRegistry);
@@ -4892,12 +4919,12 @@ public final class Request {
                 subBuilder.mergeFrom(userTaskCommand_);
                 userTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00010000;
+              bitField4_ |= 0x00020000;
               break;
             }
             case 1634: {
               com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00020000) == 0x00020000)) {
+              if (((bitField4_ & 0x00040000) == 0x00040000)) {
                 subBuilder = getTaskRewardCommand_.toBuilder();
               }
               getTaskRewardCommand_ = input.readMessage(com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.PARSER, extensionRegistry);
@@ -4905,12 +4932,12 @@ public final class Request {
                 subBuilder.mergeFrom(getTaskRewardCommand_);
                 getTaskRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00020000;
+              bitField4_ |= 0x00040000;
               break;
             }
             case 1642: {
               com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00040000) == 0x00040000)) {
+              if (((bitField4_ & 0x00080000) == 0x00080000)) {
                 subBuilder = submitBattletowerCommand_.toBuilder();
               }
               submitBattletowerCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.PARSER, extensionRegistry);
@@ -4918,12 +4945,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitBattletowerCommand_);
                 submitBattletowerCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00040000;
+              bitField4_ |= 0x00080000;
               break;
             }
             case 1650: {
               com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00080000) == 0x00080000)) {
+              if (((bitField4_ & 0x00100000) == 0x00100000)) {
                 subBuilder = resetBattletowerCommand_.toBuilder();
               }
               resetBattletowerCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.PARSER, extensionRegistry);
@@ -4931,12 +4958,12 @@ public final class Request {
                 subBuilder.mergeFrom(resetBattletowerCommand_);
                 resetBattletowerCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00080000;
+              bitField4_ |= 0x00100000;
               break;
             }
             case 1658: {
               com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00100000) == 0x00100000)) {
+              if (((bitField4_ & 0x00200000) == 0x00200000)) {
                 subBuilder = getBattletowerCommand_.toBuilder();
               }
               getBattletowerCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.PARSER, extensionRegistry);
@@ -4944,12 +4971,12 @@ public final class Request {
                 subBuilder.mergeFrom(getBattletowerCommand_);
                 getBattletowerCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00100000;
+              bitField4_ |= 0x00200000;
               break;
             }
             case 1666: {
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00200000) == 0x00200000)) {
+              if (((bitField4_ & 0x00400000) == 0x00400000)) {
                 subBuilder = battletowerShopCommand_.toBuilder();
               }
               battletowerShopCommand_ = input.readMessage(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.PARSER, extensionRegistry);
@@ -4957,12 +4984,12 @@ public final class Request {
                 subBuilder.mergeFrom(battletowerShopCommand_);
                 battletowerShopCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00200000;
+              bitField4_ |= 0x00400000;
               break;
             }
             case 1674: {
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00400000) == 0x00400000)) {
+              if (((bitField4_ & 0x00800000) == 0x00800000)) {
                 subBuilder = battletowerShopPurchaseCommand_.toBuilder();
               }
               battletowerShopPurchaseCommand_ = input.readMessage(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.PARSER, extensionRegistry);
@@ -4970,12 +4997,12 @@ public final class Request {
                 subBuilder.mergeFrom(battletowerShopPurchaseCommand_);
                 battletowerShopPurchaseCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00400000;
+              bitField4_ |= 0x00800000;
               break;
             }
             case 1682: {
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x00800000) == 0x00800000)) {
+              if (((bitField4_ & 0x01000000) == 0x01000000)) {
                 subBuilder = battletowerShopRefreshCommand_.toBuilder();
               }
               battletowerShopRefreshCommand_ = input.readMessage(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.PARSER, extensionRegistry);
@@ -4983,12 +5010,12 @@ public final class Request {
                 subBuilder.mergeFrom(battletowerShopRefreshCommand_);
                 battletowerShopRefreshCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x00800000;
+              bitField4_ |= 0x01000000;
               break;
             }
             case 1690: {
               com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x01000000) == 0x01000000)) {
+              if (((bitField4_ & 0x02000000) == 0x02000000)) {
                 subBuilder = bloodEnterCommand_.toBuilder();
               }
               bloodEnterCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.PARSER, extensionRegistry);
@@ -4996,12 +5023,12 @@ public final class Request {
                 subBuilder.mergeFrom(bloodEnterCommand_);
                 bloodEnterCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x01000000;
+              bitField4_ |= 0x02000000;
               break;
             }
             case 1698: {
               com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x02000000) == 0x02000000)) {
+              if (((bitField4_ & 0x04000000) == 0x04000000)) {
                 subBuilder = bloodXiazhuCommand_.toBuilder();
               }
               bloodXiazhuCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.PARSER, extensionRegistry);
@@ -5009,12 +5036,12 @@ public final class Request {
                 subBuilder.mergeFrom(bloodXiazhuCommand_);
                 bloodXiazhuCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x02000000;
+              bitField4_ |= 0x04000000;
               break;
             }
             case 1706: {
               com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x04000000) == 0x04000000)) {
+              if (((bitField4_ & 0x08000000) == 0x08000000)) {
                 subBuilder = queryNoticeBoardCommand_.toBuilder();
               }
               queryNoticeBoardCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.PARSER, extensionRegistry);
@@ -5022,12 +5049,12 @@ public final class Request {
                 subBuilder.mergeFrom(queryNoticeBoardCommand_);
                 queryNoticeBoardCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x04000000;
+              bitField4_ |= 0x08000000;
               break;
             }
             case 1714: {
               com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x08000000) == 0x08000000)) {
+              if (((bitField4_ & 0x10000000) == 0x10000000)) {
                 subBuilder = helpLevelCommand_.toBuilder();
               }
               helpLevelCommand_ = input.readMessage(com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.PARSER, extensionRegistry);
@@ -5035,12 +5062,12 @@ public final class Request {
                 subBuilder.mergeFrom(helpLevelCommand_);
                 helpLevelCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x08000000;
+              bitField4_ |= 0x10000000;
               break;
             }
             case 1722: {
               com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x10000000) == 0x10000000)) {
+              if (((bitField4_ & 0x20000000) == 0x20000000)) {
                 subBuilder = inviteFightBossCommand_.toBuilder();
               }
               inviteFightBossCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.PARSER, extensionRegistry);
@@ -5048,12 +5075,12 @@ public final class Request {
                 subBuilder.mergeFrom(inviteFightBossCommand_);
                 inviteFightBossCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x10000000;
+              bitField4_ |= 0x20000000;
               break;
             }
             case 1730: {
               com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x20000000) == 0x20000000)) {
+              if (((bitField4_ & 0x40000000) == 0x40000000)) {
                 subBuilder = quitFightBossCommand_.toBuilder();
               }
               quitFightBossCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.PARSER, extensionRegistry);
@@ -5061,12 +5088,12 @@ public final class Request {
                 subBuilder.mergeFrom(quitFightBossCommand_);
                 quitFightBossCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x20000000;
+              bitField4_ |= 0x40000000;
               break;
             }
             case 1738: {
               com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x40000000) == 0x40000000)) {
+              if (((bitField4_ & 0x80000000) == 0x80000000)) {
                 subBuilder = submitBossScoreCommand_.toBuilder();
               }
               submitBossScoreCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.PARSER, extensionRegistry);
@@ -5074,12 +5101,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitBossScoreCommand_);
                 submitBossScoreCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x40000000;
+              bitField4_ |= 0x80000000;
               break;
             }
             case 1746: {
               com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.Builder subBuilder = null;
-              if (((bitField4_ & 0x80000000) == 0x80000000)) {
+              if (((bitField5_ & 0x00000001) == 0x00000001)) {
                 subBuilder = userInfoCommand_.toBuilder();
               }
               userInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.PARSER, extensionRegistry);
@@ -5087,12 +5114,12 @@ public final class Request {
                 subBuilder.mergeFrom(userInfoCommand_);
                 userInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField4_ |= 0x80000000;
+              bitField5_ |= 0x00000001;
               break;
             }
             case 1754: {
               com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000001) == 0x00000001)) {
+              if (((bitField5_ & 0x00000002) == 0x00000002)) {
                 subBuilder = rechargeCommand_.toBuilder();
               }
               rechargeCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.PARSER, extensionRegistry);
@@ -5100,12 +5127,12 @@ public final class Request {
                 subBuilder.mergeFrom(rechargeCommand_);
                 rechargeCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000001;
+              bitField5_ |= 0x00000002;
               break;
             }
             case 1762: {
               com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000002) == 0x00000002)) {
+              if (((bitField5_ & 0x00000004) == 0x00000004)) {
                 subBuilder = talentupgradeCommand_.toBuilder();
               }
               talentupgradeCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.PARSER, extensionRegistry);
@@ -5113,12 +5140,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentupgradeCommand_);
                 talentupgradeCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000002;
+              bitField5_ |= 0x00000004;
               break;
             }
             case 1786: {
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000004) == 0x00000004)) {
+              if (((bitField5_ & 0x00000008) == 0x00000008)) {
                 subBuilder = talentChangeUseCommand_.toBuilder();
               }
               talentChangeUseCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.PARSER, extensionRegistry);
@@ -5126,12 +5153,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentChangeUseCommand_);
                 talentChangeUseCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000004;
+              bitField5_ |= 0x00000008;
               break;
             }
             case 1794: {
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000008) == 0x00000008)) {
+              if (((bitField5_ & 0x00000010) == 0x00000010)) {
                 subBuilder = talentChangeSkillCommand_.toBuilder();
               }
               talentChangeSkillCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.PARSER, extensionRegistry);
@@ -5139,12 +5166,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentChangeSkillCommand_);
                 talentChangeSkillCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000008;
+              bitField5_ |= 0x00000010;
               break;
             }
             case 1802: {
               com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000010) == 0x00000010)) {
+              if (((bitField5_ & 0x00000020) == 0x00000020)) {
                 subBuilder = startBossRoomCommand_.toBuilder();
               }
               startBossRoomCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.PARSER, extensionRegistry);
@@ -5152,12 +5179,12 @@ public final class Request {
                 subBuilder.mergeFrom(startBossRoomCommand_);
                 startBossRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000010;
+              bitField5_ |= 0x00000020;
               break;
             }
             case 1810: {
               com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000020) == 0x00000020)) {
+              if (((bitField5_ & 0x00000040) == 0x00000040)) {
                 subBuilder = createBossRoomCommand_.toBuilder();
               }
               createBossRoomCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.PARSER, extensionRegistry);
@@ -5165,12 +5192,12 @@ public final class Request {
                 subBuilder.mergeFrom(createBossRoomCommand_);
                 createBossRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000020;
+              bitField5_ |= 0x00000040;
               break;
             }
             case 1818: {
               com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000040) == 0x00000040)) {
+              if (((bitField5_ & 0x00000080) == 0x00000080)) {
                 subBuilder = bossRoomInfoCommand_.toBuilder();
               }
               bossRoomInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.PARSER, extensionRegistry);
@@ -5178,12 +5205,12 @@ public final class Request {
                 subBuilder.mergeFrom(bossRoomInfoCommand_);
                 bossRoomInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000040;
+              bitField5_ |= 0x00000080;
               break;
             }
             case 1826: {
               com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000080) == 0x00000080)) {
+              if (((bitField5_ & 0x00000100) == 0x00000100)) {
                 subBuilder = equipStrenthenCommand_.toBuilder();
               }
               equipStrenthenCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.PARSER, extensionRegistry);
@@ -5191,12 +5218,12 @@ public final class Request {
                 subBuilder.mergeFrom(equipStrenthenCommand_);
                 equipStrenthenCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000080;
+              bitField5_ |= 0x00000100;
               break;
             }
             case 1834: {
               com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000100) == 0x00000100)) {
+              if (((bitField5_ & 0x00000200) == 0x00000200)) {
                 subBuilder = equipPokedeCommand_.toBuilder();
               }
               equipPokedeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.PARSER, extensionRegistry);
@@ -5204,12 +5231,12 @@ public final class Request {
                 subBuilder.mergeFrom(equipPokedeCommand_);
                 equipPokedeCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000100;
+              bitField5_ |= 0x00000200;
               break;
             }
             case 1842: {
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000200) == 0x00000200)) {
+              if (((bitField5_ & 0x00000400) == 0x00000400)) {
                 subBuilder = talentChangeEquipCommand_.toBuilder();
               }
               talentChangeEquipCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.PARSER, extensionRegistry);
@@ -5217,12 +5244,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentChangeEquipCommand_);
                 talentChangeEquipCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000200;
+              bitField5_ |= 0x00000400;
               break;
             }
             case 1850: {
               com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000400) == 0x00000400)) {
+              if (((bitField5_ & 0x00000800) == 0x00000800)) {
                 subBuilder = zanHeroMessageBoardCommand_.toBuilder();
               }
               zanHeroMessageBoardCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.PARSER, extensionRegistry);
@@ -5230,12 +5257,12 @@ public final class Request {
                 subBuilder.mergeFrom(zanHeroMessageBoardCommand_);
                 zanHeroMessageBoardCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000400;
+              bitField5_ |= 0x00000800;
               break;
             }
             case 1858: {
               com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00000800) == 0x00000800)) {
+              if (((bitField5_ & 0x00001000) == 0x00001000)) {
                 subBuilder = createRewardTaskRoomCommand_.toBuilder();
               }
               createRewardTaskRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.PARSER, extensionRegistry);
@@ -5243,12 +5270,12 @@ public final class Request {
                 subBuilder.mergeFrom(createRewardTaskRoomCommand_);
                 createRewardTaskRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00000800;
+              bitField5_ |= 0x00001000;
               break;
             }
             case 1866: {
               com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00001000) == 0x00001000)) {
+              if (((bitField5_ & 0x00002000) == 0x00002000)) {
                 subBuilder = quitRewardTaskRoomCommand_.toBuilder();
               }
               quitRewardTaskRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.PARSER, extensionRegistry);
@@ -5256,12 +5283,12 @@ public final class Request {
                 subBuilder.mergeFrom(quitRewardTaskRoomCommand_);
                 quitRewardTaskRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00001000;
+              bitField5_ |= 0x00002000;
               break;
             }
             case 1874: {
               com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00002000) == 0x00002000)) {
+              if (((bitField5_ & 0x00004000) == 0x00004000)) {
                 subBuilder = inviteToRewardTaskRoomCommand_.toBuilder();
               }
               inviteToRewardTaskRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.PARSER, extensionRegistry);
@@ -5269,12 +5296,12 @@ public final class Request {
                 subBuilder.mergeFrom(inviteToRewardTaskRoomCommand_);
                 inviteToRewardTaskRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00002000;
+              bitField5_ |= 0x00004000;
               break;
             }
             case 1882: {
               com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00004000) == 0x00004000)) {
+              if (((bitField5_ & 0x00008000) == 0x00008000)) {
                 subBuilder = submitRewardTaskScoreCommand_.toBuilder();
               }
               submitRewardTaskScoreCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.PARSER, extensionRegistry);
@@ -5282,12 +5309,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitRewardTaskScoreCommand_);
                 submitRewardTaskScoreCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00004000;
+              bitField5_ |= 0x00008000;
               break;
             }
             case 1890: {
               com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00008000) == 0x00008000)) {
+              if (((bitField5_ & 0x00010000) == 0x00010000)) {
                 subBuilder = userRewardTaskCommand_.toBuilder();
               }
               userRewardTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.PARSER, extensionRegistry);
@@ -5295,12 +5322,12 @@ public final class Request {
                 subBuilder.mergeFrom(userRewardTaskCommand_);
                 userRewardTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00008000;
+              bitField5_ |= 0x00010000;
               break;
             }
             case 1898: {
               com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00010000) == 0x00010000)) {
+              if (((bitField5_ & 0x00020000) == 0x00020000)) {
                 subBuilder = rewardTaskRewardCommand_.toBuilder();
               }
               rewardTaskRewardCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.PARSER, extensionRegistry);
@@ -5308,12 +5335,12 @@ public final class Request {
                 subBuilder.mergeFrom(rewardTaskRewardCommand_);
                 rewardTaskRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00010000;
+              bitField5_ |= 0x00020000;
               break;
             }
             case 1906: {
               com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00020000) == 0x00020000)) {
+              if (((bitField5_ & 0x00040000) == 0x00040000)) {
                 subBuilder = userRewardTaskRoomCommand_.toBuilder();
               }
               userRewardTaskRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.PARSER, extensionRegistry);
@@ -5321,12 +5348,12 @@ public final class Request {
                 subBuilder.mergeFrom(userRewardTaskRoomCommand_);
                 userRewardTaskRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00020000;
+              bitField5_ |= 0x00040000;
               break;
             }
             case 1914: {
               com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00040000) == 0x00040000)) {
+              if (((bitField5_ & 0x00080000) == 0x00080000)) {
                 subBuilder = synthetiseComposeCommand_.toBuilder();
               }
               synthetiseComposeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.PARSER, extensionRegistry);
@@ -5334,12 +5361,12 @@ public final class Request {
                 subBuilder.mergeFrom(synthetiseComposeCommand_);
                 synthetiseComposeCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00040000;
+              bitField5_ |= 0x00080000;
               break;
             }
             case 1922: {
               com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00080000) == 0x00080000)) {
+              if (((bitField5_ & 0x00100000) == 0x00100000)) {
                 subBuilder = giveupRewardTaskCommand_.toBuilder();
               }
               giveupRewardTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.PARSER, extensionRegistry);
@@ -5347,12 +5374,12 @@ public final class Request {
                 subBuilder.mergeFrom(giveupRewardTaskCommand_);
                 giveupRewardTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00080000;
+              bitField5_ |= 0x00100000;
               break;
             }
             case 1930: {
               com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00100000) == 0x00100000)) {
+              if (((bitField5_ & 0x00200000) == 0x00200000)) {
                 subBuilder = extraRewardCommand_.toBuilder();
               }
               extraRewardCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.PARSER, extensionRegistry);
@@ -5360,12 +5387,12 @@ public final class Request {
                 subBuilder.mergeFrom(extraRewardCommand_);
                 extraRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00100000;
+              bitField5_ |= 0x00200000;
               break;
             }
             case 1938: {
               com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00200000) == 0x00200000)) {
+              if (((bitField5_ & 0x00400000) == 0x00400000)) {
                 subBuilder = eventBuyCommand_.toBuilder();
               }
               eventBuyCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.PARSER, extensionRegistry);
@@ -5373,12 +5400,12 @@ public final class Request {
                 subBuilder.mergeFrom(eventBuyCommand_);
                 eventBuyCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00200000;
+              bitField5_ |= 0x00400000;
               break;
             }
             case 1946: {
               com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00400000) == 0x00400000)) {
+              if (((bitField5_ & 0x00800000) == 0x00800000)) {
                 subBuilder = ladderInfoCommand_.toBuilder();
               }
               ladderInfoCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.PARSER, extensionRegistry);
@@ -5386,12 +5413,12 @@ public final class Request {
                 subBuilder.mergeFrom(ladderInfoCommand_);
                 ladderInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00400000;
+              bitField5_ |= 0x00800000;
               break;
             }
             case 1954: {
               com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x00800000) == 0x00800000)) {
+              if (((bitField5_ & 0x01000000) == 0x01000000)) {
                 subBuilder = refreshLadderEnemyCommand_.toBuilder();
               }
               refreshLadderEnemyCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.PARSER, extensionRegistry);
@@ -5399,12 +5426,12 @@ public final class Request {
                 subBuilder.mergeFrom(refreshLadderEnemyCommand_);
                 refreshLadderEnemyCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x00800000;
+              bitField5_ |= 0x01000000;
               break;
             }
             case 1962: {
               com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x01000000) == 0x01000000)) {
+              if (((bitField5_ & 0x02000000) == 0x02000000)) {
                 subBuilder = submitLadderResultCommand_.toBuilder();
               }
               submitLadderResultCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.PARSER, extensionRegistry);
@@ -5412,12 +5439,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitLadderResultCommand_);
                 submitLadderResultCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x01000000;
+              bitField5_ |= 0x02000000;
               break;
             }
             case 1970: {
               com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x02000000) == 0x02000000)) {
+              if (((bitField5_ & 0x04000000) == 0x04000000)) {
                 subBuilder = ladderTaskRewardCommand_.toBuilder();
               }
               ladderTaskRewardCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.PARSER, extensionRegistry);
@@ -5425,12 +5452,12 @@ public final class Request {
                 subBuilder.mergeFrom(ladderTaskRewardCommand_);
                 ladderTaskRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x02000000;
+              bitField5_ |= 0x04000000;
               break;
             }
             case 1978: {
               com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x04000000) == 0x04000000)) {
+              if (((bitField5_ & 0x08000000) == 0x08000000)) {
                 subBuilder = ladderSeasonRewardCommand_.toBuilder();
               }
               ladderSeasonRewardCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.PARSER, extensionRegistry);
@@ -5438,12 +5465,12 @@ public final class Request {
                 subBuilder.mergeFrom(ladderSeasonRewardCommand_);
                 ladderSeasonRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x04000000;
+              bitField5_ |= 0x08000000;
               break;
             }
             case 1986: {
               com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x08000000) == 0x08000000)) {
+              if (((bitField5_ & 0x10000000) == 0x10000000)) {
                 subBuilder = ladderEnemyCommand_.toBuilder();
               }
               ladderEnemyCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.PARSER, extensionRegistry);
@@ -5451,12 +5478,12 @@ public final class Request {
                 subBuilder.mergeFrom(ladderEnemyCommand_);
                 ladderEnemyCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x08000000;
+              bitField5_ |= 0x10000000;
               break;
             }
             case 1994: {
               com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x10000000) == 0x10000000)) {
+              if (((bitField5_ & 0x20000000) == 0x20000000)) {
                 subBuilder = buySavingBoxCommand_.toBuilder();
               }
               buySavingBoxCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.PARSER, extensionRegistry);
@@ -5464,12 +5491,12 @@ public final class Request {
                 subBuilder.mergeFrom(buySavingBoxCommand_);
                 buySavingBoxCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x10000000;
+              bitField5_ |= 0x20000000;
               break;
             }
             case 2002: {
               com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x20000000) == 0x20000000)) {
+              if (((bitField5_ & 0x40000000) == 0x40000000)) {
                 subBuilder = equipupCommand_.toBuilder();
               }
               equipupCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.PARSER, extensionRegistry);
@@ -5477,12 +5504,12 @@ public final class Request {
                 subBuilder.mergeFrom(equipupCommand_);
                 equipupCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x20000000;
+              bitField5_ |= 0x40000000;
               break;
             }
             case 2010: {
               com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x40000000) == 0x40000000)) {
+              if (((bitField5_ & 0x80000000) == 0x80000000)) {
                 subBuilder = materialComposeCommand_.toBuilder();
               }
               materialComposeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.PARSER, extensionRegistry);
@@ -5490,12 +5517,12 @@ public final class Request {
                 subBuilder.mergeFrom(materialComposeCommand_);
                 materialComposeCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x40000000;
+              bitField5_ |= 0x80000000;
               break;
             }
             case 2018: {
               com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.Builder subBuilder = null;
-              if (((bitField5_ & 0x80000000) == 0x80000000)) {
+              if (((bitField6_ & 0x00000001) == 0x00000001)) {
                 subBuilder = useMaterialCommand_.toBuilder();
               }
               useMaterialCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.PARSER, extensionRegistry);
@@ -5503,12 +5530,12 @@ public final class Request {
                 subBuilder.mergeFrom(useMaterialCommand_);
                 useMaterialCommand_ = subBuilder.buildPartial();
               }
-              bitField5_ |= 0x80000000;
+              bitField6_ |= 0x00000001;
               break;
             }
             case 2026: {
               com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000001) == 0x00000001)) {
+              if (((bitField6_ & 0x00000002) == 0x00000002)) {
                 subBuilder = changePositionCommand_.toBuilder();
               }
               changePositionCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.PARSER, extensionRegistry);
@@ -5516,12 +5543,12 @@ public final class Request {
                 subBuilder.mergeFrom(changePositionCommand_);
                 changePositionCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000001;
+              bitField6_ |= 0x00000002;
               break;
             }
             case 2034: {
               com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000002) == 0x00000002)) {
+              if (((bitField6_ & 0x00000004) == 0x00000004)) {
                 subBuilder = talentSpUpCommand_.toBuilder();
               }
               talentSpUpCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.PARSER, extensionRegistry);
@@ -5529,12 +5556,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentSpUpCommand_);
                 talentSpUpCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000002;
+              bitField6_ |= 0x00000004;
               break;
             }
             case 2042: {
               com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000004) == 0x00000004)) {
+              if (((bitField6_ & 0x00000008) == 0x00000008)) {
                 subBuilder = talentSkillLevelupCommand_.toBuilder();
               }
               talentSkillLevelupCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.PARSER, extensionRegistry);
@@ -5542,12 +5569,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentSkillLevelupCommand_);
                 talentSkillLevelupCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000004;
+              bitField6_ |= 0x00000008;
               break;
             }
             case 2050: {
               com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000008) == 0x00000008)) {
+              if (((bitField6_ & 0x00000010) == 0x00000010)) {
                 subBuilder = talentResetSkillCommand_.toBuilder();
               }
               talentResetSkillCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.PARSER, extensionRegistry);
@@ -5555,12 +5582,12 @@ public final class Request {
                 subBuilder.mergeFrom(talentResetSkillCommand_);
                 talentResetSkillCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000008;
+              bitField6_ |= 0x00000010;
               break;
             }
             case 2058: {
               com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000010) == 0x00000010)) {
+              if (((bitField6_ & 0x00000020) == 0x00000020)) {
                 subBuilder = bindRecommandCommand_.toBuilder();
               }
               bindRecommandCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.PARSER, extensionRegistry);
@@ -5568,12 +5595,12 @@ public final class Request {
                 subBuilder.mergeFrom(bindRecommandCommand_);
                 bindRecommandCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000010;
+              bitField6_ |= 0x00000020;
               break;
             }
             case 2066: {
               com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000020) == 0x00000020)) {
+              if (((bitField6_ & 0x00000040) == 0x00000040)) {
                 subBuilder = recommandCommand_.toBuilder();
               }
               recommandCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.PARSER, extensionRegistry);
@@ -5581,12 +5608,12 @@ public final class Request {
                 subBuilder.mergeFrom(recommandCommand_);
                 recommandCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000020;
+              bitField6_ |= 0x00000040;
               break;
             }
             case 2074: {
               com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000040) == 0x00000040)) {
+              if (((bitField6_ & 0x00000080) == 0x00000080)) {
                 subBuilder = changeUserNameCommand_.toBuilder();
               }
               changeUserNameCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.PARSER, extensionRegistry);
@@ -5594,12 +5621,12 @@ public final class Request {
                 subBuilder.mergeFrom(changeUserNameCommand_);
                 changeUserNameCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000040;
+              bitField6_ |= 0x00000080;
               break;
             }
             case 2082: {
               com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000080) == 0x00000080)) {
+              if (((bitField6_ & 0x00000100) == 0x00000100)) {
                 subBuilder = cipherRewardCommand_.toBuilder();
               }
               cipherRewardCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.PARSER, extensionRegistry);
@@ -5607,12 +5634,12 @@ public final class Request {
                 subBuilder.mergeFrom(cipherRewardCommand_);
                 cipherRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000080;
+              bitField6_ |= 0x00000100;
               break;
             }
             case 2090: {
               com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000100) == 0x00000100)) {
+              if (((bitField6_ & 0x00000200) == 0x00000200)) {
                 subBuilder = eventQuickFightCommand_.toBuilder();
               }
               eventQuickFightCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.PARSER, extensionRegistry);
@@ -5620,12 +5647,12 @@ public final class Request {
                 subBuilder.mergeFrom(eventQuickFightCommand_);
                 eventQuickFightCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000100;
+              bitField6_ |= 0x00000200;
               break;
             }
             case 2098: {
               com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000200) == 0x00000200)) {
+              if (((bitField6_ & 0x00000400) == 0x00000400)) {
                 subBuilder = signNameCommand_.toBuilder();
               }
               signNameCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.PARSER, extensionRegistry);
@@ -5633,12 +5660,12 @@ public final class Request {
                 subBuilder.mergeFrom(signNameCommand_);
                 signNameCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000200;
+              bitField6_ |= 0x00000400;
               break;
             }
             case 2106: {
               com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000400) == 0x00000400)) {
+              if (((bitField6_ & 0x00000800) == 0x00000800)) {
                 subBuilder = submitRiteCommand_.toBuilder();
               }
               submitRiteCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.PARSER, extensionRegistry);
@@ -5646,12 +5673,12 @@ public final class Request {
                 subBuilder.mergeFrom(submitRiteCommand_);
                 submitRiteCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000400;
+              bitField6_ |= 0x00000800;
               break;
             }
             case 2114: {
               com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00000800) == 0x00000800)) {
+              if (((bitField6_ & 0x00001000) == 0x00001000)) {
                 subBuilder = removeRecommandCommand_.toBuilder();
               }
               removeRecommandCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.PARSER, extensionRegistry);
@@ -5659,12 +5686,12 @@ public final class Request {
                 subBuilder.mergeFrom(removeRecommandCommand_);
                 removeRecommandCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00000800;
+              bitField6_ |= 0x00001000;
               break;
             }
             case 2122: {
               com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00001000) == 0x00001000)) {
+              if (((bitField6_ & 0x00002000) == 0x00002000)) {
                 subBuilder = saveFightInfoCommand_.toBuilder();
               }
               saveFightInfoCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.PARSER, extensionRegistry);
@@ -5672,12 +5699,12 @@ public final class Request {
                 subBuilder.mergeFrom(saveFightInfoCommand_);
                 saveFightInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00001000;
+              bitField6_ |= 0x00002000;
               break;
             }
             case 2130: {
               com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00002000) == 0x00002000)) {
+              if (((bitField6_ & 0x00004000) == 0x00004000)) {
                 subBuilder = unionFightApplyCommand_.toBuilder();
               }
               unionFightApplyCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.PARSER, extensionRegistry);
@@ -5685,12 +5712,12 @@ public final class Request {
                 subBuilder.mergeFrom(unionFightApplyCommand_);
                 unionFightApplyCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00002000;
+              bitField6_ |= 0x00004000;
               break;
             }
             case 2138: {
               com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00004000) == 0x00004000)) {
+              if (((bitField6_ & 0x00008000) == 0x00008000)) {
                 subBuilder = lootRewardTaskCommand_.toBuilder();
               }
               lootRewardTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.PARSER, extensionRegistry);
@@ -5698,12 +5725,12 @@ public final class Request {
                 subBuilder.mergeFrom(lootRewardTaskCommand_);
                 lootRewardTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00004000;
+              bitField6_ |= 0x00008000;
               break;
             }
             case 2146: {
               com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00008000) == 0x00008000)) {
+              if (((bitField6_ & 0x00010000) == 0x00010000)) {
                 subBuilder = unionFightCommand_.toBuilder();
               }
               unionFightCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.PARSER, extensionRegistry);
@@ -5711,12 +5738,12 @@ public final class Request {
                 subBuilder.mergeFrom(unionFightCommand_);
                 unionFightCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00008000;
+              bitField6_ |= 0x00010000;
               break;
             }
             case 2154: {
               com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.Builder subBuilder = null;
-              if (((bitField6_ & 0x00010000) == 0x00010000)) {
+              if (((bitField6_ & 0x00020000) == 0x00020000)) {
                 subBuilder = viewUnionFightFightInfoCommand_.toBuilder();
               }
               viewUnionFightFightInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.PARSER, extensionRegistry);
@@ -5724,7 +5751,7 @@ public final class Request {
                 subBuilder.mergeFrom(viewUnionFightFightInfoCommand_);
                 viewUnionFightFightInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField6_ |= 0x00010000;
+              bitField6_ |= 0x00020000;
               break;
             }
           }
@@ -7731,6 +7758,28 @@ public final class Request {
       return raidCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;
+    public static final int CANRECHARGECOMMAND_FIELD_NUMBER = 170;
+    private com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand canRechargeCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    public boolean hasCanRechargeCommand() {
+      return ((bitField2_ & 0x02000000) == 0x02000000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand getCanRechargeCommand() {
+      return canRechargeCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+     */
+    public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder getCanRechargeCommandOrBuilder() {
+      return canRechargeCommand_;
+    }
+
     // optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;
     public static final int MESSAGEBOARDLISTCOMMAND_FIELD_NUMBER = 36;
     private com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand messageBoardListCommand_;
@@ -7742,7 +7791,7 @@ public final class Request {
      * </pre>
      */
     public boolean hasMessageBoardListCommand() {
-      return ((bitField2_ & 0x02000000) == 0x02000000);
+      return ((bitField2_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;</code>
@@ -7772,7 +7821,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestCreateMessageBoardCommand createMessageBoardCommand = 37;</code>
      */
     public boolean hasCreateMessageBoardCommand() {
-      return ((bitField2_ & 0x04000000) == 0x04000000);
+      return ((bitField2_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestCreateMessageBoardCommand createMessageBoardCommand = 37;</code>
@@ -7794,7 +7843,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestReplyMessageCommand replyMessageCommand = 38;</code>
      */
     public boolean hasReplyMessageCommand() {
-      return ((bitField2_ & 0x08000000) == 0x08000000);
+      return ((bitField2_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestReplyMessageCommand replyMessageCommand = 38;</code>
@@ -7816,7 +7865,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserTeamListCommand userTeamListCommand = 46;</code>
      */
     public boolean hasUserTeamListCommand() {
-      return ((bitField2_ & 0x10000000) == 0x10000000);
+      return ((bitField2_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserTeamListCommand userTeamListCommand = 46;</code>
@@ -7838,7 +7887,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;</code>
      */
     public boolean hasLadderUserInfoCommand() {
-      return ((bitField2_ & 0x20000000) == 0x20000000);
+      return ((bitField2_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;</code>
@@ -7860,7 +7909,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGetUserFriendListCommand userFriendListCommand = 48;</code>
      */
     public boolean hasUserFriendListCommand() {
-      return ((bitField2_ & 0x40000000) == 0x40000000);
+      return ((bitField2_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGetUserFriendListCommand userFriendListCommand = 48;</code>
@@ -7882,7 +7931,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEquipComposeCommand equipComposeCommand = 50;</code>
      */
     public boolean hasEquipComposeCommand() {
-      return ((bitField2_ & 0x80000000) == 0x80000000);
+      return ((bitField3_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEquipComposeCommand equipComposeCommand = 50;</code>
@@ -7904,7 +7953,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUsePropCommand usePropCommand = 51;</code>
      */
     public boolean hasUsePropCommand() {
-      return ((bitField3_ & 0x00000001) == 0x00000001);
+      return ((bitField3_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUsePropCommand usePropCommand = 51;</code>
@@ -7926,7 +7975,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestFenjieEquipCommand fenjieEquipCommand = 52;</code>
      */
     public boolean hasFenjieEquipCommand() {
-      return ((bitField3_ & 0x00000002) == 0x00000002);
+      return ((bitField3_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestFenjieEquipCommand fenjieEquipCommand = 52;</code>
@@ -7948,7 +7997,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSignCommand signCommand = 53;</code>
      */
     public boolean hasSignCommand() {
-      return ((bitField3_ & 0x00000004) == 0x00000004);
+      return ((bitField3_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSignCommand signCommand = 53;</code>
@@ -7970,7 +8019,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;</code>
      */
     public boolean hasHelpAttackPVPMineCommand() {
-      return ((bitField3_ & 0x00000008) == 0x00000008);
+      return ((bitField3_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;</code>
@@ -7992,7 +8041,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestFenjieHeroCommand fenjieHeroCommand = 56;</code>
      */
     public boolean hasFenjieHeroCommand() {
-      return ((bitField3_ & 0x00000010) == 0x00000010);
+      return ((bitField3_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestFenjieHeroCommand fenjieHeroCommand = 56;</code>
@@ -8014,7 +8063,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestResetHeroSkillCommand resetHeroSkillCommand = 57;</code>
      */
     public boolean hasResetHeroSkillCommand() {
-      return ((bitField3_ & 0x00000020) == 0x00000020);
+      return ((bitField3_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestResetHeroSkillCommand resetHeroSkillCommand = 57;</code>
@@ -8036,7 +8085,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestHeroSpUpCommand heroSpUpCommand = 49;</code>
      */
     public boolean hasHeroSpUpCommand() {
-      return ((bitField3_ & 0x00000040) == 0x00000040);
+      return ((bitField3_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestHeroSpUpCommand heroSpUpCommand = 49;</code>
@@ -8058,7 +8107,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSendMailCommand sendMailCommand = 58;</code>
      */
     public boolean hasSendMailCommand() {
-      return ((bitField3_ & 0x00000080) == 0x00000080);
+      return ((bitField3_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSendMailCommand sendMailCommand = 58;</code>
@@ -8080,7 +8129,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;</code>
      */
     public boolean hasBrotherMineInfoCommand() {
-      return ((bitField3_ & 0x00000100) == 0x00000100);
+      return ((bitField3_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;</code>
@@ -8102,7 +8151,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;</code>
      */
     public boolean hasEnterMohuaMapCommand() {
-      return ((bitField3_ & 0x00000200) == 0x00000200);
+      return ((bitField3_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;</code>
@@ -8124,7 +8173,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestStartMohuaMapCommand startMohuaMapCommand = 61;</code>
      */
     public boolean hasStartMohuaMapCommand() {
-      return ((bitField3_ & 0x00000400) == 0x00000400);
+      return ((bitField3_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestStartMohuaMapCommand startMohuaMapCommand = 61;</code>
@@ -8146,7 +8195,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUseMohuaCardCommand useMohuaCardCommand = 62;</code>
      */
     public boolean hasUseMohuaCardCommand() {
-      return ((bitField3_ & 0x00000800) == 0x00000800);
+      return ((bitField3_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUseMohuaCardCommand useMohuaCardCommand = 62;</code>
@@ -8168,7 +8217,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;</code>
      */
     public boolean hasMohuaStageRewardCommand() {
-      return ((bitField3_ & 0x00001000) == 0x00001000);
+      return ((bitField3_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;</code>
@@ -8190,7 +8239,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;</code>
      */
     public boolean hasMohuaHpRewardCommand() {
-      return ((bitField3_ & 0x00002000) == 0x00002000);
+      return ((bitField3_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;</code>
@@ -8212,7 +8261,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;</code>
      */
     public boolean hasMohuaSubmitStageCommand() {
-      return ((bitField3_ & 0x00004000) == 0x00004000);
+      return ((bitField3_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;</code>
@@ -8234,7 +8283,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEndMohuaMapCommand endMohuaMapCommand = 66;</code>
      */
     public boolean hasEndMohuaMapCommand() {
-      return ((bitField3_ & 0x00008000) == 0x00008000);
+      return ((bitField3_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEndMohuaMapCommand endMohuaMapCommand = 66;</code>
@@ -8256,7 +8305,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSaleEquipCommand saleEquipCommand = 67;</code>
      */
     public boolean hasSaleEquipCommand() {
-      return ((bitField3_ & 0x00010000) == 0x00010000);
+      return ((bitField3_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSaleEquipCommand saleEquipCommand = 67;</code>
@@ -8278,7 +8327,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestDelFriendCommand delFriendCommand = 68;</code>
      */
     public boolean hasDelFriendCommand() {
-      return ((bitField3_ & 0x00020000) == 0x00020000);
+      return ((bitField3_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestDelFriendCommand delFriendCommand = 68;</code>
@@ -8300,7 +8349,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitZhanliCommand submitZhanliCommand = 69;</code>
      */
     public boolean hasSubmitZhanliCommand() {
-      return ((bitField3_ & 0x00040000) == 0x00040000);
+      return ((bitField3_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitZhanliCommand submitZhanliCommand = 69;</code>
@@ -8322,7 +8371,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestAchieveRewardCommand achieveRewardCommand = 70;</code>
      */
     public boolean hasAchieveRewardCommand() {
-      return ((bitField3_ & 0x00080000) == 0x00080000);
+      return ((bitField3_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestAchieveRewardCommand achieveRewardCommand = 70;</code>
@@ -8344,7 +8393,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestAchieveListCommand achieveListCommand = 71;</code>
      */
     public boolean hasAchieveListCommand() {
-      return ((bitField3_ & 0x00100000) == 0x00100000);
+      return ((bitField3_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestAchieveListCommand achieveListCommand = 71;</code>
@@ -8366,7 +8415,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRichangRewardCommand richangRewardCommand = 73;</code>
      */
     public boolean hasRichangRewardCommand() {
-      return ((bitField3_ & 0x00200000) == 0x00200000);
+      return ((bitField3_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRichangRewardCommand richangRewardCommand = 73;</code>
@@ -8388,7 +8437,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRichangListCommand richangListCommand = 74;</code>
      */
     public boolean hasRichangListCommand() {
-      return ((bitField3_ & 0x00400000) == 0x00400000);
+      return ((bitField3_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRichangListCommand richangListCommand = 74;</code>
@@ -8410,7 +8459,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;</code>
      */
     public boolean hasKaifu2ActivityCommand() {
-      return ((bitField3_ & 0x00800000) == 0x00800000);
+      return ((bitField3_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;</code>
@@ -8432,7 +8481,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestKaifuRewardCommand kaifuRewardCommand = 77;</code>
      */
     public boolean hasKaifuRewardCommand() {
-      return ((bitField3_ & 0x01000000) == 0x01000000);
+      return ((bitField3_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestKaifuRewardCommand kaifuRewardCommand = 77;</code>
@@ -8454,7 +8503,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestKaifuListCommand kaifuListCommand = 78;</code>
      */
     public boolean hasKaifuListCommand() {
-      return ((bitField3_ & 0x02000000) == 0x02000000);
+      return ((bitField3_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestKaifuListCommand kaifuListCommand = 78;</code>
@@ -8476,7 +8525,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserPokedeCommand userPokedeCommand = 80;</code>
      */
     public boolean hasUserPokedeCommand() {
-      return ((bitField3_ & 0x04000000) == 0x04000000);
+      return ((bitField3_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserPokedeCommand userPokedeCommand = 80;</code>
@@ -8498,7 +8547,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRankCommand rankCommand = 81;</code>
      */
     public boolean hasRankCommand() {
-      return ((bitField3_ & 0x08000000) == 0x08000000);
+      return ((bitField3_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRankCommand rankCommand = 81;</code>
@@ -8520,7 +8569,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;</code>
      */
     public boolean hasBuyHeroPackageCommand() {
-      return ((bitField3_ & 0x10000000) == 0x10000000);
+      return ((bitField3_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;</code>
@@ -8542,7 +8591,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;</code>
      */
     public boolean hasSubmitComposeSkillCommand() {
-      return ((bitField3_ & 0x20000000) == 0x20000000);
+      return ((bitField3_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;</code>
@@ -8564,7 +8613,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitIconCommand submitIconCommand = 85;</code>
      */
     public boolean hasSubmitIconCommand() {
-      return ((bitField3_ & 0x40000000) == 0x40000000);
+      return ((bitField3_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitIconCommand submitIconCommand = 85;</code>
@@ -8586,7 +8635,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;</code>
      */
     public boolean hasReadyAttackLadderCommand() {
-      return ((bitField3_ & 0x80000000) == 0x80000000);
+      return ((bitField4_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;</code>
@@ -8608,7 +8657,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBindAccountCommand bindAccountCommand = 87;</code>
      */
     public boolean hasBindAccountCommand() {
-      return ((bitField4_ & 0x00000001) == 0x00000001);
+      return ((bitField4_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBindAccountCommand bindAccountCommand = 87;</code>
@@ -8630,7 +8679,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestQueryRechargeCommand queryRechargeCommand = 88;</code>
      */
     public boolean hasQueryRechargeCommand() {
-      return ((bitField4_ & 0x00000002) == 0x00000002);
+      return ((bitField4_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestQueryRechargeCommand queryRechargeCommand = 88;</code>
@@ -8652,7 +8701,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestShouchongRewardCommand shouchongRewardCommand = 89;</code>
      */
     public boolean hasShouchongRewardCommand() {
-      return ((bitField4_ & 0x00000004) == 0x00000004);
+      return ((bitField4_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestShouchongRewardCommand shouchongRewardCommand = 89;</code>
@@ -8674,7 +8723,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestHeartBeatCommand heartBeatCommand = 90;</code>
      */
     public boolean hasHeartBeatCommand() {
-      return ((bitField4_ & 0x00000008) == 0x00000008);
+      return ((bitField4_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestHeartBeatCommand heartBeatCommand = 90;</code>
@@ -8696,7 +8745,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGreenhandCommand greenhandCommand = 91;</code>
      */
     public boolean hasGreenhandCommand() {
-      return ((bitField4_ & 0x00000010) == 0x00000010);
+      return ((bitField4_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGreenhandCommand greenhandCommand = 91;</code>
@@ -8718,7 +8767,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLogCommand logCommand = 92;</code>
      */
     public boolean hasLogCommand() {
-      return ((bitField4_ & 0x00000020) == 0x00000020);
+      return ((bitField4_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLogCommand logCommand = 92;</code>
@@ -8740,7 +8789,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestFeedFoodCommand feedFoodCommand = 93;</code>
      */
     public boolean hasFeedFoodCommand() {
-      return ((bitField4_ & 0x00000040) == 0x00000040);
+      return ((bitField4_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestFeedFoodCommand feedFoodCommand = 93;</code>
@@ -8762,7 +8811,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestClearHeroCommand clearHeroCommand = 94;</code>
      */
     public boolean hasClearHeroCommand() {
-      return ((bitField4_ & 0x00000080) == 0x00000080);
+      return ((bitField4_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestClearHeroCommand clearHeroCommand = 94;</code>
@@ -8784,7 +8833,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestChoseClearInfoCommand choseClearInfoCommand = 95;</code>
      */
     public boolean hasChoseClearInfoCommand() {
-      return ((bitField4_ & 0x00000100) == 0x00000100);
+      return ((bitField4_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestChoseClearInfoCommand choseClearInfoCommand = 95;</code>
@@ -8806,7 +8855,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBosskillCommand submitBosskillCommand = 96;</code>
      */
     public boolean hasSubmitBosskillCommand() {
-      return ((bitField4_ & 0x00000200) == 0x00000200);
+      return ((bitField4_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBosskillCommand submitBosskillCommand = 96;</code>
@@ -8828,7 +8877,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBosskillCommand bosskillCommand = 97;</code>
      */
     public boolean hasBosskillCommand() {
-      return ((bitField4_ & 0x00000400) == 0x00000400);
+      return ((bitField4_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBosskillCommand bosskillCommand = 97;</code>
@@ -8850,7 +8899,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUnionBossFightCommand unionBossFightCommand = 98;</code>
      */
     public boolean hasUnionBossFightCommand() {
-      return ((bitField4_ & 0x00000800) == 0x00000800);
+      return ((bitField4_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUnionBossFightCommand unionBossFightCommand = 98;</code>
@@ -8872,7 +8921,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestHeroStrengthenCommand heroStrengthenCommand = 99;</code>
      */
     public boolean hasHeroStrengthenCommand() {
-      return ((bitField4_ & 0x00001000) == 0x00001000);
+      return ((bitField4_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestHeroStrengthenCommand heroStrengthenCommand = 99;</code>
@@ -8894,7 +8943,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSevenLoginSignCommand sevenLoginSignCommand = 200;</code>
      */
     public boolean hasSevenLoginSignCommand() {
-      return ((bitField4_ & 0x00002000) == 0x00002000);
+      return ((bitField4_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSevenLoginSignCommand sevenLoginSignCommand = 200;</code>
@@ -8916,7 +8965,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;</code>
      */
     public boolean hasIsAreaOwnerCommand() {
-      return ((bitField4_ & 0x00004000) == 0x00004000);
+      return ((bitField4_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;</code>
@@ -8938,7 +8987,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestOpenFetterCommand openFetterCommand = 202;</code>
      */
     public boolean hasOpenFetterCommand() {
-      return ((bitField4_ & 0x00008000) == 0x00008000);
+      return ((bitField4_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestOpenFetterCommand openFetterCommand = 202;</code>
@@ -8960,7 +9009,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserTaskCommand userTaskCommand = 203;</code>
      */
     public boolean hasUserTaskCommand() {
-      return ((bitField4_ & 0x00010000) == 0x00010000);
+      return ((bitField4_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserTaskCommand userTaskCommand = 203;</code>
@@ -8982,7 +9031,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGetTaskRewardCommand getTaskRewardCommand = 204;</code>
      */
     public boolean hasGetTaskRewardCommand() {
-      return ((bitField4_ & 0x00020000) == 0x00020000);
+      return ((bitField4_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGetTaskRewardCommand getTaskRewardCommand = 204;</code>
@@ -9004,7 +9053,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBattletowerCommand submitBattletowerCommand = 205;</code>
      */
     public boolean hasSubmitBattletowerCommand() {
-      return ((bitField4_ & 0x00040000) == 0x00040000);
+      return ((bitField4_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBattletowerCommand submitBattletowerCommand = 205;</code>
@@ -9026,7 +9075,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestResetBattletowerCommand resetBattletowerCommand = 206;</code>
      */
     public boolean hasResetBattletowerCommand() {
-      return ((bitField4_ & 0x00080000) == 0x00080000);
+      return ((bitField4_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestResetBattletowerCommand resetBattletowerCommand = 206;</code>
@@ -9048,7 +9097,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGetBattletowerCommand getBattletowerCommand = 207;</code>
      */
     public boolean hasGetBattletowerCommand() {
-      return ((bitField4_ & 0x00100000) == 0x00100000);
+      return ((bitField4_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGetBattletowerCommand getBattletowerCommand = 207;</code>
@@ -9070,7 +9119,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopCommand battletowerShopCommand = 208;</code>
      */
     public boolean hasBattletowerShopCommand() {
-      return ((bitField4_ & 0x00200000) == 0x00200000);
+      return ((bitField4_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopCommand battletowerShopCommand = 208;</code>
@@ -9092,7 +9141,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;</code>
      */
     public boolean hasBattletowerShopPurchaseCommand() {
-      return ((bitField4_ & 0x00400000) == 0x00400000);
+      return ((bitField4_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;</code>
@@ -9114,7 +9163,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;</code>
      */
     public boolean hasBattletowerShopRefreshCommand() {
-      return ((bitField4_ & 0x00800000) == 0x00800000);
+      return ((bitField4_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;</code>
@@ -9136,7 +9185,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBloodEnterCommand bloodEnterCommand = 211;</code>
      */
     public boolean hasBloodEnterCommand() {
-      return ((bitField4_ & 0x01000000) == 0x01000000);
+      return ((bitField4_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBloodEnterCommand bloodEnterCommand = 211;</code>
@@ -9158,7 +9207,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBloodXiazhuCommand bloodXiazhuCommand = 212;</code>
      */
     public boolean hasBloodXiazhuCommand() {
-      return ((bitField4_ & 0x02000000) == 0x02000000);
+      return ((bitField4_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBloodXiazhuCommand bloodXiazhuCommand = 212;</code>
@@ -9180,7 +9229,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;</code>
      */
     public boolean hasQueryNoticeBoardCommand() {
-      return ((bitField4_ & 0x04000000) == 0x04000000);
+      return ((bitField4_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;</code>
@@ -9202,7 +9251,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestHelpLevelCommand helpLevelCommand = 214;</code>
      */
     public boolean hasHelpLevelCommand() {
-      return ((bitField4_ & 0x08000000) == 0x08000000);
+      return ((bitField4_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestHelpLevelCommand helpLevelCommand = 214;</code>
@@ -9224,7 +9273,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestInviteFightBossCommand inviteFightBossCommand = 215;</code>
      */
     public boolean hasInviteFightBossCommand() {
-      return ((bitField4_ & 0x10000000) == 0x10000000);
+      return ((bitField4_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestInviteFightBossCommand inviteFightBossCommand = 215;</code>
@@ -9246,7 +9295,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestQuitFightBossCommand quitFightBossCommand = 216;</code>
      */
     public boolean hasQuitFightBossCommand() {
-      return ((bitField4_ & 0x20000000) == 0x20000000);
+      return ((bitField4_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestQuitFightBossCommand quitFightBossCommand = 216;</code>
@@ -9268,7 +9317,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;</code>
      */
     public boolean hasSubmitBossScoreCommand() {
-      return ((bitField4_ & 0x40000000) == 0x40000000);
+      return ((bitField4_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;</code>
@@ -9290,7 +9339,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserInfoCommand userInfoCommand = 218;</code>
      */
     public boolean hasUserInfoCommand() {
-      return ((bitField4_ & 0x80000000) == 0x80000000);
+      return ((bitField5_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserInfoCommand userInfoCommand = 218;</code>
@@ -9312,7 +9361,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRechargeCommand rechargeCommand = 219;</code>
      */
     public boolean hasRechargeCommand() {
-      return ((bitField5_ & 0x00000001) == 0x00000001);
+      return ((bitField5_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRechargeCommand rechargeCommand = 219;</code>
@@ -9334,7 +9383,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentupgradeCommand talentupgradeCommand = 220;</code>
      */
     public boolean hasTalentupgradeCommand() {
-      return ((bitField5_ & 0x00000002) == 0x00000002);
+      return ((bitField5_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentupgradeCommand talentupgradeCommand = 220;</code>
@@ -9356,7 +9405,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeUseCommand talentChangeUseCommand = 223;</code>
      */
     public boolean hasTalentChangeUseCommand() {
-      return ((bitField5_ & 0x00000004) == 0x00000004);
+      return ((bitField5_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeUseCommand talentChangeUseCommand = 223;</code>
@@ -9378,7 +9427,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;</code>
      */
     public boolean hasTalentChangeSkillCommand() {
-      return ((bitField5_ & 0x00000008) == 0x00000008);
+      return ((bitField5_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;</code>
@@ -9400,7 +9449,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestStartBossRoomCommand startBossRoomCommand = 225;</code>
      */
     public boolean hasStartBossRoomCommand() {
-      return ((bitField5_ & 0x00000010) == 0x00000010);
+      return ((bitField5_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestStartBossRoomCommand startBossRoomCommand = 225;</code>
@@ -9422,7 +9471,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestCreateBossRoomCommand createBossRoomCommand = 226;</code>
      */
     public boolean hasCreateBossRoomCommand() {
-      return ((bitField5_ & 0x00000020) == 0x00000020);
+      return ((bitField5_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestCreateBossRoomCommand createBossRoomCommand = 226;</code>
@@ -9444,7 +9493,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBossRoomInfoCommand bossRoomInfoCommand = 227;</code>
      */
     public boolean hasBossRoomInfoCommand() {
-      return ((bitField5_ & 0x00000040) == 0x00000040);
+      return ((bitField5_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBossRoomInfoCommand bossRoomInfoCommand = 227;</code>
@@ -9466,7 +9515,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEquipStrenthenCommand equipStrenthenCommand = 228;</code>
      */
     public boolean hasEquipStrenthenCommand() {
-      return ((bitField5_ & 0x00000080) == 0x00000080);
+      return ((bitField5_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEquipStrenthenCommand equipStrenthenCommand = 228;</code>
@@ -9488,7 +9537,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeCommand equipPokedeCommand = 229;</code>
      */
     public boolean hasEquipPokedeCommand() {
-      return ((bitField5_ & 0x00000100) == 0x00000100);
+      return ((bitField5_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeCommand equipPokedeCommand = 229;</code>
@@ -9510,7 +9559,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
      */
     public boolean hasTalentChangeEquipCommand() {
-      return ((bitField5_ & 0x00000200) == 0x00000200);
+      return ((bitField5_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
@@ -9532,7 +9581,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;</code>
      */
     public boolean hasZanHeroMessageBoardCommand() {
-      return ((bitField5_ & 0x00000400) == 0x00000400);
+      return ((bitField5_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;</code>
@@ -9554,7 +9603,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;</code>
      */
     public boolean hasCreateRewardTaskRoomCommand() {
-      return ((bitField5_ & 0x00000800) == 0x00000800);
+      return ((bitField5_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;</code>
@@ -9576,7 +9625,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;</code>
      */
     public boolean hasQuitRewardTaskRoomCommand() {
-      return ((bitField5_ & 0x00001000) == 0x00001000);
+      return ((bitField5_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;</code>
@@ -9598,7 +9647,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;</code>
      */
     public boolean hasInviteToRewardTaskRoomCommand() {
-      return ((bitField5_ & 0x00002000) == 0x00002000);
+      return ((bitField5_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;</code>
@@ -9620,7 +9669,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;</code>
      */
     public boolean hasSubmitRewardTaskScoreCommand() {
-      return ((bitField5_ & 0x00004000) == 0x00004000);
+      return ((bitField5_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;</code>
@@ -9642,7 +9691,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskCommand userRewardTaskCommand = 236;</code>
      */
     public boolean hasUserRewardTaskCommand() {
-      return ((bitField5_ & 0x00008000) == 0x00008000);
+      return ((bitField5_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskCommand userRewardTaskCommand = 236;</code>
@@ -9664,7 +9713,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;</code>
      */
     public boolean hasRewardTaskRewardCommand() {
-      return ((bitField5_ & 0x00010000) == 0x00010000);
+      return ((bitField5_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;</code>
@@ -9686,7 +9735,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;</code>
      */
     public boolean hasUserRewardTaskRoomCommand() {
-      return ((bitField5_ & 0x00020000) == 0x00020000);
+      return ((bitField5_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;</code>
@@ -9708,7 +9757,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;</code>
      */
     public boolean hasSynthetiseComposeCommand() {
-      return ((bitField5_ & 0x00040000) == 0x00040000);
+      return ((bitField5_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;</code>
@@ -9730,7 +9779,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;</code>
      */
     public boolean hasGiveupRewardTaskCommand() {
-      return ((bitField5_ & 0x00080000) == 0x00080000);
+      return ((bitField5_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;</code>
@@ -9752,7 +9801,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
      */
     public boolean hasExtraRewardCommand() {
-      return ((bitField5_ & 0x00100000) == 0x00100000);
+      return ((bitField5_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
@@ -9774,7 +9823,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
      */
     public boolean hasEventBuyCommand() {
-      return ((bitField5_ & 0x00200000) == 0x00200000);
+      return ((bitField5_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
@@ -9796,7 +9845,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
      */
     public boolean hasLadderInfoCommand() {
-      return ((bitField5_ & 0x00400000) == 0x00400000);
+      return ((bitField5_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
@@ -9818,7 +9867,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
      */
     public boolean hasRefreshLadderEnemyCommand() {
-      return ((bitField5_ & 0x00800000) == 0x00800000);
+      return ((bitField5_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
@@ -9840,7 +9889,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
      */
     public boolean hasSubmitLadderResultCommand() {
-      return ((bitField5_ & 0x01000000) == 0x01000000);
+      return ((bitField5_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
@@ -9862,7 +9911,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
      */
     public boolean hasLadderTaskRewardCommand() {
-      return ((bitField5_ & 0x02000000) == 0x02000000);
+      return ((bitField5_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
@@ -9884,7 +9933,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
      */
     public boolean hasLadderSeasonRewardCommand() {
-      return ((bitField5_ & 0x04000000) == 0x04000000);
+      return ((bitField5_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
@@ -9906,7 +9955,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
      */
     public boolean hasLadderEnemyCommand() {
-      return ((bitField5_ & 0x08000000) == 0x08000000);
+      return ((bitField5_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
@@ -9928,7 +9977,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBuySavingBoxCommand buySavingBoxCommand = 249;</code>
      */
     public boolean hasBuySavingBoxCommand() {
-      return ((bitField5_ & 0x10000000) == 0x10000000);
+      return ((bitField5_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBuySavingBoxCommand buySavingBoxCommand = 249;</code>
@@ -9950,7 +9999,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEquipupCommand equipupCommand = 250;</code>
      */
     public boolean hasEquipupCommand() {
-      return ((bitField5_ & 0x20000000) == 0x20000000);
+      return ((bitField5_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEquipupCommand equipupCommand = 250;</code>
@@ -9972,7 +10021,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestMaterialComposeCommand materialComposeCommand = 251;</code>
      */
     public boolean hasMaterialComposeCommand() {
-      return ((bitField5_ & 0x40000000) == 0x40000000);
+      return ((bitField5_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestMaterialComposeCommand materialComposeCommand = 251;</code>
@@ -9994,7 +10043,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUseMaterialCommand useMaterialCommand = 252;</code>
      */
     public boolean hasUseMaterialCommand() {
-      return ((bitField5_ & 0x80000000) == 0x80000000);
+      return ((bitField6_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUseMaterialCommand useMaterialCommand = 252;</code>
@@ -10016,7 +10065,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestChangePositionCommand changePositionCommand = 253;</code>
      */
     public boolean hasChangePositionCommand() {
-      return ((bitField6_ & 0x00000001) == 0x00000001);
+      return ((bitField6_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestChangePositionCommand changePositionCommand = 253;</code>
@@ -10038,7 +10087,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
      */
     public boolean hasTalentSpUpCommand() {
-      return ((bitField6_ & 0x00000002) == 0x00000002);
+      return ((bitField6_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
@@ -10060,7 +10109,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
      */
     public boolean hasTalentSkillLevelupCommand() {
-      return ((bitField6_ & 0x00000004) == 0x00000004);
+      return ((bitField6_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
@@ -10082,7 +10131,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestTalentResetSkillCommand talentResetSkillCommand = 256;</code>
      */
     public boolean hasTalentResetSkillCommand() {
-      return ((bitField6_ & 0x00000008) == 0x00000008);
+      return ((bitField6_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestTalentResetSkillCommand talentResetSkillCommand = 256;</code>
@@ -10104,7 +10153,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestBindRecommandCommand bindRecommandCommand = 257;</code>
      */
     public boolean hasBindRecommandCommand() {
-      return ((bitField6_ & 0x00000010) == 0x00000010);
+      return ((bitField6_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestBindRecommandCommand bindRecommandCommand = 257;</code>
@@ -10126,7 +10175,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
      */
     public boolean hasRecommandCommand() {
-      return ((bitField6_ & 0x00000020) == 0x00000020);
+      return ((bitField6_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
@@ -10148,7 +10197,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
      */
     public boolean hasChangeUserNameCommand() {
-      return ((bitField6_ & 0x00000040) == 0x00000040);
+      return ((bitField6_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
@@ -10170,7 +10219,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestCipherRewardCommand cipherRewardCommand = 260;</code>
      */
     public boolean hasCipherRewardCommand() {
-      return ((bitField6_ & 0x00000080) == 0x00000080);
+      return ((bitField6_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestCipherRewardCommand cipherRewardCommand = 260;</code>
@@ -10192,7 +10241,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEventQuickFightCommand eventQuickFightCommand = 261;</code>
      */
     public boolean hasEventQuickFightCommand() {
-      return ((bitField6_ & 0x00000100) == 0x00000100);
+      return ((bitField6_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestEventQuickFightCommand eventQuickFightCommand = 261;</code>
@@ -10214,7 +10263,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSignNameCommand signNameCommand = 262;</code>
      */
     public boolean hasSignNameCommand() {
-      return ((bitField6_ & 0x00000200) == 0x00000200);
+      return ((bitField6_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSignNameCommand signNameCommand = 262;</code>
@@ -10236,7 +10285,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSubmitRiteCommand submitRiteCommand = 263;</code>
      */
     public boolean hasSubmitRiteCommand() {
-      return ((bitField6_ & 0x00000400) == 0x00000400);
+      return ((bitField6_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSubmitRiteCommand submitRiteCommand = 263;</code>
@@ -10258,7 +10307,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestRemoveRecommandCommand removeRecommandCommand = 264;</code>
      */
     public boolean hasRemoveRecommandCommand() {
-      return ((bitField6_ & 0x00000800) == 0x00000800);
+      return ((bitField6_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestRemoveRecommandCommand removeRecommandCommand = 264;</code>
@@ -10280,7 +10329,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestSaveFightInfoCommand saveFightInfoCommand = 265;</code>
      */
     public boolean hasSaveFightInfoCommand() {
-      return ((bitField6_ & 0x00001000) == 0x00001000);
+      return ((bitField6_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestSaveFightInfoCommand saveFightInfoCommand = 265;</code>
@@ -10302,7 +10351,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUnionFightApplyCommand unionFightApplyCommand = 266;</code>
      */
     public boolean hasUnionFightApplyCommand() {
-      return ((bitField6_ & 0x00002000) == 0x00002000);
+      return ((bitField6_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUnionFightApplyCommand unionFightApplyCommand = 266;</code>
@@ -10324,7 +10373,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestLootRewardTaskCommand lootRewardTaskCommand = 267;</code>
      */
     public boolean hasLootRewardTaskCommand() {
-      return ((bitField6_ & 0x00004000) == 0x00004000);
+      return ((bitField6_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestLootRewardTaskCommand lootRewardTaskCommand = 267;</code>
@@ -10346,7 +10395,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestUnionFightCommand unionFightCommand = 268;</code>
      */
     public boolean hasUnionFightCommand() {
-      return ((bitField6_ & 0x00008000) == 0x00008000);
+      return ((bitField6_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestUnionFightCommand unionFightCommand = 268;</code>
@@ -10368,7 +10417,7 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
      */
     public boolean hasViewUnionFightFightInfoCommand() {
-      return ((bitField6_ & 0x00010000) == 0x00010000);
+      return ((bitField6_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
@@ -10473,6 +10522,7 @@ public final class Request {
       getFightInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand.getDefaultInstance();
       openRaidCommand_ = com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand.getDefaultInstance();
       raidCommand_ = com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand.getDefaultInstance();
+      canRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance();
       messageBoardListCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.getDefaultInstance();
       createMessageBoardCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.getDefaultInstance();
       replyMessageCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.getDefaultInstance();
@@ -11385,13 +11435,13 @@ public final class Request {
       if (((bitField1_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(33, replyUnionCommand_);
       }
-      if (((bitField2_ & 0x02000000) == 0x02000000)) {
+      if (((bitField2_ & 0x04000000) == 0x04000000)) {
         output.writeMessage(36, messageBoardListCommand_);
       }
-      if (((bitField2_ & 0x04000000) == 0x04000000)) {
+      if (((bitField2_ & 0x08000000) == 0x08000000)) {
         output.writeMessage(37, createMessageBoardCommand_);
       }
-      if (((bitField2_ & 0x08000000) == 0x08000000)) {
+      if (((bitField2_ & 0x10000000) == 0x10000000)) {
         output.writeMessage(38, replyMessageCommand_);
       }
       if (((bitField1_ & 0x00000080) == 0x00000080)) {
@@ -11412,151 +11462,151 @@ public final class Request {
       if (((bitField1_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(45, searchUnionCommand_);
       }
-      if (((bitField2_ & 0x10000000) == 0x10000000)) {
+      if (((bitField2_ & 0x20000000) == 0x20000000)) {
         output.writeMessage(46, userTeamListCommand_);
       }
-      if (((bitField2_ & 0x20000000) == 0x20000000)) {
+      if (((bitField2_ & 0x40000000) == 0x40000000)) {
         output.writeMessage(47, ladderUserInfoCommand_);
       }
-      if (((bitField2_ & 0x40000000) == 0x40000000)) {
+      if (((bitField2_ & 0x80000000) == 0x80000000)) {
         output.writeMessage(48, userFriendListCommand_);
       }
-      if (((bitField3_ & 0x00000040) == 0x00000040)) {
+      if (((bitField3_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(49, heroSpUpCommand_);
       }
-      if (((bitField2_ & 0x80000000) == 0x80000000)) {
+      if (((bitField3_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(50, equipComposeCommand_);
       }
-      if (((bitField3_ & 0x00000001) == 0x00000001)) {
+      if (((bitField3_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(51, usePropCommand_);
       }
-      if (((bitField3_ & 0x00000002) == 0x00000002)) {
+      if (((bitField3_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(52, fenjieEquipCommand_);
       }
-      if (((bitField3_ & 0x00000004) == 0x00000004)) {
+      if (((bitField3_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(53, signCommand_);
       }
-      if (((bitField3_ & 0x00000008) == 0x00000008)) {
+      if (((bitField3_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(55, helpAttackPVPMineCommand_);
       }
-      if (((bitField3_ & 0x00000010) == 0x00000010)) {
+      if (((bitField3_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(56, fenjieHeroCommand_);
       }
-      if (((bitField3_ & 0x00000020) == 0x00000020)) {
+      if (((bitField3_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(57, resetHeroSkillCommand_);
       }
-      if (((bitField3_ & 0x00000080) == 0x00000080)) {
+      if (((bitField3_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(58, sendMailCommand_);
       }
-      if (((bitField3_ & 0x00000100) == 0x00000100)) {
+      if (((bitField3_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(59, brotherMineInfoCommand_);
       }
-      if (((bitField3_ & 0x00000200) == 0x00000200)) {
+      if (((bitField3_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(60, enterMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00000400) == 0x00000400)) {
+      if (((bitField3_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(61, startMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00000800) == 0x00000800)) {
+      if (((bitField3_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(62, useMohuaCardCommand_);
       }
-      if (((bitField3_ & 0x00001000) == 0x00001000)) {
+      if (((bitField3_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(63, mohuaStageRewardCommand_);
       }
-      if (((bitField3_ & 0x00002000) == 0x00002000)) {
+      if (((bitField3_ & 0x00004000) == 0x00004000)) {
         output.writeMessage(64, mohuaHpRewardCommand_);
       }
-      if (((bitField3_ & 0x00004000) == 0x00004000)) {
+      if (((bitField3_ & 0x00008000) == 0x00008000)) {
         output.writeMessage(65, mohuaSubmitStageCommand_);
       }
-      if (((bitField3_ & 0x00008000) == 0x00008000)) {
+      if (((bitField3_ & 0x00010000) == 0x00010000)) {
         output.writeMessage(66, endMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00010000) == 0x00010000)) {
+      if (((bitField3_ & 0x00020000) == 0x00020000)) {
         output.writeMessage(67, saleEquipCommand_);
       }
-      if (((bitField3_ & 0x00020000) == 0x00020000)) {
+      if (((bitField3_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(68, delFriendCommand_);
       }
-      if (((bitField3_ & 0x00040000) == 0x00040000)) {
+      if (((bitField3_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(69, submitZhanliCommand_);
       }
-      if (((bitField3_ & 0x00080000) == 0x00080000)) {
+      if (((bitField3_ & 0x00100000) == 0x00100000)) {
         output.writeMessage(70, achieveRewardCommand_);
       }
-      if (((bitField3_ & 0x00100000) == 0x00100000)) {
+      if (((bitField3_ & 0x00200000) == 0x00200000)) {
         output.writeMessage(71, achieveListCommand_);
       }
-      if (((bitField3_ & 0x00200000) == 0x00200000)) {
+      if (((bitField3_ & 0x00400000) == 0x00400000)) {
         output.writeMessage(73, richangRewardCommand_);
       }
-      if (((bitField3_ & 0x00400000) == 0x00400000)) {
+      if (((bitField3_ & 0x00800000) == 0x00800000)) {
         output.writeMessage(74, richangListCommand_);
       }
-      if (((bitField3_ & 0x00800000) == 0x00800000)) {
+      if (((bitField3_ & 0x01000000) == 0x01000000)) {
         output.writeMessage(75, kaifu2ActivityCommand_);
       }
-      if (((bitField3_ & 0x01000000) == 0x01000000)) {
+      if (((bitField3_ & 0x02000000) == 0x02000000)) {
         output.writeMessage(77, kaifuRewardCommand_);
       }
-      if (((bitField3_ & 0x02000000) == 0x02000000)) {
+      if (((bitField3_ & 0x04000000) == 0x04000000)) {
         output.writeMessage(78, kaifuListCommand_);
       }
-      if (((bitField3_ & 0x04000000) == 0x04000000)) {
+      if (((bitField3_ & 0x08000000) == 0x08000000)) {
         output.writeMessage(80, userPokedeCommand_);
       }
-      if (((bitField3_ & 0x08000000) == 0x08000000)) {
+      if (((bitField3_ & 0x10000000) == 0x10000000)) {
         output.writeMessage(81, rankCommand_);
       }
-      if (((bitField3_ & 0x10000000) == 0x10000000)) {
+      if (((bitField3_ & 0x20000000) == 0x20000000)) {
         output.writeMessage(82, buyHeroPackageCommand_);
       }
-      if (((bitField3_ & 0x20000000) == 0x20000000)) {
+      if (((bitField3_ & 0x40000000) == 0x40000000)) {
         output.writeMessage(83, submitComposeSkillCommand_);
       }
-      if (((bitField3_ & 0x40000000) == 0x40000000)) {
+      if (((bitField3_ & 0x80000000) == 0x80000000)) {
         output.writeMessage(85, submitIconCommand_);
       }
-      if (((bitField3_ & 0x80000000) == 0x80000000)) {
+      if (((bitField4_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(86, readyAttackLadderCommand_);
       }
-      if (((bitField4_ & 0x00000001) == 0x00000001)) {
+      if (((bitField4_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(87, bindAccountCommand_);
       }
-      if (((bitField4_ & 0x00000002) == 0x00000002)) {
+      if (((bitField4_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(88, queryRechargeCommand_);
       }
-      if (((bitField4_ & 0x00000004) == 0x00000004)) {
+      if (((bitField4_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(89, shouchongRewardCommand_);
       }
-      if (((bitField4_ & 0x00000008) == 0x00000008)) {
+      if (((bitField4_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(90, heartBeatCommand_);
       }
-      if (((bitField4_ & 0x00000010) == 0x00000010)) {
+      if (((bitField4_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(91, greenhandCommand_);
       }
-      if (((bitField4_ & 0x00000020) == 0x00000020)) {
+      if (((bitField4_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(92, logCommand_);
       }
-      if (((bitField4_ & 0x00000040) == 0x00000040)) {
+      if (((bitField4_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(93, feedFoodCommand_);
       }
-      if (((bitField4_ & 0x00000080) == 0x00000080)) {
+      if (((bitField4_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(94, clearHeroCommand_);
       }
-      if (((bitField4_ & 0x00000100) == 0x00000100)) {
+      if (((bitField4_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(95, choseClearInfoCommand_);
       }
-      if (((bitField4_ & 0x00000200) == 0x00000200)) {
+      if (((bitField4_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(96, submitBosskillCommand_);
       }
-      if (((bitField4_ & 0x00000400) == 0x00000400)) {
+      if (((bitField4_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(97, bosskillCommand_);
       }
-      if (((bitField4_ & 0x00000800) == 0x00000800)) {
+      if (((bitField4_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(98, unionBossFightCommand_);
       }
-      if (((bitField4_ & 0x00001000) == 0x00001000)) {
+      if (((bitField4_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(99, heroStrengthenCommand_);
       }
       if (((bitField1_ & 0x00000200) == 0x00000200)) {
@@ -11727,208 +11777,211 @@ public final class Request {
       if (((bitField1_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(162, unionAnnounceCommand_);
       }
-      if (((bitField4_ & 0x00002000) == 0x00002000)) {
-        output.writeMessage(200, sevenLoginSignCommand_);
+      if (((bitField2_ & 0x02000000) == 0x02000000)) {
+        output.writeMessage(170, canRechargeCommand_);
       }
       if (((bitField4_ & 0x00004000) == 0x00004000)) {
-        output.writeMessage(201, isAreaOwnerCommand_);
+        output.writeMessage(200, sevenLoginSignCommand_);
       }
       if (((bitField4_ & 0x00008000) == 0x00008000)) {
-        output.writeMessage(202, openFetterCommand_);
+        output.writeMessage(201, isAreaOwnerCommand_);
       }
       if (((bitField4_ & 0x00010000) == 0x00010000)) {
-        output.writeMessage(203, userTaskCommand_);
+        output.writeMessage(202, openFetterCommand_);
       }
       if (((bitField4_ & 0x00020000) == 0x00020000)) {
-        output.writeMessage(204, getTaskRewardCommand_);
+        output.writeMessage(203, userTaskCommand_);
       }
       if (((bitField4_ & 0x00040000) == 0x00040000)) {
-        output.writeMessage(205, submitBattletowerCommand_);
+        output.writeMessage(204, getTaskRewardCommand_);
       }
       if (((bitField4_ & 0x00080000) == 0x00080000)) {
-        output.writeMessage(206, resetBattletowerCommand_);
+        output.writeMessage(205, submitBattletowerCommand_);
       }
       if (((bitField4_ & 0x00100000) == 0x00100000)) {
-        output.writeMessage(207, getBattletowerCommand_);
+        output.writeMessage(206, resetBattletowerCommand_);
       }
       if (((bitField4_ & 0x00200000) == 0x00200000)) {
-        output.writeMessage(208, battletowerShopCommand_);
+        output.writeMessage(207, getBattletowerCommand_);
       }
       if (((bitField4_ & 0x00400000) == 0x00400000)) {
-        output.writeMessage(209, battletowerShopPurchaseCommand_);
+        output.writeMessage(208, battletowerShopCommand_);
       }
       if (((bitField4_ & 0x00800000) == 0x00800000)) {
-        output.writeMessage(210, battletowerShopRefreshCommand_);
+        output.writeMessage(209, battletowerShopPurchaseCommand_);
       }
       if (((bitField4_ & 0x01000000) == 0x01000000)) {
-        output.writeMessage(211, bloodEnterCommand_);
+        output.writeMessage(210, battletowerShopRefreshCommand_);
       }
       if (((bitField4_ & 0x02000000) == 0x02000000)) {
-        output.writeMessage(212, bloodXiazhuCommand_);
+        output.writeMessage(211, bloodEnterCommand_);
       }
       if (((bitField4_ & 0x04000000) == 0x04000000)) {
-        output.writeMessage(213, queryNoticeBoardCommand_);
+        output.writeMessage(212, bloodXiazhuCommand_);
       }
       if (((bitField4_ & 0x08000000) == 0x08000000)) {
-        output.writeMessage(214, helpLevelCommand_);
+        output.writeMessage(213, queryNoticeBoardCommand_);
       }
       if (((bitField4_ & 0x10000000) == 0x10000000)) {
-        output.writeMessage(215, inviteFightBossCommand_);
+        output.writeMessage(214, helpLevelCommand_);
       }
       if (((bitField4_ & 0x20000000) == 0x20000000)) {
-        output.writeMessage(216, quitFightBossCommand_);
+        output.writeMessage(215, inviteFightBossCommand_);
       }
       if (((bitField4_ & 0x40000000) == 0x40000000)) {
-        output.writeMessage(217, submitBossScoreCommand_);
+        output.writeMessage(216, quitFightBossCommand_);
       }
       if (((bitField4_ & 0x80000000) == 0x80000000)) {
-        output.writeMessage(218, userInfoCommand_);
+        output.writeMessage(217, submitBossScoreCommand_);
       }
       if (((bitField5_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(219, rechargeCommand_);
+        output.writeMessage(218, userInfoCommand_);
       }
       if (((bitField5_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(220, talentupgradeCommand_);
+        output.writeMessage(219, rechargeCommand_);
       }
       if (((bitField5_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(223, talentChangeUseCommand_);
+        output.writeMessage(220, talentupgradeCommand_);
       }
       if (((bitField5_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(224, talentChangeSkillCommand_);
+        output.writeMessage(223, talentChangeUseCommand_);
       }
       if (((bitField5_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(225, startBossRoomCommand_);
+        output.writeMessage(224, talentChangeSkillCommand_);
       }
       if (((bitField5_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(226, createBossRoomCommand_);
+        output.writeMessage(225, startBossRoomCommand_);
       }
       if (((bitField5_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(227, bossRoomInfoCommand_);
+        output.writeMessage(226, createBossRoomCommand_);
       }
       if (((bitField5_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(228, equipStrenthenCommand_);
+        output.writeMessage(227, bossRoomInfoCommand_);
       }
       if (((bitField5_ & 0x00000100) == 0x00000100)) {
-        output.writeMessage(229, equipPokedeCommand_);
+        output.writeMessage(228, equipStrenthenCommand_);
       }
       if (((bitField5_ & 0x00000200) == 0x00000200)) {
-        output.writeMessage(230, talentChangeEquipCommand_);
+        output.writeMessage(229, equipPokedeCommand_);
       }
       if (((bitField5_ & 0x00000400) == 0x00000400)) {
-        output.writeMessage(231, zanHeroMessageBoardCommand_);
+        output.writeMessage(230, talentChangeEquipCommand_);
       }
       if (((bitField5_ & 0x00000800) == 0x00000800)) {
-        output.writeMessage(232, createRewardTaskRoomCommand_);
+        output.writeMessage(231, zanHeroMessageBoardCommand_);
       }
       if (((bitField5_ & 0x00001000) == 0x00001000)) {
-        output.writeMessage(233, quitRewardTaskRoomCommand_);
+        output.writeMessage(232, createRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00002000) == 0x00002000)) {
-        output.writeMessage(234, inviteToRewardTaskRoomCommand_);
+        output.writeMessage(233, quitRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00004000) == 0x00004000)) {
-        output.writeMessage(235, submitRewardTaskScoreCommand_);
+        output.writeMessage(234, inviteToRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00008000) == 0x00008000)) {
-        output.writeMessage(236, userRewardTaskCommand_);
+        output.writeMessage(235, submitRewardTaskScoreCommand_);
       }
       if (((bitField5_ & 0x00010000) == 0x00010000)) {
-        output.writeMessage(237, rewardTaskRewardCommand_);
+        output.writeMessage(236, userRewardTaskCommand_);
       }
       if (((bitField5_ & 0x00020000) == 0x00020000)) {
-        output.writeMessage(238, userRewardTaskRoomCommand_);
+        output.writeMessage(237, rewardTaskRewardCommand_);
       }
       if (((bitField5_ & 0x00040000) == 0x00040000)) {
-        output.writeMessage(239, synthetiseComposeCommand_);
+        output.writeMessage(238, userRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00080000) == 0x00080000)) {
-        output.writeMessage(240, giveupRewardTaskCommand_);
+        output.writeMessage(239, synthetiseComposeCommand_);
       }
       if (((bitField5_ & 0x00100000) == 0x00100000)) {
-        output.writeMessage(241, extraRewardCommand_);
+        output.writeMessage(240, giveupRewardTaskCommand_);
       }
       if (((bitField5_ & 0x00200000) == 0x00200000)) {
-        output.writeMessage(242, eventBuyCommand_);
+        output.writeMessage(241, extraRewardCommand_);
       }
       if (((bitField5_ & 0x00400000) == 0x00400000)) {
-        output.writeMessage(243, ladderInfoCommand_);
+        output.writeMessage(242, eventBuyCommand_);
       }
       if (((bitField5_ & 0x00800000) == 0x00800000)) {
-        output.writeMessage(244, refreshLadderEnemyCommand_);
+        output.writeMessage(243, ladderInfoCommand_);
       }
       if (((bitField5_ & 0x01000000) == 0x01000000)) {
-        output.writeMessage(245, submitLadderResultCommand_);
+        output.writeMessage(244, refreshLadderEnemyCommand_);
       }
       if (((bitField5_ & 0x02000000) == 0x02000000)) {
-        output.writeMessage(246, ladderTaskRewardCommand_);
+        output.writeMessage(245, submitLadderResultCommand_);
       }
       if (((bitField5_ & 0x04000000) == 0x04000000)) {
-        output.writeMessage(247, ladderSeasonRewardCommand_);
+        output.writeMessage(246, ladderTaskRewardCommand_);
       }
       if (((bitField5_ & 0x08000000) == 0x08000000)) {
-        output.writeMessage(248, ladderEnemyCommand_);
+        output.writeMessage(247, ladderSeasonRewardCommand_);
       }
       if (((bitField5_ & 0x10000000) == 0x10000000)) {
-        output.writeMessage(249, buySavingBoxCommand_);
+        output.writeMessage(248, ladderEnemyCommand_);
       }
       if (((bitField5_ & 0x20000000) == 0x20000000)) {
-        output.writeMessage(250, equipupCommand_);
+        output.writeMessage(249, buySavingBoxCommand_);
       }
       if (((bitField5_ & 0x40000000) == 0x40000000)) {
-        output.writeMessage(251, materialComposeCommand_);
+        output.writeMessage(250, equipupCommand_);
       }
       if (((bitField5_ & 0x80000000) == 0x80000000)) {
-        output.writeMessage(252, useMaterialCommand_);
+        output.writeMessage(251, materialComposeCommand_);
       }
       if (((bitField6_ & 0x00000001) == 0x00000001)) {
-        output.writeMessage(253, changePositionCommand_);
+        output.writeMessage(252, useMaterialCommand_);
       }
       if (((bitField6_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(254, talentSpUpCommand_);
+        output.writeMessage(253, changePositionCommand_);
       }
       if (((bitField6_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(255, talentSkillLevelupCommand_);
+        output.writeMessage(254, talentSpUpCommand_);
       }
       if (((bitField6_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(256, talentResetSkillCommand_);
+        output.writeMessage(255, talentSkillLevelupCommand_);
       }
       if (((bitField6_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(257, bindRecommandCommand_);
+        output.writeMessage(256, talentResetSkillCommand_);
       }
       if (((bitField6_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(258, recommandCommand_);
+        output.writeMessage(257, bindRecommandCommand_);
       }
       if (((bitField6_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(259, changeUserNameCommand_);
+        output.writeMessage(258, recommandCommand_);
       }
       if (((bitField6_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(260, cipherRewardCommand_);
+        output.writeMessage(259, changeUserNameCommand_);
       }
       if (((bitField6_ & 0x00000100) == 0x00000100)) {
-        output.writeMessage(261, eventQuickFightCommand_);
+        output.writeMessage(260, cipherRewardCommand_);
       }
       if (((bitField6_ & 0x00000200) == 0x00000200)) {
-        output.writeMessage(262, signNameCommand_);
+        output.writeMessage(261, eventQuickFightCommand_);
       }
       if (((bitField6_ & 0x00000400) == 0x00000400)) {
-        output.writeMessage(263, submitRiteCommand_);
+        output.writeMessage(262, signNameCommand_);
       }
       if (((bitField6_ & 0x00000800) == 0x00000800)) {
-        output.writeMessage(264, removeRecommandCommand_);
+        output.writeMessage(263, submitRiteCommand_);
       }
       if (((bitField6_ & 0x00001000) == 0x00001000)) {
-        output.writeMessage(265, saveFightInfoCommand_);
+        output.writeMessage(264, removeRecommandCommand_);
       }
       if (((bitField6_ & 0x00002000) == 0x00002000)) {
-        output.writeMessage(266, unionFightApplyCommand_);
+        output.writeMessage(265, saveFightInfoCommand_);
       }
       if (((bitField6_ & 0x00004000) == 0x00004000)) {
-        output.writeMessage(267, lootRewardTaskCommand_);
+        output.writeMessage(266, unionFightApplyCommand_);
       }
       if (((bitField6_ & 0x00008000) == 0x00008000)) {
-        output.writeMessage(268, unionFightCommand_);
+        output.writeMessage(267, lootRewardTaskCommand_);
       }
       if (((bitField6_ & 0x00010000) == 0x00010000)) {
+        output.writeMessage(268, unionFightCommand_);
+      }
+      if (((bitField6_ & 0x00020000) == 0x00020000)) {
         output.writeMessage(269, viewUnionFightFightInfoCommand_);
       }
       getUnknownFields().writeTo(output);
@@ -12048,15 +12101,15 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(33, replyUnionCommand_);
       }
-      if (((bitField2_ & 0x02000000) == 0x02000000)) {
+      if (((bitField2_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(36, messageBoardListCommand_);
       }
-      if (((bitField2_ & 0x04000000) == 0x04000000)) {
+      if (((bitField2_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(37, createMessageBoardCommand_);
       }
-      if (((bitField2_ & 0x08000000) == 0x08000000)) {
+      if (((bitField2_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(38, replyMessageCommand_);
       }
@@ -12084,199 +12137,199 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(45, searchUnionCommand_);
       }
-      if (((bitField2_ & 0x10000000) == 0x10000000)) {
+      if (((bitField2_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(46, userTeamListCommand_);
       }
-      if (((bitField2_ & 0x20000000) == 0x20000000)) {
+      if (((bitField2_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(47, ladderUserInfoCommand_);
       }
-      if (((bitField2_ & 0x40000000) == 0x40000000)) {
+      if (((bitField2_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(48, userFriendListCommand_);
       }
-      if (((bitField3_ & 0x00000040) == 0x00000040)) {
+      if (((bitField3_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(49, heroSpUpCommand_);
       }
-      if (((bitField2_ & 0x80000000) == 0x80000000)) {
+      if (((bitField3_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(50, equipComposeCommand_);
       }
-      if (((bitField3_ & 0x00000001) == 0x00000001)) {
+      if (((bitField3_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(51, usePropCommand_);
       }
-      if (((bitField3_ & 0x00000002) == 0x00000002)) {
+      if (((bitField3_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(52, fenjieEquipCommand_);
       }
-      if (((bitField3_ & 0x00000004) == 0x00000004)) {
+      if (((bitField3_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(53, signCommand_);
       }
-      if (((bitField3_ & 0x00000008) == 0x00000008)) {
+      if (((bitField3_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(55, helpAttackPVPMineCommand_);
       }
-      if (((bitField3_ & 0x00000010) == 0x00000010)) {
+      if (((bitField3_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(56, fenjieHeroCommand_);
       }
-      if (((bitField3_ & 0x00000020) == 0x00000020)) {
+      if (((bitField3_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(57, resetHeroSkillCommand_);
       }
-      if (((bitField3_ & 0x00000080) == 0x00000080)) {
+      if (((bitField3_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(58, sendMailCommand_);
       }
-      if (((bitField3_ & 0x00000100) == 0x00000100)) {
+      if (((bitField3_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(59, brotherMineInfoCommand_);
       }
-      if (((bitField3_ & 0x00000200) == 0x00000200)) {
+      if (((bitField3_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(60, enterMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00000400) == 0x00000400)) {
+      if (((bitField3_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(61, startMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00000800) == 0x00000800)) {
+      if (((bitField3_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, useMohuaCardCommand_);
       }
-      if (((bitField3_ & 0x00001000) == 0x00001000)) {
+      if (((bitField3_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(63, mohuaStageRewardCommand_);
       }
-      if (((bitField3_ & 0x00002000) == 0x00002000)) {
+      if (((bitField3_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(64, mohuaHpRewardCommand_);
       }
-      if (((bitField3_ & 0x00004000) == 0x00004000)) {
+      if (((bitField3_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(65, mohuaSubmitStageCommand_);
       }
-      if (((bitField3_ & 0x00008000) == 0x00008000)) {
+      if (((bitField3_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(66, endMohuaMapCommand_);
       }
-      if (((bitField3_ & 0x00010000) == 0x00010000)) {
+      if (((bitField3_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(67, saleEquipCommand_);
       }
-      if (((bitField3_ & 0x00020000) == 0x00020000)) {
+      if (((bitField3_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(68, delFriendCommand_);
       }
-      if (((bitField3_ & 0x00040000) == 0x00040000)) {
+      if (((bitField3_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(69, submitZhanliCommand_);
       }
-      if (((bitField3_ & 0x00080000) == 0x00080000)) {
+      if (((bitField3_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(70, achieveRewardCommand_);
       }
-      if (((bitField3_ & 0x00100000) == 0x00100000)) {
+      if (((bitField3_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(71, achieveListCommand_);
       }
-      if (((bitField3_ & 0x00200000) == 0x00200000)) {
+      if (((bitField3_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(73, richangRewardCommand_);
       }
-      if (((bitField3_ & 0x00400000) == 0x00400000)) {
+      if (((bitField3_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(74, richangListCommand_);
       }
-      if (((bitField3_ & 0x00800000) == 0x00800000)) {
+      if (((bitField3_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(75, kaifu2ActivityCommand_);
       }
-      if (((bitField3_ & 0x01000000) == 0x01000000)) {
+      if (((bitField3_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(77, kaifuRewardCommand_);
       }
-      if (((bitField3_ & 0x02000000) == 0x02000000)) {
+      if (((bitField3_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(78, kaifuListCommand_);
       }
-      if (((bitField3_ & 0x04000000) == 0x04000000)) {
+      if (((bitField3_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(80, userPokedeCommand_);
       }
-      if (((bitField3_ & 0x08000000) == 0x08000000)) {
+      if (((bitField3_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(81, rankCommand_);
       }
-      if (((bitField3_ & 0x10000000) == 0x10000000)) {
+      if (((bitField3_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(82, buyHeroPackageCommand_);
       }
-      if (((bitField3_ & 0x20000000) == 0x20000000)) {
+      if (((bitField3_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(83, submitComposeSkillCommand_);
       }
-      if (((bitField3_ & 0x40000000) == 0x40000000)) {
+      if (((bitField3_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(85, submitIconCommand_);
       }
-      if (((bitField3_ & 0x80000000) == 0x80000000)) {
+      if (((bitField4_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(86, readyAttackLadderCommand_);
       }
-      if (((bitField4_ & 0x00000001) == 0x00000001)) {
+      if (((bitField4_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(87, bindAccountCommand_);
       }
-      if (((bitField4_ & 0x00000002) == 0x00000002)) {
+      if (((bitField4_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(88, queryRechargeCommand_);
       }
-      if (((bitField4_ & 0x00000004) == 0x00000004)) {
+      if (((bitField4_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(89, shouchongRewardCommand_);
       }
-      if (((bitField4_ & 0x00000008) == 0x00000008)) {
+      if (((bitField4_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(90, heartBeatCommand_);
       }
-      if (((bitField4_ & 0x00000010) == 0x00000010)) {
+      if (((bitField4_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(91, greenhandCommand_);
       }
-      if (((bitField4_ & 0x00000020) == 0x00000020)) {
+      if (((bitField4_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(92, logCommand_);
       }
-      if (((bitField4_ & 0x00000040) == 0x00000040)) {
+      if (((bitField4_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(93, feedFoodCommand_);
       }
-      if (((bitField4_ & 0x00000080) == 0x00000080)) {
+      if (((bitField4_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(94, clearHeroCommand_);
       }
-      if (((bitField4_ & 0x00000100) == 0x00000100)) {
+      if (((bitField4_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(95, choseClearInfoCommand_);
       }
-      if (((bitField4_ & 0x00000200) == 0x00000200)) {
+      if (((bitField4_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(96, submitBosskillCommand_);
       }
-      if (((bitField4_ & 0x00000400) == 0x00000400)) {
+      if (((bitField4_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(97, bosskillCommand_);
       }
-      if (((bitField4_ & 0x00000800) == 0x00000800)) {
+      if (((bitField4_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(98, unionBossFightCommand_);
       }
-      if (((bitField4_ & 0x00001000) == 0x00001000)) {
+      if (((bitField4_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(99, heroStrengthenCommand_);
       }
@@ -12504,275 +12557,279 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(162, unionAnnounceCommand_);
       }
-      if (((bitField4_ & 0x00002000) == 0x00002000)) {
+      if (((bitField2_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(200, sevenLoginSignCommand_);
+          .computeMessageSize(170, canRechargeCommand_);
       }
       if (((bitField4_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(201, isAreaOwnerCommand_);
+          .computeMessageSize(200, sevenLoginSignCommand_);
       }
       if (((bitField4_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(202, openFetterCommand_);
+          .computeMessageSize(201, isAreaOwnerCommand_);
       }
       if (((bitField4_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(203, userTaskCommand_);
+          .computeMessageSize(202, openFetterCommand_);
       }
       if (((bitField4_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(204, getTaskRewardCommand_);
+          .computeMessageSize(203, userTaskCommand_);
       }
       if (((bitField4_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(205, submitBattletowerCommand_);
+          .computeMessageSize(204, getTaskRewardCommand_);
       }
       if (((bitField4_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(206, resetBattletowerCommand_);
+          .computeMessageSize(205, submitBattletowerCommand_);
       }
       if (((bitField4_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(207, getBattletowerCommand_);
+          .computeMessageSize(206, resetBattletowerCommand_);
       }
       if (((bitField4_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(208, battletowerShopCommand_);
+          .computeMessageSize(207, getBattletowerCommand_);
       }
       if (((bitField4_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(209, battletowerShopPurchaseCommand_);
+          .computeMessageSize(208, battletowerShopCommand_);
       }
       if (((bitField4_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(210, battletowerShopRefreshCommand_);
+          .computeMessageSize(209, battletowerShopPurchaseCommand_);
       }
       if (((bitField4_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(211, bloodEnterCommand_);
+          .computeMessageSize(210, battletowerShopRefreshCommand_);
       }
       if (((bitField4_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(212, bloodXiazhuCommand_);
+          .computeMessageSize(211, bloodEnterCommand_);
       }
       if (((bitField4_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(213, queryNoticeBoardCommand_);
+          .computeMessageSize(212, bloodXiazhuCommand_);
       }
       if (((bitField4_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(214, helpLevelCommand_);
+          .computeMessageSize(213, queryNoticeBoardCommand_);
       }
       if (((bitField4_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(215, inviteFightBossCommand_);
+          .computeMessageSize(214, helpLevelCommand_);
       }
       if (((bitField4_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(216, quitFightBossCommand_);
+          .computeMessageSize(215, inviteFightBossCommand_);
       }
       if (((bitField4_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(217, submitBossScoreCommand_);
+          .computeMessageSize(216, quitFightBossCommand_);
       }
       if (((bitField4_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(218, userInfoCommand_);
+          .computeMessageSize(217, submitBossScoreCommand_);
       }
       if (((bitField5_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(219, rechargeCommand_);
+          .computeMessageSize(218, userInfoCommand_);
       }
       if (((bitField5_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(220, talentupgradeCommand_);
+          .computeMessageSize(219, rechargeCommand_);
       }
       if (((bitField5_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(223, talentChangeUseCommand_);
+          .computeMessageSize(220, talentupgradeCommand_);
       }
       if (((bitField5_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(224, talentChangeSkillCommand_);
+          .computeMessageSize(223, talentChangeUseCommand_);
       }
       if (((bitField5_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(225, startBossRoomCommand_);
+          .computeMessageSize(224, talentChangeSkillCommand_);
       }
       if (((bitField5_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(226, createBossRoomCommand_);
+          .computeMessageSize(225, startBossRoomCommand_);
       }
       if (((bitField5_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(227, bossRoomInfoCommand_);
+          .computeMessageSize(226, createBossRoomCommand_);
       }
       if (((bitField5_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(228, equipStrenthenCommand_);
+          .computeMessageSize(227, bossRoomInfoCommand_);
       }
       if (((bitField5_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(229, equipPokedeCommand_);
+          .computeMessageSize(228, equipStrenthenCommand_);
       }
       if (((bitField5_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(230, talentChangeEquipCommand_);
+          .computeMessageSize(229, equipPokedeCommand_);
       }
       if (((bitField5_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(231, zanHeroMessageBoardCommand_);
+          .computeMessageSize(230, talentChangeEquipCommand_);
       }
       if (((bitField5_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(232, createRewardTaskRoomCommand_);
+          .computeMessageSize(231, zanHeroMessageBoardCommand_);
       }
       if (((bitField5_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(233, quitRewardTaskRoomCommand_);
+          .computeMessageSize(232, createRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(234, inviteToRewardTaskRoomCommand_);
+          .computeMessageSize(233, quitRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(235, submitRewardTaskScoreCommand_);
+          .computeMessageSize(234, inviteToRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(236, userRewardTaskCommand_);
+          .computeMessageSize(235, submitRewardTaskScoreCommand_);
       }
       if (((bitField5_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(237, rewardTaskRewardCommand_);
+          .computeMessageSize(236, userRewardTaskCommand_);
       }
       if (((bitField5_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(238, userRewardTaskRoomCommand_);
+          .computeMessageSize(237, rewardTaskRewardCommand_);
       }
       if (((bitField5_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(239, synthetiseComposeCommand_);
+          .computeMessageSize(238, userRewardTaskRoomCommand_);
       }
       if (((bitField5_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(240, giveupRewardTaskCommand_);
+          .computeMessageSize(239, synthetiseComposeCommand_);
       }
       if (((bitField5_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(241, extraRewardCommand_);
+          .computeMessageSize(240, giveupRewardTaskCommand_);
       }
       if (((bitField5_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(242, eventBuyCommand_);
+          .computeMessageSize(241, extraRewardCommand_);
       }
       if (((bitField5_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(243, ladderInfoCommand_);
+          .computeMessageSize(242, eventBuyCommand_);
       }
       if (((bitField5_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(244, refreshLadderEnemyCommand_);
+          .computeMessageSize(243, ladderInfoCommand_);
       }
       if (((bitField5_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(245, submitLadderResultCommand_);
+          .computeMessageSize(244, refreshLadderEnemyCommand_);
       }
       if (((bitField5_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(246, ladderTaskRewardCommand_);
+          .computeMessageSize(245, submitLadderResultCommand_);
       }
       if (((bitField5_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(247, ladderSeasonRewardCommand_);
+          .computeMessageSize(246, ladderTaskRewardCommand_);
       }
       if (((bitField5_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(248, ladderEnemyCommand_);
+          .computeMessageSize(247, ladderSeasonRewardCommand_);
       }
       if (((bitField5_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(249, buySavingBoxCommand_);
+          .computeMessageSize(248, ladderEnemyCommand_);
       }
       if (((bitField5_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(250, equipupCommand_);
+          .computeMessageSize(249, buySavingBoxCommand_);
       }
       if (((bitField5_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(251, materialComposeCommand_);
+          .computeMessageSize(250, equipupCommand_);
       }
       if (((bitField5_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(252, useMaterialCommand_);
+          .computeMessageSize(251, materialComposeCommand_);
       }
       if (((bitField6_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(253, changePositionCommand_);
+          .computeMessageSize(252, useMaterialCommand_);
       }
       if (((bitField6_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(254, talentSpUpCommand_);
+          .computeMessageSize(253, changePositionCommand_);
       }
       if (((bitField6_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(255, talentSkillLevelupCommand_);
+          .computeMessageSize(254, talentSpUpCommand_);
       }
       if (((bitField6_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(256, talentResetSkillCommand_);
+          .computeMessageSize(255, talentSkillLevelupCommand_);
       }
       if (((bitField6_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(257, bindRecommandCommand_);
+          .computeMessageSize(256, talentResetSkillCommand_);
       }
       if (((bitField6_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(258, recommandCommand_);
+          .computeMessageSize(257, bindRecommandCommand_);
       }
       if (((bitField6_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(259, changeUserNameCommand_);
+          .computeMessageSize(258, recommandCommand_);
       }
       if (((bitField6_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(260, cipherRewardCommand_);
+          .computeMessageSize(259, changeUserNameCommand_);
       }
       if (((bitField6_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(261, eventQuickFightCommand_);
+          .computeMessageSize(260, cipherRewardCommand_);
       }
       if (((bitField6_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(262, signNameCommand_);
+          .computeMessageSize(261, eventQuickFightCommand_);
       }
       if (((bitField6_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(263, submitRiteCommand_);
+          .computeMessageSize(262, signNameCommand_);
       }
       if (((bitField6_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(264, removeRecommandCommand_);
+          .computeMessageSize(263, submitRiteCommand_);
       }
       if (((bitField6_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(265, saveFightInfoCommand_);
+          .computeMessageSize(264, removeRecommandCommand_);
       }
       if (((bitField6_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(266, unionFightApplyCommand_);
+          .computeMessageSize(265, saveFightInfoCommand_);
       }
       if (((bitField6_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(267, lootRewardTaskCommand_);
+          .computeMessageSize(266, unionFightApplyCommand_);
       }
       if (((bitField6_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(268, unionFightCommand_);
+          .computeMessageSize(267, lootRewardTaskCommand_);
       }
       if (((bitField6_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(268, unionFightCommand_);
+      }
+      if (((bitField6_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(269, viewUnionFightFightInfoCommand_);
       }
@@ -12977,6 +13034,7 @@ public final class Request {
           getGetFightInfoCommandFieldBuilder();
           getOpenRaidCommandFieldBuilder();
           getRaidCommandFieldBuilder();
+          getCanRechargeCommandFieldBuilder();
           getMessageBoardListCommandFieldBuilder();
           getCreateMessageBoardCommandFieldBuilder();
           getReplyMessageCommandFieldBuilder();
@@ -13639,726 +13697,732 @@ public final class Request {
           raidCommandBuilder_.clear();
         }
         bitField2_ = (bitField2_ & ~0x01000000);
+        if (canRechargeCommandBuilder_ == null) {
+          canRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance();
+        } else {
+          canRechargeCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x02000000);
         if (messageBoardListCommandBuilder_ == null) {
           messageBoardListCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.getDefaultInstance();
         } else {
           messageBoardListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x02000000);
+        bitField2_ = (bitField2_ & ~0x04000000);
         if (createMessageBoardCommandBuilder_ == null) {
           createMessageBoardCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.getDefaultInstance();
         } else {
           createMessageBoardCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x04000000);
+        bitField2_ = (bitField2_ & ~0x08000000);
         if (replyMessageCommandBuilder_ == null) {
           replyMessageCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.getDefaultInstance();
         } else {
           replyMessageCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x08000000);
+        bitField2_ = (bitField2_ & ~0x10000000);
         if (userTeamListCommandBuilder_ == null) {
           userTeamListCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.getDefaultInstance();
         } else {
           userTeamListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x10000000);
+        bitField2_ = (bitField2_ & ~0x20000000);
         if (ladderUserInfoCommandBuilder_ == null) {
           ladderUserInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.getDefaultInstance();
         } else {
           ladderUserInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x20000000);
+        bitField2_ = (bitField2_ & ~0x40000000);
         if (userFriendListCommandBuilder_ == null) {
           userFriendListCommand_ = com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.getDefaultInstance();
         } else {
           userFriendListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x40000000);
+        bitField2_ = (bitField2_ & ~0x80000000);
         if (equipComposeCommandBuilder_ == null) {
           equipComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.getDefaultInstance();
         } else {
           equipComposeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x80000000);
+        bitField3_ = (bitField3_ & ~0x00000001);
         if (usePropCommandBuilder_ == null) {
           usePropCommand_ = com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.getDefaultInstance();
         } else {
           usePropCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000001);
+        bitField3_ = (bitField3_ & ~0x00000002);
         if (fenjieEquipCommandBuilder_ == null) {
           fenjieEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.getDefaultInstance();
         } else {
           fenjieEquipCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000002);
+        bitField3_ = (bitField3_ & ~0x00000004);
         if (signCommandBuilder_ == null) {
           signCommand_ = com.trans.pixel.protoc.RechargeProto.RequestSignCommand.getDefaultInstance();
         } else {
           signCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000004);
+        bitField3_ = (bitField3_ & ~0x00000008);
         if (helpAttackPVPMineCommandBuilder_ == null) {
           helpAttackPVPMineCommand_ = com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.getDefaultInstance();
         } else {
           helpAttackPVPMineCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000008);
+        bitField3_ = (bitField3_ & ~0x00000010);
         if (fenjieHeroCommandBuilder_ == null) {
           fenjieHeroCommand_ = com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.getDefaultInstance();
         } else {
           fenjieHeroCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000010);
+        bitField3_ = (bitField3_ & ~0x00000020);
         if (resetHeroSkillCommandBuilder_ == null) {
           resetHeroSkillCommand_ = com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.getDefaultInstance();
         } else {
           resetHeroSkillCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000020);
+        bitField3_ = (bitField3_ & ~0x00000040);
         if (heroSpUpCommandBuilder_ == null) {
           heroSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.getDefaultInstance();
         } else {
           heroSpUpCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000040);
+        bitField3_ = (bitField3_ & ~0x00000080);
         if (sendMailCommandBuilder_ == null) {
           sendMailCommand_ = com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.getDefaultInstance();
         } else {
           sendMailCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000080);
+        bitField3_ = (bitField3_ & ~0x00000100);
         if (brotherMineInfoCommandBuilder_ == null) {
           brotherMineInfoCommand_ = com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.getDefaultInstance();
         } else {
           brotherMineInfoCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000100);
+        bitField3_ = (bitField3_ & ~0x00000200);
         if (enterMohuaMapCommandBuilder_ == null) {
           enterMohuaMapCommand_ = com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.getDefaultInstance();
         } else {
           enterMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000200);
+        bitField3_ = (bitField3_ & ~0x00000400);
         if (startMohuaMapCommandBuilder_ == null) {
           startMohuaMapCommand_ = com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.getDefaultInstance();
         } else {
           startMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000400);
+        bitField3_ = (bitField3_ & ~0x00000800);
         if (useMohuaCardCommandBuilder_ == null) {
           useMohuaCardCommand_ = com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.getDefaultInstance();
         } else {
           useMohuaCardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000800);
+        bitField3_ = (bitField3_ & ~0x00001000);
         if (mohuaStageRewardCommandBuilder_ == null) {
           mohuaStageRewardCommand_ = com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.getDefaultInstance();
         } else {
           mohuaStageRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00001000);
+        bitField3_ = (bitField3_ & ~0x00002000);
         if (mohuaHpRewardCommandBuilder_ == null) {
           mohuaHpRewardCommand_ = com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.getDefaultInstance();
         } else {
           mohuaHpRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00002000);
+        bitField3_ = (bitField3_ & ~0x00004000);
         if (mohuaSubmitStageCommandBuilder_ == null) {
           mohuaSubmitStageCommand_ = com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.getDefaultInstance();
         } else {
           mohuaSubmitStageCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00004000);
+        bitField3_ = (bitField3_ & ~0x00008000);
         if (endMohuaMapCommandBuilder_ == null) {
           endMohuaMapCommand_ = com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.getDefaultInstance();
         } else {
           endMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00008000);
+        bitField3_ = (bitField3_ & ~0x00010000);
         if (saleEquipCommandBuilder_ == null) {
           saleEquipCommand_ = com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.getDefaultInstance();
         } else {
           saleEquipCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00010000);
+        bitField3_ = (bitField3_ & ~0x00020000);
         if (delFriendCommandBuilder_ == null) {
           delFriendCommand_ = com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.getDefaultInstance();
         } else {
           delFriendCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00020000);
+        bitField3_ = (bitField3_ & ~0x00040000);
         if (submitZhanliCommandBuilder_ == null) {
           submitZhanliCommand_ = com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.getDefaultInstance();
         } else {
           submitZhanliCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00040000);
+        bitField3_ = (bitField3_ & ~0x00080000);
         if (achieveRewardCommandBuilder_ == null) {
           achieveRewardCommand_ = com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.getDefaultInstance();
         } else {
           achieveRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00080000);
+        bitField3_ = (bitField3_ & ~0x00100000);
         if (achieveListCommandBuilder_ == null) {
           achieveListCommand_ = com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.getDefaultInstance();
         } else {
           achieveListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00100000);
+        bitField3_ = (bitField3_ & ~0x00200000);
         if (richangRewardCommandBuilder_ == null) {
           richangRewardCommand_ = com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.getDefaultInstance();
         } else {
           richangRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00200000);
+        bitField3_ = (bitField3_ & ~0x00400000);
         if (richangListCommandBuilder_ == null) {
           richangListCommand_ = com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.getDefaultInstance();
         } else {
           richangListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00400000);
+        bitField3_ = (bitField3_ & ~0x00800000);
         if (kaifu2ActivityCommandBuilder_ == null) {
           kaifu2ActivityCommand_ = com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.getDefaultInstance();
         } else {
           kaifu2ActivityCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00800000);
+        bitField3_ = (bitField3_ & ~0x01000000);
         if (kaifuRewardCommandBuilder_ == null) {
           kaifuRewardCommand_ = com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.getDefaultInstance();
         } else {
           kaifuRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x01000000);
+        bitField3_ = (bitField3_ & ~0x02000000);
         if (kaifuListCommandBuilder_ == null) {
           kaifuListCommand_ = com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.getDefaultInstance();
         } else {
           kaifuListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x02000000);
+        bitField3_ = (bitField3_ & ~0x04000000);
         if (userPokedeCommandBuilder_ == null) {
           userPokedeCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.getDefaultInstance();
         } else {
           userPokedeCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x04000000);
+        bitField3_ = (bitField3_ & ~0x08000000);
         if (rankCommandBuilder_ == null) {
           rankCommand_ = com.trans.pixel.protoc.ActivityProto.RequestRankCommand.getDefaultInstance();
         } else {
           rankCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x08000000);
+        bitField3_ = (bitField3_ & ~0x10000000);
         if (buyHeroPackageCommandBuilder_ == null) {
           buyHeroPackageCommand_ = com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.getDefaultInstance();
         } else {
           buyHeroPackageCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x10000000);
+        bitField3_ = (bitField3_ & ~0x20000000);
         if (submitComposeSkillCommandBuilder_ == null) {
           submitComposeSkillCommand_ = com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.getDefaultInstance();
         } else {
           submitComposeSkillCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x20000000);
+        bitField3_ = (bitField3_ & ~0x40000000);
         if (submitIconCommandBuilder_ == null) {
           submitIconCommand_ = com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.getDefaultInstance();
         } else {
           submitIconCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x40000000);
+        bitField3_ = (bitField3_ & ~0x80000000);
         if (readyAttackLadderCommandBuilder_ == null) {
           readyAttackLadderCommand_ = com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.getDefaultInstance();
         } else {
           readyAttackLadderCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x80000000);
+        bitField4_ = (bitField4_ & ~0x00000001);
         if (bindAccountCommandBuilder_ == null) {
           bindAccountCommand_ = com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.getDefaultInstance();
         } else {
           bindAccountCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000001);
+        bitField4_ = (bitField4_ & ~0x00000002);
         if (queryRechargeCommandBuilder_ == null) {
           queryRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.getDefaultInstance();
         } else {
           queryRechargeCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000002);
+        bitField4_ = (bitField4_ & ~0x00000004);
         if (shouchongRewardCommandBuilder_ == null) {
           shouchongRewardCommand_ = com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.getDefaultInstance();
         } else {
           shouchongRewardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000004);
+        bitField4_ = (bitField4_ & ~0x00000008);
         if (heartBeatCommandBuilder_ == null) {
           heartBeatCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.getDefaultInstance();
         } else {
           heartBeatCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000008);
+        bitField4_ = (bitField4_ & ~0x00000010);
         if (greenhandCommandBuilder_ == null) {
           greenhandCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.getDefaultInstance();
         } else {
           greenhandCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000010);
+        bitField4_ = (bitField4_ & ~0x00000020);
         if (logCommandBuilder_ == null) {
           logCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.getDefaultInstance();
         } else {
           logCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000020);
+        bitField4_ = (bitField4_ & ~0x00000040);
         if (feedFoodCommandBuilder_ == null) {
           feedFoodCommand_ = com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.getDefaultInstance();
         } else {
           feedFoodCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000040);
+        bitField4_ = (bitField4_ & ~0x00000080);
         if (clearHeroCommandBuilder_ == null) {
           clearHeroCommand_ = com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.getDefaultInstance();
         } else {
           clearHeroCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000080);
+        bitField4_ = (bitField4_ & ~0x00000100);
         if (choseClearInfoCommandBuilder_ == null) {
           choseClearInfoCommand_ = com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.getDefaultInstance();
         } else {
           choseClearInfoCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000100);
+        bitField4_ = (bitField4_ & ~0x00000200);
         if (submitBosskillCommandBuilder_ == null) {
           submitBosskillCommand_ = com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.getDefaultInstance();
         } else {
           submitBosskillCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000200);
+        bitField4_ = (bitField4_ & ~0x00000400);
         if (bosskillCommandBuilder_ == null) {
           bosskillCommand_ = com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.getDefaultInstance();
         } else {
           bosskillCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000400);
+        bitField4_ = (bitField4_ & ~0x00000800);
         if (unionBossFightCommandBuilder_ == null) {
           unionBossFightCommand_ = com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.getDefaultInstance();
         } else {
           unionBossFightCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000800);
+        bitField4_ = (bitField4_ & ~0x00001000);
         if (heroStrengthenCommandBuilder_ == null) {
           heroStrengthenCommand_ = com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.getDefaultInstance();
         } else {
           heroStrengthenCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00001000);
+        bitField4_ = (bitField4_ & ~0x00002000);
         if (sevenLoginSignCommandBuilder_ == null) {
           sevenLoginSignCommand_ = com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.getDefaultInstance();
         } else {
           sevenLoginSignCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00002000);
+        bitField4_ = (bitField4_ & ~0x00004000);
         if (isAreaOwnerCommandBuilder_ == null) {
           isAreaOwnerCommand_ = com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.getDefaultInstance();
         } else {
           isAreaOwnerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00004000);
+        bitField4_ = (bitField4_ & ~0x00008000);
         if (openFetterCommandBuilder_ == null) {
           openFetterCommand_ = com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.getDefaultInstance();
         } else {
           openFetterCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00008000);
+        bitField4_ = (bitField4_ & ~0x00010000);
         if (userTaskCommandBuilder_ == null) {
           userTaskCommand_ = com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.getDefaultInstance();
         } else {
           userTaskCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00010000);
+        bitField4_ = (bitField4_ & ~0x00020000);
         if (getTaskRewardCommandBuilder_ == null) {
           getTaskRewardCommand_ = com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.getDefaultInstance();
         } else {
           getTaskRewardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00020000);
+        bitField4_ = (bitField4_ & ~0x00040000);
         if (submitBattletowerCommandBuilder_ == null) {
           submitBattletowerCommand_ = com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.getDefaultInstance();
         } else {
           submitBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00040000);
+        bitField4_ = (bitField4_ & ~0x00080000);
         if (resetBattletowerCommandBuilder_ == null) {
           resetBattletowerCommand_ = com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.getDefaultInstance();
         } else {
           resetBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00080000);
+        bitField4_ = (bitField4_ & ~0x00100000);
         if (getBattletowerCommandBuilder_ == null) {
           getBattletowerCommand_ = com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.getDefaultInstance();
         } else {
           getBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00100000);
+        bitField4_ = (bitField4_ & ~0x00200000);
         if (battletowerShopCommandBuilder_ == null) {
           battletowerShopCommand_ = com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.getDefaultInstance();
         } else {
           battletowerShopCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00200000);
+        bitField4_ = (bitField4_ & ~0x00400000);
         if (battletowerShopPurchaseCommandBuilder_ == null) {
           battletowerShopPurchaseCommand_ = com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.getDefaultInstance();
         } else {
           battletowerShopPurchaseCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00400000);
+        bitField4_ = (bitField4_ & ~0x00800000);
         if (battletowerShopRefreshCommandBuilder_ == null) {
           battletowerShopRefreshCommand_ = com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.getDefaultInstance();
         } else {
           battletowerShopRefreshCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00800000);
+        bitField4_ = (bitField4_ & ~0x01000000);
         if (bloodEnterCommandBuilder_ == null) {
           bloodEnterCommand_ = com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.getDefaultInstance();
         } else {
           bloodEnterCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x01000000);
+        bitField4_ = (bitField4_ & ~0x02000000);
         if (bloodXiazhuCommandBuilder_ == null) {
           bloodXiazhuCommand_ = com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.getDefaultInstance();
         } else {
           bloodXiazhuCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x02000000);
+        bitField4_ = (bitField4_ & ~0x04000000);
         if (queryNoticeBoardCommandBuilder_ == null) {
           queryNoticeBoardCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.getDefaultInstance();
         } else {
           queryNoticeBoardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x04000000);
+        bitField4_ = (bitField4_ & ~0x08000000);
         if (helpLevelCommandBuilder_ == null) {
           helpLevelCommand_ = com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.getDefaultInstance();
         } else {
           helpLevelCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x08000000);
+        bitField4_ = (bitField4_ & ~0x10000000);
         if (inviteFightBossCommandBuilder_ == null) {
           inviteFightBossCommand_ = com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.getDefaultInstance();
         } else {
           inviteFightBossCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x10000000);
+        bitField4_ = (bitField4_ & ~0x20000000);
         if (quitFightBossCommandBuilder_ == null) {
           quitFightBossCommand_ = com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.getDefaultInstance();
         } else {
           quitFightBossCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x20000000);
+        bitField4_ = (bitField4_ & ~0x40000000);
         if (submitBossScoreCommandBuilder_ == null) {
           submitBossScoreCommand_ = com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.getDefaultInstance();
         } else {
           submitBossScoreCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x40000000);
+        bitField4_ = (bitField4_ & ~0x80000000);
         if (userInfoCommandBuilder_ == null) {
           userInfoCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.getDefaultInstance();
         } else {
           userInfoCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x80000000);
+        bitField5_ = (bitField5_ & ~0x00000001);
         if (rechargeCommandBuilder_ == null) {
           rechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.getDefaultInstance();
         } else {
           rechargeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000001);
+        bitField5_ = (bitField5_ & ~0x00000002);
         if (talentupgradeCommandBuilder_ == null) {
           talentupgradeCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.getDefaultInstance();
         } else {
           talentupgradeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000002);
+        bitField5_ = (bitField5_ & ~0x00000004);
         if (talentChangeUseCommandBuilder_ == null) {
           talentChangeUseCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.getDefaultInstance();
         } else {
           talentChangeUseCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000004);
+        bitField5_ = (bitField5_ & ~0x00000008);
         if (talentChangeSkillCommandBuilder_ == null) {
           talentChangeSkillCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.getDefaultInstance();
         } else {
           talentChangeSkillCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000008);
+        bitField5_ = (bitField5_ & ~0x00000010);
         if (startBossRoomCommandBuilder_ == null) {
           startBossRoomCommand_ = com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.getDefaultInstance();
         } else {
           startBossRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000010);
+        bitField5_ = (bitField5_ & ~0x00000020);
         if (createBossRoomCommandBuilder_ == null) {
           createBossRoomCommand_ = com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.getDefaultInstance();
         } else {
           createBossRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000020);
+        bitField5_ = (bitField5_ & ~0x00000040);
         if (bossRoomInfoCommandBuilder_ == null) {
           bossRoomInfoCommand_ = com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.getDefaultInstance();
         } else {
           bossRoomInfoCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000040);
+        bitField5_ = (bitField5_ & ~0x00000080);
         if (equipStrenthenCommandBuilder_ == null) {
           equipStrenthenCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.getDefaultInstance();
         } else {
           equipStrenthenCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000080);
+        bitField5_ = (bitField5_ & ~0x00000100);
         if (equipPokedeCommandBuilder_ == null) {
           equipPokedeCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.getDefaultInstance();
         } else {
           equipPokedeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000100);
+        bitField5_ = (bitField5_ & ~0x00000200);
         if (talentChangeEquipCommandBuilder_ == null) {
           talentChangeEquipCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance();
         } else {
           talentChangeEquipCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000200);
+        bitField5_ = (bitField5_ & ~0x00000400);
         if (zanHeroMessageBoardCommandBuilder_ == null) {
           zanHeroMessageBoardCommand_ = com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.getDefaultInstance();
         } else {
           zanHeroMessageBoardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000400);
+        bitField5_ = (bitField5_ & ~0x00000800);
         if (createRewardTaskRoomCommandBuilder_ == null) {
           createRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.getDefaultInstance();
         } else {
           createRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000800);
+        bitField5_ = (bitField5_ & ~0x00001000);
         if (quitRewardTaskRoomCommandBuilder_ == null) {
           quitRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.getDefaultInstance();
         } else {
           quitRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00001000);
+        bitField5_ = (bitField5_ & ~0x00002000);
         if (inviteToRewardTaskRoomCommandBuilder_ == null) {
           inviteToRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.getDefaultInstance();
         } else {
           inviteToRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00002000);
+        bitField5_ = (bitField5_ & ~0x00004000);
         if (submitRewardTaskScoreCommandBuilder_ == null) {
           submitRewardTaskScoreCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.getDefaultInstance();
         } else {
           submitRewardTaskScoreCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00004000);
+        bitField5_ = (bitField5_ & ~0x00008000);
         if (userRewardTaskCommandBuilder_ == null) {
           userRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.getDefaultInstance();
         } else {
           userRewardTaskCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00008000);
+        bitField5_ = (bitField5_ & ~0x00010000);
         if (rewardTaskRewardCommandBuilder_ == null) {
           rewardTaskRewardCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.getDefaultInstance();
         } else {
           rewardTaskRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00010000);
+        bitField5_ = (bitField5_ & ~0x00020000);
         if (userRewardTaskRoomCommandBuilder_ == null) {
           userRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.getDefaultInstance();
         } else {
           userRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00020000);
+        bitField5_ = (bitField5_ & ~0x00040000);
         if (synthetiseComposeCommandBuilder_ == null) {
           synthetiseComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.getDefaultInstance();
         } else {
           synthetiseComposeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00040000);
+        bitField5_ = (bitField5_ & ~0x00080000);
         if (giveupRewardTaskCommandBuilder_ == null) {
           giveupRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.getDefaultInstance();
         } else {
           giveupRewardTaskCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00080000);
+        bitField5_ = (bitField5_ & ~0x00100000);
         if (extraRewardCommandBuilder_ == null) {
           extraRewardCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.getDefaultInstance();
         } else {
           extraRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00100000);
+        bitField5_ = (bitField5_ & ~0x00200000);
         if (eventBuyCommandBuilder_ == null) {
           eventBuyCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance();
         } else {
           eventBuyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00200000);
+        bitField5_ = (bitField5_ & ~0x00400000);
         if (ladderInfoCommandBuilder_ == null) {
           ladderInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance();
         } else {
           ladderInfoCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00400000);
+        bitField5_ = (bitField5_ & ~0x00800000);
         if (refreshLadderEnemyCommandBuilder_ == null) {
           refreshLadderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance();
         } else {
           refreshLadderEnemyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00800000);
+        bitField5_ = (bitField5_ & ~0x01000000);
         if (submitLadderResultCommandBuilder_ == null) {
           submitLadderResultCommand_ = com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance();
         } else {
           submitLadderResultCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x01000000);
+        bitField5_ = (bitField5_ & ~0x02000000);
         if (ladderTaskRewardCommandBuilder_ == null) {
           ladderTaskRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance();
         } else {
           ladderTaskRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x02000000);
+        bitField5_ = (bitField5_ & ~0x04000000);
         if (ladderSeasonRewardCommandBuilder_ == null) {
           ladderSeasonRewardCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance();
         } else {
           ladderSeasonRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x04000000);
+        bitField5_ = (bitField5_ & ~0x08000000);
         if (ladderEnemyCommandBuilder_ == null) {
           ladderEnemyCommand_ = com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance();
         } else {
           ladderEnemyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x08000000);
+        bitField5_ = (bitField5_ & ~0x10000000);
         if (buySavingBoxCommandBuilder_ == null) {
           buySavingBoxCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.getDefaultInstance();
         } else {
           buySavingBoxCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x10000000);
+        bitField5_ = (bitField5_ & ~0x20000000);
         if (equipupCommandBuilder_ == null) {
           equipupCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.getDefaultInstance();
         } else {
           equipupCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x20000000);
+        bitField5_ = (bitField5_ & ~0x40000000);
         if (materialComposeCommandBuilder_ == null) {
           materialComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.getDefaultInstance();
         } else {
           materialComposeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x40000000);
+        bitField5_ = (bitField5_ & ~0x80000000);
         if (useMaterialCommandBuilder_ == null) {
           useMaterialCommand_ = com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.getDefaultInstance();
         } else {
           useMaterialCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x80000000);
+        bitField6_ = (bitField6_ & ~0x00000001);
         if (changePositionCommandBuilder_ == null) {
           changePositionCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.getDefaultInstance();
         } else {
           changePositionCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000001);
+        bitField6_ = (bitField6_ & ~0x00000002);
         if (talentSpUpCommandBuilder_ == null) {
           talentSpUpCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance();
         } else {
           talentSpUpCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000002);
+        bitField6_ = (bitField6_ & ~0x00000004);
         if (talentSkillLevelupCommandBuilder_ == null) {
           talentSkillLevelupCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance();
         } else {
           talentSkillLevelupCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000004);
+        bitField6_ = (bitField6_ & ~0x00000008);
         if (talentResetSkillCommandBuilder_ == null) {
           talentResetSkillCommand_ = com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.getDefaultInstance();
         } else {
           talentResetSkillCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000008);
+        bitField6_ = (bitField6_ & ~0x00000010);
         if (bindRecommandCommandBuilder_ == null) {
           bindRecommandCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.getDefaultInstance();
         } else {
           bindRecommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000010);
+        bitField6_ = (bitField6_ & ~0x00000020);
         if (recommandCommandBuilder_ == null) {
           recommandCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.getDefaultInstance();
         } else {
           recommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000020);
+        bitField6_ = (bitField6_ & ~0x00000040);
         if (changeUserNameCommandBuilder_ == null) {
           changeUserNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance();
         } else {
           changeUserNameCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000040);
+        bitField6_ = (bitField6_ & ~0x00000080);
         if (cipherRewardCommandBuilder_ == null) {
           cipherRewardCommand_ = com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.getDefaultInstance();
         } else {
           cipherRewardCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000080);
+        bitField6_ = (bitField6_ & ~0x00000100);
         if (eventQuickFightCommandBuilder_ == null) {
           eventQuickFightCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.getDefaultInstance();
         } else {
           eventQuickFightCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000100);
+        bitField6_ = (bitField6_ & ~0x00000200);
         if (signNameCommandBuilder_ == null) {
           signNameCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.getDefaultInstance();
         } else {
           signNameCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000200);
+        bitField6_ = (bitField6_ & ~0x00000400);
         if (submitRiteCommandBuilder_ == null) {
           submitRiteCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.getDefaultInstance();
         } else {
           submitRiteCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000400);
+        bitField6_ = (bitField6_ & ~0x00000800);
         if (removeRecommandCommandBuilder_ == null) {
           removeRecommandCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.getDefaultInstance();
         } else {
           removeRecommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000800);
+        bitField6_ = (bitField6_ & ~0x00001000);
         if (saveFightInfoCommandBuilder_ == null) {
           saveFightInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.getDefaultInstance();
         } else {
           saveFightInfoCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00001000);
+        bitField6_ = (bitField6_ & ~0x00002000);
         if (unionFightApplyCommandBuilder_ == null) {
           unionFightApplyCommand_ = com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.getDefaultInstance();
         } else {
           unionFightApplyCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00002000);
+        bitField6_ = (bitField6_ & ~0x00004000);
         if (lootRewardTaskCommandBuilder_ == null) {
           lootRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.getDefaultInstance();
         } else {
           lootRewardTaskCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00004000);
+        bitField6_ = (bitField6_ & ~0x00008000);
         if (unionFightCommandBuilder_ == null) {
           unionFightCommand_ = com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.getDefaultInstance();
         } else {
           unionFightCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00008000);
+        bitField6_ = (bitField6_ & ~0x00010000);
         if (viewUnionFightFightInfoCommandBuilder_ == null) {
           viewUnionFightFightInfoCommand_ = com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.getDefaultInstance();
         } else {
           viewUnionFightFightInfoCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00010000);
+        bitField6_ = (bitField6_ & ~0x00020000);
         return this;
       }
 
@@ -15114,957 +15178,965 @@ public final class Request {
         if (((from_bitField2_ & 0x02000000) == 0x02000000)) {
           to_bitField2_ |= 0x02000000;
         }
+        if (canRechargeCommandBuilder_ == null) {
+          result.canRechargeCommand_ = canRechargeCommand_;
+        } else {
+          result.canRechargeCommand_ = canRechargeCommandBuilder_.build();
+        }
+        if (((from_bitField2_ & 0x04000000) == 0x04000000)) {
+          to_bitField2_ |= 0x04000000;
+        }
         if (messageBoardListCommandBuilder_ == null) {
           result.messageBoardListCommand_ = messageBoardListCommand_;
         } else {
           result.messageBoardListCommand_ = messageBoardListCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x04000000) == 0x04000000)) {
-          to_bitField2_ |= 0x04000000;
+        if (((from_bitField2_ & 0x08000000) == 0x08000000)) {
+          to_bitField2_ |= 0x08000000;
         }
         if (createMessageBoardCommandBuilder_ == null) {
           result.createMessageBoardCommand_ = createMessageBoardCommand_;
         } else {
           result.createMessageBoardCommand_ = createMessageBoardCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x08000000) == 0x08000000)) {
-          to_bitField2_ |= 0x08000000;
+        if (((from_bitField2_ & 0x10000000) == 0x10000000)) {
+          to_bitField2_ |= 0x10000000;
         }
         if (replyMessageCommandBuilder_ == null) {
           result.replyMessageCommand_ = replyMessageCommand_;
         } else {
           result.replyMessageCommand_ = replyMessageCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x10000000) == 0x10000000)) {
-          to_bitField2_ |= 0x10000000;
+        if (((from_bitField2_ & 0x20000000) == 0x20000000)) {
+          to_bitField2_ |= 0x20000000;
         }
         if (userTeamListCommandBuilder_ == null) {
           result.userTeamListCommand_ = userTeamListCommand_;
         } else {
           result.userTeamListCommand_ = userTeamListCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x20000000) == 0x20000000)) {
-          to_bitField2_ |= 0x20000000;
+        if (((from_bitField2_ & 0x40000000) == 0x40000000)) {
+          to_bitField2_ |= 0x40000000;
         }
         if (ladderUserInfoCommandBuilder_ == null) {
           result.ladderUserInfoCommand_ = ladderUserInfoCommand_;
         } else {
           result.ladderUserInfoCommand_ = ladderUserInfoCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x40000000) == 0x40000000)) {
-          to_bitField2_ |= 0x40000000;
+        if (((from_bitField2_ & 0x80000000) == 0x80000000)) {
+          to_bitField2_ |= 0x80000000;
         }
         if (userFriendListCommandBuilder_ == null) {
           result.userFriendListCommand_ = userFriendListCommand_;
         } else {
           result.userFriendListCommand_ = userFriendListCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x80000000) == 0x80000000)) {
-          to_bitField2_ |= 0x80000000;
+        if (((from_bitField3_ & 0x00000001) == 0x00000001)) {
+          to_bitField3_ |= 0x00000001;
         }
         if (equipComposeCommandBuilder_ == null) {
           result.equipComposeCommand_ = equipComposeCommand_;
         } else {
           result.equipComposeCommand_ = equipComposeCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000001) == 0x00000001)) {
-          to_bitField3_ |= 0x00000001;
+        if (((from_bitField3_ & 0x00000002) == 0x00000002)) {
+          to_bitField3_ |= 0x00000002;
         }
         if (usePropCommandBuilder_ == null) {
           result.usePropCommand_ = usePropCommand_;
         } else {
           result.usePropCommand_ = usePropCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000002) == 0x00000002)) {
-          to_bitField3_ |= 0x00000002;
+        if (((from_bitField3_ & 0x00000004) == 0x00000004)) {
+          to_bitField3_ |= 0x00000004;
         }
         if (fenjieEquipCommandBuilder_ == null) {
           result.fenjieEquipCommand_ = fenjieEquipCommand_;
         } else {
           result.fenjieEquipCommand_ = fenjieEquipCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000004) == 0x00000004)) {
-          to_bitField3_ |= 0x00000004;
+        if (((from_bitField3_ & 0x00000008) == 0x00000008)) {
+          to_bitField3_ |= 0x00000008;
         }
         if (signCommandBuilder_ == null) {
           result.signCommand_ = signCommand_;
         } else {
           result.signCommand_ = signCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000008) == 0x00000008)) {
-          to_bitField3_ |= 0x00000008;
+        if (((from_bitField3_ & 0x00000010) == 0x00000010)) {
+          to_bitField3_ |= 0x00000010;
         }
         if (helpAttackPVPMineCommandBuilder_ == null) {
           result.helpAttackPVPMineCommand_ = helpAttackPVPMineCommand_;
         } else {
           result.helpAttackPVPMineCommand_ = helpAttackPVPMineCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000010) == 0x00000010)) {
-          to_bitField3_ |= 0x00000010;
+        if (((from_bitField3_ & 0x00000020) == 0x00000020)) {
+          to_bitField3_ |= 0x00000020;
         }
         if (fenjieHeroCommandBuilder_ == null) {
           result.fenjieHeroCommand_ = fenjieHeroCommand_;
         } else {
           result.fenjieHeroCommand_ = fenjieHeroCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000020) == 0x00000020)) {
-          to_bitField3_ |= 0x00000020;
+        if (((from_bitField3_ & 0x00000040) == 0x00000040)) {
+          to_bitField3_ |= 0x00000040;
         }
         if (resetHeroSkillCommandBuilder_ == null) {
           result.resetHeroSkillCommand_ = resetHeroSkillCommand_;
         } else {
           result.resetHeroSkillCommand_ = resetHeroSkillCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000040) == 0x00000040)) {
-          to_bitField3_ |= 0x00000040;
+        if (((from_bitField3_ & 0x00000080) == 0x00000080)) {
+          to_bitField3_ |= 0x00000080;
         }
         if (heroSpUpCommandBuilder_ == null) {
           result.heroSpUpCommand_ = heroSpUpCommand_;
         } else {
           result.heroSpUpCommand_ = heroSpUpCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000080) == 0x00000080)) {
-          to_bitField3_ |= 0x00000080;
+        if (((from_bitField3_ & 0x00000100) == 0x00000100)) {
+          to_bitField3_ |= 0x00000100;
         }
         if (sendMailCommandBuilder_ == null) {
           result.sendMailCommand_ = sendMailCommand_;
         } else {
           result.sendMailCommand_ = sendMailCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000100) == 0x00000100)) {
-          to_bitField3_ |= 0x00000100;
+        if (((from_bitField3_ & 0x00000200) == 0x00000200)) {
+          to_bitField3_ |= 0x00000200;
         }
         if (brotherMineInfoCommandBuilder_ == null) {
           result.brotherMineInfoCommand_ = brotherMineInfoCommand_;
         } else {
           result.brotherMineInfoCommand_ = brotherMineInfoCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000200) == 0x00000200)) {
-          to_bitField3_ |= 0x00000200;
+        if (((from_bitField3_ & 0x00000400) == 0x00000400)) {
+          to_bitField3_ |= 0x00000400;
         }
         if (enterMohuaMapCommandBuilder_ == null) {
           result.enterMohuaMapCommand_ = enterMohuaMapCommand_;
         } else {
           result.enterMohuaMapCommand_ = enterMohuaMapCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000400) == 0x00000400)) {
-          to_bitField3_ |= 0x00000400;
+        if (((from_bitField3_ & 0x00000800) == 0x00000800)) {
+          to_bitField3_ |= 0x00000800;
         }
         if (startMohuaMapCommandBuilder_ == null) {
           result.startMohuaMapCommand_ = startMohuaMapCommand_;
         } else {
           result.startMohuaMapCommand_ = startMohuaMapCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00000800) == 0x00000800)) {
-          to_bitField3_ |= 0x00000800;
+        if (((from_bitField3_ & 0x00001000) == 0x00001000)) {
+          to_bitField3_ |= 0x00001000;
         }
         if (useMohuaCardCommandBuilder_ == null) {
           result.useMohuaCardCommand_ = useMohuaCardCommand_;
         } else {
           result.useMohuaCardCommand_ = useMohuaCardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00001000) == 0x00001000)) {
-          to_bitField3_ |= 0x00001000;
+        if (((from_bitField3_ & 0x00002000) == 0x00002000)) {
+          to_bitField3_ |= 0x00002000;
         }
         if (mohuaStageRewardCommandBuilder_ == null) {
           result.mohuaStageRewardCommand_ = mohuaStageRewardCommand_;
         } else {
           result.mohuaStageRewardCommand_ = mohuaStageRewardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00002000) == 0x00002000)) {
-          to_bitField3_ |= 0x00002000;
+        if (((from_bitField3_ & 0x00004000) == 0x00004000)) {
+          to_bitField3_ |= 0x00004000;
         }
         if (mohuaHpRewardCommandBuilder_ == null) {
           result.mohuaHpRewardCommand_ = mohuaHpRewardCommand_;
         } else {
           result.mohuaHpRewardCommand_ = mohuaHpRewardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00004000) == 0x00004000)) {
-          to_bitField3_ |= 0x00004000;
+        if (((from_bitField3_ & 0x00008000) == 0x00008000)) {
+          to_bitField3_ |= 0x00008000;
         }
         if (mohuaSubmitStageCommandBuilder_ == null) {
           result.mohuaSubmitStageCommand_ = mohuaSubmitStageCommand_;
         } else {
           result.mohuaSubmitStageCommand_ = mohuaSubmitStageCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00008000) == 0x00008000)) {
-          to_bitField3_ |= 0x00008000;
+        if (((from_bitField3_ & 0x00010000) == 0x00010000)) {
+          to_bitField3_ |= 0x00010000;
         }
         if (endMohuaMapCommandBuilder_ == null) {
           result.endMohuaMapCommand_ = endMohuaMapCommand_;
         } else {
           result.endMohuaMapCommand_ = endMohuaMapCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00010000) == 0x00010000)) {
-          to_bitField3_ |= 0x00010000;
+        if (((from_bitField3_ & 0x00020000) == 0x00020000)) {
+          to_bitField3_ |= 0x00020000;
         }
         if (saleEquipCommandBuilder_ == null) {
           result.saleEquipCommand_ = saleEquipCommand_;
         } else {
           result.saleEquipCommand_ = saleEquipCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00020000) == 0x00020000)) {
-          to_bitField3_ |= 0x00020000;
+        if (((from_bitField3_ & 0x00040000) == 0x00040000)) {
+          to_bitField3_ |= 0x00040000;
         }
         if (delFriendCommandBuilder_ == null) {
           result.delFriendCommand_ = delFriendCommand_;
         } else {
           result.delFriendCommand_ = delFriendCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00040000) == 0x00040000)) {
-          to_bitField3_ |= 0x00040000;
+        if (((from_bitField3_ & 0x00080000) == 0x00080000)) {
+          to_bitField3_ |= 0x00080000;
         }
         if (submitZhanliCommandBuilder_ == null) {
           result.submitZhanliCommand_ = submitZhanliCommand_;
         } else {
           result.submitZhanliCommand_ = submitZhanliCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00080000) == 0x00080000)) {
-          to_bitField3_ |= 0x00080000;
+        if (((from_bitField3_ & 0x00100000) == 0x00100000)) {
+          to_bitField3_ |= 0x00100000;
         }
         if (achieveRewardCommandBuilder_ == null) {
           result.achieveRewardCommand_ = achieveRewardCommand_;
         } else {
           result.achieveRewardCommand_ = achieveRewardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00100000) == 0x00100000)) {
-          to_bitField3_ |= 0x00100000;
+        if (((from_bitField3_ & 0x00200000) == 0x00200000)) {
+          to_bitField3_ |= 0x00200000;
         }
         if (achieveListCommandBuilder_ == null) {
           result.achieveListCommand_ = achieveListCommand_;
         } else {
           result.achieveListCommand_ = achieveListCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00200000) == 0x00200000)) {
-          to_bitField3_ |= 0x00200000;
+        if (((from_bitField3_ & 0x00400000) == 0x00400000)) {
+          to_bitField3_ |= 0x00400000;
         }
         if (richangRewardCommandBuilder_ == null) {
           result.richangRewardCommand_ = richangRewardCommand_;
         } else {
           result.richangRewardCommand_ = richangRewardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00400000) == 0x00400000)) {
-          to_bitField3_ |= 0x00400000;
+        if (((from_bitField3_ & 0x00800000) == 0x00800000)) {
+          to_bitField3_ |= 0x00800000;
         }
         if (richangListCommandBuilder_ == null) {
           result.richangListCommand_ = richangListCommand_;
         } else {
           result.richangListCommand_ = richangListCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x00800000) == 0x00800000)) {
-          to_bitField3_ |= 0x00800000;
+        if (((from_bitField3_ & 0x01000000) == 0x01000000)) {
+          to_bitField3_ |= 0x01000000;
         }
         if (kaifu2ActivityCommandBuilder_ == null) {
           result.kaifu2ActivityCommand_ = kaifu2ActivityCommand_;
         } else {
           result.kaifu2ActivityCommand_ = kaifu2ActivityCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x01000000) == 0x01000000)) {
-          to_bitField3_ |= 0x01000000;
+        if (((from_bitField3_ & 0x02000000) == 0x02000000)) {
+          to_bitField3_ |= 0x02000000;
         }
         if (kaifuRewardCommandBuilder_ == null) {
           result.kaifuRewardCommand_ = kaifuRewardCommand_;
         } else {
           result.kaifuRewardCommand_ = kaifuRewardCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x02000000) == 0x02000000)) {
-          to_bitField3_ |= 0x02000000;
+        if (((from_bitField3_ & 0x04000000) == 0x04000000)) {
+          to_bitField3_ |= 0x04000000;
         }
         if (kaifuListCommandBuilder_ == null) {
           result.kaifuListCommand_ = kaifuListCommand_;
         } else {
           result.kaifuListCommand_ = kaifuListCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x04000000) == 0x04000000)) {
-          to_bitField3_ |= 0x04000000;
+        if (((from_bitField3_ & 0x08000000) == 0x08000000)) {
+          to_bitField3_ |= 0x08000000;
         }
         if (userPokedeCommandBuilder_ == null) {
           result.userPokedeCommand_ = userPokedeCommand_;
         } else {
           result.userPokedeCommand_ = userPokedeCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x08000000) == 0x08000000)) {
-          to_bitField3_ |= 0x08000000;
+        if (((from_bitField3_ & 0x10000000) == 0x10000000)) {
+          to_bitField3_ |= 0x10000000;
         }
         if (rankCommandBuilder_ == null) {
           result.rankCommand_ = rankCommand_;
         } else {
           result.rankCommand_ = rankCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x10000000) == 0x10000000)) {
-          to_bitField3_ |= 0x10000000;
+        if (((from_bitField3_ & 0x20000000) == 0x20000000)) {
+          to_bitField3_ |= 0x20000000;
         }
         if (buyHeroPackageCommandBuilder_ == null) {
           result.buyHeroPackageCommand_ = buyHeroPackageCommand_;
         } else {
           result.buyHeroPackageCommand_ = buyHeroPackageCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x20000000) == 0x20000000)) {
-          to_bitField3_ |= 0x20000000;
+        if (((from_bitField3_ & 0x40000000) == 0x40000000)) {
+          to_bitField3_ |= 0x40000000;
         }
         if (submitComposeSkillCommandBuilder_ == null) {
           result.submitComposeSkillCommand_ = submitComposeSkillCommand_;
         } else {
           result.submitComposeSkillCommand_ = submitComposeSkillCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x40000000) == 0x40000000)) {
-          to_bitField3_ |= 0x40000000;
+        if (((from_bitField3_ & 0x80000000) == 0x80000000)) {
+          to_bitField3_ |= 0x80000000;
         }
         if (submitIconCommandBuilder_ == null) {
           result.submitIconCommand_ = submitIconCommand_;
         } else {
           result.submitIconCommand_ = submitIconCommandBuilder_.build();
         }
-        if (((from_bitField3_ & 0x80000000) == 0x80000000)) {
-          to_bitField3_ |= 0x80000000;
+        if (((from_bitField4_ & 0x00000001) == 0x00000001)) {
+          to_bitField4_ |= 0x00000001;
         }
         if (readyAttackLadderCommandBuilder_ == null) {
           result.readyAttackLadderCommand_ = readyAttackLadderCommand_;
         } else {
           result.readyAttackLadderCommand_ = readyAttackLadderCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000001) == 0x00000001)) {
-          to_bitField4_ |= 0x00000001;
+        if (((from_bitField4_ & 0x00000002) == 0x00000002)) {
+          to_bitField4_ |= 0x00000002;
         }
         if (bindAccountCommandBuilder_ == null) {
           result.bindAccountCommand_ = bindAccountCommand_;
         } else {
           result.bindAccountCommand_ = bindAccountCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000002) == 0x00000002)) {
-          to_bitField4_ |= 0x00000002;
+        if (((from_bitField4_ & 0x00000004) == 0x00000004)) {
+          to_bitField4_ |= 0x00000004;
         }
         if (queryRechargeCommandBuilder_ == null) {
           result.queryRechargeCommand_ = queryRechargeCommand_;
         } else {
           result.queryRechargeCommand_ = queryRechargeCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000004) == 0x00000004)) {
-          to_bitField4_ |= 0x00000004;
+        if (((from_bitField4_ & 0x00000008) == 0x00000008)) {
+          to_bitField4_ |= 0x00000008;
         }
         if (shouchongRewardCommandBuilder_ == null) {
           result.shouchongRewardCommand_ = shouchongRewardCommand_;
         } else {
           result.shouchongRewardCommand_ = shouchongRewardCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000008) == 0x00000008)) {
-          to_bitField4_ |= 0x00000008;
+        if (((from_bitField4_ & 0x00000010) == 0x00000010)) {
+          to_bitField4_ |= 0x00000010;
         }
         if (heartBeatCommandBuilder_ == null) {
           result.heartBeatCommand_ = heartBeatCommand_;
         } else {
           result.heartBeatCommand_ = heartBeatCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000010) == 0x00000010)) {
-          to_bitField4_ |= 0x00000010;
+        if (((from_bitField4_ & 0x00000020) == 0x00000020)) {
+          to_bitField4_ |= 0x00000020;
         }
         if (greenhandCommandBuilder_ == null) {
           result.greenhandCommand_ = greenhandCommand_;
         } else {
           result.greenhandCommand_ = greenhandCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000020) == 0x00000020)) {
-          to_bitField4_ |= 0x00000020;
+        if (((from_bitField4_ & 0x00000040) == 0x00000040)) {
+          to_bitField4_ |= 0x00000040;
         }
         if (logCommandBuilder_ == null) {
           result.logCommand_ = logCommand_;
         } else {
           result.logCommand_ = logCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000040) == 0x00000040)) {
-          to_bitField4_ |= 0x00000040;
+        if (((from_bitField4_ & 0x00000080) == 0x00000080)) {
+          to_bitField4_ |= 0x00000080;
         }
         if (feedFoodCommandBuilder_ == null) {
           result.feedFoodCommand_ = feedFoodCommand_;
         } else {
           result.feedFoodCommand_ = feedFoodCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000080) == 0x00000080)) {
-          to_bitField4_ |= 0x00000080;
+        if (((from_bitField4_ & 0x00000100) == 0x00000100)) {
+          to_bitField4_ |= 0x00000100;
         }
         if (clearHeroCommandBuilder_ == null) {
           result.clearHeroCommand_ = clearHeroCommand_;
         } else {
           result.clearHeroCommand_ = clearHeroCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000100) == 0x00000100)) {
-          to_bitField4_ |= 0x00000100;
+        if (((from_bitField4_ & 0x00000200) == 0x00000200)) {
+          to_bitField4_ |= 0x00000200;
         }
         if (choseClearInfoCommandBuilder_ == null) {
           result.choseClearInfoCommand_ = choseClearInfoCommand_;
         } else {
           result.choseClearInfoCommand_ = choseClearInfoCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000200) == 0x00000200)) {
-          to_bitField4_ |= 0x00000200;
+        if (((from_bitField4_ & 0x00000400) == 0x00000400)) {
+          to_bitField4_ |= 0x00000400;
         }
         if (submitBosskillCommandBuilder_ == null) {
           result.submitBosskillCommand_ = submitBosskillCommand_;
         } else {
           result.submitBosskillCommand_ = submitBosskillCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000400) == 0x00000400)) {
-          to_bitField4_ |= 0x00000400;
+        if (((from_bitField4_ & 0x00000800) == 0x00000800)) {
+          to_bitField4_ |= 0x00000800;
         }
         if (bosskillCommandBuilder_ == null) {
           result.bosskillCommand_ = bosskillCommand_;
         } else {
           result.bosskillCommand_ = bosskillCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00000800) == 0x00000800)) {
-          to_bitField4_ |= 0x00000800;
+        if (((from_bitField4_ & 0x00001000) == 0x00001000)) {
+          to_bitField4_ |= 0x00001000;
         }
         if (unionBossFightCommandBuilder_ == null) {
           result.unionBossFightCommand_ = unionBossFightCommand_;
         } else {
           result.unionBossFightCommand_ = unionBossFightCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00001000) == 0x00001000)) {
-          to_bitField4_ |= 0x00001000;
+        if (((from_bitField4_ & 0x00002000) == 0x00002000)) {
+          to_bitField4_ |= 0x00002000;
         }
         if (heroStrengthenCommandBuilder_ == null) {
           result.heroStrengthenCommand_ = heroStrengthenCommand_;
         } else {
           result.heroStrengthenCommand_ = heroStrengthenCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00002000) == 0x00002000)) {
-          to_bitField4_ |= 0x00002000;
+        if (((from_bitField4_ & 0x00004000) == 0x00004000)) {
+          to_bitField4_ |= 0x00004000;
         }
         if (sevenLoginSignCommandBuilder_ == null) {
           result.sevenLoginSignCommand_ = sevenLoginSignCommand_;
         } else {
           result.sevenLoginSignCommand_ = sevenLoginSignCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00004000) == 0x00004000)) {
-          to_bitField4_ |= 0x00004000;
+        if (((from_bitField4_ & 0x00008000) == 0x00008000)) {
+          to_bitField4_ |= 0x00008000;
         }
         if (isAreaOwnerCommandBuilder_ == null) {
           result.isAreaOwnerCommand_ = isAreaOwnerCommand_;
         } else {
           result.isAreaOwnerCommand_ = isAreaOwnerCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00008000) == 0x00008000)) {
-          to_bitField4_ |= 0x00008000;
+        if (((from_bitField4_ & 0x00010000) == 0x00010000)) {
+          to_bitField4_ |= 0x00010000;
         }
         if (openFetterCommandBuilder_ == null) {
           result.openFetterCommand_ = openFetterCommand_;
         } else {
           result.openFetterCommand_ = openFetterCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00010000) == 0x00010000)) {
-          to_bitField4_ |= 0x00010000;
+        if (((from_bitField4_ & 0x00020000) == 0x00020000)) {
+          to_bitField4_ |= 0x00020000;
         }
         if (userTaskCommandBuilder_ == null) {
           result.userTaskCommand_ = userTaskCommand_;
         } else {
           result.userTaskCommand_ = userTaskCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00020000) == 0x00020000)) {
-          to_bitField4_ |= 0x00020000;
+        if (((from_bitField4_ & 0x00040000) == 0x00040000)) {
+          to_bitField4_ |= 0x00040000;
         }
         if (getTaskRewardCommandBuilder_ == null) {
           result.getTaskRewardCommand_ = getTaskRewardCommand_;
         } else {
           result.getTaskRewardCommand_ = getTaskRewardCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00040000) == 0x00040000)) {
-          to_bitField4_ |= 0x00040000;
+        if (((from_bitField4_ & 0x00080000) == 0x00080000)) {
+          to_bitField4_ |= 0x00080000;
         }
         if (submitBattletowerCommandBuilder_ == null) {
           result.submitBattletowerCommand_ = submitBattletowerCommand_;
         } else {
           result.submitBattletowerCommand_ = submitBattletowerCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00080000) == 0x00080000)) {
-          to_bitField4_ |= 0x00080000;
+        if (((from_bitField4_ & 0x00100000) == 0x00100000)) {
+          to_bitField4_ |= 0x00100000;
         }
         if (resetBattletowerCommandBuilder_ == null) {
           result.resetBattletowerCommand_ = resetBattletowerCommand_;
         } else {
           result.resetBattletowerCommand_ = resetBattletowerCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00100000) == 0x00100000)) {
-          to_bitField4_ |= 0x00100000;
+        if (((from_bitField4_ & 0x00200000) == 0x00200000)) {
+          to_bitField4_ |= 0x00200000;
         }
         if (getBattletowerCommandBuilder_ == null) {
           result.getBattletowerCommand_ = getBattletowerCommand_;
         } else {
           result.getBattletowerCommand_ = getBattletowerCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00200000) == 0x00200000)) {
-          to_bitField4_ |= 0x00200000;
+        if (((from_bitField4_ & 0x00400000) == 0x00400000)) {
+          to_bitField4_ |= 0x00400000;
         }
         if (battletowerShopCommandBuilder_ == null) {
           result.battletowerShopCommand_ = battletowerShopCommand_;
         } else {
           result.battletowerShopCommand_ = battletowerShopCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00400000) == 0x00400000)) {
-          to_bitField4_ |= 0x00400000;
+        if (((from_bitField4_ & 0x00800000) == 0x00800000)) {
+          to_bitField4_ |= 0x00800000;
         }
         if (battletowerShopPurchaseCommandBuilder_ == null) {
           result.battletowerShopPurchaseCommand_ = battletowerShopPurchaseCommand_;
         } else {
           result.battletowerShopPurchaseCommand_ = battletowerShopPurchaseCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x00800000) == 0x00800000)) {
-          to_bitField4_ |= 0x00800000;
+        if (((from_bitField4_ & 0x01000000) == 0x01000000)) {
+          to_bitField4_ |= 0x01000000;
         }
         if (battletowerShopRefreshCommandBuilder_ == null) {
           result.battletowerShopRefreshCommand_ = battletowerShopRefreshCommand_;
         } else {
           result.battletowerShopRefreshCommand_ = battletowerShopRefreshCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x01000000) == 0x01000000)) {
-          to_bitField4_ |= 0x01000000;
+        if (((from_bitField4_ & 0x02000000) == 0x02000000)) {
+          to_bitField4_ |= 0x02000000;
         }
         if (bloodEnterCommandBuilder_ == null) {
           result.bloodEnterCommand_ = bloodEnterCommand_;
         } else {
           result.bloodEnterCommand_ = bloodEnterCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x02000000) == 0x02000000)) {
-          to_bitField4_ |= 0x02000000;
+        if (((from_bitField4_ & 0x04000000) == 0x04000000)) {
+          to_bitField4_ |= 0x04000000;
         }
         if (bloodXiazhuCommandBuilder_ == null) {
           result.bloodXiazhuCommand_ = bloodXiazhuCommand_;
         } else {
           result.bloodXiazhuCommand_ = bloodXiazhuCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x04000000) == 0x04000000)) {
-          to_bitField4_ |= 0x04000000;
+        if (((from_bitField4_ & 0x08000000) == 0x08000000)) {
+          to_bitField4_ |= 0x08000000;
         }
         if (queryNoticeBoardCommandBuilder_ == null) {
           result.queryNoticeBoardCommand_ = queryNoticeBoardCommand_;
         } else {
           result.queryNoticeBoardCommand_ = queryNoticeBoardCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x08000000) == 0x08000000)) {
-          to_bitField4_ |= 0x08000000;
+        if (((from_bitField4_ & 0x10000000) == 0x10000000)) {
+          to_bitField4_ |= 0x10000000;
         }
         if (helpLevelCommandBuilder_ == null) {
           result.helpLevelCommand_ = helpLevelCommand_;
         } else {
           result.helpLevelCommand_ = helpLevelCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x10000000) == 0x10000000)) {
-          to_bitField4_ |= 0x10000000;
+        if (((from_bitField4_ & 0x20000000) == 0x20000000)) {
+          to_bitField4_ |= 0x20000000;
         }
         if (inviteFightBossCommandBuilder_ == null) {
           result.inviteFightBossCommand_ = inviteFightBossCommand_;
         } else {
           result.inviteFightBossCommand_ = inviteFightBossCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x20000000) == 0x20000000)) {
-          to_bitField4_ |= 0x20000000;
+        if (((from_bitField4_ & 0x40000000) == 0x40000000)) {
+          to_bitField4_ |= 0x40000000;
         }
         if (quitFightBossCommandBuilder_ == null) {
           result.quitFightBossCommand_ = quitFightBossCommand_;
         } else {
           result.quitFightBossCommand_ = quitFightBossCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x40000000) == 0x40000000)) {
-          to_bitField4_ |= 0x40000000;
+        if (((from_bitField4_ & 0x80000000) == 0x80000000)) {
+          to_bitField4_ |= 0x80000000;
         }
         if (submitBossScoreCommandBuilder_ == null) {
           result.submitBossScoreCommand_ = submitBossScoreCommand_;
         } else {
           result.submitBossScoreCommand_ = submitBossScoreCommandBuilder_.build();
         }
-        if (((from_bitField4_ & 0x80000000) == 0x80000000)) {
-          to_bitField4_ |= 0x80000000;
+        if (((from_bitField5_ & 0x00000001) == 0x00000001)) {
+          to_bitField5_ |= 0x00000001;
         }
         if (userInfoCommandBuilder_ == null) {
           result.userInfoCommand_ = userInfoCommand_;
         } else {
           result.userInfoCommand_ = userInfoCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000001) == 0x00000001)) {
-          to_bitField5_ |= 0x00000001;
+        if (((from_bitField5_ & 0x00000002) == 0x00000002)) {
+          to_bitField5_ |= 0x00000002;
         }
         if (rechargeCommandBuilder_ == null) {
           result.rechargeCommand_ = rechargeCommand_;
         } else {
           result.rechargeCommand_ = rechargeCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000002) == 0x00000002)) {
-          to_bitField5_ |= 0x00000002;
+        if (((from_bitField5_ & 0x00000004) == 0x00000004)) {
+          to_bitField5_ |= 0x00000004;
         }
         if (talentupgradeCommandBuilder_ == null) {
           result.talentupgradeCommand_ = talentupgradeCommand_;
         } else {
           result.talentupgradeCommand_ = talentupgradeCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000004) == 0x00000004)) {
-          to_bitField5_ |= 0x00000004;
+        if (((from_bitField5_ & 0x00000008) == 0x00000008)) {
+          to_bitField5_ |= 0x00000008;
         }
         if (talentChangeUseCommandBuilder_ == null) {
           result.talentChangeUseCommand_ = talentChangeUseCommand_;
         } else {
           result.talentChangeUseCommand_ = talentChangeUseCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000008) == 0x00000008)) {
-          to_bitField5_ |= 0x00000008;
+        if (((from_bitField5_ & 0x00000010) == 0x00000010)) {
+          to_bitField5_ |= 0x00000010;
         }
         if (talentChangeSkillCommandBuilder_ == null) {
           result.talentChangeSkillCommand_ = talentChangeSkillCommand_;
         } else {
           result.talentChangeSkillCommand_ = talentChangeSkillCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000010) == 0x00000010)) {
-          to_bitField5_ |= 0x00000010;
+        if (((from_bitField5_ & 0x00000020) == 0x00000020)) {
+          to_bitField5_ |= 0x00000020;
         }
         if (startBossRoomCommandBuilder_ == null) {
           result.startBossRoomCommand_ = startBossRoomCommand_;
         } else {
           result.startBossRoomCommand_ = startBossRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000020) == 0x00000020)) {
-          to_bitField5_ |= 0x00000020;
+        if (((from_bitField5_ & 0x00000040) == 0x00000040)) {
+          to_bitField5_ |= 0x00000040;
         }
         if (createBossRoomCommandBuilder_ == null) {
           result.createBossRoomCommand_ = createBossRoomCommand_;
         } else {
           result.createBossRoomCommand_ = createBossRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000040) == 0x00000040)) {
-          to_bitField5_ |= 0x00000040;
+        if (((from_bitField5_ & 0x00000080) == 0x00000080)) {
+          to_bitField5_ |= 0x00000080;
         }
         if (bossRoomInfoCommandBuilder_ == null) {
           result.bossRoomInfoCommand_ = bossRoomInfoCommand_;
         } else {
           result.bossRoomInfoCommand_ = bossRoomInfoCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000080) == 0x00000080)) {
-          to_bitField5_ |= 0x00000080;
+        if (((from_bitField5_ & 0x00000100) == 0x00000100)) {
+          to_bitField5_ |= 0x00000100;
         }
         if (equipStrenthenCommandBuilder_ == null) {
           result.equipStrenthenCommand_ = equipStrenthenCommand_;
         } else {
           result.equipStrenthenCommand_ = equipStrenthenCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000100) == 0x00000100)) {
-          to_bitField5_ |= 0x00000100;
+        if (((from_bitField5_ & 0x00000200) == 0x00000200)) {
+          to_bitField5_ |= 0x00000200;
         }
         if (equipPokedeCommandBuilder_ == null) {
           result.equipPokedeCommand_ = equipPokedeCommand_;
         } else {
           result.equipPokedeCommand_ = equipPokedeCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000200) == 0x00000200)) {
-          to_bitField5_ |= 0x00000200;
+        if (((from_bitField5_ & 0x00000400) == 0x00000400)) {
+          to_bitField5_ |= 0x00000400;
         }
         if (talentChangeEquipCommandBuilder_ == null) {
           result.talentChangeEquipCommand_ = talentChangeEquipCommand_;
         } else {
           result.talentChangeEquipCommand_ = talentChangeEquipCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000400) == 0x00000400)) {
-          to_bitField5_ |= 0x00000400;
+        if (((from_bitField5_ & 0x00000800) == 0x00000800)) {
+          to_bitField5_ |= 0x00000800;
         }
         if (zanHeroMessageBoardCommandBuilder_ == null) {
           result.zanHeroMessageBoardCommand_ = zanHeroMessageBoardCommand_;
         } else {
           result.zanHeroMessageBoardCommand_ = zanHeroMessageBoardCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00000800) == 0x00000800)) {
-          to_bitField5_ |= 0x00000800;
+        if (((from_bitField5_ & 0x00001000) == 0x00001000)) {
+          to_bitField5_ |= 0x00001000;
         }
         if (createRewardTaskRoomCommandBuilder_ == null) {
           result.createRewardTaskRoomCommand_ = createRewardTaskRoomCommand_;
         } else {
           result.createRewardTaskRoomCommand_ = createRewardTaskRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00001000) == 0x00001000)) {
-          to_bitField5_ |= 0x00001000;
+        if (((from_bitField5_ & 0x00002000) == 0x00002000)) {
+          to_bitField5_ |= 0x00002000;
         }
         if (quitRewardTaskRoomCommandBuilder_ == null) {
           result.quitRewardTaskRoomCommand_ = quitRewardTaskRoomCommand_;
         } else {
           result.quitRewardTaskRoomCommand_ = quitRewardTaskRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00002000) == 0x00002000)) {
-          to_bitField5_ |= 0x00002000;
+        if (((from_bitField5_ & 0x00004000) == 0x00004000)) {
+          to_bitField5_ |= 0x00004000;
         }
         if (inviteToRewardTaskRoomCommandBuilder_ == null) {
           result.inviteToRewardTaskRoomCommand_ = inviteToRewardTaskRoomCommand_;
         } else {
           result.inviteToRewardTaskRoomCommand_ = inviteToRewardTaskRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00004000) == 0x00004000)) {
-          to_bitField5_ |= 0x00004000;
+        if (((from_bitField5_ & 0x00008000) == 0x00008000)) {
+          to_bitField5_ |= 0x00008000;
         }
         if (submitRewardTaskScoreCommandBuilder_ == null) {
           result.submitRewardTaskScoreCommand_ = submitRewardTaskScoreCommand_;
         } else {
           result.submitRewardTaskScoreCommand_ = submitRewardTaskScoreCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00008000) == 0x00008000)) {
-          to_bitField5_ |= 0x00008000;
+        if (((from_bitField5_ & 0x00010000) == 0x00010000)) {
+          to_bitField5_ |= 0x00010000;
         }
         if (userRewardTaskCommandBuilder_ == null) {
           result.userRewardTaskCommand_ = userRewardTaskCommand_;
         } else {
           result.userRewardTaskCommand_ = userRewardTaskCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00010000) == 0x00010000)) {
-          to_bitField5_ |= 0x00010000;
+        if (((from_bitField5_ & 0x00020000) == 0x00020000)) {
+          to_bitField5_ |= 0x00020000;
         }
         if (rewardTaskRewardCommandBuilder_ == null) {
           result.rewardTaskRewardCommand_ = rewardTaskRewardCommand_;
         } else {
           result.rewardTaskRewardCommand_ = rewardTaskRewardCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00020000) == 0x00020000)) {
-          to_bitField5_ |= 0x00020000;
+        if (((from_bitField5_ & 0x00040000) == 0x00040000)) {
+          to_bitField5_ |= 0x00040000;
         }
         if (userRewardTaskRoomCommandBuilder_ == null) {
           result.userRewardTaskRoomCommand_ = userRewardTaskRoomCommand_;
         } else {
           result.userRewardTaskRoomCommand_ = userRewardTaskRoomCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00040000) == 0x00040000)) {
-          to_bitField5_ |= 0x00040000;
+        if (((from_bitField5_ & 0x00080000) == 0x00080000)) {
+          to_bitField5_ |= 0x00080000;
         }
         if (synthetiseComposeCommandBuilder_ == null) {
           result.synthetiseComposeCommand_ = synthetiseComposeCommand_;
         } else {
           result.synthetiseComposeCommand_ = synthetiseComposeCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00080000) == 0x00080000)) {
-          to_bitField5_ |= 0x00080000;
+        if (((from_bitField5_ & 0x00100000) == 0x00100000)) {
+          to_bitField5_ |= 0x00100000;
         }
         if (giveupRewardTaskCommandBuilder_ == null) {
           result.giveupRewardTaskCommand_ = giveupRewardTaskCommand_;
         } else {
           result.giveupRewardTaskCommand_ = giveupRewardTaskCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00100000) == 0x00100000)) {
-          to_bitField5_ |= 0x00100000;
+        if (((from_bitField5_ & 0x00200000) == 0x00200000)) {
+          to_bitField5_ |= 0x00200000;
         }
         if (extraRewardCommandBuilder_ == null) {
           result.extraRewardCommand_ = extraRewardCommand_;
         } else {
           result.extraRewardCommand_ = extraRewardCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00200000) == 0x00200000)) {
-          to_bitField5_ |= 0x00200000;
+        if (((from_bitField5_ & 0x00400000) == 0x00400000)) {
+          to_bitField5_ |= 0x00400000;
         }
         if (eventBuyCommandBuilder_ == null) {
           result.eventBuyCommand_ = eventBuyCommand_;
         } else {
           result.eventBuyCommand_ = eventBuyCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00400000) == 0x00400000)) {
-          to_bitField5_ |= 0x00400000;
+        if (((from_bitField5_ & 0x00800000) == 0x00800000)) {
+          to_bitField5_ |= 0x00800000;
         }
         if (ladderInfoCommandBuilder_ == null) {
           result.ladderInfoCommand_ = ladderInfoCommand_;
         } else {
           result.ladderInfoCommand_ = ladderInfoCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x00800000) == 0x00800000)) {
-          to_bitField5_ |= 0x00800000;
+        if (((from_bitField5_ & 0x01000000) == 0x01000000)) {
+          to_bitField5_ |= 0x01000000;
         }
         if (refreshLadderEnemyCommandBuilder_ == null) {
           result.refreshLadderEnemyCommand_ = refreshLadderEnemyCommand_;
         } else {
           result.refreshLadderEnemyCommand_ = refreshLadderEnemyCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x01000000) == 0x01000000)) {
-          to_bitField5_ |= 0x01000000;
+        if (((from_bitField5_ & 0x02000000) == 0x02000000)) {
+          to_bitField5_ |= 0x02000000;
         }
         if (submitLadderResultCommandBuilder_ == null) {
           result.submitLadderResultCommand_ = submitLadderResultCommand_;
         } else {
           result.submitLadderResultCommand_ = submitLadderResultCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x02000000) == 0x02000000)) {
-          to_bitField5_ |= 0x02000000;
+        if (((from_bitField5_ & 0x04000000) == 0x04000000)) {
+          to_bitField5_ |= 0x04000000;
         }
         if (ladderTaskRewardCommandBuilder_ == null) {
           result.ladderTaskRewardCommand_ = ladderTaskRewardCommand_;
         } else {
           result.ladderTaskRewardCommand_ = ladderTaskRewardCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x04000000) == 0x04000000)) {
-          to_bitField5_ |= 0x04000000;
+        if (((from_bitField5_ & 0x08000000) == 0x08000000)) {
+          to_bitField5_ |= 0x08000000;
         }
         if (ladderSeasonRewardCommandBuilder_ == null) {
           result.ladderSeasonRewardCommand_ = ladderSeasonRewardCommand_;
         } else {
           result.ladderSeasonRewardCommand_ = ladderSeasonRewardCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x08000000) == 0x08000000)) {
-          to_bitField5_ |= 0x08000000;
+        if (((from_bitField5_ & 0x10000000) == 0x10000000)) {
+          to_bitField5_ |= 0x10000000;
         }
         if (ladderEnemyCommandBuilder_ == null) {
           result.ladderEnemyCommand_ = ladderEnemyCommand_;
         } else {
           result.ladderEnemyCommand_ = ladderEnemyCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x10000000) == 0x10000000)) {
-          to_bitField5_ |= 0x10000000;
+        if (((from_bitField5_ & 0x20000000) == 0x20000000)) {
+          to_bitField5_ |= 0x20000000;
         }
         if (buySavingBoxCommandBuilder_ == null) {
           result.buySavingBoxCommand_ = buySavingBoxCommand_;
         } else {
           result.buySavingBoxCommand_ = buySavingBoxCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x20000000) == 0x20000000)) {
-          to_bitField5_ |= 0x20000000;
+        if (((from_bitField5_ & 0x40000000) == 0x40000000)) {
+          to_bitField5_ |= 0x40000000;
         }
         if (equipupCommandBuilder_ == null) {
           result.equipupCommand_ = equipupCommand_;
         } else {
           result.equipupCommand_ = equipupCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x40000000) == 0x40000000)) {
-          to_bitField5_ |= 0x40000000;
+        if (((from_bitField5_ & 0x80000000) == 0x80000000)) {
+          to_bitField5_ |= 0x80000000;
         }
         if (materialComposeCommandBuilder_ == null) {
           result.materialComposeCommand_ = materialComposeCommand_;
         } else {
           result.materialComposeCommand_ = materialComposeCommandBuilder_.build();
         }
-        if (((from_bitField5_ & 0x80000000) == 0x80000000)) {
-          to_bitField5_ |= 0x80000000;
+        if (((from_bitField6_ & 0x00000001) == 0x00000001)) {
+          to_bitField6_ |= 0x00000001;
         }
         if (useMaterialCommandBuilder_ == null) {
           result.useMaterialCommand_ = useMaterialCommand_;
         } else {
           result.useMaterialCommand_ = useMaterialCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000001) == 0x00000001)) {
-          to_bitField6_ |= 0x00000001;
+        if (((from_bitField6_ & 0x00000002) == 0x00000002)) {
+          to_bitField6_ |= 0x00000002;
         }
         if (changePositionCommandBuilder_ == null) {
           result.changePositionCommand_ = changePositionCommand_;
         } else {
           result.changePositionCommand_ = changePositionCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000002) == 0x00000002)) {
-          to_bitField6_ |= 0x00000002;
+        if (((from_bitField6_ & 0x00000004) == 0x00000004)) {
+          to_bitField6_ |= 0x00000004;
         }
         if (talentSpUpCommandBuilder_ == null) {
           result.talentSpUpCommand_ = talentSpUpCommand_;
         } else {
           result.talentSpUpCommand_ = talentSpUpCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000004) == 0x00000004)) {
-          to_bitField6_ |= 0x00000004;
+        if (((from_bitField6_ & 0x00000008) == 0x00000008)) {
+          to_bitField6_ |= 0x00000008;
         }
         if (talentSkillLevelupCommandBuilder_ == null) {
           result.talentSkillLevelupCommand_ = talentSkillLevelupCommand_;
         } else {
           result.talentSkillLevelupCommand_ = talentSkillLevelupCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000008) == 0x00000008)) {
-          to_bitField6_ |= 0x00000008;
+        if (((from_bitField6_ & 0x00000010) == 0x00000010)) {
+          to_bitField6_ |= 0x00000010;
         }
         if (talentResetSkillCommandBuilder_ == null) {
           result.talentResetSkillCommand_ = talentResetSkillCommand_;
         } else {
           result.talentResetSkillCommand_ = talentResetSkillCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000010) == 0x00000010)) {
-          to_bitField6_ |= 0x00000010;
+        if (((from_bitField6_ & 0x00000020) == 0x00000020)) {
+          to_bitField6_ |= 0x00000020;
         }
         if (bindRecommandCommandBuilder_ == null) {
           result.bindRecommandCommand_ = bindRecommandCommand_;
         } else {
           result.bindRecommandCommand_ = bindRecommandCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000020) == 0x00000020)) {
-          to_bitField6_ |= 0x00000020;
+        if (((from_bitField6_ & 0x00000040) == 0x00000040)) {
+          to_bitField6_ |= 0x00000040;
         }
         if (recommandCommandBuilder_ == null) {
           result.recommandCommand_ = recommandCommand_;
         } else {
           result.recommandCommand_ = recommandCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000040) == 0x00000040)) {
-          to_bitField6_ |= 0x00000040;
+        if (((from_bitField6_ & 0x00000080) == 0x00000080)) {
+          to_bitField6_ |= 0x00000080;
         }
         if (changeUserNameCommandBuilder_ == null) {
           result.changeUserNameCommand_ = changeUserNameCommand_;
         } else {
           result.changeUserNameCommand_ = changeUserNameCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000080) == 0x00000080)) {
-          to_bitField6_ |= 0x00000080;
+        if (((from_bitField6_ & 0x00000100) == 0x00000100)) {
+          to_bitField6_ |= 0x00000100;
         }
         if (cipherRewardCommandBuilder_ == null) {
           result.cipherRewardCommand_ = cipherRewardCommand_;
         } else {
           result.cipherRewardCommand_ = cipherRewardCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000100) == 0x00000100)) {
-          to_bitField6_ |= 0x00000100;
+        if (((from_bitField6_ & 0x00000200) == 0x00000200)) {
+          to_bitField6_ |= 0x00000200;
         }
         if (eventQuickFightCommandBuilder_ == null) {
           result.eventQuickFightCommand_ = eventQuickFightCommand_;
         } else {
           result.eventQuickFightCommand_ = eventQuickFightCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000200) == 0x00000200)) {
-          to_bitField6_ |= 0x00000200;
+        if (((from_bitField6_ & 0x00000400) == 0x00000400)) {
+          to_bitField6_ |= 0x00000400;
         }
         if (signNameCommandBuilder_ == null) {
           result.signNameCommand_ = signNameCommand_;
         } else {
           result.signNameCommand_ = signNameCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000400) == 0x00000400)) {
-          to_bitField6_ |= 0x00000400;
+        if (((from_bitField6_ & 0x00000800) == 0x00000800)) {
+          to_bitField6_ |= 0x00000800;
         }
         if (submitRiteCommandBuilder_ == null) {
           result.submitRiteCommand_ = submitRiteCommand_;
         } else {
           result.submitRiteCommand_ = submitRiteCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00000800) == 0x00000800)) {
-          to_bitField6_ |= 0x00000800;
+        if (((from_bitField6_ & 0x00001000) == 0x00001000)) {
+          to_bitField6_ |= 0x00001000;
         }
         if (removeRecommandCommandBuilder_ == null) {
           result.removeRecommandCommand_ = removeRecommandCommand_;
         } else {
           result.removeRecommandCommand_ = removeRecommandCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00001000) == 0x00001000)) {
-          to_bitField6_ |= 0x00001000;
+        if (((from_bitField6_ & 0x00002000) == 0x00002000)) {
+          to_bitField6_ |= 0x00002000;
         }
         if (saveFightInfoCommandBuilder_ == null) {
           result.saveFightInfoCommand_ = saveFightInfoCommand_;
         } else {
           result.saveFightInfoCommand_ = saveFightInfoCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00002000) == 0x00002000)) {
-          to_bitField6_ |= 0x00002000;
+        if (((from_bitField6_ & 0x00004000) == 0x00004000)) {
+          to_bitField6_ |= 0x00004000;
         }
         if (unionFightApplyCommandBuilder_ == null) {
           result.unionFightApplyCommand_ = unionFightApplyCommand_;
         } else {
           result.unionFightApplyCommand_ = unionFightApplyCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00004000) == 0x00004000)) {
-          to_bitField6_ |= 0x00004000;
+        if (((from_bitField6_ & 0x00008000) == 0x00008000)) {
+          to_bitField6_ |= 0x00008000;
         }
         if (lootRewardTaskCommandBuilder_ == null) {
           result.lootRewardTaskCommand_ = lootRewardTaskCommand_;
         } else {
           result.lootRewardTaskCommand_ = lootRewardTaskCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00008000) == 0x00008000)) {
-          to_bitField6_ |= 0x00008000;
+        if (((from_bitField6_ & 0x00010000) == 0x00010000)) {
+          to_bitField6_ |= 0x00010000;
         }
         if (unionFightCommandBuilder_ == null) {
           result.unionFightCommand_ = unionFightCommand_;
         } else {
           result.unionFightCommand_ = unionFightCommandBuilder_.build();
         }
-        if (((from_bitField6_ & 0x00010000) == 0x00010000)) {
-          to_bitField6_ |= 0x00010000;
+        if (((from_bitField6_ & 0x00020000) == 0x00020000)) {
+          to_bitField6_ |= 0x00020000;
         }
         if (viewUnionFightFightInfoCommandBuilder_ == null) {
           result.viewUnionFightFightInfoCommand_ = viewUnionFightFightInfoCommand_;
@@ -16359,6 +16431,9 @@ public final class Request {
         }
         if (other.hasRaidCommand()) {
           mergeRaidCommand(other.getRaidCommand());
+        }
+        if (other.hasCanRechargeCommand()) {
+          mergeCanRechargeCommand(other.getCanRechargeCommand());
         }
         if (other.hasMessageBoardListCommand()) {
           mergeMessageBoardListCommand(other.getMessageBoardListCommand());
@@ -27864,6 +27939,123 @@ public final class Request {
         return raidCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;
+      private com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand canRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder> canRechargeCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public boolean hasCanRechargeCommand() {
+        return ((bitField2_ & 0x02000000) == 0x02000000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand getCanRechargeCommand() {
+        if (canRechargeCommandBuilder_ == null) {
+          return canRechargeCommand_;
+        } else {
+          return canRechargeCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public Builder setCanRechargeCommand(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand value) {
+        if (canRechargeCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          canRechargeCommand_ = value;
+          onChanged();
+        } else {
+          canRechargeCommandBuilder_.setMessage(value);
+        }
+        bitField2_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public Builder setCanRechargeCommand(
+          com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder builderForValue) {
+        if (canRechargeCommandBuilder_ == null) {
+          canRechargeCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          canRechargeCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField2_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public Builder mergeCanRechargeCommand(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand value) {
+        if (canRechargeCommandBuilder_ == null) {
+          if (((bitField2_ & 0x02000000) == 0x02000000) &&
+              canRechargeCommand_ != com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance()) {
+            canRechargeCommand_ =
+              com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.newBuilder(canRechargeCommand_).mergeFrom(value).buildPartial();
+          } else {
+            canRechargeCommand_ = value;
+          }
+          onChanged();
+        } else {
+          canRechargeCommandBuilder_.mergeFrom(value);
+        }
+        bitField2_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public Builder clearCanRechargeCommand() {
+        if (canRechargeCommandBuilder_ == null) {
+          canRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          canRechargeCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x02000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder getCanRechargeCommandBuilder() {
+        bitField2_ |= 0x02000000;
+        onChanged();
+        return getCanRechargeCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder getCanRechargeCommandOrBuilder() {
+        if (canRechargeCommandBuilder_ != null) {
+          return canRechargeCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return canRechargeCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestCanRechargeCommand canRechargeCommand = 170;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder> 
+          getCanRechargeCommandFieldBuilder() {
+        if (canRechargeCommandBuilder_ == null) {
+          canRechargeCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.Builder, com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommandOrBuilder>(
+                  canRechargeCommand_,
+                  getParentForChildren(),
+                  isClean());
+          canRechargeCommand_ = null;
+        }
+        return canRechargeCommandBuilder_;
+      }
+
       // optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;
       private com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand messageBoardListCommand_ = com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -27876,7 +28068,7 @@ public final class Request {
        * </pre>
        */
       public boolean hasMessageBoardListCommand() {
-        return ((bitField2_ & 0x02000000) == 0x02000000);
+        return ((bitField2_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMessageBoardListCommand messageBoardListCommand = 36;</code>
@@ -27909,7 +28101,7 @@ public final class Request {
         } else {
           messageBoardListCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x02000000;
+        bitField2_ |= 0x04000000;
         return this;
       }
       /**
@@ -27927,7 +28119,7 @@ public final class Request {
         } else {
           messageBoardListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x02000000;
+        bitField2_ |= 0x04000000;
         return this;
       }
       /**
@@ -27939,7 +28131,7 @@ public final class Request {
        */
       public Builder mergeMessageBoardListCommand(com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand value) {
         if (messageBoardListCommandBuilder_ == null) {
-          if (((bitField2_ & 0x02000000) == 0x02000000) &&
+          if (((bitField2_ & 0x04000000) == 0x04000000) &&
               messageBoardListCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.getDefaultInstance()) {
             messageBoardListCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.newBuilder(messageBoardListCommand_).mergeFrom(value).buildPartial();
@@ -27950,7 +28142,7 @@ public final class Request {
         } else {
           messageBoardListCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x02000000;
+        bitField2_ |= 0x04000000;
         return this;
       }
       /**
@@ -27967,7 +28159,7 @@ public final class Request {
         } else {
           messageBoardListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x02000000);
+        bitField2_ = (bitField2_ & ~0x04000000);
         return this;
       }
       /**
@@ -27978,7 +28170,7 @@ public final class Request {
        * </pre>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand.Builder getMessageBoardListCommandBuilder() {
-        bitField2_ |= 0x02000000;
+        bitField2_ |= 0x04000000;
         onChanged();
         return getMessageBoardListCommandFieldBuilder().getBuilder();
       }
@@ -28025,7 +28217,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestCreateMessageBoardCommand createMessageBoardCommand = 37;</code>
        */
       public boolean hasCreateMessageBoardCommand() {
-        return ((bitField2_ & 0x04000000) == 0x04000000);
+        return ((bitField2_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateMessageBoardCommand createMessageBoardCommand = 37;</code>
@@ -28050,7 +28242,7 @@ public final class Request {
         } else {
           createMessageBoardCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x04000000;
+        bitField2_ |= 0x08000000;
         return this;
       }
       /**
@@ -28064,7 +28256,7 @@ public final class Request {
         } else {
           createMessageBoardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x04000000;
+        bitField2_ |= 0x08000000;
         return this;
       }
       /**
@@ -28072,7 +28264,7 @@ public final class Request {
        */
       public Builder mergeCreateMessageBoardCommand(com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand value) {
         if (createMessageBoardCommandBuilder_ == null) {
-          if (((bitField2_ & 0x04000000) == 0x04000000) &&
+          if (((bitField2_ & 0x08000000) == 0x08000000) &&
               createMessageBoardCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.getDefaultInstance()) {
             createMessageBoardCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.newBuilder(createMessageBoardCommand_).mergeFrom(value).buildPartial();
@@ -28083,7 +28275,7 @@ public final class Request {
         } else {
           createMessageBoardCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x04000000;
+        bitField2_ |= 0x08000000;
         return this;
       }
       /**
@@ -28096,14 +28288,14 @@ public final class Request {
         } else {
           createMessageBoardCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x04000000);
+        bitField2_ = (bitField2_ & ~0x08000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateMessageBoardCommand createMessageBoardCommand = 37;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand.Builder getCreateMessageBoardCommandBuilder() {
-        bitField2_ |= 0x04000000;
+        bitField2_ |= 0x08000000;
         onChanged();
         return getCreateMessageBoardCommandFieldBuilder().getBuilder();
       }
@@ -28142,7 +28334,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestReplyMessageCommand replyMessageCommand = 38;</code>
        */
       public boolean hasReplyMessageCommand() {
-        return ((bitField2_ & 0x08000000) == 0x08000000);
+        return ((bitField2_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestReplyMessageCommand replyMessageCommand = 38;</code>
@@ -28167,7 +28359,7 @@ public final class Request {
         } else {
           replyMessageCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x08000000;
+        bitField2_ |= 0x10000000;
         return this;
       }
       /**
@@ -28181,7 +28373,7 @@ public final class Request {
         } else {
           replyMessageCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x08000000;
+        bitField2_ |= 0x10000000;
         return this;
       }
       /**
@@ -28189,7 +28381,7 @@ public final class Request {
        */
       public Builder mergeReplyMessageCommand(com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand value) {
         if (replyMessageCommandBuilder_ == null) {
-          if (((bitField2_ & 0x08000000) == 0x08000000) &&
+          if (((bitField2_ & 0x10000000) == 0x10000000) &&
               replyMessageCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.getDefaultInstance()) {
             replyMessageCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.newBuilder(replyMessageCommand_).mergeFrom(value).buildPartial();
@@ -28200,7 +28392,7 @@ public final class Request {
         } else {
           replyMessageCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x08000000;
+        bitField2_ |= 0x10000000;
         return this;
       }
       /**
@@ -28213,14 +28405,14 @@ public final class Request {
         } else {
           replyMessageCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x08000000);
+        bitField2_ = (bitField2_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestReplyMessageCommand replyMessageCommand = 38;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestReplyMessageCommand.Builder getReplyMessageCommandBuilder() {
-        bitField2_ |= 0x08000000;
+        bitField2_ |= 0x10000000;
         onChanged();
         return getReplyMessageCommandFieldBuilder().getBuilder();
       }
@@ -28259,7 +28451,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserTeamListCommand userTeamListCommand = 46;</code>
        */
       public boolean hasUserTeamListCommand() {
-        return ((bitField2_ & 0x10000000) == 0x10000000);
+        return ((bitField2_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserTeamListCommand userTeamListCommand = 46;</code>
@@ -28284,7 +28476,7 @@ public final class Request {
         } else {
           userTeamListCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x10000000;
+        bitField2_ |= 0x20000000;
         return this;
       }
       /**
@@ -28298,7 +28490,7 @@ public final class Request {
         } else {
           userTeamListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x10000000;
+        bitField2_ |= 0x20000000;
         return this;
       }
       /**
@@ -28306,7 +28498,7 @@ public final class Request {
        */
       public Builder mergeUserTeamListCommand(com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand value) {
         if (userTeamListCommandBuilder_ == null) {
-          if (((bitField2_ & 0x10000000) == 0x10000000) &&
+          if (((bitField2_ & 0x20000000) == 0x20000000) &&
               userTeamListCommand_ != com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.getDefaultInstance()) {
             userTeamListCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.newBuilder(userTeamListCommand_).mergeFrom(value).buildPartial();
@@ -28317,7 +28509,7 @@ public final class Request {
         } else {
           userTeamListCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x10000000;
+        bitField2_ |= 0x20000000;
         return this;
       }
       /**
@@ -28330,14 +28522,14 @@ public final class Request {
         } else {
           userTeamListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x10000000);
+        bitField2_ = (bitField2_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserTeamListCommand userTeamListCommand = 46;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand.Builder getUserTeamListCommandBuilder() {
-        bitField2_ |= 0x10000000;
+        bitField2_ |= 0x20000000;
         onChanged();
         return getUserTeamListCommandFieldBuilder().getBuilder();
       }
@@ -28376,7 +28568,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;</code>
        */
       public boolean hasLadderUserInfoCommand() {
-        return ((bitField2_ & 0x20000000) == 0x20000000);
+        return ((bitField2_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;</code>
@@ -28401,7 +28593,7 @@ public final class Request {
         } else {
           ladderUserInfoCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x20000000;
+        bitField2_ |= 0x40000000;
         return this;
       }
       /**
@@ -28415,7 +28607,7 @@ public final class Request {
         } else {
           ladderUserInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x20000000;
+        bitField2_ |= 0x40000000;
         return this;
       }
       /**
@@ -28423,7 +28615,7 @@ public final class Request {
        */
       public Builder mergeLadderUserInfoCommand(com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand value) {
         if (ladderUserInfoCommandBuilder_ == null) {
-          if (((bitField2_ & 0x20000000) == 0x20000000) &&
+          if (((bitField2_ & 0x40000000) == 0x40000000) &&
               ladderUserInfoCommand_ != com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.getDefaultInstance()) {
             ladderUserInfoCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.newBuilder(ladderUserInfoCommand_).mergeFrom(value).buildPartial();
@@ -28434,7 +28626,7 @@ public final class Request {
         } else {
           ladderUserInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x20000000;
+        bitField2_ |= 0x40000000;
         return this;
       }
       /**
@@ -28447,14 +28639,14 @@ public final class Request {
         } else {
           ladderUserInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x20000000);
+        bitField2_ = (bitField2_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetLadderUserInfoCommand ladderUserInfoCommand = 47;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand.Builder getLadderUserInfoCommandBuilder() {
-        bitField2_ |= 0x20000000;
+        bitField2_ |= 0x40000000;
         onChanged();
         return getLadderUserInfoCommandFieldBuilder().getBuilder();
       }
@@ -28493,7 +28685,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGetUserFriendListCommand userFriendListCommand = 48;</code>
        */
       public boolean hasUserFriendListCommand() {
-        return ((bitField2_ & 0x40000000) == 0x40000000);
+        return ((bitField2_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetUserFriendListCommand userFriendListCommand = 48;</code>
@@ -28518,7 +28710,7 @@ public final class Request {
         } else {
           userFriendListCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x40000000;
+        bitField2_ |= 0x80000000;
         return this;
       }
       /**
@@ -28532,7 +28724,7 @@ public final class Request {
         } else {
           userFriendListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x40000000;
+        bitField2_ |= 0x80000000;
         return this;
       }
       /**
@@ -28540,7 +28732,7 @@ public final class Request {
        */
       public Builder mergeUserFriendListCommand(com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand value) {
         if (userFriendListCommandBuilder_ == null) {
-          if (((bitField2_ & 0x40000000) == 0x40000000) &&
+          if (((bitField2_ & 0x80000000) == 0x80000000) &&
               userFriendListCommand_ != com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.getDefaultInstance()) {
             userFriendListCommand_ =
               com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.newBuilder(userFriendListCommand_).mergeFrom(value).buildPartial();
@@ -28551,7 +28743,7 @@ public final class Request {
         } else {
           userFriendListCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x40000000;
+        bitField2_ |= 0x80000000;
         return this;
       }
       /**
@@ -28564,14 +28756,14 @@ public final class Request {
         } else {
           userFriendListCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x40000000);
+        bitField2_ = (bitField2_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetUserFriendListCommand userFriendListCommand = 48;</code>
        */
       public com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand.Builder getUserFriendListCommandBuilder() {
-        bitField2_ |= 0x40000000;
+        bitField2_ |= 0x80000000;
         onChanged();
         return getUserFriendListCommandFieldBuilder().getBuilder();
       }
@@ -28610,7 +28802,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEquipComposeCommand equipComposeCommand = 50;</code>
        */
       public boolean hasEquipComposeCommand() {
-        return ((bitField2_ & 0x80000000) == 0x80000000);
+        return ((bitField3_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipComposeCommand equipComposeCommand = 50;</code>
@@ -28635,7 +28827,7 @@ public final class Request {
         } else {
           equipComposeCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x80000000;
+        bitField3_ |= 0x00000001;
         return this;
       }
       /**
@@ -28649,7 +28841,7 @@ public final class Request {
         } else {
           equipComposeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x80000000;
+        bitField3_ |= 0x00000001;
         return this;
       }
       /**
@@ -28657,7 +28849,7 @@ public final class Request {
        */
       public Builder mergeEquipComposeCommand(com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand value) {
         if (equipComposeCommandBuilder_ == null) {
-          if (((bitField2_ & 0x80000000) == 0x80000000) &&
+          if (((bitField3_ & 0x00000001) == 0x00000001) &&
               equipComposeCommand_ != com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.getDefaultInstance()) {
             equipComposeCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.newBuilder(equipComposeCommand_).mergeFrom(value).buildPartial();
@@ -28668,7 +28860,7 @@ public final class Request {
         } else {
           equipComposeCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x80000000;
+        bitField3_ |= 0x00000001;
         return this;
       }
       /**
@@ -28681,14 +28873,14 @@ public final class Request {
         } else {
           equipComposeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x80000000);
+        bitField3_ = (bitField3_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipComposeCommand equipComposeCommand = 50;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand.Builder getEquipComposeCommandBuilder() {
-        bitField2_ |= 0x80000000;
+        bitField3_ |= 0x00000001;
         onChanged();
         return getEquipComposeCommandFieldBuilder().getBuilder();
       }
@@ -28727,7 +28919,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUsePropCommand usePropCommand = 51;</code>
        */
       public boolean hasUsePropCommand() {
-        return ((bitField3_ & 0x00000001) == 0x00000001);
+        return ((bitField3_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUsePropCommand usePropCommand = 51;</code>
@@ -28752,7 +28944,7 @@ public final class Request {
         } else {
           usePropCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000001;
+        bitField3_ |= 0x00000002;
         return this;
       }
       /**
@@ -28766,7 +28958,7 @@ public final class Request {
         } else {
           usePropCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000001;
+        bitField3_ |= 0x00000002;
         return this;
       }
       /**
@@ -28774,7 +28966,7 @@ public final class Request {
        */
       public Builder mergeUsePropCommand(com.trans.pixel.protoc.EquipProto.RequestUsePropCommand value) {
         if (usePropCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000001) == 0x00000001) &&
+          if (((bitField3_ & 0x00000002) == 0x00000002) &&
               usePropCommand_ != com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.getDefaultInstance()) {
             usePropCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.newBuilder(usePropCommand_).mergeFrom(value).buildPartial();
@@ -28785,7 +28977,7 @@ public final class Request {
         } else {
           usePropCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000001;
+        bitField3_ |= 0x00000002;
         return this;
       }
       /**
@@ -28798,14 +28990,14 @@ public final class Request {
         } else {
           usePropCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000001);
+        bitField3_ = (bitField3_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUsePropCommand usePropCommand = 51;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestUsePropCommand.Builder getUsePropCommandBuilder() {
-        bitField3_ |= 0x00000001;
+        bitField3_ |= 0x00000002;
         onChanged();
         return getUsePropCommandFieldBuilder().getBuilder();
       }
@@ -28844,7 +29036,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestFenjieEquipCommand fenjieEquipCommand = 52;</code>
        */
       public boolean hasFenjieEquipCommand() {
-        return ((bitField3_ & 0x00000002) == 0x00000002);
+        return ((bitField3_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFenjieEquipCommand fenjieEquipCommand = 52;</code>
@@ -28869,7 +29061,7 @@ public final class Request {
         } else {
           fenjieEquipCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000002;
+        bitField3_ |= 0x00000004;
         return this;
       }
       /**
@@ -28883,7 +29075,7 @@ public final class Request {
         } else {
           fenjieEquipCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000002;
+        bitField3_ |= 0x00000004;
         return this;
       }
       /**
@@ -28891,7 +29083,7 @@ public final class Request {
        */
       public Builder mergeFenjieEquipCommand(com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand value) {
         if (fenjieEquipCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000002) == 0x00000002) &&
+          if (((bitField3_ & 0x00000004) == 0x00000004) &&
               fenjieEquipCommand_ != com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.getDefaultInstance()) {
             fenjieEquipCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.newBuilder(fenjieEquipCommand_).mergeFrom(value).buildPartial();
@@ -28902,7 +29094,7 @@ public final class Request {
         } else {
           fenjieEquipCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000002;
+        bitField3_ |= 0x00000004;
         return this;
       }
       /**
@@ -28915,14 +29107,14 @@ public final class Request {
         } else {
           fenjieEquipCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000002);
+        bitField3_ = (bitField3_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFenjieEquipCommand fenjieEquipCommand = 52;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand.Builder getFenjieEquipCommandBuilder() {
-        bitField3_ |= 0x00000002;
+        bitField3_ |= 0x00000004;
         onChanged();
         return getFenjieEquipCommandFieldBuilder().getBuilder();
       }
@@ -28961,7 +29153,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSignCommand signCommand = 53;</code>
        */
       public boolean hasSignCommand() {
-        return ((bitField3_ & 0x00000004) == 0x00000004);
+        return ((bitField3_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSignCommand signCommand = 53;</code>
@@ -28986,7 +29178,7 @@ public final class Request {
         } else {
           signCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000004;
+        bitField3_ |= 0x00000008;
         return this;
       }
       /**
@@ -29000,7 +29192,7 @@ public final class Request {
         } else {
           signCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000004;
+        bitField3_ |= 0x00000008;
         return this;
       }
       /**
@@ -29008,7 +29200,7 @@ public final class Request {
        */
       public Builder mergeSignCommand(com.trans.pixel.protoc.RechargeProto.RequestSignCommand value) {
         if (signCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000004) == 0x00000004) &&
+          if (((bitField3_ & 0x00000008) == 0x00000008) &&
               signCommand_ != com.trans.pixel.protoc.RechargeProto.RequestSignCommand.getDefaultInstance()) {
             signCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestSignCommand.newBuilder(signCommand_).mergeFrom(value).buildPartial();
@@ -29019,7 +29211,7 @@ public final class Request {
         } else {
           signCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000004;
+        bitField3_ |= 0x00000008;
         return this;
       }
       /**
@@ -29032,14 +29224,14 @@ public final class Request {
         } else {
           signCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000004);
+        bitField3_ = (bitField3_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSignCommand signCommand = 53;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestSignCommand.Builder getSignCommandBuilder() {
-        bitField3_ |= 0x00000004;
+        bitField3_ |= 0x00000008;
         onChanged();
         return getSignCommandFieldBuilder().getBuilder();
       }
@@ -29078,7 +29270,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;</code>
        */
       public boolean hasHelpAttackPVPMineCommand() {
-        return ((bitField3_ & 0x00000008) == 0x00000008);
+        return ((bitField3_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;</code>
@@ -29103,7 +29295,7 @@ public final class Request {
         } else {
           helpAttackPVPMineCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000008;
+        bitField3_ |= 0x00000010;
         return this;
       }
       /**
@@ -29117,7 +29309,7 @@ public final class Request {
         } else {
           helpAttackPVPMineCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000008;
+        bitField3_ |= 0x00000010;
         return this;
       }
       /**
@@ -29125,7 +29317,7 @@ public final class Request {
        */
       public Builder mergeHelpAttackPVPMineCommand(com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand value) {
         if (helpAttackPVPMineCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000008) == 0x00000008) &&
+          if (((bitField3_ & 0x00000010) == 0x00000010) &&
               helpAttackPVPMineCommand_ != com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.getDefaultInstance()) {
             helpAttackPVPMineCommand_ =
               com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.newBuilder(helpAttackPVPMineCommand_).mergeFrom(value).buildPartial();
@@ -29136,7 +29328,7 @@ public final class Request {
         } else {
           helpAttackPVPMineCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000008;
+        bitField3_ |= 0x00000010;
         return this;
       }
       /**
@@ -29149,14 +29341,14 @@ public final class Request {
         } else {
           helpAttackPVPMineCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000008);
+        bitField3_ = (bitField3_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;</code>
        */
       public com.trans.pixel.protoc.PVPProto.RequestHelpAttackPVPMineCommand.Builder getHelpAttackPVPMineCommandBuilder() {
-        bitField3_ |= 0x00000008;
+        bitField3_ |= 0x00000010;
         onChanged();
         return getHelpAttackPVPMineCommandFieldBuilder().getBuilder();
       }
@@ -29195,7 +29387,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestFenjieHeroCommand fenjieHeroCommand = 56;</code>
        */
       public boolean hasFenjieHeroCommand() {
-        return ((bitField3_ & 0x00000010) == 0x00000010);
+        return ((bitField3_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFenjieHeroCommand fenjieHeroCommand = 56;</code>
@@ -29220,7 +29412,7 @@ public final class Request {
         } else {
           fenjieHeroCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000010;
+        bitField3_ |= 0x00000020;
         return this;
       }
       /**
@@ -29234,7 +29426,7 @@ public final class Request {
         } else {
           fenjieHeroCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000010;
+        bitField3_ |= 0x00000020;
         return this;
       }
       /**
@@ -29242,7 +29434,7 @@ public final class Request {
        */
       public Builder mergeFenjieHeroCommand(com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand value) {
         if (fenjieHeroCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000010) == 0x00000010) &&
+          if (((bitField3_ & 0x00000020) == 0x00000020) &&
               fenjieHeroCommand_ != com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.getDefaultInstance()) {
             fenjieHeroCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.newBuilder(fenjieHeroCommand_).mergeFrom(value).buildPartial();
@@ -29253,7 +29445,7 @@ public final class Request {
         } else {
           fenjieHeroCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000010;
+        bitField3_ |= 0x00000020;
         return this;
       }
       /**
@@ -29266,14 +29458,14 @@ public final class Request {
         } else {
           fenjieHeroCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000010);
+        bitField3_ = (bitField3_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFenjieHeroCommand fenjieHeroCommand = 56;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.Builder getFenjieHeroCommandBuilder() {
-        bitField3_ |= 0x00000010;
+        bitField3_ |= 0x00000020;
         onChanged();
         return getFenjieHeroCommandFieldBuilder().getBuilder();
       }
@@ -29312,7 +29504,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestResetHeroSkillCommand resetHeroSkillCommand = 57;</code>
        */
       public boolean hasResetHeroSkillCommand() {
-        return ((bitField3_ & 0x00000020) == 0x00000020);
+        return ((bitField3_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestResetHeroSkillCommand resetHeroSkillCommand = 57;</code>
@@ -29337,7 +29529,7 @@ public final class Request {
         } else {
           resetHeroSkillCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000020;
+        bitField3_ |= 0x00000040;
         return this;
       }
       /**
@@ -29351,7 +29543,7 @@ public final class Request {
         } else {
           resetHeroSkillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000020;
+        bitField3_ |= 0x00000040;
         return this;
       }
       /**
@@ -29359,7 +29551,7 @@ public final class Request {
        */
       public Builder mergeResetHeroSkillCommand(com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand value) {
         if (resetHeroSkillCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000020) == 0x00000020) &&
+          if (((bitField3_ & 0x00000040) == 0x00000040) &&
               resetHeroSkillCommand_ != com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.getDefaultInstance()) {
             resetHeroSkillCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.newBuilder(resetHeroSkillCommand_).mergeFrom(value).buildPartial();
@@ -29370,7 +29562,7 @@ public final class Request {
         } else {
           resetHeroSkillCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000020;
+        bitField3_ |= 0x00000040;
         return this;
       }
       /**
@@ -29383,14 +29575,14 @@ public final class Request {
         } else {
           resetHeroSkillCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000020);
+        bitField3_ = (bitField3_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestResetHeroSkillCommand resetHeroSkillCommand = 57;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand.Builder getResetHeroSkillCommandBuilder() {
-        bitField3_ |= 0x00000020;
+        bitField3_ |= 0x00000040;
         onChanged();
         return getResetHeroSkillCommandFieldBuilder().getBuilder();
       }
@@ -29429,7 +29621,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestHeroSpUpCommand heroSpUpCommand = 49;</code>
        */
       public boolean hasHeroSpUpCommand() {
-        return ((bitField3_ & 0x00000040) == 0x00000040);
+        return ((bitField3_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeroSpUpCommand heroSpUpCommand = 49;</code>
@@ -29454,7 +29646,7 @@ public final class Request {
         } else {
           heroSpUpCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000040;
+        bitField3_ |= 0x00000080;
         return this;
       }
       /**
@@ -29468,7 +29660,7 @@ public final class Request {
         } else {
           heroSpUpCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000040;
+        bitField3_ |= 0x00000080;
         return this;
       }
       /**
@@ -29476,7 +29668,7 @@ public final class Request {
        */
       public Builder mergeHeroSpUpCommand(com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand value) {
         if (heroSpUpCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000040) == 0x00000040) &&
+          if (((bitField3_ & 0x00000080) == 0x00000080) &&
               heroSpUpCommand_ != com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.getDefaultInstance()) {
             heroSpUpCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.newBuilder(heroSpUpCommand_).mergeFrom(value).buildPartial();
@@ -29487,7 +29679,7 @@ public final class Request {
         } else {
           heroSpUpCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000040;
+        bitField3_ |= 0x00000080;
         return this;
       }
       /**
@@ -29500,14 +29692,14 @@ public final class Request {
         } else {
           heroSpUpCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000040);
+        bitField3_ = (bitField3_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeroSpUpCommand heroSpUpCommand = 49;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand.Builder getHeroSpUpCommandBuilder() {
-        bitField3_ |= 0x00000040;
+        bitField3_ |= 0x00000080;
         onChanged();
         return getHeroSpUpCommandFieldBuilder().getBuilder();
       }
@@ -29546,7 +29738,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSendMailCommand sendMailCommand = 58;</code>
        */
       public boolean hasSendMailCommand() {
-        return ((bitField3_ & 0x00000080) == 0x00000080);
+        return ((bitField3_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSendMailCommand sendMailCommand = 58;</code>
@@ -29571,7 +29763,7 @@ public final class Request {
         } else {
           sendMailCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000080;
+        bitField3_ |= 0x00000100;
         return this;
       }
       /**
@@ -29585,7 +29777,7 @@ public final class Request {
         } else {
           sendMailCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000080;
+        bitField3_ |= 0x00000100;
         return this;
       }
       /**
@@ -29593,7 +29785,7 @@ public final class Request {
        */
       public Builder mergeSendMailCommand(com.trans.pixel.protoc.PVPProto.RequestSendMailCommand value) {
         if (sendMailCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000080) == 0x00000080) &&
+          if (((bitField3_ & 0x00000100) == 0x00000100) &&
               sendMailCommand_ != com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.getDefaultInstance()) {
             sendMailCommand_ =
               com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.newBuilder(sendMailCommand_).mergeFrom(value).buildPartial();
@@ -29604,7 +29796,7 @@ public final class Request {
         } else {
           sendMailCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000080;
+        bitField3_ |= 0x00000100;
         return this;
       }
       /**
@@ -29617,14 +29809,14 @@ public final class Request {
         } else {
           sendMailCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000080);
+        bitField3_ = (bitField3_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSendMailCommand sendMailCommand = 58;</code>
        */
       public com.trans.pixel.protoc.PVPProto.RequestSendMailCommand.Builder getSendMailCommandBuilder() {
-        bitField3_ |= 0x00000080;
+        bitField3_ |= 0x00000100;
         onChanged();
         return getSendMailCommandFieldBuilder().getBuilder();
       }
@@ -29663,7 +29855,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;</code>
        */
       public boolean hasBrotherMineInfoCommand() {
-        return ((bitField3_ & 0x00000100) == 0x00000100);
+        return ((bitField3_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;</code>
@@ -29688,7 +29880,7 @@ public final class Request {
         } else {
           brotherMineInfoCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000100;
+        bitField3_ |= 0x00000200;
         return this;
       }
       /**
@@ -29702,7 +29894,7 @@ public final class Request {
         } else {
           brotherMineInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000100;
+        bitField3_ |= 0x00000200;
         return this;
       }
       /**
@@ -29710,7 +29902,7 @@ public final class Request {
        */
       public Builder mergeBrotherMineInfoCommand(com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand value) {
         if (brotherMineInfoCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000100) == 0x00000100) &&
+          if (((bitField3_ & 0x00000200) == 0x00000200) &&
               brotherMineInfoCommand_ != com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.getDefaultInstance()) {
             brotherMineInfoCommand_ =
               com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.newBuilder(brotherMineInfoCommand_).mergeFrom(value).buildPartial();
@@ -29721,7 +29913,7 @@ public final class Request {
         } else {
           brotherMineInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000100;
+        bitField3_ |= 0x00000200;
         return this;
       }
       /**
@@ -29734,14 +29926,14 @@ public final class Request {
         } else {
           brotherMineInfoCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000100);
+        bitField3_ = (bitField3_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBrotherMineInfoCommand brotherMineInfoCommand = 59;</code>
        */
       public com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand.Builder getBrotherMineInfoCommandBuilder() {
-        bitField3_ |= 0x00000100;
+        bitField3_ |= 0x00000200;
         onChanged();
         return getBrotherMineInfoCommandFieldBuilder().getBuilder();
       }
@@ -29780,7 +29972,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;</code>
        */
       public boolean hasEnterMohuaMapCommand() {
-        return ((bitField3_ & 0x00000200) == 0x00000200);
+        return ((bitField3_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;</code>
@@ -29805,7 +29997,7 @@ public final class Request {
         } else {
           enterMohuaMapCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000200;
+        bitField3_ |= 0x00000400;
         return this;
       }
       /**
@@ -29819,7 +30011,7 @@ public final class Request {
         } else {
           enterMohuaMapCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000200;
+        bitField3_ |= 0x00000400;
         return this;
       }
       /**
@@ -29827,7 +30019,7 @@ public final class Request {
        */
       public Builder mergeEnterMohuaMapCommand(com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand value) {
         if (enterMohuaMapCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000200) == 0x00000200) &&
+          if (((bitField3_ & 0x00000400) == 0x00000400) &&
               enterMohuaMapCommand_ != com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.getDefaultInstance()) {
             enterMohuaMapCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.newBuilder(enterMohuaMapCommand_).mergeFrom(value).buildPartial();
@@ -29838,7 +30030,7 @@ public final class Request {
         } else {
           enterMohuaMapCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000200;
+        bitField3_ |= 0x00000400;
         return this;
       }
       /**
@@ -29851,14 +30043,14 @@ public final class Request {
         } else {
           enterMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000200);
+        bitField3_ = (bitField3_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEnterMohuaMapCommand enterMohuaMapCommand = 60;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestEnterMohuaMapCommand.Builder getEnterMohuaMapCommandBuilder() {
-        bitField3_ |= 0x00000200;
+        bitField3_ |= 0x00000400;
         onChanged();
         return getEnterMohuaMapCommandFieldBuilder().getBuilder();
       }
@@ -29897,7 +30089,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestStartMohuaMapCommand startMohuaMapCommand = 61;</code>
        */
       public boolean hasStartMohuaMapCommand() {
-        return ((bitField3_ & 0x00000400) == 0x00000400);
+        return ((bitField3_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestStartMohuaMapCommand startMohuaMapCommand = 61;</code>
@@ -29922,7 +30114,7 @@ public final class Request {
         } else {
           startMohuaMapCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000400;
+        bitField3_ |= 0x00000800;
         return this;
       }
       /**
@@ -29936,7 +30128,7 @@ public final class Request {
         } else {
           startMohuaMapCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000400;
+        bitField3_ |= 0x00000800;
         return this;
       }
       /**
@@ -29944,7 +30136,7 @@ public final class Request {
        */
       public Builder mergeStartMohuaMapCommand(com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand value) {
         if (startMohuaMapCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000400) == 0x00000400) &&
+          if (((bitField3_ & 0x00000800) == 0x00000800) &&
               startMohuaMapCommand_ != com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.getDefaultInstance()) {
             startMohuaMapCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.newBuilder(startMohuaMapCommand_).mergeFrom(value).buildPartial();
@@ -29955,7 +30147,7 @@ public final class Request {
         } else {
           startMohuaMapCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000400;
+        bitField3_ |= 0x00000800;
         return this;
       }
       /**
@@ -29968,14 +30160,14 @@ public final class Request {
         } else {
           startMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000400);
+        bitField3_ = (bitField3_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestStartMohuaMapCommand startMohuaMapCommand = 61;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand.Builder getStartMohuaMapCommandBuilder() {
-        bitField3_ |= 0x00000400;
+        bitField3_ |= 0x00000800;
         onChanged();
         return getStartMohuaMapCommandFieldBuilder().getBuilder();
       }
@@ -30014,7 +30206,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUseMohuaCardCommand useMohuaCardCommand = 62;</code>
        */
       public boolean hasUseMohuaCardCommand() {
-        return ((bitField3_ & 0x00000800) == 0x00000800);
+        return ((bitField3_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUseMohuaCardCommand useMohuaCardCommand = 62;</code>
@@ -30039,7 +30231,7 @@ public final class Request {
         } else {
           useMohuaCardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00000800;
+        bitField3_ |= 0x00001000;
         return this;
       }
       /**
@@ -30053,7 +30245,7 @@ public final class Request {
         } else {
           useMohuaCardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00000800;
+        bitField3_ |= 0x00001000;
         return this;
       }
       /**
@@ -30061,7 +30253,7 @@ public final class Request {
        */
       public Builder mergeUseMohuaCardCommand(com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand value) {
         if (useMohuaCardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00000800) == 0x00000800) &&
+          if (((bitField3_ & 0x00001000) == 0x00001000) &&
               useMohuaCardCommand_ != com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.getDefaultInstance()) {
             useMohuaCardCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.newBuilder(useMohuaCardCommand_).mergeFrom(value).buildPartial();
@@ -30072,7 +30264,7 @@ public final class Request {
         } else {
           useMohuaCardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00000800;
+        bitField3_ |= 0x00001000;
         return this;
       }
       /**
@@ -30085,14 +30277,14 @@ public final class Request {
         } else {
           useMohuaCardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00000800);
+        bitField3_ = (bitField3_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUseMohuaCardCommand useMohuaCardCommand = 62;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand.Builder getUseMohuaCardCommandBuilder() {
-        bitField3_ |= 0x00000800;
+        bitField3_ |= 0x00001000;
         onChanged();
         return getUseMohuaCardCommandFieldBuilder().getBuilder();
       }
@@ -30131,7 +30323,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;</code>
        */
       public boolean hasMohuaStageRewardCommand() {
-        return ((bitField3_ & 0x00001000) == 0x00001000);
+        return ((bitField3_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;</code>
@@ -30156,7 +30348,7 @@ public final class Request {
         } else {
           mohuaStageRewardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00001000;
+        bitField3_ |= 0x00002000;
         return this;
       }
       /**
@@ -30170,7 +30362,7 @@ public final class Request {
         } else {
           mohuaStageRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00001000;
+        bitField3_ |= 0x00002000;
         return this;
       }
       /**
@@ -30178,7 +30370,7 @@ public final class Request {
        */
       public Builder mergeMohuaStageRewardCommand(com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand value) {
         if (mohuaStageRewardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00001000) == 0x00001000) &&
+          if (((bitField3_ & 0x00002000) == 0x00002000) &&
               mohuaStageRewardCommand_ != com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.getDefaultInstance()) {
             mohuaStageRewardCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.newBuilder(mohuaStageRewardCommand_).mergeFrom(value).buildPartial();
@@ -30189,7 +30381,7 @@ public final class Request {
         } else {
           mohuaStageRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00001000;
+        bitField3_ |= 0x00002000;
         return this;
       }
       /**
@@ -30202,14 +30394,14 @@ public final class Request {
         } else {
           mohuaStageRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00001000);
+        bitField3_ = (bitField3_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaStageRewardCommand mohuaStageRewardCommand = 63;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand.Builder getMohuaStageRewardCommandBuilder() {
-        bitField3_ |= 0x00001000;
+        bitField3_ |= 0x00002000;
         onChanged();
         return getMohuaStageRewardCommandFieldBuilder().getBuilder();
       }
@@ -30248,7 +30440,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;</code>
        */
       public boolean hasMohuaHpRewardCommand() {
-        return ((bitField3_ & 0x00002000) == 0x00002000);
+        return ((bitField3_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;</code>
@@ -30273,7 +30465,7 @@ public final class Request {
         } else {
           mohuaHpRewardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00002000;
+        bitField3_ |= 0x00004000;
         return this;
       }
       /**
@@ -30287,7 +30479,7 @@ public final class Request {
         } else {
           mohuaHpRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00002000;
+        bitField3_ |= 0x00004000;
         return this;
       }
       /**
@@ -30295,7 +30487,7 @@ public final class Request {
        */
       public Builder mergeMohuaHpRewardCommand(com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand value) {
         if (mohuaHpRewardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00002000) == 0x00002000) &&
+          if (((bitField3_ & 0x00004000) == 0x00004000) &&
               mohuaHpRewardCommand_ != com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.getDefaultInstance()) {
             mohuaHpRewardCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.newBuilder(mohuaHpRewardCommand_).mergeFrom(value).buildPartial();
@@ -30306,7 +30498,7 @@ public final class Request {
         } else {
           mohuaHpRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00002000;
+        bitField3_ |= 0x00004000;
         return this;
       }
       /**
@@ -30319,14 +30511,14 @@ public final class Request {
         } else {
           mohuaHpRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00002000);
+        bitField3_ = (bitField3_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaHpRewardCommand mohuaHpRewardCommand = 64;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestMohuaHpRewardCommand.Builder getMohuaHpRewardCommandBuilder() {
-        bitField3_ |= 0x00002000;
+        bitField3_ |= 0x00004000;
         onChanged();
         return getMohuaHpRewardCommandFieldBuilder().getBuilder();
       }
@@ -30365,7 +30557,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;</code>
        */
       public boolean hasMohuaSubmitStageCommand() {
-        return ((bitField3_ & 0x00004000) == 0x00004000);
+        return ((bitField3_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;</code>
@@ -30390,7 +30582,7 @@ public final class Request {
         } else {
           mohuaSubmitStageCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00004000;
+        bitField3_ |= 0x00008000;
         return this;
       }
       /**
@@ -30404,7 +30596,7 @@ public final class Request {
         } else {
           mohuaSubmitStageCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00004000;
+        bitField3_ |= 0x00008000;
         return this;
       }
       /**
@@ -30412,7 +30604,7 @@ public final class Request {
        */
       public Builder mergeMohuaSubmitStageCommand(com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand value) {
         if (mohuaSubmitStageCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00004000) == 0x00004000) &&
+          if (((bitField3_ & 0x00008000) == 0x00008000) &&
               mohuaSubmitStageCommand_ != com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.getDefaultInstance()) {
             mohuaSubmitStageCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.newBuilder(mohuaSubmitStageCommand_).mergeFrom(value).buildPartial();
@@ -30423,7 +30615,7 @@ public final class Request {
         } else {
           mohuaSubmitStageCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00004000;
+        bitField3_ |= 0x00008000;
         return this;
       }
       /**
@@ -30436,14 +30628,14 @@ public final class Request {
         } else {
           mohuaSubmitStageCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00004000);
+        bitField3_ = (bitField3_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMohuaSubmitStageCommand mohuaSubmitStageCommand = 65;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand.Builder getMohuaSubmitStageCommandBuilder() {
-        bitField3_ |= 0x00004000;
+        bitField3_ |= 0x00008000;
         onChanged();
         return getMohuaSubmitStageCommandFieldBuilder().getBuilder();
       }
@@ -30482,7 +30674,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEndMohuaMapCommand endMohuaMapCommand = 66;</code>
        */
       public boolean hasEndMohuaMapCommand() {
-        return ((bitField3_ & 0x00008000) == 0x00008000);
+        return ((bitField3_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEndMohuaMapCommand endMohuaMapCommand = 66;</code>
@@ -30507,7 +30699,7 @@ public final class Request {
         } else {
           endMohuaMapCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00008000;
+        bitField3_ |= 0x00010000;
         return this;
       }
       /**
@@ -30521,7 +30713,7 @@ public final class Request {
         } else {
           endMohuaMapCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00008000;
+        bitField3_ |= 0x00010000;
         return this;
       }
       /**
@@ -30529,7 +30721,7 @@ public final class Request {
        */
       public Builder mergeEndMohuaMapCommand(com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand value) {
         if (endMohuaMapCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00008000) == 0x00008000) &&
+          if (((bitField3_ & 0x00010000) == 0x00010000) &&
               endMohuaMapCommand_ != com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.getDefaultInstance()) {
             endMohuaMapCommand_ =
               com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.newBuilder(endMohuaMapCommand_).mergeFrom(value).buildPartial();
@@ -30540,7 +30732,7 @@ public final class Request {
         } else {
           endMohuaMapCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00008000;
+        bitField3_ |= 0x00010000;
         return this;
       }
       /**
@@ -30553,14 +30745,14 @@ public final class Request {
         } else {
           endMohuaMapCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00008000);
+        bitField3_ = (bitField3_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEndMohuaMapCommand endMohuaMapCommand = 66;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.RequestEndMohuaMapCommand.Builder getEndMohuaMapCommandBuilder() {
-        bitField3_ |= 0x00008000;
+        bitField3_ |= 0x00010000;
         onChanged();
         return getEndMohuaMapCommandFieldBuilder().getBuilder();
       }
@@ -30599,7 +30791,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSaleEquipCommand saleEquipCommand = 67;</code>
        */
       public boolean hasSaleEquipCommand() {
-        return ((bitField3_ & 0x00010000) == 0x00010000);
+        return ((bitField3_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSaleEquipCommand saleEquipCommand = 67;</code>
@@ -30624,7 +30816,7 @@ public final class Request {
         } else {
           saleEquipCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00010000;
+        bitField3_ |= 0x00020000;
         return this;
       }
       /**
@@ -30638,7 +30830,7 @@ public final class Request {
         } else {
           saleEquipCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00010000;
+        bitField3_ |= 0x00020000;
         return this;
       }
       /**
@@ -30646,7 +30838,7 @@ public final class Request {
        */
       public Builder mergeSaleEquipCommand(com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand value) {
         if (saleEquipCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00010000) == 0x00010000) &&
+          if (((bitField3_ & 0x00020000) == 0x00020000) &&
               saleEquipCommand_ != com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.getDefaultInstance()) {
             saleEquipCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.newBuilder(saleEquipCommand_).mergeFrom(value).buildPartial();
@@ -30657,7 +30849,7 @@ public final class Request {
         } else {
           saleEquipCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00010000;
+        bitField3_ |= 0x00020000;
         return this;
       }
       /**
@@ -30670,14 +30862,14 @@ public final class Request {
         } else {
           saleEquipCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00010000);
+        bitField3_ = (bitField3_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSaleEquipCommand saleEquipCommand = 67;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand.Builder getSaleEquipCommandBuilder() {
-        bitField3_ |= 0x00010000;
+        bitField3_ |= 0x00020000;
         onChanged();
         return getSaleEquipCommandFieldBuilder().getBuilder();
       }
@@ -30716,7 +30908,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestDelFriendCommand delFriendCommand = 68;</code>
        */
       public boolean hasDelFriendCommand() {
-        return ((bitField3_ & 0x00020000) == 0x00020000);
+        return ((bitField3_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestDelFriendCommand delFriendCommand = 68;</code>
@@ -30741,7 +30933,7 @@ public final class Request {
         } else {
           delFriendCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00020000;
+        bitField3_ |= 0x00040000;
         return this;
       }
       /**
@@ -30755,7 +30947,7 @@ public final class Request {
         } else {
           delFriendCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00020000;
+        bitField3_ |= 0x00040000;
         return this;
       }
       /**
@@ -30763,7 +30955,7 @@ public final class Request {
        */
       public Builder mergeDelFriendCommand(com.trans.pixel.protoc.MailProto.RequestDelFriendCommand value) {
         if (delFriendCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00020000) == 0x00020000) &&
+          if (((bitField3_ & 0x00040000) == 0x00040000) &&
               delFriendCommand_ != com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.getDefaultInstance()) {
             delFriendCommand_ =
               com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.newBuilder(delFriendCommand_).mergeFrom(value).buildPartial();
@@ -30774,7 +30966,7 @@ public final class Request {
         } else {
           delFriendCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00020000;
+        bitField3_ |= 0x00040000;
         return this;
       }
       /**
@@ -30787,14 +30979,14 @@ public final class Request {
         } else {
           delFriendCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00020000);
+        bitField3_ = (bitField3_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestDelFriendCommand delFriendCommand = 68;</code>
        */
       public com.trans.pixel.protoc.MailProto.RequestDelFriendCommand.Builder getDelFriendCommandBuilder() {
-        bitField3_ |= 0x00020000;
+        bitField3_ |= 0x00040000;
         onChanged();
         return getDelFriendCommandFieldBuilder().getBuilder();
       }
@@ -30833,7 +31025,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitZhanliCommand submitZhanliCommand = 69;</code>
        */
       public boolean hasSubmitZhanliCommand() {
-        return ((bitField3_ & 0x00040000) == 0x00040000);
+        return ((bitField3_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitZhanliCommand submitZhanliCommand = 69;</code>
@@ -30858,7 +31050,7 @@ public final class Request {
         } else {
           submitZhanliCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00040000;
+        bitField3_ |= 0x00080000;
         return this;
       }
       /**
@@ -30872,7 +31064,7 @@ public final class Request {
         } else {
           submitZhanliCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00040000;
+        bitField3_ |= 0x00080000;
         return this;
       }
       /**
@@ -30880,7 +31072,7 @@ public final class Request {
        */
       public Builder mergeSubmitZhanliCommand(com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand value) {
         if (submitZhanliCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00040000) == 0x00040000) &&
+          if (((bitField3_ & 0x00080000) == 0x00080000) &&
               submitZhanliCommand_ != com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.getDefaultInstance()) {
             submitZhanliCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.newBuilder(submitZhanliCommand_).mergeFrom(value).buildPartial();
@@ -30891,7 +31083,7 @@ public final class Request {
         } else {
           submitZhanliCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00040000;
+        bitField3_ |= 0x00080000;
         return this;
       }
       /**
@@ -30904,14 +31096,14 @@ public final class Request {
         } else {
           submitZhanliCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00040000);
+        bitField3_ = (bitField3_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitZhanliCommand submitZhanliCommand = 69;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand.Builder getSubmitZhanliCommandBuilder() {
-        bitField3_ |= 0x00040000;
+        bitField3_ |= 0x00080000;
         onChanged();
         return getSubmitZhanliCommandFieldBuilder().getBuilder();
       }
@@ -30950,7 +31142,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestAchieveRewardCommand achieveRewardCommand = 70;</code>
        */
       public boolean hasAchieveRewardCommand() {
-        return ((bitField3_ & 0x00080000) == 0x00080000);
+        return ((bitField3_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestAchieveRewardCommand achieveRewardCommand = 70;</code>
@@ -30975,7 +31167,7 @@ public final class Request {
         } else {
           achieveRewardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00080000;
+        bitField3_ |= 0x00100000;
         return this;
       }
       /**
@@ -30989,7 +31181,7 @@ public final class Request {
         } else {
           achieveRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00080000;
+        bitField3_ |= 0x00100000;
         return this;
       }
       /**
@@ -30997,7 +31189,7 @@ public final class Request {
        */
       public Builder mergeAchieveRewardCommand(com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand value) {
         if (achieveRewardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00080000) == 0x00080000) &&
+          if (((bitField3_ & 0x00100000) == 0x00100000) &&
               achieveRewardCommand_ != com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.getDefaultInstance()) {
             achieveRewardCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.newBuilder(achieveRewardCommand_).mergeFrom(value).buildPartial();
@@ -31008,7 +31200,7 @@ public final class Request {
         } else {
           achieveRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00080000;
+        bitField3_ |= 0x00100000;
         return this;
       }
       /**
@@ -31021,14 +31213,14 @@ public final class Request {
         } else {
           achieveRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00080000);
+        bitField3_ = (bitField3_ & ~0x00100000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestAchieveRewardCommand achieveRewardCommand = 70;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand.Builder getAchieveRewardCommandBuilder() {
-        bitField3_ |= 0x00080000;
+        bitField3_ |= 0x00100000;
         onChanged();
         return getAchieveRewardCommandFieldBuilder().getBuilder();
       }
@@ -31067,7 +31259,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestAchieveListCommand achieveListCommand = 71;</code>
        */
       public boolean hasAchieveListCommand() {
-        return ((bitField3_ & 0x00100000) == 0x00100000);
+        return ((bitField3_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestAchieveListCommand achieveListCommand = 71;</code>
@@ -31092,7 +31284,7 @@ public final class Request {
         } else {
           achieveListCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00100000;
+        bitField3_ |= 0x00200000;
         return this;
       }
       /**
@@ -31106,7 +31298,7 @@ public final class Request {
         } else {
           achieveListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00100000;
+        bitField3_ |= 0x00200000;
         return this;
       }
       /**
@@ -31114,7 +31306,7 @@ public final class Request {
        */
       public Builder mergeAchieveListCommand(com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand value) {
         if (achieveListCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00100000) == 0x00100000) &&
+          if (((bitField3_ & 0x00200000) == 0x00200000) &&
               achieveListCommand_ != com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.getDefaultInstance()) {
             achieveListCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.newBuilder(achieveListCommand_).mergeFrom(value).buildPartial();
@@ -31125,7 +31317,7 @@ public final class Request {
         } else {
           achieveListCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00100000;
+        bitField3_ |= 0x00200000;
         return this;
       }
       /**
@@ -31138,14 +31330,14 @@ public final class Request {
         } else {
           achieveListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00100000);
+        bitField3_ = (bitField3_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestAchieveListCommand achieveListCommand = 71;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand.Builder getAchieveListCommandBuilder() {
-        bitField3_ |= 0x00100000;
+        bitField3_ |= 0x00200000;
         onChanged();
         return getAchieveListCommandFieldBuilder().getBuilder();
       }
@@ -31184,7 +31376,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRichangRewardCommand richangRewardCommand = 73;</code>
        */
       public boolean hasRichangRewardCommand() {
-        return ((bitField3_ & 0x00200000) == 0x00200000);
+        return ((bitField3_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRichangRewardCommand richangRewardCommand = 73;</code>
@@ -31209,7 +31401,7 @@ public final class Request {
         } else {
           richangRewardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00200000;
+        bitField3_ |= 0x00400000;
         return this;
       }
       /**
@@ -31223,7 +31415,7 @@ public final class Request {
         } else {
           richangRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00200000;
+        bitField3_ |= 0x00400000;
         return this;
       }
       /**
@@ -31231,7 +31423,7 @@ public final class Request {
        */
       public Builder mergeRichangRewardCommand(com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand value) {
         if (richangRewardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00200000) == 0x00200000) &&
+          if (((bitField3_ & 0x00400000) == 0x00400000) &&
               richangRewardCommand_ != com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.getDefaultInstance()) {
             richangRewardCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.newBuilder(richangRewardCommand_).mergeFrom(value).buildPartial();
@@ -31242,7 +31434,7 @@ public final class Request {
         } else {
           richangRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00200000;
+        bitField3_ |= 0x00400000;
         return this;
       }
       /**
@@ -31255,14 +31447,14 @@ public final class Request {
         } else {
           richangRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00200000);
+        bitField3_ = (bitField3_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRichangRewardCommand richangRewardCommand = 73;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand.Builder getRichangRewardCommandBuilder() {
-        bitField3_ |= 0x00200000;
+        bitField3_ |= 0x00400000;
         onChanged();
         return getRichangRewardCommandFieldBuilder().getBuilder();
       }
@@ -31301,7 +31493,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRichangListCommand richangListCommand = 74;</code>
        */
       public boolean hasRichangListCommand() {
-        return ((bitField3_ & 0x00400000) == 0x00400000);
+        return ((bitField3_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRichangListCommand richangListCommand = 74;</code>
@@ -31326,7 +31518,7 @@ public final class Request {
         } else {
           richangListCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00400000;
+        bitField3_ |= 0x00800000;
         return this;
       }
       /**
@@ -31340,7 +31532,7 @@ public final class Request {
         } else {
           richangListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00400000;
+        bitField3_ |= 0x00800000;
         return this;
       }
       /**
@@ -31348,7 +31540,7 @@ public final class Request {
        */
       public Builder mergeRichangListCommand(com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand value) {
         if (richangListCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00400000) == 0x00400000) &&
+          if (((bitField3_ & 0x00800000) == 0x00800000) &&
               richangListCommand_ != com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.getDefaultInstance()) {
             richangListCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.newBuilder(richangListCommand_).mergeFrom(value).buildPartial();
@@ -31359,7 +31551,7 @@ public final class Request {
         } else {
           richangListCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00400000;
+        bitField3_ |= 0x00800000;
         return this;
       }
       /**
@@ -31372,14 +31564,14 @@ public final class Request {
         } else {
           richangListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00400000);
+        bitField3_ = (bitField3_ & ~0x00800000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRichangListCommand richangListCommand = 74;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestRichangListCommand.Builder getRichangListCommandBuilder() {
-        bitField3_ |= 0x00400000;
+        bitField3_ |= 0x00800000;
         onChanged();
         return getRichangListCommandFieldBuilder().getBuilder();
       }
@@ -31418,7 +31610,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;</code>
        */
       public boolean hasKaifu2ActivityCommand() {
-        return ((bitField3_ & 0x00800000) == 0x00800000);
+        return ((bitField3_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;</code>
@@ -31443,7 +31635,7 @@ public final class Request {
         } else {
           kaifu2ActivityCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x00800000;
+        bitField3_ |= 0x01000000;
         return this;
       }
       /**
@@ -31457,7 +31649,7 @@ public final class Request {
         } else {
           kaifu2ActivityCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x00800000;
+        bitField3_ |= 0x01000000;
         return this;
       }
       /**
@@ -31465,7 +31657,7 @@ public final class Request {
        */
       public Builder mergeKaifu2ActivityCommand(com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand value) {
         if (kaifu2ActivityCommandBuilder_ == null) {
-          if (((bitField3_ & 0x00800000) == 0x00800000) &&
+          if (((bitField3_ & 0x01000000) == 0x01000000) &&
               kaifu2ActivityCommand_ != com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.getDefaultInstance()) {
             kaifu2ActivityCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.newBuilder(kaifu2ActivityCommand_).mergeFrom(value).buildPartial();
@@ -31476,7 +31668,7 @@ public final class Request {
         } else {
           kaifu2ActivityCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x00800000;
+        bitField3_ |= 0x01000000;
         return this;
       }
       /**
@@ -31489,14 +31681,14 @@ public final class Request {
         } else {
           kaifu2ActivityCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x00800000);
+        bitField3_ = (bitField3_ & ~0x01000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifu2ActivityCommand kaifu2ActivityCommand = 75;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand.Builder getKaifu2ActivityCommandBuilder() {
-        bitField3_ |= 0x00800000;
+        bitField3_ |= 0x01000000;
         onChanged();
         return getKaifu2ActivityCommandFieldBuilder().getBuilder();
       }
@@ -31535,7 +31727,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestKaifuRewardCommand kaifuRewardCommand = 77;</code>
        */
       public boolean hasKaifuRewardCommand() {
-        return ((bitField3_ & 0x01000000) == 0x01000000);
+        return ((bitField3_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifuRewardCommand kaifuRewardCommand = 77;</code>
@@ -31560,7 +31752,7 @@ public final class Request {
         } else {
           kaifuRewardCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x01000000;
+        bitField3_ |= 0x02000000;
         return this;
       }
       /**
@@ -31574,7 +31766,7 @@ public final class Request {
         } else {
           kaifuRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x01000000;
+        bitField3_ |= 0x02000000;
         return this;
       }
       /**
@@ -31582,7 +31774,7 @@ public final class Request {
        */
       public Builder mergeKaifuRewardCommand(com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand value) {
         if (kaifuRewardCommandBuilder_ == null) {
-          if (((bitField3_ & 0x01000000) == 0x01000000) &&
+          if (((bitField3_ & 0x02000000) == 0x02000000) &&
               kaifuRewardCommand_ != com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.getDefaultInstance()) {
             kaifuRewardCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.newBuilder(kaifuRewardCommand_).mergeFrom(value).buildPartial();
@@ -31593,7 +31785,7 @@ public final class Request {
         } else {
           kaifuRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x01000000;
+        bitField3_ |= 0x02000000;
         return this;
       }
       /**
@@ -31606,14 +31798,14 @@ public final class Request {
         } else {
           kaifuRewardCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x01000000);
+        bitField3_ = (bitField3_ & ~0x02000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifuRewardCommand kaifuRewardCommand = 77;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestKaifuRewardCommand.Builder getKaifuRewardCommandBuilder() {
-        bitField3_ |= 0x01000000;
+        bitField3_ |= 0x02000000;
         onChanged();
         return getKaifuRewardCommandFieldBuilder().getBuilder();
       }
@@ -31652,7 +31844,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestKaifuListCommand kaifuListCommand = 78;</code>
        */
       public boolean hasKaifuListCommand() {
-        return ((bitField3_ & 0x02000000) == 0x02000000);
+        return ((bitField3_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifuListCommand kaifuListCommand = 78;</code>
@@ -31677,7 +31869,7 @@ public final class Request {
         } else {
           kaifuListCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x02000000;
+        bitField3_ |= 0x04000000;
         return this;
       }
       /**
@@ -31691,7 +31883,7 @@ public final class Request {
         } else {
           kaifuListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x02000000;
+        bitField3_ |= 0x04000000;
         return this;
       }
       /**
@@ -31699,7 +31891,7 @@ public final class Request {
        */
       public Builder mergeKaifuListCommand(com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand value) {
         if (kaifuListCommandBuilder_ == null) {
-          if (((bitField3_ & 0x02000000) == 0x02000000) &&
+          if (((bitField3_ & 0x04000000) == 0x04000000) &&
               kaifuListCommand_ != com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.getDefaultInstance()) {
             kaifuListCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.newBuilder(kaifuListCommand_).mergeFrom(value).buildPartial();
@@ -31710,7 +31902,7 @@ public final class Request {
         } else {
           kaifuListCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x02000000;
+        bitField3_ |= 0x04000000;
         return this;
       }
       /**
@@ -31723,14 +31915,14 @@ public final class Request {
         } else {
           kaifuListCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x02000000);
+        bitField3_ = (bitField3_ & ~0x04000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestKaifuListCommand kaifuListCommand = 78;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand.Builder getKaifuListCommandBuilder() {
-        bitField3_ |= 0x02000000;
+        bitField3_ |= 0x04000000;
         onChanged();
         return getKaifuListCommandFieldBuilder().getBuilder();
       }
@@ -31769,7 +31961,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserPokedeCommand userPokedeCommand = 80;</code>
        */
       public boolean hasUserPokedeCommand() {
-        return ((bitField3_ & 0x04000000) == 0x04000000);
+        return ((bitField3_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserPokedeCommand userPokedeCommand = 80;</code>
@@ -31794,7 +31986,7 @@ public final class Request {
         } else {
           userPokedeCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x04000000;
+        bitField3_ |= 0x08000000;
         return this;
       }
       /**
@@ -31808,7 +32000,7 @@ public final class Request {
         } else {
           userPokedeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x04000000;
+        bitField3_ |= 0x08000000;
         return this;
       }
       /**
@@ -31816,7 +32008,7 @@ public final class Request {
        */
       public Builder mergeUserPokedeCommand(com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand value) {
         if (userPokedeCommandBuilder_ == null) {
-          if (((bitField3_ & 0x04000000) == 0x04000000) &&
+          if (((bitField3_ & 0x08000000) == 0x08000000) &&
               userPokedeCommand_ != com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.getDefaultInstance()) {
             userPokedeCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.newBuilder(userPokedeCommand_).mergeFrom(value).buildPartial();
@@ -31827,7 +32019,7 @@ public final class Request {
         } else {
           userPokedeCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x04000000;
+        bitField3_ |= 0x08000000;
         return this;
       }
       /**
@@ -31840,14 +32032,14 @@ public final class Request {
         } else {
           userPokedeCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x04000000);
+        bitField3_ = (bitField3_ & ~0x08000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserPokedeCommand userPokedeCommand = 80;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand.Builder getUserPokedeCommandBuilder() {
-        bitField3_ |= 0x04000000;
+        bitField3_ |= 0x08000000;
         onChanged();
         return getUserPokedeCommandFieldBuilder().getBuilder();
       }
@@ -31886,7 +32078,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRankCommand rankCommand = 81;</code>
        */
       public boolean hasRankCommand() {
-        return ((bitField3_ & 0x08000000) == 0x08000000);
+        return ((bitField3_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRankCommand rankCommand = 81;</code>
@@ -31911,7 +32103,7 @@ public final class Request {
         } else {
           rankCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x08000000;
+        bitField3_ |= 0x10000000;
         return this;
       }
       /**
@@ -31925,7 +32117,7 @@ public final class Request {
         } else {
           rankCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x08000000;
+        bitField3_ |= 0x10000000;
         return this;
       }
       /**
@@ -31933,7 +32125,7 @@ public final class Request {
        */
       public Builder mergeRankCommand(com.trans.pixel.protoc.ActivityProto.RequestRankCommand value) {
         if (rankCommandBuilder_ == null) {
-          if (((bitField3_ & 0x08000000) == 0x08000000) &&
+          if (((bitField3_ & 0x10000000) == 0x10000000) &&
               rankCommand_ != com.trans.pixel.protoc.ActivityProto.RequestRankCommand.getDefaultInstance()) {
             rankCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestRankCommand.newBuilder(rankCommand_).mergeFrom(value).buildPartial();
@@ -31944,7 +32136,7 @@ public final class Request {
         } else {
           rankCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x08000000;
+        bitField3_ |= 0x10000000;
         return this;
       }
       /**
@@ -31957,14 +32149,14 @@ public final class Request {
         } else {
           rankCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x08000000);
+        bitField3_ = (bitField3_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRankCommand rankCommand = 81;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestRankCommand.Builder getRankCommandBuilder() {
-        bitField3_ |= 0x08000000;
+        bitField3_ |= 0x10000000;
         onChanged();
         return getRankCommandFieldBuilder().getBuilder();
       }
@@ -32003,7 +32195,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;</code>
        */
       public boolean hasBuyHeroPackageCommand() {
-        return ((bitField3_ & 0x10000000) == 0x10000000);
+        return ((bitField3_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;</code>
@@ -32028,7 +32220,7 @@ public final class Request {
         } else {
           buyHeroPackageCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x10000000;
+        bitField3_ |= 0x20000000;
         return this;
       }
       /**
@@ -32042,7 +32234,7 @@ public final class Request {
         } else {
           buyHeroPackageCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x10000000;
+        bitField3_ |= 0x20000000;
         return this;
       }
       /**
@@ -32050,7 +32242,7 @@ public final class Request {
        */
       public Builder mergeBuyHeroPackageCommand(com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand value) {
         if (buyHeroPackageCommandBuilder_ == null) {
-          if (((bitField3_ & 0x10000000) == 0x10000000) &&
+          if (((bitField3_ & 0x20000000) == 0x20000000) &&
               buyHeroPackageCommand_ != com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.getDefaultInstance()) {
             buyHeroPackageCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.newBuilder(buyHeroPackageCommand_).mergeFrom(value).buildPartial();
@@ -32061,7 +32253,7 @@ public final class Request {
         } else {
           buyHeroPackageCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x10000000;
+        bitField3_ |= 0x20000000;
         return this;
       }
       /**
@@ -32074,14 +32266,14 @@ public final class Request {
         } else {
           buyHeroPackageCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x10000000);
+        bitField3_ = (bitField3_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBuyHeroPackageCommand buyHeroPackageCommand = 82;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand.Builder getBuyHeroPackageCommandBuilder() {
-        bitField3_ |= 0x10000000;
+        bitField3_ |= 0x20000000;
         onChanged();
         return getBuyHeroPackageCommandFieldBuilder().getBuilder();
       }
@@ -32120,7 +32312,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;</code>
        */
       public boolean hasSubmitComposeSkillCommand() {
-        return ((bitField3_ & 0x20000000) == 0x20000000);
+        return ((bitField3_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;</code>
@@ -32145,7 +32337,7 @@ public final class Request {
         } else {
           submitComposeSkillCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x20000000;
+        bitField3_ |= 0x40000000;
         return this;
       }
       /**
@@ -32159,7 +32351,7 @@ public final class Request {
         } else {
           submitComposeSkillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x20000000;
+        bitField3_ |= 0x40000000;
         return this;
       }
       /**
@@ -32167,7 +32359,7 @@ public final class Request {
        */
       public Builder mergeSubmitComposeSkillCommand(com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand value) {
         if (submitComposeSkillCommandBuilder_ == null) {
-          if (((bitField3_ & 0x20000000) == 0x20000000) &&
+          if (((bitField3_ & 0x40000000) == 0x40000000) &&
               submitComposeSkillCommand_ != com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.getDefaultInstance()) {
             submitComposeSkillCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.newBuilder(submitComposeSkillCommand_).mergeFrom(value).buildPartial();
@@ -32178,7 +32370,7 @@ public final class Request {
         } else {
           submitComposeSkillCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x20000000;
+        bitField3_ |= 0x40000000;
         return this;
       }
       /**
@@ -32191,14 +32383,14 @@ public final class Request {
         } else {
           submitComposeSkillCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x20000000);
+        bitField3_ = (bitField3_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitComposeSkillCommand submitComposeSkillCommand = 83;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand.Builder getSubmitComposeSkillCommandBuilder() {
-        bitField3_ |= 0x20000000;
+        bitField3_ |= 0x40000000;
         onChanged();
         return getSubmitComposeSkillCommandFieldBuilder().getBuilder();
       }
@@ -32237,7 +32429,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitIconCommand submitIconCommand = 85;</code>
        */
       public boolean hasSubmitIconCommand() {
-        return ((bitField3_ & 0x40000000) == 0x40000000);
+        return ((bitField3_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitIconCommand submitIconCommand = 85;</code>
@@ -32262,7 +32454,7 @@ public final class Request {
         } else {
           submitIconCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x40000000;
+        bitField3_ |= 0x80000000;
         return this;
       }
       /**
@@ -32276,7 +32468,7 @@ public final class Request {
         } else {
           submitIconCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x40000000;
+        bitField3_ |= 0x80000000;
         return this;
       }
       /**
@@ -32284,7 +32476,7 @@ public final class Request {
        */
       public Builder mergeSubmitIconCommand(com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand value) {
         if (submitIconCommandBuilder_ == null) {
-          if (((bitField3_ & 0x40000000) == 0x40000000) &&
+          if (((bitField3_ & 0x80000000) == 0x80000000) &&
               submitIconCommand_ != com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.getDefaultInstance()) {
             submitIconCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.newBuilder(submitIconCommand_).mergeFrom(value).buildPartial();
@@ -32295,7 +32487,7 @@ public final class Request {
         } else {
           submitIconCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x40000000;
+        bitField3_ |= 0x80000000;
         return this;
       }
       /**
@@ -32308,14 +32500,14 @@ public final class Request {
         } else {
           submitIconCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x40000000);
+        bitField3_ = (bitField3_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitIconCommand submitIconCommand = 85;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand.Builder getSubmitIconCommandBuilder() {
-        bitField3_ |= 0x40000000;
+        bitField3_ |= 0x80000000;
         onChanged();
         return getSubmitIconCommandFieldBuilder().getBuilder();
       }
@@ -32354,7 +32546,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;</code>
        */
       public boolean hasReadyAttackLadderCommand() {
-        return ((bitField3_ & 0x80000000) == 0x80000000);
+        return ((bitField4_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;</code>
@@ -32379,7 +32571,7 @@ public final class Request {
         } else {
           readyAttackLadderCommandBuilder_.setMessage(value);
         }
-        bitField3_ |= 0x80000000;
+        bitField4_ |= 0x00000001;
         return this;
       }
       /**
@@ -32393,7 +32585,7 @@ public final class Request {
         } else {
           readyAttackLadderCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField3_ |= 0x80000000;
+        bitField4_ |= 0x00000001;
         return this;
       }
       /**
@@ -32401,7 +32593,7 @@ public final class Request {
        */
       public Builder mergeReadyAttackLadderCommand(com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand value) {
         if (readyAttackLadderCommandBuilder_ == null) {
-          if (((bitField3_ & 0x80000000) == 0x80000000) &&
+          if (((bitField4_ & 0x00000001) == 0x00000001) &&
               readyAttackLadderCommand_ != com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.getDefaultInstance()) {
             readyAttackLadderCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.newBuilder(readyAttackLadderCommand_).mergeFrom(value).buildPartial();
@@ -32412,7 +32604,7 @@ public final class Request {
         } else {
           readyAttackLadderCommandBuilder_.mergeFrom(value);
         }
-        bitField3_ |= 0x80000000;
+        bitField4_ |= 0x00000001;
         return this;
       }
       /**
@@ -32425,14 +32617,14 @@ public final class Request {
         } else {
           readyAttackLadderCommandBuilder_.clear();
         }
-        bitField3_ = (bitField3_ & ~0x80000000);
+        bitField4_ = (bitField4_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestReadyAttackLadderCommand readyAttackLadderCommand = 86;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand.Builder getReadyAttackLadderCommandBuilder() {
-        bitField3_ |= 0x80000000;
+        bitField4_ |= 0x00000001;
         onChanged();
         return getReadyAttackLadderCommandFieldBuilder().getBuilder();
       }
@@ -32471,7 +32663,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBindAccountCommand bindAccountCommand = 87;</code>
        */
       public boolean hasBindAccountCommand() {
-        return ((bitField4_ & 0x00000001) == 0x00000001);
+        return ((bitField4_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBindAccountCommand bindAccountCommand = 87;</code>
@@ -32496,7 +32688,7 @@ public final class Request {
         } else {
           bindAccountCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000001;
+        bitField4_ |= 0x00000002;
         return this;
       }
       /**
@@ -32510,7 +32702,7 @@ public final class Request {
         } else {
           bindAccountCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000001;
+        bitField4_ |= 0x00000002;
         return this;
       }
       /**
@@ -32518,7 +32710,7 @@ public final class Request {
        */
       public Builder mergeBindAccountCommand(com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand value) {
         if (bindAccountCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000001) == 0x00000001) &&
+          if (((bitField4_ & 0x00000002) == 0x00000002) &&
               bindAccountCommand_ != com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.getDefaultInstance()) {
             bindAccountCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.newBuilder(bindAccountCommand_).mergeFrom(value).buildPartial();
@@ -32529,7 +32721,7 @@ public final class Request {
         } else {
           bindAccountCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000001;
+        bitField4_ |= 0x00000002;
         return this;
       }
       /**
@@ -32542,14 +32734,14 @@ public final class Request {
         } else {
           bindAccountCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000001);
+        bitField4_ = (bitField4_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBindAccountCommand bindAccountCommand = 87;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand.Builder getBindAccountCommandBuilder() {
-        bitField4_ |= 0x00000001;
+        bitField4_ |= 0x00000002;
         onChanged();
         return getBindAccountCommandFieldBuilder().getBuilder();
       }
@@ -32588,7 +32780,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestQueryRechargeCommand queryRechargeCommand = 88;</code>
        */
       public boolean hasQueryRechargeCommand() {
-        return ((bitField4_ & 0x00000002) == 0x00000002);
+        return ((bitField4_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQueryRechargeCommand queryRechargeCommand = 88;</code>
@@ -32613,7 +32805,7 @@ public final class Request {
         } else {
           queryRechargeCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000002;
+        bitField4_ |= 0x00000004;
         return this;
       }
       /**
@@ -32627,7 +32819,7 @@ public final class Request {
         } else {
           queryRechargeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000002;
+        bitField4_ |= 0x00000004;
         return this;
       }
       /**
@@ -32635,7 +32827,7 @@ public final class Request {
        */
       public Builder mergeQueryRechargeCommand(com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand value) {
         if (queryRechargeCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000002) == 0x00000002) &&
+          if (((bitField4_ & 0x00000004) == 0x00000004) &&
               queryRechargeCommand_ != com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.getDefaultInstance()) {
             queryRechargeCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.newBuilder(queryRechargeCommand_).mergeFrom(value).buildPartial();
@@ -32646,7 +32838,7 @@ public final class Request {
         } else {
           queryRechargeCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000002;
+        bitField4_ |= 0x00000004;
         return this;
       }
       /**
@@ -32659,14 +32851,14 @@ public final class Request {
         } else {
           queryRechargeCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000002);
+        bitField4_ = (bitField4_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQueryRechargeCommand queryRechargeCommand = 88;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand.Builder getQueryRechargeCommandBuilder() {
-        bitField4_ |= 0x00000002;
+        bitField4_ |= 0x00000004;
         onChanged();
         return getQueryRechargeCommandFieldBuilder().getBuilder();
       }
@@ -32705,7 +32897,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestShouchongRewardCommand shouchongRewardCommand = 89;</code>
        */
       public boolean hasShouchongRewardCommand() {
-        return ((bitField4_ & 0x00000004) == 0x00000004);
+        return ((bitField4_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestShouchongRewardCommand shouchongRewardCommand = 89;</code>
@@ -32730,7 +32922,7 @@ public final class Request {
         } else {
           shouchongRewardCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000004;
+        bitField4_ |= 0x00000008;
         return this;
       }
       /**
@@ -32744,7 +32936,7 @@ public final class Request {
         } else {
           shouchongRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000004;
+        bitField4_ |= 0x00000008;
         return this;
       }
       /**
@@ -32752,7 +32944,7 @@ public final class Request {
        */
       public Builder mergeShouchongRewardCommand(com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand value) {
         if (shouchongRewardCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000004) == 0x00000004) &&
+          if (((bitField4_ & 0x00000008) == 0x00000008) &&
               shouchongRewardCommand_ != com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.getDefaultInstance()) {
             shouchongRewardCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.newBuilder(shouchongRewardCommand_).mergeFrom(value).buildPartial();
@@ -32763,7 +32955,7 @@ public final class Request {
         } else {
           shouchongRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000004;
+        bitField4_ |= 0x00000008;
         return this;
       }
       /**
@@ -32776,14 +32968,14 @@ public final class Request {
         } else {
           shouchongRewardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000004);
+        bitField4_ = (bitField4_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestShouchongRewardCommand shouchongRewardCommand = 89;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand.Builder getShouchongRewardCommandBuilder() {
-        bitField4_ |= 0x00000004;
+        bitField4_ |= 0x00000008;
         onChanged();
         return getShouchongRewardCommandFieldBuilder().getBuilder();
       }
@@ -32822,7 +33014,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestHeartBeatCommand heartBeatCommand = 90;</code>
        */
       public boolean hasHeartBeatCommand() {
-        return ((bitField4_ & 0x00000008) == 0x00000008);
+        return ((bitField4_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeartBeatCommand heartBeatCommand = 90;</code>
@@ -32847,7 +33039,7 @@ public final class Request {
         } else {
           heartBeatCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000008;
+        bitField4_ |= 0x00000010;
         return this;
       }
       /**
@@ -32861,7 +33053,7 @@ public final class Request {
         } else {
           heartBeatCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000008;
+        bitField4_ |= 0x00000010;
         return this;
       }
       /**
@@ -32869,7 +33061,7 @@ public final class Request {
        */
       public Builder mergeHeartBeatCommand(com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand value) {
         if (heartBeatCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000008) == 0x00000008) &&
+          if (((bitField4_ & 0x00000010) == 0x00000010) &&
               heartBeatCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.getDefaultInstance()) {
             heartBeatCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.newBuilder(heartBeatCommand_).mergeFrom(value).buildPartial();
@@ -32880,7 +33072,7 @@ public final class Request {
         } else {
           heartBeatCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000008;
+        bitField4_ |= 0x00000010;
         return this;
       }
       /**
@@ -32893,14 +33085,14 @@ public final class Request {
         } else {
           heartBeatCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000008);
+        bitField4_ = (bitField4_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeartBeatCommand heartBeatCommand = 90;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestHeartBeatCommand.Builder getHeartBeatCommandBuilder() {
-        bitField4_ |= 0x00000008;
+        bitField4_ |= 0x00000010;
         onChanged();
         return getHeartBeatCommandFieldBuilder().getBuilder();
       }
@@ -32939,7 +33131,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGreenhandCommand greenhandCommand = 91;</code>
        */
       public boolean hasGreenhandCommand() {
-        return ((bitField4_ & 0x00000010) == 0x00000010);
+        return ((bitField4_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGreenhandCommand greenhandCommand = 91;</code>
@@ -32964,7 +33156,7 @@ public final class Request {
         } else {
           greenhandCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000010;
+        bitField4_ |= 0x00000020;
         return this;
       }
       /**
@@ -32978,7 +33170,7 @@ public final class Request {
         } else {
           greenhandCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000010;
+        bitField4_ |= 0x00000020;
         return this;
       }
       /**
@@ -32986,7 +33178,7 @@ public final class Request {
        */
       public Builder mergeGreenhandCommand(com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand value) {
         if (greenhandCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000010) == 0x00000010) &&
+          if (((bitField4_ & 0x00000020) == 0x00000020) &&
               greenhandCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.getDefaultInstance()) {
             greenhandCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.newBuilder(greenhandCommand_).mergeFrom(value).buildPartial();
@@ -32997,7 +33189,7 @@ public final class Request {
         } else {
           greenhandCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000010;
+        bitField4_ |= 0x00000020;
         return this;
       }
       /**
@@ -33010,14 +33202,14 @@ public final class Request {
         } else {
           greenhandCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000010);
+        bitField4_ = (bitField4_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGreenhandCommand greenhandCommand = 91;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand.Builder getGreenhandCommandBuilder() {
-        bitField4_ |= 0x00000010;
+        bitField4_ |= 0x00000020;
         onChanged();
         return getGreenhandCommandFieldBuilder().getBuilder();
       }
@@ -33056,7 +33248,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLogCommand logCommand = 92;</code>
        */
       public boolean hasLogCommand() {
-        return ((bitField4_ & 0x00000020) == 0x00000020);
+        return ((bitField4_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLogCommand logCommand = 92;</code>
@@ -33081,7 +33273,7 @@ public final class Request {
         } else {
           logCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000020;
+        bitField4_ |= 0x00000040;
         return this;
       }
       /**
@@ -33095,7 +33287,7 @@ public final class Request {
         } else {
           logCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000020;
+        bitField4_ |= 0x00000040;
         return this;
       }
       /**
@@ -33103,7 +33295,7 @@ public final class Request {
        */
       public Builder mergeLogCommand(com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand value) {
         if (logCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000020) == 0x00000020) &&
+          if (((bitField4_ & 0x00000040) == 0x00000040) &&
               logCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.getDefaultInstance()) {
             logCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.newBuilder(logCommand_).mergeFrom(value).buildPartial();
@@ -33114,7 +33306,7 @@ public final class Request {
         } else {
           logCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000020;
+        bitField4_ |= 0x00000040;
         return this;
       }
       /**
@@ -33127,14 +33319,14 @@ public final class Request {
         } else {
           logCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000020);
+        bitField4_ = (bitField4_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLogCommand logCommand = 92;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand.Builder getLogCommandBuilder() {
-        bitField4_ |= 0x00000020;
+        bitField4_ |= 0x00000040;
         onChanged();
         return getLogCommandFieldBuilder().getBuilder();
       }
@@ -33173,7 +33365,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestFeedFoodCommand feedFoodCommand = 93;</code>
        */
       public boolean hasFeedFoodCommand() {
-        return ((bitField4_ & 0x00000040) == 0x00000040);
+        return ((bitField4_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFeedFoodCommand feedFoodCommand = 93;</code>
@@ -33198,7 +33390,7 @@ public final class Request {
         } else {
           feedFoodCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000040;
+        bitField4_ |= 0x00000080;
         return this;
       }
       /**
@@ -33212,7 +33404,7 @@ public final class Request {
         } else {
           feedFoodCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000040;
+        bitField4_ |= 0x00000080;
         return this;
       }
       /**
@@ -33220,7 +33412,7 @@ public final class Request {
        */
       public Builder mergeFeedFoodCommand(com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand value) {
         if (feedFoodCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000040) == 0x00000040) &&
+          if (((bitField4_ & 0x00000080) == 0x00000080) &&
               feedFoodCommand_ != com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.getDefaultInstance()) {
             feedFoodCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.newBuilder(feedFoodCommand_).mergeFrom(value).buildPartial();
@@ -33231,7 +33423,7 @@ public final class Request {
         } else {
           feedFoodCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000040;
+        bitField4_ |= 0x00000080;
         return this;
       }
       /**
@@ -33244,14 +33436,14 @@ public final class Request {
         } else {
           feedFoodCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000040);
+        bitField4_ = (bitField4_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestFeedFoodCommand feedFoodCommand = 93;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand.Builder getFeedFoodCommandBuilder() {
-        bitField4_ |= 0x00000040;
+        bitField4_ |= 0x00000080;
         onChanged();
         return getFeedFoodCommandFieldBuilder().getBuilder();
       }
@@ -33290,7 +33482,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestClearHeroCommand clearHeroCommand = 94;</code>
        */
       public boolean hasClearHeroCommand() {
-        return ((bitField4_ & 0x00000080) == 0x00000080);
+        return ((bitField4_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestClearHeroCommand clearHeroCommand = 94;</code>
@@ -33315,7 +33507,7 @@ public final class Request {
         } else {
           clearHeroCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000080;
+        bitField4_ |= 0x00000100;
         return this;
       }
       /**
@@ -33329,7 +33521,7 @@ public final class Request {
         } else {
           clearHeroCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000080;
+        bitField4_ |= 0x00000100;
         return this;
       }
       /**
@@ -33337,7 +33529,7 @@ public final class Request {
        */
       public Builder mergeClearHeroCommand(com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand value) {
         if (clearHeroCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000080) == 0x00000080) &&
+          if (((bitField4_ & 0x00000100) == 0x00000100) &&
               clearHeroCommand_ != com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.getDefaultInstance()) {
             clearHeroCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.newBuilder(clearHeroCommand_).mergeFrom(value).buildPartial();
@@ -33348,7 +33540,7 @@ public final class Request {
         } else {
           clearHeroCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000080;
+        bitField4_ |= 0x00000100;
         return this;
       }
       /**
@@ -33361,14 +33553,14 @@ public final class Request {
         } else {
           clearHeroCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000080);
+        bitField4_ = (bitField4_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestClearHeroCommand clearHeroCommand = 94;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand.Builder getClearHeroCommandBuilder() {
-        bitField4_ |= 0x00000080;
+        bitField4_ |= 0x00000100;
         onChanged();
         return getClearHeroCommandFieldBuilder().getBuilder();
       }
@@ -33407,7 +33599,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestChoseClearInfoCommand choseClearInfoCommand = 95;</code>
        */
       public boolean hasChoseClearInfoCommand() {
-        return ((bitField4_ & 0x00000100) == 0x00000100);
+        return ((bitField4_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChoseClearInfoCommand choseClearInfoCommand = 95;</code>
@@ -33432,7 +33624,7 @@ public final class Request {
         } else {
           choseClearInfoCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000100;
+        bitField4_ |= 0x00000200;
         return this;
       }
       /**
@@ -33446,7 +33638,7 @@ public final class Request {
         } else {
           choseClearInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000100;
+        bitField4_ |= 0x00000200;
         return this;
       }
       /**
@@ -33454,7 +33646,7 @@ public final class Request {
        */
       public Builder mergeChoseClearInfoCommand(com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand value) {
         if (choseClearInfoCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000100) == 0x00000100) &&
+          if (((bitField4_ & 0x00000200) == 0x00000200) &&
               choseClearInfoCommand_ != com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.getDefaultInstance()) {
             choseClearInfoCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.newBuilder(choseClearInfoCommand_).mergeFrom(value).buildPartial();
@@ -33465,7 +33657,7 @@ public final class Request {
         } else {
           choseClearInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000100;
+        bitField4_ |= 0x00000200;
         return this;
       }
       /**
@@ -33478,14 +33670,14 @@ public final class Request {
         } else {
           choseClearInfoCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000100);
+        bitField4_ = (bitField4_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChoseClearInfoCommand choseClearInfoCommand = 95;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand.Builder getChoseClearInfoCommandBuilder() {
-        bitField4_ |= 0x00000100;
+        bitField4_ |= 0x00000200;
         onChanged();
         return getChoseClearInfoCommandFieldBuilder().getBuilder();
       }
@@ -33524,7 +33716,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBosskillCommand submitBosskillCommand = 96;</code>
        */
       public boolean hasSubmitBosskillCommand() {
-        return ((bitField4_ & 0x00000200) == 0x00000200);
+        return ((bitField4_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBosskillCommand submitBosskillCommand = 96;</code>
@@ -33549,7 +33741,7 @@ public final class Request {
         } else {
           submitBosskillCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000200;
+        bitField4_ |= 0x00000400;
         return this;
       }
       /**
@@ -33563,7 +33755,7 @@ public final class Request {
         } else {
           submitBosskillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000200;
+        bitField4_ |= 0x00000400;
         return this;
       }
       /**
@@ -33571,7 +33763,7 @@ public final class Request {
        */
       public Builder mergeSubmitBosskillCommand(com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand value) {
         if (submitBosskillCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000200) == 0x00000200) &&
+          if (((bitField4_ & 0x00000400) == 0x00000400) &&
               submitBosskillCommand_ != com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.getDefaultInstance()) {
             submitBosskillCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.newBuilder(submitBosskillCommand_).mergeFrom(value).buildPartial();
@@ -33582,7 +33774,7 @@ public final class Request {
         } else {
           submitBosskillCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000200;
+        bitField4_ |= 0x00000400;
         return this;
       }
       /**
@@ -33595,14 +33787,14 @@ public final class Request {
         } else {
           submitBosskillCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000200);
+        bitField4_ = (bitField4_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBosskillCommand submitBosskillCommand = 96;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand.Builder getSubmitBosskillCommandBuilder() {
-        bitField4_ |= 0x00000200;
+        bitField4_ |= 0x00000400;
         onChanged();
         return getSubmitBosskillCommandFieldBuilder().getBuilder();
       }
@@ -33641,7 +33833,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBosskillCommand bosskillCommand = 97;</code>
        */
       public boolean hasBosskillCommand() {
-        return ((bitField4_ & 0x00000400) == 0x00000400);
+        return ((bitField4_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBosskillCommand bosskillCommand = 97;</code>
@@ -33666,7 +33858,7 @@ public final class Request {
         } else {
           bosskillCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000400;
+        bitField4_ |= 0x00000800;
         return this;
       }
       /**
@@ -33680,7 +33872,7 @@ public final class Request {
         } else {
           bosskillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000400;
+        bitField4_ |= 0x00000800;
         return this;
       }
       /**
@@ -33688,7 +33880,7 @@ public final class Request {
        */
       public Builder mergeBosskillCommand(com.trans.pixel.protoc.UnionProto.RequestBosskillCommand value) {
         if (bosskillCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000400) == 0x00000400) &&
+          if (((bitField4_ & 0x00000800) == 0x00000800) &&
               bosskillCommand_ != com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.getDefaultInstance()) {
             bosskillCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.newBuilder(bosskillCommand_).mergeFrom(value).buildPartial();
@@ -33699,7 +33891,7 @@ public final class Request {
         } else {
           bosskillCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000400;
+        bitField4_ |= 0x00000800;
         return this;
       }
       /**
@@ -33712,14 +33904,14 @@ public final class Request {
         } else {
           bosskillCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000400);
+        bitField4_ = (bitField4_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBosskillCommand bosskillCommand = 97;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestBosskillCommand.Builder getBosskillCommandBuilder() {
-        bitField4_ |= 0x00000400;
+        bitField4_ |= 0x00000800;
         onChanged();
         return getBosskillCommandFieldBuilder().getBuilder();
       }
@@ -33758,7 +33950,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUnionBossFightCommand unionBossFightCommand = 98;</code>
        */
       public boolean hasUnionBossFightCommand() {
-        return ((bitField4_ & 0x00000800) == 0x00000800);
+        return ((bitField4_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionBossFightCommand unionBossFightCommand = 98;</code>
@@ -33783,7 +33975,7 @@ public final class Request {
         } else {
           unionBossFightCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00000800;
+        bitField4_ |= 0x00001000;
         return this;
       }
       /**
@@ -33797,7 +33989,7 @@ public final class Request {
         } else {
           unionBossFightCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00000800;
+        bitField4_ |= 0x00001000;
         return this;
       }
       /**
@@ -33805,7 +33997,7 @@ public final class Request {
        */
       public Builder mergeUnionBossFightCommand(com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand value) {
         if (unionBossFightCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00000800) == 0x00000800) &&
+          if (((bitField4_ & 0x00001000) == 0x00001000) &&
               unionBossFightCommand_ != com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.getDefaultInstance()) {
             unionBossFightCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.newBuilder(unionBossFightCommand_).mergeFrom(value).buildPartial();
@@ -33816,7 +34008,7 @@ public final class Request {
         } else {
           unionBossFightCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00000800;
+        bitField4_ |= 0x00001000;
         return this;
       }
       /**
@@ -33829,14 +34021,14 @@ public final class Request {
         } else {
           unionBossFightCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00000800);
+        bitField4_ = (bitField4_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionBossFightCommand unionBossFightCommand = 98;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand.Builder getUnionBossFightCommandBuilder() {
-        bitField4_ |= 0x00000800;
+        bitField4_ |= 0x00001000;
         onChanged();
         return getUnionBossFightCommandFieldBuilder().getBuilder();
       }
@@ -33875,7 +34067,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestHeroStrengthenCommand heroStrengthenCommand = 99;</code>
        */
       public boolean hasHeroStrengthenCommand() {
-        return ((bitField4_ & 0x00001000) == 0x00001000);
+        return ((bitField4_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeroStrengthenCommand heroStrengthenCommand = 99;</code>
@@ -33900,7 +34092,7 @@ public final class Request {
         } else {
           heroStrengthenCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00001000;
+        bitField4_ |= 0x00002000;
         return this;
       }
       /**
@@ -33914,7 +34106,7 @@ public final class Request {
         } else {
           heroStrengthenCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00001000;
+        bitField4_ |= 0x00002000;
         return this;
       }
       /**
@@ -33922,7 +34114,7 @@ public final class Request {
        */
       public Builder mergeHeroStrengthenCommand(com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand value) {
         if (heroStrengthenCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00001000) == 0x00001000) &&
+          if (((bitField4_ & 0x00002000) == 0x00002000) &&
               heroStrengthenCommand_ != com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.getDefaultInstance()) {
             heroStrengthenCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.newBuilder(heroStrengthenCommand_).mergeFrom(value).buildPartial();
@@ -33933,7 +34125,7 @@ public final class Request {
         } else {
           heroStrengthenCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00001000;
+        bitField4_ |= 0x00002000;
         return this;
       }
       /**
@@ -33946,14 +34138,14 @@ public final class Request {
         } else {
           heroStrengthenCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00001000);
+        bitField4_ = (bitField4_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHeroStrengthenCommand heroStrengthenCommand = 99;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand.Builder getHeroStrengthenCommandBuilder() {
-        bitField4_ |= 0x00001000;
+        bitField4_ |= 0x00002000;
         onChanged();
         return getHeroStrengthenCommandFieldBuilder().getBuilder();
       }
@@ -33992,7 +34184,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSevenLoginSignCommand sevenLoginSignCommand = 200;</code>
        */
       public boolean hasSevenLoginSignCommand() {
-        return ((bitField4_ & 0x00002000) == 0x00002000);
+        return ((bitField4_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSevenLoginSignCommand sevenLoginSignCommand = 200;</code>
@@ -34017,7 +34209,7 @@ public final class Request {
         } else {
           sevenLoginSignCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00002000;
+        bitField4_ |= 0x00004000;
         return this;
       }
       /**
@@ -34031,7 +34223,7 @@ public final class Request {
         } else {
           sevenLoginSignCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00002000;
+        bitField4_ |= 0x00004000;
         return this;
       }
       /**
@@ -34039,7 +34231,7 @@ public final class Request {
        */
       public Builder mergeSevenLoginSignCommand(com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand value) {
         if (sevenLoginSignCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00002000) == 0x00002000) &&
+          if (((bitField4_ & 0x00004000) == 0x00004000) &&
               sevenLoginSignCommand_ != com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.getDefaultInstance()) {
             sevenLoginSignCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.newBuilder(sevenLoginSignCommand_).mergeFrom(value).buildPartial();
@@ -34050,7 +34242,7 @@ public final class Request {
         } else {
           sevenLoginSignCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00002000;
+        bitField4_ |= 0x00004000;
         return this;
       }
       /**
@@ -34063,14 +34255,14 @@ public final class Request {
         } else {
           sevenLoginSignCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00002000);
+        bitField4_ = (bitField4_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSevenLoginSignCommand sevenLoginSignCommand = 200;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand.Builder getSevenLoginSignCommandBuilder() {
-        bitField4_ |= 0x00002000;
+        bitField4_ |= 0x00004000;
         onChanged();
         return getSevenLoginSignCommandFieldBuilder().getBuilder();
       }
@@ -34109,7 +34301,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;</code>
        */
       public boolean hasIsAreaOwnerCommand() {
-        return ((bitField4_ & 0x00004000) == 0x00004000);
+        return ((bitField4_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;</code>
@@ -34134,7 +34326,7 @@ public final class Request {
         } else {
           isAreaOwnerCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00004000;
+        bitField4_ |= 0x00008000;
         return this;
       }
       /**
@@ -34148,7 +34340,7 @@ public final class Request {
         } else {
           isAreaOwnerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00004000;
+        bitField4_ |= 0x00008000;
         return this;
       }
       /**
@@ -34156,7 +34348,7 @@ public final class Request {
        */
       public Builder mergeIsAreaOwnerCommand(com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand value) {
         if (isAreaOwnerCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00004000) == 0x00004000) &&
+          if (((bitField4_ & 0x00008000) == 0x00008000) &&
               isAreaOwnerCommand_ != com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.getDefaultInstance()) {
             isAreaOwnerCommand_ =
               com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.newBuilder(isAreaOwnerCommand_).mergeFrom(value).buildPartial();
@@ -34167,7 +34359,7 @@ public final class Request {
         } else {
           isAreaOwnerCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00004000;
+        bitField4_ |= 0x00008000;
         return this;
       }
       /**
@@ -34180,14 +34372,14 @@ public final class Request {
         } else {
           isAreaOwnerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00004000);
+        bitField4_ = (bitField4_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestIsAreaOwnerCommand isAreaOwnerCommand = 201;</code>
        */
       public com.trans.pixel.protoc.AreaProto.RequestIsAreaOwnerCommand.Builder getIsAreaOwnerCommandBuilder() {
-        bitField4_ |= 0x00004000;
+        bitField4_ |= 0x00008000;
         onChanged();
         return getIsAreaOwnerCommandFieldBuilder().getBuilder();
       }
@@ -34226,7 +34418,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestOpenFetterCommand openFetterCommand = 202;</code>
        */
       public boolean hasOpenFetterCommand() {
-        return ((bitField4_ & 0x00008000) == 0x00008000);
+        return ((bitField4_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestOpenFetterCommand openFetterCommand = 202;</code>
@@ -34251,7 +34443,7 @@ public final class Request {
         } else {
           openFetterCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00008000;
+        bitField4_ |= 0x00010000;
         return this;
       }
       /**
@@ -34265,7 +34457,7 @@ public final class Request {
         } else {
           openFetterCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00008000;
+        bitField4_ |= 0x00010000;
         return this;
       }
       /**
@@ -34273,7 +34465,7 @@ public final class Request {
        */
       public Builder mergeOpenFetterCommand(com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand value) {
         if (openFetterCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00008000) == 0x00008000) &&
+          if (((bitField4_ & 0x00010000) == 0x00010000) &&
               openFetterCommand_ != com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.getDefaultInstance()) {
             openFetterCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.newBuilder(openFetterCommand_).mergeFrom(value).buildPartial();
@@ -34284,7 +34476,7 @@ public final class Request {
         } else {
           openFetterCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00008000;
+        bitField4_ |= 0x00010000;
         return this;
       }
       /**
@@ -34297,14 +34489,14 @@ public final class Request {
         } else {
           openFetterCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00008000);
+        bitField4_ = (bitField4_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestOpenFetterCommand openFetterCommand = 202;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand.Builder getOpenFetterCommandBuilder() {
-        bitField4_ |= 0x00008000;
+        bitField4_ |= 0x00010000;
         onChanged();
         return getOpenFetterCommandFieldBuilder().getBuilder();
       }
@@ -34343,7 +34535,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserTaskCommand userTaskCommand = 203;</code>
        */
       public boolean hasUserTaskCommand() {
-        return ((bitField4_ & 0x00010000) == 0x00010000);
+        return ((bitField4_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserTaskCommand userTaskCommand = 203;</code>
@@ -34368,7 +34560,7 @@ public final class Request {
         } else {
           userTaskCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00010000;
+        bitField4_ |= 0x00020000;
         return this;
       }
       /**
@@ -34382,7 +34574,7 @@ public final class Request {
         } else {
           userTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00010000;
+        bitField4_ |= 0x00020000;
         return this;
       }
       /**
@@ -34390,7 +34582,7 @@ public final class Request {
        */
       public Builder mergeUserTaskCommand(com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand value) {
         if (userTaskCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00010000) == 0x00010000) &&
+          if (((bitField4_ & 0x00020000) == 0x00020000) &&
               userTaskCommand_ != com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.getDefaultInstance()) {
             userTaskCommand_ =
               com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.newBuilder(userTaskCommand_).mergeFrom(value).buildPartial();
@@ -34401,7 +34593,7 @@ public final class Request {
         } else {
           userTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00010000;
+        bitField4_ |= 0x00020000;
         return this;
       }
       /**
@@ -34414,14 +34606,14 @@ public final class Request {
         } else {
           userTaskCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00010000);
+        bitField4_ = (bitField4_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserTaskCommand userTaskCommand = 203;</code>
        */
       public com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand.Builder getUserTaskCommandBuilder() {
-        bitField4_ |= 0x00010000;
+        bitField4_ |= 0x00020000;
         onChanged();
         return getUserTaskCommandFieldBuilder().getBuilder();
       }
@@ -34460,7 +34652,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGetTaskRewardCommand getTaskRewardCommand = 204;</code>
        */
       public boolean hasGetTaskRewardCommand() {
-        return ((bitField4_ & 0x00020000) == 0x00020000);
+        return ((bitField4_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetTaskRewardCommand getTaskRewardCommand = 204;</code>
@@ -34485,7 +34677,7 @@ public final class Request {
         } else {
           getTaskRewardCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00020000;
+        bitField4_ |= 0x00040000;
         return this;
       }
       /**
@@ -34499,7 +34691,7 @@ public final class Request {
         } else {
           getTaskRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00020000;
+        bitField4_ |= 0x00040000;
         return this;
       }
       /**
@@ -34507,7 +34699,7 @@ public final class Request {
        */
       public Builder mergeGetTaskRewardCommand(com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand value) {
         if (getTaskRewardCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00020000) == 0x00020000) &&
+          if (((bitField4_ & 0x00040000) == 0x00040000) &&
               getTaskRewardCommand_ != com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.getDefaultInstance()) {
             getTaskRewardCommand_ =
               com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.newBuilder(getTaskRewardCommand_).mergeFrom(value).buildPartial();
@@ -34518,7 +34710,7 @@ public final class Request {
         } else {
           getTaskRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00020000;
+        bitField4_ |= 0x00040000;
         return this;
       }
       /**
@@ -34531,14 +34723,14 @@ public final class Request {
         } else {
           getTaskRewardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00020000);
+        bitField4_ = (bitField4_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetTaskRewardCommand getTaskRewardCommand = 204;</code>
        */
       public com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand.Builder getGetTaskRewardCommandBuilder() {
-        bitField4_ |= 0x00020000;
+        bitField4_ |= 0x00040000;
         onChanged();
         return getGetTaskRewardCommandFieldBuilder().getBuilder();
       }
@@ -34577,7 +34769,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBattletowerCommand submitBattletowerCommand = 205;</code>
        */
       public boolean hasSubmitBattletowerCommand() {
-        return ((bitField4_ & 0x00040000) == 0x00040000);
+        return ((bitField4_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBattletowerCommand submitBattletowerCommand = 205;</code>
@@ -34602,7 +34794,7 @@ public final class Request {
         } else {
           submitBattletowerCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00040000;
+        bitField4_ |= 0x00080000;
         return this;
       }
       /**
@@ -34616,7 +34808,7 @@ public final class Request {
         } else {
           submitBattletowerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00040000;
+        bitField4_ |= 0x00080000;
         return this;
       }
       /**
@@ -34624,7 +34816,7 @@ public final class Request {
        */
       public Builder mergeSubmitBattletowerCommand(com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand value) {
         if (submitBattletowerCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00040000) == 0x00040000) &&
+          if (((bitField4_ & 0x00080000) == 0x00080000) &&
               submitBattletowerCommand_ != com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.getDefaultInstance()) {
             submitBattletowerCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.newBuilder(submitBattletowerCommand_).mergeFrom(value).buildPartial();
@@ -34635,7 +34827,7 @@ public final class Request {
         } else {
           submitBattletowerCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00040000;
+        bitField4_ |= 0x00080000;
         return this;
       }
       /**
@@ -34648,14 +34840,14 @@ public final class Request {
         } else {
           submitBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00040000);
+        bitField4_ = (bitField4_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBattletowerCommand submitBattletowerCommand = 205;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand.Builder getSubmitBattletowerCommandBuilder() {
-        bitField4_ |= 0x00040000;
+        bitField4_ |= 0x00080000;
         onChanged();
         return getSubmitBattletowerCommandFieldBuilder().getBuilder();
       }
@@ -34694,7 +34886,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestResetBattletowerCommand resetBattletowerCommand = 206;</code>
        */
       public boolean hasResetBattletowerCommand() {
-        return ((bitField4_ & 0x00080000) == 0x00080000);
+        return ((bitField4_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestResetBattletowerCommand resetBattletowerCommand = 206;</code>
@@ -34719,7 +34911,7 @@ public final class Request {
         } else {
           resetBattletowerCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00080000;
+        bitField4_ |= 0x00100000;
         return this;
       }
       /**
@@ -34733,7 +34925,7 @@ public final class Request {
         } else {
           resetBattletowerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00080000;
+        bitField4_ |= 0x00100000;
         return this;
       }
       /**
@@ -34741,7 +34933,7 @@ public final class Request {
        */
       public Builder mergeResetBattletowerCommand(com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand value) {
         if (resetBattletowerCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00080000) == 0x00080000) &&
+          if (((bitField4_ & 0x00100000) == 0x00100000) &&
               resetBattletowerCommand_ != com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.getDefaultInstance()) {
             resetBattletowerCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.newBuilder(resetBattletowerCommand_).mergeFrom(value).buildPartial();
@@ -34752,7 +34944,7 @@ public final class Request {
         } else {
           resetBattletowerCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00080000;
+        bitField4_ |= 0x00100000;
         return this;
       }
       /**
@@ -34765,14 +34957,14 @@ public final class Request {
         } else {
           resetBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00080000);
+        bitField4_ = (bitField4_ & ~0x00100000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestResetBattletowerCommand resetBattletowerCommand = 206;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestResetBattletowerCommand.Builder getResetBattletowerCommandBuilder() {
-        bitField4_ |= 0x00080000;
+        bitField4_ |= 0x00100000;
         onChanged();
         return getResetBattletowerCommandFieldBuilder().getBuilder();
       }
@@ -34811,7 +35003,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGetBattletowerCommand getBattletowerCommand = 207;</code>
        */
       public boolean hasGetBattletowerCommand() {
-        return ((bitField4_ & 0x00100000) == 0x00100000);
+        return ((bitField4_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetBattletowerCommand getBattletowerCommand = 207;</code>
@@ -34836,7 +35028,7 @@ public final class Request {
         } else {
           getBattletowerCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00100000;
+        bitField4_ |= 0x00200000;
         return this;
       }
       /**
@@ -34850,7 +35042,7 @@ public final class Request {
         } else {
           getBattletowerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00100000;
+        bitField4_ |= 0x00200000;
         return this;
       }
       /**
@@ -34858,7 +35050,7 @@ public final class Request {
        */
       public Builder mergeGetBattletowerCommand(com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand value) {
         if (getBattletowerCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00100000) == 0x00100000) &&
+          if (((bitField4_ & 0x00200000) == 0x00200000) &&
               getBattletowerCommand_ != com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.getDefaultInstance()) {
             getBattletowerCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.newBuilder(getBattletowerCommand_).mergeFrom(value).buildPartial();
@@ -34869,7 +35061,7 @@ public final class Request {
         } else {
           getBattletowerCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00100000;
+        bitField4_ |= 0x00200000;
         return this;
       }
       /**
@@ -34882,14 +35074,14 @@ public final class Request {
         } else {
           getBattletowerCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00100000);
+        bitField4_ = (bitField4_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGetBattletowerCommand getBattletowerCommand = 207;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestGetBattletowerCommand.Builder getGetBattletowerCommandBuilder() {
-        bitField4_ |= 0x00100000;
+        bitField4_ |= 0x00200000;
         onChanged();
         return getGetBattletowerCommandFieldBuilder().getBuilder();
       }
@@ -34928,7 +35120,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopCommand battletowerShopCommand = 208;</code>
        */
       public boolean hasBattletowerShopCommand() {
-        return ((bitField4_ & 0x00200000) == 0x00200000);
+        return ((bitField4_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopCommand battletowerShopCommand = 208;</code>
@@ -34953,7 +35145,7 @@ public final class Request {
         } else {
           battletowerShopCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00200000;
+        bitField4_ |= 0x00400000;
         return this;
       }
       /**
@@ -34967,7 +35159,7 @@ public final class Request {
         } else {
           battletowerShopCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00200000;
+        bitField4_ |= 0x00400000;
         return this;
       }
       /**
@@ -34975,7 +35167,7 @@ public final class Request {
        */
       public Builder mergeBattletowerShopCommand(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand value) {
         if (battletowerShopCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00200000) == 0x00200000) &&
+          if (((bitField4_ & 0x00400000) == 0x00400000) &&
               battletowerShopCommand_ != com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.getDefaultInstance()) {
             battletowerShopCommand_ =
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.newBuilder(battletowerShopCommand_).mergeFrom(value).buildPartial();
@@ -34986,7 +35178,7 @@ public final class Request {
         } else {
           battletowerShopCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00200000;
+        bitField4_ |= 0x00400000;
         return this;
       }
       /**
@@ -34999,14 +35191,14 @@ public final class Request {
         } else {
           battletowerShopCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00200000);
+        bitField4_ = (bitField4_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopCommand battletowerShopCommand = 208;</code>
        */
       public com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand.Builder getBattletowerShopCommandBuilder() {
-        bitField4_ |= 0x00200000;
+        bitField4_ |= 0x00400000;
         onChanged();
         return getBattletowerShopCommandFieldBuilder().getBuilder();
       }
@@ -35045,7 +35237,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;</code>
        */
       public boolean hasBattletowerShopPurchaseCommand() {
-        return ((bitField4_ & 0x00400000) == 0x00400000);
+        return ((bitField4_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;</code>
@@ -35070,7 +35262,7 @@ public final class Request {
         } else {
           battletowerShopPurchaseCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00400000;
+        bitField4_ |= 0x00800000;
         return this;
       }
       /**
@@ -35084,7 +35276,7 @@ public final class Request {
         } else {
           battletowerShopPurchaseCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00400000;
+        bitField4_ |= 0x00800000;
         return this;
       }
       /**
@@ -35092,7 +35284,7 @@ public final class Request {
        */
       public Builder mergeBattletowerShopPurchaseCommand(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand value) {
         if (battletowerShopPurchaseCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00400000) == 0x00400000) &&
+          if (((bitField4_ & 0x00800000) == 0x00800000) &&
               battletowerShopPurchaseCommand_ != com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.getDefaultInstance()) {
             battletowerShopPurchaseCommand_ =
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.newBuilder(battletowerShopPurchaseCommand_).mergeFrom(value).buildPartial();
@@ -35103,7 +35295,7 @@ public final class Request {
         } else {
           battletowerShopPurchaseCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00400000;
+        bitField4_ |= 0x00800000;
         return this;
       }
       /**
@@ -35116,14 +35308,14 @@ public final class Request {
         } else {
           battletowerShopPurchaseCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00400000);
+        bitField4_ = (bitField4_ & ~0x00800000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopPurchaseCommand battletowerShopPurchaseCommand = 209;</code>
        */
       public com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand.Builder getBattletowerShopPurchaseCommandBuilder() {
-        bitField4_ |= 0x00400000;
+        bitField4_ |= 0x00800000;
         onChanged();
         return getBattletowerShopPurchaseCommandFieldBuilder().getBuilder();
       }
@@ -35162,7 +35354,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;</code>
        */
       public boolean hasBattletowerShopRefreshCommand() {
-        return ((bitField4_ & 0x00800000) == 0x00800000);
+        return ((bitField4_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;</code>
@@ -35187,7 +35379,7 @@ public final class Request {
         } else {
           battletowerShopRefreshCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x00800000;
+        bitField4_ |= 0x01000000;
         return this;
       }
       /**
@@ -35201,7 +35393,7 @@ public final class Request {
         } else {
           battletowerShopRefreshCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x00800000;
+        bitField4_ |= 0x01000000;
         return this;
       }
       /**
@@ -35209,7 +35401,7 @@ public final class Request {
        */
       public Builder mergeBattletowerShopRefreshCommand(com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand value) {
         if (battletowerShopRefreshCommandBuilder_ == null) {
-          if (((bitField4_ & 0x00800000) == 0x00800000) &&
+          if (((bitField4_ & 0x01000000) == 0x01000000) &&
               battletowerShopRefreshCommand_ != com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.getDefaultInstance()) {
             battletowerShopRefreshCommand_ =
               com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.newBuilder(battletowerShopRefreshCommand_).mergeFrom(value).buildPartial();
@@ -35220,7 +35412,7 @@ public final class Request {
         } else {
           battletowerShopRefreshCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x00800000;
+        bitField4_ |= 0x01000000;
         return this;
       }
       /**
@@ -35233,14 +35425,14 @@ public final class Request {
         } else {
           battletowerShopRefreshCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x00800000);
+        bitField4_ = (bitField4_ & ~0x01000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBattletowerShopRefreshCommand battletowerShopRefreshCommand = 210;</code>
        */
       public com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand.Builder getBattletowerShopRefreshCommandBuilder() {
-        bitField4_ |= 0x00800000;
+        bitField4_ |= 0x01000000;
         onChanged();
         return getBattletowerShopRefreshCommandFieldBuilder().getBuilder();
       }
@@ -35279,7 +35471,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBloodEnterCommand bloodEnterCommand = 211;</code>
        */
       public boolean hasBloodEnterCommand() {
-        return ((bitField4_ & 0x01000000) == 0x01000000);
+        return ((bitField4_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBloodEnterCommand bloodEnterCommand = 211;</code>
@@ -35304,7 +35496,7 @@ public final class Request {
         } else {
           bloodEnterCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x01000000;
+        bitField4_ |= 0x02000000;
         return this;
       }
       /**
@@ -35318,7 +35510,7 @@ public final class Request {
         } else {
           bloodEnterCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x01000000;
+        bitField4_ |= 0x02000000;
         return this;
       }
       /**
@@ -35326,7 +35518,7 @@ public final class Request {
        */
       public Builder mergeBloodEnterCommand(com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand value) {
         if (bloodEnterCommandBuilder_ == null) {
-          if (((bitField4_ & 0x01000000) == 0x01000000) &&
+          if (((bitField4_ & 0x02000000) == 0x02000000) &&
               bloodEnterCommand_ != com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.getDefaultInstance()) {
             bloodEnterCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.newBuilder(bloodEnterCommand_).mergeFrom(value).buildPartial();
@@ -35337,7 +35529,7 @@ public final class Request {
         } else {
           bloodEnterCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x01000000;
+        bitField4_ |= 0x02000000;
         return this;
       }
       /**
@@ -35350,14 +35542,14 @@ public final class Request {
         } else {
           bloodEnterCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x01000000);
+        bitField4_ = (bitField4_ & ~0x02000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBloodEnterCommand bloodEnterCommand = 211;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand.Builder getBloodEnterCommandBuilder() {
-        bitField4_ |= 0x01000000;
+        bitField4_ |= 0x02000000;
         onChanged();
         return getBloodEnterCommandFieldBuilder().getBuilder();
       }
@@ -35396,7 +35588,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBloodXiazhuCommand bloodXiazhuCommand = 212;</code>
        */
       public boolean hasBloodXiazhuCommand() {
-        return ((bitField4_ & 0x02000000) == 0x02000000);
+        return ((bitField4_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBloodXiazhuCommand bloodXiazhuCommand = 212;</code>
@@ -35421,7 +35613,7 @@ public final class Request {
         } else {
           bloodXiazhuCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x02000000;
+        bitField4_ |= 0x04000000;
         return this;
       }
       /**
@@ -35435,7 +35627,7 @@ public final class Request {
         } else {
           bloodXiazhuCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x02000000;
+        bitField4_ |= 0x04000000;
         return this;
       }
       /**
@@ -35443,7 +35635,7 @@ public final class Request {
        */
       public Builder mergeBloodXiazhuCommand(com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand value) {
         if (bloodXiazhuCommandBuilder_ == null) {
-          if (((bitField4_ & 0x02000000) == 0x02000000) &&
+          if (((bitField4_ & 0x04000000) == 0x04000000) &&
               bloodXiazhuCommand_ != com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.getDefaultInstance()) {
             bloodXiazhuCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.newBuilder(bloodXiazhuCommand_).mergeFrom(value).buildPartial();
@@ -35454,7 +35646,7 @@ public final class Request {
         } else {
           bloodXiazhuCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x02000000;
+        bitField4_ |= 0x04000000;
         return this;
       }
       /**
@@ -35467,14 +35659,14 @@ public final class Request {
         } else {
           bloodXiazhuCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x02000000);
+        bitField4_ = (bitField4_ & ~0x04000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBloodXiazhuCommand bloodXiazhuCommand = 212;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand.Builder getBloodXiazhuCommandBuilder() {
-        bitField4_ |= 0x02000000;
+        bitField4_ |= 0x04000000;
         onChanged();
         return getBloodXiazhuCommandFieldBuilder().getBuilder();
       }
@@ -35513,7 +35705,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;</code>
        */
       public boolean hasQueryNoticeBoardCommand() {
-        return ((bitField4_ & 0x04000000) == 0x04000000);
+        return ((bitField4_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;</code>
@@ -35538,7 +35730,7 @@ public final class Request {
         } else {
           queryNoticeBoardCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x04000000;
+        bitField4_ |= 0x08000000;
         return this;
       }
       /**
@@ -35552,7 +35744,7 @@ public final class Request {
         } else {
           queryNoticeBoardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x04000000;
+        bitField4_ |= 0x08000000;
         return this;
       }
       /**
@@ -35560,7 +35752,7 @@ public final class Request {
        */
       public Builder mergeQueryNoticeBoardCommand(com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand value) {
         if (queryNoticeBoardCommandBuilder_ == null) {
-          if (((bitField4_ & 0x04000000) == 0x04000000) &&
+          if (((bitField4_ & 0x08000000) == 0x08000000) &&
               queryNoticeBoardCommand_ != com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.getDefaultInstance()) {
             queryNoticeBoardCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.newBuilder(queryNoticeBoardCommand_).mergeFrom(value).buildPartial();
@@ -35571,7 +35763,7 @@ public final class Request {
         } else {
           queryNoticeBoardCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x04000000;
+        bitField4_ |= 0x08000000;
         return this;
       }
       /**
@@ -35584,14 +35776,14 @@ public final class Request {
         } else {
           queryNoticeBoardCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x04000000);
+        bitField4_ = (bitField4_ & ~0x08000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQueryNoticeBoardCommand queryNoticeBoardCommand = 213;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand.Builder getQueryNoticeBoardCommandBuilder() {
-        bitField4_ |= 0x04000000;
+        bitField4_ |= 0x08000000;
         onChanged();
         return getQueryNoticeBoardCommandFieldBuilder().getBuilder();
       }
@@ -35630,7 +35822,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestHelpLevelCommand helpLevelCommand = 214;</code>
        */
       public boolean hasHelpLevelCommand() {
-        return ((bitField4_ & 0x08000000) == 0x08000000);
+        return ((bitField4_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHelpLevelCommand helpLevelCommand = 214;</code>
@@ -35655,7 +35847,7 @@ public final class Request {
         } else {
           helpLevelCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x08000000;
+        bitField4_ |= 0x10000000;
         return this;
       }
       /**
@@ -35669,7 +35861,7 @@ public final class Request {
         } else {
           helpLevelCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x08000000;
+        bitField4_ |= 0x10000000;
         return this;
       }
       /**
@@ -35677,7 +35869,7 @@ public final class Request {
        */
       public Builder mergeHelpLevelCommand(com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand value) {
         if (helpLevelCommandBuilder_ == null) {
-          if (((bitField4_ & 0x08000000) == 0x08000000) &&
+          if (((bitField4_ & 0x10000000) == 0x10000000) &&
               helpLevelCommand_ != com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.getDefaultInstance()) {
             helpLevelCommand_ =
               com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.newBuilder(helpLevelCommand_).mergeFrom(value).buildPartial();
@@ -35688,7 +35880,7 @@ public final class Request {
         } else {
           helpLevelCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x08000000;
+        bitField4_ |= 0x10000000;
         return this;
       }
       /**
@@ -35701,14 +35893,14 @@ public final class Request {
         } else {
           helpLevelCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x08000000);
+        bitField4_ = (bitField4_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestHelpLevelCommand helpLevelCommand = 214;</code>
        */
       public com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand.Builder getHelpLevelCommandBuilder() {
-        bitField4_ |= 0x08000000;
+        bitField4_ |= 0x10000000;
         onChanged();
         return getHelpLevelCommandFieldBuilder().getBuilder();
       }
@@ -35747,7 +35939,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestInviteFightBossCommand inviteFightBossCommand = 215;</code>
        */
       public boolean hasInviteFightBossCommand() {
-        return ((bitField4_ & 0x10000000) == 0x10000000);
+        return ((bitField4_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestInviteFightBossCommand inviteFightBossCommand = 215;</code>
@@ -35772,7 +35964,7 @@ public final class Request {
         } else {
           inviteFightBossCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x10000000;
+        bitField4_ |= 0x20000000;
         return this;
       }
       /**
@@ -35786,7 +35978,7 @@ public final class Request {
         } else {
           inviteFightBossCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x10000000;
+        bitField4_ |= 0x20000000;
         return this;
       }
       /**
@@ -35794,7 +35986,7 @@ public final class Request {
        */
       public Builder mergeInviteFightBossCommand(com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand value) {
         if (inviteFightBossCommandBuilder_ == null) {
-          if (((bitField4_ & 0x10000000) == 0x10000000) &&
+          if (((bitField4_ & 0x20000000) == 0x20000000) &&
               inviteFightBossCommand_ != com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.getDefaultInstance()) {
             inviteFightBossCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.newBuilder(inviteFightBossCommand_).mergeFrom(value).buildPartial();
@@ -35805,7 +35997,7 @@ public final class Request {
         } else {
           inviteFightBossCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x10000000;
+        bitField4_ |= 0x20000000;
         return this;
       }
       /**
@@ -35818,14 +36010,14 @@ public final class Request {
         } else {
           inviteFightBossCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x10000000);
+        bitField4_ = (bitField4_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestInviteFightBossCommand inviteFightBossCommand = 215;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestInviteFightBossCommand.Builder getInviteFightBossCommandBuilder() {
-        bitField4_ |= 0x10000000;
+        bitField4_ |= 0x20000000;
         onChanged();
         return getInviteFightBossCommandFieldBuilder().getBuilder();
       }
@@ -35864,7 +36056,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestQuitFightBossCommand quitFightBossCommand = 216;</code>
        */
       public boolean hasQuitFightBossCommand() {
-        return ((bitField4_ & 0x20000000) == 0x20000000);
+        return ((bitField4_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQuitFightBossCommand quitFightBossCommand = 216;</code>
@@ -35889,7 +36081,7 @@ public final class Request {
         } else {
           quitFightBossCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x20000000;
+        bitField4_ |= 0x40000000;
         return this;
       }
       /**
@@ -35903,7 +36095,7 @@ public final class Request {
         } else {
           quitFightBossCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x20000000;
+        bitField4_ |= 0x40000000;
         return this;
       }
       /**
@@ -35911,7 +36103,7 @@ public final class Request {
        */
       public Builder mergeQuitFightBossCommand(com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand value) {
         if (quitFightBossCommandBuilder_ == null) {
-          if (((bitField4_ & 0x20000000) == 0x20000000) &&
+          if (((bitField4_ & 0x40000000) == 0x40000000) &&
               quitFightBossCommand_ != com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.getDefaultInstance()) {
             quitFightBossCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.newBuilder(quitFightBossCommand_).mergeFrom(value).buildPartial();
@@ -35922,7 +36114,7 @@ public final class Request {
         } else {
           quitFightBossCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x20000000;
+        bitField4_ |= 0x40000000;
         return this;
       }
       /**
@@ -35935,14 +36127,14 @@ public final class Request {
         } else {
           quitFightBossCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x20000000);
+        bitField4_ = (bitField4_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQuitFightBossCommand quitFightBossCommand = 216;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestQuitFightBossCommand.Builder getQuitFightBossCommandBuilder() {
-        bitField4_ |= 0x20000000;
+        bitField4_ |= 0x40000000;
         onChanged();
         return getQuitFightBossCommandFieldBuilder().getBuilder();
       }
@@ -35981,7 +36173,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;</code>
        */
       public boolean hasSubmitBossScoreCommand() {
-        return ((bitField4_ & 0x40000000) == 0x40000000);
+        return ((bitField4_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;</code>
@@ -36006,7 +36198,7 @@ public final class Request {
         } else {
           submitBossScoreCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x40000000;
+        bitField4_ |= 0x80000000;
         return this;
       }
       /**
@@ -36020,7 +36212,7 @@ public final class Request {
         } else {
           submitBossScoreCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x40000000;
+        bitField4_ |= 0x80000000;
         return this;
       }
       /**
@@ -36028,7 +36220,7 @@ public final class Request {
        */
       public Builder mergeSubmitBossScoreCommand(com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand value) {
         if (submitBossScoreCommandBuilder_ == null) {
-          if (((bitField4_ & 0x40000000) == 0x40000000) &&
+          if (((bitField4_ & 0x80000000) == 0x80000000) &&
               submitBossScoreCommand_ != com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.getDefaultInstance()) {
             submitBossScoreCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.newBuilder(submitBossScoreCommand_).mergeFrom(value).buildPartial();
@@ -36039,7 +36231,7 @@ public final class Request {
         } else {
           submitBossScoreCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x40000000;
+        bitField4_ |= 0x80000000;
         return this;
       }
       /**
@@ -36052,14 +36244,14 @@ public final class Request {
         } else {
           submitBossScoreCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x40000000);
+        bitField4_ = (bitField4_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitBossRoomScoreCommand submitBossScoreCommand = 217;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand.Builder getSubmitBossScoreCommandBuilder() {
-        bitField4_ |= 0x40000000;
+        bitField4_ |= 0x80000000;
         onChanged();
         return getSubmitBossScoreCommandFieldBuilder().getBuilder();
       }
@@ -36098,7 +36290,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserInfoCommand userInfoCommand = 218;</code>
        */
       public boolean hasUserInfoCommand() {
-        return ((bitField4_ & 0x80000000) == 0x80000000);
+        return ((bitField5_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserInfoCommand userInfoCommand = 218;</code>
@@ -36123,7 +36315,7 @@ public final class Request {
         } else {
           userInfoCommandBuilder_.setMessage(value);
         }
-        bitField4_ |= 0x80000000;
+        bitField5_ |= 0x00000001;
         return this;
       }
       /**
@@ -36137,7 +36329,7 @@ public final class Request {
         } else {
           userInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField4_ |= 0x80000000;
+        bitField5_ |= 0x00000001;
         return this;
       }
       /**
@@ -36145,7 +36337,7 @@ public final class Request {
        */
       public Builder mergeUserInfoCommand(com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand value) {
         if (userInfoCommandBuilder_ == null) {
-          if (((bitField4_ & 0x80000000) == 0x80000000) &&
+          if (((bitField5_ & 0x00000001) == 0x00000001) &&
               userInfoCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.getDefaultInstance()) {
             userInfoCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.newBuilder(userInfoCommand_).mergeFrom(value).buildPartial();
@@ -36156,7 +36348,7 @@ public final class Request {
         } else {
           userInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField4_ |= 0x80000000;
+        bitField5_ |= 0x00000001;
         return this;
       }
       /**
@@ -36169,14 +36361,14 @@ public final class Request {
         } else {
           userInfoCommandBuilder_.clear();
         }
-        bitField4_ = (bitField4_ & ~0x80000000);
+        bitField5_ = (bitField5_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserInfoCommand userInfoCommand = 218;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestUserInfoCommand.Builder getUserInfoCommandBuilder() {
-        bitField4_ |= 0x80000000;
+        bitField5_ |= 0x00000001;
         onChanged();
         return getUserInfoCommandFieldBuilder().getBuilder();
       }
@@ -36215,7 +36407,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRechargeCommand rechargeCommand = 219;</code>
        */
       public boolean hasRechargeCommand() {
-        return ((bitField5_ & 0x00000001) == 0x00000001);
+        return ((bitField5_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRechargeCommand rechargeCommand = 219;</code>
@@ -36240,7 +36432,7 @@ public final class Request {
         } else {
           rechargeCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000001;
+        bitField5_ |= 0x00000002;
         return this;
       }
       /**
@@ -36254,7 +36446,7 @@ public final class Request {
         } else {
           rechargeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000001;
+        bitField5_ |= 0x00000002;
         return this;
       }
       /**
@@ -36262,7 +36454,7 @@ public final class Request {
        */
       public Builder mergeRechargeCommand(com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand value) {
         if (rechargeCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000001) == 0x00000001) &&
+          if (((bitField5_ & 0x00000002) == 0x00000002) &&
               rechargeCommand_ != com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.getDefaultInstance()) {
             rechargeCommand_ =
               com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.newBuilder(rechargeCommand_).mergeFrom(value).buildPartial();
@@ -36273,7 +36465,7 @@ public final class Request {
         } else {
           rechargeCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000001;
+        bitField5_ |= 0x00000002;
         return this;
       }
       /**
@@ -36286,14 +36478,14 @@ public final class Request {
         } else {
           rechargeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000001);
+        bitField5_ = (bitField5_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRechargeCommand rechargeCommand = 219;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.RequestRechargeCommand.Builder getRechargeCommandBuilder() {
-        bitField5_ |= 0x00000001;
+        bitField5_ |= 0x00000002;
         onChanged();
         return getRechargeCommandFieldBuilder().getBuilder();
       }
@@ -36332,7 +36524,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentupgradeCommand talentupgradeCommand = 220;</code>
        */
       public boolean hasTalentupgradeCommand() {
-        return ((bitField5_ & 0x00000002) == 0x00000002);
+        return ((bitField5_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentupgradeCommand talentupgradeCommand = 220;</code>
@@ -36357,7 +36549,7 @@ public final class Request {
         } else {
           talentupgradeCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000002;
+        bitField5_ |= 0x00000004;
         return this;
       }
       /**
@@ -36371,7 +36563,7 @@ public final class Request {
         } else {
           talentupgradeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000002;
+        bitField5_ |= 0x00000004;
         return this;
       }
       /**
@@ -36379,7 +36571,7 @@ public final class Request {
        */
       public Builder mergeTalentupgradeCommand(com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand value) {
         if (talentupgradeCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000002) == 0x00000002) &&
+          if (((bitField5_ & 0x00000004) == 0x00000004) &&
               talentupgradeCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.getDefaultInstance()) {
             talentupgradeCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.newBuilder(talentupgradeCommand_).mergeFrom(value).buildPartial();
@@ -36390,7 +36582,7 @@ public final class Request {
         } else {
           talentupgradeCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000002;
+        bitField5_ |= 0x00000004;
         return this;
       }
       /**
@@ -36403,14 +36595,14 @@ public final class Request {
         } else {
           talentupgradeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000002);
+        bitField5_ = (bitField5_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentupgradeCommand talentupgradeCommand = 220;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand.Builder getTalentupgradeCommandBuilder() {
-        bitField5_ |= 0x00000002;
+        bitField5_ |= 0x00000004;
         onChanged();
         return getTalentupgradeCommandFieldBuilder().getBuilder();
       }
@@ -36449,7 +36641,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeUseCommand talentChangeUseCommand = 223;</code>
        */
       public boolean hasTalentChangeUseCommand() {
-        return ((bitField5_ & 0x00000004) == 0x00000004);
+        return ((bitField5_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeUseCommand talentChangeUseCommand = 223;</code>
@@ -36474,7 +36666,7 @@ public final class Request {
         } else {
           talentChangeUseCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000004;
+        bitField5_ |= 0x00000008;
         return this;
       }
       /**
@@ -36488,7 +36680,7 @@ public final class Request {
         } else {
           talentChangeUseCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000004;
+        bitField5_ |= 0x00000008;
         return this;
       }
       /**
@@ -36496,7 +36688,7 @@ public final class Request {
        */
       public Builder mergeTalentChangeUseCommand(com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand value) {
         if (talentChangeUseCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000004) == 0x00000004) &&
+          if (((bitField5_ & 0x00000008) == 0x00000008) &&
               talentChangeUseCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.getDefaultInstance()) {
             talentChangeUseCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.newBuilder(talentChangeUseCommand_).mergeFrom(value).buildPartial();
@@ -36507,7 +36699,7 @@ public final class Request {
         } else {
           talentChangeUseCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000004;
+        bitField5_ |= 0x00000008;
         return this;
       }
       /**
@@ -36520,14 +36712,14 @@ public final class Request {
         } else {
           talentChangeUseCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000004);
+        bitField5_ = (bitField5_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeUseCommand talentChangeUseCommand = 223;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentChangeUseCommand.Builder getTalentChangeUseCommandBuilder() {
-        bitField5_ |= 0x00000004;
+        bitField5_ |= 0x00000008;
         onChanged();
         return getTalentChangeUseCommandFieldBuilder().getBuilder();
       }
@@ -36566,7 +36758,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;</code>
        */
       public boolean hasTalentChangeSkillCommand() {
-        return ((bitField5_ & 0x00000008) == 0x00000008);
+        return ((bitField5_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;</code>
@@ -36591,7 +36783,7 @@ public final class Request {
         } else {
           talentChangeSkillCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000008;
+        bitField5_ |= 0x00000010;
         return this;
       }
       /**
@@ -36605,7 +36797,7 @@ public final class Request {
         } else {
           talentChangeSkillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000008;
+        bitField5_ |= 0x00000010;
         return this;
       }
       /**
@@ -36613,7 +36805,7 @@ public final class Request {
        */
       public Builder mergeTalentChangeSkillCommand(com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand value) {
         if (talentChangeSkillCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000008) == 0x00000008) &&
+          if (((bitField5_ & 0x00000010) == 0x00000010) &&
               talentChangeSkillCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.getDefaultInstance()) {
             talentChangeSkillCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.newBuilder(talentChangeSkillCommand_).mergeFrom(value).buildPartial();
@@ -36624,7 +36816,7 @@ public final class Request {
         } else {
           talentChangeSkillCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000008;
+        bitField5_ |= 0x00000010;
         return this;
       }
       /**
@@ -36637,14 +36829,14 @@ public final class Request {
         } else {
           talentChangeSkillCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000008);
+        bitField5_ = (bitField5_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeSkillCommand talentChangeSkillCommand = 224;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand.Builder getTalentChangeSkillCommandBuilder() {
-        bitField5_ |= 0x00000008;
+        bitField5_ |= 0x00000010;
         onChanged();
         return getTalentChangeSkillCommandFieldBuilder().getBuilder();
       }
@@ -36683,7 +36875,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestStartBossRoomCommand startBossRoomCommand = 225;</code>
        */
       public boolean hasStartBossRoomCommand() {
-        return ((bitField5_ & 0x00000010) == 0x00000010);
+        return ((bitField5_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestStartBossRoomCommand startBossRoomCommand = 225;</code>
@@ -36708,7 +36900,7 @@ public final class Request {
         } else {
           startBossRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000010;
+        bitField5_ |= 0x00000020;
         return this;
       }
       /**
@@ -36722,7 +36914,7 @@ public final class Request {
         } else {
           startBossRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000010;
+        bitField5_ |= 0x00000020;
         return this;
       }
       /**
@@ -36730,7 +36922,7 @@ public final class Request {
        */
       public Builder mergeStartBossRoomCommand(com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand value) {
         if (startBossRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000010) == 0x00000010) &&
+          if (((bitField5_ & 0x00000020) == 0x00000020) &&
               startBossRoomCommand_ != com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.getDefaultInstance()) {
             startBossRoomCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.newBuilder(startBossRoomCommand_).mergeFrom(value).buildPartial();
@@ -36741,7 +36933,7 @@ public final class Request {
         } else {
           startBossRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000010;
+        bitField5_ |= 0x00000020;
         return this;
       }
       /**
@@ -36754,14 +36946,14 @@ public final class Request {
         } else {
           startBossRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000010);
+        bitField5_ = (bitField5_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestStartBossRoomCommand startBossRoomCommand = 225;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand.Builder getStartBossRoomCommandBuilder() {
-        bitField5_ |= 0x00000010;
+        bitField5_ |= 0x00000020;
         onChanged();
         return getStartBossRoomCommandFieldBuilder().getBuilder();
       }
@@ -36800,7 +36992,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestCreateBossRoomCommand createBossRoomCommand = 226;</code>
        */
       public boolean hasCreateBossRoomCommand() {
-        return ((bitField5_ & 0x00000020) == 0x00000020);
+        return ((bitField5_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateBossRoomCommand createBossRoomCommand = 226;</code>
@@ -36825,7 +37017,7 @@ public final class Request {
         } else {
           createBossRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000020;
+        bitField5_ |= 0x00000040;
         return this;
       }
       /**
@@ -36839,7 +37031,7 @@ public final class Request {
         } else {
           createBossRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000020;
+        bitField5_ |= 0x00000040;
         return this;
       }
       /**
@@ -36847,7 +37039,7 @@ public final class Request {
        */
       public Builder mergeCreateBossRoomCommand(com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand value) {
         if (createBossRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000020) == 0x00000020) &&
+          if (((bitField5_ & 0x00000040) == 0x00000040) &&
               createBossRoomCommand_ != com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.getDefaultInstance()) {
             createBossRoomCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.newBuilder(createBossRoomCommand_).mergeFrom(value).buildPartial();
@@ -36858,7 +37050,7 @@ public final class Request {
         } else {
           createBossRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000020;
+        bitField5_ |= 0x00000040;
         return this;
       }
       /**
@@ -36871,14 +37063,14 @@ public final class Request {
         } else {
           createBossRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000020);
+        bitField5_ = (bitField5_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateBossRoomCommand createBossRoomCommand = 226;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand.Builder getCreateBossRoomCommandBuilder() {
-        bitField5_ |= 0x00000020;
+        bitField5_ |= 0x00000040;
         onChanged();
         return getCreateBossRoomCommandFieldBuilder().getBuilder();
       }
@@ -36917,7 +37109,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBossRoomInfoCommand bossRoomInfoCommand = 227;</code>
        */
       public boolean hasBossRoomInfoCommand() {
-        return ((bitField5_ & 0x00000040) == 0x00000040);
+        return ((bitField5_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBossRoomInfoCommand bossRoomInfoCommand = 227;</code>
@@ -36942,7 +37134,7 @@ public final class Request {
         } else {
           bossRoomInfoCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000040;
+        bitField5_ |= 0x00000080;
         return this;
       }
       /**
@@ -36956,7 +37148,7 @@ public final class Request {
         } else {
           bossRoomInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000040;
+        bitField5_ |= 0x00000080;
         return this;
       }
       /**
@@ -36964,7 +37156,7 @@ public final class Request {
        */
       public Builder mergeBossRoomInfoCommand(com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand value) {
         if (bossRoomInfoCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000040) == 0x00000040) &&
+          if (((bitField5_ & 0x00000080) == 0x00000080) &&
               bossRoomInfoCommand_ != com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.getDefaultInstance()) {
             bossRoomInfoCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.newBuilder(bossRoomInfoCommand_).mergeFrom(value).buildPartial();
@@ -36975,7 +37167,7 @@ public final class Request {
         } else {
           bossRoomInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000040;
+        bitField5_ |= 0x00000080;
         return this;
       }
       /**
@@ -36988,14 +37180,14 @@ public final class Request {
         } else {
           bossRoomInfoCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000040);
+        bitField5_ = (bitField5_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBossRoomInfoCommand bossRoomInfoCommand = 227;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand.Builder getBossRoomInfoCommandBuilder() {
-        bitField5_ |= 0x00000040;
+        bitField5_ |= 0x00000080;
         onChanged();
         return getBossRoomInfoCommandFieldBuilder().getBuilder();
       }
@@ -37034,7 +37226,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEquipStrenthenCommand equipStrenthenCommand = 228;</code>
        */
       public boolean hasEquipStrenthenCommand() {
-        return ((bitField5_ & 0x00000080) == 0x00000080);
+        return ((bitField5_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipStrenthenCommand equipStrenthenCommand = 228;</code>
@@ -37059,7 +37251,7 @@ public final class Request {
         } else {
           equipStrenthenCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000080;
+        bitField5_ |= 0x00000100;
         return this;
       }
       /**
@@ -37073,7 +37265,7 @@ public final class Request {
         } else {
           equipStrenthenCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000080;
+        bitField5_ |= 0x00000100;
         return this;
       }
       /**
@@ -37081,7 +37273,7 @@ public final class Request {
        */
       public Builder mergeEquipStrenthenCommand(com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand value) {
         if (equipStrenthenCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000080) == 0x00000080) &&
+          if (((bitField5_ & 0x00000100) == 0x00000100) &&
               equipStrenthenCommand_ != com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.getDefaultInstance()) {
             equipStrenthenCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.newBuilder(equipStrenthenCommand_).mergeFrom(value).buildPartial();
@@ -37092,7 +37284,7 @@ public final class Request {
         } else {
           equipStrenthenCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000080;
+        bitField5_ |= 0x00000100;
         return this;
       }
       /**
@@ -37105,14 +37297,14 @@ public final class Request {
         } else {
           equipStrenthenCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000080);
+        bitField5_ = (bitField5_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipStrenthenCommand equipStrenthenCommand = 228;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand.Builder getEquipStrenthenCommandBuilder() {
-        bitField5_ |= 0x00000080;
+        bitField5_ |= 0x00000100;
         onChanged();
         return getEquipStrenthenCommandFieldBuilder().getBuilder();
       }
@@ -37151,7 +37343,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeCommand equipPokedeCommand = 229;</code>
        */
       public boolean hasEquipPokedeCommand() {
-        return ((bitField5_ & 0x00000100) == 0x00000100);
+        return ((bitField5_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeCommand equipPokedeCommand = 229;</code>
@@ -37176,7 +37368,7 @@ public final class Request {
         } else {
           equipPokedeCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000100;
+        bitField5_ |= 0x00000200;
         return this;
       }
       /**
@@ -37190,7 +37382,7 @@ public final class Request {
         } else {
           equipPokedeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000100;
+        bitField5_ |= 0x00000200;
         return this;
       }
       /**
@@ -37198,7 +37390,7 @@ public final class Request {
        */
       public Builder mergeEquipPokedeCommand(com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand value) {
         if (equipPokedeCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000100) == 0x00000100) &&
+          if (((bitField5_ & 0x00000200) == 0x00000200) &&
               equipPokedeCommand_ != com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.getDefaultInstance()) {
             equipPokedeCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.newBuilder(equipPokedeCommand_).mergeFrom(value).buildPartial();
@@ -37209,7 +37401,7 @@ public final class Request {
         } else {
           equipPokedeCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000100;
+        bitField5_ |= 0x00000200;
         return this;
       }
       /**
@@ -37222,14 +37414,14 @@ public final class Request {
         } else {
           equipPokedeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000100);
+        bitField5_ = (bitField5_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeCommand equipPokedeCommand = 229;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand.Builder getEquipPokedeCommandBuilder() {
-        bitField5_ |= 0x00000100;
+        bitField5_ |= 0x00000200;
         onChanged();
         return getEquipPokedeCommandFieldBuilder().getBuilder();
       }
@@ -37268,7 +37460,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
       public boolean hasTalentChangeEquipCommand() {
-        return ((bitField5_ & 0x00000200) == 0x00000200);
+        return ((bitField5_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
@@ -37293,7 +37485,7 @@ public final class Request {
         } else {
           talentChangeEquipCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000200;
+        bitField5_ |= 0x00000400;
         return this;
       }
       /**
@@ -37307,7 +37499,7 @@ public final class Request {
         } else {
           talentChangeEquipCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000200;
+        bitField5_ |= 0x00000400;
         return this;
       }
       /**
@@ -37315,7 +37507,7 @@ public final class Request {
        */
       public Builder mergeTalentChangeEquipCommand(com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand value) {
         if (talentChangeEquipCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000200) == 0x00000200) &&
+          if (((bitField5_ & 0x00000400) == 0x00000400) &&
               talentChangeEquipCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.getDefaultInstance()) {
             talentChangeEquipCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.newBuilder(talentChangeEquipCommand_).mergeFrom(value).buildPartial();
@@ -37326,7 +37518,7 @@ public final class Request {
         } else {
           talentChangeEquipCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000200;
+        bitField5_ |= 0x00000400;
         return this;
       }
       /**
@@ -37339,14 +37531,14 @@ public final class Request {
         } else {
           talentChangeEquipCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000200);
+        bitField5_ = (bitField5_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentChangeEquipCommand talentChangeEquipCommand = 230;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand.Builder getTalentChangeEquipCommandBuilder() {
-        bitField5_ |= 0x00000200;
+        bitField5_ |= 0x00000400;
         onChanged();
         return getTalentChangeEquipCommandFieldBuilder().getBuilder();
       }
@@ -37385,7 +37577,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;</code>
        */
       public boolean hasZanHeroMessageBoardCommand() {
-        return ((bitField5_ & 0x00000400) == 0x00000400);
+        return ((bitField5_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;</code>
@@ -37410,7 +37602,7 @@ public final class Request {
         } else {
           zanHeroMessageBoardCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000400;
+        bitField5_ |= 0x00000800;
         return this;
       }
       /**
@@ -37424,7 +37616,7 @@ public final class Request {
         } else {
           zanHeroMessageBoardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000400;
+        bitField5_ |= 0x00000800;
         return this;
       }
       /**
@@ -37432,7 +37624,7 @@ public final class Request {
        */
       public Builder mergeZanHeroMessageBoardCommand(com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand value) {
         if (zanHeroMessageBoardCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000400) == 0x00000400) &&
+          if (((bitField5_ & 0x00000800) == 0x00000800) &&
               zanHeroMessageBoardCommand_ != com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.getDefaultInstance()) {
             zanHeroMessageBoardCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.newBuilder(zanHeroMessageBoardCommand_).mergeFrom(value).buildPartial();
@@ -37443,7 +37635,7 @@ public final class Request {
         } else {
           zanHeroMessageBoardCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000400;
+        bitField5_ |= 0x00000800;
         return this;
       }
       /**
@@ -37456,14 +37648,14 @@ public final class Request {
         } else {
           zanHeroMessageBoardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000400);
+        bitField5_ = (bitField5_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestZanHeroMessageBoardCommand zanHeroMessageBoardCommand = 231;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand.Builder getZanHeroMessageBoardCommandBuilder() {
-        bitField5_ |= 0x00000400;
+        bitField5_ |= 0x00000800;
         onChanged();
         return getZanHeroMessageBoardCommandFieldBuilder().getBuilder();
       }
@@ -37502,7 +37694,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;</code>
        */
       public boolean hasCreateRewardTaskRoomCommand() {
-        return ((bitField5_ & 0x00000800) == 0x00000800);
+        return ((bitField5_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;</code>
@@ -37527,7 +37719,7 @@ public final class Request {
         } else {
           createRewardTaskRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00000800;
+        bitField5_ |= 0x00001000;
         return this;
       }
       /**
@@ -37541,7 +37733,7 @@ public final class Request {
         } else {
           createRewardTaskRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00000800;
+        bitField5_ |= 0x00001000;
         return this;
       }
       /**
@@ -37549,7 +37741,7 @@ public final class Request {
        */
       public Builder mergeCreateRewardTaskRoomCommand(com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand value) {
         if (createRewardTaskRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00000800) == 0x00000800) &&
+          if (((bitField5_ & 0x00001000) == 0x00001000) &&
               createRewardTaskRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.getDefaultInstance()) {
             createRewardTaskRoomCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.newBuilder(createRewardTaskRoomCommand_).mergeFrom(value).buildPartial();
@@ -37560,7 +37752,7 @@ public final class Request {
         } else {
           createRewardTaskRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00000800;
+        bitField5_ |= 0x00001000;
         return this;
       }
       /**
@@ -37573,14 +37765,14 @@ public final class Request {
         } else {
           createRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00000800);
+        bitField5_ = (bitField5_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCreateRewardTaskRoomCommand createRewardTaskRoomCommand = 232;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand.Builder getCreateRewardTaskRoomCommandBuilder() {
-        bitField5_ |= 0x00000800;
+        bitField5_ |= 0x00001000;
         onChanged();
         return getCreateRewardTaskRoomCommandFieldBuilder().getBuilder();
       }
@@ -37619,7 +37811,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;</code>
        */
       public boolean hasQuitRewardTaskRoomCommand() {
-        return ((bitField5_ & 0x00001000) == 0x00001000);
+        return ((bitField5_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;</code>
@@ -37644,7 +37836,7 @@ public final class Request {
         } else {
           quitRewardTaskRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00001000;
+        bitField5_ |= 0x00002000;
         return this;
       }
       /**
@@ -37658,7 +37850,7 @@ public final class Request {
         } else {
           quitRewardTaskRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00001000;
+        bitField5_ |= 0x00002000;
         return this;
       }
       /**
@@ -37666,7 +37858,7 @@ public final class Request {
        */
       public Builder mergeQuitRewardTaskRoomCommand(com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand value) {
         if (quitRewardTaskRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00001000) == 0x00001000) &&
+          if (((bitField5_ & 0x00002000) == 0x00002000) &&
               quitRewardTaskRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.getDefaultInstance()) {
             quitRewardTaskRoomCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.newBuilder(quitRewardTaskRoomCommand_).mergeFrom(value).buildPartial();
@@ -37677,7 +37869,7 @@ public final class Request {
         } else {
           quitRewardTaskRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00001000;
+        bitField5_ |= 0x00002000;
         return this;
       }
       /**
@@ -37690,14 +37882,14 @@ public final class Request {
         } else {
           quitRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00001000);
+        bitField5_ = (bitField5_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestQuitRewardTaskRoomCommand quitRewardTaskRoomCommand = 233;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand.Builder getQuitRewardTaskRoomCommandBuilder() {
-        bitField5_ |= 0x00001000;
+        bitField5_ |= 0x00002000;
         onChanged();
         return getQuitRewardTaskRoomCommandFieldBuilder().getBuilder();
       }
@@ -37736,7 +37928,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;</code>
        */
       public boolean hasInviteToRewardTaskRoomCommand() {
-        return ((bitField5_ & 0x00002000) == 0x00002000);
+        return ((bitField5_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;</code>
@@ -37761,7 +37953,7 @@ public final class Request {
         } else {
           inviteToRewardTaskRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00002000;
+        bitField5_ |= 0x00004000;
         return this;
       }
       /**
@@ -37775,7 +37967,7 @@ public final class Request {
         } else {
           inviteToRewardTaskRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00002000;
+        bitField5_ |= 0x00004000;
         return this;
       }
       /**
@@ -37783,7 +37975,7 @@ public final class Request {
        */
       public Builder mergeInviteToRewardTaskRoomCommand(com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand value) {
         if (inviteToRewardTaskRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00002000) == 0x00002000) &&
+          if (((bitField5_ & 0x00004000) == 0x00004000) &&
               inviteToRewardTaskRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.getDefaultInstance()) {
             inviteToRewardTaskRoomCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.newBuilder(inviteToRewardTaskRoomCommand_).mergeFrom(value).buildPartial();
@@ -37794,7 +37986,7 @@ public final class Request {
         } else {
           inviteToRewardTaskRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00002000;
+        bitField5_ |= 0x00004000;
         return this;
       }
       /**
@@ -37807,14 +37999,14 @@ public final class Request {
         } else {
           inviteToRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00002000);
+        bitField5_ = (bitField5_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestInviteToRewardTaskRoomCommand inviteToRewardTaskRoomCommand = 234;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand.Builder getInviteToRewardTaskRoomCommandBuilder() {
-        bitField5_ |= 0x00002000;
+        bitField5_ |= 0x00004000;
         onChanged();
         return getInviteToRewardTaskRoomCommandFieldBuilder().getBuilder();
       }
@@ -37853,7 +38045,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;</code>
        */
       public boolean hasSubmitRewardTaskScoreCommand() {
-        return ((bitField5_ & 0x00004000) == 0x00004000);
+        return ((bitField5_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;</code>
@@ -37878,7 +38070,7 @@ public final class Request {
         } else {
           submitRewardTaskScoreCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00004000;
+        bitField5_ |= 0x00008000;
         return this;
       }
       /**
@@ -37892,7 +38084,7 @@ public final class Request {
         } else {
           submitRewardTaskScoreCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00004000;
+        bitField5_ |= 0x00008000;
         return this;
       }
       /**
@@ -37900,7 +38092,7 @@ public final class Request {
        */
       public Builder mergeSubmitRewardTaskScoreCommand(com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand value) {
         if (submitRewardTaskScoreCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00004000) == 0x00004000) &&
+          if (((bitField5_ & 0x00008000) == 0x00008000) &&
               submitRewardTaskScoreCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.getDefaultInstance()) {
             submitRewardTaskScoreCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.newBuilder(submitRewardTaskScoreCommand_).mergeFrom(value).buildPartial();
@@ -37911,7 +38103,7 @@ public final class Request {
         } else {
           submitRewardTaskScoreCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00004000;
+        bitField5_ |= 0x00008000;
         return this;
       }
       /**
@@ -37924,14 +38116,14 @@ public final class Request {
         } else {
           submitRewardTaskScoreCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00004000);
+        bitField5_ = (bitField5_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRewardTaskScoreCommand submitRewardTaskScoreCommand = 235;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand.Builder getSubmitRewardTaskScoreCommandBuilder() {
-        bitField5_ |= 0x00004000;
+        bitField5_ |= 0x00008000;
         onChanged();
         return getSubmitRewardTaskScoreCommandFieldBuilder().getBuilder();
       }
@@ -37970,7 +38162,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskCommand userRewardTaskCommand = 236;</code>
        */
       public boolean hasUserRewardTaskCommand() {
-        return ((bitField5_ & 0x00008000) == 0x00008000);
+        return ((bitField5_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskCommand userRewardTaskCommand = 236;</code>
@@ -37995,7 +38187,7 @@ public final class Request {
         } else {
           userRewardTaskCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00008000;
+        bitField5_ |= 0x00010000;
         return this;
       }
       /**
@@ -38009,7 +38201,7 @@ public final class Request {
         } else {
           userRewardTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00008000;
+        bitField5_ |= 0x00010000;
         return this;
       }
       /**
@@ -38017,7 +38209,7 @@ public final class Request {
        */
       public Builder mergeUserRewardTaskCommand(com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand value) {
         if (userRewardTaskCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00008000) == 0x00008000) &&
+          if (((bitField5_ & 0x00010000) == 0x00010000) &&
               userRewardTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.getDefaultInstance()) {
             userRewardTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.newBuilder(userRewardTaskCommand_).mergeFrom(value).buildPartial();
@@ -38028,7 +38220,7 @@ public final class Request {
         } else {
           userRewardTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00008000;
+        bitField5_ |= 0x00010000;
         return this;
       }
       /**
@@ -38041,14 +38233,14 @@ public final class Request {
         } else {
           userRewardTaskCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00008000);
+        bitField5_ = (bitField5_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskCommand userRewardTaskCommand = 236;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand.Builder getUserRewardTaskCommandBuilder() {
-        bitField5_ |= 0x00008000;
+        bitField5_ |= 0x00010000;
         onChanged();
         return getUserRewardTaskCommandFieldBuilder().getBuilder();
       }
@@ -38087,7 +38279,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;</code>
        */
       public boolean hasRewardTaskRewardCommand() {
-        return ((bitField5_ & 0x00010000) == 0x00010000);
+        return ((bitField5_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;</code>
@@ -38112,7 +38304,7 @@ public final class Request {
         } else {
           rewardTaskRewardCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00010000;
+        bitField5_ |= 0x00020000;
         return this;
       }
       /**
@@ -38126,7 +38318,7 @@ public final class Request {
         } else {
           rewardTaskRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00010000;
+        bitField5_ |= 0x00020000;
         return this;
       }
       /**
@@ -38134,7 +38326,7 @@ public final class Request {
        */
       public Builder mergeRewardTaskRewardCommand(com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand value) {
         if (rewardTaskRewardCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00010000) == 0x00010000) &&
+          if (((bitField5_ & 0x00020000) == 0x00020000) &&
               rewardTaskRewardCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.getDefaultInstance()) {
             rewardTaskRewardCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.newBuilder(rewardTaskRewardCommand_).mergeFrom(value).buildPartial();
@@ -38145,7 +38337,7 @@ public final class Request {
         } else {
           rewardTaskRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00010000;
+        bitField5_ |= 0x00020000;
         return this;
       }
       /**
@@ -38158,14 +38350,14 @@ public final class Request {
         } else {
           rewardTaskRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00010000);
+        bitField5_ = (bitField5_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRewardTaskRewardCommand rewardTaskRewardCommand = 237;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand.Builder getRewardTaskRewardCommandBuilder() {
-        bitField5_ |= 0x00010000;
+        bitField5_ |= 0x00020000;
         onChanged();
         return getRewardTaskRewardCommandFieldBuilder().getBuilder();
       }
@@ -38204,7 +38396,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;</code>
        */
       public boolean hasUserRewardTaskRoomCommand() {
-        return ((bitField5_ & 0x00020000) == 0x00020000);
+        return ((bitField5_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;</code>
@@ -38229,7 +38421,7 @@ public final class Request {
         } else {
           userRewardTaskRoomCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00020000;
+        bitField5_ |= 0x00040000;
         return this;
       }
       /**
@@ -38243,7 +38435,7 @@ public final class Request {
         } else {
           userRewardTaskRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00020000;
+        bitField5_ |= 0x00040000;
         return this;
       }
       /**
@@ -38251,7 +38443,7 @@ public final class Request {
        */
       public Builder mergeUserRewardTaskRoomCommand(com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand value) {
         if (userRewardTaskRoomCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00020000) == 0x00020000) &&
+          if (((bitField5_ & 0x00040000) == 0x00040000) &&
               userRewardTaskRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.getDefaultInstance()) {
             userRewardTaskRoomCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.newBuilder(userRewardTaskRoomCommand_).mergeFrom(value).buildPartial();
@@ -38262,7 +38454,7 @@ public final class Request {
         } else {
           userRewardTaskRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00020000;
+        bitField5_ |= 0x00040000;
         return this;
       }
       /**
@@ -38275,14 +38467,14 @@ public final class Request {
         } else {
           userRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00020000);
+        bitField5_ = (bitField5_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUserRewardTaskRoomCommand userRewardTaskRoomCommand = 238;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand.Builder getUserRewardTaskRoomCommandBuilder() {
-        bitField5_ |= 0x00020000;
+        bitField5_ |= 0x00040000;
         onChanged();
         return getUserRewardTaskRoomCommandFieldBuilder().getBuilder();
       }
@@ -38321,7 +38513,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;</code>
        */
       public boolean hasSynthetiseComposeCommand() {
-        return ((bitField5_ & 0x00040000) == 0x00040000);
+        return ((bitField5_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;</code>
@@ -38346,7 +38538,7 @@ public final class Request {
         } else {
           synthetiseComposeCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00040000;
+        bitField5_ |= 0x00080000;
         return this;
       }
       /**
@@ -38360,7 +38552,7 @@ public final class Request {
         } else {
           synthetiseComposeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00040000;
+        bitField5_ |= 0x00080000;
         return this;
       }
       /**
@@ -38368,7 +38560,7 @@ public final class Request {
        */
       public Builder mergeSynthetiseComposeCommand(com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand value) {
         if (synthetiseComposeCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00040000) == 0x00040000) &&
+          if (((bitField5_ & 0x00080000) == 0x00080000) &&
               synthetiseComposeCommand_ != com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.getDefaultInstance()) {
             synthetiseComposeCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.newBuilder(synthetiseComposeCommand_).mergeFrom(value).buildPartial();
@@ -38379,7 +38571,7 @@ public final class Request {
         } else {
           synthetiseComposeCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00040000;
+        bitField5_ |= 0x00080000;
         return this;
       }
       /**
@@ -38392,14 +38584,14 @@ public final class Request {
         } else {
           synthetiseComposeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00040000);
+        bitField5_ = (bitField5_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSynthetiseComposeCommand synthetiseComposeCommand = 239;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand.Builder getSynthetiseComposeCommandBuilder() {
-        bitField5_ |= 0x00040000;
+        bitField5_ |= 0x00080000;
         onChanged();
         return getSynthetiseComposeCommandFieldBuilder().getBuilder();
       }
@@ -38438,7 +38630,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;</code>
        */
       public boolean hasGiveupRewardTaskCommand() {
-        return ((bitField5_ & 0x00080000) == 0x00080000);
+        return ((bitField5_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;</code>
@@ -38463,7 +38655,7 @@ public final class Request {
         } else {
           giveupRewardTaskCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00080000;
+        bitField5_ |= 0x00100000;
         return this;
       }
       /**
@@ -38477,7 +38669,7 @@ public final class Request {
         } else {
           giveupRewardTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00080000;
+        bitField5_ |= 0x00100000;
         return this;
       }
       /**
@@ -38485,7 +38677,7 @@ public final class Request {
        */
       public Builder mergeGiveupRewardTaskCommand(com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand value) {
         if (giveupRewardTaskCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00080000) == 0x00080000) &&
+          if (((bitField5_ & 0x00100000) == 0x00100000) &&
               giveupRewardTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.getDefaultInstance()) {
             giveupRewardTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.newBuilder(giveupRewardTaskCommand_).mergeFrom(value).buildPartial();
@@ -38496,7 +38688,7 @@ public final class Request {
         } else {
           giveupRewardTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00080000;
+        bitField5_ |= 0x00100000;
         return this;
       }
       /**
@@ -38509,14 +38701,14 @@ public final class Request {
         } else {
           giveupRewardTaskCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00080000);
+        bitField5_ = (bitField5_ & ~0x00100000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestGiveupRewardTaskCommand giveupRewardTaskCommand = 240;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand.Builder getGiveupRewardTaskCommandBuilder() {
-        bitField5_ |= 0x00080000;
+        bitField5_ |= 0x00100000;
         onChanged();
         return getGiveupRewardTaskCommandFieldBuilder().getBuilder();
       }
@@ -38555,7 +38747,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
        */
       public boolean hasExtraRewardCommand() {
-        return ((bitField5_ & 0x00100000) == 0x00100000);
+        return ((bitField5_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
@@ -38580,7 +38772,7 @@ public final class Request {
         } else {
           extraRewardCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00100000;
+        bitField5_ |= 0x00200000;
         return this;
       }
       /**
@@ -38594,7 +38786,7 @@ public final class Request {
         } else {
           extraRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00100000;
+        bitField5_ |= 0x00200000;
         return this;
       }
       /**
@@ -38602,7 +38794,7 @@ public final class Request {
        */
       public Builder mergeExtraRewardCommand(com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand value) {
         if (extraRewardCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00100000) == 0x00100000) &&
+          if (((bitField5_ & 0x00200000) == 0x00200000) &&
               extraRewardCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.getDefaultInstance()) {
             extraRewardCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.newBuilder(extraRewardCommand_).mergeFrom(value).buildPartial();
@@ -38613,7 +38805,7 @@ public final class Request {
         } else {
           extraRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00100000;
+        bitField5_ |= 0x00200000;
         return this;
       }
       /**
@@ -38626,14 +38818,14 @@ public final class Request {
         } else {
           extraRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00100000);
+        bitField5_ = (bitField5_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestExtraRewardCommand extraRewardCommand = 241;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand.Builder getExtraRewardCommandBuilder() {
-        bitField5_ |= 0x00100000;
+        bitField5_ |= 0x00200000;
         onChanged();
         return getExtraRewardCommandFieldBuilder().getBuilder();
       }
@@ -38672,7 +38864,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
        */
       public boolean hasEventBuyCommand() {
-        return ((bitField5_ & 0x00200000) == 0x00200000);
+        return ((bitField5_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
@@ -38697,7 +38889,7 @@ public final class Request {
         } else {
           eventBuyCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00200000;
+        bitField5_ |= 0x00400000;
         return this;
       }
       /**
@@ -38711,7 +38903,7 @@ public final class Request {
         } else {
           eventBuyCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00200000;
+        bitField5_ |= 0x00400000;
         return this;
       }
       /**
@@ -38719,7 +38911,7 @@ public final class Request {
        */
       public Builder mergeEventBuyCommand(com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand value) {
         if (eventBuyCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00200000) == 0x00200000) &&
+          if (((bitField5_ & 0x00400000) == 0x00400000) &&
               eventBuyCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.getDefaultInstance()) {
             eventBuyCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.newBuilder(eventBuyCommand_).mergeFrom(value).buildPartial();
@@ -38730,7 +38922,7 @@ public final class Request {
         } else {
           eventBuyCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00200000;
+        bitField5_ |= 0x00400000;
         return this;
       }
       /**
@@ -38743,14 +38935,14 @@ public final class Request {
         } else {
           eventBuyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00200000);
+        bitField5_ = (bitField5_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEventBuyCommand eventBuyCommand = 242;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestEventBuyCommand.Builder getEventBuyCommandBuilder() {
-        bitField5_ |= 0x00200000;
+        bitField5_ |= 0x00400000;
         onChanged();
         return getEventBuyCommandFieldBuilder().getBuilder();
       }
@@ -38789,7 +38981,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
        */
       public boolean hasLadderInfoCommand() {
-        return ((bitField5_ & 0x00400000) == 0x00400000);
+        return ((bitField5_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
@@ -38814,7 +39006,7 @@ public final class Request {
         } else {
           ladderInfoCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00400000;
+        bitField5_ |= 0x00800000;
         return this;
       }
       /**
@@ -38828,7 +39020,7 @@ public final class Request {
         } else {
           ladderInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00400000;
+        bitField5_ |= 0x00800000;
         return this;
       }
       /**
@@ -38836,7 +39028,7 @@ public final class Request {
        */
       public Builder mergeLadderInfoCommand(com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand value) {
         if (ladderInfoCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00400000) == 0x00400000) &&
+          if (((bitField5_ & 0x00800000) == 0x00800000) &&
               ladderInfoCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.getDefaultInstance()) {
             ladderInfoCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.newBuilder(ladderInfoCommand_).mergeFrom(value).buildPartial();
@@ -38847,7 +39039,7 @@ public final class Request {
         } else {
           ladderInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00400000;
+        bitField5_ |= 0x00800000;
         return this;
       }
       /**
@@ -38860,14 +39052,14 @@ public final class Request {
         } else {
           ladderInfoCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00400000);
+        bitField5_ = (bitField5_ & ~0x00800000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderInfoCommand ladderInfoCommand = 243;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand.Builder getLadderInfoCommandBuilder() {
-        bitField5_ |= 0x00400000;
+        bitField5_ |= 0x00800000;
         onChanged();
         return getLadderInfoCommandFieldBuilder().getBuilder();
       }
@@ -38906,7 +39098,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
        */
       public boolean hasRefreshLadderEnemyCommand() {
-        return ((bitField5_ & 0x00800000) == 0x00800000);
+        return ((bitField5_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
@@ -38931,7 +39123,7 @@ public final class Request {
         } else {
           refreshLadderEnemyCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x00800000;
+        bitField5_ |= 0x01000000;
         return this;
       }
       /**
@@ -38945,7 +39137,7 @@ public final class Request {
         } else {
           refreshLadderEnemyCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x00800000;
+        bitField5_ |= 0x01000000;
         return this;
       }
       /**
@@ -38953,7 +39145,7 @@ public final class Request {
        */
       public Builder mergeRefreshLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand value) {
         if (refreshLadderEnemyCommandBuilder_ == null) {
-          if (((bitField5_ & 0x00800000) == 0x00800000) &&
+          if (((bitField5_ & 0x01000000) == 0x01000000) &&
               refreshLadderEnemyCommand_ != com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.getDefaultInstance()) {
             refreshLadderEnemyCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.newBuilder(refreshLadderEnemyCommand_).mergeFrom(value).buildPartial();
@@ -38964,7 +39156,7 @@ public final class Request {
         } else {
           refreshLadderEnemyCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x00800000;
+        bitField5_ |= 0x01000000;
         return this;
       }
       /**
@@ -38977,14 +39169,14 @@ public final class Request {
         } else {
           refreshLadderEnemyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x00800000);
+        bitField5_ = (bitField5_ & ~0x01000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRefreshLadderEnemyCommand refreshLadderEnemyCommand = 244;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand.Builder getRefreshLadderEnemyCommandBuilder() {
-        bitField5_ |= 0x00800000;
+        bitField5_ |= 0x01000000;
         onChanged();
         return getRefreshLadderEnemyCommandFieldBuilder().getBuilder();
       }
@@ -39023,7 +39215,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
        */
       public boolean hasSubmitLadderResultCommand() {
-        return ((bitField5_ & 0x01000000) == 0x01000000);
+        return ((bitField5_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
@@ -39048,7 +39240,7 @@ public final class Request {
         } else {
           submitLadderResultCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x01000000;
+        bitField5_ |= 0x02000000;
         return this;
       }
       /**
@@ -39062,7 +39254,7 @@ public final class Request {
         } else {
           submitLadderResultCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x01000000;
+        bitField5_ |= 0x02000000;
         return this;
       }
       /**
@@ -39070,7 +39262,7 @@ public final class Request {
        */
       public Builder mergeSubmitLadderResultCommand(com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand value) {
         if (submitLadderResultCommandBuilder_ == null) {
-          if (((bitField5_ & 0x01000000) == 0x01000000) &&
+          if (((bitField5_ & 0x02000000) == 0x02000000) &&
               submitLadderResultCommand_ != com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.getDefaultInstance()) {
             submitLadderResultCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.newBuilder(submitLadderResultCommand_).mergeFrom(value).buildPartial();
@@ -39081,7 +39273,7 @@ public final class Request {
         } else {
           submitLadderResultCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x01000000;
+        bitField5_ |= 0x02000000;
         return this;
       }
       /**
@@ -39094,14 +39286,14 @@ public final class Request {
         } else {
           submitLadderResultCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x01000000);
+        bitField5_ = (bitField5_ & ~0x02000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitLadderResultCommand submitLadderResultCommand = 245;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestSubmitLadderResultCommand.Builder getSubmitLadderResultCommandBuilder() {
-        bitField5_ |= 0x01000000;
+        bitField5_ |= 0x02000000;
         onChanged();
         return getSubmitLadderResultCommandFieldBuilder().getBuilder();
       }
@@ -39140,7 +39332,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
        */
       public boolean hasLadderTaskRewardCommand() {
-        return ((bitField5_ & 0x02000000) == 0x02000000);
+        return ((bitField5_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
@@ -39165,7 +39357,7 @@ public final class Request {
         } else {
           ladderTaskRewardCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x02000000;
+        bitField5_ |= 0x04000000;
         return this;
       }
       /**
@@ -39179,7 +39371,7 @@ public final class Request {
         } else {
           ladderTaskRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x02000000;
+        bitField5_ |= 0x04000000;
         return this;
       }
       /**
@@ -39187,7 +39379,7 @@ public final class Request {
        */
       public Builder mergeLadderTaskRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand value) {
         if (ladderTaskRewardCommandBuilder_ == null) {
-          if (((bitField5_ & 0x02000000) == 0x02000000) &&
+          if (((bitField5_ & 0x04000000) == 0x04000000) &&
               ladderTaskRewardCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.getDefaultInstance()) {
             ladderTaskRewardCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.newBuilder(ladderTaskRewardCommand_).mergeFrom(value).buildPartial();
@@ -39198,7 +39390,7 @@ public final class Request {
         } else {
           ladderTaskRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x02000000;
+        bitField5_ |= 0x04000000;
         return this;
       }
       /**
@@ -39211,14 +39403,14 @@ public final class Request {
         } else {
           ladderTaskRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x02000000);
+        bitField5_ = (bitField5_ & ~0x04000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderTaskRewardCommand ladderTaskRewardCommand = 246;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand.Builder getLadderTaskRewardCommandBuilder() {
-        bitField5_ |= 0x02000000;
+        bitField5_ |= 0x04000000;
         onChanged();
         return getLadderTaskRewardCommandFieldBuilder().getBuilder();
       }
@@ -39257,7 +39449,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
        */
       public boolean hasLadderSeasonRewardCommand() {
-        return ((bitField5_ & 0x04000000) == 0x04000000);
+        return ((bitField5_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
@@ -39282,7 +39474,7 @@ public final class Request {
         } else {
           ladderSeasonRewardCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x04000000;
+        bitField5_ |= 0x08000000;
         return this;
       }
       /**
@@ -39296,7 +39488,7 @@ public final class Request {
         } else {
           ladderSeasonRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x04000000;
+        bitField5_ |= 0x08000000;
         return this;
       }
       /**
@@ -39304,7 +39496,7 @@ public final class Request {
        */
       public Builder mergeLadderSeasonRewardCommand(com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand value) {
         if (ladderSeasonRewardCommandBuilder_ == null) {
-          if (((bitField5_ & 0x04000000) == 0x04000000) &&
+          if (((bitField5_ & 0x08000000) == 0x08000000) &&
               ladderSeasonRewardCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.getDefaultInstance()) {
             ladderSeasonRewardCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.newBuilder(ladderSeasonRewardCommand_).mergeFrom(value).buildPartial();
@@ -39315,7 +39507,7 @@ public final class Request {
         } else {
           ladderSeasonRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x04000000;
+        bitField5_ |= 0x08000000;
         return this;
       }
       /**
@@ -39328,14 +39520,14 @@ public final class Request {
         } else {
           ladderSeasonRewardCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x04000000);
+        bitField5_ = (bitField5_ & ~0x08000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderSeasonRewardCommand ladderSeasonRewardCommand = 247;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand.Builder getLadderSeasonRewardCommandBuilder() {
-        bitField5_ |= 0x04000000;
+        bitField5_ |= 0x08000000;
         onChanged();
         return getLadderSeasonRewardCommandFieldBuilder().getBuilder();
       }
@@ -39374,7 +39566,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
        */
       public boolean hasLadderEnemyCommand() {
-        return ((bitField5_ & 0x08000000) == 0x08000000);
+        return ((bitField5_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
@@ -39399,7 +39591,7 @@ public final class Request {
         } else {
           ladderEnemyCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x08000000;
+        bitField5_ |= 0x10000000;
         return this;
       }
       /**
@@ -39413,7 +39605,7 @@ public final class Request {
         } else {
           ladderEnemyCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x08000000;
+        bitField5_ |= 0x10000000;
         return this;
       }
       /**
@@ -39421,7 +39613,7 @@ public final class Request {
        */
       public Builder mergeLadderEnemyCommand(com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand value) {
         if (ladderEnemyCommandBuilder_ == null) {
-          if (((bitField5_ & 0x08000000) == 0x08000000) &&
+          if (((bitField5_ & 0x10000000) == 0x10000000) &&
               ladderEnemyCommand_ != com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.getDefaultInstance()) {
             ladderEnemyCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.newBuilder(ladderEnemyCommand_).mergeFrom(value).buildPartial();
@@ -39432,7 +39624,7 @@ public final class Request {
         } else {
           ladderEnemyCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x08000000;
+        bitField5_ |= 0x10000000;
         return this;
       }
       /**
@@ -39445,14 +39637,14 @@ public final class Request {
         } else {
           ladderEnemyCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x08000000);
+        bitField5_ = (bitField5_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLadderEnemyCommand ladderEnemyCommand = 248;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestLadderEnemyCommand.Builder getLadderEnemyCommandBuilder() {
-        bitField5_ |= 0x08000000;
+        bitField5_ |= 0x10000000;
         onChanged();
         return getLadderEnemyCommandFieldBuilder().getBuilder();
       }
@@ -39491,7 +39683,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBuySavingBoxCommand buySavingBoxCommand = 249;</code>
        */
       public boolean hasBuySavingBoxCommand() {
-        return ((bitField5_ & 0x10000000) == 0x10000000);
+        return ((bitField5_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBuySavingBoxCommand buySavingBoxCommand = 249;</code>
@@ -39516,7 +39708,7 @@ public final class Request {
         } else {
           buySavingBoxCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x10000000;
+        bitField5_ |= 0x20000000;
         return this;
       }
       /**
@@ -39530,7 +39722,7 @@ public final class Request {
         } else {
           buySavingBoxCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x10000000;
+        bitField5_ |= 0x20000000;
         return this;
       }
       /**
@@ -39538,7 +39730,7 @@ public final class Request {
        */
       public Builder mergeBuySavingBoxCommand(com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand value) {
         if (buySavingBoxCommandBuilder_ == null) {
-          if (((bitField5_ & 0x10000000) == 0x10000000) &&
+          if (((bitField5_ & 0x20000000) == 0x20000000) &&
               buySavingBoxCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.getDefaultInstance()) {
             buySavingBoxCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.newBuilder(buySavingBoxCommand_).mergeFrom(value).buildPartial();
@@ -39549,7 +39741,7 @@ public final class Request {
         } else {
           buySavingBoxCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x10000000;
+        bitField5_ |= 0x20000000;
         return this;
       }
       /**
@@ -39562,14 +39754,14 @@ public final class Request {
         } else {
           buySavingBoxCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x10000000);
+        bitField5_ = (bitField5_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBuySavingBoxCommand buySavingBoxCommand = 249;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand.Builder getBuySavingBoxCommandBuilder() {
-        bitField5_ |= 0x10000000;
+        bitField5_ |= 0x20000000;
         onChanged();
         return getBuySavingBoxCommandFieldBuilder().getBuilder();
       }
@@ -39608,7 +39800,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEquipupCommand equipupCommand = 250;</code>
        */
       public boolean hasEquipupCommand() {
-        return ((bitField5_ & 0x20000000) == 0x20000000);
+        return ((bitField5_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipupCommand equipupCommand = 250;</code>
@@ -39633,7 +39825,7 @@ public final class Request {
         } else {
           equipupCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x20000000;
+        bitField5_ |= 0x40000000;
         return this;
       }
       /**
@@ -39647,7 +39839,7 @@ public final class Request {
         } else {
           equipupCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x20000000;
+        bitField5_ |= 0x40000000;
         return this;
       }
       /**
@@ -39655,7 +39847,7 @@ public final class Request {
        */
       public Builder mergeEquipupCommand(com.trans.pixel.protoc.EquipProto.RequestEquipupCommand value) {
         if (equipupCommandBuilder_ == null) {
-          if (((bitField5_ & 0x20000000) == 0x20000000) &&
+          if (((bitField5_ & 0x40000000) == 0x40000000) &&
               equipupCommand_ != com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.getDefaultInstance()) {
             equipupCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.newBuilder(equipupCommand_).mergeFrom(value).buildPartial();
@@ -39666,7 +39858,7 @@ public final class Request {
         } else {
           equipupCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x20000000;
+        bitField5_ |= 0x40000000;
         return this;
       }
       /**
@@ -39679,14 +39871,14 @@ public final class Request {
         } else {
           equipupCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x20000000);
+        bitField5_ = (bitField5_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEquipupCommand equipupCommand = 250;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestEquipupCommand.Builder getEquipupCommandBuilder() {
-        bitField5_ |= 0x20000000;
+        bitField5_ |= 0x40000000;
         onChanged();
         return getEquipupCommandFieldBuilder().getBuilder();
       }
@@ -39725,7 +39917,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestMaterialComposeCommand materialComposeCommand = 251;</code>
        */
       public boolean hasMaterialComposeCommand() {
-        return ((bitField5_ & 0x40000000) == 0x40000000);
+        return ((bitField5_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMaterialComposeCommand materialComposeCommand = 251;</code>
@@ -39750,7 +39942,7 @@ public final class Request {
         } else {
           materialComposeCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x40000000;
+        bitField5_ |= 0x80000000;
         return this;
       }
       /**
@@ -39764,7 +39956,7 @@ public final class Request {
         } else {
           materialComposeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x40000000;
+        bitField5_ |= 0x80000000;
         return this;
       }
       /**
@@ -39772,7 +39964,7 @@ public final class Request {
        */
       public Builder mergeMaterialComposeCommand(com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand value) {
         if (materialComposeCommandBuilder_ == null) {
-          if (((bitField5_ & 0x40000000) == 0x40000000) &&
+          if (((bitField5_ & 0x80000000) == 0x80000000) &&
               materialComposeCommand_ != com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.getDefaultInstance()) {
             materialComposeCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.newBuilder(materialComposeCommand_).mergeFrom(value).buildPartial();
@@ -39783,7 +39975,7 @@ public final class Request {
         } else {
           materialComposeCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x40000000;
+        bitField5_ |= 0x80000000;
         return this;
       }
       /**
@@ -39796,14 +39988,14 @@ public final class Request {
         } else {
           materialComposeCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x40000000);
+        bitField5_ = (bitField5_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestMaterialComposeCommand materialComposeCommand = 251;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand.Builder getMaterialComposeCommandBuilder() {
-        bitField5_ |= 0x40000000;
+        bitField5_ |= 0x80000000;
         onChanged();
         return getMaterialComposeCommandFieldBuilder().getBuilder();
       }
@@ -39842,7 +40034,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUseMaterialCommand useMaterialCommand = 252;</code>
        */
       public boolean hasUseMaterialCommand() {
-        return ((bitField5_ & 0x80000000) == 0x80000000);
+        return ((bitField6_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUseMaterialCommand useMaterialCommand = 252;</code>
@@ -39867,7 +40059,7 @@ public final class Request {
         } else {
           useMaterialCommandBuilder_.setMessage(value);
         }
-        bitField5_ |= 0x80000000;
+        bitField6_ |= 0x00000001;
         return this;
       }
       /**
@@ -39881,7 +40073,7 @@ public final class Request {
         } else {
           useMaterialCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField5_ |= 0x80000000;
+        bitField6_ |= 0x00000001;
         return this;
       }
       /**
@@ -39889,7 +40081,7 @@ public final class Request {
        */
       public Builder mergeUseMaterialCommand(com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand value) {
         if (useMaterialCommandBuilder_ == null) {
-          if (((bitField5_ & 0x80000000) == 0x80000000) &&
+          if (((bitField6_ & 0x00000001) == 0x00000001) &&
               useMaterialCommand_ != com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.getDefaultInstance()) {
             useMaterialCommand_ =
               com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.newBuilder(useMaterialCommand_).mergeFrom(value).buildPartial();
@@ -39900,7 +40092,7 @@ public final class Request {
         } else {
           useMaterialCommandBuilder_.mergeFrom(value);
         }
-        bitField5_ |= 0x80000000;
+        bitField6_ |= 0x00000001;
         return this;
       }
       /**
@@ -39913,14 +40105,14 @@ public final class Request {
         } else {
           useMaterialCommandBuilder_.clear();
         }
-        bitField5_ = (bitField5_ & ~0x80000000);
+        bitField6_ = (bitField6_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUseMaterialCommand useMaterialCommand = 252;</code>
        */
       public com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand.Builder getUseMaterialCommandBuilder() {
-        bitField5_ |= 0x80000000;
+        bitField6_ |= 0x00000001;
         onChanged();
         return getUseMaterialCommandFieldBuilder().getBuilder();
       }
@@ -39959,7 +40151,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestChangePositionCommand changePositionCommand = 253;</code>
        */
       public boolean hasChangePositionCommand() {
-        return ((bitField6_ & 0x00000001) == 0x00000001);
+        return ((bitField6_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChangePositionCommand changePositionCommand = 253;</code>
@@ -39984,7 +40176,7 @@ public final class Request {
         } else {
           changePositionCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000001;
+        bitField6_ |= 0x00000002;
         return this;
       }
       /**
@@ -39998,7 +40190,7 @@ public final class Request {
         } else {
           changePositionCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000001;
+        bitField6_ |= 0x00000002;
         return this;
       }
       /**
@@ -40006,7 +40198,7 @@ public final class Request {
        */
       public Builder mergeChangePositionCommand(com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand value) {
         if (changePositionCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000001) == 0x00000001) &&
+          if (((bitField6_ & 0x00000002) == 0x00000002) &&
               changePositionCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.getDefaultInstance()) {
             changePositionCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.newBuilder(changePositionCommand_).mergeFrom(value).buildPartial();
@@ -40017,7 +40209,7 @@ public final class Request {
         } else {
           changePositionCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000001;
+        bitField6_ |= 0x00000002;
         return this;
       }
       /**
@@ -40030,14 +40222,14 @@ public final class Request {
         } else {
           changePositionCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000001);
+        bitField6_ = (bitField6_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChangePositionCommand changePositionCommand = 253;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand.Builder getChangePositionCommandBuilder() {
-        bitField6_ |= 0x00000001;
+        bitField6_ |= 0x00000002;
         onChanged();
         return getChangePositionCommandFieldBuilder().getBuilder();
       }
@@ -40076,7 +40268,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
       public boolean hasTalentSpUpCommand() {
-        return ((bitField6_ & 0x00000002) == 0x00000002);
+        return ((bitField6_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
@@ -40101,7 +40293,7 @@ public final class Request {
         } else {
           talentSpUpCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000002;
+        bitField6_ |= 0x00000004;
         return this;
       }
       /**
@@ -40115,7 +40307,7 @@ public final class Request {
         } else {
           talentSpUpCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000002;
+        bitField6_ |= 0x00000004;
         return this;
       }
       /**
@@ -40123,7 +40315,7 @@ public final class Request {
        */
       public Builder mergeTalentSpUpCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand value) {
         if (talentSpUpCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000002) == 0x00000002) &&
+          if (((bitField6_ & 0x00000004) == 0x00000004) &&
               talentSpUpCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.getDefaultInstance()) {
             talentSpUpCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.newBuilder(talentSpUpCommand_).mergeFrom(value).buildPartial();
@@ -40134,7 +40326,7 @@ public final class Request {
         } else {
           talentSpUpCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000002;
+        bitField6_ |= 0x00000004;
         return this;
       }
       /**
@@ -40147,14 +40339,14 @@ public final class Request {
         } else {
           talentSpUpCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000002);
+        bitField6_ = (bitField6_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSpUpCommand talentSpUpCommand = 254;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand.Builder getTalentSpUpCommandBuilder() {
-        bitField6_ |= 0x00000002;
+        bitField6_ |= 0x00000004;
         onChanged();
         return getTalentSpUpCommandFieldBuilder().getBuilder();
       }
@@ -40193,7 +40385,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
        */
       public boolean hasTalentSkillLevelupCommand() {
-        return ((bitField6_ & 0x00000004) == 0x00000004);
+        return ((bitField6_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
@@ -40218,7 +40410,7 @@ public final class Request {
         } else {
           talentSkillLevelupCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000004;
+        bitField6_ |= 0x00000008;
         return this;
       }
       /**
@@ -40232,7 +40424,7 @@ public final class Request {
         } else {
           talentSkillLevelupCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000004;
+        bitField6_ |= 0x00000008;
         return this;
       }
       /**
@@ -40240,7 +40432,7 @@ public final class Request {
        */
       public Builder mergeTalentSkillLevelupCommand(com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand value) {
         if (talentSkillLevelupCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000004) == 0x00000004) &&
+          if (((bitField6_ & 0x00000008) == 0x00000008) &&
               talentSkillLevelupCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.getDefaultInstance()) {
             talentSkillLevelupCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.newBuilder(talentSkillLevelupCommand_).mergeFrom(value).buildPartial();
@@ -40251,7 +40443,7 @@ public final class Request {
         } else {
           talentSkillLevelupCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000004;
+        bitField6_ |= 0x00000008;
         return this;
       }
       /**
@@ -40264,14 +40456,14 @@ public final class Request {
         } else {
           talentSkillLevelupCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000004);
+        bitField6_ = (bitField6_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentSkillLevelupCommand talentSkillLevelupCommand = 255;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentSkillLevelupCommand.Builder getTalentSkillLevelupCommandBuilder() {
-        bitField6_ |= 0x00000004;
+        bitField6_ |= 0x00000008;
         onChanged();
         return getTalentSkillLevelupCommandFieldBuilder().getBuilder();
       }
@@ -40310,7 +40502,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestTalentResetSkillCommand talentResetSkillCommand = 256;</code>
        */
       public boolean hasTalentResetSkillCommand() {
-        return ((bitField6_ & 0x00000008) == 0x00000008);
+        return ((bitField6_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentResetSkillCommand talentResetSkillCommand = 256;</code>
@@ -40335,7 +40527,7 @@ public final class Request {
         } else {
           talentResetSkillCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000008;
+        bitField6_ |= 0x00000010;
         return this;
       }
       /**
@@ -40349,7 +40541,7 @@ public final class Request {
         } else {
           talentResetSkillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000008;
+        bitField6_ |= 0x00000010;
         return this;
       }
       /**
@@ -40357,7 +40549,7 @@ public final class Request {
        */
       public Builder mergeTalentResetSkillCommand(com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand value) {
         if (talentResetSkillCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000008) == 0x00000008) &&
+          if (((bitField6_ & 0x00000010) == 0x00000010) &&
               talentResetSkillCommand_ != com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.getDefaultInstance()) {
             talentResetSkillCommand_ =
               com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.newBuilder(talentResetSkillCommand_).mergeFrom(value).buildPartial();
@@ -40368,7 +40560,7 @@ public final class Request {
         } else {
           talentResetSkillCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000008;
+        bitField6_ |= 0x00000010;
         return this;
       }
       /**
@@ -40381,14 +40573,14 @@ public final class Request {
         } else {
           talentResetSkillCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000008);
+        bitField6_ = (bitField6_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestTalentResetSkillCommand talentResetSkillCommand = 256;</code>
        */
       public com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand.Builder getTalentResetSkillCommandBuilder() {
-        bitField6_ |= 0x00000008;
+        bitField6_ |= 0x00000010;
         onChanged();
         return getTalentResetSkillCommandFieldBuilder().getBuilder();
       }
@@ -40427,7 +40619,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestBindRecommandCommand bindRecommandCommand = 257;</code>
        */
       public boolean hasBindRecommandCommand() {
-        return ((bitField6_ & 0x00000010) == 0x00000010);
+        return ((bitField6_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBindRecommandCommand bindRecommandCommand = 257;</code>
@@ -40452,7 +40644,7 @@ public final class Request {
         } else {
           bindRecommandCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000010;
+        bitField6_ |= 0x00000020;
         return this;
       }
       /**
@@ -40466,7 +40658,7 @@ public final class Request {
         } else {
           bindRecommandCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000010;
+        bitField6_ |= 0x00000020;
         return this;
       }
       /**
@@ -40474,7 +40666,7 @@ public final class Request {
        */
       public Builder mergeBindRecommandCommand(com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand value) {
         if (bindRecommandCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000010) == 0x00000010) &&
+          if (((bitField6_ & 0x00000020) == 0x00000020) &&
               bindRecommandCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.getDefaultInstance()) {
             bindRecommandCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.newBuilder(bindRecommandCommand_).mergeFrom(value).buildPartial();
@@ -40485,7 +40677,7 @@ public final class Request {
         } else {
           bindRecommandCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000010;
+        bitField6_ |= 0x00000020;
         return this;
       }
       /**
@@ -40498,14 +40690,14 @@ public final class Request {
         } else {
           bindRecommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000010);
+        bitField6_ = (bitField6_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestBindRecommandCommand bindRecommandCommand = 257;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand.Builder getBindRecommandCommandBuilder() {
-        bitField6_ |= 0x00000010;
+        bitField6_ |= 0x00000020;
         onChanged();
         return getBindRecommandCommandFieldBuilder().getBuilder();
       }
@@ -40544,7 +40736,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
        */
       public boolean hasRecommandCommand() {
-        return ((bitField6_ & 0x00000020) == 0x00000020);
+        return ((bitField6_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
@@ -40569,7 +40761,7 @@ public final class Request {
         } else {
           recommandCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000020;
+        bitField6_ |= 0x00000040;
         return this;
       }
       /**
@@ -40583,7 +40775,7 @@ public final class Request {
         } else {
           recommandCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000020;
+        bitField6_ |= 0x00000040;
         return this;
       }
       /**
@@ -40591,7 +40783,7 @@ public final class Request {
        */
       public Builder mergeRecommandCommand(com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand value) {
         if (recommandCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000020) == 0x00000020) &&
+          if (((bitField6_ & 0x00000040) == 0x00000040) &&
               recommandCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.getDefaultInstance()) {
             recommandCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.newBuilder(recommandCommand_).mergeFrom(value).buildPartial();
@@ -40602,7 +40794,7 @@ public final class Request {
         } else {
           recommandCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000020;
+        bitField6_ |= 0x00000040;
         return this;
       }
       /**
@@ -40615,14 +40807,14 @@ public final class Request {
         } else {
           recommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000020);
+        bitField6_ = (bitField6_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRecommandCommand recommandCommand = 258;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestRecommandCommand.Builder getRecommandCommandBuilder() {
-        bitField6_ |= 0x00000020;
+        bitField6_ |= 0x00000040;
         onChanged();
         return getRecommandCommandFieldBuilder().getBuilder();
       }
@@ -40661,7 +40853,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
        */
       public boolean hasChangeUserNameCommand() {
-        return ((bitField6_ & 0x00000040) == 0x00000040);
+        return ((bitField6_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
@@ -40686,7 +40878,7 @@ public final class Request {
         } else {
           changeUserNameCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000040;
+        bitField6_ |= 0x00000080;
         return this;
       }
       /**
@@ -40700,7 +40892,7 @@ public final class Request {
         } else {
           changeUserNameCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000040;
+        bitField6_ |= 0x00000080;
         return this;
       }
       /**
@@ -40708,7 +40900,7 @@ public final class Request {
        */
       public Builder mergeChangeUserNameCommand(com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand value) {
         if (changeUserNameCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000040) == 0x00000040) &&
+          if (((bitField6_ & 0x00000080) == 0x00000080) &&
               changeUserNameCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.getDefaultInstance()) {
             changeUserNameCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.newBuilder(changeUserNameCommand_).mergeFrom(value).buildPartial();
@@ -40719,7 +40911,7 @@ public final class Request {
         } else {
           changeUserNameCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000040;
+        bitField6_ |= 0x00000080;
         return this;
       }
       /**
@@ -40732,14 +40924,14 @@ public final class Request {
         } else {
           changeUserNameCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000040);
+        bitField6_ = (bitField6_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestChangeUserNameCommand changeUserNameCommand = 259;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand.Builder getChangeUserNameCommandBuilder() {
-        bitField6_ |= 0x00000040;
+        bitField6_ |= 0x00000080;
         onChanged();
         return getChangeUserNameCommandFieldBuilder().getBuilder();
       }
@@ -40778,7 +40970,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestCipherRewardCommand cipherRewardCommand = 260;</code>
        */
       public boolean hasCipherRewardCommand() {
-        return ((bitField6_ & 0x00000080) == 0x00000080);
+        return ((bitField6_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCipherRewardCommand cipherRewardCommand = 260;</code>
@@ -40803,7 +40995,7 @@ public final class Request {
         } else {
           cipherRewardCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000080;
+        bitField6_ |= 0x00000100;
         return this;
       }
       /**
@@ -40817,7 +41009,7 @@ public final class Request {
         } else {
           cipherRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000080;
+        bitField6_ |= 0x00000100;
         return this;
       }
       /**
@@ -40825,7 +41017,7 @@ public final class Request {
        */
       public Builder mergeCipherRewardCommand(com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand value) {
         if (cipherRewardCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000080) == 0x00000080) &&
+          if (((bitField6_ & 0x00000100) == 0x00000100) &&
               cipherRewardCommand_ != com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.getDefaultInstance()) {
             cipherRewardCommand_ =
               com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.newBuilder(cipherRewardCommand_).mergeFrom(value).buildPartial();
@@ -40836,7 +41028,7 @@ public final class Request {
         } else {
           cipherRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000080;
+        bitField6_ |= 0x00000100;
         return this;
       }
       /**
@@ -40849,14 +41041,14 @@ public final class Request {
         } else {
           cipherRewardCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000080);
+        bitField6_ = (bitField6_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestCipherRewardCommand cipherRewardCommand = 260;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.RequestCipherRewardCommand.Builder getCipherRewardCommandBuilder() {
-        bitField6_ |= 0x00000080;
+        bitField6_ |= 0x00000100;
         onChanged();
         return getCipherRewardCommandFieldBuilder().getBuilder();
       }
@@ -40895,7 +41087,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestEventQuickFightCommand eventQuickFightCommand = 261;</code>
        */
       public boolean hasEventQuickFightCommand() {
-        return ((bitField6_ & 0x00000100) == 0x00000100);
+        return ((bitField6_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEventQuickFightCommand eventQuickFightCommand = 261;</code>
@@ -40920,7 +41112,7 @@ public final class Request {
         } else {
           eventQuickFightCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000100;
+        bitField6_ |= 0x00000200;
         return this;
       }
       /**
@@ -40934,7 +41126,7 @@ public final class Request {
         } else {
           eventQuickFightCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000100;
+        bitField6_ |= 0x00000200;
         return this;
       }
       /**
@@ -40942,7 +41134,7 @@ public final class Request {
        */
       public Builder mergeEventQuickFightCommand(com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand value) {
         if (eventQuickFightCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000100) == 0x00000100) &&
+          if (((bitField6_ & 0x00000200) == 0x00000200) &&
               eventQuickFightCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.getDefaultInstance()) {
             eventQuickFightCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.newBuilder(eventQuickFightCommand_).mergeFrom(value).buildPartial();
@@ -40953,7 +41145,7 @@ public final class Request {
         } else {
           eventQuickFightCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000100;
+        bitField6_ |= 0x00000200;
         return this;
       }
       /**
@@ -40966,14 +41158,14 @@ public final class Request {
         } else {
           eventQuickFightCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000100);
+        bitField6_ = (bitField6_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestEventQuickFightCommand eventQuickFightCommand = 261;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestEventQuickFightCommand.Builder getEventQuickFightCommandBuilder() {
-        bitField6_ |= 0x00000100;
+        bitField6_ |= 0x00000200;
         onChanged();
         return getEventQuickFightCommandFieldBuilder().getBuilder();
       }
@@ -41012,7 +41204,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSignNameCommand signNameCommand = 262;</code>
        */
       public boolean hasSignNameCommand() {
-        return ((bitField6_ & 0x00000200) == 0x00000200);
+        return ((bitField6_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSignNameCommand signNameCommand = 262;</code>
@@ -41037,7 +41229,7 @@ public final class Request {
         } else {
           signNameCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000200;
+        bitField6_ |= 0x00000400;
         return this;
       }
       /**
@@ -41051,7 +41243,7 @@ public final class Request {
         } else {
           signNameCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000200;
+        bitField6_ |= 0x00000400;
         return this;
       }
       /**
@@ -41059,7 +41251,7 @@ public final class Request {
        */
       public Builder mergeSignNameCommand(com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand value) {
         if (signNameCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000200) == 0x00000200) &&
+          if (((bitField6_ & 0x00000400) == 0x00000400) &&
               signNameCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.getDefaultInstance()) {
             signNameCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.newBuilder(signNameCommand_).mergeFrom(value).buildPartial();
@@ -41070,7 +41262,7 @@ public final class Request {
         } else {
           signNameCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000200;
+        bitField6_ |= 0x00000400;
         return this;
       }
       /**
@@ -41083,14 +41275,14 @@ public final class Request {
         } else {
           signNameCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000200);
+        bitField6_ = (bitField6_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSignNameCommand signNameCommand = 262;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand.Builder getSignNameCommandBuilder() {
-        bitField6_ |= 0x00000200;
+        bitField6_ |= 0x00000400;
         onChanged();
         return getSignNameCommandFieldBuilder().getBuilder();
       }
@@ -41129,7 +41321,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRiteCommand submitRiteCommand = 263;</code>
        */
       public boolean hasSubmitRiteCommand() {
-        return ((bitField6_ & 0x00000400) == 0x00000400);
+        return ((bitField6_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRiteCommand submitRiteCommand = 263;</code>
@@ -41154,7 +41346,7 @@ public final class Request {
         } else {
           submitRiteCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000400;
+        bitField6_ |= 0x00000800;
         return this;
       }
       /**
@@ -41168,7 +41360,7 @@ public final class Request {
         } else {
           submitRiteCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000400;
+        bitField6_ |= 0x00000800;
         return this;
       }
       /**
@@ -41176,7 +41368,7 @@ public final class Request {
        */
       public Builder mergeSubmitRiteCommand(com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand value) {
         if (submitRiteCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000400) == 0x00000400) &&
+          if (((bitField6_ & 0x00000800) == 0x00000800) &&
               submitRiteCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.getDefaultInstance()) {
             submitRiteCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.newBuilder(submitRiteCommand_).mergeFrom(value).buildPartial();
@@ -41187,7 +41379,7 @@ public final class Request {
         } else {
           submitRiteCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000400;
+        bitField6_ |= 0x00000800;
         return this;
       }
       /**
@@ -41200,14 +41392,14 @@ public final class Request {
         } else {
           submitRiteCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000400);
+        bitField6_ = (bitField6_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSubmitRiteCommand submitRiteCommand = 263;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand.Builder getSubmitRiteCommandBuilder() {
-        bitField6_ |= 0x00000400;
+        bitField6_ |= 0x00000800;
         onChanged();
         return getSubmitRiteCommandFieldBuilder().getBuilder();
       }
@@ -41246,7 +41438,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestRemoveRecommandCommand removeRecommandCommand = 264;</code>
        */
       public boolean hasRemoveRecommandCommand() {
-        return ((bitField6_ & 0x00000800) == 0x00000800);
+        return ((bitField6_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRemoveRecommandCommand removeRecommandCommand = 264;</code>
@@ -41271,7 +41463,7 @@ public final class Request {
         } else {
           removeRecommandCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00000800;
+        bitField6_ |= 0x00001000;
         return this;
       }
       /**
@@ -41285,7 +41477,7 @@ public final class Request {
         } else {
           removeRecommandCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00000800;
+        bitField6_ |= 0x00001000;
         return this;
       }
       /**
@@ -41293,7 +41485,7 @@ public final class Request {
        */
       public Builder mergeRemoveRecommandCommand(com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand value) {
         if (removeRecommandCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00000800) == 0x00000800) &&
+          if (((bitField6_ & 0x00001000) == 0x00001000) &&
               removeRecommandCommand_ != com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.getDefaultInstance()) {
             removeRecommandCommand_ =
               com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.newBuilder(removeRecommandCommand_).mergeFrom(value).buildPartial();
@@ -41304,7 +41496,7 @@ public final class Request {
         } else {
           removeRecommandCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00000800;
+        bitField6_ |= 0x00001000;
         return this;
       }
       /**
@@ -41317,14 +41509,14 @@ public final class Request {
         } else {
           removeRecommandCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00000800);
+        bitField6_ = (bitField6_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestRemoveRecommandCommand removeRecommandCommand = 264;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.RequestRemoveRecommandCommand.Builder getRemoveRecommandCommandBuilder() {
-        bitField6_ |= 0x00000800;
+        bitField6_ |= 0x00001000;
         onChanged();
         return getRemoveRecommandCommandFieldBuilder().getBuilder();
       }
@@ -41363,7 +41555,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestSaveFightInfoCommand saveFightInfoCommand = 265;</code>
        */
       public boolean hasSaveFightInfoCommand() {
-        return ((bitField6_ & 0x00001000) == 0x00001000);
+        return ((bitField6_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSaveFightInfoCommand saveFightInfoCommand = 265;</code>
@@ -41388,7 +41580,7 @@ public final class Request {
         } else {
           saveFightInfoCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00001000;
+        bitField6_ |= 0x00002000;
         return this;
       }
       /**
@@ -41402,7 +41594,7 @@ public final class Request {
         } else {
           saveFightInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00001000;
+        bitField6_ |= 0x00002000;
         return this;
       }
       /**
@@ -41410,7 +41602,7 @@ public final class Request {
        */
       public Builder mergeSaveFightInfoCommand(com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand value) {
         if (saveFightInfoCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00001000) == 0x00001000) &&
+          if (((bitField6_ & 0x00002000) == 0x00002000) &&
               saveFightInfoCommand_ != com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.getDefaultInstance()) {
             saveFightInfoCommand_ =
               com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.newBuilder(saveFightInfoCommand_).mergeFrom(value).buildPartial();
@@ -41421,7 +41613,7 @@ public final class Request {
         } else {
           saveFightInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00001000;
+        bitField6_ |= 0x00002000;
         return this;
       }
       /**
@@ -41434,14 +41626,14 @@ public final class Request {
         } else {
           saveFightInfoCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00001000);
+        bitField6_ = (bitField6_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestSaveFightInfoCommand saveFightInfoCommand = 265;</code>
        */
       public com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand.Builder getSaveFightInfoCommandBuilder() {
-        bitField6_ |= 0x00001000;
+        bitField6_ |= 0x00002000;
         onChanged();
         return getSaveFightInfoCommandFieldBuilder().getBuilder();
       }
@@ -41480,7 +41672,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightApplyCommand unionFightApplyCommand = 266;</code>
        */
       public boolean hasUnionFightApplyCommand() {
-        return ((bitField6_ & 0x00002000) == 0x00002000);
+        return ((bitField6_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightApplyCommand unionFightApplyCommand = 266;</code>
@@ -41505,7 +41697,7 @@ public final class Request {
         } else {
           unionFightApplyCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00002000;
+        bitField6_ |= 0x00004000;
         return this;
       }
       /**
@@ -41519,7 +41711,7 @@ public final class Request {
         } else {
           unionFightApplyCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00002000;
+        bitField6_ |= 0x00004000;
         return this;
       }
       /**
@@ -41527,7 +41719,7 @@ public final class Request {
        */
       public Builder mergeUnionFightApplyCommand(com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand value) {
         if (unionFightApplyCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00002000) == 0x00002000) &&
+          if (((bitField6_ & 0x00004000) == 0x00004000) &&
               unionFightApplyCommand_ != com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.getDefaultInstance()) {
             unionFightApplyCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.newBuilder(unionFightApplyCommand_).mergeFrom(value).buildPartial();
@@ -41538,7 +41730,7 @@ public final class Request {
         } else {
           unionFightApplyCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00002000;
+        bitField6_ |= 0x00004000;
         return this;
       }
       /**
@@ -41551,14 +41743,14 @@ public final class Request {
         } else {
           unionFightApplyCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00002000);
+        bitField6_ = (bitField6_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightApplyCommand unionFightApplyCommand = 266;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.Builder getUnionFightApplyCommandBuilder() {
-        bitField6_ |= 0x00002000;
+        bitField6_ |= 0x00004000;
         onChanged();
         return getUnionFightApplyCommandFieldBuilder().getBuilder();
       }
@@ -41597,7 +41789,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestLootRewardTaskCommand lootRewardTaskCommand = 267;</code>
        */
       public boolean hasLootRewardTaskCommand() {
-        return ((bitField6_ & 0x00004000) == 0x00004000);
+        return ((bitField6_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLootRewardTaskCommand lootRewardTaskCommand = 267;</code>
@@ -41622,7 +41814,7 @@ public final class Request {
         } else {
           lootRewardTaskCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00004000;
+        bitField6_ |= 0x00008000;
         return this;
       }
       /**
@@ -41636,7 +41828,7 @@ public final class Request {
         } else {
           lootRewardTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00004000;
+        bitField6_ |= 0x00008000;
         return this;
       }
       /**
@@ -41644,7 +41836,7 @@ public final class Request {
        */
       public Builder mergeLootRewardTaskCommand(com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand value) {
         if (lootRewardTaskCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00004000) == 0x00004000) &&
+          if (((bitField6_ & 0x00008000) == 0x00008000) &&
               lootRewardTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.getDefaultInstance()) {
             lootRewardTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.newBuilder(lootRewardTaskCommand_).mergeFrom(value).buildPartial();
@@ -41655,7 +41847,7 @@ public final class Request {
         } else {
           lootRewardTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00004000;
+        bitField6_ |= 0x00008000;
         return this;
       }
       /**
@@ -41668,14 +41860,14 @@ public final class Request {
         } else {
           lootRewardTaskCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00004000);
+        bitField6_ = (bitField6_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestLootRewardTaskCommand lootRewardTaskCommand = 267;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.Builder getLootRewardTaskCommandBuilder() {
-        bitField6_ |= 0x00004000;
+        bitField6_ |= 0x00008000;
         onChanged();
         return getLootRewardTaskCommandFieldBuilder().getBuilder();
       }
@@ -41714,7 +41906,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightCommand unionFightCommand = 268;</code>
        */
       public boolean hasUnionFightCommand() {
-        return ((bitField6_ & 0x00008000) == 0x00008000);
+        return ((bitField6_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightCommand unionFightCommand = 268;</code>
@@ -41739,7 +41931,7 @@ public final class Request {
         } else {
           unionFightCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00008000;
+        bitField6_ |= 0x00010000;
         return this;
       }
       /**
@@ -41753,7 +41945,7 @@ public final class Request {
         } else {
           unionFightCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00008000;
+        bitField6_ |= 0x00010000;
         return this;
       }
       /**
@@ -41761,7 +41953,7 @@ public final class Request {
        */
       public Builder mergeUnionFightCommand(com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand value) {
         if (unionFightCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00008000) == 0x00008000) &&
+          if (((bitField6_ & 0x00010000) == 0x00010000) &&
               unionFightCommand_ != com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.getDefaultInstance()) {
             unionFightCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.newBuilder(unionFightCommand_).mergeFrom(value).buildPartial();
@@ -41772,7 +41964,7 @@ public final class Request {
         } else {
           unionFightCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00008000;
+        bitField6_ |= 0x00010000;
         return this;
       }
       /**
@@ -41785,14 +41977,14 @@ public final class Request {
         } else {
           unionFightCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00008000);
+        bitField6_ = (bitField6_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestUnionFightCommand unionFightCommand = 268;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.Builder getUnionFightCommandBuilder() {
-        bitField6_ |= 0x00008000;
+        bitField6_ |= 0x00010000;
         onChanged();
         return getUnionFightCommandFieldBuilder().getBuilder();
       }
@@ -41831,7 +42023,7 @@ public final class Request {
        * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
        */
       public boolean hasViewUnionFightFightInfoCommand() {
-        return ((bitField6_ & 0x00010000) == 0x00010000);
+        return ((bitField6_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
@@ -41856,7 +42048,7 @@ public final class Request {
         } else {
           viewUnionFightFightInfoCommandBuilder_.setMessage(value);
         }
-        bitField6_ |= 0x00010000;
+        bitField6_ |= 0x00020000;
         return this;
       }
       /**
@@ -41870,7 +42062,7 @@ public final class Request {
         } else {
           viewUnionFightFightInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField6_ |= 0x00010000;
+        bitField6_ |= 0x00020000;
         return this;
       }
       /**
@@ -41878,7 +42070,7 @@ public final class Request {
        */
       public Builder mergeViewUnionFightFightInfoCommand(com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand value) {
         if (viewUnionFightFightInfoCommandBuilder_ == null) {
-          if (((bitField6_ & 0x00010000) == 0x00010000) &&
+          if (((bitField6_ & 0x00020000) == 0x00020000) &&
               viewUnionFightFightInfoCommand_ != com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.getDefaultInstance()) {
             viewUnionFightFightInfoCommand_ =
               com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.newBuilder(viewUnionFightFightInfoCommand_).mergeFrom(value).buildPartial();
@@ -41889,7 +42081,7 @@ public final class Request {
         } else {
           viewUnionFightFightInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField6_ |= 0x00010000;
+        bitField6_ |= 0x00020000;
         return this;
       }
       /**
@@ -41902,14 +42094,14 @@ public final class Request {
         } else {
           viewUnionFightFightInfoCommandBuilder_.clear();
         }
-        bitField6_ = (bitField6_ & ~0x00010000);
+        bitField6_ = (bitField6_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
        */
       public com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.Builder getViewUnionFightFightInfoCommandBuilder() {
-        bitField6_ |= 0x00010000;
+        bitField6_ |= 0x00020000;
         onChanged();
         return getViewUnionFightFightInfoCommandFieldBuilder().getBuilder();
       }
@@ -41974,7 +42166,7 @@ public final class Request {
       ".proto\032\021ServerProto.proto\032\023UserInfoProto" +
       ".proto\032\017MailProto.proto\032\020UnionProto.prot" +
       "o\032\025RewardTaskProto.proto\032\017TaskProto.prot" +
-      "o\"\245\207\001\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .co",
+      "o\"\365\207\001\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .co",
       "m.trans.pixel.protoc.HeadInfo\022G\n\017registe" +
       "rCommand\030\002 \001(\0132..com.trans.pixel.protoc." +
       "RequestRegisterCommand\022A\n\014loginCommand\030\003" +
@@ -42155,16 +42347,18 @@ public final class Request {
       "\017openRaidCommand\030\235\001 \001(\0132..com.trans.pixe" +
       "l.protoc.RequestOpenRaidCommand\022E\n\013raidC" +
       "ommand\030\236\001 \001(\0132/.com.trans.pixel.protoc.R",
-      "equestStartRaidCommand\022W\n\027messageBoardLi" +
+      "equestStartRaidCommand\022N\n\022canRechargeCom" +
+      "mand\030\252\001 \001(\01321.com.trans.pixel.protoc.Req" +
+      "uestCanRechargeCommand\022W\n\027messageBoardLi" +
       "stCommand\030$ \001(\01326.com.trans.pixel.protoc" +
       ".RequestMessageBoardListCommand\022[\n\031creat" +
       "eMessageBoardCommand\030% \001(\01328.com.trans.p" +
       "ixel.protoc.RequestCreateMessageBoardCom" +
       "mand\022O\n\023replyMessageCommand\030& \001(\01322.com." +
       "trans.pixel.protoc.RequestReplyMessageCo" +
-      "mmand\022O\n\023userTeamListCommand\030. \001(\01322.com" +
+      "mmand\022O\n\023userTeamListCommand\030. \001(\01322.com",
       ".trans.pixel.protoc.RequestUserTeamListC" +
-      "ommand\022V\n\025ladderUserInfoCommand\030/ \001(\01327.",
+      "ommand\022V\n\025ladderUserInfoCommand\030/ \001(\01327." +
       "com.trans.pixel.protoc.RequestGetLadderU" +
       "serInfoCommand\022V\n\025userFriendListCommand\030" +
       "0 \001(\01327.com.trans.pixel.protoc.RequestGe" +
@@ -42172,9 +42366,9 @@ public final class Request {
       "mmand\0302 \001(\01322.com.trans.pixel.protoc.Req" +
       "uestEquipComposeCommand\022E\n\016usePropComman" +
       "d\0303 \001(\0132-.com.trans.pixel.protoc.Request" +
-      "UsePropCommand\022M\n\022fenjieEquipCommand\0304 \001" +
+      "UsePropCommand\022M\n\022fenjieEquipCommand\0304 \001",
       "(\01321.com.trans.pixel.protoc.RequestFenji" +
-      "eEquipCommand\022?\n\013signCommand\0305 \001(\0132*.com",
+      "eEquipCommand\022?\n\013signCommand\0305 \001(\0132*.com" +
       ".trans.pixel.protoc.RequestSignCommand\022Y" +
       "\n\030helpAttackPVPMineCommand\0307 \001(\01327.com.t" +
       "rans.pixel.protoc.RequestHelpAttackPVPMi" +
@@ -42182,9 +42376,9 @@ public final class Request {
       "om.trans.pixel.protoc.RequestFenjieHeroC" +
       "ommand\022S\n\025resetHeroSkillCommand\0309 \001(\01324." +
       "com.trans.pixel.protoc.RequestResetHeroS" +
-      "killCommand\022G\n\017heroSpUpCommand\0301 \001(\0132..c" +
+      "killCommand\022G\n\017heroSpUpCommand\0301 \001(\0132..c",
       "om.trans.pixel.protoc.RequestHeroSpUpCom" +
-      "mand\022G\n\017sendMailCommand\030: \001(\0132..com.tran",
+      "mand\022G\n\017sendMailCommand\030: \001(\0132..com.tran" +
       "s.pixel.protoc.RequestSendMailCommand\022U\n" +
       "\026brotherMineInfoCommand\030; \001(\01325.com.tran" +
       "s.pixel.protoc.RequestBrotherMineInfoCom" +
@@ -42192,9 +42386,9 @@ public final class Request {
       ".trans.pixel.protoc.RequestEnterMohuaMap" +
       "Command\022Q\n\024startMohuaMapCommand\030= \001(\01323." +
       "com.trans.pixel.protoc.RequestStartMohua" +
-      "MapCommand\022O\n\023useMohuaCardCommand\030> \001(\0132" +
+      "MapCommand\022O\n\023useMohuaCardCommand\030> \001(\0132",
       "2.com.trans.pixel.protoc.RequestUseMohua" +
-      "CardCommand\022W\n\027mohuaStageRewardCommand\030?",
+      "CardCommand\022W\n\027mohuaStageRewardCommand\030?" +
       " \001(\01326.com.trans.pixel.protoc.RequestMoh" +
       "uaStageRewardCommand\022Q\n\024mohuaHpRewardCom" +
       "mand\030@ \001(\01323.com.trans.pixel.protoc.Requ" +
@@ -42202,9 +42396,9 @@ public final class Request {
       "ageCommand\030A \001(\01326.com.trans.pixel.proto" +
       "c.RequestMohuaSubmitStageCommand\022M\n\022endM" +
       "ohuaMapCommand\030B \001(\01321.com.trans.pixel.p" +
-      "rotoc.RequestEndMohuaMapCommand\022I\n\020saleE" +
+      "rotoc.RequestEndMohuaMapCommand\022I\n\020saleE",
       "quipCommand\030C \001(\0132/.com.trans.pixel.prot" +
-      "oc.RequestSaleEquipCommand\022I\n\020delFriendC",
+      "oc.RequestSaleEquipCommand\022I\n\020delFriendC" +
       "ommand\030D \001(\0132/.com.trans.pixel.protoc.Re" +
       "questDelFriendCommand\022O\n\023submitZhanliCom" +
       "mand\030E \001(\01322.com.trans.pixel.protoc.Requ" +
@@ -42212,9 +42406,9 @@ public final class Request {
       "ommand\030F \001(\01323.com.trans.pixel.protoc.Re" +
       "questAchieveRewardCommand\022M\n\022achieveList" +
       "Command\030G \001(\01321.com.trans.pixel.protoc.R" +
-      "equestAchieveListCommand\022Q\n\024richangRewar" +
+      "equestAchieveListCommand\022Q\n\024richangRewar",
       "dCommand\030I \001(\01323.com.trans.pixel.protoc." +
-      "RequestRichangRewardCommand\022M\n\022richangLi",
+      "RequestRichangRewardCommand\022M\n\022richangLi" +
       "stCommand\030J \001(\01321.com.trans.pixel.protoc" +
       ".RequestRichangListCommand\022S\n\025kaifu2Acti" +
       "vityCommand\030K \001(\01324.com.trans.pixel.prot" +
@@ -42222,9 +42416,9 @@ public final class Request {
       "RewardCommand\030M \001(\01321.com.trans.pixel.pr" +
       "otoc.RequestKaifuRewardCommand\022I\n\020kaifuL" +
       "istCommand\030N \001(\0132/.com.trans.pixel.proto" +
-      "c.RequestKaifuListCommand\022K\n\021userPokedeC" +
+      "c.RequestKaifuListCommand\022K\n\021userPokedeC",
       "ommand\030P \001(\01320.com.trans.pixel.protoc.Re" +
-      "questUserPokedeCommand\022?\n\013rankCommand\030Q ",
+      "questUserPokedeCommand\022?\n\013rankCommand\030Q " +
       "\001(\0132*.com.trans.pixel.protoc.RequestRank" +
       "Command\022S\n\025buyHeroPackageCommand\030R \001(\01324" +
       ".com.trans.pixel.protoc.RequestBuyHeroPa" +
@@ -42232,9 +42426,9 @@ public final class Request {
       "d\030S \001(\01328.com.trans.pixel.protoc.Request" +
       "SubmitComposeSkillCommand\022K\n\021submitIconC" +
       "ommand\030U \001(\01320.com.trans.pixel.protoc.Re" +
-      "questSubmitIconCommand\022Y\n\030readyAttackLad" +
+      "questSubmitIconCommand\022Y\n\030readyAttackLad",
       "derCommand\030V \001(\01327.com.trans.pixel.proto" +
-      "c.RequestReadyAttackLadderCommand\022M\n\022bin",
+      "c.RequestReadyAttackLadderCommand\022M\n\022bin" +
       "dAccountCommand\030W \001(\01321.com.trans.pixel." +
       "protoc.RequestBindAccountCommand\022Q\n\024quer" +
       "yRechargeCommand\030X \001(\01323.com.trans.pixel" +
@@ -42242,9 +42436,9 @@ public final class Request {
       "houchongRewardCommand\030Y \001(\01325.com.trans." +
       "pixel.protoc.RequestShouchongRewardComma" +
       "nd\022I\n\020heartBeatCommand\030Z \001(\0132/.com.trans" +
-      ".pixel.protoc.RequestHeartBeatCommand\022I\n" +
+      ".pixel.protoc.RequestHeartBeatCommand\022I\n",
       "\020greenhandCommand\030[ \001(\0132/.com.trans.pixe" +
-      "l.protoc.RequestGreenhandCommand\022=\n\nlogC",
+      "l.protoc.RequestGreenhandCommand\022=\n\nlogC" +
       "ommand\030\\ \001(\0132).com.trans.pixel.protoc.Re" +
       "questLogCommand\022G\n\017feedFoodCommand\030] \001(\013" +
       "2..com.trans.pixel.protoc.RequestFeedFoo" +
@@ -42252,9 +42446,9 @@ public final class Request {
       ".trans.pixel.protoc.RequestClearHeroComm" +
       "and\022S\n\025choseClearInfoCommand\030_ \001(\01324.com" +
       ".trans.pixel.protoc.RequestChoseClearInf" +
-      "oCommand\022S\n\025submitBosskillCommand\030` \001(\0132" +
+      "oCommand\022S\n\025submitBosskillCommand\030` \001(\0132",
       "4.com.trans.pixel.protoc.RequestSubmitBo" +
-      "sskillCommand\022G\n\017bosskillCommand\030a \001(\0132.",
+      "sskillCommand\022G\n\017bosskillCommand\030a \001(\0132." +
       ".com.trans.pixel.protoc.RequestBosskillC" +
       "ommand\022S\n\025unionBossFightCommand\030b \001(\01324." +
       "com.trans.pixel.protoc.RequestUnionBossF" +
@@ -42262,9 +42456,9 @@ public final class Request {
       "(\01324.com.trans.pixel.protoc.RequestHeroS" +
       "trengthenCommand\022T\n\025sevenLoginSignComman" +
       "d\030\310\001 \001(\01324.com.trans.pixel.protoc.Reques" +
-      "tSevenLoginSignCommand\022N\n\022isAreaOwnerCom" +
+      "tSevenLoginSignCommand\022N\n\022isAreaOwnerCom",
       "mand\030\311\001 \001(\01321.com.trans.pixel.protoc.Req" +
-      "uestIsAreaOwnerCommand\022L\n\021openFetterComm",
+      "uestIsAreaOwnerCommand\022L\n\021openFetterComm" +
       "and\030\312\001 \001(\01320.com.trans.pixel.protoc.Requ" +
       "estOpenFetterCommand\022H\n\017userTaskCommand\030" +
       "\313\001 \001(\0132..com.trans.pixel.protoc.RequestU" +
@@ -42272,9 +42466,9 @@ public final class Request {
       "\001 \001(\01323.com.trans.pixel.protoc.RequestGe" +
       "tTaskRewardCommand\022Z\n\030submitBattletowerC" +
       "ommand\030\315\001 \001(\01327.com.trans.pixel.protoc.R" +
-      "equestSubmitBattletowerCommand\022X\n\027resetB" +
+      "equestSubmitBattletowerCommand\022X\n\027resetB",
       "attletowerCommand\030\316\001 \001(\01326.com.trans.pix" +
-      "el.protoc.RequestResetBattletowerCommand",
+      "el.protoc.RequestResetBattletowerCommand" +
       "\022T\n\025getBattletowerCommand\030\317\001 \001(\01324.com.t" +
       "rans.pixel.protoc.RequestGetBattletowerC" +
       "ommand\022V\n\026battletowerShopCommand\030\320\001 \001(\0132" +
@@ -42282,9 +42476,9 @@ public final class Request {
       "werShopCommand\022f\n\036battletowerShopPurchas" +
       "eCommand\030\321\001 \001(\0132=.com.trans.pixel.protoc" +
       ".RequestBattletowerShopPurchaseCommand\022d" +
-      "\n\035battletowerShopRefreshCommand\030\322\001 \001(\0132<" +
+      "\n\035battletowerShopRefreshCommand\030\322\001 \001(\0132<",
       ".com.trans.pixel.protoc.RequestBattletow" +
-      "erShopRefreshCommand\022L\n\021bloodEnterComman",
+      "erShopRefreshCommand\022L\n\021bloodEnterComman" +
       "d\030\323\001 \001(\01320.com.trans.pixel.protoc.Reques" +
       "tBloodEnterCommand\022N\n\022bloodXiazhuCommand" +
       "\030\324\001 \001(\01321.com.trans.pixel.protoc.Request" +
@@ -42292,9 +42486,9 @@ public final class Request {
       "mmand\030\325\001 \001(\01326.com.trans.pixel.protoc.Re" +
       "questQueryNoticeBoardCommand\022J\n\020helpLeve" +
       "lCommand\030\326\001 \001(\0132/.com.trans.pixel.protoc" +
-      ".RequestHelpLevelCommand\022V\n\026inviteFightB" +
+      ".RequestHelpLevelCommand\022V\n\026inviteFightB",
       "ossCommand\030\327\001 \001(\01325.com.trans.pixel.prot" +
-      "oc.RequestInviteFightBossCommand\022R\n\024quit",
+      "oc.RequestInviteFightBossCommand\022R\n\024quit" +
       "FightBossCommand\030\330\001 \001(\01323.com.trans.pixe" +
       "l.protoc.RequestQuitFightBossCommand\022Z\n\026" +
       "submitBossScoreCommand\030\331\001 \001(\01329.com.tran" +
@@ -42302,9 +42496,9 @@ public final class Request {
       "eCommand\022H\n\017userInfoCommand\030\332\001 \001(\0132..com" +
       ".trans.pixel.protoc.RequestUserInfoComma" +
       "nd\022H\n\017rechargeCommand\030\333\001 \001(\0132..com.trans" +
-      ".pixel.protoc.RequestRechargeCommand\022R\n\024" +
+      ".pixel.protoc.RequestRechargeCommand\022R\n\024",
       "talentupgradeCommand\030\334\001 \001(\01323.com.trans." +
-      "pixel.protoc.RequestTalentupgradeCommand",
+      "pixel.protoc.RequestTalentupgradeCommand" +
       "\022V\n\026talentChangeUseCommand\030\337\001 \001(\01325.com." +
       "trans.pixel.protoc.RequestTalentChangeUs" +
       "eCommand\022Z\n\030talentChangeSkillCommand\030\340\001 " +
@@ -42312,9 +42506,9 @@ public final class Request {
       "ntChangeSkillCommand\022R\n\024startBossRoomCom" +
       "mand\030\341\001 \001(\01323.com.trans.pixel.protoc.Req" +
       "uestStartBossRoomCommand\022T\n\025createBossRo" +
-      "omCommand\030\342\001 \001(\01324.com.trans.pixel.proto" +
+      "omCommand\030\342\001 \001(\01324.com.trans.pixel.proto",
       "c.RequestCreateBossRoomCommand\022P\n\023bossRo" +
-      "omInfoCommand\030\343\001 \001(\01322.com.trans.pixel.p",
+      "omInfoCommand\030\343\001 \001(\01322.com.trans.pixel.p" +
       "rotoc.RequestBossRoomInfoCommand\022T\n\025equi" +
       "pStrenthenCommand\030\344\001 \001(\01324.com.trans.pix" +
       "el.protoc.RequestEquipStrenthenCommand\022N" +
@@ -42322,9 +42516,9 @@ public final class Request {
       "pixel.protoc.RequestEquipPokedeCommand\022Z" +
       "\n\030talentChangeEquipCommand\030\346\001 \001(\01327.com." +
       "trans.pixel.protoc.RequestTalentChangeEq" +
-      "uipCommand\022^\n\032zanHeroMessageBoardCommand" +
+      "uipCommand\022^\n\032zanHeroMessageBoardCommand",
       "\030\347\001 \001(\01329.com.trans.pixel.protoc.Request" +
-      "ZanHeroMessageBoardCommand\022`\n\033createRewa",
+      "ZanHeroMessageBoardCommand\022`\n\033createRewa" +
       "rdTaskRoomCommand\030\350\001 \001(\0132:.com.trans.pix" +
       "el.protoc.RequestCreateRewardTaskRoomCom" +
       "mand\022\\\n\031quitRewardTaskRoomCommand\030\351\001 \001(\013" +
@@ -42332,9 +42526,9 @@ public final class Request {
       "ardTaskRoomCommand\022d\n\035inviteToRewardTask" +
       "RoomCommand\030\352\001 \001(\0132<.com.trans.pixel.pro" +
       "toc.RequestInviteToRewardTaskRoomCommand" +
-      "\022b\n\034submitRewardTaskScoreCommand\030\353\001 \001(\0132" +
+      "\022b\n\034submitRewardTaskScoreCommand\030\353\001 \001(\0132",
       ";.com.trans.pixel.protoc.RequestSubmitRe" +
-      "wardTaskScoreCommand\022T\n\025userRewardTaskCo",
+      "wardTaskScoreCommand\022T\n\025userRewardTaskCo" +
       "mmand\030\354\001 \001(\01324.com.trans.pixel.protoc.Re" +
       "questUserRewardTaskCommand\022X\n\027rewardTask" +
       "RewardCommand\030\355\001 \001(\01326.com.trans.pixel.p" +
@@ -42342,9 +42536,9 @@ public final class Request {
       "userRewardTaskRoomCommand\030\356\001 \001(\01328.com.t" +
       "rans.pixel.protoc.RequestUserRewardTaskR" +
       "oomCommand\022Z\n\030synthetiseComposeCommand\030\357" +
-      "\001 \001(\01327.com.trans.pixel.protoc.RequestSy" +
+      "\001 \001(\01327.com.trans.pixel.protoc.RequestSy",
       "nthetiseComposeCommand\022X\n\027giveupRewardTa" +
-      "skCommand\030\360\001 \001(\01326.com.trans.pixel.proto",
+      "skCommand\030\360\001 \001(\01326.com.trans.pixel.proto" +
       "c.RequestGiveupRewardTaskCommand\022N\n\022extr" +
       "aRewardCommand\030\361\001 \001(\01321.com.trans.pixel." +
       "protoc.RequestExtraRewardCommand\022H\n\017even" +
@@ -42352,9 +42546,9 @@ public final class Request {
       "toc.RequestEventBuyCommand\022L\n\021ladderInfo" +
       "Command\030\363\001 \001(\01320.com.trans.pixel.protoc." +
       "RequestLadderInfoCommand\022\\\n\031refreshLadde" +
-      "rEnemyCommand\030\364\001 \001(\01328.com.trans.pixel.p" +
+      "rEnemyCommand\030\364\001 \001(\01328.com.trans.pixel.p",
       "rotoc.RequestRefreshLadderEnemyCommand\022\\" +
-      "\n\031submitLadderResultCommand\030\365\001 \001(\01328.com",
+      "\n\031submitLadderResultCommand\030\365\001 \001(\01328.com" +
       ".trans.pixel.protoc.RequestSubmitLadderR" +
       "esultCommand\022X\n\027ladderTaskRewardCommand\030" +
       "\366\001 \001(\01326.com.trans.pixel.protoc.RequestL" +
@@ -42362,9 +42556,9 @@ public final class Request {
       "wardCommand\030\367\001 \001(\01328.com.trans.pixel.pro" +
       "toc.RequestLadderSeasonRewardCommand\022N\n\022" +
       "ladderEnemyCommand\030\370\001 \001(\01321.com.trans.pi" +
-      "xel.protoc.RequestLadderEnemyCommand\022P\n\023" +
+      "xel.protoc.RequestLadderEnemyCommand\022P\n\023",
       "buySavingBoxCommand\030\371\001 \001(\01322.com.trans.p" +
-      "ixel.protoc.RequestBuySavingBoxCommand\022F",
+      "ixel.protoc.RequestBuySavingBoxCommand\022F" +
       "\n\016equipupCommand\030\372\001 \001(\0132-.com.trans.pixe" +
       "l.protoc.RequestEquipupCommand\022V\n\026materi" +
       "alComposeCommand\030\373\001 \001(\01325.com.trans.pixe" +
@@ -42372,9 +42566,9 @@ public final class Request {
       "\n\022useMaterialCommand\030\374\001 \001(\01321.com.trans." +
       "pixel.protoc.RequestUseMaterialCommand\022T" +
       "\n\025changePositionCommand\030\375\001 \001(\01324.com.tra" +
-      "ns.pixel.protoc.RequestChangePositionCom" +
+      "ns.pixel.protoc.RequestChangePositionCom",
       "mand\022L\n\021talentSpUpCommand\030\376\001 \001(\01320.com.t" +
-      "rans.pixel.protoc.RequestTalentSpUpComma",
+      "rans.pixel.protoc.RequestTalentSpUpComma" +
       "nd\022\\\n\031talentSkillLevelupCommand\030\377\001 \001(\01328" +
       ".com.trans.pixel.protoc.RequestTalentSki" +
       "llLevelupCommand\022X\n\027talentResetSkillComm" +
@@ -42382,9 +42576,9 @@ public final class Request {
       "estTalentResetSkillCommand\022R\n\024bindRecomm" +
       "andCommand\030\201\002 \001(\01323.com.trans.pixel.prot" +
       "oc.RequestBindRecommandCommand\022J\n\020recomm" +
-      "andCommand\030\202\002 \001(\0132/.com.trans.pixel.prot" +
+      "andCommand\030\202\002 \001(\0132/.com.trans.pixel.prot",
       "oc.RequestRecommandCommand\022T\n\025changeUser" +
-      "NameCommand\030\203\002 \001(\01324.com.trans.pixel.pro",
+      "NameCommand\030\203\002 \001(\01324.com.trans.pixel.pro" +
       "toc.RequestChangeUserNameCommand\022P\n\023ciph" +
       "erRewardCommand\030\204\002 \001(\01322.com.trans.pixel" +
       ".protoc.RequestCipherRewardCommand\022V\n\026ev" +
@@ -42392,9 +42586,9 @@ public final class Request {
       "pixel.protoc.RequestEventQuickFightComma" +
       "nd\022H\n\017signNameCommand\030\206\002 \001(\0132..com.trans" +
       ".pixel.protoc.RequestSignNameCommand\022L\n\021" +
-      "submitRiteCommand\030\207\002 \001(\01320.com.trans.pix" +
+      "submitRiteCommand\030\207\002 \001(\01320.com.trans.pix",
       "el.protoc.RequestSubmitRiteCommand\022V\n\026re" +
-      "moveRecommandCommand\030\210\002 \001(\01325.com.trans.",
+      "moveRecommandCommand\030\210\002 \001(\01325.com.trans." +
       "pixel.protoc.RequestRemoveRecommandComma" +
       "nd\022R\n\024saveFightInfoCommand\030\211\002 \001(\01323.com." +
       "trans.pixel.protoc.RequestSaveFightInfoC" +
@@ -42402,9 +42596,9 @@ public final class Request {
       "5.com.trans.pixel.protoc.RequestUnionFig" +
       "htApplyCommand\022T\n\025lootRewardTaskCommand\030" +
       "\213\002 \001(\01324.com.trans.pixel.protoc.RequestL" +
-      "ootRewardTaskCommand\022L\n\021unionFightComman" +
+      "ootRewardTaskCommand\022L\n\021unionFightComman",
       "d\030\214\002 \001(\01320.com.trans.pixel.protoc.Reques" +
-      "tUnionFightCommand\022f\n\036viewUnionFightFigh",
+      "tUnionFightCommand\022f\n\036viewUnionFightFigh" +
       "tInfoCommand\030\215\002 \001(\0132=.com.trans.pixel.pr" +
       "otoc.RequestViewUnionFightFightInfoComma" +
       "nd"
@@ -42419,7 +42613,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "CanRechargeCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", });
           return null;
         }
       };
