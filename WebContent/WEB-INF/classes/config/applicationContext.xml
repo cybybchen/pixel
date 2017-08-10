@@ -98,8 +98,13 @@
 	<!-- 配置注解实现管理事务（cglib：proxy-target-class="true"） -->
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
+		
 	<!-- 定时任务注解启动 -->
-	<task:annotation-driven />
+	<!-- 启用annotation方式 -->
+    <task:annotation-driven scheduler="myScheduler" />
+
+    <!-- 配置任务线程池 -->
+    <task:scheduler id="myScheduler" pool-size="10" />
 	
     <!-- quartz 配置 -->		
 	<!--bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" /-->
