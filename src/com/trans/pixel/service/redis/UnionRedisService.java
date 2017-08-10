@@ -752,7 +752,7 @@ public class UnionRedisService extends RedisService{
 	
 	public void updateApplyFight(int unionId, UnionFightRecord record) {
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
-		hput(key, "" + unionId, RedisService.formatJson(record));
+		hput(key, "" + record.getUser().getId(), RedisService.formatJson(record));
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	

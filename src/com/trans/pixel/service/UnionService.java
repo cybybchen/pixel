@@ -1333,7 +1333,7 @@ public class UnionService extends FightService{
 		otherBuilder.addEnemyRecord(enemy.build());
 		
 		redis.updateApplyFight(user.getUnionId(), recordBuilder.build());
-		redis.updateApplyFight(user.getUnionId(), otherBuilder.build());
+		redis.updateApplyFight(enemyUnionId, otherBuilder.build());
 		
 		redis.saveUnionFightFightInfo(enemyUnionId, otherBuilder.getUser().getId(), otherBuilder.getEnemyRecordCount(), fightinfo);
 		
@@ -1344,6 +1344,10 @@ public class UnionService extends FightService{
 	}
 	
 	public FightInfo viewUnionFightFightInfo(UserBean user, long userId, int time) {
+		UserInfo other = userService.getCache(user.getServerId(), userId);
+		if (other != null && other.getUnionId() == user.getUnionId())
+			return redis.getFightInfo(user.getUnionId(), userId, time);
+		
 		int enemyUnionId = redis.getEnemyUnionId(user.getUnionId());
 		
 		return redis.getFightInfo(enemyUnionId, userId, time);

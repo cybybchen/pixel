@@ -23,8 +23,8 @@ public class LogCacheCrontabService {
 	@Resource
 	private LogRedisService logRedisService;
 
-	// @Scheduled(cron = "0 0/5 * * * ? ")
-	@Scheduled(cron = "0 0/1 * * * ? ")
+	 @Scheduled(cron = "0 0/5 * * * ? ")
+//	@Scheduled(cron = "0 0/1 * * * ? ")
 	// @Transactional(rollbackFor=Exception.class)
 	public void sendLog() {
 		// if (!ConfigUtil.CRONTAB_STATUS)

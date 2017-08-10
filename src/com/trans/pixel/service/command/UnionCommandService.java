@@ -448,6 +448,7 @@ public class UnionCommandService extends BaseCommandService {
 					.newBuilder();
 			
 			builder.addInfo(fightinfo);
+			responseBuilder.setFightInfoCommand(builder.build());
 		}
 	}
 }
