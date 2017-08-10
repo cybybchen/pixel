@@ -185,7 +185,7 @@ public class RechargeService {
 		return rmb;
 	}
 	
-	public void recharge(UserBean user, int productId, String company, String orderId){
+	public void doGmRecharge(UserBean user, int productId, String company, String orderId){
 		RechargeBean recharge = new RechargeBean();
 		recharge.setProductId(productId);
 		recharge.setCompany(company);
@@ -194,7 +194,7 @@ public class RechargeService {
 		recharge.setUserId(user.getId());
 		recharge.setServerId(user.getServerId());
 		
-		rechargeRedisService.addUserRecharge(user.getId(), recharge);
+		addUserRecharge(user.getId(), recharge);
 	}
 	
 	public List<RewardInfo> recharge(UserBean user, RechargeBean recharge, boolean isCheat){
@@ -211,7 +211,7 @@ public class RechargeService {
 		int itemId = rmb.getReward().getItemid();
 		
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
-		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
+//		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 
 		if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
@@ -343,6 +343,13 @@ public class RechargeService {
 		return rewardList;
 	}
 	
+	public void addUserRecharge(long userId, RechargeBean recharge) {
+		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
+		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(userId, recharge.getProductId()));
+		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
+		userService.saveLibao(userId, libaobuilder.build());
+	}
+	
 	//http://123.59.144.200:8082/Lol450/recharge?order_id=1111311&company=ios&player=&playerid=1066&ratio=1:100&sn=b300f2edfe5443b2a378faed3af682f3&action=1&itemid=1&zone_id=1
 	public void doRecharge(UserBean user, Map<String, String> params, boolean isCheat) {
 		RechargeBean recharge = initRechargeBean(params);
@@ -351,7 +358,7 @@ public class RechargeService {
 
 //		if (user == null)
 //			user = userService.getUserOther(recharge.getUserId());
-		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
+		addUserRecharge(recharge.getUserId(), recharge);
 //		rechargeRedisService.addRechargeRecord(recharge);
 //		recharge.setRmb(recharge(user, recharge.getProductId(), recharge.getCompany(), recharge.getOrderId(), isCheat));
 		
