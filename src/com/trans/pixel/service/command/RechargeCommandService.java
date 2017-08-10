@@ -44,9 +44,18 @@ public class RechargeCommandService extends BaseCommandService {
 	private UserService userService;
 
 	public void canRecharge(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user) {
-		Libao mylibao = userService.getLibao(user.getId(), cmd.getRechargeid());
-		Libao libaoconfig = shopService.getLibaoConfig(cmd.getRechargeid());
-		if(libaoconfig.getMaxlimit() >= 0 && mylibao.getPurchase() >= libaoconfig.getMaxlimit()) {
+		int rechargeid = cmd.getRechargeid();
+		boolean canrecharge = true;
+		if(rechargeid == 23) {
+			canrecharge = user.getGrowJewelCount() < 4;
+		}else if(rechargeid == 24) {
+			canrecharge = user.getGrowExpCount() < 4;
+		}else {
+			Libao mylibao = userService.getLibao(user.getId(), rechargeid);
+			Libao libaoconfig = shopService.getLibaoConfig(rechargeid);
+			canrecharge = libaoconfig.getMaxlimit() < 0 || mylibao.getPurchase() < libaoconfig.getMaxlimit();
+		}
+		if(!canrecharge) {
 			ResponseCanRechargeCommand.Builder canRechargeCommand = ResponseCanRechargeCommand.newBuilder();
 			canRechargeCommand.setCanrecharge(0);
 			responseBuilder.setCanRechargeCommand(canRechargeCommand);
