@@ -53,7 +53,7 @@ public class LootRewardTaskService {
 			return ErrorConst.LOOT_SHENYUAN_COST_IS_LIMIT;
 		}
 			
-		if (!costService.cost(user, shenyuan.getCost())) {
+		if (!costService.cost(user, shenyuan.getCost().getItemid(), count)) {
 			userLootRewardTaskService.updateLootRewardTask(user, builder.build());
 			return ErrorConst.NOT_ENOUGH_CHIP;
 		}
