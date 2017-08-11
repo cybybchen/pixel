@@ -73,6 +73,7 @@ public enum ErrorConst implements ResultConst {
     EVENT_HAS_NO_FIGHT_ERROR(5024, "无战斗事件"), UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR(5025, "不在报名时间段内，无法报名公会战"),
     UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR(5026, "不在挑选出战人员时间段内，无法挑选"), UNION_FIGHT_TIME_IS_OVER_ERROR(5027, "公会战时间已过"),
     UNION_FIGHT_MEMBER_IS_LIMIT_ERROR(5028, "公会出战人数已达上限"), NOT_IN_FIGHT_UNIONS_ERROR(5029, "很抱歉，您的公会未能参与此次公会战"),
+    UNION_FIGHT_TIME_CAN_NOT_EQUI_ERROR(5030, "公会战期间无法推出公会"), 
     
     SERVER_ERROR(1100, "服务器异常错误");
 

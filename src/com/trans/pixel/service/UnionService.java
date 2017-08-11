@@ -445,6 +445,10 @@ public class UnionService extends FightService{
 					return ErrorConst.UNIONLEADER_QUIT;
 			}
 			
+			if (!canQuitUnion(user.getId(), user.getUnionId(), user.getUnionJob())) {
+				return ErrorConst.UNION_FIGHT_TIME_CAN_NOT_EQUI_ERROR;
+			}
+			
 			redis.quit(id, user);
 
 			Union.Builder union = getBaseUnion(user);
@@ -469,6 +473,11 @@ public class UnionService extends FightService{
 			UserBean bean = userService.getUserOther(id);
 			if(bean.getUnionJob() >= UnionConst.UNION_ZHANGLAO && user.getUnionJob() < UnionConst.UNION_HUIZHANG)
 				return ErrorConst.PERMISSION_DENIED;
+			
+			if (!canQuitUnion(id, user.getUnionId(), UnionConst.UNION_HUIZHONG)) {
+				return ErrorConst.UNION_FIGHT_TIME_CAN_NOT_EQUI_ERROR;
+			}
+			
 			redis.quit(id, user);
 			bean.setUnionId(0);
 			bean.setUnionName("");
@@ -1478,6 +1487,30 @@ public class UnionService extends FightService{
 			}
 			
 		}
+	}
+	
+	public boolean canQuitUnion(long userId, int unionId, int unionJob) {
+		if (!isInFightUnions(unionId))
+			return true;
+		
+		UNION_FIGHT_STATUS status = calUnionFightStatus(unionId);
+		if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && !status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+			return true;
+		
+		if (unionJob == UnionConst.UNION_HUIZHANG)
+			return false;
+		
+		List<UnionFightRecord> applies = redis.getUnionFightApply(unionId);
+		for (UnionFightRecord record : applies) {
+			if (record.getUser().getId() == userId) {
+				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
+					return false;
+				
+				break;
+			}
+		}
+		
+		return true;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {
