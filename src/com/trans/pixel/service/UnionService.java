@@ -1366,8 +1366,10 @@ public class UnionService extends FightService{
 	public void calUnionFight() {
 		Set<String> unionIds = redis.getApplyUnionIds();
 		for (String unionId : unionIds) {
-			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT)//人数不够，无法参加
+			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT) {//人数不够，无法参加
 				redis.deleteApplyUnion(unionId);
+				redis.delUnionFightApply(unionId);
+			}
 		}
 		unionIds = redis.getApplyUnionIds();
 		List<Union> unions = redis.getUnions(1, unionIds);
