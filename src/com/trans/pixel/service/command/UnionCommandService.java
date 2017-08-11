@@ -449,6 +449,9 @@ public class UnionCommandService extends BaseCommandService {
 			
 			builder.addInfo(fightinfo);
 			responseBuilder.setFightInfoCommand(builder.build());
+		} else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
 		}
 	}
 }

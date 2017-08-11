@@ -71,7 +71,7 @@ public enum ErrorConst implements ResultConst {
     SELF_CAN_NOT_ATTACKED_ERROR(5022, "您未参与进此次公会战，请下次在来"), USER_HAS_NO_ATTACK_TIMES_ERROR(5023, "攻击次数不够，请下次公会战在来"),
     USER_CAN_NOT_ATTACKED_ERROR(5022, "该玩家未参与进此次公会战，请攻击其他玩家"), USER_HAS_NO_BEING_ATTACKED_TIMES_ERROR(5025, "该玩家被攻击次数已达上限，请换其他玩家攻击"),
     EVENT_HAS_NO_FIGHT_ERROR(5024, "无战斗事件"), UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR(5025, "不在报名时间段内，无法报名公会战"),
-    UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR(5026, "不在挑选出战人员时间段内，无法挑选"), UNION_FIGHT_TIME_IS_OVER_ERROR(5027, "公会战时间已过，无法继续进攻"),
+    UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR(5026, "不在挑选出战人员时间段内，无法挑选"), UNION_FIGHT_TIME_IS_OVER_ERROR(5027, "公会战时间已过"),
     UNION_FIGHT_MEMBER_IS_LIMIT_ERROR(5028, "公会出战人数已达上限"), NOT_IN_FIGHT_UNIONS_ERROR(5029, "很抱歉，您的公会未能参与此次公会战"),
     
     SERVER_ERROR(1100, "服务器异常错误");

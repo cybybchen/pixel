@@ -1446,6 +1446,9 @@ public class UnionService extends FightService{
 			if (isWin(unionId1, unionId2)) {
 				sendUnionFightWinReward(unionId1);
 				sendUnionFightLoseReward(unionId2);
+			} else {
+				sendUnionFightWinReward(unionId2);
+				sendUnionFightLoseReward(unionId1);
 			}
 			
 		}
@@ -1460,6 +1463,7 @@ public class UnionService extends FightService{
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, true, rewardList);
 		}
+		redis.addUnionFightRewardUnionId(unionId);
 	}
 	
 	private void sendUnionFightLoseReward(String unionId) {
@@ -1471,6 +1475,7 @@ public class UnionService extends FightService{
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, false, rewardList);
 		}
+		redis.addUnionFightRewardUnionId(unionId);
 	}
 	
 	private void sendUnionFightMail(UserInfo user, boolean ret, List<RewardInfo> rewardList) {
@@ -1480,7 +1485,7 @@ public class UnionService extends FightService{
 	}
 	
 	private boolean isWin(String unionId, String enemyUnionId) {
-		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+		List<UnionFightRecord> applyList = getUnionFightApply(enemyUnionId);
 		int winStar = 0;
 		int loseStar = 0;
 		for (UnionFightRecord record : applyList) {
