@@ -1282,7 +1282,14 @@ public class UnionService extends FightService{
 	}
 	
 	public <T> List<UnionFightRecord> getUnionFightApply(T unionId) {
-		return redis.getUnionFightApply(unionId);
+		List<UnionFightRecord> applyList = redis.getUnionFightApply(unionId);
+		for (int i = 0; i < applyList.size(); ++i) {
+			UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(applyList.get(i));
+			builder.setUser(userService.getCache(1, builder.getUser().getId()));
+			applyList.set(i, builder.build());
+		}
+		
+		return applyList;
 	}
 	
 	public <T> List<UnionFightRecord> getUnionFightEnemy(T unionId) {
@@ -1290,7 +1297,13 @@ public class UnionService extends FightService{
 		if (enemyUnionId == 0)
 			return new ArrayList<UnionFightRecord>();
 		
-		return redis.getUnionFightApply(enemyUnionId);
+		List<UnionFightRecord> applyList = redis.getUnionFightApply(enemyUnionId);
+		for (int i = 0; i < applyList.size(); ++i) {
+			UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(applyList.get(i));
+			builder.setUser(userService.getCache(1, builder.getUser().getId()));
+			applyList.set(i, builder.build());
+		}
+		return applyList;
 	}
 	
 	public ResultConst unionFight(UserBean user, long userId, UNION_FIGHT_RET ret, FightInfo fightinfo) {
@@ -1502,7 +1515,7 @@ public class UnionService extends FightService{
 		if (unionJob == UnionConst.UNION_HUIZHANG)
 			return false;
 		
-		List<UnionFightRecord> applies = redis.getUnionFightApply(unionId);
+		List<UnionFightRecord> applies = getUnionFightApply(unionId);
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == userId) {
 				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
@@ -1520,7 +1533,7 @@ public class UnionService extends FightService{
 		boolean isApply = false;
 		boolean isAttack = false;
 		int fightCount = 0;
-		List<UnionFightRecord> applies = redis.getUnionFightApply(user.getUnionId());
+		List<UnionFightRecord> applies = getUnionFightApply(user.getUnionId());
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == user.getId()) {
 				isApply = true;
@@ -1528,11 +1541,8 @@ public class UnionService extends FightService{
 					isAttack = true;
 			}
 			
-			
 			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
 				fightCount++;
-			
-			
 		}
 		
 		UNION_FIGHT_STATUS status = calUnionFightStatus(user.getUnionId());
