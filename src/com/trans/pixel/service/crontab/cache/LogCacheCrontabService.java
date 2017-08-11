@@ -51,13 +51,17 @@ public class LogCacheCrontabService {
 				// netOut.write(log.getBytes());
 				// netOut.flush();
 				doc.flush();
-				logger.warn("after send to log server " + sendLog);
+//				logger.warn("after send to log server " + sendLog);
 				StringBuilder sb = new StringBuilder();
 				byte[] b = new byte[64];
 				int len = 0;
 				len = input.read(b);
 				sb.append(new String(b, 0, len));
-				logger.debug("log ret is:" + sb.toString());
+				logger.warn("log ret is:" + sb.toString());
+//				if (sb.toString().equals("[[0]]\n"))
+//					logger.debug("ret is true");
+//				else
+//					logger.debug("ret is false");
 			}
 			// doc.close();
 		} catch (UnknownHostException e) {
@@ -69,6 +73,7 @@ public class LogCacheCrontabService {
 		} finally {
 			if (socket != null) {
 				try {
+					logger.warn("close log client");
 					socket.close();
 					netOut.close();
 					input.close();
