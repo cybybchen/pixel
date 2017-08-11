@@ -1378,8 +1378,9 @@ public class UnionService extends FightService{
 			builder.setZhanli(calUnionFightZhanli(builder.getId()));
 			unions.set(i, builder.build());
 		}
+		log.debug("union size is:" + unions.size());
 		Collections.sort(unions, unionComparator);
-		for (int i = 0; i < unions.size(); ++ i) {
+		for (int i = 0; i < unions.size(); i += 2) {
 			if (i + 1 >= unions.size())
 				continue;
 			
@@ -1464,12 +1465,16 @@ public class UnionService extends FightService{
 				sendUnionFightWinReward(unionId1);
 				continue;
 			}
-			if (isWin(unionId1, unionId2)) {
+			int winStar = winStar(unionId1, unionId2);
+			if (winStar > 0) {
 				sendUnionFightWinReward(unionId1);
 				sendUnionFightLoseReward(unionId2);
-			} else {
+			} else if (winStar < 0){
 				sendUnionFightWinReward(unionId2);
 				sendUnionFightLoseReward(unionId1);
+			} else {
+				sendUnionFightDrwaReward(unionId1);
+				sendUnionFightDrwaReward(unionId2);
 			}
 			
 		}
@@ -1482,7 +1487,19 @@ public class UnionService extends FightService{
 		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 10000);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
-			sendUnionFightMail(user, true, rewardList);
+			sendUnionFightMail(user, "恭喜您的公会获得公会战胜利！", rewardList);
+		}
+		redis.addUnionFightRewardUnionId(unionId);
+	}
+	
+	private void sendUnionFightDrwaReward(String unionId) {
+		if (redis.hasRewardUnionFight(unionId))
+			return;
+		
+		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 1000);
+		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
+		for (UserInfo user : members) {
+			sendUnionFightMail(user, "很可惜您的公会在公会战中和对方战成了平手，请再接再厉！", rewardList);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
 	}
@@ -1494,18 +1511,18 @@ public class UnionService extends FightService{
 		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 100);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
-			sendUnionFightMail(user, false, rewardList);
+			sendUnionFightMail(user, "很可惜您的公会在公会战中输给了对手，请再接再厉！", rewardList);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
 	}
 	
-	private void sendUnionFightMail(UserInfo user, boolean ret, List<RewardInfo> rewardList) {
-		String content = ret ? "恭喜您的公会获得公会战胜利！" : "很可惜您的公会在公会战中输给了对手，请再接再厉！";
+	private void sendUnionFightMail(UserInfo user, String content, List<RewardInfo> rewardList) {
+//		String content = ret ? "恭喜您的公会获得公会战胜利！" : "很可惜您的公会在公会战中输给了对手，请再接再厉！";
 		MailBean mail = MailBean.buildSystemMail(user.getId(), content, rewardList);
 		mailService.addMail(mail);
 	}
 	
-	private boolean isWin(String unionId, String enemyUnionId) {
+	private int winStar(String unionId, String enemyUnionId) {
 		List<UnionFightRecord> applyList = getUnionFightApply(enemyUnionId);
 		int winStar = 0;
 		int loseStar = 0;
@@ -1520,10 +1537,11 @@ public class UnionService extends FightService{
 				loseStar += enemy.getStar();
 		}
 		
-		if (winStar >= loseStar)
-			return true;
-		else 
-			return false;
+		return winStar - loseStar;
+//		if (winStar >= loseStar)
+//			return true;
+//		else 
+//			return false;
 	}
 	
 	private boolean isInFightUnions(int unionId) {
