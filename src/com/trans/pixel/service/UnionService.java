@@ -1373,6 +1373,11 @@ public class UnionService extends FightService{
 		}
 		unionIds = redis.getApplyUnionIds();
 		List<Union> unions = redis.getUnions(1, unionIds);
+		for (int i = 0;i < unions.size(); ++i) {
+			Union.Builder builder = Union.newBuilder(unions.get(i));
+			builder.setZhanli(calUnionFightZhanli(builder.getId()));
+			unions.set(i, builder.build());
+		}
 		Collections.sort(unions, unionComparator);
 		for (int i = 0; i < unions.size(); ++ i) {
 			if (i + 1 >= unions.size())
@@ -1384,6 +1389,20 @@ public class UnionService extends FightService{
 			redis.updateApplyUnion(union.getId(), nextUnion.getId());
 			redis.updateApplyUnion(nextUnion.getId(), union.getId());
 		}
+	}
+	
+	private int calUnionFightZhanli(int unionId) {
+		int zhanli = 0;
+		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+		for (UnionFightRecord record : applyList) {
+			if (record.getStatus().equals(FIGHT_STATUS.NOT_FIGHT))
+				continue;
+			
+			UserInfo user = userService.getCache(1, record.getUser().getId());
+			zhanli += user.getZhanliMax();
+		}
+		
+		return zhanli;
 	}
 	
 	private int calFightMemberCount(String unionId) {
