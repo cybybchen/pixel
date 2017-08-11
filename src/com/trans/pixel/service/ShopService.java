@@ -207,7 +207,7 @@ public class ShopService {
 		Libao.Builder builder = Libao.newBuilder();
 		builder.setRechargeid(rechargeid);
 		builder.setMaxlimit(0);
-		builder.setStarttime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date()));
+//		builder.setStarttime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date()));
 //		builder.setEndtime(builder.getStarttime());
 		return builder.build();
 	}

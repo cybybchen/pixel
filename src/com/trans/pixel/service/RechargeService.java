@@ -346,6 +346,26 @@ public class RechargeService {
 	public void addUserRecharge(long userId, RechargeBean recharge) {
 		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(userId, recharge.getProductId()));
+		Libao config = shopService.getLibaoConfig(recharge.getProductId());
+		if(config.getMaxlimit() > 0 && config.hasStarttime()){//限制购买次数的礼包
+			if(libaobuilder.hasValidtime()){
+				SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+				Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
+				try {
+					date = df.parse(libaobuilder.getValidtime());
+					date2 = df.parse(config.getStarttime());
+				} catch (Exception e) {
+					
+				}
+				if(date.before(date2)){//礼包已过期
+					libaobuilder.setPurchase(0);
+				}
+			}else {
+				libaobuilder.setPurchase(0);
+			}
+		}
+		if(config.hasStarttime())
+			libaobuilder.setValidtime(config.getStarttime());
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 		userService.saveLibao(userId, libaobuilder.build());
 	}
