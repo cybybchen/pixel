@@ -1255,7 +1255,7 @@ public class UnionService extends FightService{
 	
 	public ResultConst handlerFightMembers(UserBean user, List<Long> userIds, FIGHT_STATUS fightStatus) {
 		Map<String, String> map = new HashMap<String, String>();
-		List<UnionFightRecord> applyList = getUnionFightApply(user.getUnionId());
+		List<UnionFightRecord> applyList = getUnionFightApplyNotRefresh(user.getUnionId());
 		int fightCount = 0;
 		for (UnionFightRecord record : applyList) {
 			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
@@ -1297,13 +1297,11 @@ public class UnionService extends FightService{
 		if (enemyUnionId == 0)
 			return new ArrayList<UnionFightRecord>();
 		
-		List<UnionFightRecord> applyList = redis.getUnionFightApply(enemyUnionId);
-		for (int i = 0; i < applyList.size(); ++i) {
-			UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(applyList.get(i));
-			builder.setUser(userService.getCache(1, builder.getUser().getId()));
-			applyList.set(i, builder.build());
-		}
-		return applyList;
+		return getUnionFightApply(enemyUnionId);
+	}
+	
+	public <T> List<UnionFightRecord> getUnionFightApplyNotRefresh(T unionId) {
+		return redis.getUnionFightApply(unionId);
 	}
 	
 	public ResultConst unionFight(UserBean user, long userId, UNION_FIGHT_RET ret, FightInfo fightinfo) {
@@ -1431,7 +1429,7 @@ public class UnionService extends FightService{
 	}
 	
 	private int calFightMemberCount(String unionId) {
-		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+		List<UnionFightRecord> applyList = getUnionFightApplyNotRefresh(unionId);
 		int fightCount = 0;
 		for (UnionFightRecord record : applyList) {
 			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
@@ -1515,7 +1513,7 @@ public class UnionService extends FightService{
 		if (unionJob == UnionConst.UNION_HUIZHANG)
 			return false;
 		
-		List<UnionFightRecord> applies = getUnionFightApply(unionId);
+		List<UnionFightRecord> applies = getUnionFightApplyNotRefresh(unionId);
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == userId) {
 				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
@@ -1533,7 +1531,7 @@ public class UnionService extends FightService{
 		boolean isApply = false;
 		boolean isAttack = false;
 		int fightCount = 0;
-		List<UnionFightRecord> applies = getUnionFightApply(user.getUnionId());
+		List<UnionFightRecord> applies = getUnionFightApplyNotRefresh(user.getUnionId());
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == user.getId()) {
 				isApply = true;
@@ -1611,7 +1609,7 @@ public class UnionService extends FightService{
 	}
 	
 	private int winStar(String unionId, String enemyUnionId) {
-		List<UnionFightRecord> applyList = getUnionFightApply(enemyUnionId);
+		List<UnionFightRecord> applyList = getUnionFightApplyNotRefresh(enemyUnionId);
 		int winStar = 0;
 		int loseStar = 0;
 		for (UnionFightRecord record : applyList) {
@@ -1619,7 +1617,7 @@ public class UnionService extends FightService{
 				winStar += enemy.getStar();
 		}
 		
-		List<UnionFightRecord> enemyApplyList = getUnionFightApply(unionId);
+		List<UnionFightRecord> enemyApplyList = getUnionFightApplyNotRefresh(unionId);
 		for (UnionFightRecord record : enemyApplyList) {
 			for (EnemyRecord enemy : record.getEnemyRecordList())
 				loseStar += enemy.getStar();
