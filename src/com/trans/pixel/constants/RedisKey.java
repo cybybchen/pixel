@@ -341,6 +341,7 @@ public class RedisKey {
 	
 	//notice prefix
 	public static final String NOTICE_PREFIX = PREFIX + "notice_";
+	public static final String UNION_NOTICE_PREFIX = PREFIX + "union_notice_";
 	
 	//heart beat
 	public static final String HEART_BEAT_PREFIX = PREFIX + "heartbeat_";

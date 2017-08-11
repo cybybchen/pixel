@@ -59,4 +59,32 @@ public class NoticeRedisService extends RedisService {
 	private String buildRedisKey(long userId) {
 		return RedisKey.NOTICE_PREFIX + userId;
 	}
+	
+	public void pushUnionNotice(final int unionId, final Notice notice) {
+		if(unionId <= 0)
+			return;
+		String key = RedisKey.UNION_NOTICE_PREFIX + unionId;
+		hput(key, "" + notice.getType(), formatJson(notice));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public void deleteUnionNotice(final int unionId, final int type) {
+		String key = RedisKey.UNION_NOTICE_PREFIX + unionId;
+		hdelete(key, "" + type);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public List<Notice> selectUnionNoticeList(final int unionId) {
+		String key = RedisKey.UNION_NOTICE_PREFIX + unionId;
+		List<Notice> userNoticeList = new ArrayList<Notice>();
+		Iterator<Entry<String, String>> ite = hget(key).entrySet().iterator();
+		while (ite.hasNext()) {
+			Entry<String, String> entry = ite.next();
+			Notice.Builder builder = Notice.newBuilder();
+			if (parseJson(entry.getValue(), builder))
+				userNoticeList.add(builder.build());
+		}
+		
+		return userNoticeList;
+	}
 }

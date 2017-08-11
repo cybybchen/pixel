@@ -55,4 +55,18 @@ public class NoticeService {
 	public void deleteNotice(long userId, int type) {
 		noticeRedisService.deleteNotice(userId, type);
 	}
+	
+	public void pushUnionNotice(int unionId, int type) {
+		Notice.Builder builder = Notice.newBuilder();
+		builder.setType(type);
+		noticeRedisService.pushUnionNotice(unionId, builder.build());
+	}
+	
+	public void deleteUnionNotice(int unionId, int type) {
+		noticeRedisService.deleteUnionNotice(unionId, type);
+	}
+	
+	public List<Notice> getUnionNoticeList(int unionId) {
+		return noticeRedisService.selectUnionNoticeList(unionId);
+	}
 }

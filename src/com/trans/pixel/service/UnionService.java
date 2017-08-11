@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -43,6 +44,7 @@ import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
 import com.trans.pixel.protoc.Base.UnionBossUserRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.MessageBoardProto.Notice;
 import com.trans.pixel.protoc.UnionProto.FIGHT_STATUS;
 import com.trans.pixel.protoc.UnionProto.RankItem;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.UNION_FIGHT_RET;
@@ -1511,6 +1513,49 @@ public class UnionService extends FightService{
 		}
 		
 		return true;
+	}
+	
+	public List<Notice> getUnionNotice(UserBean user) {
+		List<Notice> noticeList = new ArrayList<Notice>();
+		boolean isApply = false;
+		boolean isAttack = false;
+		int fightCount = 0;
+		List<UnionFightRecord> applies = redis.getUnionFightApply(user.getUnionId());
+		for (UnionFightRecord record : applies) {
+			if (record.getUser().getId() == user.getId()) {
+				isApply = true;
+				if (record.getAttackCount() >= 2)
+					isAttack = true;
+			}
+			
+			
+			if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
+				fightCount++;
+			
+			
+		}
+		
+		UNION_FIGHT_STATUS status = calUnionFightStatus(user.getUnionId());
+		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME) && !isApply) {
+			Notice.Builder notice = Notice.newBuilder();
+			notice.setType(NoticeConst.TYPE_FIGHTINFO_NOT_APPLY);
+			noticeList.add(notice.build());
+		}
+		
+		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && fightCount < UnionConst.UNION_FIGHT_MEMBER_LIMIT
+				&& fightCount < applies.size()) {
+			Notice.Builder notice = Notice.newBuilder();
+			notice.setType(NoticeConst.TYPE_FIGHTINFO_HUIZHANG_NOT_PICK);
+			noticeList.add(notice.build());
+		}
+		
+		if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME) && !isAttack) {
+			Notice.Builder notice = Notice.newBuilder();
+			notice.setType(NoticeConst.TYPE_FIGHTINFO_NOT_FIGHT);
+			noticeList.add(notice.build());
+		}
+		
+		return noticeList;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {
