@@ -266,12 +266,12 @@ public class ManagerService extends RedisService{
 		if (req.containsKey("quickManager") && gmaccountBean.getMaster() == 1) {
 			String type = req.getString("quickManager");
 			logger.warn("quickManager:"+type);
-			if("updateunionrank".equals(type)) {
-				logger.warn("公会排行生成。。。。。。");
-				unionRedisService.updateUnionsRank();
-				result.put("quickManager", "公会排行生成成功");
-				result.put("success", "公会排行生成成功");
-			}
+//			if("updateunionrank".equals(type)) {
+//				logger.warn("公会排行生成。。。。。。");
+//				unionRedisService.updateUnionsRank();
+//				result.put("quickManager", "公会排行生成成功");
+//				result.put("success", "公会排行生成成功");
+//			}
 		}
 		
 		if(req.containsKey("update-VersionController") && gmaccountBean.getMaster() == 1){
