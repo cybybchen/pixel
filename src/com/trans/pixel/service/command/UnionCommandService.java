@@ -66,8 +66,6 @@ public class UnionCommandService extends BaseCommandService {
 	private CostService costService;
 	@Resource
 	private UnionMapper unionMapper;
-	@Resource
-	private NoticeCommandService noticeCommandService;
 
 	public void searchUnion(RequestSearchUnionCommand cmd, Builder responseBuilder, UserBean user) {
 		Union.Builder union = unionService.searchUnions(user, cmd.getName());
@@ -79,8 +77,6 @@ public class UnionCommandService extends BaseCommandService {
 		}
 		responseBuilder.setUnionListCommand(builder.build());
 //		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void getUnions(RequestUnionListCommand cmd, Builder responseBuilder, UserBean user) {
@@ -96,8 +92,6 @@ public class UnionCommandService extends BaseCommandService {
 			builder.addAllUnion(unions);
 		responseBuilder.setUnionListCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void getUnion(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user) {
@@ -143,8 +137,6 @@ public class UnionCommandService extends BaseCommandService {
 		
 		responseBuilder.setUnionInfoCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void create(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user) {
@@ -238,8 +230,6 @@ public class UnionCommandService extends BaseCommandService {
 //		ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
 //		builder.setUnion(unionService.getUnion(user, false));
 //		responseBuilder.setUnionInfoCommand(builder.build());
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void handleMember(RequestHandleUnionMemberCommand cmd, Builder responseBuilder, UserBean user) {
@@ -254,8 +244,6 @@ public class UnionCommandService extends BaseCommandService {
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void setAnnounce(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user) {
@@ -277,8 +265,6 @@ public class UnionCommandService extends BaseCommandService {
 		builder.setUnion(unionService.getUnion(user, false));
 		responseBuilder.setUnionInfoCommand(builder.build());
 		responseBuilder.setMessageCommand(super.buildMessageCommand(SuccessConst.REWRITE_SUCCESS));
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void upgrade(RequestUpgradeUnionCommand cmd, Builder responseBuilder, UserBean user) {
@@ -373,8 +359,6 @@ public class UnionCommandService extends BaseCommandService {
 		builder.addUnionBoss(unionBoss);
 		responseBuilder.setUnionBossCommand(builder.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
-		
-		noticeCommandService.pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void applyFight(RequestUnionFightApplyCommand cmd, Builder responseBuilder, UserBean user) {
@@ -421,6 +405,10 @@ public class UnionCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_IN_FIGHT_UNIONS_ERROR));
 		}
 		builder.addAllEnemyRecord(unionService.getUnionFightEnemy(user.getUnionId()));
+		Union enemyUnion = unionService.getEnemyUnion(user.getUnionId());
+		if (enemyUnion != null)
+			builder.setEnemyUnion(enemyUnion);
+		builder.setCountTime(unionService.calCountTime());
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 	
@@ -448,6 +436,11 @@ public class UnionCommandService extends BaseCommandService {
 		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
 		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		builder.addAllEnemyRecord(unionService.getUnionFightEnemy(user.getUnionId()));
+		builder.setStatus(unionService.calUnionFightStatus(user.getUnionId()));
+//		Union enemyUnion = unionService.getEnemyUnion(user.getUnionId());
+//		if (enemyUnion != null)
+//			builder.setEnemyUnion(enemyUnion);
+		builder.setCountTime(unionService.calCountTime());
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 	

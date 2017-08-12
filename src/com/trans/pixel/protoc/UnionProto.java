@@ -20472,6 +20472,38 @@ public final class UnionProto {
      * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS status = 3;</code>
      */
     com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS getStatus();
+
+    // optional .com.trans.pixel.protoc.Union enemyUnion = 4;
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    boolean hasEnemyUnion();
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    com.trans.pixel.protoc.UnionProto.Union getEnemyUnion();
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    com.trans.pixel.protoc.UnionProto.UnionOrBuilder getEnemyUnionOrBuilder();
+
+    // optional uint32 countTime = 5;
+    /**
+     * <code>optional uint32 countTime = 5;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    boolean hasCountTime();
+    /**
+     * <code>optional uint32 countTime = 5;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    int getCountTime();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand}
@@ -20549,6 +20581,24 @@ public final class UnionProto {
                 bitField0_ |= 0x00000001;
                 status_ = value;
               }
+              break;
+            }
+            case 34: {
+              com.trans.pixel.protoc.UnionProto.Union.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = enemyUnion_.toBuilder();
+              }
+              enemyUnion_ = input.readMessage(com.trans.pixel.protoc.UnionProto.Union.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemyUnion_);
+                enemyUnion_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000004;
+              countTime_ = input.readUInt32();
               break;
             }
           }
@@ -20851,10 +20901,58 @@ public final class UnionProto {
       return status_;
     }
 
+    // optional .com.trans.pixel.protoc.Union enemyUnion = 4;
+    public static final int ENEMYUNION_FIELD_NUMBER = 4;
+    private com.trans.pixel.protoc.UnionProto.Union enemyUnion_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    public boolean hasEnemyUnion() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    public com.trans.pixel.protoc.UnionProto.Union getEnemyUnion() {
+      return enemyUnion_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+     */
+    public com.trans.pixel.protoc.UnionProto.UnionOrBuilder getEnemyUnionOrBuilder() {
+      return enemyUnion_;
+    }
+
+    // optional uint32 countTime = 5;
+    public static final int COUNTTIME_FIELD_NUMBER = 5;
+    private int countTime_;
+    /**
+     * <code>optional uint32 countTime = 5;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    public boolean hasCountTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 countTime = 5;</code>
+     *
+     * <pre>
+     *倒计时
+     * </pre>
+     */
+    public int getCountTime() {
+      return countTime_;
+    }
+
     private void initFields() {
       applyRecord_ = java.util.Collections.emptyList();
       enemyRecord_ = java.util.Collections.emptyList();
       status_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS.NO_TIME;
+      enemyUnion_ = com.trans.pixel.protoc.UnionProto.Union.getDefaultInstance();
+      countTime_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -20869,6 +20967,12 @@ public final class UnionProto {
       }
       for (int i = 0; i < getEnemyRecordCount(); i++) {
         if (!getEnemyRecord(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasEnemyUnion()) {
+        if (!getEnemyUnion().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -20888,6 +20992,12 @@ public final class UnionProto {
       }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeEnum(3, status_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(4, enemyUnion_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(5, countTime_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -20909,6 +21019,14 @@ public final class UnionProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, status_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, enemyUnion_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(5, countTime_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -21020,6 +21138,7 @@ public final class UnionProto {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getApplyRecordFieldBuilder();
           getEnemyRecordFieldBuilder();
+          getEnemyUnionFieldBuilder();
         }
       }
       private static Builder create() {
@@ -21042,6 +21161,14 @@ public final class UnionProto {
         }
         status_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS.NO_TIME;
         bitField0_ = (bitField0_ & ~0x00000004);
+        if (enemyUnionBuilder_ == null) {
+          enemyUnion_ = com.trans.pixel.protoc.UnionProto.Union.getDefaultInstance();
+        } else {
+          enemyUnionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        countTime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -21092,6 +21219,18 @@ public final class UnionProto {
           to_bitField0_ |= 0x00000001;
         }
         result.status_ = status_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (enemyUnionBuilder_ == null) {
+          result.enemyUnion_ = enemyUnion_;
+        } else {
+          result.enemyUnion_ = enemyUnionBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.countTime_ = countTime_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -21163,6 +21302,12 @@ public final class UnionProto {
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
+        if (other.hasEnemyUnion()) {
+          mergeEnemyUnion(other.getEnemyUnion());
+        }
+        if (other.hasCountTime()) {
+          setCountTime(other.getCountTime());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -21176,6 +21321,12 @@ public final class UnionProto {
         }
         for (int i = 0; i < getEnemyRecordCount(); i++) {
           if (!getEnemyRecord(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasEnemyUnion()) {
+          if (!getEnemyUnion().isInitialized()) {
             
             return false;
           }
@@ -21714,6 +21865,172 @@ public final class UnionProto {
       public Builder clearStatus() {
         bitField0_ = (bitField0_ & ~0x00000004);
         status_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS.NO_TIME;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.Union enemyUnion = 4;
+      private com.trans.pixel.protoc.UnionProto.Union enemyUnion_ = com.trans.pixel.protoc.UnionProto.Union.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UnionProto.Union, com.trans.pixel.protoc.UnionProto.Union.Builder, com.trans.pixel.protoc.UnionProto.UnionOrBuilder> enemyUnionBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public boolean hasEnemyUnion() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.Union getEnemyUnion() {
+        if (enemyUnionBuilder_ == null) {
+          return enemyUnion_;
+        } else {
+          return enemyUnionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public Builder setEnemyUnion(com.trans.pixel.protoc.UnionProto.Union value) {
+        if (enemyUnionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemyUnion_ = value;
+          onChanged();
+        } else {
+          enemyUnionBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public Builder setEnemyUnion(
+          com.trans.pixel.protoc.UnionProto.Union.Builder builderForValue) {
+        if (enemyUnionBuilder_ == null) {
+          enemyUnion_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemyUnionBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public Builder mergeEnemyUnion(com.trans.pixel.protoc.UnionProto.Union value) {
+        if (enemyUnionBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              enemyUnion_ != com.trans.pixel.protoc.UnionProto.Union.getDefaultInstance()) {
+            enemyUnion_ =
+              com.trans.pixel.protoc.UnionProto.Union.newBuilder(enemyUnion_).mergeFrom(value).buildPartial();
+          } else {
+            enemyUnion_ = value;
+          }
+          onChanged();
+        } else {
+          enemyUnionBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public Builder clearEnemyUnion() {
+        if (enemyUnionBuilder_ == null) {
+          enemyUnion_ = com.trans.pixel.protoc.UnionProto.Union.getDefaultInstance();
+          onChanged();
+        } else {
+          enemyUnionBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.Union.Builder getEnemyUnionBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getEnemyUnionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      public com.trans.pixel.protoc.UnionProto.UnionOrBuilder getEnemyUnionOrBuilder() {
+        if (enemyUnionBuilder_ != null) {
+          return enemyUnionBuilder_.getMessageOrBuilder();
+        } else {
+          return enemyUnion_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Union enemyUnion = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.UnionProto.Union, com.trans.pixel.protoc.UnionProto.Union.Builder, com.trans.pixel.protoc.UnionProto.UnionOrBuilder> 
+          getEnemyUnionFieldBuilder() {
+        if (enemyUnionBuilder_ == null) {
+          enemyUnionBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.UnionProto.Union, com.trans.pixel.protoc.UnionProto.Union.Builder, com.trans.pixel.protoc.UnionProto.UnionOrBuilder>(
+                  enemyUnion_,
+                  getParentForChildren(),
+                  isClean());
+          enemyUnion_ = null;
+        }
+        return enemyUnionBuilder_;
+      }
+
+      // optional uint32 countTime = 5;
+      private int countTime_ ;
+      /**
+       * <code>optional uint32 countTime = 5;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public boolean hasCountTime() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional uint32 countTime = 5;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public int getCountTime() {
+        return countTime_;
+      }
+      /**
+       * <code>optional uint32 countTime = 5;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public Builder setCountTime(int value) {
+        bitField0_ |= 0x00000010;
+        countTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 countTime = 5;</code>
+       *
+       * <pre>
+       *倒计时
+       * </pre>
+       */
+      public Builder clearCountTime() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        countTime_ = 0;
         onChanged();
         return this;
       }
@@ -44741,95 +45058,97 @@ public final class UnionProto {
       "US\022\016\n\006userId\030\002 \003(\004\0229\n\013fightStatus\030\003 \001(\0162" +
       "$.com.trans.pixel.protoc.FIGHT_STATUS\"M\n" +
       "\026UNIONFIGHTAPPLY_STATUS\022\016\n\nAPPLY_LIST\020\001\022" +
-      "\t\n\005APPLY\020\002\022\030\n\024HANDLER_FIGHT_MEMBER\020\003\"\213\003\n" +
+      "\t\n\005APPLY\020\002\022\030\n\024HANDLER_FIGHT_MEMBER\020\003\"\321\003\n" +
       "$ResponseUnionFightApplyRecordCommand\022=\n" +
       "\013applyRecord\030\001 \003(\0132(.com.trans.pixel.pro" +
       "toc.UnionFightRecord\022=\n\013enemyRecord\030\002 \003(" +
       "\0132(.com.trans.pixel.protoc.UnionFightRec",
       "ord\022_\n\006status\030\003 \001(\0162O.com.trans.pixel.pr" +
       "otoc.ResponseUnionFightApplyRecordComman" +
-      "d.UNION_FIGHT_STATUS\"\203\001\n\022UNION_FIGHT_STA" +
-      "TUS\022\013\n\007NO_TIME\020\000\022\016\n\nAPPLY_TIME\020\001\022\021\n\rHUIZ" +
-      "HANG_TIME\020\002\022\016\n\nFIGHT_TIME\020\003\022\024\n\020SEND_REWA" +
-      "RD_TIME\020\004\022\027\n\023NOT_IN_FIGHT_UNIONS\020\005\"\337\001\n\030R" +
-      "equestUnionFightCommand\022\016\n\006userId\030\001 \002(\004\022" +
-      "M\n\003ret\030\002 \002(\0162@.com.trans.pixel.protoc.Re" +
-      "questUnionFightCommand.UNION_FIGHT_RET\0224" +
-      "\n\tfightinfo\030\003 \002(\0132!.com.trans.pixel.prot",
-      "oc.FightInfo\".\n\017UNION_FIGHT_RET\022\007\n\003WIN\020\000" +
-      "\022\010\n\004LOSE\020\001\022\010\n\004DRAW\020\002\"E\n%RequestViewUnion" +
-      "FightFightInfoCommand\022\016\n\006userId\030\001 \002(\004\022\014\n" +
-      "\004time\030\002 \002(\r\"R\n\037RequestSubmitBattletowerC" +
-      "ommand\022\017\n\007success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005\022\017" +
-      "\n\007enemyId\030\003 \001(\005\"1\n\036RequestResetBattletow" +
-      "erCommand\022\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestGet" +
-      "BattletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.tr" +
-      "ans.pixel.protoc.UserBattletower\"V\n\036Resp" +
-      "onseUserBattletowerCommand\0224\n\003ubt\030\001 \001(\0132",
-      "\'.com.trans.pixel.protoc.UserBattletower" +
-      "\"\032\n\030RequestBloodEnterCommand\"1\n\031RequestB" +
-      "loodXiazhuCommand\022\024\n\014xiazhuUserId\030\001 \002(\003\"" +
-      "y\n\035RequestInviteFightBossCommand\022\016\n\006user" +
-      "Id\030\001 \003(\003\022\017\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 \001(" +
-      "\005\022\024\n\014createUserId\030\004 \001(\003\022\021\n\tstartDate\030\005 \001" +
-      "(\t\"-\n\033RequestQuitFightBossCommand\022\016\n\006use" +
-      "rId\030\001 \002(\003\"Y\n\035ResponseBossRoomRecordComma" +
-      "nd\0228\n\010bossRoom\030\001 \002(\0132&.com.trans.pixel.p" +
-      "rotoc.BossRoomRecord\"4\n!RequestSubmitBos",
-      "sRoomScoreCommand\022\017\n\007percent\030\001 \002(\005\"\035\n\033Re" +
-      "questStartBossRoomCommand\"?\n\034RequestCrea" +
-      "teBossRoomCommand\022\017\n\007groupId\030\002 \002(\005\022\016\n\006bo" +
-      "ssId\030\003 \002(\005\"\034\n\032RequestBossRoomInfoCommand" +
-      "\"@\n\rUnionBossList\022/\n\004data\030\001 \003(\0132!.com.tr" +
-      "ans.pixel.protoc.UnionBoss\"\234\002\n\tUnionBoss" +
-      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\014 \001(\t\022\014\n\004type\030\002 \001(\005" +
-      "\022\020\n\010targetid\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022" +
-      "\020\n\010lasttime\030\005 \001(\005\022\n\n\002lv\030\006 \001(\005\0224\n\010lootlis" +
-      "t\030\007 \003(\0132\".com.trans.pixel.protoc.RewardI",
-      "nfo\022\023\n\013refreshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022" +
-      "\020\n\010handbook\030\n \001(\005\0226\n\nenemygroup\030\013 \001(\0132\"." +
-      "com.trans.pixel.protoc.EnemyGroup\"F\n\020Uni" +
-      "onBosswinList\0222\n\004data\030\001 \003(\0132$.com.trans." +
-      "pixel.protoc.UnionBosswin\"J\n\014UnionBosswi" +
-      "n\022\n\n\002id\030\001 \001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans." +
-      "pixel.protoc.RankItem\"h\n\010RankItem\022\014\n\004ran" +
-      "k\030\001 \001(\005\022\r\n\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006r" +
-      "eward\030\n \003(\0132\".com.trans.pixel.protoc.Rew" +
-      "ardInfo\"7\n\031RequestCreateUnionCommand\022\014\n\004",
-      "icon\030\001 \001(\005\022\014\n\004name\030\002 \002(\t\"<\n\030RequestApply" +
-      "UnionCommand\022\017\n\007unionId\030\001 \002(\005\022\017\n\007content" +
-      "\030\002 \001(\t\"7\n\030RequestReplyUnionCommand\022\n\n\002id" +
-      "\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037RequestHandle" +
-      "UnionMemberCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 " +
-      "\002(\005\"2\n\036RequestSetUnionAnnounceCommand\022\020\n" +
-      "\010announce\030\001 \001(\t\"\034\n\032RequestUpgradeUnionCo" +
-      "mmand\"%\n\027RequestQuitUnionCommand\022\n\n\002id\030\001" +
-      " \001(\003\"w\n\027RequestUnionInfoCommand\022\024\n\014isNew" +
-      "Version\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.",
-      "pixel.protoc.UNION_INFO_TYPE\022\017\n\007unionId\030" +
-      "\003 \001(\r\"<\n\031RequestAttackUnionCommand\022\017\n\007un" +
-      "ionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDe" +
-      "fendUnionCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030Res" +
-      "ponseUnionInfoCommand\022,\n\005union\030\001 \001(\0132\035.c" +
-      "om.trans.pixel.protoc.Union\0223\n\007applies\030\002" +
-      " \003(\0132\".com.trans.pixel.protoc.UnionApply" +
-      "\022:\n\tunionBoss\030\003 \003(\0132\'.com.trans.pixel.pr" +
-      "otoc.UnionBossRecord\"\'\n\027RequestUnionList" +
-      "Command\022\014\n\004type\030\001 \001(\005\")\n\031RequestSearchUn",
-      "ionCommand\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseUnio" +
-      "nListCommand\022,\n\005union\030\001 \003(\0132\035.com.trans." +
-      "pixel.protoc.Union\"?\n\034RequestSubmitBossk" +
-      "illCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 " +
-      "\002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Respons" +
-      "eBosskillCommand\0227\n\006record\030\001 \003(\0132\'.com.t" +
-      "rans.pixel.protoc.BossGroupRecord\"V\n\030Res" +
-      "ponseUnionBossCommand\022:\n\tunionBoss\030\001 \003(\013" +
-      "2\'.com.trans.pixel.protoc.UnionBossRecor" +
-      "d\"K\n\034RequestUnionBossFightCommand\022\016\n\006bos",
-      "sId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*," +
-      "\n\014FIGHT_STATUS\022\r\n\tNOT_FIGHT\020\000\022\r\n\tCAN_FIG" +
-      "HT\020\001*@\n\017UNION_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022" +
-      "\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
+      "d.UNION_FIGHT_STATUS\0221\n\nenemyUnion\030\004 \001(\013" +
+      "2\035.com.trans.pixel.protoc.Union\022\021\n\tcount" +
+      "Time\030\005 \001(\r\"\203\001\n\022UNION_FIGHT_STATUS\022\013\n\007NO_" +
+      "TIME\020\000\022\016\n\nAPPLY_TIME\020\001\022\021\n\rHUIZHANG_TIME\020" +
+      "\002\022\016\n\nFIGHT_TIME\020\003\022\024\n\020SEND_REWARD_TIME\020\004\022" +
+      "\027\n\023NOT_IN_FIGHT_UNIONS\020\005\"\337\001\n\030RequestUnio" +
+      "nFightCommand\022\016\n\006userId\030\001 \002(\004\022M\n\003ret\030\002 \002" +
+      "(\0162@.com.trans.pixel.protoc.RequestUnion",
+      "FightCommand.UNION_FIGHT_RET\0224\n\tfightinf" +
+      "o\030\003 \002(\0132!.com.trans.pixel.protoc.FightIn" +
+      "fo\".\n\017UNION_FIGHT_RET\022\007\n\003WIN\020\000\022\010\n\004LOSE\020\001" +
+      "\022\010\n\004DRAW\020\002\"E\n%RequestViewUnionFightFight" +
+      "InfoCommand\022\016\n\006userId\030\001 \002(\004\022\014\n\004time\030\002 \002(" +
+      "\r\"R\n\037RequestSubmitBattletowerCommand\022\017\n\007" +
+      "success\030\001 \002(\010\022\r\n\005tower\030\002 \001(\005\022\017\n\007enemyId\030" +
+      "\003 \001(\005\"1\n\036RequestResetBattletowerCommand\022" +
+      "\017\n\007enemyId\030\001 \001(\005\"T\n\034RequestGetBattletowe" +
+      "rCommand\0224\n\003ubt\030\001 \001(\0132\'.com.trans.pixel.",
+      "protoc.UserBattletower\"V\n\036ResponseUserBa" +
+      "ttletowerCommand\0224\n\003ubt\030\001 \001(\0132\'.com.tran" +
+      "s.pixel.protoc.UserBattletower\"\032\n\030Reques" +
+      "tBloodEnterCommand\"1\n\031RequestBloodXiazhu" +
+      "Command\022\024\n\014xiazhuUserId\030\001 \002(\003\"y\n\035Request" +
+      "InviteFightBossCommand\022\016\n\006userId\030\001 \003(\003\022\017" +
+      "\n\007groupId\030\002 \001(\005\022\016\n\006bossId\030\003 \001(\005\022\024\n\014creat" +
+      "eUserId\030\004 \001(\003\022\021\n\tstartDate\030\005 \001(\t\"-\n\033Requ" +
+      "estQuitFightBossCommand\022\016\n\006userId\030\001 \002(\003\"" +
+      "Y\n\035ResponseBossRoomRecordCommand\0228\n\010boss",
+      "Room\030\001 \002(\0132&.com.trans.pixel.protoc.Boss" +
+      "RoomRecord\"4\n!RequestSubmitBossRoomScore" +
+      "Command\022\017\n\007percent\030\001 \002(\005\"\035\n\033RequestStart" +
+      "BossRoomCommand\"?\n\034RequestCreateBossRoom" +
+      "Command\022\017\n\007groupId\030\002 \002(\005\022\016\n\006bossId\030\003 \002(\005" +
+      "\"\034\n\032RequestBossRoomInfoCommand\"@\n\rUnionB" +
+      "ossList\022/\n\004data\030\001 \003(\0132!.com.trans.pixel." +
+      "protoc.UnionBoss\"\234\002\n\tUnionBoss\022\n\n\002id\030\001 \001" +
+      "(\005\022\014\n\004name\030\014 \001(\t\022\014\n\004type\030\002 \001(\005\022\020\n\010target" +
+      "id\030\003 \001(\005\022\023\n\013targetcount\030\004 \001(\005\022\020\n\010lasttim",
+      "e\030\005 \001(\005\022\n\n\002lv\030\006 \001(\005\0224\n\010lootlist\030\007 \003(\0132\"." +
+      "com.trans.pixel.protoc.RewardInfo\022\023\n\013ref" +
+      "reshtime\030\010 \001(\005\022\r\n\005count\030\t \001(\005\022\020\n\010handboo" +
+      "k\030\n \001(\005\0226\n\nenemygroup\030\013 \001(\0132\".com.trans." +
+      "pixel.protoc.EnemyGroup\"F\n\020UnionBosswinL" +
+      "ist\0222\n\004data\030\001 \003(\0132$.com.trans.pixel.prot" +
+      "oc.UnionBosswin\"J\n\014UnionBosswin\022\n\n\002id\030\001 " +
+      "\001(\005\022.\n\004rank\030\002 \003(\0132 .com.trans.pixel.prot" +
+      "oc.RankItem\"h\n\010RankItem\022\014\n\004rank\030\001 \001(\005\022\r\n" +
+      "\005rank1\030\002 \001(\005\022\013\n\003des\030\t \001(\t\0222\n\006reward\030\n \003(",
+      "\0132\".com.trans.pixel.protoc.RewardInfo\"7\n" +
+      "\031RequestCreateUnionCommand\022\014\n\004icon\030\001 \001(\005" +
+      "\022\014\n\004name\030\002 \002(\t\"<\n\030RequestApplyUnionComma" +
+      "nd\022\017\n\007unionId\030\001 \002(\005\022\017\n\007content\030\002 \001(\t\"7\n\030" +
+      "RequestReplyUnionCommand\022\n\n\002id\030\001 \002(\003\022\017\n\007" +
+      "receive\030\002 \002(\010\":\n\037RequestHandleUnionMembe" +
+      "rCommand\022\n\n\002id\030\001 \002(\003\022\013\n\003job\030\002 \002(\005\"2\n\036Req" +
+      "uestSetUnionAnnounceCommand\022\020\n\010announce\030" +
+      "\001 \001(\t\"\034\n\032RequestUpgradeUnionCommand\"%\n\027R" +
+      "equestQuitUnionCommand\022\n\n\002id\030\001 \001(\003\"w\n\027Re",
+      "questUnionInfoCommand\022\024\n\014isNewVersion\030\001 " +
+      "\001(\010\0225\n\004type\030\002 \001(\0162\'.com.trans.pixel.prot" +
+      "oc.UNION_INFO_TYPE\022\017\n\007unionId\030\003 \001(\r\"<\n\031R" +
+      "equestAttackUnionCommand\022\017\n\007unionId\030\001 \001(" +
+      "\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031RequestDefendUnionC" +
+      "ommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030ResponseUnion" +
+      "InfoCommand\022,\n\005union\030\001 \001(\0132\035.com.trans.p" +
+      "ixel.protoc.Union\0223\n\007applies\030\002 \003(\0132\".com" +
+      ".trans.pixel.protoc.UnionApply\022:\n\tunionB" +
+      "oss\030\003 \003(\0132\'.com.trans.pixel.protoc.Union",
+      "BossRecord\"\'\n\027RequestUnionListCommand\022\014\n" +
+      "\004type\030\001 \001(\005\")\n\031RequestSearchUnionCommand" +
+      "\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseUnionListComma" +
+      "nd\022,\n\005union\030\001 \003(\0132\035.com.trans.pixel.prot" +
+      "oc.Union\"?\n\034RequestSubmitBosskillCommand" +
+      "\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId\030\002 \002(\005\"\030\n\026Req" +
+      "uestBosskillCommand\"R\n\027ResponseBosskillC" +
+      "ommand\0227\n\006record\030\001 \003(\0132\'.com.trans.pixel" +
+      ".protoc.BossGroupRecord\"V\n\030ResponseUnion" +
+      "BossCommand\022:\n\tunionBoss\030\001 \003(\0132\'.com.tra",
+      "ns.pixel.protoc.UnionBossRecord\"K\n\034Reque" +
+      "stUnionBossFightCommand\022\016\n\006bossId\030\001 \002(\005\022" +
+      "\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(\005*,\n\014FIGHT_ST" +
+      "ATUS\022\r\n\tNOT_FIGHT\020\000\022\r\n\tCAN_FIGHT\020\001*@\n\017UN" +
+      "ION_INFO_TYPE\022\016\n\nTYPE_UNION\020\001\022\016\n\nTYPE_AP" +
+      "PLY\020\002\022\r\n\tTYPE_BOSS\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -44955,7 +45274,7 @@ public final class UnionProto {
           internal_static_com_trans_pixel_protoc_ResponseUnionFightApplyRecordCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionFightApplyRecordCommand_descriptor,
-              new java.lang.String[] { "ApplyRecord", "EnemyRecord", "Status", });
+              new java.lang.String[] { "ApplyRecord", "EnemyRecord", "Status", "EnemyUnion", "CountTime", });
           internal_static_com_trans_pixel_protoc_RequestUnionFightCommand_descriptor =
             getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestUnionFightCommand_fieldAccessorTable = new

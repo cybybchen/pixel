@@ -3276,6 +3276,8 @@ message ResponseUnionFightApplyRecordCommand {
 	}
 
 	optional UNION_FIGHT_STATUS status = 3;
+	optional Union enemyUnion = 4;
+	optional uint32 countTime = 5;//倒计时 
 }
 
 message RequestUnionFightCommand {

@@ -1304,6 +1304,14 @@ public class UnionService extends FightService{
 		return redis.getUnionFightApply(unionId);
 	}
 	
+	public <T> Union getEnemyUnion(T unionId) {
+		int enemyUnionId = redis.getEnemyUnionId(unionId);
+		if (enemyUnionId == 0)
+			return null;
+		
+		return redis.getUnion(1, enemyUnionId).build();
+	}
+	
 	public ResultConst unionFight(UserBean user, long userId, UNION_FIGHT_RET ret, FightInfo fightinfo) {
 		String lockKey = "unionfight:" + userId;
 		if (!redis.setLock(lockKey, 4))
@@ -1564,6 +1572,11 @@ public class UnionService extends FightService{
 		}
 		
 		return noticeList;
+	}
+	
+	public int calCountTime() {
+//		return (int)(RedisService.nextDay(0) - RedisService.now());
+		return 1 * 60;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {

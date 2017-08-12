@@ -36827,7 +36827,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *已购买次数
+     *剩余购买次数
      * </pre>
      */
     boolean hasPurchase();
@@ -36835,7 +36835,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *已购买次数
+     *剩余购买次数
      * </pre>
      */
     int getPurchase();
@@ -37098,7 +37098,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *已购买次数
+     *剩余购买次数
      * </pre>
      */
     public boolean hasPurchase() {
@@ -37108,7 +37108,7 @@ public final class ShopProto {
      * <code>optional int32 purchase = 3;</code>
      *
      * <pre>
-     *已购买次数
+     *剩余购买次数
      * </pre>
      */
     public int getPurchase() {
@@ -37699,7 +37699,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *已购买次数
+       *剩余购买次数
        * </pre>
        */
       public boolean hasPurchase() {
@@ -37709,7 +37709,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *已购买次数
+       *剩余购买次数
        * </pre>
        */
       public int getPurchase() {
@@ -37719,7 +37719,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *已购买次数
+       *剩余购买次数
        * </pre>
        */
       public Builder setPurchase(int value) {
@@ -37732,7 +37732,7 @@ public final class ShopProto {
        * <code>optional int32 purchase = 3;</code>
        *
        * <pre>
-       *已购买次数
+       *剩余购买次数
        * </pre>
        */
       public Builder clearPurchase() {
