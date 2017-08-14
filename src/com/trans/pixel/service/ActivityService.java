@@ -1206,6 +1206,8 @@ public class ActivityService {
 		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE);
 		
 		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_DAILY_VALUE);
+		
+		sendRichangScore(user, ACTIVITY_TYPE.TYPE_EVENT_COMPLETE_VALUE);
 	}
 	
 	public void shopBuy(UserBean user, int type) {
