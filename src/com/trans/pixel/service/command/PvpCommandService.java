@@ -207,7 +207,7 @@ public class PvpCommandService extends BaseCommandService {
 //			userProp.setPropCount(userProp.getPropCount() - 1);
 //			userPropService.updateUserProp(userProp);
 		
-			sendHelpMail(friend, reward, user);
+			sendHelpMail(friend, user);
 //			handleRewards(responseBuilder, friend, reward.getItemid(), reward.getCount(), false);
 		
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
@@ -283,11 +283,11 @@ public class PvpCommandService extends BaseCommandService {
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
 	}
 	
-	private void sendHelpMail(UserBean friend, RewardInfo reward, UserBean user) {
+	private void sendHelpMail(UserBean friend, UserBean user) {
 		String content = "帮助你赶走了矿场的敌人"; 
 		List<RewardBean> rewardlist = new ArrayList<RewardBean>();
-		if(reward.getCount() > 0)
-			rewardlist.add(RewardBean.init(reward.getItemid(), reward.getCount()));
+//		if(reward.getCount() > 0)
+//			rewardlist.add(RewardBean.init(reward.getItemid(), reward.getCount()));
 		MailBean mail = buildMail(friend.getId(), user, content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL, rewardlist);
 		mailService.addMail(mail);
 	}
