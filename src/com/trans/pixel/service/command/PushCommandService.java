@@ -468,13 +468,16 @@ public class PushCommandService extends BaseCommandService {
 		}
 		if (needPushReward) {
 			RewardCommand.Builder reward = RewardCommand.newBuilder();
+			if(responseBuilder.hasRewardCommand())
+				reward = responseBuilder.getRewardCommandBuilder();
 			reward.setTitle(rewards.getName());
 			reward.addAllLoot(rewards.getLootList());
 			for(int i = reward.getLootCount()-1; i >= 0; i--) {
 				if(reward.getLoot(i).getItemid() < 100)//主角不返回
 					reward.removeLoot(i);
 			}
-			responseBuilder.setRewardCommand(reward);
+			if(reward.getLootCount() > 0)
+				responseBuilder.setRewardCommand(reward);
 		}
 		if (headList.size() > 0)
 			this.pushUserHeadCommand(responseBuilder, user, headList);

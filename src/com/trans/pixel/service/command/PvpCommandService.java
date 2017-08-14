@@ -1,5 +1,8 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -12,6 +15,7 @@ import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -164,6 +168,8 @@ public class PvpCommandService extends BaseCommandService {
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENEMY));
 		}else if(reward.getCount() > 0){
 			handleRewards(responseBuilder, user, reward.getItemid(), reward.getCount());
+			if(RedisService.nextInt(100)< 2)
+				handleRewards(responseBuilder, user, 24019, 1);
 		}
 		if(cmd.getId() > 1000)
 			getInbreakList(RequestPVPInbreakListCommand.newBuilder().build(), responseBuilder, user);
@@ -201,8 +207,8 @@ public class PvpCommandService extends BaseCommandService {
 //			userProp.setPropCount(userProp.getPropCount() - 1);
 //			userPropService.updateUserProp(userProp);
 		
-			sendHelpMail(friend, user);
-			handleRewards(responseBuilder, friend, reward.getItemid(), reward.getCount(), false);
+			sendHelpMail(friend, reward, user);
+//			handleRewards(responseBuilder, friend, reward.getItemid(), reward.getCount(), false);
 		
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.HELP_ATTACK_SUCCESS));
 			pusher.pushUserPropListCommand(responseBuilder, user);
@@ -277,9 +283,12 @@ public class PvpCommandService extends BaseCommandService {
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
 	}
 	
-	private void sendHelpMail(UserBean friend, UserBean user) {
+	private void sendHelpMail(UserBean friend, RewardInfo reward, UserBean user) {
 		String content = "帮助你赶走了矿场的敌人"; 
-		MailBean mail = buildMail(friend.getId(), user, content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL);
+		List<RewardBean> rewardlist = new ArrayList<RewardBean>();
+		if(reward.getCount() > 0)
+			rewardlist.add(RewardBean.init(reward.getItemid(), reward.getCount()));
+		MailBean mail = buildMail(friend.getId(), user, content, MailConst.TYPE_HELP_ATTACK_PVP_MAIL, rewardlist);
 		mailService.addMail(mail);
 	}
 }

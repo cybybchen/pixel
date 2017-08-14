@@ -165,6 +165,7 @@ public class UserService {
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setRedisTime(today0);
 		user.setNextactive(100);
+		user.setPvppercent(100);
 		user.setLoginDays(user.getLoginDays() + 1);
 		user.setSignCount(0);
 		user.setLadderPurchaseTimes(0);

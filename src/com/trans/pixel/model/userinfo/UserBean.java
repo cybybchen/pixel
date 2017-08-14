@@ -37,6 +37,7 @@ public class UserBean {
 	private int viplibao1 = 0;
 	private int viplibao2 = 0;
 	private int talentsp = 0;
+	private int pvppercent = 100;
 	////////////////////////////////
 	private long receiveMessageTimeStamp = 0;
 	private int lastLootTime = 0;
@@ -144,6 +145,18 @@ public class UserBean {
 	private int shenyuanPRD = 0;
 	private int rite = 0;
 	private String jewelkey = "";
+	/**
+	 * pvp魔晶产量
+	 */
+	public int getPvppercent() {
+		return pvppercent;
+	}
+	/**
+	 * pvp魔晶产量
+	 */
+	public void setPvppercent(int pvppercent) {
+		this.pvppercent = pvppercent;
+	}
 	/**
 	 * 主角sp总数
 	 */

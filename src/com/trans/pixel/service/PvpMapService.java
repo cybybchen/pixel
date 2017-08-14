@@ -176,7 +176,7 @@ public class PvpMapService {
 				UserInfo owner = userService.getCache(user.getServerId(), mine.getOwner().getId());
 				PVPMine.Builder builder = PVPMine.newBuilder(mine);
 				builder.setOwner(owner);
-				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0))))*user.getPvppercent()/100);
 				entry.setValue(builder.build());
 			}else if(RedisService.now() > mine.getEndTime()){
 				it.remove();
@@ -529,7 +529,7 @@ public class PvpMapService {
 							if (map.getFieldid() == id / 100 && map.getOpened()) {
 								mine.setEndTime(RedisService.now()+24*3600);
 								UserInfo owner = userService.getCache(user.getServerId(), userId);
-								reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+								reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0))))*user.getPvppercent()/100);
 							
 								redis.saveMine(userId, mine.build());
 								String content = "霸占了你的矿点(" + map.getName() + ")";
@@ -557,7 +557,8 @@ public class PvpMapService {
 						reward.setCount(mine.getPvpyield());
 					}else{
 						UserInfo owner = userService.getCache(user.getServerId(), userId);
-						reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+						reward.setCount((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel()-1, 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0))))*user.getPvppercent()/100);
+						user.setPvppercent(Math.max(0, user.getPvppercent()-2));
 					}
 				}
 			}
@@ -608,7 +609,7 @@ public class PvpMapService {
 				if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
 					owner = ranks.get(RedisService.nextInt(ranks.size()));
 				builder.setOwner(owner);
-				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0)))));
+				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0))))*user.getPvppercent()/100);
 			}else{
 				builder.clearOwner();
 			}

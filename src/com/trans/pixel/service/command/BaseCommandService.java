@@ -225,6 +225,18 @@ public class BaseCommandService {
 		return mail;
 	}
 	
+	protected MailBean buildMail(long userId, UserBean user, String content, int type, List<RewardBean> rewardList) {
+		MailBean mail = new MailBean();
+		mail.setUserId(userId);
+		mail.setContent(content);
+		mail.setType(type);
+		mail.setRewardList(rewardList);
+		mail.setStartDate(DateUtil.getCurrentDateString());
+		mail.setUser(user.buildShort());
+		
+		return mail;
+	}
+	
 	protected MailBean buildMail(long userId, UserBean user, String content, int type) {
 		MailBean mail = new MailBean();
 		mail.setUserId(userId);
