@@ -369,11 +369,11 @@ public class UnionCommandService extends BaseCommandService {
 		}
 		
 		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(user.getUnionId());
-		if (status.equals(UNION_FIGHT_STATUS.NO_TIME)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
-			return;
-		}
+//		if (status.equals(UNION_FIGHT_STATUS.NO_TIME)) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
+//			return;
+//		}
 		if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.APPLY)) {
 			if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR);
@@ -425,11 +425,11 @@ public class UnionCommandService extends BaseCommandService {
 		}
 		
 		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(user.getUnionId());
-		if (status.equals(UNION_FIGHT_STATUS.NO_TIME)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
-			return;
-		}
+//		if (status.equals(UNION_FIGHT_STATUS.NO_TIME)) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
+//			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
+//			return;
+//		}
 		if (!status.equals(UNION_FIGHT_STATUS.FIGHT_TIME)) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TIME_IS_OVER_ERROR));
