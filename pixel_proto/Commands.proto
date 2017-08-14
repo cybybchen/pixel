@@ -239,6 +239,7 @@ message RewardInfo {
 	optional int64 count = 3;
 	optional int32 weight = 4;
 	optional float weightb = 11;
+	optional int32 startloot = 12;
 	optional float counta = 5;
 	optional float countb = 6;
 	optional string item = 7;

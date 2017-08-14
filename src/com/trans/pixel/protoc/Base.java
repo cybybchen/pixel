@@ -27199,6 +27199,16 @@ public final class Base {
      */
     float getWeightb();
 
+    // optional int32 startloot = 12;
+    /**
+     * <code>optional int32 startloot = 12;</code>
+     */
+    boolean hasStartloot();
+    /**
+     * <code>optional int32 startloot = 12;</code>
+     */
+    int getStartloot();
+
     // optional float counta = 5;
     /**
      * <code>optional float counta = 5;</code>
@@ -27336,38 +27346,43 @@ public final class Base {
               break;
             }
             case 45: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               counta_ = input.readFloat();
               break;
             }
             case 53: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               countb_ = input.readFloat();
               break;
             }
             case 58: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               item_ = input.readBytes();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               eventid_ = input.readUInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               rmbid_ = input.readUInt32();
               break;
             }
             case 80: {
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000800;
               lastime_ = input.readUInt32();
               break;
             }
             case 93: {
               bitField0_ |= 0x00000010;
               weightb_ = input.readFloat();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000020;
+              startloot_ = input.readInt32();
               break;
             }
           }
@@ -27517,6 +27532,22 @@ public final class Base {
       return weightb_;
     }
 
+    // optional int32 startloot = 12;
+    public static final int STARTLOOT_FIELD_NUMBER = 12;
+    private int startloot_;
+    /**
+     * <code>optional int32 startloot = 12;</code>
+     */
+    public boolean hasStartloot() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 startloot = 12;</code>
+     */
+    public int getStartloot() {
+      return startloot_;
+    }
+
     // optional float counta = 5;
     public static final int COUNTA_FIELD_NUMBER = 5;
     private float counta_;
@@ -27524,7 +27555,7 @@ public final class Base {
      * <code>optional float counta = 5;</code>
      */
     public boolean hasCounta() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional float counta = 5;</code>
@@ -27540,7 +27571,7 @@ public final class Base {
      * <code>optional float countb = 6;</code>
      */
     public boolean hasCountb() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional float countb = 6;</code>
@@ -27556,7 +27587,7 @@ public final class Base {
      * <code>optional string item = 7;</code>
      */
     public boolean hasItem() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional string item = 7;</code>
@@ -27599,7 +27630,7 @@ public final class Base {
      * <code>optional uint32 eventid = 8;</code>
      */
     public boolean hasEventid() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional uint32 eventid = 8;</code>
@@ -27615,7 +27646,7 @@ public final class Base {
      * <code>optional uint32 rmbid = 9;</code>
      */
     public boolean hasRmbid() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional uint32 rmbid = 9;</code>
@@ -27631,7 +27662,7 @@ public final class Base {
      * <code>optional uint32 lastime = 10;</code>
      */
     public boolean hasLastime() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional uint32 lastime = 10;</code>
@@ -27646,6 +27677,7 @@ public final class Base {
       count_ = 0L;
       weight_ = 0;
       weightb_ = 0F;
+      startloot_ = 0;
       counta_ = 0F;
       countb_ = 0F;
       item_ = "";
@@ -27677,26 +27709,29 @@ public final class Base {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, weight_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeFloat(5, counta_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeFloat(6, countb_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(7, getItemBytes());
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeUInt32(8, eventid_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeUInt32(9, rmbid_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeUInt32(10, lastime_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeFloat(11, weightb_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(12, startloot_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -27723,33 +27758,37 @@ public final class Base {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, weight_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(5, counta_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(6, countb_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(7, getItemBytes());
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(8, eventid_);
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(9, rmbid_);
       }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(10, lastime_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(11, weightb_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(12, startloot_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27877,18 +27916,20 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000008);
         weightb_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
-        counta_ = 0F;
+        startloot_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        countb_ = 0F;
+        counta_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000040);
-        item_ = "";
+        countb_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000080);
-        eventid_ = 0;
+        item_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
-        rmbid_ = 0;
+        eventid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        lastime_ = 0;
+        rmbid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
+        lastime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -27940,25 +27981,29 @@ public final class Base {
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.counta_ = counta_;
+        result.startloot_ = startloot_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.countb_ = countb_;
+        result.counta_ = counta_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.item_ = item_;
+        result.countb_ = countb_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.eventid_ = eventid_;
+        result.item_ = item_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.rmbid_ = rmbid_;
+        result.eventid_ = eventid_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000400;
+        }
+        result.rmbid_ = rmbid_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
         }
         result.lastime_ = lastime_;
         result.bitField0_ = to_bitField0_;
@@ -27994,6 +28039,9 @@ public final class Base {
         if (other.hasWeightb()) {
           setWeightb(other.getWeightb());
         }
+        if (other.hasStartloot()) {
+          setStartloot(other.getStartloot());
+        }
         if (other.hasCounta()) {
           setCounta(other.getCounta());
         }
@@ -28001,7 +28049,7 @@ public final class Base {
           setCountb(other.getCountb());
         }
         if (other.hasItem()) {
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000100;
           item_ = other.item_;
           onChanged();
         }
@@ -28247,13 +28295,46 @@ public final class Base {
         return this;
       }
 
+      // optional int32 startloot = 12;
+      private int startloot_ ;
+      /**
+       * <code>optional int32 startloot = 12;</code>
+       */
+      public boolean hasStartloot() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 startloot = 12;</code>
+       */
+      public int getStartloot() {
+        return startloot_;
+      }
+      /**
+       * <code>optional int32 startloot = 12;</code>
+       */
+      public Builder setStartloot(int value) {
+        bitField0_ |= 0x00000020;
+        startloot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 startloot = 12;</code>
+       */
+      public Builder clearStartloot() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        startloot_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional float counta = 5;
       private float counta_ ;
       /**
        * <code>optional float counta = 5;</code>
        */
       public boolean hasCounta() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional float counta = 5;</code>
@@ -28265,7 +28346,7 @@ public final class Base {
        * <code>optional float counta = 5;</code>
        */
       public Builder setCounta(float value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         counta_ = value;
         onChanged();
         return this;
@@ -28274,7 +28355,7 @@ public final class Base {
        * <code>optional float counta = 5;</code>
        */
       public Builder clearCounta() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         counta_ = 0F;
         onChanged();
         return this;
@@ -28286,7 +28367,7 @@ public final class Base {
        * <code>optional float countb = 6;</code>
        */
       public boolean hasCountb() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional float countb = 6;</code>
@@ -28298,7 +28379,7 @@ public final class Base {
        * <code>optional float countb = 6;</code>
        */
       public Builder setCountb(float value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         countb_ = value;
         onChanged();
         return this;
@@ -28307,7 +28388,7 @@ public final class Base {
        * <code>optional float countb = 6;</code>
        */
       public Builder clearCountb() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         countb_ = 0F;
         onChanged();
         return this;
@@ -28319,7 +28400,7 @@ public final class Base {
        * <code>optional string item = 7;</code>
        */
       public boolean hasItem() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional string item = 7;</code>
@@ -28359,7 +28440,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
         item_ = value;
         onChanged();
         return this;
@@ -28368,7 +28449,7 @@ public final class Base {
        * <code>optional string item = 7;</code>
        */
       public Builder clearItem() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         item_ = getDefaultInstance().getItem();
         onChanged();
         return this;
@@ -28381,7 +28462,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000080;
+  bitField0_ |= 0x00000100;
         item_ = value;
         onChanged();
         return this;
@@ -28393,7 +28474,7 @@ public final class Base {
        * <code>optional uint32 eventid = 8;</code>
        */
       public boolean hasEventid() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional uint32 eventid = 8;</code>
@@ -28405,7 +28486,7 @@ public final class Base {
        * <code>optional uint32 eventid = 8;</code>
        */
       public Builder setEventid(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         eventid_ = value;
         onChanged();
         return this;
@@ -28414,7 +28495,7 @@ public final class Base {
        * <code>optional uint32 eventid = 8;</code>
        */
       public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         eventid_ = 0;
         onChanged();
         return this;
@@ -28426,7 +28507,7 @@ public final class Base {
        * <code>optional uint32 rmbid = 9;</code>
        */
       public boolean hasRmbid() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional uint32 rmbid = 9;</code>
@@ -28438,7 +28519,7 @@ public final class Base {
        * <code>optional uint32 rmbid = 9;</code>
        */
       public Builder setRmbid(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         rmbid_ = value;
         onChanged();
         return this;
@@ -28447,7 +28528,7 @@ public final class Base {
        * <code>optional uint32 rmbid = 9;</code>
        */
       public Builder clearRmbid() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         rmbid_ = 0;
         onChanged();
         return this;
@@ -28459,7 +28540,7 @@ public final class Base {
        * <code>optional uint32 lastime = 10;</code>
        */
       public boolean hasLastime() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional uint32 lastime = 10;</code>
@@ -28471,7 +28552,7 @@ public final class Base {
        * <code>optional uint32 lastime = 10;</code>
        */
       public Builder setLastime(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         lastime_ = value;
         onChanged();
         return this;
@@ -28480,7 +28561,7 @@ public final class Base {
        * <code>optional uint32 lastime = 10;</code>
        */
       public Builder clearLastime() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         lastime_ = 0;
         onChanged();
         return this;
@@ -34149,28 +34230,28 @@ public final class Base {
       "s.pixel.protoc.ClearInfo\022\022\n\nstrengthen\030\r" +
       " \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013e" +
       "quipPokede\030\020 \001(\0132\'.com.trans.pixel.proto" +
-      "c.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\271\001\n\nReward" +
+      "c.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\314\001\n\nReward" +
       "Info\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005co" +
       "unt\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001",
-      "(\002\022\016\n\006counta\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004it" +
-      "em\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r" +
-      "\022\017\n\007lastime\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006item" +
-      "id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n" +
-      "\006weight\030\004 \001(\002\022\017\n\007weightb\030\013 \001(\002\022\016\n\006countb" +
-      "\030\006 \001(\002\"Y\n\013MultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004nam" +
-      "e\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com.trans.pixel." +
-      "protoc.RewardInfo\"|\n\004Task\022\020\n\010targetid\030\001 " +
-      "\001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013target" +
-      "count\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132\".com.trans.",
-      "pixel.protoc.RewardInfo\"\205\001\n\005Event\022\r\n\005ord" +
-      "er\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022" +
-      "\016\n\006daguan\030\004 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n\006wei" +
-      "ght\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"" +
-      "\254\001\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\013" +
-      "2 .com.trans.pixel.protoc.UserInfo\022\021\n\tfi" +
-      "ghtInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\022.\n\004user" +
-      "\030\005 \001(\0132 .com.trans.pixel.protoc.UserInfo" +
-      "\022\014\n\004time\030\006 \001(\t"
+      "(\002\022\021\n\tstartloot\030\014 \001(\005\022\016\n\006counta\030\005 \001(\002\022\016\n" +
+      "\006countb\030\006 \001(\002\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010" +
+      " \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"k\n\013" +
+      "RewardInfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "\t\022\r\n\005count\030\003 \001(\002\022\016\n\006weight\030\004 \001(\002\022\017\n\007weig" +
+      "htb\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013MultiReward" +
+      "\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\013" +
+      "2\".com.trans.pixel.protoc.RewardInfo\"|\n\004" +
+      "Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003" +
+      "des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward",
+      "\030\005 \003(\0132\".com.trans.pixel.protoc.RewardIn" +
+      "fo\"\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002" +
+      " \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010ta" +
+      "rgetid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n " +
+      "\001(\005\022\r\n\005count\030\013 \001(\005\"\254\001\n\tFightInfo\022\n\n\002id\030\003" +
+      " \001(\005\022/\n\005enemy\030\004 \001(\0132 .com.trans.pixel.pr" +
+      "otoc.UserInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfigh" +
+      "tData\030\002 \002(\t\022.\n\004user\030\005 \001(\0132 .com.trans.pi" +
+      "xel.protoc.UserInfo\022\014\n\004time\030\006 \001(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34296,7 +34377,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
+              new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Startloot", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
           internal_static_com_trans_pixel_protoc_RewardInfo2_descriptor =
             getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RewardInfo2_fieldAccessorTable = new

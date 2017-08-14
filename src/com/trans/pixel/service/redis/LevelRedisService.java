@@ -433,7 +433,7 @@ public class LevelRedisService extends RedisService {
 			reward.setItemid(loot.getItemid());
 			if (loot.getCounta() != 0 && level > 1) {
 				reward.setCount(loot.getCount() + (int)((level - 1) * loot.getCounta()));
-			} else if (loot.hasWeight()) {
+			} else if (loot.hasWeight() && level >= loot.getStartloot()) {
 				int weight = loot.getWeight()+(int)(loot.getWeightb()*level);
 				int count = Math.max(0, weight/100);
 				weight = weight%100;
