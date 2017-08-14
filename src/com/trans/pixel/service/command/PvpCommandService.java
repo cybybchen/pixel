@@ -154,9 +154,9 @@ public class PvpCommandService extends BaseCommandService {
 //			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.VIP_IS_NOT_ENOUGH));
 //			return;
 //		}
-		long teamid = cmd.getTeamid();
-		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, teamid, team);
+//		long teamid = cmd.getTeamid();
+//		Team team = userTeamService.getTeam(user, teamid);
+//		userTeamService.saveTeamCache(user, teamid, team);
 		
 		int time = 0;
 		if (cmd.hasTime())
@@ -186,11 +186,11 @@ public class PvpCommandService extends BaseCommandService {
 //            responseBuilder.setErrorCommand(errorCommand);
 //            return;
 //		}
-		long teamid = cmd.getTeamid();
+//		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUserOther(friendUserId);
-		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, teamid, team);
+//		Team team = userTeamService.getTeam(user, teamid);
+//		userTeamService.saveTeamCache(user, teamid, team);
 		
 		int time = 0;
 		if (cmd.hasTime())

@@ -492,11 +492,11 @@ public class LevelCommandService extends BaseCommandService {
 //            responseBuilder.setErrorCommand(errorCommand);
 //            return;
 //		}
-		long teamid = cmd.getTeamid();
+//		long teamid = cmd.getTeamid();
 		long friendUserId = cmd.getUserId();
 		UserBean friend = userService.getUserOther(friendUserId);
-		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, teamid, team);
+//		Team team = userTeamService.getTeam(user, teamid);
+//		userTeamService.saveTeamCache(user, teamid, team);
 		
 		if (cmd.getRet()) {
 			UserLevelBean userLevel = redis.getUserLevel(friendUserId);

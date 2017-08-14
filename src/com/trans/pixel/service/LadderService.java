@@ -387,8 +387,8 @@ public class LadderService {
 		
 //		user.setLadderModeLeftTimes(user.getLadderModeLeftTimes() - 1);
 //		userService.updateUser(user);
-		Team team = userTeamService.getTeam(user, teamid);
-		userTeamService.saveTeamCache(user, teamid, team);
+//		Team team = userTeamService.getTeam(user, teamid);
+//		userTeamService.saveTeamCache(user, teamid, team);
 		
 		/**
 		 * send log

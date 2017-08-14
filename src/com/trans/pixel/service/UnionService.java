@@ -644,8 +644,8 @@ public class UnionService extends FightService{
 			if(RedisService.now() > builder.getAttackCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
-			Team team = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user, teamid, team);
+//			Team team = userTeamService.getTeam(user, teamid);
+//			userTeamService.saveTeamCache(user, teamid, team);
 			redis.attack(builder.getAttackId(), user);
 		}else if(user.getUnionJob() >= UnionConst.UNION_FUHUIZHANG && attackId != 0 && RedisService.now() > builder.getAttackCloseTime()){
 			builder.setAttackId(attackId);
@@ -679,8 +679,8 @@ public class UnionService extends FightService{
 			if(RedisService.now() > union.getDefendCloseTime()){
 				return ErrorConst.JOIN_END;
 			}
-			Team team = userTeamService.getTeam(user, teamid);
-			userTeamService.saveTeamCache(user, teamid, team);
+//			Team team = userTeamService.getTeam(user, teamid);
+//			userTeamService.saveTeamCache(user, teamid, team);
 			redis.defend(union.getDefendId(), user);
 			return SuccessConst.UNION_FIGHT_SUCCESS;
 		}else{
