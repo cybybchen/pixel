@@ -36,7 +36,7 @@ public class NoticeCommandService {
 		List<String> noticeMessageList = noticeMessageService.getNoticeMessageList(user);
 		builder.addAllMessage(noticeMessageList);
 		responseBuilder.setNoticeCommand(builder.build());
-		pushUnionNotices(responseBuilder, user);
+//		pushUnionNotices(responseBuilder, user);
 	}
 	
 	public void pushUnionNotices(Builder responseBuilder, UserBean user) {
