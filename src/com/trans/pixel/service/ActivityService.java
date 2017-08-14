@@ -1250,6 +1250,13 @@ public class ActivityService {
 			UserBean user = userService.getUserOther(userId);
 			this.sendRichangScore(user, ACTIVITY_TYPE.TYPE_KILL_UNIONBOSS_200001_VALUE);
 		}
+		/**
+		 * 土地精
+		 */
+		if (bossId == 200003) {
+			UserBean user = userService.getUserOther(userId);
+			this.sendRichangScore(user, ACTIVITY_TYPE.TYPE_KILL_UNIONBOSS_200003_VALUE);
+		}
 	}
 	
 	/**
