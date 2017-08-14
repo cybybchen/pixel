@@ -1459,8 +1459,10 @@ public class UnionService extends FightService{
 					return UNION_FIGHT_STATUS.FIGHT_TIME;
 				case 4:
 					return UNION_FIGHT_STATUS.SEND_REWARD_TIME;
-				default:
+				case 5:
 					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+				default:
+					return UNION_FIGHT_STATUS.NO_TIME;
 			}
 		}
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
