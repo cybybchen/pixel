@@ -321,33 +321,35 @@ public class HeroCommandService extends BaseCommandService {
 		Hero hero = heroService.getHero(heroId);
 //		Star star = starService.getStar(7);
 		int sp = skillService.getSP(heroInfo);
-		final int count = Math.min(starService.getStar(7).getMaxskill() - sp, cmd.getCount());
-		int itemid = fenjieRedisService.getFenjie(hero.getQuality()).getLootlist().getItemid();
-		UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), itemid);
-		if(equip1 == null)
-			equip1 = UserEquipBean.init(user.getId(), itemid, 0);
-		itemid = fenjieRedisService.getFenjie(0).getLootlist().getItemid();
-		UserEquipBean equip2 = userEquipService.selectUserEquip(user.getId(), itemid);
-		if(equip2 == null)
-			equip2 = UserEquipBean.init(user.getId(), itemid, 0);
+		final int count = Math.min(starService.getStar(heroInfo.getStarLevel()).getMaxskill() - sp - heroInfo.getSp(), cmd.getCount());
 		List<UserEquipBean> equipList = new ArrayList<UserEquipBean>();
-		equipList.add(equip1);
-		equipList.add(equip2);
-		if (count > equip1.getEquipCount() + equip2.getEquipCount())
-			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_SKILL_STONE));
-		else{
-			if(count > equip1.getEquipCount()) {
-				int leftcount = count - equip1.getEquipCount();
-				equip1.setEquipCount(0);
-				equip2.setEquipCount(equip2.getEquipCount()-leftcount);
-				userEquipService.updateUserEquip(equip1);
-				userEquipService.updateUserEquip(equip2);
-			}else{
-				equip1.setEquipCount(equip1.getEquipCount()-count);
-				userEquipService.updateUserEquip(equip1);
+		if(count > 0) {
+			int itemid = fenjieRedisService.getFenjie(hero.getQuality()).getLootlist().getItemid();
+			UserEquipBean equip1 = userEquipService.selectUserEquip(user.getId(), itemid);
+			if(equip1 == null)
+				equip1 = UserEquipBean.init(user.getId(), itemid, 0);
+			itemid = fenjieRedisService.getFenjie(0).getLootlist().getItemid();
+			UserEquipBean equip2 = userEquipService.selectUserEquip(user.getId(), itemid);
+			if(equip2 == null)
+				equip2 = UserEquipBean.init(user.getId(), itemid, 0);
+			equipList.add(equip1);
+			equipList.add(equip2);
+			if (count > equip1.getEquipCount() + equip2.getEquipCount())
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_SKILL_STONE));
+			else{
+				if(count > equip1.getEquipCount()) {
+					int leftcount = count - equip1.getEquipCount();
+					equip1.setEquipCount(0);
+					equip2.setEquipCount(equip2.getEquipCount()-leftcount);
+					userEquipService.updateUserEquip(equip1);
+					userEquipService.updateUserEquip(equip2);
+				}else{
+					equip1.setEquipCount(equip1.getEquipCount()-count);
+					userEquipService.updateUserEquip(equip1);
+				}
+				heroInfo.setSp(heroInfo.getSp() + count);
+				userHeroService.updateUserHero(heroInfo);
 			}
-			heroInfo.setSp(heroInfo.getSp() + count);
-			userHeroService.updateUserHero(heroInfo);
 		}
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		builder.setHeroId(heroId);
