@@ -319,8 +319,8 @@ public class ActivityService {
 		 * 参与pk
 		 */
 //		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
-//		if (ret)
-//			sendRichangScore(user, ActivityConst.PVP_ATTACK_ENEMY_SUCCESS);
+		if (ret)
+			sendRichangScore(user, ACTIVITY_TYPE.TYPE_PVP_ATTACK_SUCCESS_VALUE);
 		
 		if (ret)
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_DUOHUI_MINE_VALUE);
