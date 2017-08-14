@@ -193,7 +193,7 @@ public class UserRedisService extends RedisService{
 		for(T userId : userIds){
 			keys.add(userId+"");
 		}
-		List<String> values  = hget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, keys);
+		List<String> values  = hmget(RedisKey.PREFIX+RedisKey.USERCACHE_PREFIX+serverId, keys);
 		List<UserInfo> users = new ArrayList<UserInfo>();
 		for(String value : values){
 			UserInfo.Builder builder = UserInfo.newBuilder();

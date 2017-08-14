@@ -1,7 +1,6 @@
 package com.trans.pixel.service.redis;
 
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.Resource;
 

@@ -255,14 +255,14 @@ public class MohuaRedisService extends RedisService {
 		return map;
 	}
 	
-	public void updateMohuaUserData(final MohuaUserData user, final long userId) {
+	public void updateMohuaUserData(final MohuaUserData data, final long userId) {
 		String key = RedisKey.USERDATA + userId;
-		hput(key, RedisKey.MOHUA_USERDATA, formatJson(user));
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, RedisKey.MOHUA_USERDATA, formatJson(data), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 	}
 	
 	public MohuaUserData getMohuaUserData(final long userId) {
-		String value = hget(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
+		String value = hget(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA, userId);
 		MohuaUserData.Builder builder = MohuaUserData.newBuilder();
 		if (value != null && parseJson(value, builder))
 			return builder.build();
@@ -271,6 +271,6 @@ public class MohuaRedisService extends RedisService {
 	}
 	
 	public void delMohuaUserData(long userId) {
-		hdelete(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA);
+		hdelete(RedisKey.USERDATA + userId, RedisKey.MOHUA_USERDATA, userId);
 	}
 }

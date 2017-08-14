@@ -20,8 +20,8 @@ public class UserFoodRedisService extends RedisService {
 	
 	public void updateUserFood(final UserFoodBean userFood) {
 		String key = RedisKey.USER_FOOD_PREFIX + userFood.getUserId();
-		hput(key, "" + userFood.getFoodId(), JSONObject.fromObject(userFood).toString());
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(key, "" + userFood.getFoodId(), JSONObject.fromObject(userFood).toString(), userFood.getUserId());
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userFood.getUserId());
 		
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_FOOD_PREFIX, userFood.getUserId() + "#" + userFood.getFoodId());
 	}
@@ -31,7 +31,7 @@ public class UserFoodRedisService extends RedisService {
 	}
 	
 	public UserFoodBean selectUserFood(final long userId, final int foodId) {
-		String value = hget(RedisKey.USER_FOOD_PREFIX + userId, "" + foodId);
+		String value = hget(RedisKey.USER_FOOD_PREFIX + userId, "" + foodId, userId);
 		if (value == null)
 			return null;
 		
@@ -40,7 +40,7 @@ public class UserFoodRedisService extends RedisService {
 	
 	public List<UserFoodBean> selectUserFoodList(final long userId) {
 		List<UserFoodBean> userFoodList = new ArrayList<UserFoodBean>();
-		Iterator<Entry<String, String>> it = hget(RedisKey.USER_FOOD_PREFIX + userId).entrySet().iterator();
+		Iterator<Entry<String, String>> it = hget(RedisKey.USER_FOOD_PREFIX + userId, userId).entrySet().iterator();
 		while (it.hasNext()) {
 			Entry<String, String> entry = it.next();
 			UserFoodBean userFood = UserFoodBean.fromJson(entry.getValue());
@@ -53,11 +53,11 @@ public class UserFoodRedisService extends RedisService {
 	
 	public void updateUserFoodList(final List<UserFoodBean> userFoodList, final long userId) {
 		Map<String, String> map = convertUserFoodListToMap(userFoodList);
-		this.hputAll(RedisKey.USER_FOOD_PREFIX + userId, map);
+		this.hputAll(RedisKey.USER_FOOD_PREFIX + userId, map, userId);
 	}
 	
 	public boolean isExistFoodKey(final long userId) {
-		return exists(RedisKey.USER_FOOD_PREFIX + userId);
+		return exists(RedisKey.USER_FOOD_PREFIX + userId, userId);
 	}
 	
 	private Map<String, String> convertUserFoodListToMap(List<UserFoodBean> userFoodList) {

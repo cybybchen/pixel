@@ -51,19 +51,24 @@ public class UserClearService {
 		return userClearList;
 	}
 	
+	/**
+	 * clear has not use any more
+	 */
+	@Deprecated
 	public List<UserClearBean> selectUserClearList(long userId) {
-		List<UserClearBean> userClearList = userClearRedisService.selectUserClearList(userId);
-		if (userClearList == null || userClearList.size() == 0) {
-			userClearList = userClearMapper.selectUserClearList(userId);
-			if (userClearList.isEmpty()){
-				UserClearBean bean = new UserClearBean();
-				userClearList = new ArrayList<UserClearBean>();
-				userClearList.add(bean.init(userId));
-			}
-			userClearRedisService.updateUserClearList(userClearList, userId);
-		}
-		
-		return userClearList;
+		return new ArrayList<UserClearBean>();
+//		List<UserClearBean> userClearList = userClearRedisService.selectUserClearList(userId);
+//		if (userClearList == null || userClearList.size() == 0) {
+//			userClearList = userClearMapper.selectUserClearList(userId);
+//			if (userClearList.isEmpty()){
+//				UserClearBean bean = new UserClearBean();
+//				userClearList = new ArrayList<UserClearBean>();
+//				userClearList.add(bean.init(userId));
+//			}
+//			userClearRedisService.updateUserClearList(userClearList, userId);
+//		}
+//		
+//		return userClearList;
 	}
 	
 //	public void addUserFood(UserBean user, int foodId, int foodCount) {

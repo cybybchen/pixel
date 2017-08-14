@@ -404,7 +404,7 @@ public class RedisService {
 	}
 	
 	/**
-	 * 设置hashMap单个值
+	 * 如果 key 不存在，设置hashMap单个值
 	 */
 	protected Boolean hputnx(final String key, final String key2,
 			final String value) {
@@ -546,26 +546,6 @@ public class RedisService {
 						.boundHashOps(key);
 
 				return Ops.size();
-			}
-		});
-	}
-
-	/**
-	 * 获取hashMap多个值
-	 */
-	protected List<String> hget(final String key, final Collection<String> key2) {
-		return hget(key, key2, 0);
-	}
-	
-	protected List<String> hget(final String key, final Collection<String> key2, final long userId) {
-		return getRedis(userId).execute(new RedisCallback<List<String>>() {
-			@Override
-			public List<String> doInRedis(RedisConnection arg0)
-					throws DataAccessException {
-				BoundHashOperations<String, String, String> Ops = getRedis(userId)
-						.boundHashOps(key);
-
-				return Ops.multiGet(key2);
 			}
 		});
 	}

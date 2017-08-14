@@ -25,6 +25,6 @@ public class UserBattletowerRedisService extends RedisService {
 	
 	public void setUserBattletower(UserBattletowerBean userBattletower) {
 		this.set(RedisKey.USER_BATTLETOWER_PREFIX + userBattletower.getUserId(), JSONObject.fromObject(userBattletower).toString(), userBattletower.getUserId());
-		expire(RedisKey.USER_BATTLETOWER_PREFIX + userBattletower.getUserId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		expire(RedisKey.USER_BATTLETOWER_PREFIX + userBattletower.getUserId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, userBattletower.getUserId());
 	}
 }

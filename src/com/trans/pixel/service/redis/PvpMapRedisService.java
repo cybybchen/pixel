@@ -318,7 +318,7 @@ public class PvpMapRedisService extends RedisService{
 								level = 1;
 							bossbuilder.setLevel(level);
 							set(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisService.formatJson(bosses.build()), user.getId());
-							expire(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+							expire(RedisKey.PVPBOSS_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 						}
 						events.add(bossbuilder.build());
 						positionValues.add(bossbuilder.getPositionid());

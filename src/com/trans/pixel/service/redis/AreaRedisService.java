@@ -817,8 +817,8 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMyAreaBuff(UserBean user, AreaBuff buff){
-		hput(MYAREABUFF+user.getId(), buff.getSkillid()+"", RedisService.formatJson(buff));
-		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+		hput(MYAREABUFF+user.getId(), buff.getSkillid()+"", RedisService.formatJson(buff), user.getId());
+		expire(MYAREABUFF+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
 	
 	public void saveUnionAreaBuff(UserBean user, AreaBuff buff){
@@ -827,7 +827,7 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public AreaBuff.Builder getMyAreaBuff(UserBean user, int skill){
-		String value = hget(MYAREABUFF+user.getId(), skill+"");
+		String value = hget(MYAREABUFF+user.getId(), skill+"", user.getId());
 		AreaBuff.Builder builder = AreaBuff.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
@@ -844,12 +844,12 @@ public class AreaRedisService extends RedisService{
 
 	public Collection<AreaBuff> getMyAreaBuffs(UserBean user){
 		List<AreaBuff> list = new ArrayList<AreaBuff>();
-		Map<String,String> keyvalue = hget(MYAREABUFF+user.getId());
+		Map<String,String> keyvalue = hget(MYAREABUFF+user.getId(), user.getId());
 		for(String value : keyvalue.values()){
 			AreaBuff.Builder builder = AreaBuff.newBuilder();
 			if(RedisService.parseJson(value, builder)){
 				if(RedisService.now() > builder.getEndTime())
-					hdelete(MYAREABUFF+user.getId(), builder.getSkillid()+"");
+					hdelete(MYAREABUFF+user.getId(), builder.getSkillid()+"", user.getId());
 				else
 					list.add(builder.build());
 			}
@@ -876,7 +876,8 @@ public class AreaRedisService extends RedisService{
 	}
 
 	public void saveMyAreaEquip(UserBean user, AreaEquip equip){
-		hput(MYAREAEQUIP+user.getId(), equip.getId()+"", RedisService.formatJson(equip));
+		hput(MYAREAEQUIP+user.getId(), equip.getId()+"", RedisService.formatJson(equip), user.getId());
+		expire(MYAREAEQUIP+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
 
 	public void saveMyAreaEquips(UserBean user, Collection<AreaEquip> equips){
@@ -884,10 +885,11 @@ public class AreaRedisService extends RedisService{
 		for(AreaEquip equip : equips){
 			map.put(equip.getId()+"", RedisService.formatJson(equip));
 		}
-		hputAll(MYAREAEQUIP+user.getId(), map);
+		hputAll(MYAREAEQUIP+user.getId(), map, user.getId());
+		expire(MYAREAEQUIP+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 	}
 	public AreaEquip.Builder getMyAreaEquip(int id, UserBean user){
-		String value = hget(MYAREAEQUIP+user.getId(), id+"");
+		String value = hget(MYAREAEQUIP+user.getId(), id+"", user.getId());
 		AreaEquip.Builder builder = AreaEquip.newBuilder();
 		if(value != null && RedisService.parseJson(value, builder))
 			return builder;
@@ -896,13 +898,14 @@ public class AreaRedisService extends RedisService{
 		}
 	}
 	public Map<String, AreaEquip> getMyAreaEquips(UserBean user){
-		Map<String, String> keyvalue = hget(MYAREAEQUIP+user.getId());
+		Map<String, String> keyvalue = hget(MYAREAEQUIP+user.getId(), user.getId());
 		Map<String, AreaEquip> map = new HashMap<String, AreaEquip>();
 		for(Entry<String, String> entry : keyvalue.entrySet()){
 			AreaEquip.Builder builder = AreaEquip.newBuilder();
 			if(RedisService.parseJson(entry.getValue(), builder))
 				map.put(entry.getKey(),builder.build());
 		}
+		expire(MYAREAEQUIP+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 		return map;
 	}
 
