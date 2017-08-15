@@ -1,15 +1,18 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -39,6 +42,12 @@ public class LootRewardTaskService {
 			RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
 			rewardBuilder.setCount(rewardBuilder.getCount() * lootCount);
 			rewards.addLoot(rewardBuilder.build());
+		}
+		
+		if (lootCount > 0) {
+			List<RewardInfo> extra = calShenyuanPRD(user, id);
+			if (!extra.isEmpty())
+				rewards.addAllLoot(extra);
 		}
 		
 		UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
@@ -96,6 +105,10 @@ public class LootRewardTaskService {
 				rewards.addLoot(rewardBuilder.build());
 			}
 			
+			List<RewardInfo> extra = calShenyuanPRD(user, loot.getId());
+			if (!extra.isEmpty())
+				rewards.addAllLoot(extra);
+			
 			UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
 			builder.setCount(builder.getCount() - (int)(lootCount * shenyuan.getCost().getCount()));
 			if (builder.getCount() < shenyuan.getCost().getCount())
@@ -116,5 +129,16 @@ public class LootRewardTaskService {
 		}
 		
 		return lootList;
+	}
+	
+	private List<RewardInfo> calShenyuanPRD(UserBean user, int id) {
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		user.setShenyuanPRD(user.getShenyuanPRD() + (id == 1 ? 3 : 5));
+		if (RandomUtils.nextInt(10000) < user.getShenyuanPRD()) {
+			user.setShenyuanPRD(0);
+			rewardList.add(RewardBean.init(39012, 1).buildRewardInfo());
+		}
+		
+		return rewardList;
 	}
 }
