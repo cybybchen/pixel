@@ -1,7 +1,10 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -20,6 +23,7 @@ import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -155,14 +159,27 @@ public class RankService {
 		return rankList;
 	}
 	
-	public List<FightInfo> getFightInfoList() {
-		List<String> fights = rankRedisService.getFightInfoList();
-		List<FightInfo> fightList = new ArrayList<FightInfo>();
-		for (String fight : fights) {
-			FightInfo.Builder builder = FightInfo.newBuilder();
-			if (RedisService.parseJson(fight, builder))
-				fightList.add(builder.build());
+	Comparator<FightInfo> comparator = new Comparator<FightInfo>() {
+		public int compare(FightInfo bean1, FightInfo bean2) {
+			if (bean1.getScore() < bean2.getScore()) {
+				return 1;
+			} else {
+				return -1;
+			}
 		}
+	};
+	
+	public List<FightInfo> getFightInfoList() {
+		Map<String, String> fights = rankRedisService.getFightInfoMap();
+		List<FightInfo> fightList = new ArrayList<FightInfo>();
+		for (String fight : fights.values()) {
+			FightInfo.Builder builder = FightInfo.newBuilder();
+			if (RedisService.parseJson(fight, builder)) {
+				builder.setScore(builder.getScore() - DateUtil.intervalHours(DateUtil.getDate(), DateUtil.getDate(builder.getTime())) / 6 * 3);
+				fightList.add(builder.build());
+			}
+		}
+		Collections.sort(fightList, comparator);
 		
 		return fightList;
 	}
@@ -184,6 +201,18 @@ public class RankService {
 	}
 	
 	public void addFightInfoRank(FightInfo fight) {
-		rankRedisService.addFightInfoRank(fight);
+		List<FightInfo> fightList = getFightInfoList();
+		FightInfo removeFight = null;
+		if (fightList.size() >= RankConst.FIGHTINFO_RANK_LIMIT) {
+			removeFight = fightList.get(fightList.size() - 1);
+			
+			if (removeFight.getScore() <= fight.getScore()) {
+				rankRedisService.deleteFightInfoRank(removeFight);
+				rankRedisService.addFightInfoRank(fight);
+			}
+		} else {
+			rankRedisService.addFightInfoRank(fight);
+		}
+		
 	}
 }

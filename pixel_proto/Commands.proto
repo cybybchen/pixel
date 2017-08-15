@@ -295,6 +295,7 @@ message FightInfo {
         required string fightData = 2;
 	optional UserInfo user = 5;
 	optional string time = 6;
+	optional uint32 score = 7;
 }
 
 ////////// ShopProto

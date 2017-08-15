@@ -32786,6 +32786,16 @@ public final class Base {
      */
     com.google.protobuf.ByteString
         getTimeBytes();
+
+    // optional uint32 score = 7;
+    /**
+     * <code>optional uint32 score = 7;</code>
+     */
+    boolean hasScore();
+    /**
+     * <code>optional uint32 score = 7;</code>
+     */
+    int getScore();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.FightInfo}
@@ -32882,6 +32892,11 @@ public final class Base {
             case 50: {
               bitField0_ |= 0x00000020;
               time_ = input.readBytes();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              score_ = input.readUInt32();
               break;
             }
           }
@@ -33113,6 +33128,22 @@ public final class Base {
       }
     }
 
+    // optional uint32 score = 7;
+    public static final int SCORE_FIELD_NUMBER = 7;
+    private int score_;
+    /**
+     * <code>optional uint32 score = 7;</code>
+     */
+    public boolean hasScore() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional uint32 score = 7;</code>
+     */
+    public int getScore() {
+      return score_;
+    }
+
     private void initFields() {
       id_ = 0;
       enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
@@ -33120,6 +33151,7 @@ public final class Base {
       fightData_ = "";
       user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       time_ = "";
+      score_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -33171,6 +33203,9 @@ public final class Base {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(6, getTimeBytes());
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeUInt32(7, score_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -33203,6 +33238,10 @@ public final class Base {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getTimeBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, score_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -33342,6 +33381,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000010);
         time_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
+        score_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -33402,6 +33443,10 @@ public final class Base {
           to_bitField0_ |= 0x00000020;
         }
         result.time_ = time_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.score_ = score_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -33441,6 +33486,9 @@ public final class Base {
           bitField0_ |= 0x00000020;
           time_ = other.time_;
           onChanged();
+        }
+        if (other.hasScore()) {
+          setScore(other.getScore());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -33978,6 +34026,39 @@ public final class Base {
         return this;
       }
 
+      // optional uint32 score = 7;
+      private int score_ ;
+      /**
+       * <code>optional uint32 score = 7;</code>
+       */
+      public boolean hasScore() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional uint32 score = 7;</code>
+       */
+      public int getScore() {
+        return score_;
+      }
+      /**
+       * <code>optional uint32 score = 7;</code>
+       */
+      public Builder setScore(int value) {
+        bitField0_ |= 0x00000040;
+        score_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 score = 7;</code>
+       */
+      public Builder clearScore() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        score_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.FightInfo)
     }
 
@@ -34247,11 +34328,12 @@ public final class Base {
       "fo\"\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002" +
       " \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010ta" +
       "rgetid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n " +
-      "\001(\005\022\r\n\005count\030\013 \001(\005\"\254\001\n\tFightInfo\022\n\n\002id\030\003" +
+      "\001(\005\022\r\n\005count\030\013 \001(\005\"\273\001\n\tFightInfo\022\n\n\002id\030\003" +
       " \001(\005\022/\n\005enemy\030\004 \001(\0132 .com.trans.pixel.pr" +
       "otoc.UserInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfigh" +
       "tData\030\002 \002(\t\022.\n\004user\030\005 \001(\0132 .com.trans.pi" +
-      "xel.protoc.UserInfo\022\014\n\004time\030\006 \001(\t"
+      "xel.protoc.UserInfo\022\014\n\004time\030\006 \001(\t\022\r\n\005sco" +
+      "re\030\007 \001(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34407,7 +34489,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
-              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", "User", "Time", });
+              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", "User", "Time", "Score", });
           return null;
         }
       };

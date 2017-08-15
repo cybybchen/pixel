@@ -2,6 +2,7 @@ package com.trans.pixel.service.redis;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -9,7 +10,6 @@ import javax.annotation.Resource;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.FightInfo;
@@ -98,14 +98,18 @@ public class RankRedisService extends RedisService{
 	}
 	
 	public void addFightInfoRank(FightInfo fight) {
-		lpush(RedisKey.FIGHTINFO_RANK, RedisService.formatJson(fight));
-		if (llen(RedisKey.FIGHTINFO_RANK) > RankConst.FIGHTINFO_RANK_LIMIT) {
-			rpop(RedisKey.FIGHTINFO_RANK);
-		}
+		hput(RedisKey.FIGHTINFO_RANK, "" + fight.getId(), RedisService.formatJson(fight));
+//		if (llen(RedisKey.FIGHTINFO_RANK) > RankConst.FIGHTINFO_RANK_LIMIT) {
+//			rpop(RedisKey.FIGHTINFO_RANK);
+//		}
 	}
 	
-	public List<String> getFightInfoList() {
-		return this.lrange(RedisKey.FIGHTINFO_RANK);
+	public void deleteFightInfoRank(FightInfo fight) {
+		hdelete(RedisKey.FIGHTINFO_RANK, "" + fight.getId());
+	}
+	
+	public Map<String, String> getFightInfoMap() {
+		return hget(RedisKey.FIGHTINFO_RANK);
 	}
 	
 	private <T> String buildRankRedisKey(int serverId, T type) {
