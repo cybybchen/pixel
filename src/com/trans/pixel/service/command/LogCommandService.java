@@ -23,8 +23,8 @@ public class LogCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private UserService userService;
-	@Resource
-	private IdfaService idfaService;
+//	@Resource
+//	private IdfaService idfaService;
 	
 	public void log(RequestLogCommand cmd, Builder responseBuilder, UserBean user) {
 		int serverId = 0;
@@ -36,13 +36,16 @@ public class LogCommandService extends BaseCommandService {
 		Map<String, String> params = initParams(serverId, userId, cmd);
 		logService.sendLog(params, cmd.getLogtype());
 		
-		if (!params.get(LogString.IDFA).isEmpty())
-			idfaService.updateIdfaStatus(params.get(LogString.IDFA));
+//		if (!params.get(LogString.IDFA).isEmpty())
+//			idfaService.updateIdfaStatus(params.get(LogString.IDFA));
 			
 		if (user != null) {
-			if (params.get(LogString.IDFA) != null && !params.get(LogString.IDFA).isEmpty()) {
-				user.setIdfa(params.get(LogString.IDFA));
-				userService.updateUser(user);
+			String idfa = params.get(LogString.IDFA);
+			if (idfa != null && !idfa.isEmpty()) {
+				if(!user.getIdfa().equals(idfa)) {
+					user.setIdfa(idfa);
+					userService.updateUser(user);
+				}
 			}
 		}
 		// responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.LOG_SEND_SUCCESS));

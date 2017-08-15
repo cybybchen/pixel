@@ -12,13 +12,6 @@ public class BlackListBean {
 	private boolean nologin = false;
 	private boolean noaccount = false;
 	private boolean noidfa = false;
-	private boolean noip = false;
-	public boolean isNoip() {
-		return noip;
-	}
-	public void setNoip(boolean noip) {
-		this.noip = noip;
-	}
 	public long getUserId() {
 		return userId;
 	}
