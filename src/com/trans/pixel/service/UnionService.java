@@ -70,6 +70,8 @@ public class UnionService extends FightService{
 
 	private static final Logger log = LoggerFactory.getLogger(UnionService.class);
 	
+	private static int UNION_FIGHT_PIPEI_STATUS = 0;
+	
 	@Resource
 	private UnionRedisService redis;
 	@Resource
@@ -1394,6 +1396,7 @@ public class UnionService extends FightService{
 	}
 	
 	public void calUnionFight() {
+		UNION_FIGHT_PIPEI_STATUS = 1;
 		Set<String> unionIds = redis.getApplyUnionIds();
 		for (String unionId : unionIds) {
 			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT) {//人数不够，无法参加
@@ -1420,6 +1423,8 @@ public class UnionService extends FightService{
 			redis.updateApplyUnion(union.getId(), nextUnion.getId());
 			redis.updateApplyUnion(nextUnion.getId(), union.getId());
 		}
+		
+		UNION_FIGHT_PIPEI_STATUS = 0;
 	}
 	
 	private int calUnionFightZhanli(int unionId) {
@@ -1448,6 +1453,9 @@ public class UnionService extends FightService{
 	}
 	
 	public UNION_FIGHT_STATUS calUnionFightStatus(int unionId) {
+		if (UNION_FIGHT_PIPEI_STATUS == 1) { //匹配中
+			return UNION_FIGHT_STATUS.PIPEI_TIME;
+		}
 		int cheatStatus = redis.getUnionFightCheatStatus();
 		if (cheatStatus != 0) {
 			switch (cheatStatus) {
