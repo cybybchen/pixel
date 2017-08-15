@@ -37,7 +37,10 @@ public class RankCommandService extends BaseCommandService {
 				randomFightinfo.add(fight);
 				fightinfoList.remove(rand);
 			}
-			builder.addAllFightInfo(randomFightinfo);
+			if (randomFightinfo.isEmpty())
+				builder.addAllFightInfo(fightinfoList);
+			else
+				builder.addAllFightInfo(randomFightinfo);
 		} else {
 			List<UserRankBean> rankList = rankService.getRankList(user.getServerId(), type);
 			List<UserRank> userRankBuilderList = buildUserRankList(rankList);
