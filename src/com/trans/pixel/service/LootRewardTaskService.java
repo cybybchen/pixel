@@ -133,7 +133,7 @@ public class LootRewardTaskService {
 	
 	private List<RewardInfo> calShenyuanPRD(UserBean user, int id) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		user.setShenyuanPRD(user.getShenyuanPRD() + (id == 1 ? 3 : 5));
+		user.setShenyuanPRD(user.getShenyuanPRD() + (id == 1 ? 6 : 10));
 		if (RandomUtils.nextInt(10000) < user.getShenyuanPRD()) {
 			user.setShenyuanPRD(0);
 			rewardList.add(RewardBean.init(39012, 1).buildRewardInfo());
