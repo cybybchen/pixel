@@ -6,7 +6,7 @@
 			<h3>Please sign in</h3>
 
 	        <label for="serverid" class="ui-hidden-accessible">serverId:</label>
-	        <input type="text" name="serverid" value="" placeholder="serverId">
+	        <input type="text" name="serverid" value="1" placeholder="serverId">
 
 	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewServerTab()">Sign in</a>
 		</div>

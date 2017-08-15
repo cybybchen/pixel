@@ -140,11 +140,11 @@
 					</div>
 					<div class="ui-field-contain">
 					    <label for="blacklist-username">UserName:</label>
-					    <input name="username" id="blacklist-username" value="礼包" type="text">
+					    <input name="username" id="blacklist-username" value="" type="text">
 					</div>
 					<div class="ui-field-contain">
 					    <label for="blacklist-serverid">ServerId:</label>
-					    <input name="serverid" id="blacklist-serverid" value="8" type="text">
+					    <input name="serverid" id="blacklist-serverid" value="1" type="text">
 					</div>
 					<input type="submit" value="更新黑名单" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-delete">
 					<center style="font-size: 0.75em;">同时会改变账号和设备的封禁状态</center>
@@ -155,7 +155,7 @@
 			<thead>
 				<tr class="ui-bar-d">
 					<th data-priority="4">UserId</th>
-					<th data-priority="2">昵称</th>
+					<th data-priority="1">昵称</th>
 					<th data-priority="5">Server</th>
 					<th data-priority="5">account</th>
 					<th data-priority="5">idfa</th>
