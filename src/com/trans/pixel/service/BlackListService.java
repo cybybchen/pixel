@@ -14,6 +14,8 @@ import com.trans.pixel.model.BlackListBean;
 import com.trans.pixel.model.mapper.BlackListMapper;
 import com.trans.pixel.service.redis.BlackListRedisService;
 
+import net.sf.json.JSONObject;
+
 @Service
 public class BlackListService {
 	@SuppressWarnings("unused")
@@ -47,6 +49,16 @@ public class BlackListService {
 		keyvalue = redis.getBlackListMap();
 		
 		return keyvalue;
+	}
+	
+	public BlackListBean getBlackList(long userId) {
+		Map<String, String> keyvalue = getBlackListMap();
+		String value = keyvalue.get(userId+"");
+		if(value == null)
+			return null;
+		JSONObject json = JSONObject.fromObject(value);
+		Object object = JSONObject.toBean(json, BlackListBean.class);
+		return (BlackListBean)object;
 	}
 
 	public void updateBlackList(BlackListBean bean) {
@@ -91,7 +103,7 @@ public class BlackListService {
 		return redis.isNoaccount(account);
 	}
 
-	public boolean isNoidfa(String idfa){
+	public boolean isNoDevice(String idfa){
 		return redis.isNoidfa(idfa);
 	}
 }

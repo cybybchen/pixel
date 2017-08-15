@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.model.BlackListBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
@@ -55,6 +56,30 @@ public class ZhanliCommandService extends BaseCommandService {
 //				log.warn("zhanli update "+user.getZhanliMax() +" to "+team.getUser().getZhanli());
 //
 //			zhanli = team.getUser().getZhanli();
+			if(zhanli - user.getZhanliMax() > 25000) {
+				BlackListBean blacklist = blackService.getBlackList(user.getId());
+				if(blacklist == null) {
+					blacklist = new BlackListBean();
+					blacklist.setUserId(user.getId());
+					blacklist.setUserName(user.getUserName());
+					blacklist.setServerId(user.getServerId());
+					blacklist.setAccount(user.getAccount());
+					blacklist.setIdfa(user.getIdfa());
+					blacklist.setNotalk(true);
+					blacklist.setNoranklist(true);
+					blacklist.setNologin(false);
+					blacklist.setNoaccount(false);
+					blacklist.setNoidfa(false);
+					blacklist.setNoip(false);
+					blackService.updateBlackList(blacklist);
+					userService.sendMail(user.getUserName()+"(id:"+user.getId()+"),由于提升战力过大"+user.getZhanliMax()+"->"+zhanli+"被封禁排行");
+				}else if(!blacklist.isNotalk() || !blacklist.isNoranklist()) {
+					blacklist.setNotalk(true);
+					blacklist.setNoranklist(true);
+					blackService.updateBlackList(blacklist);
+					userService.sendMail(user.getUserName()+"(id:"+user.getId()+"),由于提升战力过大"+user.getZhanliMax()+"->"+zhanli+"被封禁排行");
+				}
+			}
 			user.setZhanli(zhanli);
 			user.setZhanliMax(zhanli);
 			

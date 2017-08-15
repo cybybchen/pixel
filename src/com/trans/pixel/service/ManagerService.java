@@ -465,6 +465,9 @@ public class ManagerService extends RedisService{
 			blacklist.setServerId(serverId);
 			blacklist.setAccount(userAccount);
 			blacklist.setIdfa(idfa);
+			if(blacklist.getIdfa() == null || blacklist.getIdfa().endsWith("IDFA")) {
+				blacklist.setNoidfa(false);
+			}
 			blackListService.updateBlackList(blacklist);
 			// hput(RedisKey.PREFIX + RedisKey.BLACKLIST, blacklist.getUserId()+"", JSONObject.fromObject(blacklist).toString());
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-BlackList", JSONObject.fromObject(blacklist).toString());

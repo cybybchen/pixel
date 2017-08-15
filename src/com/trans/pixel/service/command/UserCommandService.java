@@ -125,7 +125,7 @@ public class UserCommandService extends BaseCommandService {
 			return;
 		}
 		if (blackService.isNologin(user.getId())
-				|| blackService.isNoidfa(user.getIdfa())) {
+				|| blackService.isNoDevice(user.getIdfa())) {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BLACK_USER_ERROR);
 			logService.sendErrorLog(user.getId(), user.getServerId(),
 					RequestLoginCommand.class, RedisService.formatJson(head),

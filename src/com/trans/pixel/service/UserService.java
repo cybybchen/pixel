@@ -135,7 +135,7 @@ public class UserService {
     	}
     	
     	if (user != null && !user.getJewelkey().isEmpty() && !user.calJewelKey().equals(user.getJewelkey())) {
-    		sendMail("userid is:" + user.getId() + ",钻石异常，钻石：" + user.getJewel() + "，钻石key：" + user.getJewelkey());
+    		sendMail(user.getUserName()+"(id:"+user.getId()+"),由于钻石校验异常，钻石：" + user.getJewel() + "(" + user.getJewelkey()+"),请手动检查确认");
     	}
     	
         if(isme && user != null && refreshUserDailyData(user))
@@ -708,7 +708,7 @@ public class UserService {
 		userRedisService.setUserIdByAccount(serverId, account, userId);
 	}
 	
-	private void sendMail(String mail) {
+	public void sendMail(String mail) {
 		MailUtils cn = new MailUtils();
 		cn.sendMail("xinji.wang@transmension.com", "帐号异常通知", mail);
 	}
