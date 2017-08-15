@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Resource;
 
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
 import com.trans.pixel.protoc.PVPProto.PVPBoss;
@@ -31,6 +29,7 @@ import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.PVPPosition;
 import com.trans.pixel.protoc.PVPProto.PVPPositionList;
 import com.trans.pixel.protoc.PVPProto.PVPPositionLists;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 
@@ -38,7 +37,7 @@ import com.trans.pixel.utils.DateUtil;
 public class PvpMapRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(PvpMapRedisService.class);
 	@Resource
-	private UserRedisService userRedisService;
+	private UserService userService;
 	
 	public PvpMapRedisService() {
 		buildPvpMapConfig();
@@ -445,7 +444,7 @@ public class PvpMapRedisService extends RedisService{
 		for(long time : times){
 			if(time > user.getPvpMonsterRefreshTime() && time < RedisService.now()){
 				user.setPvpMonsterRefreshTime(time);
-				userRedisService.updateUser(user);
+				userService.updateUser(user);
 				return true;
 			}
 		}

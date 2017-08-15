@@ -48,6 +48,7 @@ import com.trans.pixel.protoc.AreaProto.FightResultList;
 import com.trans.pixel.protoc.AreaProto.Position;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -67,7 +68,7 @@ public class AreaRedisService extends RedisService{
 	public final int WARTIME = 60;
 	public final int PROTECTTIME = 60;
 	@Resource
-	private UserRedisService userRedisService;
+	private UserService userService;
 	@Resource
 	private ServerRedisService serverRedisService;
 	@Resource
@@ -168,7 +169,7 @@ public class AreaRedisService extends RedisService{
 			user.setAreaEnergy(Math.min(150, (int)(user.getAreaEnergy()+(time - user.getAreaEnergyTime())/300)));
 		user.setAreaEnergy(Math.max(0, user.getAreaEnergy()-count));
 		user.setAreaEnergyTime(time);
-		userRedisService.updateUser(user);
+		userService.updateUser(user);
 	}
 
 	public void addFight(int serverId, int resourceId, long timestamp){
@@ -403,7 +404,7 @@ public class AreaRedisService extends RedisService{
 			long newtime = (areaMonsterRefreshTime/refresh.getTime()+count)*refresh.getTime();
 			if(newtime > user.getAreaMonsterRefreshTime()){
 				user.setAreaMonsterRefreshTime(newtime);
-				userRedisService.updateUser(user);
+				userService.updateUser(user);
 			}
 			for(Entry<Integer, AreaMonsterList> entry : monsterMap.entrySet()) {
 				int level = levelMap.containsKey(entry.getKey()/100) ? levelMap.get(entry.getKey()/100)[0] : 0;

@@ -314,7 +314,7 @@ public class UserService {
     			}
 				userRedisService.cache(serverId, user.buildShort());
     			refreshUserDailyData(user);
-				userRedisService.updateUser(user);
+				updateUser(user);
 			}
 
 			return user;
@@ -350,7 +350,7 @@ public class UserService {
     			}
 				userRedisService.cache(serverId, user.buildShort());
 //    			userRedisService.refreshUserDailyData(user);
-				userRedisService.updateUser(user);
+				updateUser(user);
 			}
 
 			return user;
