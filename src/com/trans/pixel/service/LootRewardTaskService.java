@@ -45,7 +45,7 @@ public class LootRewardTaskService {
 		}
 		
 		if (lootCount > 0) {
-			List<RewardInfo> extra = calShenyuanPRD(user, id);
+			List<RewardInfo> extra = calShenyuanPRD(user, id, lootCount);
 			if (!extra.isEmpty())
 				rewards.addAllLoot(extra);
 		}
@@ -105,7 +105,7 @@ public class LootRewardTaskService {
 				rewards.addLoot(rewardBuilder.build());
 			}
 			
-			List<RewardInfo> extra = calShenyuanPRD(user, loot.getId());
+			List<RewardInfo> extra = calShenyuanPRD(user, loot.getId(), lootCount);
 			if (!extra.isEmpty())
 				rewards.addAllLoot(extra);
 			
@@ -131,9 +131,9 @@ public class LootRewardTaskService {
 		return lootList;
 	}
 	
-	private List<RewardInfo> calShenyuanPRD(UserBean user, int id) {
+	private List<RewardInfo> calShenyuanPRD(UserBean user, int id, int lootCount) {
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-		user.setShenyuanPRD(user.getShenyuanPRD() + (id == 1 ? 6 : 10));
+		user.setShenyuanPRD(user.getShenyuanPRD() + lootCount * (id == 1 ? 6 : 10));
 		if (RandomUtils.nextInt(10000) < user.getShenyuanPRD()) {
 			user.setShenyuanPRD(0);
 			rewardList.add(RewardBean.init(39012, 1).buildRewardInfo());
