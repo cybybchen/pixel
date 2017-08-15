@@ -9,6 +9,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
@@ -170,6 +171,10 @@ public class RankService {
 	};
 	
 	public List<FightInfo> getFightInfoList() {
+		return getFightInfoList(RankConst.FIGHTINFO_RANK_LIMIT);
+	}
+	
+	public List<FightInfo> getFightInfoList(int limit) {
 		Map<String, String> fights = rankRedisService.getFightInfoMap();
 		List<FightInfo> fightList = new ArrayList<FightInfo>();
 		for (String fight : fights.values()) {
@@ -179,9 +184,22 @@ public class RankService {
 				fightList.add(builder.build());
 			}
 		}
-		Collections.sort(fightList, comparator);
 		
-		return fightList;
+		List<FightInfo> randomFightinfo = new ArrayList<FightInfo>();
+		while (fightList.size() >= limit &&
+				randomFightinfo.size() < limit) {
+			int rand = RandomUtils.nextInt(fightList.size());
+			FightInfo fight = fightList.get(rand);
+			randomFightinfo.add(fight);
+			fightList.remove(rand);
+		}
+		
+		if (randomFightinfo.isEmpty())
+			randomFightinfo.addAll(fightList);
+		
+		Collections.sort(randomFightinfo, comparator);
+		
+		return randomFightinfo;
 	}
 	
 	public void addRaidRank(UserBean user, Raid raid) {
