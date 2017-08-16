@@ -101,6 +101,7 @@ import com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
+import com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
@@ -1595,6 +1596,13 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		rechargeCommandService.canRecharge(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackMowuCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		// TODO Auto-generated method stub
 		return true;
 	}
 

@@ -935,7 +935,7 @@ message UserTeam {
 	optional uint32 rolePosition = 4;
 	optional uint32 talentId = 5;
 	message EquipRecord {
-		optional uint32 index = 1;
+		optional uint64 index = 1;
 		optional uint32 itemId = 2;
 	}
 	repeated EquipRecord talent = 6;
@@ -1466,6 +1466,23 @@ message ResponsePVPInbreakListCommand {//PVP入侵列表
         repeated PVPMine kuangdian = 1;
 }
 
+message Mowu {
+	optional int32 id = 1;
+	optional int32 level = 2;//boss等级
+	optional int32 count = 3;
+	repeated Event events = 4;
+	optional int32 eventid = 5;//boss事件id
+	optional int32 status = 6;//0表示可打,1表示打完
+}
+message MowuList {
+	repeated Mowu data = 1;
+}
+message RequestAttackMowuCommand {
+	optional int32 eventid = 1;
+        optional int64 hp = 2;
+        optional int32 percent = 3;
+}
+
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
 	optional int32 positionid = 1;
 	optional bool ret = 2;
@@ -1524,6 +1541,7 @@ message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
 	optional int64 endTime = 2;
 	optional int32 buff = 3;
+	repeated Mowu boss = 4;
 }
 ////////// AreaProto
 message WeightReward {
@@ -3817,6 +3835,7 @@ message RequestCommand {
 	optional RequestOpenRaidCommand openRaidCommand = 157;
 	optional RequestStartRaidCommand raidCommand = 158;
 	optional RequestCanRechargeCommand canRechargeCommand = 170;
+	optional RequestAttackMowuCommand attackMowuCommand = 171;
 	//////////////////////////////////////////////////////
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;

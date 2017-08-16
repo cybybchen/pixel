@@ -141,7 +141,7 @@ public class UserTeamBean {
 		}
 		
 		if (equipRecord.length() > 0)
-			equipRecord = equipRecord.substring(2);
+			equipRecord = equipRecord.substring(1);
 		
 		return equipRecord;
 	}

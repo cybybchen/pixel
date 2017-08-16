@@ -431,11 +431,11 @@ public class TalentService {
 			return null;
 		
 		for (EquipRecord record : records) {
-			UserTalentEquip talentEquip = userTalent.getEquip(record.getIndex());
+			UserTalentEquip talentEquip = userTalent.getEquip((int)record.getIndex());
 			if (talentEquip != null && talentEquip.getItemId() != record.getItemId()) {
 				UserTalentEquip.Builder builder = UserTalentEquip.newBuilder(talentEquip);
 				builder.setItemId(record.getItemId());
-				userTalent.setEquip(record.getIndex(), builder.build());
+				userTalent.setEquip((int)record.getIndex(), builder.build());
 			}
 		}
 		

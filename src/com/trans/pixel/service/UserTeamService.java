@@ -522,7 +522,7 @@ public class UserTeamService {
 		for(String herostr : herosstr){
 			String[] str = herostr.split(",");
 			if(str.length == 2){
-				int infoId = Integer.parseInt(str[1]);
+				long infoId = Long.parseLong(str[1]);
 				HeroInfoBean herobean = map.get(infoId);
 				if (herobean == null)
 					continue;

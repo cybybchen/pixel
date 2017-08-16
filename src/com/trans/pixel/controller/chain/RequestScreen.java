@@ -114,6 +114,7 @@ import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestQueryNoticeBoardCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestLogCommand;
+import com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestCdkeyCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
@@ -340,6 +341,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestTalentupgradeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryNoticeBoardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLogCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackMowuCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCdkeyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetLadderUserInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -929,6 +931,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasLogCommand()) {
 			RequestLogCommand cmd = request.getLogCommand();
 			if (isFuncAvailable(responseBuilder, "LogCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasAttackMowuCommand()) {
+			RequestAttackMowuCommand cmd = request.getAttackMowuCommand();
+			if (isFuncAvailable(responseBuilder, "AttackMowuCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCdkeyCommand()) {
 			RequestCdkeyCommand cmd = request.getCdkeyCommand();

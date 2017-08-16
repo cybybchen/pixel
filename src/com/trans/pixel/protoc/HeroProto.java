@@ -37099,15 +37099,15 @@ public final class HeroProto {
     public interface EquipRecordOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
-      // optional uint32 index = 1;
+      // optional uint64 index = 1;
       /**
-       * <code>optional uint32 index = 1;</code>
+       * <code>optional uint64 index = 1;</code>
        */
       boolean hasIndex();
       /**
-       * <code>optional uint32 index = 1;</code>
+       * <code>optional uint64 index = 1;</code>
        */
-      int getIndex();
+      long getIndex();
 
       // optional uint32 itemId = 2;
       /**
@@ -37172,7 +37172,7 @@ public final class HeroProto {
               }
               case 8: {
                 bitField0_ |= 0x00000001;
-                index_ = input.readUInt32();
+                index_ = input.readUInt64();
                 break;
               }
               case 16: {
@@ -37220,19 +37220,19 @@ public final class HeroProto {
       }
 
       private int bitField0_;
-      // optional uint32 index = 1;
+      // optional uint64 index = 1;
       public static final int INDEX_FIELD_NUMBER = 1;
-      private int index_;
+      private long index_;
       /**
-       * <code>optional uint32 index = 1;</code>
+       * <code>optional uint64 index = 1;</code>
        */
       public boolean hasIndex() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional uint32 index = 1;</code>
+       * <code>optional uint64 index = 1;</code>
        */
-      public int getIndex() {
+      public long getIndex() {
         return index_;
       }
 
@@ -37253,7 +37253,7 @@ public final class HeroProto {
       }
 
       private void initFields() {
-        index_ = 0;
+        index_ = 0L;
         itemId_ = 0;
       }
       private byte memoizedIsInitialized = -1;
@@ -37269,7 +37269,7 @@ public final class HeroProto {
                           throws java.io.IOException {
         getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeUInt32(1, index_);
+          output.writeUInt64(1, index_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           output.writeUInt32(2, itemId_);
@@ -37285,7 +37285,7 @@ public final class HeroProto {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, index_);
+            .computeUInt64Size(1, index_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
@@ -37407,7 +37407,7 @@ public final class HeroProto {
 
         public Builder clear() {
           super.clear();
-          index_ = 0;
+          index_ = 0L;
           bitField0_ = (bitField0_ & ~0x00000001);
           itemId_ = 0;
           bitField0_ = (bitField0_ & ~0x00000002);
@@ -37496,35 +37496,35 @@ public final class HeroProto {
         }
         private int bitField0_;
 
-        // optional uint32 index = 1;
-        private int index_ ;
+        // optional uint64 index = 1;
+        private long index_ ;
         /**
-         * <code>optional uint32 index = 1;</code>
+         * <code>optional uint64 index = 1;</code>
          */
         public boolean hasIndex() {
           return ((bitField0_ & 0x00000001) == 0x00000001);
         }
         /**
-         * <code>optional uint32 index = 1;</code>
+         * <code>optional uint64 index = 1;</code>
          */
-        public int getIndex() {
+        public long getIndex() {
           return index_;
         }
         /**
-         * <code>optional uint32 index = 1;</code>
+         * <code>optional uint64 index = 1;</code>
          */
-        public Builder setIndex(int value) {
+        public Builder setIndex(long value) {
           bitField0_ |= 0x00000001;
           index_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>optional uint32 index = 1;</code>
+         * <code>optional uint64 index = 1;</code>
          */
         public Builder clearIndex() {
           bitField0_ = (bitField0_ & ~0x00000001);
-          index_ = 0;
+          index_ = 0L;
           onChanged();
           return this;
         }
@@ -56280,7 +56280,7 @@ public final class HeroProto {
       "\n\006talent\030\006 \003(\0132,.com.trans.pixel.protoc." +
       "UserTeam.EquipRecord\022:\n\004hero\030\007 \003(\0132,.com" +
       ".trans.pixel.protoc.UserTeam.EquipRecord" +
-      "\032,\n\013EquipRecord\022\r\n\005index\030\001 \001(\r\022\016\n\006itemId" +
+      "\032,\n\013EquipRecord\022\r\n\005index\030\001 \001(\004\022\016\n\006itemId" +
       "\030\002 \001(\r\"\'\n\025RequestGetTeamCommand\022\016\n\006userI" +
       "d\030\001 \002(\003\"D\n\026ResponseGetTeamCommand\022*\n\004tea" +
       "m\030\001 \002(\0132\034.com.trans.pixel.protoc.Team\"\'\n" +
