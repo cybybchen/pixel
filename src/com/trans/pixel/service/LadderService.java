@@ -508,15 +508,15 @@ public class LadderService {
 //		Collections.sort(ladderDailyList, comparator);
 		try {	
 			log.error("ladderDailyList size is:" + ladderDailyList.getIdCount());
+			Map<String, String> map = ladderRedisService.getRankMap(serverId);
 			for (LadderDaily ladderDaily : ladderDailyList.getIdList()) {
 	//			log.debug("ladder daily is:" + ladderDaily.toJson());
 				for (long i = ladderDaily.getRanking(); i <= ladderDaily.getRanking1(); ++ i) {
-					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
-	//				if (serverId == 10)
-	//					log.debug("userRanking is:" + userRank.toJson());
+					UserRankBean userRank = UserRankBean.fromJson(map.get("" + i));
+//					UserRankBean userRank = ladderRedisService.getUserRankByRank(serverId, i);
+					log.error("userRanking is:" + userRank.toJson());
 					if (userRank != null && userRank.getUserId() > 0) {
-						
-							log.error("userRanking is:" + userRank.toJson());
+//						log.error("userRanking is:" + userRank.toJson());
 						MailBean mail = buildLadderDailyMail(userRank.getUserId(), ladderDaily);
 						mailService.addMail(mail);
 					}

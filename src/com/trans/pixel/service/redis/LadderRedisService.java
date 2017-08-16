@@ -106,6 +106,10 @@ public class LadderRedisService extends RedisService{
 		return map;
 	}
 	
+	public Map<String, String> getRankMap(final int serverId) {
+		String key = buildRankRedisKey(serverId);
+		return hget(key);
+	}
 	
 	public List<UserRankBean> getRankList(final int serverId, final int start, final int end) {
 		String key = buildRankRedisKey(serverId);
