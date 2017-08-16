@@ -1,5 +1,6 @@
 package com.trans.pixel.service.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -395,7 +396,10 @@ public class UnionCommandService extends BaseCommandService {
 			FIGHT_STATUS fightStatus = FIGHT_STATUS.CAN_FIGHT;
 			if (cmd.hasFightStatus())
 				fightStatus = cmd.getFightStatus();
-			ResultConst ret = unionService.handlerFightMembers(user, cmd.getUserIdList(), fightStatus);
+			
+			List<Long> userIds = new ArrayList<Long>();
+			userIds.addAll(cmd.getUserIdList());
+			ResultConst ret = unionService.handlerFightMembers(user, userIds, fightStatus);
 			if (ret instanceof ErrorConst) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 				responseBuilder.setErrorCommand(buildErrorCommand(ret));

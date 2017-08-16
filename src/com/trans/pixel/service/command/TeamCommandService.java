@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
@@ -23,6 +24,7 @@ import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
+import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -44,6 +46,8 @@ public class TeamCommandService extends BaseCommandService {
 	private RankService rankService;
 	@Resource
 	private FightInfoService fightInfoService;
+	@Resource
+	private UnionService unionService;
 
 	public void updateUserTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
@@ -149,7 +153,12 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.getUserId() == 0)
 			return;
 
-		Team team = userTeamService.getTeamCache(cmd.getUserId());
+		Team team = null;
+		if (cmd.hasType() && cmd.getType().equals(TEAM_TYPE.TEAM_UNION)) {
+			team = unionService.getUnionFightTeam(user);
+		} else
+			team = userTeamService.getTeamCache(cmd.getUserId());
+		
 		ResponseGetTeamCommand.Builder builder = ResponseGetTeamCommand
 				.newBuilder();
 		builder.setTeam(team);

@@ -17289,6 +17289,1438 @@ public final class PVPProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponsePVPInbreakListCommand)
   }
 
+  public interface MowuRewardOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 id = 1;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    int getId();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.MowuReward}
+   */
+  public static final class MowuReward extends
+      com.google.protobuf.GeneratedMessage
+      implements MowuRewardOrBuilder {
+    // Use MowuReward.newBuilder() to construct.
+    private MowuReward(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MowuReward(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MowuReward defaultInstance;
+    public static MowuReward getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MowuReward getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MowuReward(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuReward_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuReward_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.PVPProto.MowuReward.class, com.trans.pixel.protoc.PVPProto.MowuReward.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MowuReward> PARSER =
+        new com.google.protobuf.AbstractParser<MowuReward>() {
+      public MowuReward parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MowuReward(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MowuReward> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+    public static final int REWARD_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
+    private void initFields() {
+      id_ = 0;
+      reward_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(2, reward_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, reward_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuReward parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.MowuReward prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.MowuReward}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuReward_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuReward_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.PVPProto.MowuReward.class, com.trans.pixel.protoc.PVPProto.MowuReward.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.PVPProto.MowuReward.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuReward_descriptor;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuReward getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.MowuReward.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuReward build() {
+        com.trans.pixel.protoc.PVPProto.MowuReward result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuReward buildPartial() {
+        com.trans.pixel.protoc.PVPProto.MowuReward result = new com.trans.pixel.protoc.PVPProto.MowuReward(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.PVPProto.MowuReward) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.MowuReward)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.MowuReward other) {
+        if (other == com.trans.pixel.protoc.PVPProto.MowuReward.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.PVPProto.MowuReward parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.MowuReward) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 id = 1;
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.MowuReward)
+    }
+
+    static {
+      defaultInstance = new MowuReward(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.MowuReward)
+  }
+
+  public interface MowuRewardListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.MowuReward data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.MowuReward getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.MowuRewardList}
+   */
+  public static final class MowuRewardList extends
+      com.google.protobuf.GeneratedMessage
+      implements MowuRewardListOrBuilder {
+    // Use MowuRewardList.newBuilder() to construct.
+    private MowuRewardList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private MowuRewardList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final MowuRewardList defaultInstance;
+    public static MowuRewardList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public MowuRewardList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MowuRewardList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.MowuReward>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.MowuReward.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuRewardList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.PVPProto.MowuRewardList.class, com.trans.pixel.protoc.PVPProto.MowuRewardList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<MowuRewardList> PARSER =
+        new com.google.protobuf.AbstractParser<MowuRewardList>() {
+      public MowuRewardList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new MowuRewardList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MowuRewardList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.MowuReward data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.MowuReward getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.MowuRewardList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.MowuRewardList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.MowuRewardList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.PVPProto.MowuRewardListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuRewardList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.PVPProto.MowuRewardList.class, com.trans.pixel.protoc.PVPProto.MowuRewardList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.PVPProto.MowuRewardList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuRewardList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.MowuRewardList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuRewardList build() {
+        com.trans.pixel.protoc.PVPProto.MowuRewardList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.MowuRewardList buildPartial() {
+        com.trans.pixel.protoc.PVPProto.MowuRewardList result = new com.trans.pixel.protoc.PVPProto.MowuRewardList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.PVPProto.MowuRewardList) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.MowuRewardList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.MowuRewardList other) {
+        if (other == com.trans.pixel.protoc.PVPProto.MowuRewardList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.PVPProto.MowuRewardList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.MowuRewardList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.MowuReward data = 1;
+      private java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.MowuReward>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.MowuReward, com.trans.pixel.protoc.PVPProto.MowuReward.Builder, com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuReward getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.PVPProto.MowuReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.PVPProto.MowuReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.PVPProto.MowuReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.PVPProto.MowuReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.PVPProto.MowuReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.PVPProto.MowuReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.MowuReward> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuReward.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuReward.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.PVPProto.MowuReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuReward.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.PVPProto.MowuReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.MowuReward data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.MowuReward.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.MowuReward, com.trans.pixel.protoc.PVPProto.MowuReward.Builder, com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.PVPProto.MowuReward, com.trans.pixel.protoc.PVPProto.MowuReward.Builder, com.trans.pixel.protoc.PVPProto.MowuRewardOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.MowuRewardList)
+    }
+
+    static {
+      defaultInstance = new MowuRewardList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.MowuRewardList)
+  }
+
   public interface MowuOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -17330,48 +18762,44 @@ public final class PVPProto {
      */
     int getCount();
 
-    // repeated .com.trans.pixel.protoc.Event events = 4;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    java.util.List<com.trans.pixel.protoc.Base.Event> 
-        getEventsList();
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getLootlistList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    com.trans.pixel.protoc.Base.Event getEvents(int index);
+    com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index);
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    int getEventsCount();
+    int getLootlistCount();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-        getEventsOrBuilderList();
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList();
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    com.trans.pixel.protoc.Base.EventOrBuilder getEventsOrBuilder(
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
         int index);
 
-    // optional int32 eventid = 5;
+    // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;
     /**
-     * <code>optional int32 eventid = 5;</code>
-     *
-     * <pre>
-     *boss事件id
-     * </pre>
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
      */
-    boolean hasEventid();
+    boolean hasEnemygroup();
     /**
-     * <code>optional int32 eventid = 5;</code>
-     *
-     * <pre>
-     *boss事件id
-     * </pre>
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
      */
-    int getEventid();
+    com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup();
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+     */
+    com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder();
 
     // optional int32 status = 6;
     /**
@@ -17459,15 +18887,23 @@ public final class PVPProto {
             }
             case 34: {
               if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                events_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
+                lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              events_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
+              lootlist_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
-            case 40: {
+            case 42: {
+              com.trans.pixel.protoc.Base.EnemyGroup.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = enemygroup_.toBuilder();
+              }
+              enemygroup_ = input.readMessage(com.trans.pixel.protoc.Base.EnemyGroup.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(enemygroup_);
+                enemygroup_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000008;
-              eventid_ = input.readInt32();
               break;
             }
             case 48: {
@@ -17484,7 +18920,7 @@ public final class PVPProto {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          events_ = java.util.Collections.unmodifiableList(events_);
+          lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -17574,64 +19010,62 @@ public final class PVPProto {
       return count_;
     }
 
-    // repeated .com.trans.pixel.protoc.Event events = 4;
-    public static final int EVENTS_FIELD_NUMBER = 4;
-    private java.util.List<com.trans.pixel.protoc.Base.Event> events_;
+    // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;
+    public static final int LOOTLIST_FIELD_NUMBER = 4;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_;
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    public java.util.List<com.trans.pixel.protoc.Base.Event> getEventsList() {
-      return events_;
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
+      return lootlist_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-        getEventsOrBuilderList() {
-      return events_;
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLootlistOrBuilderList() {
+      return lootlist_;
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    public int getEventsCount() {
-      return events_.size();
+    public int getLootlistCount() {
+      return lootlist_.size();
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    public com.trans.pixel.protoc.Base.Event getEvents(int index) {
-      return events_.get(index);
+    public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+      return lootlist_.get(index);
     }
     /**
-     * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
      */
-    public com.trans.pixel.protoc.Base.EventOrBuilder getEventsOrBuilder(
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
         int index) {
-      return events_.get(index);
+      return lootlist_.get(index);
     }
 
-    // optional int32 eventid = 5;
-    public static final int EVENTID_FIELD_NUMBER = 5;
-    private int eventid_;
+    // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;
+    public static final int ENEMYGROUP_FIELD_NUMBER = 5;
+    private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_;
     /**
-     * <code>optional int32 eventid = 5;</code>
-     *
-     * <pre>
-     *boss事件id
-     * </pre>
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
      */
-    public boolean hasEventid() {
+    public boolean hasEnemygroup() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional int32 eventid = 5;</code>
-     *
-     * <pre>
-     *boss事件id
-     * </pre>
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
      */
-    public int getEventid() {
-      return eventid_;
+    public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
+      return enemygroup_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+     */
+    public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+      return enemygroup_;
     }
 
     // optional int32 status = 6;
@@ -17662,8 +19096,8 @@ public final class PVPProto {
       id_ = 0;
       level_ = 0;
       count_ = 0;
-      events_ = java.util.Collections.emptyList();
-      eventid_ = 0;
+      lootlist_ = java.util.Collections.emptyList();
+      enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
       status_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -17687,11 +19121,11 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, count_);
       }
-      for (int i = 0; i < events_.size(); i++) {
-        output.writeMessage(4, events_.get(i));
+      for (int i = 0; i < lootlist_.size(); i++) {
+        output.writeMessage(4, lootlist_.get(i));
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, eventid_);
+        output.writeMessage(5, enemygroup_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, status_);
@@ -17717,13 +19151,13 @@ public final class PVPProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, count_);
       }
-      for (int i = 0; i < events_.size(); i++) {
+      for (int i = 0; i < lootlist_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, events_.get(i));
+          .computeMessageSize(4, lootlist_.get(i));
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, eventid_);
+          .computeMessageSize(5, enemygroup_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
@@ -17837,7 +19271,8 @@ public final class PVPProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getEventsFieldBuilder();
+          getLootlistFieldBuilder();
+          getEnemygroupFieldBuilder();
         }
       }
       private static Builder create() {
@@ -17852,13 +19287,17 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (eventsBuilder_ == null) {
-          events_ = java.util.Collections.emptyList();
+        if (lootlistBuilder_ == null) {
+          lootlist_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
         } else {
-          eventsBuilder_.clear();
+          lootlistBuilder_.clear();
         }
-        eventid_ = 0;
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+        } else {
+          enemygroupBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00000010);
         status_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -17902,19 +19341,23 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000004;
         }
         result.count_ = count_;
-        if (eventsBuilder_ == null) {
+        if (lootlistBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008)) {
-            events_ = java.util.Collections.unmodifiableList(events_);
+            lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
             bitField0_ = (bitField0_ & ~0x00000008);
           }
-          result.events_ = events_;
+          result.lootlist_ = lootlist_;
         } else {
-          result.events_ = eventsBuilder_.build();
+          result.lootlist_ = lootlistBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.eventid_ = eventid_;
+        if (enemygroupBuilder_ == null) {
+          result.enemygroup_ = enemygroup_;
+        } else {
+          result.enemygroup_ = enemygroupBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000010;
         }
@@ -17944,34 +19387,34 @@ public final class PVPProto {
         if (other.hasCount()) {
           setCount(other.getCount());
         }
-        if (eventsBuilder_ == null) {
-          if (!other.events_.isEmpty()) {
-            if (events_.isEmpty()) {
-              events_ = other.events_;
+        if (lootlistBuilder_ == null) {
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlist_.isEmpty()) {
+              lootlist_ = other.lootlist_;
               bitField0_ = (bitField0_ & ~0x00000008);
             } else {
-              ensureEventsIsMutable();
-              events_.addAll(other.events_);
+              ensureLootlistIsMutable();
+              lootlist_.addAll(other.lootlist_);
             }
             onChanged();
           }
         } else {
-          if (!other.events_.isEmpty()) {
-            if (eventsBuilder_.isEmpty()) {
-              eventsBuilder_.dispose();
-              eventsBuilder_ = null;
-              events_ = other.events_;
+          if (!other.lootlist_.isEmpty()) {
+            if (lootlistBuilder_.isEmpty()) {
+              lootlistBuilder_.dispose();
+              lootlistBuilder_ = null;
+              lootlist_ = other.lootlist_;
               bitField0_ = (bitField0_ & ~0x00000008);
-              eventsBuilder_ = 
+              lootlistBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getEventsFieldBuilder() : null;
+                   getLootlistFieldBuilder() : null;
             } else {
-              eventsBuilder_.addAllMessages(other.events_);
+              lootlistBuilder_.addAllMessages(other.lootlist_);
             }
           }
         }
-        if (other.hasEventid()) {
-          setEventid(other.getEventid());
+        if (other.hasEnemygroup()) {
+          mergeEnemygroup(other.getEnemygroup());
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
@@ -18118,293 +19561,361 @@ public final class PVPProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.Event events = 4;
-      private java.util.List<com.trans.pixel.protoc.Base.Event> events_ =
+      // repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> lootlist_ =
         java.util.Collections.emptyList();
-      private void ensureEventsIsMutable() {
+      private void ensureLootlistIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          events_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(events_);
+          lootlist_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(lootlist_);
           bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> eventsBuilder_;
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> lootlistBuilder_;
 
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Base.Event> getEventsList() {
-        if (eventsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(events_);
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLootlistList() {
+        if (lootlistBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(lootlist_);
         } else {
-          return eventsBuilder_.getMessageList();
+          return lootlistBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public int getEventsCount() {
-        if (eventsBuilder_ == null) {
-          return events_.size();
+      public int getLootlistCount() {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.size();
         } else {
-          return eventsBuilder_.getCount();
+          return lootlistBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public com.trans.pixel.protoc.Base.Event getEvents(int index) {
-        if (eventsBuilder_ == null) {
-          return events_.get(index);
+      public com.trans.pixel.protoc.Base.RewardInfo getLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);
         } else {
-          return eventsBuilder_.getMessage(index);
+          return lootlistBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder setEvents(
-          int index, com.trans.pixel.protoc.Base.Event value) {
-        if (eventsBuilder_ == null) {
+      public Builder setLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventsIsMutable();
-          events_.set(index, value);
+          ensureLootlistIsMutable();
+          lootlist_.set(index, value);
           onChanged();
         } else {
-          eventsBuilder_.setMessage(index, value);
+          lootlistBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder setEvents(
-          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventsBuilder_ == null) {
-          ensureEventsIsMutable();
-          events_.set(index, builderForValue.build());
+      public Builder setLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.set(index, builderForValue.build());
           onChanged();
         } else {
-          eventsBuilder_.setMessage(index, builderForValue.build());
+          lootlistBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder addEvents(com.trans.pixel.protoc.Base.Event value) {
-        if (eventsBuilder_ == null) {
+      public Builder addLootlist(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventsIsMutable();
-          events_.add(value);
+          ensureLootlistIsMutable();
+          lootlist_.add(value);
           onChanged();
         } else {
-          eventsBuilder_.addMessage(value);
+          lootlistBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder addEvents(
-          int index, com.trans.pixel.protoc.Base.Event value) {
-        if (eventsBuilder_ == null) {
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (lootlistBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureEventsIsMutable();
-          events_.add(index, value);
+          ensureLootlistIsMutable();
+          lootlist_.add(index, value);
           onChanged();
         } else {
-          eventsBuilder_.addMessage(index, value);
+          lootlistBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder addEvents(
-          com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventsBuilder_ == null) {
-          ensureEventsIsMutable();
-          events_.add(builderForValue.build());
+      public Builder addLootlist(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(builderForValue.build());
           onChanged();
         } else {
-          eventsBuilder_.addMessage(builderForValue.build());
+          lootlistBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder addEvents(
-          int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
-        if (eventsBuilder_ == null) {
-          ensureEventsIsMutable();
-          events_.add(index, builderForValue.build());
+      public Builder addLootlist(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.add(index, builderForValue.build());
           onChanged();
         } else {
-          eventsBuilder_.addMessage(index, builderForValue.build());
+          lootlistBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder addAllEvents(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
-        if (eventsBuilder_ == null) {
-          ensureEventsIsMutable();
-          super.addAll(values, events_);
+      public Builder addAllLootlist(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          super.addAll(values, lootlist_);
           onChanged();
         } else {
-          eventsBuilder_.addAllMessages(values);
+          lootlistBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder clearEvents() {
-        if (eventsBuilder_ == null) {
-          events_ = java.util.Collections.emptyList();
+      public Builder clearLootlist() {
+        if (lootlistBuilder_ == null) {
+          lootlist_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
-          eventsBuilder_.clear();
+          lootlistBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public Builder removeEvents(int index) {
-        if (eventsBuilder_ == null) {
-          ensureEventsIsMutable();
-          events_.remove(index);
+      public Builder removeLootlist(int index) {
+        if (lootlistBuilder_ == null) {
+          ensureLootlistIsMutable();
+          lootlist_.remove(index);
           onChanged();
         } else {
-          eventsBuilder_.remove(index);
+          lootlistBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public com.trans.pixel.protoc.Base.Event.Builder getEventsBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getLootlistBuilder(
           int index) {
-        return getEventsFieldBuilder().getBuilder(index);
+        return getLootlistFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public com.trans.pixel.protoc.Base.EventOrBuilder getEventsOrBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLootlistOrBuilder(
           int index) {
-        if (eventsBuilder_ == null) {
-          return events_.get(index);  } else {
-          return eventsBuilder_.getMessageOrBuilder(index);
+        if (lootlistBuilder_ == null) {
+          return lootlist_.get(index);  } else {
+          return lootlistBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
-           getEventsOrBuilderList() {
-        if (eventsBuilder_ != null) {
-          return eventsBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getLootlistOrBuilderList() {
+        if (lootlistBuilder_ != null) {
+          return lootlistBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(events_);
+          return java.util.Collections.unmodifiableList(lootlist_);
         }
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public com.trans.pixel.protoc.Base.Event.Builder addEventsBuilder() {
-        return getEventsFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.Base.Event.getDefaultInstance());
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder() {
+        return getLootlistFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public com.trans.pixel.protoc.Base.Event.Builder addEventsBuilder(
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addLootlistBuilder(
           int index) {
-        return getEventsFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.Base.Event.getDefaultInstance());
+        return getLootlistFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.trans.pixel.protoc.Event events = 4;</code>
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo lootlist = 4;</code>
        */
-      public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
-           getEventsBuilderList() {
-        return getEventsFieldBuilder().getBuilderList();
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getLootlistBuilderList() {
+        return getLootlistFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder> 
-          getEventsFieldBuilder() {
-        if (eventsBuilder_ == null) {
-          eventsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
-                  events_,
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getLootlistFieldBuilder() {
+        if (lootlistBuilder_ == null) {
+          lootlistBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  lootlist_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
-          events_ = null;
+          lootlist_ = null;
         }
-        return eventsBuilder_;
+        return lootlistBuilder_;
       }
 
-      // optional int32 eventid = 5;
-      private int eventid_ ;
+      // optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;
+      private com.trans.pixel.protoc.Base.EnemyGroup enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> enemygroupBuilder_;
       /**
-       * <code>optional int32 eventid = 5;</code>
-       *
-       * <pre>
-       *boss事件id
-       * </pre>
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
        */
-      public boolean hasEventid() {
+      public boolean hasEnemygroup() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional int32 eventid = 5;</code>
-       *
-       * <pre>
-       *boss事件id
-       * </pre>
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
        */
-      public int getEventid() {
-        return eventid_;
+      public com.trans.pixel.protoc.Base.EnemyGroup getEnemygroup() {
+        if (enemygroupBuilder_ == null) {
+          return enemygroup_;
+        } else {
+          return enemygroupBuilder_.getMessage();
+        }
       }
       /**
-       * <code>optional int32 eventid = 5;</code>
-       *
-       * <pre>
-       *boss事件id
-       * </pre>
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
        */
-      public Builder setEventid(int value) {
+      public Builder setEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
+        if (enemygroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          enemygroup_ = value;
+          onChanged();
+        } else {
+          enemygroupBuilder_.setMessage(value);
+        }
         bitField0_ |= 0x00000010;
-        eventid_ = value;
-        onChanged();
         return this;
       }
       /**
-       * <code>optional int32 eventid = 5;</code>
-       *
-       * <pre>
-       *boss事件id
-       * </pre>
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
        */
-      public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        eventid_ = 0;
-        onChanged();
+      public Builder setEnemygroup(
+          com.trans.pixel.protoc.Base.EnemyGroup.Builder builderForValue) {
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = builderForValue.build();
+          onChanged();
+        } else {
+          enemygroupBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
         return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+       */
+      public Builder mergeEnemygroup(com.trans.pixel.protoc.Base.EnemyGroup value) {
+        if (enemygroupBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              enemygroup_ != com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance()) {
+            enemygroup_ =
+              com.trans.pixel.protoc.Base.EnemyGroup.newBuilder(enemygroup_).mergeFrom(value).buildPartial();
+          } else {
+            enemygroup_ = value;
+          }
+          onChanged();
+        } else {
+          enemygroupBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+       */
+      public Builder clearEnemygroup() {
+        if (enemygroupBuilder_ == null) {
+          enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
+          onChanged();
+        } else {
+          enemygroupBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.EnemyGroup.Builder getEnemygroupBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getEnemygroupFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+       */
+      public com.trans.pixel.protoc.Base.EnemyGroupOrBuilder getEnemygroupOrBuilder() {
+        if (enemygroupBuilder_ != null) {
+          return enemygroupBuilder_.getMessageOrBuilder();
+        } else {
+          return enemygroup_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.EnemyGroup enemygroup = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder> 
+          getEnemygroupFieldBuilder() {
+        if (enemygroupBuilder_ == null) {
+          enemygroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.EnemyGroup, com.trans.pixel.protoc.Base.EnemyGroup.Builder, com.trans.pixel.protoc.Base.EnemyGroupOrBuilder>(
+                  enemygroup_,
+                  getParentForChildren(),
+                  isClean());
+          enemygroup_ = null;
+        }
+        return enemygroupBuilder_;
       }
 
       // optional int32 status = 6;
@@ -26569,6 +28080,16 @@ public final class PVPProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_MowuReward_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_MowuReward_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_MowuRewardList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_Mowu_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -26693,36 +28214,40 @@ public final class PVPProto {
       "istCommand\"\036\n\034RequestPVPInbreakListComma" +
       "nd\"S\n\035ResponsePVPInbreakListCommand\0222\n\tk",
       "uangdian\030\001 \003(\0132\037.com.trans.pixel.protoc." +
-      "PVPMine\"\200\001\n\004Mowu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 " +
-      "\001(\005\022\r\n\005count\030\003 \001(\005\022-\n\006events\030\004 \003(\0132\035.com" +
-      ".trans.pixel.protoc.Event\022\017\n\007eventid\030\005 \001" +
-      "(\005\022\016\n\006status\030\006 \001(\005\"6\n\010MowuList\022*\n\004data\030\001" +
-      " \003(\0132\034.com.trans.pixel.protoc.Mowu\"H\n\030Re" +
-      "questAttackMowuCommand\022\017\n\007eventid\030\001 \001(\005\022" +
-      "\n\n\002hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestA" +
-      "ttackPVPMonsterCommand\022\022\n\npositionid\030\001 \001" +
-      "(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031Request",
-      "PVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032Respon" +
-      "sePVPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034.com" +
-      ".trans.pixel.protoc.Team\0221\n\010mineInfo\030\003 \001" +
-      "(\0132\037.com.trans.pixel.protoc.PVPMine\"T\n\033R" +
-      "equestAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016" +
-      "\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(" +
-      "\005\"h\n\037RequestHelpAttackPVPMineCommand\022\n\n\002" +
-      "id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n" +
-      "\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHe" +
-      "lpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002",
-      "(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026Reque" +
-      "stSendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007c" +
-      "ontent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030" +
-      "\004 \002(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035RequestBrother" +
-      "MineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId" +
-      "\030\002 \002(\003\"*\n\034RequestRefreshPVPMineCommand\022\n" +
-      "\n\002id\030\001 \002(\005\"\225\001\n\031ResponsePVPMapListCommand" +
-      "\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.protoc" +
-      ".PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005\022*" +
-      "\n\004boss\030\004 \003(\0132\034.com.trans.pixel.protoc.Mo",
-      "wu"
+      "PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n\006rew" +
+      "ard\030\002 \003(\0132\".com.trans.pixel.protoc.Rewar" +
+      "dInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(\0132\"." +
+      "com.trans.pixel.protoc.MowuReward\"\256\001\n\004Mo" +
+      "wu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005count\030\003" +
+      " \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\0226\n\nenemygroup\030\005 \001(\0132\"" +
+      ".com.trans.pixel.protoc.EnemyGroup\022\016\n\006st" +
+      "atus\030\006 \001(\005\"6\n\010MowuList\022*\n\004data\030\001 \003(\0132\034.c",
+      "om.trans.pixel.protoc.Mowu\"H\n\030RequestAtt" +
+      "ackMowuCommand\022\017\n\007eventid\030\001 \001(\005\022\n\n\002hp\030\002 " +
+      "\001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestAttackPVP" +
+      "MonsterCommand\022\022\n\npositionid\030\001 \001(\005\022\013\n\003re" +
+      "t\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineI" +
+      "nfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMin" +
+      "eInfoCommand\022*\n\004team\030\005 \001(\0132\034.com.trans.p" +
+      "ixel.protoc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com" +
+      ".trans.pixel.protoc.PVPMine\"T\n\033RequestAt" +
+      "tackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid",
+      "\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037Req" +
+      "uestHelpAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005" +
+      "\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030" +
+      "\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelC" +
+      "ommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003re" +
+      "t\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026RequestSendMa" +
+      "ilCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002" +
+      " \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\022\017\n" +
+      "\007fightId\030\005 \001(\r\">\n\035RequestBrotherMineInfo" +
+      "Command\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*",
+      "\n\034RequestRefreshPVPMineCommand\022\n\n\002id\030\001 \002" +
+      "(\005\"\225\001\n\031ResponsePVPMapListCommand\022-\n\005fiel" +
+      "d\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMap\022" +
+      "\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005\022*\n\004boss\030\004" +
+      " \003(\0132\034.com.trans.pixel.protoc.Mowu"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -26855,80 +28380,92 @@ public final class PVPProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor,
               new java.lang.String[] { "Kuangdian", });
-          internal_static_com_trans_pixel_protoc_Mowu_descriptor =
+          internal_static_com_trans_pixel_protoc_MowuReward_descriptor =
             getDescriptor().getMessageTypes().get(21);
+          internal_static_com_trans_pixel_protoc_MowuReward_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_MowuReward_descriptor,
+              new java.lang.String[] { "Id", "Reward", });
+          internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor =
+            getDescriptor().getMessageTypes().get(22);
+          internal_static_com_trans_pixel_protoc_MowuRewardList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_Mowu_descriptor =
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_Mowu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mowu_descriptor,
-              new java.lang.String[] { "Id", "Level", "Count", "Events", "Eventid", "Status", });
+              new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", });
           internal_static_com_trans_pixel_protoc_MowuList_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_MowuList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MowuList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_descriptor,
               new java.lang.String[] { "Eventid", "Hp", "Percent", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor,
               new java.lang.String[] { "Positionid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Team", "MineInfo", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor,
               new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", "FightId", });
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", "BrotherId", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor,

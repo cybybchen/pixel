@@ -944,6 +944,10 @@ message UserTeam {
 
 message RequestGetTeamCommand {
 	required int64 userId = 1;
+	enum TEAM_TYPE {
+		TEAM_UNION = 0;
+	}	
+	optional TEAM_TYPE type = 2;
 }
 
 message ResponseGetTeamCommand {
@@ -1466,12 +1470,19 @@ message ResponsePVPInbreakListCommand {//PVP入侵列表
         repeated PVPMine kuangdian = 1;
 }
 
+message MowuReward {
+	optional int32 id = 1;
+	repeated RewardInfo reward = 2;
+}
+message MowuRewardList {
+	repeated MowuReward data = 1;
+}
 message Mowu {
 	optional int32 id = 1;
 	optional int32 level = 2;//boss等级
 	optional int32 count = 3;
-	repeated Event events = 4;
-	optional int32 eventid = 5;//boss事件id
+	repeated RewardInfo lootlist = 4;
+	optional EnemyGroup enemygroup = 5;
 	optional int32 status = 6;//0表示可打,1表示打完
 }
 message MowuList {

@@ -384,6 +384,7 @@ public class RedisKey {
 	public static final String UNION_FIGHTINFO_RECORD_PREFIX = PREFIX + "union_fightinfo_";
 	public static final String UNION_FIGHT_CHEAT_STATUS_KEY = PREFIX + "union_fight_cheat_status";
 	public static final String UNION_FIGHT_REWARD_RECORD_KEY = PREFIX + "union_fight_reward_record";
+	public static final String UNION_FIGHT_APPLY_TEAM_PREFIX = PREFIX + "union_fight_apply_team_";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

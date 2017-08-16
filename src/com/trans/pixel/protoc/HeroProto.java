@@ -39135,6 +39135,16 @@ public final class HeroProto {
      * <code>required int64 userId = 1;</code>
      */
     long getUserId();
+
+    // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestGetTeamCommand}
@@ -39192,6 +39202,17 @@ public final class HeroProto {
               userId_ = input.readInt64();
               break;
             }
+            case 16: {
+              int rawValue = input.readEnum();
+              com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE value = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                type_ = value;
+              }
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -39231,6 +39252,79 @@ public final class HeroProto {
       return PARSER;
     }
 
+    /**
+     * Protobuf enum {@code com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE}
+     */
+    public enum TEAM_TYPE
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>TEAM_UNION = 0;</code>
+       */
+      TEAM_UNION(0, 0),
+      ;
+
+      /**
+       * <code>TEAM_UNION = 0;</code>
+       */
+      public static final int TEAM_UNION_VALUE = 0;
+
+
+      public final int getNumber() { return value; }
+
+      public static TEAM_TYPE valueOf(int value) {
+        switch (value) {
+          case 0: return TEAM_UNION;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>() {
+              public TEAM_TYPE findValueByNumber(int number) {
+                return TEAM_TYPE.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final TEAM_TYPE[] VALUES = values();
+
+      public static TEAM_TYPE valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private TEAM_TYPE(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE)
+    }
+
     private int bitField0_;
     // required int64 userId = 1;
     public static final int USERID_FIELD_NUMBER = 1;
@@ -39248,8 +39342,25 @@ public final class HeroProto {
       return userId_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE type_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType() {
+      return type_;
+    }
+
     private void initFields() {
       userId_ = 0L;
+      type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -39270,6 +39381,9 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt64(1, userId_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, type_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -39282,6 +39396,10 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(1, userId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -39401,6 +39519,8 @@ public final class HeroProto {
         super.clear();
         userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -39433,6 +39553,10 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000001;
         }
         result.userId_ = userId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -39451,6 +39575,9 @@ public final class HeroProto {
         if (other == com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.getDefaultInstance()) return this;
         if (other.hasUserId()) {
           setUserId(other.getUserId());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -39512,6 +39639,42 @@ public final class HeroProto {
       public Builder clearUserId() {
         bitField0_ = (bitField0_ & ~0x00000001);
         userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
+      private com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType() {
+        return type_;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       */
+      public Builder setType(com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
         onChanged();
         return this;
       }
@@ -56281,57 +56444,60 @@ public final class HeroProto {
       "UserTeam.EquipRecord\022:\n\004hero\030\007 \003(\0132,.com" +
       ".trans.pixel.protoc.UserTeam.EquipRecord" +
       "\032,\n\013EquipRecord\022\r\n\005index\030\001 \001(\004\022\016\n\006itemId" +
-      "\030\002 \001(\r\"\'\n\025RequestGetTeamCommand\022\016\n\006userI" +
-      "d\030\001 \002(\003\"D\n\026ResponseGetTeamCommand\022*\n\004tea" +
-      "m\030\001 \002(\0132\034.com.trans.pixel.protoc.Team\"\'\n" +
-      "\nTeamUnlock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230" +
-      "\001\n\030RequestUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022",
-      "\020\n\010teamInfo\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\022" +
-      "6\n\nteamEngine\030\005 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.TeamEngine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032Req" +
-      "uestUserTeamListCommand\"Q\n\033ResponseUserT" +
-      "eamListCommand\0222\n\010userTeam\030\001 \003(\0132 .com.t" +
-      "rans.pixel.protoc.UserTeam\"F\n\016TeamUnlock" +
-      "List\0224\n\010xiaoguan\030\001 \003(\0132\".com.trans.pixel" +
-      ".protoc.TeamUnlock\"P\n\032ResponseGetUserHer" +
-      "oCommand\0222\n\010userHero\030\001 \003(\0132 .com.trans.p" +
-      "ixel.protoc.HeroInfo\"V\n\030RequestFenjieHer",
-      "oCommand\022:\n\nfenjieHero\030\001 \003(\0132&.com.trans" +
-      ".pixel.protoc.FenjieHeroInfo\"\032\n\030RequestU" +
-      "serPokedeCommand\"M\n\031ResponseUserPokedeCo" +
-      "mmand\0220\n\006pokede\030\001 \003(\0132 .com.trans.pixel." +
-      "protoc.HeroInfo\"\036\n\034RequestBuyHeroPackage" +
-      "Command\"8\n RequestSubmitComposeSkillComm" +
-      "and\022\024\n\014composeSkill\030\001 \002(\t\"K\n\026RequestFeed" +
-      "FoodCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 " +
-      "\002(\005\022\021\n\tfoodCount\030\003 \002(\005\"X\n\027RequestClearHe" +
-      "roCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 ",
-      "\002(\005\022\014\n\004type\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027Resp" +
-      "onseUserFoodCommand\0222\n\010userFood\030\001 \003(\0132 ." +
-      "com.trans.pixel.protoc.UserFood\"P\n\030Respo" +
-      "nseClearInfoCommand\0224\n\tclearInfo\030\001 \003(\0132!" +
-      ".com.trans.pixel.protoc.ClearInfo\";\n\034Req" +
-      "uestChoseClearInfoCommand\022\017\n\007refused\030\001 \002" +
-      "(\010\022\n\n\002id\030\002 \001(\005\".\n\034RequestHeroStrengthenC" +
-      "ommand\022\016\n\006heroId\030\001 \002(\005\"<\n\030RequestOpenFet" +
-      "terCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002" +
-      " \002(\005\"L\n!RequestZanHeroMessageBoardComman",
-      "d\022\016\n\006itemId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002" +
-      "(\010\")\n\033RequestTalentupgradeCommand\022\n\n\002id\030" +
-      "\001 \002(\005\"+\n\035RequestTalentChangeUseCommand\022\n" +
-      "\n\002id\030\001 \002(\005\"M\n\037RequestTalentChangeSkillCo" +
-      "mmand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skil" +
-      "lId\030\003 \002(\005\"\225\001\n\031ResponseUserTalentCommand\022" +
-      "6\n\nuserTalent\030\001 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.UserTalent\022@\n\017userTalentSkill\030\002 \003(\013" +
-      "2\'.com.trans.pixel.protoc.UserTalentSkil" +
-      "l\"O\n\037RequestTalentChangeEquipCommand\022\n\n\002",
-      "id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002" +
-      "(\005\"5\n\030RequestTalentSpUpCommand\022\n\n\002id\030\001 \002" +
-      "(\005\022\r\n\005count\030\002 \002(\005\"N\n RequestTalentSkillL" +
-      "evelupCommand\022\n\n\002id\030\001 \002(\r\022\r\n\005order\030\002 \002(\r" +
-      "\022\017\n\007skillid\030\003 \002(\r\",\n\036RequestTalentResetS" +
-      "killCommand\022\n\n\002id\030\001 \002(\r"
+      "\030\002 \001(\r\"\213\001\n\025RequestGetTeamCommand\022\016\n\006user" +
+      "Id\030\001 \002(\003\022E\n\004type\030\002 \001(\01627.com.trans.pixel" +
+      ".protoc.RequestGetTeamCommand.TEAM_TYPE\"" +
+      "\033\n\tTEAM_TYPE\022\016\n\nTEAM_UNION\020\000\"D\n\026Response" +
+      "GetTeamCommand\022*\n\004team\030\001 \002(\0132\034.com.trans",
+      ".pixel.protoc.Team\"\'\n\nTeamUnlock\022\n\n\002id\030\001" +
+      " \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestUpdateTea" +
+      "mCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030\002 \002(\t\022\024" +
+      "\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngine\030\005 \003(\013" +
+      "2\".com.trans.pixel.protoc.TeamEngine\022\020\n\010" +
+      "talentId\030\006 \001(\r\"\034\n\032RequestUserTeamListCom" +
+      "mand\"Q\n\033ResponseUserTeamListCommand\0222\n\010u" +
+      "serTeam\030\001 \003(\0132 .com.trans.pixel.protoc.U" +
+      "serTeam\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030\001 " +
+      "\003(\0132\".com.trans.pixel.protoc.TeamUnlock\"",
+      "P\n\032ResponseGetUserHeroCommand\0222\n\010userHer" +
+      "o\030\001 \003(\0132 .com.trans.pixel.protoc.HeroInf" +
+      "o\"V\n\030RequestFenjieHeroCommand\022:\n\nfenjieH" +
+      "ero\030\001 \003(\0132&.com.trans.pixel.protoc.Fenji" +
+      "eHeroInfo\"\032\n\030RequestUserPokedeCommand\"M\n" +
+      "\031ResponseUserPokedeCommand\0220\n\006pokede\030\001 \003" +
+      "(\0132 .com.trans.pixel.protoc.HeroInfo\"\036\n\034" +
+      "RequestBuyHeroPackageCommand\"8\n RequestS" +
+      "ubmitComposeSkillCommand\022\024\n\014composeSkill" +
+      "\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006hero",
+      "Id\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003 " +
+      "\002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006heroId" +
+      "\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\r" +
+      "\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodCommand" +
+      "\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel.pro" +
+      "toc.UserFood\"P\n\030ResponseClearInfoCommand" +
+      "\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixel.pr" +
+      "otoc.ClearInfo\";\n\034RequestChoseClearInfoC" +
+      "ommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034R" +
+      "equestHeroStrengthenCommand\022\016\n\006heroId\030\001 ",
+      "\002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006heroI" +
+      "d\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZanH" +
+      "eroMessageBoardCommand\022\016\n\006itemId\030\001 \002(\005\022\n" +
+      "\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTalent" +
+      "upgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTal" +
+      "entChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037Reque" +
+      "stTalentChangeSkillCommand\022\n\n\002id\030\001 \002(\005\022\r" +
+      "\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031Respo" +
+      "nseUserTalentCommand\0226\n\nuserTalent\030\001 \003(\013" +
+      "2\".com.trans.pixel.protoc.UserTalent\022@\n\017",
+      "userTalentSkill\030\002 \003(\0132\'.com.trans.pixel." +
+      "protoc.UserTalentSkill\"O\n\037RequestTalentC" +
+      "hangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010positio" +
+      "n\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"5\n\030RequestTalent" +
+      "SpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"N" +
+      "\n RequestTalentSkillLevelupCommand\022\n\n\002id" +
+      "\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skillid\030\003 \002(\r\"," +
+      "\n\036RequestTalentResetSkillCommand\022\n\n\002id\030\001" +
+      " \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -56667,7 +56833,7 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_descriptor,
-              new java.lang.String[] { "UserId", });
+              new java.lang.String[] { "UserId", "Type", });
           internal_static_com_trans_pixel_protoc_ResponseGetTeamCommand_descriptor =
             getDescriptor().getMessageTypes().get(54);
           internal_static_com_trans_pixel_protoc_ResponseGetTeamCommand_fieldAccessorTable = new

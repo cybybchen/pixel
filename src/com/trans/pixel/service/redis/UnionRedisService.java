@@ -25,6 +25,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
 import com.trans.pixel.protoc.Base.FightInfo;
+import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.UnionProto.Union;
@@ -734,6 +735,24 @@ public class UnionRedisService extends RedisService{
 	public boolean isInFightUnions(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 		return hexist(key, "" + unionId);
+	}
+	
+	public void addApplyTeam(Team team) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + team.getUser().getUnionId();
+		
+		hput(key, "" + team.getUser().getId(), RedisService.formatJson(team));
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public Team getApplyTeam(UserBean user) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + user.getUnionId();
+		
+		String value = hget(key, "" + user.getId());
+		Team.Builder builder = Team.newBuilder();
+		if (value != null && RedisService.parseJson(value, builder))
+			return builder.build();
+		
+		return null;
 	}
 	
 	public void applyFight(UserBean user) {

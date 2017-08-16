@@ -1254,6 +1254,13 @@ public class UnionService extends FightService{
 	public void applyFight(UserBean user) {
 		redis.applyFight(user);
 		redis.addApplyUnion(user.getUnionId());
+		
+		Team team = userTeamService.getTeamCache(user);
+		redis.addApplyTeam(team);
+	}
+	
+	public Team getUnionFightTeam(UserBean user) {
+		return redis.getApplyTeam(user);
 	}
 	
 	public ResultConst handlerFightMembers(UserBean user, List<Long> userIds, FIGHT_STATUS fightStatus) {
@@ -1271,7 +1278,13 @@ public class UnionService extends FightService{
 					fightCount++;
 				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT) && builder.getStatus().equals(FIGHT_STATUS.NOT_FIGHT))
 					fightCount--;
+				
+				userIds.remove(record.getUser().getId());
 			}
+		}
+		
+		if (!userIds.isEmpty()) {
+			return ErrorConst.USER_HAS_QUIT_ERROR;
 		}
 		
 		if (fightCount > UnionConst.UNION_FIGHT_MEMBER_LIMIT)

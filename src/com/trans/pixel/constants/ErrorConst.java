@@ -22,7 +22,8 @@ public enum ErrorConst implements ResultConst {
     ERROR_SKILL_STONE(2056, "技能石不足"), SKILL_STONE_IS_FULL_ERROR(2057, "技能点已满，无法继续添加"), RECOMMAND_IS_EXIST_ERROR(2058, "已绑定过推荐人，无法重新绑定"),
     RECOMMAND_CAN_NOT_SELF_ERROR(2058, "无法推荐自己"),RAID_NOT_OPEN(2059, "该副本暂未开放"),ROOM_OUT_ERROR(2060, "你已被房主踢出房间"),  RECOMMAND_IS_NOT_EXIST_ERROR(2061, "没有绑定过他人，无法解绑"),
     NO_UNION_ERROR(2062, "找不到该公会"),REDISKEY_BUSY_ERROR(2063, "请稍后再试"),FUN_CLOSE_ERROR(2064, "该功能暂时无法使用"),
-	
+    USER_HAS_QUIT_ERROR(2065, "该玩家已退出公会"),
+    
 	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放，请选择其他服务器游戏"), 
 	SRVER_MAINTENANCE_OPEN_ERROR(3033, "服务器维护中，请稍后再试"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "等级已达上限"), NOT_ENOUGH_EXP(1006, "升级所需经验不足"),
