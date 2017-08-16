@@ -29,7 +29,7 @@
 		ON 
 	    duplicate key update
 	    record=#{teamRecord}, role_position=#{rolePosition}, engine=#{engine}, talent_id=#{talentId},
-	    talent_equip=#{talentEquip}, hero_equip#{heroEquip}
+	    talent_equip=#{talentEquip}, hero_equip=#{heroEquip}
 	</update>
 	
 	<select id="selectUserTeamList" parameterType="long" resultMap="resultMap">
