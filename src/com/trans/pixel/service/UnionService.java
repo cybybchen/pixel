@@ -1478,19 +1478,19 @@ public class UnionService extends FightService{
 				case 2:
 					return UNION_FIGHT_STATUS.HUIZHANG_TIME;
 				case 3:
-					if (unionId != 0 && !isInFightUnions(unionId))
-						return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
-					
-					return UNION_FIGHT_STATUS.FIGHT_TIME;
+					return UNION_FIGHT_STATUS.PIPEI_TIME;
 				case 4:
 					if (unionId != 0 && !isInFightUnions(unionId))
 						return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 					
-					return UNION_FIGHT_STATUS.SEND_REWARD_TIME;
+					return UNION_FIGHT_STATUS.FIGHT_TIME;
 				case 5:
-					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
-				case 6:
-					return UNION_FIGHT_STATUS.PIPEI_TIME;
+					if (unionId == 0)
+						return UNION_FIGHT_STATUS.SEND_REWARD_TIME;
+					
+					return UNION_FIGHT_STATUS.NO_TIME;
+//				case 6:
+//					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 				default:
 					return UNION_FIGHT_STATUS.NO_TIME;
 			}
@@ -1610,7 +1610,15 @@ public class UnionService extends FightService{
 	
 	public int calCountTime() {
 //		return (int)(RedisService.nextDay(0) - RedisService.now());
-		return 1 * 60;
+		if (NEXT_TIME == 0)
+			setUnionFightTime();
+		return NEXT_TIME - RedisService.now();
+	}
+	
+	public static int NEXT_TIME = RedisService.now();
+	
+	public void setUnionFightTime() {
+		NEXT_TIME = RedisService.now() + 1 * 60;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {

@@ -317,6 +317,7 @@ public class UnionRedisService extends RedisService{
 	
 	public void quit(long id, UserBean user){
 		this.sremove(getUnionMemberKey(user), id+"");
+		delUserUnionFightApply(user.getUnionId(), id);
 	}
 	
 	public List<UnionApply> getApplies(final int unionId) {
@@ -781,6 +782,11 @@ public class UnionRedisService extends RedisService{
 		return applyList;
 	}
 	
+	public <T> void delUserUnionFightApply(int unionId, T userId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
+		hdelete(key, "" + userId);
+	}
+	
 	public void delUnionFightApply(String unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
 		delete(key);
@@ -833,6 +839,15 @@ public class UnionRedisService extends RedisService{
 	public int getUnionFightCheatStatus() {
 		String key = RedisKey.UNION_FIGHT_CHEAT_STATUS_KEY;
 		return TypeTranslatedUtil.stringToInt(get(key));
+	}
+	
+	public int addUnionFightCheatStatus() {
+		String key = RedisKey.UNION_FIGHT_CHEAT_STATUS_KEY;
+		int value = (TypeTranslatedUtil.stringToInt(get(key)) + 1);
+		if (value == 6)
+			value = 1;
+		set(key, "" + value);
+		return value;
 	}
 	
 	public UnionExp getUnionExp(int id) {
