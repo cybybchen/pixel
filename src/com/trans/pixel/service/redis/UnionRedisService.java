@@ -694,6 +694,8 @@ public class UnionRedisService extends RedisService{
 	public void addApplyUnion(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 //		sadd(key, "" + user.getUnionId());
+		if (hexist(key, "" + unionId))
+			return;
 		hput(key, "" + unionId, "");
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
@@ -782,6 +784,13 @@ public class UnionRedisService extends RedisService{
 	public void delUnionFightApply(String unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
 		delete(key);
+	}
+	
+	public void renameUnionFightApply(String unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
+		String newKey = "last:" + key;
+		this.rename(key, newKey);
+		expire(newKey, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
 	public void saveUnionFightFightInfo(int unionId, long userId, int time, FightInfo fightinfo) {

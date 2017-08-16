@@ -1253,6 +1253,7 @@ public class UnionService extends FightService{
 	
 	public void applyFight(UserBean user) {
 		redis.applyFight(user);
+		redis.addApplyUnion(user.getUnionId());
 	}
 	
 	public ResultConst handlerFightMembers(UserBean user, List<Long> userIds, FIGHT_STATUS fightStatus) {
@@ -1277,8 +1278,6 @@ public class UnionService extends FightService{
 			return ErrorConst.UNION_FIGHT_MEMBER_IS_LIMIT_ERROR;
 		
 		redis.updateApplyFight(user, map);
-		
-		redis.addApplyUnion(user.getUnionId());
 		
 		return SuccessConst.HANDLER_SUCCESS;
 	}
@@ -1416,7 +1415,7 @@ public class UnionService extends FightService{
 		for (String unionId : unionIds) {
 			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT) {//人数不够，无法参加
 				redis.deleteApplyUnion(unionId);
-				redis.delUnionFightApply(unionId);
+				redis.renameUnionFightApply(unionId);
 			}
 		}
 		unionIds = redis.getApplyUnionIds();
