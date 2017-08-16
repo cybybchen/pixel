@@ -440,16 +440,13 @@ public class UnionCommandService extends BaseCommandService {
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			responseBuilder.setErrorCommand(buildErrorCommand(ret));
-			return;
+//			return;
 		}
 		
 		ResponseUnionFightApplyRecordCommand.Builder builder = ResponseUnionFightApplyRecordCommand.newBuilder();
 		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		builder.addAllEnemyRecord(unionService.getUnionFightEnemy(user.getUnionId()));
-		builder.setStatus(unionService.calUnionFightStatus(user.getUnionId()));
-//		Union enemyUnion = unionService.getEnemyUnion(user.getUnionId());
-//		if (enemyUnion != null)
-//			builder.setEnemyUnion(enemyUnion);
+		builder.setStatus(status);
 		builder.setCountTime(unionService.calCountTime());
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
