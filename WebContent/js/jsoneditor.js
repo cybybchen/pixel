@@ -92,7 +92,7 @@ function addUserTab(){
         $($(".nav-userbtn")[0]).addClass("nav-btn-active");
     }
 
-    $("#current-userid").text("userId: "+userid);
+    $("#current-userid").text("id "+userid);
 }
 
 function closeUserTab(id){
