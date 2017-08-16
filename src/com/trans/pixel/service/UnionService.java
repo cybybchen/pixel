@@ -1291,6 +1291,18 @@ public class UnionService extends FightService{
 			applyList.set(i, builder.build());
 		}
 		
+		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+		if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+				&& !status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)) {
+			for (int i = 0; i < applyList.size(); ++i) {
+				UnionFightRecord record = applyList.get(i);
+				if (!record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT)) {
+					applyList.remove(i);
+					i--;
+				}
+			}
+		}
+		
 		return applyList;
 	}
 	
@@ -1325,6 +1337,9 @@ public class UnionService extends FightService{
 		
 		UnionFightRecord record = redis.getUnionFightRecord(user.getUnionId(), user.getId());
 		if (record == null)
+			return ErrorConst.SELF_CAN_NOT_ATTACKED_ERROR;
+		
+		if (!record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
 			return ErrorConst.SELF_CAN_NOT_ATTACKED_ERROR;
 		
 		if (record.getAttackCount() >= 2)
@@ -1464,8 +1479,14 @@ public class UnionService extends FightService{
 				case 2:
 					return UNION_FIGHT_STATUS.HUIZHANG_TIME;
 				case 3:
+					if (unionId != 0 && !isInFightUnions(unionId))
+						return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+					
 					return UNION_FIGHT_STATUS.FIGHT_TIME;
 				case 4:
+					if (unionId != 0 && !isInFightUnions(unionId))
+						return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
+					
 					return UNION_FIGHT_STATUS.SEND_REWARD_TIME;
 				case 5:
 					return UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
@@ -1484,10 +1505,12 @@ public class UnionService extends FightService{
 			status = UNION_FIGHT_STATUS.HUIZHANG_TIME;
 		else if (day == UnionConst.FIGHT_DAY) {
 			status = UNION_FIGHT_STATUS.FIGHT_TIME;
-			if (unionId != 0 && isInFightUnions(unionId))
+			if (unionId != 0 && !isInFightUnions(unionId))
 				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 		} else if (unionId == 0 && day == UnionConst.FIGHT_SENDREWARD_DAY) {
 			status = UNION_FIGHT_STATUS.SEND_REWARD_TIME;
+			if (unionId != 0 && !isInFightUnions(unionId))
+				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 		}
 		
 		return status;

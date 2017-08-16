@@ -1,6 +1,8 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -21,6 +23,7 @@ import com.trans.pixel.protoc.ExtraProto.Star;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupEquip;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
+import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.StarRedisService;
 
@@ -66,6 +69,8 @@ public class HeroLevelUpService {
 	private LogService logService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds, List<UserEquipBean> equipList) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
@@ -95,11 +100,31 @@ public class HeroLevelUpService {
 		result = SuccessConst.ADD_EQUIP_SUCCESS;
 			
 		/**
+		 * 保存队伍配置
+		 */
+//		userTeamService.updateUserTeamByHeroEquip(user, heroInfo);
+		
+		/**
 		 * 添加英雄装备的活动
 		 */
 		activityService.addHeroEquip(user, heroId, equipId);
 		
 		return result;
+	}
+	
+	public List<HeroInfoBean> updateHerosEquip(UserBean user, List<EquipRecord> records) {
+		Map<Long, HeroInfoBean> map = userHeroService.selectUserHeroMap(user);
+		List<HeroInfoBean> updateHeroList = new ArrayList<HeroInfoBean>();
+		for (EquipRecord record : records) {
+			HeroInfoBean hero = map.get(record.getIndex());
+			if (hero != null && hero.getEquipId() != record.getItemId()) {
+				hero.setEquipId(record.getItemId());
+				updateHeroList.add(hero);
+			}
+		}
+		
+		userHeroService.updateUserHeroList(user, updateHeroList);
+		return updateHeroList;
 	}
 	
 	public ResultConst resetHeroSkill(UserBean user, HeroInfoBean heroInfo) {

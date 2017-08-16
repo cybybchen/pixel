@@ -36902,6 +36902,56 @@ public final class HeroProto {
      * <code>optional uint32 talentId = 5;</code>
      */
     int getTalentId();
+
+    // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> 
+        getTalentList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getTalent(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    int getTalentCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+        getTalentOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getTalentOrBuilder(
+        int index);
+
+    // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> 
+        getHeroList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getHero(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    int getHeroCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+        getHeroOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getHeroOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserTeam}
@@ -36982,6 +37032,22 @@ public final class HeroProto {
               talentId_ = input.readUInt32();
               break;
             }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+                talent_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord>();
+                mutable_bitField0_ |= 0x00000020;
+              }
+              talent_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.PARSER, extensionRegistry));
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                hero_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              hero_.add(input.readMessage(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -36992,6 +37058,12 @@ public final class HeroProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           teamEngine_ = java.util.Collections.unmodifiableList(teamEngine_);
+        }
+        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+          talent_ = java.util.Collections.unmodifiableList(talent_);
+        }
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          hero_ = java.util.Collections.unmodifiableList(hero_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -37022,6 +37094,483 @@ public final class HeroProto {
     @java.lang.Override
     public com.google.protobuf.Parser<UserTeam> getParserForType() {
       return PARSER;
+    }
+
+    public interface EquipRecordOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+      // optional uint32 index = 1;
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      boolean hasIndex();
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      int getIndex();
+
+      // optional uint32 itemId = 2;
+      /**
+       * <code>optional uint32 itemId = 2;</code>
+       */
+      boolean hasItemId();
+      /**
+       * <code>optional uint32 itemId = 2;</code>
+       */
+      int getItemId();
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.UserTeam.EquipRecord}
+     */
+    public static final class EquipRecord extends
+        com.google.protobuf.GeneratedMessage
+        implements EquipRecordOrBuilder {
+      // Use EquipRecord.newBuilder() to construct.
+      private EquipRecord(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+        this.unknownFields = builder.getUnknownFields();
+      }
+      private EquipRecord(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+      private static final EquipRecord defaultInstance;
+      public static EquipRecord getDefaultInstance() {
+        return defaultInstance;
+      }
+
+      public EquipRecord getDefaultInstanceForType() {
+        return defaultInstance;
+      }
+
+      private final com.google.protobuf.UnknownFieldSet unknownFields;
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+          getUnknownFields() {
+        return this.unknownFields;
+      }
+      private EquipRecord(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        initFields();
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!parseUnknownField(input, unknownFields,
+                                       extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 8: {
+                bitField0_ |= 0x00000001;
+                index_ = input.readUInt32();
+                break;
+              }
+              case 16: {
+                bitField0_ |= 0x00000002;
+                itemId_ = input.readUInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e.getMessage()).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.class, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder.class);
+      }
+
+      public static com.google.protobuf.Parser<EquipRecord> PARSER =
+          new com.google.protobuf.AbstractParser<EquipRecord>() {
+        public EquipRecord parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new EquipRecord(input, extensionRegistry);
+        }
+      };
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<EquipRecord> getParserForType() {
+        return PARSER;
+      }
+
+      private int bitField0_;
+      // optional uint32 index = 1;
+      public static final int INDEX_FIELD_NUMBER = 1;
+      private int index_;
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      public boolean hasIndex() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint32 index = 1;</code>
+       */
+      public int getIndex() {
+        return index_;
+      }
+
+      // optional uint32 itemId = 2;
+      public static final int ITEMID_FIELD_NUMBER = 2;
+      private int itemId_;
+      /**
+       * <code>optional uint32 itemId = 2;</code>
+       */
+      public boolean hasItemId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 itemId = 2;</code>
+       */
+      public int getItemId() {
+        return itemId_;
+      }
+
+      private void initFields() {
+        index_ = 0;
+        itemId_ = 0;
+      }
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized != -1) return isInitialized == 1;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        getSerializedSize();
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeUInt32(1, index_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          output.writeUInt32(2, itemId_);
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      private int memoizedSerializedSize = -1;
+      public int getSerializedSize() {
+        int size = memoizedSerializedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, index_);
+        }
+        if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, itemId_);
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSerializedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      protected java.lang.Object writeReplace()
+          throws java.io.ObjectStreamException {
+        return super.writeReplace();
+      }
+
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input);
+      }
+      public static com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return PARSER.parseFrom(input, extensionRegistry);
+      }
+
+      public static Builder newBuilder() { return Builder.create(); }
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord prototype) {
+        return newBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() { return newBuilder(this); }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code com.trans.pixel.protoc.UserTeam.EquipRecord}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder>
+         implements com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.class, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder.class);
+        }
+
+        // Construct using com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          }
+        }
+        private static Builder create() {
+          return new Builder();
+        }
+
+        public Builder clear() {
+          super.clear();
+          index_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000001);
+          itemId_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000002);
+          return this;
+        }
+
+        public Builder clone() {
+          return create().mergeFrom(buildPartial());
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.trans.pixel.protoc.HeroProto.internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor;
+        }
+
+        public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getDefaultInstanceForType() {
+          return com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance();
+        }
+
+        public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord build() {
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord buildPartial() {
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord result = new com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord(this);
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.index_ = index_;
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000002;
+          }
+          result.itemId_ = itemId_;
+          result.bitField0_ = to_bitField0_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord) {
+            return mergeFrom((com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord other) {
+          if (other == com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance()) return this;
+          if (other.hasIndex()) {
+            setIndex(other.getIndex());
+          }
+          if (other.hasItemId()) {
+            setItemId(other.getItemId());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord) e.getUnfinishedMessage();
+            throw e;
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+        private int bitField0_;
+
+        // optional uint32 index = 1;
+        private int index_ ;
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public boolean hasIndex() {
+          return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public int getIndex() {
+          return index_;
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public Builder setIndex(int value) {
+          bitField0_ |= 0x00000001;
+          index_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional uint32 index = 1;</code>
+         */
+        public Builder clearIndex() {
+          bitField0_ = (bitField0_ & ~0x00000001);
+          index_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // optional uint32 itemId = 2;
+        private int itemId_ ;
+        /**
+         * <code>optional uint32 itemId = 2;</code>
+         */
+        public boolean hasItemId() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>optional uint32 itemId = 2;</code>
+         */
+        public int getItemId() {
+          return itemId_;
+        }
+        /**
+         * <code>optional uint32 itemId = 2;</code>
+         */
+        public Builder setItemId(int value) {
+          bitField0_ |= 0x00000002;
+          itemId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional uint32 itemId = 2;</code>
+         */
+        public Builder clearItemId() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          itemId_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserTeam.EquipRecord)
+      }
+
+      static {
+        defaultInstance = new EquipRecord(true);
+        defaultInstance.initFields();
+      }
+
+      // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserTeam.EquipRecord)
     }
 
     private int bitField0_;
@@ -37152,12 +37701,86 @@ public final class HeroProto {
       return talentId_;
     }
 
+    // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;
+    public static final int TALENT_FIELD_NUMBER = 6;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> talent_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> getTalentList() {
+      return talent_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+        getTalentOrBuilderList() {
+      return talent_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    public int getTalentCount() {
+      return talent_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getTalent(int index) {
+      return talent_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getTalentOrBuilder(
+        int index) {
+      return talent_.get(index);
+    }
+
+    // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;
+    public static final int HERO_FIELD_NUMBER = 7;
+    private java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> hero_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> getHeroList() {
+      return hero_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+        getHeroOrBuilderList() {
+      return hero_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    public int getHeroCount() {
+      return hero_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getHero(int index) {
+      return hero_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getHeroOrBuilder(
+        int index) {
+      return hero_.get(index);
+    }
+
     private void initFields() {
       id_ = 0L;
       teaminfo_ = "";
       teamEngine_ = java.util.Collections.emptyList();
       rolePosition_ = 0;
       talentId_ = 0;
+      talent_ = java.util.Collections.emptyList();
+      hero_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -37194,6 +37817,12 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(5, talentId_);
       }
+      for (int i = 0; i < talent_.size(); i++) {
+        output.writeMessage(6, talent_.get(i));
+      }
+      for (int i = 0; i < hero_.size(); i++) {
+        output.writeMessage(7, hero_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -37222,6 +37851,14 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, talentId_);
+      }
+      for (int i = 0; i < talent_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, talent_.get(i));
+      }
+      for (int i = 0; i < hero_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, hero_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -37332,6 +37969,8 @@ public final class HeroProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getTeamEngineFieldBuilder();
+          getTalentFieldBuilder();
+          getHeroFieldBuilder();
         }
       }
       private static Builder create() {
@@ -37354,6 +37993,18 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         talentId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        if (talentBuilder_ == null) {
+          talent_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        } else {
+          talentBuilder_.clear();
+        }
+        if (heroBuilder_ == null) {
+          hero_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          heroBuilder_.clear();
+        }
         return this;
       }
 
@@ -37407,6 +38058,24 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000008;
         }
         result.talentId_ = talentId_;
+        if (talentBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+            talent_ = java.util.Collections.unmodifiableList(talent_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.talent_ = talent_;
+        } else {
+          result.talent_ = talentBuilder_.build();
+        }
+        if (heroBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            hero_ = java.util.Collections.unmodifiableList(hero_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.hero_ = hero_;
+        } else {
+          result.hero_ = heroBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -37462,6 +38131,58 @@ public final class HeroProto {
         }
         if (other.hasTalentId()) {
           setTalentId(other.getTalentId());
+        }
+        if (talentBuilder_ == null) {
+          if (!other.talent_.isEmpty()) {
+            if (talent_.isEmpty()) {
+              talent_ = other.talent_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureTalentIsMutable();
+              talent_.addAll(other.talent_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.talent_.isEmpty()) {
+            if (talentBuilder_.isEmpty()) {
+              talentBuilder_.dispose();
+              talentBuilder_ = null;
+              talent_ = other.talent_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              talentBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTalentFieldBuilder() : null;
+            } else {
+              talentBuilder_.addAllMessages(other.talent_);
+            }
+          }
+        }
+        if (heroBuilder_ == null) {
+          if (!other.hero_.isEmpty()) {
+            if (hero_.isEmpty()) {
+              hero_ = other.hero_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureHeroIsMutable();
+              hero_.addAll(other.hero_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.hero_.isEmpty()) {
+            if (heroBuilder_.isEmpty()) {
+              heroBuilder_.dispose();
+              heroBuilder_ = null;
+              hero_ = other.hero_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              heroBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getHeroFieldBuilder() : null;
+            } else {
+              heroBuilder_.addAllMessages(other.hero_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -37909,6 +38630,486 @@ public final class HeroProto {
         talentId_ = 0;
         onChanged();
         return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> talent_ =
+        java.util.Collections.emptyList();
+      private void ensureTalentIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          talent_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord>(talent_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> talentBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> getTalentList() {
+        if (talentBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(talent_);
+        } else {
+          return talentBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public int getTalentCount() {
+        if (talentBuilder_ == null) {
+          return talent_.size();
+        } else {
+          return talentBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getTalent(int index) {
+        if (talentBuilder_ == null) {
+          return talent_.get(index);
+        } else {
+          return talentBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder setTalent(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (talentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTalentIsMutable();
+          talent_.set(index, value);
+          onChanged();
+        } else {
+          talentBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder setTalent(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (talentBuilder_ == null) {
+          ensureTalentIsMutable();
+          talent_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          talentBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder addTalent(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (talentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTalentIsMutable();
+          talent_.add(value);
+          onChanged();
+        } else {
+          talentBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder addTalent(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (talentBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTalentIsMutable();
+          talent_.add(index, value);
+          onChanged();
+        } else {
+          talentBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder addTalent(
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (talentBuilder_ == null) {
+          ensureTalentIsMutable();
+          talent_.add(builderForValue.build());
+          onChanged();
+        } else {
+          talentBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder addTalent(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (talentBuilder_ == null) {
+          ensureTalentIsMutable();
+          talent_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          talentBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder addAllTalent(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> values) {
+        if (talentBuilder_ == null) {
+          ensureTalentIsMutable();
+          super.addAll(values, talent_);
+          onChanged();
+        } else {
+          talentBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder clearTalent() {
+        if (talentBuilder_ == null) {
+          talent_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+          onChanged();
+        } else {
+          talentBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public Builder removeTalent(int index) {
+        if (talentBuilder_ == null) {
+          ensureTalentIsMutable();
+          talent_.remove(index);
+          onChanged();
+        } else {
+          talentBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder getTalentBuilder(
+          int index) {
+        return getTalentFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getTalentOrBuilder(
+          int index) {
+        if (talentBuilder_ == null) {
+          return talent_.get(index);  } else {
+          return talentBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+           getTalentOrBuilderList() {
+        if (talentBuilder_ != null) {
+          return talentBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(talent_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder addTalentBuilder() {
+        return getTalentFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder addTalentBuilder(
+          int index) {
+        return getTalentFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord talent = 6;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder> 
+           getTalentBuilderList() {
+        return getTalentFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+          getTalentFieldBuilder() {
+        if (talentBuilder_ == null) {
+          talentBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder>(
+                  talent_,
+                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  getParentForChildren(),
+                  isClean());
+          talent_ = null;
+        }
+        return talentBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;
+      private java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> hero_ =
+        java.util.Collections.emptyList();
+      private void ensureHeroIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          hero_ = new java.util.ArrayList<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord>(hero_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> heroBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> getHeroList() {
+        if (heroBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(hero_);
+        } else {
+          return heroBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public int getHeroCount() {
+        if (heroBuilder_ == null) {
+          return hero_.size();
+        } else {
+          return heroBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord getHero(int index) {
+        if (heroBuilder_ == null) {
+          return hero_.get(index);
+        } else {
+          return heroBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder setHero(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (heroBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeroIsMutable();
+          hero_.set(index, value);
+          onChanged();
+        } else {
+          heroBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder setHero(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (heroBuilder_ == null) {
+          ensureHeroIsMutable();
+          hero_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          heroBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder addHero(com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (heroBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeroIsMutable();
+          hero_.add(value);
+          onChanged();
+        } else {
+          heroBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder addHero(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord value) {
+        if (heroBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureHeroIsMutable();
+          hero_.add(index, value);
+          onChanged();
+        } else {
+          heroBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder addHero(
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (heroBuilder_ == null) {
+          ensureHeroIsMutable();
+          hero_.add(builderForValue.build());
+          onChanged();
+        } else {
+          heroBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder addHero(
+          int index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder builderForValue) {
+        if (heroBuilder_ == null) {
+          ensureHeroIsMutable();
+          hero_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          heroBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder addAllHero(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord> values) {
+        if (heroBuilder_ == null) {
+          ensureHeroIsMutable();
+          super.addAll(values, hero_);
+          onChanged();
+        } else {
+          heroBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder clearHero() {
+        if (heroBuilder_ == null) {
+          hero_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          heroBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public Builder removeHero(int index) {
+        if (heroBuilder_ == null) {
+          ensureHeroIsMutable();
+          hero_.remove(index);
+          onChanged();
+        } else {
+          heroBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder getHeroBuilder(
+          int index) {
+        return getHeroFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder getHeroOrBuilder(
+          int index) {
+        if (heroBuilder_ == null) {
+          return hero_.get(index);  } else {
+          return heroBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+           getHeroOrBuilderList() {
+        if (heroBuilder_ != null) {
+          return heroBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(hero_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder addHeroBuilder() {
+        return getHeroFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder addHeroBuilder(
+          int index) {
+        return getHeroFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserTeam.EquipRecord hero = 7;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder> 
+           getHeroBuilderList() {
+        return getHeroFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder> 
+          getHeroFieldBuilder() {
+        if (heroBuilder_ == null) {
+          heroBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord.Builder, com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecordOrBuilder>(
+                  hero_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          hero_ = null;
+        }
+        return heroBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserTeam)
@@ -54807,6 +56008,11 @@ public final class HeroProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserTeam_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -55067,61 +56273,65 @@ public final class HeroProto {
       "fo\">\n\034RequestResetHeroSkillCommand\022\016\n\006he" +
       "roId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\"G\n\026RequestHer" +
       "oSpUpCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002" +
-      " \002(\003\022\r\n\005count\030\003 \002(\005\"\210\001\n\010UserTeam\022\n\n\002id\030\001" +
+      " \002(\003\022\r\n\005count\030\003 \002(\005\"\260\002\n\010UserTeam\022\n\n\002id\030\001" +
       " \002(\003\022\020\n\010teaminfo\030\002 \002(\t\0226\n\nteamEngine\030\003 \003" +
       "(\0132\".com.trans.pixel.protoc.TeamEngine\022\024",
-      "\n\014rolePosition\030\004 \001(\r\022\020\n\010talentId\030\005 \001(\r\"\'" +
-      "\n\025RequestGetTeamCommand\022\016\n\006userId\030\001 \002(\003\"" +
-      "D\n\026ResponseGetTeamCommand\022*\n\004team\030\001 \002(\0132" +
-      "\034.com.trans.pixel.protoc.Team\"\'\n\nTeamUnl" +
-      "ock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030Reque" +
-      "stUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamI" +
-      "nfo\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamE" +
-      "ngine\030\005 \003(\0132\".com.trans.pixel.protoc.Tea" +
-      "mEngine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032RequestUser" +
-      "TeamListCommand\"Q\n\033ResponseUserTeamListC",
-      "ommand\0222\n\010userTeam\030\001 \003(\0132 .com.trans.pix" +
-      "el.protoc.UserTeam\"F\n\016TeamUnlockList\0224\n\010" +
-      "xiaoguan\030\001 \003(\0132\".com.trans.pixel.protoc." +
-      "TeamUnlock\"P\n\032ResponseGetUserHeroCommand" +
-      "\0222\n\010userHero\030\001 \003(\0132 .com.trans.pixel.pro" +
-      "toc.HeroInfo\"V\n\030RequestFenjieHeroCommand" +
-      "\022:\n\nfenjieHero\030\001 \003(\0132&.com.trans.pixel.p" +
-      "rotoc.FenjieHeroInfo\"\032\n\030RequestUserPoked" +
-      "eCommand\"M\n\031ResponseUserPokedeCommand\0220\n" +
-      "\006pokede\030\001 \003(\0132 .com.trans.pixel.protoc.H",
-      "eroInfo\"\036\n\034RequestBuyHeroPackageCommand\"" +
-      "8\n RequestSubmitComposeSkillCommand\022\024\n\014c" +
-      "omposeSkill\030\001 \002(\t\"K\n\026RequestFeedFoodComm" +
-      "and\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tf" +
-      "oodCount\030\003 \002(\005\"X\n\027RequestClearHeroComman" +
-      "d\022\016\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004t" +
-      "ype\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUser" +
-      "FoodCommand\0222\n\010userFood\030\001 \003(\0132 .com.tran" +
-      "s.pixel.protoc.UserFood\"P\n\030ResponseClear" +
-      "InfoCommand\0224\n\tclearInfo\030\001 \003(\0132!.com.tra",
-      "ns.pixel.protoc.ClearInfo\";\n\034RequestChos" +
-      "eClearInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id" +
-      "\030\002 \001(\005\".\n\034RequestHeroStrengthenCommand\022\016" +
-      "\n\006heroId\030\001 \002(\005\"<\n\030RequestOpenFetterComma" +
-      "nd\022\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!" +
-      "RequestZanHeroMessageBoardCommand\022\016\n\006ite" +
-      "mId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Re" +
-      "questTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n" +
-      "\035RequestTalentChangeUseCommand\022\n\n\002id\030\001 \002" +
-      "(\005\"M\n\037RequestTalentChangeSkillCommand\022\n\n",
-      "\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(" +
-      "\005\"\225\001\n\031ResponseUserTalentCommand\0226\n\nuserT" +
-      "alent\030\001 \003(\0132\".com.trans.pixel.protoc.Use" +
-      "rTalent\022@\n\017userTalentSkill\030\002 \003(\0132\'.com.t" +
-      "rans.pixel.protoc.UserTalentSkill\"O\n\037Req" +
-      "uestTalentChangeEquipCommand\022\n\n\002id\030\001 \002(\005" +
-      "\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"5\n\030Re" +
-      "questTalentSpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005co" +
-      "unt\030\002 \002(\005\"N\n RequestTalentSkillLevelupCo" +
-      "mmand\022\n\n\002id\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skil",
-      "lid\030\003 \002(\r\",\n\036RequestTalentResetSkillComm" +
-      "and\022\n\n\002id\030\001 \002(\r"
+      "\n\014rolePosition\030\004 \001(\r\022\020\n\010talentId\030\005 \001(\r\022<" +
+      "\n\006talent\030\006 \003(\0132,.com.trans.pixel.protoc." +
+      "UserTeam.EquipRecord\022:\n\004hero\030\007 \003(\0132,.com" +
+      ".trans.pixel.protoc.UserTeam.EquipRecord" +
+      "\032,\n\013EquipRecord\022\r\n\005index\030\001 \001(\r\022\016\n\006itemId" +
+      "\030\002 \001(\r\"\'\n\025RequestGetTeamCommand\022\016\n\006userI" +
+      "d\030\001 \002(\003\"D\n\026ResponseGetTeamCommand\022*\n\004tea" +
+      "m\030\001 \002(\0132\034.com.trans.pixel.protoc.Team\"\'\n" +
+      "\nTeamUnlock\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\230" +
+      "\001\n\030RequestUpdateTeamCommand\022\n\n\002id\030\001 \002(\003\022",
+      "\020\n\010teamInfo\030\002 \002(\t\022\024\n\014rolePosition\030\004 \001(\005\022" +
+      "6\n\nteamEngine\030\005 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.TeamEngine\022\020\n\010talentId\030\006 \001(\r\"\034\n\032Req" +
+      "uestUserTeamListCommand\"Q\n\033ResponseUserT" +
+      "eamListCommand\0222\n\010userTeam\030\001 \003(\0132 .com.t" +
+      "rans.pixel.protoc.UserTeam\"F\n\016TeamUnlock" +
+      "List\0224\n\010xiaoguan\030\001 \003(\0132\".com.trans.pixel" +
+      ".protoc.TeamUnlock\"P\n\032ResponseGetUserHer" +
+      "oCommand\0222\n\010userHero\030\001 \003(\0132 .com.trans.p" +
+      "ixel.protoc.HeroInfo\"V\n\030RequestFenjieHer",
+      "oCommand\022:\n\nfenjieHero\030\001 \003(\0132&.com.trans" +
+      ".pixel.protoc.FenjieHeroInfo\"\032\n\030RequestU" +
+      "serPokedeCommand\"M\n\031ResponseUserPokedeCo" +
+      "mmand\0220\n\006pokede\030\001 \003(\0132 .com.trans.pixel." +
+      "protoc.HeroInfo\"\036\n\034RequestBuyHeroPackage" +
+      "Command\"8\n RequestSubmitComposeSkillComm" +
+      "and\022\024\n\014composeSkill\030\001 \002(\t\"K\n\026RequestFeed" +
+      "FoodCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 " +
+      "\002(\005\022\021\n\tfoodCount\030\003 \002(\005\"X\n\027RequestClearHe" +
+      "roCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 ",
+      "\002(\005\022\014\n\004type\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027Resp" +
+      "onseUserFoodCommand\0222\n\010userFood\030\001 \003(\0132 ." +
+      "com.trans.pixel.protoc.UserFood\"P\n\030Respo" +
+      "nseClearInfoCommand\0224\n\tclearInfo\030\001 \003(\0132!" +
+      ".com.trans.pixel.protoc.ClearInfo\";\n\034Req" +
+      "uestChoseClearInfoCommand\022\017\n\007refused\030\001 \002" +
+      "(\010\022\n\n\002id\030\002 \001(\005\".\n\034RequestHeroStrengthenC" +
+      "ommand\022\016\n\006heroId\030\001 \002(\005\"<\n\030RequestOpenFet" +
+      "terCommand\022\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002" +
+      " \002(\005\"L\n!RequestZanHeroMessageBoardComman",
+      "d\022\016\n\006itemId\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002" +
+      "(\010\")\n\033RequestTalentupgradeCommand\022\n\n\002id\030" +
+      "\001 \002(\005\"+\n\035RequestTalentChangeUseCommand\022\n" +
+      "\n\002id\030\001 \002(\005\"M\n\037RequestTalentChangeSkillCo" +
+      "mmand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skil" +
+      "lId\030\003 \002(\005\"\225\001\n\031ResponseUserTalentCommand\022" +
+      "6\n\nuserTalent\030\001 \003(\0132\".com.trans.pixel.pr" +
+      "otoc.UserTalent\022@\n\017userTalentSkill\030\002 \003(\013" +
+      "2\'.com.trans.pixel.protoc.UserTalentSkil" +
+      "l\"O\n\037RequestTalentChangeEquipCommand\022\n\n\002",
+      "id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002" +
+      "(\005\"5\n\030RequestTalentSpUpCommand\022\n\n\002id\030\001 \002" +
+      "(\005\022\r\n\005count\030\002 \002(\005\"N\n RequestTalentSkillL" +
+      "evelupCommand\022\n\n\002id\030\001 \002(\r\022\r\n\005order\030\002 \002(\r" +
+      "\022\017\n\007skillid\030\003 \002(\r\",\n\036RequestTalentResetS" +
+      "killCommand\022\n\n\002id\030\001 \002(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -55445,7 +56655,13 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_UserTeam_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTeam_descriptor,
-              new java.lang.String[] { "Id", "Teaminfo", "TeamEngine", "RolePosition", "TalentId", });
+              new java.lang.String[] { "Id", "Teaminfo", "TeamEngine", "RolePosition", "TalentId", "Talent", "Hero", });
+          internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor =
+            internal_static_com_trans_pixel_protoc_UserTeam_descriptor.getNestedTypes().get(0);
+          internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_UserTeam_EquipRecord_descriptor,
+              new java.lang.String[] { "Index", "ItemId", });
           internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_descriptor =
             getDescriptor().getMessageTypes().get(53);
           internal_static_com_trans_pixel_protoc_RequestGetTeamCommand_fieldAccessorTable = new

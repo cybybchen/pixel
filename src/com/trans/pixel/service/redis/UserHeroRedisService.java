@@ -91,11 +91,21 @@ public class UserHeroRedisService extends RedisService{
 	}
 	
 	public void updateUserHeroList(final List<HeroInfoBean> userHeroList, final long userId) {
+		updateUserHeroList(userHeroList, userId, false);
+	}
+	
+	public void updateUserHeroList(final List<HeroInfoBean> userHeroList, final long userId, boolean updateMysql) {
 		String key = RedisKey.PREFIX + RedisKey.USER_HERO_PREFIX + userId;
 		Map<String, String> map = convertHeroMap(userHeroList);
 		hputAll(key, map, userId);
 				
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		
+		if (!updateMysql)
+			return;
+		
+		for (HeroInfoBean userHero : userHeroList)
+			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USER_HERO_PREFIX, userId+"#" + userHero.getId());
 	}
 	
 	public List<HeroInfoBean> selectUserHeroList(final long userId) {

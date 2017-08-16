@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -16,13 +18,14 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
-import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalentEquip;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
+import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.LevelRedisService;
@@ -102,6 +105,8 @@ public class UserTeamService {
 		userTeam.setRolePosition(rolePosition);
 		userTeam.composeEngine(teamEngineList);
 		userTeam.setTalentId(talentId);
+		userTeam.setTalentEquip(UserTeamBean.composeEquip(calTalentEquipRecords(user, userTeam.getTalentId())));
+		userTeam.setHeroEquip(UserTeamBean.composeEquip(calHeroEquipRecords(user, userTeam.getTeamRecord())));
 		userTeamRedisService.updateUserTeam(userTeam);
 //		userTeamMapper.updateUserTeam(userTeam);
 		if(user != null){
@@ -147,7 +152,17 @@ public class UserTeamService {
 	}
 	
 	public UserTeamBean getUserTeam(long userId, long id) {
-		return userTeamRedisService.getUserTeam(userId, id);
+		UserTeamBean userTeam = userTeamRedisService.getUserTeam(userId, id);
+		if (userTeam == null) {
+			UserBean other = userService.getUserOther(userId);
+			List<UserTeamBean> teamList = selectUserTeamList(other);
+			for (UserTeamBean team : teamList) {
+				if (team.getId() == id)
+					return team;
+			}
+		}
+		
+		return userTeam;
 	}
 	
 	public void updateToDB(long userId, long id) {
@@ -442,5 +457,82 @@ public class UserTeamService {
 		}
 		
 		return false;
+	}
+	
+	public void updateUserTeamByHeroEquip(UserBean user, HeroInfoBean heroInfo) {
+		UserTeamBean team = getUserTeam(user.getId(), user.getCurrentTeamid());
+		List<EquipRecord> records = UserTeamBean.buildEquipRecord(team.getHeroEquip());
+		if (records.isEmpty())
+			return;
+		
+		for (int i = 0; i < records.size(); ++i) {
+			EquipRecord.Builder builder = EquipRecord.newBuilder(records.get(i));
+			if (builder.getIndex() == heroInfo.getId()) {
+				builder.setItemId(heroInfo.getEquipId());
+				records.set(i, builder.build());
+				team.setHeroEquip(UserTeamBean.composeEquip(records));
+				userTeamRedisService.updateUserTeam(team);
+				break;
+			}
+		}
+	}
+	
+	public void updateUserTeamByTalentEquip(UserBean user, UserTalent userTalent) {
+		UserTeamBean team = getUserTeam(user.getId(), user.getCurrentTeamid());
+		if (team.getTalentId() != userTalent.getId())
+			return;
+		List<EquipRecord> records = new ArrayList<EquipRecord>();
+		if (records.isEmpty())
+			return;
+		
+		for (UserTalentEquip equip : userTalent.getEquipList()) {
+			EquipRecord.Builder builder = EquipRecord.newBuilder();
+			builder.setIndex(equip.getPosition());
+			builder.setItemId(equip.getItemId());
+			records.add(builder.build());
+		}
+		team.setTalentEquip(UserTeamBean.composeEquip(records));
+		userTeamRedisService.updateUserTeam(team);
+	}
+	
+	private List<EquipRecord> calTalentEquipRecords(UserBean user, int talentId) {
+		List<EquipRecord> records = new ArrayList<EquipRecord>();
+		if (user == null)
+			return records;
+		UserTalent.Builder talent = userTalentService.getUserTalent(user, talentId);
+		if (talent == null)
+			return records;
+		
+		for (UserTalentEquip equip : talent.getEquipList()) {
+			EquipRecord.Builder builder = EquipRecord.newBuilder();
+			builder.setIndex(equip.getPosition());
+			builder.setItemId(equip.getItemId());
+			records.add(builder.build());
+		}
+		
+		return records;
+	}
+	
+	private List<EquipRecord> calHeroEquipRecords(UserBean user, String teamRecord) {
+		List<EquipRecord> records = new ArrayList<EquipRecord>();
+		if (user == null)
+			return records;
+		String[] herosstr = teamRecord.split("\\|");
+		Map<Long, HeroInfoBean> map = userHeroService.selectUserHeroMap(user);
+		for(String herostr : herosstr){
+			String[] str = herostr.split(",");
+			if(str.length == 2){
+				int infoId = Integer.parseInt(str[1]);
+				HeroInfoBean herobean = map.get(infoId);
+				if (herobean == null)
+					continue;
+				EquipRecord.Builder builder = EquipRecord.newBuilder();
+				builder.setIndex(infoId);
+				builder.setItemId(herobean.getEquipId());
+				records.add(builder.build());
+			}
+		}
+		
+		return records;
 	}
 }

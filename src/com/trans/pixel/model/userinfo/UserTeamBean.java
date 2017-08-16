@@ -3,11 +3,12 @@ package com.trans.pixel.model.userinfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.sf.json.JSONObject;
+
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.HeroProto.UserTeam;
+import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.utils.TypeTranslatedUtil;
-
-import net.sf.json.JSONObject;
 
 public class UserTeamBean {
 	public int id = 0;
@@ -16,6 +17,8 @@ public class UserTeamBean {
 	public int rolePosition = 0;
 	private String engine = "";
 	private int talentId = 0;
+	private String talentEquip = "";
+	private String heroEquip = "";
 	public int getId() {
 		return id;
 	}
@@ -52,6 +55,18 @@ public class UserTeamBean {
 	public void setTalentId(int talentId) {
 		this.talentId = talentId;
 	}
+	public String getTalentEquip() {
+		return talentEquip;
+	}
+	public void setTalentEquip(String talentEquip) {
+		this.talentEquip = talentEquip;
+	}
+	public String getHeroEquip() {
+		return heroEquip;
+	}
+	public void setHeroEquip(String heroEquip) {
+		this.heroEquip = heroEquip;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -60,6 +75,8 @@ public class UserTeamBean {
 		json.put(ROLE_POSITION, rolePosition);
 		json.put(ENGINE, engine);
 		json.put(TALENTID, talentId);
+		json.put(TALENT_EQUIP, talentEquip);
+		json.put(HERO_EQUIP, heroEquip);
 		
 		return json.toString();
 	}
@@ -75,6 +92,8 @@ public class UserTeamBean {
 		bean.setRolePosition(TypeTranslatedUtil.jsonGetInt(json, ROLE_POSITION));
 		bean.setEngine(TypeTranslatedUtil.jsonGetString(json, ENGINE));
 		bean.setTalentId(TypeTranslatedUtil.jsonGetInt(json, TALENTID));
+		bean.setTalentEquip(TypeTranslatedUtil.jsonGetString(json, TALENT_EQUIP));
+		bean.setHeroEquip(TypeTranslatedUtil.jsonGetString(json, HERO_EQUIP));
 
 		return bean;
 	}
@@ -115,10 +134,44 @@ public class UserTeamBean {
 		return teamEngineList;
 	}
 	
+	public static String composeEquip(List<EquipRecord> records) {
+		String equipRecord = "";
+		for (EquipRecord record : records) {
+			equipRecord += SPLIT1 + record.getIndex() + SPLIT2 + record.getItemId();
+		}
+		
+		if (equipRecord.length() > 0)
+			equipRecord = equipRecord.substring(2);
+		
+		return equipRecord;
+	}
+	
+	public static List<EquipRecord> buildEquipRecord(String record) {
+		List<EquipRecord> records = new ArrayList<EquipRecord>();
+		if (record.isEmpty())
+			return records;
+		
+		String[] recordArray = record.split(SPLIT1);
+		for (String recordStr : recordArray) {
+			String[] equipArray = recordStr.split(SPLIT2);
+			EquipRecord.Builder builder = EquipRecord.newBuilder();
+			builder.setIndex(TypeTranslatedUtil.stringToInt(equipArray[0]));
+			builder.setItemId(TypeTranslatedUtil.stringToInt(equipArray[1]));
+			records.add(builder.build());
+		}
+		
+		return records;
+	}
+	
 	private static final String ID = "id";
 	private static final String USER_ID = "user_id";
 	private static final String TEAM_RECORD = "team_record";
 	private static final String ROLE_POSITION = "role_position";
 	private static final String ENGINE = "engine";
 	private static final String TALENTID = "talentId";
+	private static final String TALENT_EQUIP = "talent_equip";
+	private static final String HERO_EQUIP = "hero_equip";
+	
+	private static final String SPLIT1 = "#";
+	private static final String SPLIT2 = ",";
 }

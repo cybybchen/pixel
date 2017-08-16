@@ -78,10 +78,9 @@ public class TeamCommandService extends BaseCommandService {
 		builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
 		fightInfoService.setFightInfo(RedisService.formatJson(builder.build()),
 				user);
-		if (cmd.hasScore() && cmd.getScore() > 0) {
+		if (cmd.hasScore() && cmd.getScore() > 80) {
 			builder.setUser(user.buildShort());
 			builder.setTime(DateUtil.getCurrentDateString());
-			builder.setScore(cmd.getScore());
 			rankService.addFightInfoRank(builder.build());
 		}
 	}

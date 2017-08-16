@@ -19,8 +19,10 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
@@ -37,12 +39,14 @@ import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand;
+import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
 import com.trans.pixel.service.HeroService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.SkillService;
+import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
@@ -90,6 +94,8 @@ public class HeroCommandService extends BaseCommandService {
 	private FenjieRedisService fenjieRedisService;
 	@Resource
 	private StarRedisService starService;
+	@Resource
+	private TalentService talentService;
 	
 	public void heroLevelUpTo(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), cmd.getInfoId());
@@ -447,9 +453,20 @@ public class HeroCommandService extends BaseCommandService {
 	
 	public void submitComposeSkill(RequestSubmitComposeSkillCommand cmd, Builder responseBuilder, UserBean user) {
 		user.setComposeSkill(cmd.getComposeSkill());
+		user.setCurrentTeamid(TypeTranslatedUtil.stringToLong(cmd.getComposeSkill()));
 		userTeamService.changeUserTeam(user, TypeTranslatedUtil.stringToInt(cmd.getComposeSkill()));
 		
-		userService.updateUser(user);
+		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
+		List<EquipRecord> talentEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getTalentEquip());
+		List<EquipRecord> heroEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getHeroEquip());
+		
+		UserTalent userTalent = talentService.updateUserTalentEquip(user, talentEquipRecords);
+		if (userTalent != null)
+			pushCommandService.pushUserTalent(responseBuilder, user, userTalent);
+		
+		List<HeroInfoBean> heroList = heroLevelUpService.updateHerosEquip(user, heroEquipRecords);
+		pushCommandService.pushUserHeroListCommand(responseBuilder, user, heroList);
+		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
 	}

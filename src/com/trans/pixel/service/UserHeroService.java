@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,6 +67,16 @@ public class UserHeroService {
 		return userHero;
 	}
 	
+	public Map<Long, HeroInfoBean> selectUserHeroMap(UserBean user) {
+		List<HeroInfoBean> userHeroList = selectUserHeroList(user);
+		Map<Long, HeroInfoBean> map = new HashMap<Long, HeroInfoBean>();
+		for (HeroInfoBean herobean : userHeroList) {
+			map.put(herobean.getId(), herobean);
+		}
+		
+		return map;
+	}
+	
 	public List<HeroInfoBean> selectUserHeroList(UserBean user) {
 		long userId = user.getId();
 		List<HeroInfoBean> userHeroList = userHeroRedisService.selectUserHeroList(userId);
@@ -111,6 +122,10 @@ public class UserHeroService {
 	
 	private void addUserHeroList(long userId, List<HeroInfoBean> userHeroList) {
 		userHeroRedisService.addUserHeroList(userId, userHeroList);
+	}
+	
+	public void updateUserHeroList(UserBean user, List<HeroInfoBean> userHeroList) {
+		userHeroRedisService.updateUserHeroList(userHeroList, user.getId(), true);
 	}
 	
 	public void updateToDB(long userId, int id) {

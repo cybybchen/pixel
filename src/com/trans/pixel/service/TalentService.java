@@ -1,5 +1,6 @@
 package com.trans.pixel.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -25,6 +27,7 @@ import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.HeroProto.Talentunlock;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
 import com.trans.pixel.protoc.HeroProto.UserTalentSkill;
+import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.redis.TalentRedisService;
 
 @Service
@@ -373,8 +376,11 @@ public class TalentService {
 				equipBuilder.setItemId(itemId);
 				userTalent.setEquip(i, equipBuilder.build());
 				
-				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, equipBuilder.build()))
-					userService.updateUser(user);
+//				userTeamService.updateUserTeamByTalentEquip(user, userTalent.build());
+				
+				changeTitleEquip(user, position, equipBuilder.build());
+//				if (userTalent.getId() == user.getUseTalentId() && changeTitleEquip(user, position, equipBuilder.build()))
+//					userService.updateUser(user);
 				
 				return userTalent.build();
 			}
@@ -401,7 +407,7 @@ public class TalentService {
 	public boolean changeTitleEquip(UserBean user, UserEquipPokedeBean pokede) {
 		if (user.getTitle() == pokede.getItemId() && user.getTitleOrder() != pokede.getOrder()) {
 			user.setTitleOrder(Math.max(1, pokede.getOrder()));
-			userService.updateUser(user);
+//			userService.updateUser(user);
 			userService.cache(user.getServerId(), user.buildShort());
 			return true;
 		}
@@ -416,5 +422,25 @@ public class TalentService {
 			return false;
 		
 		return changeTitleEquip(user, 9, userTalent.getEquip(9));
+	}
+	
+	public UserTalent updateUserTalentEquip(UserBean user, List<EquipRecord> records) {
+		UserTalent.Builder userTalent = userTalentService.getUsingTalent(user);
+		
+		if (userTalent == null)
+			return null;
+		
+		for (EquipRecord record : records) {
+			UserTalentEquip talentEquip = userTalent.getEquip(record.getIndex());
+			if (talentEquip != null && talentEquip.getItemId() != record.getItemId()) {
+				UserTalentEquip.Builder builder = UserTalentEquip.newBuilder(talentEquip);
+				builder.setItemId(record.getItemId());
+				userTalent.setEquip(record.getIndex(), builder.build());
+			}
+		}
+		
+		userTalentService.updateUserTalent(user.getId(), userTalent.build());
+		
+		return userTalent.build();
 	}
 }
