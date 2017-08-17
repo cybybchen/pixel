@@ -129,7 +129,7 @@ public class LotteryService {
     		
     	while (randomLotteryList.size() < count) {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
-    			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
+    			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD())) {
     				RewardBean reward = randomReward(prdLotteryList);
     				if (reward != null) {
     					randomLotteryList.add(reward);
@@ -144,7 +144,7 @@ public class LotteryService {
     					if(user.getRechargeRecord() == 0 || randomLotteryList.size() < rmbCount)
     						user.setJewelPRD(user.getJewelPRD() + 1);
     				}else
-    					user.setHunxiaPRD(user.getHunxiaPRD() + 1);
+    					user.setHunxiaPRD(user.getHunxiaPRD() + 4);
     			}	
     		}
     		
