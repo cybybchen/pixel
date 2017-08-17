@@ -663,9 +663,11 @@ public class PvpMapService {
 				if(owner.getId() == builder.getOwner().getId() && ranks.size() > 1)
 					owner = ranks.get(RedisService.nextInt(ranks.size()));
 				builder.setOwner(owner);
+				builder.setLevel(Math.min(1, builder.getLevel()));
 				builder.setPvpyield((int)Math.pow(mine.getYield()*(Math.min(mine.getLevel(), 10)/2.0+3), Math.max(1, Math.min(1.2, Math.max(owner.getZhanli(), owner.getZhanliMax())/(user.getZhanliMax()+1.0))))*user.getPvppercent()/100);
 			}else{
 				builder.clearOwner();
+				builder.setLevel(0);
 			}
 			redis.saveMine(user.getId(), builder.build());
 		// }else{
