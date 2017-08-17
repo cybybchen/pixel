@@ -102,6 +102,7 @@ import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopRefreshCommand;
 import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand;
+import com.trans.pixel.protoc.HeroProto.RequestChaijieHeroCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
 import com.trans.pixel.protoc.UnionProto.RequestCreateUnionCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentResetSkillCommand;
@@ -329,6 +330,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestExpeditionShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQuitUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserPokedeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestChaijieHeroCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateMessageBoardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateUnionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestTalentResetSkillCommand cmd, Builder responseBuilder, UserBean user);
@@ -883,6 +885,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasUserPokedeCommand()) {
 			RequestUserPokedeCommand cmd = request.getUserPokedeCommand();
 			if (isFuncAvailable(responseBuilder, "UserPokedeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasChaijieHeroCommand()) {
+			RequestChaijieHeroCommand cmd = request.getChaijieHeroCommand();
+			if (isFuncAvailable(responseBuilder, "ChaijieHeroCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasCreateMessageBoardCommand()) {
 			RequestCreateMessageBoardCommand cmd = request.getCreateMessageBoardCommand();

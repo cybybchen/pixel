@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.HeroProto.RequestChaijieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
 import com.trans.pixel.protoc.HeroProto.RequestClearHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFeedFoodCommand;
@@ -1600,21 +1601,15 @@ public class GameDataScreen extends RequestScreen {
 		return true;
 	}
 
-<<<<<<< 7c6997136aac19b8215c0f649f8fa6931680486f
-	@Override
-	protected boolean handleCommand(RequestAttackMowuCommand cmd,
-			Builder responseBuilder, UserBean user) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-||||||| merged common ancestors
-=======
 	@Override
 	protected boolean handleCommand(RequestAttackMowuCommand cmd, Builder responseBuilder, UserBean user) {
 		pvpCommandService.attackMowu(cmd, responseBuilder, user);
 		return true;
 	}
 
->>>>>>> add mowu
+	@Override
+	protected boolean handleCommand(RequestChaijieHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		heroCommandService.chaijieHero(cmd, responseBuilder, user);
+		return true;
+	}
 }

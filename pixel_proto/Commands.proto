@@ -990,6 +990,10 @@ message RequestFenjieHeroCommand {
 	repeated FenjieHeroInfo fenjieHero = 1;
 }
 
+message RequestChaijieHeroCommand {
+        optional FenjieHeroInfo fenjieHero = 1;
+}
+
 message RequestUserPokedeCommand {
 
 }
@@ -3864,6 +3868,7 @@ message RequestCommand {
 	optional RequestSignCommand signCommand = 53;
 	optional RequestHelpAttackPVPMineCommand helpAttackPVPMineCommand = 55;
 	optional RequestFenjieHeroCommand fenjieHeroCommand = 56;
+	optional RequestChaijieHeroCommand chaijieHeroCommand = 169;
 	optional RequestResetHeroSkillCommand resetHeroSkillCommand = 57;
 	optional RequestHeroSpUpCommand heroSpUpCommand = 49;
 	optional RequestSendMailCommand sendMailCommand = 58;

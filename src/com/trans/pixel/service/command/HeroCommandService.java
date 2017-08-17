@@ -30,6 +30,7 @@ import com.trans.pixel.protoc.ExtraProto.Fenjie;
 import com.trans.pixel.protoc.HeroProto.FenjieHeroInfo;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.HeroProto.RequestChaijieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
@@ -223,6 +224,10 @@ public class HeroCommandService extends BaseCommandService {
 		builder.setHeroId(heroId);
 		builder.addHeroInfo(heroInfo.buildHeroInfo());
 		responseBuilder.setHeroResultCommand(builder.build());
+	}
+
+	public void chaijieHero(RequestChaijieHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		
 	}
 	
 	public void fenjieHero(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user) {
