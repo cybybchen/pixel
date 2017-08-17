@@ -1575,6 +1575,9 @@ public class UnionService extends FightService{
 		List<UnionFightRecord> applies = getUnionFightApplyNotRefresh(unionId);
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == userId) {
+				if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))//会长选人阶段，报名的都不能退出公会
+					return false;
+				
 				if (record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT))
 					return false;
 				
