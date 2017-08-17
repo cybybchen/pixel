@@ -8,6 +8,88 @@ public final class HeroProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code com.trans.pixel.protoc.TEAM_TYPE}
+   */
+  public enum TEAM_TYPE
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TEAM_NULL = 0;</code>
+     */
+    TEAM_NULL(0, 0),
+    /**
+     * <code>TEAM_UNION = 1;</code>
+     */
+    TEAM_UNION(1, 1),
+    ;
+
+    /**
+     * <code>TEAM_NULL = 0;</code>
+     */
+    public static final int TEAM_NULL_VALUE = 0;
+    /**
+     * <code>TEAM_UNION = 1;</code>
+     */
+    public static final int TEAM_UNION_VALUE = 1;
+
+
+    public final int getNumber() { return value; }
+
+    public static TEAM_TYPE valueOf(int value) {
+      switch (value) {
+        case 0: return TEAM_NULL;
+        case 1: return TEAM_UNION;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>() {
+            public TEAM_TYPE findValueByNumber(int number) {
+              return TEAM_TYPE.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.HeroProto.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final TEAM_TYPE[] VALUES = values();
+
+    public static TEAM_TYPE valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private TEAM_TYPE(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.TEAM_TYPE)
+  }
+
   public interface UserHeroOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -39136,15 +39218,15 @@ public final class HeroProto {
      */
     long getUserId();
 
-    // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
+    // optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
      */
     boolean hasType();
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
      */
-    com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType();
+    com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestGetTeamCommand}
@@ -39204,7 +39286,7 @@ public final class HeroProto {
             }
             case 16: {
               int rawValue = input.readEnum();
-              com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE value = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.valueOf(rawValue);
+              com.trans.pixel.protoc.HeroProto.TEAM_TYPE value = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
@@ -39252,79 +39334,6 @@ public final class HeroProto {
       return PARSER;
     }
 
-    /**
-     * Protobuf enum {@code com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE}
-     */
-    public enum TEAM_TYPE
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>TEAM_UNION = 0;</code>
-       */
-      TEAM_UNION(0, 0),
-      ;
-
-      /**
-       * <code>TEAM_UNION = 0;</code>
-       */
-      public static final int TEAM_UNION_VALUE = 0;
-
-
-      public final int getNumber() { return value; }
-
-      public static TEAM_TYPE valueOf(int value) {
-        switch (value) {
-          case 0: return TEAM_UNION;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>
-          internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<TEAM_TYPE>() {
-              public TEAM_TYPE findValueByNumber(int number) {
-                return TEAM_TYPE.valueOf(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final TEAM_TYPE[] VALUES = values();
-
-      public static TEAM_TYPE valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private TEAM_TYPE(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE)
-    }
-
     private int bitField0_;
     // required int64 userId = 1;
     public static final int USERID_FIELD_NUMBER = 1;
@@ -39342,25 +39351,25 @@ public final class HeroProto {
       return userId_;
     }
 
-    // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
+    // optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;
     public static final int TYPE_FIELD_NUMBER = 2;
-    private com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE type_;
+    private com.trans.pixel.protoc.HeroProto.TEAM_TYPE type_;
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
      */
-    public com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType() {
+    public com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType() {
       return type_;
     }
 
     private void initFields() {
       userId_ = 0L;
-      type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+      type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -39519,7 +39528,7 @@ public final class HeroProto {
         super.clear();
         userId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+        type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -39643,24 +39652,24 @@ public final class HeroProto {
         return this;
       }
 
-      // optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;
-      private com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+      // optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;
+      private com.trans.pixel.protoc.HeroProto.TEAM_TYPE type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
        */
       public boolean hasType() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
        */
-      public com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE getType() {
+      public com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType() {
         return type_;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
        */
-      public Builder setType(com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE value) {
+      public Builder setType(com.trans.pixel.protoc.HeroProto.TEAM_TYPE value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -39670,11 +39679,11 @@ public final class HeroProto {
         return this;
       }
       /**
-       * <code>optional .com.trans.pixel.protoc.RequestGetTeamCommand.TEAM_TYPE type = 2;</code>
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 2;</code>
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        type_ = com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE.TEAM_UNION;
+        type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
         onChanged();
         return this;
       }
@@ -40781,27 +40790,27 @@ public final class HeroProto {
   public interface RequestUpdateTeamCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int64 id = 1;
+    // optional int64 id = 1;
     /**
-     * <code>required int64 id = 1;</code>
+     * <code>optional int64 id = 1;</code>
      */
     boolean hasId();
     /**
-     * <code>required int64 id = 1;</code>
+     * <code>optional int64 id = 1;</code>
      */
     long getId();
 
-    // required string teamInfo = 2;
+    // optional string teamInfo = 2;
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     boolean hasTeamInfo();
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     java.lang.String getTeamInfo();
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     com.google.protobuf.ByteString
         getTeamInfoBytes();
@@ -40850,6 +40859,38 @@ public final class HeroProto {
      * <code>optional uint32 talentId = 6;</code>
      */
     int getTalentId();
+
+    // optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;
+    /**
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+     *
+     * <pre>
+     *上传队伍镜像的时候用到
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+     *
+     * <pre>
+     *上传队伍镜像的时候用到
+     * </pre>
+     */
+    com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType();
+
+    // optional .com.trans.pixel.protoc.Team team = 8;
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    boolean hasTeam();
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    com.trans.pixel.protoc.Base.Team getTeam();
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestUpdateTeamCommand}
@@ -40930,6 +40971,30 @@ public final class HeroProto {
               talentId_ = input.readUInt32();
               break;
             }
+            case 56: {
+              int rawValue = input.readEnum();
+              com.trans.pixel.protoc.HeroProto.TEAM_TYPE value = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(7, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                type_ = value;
+              }
+              break;
+            }
+            case 66: {
+              com.trans.pixel.protoc.Base.Team.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = team_.toBuilder();
+              }
+              team_ = input.readMessage(com.trans.pixel.protoc.Base.Team.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(team_);
+                team_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -40973,33 +41038,33 @@ public final class HeroProto {
     }
 
     private int bitField0_;
-    // required int64 id = 1;
+    // optional int64 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private long id_;
     /**
-     * <code>required int64 id = 1;</code>
+     * <code>optional int64 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int64 id = 1;</code>
+     * <code>optional int64 id = 1;</code>
      */
     public long getId() {
       return id_;
     }
 
-    // required string teamInfo = 2;
+    // optional string teamInfo = 2;
     public static final int TEAMINFO_FIELD_NUMBER = 2;
     private java.lang.Object teamInfo_;
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     public boolean hasTeamInfo() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     public java.lang.String getTeamInfo() {
       java.lang.Object ref = teamInfo_;
@@ -41016,7 +41081,7 @@ public final class HeroProto {
       }
     }
     /**
-     * <code>required string teamInfo = 2;</code>
+     * <code>optional string teamInfo = 2;</code>
      */
     public com.google.protobuf.ByteString
         getTeamInfoBytes() {
@@ -41100,25 +41165,71 @@ public final class HeroProto {
       return talentId_;
     }
 
+    // optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;
+    public static final int TYPE_FIELD_NUMBER = 7;
+    private com.trans.pixel.protoc.HeroProto.TEAM_TYPE type_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+     *
+     * <pre>
+     *上传队伍镜像的时候用到
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+     *
+     * <pre>
+     *上传队伍镜像的时候用到
+     * </pre>
+     */
+    public com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType() {
+      return type_;
+    }
+
+    // optional .com.trans.pixel.protoc.Team team = 8;
+    public static final int TEAM_FIELD_NUMBER = 8;
+    private com.trans.pixel.protoc.Base.Team team_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    public boolean hasTeam() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    public com.trans.pixel.protoc.Base.Team getTeam() {
+      return team_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+     */
+    public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
+      return team_;
+    }
+
     private void initFields() {
       id_ = 0L;
       teamInfo_ = "";
       rolePosition_ = 0;
       teamEngine_ = java.util.Collections.emptyList();
       talentId_ = 0;
+      type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+      team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTeamInfo()) {
-        memoizedIsInitialized = 0;
-        return false;
+      if (hasTeam()) {
+        if (!getTeam().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -41141,6 +41252,12 @@ public final class HeroProto {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(6, talentId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(7, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(8, team_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -41170,6 +41287,14 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, talentId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(7, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, team_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -41280,6 +41405,7 @@ public final class HeroProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getTeamEngineFieldBuilder();
+          getTeamFieldBuilder();
         }
       }
       private static Builder create() {
@@ -41302,6 +41428,14 @@ public final class HeroProto {
         }
         talentId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (teamBuilder_ == null) {
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
+        } else {
+          teamBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -41355,6 +41489,18 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000008;
         }
         result.talentId_ = talentId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (teamBuilder_ == null) {
+          result.team_ = team_;
+        } else {
+          result.team_ = teamBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -41411,18 +41557,22 @@ public final class HeroProto {
         if (other.hasTalentId()) {
           setTalentId(other.getTalentId());
         }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasTeam()) {
+          mergeTeam(other.getTeam());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
-        if (!hasTeamInfo()) {
-          
-          return false;
+        if (hasTeam()) {
+          if (!getTeam().isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -41446,22 +41596,22 @@ public final class HeroProto {
       }
       private int bitField0_;
 
-      // required int64 id = 1;
+      // optional int64 id = 1;
       private long id_ ;
       /**
-       * <code>required int64 id = 1;</code>
+       * <code>optional int64 id = 1;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int64 id = 1;</code>
+       * <code>optional int64 id = 1;</code>
        */
       public long getId() {
         return id_;
       }
       /**
-       * <code>required int64 id = 1;</code>
+       * <code>optional int64 id = 1;</code>
        */
       public Builder setId(long value) {
         bitField0_ |= 0x00000001;
@@ -41470,7 +41620,7 @@ public final class HeroProto {
         return this;
       }
       /**
-       * <code>required int64 id = 1;</code>
+       * <code>optional int64 id = 1;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -41479,16 +41629,16 @@ public final class HeroProto {
         return this;
       }
 
-      // required string teamInfo = 2;
+      // optional string teamInfo = 2;
       private java.lang.Object teamInfo_ = "";
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public boolean hasTeamInfo() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public java.lang.String getTeamInfo() {
         java.lang.Object ref = teamInfo_;
@@ -41502,7 +41652,7 @@ public final class HeroProto {
         }
       }
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public com.google.protobuf.ByteString
           getTeamInfoBytes() {
@@ -41518,7 +41668,7 @@ public final class HeroProto {
         }
       }
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public Builder setTeamInfo(
           java.lang.String value) {
@@ -41531,7 +41681,7 @@ public final class HeroProto {
         return this;
       }
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public Builder clearTeamInfo() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -41540,7 +41690,7 @@ public final class HeroProto {
         return this;
       }
       /**
-       * <code>required string teamInfo = 2;</code>
+       * <code>optional string teamInfo = 2;</code>
        */
       public Builder setTeamInfoBytes(
           com.google.protobuf.ByteString value) {
@@ -41857,6 +42007,175 @@ public final class HeroProto {
         talentId_ = 0;
         onChanged();
         return this;
+      }
+
+      // optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;
+      private com.trans.pixel.protoc.HeroProto.TEAM_TYPE type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+      /**
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+       *
+       * <pre>
+       *上传队伍镜像的时候用到
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+       *
+       * <pre>
+       *上传队伍镜像的时候用到
+       * </pre>
+       */
+      public com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType() {
+        return type_;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+       *
+       * <pre>
+       *上传队伍镜像的时候用到
+       * </pre>
+       */
+      public Builder setType(com.trans.pixel.protoc.HeroProto.TEAM_TYPE value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.TEAM_TYPE type = 7;</code>
+       *
+       * <pre>
+       *上传队伍镜像的时候用到
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.Team team = 8;
+      private com.trans.pixel.protoc.Base.Team team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> teamBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public boolean hasTeam() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.Team getTeam() {
+        if (teamBuilder_ == null) {
+          return team_;
+        } else {
+          return teamBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public Builder setTeam(com.trans.pixel.protoc.Base.Team value) {
+        if (teamBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          team_ = value;
+          onChanged();
+        } else {
+          teamBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public Builder setTeam(
+          com.trans.pixel.protoc.Base.Team.Builder builderForValue) {
+        if (teamBuilder_ == null) {
+          team_ = builderForValue.build();
+          onChanged();
+        } else {
+          teamBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public Builder mergeTeam(com.trans.pixel.protoc.Base.Team value) {
+        if (teamBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+              team_ != com.trans.pixel.protoc.Base.Team.getDefaultInstance()) {
+            team_ =
+              com.trans.pixel.protoc.Base.Team.newBuilder(team_).mergeFrom(value).buildPartial();
+          } else {
+            team_ = value;
+          }
+          onChanged();
+        } else {
+          teamBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public Builder clearTeam() {
+        if (teamBuilder_ == null) {
+          team_ = com.trans.pixel.protoc.Base.Team.getDefaultInstance();
+          onChanged();
+        } else {
+          teamBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.Team.Builder getTeamBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return getTeamFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      public com.trans.pixel.protoc.Base.TeamOrBuilder getTeamOrBuilder() {
+        if (teamBuilder_ != null) {
+          return teamBuilder_.getMessageOrBuilder();
+        } else {
+          return team_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.Team team = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder> 
+          getTeamFieldBuilder() {
+        if (teamBuilder_ == null) {
+          teamBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.Team, com.trans.pixel.protoc.Base.Team.Builder, com.trans.pixel.protoc.Base.TeamOrBuilder>(
+                  team_,
+                  getParentForChildren(),
+                  isClean());
+          team_ = null;
+        }
+        return teamBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestUpdateTeamCommand)
@@ -56444,60 +56763,62 @@ public final class HeroProto {
       "UserTeam.EquipRecord\022:\n\004hero\030\007 \003(\0132,.com" +
       ".trans.pixel.protoc.UserTeam.EquipRecord" +
       "\032,\n\013EquipRecord\022\r\n\005index\030\001 \001(\004\022\016\n\006itemId" +
-      "\030\002 \001(\r\"\213\001\n\025RequestGetTeamCommand\022\016\n\006user" +
-      "Id\030\001 \002(\003\022E\n\004type\030\002 \001(\01627.com.trans.pixel" +
-      ".protoc.RequestGetTeamCommand.TEAM_TYPE\"" +
-      "\033\n\tTEAM_TYPE\022\016\n\nTEAM_UNION\020\000\"D\n\026Response" +
-      "GetTeamCommand\022*\n\004team\030\001 \002(\0132\034.com.trans",
-      ".pixel.protoc.Team\"\'\n\nTeamUnlock\022\n\n\002id\030\001" +
-      " \002(\005\022\r\n\005count\030\002 \002(\005\"\230\001\n\030RequestUpdateTea" +
-      "mCommand\022\n\n\002id\030\001 \002(\003\022\020\n\010teamInfo\030\002 \002(\t\022\024" +
-      "\n\014rolePosition\030\004 \001(\005\0226\n\nteamEngine\030\005 \003(\013" +
-      "2\".com.trans.pixel.protoc.TeamEngine\022\020\n\010" +
-      "talentId\030\006 \001(\r\"\034\n\032RequestUserTeamListCom" +
-      "mand\"Q\n\033ResponseUserTeamListCommand\0222\n\010u" +
-      "serTeam\030\001 \003(\0132 .com.trans.pixel.protoc.U" +
-      "serTeam\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030\001 " +
-      "\003(\0132\".com.trans.pixel.protoc.TeamUnlock\"",
-      "P\n\032ResponseGetUserHeroCommand\0222\n\010userHer" +
-      "o\030\001 \003(\0132 .com.trans.pixel.protoc.HeroInf" +
-      "o\"V\n\030RequestFenjieHeroCommand\022:\n\nfenjieH" +
-      "ero\030\001 \003(\0132&.com.trans.pixel.protoc.Fenji" +
-      "eHeroInfo\"\032\n\030RequestUserPokedeCommand\"M\n" +
-      "\031ResponseUserPokedeCommand\0220\n\006pokede\030\001 \003" +
-      "(\0132 .com.trans.pixel.protoc.HeroInfo\"\036\n\034" +
-      "RequestBuyHeroPackageCommand\"8\n RequestS" +
-      "ubmitComposeSkillCommand\022\024\n\014composeSkill" +
-      "\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006hero",
-      "Id\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003 " +
-      "\002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006heroId" +
-      "\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\r" +
-      "\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodCommand" +
-      "\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel.pro" +
-      "toc.UserFood\"P\n\030ResponseClearInfoCommand" +
-      "\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixel.pr" +
-      "otoc.ClearInfo\";\n\034RequestChoseClearInfoC" +
-      "ommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034R" +
-      "equestHeroStrengthenCommand\022\016\n\006heroId\030\001 ",
-      "\002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006heroI" +
-      "d\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZanH" +
-      "eroMessageBoardCommand\022\016\n\006itemId\030\001 \002(\005\022\n" +
-      "\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTalent" +
-      "upgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTal" +
-      "entChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037Reque" +
-      "stTalentChangeSkillCommand\022\n\n\002id\030\001 \002(\005\022\r" +
-      "\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031Respo" +
-      "nseUserTalentCommand\0226\n\nuserTalent\030\001 \003(\013" +
-      "2\".com.trans.pixel.protoc.UserTalent\022@\n\017",
-      "userTalentSkill\030\002 \003(\0132\'.com.trans.pixel." +
-      "protoc.UserTalentSkill\"O\n\037RequestTalentC" +
-      "hangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010positio" +
-      "n\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"5\n\030RequestTalent" +
-      "SpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"N" +
-      "\n RequestTalentSkillLevelupCommand\022\n\n\002id" +
-      "\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skillid\030\003 \002(\r\"," +
-      "\n\036RequestTalentResetSkillCommand\022\n\n\002id\030\001" +
-      " \002(\r"
+      "\030\002 \001(\r\"X\n\025RequestGetTeamCommand\022\016\n\006userI" +
+      "d\030\001 \002(\003\022/\n\004type\030\002 \001(\0162!.com.trans.pixel." +
+      "protoc.TEAM_TYPE\"D\n\026ResponseGetTeamComma" +
+      "nd\022*\n\004team\030\001 \002(\0132\034.com.trans.pixel.proto" +
+      "c.Team\"\'\n\nTeamUnlock\022\n\n\002id\030\001 \002(\005\022\r\n\005coun",
+      "t\030\002 \002(\005\"\365\001\n\030RequestUpdateTeamCommand\022\n\n\002" +
+      "id\030\001 \001(\003\022\020\n\010teamInfo\030\002 \001(\t\022\024\n\014rolePositi" +
+      "on\030\004 \001(\005\0226\n\nteamEngine\030\005 \003(\0132\".com.trans" +
+      ".pixel.protoc.TeamEngine\022\020\n\010talentId\030\006 \001" +
+      "(\r\022/\n\004type\030\007 \001(\0162!.com.trans.pixel.proto" +
+      "c.TEAM_TYPE\022*\n\004team\030\010 \001(\0132\034.com.trans.pi" +
+      "xel.protoc.Team\"\034\n\032RequestUserTeamListCo" +
+      "mmand\"Q\n\033ResponseUserTeamListCommand\0222\n\010" +
+      "userTeam\030\001 \003(\0132 .com.trans.pixel.protoc." +
+      "UserTeam\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030\001",
+      " \003(\0132\".com.trans.pixel.protoc.TeamUnlock" +
+      "\"P\n\032ResponseGetUserHeroCommand\0222\n\010userHe" +
+      "ro\030\001 \003(\0132 .com.trans.pixel.protoc.HeroIn" +
+      "fo\"V\n\030RequestFenjieHeroCommand\022:\n\nfenjie" +
+      "Hero\030\001 \003(\0132&.com.trans.pixel.protoc.Fenj" +
+      "ieHeroInfo\"\032\n\030RequestUserPokedeCommand\"M" +
+      "\n\031ResponseUserPokedeCommand\0220\n\006pokede\030\001 " +
+      "\003(\0132 .com.trans.pixel.protoc.HeroInfo\"\036\n" +
+      "\034RequestBuyHeroPackageCommand\"8\n Request" +
+      "SubmitComposeSkillCommand\022\024\n\014composeSkil",
+      "l\030\001 \002(\t\"K\n\026RequestFeedFoodCommand\022\016\n\006her" +
+      "oId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003" +
+      " \002(\005\"X\n\027RequestClearHeroCommand\022\016\n\006heroI" +
+      "d\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022" +
+      "\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoodComman" +
+      "d\0222\n\010userFood\030\001 \003(\0132 .com.trans.pixel.pr" +
+      "otoc.UserFood\"P\n\030ResponseClearInfoComman" +
+      "d\0224\n\tclearInfo\030\001 \003(\0132!.com.trans.pixel.p" +
+      "rotoc.ClearInfo\";\n\034RequestChoseClearInfo" +
+      "Command\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034",
+      "RequestHeroStrengthenCommand\022\016\n\006heroId\030\001" +
+      " \002(\005\"<\n\030RequestOpenFetterCommand\022\016\n\006hero" +
+      "Id\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZan" +
+      "HeroMessageBoardCommand\022\016\n\006itemId\030\001 \002(\005\022" +
+      "\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTalen" +
+      "tupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTa" +
+      "lentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037Requ" +
+      "estTalentChangeSkillCommand\022\n\n\002id\030\001 \002(\005\022" +
+      "\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031Resp" +
+      "onseUserTalentCommand\0226\n\nuserTalent\030\001 \003(",
+      "\0132\".com.trans.pixel.protoc.UserTalent\022@\n" +
+      "\017userTalentSkill\030\002 \003(\0132\'.com.trans.pixel" +
+      ".protoc.UserTalentSkill\"O\n\037RequestTalent" +
+      "ChangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010positi" +
+      "on\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"5\n\030RequestTalen" +
+      "tSpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"" +
+      "N\n RequestTalentSkillLevelupCommand\022\n\n\002i" +
+      "d\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skillid\030\003 \002(\r\"" +
+      ",\n\036RequestTalentResetSkillCommand\022\n\n\002id\030" +
+      "\001 \002(\r**\n\tTEAM_TYPE\022\r\n\tTEAM_NULL\020\000\022\016\n\nTEA",
+      "M_UNION\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -56851,7 +57172,7 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor,
-              new java.lang.String[] { "Id", "TeamInfo", "RolePosition", "TeamEngine", "TalentId", });
+              new java.lang.String[] { "Id", "TeamInfo", "RolePosition", "TeamEngine", "TalentId", "Type", "Team", });
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_descriptor =
             getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_fieldAccessorTable = new

@@ -1256,6 +1256,10 @@ public class UnionService extends FightService{
 		redis.addApplyUnion(user.getUnionId());
 		
 		Team team = userTeamService.getTeamCache(user);
+		addApplyTeam(user, team);
+	}
+	
+	public void addApplyTeam(UserBean user, Team team) {
 		redis.addApplyTeam(team);
 	}
 	

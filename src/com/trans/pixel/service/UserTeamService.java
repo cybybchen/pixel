@@ -1,7 +1,6 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +23,7 @@ import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Base.UserTalentEquip;
+import com.trans.pixel.protoc.HeroProto.TEAM_TYPE;
 import com.trans.pixel.protoc.HeroProto.TeamUnlock;
 import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.redis.ClearRedisService;
@@ -74,6 +74,8 @@ public class UserTeamService {
 	private UserTalentService userTalentService;
 	@Resource
 	private TalentService talentService;
+	@Resource
+	private UnionService unionService;
 	
 	
 	// public void addUserTeam(UserBean user, String record, String composeSkill) {
@@ -394,34 +396,7 @@ public class UserTeamService {
 		List<UserTeamBean> userTeamList = selectUserTeamList(user);
 		for(UserTeamBean userTeam : userTeamList){
 			if(teamid == userTeam.getId()){
-				team.addAllTeamEngine(userTeam.buildTeamEngine());
-				List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
-				List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
-				List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
-				List<UserEquipPokedeBean> userEquipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
-				String[] herosstr = userTeam.getTeamRecord().split("\\|");
-				for(String herostr : herosstr){
-					String[] str = herostr.split(",");
-					if(str.length == 2){
-//						int heroId = Integer.parseInt(str[0]);
-						int infoId = Integer.parseInt(str[1]);
-						for(HeroInfoBean herobean : userHeroList){
-							if(herobean.getId() == infoId){
-								log.debug("infoid is:" + infoId + "|||" + System.currentTimeMillis());
-								team.addHeroInfo(herobean.buildTeamHeroInfo(
-										userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId()),
-										userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId())));
-								break;
-							}
-						}
-					}
-				}
-				UserTalent.Builder userTalent = userTalentService.getOtherTalent(user, userTeam.getTalentId());
-				if (userTalent != null)
-					team.setUserTalent(userTalent);
-				team.setRolePosition(userTeam.getRolePosition());
-				
-				break;
+				return composeTeam(userTeam, user);
 			}
 		}
 		return team.build();
@@ -477,6 +452,38 @@ public class UserTeamService {
 		}
 	}
 	
+	private Team composeTeam(UserTeamBean userTeam, UserBean user) {
+		Team.Builder builder = Team.newBuilder();
+		builder.addAllTeamEngine(userTeam.buildTeamEngine());
+		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);
+		List<UserClearBean> userClearList = userClearService.selectUserClearList(user.getId());
+		List<UserPokedeBean> userPokedeList = userPokedeService.selectUserPokedeList(user.getId());
+		List<UserEquipPokedeBean> userEquipPokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
+		String[] herosstr = userTeam.getTeamRecord().split("\\|");
+		for(String herostr : herosstr){
+			String[] str = herostr.split(",");
+			if(str.length == 2){
+//				int heroId = Integer.parseInt(str[0]);
+				int infoId = Integer.parseInt(str[1]);
+				for(HeroInfoBean herobean : userHeroList){
+					if(herobean.getId() == infoId){
+						log.debug("infoid is:" + infoId + "|||" + System.currentTimeMillis());
+						builder.addHeroInfo(herobean.buildTeamHeroInfo(
+								userClearService.getHeroClearList(userClearList, herobean.getHeroId()), userPokedeService.getUserPokede(userPokedeList, herobean.getHeroId()),
+								userEquipPokedeService.getUserEquipPokede(userEquipPokedeList, herobean.getEquipId())));
+						break;
+					}
+				}
+			}
+		}
+		UserTalent.Builder userTalent = userTalentService.getOtherTalent(user, userTeam.getTalentId());
+		if (userTalent != null)
+			builder.setUserTalent(userTalent);
+		builder.setRolePosition(userTeam.getRolePosition());
+		
+		return builder.build();
+	}
+	
 	public void updateUserTeamByTalentEquip(UserBean user, UserTalent userTalent) {
 		UserTeamBean team = getUserTeam(user.getId(), user.getCurrentTeamid());
 		if (team.getTalentId() != userTalent.getId())
@@ -493,6 +500,11 @@ public class UserTeamService {
 		}
 		team.setTalentEquip(UserTeamBean.composeEquip(records));
 		userTeamRedisService.updateUserTeam(team);
+	}
+	
+	public void updateUserOtherTeam(UserBean user, TEAM_TYPE type, Team team) {
+		if (type.equals(TEAM_TYPE.TEAM_UNION))
+			unionService.addApplyTeam(user, team);
 	}
 	
 	private List<EquipRecord> calTalentEquipRecords(UserBean user, int talentId) {

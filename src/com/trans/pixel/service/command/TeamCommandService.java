@@ -13,10 +13,10 @@ import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
-import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand.TEAM_TYPE;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.TEAM_TYPE;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
@@ -51,6 +51,10 @@ public class TeamCommandService extends BaseCommandService {
 
 	public void updateUserTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
+		if (cmd.hasType() && !cmd.getType().equals(TEAM_TYPE.TEAM_NULL)) {
+			updateOtherTeam(cmd, responseBuilder, user);
+			return;
+		}
 		long userId = user.getId();
 		int id = (int) cmd.getId();
 		String teamInfo = cmd.getTeamInfo();
@@ -71,6 +75,11 @@ public class TeamCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 
+	private void updateOtherTeam(RequestUpdateTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userTeamService.updateUserOtherTeam(user, cmd.getType(), cmd.getTeam());
+	}
+	
 	public void submitFightInfo(RequestFightInfoCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		FightInfo.Builder builder = FightInfo.newBuilder(cmd.getInfo());

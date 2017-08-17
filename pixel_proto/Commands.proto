@@ -942,11 +942,13 @@ message UserTeam {
 	repeated EquipRecord hero = 7;
 }
 
+enum TEAM_TYPE {
+	TEAM_NULL = 0;
+        TEAM_UNION = 1;
+}
+
 message RequestGetTeamCommand {
 	required int64 userId = 1;
-	enum TEAM_TYPE {
-		TEAM_UNION = 0;
-	}	
 	optional TEAM_TYPE type = 2;
 }
 
@@ -960,11 +962,13 @@ message TeamUnlock {//出战人数解锁
 }
 
 message RequestUpdateTeamCommand {
-	required int64 id = 1;
-	required string teamInfo = 2;
+	optional int64 id = 1;
+	optional string teamInfo = 2;
 	optional int32 rolePosition = 4;
 	repeated TeamEngine teamEngine = 5;
 	optional uint32 talentId = 6;
+	optional TEAM_TYPE type = 7;//上传队伍镜像的时候用到
+	optional Team team = 8;
 }
 
 message RequestUserTeamListCommand {
