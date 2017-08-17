@@ -140,7 +140,7 @@ public class LotteryService {
     				continue;
     			} else {
     				if (type == RewardConst.JEWEL){
-    					if(user.getRechargeRecord() == 0 || randomLotteryList.size() < rmbCount)
+    					if(user.getRechargeRecord() == 0 || randomLotteryList.size() <= rmbCount + 1)
     						user.setJewelPRD(user.getJewelPRD() + 1);
     				}else
     					user.setHunxiaPRD(user.getHunxiaPRD() + 1);
