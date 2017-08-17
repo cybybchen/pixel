@@ -265,31 +265,31 @@ public class HeroCommandService extends BaseCommandService {
 			Hero heroconf = heroService.getHero(heroInfo.getHeroId());
 			Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
-			reward.setItemid(fenjie.getLootlist().getItemid());
-			reward.setCount(skillService.getSP(heroInfo)+heroInfo.getSp()-2);
+			reward.setItemid(fenjie.getLootlist().getItemid());//技能石
+			reward.setCount(skillService.getSP(heroInfo)+heroInfo.getSp());
 			MultiReward.Builder rewards = MultiReward.newBuilder();
 			rewards.addLoot(reward);
 			reward = RewardInfo.newBuilder();
-			reward.setItemid(39013+heroInfo.getStarLevel()-5);
+			reward.setItemid(39013+heroInfo.getStarLevel()-5);//升星书
 			reward.setCount(1);
 			rewards.addLoot(reward);
 			reward = RewardInfo.newBuilder();
-			reward.setItemid(39016+heroInfo.getRank()-10);
+			reward.setItemid(39016+heroInfo.getRank()-10);//进阶药水
 			reward.setCount(1);
 			rewards.addLoot(reward);
 			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 			if(heroconfig.getQuality() == 4) {
-				reward = RewardInfo.newBuilder();
+				reward = RewardInfo.newBuilder();//紫色自选包
 				reward.setItemid(34091);
 				reward.setCount(20);
 				rewards.addLoot(reward);
 			}else if(heroconfig.getQuality() == 5) {
-				reward = RewardInfo.newBuilder();
+				reward = RewardInfo.newBuilder();//橙色自选包
 				reward.setItemid(34092);
 				reward.setCount(25);
 				rewards.addLoot(reward);
 			}else if(heroconfig.getQuality() == 6) {
-				reward = RewardInfo.newBuilder();
+				reward = RewardInfo.newBuilder();//红色自选包
 				reward.setItemid(34093);
 				reward.setCount(30);
 				rewards.addLoot(reward);
