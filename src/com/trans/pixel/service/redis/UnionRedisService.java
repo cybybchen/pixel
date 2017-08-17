@@ -693,12 +693,17 @@ public class UnionRedisService extends RedisService{
 		delete(key);
 	}
 	
+	/**
+	 * union fight 
+	 * @param unionId
+	 */
 	public void addApplyUnion(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 //		sadd(key, "" + user.getUnionId());
 		if (hexist(key, "" + unionId))
 			return;
 		hput(key, "" + unionId, "");
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
