@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -1652,10 +1653,17 @@ public class UnionService extends FightService{
 	}
 	
 	public int calCountTime() {
-//		return (int)(RedisService.nextDay(0) - RedisService.now());
-		if (NEXT_TIME == 0)
-			setUnionFightTime();
-		return NEXT_TIME - RedisService.now();
+		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+			return (int)(RedisService.nextDay(0) - RedisService.now());
+		
+		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+		
+//		if (NEXT_TIME == 0)
+//			setUnionFightTime();
+//		return NEXT_TIME - RedisService.now();
 	}
 	
 	public static int NEXT_TIME = RedisService.now();
