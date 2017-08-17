@@ -79,15 +79,15 @@ public class ShopService {
 //		return redis.getBlackShopRefreshCost(time);
 //	}
 //	
-//	public void saveBlackShop(ShopList shoplist, UserBean user){
-//		redis.saveBlackShop(shoplist, user);
-//	}
-//	
-//	public ShopList refreshBlackShop(UserBean user){
-//		ShopList shoplist = redis.buildBlackShop(user);
-//		redis.saveBlackShop(shoplist, user);
-//		return shoplist;
-//	}
+	public void saveBlackShop(ShopList shoplist, UserBean user){
+		redis.saveBlackShop(shoplist, user);
+	}
+	
+	public ShopList.Builder refreshBlackShop(UserBean user){
+		redis.deleteBlackShop(user);
+		ShopList.Builder shoplist = redis.getBlackShop(user);
+		return shoplist;
+	}
 
 	public ShopList getUnionShop(UserBean user){
 		return redis.getUnionShop(user);
@@ -118,13 +118,13 @@ public class ShopService {
 	}
 
 	public ShopList getPVPShop(UserBean user){
-		ShopList shopList = redis.getPVPShop(user);
-		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
-			ShopList.Builder builder = ShopList.newBuilder(redis.buildPVPShop(user));
-			builder.setEndTime(builder.getEndTime() + 1);
-			redis.savePVPShop(builder.build(), user);
-			return builder.build();
-		}
+//		ShopList shopList = redis.getPVPShop(user);
+//		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
+//			ShopList.Builder builder = ShopList.newBuilder(redis.buildPVPShop(user));
+//			builder.setEndTime(builder.getEndTime() + 1);
+//			redis.savePVPShop(builder.build(), user);
+//			return builder.build();
+//		}
 		return redis.getPVPShop(user);
 	}
 	
@@ -153,13 +153,13 @@ public class ShopService {
 	}
 
 	public ShopList getLadderShop(UserBean user){
-		ShopList shopList = redis.getLadderShop(user);
-		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
-			ShopList.Builder builder = ShopList.newBuilder(redis.buildLadderShop(user));
-			builder.setEndTime(builder.getEndTime() + 1);
-			redis.saveLadderShop(builder.build(), user);
-			return builder.build();
-		}
+//		ShopList shopList = redis.getLadderShop(user);
+//		if (shopList.getEndTime() == RedisService.nextWeek(0)) {
+//			ShopList.Builder builder = ShopList.newBuilder(redis.buildLadderShop(user));
+//			builder.setEndTime(builder.getEndTime() + 1);
+//			redis.saveLadderShop(builder.build(), user);
+//			return builder.build();
+//		}
 		return redis.getLadderShop(user);
 	}
 	

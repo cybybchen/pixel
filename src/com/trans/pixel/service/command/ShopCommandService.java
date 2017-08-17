@@ -240,15 +240,16 @@ public class ShopCommandService extends BaseCommandService{
 	public void BlackShop(Builder responseBuilder, UserBean user){
 		// if(user.getVip() < 6)
 		// 	return;
-		ShopList.Builder list = service.getBlackShop(user);
-		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
-		shop.addAllItems(list.getItemsList());
-		responseBuilder.setBlackShopCommand(shop);
+		ShopList.Builder shoplist = service.getBlackShop(user);
 //		ShopList shoplist = service.getBlackShop(user);
 //		int refreshtime = user.getBlackShopRefreshTime();
-////		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
-////			shoplist = service.refreshBlackShop(user);
-////		}
+		if(shoplist.getEndTime() <= System.currentTimeMillis()/1000){
+			shoplist = service.refreshBlackShop(user);
+		}
+		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
+		shop.addAllItems(shoplist.getItemsList());
+		shop.setEndTime(shoplist.getEndTime());
+		responseBuilder.setBlackShopCommand(shop);
 //
 //		ResponseBlackShopCommand.Builder shop = ResponseBlackShopCommand.newBuilder();
 ////		shop.addAllItems(shoplist.getItemsList());
@@ -292,7 +293,7 @@ public class ShopCommandService extends BaseCommandService{
 			rewards.addAllLoot(commbuilder.getRewardList());
 			handleRewards(responseBuilder, user, rewards);
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
-			//	      service.saveBlackShop(shoplist.build(), user);
+			service.saveBlackShop(shoplist.build(), user);
 			pusher.pushRewardCommand(responseBuilder, user, RewardConst.JEWEL);
 			logService.sendShopLog(user.getServerId(), user.getId(), 3, commbuilder.getItemid(), commbuilder.getCurrency(), cost);
 		}

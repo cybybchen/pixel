@@ -315,14 +315,27 @@ public class ShopRedisService extends RedisService{
 	public ShopList.Builder getBlackShop(UserBean user) {
 		ShopList list = CacheService.getcache(RedisKey.SHENMISHOP_CONFIG);
 		ShopList.Builder builder = ShopList.newBuilder(list);
-		if(user.getFriendVip() == 1)
+		
+		String value = this.hget(USERDATA+user.getId(), "BLACKSHOP", user.getId());
+		ShopList.Builder mybuilder = ShopList.newBuilder();
+		if(value != null) {
+			parseJson(value, mybuilder);
+			builder.setEndTime(mybuilder.getEndTime());
+		}
 		for(int index = builder.getItemsCount()-1; index >= 0;index--) {
 			Commodity.Builder comm = builder.getItemsBuilder(index);
-			if(comm.getPosition() == 3){
+			if(comm.getWeekbuy() == 1) {
+				for(Commodity mycomm : mybuilder.getItemsList()) {
+					if(mycomm.getPosition() == comm.getPosition()) {
+						comm.setLimit(mycomm.getLimit());
+					}
+				}
+			}else if(comm.getPosition() == 3 && user.getFriendVip() == 1){
 				builder.removeItems(index);
-				break;
 			}
 		}
+		if(!builder.hasEndTime())
+			builder.setEndTime(nextWeek(0));
 		return builder;
 	}
 //	public ShopList getBlackShop(UserBean user) {
@@ -353,25 +366,30 @@ public class ShopRedisService extends RedisService{
 //		return 500;
 //	}
 	
-//	public void saveBlackShop(ShopList shoplist, UserBean user) {
-//		if(shoplist.getItemsCount() > 0)
-//			this.hput(USERDATA+user.getId(), "BLACKSHOP", formatJson(shoplist));
-//	}
+	public void saveBlackShop(ShopList shoplist, UserBean user) {
+		if(shoplist.getItemsCount() > 0){
+			ShopList.Builder builder = ShopList.newBuilder(shoplist);
+			for(int index = builder.getItemsCount()-1; index >= 0; index--) {
+				if(builder.getItems(index).getWeekbuy() == 0)
+					builder.removeItems(index);
+			}
+			this.hput(USERDATA+user.getId(), "BLACKSHOP", formatJson(builder.build()));
+		}
+	}
 	
-//	public long getBlackShopEndTime(){
-////		long times[] = {today(0), today(3), today(6), today(9), today(12), today(15), today(18), today(21)};
-//		long now = now();
-//		for(int time = 0; time < 24; time+=2){
-//			if(now < today(time))
-//				return today(time);
-//		}
-//		return today(24);
-////		long time = today(21);
-////		if(now() < time)
-////			return time;
-////		else//第二天21点
-////			return time+24*3600;
-//	}
+	public void deleteBlackShop(UserBean user) {
+		hdelete(USERDATA+user.getId(), "BLACKSHOP");
+	}
+	
+	public long getBlackShopEndTime(){
+//		long times[] = {today(0), today(3), today(6), today(9), today(12), today(15), today(18), today(21)};
+		return nextWeek(0);
+//		long time = today(21);
+//		if(now() < time)
+//			return time;
+//		else//第二天21点
+//			return time+24*3600;
+	}
 	
 //	public ShopList buildBlackShop(UserBean user){
 //		ShopWillList.Builder willsbuilder = ShopWillList.newBuilder();
@@ -899,7 +917,7 @@ public class ShopRedisService extends RedisService{
 		CommodityList.Builder list = getLadderShopConfig();
 		ShopList.Builder builder = ShopList.newBuilder();
 		builder.addAllItems(list.getDataList());
-		builder.setEndTime(getPVPShopEndTime());
+		builder.setEndTime(getLadderShopEndTime());
 		for(int i = builder.getItemsCount()-1; i >= 0; i--) {
 			Commodity.Builder commbuilder = builder.getItemsBuilder(i);
 			commbuilder.setMaxlimit(commbuilder.getLimit());
