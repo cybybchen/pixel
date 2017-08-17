@@ -12,15 +12,18 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
+import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
 import com.trans.pixel.service.redis.PropRedisService;
 
 @Service
@@ -47,6 +50,8 @@ public class PropService {
 	private EquipService equipService;
 	@Resource
 	private NoticeMessageService noticeMessageService;
+	@Resource
+	private UserHeroService userHeroService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -81,7 +86,7 @@ public class PropService {
 	
 	
 	
-	public ResultConst useProp(UserBean user, int propId, int propCount, MultiReward.Builder rewards, int chipId) {
+	public ResultConst useProp(Builder responseBuilder, UserBean user, int propId, int propCount, MultiReward.Builder rewards, int chipId) {
 		UserPropBean userProp = userPropService.selectUserProp(user.getId(), propId);
 		if (userProp == null || userProp.getPropCount() < propCount)
 			return ErrorConst.PROP_USE_ERROR;
@@ -115,6 +120,32 @@ public class PropService {
 			
 			userProp.setPropCount(userProp.getPropCount() - propCount);
 			userPropService.updateUserProp(userProp);
+			
+			return SuccessConst.USE_PROP;
+		}else if(propId >= 39013 && propId <= 39015) {
+			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), chipId);
+			heroInfo.setStarLevel(propId-39013+5);
+			userHeroService.updateUserHero(heroInfo);
+			
+			userProp.setPropCount(userProp.getPropCount() - 1);
+			userPropService.updateUserProp(userProp);
+			
+			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
+			builder.addUserHero(heroInfo.buildHeroInfo());
+			responseBuilder.setGetUserHeroCommand(builder.build());
+			
+			return SuccessConst.USE_PROP;
+		}else if(propId >= 39016 && propId <= 39026) {
+			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), chipId);
+			heroInfo.setRank(propId-39016+10);
+			userHeroService.updateUserHero(heroInfo);
+			
+			userProp.setPropCount(userProp.getPropCount() - 1);
+			userPropService.updateUserProp(userProp);
+			
+			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
+			builder.addUserHero(heroInfo.buildHeroInfo());
+			responseBuilder.setGetUserHeroCommand(builder.build());
 			
 			return SuccessConst.USE_PROP;
 		}

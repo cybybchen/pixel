@@ -49,7 +49,7 @@ public class PropCommandService extends BaseCommandService {
 			chipId = cmd.getChipId();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		
-		ResultConst ret = propService.useProp(user, propId, propCount, rewards, chipId);
+		ResultConst ret = propService.useProp(responseBuilder, user, propId, propCount, rewards, chipId);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 			

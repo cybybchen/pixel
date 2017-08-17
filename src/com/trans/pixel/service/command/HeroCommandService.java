@@ -262,8 +262,8 @@ public class HeroCommandService extends BaseCommandService {
 			prop.setPropCount(prop.getPropCount()-1);
 			userPropService.updateUserProp(prop);
 			pushCommandService.pushUserPropCommand(responseBuilder, user, prop);//返回盖亚女神的怀抱
-			Hero heroconf = heroService.getHero(heroInfo.getHeroId());
-			Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
+			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+			Fenjie fenjie = fenjieRedisService.getFenjie(heroconfig.getQuality());
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(fenjie.getLootlist().getItemid());//技能石
 			reward.setCount(skillService.getSP(heroInfo)+heroInfo.getSp());
@@ -277,7 +277,6 @@ public class HeroCommandService extends BaseCommandService {
 			reward.setItemid(39016+heroInfo.getRank()-10);//进阶药水
 			reward.setCount(1);
 			rewards.addLoot(reward);
-			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 			if(heroconfig.getQuality() == 4) {
 				reward = RewardInfo.newBuilder();//紫色自选包
 				reward.setItemid(34091);

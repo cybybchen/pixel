@@ -28,7 +28,7 @@ public class HeroInfoBean {
 	private long userId = 0;
 	private int sp = 0;//技能点
 	private String skillInfo = "";
-	private int rank = 0;
+	private int rank = 0;//进阶
 	public int getSp() {
 		return sp;
 	}
@@ -107,6 +107,9 @@ public class HeroInfoBean {
 	public void setSkillInfoList(List<SkillInfoBean> skillInfoList) {
 		this.skillInfoList = skillInfoList;
 	}
+	/**
+	 * 进阶
+	 */
 	public int getRank() {
 		return rank;
 	}
