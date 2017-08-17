@@ -274,7 +274,7 @@ public class ShopCommandService extends BaseCommandService{
 		if (commbuilder.getPosition() == 3 && user.getFriendVip() == 1) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
-        responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
 		} else if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
