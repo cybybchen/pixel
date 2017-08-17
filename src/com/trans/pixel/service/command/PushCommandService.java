@@ -243,6 +243,19 @@ public class PushCommandService extends BaseCommandService {
 		if (type == MailConst.TYPE_SYSTEM_MAIL || type == MailConst.TYPE_MINE_ATTACKED_MAIL) {
 			for (Integer systemType : MailConst.SYSTEM_MAIL_TYPES) {
 				List<MailBean> mailList = mailService.getMailList(user.getId(), systemType);
+				for (int j = 0; j < mailList.size(); ++j) {
+					MailBean mail = mailList.get(j);
+					if (!mail.getRewardList().isEmpty()) {
+						List<RewardBean> rewardList = mail.getRewardList();
+						for (int i = 0; i < rewardList.size(); i++) {
+							RewardBean reward = rewardList.get(i);
+							if (reward.getItemid() == RewardConst.ZHAOHUANSHI_RECHARGE) {
+								reward.setItemid(RewardConst.ZHAOHUANSHI);
+								rewardList.set(i, reward);
+							}
+						}
+					}
+				}
 				mailBuilderList.add(buildMailList(systemType, mailList));
 			}
 			

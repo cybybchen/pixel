@@ -113,11 +113,12 @@ public class LotteryService {
     			prdLotteryList.add(lottery);
     	}
    
+    	List<RewardBean> rewardList = new ArrayList<RewardBean>();
     	List<RewardBean> randomLotteryList = new ArrayList<RewardBean>();
     	if(count > 1){
 	    	RewardBean willReward = randomReward(willLotteryList);
 	    	if (willReward != null) {
-	    		randomLotteryList.add(willReward);
+	    		rewardList.add(willReward);//10连抽必得
 	    	}
 	    	
 //	    	if (type == RewardConst.JEWEL)
@@ -126,7 +127,7 @@ public class LotteryService {
 //	    		user.setHunxiaPRD(user.getHunxiaPRD() + 1);
     	}
     		
-    	while (randomLotteryList.size() < (count > 1 ? (count + 1) : count)) {
+    	while (randomLotteryList.size() < count) {
     		if (type == RewardConst.JEWEL || type == LotteryConst.LOOTERY_SPECIAL_TYPE) {
     			if (RandomUtils.nextInt(10000) < (type == RewardConst.JEWEL ? user.getJewelPRD() : user.getHunxiaPRD()) * 2) {
     				RewardBean reward = randomReward(prdLotteryList);
@@ -140,7 +141,7 @@ public class LotteryService {
     				continue;
     			} else {
     				if (type == RewardConst.JEWEL){
-    					if(user.getRechargeRecord() == 0 || randomLotteryList.size() <= rmbCount + 1)
+    					if(user.getRechargeRecord() == 0 || randomLotteryList.size() < rmbCount)
     						user.setJewelPRD(user.getJewelPRD() + 1);
     				}else
     					user.setHunxiaPRD(user.getHunxiaPRD() + 1);
@@ -150,12 +151,13 @@ public class LotteryService {
     		RewardBean reward = randomReward(lotteryList);
     		randomLotteryList.add(reward);
     	}
+    	rewardList.addAll(randomLotteryList);
     	
 //    	randomLotteryList.addAll(rewardService.randomRewardList(lotteryList, count - randomLotteryList.size()));
     	
-    	noticeMessageService.composeLotteryMessage(user, randomLotteryList);
+    	noticeMessageService.composeLotteryMessage(user, rewardList);
     	userService.updateUser(user);
-    	return randomLotteryList;
+    	return rewardList;
     }
 	
 	public boolean isLotteryActivityAvailable(int id) {
