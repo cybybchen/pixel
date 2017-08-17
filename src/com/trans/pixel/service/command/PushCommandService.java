@@ -471,11 +471,24 @@ public class PushCommandService extends BaseCommandService {
 			if(responseBuilder.hasRewardCommand())
 				reward = responseBuilder.getRewardCommandBuilder();
 			reward.setTitle(rewards.getName());
-			reward.addAllLoot(rewards.getLootList());
-			for(int i = reward.getLootCount()-1; i >= 0; i--) {
-				if(reward.getLoot(i).getItemid() < 100)//主角不返回
-					reward.removeLoot(i);
+			for (RewardInfo rewardinfo : rewards.getLootList()) {
+				if (rewardinfo.getItemid() < 100)
+					continue;
+				
+				if (rewardinfo.getItemid() == RewardConst.ZHAOHUANSHI_RECHARGE) {
+					RewardInfo.Builder builder = RewardInfo.newBuilder(rewardinfo);
+					builder.setItemid(RewardConst.ZHAOHUANSHI);
+					reward.addLoot(builder.build());
+					continue;
+				}
+				
+				reward.addLoot(rewardinfo);
 			}
+//			reward.addAllLoot(rewards.getLootList());
+//			for(int i = reward.getLootCount()-1; i >= 0; i--) {
+//				if(reward.getLoot(i).getItemid() < 100)//主角不返回
+//					reward.removeLoot(i);
+//			}
 			if(reward.getLootCount() > 0)
 				responseBuilder.setRewardCommand(reward);
 		}
