@@ -6,16 +6,26 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
+import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.PVPProto.Mowu;
+import com.trans.pixel.protoc.PVPProto.MowuList;
+import com.trans.pixel.protoc.PVPProto.MowuReward;
+import com.trans.pixel.protoc.PVPProto.MowuRewardList;
 import com.trans.pixel.protoc.PVPProto.PVPBoss;
 import com.trans.pixel.protoc.PVPProto.PVPBossConfig;
 import com.trans.pixel.protoc.PVPProto.PVPBossConfigList;
@@ -29,6 +39,10 @@ import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.PVPPosition;
 import com.trans.pixel.protoc.PVPProto.PVPPositionList;
 import com.trans.pixel.protoc.PVPProto.PVPPositionLists;
+import com.trans.pixel.protoc.UnionProto.RankItem;
+import com.trans.pixel.protoc.UnionProto.UnionBosswin;
+import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
@@ -38,12 +52,17 @@ public class PvpMapRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(PvpMapRedisService.class);
 	@Resource
 	private UserService userService;
+	@Resource
+	private MailService mailService;
 	
 	public PvpMapRedisService() {
 		buildPvpMapConfig();
 		buildActivityEventConfig();
 		buildPositionConfig();
 		buildBossConfig();
+		buildMowuConfig();
+		buildMowuRankRewrdConfig();
+		buildMowuRewardConfig();
 	}
 	
 	public PVPMapList.Builder getMapList(long userId, int pvpUnlock) {
@@ -470,6 +489,131 @@ public class PvpMapRedisService extends RedisService{
 			}
 		}
 		CacheService.setcache(RedisKey.PVPBOSS_CONFIG, builder.build());
+	}
+
+	public void saveBossReward(int serverId, int bossId) {
+		set(RedisKey.MOWUREWARD_PREFIX+serverId, bossId+"");
+		expireAt(RedisKey.MOWUREWARD_PREFIX+serverId, nextDay());
+	}
+	
+	public void sendMowuReward(int serverId, int bossId) {
+//		Mowu boss = getMowu(serverId);
+		UnionBosswin bossrewards = getMowuRankRewardConfig(bossId);
+		List<RankItem> rankList = bossrewards.getRankList();
+		Iterator<String> it = getMowuRankIdList(serverId).iterator();
+		for (RankItem item : rankList) {
+			List<RewardInfo> rewardList = item.getRewardList();
+			for (int i = item.getRank() - 1; i < item.getRank1(); ++ i) {
+				if(!it.hasNext())
+					return;
+				long id = Long.parseLong(it.next());
+				MailBean mail = MailBean.buildSystemMail(id, item.getDes(), rewardList);
+				logger.debug("mowu rank mail is:" + mail.toJson());
+				mailService.addMail(mail);
+			}
+		}
+	}
+
+	public void addMowuRank(int serverId, long userId, long dps) {
+		zincrby(RedisKey.MOWURANK_PREFIX+serverId, dps, userId+"");
+	}
+	
+	public Set<String> getMowuRankIdList(int serverId) {
+		return zrange(RedisKey.MOWURANK_PREFIX+serverId, 0, -1);
+	}
+	
+	public List<UserRankBean> getMowuRankList(int serverId) {
+		List<UserRankBean> rankList = new ArrayList<UserRankBean>();
+		Set<TypedTuple<String>> ids = zrangewithscore(RedisKey.MOWURANK_PREFIX+serverId, 0, 49);
+		int i = 1;
+		for(TypedTuple<String> id : ids) {
+			UserRankBean userRankBean = new UserRankBean();
+			userRankBean.setUserId(Long.parseLong(id.getValue()));
+			userRankBean.setRank(i);
+			i++;
+			UserInfo userInfo = userService.getCache(serverId, userRankBean.getUserId());
+			if (userInfo != null)
+				userRankBean.initByUserCache(userInfo);
+			rankList.add(userRankBean);
+		}
+		return rankList;
+	}
+	
+	public void createMowu(int serverId) {
+		delete(RedisKey.MOWU_PREFIX+serverId);
+		Mowu boss = getMowuConfig(RedisService.weekday());
+		Mowu.Builder builder = Mowu.newBuilder(boss);
+		builder.setStatus(0);
+		saveMowu(serverId, builder);
+	}
+
+	public void saveMowu(int serverId, Mowu.Builder builder) {
+		set(RedisKey.MOWU_PREFIX+serverId, formatJson(builder.build()));
+		expireAt(RedisKey.MOWU_PREFIX+serverId, nextDay());
+	}
+	
+	public boolean setMowuLock(int serverId, int id) {
+		return setLock(RedisKey.MOWU_PREFIX+serverId+"_"+id);
+	}
+
+	public void clearMowuLock(int serverId, int id) {
+		clearLock(RedisKey.MOWU_PREFIX+serverId+"_"+id);
+	}
+	
+	public Mowu getMowu(int serverId) {
+		String value = get(RedisKey.MOWU_PREFIX+serverId);
+		Mowu.Builder builder = Mowu.newBuilder();
+		if(value != null && parseJson(value, builder))
+			return builder.build();
+		return null;
+	}
+	
+	public Mowu getMowuConfig(int id) {
+		Map<Integer, Mowu> map = CacheService.hgetcache(RedisKey.MOWU_CONFIG);
+		return map.get(id);
+	}
+	
+	private void buildMowuConfig() {
+		MowuList.Builder builder = MowuList.newBuilder(); 
+		String xml = RedisService.ReadConfig("ld_ruqin.xml");
+		RedisService.parseXml(xml, builder);
+		Map<Integer, Mowu> map = new HashMap<Integer, Mowu>();
+		for(Mowu boss : builder.getDataList()) {
+			map.put(boss.getId(), boss);
+		}
+		CacheService.hputcacheAll(RedisKey.MOWU_CONFIG, map);
+	}
+	
+	public UnionBosswin getMowuRankRewardConfig(int id) {
+		Map<Integer, UnionBosswin> map = CacheService.hgetcache(RedisKey.MOWURANKREWARD_CONFIG);
+		return map.get(id);
+	}
+	
+	private void buildMowuRankRewrdConfig() {
+		UnionBosswinList.Builder builder = UnionBosswinList.newBuilder(); 
+		String xml = RedisService.ReadConfig("ld_ruqinrank.xml");
+		RedisService.parseXml(xml, builder);
+		Map<Integer, UnionBosswin> map = new HashMap<Integer, UnionBosswin>();
+		for(UnionBosswin win : builder.getDataList()) {
+			map.put(win.getId(), win);
+		}
+		CacheService.hputcacheAll(RedisKey.MOWURANKREWARD_CONFIG, map);
+	}
+
+	public MowuReward getMowuRewardConfig(int id) {
+		Map<Integer, MowuReward> map = CacheService.hgetcache(RedisKey.MOWURANKREWARD_CONFIG);
+		return map.get(id);
+	}
+	
+	private void buildMowuRewardConfig() {
+		MowuRewardList.Builder builder = MowuRewardList.newBuilder(); 
+		String xml = RedisService.ReadConfig("ld_ruqinwin.xml");
+		RedisService.parseXml(xml, builder);
+		Map<Integer, MowuReward> map = new HashMap<Integer, MowuReward>();
+		for(MowuReward boss : builder.getDataList()) {
+			map.put(boss.getId(), boss);
+		}
+		CacheService.hputcacheAll(RedisKey.MOWUREWARD_CONFIG, map);
 	}
 
 	public Map<Integer, PVPMap> getPvpMap(){

@@ -46,6 +46,12 @@ public class RedisKey {
 //	public final static String PVPMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonster";
 	public final static String PVPACTIVITYMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"PVPActivityMonster";
 	public final static String PVPBOSS_CONFIG = PREFIX+CONFIG_PREFIX+"PVPBoss";
+	public final static String MOWURANKREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"MowuRankReward";
+	public final static String MOWUREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"MowuReward";
+	public final static String MOWU_CONFIG = PREFIX+CONFIG_PREFIX+"Mowu";
+	public final static String MOWU_PREFIX = PREFIX+"Mowu_";
+	public final static String MOWURANK_PREFIX = PREFIX+"MowuRank_";
+	public final static String MOWUREWARD_PREFIX = PREFIX+"MowuReward_";
 	public final static String PVPPOSITION_CONFIG = PREFIX+CONFIG_PREFIX+"PVPPosition";
 //	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
 	public static final String USER_POKEDE_PREFIX = PREFIX + "user_pokede_"; 

@@ -10713,12 +10713,6 @@ public final class Request {
           return false;
         }
       }
-      if (hasUpdateTeamCommand()) {
-        if (!getUpdateTeamCommand().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       if (hasHeroLevelUpCommand()) {
         if (!getHeroLevelUpCommand().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -16885,12 +16879,6 @@ public final class Request {
         }
         if (hasRegisterCommand()) {
           if (!getRegisterCommand().isInitialized()) {
-            
-            return false;
-          }
-        }
-        if (hasUpdateTeamCommand()) {
-          if (!getUpdateTeamCommand().isInitialized()) {
             
             return false;
           }

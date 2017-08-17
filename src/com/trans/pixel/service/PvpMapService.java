@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -22,22 +23,30 @@ import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.mapper.UserPvpBuffMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
+import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
+import com.trans.pixel.protoc.Base.UnionBossUserRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.PVPProto.Mowu;
 import com.trans.pixel.protoc.PVPProto.PVPEvent;
 import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand;
+import com.trans.pixel.protoc.UnionProto.RankItem;
+import com.trans.pixel.protoc.UnionProto.UnionBoss;
+import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class PvpMapService {
@@ -327,6 +336,51 @@ public class PvpMapService {
 			return true;
 		}
 		return false;
+	}
+	
+	public Mowu getMowu(int serverId) {
+		return redis.getMowu(serverId);
+	}
+	
+	public boolean setMowuLock(int serverId, int bossId) {
+		return redis.setMowuLock(serverId, bossId);
+	}
+	
+	public void clearMowuLock(int serverId, int bossId) {
+		redis.clearMowuLock(serverId, bossId);
+	}
+	
+	public ErrorConst attackMowu(Builder responseBuilder, UserBean user, int bossId, long hp, int percent) {
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		int serverId = user.getServerId();
+		Mowu boss = redis.getMowu(user.getServerId());
+		Mowu.Builder bossbuilder = Mowu.newBuilder();
+		if(boss != null)
+			bossbuilder = Mowu.newBuilder(boss);
+		if(boss == null || boss.getStatus() == 1 || boss.getId() != bossId) {//已结束
+			return ErrorConst.NOT_MONSTER;
+		}else if(!redis.setMowuLock(serverId, bossId)) {//boss正在被攻击
+			return ErrorConst.UNION_BOSS_IS_BEING_FIGHT_ERROR;
+		}
+		if(percent > 0) {
+			bossbuilder.setPercent(Math.min(10000, bossbuilder.getPercent()+percent));
+			if(bossbuilder.getPercent() >= 10000)
+				bossbuilder.setStatus(1);
+			redis.saveMowu(serverId, bossbuilder);
+		}
+		redis.addMowuRank(serverId, user.getId(), hp);
+		rewards.addAllLoot(bossbuilder.getLootlistList());
+		rewardService.doFilterRewards(user, rewards);//攻击奖励
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+		if(bossbuilder.getPercent() >= 10000) {
+			redis.sendMowuReward(serverId, bossId);//排行发奖
+			redis.saveBossReward(serverId, bossId);//全服发奖
+		}
+		/**
+		 * send log
+		 */
+		sendLog(user, 0, PvpMapConst.TYPE_MOWU, true, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, bossId, 0);
+		return null;
 	}
 	
 	public MultiReward attackEvent(UserBean user, int positionid, boolean ret, int time){

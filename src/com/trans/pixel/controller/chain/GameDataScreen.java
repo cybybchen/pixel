@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.PvpMapConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
@@ -1599,6 +1600,7 @@ public class GameDataScreen extends RequestScreen {
 		return true;
 	}
 
+<<<<<<< 7c6997136aac19b8215c0f649f8fa6931680486f
 	@Override
 	protected boolean handleCommand(RequestAttackMowuCommand cmd,
 			Builder responseBuilder, UserBean user) {
@@ -1606,4 +1608,13 @@ public class GameDataScreen extends RequestScreen {
 		return true;
 	}
 
+||||||| merged common ancestors
+=======
+	@Override
+	protected boolean handleCommand(RequestAttackMowuCommand cmd, Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackMowu(cmd, responseBuilder, user);
+		return true;
+	}
+
+>>>>>>> add mowu
 }

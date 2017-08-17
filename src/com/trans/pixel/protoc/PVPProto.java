@@ -18818,6 +18818,16 @@ public final class PVPProto {
      * </pre>
      */
     int getStatus();
+
+    // optional int32 percent = 7;
+    /**
+     * <code>optional int32 percent = 7;</code>
+     */
+    boolean hasPercent();
+    /**
+     * <code>optional int32 percent = 7;</code>
+     */
+    int getPercent();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Mowu}
@@ -18909,6 +18919,11 @@ public final class PVPProto {
             case 48: {
               bitField0_ |= 0x00000010;
               status_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000020;
+              percent_ = input.readInt32();
               break;
             }
           }
@@ -19092,6 +19107,22 @@ public final class PVPProto {
       return status_;
     }
 
+    // optional int32 percent = 7;
+    public static final int PERCENT_FIELD_NUMBER = 7;
+    private int percent_;
+    /**
+     * <code>optional int32 percent = 7;</code>
+     */
+    public boolean hasPercent() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 percent = 7;</code>
+     */
+    public int getPercent() {
+      return percent_;
+    }
+
     private void initFields() {
       id_ = 0;
       level_ = 0;
@@ -19099,6 +19130,7 @@ public final class PVPProto {
       lootlist_ = java.util.Collections.emptyList();
       enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
       status_ = 0;
+      percent_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -19129,6 +19161,9 @@ public final class PVPProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, status_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, percent_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -19162,6 +19197,10 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, status_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, percent_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19301,6 +19340,8 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         status_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        percent_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -19362,6 +19403,10 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000010;
         }
         result.status_ = status_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.percent_ = percent_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -19418,6 +19463,9 @@ public final class PVPProto {
         }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
+        }
+        if (other.hasPercent()) {
+          setPercent(other.getPercent());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -19963,6 +20011,39 @@ public final class PVPProto {
       public Builder clearStatus() {
         bitField0_ = (bitField0_ & ~0x00000020);
         status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 percent = 7;
+      private int percent_ ;
+      /**
+       * <code>optional int32 percent = 7;</code>
+       */
+      public boolean hasPercent() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional int32 percent = 7;</code>
+       */
+      public int getPercent() {
+        return percent_;
+      }
+      /**
+       * <code>optional int32 percent = 7;</code>
+       */
+      public Builder setPercent(int value) {
+        bitField0_ |= 0x00000040;
+        percent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 percent = 7;</code>
+       */
+      public Builder clearPercent() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        percent_ = 0;
         onChanged();
         return this;
       }
@@ -20655,15 +20736,15 @@ public final class PVPProto {
   public interface RequestAttackMowuCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // optional int32 eventid = 1;
+    // optional int32 id = 1;
     /**
-     * <code>optional int32 eventid = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
-    boolean hasEventid();
+    boolean hasId();
     /**
-     * <code>optional int32 eventid = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
-    int getEventid();
+    int getId();
 
     // optional int64 hp = 2;
     /**
@@ -20738,7 +20819,7 @@ public final class PVPProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              eventid_ = input.readInt32();
+              id_ = input.readInt32();
               break;
             }
             case 16: {
@@ -20791,20 +20872,20 @@ public final class PVPProto {
     }
 
     private int bitField0_;
-    // optional int32 eventid = 1;
-    public static final int EVENTID_FIELD_NUMBER = 1;
-    private int eventid_;
+    // optional int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
     /**
-     * <code>optional int32 eventid = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
-    public boolean hasEventid() {
+    public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional int32 eventid = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
-    public int getEventid() {
-      return eventid_;
+    public int getId() {
+      return id_;
     }
 
     // optional int64 hp = 2;
@@ -20840,7 +20921,7 @@ public final class PVPProto {
     }
 
     private void initFields() {
-      eventid_ = 0;
+      id_ = 0;
       hp_ = 0L;
       percent_ = 0;
     }
@@ -20857,7 +20938,7 @@ public final class PVPProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, eventid_);
+        output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt64(2, hp_);
@@ -20876,7 +20957,7 @@ public final class PVPProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, eventid_);
+          .computeInt32Size(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -21002,7 +21083,7 @@ public final class PVPProto {
 
       public Builder clear() {
         super.clear();
-        eventid_ = 0;
+        id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         hp_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -21039,7 +21120,7 @@ public final class PVPProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.eventid_ = eventid_;
+        result.id_ = id_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -21064,8 +21145,8 @@ public final class PVPProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand other) {
         if (other == com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand.getDefaultInstance()) return this;
-        if (other.hasEventid()) {
-          setEventid(other.getEventid());
+        if (other.hasId()) {
+          setId(other.getId());
         }
         if (other.hasHp()) {
           setHp(other.getHp());
@@ -21100,35 +21181,35 @@ public final class PVPProto {
       }
       private int bitField0_;
 
-      // optional int32 eventid = 1;
-      private int eventid_ ;
+      // optional int32 id = 1;
+      private int id_ ;
       /**
-       * <code>optional int32 eventid = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
-      public boolean hasEventid() {
+      public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional int32 eventid = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
-      public int getEventid() {
-        return eventid_;
+      public int getId() {
+        return id_;
       }
       /**
-       * <code>optional int32 eventid = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
-      public Builder setEventid(int value) {
+      public Builder setId(int value) {
         bitField0_ |= 0x00000001;
-        eventid_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 eventid = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
-      public Builder clearEventid() {
+      public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        eventid_ = 0;
+        id_ = 0;
         onChanged();
         return this;
       }
@@ -28217,37 +28298,38 @@ public final class PVPProto {
       "PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n\006rew" +
       "ard\030\002 \003(\0132\".com.trans.pixel.protoc.Rewar" +
       "dInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(\0132\"." +
-      "com.trans.pixel.protoc.MowuReward\"\256\001\n\004Mo" +
+      "com.trans.pixel.protoc.MowuReward\"\277\001\n\004Mo" +
       "wu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005count\030\003" +
       " \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.pixel" +
       ".protoc.RewardInfo\0226\n\nenemygroup\030\005 \001(\0132\"" +
       ".com.trans.pixel.protoc.EnemyGroup\022\016\n\006st" +
-      "atus\030\006 \001(\005\"6\n\010MowuList\022*\n\004data\030\001 \003(\0132\034.c",
-      "om.trans.pixel.protoc.Mowu\"H\n\030RequestAtt" +
-      "ackMowuCommand\022\017\n\007eventid\030\001 \001(\005\022\n\n\002hp\030\002 " +
-      "\001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestAttackPVP" +
-      "MonsterCommand\022\022\n\npositionid\030\001 \001(\005\022\013\n\003re" +
-      "t\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineI" +
-      "nfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMin" +
-      "eInfoCommand\022*\n\004team\030\005 \001(\0132\034.com.trans.p" +
-      "ixel.protoc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com" +
-      ".trans.pixel.protoc.PVPMine\"T\n\033RequestAt" +
-      "tackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid",
-      "\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037Req" +
-      "uestHelpAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005" +
-      "\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030" +
-      "\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelC" +
-      "ommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003re" +
-      "t\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026RequestSendMa" +
-      "ilCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002" +
-      " \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\022\017\n" +
-      "\007fightId\030\005 \001(\r\">\n\035RequestBrotherMineInfo" +
-      "Command\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*",
-      "\n\034RequestRefreshPVPMineCommand\022\n\n\002id\030\001 \002" +
-      "(\005\"\225\001\n\031ResponsePVPMapListCommand\022-\n\005fiel" +
-      "d\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMap\022" +
-      "\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005\022*\n\004boss\030\004" +
-      " \003(\0132\034.com.trans.pixel.protoc.Mowu"
+      "atus\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\"6\n\010MowuList\022",
+      "*\n\004data\030\001 \003(\0132\034.com.trans.pixel.protoc.M" +
+      "owu\"C\n\030RequestAttackMowuCommand\022\n\n\002id\030\001 " +
+      "\001(\005\022\n\n\002hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036Requ" +
+      "estAttackPVPMonsterCommand\022\022\n\npositionid" +
+      "\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031Req" +
+      "uestPVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032Re" +
+      "sponsePVPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034" +
+      ".com.trans.pixel.protoc.Team\0221\n\010mineInfo" +
+      "\030\003 \001(\0132\037.com.trans.pixel.protoc.PVPMine\"" +
+      "T\n\033RequestAttackPVPMineCommand\022\n\n\002id\030\001 \002",
+      "(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030" +
+      "\004 \001(\005\"h\n\037RequestHelpAttackPVPMineCommand" +
+      "\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(" +
+      "\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027Reque" +
+      "stHelpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid" +
+      "\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026R" +
+      "equestSendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022" +
+      "\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004t" +
+      "ype\030\004 \002(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035RequestBro" +
+      "therMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbroth",
+      "erId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineComma" +
+      "nd\022\n\n\002id\030\001 \002(\005\"\225\001\n\031ResponsePVPMapListCom" +
+      "mand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.pr" +
+      "otoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001" +
+      "(\005\022*\n\004boss\030\004 \003(\0132\034.com.trans.pixel.proto" +
+      "c.Mowu"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28397,7 +28479,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_Mowu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mowu_descriptor,
-              new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", });
+              new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", "Percent", });
           internal_static_com_trans_pixel_protoc_MowuList_descriptor =
             getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_MowuList_fieldAccessorTable = new
@@ -28409,7 +28491,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_descriptor,
-              new java.lang.String[] { "Eventid", "Hp", "Percent", });
+              new java.lang.String[] { "Id", "Hp", "Percent", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
             getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_fieldAccessorTable = new

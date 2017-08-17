@@ -968,7 +968,6 @@ message RequestUpdateTeamCommand {
 	repeated TeamEngine teamEngine = 5;
 	optional uint32 talentId = 6;
 	optional TEAM_TYPE type = 7;//上传队伍镜像的时候用到
-	optional Team team = 8;
 }
 
 message RequestUserTeamListCommand {
@@ -1488,12 +1487,13 @@ message Mowu {
 	repeated RewardInfo lootlist = 4;
 	optional EnemyGroup enemygroup = 5;
 	optional int32 status = 6;//0表示可打,1表示打完
+	optional int32 percent = 7;
 }
 message MowuList {
 	repeated Mowu data = 1;
 }
 message RequestAttackMowuCommand {
-	optional int32 eventid = 1;
+	optional int32 id = 1;
         optional int64 hp = 2;
         optional int32 percent = 3;
 }
