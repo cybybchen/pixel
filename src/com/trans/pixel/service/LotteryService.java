@@ -120,10 +120,10 @@ public class LotteryService {
 	    		randomLotteryList.add(willReward);
 	    	}
 	    	
-	    	if (type == RewardConst.JEWEL)
-	    		user.setJewelPRD(user.getJewelPRD() + 1);
-	    	else if (type == LotteryConst.LOOTERY_SPECIAL_TYPE)
-	    		user.setHunxiaPRD(user.getHunxiaPRD() + 1);
+//	    	if (type == RewardConst.JEWEL)
+//	    		user.setJewelPRD(user.getJewelPRD() + 1);
+//	    	else if (type == LotteryConst.LOOTERY_SPECIAL_TYPE)
+//	    		user.setHunxiaPRD(user.getHunxiaPRD() + 1);
     	}
     		
     	while (randomLotteryList.size() < (count > 1 ? (count + 1) : count)) {

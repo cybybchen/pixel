@@ -113,7 +113,7 @@ public class LotteryCommandService extends BaseCommandService {
 			if (!free) {
 				if(costtype == RewardConst.ZHAOHUANSHI)
 					rmbCount = Math.max(0, count - user.getZhaohuanshi());
-				if (!costService.cost(user, costtype, cost, true)) {
+				if (!costService.canCost(user, costtype, cost, true)) {
 					ErrorConst error = ErrorConst.NOT_ENOUGH_COIN;
 					if (costtype == RewardConst.ZHAOHUANSHI)
 						error = ErrorConst.NOT_ENOUGH_ZHAOHUANSHI;
@@ -126,6 +126,13 @@ public class LotteryCommandService extends BaseCommandService {
 		            pushUserData(responseBuilder, user, type);
 					return;	
 				}
+				
+				/**
+				 *  用钻石补充的召唤石数量
+				 */
+				rmbCount += Math.max(0, count - user.getZhaohuanshi() - user.getZhaohuanshi1());
+				
+				costService.cost(user, costtype, cost, true);
 				
 				if (type == RewardConst.COIN) {
 					user.setLotteryCoinCount(user.getLotteryCoinCount() + 1);

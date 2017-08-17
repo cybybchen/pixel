@@ -158,6 +158,9 @@ public class RewardService {
 					user.setUnionExp(user.getUnionExp() + (int)rewardCount);
 					unionService.addUnionExp(user, (int)rewardCount);
 					return true;
+				case RewardConst.ZHAOHUANSHI_RECHARGE:
+					user.setZhaohuanshi1(user.getZhaohuanshi1() + (int)rewardCount);
+					return true;
 				default:
 					break;
 			}

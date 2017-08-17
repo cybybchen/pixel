@@ -15,6 +15,7 @@ public class RewardConst {
 	public static final int ZHUJUEEXP = 1010;
 	public static final int VIPEXP = 1011;
 	public static final int UNIONEXP = 1012;
+	public static final int ZHAOHUANSHI_RECHARGE = 1013;
 	
 	public static final int EQUIPMENT = 10000;
 	
