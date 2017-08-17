@@ -1261,7 +1261,8 @@ public class UnionService extends FightService{
 		redis.addApplyUnion(user.getUnionId());
 		
 		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
-		updateApplyTeam(user, userTeam);
+		if (userTeam != null)
+			updateApplyTeam(user, userTeam);
 	}
 	
 	public void updateApplyTeam(UserBean user, UserTeamBean userTeam) {
@@ -1537,7 +1538,7 @@ public class UnionService extends FightService{
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
 		int day = DateUtil.getDayOfWeek();
 		log.error("current week day is:" + DateUtil.getDayOfWeek());
-		if (day == UnionConst.FIGHT_APPLY_DAY)
+		if (day == UnionConst.FIGHT_APPLY_DAY)//周四
 			status = UNION_FIGHT_STATUS.APPLY_TIME;
 		else if (day == UnionConst.FIGHT_HUIZHANG_DAY)
 			status = UNION_FIGHT_STATUS.HUIZHANG_TIME;
