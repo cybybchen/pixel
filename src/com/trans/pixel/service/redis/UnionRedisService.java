@@ -23,6 +23,7 @@ import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
@@ -742,15 +743,42 @@ public class UnionRedisService extends RedisService{
 		return hexist(key, "" + unionId);
 	}
 	
-	public void addApplyTeam(Team team) {
-		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + team.getUser().getUnionId();
+	public void updateApplyTeam(UserTeamBean userTeam, int unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + unionId;
 		
-		hput(key, "" + team.getUser().getId(), RedisService.formatJson(team));
+		hput(key, "" + userTeam.getUserId(), userTeam.toJson());
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 	}
 	
-	public Team getApplyTeam(UserBean user) {
+	public UserTeamBean getUserUnionFightTeam(UserBean user) {
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + user.getUnionId();
+		String value = hget(key, "" + user.getId());
+		
+		return UserTeamBean.fromJson(value);
+	}
+	
+	public List<UserTeamBean> getUnionFightTeamList(String unionId) {
+		List<UserTeamBean> teamList = new ArrayList<UserTeamBean>();
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + unionId;
+		Map<String, String> map = hget(key);
+		for (String value : map.values()) {
+			UserTeamBean userTeam = UserTeamBean.fromJson(value);
+			if (userTeam != null)
+				teamList.add(userTeam);
+		}
+		
+		return teamList;
+	}
+	
+	public void updateApplyTeamCache(String unionId, Map<String, String> map) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
+		
+		hputAll(key, map);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
+	}
+	
+	public Team getApplyTeamCache(UserBean user) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + user.getUnionId();
 		
 		String value = hget(key, "" + user.getId());
 		Team.Builder builder = Team.newBuilder();

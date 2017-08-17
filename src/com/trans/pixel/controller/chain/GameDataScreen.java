@@ -4,7 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.PvpMapConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveListCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
@@ -65,6 +64,7 @@ import com.trans.pixel.protoc.HeroProto.RequestTalentSpUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentupgradeCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserPokedeCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.RequestZanHeroMessageBoardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestAttackLadderModeCommand;
@@ -1610,6 +1610,13 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestChaijieHeroCommand cmd, Builder responseBuilder, UserBean user) {
 		heroCommandService.chaijieHero(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUserTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		teamCommandService.getUserTeam(cmd, responseBuilder, user);
 		return true;
 	}
 }

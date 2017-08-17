@@ -501,10 +501,29 @@ public class UserTeamService {
 		team.setTalentEquip(UserTeamBean.composeEquip(records));
 		userTeamRedisService.updateUserTeam(team);
 	}
-	
-	public void updateUserOtherTeam(UserBean user, TEAM_TYPE type, Team team) {
+	public void updateUserOtherTeam(UserBean user, TEAM_TYPE type, String record, int rolePosition, List<TeamEngine> teamEngineList, int talentId) {
+		UserTeamBean userTeam = new UserTeamBean();
+		userTeam.setUserId(user.getId());
+		userTeam.setTeamRecord(record);
+		userTeam.setRolePosition(rolePosition);
+		userTeam.composeEngine(teamEngineList);
+		userTeam.setTalentId(talentId);
+//		userTeam.setTalentEquip(UserTeamBean.composeEquip(calTalentEquipRecords(user, userTeam.getTalentId())));
+//		userTeam.setHeroEquip(UserTeamBean.composeEquip(calHeroEquipRecords(user, userTeam.getTeamRecord())));
+//		userTeamRedisService.updateUserTeam(userTeam);
 		if (type.equals(TEAM_TYPE.TEAM_UNION))
-			unionService.addApplyTeam(user, team);
+			unionService.updateApplyTeam(user, userTeam);
+	}
+	
+	public UserTeamBean getUserOtherTeam(UserBean user, TEAM_TYPE type) {
+		if (type.equals(TEAM_TYPE.TEAM_UNION))
+			return unionService.getUserUnionFightTeam(user);
+		
+		return null;
+	}
+	
+	public Team getOtherUserTeamCache(long userId) {
+		return unionService.getUnionFightTeamCache(userId);
 	}
 	
 	private List<EquipRecord> calTalentEquipRecords(UserBean user, int talentId) {

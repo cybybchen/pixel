@@ -339,6 +339,7 @@ message Commodity {
 	repeated RewardInfo reward = 16;
 	optional string img = 17;
 	optional string des = 18;
+	optional int32 weekbuy = 19;
 }
 message CommodityList {
 	repeated Commodity data = 1;
@@ -972,6 +973,10 @@ message RequestUpdateTeamCommand {
 
 message RequestUserTeamListCommand {
 
+}
+
+message RequestUserTeamCommand {
+	optional TEAM_TYPE type = 1;
 }
 
 message ResponseUserTeamListCommand {
@@ -3977,6 +3982,7 @@ message RequestCommand {
 	optional RequestLootRewardTaskCommand lootRewardTaskCommand = 267;
 	optional RequestUnionFightCommand unionFightCommand = 268;
 	optional RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;
+	optional RequestUserTeamCommand userTeamCommand = 270;
 }
 ////////// Commands
 message ErrorCommand {

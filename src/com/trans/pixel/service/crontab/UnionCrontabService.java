@@ -61,6 +61,8 @@ public class UnionCrontabService {
 		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(0);
 		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME))
 			unionService.deleteLastRecord();
+		else if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
+			unionService.handlerUnionFightTeamCache();
 		else if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
 			unionService.calUnionFight();
 		else if (status.equals(UNION_FIGHT_STATUS.SEND_REWARD_TIME))

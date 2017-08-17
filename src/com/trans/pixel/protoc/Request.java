@@ -2990,6 +2990,20 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;</code>
      */
     com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommandOrBuilder getViewUnionFightFightInfoCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    boolean hasUserTeamCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand getUserTeamCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder getUserTeamCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -5806,6 +5820,19 @@ public final class Request {
                 viewUnionFightFightInfoCommand_ = subBuilder.buildPartial();
               }
               bitField6_ |= 0x00080000;
+              break;
+            }
+            case 2162: {
+              com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder subBuilder = null;
+              if (((bitField6_ & 0x00100000) == 0x00100000)) {
+                subBuilder = userTeamCommand_.toBuilder();
+              }
+              userTeamCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(userTeamCommand_);
+                userTeamCommand_ = subBuilder.buildPartial();
+              }
+              bitField6_ |= 0x00100000;
               break;
             }
           }
@@ -10530,6 +10557,28 @@ public final class Request {
       return viewUnionFightFightInfoCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;
+    public static final int USERTEAMCOMMAND_FIELD_NUMBER = 270;
+    private com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand userTeamCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    public boolean hasUserTeamCommand() {
+      return ((bitField6_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand getUserTeamCommand() {
+      return userTeamCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+     */
+    public com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder getUserTeamCommandOrBuilder() {
+      return userTeamCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.ServerProto.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand.getDefaultInstance();
@@ -10743,6 +10792,7 @@ public final class Request {
       lootRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand.getDefaultInstance();
       unionFightCommand_ = com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand.getDefaultInstance();
       viewUnionFightFightInfoCommand_ = com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand.getDefaultInstance();
+      userTeamCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12090,6 +12140,9 @@ public final class Request {
       if (((bitField6_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(269, viewUnionFightFightInfoCommand_);
       }
+      if (((bitField6_ & 0x00100000) == 0x00100000)) {
+        output.writeMessage(270, userTeamCommand_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -12947,6 +13000,10 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(269, viewUnionFightFightInfoCommand_);
       }
+      if (((bitField6_ & 0x00100000) == 0x00100000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(270, userTeamCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -13271,6 +13328,7 @@ public final class Request {
           getLootRewardTaskCommandFieldBuilder();
           getUnionFightCommandFieldBuilder();
           getViewUnionFightFightInfoCommandFieldBuilder();
+          getUserTeamCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -14551,6 +14609,12 @@ public final class Request {
           viewUnionFightFightInfoCommandBuilder_.clear();
         }
         bitField6_ = (bitField6_ & ~0x00080000);
+        if (userTeamCommandBuilder_ == null) {
+          userTeamCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.getDefaultInstance();
+        } else {
+          userTeamCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00100000);
         return this;
       }
 
@@ -16287,6 +16351,14 @@ public final class Request {
         } else {
           result.viewUnionFightFightInfoCommand_ = viewUnionFightFightInfoCommandBuilder_.build();
         }
+        if (((from_bitField6_ & 0x00100000) == 0x00100000)) {
+          to_bitField6_ |= 0x00100000;
+        }
+        if (userTeamCommandBuilder_ == null) {
+          result.userTeamCommand_ = userTeamCommand_;
+        } else {
+          result.userTeamCommand_ = userTeamCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -16944,6 +17016,9 @@ public final class Request {
         }
         if (other.hasViewUnionFightFightInfoCommand()) {
           mergeViewUnionFightFightInfoCommand(other.getViewUnionFightFightInfoCommand());
+        }
+        if (other.hasUserTeamCommand()) {
+          mergeUserTeamCommand(other.getUserTeamCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -42516,6 +42591,123 @@ public final class Request {
         return viewUnionFightFightInfoCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;
+      private com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand userTeamCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder> userTeamCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public boolean hasUserTeamCommand() {
+        return ((bitField6_ & 0x00100000) == 0x00100000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand getUserTeamCommand() {
+        if (userTeamCommandBuilder_ == null) {
+          return userTeamCommand_;
+        } else {
+          return userTeamCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public Builder setUserTeamCommand(com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand value) {
+        if (userTeamCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          userTeamCommand_ = value;
+          onChanged();
+        } else {
+          userTeamCommandBuilder_.setMessage(value);
+        }
+        bitField6_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public Builder setUserTeamCommand(
+          com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder builderForValue) {
+        if (userTeamCommandBuilder_ == null) {
+          userTeamCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          userTeamCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField6_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public Builder mergeUserTeamCommand(com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand value) {
+        if (userTeamCommandBuilder_ == null) {
+          if (((bitField6_ & 0x00100000) == 0x00100000) &&
+              userTeamCommand_ != com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.getDefaultInstance()) {
+            userTeamCommand_ =
+              com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.newBuilder(userTeamCommand_).mergeFrom(value).buildPartial();
+          } else {
+            userTeamCommand_ = value;
+          }
+          onChanged();
+        } else {
+          userTeamCommandBuilder_.mergeFrom(value);
+        }
+        bitField6_ |= 0x00100000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public Builder clearUserTeamCommand() {
+        if (userTeamCommandBuilder_ == null) {
+          userTeamCommand_ = com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          userTeamCommandBuilder_.clear();
+        }
+        bitField6_ = (bitField6_ & ~0x00100000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder getUserTeamCommandBuilder() {
+        bitField6_ |= 0x00100000;
+        onChanged();
+        return getUserTeamCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      public com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder getUserTeamCommandOrBuilder() {
+        if (userTeamCommandBuilder_ != null) {
+          return userTeamCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return userTeamCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserTeamCommand userTeamCommand = 270;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder> 
+          getUserTeamCommandFieldBuilder() {
+        if (userTeamCommandBuilder_ == null) {
+          userTeamCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand.Builder, com.trans.pixel.protoc.HeroProto.RequestUserTeamCommandOrBuilder>(
+                  userTeamCommand_,
+                  getParentForChildren(),
+                  isClean());
+          userTeamCommand_ = null;
+        }
+        return userTeamCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -42550,7 +42742,7 @@ public final class Request {
       ".proto\032\021ServerProto.proto\032\023UserInfoProto" +
       ".proto\032\017MailProto.proto\032\020UnionProto.prot" +
       "o\032\025RewardTaskProto.proto\032\017TaskProto.prot" +
-      "o\"\223\211\001\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .co",
+      "o\"\335\211\001\n\016RequestCommand\022.\n\004head\030\001 \002(\0132 .co",
       "m.trans.pixel.protoc.HeadInfo\022G\n\017registe" +
       "rCommand\030\002 \001(\0132..com.trans.pixel.protoc." +
       "RequestRegisterCommand\022A\n\014loginCommand\030\003" +
@@ -42988,7 +43180,9 @@ public final class Request {
       "\214\002 \001(\01320.com.trans.pixel.protoc.RequestU" +
       "nionFightCommand\022f\n\036viewUnionFightFightI" +
       "nfoCommand\030\215\002 \001(\0132=.com.trans.pixel.prot" +
-      "oc.RequestViewUnionFightFightInfoCommand"
+      "oc.RequestViewUnionFightFightInfoCommand" +
+      "\022H\n\017userTeamCommand\030\216\002 \001(\0132..com.trans.p" +
+      "ixel.protoc.RequestUserTeamCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43000,7 +43194,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "CanRechargeCommand", "AttackMowuCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ChaijieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "CanRechargeCommand", "AttackMowuCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ChaijieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", "UserTeamCommand", });
           return null;
         }
       };

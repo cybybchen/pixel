@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
@@ -14,8 +15,10 @@ import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.TEAM_TYPE;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
@@ -24,7 +27,6 @@ import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
-import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -46,8 +48,6 @@ public class TeamCommandService extends BaseCommandService {
 	private RankService rankService;
 	@Resource
 	private FightInfoService fightInfoService;
-	@Resource
-	private UnionService unionService;
 
 	public void updateUserTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
@@ -77,7 +77,8 @@ public class TeamCommandService extends BaseCommandService {
 
 	private void updateOtherTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
-//		userTeamService.updateUserOtherTeam(user, cmd.getType(), cmd.getTeam());
+		userTeamService.updateUserOtherTeam(user, cmd.getType(), cmd.getTeamInfo(),
+				cmd.getRolePosition(), cmd.getTeamEngineList(), cmd.getTalentId());
 	}
 	
 	public void submitFightInfo(RequestFightInfoCommand cmd,
@@ -157,20 +158,32 @@ public class TeamCommandService extends BaseCommandService {
 		pushCommandService.pushUserTeamListCommand(responseBuilder, user);
 	}
 
+	public void getUserTeam(RequestUserTeamCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		UserTeamBean userTeam = userTeamService.getUserOtherTeam(user, cmd.getType());
+		
+		ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
+		builder.addUserTeam(userTeam.buildUserTeam());
+		
+		responseBuilder.setUserTeamListCommand(builder.build());
+	}
+	
 	public void getTeamCache(RequestGetTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		if (cmd.getUserId() == 0)
 			return;
 
 		Team team = null;
-		if (cmd.hasType() && cmd.getType().equals(TEAM_TYPE.TEAM_UNION)) {
-			team = unionService.getUnionFightTeam(user);
+		if (cmd.hasType() && !cmd.getType().equals(TEAM_TYPE.TEAM_NULL)) {
+			team = userTeamService.getOtherUserTeamCache(cmd.getUserId());
 		} else
 			team = userTeamService.getTeamCache(cmd.getUserId());
 		
-		ResponseGetTeamCommand.Builder builder = ResponseGetTeamCommand
-				.newBuilder();
-		builder.setTeam(team);
-		responseBuilder.setTeamCommand(builder.build());
+		if (team != null) {
+			ResponseGetTeamCommand.Builder builder = ResponseGetTeamCommand
+					.newBuilder();
+			builder.setTeam(team);
+			responseBuilder.setTeamCommand(builder.build());
+		}
 	}
 }

@@ -219,6 +219,7 @@ import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
@@ -447,6 +448,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestKaifu2ActivityCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUserTeamCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestChangePositionCommand cmd, Builder responseBuilder, UserBean user);
@@ -1353,6 +1355,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasLadderShopRefreshCommand()) {
 			RequestLadderShopRefreshCommand cmd = request.getLadderShopRefreshCommand();
 			if (isFuncAvailable(responseBuilder, "LadderShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasUserTeamCommand()) {
+			RequestUserTeamCommand cmd = request.getUserTeamCommand();
+			if (isFuncAvailable(responseBuilder, "UserTeamCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasBossRoomInfoCommand()) {
 			RequestBossRoomInfoCommand cmd = request.getBossRoomInfoCommand();

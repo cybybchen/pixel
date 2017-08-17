@@ -32,6 +32,7 @@ import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
+import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.AreaProto.AreaResource;
 import com.trans.pixel.protoc.AreaProto.FightResult;
 import com.trans.pixel.protoc.AreaProto.FightResultList;
@@ -1251,20 +1252,41 @@ public class UnionService extends FightService{
 		unionMapper.updateUnion(new UnionBean(union));
 	}
 	
+	/**
+	 * 下面是公会战内容
+	 * @param user
+	 */
 	public void applyFight(UserBean user) {
 		redis.applyFight(user);
 		redis.addApplyUnion(user.getUnionId());
 		
-		Team team = userTeamService.getTeamCache(user);
-		addApplyTeam(user, team);
+		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
+		updateApplyTeam(user, userTeam);
 	}
 	
-	public void addApplyTeam(UserBean user, Team team) {
-		redis.addApplyTeam(team);
+	public void updateApplyTeam(UserBean user, UserTeamBean userTeam) {
+		redis.updateApplyTeam(userTeam, user.getUnionId());
 	}
 	
-	public Team getUnionFightTeam(UserBean user) {
-		return redis.getApplyTeam(user);
+	public UserTeamBean getUserUnionFightTeam(UserBean user) {
+		return redis.getUserUnionFightTeam(user);
+	}
+	
+	public void handlerUnionFightTeamCache() {
+		Set<String> unionIds = redis.getApplyUnionIds();
+		for (String unionId : unionIds) {
+			Map<String, String> map = new HashMap<String, String>();
+			List<UserTeamBean> userTeamList = redis.getUnionFightTeamList(unionId);
+			for (UserTeamBean userTeam : userTeamList) {
+				map.put("" + userTeam.getUserId(), userTeam.toJson());
+			}
+			redis.updateApplyTeamCache(unionId, map);
+		}
+	}
+	
+	public Team getUnionFightTeamCache(long userId) {
+		UserBean user = userService.getUserOther(userId);
+		return redis.getApplyTeamCache(user);
 	}
 	
 	public ResultConst handlerFightMembers(UserBean user, List<Long> userIds, FIGHT_STATUS fightStatus) {
