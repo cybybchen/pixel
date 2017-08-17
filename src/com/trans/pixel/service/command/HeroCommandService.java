@@ -19,6 +19,7 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -50,6 +51,7 @@ import com.trans.pixel.service.SkillService;
 import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserHeroService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTeamService;
@@ -97,6 +99,8 @@ public class HeroCommandService extends BaseCommandService {
 	private StarRedisService starService;
 	@Resource
 	private TalentService talentService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void heroLevelUpTo(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user) {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), cmd.getInfoId());
@@ -227,7 +231,84 @@ public class HeroCommandService extends BaseCommandService {
 	}
 
 	public void chaijieHero(RequestChaijieHeroCommand cmd, Builder responseBuilder, UserBean user) {
+		UserPropBean prop = userPropService.selectUserProp(user.getId(), 39027);
+		if(prop == null || prop.getPropCount() < 1) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_PROP);
+			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.NOT_ENOUGH_PROP));
+			return;
+		}
+		ResponseDeleteHeroCommand.Builder deleteHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
+		ResponseDeleteHeroCommand.Builder errorHeroBuilder = ResponseDeleteHeroCommand.newBuilder();
 		
+		long userId = user.getId();
+		FenjieHeroInfo hero  = cmd.getFenjieHero();
+		boolean isError = false;
+		List<Long> costInfoIds = new ArrayList<Long>();
+		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, hero.getInfoId());
+		if (heroInfo != null) {
+			if(heroInfo.isLock()){
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_LOCKED);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_LOCKED));
+				return;
+			}else if(heroInfo.getStarLevel() < 5){
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_STAR_FIRST);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_STAR_FIRST));
+				return;
+			}else if(heroInfo.getRank() < 10) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_RANK_FIRST);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.HERO_RANK_FIRST));
+				return;
+			}
+			prop.setPropCount(prop.getPropCount()-1);
+			userPropService.updateUserProp(prop);
+			pushCommandService.pushUserPropCommand(responseBuilder, user, prop);//返回盖亚女神的怀抱
+			Hero heroconf = heroService.getHero(heroInfo.getHeroId());
+			Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(fenjie.getLootlist().getItemid());
+			reward.setCount(skillService.getSP(heroInfo)+heroInfo.getSp()-2);
+			MultiReward.Builder rewards = MultiReward.newBuilder();
+			rewards.addLoot(reward);
+			reward = RewardInfo.newBuilder();
+			reward.setItemid(39013+heroInfo.getStarLevel()-5);
+			reward.setCount(1);
+			rewards.addLoot(reward);
+			reward = RewardInfo.newBuilder();
+			reward.setItemid(39016+heroInfo.getRank()-10);
+			reward.setCount(1);
+			rewards.addLoot(reward);
+			handleRewards(responseBuilder, user, rewards);
+			
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.HEROID, "" + heroInfo.getHeroId());
+			params.put(LogString.LEVEL, "" + heroInfo.getLevel());
+			params.put(LogString.GRADE, "" + heroInfo.getRank());
+			params.put(LogString.STAR, "" + heroInfo.getStarLevel());
+			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+			params.put(LogString.RARE, "" + heroconfig.getQuality());
+			
+			logService.sendLog(params, LogString.LOGTYPE_HERORES);
+		}else{
+			isError = true;
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
+			responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_HAS_FENJIE));
+			errorHeroBuilder.addHeroInfo(hero);
+		}
+		if(!isError){
+			costInfoIds.add(hero.getInfoId());
+			deleteHeroBuilder.addHeroInfo(hero);
+		}
+		
+		userHeroService.delUserHero(user.getId(), costInfoIds);
+		
+		if(isError){
+			responseBuilder.setDeleteHeroCommand(errorHeroBuilder.build());
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		}else{
+			responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
+		}
 	}
 	
 	public void fenjieHero(RequestFenjieHeroCommand cmd, Builder responseBuilder, UserBean user) {
