@@ -277,6 +277,23 @@ public class HeroCommandService extends BaseCommandService {
 			reward.setItemid(39016+heroInfo.getRank()-10);
 			reward.setCount(1);
 			rewards.addLoot(reward);
+			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+			if(heroconfig.getQuality() == 4) {
+				reward = RewardInfo.newBuilder();
+				reward.setItemid(34091);
+				reward.setCount(20);
+				rewards.addLoot(reward);
+			}else if(heroconfig.getQuality() == 5) {
+				reward = RewardInfo.newBuilder();
+				reward.setItemid(34092);
+				reward.setCount(25);
+				rewards.addLoot(reward);
+			}else if(heroconfig.getQuality() == 6) {
+				reward = RewardInfo.newBuilder();
+				reward.setItemid(34093);
+				reward.setCount(30);
+				rewards.addLoot(reward);
+			}
 			handleRewards(responseBuilder, user, rewards);
 			
 			Map<String, String> params = new HashMap<String, String>();
@@ -286,7 +303,7 @@ public class HeroCommandService extends BaseCommandService {
 			params.put(LogString.LEVEL, "" + heroInfo.getLevel());
 			params.put(LogString.GRADE, "" + heroInfo.getRank());
 			params.put(LogString.STAR, "" + heroInfo.getStarLevel());
-			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+//			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 			params.put(LogString.RARE, "" + heroconfig.getQuality());
 			
 			logService.sendLog(params, LogString.LOGTYPE_HERORES);
