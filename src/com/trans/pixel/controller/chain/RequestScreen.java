@@ -1412,7 +1412,7 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestUnionInfoCommand cmd = request.getUnionInfoCommand();
 			if (isFuncAvailable(responseBuilder, "UnionInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
-		if (result && user != null && !request.hasQueryRechargeCommand() && !request.hasLogCommand()) {
+		if (result && user != null && !request.hasLogCommand()) {
 			pushNoticeCommand(responseBuilder, user);
 
 			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
