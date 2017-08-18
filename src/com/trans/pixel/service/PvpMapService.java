@@ -279,7 +279,7 @@ public class PvpMapService {
 			Map<Integer, UserPvpBuffBean> pvpMap = redis.getUserBuffs(user, maplist);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPEvent> events = redis.getEvents(user, pvpMap);
-			Mowu boss = redis.getMowu(user.getServerId());
+			Mowu boss = null;//redis.getMowu(user.getServerId());
 			refreshMine(maplist, mineMap, user);
 			UserPvpBuffBean buff = pvpMap.get(0);
 			if(buff != null){

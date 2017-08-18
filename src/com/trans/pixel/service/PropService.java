@@ -26,6 +26,8 @@ import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
+import com.trans.pixel.protoc.HeroProto.Talentupgrade;
+import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
 import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.TalentRedisService;
 
@@ -167,18 +169,29 @@ public class PropService {
 				return ErrorConst.NEED_BETTER_UPGRADECARD;
 			else if(propId == 39105 && talent.getLevel() > 100)
 				return ErrorConst.NEED_BETTER_UPGRADECARD;
-			else if(talentRedisService.getTalentupgradeConfig().get(talent.getLevel()+1) == null) 
+			Map<Integer,Talentupgrade> upgrademap = talentRedisService.getTalentupgradeConfig();
+			if(upgrademap.get(talent.getLevel()+1) == null) 
 				return ErrorConst.HERO_LEVEL_MAX;
 
 			userProp.setPropCount(userProp.getPropCount() - 1);
 			userPropService.updateUserProp(userProp);
 			
-			talent.setLevel(talent.getLevel()+1);
-			talent.setExp(0);
-			userTalentService.updateUserTalent(user.getId(), talent.build());
-			ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
-			builder.addUserTalent(talent);
-			responseBuilder.setUserTalentCommand(builder.build());
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(RewardConst.ZHUJUEEXP);
+			reward.setCount(upgrademap.get(talent.getLevel()).getItemcount()-talent.getExp());
+			rewards.addLoot(reward);
+//			talent.setLevel(talent.getLevel()+1);
+//			talent.setExp(0);
+//			userTalentService.updateUserTalent(user.getId(), talent.build());
+//			talent = userTalentService.getUsingTalent(user);
+//			ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+//			builder.addUserTalent(talent);
+//			responseBuilder.setUserTalentCommand(builder.build());
+//			RewardCommand.Builder rewardcommand = RewardCommand.newBuilder();
+//			if(responseBuilder.hasRewardCommand())
+//				rewardcommand = responseBuilder.getRewardCommandBuilder();
+//			
+//			responseBuilder.setRewardCommand(rewardcommand);
 			return SuccessConst.USE_PROP;
 		}
 		

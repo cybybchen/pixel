@@ -23,7 +23,7 @@ public class MowuRuqinCrontabService {
 	private ServerService serverService;
 	
 //	@Scheduled(cron = "0 0 0 * * ? ")
-	@Scheduled(cron = "0 0/30 * * * ? ")
+//	@Scheduled(cron = "0 0/30 * * * ? ")
 	public void createMowu() {
 		List<Integer> serverList = serverService.getServerIdList();
 		for(int serverId : serverList) {
