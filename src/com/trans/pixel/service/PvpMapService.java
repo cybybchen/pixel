@@ -279,6 +279,7 @@ public class PvpMapService {
 			Map<Integer, UserPvpBuffBean> pvpMap = redis.getUserBuffs(user, maplist);
 			Map<String, PVPMine> mineMap = redis.getUserMines(user.getId());
 			List<PVPEvent> events = redis.getEvents(user, pvpMap);
+			Mowu boss = redis.getMowu(user.getServerId());
 			refreshMine(maplist, mineMap, user);
 			UserPvpBuffBean buff = pvpMap.get(0);
 			if(buff != null){
@@ -288,6 +289,10 @@ public class PvpMapService {
 			for(PVPMap.Builder mapBuilder : maplist.getDataBuilderList()){
 				if(!mapBuilder.getOpened())
 					continue;
+				if(boss != null) {
+					mapBuilder.addBoss(boss); 
+					boss = null;
+				}
 				buff = pvpMap.get(mapBuilder.getFieldid());
 				if(buff != null){
 					mapBuilder.setBuff(buff.getBuff());
