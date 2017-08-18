@@ -762,7 +762,7 @@ public class UnionRedisService extends RedisService{
 		return UserTeamBean.fromJson(value);
 	}
 	
-	public List<UserTeamBean> getUnionFightTeamList(String unionId) {
+	public <T> List<UserTeamBean> getUnionFightTeamList(T unionId) {
 		List<UserTeamBean> teamList = new ArrayList<UserTeamBean>();
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + unionId;
 		Map<String, String> map = hget(key);
@@ -775,7 +775,13 @@ public class UnionRedisService extends RedisService{
 		return teamList;
 	}
 	
-	public void updateApplyTeamCache(String unionId, Map<String, String> map) {
+	public <T> boolean hasApplyTeamCache(T unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
+		
+		return exists(key);
+	}
+	
+	public <T> void updateApplyTeamCache(T unionId, Map<String, String> map) {
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
 		
 		hputAll(key, map);

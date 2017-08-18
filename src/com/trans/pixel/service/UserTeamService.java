@@ -452,7 +452,7 @@ public class UserTeamService {
 		}
 	}
 	
-	private Team composeTeam(UserTeamBean userTeam, UserBean user) {
+	public Team composeTeam(UserTeamBean userTeam, UserBean user) {
 		Team.Builder builder = Team.newBuilder();
 		builder.addAllTeamEngine(userTeam.buildTeamEngine());
 		List<HeroInfoBean> userHeroList = userHeroService.selectUserHeroList(user);

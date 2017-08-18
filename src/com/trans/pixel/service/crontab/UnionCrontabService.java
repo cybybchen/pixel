@@ -49,7 +49,7 @@ public class UnionCrontabService {
 	
 //	@Scheduled(cron = "0 0 0 * * ? ")
 //	@Scheduled(cron = "0 0/1 * * * ? ")
-	@Scheduled(cron = "0 0/1 * * * ? ")
+	@Scheduled(cron = "0 0/5 * * * ? ")
 	public void unionFight() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
@@ -61,8 +61,8 @@ public class UnionCrontabService {
 		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(0);
 		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME))
 			unionService.deleteLastRecord();
-		else if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
-			unionService.handlerUnionFightTeamCache();
+//		else if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
+//			unionService.handlerUnionFightTeamCache();
 		else if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
 			unionService.calUnionFight();
 		else if (status.equals(UNION_FIGHT_STATUS.SEND_REWARD_TIME))

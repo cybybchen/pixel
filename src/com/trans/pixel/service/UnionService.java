@@ -1274,16 +1274,17 @@ public class UnionService extends FightService{
 		return redis.getUserUnionFightTeam(user);
 	}
 	
-	public void handlerUnionFightTeamCache() {
-		Set<String> unionIds = redis.getApplyUnionIds();
-		for (String unionId : unionIds) {
-			Map<String, String> map = new HashMap<String, String>();
-			List<UserTeamBean> userTeamList = redis.getUnionFightTeamList(unionId);
-			for (UserTeamBean userTeam : userTeamList) {
-				map.put("" + userTeam.getUserId(), userTeam.toJson());
-			}
-			redis.updateApplyTeamCache(unionId, map);
+	public <T> void handlerUnionFightTeamCache(T unionId) {
+		if (redis.hasApplyTeamCache(unionId))
+			return;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		List<UserTeamBean> userTeamList = redis.getUnionFightTeamList(unionId);
+		for (UserTeamBean userTeam : userTeamList) {
+			UserBean user = userService.getUserOther(userTeam.getUserId());
+			map.put("" + userTeam.getUserId(), RedisService.formatJson(userTeamService.composeTeam(userTeam, user)));
 		}
+		redis.updateApplyTeamCache(unionId, map);
 	}
 	
 	public Team getUnionFightTeamCache(long userId) {
@@ -1342,6 +1343,9 @@ public class UnionService extends FightService{
 				}
 			}
 		}
+		
+		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
+			handlerUnionFightTeamCache(unionId);
 		
 		return applyList;
 	}
@@ -1553,6 +1557,9 @@ public class UnionService extends FightService{
 				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 		}
 		
+		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && (RedisService.now() - RedisService.today(0)) < 10 * 60)
+			status = UNION_FIGHT_STATUS.PIPEI_TIME;
+			
 		return status;
 	}
 	
@@ -1653,23 +1660,23 @@ public class UnionService extends FightService{
 	}
 	
 	public int calCountTime() {
-		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
-		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
-				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
-				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
-			return (int)(RedisService.nextDay(0) - RedisService.now());
+//		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+//		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+//				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
+//				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+//			return (int)(RedisService.nextDay(0) - RedisService.now());
+//		
+//		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
 		
-		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
-		
-//		if (NEXT_TIME == 0)
-//			setUnionFightTime();
-//		return NEXT_TIME - RedisService.now();
+		if (NEXT_TIME == 0)
+			setUnionFightTime();
+		return NEXT_TIME - RedisService.now();
 	}
 	
-	public static int NEXT_TIME = RedisService.now();
+	public static int NEXT_TIME = 0;
 	
 	public void setUnionFightTime() {
-		NEXT_TIME = RedisService.now() + 1 * 60;
+		NEXT_TIME = RedisService.now() + 5 * 60;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {
