@@ -19,12 +19,15 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
+import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.service.redis.PropRedisService;
+import com.trans.pixel.service.redis.TalentRedisService;
 
 @Service
 public class PropService {
@@ -52,6 +55,10 @@ public class PropService {
 	private NoticeMessageService noticeMessageService;
 	@Resource
 	private UserHeroService userHeroService;
+	@Resource
+	private UserTalentService userTalentService;
+	@Resource
+	private TalentRedisService talentRedisService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -147,6 +154,31 @@ public class PropService {
 			builder.addUserHero(heroInfo.buildHeroInfo());
 			responseBuilder.setGetUserHeroCommand(builder.build());
 			
+			return SuccessConst.USE_PROP;
+		}else if(propId >= 39101 && propId <= 39105) {
+			UserTalent.Builder talent = userTalentService.getUsingTalent(user);
+			if(propId == 39101 && talent.getLevel() > 20)
+				return ErrorConst.NEED_BETTER_UPGRADECARD;
+			else if(propId == 39102 && talent.getLevel() > 40)
+				return ErrorConst.NEED_BETTER_UPGRADECARD;
+			else if(propId == 39103 && talent.getLevel() > 60)
+				return ErrorConst.NEED_BETTER_UPGRADECARD;
+			else if(propId == 39104 && talent.getLevel() > 80)
+				return ErrorConst.NEED_BETTER_UPGRADECARD;
+			else if(propId == 39105 && talent.getLevel() > 100)
+				return ErrorConst.NEED_BETTER_UPGRADECARD;
+			else if(talentRedisService.getTalentupgradeConfig().get(talent.getLevel()+1) == null) 
+				return ErrorConst.HERO_LEVEL_MAX;
+
+			userProp.setPropCount(userProp.getPropCount() - 1);
+			userPropService.updateUserProp(userProp);
+			
+			talent.setLevel(talent.getLevel()+1);
+			talent.setExp(0);
+			userTalentService.updateUserTalent(user.getId(), talent.build());
+			ResponseUserTalentCommand.Builder builder = ResponseUserTalentCommand.newBuilder();
+			builder.addUserTalent(talent);
+			responseBuilder.setUserTalentCommand(builder.build());
 			return SuccessConst.USE_PROP;
 		}
 		
