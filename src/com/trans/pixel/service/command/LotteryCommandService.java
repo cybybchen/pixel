@@ -273,6 +273,8 @@ public class LotteryCommandService extends BaseCommandService {
 	
 	private boolean ifFirstLottery(UserBean user, int type) {
 		switch (type) {
+			case RewardConst.EXP :
+				return false;
 			case RewardConst.COIN :
 				if ((user.getLotteryStatus() >> 1 & 1) == 1)
 					return false;
