@@ -363,9 +363,8 @@ public class RechargeService {
 			}else {
 				libaobuilder.setPurchase(0);
 			}
-		}
-		if(config.hasStarttime())
 			libaobuilder.setValidtime(config.getStarttime());
+		}
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 		userService.saveLibao(userId, libaobuilder.build());
 	}
