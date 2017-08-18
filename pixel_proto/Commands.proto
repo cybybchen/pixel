@@ -86,6 +86,7 @@ message UserInfo {
 	optional uint32 titleOrder = 97;
 	optional string signName = 98;
 	optional uint32 rite = 99;//0：未礼仪，1：已
+	optional uint32 lotteryExpCount = 100;
 }
 
 message JewelPool {
@@ -1499,6 +1500,8 @@ message Mowu {
 	optional EnemyGroup enemygroup = 5;
 	optional int32 status = 6;//0表示可打,1表示打完
 	optional int32 percent = 7;
+	optional int32 endtime = 8;
+	repeated UserRank userRank = 9;
 }
 message MowuList {
 	repeated Mowu data = 1;

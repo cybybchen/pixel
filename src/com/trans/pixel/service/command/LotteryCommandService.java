@@ -54,6 +54,9 @@ public class LotteryCommandService extends BaseCommandService {
 	@Resource
 	private HeroRedisService heroRedisService;
 	
+	private static final int[] EXP_COST = {1, 2, 5, 10, 20, 50, 100};
+	private static final int EXP_COST_PRECENT = 1000000;
+	
 	public void lottery(RequestLotteryCommand cmd, Builder responseBuilder, UserBean user) {
 		List<RewardBean> lotteryList = new ArrayList<RewardBean>();
 		int type = cmd.getType();
@@ -136,7 +139,9 @@ public class LotteryCommandService extends BaseCommandService {
 				
 				if (type == RewardConst.COIN) {
 					user.setLotteryCoinCount(user.getLotteryCoinCount() + 1);
-					userService.updateUser(user);
+//					userService.updateUser(user);
+				} else if (type == RewardConst.EXP) {
+					user.setLotteryExpCount(user.getLotteryExpCount() + 1);
 				}
 			}
 			
@@ -195,6 +200,12 @@ public class LotteryCommandService extends BaseCommandService {
 	private int getLotteryCost(int type, int count, UserBean user) {
 		int cost = LotteryConst.COST_LOTTERY_HERO_COIN * count;
 		switch (type) {
+			case RewardConst.EXP:
+				if (user.getLotteryExpCount() >= EXP_COST.length)
+					cost = EXP_COST[EXP_COST.length - 1] * EXP_COST_PRECENT;
+				else
+					cost = EXP_COST[user.getLotteryExpCount()] * EXP_COST_PRECENT;
+				break;
 			case RewardConst.COIN:
 				cost = (int)Math.pow(2, Math.min(user.getLotteryCoinCount(), 10)) * LotteryConst.COST_LOTTERY_HERO_COIN * count;
 				break;

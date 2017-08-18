@@ -12455,6 +12455,12 @@ public final class PVPProto {
           return false;
         }
       }
+      for (int i = 0; i < getBossCount(); i++) {
+        if (!getBoss(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -13047,6 +13053,12 @@ public final class PVPProto {
         }
         for (int i = 0; i < getEventCount(); i++) {
           if (!getEvent(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getBossCount(); i++) {
+          if (!getBoss(i).isInitialized()) {
             
             return false;
           }
@@ -19190,6 +19202,41 @@ public final class PVPProto {
      * <code>optional int32 percent = 7;</code>
      */
     int getPercent();
+
+    // optional int32 endtime = 8;
+    /**
+     * <code>optional int32 endtime = 8;</code>
+     */
+    boolean hasEndtime();
+    /**
+     * <code>optional int32 endtime = 8;</code>
+     */
+    int getEndtime();
+
+    // repeated .com.trans.pixel.protoc.UserRank userRank = 9;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.UserRank> 
+        getUserRankList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    com.trans.pixel.protoc.Base.UserRank getUserRank(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    int getUserRankCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.UserRankOrBuilder> 
+        getUserRankOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    com.trans.pixel.protoc.Base.UserRankOrBuilder getUserRankOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Mowu}
@@ -19288,6 +19335,19 @@ public final class PVPProto {
               percent_ = input.readInt32();
               break;
             }
+            case 64: {
+              bitField0_ |= 0x00000040;
+              endtime_ = input.readInt32();
+              break;
+            }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+                userRank_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UserRank>();
+                mutable_bitField0_ |= 0x00000100;
+              }
+              userRank_.add(input.readMessage(com.trans.pixel.protoc.Base.UserRank.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -19298,6 +19358,9 @@ public final class PVPProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
+        }
+        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+          userRank_ = java.util.Collections.unmodifiableList(userRank_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -19485,6 +19548,58 @@ public final class PVPProto {
       return percent_;
     }
 
+    // optional int32 endtime = 8;
+    public static final int ENDTIME_FIELD_NUMBER = 8;
+    private int endtime_;
+    /**
+     * <code>optional int32 endtime = 8;</code>
+     */
+    public boolean hasEndtime() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional int32 endtime = 8;</code>
+     */
+    public int getEndtime() {
+      return endtime_;
+    }
+
+    // repeated .com.trans.pixel.protoc.UserRank userRank = 9;
+    public static final int USERRANK_FIELD_NUMBER = 9;
+    private java.util.List<com.trans.pixel.protoc.Base.UserRank> userRank_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.UserRank> getUserRankList() {
+      return userRank_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.UserRankOrBuilder> 
+        getUserRankOrBuilderList() {
+      return userRank_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    public int getUserRankCount() {
+      return userRank_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserRank getUserRank(int index) {
+      return userRank_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+     */
+    public com.trans.pixel.protoc.Base.UserRankOrBuilder getUserRankOrBuilder(
+        int index) {
+      return userRank_.get(index);
+    }
+
     private void initFields() {
       id_ = 0;
       level_ = 0;
@@ -19493,12 +19608,20 @@ public final class PVPProto {
       enemygroup_ = com.trans.pixel.protoc.Base.EnemyGroup.getDefaultInstance();
       status_ = 0;
       percent_ = 0;
+      endtime_ = 0;
+      userRank_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      for (int i = 0; i < getUserRankCount(); i++) {
+        if (!getUserRank(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -19526,6 +19649,12 @@ public final class PVPProto {
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(7, percent_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(8, endtime_);
+      }
+      for (int i = 0; i < userRank_.size(); i++) {
+        output.writeMessage(9, userRank_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -19563,6 +19692,14 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, percent_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, endtime_);
+      }
+      for (int i = 0; i < userRank_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, userRank_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -19674,6 +19811,7 @@ public final class PVPProto {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getLootlistFieldBuilder();
           getEnemygroupFieldBuilder();
+          getUserRankFieldBuilder();
         }
       }
       private static Builder create() {
@@ -19704,6 +19842,14 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000020);
         percent_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        endtime_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        if (userRankBuilder_ == null) {
+          userRank_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+        } else {
+          userRankBuilder_.clear();
+        }
         return this;
       }
 
@@ -19769,6 +19915,19 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000020;
         }
         result.percent_ = percent_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.endtime_ = endtime_;
+        if (userRankBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) == 0x00000100)) {
+            userRank_ = java.util.Collections.unmodifiableList(userRank_);
+            bitField0_ = (bitField0_ & ~0x00000100);
+          }
+          result.userRank_ = userRank_;
+        } else {
+          result.userRank_ = userRankBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -19829,11 +19988,46 @@ public final class PVPProto {
         if (other.hasPercent()) {
           setPercent(other.getPercent());
         }
+        if (other.hasEndtime()) {
+          setEndtime(other.getEndtime());
+        }
+        if (userRankBuilder_ == null) {
+          if (!other.userRank_.isEmpty()) {
+            if (userRank_.isEmpty()) {
+              userRank_ = other.userRank_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+            } else {
+              ensureUserRankIsMutable();
+              userRank_.addAll(other.userRank_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.userRank_.isEmpty()) {
+            if (userRankBuilder_.isEmpty()) {
+              userRankBuilder_.dispose();
+              userRankBuilder_ = null;
+              userRank_ = other.userRank_;
+              bitField0_ = (bitField0_ & ~0x00000100);
+              userRankBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getUserRankFieldBuilder() : null;
+            } else {
+              userRankBuilder_.addAllMessages(other.userRank_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
+        for (int i = 0; i < getUserRankCount(); i++) {
+          if (!getUserRank(i).isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -20410,6 +20604,279 @@ public final class PVPProto {
         return this;
       }
 
+      // optional int32 endtime = 8;
+      private int endtime_ ;
+      /**
+       * <code>optional int32 endtime = 8;</code>
+       */
+      public boolean hasEndtime() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional int32 endtime = 8;</code>
+       */
+      public int getEndtime() {
+        return endtime_;
+      }
+      /**
+       * <code>optional int32 endtime = 8;</code>
+       */
+      public Builder setEndtime(int value) {
+        bitField0_ |= 0x00000080;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 endtime = 8;</code>
+       */
+      public Builder clearEndtime() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        endtime_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.UserRank userRank = 9;
+      private java.util.List<com.trans.pixel.protoc.Base.UserRank> userRank_ =
+        java.util.Collections.emptyList();
+      private void ensureUserRankIsMutable() {
+        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+          userRank_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.UserRank>(userRank_);
+          bitField0_ |= 0x00000100;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.UserRank, com.trans.pixel.protoc.Base.UserRank.Builder, com.trans.pixel.protoc.Base.UserRankOrBuilder> userRankBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.UserRank> getUserRankList() {
+        if (userRankBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(userRank_);
+        } else {
+          return userRankBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public int getUserRankCount() {
+        if (userRankBuilder_ == null) {
+          return userRank_.size();
+        } else {
+          return userRankBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserRank getUserRank(int index) {
+        if (userRankBuilder_ == null) {
+          return userRank_.get(index);
+        } else {
+          return userRankBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder setUserRank(
+          int index, com.trans.pixel.protoc.Base.UserRank value) {
+        if (userRankBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserRankIsMutable();
+          userRank_.set(index, value);
+          onChanged();
+        } else {
+          userRankBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder setUserRank(
+          int index, com.trans.pixel.protoc.Base.UserRank.Builder builderForValue) {
+        if (userRankBuilder_ == null) {
+          ensureUserRankIsMutable();
+          userRank_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          userRankBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder addUserRank(com.trans.pixel.protoc.Base.UserRank value) {
+        if (userRankBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserRankIsMutable();
+          userRank_.add(value);
+          onChanged();
+        } else {
+          userRankBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder addUserRank(
+          int index, com.trans.pixel.protoc.Base.UserRank value) {
+        if (userRankBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserRankIsMutable();
+          userRank_.add(index, value);
+          onChanged();
+        } else {
+          userRankBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder addUserRank(
+          com.trans.pixel.protoc.Base.UserRank.Builder builderForValue) {
+        if (userRankBuilder_ == null) {
+          ensureUserRankIsMutable();
+          userRank_.add(builderForValue.build());
+          onChanged();
+        } else {
+          userRankBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder addUserRank(
+          int index, com.trans.pixel.protoc.Base.UserRank.Builder builderForValue) {
+        if (userRankBuilder_ == null) {
+          ensureUserRankIsMutable();
+          userRank_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          userRankBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder addAllUserRank(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.UserRank> values) {
+        if (userRankBuilder_ == null) {
+          ensureUserRankIsMutable();
+          super.addAll(values, userRank_);
+          onChanged();
+        } else {
+          userRankBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder clearUserRank() {
+        if (userRankBuilder_ == null) {
+          userRank_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000100);
+          onChanged();
+        } else {
+          userRankBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public Builder removeUserRank(int index) {
+        if (userRankBuilder_ == null) {
+          ensureUserRankIsMutable();
+          userRank_.remove(index);
+          onChanged();
+        } else {
+          userRankBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserRank.Builder getUserRankBuilder(
+          int index) {
+        return getUserRankFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserRankOrBuilder getUserRankOrBuilder(
+          int index) {
+        if (userRankBuilder_ == null) {
+          return userRank_.get(index);  } else {
+          return userRankBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.UserRankOrBuilder> 
+           getUserRankOrBuilderList() {
+        if (userRankBuilder_ != null) {
+          return userRankBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(userRank_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserRank.Builder addUserRankBuilder() {
+        return getUserRankFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.UserRank.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public com.trans.pixel.protoc.Base.UserRank.Builder addUserRankBuilder(
+          int index) {
+        return getUserRankFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.UserRank.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.UserRank userRank = 9;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.UserRank.Builder> 
+           getUserRankBuilderList() {
+        return getUserRankFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.UserRank, com.trans.pixel.protoc.Base.UserRank.Builder, com.trans.pixel.protoc.Base.UserRankOrBuilder> 
+          getUserRankFieldBuilder() {
+        if (userRankBuilder_ == null) {
+          userRankBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.UserRank, com.trans.pixel.protoc.Base.UserRank.Builder, com.trans.pixel.protoc.Base.UserRankOrBuilder>(
+                  userRank_,
+                  ((bitField0_ & 0x00000100) == 0x00000100),
+                  getParentForChildren(),
+                  isClean());
+          userRank_ = null;
+        }
+        return userRankBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Mowu)
     }
 
@@ -20594,6 +21061,12 @@ public final class PVPProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      for (int i = 0; i < getDataCount(); i++) {
+        if (!getData(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -20822,6 +21295,12 @@ public final class PVPProto {
       }
 
       public final boolean isInitialized() {
+        for (int i = 0; i < getDataCount(); i++) {
+          if (!getData(i).isInitialized()) {
+            
+            return false;
+          }
+        }
         return true;
       }
 
@@ -28299,37 +28778,38 @@ public final class PVPProto {
       "toc.PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n" +
       "\006reward\030\002 \003(\0132\".com.trans.pixel.protoc.R" +
       "ewardInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(" +
-      "\0132\".com.trans.pixel.protoc.MowuReward\"\277\001" +
+      "\0132\".com.trans.pixel.protoc.MowuReward\"\204\002" +
       "\n\004Mowu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005cou" +
       "nt\030\003 \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.p" +
       "ixel.protoc.RewardInfo\0226\n\nenemygroup\030\005 \001" +
       "(\0132\".com.trans.pixel.protoc.EnemyGroup\022\016",
-      "\n\006status\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\"6\n\010MowuL" +
-      "ist\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.prot" +
-      "oc.Mowu\"C\n\030RequestAttackMowuCommand\022\n\n\002i" +
-      "d\030\001 \001(\005\022\n\n\002hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036" +
-      "RequestAttackPVPMonsterCommand\022\022\n\npositi" +
-      "onid\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n" +
-      "\031RequestPVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{" +
-      "\n\032ResponsePVPMineInfoCommand\022*\n\004team\030\005 \001" +
-      "(\0132\034.com.trans.pixel.protoc.Team\0221\n\010mine" +
-      "Info\030\003 \001(\0132\037.com.trans.pixel.protoc.PVPM",
-      "ine\"T\n\033RequestAttackPVPMineCommand\022\n\n\002id" +
-      "\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004t" +
-      "ime\030\004 \001(\005\"h\n\037RequestHelpAttackPVPMineCom" +
-      "mand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030" +
-      "\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027R" +
-      "equestHelpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006te" +
-      "amid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"" +
-      "m\n\026RequestSendMailCommand\022\020\n\010toUserId\030\001 " +
-      "\002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022" +
-      "\014\n\004type\030\004 \002(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035Reques",
-      "tBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tb" +
-      "rotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineC" +
-      "ommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapList" +
-      "Command\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel" +
-      ".protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030" +
-      "\003 \001(\005"
+      "\n\006status\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\022\017\n\007endti" +
+      "me\030\010 \001(\005\0222\n\010userRank\030\t \003(\0132 .com.trans.p" +
+      "ixel.protoc.UserRank\"6\n\010MowuList\022*\n\004data" +
+      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Mowu\"C\n\030" +
+      "RequestAttackMowuCommand\022\n\n\002id\030\001 \001(\005\022\n\n\002" +
+      "hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestAtta" +
+      "ckPVPMonsterCommand\022\022\n\npositionid\030\001 \001(\005\022" +
+      "\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVP" +
+      "MineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponseP" +
+      "VPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034.com.tr",
+      "ans.pixel.protoc.Team\0221\n\010mineInfo\030\003 \001(\0132" +
+      "\037.com.trans.pixel.protoc.PVPMine\"T\n\033Requ" +
+      "estAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006t" +
+      "eamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h" +
+      "\n\037RequestHelpAttackPVPMineCommand\022\n\n\002id\030" +
+      "\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006us" +
+      "erId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpL" +
+      "evelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022" +
+      "\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026RequestS" +
+      "endMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007cont",
+      "ent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002" +
+      "(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035RequestBrotherMin" +
+      "eInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 " +
+      "\002(\003\"*\n\034RequestRefreshPVPMineCommand\022\n\n\002i" +
+      "d\030\001 \002(\005\"i\n\031ResponsePVPMapListCommand\022-\n\005" +
+      "field\030\001 \003(\0132\036.com.trans.pixel.protoc.PVP" +
+      "Map\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28479,7 +28959,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_Mowu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mowu_descriptor,
-              new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", "Percent", });
+              new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", "Percent", "Endtime", "UserRank", });
           internal_static_com_trans_pixel_protoc_MowuList_descriptor =
             getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_MowuList_fieldAccessorTable = new

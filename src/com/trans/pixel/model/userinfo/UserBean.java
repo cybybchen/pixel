@@ -113,6 +113,7 @@ public class UserBean {
 	private int hunxiaPRD = 0;
 	private int firstAddedtoZhanli = 0;
 	private int lotteryCoinCount = 0;
+	private int lotteryExpCount = 0;
 	private long receiveNoticeMessageTimeStamp = 0;
 	private int task1Order = 0;
 	private int task2Record = 0;
@@ -1389,6 +1390,12 @@ public class UserBean {
 	public void setJewelkey(String jewelkey) {
 		this.jewelkey = jewelkey;
 	}
+	public int getLotteryExpCount() {
+		return lotteryExpCount;
+	}
+	public void setLotteryExpCount(int lotteryExpCount) {
+		this.lotteryExpCount = lotteryExpCount;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1577,6 +1584,7 @@ public class UserBean {
 		builder.setTitleOrder(titleOrder);
 		builder.setSignName(signName);
 		builder.setRite(rite);
+		builder.setLotteryExpCount(lotteryExpCount);
 		
 		return builder.build();
 	}
