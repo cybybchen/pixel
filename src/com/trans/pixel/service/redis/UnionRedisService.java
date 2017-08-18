@@ -772,6 +772,7 @@ public class UnionRedisService extends RedisService{
 				teamList.add(userTeam);
 		}
 		
+		delete(key);
 		return teamList;
 	}
 	
@@ -779,6 +780,12 @@ public class UnionRedisService extends RedisService{
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
 		
 		return exists(key);
+	}
+	
+	public <T> void deleteApplyTeamCache(T unionId) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
+		
+		delete(key);
 	}
 	
 	public <T> void updateApplyTeamCache(T unionId, Map<String, String> map) {

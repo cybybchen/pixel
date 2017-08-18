@@ -1449,6 +1449,7 @@ public class UnionService extends FightService{
 		for (String unionId : unions) {
 			redis.delUnionFightFightInfo(unionId);
 			redis.delUnionFightApply(unionId);
+			redis.deleteApplyTeamCache(unionId);
 		}
 		redis.deleteApplyUnionRecord();
 		redis.delUnionFightRewardRecord();
@@ -1461,6 +1462,7 @@ public class UnionService extends FightService{
 			if (calFightMemberCount(unionId) < UnionConst.UNION_FIGHT_MEMBER_LIMIT) {//人数不够，无法参加
 				redis.deleteApplyUnion(unionId);
 				redis.renameUnionFightApply(unionId);
+				redis.deleteApplyTeamCache(unionId);
 			}
 		}
 		unionIds = redis.getApplyUnionIds();
