@@ -138,7 +138,7 @@ public class PropService {
 			
 			RewardInfo.Builder builder = RewardInfo.newBuilder();
 			builder.setItemid(chipId);
-			builder.setCount(1);//Vip特权
+			builder.setCount(1);
 			rewards.addLoot(builder.build());
 			
 			userProp.setPropCount(userProp.getPropCount() - 1);
