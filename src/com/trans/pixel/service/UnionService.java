@@ -1676,7 +1676,7 @@ public class UnionService extends FightService{
 	public static int NEXT_TIME = 0;
 	
 	public void setUnionFightTime() {
-		NEXT_TIME = RedisService.now() + 5 * 60;
+		NEXT_TIME = RedisService.now() + 1 * 60;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {

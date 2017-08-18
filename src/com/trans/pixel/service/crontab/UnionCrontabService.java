@@ -48,8 +48,8 @@ public class UnionCrontabService {
 	}
 	
 //	@Scheduled(cron = "0 0 0 * * ? ")
-//	@Scheduled(cron = "0 0/1 * * * ? ")
-	@Scheduled(cron = "0 0/5 * * * ? ")
+	@Scheduled(cron = "0 0/1 * * * ? ")
+//	@Scheduled(cron = "0 0/5 * * * ? ")
 	public void unionFight() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;

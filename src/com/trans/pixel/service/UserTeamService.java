@@ -480,6 +480,7 @@ public class UserTeamService {
 		if (userTalent != null)
 			builder.setUserTalent(userTalent);
 		builder.setRolePosition(userTeam.getRolePosition());
+		builder.setUser(user.buildShort());
 		
 		return builder.build();
 	}
