@@ -162,10 +162,13 @@ public class TeamCommandService extends BaseCommandService {
 			Builder responseBuilder, UserBean user) {
 		UserTeamBean userTeam = userTeamService.getUserOtherTeam(user, cmd.getType());
 		
-		ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
-		builder.addUserTeam(userTeam.buildUserTeam());
-		
-		responseBuilder.setUserTeamListCommand(builder.build());
+		if (userTeam != null) {
+			ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
+			builder.addUserTeam(userTeam.buildUserTeam());
+			builder.setType(cmd.getType());
+			
+			responseBuilder.setUserTeamListCommand(builder.build());
+		}
 	}
 	
 	public void getTeamCache(RequestGetTeamCommand cmd,

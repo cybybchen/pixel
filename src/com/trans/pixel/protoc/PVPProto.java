@@ -11720,6 +11720,31 @@ public final class PVPProto {
      */
     com.trans.pixel.protoc.PVPProto.PVPEventOrBuilder getEventOrBuilder(
         int index);
+
+    // repeated .com.trans.pixel.protoc.Mowu boss = 16;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> 
+        getBossList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    int getBossCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
+        getBossOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.PVPMap}
@@ -11864,6 +11889,14 @@ public final class PVPProto {
               bitField0_ |= 0x00000800;
               break;
             }
+            case 130: {
+              if (!((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+                boss_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.Mowu>();
+                mutable_bitField0_ |= 0x00008000;
+              }
+              boss_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.Mowu.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11880,6 +11913,9 @@ public final class PVPProto {
         }
         if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
           lootlist_ = java.util.Collections.unmodifiableList(lootlist_);
+        }
+        if (((mutable_bitField0_ & 0x00008000) == 0x00008000)) {
+          boss_ = java.util.Collections.unmodifiableList(boss_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -12348,6 +12384,42 @@ public final class PVPProto {
       return event_.get(index);
     }
 
+    // repeated .com.trans.pixel.protoc.Mowu boss = 16;
+    public static final int BOSS_FIELD_NUMBER = 16;
+    private java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> boss_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> getBossList() {
+      return boss_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
+        getBossOrBuilderList() {
+      return boss_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    public int getBossCount() {
+      return boss_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index) {
+      return boss_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+     */
+    public com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
+        int index) {
+      return boss_.get(index);
+    }
+
     private void initFields() {
       fieldid_ = 0;
       name_ = "";
@@ -12364,6 +12436,7 @@ public final class PVPProto {
       lootlist_ = java.util.Collections.emptyList();
       kuangdian_ = java.util.Collections.emptyList();
       event_ = java.util.Collections.emptyList();
+      boss_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12434,6 +12507,9 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(15, daguanreward_);
       }
+      for (int i = 0; i < boss_.size(); i++) {
+        output.writeMessage(16, boss_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -12502,6 +12578,10 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, daguanreward_);
+      }
+      for (int i = 0; i < boss_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, boss_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12615,6 +12695,7 @@ public final class PVPProto {
           getLootlistFieldBuilder();
           getKuangdianFieldBuilder();
           getEventFieldBuilder();
+          getBossFieldBuilder();
         }
       }
       private static Builder create() {
@@ -12668,6 +12749,12 @@ public final class PVPProto {
           bitField0_ = (bitField0_ & ~0x00004000);
         } else {
           eventBuilder_.clear();
+        }
+        if (bossBuilder_ == null) {
+          boss_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+        } else {
+          bossBuilder_.clear();
         }
         return this;
       }
@@ -12775,6 +12862,15 @@ public final class PVPProto {
           result.event_ = event_;
         } else {
           result.event_ = eventBuilder_.build();
+        }
+        if (bossBuilder_ == null) {
+          if (((bitField0_ & 0x00008000) == 0x00008000)) {
+            boss_ = java.util.Collections.unmodifiableList(boss_);
+            bitField0_ = (bitField0_ & ~0x00008000);
+          }
+          result.boss_ = boss_;
+        } else {
+          result.boss_ = bossBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -12909,6 +13005,32 @@ public final class PVPProto {
                    getEventFieldBuilder() : null;
             } else {
               eventBuilder_.addAllMessages(other.event_);
+            }
+          }
+        }
+        if (bossBuilder_ == null) {
+          if (!other.boss_.isEmpty()) {
+            if (boss_.isEmpty()) {
+              boss_ = other.boss_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+            } else {
+              ensureBossIsMutable();
+              boss_.addAll(other.boss_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.boss_.isEmpty()) {
+            if (bossBuilder_.isEmpty()) {
+              bossBuilder_.dispose();
+              bossBuilder_ = null;
+              boss_ = other.boss_;
+              bitField0_ = (bitField0_ & ~0x00008000);
+              bossBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getBossFieldBuilder() : null;
+            } else {
+              bossBuilder_.addAllMessages(other.boss_);
             }
           }
         }
@@ -14368,6 +14490,246 @@ public final class PVPProto {
           event_ = null;
         }
         return eventBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.Mowu boss = 16;
+      private java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> boss_ =
+        java.util.Collections.emptyList();
+      private void ensureBossIsMutable() {
+        if (!((bitField0_ & 0x00008000) == 0x00008000)) {
+          boss_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.Mowu>(boss_);
+          bitField0_ |= 0x00008000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder> bossBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> getBossList() {
+        if (bossBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(boss_);
+        } else {
+          return bossBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public int getBossCount() {
+        if (bossBuilder_ == null) {
+          return boss_.size();
+        } else {
+          return bossBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index) {
+        if (bossBuilder_ == null) {
+          return boss_.get(index);
+        } else {
+          return bossBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder setBoss(
+          int index, com.trans.pixel.protoc.PVPProto.Mowu value) {
+        if (bossBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBossIsMutable();
+          boss_.set(index, value);
+          onChanged();
+        } else {
+          bossBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder setBoss(
+          int index, com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
+        if (bossBuilder_ == null) {
+          ensureBossIsMutable();
+          boss_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          bossBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder addBoss(com.trans.pixel.protoc.PVPProto.Mowu value) {
+        if (bossBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBossIsMutable();
+          boss_.add(value);
+          onChanged();
+        } else {
+          bossBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder addBoss(
+          int index, com.trans.pixel.protoc.PVPProto.Mowu value) {
+        if (bossBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureBossIsMutable();
+          boss_.add(index, value);
+          onChanged();
+        } else {
+          bossBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder addBoss(
+          com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
+        if (bossBuilder_ == null) {
+          ensureBossIsMutable();
+          boss_.add(builderForValue.build());
+          onChanged();
+        } else {
+          bossBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder addBoss(
+          int index, com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
+        if (bossBuilder_ == null) {
+          ensureBossIsMutable();
+          boss_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          bossBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder addAllBoss(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.Mowu> values) {
+        if (bossBuilder_ == null) {
+          ensureBossIsMutable();
+          super.addAll(values, boss_);
+          onChanged();
+        } else {
+          bossBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder clearBoss() {
+        if (bossBuilder_ == null) {
+          boss_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00008000);
+          onChanged();
+        } else {
+          bossBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public Builder removeBoss(int index) {
+        if (bossBuilder_ == null) {
+          ensureBossIsMutable();
+          boss_.remove(index);
+          onChanged();
+        } else {
+          bossBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.Mowu.Builder getBossBuilder(
+          int index) {
+        return getBossFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
+          int index) {
+        if (bossBuilder_ == null) {
+          return boss_.get(index);  } else {
+          return bossBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
+           getBossOrBuilderList() {
+        if (bossBuilder_ != null) {
+          return bossBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(boss_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.Mowu.Builder addBossBuilder() {
+        return getBossFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.PVPProto.Mowu.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public com.trans.pixel.protoc.PVPProto.Mowu.Builder addBossBuilder(
+          int index) {
+        return getBossFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.PVPProto.Mowu.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 16;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu.Builder> 
+           getBossBuilderList() {
+        return getBossFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
+          getBossFieldBuilder() {
+        if (bossBuilder_ == null) {
+          bossBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder>(
+                  boss_,
+                  ((bitField0_ & 0x00008000) == 0x00008000),
+                  getParentForChildren(),
+                  isClean());
+          boss_ = null;
+        }
+        return bossBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.PVPMap)
@@ -26881,31 +27243,6 @@ public final class PVPProto {
      * <code>optional int32 buff = 3;</code>
      */
     int getBuff();
-
-    // repeated .com.trans.pixel.protoc.Mowu boss = 4;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> 
-        getBossList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    int getBossCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
-        getBossOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
-        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponsePVPMapListCommand}
@@ -26980,14 +27317,6 @@ public final class PVPProto {
               buff_ = input.readInt32();
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                boss_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.Mowu>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              boss_.add(input.readMessage(com.trans.pixel.protoc.PVPProto.Mowu.PARSER, extensionRegistry));
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -26998,9 +27327,6 @@ public final class PVPProto {
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           field_ = java.util.Collections.unmodifiableList(field_);
-        }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          boss_ = java.util.Collections.unmodifiableList(boss_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -27102,47 +27428,10 @@ public final class PVPProto {
       return buff_;
     }
 
-    // repeated .com.trans.pixel.protoc.Mowu boss = 4;
-    public static final int BOSS_FIELD_NUMBER = 4;
-    private java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> boss_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> getBossList() {
-      return boss_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
-        getBossOrBuilderList() {
-      return boss_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    public int getBossCount() {
-      return boss_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    public com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index) {
-      return boss_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-     */
-    public com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
-        int index) {
-      return boss_.get(index);
-    }
-
     private void initFields() {
       field_ = java.util.Collections.emptyList();
       endTime_ = 0L;
       buff_ = 0;
-      boss_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -27171,9 +27460,6 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(3, buff_);
       }
-      for (int i = 0; i < boss_.size(); i++) {
-        output.writeMessage(4, boss_.get(i));
-      }
       getUnknownFields().writeTo(output);
     }
 
@@ -27194,10 +27480,6 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, buff_);
-      }
-      for (int i = 0; i < boss_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, boss_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -27312,7 +27594,6 @@ public final class PVPProto {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getFieldFieldBuilder();
-          getBossFieldBuilder();
         }
       }
       private static Builder create() {
@@ -27331,12 +27612,6 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         buff_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-        } else {
-          bossBuilder_.clear();
-        }
         return this;
       }
 
@@ -27382,15 +27657,6 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000002;
         }
         result.buff_ = buff_;
-        if (bossBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
-            boss_ = java.util.Collections.unmodifiableList(boss_);
-            bitField0_ = (bitField0_ & ~0x00000008);
-          }
-          result.boss_ = boss_;
-        } else {
-          result.boss_ = bossBuilder_.build();
-        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -27438,32 +27704,6 @@ public final class PVPProto {
         }
         if (other.hasBuff()) {
           setBuff(other.getBuff());
-        }
-        if (bossBuilder_ == null) {
-          if (!other.boss_.isEmpty()) {
-            if (boss_.isEmpty()) {
-              boss_ = other.boss_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-            } else {
-              ensureBossIsMutable();
-              boss_.addAll(other.boss_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.boss_.isEmpty()) {
-            if (bossBuilder_.isEmpty()) {
-              bossBuilder_.dispose();
-              bossBuilder_ = null;
-              boss_ = other.boss_;
-              bitField0_ = (bitField0_ & ~0x00000008);
-              bossBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getBossFieldBuilder() : null;
-            } else {
-              bossBuilder_.addAllMessages(other.boss_);
-            }
-          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -27804,246 +28044,6 @@ public final class PVPProto {
         return this;
       }
 
-      // repeated .com.trans.pixel.protoc.Mowu boss = 4;
-      private java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> boss_ =
-        java.util.Collections.emptyList();
-      private void ensureBossIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
-          boss_ = new java.util.ArrayList<com.trans.pixel.protoc.PVPProto.Mowu>(boss_);
-          bitField0_ |= 0x00000008;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder> bossBuilder_;
-
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu> getBossList() {
-        if (bossBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(boss_);
-        } else {
-          return bossBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public int getBossCount() {
-        if (bossBuilder_ == null) {
-          return boss_.size();
-        } else {
-          return bossBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public com.trans.pixel.protoc.PVPProto.Mowu getBoss(int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);
-        } else {
-          return bossBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder setBoss(
-          int index, com.trans.pixel.protoc.PVPProto.Mowu value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.set(index, value);
-          onChanged();
-        } else {
-          bossBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder setBoss(
-          int index, com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder addBoss(com.trans.pixel.protoc.PVPProto.Mowu value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.add(value);
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder addBoss(
-          int index, com.trans.pixel.protoc.PVPProto.Mowu value) {
-        if (bossBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureBossIsMutable();
-          boss_.add(index, value);
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder addBoss(
-          com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder addBoss(
-          int index, com.trans.pixel.protoc.PVPProto.Mowu.Builder builderForValue) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          bossBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder addAllBoss(
-          java.lang.Iterable<? extends com.trans.pixel.protoc.PVPProto.Mowu> values) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          super.addAll(values, boss_);
-          onChanged();
-        } else {
-          bossBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder clearBoss() {
-        if (bossBuilder_ == null) {
-          boss_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
-          onChanged();
-        } else {
-          bossBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public Builder removeBoss(int index) {
-        if (bossBuilder_ == null) {
-          ensureBossIsMutable();
-          boss_.remove(index);
-          onChanged();
-        } else {
-          bossBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public com.trans.pixel.protoc.PVPProto.Mowu.Builder getBossBuilder(
-          int index) {
-        return getBossFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public com.trans.pixel.protoc.PVPProto.MowuOrBuilder getBossOrBuilder(
-          int index) {
-        if (bossBuilder_ == null) {
-          return boss_.get(index);  } else {
-          return bossBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public java.util.List<? extends com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
-           getBossOrBuilderList() {
-        if (bossBuilder_ != null) {
-          return bossBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(boss_);
-        }
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public com.trans.pixel.protoc.PVPProto.Mowu.Builder addBossBuilder() {
-        return getBossFieldBuilder().addBuilder(
-            com.trans.pixel.protoc.PVPProto.Mowu.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public com.trans.pixel.protoc.PVPProto.Mowu.Builder addBossBuilder(
-          int index) {
-        return getBossFieldBuilder().addBuilder(
-            index, com.trans.pixel.protoc.PVPProto.Mowu.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .com.trans.pixel.protoc.Mowu boss = 4;</code>
-       */
-      public java.util.List<com.trans.pixel.protoc.PVPProto.Mowu.Builder> 
-           getBossBuilderList() {
-        return getBossFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilder<
-          com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder> 
-          getBossFieldBuilder() {
-        if (bossBuilder_ == null) {
-          bossBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              com.trans.pixel.protoc.PVPProto.Mowu, com.trans.pixel.protoc.PVPProto.Mowu.Builder, com.trans.pixel.protoc.PVPProto.MowuOrBuilder>(
-                  boss_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
-                  getParentForChildren(),
-                  isClean());
-          boss_ = null;
-        }
-        return bossBuilder_;
-      }
-
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponsePVPMapListCommand)
     }
 
@@ -28277,7 +28277,7 @@ public final class PVPProto {
       " \001(\005\022\017\n\007enemyid\030\006 \001(\003\022/\n\005owner\030\010 \001(\0132 .c" +
       "om.trans.pixel.protoc.UserInfo\022\017\n\007endTim" +
       "e\030\t \001(\003\022\r\n\005level\030\n \001(\005\022\013\n\003img\030\013 \001(\t\022\020\n\010p" +
-      "vpyield\030\014 \001(\005\"\216\003\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
+      "vpyield\030\014 \001(\005\"\272\003\n\006PVPMap\022\017\n\007fieldid\030\001 \001(" +
       "\005\022\014\n\004name\030\002 \001(\t\022\021\n\tbufflimit\030\006 \001(\005\022\r\n\005yi" +
       "eld\030\007 \001(\005\022\020\n\010merlevel\030\010 \001(\005\022\016\n\006buffid\030\t " +
       "\001(\005\022\014\n\004buff\030\n \001(\005\022\017\n\007maxbuff\030\016 \001(\005\022\016\n\006op" +
@@ -28287,49 +28287,49 @@ public final class PVPProto {
       "com.trans.pixel.protoc.RewardInfo\0222\n\tkua" +
       "ngdian\030\003 \003(\0132\037.com.trans.pixel.protoc.PV" +
       "PMine\022/\n\005event\030\004 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.PVPEvent\"H\n\nPVPMapList\022,\n\004data\030\001 \003" +
-      "(\0132\036.com.trans.pixel.protoc.PVPMap\022\014\n\004bu" +
-      "ff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapCommand\022\017" +
-      "\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033Reque" +
-      "stRefreshPVPMapCommand\"\032\n\030RequestPVPMapL" +
-      "istCommand\"\036\n\034RequestPVPInbreakListComma" +
-      "nd\"S\n\035ResponsePVPInbreakListCommand\0222\n\tk",
-      "uangdian\030\001 \003(\0132\037.com.trans.pixel.protoc." +
-      "PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n\006rew" +
-      "ard\030\002 \003(\0132\".com.trans.pixel.protoc.Rewar" +
-      "dInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(\0132\"." +
-      "com.trans.pixel.protoc.MowuReward\"\277\001\n\004Mo" +
-      "wu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005count\030\003" +
-      " \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\0226\n\nenemygroup\030\005 \001(\0132\"" +
-      ".com.trans.pixel.protoc.EnemyGroup\022\016\n\006st" +
-      "atus\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\"6\n\010MowuList\022",
-      "*\n\004data\030\001 \003(\0132\034.com.trans.pixel.protoc.M" +
-      "owu\"C\n\030RequestAttackMowuCommand\022\n\n\002id\030\001 " +
-      "\001(\005\022\n\n\002hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036Requ" +
-      "estAttackPVPMonsterCommand\022\022\n\npositionid" +
-      "\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031Req" +
-      "uestPVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032Re" +
-      "sponsePVPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034" +
-      ".com.trans.pixel.protoc.Team\0221\n\010mineInfo" +
-      "\030\003 \001(\0132\037.com.trans.pixel.protoc.PVPMine\"" +
-      "T\n\033RequestAttackPVPMineCommand\022\n\n\002id\030\001 \002",
-      "(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030" +
-      "\004 \001(\005\"h\n\037RequestHelpAttackPVPMineCommand" +
-      "\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(" +
-      "\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027Reque" +
-      "stHelpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid" +
-      "\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026R" +
-      "equestSendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022" +
-      "\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004t" +
-      "ype\030\004 \002(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035RequestBro" +
-      "therMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbroth",
-      "erId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineComma" +
-      "nd\022\n\n\002id\030\001 \002(\005\"\225\001\n\031ResponsePVPMapListCom" +
-      "mand\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel.pr" +
-      "otoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001" +
-      "(\005\022*\n\004boss\030\004 \003(\0132\034.com.trans.pixel.proto" +
-      "c.Mowu"
+      "rotoc.PVPEvent\022*\n\004boss\030\020 \003(\0132\034.com.trans" +
+      ".pixel.protoc.Mowu\"H\n\nPVPMapList\022,\n\004data" +
+      "\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMap\022\014" +
+      "\n\004buff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapComma" +
+      "nd\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033R" +
+      "equestRefreshPVPMapCommand\"\032\n\030RequestPVP" +
+      "MapListCommand\"\036\n\034RequestPVPInbreakListC",
+      "ommand\"S\n\035ResponsePVPInbreakListCommand\022" +
+      "2\n\tkuangdian\030\001 \003(\0132\037.com.trans.pixel.pro" +
+      "toc.PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n" +
+      "\006reward\030\002 \003(\0132\".com.trans.pixel.protoc.R" +
+      "ewardInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(" +
+      "\0132\".com.trans.pixel.protoc.MowuReward\"\277\001" +
+      "\n\004Mowu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005cou" +
+      "nt\030\003 \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.p" +
+      "ixel.protoc.RewardInfo\0226\n\nenemygroup\030\005 \001" +
+      "(\0132\".com.trans.pixel.protoc.EnemyGroup\022\016",
+      "\n\006status\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\"6\n\010MowuL" +
+      "ist\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.prot" +
+      "oc.Mowu\"C\n\030RequestAttackMowuCommand\022\n\n\002i" +
+      "d\030\001 \001(\005\022\n\n\002hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036" +
+      "RequestAttackPVPMonsterCommand\022\022\n\npositi" +
+      "onid\030\001 \001(\005\022\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n" +
+      "\031RequestPVPMineInfoCommand\022\n\n\002id\030\001 \002(\005\"{" +
+      "\n\032ResponsePVPMineInfoCommand\022*\n\004team\030\005 \001" +
+      "(\0132\034.com.trans.pixel.protoc.Team\0221\n\010mine" +
+      "Info\030\003 \001(\0132\037.com.trans.pixel.protoc.PVPM",
+      "ine\"T\n\033RequestAttackPVPMineCommand\022\n\n\002id" +
+      "\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004t" +
+      "ime\030\004 \001(\005\"h\n\037RequestHelpAttackPVPMineCom" +
+      "mand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030" +
+      "\003 \001(\010\022\016\n\006userId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027R" +
+      "equestHelpLevelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006te" +
+      "amid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"" +
+      "m\n\026RequestSendMailCommand\022\020\n\010toUserId\030\001 " +
+      "\002(\003\022\017\n\007content\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022" +
+      "\014\n\004type\030\004 \002(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035Reques",
+      "tBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tb" +
+      "rotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMineC" +
+      "ommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapList" +
+      "Command\022-\n\005field\030\001 \003(\0132\036.com.trans.pixel" +
+      ".protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030" +
+      "\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -28425,7 +28425,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_PVPMap_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMap_descriptor,
-              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Maxbuff", "Opened", "Img", "Buffimg", "Daguanreward", "Lootlist", "Kuangdian", "Event", });
+              new java.lang.String[] { "Fieldid", "Name", "Bufflimit", "Yield", "Merlevel", "Buffid", "Buff", "Maxbuff", "Opened", "Img", "Buffimg", "Daguanreward", "Lootlist", "Kuangdian", "Event", "Boss", });
           internal_static_com_trans_pixel_protoc_PVPMapList_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_PVPMapList_fieldAccessorTable = new
@@ -28551,7 +28551,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor,
-              new java.lang.String[] { "Field", "EndTime", "Buff", "Boss", });
+              new java.lang.String[] { "Field", "EndTime", "Buff", });
           return null;
         }
       };

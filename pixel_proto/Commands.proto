@@ -981,6 +981,7 @@ message RequestUserTeamCommand {
 
 message ResponseUserTeamListCommand {
 	repeated UserTeam userTeam = 1;
+	optional TEAM_TYPE type = 2;
 }
 
 message TeamUnlockList {
@@ -1458,6 +1459,7 @@ message PVPMap {
 	repeated RewardInfo lootlist = 5;
 	repeated PVPMine kuangdian = 3;
 	repeated PVPEvent event = 4;
+	repeated Mowu boss = 16;
 }
 message PVPMapList {
 	repeated PVPMap data = 1;
@@ -1565,7 +1567,6 @@ message ResponsePVPMapListCommand {//挂机PVP列表
 	repeated PVPMap field = 1;
 	optional int64 endTime = 2;
 	optional int32 buff = 3;
-	repeated Mowu boss = 4;
 }
 ////////// AreaProto
 message WeightReward {
