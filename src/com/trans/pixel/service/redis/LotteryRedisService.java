@@ -25,6 +25,7 @@ public class LotteryRedisService extends CacheService {
 	public LotteryRedisService() {
 //		buildLotteryActivityConfig();
 		parseAndSaveLotteryList(RewardConst.COIN);
+		parseAndSaveLotteryList(RewardConst.EXP);
 		parseAndSaveLotteryList(RewardConst.JEWEL);
 		parseAndSaveLotteryList(LotteryConst.LOOTERY_SPECIAL_TYPE);
 	}

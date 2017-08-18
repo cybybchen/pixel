@@ -122,6 +122,8 @@ public class LotteryCommandService extends BaseCommandService {
 						error = ErrorConst.NOT_ENOUGH_ZHAOHUANSHI;
 					else if (costtype == RewardConst.JEWEL)
 						error = ErrorConst.NOT_ENOUGH_JEWEL;
+					else if (costtype == RewardConst.EXP)
+						error = ErrorConst.NOT_ENOUGH_EXP;
 					ErrorCommand errorCommand = buildErrorCommand(error);
 		            responseBuilder.setErrorCommand(errorCommand);
 		            
@@ -176,6 +178,9 @@ public class LotteryCommandService extends BaseCommandService {
 	
 	private boolean isFreeLotteryTime(UserBean user, int type, int count) {
 		if (count == 10)
+			return false;
+		
+		if (type == RewardConst.EXP)
 			return false;
 		
 		if(type == RewardConst.JEWEL && user.getFreeLotteryJewelTime() > System.currentTimeMillis() - 22 * TimeConst.MILLIONSECONDS_PER_HOUR)
