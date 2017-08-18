@@ -27724,10 +27724,18 @@ public final class EquipProto {
     // optional uint32 chipId = 3;
     /**
      * <code>optional uint32 chipId = 3;</code>
+     *
+     * <pre>
+     *装备或者碎片ID
+     * </pre>
      */
     boolean hasChipId();
     /**
      * <code>optional uint32 chipId = 3;</code>
+     *
+     * <pre>
+     *装备或者碎片ID
+     * </pre>
      */
     int getChipId();
   }
@@ -27878,12 +27886,20 @@ public final class EquipProto {
     private int chipId_;
     /**
      * <code>optional uint32 chipId = 3;</code>
+     *
+     * <pre>
+     *装备或者碎片ID
+     * </pre>
      */
     public boolean hasChipId() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional uint32 chipId = 3;</code>
+     *
+     * <pre>
+     *装备或者碎片ID
+     * </pre>
      */
     public int getChipId() {
       return chipId_;
@@ -28240,18 +28256,30 @@ public final class EquipProto {
       private int chipId_ ;
       /**
        * <code>optional uint32 chipId = 3;</code>
+       *
+       * <pre>
+       *装备或者碎片ID
+       * </pre>
        */
       public boolean hasChipId() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 chipId = 3;</code>
+       *
+       * <pre>
+       *装备或者碎片ID
+       * </pre>
        */
       public int getChipId() {
         return chipId_;
       }
       /**
        * <code>optional uint32 chipId = 3;</code>
+       *
+       * <pre>
+       *装备或者碎片ID
+       * </pre>
        */
       public Builder setChipId(int value) {
         bitField0_ |= 0x00000004;
@@ -28261,6 +28289,10 @@ public final class EquipProto {
       }
       /**
        * <code>optional uint32 chipId = 3;</code>
+       *
+       * <pre>
+       *装备或者碎片ID
+       * </pre>
        */
       public Builder clearChipId() {
         bitField0_ = (bitField0_ & ~0x00000004);

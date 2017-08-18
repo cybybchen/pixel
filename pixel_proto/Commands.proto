@@ -1316,7 +1316,7 @@ message ResponseUserPropCommand { //玩家道具列表
 message RequestUsePropCommand { //打开道具包
 	required int32 propId = 1;
 	required int32 propCount = 2;
-	optional uint32 chipId = 3;
+	optional uint32 chipId = 3;//装备或者碎片ID
 }
 
 message ResponseUsePropCommand {

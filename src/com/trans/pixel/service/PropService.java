@@ -131,7 +131,21 @@ public class PropService {
 			userPropService.updateUserProp(userProp);
 			
 			return SuccessConst.USE_PROP;
-		}else if(propId >= 39013 && propId <= 39015) {
+		} else if (propId >=34094 && propId <=34097) {
+			UserEquipPokedeBean userEquipPokede = userEquipPokedeService.selectUserEquipPokede(user.getId(), chipId);
+			if (userEquipPokede != null)
+				return ErrorConst.EQUIP_IS_EXIST_ERROR;
+			
+			RewardInfo.Builder builder = RewardInfo.newBuilder();
+			builder.setItemid(chipId);
+			builder.setCount(1);//Vip特权
+			rewards.addLoot(builder.build());
+			
+			userProp.setPropCount(userProp.getPropCount() - 1);
+			userPropService.updateUserProp(userProp);
+			
+			return SuccessConst.USE_PROP;
+		} else if(propId >= 39013 && propId <= 39015) {
 			HeroInfoBean heroInfo = userHeroService.selectUserHero(user.getId(), chipId);
 			heroInfo.setStarLevel(propId-39013+5);
 			userHeroService.updateUserHero(heroInfo);
