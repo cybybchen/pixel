@@ -217,13 +217,23 @@ public class RewardService {
 //			userService.updateUser(user);
 //		}
 //	}
-	public void doRewards(UserBean user, MultiReward.Builder rewards) {
+	public void addExtraRewards(UserBean user, MultiReward.Builder rewards) {
 		if(1 > RedisService.nextInt(3000)){
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(24013);
 			reward.setCount(1);
 			rewards.addLoot(reward);
 		}
+		if(1 > RedisService.nextInt(2000)){
+			RewardInfo.Builder reward = RewardInfo.newBuilder();
+			reward.setItemid(10024);
+			reward.setCount(1);
+			rewards.addLoot(reward);
+			doFilter(user, rewards);
+		}
+	}
+	
+	public void doRewards(UserBean user, MultiReward.Builder rewards) {
 		boolean needUpdateUser = false;
 		List<RewardInfo> heros = new ArrayList<RewardInfo>();
 		for (RewardInfo reward : rewards.getLootList()) {
@@ -245,6 +255,7 @@ public class RewardService {
 	
 	public void doFilterRewards(UserBean user, MultiReward.Builder rewards) {
 		doFilter(user, rewards);
+		addExtraRewards(user, rewards);
 		doRewards(user, rewards);
 	}
 	

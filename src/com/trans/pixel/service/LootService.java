@@ -87,6 +87,7 @@ public class LootService {
 					}
 				}
 			}
+			rewardService.addExtraRewards(user, rewards);
 			rewardService.doRewards(user, rewards);
 			if(responseBuilder != null)
 			pusher.pushRewardCommand(responseBuilder, user, rewards.build(), false);

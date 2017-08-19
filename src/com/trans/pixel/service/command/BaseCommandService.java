@@ -349,6 +349,9 @@ public class BaseCommandService {
 		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
 	}
 	
+	/**
+	 * only in mail
+	 */
 	protected void handleRewardsNoFilter(Builder responseBuilder, UserBean user, List<RewardBean> rewardList) {
 		MultiReward.Builder rewards = propService.handleRewards(user, rewardList);
 		rewardService.doRewards(user, rewards);
