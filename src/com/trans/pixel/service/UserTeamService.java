@@ -107,10 +107,9 @@ public class UserTeamService {
 		userTeam.setRolePosition(rolePosition);
 		userTeam.composeEngine(teamEngineList);
 		userTeam.setTalentId(talentId);
-		userTeam.setTalentEquip(UserTeamBean.composeEquip(calTalentEquipRecords(user, userTeam.getTalentId())));
-		userTeam.setHeroEquip(UserTeamBean.composeEquip(calHeroEquipRecords(user, userTeam.getTeamRecord())));
+//		userTeam.setTalentEquip(UserTeamBean.composeEquip(calTalentEquipRecords(user, userTeam.getTalentId())));
+//		userTeam.setHeroEquip(UserTeamBean.composeEquip(calHeroEquipRecords(user, userTeam.getTeamRecord())));
 		userTeamRedisService.updateUserTeam(userTeam);
-//		userTeamMapper.updateUserTeam(userTeam);
 		if(user != null){
 			user.setCurrentTeamid(id);
 			Team team = getTeamCache(user);

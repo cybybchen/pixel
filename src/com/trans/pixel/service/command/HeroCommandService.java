@@ -558,16 +558,16 @@ public class HeroCommandService extends BaseCommandService {
 		user.setCurrentTeamid(TypeTranslatedUtil.stringToLong(cmd.getComposeSkill()));
 		userTeamService.changeUserTeam(user, TypeTranslatedUtil.stringToInt(cmd.getComposeSkill()));
 		
-		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
-		List<EquipRecord> talentEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getTalentEquip());
-		List<EquipRecord> heroEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getHeroEquip());
+//		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
+//		List<EquipRecord> talentEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getTalentEquip());
+//		List<EquipRecord> heroEquipRecords = UserTeamBean.buildEquipRecord(userTeam.getHeroEquip());
 		
-		UserTalent userTalent = talentService.updateUserTalentEquip(user, talentEquipRecords);
-		if (userTalent != null)
-			pushCommandService.pushUserTalent(responseBuilder, user, userTalent);
-		
-		List<HeroInfoBean> heroList = heroLevelUpService.updateHerosEquip(user, heroEquipRecords);
-		pushCommandService.pushUserHeroListCommand(responseBuilder, user, heroList);
+//		UserTalent userTalent = talentService.updateUserTalentEquip(user, talentEquipRecords);
+//		if (userTalent != null)
+//			pushCommandService.pushUserTalent(responseBuilder, user, userTalent);
+//		
+//		List<HeroInfoBean> heroList = heroLevelUpService.updateHerosEquip(user, heroEquipRecords);
+//		pushCommandService.pushUserHeroListCommand(responseBuilder, user, heroList);
 		
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		responseBuilder.setMessageCommand(this.buildMessageCommand(SuccessConst.SUBMIT_SUCCESS));
