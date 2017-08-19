@@ -333,7 +333,7 @@ public class ShopRedisService extends RedisService{
 			}else if(comm.getPosition() == 3 && user.getFriendVip() == 1){
 				builder.removeItems(index);
 			}
-			comm.setIsOut(comm.getLimit() == comm.getMaxlimit());
+			comm.setIsOut(comm.getLimit() >= comm.getMaxlimit() && comm.getMaxlimit() >= 0);
 		}
 		if(!builder.hasEndTime())
 			builder.setEndTime(nextWeek(0));
