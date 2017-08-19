@@ -72,6 +72,7 @@ function updateTieUserId() {
 	var dom = $('input[name="tie-userid"]');
 	dom.val("");
 	dom.parent().parent().find("h3 .userid").html(userid);
+	$("#popupTieUser").popup('open');
 }
 
 function tieNewUser() {

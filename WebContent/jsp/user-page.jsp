@@ -7,7 +7,7 @@
 	</div>/header -->
 	<div data-role="popup" id="popupTieUser" data-theme="a" class="ui-corner-all">
 		<div style="padding:10px 20px;">
-			<h3>请输入另一个userId<span style="color:#F00;">(不保留)</span>的account与该user<span class="userid"></span>换绑</h3>
+			<h3>请输入另一个userId<span style="color:#F00;">(不保留)</span>与该user<span class="userid"></span>换绑</h3>
 	        <label for="tie-userid" class="ui-hidden-accessible">userId:</label>
 	        <input type="text" name="tie-userid" value="" placeholder="tie userId">
 
@@ -64,7 +64,7 @@
 	</div><!-- /navmenu -->
 
 	<div role="main" class="ui-content jqm-content">
-		<a href="#popupTieUser" id="new-tie" class="ui-btn ui-shadow ui-corner-all ui-btn-inline" style="position:absolute;right:38px;z-index:999;display:none;" onclick="updateTieUserId();">换绑</a>
+		<a href="" id="new-tie" class="ui-btn ui-shadow ui-corner-all ui-btn-inline" style="position:absolute;right:38px;z-index:999;display:none;top:-6px;" onclick="updateTieUserId();">换绑</a>
 		<a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-d ui-btn-icon-notext ui-btn-inline" style="position:absolute;right:5px;z-index:999;" onclick="popupUsersPanel();">UsersPanel</a>
 		<div data-role="controlgroup" id="user-controlgroup" class="ui-btn-inline">
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>

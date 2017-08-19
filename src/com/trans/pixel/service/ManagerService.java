@@ -372,6 +372,10 @@ public class ManagerService extends RedisService{
 		result.put("serverId", serverId);
 		if(req.containsKey("tie-userId") && gmaccountBean.getMaster() == 1){
 			long tieUserId = TypeTranslatedUtil.jsonGetLong(req, "tie-userId");
+			if(userId == tieUserId) {
+				result.put("error", "Cannot tie to same user!");
+				return result;
+			}
 			UserBean user = userService.getUserOther(userId);
 			if(user == null){
 				result.put("error", "Cannot find user!");
@@ -382,6 +386,7 @@ public class ManagerService extends RedisService{
 				result.put("error", "Cannot find tie user!");
 				return result;
 			}
+			result.put("success", "换绑成功!");
 			String account = user.getAccount();
 			user.setAccount(other.getAccount());
 			String oldAccount = nextInt(1000000000)+"";
@@ -401,6 +406,7 @@ public class ManagerService extends RedisService{
 						other.getId());
 			}catch(Exception e) {
 				logger.error("Faild tie user"+user.getId()+" to olduser"+other.getId(), e);
+				result.remove("success");
 				result.put("error", "Cannot find tie user!");
 			}
 			return result;
