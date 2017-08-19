@@ -180,6 +180,7 @@ public class UserService {
 		user.setFreeLotteryCoinLeftTime(5);
 		user.setSevenSignStatus(0);
 		user.setLotteryCoinCount(0);
+		user.setLotteryExpCount(0);
 		user.setBlackShopRefreshTime(0);
 		user.setUnionBossMap(new HashMap<String, Integer>());
 		
