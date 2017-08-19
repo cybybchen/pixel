@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,6 +27,7 @@ import com.trans.pixel.model.BlackListBean;
 import com.trans.pixel.model.GmAccountBean;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.RechargeBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserPokedeBean;
@@ -99,6 +101,8 @@ public class ManagerService extends RedisService{
 	private UserTalentService userTalentService;
 	@Resource
 	private UnionRedisService unionRedisService;
+	@Resource
+	private RechargeService rechargeService;
 	
 	public ManagerService() {
 		buildRequest();
@@ -407,7 +411,7 @@ public class ManagerService extends RedisService{
 			}catch(Exception e) {
 				logger.error("Faild tie user"+user.getId()+" to olduser"+other.getId(), e);
 				result.remove("success");
-				result.put("error", "Cannot find tie user!");
+				result.put("error", "Faild tie user with error:"+e);
 			}
 			return result;
 		}
@@ -645,6 +649,19 @@ public class ManagerService extends RedisService{
 			object.putAll(map);
 			result.put("Event", object);
 		}
+		
+		if(req.containsKey("rechargeToAdd") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USER_RECHARGE_PREFIX + userId, userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("rechargeToAdd", map);
+		}
+		if(req.containsKey("recharge") && gmaccountBean.getCanview() == 1){
+			List<RechargeBean> rechargelist = rechargeService.getRechargeRecord(userId);
+			Collections.reverse(rechargelist);
+			result.put("recharge", rechargelist);
+		}
+		
 		
 //		if(req.containsKey("update-LevelRecord") && gmaccountBean.getCanwrite() == 1){
 //			hput(USERDATA+userId, "LevelRecord", req.get("update-LevelRecord").toString());

@@ -58,6 +58,7 @@
 			<li ><a href="#" data-type="pvp">PVP</a></li>
 			<li ><a href="#" data-type="talent">天赋</a></li>
 			<li ><a href="#" data-type="0">其他</a></li>
+			<li ><a href="#" data-type="recharge">充值</a></li>
 			<li data-theme="b"><a href="#server-page">服务器</a></li>
 			<li data-theme="b"><a href="#config-page">配置</a></li>
 	     </ul>

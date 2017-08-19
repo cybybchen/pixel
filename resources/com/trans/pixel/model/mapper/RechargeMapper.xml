@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="getRechargeRecord" resultMap="resultMap">
-		SELECT * from recharge
+		SELECT * from recharge where user_id=#{userId}
 	</select>
 
 </mapper>

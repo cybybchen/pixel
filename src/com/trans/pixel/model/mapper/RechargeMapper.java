@@ -12,6 +12,6 @@ public interface RechargeMapper {
 
 	public RechargeBean getUserRechargeRecord(@Param("orderId")String orderId);
 	
-	public List<RechargeBean> getRechargeRecord();
+	public List<RechargeBean> getRechargeRecord(@Param("userId")long userId);
 
 }

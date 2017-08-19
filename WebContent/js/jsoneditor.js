@@ -269,8 +269,12 @@ function buildUserJson(key, value){
             json["areaEquip"] = 1;
             json["areaBuff"] = 1;
         } else if (datatype == "talent") {
-        		json["talent"] = 1;
+    		json["talent"] = 1;
             json["talentskill"] = 1;
+        }else if (datatype == "recharge") {
+        	json["LibaoCount"] = 1;
+        	json["rechargeToAdd"] = 1;
+        	json["recharge"] = 1;
         } else{
             json["mailList0"] = 1;
             json["mailList1"] = 1;
@@ -349,6 +353,12 @@ function appendUserDatas(message, dirty){
     }
     if(message["LibaoCount"]!=null){
         appendUserData("LibaoCount", message["LibaoCount"]);
+    }
+    if(message["rechargeToAdd"]!=null){
+        appendUserData("rechargeToAdd", message["rechargeToAdd"]);
+    }
+    if(message["recharge"]!=null){
+        appendUserData("recharge", message["recharge"]);
     }
     if(message["PvpMap"]!=null){
         appendUserData("PvpMap", message["PvpMap"]);
