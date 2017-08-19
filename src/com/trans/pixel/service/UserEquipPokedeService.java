@@ -39,6 +39,9 @@ public class UserEquipPokedeService {
 			}
 		}
 		
+		if (userPokede != null && !userPokede.getEndTime().isEmpty() && DateUtil.timeIsOver(userPokede.getEndTime()))
+			return null;
+		
 		return userPokede;
 	}
 	
