@@ -275,7 +275,7 @@ public class ShopCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
-		} else if(commbuilder.getIsOut() || commbuilder.getId() != cmd.getId()){
+		} else if(commbuilder.getLimit() >= commbuilder.getMaxlimit() && commbuilder.getMaxlimit() >= 0/* || commbuilder.getId() != cmd.getId()*/){
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.SHOP_OVERTIME);
 			
             responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.SHOP_OVERTIME));
@@ -285,7 +285,7 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
 			commbuilder.setLimit(commbuilder.getLimit() + 1);
-			if(commbuilder.getLimit() == commbuilder.getMaxlimit())
+			if(commbuilder.getLimit() >= commbuilder.getMaxlimit() && commbuilder.getMaxlimit() >= 0)
 				commbuilder.setIsOut(true);
 			if (commbuilder.getPosition() == 3)
 				user.setFriendVip(1);
@@ -615,7 +615,7 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
 			commbuilder.setLimit(commbuilder.getLimit() + count);
-			if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime)
+			if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime && commbuilder.getMaxlimit() >= 0)
 				commbuilder.setIsOut(true);
 			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount()*count);
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
@@ -830,7 +830,7 @@ public class ShopCommandService extends BaseCommandService{
 			responseBuilder.setErrorCommand(buildErrorCommand(error));
 		}else{
 			commbuilder.setLimit(commbuilder.getLimit() + count);
-			if(commbuilder.getLimit() == commbuilder.getMaxlimit()+othertime)
+			if(commbuilder.getLimit() >= commbuilder.getMaxlimit()+othertime && commbuilder.getMaxlimit() >= 0)
 				commbuilder.setIsOut(true);
 			handleRewards(responseBuilder, user, commbuilder.getItemid(), commbuilder.getCount()*count);
 			responseBuilder.setMessageCommand(buildMessageCommand(SuccessConst.PURCHASE_SUCCESS));
