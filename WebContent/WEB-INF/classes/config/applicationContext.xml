@@ -199,8 +199,12 @@
 		</property>
 	</bean>
 	
-	<bean id="gmAccountRedisService" class="com.trans.pixel.service.redis.GmAccountRedisService">
+        <bean id="gmAccountBean" class="com.trans.pixel.model.GmAccountBean">
+        </bean>
+	<bean id="gmAccountService" class="com.trans.pixel.service.GmAccountService">
 	</bean>
+        <bean id="gmAccountRedisService" class="com.trans.pixel.service.redis.GmAccountRedisService">
+        </bean>
 	
 	<bean id="userService" class="com.trans.pixel.service.UserService">
 	</bean>

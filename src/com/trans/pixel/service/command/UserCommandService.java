@@ -340,6 +340,7 @@ public class UserCommandService extends BaseCommandService {
 		}
 		user.setAccount(cmd.getNewAccount());
 		userService.updateUserToMysql(user);
+		userService.updateUser(user);
 		userService.delUserIdByAccount(user.getServerId(), cmd.getOldAccount());
 		userService.setUserIdByAccount(user.getServerId(), user.getAccount(),
 				user.getId());

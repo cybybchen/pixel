@@ -5,9 +5,19 @@
 		<a href="#" class="new-tab ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
 		<a href="#" class="ui-btn ui-btn-inline">Anchor</a>
 	</div>/header -->
+	<div data-role="popup" id="popupTieUser" data-theme="a" class="ui-corner-all">
+		<div style="padding:10px 20px;">
+			<h3>请输入另一个userId<span style="color:#F00;">(不保留)</span>的account与该user<span class="userid"></span>换绑</h3>
+	        <label for="tie-userid" class="ui-hidden-accessible">userId:</label>
+	        <input type="text" name="tie-userid" value="" placeholder="tie userId">
+
+	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="tieNewUser()">换绑</a>
+		</div>
+	</div>
+	
 	<div data-role="popup" id="popupNewUser" data-theme="a" class="ui-corner-all">
 		<div style="padding:10px 20px;">
-			<h3>Please sign in</h3>
+			<h3>请输入user信息</h3>
 	        <label for="userid" class="ui-hidden-accessible">userId:</label>
 	        <input type="text" name="userid" value="" placeholder="userId">
 
@@ -17,7 +27,7 @@
 	        <label for="serverid" class="ui-hidden-accessible">serverId:</label>
 	        <input type="text" name="serverid" value="1" placeholder="serverId">
 
-	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewUserTab()">Sign in</a>
+	    	<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" data-rel="back" data-transition="flow" onclick="addNewUserTab()">查询</a>
 		</div>
 	</div>
 	<div data-role="popup" id="users-panel" data-theme="b" data-position="right" data-display="overlay">
@@ -54,6 +64,7 @@
 	</div><!-- /navmenu -->
 
 	<div role="main" class="ui-content jqm-content">
+		<a href="#popupTieUser" id="new-tie" class="ui-btn ui-shadow ui-corner-all ui-btn-inline" style="position:absolute;right:38px;z-index:999;display:none;" onclick="updateTieUserId();">换绑</a>
 		<a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-carat-d ui-btn-icon-notext ui-btn-inline" style="position:absolute;right:5px;z-index:999;" onclick="popupUsersPanel();">UsersPanel</a>
 		<div data-role="controlgroup" id="user-controlgroup" class="ui-btn-inline">
 			<a href="#popupNewUser" data-rel="popup" data-position-to="window" data-transition="pop" id="new-usertab" class="new-tab ui-btn ui-btn-inline ui-btn-icon-notext ui-icon-plus ui-nodisc-icon ui-alt-icon">Menu</a>

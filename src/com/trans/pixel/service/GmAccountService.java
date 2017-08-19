@@ -56,4 +56,8 @@ public class GmAccountService {
 		}
 		return accountMap;
 	}
+	
+	public String loginGmAccount(String account, String password){
+		return redis.loginGmAccount(account, password);
+	}
 }

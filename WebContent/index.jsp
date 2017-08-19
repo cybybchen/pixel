@@ -26,7 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <jsp:forward page="login.jsp"/>
 <%
 	}else{
-		out.print("<script>var session = \""+mysession+"\";</script>");
+		out.print("<script>var session = \""+mysession+"\""
+				+";var canreward = "+(Integer) session_comm.getAttribute("canreward")
+				+";var canview = "+(Integer) session_comm.getAttribute("canview")
+				+";var canwrite = "+(Integer) session_comm.getAttribute("canwrite")
+				+";var canmaster = "+(Integer) session_comm.getAttribute("canmaster")
+				+";</script>");
 	}
 %>
 </head>

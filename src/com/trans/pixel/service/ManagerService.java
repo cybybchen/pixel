@@ -370,6 +370,41 @@ public class ManagerService extends RedisService{
 		result.put("userId", userId);
 		result.put("userName", userName);
 		result.put("serverId", serverId);
+		if(req.containsKey("tie-userId") && gmaccountBean.getMaster() == 1){
+			long tieUserId = TypeTranslatedUtil.jsonGetLong(req, "tie-userId");
+			UserBean user = userService.getUserOther(userId);
+			if(user == null){
+				result.put("error", "Cannot find user!");
+				return result;
+			}
+			UserBean other = userService.getUserOther(tieUserId);
+			if(other == null){
+				result.put("error", "Cannot find tie user!");
+				return result;
+			}
+			String account = user.getAccount();
+			user.setAccount(other.getAccount());
+			String oldAccount = nextInt(1000000000)+"";
+			while(oldAccount.length() < 9)
+				oldAccount = "0"+oldAccount;
+			other.setAccount(oldAccount);
+			try{
+				userService.updateUserToMysql(other);
+				userService.updateUserToMysql(user);
+				other.setAccount(account);
+				userService.updateUserToMysql(other);
+				userService.updateUser(user);
+				userService.updateUser(other);
+				userService.setUserIdByAccount(user.getServerId(), user.getAccount(),
+						user.getId());
+				userService.setUserIdByAccount(other.getServerId(), other.getAccount(),
+						other.getId());
+			}catch(Exception e) {
+				logger.error("Faild tie user"+user.getId()+" to olduser"+other.getId(), e);
+				result.put("error", "Cannot find tie user!");
+			}
+			return result;
+		}
 		int rewardId = TypeTranslatedUtil.jsonGetInt(req, "rewardId");
 		long rewardCount = TypeTranslatedUtil.jsonGetLong(req, "rewardCount");
 		String mailContent = TypeTranslatedUtil.jsonGetString(req, "mailContent");

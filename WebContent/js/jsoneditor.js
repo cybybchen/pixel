@@ -68,6 +68,20 @@ function addNewUserTab() {
     requestUserJson(userid, username, serverid);
 }
 
+function updateTieUserId() {
+	var dom = $('input[name="tie-userid"]');
+	dom.val("");
+	dom.parent().parent().find("h3 .userid").html(userid);
+}
+
+function tieNewUser() {
+    var tie_userid = $('input[name="tie-userid"]:visible').val();
+    if(userid && tie_userid){
+    	var data = buildUserJson("tie-userId", tie_userid);
+        updateUserJson(data);
+    }
+}
+
 /*set global userid before called*/
 function addUserTab(){
     var checked = false;
@@ -1028,6 +1042,9 @@ function quickManager(value){
 }
 
 $(document).ready(function() {
+	if(canmaster == 1) {
+		$("#new-tie").show();
+	}
     $( "#menu-panel" ).panel({
       animate: false
     });

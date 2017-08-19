@@ -14,7 +14,8 @@
 <!-- jsp:useBean id="redis" class="com.trans.pixel.service.redis.GmAccountRedisService" scope="page" /-->
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
-<%@page import="com.trans.pixel.service.redis.GmAccountRedisService"%>
+<%@page import="com.trans.pixel.service.GmAccountService"%>
+<%@page import="com.trans.pixel.model.GmAccountBean"%>
 <%
 javax.servlet.http.HttpSession session_comm = request.getSession(true);
 
@@ -22,13 +23,18 @@ String account = request.getParameter("account");
 String password = request.getParameter("password");
 if (account!=null && account!="" && password!=null){
 	ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
-	GmAccountRedisService redis = (GmAccountRedisService) context.getBean("gmAccountRedisService");
-	String mysession = redis.loginGmAccount(account, password);
+	GmAccountService service = (GmAccountService) context.getBean("gmAccountService");
+	String mysession = service.loginGmAccount(account, password);
 	if (mysession != null) {
 		System.out.println(account + ":" + password);
 		//session_comm.setAttribute("account", account);
 		//session_comm.setAttribute("password", password);
 		session_comm.setAttribute("session", mysession);
+		GmAccountBean gmaccount = service.getAccount(account);
+		session_comm.setAttribute("canreward", gmaccount.getCanreward());
+		session_comm.setAttribute("canview", gmaccount.getCanview());
+		session_comm.setAttribute("canwrite", gmaccount.getCanwrite());
+		session_comm.setAttribute("canmaster", gmaccount.getMaster());
 		session_comm.setMaxInactiveInterval(3600 * 3);//单位：秒（实际经常到20秒以后才超时）
 		response.sendRedirect("index.jsp");
 	} else {

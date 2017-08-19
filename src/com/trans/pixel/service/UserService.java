@@ -377,7 +377,6 @@ public class UserService {
 	}
 	
 	public void updateUserToMysql(UserBean user) {
-		userRedisService.updateUser(user);
 		userMapper.updateUser(user);
 	}
 	
