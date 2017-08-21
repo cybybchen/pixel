@@ -156,6 +156,7 @@ public class UnionCommandService extends BaseCommandService {
 		if(user.getUnionId() != 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.YOU_HAS_UNION);
 			responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.YOU_HAS_UNION));
+			return;
 		}
 		
 		if (!costService.costAndUpdate(user, RewardConst.JEWEL, CREATE_UNION_COST_JEWEL)) {
