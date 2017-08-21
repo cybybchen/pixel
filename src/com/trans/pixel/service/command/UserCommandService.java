@@ -48,6 +48,7 @@ import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.RechargeService;
+import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
@@ -101,7 +102,8 @@ public class UserCommandService extends BaseCommandService {
 	private RechargeService rechargeService;
 	@Resource
 	private RechargeRedisService rechargeRedisService;
-	
+	@Resource
+	private RewardService rewardService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -150,7 +152,13 @@ public class UserCommandService extends BaseCommandService {
 		
 		MultiReward rewards1 = rechargeRedisService.getUserLoginReward(user.getId());
 		if (rewards1 != null && rewards1.getLootCount() > 0) {
-			handleRewards(responseBuilder, user, rewards1, false);
+			for (RewardInfo reward : rewards1.getLootList()) {
+				if (reward.getItemid() == RewardConst.VIPEXP)
+					rewardService.doReward(user, reward.getItemid(), reward.getCount(), 0, false);
+				else
+					rewardService.doReward(user, reward.getItemid(), reward.getCount(), 0);
+//				handleRewards(responseBuilder, user, rewards1, false);
+			}
 		}
 		
 		/**
