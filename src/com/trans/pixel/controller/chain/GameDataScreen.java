@@ -54,6 +54,7 @@ import com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.HeroProto.RequestLockHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestOpenFetterCommand;
 import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
+import com.trans.pixel.protoc.HeroProto.RequestSpecialTalentChangeUseCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeEquipCommand;
 import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
@@ -1617,6 +1618,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestUserTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		teamCommandService.getUserTeam(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestSpecialTalentChangeUseCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		teamCommandService.talentChangeUse(cmd, responseBuilder, user);
 		return true;
 	}
 }

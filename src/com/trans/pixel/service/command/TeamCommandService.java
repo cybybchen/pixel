@@ -11,9 +11,11 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
+import com.trans.pixel.protoc.HeroProto.RequestSpecialTalentChangeUseCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamListCommand;
@@ -27,6 +29,7 @@ import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
+import com.trans.pixel.service.TalentService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -48,6 +51,8 @@ public class TeamCommandService extends BaseCommandService {
 	private RankService rankService;
 	@Resource
 	private FightInfoService fightInfoService;
+	@Resource
+	private TalentService talentService;
 
 	public void updateUserTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
@@ -192,6 +197,18 @@ public class TeamCommandService extends BaseCommandService {
 					.newBuilder();
 			builder.setTeam(team);
 			responseBuilder.setTeamCommand(builder.build());
+		}
+	}
+	
+	public void talentChangeUse(RequestSpecialTalentChangeUseCommand cmd, Builder responseBuilder, UserBean user) {
+		UserTeamBean userTeam = userTeamService.specialTalentChangeUse(user, cmd.getType(), cmd.getId());
+		
+		if (userTeam != null) {
+			ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
+			builder.addUserTeam(userTeam.buildUserTeam());
+			builder.setType(cmd.getType());
+			
+			responseBuilder.setUserTeamListCommand(builder.build());
 		}
 	}
 }

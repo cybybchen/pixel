@@ -949,6 +949,11 @@ enum TEAM_TYPE {
         TEAM_UNION = 1;
 }
 
+message RequestSpecialTalentChangeUseCommand {
+	required TEAM_TYPE type = 1;
+	required uint32 id = 2;
+}
+
 message RequestGetTeamCommand {
 	required int64 userId = 1;
 	optional TEAM_TYPE type = 2;
@@ -3996,6 +4001,7 @@ message RequestCommand {
 	optional RequestUnionFightCommand unionFightCommand = 268;
 	optional RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;
 	optional RequestUserTeamCommand userTeamCommand = 270;
+	optional RequestSpecialTalentChangeUseCommand specialTalentChangeUseCommand = 271;
 }
 ////////// Commands
 message ErrorCommand {

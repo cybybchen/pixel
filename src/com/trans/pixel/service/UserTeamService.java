@@ -522,6 +522,18 @@ public class UserTeamService {
 		return null;
 	}
 	
+	public UserTeamBean specialTalentChangeUse(UserBean user, TEAM_TYPE type, int id) {
+		UserTeamBean userTeam = getUserOtherTeam(user, type);
+		if (userTeam != null) {
+			userTeam.setTalentId(id);
+			
+			if (type.equals(TEAM_TYPE.TEAM_UNION))
+				unionService.updateApplyTeam(user, userTeam);
+		}
+		
+		return userTeam;
+	}
+	
 	public Team getOtherUserTeamCache(long userId) {
 		return unionService.getUnionFightTeamCache(userId);
 	}
