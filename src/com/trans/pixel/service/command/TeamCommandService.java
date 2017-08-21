@@ -162,6 +162,9 @@ public class TeamCommandService extends BaseCommandService {
 			Builder responseBuilder, UserBean user) {
 		UserTeamBean userTeam = userTeamService.getUserOtherTeam(user, cmd.getType());
 		
+		if (userTeam == null)
+			userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
+		
 		if (userTeam != null) {
 			ResponseUserTeamListCommand.Builder builder = ResponseUserTeamListCommand.newBuilder();
 			builder.addUserTeam(userTeam.buildUserTeam());
@@ -179,6 +182,8 @@ public class TeamCommandService extends BaseCommandService {
 		Team team = null;
 		if (cmd.hasType() && !cmd.getType().equals(TEAM_TYPE.TEAM_NULL)) {
 			team = userTeamService.getOtherUserTeamCache(cmd.getUserId());
+			if (team == null)
+				team = userTeamService.getTeamCache(cmd.getUserId());
 		} else
 			team = userTeamService.getTeamCache(cmd.getUserId());
 		
