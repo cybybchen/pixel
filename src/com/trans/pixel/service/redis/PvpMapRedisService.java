@@ -492,7 +492,7 @@ public class PvpMapRedisService extends RedisService{
 	}
 
 	public void saveBossReward(int serverId, int bossId) {
-		set(RedisKey.MOWUREWARD_PREFIX+serverId, bossId+"");
+		hput(RedisKey.MOWUREWARD_PREFIX+serverId, bossId+"", now()+"");
 		expireAt(RedisKey.MOWUREWARD_PREFIX+serverId, nextDay());
 	}
 	
