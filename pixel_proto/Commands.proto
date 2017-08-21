@@ -3307,6 +3307,15 @@ message UnionFightRecord {
 	repeated EnemyRecord enemyRecord = 5;
 }
 
+message UnionFightReward {
+	required uint32 id = 1;
+	repeated RewardInfo reward = 2;
+}
+
+message UnionFightRewardList {
+	repeated UnionFightReward data = 1;
+}
+
 message RequestUnionFightApplyCommand {
 	enum UNIONFIGHTAPPLY_STATUS {
 		APPLY_LIST = 1;//申请列表

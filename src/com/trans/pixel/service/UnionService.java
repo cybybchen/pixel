@@ -1,7 +1,6 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -58,6 +57,7 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionFightRecord;
 import com.trans.pixel.protoc.UnionProto.UnionFightRecord.EnemyRecord;
+import com.trans.pixel.protoc.UnionProto.UnionFightReward;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.AreaRedisService;
@@ -1685,7 +1685,7 @@ public class UnionService extends FightService{
 		if (redis.hasRewardUnionFight(unionId))
 			return;
 		
-		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 10000);
+		List<RewardInfo> rewardList = buildUnionFightReward(true);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "恭喜您的公会获得公会战胜利！", rewardList);
@@ -1697,7 +1697,7 @@ public class UnionService extends FightService{
 		if (redis.hasRewardUnionFight(unionId))
 			return;
 		
-		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 1000);
+		List<RewardInfo> rewardList = buildUnionFightReward(true);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中和对方战成了平手，请再接再厉！", rewardList);
@@ -1709,12 +1709,26 @@ public class UnionService extends FightService{
 		if (redis.hasRewardUnionFight(unionId))
 			return;
 		
-		List<RewardInfo> rewardList = RewardBean.initRewardInfoList(1002, 100);
+		List<RewardInfo> rewardList = buildUnionFightReward(true);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中输给了对手，请再接再厉！", rewardList);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
+	}
+	
+	private List<RewardInfo> buildUnionFightReward(boolean isWin) {
+		UnionFightReward reward = redis.getUnionFightReward(1);
+		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+		for (RewardInfo rewardinfo : reward.getRewardList()) {
+			RewardInfo.Builder builder = RewardInfo.newBuilder(rewardinfo);
+			if (isWin) 
+				builder.setCount((int)(builder.getCount() * 1.5));
+			
+			rewardList.add(builder.build());
+		}
+		
+		return rewardList;
 	}
 	
 	private void sendUnionFightMail(UserInfo user, String content, List<RewardInfo> rewardList) {

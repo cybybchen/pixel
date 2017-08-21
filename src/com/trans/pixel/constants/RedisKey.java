@@ -392,6 +392,7 @@ public class RedisKey {
 	public static final String UNION_FIGHT_REWARD_RECORD_KEY = PREFIX + "union_fight_reward_record";
 	public static final String UNION_FIGHT_APPLY_TEAM_PREFIX = PREFIX + "union_fight_apply_team_";
 	public static final String UNION_FIGHT_APPLY_TEAMCACHE_PREFIX = PREFIX + "union_fight_apply_teamcache_";
+	public static final String UNION_FIGHT_REWARD_KEY = PREFIX + CONFIG_PREFIX + "union_fight_reward";
 	
 	//notice message key
 	public static final String NOTICE_MESSAGE_PREFIX = PREFIX + "notice_message" + SPLIT + SERVER_PREFIX;

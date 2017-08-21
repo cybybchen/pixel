@@ -39,6 +39,8 @@ import com.trans.pixel.protoc.UnionProto.UnionBosswinList;
 import com.trans.pixel.protoc.UnionProto.UnionExp;
 import com.trans.pixel.protoc.UnionProto.UnionExpList;
 import com.trans.pixel.protoc.UnionProto.UnionFightRecord;
+import com.trans.pixel.protoc.UnionProto.UnionFightReward;
+import com.trans.pixel.protoc.UnionProto.UnionFightRewardList;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -49,6 +51,7 @@ public class UnionRedisService extends RedisService{
 //	private static final String UNION_BOSSLOOT_FILE_NAME = "ld_guildbossloot.xml";
 	private static final String UNION_BOSSWIN_FILE_NAME = "ld_guildbosswin.xml";
 	private static final String UNION_EXP_FILE_NAME = "ld_unionexp.xml";
+	private static final String UNION_FIGHT_REWARD_FILE_NAME = "ld_gonghuizhan.xml";
 	private static Logger logger = Logger.getLogger(UnionRedisService.class);
 	@Resource
 	public UserRedisService userRedisService;
@@ -57,6 +60,7 @@ public class UnionRedisService extends RedisService{
 		buildUnionBosswinConfig();
 		buildUnionExpConfig();
 		buildUnionBossConfig();
+		buildUnionFightRewardConfig();
 	}
 	
 	public Union.Builder getUnionInfo(Union.Builder union) {
@@ -943,6 +947,33 @@ public class UnionRedisService extends RedisService{
 			map.put(config.getLevel(), config.build());
 		}
 		CacheService.hputcacheAll(RedisKey.UNION_EXP_KEY, map);
+		
+		return map;
+	}
+	
+	public UnionFightReward getUnionFightReward(int id) {
+		Map<Integer, UnionFightReward> map = CacheService.hgetcache(RedisKey.UNION_FIGHT_REWARD_KEY);
+		return map.get(id);
+	}
+	
+	public Map<Integer, UnionFightReward> getUnionFightRewardConfig() {
+		Map<Integer, UnionFightReward> map = CacheService.hgetcache(RedisKey.UNION_FIGHT_REWARD_KEY);
+		return map;
+	}
+	
+	private Map<Integer, UnionFightReward> buildUnionFightRewardConfig(){
+		String xml = ReadConfig(UNION_FIGHT_REWARD_FILE_NAME);
+		UnionFightRewardList.Builder builder = UnionFightRewardList.newBuilder();
+		if(!parseXml(xml, builder)){
+			logger.warn("cannot build " + UNION_FIGHT_REWARD_FILE_NAME);
+			return null;
+		}
+		
+		Map<Integer, UnionFightReward> map = new HashMap<Integer, UnionFightReward>();
+		for(UnionFightReward.Builder config : builder.getDataBuilderList()){
+			map.put(config.getId(), config.build());
+		}
+		CacheService.hputcacheAll(RedisKey.UNION_FIGHT_REWARD_KEY, map);
 		
 		return map;
 	}
