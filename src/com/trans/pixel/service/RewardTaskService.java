@@ -134,6 +134,7 @@ public class RewardTaskService {
 		} else if(userRewardTask.getTask().getMerlevel() > user.getMerlevel()) {
 			return ErrorConst.MERLEVEL_FIRST;
 		}
+		int team = 0;
 		RewardTask rewardTask = userRewardTask.getTask();
 		if(ret) {
 			ResultConst result = SuccessConst.BOSS_SUBMIT_SUCCESS;
@@ -145,6 +146,9 @@ public class RewardTaskService {
 					result = ErrorConst.NOT_ENOUGH_PROP;
 				}
 			}
+			
+			if (userRewardTask.hasRoomInfo())
+				team = 1;
 			
 			UserRewardTask.Builder builder = userRewardTask;
 			ResultConst result2 = handleRewardTaskRoom(user, index, rewardTask, errorUserList, builder);
@@ -185,11 +189,11 @@ public class RewardTaskService {
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());
 		params.put(LogString.BOSSID, "" + rewardTask.getEventid());
-		if(userRewardTask.hasRoomInfo()) {
-			params.put(LogString.TEAM, "1");
-		} else {
-			params.put(LogString.TEAM, "0");
-		}
+//		if(userRewardTask.hasRoomInfo()) {
+			params.put(LogString.TEAM, "" + team);
+//		} else {
+//			params.put(LogString.TEAM, "0");
+//		}
 		params.put(LogString.RESULT, ret ? "1" : "0");
 		params.put(LogString.DPS, "0");
 		UserLevelBean userLevel = userLevelService.getUserLevel(user);
