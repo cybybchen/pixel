@@ -1514,9 +1514,6 @@ public class UnionService extends FightService{
 	}
 	
 	public UNION_FIGHT_STATUS calUnionFightStatus(int unionId) {
-		if (UNION_FIGHT_PIPEI_STATUS == 1) { //匹配中
-			return UNION_FIGHT_STATUS.PIPEI_TIME;
-		}
 		int cheatStatus = redis.getUnionFightCheatStatus();
 		if (cheatStatus != 0) {
 			switch (cheatStatus) {
@@ -1555,11 +1552,9 @@ public class UnionService extends FightService{
 				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 		} else if (unionId == 0 && day == UnionConst.FIGHT_SENDREWARD_DAY) {
 			status = UNION_FIGHT_STATUS.SEND_REWARD_TIME;
-			if (unionId != 0 && !isInFightUnions(unionId))
-				status = UNION_FIGHT_STATUS.NOT_IN_FIGHT_UNIONS;
 		}
 		
-		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && (RedisService.now() - RedisService.today(0)) < 10 * 60)
+		if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME) && (RedisService.now() - RedisService.today(0)) < 12 * 3600)
 			status = UNION_FIGHT_STATUS.PIPEI_TIME;
 			
 		return status;
