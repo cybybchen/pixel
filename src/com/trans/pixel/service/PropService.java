@@ -21,13 +21,13 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Chip;
+import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
 import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
-import com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
-import com.trans.pixel.protoc.UserInfoProto.RewardCommand;
 import com.trans.pixel.service.redis.PropRedisService;
 import com.trans.pixel.service.redis.TalentRedisService;
 
@@ -136,6 +136,17 @@ public class PropService {
 			if (userEquipPokede != null)
 				return ErrorConst.EQUIP_IS_EXIST_ERROR;
 			
+			if (chipId > RewardConst.EQUIPMENT && chipId < RewardConst.CHIP) {
+				if (chipId < RewardConst.ARMOR) {
+					Equip equip = equipService.getEquip(chipId);
+					if (equip == null)
+						return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+				} else {
+					Armor armor = equipService.getArmor(chipId);
+					if (armor == null)
+						return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+				}
+			}
 			RewardInfo.Builder builder = RewardInfo.newBuilder();
 			builder.setItemid(chipId);
 			builder.setCount(1);
