@@ -140,13 +140,15 @@ public class PropService {
 				if (chipId < RewardConst.ARMOR) {
 					Equip equip = equipService.getEquip(chipId);
 					if (equip == null)
-						return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+						return ErrorConst.PROP_USE_ERROR;
 				} else {
 					Armor armor = equipService.getArmor(chipId);
 					if (armor == null)
-						return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
+						return ErrorConst.PROP_USE_ERROR;
 				}
-			}
+			} else
+				return ErrorConst.PROP_USE_ERROR;
+			
 			RewardInfo.Builder builder = RewardInfo.newBuilder();
 			builder.setItemid(chipId);
 			builder.setCount(1);
