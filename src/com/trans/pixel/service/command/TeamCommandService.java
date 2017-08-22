@@ -11,7 +11,6 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.RequestGetTeamCommand;
@@ -26,10 +25,12 @@ import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
+import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS;
 import com.trans.pixel.service.FightInfoService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RankService;
 import com.trans.pixel.service.TalentService;
+import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
@@ -53,6 +54,8 @@ public class TeamCommandService extends BaseCommandService {
 	private FightInfoService fightInfoService;
 	@Resource
 	private TalentService talentService;
+	@Resource
+	private UnionService unionService;
 
 	public void updateUserTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
@@ -82,6 +85,14 @@ public class TeamCommandService extends BaseCommandService {
 
 	private void updateOtherTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
+		if (cmd.getType().equals(TEAM_TYPE.TEAM_UNION)) {
+			UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(0);
+			if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_TEAM_CAN_NOT_UPDATE_ERROR);
+				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_TEAM_CAN_NOT_UPDATE_ERROR));
+				return;
+			}
+		}
 		userTeamService.updateUserOtherTeam(user, cmd.getType(), cmd.getTeamInfo(),
 				cmd.getRolePosition(), cmd.getTeamEngineList(), cmd.getTalentId(), cmd.getZhanli());
 	}
