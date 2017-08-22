@@ -1282,7 +1282,9 @@ public class UnionService extends FightService{
 		List<UserTeamBean> userTeamList = redis.getUnionFightTeamList(unionId);
 		for (UserTeamBean userTeam : userTeamList) {
 			UserBean user = userService.getUserOther(userTeam.getUserId());
-			user.setZhanli(userTeam.getZhanli());
+			if (userTeam.getZhanli() != 0)
+				user.setZhanli(userTeam.getZhanli());
+			
 			map.put("" + userTeam.getUserId(), RedisService.formatJson(userTeamService.composeTeam(userTeam, user)));
 		}
 		redis.updateApplyTeamCache(unionId, map);
@@ -1326,14 +1328,24 @@ public class UnionService extends FightService{
 	}
 	
 	public <T> List<UnionFightRecord> getUnionFightApply(T unionId) {
+		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
+			handlerUnionFightTeamCache(unionId);
+		
 		List<UnionFightRecord> applyList = redis.getUnionFightApply(unionId);
 		for (int i = 0; i < applyList.size(); ++i) {
 			UnionFightRecord.Builder builder = UnionFightRecord.newBuilder(applyList.get(i));
-			builder.setUser(userService.getCache(1, builder.getUser().getId()));
+//			UserInfo.Builder userinfo = UserInfo.newBuilder(userService.getCache(1, builder.getUser().getId()));
+			UserBean user = userService.getUserOther(builder.getUser().getId());
+			if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)) {
+				Team team = redis.getApplyTeamCache(user);
+				if (team != null)
+					user.setZhanli(team.getUser().getZhanli());
+			}
+			builder.setUser(user.buildShort());
 			applyList.set(i, builder.build());
 		}
 		
-		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
 		if (!status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
 				&& !status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)) {
 			for (int i = 0; i < applyList.size(); ++i) {
@@ -1344,9 +1356,6 @@ public class UnionService extends FightService{
 				}
 			}
 		}
-		
-		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME))
-			handlerUnionFightTeamCache(unionId);
 		
 		return applyList;
 	}

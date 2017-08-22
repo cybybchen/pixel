@@ -102,7 +102,7 @@ public class UserTeamBean {
 		bean.setTalentId(TypeTranslatedUtil.jsonGetInt(json, TALENTID));
 		bean.setTalentEquip(TypeTranslatedUtil.jsonGetString(json, TALENT_EQUIP));
 		bean.setHeroEquip(TypeTranslatedUtil.jsonGetString(json, HERO_EQUIP));
-		bean.setZhanli(TypeTranslatedUtil.stringToInt(ZHANLI));
+		bean.setZhanli(TypeTranslatedUtil.jsonGetInt(json, ZHANLI));
 		
 		return bean;
 	}
