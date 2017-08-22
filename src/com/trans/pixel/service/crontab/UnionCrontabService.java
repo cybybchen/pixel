@@ -48,15 +48,16 @@ public class UnionCrontabService {
 	}
 	
 //	@Scheduled(cron = "0 0 0 * * ? ")
-	@Scheduled(cron = "0 0/1 * * * ? ")
-//	@Scheduled(cron = "0 0/5 * * * ? ")
+//	@Scheduled(cron = "0 0/1 * * * ? ")
+	@Scheduled(cron = "0 0/3 * * * ? ")
 	public void unionFight() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
 		
 		unionService.setUnionFightTime();
+		unionService.dayAdd();
 		
-		log.error("cheatid is" + unionRedisService.addUnionFightCheatStatus());
+//		log.error("cheatid is" + unionRedisService.addUnionFightCheatStatus());
 		log.error("current day is:" + DateUtil.getDayOfWeek());
 		UNION_FIGHT_STATUS status = unionService.calUnionFightStatus(0);
 		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME))
@@ -67,5 +68,7 @@ public class UnionCrontabService {
 			unionService.calUnionFight();
 		else if (status.equals(UNION_FIGHT_STATUS.SEND_REWARD_TIME))
 			unionService.sendUnionFightReward();
+		
+		log.error("status is:" + status);
 	}
 }

@@ -1,6 +1,7 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -27,7 +28,6 @@ import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.UnionBean;
 import com.trans.pixel.model.mapper.UnionMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -1513,6 +1513,15 @@ public class UnionService extends FightService{
 		return fightCount;
 	}
 	
+	public static int DAY = 1;
+	
+	public int dayAdd() {
+		DAY++;
+		if (DAY == 8)
+			DAY = 1;
+		return DAY;
+	}
+	
 	public UNION_FIGHT_STATUS calUnionFightStatus(int unionId) {
 		int cheatStatus = redis.getUnionFightCheatStatus();
 		if (cheatStatus != 0) {
@@ -1541,7 +1550,9 @@ public class UnionService extends FightService{
 		}
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
 		int day = DateUtil.getDayOfWeek();
-		log.error("current week day is:" + DateUtil.getDayOfWeek());
+		day = DAY;
+		
+		log.error("current week day is:" + day);
 		if (day == UnionConst.FIGHT_APPLY_DAY)//周四
 			status = UNION_FIGHT_STATUS.APPLY_TIME;
 		else if (day == UnionConst.FIGHT_HUIZHANG_DAY)
@@ -1657,17 +1668,23 @@ public class UnionService extends FightService{
 	}
 	
 	public int calCountTime() {
-//		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
-//		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
-//				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
-//				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
-//			return (int)(RedisService.nextDay(0) - RedisService.now());
-//		
-//		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+			return (int)(RedisService.nextDay(0) - RedisService.now());
 		
-		if (NEXT_TIME == 0)
-			setUnionFightTime();
-		return NEXT_TIME - RedisService.now();
+		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
+			return (int)(RedisService.today(12) - RedisService.now());
+		
+		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
+		logger.debug("currenct time is:" + DateUtil.getDate());
+		
+		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+		
+//		if (NEXT_TIME == 0)
+//			setUnionFightTime();
+//		return NEXT_TIME - RedisService.now();
 	}
 	
 	public static int NEXT_TIME = 0;
@@ -1692,7 +1709,7 @@ public class UnionService extends FightService{
 		if (redis.hasRewardUnionFight(unionId))
 			return;
 		
-		List<RewardInfo> rewardList = buildUnionFightReward(true);
+		List<RewardInfo> rewardList = buildUnionFightReward(false);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中和对方战成了平手，请再接再厉！", rewardList);
@@ -1704,7 +1721,7 @@ public class UnionService extends FightService{
 		if (redis.hasRewardUnionFight(unionId))
 			return;
 		
-		List<RewardInfo> rewardList = buildUnionFightReward(true);
+		List<RewardInfo> rewardList = buildUnionFightReward(false);
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中输给了对手，请再接再厉！", rewardList);
