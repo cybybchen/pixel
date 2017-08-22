@@ -501,13 +501,15 @@ public class UserTeamService {
 		team.setTalentEquip(UserTeamBean.composeEquip(records));
 		userTeamRedisService.updateUserTeam(team);
 	}
-	public void updateUserOtherTeam(UserBean user, TEAM_TYPE type, String record, int rolePosition, List<TeamEngine> teamEngineList, int talentId) {
+	public void updateUserOtherTeam(UserBean user, TEAM_TYPE type, String record, int rolePosition, 
+			List<TeamEngine> teamEngineList, int talentId, int zhanli) {
 		UserTeamBean userTeam = new UserTeamBean();
 		userTeam.setUserId(user.getId());
 		userTeam.setTeamRecord(record);
 		userTeam.setRolePosition(rolePosition);
 		userTeam.composeEngine(teamEngineList);
 		userTeam.setTalentId(talentId);
+		userTeam.setZhanli(zhanli);
 //		userTeam.setTalentEquip(UserTeamBean.composeEquip(calTalentEquipRecords(user, userTeam.getTalentId())));
 //		userTeam.setHeroEquip(UserTeamBean.composeEquip(calHeroEquipRecords(user, userTeam.getTeamRecord())));
 //		userTeamRedisService.updateUserTeam(userTeam);

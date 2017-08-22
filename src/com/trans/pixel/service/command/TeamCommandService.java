@@ -83,7 +83,7 @@ public class TeamCommandService extends BaseCommandService {
 	private void updateOtherTeam(RequestUpdateTeamCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		userTeamService.updateUserOtherTeam(user, cmd.getType(), cmd.getTeamInfo(),
-				cmd.getRolePosition(), cmd.getTeamEngineList(), cmd.getTalentId());
+				cmd.getRolePosition(), cmd.getTeamEngineList(), cmd.getTalentId(), cmd.getZhanli());
 	}
 	
 	public void submitFightInfo(RequestFightInfoCommand cmd,

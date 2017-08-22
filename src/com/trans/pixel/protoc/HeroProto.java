@@ -41379,6 +41379,24 @@ public final class HeroProto {
      * </pre>
      */
     com.trans.pixel.protoc.HeroProto.TEAM_TYPE getType();
+
+    // optional uint32 zhanli = 8;
+    /**
+     * <code>optional uint32 zhanli = 8;</code>
+     *
+     * <pre>
+     *上传队伍镜像的战力
+     * </pre>
+     */
+    boolean hasZhanli();
+    /**
+     * <code>optional uint32 zhanli = 8;</code>
+     *
+     * <pre>
+     *上传队伍镜像的战力
+     * </pre>
+     */
+    int getZhanli();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestUpdateTeamCommand}
@@ -41468,6 +41486,11 @@ public final class HeroProto {
                 bitField0_ |= 0x00000010;
                 type_ = value;
               }
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000020;
+              zhanli_ = input.readUInt32();
               break;
             }
           }
@@ -41664,6 +41687,30 @@ public final class HeroProto {
       return type_;
     }
 
+    // optional uint32 zhanli = 8;
+    public static final int ZHANLI_FIELD_NUMBER = 8;
+    private int zhanli_;
+    /**
+     * <code>optional uint32 zhanli = 8;</code>
+     *
+     * <pre>
+     *上传队伍镜像的战力
+     * </pre>
+     */
+    public boolean hasZhanli() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional uint32 zhanli = 8;</code>
+     *
+     * <pre>
+     *上传队伍镜像的战力
+     * </pre>
+     */
+    public int getZhanli() {
+      return zhanli_;
+    }
+
     private void initFields() {
       id_ = 0L;
       teamInfo_ = "";
@@ -41671,6 +41718,7 @@ public final class HeroProto {
       teamEngine_ = java.util.Collections.emptyList();
       talentId_ = 0;
       type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+      zhanli_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -41701,6 +41749,9 @@ public final class HeroProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(7, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(8, zhanli_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -41734,6 +41785,10 @@ public final class HeroProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(7, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, zhanli_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -41868,6 +41923,8 @@ public final class HeroProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
         bitField0_ = (bitField0_ & ~0x00000020);
+        zhanli_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -41925,6 +41982,10 @@ public final class HeroProto {
           to_bitField0_ |= 0x00000010;
         }
         result.type_ = type_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.zhanli_ = zhanli_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -41983,6 +42044,9 @@ public final class HeroProto {
         }
         if (other.hasType()) {
           setType(other.getType());
+        }
+        if (other.hasZhanli()) {
+          setZhanli(other.getZhanli());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -42472,6 +42536,55 @@ public final class HeroProto {
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000020);
         type_ = com.trans.pixel.protoc.HeroProto.TEAM_TYPE.TEAM_NULL;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 zhanli = 8;
+      private int zhanli_ ;
+      /**
+       * <code>optional uint32 zhanli = 8;</code>
+       *
+       * <pre>
+       *上传队伍镜像的战力
+       * </pre>
+       */
+      public boolean hasZhanli() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional uint32 zhanli = 8;</code>
+       *
+       * <pre>
+       *上传队伍镜像的战力
+       * </pre>
+       */
+      public int getZhanli() {
+        return zhanli_;
+      }
+      /**
+       * <code>optional uint32 zhanli = 8;</code>
+       *
+       * <pre>
+       *上传队伍镜像的战力
+       * </pre>
+       */
+      public Builder setZhanli(int value) {
+        bitField0_ |= 0x00000040;
+        zhanli_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 zhanli = 8;</code>
+       *
+       * <pre>
+       *上传队伍镜像的战力
+       * </pre>
+       */
+      public Builder clearZhanli() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        zhanli_ = 0;
         onChanged();
         return this;
       }
@@ -58100,61 +58213,62 @@ public final class HeroProto {
       "(\0162!.com.trans.pixel.protoc.TEAM_TYPE\"D\n",
       "\026ResponseGetTeamCommand\022*\n\004team\030\001 \002(\0132\034." +
       "com.trans.pixel.protoc.Team\"\'\n\nTeamUnloc" +
-      "k\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\311\001\n\030Request" +
+      "k\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\331\001\n\030Request" +
       "UpdateTeamCommand\022\n\n\002id\030\001 \001(\003\022\020\n\010teamInf" +
       "o\030\002 \001(\t\022\024\n\014rolePosition\030\004 \001(\005\0226\n\nteamEng" +
       "ine\030\005 \003(\0132\".com.trans.pixel.protoc.TeamE" +
       "ngine\022\020\n\010talentId\030\006 \001(\r\022/\n\004type\030\007 \001(\0162!." +
-      "com.trans.pixel.protoc.TEAM_TYPE\"\034\n\032Requ" +
-      "estUserTeamListCommand\"I\n\026RequestUserTea" +
-      "mCommand\022/\n\004type\030\001 \001(\0162!.com.trans.pixel",
-      ".protoc.TEAM_TYPE\"\202\001\n\033ResponseUserTeamLi" +
-      "stCommand\0222\n\010userTeam\030\001 \003(\0132 .com.trans." +
-      "pixel.protoc.UserTeam\022/\n\004type\030\002 \001(\0162!.co" +
-      "m.trans.pixel.protoc.TEAM_TYPE\"F\n\016TeamUn" +
-      "lockList\0224\n\010xiaoguan\030\001 \003(\0132\".com.trans.p" +
-      "ixel.protoc.TeamUnlock\"P\n\032ResponseGetUse" +
-      "rHeroCommand\0222\n\010userHero\030\001 \003(\0132 .com.tra" +
-      "ns.pixel.protoc.HeroInfo\"V\n\030RequestFenji" +
-      "eHeroCommand\022:\n\nfenjieHero\030\001 \003(\0132&.com.t" +
-      "rans.pixel.protoc.FenjieHeroInfo\"W\n\031Requ",
-      "estChaijieHeroCommand\022:\n\nfenjieHero\030\001 \001(" +
-      "\0132&.com.trans.pixel.protoc.FenjieHeroInf" +
-      "o\"\032\n\030RequestUserPokedeCommand\"M\n\031Respons" +
-      "eUserPokedeCommand\0220\n\006pokede\030\001 \003(\0132 .com" +
-      ".trans.pixel.protoc.HeroInfo\"\036\n\034RequestB" +
-      "uyHeroPackageCommand\"8\n RequestSubmitCom" +
-      "poseSkillCommand\022\024\n\014composeSkill\030\001 \002(\t\"K" +
-      "\n\026RequestFeedFoodCommand\022\016\n\006heroId\030\001 \002(\005" +
-      "\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfoodCount\030\003 \002(\005\"X\n\027R" +
-      "equestClearHeroCommand\022\016\n\006heroId\030\001 \002(\005\022\020",
-      "\n\010position\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\r\n\005count\030" +
-      "\004 \001(\005\"M\n\027ResponseUserFoodCommand\0222\n\010user" +
-      "Food\030\001 \003(\0132 .com.trans.pixel.protoc.User" +
-      "Food\"P\n\030ResponseClearInfoCommand\0224\n\tclea" +
-      "rInfo\030\001 \003(\0132!.com.trans.pixel.protoc.Cle" +
-      "arInfo\";\n\034RequestChoseClearInfoCommand\022\017" +
-      "\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 \001(\005\".\n\034RequestHe" +
-      "roStrengthenCommand\022\016\n\006heroId\030\001 \002(\005\"<\n\030R" +
-      "equestOpenFetterCommand\022\016\n\006heroId\030\001 \002(\005\022" +
-      "\020\n\010fetterid\030\002 \002(\005\"L\n!RequestZanHeroMessa",
-      "geBoardCommand\022\016\n\006itemId\030\001 \002(\005\022\n\n\002id\030\002 \002" +
-      "(\t\022\013\n\003zan\030\003 \002(\010\")\n\033RequestTalentupgradeC" +
-      "ommand\022\n\n\002id\030\001 \002(\005\"+\n\035RequestTalentChang" +
-      "eUseCommand\022\n\n\002id\030\001 \002(\005\"M\n\037RequestTalent" +
-      "ChangeSkillCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005order\030" +
-      "\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225\001\n\031ResponseUserT" +
-      "alentCommand\0226\n\nuserTalent\030\001 \003(\0132\".com.t" +
-      "rans.pixel.protoc.UserTalent\022@\n\017userTale" +
-      "ntSkill\030\002 \003(\0132\'.com.trans.pixel.protoc.U" +
-      "serTalentSkill\"O\n\037RequestTalentChangeEqu",
-      "ipCommand\022\n\n\002id\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022" +
-      "\016\n\006itemId\030\003 \002(\005\"5\n\030RequestTalentSpUpComm" +
-      "and\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"N\n Reques" +
-      "tTalentSkillLevelupCommand\022\n\n\002id\030\001 \002(\r\022\r" +
-      "\n\005order\030\002 \002(\r\022\017\n\007skillid\030\003 \002(\r\",\n\036Reques" +
-      "tTalentResetSkillCommand\022\n\n\002id\030\001 \002(\r**\n\t" +
-      "TEAM_TYPE\022\r\n\tTEAM_NULL\020\000\022\016\n\nTEAM_UNION\020\001"
+      "com.trans.pixel.protoc.TEAM_TYPE\022\016\n\006zhan" +
+      "li\030\010 \001(\r\"\034\n\032RequestUserTeamListCommand\"I" +
+      "\n\026RequestUserTeamCommand\022/\n\004type\030\001 \001(\0162!",
+      ".com.trans.pixel.protoc.TEAM_TYPE\"\202\001\n\033Re" +
+      "sponseUserTeamListCommand\0222\n\010userTeam\030\001 " +
+      "\003(\0132 .com.trans.pixel.protoc.UserTeam\022/\n" +
+      "\004type\030\002 \001(\0162!.com.trans.pixel.protoc.TEA" +
+      "M_TYPE\"F\n\016TeamUnlockList\0224\n\010xiaoguan\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.TeamUnlock\"P" +
+      "\n\032ResponseGetUserHeroCommand\0222\n\010userHero" +
+      "\030\001 \003(\0132 .com.trans.pixel.protoc.HeroInfo" +
+      "\"V\n\030RequestFenjieHeroCommand\022:\n\nfenjieHe" +
+      "ro\030\001 \003(\0132&.com.trans.pixel.protoc.Fenjie",
+      "HeroInfo\"W\n\031RequestChaijieHeroCommand\022:\n" +
+      "\nfenjieHero\030\001 \001(\0132&.com.trans.pixel.prot" +
+      "oc.FenjieHeroInfo\"\032\n\030RequestUserPokedeCo" +
+      "mmand\"M\n\031ResponseUserPokedeCommand\0220\n\006po" +
+      "kede\030\001 \003(\0132 .com.trans.pixel.protoc.Hero" +
+      "Info\"\036\n\034RequestBuyHeroPackageCommand\"8\n " +
+      "RequestSubmitComposeSkillCommand\022\024\n\014comp" +
+      "oseSkill\030\001 \002(\t\"K\n\026RequestFeedFoodCommand" +
+      "\022\016\n\006heroId\030\001 \002(\005\022\016\n\006foodId\030\002 \002(\005\022\021\n\tfood" +
+      "Count\030\003 \002(\005\"X\n\027RequestClearHeroCommand\022\016",
+      "\n\006heroId\030\001 \002(\005\022\020\n\010position\030\002 \002(\005\022\014\n\004type" +
+      "\030\003 \002(\005\022\r\n\005count\030\004 \001(\005\"M\n\027ResponseUserFoo" +
+      "dCommand\0222\n\010userFood\030\001 \003(\0132 .com.trans.p" +
+      "ixel.protoc.UserFood\"P\n\030ResponseClearInf" +
+      "oCommand\0224\n\tclearInfo\030\001 \003(\0132!.com.trans." +
+      "pixel.protoc.ClearInfo\";\n\034RequestChoseCl" +
+      "earInfoCommand\022\017\n\007refused\030\001 \002(\010\022\n\n\002id\030\002 " +
+      "\001(\005\".\n\034RequestHeroStrengthenCommand\022\016\n\006h" +
+      "eroId\030\001 \002(\005\"<\n\030RequestOpenFetterCommand\022" +
+      "\016\n\006heroId\030\001 \002(\005\022\020\n\010fetterid\030\002 \002(\005\"L\n!Req",
+      "uestZanHeroMessageBoardCommand\022\016\n\006itemId" +
+      "\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\013\n\003zan\030\003 \002(\010\")\n\033Reque" +
+      "stTalentupgradeCommand\022\n\n\002id\030\001 \002(\005\"+\n\035Re" +
+      "questTalentChangeUseCommand\022\n\n\002id\030\001 \002(\005\"" +
+      "M\n\037RequestTalentChangeSkillCommand\022\n\n\002id" +
+      "\030\001 \002(\005\022\r\n\005order\030\002 \002(\005\022\017\n\007skillId\030\003 \002(\005\"\225" +
+      "\001\n\031ResponseUserTalentCommand\0226\n\nuserTale" +
+      "nt\030\001 \003(\0132\".com.trans.pixel.protoc.UserTa" +
+      "lent\022@\n\017userTalentSkill\030\002 \003(\0132\'.com.tran" +
+      "s.pixel.protoc.UserTalentSkill\"O\n\037Reques",
+      "tTalentChangeEquipCommand\022\n\n\002id\030\001 \002(\005\022\020\n" +
+      "\010position\030\002 \002(\005\022\016\n\006itemId\030\003 \002(\005\"5\n\030Reque" +
+      "stTalentSpUpCommand\022\n\n\002id\030\001 \002(\005\022\r\n\005count" +
+      "\030\002 \002(\005\"N\n RequestTalentSkillLevelupComma" +
+      "nd\022\n\n\002id\030\001 \002(\r\022\r\n\005order\030\002 \002(\r\022\017\n\007skillid" +
+      "\030\003 \002(\r\",\n\036RequestTalentResetSkillCommand" +
+      "\022\n\n\002id\030\001 \002(\r**\n\tTEAM_TYPE\022\r\n\tTEAM_NULL\020\000" +
+      "\022\016\n\nTEAM_UNION\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -58514,7 +58628,7 @@ public final class HeroProto {
           internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpdateTeamCommand_descriptor,
-              new java.lang.String[] { "Id", "TeamInfo", "RolePosition", "TeamEngine", "TalentId", "Type", });
+              new java.lang.String[] { "Id", "TeamInfo", "RolePosition", "TeamEngine", "TalentId", "Type", "Zhanli", });
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_descriptor =
             getDescriptor().getMessageTypes().get(58);
           internal_static_com_trans_pixel_protoc_RequestUserTeamListCommand_fieldAccessorTable = new

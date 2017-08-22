@@ -1282,6 +1282,7 @@ public class UnionService extends FightService{
 		List<UserTeamBean> userTeamList = redis.getUnionFightTeamList(unionId);
 		for (UserTeamBean userTeam : userTeamList) {
 			UserBean user = userService.getUserOther(userTeam.getUserId());
+			user.setZhanli(userTeam.getZhanli());
 			map.put("" + userTeam.getUserId(), RedisService.formatJson(userTeamService.composeTeam(userTeam, user)));
 		}
 		redis.updateApplyTeamCache(unionId, map);

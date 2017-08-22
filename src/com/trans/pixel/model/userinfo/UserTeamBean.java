@@ -19,6 +19,7 @@ public class UserTeamBean {
 	private int talentId = 0;
 	private String talentEquip = "";
 	private String heroEquip = "";
+	private int zhanli = 0;
 	public int getId() {
 		return id;
 	}
@@ -67,6 +68,12 @@ public class UserTeamBean {
 	public void setHeroEquip(String heroEquip) {
 		this.heroEquip = heroEquip;
 	}
+	public int getZhanli() {
+		return zhanli;
+	}
+	public void setZhanli(int zhanli) {
+		this.zhanli = zhanli;
+	}
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);
@@ -77,6 +84,7 @@ public class UserTeamBean {
 		json.put(TALENTID, talentId);
 		json.put(TALENT_EQUIP, talentEquip);
 		json.put(HERO_EQUIP, heroEquip);
+		json.put(ZHANLI, zhanli);
 		
 		return json.toString();
 	}
@@ -94,7 +102,8 @@ public class UserTeamBean {
 		bean.setTalentId(TypeTranslatedUtil.jsonGetInt(json, TALENTID));
 		bean.setTalentEquip(TypeTranslatedUtil.jsonGetString(json, TALENT_EQUIP));
 		bean.setHeroEquip(TypeTranslatedUtil.jsonGetString(json, HERO_EQUIP));
-
+		bean.setZhanli(TypeTranslatedUtil.stringToInt(ZHANLI));
+		
 		return bean;
 	}
 	
@@ -171,6 +180,7 @@ public class UserTeamBean {
 	private static final String TALENTID = "talentId";
 	private static final String TALENT_EQUIP = "talent_equip";
 	private static final String HERO_EQUIP = "hero_equip";
+	private static final String ZHANLI = "zhanli";
 	
 	private static final String SPLIT1 = "#";
 	private static final String SPLIT2 = ",";

@@ -975,6 +975,7 @@ message RequestUpdateTeamCommand {
 	repeated TeamEngine teamEngine = 5;
 	optional uint32 talentId = 6;
 	optional TEAM_TYPE type = 7;//上传队伍镜像的时候用到
+	optional uint32 zhanli = 8;//上传队伍镜像的战力
 }
 
 message RequestUserTeamListCommand {
