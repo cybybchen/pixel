@@ -55,13 +55,20 @@ public class RaidCommandService extends BaseCommandService{
 
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
-		Raid raid = redis.getRaid(cmd.getId());
+		Raid raidconfig = redis.getRaid(cmd.getId());
 		ResponseRaidCommand.Builder raidlist = redis.getRaid(user);
 		int index = 0;
 		for(index = 0; index < raidlist.getRaidCount(); index++) {
 			Raid.Builder myraid = raidlist.getRaidBuilder(index);
-			if(myraid.getId() == cmd.getId())
+			if(myraid.getId() == cmd.getId()) {
+				if(myraid.getCount() > 0 && myraid.getLeftcount() <= 0) {//次数用完
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES);
+					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES);
+		            responseBuilder.setErrorCommand(errorCommand);
+					return;
+				}
 				break;
+			}
 		}
 		if(index >= raidlist.getRaidCount()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOT_OPEN);
@@ -70,7 +77,7 @@ public class RaidCommandService extends BaseCommandService{
 			return;
 		}
 		//判断消耗和最大层数
-		if(costService.cost(user, raid.getCost().getItemid(), raid.getCost().getCount(), true)){
+		if(costService.cost(user, raidconfig.getCost().getItemid(), raidconfig.getCost().getCount(), true)){
 			int lastid = 0;
 			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
 				if(myraid.getEventid() == 0)
@@ -79,17 +86,20 @@ public class RaidCommandService extends BaseCommandService{
 				myraid.clearEventid();
 				myraid.clearTurn();
 				myraid.clearLevel();
-				redis.saveRaid(user, myraid);
+				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() == 0);
 			}
 			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
-				if(myraid.getId() != raid.getId())
+				if(myraid.getId() != raidconfig.getId())
 					continue;
-				myraid.setEventid(raid.getEventList().get(0).getEventid());
+				myraid.setEventid(raidconfig.getEventList().get(0).getEventid());
 				myraid.clearTurn();
-				myraid.setLevel(cmd.getLevel());
-				redis.saveRaid(user, myraid);
+				int level = Math.min(cmd.getLevel(), myraid.getMaxlevel());
+				if(raidconfig.getMaxlevel() > 0)
+					level = raidconfig.getMaxlevel();
+				myraid.setLevel(level);
+				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() == 0);
 				responseBuilder.setRaidCommand(raidlist);
-				pusher.pushUserDataByRewardId(responseBuilder, user, raid.getCost().getItemid());
+				pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
 				break;
 			}
 
@@ -97,7 +107,7 @@ public class RaidCommandService extends BaseCommandService{
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.SERVERID, "" + user.getServerId());
 			params.put(LogString.RESULT, "2");
-			params.put(LogString.INSTANCEID, "" + raid.getId());
+			params.put(LogString.INSTANCEID, "" + raidconfig.getId());
 			params.put(LogString.BOSSID, "0");
 			params.put(LogString.PREINSTANCEID, "" + lastid);
 			logService.sendLog(params, LogString.LOGTYPE_RAID);
@@ -154,6 +164,7 @@ public class RaidCommandService extends BaseCommandService{
 					/**
 					 * 副本排行榜
 					 */
+					if(raidconfig.getMaxlevel() == 0)
 					rankService.addRaidRank(user, myraid.build());
 					/**
 					 * 通关副本的活动
@@ -161,16 +172,19 @@ public class RaidCommandService extends BaseCommandService{
 					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getMaxlevel()-2, myraid.getLevel()));
 					myraid.clearEventid();
 //					myraid.clearTurn();
+					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
+						myraid.setLeftcount(myraid.getLeftcount()-1);
+					}
 					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
 				}
 				
-				redis.saveRaid(user, myraid);
+				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() == 0);
 			}else if(!cmd.getRet() && cmd.getTurn() == 0){
 				myraid.clearEventid();
 				myraid.clearTurn();
 				myraid.clearLevel();
-				redis.saveRaid(user, myraid);
+				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() == 0);
 			}
 			if(!responseBuilder.hasErrorCommand()) {
 			Map<String, String> params = new HashMap<String, String>();

@@ -61,9 +61,10 @@ public class RaidRedisService extends RedisService{
 		return builder;
 	}
 
-	public void saveRaid(UserBean user, Raid.Builder raid){
+	public void saveRaid(UserBean user, Raid.Builder raid, boolean updateDB){
 		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()), user.getId());
 //		if(raid.getId() < 50)
+		if(updateDB)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());
 	}
 
@@ -122,7 +123,7 @@ public class RaidRedisService extends RedisService{
 			raid.clearCost();
 			raid.setEventid(0);
 			raid.clearTurn();
-			raid.setMaxlevel(3);
+			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
 			raid.setLevel(0);
 			if("".equals(raid.getStarttime()))
 				raid.clearStarttime();

@@ -3763,7 +3763,8 @@ message Raid {
 	optional int32 id = 1;
 	optional RewardInfo cost = 2;
 	optional string name = 4;
-	optional int32 count = 3;
+	optional int32 leftcount = 12;
+	optional int32 count = 13;
 	repeated Event event = 5;
 	optional int32 eventid = 6;
 	repeated int32 turn = 7;

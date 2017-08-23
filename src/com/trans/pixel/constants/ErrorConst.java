@@ -69,7 +69,7 @@ public enum ErrorConst implements ResultConst {
     FIGHTINFO_IS_LIMIT_ERROR(5016, "收藏录像数已达上限，无法继续收藏"), LOOT_SHENYUAN_COST_IS_LIMIT(5017, "添加的深渊票已达上限"),
     USER_HAS_NO_UNION_ERROR(5018, "请先加入一个公会"), UNION_IS_NOT_HUIZHANG(5019, "您不是会长，无法进行该操作"),
     USER_IS_BEING_ATTACKED_ERROR(5020, "该玩家正在被攻击，请稍后再试"), SELF_IS_BEING_ATTACKED_ERROR(5021, "您正在被攻击，请稍后再试"),
-    SELF_CAN_NOT_ATTACKED_ERROR(5022, "您未参与进此次公会战，请下次在来"), USER_HAS_NO_ATTACK_TIMES_ERROR(5023, "攻击次数不够，请下次公会战在来"),
+    SELF_CAN_NOT_ATTACKED_ERROR(5022, "您未参与进此次公会战，请下次在来"), USER_HAS_NO_ATTACK_TIMES_ERROR(5023, "攻击次数已达上限"),
     USER_CAN_NOT_ATTACKED_ERROR(5022, "该玩家未参与进此次公会战，请攻击其他玩家"), USER_HAS_NO_BEING_ATTACKED_TIMES_ERROR(5025, "该玩家被攻击次数已达上限，请换其他玩家攻击"),
     EVENT_HAS_NO_FIGHT_ERROR(5024, "无战斗事件"), UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR(5025, "不在报名时间段内，无法报名公会战"),
     UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR(5026, "不在挑选出战人员时间段内，无法挑选"), UNION_FIGHT_TIME_IS_OVER_ERROR(5027, "公会战时间已过"),
