@@ -65,7 +65,7 @@ public class ZhanliCommandService extends BaseCommandService {
 					blacklist.setServerId(user.getServerId());
 					blacklist.setAccount(user.getAccount());
 					blacklist.setIdfa(user.getIdfa());
-					blacklist.setNotalk(true);
+					blacklist.setNotalk(false);
 					blacklist.setNoranklist(true);
 					blacklist.setNologin(false);
 					blacklist.setNoaccount(false);
@@ -73,7 +73,7 @@ public class ZhanliCommandService extends BaseCommandService {
 					blackService.updateBlackList(blacklist);
 					userService.sendMail(user.getUserName()+"(id:"+user.getId()+"),由于提升战力过大"+user.getZhanliMax()+" to "+zhanli+"被封禁排行");
 				}else if(!blacklist.isNotalk() || !blacklist.isNoranklist()) {
-					blacklist.setNotalk(true);
+//					blacklist.setNotalk(true);
 					blacklist.setNoranklist(true);
 					blackService.updateBlackList(blacklist);
 					userService.sendMail(user.getUserName()+"(id:"+user.getId()+"),由于提升战力过大"+user.getZhanliMax()+" to "+zhanli+"被封禁排行");
