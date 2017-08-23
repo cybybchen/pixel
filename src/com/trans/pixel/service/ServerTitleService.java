@@ -83,7 +83,7 @@ public class ServerTitleService {
 	}
 	
 	public void updateServerTitleByTitleId(int serverId, int titleId, List<Long> userIds) {
-		deleteServerTitleByTitleId(serverId, titleId);
+//		deleteServerTitleByTitleId(serverId, titleId);
 		List<TitleInfo> titleList = new ArrayList<TitleInfo>();
 		for (long userId : userIds) {
 			ServerTitleBean bean = new ServerTitleBean(serverId, titleId, userId);
@@ -102,13 +102,18 @@ public class ServerTitleService {
 	
 	//handler ladder
 	public void handlerSeasonEnd() {
-		List<Integer> serverIds = serverService.getServerIdList();
+//		List<Integer> serverIds = serverService.getServerIdList();
 		Map<Integer, Title> map = redis.getTitleConfig();
-		for (int serverId : serverIds)
-			handlerSeasonEnd(serverId, map);
+//		for (int serverId : serverIds)
+			handlerSeasonEnd(1, map);
 	}
 	
 	private void handlerSeasonEnd(int serverId, Map<Integer, Title> map) {
+		deleteServerTitleByTitleId(serverId, 1);
+		deleteServerTitleByTitleId(serverId, 5);
+		deleteServerTitleByTitleId(serverId, 9);
+		deleteServerTitleByTitleId(serverId, 13);
+		deleteServerTitleByTitleId(serverId, 17);
 		Set<TypedTuple<String>> ranks = userLadderRedisService.getLadderRankList(serverId, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 		int rankInit = 1;
 		List<Long> others = new ArrayList<Long>();
@@ -139,21 +144,27 @@ public class ServerTitleService {
 	
 	//handler recharge
 	public void handlerRechargeRank() {
-		List<Integer> serverIds = serverService.getServerIdList();
+//		List<Integer> serverIds = serverService.getServerIdList();
 		Map<Integer, Title> map = redis.getTitleConfig();
-		for (int serverId : serverIds)
-			handlerRechargeRank(serverId, map);
+//		for (int serverId : serverIds)
+			handlerRechargeRank(1, map);
 	}
 	
 	private void handlerRechargeRank(int serverId, Map<Integer, Title> map) {//活跃排行榜
+		deleteServerTitleByTitleId(serverId, 3);
+		deleteServerTitleByTitleId(serverId, 7);
+		deleteServerTitleByTitleId(serverId, 11);
+		deleteServerTitleByTitleId(serverId, 15);
+		deleteServerTitleByTitleId(serverId, 19);
 //		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
-		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, 1000000L, 1000L);
+		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, 1000L, 10000000L);
 		int rankInit = 1;
 		List<Long> others = new ArrayList<Long>();
 		for (TypedTuple<String> rank : ranks) {
 			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
 			UserBean user = userService.getUserOther(userId);
 			if (rankInit <= 5 ) {
+				log.warn("user id is:" + userId + "|| rankis:" + rankInit);
 				handlerTitle(user, 3, map);
 			} else if (rankInit <= 15) {
 				handlerTitle(user, 7, map);
@@ -172,19 +183,24 @@ public class ServerTitleService {
 		updateServerTitleByTitleId(serverId, 19, others);
 		
 		//删除排行榜
-		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
+//		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
 		rankRedisService.renameRank(serverId, RankConst.TYPE_VIP_HUOYUE);
 	}
 	
 	//handler union
 	public void handlerUnionRank() {
-		List<Integer> serverIds = serverService.getServerIdList();
+//		List<Integer> serverIds = serverService.getServerIdList();
 		Map<Integer, Title> map = redis.getTitleConfig();
-		for (int serverId : serverIds)
-			handlerUnionRank(serverId, map);
+//		for (int serverId : serverIds)
+			handlerUnionRank(1, map);
 	}
 	
 	private void handlerUnionRank(int serverId, Map<Integer, Title> map) {
+		deleteServerTitleByTitleId(serverId, 4);
+		deleteServerTitleByTitleId(serverId, 6);
+		deleteServerTitleByTitleId(serverId, 10);
+		deleteServerTitleByTitleId(serverId, 14);
+		deleteServerTitleByTitleId(serverId, 18);
 //		List<Union> unions = unionRedisService.getBaseUnions(serverId);
 		List<Union> unions = unionRedisService.getUnionsRank(serverId);
 		int rankInit = 1;
@@ -198,6 +214,7 @@ public class ServerTitleService {
 	}
 	
 	private void handlerUnionTitle(int serverId, Union union, int rank, Map<Integer, Title> map) {
+		log.warn("union title ranks is:" + union);
 		List<Long> others = new ArrayList<Long>();
 //		Set<String> userIds = unionRedisService.getMemberIds(union.getId());
 		List<UserInfo> users = unionRedisService.getMembers(union.getId(), serverId);
@@ -252,13 +269,18 @@ public class ServerTitleService {
 	
 	//handler special raid rank
 	public void handlerRaidRank() {
-		List<Integer> serverIds = serverService.getServerIdList();
+//		List<Integer> serverIds = serverService.getServerIdList();
 		Map<Integer, Title> map = redis.getTitleConfig();
-		for (int serverId : serverIds)
-			handlerRaidRank(serverId, map);
+//		for (int serverId : serverIds)
+			handlerRaidRank(1, map);
 	}
 	
 	private void handlerRaidRank(int serverId, Map<Integer, Title> map) {
+		deleteServerTitleByTitleId(serverId, 2);
+		deleteServerTitleByTitleId(serverId, 8);
+		deleteServerTitleByTitleId(serverId, 12);
+		deleteServerTitleByTitleId(serverId, 16);
+		deleteServerTitleByTitleId(serverId, 20);
 		ResponseRaidCommand.Builder raidList = raidRedisService.getRaidList();
 		for (Raid raid : raidList.getRaidList()) {
 			if (raid.getId() < 50)
