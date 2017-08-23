@@ -261,6 +261,7 @@ function buildUserJson(key, value){
             json["equippokede"] = 1;
         }else if(datatype == "pvp"){
             json["rewardTask"] = 1;
+            json["raid"] = 1;
             json["pvpMonster"] = 1;
             json["pvpMine"] = 1;
             json["pvpBuff"] = 1;
@@ -368,6 +369,9 @@ function appendUserDatas(message, dirty){
     }
     if(message["rewardTask"]!=null){
         appendUserData("rewardTask", message["rewardTask"]);
+    }
+    if(message["raid"]!=null){
+        appendUserData("raid", message["raid"]);
     }
     if(message["pvpMonster"]!=null){
         appendUserData("pvpMonster", message["pvpMonster"]);

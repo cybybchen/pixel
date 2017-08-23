@@ -97,6 +97,8 @@ public class RaidCommandService extends BaseCommandService{
 				if(raidconfig.getMaxlevel() > 0)
 					level = raidconfig.getMaxlevel();
 				myraid.setLevel(level);
+				if(myraid.getLeftcount() > 0)
+					myraid.setLeftcount(myraid.getLeftcount()-1);
 				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() == 0);
 				responseBuilder.setRaidCommand(raidlist);
 				pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
@@ -172,9 +174,9 @@ public class RaidCommandService extends BaseCommandService{
 					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getMaxlevel()-2, myraid.getLevel()));
 					myraid.clearEventid();
 //					myraid.clearTurn();
-					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
-						myraid.setLeftcount(myraid.getLeftcount()-1);
-					}
+//					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
+//						myraid.setLeftcount(myraid.getLeftcount()-1);
+//					}
 					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
 				}
