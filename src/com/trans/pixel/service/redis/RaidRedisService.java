@@ -1,5 +1,8 @@
 package com.trans.pixel.service.redis;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.RaidMapper;
 import com.trans.pixel.model.userinfo.RaidBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -42,7 +46,7 @@ public class RaidRedisService extends RedisService{
 			}
 			hputAll(RedisKey.USERRAID_PREFIX+user.getId(), keyvalue, user.getId());
 		}
-//		for(Raid.Builder raid : builder.getRaidBuilderList()) {
+		Date nextDate = nextDay();
 		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
 			Raid.Builder raid = builder.getRaidBuilder(i);
 			if(raid.hasEndtime() && !DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime())) {
@@ -56,6 +60,25 @@ public class RaidRedisService extends RedisService{
 				raid.addAllTurn(myraid.getTurnList());
 				raid.setLevel(myraid.getLevel());
 				raid.setMaxlevel(myraid.getMaxlevel());
+				if(myraid.hasEndtime()) {
+					raid.setLeftcount(myraid.getLeftcount());
+					raid.setEndtime(myraid.getEndtime());
+				}
+			}
+			if(raid.getCount() > 0) {
+				SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+				try {
+					Date endtime = new Date();
+					if(myraid.hasEndtime())
+						endtime = df.parse(myraid.getEndtime());
+					if(endtime.before(nextDate)) {//刷新次数
+						raid.setLeftcount(raid.getCount());
+						raid.setEndtime(df.format(nextDate));
+						saveRaid(user, raid, false);
+					}
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		return builder;
