@@ -1,6 +1,8 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,6 +19,7 @@ import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.mapper.ServerTitleMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
 import com.trans.pixel.protoc.ServerProto.Title;
 import com.trans.pixel.protoc.TaskProto.Raid;
@@ -27,6 +30,7 @@ import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.ServerTitleRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
+import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
@@ -111,23 +115,17 @@ public class ServerTitleService {
 		for (TypedTuple<String> rank : ranks) {
 			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
 			UserBean user = userService.getUserOther(userId);
-			switch (rankInit) {
-				case 1:
-					handlerTitle(user, 1, map);
-					break;
-				case 2:
-					handlerTitle(user, 5, map);
-					break;
-				case 3:
-					handlerTitle(user, 9, map);
-					break;
-				case 4:
-					handlerTitle(user, 13, map);
-					break;
-				default:
-					others.add(userId);
-					handlerTitle(user, 17, map, true);
-					break;
+			if (rankInit <= 5) {
+				handlerTitle(user, 1, map);
+			} else if (rankInit <= 15) {
+				handlerTitle(user, 5, map);
+			} else if (rankInit <= 25) {
+				handlerTitle(user, 9, map);
+			} else if (rankInit <= 35) {
+				handlerTitle(user, 13, map);
+			} else if (rankInit <= 60) {
+				others.add(userId);
+				handlerTitle(user, 17, map, true);
 			}
 			
 			rankInit++;
@@ -147,30 +145,25 @@ public class ServerTitleService {
 			handlerRechargeRank(serverId, map);
 	}
 	
-	private void handlerRechargeRank(int serverId, Map<Integer, Title> map) {
-		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_RECHARGE, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+	private void handlerRechargeRank(int serverId, Map<Integer, Title> map) {//活跃排行榜
+//		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, 1000000L, 1000L);
 		int rankInit = 1;
 		List<Long> others = new ArrayList<Long>();
 		for (TypedTuple<String> rank : ranks) {
 			long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
 			UserBean user = userService.getUserOther(userId);
-			switch (rankInit) {
-				case 1:
-					handlerTitle(user, 3, map);
-					break;
-				case 2:
-					handlerTitle(user, 7, map);
-					break;
-				case 3:
-					handlerTitle(user, 11, map);
-					break;
-				case 4:
+			if (rankInit <= 5 ) {
+				handlerTitle(user, 3, map);
+			} else if (rankInit <= 15) {
+				handlerTitle(user, 7, map);
+			} else if (rankInit <= 25) {
+				handlerTitle(user, 11, map);
+			} else if (rankInit <= 35) {
 					handlerTitle(user, 15, map);
-					break;
-				default:
-					others.add(userId);
-					handlerTitle(user, 19, map, true);
-					break;
+			} else {
+				others.add(userId);
+				handlerTitle(user, 19, map, true);
 			}
 			
 			rankInit++;
@@ -192,7 +185,8 @@ public class ServerTitleService {
 	}
 	
 	private void handlerUnionRank(int serverId, Map<Integer, Title> map) {
-		List<Union> unions = unionRedisService.getBaseUnions(serverId);
+//		List<Union> unions = unionRedisService.getBaseUnions(serverId);
+		List<Union> unions = unionRedisService.getUnionsRank(serverId);
 		int rankInit = 1;
 		for (Union union : unions) {
 			if (rankInit > 4)
@@ -205,11 +199,20 @@ public class ServerTitleService {
 	
 	private void handlerUnionTitle(int serverId, Union union, int rank, Map<Integer, Title> map) {
 		List<Long> others = new ArrayList<Long>();
-		Set<String> userIds = unionRedisService.getMemberIds(union.getId());
-		for (String userIdStr : userIds) {
-			long userId = TypeTranslatedUtil.stringToLong(userIdStr);
-			UserBean user = userService.getUserOther(userId);
-			if (user.getUnionJob() == UnionConst.UNION_HUIZHANG) {
+//		Set<String> userIds = unionRedisService.getMemberIds(union.getId());
+		List<UserInfo> users = unionRedisService.getMembers(union.getId(), serverId);
+		Collections.sort(users, new Comparator<UserInfo>() {
+			public int compare(UserInfo user1, UserInfo user2) {
+				if(user1.getZhanli() > user2.getZhanli())
+					return -1;
+				else 
+					return 1;
+			}
+		});
+		for (UserInfo userinfo : users) {//会长
+			if (userinfo.getUnionJob() == UnionConst.UNION_HUIZHANG) {
+				long userId = userinfo.getId();
+				UserBean user = userService.getUserOther(userId);
 				switch (rank) {
 					case 1:
 						handlerTitle(user, 4, map);
@@ -226,10 +229,22 @@ public class ServerTitleService {
 					default:
 						break;
 				}
-			} else {
-				others.add(userId);
-				handlerTitle(user, 18, map, true);
-			}
+				break;
+			} 
+		}
+
+		int rankInit = 1;
+		for (UserInfo userinfo : users) {//普通成员
+			if (userinfo.getUnionJob() == UnionConst.UNION_HUIZHANG) 
+				continue;
+			if (rankInit > 4)
+				break;
+			long userId = userinfo.getId();
+			UserBean user = userService.getUserOther(userId);
+			others.add(userId);
+			handlerTitle(user, 18, map, true);
+			
+			rankInit++;
 		}
 		
 		updateServerTitleByTitleId(serverId, 18, others);
@@ -248,6 +263,10 @@ public class ServerTitleService {
 		for (Raid raid : raidList.getRaidList()) {
 			if (raid.getId() < 50)
 				continue;
+			
+			if (!DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime()))
+				continue;
+			
 			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.RAID_RANK_PREFIX + raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 			if (ranks.isEmpty())
 				continue;
@@ -256,23 +275,17 @@ public class ServerTitleService {
 			for (TypedTuple<String> rank : ranks) {
 				long userId = TypeTranslatedUtil.stringToLong(rank.getValue());
 				UserBean user = userService.getUserOther(userId);
-				switch (rankInit) {
-					case 1:
-						handlerTitle(user, 2, map);
-						break;
-					case 2:
-						handlerTitle(user, 8, map);
-						break;
-					case 3:
-						handlerTitle(user, 12, map);
-						break;
-					case 4:
-						handlerTitle(user, 16, map);
-						break;
-					default:
-						others.add(userId);
-						handlerTitle(user, 20, map, true);
-						break;
+				if (rankInit <= 5) {
+					handlerTitle(user, 2, map);
+				} else if (rankInit <= 15) {
+					handlerTitle(user, 8, map);
+				} else if (rankInit <= 25) {
+					handlerTitle(user, 12, map);
+				} else if (rankInit <= 35) {
+					handlerTitle(user, 16, map);
+				} else if (rankInit <= 60) {
+					others.add(userId);
+					handlerTitle(user, 20, map, true);
 				}
 				
 				rankInit++;

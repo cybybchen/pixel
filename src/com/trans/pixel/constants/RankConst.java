@@ -30,5 +30,5 @@ public class RankConst {
 	public static final int FIGHTINFO_RANK_RETURN_LIMIT = 10;
 	
 	public static final int TITLE_RANK_START = 0;
-	public static final int TITLE_RANK_END = 19;
+	public static final int TITLE_RANK_END = 59;
 }

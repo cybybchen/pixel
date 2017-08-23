@@ -74,6 +74,12 @@ public class RankRedisService extends RedisService{
 		return zrangewithscore(key, start, end);
 	}
 	
+	public Set<TypedTuple<String>> getRankList(int serverId, int type, long score1, long score2) {
+		String key = buildRankRedisKey(serverId, type);
+		
+		return zrangebyscore(key, score1, score2);
+	}
+	
 	//rank
 	public void addRankScore(long userId, int serverId, int type, long score, boolean isAdded) {
 		String key = buildRankRedisKey(serverId, type);
