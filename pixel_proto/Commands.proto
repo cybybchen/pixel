@@ -3554,6 +3554,9 @@ message RequestUnionBossFightCommand {
 	optional int32 percent = 3;
 }
 ////////// RewardTaskProto
+message WeekDay {
+	optional int32 weekday = 1;	
+}
 message RewardTask {
 	optional int32 id = 10;
 	optional int32 type = 1;
@@ -3567,6 +3570,7 @@ message RewardTask {
 	optional string endtime = 11;
 	repeated RewardInfo lootlist = 8;
 	repeated Event event = 9;
+	repeated WeekDay week = 13;
 }
 
 message RewardTaskList {
@@ -3759,7 +3763,7 @@ message Raid {
 	optional int32 id = 1;
 	optional RewardInfo cost = 2;
 	optional string name = 4;
-	//optional int32 lv = 3;
+	optional int32 count = 3;
 	repeated Event event = 5;
 	optional int32 eventid = 6;
 	repeated int32 turn = 7;

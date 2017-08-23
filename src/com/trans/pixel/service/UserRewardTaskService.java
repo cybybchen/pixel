@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.RewardTaskProto.WeekDay;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 import com.trans.pixel.service.redis.UserRewardTaskRedisService;
@@ -169,16 +170,27 @@ public class UserRewardTaskService {
 					it.remove();
 				}
 			}
+			int weekday = RedisService.weekday();
 			for(int i = 0; i < config.getDataCount(); i++) {
 				RewardTask.Builder task = config.getDataBuilder(i);
 				if(!"".equals(task.getEndtime()) && !DateUtil.timeIsAvailable(task.getStarttime(), task.getEndtime()))
 					continue;//不在有效期
+				if(task.getWeekCount() > 0) {
+					boolean refresh = false;
+					for(WeekDay day : task.getWeekList()) {
+						if(day.getWeekday() == weekday)
+							refresh = true;
+					}
+					if(!refresh)
+						continue;//本周刷新
+				}
 				
 				UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 				int eventindex = RedisService.nextInt(task.getEventCount());
 				for(int j = i+1; j < config.getDataCount() && task.getId() == config.getDataBuilder(j).getId(); j++)
 					config.getDataBuilder(j).removeEvent(eventindex);
 				task.setEventid(task.getEvent(eventindex).getEventid());
+				task.clearWeek();
 				task.clearEvent();
 				task.clearStarttime();
 				task.clearEndtime();

@@ -8,6 +8,410 @@ public final class RewardTaskProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public interface WeekDayOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 weekday = 1;
+    /**
+     * <code>optional int32 weekday = 1;</code>
+     */
+    boolean hasWeekday();
+    /**
+     * <code>optional int32 weekday = 1;</code>
+     */
+    int getWeekday();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.WeekDay}
+   *
+   * <pre>
+   *&#47;/////// RewardTaskProto
+   * </pre>
+   */
+  public static final class WeekDay extends
+      com.google.protobuf.GeneratedMessage
+      implements WeekDayOrBuilder {
+    // Use WeekDay.newBuilder() to construct.
+    private WeekDay(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private WeekDay(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final WeekDay defaultInstance;
+    public static WeekDay getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public WeekDay getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private WeekDay(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              weekday_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_WeekDay_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_WeekDay_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RewardTaskProto.WeekDay.class, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<WeekDay> PARSER =
+        new com.google.protobuf.AbstractParser<WeekDay>() {
+      public WeekDay parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new WeekDay(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WeekDay> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 weekday = 1;
+    public static final int WEEKDAY_FIELD_NUMBER = 1;
+    private int weekday_;
+    /**
+     * <code>optional int32 weekday = 1;</code>
+     */
+    public boolean hasWeekday() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 weekday = 1;</code>
+     */
+    public int getWeekday() {
+      return weekday_;
+    }
+
+    private void initFields() {
+      weekday_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, weekday_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, weekday_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RewardTaskProto.WeekDay parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RewardTaskProto.WeekDay prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.WeekDay}
+     *
+     * <pre>
+     *&#47;/////// RewardTaskProto
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_WeekDay_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_WeekDay_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RewardTaskProto.WeekDay.class, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RewardTaskProto.WeekDay.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        weekday_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.internal_static_com_trans_pixel_protoc_WeekDay_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RewardTaskProto.WeekDay.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay build() {
+        com.trans.pixel.protoc.RewardTaskProto.WeekDay result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay buildPartial() {
+        com.trans.pixel.protoc.RewardTaskProto.WeekDay result = new com.trans.pixel.protoc.RewardTaskProto.WeekDay(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.weekday_ = weekday_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RewardTaskProto.WeekDay) {
+          return mergeFrom((com.trans.pixel.protoc.RewardTaskProto.WeekDay)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RewardTaskProto.WeekDay other) {
+        if (other == com.trans.pixel.protoc.RewardTaskProto.WeekDay.getDefaultInstance()) return this;
+        if (other.hasWeekday()) {
+          setWeekday(other.getWeekday());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RewardTaskProto.WeekDay parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RewardTaskProto.WeekDay) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 weekday = 1;
+      private int weekday_ ;
+      /**
+       * <code>optional int32 weekday = 1;</code>
+       */
+      public boolean hasWeekday() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 weekday = 1;</code>
+       */
+      public int getWeekday() {
+        return weekday_;
+      }
+      /**
+       * <code>optional int32 weekday = 1;</code>
+       */
+      public Builder setWeekday(int value) {
+        bitField0_ |= 0x00000001;
+        weekday_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 weekday = 1;</code>
+       */
+      public Builder clearWeekday() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        weekday_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.WeekDay)
+    }
+
+    static {
+      defaultInstance = new WeekDay(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.WeekDay)
+  }
+
   public interface RewardTaskOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -170,13 +574,34 @@ public final class RewardTaskProto {
      */
     com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index);
+
+    // repeated .com.trans.pixel.protoc.WeekDay week = 13;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay> 
+        getWeekList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.WeekDay getWeek(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    int getWeekCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder> 
+        getWeekOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder getWeekOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RewardTask}
-   *
-   * <pre>
-   *&#47;/////// RewardTaskProto
-   * </pre>
    */
   public static final class RewardTask extends
       com.google.protobuf.GeneratedMessage
@@ -292,6 +717,14 @@ public final class RewardTaskProto {
               starttime_ = input.readBytes();
               break;
             }
+            case 106: {
+              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+                week_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.WeekDay>();
+                mutable_bitField0_ |= 0x00001000;
+              }
+              week_.add(input.readMessage(com.trans.pixel.protoc.RewardTaskProto.WeekDay.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -305,6 +738,9 @@ public final class RewardTaskProto {
         }
         if (((mutable_bitField0_ & 0x00000800) == 0x00000800)) {
           event_ = java.util.Collections.unmodifiableList(event_);
+        }
+        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
+          week_ = java.util.Collections.unmodifiableList(week_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -624,6 +1060,42 @@ public final class RewardTaskProto {
       return event_.get(index);
     }
 
+    // repeated .com.trans.pixel.protoc.WeekDay week = 13;
+    public static final int WEEK_FIELD_NUMBER = 13;
+    private java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay> week_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay> getWeekList() {
+      return week_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder> 
+        getWeekOrBuilderList() {
+      return week_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    public int getWeekCount() {
+      return week_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.WeekDay getWeek(int index) {
+      return week_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder getWeekOrBuilder(
+        int index) {
+      return week_.get(index);
+    }
+
     private void initFields() {
       id_ = 0;
       type_ = 0;
@@ -637,6 +1109,7 @@ public final class RewardTaskProto {
       endtime_ = "";
       lootlist_ = java.util.Collections.emptyList();
       event_ = java.util.Collections.emptyList();
+      week_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -685,6 +1158,9 @@ public final class RewardTaskProto {
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(12, getStarttimeBytes());
+      }
+      for (int i = 0; i < week_.size(); i++) {
+        output.writeMessage(13, week_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -742,6 +1218,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(12, getStarttimeBytes());
+      }
+      for (int i = 0; i < week_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, week_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -823,10 +1303,6 @@ public final class RewardTaskProto {
     }
     /**
      * Protobuf type {@code com.trans.pixel.protoc.RewardTask}
-     *
-     * <pre>
-     *&#47;/////// RewardTaskProto
-     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -857,6 +1333,7 @@ public final class RewardTaskProto {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getLootlistFieldBuilder();
           getEventFieldBuilder();
+          getWeekFieldBuilder();
         }
       }
       private static Builder create() {
@@ -896,6 +1373,12 @@ public final class RewardTaskProto {
           bitField0_ = (bitField0_ & ~0x00000800);
         } else {
           eventBuilder_.clear();
+        }
+        if (weekBuilder_ == null) {
+          week_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00001000);
+        } else {
+          weekBuilder_.clear();
         }
         return this;
       }
@@ -982,6 +1465,15 @@ public final class RewardTaskProto {
           result.event_ = event_;
         } else {
           result.event_ = eventBuilder_.build();
+        }
+        if (weekBuilder_ == null) {
+          if (((bitField0_ & 0x00001000) == 0x00001000)) {
+            week_ = java.util.Collections.unmodifiableList(week_);
+            bitField0_ = (bitField0_ & ~0x00001000);
+          }
+          result.week_ = week_;
+        } else {
+          result.week_ = weekBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1082,6 +1574,32 @@ public final class RewardTaskProto {
                    getEventFieldBuilder() : null;
             } else {
               eventBuilder_.addAllMessages(other.event_);
+            }
+          }
+        }
+        if (weekBuilder_ == null) {
+          if (!other.week_.isEmpty()) {
+            if (week_.isEmpty()) {
+              week_ = other.week_;
+              bitField0_ = (bitField0_ & ~0x00001000);
+            } else {
+              ensureWeekIsMutable();
+              week_.addAll(other.week_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.week_.isEmpty()) {
+            if (weekBuilder_.isEmpty()) {
+              weekBuilder_.dispose();
+              weekBuilder_ = null;
+              week_ = other.week_;
+              bitField0_ = (bitField0_ & ~0x00001000);
+              weekBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getWeekFieldBuilder() : null;
+            } else {
+              weekBuilder_.addAllMessages(other.week_);
             }
           }
         }
@@ -2002,6 +2520,246 @@ public final class RewardTaskProto {
           event_ = null;
         }
         return eventBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.WeekDay week = 13;
+      private java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay> week_ =
+        java.util.Collections.emptyList();
+      private void ensureWeekIsMutable() {
+        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
+          week_ = new java.util.ArrayList<com.trans.pixel.protoc.RewardTaskProto.WeekDay>(week_);
+          bitField0_ |= 0x00001000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.WeekDay, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder, com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder> weekBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay> getWeekList() {
+        if (weekBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(week_);
+        } else {
+          return weekBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public int getWeekCount() {
+        if (weekBuilder_ == null) {
+          return week_.size();
+        } else {
+          return weekBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay getWeek(int index) {
+        if (weekBuilder_ == null) {
+          return week_.get(index);
+        } else {
+          return weekBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder setWeek(
+          int index, com.trans.pixel.protoc.RewardTaskProto.WeekDay value) {
+        if (weekBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeekIsMutable();
+          week_.set(index, value);
+          onChanged();
+        } else {
+          weekBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder setWeek(
+          int index, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder builderForValue) {
+        if (weekBuilder_ == null) {
+          ensureWeekIsMutable();
+          week_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          weekBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder addWeek(com.trans.pixel.protoc.RewardTaskProto.WeekDay value) {
+        if (weekBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeekIsMutable();
+          week_.add(value);
+          onChanged();
+        } else {
+          weekBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder addWeek(
+          int index, com.trans.pixel.protoc.RewardTaskProto.WeekDay value) {
+        if (weekBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWeekIsMutable();
+          week_.add(index, value);
+          onChanged();
+        } else {
+          weekBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder addWeek(
+          com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder builderForValue) {
+        if (weekBuilder_ == null) {
+          ensureWeekIsMutable();
+          week_.add(builderForValue.build());
+          onChanged();
+        } else {
+          weekBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder addWeek(
+          int index, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder builderForValue) {
+        if (weekBuilder_ == null) {
+          ensureWeekIsMutable();
+          week_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          weekBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder addAllWeek(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RewardTaskProto.WeekDay> values) {
+        if (weekBuilder_ == null) {
+          ensureWeekIsMutable();
+          super.addAll(values, week_);
+          onChanged();
+        } else {
+          weekBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder clearWeek() {
+        if (weekBuilder_ == null) {
+          week_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00001000);
+          onChanged();
+        } else {
+          weekBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public Builder removeWeek(int index) {
+        if (weekBuilder_ == null) {
+          ensureWeekIsMutable();
+          week_.remove(index);
+          onChanged();
+        } else {
+          weekBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder getWeekBuilder(
+          int index) {
+        return getWeekFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder getWeekOrBuilder(
+          int index) {
+        if (weekBuilder_ == null) {
+          return week_.get(index);  } else {
+          return weekBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder> 
+           getWeekOrBuilderList() {
+        if (weekBuilder_ != null) {
+          return weekBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(week_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder addWeekBuilder() {
+        return getWeekFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RewardTaskProto.WeekDay.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder addWeekBuilder(
+          int index) {
+        return getWeekFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RewardTaskProto.WeekDay.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.WeekDay week = 13;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder> 
+           getWeekBuilderList() {
+        return getWeekFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.WeekDay, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder, com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder> 
+          getWeekFieldBuilder() {
+        if (weekBuilder_ == null) {
+          weekBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RewardTaskProto.WeekDay, com.trans.pixel.protoc.RewardTaskProto.WeekDay.Builder, com.trans.pixel.protoc.RewardTaskProto.WeekDayOrBuilder>(
+                  week_,
+                  ((bitField0_ & 0x00001000) == 0x00001000),
+                  getParentForChildren(),
+                  isClean());
+          week_ = null;
+        }
+        return weekBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RewardTask)
@@ -16133,6 +16891,11 @@ public final class RewardTaskProto {
   }
 
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_WeekDay_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_WeekDay_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RewardTask_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -16252,155 +17015,163 @@ public final class RewardTaskProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\025RewardTaskProto.proto\022\026com.trans.pixel" +
-      ".protoc\032\nBase.proto\"\223\002\n\nRewardTask\022\n\n\002id" +
-      "\030\n \001(\005\022\014\n\004type\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\020\n" +
-      "\010merlevel\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\017\n\007member" +
-      "s\030\005 \001(\005\022\021\n\trandcount\030\006 \001(\005\022\r\n\005count\030\007 \001(" +
-      "\005\022\021\n\tstarttime\030\014 \001(\t\022\017\n\007endtime\030\013 \001(\t\0224\n" +
-      "\010lootlist\030\010 \003(\0132\".com.trans.pixel.protoc" +
-      ".RewardInfo\022,\n\005event\030\t \003(\0132\035.com.trans.p" +
-      "ixel.protoc.Event\"B\n\016RewardTaskList\0220\n\004d" +
-      "ata\030\001 \003(\0132\".com.trans.pixel.protoc.Rewar",
-      "dTask\"[\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004user" +
-      "\030\002 \001(\0132 .com.trans.pixel.protoc.UserInfo" +
-      "\022\020\n\010position\030\003 \001(\r\"\241\002\n\016UserRewardTask\0220\n" +
-      "\004task\030\001 \002(\0132\".com.trans.pixel.protoc.Rew" +
-      "ardTask\022\021\n\tleftcount\030\002 \001(\005\022\016\n\006status\030\003 \001" +
-      "(\r\0222\n\010roomInfo\030\005 \001(\0132 .com.trans.pixel.p" +
-      "rotoc.RoomInfo\022\017\n\007endtime\030\006 \001(\003\022\r\n\005index" +
-      "\030\007 \002(\r\022\016\n\006isOver\030\010 \001(\r\"V\n\021REWARDTASK_STA" +
-      "TUS\022\010\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n" +
-      "\004FULL\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\216\001\n\022UserR",
-      "ewardTaskRoom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006s" +
-      "tatus\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006" +
-      " \003(\0132 .com.trans.pixel.protoc.RoomInfo\022\017" +
-      "\n\007eventid\030\007 \001(\r\"\261\001\n\014LootShenyuan\022\n\n\002id\030\001" +
-      " \002(\r\022\014\n\004time\030\002 \002(\r\022\020\n\010targetid\030\003 \002(\r\022\r\n\005" +
-      "limit\030\004 \002(\r\0220\n\004cost\030\005 \002(\0132\".com.trans.pi" +
-      "xel.protoc.RewardInfo\0224\n\010lootlist\030\006 \003(\0132" +
-      "\".com.trans.pixel.protoc.RewardInfo\"F\n\020L" +
-      "ootShenyuanList\0222\n\004data\030\001 \003(\0132$.com.tran" +
-      "s.pixel.protoc.LootShenyuan\"A\n\022UserLootR",
-      "ewardTask\022\n\n\002id\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\022\020\n\010" +
-      "lootTime\030\003 \002(\r\"9\n\034RequestLootRewardTaskC" +
-      "ommand\022\n\n\002id\030\002 \001(\r\022\r\n\005count\030\001 \001(\r\"Y\n\035Res" +
-      "ponseLootRewardTaskCommand\0228\n\004loot\030\001 \003(\013" +
-      "2*.com.trans.pixel.protoc.UserLootReward" +
-      "Task\"3\n\"RequestCreateRewardTaskRoomComma" +
-      "nd\022\r\n\005index\030\001 \002(\r\"A\n RequestQuitRewardTa" +
-      "skRoomCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006userId\030\002" +
-      " \002(\004\"g\n$RequestInviteToRewardTaskRoomCom" +
-      "mand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014crea",
-      "teUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#Request" +
-      "SubmitRewardTaskScoreCommand\022\r\n\005index\030\001 " +
-      "\002(\r\022\013\n\003ret\030\002 \002(\010\"\342\001\n\035ResponseUserRewardT" +
-      "askCommand\022>\n\016userRewardTask\030\001 \003(\0132&.com" +
-      ".trans.pixel.protoc.UserRewardTask\022Q\n\006st" +
-      "atus\030\002 \003(\0132A.com.trans.pixel.protoc.Resp" +
-      "onseUserRewardTaskCommand.EventStatus\032.\n" +
-      "\013EventStatus\022\017\n\007eventid\030\001 \002(\r\022\016\n\006status\030" +
-      "\002 \002(\r\"]\n!ResponseUserRewardTaskRoomComma" +
-      "nd\0228\n\004room\030\001 \003(\0132*.com.trans.pixel.proto",
-      "c.UserRewardTaskRoom\"\036\n\034RequestUserRewar" +
-      "dTaskCommand\"/\n\036RequestRewardTaskRewardC" +
-      "ommand\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewa" +
-      "rdTaskRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036Requ" +
-      "estGiveupRewardTaskCommand\022\r\n\005index\030\001 \002(" +
-      "\r\"S\n\034RequestChangePositionCommand\022\021\n\tpos" +
-      "ition1\030\001 \002(\r\022\021\n\tposition2\030\002 \002(\r\022\r\n\005index" +
-      "\030\003 \002(\r"
+      ".protoc\032\nBase.proto\"\032\n\007WeekDay\022\017\n\007weekda" +
+      "y\030\001 \001(\005\"\302\002\n\nRewardTask\022\n\n\002id\030\n \001(\005\022\014\n\004ty" +
+      "pe\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\020\n\010merlevel\030\003 " +
+      "\001(\005\022\r\n\005level\030\004 \001(\005\022\017\n\007members\030\005 \001(\005\022\021\n\tr" +
+      "andcount\030\006 \001(\005\022\r\n\005count\030\007 \001(\005\022\021\n\tstartti" +
+      "me\030\014 \001(\t\022\017\n\007endtime\030\013 \001(\t\0224\n\010lootlist\030\010 " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\022" +
+      ",\n\005event\030\t \003(\0132\035.com.trans.pixel.protoc." +
+      "Event\022-\n\004week\030\r \003(\0132\037.com.trans.pixel.pr",
+      "otoc.WeekDay\"B\n\016RewardTaskList\0220\n\004data\030\001" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardTask" +
+      "\"[\n\010RoomInfo\022\r\n\005index\030\001 \001(\r\022.\n\004user\030\002 \001(" +
+      "\0132 .com.trans.pixel.protoc.UserInfo\022\020\n\010p" +
+      "osition\030\003 \001(\r\"\241\002\n\016UserRewardTask\0220\n\004task" +
+      "\030\001 \002(\0132\".com.trans.pixel.protoc.RewardTa" +
+      "sk\022\021\n\tleftcount\030\002 \001(\005\022\016\n\006status\030\003 \001(\r\0222\n" +
+      "\010roomInfo\030\005 \001(\0132 .com.trans.pixel.protoc" +
+      ".RoomInfo\022\017\n\007endtime\030\006 \001(\003\022\r\n\005index\030\007 \002(" +
+      "\r\022\016\n\006isOver\030\010 \001(\r\"V\n\021REWARDTASK_STATUS\022\010",
+      "\n\004LIVE\020\000\022\007\n\003END\020\001\022\r\n\tCANREWARD\020\002\022\010\n\004FULL" +
+      "\020\003\022\n\n\006HAS_IN\020\004\022\t\n\005LIMIT\020\005\"\216\001\n\022UserReward" +
+      "TaskRoom\022\024\n\014createUserId\030\001 \002(\004\022\016\n\006status" +
+      "\030\004 \001(\r\022\r\n\005index\030\005 \001(\r\0222\n\010roomInfo\030\006 \003(\0132" +
+      " .com.trans.pixel.protoc.RoomInfo\022\017\n\007eve" +
+      "ntid\030\007 \001(\r\"\261\001\n\014LootShenyuan\022\n\n\002id\030\001 \002(\r\022" +
+      "\014\n\004time\030\002 \002(\r\022\020\n\010targetid\030\003 \002(\r\022\r\n\005limit" +
+      "\030\004 \002(\r\0220\n\004cost\030\005 \002(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\0224\n\010lootlist\030\006 \003(\0132\".com" +
+      ".trans.pixel.protoc.RewardInfo\"F\n\020LootSh",
+      "enyuanList\0222\n\004data\030\001 \003(\0132$.com.trans.pix" +
+      "el.protoc.LootShenyuan\"A\n\022UserLootReward" +
+      "Task\022\n\n\002id\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\022\020\n\010lootT" +
+      "ime\030\003 \002(\r\"9\n\034RequestLootRewardTaskComman" +
+      "d\022\n\n\002id\030\002 \001(\r\022\r\n\005count\030\001 \001(\r\"Y\n\035Response" +
+      "LootRewardTaskCommand\0228\n\004loot\030\001 \003(\0132*.co" +
+      "m.trans.pixel.protoc.UserLootRewardTask\"" +
+      "3\n\"RequestCreateRewardTaskRoomCommand\022\r\n" +
+      "\005index\030\001 \002(\r\"A\n RequestQuitRewardTaskRoo" +
+      "mCommand\022\r\n\005index\030\001 \002(\r\022\016\n\006userId\030\002 \002(\004\"",
+      "g\n$RequestInviteToRewardTaskRoomCommand\022" +
+      "\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014createUse" +
+      "rId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"A\n#RequestSubmi" +
+      "tRewardTaskScoreCommand\022\r\n\005index\030\001 \002(\r\022\013" +
+      "\n\003ret\030\002 \002(\010\"\342\001\n\035ResponseUserRewardTaskCo" +
+      "mmand\022>\n\016userRewardTask\030\001 \003(\0132&.com.tran" +
+      "s.pixel.protoc.UserRewardTask\022Q\n\006status\030" +
+      "\002 \003(\0132A.com.trans.pixel.protoc.ResponseU" +
+      "serRewardTaskCommand.EventStatus\032.\n\013Even" +
+      "tStatus\022\017\n\007eventid\030\001 \002(\r\022\016\n\006status\030\002 \002(\r",
+      "\"]\n!ResponseUserRewardTaskRoomCommand\0228\n" +
+      "\004room\030\001 \003(\0132*.com.trans.pixel.protoc.Use" +
+      "rRewardTaskRoom\"\036\n\034RequestUserRewardTask" +
+      "Command\"/\n\036RequestRewardTaskRewardComman" +
+      "d\022\r\n\005index\030\002 \002(\r\"1\n RequestUserRewardTas" +
+      "kRoomCommand\022\r\n\005index\030\001 \002(\r\"/\n\036RequestGi" +
+      "veupRewardTaskCommand\022\r\n\005index\030\001 \002(\r\"S\n\034" +
+      "RequestChangePositionCommand\022\021\n\tposition" +
+      "1\030\001 \002(\r\022\021\n\tposition2\030\002 \002(\r\022\r\n\005index\030\003 \002(" +
+      "\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_com_trans_pixel_protoc_RewardTask_descriptor =
+          internal_static_com_trans_pixel_protoc_WeekDay_descriptor =
             getDescriptor().getMessageTypes().get(0);
+          internal_static_com_trans_pixel_protoc_WeekDay_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_WeekDay_descriptor,
+              new java.lang.String[] { "Weekday", });
+          internal_static_com_trans_pixel_protoc_RewardTask_descriptor =
+            getDescriptor().getMessageTypes().get(1);
           internal_static_com_trans_pixel_protoc_RewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTask_descriptor,
-              new java.lang.String[] { "Id", "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Starttime", "Endtime", "Lootlist", "Event", });
+              new java.lang.String[] { "Id", "Type", "Eventid", "Merlevel", "Level", "Members", "Randcount", "Count", "Starttime", "Endtime", "Lootlist", "Event", "Week", });
           internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_RewardTaskList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardTaskList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_RoomInfo_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_RoomInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RoomInfo_descriptor,
               new java.lang.String[] { "Index", "User", "Position", });
           internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_UserRewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTask_descriptor,
               new java.lang.String[] { "Task", "Leftcount", "Status", "RoomInfo", "Endtime", "Index", "IsOver", });
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRewardTaskRoom_descriptor,
               new java.lang.String[] { "CreateUserId", "Status", "Index", "RoomInfo", "Eventid", });
           internal_static_com_trans_pixel_protoc_LootShenyuan_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_LootShenyuan_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootShenyuan_descriptor,
               new java.lang.String[] { "Id", "Time", "Targetid", "Limit", "Cost", "Lootlist", });
           internal_static_com_trans_pixel_protoc_LootShenyuanList_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_LootShenyuanList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LootShenyuanList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_UserLootRewardTask_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_UserLootRewardTask_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserLootRewardTask_descriptor,
               new java.lang.String[] { "Id", "Count", "LootTime", });
           internal_static_com_trans_pixel_protoc_RequestLootRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_RequestLootRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLootRewardTaskCommand_descriptor,
               new java.lang.String[] { "Id", "Count", });
           internal_static_com_trans_pixel_protoc_ResponseLootRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_ResponseLootRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLootRewardTaskCommand_descriptor,
               new java.lang.String[] { "Loot", });
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCreateRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQuitRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestInviteToRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Id", "UserId", "CreateUserId", "Index", });
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitRewardTaskScoreCommand_descriptor,
               new java.lang.String[] { "Index", "Ret", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_descriptor,
@@ -16412,37 +17183,37 @@ public final class RewardTaskProto {
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskCommand_EventStatus_descriptor,
               new java.lang.String[] { "Eventid", "Status", });
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Room", });
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserRewardTaskCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRewardTaskRewardCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUserRewardTaskRoomCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGiveupRewardTaskCommand_descriptor,
               new java.lang.String[] { "Index", });
           internal_static_com_trans_pixel_protoc_RequestChangePositionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestChangePositionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestChangePositionCommand_descriptor,

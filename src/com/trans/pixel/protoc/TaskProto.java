@@ -8971,47 +8971,37 @@ public final class TaskProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
+    // optional int32 count = 3;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    boolean hasCount();
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    int getCount();
+
     // repeated .com.trans.pixel.protoc.Event event = 5;
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     java.util.List<com.trans.pixel.protoc.Base.Event> 
         getEventList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     com.trans.pixel.protoc.Base.Event getEvent(int index);
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     int getEventCount();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList();
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index);
@@ -9167,28 +9157,33 @@ public final class TaskProto {
               bitField0_ |= 0x00000002;
               break;
             }
+            case 24: {
+              bitField0_ |= 0x00000008;
+              count_ = input.readInt32();
+              break;
+            }
             case 34: {
               bitField0_ |= 0x00000004;
               name_ = input.readBytes();
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               event_.add(input.readMessage(com.trans.pixel.protoc.Base.Event.PARSER, extensionRegistry));
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               eventid_ = input.readInt32();
               break;
             }
             case 56: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
                 turn_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               turn_.add(input.readInt32());
               break;
@@ -9196,9 +9191,9 @@ public final class TaskProto {
             case 58: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040) && input.getBytesUntilLimit() > 0) {
                 turn_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000020;
+                mutable_bitField0_ |= 0x00000040;
               }
               while (input.getBytesUntilLimit() > 0) {
                 turn_.add(input.readInt32());
@@ -9207,22 +9202,22 @@ public final class TaskProto {
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               level_ = input.readInt32();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               maxlevel_ = input.readInt32();
               break;
             }
             case 82: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               starttime_ = input.readBytes();
               break;
             }
             case 90: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               endtime_ = input.readBytes();
               break;
             }
@@ -9234,10 +9229,10 @@ public final class TaskProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           event_ = java.util.Collections.unmodifiableList(event_);
         }
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
           turn_ = java.util.Collections.unmodifiableList(turn_);
         }
         this.unknownFields = unknownFields.build();
@@ -9353,25 +9348,33 @@ public final class TaskProto {
       }
     }
 
+    // optional int32 count = 3;
+    public static final int COUNT_FIELD_NUMBER = 3;
+    private int count_;
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 count = 3;</code>
+     */
+    public int getCount() {
+      return count_;
+    }
+
     // repeated .com.trans.pixel.protoc.Event event = 5;
     public static final int EVENT_FIELD_NUMBER = 5;
     private java.util.List<com.trans.pixel.protoc.Base.Event> event_;
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
       return event_;
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
         getEventOrBuilderList() {
@@ -9379,30 +9382,18 @@ public final class TaskProto {
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     public int getEventCount() {
       return event_.size();
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     public com.trans.pixel.protoc.Base.Event getEvent(int index) {
       return event_.get(index);
     }
     /**
      * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-     *
-     * <pre>
-     *optional int32 lv = 3;
-     * </pre>
      */
     public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
         int index) {
@@ -9416,7 +9407,7 @@ public final class TaskProto {
      * <code>optional int32 eventid = 6;</code>
      */
     public boolean hasEventid() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 eventid = 6;</code>
@@ -9455,7 +9446,7 @@ public final class TaskProto {
      * <code>optional int32 level = 8;</code>
      */
     public boolean hasLevel() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 level = 8;</code>
@@ -9475,7 +9466,7 @@ public final class TaskProto {
      * </pre>
      */
     public boolean hasMaxlevel() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 maxlevel = 9;</code>
@@ -9495,7 +9486,7 @@ public final class TaskProto {
      * <code>optional string starttime = 10;</code>
      */
     public boolean hasStarttime() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional string starttime = 10;</code>
@@ -9538,7 +9529,7 @@ public final class TaskProto {
      * <code>optional string endtime = 11;</code>
      */
     public boolean hasEndtime() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional string endtime = 11;</code>
@@ -9578,6 +9569,7 @@ public final class TaskProto {
       id_ = 0;
       cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
       name_ = "";
+      count_ = 0;
       event_ = java.util.Collections.emptyList();
       eventid_ = 0;
       turn_ = java.util.Collections.emptyList();
@@ -9604,28 +9596,31 @@ public final class TaskProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, cost_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(3, count_);
+      }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(4, getNameBytes());
       }
       for (int i = 0; i < event_.size(); i++) {
         output.writeMessage(5, event_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(6, eventid_);
       }
       for (int i = 0; i < turn_.size(); i++) {
         output.writeInt32(7, turn_.get(i));
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(8, level_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(9, maxlevel_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(10, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(11, getEndtimeBytes());
       }
       getUnknownFields().writeTo(output);
@@ -9645,6 +9640,10 @@ public final class TaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, cost_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, count_);
+      }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, getNameBytes());
@@ -9653,7 +9652,7 @@ public final class TaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, event_.get(i));
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, eventid_);
       }
@@ -9666,19 +9665,19 @@ public final class TaskProto {
         size += dataSize;
         size += 1 * getTurnList().size();
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, level_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, maxlevel_);
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(11, getEndtimeBytes());
       }
@@ -9810,24 +9809,26 @@ public final class TaskProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           eventBuilder_.clear();
         }
         eventid_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        turn_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000020);
-        level_ = 0;
+        turn_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000040);
-        maxlevel_ = 0;
+        level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
-        starttime_ = "";
+        maxlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        endtime_ = "";
+        starttime_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
 
@@ -9872,38 +9873,42 @@ public final class TaskProto {
           to_bitField0_ |= 0x00000004;
         }
         result.name_ = name_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.count_ = count_;
         if (eventBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             event_ = java.util.Collections.unmodifiableList(event_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.event_ = event_;
         } else {
           result.event_ = eventBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.eventid_ = eventid_;
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          turn_ = java.util.Collections.unmodifiableList(turn_);
-          bitField0_ = (bitField0_ & ~0x00000020);
-        }
-        result.turn_ = turn_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.level_ = level_;
+        result.eventid_ = eventid_;
+        if (((bitField0_ & 0x00000040) == 0x00000040)) {
+          turn_ = java.util.Collections.unmodifiableList(turn_);
+          bitField0_ = (bitField0_ & ~0x00000040);
+        }
+        result.turn_ = turn_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.maxlevel_ = maxlevel_;
+        result.level_ = level_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.starttime_ = starttime_;
+        result.maxlevel_ = maxlevel_;
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000080;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000100;
         }
         result.endtime_ = endtime_;
         result.bitField0_ = to_bitField0_;
@@ -9933,11 +9938,14 @@ public final class TaskProto {
           name_ = other.name_;
           onChanged();
         }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
         if (eventBuilder_ == null) {
           if (!other.event_.isEmpty()) {
             if (event_.isEmpty()) {
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureEventIsMutable();
               event_.addAll(other.event_);
@@ -9950,7 +9958,7 @@ public final class TaskProto {
               eventBuilder_.dispose();
               eventBuilder_ = null;
               event_ = other.event_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               eventBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEventFieldBuilder() : null;
@@ -9965,7 +9973,7 @@ public final class TaskProto {
         if (!other.turn_.isEmpty()) {
           if (turn_.isEmpty()) {
             turn_ = other.turn_;
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureTurnIsMutable();
             turn_.addAll(other.turn_);
@@ -9979,12 +9987,12 @@ public final class TaskProto {
           setMaxlevel(other.getMaxlevel());
         }
         if (other.hasStarttime()) {
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00000200;
           starttime_ = other.starttime_;
           onChanged();
         }
         if (other.hasEndtime()) {
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000400;
           endtime_ = other.endtime_;
           onChanged();
         }
@@ -10239,13 +10247,46 @@ public final class TaskProto {
         return this;
       }
 
+      // optional int32 count = 3;
+      private int count_ ;
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000008;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 count = 3;</code>
+       */
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+
       // repeated .com.trans.pixel.protoc.Event event = 5;
       private java.util.List<com.trans.pixel.protoc.Base.Event> event_ =
         java.util.Collections.emptyList();
       private void ensureEventIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           event_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.Event>(event_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -10254,10 +10295,6 @@ public final class TaskProto {
 
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public java.util.List<com.trans.pixel.protoc.Base.Event> getEventList() {
         if (eventBuilder_ == null) {
@@ -10268,10 +10305,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public int getEventCount() {
         if (eventBuilder_ == null) {
@@ -10282,10 +10315,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.Event getEvent(int index) {
         if (eventBuilder_ == null) {
@@ -10296,10 +10325,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder setEvent(
           int index, com.trans.pixel.protoc.Base.Event value) {
@@ -10317,10 +10342,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder setEvent(
           int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
@@ -10335,10 +10356,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder addEvent(com.trans.pixel.protoc.Base.Event value) {
         if (eventBuilder_ == null) {
@@ -10355,10 +10372,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder addEvent(
           int index, com.trans.pixel.protoc.Base.Event value) {
@@ -10376,10 +10389,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder addEvent(
           com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
@@ -10394,10 +10403,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder addEvent(
           int index, com.trans.pixel.protoc.Base.Event.Builder builderForValue) {
@@ -10412,10 +10417,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder addAllEvent(
           java.lang.Iterable<? extends com.trans.pixel.protoc.Base.Event> values) {
@@ -10430,15 +10431,11 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder clearEvent() {
         if (eventBuilder_ == null) {
           event_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           eventBuilder_.clear();
@@ -10447,10 +10444,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public Builder removeEvent(int index) {
         if (eventBuilder_ == null) {
@@ -10464,10 +10457,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.Event.Builder getEventBuilder(
           int index) {
@@ -10475,10 +10464,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.EventOrBuilder getEventOrBuilder(
           int index) {
@@ -10489,10 +10474,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public java.util.List<? extends com.trans.pixel.protoc.Base.EventOrBuilder> 
            getEventOrBuilderList() {
@@ -10504,10 +10485,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder() {
         return getEventFieldBuilder().addBuilder(
@@ -10515,10 +10492,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public com.trans.pixel.protoc.Base.Event.Builder addEventBuilder(
           int index) {
@@ -10527,10 +10500,6 @@ public final class TaskProto {
       }
       /**
        * <code>repeated .com.trans.pixel.protoc.Event event = 5;</code>
-       *
-       * <pre>
-       *optional int32 lv = 3;
-       * </pre>
        */
       public java.util.List<com.trans.pixel.protoc.Base.Event.Builder> 
            getEventBuilderList() {
@@ -10543,7 +10512,7 @@ public final class TaskProto {
           eventBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.Event, com.trans.pixel.protoc.Base.Event.Builder, com.trans.pixel.protoc.Base.EventOrBuilder>(
                   event_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           event_ = null;
@@ -10557,7 +10526,7 @@ public final class TaskProto {
        * <code>optional int32 eventid = 6;</code>
        */
       public boolean hasEventid() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 eventid = 6;</code>
@@ -10569,7 +10538,7 @@ public final class TaskProto {
        * <code>optional int32 eventid = 6;</code>
        */
       public Builder setEventid(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         eventid_ = value;
         onChanged();
         return this;
@@ -10578,7 +10547,7 @@ public final class TaskProto {
        * <code>optional int32 eventid = 6;</code>
        */
       public Builder clearEventid() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         eventid_ = 0;
         onChanged();
         return this;
@@ -10587,9 +10556,9 @@ public final class TaskProto {
       // repeated int32 turn = 7;
       private java.util.List<java.lang.Integer> turn_ = java.util.Collections.emptyList();
       private void ensureTurnIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
           turn_ = new java.util.ArrayList<java.lang.Integer>(turn_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
          }
       }
       /**
@@ -10645,7 +10614,7 @@ public final class TaskProto {
        */
       public Builder clearTurn() {
         turn_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
         return this;
       }
@@ -10656,7 +10625,7 @@ public final class TaskProto {
        * <code>optional int32 level = 8;</code>
        */
       public boolean hasLevel() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 level = 8;</code>
@@ -10668,7 +10637,7 @@ public final class TaskProto {
        * <code>optional int32 level = 8;</code>
        */
       public Builder setLevel(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         level_ = value;
         onChanged();
         return this;
@@ -10677,7 +10646,7 @@ public final class TaskProto {
        * <code>optional int32 level = 8;</code>
        */
       public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         level_ = 0;
         onChanged();
         return this;
@@ -10693,7 +10662,7 @@ public final class TaskProto {
        * </pre>
        */
       public boolean hasMaxlevel() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 maxlevel = 9;</code>
@@ -10713,7 +10682,7 @@ public final class TaskProto {
        * </pre>
        */
       public Builder setMaxlevel(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         maxlevel_ = value;
         onChanged();
         return this;
@@ -10726,7 +10695,7 @@ public final class TaskProto {
        * </pre>
        */
       public Builder clearMaxlevel() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         maxlevel_ = 0;
         onChanged();
         return this;
@@ -10738,7 +10707,7 @@ public final class TaskProto {
        * <code>optional string starttime = 10;</code>
        */
       public boolean hasStarttime() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional string starttime = 10;</code>
@@ -10778,7 +10747,7 @@ public final class TaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         starttime_ = value;
         onChanged();
         return this;
@@ -10787,7 +10756,7 @@ public final class TaskProto {
        * <code>optional string starttime = 10;</code>
        */
       public Builder clearStarttime() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         starttime_ = getDefaultInstance().getStarttime();
         onChanged();
         return this;
@@ -10800,7 +10769,7 @@ public final class TaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000100;
+  bitField0_ |= 0x00000200;
         starttime_ = value;
         onChanged();
         return this;
@@ -10812,7 +10781,7 @@ public final class TaskProto {
        * <code>optional string endtime = 11;</code>
        */
       public boolean hasEndtime() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional string endtime = 11;</code>
@@ -10852,7 +10821,7 @@ public final class TaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         endtime_ = value;
         onChanged();
         return this;
@@ -10861,7 +10830,7 @@ public final class TaskProto {
        * <code>optional string endtime = 11;</code>
        */
       public Builder clearEndtime() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         endtime_ = getDefaultInstance().getEndtime();
         onChanged();
         return this;
@@ -10874,7 +10843,7 @@ public final class TaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000200;
+  bitField0_ |= 0x00000400;
         endtime_ = value;
         onChanged();
         return this;
@@ -13782,20 +13751,21 @@ public final class TaskProto {
       "ixel.protoc.UserTask\0223\n\tuserTask3\030\003 \003(\0132" +
       " .com.trans.pixel.protoc.UserTask\"J\n\033Req" +
       "uestGetTaskRewardCommand\022\014\n\004type\030\001 \002(\005\022\r" +
-      "\n\005order\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\344\001\n\004Raid\022\n" +
+      "\n\005order\030\002 \001(\005\022\016\n\006heroid\030\003 \001(\005\"\363\001\n\004Raid\022\n" +
       "\n\002id\030\001 \001(\005\0220\n\004cost\030\002 \001(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\022\014\n\004name\030\004 \001(\t\022,\n\005ev" +
-      "ent\030\005 \003(\0132\035.com.trans.pixel.protoc.Event",
-      "\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level" +
-      "\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\022\021\n\tstarttime\030\n " +
-      "\001(\t\022\017\n\007endtime\030\013 \001(\t\"6\n\010RaidList\022*\n\004data" +
-      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid\"3\n\026" +
-      "RequestOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005le" +
-      "vel\030\002 \001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002" +
-      "id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030" +
-      "\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007even" +
-      "tid\030\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid" +
-      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Raid"
+      "el.protoc.RewardInfo\022\014\n\004name\030\004 \001(\t\022\r\n\005co" +
+      "unt\030\003 \001(\005\022,\n\005event\030\005 \003(\0132\035.com.trans.pix",
+      "el.protoc.Event\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn" +
+      "\030\007 \003(\005\022\r\n\005level\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\022" +
+      "\021\n\tstarttime\030\n \001(\t\022\017\n\007endtime\030\013 \001(\t\"6\n\010R" +
+      "aidList\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel." +
+      "protoc.Raid\"3\n\026RequestOpenRaidCommand\022\n\n" +
+      "\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"v\n\027RequestStart" +
+      "RaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(" +
+      "\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003re" +
+      "t\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"A\n\023ResponseRaid" +
+      "Command\022*\n\004raid\030\001 \003(\0132\034.com.trans.pixel.",
+      "protoc.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13873,7 +13843,7 @@ public final class TaskProto {
           internal_static_com_trans_pixel_protoc_Raid_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Raid_descriptor,
-              new java.lang.String[] { "Id", "Cost", "Name", "Event", "Eventid", "Turn", "Level", "Maxlevel", "Starttime", "Endtime", });
+              new java.lang.String[] { "Id", "Cost", "Name", "Count", "Event", "Eventid", "Turn", "Level", "Maxlevel", "Starttime", "Endtime", });
           internal_static_com_trans_pixel_protoc_RaidList_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable = new
