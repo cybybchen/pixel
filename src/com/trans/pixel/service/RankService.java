@@ -222,6 +222,13 @@ public class RankService {
 		List<FightInfo> fightList = getFightInfoList();
 		FightInfo removeFight = null;
 		if (fightList.size() >= RankConst.FIGHTINFO_RANK_LIMIT) {
+			for (FightInfo fightinfo : fightList) {
+				if (fightinfo.getUser().getId() == fight.getUser().getId()) {
+					rankRedisService.deleteFightInfoRank(fightinfo);
+					rankRedisService.addFightInfoRank(fight);
+					return;
+				}
+			}
 			removeFight = fightList.get(fightList.size() - 1);
 			
 			if (removeFight.getScore() <= fight.getScore()) {

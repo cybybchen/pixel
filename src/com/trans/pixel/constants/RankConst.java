@@ -26,7 +26,7 @@ public class RankConst {
 	
 	public static final int RAID_RANK_PREFIX = 100;
 	
-	public static final int FIGHTINFO_RANK_LIMIT = 50;
+	public static final int FIGHTINFO_RANK_LIMIT = 20;
 	public static final int FIGHTINFO_RANK_RETURN_LIMIT = 10;
 	
 	public static final int TITLE_RANK_START = 0;

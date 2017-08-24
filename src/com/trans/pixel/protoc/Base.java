@@ -32824,17 +32824,17 @@ public final class Base {
     com.google.protobuf.ByteString
         getFightInfoBytes();
 
-    // required string fightData = 2;
+    // optional string fightData = 2;
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     boolean hasFightData();
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     java.lang.String getFightData();
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     com.google.protobuf.ByteString
         getFightDataBytes();
@@ -33101,17 +33101,17 @@ public final class Base {
       }
     }
 
-    // required string fightData = 2;
+    // optional string fightData = 2;
     public static final int FIGHTDATA_FIELD_NUMBER = 2;
     private java.lang.Object fightData_;
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     public boolean hasFightData() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     public java.lang.String getFightData() {
       java.lang.Object ref = fightData_;
@@ -33128,7 +33128,7 @@ public final class Base {
       }
     }
     /**
-     * <code>required string fightData = 2;</code>
+     * <code>optional string fightData = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFightDataBytes() {
@@ -33240,10 +33240,6 @@ public final class Base {
       if (isInitialized != -1) return isInitialized == 1;
 
       if (!hasFightInfo()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasFightData()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -33580,10 +33576,6 @@ public final class Base {
           
           return false;
         }
-        if (!hasFightData()) {
-          
-          return false;
-        }
         if (hasEnemy()) {
           if (!getEnemy().isInitialized()) {
             
@@ -33842,16 +33834,16 @@ public final class Base {
         return this;
       }
 
-      // required string fightData = 2;
+      // optional string fightData = 2;
       private java.lang.Object fightData_ = "";
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public boolean hasFightData() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public java.lang.String getFightData() {
         java.lang.Object ref = fightData_;
@@ -33865,7 +33857,7 @@ public final class Base {
         }
       }
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFightDataBytes() {
@@ -33881,7 +33873,7 @@ public final class Base {
         }
       }
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public Builder setFightData(
           java.lang.String value) {
@@ -33894,7 +33886,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public Builder clearFightData() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -33903,7 +33895,7 @@ public final class Base {
         return this;
       }
       /**
-       * <code>required string fightData = 2;</code>
+       * <code>optional string fightData = 2;</code>
        */
       public Builder setFightDataBytes(
           com.google.protobuf.ByteString value) {
@@ -34412,7 +34404,7 @@ public final class Base {
       "\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 " +
       "\001(\005\"\273\001\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004" +
       " \001(\0132 .com.trans.pixel.protoc.UserInfo\022\021" +
-      "\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \002(\t\022.\n\004" +
+      "\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \001(\t\022.\n\004" +
       "user\030\005 \001(\0132 .com.trans.pixel.protoc.User" +
       "Info\022\014\n\004time\030\006 \001(\t\022\r\n\005score\030\007 \001(\r"
     };
