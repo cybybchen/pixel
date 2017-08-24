@@ -23,6 +23,7 @@ import com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand;
 import com.trans.pixel.protoc.HeroProto.TEAM_TYPE;
 import com.trans.pixel.protoc.LadderProto.RequestFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestGetFightInfoCommand;
+import com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.ResponseFightInfoCommand;
 import com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.UNION_FIGHT_STATUS;
@@ -134,7 +135,9 @@ public class TeamCommandService extends BaseCommandService {
 			ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
 					.newBuilder();
 			
-			builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
+//			builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
+			builder.addAllId(fightInfoService.getSaveFightInfoIds(user));
+			responseBuilder.setFightInfoCommand(builder.build());
 		}
 	}
 
@@ -148,9 +151,25 @@ public class TeamCommandService extends BaseCommandService {
 			for (FightInfo.Builder info : fightInfoService.getFightInfoList(user))
 				builder.addInfo(info);
 		}
+		builder.addAllId(fightInfoService.getSaveFightInfoIds(user));
 		responseBuilder.setFightInfoCommand(builder.build());
 	}
 
+	public void queryFightInfo(RequestQueryFightInfoCommand cmd, Builder responseBuilder, UserBean user) {//查询录像排行榜的录像
+		FightInfo fightinfo = fightInfoService.queryFightInfo(cmd.getId());
+		if (fightinfo == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ErrorConst.FIGHTINFO_IS_NOT_EXIST_ERROR);
+			return;
+		}
+		
+		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
+				.newBuilder();
+		builder.addInfo(fightinfo);
+		responseBuilder.setFightInfoCommand(builder.build());
+	}
+	
 	// public void addUserTeam(RequestAddTeamCommand cmd, Builder
 	// responseBuilder, UserBean user) {
 	// String teamInfo = cmd.getTeamInfo();

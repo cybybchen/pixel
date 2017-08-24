@@ -80,6 +80,7 @@ import com.trans.pixel.protoc.LadderProto.RequestLadderInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderSeasonRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestLadderTaskRewardCommand;
 import com.trans.pixel.protoc.LadderProto.RequestPurchaseLadderTimeCommand;
+import com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand;
 import com.trans.pixel.protoc.LadderProto.RequestReadyAttackLadderCommand;
 import com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand;
 import com.trans.pixel.protoc.LadderProto.RequestSaveFightInfoCommand;
@@ -1633,6 +1634,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestHeroFoodComposeCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		equipCommandService.heroFoodCompose(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestQueryFightInfoCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		teamCommandService.queryFightInfo(cmd, responseBuilder, user);
 		return true;
 	}
 }

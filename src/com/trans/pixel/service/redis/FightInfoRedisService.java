@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -171,6 +172,16 @@ public class FightInfoRedisService extends RedisService {
 		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
 		hput(key, fightinfo.getId() + "", RedisService.formatJson(fightinfo), user.getId());
 		expire(RedisKey.USER_FIGHT_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
+	}
+	
+	public boolean isExistFightInfoKey(UserBean user, int id) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		return hexist(key, "" + id, user.getId());
+	}
+	
+	public Set<String> saveFightInfoKeys(UserBean user) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		return hkeys(key, user.getId());
 	}
 	
 	public void deleteFightInfo(UserBean user, int fightInfoId) {

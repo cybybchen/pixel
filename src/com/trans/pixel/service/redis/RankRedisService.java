@@ -118,6 +118,15 @@ public class RankRedisService extends RedisService{
 		return hget(RedisKey.FIGHTINFO_RANK);
 	}
 	
+	public FightInfo getFightInfo(int id) {
+		String value = hget(RedisKey.FIGHTINFO_RANK, "" + id);
+		FightInfo.Builder builder = FightInfo.newBuilder();
+		if (value != null && RedisService.parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
+	
 	private <T> String buildRankRedisKey(int serverId, T type) {
 		return RedisKey.PREFIX + RedisKey.SERVER_PREFIX + serverId + RedisKey.SPLIT + RedisKey.RANK_PREFIX + type;
 	}

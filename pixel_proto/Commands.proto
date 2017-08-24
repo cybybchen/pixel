@@ -297,6 +297,7 @@ message FightInfo {
 	optional UserInfo user = 5;
 	optional string time = 6;
 	optional uint32 score = 7;
+	optional bool win = 8;
 }
 
 ////////// ShopProto
@@ -2758,8 +2759,14 @@ message RequestFightInfoCommand {
 	required FightInfo info = 1;
 	optional uint32 score = 2;
 }
+
+message RequestQueryFightInfoCommand {
+	required uint32 id = 1;//录像排行榜的id
+}
+
 message ResponseFightInfoCommand {
 	repeated FightInfo info = 1;
+	repeated uint32 id = 2;//已收藏的录像ID
 }
 
 message RequestSaveFightInfoCommand {
@@ -4038,6 +4045,7 @@ message RequestCommand {
 	optional RequestUserTeamCommand userTeamCommand = 270;
 	optional RequestSpecialTalentChangeUseCommand specialTalentChangeUseCommand = 271;
 	optional RequestHeroFoodComposeCommand heroFoodComposeCommand = 272;
+	optional RequestQueryFightInfoCommand queryFightInfoCommand = 273;
 }
 ////////// Commands
 message ErrorCommand {

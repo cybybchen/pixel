@@ -68,6 +68,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand
 import com.trans.pixel.protoc.PVPProto.RequestHelpLevelCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBloodXiazhuCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
+import com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestSubmitRiteCommand;
 import com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
@@ -299,6 +300,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestHelpLevelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBloodXiazhuCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitIconCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestQueryFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitRiteCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestCreateBossRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuySavingBoxCommand cmd, Builder responseBuilder, UserBean user);
@@ -755,6 +757,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasSubmitIconCommand()) {
 			RequestSubmitIconCommand cmd = request.getSubmitIconCommand();
 			if (isFuncAvailable(responseBuilder, "SubmitIconCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasQueryFightInfoCommand()) {
+			RequestQueryFightInfoCommand cmd = request.getQueryFightInfoCommand();
+			if (isFuncAvailable(responseBuilder, "QueryFightInfoCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasSubmitRiteCommand()) {
 			RequestSubmitRiteCommand cmd = request.getSubmitRiteCommand();

@@ -32877,6 +32877,16 @@ public final class Base {
      * <code>optional uint32 score = 7;</code>
      */
     int getScore();
+
+    // optional bool win = 8;
+    /**
+     * <code>optional bool win = 8;</code>
+     */
+    boolean hasWin();
+    /**
+     * <code>optional bool win = 8;</code>
+     */
+    boolean getWin();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.FightInfo}
@@ -32978,6 +32988,11 @@ public final class Base {
             case 56: {
               bitField0_ |= 0x00000040;
               score_ = input.readUInt32();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              win_ = input.readBool();
               break;
             }
           }
@@ -33225,6 +33240,22 @@ public final class Base {
       return score_;
     }
 
+    // optional bool win = 8;
+    public static final int WIN_FIELD_NUMBER = 8;
+    private boolean win_;
+    /**
+     * <code>optional bool win = 8;</code>
+     */
+    public boolean hasWin() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional bool win = 8;</code>
+     */
+    public boolean getWin() {
+      return win_;
+    }
+
     private void initFields() {
       id_ = 0;
       enemy_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
@@ -33233,6 +33264,7 @@ public final class Base {
       user_ = com.trans.pixel.protoc.Base.UserInfo.getDefaultInstance();
       time_ = "";
       score_ = 0;
+      win_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -33283,6 +33315,9 @@ public final class Base {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(7, score_);
       }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBool(8, win_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -33319,6 +33354,10 @@ public final class Base {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(7, score_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(8, win_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -33460,6 +33499,8 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000020);
         score_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        win_ = false;
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -33524,6 +33565,10 @@ public final class Base {
           to_bitField0_ |= 0x00000040;
         }
         result.score_ = score_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.win_ = win_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -33566,6 +33611,9 @@ public final class Base {
         }
         if (other.hasScore()) {
           setScore(other.getScore());
+        }
+        if (other.hasWin()) {
+          setWin(other.getWin());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -34132,6 +34180,39 @@ public final class Base {
         return this;
       }
 
+      // optional bool win = 8;
+      private boolean win_ ;
+      /**
+       * <code>optional bool win = 8;</code>
+       */
+      public boolean hasWin() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional bool win = 8;</code>
+       */
+      public boolean getWin() {
+        return win_;
+      }
+      /**
+       * <code>optional bool win = 8;</code>
+       */
+      public Builder setWin(boolean value) {
+        bitField0_ |= 0x00000080;
+        win_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool win = 8;</code>
+       */
+      public Builder clearWin() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        win_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.FightInfo)
     }
 
@@ -34402,11 +34483,12 @@ public final class Base {
       "\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n\004name\030\003 " +
       "\001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n" +
       "\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005count\030\013 " +
-      "\001(\005\"\273\001\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004" +
+      "\001(\005\"\310\001\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004" +
       " \001(\0132 .com.trans.pixel.protoc.UserInfo\022\021" +
       "\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002 \001(\t\022.\n\004" +
       "user\030\005 \001(\0132 .com.trans.pixel.protoc.User" +
-      "Info\022\014\n\004time\030\006 \001(\t\022\r\n\005score\030\007 \001(\r"
+      "Info\022\014\n\004time\030\006 \001(\t\022\r\n\005score\030\007 \001(\r\022\013\n\003win",
+      "\030\010 \001(\010"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34562,7 +34644,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,
-              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", "User", "Time", "Score", });
+              new java.lang.String[] { "Id", "Enemy", "FightInfo", "FightData", "User", "Time", "Score", "Win", });
           return null;
         }
       };

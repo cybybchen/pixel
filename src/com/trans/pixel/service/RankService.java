@@ -180,6 +180,7 @@ public class RankService {
 		for (String fight : fights.values()) {
 			FightInfo.Builder builder = FightInfo.newBuilder();
 			if (RedisService.parseJson(fight, builder)) {
+				builder.clearFightData();
 				builder.setScore(builder.getScore() - DateUtil.intervalHours(DateUtil.getDate(), DateUtil.getDate(builder.getTime())) / 6 * 3);
 				fightList.add(builder.build());
 			}
