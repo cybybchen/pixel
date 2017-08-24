@@ -2756,12 +2756,13 @@ message RequestFightInfoCommand {
 	optional uint32 score = 2;
 }
 
+enum FIGHTINFO_TYPE {
+	TYPE_SELF = 0;
+	TYPE_SAVE = 1;
+	TYPE_RANK = 2;
+}
+
 message RequestQueryFightInfoCommand {
-	enum FIGHTINFO_TYPE {
-		TYPE_SELF = 0;
-		TYPE_SAVE = 1;
-		TYPE_RANK = 2;
-	}
 	required FIGHTINFO_TYPE type = 1;//查询录像
 	required uint32 id = 2;
 }
@@ -2775,6 +2776,7 @@ message RequestSaveFightInfoCommand {
 	optional FightInfo fight = 1;
 	optional bool isDelete = 2;
 	optional uint32 fightinfoId = 3;
+	optional FIGHTINFO_TYPE type = 4;
 }
 
 message RequestGetLadderRankListCommand {

@@ -16,7 +16,7 @@ import com.trans.pixel.model.mapper.UserFightInfoMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFightInfoBean;
 import com.trans.pixel.protoc.Base.FightInfo;
-import com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE;
+import com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE;
 import com.trans.pixel.service.redis.FightInfoRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -47,16 +47,33 @@ public class FightInfoService {
 		return infos;
 	}
 	
-	public ResultConst save(UserBean user, FightInfo fightinfo) {
+	private FightInfo getFightInfoSelf(UserBean user, int id) {
+		for (FightInfo.Builder info : getFightInfoList(user)) {
+			if (info.getId() == id)
+				return info.build();
+		}
+		return null;
+	}
+	
+	public ResultConst save(UserBean user, FightInfo fightinfo, int id, FIGHTINFO_TYPE type) {
 		if (redis.hlenFightInfo(user) >= 10) {
 			return ErrorConst.FIGHTINFO_IS_LIMIT_ERROR;
 		}
-		if (redis.isExistFightInfoKey(user, fightinfo.getId()))
+		if (redis.isExistFightInfoKey(user, id))
 			return ErrorConst.FIGHTINFO_IS_EXIST_ERROR;
 //		FightInfo.Builder builder = FightInfo.newBuilder(fightinfo);
 //		builder.setUser(user.buildShort());
 //		if (!builder.hasId() || builder.getId() <= 0)
 //			builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
+		
+		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK)) {
+			fightinfo = rankRedisService.getFightInfo(id);
+		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
+			fightinfo = getFightInfoSelf(user, id);
+		}
+		
+		if (fightinfo == null)
+			return ErrorConst.FIGHTINFO_IS_NOT_EXIST_ERROR;
 		
 		redis.saveFightInfo(user, fightinfo);
 		mapper.saveFightInfo(new UserFightInfoBean(user.getId(), fightinfo));
@@ -99,11 +116,7 @@ public class FightInfoService {
 		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK))
 			return rankRedisService.getFightInfo(id);
 		else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
-			for (FightInfo.Builder info : getFightInfoList(user)) {
-				if (info.getId() == id)
-					return info.build();
-			}
-			return null;
+			return getFightInfoSelf(user, id);
 		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SAVE)) {
 			return redis.getSaveFightInfo(user, id);
 		}

@@ -121,7 +121,7 @@ public class TeamCommandService extends BaseCommandService {
 		if (cmd.hasIsDelete() && cmd.getIsDelete()) {
 			fightInfoService.delete(user, cmd.getFightinfoId());
 		} else {
-			ResultConst ret = fightInfoService.save(user, cmd.getFight());
+			ResultConst ret = fightInfoService.save(user, cmd.getFight(), cmd.getFightinfoId(), cmd.getType());
 			if (ret instanceof ErrorConst) {
 				logService.sendErrorLog(user.getId(), user.getServerId(),
 						cmd.getClass(), RedisService.formatJson(cmd),
