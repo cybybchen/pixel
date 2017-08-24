@@ -278,7 +278,7 @@ public class EquipService {
 				if (!costService.canCost(user, sm.getId(), sm.getCount() * count))
 					return ErrorConst.NOT_ENOUGH_CHIP;
 				
-				if (!costService.canCost(user, sm.getCost().getItemid(), sm.getCost().getCount()))
+				if (!costService.canCost(user, sm.getCost().getItemid(), sm.getCost().getCount() * count))
 					return ErrorConst.NOT_ENOUGH_EXP;
 				
 				rewards.addLoot(RewardBean.initRewardInfo(itemId, count));
