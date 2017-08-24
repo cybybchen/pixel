@@ -576,7 +576,7 @@ public class ManagerService extends RedisService{
 				result.put("success", "redis数据已删除");
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-RedisData", value);
 		}
-		if(req.containsKey("RedisData") && (gmaccountBean.getMaster() == 1 || req.getString("RedisData").contains("config"))){
+		if(req.containsKey("RedisData") && gmaccountBean.getMaster() == 1){
 			Set<String> keys = keys(req.getString("RedisData"), 0);
 			keys.addAll(keys(req.getString("RedisData"), 1));
 			keys.addAll(keys(req.getString("RedisData"), 100000));

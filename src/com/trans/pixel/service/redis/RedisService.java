@@ -1175,12 +1175,12 @@ public class RedisService {
 	public Set<String> keys(final String pattern) {
 		return keys(pattern, 0);
 	}
-	public Set<String> keys(final String pattern, int userId) {
+	public Set<String> keys(final String pattern, final int userId) {
 		Set<String> keys0 = getRedis(userId).execute(new RedisCallback<Set<String>>() {
 			@Override
 			public Set<String> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
-				return redisTemplate.keys(pattern);
+				return getRedis(userId).keys(pattern);
 			}
 		});
 		return keys0;
