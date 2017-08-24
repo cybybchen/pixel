@@ -107,11 +107,11 @@ public class TeamCommandService extends BaseCommandService {
 			builder.setEnemy(userinfo);
 		}
 		builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
+		builder.setTime(DateUtil.getCurrentDateString());
 		fightInfoService.setFightInfo(RedisService.formatJson(builder.build()),
 				user);
 		if (cmd.hasScore() && cmd.getScore() > 0) {
 			builder.setUser(user.buildShort());
-			builder.setTime(DateUtil.getCurrentDateString());
 			rankService.addFightInfoRank(builder.build());
 		}
 	}
