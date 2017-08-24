@@ -911,6 +911,8 @@ public class ActivityService {
 		 */
 //		if (star == HeroConst.ACTIVITY_KAIFU_HERO_STAR)
 //			sendKaifuScore(user, ActivityConst.KAIFU_DAY_7);
+		
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_HERO_LEVELUP_STAR_VALUE, star, false);
 	}
 	
 	public void aidActivity(UserBean user, int type) {//0:征战天下 1:level
