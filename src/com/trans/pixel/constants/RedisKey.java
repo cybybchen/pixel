@@ -336,6 +336,8 @@ public class RedisKey {
 	//rank value
 	public static final String RANK_VALUE_CONFIG = PREFIX + CONFIG_PREFIX + "rankvalue";
 	
+	public static final String STAR_MATERIAL_CONFIG = PREFIX + CONFIG_PREFIX + "starmaterial";
+	
 	//hero fetters
 	public static final String HERO_FETTERS_CONFIG = PREFIX + CONFIG_PREFIX + "hero_fetters";
 	

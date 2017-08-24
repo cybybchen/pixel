@@ -18,6 +18,8 @@ import com.trans.pixel.protoc.HeroProto.HeroRareLevelup;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupList;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.protoc.HeroProto.HerolootList;
+import com.trans.pixel.protoc.HeroProto.StarMaterial;
+import com.trans.pixel.protoc.HeroProto.StarMaterialList;
 import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.protoc.HeroProto.UpgradeList;
 import com.trans.pixel.service.cache.CacheService;
@@ -32,6 +34,7 @@ public class HeroRedisService extends CacheService {
 	private static final String HERO_FILE_NAME = "ld_hero.xml";
 	private static final String UPGRADE_FILE_NAME = "ld_upgrade.xml";
 	private static final String RANKVALUE_FILE_NAME = "ld_rankvalue.xml";
+	private static final String STARMATERIAL_FILE_NAME = "ld_starmaterial.xml";
 	
 	public HeroRedisService() {
 		buildHerochoiceConfig();
@@ -41,6 +44,7 @@ public class HeroRedisService extends CacheService {
 		buildHeroConfig();
 		buildUpgradeConfig();
 		buildRankvalueConfig();
+		buildStarMaterialConfig();
 	}
 	
 	//hero choice
@@ -233,6 +237,34 @@ public class HeroRedisService extends CacheService {
 		Map<Integer, Rankvalue> map = new HashMap<Integer, Rankvalue>();
 		for(Rankvalue.Builder herorare : builder.getRankBuilderList()){
 			map.put(herorare.getRank(), herorare.build());
+		}
+		hputcacheAll(RedisKey.RANK_VALUE_CONFIG, map);
+		
+		return map;
+	}
+	
+	//starmaterial
+	public StarMaterial getStarMaterial(int id) {
+		Map<Integer, StarMaterial> map = hgetcache(RedisKey.STAR_MATERIAL_CONFIG);
+		return map.get(id);
+	}
+	
+	public Map<Integer, StarMaterial> getStarMaterialConfig() {
+		Map<Integer, StarMaterial> map = hgetcache(RedisKey.STAR_MATERIAL_CONFIG);
+		return map;
+	}
+	
+	private Map<Integer, StarMaterial> buildStarMaterialConfig(){
+		String xml = RedisService.ReadConfig(STARMATERIAL_FILE_NAME);
+		StarMaterialList.Builder builder = StarMaterialList.newBuilder();
+		if(!RedisService.parseXml(xml, builder)){
+			logger.warn("cannot build " + STARMATERIAL_FILE_NAME);
+			return null;
+		}
+		
+		Map<Integer, StarMaterial> map = new HashMap<Integer, StarMaterial>();
+		for(StarMaterial.Builder config : builder.getDataBuilderList()){
+			map.put(config.getId(), config.build());
 		}
 		hputcacheAll(RedisKey.RANK_VALUE_CONFIG, map);
 		

@@ -20,10 +20,8 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
@@ -33,6 +31,7 @@ import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChaijieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand;
+import com.trans.pixel.protoc.HeroProto.RequestFenjieHeroCommand.FENJIE_HERO_TYPE;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroSpUpCommand;
@@ -41,7 +40,7 @@ import com.trans.pixel.protoc.HeroProto.RequestResetHeroSkillCommand;
 import com.trans.pixel.protoc.HeroProto.RequestSubmitComposeSkillCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand;
-import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
+import com.trans.pixel.protoc.HeroProto.StarMaterial;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.HeroLevelUpService;
@@ -135,7 +134,7 @@ public class HeroCommandService extends BaseCommandService {
 		HeroInfoBean heroInfo = userHeroService.selectUserHero(userId, infoId);
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		if (heroInfo != null) {
-			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, equipList);
+			result = heroLevelUpService.levelUpResult(user, heroInfo, levelUpType, skillId, costInfoIds, equipList, cmd.getCostMaterial());
 			if (result instanceof SuccessConst)
 				skillService.unlockHeroSkill(heroId, heroInfo);
 		}
@@ -191,6 +190,10 @@ public class HeroCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		if (equipList.size() > 0)
 			pushCommandService.pushUserEquipListCommand(responseBuilder, user, equipList);
+		
+		if (cmd.hasCostMaterial() && cmd.getCostMaterial() != null) {
+			pushCommandService.pushUserDataByRewardId(responseBuilder, user, cmd.getCostMaterial().getItemid(), false);
+		}
 	}
 	
 	//not useful
@@ -359,14 +362,26 @@ public class HeroCommandService extends BaseCommandService {
 						return;
 					}
 					Hero heroconf = heroService.getHero(heroInfo.getHeroId());
-					Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
-					RewardInfo.Builder reward = rewardmap.get(fenjie.getLootlist().getItemid());
-					if(reward == null){
-						reward = RewardInfo.newBuilder();
-						reward.setItemid(fenjie.getLootlist().getItemid());
-						rewardmap.put(fenjie.getLootlist().getItemid(), reward);
+					
+					if (cmd.hasType() && cmd.getType().equals(FENJIE_HERO_TYPE.TYPE_FOODHERO)) {
+						StarMaterial sm = heroService.getStarMaterial(heroInfo.getStarLevel(), heroconf.getPosition());
+						RewardInfo.Builder reward = rewardmap.get(sm.getId());
+						if(reward == null){
+							reward = RewardInfo.newBuilder();
+							reward.setItemid(sm.getId());
+							rewardmap.put(sm.getId(), reward);
+						}
+						reward.setCount(reward.getCount() + 1);
+					} else {
+						Fenjie fenjie = fenjieRedisService.getFenjie(heroconf.getQuality());
+						RewardInfo.Builder reward = rewardmap.get(fenjie.getLootlist().getItemid());
+						if(reward == null){
+							reward = RewardInfo.newBuilder();
+							reward.setItemid(fenjie.getLootlist().getItemid());
+							rewardmap.put(fenjie.getLootlist().getItemid(), reward);
+						}
+						reward.setCount(reward.getCount() + fenjie.getLootlist().getCount());
 					}
-					reward.setCount(reward.getCount() + fenjie.getLootlist().getCount());
 //					if (heroInfo.getRank() > 0) {
 //						rewardList = rewardService.mergeReward(rewardList, heroService.getHeroRareEquip(heroInfo));
 //					}

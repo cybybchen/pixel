@@ -18,11 +18,13 @@ import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.SkillInfoBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.ExtraProto.Star;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupEquip;
 import com.trans.pixel.protoc.HeroProto.HeroRareLevelupRank;
+import com.trans.pixel.protoc.HeroProto.StarMaterial;
 import com.trans.pixel.protoc.HeroProto.UserTeam.EquipRecord;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.StarRedisService;
@@ -72,14 +74,14 @@ public class HeroLevelUpService {
 	@Resource
 	private UserTeamService userTeamService;
 	
-	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds, List<UserEquipBean> equipList) {
+	public ResultConst levelUpResult(UserBean user, HeroInfoBean heroInfo, int levelUpType, int skillId, List<Long> costInfoIds, List<UserEquipBean> equipList, RewardInfo costMaterial) {
 		ResultConst result = ErrorConst.HERO_NOT_EXIST;
 		switch (levelUpType) {
 			case TYPE_HEROLEVEL:
 				result = levelUpHero(user, heroInfo);
 				break;
 			case TYPE_STARLEVEL:
-				result = levelUpStar(user, heroInfo, costInfoIds);
+				result = levelUpStar(user, heroInfo, costInfoIds, costMaterial);
 				break;
 			case TYPE_RARELEVEL:
 				result = levelUpRare(user, heroInfo, equipList);
@@ -203,15 +205,26 @@ public class HeroLevelUpService {
 		return SuccessConst.HERO_LEVELUP_SUCCESS;
 	}
 	
-	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Long> costInfoIds) {
-		if (heroInfo.getStarLevel() == 7)
+	private ResultConst levelUpStar(UserBean user, HeroInfoBean heroInfo, List<Long> costInfoIds, RewardInfo costMaterial) {
+		if (heroInfo.getStarLevel() >= 7)
 			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
 		Star star = starService.getStar(heroInfo.getStarLevel());
 		if (heroInfo.getLevel() < star.getMaxlevel())
 			return ErrorConst.HERO_STAR_NOT_LEVELUP;
 		
+		Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 		int addValue = 0;
+		if (costMaterial != null && costMaterial.getItemid() > 0 && costMaterial.getCount() > 0) {
+			StarMaterial starMaterial = heroService.getStarMaterial(costMaterial.getItemid());
+			if (starMaterial == null || starMaterial.getStar() != heroInfo.getStarLevel() || starMaterial.getPosition() != heroconfig.getPosition())
+				return ErrorConst.HERO_STAR_NOT_LEVELUP;
+			
+			if (!costService.canCost(user, costMaterial.getItemid(), costMaterial.getCount()))
+				return ErrorConst.HERO_STAR_NOT_LEVELUP;
+			
+			addValue += costMaterial.getCount();
+		}
 		for (long infoId : costInfoIds) {
 			HeroInfoBean hero = userHeroService.selectUserHero(user.getId(), infoId);
 			if (hero != null) {
@@ -228,10 +241,15 @@ public class HeroLevelUpService {
 
 		heroInfo.setValue(heroInfo.getValue() + addValue);
 		
-		if (star != null && heroInfo.getValue() >= star.getCount() && heroInfo.getStarLevel() < 7) {
+		if (heroInfo.getValue() != star.getCount())
+			return ErrorConst.HERO_STAR_NOT_LEVELUP;
+		
+		if (star != null && heroInfo.getStarLevel() < 7) {
 			heroInfo.setValue(0);
 			heroInfo.setStarLevel(heroInfo.getStarLevel() + 1);
 		}
+		
+		costService.cost(user, costMaterial.getItemid(), costMaterial.getCount());
 		
 		/**
 		 * 更新图鉴
@@ -246,8 +264,7 @@ public class HeroLevelUpService {
 		/**
 		 * send starup log
 		 */
-		Hero hero = heroService.getHero(heroInfo.getHeroId());
-		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, hero.getQuality(), hero.getPosition());
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, heroconfig.getQuality(), heroconfig.getPosition());
 		
 		return SuccessConst.STAR_LEVELUP_SUCCESS;
 	}

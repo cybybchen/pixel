@@ -17,6 +17,7 @@ import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.HeroFetter;
 import com.trans.pixel.protoc.HeroProto.HeroFetters;
 import com.trans.pixel.protoc.HeroProto.HeroFettersOrder;
+import com.trans.pixel.protoc.HeroProto.StarMaterial;
 import com.trans.pixel.protoc.HeroProto.Upgrade;
 import com.trans.pixel.service.redis.HeroRedisService;
 
@@ -121,4 +122,18 @@ public class HeroService {
 //		
 //		return rewardList;
 //	}
+	
+	public StarMaterial getStarMaterial(int star, int position) {
+		Map<Integer, StarMaterial> map = heroRedisService.getStarMaterialConfig();
+		for (StarMaterial sm : map.values()) {
+			if (sm.getStar() == star && sm.getPosition() == position)
+				return sm;
+		}
+		
+		return null;
+	}
+	
+	public StarMaterial getStarMaterial(int id) {
+		return heroRedisService.getStarMaterial(id);
+	}
 }

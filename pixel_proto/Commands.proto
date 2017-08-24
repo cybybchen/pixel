@@ -641,6 +641,16 @@ message FenjieHeroInfo {
 	required int64 infoId = 2;
 }
 
+message StarMaterial {
+	required uint32 id = 1;
+	required uint32 star = 2;
+	required uint32 position = 3;
+}
+
+message StarMaterialList {
+	repeated StarMaterial data = 1;
+}
+
 message HeroRareLevelupList {
 	repeated HeroRareLevelup id = 1;
 }
@@ -908,6 +918,7 @@ message RequestHeroLevelUpCommand {
 	required int64 infoId = 3;
 	optional int32 skillId = 4;
 	repeated int64 costInfoId = 5;
+	optional RewardInfo costMaterial = 6;//升星材料,优先消耗
 }
 
 message ResponseHeroResultCommand {
@@ -1001,6 +1012,11 @@ message ResponseGetUserHeroCommand {
 
 message RequestFenjieHeroCommand {
 	repeated FenjieHeroInfo fenjieHero = 1;
+	enum FENJIE_HERO_TYPE {
+		TYPE_NULL = 0;
+		TYPE_FOODHERO = 1;
+	}
+	optional FENJIE_HERO_TYPE type = 2;
 }
 
 message RequestChaijieHeroCommand {
