@@ -53,13 +53,13 @@ public class FightInfoService {
 		}
 		if (redis.isExistFightInfoKey(user, fightinfo.getId()))
 			return ErrorConst.FIGHTINFO_IS_EXIST_ERROR;
-		FightInfo.Builder builder = FightInfo.newBuilder(fightinfo);
-		builder.setUser(user.buildShort());
+//		FightInfo.Builder builder = FightInfo.newBuilder(fightinfo);
+//		builder.setUser(user.buildShort());
 //		if (!builder.hasId() || builder.getId() <= 0)
 //			builder.setId((int) ((System.currentTimeMillis() + 12345) % 10000000));
 		
-		redis.saveFightInfo(user, builder.build());
-		mapper.saveFightInfo(new UserFightInfoBean(builder.build()));
+		redis.saveFightInfo(user, fightinfo);
+		mapper.saveFightInfo(new UserFightInfoBean(user.getId(), fightinfo));
 		
 		return SuccessConst.SAVE_SUCCESS;
 	}

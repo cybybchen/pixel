@@ -11,10 +11,10 @@ public class UserFightInfoBean {
 	public UserFightInfoBean() {
 		
 	}
-	public UserFightInfoBean(FightInfo fightInfo) {
+	public UserFightInfoBean(long userId, FightInfo fightInfo) {
 		setFightinfoId(fightInfo.getId());
 		setFightinfo(RedisService.formatJson(fightInfo));
-		setUserId(fightInfo.getUser().getId());
+		setUserId(userId);
 	}
 	public FightInfo build() {
 		FightInfo.Builder builder = FightInfo.newBuilder();
