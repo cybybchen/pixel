@@ -285,7 +285,7 @@ public class EquipService {
 				
 				costIds.add(sm.getId());
 				costService.cost(user, sm.getId(), sm.getCount() * count);
-				costService.cost(user, sm.getCost().getItemid(), sm.getCost().getCount());
+				costService.cost(user, sm.getCost().getItemid(), sm.getCost().getCount() * count);
 				
 				return SuccessConst.PROP_COMPOSE_SUCCESS;
 			}
