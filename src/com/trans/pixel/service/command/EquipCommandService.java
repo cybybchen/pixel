@@ -189,7 +189,7 @@ public class EquipCommandService extends BaseCommandService {
 			return;
 		}
 		
-		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+		handleRewards(responseBuilder, user, rewards);
 		if (!costIds.isEmpty())
 			pushCommandService.pushUserDataByRewardId(responseBuilder, user, costIds.get(0), false);
 	}

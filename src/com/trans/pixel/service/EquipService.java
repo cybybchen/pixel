@@ -274,26 +274,23 @@ public class EquipService {
 	public ResultConst heroFoodCompose(UserBean user, int itemId, int count, List<Integer> costIds, MultiReward.Builder rewards) {
 		Map<Integer, StarMaterial> map = heroService.getStarMaterialMap();
 		for (StarMaterial sm : map.values()) {
-			if (sm.getAim().getAim() == itemId) {
-				if (!sm.hasAim() || sm.getAim() == null)
-					return ErrorConst.HERO_FOOD_IS_LIMIT_ERROR;
-
+			if (sm.getAim() == itemId) {
 				if (!costService.canCost(user, sm.getId(), sm.getCount() * count))
 					return ErrorConst.NOT_ENOUGH_CHIP;
 				
-				if (!costService.canCost(user, sm.getAim().getCost().getItemid(), sm.getAim().getCost().getCount()))
+				if (!costService.canCost(user, sm.getCost().getItemid(), sm.getCost().getCount()))
 					return ErrorConst.NOT_ENOUGH_EXP;
 				
 				rewards.addLoot(RewardBean.initRewardInfo(itemId, count));
 				
-				costIds.add(sm.getAim().getAim());
+				costIds.add(sm.getId());
 				costService.cost(user, sm.getId(), sm.getCount() * count);
-				costService.cost(user, sm.getAim().getCost().getItemid(), sm.getAim().getCost().getCount());
+				costService.cost(user, sm.getCost().getItemid(), sm.getCost().getCount());
 				
 				return SuccessConst.PROP_COMPOSE_SUCCESS;
 			}
 		}
 		
-		return ErrorConst.NOT_ENOUGH_CHIP;
+		return ErrorConst.HERO_FOOD_IS_LIMIT_ERROR;
 	}
 }

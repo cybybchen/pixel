@@ -647,12 +647,8 @@ message StarMaterial {
 	required uint32 star = 2;
 	required uint32 position = 3;
 	optional uint32 count = 4;
-	optional StarAim aim = 5;
-}
-
-message StarAim {
-	optional uint32 aim = 1;
-	optional RewardInfo cost = 2;
+	optional uint32 aim = 5;
+	optional RewardInfo cost = 6;
 }
 
 message StarMaterialList {
