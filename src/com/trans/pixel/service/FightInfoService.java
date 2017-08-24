@@ -84,8 +84,20 @@ public class FightInfoService {
 	public List<Integer> getSaveFightInfoIds(UserBean user) {
 		List<Integer> idList = new ArrayList<Integer>();
 		Set<String> ids = redis.saveFightInfoKeys(user);
-		for (String id : ids) {
-			idList.add(TypeTranslatedUtil.stringToInt(id));
+		if (ids == null || ids.isEmpty()) {
+			idList = new ArrayList<Integer>();
+			List<UserFightInfoBean> list = mapper.getFightInfos(user.getId());
+			if (list != null && !list.isEmpty()) {
+				for (UserFightInfoBean bean : list) {
+					FightInfo fight = bean.build();
+					redis.saveFightInfo(user, fight);
+					idList.add(fight.getId());
+				}
+			}
+		} else {
+			for (String id : ids) {
+				idList.add(TypeTranslatedUtil.stringToInt(id));
+			}
 		}
 		
 		return idList;
