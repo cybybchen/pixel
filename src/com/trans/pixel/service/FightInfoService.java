@@ -16,6 +16,7 @@ import com.trans.pixel.model.mapper.UserFightInfoMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserFightInfoBean;
 import com.trans.pixel.protoc.Base.FightInfo;
+import com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE;
 import com.trans.pixel.service.redis.FightInfoRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.utils.TypeTranslatedUtil;
@@ -94,7 +95,19 @@ public class FightInfoService {
 		return infos;
 	}
 	
-	public FightInfo queryFightInfo(int id) {
-		return rankRedisService.getFightInfo(id);
+	public FightInfo queryFightInfo(UserBean user, FIGHTINFO_TYPE type, int id) {
+		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK))
+			return rankRedisService.getFightInfo(id);
+		else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
+			for (FightInfo.Builder info : getFightInfoList(user)) {
+				if (info.getId() == id)
+					return info.build();
+			}
+			return null;
+		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SAVE)) {
+			return redis.getSaveFightInfo(user, id);
+		}
+		
+		return null;
 	}
 }

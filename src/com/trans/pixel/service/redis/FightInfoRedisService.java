@@ -207,4 +207,14 @@ public class FightInfoRedisService extends RedisService {
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 		return list;
 	}
+	
+	public FightInfo getSaveFightInfo(UserBean user, int id) {
+		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
+		String value = hget(key, "" + id);
+		FightInfo.Builder builder = FightInfo.newBuilder();
+		if (value != null && RedisService.parseJson(value, builder))
+			return builder.build();
+		
+		return null;
+	}
 }

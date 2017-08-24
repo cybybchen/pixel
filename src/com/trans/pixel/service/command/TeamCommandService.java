@@ -146,17 +146,23 @@ public class TeamCommandService extends BaseCommandService {
 		ResponseFightInfoCommand.Builder builder = ResponseFightInfoCommand
 				.newBuilder();
 		if (cmd.hasIsSave() && cmd.getIsSave()) {
-			builder.addAllInfo(fightInfoService.getSaveFightInfoList(user));
+			for (FightInfo info : fightInfoService.getSaveFightInfoList(user)) {
+				FightInfo.Builder infoBuilder = FightInfo.newBuilder(info);
+				infoBuilder.clearFightData();
+				builder.addInfo(infoBuilder.build());
+			}
 		} else {
-			for (FightInfo.Builder info : fightInfoService.getFightInfoList(user))
+			for (FightInfo.Builder info : fightInfoService.getFightInfoList(user)) {
+				info.clearFightData();
 				builder.addInfo(info);
+			}
 		}
 		builder.addAllId(fightInfoService.getSaveFightInfoIds(user));
 		responseBuilder.setFightInfoCommand(builder.build());
 	}
 
 	public void queryFightInfo(RequestQueryFightInfoCommand cmd, Builder responseBuilder, UserBean user) {//查询录像排行榜的录像
-		FightInfo fightinfo = fightInfoService.queryFightInfo(cmd.getId());
+		FightInfo fightinfo = fightInfoService.queryFightInfo(user, cmd.getType(), cmd.getId());
 		if (fightinfo == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(),
 					cmd.getClass(), RedisService.formatJson(cmd),

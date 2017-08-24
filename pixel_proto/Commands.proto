@@ -2757,7 +2757,13 @@ message RequestFightInfoCommand {
 }
 
 message RequestQueryFightInfoCommand {
-	required uint32 id = 1;//录像排行榜的id
+	enum FIGHTINFO_TYPE {
+		TYPE_SELF = 0;
+		TYPE_SAVE = 1;
+		TYPE_RANK = 2;
+	}
+	required FIGHTINFO_TYPE type = 1;//查询录像
+	required uint32 id = 2;
 }
 
 message ResponseFightInfoCommand {

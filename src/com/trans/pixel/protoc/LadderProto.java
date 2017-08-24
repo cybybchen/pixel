@@ -22615,21 +22615,31 @@ public final class LadderProto {
   public interface RequestQueryFightInfoCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 id = 1;
+    // required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
      *
      * <pre>
-     *录像排行榜的id
+     *查询录像
      * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
+     *
+     * <pre>
+     *查询录像
+     * </pre>
+     */
+    com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE getType();
+
+    // required uint32 id = 2;
+    /**
+     * <code>required uint32 id = 2;</code>
      */
     boolean hasId();
     /**
-     * <code>required uint32 id = 1;</code>
-     *
-     * <pre>
-     *录像排行榜的id
-     * </pre>
+     * <code>required uint32 id = 2;</code>
      */
     int getId();
   }
@@ -22685,7 +22695,18 @@ public final class LadderProto {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+              int rawValue = input.readEnum();
+              com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE value = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = value;
+              }
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
               id_ = input.readUInt32();
               break;
             }
@@ -22728,32 +22749,140 @@ public final class LadderProto {
       return PARSER;
     }
 
-    private int bitField0_;
-    // required uint32 id = 1;
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
     /**
-     * <code>required uint32 id = 1;</code>
+     * Protobuf enum {@code com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE}
+     */
+    public enum FIGHTINFO_TYPE
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>TYPE_SELF = 0;</code>
+       */
+      TYPE_SELF(0, 0),
+      /**
+       * <code>TYPE_SAVE = 1;</code>
+       */
+      TYPE_SAVE(1, 1),
+      /**
+       * <code>TYPE_RANK = 2;</code>
+       */
+      TYPE_RANK(2, 2),
+      ;
+
+      /**
+       * <code>TYPE_SELF = 0;</code>
+       */
+      public static final int TYPE_SELF_VALUE = 0;
+      /**
+       * <code>TYPE_SAVE = 1;</code>
+       */
+      public static final int TYPE_SAVE_VALUE = 1;
+      /**
+       * <code>TYPE_RANK = 2;</code>
+       */
+      public static final int TYPE_RANK_VALUE = 2;
+
+
+      public final int getNumber() { return value; }
+
+      public static FIGHTINFO_TYPE valueOf(int value) {
+        switch (value) {
+          case 0: return TYPE_SELF;
+          case 1: return TYPE_SAVE;
+          case 2: return TYPE_RANK;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>() {
+              public FIGHTINFO_TYPE findValueByNumber(int number) {
+                return FIGHTINFO_TYPE.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final FIGHTINFO_TYPE[] VALUES = values();
+
+      public static FIGHTINFO_TYPE valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int index;
+      private final int value;
+
+      private FIGHTINFO_TYPE(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE)
+    }
+
+    private int bitField0_;
+    // required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type_;
+    /**
+     * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
      *
      * <pre>
-     *录像排行榜的id
+     *查询录像
      * </pre>
      */
-    public boolean hasId() {
+    public boolean hasType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 id = 1;</code>
+     * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
      *
      * <pre>
-     *录像排行榜的id
+     *查询录像
      * </pre>
+     */
+    public com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE getType() {
+      return type_;
+    }
+
+    // required uint32 id = 2;
+    public static final int ID_FIELD_NUMBER = 2;
+    private int id_;
+    /**
+     * <code>required uint32 id = 2;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 id = 2;</code>
      */
     public int getId() {
       return id_;
     }
 
     private void initFields() {
+      type_ = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE.TYPE_SELF;
       id_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -22761,6 +22890,10 @@ public final class LadderProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasId()) {
         memoizedIsInitialized = 0;
         return false;
@@ -22773,7 +22906,10 @@ public final class LadderProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, id_);
+        output.writeEnum(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, id_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -22786,7 +22922,11 @@ public final class LadderProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, id_);
+          .computeEnumSize(1, type_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, id_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -22904,8 +23044,10 @@ public final class LadderProto {
 
       public Builder clear() {
         super.clear();
-        id_ = 0;
+        type_ = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE.TYPE_SELF;
         bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -22937,6 +23079,10 @@ public final class LadderProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.id_ = id_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -22954,6 +23100,9 @@ public final class LadderProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand other) {
         if (other == com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
         if (other.hasId()) {
           setId(other.getId());
         }
@@ -22962,6 +23111,10 @@ public final class LadderProto {
       }
 
       public final boolean isInitialized() {
+        if (!hasType()) {
+          
+          return false;
+        }
         if (!hasId()) {
           
           return false;
@@ -22988,50 +23141,86 @@ public final class LadderProto {
       }
       private int bitField0_;
 
-      // required uint32 id = 1;
-      private int id_ ;
+      // required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;
+      private com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type_ = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE.TYPE_SELF;
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
        *
        * <pre>
-       *录像排行榜的id
+       *查询录像
        * </pre>
        */
-      public boolean hasId() {
+      public boolean hasType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 id = 1;</code>
+       * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
        *
        * <pre>
-       *录像排行榜的id
+       *查询录像
        * </pre>
+       */
+      public com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE getType() {
+        return type_;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
+       *
+       * <pre>
+       *查询录像
+       * </pre>
+       */
+      public Builder setType(com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .com.trans.pixel.protoc.RequestQueryFightInfoCommand.FIGHTINFO_TYPE type = 1;</code>
+       *
+       * <pre>
+       *查询录像
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.FIGHTINFO_TYPE.TYPE_SELF;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 id = 2;
+      private int id_ ;
+      /**
+       * <code>required uint32 id = 2;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 id = 2;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>required uint32 id = 1;</code>
-       *
-       * <pre>
-       *录像排行榜的id
-       * </pre>
+       * <code>required uint32 id = 2;</code>
        */
       public Builder setId(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 id = 1;</code>
-       *
-       * <pre>
-       *录像排行榜的id
-       * </pre>
+       * <code>required uint32 id = 2;</code>
        */
       public Builder clearId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         id_ = 0;
         onChanged();
         return this;
@@ -29683,29 +29872,33 @@ public final class LadderProto {
       "oc.UserLadder\",\n\032RequestGetFightInfoComm" +
       "and\022\016\n\006isSave\030\001 \001(\010\"Y\n\027RequestFightInfoC" +
       "ommand\022/\n\004info\030\001 \002(\0132!.com.trans.pixel.p" +
-      "rotoc.FightInfo\022\r\n\005score\030\002 \001(\r\"*\n\034Reques",
-      "tQueryFightInfoCommand\022\n\n\002id\030\001 \002(\r\"W\n\030Re" +
-      "sponseFightInfoCommand\022/\n\004info\030\001 \003(\0132!.c" +
-      "om.trans.pixel.protoc.FightInfo\022\n\n\002id\030\002 " +
-      "\003(\r\"v\n\033RequestSaveFightInfoCommand\0220\n\005fi" +
-      "ght\030\001 \001(\0132!.com.trans.pixel.protoc.Fight" +
-      "Info\022\020\n\010isDelete\030\002 \001(\010\022\023\n\013fightinfoId\030\003 " +
-      "\001(\r\"!\n\037RequestGetLadderRankListCommand\"%" +
-      "\n#RequestGetUserLadderRankListCommand\"V\n" +
-      " ResponseGetLadderRankListCommand\0222\n\010use" +
-      "rRank\030\001 \003(\0132 .com.trans.pixel.protoc.Use",
-      "rRank\"Z\n$ResponseGetUserLadderRankListCo" +
-      "mmand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pixe" +
-      "l.protoc.UserRank\"a\n\036RequestAttackLadder" +
-      "ModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016" +
-      "\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037" +
-      "ResponseAttackLadderModeCommand\022\013\n\003ret\030\001" +
-      " \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAttackL" +
-      "adderCommand\"/\n\037RequestGetLadderUserInfo" +
-      "Command\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurchase" +
-      "LadderTimeCommand\"V\n ResponseGetLadderUs",
-      "erInfoCommand\0222\n\010userRank\030\001 \002(\0132 .com.tr" +
-      "ans.pixel.protoc.UserRank"
+      "rotoc.FightInfo\022\r\n\005score\030\002 \001(\r\"\274\001\n\034Reque",
+      "stQueryFightInfoCommand\022Q\n\004type\030\001 \002(\0162C." +
+      "com.trans.pixel.protoc.RequestQueryFight" +
+      "InfoCommand.FIGHTINFO_TYPE\022\n\n\002id\030\002 \002(\r\"=" +
+      "\n\016FIGHTINFO_TYPE\022\r\n\tTYPE_SELF\020\000\022\r\n\tTYPE_" +
+      "SAVE\020\001\022\r\n\tTYPE_RANK\020\002\"W\n\030ResponseFightIn" +
+      "foCommand\022/\n\004info\030\001 \003(\0132!.com.trans.pixe" +
+      "l.protoc.FightInfo\022\n\n\002id\030\002 \003(\r\"v\n\033Reques" +
+      "tSaveFightInfoCommand\0220\n\005fight\030\001 \001(\0132!.c" +
+      "om.trans.pixel.protoc.FightInfo\022\020\n\010isDel" +
+      "ete\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\"!\n\037Reques",
+      "tGetLadderRankListCommand\"%\n#RequestGetU" +
+      "serLadderRankListCommand\"V\n ResponseGetL" +
+      "adderRankListCommand\0222\n\010userRank\030\001 \003(\0132 " +
+      ".com.trans.pixel.protoc.UserRank\"Z\n$Resp" +
+      "onseGetUserLadderRankListCommand\0222\n\010user" +
+      "Rank\030\001 \003(\0132 .com.trans.pixel.protoc.User" +
+      "Rank\"a\n\036RequestAttackLadderModeCommand\022\014" +
+      "\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(" +
+      "\003\022\024\n\014attackUserId\030\004 \001(\003\";\n\037ResponseAttac" +
+      "kLadderModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002",
+      " \002(\t\"!\n\037RequestReadyAttackLadderCommand\"" +
+      "/\n\037RequestGetLadderUserInfoCommand\022\014\n\004ra" +
+      "nk\030\001 \002(\004\"\"\n RequestPurchaseLadderTimeCom" +
+      "mand\"V\n ResponseGetLadderUserInfoCommand" +
+      "\0222\n\010userRank\030\001 \002(\0132 .com.trans.pixel.pro" +
+      "toc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29897,7 +30090,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_RequestQueryFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryFightInfoCommand_descriptor,
-              new java.lang.String[] { "Id", });
+              new java.lang.String[] { "Type", "Id", });
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_fieldAccessorTable = new
