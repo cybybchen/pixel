@@ -17,6 +17,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserFoodBean;
@@ -31,6 +32,7 @@ import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.HeroProto.ClearFood;
+import com.trans.pixel.protoc.HeroProto.StarMaterial;
 import com.trans.pixel.service.redis.ClearRedisService;
 import com.trans.pixel.service.redis.EquipRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -267,5 +269,31 @@ public class EquipService {
 		costService.cost(user, costs);
 		
 		return SuccessConst.USE_PROP;
+	}
+	
+	public ResultConst heroFoodCompose(UserBean user, int itemId, int count, List<Integer> costIds, MultiReward.Builder rewards) {
+		Map<Integer, StarMaterial> map = heroService.getStarMaterialMap();
+		for (StarMaterial sm : map.values()) {
+			if (sm.getAim().getAim() == itemId) {
+				if (!sm.hasAim() || sm.getAim() == null)
+					return ErrorConst.HERO_FOOD_IS_LIMIT_ERROR;
+
+				if (!costService.canCost(user, sm.getId(), sm.getCount() * count))
+					return ErrorConst.NOT_ENOUGH_CHIP;
+				
+				if (!costService.canCost(user, sm.getAim().getCost().getItemid(), sm.getAim().getCost().getCount()))
+					return ErrorConst.NOT_ENOUGH_EXP;
+				
+				rewards.addLoot(RewardBean.initRewardInfo(itemId, count));
+				
+				costIds.add(sm.getAim().getAim());
+				costService.cost(user, sm.getId(), sm.getCount() * count);
+				costService.cost(user, sm.getAim().getCost().getItemid(), sm.getAim().getCost().getCount());
+				
+				return SuccessConst.PROP_COMPOSE_SUCCESS;
+			}
+		}
+		
+		return ErrorConst.NOT_ENOUGH_CHIP;
 	}
 }

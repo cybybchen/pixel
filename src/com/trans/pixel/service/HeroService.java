@@ -133,6 +133,10 @@ public class HeroService {
 		return null;
 	}
 	
+	public Map<Integer, StarMaterial> getStarMaterialMap() {
+		return heroRedisService.getStarMaterialConfig();
+	}
+	
 	public StarMaterial getStarMaterial(int id) {
 		return heroRedisService.getStarMaterial(id);
 	}

@@ -81,6 +81,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestMessageBoardListCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLibaoShopCommand;
 import com.trans.pixel.protoc.UnionProto.RequestAttackUnionCommand;
+import com.trans.pixel.protoc.EquipProto.RequestHeroFoodComposeCommand;
 import com.trans.pixel.protoc.UnionProto.RequestViewUnionFightFightInfoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.LadderProto.RequestPurchaseLadderTimeCommand;
@@ -311,6 +312,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestMessageBoardListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAttackUnionCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestHeroFoodComposeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestViewUnionFightFightInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBattletowerShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseLadderTimeCommand cmd, Builder responseBuilder, UserBean user);
@@ -805,6 +807,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasAttackUnionCommand()) {
 			RequestAttackUnionCommand cmd = request.getAttackUnionCommand();
 			if (isFuncAvailable(responseBuilder, "AttackUnionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasHeroFoodComposeCommand()) {
+			RequestHeroFoodComposeCommand cmd = request.getHeroFoodComposeCommand();
+			if (isFuncAvailable(responseBuilder, "HeroFoodComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasViewUnionFightFightInfoCommand()) {
 			RequestViewUnionFightFightInfoCommand cmd = request.getViewUnionFightFightInfoCommand();

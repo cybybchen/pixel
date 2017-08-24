@@ -34,6 +34,7 @@ import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestHeroFoodComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestMaterialComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
@@ -1625,6 +1626,13 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestSpecialTalentChangeUseCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		teamCommandService.talentChangeUse(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestHeroFoodComposeCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipCommandService.heroFoodCompose(cmd, responseBuilder, user);
 		return true;
 	}
 }

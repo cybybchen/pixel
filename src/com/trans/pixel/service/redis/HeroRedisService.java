@@ -266,7 +266,7 @@ public class HeroRedisService extends CacheService {
 		for(StarMaterial.Builder config : builder.getDataBuilderList()){
 			map.put(config.getId(), config.build());
 		}
-		hputcacheAll(RedisKey.RANK_VALUE_CONFIG, map);
+		hputcacheAll(RedisKey.STAR_MATERIAL_CONFIG, map);
 		
 		return map;
 	}

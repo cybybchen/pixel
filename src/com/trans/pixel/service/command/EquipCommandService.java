@@ -22,6 +22,7 @@ import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Item;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
+import com.trans.pixel.protoc.EquipProto.RequestHeroFoodComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSaleEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand;
@@ -172,5 +173,24 @@ public class EquipCommandService extends BaseCommandService {
 		MultiReward.Builder multi = MultiReward.newBuilder();
 		multi.addAllLoot(costs);
 		pushCommandService.pushRewardCommand(responseBuilder, user, multi.build(), false);
+	}
+	
+	public void heroFoodCompose(RequestHeroFoodComposeCommand cmd, Builder responseBuilder, UserBean user) {
+		List<Integer> costIds = new ArrayList<Integer>();
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		ResultConst ret = equipService.heroFoodCompose(user, cmd.getItemId(), cmd.getCount(), costIds, rewards);
+		if (ret instanceof ErrorConst) {
+			logService.sendErrorLog(user.getId(), user.getServerId(),
+					cmd.getClass(), RedisService.formatJson(cmd),
+					ret);
+
+			ErrorCommand errorCommand = buildErrorCommand(ret);
+			responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		
+		pushCommandService.pushRewardCommand(responseBuilder, user, rewards.build());
+		if (!costIds.isEmpty())
+			pushCommandService.pushUserDataByRewardId(responseBuilder, user, costIds.get(0), false);
 	}
 }

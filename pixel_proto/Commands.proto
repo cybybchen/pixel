@@ -645,6 +645,13 @@ message StarMaterial {
 	required uint32 id = 1;
 	required uint32 star = 2;
 	required uint32 position = 3;
+	optional uint32 count = 4;
+	optional StarAim aim = 5;
+}
+
+message StarAim {
+	optional uint32 aim = 1;
+	optional RewardInfo cost = 2;
 }
 
 message StarMaterialList {
@@ -1257,6 +1264,11 @@ message RequestAddHeroEquipCommand {
 message RequestEquipComposeCommand {
 	required int32 levelUpId = 1;
 	optional int32 count = 2;
+}
+
+message RequestHeroFoodComposeCommand {
+	required uint32 itemId = 1;
+	required uint32 count = 2;
 }
 
 message ResponseEquipComposeCommand {
@@ -4024,6 +4036,7 @@ message RequestCommand {
 	optional RequestViewUnionFightFightInfoCommand viewUnionFightFightInfoCommand = 269;
 	optional RequestUserTeamCommand userTeamCommand = 270;
 	optional RequestSpecialTalentChangeUseCommand specialTalentChangeUseCommand = 271;
+	optional RequestHeroFoodComposeCommand heroFoodComposeCommand = 272;
 }
 ////////// Commands
 message ErrorCommand {

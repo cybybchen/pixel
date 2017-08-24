@@ -207,6 +207,14 @@ public class RewardBean {
 		return reward;
 	}
 	
+	public static RewardInfo initRewardInfo(int type, long count) {
+		RewardInfo.Builder builder = RewardInfo.newBuilder();
+		builder.setItemid(type);
+		builder.setCount(count);
+		
+		return builder.build();
+	}
+	
 	public static List<RewardBean> initRewardList(int type, long count) {
 		List<RewardBean> rewardList = new ArrayList<RewardBean>();
 		RewardBean reward = new RewardBean();
