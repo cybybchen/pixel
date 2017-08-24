@@ -86,7 +86,6 @@
 		</table>
 		</div>
 		<div id="config-redisdata" style="display:none;margin:0 5px;">
-			<div style="border: 1px solid;">
 			<div class="ui-field-contain">
 			    <label for="redisdata-keys">表达式(pixel:config*,pixel:bigconfig*):</label>
 			    <input name="keys" id="redisdata-keys" value="*" type="text">
@@ -95,11 +94,10 @@
 			    <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check" onclick="getRedisData()">获取redisdata</a></div>
 			    <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delRedisData()">删除redisdata</a></div>
 			</div>
-			</div>
-		    <div data-theme="b" class="ui-grid-a ui-responsive">
+		    <!--div data-theme="b" class="ui-grid-a ui-responsive">
 			    <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delConfigData(0)">删除常用配置</a></div>
 			    <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-delete" onclick="delConfigData(1)">删除较大配置</a></div>
-			</div>
+			</div-->
 		    <div>
 		    <div data-role="controlgroup" data-type="horizontal">
 		    	<label><input type="checkbox" id="selectAllData" onchange="selectAllData(this)">所有匹配的Key</label>

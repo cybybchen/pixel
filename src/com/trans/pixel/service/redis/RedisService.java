@@ -1173,22 +1173,23 @@ public class RedisService {
 	 * 获取匹配的key列表
 	 */
 	public Set<String> keys(final String pattern) {
-		Set<String> keys0 = redisTemplate.execute(new RedisCallback<Set<String>>() {
+		return keys(pattern, 0);
+	}
+	public Set<String> keys(final String pattern, int userId) {
+		Set<String> keys0 = getRedis(userId).execute(new RedisCallback<Set<String>>() {
 			@Override
 			public Set<String> doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				return redisTemplate.keys(pattern);
 			}
 		});
-//		Set<String> keys1 = redisTemplate1.execute(new RedisCallback<Set<String>>() {
-//			@Override
-//			public Set<String> doInRedis(RedisConnection arg0)
-//					throws DataAccessException {
-//				return redisTemplate1.keys(pattern);
-//			}
-//		});
-//		keys1.addAll(keys0);
 		return keys0;
+	}
+
+	public void delkeys(final String pattern, int userId) {
+		Set<String> keys = keys(pattern, userId);
+		for(String key : keys)
+			delete(key, userId);
 	}
 
 	/**

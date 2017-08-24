@@ -558,9 +558,12 @@ public class ManagerService extends RedisService{
 					result.put("error", "类型错误"+type.name()+"："+keys[0]);
 				result.put("RedisData", "keep");
 			}else if(value.indexOf('*') >= 0){
-				Set<String> keys = keys(value);
-				for(String key : keys)
-					delete(key);
+//				Set<String> keys = keys(value);
+//				for(String key : keys)
+//					delete(key);
+				delkeys(value, 0);
+				delkeys(value, 1);
+				delkeys(value, 100000);
 				req.put("RedisData", value);
 			}else{
 				if(exists(value))
@@ -574,7 +577,9 @@ public class ManagerService extends RedisService{
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-RedisData", value);
 		}
 		if(req.containsKey("RedisData") && (gmaccountBean.getMaster() == 1 || req.getString("RedisData").contains("config"))){
-			Set<String> keys = keys(req.getString("RedisData"));
+			Set<String> keys = keys(req.getString("RedisData"), 0);
+			keys.addAll(keys(req.getString("RedisData"), 1));
+			keys.addAll(keys(req.getString("RedisData"), 100000));
 			result.put("RedisData", keys);
 		}
 		
