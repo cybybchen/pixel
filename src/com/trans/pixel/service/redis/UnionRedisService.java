@@ -799,6 +799,13 @@ public class UnionRedisService extends RedisService{
 		expireAt(key, DateUtil.getNextWeekDay(Calendar.THURSDAY));
 	}
 	
+	public <T> void updateApplyTeamCache(T unionId, Team team) {
+		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
+		hput(key, "" + team.getUser().getId(), RedisService.formatJson(team));
+		
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.THURSDAY));
+	}
+	
 	public Map<String, String> getApplyTeamCacheList(int unionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
 		return hget(key);
