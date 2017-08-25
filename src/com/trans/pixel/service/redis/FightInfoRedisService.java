@@ -210,7 +210,7 @@ public class FightInfoRedisService extends RedisService {
 	
 	public FightInfo getSaveFightInfo(UserBean user, int id) {
 		String key = RedisKey.USER_SAVE_FIGHT_PREFIX + user.getId();
-		String value = hget(key, "" + id);
+		String value = hget(key, "" + id, user.getId());
 		FightInfo.Builder builder = FightInfo.newBuilder();
 		if (value != null && RedisService.parseJson(value, builder))
 			return builder.build();

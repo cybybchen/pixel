@@ -125,9 +125,9 @@ public class FightInfoService {
 	}
 	
 	public FightInfo queryFightInfo(UserBean user, FIGHTINFO_TYPE type, int id) {
-		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK))
+		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK)) {
 			return rankRedisService.getFightInfo(id);
-		else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
+		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
 			return getFightInfoSelf(user, id);
 		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SAVE)) {
 			return redis.getSaveFightInfo(user, id);

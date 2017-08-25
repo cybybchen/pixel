@@ -167,6 +167,9 @@ public class TeamCommandService extends BaseCommandService {
 			logService.sendErrorLog(user.getId(), user.getServerId(),
 					cmd.getClass(), RedisService.formatJson(cmd),
 					ErrorConst.FIGHTINFO_IS_NOT_EXIST_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.FIGHTINFO_IS_NOT_EXIST_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
 		

@@ -76,7 +76,7 @@ public enum ErrorConst implements ResultConst {
     UNION_FIGHT_MEMBER_IS_LIMIT_ERROR(5028, "公会出战人数已达上限"), NOT_IN_FIGHT_UNIONS_ERROR(5029, "很抱歉，您的公会未能参与此次公会战"),
     UNION_FIGHT_TIME_CAN_NOT_EQUI_ERROR(5030, "公会战期间无法推出公会"), UNION_FIGHT_TEAM_CAN_NOT_UPDATE_ERROR(5031, "调整阵容时间已过，无法重新调整阵容"), 
     HERO_FOOD_IS_LIMIT_ERROR(5032, "升星材料合成已达等级上限"), FIGHTINFO_IS_EXIST_ERROR(5033, "该录像已存在收藏列表里"),
-    FIGHTINFO_IS_NOT_EXIST_ERROR(5034, "该录像已存在"),
+    FIGHTINFO_IS_NOT_EXIST_ERROR(5034, "该录像不存在"),
     
     SERVER_ERROR(1100, "服务器异常错误");
 
