@@ -105,6 +105,9 @@ public class PropService {
 		if (prop == null)
 			return ErrorConst.PROP_USE_ERROR;
 		
+		if (prop.getAutoopen() == 2)//道具不能使用
+			return ErrorConst.PROP_USE_ERROR;
+		
 //		if (prop.getBossid() > 0) {
 //			ResultConst ret = rewardTaskService.zhaohuanTask(user, prop.getBossid());
 //			if (ret instanceof ErrorConst)

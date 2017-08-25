@@ -1257,13 +1257,19 @@ public class UnionService extends FightService{
 	 * 下面是公会战内容
 	 * @param user
 	 */
-	public void applyFight(UserBean user) {
+	public ResultConst applyFight(UserBean user) {
+		Union.Builder union = getBaseUnion(user);
+		if (union.getZhanli() < 10000)
+			return ErrorConst.UNION_ZHANLI_IS_NOT_ENOUGH_ERROR;
+					
 		redis.applyFight(user);
 		redis.addApplyUnion(user.getUnionId());
 		
 		UserTeamBean userTeam = userTeamService.getUserTeam(user.getId(), user.getCurrentTeamid());
 		if (userTeam != null)
 			updateApplyTeam(user, userTeam);
+		
+		return SuccessConst.APPLY_SUCCESS;
 	}
 	
 	public void updateApplyTeam(UserBean user, UserTeamBean userTeam) {
@@ -1480,6 +1486,7 @@ public class UnionService extends FightService{
 		for (int i = 0;i < unions.size(); ++i) {
 			Union.Builder builder = Union.newBuilder(unions.get(i));
 			builder.setZhanli(calUnionFightZhanli(builder.getId()));
+			log.warn("unionId is:" + builder.getId() + "||zhanli is" + builder.getZhanli());
 			unions.set(i, builder.build());
 		}
 		log.debug("union size is:" + unions.size());
@@ -1500,14 +1507,20 @@ public class UnionService extends FightService{
 	
 	private int calUnionFightZhanli(int unionId) {
 		int zhanli = 0;
-		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
-		for (UnionFightRecord record : applyList) {
-			if (record.getStatus().equals(FIGHT_STATUS.NOT_FIGHT))
-				continue;
-			
-			UserInfo user = userService.getCache(1, record.getUser().getId());
-			zhanli += user.getZhanliMax();
+		Map<String, String> map = redis.getApplyTeamCacheList(unionId);
+		for (String value : map.values()) {
+			Team.Builder builder = Team.newBuilder();
+			if (value != null && RedisService.parseJson(value, builder))
+				zhanli += builder.getUser().getZhanli();
 		}
+//		List<UnionFightRecord> applyList = getUnionFightApply(unionId);
+//		for (UnionFightRecord record : applyList) {
+//			if (record.getStatus().equals(FIGHT_STATUS.NOT_FIGHT))
+//				continue;
+//			
+//			UserInfo user = userService.getCache(1, record.getUser().getId());
+//			zhanli += user.getZhanliMax();
+//		}
 		
 		return zhanli;
 	}
@@ -1678,29 +1691,32 @@ public class UnionService extends FightService{
 	}
 	
 	public int calCountTime() {
-		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
-		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
-				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
-				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
-			return (int)(RedisService.nextDay(0) - RedisService.now());
+//		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
+//		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+//				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
+//				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+//			return (int)(RedisService.nextDay(0) - RedisService.now());
+//		
+//		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
+//			return (int)(RedisService.today(12) - RedisService.now());
+//		
+//		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
+//		logger.debug("currenct time is:" + DateUtil.getDate());
+//		
+//		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
 		
-		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
-			return (int)(RedisService.today(12) - RedisService.now());
-		
-		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
-		logger.debug("currenct time is:" + DateUtil.getDate());
-		
-		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
-		
-//		if (NEXT_TIME == 0)
-//			setUnionFightTime();
-//		return NEXT_TIME - RedisService.now();
+		if (NEXT_TIME == 0)
+			setUnionFightTime();
+		return NEXT_TIME - RedisService.now();
 	}
 	
 	public static int NEXT_TIME = 0;
 	
 	public void setUnionFightTime() {
-		NEXT_TIME = RedisService.now() + 1 * 60;
+		if (DAY >= 5)
+			NEXT_TIME = RedisService.now() + 1 * 60;
+		else 
+			NEXT_TIME = RedisService.now() + (5 - DAY) * 1 * 60;
 	}
 	
 	private void sendUnionFightWinReward(String unionId) {

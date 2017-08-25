@@ -54,8 +54,9 @@ public class UnionCrontabService {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
 		
-		unionService.setUnionFightTime();
 		unionService.dayAdd();
+		unionService.setUnionFightTime();
+		
 		
 //		log.error("cheatid is" + unionRedisService.addUnionFightCheatStatus());
 		log.error("current day is:" + DateUtil.getDayOfWeek());

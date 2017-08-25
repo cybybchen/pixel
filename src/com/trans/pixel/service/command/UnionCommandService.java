@@ -382,7 +382,12 @@ public class UnionCommandService extends BaseCommandService {
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.UNION_FIGHT_APPLY_TIME_IS_OVER_ERROR));
 				return;
 			}
-			unionService.applyFight(user);
+			ResultConst ret = unionService.applyFight(user);
+			if (ret instanceof ErrorConst) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+				responseBuilder.setErrorCommand(buildErrorCommand(ret));
+				return;
+			}
 		}else if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.HANDLER_FIGHT_MEMBER)) {
 			if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.UNION_FIGHT_HUIZHANG_TIME_IS_OVER_ERROR);
