@@ -37836,6 +37836,323 @@ public final class UnionProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestHandleUnionMemberCommand)
   }
 
+  public interface RequestTakeUnionLeaderCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestTakeUnionLeaderCommand}
+   *
+   * <pre>
+   *弹劾公会会长(会长需离线7天)
+   * </pre>
+   */
+  public static final class RequestTakeUnionLeaderCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestTakeUnionLeaderCommandOrBuilder {
+    // Use RequestTakeUnionLeaderCommand.newBuilder() to construct.
+    private RequestTakeUnionLeaderCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestTakeUnionLeaderCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestTakeUnionLeaderCommand defaultInstance;
+    public static RequestTakeUnionLeaderCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestTakeUnionLeaderCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestTakeUnionLeaderCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.class, com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestTakeUnionLeaderCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestTakeUnionLeaderCommand>() {
+      public RequestTakeUnionLeaderCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestTakeUnionLeaderCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestTakeUnionLeaderCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestTakeUnionLeaderCommand}
+     *
+     * <pre>
+     *弹劾公会会长(会长需离线7天)
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.class, com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.UnionProto.internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand build() {
+        com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand buildPartial() {
+        com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand result = new com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand) {
+          return mergeFrom((com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand other) {
+        if (other == com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestTakeUnionLeaderCommand)
+    }
+
+    static {
+      defaultInstance = new RequestTakeUnionLeaderCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestTakeUnionLeaderCommand)
+  }
+
   public interface RequestSetUnionAnnounceCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -46379,6 +46696,11 @@ public final class UnionProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RequestHandleUnionMemberCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -46603,35 +46925,36 @@ public final class UnionProto {
       "\017\n\007content\030\002 \001(\t\"7\n\030RequestReplyUnionCom" +
       "mand\022\n\n\002id\030\001 \002(\003\022\017\n\007receive\030\002 \002(\010\":\n\037Req",
       "uestHandleUnionMemberCommand\022\n\n\002id\030\001 \002(\003" +
-      "\022\013\n\003job\030\002 \002(\005\"2\n\036RequestSetUnionAnnounce" +
-      "Command\022\020\n\010announce\030\001 \001(\t\"\034\n\032RequestUpgr" +
-      "adeUnionCommand\"%\n\027RequestQuitUnionComma" +
-      "nd\022\n\n\002id\030\001 \001(\003\"w\n\027RequestUnionInfoComman" +
-      "d\022\024\n\014isNewVersion\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'." +
-      "com.trans.pixel.protoc.UNION_INFO_TYPE\022\017" +
-      "\n\007unionId\030\003 \001(\r\"<\n\031RequestAttackUnionCom" +
-      "mand\022\017\n\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n" +
-      "\031RequestDefendUnionCommand\022\016\n\006teamid\030\002 \002",
-      "(\003\"\271\001\n\030ResponseUnionInfoCommand\022,\n\005union" +
-      "\030\001 \001(\0132\035.com.trans.pixel.protoc.Union\0223\n" +
-      "\007applies\030\002 \003(\0132\".com.trans.pixel.protoc." +
-      "UnionApply\022:\n\tunionBoss\030\003 \003(\0132\'.com.tran" +
-      "s.pixel.protoc.UnionBossRecord\"\'\n\027Reques" +
-      "tUnionListCommand\022\014\n\004type\030\001 \001(\005\")\n\031Reque" +
-      "stSearchUnionCommand\022\014\n\004name\030\001 \001(\t\"H\n\030Re" +
-      "sponseUnionListCommand\022,\n\005union\030\001 \003(\0132\035." +
-      "com.trans.pixel.protoc.Union\"?\n\034RequestS" +
-      "ubmitBosskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n",
-      "\006bossId\030\002 \002(\005\"\030\n\026RequestBosskillCommand\"" +
-      "R\n\027ResponseBosskillCommand\0227\n\006record\030\001 \003" +
-      "(\0132\'.com.trans.pixel.protoc.BossGroupRec" +
-      "ord\"V\n\030ResponseUnionBossCommand\022:\n\tunion" +
-      "Boss\030\001 \003(\0132\'.com.trans.pixel.protoc.Unio" +
-      "nBossRecord\"K\n\034RequestUnionBossFightComm" +
-      "and\022\016\n\006bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007perce" +
-      "nt\030\003 \001(\005*,\n\014FIGHT_STATUS\022\r\n\tNOT_FIGHT\020\000\022" +
-      "\r\n\tCAN_FIGHT\020\001*@\n\017UNION_INFO_TYPE\022\016\n\nTYP" +
-      "E_UNION\020\001\022\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
+      "\022\013\n\003job\030\002 \002(\005\"\037\n\035RequestTakeUnionLeaderC" +
+      "ommand\"2\n\036RequestSetUnionAnnounceCommand" +
+      "\022\020\n\010announce\030\001 \001(\t\"\034\n\032RequestUpgradeUnio" +
+      "nCommand\"%\n\027RequestQuitUnionCommand\022\n\n\002i" +
+      "d\030\001 \001(\003\"w\n\027RequestUnionInfoCommand\022\024\n\014is" +
+      "NewVersion\030\001 \001(\010\0225\n\004type\030\002 \001(\0162\'.com.tra" +
+      "ns.pixel.protoc.UNION_INFO_TYPE\022\017\n\007union" +
+      "Id\030\003 \001(\r\"<\n\031RequestAttackUnionCommand\022\017\n" +
+      "\007unionId\030\001 \001(\005\022\016\n\006teamid\030\002 \002(\003\"+\n\031Reques",
+      "tDefendUnionCommand\022\016\n\006teamid\030\002 \002(\003\"\271\001\n\030" +
+      "ResponseUnionInfoCommand\022,\n\005union\030\001 \001(\0132" +
+      "\035.com.trans.pixel.protoc.Union\0223\n\007applie" +
+      "s\030\002 \003(\0132\".com.trans.pixel.protoc.UnionAp" +
+      "ply\022:\n\tunionBoss\030\003 \003(\0132\'.com.trans.pixel" +
+      ".protoc.UnionBossRecord\"\'\n\027RequestUnionL" +
+      "istCommand\022\014\n\004type\030\001 \001(\005\")\n\031RequestSearc" +
+      "hUnionCommand\022\014\n\004name\030\001 \001(\t\"H\n\030ResponseU" +
+      "nionListCommand\022,\n\005union\030\001 \003(\0132\035.com.tra" +
+      "ns.pixel.protoc.Union\"?\n\034RequestSubmitBo",
+      "sskillCommand\022\017\n\007groupId\030\001 \002(\005\022\016\n\006bossId" +
+      "\030\002 \002(\005\"\030\n\026RequestBosskillCommand\"R\n\027Resp" +
+      "onseBosskillCommand\0227\n\006record\030\001 \003(\0132\'.co" +
+      "m.trans.pixel.protoc.BossGroupRecord\"V\n\030" +
+      "ResponseUnionBossCommand\022:\n\tunionBoss\030\001 " +
+      "\003(\0132\'.com.trans.pixel.protoc.UnionBossRe" +
+      "cord\"K\n\034RequestUnionBossFightCommand\022\016\n\006" +
+      "bossId\030\001 \002(\005\022\n\n\002hp\030\002 \002(\003\022\017\n\007percent\030\003 \001(" +
+      "\005*,\n\014FIGHT_STATUS\022\r\n\tNOT_FIGHT\020\000\022\r\n\tCAN_" +
+      "FIGHT\020\001*@\n\017UNION_INFO_TYPE\022\016\n\nTYPE_UNION",
+      "\020\001\022\016\n\nTYPE_APPLY\020\002\022\r\n\tTYPE_BOSS\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -46914,92 +47237,98 @@ public final class UnionProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHandleUnionMemberCommand_descriptor,
               new java.lang.String[] { "Id", "Job", });
-          internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor =
             getDescriptor().getMessageTypes().get(45);
+          internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestTakeUnionLeaderCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor =
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSetUnionAnnounceCommand_descriptor,
               new java.lang.String[] { "Announce", });
           internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUpgradeUnionCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQuitUnionCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionInfoCommand_descriptor,
               new java.lang.String[] { "IsNewVersion", "Type", "UnionId", });
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackUnionCommand_descriptor,
               new java.lang.String[] { "UnionId", "Teamid", });
           internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestDefendUnionCommand_descriptor,
               new java.lang.String[] { "Teamid", });
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(51);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionInfoCommand_descriptor,
               new java.lang.String[] { "Union", "Applies", "UnionBoss", });
           internal_static_com_trans_pixel_protoc_RequestUnionListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(52);
+            getDescriptor().getMessageTypes().get(53);
           internal_static_com_trans_pixel_protoc_RequestUnionListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionListCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_RequestSearchUnionCommand_descriptor =
-            getDescriptor().getMessageTypes().get(53);
+            getDescriptor().getMessageTypes().get(54);
           internal_static_com_trans_pixel_protoc_RequestSearchUnionCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSearchUnionCommand_descriptor,
               new java.lang.String[] { "Name", });
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(54);
+            getDescriptor().getMessageTypes().get(55);
           internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionListCommand_descriptor,
               new java.lang.String[] { "Union", });
           internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(55);
+            getDescriptor().getMessageTypes().get(56);
           internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitBosskillCommand_descriptor,
               new java.lang.String[] { "GroupId", "BossId", });
           internal_static_com_trans_pixel_protoc_RequestBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(56);
+            getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_RequestBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBosskillCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_descriptor =
-            getDescriptor().getMessageTypes().get(57);
+            getDescriptor().getMessageTypes().get(58);
           internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseBosskillCommand_descriptor,
               new java.lang.String[] { "Record", });
           internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_descriptor =
-            getDescriptor().getMessageTypes().get(58);
+            getDescriptor().getMessageTypes().get(59);
           internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUnionBossCommand_descriptor,
               new java.lang.String[] { "UnionBoss", });
           internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_descriptor =
-            getDescriptor().getMessageTypes().get(59);
+            getDescriptor().getMessageTypes().get(60);
           internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnionBossFightCommand_descriptor,

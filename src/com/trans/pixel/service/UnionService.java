@@ -1597,7 +1597,7 @@ public class UnionService extends FightService{
 			status = UNION_FIGHT_STATUS.SEND_REWARD_TIME;
 		}
 		
-		if (status.equals(UNION_FIGHT_STATUS.FIGHT_TIME) && (RedisService.now() - RedisService.today(0)) < 12 * 3600)
+		if (unionId != 0 && status.equals(UNION_FIGHT_STATUS.FIGHT_TIME) && (RedisService.now() - RedisService.today(0)) < 12 * 3600)
 			status = UNION_FIGHT_STATUS.PIPEI_TIME;
 			
 		return status;
@@ -1637,7 +1637,8 @@ public class UnionService extends FightService{
 			return true;
 		
 		UNION_FIGHT_STATUS status = calUnionFightStatus(unionId);
-		if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && !status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+		if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && !status.equals(UNION_FIGHT_STATUS.FIGHT_TIME)
+				&& !status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
 			return true;
 		
 		if (unionJob == UnionConst.UNION_HUIZHANG)
@@ -1736,6 +1737,7 @@ public class UnionService extends FightService{
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "恭喜您的公会获得公会战胜利！", rewardList);
+			activityService.handlerUnionFight(user.getId(), true);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
 	}
@@ -1748,6 +1750,7 @@ public class UnionService extends FightService{
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中和对方战成了平手，请再接再厉！", rewardList);
+			activityService.handlerUnionFight(user.getId(), false);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
 	}
@@ -1760,6 +1763,7 @@ public class UnionService extends FightService{
 		List<UserInfo> members = redis.getMembers(TypeTranslatedUtil.stringToInt(unionId), 1);
 		for (UserInfo user : members) {
 			sendUnionFightMail(user, "很可惜您的公会在公会战中输给了对手，请再接再厉！", rewardList);
+			activityService.handlerUnionFight(user.getId(), false);
 		}
 		redis.addUnionFightRewardUnionId(unionId);
 	}

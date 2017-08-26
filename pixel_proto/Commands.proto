@@ -2283,6 +2283,8 @@ enum ACTIVITY_TYPE{
 	TYPE_LADDER_ATTACK = 28;//挑战，胜负都算
 	TYPE_KILL_UNIONBOSS_200003 = 29;
 	TYPE_HERO_LEVELUP_STAR = 34;
+	TYPE_UNION_FIGHT = 35;
+	TYPE_UNION_FIGHT_WIN = 36;
 	TYPE_TEAMUP_ARUISI = 10000;
 	TYPE_ARUISI_SKILL1_LEVELUP = 10001;
 	TYPE_ARUISI_EQUIP_ADD10001 = 10002;
@@ -3523,6 +3525,8 @@ message RequestHandleUnionMemberCommand {//调整公会成员权限
 	required int64 id = 1;
 	required int32 job = 2;
 }
+message RequestTakeUnionLeaderCommand {//弹劾公会会长(会长需离线7天)
+}
 
 message RequestSetUnionAnnounceCommand {//调整公会公告
         optional string announce = 1;
@@ -3876,6 +3880,7 @@ message RequestCommand {
 	optional RequestApplyUnionCommand applyUnionCommand = 32;
 	optional RequestReplyUnionCommand replyUnionCommand = 33;
 	optional RequestHandleUnionMemberCommand handleUnionCommand = 40;
+	optional RequestTakeUnionLeaderCommand takeUnionLeaderCommand = 172;
 	optional RequestUpgradeUnionCommand upgradeUnionCommand = 41;
 	optional RequestAttackUnionCommand attackUnionCommand = 100;
 	optional RequestDefendUnionCommand defendUnionCommand = 101;

@@ -1262,6 +1262,17 @@ public class ActivityService {
 	}
 	
 	/**
+	 * 参加公会战的活动
+	 */
+	public void handlerUnionFight(long userId, boolean isWin) {
+		if (isWin)//公会战胜利的成就
+			achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_UNION_FIGHT_WIN_VALUE);
+		
+		//公会战打多少次的成就
+		achieveService.sendAchieveScore(userId, ACTIVITY_TYPE.TYPE_UNION_FIGHT_VALUE);
+	}
+	
+	/**
 	 * activity and achieve log
 	 */
 	public void sendLog(long userId, int serverId, int type, int id, int step) {
