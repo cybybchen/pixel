@@ -117,7 +117,9 @@ public class PropService {
 //			return ret;
 //		}
 		
-		if (propId >= 34091 && propId <= 34093) {
+		if (propId >= 34098 && propId <= 34099) {//深渊碎片自选包
+			return handlerShenyuanPackage(user, prop, userProp, propCount, rewards, chipId);
+		} else if (propId >= 34091 && propId <= 34093) {
 			Chip chip = equipService.getChip(chipId);
 			if (chip == null)
 				return ErrorConst.CHIP_IS_NOT_EXISTS_ERROR;
@@ -385,5 +387,24 @@ public class PropService {
 			user.setMohe(1);
 		else if (propId == 39502)
 			user.setHeilong(1);
+	}
+	
+	private ResultConst handlerShenyuanPackage(UserBean user, Prop prop, UserPropBean userProp, int propCount, MultiReward.Builder rewards, int chipId) {
+		if (chipId <= 22000 || chipId >= 23000)
+			return ErrorConst.CHIP_CAN_NOT_GET_ERROR;
+		
+		Chip chip = equipService.getChip(chipId);
+		if (chip == null)
+			return ErrorConst.CHIP_IS_NOT_EXISTS_ERROR;
+		
+		RewardInfo.Builder builder = RewardInfo.newBuilder();
+		builder.setItemid(chipId);
+		builder.setCount(prop.getJudge() * propCount);
+		rewards.addLoot(builder.build());
+		
+		userProp.setPropCount(userProp.getPropCount() - propCount);
+		userPropService.updateUserProp(userProp);
+		
+		return SuccessConst.USE_PROP;
 	}
 }
