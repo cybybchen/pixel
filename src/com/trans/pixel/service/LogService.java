@@ -142,6 +142,8 @@ public class LogService {
 		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.MAP));
 		        sb.append(LogString.SPLITER);
+		        sb.append(params.get(LogString.CHOICE));
+		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.ITEMID1));
 		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.ITEMCOUNT1));
@@ -168,6 +170,8 @@ public class LogService {
 		        sb.append(params.get(LogString.RESULT));
 		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.INSTANCEID));
+		        sb.append(LogString.SPLITER);
+		        sb.append(params.get(LogString.FLOOR));
 		        sb.append(LogString.SPLITER);
 		        sb.append(params.get(LogString.BOSSID));
 		        sb.append(LogString.SPLITER);

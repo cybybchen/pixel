@@ -7,5 +7,6 @@ public class PvpMapConst {
 	public static final int TYPE_BOSS = 2;
 	public static final int TYPE_DEFEND = 3;
 	public static final int TYPE_ATTACK = 4;
-	public static final int TYPE_MOWU = 5;
+	public static final int TYPE_INBREAK = 5;
+	public static final int TYPE_MOWU = 6;
 }

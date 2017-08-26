@@ -315,6 +315,7 @@ public class LevelCommandService extends BaseCommandService {
 			params.put(LogString.TYPE, "" + 1);
 			params.put(LogString.EVENTTYPE, "" + config.getType());
 			params.put(LogString.MAP, "" + builder.getDaguan());
+			params.put(LogString.CHOICE, "" + 0);
 			
 			List<RewardInfo> logRewards = currentRewards.getLootList();
 			params.put(LogString.ITEMID1, "" + (logRewards.size() >= 1 ? logRewards.get(0).getItemid():0));
@@ -451,6 +452,7 @@ public class LevelCommandService extends BaseCommandService {
 				params.put(LogString.TYPE, "" + (cmd.getOrder()<10000 ? 0 : 1));
 				params.put(LogString.EVENTTYPE, "" + eventconfig.getType());
 				params.put(LogString.MAP, "" + event.getDaguan());
+				params.put(LogString.CHOICE, "" + cmd.getFinalid());
 				if(responseBuilder.hasRewardCommand()){
 					List<RewardInfo> rewards = responseBuilder.getRewardCommand().getLootList();
 				params.put(LogString.ITEMID1, "" + (rewards.size() >= 1 ? rewards.get(0).getItemid():0));

@@ -119,6 +119,7 @@ public class LogString {
 	public static final String ITEMCOUNT3 = "itemidcount3";
 	public static final String ITEMID4 = "itemid4";
 	public static final String ITEMCOUNT4 = "itemidcount4";
+	public static final String CHOICE = "choice";
 	public static final String SEX = "sex";
 	public static final String AGE = "age";
 	public static final String PLAYTIME = "playtime";

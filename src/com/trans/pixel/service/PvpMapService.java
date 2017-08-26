@@ -384,7 +384,7 @@ public class PvpMapService {
 		/**
 		 * send log
 		 */
-		sendLog(user, 0, PvpMapConst.TYPE_MOWU, true, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, bossId, 0);
+		sendLog(user, 0, PvpMapConst.TYPE_MOWU, true, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), null, bossId, percent);
 		return null;
 	}
 	
@@ -550,6 +550,8 @@ public class PvpMapService {
 		mine.setId(mine.getId()%1000);
 		if (mine.getLevel() > 0)
 			logType = PvpMapConst.TYPE_DEFEND;
+		if(id > 1000)
+			logType = PvpMapConst.TYPE_INBREAK;
 		/**
 		 * PVP攻击玩家的活动
 		 */
