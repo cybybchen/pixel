@@ -121,7 +121,16 @@ public class FightInfoService {
 			}
 		}
 		
-		return infos;
+		List<FightInfo> infoList = new ArrayList<FightInfo>();
+		for (FightInfo fight : infos) {
+			FightInfo.Builder builder = FightInfo.newBuilder(fight);
+			if(builder.hasEnemy())
+				builder.setEnemy(userService.getCache(user.getServerId(), builder.getEnemy().getId()));
+			
+			infoList.add(builder.build());
+		}
+		
+		return infoList;
 	}
 	
 	public FightInfo queryFightInfo(UserBean user, FIGHTINFO_TYPE type, int id) {
