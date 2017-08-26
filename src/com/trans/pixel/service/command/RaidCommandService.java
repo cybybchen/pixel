@@ -76,6 +76,7 @@ public class RaidCommandService extends BaseCommandService{
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
+		int level = 0;
 		//判断消耗和最大层数
 		if(costService.cost(user, raidconfig.getCost().getItemid(), raidconfig.getCost().getCount(), true)){
 			int lastid = 0;
@@ -83,6 +84,7 @@ public class RaidCommandService extends BaseCommandService{
 				if(myraid.getEventid() == 0)
 					continue;
 				lastid = myraid.getEventid();
+				level = myraid.getLevel();
 				myraid.clearEventid();
 				myraid.clearTurn();
 				myraid.clearLevel();
@@ -93,7 +95,7 @@ public class RaidCommandService extends BaseCommandService{
 					continue;
 				myraid.setEventid(raidconfig.getEventList().get(0).getEventid());
 				myraid.clearTurn();
-				int level = Math.min(cmd.getLevel(), myraid.getMaxlevel());
+				level = Math.min(cmd.getLevel(), myraid.getMaxlevel());
 				if(raidconfig.getMaxlevel() > 0)
 					level = raidconfig.getMaxlevel();
 				myraid.setLevel(level);
@@ -110,6 +112,7 @@ public class RaidCommandService extends BaseCommandService{
 			params.put(LogString.SERVERID, "" + user.getServerId());
 			params.put(LogString.RESULT, "2");
 			params.put(LogString.INSTANCEID, "" + raidconfig.getId());
+			params.put(LogString.FLOOR, "" + level);
 			params.put(LogString.BOSSID, "0");
 			params.put(LogString.PREINSTANCEID, "" + lastid);
 			logService.sendLog(params, LogString.LOGTYPE_RAID);
@@ -177,7 +180,8 @@ public class RaidCommandService extends BaseCommandService{
 //					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
 //						myraid.setLeftcount(myraid.getLeftcount()-1);
 //					}
-					myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
+					if(raidconfig.getMaxlevel() == 0)
+						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
 				}
 				
@@ -194,6 +198,7 @@ public class RaidCommandService extends BaseCommandService{
 			params.put(LogString.SERVERID, "" + user.getServerId());
 			params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
 			params.put(LogString.INSTANCEID, "" + myraid.getId());
+			params.put(LogString.FLOOR, "" + myraid.getLevel());
 			params.put(LogString.BOSSID, "" + (event.hasEnemygroup()?event.getEnemygroup().getEnemy(0).getEnemyid() : 0));
 			params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myraid.getEventid() : 0));
 			logService.sendLog(params, LogString.LOGTYPE_RAID);

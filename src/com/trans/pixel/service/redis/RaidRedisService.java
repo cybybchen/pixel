@@ -59,10 +59,11 @@ public class RaidRedisService extends RedisService{
 				raid.setEventid(myraid.getEventid());
 				raid.addAllTurn(myraid.getTurnList());
 				raid.setLevel(myraid.getLevel());
-				raid.setMaxlevel(myraid.getMaxlevel());
 				if(myraid.hasEndtime()) {
 					raid.setLeftcount(myraid.getLeftcount());
 					raid.setEndtime(myraid.getEndtime());
+				}else {
+					raid.setMaxlevel(myraid.getMaxlevel());
 				}
 			}
 			if(raid.getCount() > 0) {
@@ -144,16 +145,15 @@ public class RaidRedisService extends RedisService{
 		for(Raid.Builder raid : list.getDataBuilderList()) {
 			raid.clearEvent();
 			raid.clearCost();
-			raid.setEventid(0);
-			raid.clearTurn();
-			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
-			raid.setLevel(0);
-			if("".equals(raid.getStarttime()))
-				raid.clearStarttime();
-			if("".equals(raid.getEndtime()))
-				raid.clearEndtime();
+//			raid.setEventid(0);
+//			raid.clearTurn();
+//			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
+//			raid.setLevel(0);
+//			if("".equals(raid.getStarttime()))
+//				raid.clearStarttime();
+//			if("".equals(raid.getEndtime()))
+//				raid.clearEndtime();
 		}
-		builder.clearRaid();
 		builder.addAllRaid(list.getDataList());
 		CacheService.setcache(RedisKey.RAIDLIST_CONFIG, builder.build());
 	}
@@ -162,6 +162,16 @@ public class RaidRedisService extends RedisService{
 		String xml = ReadConfig("ld_raid.xml");
 		RaidList.Builder list = RaidList.newBuilder();
 		parseXml(xml, list);
+		for(Raid.Builder raid : list.getDataBuilderList()) {
+			raid.setEventid(0);
+//			raid.clearTurn();
+			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
+			raid.setLevel(0);
+			if("".equals(raid.getStarttime()))
+				raid.clearStarttime();
+			if("".equals(raid.getEndtime()))
+				raid.clearEndtime();
+		}
 		CacheService.setcache(RedisKey.RAID_CONFIG, list.build());
 		return list;
 	}
