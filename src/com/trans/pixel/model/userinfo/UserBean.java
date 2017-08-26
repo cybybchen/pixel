@@ -1639,7 +1639,7 @@ public class UserBean {
 			e.printStackTrace();
 		}
 		
-		return "jewel" + jewel + jewelkey;
+		return "jewel" + jewel + "," + jewelkey;
 	}
 	
 //	public Map<String, String> toMap() {
