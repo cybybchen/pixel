@@ -33,6 +33,7 @@ import com.trans.pixel.protoc.UnionProto.RequestQuitUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestReplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSearchUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
+import com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand.UNIONFIGHTAPPLY_STATUS;
@@ -246,6 +247,21 @@ public class UnionCommandService extends BaseCommandService {
 			
 			responseBuilder.setErrorCommand(buildErrorCommand(result));
 		}
+	}
+	
+	public void takeLeader(RequestTakeUnionLeaderCommand cmd, Builder responseBuilder, UserBean user) {
+		ResultConst result = unionService.takeLeader(user);
+		if(result instanceof SuccessConst){
+			ResponseUnionInfoCommand.Builder builder = ResponseUnionInfoCommand.newBuilder();
+			builder.setUnion(unionService.getUnion(user, false));
+			responseBuilder.setUnionInfoCommand(builder.build());
+			responseBuilder.setMessageCommand(super.buildMessageCommand(result));
+		}else {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), result);
+			
+			responseBuilder.setErrorCommand(buildErrorCommand(result));
+		}
+		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 	}
 	
 	public void setAnnounce(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user) {

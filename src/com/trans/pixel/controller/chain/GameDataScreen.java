@@ -198,6 +198,7 @@ import com.trans.pixel.protoc.UnionProto.RequestStartBossRoomCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBattletowerCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBossRoomScoreCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSubmitBosskillCommand;
+import com.trans.pixel.protoc.UnionProto.RequestTakeUnionLeaderCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionBossFightCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightCommand;
@@ -1641,6 +1642,12 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestQueryFightInfoCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		teamCommandService.queryFightInfo(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTakeUnionLeaderCommand cmd, Builder responseBuilder, UserBean user) {
+		unionCommandService.takeLeader(cmd, responseBuilder, user);
 		return true;
 	}
 }

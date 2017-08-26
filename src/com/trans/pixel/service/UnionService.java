@@ -96,6 +96,8 @@ public class UnionService extends FightService{
 	private RewardService rewardService;
 	@Resource
 	private ZhanliRedisService zhanliRedisService;
+	@Resource
+	private CostService costService;
 	
 	Comparator<UserRankBean> comparator = new Comparator<UserRankBean>() {
         public int compare(UserRankBean bean1, UserRankBean bean2) {
@@ -630,9 +632,44 @@ public class UnionService extends FightService{
 				userService.cache(user.getServerId(), user.buildShort());
 			}
 			bean.setUnionJob(job);
-			redis.saveMember(bean.getId(), user);
 			userService.updateUser(bean);
+			redis.saveMember(bean.getId(), user);
 			userService.cache(user.getServerId(), bean.buildShort());
+			redis.clearLock(redis.getUnionMemberKey(user.getUnionId()));
+		}
+		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
+	}
+
+	public ResultConst takeLeader(UserBean user) {
+		UserBean bean = null;
+		List<UserInfo> members = redis.getMembers(user);
+		for(UserInfo member : members){
+			if(member.getUnionJob() == UnionConst.UNION_HUIZHANG) {
+				bean = userService.getUserOther(member.getId());
+				if(RedisService.now() - DateUtil.getDateTime(bean.getLastLoginTime()).getTime()/1000 < 7*24*3600)
+					return ErrorConst.NEED_LEADER_OFFLINETIME;
+				break;
+			}
+		}
+//		if(user.getUnionJob() < UnionConst.UNION_HUIZHANG)
+//			return ErrorConst.PERMISSION_DENIED;
+//		if(user.getId() == bean.getId())
+//			return ErrorConst.PERMISSION_DENIED;
+		user.setUnionJob(UnionConst.UNION_HUIZHANG);
+		bean.setUnionJob(UnionConst.UNION_HUIZHONG);
+		if(bean.getUnionId() == user.getUnionId()){
+			if(!redis.waitLock(redis.getUnionMemberKey(user.getUnionId())))
+				return ErrorConst.REDISKEY_BUSY_ERROR;
+			if(!costService.cost(user, 1002, 500))
+				return ErrorConst.NOT_ENOUGH_JEWEL;
+			redis.saveMember(user.getId(), user);
+			userService.updateUser(user);
+			userService.cache(user.getServerId(), user.buildShort());
+			
+			userService.updateUser(bean);
+			redis.saveMember(bean.getId(), bean);
+			userService.cache(user.getServerId(), bean.buildShort());
+			
 			redis.clearLock(redis.getUnionMemberKey(user.getUnionId()));
 		}
 		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
