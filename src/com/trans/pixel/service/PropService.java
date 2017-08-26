@@ -331,7 +331,7 @@ public class PropService {
 		Map<Integer, Prop> map = propRedisService.getPackageConfig();
 		for (RewardInfo reward : rewardList) {
 			Prop prop = map.get(reward.getItemid());
-			if (prop == null || prop.getAutoopen() == 0) {
+			if (prop == null || prop.getAutoopen() != 1) {
 				rewards.addLoot(reward);
 				continue;
 			}
