@@ -187,7 +187,7 @@ public class RankService {
 		}
 		
 		List<FightInfo> randomFightinfo = new ArrayList<FightInfo>();
-		while (fightList.size() >= limit &&
+		while (fightList.size() + randomFightinfo.size() > limit &&
 				randomFightinfo.size() < limit) {
 			int rand = RandomUtils.nextInt(fightList.size());
 			FightInfo fight = fightList.get(rand);
@@ -223,7 +223,8 @@ public class RankService {
 		List<FightInfo> fightList = getFightInfoList();
 		FightInfo removeFight = null;
 		if (fightList.size() >= RankConst.FIGHTINFO_RANK_LIMIT) {
-			for (FightInfo fightinfo : fightList) {
+			for (int i = fightList.size() - 1; i >= 0; i--) {
+				FightInfo fightinfo = fightList.get(i);
 				if (fightinfo.getUser().getId() == fight.getUser().getId()) {
 					rankRedisService.deleteFightInfoRank(fightinfo);
 					rankRedisService.addFightInfoRank(fight);
