@@ -379,4 +379,11 @@ public class PropService {
 		
 		return RewardBean.initRewardInfoList(24010, 1 * composeCount);
 	}
+	
+	public void handlerSpecialPackage(UserBean user, int propId) {
+		if (propId == 39501)
+			user.setHeilong(1);
+		else if (propId == 39502)
+			user.setMohe(1);
+	}
 }

@@ -146,6 +146,8 @@ public class UserBean {
 	private int shenyuanPRD = 0;
 	private int rite = 0;
 	private String jewelkey = "";
+	private int mohe = 0;
+	private int heilong = 0;
 	/**
 	 * pvp魔晶产量
 	 */
@@ -1396,6 +1398,18 @@ public class UserBean {
 	public void setLotteryExpCount(int lotteryExpCount) {
 		this.lotteryExpCount = lotteryExpCount;
 	}
+	public int getMohe() {
+		return mohe;
+	}
+	public void setMohe(int mohe) {
+		this.mohe = mohe;
+	}
+	public int getHeilong() {
+		return heilong;
+	}
+	public void setHeilong(int heilong) {
+		this.heilong = heilong;
+	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);
 		setId(0);
@@ -1439,6 +1453,8 @@ public class UserBean {
 		builder.setTitleOrder(titleOrder);
 		builder.setFriendVip(friendVip);
 		builder.setSignName(signName);
+		builder.setMohe(mohe);
+		builder.setHeilong(heilong);
 		
 		return builder.build();
 	}
@@ -1585,6 +1601,8 @@ public class UserBean {
 		builder.setSignName(signName);
 		builder.setRite(rite);
 		builder.setLotteryExpCount(lotteryExpCount);
+		builder.setMohe(mohe);
+		builder.setHeilong(heilong);
 		
 		return builder.build();
 	}
@@ -1621,7 +1639,7 @@ public class UserBean {
 			e.printStackTrace();
 		}
 		
-		return jewelkey;
+		return "jewel" + jewel + jewelkey;
 	}
 	
 //	public Map<String, String> toMap() {

@@ -87,6 +87,8 @@ message UserInfo {
 	optional string signName = 98;
 	optional uint32 rite = 99;//0：未礼仪，1：已
 	optional uint32 lotteryExpCount = 100;
+	optional uint32 mohe = 101;
+	optional uint32 heilong = 102;
 }
 
 message JewelPool {

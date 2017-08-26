@@ -55,6 +55,8 @@ public class RewardService {
 	private UserTalentService userTalentService;
 	@Resource
 	private UnionService unionService;
+	@Resource
+	private PropService propService;
 	
 //	public void doReward(long userId, RewardBean reward) {
 //		UserBean bean = userService.getOther(userId);
@@ -110,6 +112,9 @@ public class RewardService {
 			userHeroService.addUserHero(user, heroloot.getHeroid(), heroloot.getStar(), (int)(heroloot.getCount() * rewardCount));
 		} else if (rewardId > RewardConst.PACKAGE) {
 			userPropService.addUserProp(user.getId(), rewardId, (int)rewardCount);
+			
+			//处理黑龙和魔核
+			propService.handlerSpecialPackage(user, rewardId);
 		} else if (rewardId > RewardConst.CHIP) {
 			userEquipService.addUserEquip(user, rewardId, (int)rewardCount, lasttime);
 		} else if (rewardId > RewardConst.EQUIPMENT) {

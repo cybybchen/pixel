@@ -134,7 +134,7 @@ public class UserService {
     		}
     	}
     	
-    	if (user != null && !user.getJewelkey().isEmpty() && !user.calJewelKey().equals(user.getJewelkey())) {
+    	if (user != null && !user.getJewelkey().isEmpty() && user.getJewelkey().startsWith("jewel") &&!user.calJewelKey().equals(user.getJewelkey())) {
     		sendMail(user.getUserName()+"(id:"+user.getId()+"),由于钻石校验异常，钻石：" + user.getJewel() + "(" + user.getJewelkey()+"),请手动检查确认");
     	}
     	
