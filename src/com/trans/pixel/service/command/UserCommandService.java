@@ -539,6 +539,7 @@ public class UserCommandService extends BaseCommandService {
 		userService.setUserIdByName(user.getServerId(), user.getUserName(),
 				user.getId());
 
+		userService.cache(user.getServerId(), user.buildShort());
 		userService.updateUser(user);
 
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
