@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -55,6 +56,71 @@ public class LogService {
 				sb.append(params.get(LogString.VERSION));
 				sb.append(LogString.SPLITER);
 				sb.append(now);
+				sb.append(LogString.SPLITER);
+				break;
+
+			case LogString.LOGTYPE_ARENA:
+				sb.append(LogString.LOGTYPE_ARENA_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ATTACK_TEAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DEFENSE_TEAM_LIST));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GETBONUS));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.BONUS));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_RECYCLE:
+				sb.append(LogString.LOGTYPE_RECYCLE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.GRADE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STAR));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROTYPE));
+				sb.append(LogString.SPLITER);
+				break;
+				
+			case LogString.LOGTYPE_SKILLSTONE:
+				sb.append(LogString.LOGTYPE_SKILLSTONE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STONEID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.STONECOUNT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROTYPE));
 				sb.append(LogString.SPLITER);
 				break;
 			
@@ -475,6 +541,8 @@ public class LogService {
 				sb.append(params.get(LogString.STAR));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.HEROTYPE));
 				sb.append(LogString.SPLITER);
 				break;
 				
@@ -901,7 +969,7 @@ public class LogService {
 		sendLog(params, LogString.LOGTYPE_GRADEUP);
 	}
 	
-	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value, int consumeValue, int rare, int type) {
+	public void sendStarupLog(int serverId, long userId, int heroid, int star, int value, int consumeValue, int rare, int type, String costlist) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.SERVERID, "" + serverId);
 		params.put(LogString.USERID, "" + userId);
@@ -910,6 +978,7 @@ public class LogService {
 		params.put(LogString.VALUE, "" + value);
 		params.put(LogString.CONSUMEVALUE, "" + consumeValue);
 		params.put(LogString.RARE, "" + rare);
+		params.put(LogString.CONSUMEHERO, "" + costlist);
 		params.put(LogString.HEROTYPE, "" + type);
 		
 		sendLog(params, LogString.LOGTYPE_STARUP);

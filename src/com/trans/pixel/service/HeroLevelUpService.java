@@ -225,9 +225,11 @@ public class HeroLevelUpService {
 			
 			addValue += costMaterial.getCount();
 		}
+		String costIds = "";
 		for (long infoId : costInfoIds) {
 			HeroInfoBean hero = userHeroService.selectUserHero(user.getId(), infoId);
 			if (hero != null) {
+				costIds+=hero.getHeroId()+",";
 				if(hero.isLock()){//不能分解
 					costInfoIds.clear();
 					return ErrorConst.HERO_LOCKED;
@@ -264,7 +266,7 @@ public class HeroLevelUpService {
 		/**
 		 * send starup log
 		 */
-		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, heroconfig.getQuality(), heroconfig.getPosition());
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, heroconfig.getQuality(), heroconfig.getPosition(), costIds);
 		
 		return SuccessConst.STAR_LEVELUP_SUCCESS;
 	}

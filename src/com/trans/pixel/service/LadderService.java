@@ -129,6 +129,7 @@ public class LadderService {
 		UserLadder enemy = map.get(position);
 		if (enemy == null)
 			return null;
+		int score = userLadder.getScore();
 		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret, enemy));
 		builder.setGrade(userLadderService.calGrade(builder.getScore()));
 		/**
@@ -150,7 +151,16 @@ public class LadderService {
 		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
 			userLadderService.addLadderRank(user, builder.build());
 		}
-		
+
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.ATTACK_TEAM_LIST, userTeamService.getTeamString(userTeamService.getTeamCache(user.getId()).getHeroInfoList()));
+		params.put(LogString.DEFENSE_TEAM_LIST, userTeamService.getTeamString(enemy.getTeam().getHeroInfoList()));
+		params.put(LogString.RESULT, ret == 0? "1" : "0");
+		params.put(LogString.GETBONUS, builder.getScore() - score+"");
+		params.put(LogString.BONUS, "" + builder.getScore());
+		logService.sendLog(params, LogString.LOGTYPE_ARENA);
 		return builder.build();
 	}
 	

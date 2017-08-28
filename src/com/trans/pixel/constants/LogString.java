@@ -150,6 +150,11 @@ public class LogString {
     public static final String APOKEDEX = "apokedex";
     public static final String ROLEID = "roleid";
     public static final String TALENTID = "talentid";
+    public static final String GETBONUS = "getbonus";
+    public static final String BONUS = "bonus";
+    public static final String CONSUMEHERO = "consumehero";
+	public static final String STONEID = "stoneid";
+	public static final String STONECOUNT = "stonecount";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -187,6 +192,9 @@ public class LogString {
 	public static final int LOGTYPE_ROLELEVELUP = 32;
 	public static final int LOGTYPE_HERORES = 33;
 	public static final int LOGTYPE_REWARDBOSS = 34;
+	public static final int LOGTYPE_ARENA = 35;
+	public static final int LOGTYPE_SKILLSTONE = 36;
+	public static final int LOGTYPE_RECYCLE = 37;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -207,6 +215,7 @@ public class LogString {
 	public static final String LOGTYPE_STARUP_STR = "Starup";
 	public static final String LOGTYPE_SKILLUP_STR = "Skillup";
 	public static final String LOGTYPE_HERORES_STR = "Herores";
+	public static final String LOGTYPE_RECYCLE_STR = "Recycle";
 	public static final String LOGTYPE_EQUIPUP_STR = "Equipup";
 	public static final String LOGTYPE_QIYUE_STR = "Qiyue";
 	public static final String LOGTYPE_QIANGHUA_STR = "Qianghua";
@@ -223,6 +232,8 @@ public class LogString {
 	public static final String LOGTYPE_RAID_STR = "Raid";
 	public static final String LOGTYPE_ROLELEVELUP_STR = "Rolelevelup";
 	public static final String LOGTYPE_REWARDBOSS_STR = "Rewardboss";
+	public static final String LOGTYPE_ARENA_STR = "Arena";
+	public static final String LOGTYPE_SKILLSTONE_STR = "Skillstone";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

@@ -310,8 +310,9 @@ public class HeroCommandService extends BaseCommandService {
 			params.put(LogString.STAR, "" + heroInfo.getStarLevel());
 //			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 			params.put(LogString.RARE, "" + heroconfig.getQuality());
+			params.put(LogString.HEROTYPE, "" + heroconfig.getPosition());
 			
-			logService.sendLog(params, LogString.LOGTYPE_HERORES);
+			logService.sendLog(params, LogString.LOGTYPE_RECYCLE);
 		}else{
 			isError = true;
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
@@ -403,6 +404,7 @@ public class HeroCommandService extends BaseCommandService {
 					params.put(LogString.STAR, "" + heroInfo.getStarLevel());
 					Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
 					params.put(LogString.RARE, "" + heroconfig.getQuality());
+					params.put(LogString.HEROTYPE, "" + heroconfig.getPosition());
 					
 					logService.sendLog(params, LogString.LOGTYPE_HERORES);
 				}else{
@@ -463,20 +465,43 @@ public class HeroCommandService extends BaseCommandService {
 			if (count > equip1.getEquipCount() + equip2.getEquipCount())
 				responseBuilder.setErrorCommand(buildErrorCommand(ErrorConst.ERROR_SKILL_STONE));
 			else{
+				Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+				Map<String, String> params = new HashMap<String, String>();
+				params.put(LogString.USERID, "" + user.getId());
+				params.put(LogString.SERVERID, "" + user.getServerId());
+				params.put(LogString.HEROID, ""+heroInfo.getHeroId());
+//				params.put(LogString.STONEID, );
+//				params.put(LogString.STONECOUNT, count+"");
+				params.put(LogString.RARE, ""+heroconfig.getQuality());
+				params.put(LogString.HEROTYPE, "" + heroconfig.getPosition());
+				
 				if(count > equip1.getEquipCount()) {
 					int leftcount = count - equip1.getEquipCount();
 					equip1.setEquipCount(0);
 					equip2.setEquipCount(equip2.getEquipCount()-leftcount);
 					userEquipService.updateUserEquip(equip1);
 					userEquipService.updateUserEquip(equip2);
+					if(leftcount < count) {//使用了两种技能石
+						params.put(LogString.STONEID, equip1.getEquipId()+"");
+						params.put(LogString.STONECOUNT, count-leftcount+"");
+						logService.sendLog(params, LogString.LOGTYPE_SKILLSTONE);
+					}
+					params.put(LogString.STONEID, equip2.getEquipId()+"");
+					params.put(LogString.STONECOUNT, leftcount+"");
+					logService.sendLog(params, LogString.LOGTYPE_SKILLSTONE);
 				}else{
 					equip1.setEquipCount(equip1.getEquipCount()-count);
 					userEquipService.updateUserEquip(equip1);
+					
+					params.put(LogString.STONEID, equip1.getEquipId()+"");
+					params.put(LogString.STONECOUNT, count+"");
+					logService.sendLog(params, LogString.LOGTYPE_SKILLSTONE);
 				}
 				heroInfo.setSp(heroInfo.getSp() + count);
 				userHeroService.updateUserHero(heroInfo);
 			}
 		}
+		
 		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
 		builder.setHeroId(heroId);
 		builder.addHeroInfo(heroInfo.buildHeroInfo());

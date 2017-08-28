@@ -130,6 +130,7 @@ public class RaidCommandService extends BaseCommandService{
 				continue;
 			int oldeventid = myraid.getEventid();
 			Raid raidconfig = redis.getRaid(myraid.getId());
+			logger.warn(raidconfig);
 			EventConfig event = levelRedisService.getEvent(myraid.getEventid());
 			if(myraid.getId() != cmd.getId() || myraid.getEventid() != cmd.getEventid() || raidconfig == null || event == null){
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);

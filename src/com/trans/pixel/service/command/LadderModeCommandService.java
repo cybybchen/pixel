@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LadderConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
@@ -37,6 +38,7 @@ import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserLadderService;
 import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.RedisService;
 
 @Service
@@ -59,6 +61,8 @@ public class LadderModeCommandService extends BaseCommandService {
 	private UserLadderService userLadderService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private UserTeamService userTeamService;
 	
 	public void ladderInfo(RequestLadderInfoCommand cmd, Builder responseBuilder, UserBean user) {
 		LadderSeason ladderSeason = userLadderService.getLadderSeason();
@@ -223,11 +227,12 @@ public class LadderModeCommandService extends BaseCommandService {
 			return;
 		}
 		
+		
 		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
 		UserLadder newUserLadder = ladderService.submitLadderResult(user, cmd.getRet(), cmd.getType(), cmd.getPosition());
-		if (newUserLadder != null) 
+		if (newUserLadder != null) {
 			userLadderBuilder.addUser(newUserLadder);
-		else
+		}else
 			userLadderBuilder.addUser(userLadder);
 		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
 		
