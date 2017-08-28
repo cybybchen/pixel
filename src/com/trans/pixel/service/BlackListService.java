@@ -99,6 +99,13 @@ public class BlackListService {
 		return bean.isNoranklist();
 	}
 
+	public boolean isNodiscuss(long userid){
+		BlackListBean bean = redis.getBlackList(userid);
+		if(bean == null)
+			return false;
+		return bean.isNodiscuss();
+	}
+	
 	public boolean isNoaccount(String account){
 		return redis.isNoaccount(account);
 	}

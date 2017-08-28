@@ -12,6 +12,7 @@ public class BlackListBean {
 	private boolean nologin = false;
 	private boolean noaccount = false;
 	private boolean noidfa = false;
+	private boolean nodiscuss = false;
 	public long getUserId() {
 		return userId;
 	}
@@ -71,5 +72,11 @@ public class BlackListBean {
 	}
 	public void setNoidfa(boolean noidfa) {
 		this.noidfa = noidfa;
+	}
+	public boolean isNodiscuss() {
+		return nodiscuss;
+	}
+	public void setNodiscuss(boolean nodiscuss) {
+		this.nodiscuss = nodiscuss;
 	}
 }

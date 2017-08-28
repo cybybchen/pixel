@@ -130,6 +130,10 @@
 					    <label for="blacklist-noidfa">禁设备</label>
 					    <input name="noidfa" id="blacklist-noidfa" type="checkbox">
 					</div>
+					<div class="ui-field-contain" style="margin:-17px 0;padding:0 5px;">
+					    <label for="blacklist-nodiscuss">禁评论</label>
+					    <input name="nodiscuss" id="blacklist-nodiscuss" type="checkbox">
+					</div>
 				</div>
 				<div class="ui-block-b" style="padding:0 5px;">
 					<div class="ui-field-contain">
@@ -162,6 +166,7 @@
 					<th data-priority="3">登陆</th>
 					<th data-priority="3">账号</th>
 					<th data-priority="3">设备</th>
+					<th data-priority="3">评论</th>
 					<th data-priority="1">操作</th>
 				</tr>
 			</thead>

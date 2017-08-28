@@ -969,6 +969,7 @@ function showBlackListTable(json){
         $(children[7]).html(value["nologin"] ? "√" : "×");
         $(children[8]).html(value["noaccount"] ? "√" : "×");
         $(children[9]).html(value["noidfa"] ? "√" : "×");
+        $(children[10]).html(value["nodiscuss"] ? "√" : "×");
         index--;
     });
 }
@@ -1222,6 +1223,7 @@ $(document).ready(function() {
         data["nologin"] =  $('input[name="nologin"]:visible').is(':checked');
         data["noaccount"] =  $('input[name="noaccount"]:visible').is(':checked');
         data["noidfa"] =  $('input[name="noidfa"]:visible').is(':checked');
+        data["nodiscuss"] =  $('input[name="nodiscuss"]:visible').is(':checked');
         var json = buildConfigJson("update-BlackList", data);
         json["userId"] =  Number($('input[name="userid"]:visible').val());
         json["userName"] =  $('input[name="username"]:visible').val();

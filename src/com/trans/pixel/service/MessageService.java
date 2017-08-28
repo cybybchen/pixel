@@ -12,6 +12,7 @@ import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.FightInfo;
+import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
 import com.trans.pixel.service.redis.MessageRedisService;
 
@@ -27,6 +28,8 @@ public class MessageService {
 	private RewardTaskService rewardTaskService;
 	@Resource
 	private FightInfoService fightInfoService;
+	@Resource
+	private BlackListService blackListService;
 
 	public List<MessageBoardBean> getMessageBoardList(int type, UserBean user, int itemId) {
 		switch (type) {
@@ -218,6 +221,18 @@ public class MessageService {
 		List<MessageBoardBean> messageBoardList = new ArrayList<MessageBoardBean>();
 		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_top(user.getServerId(), itemId));
 		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_normal(user.getServerId(), itemId));
+		
+		for (int i = 0; i < messageBoardList.size(); ++i) {
+			MessageBoardBean message = messageBoardList.get(i);
+			UserInfo userinfo = message.getUser();
+			if (userinfo == null)
+				continue;
+			
+			if (userinfo.getId() != user.getId() && blackListService.isNodiscuss(user.getId())) {
+				messageBoardList.remove(i);
+				i--;
+			}
+		}
 		
 		return messageBoardList;
 	}
