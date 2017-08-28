@@ -214,20 +214,11 @@ public class ServerTitleService {
 	private void handlerUnionTitle(int serverId, Union union, int rank, Map<Integer, Title> map) {
 		log.warn("union title ranks is:" + union);
 		List<Long> others = new ArrayList<Long>();
-//		Set<String> userIds = unionRedisService.getMemberIds(union.getId());
-		List<UserInfo> users = unionRedisService.getMembers(union.getId(), serverId);
-		Collections.sort(users, new Comparator<UserInfo>() {
-			public int compare(UserInfo user1, UserInfo user2) {
-				if(user1.getZhanli() > user2.getZhanli())
-					return -1;
-				else 
-					return 1;
-			}
-		});
-		for (UserInfo userinfo : users) {//会长
-			if (userinfo.getUnionJob() == UnionConst.UNION_HUIZHANG) {
-				long userId = userinfo.getId();
-				UserBean user = userService.getUserOther(userId);
+		Set<String> userIds = unionRedisService.getMemberIds(union.getId());
+		for (String userIdStr : userIds) {
+			long userId = TypeTranslatedUtil.stringToLong(userIdStr);
+			UserBean user = userService.getUserOther(userId);
+			if (user.getUnionJob() == UnionConst.UNION_HUIZHANG) {//会长
 				switch (rank) {
 					case 1:
 						handlerTitle(user, 4, map);
@@ -245,21 +236,10 @@ public class ServerTitleService {
 						break;
 				}
 				break;
-			} 
-		}
-
-		int rankInit = 1;
-		for (UserInfo userinfo : users) {//普通成员
-			if (userinfo.getUnionJob() == UnionConst.UNION_HUIZHANG) 
-				continue;
-			if (rankInit > 4)
-				break;
-			long userId = userinfo.getId();
-			UserBean user = userService.getUserOther(userId);
-			others.add(userId);
-			handlerTitle(user, 18, map, true);
-			
-			rankInit++;
+			} else {
+				others.add(userId);
+				handlerTitle(user, 18, map, true);
+			}
 		}
 		
 		updateServerTitleByTitleId(serverId, 18, others);
