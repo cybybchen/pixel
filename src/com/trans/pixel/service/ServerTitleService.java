@@ -115,6 +115,8 @@ public class ServerTitleService {
 		deleteServerTitleByTitleId(serverId, 13);
 		deleteServerTitleByTitleId(serverId, 17);
 		Set<TypedTuple<String>> ranks = userLadderRedisService.getLadderRankList(serverId, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
+		//删除排行榜
+		userLadderRedisService.renameLadderRank(serverId);
 		int rankInit = 1;
 		List<Long> others = new ArrayList<Long>();
 		for (TypedTuple<String> rank : ranks) {
@@ -137,9 +139,6 @@ public class ServerTitleService {
 		}
 		
 		updateServerTitleByTitleId(serverId, 17, others);
-		
-		//删除排行榜
-		userLadderRedisService.renameLadderRank(serverId);
 	}
 	
 	//handler recharge
@@ -158,6 +157,9 @@ public class ServerTitleService {
 		deleteServerTitleByTitleId(serverId, 19);
 //		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 		Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.TYPE_VIP_HUOYUE, 1000L, 10000000L);
+		//删除排行榜
+//		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
+		rankRedisService.renameRank(serverId, RankConst.TYPE_VIP_HUOYUE);
 		int rankInit = 1;
 		List<Long> others = new ArrayList<Long>();
 		for (TypedTuple<String> rank : ranks) {
@@ -181,10 +183,6 @@ public class ServerTitleService {
 		}
 	
 		updateServerTitleByTitleId(serverId, 19, others);
-		
-		//删除排行榜
-//		rankRedisService.renameRank(serverId, RankConst.TYPE_RECHARGE);
-		rankRedisService.renameRank(serverId, RankConst.TYPE_VIP_HUOYUE);
 	}
 	
 	//handler union
@@ -292,6 +290,10 @@ public class ServerTitleService {
 			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.RAID_RANK_PREFIX + raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 			if (ranks.isEmpty())
 				continue;
+			
+			//删除排行榜
+			rankRedisService.renameRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
+			
 			int rankInit = 1;
 			List<Long> others = new ArrayList<Long>();
 			for (TypedTuple<String> rank : ranks) {
@@ -314,9 +316,6 @@ public class ServerTitleService {
 			}
 		
 			updateServerTitleByTitleId(serverId, 20, others);
-			
-			//删除排行榜
-			rankRedisService.renameRank(serverId, raid.getId() + RankConst.RAID_RANK_PREFIX);
 		}
 	}
 	
