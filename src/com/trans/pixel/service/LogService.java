@@ -102,6 +102,21 @@ public class LogService {
 				sb.append(params.get(LogString.HEROTYPE));
 				sb.append(LogString.SPLITER);
 				break;
+
+			case LogString.LOGTYPE_LOOTREWARDBOSS:
+				sb.append(LogString.LOGTYPE_LOOTREWARDBOSS_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TICKETCOUNT));
+				sb.append(LogString.SPLITER);
+				break;
 				
 			case LogString.LOGTYPE_SKILLSTONE:
 				sb.append(LogString.LOGTYPE_SKILLSTONE_STR);

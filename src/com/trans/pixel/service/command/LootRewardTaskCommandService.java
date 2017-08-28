@@ -1,10 +1,14 @@
 package com.trans.pixel.service.command;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -53,7 +57,13 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
-		
+
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.TYPE, cmd.getId()+"");
+			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
+			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
 			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
 		}
 		

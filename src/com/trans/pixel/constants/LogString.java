@@ -155,6 +155,7 @@ public class LogString {
     public static final String CONSUMEHERO = "consumehero";
 	public static final String STONEID = "stoneid";
 	public static final String STONECOUNT = "stonecount";
+	public static final String TICKETCOUNT = "ticketcount";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -195,6 +196,7 @@ public class LogString {
 	public static final int LOGTYPE_ARENA = 35;
 	public static final int LOGTYPE_SKILLSTONE = 36;
 	public static final int LOGTYPE_RECYCLE = 37;
+	public static final int LOGTYPE_LOOTREWARDBOSS = 38;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -234,6 +236,7 @@ public class LogString {
 	public static final String LOGTYPE_REWARDBOSS_STR = "Rewardboss";
 	public static final String LOGTYPE_ARENA_STR = "Arena";
 	public static final String LOGTYPE_SKILLSTONE_STR = "Skillstone";
+	public static final String LOGTYPE_LOOTREWARDBOSS_STR = "Lootrewardboss";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;
