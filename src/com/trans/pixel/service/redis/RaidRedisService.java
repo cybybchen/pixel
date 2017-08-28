@@ -62,7 +62,8 @@ public class RaidRedisService extends RedisService{
 				if(myraid.hasEndtime()) {
 					raid.setLeftcount(myraid.getLeftcount());
 					raid.setEndtime(myraid.getEndtime());
-				}else {
+				}
+				if(raid.getMaxlevel() <= 3){
 					raid.setMaxlevel(myraid.getMaxlevel());
 				}
 			}
