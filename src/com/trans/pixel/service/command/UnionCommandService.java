@@ -439,7 +439,7 @@ public class UnionCommandService extends BaseCommandService {
 		Union enemyUnion = unionService.getEnemyUnion(user.getUnionId());
 		if (enemyUnion != null)
 			builder.setEnemyUnion(enemyUnion);
-		builder.setCountTime(unionService.calCountTime());
+		builder.setCountTime(unionService.calCountTime(user.getUnionId()));
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 	
@@ -473,7 +473,7 @@ public class UnionCommandService extends BaseCommandService {
 		builder.addAllApplyRecord(unionService.getUnionFightApply(user.getUnionId()));
 		builder.addAllEnemyRecord(unionService.getUnionFightEnemy(user.getUnionId()));
 		builder.setStatus(status);
-		builder.setCountTime(unionService.calCountTime());
+		builder.setCountTime(unionService.calCountTime(user.getUnionId()));
 		responseBuilder.setUnionFightApplyRecordCommand(builder.build());
 	}
 	

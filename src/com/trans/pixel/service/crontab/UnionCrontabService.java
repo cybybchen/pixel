@@ -47,15 +47,15 @@ public class UnionCrontabService {
 			unionService.doUndeadUnionBossRankReward(serverId);
 	}
 	
-//	@Scheduled(cron = "0 0 0 * * ? ")
-	@Scheduled(cron = "0 0/1 * * * ? ")
+	@Scheduled(cron = "0 0 0 * * ? ")
+//	@Scheduled(cron = "0 0/1 * * * ? ")
 //	@Scheduled(cron = "0 0/3 * * * ? ")
 	public void unionFight() {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
 		
-		unionService.dayAdd();
-		unionService.setUnionFightTime();
+//		unionService.dayAdd();
+//		unionService.setUnionFightTime();
 		
 		
 //		log.error("cheatid is" + unionRedisService.addUnionFightCheatStatus());

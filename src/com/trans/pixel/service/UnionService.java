@@ -1296,7 +1296,7 @@ public class UnionService extends FightService{
 	 */
 	public ResultConst applyFight(UserBean user) {
 		Union.Builder union = getBaseUnion(user);
-		if (union.getZhanli() < 10000)
+		if (union.getZhanli() < 150000)
 			return ErrorConst.UNION_ZHANLI_IS_NOT_ENOUGH_ERROR;
 					
 		redis.applyFight(user);
@@ -1619,7 +1619,7 @@ public class UnionService extends FightService{
 		}
 		UNION_FIGHT_STATUS status = UNION_FIGHT_STATUS.NO_TIME;
 		int day = DateUtil.getDayOfWeek();
-		day = DAY;
+//		day = DAY;
 		
 		log.error("current week day is:" + day);
 		if (day == UnionConst.FIGHT_APPLY_DAY)//周四
@@ -1737,24 +1737,24 @@ public class UnionService extends FightService{
 		return noticeList;
 	}
 	
-	public int calCountTime() {
-//		UNION_FIGHT_STATUS status = calUnionFightStatus(0);
-//		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
-//				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
-//				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
-//			return (int)(RedisService.nextDay(0) - RedisService.now());
-//		
-//		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
-//			return (int)(RedisService.today(12) - RedisService.now());
-//		
-//		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
-//		logger.debug("currenct time is:" + DateUtil.getDate());
-//		
-//		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+	public int calCountTime(int unionId) {
+		UNION_FIGHT_STATUS status = calUnionFightStatus(unionId);
+		if (status.equals(UNION_FIGHT_STATUS.APPLY_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)
+				|| status.equals(UNION_FIGHT_STATUS.FIGHT_TIME))
+			return (int)(RedisService.nextDay(0) - RedisService.now());
 		
-		if (NEXT_TIME == 0)
-			setUnionFightTime();
-		return NEXT_TIME - RedisService.now();
+		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
+			return (int)(RedisService.today(12) - RedisService.now());
+		
+		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
+		logger.debug("currenct time is:" + DateUtil.getDate());
+		
+		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+		
+//		if (NEXT_TIME == 0)
+//			setUnionFightTime();
+//		return NEXT_TIME - RedisService.now();
 	}
 	
 	public static int NEXT_TIME = 0;
