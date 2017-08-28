@@ -2,6 +2,7 @@ package com.trans.pixel.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -89,6 +90,8 @@ public class MessageService {
 	private List<MessageBoardBean> getMessageBoardList(UserBean user) {
 		List<MessageBoardBean> messageBoardList = messageRedisService.getMessageBoardList(user.getServerId(), user.getReceiveMessageTimeStamp());
 		
+		addUserInfotoMessage(user.getServerId(), messageBoardList);
+		
 		user.setReceiveMessageTimeStamp(System.currentTimeMillis());
 		userService.updateUser(user);
 		
@@ -124,6 +127,8 @@ public class MessageService {
 	
 	private List<MessageBoardBean> getUnionMessageBoardList(UserBean user) {
 		List<MessageBoardBean> messageBoardList = messageRedisService.getMessageBoardListOfUnion(user.getUnionId(), user.getReceiveMessageTimeStamp());
+		
+		addUserInfotoMessage(user.getServerId(), messageBoardList);
 		
 		user.setReceiveMessageTimeStamp(System.currentTimeMillis());
 		userService.updateUser(user);
@@ -222,13 +227,15 @@ public class MessageService {
 		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_top(user.getServerId(), itemId));
 		messageBoardList.addAll(messageRedisService.getHeroMessageBoardList_normal(user.getServerId(), itemId));
 		
+		addUserInfotoMessage(user.getServerId(), messageBoardList);
+		
 		for (int i = 0; i < messageBoardList.size(); ++i) {
 			MessageBoardBean message = messageBoardList.get(i);
 			UserInfo userinfo = message.getUser();
 			if (userinfo == null)
 				continue;
 			
-			if (userinfo.getId() != user.getId() && blackListService.isNodiscuss(user.getId())) {
+			if (userinfo.getId() != user.getId() && blackListService.isNodiscuss(userinfo.getId())) {
 				messageBoardList.remove(i);
 				i--;
 			}
@@ -236,4 +243,22 @@ public class MessageService {
 		
 		return messageBoardList;
 	}
+	
+	private void addUserInfotoMessage(int serverId, List<MessageBoardBean> messageList) {
+		List<Long> userIds = new ArrayList<Long>();
+		for (MessageBoardBean message : messageList) {
+			if (message.getUser() != null) {
+				userIds.add(message.getUser().getId());
+			}
+		}
+		
+		Map<Long, UserInfo> userMap = userService.getCachesMap(serverId, userIds);
+		
+		for (MessageBoardBean message : messageList) {
+			if (message.getUser() != null) {
+				message.setUser(userMap.get(message.getUser().getId()));
+			}
+		}
+	}
+	
 }

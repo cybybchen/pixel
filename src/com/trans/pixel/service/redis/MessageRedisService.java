@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Resource;
+
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.BoundZSetOperations;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MessageBoardBean;
+import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.service.UserService;
 
 @Repository
 public class MessageRedisService extends RedisService {

@@ -546,6 +546,18 @@ public class UserService {
 	}
 	
 	/**
+	 * get other user map
+	 */
+	public <T> Map<Long, UserInfo> getCachesMap(int serverId, Collection<T> userIds){
+		List<UserInfo> userList = userRedisService.getCaches(serverId, userIds);
+		Map<Long, UserInfo> map = new HashMap<Long, UserInfo>();
+		for (UserInfo user : userList)
+			map.put(user.getId(), user);
+		
+		return map;
+	}
+	
+	/**
 	 * get other user
 	 */
 	public List<UserInfo> getCaches(int serverId, Set<TypedTuple<String>> ranks){

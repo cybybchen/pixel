@@ -182,6 +182,7 @@
 					<th>1</th>
 					<th>1</th>
 					<th>1</th>
+					<th>1</th>
 					<td><a href="#"  class="del-btn table-btn ui-btn ui-btn-inline">删除</a></td>
 				</tr>
 			</tbody>
