@@ -235,7 +235,6 @@ public class ServerTitleService {
 					default:
 						break;
 				}
-				break;
 			} else {
 				others.add(userId);
 				handlerTitle(user, 18, map, true);
