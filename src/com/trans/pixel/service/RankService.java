@@ -226,8 +226,10 @@ public class RankService {
 			for (int i = fightList.size() - 1; i >= 0; i--) {
 				FightInfo fightinfo = fightList.get(i);
 				if (fightinfo.getUser().getId() == fight.getUser().getId()) {
-					rankRedisService.deleteFightInfoRank(fightinfo);
-					rankRedisService.addFightInfoRank(fight);
+					if (fightinfo.getScore() <= fight.getScore()) {
+						rankRedisService.deleteFightInfoRank(fightinfo);
+						rankRedisService.addFightInfoRank(fight);
+					}
 					return;
 				}
 			}
