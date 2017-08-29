@@ -82,6 +82,9 @@ public class EquipCommandService extends BaseCommandService {
 		            responseBuilder.setErrorCommand(errorCommand);
 		            return;
 				}
+				
+				if (count > 1)
+					count = 1;
 			}
 			
 			//合成魔龙，魔核
