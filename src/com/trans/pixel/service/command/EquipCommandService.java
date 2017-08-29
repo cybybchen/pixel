@@ -14,6 +14,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
+import com.trans.pixel.model.userinfo.UserPropBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -31,6 +32,7 @@ import com.trans.pixel.service.EquipService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserEquipService;
+import com.trans.pixel.service.UserPropService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
@@ -50,6 +52,8 @@ public class EquipCommandService extends BaseCommandService {
 	private LogService logService;
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private UserPropService userPropService;
 	
 	public void equipLevelup(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseEquipComposeCommand.Builder builder = ResponseEquipComposeCommand.newBuilder();
@@ -67,7 +71,7 @@ public class EquipCommandService extends BaseCommandService {
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
-		} else {
+		} else if (levelUpId < RewardConst.CAILIAO) {
 			Chip chip = equipService.getChip(levelUpId);
 			if (chip != null && chip.getAim() > RewardConst.EQUIPMENT && chip.getAim() < RewardConst.CHIP) {
 				UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, chip.getAim());
@@ -79,22 +83,39 @@ public class EquipCommandService extends BaseCommandService {
 		            return;
 				}
 			}
+			
+			//合成魔龙，魔核
+			if (chip != null && (chip.getItemid() == 23001 || chip.getItemid() == 23002)) {
+				UserPropBean userProp = userPropService.selectUserProp(user.getId(), chip.getAim());
+				if (userProp != null && userProp.getPropCount() > 0) {
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.PROP_IS_EXIST_ERROR);
+					
+					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.PROP_IS_EXIST_ERROR);
+		            responseBuilder.setErrorCommand(errorCommand);
+		            return;
+				}
+				
+				if (count > 1)//黑龙和魔核只能合成1个
+					count = 1;
+			}
 		}
 		
 		List<UserEquipBean> userEquipList = new ArrayList<UserEquipBean>();
-		int composeEquipId = equipService.equipCompose(user, levelUpId, count, userEquipList);
+		MultiReward rewards = equipService.equipCompose(user, levelUpId, count, userEquipList);
 		
-		if (composeEquipId == 0) {
+		if (rewards.getLootCount() == 0) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_EQUIP);
 			
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_EQUIP);
             responseBuilder.setErrorCommand(errorCommand);
-		}else if (composeEquipId > 0) {
-			if (composeEquipId > RewardConst.HERO)
-				pushCommandService.pushRewardCommand(responseBuilder, user, composeEquipId);
-			builder.setEquipId(composeEquipId);
-			builder.setCount(count);
-			responseBuilder.setEquipComposeCommand(builder.build());
+		}else {
+//			if (composeEquipId > RewardConst.PACKAGE)
+//				pushCommandService.pushRewardCommand(responseBuilder, user, composeEquipId);
+//			builder.setEquipId(composeEquipId);
+//			builder.setCount(count);
+//			responseBuilder.setEquipComposeCommand(builder.build());
+			
+			handleRewards(responseBuilder, user, rewards);
 		}
 			
 		pushCommandService.pushUserEquipListCommand(responseBuilder, user, userEquipList);

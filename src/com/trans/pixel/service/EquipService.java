@@ -67,15 +67,17 @@ public class EquipService {
 		return equipRedisService.getEquip(itemId);
 	}
 	
-	public int equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {
-		int composeEquipId = 0;;
+	public MultiReward equipCompose(UserBean user, int levelUpId, int count, List<UserEquipBean> userEquipList) {
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+//		int composeEquipId = 0;;
 		if (levelUpId < RewardConst.CHIP) {//合成装备
 			Equip equip = getEquip(levelUpId);
 			boolean equipLevelUpRet = equipLevelUp(user.getId(), equip, userEquipList);
 			if (equipLevelUpRet) {
-				userEquipService.addUserEquip(user, equip.getId(), 1, 0);
-				composeEquipId = levelUpId;
-				userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
+//				userEquipService.addUserEquip(user, equip.getId(), 1, 0);
+//				composeEquipId = levelUpId;
+//				userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
+				rewards.addLoot(RewardBean.initRewardInfo(equip.getId(), 1));
 			}
 		} else { //合成碎片
 			Chip chip = equipRedisService.getChip(levelUpId);
@@ -84,17 +86,19 @@ public class EquipService {
 				if (userEquip != null && userEquip.getEquipCount() >= chip.getCount() * count) {
 					userEquip.setEquipCount(userEquip.getEquipCount() - chip.getCount() * count);
 					userEquipService.updateUserEquip(userEquip);
-					rewardService.doReward(user, chip.getAim(), count);
+					rewards.addLoot(RewardBean.initRewardInfo(chip.getAim(), count));
+//					rewardService.doReward(user, chip.getAim(), count);
 //						userEquipService.addUserEquip(user.getId(), chip.getAim(), count);
-					composeEquipId = chip.getAim();
+//					composeEquipId = chip.getAim();
 						userEquipList.add(userEquip);
-						if (composeEquipId < RewardConst.HERO)
-							userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
+//						if (composeEquipId < RewardConst.HERO)
+//							userEquipList.add(userEquipService.selectUserEquip(user.getId(), composeEquipId));
 				}
 			}	
 		}
 			
-		return composeEquipId;
+		return rewards.build();
+//		return composeEquipId;
 	}
 	
 	private List<UserEquipBean> getCostEquipList(Equip equip) {
