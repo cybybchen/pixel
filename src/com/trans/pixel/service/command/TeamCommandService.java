@@ -112,6 +112,7 @@ public class TeamCommandService extends BaseCommandService {
 				user);
 		if (cmd.hasScore() && cmd.getScore() > 0) {
 			builder.setUser(user.buildShort());
+			builder.setScore(cmd.getScore());
 			rankService.addFightInfoRank(builder.build());
 		}
 	}
