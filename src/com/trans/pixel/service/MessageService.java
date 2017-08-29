@@ -12,6 +12,7 @@ import com.trans.pixel.constants.MessageConst;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.model.MessageBoardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Base.FIGHTINFO_TYPE;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.MessageBoardProto.RequestCreateMessageBoardCommand;
@@ -51,7 +52,7 @@ public class MessageService {
 				createMessageBoard(user, cmd.getMessage());
 				break;
 			case MessageConst.TYPE_MESSAGE_UNION:
-				createUnionMessageBoard(user, cmd.getMessage(), cmd.getGroupId(), cmd.getBossId(), cmd.getFightId());
+				createUnionMessageBoard(user, cmd.getMessage(), cmd.getGroupId(), cmd.getBossId(), cmd.getFightId(), cmd.getInfotype());
 				break;
 			case MessageConst.TYPE_MESSAGE_HERO:
 				createHeroMessageBoard(user, cmd.getItemId(), cmd.getMessage());
@@ -136,22 +137,19 @@ public class MessageService {
 		return messageBoardList;
 	}
 	
-	private void createUnionMessageBoard(UserBean user, String message, int groupId, int bossId, int fightId) {
+	private void createUnionMessageBoard(UserBean user, String message, int groupId, int bossId, int fightId, FIGHTINFO_TYPE infotype) {
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageBoard.setGroupId(groupId);
 		messageBoard.setBossId(bossId);
 		if (groupId != 0 && bossId != 0) {
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
-		}else if(fightId !=0) {
-			List<FightInfo.Builder> list = fightInfoService.getFightInfoList(user);
-			for(FightInfo.Builder info : list){
-				if(fightId == info.getId()){
-					messageBoard.setMessage(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
-					messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
-					messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
-					break;
-				}
+		}else if(fightId != 0) {
+			FightInfo info = fightInfoService.queryFightInfo(user, infotype, fightId);
+			if(info != null){
+				messageBoard.setMessage(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
+				messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
+				messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 			}
 		}else{
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);

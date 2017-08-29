@@ -25984,6 +25984,16 @@ public final class PVPProto {
      * <code>optional uint32 fightId = 5;</code>
      */
     int getFightId();
+
+    // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+     */
+    boolean hasInfotype();
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+     */
+    com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestSendMailCommand}
@@ -26059,6 +26069,17 @@ public final class PVPProto {
             case 40: {
               bitField0_ |= 0x00000010;
               fightId_ = input.readUInt32();
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                infotype_ = value;
+              }
               break;
             }
           }
@@ -26216,12 +26237,29 @@ public final class PVPProto {
       return fightId_;
     }
 
+    // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;
+    public static final int INFOTYPE_FIELD_NUMBER = 6;
+    private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE infotype_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+     */
+    public boolean hasInfotype() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+     */
+    public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype() {
+      return infotype_;
+    }
+
     private void initFields() {
       toUserId_ = 0L;
       content_ = "";
       relatedId_ = 0;
       type_ = 0;
       fightId_ = 0;
+      infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -26262,6 +26300,9 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(5, fightId_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeEnum(6, infotype_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -26290,6 +26331,10 @@ public final class PVPProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(5, fightId_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, infotype_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -26417,6 +26462,8 @@ public final class PVPProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         fightId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -26465,6 +26512,10 @@ public final class PVPProto {
           to_bitField0_ |= 0x00000010;
         }
         result.fightId_ = fightId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.infotype_ = infotype_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -26497,6 +26548,9 @@ public final class PVPProto {
         }
         if (other.hasFightId()) {
           setFightId(other.getFightId());
+        }
+        if (other.hasInfotype()) {
+          setInfotype(other.getInfotype());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -26755,6 +26809,42 @@ public final class PVPProto {
       public Builder clearFightId() {
         bitField0_ = (bitField0_ & ~0x00000010);
         fightId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;
+      private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+       */
+      public boolean hasInfotype() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+       */
+      public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype() {
+        return infotype_;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+       */
+      public Builder setInfotype(com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        infotype_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 6;</code>
+       */
+      public Builder clearInfotype() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         onChanged();
         return this;
       }
@@ -28801,15 +28891,17 @@ public final class PVPProto {
       "\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006us" +
       "erId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpL" +
       "evelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022" +
-      "\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"m\n\026RequestS" +
-      "endMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007cont",
-      "ent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002" +
-      "(\005\022\017\n\007fightId\030\005 \001(\r\">\n\035RequestBrotherMin" +
-      "eInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n\tbrotherId\030\002 " +
-      "\002(\003\"*\n\034RequestRefreshPVPMineCommand\022\n\n\002i" +
-      "d\030\001 \002(\005\"i\n\031ResponsePVPMapListCommand\022-\n\005" +
-      "field\030\001 \003(\0132\036.com.trans.pixel.protoc.PVP" +
-      "Map\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buff\030\003 \001(\005"
+      "\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"\247\001\n\026Request" +
+      "SendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007con",
+      "tent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 " +
+      "\002(\005\022\017\n\007fightId\030\005 \001(\r\0228\n\010infotype\030\006 \001(\0162&" +
+      ".com.trans.pixel.protoc.FIGHTINFO_TYPE\">" +
+      "\n\035RequestBrotherMineInfoCommand\022\n\n\002id\030\001 " +
+      "\002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*\n\034RequestRefresh" +
+      "PVPMineCommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePV" +
+      "PMapListCommand\022-\n\005field\030\001 \003(\0132\036.com.tra" +
+      "ns.pixel.protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022" +
+      "\014\n\004buff\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29013,7 +29105,7 @@ public final class PVPProto {
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor,
-              new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", "FightId", });
+              new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", "FightId", "Infotype", });
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor =
             getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_fieldAccessorTable = new

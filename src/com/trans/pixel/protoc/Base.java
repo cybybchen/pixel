@@ -8,6 +8,97 @@ public final class Base {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code com.trans.pixel.protoc.FIGHTINFO_TYPE}
+   */
+  public enum FIGHTINFO_TYPE
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TYPE_SELF = 0;</code>
+     */
+    TYPE_SELF(0, 0),
+    /**
+     * <code>TYPE_SAVE = 1;</code>
+     */
+    TYPE_SAVE(1, 1),
+    /**
+     * <code>TYPE_RANK = 2;</code>
+     */
+    TYPE_RANK(2, 2),
+    ;
+
+    /**
+     * <code>TYPE_SELF = 0;</code>
+     */
+    public static final int TYPE_SELF_VALUE = 0;
+    /**
+     * <code>TYPE_SAVE = 1;</code>
+     */
+    public static final int TYPE_SAVE_VALUE = 1;
+    /**
+     * <code>TYPE_RANK = 2;</code>
+     */
+    public static final int TYPE_RANK_VALUE = 2;
+
+
+    public final int getNumber() { return value; }
+
+    public static FIGHTINFO_TYPE valueOf(int value) {
+      switch (value) {
+        case 0: return TYPE_SELF;
+        case 1: return TYPE_SAVE;
+        case 2: return TYPE_RANK;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>() {
+            public FIGHTINFO_TYPE findValueByNumber(int number) {
+              return FIGHTINFO_TYPE.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Base.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final FIGHTINFO_TYPE[] VALUES = values();
+
+    public static FIGHTINFO_TYPE valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private FIGHTINFO_TYPE(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.FIGHTINFO_TYPE)
+  }
+
   public interface UserInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -34764,7 +34855,8 @@ public final class Base {
       "erInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002" +
       " \001(\t\022.\n\004user\030\005 \001(\0132 .com.trans.pixel.pro",
       "toc.UserInfo\022\014\n\004time\030\006 \001(\t\022\r\n\005score\030\007 \001(" +
-      "\r\022\013\n\003win\030\010 \001(\010"
+      "\r\022\013\n\003win\030\010 \001(\010*=\n\016FIGHTINFO_TYPE\022\r\n\tTYPE" +
+      "_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022\r\n\tTYPE_RANK\020\002"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

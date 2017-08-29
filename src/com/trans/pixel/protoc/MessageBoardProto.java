@@ -8822,6 +8822,16 @@ public final class MessageBoardProto {
      * </pre>
      */
     int getItemId();
+
+    // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+     */
+    boolean hasInfotype();
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+     */
+    com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCreateMessageBoardCommand}
@@ -8906,6 +8916,17 @@ public final class MessageBoardProto {
             case 48: {
               bitField0_ |= 0x00000020;
               itemId_ = input.readInt32();
+              break;
+            }
+            case 56: {
+              int rawValue = input.readEnum();
+              com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(7, rawValue);
+              } else {
+                bitField0_ |= 0x00000040;
+                infotype_ = value;
+              }
               break;
             }
           }
@@ -9079,6 +9100,22 @@ public final class MessageBoardProto {
       return itemId_;
     }
 
+    // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;
+    public static final int INFOTYPE_FIELD_NUMBER = 7;
+    private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE infotype_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+     */
+    public boolean hasInfotype() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+     */
+    public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype() {
+      return infotype_;
+    }
+
     private void initFields() {
       type_ = 0;
       message_ = "";
@@ -9086,6 +9123,7 @@ public final class MessageBoardProto {
       bossId_ = 0;
       fightId_ = 0;
       itemId_ = 0;
+      infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9121,6 +9159,9 @@ public final class MessageBoardProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, itemId_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeEnum(7, infotype_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9153,6 +9194,10 @@ public final class MessageBoardProto {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, itemId_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(7, infotype_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9286,6 +9331,8 @@ public final class MessageBoardProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         itemId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -9338,6 +9385,10 @@ public final class MessageBoardProto {
           to_bitField0_ |= 0x00000020;
         }
         result.itemId_ = itemId_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.infotype_ = infotype_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9373,6 +9424,9 @@ public final class MessageBoardProto {
         }
         if (other.hasItemId()) {
           setItemId(other.getItemId());
+        }
+        if (other.hasInfotype()) {
+          setInfotype(other.getInfotype());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9656,6 +9710,42 @@ public final class MessageBoardProto {
       public Builder clearItemId() {
         bitField0_ = (bitField0_ & ~0x00000020);
         itemId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;
+      private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+       */
+      public boolean hasInfotype() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getInfotype() {
+        return infotype_;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+       */
+      public Builder setInfotype(com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000040;
+        infotype_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE infotype = 7;</code>
+       */
+      public Builder clearInfotype() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        infotype_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         onChanged();
         return this;
       }
@@ -11124,15 +11214,16 @@ public final class MessageBoardProto {
       "mmand\022\014\n\004type\030\001 \002(\005\022\016\n\006itemId\030\002 \001(\005\"k\n\037R" +
       "esponseMessageBoardListCommand\022\014\n\004type\030\001" +
       " \002(\005\022:\n\014messageBoard\030\002 \003(\0132$.com.trans.p" +
-      "ixel.protoc.MessageBoard\"\203\001\n RequestCrea" +
+      "ixel.protoc.MessageBoard\"\275\001\n RequestCrea" +
       "teMessageBoardCommand\022\014\n\004type\030\001 \002(\005\022\017\n\007m" +
       "essage\030\002 \001(\t\022\017\n\007groupId\030\003 \001(\005\022\016\n\006bossId\030",
-      "\004 \001(\005\022\017\n\007fightId\030\005 \001(\005\022\016\n\006itemId\030\006 \001(\005\"G" +
-      "\n\032RequestReplyMessageCommand\022\014\n\004type\030\001 \002" +
-      "(\005\022\n\n\002id\030\002 \002(\t\022\017\n\007message\030\003 \002(\t\"g\n\033Respo" +
-      "nseMessageBoardCommand\022\014\n\004type\030\001 \002(\005\022:\n\014" +
-      "messageBoard\030\002 \002(\0132$.com.trans.pixel.pro" +
-      "toc.MessageBoard"
+      "\004 \001(\005\022\017\n\007fightId\030\005 \001(\005\022\016\n\006itemId\030\006 \001(\005\0228" +
+      "\n\010infotype\030\007 \001(\0162&.com.trans.pixel.proto" +
+      "c.FIGHTINFO_TYPE\"G\n\032RequestReplyMessageC" +
+      "ommand\022\014\n\004type\030\001 \002(\005\022\n\n\002id\030\002 \002(\t\022\017\n\007mess" +
+      "age\030\003 \002(\t\"g\n\033ResponseMessageBoardCommand" +
+      "\022\014\n\004type\030\001 \002(\005\022:\n\014messageBoard\030\002 \002(\0132$.c" +
+      "om.trans.pixel.protoc.MessageBoard"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -11204,7 +11295,7 @@ public final class MessageBoardProto {
           internal_static_com_trans_pixel_protoc_RequestCreateMessageBoardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCreateMessageBoardCommand_descriptor,
-              new java.lang.String[] { "Type", "Message", "GroupId", "BossId", "FightId", "ItemId", });
+              new java.lang.String[] { "Type", "Message", "GroupId", "BossId", "FightId", "ItemId", "Infotype", });
           internal_static_com_trans_pixel_protoc_RequestReplyMessageCommand_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RequestReplyMessageCommand_fieldAccessorTable = new

@@ -8,97 +8,6 @@ public final class LadderProto {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  /**
-   * Protobuf enum {@code com.trans.pixel.protoc.FIGHTINFO_TYPE}
-   */
-  public enum FIGHTINFO_TYPE
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>TYPE_SELF = 0;</code>
-     */
-    TYPE_SELF(0, 0),
-    /**
-     * <code>TYPE_SAVE = 1;</code>
-     */
-    TYPE_SAVE(1, 1),
-    /**
-     * <code>TYPE_RANK = 2;</code>
-     */
-    TYPE_RANK(2, 2),
-    ;
-
-    /**
-     * <code>TYPE_SELF = 0;</code>
-     */
-    public static final int TYPE_SELF_VALUE = 0;
-    /**
-     * <code>TYPE_SAVE = 1;</code>
-     */
-    public static final int TYPE_SAVE_VALUE = 1;
-    /**
-     * <code>TYPE_RANK = 2;</code>
-     */
-    public static final int TYPE_RANK_VALUE = 2;
-
-
-    public final int getNumber() { return value; }
-
-    public static FIGHTINFO_TYPE valueOf(int value) {
-      switch (value) {
-        case 0: return TYPE_SELF;
-        case 1: return TYPE_SAVE;
-        case 2: return TYPE_RANK;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>
-        internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<FIGHTINFO_TYPE>() {
-            public FIGHTINFO_TYPE findValueByNumber(int number) {
-              return FIGHTINFO_TYPE.valueOf(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(index);
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.trans.pixel.protoc.LadderProto.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final FIGHTINFO_TYPE[] VALUES = values();
-
-    public static FIGHTINFO_TYPE valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int index;
-    private final int value;
-
-    private FIGHTINFO_TYPE(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:com.trans.pixel.protoc.FIGHTINFO_TYPE)
-  }
-
   public interface LadderWinRewardOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -22722,7 +22631,7 @@ public final class LadderProto {
      *查询录像
      * </pre>
      */
-    com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType();
+    com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType();
 
     // required uint32 id = 2;
     /**
@@ -22787,7 +22696,7 @@ public final class LadderProto {
             }
             case 8: {
               int rawValue = input.readEnum();
-              com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE value = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.valueOf(rawValue);
+              com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -22843,7 +22752,7 @@ public final class LadderProto {
     private int bitField0_;
     // required .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 1;
     public static final int TYPE_FIELD_NUMBER = 1;
-    private com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE type_;
+    private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE type_;
     /**
      * <code>required .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 1;</code>
      *
@@ -22861,7 +22770,7 @@ public final class LadderProto {
      *查询录像
      * </pre>
      */
-    public com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType() {
+    public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType() {
       return type_;
     }
 
@@ -22882,7 +22791,7 @@ public final class LadderProto {
     }
 
     private void initFields() {
-      type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+      type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
       id_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -23044,7 +22953,7 @@ public final class LadderProto {
 
       public Builder clear() {
         super.clear();
-        type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+        type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -23142,7 +23051,7 @@ public final class LadderProto {
       private int bitField0_;
 
       // required .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 1;
-      private com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+      private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
       /**
        * <code>required .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 1;</code>
        *
@@ -23160,7 +23069,7 @@ public final class LadderProto {
        *查询录像
        * </pre>
        */
-      public com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType() {
+      public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType() {
         return type_;
       }
       /**
@@ -23170,7 +23079,7 @@ public final class LadderProto {
        *查询录像
        * </pre>
        */
-      public Builder setType(com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE value) {
+      public Builder setType(com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -23188,7 +23097,7 @@ public final class LadderProto {
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+        type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         onChanged();
         return this;
       }
@@ -24177,7 +24086,7 @@ public final class LadderProto {
     /**
      * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
      */
-    com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType();
+    com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestSaveFightInfoCommand}
@@ -24255,7 +24164,7 @@ public final class LadderProto {
             }
             case 32: {
               int rawValue = input.readEnum();
-              com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE value = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.valueOf(rawValue);
+              com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
@@ -24360,7 +24269,7 @@ public final class LadderProto {
 
     // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;
     public static final int TYPE_FIELD_NUMBER = 4;
-    private com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE type_;
+    private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE type_;
     /**
      * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
      */
@@ -24370,7 +24279,7 @@ public final class LadderProto {
     /**
      * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
      */
-    public com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType() {
+    public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType() {
       return type_;
     }
 
@@ -24378,7 +24287,7 @@ public final class LadderProto {
       fight_ = com.trans.pixel.protoc.Base.FightInfo.getDefaultInstance();
       isDelete_ = false;
       fightinfoId_ = 0;
-      type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+      type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -24562,7 +24471,7 @@ public final class LadderProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         fightinfoId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+        type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -24857,7 +24766,7 @@ public final class LadderProto {
       }
 
       // optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;
-      private com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+      private com.trans.pixel.protoc.Base.FIGHTINFO_TYPE type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
       /**
        * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
        */
@@ -24867,13 +24776,13 @@ public final class LadderProto {
       /**
        * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
        */
-      public com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE getType() {
+      public com.trans.pixel.protoc.Base.FIGHTINFO_TYPE getType() {
         return type_;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.FIGHTINFO_TYPE type = 4;</code>
        */
-      public Builder setType(com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE value) {
+      public Builder setType(com.trans.pixel.protoc.Base.FIGHTINFO_TYPE value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -24887,7 +24796,7 @@ public final class LadderProto {
        */
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        type_ = com.trans.pixel.protoc.LadderProto.FIGHTINFO_TYPE.TYPE_SELF;
+        type_ = com.trans.pixel.protoc.Base.FIGHTINFO_TYPE.TYPE_SELF;
         onChanged();
         return this;
       }
@@ -29987,8 +29896,7 @@ public final class LadderProto {
       "rank\030\001 \002(\004\"\"\n RequestPurchaseLadderTimeC" +
       "ommand\"V\n ResponseGetLadderUserInfoComma" +
       "nd\0222\n\010userRank\030\001 \002(\0132 .com.trans.pixel.p" +
-      "rotoc.UserRank*=\n\016FIGHTINFO_TYPE\022\r\n\tTYPE" +
-      "_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022\r\n\tTYPE_RANK\020\002"
+      "rotoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

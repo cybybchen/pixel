@@ -111,13 +111,10 @@ public class MailCommandService extends BaseCommandService {
 		if (cmd.hasRelatedId())
 			relatedId = cmd.getRelatedId();
 		MailBean mail = buildMail(toUserId, user, content, type, relatedId);
-		if (cmd.hasFightId() && cmd.getFightId() > 0) {
-			List<FightInfo.Builder> list = fightInfoService.getFightInfoList(user);
-			for(FightInfo.Builder info : list){
-				if(cmd.getFightId() == info.getId()){
-					mail.setFightInfo(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
-					break;
-				}
+		if (cmd.hasFightId() && cmd.getFightId() > 0 && cmd.hasInfotype()) {
+			FightInfo info = fightInfoService.queryFightInfo(user, cmd.getInfotype(), cmd.getFightId());
+			if (info != null) {
+				mail.setFightInfo(info.getId()+"|"+info.getFightInfo()+"|"+info.getFightData());
 			}
 		}
 		mailService.addMail(mail);

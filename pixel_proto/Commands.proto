@@ -303,6 +303,12 @@ message FightInfo {
 	optional bool win = 8;
 }
 
+enum FIGHTINFO_TYPE {
+        TYPE_SELF = 0;
+        TYPE_SAVE = 1;
+        TYPE_RANK = 2;
+}
+
 ////////// ShopProto
 message ContractWeightList {
 	repeated ContractWeight quality = 1;
@@ -1594,6 +1600,7 @@ message RequestSendMailCommand {
 	optional int32 relatedId = 3;
 	required int32 type = 4; //5:call brother	
 	optional uint32 fightId = 5;
+	optional FIGHTINFO_TYPE infotype = 6;
 }
 
 message RequestBrotherMineInfoCommand {
@@ -2248,6 +2255,7 @@ message RequestCreateMessageBoardCommand { //创建一个新的留言板
 	optional int32 bossId = 4;
 	optional int32 fightId = 5;
 	optional int32 itemId = 6;//英雄和装备ID
+	optional FIGHTINFO_TYPE infotype = 7;
 }
 
 message RequestReplyMessageCommand { //回复留言板
@@ -2765,12 +2773,6 @@ message RequestGetFightInfoCommand {
 message RequestFightInfoCommand {
 	required FightInfo info = 1;
 	optional uint32 score = 2;
-}
-
-enum FIGHTINFO_TYPE {
-	TYPE_SELF = 0;
-	TYPE_SAVE = 1;
-	TYPE_RANK = 2;
 }
 
 message RequestQueryFightInfoCommand {
