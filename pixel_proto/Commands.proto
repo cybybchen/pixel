@@ -214,6 +214,7 @@ message UserEquipPokede {
 	required int32 level = 2;
 	optional uint32 order = 3;
 	optional uint32 lastTime = 4;
+	optional uint32 display = 5;//0:显示，1:隐藏
 }
 
 message HeroInfo {
@@ -1373,6 +1374,11 @@ message RequestEquipStrenthenCommand {
 message RequestEquipPokedeCommand {
 
 }
+
+message RequestEquipPokedeDisplayCommand {
+	required uint32 display = 1;//0:显示，1:隐藏
+	required uint32 itemId = 2;
+}	
 
 message ResponseEquipPokedeCommand {
 	repeated UserEquipPokede userEquipPokede = 1; 
@@ -4058,6 +4064,7 @@ message RequestCommand {
 	optional RequestSpecialTalentChangeUseCommand specialTalentChangeUseCommand = 271;
 	optional RequestHeroFoodComposeCommand heroFoodComposeCommand = 272;
 	optional RequestQueryFightInfoCommand queryFightInfoCommand = 273;
+	optional RequestEquipPokedeDisplayCommand equipPokedeDisplayCommand = 274;
 }
 ////////// Commands
 message ErrorCommand {

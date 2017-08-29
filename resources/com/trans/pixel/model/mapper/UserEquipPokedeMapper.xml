@@ -8,6 +8,7 @@
 		<result property="level" column="level" />
 		<result property="order" column="orderid" />
 		<result property="endTime" column="end_time" />
+		<result property="display" column="display" />
 	</resultMap>
 	
 	<select id="selectUserEquipPokede" resultMap="resultMap">
@@ -16,11 +17,11 @@
 	</select>
 	
 	<insert id="updateUserEquipPokede" parameterType="com.trans.pixel.model.userinfo.UserEquipPokedeBean">
-	    INSERT INTO user_equippokede(user_id, item_id, level, orderid, end_time)
-	    VALUES(#{userId}, #{itemId}, #{level}, #{order}, #{endTime})
+	    INSERT INTO user_equippokede(user_id, item_id, level, orderid, end_time, display)
+	    VALUES(#{userId}, #{itemId}, #{level}, #{order}, #{endTime}, #{display})
 	    ON 
 	    duplicate key update
-	    level=#{level}, orderid=#{order}, end_time=#{endTime}
+	    level=#{level}, orderid=#{order}, end_time=#{endTime}, display=#{display}
 	</insert>
 	
 	<select id="selectUserEquipPokedeList" parameterType="long" resultMap="resultMap">

@@ -204,6 +204,13 @@ public class EquipPokedeService {
 		return SuccessConst.EQUIP_STRENGTHEN_FALIED_SUCCESS;
 	}
 	
+	public UserEquipPokedeBean pokedeDisplay(UserEquipPokedeBean pokede, UserBean user, int display) {
+		pokede.setDisplay(display);
+		
+		userEquipPokedeService.updateUserEquipPokede(pokede, user);
+		return pokede;
+	}
+	
 	public UserEquipPokedeBean randomPokede(UserBean user, int propId) {
 		List<UserEquipPokedeBean> pokedeList = userEquipPokedeService.selectUserEquipPokedeList(user.getId());
 		if (propId == PackageConst.RANDOM_STRENTHEN_EQUIP_ID) {

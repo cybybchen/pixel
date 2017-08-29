@@ -74,6 +74,7 @@ import com.trans.pixel.protoc.UnionProto.RequestCreateBossRoomCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestBuySavingBoxCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand;
+import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
@@ -307,6 +308,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestBuySavingBoxCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSevenLoginSignCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestEquipPokedeDisplayCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user);
@@ -783,6 +785,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasRichangRewardCommand()) {
 			RequestRichangRewardCommand cmd = request.getRichangRewardCommand();
 			if (isFuncAvailable(responseBuilder, "RichangRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasEquipPokedeDisplayCommand()) {
+			RequestEquipPokedeDisplayCommand cmd = request.getEquipPokedeDisplayCommand();
+			if (isFuncAvailable(responseBuilder, "EquipPokedeDisplayCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasEquipComposeCommand()) {
 			RequestEquipComposeCommand cmd = request.getEquipComposeCommand();

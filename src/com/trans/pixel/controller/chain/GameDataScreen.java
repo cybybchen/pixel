@@ -31,6 +31,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.RequestAddHeroEquipCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.RequestFenjieEquipCommand;
@@ -1648,6 +1649,13 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestTakeUnionLeaderCommand cmd, Builder responseBuilder, UserBean user) {
 		unionCommandService.takeLeader(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestEquipPokedeDisplayCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		equipPokedeCommandService.pokedeDisplay(cmd, responseBuilder, user);
 		return true;
 	}
 }

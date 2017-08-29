@@ -12,6 +12,7 @@ public class UserEquipPokedeBean {
 	private int level = 0;
 	private int order = 0;
 	private String endTime = "";
+	private int display = 0;//0显示，1隐藏
 	public long getUserId() {
 		return userId;
 	}
@@ -42,6 +43,12 @@ public class UserEquipPokedeBean {
 	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
+	public int getDisplay() {
+		return display;
+	}
+	public void setDisplay(int display) {
+		this.display = display;
+	}
 	public static UserEquipPokedeBean fromJson(String value) {
 		if (value == null)
 			return null;
@@ -57,6 +64,7 @@ public class UserEquipPokedeBean {
 		builder.setOrder(Math.max(1, order));
 		if (!endTime.isEmpty())
 			builder.setLastTime(Math.max(DateUtil.intervalSeconds(DateUtil.getDate(endTime), DateUtil.getDate()), 0));
+		builder.setDisplay(display);
 		
 		return builder.build();
 	}

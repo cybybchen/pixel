@@ -25,6 +25,7 @@ import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeCommand;
+import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipupCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
@@ -190,5 +191,21 @@ public class EquipPokedeCommandService extends BaseCommandService {
 		if (costs.getLootCount() > 0) {
 			pushCommandService.pushRewardCommand(responseBuilder, user, costs.build(), false);
 		}
+	}
+	
+	public void pokedeDisplay(RequestEquipPokedeDisplayCommand cmd, Builder responseBuilder, UserBean user) {
+		UserEquipPokedeBean pokede = userEquipPokedeService.selectUserEquipPokede(user, cmd.getItemId());
+		if (pokede == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.EQUIP_NOT_GET_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.EQUIP_NOT_GET_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+            
+            return;
+		}
+		
+		pokede = equipPokedeService.pokedeDisplay(pokede, user, cmd.getDisplay());
+		ResponseEquipPokedeCommand.Builder builder = ResponseEquipPokedeCommand.newBuilder();
+		builder.addUserEquipPokede(pokede.build());
+		responseBuilder.setEquipPokedeCommand(builder.build());
 	}
 }
