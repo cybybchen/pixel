@@ -718,21 +718,23 @@ public final class EquipProto {
     com.google.protobuf.ByteString
         getNameBytes();
 
+    // optional int32 prior = 3;
+    /**
+     * <code>optional int32 prior = 3;</code>
+     */
+    boolean hasPrior();
+    /**
+     * <code>optional int32 prior = 3;</code>
+     */
+    int getPrior();
+
     // optional int32 rare = 4;
     /**
      * <code>optional int32 rare = 4;</code>
-     *
-     * <pre>
-     *optional int32 img = 3;
-     * </pre>
      */
     boolean hasRare();
     /**
      * <code>optional int32 rare = 4;</code>
-     *
-     * <pre>
-     *optional int32 img = 3;
-     * </pre>
      */
     int getRare();
 
@@ -905,51 +907,56 @@ public final class EquipProto {
               name_ = input.readBytes();
               break;
             }
-            case 32: {
+            case 24: {
               bitField0_ |= 0x00000004;
+              prior_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
               rare_ = input.readInt32();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               cost_ = input.readInt32();
               break;
             }
             case 48: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               hashero_ = input.readInt32();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               judge_ = input.readInt32();
               break;
             }
             case 66: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               endtime_ = input.readBytes();
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               bossid_ = input.readInt32();
               break;
             }
             case 88: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               weightall_ = input.readInt32();
               break;
             }
             case 98: {
-              if (!((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
                 reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000200;
+                mutable_bitField0_ |= 0x00000400;
               }
               reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
               break;
             }
             case 104: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               autoopen_ = input.readUInt32();
               break;
             }
@@ -961,7 +968,7 @@ public final class EquipProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000200) == 0x00000200)) {
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
           reward_ = java.util.Collections.unmodifiableList(reward_);
         }
         this.unknownFields = unknownFields.build();
@@ -1055,25 +1062,33 @@ public final class EquipProto {
       }
     }
 
+    // optional int32 prior = 3;
+    public static final int PRIOR_FIELD_NUMBER = 3;
+    private int prior_;
+    /**
+     * <code>optional int32 prior = 3;</code>
+     */
+    public boolean hasPrior() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional int32 prior = 3;</code>
+     */
+    public int getPrior() {
+      return prior_;
+    }
+
     // optional int32 rare = 4;
     public static final int RARE_FIELD_NUMBER = 4;
     private int rare_;
     /**
      * <code>optional int32 rare = 4;</code>
-     *
-     * <pre>
-     *optional int32 img = 3;
-     * </pre>
      */
     public boolean hasRare() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 rare = 4;</code>
-     *
-     * <pre>
-     *optional int32 img = 3;
-     * </pre>
      */
     public int getRare() {
       return rare_;
@@ -1086,7 +1101,7 @@ public final class EquipProto {
      * <code>optional int32 cost = 5;</code>
      */
     public boolean hasCost() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 cost = 5;</code>
@@ -1106,7 +1121,7 @@ public final class EquipProto {
      * </pre>
      */
     public boolean hasHashero() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional int32 hashero = 6;</code>
@@ -1126,7 +1141,7 @@ public final class EquipProto {
      * <code>optional int32 judge = 7;</code>
      */
     public boolean hasJudge() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 judge = 7;</code>
@@ -1142,7 +1157,7 @@ public final class EquipProto {
      * <code>optional string endtime = 8;</code>
      */
     public boolean hasEndtime() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional string endtime = 8;</code>
@@ -1185,7 +1200,7 @@ public final class EquipProto {
      * <code>optional int32 bossid = 9;</code>
      */
     public boolean hasBossid() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional int32 bossid = 9;</code>
@@ -1201,7 +1216,7 @@ public final class EquipProto {
      * <code>optional int32 weightall = 11;</code>
      */
     public boolean hasWeightall() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional int32 weightall = 11;</code>
@@ -1253,7 +1268,7 @@ public final class EquipProto {
      * <code>optional uint32 autoopen = 13;</code>
      */
     public boolean hasAutoopen() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional uint32 autoopen = 13;</code>
@@ -1265,6 +1280,7 @@ public final class EquipProto {
     private void initFields() {
       itemid_ = 0;
       name_ = "";
+      prior_ = 0;
       rare_ = 0;
       cost_ = 0;
       hashero_ = 0;
@@ -1294,30 +1310,33 @@ public final class EquipProto {
         output.writeBytes(2, getNameBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(4, rare_);
+        output.writeInt32(3, prior_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(5, cost_);
+        output.writeInt32(4, rare_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(6, hashero_);
+        output.writeInt32(5, cost_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(7, judge_);
+        output.writeInt32(6, hashero_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBytes(8, getEndtimeBytes());
+        output.writeInt32(7, judge_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(9, bossid_);
+        output.writeBytes(8, getEndtimeBytes());
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeInt32(9, bossid_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeInt32(11, weightall_);
       }
       for (int i = 0; i < reward_.size(); i++) {
         output.writeMessage(12, reward_.get(i));
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeUInt32(13, autoopen_);
       }
       getUnknownFields().writeTo(output);
@@ -1339,29 +1358,33 @@ public final class EquipProto {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, rare_);
+          .computeInt32Size(3, prior_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, cost_);
+          .computeInt32Size(4, rare_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, hashero_);
+          .computeInt32Size(5, cost_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, judge_);
+          .computeInt32Size(6, hashero_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(8, getEndtimeBytes());
+          .computeInt32Size(7, judge_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, bossid_);
+          .computeBytesSize(8, getEndtimeBytes());
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, bossid_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(11, weightall_);
       }
@@ -1369,7 +1392,7 @@ public final class EquipProto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(12, reward_.get(i));
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(13, autoopen_);
       }
@@ -1494,28 +1517,30 @@ public final class EquipProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        rare_ = 0;
+        prior_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        cost_ = 0;
+        rare_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        hashero_ = 0;
+        cost_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        judge_ = 0;
+        hashero_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
-        endtime_ = "";
+        judge_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
-        bossid_ = 0;
+        endtime_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
-        weightall_ = 0;
+        bossid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
+        weightall_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000400);
         } else {
           rewardBuilder_.clear();
         }
         autoopen_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -1555,42 +1580,46 @@ public final class EquipProto {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.rare_ = rare_;
+        result.prior_ = prior_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.cost_ = cost_;
+        result.rare_ = rare_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.hashero_ = hashero_;
+        result.cost_ = cost_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.judge_ = judge_;
+        result.hashero_ = hashero_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.endtime_ = endtime_;
+        result.judge_ = judge_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.bossid_ = bossid_;
+        result.endtime_ = endtime_;
         if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
           to_bitField0_ |= 0x00000100;
         }
+        result.bossid_ = bossid_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.weightall_ = weightall_;
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200)) {
+          if (((bitField0_ & 0x00000400) == 0x00000400)) {
             reward_ = java.util.Collections.unmodifiableList(reward_);
-            bitField0_ = (bitField0_ & ~0x00000200);
+            bitField0_ = (bitField0_ & ~0x00000400);
           }
           result.reward_ = reward_;
         } else {
           result.reward_ = rewardBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000200;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000400;
         }
         result.autoopen_ = autoopen_;
         result.bitField0_ = to_bitField0_;
@@ -1617,6 +1646,9 @@ public final class EquipProto {
           name_ = other.name_;
           onChanged();
         }
+        if (other.hasPrior()) {
+          setPrior(other.getPrior());
+        }
         if (other.hasRare()) {
           setRare(other.getRare());
         }
@@ -1630,7 +1662,7 @@ public final class EquipProto {
           setJudge(other.getJudge());
         }
         if (other.hasEndtime()) {
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00000080;
           endtime_ = other.endtime_;
           onChanged();
         }
@@ -1644,7 +1676,7 @@ public final class EquipProto {
           if (!other.reward_.isEmpty()) {
             if (reward_.isEmpty()) {
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000400);
             } else {
               ensureRewardIsMutable();
               reward_.addAll(other.reward_);
@@ -1657,7 +1689,7 @@ public final class EquipProto {
               rewardBuilder_.dispose();
               rewardBuilder_ = null;
               reward_ = other.reward_;
-              bitField0_ = (bitField0_ & ~0x00000200);
+              bitField0_ = (bitField0_ & ~0x00000400);
               rewardBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRewardFieldBuilder() : null;
@@ -1803,50 +1835,67 @@ public final class EquipProto {
         return this;
       }
 
+      // optional int32 prior = 3;
+      private int prior_ ;
+      /**
+       * <code>optional int32 prior = 3;</code>
+       */
+      public boolean hasPrior() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional int32 prior = 3;</code>
+       */
+      public int getPrior() {
+        return prior_;
+      }
+      /**
+       * <code>optional int32 prior = 3;</code>
+       */
+      public Builder setPrior(int value) {
+        bitField0_ |= 0x00000004;
+        prior_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 prior = 3;</code>
+       */
+      public Builder clearPrior() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        prior_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 rare = 4;
       private int rare_ ;
       /**
        * <code>optional int32 rare = 4;</code>
-       *
-       * <pre>
-       *optional int32 img = 3;
-       * </pre>
        */
       public boolean hasRare() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 rare = 4;</code>
-       *
-       * <pre>
-       *optional int32 img = 3;
-       * </pre>
        */
       public int getRare() {
         return rare_;
       }
       /**
        * <code>optional int32 rare = 4;</code>
-       *
-       * <pre>
-       *optional int32 img = 3;
-       * </pre>
        */
       public Builder setRare(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         rare_ = value;
         onChanged();
         return this;
       }
       /**
        * <code>optional int32 rare = 4;</code>
-       *
-       * <pre>
-       *optional int32 img = 3;
-       * </pre>
        */
       public Builder clearRare() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rare_ = 0;
         onChanged();
         return this;
@@ -1858,7 +1907,7 @@ public final class EquipProto {
        * <code>optional int32 cost = 5;</code>
        */
       public boolean hasCost() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 cost = 5;</code>
@@ -1870,7 +1919,7 @@ public final class EquipProto {
        * <code>optional int32 cost = 5;</code>
        */
       public Builder setCost(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         cost_ = value;
         onChanged();
         return this;
@@ -1879,7 +1928,7 @@ public final class EquipProto {
        * <code>optional int32 cost = 5;</code>
        */
       public Builder clearCost() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         cost_ = 0;
         onChanged();
         return this;
@@ -1895,7 +1944,7 @@ public final class EquipProto {
        * </pre>
        */
       public boolean hasHashero() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional int32 hashero = 6;</code>
@@ -1915,7 +1964,7 @@ public final class EquipProto {
        * </pre>
        */
       public Builder setHashero(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         hashero_ = value;
         onChanged();
         return this;
@@ -1928,7 +1977,7 @@ public final class EquipProto {
        * </pre>
        */
       public Builder clearHashero() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         hashero_ = 0;
         onChanged();
         return this;
@@ -1940,7 +1989,7 @@ public final class EquipProto {
        * <code>optional int32 judge = 7;</code>
        */
       public boolean hasJudge() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 judge = 7;</code>
@@ -1952,7 +2001,7 @@ public final class EquipProto {
        * <code>optional int32 judge = 7;</code>
        */
       public Builder setJudge(int value) {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         judge_ = value;
         onChanged();
         return this;
@@ -1961,7 +2010,7 @@ public final class EquipProto {
        * <code>optional int32 judge = 7;</code>
        */
       public Builder clearJudge() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         judge_ = 0;
         onChanged();
         return this;
@@ -1973,7 +2022,7 @@ public final class EquipProto {
        * <code>optional string endtime = 8;</code>
        */
       public boolean hasEndtime() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional string endtime = 8;</code>
@@ -2013,7 +2062,7 @@ public final class EquipProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000080;
         endtime_ = value;
         onChanged();
         return this;
@@ -2022,7 +2071,7 @@ public final class EquipProto {
        * <code>optional string endtime = 8;</code>
        */
       public Builder clearEndtime() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         endtime_ = getDefaultInstance().getEndtime();
         onChanged();
         return this;
@@ -2035,7 +2084,7 @@ public final class EquipProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000080;
         endtime_ = value;
         onChanged();
         return this;
@@ -2047,7 +2096,7 @@ public final class EquipProto {
        * <code>optional int32 bossid = 9;</code>
        */
       public boolean hasBossid() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 bossid = 9;</code>
@@ -2059,7 +2108,7 @@ public final class EquipProto {
        * <code>optional int32 bossid = 9;</code>
        */
       public Builder setBossid(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         bossid_ = value;
         onChanged();
         return this;
@@ -2068,7 +2117,7 @@ public final class EquipProto {
        * <code>optional int32 bossid = 9;</code>
        */
       public Builder clearBossid() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         bossid_ = 0;
         onChanged();
         return this;
@@ -2080,7 +2129,7 @@ public final class EquipProto {
        * <code>optional int32 weightall = 11;</code>
        */
       public boolean hasWeightall() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional int32 weightall = 11;</code>
@@ -2092,7 +2141,7 @@ public final class EquipProto {
        * <code>optional int32 weightall = 11;</code>
        */
       public Builder setWeightall(int value) {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         weightall_ = value;
         onChanged();
         return this;
@@ -2101,7 +2150,7 @@ public final class EquipProto {
        * <code>optional int32 weightall = 11;</code>
        */
       public Builder clearWeightall() {
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         weightall_ = 0;
         onChanged();
         return this;
@@ -2111,9 +2160,9 @@ public final class EquipProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
         java.util.Collections.emptyList();
       private void ensureRewardIsMutable() {
-        if (!((bitField0_ & 0x00000200) == 0x00000200)) {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
           reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
-          bitField0_ |= 0x00000200;
+          bitField0_ |= 0x00000400;
          }
       }
 
@@ -2262,7 +2311,7 @@ public final class EquipProto {
       public Builder clearReward() {
         if (rewardBuilder_ == null) {
           reward_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000200);
+          bitField0_ = (bitField0_ & ~0x00000400);
           onChanged();
         } else {
           rewardBuilder_.clear();
@@ -2339,7 +2388,7 @@ public final class EquipProto {
           rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   reward_,
-                  ((bitField0_ & 0x00000200) == 0x00000200),
+                  ((bitField0_ & 0x00000400) == 0x00000400),
                   getParentForChildren(),
                   isClean());
           reward_ = null;
@@ -2353,7 +2402,7 @@ public final class EquipProto {
        * <code>optional uint32 autoopen = 13;</code>
        */
       public boolean hasAutoopen() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional uint32 autoopen = 13;</code>
@@ -2365,7 +2414,7 @@ public final class EquipProto {
        * <code>optional uint32 autoopen = 13;</code>
        */
       public Builder setAutoopen(int value) {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         autoopen_ = value;
         onChanged();
         return this;
@@ -2374,7 +2423,7 @@ public final class EquipProto {
        * <code>optional uint32 autoopen = 13;</code>
        */
       public Builder clearAutoopen() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         autoopen_ = 0;
         onChanged();
         return this;
@@ -34129,102 +34178,102 @@ public final class EquipProto {
     java.lang.String[] descriptorData = {
       "\n\020EquipProto.proto\022\026com.trans.pixel.prot" +
       "oc\032\nBase.proto\"6\n\010PropList\022*\n\004data\030\001 \003(\013" +
-      "2\034.com.trans.pixel.protoc.Prop\"\332\001\n\004Prop\022" +
-      "\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004rare\030\004 " +
-      "\001(\005\022\014\n\004cost\030\005 \001(\005\022\017\n\007hashero\030\006 \001(\005\022\r\n\005ju" +
-      "dge\030\007 \001(\005\022\017\n\007endtime\030\010 \001(\t\022\016\n\006bossid\030\t \001" +
-      "(\005\022\021\n\tweightall\030\013 \001(\005\0222\n\006reward\030\014 \003(\0132\"." +
-      "com.trans.pixel.protoc.RewardInfo\022\020\n\010aut" +
-      "oopen\030\r \001(\r\"6\n\010ChipList\022*\n\004data\030\001 \003(\0132\034." +
-      "com.trans.pixel.protoc.Chip\"\\\n\004Chip\022\016\n\006i",
-      "temid\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\014\n\004rare\030\004 \002(\005\022" +
-      "\014\n\004cost\030\005 \002(\005\022\013\n\003aim\030\010 \001(\005\022\r\n\005count\030\t \001(" +
-      "\005\">\n\014MaterialList\022.\n\004data\030\001 \003(\0132 .com.tr" +
-      "ans.pixel.protoc.Material\"i\n\010Material\022\016\n" +
-      "\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004rare\030\004 \001(" +
-      "\005\022\014\n\004cost\030\005 \001(\005\022\022\n\nfordiamond\030\006 \001(\005\022\017\n\007e" +
-      "ndtime\030\007 \001(\t\"u\n\006Engine\022\n\n\002id\030\001 \001(\r\022\014\n\004na" +
-      "me\030\002 \001(\t\022\020\n\010handbook\030\003 \001(\r\022\014\n\004rare\030\004 \001(\r" +
-      "\0221\n\005order\030\016 \003(\0132\".com.trans.pixel.protoc" +
-      ".EquipOrder\":\n\nEngineList\022,\n\004data\030\001 \003(\0132",
-      "\036.com.trans.pixel.protoc.Engine\"8\n\tEquip" +
-      "List\022+\n\004data\030\001 \003(\0132\035.com.trans.pixel.pro" +
-      "toc.Equip\"\242\001\n\005Equip\022\n\n\002id\030\001 \001(\005\022\r\n\005level" +
-      "\030\003 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006ilevel\030\013 \001(\005\022\r\n\005" +
-      "irare\030\014 \001(\r\022\016\n\006heroid\030\r \001(\r\022\017\n\007endtime\030\n" +
-      " \001(\003\0220\n\004list\030\016 \003(\0132\".com.trans.pixel.pro" +
-      "toc.EquipOrder\"W\n\nEquipOrder\022\r\n\005order\030\001 " +
-      "\001(\r\022\014\n\004name\030\002 \001(\t\022\020\n\010handbook\030\004 \001(\r\022\014\n\004r" +
-      "are\030\006 \001(\r\022\014\n\004type\030\007 \001(\r\"q\n\nEquipState\022\017\n" +
-      "\007stateid\030\001 \001(\r\022\021\n\tstatename\030\002 \001(\t\022\r\n\005par",
-      "a1\030\003 \001(\r\022\r\n\005para2\030\004 \001(\r\022\r\n\005skill\030\005 \001(\r\022\022" +
-      "\n\nskilllevel\030\006 \001(\r\"P\n\014EquipupOrder\022\r\n\005or" +
-      "der\030\001 \002(\r\0221\n\005cover\030\002 \003(\0132\".com.trans.pix" +
-      "el.protoc.RewardInfo\"J\n\007Equipup\022\n\n\002id\030\001 " +
-      "\002(\r\0223\n\005equip\030\002 \003(\0132$.com.trans.pixel.pro" +
-      "toc.EquipupOrder\"<\n\013EquipupList\022-\n\004data\030" +
-      "\001 \003(\0132\037.com.trans.pixel.protoc.Equipup\"C" +
-      "\n\016EquiptucaoList\0221\n\005equip\030\001 \003(\0132\".com.tr" +
-      "ans.pixel.protoc.Equiptucao\"<\n\nEquiptuca" +
-      "o\022\016\n\006itemid\030\001 \001(\005\022\020\n\010itemname\030\002 \001(\t\022\014\n\004r",
-      "are\030\003 \001(\005\"B\n\016SynthetiseList\0220\n\004data\030\001 \003(" +
-      "\0132\".com.trans.pixel.protoc.Synthetise\"]\n" +
-      "\nSynthetise\022\n\n\002id\030\001 \002(\r\022\020\n\010targetid\030\006 \002(" +
-      "\r\0221\n\005cover\030\010 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\"M\n\031RequestUseMaterialComman" +
-      "d\0220\n\004cost\030\001 \003(\0132\".com.trans.pixel.protoc" +
-      ".RewardInfo\"M\n\032RequestAddHeroEquipComman" +
-      "d\022\016\n\006heroId\030\001 \002(\005\022\016\n\006infoId\030\002 \002(\003\022\017\n\007equ" +
-      "ipId\030\003 \001(\005\">\n\032RequestEquipComposeCommand" +
-      "\022\021\n\tlevelUpId\030\001 \002(\005\022\r\n\005count\030\002 \001(\005\">\n\035Re",
-      "questHeroFoodComposeCommand\022\016\n\006itemId\030\001 " +
-      "\002(\r\022\r\n\005count\030\002 \002(\r\"=\n\033ResponseEquipCompo" +
-      "seCommand\022\017\n\007equipId\030\001 \002(\005\022\r\n\005count\030\002 \002(" +
-      "\005\"S\n\033ResponseGetUserEquipCommand\0224\n\tuser" +
-      "Equip\030\001 \003(\0132!.com.trans.pixel.protoc.Use" +
-      "rEquip\"8\n\tArmorList\022+\n\004data\030\001 \003(\0132\035.com." +
-      "trans.pixel.protoc.Armor\"\221\001\n\005Armor\022\n\n\002id" +
-      "\030\001 \001(\005\022\016\n\006ilevel\030\002 \001(\r\022\r\n\005level\030\003 \001(\005\022\r\n" +
-      "\005irare\030\004 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006heroid\030\007 \001" +
-      "(\r\0220\n\004list\030\016 \003(\0132\".com.trans.pixel.proto",
-      "c.EquipOrder\"H\n\021EquipIncreaseList\0223\n\004dat" +
-      "a\030\001 \003(\0132%.com.trans.pixel.protoc.EquipIn" +
-      "crease\"L\n\rEquipIncrease\022\r\n\005level\030\001 \001(\005\022\020" +
-      "\n\010increase\030\002 \001(\002\022\014\n\004rate\030\003 \001(\005\022\014\n\004zero\030\004" +
-      " \001(\005\"H\n\021IncreaseLevelList\0223\n\004data\030\001 \003(\0132" +
-      "%.com.trans.pixel.protoc.IncreaseLevel\"S" +
-      "\n\rIncreaseLevel\022\r\n\005level\030\001 \001(\005\0223\n\005rares\030" +
-      "\002 \003(\0132$.com.trans.pixel.protoc.IncreaseR" +
-      "are\"N\n\014IncreaseRare\022\014\n\004rare\030\001 \001(\005\0220\n\004cos" +
-      "t\030\002 \003(\0132\".com.trans.pixel.protoc.RewardI",
-      "nfo\")\n\004Item\022\016\n\006itemId\030\001 \002(\005\022\021\n\titemCount" +
-      "\030\002 \002(\005\"E\n\027RequestSaleEquipCommand\022*\n\004ite" +
-      "m\030\001 \003(\0132\034.com.trans.pixel.protoc.Item\",\n" +
-      "\032RequestSubmitZhanliCommand\022\016\n\006zhanli\030\001 " +
-      "\002(\005\"0\n\tUserEquip\022\017\n\007equipId\030\001 \002(\005\022\022\n\nequ" +
-      "ipCount\030\002 \002(\005\"B\n\010UserProp\022\016\n\006propId\030\001 \002(" +
-      "\005\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013expiredTime\030\003 \001(" +
-      "\t\"M\n\027ResponseUserPropCommand\0222\n\010userProp" +
-      "\030\001 \003(\0132 .com.trans.pixel.protoc.UserProp" +
-      "\"J\n\025RequestUsePropCommand\022\016\n\006propId\030\001 \002(",
-      "\005\022\021\n\tpropCount\030\002 \002(\005\022\016\n\006chipId\030\003 \001(\r\"L\n\026" +
-      "ResponseUsePropCommand\0222\n\010userProp\030\001 \003(\013" +
-      "2 .com.trans.pixel.protoc.UserProp\"@\n\031Re" +
-      "questFenjieEquipCommand\022\017\n\007equipId\030\001 \002(\005" +
-      "\022\022\n\nequipCount\030\002 \002(\005\"R\n\032ResponseEquipRes" +
-      "ultCommand\0224\n\tuserEquip\030\001 \003(\0132!.com.tran" +
-      "s.pixel.protoc.UserEquip\"?\n\034RequestEquip" +
-      "StrenthenCommand\022\017\n\007equipId\030\001 \002(\005\022\016\n\006ite" +
-      "mId\030\002 \001(\r\"\033\n\031RequestEquipPokedeCommand\"^" +
-      "\n\032ResponseEquipPokedeCommand\022@\n\017userEqui",
-      "pPokede\030\001 \003(\0132\'.com.trans.pixel.protoc.U" +
-      "serEquipPokede\"7\n\037RequestSynthetiseCompo" +
-      "seCommand\022\024\n\014synthetiseId\030\001 \002(\r\"\'\n\025Reque" +
-      "stEquipupCommand\022\016\n\006itemid\030\001 \002(\r\"\202\001\n\035Req" +
-      "uestMaterialComposeCommand\022\016\n\006itemId\030\002 \001" +
-      "(\r\0220\n\004cost\030\001 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\022\020\n\010rewardId\030\003 \001(\r\022\r\n\005count\030" +
-      "\004 \001(\r"
+      "2\034.com.trans.pixel.protoc.Prop\"\351\001\n\004Prop\022" +
+      "\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005prior\030\003" +
+      " \001(\005\022\014\n\004rare\030\004 \001(\005\022\014\n\004cost\030\005 \001(\005\022\017\n\007hash" +
+      "ero\030\006 \001(\005\022\r\n\005judge\030\007 \001(\005\022\017\n\007endtime\030\010 \001(" +
+      "\t\022\016\n\006bossid\030\t \001(\005\022\021\n\tweightall\030\013 \001(\005\0222\n\006" +
+      "reward\030\014 \003(\0132\".com.trans.pixel.protoc.Re" +
+      "wardInfo\022\020\n\010autoopen\030\r \001(\r\"6\n\010ChipList\022*" +
+      "\n\004data\030\001 \003(\0132\034.com.trans.pixel.protoc.Ch",
+      "ip\"\\\n\004Chip\022\016\n\006itemid\030\001 \002(\005\022\014\n\004name\030\002 \002(\t" +
+      "\022\014\n\004rare\030\004 \002(\005\022\014\n\004cost\030\005 \002(\005\022\013\n\003aim\030\010 \001(" +
+      "\005\022\r\n\005count\030\t \001(\005\">\n\014MaterialList\022.\n\004data" +
+      "\030\001 \003(\0132 .com.trans.pixel.protoc.Material" +
+      "\"i\n\010Material\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001" +
+      "(\t\022\014\n\004rare\030\004 \001(\005\022\014\n\004cost\030\005 \001(\005\022\022\n\nfordia" +
+      "mond\030\006 \001(\005\022\017\n\007endtime\030\007 \001(\t\"u\n\006Engine\022\n\n" +
+      "\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\020\n\010handbook\030\003 \001(" +
+      "\r\022\014\n\004rare\030\004 \001(\r\0221\n\005order\030\016 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.EquipOrder\":\n\nEngineList",
+      "\022,\n\004data\030\001 \003(\0132\036.com.trans.pixel.protoc." +
+      "Engine\"8\n\tEquipList\022+\n\004data\030\001 \003(\0132\035.com." +
+      "trans.pixel.protoc.Equip\"\242\001\n\005Equip\022\n\n\002id" +
+      "\030\001 \001(\005\022\r\n\005level\030\003 \001(\005\022\014\n\004type\030\006 \001(\005\022\016\n\006i" +
+      "level\030\013 \001(\005\022\r\n\005irare\030\014 \001(\r\022\016\n\006heroid\030\r \001" +
+      "(\r\022\017\n\007endtime\030\n \001(\003\0220\n\004list\030\016 \003(\0132\".com." +
+      "trans.pixel.protoc.EquipOrder\"W\n\nEquipOr" +
+      "der\022\r\n\005order\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\020\n\010hand" +
+      "book\030\004 \001(\r\022\014\n\004rare\030\006 \001(\r\022\014\n\004type\030\007 \001(\r\"q" +
+      "\n\nEquipState\022\017\n\007stateid\030\001 \001(\r\022\021\n\tstatena",
+      "me\030\002 \001(\t\022\r\n\005para1\030\003 \001(\r\022\r\n\005para2\030\004 \001(\r\022\r" +
+      "\n\005skill\030\005 \001(\r\022\022\n\nskilllevel\030\006 \001(\r\"P\n\014Equ" +
+      "ipupOrder\022\r\n\005order\030\001 \002(\r\0221\n\005cover\030\002 \003(\0132" +
+      "\".com.trans.pixel.protoc.RewardInfo\"J\n\007E" +
+      "quipup\022\n\n\002id\030\001 \002(\r\0223\n\005equip\030\002 \003(\0132$.com." +
+      "trans.pixel.protoc.EquipupOrder\"<\n\013Equip" +
+      "upList\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.p" +
+      "rotoc.Equipup\"C\n\016EquiptucaoList\0221\n\005equip" +
+      "\030\001 \003(\0132\".com.trans.pixel.protoc.Equiptuc" +
+      "ao\"<\n\nEquiptucao\022\016\n\006itemid\030\001 \001(\005\022\020\n\010item",
+      "name\030\002 \001(\t\022\014\n\004rare\030\003 \001(\005\"B\n\016SynthetiseLi" +
+      "st\0220\n\004data\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.Synthetise\"]\n\nSynthetise\022\n\n\002id\030\001 \002(\r\022\020" +
+      "\n\010targetid\030\006 \002(\r\0221\n\005cover\030\010 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\"M\n\031RequestUs" +
+      "eMaterialCommand\0220\n\004cost\030\001 \003(\0132\".com.tra" +
+      "ns.pixel.protoc.RewardInfo\"M\n\032RequestAdd" +
+      "HeroEquipCommand\022\016\n\006heroId\030\001 \002(\005\022\016\n\006info" +
+      "Id\030\002 \002(\003\022\017\n\007equipId\030\003 \001(\005\">\n\032RequestEqui" +
+      "pComposeCommand\022\021\n\tlevelUpId\030\001 \002(\005\022\r\n\005co",
+      "unt\030\002 \001(\005\">\n\035RequestHeroFoodComposeComma" +
+      "nd\022\016\n\006itemId\030\001 \002(\r\022\r\n\005count\030\002 \002(\r\"=\n\033Res" +
+      "ponseEquipComposeCommand\022\017\n\007equipId\030\001 \002(" +
+      "\005\022\r\n\005count\030\002 \002(\005\"S\n\033ResponseGetUserEquip" +
+      "Command\0224\n\tuserEquip\030\001 \003(\0132!.com.trans.p" +
+      "ixel.protoc.UserEquip\"8\n\tArmorList\022+\n\004da" +
+      "ta\030\001 \003(\0132\035.com.trans.pixel.protoc.Armor\"" +
+      "\221\001\n\005Armor\022\n\n\002id\030\001 \001(\005\022\016\n\006ilevel\030\002 \001(\r\022\r\n" +
+      "\005level\030\003 \001(\005\022\r\n\005irare\030\004 \001(\005\022\014\n\004type\030\006 \001(" +
+      "\005\022\016\n\006heroid\030\007 \001(\r\0220\n\004list\030\016 \003(\0132\".com.tr",
+      "ans.pixel.protoc.EquipOrder\"H\n\021EquipIncr" +
+      "easeList\0223\n\004data\030\001 \003(\0132%.com.trans.pixel" +
+      ".protoc.EquipIncrease\"L\n\rEquipIncrease\022\r" +
+      "\n\005level\030\001 \001(\005\022\020\n\010increase\030\002 \001(\002\022\014\n\004rate\030" +
+      "\003 \001(\005\022\014\n\004zero\030\004 \001(\005\"H\n\021IncreaseLevelList" +
+      "\0223\n\004data\030\001 \003(\0132%.com.trans.pixel.protoc." +
+      "IncreaseLevel\"S\n\rIncreaseLevel\022\r\n\005level\030" +
+      "\001 \001(\005\0223\n\005rares\030\002 \003(\0132$.com.trans.pixel.p" +
+      "rotoc.IncreaseRare\"N\n\014IncreaseRare\022\014\n\004ra" +
+      "re\030\001 \001(\005\0220\n\004cost\030\002 \003(\0132\".com.trans.pixel",
+      ".protoc.RewardInfo\")\n\004Item\022\016\n\006itemId\030\001 \002" +
+      "(\005\022\021\n\titemCount\030\002 \002(\005\"E\n\027RequestSaleEqui" +
+      "pCommand\022*\n\004item\030\001 \003(\0132\034.com.trans.pixel" +
+      ".protoc.Item\",\n\032RequestSubmitZhanliComma" +
+      "nd\022\016\n\006zhanli\030\001 \002(\005\"0\n\tUserEquip\022\017\n\007equip" +
+      "Id\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"B\n\010UserProp" +
+      "\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\023\n\013e" +
+      "xpiredTime\030\003 \001(\t\"M\n\027ResponseUserPropComm" +
+      "and\0222\n\010userProp\030\001 \003(\0132 .com.trans.pixel." +
+      "protoc.UserProp\"J\n\025RequestUsePropCommand",
+      "\022\016\n\006propId\030\001 \002(\005\022\021\n\tpropCount\030\002 \002(\005\022\016\n\006c" +
+      "hipId\030\003 \001(\r\"L\n\026ResponseUsePropCommand\0222\n" +
+      "\010userProp\030\001 \003(\0132 .com.trans.pixel.protoc" +
+      ".UserProp\"@\n\031RequestFenjieEquipCommand\022\017" +
+      "\n\007equipId\030\001 \002(\005\022\022\n\nequipCount\030\002 \002(\005\"R\n\032R" +
+      "esponseEquipResultCommand\0224\n\tuserEquip\030\001" +
+      " \003(\0132!.com.trans.pixel.protoc.UserEquip\"" +
+      "?\n\034RequestEquipStrenthenCommand\022\017\n\007equip" +
+      "Id\030\001 \002(\005\022\016\n\006itemId\030\002 \001(\r\"\033\n\031RequestEquip" +
+      "PokedeCommand\"^\n\032ResponseEquipPokedeComm",
+      "and\022@\n\017userEquipPokede\030\001 \003(\0132\'.com.trans" +
+      ".pixel.protoc.UserEquipPokede\"7\n\037Request" +
+      "SynthetiseComposeCommand\022\024\n\014synthetiseId" +
+      "\030\001 \002(\r\"\'\n\025RequestEquipupCommand\022\016\n\006itemi" +
+      "d\030\001 \002(\r\"\202\001\n\035RequestMaterialComposeComman" +
+      "d\022\016\n\006itemId\030\002 \001(\r\0220\n\004cost\030\001 \003(\0132\".com.tr" +
+      "ans.pixel.protoc.RewardInfo\022\020\n\010rewardId\030" +
+      "\003 \001(\r\022\r\n\005count\030\004 \001(\r"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34242,7 +34291,7 @@ public final class EquipProto {
           internal_static_com_trans_pixel_protoc_Prop_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Prop_descriptor,
-              new java.lang.String[] { "Itemid", "Name", "Rare", "Cost", "Hashero", "Judge", "Endtime", "Bossid", "Weightall", "Reward", "Autoopen", });
+              new java.lang.String[] { "Itemid", "Name", "Prior", "Rare", "Cost", "Hashero", "Judge", "Endtime", "Bossid", "Weightall", "Reward", "Autoopen", });
           internal_static_com_trans_pixel_protoc_ChipList_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_ChipList_fieldAccessorTable = new
