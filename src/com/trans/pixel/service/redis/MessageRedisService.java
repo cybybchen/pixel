@@ -199,6 +199,9 @@ public class MessageRedisService extends RedisService {
 						.boundZSetOps(buildHeroMessageBoardTopKeyRedisKey(serverId, itemId));
 				
 				boolean ret = bzOps.add("" + messageBoard.getId(), messageBoard.getReplyCount());
+				if (ret) {//从normal中删除
+					delHeroMessage_normal(serverId, itemId, "" + messageBoard.getId());
+				}
 				if (ret && bzOps.size() > MessageConst.HERO_MESSAGE_BOARD_TOP_MAX) {
 					Set<String> ids = bzOps.range(0, 0);
 					bzOps.removeRange(0, 0);
