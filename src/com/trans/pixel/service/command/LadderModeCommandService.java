@@ -236,7 +236,8 @@ public class LadderModeCommandService extends BaseCommandService {
 			userLadderBuilder.addUser(userLadder);
 		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
 		
-		if (cmd.getRet() == 0) {
+		//获得赛季段位装备奖励
+//		if (cmd.getRet() == 0) {
 			Map<Integer, UserLadder> enemyMap = ladderService.refreshEnemy(user, cmd.getType());
 			ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
 			enemyBuilder.addAllEnemy(enemyMap.values());
@@ -253,7 +254,7 @@ public class LadderModeCommandService extends BaseCommandService {
 					pushCommandService.pushUserDataByRewardId(responseBuilder, user, pokede.getItemId(), true);
 				}
 			}
-		}
+//		}
 		
 		//任务奖励
 		if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
