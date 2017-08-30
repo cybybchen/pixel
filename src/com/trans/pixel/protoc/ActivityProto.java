@@ -366,13 +366,17 @@ public final class ActivityProto {
      */
     TYPE_DAILY_ALL(85, 211),
     /**
+     * <code>TYPE_QUERY_FIGHTINFO = 212;</code>
+     */
+    TYPE_QUERY_FIGHTINFO(86, 212),
+    /**
      * <code>TYPE_LADDER_RANK = 41;</code>
      */
-    TYPE_LADDER_RANK(86, 41),
+    TYPE_LADDER_RANK(87, 41),
     /**
      * <code>TYPE_ZHANLI_RANK = 42;</code>
      */
-    TYPE_ZHANLI_RANK(87, 42),
+    TYPE_ZHANLI_RANK(88, 42),
     ;
 
     /**
@@ -724,6 +728,10 @@ public final class ActivityProto {
      */
     public static final int TYPE_DAILY_ALL_VALUE = 211;
     /**
+     * <code>TYPE_QUERY_FIGHTINFO = 212;</code>
+     */
+    public static final int TYPE_QUERY_FIGHTINFO_VALUE = 212;
+    /**
      * <code>TYPE_LADDER_RANK = 41;</code>
      */
     public static final int TYPE_LADDER_RANK_VALUE = 41;
@@ -823,6 +831,7 @@ public final class ActivityProto {
         case 209: return TYPE_PUTONGSHOP_BUY;
         case 210: return TYPE_FUBEN_KILL_BOSS;
         case 211: return TYPE_DAILY_ALL;
+        case 212: return TYPE_QUERY_FIGHTINFO;
         case 41: return TYPE_LADDER_RANK;
         case 42: return TYPE_ZHANLI_RANK;
         default: return null;
@@ -33858,7 +33867,7 @@ public final class ActivityProto {
       "nk\030\001 \003(\0132!.com.trans.pixel.protoc.Rankva" +
       "lue\"N\n\tRankvalue\022\014\n\004rank\030\001 \001(\005\022\n\n\002sp\030\002 \001" +
       "(\005\022\013\n\003def\030\003 \001(\002\022\013\n\003vit\030\004 \001(\002\022\r\n\005power\030\005 " +
-      "\001(\002*\253\021\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGI" +
+      "\001(\002*\306\021\n\rACTIVITY_TYPE\022\024\n\020TYPE_LEIJI_LOGI" +
       "N\020\001\022\027\n\023TYPE_LEIJI_RECHARGE\020\002\022\031\n\025TYPE_LEI" +
       "JI_COST_JEWEL\020\003\022\014\n\010TYPE_VIP\020\004\022\020\n\014TYPE_LO" +
       "TTERY\020\005\022\021\n\rTYPE_HERO_GET\020\006\022\030\n\024TYPE_HERO_" +
@@ -33912,8 +33921,9 @@ public final class ActivityProto {
       "PE_SKILL_LEVELUP\020\316\001\022\026\n\021TYPE_LADDER_FIGHT" +
       "\020\317\001\022\026\n\021TYPE_LOTTERY_COIN\020\320\001\022\030\n\023TYPE_PUTO" +
       "NGSHOP_BUY\020\321\001\022\031\n\024TYPE_FUBEN_KILL_BOSS\020\322\001" +
-      "\022\023\n\016TYPE_DAILY_ALL\020\323\001\022\024\n\020TYPE_LADDER_RAN",
-      "K\020)\022\024\n\020TYPE_ZHANLI_RANK\020*"
+      "\022\023\n\016TYPE_DAILY_ALL\020\323\001\022\031\n\024TYPE_QUERY_FIGH",
+      "TINFO\020\324\001\022\024\n\020TYPE_LADDER_RANK\020)\022\024\n\020TYPE_Z" +
+      "HANLI_RANK\020*"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

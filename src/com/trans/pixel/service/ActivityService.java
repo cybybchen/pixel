@@ -1273,6 +1273,13 @@ public class ActivityService {
 	}
 	
 	/**
+	 * 观看巅峰对决的活动
+	 */
+	public void queryFightInfo(UserBean user) {
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_QUERY_FIGHTINFO_VALUE);
+	}
+	
+	/**
 	 * activity and achieve log
 	 */
 	public void sendLog(long userId, int serverId, int type, int id, int step) {

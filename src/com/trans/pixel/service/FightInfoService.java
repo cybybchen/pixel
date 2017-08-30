@@ -33,6 +33,8 @@ public class FightInfoService {
 	private UserFightInfoMapper mapper;
 	@Resource
 	private RankRedisService rankRedisService;
+	@Resource
+	private ActivityService activityService;
 	
 	public void setFightInfo(String info, UserBean user){
 		redis.setFightInfo(info, user);
@@ -135,7 +137,14 @@ public class FightInfoService {
 	
 	public FightInfo queryFightInfo(UserBean user, FIGHTINFO_TYPE type, int id) {
 		if (type.equals(FIGHTINFO_TYPE.TYPE_RANK)) {
-			return rankRedisService.getFightInfo(id);
+			FightInfo fightinfo = rankRedisService.getFightInfo(id);
+			/**
+			 * 观看巅峰对决的活动
+			 */
+			if (fightinfo != null) {
+				activityService.queryFightInfo(user);
+			}
+			return fightinfo;
 		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SELF)) {
 			return getFightInfoSelf(user, id);
 		} else if (type.equals(FIGHTINFO_TYPE.TYPE_SAVE)) {
