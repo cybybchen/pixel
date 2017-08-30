@@ -175,6 +175,7 @@ import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.TaskProto.RequestRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
@@ -1657,5 +1658,11 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		equipPokedeCommandService.pokedeDisplay(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		raidCommandService.getRaid(cmd, responseBuilder, user);
+		return false;
 	}
 }

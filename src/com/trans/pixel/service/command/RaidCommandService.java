@@ -20,6 +20,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.TaskProto.Raid;
 import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.TaskProto.RequestRaidCommand;
 import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
 import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
@@ -207,6 +208,10 @@ public class RaidCommandService extends BaseCommandService{
 		}
 
 		responseBuilder.setRaidCommand(raidlist);
+	}
+	
+	public void getRaid(RequestRaidCommand cmd, Builder responseBuilder, UserBean user){
+		getRaid(responseBuilder, user);
 	}
 	
 	public void getRaid(Builder responseBuilder, UserBean user){

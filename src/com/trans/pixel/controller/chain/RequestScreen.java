@@ -41,6 +41,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
+import com.trans.pixel.protoc.TaskProto.RequestRaidCommand;
 import com.trans.pixel.protoc.PVPProto.RequestRefreshPVPMineCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPurchaseContractCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopCommand;
@@ -275,6 +276,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestDailyShopCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestRaidCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshPVPMineCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBlackShopCommand cmd, Builder responseBuilder, UserBean user);
@@ -654,6 +656,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestDailyShopCommand cmd = request.getDailyShopCommand();
 			if (isFuncAvailable(responseBuilder, "DailyShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasRaidCommand()) {
+			RequestRaidCommand cmd = request.getRaidCommand();
+			if (isFuncAvailable(responseBuilder, "RaidCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasRefreshPVPMineCommand()) {
 			RequestRefreshPVPMineCommand cmd = request.getRefreshPVPMineCommand();
 			if (isFuncAvailable(responseBuilder, "RefreshPVPMineCommand") && result) result = handleCommand(cmd, responseBuilder, user);
@@ -878,9 +884,9 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestRankCommand cmd = request.getRankCommand();
 			if (isFuncAvailable(responseBuilder, "RankCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
-		if (request.hasRaidCommand()) {
-			RequestStartRaidCommand cmd = request.getRaidCommand();
-			if (isFuncAvailable(responseBuilder, "RaidCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		if (request.hasStartRaidCommand()) {
+			RequestStartRaidCommand cmd = request.getStartRaidCommand();
+			if (isFuncAvailable(responseBuilder, "StartRaidCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasTalentChangeUseCommand()) {
 			RequestTalentChangeUseCommand cmd = request.getTalentChangeUseCommand();

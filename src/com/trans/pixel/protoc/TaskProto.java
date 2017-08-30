@@ -11615,6 +11615,315 @@ public final class TaskProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RaidList)
   }
 
+  public interface RequestRaidCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestRaidCommand}
+   */
+  public static final class RequestRaidCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestRaidCommandOrBuilder {
+    // Use RequestRaidCommand.newBuilder() to construct.
+    private RequestRaidCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestRaidCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestRaidCommand defaultInstance;
+    public static RequestRaidCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestRaidCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestRaidCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_RequestRaidCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.TaskProto.RequestRaidCommand.class, com.trans.pixel.protoc.TaskProto.RequestRaidCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestRaidCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestRaidCommand>() {
+      public RequestRaidCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestRaidCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestRaidCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.TaskProto.RequestRaidCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.TaskProto.RequestRaidCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestRaidCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.TaskProto.RequestRaidCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_RequestRaidCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.TaskProto.RequestRaidCommand.class, com.trans.pixel.protoc.TaskProto.RequestRaidCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.TaskProto.RequestRaidCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.TaskProto.internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.TaskProto.RequestRaidCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.TaskProto.RequestRaidCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.TaskProto.RequestRaidCommand build() {
+        com.trans.pixel.protoc.TaskProto.RequestRaidCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.TaskProto.RequestRaidCommand buildPartial() {
+        com.trans.pixel.protoc.TaskProto.RequestRaidCommand result = new com.trans.pixel.protoc.TaskProto.RequestRaidCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.TaskProto.RequestRaidCommand) {
+          return mergeFrom((com.trans.pixel.protoc.TaskProto.RequestRaidCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.TaskProto.RequestRaidCommand other) {
+        if (other == com.trans.pixel.protoc.TaskProto.RequestRaidCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.TaskProto.RequestRaidCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.TaskProto.RequestRaidCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestRaidCommand)
+    }
+
+    static {
+      defaultInstance = new RequestRaidCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestRaidCommand)
+  }
+
   public interface RequestOpenRaidCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -13783,6 +14092,11 @@ public final class TaskProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestRaidCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -13840,13 +14154,14 @@ public final class TaskProto {
       "entid\030\006 \001(\005\022\014\n\004turn\030\007 \003(\005\022\r\n\005level\030\010 \001(\005" +
       "\022\020\n\010maxlevel\030\t \001(\005\022\021\n\tstarttime\030\n \001(\t\022\017\n" +
       "\007endtime\030\013 \001(\t\"6\n\010RaidList\022*\n\004data\030\001 \003(\013" +
-      "2\034.com.trans.pixel.protoc.Raid\"3\n\026Reques" +
-      "tOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 " +
-      "\001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002id\030\001 \001" +
-      "(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022" +
-      "\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 " +
-      "\001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid\030\001 \003(\013",
-      "2\034.com.trans.pixel.protoc.Raid"
+      "2\034.com.trans.pixel.protoc.Raid\"\024\n\022Reques" +
+      "tRaidCommand\"3\n\026RequestOpenRaidCommand\022\n" +
+      "\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"v\n\027RequestStar" +
+      "tRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001" +
+      "(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003r" +
+      "et\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"A\n\023ResponseRai",
+      "dCommand\022*\n\004raid\030\001 \003(\0132\034.com.trans.pixel" +
+      ".protoc.Raid"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13931,20 +14246,26 @@ public final class TaskProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RaidList_descriptor,
               new java.lang.String[] { "Data", });
-          internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor =
             getDescriptor().getMessageTypes().get(13);
+          internal_static_com_trans_pixel_protoc_RequestRaidCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestRaidCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor =
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestOpenRaidCommand_descriptor,
               new java.lang.String[] { "Id", "Level", });
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestStartRaidCommand_descriptor,
               new java.lang.String[] { "Id", "TeamInfo", "FightInfo", "Turn", "Ret", "Eventid", });
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ResponseRaidCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseRaidCommand_descriptor,

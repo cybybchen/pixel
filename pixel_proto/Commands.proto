@@ -3832,6 +3832,8 @@ message Raid {
 message RaidList {
         repeated Raid data = 1;
 }
+message RequestRaidCommand {
+}
 message RequestOpenRaidCommand {
 	optional int32 id = 1;
 	optional int32 level = 2;
@@ -3938,7 +3940,8 @@ message RequestCommand {
 	optional RequestFightInfoCommand fightInfoCommand = 155;
 	optional RequestGetFightInfoCommand getFightInfoCommand = 156;
 	optional RequestOpenRaidCommand openRaidCommand = 157;
-	optional RequestStartRaidCommand raidCommand = 158;
+	optional RequestRaidCommand raidCommand = 173;
+	optional RequestStartRaidCommand startRaidCommand = 158;
 	optional RequestCanRechargeCommand canRechargeCommand = 170;
 	optional RequestAttackMowuCommand attackMowuCommand = 171;
 	//////////////////////////////////////////////////////
