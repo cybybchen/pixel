@@ -85,7 +85,7 @@ public class UserActivityRedisService extends RedisService {
 		
 		if (activityType == 1)
 			this.expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()));
-		else if (activityType == 0)
+		else if (activityType == 0 || activityType == 2)
 			this.expireAt(key, DateUtil.getDate(activity.getEndtime()));
 				
 	}
