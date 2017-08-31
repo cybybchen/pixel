@@ -675,7 +675,12 @@ public class UnionService extends FightService{
 			for(UserInfo member : members){
 				if(member.getId() == user.getId())
 					continue;
-				MailBean mail = MailBean.buildSystemMail(member.getId(), user.getUserName()+"弹劾成功，成为新的公会会长！", new ArrayList<RewardInfo>());
+				List<RewardInfo> rewards = new ArrayList<RewardInfo>();
+				RewardInfo.Builder reward = RewardInfo.newBuilder();
+				reward.setItemid(RewardConst.COIN);
+				reward.setCount(8888);
+				rewards.add(reward.build());
+				MailBean mail = MailBean.buildSystemMail(member.getId(), "苍天已死，黄天当立。恭喜"+user.getUserName()+"弹劾成功，成为你的公会会长！", rewards);
 				mailService.addMail(mail);
 			}
 		}
