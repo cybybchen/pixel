@@ -14,8 +14,6 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import net.sf.json.JSONObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -66,6 +64,8 @@ import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
+
+import net.sf.json.JSONObject;
 
 @Service
 public class UnionService extends FightService{
@@ -671,6 +671,13 @@ public class UnionService extends FightService{
 			userService.cache(user.getServerId(), bean.buildShort());
 			
 			redis.clearLock(redis.getUnionMemberKey(user.getUnionId()));
+//			List<UserInfo> members = redis.getMembers(user);
+			for(UserInfo member : members){
+				if(member.getId() == user.getId())
+					continue;
+				MailBean mail = MailBean.buildSystemMail(member.getId(), user.getUserName()+"弹劾成功，成为新的公会会长！", new ArrayList<RewardInfo>());
+				mailService.addMail(mail);
+			}
 		}
 		return SuccessConst.HANDLE_UNION_MEMBER_SUCCESS;
 	}
