@@ -90,6 +90,12 @@ public class UserActivityRedisService extends RedisService {
 				
 	}
 	
+	public long getActivityTypeUserIdLimit() {
+		String key = RedisKey.ACTIVITY_USERID_LIMIT_KEY;
+		
+		return TypeTranslatedUtil.stringToLong(get(key));
+	}
+	
 	public void setActivityCompleteExpire(final int type, final String time) {
 		String key = RedisKey.ACTIVITY_COMPLETE_COUNT_PREFIX + type;
 		expireAt(key, DateUtil.getDate(time));

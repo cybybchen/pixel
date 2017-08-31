@@ -279,6 +279,7 @@ public class RedisKey {
 	public static final String ACTIVITY_COMPLETE_COUNT_PREFIX = PREFIX + "count" + SPLIT + ACTIVITY_PREFIX;
 	public static final String ACTIVITY_FILE_PREFIX = PREFIX + CONFIG_PREFIX + ACTIVITY_PREFIX;
 	public static final String ACTIVITY_RICHANG_SEND_REWARD_RECORD_KEY = "richang_send_record";
+	public static final String ACTIVITY_USERID_LIMIT_KEY = PREFIX + "activity:useridlimit";
 
 	
 	//log redis

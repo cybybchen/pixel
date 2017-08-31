@@ -1385,6 +1385,9 @@ public class ActivityService {
 		if (activity.getActivitytype() != -1)
 			userActivityRedisService.setUserGetRewardState(user.getId(), activity);
 		
+		if (activity.getType() == 2 && user.getId() > userActivityRedisService.getActivityTypeUserIdLimit())
+			return;
+		
 		MailBean mail = MailBean.buildSystemMail(user.getId(), activity.getDes(), activity.getRewardList());
 		mailService.addMail(mail);
 	}
