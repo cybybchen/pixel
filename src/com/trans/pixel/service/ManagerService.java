@@ -501,7 +501,7 @@ public class ManagerService extends RedisService{
 			}
 		}
 
-		if(req.containsKey("update-BlackList") && gmaccountBean.getCanwrite() == 1){
+		if(req.containsKey("update-BlackList") && (gmaccountBean.getMaster() == 1 || gmaccountBean.getCanreward() == 1)){
 			JSONObject json = JSONObject.fromObject(req.get("update-BlackList").toString());
 			Object object = JSONObject.toBean(json, BlackListBean.class);
 			BlackListBean blacklist = (BlackListBean)object;
@@ -517,14 +517,14 @@ public class ManagerService extends RedisService{
 			// hput(RedisKey.PREFIX + RedisKey.BLACKLIST, blacklist.getUserId()+"", JSONObject.fromObject(blacklist).toString());
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-BlackList", JSONObject.fromObject(blacklist).toString());
 			req.put("BlackList", 1);
-		}else if(req.containsKey("del-BlackList") && gmaccountBean.getCanwrite() == 1){
+		}else if(req.containsKey("del-BlackList") && (gmaccountBean.getMaster() == 1 || gmaccountBean.getCanreward() == 1)){
 			String value = hget(RedisKey.PREFIX + RedisKey.BLACKLIST, req.get("del-BlackList").toString());
 			// hdelete(RedisKey.PREFIX + RedisKey.BLACKLIST, req.get("del-BlackList").toString());
 			blackListService.deleteBlackList(Integer.parseInt(req.get("del-BlackList").toString()));
 			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-BlackList", ""+value);
 			req.put("BlackList", 1);
 		}
-		if(req.containsKey("BlackList") && gmaccountBean.getCanview() == 1){
+		if(req.containsKey("BlackList") && (gmaccountBean.getMaster() == 1 || gmaccountBean.getCanreward() == 1)){
 			Map<String, String> map = blackListService.getBlackListMap();
 			JSONObject object = new JSONObject();
 			object.putAll(map);
