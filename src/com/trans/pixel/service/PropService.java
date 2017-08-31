@@ -61,6 +61,8 @@ public class PropService {
 	private UserTalentService userTalentService;
 	@Resource
 	private TalentRedisService talentRedisService;
+	@Resource
+	private UserPokedeService userPokedeService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -171,6 +173,8 @@ public class PropService {
 			userProp.setPropCount(userProp.getPropCount() - 1);
 			userPropService.updateUserProp(userProp);
 			
+			userPokedeService.updateUserPokede(heroInfo, user);
+			
 			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 			builder.addUserHero(heroInfo.buildHeroInfo());
 			responseBuilder.setGetUserHeroCommand(builder.build());
@@ -183,6 +187,8 @@ public class PropService {
 			
 			userProp.setPropCount(userProp.getPropCount() - 1);
 			userPropService.updateUserProp(userProp);
+			
+			userPokedeService.updateUserPokede(heroInfo, user);
 			
 			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 			builder.addUserHero(heroInfo.buildHeroInfo());
