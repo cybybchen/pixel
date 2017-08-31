@@ -263,8 +263,8 @@ public class ServerTitleService {
 			if (raid.getId() < 50)
 				continue;
 			
-			if (!DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime()))
-				continue;
+//			if (!DateUtil.timeIsAvailable(raid.getStarttime(), raid.getEndtime()))
+//				continue;
 			
 			Set<TypedTuple<String>> ranks = rankRedisService.getRankList(serverId, RankConst.RAID_RANK_PREFIX + raid.getId(), RankConst.TITLE_RANK_START, RankConst.TITLE_RANK_END);
 			if (ranks.isEmpty())
