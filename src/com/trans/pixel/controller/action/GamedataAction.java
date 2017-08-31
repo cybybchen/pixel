@@ -110,8 +110,8 @@ public class GamedataAction {
 		}
 
 		long now = System.currentTimeMillis();
-		if(now - startTime > 100)
-			logger.info("response time:{},request={}", now - startTime, req.toString().replaceAll("\n", ""));
+		if(now - startTime > 2000)
+			logger.warn("response time:{},request={}", now - startTime, req.toString().replaceAll("\n", ""));
 		else
 			logger.info("response time:{}", now - startTime);
 		
