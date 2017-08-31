@@ -250,11 +250,12 @@ public class UserLadderService {
 	}
 	
 	public boolean isNextSeason(LadderSeason ladderSeason) {
-		if (DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime()))
+//		if (DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime()))
+		if (!DateUtil.timeIsOver(ladderSeason.getEndTime()))
 			return false;
 		
 		serverTitleService.handlerSeasonEnd();
-		userLadderRedisService.deleteLadderSeason();
+//		userLadderRedisService.deleteLadderSeason();
 		
 		return true;
 	}
@@ -293,15 +294,18 @@ public class UserLadderService {
 	}
 	
 	private LadderSeason initLadderSeason() {
+		LadderSeason ladderSeason = getLadderSeason();
 		Map<Integer, LadderSeasonConfig> map = ladderRedisService.getLadderSeasonConfig();
-		for (LadderSeasonConfig ladderSeason : map.values()) {
-			LadderSeason.Builder builder = LadderSeason.newBuilder();
-			builder.setSeason(ladderSeason.getSeason());
-			builder.setStartTime(ladderSeason.getStarttime());
-			builder.setEndTime(DateUtil.forDatetime(DateUtil.getFutureDay(DateUtil.getDate(builder.getStartTime()), LadderConst.LADDER_LAST_DAYS)));
-			
-			if (DateUtil.timeIsAvailable(builder.getStartTime(), builder.getEndTime()))
-				return builder.build();
+		for (LadderSeasonConfig season : map.values()) {
+			if (season.getSeason() == ladderSeason.getSeason() + 1) {
+				LadderSeason.Builder builder = LadderSeason.newBuilder();
+				builder.setSeason(season.getSeason());
+				builder.setStartTime(season.getStarttime());
+				builder.setEndTime(DateUtil.forDatetime(DateUtil.getFutureDay(DateUtil.getDate(builder.getStartTime()), LadderConst.LADDER_LAST_DAYS)));
+				
+				if (!DateUtil.timeIsOver(builder.getEndTime()))
+					return builder.build();
+			}
 		}
 		
 		return null;
