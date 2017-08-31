@@ -655,13 +655,13 @@ public class UnionService extends FightService{
 //			return ErrorConst.PERMISSION_DENIED;
 //		if(user.getId() == bean.getId())
 //			return ErrorConst.PERMISSION_DENIED;
-		user.setUnionJob(UnionConst.UNION_HUIZHANG);
-		bean.setUnionJob(UnionConst.UNION_HUIZHONG);
 		if(bean.getUnionId() == user.getUnionId()){
 			if(!redis.waitLock(redis.getUnionMemberKey(user.getUnionId())))
 				return ErrorConst.REDISKEY_BUSY_ERROR;
-			if(!costService.cost(user, 1002, 500))
+			if(!costService.cost(user, RewardConst.JEWEL, 500))
 				return ErrorConst.NOT_ENOUGH_JEWEL;
+			user.setUnionJob(UnionConst.UNION_HUIZHANG);
+			bean.setUnionJob(UnionConst.UNION_HUIZHONG);
 			redis.saveMember(user.getId(), user);
 			userService.updateUser(user);
 			userService.cache(user.getServerId(), user.buildShort());
