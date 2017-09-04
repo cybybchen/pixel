@@ -24,12 +24,14 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.TeamEngine;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
+import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
+import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
 import com.trans.pixel.protoc.UserInfoProto.RequestBindRecommandCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestChangeUserNameCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestExtraRewardCommand;
@@ -50,6 +52,7 @@ import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ServerService;
+import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.ShopService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
@@ -104,6 +107,8 @@ public class UserCommandService extends BaseCommandService {
 	private RechargeRedisService rechargeRedisService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private ServerTitleService serverTitleService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -172,6 +177,8 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 
 		noticeMessageService.composeLogin(user);
+		
+		handlerServerTitle(responseBuilder, user.getServerId());
 	}
 
 	public void register(RequestCommand request, Builder responseBuilder) {
@@ -603,6 +610,12 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserUnion(responseBuilder, user);
 	}
 
+	private void handlerServerTitle(ResponseCommand.Builder responseBuilder, int serverId) {
+		ServerTitleInfo.Builder serverTitleBuilder = ServerTitleInfo.newBuilder();
+		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(serverId));
+		responseBuilder.setTitle(serverTitleBuilder.build());
+	}
+	
 	private void refreshUserLogin(UserBean user) {
 		// if (DateUtil.isNextDay(user.getLastLoginTime())) {
 		// //每日首次登陆

@@ -10,14 +10,12 @@ import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.service.ServerService;
-import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.LootService;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.protoc.ServerProto.HeadInfo.SERVER_STATUS;
 import com.trans.pixel.protoc.ServerProto.HeadInfo;
-import com.trans.pixel.protoc.ServerProto.ServerTitleInfo;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -248,8 +246,6 @@ public abstract class RequestScreen implements RequestHandle {
 	private UserService userService;
 	@Resource
 	private ServerService serverService;
-	@Resource
-	private ServerTitleService serverTitleService;
 	@Resource
 	private PushCommandService pushCommandService;
 	@Resource
@@ -548,10 +544,6 @@ public abstract class RequestScreen implements RequestHandle {
 			log.error("cmd request too many:" + req);
 			return false;
 		}
-
-		ServerTitleInfo.Builder serverTitleBuilder = ServerTitleInfo.newBuilder();
-		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(request.getHead().getServerId()));
-		rep.command.setTitle(serverTitleBuilder.build());
 
 		ResponseCommand.Builder responseBuilder = rep.command;
 		UserBean user = null;
