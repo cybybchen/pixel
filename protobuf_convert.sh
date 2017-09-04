@@ -222,7 +222,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
            }
 
 
-		if (request.getHead().getUserId() > 0 && !redisService.waitLock(RedisKey.USER_PREFIX + request.getHead().getUserId())) {
+		if (request.getHead().getUserId() > 0 && !redisService.setLock(RedisKey.USER_PREFIX + request.getHead().getUserId())) {
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.REQUEST_WAIT_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.REQUEST_WAIT_ERROR.getMesssage());
