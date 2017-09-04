@@ -212,14 +212,14 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 			return false;
 		}
 
-           if (request.hasLogCommand()) {
-               ResponseCommand.Builder responseBuilder = rep.command;
-               long userId = head != null ? head.getUserId() : 0;
-               UserBean user = userService.getUserMySelf(userId);
-               RequestLogCommand cmd = request.getLogCommand();
-               handleCommand(cmd, responseBuilder, user);
-               return false;
-           }
+		if (request.hasLogCommand()) {
+		   ResponseCommand.Builder responseBuilder = rep.command;
+		   long userId = head != null ? head.getUserId() : 0;
+		   UserBean other = userService.getUserOther(userId);
+		   RequestLogCommand cmd = request.getLogCommand();
+		   handleCommand(cmd, responseBuilder, other);
+		   return false;
+		}
 
 
 		if (request.getHead().getUserId() > 0 && !redisService.setLock(RedisKey.USER_PREFIX + request.getHead().getUserId())) {
