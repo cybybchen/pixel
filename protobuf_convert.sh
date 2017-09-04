@@ -104,6 +104,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.ConfigUtil;
 import com.trans.pixel.model.ServerBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -140,6 +142,8 @@ public abstract class RequestScreen implements RequestHandle {
 	private PushCommandService pushCommandService;
 	@Resource
 	private LootService lootService;
+	@Resource
+	private RedisService redisService;
 
 	protected abstract boolean handleRegisterCommand(RequestCommand cmd, Builder responseBuilder);
 	protected abstract boolean handleLoginCommand(RequestCommand cmd, Builder responseBuilder);
@@ -212,6 +216,15 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 			return false;
 		}
 
+		if (request.getHead().getUserId() > 0 && !redisService.waitLock(RedisKey.USER_PREFIX + request.getHead().getUserId())) {
+			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
+			erBuilder.setCode(String.valueOf(ErrorConst.REQUEST_WAIT_ERROR.getCode()));
+			erBuilder.setMessage(ErrorConst.REQUEST_WAIT_ERROR.getMesssage());
+			rep.command.setErrorCommand(erBuilder.build());
+			log.error(\"cmd request too many:\" + req);
+			return false;
+		}
+
 		ServerTitleInfo.Builder serverTitleBuilder = ServerTitleInfo.newBuilder();
 		serverTitleBuilder.addAllTitle(serverTitleService.selectServerTileListByServerId(request.getHead().getServerId()));
 		rep.command.setTitle(serverTitleBuilder.build());
@@ -269,6 +282,9 @@ echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !
 
 			lootService.calLoot(user, responseBuilder, request.hasLoginCommand());
 		}
+
+		if (request.getHead().getUserId() > 0)
+			redisService.clearLock(RedisKey.USER_PREFIX + request.getHead().getUserId());
 
 		return result;
 	}
