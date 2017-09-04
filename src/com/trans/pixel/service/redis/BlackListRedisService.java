@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
-
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.BlackListBean;
+import com.trans.pixel.protoc.TaskProto.Raid;
+import com.trans.pixel.protoc.TaskProto.RaidList;
+import com.trans.pixel.service.cache.CacheService;
+
+import net.sf.json.JSONObject;
 
 @Repository
 public class BlackListRedisService extends RedisService{
@@ -66,6 +69,11 @@ public class BlackListRedisService extends RedisService{
 		zremove(RedisKey.ZHANLI_RANK_NODELETE+bean.getServerId(), bean.getUserId()+"");
 		zremove(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + bean.getServerId() + RedisKey.SPLIT + RedisKey.RANK_PREFIX + RankConst.TYPE_VIP_HUOYUE, bean.getUserId() + "");
 		zremove(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + bean.getServerId() + RedisKey.SPLIT + RedisKey.RANK_PREFIX + RankConst.TYPE_RECHARGE, bean.getUserId() + "");
+		
+		RaidList raidList = CacheService.getcache(RedisKey.RAID_CONFIG);
+		for (Raid raid : raidList.getDataList()) {
+			zremove(RedisKey.PREFIX + RedisKey.SERVER_PREFIX + "1" + RedisKey.SPLIT + RedisKey.RANK_PREFIX + RankConst.RAID_RANK_PREFIX + raid.getId(), bean.getUserId() + "");
+		}
 	}
 
 	public boolean isNoaccount(String account){
