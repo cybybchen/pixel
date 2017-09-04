@@ -45,6 +45,32 @@ public class UserEquipPokedeService {
 		return userPokede;
 	}
 	
+	/**
+	 * 超时了也不返回null
+	 * @param userId
+	 * @param itemId
+	 * @param notExpired
+	 * @return
+	 */
+	
+	public UserEquipPokedeBean selectUserEquipPokede(long userId, int itemId, boolean notExpired) {
+		UserEquipPokedeBean userPokede = redis.selectUserEquipPokede(userId, itemId);
+		if (userPokede == null) {
+			if (!redis.isExistPokedeKey(userId)) {
+				List<UserEquipPokedeBean> userPokedeList = mapper.selectUserEquipPokedeList(userId);
+				if (userPokedeList != null && userPokedeList.size() > 0)
+					redis.updateUserEquipPokedeList(userPokedeList, userId);
+				
+				userPokede = redis.selectUserEquipPokede(userId, itemId);
+			}
+		}
+		
+//		if (userPokede != null && !userPokede.getEndTime().isEmpty() && DateUtil.timeIsOver(userPokede.getEndTime()))
+//			return null;
+		
+		return userPokede;
+	}
+	
 	public List<UserEquipPokedeBean> selectUserEquipPokedeList(long userId) {
 		List<UserEquipPokedeBean> userPokedeList = redis.selectUserEquipPokedeList(userId);
 		if (userPokedeList == null || userPokedeList.size() == 0) {
@@ -72,7 +98,7 @@ public class UserEquipPokedeService {
 	}
 	
 	public void updateUserEquipPokede(int itemId, UserBean user, int lasttime) {
-		UserEquipPokedeBean pokede = selectUserEquipPokede(user, itemId);
+		UserEquipPokedeBean pokede = selectUserEquipPokede(user.getId(), itemId, true);
 		if (pokede == null || !pokede.getEndTime().isEmpty()) {
 			/**
 			 * 获得新装备
