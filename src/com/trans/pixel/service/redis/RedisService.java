@@ -272,7 +272,7 @@ public class RedisService {
 	}
 
 	public boolean waitLock(final String key, int seconds) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 6; i++) {
 			if (setLock(key, seconds))
 				return true;
 			try {
