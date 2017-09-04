@@ -222,7 +222,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		}
 
 
-		if (request.getHead().getUserId() > 0 && !redisService.setLock(RedisKey.USER_PREFIX + request.getHead().getUserId())) {
+		if (request.getHead().getUserId() > 0 && !redisService.setLock(RedisKey.USER_PREFIX + request.getHead().getUserId(), request.getHead().getUserId())) {
 			ErrorCommand.Builder erBuilder = ErrorCommand.newBuilder();
 			erBuilder.setCode(String.valueOf(ErrorConst.REQUEST_WAIT_ERROR.getCode()));
 			erBuilder.setMessage(ErrorConst.REQUEST_WAIT_ERROR.getMesssage());
@@ -281,7 +281,7 @@ echo -e "		if (result && user != null && !request.hasQueryRechargeCommand() && !
 		}
 
 		if (request.getHead().getUserId() > 0)
-			redisService.clearLock(RedisKey.USER_PREFIX + request.getHead().getUserId());
+			redisService.clearLock(RedisKey.USER_PREFIX + request.getHead().getUserId(), request.getHead().getUserId());
 
 		return result;
 	}

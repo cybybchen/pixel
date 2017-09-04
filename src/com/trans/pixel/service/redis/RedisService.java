@@ -243,16 +243,23 @@ public class RedisService {
 	 * 设置同步锁，返回true才能进行操作
 	 */
 	public boolean setLock(final String key) {
-		return setLock(key, 4);
+		return setLock(key, 4, 0);
+	}
+	
+	public boolean setLock(final String key, final long userId) {
+		return setLock(key, 4, userId);
 	}
 
 	public boolean setLock(final String key, final int seconds) {
-		return redisTemplate.execute(new RedisCallback<Boolean>() {
+		return setLock(key, seconds, 0);
+	}
+	public boolean setLock(final String key, final int seconds, final long userId) {
+		return getRedis(userId).execute(new RedisCallback<Boolean>() {
 			@Override
 			public Boolean doInRedis(RedisConnection arg0)
 					throws DataAccessException {
 				String lockey = "LOCK_" + key;
-				BoundValueOperations<String, String> Ops = redisTemplate
+				BoundValueOperations<String, String> Ops = getRedis(userId)
 						.boundValueOps(lockey);
 
 				if (Ops.setIfAbsent("" + seconds)) {
@@ -270,10 +277,18 @@ public class RedisService {
 	public boolean waitLock(final String key) {
 		return waitLock(key, 4);
 	}
+	
+	public boolean waitLock(final String key, final long userId) {
+		return waitLock(key, 4, userId);
+	}
 
 	public boolean waitLock(final String key, int seconds) {
+		return waitLock(key, seconds, 0);
+	}
+	
+	public boolean waitLock(final String key, int seconds, long userId) {
 		for (int i = 0; i < 6; i++) {
-			if (setLock(key, seconds))
+			if (setLock(key, seconds, userId))
 				return true;
 			try {
 				Thread.sleep(1000);
@@ -285,23 +300,15 @@ public class RedisService {
 		return false;
 	}
 
-	// /**
-	// * 读取同步锁
-	// */
-	// public long getLock(final String key) {
-	// Long value = lockMap.get(key);
-	// if (value == null)
-	// return 0;
-	// else
-	// return value;
-	// }
-
 	/**
 	 * 清除同步锁
 	 */
 	public void clearLock(final String key) {
+		clearLock(key, 0);
+	}
+	public void clearLock(final String key, long userId) {
 		logger.debug("clear lock key: LOCK_" + key);
-		delete("LOCK_" + key);
+		delete("LOCK_" + key, userId);
 	}
 
 	/**
