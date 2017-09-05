@@ -270,8 +270,8 @@ public class UserService {
 				}
 				
 					MailBean mail = new MailBean();
-					mail.setContent(rmb.getName());
-					mail.parseRewardList(rmb.getLibaoList());
+					mail.setContent(rmb.getOrder(0).getName());
+					mail.parseRewardList(rmb.getOrder(0).getLibaoList());
 					mail.setStartDate(DateUtil.getCurrentDateString());
 					mail.setType(MailConst.TYPE_SYSTEM_MAIL);
 					mail.setUserId(user.getId());

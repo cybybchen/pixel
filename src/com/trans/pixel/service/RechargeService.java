@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
@@ -33,6 +34,7 @@ import com.trans.pixel.protoc.EquipProto.Armor;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
+import com.trans.pixel.protoc.RechargeProto.RmbOrder;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipReward;
@@ -208,7 +210,7 @@ public class RechargeService {
 		} else
 			rmb = rechargeRedisService.getRmb(productid);
 		
-		int itemId = rmb.getReward().getItemid();
+		int itemId = rmb.getOrder(0).getReward().getItemid();
 		
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 //		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
@@ -219,7 +221,7 @@ public class RechargeService {
 //			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
 //				reward.setCount(rmb.getZuanshi()*2);
 //			}else{
-				reward.setCount(rmb.getReward().getCount() + (int)rmb.getReward().getCountb());
+				reward.setCount(rmb.getOrder(0).getReward().getCount() + (int)rmb.getOrder(0).getReward().getCountb());
 //			}
 			rewardList.add(reward.build());
 		}else if(itemId == 44007){//成长钻石基金:按照玩家总战力领取不同阶段的钻石
@@ -243,7 +245,7 @@ public class RechargeService {
 				libaobuilder.setValidtime(new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT).format(new Date(today0*1000L-1000L + 30*24*3600*1000L)));
 				// if(time < today0){
 					MailBean mail = new MailBean();
-					mail.setContent(rmb.getName());
+					mail.setContent(rmb.getOrder(0).getName());
 //					RewardBean reward = new RewardBean();
 //					List<RewardBean> list = new ArrayList<RewardBean>();
 //					reward.setItemid(libao.getre.getRewardid());
@@ -264,7 +266,29 @@ public class RechargeService {
 			}
 		}else {
 			Libao config = shopService.getLibaoConfig(productid);
-			libaobuilder.setValidtime(config.getStarttime());
+			RmbOrder rmborder = rmb.getOrder(0);
+			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+			Date now = new Date();
+			if(libaobuilder.getPurchase() < config.getMaxlimit()) {
+				try {
+				for(int i = 1; i < rmb.getOrderCount(); i++) {
+					RmbOrder order = rmb.getOrder(i);
+					Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
+					if(date1.before(now) || date2.after(now))
+						continue;
+					rmborder = order;
+					itemId = rmborder.getReward().getItemid();
+					libaobuilder.setValidtime(rmborder.getStarttime());
+					break;
+				}
+				if(!rmborder.hasStarttime())
+					logService.sendErrorLog(user.getId(), user.getServerId(), this.getClass(), RedisService.formatJson(rmborder), ErrorConst.RECHARGE_TIMEOUT);
+				} catch (Exception e) {
+					
+				}
+			}else {
+				logService.sendErrorLog(user.getId(), user.getServerId(), this.getClass(), RedisService.formatJson(rmborder), ErrorConst.RECHARGE_OVERTIME);
+			}
 			VipLibao viplibao = shopService.getVipLibao(itemId);
 			for(VipReward vipreward : viplibao.getRewardList()) {
 				int itemid = vipreward.getItemid();
@@ -282,7 +306,7 @@ public class RechargeService {
 			}
 		}
 
-		rechargeVip(user, (int)rmb.getCost().getCount());
+		rechargeVip(user, (int)rmb.getOrder(0).getCost().getCount());
 
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		if(rewardList.isEmpty()){
@@ -310,7 +334,7 @@ public class RechargeService {
 				params.put(LogString.USERID, "" + user.getId());
 				params.put(LogString.SERVERID, "" + user.getServerId());
 				params.put(LogString.CURRENCY, "0");
-				params.put(LogString.CURRENCYAMOUNT, "" + (int)rmb.getCost().getCount() * 100);
+				params.put(LogString.CURRENCYAMOUNT, "" + (int)rmb.getOrder(0).getCost().getCount() * 100);
 				params.put(LogString.STAGE, "0");
 				params.put(LogString.ITEMID, "" + productid);
 				params.put(LogString.ACTION, "2");
@@ -336,7 +360,7 @@ public class RechargeService {
 				params.put(LogString.APOKEDEX, "" + (armorCount*100/armormap.size()));
 			logService.sendLog(params, LogString.LOGTYPE_RECHARGE);
 		}
-		recharge.setRmb((int)rmb.getCost().getCount() * 100);
+		recharge.setRmb((int)rmb.getOrder(0).getCost().getCount() * 100);
 //		if (!isCheat)
 			updateToDB(recharge);
 		
@@ -347,23 +371,39 @@ public class RechargeService {
 		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(userId, recharge.getProductId()));
 		Libao config = shopService.getLibaoConfig(recharge.getProductId());
-		if(config.getMaxlimit() > 0 && config.hasStarttime()){//限制购买次数的礼包
+		if(config.getMaxlimit() > 0){//限制购买次数的礼包
+			Rmb rmb = rechargeRedisService.getRmb(recharge.getProductId());
+			RmbOrder rmborder = rmb.getOrder(0);
+			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+			Date now = new Date();
+			try {
+			for(int i = 1; i < rmb.getOrderCount(); i++) {
+				RmbOrder order = rmb.getOrder(i);
+				Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
+				if(date1.before(now) || date2.after(now))
+					continue;
+				rmborder = order;
+				break;
+			}
+			} catch (Exception e) {
+				
+			}
 			if(libaobuilder.hasValidtime()){
-				SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 				Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
 				try {
 					date = df.parse(libaobuilder.getValidtime());
-					date2 = df.parse(config.getStarttime());
+					date2 = df.parse(rmborder.getStarttime());
 				} catch (Exception e) {
 					
 				}
-				if(date.before(date2)){//礼包已过期
+				if(date.before(date2) && rmborder.hasStarttime()){//礼包已过期
 					libaobuilder.setPurchase(0);
 				}
 			}else {
 				libaobuilder.setPurchase(0);
 			}
-			libaobuilder.setValidtime(config.getStarttime());
+			if(rmborder.hasStarttime())
+				libaobuilder.setValidtime(rmborder.getStarttime());
 		}
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 		userService.saveLibao(userId, libaobuilder.build());
@@ -423,10 +463,10 @@ public class RechargeService {
 	public MultiReward buy(UserBean user, int productid){
 		List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 		Rmb rmb = rechargeRedisService.getRmb(productid);
-		int costId = rmb.getCost().getItemid();
-		int itemId = rmb.getReward().getItemid();
+		int costId = rmb.getOrder(0).getCost().getItemid();
+		int itemId = rmb.getOrder(0).getReward().getItemid();
 		
-		if (!costService.costAndUpdate(user, costId, rmb.getCost().getCount()))
+		if (!costService.costAndUpdate(user, costId, rmb.getOrder(0).getCost().getCount()))
 			return null;	
 
 		VipLibao viplibao = shopService.getVipLibao(itemId);
@@ -463,7 +503,7 @@ public class RechargeService {
 			return null;
 		}
 		
-		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getReward().getItemid(), rmb.getCost().getItemid(), (int)rmb.getCost().getCount());
+		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getOrder(0).getReward().getItemid(), rmb.getOrder(0).getCost().getItemid(), (int)rmb.getOrder(0).getCost().getCount());
 //		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 //			
 ////			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());

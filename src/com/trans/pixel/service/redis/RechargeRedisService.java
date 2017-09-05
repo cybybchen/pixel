@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
-
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -16,10 +14,13 @@ import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.RmbList;
+import com.trans.pixel.protoc.RechargeProto.RmbOrder;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
 import com.trans.pixel.protoc.RechargeProto.VipReward;
 import com.trans.pixel.service.cache.CacheService;
+
+import net.sf.json.JSONObject;
 
 @Service
 public class RechargeRedisService extends RedisService {
@@ -54,15 +55,21 @@ public class RechargeRedisService extends RedisService {
 		VipLibaoList.Builder list = VipLibaoList.newBuilder();
 		parseXml(xml, list);
 		for(Rmb.Builder rmb : builder.getDataBuilderList()) {
-			for(VipLibao libao : list.getDataList()){
-				if(libao.getItemid() == rmb.getReward().getItemid()) {
-					for(VipReward vipreward : libao.getRewardList()) {
-						RewardInfo.Builder reward = RewardInfo.newBuilder();
-						reward.setItemid(vipreward.getItemid());
-						reward.setCount(vipreward.getCount());
-						rmb.addLibao(reward);
+			for(RmbOrder.Builder rmborder : rmb.getOrderBuilderList()) {
+				if(rmborder.getStarttime().isEmpty())
+					rmborder.clearStarttime();
+				if(rmborder.getEndtime().isEmpty())
+						rmborder.clearEndtime();
+				for(VipLibao libao : list.getDataList()){
+					if(libao.getItemid() == rmborder.getReward().getItemid()) {
+						for(VipReward vipreward : libao.getRewardList()) {
+							RewardInfo.Builder reward = RewardInfo.newBuilder();
+							reward.setItemid(vipreward.getItemid());
+							reward.setCount(vipreward.getCount());
+							rmborder.addLibao(reward);
+						}
+						break;
 					}
-					break;
 				}
 			}
 			map.put(rmb.getId(), rmb.build());

@@ -572,6 +572,7 @@ message ResponseBattletowerShopCommand {
 
 message Libao {
 	optional int32 id = 1;
+	optional int32 order = 9;
 	optional int32 rechargeid = 2;
 	optional int32 purchase = 3;//剩余购买次数
 	optional int32 maxlimit = 5;//限购次数
@@ -2097,8 +2098,14 @@ message VipList {
 }
 
 message Rmb {
-	required int32 id = 1;
-	required int32 type = 2;
+	optional int32 id = 1;
+	repeated RmbOrder order = 2;
+}
+message RmbOrder {
+	optional int32 order = 1;
+	optional string starttime = 2;
+	optional string endtime = 3;
+	optional int32 type = 4;
 	optional string name = 5;
 	//optional string des = 6;
 	//optional string img = 7;
@@ -2136,6 +2143,7 @@ message RequestCheatRechargeCommand {
 }
 message RequestCanRechargeCommand {
 	optional int32 rechargeid = 1;
+	optional int32 order = 2;
 }
 message RequestRechargeCommand {
 	required int32 itemid = 1;

@@ -36893,6 +36893,16 @@ public final class ShopProto {
      */
     int getId();
 
+    // optional int32 order = 9;
+    /**
+     * <code>optional int32 order = 9;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional int32 order = 9;</code>
+     */
+    int getOrder();
+
     // optional int32 rechargeid = 2;
     /**
      * <code>optional int32 rechargeid = 2;</code>
@@ -37066,38 +37076,43 @@ public final class ShopProto {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               rechargeid_ = input.readInt32();
               break;
             }
             case 24: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               purchase_ = input.readInt32();
               break;
             }
             case 34: {
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               starttime_ = input.readBytes();
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               maxlimit_ = input.readInt32();
               break;
             }
             case 50: {
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               validtime_ = input.readBytes();
               break;
             }
             case 56: {
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               refresh_ = input.readInt32();
               break;
             }
             case 64: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               isOut_ = input.readBool();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000002;
+              order_ = input.readInt32();
               break;
             }
           }
@@ -37156,6 +37171,22 @@ public final class ShopProto {
       return id_;
     }
 
+    // optional int32 order = 9;
+    public static final int ORDER_FIELD_NUMBER = 9;
+    private int order_;
+    /**
+     * <code>optional int32 order = 9;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 order = 9;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
     // optional int32 rechargeid = 2;
     public static final int RECHARGEID_FIELD_NUMBER = 2;
     private int rechargeid_;
@@ -37163,7 +37194,7 @@ public final class ShopProto {
      * <code>optional int32 rechargeid = 2;</code>
      */
     public boolean hasRechargeid() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 rechargeid = 2;</code>
@@ -37183,7 +37214,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasPurchase() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 purchase = 3;</code>
@@ -37207,7 +37238,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasMaxlimit() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional int32 maxlimit = 5;</code>
@@ -37227,7 +37258,7 @@ public final class ShopProto {
      * <code>optional string starttime = 4;</code>
      */
     public boolean hasStarttime() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional string starttime = 4;</code>
@@ -37274,7 +37305,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasValidtime() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional string validtime = 6;</code>
@@ -37325,7 +37356,7 @@ public final class ShopProto {
      * <code>optional int32 refresh = 7;</code>
      */
     public boolean hasRefresh() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional int32 refresh = 7;</code>
@@ -37345,7 +37376,7 @@ public final class ShopProto {
      * </pre>
      */
     public boolean hasIsOut() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional bool isOut = 8;</code>
@@ -37360,6 +37391,7 @@ public final class ShopProto {
 
     private void initFields() {
       id_ = 0;
+      order_ = 0;
       rechargeid_ = 0;
       purchase_ = 0;
       maxlimit_ = 0;
@@ -37383,26 +37415,29 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(2, rechargeid_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(3, purchase_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(4, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, maxlimit_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeBytes(6, getValidtimeBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeInt32(7, refresh_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeBool(8, isOut_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(9, order_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -37417,33 +37452,37 @@ public final class ShopProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, rechargeid_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, purchase_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(4, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, maxlimit_);
       }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(6, getValidtimeBytes());
       }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, refresh_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(8, isOut_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, order_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -37563,20 +37602,22 @@ public final class ShopProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        rechargeid_ = 0;
+        order_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        purchase_ = 0;
+        rechargeid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
-        maxlimit_ = 0;
+        purchase_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        starttime_ = "";
+        maxlimit_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
-        validtime_ = "";
+        starttime_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
-        refresh_ = 0;
+        validtime_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
-        isOut_ = false;
+        refresh_ = 0;
         bitField0_ = (bitField0_ & ~0x00000080);
+        isOut_ = false;
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -37612,29 +37653,33 @@ public final class ShopProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.rechargeid_ = rechargeid_;
+        result.order_ = order_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.purchase_ = purchase_;
+        result.rechargeid_ = rechargeid_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.maxlimit_ = maxlimit_;
+        result.purchase_ = purchase_;
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.starttime_ = starttime_;
+        result.maxlimit_ = maxlimit_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.validtime_ = validtime_;
+        result.starttime_ = starttime_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.refresh_ = refresh_;
+        result.validtime_ = validtime_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
+        }
+        result.refresh_ = refresh_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
         }
         result.isOut_ = isOut_;
         result.bitField0_ = to_bitField0_;
@@ -37656,6 +37701,9 @@ public final class ShopProto {
         if (other.hasId()) {
           setId(other.getId());
         }
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
+        }
         if (other.hasRechargeid()) {
           setRechargeid(other.getRechargeid());
         }
@@ -37666,12 +37714,12 @@ public final class ShopProto {
           setMaxlimit(other.getMaxlimit());
         }
         if (other.hasStarttime()) {
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000020;
           starttime_ = other.starttime_;
           onChanged();
         }
         if (other.hasValidtime()) {
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000040;
           validtime_ = other.validtime_;
           onChanged();
         }
@@ -37741,13 +37789,46 @@ public final class ShopProto {
         return this;
       }
 
+      // optional int32 order = 9;
+      private int order_ ;
+      /**
+       * <code>optional int32 order = 9;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 order = 9;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional int32 order = 9;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000002;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 order = 9;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        order_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 rechargeid = 2;
       private int rechargeid_ ;
       /**
        * <code>optional int32 rechargeid = 2;</code>
        */
       public boolean hasRechargeid() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 rechargeid = 2;</code>
@@ -37759,7 +37840,7 @@ public final class ShopProto {
        * <code>optional int32 rechargeid = 2;</code>
        */
       public Builder setRechargeid(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         rechargeid_ = value;
         onChanged();
         return this;
@@ -37768,7 +37849,7 @@ public final class ShopProto {
        * <code>optional int32 rechargeid = 2;</code>
        */
       public Builder clearRechargeid() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         rechargeid_ = 0;
         onChanged();
         return this;
@@ -37784,7 +37865,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasPurchase() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional int32 purchase = 3;</code>
@@ -37804,7 +37885,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder setPurchase(int value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         purchase_ = value;
         onChanged();
         return this;
@@ -37817,7 +37898,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearPurchase() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         purchase_ = 0;
         onChanged();
         return this;
@@ -37833,7 +37914,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasMaxlimit() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional int32 maxlimit = 5;</code>
@@ -37853,7 +37934,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder setMaxlimit(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         maxlimit_ = value;
         onChanged();
         return this;
@@ -37866,7 +37947,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearMaxlimit() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         maxlimit_ = 0;
         onChanged();
         return this;
@@ -37878,7 +37959,7 @@ public final class ShopProto {
        * <code>optional string starttime = 4;</code>
        */
       public boolean hasStarttime() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional string starttime = 4;</code>
@@ -37918,7 +37999,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         starttime_ = value;
         onChanged();
         return this;
@@ -37927,7 +38008,7 @@ public final class ShopProto {
        * <code>optional string starttime = 4;</code>
        */
       public Builder clearStarttime() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         starttime_ = getDefaultInstance().getStarttime();
         onChanged();
         return this;
@@ -37940,7 +38021,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000010;
+  bitField0_ |= 0x00000020;
         starttime_ = value;
         onChanged();
         return this;
@@ -37956,7 +38037,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasValidtime() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional string validtime = 6;</code>
@@ -38008,7 +38089,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         validtime_ = value;
         onChanged();
         return this;
@@ -38021,7 +38102,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearValidtime() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         validtime_ = getDefaultInstance().getValidtime();
         onChanged();
         return this;
@@ -38038,7 +38119,7 @@ public final class ShopProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000020;
+  bitField0_ |= 0x00000040;
         validtime_ = value;
         onChanged();
         return this;
@@ -38050,7 +38131,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public boolean hasRefresh() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional int32 refresh = 7;</code>
@@ -38062,7 +38143,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder setRefresh(int value) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         refresh_ = value;
         onChanged();
         return this;
@@ -38071,7 +38152,7 @@ public final class ShopProto {
        * <code>optional int32 refresh = 7;</code>
        */
       public Builder clearRefresh() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         refresh_ = 0;
         onChanged();
         return this;
@@ -38087,7 +38168,7 @@ public final class ShopProto {
        * </pre>
        */
       public boolean hasIsOut() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional bool isOut = 8;</code>
@@ -38107,7 +38188,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder setIsOut(boolean value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         isOut_ = value;
         onChanged();
         return this;
@@ -38120,7 +38201,7 @@ public final class ShopProto {
        * </pre>
        */
       public Builder clearIsOut() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         isOut_ = false;
         onChanged();
         return this;
@@ -42897,22 +42978,22 @@ public final class ShopProto {
       "hCommand\"x\n\036ResponseBattletowerShopComma" +
       "nd\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.prot" +
       "oc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refresh" +
-      "Cost\030\003 \001(\005\"\221\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\022\n\nrech" +
-      "argeid\030\002 \001(\005\022\020\n\010purchase\030\003 \001(\005\022\020\n\010maxlim" +
-      "it\030\005 \001(\005\022\021\n\tstarttime\030\004 \001(\t\022\021\n\tvalidtime",
-      "\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r\n\005isOut\030\010 \001(\010\"8" +
-      "\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans.pi" +
-      "xel.protoc.Libao\"\031\n\027RequestLibaoShopComm" +
-      "and\"H\n\030ResponseLibaoShopCommand\022,\n\005items" +
-      "\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\")\n" +
-      "\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurchase\030\002 \001(\010" +
-      "\"T\n\"ResponseFirstRechargeStatusCommand\022." +
-      "\n\006status\030\001 \003(\0132\036.com.trans.pixel.protoc." +
-      "Status\"0\n\036RequestPurchaseContractCommand" +
-      "\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPurchaseCoinC",
-      "ommand\"Q\n\033ResponsePurchaseCoinCommand\022\r\n" +
-      "\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005\022\021\n\ttotalT" +
-      "ime\030\005 \001(\005"
+      "Cost\030\003 \001(\005\"\240\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\r\n\005orde" +
+      "r\030\t \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010purchase\030" +
+      "\003 \001(\005\022\020\n\010maxlimit\030\005 \001(\005\022\021\n\tstarttime\030\004 \001",
+      "(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r" +
+      "\n\005isOut\030\010 \001(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\013" +
+      "2\035.com.trans.pixel.protoc.Libao\"\031\n\027Reque" +
+      "stLibaoShopCommand\"H\n\030ResponseLibaoShopC" +
+      "ommand\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel." +
+      "protoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013ca" +
+      "npurchase\030\002 \001(\010\"T\n\"ResponseFirstRecharge" +
+      "StatusCommand\022.\n\006status\030\001 \003(\0132\036.com.tran" +
+      "s.pixel.protoc.Status\"0\n\036RequestPurchase" +
+      "ContractCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032Reque",
+      "stPurchaseCoinCommand\"Q\n\033ResponsePurchas" +
+      "eCoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030" +
+      "\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43260,7 +43341,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
-              new java.lang.String[] { "Id", "Rechargeid", "Purchase", "Maxlimit", "Starttime", "Validtime", "Refresh", "IsOut", });
+              new java.lang.String[] { "Id", "Order", "Rechargeid", "Purchase", "Maxlimit", "Starttime", "Validtime", "Refresh", "IsOut", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
             getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new

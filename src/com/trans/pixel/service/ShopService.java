@@ -19,6 +19,7 @@ import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
+import com.trans.pixel.protoc.RechargeProto.RmbOrder;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.ShopProto.Commodity;
 import com.trans.pixel.protoc.ShopProto.ContractWeight;
@@ -217,33 +218,54 @@ public class ShopService {
 	}
 	public LibaoList getLibaoShop(UserBean user, Map<Integer, Libao> libaoMap, boolean refresh){
 		LibaoList.Builder shopbuilder = redis.getLibaoShop();
-		for(Libao.Builder builder : shopbuilder.getDataBuilderList()){
+		Map<Integer, Rmb> map = rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY);
+		Date now = new Date();
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		for(int i = shopbuilder.getDataCount()-1; i >= 0; i--){
+			Libao.Builder builder = shopbuilder.getDataBuilder(i);
+			Rmb rmb = map.get(builder.getRechargeid());
+			if(rmb == null) {
+				shopbuilder.removeData(i);
+				continue;
+			}
+			RmbOrder rmborder = rmb.getOrder(0);
+			try {
+			for(int j = 1; j < rmb.getOrderCount(); j++) {
+				RmbOrder order = rmb.getOrder(j);
+				Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
+				if(date1.before(now) || date2.after(now))
+					continue;
+				rmborder = order;
+				break;
+			}
+			} catch (Exception e) {
+				
+			}
 			int count = 0;
-			Libao libao = libaoMap.get(builder.getRechargeid());
-			if(libao != null){
-				count = libao.getPurchase();
+			Libao mylibao = libaoMap.get(builder.getRechargeid());
+			if(mylibao != null){
+				count = mylibao.getPurchase();
 				if(refresh && count != 0 && builder.getRefresh() > 0){//每日礼包
-					Libao.Builder libaobuilder = Libao.newBuilder(libao);
+					Libao.Builder libaobuilder = Libao.newBuilder(mylibao);
 					libaobuilder.setPurchase(0);
 					count = 0;
 					userService.saveLibao(user.getId(), libaobuilder.build());
 				}
-				builder.setValidtime(libao.getValidtime());
+				builder.setValidtime(mylibao.getValidtime());
 			}
 			if(builder.getMaxlimit() > 0){//限制购买次数的礼包
 				if(count > builder.getMaxlimit())
 					count = builder.getMaxlimit();
 				if(builder.hasValidtime()){
-					SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 					Date date = new Date(System.currentTimeMillis()-1000), date2 = new Date();
 					try {
 						date = df.parse(builder.getValidtime());
-						date2 = df.parse(builder.getStarttime());
+						date2 = df.parse(rmborder.getStarttime());
 					} catch (Exception e) {
 						
 					}
 					if(date.before(date2)){//礼包已过期
-						Libao.Builder libaobuilder = Libao.newBuilder(libao);
+						Libao.Builder libaobuilder = Libao.newBuilder(mylibao);
 						libaobuilder.setPurchase(0);
 						libaobuilder.clearValidtime();
 						userService.saveLibao(user.getId(), libaobuilder.build());
@@ -254,6 +276,7 @@ public class ShopService {
 					count = 0;
 				}
 			}
+			builder.setOrder(rmborder.getOrder());
 			builder.setPurchase(Math.max(-1, builder.getMaxlimit() - count));
 			builder.setIsOut(builder.getPurchase() == 0);
 			builder.clearStarttime();
@@ -270,10 +293,11 @@ public class ShopService {
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(list.getDataList());
 		responseBuilder.setLibaoShopCommand(shop);
+		
 		int onlinestatus = serverService.getOnlineStatus(user.getVersion());
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
 		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).values()){
-			if(rmb.getReward().getItemid() != RewardConst.JEWEL)
+			if(rmb.getOrder(0).getReward().getItemid() != RewardConst.JEWEL)
 				continue;
 			Status.Builder builder = Status.newBuilder();
 			builder.setId(rmb.getId());

@@ -7206,107 +7206,39 @@ public final class RechargeProto {
   public interface RmbOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+    // optional int32 id = 1;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     boolean hasId();
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     int getId();
 
-    // required int32 type = 2;
+    // repeated .com.trans.pixel.protoc.RmbOrder order = 2;
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    boolean hasType();
+    java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder> 
+        getOrderList();
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    int getType();
-
-    // optional string name = 5;
+    com.trans.pixel.protoc.RechargeProto.RmbOrder getOrder(int index);
     /**
-     * <code>optional string name = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    boolean hasName();
+    int getOrderCount();
     /**
-     * <code>optional string name = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    java.lang.String getName();
+    java.util.List<? extends com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder> 
+        getOrderOrBuilderList();
     /**
-     * <code>optional string name = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    // optional .com.trans.pixel.protoc.RewardInfo cost = 9;
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
-     */
-    boolean hasCost();
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
-     */
-    com.trans.pixel.protoc.Base.RewardInfo getCost();
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
-     */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder();
-
-    // optional .com.trans.pixel.protoc.RewardInfo reward = 10;
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    boolean hasReward();
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    com.trans.pixel.protoc.Base.RewardInfo getReward();
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder();
-
-    // repeated .com.trans.pixel.protoc.RewardInfo libao = 11;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
-        getLibaoList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    com.trans.pixel.protoc.Base.RewardInfo getLibao(int index);
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    int getLibaoCount();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getLibaoOrBuilderList();
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLibaoOrBuilder(
+    com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder getOrderOrBuilder(
         int index);
   }
   /**
@@ -7365,48 +7297,12 @@ public final class RechargeProto {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              type_ = input.readInt32();
-              break;
-            }
-            case 42: {
-              bitField0_ |= 0x00000004;
-              name_ = input.readBytes();
-              break;
-            }
-            case 74: {
-              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = cost_.toBuilder();
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.RmbOrder>();
+                mutable_bitField0_ |= 0x00000002;
               }
-              cost_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(cost_);
-                cost_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-            case 82: {
-              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = reward_.toBuilder();
-              }
-              reward_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(reward_);
-                reward_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-            case 90: {
-              if (!((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-                libao_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
-                mutable_bitField0_ |= 0x00000020;
-              }
-              libao_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              order_.add(input.readMessage(com.trans.pixel.protoc.RechargeProto.RmbOrder.PARSER, extensionRegistry));
               break;
             }
           }
@@ -7417,8 +7313,8 @@ public final class RechargeProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
-          libao_ = java.util.Collections.unmodifiableList(libao_);
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          order_ = java.util.Collections.unmodifiableList(order_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -7452,197 +7348,67 @@ public final class RechargeProto {
     }
 
     private int bitField0_;
-    // required int32 id = 1;
+    // optional int32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     public boolean hasId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 id = 1;</code>
+     * <code>optional int32 id = 1;</code>
      */
     public int getId() {
       return id_;
     }
 
-    // required int32 type = 2;
-    public static final int TYPE_FIELD_NUMBER = 2;
-    private int type_;
+    // repeated .com.trans.pixel.protoc.RmbOrder order = 2;
+    public static final int ORDER_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder> order_;
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    public boolean hasType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+    public java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder> getOrderList() {
+      return order_;
     }
     /**
-     * <code>required int32 type = 2;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    public int getType() {
-      return type_;
-    }
-
-    // optional string name = 5;
-    public static final int NAME_FIELD_NUMBER = 5;
-    private java.lang.Object name_;
-    /**
-     * <code>optional string name = 5;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+    public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder> 
+        getOrderOrBuilderList() {
+      return order_;
     }
     /**
-     * <code>optional string name = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
-        return s;
-      }
+    public int getOrderCount() {
+      return order_.size();
     }
     /**
-     * <code>optional string name = 5;</code>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    // optional .com.trans.pixel.protoc.RewardInfo cost = 9;
-    public static final int COST_FIELD_NUMBER = 9;
-    private com.trans.pixel.protoc.Base.RewardInfo cost_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
-     */
-    public boolean hasCost() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+    public com.trans.pixel.protoc.RechargeProto.RmbOrder getOrder(int index) {
+      return order_.get(index);
     }
     /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
+     * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
      */
-    public com.trans.pixel.protoc.Base.RewardInfo getCost() {
-      return cost_;
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
-     *
-     * <pre>
-     *optional string des = 6;
-     *optional string img = 7;
-     * </pre>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder() {
-      return cost_;
-    }
-
-    // optional .com.trans.pixel.protoc.RewardInfo reward = 10;
-    public static final int REWARD_FIELD_NUMBER = 10;
-    private com.trans.pixel.protoc.Base.RewardInfo reward_;
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    public boolean hasReward() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfo getReward() {
-      return reward_;
-    }
-    /**
-     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder() {
-      return reward_;
-    }
-
-    // repeated .com.trans.pixel.protoc.RewardInfo libao = 11;
-    public static final int LIBAO_FIELD_NUMBER = 11;
-    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> libao_;
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLibaoList() {
-      return libao_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
-        getLibaoOrBuilderList() {
-      return libao_;
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    public int getLibaoCount() {
-      return libao_.size();
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfo getLibao(int index) {
-      return libao_.get(index);
-    }
-    /**
-     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
-     */
-    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLibaoOrBuilder(
+    public com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder getOrderOrBuilder(
         int index) {
-      return libao_.get(index);
+      return order_.get(index);
     }
 
     private void initFields() {
       id_ = 0;
-      type_ = 0;
-      name_ = "";
-      cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
-      reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
-      libao_ = java.util.Collections.emptyList();
+      order_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7653,20 +7419,8 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, type_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(5, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(9, cost_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(10, reward_);
-      }
-      for (int i = 0; i < libao_.size(); i++) {
-        output.writeMessage(11, libao_.get(i));
+      for (int i = 0; i < order_.size(); i++) {
+        output.writeMessage(2, order_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -7681,25 +7435,9 @@ public final class RechargeProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      for (int i = 0; i < order_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, type_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, cost_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, reward_);
-      }
-      for (int i = 0; i < libao_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, libao_.get(i));
+          .computeMessageSize(2, order_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7809,9 +7547,7 @@ public final class RechargeProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getCostFieldBuilder();
-          getRewardFieldBuilder();
-          getLibaoFieldBuilder();
+          getOrderFieldBuilder();
         }
       }
       private static Builder create() {
@@ -7822,27 +7558,11 @@ public final class RechargeProto {
         super.clear();
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        type_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        if (costBuilder_ == null) {
-          cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          costBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (rewardBuilder_ == null) {
-          reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
-        } else {
-          rewardBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (libaoBuilder_ == null) {
-          libao_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
-        } else {
-          libaoBuilder_.clear();
+          orderBuilder_.clear();
         }
         return this;
       }
@@ -7876,38 +7596,14 @@ public final class RechargeProto {
           to_bitField0_ |= 0x00000001;
         }
         result.id_ = id_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.type_ = type_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        if (costBuilder_ == null) {
-          result.cost_ = cost_;
-        } else {
-          result.cost_ = costBuilder_.build();
-        }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        if (rewardBuilder_ == null) {
-          result.reward_ = reward_;
-        } else {
-          result.reward_ = rewardBuilder_.build();
-        }
-        if (libaoBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020)) {
-            libao_ = java.util.Collections.unmodifiableList(libao_);
-            bitField0_ = (bitField0_ & ~0x00000020);
+        if (orderBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            order_ = java.util.Collections.unmodifiableList(order_);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.libao_ = libao_;
+          result.order_ = order_;
         } else {
-          result.libao_ = libaoBuilder_.build();
+          result.order_ = orderBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -7928,43 +7624,29 @@ public final class RechargeProto {
         if (other.hasId()) {
           setId(other.getId());
         }
-        if (other.hasType()) {
-          setType(other.getType());
-        }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000004;
-          name_ = other.name_;
-          onChanged();
-        }
-        if (other.hasCost()) {
-          mergeCost(other.getCost());
-        }
-        if (other.hasReward()) {
-          mergeReward(other.getReward());
-        }
-        if (libaoBuilder_ == null) {
-          if (!other.libao_.isEmpty()) {
-            if (libao_.isEmpty()) {
-              libao_ = other.libao_;
-              bitField0_ = (bitField0_ & ~0x00000020);
+        if (orderBuilder_ == null) {
+          if (!other.order_.isEmpty()) {
+            if (order_.isEmpty()) {
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureLibaoIsMutable();
-              libao_.addAll(other.libao_);
+              ensureOrderIsMutable();
+              order_.addAll(other.order_);
             }
             onChanged();
           }
         } else {
-          if (!other.libao_.isEmpty()) {
-            if (libaoBuilder_.isEmpty()) {
-              libaoBuilder_.dispose();
-              libaoBuilder_ = null;
-              libao_ = other.libao_;
-              bitField0_ = (bitField0_ & ~0x00000020);
-              libaoBuilder_ = 
+          if (!other.order_.isEmpty()) {
+            if (orderBuilder_.isEmpty()) {
+              orderBuilder_.dispose();
+              orderBuilder_ = null;
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              orderBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getLibaoFieldBuilder() : null;
+                   getOrderFieldBuilder() : null;
             } else {
-              libaoBuilder_.addAllMessages(other.libao_);
+              orderBuilder_.addAllMessages(other.order_);
             }
           }
         }
@@ -7973,14 +7655,6 @@ public final class RechargeProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasId()) {
-          
-          return false;
-        }
-        if (!hasType()) {
-          
-          return false;
-        }
         return true;
       }
 
@@ -8003,22 +7677,22 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
+      // optional int32 id = 1;
       private int id_ ;
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public boolean hasId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public int getId() {
         return id_;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder setId(int value) {
         bitField0_ |= 0x00000001;
@@ -8027,7 +7701,7 @@ public final class RechargeProto {
         return this;
       }
       /**
-       * <code>required int32 id = 1;</code>
+       * <code>optional int32 id = 1;</code>
        */
       public Builder clearId() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -8036,34 +7710,1414 @@ public final class RechargeProto {
         return this;
       }
 
-      // required int32 type = 2;
-      private int type_ ;
+      // repeated .com.trans.pixel.protoc.RmbOrder order = 2;
+      private java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder> order_ =
+        java.util.Collections.emptyList();
+      private void ensureOrderIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.RechargeProto.RmbOrder>(order_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.RmbOrder, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder, com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder> orderBuilder_;
+
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
        */
-      public boolean hasType() {
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder> getOrderList() {
+        if (orderBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(order_);
+        } else {
+          return orderBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public int getOrderCount() {
+        if (orderBuilder_ == null) {
+          return order_.size();
+        } else {
+          return orderBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder getOrder(int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);
+        } else {
+          return orderBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.RechargeProto.RmbOrder value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.set(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder addOrder(com.trans.pixel.protoc.RechargeProto.RmbOrder value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.RechargeProto.RmbOrder value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder addOrder(
+          com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder addAllOrder(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.RechargeProto.RmbOrder> values) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          super.addAll(values, order_);
+          onChanged();
+        } else {
+          orderBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          orderBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public Builder removeOrder(int index) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.remove(index);
+          onChanged();
+        } else {
+          orderBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder getOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder getOrderOrBuilder(
+          int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);  } else {
+          return orderBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder> 
+           getOrderOrBuilderList() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(order_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder addOrderBuilder() {
+        return getOrderFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.RechargeProto.RmbOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder addOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.RechargeProto.RmbOrder.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RmbOrder order = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder> 
+           getOrderBuilderList() {
+        return getOrderFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.RechargeProto.RmbOrder, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder, com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.RechargeProto.RmbOrder, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder, com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder>(
+                  order_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          order_ = null;
+        }
+        return orderBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Rmb)
+    }
+
+    static {
+      defaultInstance = new Rmb(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Rmb)
+  }
+
+  public interface RmbOrderOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 order = 1;
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    int getOrder();
+
+    // optional string starttime = 2;
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    boolean hasStarttime();
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    java.lang.String getStarttime();
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getStarttimeBytes();
+
+    // optional string endtime = 3;
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    boolean hasEndtime();
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    java.lang.String getEndtime();
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getEndtimeBytes();
+
+    // optional int32 type = 4;
+    /**
+     * <code>optional int32 type = 4;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 4;</code>
+     */
+    int getType();
+
+    // optional string name = 5;
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    // optional .com.trans.pixel.protoc.RewardInfo cost = 9;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    boolean hasCost();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getCost();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RewardInfo reward = 10;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    boolean hasReward();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo libao = 11;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getLibaoList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getLibao(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    int getLibaoCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLibaoOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLibaoOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RmbOrder}
+   */
+  public static final class RmbOrder extends
+      com.google.protobuf.GeneratedMessage
+      implements RmbOrderOrBuilder {
+    // Use RmbOrder.newBuilder() to construct.
+    private RmbOrder(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RmbOrder(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RmbOrder defaultInstance;
+    public static RmbOrder getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RmbOrder getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RmbOrder(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              order_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              starttime_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              endtime_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              type_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              name_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = cost_.toBuilder();
+              }
+              cost_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cost_);
+                cost_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 82: {
+              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+                subBuilder = reward_.toBuilder();
+              }
+              reward_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reward_);
+                reward_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000040;
+              break;
+            }
+            case 90: {
+              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+                libao_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000080;
+              }
+              libao_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+          libao_ = java.util.Collections.unmodifiableList(libao_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RmbOrder_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RmbOrder_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.RechargeProto.RmbOrder.class, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RmbOrder> PARSER =
+        new com.google.protobuf.AbstractParser<RmbOrder>() {
+      public RmbOrder parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RmbOrder(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RmbOrder> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 order = 1;
+    public static final int ORDER_FIELD_NUMBER = 1;
+    private int order_;
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 order = 1;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
+    // optional string starttime = 2;
+    public static final int STARTTIME_FIELD_NUMBER = 2;
+    private java.lang.Object starttime_;
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    public boolean hasStarttime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    public java.lang.String getStarttime() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          starttime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string starttime = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStarttimeBytes() {
+      java.lang.Object ref = starttime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        starttime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string endtime = 3;
+    public static final int ENDTIME_FIELD_NUMBER = 3;
+    private java.lang.Object endtime_;
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    public boolean hasEndtime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    public java.lang.String getEndtime() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          endtime_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string endtime = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getEndtimeBytes() {
+      java.lang.Object ref = endtime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        endtime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional int32 type = 4;
+    public static final int TYPE_FIELD_NUMBER = 4;
+    private int type_;
+    /**
+     * <code>optional int32 type = 4;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional int32 type = 4;</code>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // optional string name = 5;
+    public static final int NAME_FIELD_NUMBER = 5;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional .com.trans.pixel.protoc.RewardInfo cost = 9;
+    public static final int COST_FIELD_NUMBER = 9;
+    private com.trans.pixel.protoc.Base.RewardInfo cost_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    public boolean hasCost() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getCost() {
+      return cost_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
+     *
+     * <pre>
+     *optional string des = 6;
+     *optional string img = 7;
+     * </pre>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder() {
+      return cost_;
+    }
+
+    // optional .com.trans.pixel.protoc.RewardInfo reward = 10;
+    public static final int REWARD_FIELD_NUMBER = 10;
+    private com.trans.pixel.protoc.Base.RewardInfo reward_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public boolean hasReward() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward() {
+      return reward_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder() {
+      return reward_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo libao = 11;
+    public static final int LIBAO_FIELD_NUMBER = 11;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> libao_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getLibaoList() {
+      return libao_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getLibaoOrBuilderList() {
+      return libao_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    public int getLibaoCount() {
+      return libao_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getLibao(int index) {
+      return libao_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo libao = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getLibaoOrBuilder(
+        int index) {
+      return libao_.get(index);
+    }
+
+    private void initFields() {
+      order_ = 0;
+      starttime_ = "";
+      endtime_ = "";
+      type_ = 0;
+      name_ = "";
+      cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      libao_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, order_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getEndtimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, type_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(9, cost_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeMessage(10, reward_);
+      }
+      for (int i = 0; i < libao_.size(); i++) {
+        output.writeMessage(11, libao_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, order_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getStarttimeBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getEndtimeBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, type_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, cost_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, reward_);
+      }
+      for (int i = 0; i < libao_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, libao_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.RechargeProto.RmbOrder parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.RechargeProto.RmbOrder prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RmbOrder}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.RechargeProto.RmbOrderOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RmbOrder_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RmbOrder_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.RechargeProto.RmbOrder.class, com.trans.pixel.protoc.RechargeProto.RmbOrder.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.RechargeProto.RmbOrder.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCostFieldBuilder();
+          getRewardFieldBuilder();
+          getLibaoFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        order_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        starttime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (costBuilder_ == null) {
+          cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+        } else {
+          costBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (rewardBuilder_ == null) {
+          reward_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+        } else {
+          rewardBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (libaoBuilder_ == null) {
+          libao_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          libaoBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.RechargeProto.internal_static_com_trans_pixel_protoc_RmbOrder_descriptor;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.RechargeProto.RmbOrder.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder build() {
+        com.trans.pixel.protoc.RechargeProto.RmbOrder result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.RechargeProto.RmbOrder buildPartial() {
+        com.trans.pixel.protoc.RechargeProto.RmbOrder result = new com.trans.pixel.protoc.RechargeProto.RmbOrder(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.order_ = order_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.endtime_ = endtime_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (costBuilder_ == null) {
+          result.cost_ = cost_;
+        } else {
+          result.cost_ = costBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        if (rewardBuilder_ == null) {
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        if (libaoBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            libao_ = java.util.Collections.unmodifiableList(libao_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.libao_ = libao_;
+        } else {
+          result.libao_ = libaoBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.RechargeProto.RmbOrder) {
+          return mergeFrom((com.trans.pixel.protoc.RechargeProto.RmbOrder)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.RmbOrder other) {
+        if (other == com.trans.pixel.protoc.RechargeProto.RmbOrder.getDefaultInstance()) return this;
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
+        }
+        if (other.hasStarttime()) {
+          bitField0_ |= 0x00000002;
+          starttime_ = other.starttime_;
+          onChanged();
+        }
+        if (other.hasEndtime()) {
+          bitField0_ |= 0x00000004;
+          endtime_ = other.endtime_;
+          onChanged();
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000010;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasCost()) {
+          mergeCost(other.getCost());
+        }
+        if (other.hasReward()) {
+          mergeReward(other.getReward());
+        }
+        if (libaoBuilder_ == null) {
+          if (!other.libao_.isEmpty()) {
+            if (libao_.isEmpty()) {
+              libao_ = other.libao_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureLibaoIsMutable();
+              libao_.addAll(other.libao_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.libao_.isEmpty()) {
+            if (libaoBuilder_.isEmpty()) {
+              libaoBuilder_.dispose();
+              libaoBuilder_ = null;
+              libao_ = other.libao_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              libaoBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getLibaoFieldBuilder() : null;
+            } else {
+              libaoBuilder_.addAllMessages(other.libao_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.RechargeProto.RmbOrder parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.RechargeProto.RmbOrder) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 order = 1;
+      private int order_ ;
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000001;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 order = 1;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        order_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string starttime = 2;
+      private java.lang.Object starttime_ = "";
+      /**
+       * <code>optional string starttime = 2;</code>
+       */
+      public boolean hasStarttime() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>optional string starttime = 2;</code>
+       */
+      public java.lang.String getStarttime() {
+        java.lang.Object ref = starttime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          starttime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getStarttimeBytes() {
+        java.lang.Object ref = starttime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          starttime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string starttime = 2;</code>
+       */
+      public Builder setStarttime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 2;</code>
+       */
+      public Builder clearStarttime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        starttime_ = getDefaultInstance().getStarttime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string starttime = 2;</code>
+       */
+      public Builder setStarttimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        starttime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string endtime = 3;
+      private java.lang.Object endtime_ = "";
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public boolean hasEndtime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public java.lang.String getEndtime() {
+        java.lang.Object ref = endtime_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          endtime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getEndtimeBytes() {
+        java.lang.Object ref = endtime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          endtime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public Builder setEndtime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public Builder clearEndtime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        endtime_ = getDefaultInstance().getEndtime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string endtime = 3;</code>
+       */
+      public Builder setEndtimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        endtime_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 type = 4;
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 4;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional int32 type = 4;</code>
        */
       public int getType() {
         return type_;
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>optional int32 type = 4;</code>
        */
       public Builder setType(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000008;
         type_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 type = 2;</code>
+       * <code>optional int32 type = 4;</code>
        */
       public Builder clearType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000008);
         type_ = 0;
         onChanged();
         return this;
@@ -8075,7 +9129,7 @@ public final class RechargeProto {
        * <code>optional string name = 5;</code>
        */
       public boolean hasName() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional string name = 5;</code>
@@ -8115,7 +9169,7 @@ public final class RechargeProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000010;
         name_ = value;
         onChanged();
         return this;
@@ -8124,7 +9178,7 @@ public final class RechargeProto {
        * <code>optional string name = 5;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000010);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -8137,7 +9191,7 @@ public final class RechargeProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  bitField0_ |= 0x00000010;
         name_ = value;
         onChanged();
         return this;
@@ -8156,7 +9210,7 @@ public final class RechargeProto {
        * </pre>
        */
       public boolean hasCost() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 9;</code>
@@ -8191,7 +9245,7 @@ public final class RechargeProto {
         } else {
           costBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8210,7 +9264,7 @@ public final class RechargeProto {
         } else {
           costBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8223,7 +9277,7 @@ public final class RechargeProto {
        */
       public Builder mergeCost(com.trans.pixel.protoc.Base.RewardInfo value) {
         if (costBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
               cost_ != com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance()) {
             cost_ =
               com.trans.pixel.protoc.Base.RewardInfo.newBuilder(cost_).mergeFrom(value).buildPartial();
@@ -8234,7 +9288,7 @@ public final class RechargeProto {
         } else {
           costBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
@@ -8252,7 +9306,7 @@ public final class RechargeProto {
         } else {
           costBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
@@ -8264,7 +9318,7 @@ public final class RechargeProto {
        * </pre>
        */
       public com.trans.pixel.protoc.Base.RewardInfo.Builder getCostBuilder() {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000020;
         onChanged();
         return getCostFieldBuilder().getBuilder();
       }
@@ -8313,7 +9367,7 @@ public final class RechargeProto {
        * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
        */
       public boolean hasReward() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
@@ -8338,7 +9392,7 @@ public final class RechargeProto {
         } else {
           rewardBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8352,7 +9406,7 @@ public final class RechargeProto {
         } else {
           rewardBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8360,7 +9414,7 @@ public final class RechargeProto {
        */
       public Builder mergeReward(com.trans.pixel.protoc.Base.RewardInfo value) {
         if (rewardBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
               reward_ != com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance()) {
             reward_ =
               com.trans.pixel.protoc.Base.RewardInfo.newBuilder(reward_).mergeFrom(value).buildPartial();
@@ -8371,7 +9425,7 @@ public final class RechargeProto {
         } else {
           rewardBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
@@ -8384,14 +9438,14 @@ public final class RechargeProto {
         } else {
           rewardBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.RewardInfo reward = 10;</code>
        */
       public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000040;
         onChanged();
         return getRewardFieldBuilder().getBuilder();
       }
@@ -8426,9 +9480,9 @@ public final class RechargeProto {
       private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> libao_ =
         java.util.Collections.emptyList();
       private void ensureLibaoIsMutable() {
-        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
           libao_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(libao_);
-          bitField0_ |= 0x00000020;
+          bitField0_ |= 0x00000080;
          }
       }
 
@@ -8577,7 +9631,7 @@ public final class RechargeProto {
       public Builder clearLibao() {
         if (libaoBuilder_ == null) {
           libao_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000080);
           onChanged();
         } else {
           libaoBuilder_.clear();
@@ -8654,7 +9708,7 @@ public final class RechargeProto {
           libaoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
                   libao_,
-                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  ((bitField0_ & 0x00000080) == 0x00000080),
                   getParentForChildren(),
                   isClean());
           libao_ = null;
@@ -8662,15 +9716,15 @@ public final class RechargeProto {
         return libaoBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Rmb)
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RmbOrder)
     }
 
     static {
-      defaultInstance = new Rmb(true);
+      defaultInstance = new RmbOrder(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.Rmb)
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RmbOrder)
   }
 
   public interface RmbListOrBuilder
@@ -8846,12 +9900,6 @@ public final class RechargeProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getDataCount(); i++) {
-        if (!getData(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9080,12 +10128,6 @@ public final class RechargeProto {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getDataCount(); i++) {
-          if (!getData(i).isInitialized()) {
-            
-            return false;
-          }
-        }
         return true;
       }
 
@@ -12428,6 +13470,16 @@ public final class RechargeProto {
      * <code>optional int32 rechargeid = 1;</code>
      */
     int getRechargeid();
+
+    // optional int32 order = 2;
+    /**
+     * <code>optional int32 order = 2;</code>
+     */
+    boolean hasOrder();
+    /**
+     * <code>optional int32 order = 2;</code>
+     */
+    int getOrder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCanRechargeCommand}
@@ -12483,6 +13535,11 @@ public final class RechargeProto {
             case 8: {
               bitField0_ |= 0x00000001;
               rechargeid_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              order_ = input.readInt32();
               break;
             }
           }
@@ -12541,8 +13598,25 @@ public final class RechargeProto {
       return rechargeid_;
     }
 
+    // optional int32 order = 2;
+    public static final int ORDER_FIELD_NUMBER = 2;
+    private int order_;
+    /**
+     * <code>optional int32 order = 2;</code>
+     */
+    public boolean hasOrder() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 order = 2;</code>
+     */
+    public int getOrder() {
+      return order_;
+    }
+
     private void initFields() {
       rechargeid_ = 0;
+      order_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -12559,6 +13633,9 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, rechargeid_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, order_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -12571,6 +13648,10 @@ public final class RechargeProto {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, rechargeid_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, order_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12690,6 +13771,8 @@ public final class RechargeProto {
         super.clear();
         rechargeid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        order_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -12722,6 +13805,10 @@ public final class RechargeProto {
           to_bitField0_ |= 0x00000001;
         }
         result.rechargeid_ = rechargeid_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.order_ = order_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -12740,6 +13827,9 @@ public final class RechargeProto {
         if (other == com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance()) return this;
         if (other.hasRechargeid()) {
           setRechargeid(other.getRechargeid());
+        }
+        if (other.hasOrder()) {
+          setOrder(other.getOrder());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -12797,6 +13887,39 @@ public final class RechargeProto {
       public Builder clearRechargeid() {
         bitField0_ = (bitField0_ & ~0x00000001);
         rechargeid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 order = 2;
+      private int order_ ;
+      /**
+       * <code>optional int32 order = 2;</code>
+       */
+      public boolean hasOrder() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 order = 2;</code>
+       */
+      public int getOrder() {
+        return order_;
+      }
+      /**
+       * <code>optional int32 order = 2;</code>
+       */
+      public Builder setOrder(int value) {
+        bitField0_ |= 0x00000002;
+        order_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 order = 2;</code>
+       */
+      public Builder clearOrder() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        order_ = 0;
         onChanged();
         return this;
       }
@@ -17345,6 +18468,11 @@ public final class RechargeProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_Rmb_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RmbOrder_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RmbOrder_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RmbList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -17461,34 +18589,37 @@ public final class RechargeProto {
       ".pixel.protoc.RewardInfo\0221\n\005libao\030\r \001(\0132" +
       "\".com.trans.pixel.protoc.RewardInfo\"8\n\007V" +
       "ipList\022-\n\004data\030\001 \003(\0132\037.com.trans.pixel.p" +
-      "rotoc.VipInfo\"\306\001\n\003Rmb\022\n\n\002id\030\001 \002(\005\022\014\n\004typ" +
-      "e\030\002 \002(\005\022\014\n\004name\030\005 \001(\t\0220\n\004cost\030\t \001(\0132\".co" +
-      "m.trans.pixel.protoc.RewardInfo\0222\n\006rewar" +
-      "d\030\n \001(\0132\".com.trans.pixel.protoc.RewardI" +
-      "nfo\0221\n\005libao\030\013 \003(\0132\".com.trans.pixel.pro" +
-      "toc.RewardInfo\"4\n\007RmbList\022)\n\004data\030\001 \003(\0132" +
-      "\033.com.trans.pixel.protoc.Rmb\"@\n\rShouchon",
-      "gList\022/\n\004data\030\001 \003(\0132!.com.trans.pixel.pr" +
-      "otoc.Shouchong\"o\n\tShouchong\022\n\n\002id\030\001 \002(\005\022" +
-      "\020\n\010activity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0222\n\006r" +
-      "eward\030\005 \003(\0132\".com.trans.pixel.protoc.Rew" +
-      "ardInfo\"\"\n\023RequestCdkeyCommand\022\013\n\003key\030\001 " +
-      "\002(\t\"7\n\030RequestSubmitIconCommand\022\014\n\004icon\030" +
-      "\001 \001(\r\022\r\n\005frame\030\002 \001(\r\"-\n\033RequestCheatRech" +
-      "argeCommand\022\016\n\006itemid\030\001 \001(\005\"/\n\031RequestCa" +
-      "nRechargeCommand\022\022\n\nrechargeid\030\001 \001(\005\"(\n\026" +
-      "RequestRechargeCommand\022\016\n\006itemid\030\001 \002(\005\"1",
-      "\n\032ResponseCanRechargeCommand\022\023\n\013canrecha" +
-      "rge\030\001 \001(\005\"C\n\031RequestBindAccountCommand\022\022" +
-      "\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccount\030\002 \002(\t\"-" +
-      "\n\036RequestPurchaseVipLibaoCommand\022\013\n\003vip\030" +
-      "\001 \002(\005\".\n\033RequestQueryRechargeCommand\022\017\n\007" +
-      "orderId\030\001 \001(\t\"\037\n\035RequestShouchongRewardC" +
-      "ommand\"+\n\032RequestGetGrowJewelCommand\022\r\n\005" +
-      "order\030\001 \002(\005\")\n\030RequestGetGrowExpCommand\022" +
-      "\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignCommand\"I\n\023" +
-      "ResponseSignCommand\0222\n\006reward\030\001 \003(\0132\".co",
-      "m.trans.pixel.protoc.RewardInfo"
+      "rotoc.VipInfo\"B\n\003Rmb\022\n\n\002id\030\001 \001(\005\022/\n\005orde" +
+      "r\030\002 \003(\0132 .com.trans.pixel.protoc.RmbOrde" +
+      "r\"\362\001\n\010RmbOrder\022\r\n\005order\030\001 \001(\005\022\021\n\tstartti" +
+      "me\030\002 \001(\t\022\017\n\007endtime\030\003 \001(\t\022\014\n\004type\030\004 \001(\005\022" +
+      "\014\n\004name\030\005 \001(\t\0220\n\004cost\030\t \001(\0132\".com.trans." +
+      "pixel.protoc.RewardInfo\0222\n\006reward\030\n \001(\0132" +
+      "\".com.trans.pixel.protoc.RewardInfo\0221\n\005l",
+      "ibao\030\013 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo\"4\n\007RmbList\022)\n\004data\030\001 \003(\0132\033.com.tr" +
+      "ans.pixel.protoc.Rmb\"@\n\rShouchongList\022/\n" +
+      "\004data\030\001 \003(\0132!.com.trans.pixel.protoc.Sho" +
+      "uchong\"o\n\tShouchong\022\n\n\002id\030\001 \002(\005\022\020\n\010activ" +
+      "ity\030\002 \002(\t\022\020\n\010targetid\030\003 \002(\005\0222\n\006reward\030\005 " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
+      "\"\n\023RequestCdkeyCommand\022\013\n\003key\030\001 \002(\t\"7\n\030R" +
+      "equestSubmitIconCommand\022\014\n\004icon\030\001 \001(\r\022\r\n" +
+      "\005frame\030\002 \001(\r\"-\n\033RequestCheatRechargeComm",
+      "and\022\016\n\006itemid\030\001 \001(\005\">\n\031RequestCanRecharg" +
+      "eCommand\022\022\n\nrechargeid\030\001 \001(\005\022\r\n\005order\030\002 " +
+      "\001(\005\"(\n\026RequestRechargeCommand\022\016\n\006itemid\030" +
+      "\001 \002(\005\"1\n\032ResponseCanRechargeCommand\022\023\n\013c" +
+      "anrecharge\030\001 \001(\005\"C\n\031RequestBindAccountCo" +
+      "mmand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccount\030" +
+      "\002 \002(\t\"-\n\036RequestPurchaseVipLibaoCommand\022" +
+      "\013\n\003vip\030\001 \002(\005\".\n\033RequestQueryRechargeComm" +
+      "and\022\017\n\007orderId\030\001 \001(\t\"\037\n\035RequestShouchong" +
+      "RewardCommand\"+\n\032RequestGetGrowJewelComm",
+      "and\022\r\n\005order\030\001 \002(\005\")\n\030RequestGetGrowExpC" +
+      "ommand\022\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignComm" +
+      "and\"I\n\023ResponseSignCommand\0222\n\006reward\030\001 \003" +
+      "(\0132\".com.trans.pixel.protoc.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17554,105 +18685,111 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_Rmb_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rmb_descriptor,
-              new java.lang.String[] { "Id", "Type", "Name", "Cost", "Reward", "Libao", });
-          internal_static_com_trans_pixel_protoc_RmbList_descriptor =
+              new java.lang.String[] { "Id", "Order", });
+          internal_static_com_trans_pixel_protoc_RmbOrder_descriptor =
             getDescriptor().getMessageTypes().get(10);
+          internal_static_com_trans_pixel_protoc_RmbOrder_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RmbOrder_descriptor,
+              new java.lang.String[] { "Order", "Starttime", "Endtime", "Type", "Name", "Cost", "Reward", "Libao", });
+          internal_static_com_trans_pixel_protoc_RmbList_descriptor =
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_RmbList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RmbList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_ShouchongList_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_ShouchongList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ShouchongList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Shouchong_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_Shouchong_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Shouchong_descriptor,
               new java.lang.String[] { "Id", "Activity", "Targetid", "Reward", });
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCdkeyCommand_descriptor,
               new java.lang.String[] { "Key", });
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitIconCommand_descriptor,
               new java.lang.String[] { "Icon", "Frame", });
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCheatRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor,
-              new java.lang.String[] { "Rechargeid", });
+              new java.lang.String[] { "Rechargeid", "Order", });
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor,
               new java.lang.String[] { "Itemid", });
           internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCanRechargeCommand_descriptor,
               new java.lang.String[] { "Canrecharge", });
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBindAccountCommand_descriptor,
               new java.lang.String[] { "OldAccount", "NewAccount", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseVipLibaoCommand_descriptor,
               new java.lang.String[] { "Vip", });
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryRechargeCommand_descriptor,
               new java.lang.String[] { "OrderId", });
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestShouchongRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowJewelCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetGrowExpCommand_descriptor,
               new java.lang.String[] { "Order", });
           internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSignCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_ResponseSignCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseSignCommand_descriptor,
