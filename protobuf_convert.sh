@@ -252,6 +252,7 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		        if(!request.hasLogCommand())
 		    		rep.command.setErrorCommand(erBuilder.build());
 		        log.info(\"cmd user need login:\" + req);
+		        redisService.clearLock(RedisKey.USER_PREFIX + request.getHead().getUserId(), request.getHead().getUserId());
 		        return false;
 		    }
 		

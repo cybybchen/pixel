@@ -232,9 +232,14 @@ public class ShopService {
 			try {
 			for(int j = 1; j < rmb.getOrderCount(); j++) {
 				RmbOrder order = rmb.getOrder(j);
-				Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
-				if(date1.before(now) || date2.after(now))
+				Date date1 = df.parse(order.getStarttime());
+				if(date1.after(now))
 					continue;
+				if(order.hasEndtime()) {
+					Date date2 = df.parse(order.getEndtime());
+					if(date2.before(now))
+						continue;
+				}
 				rmborder = order;
 				break;
 			}

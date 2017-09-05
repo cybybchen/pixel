@@ -273,9 +273,14 @@ public class RechargeService {
 				try {
 				for(int i = 1; i < rmb.getOrderCount(); i++) {
 					RmbOrder order = rmb.getOrder(i);
-					Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
-					if(date1.before(now) || date2.after(now))
+					Date date1 = df.parse(order.getStarttime());
+					if(date1.after(now))
 						continue;
+					if(order.hasEndtime()) {
+						Date date2 = df.parse(order.getEndtime());
+						if(date2.before(now))
+							continue;
+					}
 					rmborder = order;
 					itemId = rmborder.getReward().getItemid();
 					libaobuilder.setValidtime(rmborder.getStarttime());
@@ -379,9 +384,14 @@ public class RechargeService {
 			try {
 			for(int i = 1; i < rmb.getOrderCount(); i++) {
 				RmbOrder order = rmb.getOrder(i);
-				Date date1 = df.parse(order.getStarttime()), date2 = df.parse(order.getEndtime());
-				if(date1.before(now) || date2.after(now))
+				Date date1 = df.parse(order.getStarttime());
+				if(date1.after(now))
 					continue;
+				if(order.hasEndtime()) {
+					Date date2 = df.parse(order.getEndtime());
+					if(date2.before(now))
+						continue;
+				}
 				rmborder = order;
 				break;
 			}
