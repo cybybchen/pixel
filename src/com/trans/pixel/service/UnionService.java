@@ -1759,10 +1759,10 @@ public class UnionService extends FightService{
 		if (status.equals(UNION_FIGHT_STATUS.PIPEI_TIME))
 			return (int)(RedisService.today(12) - RedisService.now());
 		
-		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.THURSDAY));
+		logger.debug("next time is:" + DateUtil.getNextWeekDay(Calendar.FRIDAY));
 		logger.debug("currenct time is:" + DateUtil.getDate());
 		
-		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.THURSDAY), DateUtil.getDate());
+		return DateUtil.intervalSeconds(DateUtil.getNextWeekDay(Calendar.FRIDAY), DateUtil.getDate());
 		
 //		if (NEXT_TIME == 0)
 //			setUnionFightTime();
