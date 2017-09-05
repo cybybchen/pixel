@@ -68,9 +68,9 @@ public class ActivityCrontabService {
 			return;
 		log.error("current day is:" + DateUtil.getDayOfMonth());
 		if (DateUtil.getDayOfMonth() == 1) {
+			serverTitleService.handlerRaidRank();
 			serverTitleService.handlerRechargeRank();
 			serverTitleService.handlerUnionRank();
-			serverTitleService.handlerRaidRank();
 		}
 	}
 }
