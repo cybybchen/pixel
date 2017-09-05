@@ -265,34 +265,30 @@ public class RechargeService {
 				// }
 			}
 		}else {
-			Libao config = shopService.getLibaoConfig(productid);
+//			Libao config = shopService.getLibaoConfig(productid);
 			RmbOrder rmborder = rmb.getOrder(0);
 			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
 			Date now = new Date();
-			if(libaobuilder.getPurchase() < config.getMaxlimit()) {
-				try {
-				for(int i = 1; i < rmb.getOrderCount(); i++) {
-					RmbOrder order = rmb.getOrder(i);
-					Date date1 = df.parse(order.getStarttime());
-					if(date1.after(now))
+			try {
+			for(int i = 1; i < rmb.getOrderCount(); i++) {
+				RmbOrder order = rmb.getOrder(i);
+				Date date1 = df.parse(order.getStarttime());
+				if(date1.after(now))
+					continue;
+				if(order.hasEndtime()) {
+					Date date2 = df.parse(order.getEndtime());
+					if(date2.before(now))
 						continue;
-					if(order.hasEndtime()) {
-						Date date2 = df.parse(order.getEndtime());
-						if(date2.before(now))
-							continue;
-					}
-					rmborder = order;
-					itemId = rmborder.getReward().getItemid();
-					libaobuilder.setValidtime(rmborder.getStarttime());
-					break;
 				}
-				if(!rmborder.hasStarttime())
-					logService.sendErrorLog(user.getId(), user.getServerId(), this.getClass(), RedisService.formatJson(rmborder), ErrorConst.RECHARGE_TIMEOUT);
-				} catch (Exception e) {
-					
-				}
-			}else {
-				logService.sendErrorLog(user.getId(), user.getServerId(), this.getClass(), RedisService.formatJson(rmborder), ErrorConst.RECHARGE_OVERTIME);
+				rmborder = order;
+				itemId = rmborder.getReward().getItemid();
+				libaobuilder.setValidtime(rmborder.getStarttime());
+				break;
+			}
+			if(!rmborder.hasStarttime())
+				logService.sendErrorLog(user.getId(), user.getServerId(), this.getClass(), RedisService.formatJson(rmborder), ErrorConst.RECHARGE_TIMEOUT);
+			} catch (Exception e) {
+				
 			}
 			VipLibao viplibao = shopService.getVipLibao(itemId);
 			for(VipReward vipreward : viplibao.getRewardList()) {
