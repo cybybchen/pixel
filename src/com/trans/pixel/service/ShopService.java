@@ -224,10 +224,6 @@ public class ShopService {
 		for(int i = shopbuilder.getDataCount()-1; i >= 0; i--){
 			Libao.Builder builder = shopbuilder.getDataBuilder(i);
 			Rmb rmb = map.get(builder.getRechargeid());
-			if(rmb == null) {
-				shopbuilder.removeData(i);
-				continue;
-			}
 			RmbOrder rmborder = rmb.getOrder(0);
 			try {
 			for(int j = 1; j < rmb.getOrderCount(); j++) {
@@ -269,7 +265,7 @@ public class ShopService {
 					} catch (Exception e) {
 						
 					}
-					if(date.before(date2)){//礼包已过期
+					if(date.before(date2) && rmborder.hasStarttime()){//礼包已过期
 						Libao.Builder libaobuilder = Libao.newBuilder(mylibao);
 						libaobuilder.setPurchase(0);
 						libaobuilder.clearValidtime();
@@ -297,11 +293,17 @@ public class ShopService {
 		LibaoList list = getLibaoShop(user, libaoMap, false);
 		ResponseLibaoShopCommand.Builder shop = ResponseLibaoShopCommand.newBuilder();
 		shop.addAllItems(list.getDataList());
+		Map<Integer, Rmb> map = rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY);
+		for(int i = shop.getItemsCount()-1; i >= 0; i--) {
+			Libao libao = shop.getItems(i);
+			if(map.get(libao.getRechargeid()).getOrderCount() > 1 && libao.getOrder() == 1)
+				shop.removeItems(i);
+		}
 		responseBuilder.setLibaoShopCommand(shop);
 		
 		int onlinestatus = serverService.getOnlineStatus(user.getVersion());
 		ResponseFirstRechargeStatusCommand.Builder rechargestatus = ResponseFirstRechargeStatusCommand.newBuilder();
-		for(Rmb rmb : rechargeRedisService.getRmbConfig(RedisKey.RMB_KEY).values()){
+		for(Rmb rmb : map.values()){
 			if(rmb.getOrder(0).getReward().getItemid() != RewardConst.JEWEL)
 				continue;
 			Status.Builder builder = Status.newBuilder();
