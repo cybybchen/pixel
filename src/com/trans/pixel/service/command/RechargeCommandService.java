@@ -56,7 +56,10 @@ public class RechargeCommandService extends BaseCommandService {
 			LibaoList libaolist = shopService.getLibaoShop(user, false);
 			for(Libao libaoconfig : libaolist.getDataList()) {
 				if(libaoconfig.getRechargeid() == rechargeid) {
-					canrecharge = cmd.getOrder() == libaoconfig.getOrder() && (libaoconfig.getMaxlimit() < 0 || mylibao.getPurchase() < libaoconfig.getMaxlimit());
+					canrecharge = libaoconfig.getMaxlimit() < 0 || mylibao.getPurchase() < libaoconfig.getMaxlimit();
+					if(cmd.hasOrder()){
+						canrecharge = canrecharge && cmd.getOrder() == libaoconfig.getOrder();
+					}
 					break;
 				}
 			}
