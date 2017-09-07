@@ -1633,7 +1633,7 @@ public class UnionService extends FightService{
 		int day = DateUtil.getDayOfWeek();
 //		day = DAY;
 		
-		log.error("current week day is:" + day);
+		log.debug("current week day is:" + day);
 		if (day == UnionConst.FIGHT_APPLY_DAY)//周五
 			status = UNION_FIGHT_STATUS.APPLY_TIME;
 		else if (day == UnionConst.FIGHT_HUIZHANG_DAY)
