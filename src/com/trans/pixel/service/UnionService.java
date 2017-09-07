@@ -1733,7 +1733,7 @@ public class UnionService extends FightService{
 			noticeList.add(notice.build());
 		}
 		
-		if (status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && fightCount < UnionConst.UNION_FIGHT_MEMBER_LIMIT
+		if (user.getUnionJob() == UnionConst.UNION_HUIZHANG && status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME) && fightCount < UnionConst.UNION_FIGHT_MEMBER_LIMIT
 				&& fightCount < applies.size()) {
 			Notice.Builder notice = Notice.newBuilder();
 			notice.setType(NoticeConst.TYPE_FIGHTINFO_HUIZHANG_NOT_PICK);
