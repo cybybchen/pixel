@@ -711,9 +711,9 @@ public class UnionRedisService extends RedisService{
 		hput(key, "" + unionId, "");
 //		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY);
 //		expire(key, RedisService.nextWeek(72) * 1000);
-		String date = DateUtil.forDatetime(DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		String date = DateUtil.forDatetime(DateUtil.getNextWeekDay(Calendar.FRIDAY));
 		logger.debug("date is:" + date);
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public void deleteApplyUnion(String unionId) {
@@ -724,7 +724,7 @@ public class UnionRedisService extends RedisService{
 	public void updateApplyUnion(int unionId, int enemyUnionId) {
 		String key = RedisKey.UNION_FIGHT_APPLY_UNIONS_KEY;
 		hput(key, "" + unionId, "" + enemyUnionId);
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public void deleteApplyUnionRecord() {
@@ -756,7 +756,7 @@ public class UnionRedisService extends RedisService{
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAM_PREFIX + unionId;
 		
 		hput(key, "" + userTeam.getUserId(), userTeam.toJson());
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public UserTeamBean getUserUnionFightTeam(UserBean user) {
@@ -796,14 +796,14 @@ public class UnionRedisService extends RedisService{
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
 		
 		hputAll(key, map);
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public <T> void updateApplyTeamCache(T unionId, Team team) {
 		String key = RedisKey.UNION_FIGHT_APPLY_TEAMCACHE_PREFIX + unionId;
 		hput(key, "" + team.getUser().getId(), RedisService.formatJson(team));
 		
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public Map<String, String> getApplyTeamCacheList(int unionId) {
@@ -830,19 +830,19 @@ public class UnionRedisService extends RedisService{
 		UnionFightRecord.Builder builder = UnionFightRecord.newBuilder();
 		builder.setUser(user.buildShort());
 		hput(key, "" + user.getId(), RedisService.formatJson(builder.build()));
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public void updateApplyFight(UserBean user, Map<String, String> applyMap) {
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + user.getUnionId();
 		hputAll(key, applyMap);
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public void updateApplyFight(int unionId, UnionFightRecord record) {
 		String key = RedisKey.UNION_FIGHT_APPLY_PREFIX + unionId;
 		hput(key, "" + record.getUser().getId(), RedisService.formatJson(record));
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public UnionFightRecord getUnionFightRecord(int unionId, long userId) {
@@ -888,7 +888,7 @@ public class UnionRedisService extends RedisService{
 	public void saveUnionFightFightInfo(int unionId, long userId, int time, FightInfo fightinfo) {
 		String key = RedisKey.UNION_FIGHTINFO_RECORD_PREFIX + unionId;
 		hput(key, userId + ":" + time, RedisService.formatJson(fightinfo));
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public FightInfo getFightInfo(int unionId, long userId, int time) {
@@ -909,7 +909,7 @@ public class UnionRedisService extends RedisService{
 	public <T> void addUnionFightRewardUnionId(T unionId) {
 		String key = RedisKey.UNION_FIGHT_REWARD_RECORD_KEY;
 		sadd(key, "" + unionId);
-		expireAt(key, DateUtil.getUnionFightNextWeekDay(Calendar.FRIDAY));
+		expireAt(key, DateUtil.getNextWeekDay(Calendar.FRIDAY));
 	}
 	
 	public <T> boolean hasRewardUnionFight(T unionId) {
