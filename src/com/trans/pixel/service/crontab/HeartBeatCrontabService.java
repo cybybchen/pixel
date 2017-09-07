@@ -37,7 +37,7 @@ public class HeartBeatCrontabService {
 		List<Integer> serverList = serverService.getServerIdList();
 		if (ConfigUtil.CRONTAB_STATUS) {
 			SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
-			String time = df.format(new Date());
+			String time = df.format(new Date(System.currentTimeMillis()-10*60*1000));
 			for (int serverId : serverList) {
 				Map<String, String> params = buildLogParams(serverId, heartBeatService.getHeartBeatCount(serverId), time);
 				logService.sendLog(params, LogString.LOGTYPE_HEARTBEAT);
