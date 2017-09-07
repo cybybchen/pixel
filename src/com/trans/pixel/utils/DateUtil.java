@@ -785,9 +785,9 @@ public class DateUtil {
 	 * 
 	 * @return
 	 */
-	public static Date getNextWeekDay(int day) {
+	public static Date getUnionFightNextWeekDay(int day) {
 		Calendar calendar = Calendar.getInstance();
-		if (calendar.get(Calendar.DAY_OF_WEEK) >= Calendar.THURSDAY) {
+		if (calendar.get(Calendar.DAY_OF_WEEK) >= Calendar.FRIDAY) {
 //			cal.add(Calendar.DAY_OF_WEEK, 1);
 			calendar.add(Calendar.WEEK_OF_YEAR, 1);
         }
