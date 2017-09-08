@@ -213,12 +213,14 @@ echo -e "	private HeadInfo buildHeadInfo(HeadInfo head) {
 		}
 
 		if (request.hasLogCommand()) {
-		   ResponseCommand.Builder responseBuilder = rep.command;
-		   long userId = head != null ? head.getUserId() : 0;
-		   UserBean other = userService.getUserOther(userId);
-		   RequestLogCommand cmd = request.getLogCommand();
-		   handleCommand(cmd, responseBuilder, other);
-		   return false;
+			ResponseCommand.Builder responseBuilder = rep.command;
+			long userId = head != null ? head.getUserId() : 0;
+			UserBean other = null;
+			if(userId != 0)
+				other = userService.getUserOther(userId);
+			RequestLogCommand cmd = request.getLogCommand();
+			handleCommand(cmd, responseBuilder, other);
+			return false;
 		}
 
 
