@@ -408,8 +408,9 @@ public class HeroCommandService extends BaseCommandService {
 					
 					logService.sendLog(params, LogString.LOGTYPE_HERORES);
 				}else{
-					isError = true;
+					if(!isError)
 					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
+					isError = true;
 					responseBuilder.setErrorCommand(this.buildErrorCommand(ErrorConst.HERO_HAS_FENJIE));
 					errorHeroBuilder.addHeroInfo(hero);
 				}
