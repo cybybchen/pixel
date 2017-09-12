@@ -148,6 +148,8 @@ public class UserTaskRedisService extends RedisService {
 			}
 		}
 		
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		
 		return userTaskList;
 	}
 	

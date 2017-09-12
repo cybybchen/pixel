@@ -71,7 +71,7 @@ public class UserTaskBean {
 	private static String composeTargetRecord(List<Integer> heroIdList) {
 		String record = "";
 		for (int heroId : heroIdList) {
-			record += SPLIT + heroId;
+			record += "|" + heroId;
 		}
 		
 		if (record.isEmpty())
