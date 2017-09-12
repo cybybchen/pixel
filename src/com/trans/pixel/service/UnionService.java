@@ -1718,7 +1718,7 @@ public class UnionService extends FightService{
 		for (UnionFightRecord record : applies) {
 			if (record.getUser().getId() == user.getId()) {
 				isApply = true;
-				if (record.getAttackCount() >= 2)
+				if (!record.getStatus().equals(FIGHT_STATUS.CAN_FIGHT) || record.getAttackCount() >= 2)
 					isAttack = true;
 			}
 			
