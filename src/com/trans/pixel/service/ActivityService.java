@@ -1261,6 +1261,11 @@ public class ActivityService {
 		}
 	}
 	
+	public void attackUnionBoss(UserBean user, int bossId) {
+		if (bossId == 200005)
+			sendRichangScore(user, ACTIVITY_TYPE.TYPE_ATTACK_UNIONBOSS_200005_VALUE);
+	}
+	
 	/**
 	 * 参加公会战的活动
 	 */

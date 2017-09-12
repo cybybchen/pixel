@@ -1028,6 +1028,9 @@ public class UnionService extends FightService{
 			userRankBean.setDps(userRankBean.getDps() + hp);
 			redis.addUnionBossAttackRank(userRankBean, unionBossRecord.build(), union.getId());
 		}
+		
+		activityService.attackUnionBoss(user, bossId);
+		
 		redis.clearLock("UnionBoss_" + union.getId() + ":" + bossId);
 		
 		for(RewardInfo reward : unionBoss.getLootlistList()) {
