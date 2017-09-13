@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RankConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.BlackListBean;
-import com.trans.pixel.protoc.TaskProto.Raid;
-import com.trans.pixel.protoc.TaskProto.RaidList;
+import com.trans.pixel.protoc.RewardTaskProto.Raid;
+import com.trans.pixel.protoc.RewardTaskProto.RaidList;
 import com.trans.pixel.service.cache.CacheService;
 
 import net.sf.json.JSONObject;

@@ -108,23 +108,23 @@ message JewelPoolLists {
 }
 
 message Enemy {
-        //optional int32 order = 1;
-        optional int32 enemyid = 2;
-        optional int32 count = 3;
-        optional int32 enemylv = 4;
-        optional int32 lootweight = 5;
-        optional int32 loot = 6;
+	//optional int32 order = 1;
+	optional int32 enemyid = 2;
+	optional int32 count = 3;
+	optional int32 enemylv = 4;
+	optional int32 lootweight = 5;
+	optional int32 loot = 6;
 }
 
 
 message EnemyGroup {
-        repeated Enemy enemy = 1;
-        optional int32 hpbar = 2;
+	repeated Enemy enemy = 1;
+	optional int32 hpbar = 2;
 }
 
 message UnionBossUserRecord {
 	optional int64 userId = 1;
-        optional int32 percent = 2;
+	optional int32 percent = 2;
 }
 
 message UnionBossRecord {
@@ -167,10 +167,10 @@ message TeamEngine {
 }
 
 message Team {
-        optional UserInfo user = 1;
-        repeated HeroInfo heroInfo = 2;
-        optional UserTalent userTalent = 4;
-        optional int32 rolePosition = 5;
+	optional UserInfo user = 1;
+	repeated HeroInfo heroInfo = 2;
+	optional UserTalent userTalent = 4;
+	optional int32 rolePosition = 5;
 	repeated TeamEngine teamEngine = 6;
 }
 
@@ -253,13 +253,13 @@ message RewardInfo {
 }
 
 message RewardInfo2 {
-        optional int32 itemid = 1;
-        optional string name = 2;
-        optional float count = 3;
-        optional float weight = 4;
-        optional float weightb = 11;
-        //optional float counta = 5;
-        optional float countb = 6;
+	optional int32 itemid = 1;
+	optional string name = 2;
+	optional float count = 3;
+	optional float weight = 4;
+	optional float weightb = 11;
+	//optional float counta = 5;
+	optional float countb = 6;
 }
 
 message MultiReward {
@@ -269,34 +269,34 @@ message MultiReward {
 }
 
 message Task {
-        optional uint32 targetid = 1;
-        optional string name = 2;
-        optional string des = 3;
-        optional uint32 targetcount = 4;
-        repeated RewardInfo reward = 5;
+	optional uint32 targetid = 1;
+	optional string name = 2;
+	optional string des = 3;
+	optional uint32 targetcount = 4;
+	repeated RewardInfo reward = 5;
 }
 
 message Event {
-        optional int32 order = 1;
-        optional int32 eventid = 2;
-        optional string name = 3;
-        optional int32 daguan = 4;
+	optional int32 order = 1;
+	optional int32 eventid = 2;
+	optional string name = 3;
+	optional int32 daguan = 4;
 	//optional int32 index = 5;
-        //optional int32 conditiontype = 5;
-        //optional int32 condition = 6;
-        optional int32 targetid = 7;
-        //optional string targetdes = 8;
-        optional int32 weight = 9;
-        optional int32 level = 10;
-        optional int32 count = 11;
-        //optional int32 eventcount = 12;
+	//optional int32 conditiontype = 5;
+	//optional int32 condition = 6;
+	optional int32 targetid = 7;
+	//optional string targetdes = 8;
+	optional int32 weight = 9;
+	optional int32 level = 10;
+	optional int32 count = 11;
+	//optional int32 eventcount = 12;
 }
 
 message FightInfo {
-        optional int32 id = 3;
-        optional UserInfo enemy = 4;
-        required string fightInfo = 1;
-        optional string fightData = 2;
+	optional int32 id = 3;
+	optional UserInfo enemy = 4;
+	required string fightInfo = 1;
+	optional string fightData = 2;
 	optional UserInfo user = 5;
 	optional string time = 6;
 	optional uint32 score = 7;
@@ -304,9 +304,9 @@ message FightInfo {
 }
 
 enum FIGHTINFO_TYPE {
-        TYPE_SELF = 0;
-        TYPE_SAVE = 1;
-        TYPE_RANK = 2;
+	TYPE_SELF = 0;
+	TYPE_SAVE = 1;
+	TYPE_RANK = 2;
 }
 
 ////////// ShopProto
@@ -501,15 +501,15 @@ message ResponseUnionShopCommand {
 message RequestRaidShopCommand {//挂机副本商店
 }
 message RequestRaidShopPurchaseCommand {//挂机副本商店购买
-        required int32 index = 1;//第几个商品(0~7)
-        required int32 id = 2;
+	required int32 index = 1;//第几个商品(0~7)
+	required int32 id = 2;
 }
 message RequestRaidShopRefreshCommand {//挂机副本商店刷新
 }
 message ResponseRaidShopCommand {
-        repeated Commodity items = 1;//商品列表
-        optional int64 endTime = 2;//商品列表过期时间
-        optional int32 refreshCost = 3;//刷新消耗
+	repeated Commodity items = 1;//商品列表
+	optional int64 endTime = 2;//商品列表过期时间
+	optional int32 refreshCost = 3;//刷新消耗
 }
 
 message RequestPVPShopCommand {//挂机PVP商店
@@ -615,11 +615,11 @@ message ResponsePurchaseCoinCommand {
 }
 ////////// ExtraProto
 message RequestLock {
-        optional string fun = 1;
-        optional int32 isopen = 2;
+	optional string fun = 1;
+	optional int32 isopen = 2;
 }
 message RequestLockList {
-        repeated RequestLock data = 1;
+	repeated RequestLock data = 1;
 }
 message Star {
 	optional int32 id = 1;
@@ -971,7 +971,7 @@ message UserTeam {
 
 enum TEAM_TYPE {
 	TEAM_NULL = 0;
-        TEAM_UNION = 1;
+	TEAM_UNION = 1;
 }
 
 message RequestSpecialTalentChangeUseCommand {
@@ -1034,7 +1034,7 @@ message RequestFenjieHeroCommand {
 }
 
 message RequestChaijieHeroCommand {
-        optional FenjieHeroInfo fenjieHero = 1;
+	optional FenjieHeroInfo fenjieHero = 1;
 }
 
 message RequestUserPokedeCommand {
@@ -1089,9 +1089,9 @@ message RequestOpenFetterCommand {
 }
 
 message RequestZanHeroMessageBoardCommand {
-        required int32 itemId = 1;
-        required string id = 2;
-        required bool zan = 3;//true:dianzan false:quxiao
+	required int32 itemId = 1;
+	required string id = 2;
+	required bool zan = 3;//true:dianzan false:quxiao
 }
 
 message RequestTalentupgradeCommand {
@@ -1114,14 +1114,14 @@ message ResponseUserTalentCommand {
 }
 
 message RequestTalentChangeEquipCommand {
-        required int32 id = 1;
-        required int32 position = 2;
-        required int32 itemId = 3;
+	required int32 id = 1;
+	required int32 position = 2;
+	required int32 itemId = 3;
 }
 
 message RequestTalentSpUpCommand {
-        required int32 id = 1;
-        required int32 count = 2;
+	required int32 id = 1;
+	required int32 count = 2;
 }
 
 message RequestTalentSkillLevelupCommand {
@@ -1284,7 +1284,7 @@ message ResponseEquipComposeCommand {
 }
 
 message ResponseGetUserEquipCommand {
-        repeated UserEquip userEquip = 1;
+	repeated UserEquip userEquip = 1;
 }
 
 message ArmorList {
@@ -1528,7 +1528,7 @@ message RequestPVPMapListCommand {//挂机PVP列表
 message RequestPVPInbreakListCommand {//PVP入侵列表
 }
 message ResponsePVPInbreakListCommand {//PVP入侵列表
-        repeated PVPMine kuangdian = 1;
+	repeated PVPMine kuangdian = 1;
 }
 
 message MowuReward {
@@ -1554,8 +1554,8 @@ message MowuList {
 }
 message RequestAttackMowuCommand {
 	optional int32 id = 1;
-        optional int64 hp = 2;
-        optional int32 percent = 3;
+	optional int64 hp = 2;
+	optional int32 percent = 3;
 }
 
 message RequestAttackPVPMonsterCommand {//pvp攻击怪物
@@ -2149,7 +2149,7 @@ message RequestRechargeCommand {
 	required int32 itemid = 1;
 }
 message ResponseCanRechargeCommand {
-        optional int32 canrecharge = 1;//canrecharge=0表示不能买
+	optional int32 canrecharge = 1;//canrecharge=0表示不能买
 }
 
 message RequestBindAccountCommand {
@@ -2465,9 +2465,9 @@ message KaifuOrder {
 }
 
 message UserKaifu {
-        required int32 type = 1;
-        required int32 completeCount = 2;
-        repeated int32 rewardOrder = 3;
+	required int32 type = 1;
+	required int32 completeCount = 2;
+	repeated int32 rewardOrder = 3;
 	repeated KaifuOrder orderRecord = 4;
 	repeated RewardOrder reward = 5;	
 }
@@ -2524,12 +2524,12 @@ message ResponseKaifu2ActivityCommand {
 }
 
 message RequestKaifuRewardCommand {
-        required int32 id = 1;
-        required int32 order = 2;
+	required int32 id = 1;
+	required int32 order = 2;
 }
 
 message ResponseKaifuRewardCommand {
-        repeated UserKaifu userKaifu = 1;
+	repeated UserKaifu userKaifu = 1;
 }
 
 message RequestKaifuListCommand {
@@ -2537,7 +2537,7 @@ message RequestKaifuListCommand {
 }
 
 message ResponseKaifuListCommand {
-        repeated UserKaifu userKaifu = 1;
+	repeated UserKaifu userKaifu = 1;
 	repeated Kaifu2Rank rank = 2;
 	repeated UserRichang userRichang = 3;
 }
@@ -3046,13 +3046,13 @@ message EventLevelList {
 
 message EventRandom {
 	optional int32 level1 = 1;
-        optional int32 count1 = 2;
+	optional int32 count1 = 2;
 	optional int32 level2 = 3;
-        optional int32 count2 = 4;
+	optional int32 count2 = 4;
 	optional int32 level3 = 5;
-        optional int32 count3 = 6;
+	optional int32 count3 = 6;
 	optional int32 level4 = 7;
-        optional int32 count4 = 8;
+	optional int32 count4 = 8;
 }
 message EventRandoms {
 	optional int32 id = 1;
@@ -3110,11 +3110,11 @@ message RequestLevelStartCommand {
 	optional int32 id = 1;
 }
 message RequestEventCommand {
-        optional int32 userId = 1;
-        optional int32 order = 2;
+	optional int32 userId = 1;
+	optional int32 order = 2;
 }
 message ResponseEventCommand {
-        repeated Event event = 1;
+	repeated Event event = 1;
 }
 message RequestLevelLootResultCommand {
 }
@@ -3547,7 +3547,7 @@ message RequestTakeUnionLeaderCommand {//弹劾公会会长(会长需离线7天)
 }
 
 message RequestSetUnionAnnounceCommand {//调整公会公告
-        optional string announce = 1;
+	optional string announce = 1;
 }
 
 message RequestUpgradeUnionCommand {//升级公会
@@ -3589,7 +3589,7 @@ message RequestUnionListCommand {
 }
 
 message RequestSearchUnionCommand {
-        optional string name = 1;
+	optional string name = 1;
 }
 
 message ResponseUnionListCommand {
@@ -3666,7 +3666,7 @@ message UserRewardTask {
 	optional uint32 isOver = 8;//0：未通关，1：已通关 
 }
 
-message UserRewardTaskRoom {
+message UserRoom {
 	required uint64 createUserId = 1;
 	//repeated UserInfo user = 2;
 	//required uint32 bossId = 3;
@@ -3735,7 +3735,7 @@ message ResponseUserRewardTaskCommand {
 }
 
 message ResponseUserRewardTaskRoomCommand {
-	repeated UserRewardTaskRoom room = 1;
+	repeated UserRoom room = 1;
 }
 
 message RequestUserRewardTaskCommand {
@@ -3759,7 +3759,7 @@ message RequestChangePositionCommand {
 	required uint32 position2 = 2;
 	required uint32 index = 3;
 }
-////////// TaskProto
+
 message TaskList {
 	repeated Task data = 1;
 }
@@ -3839,7 +3839,7 @@ message Raid {
 	optional string endtime = 11;
 }
 message RaidList {
-        repeated Raid data = 1;
+	repeated Raid data = 1;
 }
 message RequestRaidCommand {
 }
@@ -3849,15 +3849,67 @@ message RequestOpenRaidCommand {
 }
 message RequestStartRaidCommand {
 	optional int32 id = 1;
-        optional string teamInfo = 2;
-        optional string fightInfo = 3;
-        optional int32 turn = 4;
-        optional bool ret = 5;
+	optional string teamInfo = 2;
+	optional string fightInfo = 3;
+	optional int32 turn = 4;
+	optional bool ret = 5;
 	optional int32 eventid = 6;
 }
 message ResponseRaidCommand {
 	repeated Raid raid = 1;
 }
+
+message EventProgress {
+	optional int32 eventid = 1;
+	optional int32 status = 2;//0:没打死，1打死, 2可领奖
+}
+message TeamRaid {
+	optional int32 id = 1;
+	optional string name = 2;
+	optional int32 leftcount = 3;//剩余次数
+	optional int32 count = 4;
+	repeated EventProgress event = 5;
+	optional int32 level = 8;
+	optional int32 unlock = 9;       
+	optional int32 members = 10;
+	optional RoomInfo roomInfo = 11;
+}
+message TeamRaidList {
+	repeated TeamRaid data = 1;
+}
+message RequestTeamRaidCommand {
+}
+message RequestOpenTeamRaidCommand {
+	optional int32 id = 1;
+	optional int32 level = 2;
+}
+message RequestCreateTeamRaidRoomCommand {
+	required uint32 index = 1;
+}
+
+message RequestQuitTeamRaidRoomCommand {
+	optional uint32 index = 1;
+	optional uint64 userId = 2;
+}
+
+message RequestInviteToTeamRaidRoomCommand {
+	optional uint32 id = 1;
+	repeated uint64 userId = 2;
+	optional uint64 createUserId = 3;
+	optional uint32 index = 4;
+}
+message RequestStartTeamRaidCommand {
+	optional int32 id = 1;
+	optional string teamInfo = 2;
+	optional string fightInfo = 3;
+	optional int32 turn = 4;
+	optional bool ret = 5;
+	optional int32 eventid = 6;
+}
+message ResponseTeamRaidCommand {
+	repeated TeamRaid raid = 1;
+}
+
 ////////// Request
 message RequestCommand {
 	required HeadInfo head = 1;
@@ -3920,8 +3972,8 @@ message RequestCommand {
 	optional RequestPVPShopPurchaseCommand PVPShopPurchaseCommand = 114;
 	optional RequestPVPShopRefreshCommand PVPShopRefreshCommand = 115;
 	optional RequestRaidShopCommand raidShopCommand = 159;
-        optional RequestRaidShopPurchaseCommand raidShopPurchaseCommand = 160;
-        optional RequestRaidShopRefreshCommand raidShopRefreshCommand = 161;
+	optional RequestRaidShopPurchaseCommand raidShopPurchaseCommand = 160;
+	optional RequestRaidShopRefreshCommand raidShopRefreshCommand = 161;
 	optional RequestExpeditionShopCommand expeditionShopCommand = 116;
 	optional RequestExpeditionShopPurchaseCommand expeditionShopPurchaseCommand = 117;
 	optional RequestExpeditionShopRefreshCommand expeditionShopRefreshCommand = 118;
@@ -3953,6 +4005,12 @@ message RequestCommand {
 	optional RequestStartRaidCommand startRaidCommand = 158;
 	optional RequestCanRechargeCommand canRechargeCommand = 170;
 	optional RequestAttackMowuCommand attackMowuCommand = 171;
+	optional RequestOpenTeamRaidCommand openTeamRaidCommand = 175;
+	optional RequestTeamRaidCommand teamRaidCommand = 176;
+	optional RequestStartTeamRaidCommand startTeamRaidCommand = 177;
+	optional RequestCreateTeamRaidRoomCommand createTeamRaidRoomCommand = 178;
+	optional RequestQuitTeamRaidRoomCommand quitTeamRaidRoomCommand = 179;
+	optional RequestInviteToTeamRaidRoomCommand inviteToTeamRaidRoomCommand = 180;
 	//////////////////////////////////////////////////////
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
@@ -4083,8 +4141,8 @@ message RequestCommand {
 }
 ////////// Commands
 message ErrorCommand {
-        required string code = 1;
-        required string message = 2;
+	required string code = 1;
+	required string message = 2;
 }
 
 message ResponseMessageCommand {
@@ -4115,8 +4173,9 @@ message ResponseCommand {
 	optional ResponsePVPMineInfoCommand pvpMineInfoCommand = 138;
 	optional ResponseFightInfoCommand fightInfoCommand = 155;
 	optional ResponseRaidCommand raidCommand = 158;
+	optional ResponseTeamRaidCommand teamRaidCommand = 175;
 	optional ResponseEventCommand eventCommand = 159;
-	optional ResponseCanRechargeCommand canRechargeCommand = 170;        
+	optional ResponseCanRechargeCommand canRechargeCommand = 170;	
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

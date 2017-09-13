@@ -29,7 +29,7 @@ import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.RewardTaskProto.UserRoom;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.RewardTaskService;
 import com.trans.pixel.service.UserRewardTaskService;
@@ -56,7 +56,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 			if (ret.getCode() == ErrorConst.NOT_ENOUGH_PROP.getCode()) {
 				pusher.pushOtherUserInfoCommand(responseBuilder, errorUserList);
 				
-				UserRewardTaskRoom.Builder room = rewardTaskService.getUserRoom(user, cmd.getIndex());
+				UserRoom.Builder room = rewardTaskService.getUserRoom(user, cmd.getIndex());
 				if (room != null) {
 					ResponseUserRewardTaskRoomCommand.Builder roombuilder = ResponseUserRewardTaskRoomCommand.newBuilder();
 					roombuilder.addRoom(room);
@@ -78,7 +78,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void createRoom(RequestCreateRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		UserRewardTaskRoom.Builder room = rewardTaskService.createRoom(user, cmd.getIndex());
+		UserRoom.Builder room = rewardTaskService.createRoom(user, cmd.getIndex());
 		if (room == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CREATE_ERROR);
@@ -93,7 +93,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void quitRoom(RequestQuitRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		UserRewardTask.Builder rewardTaskBuilder = UserRewardTask.newBuilder();
-		UserRewardTaskRoom.Builder roomBuilder = UserRewardTaskRoom.newBuilder();
+		UserRoom.Builder roomBuilder = UserRoom.newBuilder();
 		ResultConst ret = rewardTaskService.quitRoom(user, cmd.getUserId(), cmd.getIndex(), rewardTaskBuilder, roomBuilder);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
@@ -118,7 +118,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 //		int id = cmd.getId();
 		long createUserId = cmd.getCreateUserId();
 		int index = cmd.getIndex();
-		UserRewardTaskRoom.Builder room = rewardTaskService.getUserRoom(user, index);
+		UserRoom.Builder room = rewardTaskService.getUserRoom(user, index);
 		if(room == null && !userIds.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_NEED_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_NEED_CREATE_ERROR);
@@ -209,7 +209,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void getUserRewardTaskRoom(RequestUserRewardTaskRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		int index = cmd.getIndex();
-		UserRewardTaskRoom.Builder room = rewardTaskService.getUserRoom(user, index);
+		UserRoom.Builder room = rewardTaskService.getUserRoom(user, index);
 		
 		if (room != null) {
 			if(!UserRewardTaskService.hasMeInRoom(user, room)) {
@@ -234,7 +234,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 	
 	public void giveupRewardTask(RequestGiveupRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
 		UserRewardTask.Builder rewardTaskBuilder = UserRewardTask.newBuilder();
-		UserRewardTaskRoom.Builder roomBuilder = UserRewardTaskRoom.newBuilder();
+		UserRoom.Builder roomBuilder = UserRoom.newBuilder();
 		ResultConst ret = rewardTaskService.giveupRewardtask(user, cmd.getIndex(), rewardTaskBuilder, roomBuilder);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
@@ -252,7 +252,7 @@ public class RewardTaskCommandService extends BaseCommandService {
 		int position1 = cmd.getPosition1();
 		int position2 = cmd.getPosition2();
 		int index = cmd.getIndex();
-		UserRewardTaskRoom.Builder roomBuilder = UserRewardTaskRoom.newBuilder();
+		UserRoom.Builder roomBuilder = UserRoom.newBuilder();
 		ResultConst ret = rewardTaskService.changePosition(user, index, position1, position2, roomBuilder);
 		if (ret instanceof ErrorConst) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);

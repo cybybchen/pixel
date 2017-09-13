@@ -20,10 +20,10 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.ActivityProto.ACTIVITY_TYPE;
 import com.trans.pixel.protoc.Base.MultiReward;
-import com.trans.pixel.protoc.TaskProto.Task2TargetHero;
-import com.trans.pixel.protoc.TaskProto.TaskOrder;
-import com.trans.pixel.protoc.TaskProto.TaskTarget;
-import com.trans.pixel.protoc.TaskProto.UserTask;
+import com.trans.pixel.protoc.RewardTaskProto.Task2TargetHero;
+import com.trans.pixel.protoc.RewardTaskProto.TaskOrder;
+import com.trans.pixel.protoc.RewardTaskProto.TaskTarget;
+import com.trans.pixel.protoc.RewardTaskProto.UserTask;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.TaskRedisService;
 

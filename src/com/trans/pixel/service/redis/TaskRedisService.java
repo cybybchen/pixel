@@ -7,12 +7,12 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.TaskProto.Task2TargetHero;
-import com.trans.pixel.protoc.TaskProto.Task2TargetList;
-import com.trans.pixel.protoc.TaskProto.Task3OrderList;
-import com.trans.pixel.protoc.TaskProto.TaskOrder;
-import com.trans.pixel.protoc.TaskProto.TaskTarget;
-import com.trans.pixel.protoc.TaskProto.TaskTargetList;
+import com.trans.pixel.protoc.RewardTaskProto.Task2TargetHero;
+import com.trans.pixel.protoc.RewardTaskProto.Task2TargetList;
+import com.trans.pixel.protoc.RewardTaskProto.Task3OrderList;
+import com.trans.pixel.protoc.RewardTaskProto.TaskOrder;
+import com.trans.pixel.protoc.RewardTaskProto.TaskTarget;
+import com.trans.pixel.protoc.RewardTaskProto.TaskTargetList;
 import com.trans.pixel.service.cache.CacheService;
 
 @Service

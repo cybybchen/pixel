@@ -1,0 +1,218 @@
+package com.trans.pixel.service.command;
+
+import javax.annotation.Resource;
+
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.RewardTaskProto.RequestCreateTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestOpenTeamRaidCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestQuitTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestStartTeamRaidCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidCommand;
+import com.trans.pixel.service.ActivityService;
+import com.trans.pixel.service.CostService;
+import com.trans.pixel.service.LogService;
+import com.trans.pixel.service.RankService;
+import com.trans.pixel.service.UserService;
+import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.RaidRedisService;
+
+@Service
+public class TeamRaidCommandService extends BaseCommandService{
+	Logger logger = Logger.getLogger(TeamRaidCommandService.class);
+	@Resource
+    private RaidRedisService redis;
+	@Resource
+    private PushCommandService pusher;
+	@Resource
+    private CostService costService;
+	@Resource
+	private LogService logService;
+	@Resource
+	private ActivityService activityService;
+	@Resource
+	private LevelRedisService levelRedisService;
+	@Resource
+	private RankService rankService;
+	@Resource
+	private UserService userService;
+
+
+	public void openTeamRaid(RequestOpenTeamRaidCommand cmd, Builder responseBuilder, UserBean user){
+//		Raid raidconfig = redis.getRaid(cmd.getId());
+//		ResponseTeamRaidCommand.Builder raidlist = redis.getRaid(user);
+//		int index = 0;
+//		for(index = 0; index < raidlist.getRaidCount(); index++) {
+//			Raid.Builder myraid = raidlist.getRaidBuilder(index);
+//			if(myraid.getId() == cmd.getId()) {
+//				if(myraid.getCount() > 0 && myraid.getLeftcount() <= 0) {//次数用完
+//					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES);
+//					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES);
+//		            responseBuilder.setErrorCommand(errorCommand);
+//					return;
+//				}
+//				break;
+//			}
+//		}
+//		if(index >= raidlist.getRaidCount()) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOT_OPEN);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_NOT_OPEN);
+//            responseBuilder.setErrorCommand(errorCommand);
+//			return;
+//		}
+//		int level = 0;
+//		//判断消耗和最大层数
+//		if(costService.cost(user, raidconfig.getCost().getItemid(), raidconfig.getCost().getCount(), true)){
+//			int lastid = 0;
+//			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
+//				if(myraid.getEventid() == 0)
+//					continue;
+//				lastid = myraid.getEventid();
+//				level = myraid.getLevel();
+//				myraid.clearEventid();
+//				myraid.clearTurn();
+//				myraid.clearLevel();
+//				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+//			}
+//			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
+//				if(myraid.getId() != raidconfig.getId())
+//					continue;
+//				myraid.setEventid(raidconfig.getEventList().get(0).getEventid());
+//				myraid.clearTurn();
+//				if(raidconfig.getMaxlevel() > 3)
+//					level = raidconfig.getMaxlevel();
+//				else
+//					level = Math.min(cmd.getLevel(), myraid.getMaxlevel());
+//				myraid.setLevel(level);
+//				if(myraid.getLeftcount() > 0)
+//					myraid.setLeftcount(myraid.getLeftcount()-1);
+//				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+//				responseBuilder.setTeamRaidCommand(raidlist);
+//				pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
+//				break;
+//			}
+//
+//			Map<String, String> params = new HashMap<String, String>();
+//			params.put(LogString.USERID, "" + user.getId());
+//			params.put(LogString.SERVERID, "" + user.getServerId());
+//			params.put(LogString.RESULT, "2");
+//			params.put(LogString.INSTANCEID, "" + raidconfig.getId());
+//			params.put(LogString.FLOOR, "" + level);
+//			params.put(LogString.BOSSID, "0");
+//			params.put(LogString.PREINSTANCEID, "" + lastid);
+//			logService.sendLog(params, LogString.LOGTYPE_RAID);
+//		}else{
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
+//            responseBuilder.setErrorCommand(errorCommand);
+//		}
+	}
+	
+	public void createTeamRaidRoom(RequestCreateTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		
+	}
+	public void quitTeamRaidRoom(RequestQuitTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		
+	}
+	public void inviteToTeamRaidRoom(RequestInviteToTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		
+	}
+
+	public void startTeamRaid(RequestStartTeamRaidCommand cmd, Builder responseBuilder, UserBean user){
+//		ResponseTeamRaidCommand.Builder raidlist = redis.getRaid(user);
+//		for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
+//			if(myraid.getEventid() == 0)
+//				continue;
+//			int oldeventid = myraid.getEventid();
+//			Raid raidconfig = redis.getRaid(myraid.getId());
+//			EventConfig event = levelRedisService.getEvent(myraid.getEventid());
+//			if(myraid.getId() != cmd.getId() || myraid.getEventid() != cmd.getEventid() || raidconfig == null || event == null){
+//				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_MONSTER);
+//				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
+//	            responseBuilder.setErrorCommand(errorCommand);
+//			}else if(cmd.getRet()){
+//				MultiReward.Builder rewards = levelRedisService.eventReward(user, event, myraid.getLevel());
+//				EventConfig.Builder config = EventConfig.newBuilder(redis.getRaidLevel(myraid.getLevel()));
+//				for(RewardInfo.Builder reward : config.getLootlistBuilderList()) {
+//					if(reward.getItemid() != RewardConst.ZHUJUEEXP)
+//						continue;
+//					long expcount = reward.getCount();
+//					Libao.Builder libao = Libao.newBuilder(userService.getLibao(user.getId(), 17));//初级月卡
+//					Libao.Builder libao2 = Libao.newBuilder(userService.getLibao(user.getId(), 18));//高级月卡
+//					if(libao.hasValidtime() && DateUtil.getDate(libao.getValidtime()).after(new Date())){
+//						reward.setCount(reward.getCount()+(int)(expcount*0.1));
+//					}
+//					if(libao2.hasValidtime() && DateUtil.getDate(libao2.getValidtime()).after(new Date())){
+//						reward.setCount(reward.getCount()+(int)(expcount*0.2));
+//					}
+//				}
+//				rewards.addAllLoot(config.getLootlistList());
+//				handleRewards(responseBuilder, user, rewards.build());
+//				
+//				for(int i = 0; i < raidconfig.getEventCount(); i++) {
+//					if(myraid.getEventid() == raidconfig.getEvent(i).getEventid()){
+//						myraid.setEventid(i+1==raidconfig.getEventCount() ? 0 : raidconfig.getEvent(i+1).getEventid());//通关or下一关
+//						myraid.addTurn(cmd.getTurn());
+//						break;
+//					}
+//				}
+//				if(myraid.getEventid() == oldeventid) {//非法值
+//					myraid.clearEventid();
+//					myraid.clearTurn();
+//					myraid.clearLevel();
+//				} else if (myraid.getEventid() == 0) {//通关
+//					/**
+//					 * 副本排行榜
+//					 */
+//					if(raidconfig.getMaxlevel() <= 3)
+//					rankService.addRaidRank(user, myraid.build());
+//					/**
+//					 * 通关副本的活动
+//					 */
+//					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getMaxlevel()-2, myraid.getLevel()));
+//					myraid.clearEventid();
+////					myraid.clearTurn();
+////					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
+////						myraid.setLeftcount(myraid.getLeftcount()-1);
+////					}
+//					if(raidconfig.getMaxlevel() <= 3)
+//						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
+//					myraid.clearLevel();
+//				}
+//				
+//				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+//			}else if(!cmd.getRet() && cmd.getTurn() == 0){
+//				myraid.clearEventid();
+//				myraid.clearTurn();
+//				myraid.clearLevel();
+//				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+//			}
+//			if(!responseBuilder.hasErrorCommand()) {
+//			Map<String, String> params = new HashMap<String, String>();
+//			params.put(LogString.USERID, "" + user.getId());
+//			params.put(LogString.SERVERID, "" + user.getServerId());
+//			params.put(LogString.RESULT, cmd.getRet() ? "1":"0");
+//			params.put(LogString.INSTANCEID, "" + myraid.getId());
+//			params.put(LogString.FLOOR, "" + myraid.getLevel());
+//			params.put(LogString.BOSSID, "" + (event.hasEnemygroup()?event.getEnemygroup().getEnemy(0).getEnemyid() : 0));
+//			params.put(LogString.PREINSTANCEID, "" + (!cmd.getRet() && cmd.getTurn() == 0 ? myraid.getEventid() : 0));
+//			logService.sendLog(params, LogString.LOGTYPE_RAID);
+//			}
+//		}
+//
+//		responseBuilder.setTeamRaidCommand(raidlist);
+	}
+	
+	public void getTeamRaid(RequestTeamRaidCommand cmd, Builder responseBuilder, UserBean user){
+		getTeamRaid(responseBuilder, user);
+	}
+	
+	public void getTeamRaid(Builder responseBuilder, UserBean user){
+//		ResponseTeamRaidCommand.Builder raidlist = redis.getRaid(user);
+//		responseBuilder.setTeamRaidCommand(raidlist);
+	}
+}

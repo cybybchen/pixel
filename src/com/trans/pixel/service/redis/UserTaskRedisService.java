@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
-import com.trans.pixel.protoc.TaskProto.UserTask;
+import com.trans.pixel.protoc.RewardTaskProto.UserTask;
 import com.trans.pixel.utils.DateUtil;
 
 @Service

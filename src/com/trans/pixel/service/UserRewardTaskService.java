@@ -21,7 +21,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.RewardTaskProto.UserRoom;
 import com.trans.pixel.protoc.RewardTaskProto.WeekDay;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
@@ -87,7 +87,7 @@ public class UserRewardTaskService {
 		}
 	}
 	
-	public static boolean hasMeInRoom(UserBean user, UserRewardTaskRoom.Builder room) {
+	public static boolean hasMeInRoom(UserBean user, UserRoom.Builder room) {
 		if(room == null)
 			return false;
 		for(RoomInfo roominfo : room.getRoomInfoList()) {
@@ -110,7 +110,7 @@ public class UserRewardTaskService {
 			if(ut.hasEndtime() && ut.getEndtime() <= now) {//过0点刷新
 				needRefresh = true;
 				if (ut.hasRoomInfo()) {//保留组队
-					UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+					UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 					if (room == null && ut.getStatus() != REWARDTASK_STATUS.CANREWARD_VALUE){//非法情况：房间不存在
 						userRewardTaskRedisService.deleteUserRewardTask(user.getId(), ut);
 						it.remove();

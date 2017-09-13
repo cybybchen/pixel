@@ -136,14 +136,25 @@ import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
 import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestCreateTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToTeamRaidRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestOpenRaidCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestOpenTeamRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestQuitRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestQuitTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestStartRaidCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestStartTeamRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestUserTaskCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
@@ -173,11 +184,6 @@ import com.trans.pixel.protoc.ShopProto.RequestShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopRefreshCommand;
-import com.trans.pixel.protoc.TaskProto.RequestGetTaskRewardCommand;
-import com.trans.pixel.protoc.TaskProto.RequestOpenRaidCommand;
-import com.trans.pixel.protoc.TaskProto.RequestRaidCommand;
-import com.trans.pixel.protoc.TaskProto.RequestStartRaidCommand;
-import com.trans.pixel.protoc.TaskProto.RequestUserTaskCommand;
 import com.trans.pixel.protoc.UnionProto.RequestApplyUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestAttackUnionCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBloodEnterCommand;
@@ -260,6 +266,7 @@ import com.trans.pixel.service.command.SignCommandService;
 import com.trans.pixel.service.command.TalentCommandService;
 import com.trans.pixel.service.command.TaskCommandService;
 import com.trans.pixel.service.command.TeamCommandService;
+import com.trans.pixel.service.command.TeamRaidCommandService;
 import com.trans.pixel.service.command.UnionCommandService;
 import com.trans.pixel.service.command.UserCommandService;
 import com.trans.pixel.service.command.ZhanliCommandService;
@@ -337,6 +344,8 @@ public class GameDataScreen extends RequestScreen {
 	private EquipPokedeCommandService equipPokedeCommandService;
 	@Resource
 	private RaidCommandService raidCommandService;
+	@Resource
+	private TeamRaidCommandService teamRaidCommandService;
 	@Resource
 	private RewardTaskCommandService rewardTaskCommandService;
 	@Resource
@@ -1663,6 +1672,42 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRaidCommand cmd, Builder responseBuilder, UserBean user) {
 		raidCommandService.getRaid(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestOpenTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.openTeamRaid(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.getTeamRaid(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestStartTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.startTeamRaid(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestInviteToTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.inviteToTeamRaidRoom(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestQuitTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.quitTeamRaidRoom(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestCreateTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.createTeamRaidRoom(cmd, responseBuilder, user);
 		return false;
 	}
 }

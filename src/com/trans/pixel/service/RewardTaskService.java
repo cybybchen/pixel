@@ -27,17 +27,15 @@ import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RoomInfo;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask.REWARDTASK_STATUS;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.RewardTaskProto.UserRoom;
 import com.trans.pixel.protoc.UserInfoProto.EventConfig;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
-import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.service.redis.RewardTaskRedisService;
 
 @Service
@@ -206,14 +204,14 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
-	public UserRewardTaskRoom.Builder createRoom(UserBean user, int index) {
+	public UserRoom.Builder createRoom(UserBean user, int index) {
 		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null) {
 			return null;
 		} else if(ut.getTask().getMerlevel() > user.getMerlevel()) {
 			return null;
 		}
-		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
+		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), ut.getIndex());
 		if (room != null && ut.hasRoomInfo())
 			return room;
 		if (ut.getStatus() != REWARDTASK_STATUS.LIVE_VALUE) {
@@ -221,7 +219,7 @@ public class RewardTaskService {
 		}
 		
 		UserInfo create = userService.getCache(user.getServerId(), user.getId());
-		UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder();
+		UserRoom.Builder builder = UserRoom.newBuilder();
 		builder.setCreateUserId(user.getId());
 		builder.setIndex(ut.getIndex());
 		RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
@@ -240,7 +238,7 @@ public class RewardTaskService {
 	}
 	
 	private ResultConst handleRewardTaskRoom(UserBean user, int index, RewardTask rewardTask, List<UserInfo> errorUserList, UserRewardTask.Builder urbuilder) {
-		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
+		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null) {
 			activityService.completeRewardTask(user.getId(), rewardTask.getType());//单独完成悬赏任务
 //			if (!urbuilder.hasIsOver() || urbuilder.getIsOver() == 0) {
@@ -289,7 +287,7 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_SUBMIT_SUCCESS;
 	}
 	
-	public List<UserInfo> getNotEnoughPropUser(UserRewardTaskRoom room) {
+	public List<UserInfo> getNotEnoughPropUser(UserRoom room) {
 		List<UserInfo> userInfoList = new ArrayList<UserInfo>();
 		EventConfig event = levelRedisService.getEvent(room.getEventid());
 		if(!event.hasCost())
@@ -307,14 +305,14 @@ public class RewardTaskService {
 		return userInfoList;
 	}
 	
-	public UserRewardTaskRoom.Builder getUserRoom(UserBean user, int index) {
+	public UserRoom.Builder getUserRoom(UserBean user, int index) {
 		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
 		if (ut == null || ut.getRoomInfo() == null) {
 			rewardTaskRedisService.delUserRewardTaskRoom(user, index);
 			return null;
 		}
 		 
-		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
 		
 		if(!UserRewardTaskService.hasMeInRoom(user, room)) {
 			ut.clearRoomInfo();
@@ -329,7 +327,7 @@ public class RewardTaskService {
 	
 	public UserRewardTask.Builder inviteFightRewardTask(UserBean user, long createUserId, List<Long> userIds, int index) {
 		if (userIds.isEmpty()) {//接收邀请
-			UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
+			UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null)
 				return null;
 			UserRewardTask.Builder rewardTask = userRewardTaskService.getUserRewardTask(createUserId, index);
@@ -396,7 +394,7 @@ public class RewardTaskService {
 			
 			return rewardTask;
 		} else { //邀请别人
-			UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
+			UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(createUserId, index);
 			if (room == null) {
 				return null;
 			}
@@ -408,13 +406,13 @@ public class RewardTaskService {
 		}
 	}
 	
-	public ResultConst quitRoom(UserBean user, long quitUserId, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
+	public ResultConst quitRoom(UserBean user, long quitUserId, int index, UserRewardTask.Builder rewardTaskBuilder, UserRoom.Builder builder) {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
 		if (userRewardTask.getRoomInfo() == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
-		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
+		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
 		if (room == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
@@ -463,7 +461,7 @@ public class RewardTaskService {
 		return SuccessConst.BOSS_ROOM_QUIT_SUCCESS;
 	}
 	
-	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRewardTaskRoom.Builder builder) {
+	public ResultConst giveupRewardtask(UserBean user, int index, UserRewardTask.Builder rewardTaskBuilder, UserRoom.Builder builder) {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
 		if (userRewardTask.hasRoomInfo()) {
@@ -560,8 +558,8 @@ public class RewardTaskService {
 		return rewards;
 	}
 	
-	public ResultConst changePosition(UserBean user, int index, int position1, int position2, UserRewardTaskRoom.Builder roomBuilder) {
-		UserRewardTaskRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
+	public ResultConst changePosition(UserBean user, int index, int position1, int position2, UserRoom.Builder roomBuilder) {
+		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(user.getId(), index);
 		if (room == null)
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		

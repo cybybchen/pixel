@@ -8,7 +8,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTask;
 import com.trans.pixel.protoc.RewardTaskProto.RewardTaskList;
-import com.trans.pixel.protoc.RewardTaskProto.UserRewardTaskRoom;
+import com.trans.pixel.protoc.RewardTaskProto.UserRoom;
 import com.trans.pixel.service.cache.CacheService;
 
 @Service
@@ -79,13 +79,13 @@ public class RewardTaskRedisService extends RedisService {
 //		return map;
 //	}
 	
-	public UserRewardTaskRoom.Builder getUserRewardTaskRoom(long userId, int index) {
+	public UserRoom.Builder getUserRewardTaskRoom(long userId, int index) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + userId;
 		String value = hget(key, "" + index, userId);
 		if (value == null)
 			return null;
 		
-		UserRewardTaskRoom.Builder builder = UserRewardTaskRoom.newBuilder();
+		UserRoom.Builder builder = UserRoom.newBuilder();
 		if (parseJson(value, builder)){
 				return builder;
 		}
@@ -93,7 +93,7 @@ public class RewardTaskRedisService extends RedisService {
 		return null;
 	}
 	
-	public void setUserRewardTaskRoom(UserRewardTaskRoom room) {
+	public void setUserRewardTaskRoom(UserRoom room) {
 		String key = RedisKey.REWARDTASK_ROOM_PREFIX + room.getCreateUserId();
 		hput(key, "" + room.getIndex(), formatJson(room), room.getCreateUserId());
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, room.getCreateUserId());

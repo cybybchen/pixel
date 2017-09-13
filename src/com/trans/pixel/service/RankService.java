@@ -18,7 +18,7 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
-import com.trans.pixel.protoc.TaskProto.Raid;
+import com.trans.pixel.protoc.RewardTaskProto.Raid;
 import com.trans.pixel.service.redis.ActivityRedisService;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.RankRedisService;

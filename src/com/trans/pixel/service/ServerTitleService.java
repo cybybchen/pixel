@@ -1,8 +1,6 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -19,18 +17,16 @@ import com.trans.pixel.constants.UnionConst;
 import com.trans.pixel.model.ServerTitleBean;
 import com.trans.pixel.model.mapper.ServerTitleMapper;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.RewardTaskProto.Raid;
+import com.trans.pixel.protoc.RewardTaskProto.ResponseRaidCommand;
 import com.trans.pixel.protoc.ServerProto.ServerTitleInfo.TitleInfo;
 import com.trans.pixel.protoc.ServerProto.Title;
-import com.trans.pixel.protoc.TaskProto.Raid;
-import com.trans.pixel.protoc.TaskProto.ResponseRaidCommand;
 import com.trans.pixel.protoc.UnionProto.Union;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.ServerTitleRedisService;
 import com.trans.pixel.service.redis.UnionRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
-import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
