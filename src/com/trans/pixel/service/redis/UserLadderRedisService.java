@@ -23,13 +23,42 @@ import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
+import com.trans.pixel.protoc.LadderProto.LadderTeam;
+import com.trans.pixel.protoc.LadderProto.LadderTeamList;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
 import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Repository
 public class UserLadderRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(UserLadderRedisService.class);
+	private static final String LADDER_TEAM_FILE_NAME = "ld_team.xml";
+	
+	public UserLadderRedisService() {
+		buildLadderTeamConfig();
+	}
+	
+	public LadderTeam getLadderTeam(int id) {
+		Map<Integer, LadderTeam> map = getLadderTeamConfig();
+		return map.get(id);
+	}
+	
+	public Map<Integer, LadderTeam> getLadderTeamConfig() {
+		Map<Integer, LadderTeam> map = CacheService.hgetcache(RedisKey.LADDER_TEAM_KEY);
+		return map;
+	}
+	
+	private void buildLadderTeamConfig(){
+		String xml = RedisService.ReadConfig(LADDER_TEAM_FILE_NAME);
+		LadderTeamList.Builder builder = LadderTeamList.newBuilder();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, LadderTeam> map = new HashMap<Integer, LadderTeam>();
+		for(LadderTeam.Builder config : builder.getDataBuilderList()){
+			map.put(config.getId(), config.build());
+		}
+		CacheService.hputcacheAll(RedisKey.LADDER_TEAM_KEY, map);
+	}
 	
 	public LadderSeason getLadderSeason() {
 		String value = get(RedisKey.LADDER_SEASON_KEY);
@@ -137,6 +166,8 @@ public class UserLadderRedisService extends RedisService{
 					return 0;
 				
 				if (size >= LadderConst.LADDER_ROOM_SIZE) {
+					if (userLadder.getPosition() == 0)//0表示不插入
+						return 0;
 					bhOps.put("" + userLadder.getPosition(), RedisService.formatJson(userLadder));
 					return userLadder.getPosition();
 				} else {

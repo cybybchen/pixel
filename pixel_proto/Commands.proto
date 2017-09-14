@@ -2699,6 +2699,64 @@ message LadderModeLevel {
 	required uint32 score = 2;
 }
 
+message LadderTeamList {
+	repeated LadderTeam data = 1;
+}
+
+message LadderTeam {
+	required uint32 id = 1;
+	required string name = 2;
+	required uint32 touxiang = 3;
+	repeated LadderTeamEngine engine = 4;
+	required LadderTeamZhujue zhujue = 5;
+	repeated LadderTeamHero hero = 6;
+}
+
+message LadderTeamEngine {
+	required uint32 order = 1;
+	required uint32 id = 2;
+	repeated LadderTeamEngineSkill skilllist = 3;
+}
+
+message LadderTeamEngineSkill {
+	required uint32 position = 1;
+	required uint32 skill = 2;
+}
+
+message LadderTeamZhujue {
+	required uint32 id = 1;
+	required uint32 level = 2;
+	repeated LadderTeamEquip equip = 3;
+	repeated LadderTeamZhujueSkill skilllist = 4;
+}
+
+message LadderTeamZhujueSkill {
+	required uint32 order = 1;
+	required uint32 id = 2;
+	required uint32 level = 3;
+}	
+
+message LadderTeamEquip {
+	optional uint32 position = 1;
+	required uint32 id = 2;
+	required uint32 order = 3;
+	required uint32 level = 4;
+}
+
+message LadderTeamHero {
+	required uint32 position = 1;
+	required uint32 id = 2;
+	required uint32 star = 3;
+	required uint32 rank = 4;
+	required uint32 level = 5;
+	required uint32 skill1 = 6;
+	required uint32 skill2 = 7;
+	required uint32 skill3 = 8;
+	required uint32 skill4 = 9;
+	required uint32 skill5 = 10;
+	required LadderTeamEquip equip = 11;
+}
+
 message LadderLd {
 	optional uint32 targetid = 1;
 	optional string name = 2;

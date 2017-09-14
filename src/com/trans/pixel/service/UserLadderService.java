@@ -16,12 +16,26 @@ import com.trans.pixel.constants.LadderConst;
 import com.trans.pixel.model.mapper.UserLadderMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLadderBean;
+import com.trans.pixel.protoc.Base.HeroInfo;
+import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
+import com.trans.pixel.protoc.Base.TeamEngine;
+import com.trans.pixel.protoc.Base.UserEquipPokede;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.Base.UserTalentEquip;
+import com.trans.pixel.protoc.Base.UserTalentOrder;
 import com.trans.pixel.protoc.LadderProto.LadderMode;
 import com.trans.pixel.protoc.LadderProto.LadderModeLevel;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
+import com.trans.pixel.protoc.LadderProto.LadderTeam;
+import com.trans.pixel.protoc.LadderProto.LadderTeamEngine;
+import com.trans.pixel.protoc.LadderProto.LadderTeamEngineSkill;
+import com.trans.pixel.protoc.LadderProto.LadderTeamEquip;
+import com.trans.pixel.protoc.LadderProto.LadderTeamHero;
+import com.trans.pixel.protoc.LadderProto.LadderTeamZhujue;
+import com.trans.pixel.protoc.LadderProto.LadderTeamZhujueSkill;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
@@ -102,6 +116,10 @@ public class UserLadderService {
 		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
+		UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
+		if (robotLadder != null)
+			map.put(0, robotLadder);
+		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
 			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT, user.getId(), enemyUserIdList);
 		}
@@ -140,6 +158,126 @@ public class UserLadderService {
 		userLadderRedisService.storeUserEnemy(user.getId(), type, map);
 		
 		return map;
+	}
+	
+	private UserLadder randomRobotLadder(int grade, int score) {
+		Map<Integer, LadderTeam> map = userLadderRedisService.getLadderTeamConfig();
+		List<Integer> teamIds = new ArrayList<Integer>();
+		teamIds.addAll(map.keySet());
+		LadderTeam ladderTeam = map.get(teamIds.get(RandomUtils.nextInt(map.size())));
+		Team.Builder team = Team.newBuilder();
+		UserInfo.Builder userinfo = UserInfo.newBuilder();
+		userinfo.setId(ladderTeam.getId());
+		userinfo.setName(ladderTeam.getName());
+		userinfo.setIcon(ladderTeam.getTouxiang());
+		team.setUser(userinfo.build());
+		team.setRolePosition(0);
+		
+		//英雄
+		for (LadderTeamHero hero : ladderTeam.getHeroList()) {
+			team.addHeroInfo(composeHeroInfo(hero, team.getHeroInfoCount()));
+		}
+		
+		//差分器
+		for (LadderTeamEngine engine : ladderTeam.getEngineList()) {
+			TeamEngine.Builder teamEngine = TeamEngine.newBuilder();
+			teamEngine.setId(engine.getOrder());
+			StringBuilder sb = new StringBuilder();
+			for (LadderTeamEngineSkill engineSkill : engine.getSkilllistList()) {
+				if (engineSkill.getPosition() == 0)
+					sb.append("|0,0,").append(engineSkill.getSkill());
+				else for (HeroInfo heroinfo : team.getHeroInfoList()) {
+					if (heroinfo.getPosition() == engineSkill.getPosition()) {
+						sb.append("|").append(heroinfo.getHeroId()).append(heroinfo.getInfoId()).append(engineSkill.getSkill());
+						break;
+					}
+				}
+			}
+			
+			sb.append("_").append(engine.getId());
+			teamEngine.setComposeSkill(sb.toString().substring(1));
+			team.addTeamEngine(teamEngine.build());
+		}
+		
+		//主角
+		UserTalent.Builder talent = UserTalent.newBuilder();
+		LadderTeamZhujue zhujue = ladderTeam.getZhujue();
+		talent.setId(zhujue.getId());
+		talent.setLevel(zhujue.getLevel());
+		for (LadderTeamZhujueSkill skill : zhujue.getSkilllistList()) {
+			UserTalentOrder.Builder skillBuilder = UserTalentOrder.newBuilder();
+			skillBuilder.setLevel(skill.getLevel());
+			skillBuilder.setOrder(skill.getOrder());
+			skillBuilder.setSkillId(skill.getId());
+			
+			talent.addSkill(skillBuilder.build());
+		}
+		
+		for (LadderTeamEquip equip : zhujue.getEquipList()) {
+			UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
+			if (equip.getPosition() < 10)
+				equipBuilder.setPosition(equip.getPosition());
+			else
+				equipBuilder.setPosition(equip.getPosition() - 10);
+			
+			equipBuilder.setItemId(equip.getId());
+			equipBuilder.setLevel(equip.getLevel());
+			equipBuilder.setOrder(equip.getOrder());
+			
+			talent.addEquip(equipBuilder.build());
+		}
+		
+		team.setUserTalent(talent.build());
+		
+		UserLadder.Builder userLadder = UserLadder.newBuilder();
+		userLadder.setType(0);
+		userLadder.setGrade(grade);
+		userLadder.setScore(score);
+		
+		userLadder.setSeason(1);
+		userLadder.setTeam(team);
+		userLadder.setSeasonRewardStatus(1);
+		
+		return userLadder.build();
+	}
+	
+	private HeroInfo composeHeroInfo(LadderTeamHero hero, int infoId) {
+		UserEquipPokede.Builder pokede = UserEquipPokede.newBuilder();
+		pokede.setItemId(hero.getEquip().getId());
+		pokede.setOrder(hero.getEquip().getOrder());
+		pokede.setLevel(hero.getEquip().getLevel());
+		HeroInfo.Builder builder = HeroInfo.newBuilder();
+		builder.setInfoId(infoId);
+		builder.setEquipId(pokede.getItemId());
+		builder.setEquipPokede(pokede.build());
+		builder.setHeroId(hero.getId());
+		builder.setStar(hero.getStar());
+		builder.setRank(hero.getRank());
+		
+		SkillInfo.Builder skill = SkillInfo.newBuilder();
+		skill.setSkillId(builder.getSkillCount() + 1);
+		skill.setSkillLevel(hero.getSkill1());
+		builder.addSkill(skill.build());
+		
+		skill.setSkillId(builder.getSkillCount() + 1);
+		skill.setSkillLevel(hero.getSkill2());
+		builder.addSkill(skill.build());
+		
+		skill.setSkillId(builder.getSkillCount() + 1);
+		skill.setSkillLevel(hero.getSkill3());
+		builder.addSkill(skill.build());
+		
+		skill.setSkillId(builder.getSkillCount() + 1);
+		skill.setSkillLevel(hero.getSkill4());
+		builder.addSkill(skill.build());
+		
+		skill.setSkillId(builder.getSkillCount() + 1);
+		skill.setSkillLevel(hero.getSkill5());
+		builder.addSkill(skill.build());
+		
+		builder.setPosition(hero.getPosition());
+		
+		return builder.build();
 	}
 	
 	public void storeRoomData(UserLadder userLadder, int type, int grade) {
