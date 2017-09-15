@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.RaidMapper;
@@ -88,6 +89,7 @@ public class RaidRedisService extends RedisService{
 
 	public void saveRaid(UserBean user, Raid.Builder raid, boolean updateDB){
 		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()), user.getId());
+		expire(RedisKey.USERRAID_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 //		if(raid.getId() < 50)
 		if(updateDB)
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());

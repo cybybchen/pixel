@@ -12,6 +12,8 @@ import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.mapper.TeamRaidMapper;
+import com.trans.pixel.model.userinfo.TeamRaidBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.RewardTaskProto.EventProgress;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidCommand;
@@ -26,11 +28,35 @@ import com.trans.pixel.service.cache.CacheService;
 public class TeamRaidRedisService extends RedisService{
 	@Resource
 	private MailService mailService;
+	@Resource
+	private TeamRaidMapper mapper;
+	
 	Logger logger = Logger.getLogger(TeamRaidRedisService.class);
 	final public int INDEX_SIZE = 100000; 
 	
 	public TeamRaidRedisService() {
 		buildTeamRaidListConfig();
+	}
+	
+	public void unlock(UserBean user, int unlock) {
+		ResponseTeamRaidCommand.Builder raidlist = getTeamRaid(user);
+		for(TeamRaid.Builder myraid : raidlist.getRaidBuilderList()) {
+			if(myraid.getStatus() == 0 && myraid.getUnlock() == unlock) {
+				myraid.setStatus(1);
+				saveTeamRaid(user, myraid);
+				sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERTEAMRAID_PREFIX, user.getId()+"#"+myraid.getId());
+			}
+		}
+	}
+
+	public String popDBKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERTEAMRAID_PREFIX);
+	}
+	public void updateToDB(long userId, int id){
+		String value = hget(RedisKey.USERTEAMRAID_PREFIX+userId, id+"", userId);
+		TeamRaidBean bean = TeamRaidBean.fromJson(userId, value);
+		if(bean != null)
+			mapper.updateRaid(bean);
 	}
 
 	public TeamRaid.Builder getTeamRaid(long userId, int id){
@@ -58,11 +84,15 @@ public class TeamRaidRedisService extends RedisService{
 				if(myraid.hasRoomInfo())
 					raid.setRoomInfo(myraid.getRoomInfo());
 				raid.setIndex(myraid.getIndex());
+				raid.setStatus(myraid.getStatus());
 				if(myraid.getEventCount() == 0)
 					raid.clearEvent();
 				for(int j = 0; j < raid.getEventCount() && j < myraid.getEventCount(); j++) {
 					raid.getEventBuilder(j).setStatus(myraid.getEventBuilder(j).getStatus());
 				}
+			}else {
+				raid.clearEvent();
+				raid.setStatus(0);
 			}
 			if(raid.getEndtime() < endtime) {//刷新次数
 				raid.setLeftcount(raid.getCount());
@@ -82,6 +112,7 @@ public class TeamRaidRedisService extends RedisService{
 	
 	public void saveTeamRaid(long userId, TeamRaid.Builder raid){
 		hput(RedisKey.USERTEAMRAID_PREFIX+userId, raid.getId()+"", formatJson(raid.build()), userId);
+		expire(RedisKey.USERTEAMRAID_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 //		if(updateDB)
 //			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERTEAMRAID_PREFIX, user.getId()+"#"+raid.getId());
 	}

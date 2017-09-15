@@ -141,7 +141,7 @@ public class MessageService {
 		MessageBoardBean messageBoard = initMessageBoard(user, message);
 		messageBoard.setGroupId(groupId);
 		messageBoard.setBossId(bossId);
-		if (groupId != 0 && bossId != 0) {
+		if (groupId != 0 && bossId != 0) {//groupId:0-悬赏1-团本
 			messageRedisService.addMessageBoardOfUnion(user.getUnionId(), messageBoard);
 			messageRedisService.addUnionMessageBoardValue(user.getUnionId(), messageBoard);
 		}else if(fightId != 0) {

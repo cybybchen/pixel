@@ -32,6 +32,7 @@ import com.trans.pixel.service.UserService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RedisService;
+import com.trans.pixel.service.redis.TeamRaidRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -53,6 +54,8 @@ public class RaidCommandService extends BaseCommandService{
 	private RankService rankService;
 	@Resource
 	private UserService userService;
+	@Resource
+    private TeamRaidRedisService teamraidredis;
 
 
 	public void openRaid(RequestOpenRaidCommand cmd, Builder responseBuilder, UserBean user){
@@ -185,6 +188,9 @@ public class RaidCommandService extends BaseCommandService{
 					if(raidconfig.getMaxlevel() <= 3)
 						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
+					if(myraid.getId() == 20) {
+						teamraidredis.unlock(user, 20);
+					}
 				}
 				
 				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
