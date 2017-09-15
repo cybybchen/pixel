@@ -310,8 +310,8 @@ public class TeamRaidCommandService extends BaseCommandService{
 			UserRoom.Builder room = redis.getUserRoom(createUserId, index);
 			TeamRaid.Builder hisraid = redis.getTeamRaid(createUserId, index/redis.INDEX_SIZE);
 			if (room == null || hisraid == null) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HAS_START);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HAS_START);
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
