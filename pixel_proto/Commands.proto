@@ -3931,6 +3931,10 @@ message TeamRaid {
 	optional int32 unlock = 9;       
 	optional int32 members = 10;
 	optional RoomInfo roomInfo = 11;
+	optional int64 endtime = 12;
+	optional uint32 index = 13;
+	optional RewardInfo cost = 14;
+	optional int32 status = 15;//0-未解锁1-已解锁
 }
 message TeamRaidList {
 	repeated TeamRaid data = 1;
@@ -3942,7 +3946,7 @@ message RequestOpenTeamRaidCommand {
 	optional int32 level = 2;
 }
 message RequestCreateTeamRaidRoomCommand {
-	required uint32 index = 1;
+	required uint32 id = 1;
 }
 
 message RequestQuitTeamRaidRoomCommand {
@@ -3964,8 +3968,23 @@ message RequestStartTeamRaidCommand {
 	optional bool ret = 5;
 	optional int32 eventid = 6;
 }
+message RequestGetTeamRaidRewardCommand {
+	optional int32 id = 1;
+	optional int32 eventid = 6;
+}
 message ResponseTeamRaidCommand {
 	repeated TeamRaid raid = 1;
+}
+message RequestTeamRaidRoomCommand {
+	required uint32 index = 1;
+}
+message RequestTeamRaidRoomChangePositionCommand {
+	required uint32 position1 = 1;
+	required uint32 position2 = 2;
+	required uint32 index = 3;
+}
+message ResponseTeamRaidRoomCommand {
+	repeated UserRoom room = 1;
 }
 
 ////////// Request
@@ -4069,6 +4088,9 @@ message RequestCommand {
 	optional RequestCreateTeamRaidRoomCommand createTeamRaidRoomCommand = 178;
 	optional RequestQuitTeamRaidRoomCommand quitTeamRaidRoomCommand = 179;
 	optional RequestInviteToTeamRaidRoomCommand inviteToTeamRaidRoomCommand = 180;
+	optional RequestTeamRaidRoomChangePositionCommand teamRaidRoomChangePositionCommand = 181;
+	optional RequestTeamRaidRoomCommand teamRaidRoomCommand = 182;
+	optional RequestGetTeamRaidRewardCommand getTeamRaidRewardCommand = 183;
 	//////////////////////////////////////////////////////
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;
@@ -4233,7 +4255,8 @@ message ResponseCommand {
 	optional ResponseRaidCommand raidCommand = 158;
 	optional ResponseTeamRaidCommand teamRaidCommand = 175;
 	optional ResponseEventCommand eventCommand = 159;
-	optional ResponseCanRechargeCommand canRechargeCommand = 170;	
+	optional ResponseCanRechargeCommand canRechargeCommand = 170;
+	optional ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;
 	////////////////////////////////////////////////////////
 	optional ResponseNeedRegisterCommand needRegisterCommand = 3;
 	optional ResponseUserInfoCommand userInfoCommand = 4;

@@ -1210,6 +1210,38 @@ public class ManagerService extends RedisService{
 			result.put("raid", object);
 		}
 
+		if(req.containsKey("update-teamraid") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USERTEAMRAID_PREFIX + userId, userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-teamraid"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.USERTEAMRAID_PREFIX + userId, key, userId);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-teamraid", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USERTEAMRAID_PREFIX + userId, map, userId);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-teamraid", map.toString());
+			}
+			req.put("teamraid", 1);
+		}else if(req.containsKey("del-teamraid") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USERTEAMRAID_PREFIX + userId, userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-teamraid", "");
+			req.put("teamraid", 1);
+		}
+		if(req.containsKey("teamraid") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USERTEAMRAID_PREFIX+userId, userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("teamraid", object);
+		}
+
 		if(req.containsKey("update-pvpMonster") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.PVPMONSTER_PREFIX + userId, userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-pvpMonster"));

@@ -77,6 +77,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestGetTeamRaidRewardCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUpdateTeamCommand;
@@ -127,6 +128,7 @@ import com.trans.pixel.protoc.LadderProto.RequestGetLadderUserInfoCommand;
 import com.trans.pixel.protoc.UserInfoProto.RequestSignNameCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroStrengthenCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidRoomCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestGetGrowJewelCommand;
 import com.trans.pixel.protoc.PVPProto.RequestBrotherMineInfoCommand;
 import com.trans.pixel.protoc.MailProto.RequestReceiveFriendCommand;
@@ -242,6 +244,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestGetTaskRewardCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
 import com.trans.pixel.protoc.UnionProto.RequestSetUnionAnnounceCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestRewardTaskRewardCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidRoomChangePositionCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestPurchaseVipLibaoCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionInfoCommand;
@@ -318,6 +321,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeDisplayCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestGetTeamRaidRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUpdateTeamCommand cmd, Builder responseBuilder, UserBean user);
@@ -368,6 +372,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestSignNameCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroStrengthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestStartMohuaMapCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetGrowJewelCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBrotherMineInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestReceiveFriendCommand cmd, Builder responseBuilder, UserBean user);
@@ -483,6 +488,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestKaifuListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSetUnionAnnounceCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRewardTaskRewardCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestTeamRaidRoomChangePositionCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPurchaseVipLibaoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user);
@@ -825,6 +831,10 @@ public abstract class RequestScreen implements RequestHandle {
 			RequestEquipComposeCommand cmd = request.getEquipComposeCommand();
 			if (isFuncAvailable(responseBuilder, "EquipComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
+		if (request.hasGetTeamRaidRewardCommand()) {
+			RequestGetTeamRaidRewardCommand cmd = request.getGetTeamRaidRewardCommand();
+			if (isFuncAvailable(responseBuilder, "GetTeamRaidRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
 		if (request.hasUnlockPvpMapCommand()) {
 			RequestUnlockPVPMapCommand cmd = request.getUnlockPvpMapCommand();
 			if (isFuncAvailable(responseBuilder, "UnlockPvpMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
@@ -1024,6 +1034,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasStartMohuaMapCommand()) {
 			RequestStartMohuaMapCommand cmd = request.getStartMohuaMapCommand();
 			if (isFuncAvailable(responseBuilder, "StartMohuaMapCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasTeamRaidRoomCommand()) {
+			RequestTeamRaidRoomCommand cmd = request.getTeamRaidRoomCommand();
+			if (isFuncAvailable(responseBuilder, "TeamRaidRoomCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetGrowJewelCommand()) {
 			RequestGetGrowJewelCommand cmd = request.getGetGrowJewelCommand();
@@ -1484,6 +1498,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasRewardTaskRewardCommand()) {
 			RequestRewardTaskRewardCommand cmd = request.getRewardTaskRewardCommand();
 			if (isFuncAvailable(responseBuilder, "RewardTaskRewardCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasTeamRaidRoomChangePositionCommand()) {
+			RequestTeamRaidRoomChangePositionCommand cmd = request.getTeamRaidRoomChangePositionCommand();
+			if (isFuncAvailable(responseBuilder, "TeamRaidRoomChangePositionCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPurchaseVipLibaoCommand()) {
 			RequestPurchaseVipLibaoCommand cmd = request.getPurchaseVipLibaoCommand();

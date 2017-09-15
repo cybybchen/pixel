@@ -77,10 +77,7 @@ public class UserRewardTaskRedisService extends RedisService {
 		String key = RedisKey.USER_REWARD_TASK_PREFIX + userId;
 		Map<String,String> map = hget(key, userId);
 		Map<Integer, UserRewardTask> userRewardTaskMap = new TreeMap<Integer, UserRewardTask>();
-//		Iterator<Entry<String, String>> it = map.entrySet().iterator();
-//		while (it.hasNext()) {
 		for(String value : map.values()) {
-//			String value = it.next().getValue();
 			UserRewardTask.Builder builder = UserRewardTask.newBuilder();
 			if(value!= null && parseJson(value, builder))
 				userRewardTaskMap.put(builder.getIndex(), builder.build());

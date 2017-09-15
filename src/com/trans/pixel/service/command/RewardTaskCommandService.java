@@ -131,7 +131,6 @@ public class RewardTaskCommandService extends BaseCommandService {
             responseBuilder.setErrorCommand(errorCommand);
 			return;
 		}
-//		UserRewardTask.Builder userRewardTaskBuilder = UserRewardTask.newBuilder();
 		UserRewardTask.Builder userRewardTaskBuilder = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, index);
 		
 		if (userRewardTaskBuilder == null) {

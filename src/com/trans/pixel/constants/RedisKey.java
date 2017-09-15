@@ -64,7 +64,7 @@ public class RedisKey {
 	public static final String USEREVENT_PREFIX = PREFIX+"UserEvent_";
 	public static final String USEREVENTREADY_PREFIX = PREFIX+"UserEventReady_";
 	public static final String USERRAID_PREFIX = PREFIX+"UserRaid_";
-	public static final String TEAMRAID_PREFIX = PREFIX+"TeamRaid_";
+	public static final String USERTEAMRAID_PREFIX = PREFIX+"UserTeamRaid_";
 	public static final String USER_RECOMMAND_PREFIX = PREFIX + "UserRecommand_";
 	public final static String USER_SAVE_FIGHT_PREFIX = PREFIX + "user_save_fight_";
 
@@ -379,6 +379,7 @@ public class RedisKey {
 	public static final String BOSSGROUP_ZHAOHUAN_PREFIX = PREFIX + "zhaohuan_bossgroup_";
 	public static final String REWARDTASK_KEY = PREFIX + CONFIG_PREFIX + "RewardTask";
 	public static final String REWARDTASK_ROOM_PREFIX = PREFIX + "rewardtask_room_";
+	public static final String TEAMRAID_ROOM_PREFIX = PREFIX + "teamraid_room_";
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
 	public static final String LOOT_SHENYUAN_KEY = PREFIX + CONFIG_PREFIX+"loot_shenyuan";
 	

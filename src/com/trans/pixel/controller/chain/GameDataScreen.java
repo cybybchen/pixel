@@ -138,6 +138,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestChangePositionCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestCreateTeamRaidRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGetTaskRewardCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestGetTeamRaidRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToTeamRaidRoomCommand;
@@ -152,6 +153,8 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestStartRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestStartTeamRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestSubmitRewardTaskScoreCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidRoomChangePositionCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestTeamRaidRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestUserTaskCommand;
@@ -1672,42 +1675,60 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRaidCommand cmd, Builder responseBuilder, UserBean user) {
 		raidCommandService.getRaid(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestOpenTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.openTeamRaid(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.getTeamRaid(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestStartTeamRaidCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.startTeamRaid(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestInviteToTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.inviteToTeamRaidRoom(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestQuitTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.quitTeamRaidRoom(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestCreateTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.createTeamRaidRoom(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTeamRaidRoomChangePositionCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.changePosition(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.getTeamRaidRoom(cmd, responseBuilder, user);
+		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestGetTeamRaidRewardCommand cmd, Builder responseBuilder, UserBean user) {
+		teamRaidCommandService.getTeamRaidReward(cmd, responseBuilder, user);
 		return false;
 	}
 }

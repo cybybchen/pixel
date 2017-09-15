@@ -1594,6 +1594,20 @@ public final class Commands {
      */
     com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommandOrBuilder getCanRechargeCommandOrBuilder();
 
+    // optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    boolean hasTeamRaidRoomCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand getTeamRaidRoomCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder getTeamRaidRoomCommandOrBuilder();
+
     // optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;</code>
@@ -2499,7 +2513,7 @@ public final class Commands {
             }
             case 26: {
               com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x04000000) == 0x04000000)) {
+              if (((bitField0_ & 0x08000000) == 0x08000000)) {
                 subBuilder = needRegisterCommand_.toBuilder();
               }
               needRegisterCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.PARSER, extensionRegistry);
@@ -2507,12 +2521,12 @@ public final class Commands {
                 subBuilder.mergeFrom(needRegisterCommand_);
                 needRegisterCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x04000000;
+              bitField0_ |= 0x08000000;
               break;
             }
             case 34: {
               com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x08000000) == 0x08000000)) {
+              if (((bitField0_ & 0x10000000) == 0x10000000)) {
                 subBuilder = userInfoCommand_.toBuilder();
               }
               userInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.PARSER, extensionRegistry);
@@ -2520,12 +2534,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userInfoCommand_);
                 userInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x08000000;
+              bitField0_ |= 0x10000000;
               break;
             }
             case 66: {
               com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x40000000) == 0x40000000)) {
+              if (((bitField0_ & 0x80000000) == 0x80000000)) {
                 subBuilder = heroResultCommand_.toBuilder();
               }
               heroResultCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.PARSER, extensionRegistry);
@@ -2533,12 +2547,12 @@ public final class Commands {
                 subBuilder.mergeFrom(heroResultCommand_);
                 heroResultCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x40000000;
+              bitField0_ |= 0x80000000;
               break;
             }
             case 114: {
               com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x80000000) == 0x80000000)) {
+              if (((bitField1_ & 0x00000001) == 0x00000001)) {
                 subBuilder = getUserHeroCommand_.toBuilder();
               }
               getUserHeroCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.PARSER, extensionRegistry);
@@ -2546,12 +2560,12 @@ public final class Commands {
                 subBuilder.mergeFrom(getUserHeroCommand_);
                 getUserHeroCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x80000000;
+              bitField1_ |= 0x00000001;
               break;
             }
             case 122: {
               com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000001) == 0x00000001)) {
+              if (((bitField1_ & 0x00000002) == 0x00000002)) {
                 subBuilder = getLadderRankListCommand_.toBuilder();
               }
               getLadderRankListCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.PARSER, extensionRegistry);
@@ -2559,12 +2573,12 @@ public final class Commands {
                 subBuilder.mergeFrom(getLadderRankListCommand_);
                 getLadderRankListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000001;
+              bitField1_ |= 0x00000002;
               break;
             }
             case 130: {
               com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000002) == 0x00000002)) {
+              if (((bitField1_ & 0x00000004) == 0x00000004)) {
                 subBuilder = getUserLadderRankListCommand_.toBuilder();
               }
               getUserLadderRankListCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.PARSER, extensionRegistry);
@@ -2572,12 +2586,12 @@ public final class Commands {
                 subBuilder.mergeFrom(getUserLadderRankListCommand_);
                 getUserLadderRankListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000002;
+              bitField1_ |= 0x00000004;
               break;
             }
             case 138: {
               com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000004) == 0x00000004)) {
+              if (((bitField1_ & 0x00000008) == 0x00000008)) {
                 subBuilder = attackLadderModeCommand_.toBuilder();
               }
               attackLadderModeCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.PARSER, extensionRegistry);
@@ -2585,12 +2599,12 @@ public final class Commands {
                 subBuilder.mergeFrom(attackLadderModeCommand_);
                 attackLadderModeCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000004;
+              bitField1_ |= 0x00000008;
               break;
             }
             case 146: {
               com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000008) == 0x00000008)) {
+              if (((bitField1_ & 0x00000010) == 0x00000010)) {
                 subBuilder = getUserMailListCommand_.toBuilder();
               }
               getUserMailListCommand_ = input.readMessage(com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.PARSER, extensionRegistry);
@@ -2598,12 +2612,12 @@ public final class Commands {
                 subBuilder.mergeFrom(getUserMailListCommand_);
                 getUserMailListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000008;
+              bitField1_ |= 0x00000010;
               break;
             }
             case 154: {
               com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000010) == 0x00000010)) {
+              if (((bitField1_ & 0x00000020) == 0x00000020)) {
                 subBuilder = sendRewardCommand_.toBuilder();
               }
               sendRewardCommand_ = input.readMessage(com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.PARSER, extensionRegistry);
@@ -2611,12 +2625,12 @@ public final class Commands {
                 subBuilder.mergeFrom(sendRewardCommand_);
                 sendRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000010;
+              bitField1_ |= 0x00000020;
               break;
             }
             case 162: {
               com.trans.pixel.protoc.Commands.ResponseMessageCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000020) == 0x00000020)) {
+              if (((bitField1_ & 0x00000040) == 0x00000040)) {
                 subBuilder = messageCommand_.toBuilder();
               }
               messageCommand_ = input.readMessage(com.trans.pixel.protoc.Commands.ResponseMessageCommand.PARSER, extensionRegistry);
@@ -2624,12 +2638,12 @@ public final class Commands {
                 subBuilder.mergeFrom(messageCommand_);
                 messageCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000020;
+              bitField1_ |= 0x00000040;
               break;
             }
             case 170: {
               com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000040) == 0x00000040)) {
+              if (((bitField1_ & 0x00000080) == 0x00000080)) {
                 subBuilder = getUserFriendListCommand_.toBuilder();
               }
               getUserFriendListCommand_ = input.readMessage(com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.PARSER, extensionRegistry);
@@ -2637,12 +2651,12 @@ public final class Commands {
                 subBuilder.mergeFrom(getUserFriendListCommand_);
                 getUserFriendListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000040;
+              bitField1_ |= 0x00000080;
               break;
             }
             case 186: {
               com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000080) == 0x00000080)) {
+              if (((bitField1_ & 0x00000100) == 0x00000100)) {
                 subBuilder = userEquipCommand_.toBuilder();
               }
               userEquipCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.PARSER, extensionRegistry);
@@ -2650,12 +2664,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userEquipCommand_);
                 userEquipCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000080;
+              bitField1_ |= 0x00000100;
               break;
             }
             case 194: {
               com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000100) == 0x00000100)) {
+              if (((bitField1_ & 0x00000200) == 0x00000200)) {
                 subBuilder = areaCommand_.toBuilder();
               }
               areaCommand_ = input.readMessage(com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.PARSER, extensionRegistry);
@@ -2663,12 +2677,12 @@ public final class Commands {
                 subBuilder.mergeFrom(areaCommand_);
                 areaCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000100;
+              bitField1_ |= 0x00000200;
               break;
             }
             case 218: {
               com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000800) == 0x00000800)) {
+              if (((bitField1_ & 0x00001000) == 0x00001000)) {
                 subBuilder = unionInfoCommand_.toBuilder();
               }
               unionInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.PARSER, extensionRegistry);
@@ -2676,12 +2690,12 @@ public final class Commands {
                 subBuilder.mergeFrom(unionInfoCommand_);
                 unionInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000800;
+              bitField1_ |= 0x00001000;
               break;
             }
             case 226: {
               com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00001000) == 0x00001000)) {
+              if (((bitField1_ & 0x00002000) == 0x00002000)) {
                 subBuilder = unionListCommand_.toBuilder();
               }
               unionListCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.PARSER, extensionRegistry);
@@ -2689,12 +2703,12 @@ public final class Commands {
                 subBuilder.mergeFrom(unionListCommand_);
                 unionListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00001000;
+              bitField1_ |= 0x00002000;
               break;
             }
             case 234: {
               com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00002000) == 0x00002000)) {
+              if (((bitField1_ & 0x00004000) == 0x00004000)) {
                 subBuilder = messageBoardListCommand_.toBuilder();
               }
               messageBoardListCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.PARSER, extensionRegistry);
@@ -2702,12 +2716,12 @@ public final class Commands {
                 subBuilder.mergeFrom(messageBoardListCommand_);
                 messageBoardListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00002000;
+              bitField1_ |= 0x00004000;
               break;
             }
             case 242: {
               com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00004000) == 0x00004000)) {
+              if (((bitField1_ & 0x00008000) == 0x00008000)) {
                 subBuilder = messageBoardCommand_.toBuilder();
               }
               messageBoardCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.PARSER, extensionRegistry);
@@ -2715,12 +2729,12 @@ public final class Commands {
                 subBuilder.mergeFrom(messageBoardCommand_);
                 messageBoardCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00004000;
+              bitField1_ |= 0x00008000;
               break;
             }
             case 250: {
               com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00008000) == 0x00008000)) {
+              if (((bitField1_ & 0x00010000) == 0x00010000)) {
                 subBuilder = userTeamListCommand_.toBuilder();
               }
               userTeamListCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.PARSER, extensionRegistry);
@@ -2728,12 +2742,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userTeamListCommand_);
                 userTeamListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00008000;
+              bitField1_ |= 0x00010000;
               break;
             }
             case 258: {
               com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00010000) == 0x00010000)) {
+              if (((bitField1_ & 0x00020000) == 0x00020000)) {
                 subBuilder = ladderUserInfoCommand_.toBuilder();
               }
               ladderUserInfoCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.PARSER, extensionRegistry);
@@ -2741,12 +2755,12 @@ public final class Commands {
                 subBuilder.mergeFrom(ladderUserInfoCommand_);
                 ladderUserInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00010000;
+              bitField1_ |= 0x00020000;
               break;
             }
             case 266: {
               com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00020000) == 0x00020000)) {
+              if (((bitField1_ & 0x00040000) == 0x00040000)) {
                 subBuilder = equipComposeCommand_.toBuilder();
               }
               equipComposeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.PARSER, extensionRegistry);
@@ -2754,12 +2768,12 @@ public final class Commands {
                 subBuilder.mergeFrom(equipComposeCommand_);
                 equipComposeCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00020000;
+              bitField1_ |= 0x00040000;
               break;
             }
             case 274: {
               com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00040000) == 0x00040000)) {
+              if (((bitField1_ & 0x00080000) == 0x00080000)) {
                 subBuilder = userPropCommand_.toBuilder();
               }
               userPropCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.PARSER, extensionRegistry);
@@ -2767,12 +2781,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userPropCommand_);
                 userPropCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00040000;
+              bitField1_ |= 0x00080000;
               break;
             }
             case 282: {
               com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00080000) == 0x00080000)) {
+              if (((bitField1_ & 0x00100000) == 0x00100000)) {
                 subBuilder = usePropCommand_.toBuilder();
               }
               usePropCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.PARSER, extensionRegistry);
@@ -2780,12 +2794,12 @@ public final class Commands {
                 subBuilder.mergeFrom(usePropCommand_);
                 usePropCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00080000;
+              bitField1_ |= 0x00100000;
               break;
             }
             case 298: {
               com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00100000) == 0x00100000)) {
+              if (((bitField1_ & 0x00200000) == 0x00200000)) {
                 subBuilder = signCommand_.toBuilder();
               }
               signCommand_ = input.readMessage(com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.PARSER, extensionRegistry);
@@ -2793,12 +2807,12 @@ public final class Commands {
                 subBuilder.mergeFrom(signCommand_);
                 signCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00100000;
+              bitField1_ |= 0x00200000;
               break;
             }
             case 306: {
               com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00200000) == 0x00200000)) {
+              if (((bitField1_ & 0x00400000) == 0x00400000)) {
                 subBuilder = mohuaUserDataCommand_.toBuilder();
               }
               mohuaUserDataCommand_ = input.readMessage(com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.PARSER, extensionRegistry);
@@ -2806,12 +2820,12 @@ public final class Commands {
                 subBuilder.mergeFrom(mohuaUserDataCommand_);
                 mohuaUserDataCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00200000;
+              bitField1_ |= 0x00400000;
               break;
             }
             case 322: {
               com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00400000) == 0x00400000)) {
+              if (((bitField1_ & 0x00800000) == 0x00800000)) {
                 subBuilder = achieveListCommand_.toBuilder();
               }
               achieveListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.PARSER, extensionRegistry);
@@ -2819,12 +2833,12 @@ public final class Commands {
                 subBuilder.mergeFrom(achieveListCommand_);
                 achieveListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00400000;
+              bitField1_ |= 0x00800000;
               break;
             }
             case 338: {
               com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00800000) == 0x00800000)) {
+              if (((bitField1_ & 0x01000000) == 0x01000000)) {
                 subBuilder = richangListCommand_.toBuilder();
               }
               richangListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.PARSER, extensionRegistry);
@@ -2832,12 +2846,12 @@ public final class Commands {
                 subBuilder.mergeFrom(richangListCommand_);
                 richangListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00800000;
+              bitField1_ |= 0x01000000;
               break;
             }
             case 346: {
               com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x01000000) == 0x01000000)) {
+              if (((bitField1_ & 0x02000000) == 0x02000000)) {
                 subBuilder = kaifu2ActivityCommand_.toBuilder();
               }
               kaifu2ActivityCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.PARSER, extensionRegistry);
@@ -2845,12 +2859,12 @@ public final class Commands {
                 subBuilder.mergeFrom(kaifu2ActivityCommand_);
                 kaifu2ActivityCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x01000000;
+              bitField1_ |= 0x02000000;
               break;
             }
             case 362: {
               com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x02000000) == 0x02000000)) {
+              if (((bitField1_ & 0x04000000) == 0x04000000)) {
                 subBuilder = kaifuRewardCommand_.toBuilder();
               }
               kaifuRewardCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.PARSER, extensionRegistry);
@@ -2858,12 +2872,12 @@ public final class Commands {
                 subBuilder.mergeFrom(kaifuRewardCommand_);
                 kaifuRewardCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x02000000;
+              bitField1_ |= 0x04000000;
               break;
             }
             case 370: {
               com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x04000000) == 0x04000000)) {
+              if (((bitField1_ & 0x08000000) == 0x08000000)) {
                 subBuilder = kaifuListCommand_.toBuilder();
               }
               kaifuListCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.PARSER, extensionRegistry);
@@ -2871,12 +2885,12 @@ public final class Commands {
                 subBuilder.mergeFrom(kaifuListCommand_);
                 kaifuListCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x04000000;
+              bitField1_ |= 0x08000000;
               break;
             }
             case 378: {
               com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x08000000) == 0x08000000)) {
+              if (((bitField1_ & 0x10000000) == 0x10000000)) {
                 subBuilder = userPokedeCommand_.toBuilder();
               }
               userPokedeCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.PARSER, extensionRegistry);
@@ -2884,12 +2898,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userPokedeCommand_);
                 userPokedeCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x08000000;
+              bitField1_ |= 0x10000000;
               break;
             }
             case 386: {
               com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x10000000) == 0x10000000)) {
+              if (((bitField1_ & 0x20000000) == 0x20000000)) {
                 subBuilder = rankCommand_.toBuilder();
               }
               rankCommand_ = input.readMessage(com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.PARSER, extensionRegistry);
@@ -2897,12 +2911,12 @@ public final class Commands {
                 subBuilder.mergeFrom(rankCommand_);
                 rankCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x10000000;
+              bitField1_ |= 0x20000000;
               break;
             }
             case 394: {
               com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x20000000) == 0x20000000)) {
+              if (((bitField1_ & 0x40000000) == 0x40000000)) {
                 subBuilder = equipResultCommand_.toBuilder();
               }
               equipResultCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.PARSER, extensionRegistry);
@@ -2910,12 +2924,12 @@ public final class Commands {
                 subBuilder.mergeFrom(equipResultCommand_);
                 equipResultCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x20000000;
+              bitField1_ |= 0x40000000;
               break;
             }
             case 402: {
               com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x40000000) == 0x40000000)) {
+              if (((bitField1_ & 0x80000000) == 0x80000000)) {
                 subBuilder = deleteHeroCommand_.toBuilder();
               }
               deleteHeroCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.PARSER, extensionRegistry);
@@ -2923,12 +2937,12 @@ public final class Commands {
                 subBuilder.mergeFrom(deleteHeroCommand_);
                 deleteHeroCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x40000000;
+              bitField1_ |= 0x80000000;
               break;
             }
             case 410: {
               com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x80000000) == 0x80000000)) {
+              if (((bitField2_ & 0x00000001) == 0x00000001)) {
                 subBuilder = userHeadCommand_.toBuilder();
               }
               userHeadCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.PARSER, extensionRegistry);
@@ -2936,12 +2950,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userHeadCommand_);
                 userHeadCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x80000000;
+              bitField2_ |= 0x00000001;
               break;
             }
             case 426: {
               com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000001) == 0x00000001)) {
+              if (((bitField2_ & 0x00000002) == 0x00000002)) {
                 subBuilder = noticeCommand_.toBuilder();
               }
               noticeCommand_ = input.readMessage(com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.PARSER, extensionRegistry);
@@ -2949,12 +2963,12 @@ public final class Commands {
                 subBuilder.mergeFrom(noticeCommand_);
                 noticeCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000001;
+              bitField2_ |= 0x00000002;
               break;
             }
             case 434: {
               com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000002) == 0x00000002)) {
+              if (((bitField2_ & 0x00000004) == 0x00000004)) {
                 subBuilder = userFoodCommand_.toBuilder();
               }
               userFoodCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.PARSER, extensionRegistry);
@@ -2962,12 +2976,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userFoodCommand_);
                 userFoodCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000002;
+              bitField2_ |= 0x00000004;
               break;
             }
             case 442: {
               com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000004) == 0x00000004)) {
+              if (((bitField2_ & 0x00000008) == 0x00000008)) {
                 subBuilder = clearInfoCommand_.toBuilder();
               }
               clearInfoCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.PARSER, extensionRegistry);
@@ -2975,12 +2989,12 @@ public final class Commands {
                 subBuilder.mergeFrom(clearInfoCommand_);
                 clearInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000004;
+              bitField2_ |= 0x00000008;
               break;
             }
             case 450: {
               com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000008) == 0x00000008)) {
+              if (((bitField2_ & 0x00000010) == 0x00000010)) {
                 subBuilder = bosskillCommand_.toBuilder();
               }
               bosskillCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.PARSER, extensionRegistry);
@@ -2988,12 +3002,12 @@ public final class Commands {
                 subBuilder.mergeFrom(bosskillCommand_);
                 bosskillCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000008;
+              bitField2_ |= 0x00000010;
               break;
             }
             case 458: {
               com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000010) == 0x00000010)) {
+              if (((bitField2_ & 0x00000020) == 0x00000020)) {
                 subBuilder = unionBossCommand_.toBuilder();
               }
               unionBossCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.PARSER, extensionRegistry);
@@ -3001,12 +3015,12 @@ public final class Commands {
                 subBuilder.mergeFrom(unionBossCommand_);
                 unionBossCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000010;
+              bitField2_ |= 0x00000020;
               break;
             }
             case 466: {
               com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000020) == 0x00000020)) {
+              if (((bitField2_ & 0x00000040) == 0x00000040)) {
                 subBuilder = isAreaOwnerCommand_.toBuilder();
               }
               isAreaOwnerCommand_ = input.readMessage(com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.PARSER, extensionRegistry);
@@ -3014,12 +3028,12 @@ public final class Commands {
                 subBuilder.mergeFrom(isAreaOwnerCommand_);
                 isAreaOwnerCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000020;
+              bitField2_ |= 0x00000040;
               break;
             }
             case 474: {
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000040) == 0x00000040)) {
+              if (((bitField2_ & 0x00000080) == 0x00000080)) {
                 subBuilder = userTaskCommand_.toBuilder();
               }
               userTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.PARSER, extensionRegistry);
@@ -3027,12 +3041,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userTaskCommand_);
                 userTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000040;
+              bitField2_ |= 0x00000080;
               break;
             }
             case 482: {
               com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000080) == 0x00000080)) {
+              if (((bitField2_ & 0x00000100) == 0x00000100)) {
                 subBuilder = userBattletowerCommand_.toBuilder();
               }
               userBattletowerCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.PARSER, extensionRegistry);
@@ -3040,12 +3054,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userBattletowerCommand_);
                 userBattletowerCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000080;
+              bitField2_ |= 0x00000100;
               break;
             }
             case 490: {
               com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000100) == 0x00000100)) {
+              if (((bitField2_ & 0x00000200) == 0x00000200)) {
                 subBuilder = battletowerShopCommand_.toBuilder();
               }
               battletowerShopCommand_ = input.readMessage(com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.PARSER, extensionRegistry);
@@ -3053,12 +3067,12 @@ public final class Commands {
                 subBuilder.mergeFrom(battletowerShopCommand_);
                 battletowerShopCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000100;
+              bitField2_ |= 0x00000200;
               break;
             }
             case 498: {
               com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000200) == 0x00000200)) {
+              if (((bitField2_ & 0x00000400) == 0x00000400)) {
                 subBuilder = bossRoomRecordCommand_.toBuilder();
               }
               bossRoomRecordCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.PARSER, extensionRegistry);
@@ -3066,12 +3080,12 @@ public final class Commands {
                 subBuilder.mergeFrom(bossRoomRecordCommand_);
                 bossRoomRecordCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000200;
+              bitField2_ |= 0x00000400;
               break;
             }
             case 506: {
               com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000400) == 0x00000400)) {
+              if (((bitField2_ & 0x00000800) == 0x00000800)) {
                 subBuilder = userTalentCommand_.toBuilder();
               }
               userTalentCommand_ = input.readMessage(com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.PARSER, extensionRegistry);
@@ -3079,12 +3093,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userTalentCommand_);
                 userTalentCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000400;
+              bitField2_ |= 0x00000800;
               break;
             }
             case 514: {
               com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00000800) == 0x00000800)) {
+              if (((bitField2_ & 0x00001000) == 0x00001000)) {
                 subBuilder = equipPokedeCommand_.toBuilder();
               }
               equipPokedeCommand_ = input.readMessage(com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.PARSER, extensionRegistry);
@@ -3092,12 +3106,12 @@ public final class Commands {
                 subBuilder.mergeFrom(equipPokedeCommand_);
                 equipPokedeCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00000800;
+              bitField2_ |= 0x00001000;
               break;
             }
             case 522: {
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00001000) == 0x00001000)) {
+              if (((bitField2_ & 0x00002000) == 0x00002000)) {
                 subBuilder = userRewardTaskCommand_.toBuilder();
               }
               userRewardTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.PARSER, extensionRegistry);
@@ -3105,12 +3119,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userRewardTaskCommand_);
                 userRewardTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00001000;
+              bitField2_ |= 0x00002000;
               break;
             }
             case 530: {
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00002000) == 0x00002000)) {
+              if (((bitField2_ & 0x00004000) == 0x00004000)) {
                 subBuilder = userRewardTaskRoomCommand_.toBuilder();
               }
               userRewardTaskRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.PARSER, extensionRegistry);
@@ -3118,12 +3132,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userRewardTaskRoomCommand_);
                 userRewardTaskRoomCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00002000;
+              bitField2_ |= 0x00004000;
               break;
             }
             case 538: {
               com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00004000) == 0x00004000)) {
+              if (((bitField2_ & 0x00008000) == 0x00008000)) {
                 subBuilder = otherUserInfoCommand_.toBuilder();
               }
               otherUserInfoCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.PARSER, extensionRegistry);
@@ -3131,12 +3145,12 @@ public final class Commands {
                 subBuilder.mergeFrom(otherUserInfoCommand_);
                 otherUserInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00004000;
+              bitField2_ |= 0x00008000;
               break;
             }
             case 546: {
               com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00008000) == 0x00008000)) {
+              if (((bitField2_ & 0x00010000) == 0x00010000)) {
                 subBuilder = enemyLadderCommand_.toBuilder();
               }
               enemyLadderCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.PARSER, extensionRegistry);
@@ -3144,12 +3158,12 @@ public final class Commands {
                 subBuilder.mergeFrom(enemyLadderCommand_);
                 enemyLadderCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00008000;
+              bitField2_ |= 0x00010000;
               break;
             }
             case 554: {
               com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00010000) == 0x00010000)) {
+              if (((bitField2_ & 0x00020000) == 0x00020000)) {
                 subBuilder = userLadderCommand_.toBuilder();
               }
               userLadderCommand_ = input.readMessage(com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.PARSER, extensionRegistry);
@@ -3157,12 +3171,12 @@ public final class Commands {
                 subBuilder.mergeFrom(userLadderCommand_);
                 userLadderCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00010000;
+              bitField2_ |= 0x00020000;
               break;
             }
             case 562: {
               com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00020000) == 0x00020000)) {
+              if (((bitField2_ & 0x00040000) == 0x00040000)) {
                 subBuilder = recommandCommand_.toBuilder();
               }
               recommandCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.PARSER, extensionRegistry);
@@ -3170,12 +3184,12 @@ public final class Commands {
                 subBuilder.mergeFrom(recommandCommand_);
                 recommandCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00020000;
+              bitField2_ |= 0x00040000;
               break;
             }
             case 570: {
               com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00040000) == 0x00040000)) {
+              if (((bitField2_ & 0x00080000) == 0x00080000)) {
                 subBuilder = unionFightApplyRecordCommand_.toBuilder();
               }
               unionFightApplyRecordCommand_ = input.readMessage(com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.PARSER, extensionRegistry);
@@ -3183,12 +3197,12 @@ public final class Commands {
                 subBuilder.mergeFrom(unionFightApplyRecordCommand_);
                 unionFightApplyRecordCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00040000;
+              bitField2_ |= 0x00080000;
               break;
             }
             case 578: {
               com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.Builder subBuilder = null;
-              if (((bitField2_ & 0x00080000) == 0x00080000)) {
+              if (((bitField2_ & 0x00100000) == 0x00100000)) {
                 subBuilder = lootRewardTaskCommand_.toBuilder();
               }
               lootRewardTaskCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.PARSER, extensionRegistry);
@@ -3196,7 +3210,7 @@ public final class Commands {
                 subBuilder.mergeFrom(lootRewardTaskCommand_);
                 lootRewardTaskCommand_ = subBuilder.buildPartial();
               }
-              bitField2_ |= 0x00080000;
+              bitField2_ |= 0x00100000;
               break;
             }
             case 810: {
@@ -3331,7 +3345,7 @@ public final class Commands {
             }
             case 994: {
               com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000400) == 0x00000400)) {
+              if (((bitField1_ & 0x00000800) == 0x00000800)) {
                 subBuilder = resourceMineInfoCommand_.toBuilder();
               }
               resourceMineInfoCommand_ = input.readMessage(com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.PARSER, extensionRegistry);
@@ -3339,7 +3353,7 @@ public final class Commands {
                 subBuilder.mergeFrom(resourceMineInfoCommand_);
                 resourceMineInfoCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000400;
+              bitField1_ |= 0x00000800;
               break;
             }
             case 1002: {
@@ -3370,7 +3384,7 @@ public final class Commands {
             }
             case 1090: {
               com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.Builder subBuilder = null;
-              if (((bitField1_ & 0x00000200) == 0x00000200)) {
+              if (((bitField1_ & 0x00000400) == 0x00000400)) {
                 subBuilder = areaResourceCommand_.toBuilder();
               }
               areaResourceCommand_ = input.readMessage(com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.PARSER, extensionRegistry);
@@ -3378,7 +3392,7 @@ public final class Commands {
                 subBuilder.mergeFrom(areaResourceCommand_);
                 areaResourceCommand_ = subBuilder.buildPartial();
               }
-              bitField1_ |= 0x00000200;
+              bitField1_ |= 0x00000400;
               break;
             }
             case 1098: {
@@ -3500,7 +3514,7 @@ public final class Commands {
             }
             case 1330: {
               com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x10000000) == 0x10000000)) {
+              if (((bitField0_ & 0x20000000) == 0x20000000)) {
                 subBuilder = eventResultCommand_.toBuilder();
               }
               eventResultCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.PARSER, extensionRegistry);
@@ -3508,12 +3522,12 @@ public final class Commands {
                 subBuilder.mergeFrom(eventResultCommand_);
                 eventResultCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x10000000;
+              bitField0_ |= 0x20000000;
               break;
             }
             case 1338: {
               com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.Builder subBuilder = null;
-              if (((bitField0_ & 0x20000000) == 0x20000000)) {
+              if (((bitField0_ & 0x40000000) == 0x40000000)) {
                 subBuilder = levelLootCommand_.toBuilder();
               }
               levelLootCommand_ = input.readMessage(com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.PARSER, extensionRegistry);
@@ -3521,7 +3535,7 @@ public final class Commands {
                 subBuilder.mergeFrom(levelLootCommand_);
                 levelLootCommand_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x20000000;
+              bitField0_ |= 0x40000000;
               break;
             }
             case 1362: {
@@ -3548,6 +3562,19 @@ public final class Commands {
                 teamRaidCommand_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00800000;
+              break;
+            }
+            case 1426: {
+              com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder subBuilder = null;
+              if (((bitField0_ & 0x04000000) == 0x04000000)) {
+                subBuilder = teamRaidRoomCommand_.toBuilder();
+              }
+              teamRaidRoomCommand_ = input.readMessage(com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(teamRaidRoomCommand_);
+                teamRaidRoomCommand_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x04000000;
               break;
             }
             case 80010: {
@@ -4177,6 +4204,28 @@ public final class Commands {
       return canRechargeCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;
+    public static final int TEAMRAIDROOMCOMMAND_FIELD_NUMBER = 178;
+    private com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand teamRaidRoomCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    public boolean hasTeamRaidRoomCommand() {
+      return ((bitField0_ & 0x04000000) == 0x04000000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand getTeamRaidRoomCommand() {
+      return teamRaidRoomCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+     */
+    public com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder getTeamRaidRoomCommandOrBuilder() {
+      return teamRaidRoomCommand_;
+    }
+
     // optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;
     public static final int NEEDREGISTERCOMMAND_FIELD_NUMBER = 3;
     private com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand needRegisterCommand_;
@@ -4188,7 +4237,7 @@ public final class Commands {
      * </pre>
      */
     public boolean hasNeedRegisterCommand() {
-      return ((bitField0_ & 0x04000000) == 0x04000000);
+      return ((bitField0_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;</code>
@@ -4218,7 +4267,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserInfoCommand userInfoCommand = 4;</code>
      */
     public boolean hasUserInfoCommand() {
-      return ((bitField0_ & 0x08000000) == 0x08000000);
+      return ((bitField0_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserInfoCommand userInfoCommand = 4;</code>
@@ -4240,7 +4289,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseEventResultCommand eventResultCommand = 166;</code>
      */
     public boolean hasEventResultCommand() {
-      return ((bitField0_ & 0x10000000) == 0x10000000);
+      return ((bitField0_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseEventResultCommand eventResultCommand = 166;</code>
@@ -4262,7 +4311,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseLevelLootCommand levelLootCommand = 167;</code>
      */
     public boolean hasLevelLootCommand() {
-      return ((bitField0_ & 0x20000000) == 0x20000000);
+      return ((bitField0_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseLevelLootCommand levelLootCommand = 167;</code>
@@ -4284,7 +4333,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
      */
     public boolean hasHeroResultCommand() {
-      return ((bitField0_ & 0x40000000) == 0x40000000);
+      return ((bitField0_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
@@ -4306,7 +4355,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserHeroCommand getUserHeroCommand = 14;</code>
      */
     public boolean hasGetUserHeroCommand() {
-      return ((bitField0_ & 0x80000000) == 0x80000000);
+      return ((bitField1_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserHeroCommand getUserHeroCommand = 14;</code>
@@ -4328,7 +4377,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetLadderRankListCommand getLadderRankListCommand = 15;</code>
      */
     public boolean hasGetLadderRankListCommand() {
-      return ((bitField1_ & 0x00000001) == 0x00000001);
+      return ((bitField1_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetLadderRankListCommand getLadderRankListCommand = 15;</code>
@@ -4350,7 +4399,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;</code>
      */
     public boolean hasGetUserLadderRankListCommand() {
-      return ((bitField1_ & 0x00000002) == 0x00000002);
+      return ((bitField1_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;</code>
@@ -4372,7 +4421,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseAttackLadderModeCommand attackLadderModeCommand = 17;</code>
      */
     public boolean hasAttackLadderModeCommand() {
-      return ((bitField1_ & 0x00000004) == 0x00000004);
+      return ((bitField1_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseAttackLadderModeCommand attackLadderModeCommand = 17;</code>
@@ -4394,7 +4443,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserMailListCommand getUserMailListCommand = 18;</code>
      */
     public boolean hasGetUserMailListCommand() {
-      return ((bitField1_ & 0x00000008) == 0x00000008);
+      return ((bitField1_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserMailListCommand getUserMailListCommand = 18;</code>
@@ -4416,7 +4465,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseSendRewardCommand sendRewardCommand = 19;</code>
      */
     public boolean hasSendRewardCommand() {
-      return ((bitField1_ & 0x00000010) == 0x00000010);
+      return ((bitField1_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseSendRewardCommand sendRewardCommand = 19;</code>
@@ -4438,7 +4487,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
      */
     public boolean hasMessageCommand() {
-      return ((bitField1_ & 0x00000020) == 0x00000020);
+      return ((bitField1_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
@@ -4460,7 +4509,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
      */
     public boolean hasGetUserFriendListCommand() {
-      return ((bitField1_ & 0x00000040) == 0x00000040);
+      return ((bitField1_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
@@ -4482,7 +4531,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserEquipCommand userEquipCommand = 23;</code>
      */
     public boolean hasUserEquipCommand() {
-      return ((bitField1_ & 0x00000080) == 0x00000080);
+      return ((bitField1_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetUserEquipCommand userEquipCommand = 23;</code>
@@ -4504,7 +4553,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseAreaCommand areaCommand = 24;</code>
      */
     public boolean hasAreaCommand() {
-      return ((bitField1_ & 0x00000100) == 0x00000100);
+      return ((bitField1_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseAreaCommand areaCommand = 24;</code>
@@ -4526,7 +4575,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseAreaResourceCommand areaResourceCommand = 136;</code>
      */
     public boolean hasAreaResourceCommand() {
-      return ((bitField1_ & 0x00000200) == 0x00000200);
+      return ((bitField1_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseAreaResourceCommand areaResourceCommand = 136;</code>
@@ -4548,7 +4597,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;</code>
      */
     public boolean hasResourceMineInfoCommand() {
-      return ((bitField1_ & 0x00000400) == 0x00000400);
+      return ((bitField1_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;</code>
@@ -4570,7 +4619,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUnionInfoCommand unionInfoCommand = 27;</code>
      */
     public boolean hasUnionInfoCommand() {
-      return ((bitField1_ & 0x00000800) == 0x00000800);
+      return ((bitField1_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUnionInfoCommand unionInfoCommand = 27;</code>
@@ -4592,7 +4641,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUnionListCommand unionListCommand = 28;</code>
      */
     public boolean hasUnionListCommand() {
-      return ((bitField1_ & 0x00001000) == 0x00001000);
+      return ((bitField1_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUnionListCommand unionListCommand = 28;</code>
@@ -4614,7 +4663,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardListCommand messageBoardListCommand = 29;</code>
      */
     public boolean hasMessageBoardListCommand() {
-      return ((bitField1_ & 0x00002000) == 0x00002000);
+      return ((bitField1_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardListCommand messageBoardListCommand = 29;</code>
@@ -4636,7 +4685,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardCommand messageBoardCommand = 30;</code>
      */
     public boolean hasMessageBoardCommand() {
-      return ((bitField1_ & 0x00004000) == 0x00004000);
+      return ((bitField1_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardCommand messageBoardCommand = 30;</code>
@@ -4658,7 +4707,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserTeamListCommand userTeamListCommand = 31;</code>
      */
     public boolean hasUserTeamListCommand() {
-      return ((bitField1_ & 0x00008000) == 0x00008000);
+      return ((bitField1_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserTeamListCommand userTeamListCommand = 31;</code>
@@ -4680,7 +4729,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;</code>
      */
     public boolean hasLadderUserInfoCommand() {
-      return ((bitField1_ & 0x00010000) == 0x00010000);
+      return ((bitField1_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;</code>
@@ -4702,7 +4751,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseEquipComposeCommand equipComposeCommand = 33;</code>
      */
     public boolean hasEquipComposeCommand() {
-      return ((bitField1_ & 0x00020000) == 0x00020000);
+      return ((bitField1_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseEquipComposeCommand equipComposeCommand = 33;</code>
@@ -4724,7 +4773,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserPropCommand userPropCommand = 34;</code>
      */
     public boolean hasUserPropCommand() {
-      return ((bitField1_ & 0x00040000) == 0x00040000);
+      return ((bitField1_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserPropCommand userPropCommand = 34;</code>
@@ -4746,7 +4795,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUsePropCommand usePropCommand = 35;</code>
      */
     public boolean hasUsePropCommand() {
-      return ((bitField1_ & 0x00080000) == 0x00080000);
+      return ((bitField1_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUsePropCommand usePropCommand = 35;</code>
@@ -4768,7 +4817,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseSignCommand signCommand = 37;</code>
      */
     public boolean hasSignCommand() {
-      return ((bitField1_ & 0x00100000) == 0x00100000);
+      return ((bitField1_ & 0x00200000) == 0x00200000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseSignCommand signCommand = 37;</code>
@@ -4790,7 +4839,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;</code>
      */
     public boolean hasMohuaUserDataCommand() {
-      return ((bitField1_ & 0x00200000) == 0x00200000);
+      return ((bitField1_ & 0x00400000) == 0x00400000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;</code>
@@ -4812,7 +4861,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseAchieveListCommand achieveListCommand = 40;</code>
      */
     public boolean hasAchieveListCommand() {
-      return ((bitField1_ & 0x00400000) == 0x00400000);
+      return ((bitField1_ & 0x00800000) == 0x00800000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseAchieveListCommand achieveListCommand = 40;</code>
@@ -4834,7 +4883,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseRichangListCommand richangListCommand = 42;</code>
      */
     public boolean hasRichangListCommand() {
-      return ((bitField1_ & 0x00800000) == 0x00800000);
+      return ((bitField1_ & 0x01000000) == 0x01000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseRichangListCommand richangListCommand = 42;</code>
@@ -4856,7 +4905,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;</code>
      */
     public boolean hasKaifu2ActivityCommand() {
-      return ((bitField1_ & 0x01000000) == 0x01000000);
+      return ((bitField1_ & 0x02000000) == 0x02000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;</code>
@@ -4878,7 +4927,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseKaifuRewardCommand kaifuRewardCommand = 45;</code>
      */
     public boolean hasKaifuRewardCommand() {
-      return ((bitField1_ & 0x02000000) == 0x02000000);
+      return ((bitField1_ & 0x04000000) == 0x04000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseKaifuRewardCommand kaifuRewardCommand = 45;</code>
@@ -4900,7 +4949,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseKaifuListCommand kaifuListCommand = 46;</code>
      */
     public boolean hasKaifuListCommand() {
-      return ((bitField1_ & 0x04000000) == 0x04000000);
+      return ((bitField1_ & 0x08000000) == 0x08000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseKaifuListCommand kaifuListCommand = 46;</code>
@@ -4922,7 +4971,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserPokedeCommand userPokedeCommand = 47;</code>
      */
     public boolean hasUserPokedeCommand() {
-      return ((bitField1_ & 0x08000000) == 0x08000000);
+      return ((bitField1_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserPokedeCommand userPokedeCommand = 47;</code>
@@ -4944,7 +4993,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseRankCommand rankCommand = 48;</code>
      */
     public boolean hasRankCommand() {
-      return ((bitField1_ & 0x10000000) == 0x10000000);
+      return ((bitField1_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseRankCommand rankCommand = 48;</code>
@@ -4966,7 +5015,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseEquipResultCommand equipResultCommand = 49;</code>
      */
     public boolean hasEquipResultCommand() {
-      return ((bitField1_ & 0x20000000) == 0x20000000);
+      return ((bitField1_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseEquipResultCommand equipResultCommand = 49;</code>
@@ -4988,7 +5037,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseDeleteHeroCommand deleteHeroCommand = 50;</code>
      */
     public boolean hasDeleteHeroCommand() {
-      return ((bitField1_ & 0x40000000) == 0x40000000);
+      return ((bitField1_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseDeleteHeroCommand deleteHeroCommand = 50;</code>
@@ -5010,7 +5059,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserHeadCommand userHeadCommand = 51;</code>
      */
     public boolean hasUserHeadCommand() {
-      return ((bitField1_ & 0x80000000) == 0x80000000);
+      return ((bitField2_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserHeadCommand userHeadCommand = 51;</code>
@@ -5032,7 +5081,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseNoticeCommand noticeCommand = 53;</code>
      */
     public boolean hasNoticeCommand() {
-      return ((bitField2_ & 0x00000001) == 0x00000001);
+      return ((bitField2_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseNoticeCommand noticeCommand = 53;</code>
@@ -5054,7 +5103,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserFoodCommand userFoodCommand = 54;</code>
      */
     public boolean hasUserFoodCommand() {
-      return ((bitField2_ & 0x00000002) == 0x00000002);
+      return ((bitField2_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserFoodCommand userFoodCommand = 54;</code>
@@ -5076,7 +5125,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseClearInfoCommand clearInfoCommand = 55;</code>
      */
     public boolean hasClearInfoCommand() {
-      return ((bitField2_ & 0x00000004) == 0x00000004);
+      return ((bitField2_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseClearInfoCommand clearInfoCommand = 55;</code>
@@ -5098,7 +5147,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseBosskillCommand bosskillCommand = 56;</code>
      */
     public boolean hasBosskillCommand() {
-      return ((bitField2_ & 0x00000008) == 0x00000008);
+      return ((bitField2_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseBosskillCommand bosskillCommand = 56;</code>
@@ -5120,7 +5169,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUnionBossCommand unionBossCommand = 57;</code>
      */
     public boolean hasUnionBossCommand() {
-      return ((bitField2_ & 0x00000010) == 0x00000010);
+      return ((bitField2_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUnionBossCommand unionBossCommand = 57;</code>
@@ -5142,7 +5191,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;</code>
      */
     public boolean hasIsAreaOwnerCommand() {
-      return ((bitField2_ & 0x00000020) == 0x00000020);
+      return ((bitField2_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;</code>
@@ -5164,7 +5213,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserTaskCommand userTaskCommand = 59;</code>
      */
     public boolean hasUserTaskCommand() {
-      return ((bitField2_ & 0x00000040) == 0x00000040);
+      return ((bitField2_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserTaskCommand userTaskCommand = 59;</code>
@@ -5186,7 +5235,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserBattletowerCommand userBattletowerCommand = 60;</code>
      */
     public boolean hasUserBattletowerCommand() {
-      return ((bitField2_ & 0x00000080) == 0x00000080);
+      return ((bitField2_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserBattletowerCommand userBattletowerCommand = 60;</code>
@@ -5208,7 +5257,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseBattletowerShopCommand battletowerShopCommand = 61;</code>
      */
     public boolean hasBattletowerShopCommand() {
-      return ((bitField2_ & 0x00000100) == 0x00000100);
+      return ((bitField2_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseBattletowerShopCommand battletowerShopCommand = 61;</code>
@@ -5230,7 +5279,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;</code>
      */
     public boolean hasBossRoomRecordCommand() {
-      return ((bitField2_ & 0x00000200) == 0x00000200);
+      return ((bitField2_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;</code>
@@ -5252,7 +5301,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserTalentCommand userTalentCommand = 63;</code>
      */
     public boolean hasUserTalentCommand() {
-      return ((bitField2_ & 0x00000400) == 0x00000400);
+      return ((bitField2_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserTalentCommand userTalentCommand = 63;</code>
@@ -5274,7 +5323,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseEquipPokedeCommand equipPokedeCommand = 64;</code>
      */
     public boolean hasEquipPokedeCommand() {
-      return ((bitField2_ & 0x00000800) == 0x00000800);
+      return ((bitField2_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseEquipPokedeCommand equipPokedeCommand = 64;</code>
@@ -5296,7 +5345,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskCommand userRewardTaskCommand = 65;</code>
      */
     public boolean hasUserRewardTaskCommand() {
-      return ((bitField2_ & 0x00001000) == 0x00001000);
+      return ((bitField2_ & 0x00002000) == 0x00002000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskCommand userRewardTaskCommand = 65;</code>
@@ -5318,7 +5367,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;</code>
      */
     public boolean hasUserRewardTaskRoomCommand() {
-      return ((bitField2_ & 0x00002000) == 0x00002000);
+      return ((bitField2_ & 0x00004000) == 0x00004000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;</code>
@@ -5340,7 +5389,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
      */
     public boolean hasOtherUserInfoCommand() {
-      return ((bitField2_ & 0x00004000) == 0x00004000);
+      return ((bitField2_ & 0x00008000) == 0x00008000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
@@ -5362,7 +5411,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
      */
     public boolean hasEnemyLadderCommand() {
-      return ((bitField2_ & 0x00008000) == 0x00008000);
+      return ((bitField2_ & 0x00010000) == 0x00010000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
@@ -5384,7 +5433,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
      */
     public boolean hasUserLadderCommand() {
-      return ((bitField2_ & 0x00010000) == 0x00010000);
+      return ((bitField2_ & 0x00020000) == 0x00020000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
@@ -5406,7 +5455,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
      */
     public boolean hasRecommandCommand() {
-      return ((bitField2_ & 0x00020000) == 0x00020000);
+      return ((bitField2_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
@@ -5428,7 +5477,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
      */
     public boolean hasUnionFightApplyRecordCommand() {
-      return ((bitField2_ & 0x00040000) == 0x00040000);
+      return ((bitField2_ & 0x00080000) == 0x00080000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
@@ -5450,7 +5499,7 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
      */
     public boolean hasLootRewardTaskCommand() {
-      return ((bitField2_ & 0x00080000) == 0x00080000);
+      return ((bitField2_ & 0x00100000) == 0x00100000);
     }
     /**
      * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
@@ -5492,6 +5541,7 @@ public final class Commands {
       teamRaidCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidCommand.getDefaultInstance();
       eventCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseEventCommand.getDefaultInstance();
       canRechargeCommand_ = com.trans.pixel.protoc.RechargeProto.ResponseCanRechargeCommand.getDefaultInstance();
+      teamRaidRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.getDefaultInstance();
       needRegisterCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.getDefaultInstance();
       userInfoCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.getDefaultInstance();
       eventResultCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.getDefaultInstance();
@@ -5614,6 +5664,12 @@ public final class Commands {
       }
       if (hasTeamRaidCommand()) {
         if (!getTeamRaidCommand().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasTeamRaidRoomCommand()) {
+        if (!getTeamRaidRoomCommand().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -5925,166 +5981,166 @@ public final class Commands {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(2, errorCommand_);
       }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
         output.writeMessage(3, needRegisterCommand_);
       }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      if (((bitField0_ & 0x10000000) == 0x10000000)) {
         output.writeMessage(4, userInfoCommand_);
       }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
         output.writeMessage(8, heroResultCommand_);
       }
-      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      if (((bitField1_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(14, getUserHeroCommand_);
       }
-      if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(15, getLadderRankListCommand_);
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(16, getUserLadderRankListCommand_);
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(17, attackLadderModeCommand_);
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(18, getUserMailListCommand_);
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(19, sendRewardCommand_);
       }
-      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(20, messageCommand_);
       }
-      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      if (((bitField1_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(21, getUserFriendListCommand_);
       }
-      if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      if (((bitField1_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(23, userEquipCommand_);
       }
-      if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      if (((bitField1_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(24, areaCommand_);
       }
-      if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      if (((bitField1_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(27, unionInfoCommand_);
       }
-      if (((bitField1_ & 0x00001000) == 0x00001000)) {
+      if (((bitField1_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(28, unionListCommand_);
       }
-      if (((bitField1_ & 0x00002000) == 0x00002000)) {
+      if (((bitField1_ & 0x00004000) == 0x00004000)) {
         output.writeMessage(29, messageBoardListCommand_);
       }
-      if (((bitField1_ & 0x00004000) == 0x00004000)) {
+      if (((bitField1_ & 0x00008000) == 0x00008000)) {
         output.writeMessage(30, messageBoardCommand_);
       }
-      if (((bitField1_ & 0x00008000) == 0x00008000)) {
+      if (((bitField1_ & 0x00010000) == 0x00010000)) {
         output.writeMessage(31, userTeamListCommand_);
       }
-      if (((bitField1_ & 0x00010000) == 0x00010000)) {
+      if (((bitField1_ & 0x00020000) == 0x00020000)) {
         output.writeMessage(32, ladderUserInfoCommand_);
       }
-      if (((bitField1_ & 0x00020000) == 0x00020000)) {
+      if (((bitField1_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(33, equipComposeCommand_);
       }
-      if (((bitField1_ & 0x00040000) == 0x00040000)) {
+      if (((bitField1_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(34, userPropCommand_);
       }
-      if (((bitField1_ & 0x00080000) == 0x00080000)) {
+      if (((bitField1_ & 0x00100000) == 0x00100000)) {
         output.writeMessage(35, usePropCommand_);
       }
-      if (((bitField1_ & 0x00100000) == 0x00100000)) {
+      if (((bitField1_ & 0x00200000) == 0x00200000)) {
         output.writeMessage(37, signCommand_);
       }
-      if (((bitField1_ & 0x00200000) == 0x00200000)) {
+      if (((bitField1_ & 0x00400000) == 0x00400000)) {
         output.writeMessage(38, mohuaUserDataCommand_);
       }
-      if (((bitField1_ & 0x00400000) == 0x00400000)) {
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
         output.writeMessage(40, achieveListCommand_);
       }
-      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
         output.writeMessage(42, richangListCommand_);
       }
-      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
         output.writeMessage(43, kaifu2ActivityCommand_);
       }
-      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
         output.writeMessage(45, kaifuRewardCommand_);
       }
-      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+      if (((bitField1_ & 0x08000000) == 0x08000000)) {
         output.writeMessage(46, kaifuListCommand_);
       }
-      if (((bitField1_ & 0x08000000) == 0x08000000)) {
+      if (((bitField1_ & 0x10000000) == 0x10000000)) {
         output.writeMessage(47, userPokedeCommand_);
       }
-      if (((bitField1_ & 0x10000000) == 0x10000000)) {
+      if (((bitField1_ & 0x20000000) == 0x20000000)) {
         output.writeMessage(48, rankCommand_);
       }
-      if (((bitField1_ & 0x20000000) == 0x20000000)) {
+      if (((bitField1_ & 0x40000000) == 0x40000000)) {
         output.writeMessage(49, equipResultCommand_);
       }
-      if (((bitField1_ & 0x40000000) == 0x40000000)) {
+      if (((bitField1_ & 0x80000000) == 0x80000000)) {
         output.writeMessage(50, deleteHeroCommand_);
       }
-      if (((bitField1_ & 0x80000000) == 0x80000000)) {
+      if (((bitField2_ & 0x00000001) == 0x00000001)) {
         output.writeMessage(51, userHeadCommand_);
       }
-      if (((bitField2_ & 0x00000001) == 0x00000001)) {
+      if (((bitField2_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(53, noticeCommand_);
       }
-      if (((bitField2_ & 0x00000002) == 0x00000002)) {
+      if (((bitField2_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(54, userFoodCommand_);
       }
-      if (((bitField2_ & 0x00000004) == 0x00000004)) {
+      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(55, clearInfoCommand_);
       }
-      if (((bitField2_ & 0x00000008) == 0x00000008)) {
+      if (((bitField2_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(56, bosskillCommand_);
       }
-      if (((bitField2_ & 0x00000010) == 0x00000010)) {
+      if (((bitField2_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(57, unionBossCommand_);
       }
-      if (((bitField2_ & 0x00000020) == 0x00000020)) {
+      if (((bitField2_ & 0x00000040) == 0x00000040)) {
         output.writeMessage(58, isAreaOwnerCommand_);
       }
-      if (((bitField2_ & 0x00000040) == 0x00000040)) {
+      if (((bitField2_ & 0x00000080) == 0x00000080)) {
         output.writeMessage(59, userTaskCommand_);
       }
-      if (((bitField2_ & 0x00000080) == 0x00000080)) {
+      if (((bitField2_ & 0x00000100) == 0x00000100)) {
         output.writeMessage(60, userBattletowerCommand_);
       }
-      if (((bitField2_ & 0x00000100) == 0x00000100)) {
+      if (((bitField2_ & 0x00000200) == 0x00000200)) {
         output.writeMessage(61, battletowerShopCommand_);
       }
-      if (((bitField2_ & 0x00000200) == 0x00000200)) {
+      if (((bitField2_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(62, bossRoomRecordCommand_);
       }
-      if (((bitField2_ & 0x00000400) == 0x00000400)) {
+      if (((bitField2_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(63, userTalentCommand_);
       }
-      if (((bitField2_ & 0x00000800) == 0x00000800)) {
+      if (((bitField2_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(64, equipPokedeCommand_);
       }
-      if (((bitField2_ & 0x00001000) == 0x00001000)) {
+      if (((bitField2_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(65, userRewardTaskCommand_);
       }
-      if (((bitField2_ & 0x00002000) == 0x00002000)) {
+      if (((bitField2_ & 0x00004000) == 0x00004000)) {
         output.writeMessage(66, userRewardTaskRoomCommand_);
       }
-      if (((bitField2_ & 0x00004000) == 0x00004000)) {
+      if (((bitField2_ & 0x00008000) == 0x00008000)) {
         output.writeMessage(67, otherUserInfoCommand_);
       }
-      if (((bitField2_ & 0x00008000) == 0x00008000)) {
+      if (((bitField2_ & 0x00010000) == 0x00010000)) {
         output.writeMessage(68, enemyLadderCommand_);
       }
-      if (((bitField2_ & 0x00010000) == 0x00010000)) {
+      if (((bitField2_ & 0x00020000) == 0x00020000)) {
         output.writeMessage(69, userLadderCommand_);
       }
-      if (((bitField2_ & 0x00020000) == 0x00020000)) {
+      if (((bitField2_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(70, recommandCommand_);
       }
-      if (((bitField2_ & 0x00040000) == 0x00040000)) {
+      if (((bitField2_ & 0x00080000) == 0x00080000)) {
         output.writeMessage(71, unionFightApplyRecordCommand_);
       }
-      if (((bitField2_ & 0x00080000) == 0x00080000)) {
+      if (((bitField2_ & 0x00100000) == 0x00100000)) {
         output.writeMessage(72, lootRewardTaskCommand_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -6117,7 +6173,7 @@ public final class Commands {
       if (((bitField0_ & 0x00010000) == 0x00010000)) {
         output.writeMessage(123, teamCommand_);
       }
-      if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      if (((bitField1_ & 0x00000800) == 0x00000800)) {
         output.writeMessage(124, resourceMineInfoCommand_);
       }
       if (((bitField0_ & 0x00020000) == 0x00020000)) {
@@ -6126,7 +6182,7 @@ public final class Commands {
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(126, pvpInbreakListCommand_);
       }
-      if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      if (((bitField1_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(136, areaResourceCommand_);
       }
       if (((bitField0_ & 0x00080000) == 0x00080000)) {
@@ -6156,10 +6212,10 @@ public final class Commands {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeMessage(160, raidShopCommand_);
       }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      if (((bitField0_ & 0x20000000) == 0x20000000)) {
         output.writeMessage(166, eventResultCommand_);
       }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
         output.writeMessage(167, levelLootCommand_);
       }
       if (((bitField0_ & 0x02000000) == 0x02000000)) {
@@ -6167,6 +6223,9 @@ public final class Commands {
       }
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         output.writeMessage(175, teamRaidCommand_);
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        output.writeMessage(178, teamRaidRoomCommand_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(10001, title_);
@@ -6188,219 +6247,219 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, errorCommand_);
       }
-      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+      if (((bitField0_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, needRegisterCommand_);
       }
-      if (((bitField0_ & 0x08000000) == 0x08000000)) {
+      if (((bitField0_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, userInfoCommand_);
       }
-      if (((bitField0_ & 0x40000000) == 0x40000000)) {
+      if (((bitField0_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, heroResultCommand_);
       }
-      if (((bitField0_ & 0x80000000) == 0x80000000)) {
+      if (((bitField1_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, getUserHeroCommand_);
       }
-      if (((bitField1_ & 0x00000001) == 0x00000001)) {
+      if (((bitField1_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, getLadderRankListCommand_);
       }
-      if (((bitField1_ & 0x00000002) == 0x00000002)) {
+      if (((bitField1_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(16, getUserLadderRankListCommand_);
       }
-      if (((bitField1_ & 0x00000004) == 0x00000004)) {
+      if (((bitField1_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(17, attackLadderModeCommand_);
       }
-      if (((bitField1_ & 0x00000008) == 0x00000008)) {
+      if (((bitField1_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(18, getUserMailListCommand_);
       }
-      if (((bitField1_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(19, sendRewardCommand_);
       }
-      if (((bitField1_ & 0x00000020) == 0x00000020)) {
+      if (((bitField1_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(20, messageCommand_);
       }
-      if (((bitField1_ & 0x00000040) == 0x00000040)) {
+      if (((bitField1_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(21, getUserFriendListCommand_);
       }
-      if (((bitField1_ & 0x00000080) == 0x00000080)) {
+      if (((bitField1_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(23, userEquipCommand_);
       }
-      if (((bitField1_ & 0x00000100) == 0x00000100)) {
+      if (((bitField1_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(24, areaCommand_);
       }
-      if (((bitField1_ & 0x00000800) == 0x00000800)) {
+      if (((bitField1_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(27, unionInfoCommand_);
       }
-      if (((bitField1_ & 0x00001000) == 0x00001000)) {
+      if (((bitField1_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(28, unionListCommand_);
       }
-      if (((bitField1_ & 0x00002000) == 0x00002000)) {
+      if (((bitField1_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(29, messageBoardListCommand_);
       }
-      if (((bitField1_ & 0x00004000) == 0x00004000)) {
+      if (((bitField1_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(30, messageBoardCommand_);
       }
-      if (((bitField1_ & 0x00008000) == 0x00008000)) {
+      if (((bitField1_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(31, userTeamListCommand_);
       }
-      if (((bitField1_ & 0x00010000) == 0x00010000)) {
+      if (((bitField1_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(32, ladderUserInfoCommand_);
       }
-      if (((bitField1_ & 0x00020000) == 0x00020000)) {
+      if (((bitField1_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(33, equipComposeCommand_);
       }
-      if (((bitField1_ & 0x00040000) == 0x00040000)) {
+      if (((bitField1_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(34, userPropCommand_);
       }
-      if (((bitField1_ & 0x00080000) == 0x00080000)) {
+      if (((bitField1_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(35, usePropCommand_);
       }
-      if (((bitField1_ & 0x00100000) == 0x00100000)) {
+      if (((bitField1_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(37, signCommand_);
       }
-      if (((bitField1_ & 0x00200000) == 0x00200000)) {
+      if (((bitField1_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(38, mohuaUserDataCommand_);
       }
-      if (((bitField1_ & 0x00400000) == 0x00400000)) {
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(40, achieveListCommand_);
       }
-      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(42, richangListCommand_);
       }
-      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(43, kaifu2ActivityCommand_);
       }
-      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(45, kaifuRewardCommand_);
       }
-      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+      if (((bitField1_ & 0x08000000) == 0x08000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(46, kaifuListCommand_);
       }
-      if (((bitField1_ & 0x08000000) == 0x08000000)) {
+      if (((bitField1_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(47, userPokedeCommand_);
       }
-      if (((bitField1_ & 0x10000000) == 0x10000000)) {
+      if (((bitField1_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(48, rankCommand_);
       }
-      if (((bitField1_ & 0x20000000) == 0x20000000)) {
+      if (((bitField1_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(49, equipResultCommand_);
       }
-      if (((bitField1_ & 0x40000000) == 0x40000000)) {
+      if (((bitField1_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(50, deleteHeroCommand_);
       }
-      if (((bitField1_ & 0x80000000) == 0x80000000)) {
+      if (((bitField2_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(51, userHeadCommand_);
       }
-      if (((bitField2_ & 0x00000001) == 0x00000001)) {
+      if (((bitField2_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(53, noticeCommand_);
       }
-      if (((bitField2_ & 0x00000002) == 0x00000002)) {
+      if (((bitField2_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(54, userFoodCommand_);
       }
-      if (((bitField2_ & 0x00000004) == 0x00000004)) {
+      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(55, clearInfoCommand_);
       }
-      if (((bitField2_ & 0x00000008) == 0x00000008)) {
+      if (((bitField2_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(56, bosskillCommand_);
       }
-      if (((bitField2_ & 0x00000010) == 0x00000010)) {
+      if (((bitField2_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(57, unionBossCommand_);
       }
-      if (((bitField2_ & 0x00000020) == 0x00000020)) {
+      if (((bitField2_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(58, isAreaOwnerCommand_);
       }
-      if (((bitField2_ & 0x00000040) == 0x00000040)) {
+      if (((bitField2_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(59, userTaskCommand_);
       }
-      if (((bitField2_ & 0x00000080) == 0x00000080)) {
+      if (((bitField2_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(60, userBattletowerCommand_);
       }
-      if (((bitField2_ & 0x00000100) == 0x00000100)) {
+      if (((bitField2_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(61, battletowerShopCommand_);
       }
-      if (((bitField2_ & 0x00000200) == 0x00000200)) {
+      if (((bitField2_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(62, bossRoomRecordCommand_);
       }
-      if (((bitField2_ & 0x00000400) == 0x00000400)) {
+      if (((bitField2_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(63, userTalentCommand_);
       }
-      if (((bitField2_ & 0x00000800) == 0x00000800)) {
+      if (((bitField2_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(64, equipPokedeCommand_);
       }
-      if (((bitField2_ & 0x00001000) == 0x00001000)) {
+      if (((bitField2_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(65, userRewardTaskCommand_);
       }
-      if (((bitField2_ & 0x00002000) == 0x00002000)) {
+      if (((bitField2_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(66, userRewardTaskRoomCommand_);
       }
-      if (((bitField2_ & 0x00004000) == 0x00004000)) {
+      if (((bitField2_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(67, otherUserInfoCommand_);
       }
-      if (((bitField2_ & 0x00008000) == 0x00008000)) {
+      if (((bitField2_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(68, enemyLadderCommand_);
       }
-      if (((bitField2_ & 0x00010000) == 0x00010000)) {
+      if (((bitField2_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(69, userLadderCommand_);
       }
-      if (((bitField2_ & 0x00020000) == 0x00020000)) {
+      if (((bitField2_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(70, recommandCommand_);
       }
-      if (((bitField2_ & 0x00040000) == 0x00040000)) {
+      if (((bitField2_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(71, unionFightApplyRecordCommand_);
       }
-      if (((bitField2_ & 0x00080000) == 0x00080000)) {
+      if (((bitField2_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(72, lootRewardTaskCommand_);
       }
@@ -6444,7 +6503,7 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(123, teamCommand_);
       }
-      if (((bitField1_ & 0x00000400) == 0x00000400)) {
+      if (((bitField1_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(124, resourceMineInfoCommand_);
       }
@@ -6456,7 +6515,7 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(126, pvpInbreakListCommand_);
       }
-      if (((bitField1_ & 0x00000200) == 0x00000200)) {
+      if (((bitField1_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(136, areaResourceCommand_);
       }
@@ -6496,11 +6555,11 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(160, raidShopCommand_);
       }
-      if (((bitField0_ & 0x10000000) == 0x10000000)) {
+      if (((bitField0_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(166, eventResultCommand_);
       }
-      if (((bitField0_ & 0x20000000) == 0x20000000)) {
+      if (((bitField0_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(167, levelLootCommand_);
       }
@@ -6511,6 +6570,10 @@ public final class Commands {
       if (((bitField0_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(175, teamRaidCommand_);
+      }
+      if (((bitField0_ & 0x04000000) == 0x04000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(178, teamRaidRoomCommand_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -6650,6 +6713,7 @@ public final class Commands {
           getTeamRaidCommandFieldBuilder();
           getEventCommandFieldBuilder();
           getCanRechargeCommandFieldBuilder();
+          getTeamRaidRoomCommandFieldBuilder();
           getNeedRegisterCommandFieldBuilder();
           getUserInfoCommandFieldBuilder();
           getEventResultCommandFieldBuilder();
@@ -6872,354 +6936,360 @@ public final class Commands {
           canRechargeCommandBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x02000000);
+        if (teamRaidRoomCommandBuilder_ == null) {
+          teamRaidRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.getDefaultInstance();
+        } else {
+          teamRaidRoomCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x04000000);
         if (needRegisterCommandBuilder_ == null) {
           needRegisterCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.getDefaultInstance();
         } else {
           needRegisterCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x08000000);
         if (userInfoCommandBuilder_ == null) {
           userInfoCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.getDefaultInstance();
         } else {
           userInfoCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x10000000);
         if (eventResultCommandBuilder_ == null) {
           eventResultCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.getDefaultInstance();
         } else {
           eventResultCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         if (levelLootCommandBuilder_ == null) {
           levelLootCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.getDefaultInstance();
         } else {
           levelLootCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x40000000);
         if (heroResultCommandBuilder_ == null) {
           heroResultCommand_ = com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.getDefaultInstance();
         } else {
           heroResultCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x80000000);
         if (getUserHeroCommandBuilder_ == null) {
           getUserHeroCommand_ = com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.getDefaultInstance();
         } else {
           getUserHeroCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x80000000);
+        bitField1_ = (bitField1_ & ~0x00000001);
         if (getLadderRankListCommandBuilder_ == null) {
           getLadderRankListCommand_ = com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.getDefaultInstance();
         } else {
           getLadderRankListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000001);
+        bitField1_ = (bitField1_ & ~0x00000002);
         if (getUserLadderRankListCommandBuilder_ == null) {
           getUserLadderRankListCommand_ = com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.getDefaultInstance();
         } else {
           getUserLadderRankListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000004);
         if (attackLadderModeCommandBuilder_ == null) {
           attackLadderModeCommand_ = com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.getDefaultInstance();
         } else {
           attackLadderModeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000008);
         if (getUserMailListCommandBuilder_ == null) {
           getUserMailListCommand_ = com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.getDefaultInstance();
         } else {
           getUserMailListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000010);
         if (sendRewardCommandBuilder_ == null) {
           sendRewardCommand_ = com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.getDefaultInstance();
         } else {
           sendRewardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000020);
         if (messageCommandBuilder_ == null) {
           messageCommand_ = com.trans.pixel.protoc.Commands.ResponseMessageCommand.getDefaultInstance();
         } else {
           messageCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000020);
+        bitField1_ = (bitField1_ & ~0x00000040);
         if (getUserFriendListCommandBuilder_ == null) {
           getUserFriendListCommand_ = com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.getDefaultInstance();
         } else {
           getUserFriendListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x00000080);
         if (userEquipCommandBuilder_ == null) {
           userEquipCommand_ = com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.getDefaultInstance();
         } else {
           userEquipCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000080);
+        bitField1_ = (bitField1_ & ~0x00000100);
         if (areaCommandBuilder_ == null) {
           areaCommand_ = com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.getDefaultInstance();
         } else {
           areaCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000100);
+        bitField1_ = (bitField1_ & ~0x00000200);
         if (areaResourceCommandBuilder_ == null) {
           areaResourceCommand_ = com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.getDefaultInstance();
         } else {
           areaResourceCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000200);
+        bitField1_ = (bitField1_ & ~0x00000400);
         if (resourceMineInfoCommandBuilder_ == null) {
           resourceMineInfoCommand_ = com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.getDefaultInstance();
         } else {
           resourceMineInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000400);
+        bitField1_ = (bitField1_ & ~0x00000800);
         if (unionInfoCommandBuilder_ == null) {
           unionInfoCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.getDefaultInstance();
         } else {
           unionInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000800);
+        bitField1_ = (bitField1_ & ~0x00001000);
         if (unionListCommandBuilder_ == null) {
           unionListCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.getDefaultInstance();
         } else {
           unionListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00001000);
+        bitField1_ = (bitField1_ & ~0x00002000);
         if (messageBoardListCommandBuilder_ == null) {
           messageBoardListCommand_ = com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.getDefaultInstance();
         } else {
           messageBoardListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00002000);
+        bitField1_ = (bitField1_ & ~0x00004000);
         if (messageBoardCommandBuilder_ == null) {
           messageBoardCommand_ = com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.getDefaultInstance();
         } else {
           messageBoardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00004000);
+        bitField1_ = (bitField1_ & ~0x00008000);
         if (userTeamListCommandBuilder_ == null) {
           userTeamListCommand_ = com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.getDefaultInstance();
         } else {
           userTeamListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00008000);
+        bitField1_ = (bitField1_ & ~0x00010000);
         if (ladderUserInfoCommandBuilder_ == null) {
           ladderUserInfoCommand_ = com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.getDefaultInstance();
         } else {
           ladderUserInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00010000);
+        bitField1_ = (bitField1_ & ~0x00020000);
         if (equipComposeCommandBuilder_ == null) {
           equipComposeCommand_ = com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.getDefaultInstance();
         } else {
           equipComposeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00020000);
+        bitField1_ = (bitField1_ & ~0x00040000);
         if (userPropCommandBuilder_ == null) {
           userPropCommand_ = com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.getDefaultInstance();
         } else {
           userPropCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00040000);
+        bitField1_ = (bitField1_ & ~0x00080000);
         if (usePropCommandBuilder_ == null) {
           usePropCommand_ = com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.getDefaultInstance();
         } else {
           usePropCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00080000);
+        bitField1_ = (bitField1_ & ~0x00100000);
         if (signCommandBuilder_ == null) {
           signCommand_ = com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.getDefaultInstance();
         } else {
           signCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00100000);
+        bitField1_ = (bitField1_ & ~0x00200000);
         if (mohuaUserDataCommandBuilder_ == null) {
           mohuaUserDataCommand_ = com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.getDefaultInstance();
         } else {
           mohuaUserDataCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00200000);
+        bitField1_ = (bitField1_ & ~0x00400000);
         if (achieveListCommandBuilder_ == null) {
           achieveListCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.getDefaultInstance();
         } else {
           achieveListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00400000);
+        bitField1_ = (bitField1_ & ~0x00800000);
         if (richangListCommandBuilder_ == null) {
           richangListCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.getDefaultInstance();
         } else {
           richangListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00800000);
+        bitField1_ = (bitField1_ & ~0x01000000);
         if (kaifu2ActivityCommandBuilder_ == null) {
           kaifu2ActivityCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.getDefaultInstance();
         } else {
           kaifu2ActivityCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x01000000);
+        bitField1_ = (bitField1_ & ~0x02000000);
         if (kaifuRewardCommandBuilder_ == null) {
           kaifuRewardCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.getDefaultInstance();
         } else {
           kaifuRewardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x02000000);
+        bitField1_ = (bitField1_ & ~0x04000000);
         if (kaifuListCommandBuilder_ == null) {
           kaifuListCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.getDefaultInstance();
         } else {
           kaifuListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x04000000);
+        bitField1_ = (bitField1_ & ~0x08000000);
         if (userPokedeCommandBuilder_ == null) {
           userPokedeCommand_ = com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.getDefaultInstance();
         } else {
           userPokedeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x08000000);
+        bitField1_ = (bitField1_ & ~0x10000000);
         if (rankCommandBuilder_ == null) {
           rankCommand_ = com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.getDefaultInstance();
         } else {
           rankCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x10000000);
+        bitField1_ = (bitField1_ & ~0x20000000);
         if (equipResultCommandBuilder_ == null) {
           equipResultCommand_ = com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.getDefaultInstance();
         } else {
           equipResultCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x20000000);
+        bitField1_ = (bitField1_ & ~0x40000000);
         if (deleteHeroCommandBuilder_ == null) {
           deleteHeroCommand_ = com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.getDefaultInstance();
         } else {
           deleteHeroCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x40000000);
+        bitField1_ = (bitField1_ & ~0x80000000);
         if (userHeadCommandBuilder_ == null) {
           userHeadCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.getDefaultInstance();
         } else {
           userHeadCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x80000000);
+        bitField2_ = (bitField2_ & ~0x00000001);
         if (noticeCommandBuilder_ == null) {
           noticeCommand_ = com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.getDefaultInstance();
         } else {
           noticeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000001);
+        bitField2_ = (bitField2_ & ~0x00000002);
         if (userFoodCommandBuilder_ == null) {
           userFoodCommand_ = com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.getDefaultInstance();
         } else {
           userFoodCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000002);
+        bitField2_ = (bitField2_ & ~0x00000004);
         if (clearInfoCommandBuilder_ == null) {
           clearInfoCommand_ = com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.getDefaultInstance();
         } else {
           clearInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000004);
+        bitField2_ = (bitField2_ & ~0x00000008);
         if (bosskillCommandBuilder_ == null) {
           bosskillCommand_ = com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.getDefaultInstance();
         } else {
           bosskillCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000008);
+        bitField2_ = (bitField2_ & ~0x00000010);
         if (unionBossCommandBuilder_ == null) {
           unionBossCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.getDefaultInstance();
         } else {
           unionBossCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000010);
+        bitField2_ = (bitField2_ & ~0x00000020);
         if (isAreaOwnerCommandBuilder_ == null) {
           isAreaOwnerCommand_ = com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.getDefaultInstance();
         } else {
           isAreaOwnerCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000020);
+        bitField2_ = (bitField2_ & ~0x00000040);
         if (userTaskCommandBuilder_ == null) {
           userTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.getDefaultInstance();
         } else {
           userTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000040);
+        bitField2_ = (bitField2_ & ~0x00000080);
         if (userBattletowerCommandBuilder_ == null) {
           userBattletowerCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.getDefaultInstance();
         } else {
           userBattletowerCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000080);
+        bitField2_ = (bitField2_ & ~0x00000100);
         if (battletowerShopCommandBuilder_ == null) {
           battletowerShopCommand_ = com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.getDefaultInstance();
         } else {
           battletowerShopCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000100);
+        bitField2_ = (bitField2_ & ~0x00000200);
         if (bossRoomRecordCommandBuilder_ == null) {
           bossRoomRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.getDefaultInstance();
         } else {
           bossRoomRecordCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000200);
+        bitField2_ = (bitField2_ & ~0x00000400);
         if (userTalentCommandBuilder_ == null) {
           userTalentCommand_ = com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.getDefaultInstance();
         } else {
           userTalentCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000400);
+        bitField2_ = (bitField2_ & ~0x00000800);
         if (equipPokedeCommandBuilder_ == null) {
           equipPokedeCommand_ = com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.getDefaultInstance();
         } else {
           equipPokedeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000800);
+        bitField2_ = (bitField2_ & ~0x00001000);
         if (userRewardTaskCommandBuilder_ == null) {
           userRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.getDefaultInstance();
         } else {
           userRewardTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00001000);
+        bitField2_ = (bitField2_ & ~0x00002000);
         if (userRewardTaskRoomCommandBuilder_ == null) {
           userRewardTaskRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.getDefaultInstance();
         } else {
           userRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00002000);
+        bitField2_ = (bitField2_ & ~0x00004000);
         if (otherUserInfoCommandBuilder_ == null) {
           otherUserInfoCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.getDefaultInstance();
         } else {
           otherUserInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00004000);
+        bitField2_ = (bitField2_ & ~0x00008000);
         if (enemyLadderCommandBuilder_ == null) {
           enemyLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance();
         } else {
           enemyLadderCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00008000);
+        bitField2_ = (bitField2_ & ~0x00010000);
         if (userLadderCommandBuilder_ == null) {
           userLadderCommand_ = com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance();
         } else {
           userLadderCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00010000);
+        bitField2_ = (bitField2_ & ~0x00020000);
         if (recommandCommandBuilder_ == null) {
           recommandCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.getDefaultInstance();
         } else {
           recommandCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00020000);
+        bitField2_ = (bitField2_ & ~0x00040000);
         if (unionFightApplyRecordCommandBuilder_ == null) {
           unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
         } else {
           unionFightApplyRecordCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00040000);
+        bitField2_ = (bitField2_ & ~0x00080000);
         if (lootRewardTaskCommandBuilder_ == null) {
           lootRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.getDefaultInstance();
         } else {
           lootRewardTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00080000);
+        bitField2_ = (bitField2_ & ~0x00100000);
         return this;
       }
 
@@ -7463,461 +7533,469 @@ public final class Commands {
         if (((from_bitField0_ & 0x04000000) == 0x04000000)) {
           to_bitField0_ |= 0x04000000;
         }
+        if (teamRaidRoomCommandBuilder_ == null) {
+          result.teamRaidRoomCommand_ = teamRaidRoomCommand_;
+        } else {
+          result.teamRaidRoomCommand_ = teamRaidRoomCommandBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
+          to_bitField0_ |= 0x08000000;
+        }
         if (needRegisterCommandBuilder_ == null) {
           result.needRegisterCommand_ = needRegisterCommand_;
         } else {
           result.needRegisterCommand_ = needRegisterCommandBuilder_.build();
         }
-        if (((from_bitField0_ & 0x08000000) == 0x08000000)) {
-          to_bitField0_ |= 0x08000000;
+        if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
+          to_bitField0_ |= 0x10000000;
         }
         if (userInfoCommandBuilder_ == null) {
           result.userInfoCommand_ = userInfoCommand_;
         } else {
           result.userInfoCommand_ = userInfoCommandBuilder_.build();
         }
-        if (((from_bitField0_ & 0x10000000) == 0x10000000)) {
-          to_bitField0_ |= 0x10000000;
+        if (((from_bitField0_ & 0x20000000) == 0x20000000)) {
+          to_bitField0_ |= 0x20000000;
         }
         if (eventResultCommandBuilder_ == null) {
           result.eventResultCommand_ = eventResultCommand_;
         } else {
           result.eventResultCommand_ = eventResultCommandBuilder_.build();
         }
-        if (((from_bitField0_ & 0x20000000) == 0x20000000)) {
-          to_bitField0_ |= 0x20000000;
+        if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
+          to_bitField0_ |= 0x40000000;
         }
         if (levelLootCommandBuilder_ == null) {
           result.levelLootCommand_ = levelLootCommand_;
         } else {
           result.levelLootCommand_ = levelLootCommandBuilder_.build();
         }
-        if (((from_bitField0_ & 0x40000000) == 0x40000000)) {
-          to_bitField0_ |= 0x40000000;
+        if (((from_bitField0_ & 0x80000000) == 0x80000000)) {
+          to_bitField0_ |= 0x80000000;
         }
         if (heroResultCommandBuilder_ == null) {
           result.heroResultCommand_ = heroResultCommand_;
         } else {
           result.heroResultCommand_ = heroResultCommandBuilder_.build();
         }
-        if (((from_bitField0_ & 0x80000000) == 0x80000000)) {
-          to_bitField0_ |= 0x80000000;
+        if (((from_bitField1_ & 0x00000001) == 0x00000001)) {
+          to_bitField1_ |= 0x00000001;
         }
         if (getUserHeroCommandBuilder_ == null) {
           result.getUserHeroCommand_ = getUserHeroCommand_;
         } else {
           result.getUserHeroCommand_ = getUserHeroCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000001) == 0x00000001)) {
-          to_bitField1_ |= 0x00000001;
+        if (((from_bitField1_ & 0x00000002) == 0x00000002)) {
+          to_bitField1_ |= 0x00000002;
         }
         if (getLadderRankListCommandBuilder_ == null) {
           result.getLadderRankListCommand_ = getLadderRankListCommand_;
         } else {
           result.getLadderRankListCommand_ = getLadderRankListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000002) == 0x00000002)) {
-          to_bitField1_ |= 0x00000002;
+        if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
+          to_bitField1_ |= 0x00000004;
         }
         if (getUserLadderRankListCommandBuilder_ == null) {
           result.getUserLadderRankListCommand_ = getUserLadderRankListCommand_;
         } else {
           result.getUserLadderRankListCommand_ = getUserLadderRankListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000004) == 0x00000004)) {
-          to_bitField1_ |= 0x00000004;
+        if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
+          to_bitField1_ |= 0x00000008;
         }
         if (attackLadderModeCommandBuilder_ == null) {
           result.attackLadderModeCommand_ = attackLadderModeCommand_;
         } else {
           result.attackLadderModeCommand_ = attackLadderModeCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000008) == 0x00000008)) {
-          to_bitField1_ |= 0x00000008;
+        if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
+          to_bitField1_ |= 0x00000010;
         }
         if (getUserMailListCommandBuilder_ == null) {
           result.getUserMailListCommand_ = getUserMailListCommand_;
         } else {
           result.getUserMailListCommand_ = getUserMailListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000010) == 0x00000010)) {
-          to_bitField1_ |= 0x00000010;
+        if (((from_bitField1_ & 0x00000020) == 0x00000020)) {
+          to_bitField1_ |= 0x00000020;
         }
         if (sendRewardCommandBuilder_ == null) {
           result.sendRewardCommand_ = sendRewardCommand_;
         } else {
           result.sendRewardCommand_ = sendRewardCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000020) == 0x00000020)) {
-          to_bitField1_ |= 0x00000020;
+        if (((from_bitField1_ & 0x00000040) == 0x00000040)) {
+          to_bitField1_ |= 0x00000040;
         }
         if (messageCommandBuilder_ == null) {
           result.messageCommand_ = messageCommand_;
         } else {
           result.messageCommand_ = messageCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000040) == 0x00000040)) {
-          to_bitField1_ |= 0x00000040;
+        if (((from_bitField1_ & 0x00000080) == 0x00000080)) {
+          to_bitField1_ |= 0x00000080;
         }
         if (getUserFriendListCommandBuilder_ == null) {
           result.getUserFriendListCommand_ = getUserFriendListCommand_;
         } else {
           result.getUserFriendListCommand_ = getUserFriendListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000080) == 0x00000080)) {
-          to_bitField1_ |= 0x00000080;
+        if (((from_bitField1_ & 0x00000100) == 0x00000100)) {
+          to_bitField1_ |= 0x00000100;
         }
         if (userEquipCommandBuilder_ == null) {
           result.userEquipCommand_ = userEquipCommand_;
         } else {
           result.userEquipCommand_ = userEquipCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000100) == 0x00000100)) {
-          to_bitField1_ |= 0x00000100;
+        if (((from_bitField1_ & 0x00000200) == 0x00000200)) {
+          to_bitField1_ |= 0x00000200;
         }
         if (areaCommandBuilder_ == null) {
           result.areaCommand_ = areaCommand_;
         } else {
           result.areaCommand_ = areaCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000200) == 0x00000200)) {
-          to_bitField1_ |= 0x00000200;
+        if (((from_bitField1_ & 0x00000400) == 0x00000400)) {
+          to_bitField1_ |= 0x00000400;
         }
         if (areaResourceCommandBuilder_ == null) {
           result.areaResourceCommand_ = areaResourceCommand_;
         } else {
           result.areaResourceCommand_ = areaResourceCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000400) == 0x00000400)) {
-          to_bitField1_ |= 0x00000400;
+        if (((from_bitField1_ & 0x00000800) == 0x00000800)) {
+          to_bitField1_ |= 0x00000800;
         }
         if (resourceMineInfoCommandBuilder_ == null) {
           result.resourceMineInfoCommand_ = resourceMineInfoCommand_;
         } else {
           result.resourceMineInfoCommand_ = resourceMineInfoCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00000800) == 0x00000800)) {
-          to_bitField1_ |= 0x00000800;
+        if (((from_bitField1_ & 0x00001000) == 0x00001000)) {
+          to_bitField1_ |= 0x00001000;
         }
         if (unionInfoCommandBuilder_ == null) {
           result.unionInfoCommand_ = unionInfoCommand_;
         } else {
           result.unionInfoCommand_ = unionInfoCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00001000) == 0x00001000)) {
-          to_bitField1_ |= 0x00001000;
+        if (((from_bitField1_ & 0x00002000) == 0x00002000)) {
+          to_bitField1_ |= 0x00002000;
         }
         if (unionListCommandBuilder_ == null) {
           result.unionListCommand_ = unionListCommand_;
         } else {
           result.unionListCommand_ = unionListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00002000) == 0x00002000)) {
-          to_bitField1_ |= 0x00002000;
+        if (((from_bitField1_ & 0x00004000) == 0x00004000)) {
+          to_bitField1_ |= 0x00004000;
         }
         if (messageBoardListCommandBuilder_ == null) {
           result.messageBoardListCommand_ = messageBoardListCommand_;
         } else {
           result.messageBoardListCommand_ = messageBoardListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00004000) == 0x00004000)) {
-          to_bitField1_ |= 0x00004000;
+        if (((from_bitField1_ & 0x00008000) == 0x00008000)) {
+          to_bitField1_ |= 0x00008000;
         }
         if (messageBoardCommandBuilder_ == null) {
           result.messageBoardCommand_ = messageBoardCommand_;
         } else {
           result.messageBoardCommand_ = messageBoardCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00008000) == 0x00008000)) {
-          to_bitField1_ |= 0x00008000;
+        if (((from_bitField1_ & 0x00010000) == 0x00010000)) {
+          to_bitField1_ |= 0x00010000;
         }
         if (userTeamListCommandBuilder_ == null) {
           result.userTeamListCommand_ = userTeamListCommand_;
         } else {
           result.userTeamListCommand_ = userTeamListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00010000) == 0x00010000)) {
-          to_bitField1_ |= 0x00010000;
+        if (((from_bitField1_ & 0x00020000) == 0x00020000)) {
+          to_bitField1_ |= 0x00020000;
         }
         if (ladderUserInfoCommandBuilder_ == null) {
           result.ladderUserInfoCommand_ = ladderUserInfoCommand_;
         } else {
           result.ladderUserInfoCommand_ = ladderUserInfoCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00020000) == 0x00020000)) {
-          to_bitField1_ |= 0x00020000;
+        if (((from_bitField1_ & 0x00040000) == 0x00040000)) {
+          to_bitField1_ |= 0x00040000;
         }
         if (equipComposeCommandBuilder_ == null) {
           result.equipComposeCommand_ = equipComposeCommand_;
         } else {
           result.equipComposeCommand_ = equipComposeCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00040000) == 0x00040000)) {
-          to_bitField1_ |= 0x00040000;
+        if (((from_bitField1_ & 0x00080000) == 0x00080000)) {
+          to_bitField1_ |= 0x00080000;
         }
         if (userPropCommandBuilder_ == null) {
           result.userPropCommand_ = userPropCommand_;
         } else {
           result.userPropCommand_ = userPropCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00080000) == 0x00080000)) {
-          to_bitField1_ |= 0x00080000;
+        if (((from_bitField1_ & 0x00100000) == 0x00100000)) {
+          to_bitField1_ |= 0x00100000;
         }
         if (usePropCommandBuilder_ == null) {
           result.usePropCommand_ = usePropCommand_;
         } else {
           result.usePropCommand_ = usePropCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00100000) == 0x00100000)) {
-          to_bitField1_ |= 0x00100000;
+        if (((from_bitField1_ & 0x00200000) == 0x00200000)) {
+          to_bitField1_ |= 0x00200000;
         }
         if (signCommandBuilder_ == null) {
           result.signCommand_ = signCommand_;
         } else {
           result.signCommand_ = signCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00200000) == 0x00200000)) {
-          to_bitField1_ |= 0x00200000;
+        if (((from_bitField1_ & 0x00400000) == 0x00400000)) {
+          to_bitField1_ |= 0x00400000;
         }
         if (mohuaUserDataCommandBuilder_ == null) {
           result.mohuaUserDataCommand_ = mohuaUserDataCommand_;
         } else {
           result.mohuaUserDataCommand_ = mohuaUserDataCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00400000) == 0x00400000)) {
-          to_bitField1_ |= 0x00400000;
+        if (((from_bitField1_ & 0x00800000) == 0x00800000)) {
+          to_bitField1_ |= 0x00800000;
         }
         if (achieveListCommandBuilder_ == null) {
           result.achieveListCommand_ = achieveListCommand_;
         } else {
           result.achieveListCommand_ = achieveListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x00800000) == 0x00800000)) {
-          to_bitField1_ |= 0x00800000;
+        if (((from_bitField1_ & 0x01000000) == 0x01000000)) {
+          to_bitField1_ |= 0x01000000;
         }
         if (richangListCommandBuilder_ == null) {
           result.richangListCommand_ = richangListCommand_;
         } else {
           result.richangListCommand_ = richangListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x01000000) == 0x01000000)) {
-          to_bitField1_ |= 0x01000000;
+        if (((from_bitField1_ & 0x02000000) == 0x02000000)) {
+          to_bitField1_ |= 0x02000000;
         }
         if (kaifu2ActivityCommandBuilder_ == null) {
           result.kaifu2ActivityCommand_ = kaifu2ActivityCommand_;
         } else {
           result.kaifu2ActivityCommand_ = kaifu2ActivityCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x02000000) == 0x02000000)) {
-          to_bitField1_ |= 0x02000000;
+        if (((from_bitField1_ & 0x04000000) == 0x04000000)) {
+          to_bitField1_ |= 0x04000000;
         }
         if (kaifuRewardCommandBuilder_ == null) {
           result.kaifuRewardCommand_ = kaifuRewardCommand_;
         } else {
           result.kaifuRewardCommand_ = kaifuRewardCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x04000000) == 0x04000000)) {
-          to_bitField1_ |= 0x04000000;
+        if (((from_bitField1_ & 0x08000000) == 0x08000000)) {
+          to_bitField1_ |= 0x08000000;
         }
         if (kaifuListCommandBuilder_ == null) {
           result.kaifuListCommand_ = kaifuListCommand_;
         } else {
           result.kaifuListCommand_ = kaifuListCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x08000000) == 0x08000000)) {
-          to_bitField1_ |= 0x08000000;
+        if (((from_bitField1_ & 0x10000000) == 0x10000000)) {
+          to_bitField1_ |= 0x10000000;
         }
         if (userPokedeCommandBuilder_ == null) {
           result.userPokedeCommand_ = userPokedeCommand_;
         } else {
           result.userPokedeCommand_ = userPokedeCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x10000000) == 0x10000000)) {
-          to_bitField1_ |= 0x10000000;
+        if (((from_bitField1_ & 0x20000000) == 0x20000000)) {
+          to_bitField1_ |= 0x20000000;
         }
         if (rankCommandBuilder_ == null) {
           result.rankCommand_ = rankCommand_;
         } else {
           result.rankCommand_ = rankCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x20000000) == 0x20000000)) {
-          to_bitField1_ |= 0x20000000;
+        if (((from_bitField1_ & 0x40000000) == 0x40000000)) {
+          to_bitField1_ |= 0x40000000;
         }
         if (equipResultCommandBuilder_ == null) {
           result.equipResultCommand_ = equipResultCommand_;
         } else {
           result.equipResultCommand_ = equipResultCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x40000000) == 0x40000000)) {
-          to_bitField1_ |= 0x40000000;
+        if (((from_bitField1_ & 0x80000000) == 0x80000000)) {
+          to_bitField1_ |= 0x80000000;
         }
         if (deleteHeroCommandBuilder_ == null) {
           result.deleteHeroCommand_ = deleteHeroCommand_;
         } else {
           result.deleteHeroCommand_ = deleteHeroCommandBuilder_.build();
         }
-        if (((from_bitField1_ & 0x80000000) == 0x80000000)) {
-          to_bitField1_ |= 0x80000000;
+        if (((from_bitField2_ & 0x00000001) == 0x00000001)) {
+          to_bitField2_ |= 0x00000001;
         }
         if (userHeadCommandBuilder_ == null) {
           result.userHeadCommand_ = userHeadCommand_;
         } else {
           result.userHeadCommand_ = userHeadCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000001) == 0x00000001)) {
-          to_bitField2_ |= 0x00000001;
+        if (((from_bitField2_ & 0x00000002) == 0x00000002)) {
+          to_bitField2_ |= 0x00000002;
         }
         if (noticeCommandBuilder_ == null) {
           result.noticeCommand_ = noticeCommand_;
         } else {
           result.noticeCommand_ = noticeCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000002) == 0x00000002)) {
-          to_bitField2_ |= 0x00000002;
+        if (((from_bitField2_ & 0x00000004) == 0x00000004)) {
+          to_bitField2_ |= 0x00000004;
         }
         if (userFoodCommandBuilder_ == null) {
           result.userFoodCommand_ = userFoodCommand_;
         } else {
           result.userFoodCommand_ = userFoodCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000004) == 0x00000004)) {
-          to_bitField2_ |= 0x00000004;
+        if (((from_bitField2_ & 0x00000008) == 0x00000008)) {
+          to_bitField2_ |= 0x00000008;
         }
         if (clearInfoCommandBuilder_ == null) {
           result.clearInfoCommand_ = clearInfoCommand_;
         } else {
           result.clearInfoCommand_ = clearInfoCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000008) == 0x00000008)) {
-          to_bitField2_ |= 0x00000008;
+        if (((from_bitField2_ & 0x00000010) == 0x00000010)) {
+          to_bitField2_ |= 0x00000010;
         }
         if (bosskillCommandBuilder_ == null) {
           result.bosskillCommand_ = bosskillCommand_;
         } else {
           result.bosskillCommand_ = bosskillCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000010) == 0x00000010)) {
-          to_bitField2_ |= 0x00000010;
+        if (((from_bitField2_ & 0x00000020) == 0x00000020)) {
+          to_bitField2_ |= 0x00000020;
         }
         if (unionBossCommandBuilder_ == null) {
           result.unionBossCommand_ = unionBossCommand_;
         } else {
           result.unionBossCommand_ = unionBossCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000020) == 0x00000020)) {
-          to_bitField2_ |= 0x00000020;
+        if (((from_bitField2_ & 0x00000040) == 0x00000040)) {
+          to_bitField2_ |= 0x00000040;
         }
         if (isAreaOwnerCommandBuilder_ == null) {
           result.isAreaOwnerCommand_ = isAreaOwnerCommand_;
         } else {
           result.isAreaOwnerCommand_ = isAreaOwnerCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000040) == 0x00000040)) {
-          to_bitField2_ |= 0x00000040;
+        if (((from_bitField2_ & 0x00000080) == 0x00000080)) {
+          to_bitField2_ |= 0x00000080;
         }
         if (userTaskCommandBuilder_ == null) {
           result.userTaskCommand_ = userTaskCommand_;
         } else {
           result.userTaskCommand_ = userTaskCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000080) == 0x00000080)) {
-          to_bitField2_ |= 0x00000080;
+        if (((from_bitField2_ & 0x00000100) == 0x00000100)) {
+          to_bitField2_ |= 0x00000100;
         }
         if (userBattletowerCommandBuilder_ == null) {
           result.userBattletowerCommand_ = userBattletowerCommand_;
         } else {
           result.userBattletowerCommand_ = userBattletowerCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000100) == 0x00000100)) {
-          to_bitField2_ |= 0x00000100;
+        if (((from_bitField2_ & 0x00000200) == 0x00000200)) {
+          to_bitField2_ |= 0x00000200;
         }
         if (battletowerShopCommandBuilder_ == null) {
           result.battletowerShopCommand_ = battletowerShopCommand_;
         } else {
           result.battletowerShopCommand_ = battletowerShopCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000200) == 0x00000200)) {
-          to_bitField2_ |= 0x00000200;
+        if (((from_bitField2_ & 0x00000400) == 0x00000400)) {
+          to_bitField2_ |= 0x00000400;
         }
         if (bossRoomRecordCommandBuilder_ == null) {
           result.bossRoomRecordCommand_ = bossRoomRecordCommand_;
         } else {
           result.bossRoomRecordCommand_ = bossRoomRecordCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000400) == 0x00000400)) {
-          to_bitField2_ |= 0x00000400;
+        if (((from_bitField2_ & 0x00000800) == 0x00000800)) {
+          to_bitField2_ |= 0x00000800;
         }
         if (userTalentCommandBuilder_ == null) {
           result.userTalentCommand_ = userTalentCommand_;
         } else {
           result.userTalentCommand_ = userTalentCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00000800) == 0x00000800)) {
-          to_bitField2_ |= 0x00000800;
+        if (((from_bitField2_ & 0x00001000) == 0x00001000)) {
+          to_bitField2_ |= 0x00001000;
         }
         if (equipPokedeCommandBuilder_ == null) {
           result.equipPokedeCommand_ = equipPokedeCommand_;
         } else {
           result.equipPokedeCommand_ = equipPokedeCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00001000) == 0x00001000)) {
-          to_bitField2_ |= 0x00001000;
+        if (((from_bitField2_ & 0x00002000) == 0x00002000)) {
+          to_bitField2_ |= 0x00002000;
         }
         if (userRewardTaskCommandBuilder_ == null) {
           result.userRewardTaskCommand_ = userRewardTaskCommand_;
         } else {
           result.userRewardTaskCommand_ = userRewardTaskCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00002000) == 0x00002000)) {
-          to_bitField2_ |= 0x00002000;
+        if (((from_bitField2_ & 0x00004000) == 0x00004000)) {
+          to_bitField2_ |= 0x00004000;
         }
         if (userRewardTaskRoomCommandBuilder_ == null) {
           result.userRewardTaskRoomCommand_ = userRewardTaskRoomCommand_;
         } else {
           result.userRewardTaskRoomCommand_ = userRewardTaskRoomCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00004000) == 0x00004000)) {
-          to_bitField2_ |= 0x00004000;
+        if (((from_bitField2_ & 0x00008000) == 0x00008000)) {
+          to_bitField2_ |= 0x00008000;
         }
         if (otherUserInfoCommandBuilder_ == null) {
           result.otherUserInfoCommand_ = otherUserInfoCommand_;
         } else {
           result.otherUserInfoCommand_ = otherUserInfoCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00008000) == 0x00008000)) {
-          to_bitField2_ |= 0x00008000;
+        if (((from_bitField2_ & 0x00010000) == 0x00010000)) {
+          to_bitField2_ |= 0x00010000;
         }
         if (enemyLadderCommandBuilder_ == null) {
           result.enemyLadderCommand_ = enemyLadderCommand_;
         } else {
           result.enemyLadderCommand_ = enemyLadderCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00010000) == 0x00010000)) {
-          to_bitField2_ |= 0x00010000;
+        if (((from_bitField2_ & 0x00020000) == 0x00020000)) {
+          to_bitField2_ |= 0x00020000;
         }
         if (userLadderCommandBuilder_ == null) {
           result.userLadderCommand_ = userLadderCommand_;
         } else {
           result.userLadderCommand_ = userLadderCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00020000) == 0x00020000)) {
-          to_bitField2_ |= 0x00020000;
+        if (((from_bitField2_ & 0x00040000) == 0x00040000)) {
+          to_bitField2_ |= 0x00040000;
         }
         if (recommandCommandBuilder_ == null) {
           result.recommandCommand_ = recommandCommand_;
         } else {
           result.recommandCommand_ = recommandCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00040000) == 0x00040000)) {
-          to_bitField2_ |= 0x00040000;
+        if (((from_bitField2_ & 0x00080000) == 0x00080000)) {
+          to_bitField2_ |= 0x00080000;
         }
         if (unionFightApplyRecordCommandBuilder_ == null) {
           result.unionFightApplyRecordCommand_ = unionFightApplyRecordCommand_;
         } else {
           result.unionFightApplyRecordCommand_ = unionFightApplyRecordCommandBuilder_.build();
         }
-        if (((from_bitField2_ & 0x00080000) == 0x00080000)) {
-          to_bitField2_ |= 0x00080000;
+        if (((from_bitField2_ & 0x00100000) == 0x00100000)) {
+          to_bitField2_ |= 0x00100000;
         }
         if (lootRewardTaskCommandBuilder_ == null) {
           result.lootRewardTaskCommand_ = lootRewardTaskCommand_;
@@ -8019,6 +8097,9 @@ public final class Commands {
         }
         if (other.hasCanRechargeCommand()) {
           mergeCanRechargeCommand(other.getCanRechargeCommand());
+        }
+        if (other.hasTeamRaidRoomCommand()) {
+          mergeTeamRaidRoomCommand(other.getTeamRaidRoomCommand());
         }
         if (other.hasNeedRegisterCommand()) {
           mergeNeedRegisterCommand(other.getNeedRegisterCommand());
@@ -8257,6 +8338,12 @@ public final class Commands {
         }
         if (hasTeamRaidCommand()) {
           if (!getTeamRaidCommand().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasTeamRaidRoomCommand()) {
+          if (!getTeamRaidRoomCommand().isInitialized()) {
             
             return false;
           }
@@ -11621,6 +11708,123 @@ public final class Commands {
         return canRechargeCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;
+      private com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand teamRaidRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder> teamRaidRoomCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public boolean hasTeamRaidRoomCommand() {
+        return ((bitField0_ & 0x04000000) == 0x04000000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand getTeamRaidRoomCommand() {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          return teamRaidRoomCommand_;
+        } else {
+          return teamRaidRoomCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public Builder setTeamRaidRoomCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand value) {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          teamRaidRoomCommand_ = value;
+          onChanged();
+        } else {
+          teamRaidRoomCommandBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public Builder setTeamRaidRoomCommand(
+          com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder builderForValue) {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          teamRaidRoomCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          teamRaidRoomCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public Builder mergeTeamRaidRoomCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand value) {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          if (((bitField0_ & 0x04000000) == 0x04000000) &&
+              teamRaidRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.getDefaultInstance()) {
+            teamRaidRoomCommand_ =
+              com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.newBuilder(teamRaidRoomCommand_).mergeFrom(value).buildPartial();
+          } else {
+            teamRaidRoomCommand_ = value;
+          }
+          onChanged();
+        } else {
+          teamRaidRoomCommandBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public Builder clearTeamRaidRoomCommand() {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          teamRaidRoomCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          teamRaidRoomCommandBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x04000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder getTeamRaidRoomCommandBuilder() {
+        bitField0_ |= 0x04000000;
+        onChanged();
+        return getTeamRaidRoomCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      public com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder getTeamRaidRoomCommandOrBuilder() {
+        if (teamRaidRoomCommandBuilder_ != null) {
+          return teamRaidRoomCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return teamRaidRoomCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseTeamRaidRoomCommand teamRaidRoomCommand = 178;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder> 
+          getTeamRaidRoomCommandFieldBuilder() {
+        if (teamRaidRoomCommandBuilder_ == null) {
+          teamRaidRoomCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommand.Builder, com.trans.pixel.protoc.RewardTaskProto.ResponseTeamRaidRoomCommandOrBuilder>(
+                  teamRaidRoomCommand_,
+                  getParentForChildren(),
+                  isClean());
+          teamRaidRoomCommand_ = null;
+        }
+        return teamRaidRoomCommandBuilder_;
+      }
+
       // optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;
       private com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand needRegisterCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
@@ -11633,7 +11837,7 @@ public final class Commands {
        * </pre>
        */
       public boolean hasNeedRegisterCommand() {
-        return ((bitField0_ & 0x04000000) == 0x04000000);
+        return ((bitField0_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseNeedRegisterCommand needRegisterCommand = 3;</code>
@@ -11666,7 +11870,7 @@ public final class Commands {
         } else {
           needRegisterCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x08000000;
         return this;
       }
       /**
@@ -11684,7 +11888,7 @@ public final class Commands {
         } else {
           needRegisterCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x08000000;
         return this;
       }
       /**
@@ -11696,7 +11900,7 @@ public final class Commands {
        */
       public Builder mergeNeedRegisterCommand(com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand value) {
         if (needRegisterCommandBuilder_ == null) {
-          if (((bitField0_ & 0x04000000) == 0x04000000) &&
+          if (((bitField0_ & 0x08000000) == 0x08000000) &&
               needRegisterCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.getDefaultInstance()) {
             needRegisterCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.newBuilder(needRegisterCommand_).mergeFrom(value).buildPartial();
@@ -11707,7 +11911,7 @@ public final class Commands {
         } else {
           needRegisterCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x08000000;
         return this;
       }
       /**
@@ -11724,7 +11928,7 @@ public final class Commands {
         } else {
           needRegisterCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x04000000);
+        bitField0_ = (bitField0_ & ~0x08000000);
         return this;
       }
       /**
@@ -11735,7 +11939,7 @@ public final class Commands {
        * </pre>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseNeedRegisterCommand.Builder getNeedRegisterCommandBuilder() {
-        bitField0_ |= 0x04000000;
+        bitField0_ |= 0x08000000;
         onChanged();
         return getNeedRegisterCommandFieldBuilder().getBuilder();
       }
@@ -11782,7 +11986,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserInfoCommand userInfoCommand = 4;</code>
        */
       public boolean hasUserInfoCommand() {
-        return ((bitField0_ & 0x08000000) == 0x08000000);
+        return ((bitField0_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserInfoCommand userInfoCommand = 4;</code>
@@ -11807,7 +12011,7 @@ public final class Commands {
         } else {
           userInfoCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x10000000;
         return this;
       }
       /**
@@ -11821,7 +12025,7 @@ public final class Commands {
         } else {
           userInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x10000000;
         return this;
       }
       /**
@@ -11829,7 +12033,7 @@ public final class Commands {
        */
       public Builder mergeUserInfoCommand(com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand value) {
         if (userInfoCommandBuilder_ == null) {
-          if (((bitField0_ & 0x08000000) == 0x08000000) &&
+          if (((bitField0_ & 0x10000000) == 0x10000000) &&
               userInfoCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.getDefaultInstance()) {
             userInfoCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.newBuilder(userInfoCommand_).mergeFrom(value).buildPartial();
@@ -11840,7 +12044,7 @@ public final class Commands {
         } else {
           userInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x10000000;
         return this;
       }
       /**
@@ -11853,14 +12057,14 @@ public final class Commands {
         } else {
           userInfoCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserInfoCommand userInfoCommand = 4;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseUserInfoCommand.Builder getUserInfoCommandBuilder() {
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x10000000;
         onChanged();
         return getUserInfoCommandFieldBuilder().getBuilder();
       }
@@ -11899,7 +12103,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseEventResultCommand eventResultCommand = 166;</code>
        */
       public boolean hasEventResultCommand() {
-        return ((bitField0_ & 0x10000000) == 0x10000000);
+        return ((bitField0_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEventResultCommand eventResultCommand = 166;</code>
@@ -11924,7 +12128,7 @@ public final class Commands {
         } else {
           eventResultCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x20000000;
         return this;
       }
       /**
@@ -11938,7 +12142,7 @@ public final class Commands {
         } else {
           eventResultCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x20000000;
         return this;
       }
       /**
@@ -11946,7 +12150,7 @@ public final class Commands {
        */
       public Builder mergeEventResultCommand(com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand value) {
         if (eventResultCommandBuilder_ == null) {
-          if (((bitField0_ & 0x10000000) == 0x10000000) &&
+          if (((bitField0_ & 0x20000000) == 0x20000000) &&
               eventResultCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.getDefaultInstance()) {
             eventResultCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.newBuilder(eventResultCommand_).mergeFrom(value).buildPartial();
@@ -11957,7 +12161,7 @@ public final class Commands {
         } else {
           eventResultCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x20000000;
         return this;
       }
       /**
@@ -11970,14 +12174,14 @@ public final class Commands {
         } else {
           eventResultCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEventResultCommand eventResultCommand = 166;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseEventResultCommand.Builder getEventResultCommandBuilder() {
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x20000000;
         onChanged();
         return getEventResultCommandFieldBuilder().getBuilder();
       }
@@ -12016,7 +12220,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseLevelLootCommand levelLootCommand = 167;</code>
        */
       public boolean hasLevelLootCommand() {
-        return ((bitField0_ & 0x20000000) == 0x20000000);
+        return ((bitField0_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseLevelLootCommand levelLootCommand = 167;</code>
@@ -12041,7 +12245,7 @@ public final class Commands {
         } else {
           levelLootCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x40000000;
         return this;
       }
       /**
@@ -12055,7 +12259,7 @@ public final class Commands {
         } else {
           levelLootCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x40000000;
         return this;
       }
       /**
@@ -12063,7 +12267,7 @@ public final class Commands {
        */
       public Builder mergeLevelLootCommand(com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand value) {
         if (levelLootCommandBuilder_ == null) {
-          if (((bitField0_ & 0x20000000) == 0x20000000) &&
+          if (((bitField0_ & 0x40000000) == 0x40000000) &&
               levelLootCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.getDefaultInstance()) {
             levelLootCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.newBuilder(levelLootCommand_).mergeFrom(value).buildPartial();
@@ -12074,7 +12278,7 @@ public final class Commands {
         } else {
           levelLootCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x40000000;
         return this;
       }
       /**
@@ -12087,14 +12291,14 @@ public final class Commands {
         } else {
           levelLootCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseLevelLootCommand levelLootCommand = 167;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseLevelLootCommand.Builder getLevelLootCommandBuilder() {
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x40000000;
         onChanged();
         return getLevelLootCommandFieldBuilder().getBuilder();
       }
@@ -12133,7 +12337,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
        */
       public boolean hasHeroResultCommand() {
-        return ((bitField0_ & 0x40000000) == 0x40000000);
+        return ((bitField0_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
@@ -12158,7 +12362,7 @@ public final class Commands {
         } else {
           heroResultCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x80000000;
         return this;
       }
       /**
@@ -12172,7 +12376,7 @@ public final class Commands {
         } else {
           heroResultCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x80000000;
         return this;
       }
       /**
@@ -12180,7 +12384,7 @@ public final class Commands {
        */
       public Builder mergeHeroResultCommand(com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand value) {
         if (heroResultCommandBuilder_ == null) {
-          if (((bitField0_ & 0x40000000) == 0x40000000) &&
+          if (((bitField0_ & 0x80000000) == 0x80000000) &&
               heroResultCommand_ != com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.getDefaultInstance()) {
             heroResultCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.newBuilder(heroResultCommand_).mergeFrom(value).buildPartial();
@@ -12191,7 +12395,7 @@ public final class Commands {
         } else {
           heroResultCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x80000000;
         return this;
       }
       /**
@@ -12204,14 +12408,14 @@ public final class Commands {
         } else {
           heroResultCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseHeroResultCommand heroResultCommand = 8;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseHeroResultCommand.Builder getHeroResultCommandBuilder() {
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x80000000;
         onChanged();
         return getHeroResultCommandFieldBuilder().getBuilder();
       }
@@ -12250,7 +12454,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserHeroCommand getUserHeroCommand = 14;</code>
        */
       public boolean hasGetUserHeroCommand() {
-        return ((bitField0_ & 0x80000000) == 0x80000000);
+        return ((bitField1_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserHeroCommand getUserHeroCommand = 14;</code>
@@ -12275,7 +12479,7 @@ public final class Commands {
         } else {
           getUserHeroCommandBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000001;
         return this;
       }
       /**
@@ -12289,7 +12493,7 @@ public final class Commands {
         } else {
           getUserHeroCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000001;
         return this;
       }
       /**
@@ -12297,7 +12501,7 @@ public final class Commands {
        */
       public Builder mergeGetUserHeroCommand(com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand value) {
         if (getUserHeroCommandBuilder_ == null) {
-          if (((bitField0_ & 0x80000000) == 0x80000000) &&
+          if (((bitField1_ & 0x00000001) == 0x00000001) &&
               getUserHeroCommand_ != com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.getDefaultInstance()) {
             getUserHeroCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.newBuilder(getUserHeroCommand_).mergeFrom(value).buildPartial();
@@ -12308,7 +12512,7 @@ public final class Commands {
         } else {
           getUserHeroCommandBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000001;
         return this;
       }
       /**
@@ -12321,14 +12525,14 @@ public final class Commands {
         } else {
           getUserHeroCommandBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x80000000);
+        bitField1_ = (bitField1_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserHeroCommand getUserHeroCommand = 14;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand.Builder getGetUserHeroCommandBuilder() {
-        bitField0_ |= 0x80000000;
+        bitField1_ |= 0x00000001;
         onChanged();
         return getGetUserHeroCommandFieldBuilder().getBuilder();
       }
@@ -12367,7 +12571,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderRankListCommand getLadderRankListCommand = 15;</code>
        */
       public boolean hasGetLadderRankListCommand() {
-        return ((bitField1_ & 0x00000001) == 0x00000001);
+        return ((bitField1_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderRankListCommand getLadderRankListCommand = 15;</code>
@@ -12392,7 +12596,7 @@ public final class Commands {
         } else {
           getLadderRankListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000001;
+        bitField1_ |= 0x00000002;
         return this;
       }
       /**
@@ -12406,7 +12610,7 @@ public final class Commands {
         } else {
           getLadderRankListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000001;
+        bitField1_ |= 0x00000002;
         return this;
       }
       /**
@@ -12414,7 +12618,7 @@ public final class Commands {
        */
       public Builder mergeGetLadderRankListCommand(com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand value) {
         if (getLadderRankListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000001) == 0x00000001) &&
+          if (((bitField1_ & 0x00000002) == 0x00000002) &&
               getLadderRankListCommand_ != com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.getDefaultInstance()) {
             getLadderRankListCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.newBuilder(getLadderRankListCommand_).mergeFrom(value).buildPartial();
@@ -12425,7 +12629,7 @@ public final class Commands {
         } else {
           getLadderRankListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000001;
+        bitField1_ |= 0x00000002;
         return this;
       }
       /**
@@ -12438,14 +12642,14 @@ public final class Commands {
         } else {
           getLadderRankListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000001);
+        bitField1_ = (bitField1_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderRankListCommand getLadderRankListCommand = 15;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseGetLadderRankListCommand.Builder getGetLadderRankListCommandBuilder() {
-        bitField1_ |= 0x00000001;
+        bitField1_ |= 0x00000002;
         onChanged();
         return getGetLadderRankListCommandFieldBuilder().getBuilder();
       }
@@ -12484,7 +12688,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;</code>
        */
       public boolean hasGetUserLadderRankListCommand() {
-        return ((bitField1_ & 0x00000002) == 0x00000002);
+        return ((bitField1_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;</code>
@@ -12509,7 +12713,7 @@ public final class Commands {
         } else {
           getUserLadderRankListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -12523,7 +12727,7 @@ public final class Commands {
         } else {
           getUserLadderRankListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -12531,7 +12735,7 @@ public final class Commands {
        */
       public Builder mergeGetUserLadderRankListCommand(com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand value) {
         if (getUserLadderRankListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000002) == 0x00000002) &&
+          if (((bitField1_ & 0x00000004) == 0x00000004) &&
               getUserLadderRankListCommand_ != com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.getDefaultInstance()) {
             getUserLadderRankListCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.newBuilder(getUserLadderRankListCommand_).mergeFrom(value).buildPartial();
@@ -12542,7 +12746,7 @@ public final class Commands {
         } else {
           getUserLadderRankListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         return this;
       }
       /**
@@ -12555,14 +12759,14 @@ public final class Commands {
         } else {
           getUserLadderRankListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000002);
+        bitField1_ = (bitField1_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserLadderRankListCommand getUserLadderRankListCommand = 16;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseGetUserLadderRankListCommand.Builder getGetUserLadderRankListCommandBuilder() {
-        bitField1_ |= 0x00000002;
+        bitField1_ |= 0x00000004;
         onChanged();
         return getGetUserLadderRankListCommandFieldBuilder().getBuilder();
       }
@@ -12601,7 +12805,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseAttackLadderModeCommand attackLadderModeCommand = 17;</code>
        */
       public boolean hasAttackLadderModeCommand() {
-        return ((bitField1_ & 0x00000004) == 0x00000004);
+        return ((bitField1_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAttackLadderModeCommand attackLadderModeCommand = 17;</code>
@@ -12626,7 +12830,7 @@ public final class Commands {
         } else {
           attackLadderModeCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -12640,7 +12844,7 @@ public final class Commands {
         } else {
           attackLadderModeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -12648,7 +12852,7 @@ public final class Commands {
        */
       public Builder mergeAttackLadderModeCommand(com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand value) {
         if (attackLadderModeCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000004) == 0x00000004) &&
+          if (((bitField1_ & 0x00000008) == 0x00000008) &&
               attackLadderModeCommand_ != com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.getDefaultInstance()) {
             attackLadderModeCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.newBuilder(attackLadderModeCommand_).mergeFrom(value).buildPartial();
@@ -12659,7 +12863,7 @@ public final class Commands {
         } else {
           attackLadderModeCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         return this;
       }
       /**
@@ -12672,14 +12876,14 @@ public final class Commands {
         } else {
           attackLadderModeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000004);
+        bitField1_ = (bitField1_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAttackLadderModeCommand attackLadderModeCommand = 17;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseAttackLadderModeCommand.Builder getAttackLadderModeCommandBuilder() {
-        bitField1_ |= 0x00000004;
+        bitField1_ |= 0x00000008;
         onChanged();
         return getAttackLadderModeCommandFieldBuilder().getBuilder();
       }
@@ -12718,7 +12922,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserMailListCommand getUserMailListCommand = 18;</code>
        */
       public boolean hasGetUserMailListCommand() {
-        return ((bitField1_ & 0x00000008) == 0x00000008);
+        return ((bitField1_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserMailListCommand getUserMailListCommand = 18;</code>
@@ -12743,7 +12947,7 @@ public final class Commands {
         } else {
           getUserMailListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -12757,7 +12961,7 @@ public final class Commands {
         } else {
           getUserMailListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -12765,7 +12969,7 @@ public final class Commands {
        */
       public Builder mergeGetUserMailListCommand(com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand value) {
         if (getUserMailListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000008) == 0x00000008) &&
+          if (((bitField1_ & 0x00000010) == 0x00000010) &&
               getUserMailListCommand_ != com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.getDefaultInstance()) {
             getUserMailListCommand_ =
               com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.newBuilder(getUserMailListCommand_).mergeFrom(value).buildPartial();
@@ -12776,7 +12980,7 @@ public final class Commands {
         } else {
           getUserMailListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         return this;
       }
       /**
@@ -12789,14 +12993,14 @@ public final class Commands {
         } else {
           getUserMailListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000008);
+        bitField1_ = (bitField1_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserMailListCommand getUserMailListCommand = 18;</code>
        */
       public com.trans.pixel.protoc.MailProto.ResponseGetUserMailListCommand.Builder getGetUserMailListCommandBuilder() {
-        bitField1_ |= 0x00000008;
+        bitField1_ |= 0x00000010;
         onChanged();
         return getGetUserMailListCommandFieldBuilder().getBuilder();
       }
@@ -12835,7 +13039,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseSendRewardCommand sendRewardCommand = 19;</code>
        */
       public boolean hasSendRewardCommand() {
-        return ((bitField1_ & 0x00000010) == 0x00000010);
+        return ((bitField1_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseSendRewardCommand sendRewardCommand = 19;</code>
@@ -12860,7 +13064,7 @@ public final class Commands {
         } else {
           sendRewardCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -12874,7 +13078,7 @@ public final class Commands {
         } else {
           sendRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -12882,7 +13086,7 @@ public final class Commands {
        */
       public Builder mergeSendRewardCommand(com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand value) {
         if (sendRewardCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000010) == 0x00000010) &&
+          if (((bitField1_ & 0x00000020) == 0x00000020) &&
               sendRewardCommand_ != com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.getDefaultInstance()) {
             sendRewardCommand_ =
               com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.newBuilder(sendRewardCommand_).mergeFrom(value).buildPartial();
@@ -12893,7 +13097,7 @@ public final class Commands {
         } else {
           sendRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         return this;
       }
       /**
@@ -12906,14 +13110,14 @@ public final class Commands {
         } else {
           sendRewardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000010);
+        bitField1_ = (bitField1_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseSendRewardCommand sendRewardCommand = 19;</code>
        */
       public com.trans.pixel.protoc.MailProto.ResponseSendRewardCommand.Builder getSendRewardCommandBuilder() {
-        bitField1_ |= 0x00000010;
+        bitField1_ |= 0x00000020;
         onChanged();
         return getSendRewardCommandFieldBuilder().getBuilder();
       }
@@ -12952,7 +13156,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
        */
       public boolean hasMessageCommand() {
-        return ((bitField1_ & 0x00000020) == 0x00000020);
+        return ((bitField1_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
@@ -12977,7 +13181,7 @@ public final class Commands {
         } else {
           messageCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000040;
         return this;
       }
       /**
@@ -12991,7 +13195,7 @@ public final class Commands {
         } else {
           messageCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000040;
         return this;
       }
       /**
@@ -12999,7 +13203,7 @@ public final class Commands {
        */
       public Builder mergeMessageCommand(com.trans.pixel.protoc.Commands.ResponseMessageCommand value) {
         if (messageCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000020) == 0x00000020) &&
+          if (((bitField1_ & 0x00000040) == 0x00000040) &&
               messageCommand_ != com.trans.pixel.protoc.Commands.ResponseMessageCommand.getDefaultInstance()) {
             messageCommand_ =
               com.trans.pixel.protoc.Commands.ResponseMessageCommand.newBuilder(messageCommand_).mergeFrom(value).buildPartial();
@@ -13010,7 +13214,7 @@ public final class Commands {
         } else {
           messageCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000040;
         return this;
       }
       /**
@@ -13023,14 +13227,14 @@ public final class Commands {
         } else {
           messageCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000020);
+        bitField1_ = (bitField1_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageCommand messageCommand = 20;</code>
        */
       public com.trans.pixel.protoc.Commands.ResponseMessageCommand.Builder getMessageCommandBuilder() {
-        bitField1_ |= 0x00000020;
+        bitField1_ |= 0x00000040;
         onChanged();
         return getMessageCommandFieldBuilder().getBuilder();
       }
@@ -13069,7 +13273,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
        */
       public boolean hasGetUserFriendListCommand() {
-        return ((bitField1_ & 0x00000040) == 0x00000040);
+        return ((bitField1_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
@@ -13094,7 +13298,7 @@ public final class Commands {
         } else {
           getUserFriendListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000080;
         return this;
       }
       /**
@@ -13108,7 +13312,7 @@ public final class Commands {
         } else {
           getUserFriendListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000080;
         return this;
       }
       /**
@@ -13116,7 +13320,7 @@ public final class Commands {
        */
       public Builder mergeGetUserFriendListCommand(com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand value) {
         if (getUserFriendListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000040) == 0x00000040) &&
+          if (((bitField1_ & 0x00000080) == 0x00000080) &&
               getUserFriendListCommand_ != com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.getDefaultInstance()) {
             getUserFriendListCommand_ =
               com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.newBuilder(getUserFriendListCommand_).mergeFrom(value).buildPartial();
@@ -13127,7 +13331,7 @@ public final class Commands {
         } else {
           getUserFriendListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000080;
         return this;
       }
       /**
@@ -13140,14 +13344,14 @@ public final class Commands {
         } else {
           getUserFriendListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserFriendListCommand getUserFriendListCommand = 21;</code>
        */
       public com.trans.pixel.protoc.MailProto.ResponseGetUserFriendListCommand.Builder getGetUserFriendListCommandBuilder() {
-        bitField1_ |= 0x00000040;
+        bitField1_ |= 0x00000080;
         onChanged();
         return getGetUserFriendListCommandFieldBuilder().getBuilder();
       }
@@ -13186,7 +13390,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserEquipCommand userEquipCommand = 23;</code>
        */
       public boolean hasUserEquipCommand() {
-        return ((bitField1_ & 0x00000080) == 0x00000080);
+        return ((bitField1_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserEquipCommand userEquipCommand = 23;</code>
@@ -13211,7 +13415,7 @@ public final class Commands {
         } else {
           userEquipCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000100;
         return this;
       }
       /**
@@ -13225,7 +13429,7 @@ public final class Commands {
         } else {
           userEquipCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000100;
         return this;
       }
       /**
@@ -13233,7 +13437,7 @@ public final class Commands {
        */
       public Builder mergeUserEquipCommand(com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand value) {
         if (userEquipCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000080) == 0x00000080) &&
+          if (((bitField1_ & 0x00000100) == 0x00000100) &&
               userEquipCommand_ != com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.getDefaultInstance()) {
             userEquipCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.newBuilder(userEquipCommand_).mergeFrom(value).buildPartial();
@@ -13244,7 +13448,7 @@ public final class Commands {
         } else {
           userEquipCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000100;
         return this;
       }
       /**
@@ -13257,14 +13461,14 @@ public final class Commands {
         } else {
           userEquipCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000080);
+        bitField1_ = (bitField1_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetUserEquipCommand userEquipCommand = 23;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand.Builder getUserEquipCommandBuilder() {
-        bitField1_ |= 0x00000080;
+        bitField1_ |= 0x00000100;
         onChanged();
         return getUserEquipCommandFieldBuilder().getBuilder();
       }
@@ -13303,7 +13507,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseAreaCommand areaCommand = 24;</code>
        */
       public boolean hasAreaCommand() {
-        return ((bitField1_ & 0x00000100) == 0x00000100);
+        return ((bitField1_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAreaCommand areaCommand = 24;</code>
@@ -13328,7 +13532,7 @@ public final class Commands {
         } else {
           areaCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000200;
         return this;
       }
       /**
@@ -13342,7 +13546,7 @@ public final class Commands {
         } else {
           areaCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000200;
         return this;
       }
       /**
@@ -13350,7 +13554,7 @@ public final class Commands {
        */
       public Builder mergeAreaCommand(com.trans.pixel.protoc.AreaProto.ResponseAreaCommand value) {
         if (areaCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000100) == 0x00000100) &&
+          if (((bitField1_ & 0x00000200) == 0x00000200) &&
               areaCommand_ != com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.getDefaultInstance()) {
             areaCommand_ =
               com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.newBuilder(areaCommand_).mergeFrom(value).buildPartial();
@@ -13361,7 +13565,7 @@ public final class Commands {
         } else {
           areaCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000200;
         return this;
       }
       /**
@@ -13374,14 +13578,14 @@ public final class Commands {
         } else {
           areaCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000100);
+        bitField1_ = (bitField1_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAreaCommand areaCommand = 24;</code>
        */
       public com.trans.pixel.protoc.AreaProto.ResponseAreaCommand.Builder getAreaCommandBuilder() {
-        bitField1_ |= 0x00000100;
+        bitField1_ |= 0x00000200;
         onChanged();
         return getAreaCommandFieldBuilder().getBuilder();
       }
@@ -13420,7 +13624,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseAreaResourceCommand areaResourceCommand = 136;</code>
        */
       public boolean hasAreaResourceCommand() {
-        return ((bitField1_ & 0x00000200) == 0x00000200);
+        return ((bitField1_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAreaResourceCommand areaResourceCommand = 136;</code>
@@ -13445,7 +13649,7 @@ public final class Commands {
         } else {
           areaResourceCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000400;
         return this;
       }
       /**
@@ -13459,7 +13663,7 @@ public final class Commands {
         } else {
           areaResourceCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000400;
         return this;
       }
       /**
@@ -13467,7 +13671,7 @@ public final class Commands {
        */
       public Builder mergeAreaResourceCommand(com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand value) {
         if (areaResourceCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000200) == 0x00000200) &&
+          if (((bitField1_ & 0x00000400) == 0x00000400) &&
               areaResourceCommand_ != com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.getDefaultInstance()) {
             areaResourceCommand_ =
               com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.newBuilder(areaResourceCommand_).mergeFrom(value).buildPartial();
@@ -13478,7 +13682,7 @@ public final class Commands {
         } else {
           areaResourceCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000400;
         return this;
       }
       /**
@@ -13491,14 +13695,14 @@ public final class Commands {
         } else {
           areaResourceCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000200);
+        bitField1_ = (bitField1_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAreaResourceCommand areaResourceCommand = 136;</code>
        */
       public com.trans.pixel.protoc.AreaProto.ResponseAreaResourceCommand.Builder getAreaResourceCommandBuilder() {
-        bitField1_ |= 0x00000200;
+        bitField1_ |= 0x00000400;
         onChanged();
         return getAreaResourceCommandFieldBuilder().getBuilder();
       }
@@ -13537,7 +13741,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;</code>
        */
       public boolean hasResourceMineInfoCommand() {
-        return ((bitField1_ & 0x00000400) == 0x00000400);
+        return ((bitField1_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;</code>
@@ -13562,7 +13766,7 @@ public final class Commands {
         } else {
           resourceMineInfoCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00000800;
         return this;
       }
       /**
@@ -13576,7 +13780,7 @@ public final class Commands {
         } else {
           resourceMineInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00000800;
         return this;
       }
       /**
@@ -13584,7 +13788,7 @@ public final class Commands {
        */
       public Builder mergeResourceMineInfoCommand(com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand value) {
         if (resourceMineInfoCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000400) == 0x00000400) &&
+          if (((bitField1_ & 0x00000800) == 0x00000800) &&
               resourceMineInfoCommand_ != com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.getDefaultInstance()) {
             resourceMineInfoCommand_ =
               com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.newBuilder(resourceMineInfoCommand_).mergeFrom(value).buildPartial();
@@ -13595,7 +13799,7 @@ public final class Commands {
         } else {
           resourceMineInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00000800;
         return this;
       }
       /**
@@ -13608,14 +13812,14 @@ public final class Commands {
         } else {
           resourceMineInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000400);
+        bitField1_ = (bitField1_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAttackResourceMineInfoCommand resourceMineInfoCommand = 124;</code>
        */
       public com.trans.pixel.protoc.AreaProto.ResponseAttackResourceMineInfoCommand.Builder getResourceMineInfoCommandBuilder() {
-        bitField1_ |= 0x00000400;
+        bitField1_ |= 0x00000800;
         onChanged();
         return getResourceMineInfoCommandFieldBuilder().getBuilder();
       }
@@ -13654,7 +13858,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUnionInfoCommand unionInfoCommand = 27;</code>
        */
       public boolean hasUnionInfoCommand() {
-        return ((bitField1_ & 0x00000800) == 0x00000800);
+        return ((bitField1_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionInfoCommand unionInfoCommand = 27;</code>
@@ -13679,7 +13883,7 @@ public final class Commands {
         } else {
           unionInfoCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00001000;
         return this;
       }
       /**
@@ -13693,7 +13897,7 @@ public final class Commands {
         } else {
           unionInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00001000;
         return this;
       }
       /**
@@ -13701,7 +13905,7 @@ public final class Commands {
        */
       public Builder mergeUnionInfoCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand value) {
         if (unionInfoCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00000800) == 0x00000800) &&
+          if (((bitField1_ & 0x00001000) == 0x00001000) &&
               unionInfoCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.getDefaultInstance()) {
             unionInfoCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.newBuilder(unionInfoCommand_).mergeFrom(value).buildPartial();
@@ -13712,7 +13916,7 @@ public final class Commands {
         } else {
           unionInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00001000;
         return this;
       }
       /**
@@ -13725,14 +13929,14 @@ public final class Commands {
         } else {
           unionInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00000800);
+        bitField1_ = (bitField1_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionInfoCommand unionInfoCommand = 27;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseUnionInfoCommand.Builder getUnionInfoCommandBuilder() {
-        bitField1_ |= 0x00000800;
+        bitField1_ |= 0x00001000;
         onChanged();
         return getUnionInfoCommandFieldBuilder().getBuilder();
       }
@@ -13771,7 +13975,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUnionListCommand unionListCommand = 28;</code>
        */
       public boolean hasUnionListCommand() {
-        return ((bitField1_ & 0x00001000) == 0x00001000);
+        return ((bitField1_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionListCommand unionListCommand = 28;</code>
@@ -13796,7 +14000,7 @@ public final class Commands {
         } else {
           unionListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00001000;
+        bitField1_ |= 0x00002000;
         return this;
       }
       /**
@@ -13810,7 +14014,7 @@ public final class Commands {
         } else {
           unionListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00001000;
+        bitField1_ |= 0x00002000;
         return this;
       }
       /**
@@ -13818,7 +14022,7 @@ public final class Commands {
        */
       public Builder mergeUnionListCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand value) {
         if (unionListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00001000) == 0x00001000) &&
+          if (((bitField1_ & 0x00002000) == 0x00002000) &&
               unionListCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.getDefaultInstance()) {
             unionListCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.newBuilder(unionListCommand_).mergeFrom(value).buildPartial();
@@ -13829,7 +14033,7 @@ public final class Commands {
         } else {
           unionListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00001000;
+        bitField1_ |= 0x00002000;
         return this;
       }
       /**
@@ -13842,14 +14046,14 @@ public final class Commands {
         } else {
           unionListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00001000);
+        bitField1_ = (bitField1_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionListCommand unionListCommand = 28;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseUnionListCommand.Builder getUnionListCommandBuilder() {
-        bitField1_ |= 0x00001000;
+        bitField1_ |= 0x00002000;
         onChanged();
         return getUnionListCommandFieldBuilder().getBuilder();
       }
@@ -13888,7 +14092,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardListCommand messageBoardListCommand = 29;</code>
        */
       public boolean hasMessageBoardListCommand() {
-        return ((bitField1_ & 0x00002000) == 0x00002000);
+        return ((bitField1_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardListCommand messageBoardListCommand = 29;</code>
@@ -13913,7 +14117,7 @@ public final class Commands {
         } else {
           messageBoardListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00004000;
         return this;
       }
       /**
@@ -13927,7 +14131,7 @@ public final class Commands {
         } else {
           messageBoardListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00004000;
         return this;
       }
       /**
@@ -13935,7 +14139,7 @@ public final class Commands {
        */
       public Builder mergeMessageBoardListCommand(com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand value) {
         if (messageBoardListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00002000) == 0x00002000) &&
+          if (((bitField1_ & 0x00004000) == 0x00004000) &&
               messageBoardListCommand_ != com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.getDefaultInstance()) {
             messageBoardListCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.newBuilder(messageBoardListCommand_).mergeFrom(value).buildPartial();
@@ -13946,7 +14150,7 @@ public final class Commands {
         } else {
           messageBoardListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00004000;
         return this;
       }
       /**
@@ -13959,14 +14163,14 @@ public final class Commands {
         } else {
           messageBoardListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00002000);
+        bitField1_ = (bitField1_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardListCommand messageBoardListCommand = 29;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardListCommand.Builder getMessageBoardListCommandBuilder() {
-        bitField1_ |= 0x00002000;
+        bitField1_ |= 0x00004000;
         onChanged();
         return getMessageBoardListCommandFieldBuilder().getBuilder();
       }
@@ -14005,7 +14209,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardCommand messageBoardCommand = 30;</code>
        */
       public boolean hasMessageBoardCommand() {
-        return ((bitField1_ & 0x00004000) == 0x00004000);
+        return ((bitField1_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardCommand messageBoardCommand = 30;</code>
@@ -14030,7 +14234,7 @@ public final class Commands {
         } else {
           messageBoardCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00008000;
         return this;
       }
       /**
@@ -14044,7 +14248,7 @@ public final class Commands {
         } else {
           messageBoardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00008000;
         return this;
       }
       /**
@@ -14052,7 +14256,7 @@ public final class Commands {
        */
       public Builder mergeMessageBoardCommand(com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand value) {
         if (messageBoardCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00004000) == 0x00004000) &&
+          if (((bitField1_ & 0x00008000) == 0x00008000) &&
               messageBoardCommand_ != com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.getDefaultInstance()) {
             messageBoardCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.newBuilder(messageBoardCommand_).mergeFrom(value).buildPartial();
@@ -14063,7 +14267,7 @@ public final class Commands {
         } else {
           messageBoardCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00008000;
         return this;
       }
       /**
@@ -14076,14 +14280,14 @@ public final class Commands {
         } else {
           messageBoardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00004000);
+        bitField1_ = (bitField1_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMessageBoardCommand messageBoardCommand = 30;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.ResponseMessageBoardCommand.Builder getMessageBoardCommandBuilder() {
-        bitField1_ |= 0x00004000;
+        bitField1_ |= 0x00008000;
         onChanged();
         return getMessageBoardCommandFieldBuilder().getBuilder();
       }
@@ -14122,7 +14326,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserTeamListCommand userTeamListCommand = 31;</code>
        */
       public boolean hasUserTeamListCommand() {
-        return ((bitField1_ & 0x00008000) == 0x00008000);
+        return ((bitField1_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTeamListCommand userTeamListCommand = 31;</code>
@@ -14147,7 +14351,7 @@ public final class Commands {
         } else {
           userTeamListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00010000;
         return this;
       }
       /**
@@ -14161,7 +14365,7 @@ public final class Commands {
         } else {
           userTeamListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00010000;
         return this;
       }
       /**
@@ -14169,7 +14373,7 @@ public final class Commands {
        */
       public Builder mergeUserTeamListCommand(com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand value) {
         if (userTeamListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00008000) == 0x00008000) &&
+          if (((bitField1_ & 0x00010000) == 0x00010000) &&
               userTeamListCommand_ != com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.getDefaultInstance()) {
             userTeamListCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.newBuilder(userTeamListCommand_).mergeFrom(value).buildPartial();
@@ -14180,7 +14384,7 @@ public final class Commands {
         } else {
           userTeamListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00010000;
         return this;
       }
       /**
@@ -14193,14 +14397,14 @@ public final class Commands {
         } else {
           userTeamListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00008000);
+        bitField1_ = (bitField1_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTeamListCommand userTeamListCommand = 31;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseUserTeamListCommand.Builder getUserTeamListCommandBuilder() {
-        bitField1_ |= 0x00008000;
+        bitField1_ |= 0x00010000;
         onChanged();
         return getUserTeamListCommandFieldBuilder().getBuilder();
       }
@@ -14239,7 +14443,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;</code>
        */
       public boolean hasLadderUserInfoCommand() {
-        return ((bitField1_ & 0x00010000) == 0x00010000);
+        return ((bitField1_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;</code>
@@ -14264,7 +14468,7 @@ public final class Commands {
         } else {
           ladderUserInfoCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00020000;
         return this;
       }
       /**
@@ -14278,7 +14482,7 @@ public final class Commands {
         } else {
           ladderUserInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00020000;
         return this;
       }
       /**
@@ -14286,7 +14490,7 @@ public final class Commands {
        */
       public Builder mergeLadderUserInfoCommand(com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand value) {
         if (ladderUserInfoCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00010000) == 0x00010000) &&
+          if (((bitField1_ & 0x00020000) == 0x00020000) &&
               ladderUserInfoCommand_ != com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.getDefaultInstance()) {
             ladderUserInfoCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.newBuilder(ladderUserInfoCommand_).mergeFrom(value).buildPartial();
@@ -14297,7 +14501,7 @@ public final class Commands {
         } else {
           ladderUserInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00020000;
         return this;
       }
       /**
@@ -14310,14 +14514,14 @@ public final class Commands {
         } else {
           ladderUserInfoCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00010000);
+        bitField1_ = (bitField1_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseGetLadderUserInfoCommand ladderUserInfoCommand = 32;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseGetLadderUserInfoCommand.Builder getLadderUserInfoCommandBuilder() {
-        bitField1_ |= 0x00010000;
+        bitField1_ |= 0x00020000;
         onChanged();
         return getLadderUserInfoCommandFieldBuilder().getBuilder();
       }
@@ -14356,7 +14560,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseEquipComposeCommand equipComposeCommand = 33;</code>
        */
       public boolean hasEquipComposeCommand() {
-        return ((bitField1_ & 0x00020000) == 0x00020000);
+        return ((bitField1_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipComposeCommand equipComposeCommand = 33;</code>
@@ -14381,7 +14585,7 @@ public final class Commands {
         } else {
           equipComposeCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00040000;
         return this;
       }
       /**
@@ -14395,7 +14599,7 @@ public final class Commands {
         } else {
           equipComposeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00040000;
         return this;
       }
       /**
@@ -14403,7 +14607,7 @@ public final class Commands {
        */
       public Builder mergeEquipComposeCommand(com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand value) {
         if (equipComposeCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00020000) == 0x00020000) &&
+          if (((bitField1_ & 0x00040000) == 0x00040000) &&
               equipComposeCommand_ != com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.getDefaultInstance()) {
             equipComposeCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.newBuilder(equipComposeCommand_).mergeFrom(value).buildPartial();
@@ -14414,7 +14618,7 @@ public final class Commands {
         } else {
           equipComposeCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00040000;
         return this;
       }
       /**
@@ -14427,14 +14631,14 @@ public final class Commands {
         } else {
           equipComposeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00020000);
+        bitField1_ = (bitField1_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipComposeCommand equipComposeCommand = 33;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseEquipComposeCommand.Builder getEquipComposeCommandBuilder() {
-        bitField1_ |= 0x00020000;
+        bitField1_ |= 0x00040000;
         onChanged();
         return getEquipComposeCommandFieldBuilder().getBuilder();
       }
@@ -14473,7 +14677,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserPropCommand userPropCommand = 34;</code>
        */
       public boolean hasUserPropCommand() {
-        return ((bitField1_ & 0x00040000) == 0x00040000);
+        return ((bitField1_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserPropCommand userPropCommand = 34;</code>
@@ -14498,7 +14702,7 @@ public final class Commands {
         } else {
           userPropCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00080000;
         return this;
       }
       /**
@@ -14512,7 +14716,7 @@ public final class Commands {
         } else {
           userPropCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00080000;
         return this;
       }
       /**
@@ -14520,7 +14724,7 @@ public final class Commands {
        */
       public Builder mergeUserPropCommand(com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand value) {
         if (userPropCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00040000) == 0x00040000) &&
+          if (((bitField1_ & 0x00080000) == 0x00080000) &&
               userPropCommand_ != com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.getDefaultInstance()) {
             userPropCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.newBuilder(userPropCommand_).mergeFrom(value).buildPartial();
@@ -14531,7 +14735,7 @@ public final class Commands {
         } else {
           userPropCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00080000;
         return this;
       }
       /**
@@ -14544,14 +14748,14 @@ public final class Commands {
         } else {
           userPropCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00040000);
+        bitField1_ = (bitField1_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserPropCommand userPropCommand = 34;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand.Builder getUserPropCommandBuilder() {
-        bitField1_ |= 0x00040000;
+        bitField1_ |= 0x00080000;
         onChanged();
         return getUserPropCommandFieldBuilder().getBuilder();
       }
@@ -14590,7 +14794,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUsePropCommand usePropCommand = 35;</code>
        */
       public boolean hasUsePropCommand() {
-        return ((bitField1_ & 0x00080000) == 0x00080000);
+        return ((bitField1_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUsePropCommand usePropCommand = 35;</code>
@@ -14615,7 +14819,7 @@ public final class Commands {
         } else {
           usePropCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00080000;
+        bitField1_ |= 0x00100000;
         return this;
       }
       /**
@@ -14629,7 +14833,7 @@ public final class Commands {
         } else {
           usePropCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00080000;
+        bitField1_ |= 0x00100000;
         return this;
       }
       /**
@@ -14637,7 +14841,7 @@ public final class Commands {
        */
       public Builder mergeUsePropCommand(com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand value) {
         if (usePropCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00080000) == 0x00080000) &&
+          if (((bitField1_ & 0x00100000) == 0x00100000) &&
               usePropCommand_ != com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.getDefaultInstance()) {
             usePropCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.newBuilder(usePropCommand_).mergeFrom(value).buildPartial();
@@ -14648,7 +14852,7 @@ public final class Commands {
         } else {
           usePropCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00080000;
+        bitField1_ |= 0x00100000;
         return this;
       }
       /**
@@ -14661,14 +14865,14 @@ public final class Commands {
         } else {
           usePropCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00080000);
+        bitField1_ = (bitField1_ & ~0x00100000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUsePropCommand usePropCommand = 35;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand.Builder getUsePropCommandBuilder() {
-        bitField1_ |= 0x00080000;
+        bitField1_ |= 0x00100000;
         onChanged();
         return getUsePropCommandFieldBuilder().getBuilder();
       }
@@ -14707,7 +14911,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseSignCommand signCommand = 37;</code>
        */
       public boolean hasSignCommand() {
-        return ((bitField1_ & 0x00100000) == 0x00100000);
+        return ((bitField1_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseSignCommand signCommand = 37;</code>
@@ -14732,7 +14936,7 @@ public final class Commands {
         } else {
           signCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00100000;
+        bitField1_ |= 0x00200000;
         return this;
       }
       /**
@@ -14746,7 +14950,7 @@ public final class Commands {
         } else {
           signCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00100000;
+        bitField1_ |= 0x00200000;
         return this;
       }
       /**
@@ -14754,7 +14958,7 @@ public final class Commands {
        */
       public Builder mergeSignCommand(com.trans.pixel.protoc.RechargeProto.ResponseSignCommand value) {
         if (signCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00100000) == 0x00100000) &&
+          if (((bitField1_ & 0x00200000) == 0x00200000) &&
               signCommand_ != com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.getDefaultInstance()) {
             signCommand_ =
               com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.newBuilder(signCommand_).mergeFrom(value).buildPartial();
@@ -14765,7 +14969,7 @@ public final class Commands {
         } else {
           signCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00100000;
+        bitField1_ |= 0x00200000;
         return this;
       }
       /**
@@ -14778,14 +14982,14 @@ public final class Commands {
         } else {
           signCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00100000);
+        bitField1_ = (bitField1_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseSignCommand signCommand = 37;</code>
        */
       public com.trans.pixel.protoc.RechargeProto.ResponseSignCommand.Builder getSignCommandBuilder() {
-        bitField1_ |= 0x00100000;
+        bitField1_ |= 0x00200000;
         onChanged();
         return getSignCommandFieldBuilder().getBuilder();
       }
@@ -14824,7 +15028,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;</code>
        */
       public boolean hasMohuaUserDataCommand() {
-        return ((bitField1_ & 0x00200000) == 0x00200000);
+        return ((bitField1_ & 0x00400000) == 0x00400000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;</code>
@@ -14849,7 +15053,7 @@ public final class Commands {
         } else {
           mohuaUserDataCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00200000;
+        bitField1_ |= 0x00400000;
         return this;
       }
       /**
@@ -14863,7 +15067,7 @@ public final class Commands {
         } else {
           mohuaUserDataCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00200000;
+        bitField1_ |= 0x00400000;
         return this;
       }
       /**
@@ -14871,7 +15075,7 @@ public final class Commands {
        */
       public Builder mergeMohuaUserDataCommand(com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand value) {
         if (mohuaUserDataCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00200000) == 0x00200000) &&
+          if (((bitField1_ & 0x00400000) == 0x00400000) &&
               mohuaUserDataCommand_ != com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.getDefaultInstance()) {
             mohuaUserDataCommand_ =
               com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.newBuilder(mohuaUserDataCommand_).mergeFrom(value).buildPartial();
@@ -14882,7 +15086,7 @@ public final class Commands {
         } else {
           mohuaUserDataCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00200000;
+        bitField1_ |= 0x00400000;
         return this;
       }
       /**
@@ -14895,14 +15099,14 @@ public final class Commands {
         } else {
           mohuaUserDataCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00200000);
+        bitField1_ = (bitField1_ & ~0x00400000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseMohuaUserDataCommand mohuaUserDataCommand = 38;</code>
        */
       public com.trans.pixel.protoc.MohuaProto.ResponseMohuaUserDataCommand.Builder getMohuaUserDataCommandBuilder() {
-        bitField1_ |= 0x00200000;
+        bitField1_ |= 0x00400000;
         onChanged();
         return getMohuaUserDataCommandFieldBuilder().getBuilder();
       }
@@ -14941,7 +15145,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseAchieveListCommand achieveListCommand = 40;</code>
        */
       public boolean hasAchieveListCommand() {
-        return ((bitField1_ & 0x00400000) == 0x00400000);
+        return ((bitField1_ & 0x00800000) == 0x00800000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAchieveListCommand achieveListCommand = 40;</code>
@@ -14966,7 +15170,7 @@ public final class Commands {
         } else {
           achieveListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00400000;
+        bitField1_ |= 0x00800000;
         return this;
       }
       /**
@@ -14980,7 +15184,7 @@ public final class Commands {
         } else {
           achieveListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00400000;
+        bitField1_ |= 0x00800000;
         return this;
       }
       /**
@@ -14988,7 +15192,7 @@ public final class Commands {
        */
       public Builder mergeAchieveListCommand(com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand value) {
         if (achieveListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00400000) == 0x00400000) &&
+          if (((bitField1_ & 0x00800000) == 0x00800000) &&
               achieveListCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.getDefaultInstance()) {
             achieveListCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.newBuilder(achieveListCommand_).mergeFrom(value).buildPartial();
@@ -14999,7 +15203,7 @@ public final class Commands {
         } else {
           achieveListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00400000;
+        bitField1_ |= 0x00800000;
         return this;
       }
       /**
@@ -15012,14 +15216,14 @@ public final class Commands {
         } else {
           achieveListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00400000);
+        bitField1_ = (bitField1_ & ~0x00800000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseAchieveListCommand achieveListCommand = 40;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand.Builder getAchieveListCommandBuilder() {
-        bitField1_ |= 0x00400000;
+        bitField1_ |= 0x00800000;
         onChanged();
         return getAchieveListCommandFieldBuilder().getBuilder();
       }
@@ -15058,7 +15262,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseRichangListCommand richangListCommand = 42;</code>
        */
       public boolean hasRichangListCommand() {
-        return ((bitField1_ & 0x00800000) == 0x00800000);
+        return ((bitField1_ & 0x01000000) == 0x01000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRichangListCommand richangListCommand = 42;</code>
@@ -15083,7 +15287,7 @@ public final class Commands {
         } else {
           richangListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x00800000;
+        bitField1_ |= 0x01000000;
         return this;
       }
       /**
@@ -15097,7 +15301,7 @@ public final class Commands {
         } else {
           richangListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x00800000;
+        bitField1_ |= 0x01000000;
         return this;
       }
       /**
@@ -15105,7 +15309,7 @@ public final class Commands {
        */
       public Builder mergeRichangListCommand(com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand value) {
         if (richangListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x00800000) == 0x00800000) &&
+          if (((bitField1_ & 0x01000000) == 0x01000000) &&
               richangListCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.getDefaultInstance()) {
             richangListCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.newBuilder(richangListCommand_).mergeFrom(value).buildPartial();
@@ -15116,7 +15320,7 @@ public final class Commands {
         } else {
           richangListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x00800000;
+        bitField1_ |= 0x01000000;
         return this;
       }
       /**
@@ -15129,14 +15333,14 @@ public final class Commands {
         } else {
           richangListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x00800000);
+        bitField1_ = (bitField1_ & ~0x01000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRichangListCommand richangListCommand = 42;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseRichangListCommand.Builder getRichangListCommandBuilder() {
-        bitField1_ |= 0x00800000;
+        bitField1_ |= 0x01000000;
         onChanged();
         return getRichangListCommandFieldBuilder().getBuilder();
       }
@@ -15175,7 +15379,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;</code>
        */
       public boolean hasKaifu2ActivityCommand() {
-        return ((bitField1_ & 0x01000000) == 0x01000000);
+        return ((bitField1_ & 0x02000000) == 0x02000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;</code>
@@ -15200,7 +15404,7 @@ public final class Commands {
         } else {
           kaifu2ActivityCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x01000000;
+        bitField1_ |= 0x02000000;
         return this;
       }
       /**
@@ -15214,7 +15418,7 @@ public final class Commands {
         } else {
           kaifu2ActivityCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x01000000;
+        bitField1_ |= 0x02000000;
         return this;
       }
       /**
@@ -15222,7 +15426,7 @@ public final class Commands {
        */
       public Builder mergeKaifu2ActivityCommand(com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand value) {
         if (kaifu2ActivityCommandBuilder_ == null) {
-          if (((bitField1_ & 0x01000000) == 0x01000000) &&
+          if (((bitField1_ & 0x02000000) == 0x02000000) &&
               kaifu2ActivityCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.getDefaultInstance()) {
             kaifu2ActivityCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.newBuilder(kaifu2ActivityCommand_).mergeFrom(value).buildPartial();
@@ -15233,7 +15437,7 @@ public final class Commands {
         } else {
           kaifu2ActivityCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x01000000;
+        bitField1_ |= 0x02000000;
         return this;
       }
       /**
@@ -15246,14 +15450,14 @@ public final class Commands {
         } else {
           kaifu2ActivityCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x01000000);
+        bitField1_ = (bitField1_ & ~0x02000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifu2ActivityCommand kaifu2ActivityCommand = 43;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseKaifu2ActivityCommand.Builder getKaifu2ActivityCommandBuilder() {
-        bitField1_ |= 0x01000000;
+        bitField1_ |= 0x02000000;
         onChanged();
         return getKaifu2ActivityCommandFieldBuilder().getBuilder();
       }
@@ -15292,7 +15496,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuRewardCommand kaifuRewardCommand = 45;</code>
        */
       public boolean hasKaifuRewardCommand() {
-        return ((bitField1_ & 0x02000000) == 0x02000000);
+        return ((bitField1_ & 0x04000000) == 0x04000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuRewardCommand kaifuRewardCommand = 45;</code>
@@ -15317,7 +15521,7 @@ public final class Commands {
         } else {
           kaifuRewardCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x02000000;
+        bitField1_ |= 0x04000000;
         return this;
       }
       /**
@@ -15331,7 +15535,7 @@ public final class Commands {
         } else {
           kaifuRewardCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x02000000;
+        bitField1_ |= 0x04000000;
         return this;
       }
       /**
@@ -15339,7 +15543,7 @@ public final class Commands {
        */
       public Builder mergeKaifuRewardCommand(com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand value) {
         if (kaifuRewardCommandBuilder_ == null) {
-          if (((bitField1_ & 0x02000000) == 0x02000000) &&
+          if (((bitField1_ & 0x04000000) == 0x04000000) &&
               kaifuRewardCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.getDefaultInstance()) {
             kaifuRewardCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.newBuilder(kaifuRewardCommand_).mergeFrom(value).buildPartial();
@@ -15350,7 +15554,7 @@ public final class Commands {
         } else {
           kaifuRewardCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x02000000;
+        bitField1_ |= 0x04000000;
         return this;
       }
       /**
@@ -15363,14 +15567,14 @@ public final class Commands {
         } else {
           kaifuRewardCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x02000000);
+        bitField1_ = (bitField1_ & ~0x04000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuRewardCommand kaifuRewardCommand = 45;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseKaifuRewardCommand.Builder getKaifuRewardCommandBuilder() {
-        bitField1_ |= 0x02000000;
+        bitField1_ |= 0x04000000;
         onChanged();
         return getKaifuRewardCommandFieldBuilder().getBuilder();
       }
@@ -15409,7 +15613,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuListCommand kaifuListCommand = 46;</code>
        */
       public boolean hasKaifuListCommand() {
-        return ((bitField1_ & 0x04000000) == 0x04000000);
+        return ((bitField1_ & 0x08000000) == 0x08000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuListCommand kaifuListCommand = 46;</code>
@@ -15434,7 +15638,7 @@ public final class Commands {
         } else {
           kaifuListCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x04000000;
+        bitField1_ |= 0x08000000;
         return this;
       }
       /**
@@ -15448,7 +15652,7 @@ public final class Commands {
         } else {
           kaifuListCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x04000000;
+        bitField1_ |= 0x08000000;
         return this;
       }
       /**
@@ -15456,7 +15660,7 @@ public final class Commands {
        */
       public Builder mergeKaifuListCommand(com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand value) {
         if (kaifuListCommandBuilder_ == null) {
-          if (((bitField1_ & 0x04000000) == 0x04000000) &&
+          if (((bitField1_ & 0x08000000) == 0x08000000) &&
               kaifuListCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.getDefaultInstance()) {
             kaifuListCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.newBuilder(kaifuListCommand_).mergeFrom(value).buildPartial();
@@ -15467,7 +15671,7 @@ public final class Commands {
         } else {
           kaifuListCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x04000000;
+        bitField1_ |= 0x08000000;
         return this;
       }
       /**
@@ -15480,14 +15684,14 @@ public final class Commands {
         } else {
           kaifuListCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x04000000);
+        bitField1_ = (bitField1_ & ~0x08000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseKaifuListCommand kaifuListCommand = 46;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseKaifuListCommand.Builder getKaifuListCommandBuilder() {
-        bitField1_ |= 0x04000000;
+        bitField1_ |= 0x08000000;
         onChanged();
         return getKaifuListCommandFieldBuilder().getBuilder();
       }
@@ -15526,7 +15730,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserPokedeCommand userPokedeCommand = 47;</code>
        */
       public boolean hasUserPokedeCommand() {
-        return ((bitField1_ & 0x08000000) == 0x08000000);
+        return ((bitField1_ & 0x10000000) == 0x10000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserPokedeCommand userPokedeCommand = 47;</code>
@@ -15551,7 +15755,7 @@ public final class Commands {
         } else {
           userPokedeCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x08000000;
+        bitField1_ |= 0x10000000;
         return this;
       }
       /**
@@ -15565,7 +15769,7 @@ public final class Commands {
         } else {
           userPokedeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x08000000;
+        bitField1_ |= 0x10000000;
         return this;
       }
       /**
@@ -15573,7 +15777,7 @@ public final class Commands {
        */
       public Builder mergeUserPokedeCommand(com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand value) {
         if (userPokedeCommandBuilder_ == null) {
-          if (((bitField1_ & 0x08000000) == 0x08000000) &&
+          if (((bitField1_ & 0x10000000) == 0x10000000) &&
               userPokedeCommand_ != com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.getDefaultInstance()) {
             userPokedeCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.newBuilder(userPokedeCommand_).mergeFrom(value).buildPartial();
@@ -15584,7 +15788,7 @@ public final class Commands {
         } else {
           userPokedeCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x08000000;
+        bitField1_ |= 0x10000000;
         return this;
       }
       /**
@@ -15597,14 +15801,14 @@ public final class Commands {
         } else {
           userPokedeCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x08000000);
+        bitField1_ = (bitField1_ & ~0x10000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserPokedeCommand userPokedeCommand = 47;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand.Builder getUserPokedeCommandBuilder() {
-        bitField1_ |= 0x08000000;
+        bitField1_ |= 0x10000000;
         onChanged();
         return getUserPokedeCommandFieldBuilder().getBuilder();
       }
@@ -15643,7 +15847,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseRankCommand rankCommand = 48;</code>
        */
       public boolean hasRankCommand() {
-        return ((bitField1_ & 0x10000000) == 0x10000000);
+        return ((bitField1_ & 0x20000000) == 0x20000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRankCommand rankCommand = 48;</code>
@@ -15668,7 +15872,7 @@ public final class Commands {
         } else {
           rankCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x10000000;
+        bitField1_ |= 0x20000000;
         return this;
       }
       /**
@@ -15682,7 +15886,7 @@ public final class Commands {
         } else {
           rankCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x10000000;
+        bitField1_ |= 0x20000000;
         return this;
       }
       /**
@@ -15690,7 +15894,7 @@ public final class Commands {
        */
       public Builder mergeRankCommand(com.trans.pixel.protoc.ActivityProto.ResponseRankCommand value) {
         if (rankCommandBuilder_ == null) {
-          if (((bitField1_ & 0x10000000) == 0x10000000) &&
+          if (((bitField1_ & 0x20000000) == 0x20000000) &&
               rankCommand_ != com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.getDefaultInstance()) {
             rankCommand_ =
               com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.newBuilder(rankCommand_).mergeFrom(value).buildPartial();
@@ -15701,7 +15905,7 @@ public final class Commands {
         } else {
           rankCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x10000000;
+        bitField1_ |= 0x20000000;
         return this;
       }
       /**
@@ -15714,14 +15918,14 @@ public final class Commands {
         } else {
           rankCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x10000000);
+        bitField1_ = (bitField1_ & ~0x20000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRankCommand rankCommand = 48;</code>
        */
       public com.trans.pixel.protoc.ActivityProto.ResponseRankCommand.Builder getRankCommandBuilder() {
-        bitField1_ |= 0x10000000;
+        bitField1_ |= 0x20000000;
         onChanged();
         return getRankCommandFieldBuilder().getBuilder();
       }
@@ -15760,7 +15964,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseEquipResultCommand equipResultCommand = 49;</code>
        */
       public boolean hasEquipResultCommand() {
-        return ((bitField1_ & 0x20000000) == 0x20000000);
+        return ((bitField1_ & 0x40000000) == 0x40000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipResultCommand equipResultCommand = 49;</code>
@@ -15785,7 +15989,7 @@ public final class Commands {
         } else {
           equipResultCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x20000000;
+        bitField1_ |= 0x40000000;
         return this;
       }
       /**
@@ -15799,7 +16003,7 @@ public final class Commands {
         } else {
           equipResultCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x20000000;
+        bitField1_ |= 0x40000000;
         return this;
       }
       /**
@@ -15807,7 +16011,7 @@ public final class Commands {
        */
       public Builder mergeEquipResultCommand(com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand value) {
         if (equipResultCommandBuilder_ == null) {
-          if (((bitField1_ & 0x20000000) == 0x20000000) &&
+          if (((bitField1_ & 0x40000000) == 0x40000000) &&
               equipResultCommand_ != com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.getDefaultInstance()) {
             equipResultCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.newBuilder(equipResultCommand_).mergeFrom(value).buildPartial();
@@ -15818,7 +16022,7 @@ public final class Commands {
         } else {
           equipResultCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x20000000;
+        bitField1_ |= 0x40000000;
         return this;
       }
       /**
@@ -15831,14 +16035,14 @@ public final class Commands {
         } else {
           equipResultCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x20000000);
+        bitField1_ = (bitField1_ & ~0x40000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipResultCommand equipResultCommand = 49;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseEquipResultCommand.Builder getEquipResultCommandBuilder() {
-        bitField1_ |= 0x20000000;
+        bitField1_ |= 0x40000000;
         onChanged();
         return getEquipResultCommandFieldBuilder().getBuilder();
       }
@@ -15877,7 +16081,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseDeleteHeroCommand deleteHeroCommand = 50;</code>
        */
       public boolean hasDeleteHeroCommand() {
-        return ((bitField1_ & 0x40000000) == 0x40000000);
+        return ((bitField1_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseDeleteHeroCommand deleteHeroCommand = 50;</code>
@@ -15902,7 +16106,7 @@ public final class Commands {
         } else {
           deleteHeroCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x40000000;
+        bitField1_ |= 0x80000000;
         return this;
       }
       /**
@@ -15916,7 +16120,7 @@ public final class Commands {
         } else {
           deleteHeroCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x40000000;
+        bitField1_ |= 0x80000000;
         return this;
       }
       /**
@@ -15924,7 +16128,7 @@ public final class Commands {
        */
       public Builder mergeDeleteHeroCommand(com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand value) {
         if (deleteHeroCommandBuilder_ == null) {
-          if (((bitField1_ & 0x40000000) == 0x40000000) &&
+          if (((bitField1_ & 0x80000000) == 0x80000000) &&
               deleteHeroCommand_ != com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.getDefaultInstance()) {
             deleteHeroCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.newBuilder(deleteHeroCommand_).mergeFrom(value).buildPartial();
@@ -15935,7 +16139,7 @@ public final class Commands {
         } else {
           deleteHeroCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x40000000;
+        bitField1_ |= 0x80000000;
         return this;
       }
       /**
@@ -15948,14 +16152,14 @@ public final class Commands {
         } else {
           deleteHeroCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x40000000);
+        bitField1_ = (bitField1_ & ~0x80000000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseDeleteHeroCommand deleteHeroCommand = 50;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseDeleteHeroCommand.Builder getDeleteHeroCommandBuilder() {
-        bitField1_ |= 0x40000000;
+        bitField1_ |= 0x80000000;
         onChanged();
         return getDeleteHeroCommandFieldBuilder().getBuilder();
       }
@@ -15994,7 +16198,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserHeadCommand userHeadCommand = 51;</code>
        */
       public boolean hasUserHeadCommand() {
-        return ((bitField1_ & 0x80000000) == 0x80000000);
+        return ((bitField2_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserHeadCommand userHeadCommand = 51;</code>
@@ -16019,7 +16223,7 @@ public final class Commands {
         } else {
           userHeadCommandBuilder_.setMessage(value);
         }
-        bitField1_ |= 0x80000000;
+        bitField2_ |= 0x00000001;
         return this;
       }
       /**
@@ -16033,7 +16237,7 @@ public final class Commands {
         } else {
           userHeadCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField1_ |= 0x80000000;
+        bitField2_ |= 0x00000001;
         return this;
       }
       /**
@@ -16041,7 +16245,7 @@ public final class Commands {
        */
       public Builder mergeUserHeadCommand(com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand value) {
         if (userHeadCommandBuilder_ == null) {
-          if (((bitField1_ & 0x80000000) == 0x80000000) &&
+          if (((bitField2_ & 0x00000001) == 0x00000001) &&
               userHeadCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.getDefaultInstance()) {
             userHeadCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.newBuilder(userHeadCommand_).mergeFrom(value).buildPartial();
@@ -16052,7 +16256,7 @@ public final class Commands {
         } else {
           userHeadCommandBuilder_.mergeFrom(value);
         }
-        bitField1_ |= 0x80000000;
+        bitField2_ |= 0x00000001;
         return this;
       }
       /**
@@ -16065,14 +16269,14 @@ public final class Commands {
         } else {
           userHeadCommandBuilder_.clear();
         }
-        bitField1_ = (bitField1_ & ~0x80000000);
+        bitField2_ = (bitField2_ & ~0x00000001);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserHeadCommand userHeadCommand = 51;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseUserHeadCommand.Builder getUserHeadCommandBuilder() {
-        bitField1_ |= 0x80000000;
+        bitField2_ |= 0x00000001;
         onChanged();
         return getUserHeadCommandFieldBuilder().getBuilder();
       }
@@ -16111,7 +16315,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseNoticeCommand noticeCommand = 53;</code>
        */
       public boolean hasNoticeCommand() {
-        return ((bitField2_ & 0x00000001) == 0x00000001);
+        return ((bitField2_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseNoticeCommand noticeCommand = 53;</code>
@@ -16136,7 +16340,7 @@ public final class Commands {
         } else {
           noticeCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000001;
+        bitField2_ |= 0x00000002;
         return this;
       }
       /**
@@ -16150,7 +16354,7 @@ public final class Commands {
         } else {
           noticeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000001;
+        bitField2_ |= 0x00000002;
         return this;
       }
       /**
@@ -16158,7 +16362,7 @@ public final class Commands {
        */
       public Builder mergeNoticeCommand(com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand value) {
         if (noticeCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000001) == 0x00000001) &&
+          if (((bitField2_ & 0x00000002) == 0x00000002) &&
               noticeCommand_ != com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.getDefaultInstance()) {
             noticeCommand_ =
               com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.newBuilder(noticeCommand_).mergeFrom(value).buildPartial();
@@ -16169,7 +16373,7 @@ public final class Commands {
         } else {
           noticeCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000001;
+        bitField2_ |= 0x00000002;
         return this;
       }
       /**
@@ -16182,14 +16386,14 @@ public final class Commands {
         } else {
           noticeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000001);
+        bitField2_ = (bitField2_ & ~0x00000002);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseNoticeCommand noticeCommand = 53;</code>
        */
       public com.trans.pixel.protoc.MessageBoardProto.ResponseNoticeCommand.Builder getNoticeCommandBuilder() {
-        bitField2_ |= 0x00000001;
+        bitField2_ |= 0x00000002;
         onChanged();
         return getNoticeCommandFieldBuilder().getBuilder();
       }
@@ -16228,7 +16432,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserFoodCommand userFoodCommand = 54;</code>
        */
       public boolean hasUserFoodCommand() {
-        return ((bitField2_ & 0x00000002) == 0x00000002);
+        return ((bitField2_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserFoodCommand userFoodCommand = 54;</code>
@@ -16253,7 +16457,7 @@ public final class Commands {
         } else {
           userFoodCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000002;
+        bitField2_ |= 0x00000004;
         return this;
       }
       /**
@@ -16267,7 +16471,7 @@ public final class Commands {
         } else {
           userFoodCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000002;
+        bitField2_ |= 0x00000004;
         return this;
       }
       /**
@@ -16275,7 +16479,7 @@ public final class Commands {
        */
       public Builder mergeUserFoodCommand(com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand value) {
         if (userFoodCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000002) == 0x00000002) &&
+          if (((bitField2_ & 0x00000004) == 0x00000004) &&
               userFoodCommand_ != com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.getDefaultInstance()) {
             userFoodCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.newBuilder(userFoodCommand_).mergeFrom(value).buildPartial();
@@ -16286,7 +16490,7 @@ public final class Commands {
         } else {
           userFoodCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000002;
+        bitField2_ |= 0x00000004;
         return this;
       }
       /**
@@ -16299,14 +16503,14 @@ public final class Commands {
         } else {
           userFoodCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000002);
+        bitField2_ = (bitField2_ & ~0x00000004);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserFoodCommand userFoodCommand = 54;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand.Builder getUserFoodCommandBuilder() {
-        bitField2_ |= 0x00000002;
+        bitField2_ |= 0x00000004;
         onChanged();
         return getUserFoodCommandFieldBuilder().getBuilder();
       }
@@ -16345,7 +16549,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseClearInfoCommand clearInfoCommand = 55;</code>
        */
       public boolean hasClearInfoCommand() {
-        return ((bitField2_ & 0x00000004) == 0x00000004);
+        return ((bitField2_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseClearInfoCommand clearInfoCommand = 55;</code>
@@ -16370,7 +16574,7 @@ public final class Commands {
         } else {
           clearInfoCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000004;
+        bitField2_ |= 0x00000008;
         return this;
       }
       /**
@@ -16384,7 +16588,7 @@ public final class Commands {
         } else {
           clearInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000004;
+        bitField2_ |= 0x00000008;
         return this;
       }
       /**
@@ -16392,7 +16596,7 @@ public final class Commands {
        */
       public Builder mergeClearInfoCommand(com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand value) {
         if (clearInfoCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000004) == 0x00000004) &&
+          if (((bitField2_ & 0x00000008) == 0x00000008) &&
               clearInfoCommand_ != com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.getDefaultInstance()) {
             clearInfoCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.newBuilder(clearInfoCommand_).mergeFrom(value).buildPartial();
@@ -16403,7 +16607,7 @@ public final class Commands {
         } else {
           clearInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000004;
+        bitField2_ |= 0x00000008;
         return this;
       }
       /**
@@ -16416,14 +16620,14 @@ public final class Commands {
         } else {
           clearInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000004);
+        bitField2_ = (bitField2_ & ~0x00000008);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseClearInfoCommand clearInfoCommand = 55;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseClearInfoCommand.Builder getClearInfoCommandBuilder() {
-        bitField2_ |= 0x00000004;
+        bitField2_ |= 0x00000008;
         onChanged();
         return getClearInfoCommandFieldBuilder().getBuilder();
       }
@@ -16462,7 +16666,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseBosskillCommand bosskillCommand = 56;</code>
        */
       public boolean hasBosskillCommand() {
-        return ((bitField2_ & 0x00000008) == 0x00000008);
+        return ((bitField2_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBosskillCommand bosskillCommand = 56;</code>
@@ -16487,7 +16691,7 @@ public final class Commands {
         } else {
           bosskillCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000008;
+        bitField2_ |= 0x00000010;
         return this;
       }
       /**
@@ -16501,7 +16705,7 @@ public final class Commands {
         } else {
           bosskillCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000008;
+        bitField2_ |= 0x00000010;
         return this;
       }
       /**
@@ -16509,7 +16713,7 @@ public final class Commands {
        */
       public Builder mergeBosskillCommand(com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand value) {
         if (bosskillCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000008) == 0x00000008) &&
+          if (((bitField2_ & 0x00000010) == 0x00000010) &&
               bosskillCommand_ != com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.getDefaultInstance()) {
             bosskillCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.newBuilder(bosskillCommand_).mergeFrom(value).buildPartial();
@@ -16520,7 +16724,7 @@ public final class Commands {
         } else {
           bosskillCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000008;
+        bitField2_ |= 0x00000010;
         return this;
       }
       /**
@@ -16533,14 +16737,14 @@ public final class Commands {
         } else {
           bosskillCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000008);
+        bitField2_ = (bitField2_ & ~0x00000010);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBosskillCommand bosskillCommand = 56;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseBosskillCommand.Builder getBosskillCommandBuilder() {
-        bitField2_ |= 0x00000008;
+        bitField2_ |= 0x00000010;
         onChanged();
         return getBosskillCommandFieldBuilder().getBuilder();
       }
@@ -16579,7 +16783,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUnionBossCommand unionBossCommand = 57;</code>
        */
       public boolean hasUnionBossCommand() {
-        return ((bitField2_ & 0x00000010) == 0x00000010);
+        return ((bitField2_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionBossCommand unionBossCommand = 57;</code>
@@ -16604,7 +16808,7 @@ public final class Commands {
         } else {
           unionBossCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000010;
+        bitField2_ |= 0x00000020;
         return this;
       }
       /**
@@ -16618,7 +16822,7 @@ public final class Commands {
         } else {
           unionBossCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000010;
+        bitField2_ |= 0x00000020;
         return this;
       }
       /**
@@ -16626,7 +16830,7 @@ public final class Commands {
        */
       public Builder mergeUnionBossCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand value) {
         if (unionBossCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000010) == 0x00000010) &&
+          if (((bitField2_ & 0x00000020) == 0x00000020) &&
               unionBossCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.getDefaultInstance()) {
             unionBossCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.newBuilder(unionBossCommand_).mergeFrom(value).buildPartial();
@@ -16637,7 +16841,7 @@ public final class Commands {
         } else {
           unionBossCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000010;
+        bitField2_ |= 0x00000020;
         return this;
       }
       /**
@@ -16650,14 +16854,14 @@ public final class Commands {
         } else {
           unionBossCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000010);
+        bitField2_ = (bitField2_ & ~0x00000020);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionBossCommand unionBossCommand = 57;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseUnionBossCommand.Builder getUnionBossCommandBuilder() {
-        bitField2_ |= 0x00000010;
+        bitField2_ |= 0x00000020;
         onChanged();
         return getUnionBossCommandFieldBuilder().getBuilder();
       }
@@ -16696,7 +16900,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;</code>
        */
       public boolean hasIsAreaOwnerCommand() {
-        return ((bitField2_ & 0x00000020) == 0x00000020);
+        return ((bitField2_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;</code>
@@ -16721,7 +16925,7 @@ public final class Commands {
         } else {
           isAreaOwnerCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000020;
+        bitField2_ |= 0x00000040;
         return this;
       }
       /**
@@ -16735,7 +16939,7 @@ public final class Commands {
         } else {
           isAreaOwnerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000020;
+        bitField2_ |= 0x00000040;
         return this;
       }
       /**
@@ -16743,7 +16947,7 @@ public final class Commands {
        */
       public Builder mergeIsAreaOwnerCommand(com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand value) {
         if (isAreaOwnerCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000020) == 0x00000020) &&
+          if (((bitField2_ & 0x00000040) == 0x00000040) &&
               isAreaOwnerCommand_ != com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.getDefaultInstance()) {
             isAreaOwnerCommand_ =
               com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.newBuilder(isAreaOwnerCommand_).mergeFrom(value).buildPartial();
@@ -16754,7 +16958,7 @@ public final class Commands {
         } else {
           isAreaOwnerCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000020;
+        bitField2_ |= 0x00000040;
         return this;
       }
       /**
@@ -16767,14 +16971,14 @@ public final class Commands {
         } else {
           isAreaOwnerCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000020);
+        bitField2_ = (bitField2_ & ~0x00000040);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseIsAreaOwnerCommand isAreaOwnerCommand = 58;</code>
        */
       public com.trans.pixel.protoc.AreaProto.ResponseIsAreaOwnerCommand.Builder getIsAreaOwnerCommandBuilder() {
-        bitField2_ |= 0x00000020;
+        bitField2_ |= 0x00000040;
         onChanged();
         return getIsAreaOwnerCommandFieldBuilder().getBuilder();
       }
@@ -16813,7 +17017,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserTaskCommand userTaskCommand = 59;</code>
        */
       public boolean hasUserTaskCommand() {
-        return ((bitField2_ & 0x00000040) == 0x00000040);
+        return ((bitField2_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTaskCommand userTaskCommand = 59;</code>
@@ -16838,7 +17042,7 @@ public final class Commands {
         } else {
           userTaskCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000040;
+        bitField2_ |= 0x00000080;
         return this;
       }
       /**
@@ -16852,7 +17056,7 @@ public final class Commands {
         } else {
           userTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000040;
+        bitField2_ |= 0x00000080;
         return this;
       }
       /**
@@ -16860,7 +17064,7 @@ public final class Commands {
        */
       public Builder mergeUserTaskCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand value) {
         if (userTaskCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000040) == 0x00000040) &&
+          if (((bitField2_ & 0x00000080) == 0x00000080) &&
               userTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.getDefaultInstance()) {
             userTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.newBuilder(userTaskCommand_).mergeFrom(value).buildPartial();
@@ -16871,7 +17075,7 @@ public final class Commands {
         } else {
           userTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000040;
+        bitField2_ |= 0x00000080;
         return this;
       }
       /**
@@ -16884,14 +17088,14 @@ public final class Commands {
         } else {
           userTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000040);
+        bitField2_ = (bitField2_ & ~0x00000080);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTaskCommand userTaskCommand = 59;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.ResponseUserTaskCommand.Builder getUserTaskCommandBuilder() {
-        bitField2_ |= 0x00000040;
+        bitField2_ |= 0x00000080;
         onChanged();
         return getUserTaskCommandFieldBuilder().getBuilder();
       }
@@ -16930,7 +17134,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserBattletowerCommand userBattletowerCommand = 60;</code>
        */
       public boolean hasUserBattletowerCommand() {
-        return ((bitField2_ & 0x00000080) == 0x00000080);
+        return ((bitField2_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserBattletowerCommand userBattletowerCommand = 60;</code>
@@ -16955,7 +17159,7 @@ public final class Commands {
         } else {
           userBattletowerCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000100;
         return this;
       }
       /**
@@ -16969,7 +17173,7 @@ public final class Commands {
         } else {
           userBattletowerCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000100;
         return this;
       }
       /**
@@ -16977,7 +17181,7 @@ public final class Commands {
        */
       public Builder mergeUserBattletowerCommand(com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand value) {
         if (userBattletowerCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000080) == 0x00000080) &&
+          if (((bitField2_ & 0x00000100) == 0x00000100) &&
               userBattletowerCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.getDefaultInstance()) {
             userBattletowerCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.newBuilder(userBattletowerCommand_).mergeFrom(value).buildPartial();
@@ -16988,7 +17192,7 @@ public final class Commands {
         } else {
           userBattletowerCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000100;
         return this;
       }
       /**
@@ -17001,14 +17205,14 @@ public final class Commands {
         } else {
           userBattletowerCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000080);
+        bitField2_ = (bitField2_ & ~0x00000100);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserBattletowerCommand userBattletowerCommand = 60;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseUserBattletowerCommand.Builder getUserBattletowerCommandBuilder() {
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000100;
         onChanged();
         return getUserBattletowerCommandFieldBuilder().getBuilder();
       }
@@ -17047,7 +17251,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseBattletowerShopCommand battletowerShopCommand = 61;</code>
        */
       public boolean hasBattletowerShopCommand() {
-        return ((bitField2_ & 0x00000100) == 0x00000100);
+        return ((bitField2_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBattletowerShopCommand battletowerShopCommand = 61;</code>
@@ -17072,7 +17276,7 @@ public final class Commands {
         } else {
           battletowerShopCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000200;
         return this;
       }
       /**
@@ -17086,7 +17290,7 @@ public final class Commands {
         } else {
           battletowerShopCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000200;
         return this;
       }
       /**
@@ -17094,7 +17298,7 @@ public final class Commands {
        */
       public Builder mergeBattletowerShopCommand(com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand value) {
         if (battletowerShopCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000100) == 0x00000100) &&
+          if (((bitField2_ & 0x00000200) == 0x00000200) &&
               battletowerShopCommand_ != com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.getDefaultInstance()) {
             battletowerShopCommand_ =
               com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.newBuilder(battletowerShopCommand_).mergeFrom(value).buildPartial();
@@ -17105,7 +17309,7 @@ public final class Commands {
         } else {
           battletowerShopCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000200;
         return this;
       }
       /**
@@ -17118,14 +17322,14 @@ public final class Commands {
         } else {
           battletowerShopCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000100);
+        bitField2_ = (bitField2_ & ~0x00000200);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBattletowerShopCommand battletowerShopCommand = 61;</code>
        */
       public com.trans.pixel.protoc.ShopProto.ResponseBattletowerShopCommand.Builder getBattletowerShopCommandBuilder() {
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000200;
         onChanged();
         return getBattletowerShopCommandFieldBuilder().getBuilder();
       }
@@ -17164,7 +17368,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;</code>
        */
       public boolean hasBossRoomRecordCommand() {
-        return ((bitField2_ & 0x00000200) == 0x00000200);
+        return ((bitField2_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;</code>
@@ -17189,7 +17393,7 @@ public final class Commands {
         } else {
           bossRoomRecordCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000200;
+        bitField2_ |= 0x00000400;
         return this;
       }
       /**
@@ -17203,7 +17407,7 @@ public final class Commands {
         } else {
           bossRoomRecordCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000200;
+        bitField2_ |= 0x00000400;
         return this;
       }
       /**
@@ -17211,7 +17415,7 @@ public final class Commands {
        */
       public Builder mergeBossRoomRecordCommand(com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand value) {
         if (bossRoomRecordCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000200) == 0x00000200) &&
+          if (((bitField2_ & 0x00000400) == 0x00000400) &&
               bossRoomRecordCommand_ != com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.getDefaultInstance()) {
             bossRoomRecordCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.newBuilder(bossRoomRecordCommand_).mergeFrom(value).buildPartial();
@@ -17222,7 +17426,7 @@ public final class Commands {
         } else {
           bossRoomRecordCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000200;
+        bitField2_ |= 0x00000400;
         return this;
       }
       /**
@@ -17235,14 +17439,14 @@ public final class Commands {
         } else {
           bossRoomRecordCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000200);
+        bitField2_ = (bitField2_ & ~0x00000400);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseBossRoomRecordCommand bossRoomRecordCommand = 62;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseBossRoomRecordCommand.Builder getBossRoomRecordCommandBuilder() {
-        bitField2_ |= 0x00000200;
+        bitField2_ |= 0x00000400;
         onChanged();
         return getBossRoomRecordCommandFieldBuilder().getBuilder();
       }
@@ -17281,7 +17485,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserTalentCommand userTalentCommand = 63;</code>
        */
       public boolean hasUserTalentCommand() {
-        return ((bitField2_ & 0x00000400) == 0x00000400);
+        return ((bitField2_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTalentCommand userTalentCommand = 63;</code>
@@ -17306,7 +17510,7 @@ public final class Commands {
         } else {
           userTalentCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000400;
+        bitField2_ |= 0x00000800;
         return this;
       }
       /**
@@ -17320,7 +17524,7 @@ public final class Commands {
         } else {
           userTalentCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000400;
+        bitField2_ |= 0x00000800;
         return this;
       }
       /**
@@ -17328,7 +17532,7 @@ public final class Commands {
        */
       public Builder mergeUserTalentCommand(com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand value) {
         if (userTalentCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000400) == 0x00000400) &&
+          if (((bitField2_ & 0x00000800) == 0x00000800) &&
               userTalentCommand_ != com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.getDefaultInstance()) {
             userTalentCommand_ =
               com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.newBuilder(userTalentCommand_).mergeFrom(value).buildPartial();
@@ -17339,7 +17543,7 @@ public final class Commands {
         } else {
           userTalentCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000400;
+        bitField2_ |= 0x00000800;
         return this;
       }
       /**
@@ -17352,14 +17556,14 @@ public final class Commands {
         } else {
           userTalentCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000400);
+        bitField2_ = (bitField2_ & ~0x00000800);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserTalentCommand userTalentCommand = 63;</code>
        */
       public com.trans.pixel.protoc.HeroProto.ResponseUserTalentCommand.Builder getUserTalentCommandBuilder() {
-        bitField2_ |= 0x00000400;
+        bitField2_ |= 0x00000800;
         onChanged();
         return getUserTalentCommandFieldBuilder().getBuilder();
       }
@@ -17398,7 +17602,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseEquipPokedeCommand equipPokedeCommand = 64;</code>
        */
       public boolean hasEquipPokedeCommand() {
-        return ((bitField2_ & 0x00000800) == 0x00000800);
+        return ((bitField2_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipPokedeCommand equipPokedeCommand = 64;</code>
@@ -17423,7 +17627,7 @@ public final class Commands {
         } else {
           equipPokedeCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00000800;
+        bitField2_ |= 0x00001000;
         return this;
       }
       /**
@@ -17437,7 +17641,7 @@ public final class Commands {
         } else {
           equipPokedeCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00000800;
+        bitField2_ |= 0x00001000;
         return this;
       }
       /**
@@ -17445,7 +17649,7 @@ public final class Commands {
        */
       public Builder mergeEquipPokedeCommand(com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand value) {
         if (equipPokedeCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00000800) == 0x00000800) &&
+          if (((bitField2_ & 0x00001000) == 0x00001000) &&
               equipPokedeCommand_ != com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.getDefaultInstance()) {
             equipPokedeCommand_ =
               com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.newBuilder(equipPokedeCommand_).mergeFrom(value).buildPartial();
@@ -17456,7 +17660,7 @@ public final class Commands {
         } else {
           equipPokedeCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00000800;
+        bitField2_ |= 0x00001000;
         return this;
       }
       /**
@@ -17469,14 +17673,14 @@ public final class Commands {
         } else {
           equipPokedeCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00000800);
+        bitField2_ = (bitField2_ & ~0x00001000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEquipPokedeCommand equipPokedeCommand = 64;</code>
        */
       public com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand.Builder getEquipPokedeCommandBuilder() {
-        bitField2_ |= 0x00000800;
+        bitField2_ |= 0x00001000;
         onChanged();
         return getEquipPokedeCommandFieldBuilder().getBuilder();
       }
@@ -17515,7 +17719,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskCommand userRewardTaskCommand = 65;</code>
        */
       public boolean hasUserRewardTaskCommand() {
-        return ((bitField2_ & 0x00001000) == 0x00001000);
+        return ((bitField2_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskCommand userRewardTaskCommand = 65;</code>
@@ -17540,7 +17744,7 @@ public final class Commands {
         } else {
           userRewardTaskCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00001000;
+        bitField2_ |= 0x00002000;
         return this;
       }
       /**
@@ -17554,7 +17758,7 @@ public final class Commands {
         } else {
           userRewardTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00001000;
+        bitField2_ |= 0x00002000;
         return this;
       }
       /**
@@ -17562,7 +17766,7 @@ public final class Commands {
        */
       public Builder mergeUserRewardTaskCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand value) {
         if (userRewardTaskCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00001000) == 0x00001000) &&
+          if (((bitField2_ & 0x00002000) == 0x00002000) &&
               userRewardTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.getDefaultInstance()) {
             userRewardTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.newBuilder(userRewardTaskCommand_).mergeFrom(value).buildPartial();
@@ -17573,7 +17777,7 @@ public final class Commands {
         } else {
           userRewardTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00001000;
+        bitField2_ |= 0x00002000;
         return this;
       }
       /**
@@ -17586,14 +17790,14 @@ public final class Commands {
         } else {
           userRewardTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00001000);
+        bitField2_ = (bitField2_ & ~0x00002000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskCommand userRewardTaskCommand = 65;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand.Builder getUserRewardTaskCommandBuilder() {
-        bitField2_ |= 0x00001000;
+        bitField2_ |= 0x00002000;
         onChanged();
         return getUserRewardTaskCommandFieldBuilder().getBuilder();
       }
@@ -17632,7 +17836,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;</code>
        */
       public boolean hasUserRewardTaskRoomCommand() {
-        return ((bitField2_ & 0x00002000) == 0x00002000);
+        return ((bitField2_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;</code>
@@ -17657,7 +17861,7 @@ public final class Commands {
         } else {
           userRewardTaskRoomCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00002000;
+        bitField2_ |= 0x00004000;
         return this;
       }
       /**
@@ -17671,7 +17875,7 @@ public final class Commands {
         } else {
           userRewardTaskRoomCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00002000;
+        bitField2_ |= 0x00004000;
         return this;
       }
       /**
@@ -17679,7 +17883,7 @@ public final class Commands {
        */
       public Builder mergeUserRewardTaskRoomCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand value) {
         if (userRewardTaskRoomCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00002000) == 0x00002000) &&
+          if (((bitField2_ & 0x00004000) == 0x00004000) &&
               userRewardTaskRoomCommand_ != com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.getDefaultInstance()) {
             userRewardTaskRoomCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.newBuilder(userRewardTaskRoomCommand_).mergeFrom(value).buildPartial();
@@ -17690,7 +17894,7 @@ public final class Commands {
         } else {
           userRewardTaskRoomCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00002000;
+        bitField2_ |= 0x00004000;
         return this;
       }
       /**
@@ -17703,14 +17907,14 @@ public final class Commands {
         } else {
           userRewardTaskRoomCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00002000);
+        bitField2_ = (bitField2_ & ~0x00004000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserRewardTaskRoomCommand userRewardTaskRoomCommand = 66;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskRoomCommand.Builder getUserRewardTaskRoomCommandBuilder() {
-        bitField2_ |= 0x00002000;
+        bitField2_ |= 0x00004000;
         onChanged();
         return getUserRewardTaskRoomCommandFieldBuilder().getBuilder();
       }
@@ -17749,7 +17953,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
        */
       public boolean hasOtherUserInfoCommand() {
-        return ((bitField2_ & 0x00004000) == 0x00004000);
+        return ((bitField2_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
@@ -17774,7 +17978,7 @@ public final class Commands {
         } else {
           otherUserInfoCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00004000;
+        bitField2_ |= 0x00008000;
         return this;
       }
       /**
@@ -17788,7 +17992,7 @@ public final class Commands {
         } else {
           otherUserInfoCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00004000;
+        bitField2_ |= 0x00008000;
         return this;
       }
       /**
@@ -17796,7 +18000,7 @@ public final class Commands {
        */
       public Builder mergeOtherUserInfoCommand(com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand value) {
         if (otherUserInfoCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00004000) == 0x00004000) &&
+          if (((bitField2_ & 0x00008000) == 0x00008000) &&
               otherUserInfoCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.getDefaultInstance()) {
             otherUserInfoCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.newBuilder(otherUserInfoCommand_).mergeFrom(value).buildPartial();
@@ -17807,7 +18011,7 @@ public final class Commands {
         } else {
           otherUserInfoCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00004000;
+        bitField2_ |= 0x00008000;
         return this;
       }
       /**
@@ -17820,14 +18024,14 @@ public final class Commands {
         } else {
           otherUserInfoCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00004000);
+        bitField2_ = (bitField2_ & ~0x00008000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseOtherUserInfoCommand otherUserInfoCommand = 67;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand.Builder getOtherUserInfoCommandBuilder() {
-        bitField2_ |= 0x00004000;
+        bitField2_ |= 0x00008000;
         onChanged();
         return getOtherUserInfoCommandFieldBuilder().getBuilder();
       }
@@ -17866,7 +18070,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
        */
       public boolean hasEnemyLadderCommand() {
-        return ((bitField2_ & 0x00008000) == 0x00008000);
+        return ((bitField2_ & 0x00010000) == 0x00010000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
@@ -17891,7 +18095,7 @@ public final class Commands {
         } else {
           enemyLadderCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00008000;
+        bitField2_ |= 0x00010000;
         return this;
       }
       /**
@@ -17905,7 +18109,7 @@ public final class Commands {
         } else {
           enemyLadderCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00008000;
+        bitField2_ |= 0x00010000;
         return this;
       }
       /**
@@ -17913,7 +18117,7 @@ public final class Commands {
        */
       public Builder mergeEnemyLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand value) {
         if (enemyLadderCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00008000) == 0x00008000) &&
+          if (((bitField2_ & 0x00010000) == 0x00010000) &&
               enemyLadderCommand_ != com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.getDefaultInstance()) {
             enemyLadderCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.newBuilder(enemyLadderCommand_).mergeFrom(value).buildPartial();
@@ -17924,7 +18128,7 @@ public final class Commands {
         } else {
           enemyLadderCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00008000;
+        bitField2_ |= 0x00010000;
         return this;
       }
       /**
@@ -17937,14 +18141,14 @@ public final class Commands {
         } else {
           enemyLadderCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00008000);
+        bitField2_ = (bitField2_ & ~0x00010000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseEnemyLadderCommand enemyLadderCommand = 68;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseEnemyLadderCommand.Builder getEnemyLadderCommandBuilder() {
-        bitField2_ |= 0x00008000;
+        bitField2_ |= 0x00010000;
         onChanged();
         return getEnemyLadderCommandFieldBuilder().getBuilder();
       }
@@ -17983,7 +18187,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
        */
       public boolean hasUserLadderCommand() {
-        return ((bitField2_ & 0x00010000) == 0x00010000);
+        return ((bitField2_ & 0x00020000) == 0x00020000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
@@ -18008,7 +18212,7 @@ public final class Commands {
         } else {
           userLadderCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00010000;
+        bitField2_ |= 0x00020000;
         return this;
       }
       /**
@@ -18022,7 +18226,7 @@ public final class Commands {
         } else {
           userLadderCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00010000;
+        bitField2_ |= 0x00020000;
         return this;
       }
       /**
@@ -18030,7 +18234,7 @@ public final class Commands {
        */
       public Builder mergeUserLadderCommand(com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand value) {
         if (userLadderCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00010000) == 0x00010000) &&
+          if (((bitField2_ & 0x00020000) == 0x00020000) &&
               userLadderCommand_ != com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.getDefaultInstance()) {
             userLadderCommand_ =
               com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.newBuilder(userLadderCommand_).mergeFrom(value).buildPartial();
@@ -18041,7 +18245,7 @@ public final class Commands {
         } else {
           userLadderCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00010000;
+        bitField2_ |= 0x00020000;
         return this;
       }
       /**
@@ -18054,14 +18258,14 @@ public final class Commands {
         } else {
           userLadderCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00010000);
+        bitField2_ = (bitField2_ & ~0x00020000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUserLadderCommand userLadderCommand = 69;</code>
        */
       public com.trans.pixel.protoc.LadderProto.ResponseUserLadderCommand.Builder getUserLadderCommandBuilder() {
-        bitField2_ |= 0x00010000;
+        bitField2_ |= 0x00020000;
         onChanged();
         return getUserLadderCommandFieldBuilder().getBuilder();
       }
@@ -18100,7 +18304,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
        */
       public boolean hasRecommandCommand() {
-        return ((bitField2_ & 0x00020000) == 0x00020000);
+        return ((bitField2_ & 0x00040000) == 0x00040000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
@@ -18125,7 +18329,7 @@ public final class Commands {
         } else {
           recommandCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00020000;
+        bitField2_ |= 0x00040000;
         return this;
       }
       /**
@@ -18139,7 +18343,7 @@ public final class Commands {
         } else {
           recommandCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00020000;
+        bitField2_ |= 0x00040000;
         return this;
       }
       /**
@@ -18147,7 +18351,7 @@ public final class Commands {
        */
       public Builder mergeRecommandCommand(com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand value) {
         if (recommandCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00020000) == 0x00020000) &&
+          if (((bitField2_ & 0x00040000) == 0x00040000) &&
               recommandCommand_ != com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.getDefaultInstance()) {
             recommandCommand_ =
               com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.newBuilder(recommandCommand_).mergeFrom(value).buildPartial();
@@ -18158,7 +18362,7 @@ public final class Commands {
         } else {
           recommandCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00020000;
+        bitField2_ |= 0x00040000;
         return this;
       }
       /**
@@ -18171,14 +18375,14 @@ public final class Commands {
         } else {
           recommandCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00020000);
+        bitField2_ = (bitField2_ & ~0x00040000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseRecommandCommand recommandCommand = 70;</code>
        */
       public com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.Builder getRecommandCommandBuilder() {
-        bitField2_ |= 0x00020000;
+        bitField2_ |= 0x00040000;
         onChanged();
         return getRecommandCommandFieldBuilder().getBuilder();
       }
@@ -18217,7 +18421,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
        */
       public boolean hasUnionFightApplyRecordCommand() {
-        return ((bitField2_ & 0x00040000) == 0x00040000);
+        return ((bitField2_ & 0x00080000) == 0x00080000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
@@ -18242,7 +18446,7 @@ public final class Commands {
         } else {
           unionFightApplyRecordCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00040000;
+        bitField2_ |= 0x00080000;
         return this;
       }
       /**
@@ -18256,7 +18460,7 @@ public final class Commands {
         } else {
           unionFightApplyRecordCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00040000;
+        bitField2_ |= 0x00080000;
         return this;
       }
       /**
@@ -18264,7 +18468,7 @@ public final class Commands {
        */
       public Builder mergeUnionFightApplyRecordCommand(com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand value) {
         if (unionFightApplyRecordCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00040000) == 0x00040000) &&
+          if (((bitField2_ & 0x00080000) == 0x00080000) &&
               unionFightApplyRecordCommand_ != com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance()) {
             unionFightApplyRecordCommand_ =
               com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.newBuilder(unionFightApplyRecordCommand_).mergeFrom(value).buildPartial();
@@ -18275,7 +18479,7 @@ public final class Commands {
         } else {
           unionFightApplyRecordCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00040000;
+        bitField2_ |= 0x00080000;
         return this;
       }
       /**
@@ -18288,14 +18492,14 @@ public final class Commands {
         } else {
           unionFightApplyRecordCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00040000);
+        bitField2_ = (bitField2_ & ~0x00080000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;</code>
        */
       public com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.Builder getUnionFightApplyRecordCommandBuilder() {
-        bitField2_ |= 0x00040000;
+        bitField2_ |= 0x00080000;
         onChanged();
         return getUnionFightApplyRecordCommandFieldBuilder().getBuilder();
       }
@@ -18334,7 +18538,7 @@ public final class Commands {
        * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
        */
       public boolean hasLootRewardTaskCommand() {
-        return ((bitField2_ & 0x00080000) == 0x00080000);
+        return ((bitField2_ & 0x00100000) == 0x00100000);
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
@@ -18359,7 +18563,7 @@ public final class Commands {
         } else {
           lootRewardTaskCommandBuilder_.setMessage(value);
         }
-        bitField2_ |= 0x00080000;
+        bitField2_ |= 0x00100000;
         return this;
       }
       /**
@@ -18373,7 +18577,7 @@ public final class Commands {
         } else {
           lootRewardTaskCommandBuilder_.setMessage(builderForValue.build());
         }
-        bitField2_ |= 0x00080000;
+        bitField2_ |= 0x00100000;
         return this;
       }
       /**
@@ -18381,7 +18585,7 @@ public final class Commands {
        */
       public Builder mergeLootRewardTaskCommand(com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand value) {
         if (lootRewardTaskCommandBuilder_ == null) {
-          if (((bitField2_ & 0x00080000) == 0x00080000) &&
+          if (((bitField2_ & 0x00100000) == 0x00100000) &&
               lootRewardTaskCommand_ != com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.getDefaultInstance()) {
             lootRewardTaskCommand_ =
               com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.newBuilder(lootRewardTaskCommand_).mergeFrom(value).buildPartial();
@@ -18392,7 +18596,7 @@ public final class Commands {
         } else {
           lootRewardTaskCommandBuilder_.mergeFrom(value);
         }
-        bitField2_ |= 0x00080000;
+        bitField2_ |= 0x00100000;
         return this;
       }
       /**
@@ -18405,14 +18609,14 @@ public final class Commands {
         } else {
           lootRewardTaskCommandBuilder_.clear();
         }
-        bitField2_ = (bitField2_ & ~0x00080000);
+        bitField2_ = (bitField2_ & ~0x00100000);
         return this;
       }
       /**
        * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
        */
       public com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.Builder getLootRewardTaskCommandBuilder() {
-        bitField2_ |= 0x00080000;
+        bitField2_ |= 0x00100000;
         onChanged();
         return getLootRewardTaskCommandFieldBuilder().getBuilder();
       }
@@ -18489,7 +18693,7 @@ public final class Commands {
       "to\032\025RewardTaskProto.proto\"-\n\014ErrorComman" +
       "d\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"3\n\026Resp",
       "onseMessageCommand\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030" +
-      "\002 \002(\t\"\3343\n\017ResponseCommand\022.\n\004head\030\001 \002(\0132" +
+      "\002 \002(\t\"\2574\n\017ResponseCommand\022.\n\004head\030\001 \002(\0132" +
       " .com.trans.pixel.protoc.HeadInfo\0227\n\005tit" +
       "le\030\221N \001(\0132\'.com.trans.pixel.protoc.Serve" +
       "rTitleInfo\022:\n\014errorCommand\030\002 \001(\0132$.com.t" +
@@ -18537,124 +18741,126 @@ public final class Commands {
       "Command\030\237\001 \001(\0132,.com.trans.pixel.protoc." +
       "ResponseEventCommand\022O\n\022canRechargeComma" +
       "nd\030\252\001 \001(\01322.com.trans.pixel.protoc.Respo" +
-      "nseCanRechargeCommand\022P\n\023needRegisterCom",
-      "mand\030\003 \001(\01323.com.trans.pixel.protoc.Resp" +
-      "onseNeedRegisterCommand\022H\n\017userInfoComma" +
-      "nd\030\004 \001(\0132/.com.trans.pixel.protoc.Respon" +
-      "seUserInfoCommand\022O\n\022eventResultCommand\030" +
-      "\246\001 \001(\01322.com.trans.pixel.protoc.Response" +
-      "EventResultCommand\022K\n\020levelLootCommand\030\247" +
-      "\001 \001(\01320.com.trans.pixel.protoc.ResponseL" +
-      "evelLootCommand\022L\n\021heroResultCommand\030\010 \001" +
-      "(\01321.com.trans.pixel.protoc.ResponseHero" +
-      "ResultCommand\022N\n\022getUserHeroCommand\030\016 \001(",
-      "\01322.com.trans.pixel.protoc.ResponseGetUs" +
-      "erHeroCommand\022Z\n\030getLadderRankListComman" +
-      "d\030\017 \001(\01328.com.trans.pixel.protoc.Respons" +
-      "eGetLadderRankListCommand\022b\n\034getUserLadd" +
-      "erRankListCommand\030\020 \001(\0132<.com.trans.pixe" +
-      "l.protoc.ResponseGetUserLadderRankListCo" +
-      "mmand\022X\n\027attackLadderModeCommand\030\021 \001(\01327" +
-      ".com.trans.pixel.protoc.ResponseAttackLa" +
-      "dderModeCommand\022V\n\026getUserMailListComman" +
-      "d\030\022 \001(\01326.com.trans.pixel.protoc.Respons",
-      "eGetUserMailListCommand\022L\n\021sendRewardCom" +
-      "mand\030\023 \001(\01321.com.trans.pixel.protoc.Resp" +
-      "onseSendRewardCommand\022F\n\016messageCommand\030" +
-      "\024 \001(\0132..com.trans.pixel.protoc.ResponseM" +
-      "essageCommand\022Z\n\030getUserFriendListComman" +
-      "d\030\025 \001(\01328.com.trans.pixel.protoc.Respons" +
-      "eGetUserFriendListCommand\022M\n\020userEquipCo" +
-      "mmand\030\027 \001(\01323.com.trans.pixel.protoc.Res" +
-      "ponseGetUserEquipCommand\022@\n\013areaCommand\030" +
-      "\030 \001(\0132+.com.trans.pixel.protoc.ResponseA",
-      "reaCommand\022Q\n\023areaResourceCommand\030\210\001 \001(\013" +
-      "23.com.trans.pixel.protoc.ResponseAreaRe" +
-      "sourceCommand\022^\n\027resourceMineInfoCommand" +
-      "\030| \001(\0132=.com.trans.pixel.protoc.Response" +
-      "AttackResourceMineInfoCommand\022J\n\020unionIn" +
-      "foCommand\030\033 \001(\01320.com.trans.pixel.protoc" +
-      ".ResponseUnionInfoCommand\022J\n\020unionListCo" +
-      "mmand\030\034 \001(\01320.com.trans.pixel.protoc.Res" +
-      "ponseUnionListCommand\022X\n\027messageBoardLis" +
-      "tCommand\030\035 \001(\01327.com.trans.pixel.protoc.",
-      "ResponseMessageBoardListCommand\022P\n\023messa" +
-      "geBoardCommand\030\036 \001(\01323.com.trans.pixel.p" +
-      "rotoc.ResponseMessageBoardCommand\022P\n\023use" +
-      "rTeamListCommand\030\037 \001(\01323.com.trans.pixel" +
-      ".protoc.ResponseUserTeamListCommand\022W\n\025l" +
-      "adderUserInfoCommand\030  \001(\01328.com.trans.p" +
-      "ixel.protoc.ResponseGetLadderUserInfoCom" +
-      "mand\022P\n\023equipComposeCommand\030! \001(\01323.com." +
-      "trans.pixel.protoc.ResponseEquipComposeC" +
-      "ommand\022H\n\017userPropCommand\030\" \001(\0132/.com.tr",
-      "ans.pixel.protoc.ResponseUserPropCommand" +
-      "\022F\n\016usePropCommand\030# \001(\0132..com.trans.pix" +
-      "el.protoc.ResponseUsePropCommand\022@\n\013sign" +
-      "Command\030% \001(\0132+.com.trans.pixel.protoc.R" +
-      "esponseSignCommand\022R\n\024mohuaUserDataComma" +
-      "nd\030& \001(\01324.com.trans.pixel.protoc.Respon" +
-      "seMohuaUserDataCommand\022N\n\022achieveListCom" +
-      "mand\030( \001(\01322.com.trans.pixel.protoc.Resp" +
-      "onseAchieveListCommand\022N\n\022richangListCom" +
-      "mand\030* \001(\01322.com.trans.pixel.protoc.Resp",
-      "onseRichangListCommand\022T\n\025kaifu2Activity" +
-      "Command\030+ \001(\01325.com.trans.pixel.protoc.R" +
-      "esponseKaifu2ActivityCommand\022N\n\022kaifuRew" +
-      "ardCommand\030- \001(\01322.com.trans.pixel.proto" +
-      "c.ResponseKaifuRewardCommand\022J\n\020kaifuLis" +
-      "tCommand\030. \001(\01320.com.trans.pixel.protoc." +
-      "ResponseKaifuListCommand\022L\n\021userPokedeCo" +
-      "mmand\030/ \001(\01321.com.trans.pixel.protoc.Res" +
-      "ponseUserPokedeCommand\022@\n\013rankCommand\0300 " +
-      "\001(\0132+.com.trans.pixel.protoc.ResponseRan",
-      "kCommand\022N\n\022equipResultCommand\0301 \001(\01322.c" +
-      "om.trans.pixel.protoc.ResponseEquipResul" +
-      "tCommand\022L\n\021deleteHeroCommand\0302 \001(\01321.co" +
-      "m.trans.pixel.protoc.ResponseDeleteHeroC" +
-      "ommand\022H\n\017userHeadCommand\0303 \001(\0132/.com.tr" +
-      "ans.pixel.protoc.ResponseUserHeadCommand" +
-      "\022D\n\rnoticeCommand\0305 \001(\0132-.com.trans.pixe" +
-      "l.protoc.ResponseNoticeCommand\022H\n\017userFo" +
-      "odCommand\0306 \001(\0132/.com.trans.pixel.protoc" +
-      ".ResponseUserFoodCommand\022J\n\020clearInfoCom",
-      "mand\0307 \001(\01320.com.trans.pixel.protoc.Resp" +
-      "onseClearInfoCommand\022H\n\017bosskillCommand\030" +
-      "8 \001(\0132/.com.trans.pixel.protoc.ResponseB" +
-      "osskillCommand\022J\n\020unionBossCommand\0309 \001(\013" +
-      "20.com.trans.pixel.protoc.ResponseUnionB" +
-      "ossCommand\022N\n\022isAreaOwnerCommand\030: \001(\01322" +
-      ".com.trans.pixel.protoc.ResponseIsAreaOw" +
-      "nerCommand\022H\n\017userTaskCommand\030; \001(\0132/.co" +
-      "m.trans.pixel.protoc.ResponseUserTaskCom" +
-      "mand\022V\n\026userBattletowerCommand\030< \001(\01326.c",
-      "om.trans.pixel.protoc.ResponseUserBattle" +
-      "towerCommand\022V\n\026battletowerShopCommand\030=" +
-      " \001(\01326.com.trans.pixel.protoc.ResponseBa" +
-      "ttletowerShopCommand\022T\n\025bossRoomRecordCo" +
-      "mmand\030> \001(\01325.com.trans.pixel.protoc.Res" +
-      "ponseBossRoomRecordCommand\022L\n\021userTalent" +
-      "Command\030? \001(\01321.com.trans.pixel.protoc.R" +
-      "esponseUserTalentCommand\022N\n\022equipPokedeC" +
-      "ommand\030@ \001(\01322.com.trans.pixel.protoc.Re" +
-      "sponseEquipPokedeCommand\022T\n\025userRewardTa",
-      "skCommand\030A \001(\01325.com.trans.pixel.protoc" +
-      ".ResponseUserRewardTaskCommand\022\\\n\031userRe" +
-      "wardTaskRoomCommand\030B \001(\01329.com.trans.pi" +
-      "xel.protoc.ResponseUserRewardTaskRoomCom" +
-      "mand\022R\n\024otherUserInfoCommand\030C \001(\01324.com" +
-      ".trans.pixel.protoc.ResponseOtherUserInf" +
-      "oCommand\022N\n\022enemyLadderCommand\030D \001(\01322.c" +
-      "om.trans.pixel.protoc.ResponseEnemyLadde" +
-      "rCommand\022L\n\021userLadderCommand\030E \001(\01321.co" +
-      "m.trans.pixel.protoc.ResponseUserLadderC",
-      "ommand\022J\n\020recommandCommand\030F \001(\01320.com.t" +
-      "rans.pixel.protoc.ResponseRecommandComma" +
-      "nd\022b\n\034unionFightApplyRecordCommand\030G \001(\013" +
-      "2<.com.trans.pixel.protoc.ResponseUnionF" +
-      "ightApplyRecordCommand\022T\n\025lootRewardTask" +
-      "Command\030H \001(\01325.com.trans.pixel.protoc.R" +
-      "esponseLootRewardTaskCommand"
+      "nseCanRechargeCommand\022Q\n\023teamRaidRoomCom",
+      "mand\030\262\001 \001(\01323.com.trans.pixel.protoc.Res" +
+      "ponseTeamRaidRoomCommand\022P\n\023needRegister" +
+      "Command\030\003 \001(\01323.com.trans.pixel.protoc.R" +
+      "esponseNeedRegisterCommand\022H\n\017userInfoCo" +
+      "mmand\030\004 \001(\0132/.com.trans.pixel.protoc.Res" +
+      "ponseUserInfoCommand\022O\n\022eventResultComma" +
+      "nd\030\246\001 \001(\01322.com.trans.pixel.protoc.Respo" +
+      "nseEventResultCommand\022K\n\020levelLootComman" +
+      "d\030\247\001 \001(\01320.com.trans.pixel.protoc.Respon" +
+      "seLevelLootCommand\022L\n\021heroResultCommand\030",
+      "\010 \001(\01321.com.trans.pixel.protoc.ResponseH" +
+      "eroResultCommand\022N\n\022getUserHeroCommand\030\016" +
+      " \001(\01322.com.trans.pixel.protoc.ResponseGe" +
+      "tUserHeroCommand\022Z\n\030getLadderRankListCom" +
+      "mand\030\017 \001(\01328.com.trans.pixel.protoc.Resp" +
+      "onseGetLadderRankListCommand\022b\n\034getUserL" +
+      "adderRankListCommand\030\020 \001(\0132<.com.trans.p" +
+      "ixel.protoc.ResponseGetUserLadderRankLis" +
+      "tCommand\022X\n\027attackLadderModeCommand\030\021 \001(" +
+      "\01327.com.trans.pixel.protoc.ResponseAttac",
+      "kLadderModeCommand\022V\n\026getUserMailListCom" +
+      "mand\030\022 \001(\01326.com.trans.pixel.protoc.Resp" +
+      "onseGetUserMailListCommand\022L\n\021sendReward" +
+      "Command\030\023 \001(\01321.com.trans.pixel.protoc.R" +
+      "esponseSendRewardCommand\022F\n\016messageComma" +
+      "nd\030\024 \001(\0132..com.trans.pixel.protoc.Respon" +
+      "seMessageCommand\022Z\n\030getUserFriendListCom" +
+      "mand\030\025 \001(\01328.com.trans.pixel.protoc.Resp" +
+      "onseGetUserFriendListCommand\022M\n\020userEqui" +
+      "pCommand\030\027 \001(\01323.com.trans.pixel.protoc.",
+      "ResponseGetUserEquipCommand\022@\n\013areaComma" +
+      "nd\030\030 \001(\0132+.com.trans.pixel.protoc.Respon" +
+      "seAreaCommand\022Q\n\023areaResourceCommand\030\210\001 " +
+      "\001(\01323.com.trans.pixel.protoc.ResponseAre" +
+      "aResourceCommand\022^\n\027resourceMineInfoComm" +
+      "and\030| \001(\0132=.com.trans.pixel.protoc.Respo" +
+      "nseAttackResourceMineInfoCommand\022J\n\020unio" +
+      "nInfoCommand\030\033 \001(\01320.com.trans.pixel.pro" +
+      "toc.ResponseUnionInfoCommand\022J\n\020unionLis" +
+      "tCommand\030\034 \001(\01320.com.trans.pixel.protoc.",
+      "ResponseUnionListCommand\022X\n\027messageBoard" +
+      "ListCommand\030\035 \001(\01327.com.trans.pixel.prot" +
+      "oc.ResponseMessageBoardListCommand\022P\n\023me" +
+      "ssageBoardCommand\030\036 \001(\01323.com.trans.pixe" +
+      "l.protoc.ResponseMessageBoardCommand\022P\n\023" +
+      "userTeamListCommand\030\037 \001(\01323.com.trans.pi" +
+      "xel.protoc.ResponseUserTeamListCommand\022W" +
+      "\n\025ladderUserInfoCommand\030  \001(\01328.com.tran" +
+      "s.pixel.protoc.ResponseGetLadderUserInfo" +
+      "Command\022P\n\023equipComposeCommand\030! \001(\01323.c",
+      "om.trans.pixel.protoc.ResponseEquipCompo" +
+      "seCommand\022H\n\017userPropCommand\030\" \001(\0132/.com" +
+      ".trans.pixel.protoc.ResponseUserPropComm" +
+      "and\022F\n\016usePropCommand\030# \001(\0132..com.trans." +
+      "pixel.protoc.ResponseUsePropCommand\022@\n\013s" +
+      "ignCommand\030% \001(\0132+.com.trans.pixel.proto" +
+      "c.ResponseSignCommand\022R\n\024mohuaUserDataCo" +
+      "mmand\030& \001(\01324.com.trans.pixel.protoc.Res" +
+      "ponseMohuaUserDataCommand\022N\n\022achieveList" +
+      "Command\030( \001(\01322.com.trans.pixel.protoc.R",
+      "esponseAchieveListCommand\022N\n\022richangList" +
+      "Command\030* \001(\01322.com.trans.pixel.protoc.R" +
+      "esponseRichangListCommand\022T\n\025kaifu2Activ" +
+      "ityCommand\030+ \001(\01325.com.trans.pixel.proto" +
+      "c.ResponseKaifu2ActivityCommand\022N\n\022kaifu" +
+      "RewardCommand\030- \001(\01322.com.trans.pixel.pr" +
+      "otoc.ResponseKaifuRewardCommand\022J\n\020kaifu" +
+      "ListCommand\030. \001(\01320.com.trans.pixel.prot" +
+      "oc.ResponseKaifuListCommand\022L\n\021userPoked" +
+      "eCommand\030/ \001(\01321.com.trans.pixel.protoc.",
+      "ResponseUserPokedeCommand\022@\n\013rankCommand" +
+      "\0300 \001(\0132+.com.trans.pixel.protoc.Response" +
+      "RankCommand\022N\n\022equipResultCommand\0301 \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseEquipRe" +
+      "sultCommand\022L\n\021deleteHeroCommand\0302 \001(\01321" +
+      ".com.trans.pixel.protoc.ResponseDeleteHe" +
+      "roCommand\022H\n\017userHeadCommand\0303 \001(\0132/.com" +
+      ".trans.pixel.protoc.ResponseUserHeadComm" +
+      "and\022D\n\rnoticeCommand\0305 \001(\0132-.com.trans.p" +
+      "ixel.protoc.ResponseNoticeCommand\022H\n\017use",
+      "rFoodCommand\0306 \001(\0132/.com.trans.pixel.pro" +
+      "toc.ResponseUserFoodCommand\022J\n\020clearInfo" +
+      "Command\0307 \001(\01320.com.trans.pixel.protoc.R" +
+      "esponseClearInfoCommand\022H\n\017bosskillComma" +
+      "nd\0308 \001(\0132/.com.trans.pixel.protoc.Respon" +
+      "seBosskillCommand\022J\n\020unionBossCommand\0309 " +
+      "\001(\01320.com.trans.pixel.protoc.ResponseUni" +
+      "onBossCommand\022N\n\022isAreaOwnerCommand\030: \001(" +
+      "\01322.com.trans.pixel.protoc.ResponseIsAre" +
+      "aOwnerCommand\022H\n\017userTaskCommand\030; \001(\0132/",
+      ".com.trans.pixel.protoc.ResponseUserTask" +
+      "Command\022V\n\026userBattletowerCommand\030< \001(\0132" +
+      "6.com.trans.pixel.protoc.ResponseUserBat" +
+      "tletowerCommand\022V\n\026battletowerShopComman" +
+      "d\030= \001(\01326.com.trans.pixel.protoc.Respons" +
+      "eBattletowerShopCommand\022T\n\025bossRoomRecor" +
+      "dCommand\030> \001(\01325.com.trans.pixel.protoc." +
+      "ResponseBossRoomRecordCommand\022L\n\021userTal" +
+      "entCommand\030? \001(\01321.com.trans.pixel.proto" +
+      "c.ResponseUserTalentCommand\022N\n\022equipPoke",
+      "deCommand\030@ \001(\01322.com.trans.pixel.protoc" +
+      ".ResponseEquipPokedeCommand\022T\n\025userRewar" +
+      "dTaskCommand\030A \001(\01325.com.trans.pixel.pro" +
+      "toc.ResponseUserRewardTaskCommand\022\\\n\031use" +
+      "rRewardTaskRoomCommand\030B \001(\01329.com.trans" +
+      ".pixel.protoc.ResponseUserRewardTaskRoom" +
+      "Command\022R\n\024otherUserInfoCommand\030C \001(\01324." +
+      "com.trans.pixel.protoc.ResponseOtherUser" +
+      "InfoCommand\022N\n\022enemyLadderCommand\030D \001(\0132" +
+      "2.com.trans.pixel.protoc.ResponseEnemyLa",
+      "dderCommand\022L\n\021userLadderCommand\030E \001(\01321" +
+      ".com.trans.pixel.protoc.ResponseUserLadd" +
+      "erCommand\022J\n\020recommandCommand\030F \001(\01320.co" +
+      "m.trans.pixel.protoc.ResponseRecommandCo" +
+      "mmand\022b\n\034unionFightApplyRecordCommand\030G " +
+      "\001(\0132<.com.trans.pixel.protoc.ResponseUni" +
+      "onFightApplyRecordCommand\022T\n\025lootRewardT" +
+      "askCommand\030H \001(\01325.com.trans.pixel.proto" +
+      "c.ResponseLootRewardTaskCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18678,7 +18884,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "TeamRaidCommand", "EventCommand", "CanRechargeCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", "UnionFightApplyRecordCommand", "LootRewardTaskCommand", });
+              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "TeamRaidCommand", "EventCommand", "CanRechargeCommand", "TeamRaidRoomCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", "UnionFightApplyRecordCommand", "LootRewardTaskCommand", });
           return null;
         }
       };

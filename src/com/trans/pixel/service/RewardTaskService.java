@@ -356,7 +356,7 @@ public class RewardTaskService {
 				rewardTask.setStatus(REWARDTASK_STATUS.LIMIT_VALUE);
 				return rewardTask;
 			}
-			
+			 
 			for (RoomInfo roomInfo : room.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() == user.getId()) {
 					rewardTask.setStatus(REWARDTASK_STATUS.HAS_IN_VALUE);
@@ -383,7 +383,7 @@ public class RewardTaskService {
 			RoomInfo.Builder roomInfoBuilder = RoomInfo.newBuilder();
 			roomInfoBuilder.setIndex(rewardTask.getIndex());
 			roomInfoBuilder.setUser(userService.getCache(user.getServerId(), user.getId()));
-			for (int position = 1; position < 5; ++position) {
+			for (int position = 1; position <= rewardTask.getTask().getMembers(); ++position) {
 				if (!hasPosition(position, room.getRoomInfoList())) {
 					roomInfoBuilder.setPosition(position);
 					break;
@@ -689,7 +689,7 @@ public class RewardTaskService {
 	
 	private void sendInviteMail(UserBean user, long userId, int id) {
 		String content = "邀请你一起伐木boss！";
-		MailBean mail = MailBean.buildMail(userId, user, content, MailConst.TYPE_INVITE_FIGHTBOSS_MAIL, id);
+		MailBean mail = MailBean.buildMail(userId, user, content, MailConst.TYPE_INVITE_REWARDTASK_MAIL, id);
 		mailService.addMail(mail);
 		log.debug("mail is:" + mail.toJson());
 	}
