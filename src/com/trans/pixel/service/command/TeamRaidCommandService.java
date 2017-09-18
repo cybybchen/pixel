@@ -152,6 +152,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_OUT_ERROR);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_OUT_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
+	            getTeamRaid(responseBuilder, user);
 			}else {
 				ResponseTeamRaidRoomCommand.Builder builder = ResponseTeamRaidRoomCommand.newBuilder();
 				builder.addRoom(room);
