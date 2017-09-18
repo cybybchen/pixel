@@ -116,11 +116,11 @@ public class UserLadderService {
 		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
-		if (userLadder.getGrade() == 8) {
+//		if (userLadder.getGrade() == 8) {
 			UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
 			if (robotLadder != null)
 				map.put(0, robotLadder);
-		}
+//		}
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
 			Map<Integer, UserLadder> beforeMap = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId(), enemyUserIdList);
