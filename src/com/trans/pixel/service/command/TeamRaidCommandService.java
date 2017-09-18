@@ -298,23 +298,21 @@ public class TeamRaidCommandService extends BaseCommandService{
 		
 //		UserRewardTask.Builder userRewardTaskBuilder = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, index);
 		if (userIds.isEmpty()) {//接收邀请
-			if(userIds.isEmpty() && myraid != null) {
-				if(myraid.hasRoomInfo()) {
-					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
-					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
-		            responseBuilder.setErrorCommand(errorCommand);
-					return;
-				}else if(myraid.getStatus() == 0) {
-					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_LOCKED_ERROR);
-					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_LOCKED_ERROR);
-		            responseBuilder.setErrorCommand(errorCommand);
-		            return;
-				}else if(myraid.getEventCount() == 0) {
-					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOTOPEN_ERROR);
-					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_NOTOPEN_ERROR);
-		            responseBuilder.setErrorCommand(errorCommand);
-		            return;
-				}
+			if(myraid == null || myraid.getStatus() == 0) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_LOCKED_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_LOCKED_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
+			}else if(myraid.hasRoomInfo()) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_HASIN);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
+	            responseBuilder.setErrorCommand(errorCommand);
+				return;
+			}else if(myraid.getEventCount() == 0 || !hasEventStatus0(myraid)) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOTOPEN_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_NOTOPEN_ERROR);
+	            responseBuilder.setErrorCommand(errorCommand);
+	            return;
 			}
 			UserRoom.Builder room = redis.getUserRoom(createUserId, index);
 			TeamRaid.Builder hisraid = redis.getTeamRaid(createUserId, index/redis.INDEX_SIZE);
@@ -324,17 +322,17 @@ public class TeamRaidCommandService extends BaseCommandService{
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
-			int eventi = 0;
-			for(eventi = 0; eventi < myraid.getEventCount(); eventi++) {
-				if(myraid.getEvent(eventi).getStatus() == 0)
-					break;
-			}
-			if(eventi >= myraid.getEventCount()) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_PASS_ERROR);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_PASS_ERROR);
-	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}
+//			int eventi = 0;
+//			for(eventi = 0; eventi < myraid.getEventCount(); eventi++) {
+//				if(myraid.getEvent(eventi).getStatus() == 0)
+//					break;
+//			}
+//			if(eventi >= myraid.getEventCount()) {
+//				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_PASS_ERROR);
+//				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_PASS_ERROR);
+//	            responseBuilder.setErrorCommand(errorCommand);
+//	            return;
+//			}
 //			Map<Integer, UserRewardTask> map = userRewardTaskService.getUserRewardTaskList(user);
 //			for (UserRewardTask urt : map.values()) {
 //				if(urt.getTask().getId() == hisraid.getTaskBuilder().getId() && urt.getTask().getRandcount() == hisraid.getTaskBuilder().getRandcount()) {
@@ -423,6 +421,14 @@ public class TeamRaidCommandService extends BaseCommandService{
 				return false;
 		}
 		return true;
+	}
+	
+	private boolean hasEventStatus0(TeamRaid.Builder myraid) {
+		for(int j = 0; j < myraid.getEventCount(); j++) {
+			if(myraid.getEvent(j).getStatus() == 0)
+				return true;
+		}
+		return false;
 	}
 
 	private boolean isInRoom(UserRoom.Builder room, UserBean user) {

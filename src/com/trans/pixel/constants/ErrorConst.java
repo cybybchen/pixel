@@ -24,10 +24,9 @@ public enum ErrorConst implements ResultConst {
     NO_UNION_ERROR(2062, "找不到该公会"),REDISKEY_BUSY_ERROR(2063, "请稍后再试"),FUN_CLOSE_ERROR(2064, "该功能暂时无法使用"),
     USER_HAS_QUIT_ERROR(2065, "该玩家已退出公会"),HERO_RANK_FIRST(2066, "请先进阶该英雄"), NEED_BETTER_UPGRADECARD(2067, "当前主角已超过道具使用等级"), 
     NEED_LEADER_OFFLINETIME(2068, "会长离线必须超过7天"), PROP_IS_EXIST_ERROR(2069, "该道具无法重复合成"), REQUEST_WAIT_ERROR(2070, "请求过于频繁，请稍后再试哦"), 
-    RECHARGE_TIMEOUT(2071, "购买的计费点不在有效期"), RECHARGE_OVERTIME(2072, "购买计费点次数超出上线"), RAID_LOCKED_ERROR(2073, "您还没有解锁该副本"), RAID_NOTOPEN_ERROR(2074, "您还没开启该副本"),
-    RAID_PASS_ERROR(2075, "您已通关该副本"),
+    RECHARGE_TIMEOUT(2071, "购买的计费点不在有效期"), RECHARGE_OVERTIME(2072, "购买计费点次数超出上线"), RAID_LOCKED_ERROR(2073, "您还没有解锁该副本"), RAID_NOTOPEN_ERROR(2074, "挑战次数已用完，请重新开启副本"),
     
-	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放，请选择其他服务器游戏"), 
+	USER_NOT_EXIST(1000, "该用户不存在"), ACCOUNT_REGISTER_FAIL(1001, "注册失败"), USER_NEED_LOGIN(3031, "该用户在其他地方登陆"), SRVER_NOT_OPEN_ERROR(3032, "服务器暂未开放"), 
 	SRVER_MAINTENANCE_OPEN_ERROR(3033, "服务器维护中，请稍后再试"), LEVEL_ERROR(1002, "关卡异常"), LEVEL_PREPARA_ERROR(1003,
     "准备时间不足"), HERO_NOT_EXIST(1004, "人物不存在"), HERO_LEVEL_MAX(1005, "等级已达上限"), NOT_ENOUGH_EXP(1006, "经验不足"),
     NOT_ENOUGH_EQUIP(1007, "装备不足"), EQUIP_HAS_ADD(1008, "已添加过"), PVP_MAP_ERROR(1009, "PVP地图异常"), NOT_ENOUGH_COIN(1010, "金币不足"),
