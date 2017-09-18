@@ -116,9 +116,11 @@ public class UserLadderService {
 		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
-		UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
-		if (robotLadder != null)
-			map.put(0, robotLadder);
+		if (userLadder.getGrade() == 8) {
+			UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
+			if (robotLadder != null)
+				map.put(0, robotLadder);
+		}
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
 			Map<Integer, UserLadder> beforeMap = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId(), enemyUserIdList);
@@ -257,6 +259,7 @@ public class UserLadderService {
 		builder.setHeroId(hero.getId());
 		builder.setStar(hero.getStar());
 		builder.setRank(hero.getRank());
+		builder.setLevel(hero.getLevel());
 		
 		SkillInfo.Builder skill = SkillInfo.newBuilder();
 		skill.setSkillId(builder.getSkillCount() + 1);
