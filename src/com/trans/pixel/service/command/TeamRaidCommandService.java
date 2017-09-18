@@ -502,6 +502,14 @@ public class TeamRaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_MONSTER);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(cmd.getRet()){
+				if(!costService.cost(user, event.getCost().getItemid(), event.getCost().getCount(), true)){
+					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
+					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
+		            responseBuilder.setErrorCommand(errorCommand);
+					pusher.pushUserDataByRewardId(responseBuilder, user, event.getCost().getItemid());
+		            return;
+				}
+				pusher.pushUserDataByRewardId(responseBuilder, user, event.getCost().getItemid());
 				myraid.getEventBuilder(i).setStatus(1);
 				MultiReward.Builder rewards = levelRedisService.eventReward(user, event, myraid.getLevel());
 				handleRewards(responseBuilder, user, rewards.build());
@@ -626,6 +634,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.GET_REWARD_AGAIN);
 	            responseBuilder.setErrorCommand(errorCommand);
 			}else if(costService.cost(user, event.getCost().getItemid(), event.getCost().getCount(), true)){
+				pusher.pushUserDataByRewardId(responseBuilder, user, event.getCost().getItemid());
 				myraid.getEventBuilder(i).setStatus(1);
 				MultiReward.Builder rewards = levelRedisService.eventReward(user, event, myraid.getLevel());
 				handleRewards(responseBuilder, user, rewards.build());
@@ -635,6 +644,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 				}
 				redis.saveTeamRaid(user, myraid);
 			}else{
+				pusher.pushUserDataByRewardId(responseBuilder, user, event.getCost().getItemid());
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH);
 	            responseBuilder.setErrorCommand(errorCommand);
