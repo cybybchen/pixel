@@ -148,6 +148,7 @@ public class UserBean {
 	private String jewelkey = "";
 	private int mohe = 0;
 	private int heilong = 0;
+	private int ladderModeRewardCount = 0;
 	/**
 	 * pvp魔晶产量
 	 */
@@ -1409,6 +1410,12 @@ public class UserBean {
 	}
 	public void setHeilong(int heilong) {
 		this.heilong = heilong;
+	}
+	public int getLadderModeRewardCount() {
+		return ladderModeRewardCount;
+	}
+	public void setLadderModeRewardCount(int ladderModeRewardCount) {
+		this.ladderModeRewardCount = ladderModeRewardCount;
 	}
 	public UserBean init(int serverId, String account, String userName, int icon) {
 		setAccount(account);

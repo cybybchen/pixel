@@ -17,6 +17,7 @@ import com.trans.pixel.model.mapper.UserLadderMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserLadderBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
+import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.SkillInfo;
 import com.trans.pixel.protoc.Base.Team;
 import com.trans.pixel.protoc.Base.TeamEngine;
@@ -34,6 +35,7 @@ import com.trans.pixel.protoc.LadderProto.LadderTeamEngine;
 import com.trans.pixel.protoc.LadderProto.LadderTeamEngineSkill;
 import com.trans.pixel.protoc.LadderProto.LadderTeamEquip;
 import com.trans.pixel.protoc.LadderProto.LadderTeamHero;
+import com.trans.pixel.protoc.LadderProto.LadderTeamReward;
 import com.trans.pixel.protoc.LadderProto.LadderTeamZhujue;
 import com.trans.pixel.protoc.LadderProto.LadderTeamZhujueSkill;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
@@ -285,6 +287,15 @@ public class UserLadderService {
 		builder.setPosition(hero.getPosition());
 		
 		return builder.build();
+	}
+	
+	public List<RewardInfo> getLadderTeamReward() {
+		Map<Integer, LadderTeamReward> map = userLadderRedisService.getLadderTeamRewardConfig();
+		for (LadderTeamReward reward : map.values()) {
+			return reward.getRewardList();
+		}
+		
+		return new ArrayList<RewardInfo>();
 	}
 	
 	public void storeRoomData(UserLadder userLadder, int type, int grade) {

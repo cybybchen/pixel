@@ -11701,6 +11701,1458 @@ public final class LadderProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderModeLevel)
   }
 
+  public interface LadderTeamRewardListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.LadderTeamReward getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.LadderTeamRewardList}
+   */
+  public static final class LadderTeamRewardList extends
+      com.google.protobuf.GeneratedMessage
+      implements LadderTeamRewardListOrBuilder {
+    // Use LadderTeamRewardList.newBuilder() to construct.
+    private LadderTeamRewardList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private LadderTeamRewardList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final LadderTeamRewardList defaultInstance;
+    public static LadderTeamRewardList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public LadderTeamRewardList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LadderTeamRewardList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderTeamReward>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.LadderProto.LadderTeamReward.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamRewardList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.class, com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<LadderTeamRewardList> PARSER =
+        new com.google.protobuf.AbstractParser<LadderTeamRewardList>() {
+      public LadderTeamRewardList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LadderTeamRewardList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LadderTeamRewardList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.LadderTeamReward getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+     */
+    public com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      for (int i = 0; i < getDataCount(); i++) {
+        if (!getData(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.LadderProto.LadderTeamRewardList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.LadderTeamRewardList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.LadderProto.LadderTeamRewardListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamRewardList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.class, com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamRewardList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamRewardList build() {
+        com.trans.pixel.protoc.LadderProto.LadderTeamRewardList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamRewardList buildPartial() {
+        com.trans.pixel.protoc.LadderProto.LadderTeamRewardList result = new com.trans.pixel.protoc.LadderProto.LadderTeamRewardList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.LadderProto.LadderTeamRewardList) {
+          return mergeFrom((com.trans.pixel.protoc.LadderProto.LadderTeamRewardList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.LadderTeamRewardList other) {
+        if (other == com.trans.pixel.protoc.LadderProto.LadderTeamRewardList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        for (int i = 0; i < getDataCount(); i++) {
+          if (!getData(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.LadderProto.LadderTeamRewardList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.LadderProto.LadderTeamRewardList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;
+      private java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.LadderProto.LadderTeamReward>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.LadderTeamReward, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder, com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.LadderProto.LadderTeamReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.LadderProto.LadderTeamReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.LadderProto.LadderTeamReward value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.LadderProto.LadderTeamReward> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.LadderProto.LadderTeamReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.LadderProto.LadderTeamReward.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.LadderTeamReward data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.LadderProto.LadderTeamReward, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder, com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.LadderProto.LadderTeamReward, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder, com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderTeamRewardList)
+    }
+
+    static {
+      defaultInstance = new LadderTeamRewardList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderTeamRewardList)
+  }
+
+  public interface LadderTeamRewardOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 id = 1;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    int getId();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getReward(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    int getRewardCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.LadderTeamReward}
+   */
+  public static final class LadderTeamReward extends
+      com.google.protobuf.GeneratedMessage
+      implements LadderTeamRewardOrBuilder {
+    // Use LadderTeamReward.newBuilder() to construct.
+    private LadderTeamReward(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private LadderTeamReward(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final LadderTeamReward defaultInstance;
+    public static LadderTeamReward getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public LadderTeamReward getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LadderTeamReward(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+                reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              reward_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamReward_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.LadderProto.LadderTeamReward.class, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<LadderTeamReward> PARSER =
+        new com.google.protobuf.AbstractParser<LadderTeamReward>() {
+      public LadderTeamReward parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LadderTeamReward(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LadderTeamReward> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+    public static final int REWARD_FIELD_NUMBER = 2;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardOrBuilderList() {
+      return reward_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public int getRewardCount() {
+      return reward_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+      return reward_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+        int index) {
+      return reward_.get(index);
+    }
+
+    private void initFields() {
+      id_ = 0;
+      reward_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, id_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        output.writeMessage(2, reward_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, id_);
+      }
+      for (int i = 0; i < reward_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, reward_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.LadderProto.LadderTeamReward parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.LadderProto.LadderTeamReward prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.LadderTeamReward}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.LadderProto.LadderTeamRewardOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamReward_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.LadderProto.LadderTeamReward.class, com.trans.pixel.protoc.LadderProto.LadderTeamReward.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.LadderProto.LadderTeamReward.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.LadderProto.internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.LadderProto.LadderTeamReward.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward build() {
+        com.trans.pixel.protoc.LadderProto.LadderTeamReward result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.LadderProto.LadderTeamReward buildPartial() {
+        com.trans.pixel.protoc.LadderProto.LadderTeamReward result = new com.trans.pixel.protoc.LadderProto.LadderTeamReward(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (rewardBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+            reward_ = java.util.Collections.unmodifiableList(reward_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.reward_ = reward_;
+        } else {
+          result.reward_ = rewardBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.LadderProto.LadderTeamReward) {
+          return mergeFrom((com.trans.pixel.protoc.LadderProto.LadderTeamReward)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.LadderProto.LadderTeamReward other) {
+        if (other == com.trans.pixel.protoc.LadderProto.LadderTeamReward.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (rewardBuilder_ == null) {
+          if (!other.reward_.isEmpty()) {
+            if (reward_.isEmpty()) {
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRewardIsMutable();
+              reward_.addAll(other.reward_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.reward_.isEmpty()) {
+            if (rewardBuilder_.isEmpty()) {
+              rewardBuilder_.dispose();
+              rewardBuilder_ = null;
+              reward_ = other.reward_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              rewardBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardFieldBuilder() : null;
+            } else {
+              rewardBuilder_.addAllMessages(other.reward_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.LadderProto.LadderTeamReward parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.LadderProto.LadderTeamReward) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 id = 1;
+      private int id_ ;
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo reward = 2;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> reward_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardIsMutable() {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+          reward_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(reward_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardList() {
+        if (rewardBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(reward_);
+        } else {
+          return rewardBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public int getRewardCount() {
+        if (rewardBuilder_ == null) {
+          return reward_.size();
+        } else {
+          return rewardBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getReward(int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);
+        } else {
+          return rewardBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.set(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder setReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardIsMutable();
+          reward_.add(index, value);
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addReward(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder addAllReward(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          super.addAll(values, reward_);
+          onChanged();
+        } else {
+          rewardBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder clearReward() {
+        if (rewardBuilder_ == null) {
+          reward_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          rewardBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public Builder removeReward(int index) {
+        if (rewardBuilder_ == null) {
+          ensureRewardIsMutable();
+          reward_.remove(index);
+          onChanged();
+        } else {
+          rewardBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardOrBuilder(
+          int index) {
+        if (rewardBuilder_ == null) {
+          return reward_.get(index);  } else {
+          return rewardBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardOrBuilderList() {
+        if (rewardBuilder_ != null) {
+          return rewardBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(reward_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder() {
+        return getRewardFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardBuilder(
+          int index) {
+        return getRewardFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo reward = 2;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardBuilderList() {
+        return getRewardFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardFieldBuilder() {
+        if (rewardBuilder_ == null) {
+          rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  reward_,
+                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  getParentForChildren(),
+                  isClean());
+          reward_ = null;
+        }
+        return rewardBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderTeamReward)
+    }
+
+    static {
+      defaultInstance = new LadderTeamReward(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.LadderTeamReward)
+  }
+
   public interface LadderTeamListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -37207,6 +38659,16 @@ public final class LadderProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_LadderModeLevel_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_LadderTeamRewardList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_LadderTeamReward_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_LadderTeamList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -37436,90 +38898,94 @@ public final class LadderProto {
       "pixel.protoc.RewardInfo\0226\n\005level\030\010 \003(\0132\'" +
       ".com.trans.pixel.protoc.LadderModeLevel\"" +
       "/\n\017LadderModeLevel\022\r\n\005level\030\001 \002(\r\022\r\n\005sco" +
-      "re\030\002 \002(\r\"B\n\016LadderTeamList\0220\n\004data\030\001 \003(\013" +
-      "2\".com.trans.pixel.protoc.LadderTeam\"\342\001\n" +
-      "\nLadderTeam\022\n\n\002id\030\001 \002(\r\022\014\n\004name\030\002 \002(\t\022\020\n" +
-      "\010touxiang\030\003 \002(\r\0228\n\006engine\030\004 \003(\0132(.com.tr",
-      "ans.pixel.protoc.LadderTeamEngine\0228\n\006zhu" +
-      "jue\030\005 \002(\0132(.com.trans.pixel.protoc.Ladde" +
-      "rTeamZhujue\0224\n\004hero\030\006 \003(\0132&.com.trans.pi" +
-      "xel.protoc.LadderTeamHero\"o\n\020LadderTeamE" +
-      "ngine\022\r\n\005order\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022@\n\tskil" +
-      "llist\030\003 \003(\0132-.com.trans.pixel.protoc.Lad" +
-      "derTeamEngineSkill\"8\n\025LadderTeamEngineSk" +
-      "ill\022\020\n\010position\030\001 \002(\r\022\r\n\005skill\030\002 \002(\r\"\247\001\n" +
-      "\020LadderTeamZhujue\022\n\n\002id\030\001 \002(\r\022\r\n\005level\030\002" +
-      " \002(\r\0226\n\005equip\030\003 \003(\0132\'.com.trans.pixel.pr",
-      "otoc.LadderTeamEquip\022@\n\tskilllist\030\004 \003(\0132" +
-      "-.com.trans.pixel.protoc.LadderTeamZhuju" +
-      "eSkill\"A\n\025LadderTeamZhujueSkill\022\r\n\005order" +
-      "\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022\r\n\005level\030\003 \002(\r\"M\n\017Lad" +
-      "derTeamEquip\022\020\n\010position\030\001 \001(\r\022\n\n\002id\030\002 \002" +
-      "(\r\022\r\n\005order\030\003 \002(\r\022\r\n\005level\030\004 \002(\r\"\341\001\n\016Lad" +
-      "derTeamHero\022\020\n\010position\030\001 \002(\r\022\n\n\002id\030\002 \002(" +
-      "\r\022\014\n\004star\030\003 \002(\r\022\014\n\004rank\030\004 \002(\r\022\r\n\005level\030\005" +
-      " \002(\r\022\016\n\006skill1\030\006 \002(\r\022\016\n\006skill2\030\007 \002(\r\022\016\n\006" +
-      "skill3\030\010 \002(\r\022\016\n\006skill4\030\t \002(\r\022\016\n\006skill5\030\n",
-      " \002(\r\0226\n\005equip\030\013 \002(\0132\'.com.trans.pixel.pr" +
-      "otoc.LadderTeamEquip\"H\n\010LadderLd\022\020\n\010targ" +
-      "etid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\017\n" +
-      "\007equipid\030\004 \001(\r\">\n\014LadderLdList\022.\n\004data\030\001" +
-      " \003(\0132 .com.trans.pixel.protoc.LadderLd\"\325" +
-      "\001\n\022LadderSeasonConfig\022\016\n\006season\030\001 \002(\r\022\021\n" +
-      "\tstarttime\030\002 \002(\t\022\016\n\006taskid\030\003 \002(\r\022*\n\004task" +
-      "\030\004 \003(\0132\034.com.trans.pixel.protoc.Task\0222\n\006" +
-      "ladder\030\005 \003(\0132\".com.trans.pixel.protoc.La" +
-      "dderMode\022,\n\002ld\030\006 \003(\0132 .com.trans.pixel.p",
-      "rotoc.LadderLd\"R\n\026LadderSeasonConfigList" +
-      "\0228\n\004data\030\001 \003(\0132*.com.trans.pixel.protoc." +
-      "LadderSeasonConfig\"B\n\014LadderSeason\022\016\n\006se" +
-      "ason\030\001 \002(\r\022\021\n\tstartTime\030\002 \002(\t\022\017\n\007endTime" +
-      "\030\003 \001(\t\"\210\002\n\nUserLadder\022\014\n\004type\030\001 \001(\r\022\r\n\005s" +
-      "core\030\002 \001(\r\022\016\n\006season\030\003 \001(\r\022\023\n\013taskProces" +
-      "s\030\004 \001(\r\022\031\n\021taskRewardProcess\030\005 \001(\r\022*\n\004te" +
-      "am\030\006 \001(\0132\034.com.trans.pixel.protoc.Team\022\020" +
-      "\n\010position\030\007 \001(\r\022\021\n\tlastScore\030\t \001(\r\022\r\n\005g" +
-      "rade\030\n \001(\r\022\r\n\005level\030\013 \001(\r\022\032\n\022seasonRewar",
-      "dStatus\030\014 \001(\r\022\022\n\nlastSeason\030\r \001(\r\"\"\n Req" +
-      "uestLadderSeasonRewardCommand\")\n\031Request" +
-      "LadderEnemyCommand\022\014\n\004type\030\001 \001(\r\"\032\n\030Requ" +
-      "estLadderInfoCommand\"0\n RequestRefreshLa" +
-      "dderEnemyCommand\022\014\n\004type\030\001 \002(\r\"O\n\032Respon" +
-      "seEnemyLadderCommand\0221\n\005enemy\030\001 \003(\0132\".co" +
-      "m.trans.pixel.protoc.UserLadder\"O\n Reque" +
-      "stSubmitLadderResultCommand\022\020\n\010position\030" +
-      "\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004type\030\003 \002(\r\" \n\036Requ" +
-      "estLadderTaskRewardCommand\"M\n\031ResponseUs",
-      "erLadderCommand\0220\n\004user\030\001 \003(\0132\".com.tran" +
-      "s.pixel.protoc.UserLadder\",\n\032RequestGetF" +
-      "ightInfoCommand\022\016\n\006isSave\030\001 \001(\010\"Y\n\027Reque" +
-      "stFightInfoCommand\022/\n\004info\030\001 \002(\0132!.com.t" +
-      "rans.pixel.protoc.FightInfo\022\r\n\005score\030\002 \001" +
-      "(\r\"`\n\034RequestQueryFightInfoCommand\0224\n\004ty" +
-      "pe\030\001 \002(\0162&.com.trans.pixel.protoc.FIGHTI" +
-      "NFO_TYPE\022\n\n\002id\030\002 \002(\r\"W\n\030ResponseFightInf" +
-      "oCommand\022/\n\004info\030\001 \003(\0132!.com.trans.pixel" +
-      ".protoc.FightInfo\022\n\n\002id\030\002 \003(\r\"\254\001\n\033Reques",
-      "tSaveFightInfoCommand\0220\n\005fight\030\001 \001(\0132!.c" +
-      "om.trans.pixel.protoc.FightInfo\022\020\n\010isDel" +
-      "ete\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\0224\n\004type\030\004" +
-      " \001(\0162&.com.trans.pixel.protoc.FIGHTINFO_" +
-      "TYPE\"!\n\037RequestGetLadderRankListCommand\"" +
-      "%\n#RequestGetUserLadderRankListCommand\"V" +
-      "\n ResponseGetLadderRankListCommand\0222\n\010us" +
-      "erRank\030\001 \003(\0132 .com.trans.pixel.protoc.Us" +
-      "erRank\"Z\n$ResponseGetUserLadderRankListC" +
-      "ommand\0222\n\010userRank\030\001 \003(\0132 .com.trans.pix",
-      "el.protoc.UserRank\"a\n\036RequestAttackLadde" +
-      "rModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022" +
-      "\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(\003\";\n" +
-      "\037ResponseAttackLadderModeCommand\022\013\n\003ret\030" +
-      "\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAttack" +
-      "LadderCommand\"/\n\037RequestGetLadderUserInf" +
-      "oCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPurchas" +
-      "eLadderTimeCommand\"V\n ResponseGetLadderU" +
-      "serInfoCommand\0222\n\010userRank\030\001 \002(\0132 .com.t" +
-      "rans.pixel.protoc.UserRank"
+      "re\030\002 \002(\r\"N\n\024LadderTeamRewardList\0226\n\004data" +
+      "\030\001 \003(\0132(.com.trans.pixel.protoc.LadderTe" +
+      "amReward\"R\n\020LadderTeamReward\022\n\n\002id\030\001 \002(\r" +
+      "\0222\n\006reward\030\002 \003(\0132\".com.trans.pixel.proto",
+      "c.RewardInfo\"B\n\016LadderTeamList\0220\n\004data\030\001" +
+      " \003(\0132\".com.trans.pixel.protoc.LadderTeam" +
+      "\"\342\001\n\nLadderTeam\022\n\n\002id\030\001 \002(\r\022\014\n\004name\030\002 \002(" +
+      "\t\022\020\n\010touxiang\030\003 \002(\r\0228\n\006engine\030\004 \003(\0132(.co" +
+      "m.trans.pixel.protoc.LadderTeamEngine\0228\n" +
+      "\006zhujue\030\005 \002(\0132(.com.trans.pixel.protoc.L" +
+      "adderTeamZhujue\0224\n\004hero\030\006 \003(\0132&.com.tran" +
+      "s.pixel.protoc.LadderTeamHero\"o\n\020LadderT" +
+      "eamEngine\022\r\n\005order\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022@\n\t" +
+      "skilllist\030\003 \003(\0132-.com.trans.pixel.protoc",
+      ".LadderTeamEngineSkill\"8\n\025LadderTeamEngi" +
+      "neSkill\022\020\n\010position\030\001 \002(\r\022\r\n\005skill\030\002 \002(\r" +
+      "\"\247\001\n\020LadderTeamZhujue\022\n\n\002id\030\001 \002(\r\022\r\n\005lev" +
+      "el\030\002 \002(\r\0226\n\005equip\030\003 \003(\0132\'.com.trans.pixe" +
+      "l.protoc.LadderTeamEquip\022@\n\tskilllist\030\004 " +
+      "\003(\0132-.com.trans.pixel.protoc.LadderTeamZ" +
+      "hujueSkill\"A\n\025LadderTeamZhujueSkill\022\r\n\005o" +
+      "rder\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022\r\n\005level\030\003 \002(\r\"M\n" +
+      "\017LadderTeamEquip\022\020\n\010position\030\001 \001(\r\022\n\n\002id" +
+      "\030\002 \002(\r\022\r\n\005order\030\003 \002(\r\022\r\n\005level\030\004 \002(\r\"\341\001\n",
+      "\016LadderTeamHero\022\020\n\010position\030\001 \002(\r\022\n\n\002id\030" +
+      "\002 \002(\r\022\014\n\004star\030\003 \002(\r\022\014\n\004rank\030\004 \002(\r\022\r\n\005lev" +
+      "el\030\005 \002(\r\022\016\n\006skill1\030\006 \002(\r\022\016\n\006skill2\030\007 \002(\r" +
+      "\022\016\n\006skill3\030\010 \002(\r\022\016\n\006skill4\030\t \002(\r\022\016\n\006skil" +
+      "l5\030\n \002(\r\0226\n\005equip\030\013 \002(\0132\'.com.trans.pixe" +
+      "l.protoc.LadderTeamEquip\"H\n\010LadderLd\022\020\n\010" +
+      "targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(" +
+      "\t\022\017\n\007equipid\030\004 \001(\r\">\n\014LadderLdList\022.\n\004da" +
+      "ta\030\001 \003(\0132 .com.trans.pixel.protoc.Ladder" +
+      "Ld\"\325\001\n\022LadderSeasonConfig\022\016\n\006season\030\001 \002(",
+      "\r\022\021\n\tstarttime\030\002 \002(\t\022\016\n\006taskid\030\003 \002(\r\022*\n\004" +
+      "task\030\004 \003(\0132\034.com.trans.pixel.protoc.Task" +
+      "\0222\n\006ladder\030\005 \003(\0132\".com.trans.pixel.proto" +
+      "c.LadderMode\022,\n\002ld\030\006 \003(\0132 .com.trans.pix" +
+      "el.protoc.LadderLd\"R\n\026LadderSeasonConfig" +
+      "List\0228\n\004data\030\001 \003(\0132*.com.trans.pixel.pro" +
+      "toc.LadderSeasonConfig\"B\n\014LadderSeason\022\016" +
+      "\n\006season\030\001 \002(\r\022\021\n\tstartTime\030\002 \002(\t\022\017\n\007end" +
+      "Time\030\003 \001(\t\"\210\002\n\nUserLadder\022\014\n\004type\030\001 \001(\r\022" +
+      "\r\n\005score\030\002 \001(\r\022\016\n\006season\030\003 \001(\r\022\023\n\013taskPr",
+      "ocess\030\004 \001(\r\022\031\n\021taskRewardProcess\030\005 \001(\r\022*" +
+      "\n\004team\030\006 \001(\0132\034.com.trans.pixel.protoc.Te" +
+      "am\022\020\n\010position\030\007 \001(\r\022\021\n\tlastScore\030\t \001(\r\022" +
+      "\r\n\005grade\030\n \001(\r\022\r\n\005level\030\013 \001(\r\022\032\n\022seasonR" +
+      "ewardStatus\030\014 \001(\r\022\022\n\nlastSeason\030\r \001(\r\"\"\n" +
+      " RequestLadderSeasonRewardCommand\")\n\031Req" +
+      "uestLadderEnemyCommand\022\014\n\004type\030\001 \001(\r\"\032\n\030" +
+      "RequestLadderInfoCommand\"0\n RequestRefre" +
+      "shLadderEnemyCommand\022\014\n\004type\030\001 \002(\r\"O\n\032Re" +
+      "sponseEnemyLadderCommand\0221\n\005enemy\030\001 \003(\0132",
+      "\".com.trans.pixel.protoc.UserLadder\"O\n R" +
+      "equestSubmitLadderResultCommand\022\020\n\010posit" +
+      "ion\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004type\030\003 \002(\r\" \n\036" +
+      "RequestLadderTaskRewardCommand\"M\n\031Respon" +
+      "seUserLadderCommand\0220\n\004user\030\001 \003(\0132\".com." +
+      "trans.pixel.protoc.UserLadder\",\n\032Request" +
+      "GetFightInfoCommand\022\016\n\006isSave\030\001 \001(\010\"Y\n\027R" +
+      "equestFightInfoCommand\022/\n\004info\030\001 \002(\0132!.c" +
+      "om.trans.pixel.protoc.FightInfo\022\r\n\005score" +
+      "\030\002 \001(\r\"`\n\034RequestQueryFightInfoCommand\0224",
+      "\n\004type\030\001 \002(\0162&.com.trans.pixel.protoc.FI" +
+      "GHTINFO_TYPE\022\n\n\002id\030\002 \002(\r\"W\n\030ResponseFigh" +
+      "tInfoCommand\022/\n\004info\030\001 \003(\0132!.com.trans.p" +
+      "ixel.protoc.FightInfo\022\n\n\002id\030\002 \003(\r\"\254\001\n\033Re" +
+      "questSaveFightInfoCommand\0220\n\005fight\030\001 \001(\013" +
+      "2!.com.trans.pixel.protoc.FightInfo\022\020\n\010i" +
+      "sDelete\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\0224\n\004ty" +
+      "pe\030\004 \001(\0162&.com.trans.pixel.protoc.FIGHTI" +
+      "NFO_TYPE\"!\n\037RequestGetLadderRankListComm" +
+      "and\"%\n#RequestGetUserLadderRankListComma",
+      "nd\"V\n ResponseGetLadderRankListCommand\0222" +
+      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
+      "c.UserRank\"Z\n$ResponseGetUserLadderRankL" +
+      "istCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
+      ".pixel.protoc.UserRank\"a\n\036RequestAttackL" +
+      "adderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 " +
+      "\002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(" +
+      "\003\";\n\037ResponseAttackLadderModeCommand\022\013\n\003" +
+      "ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAt" +
+      "tackLadderCommand\"/\n\037RequestGetLadderUse",
+      "rInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPur" +
+      "chaseLadderTimeCommand\"V\n ResponseGetLad" +
+      "derUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .c" +
+      "om.trans.pixel.protoc.UserRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -37610,224 +39076,236 @@ public final class LadderProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderModeLevel_descriptor,
               new java.lang.String[] { "Level", "Score", });
-          internal_static_com_trans_pixel_protoc_LadderTeamList_descriptor =
+          internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor =
             getDescriptor().getMessageTypes().get(14);
+          internal_static_com_trans_pixel_protoc_LadderTeamRewardList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_LadderTeamRewardList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor =
+            getDescriptor().getMessageTypes().get(15);
+          internal_static_com_trans_pixel_protoc_LadderTeamReward_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_LadderTeamReward_descriptor,
+              new java.lang.String[] { "Id", "Reward", });
+          internal_static_com_trans_pixel_protoc_LadderTeamList_descriptor =
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_LadderTeamList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_LadderTeam_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_LadderTeam_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeam_descriptor,
               new java.lang.String[] { "Id", "Name", "Touxiang", "Engine", "Zhujue", "Hero", });
           internal_static_com_trans_pixel_protoc_LadderTeamEngine_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_LadderTeamEngine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamEngine_descriptor,
               new java.lang.String[] { "Order", "Id", "Skilllist", });
           internal_static_com_trans_pixel_protoc_LadderTeamEngineSkill_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_LadderTeamEngineSkill_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamEngineSkill_descriptor,
               new java.lang.String[] { "Position", "Skill", });
           internal_static_com_trans_pixel_protoc_LadderTeamZhujue_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_LadderTeamZhujue_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamZhujue_descriptor,
               new java.lang.String[] { "Id", "Level", "Equip", "Skilllist", });
           internal_static_com_trans_pixel_protoc_LadderTeamZhujueSkill_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_LadderTeamZhujueSkill_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamZhujueSkill_descriptor,
               new java.lang.String[] { "Order", "Id", "Level", });
           internal_static_com_trans_pixel_protoc_LadderTeamEquip_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_LadderTeamEquip_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamEquip_descriptor,
               new java.lang.String[] { "Position", "Id", "Order", "Level", });
           internal_static_com_trans_pixel_protoc_LadderTeamHero_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_LadderTeamHero_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeamHero_descriptor,
               new java.lang.String[] { "Position", "Id", "Star", "Rank", "Level", "Skill1", "Skill2", "Skill3", "Skill4", "Skill5", "Equip", });
           internal_static_com_trans_pixel_protoc_LadderLd_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_LadderLd_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderLd_descriptor,
               new java.lang.String[] { "Targetid", "Name", "Des", "Equipid", });
           internal_static_com_trans_pixel_protoc_LadderLdList_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_LadderLdList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderLdList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_LadderSeasonConfig_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_LadderSeasonConfig_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderSeasonConfig_descriptor,
               new java.lang.String[] { "Season", "Starttime", "Taskid", "Task", "Ladder", "Ld", });
           internal_static_com_trans_pixel_protoc_LadderSeasonConfigList_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_LadderSeasonConfigList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderSeasonConfigList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_LadderSeason_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_LadderSeason_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderSeason_descriptor,
               new java.lang.String[] { "Season", "StartTime", "EndTime", });
           internal_static_com_trans_pixel_protoc_UserLadder_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_UserLadder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserLadder_descriptor,
               new java.lang.String[] { "Type", "Score", "Season", "TaskProcess", "TaskRewardProcess", "Team", "Position", "LastScore", "Grade", "Level", "SeasonRewardStatus", "LastSeason", });
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderSeasonRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestLadderEnemyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RequestLadderEnemyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderEnemyCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_RequestLadderInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestLadderInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderInfoCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestRefreshLadderEnemyCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestRefreshLadderEnemyCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshLadderEnemyCommand_descriptor,
               new java.lang.String[] { "Type", });
           internal_static_com_trans_pixel_protoc_ResponseEnemyLadderCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_ResponseEnemyLadderCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseEnemyLadderCommand_descriptor,
               new java.lang.String[] { "Enemy", });
           internal_static_com_trans_pixel_protoc_RequestSubmitLadderResultCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestSubmitLadderResultCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSubmitLadderResultCommand_descriptor,
               new java.lang.String[] { "Position", "Ret", "Type", });
           internal_static_com_trans_pixel_protoc_RequestLadderTaskRewardCommand_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_RequestLadderTaskRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestLadderTaskRewardCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseUserLadderCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_ResponseUserLadderCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseUserLadderCommand_descriptor,
               new java.lang.String[] { "User", });
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetFightInfoCommand_descriptor,
               new java.lang.String[] { "IsSave", });
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestFightInfoCommand_descriptor,
               new java.lang.String[] { "Info", "Score", });
           internal_static_com_trans_pixel_protoc_RequestQueryFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_com_trans_pixel_protoc_RequestQueryFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestQueryFightInfoCommand_descriptor,
               new java.lang.String[] { "Type", "Id", });
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseFightInfoCommand_descriptor,
               new java.lang.String[] { "Info", "Id", });
           internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSaveFightInfoCommand_descriptor,
               new java.lang.String[] { "Fight", "IsDelete", "FightinfoId", "Type", });
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetUserLadderRankListCommand_descriptor,
               new java.lang.String[] { "UserRank", });
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(47);
           internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Rank", "Ret", "TeamId", "AttackUserId", });
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(46);
+            getDescriptor().getMessageTypes().get(48);
           internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseAttackLadderModeCommand_descriptor,
               new java.lang.String[] { "Ret", "Msg", });
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor =
-            getDescriptor().getMessageTypes().get(47);
+            getDescriptor().getMessageTypes().get(49);
           internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestReadyAttackLadderCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(48);
+            getDescriptor().getMessageTypes().get(50);
           internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestGetLadderUserInfoCommand_descriptor,
               new java.lang.String[] { "Rank", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor =
-            getDescriptor().getMessageTypes().get(49);
+            getDescriptor().getMessageTypes().get(51);
           internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseLadderTimeCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(50);
+            getDescriptor().getMessageTypes().get(52);
           internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseGetLadderUserInfoCommand_descriptor,

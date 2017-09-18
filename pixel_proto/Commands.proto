@@ -2699,6 +2699,15 @@ message LadderModeLevel {
 	required uint32 score = 2;
 }
 
+message LadderTeamRewardList {
+	repeated LadderTeamReward data = 1;
+}
+
+message LadderTeamReward {
+	required uint32 id = 1;
+	repeated RewardInfo reward = 2;
+}
+
 message LadderTeamList {
 	repeated LadderTeam data = 1;
 }
@@ -2734,7 +2743,7 @@ message LadderTeamZhujueSkill {
 	required uint32 order = 1;
 	required uint32 id = 2;
 	required uint32 level = 3;
-}	
+}      
 
 message LadderTeamEquip {
 	optional uint32 position = 1;
@@ -3928,7 +3937,7 @@ message TeamRaid {
 	optional int32 count = 4;
 	repeated EventProgress event = 5;
 	optional int32 level = 8;
-	optional int32 unlock = 9;       
+	optional int32 unlock = 9;	
 	optional int32 members = 10;
 	optional RoomInfo roomInfo = 11;
 	optional int64 endtime = 12;

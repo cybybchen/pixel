@@ -122,7 +122,7 @@ public class LadderService {
 		return userLadderService.getUserEnemy(user, type, true);
 	}
 	
-	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position) {
+	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position, MultiReward.Builder rewards) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, type);
 		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
 		Map<Integer, UserLadder> map = userLadderRedisService.getUserEnemy(user.getId(), type);
@@ -152,6 +152,12 @@ public class LadderService {
 			userLadderService.addLadderRank(user, builder.build());
 		}
 
+		//最佳阵容奖励
+		if (ret == 0 && enemy.getPosition() == 0 && enemy.getTeam().getUser().getId() < 0 && user.getLadderModeRewardCount() < 5) {
+			rewards.addAllLoot(userLadderService.getLadderTeamReward());
+			user.setLadderModeRewardCount(user.getLadderModeRewardCount() - 1);
+		}
+		
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
 		params.put(LogString.SERVERID, "" + user.getServerId());

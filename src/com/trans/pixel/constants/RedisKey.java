@@ -291,6 +291,7 @@ public class RedisKey {
 	public static final String LADDER_ENEMY_KEY = PREFIX + CONFIG_PREFIX + "ladder_enemy";
 	
 	public static final String LADDER_TEAM_KEY = PREFIX + CONFIG_PREFIX + "ladder_team";
+	public static final String LADDER_TEAMREWARD_KEY = PREFIX + CONFIG_PREFIX + "ladder_teamreward";
 	
 	//ladder
 	public static final String LADDER_SEASON_KEY = PREFIX + "ladder:season";

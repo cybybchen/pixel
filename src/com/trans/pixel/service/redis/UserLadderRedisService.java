@@ -25,6 +25,8 @@ import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderTeam;
 import com.trans.pixel.protoc.LadderProto.LadderTeamList;
+import com.trans.pixel.protoc.LadderProto.LadderTeamReward;
+import com.trans.pixel.protoc.LadderProto.LadderTeamRewardList;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
 import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.utils.DateUtil;
@@ -34,9 +36,11 @@ import com.trans.pixel.utils.TypeTranslatedUtil;
 public class UserLadderRedisService extends RedisService{
 	private static Logger logger = Logger.getLogger(UserLadderRedisService.class);
 	private static final String LADDER_TEAM_FILE_NAME = "ld_team.xml";
+	private static final String LADDER_TEAMREWARD_FILE_NAME = "ld_teamreward.xml";
 	
 	public UserLadderRedisService() {
 		buildLadderTeamConfig();
+		buildLadderTeamRewardConfig();
 	}
 	
 	public LadderTeam getLadderTeam(int id) {
@@ -58,6 +62,27 @@ public class UserLadderRedisService extends RedisService{
 			map.put(config.getId(), config.build());
 		}
 		CacheService.hputcacheAll(RedisKey.LADDER_TEAM_KEY, map);
+	}
+	
+	public LadderTeamReward getLadderTeamReward(int id) {
+		Map<Integer, LadderTeamReward> map = getLadderTeamRewardConfig();
+		return map.get(id);
+	}
+	
+	public Map<Integer, LadderTeamReward> getLadderTeamRewardConfig() {
+		Map<Integer, LadderTeamReward> map = CacheService.hgetcache(RedisKey.LADDER_TEAMREWARD_KEY);
+		return map;
+	}
+	
+	private void buildLadderTeamRewardConfig(){
+		String xml = RedisService.ReadConfig(LADDER_TEAMREWARD_FILE_NAME);
+		LadderTeamRewardList.Builder builder = LadderTeamRewardList.newBuilder();
+		RedisService.parseXml(xml, builder);
+		Map<Integer, LadderTeamReward> map = new HashMap<Integer, LadderTeamReward>();
+		for(LadderTeamReward.Builder config : builder.getDataBuilderList()){
+			map.put(config.getId(), config.build());
+		}
+		CacheService.hputcacheAll(RedisKey.LADDER_TEAMREWARD_KEY, map);
 	}
 	
 	public LadderSeason getLadderSeason() {

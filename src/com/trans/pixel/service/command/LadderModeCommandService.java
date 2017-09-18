@@ -231,9 +231,9 @@ public class LadderModeCommandService extends BaseCommandService {
 			return;
 		}
 		
-		
+		MultiReward.Builder rewards = MultiReward.newBuilder();
 		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
-		UserLadder newUserLadder = ladderService.submitLadderResult(user, cmd.getRet(), cmd.getType(), cmd.getPosition());
+		UserLadder newUserLadder = ladderService.submitLadderResult(user, cmd.getRet(), cmd.getType(), cmd.getPosition(), rewards);
 		if (newUserLadder != null) {
 			userLadderBuilder.addUser(newUserLadder);
 		}else
@@ -259,14 +259,13 @@ public class LadderModeCommandService extends BaseCommandService {
 				}
 			}
 //		}
-		
+
 		//任务奖励
 		if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
 			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
 			List<RewardInfo> list = ladderService.ladderTaskReward(user);
 			if (list != null && !list.isEmpty()) {
 				rewardList.addAll(list);
-				MultiReward.Builder rewards = MultiReward.newBuilder();
 				if(user.getVip() >= 12)
 				for(int i = 0; i < rewardList.size(); i++) {
 					int itemid = rewardList.get(i).getItemid();
@@ -285,9 +284,10 @@ public class LadderModeCommandService extends BaseCommandService {
 					}
 				}
 				rewards.addAllLoot(rewardList);
-				handleRewards(responseBuilder, user, rewards);
 			}
 		}
+		
+		handleRewards(responseBuilder, user, rewards);
 	}
 	
 	public void ladderSeasonReward(RequestLadderSeasonRewardCommand cmd, Builder responseBuilder, UserBean user) {
