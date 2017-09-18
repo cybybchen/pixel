@@ -73,7 +73,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_LOCKED_ERROR);
 		            responseBuilder.setErrorCommand(errorCommand);
 		            return;
-				}if(myraid.getCount() > 0 && myraid.getLeftcount() <= 0) {//次数用完
+				}else if(myraid.getCount() > 0 && myraid.getLeftcount() <= 0) {//次数用完
 					logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH_TIMES);
 					ErrorCommand errorCommand = buildErrorCommand(ErrorConst.NOT_ENOUGH_TIMES);
 		            responseBuilder.setErrorCommand(errorCommand);
@@ -100,7 +100,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 				myraid.setLeftcount(myraid.getLeftcount()-1);
 			redis.saveTeamRaid(user, myraid);
 			responseBuilder.setTeamRaidCommand(raidlist);
-			pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
+//			pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
 			break;
 		}
 
@@ -121,17 +121,26 @@ public class TeamRaidCommandService extends BaseCommandService{
 	}
 	
 	public void getTeamRaidRoom(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		UserRoom.Builder room = redis.getUserRoom(user.getId(), cmd.getIndex());
-//		if (ut == null || ut.getRoomInfo() == null) {
-//			redis.delUserRoom(user, cmd.getIndex());
-//			return null;
-//		}
-		 
-//		UserRoom.Builder room = userRoomRedisService.getUserRoomRoom(ut.getRoomInfo().getUser().getId(), ut.getRoomInfo().getIndex());
+		TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
 		
-		if (room != null) {
+		if (myraid == null || myraid.getRoomInfo() == null) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+			return;
+		}
+		UserRoom.Builder room = redis.getUserRoom(myraid.getRoomInfo().getUser().getId(), myraid.getRoomInfo().getIndex());
+		if (room == null) {
+//			TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
+			myraid.clearRoomInfo();
+			redis.saveTeamRaid(user, myraid);
+			getTeamRaid(responseBuilder, user);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_ERROR);
+            responseBuilder.setErrorCommand(errorCommand);
+		}else {
 			if(!UserRewardTaskService.hasMeInRoom(user, room)) {//非法：我不在房间中
-				TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
+//				TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
 				if(myraid.hasRoomInfo() && myraid.getRoomInfo().getIndex() == cmd.getIndex()) {
 					myraid.clearRoomInfo();
 					redis.saveTeamRaid(user, myraid);
@@ -152,16 +161,6 @@ public class TeamRaidCommandService extends BaseCommandService{
 //					pusher.pushOtherUserInfoCommand(responseBuilder, rewardTaskService.getNotEnoughPropUser(room.build()));
 //				}
 			}
-		}else {
-			TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
-			if(myraid != null && myraid.hasRoomInfo()) {
-				myraid.clearRoomInfo();
-				redis.saveTeamRaid(user, myraid);
-			}
-			getTeamRaid(responseBuilder, user);
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_ERROR);
-            responseBuilder.setErrorCommand(errorCommand);
 		}
 	}
 		
@@ -289,6 +288,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 		
 		getTeamRaid(responseBuilder, user);
 	}
+	
 	public void inviteToTeamRaidRoom(RequestInviteToTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		List<Long> userIds = cmd.getUserIdList();
 //		int id = cmd.getId();
@@ -571,10 +571,10 @@ public class TeamRaidCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 	        responseBuilder.setErrorCommand(errorCommand);
-		}else if (room.getCreateUserId() != user.getId()) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER);
-	        responseBuilder.setErrorCommand(errorCommand);
+//		}else if (room.getCreateUserId() != user.getId()) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER);
+//			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CAN_NOT_QUIT_OTHER);
+//	        responseBuilder.setErrorCommand(errorCommand);
 		}else {
 			if(redis.setLock("TeamRaidRoom_"+room.getCreateUserId()+"_"+room.getIndex())) {
 				for (int i = 0; i < room.getRoomInfoCount(); ++i) {
