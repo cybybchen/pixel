@@ -1723,12 +1723,12 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.getTeamRaidRoom(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 
 	@Override
 	protected boolean handleCommand(RequestGetTeamRaidRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.getTeamRaidReward(cmd, responseBuilder, user);
-		return false;
+		return true;
 	}
 }
