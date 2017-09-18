@@ -262,7 +262,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 			for (int i = 0; i < room.getRoomInfoCount(); ++i) {
 				if (room.getRoomInfo(i).getUser().getId() == cmd.getUserId()) {
 					if (cmd.getUserId() != user.getId()) {
-						TeamRaid.Builder hisraid = redis.getTeamRaid(cmd.getUserId(), room.getRoomInfo(i).getIndex());
+						TeamRaid.Builder hisraid = redis.getTeamRaid(cmd.getUserId(), room.getRoomInfo(i).getIndex()/redis.INDEX_SIZE);
 						if(hisraid != null &&  hisraid.hasRoomInfo() && hisraid.getRoomInfo().getUser().getId() == room.getCreateUserId()) {
 							hisraid.clearRoomInfo();
 							redis.saveTeamRaid(cmd.getUserId(), hisraid);	
