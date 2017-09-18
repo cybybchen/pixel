@@ -121,7 +121,11 @@ public class UserLadderService {
 			map.put(0, robotLadder);
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找当前段位的对手
-			map = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT, user.getId(), enemyUserIdList);
+			Map<Integer, UserLadder> beforeMap = userLadderRedisService.randomEnemy(type, userLadder.getGrade(), LadderConst.RANDOM_ENEMY_COUNT - map.size(), user.getId(), enemyUserIdList);
+			for (UserLadder beforeUserLadder : beforeMap.values()) {
+				if (!isExists(map, beforeUserLadder))
+					map.put(beforeUserLadder.getPosition(), beforeUserLadder);
+			}
 		}
 		
 		if (map.size() < LadderConst.RANDOM_ENEMY_COUNT) {//查找前一个段位的对手 {
@@ -167,7 +171,7 @@ public class UserLadderService {
 		LadderTeam ladderTeam = map.get(teamIds.get(RandomUtils.nextInt(map.size())));
 		Team.Builder team = Team.newBuilder();
 		UserInfo.Builder userinfo = UserInfo.newBuilder();
-		userinfo.setId(ladderTeam.getId());
+		userinfo.setId(-ladderTeam.getId());
 		userinfo.setName(ladderTeam.getName());
 		userinfo.setIcon(ladderTeam.getTouxiang());
 		team.setUser(userinfo.build());
