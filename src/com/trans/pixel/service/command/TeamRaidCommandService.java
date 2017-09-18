@@ -153,6 +153,12 @@ public class TeamRaidCommandService extends BaseCommandService{
 //				}
 			}
 		}else {
+			TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
+			if(myraid != null && myraid.hasRoomInfo()) {
+				myraid.clearRoomInfo();
+				redis.saveTeamRaid(user, myraid);
+			}
+			getTeamRaid(responseBuilder, user);
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
@@ -204,6 +210,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 		ResponseTeamRaidRoomCommand.Builder roombuilder = ResponseTeamRaidRoomCommand.newBuilder();
 		roombuilder.addRoom(room);
 		responseBuilder.setTeamRaidRoomCommand(roombuilder.build());
+		getTeamRaid(responseBuilder, user);
 	}
 	
 	public void quitTeamRaidRoom(RequestQuitTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
@@ -243,8 +250,10 @@ public class TeamRaidCommandService extends BaseCommandService{
 			for (RoomInfo roomInfo :room.getRoomInfoList()) {
 				if (roomInfo.getUser().getId() != user.getId()) {
 					TeamRaid.Builder hisraid = redis.getTeamRaid(roomInfo.getUser().getId(), roomInfo.getIndex()/redis.INDEX_SIZE);
-					hisraid.clearRoomInfo();
-					redis.saveTeamRaid(roomInfo.getUser().getId(), hisraid);
+					if(hisraid != null &&  hisraid.hasRoomInfo() && hisraid.getRoomInfo().getUser().getId() == room.getCreateUserId()) {
+						hisraid.clearRoomInfo();
+						redis.saveTeamRaid(roomInfo.getUser().getId(), hisraid);
+					}
 				}
 			}
 			room.clearRoomInfo();
@@ -253,10 +262,10 @@ public class TeamRaidCommandService extends BaseCommandService{
 			for (int i = 0; i < room.getRoomInfoCount(); ++i) {
 				if (room.getRoomInfo(i).getUser().getId() == cmd.getUserId()) {
 					if (cmd.getUserId() != user.getId()) {
-						TeamRaid.Builder hsiraid = redis.getTeamRaid(cmd.getUserId(), room.getRoomInfo(i).getIndex());
-						if(hsiraid != null) {
-							hsiraid.clearRoomInfo();
-							redis.saveTeamRaid(cmd.getUserId(), hsiraid);	
+						TeamRaid.Builder hisraid = redis.getTeamRaid(cmd.getUserId(), room.getRoomInfo(i).getIndex());
+						if(hisraid != null &&  hisraid.hasRoomInfo() && hisraid.getRoomInfo().getUser().getId() == room.getCreateUserId()) {
+							hisraid.clearRoomInfo();
+							redis.saveTeamRaid(cmd.getUserId(), hisraid);	
 						}
 					}
 					room.removeRoomInfo(i);
