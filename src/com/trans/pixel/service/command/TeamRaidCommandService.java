@@ -465,7 +465,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 					}
 					redis.delUserRoom(user, myraid.getRoomInfo().getIndex());
 				}else {//退出房间
-					UserRoom.Builder room = redis.getUserRoom(user.getId(), myraid.getRoomInfo().getIndex());
+					UserRoom.Builder room = redis.getUserRoom(myraid.getRoomInfo().getUser().getId(), myraid.getRoomInfo().getIndex());
 					if(!redis.setLock("TeamRaidRoom_"+room.getCreateUserId()+"_"+room.getIndex())) {
 						logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ERROR_LOCKED);
 						ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ERROR_LOCKED);
