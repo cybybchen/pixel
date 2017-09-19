@@ -209,7 +209,7 @@ public class UserLadderService {
 					sb.append("|0,0,").append(engineSkill.getSkill());
 				else for (HeroInfo heroinfo : team.getHeroInfoList()) {
 					if (heroinfo.getPosition() == engineSkill.getPosition()) {
-						sb.append("|").append(heroinfo.getHeroId()).append(heroinfo.getInfoId()).append(engineSkill.getSkill());
+						sb.append("|").append(heroinfo.getHeroId()).append(",").append(heroinfo.getInfoId()).append(",").append(engineSkill.getSkill());
 						break;
 					}
 				}
