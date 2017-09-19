@@ -653,7 +653,23 @@ public class TeamRaidCommandService extends BaseCommandService{
 				handleRewards(responseBuilder, user, rewards.build());
 				if(isAllClear(myraid)) {
 					myraid.clearEvent();
-					myraid.clearRoomInfo();
+					if(myraid.hasRoomInfo()) {
+						if(myraid.getRoomInfo().getUser().getId() == user.getId()) {//结算房间
+							UserRoom.Builder room = redis.getUserRoom(user.getId(), myraid.getRoomInfo().getIndex());
+							if(room != null)
+							for(RoomInfo roominfo : room.getRoomInfoList()) {
+								if(roominfo.getUser().getId() == user.getId())
+									continue;
+								TeamRaid.Builder hisraid = redis.getTeamRaid(roominfo.getUser().getId(), cmd.getId());
+								if(hisraid != null && hisraid.hasRoomInfo() && hisraid.getRoomInfo().getUser().getId() == user.getId()) {
+									hisraid.clearRoomInfo();
+									redis.saveTeamRaid(roominfo.getUser().getId(), hisraid);
+								}
+							}
+							redis.delUserRoom(user, myraid.getRoomInfo().getIndex());
+						}
+						myraid.clearRoomInfo();
+					}
 				}
 				redis.saveTeamRaid(user, myraid);
 			}else{
