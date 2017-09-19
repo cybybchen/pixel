@@ -188,7 +188,7 @@ public class UserService {
 		user.setExtraCount2(4);
 		user.setExtraCount3(4);
 		
-		user.setLadderModeRewardCount(0);//竞技场额外奖励每天5次
+		user.setLadderModeRewardCount(5);//竞技场额外奖励每天5次
 		
 		handleVipDailyReward(user);
 		handleLibaoDailyReward(user, today0);
