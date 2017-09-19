@@ -2719,6 +2719,7 @@ message LadderTeam {
 	repeated LadderTeamEngine engine = 4;
 	required LadderTeamZhujue zhujue = 5;
 	repeated LadderTeamHero hero = 6;
+	required uint32 zhanli = 7;
 }
 
 message LadderTeamEngine {

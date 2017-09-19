@@ -39,8 +39,11 @@ import com.trans.pixel.protoc.LadderProto.LadderTeamReward;
 import com.trans.pixel.protoc.LadderProto.LadderTeamZhujue;
 import com.trans.pixel.protoc.LadderProto.LadderTeamZhujueSkill;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
+import com.trans.pixel.protoc.UserInfoProto.Merlevel;
+import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
 import com.trans.pixel.service.redis.LadderRedisService;
 import com.trans.pixel.service.redis.UserLadderRedisService;
+import com.trans.pixel.service.redis.ZhanliRedisService;
 import com.trans.pixel.utils.DateUtil;
 
 @Service
@@ -59,6 +62,8 @@ public class UserLadderService {
 	private UserLadderMapper userLadderMapper;
 	@Resource
 	private ServerTitleService serverTitleService;
+	@Resource
+	private ZhanliRedisService zhanliRedisService;
 	
 	public UserLadder getUserLadder(UserBean user, int type) {
 		UserLadder userLadder = userLadderRedisService.getUserLadder(user.getId(), type);
@@ -178,6 +183,14 @@ public class UserLadderService {
 		userinfo.setId(-ladderTeam.getId());
 		userinfo.setName(ladderTeam.getName());
 		userinfo.setIcon(ladderTeam.getTouxiang());
+		userinfo.setZhanli(ladderTeam.getZhanli());
+		userinfo.setZhanliMax(ladderTeam.getZhanli());
+		MerlevelList.Builder list = zhanliRedisService.getMerlevel();
+		for(Merlevel level : list.getLevelList()){
+			if(userinfo.getZhanliMax() >= level.getScore() && userinfo.getMerlevel() < level.getLevel()) {
+				userinfo.setMerlevel(level.getLevel());
+			}
+		}
 		team.setUser(userinfo.build());
 		team.setRolePosition(0);
 		

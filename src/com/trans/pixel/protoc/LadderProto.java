@@ -13940,6 +13940,16 @@ public final class LadderProto {
      */
     com.trans.pixel.protoc.LadderProto.LadderTeamHeroOrBuilder getHeroOrBuilder(
         int index);
+
+    // required uint32 zhanli = 7;
+    /**
+     * <code>required uint32 zhanli = 7;</code>
+     */
+    boolean hasZhanli();
+    /**
+     * <code>required uint32 zhanli = 7;</code>
+     */
+    int getZhanli();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.LadderTeam}
@@ -14034,6 +14044,11 @@ public final class LadderProto {
                 mutable_bitField0_ |= 0x00000020;
               }
               hero_.add(input.readMessage(com.trans.pixel.protoc.LadderProto.LadderTeamHero.PARSER, extensionRegistry));
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000010;
+              zhanli_ = input.readUInt32();
               break;
             }
           }
@@ -14251,6 +14266,22 @@ public final class LadderProto {
       return hero_.get(index);
     }
 
+    // required uint32 zhanli = 7;
+    public static final int ZHANLI_FIELD_NUMBER = 7;
+    private int zhanli_;
+    /**
+     * <code>required uint32 zhanli = 7;</code>
+     */
+    public boolean hasZhanli() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required uint32 zhanli = 7;</code>
+     */
+    public int getZhanli() {
+      return zhanli_;
+    }
+
     private void initFields() {
       id_ = 0;
       name_ = "";
@@ -14258,6 +14289,7 @@ public final class LadderProto {
       engine_ = java.util.Collections.emptyList();
       zhujue_ = com.trans.pixel.protoc.LadderProto.LadderTeamZhujue.getDefaultInstance();
       hero_ = java.util.Collections.emptyList();
+      zhanli_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -14277,6 +14309,10 @@ public final class LadderProto {
         return false;
       }
       if (!hasZhujue()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasZhanli()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -14321,6 +14357,9 @@ public final class LadderProto {
       for (int i = 0; i < hero_.size(); i++) {
         output.writeMessage(6, hero_.get(i));
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(7, zhanli_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -14353,6 +14392,10 @@ public final class LadderProto {
       for (int i = 0; i < hero_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, hero_.get(i));
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(7, zhanli_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -14497,6 +14540,8 @@ public final class LadderProto {
         } else {
           heroBuilder_.clear();
         }
+        zhanli_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -14563,6 +14608,10 @@ public final class LadderProto {
         } else {
           result.hero_ = heroBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.zhanli_ = zhanli_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -14645,6 +14694,9 @@ public final class LadderProto {
             }
           }
         }
+        if (other.hasZhanli()) {
+          setZhanli(other.getZhanli());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -14663,6 +14715,10 @@ public final class LadderProto {
           return false;
         }
         if (!hasZhujue()) {
+          
+          return false;
+        }
+        if (!hasZhanli()) {
           
           return false;
         }
@@ -15439,6 +15495,39 @@ public final class LadderProto {
           hero_ = null;
         }
         return heroBuilder_;
+      }
+
+      // required uint32 zhanli = 7;
+      private int zhanli_ ;
+      /**
+       * <code>required uint32 zhanli = 7;</code>
+       */
+      public boolean hasZhanli() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required uint32 zhanli = 7;</code>
+       */
+      public int getZhanli() {
+        return zhanli_;
+      }
+      /**
+       * <code>required uint32 zhanli = 7;</code>
+       */
+      public Builder setZhanli(int value) {
+        bitField0_ |= 0x00000040;
+        zhanli_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 zhanli = 7;</code>
+       */
+      public Builder clearZhanli() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        zhanli_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.LadderTeam)
@@ -38904,88 +38993,89 @@ public final class LadderProto {
       "\0222\n\006reward\030\002 \003(\0132\".com.trans.pixel.proto",
       "c.RewardInfo\"B\n\016LadderTeamList\0220\n\004data\030\001" +
       " \003(\0132\".com.trans.pixel.protoc.LadderTeam" +
-      "\"\342\001\n\nLadderTeam\022\n\n\002id\030\001 \002(\r\022\014\n\004name\030\002 \002(" +
+      "\"\362\001\n\nLadderTeam\022\n\n\002id\030\001 \002(\r\022\014\n\004name\030\002 \002(" +
       "\t\022\020\n\010touxiang\030\003 \002(\r\0228\n\006engine\030\004 \003(\0132(.co" +
       "m.trans.pixel.protoc.LadderTeamEngine\0228\n" +
       "\006zhujue\030\005 \002(\0132(.com.trans.pixel.protoc.L" +
       "adderTeamZhujue\0224\n\004hero\030\006 \003(\0132&.com.tran" +
-      "s.pixel.protoc.LadderTeamHero\"o\n\020LadderT" +
-      "eamEngine\022\r\n\005order\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022@\n\t" +
-      "skilllist\030\003 \003(\0132-.com.trans.pixel.protoc",
-      ".LadderTeamEngineSkill\"8\n\025LadderTeamEngi" +
-      "neSkill\022\020\n\010position\030\001 \002(\r\022\r\n\005skill\030\002 \002(\r" +
-      "\"\247\001\n\020LadderTeamZhujue\022\n\n\002id\030\001 \002(\r\022\r\n\005lev" +
-      "el\030\002 \002(\r\0226\n\005equip\030\003 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.LadderTeamEquip\022@\n\tskilllist\030\004 " +
-      "\003(\0132-.com.trans.pixel.protoc.LadderTeamZ" +
-      "hujueSkill\"A\n\025LadderTeamZhujueSkill\022\r\n\005o" +
-      "rder\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022\r\n\005level\030\003 \002(\r\"M\n" +
-      "\017LadderTeamEquip\022\020\n\010position\030\001 \001(\r\022\n\n\002id" +
-      "\030\002 \002(\r\022\r\n\005order\030\003 \002(\r\022\r\n\005level\030\004 \002(\r\"\341\001\n",
-      "\016LadderTeamHero\022\020\n\010position\030\001 \002(\r\022\n\n\002id\030" +
-      "\002 \002(\r\022\014\n\004star\030\003 \002(\r\022\014\n\004rank\030\004 \002(\r\022\r\n\005lev" +
-      "el\030\005 \002(\r\022\016\n\006skill1\030\006 \002(\r\022\016\n\006skill2\030\007 \002(\r" +
-      "\022\016\n\006skill3\030\010 \002(\r\022\016\n\006skill4\030\t \002(\r\022\016\n\006skil" +
-      "l5\030\n \002(\r\0226\n\005equip\030\013 \002(\0132\'.com.trans.pixe" +
-      "l.protoc.LadderTeamEquip\"H\n\010LadderLd\022\020\n\010" +
-      "targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001(" +
-      "\t\022\017\n\007equipid\030\004 \001(\r\">\n\014LadderLdList\022.\n\004da" +
-      "ta\030\001 \003(\0132 .com.trans.pixel.protoc.Ladder" +
-      "Ld\"\325\001\n\022LadderSeasonConfig\022\016\n\006season\030\001 \002(",
-      "\r\022\021\n\tstarttime\030\002 \002(\t\022\016\n\006taskid\030\003 \002(\r\022*\n\004" +
-      "task\030\004 \003(\0132\034.com.trans.pixel.protoc.Task" +
-      "\0222\n\006ladder\030\005 \003(\0132\".com.trans.pixel.proto" +
-      "c.LadderMode\022,\n\002ld\030\006 \003(\0132 .com.trans.pix" +
-      "el.protoc.LadderLd\"R\n\026LadderSeasonConfig" +
-      "List\0228\n\004data\030\001 \003(\0132*.com.trans.pixel.pro" +
-      "toc.LadderSeasonConfig\"B\n\014LadderSeason\022\016" +
-      "\n\006season\030\001 \002(\r\022\021\n\tstartTime\030\002 \002(\t\022\017\n\007end" +
-      "Time\030\003 \001(\t\"\210\002\n\nUserLadder\022\014\n\004type\030\001 \001(\r\022" +
-      "\r\n\005score\030\002 \001(\r\022\016\n\006season\030\003 \001(\r\022\023\n\013taskPr",
-      "ocess\030\004 \001(\r\022\031\n\021taskRewardProcess\030\005 \001(\r\022*" +
-      "\n\004team\030\006 \001(\0132\034.com.trans.pixel.protoc.Te" +
-      "am\022\020\n\010position\030\007 \001(\r\022\021\n\tlastScore\030\t \001(\r\022" +
-      "\r\n\005grade\030\n \001(\r\022\r\n\005level\030\013 \001(\r\022\032\n\022seasonR" +
-      "ewardStatus\030\014 \001(\r\022\022\n\nlastSeason\030\r \001(\r\"\"\n" +
-      " RequestLadderSeasonRewardCommand\")\n\031Req" +
-      "uestLadderEnemyCommand\022\014\n\004type\030\001 \001(\r\"\032\n\030" +
-      "RequestLadderInfoCommand\"0\n RequestRefre" +
-      "shLadderEnemyCommand\022\014\n\004type\030\001 \002(\r\"O\n\032Re" +
-      "sponseEnemyLadderCommand\0221\n\005enemy\030\001 \003(\0132",
-      "\".com.trans.pixel.protoc.UserLadder\"O\n R" +
-      "equestSubmitLadderResultCommand\022\020\n\010posit" +
-      "ion\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014\n\004type\030\003 \002(\r\" \n\036" +
-      "RequestLadderTaskRewardCommand\"M\n\031Respon" +
-      "seUserLadderCommand\0220\n\004user\030\001 \003(\0132\".com." +
-      "trans.pixel.protoc.UserLadder\",\n\032Request" +
-      "GetFightInfoCommand\022\016\n\006isSave\030\001 \001(\010\"Y\n\027R" +
-      "equestFightInfoCommand\022/\n\004info\030\001 \002(\0132!.c" +
-      "om.trans.pixel.protoc.FightInfo\022\r\n\005score" +
-      "\030\002 \001(\r\"`\n\034RequestQueryFightInfoCommand\0224",
-      "\n\004type\030\001 \002(\0162&.com.trans.pixel.protoc.FI" +
-      "GHTINFO_TYPE\022\n\n\002id\030\002 \002(\r\"W\n\030ResponseFigh" +
-      "tInfoCommand\022/\n\004info\030\001 \003(\0132!.com.trans.p" +
-      "ixel.protoc.FightInfo\022\n\n\002id\030\002 \003(\r\"\254\001\n\033Re" +
-      "questSaveFightInfoCommand\0220\n\005fight\030\001 \001(\013" +
-      "2!.com.trans.pixel.protoc.FightInfo\022\020\n\010i" +
-      "sDelete\030\002 \001(\010\022\023\n\013fightinfoId\030\003 \001(\r\0224\n\004ty" +
-      "pe\030\004 \001(\0162&.com.trans.pixel.protoc.FIGHTI" +
-      "NFO_TYPE\"!\n\037RequestGetLadderRankListComm" +
-      "and\"%\n#RequestGetUserLadderRankListComma",
-      "nd\"V\n ResponseGetLadderRankListCommand\0222" +
-      "\n\010userRank\030\001 \003(\0132 .com.trans.pixel.proto" +
-      "c.UserRank\"Z\n$ResponseGetUserLadderRankL" +
-      "istCommand\0222\n\010userRank\030\001 \003(\0132 .com.trans" +
-      ".pixel.protoc.UserRank\"a\n\036RequestAttackL" +
-      "adderModeCommand\022\014\n\004rank\030\001 \002(\003\022\013\n\003ret\030\002 " +
-      "\002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014attackUserId\030\004 \001(" +
-      "\003\";\n\037ResponseAttackLadderModeCommand\022\013\n\003" +
-      "ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!\n\037RequestReadyAt" +
-      "tackLadderCommand\"/\n\037RequestGetLadderUse",
-      "rInfoCommand\022\014\n\004rank\030\001 \002(\004\"\"\n RequestPur" +
-      "chaseLadderTimeCommand\"V\n ResponseGetLad" +
-      "derUserInfoCommand\0222\n\010userRank\030\001 \002(\0132 .c" +
-      "om.trans.pixel.protoc.UserRank"
+      "s.pixel.protoc.LadderTeamHero\022\016\n\006zhanli\030" +
+      "\007 \002(\r\"o\n\020LadderTeamEngine\022\r\n\005order\030\001 \002(\r" +
+      "\022\n\n\002id\030\002 \002(\r\022@\n\tskilllist\030\003 \003(\0132-.com.tr",
+      "ans.pixel.protoc.LadderTeamEngineSkill\"8" +
+      "\n\025LadderTeamEngineSkill\022\020\n\010position\030\001 \002(" +
+      "\r\022\r\n\005skill\030\002 \002(\r\"\247\001\n\020LadderTeamZhujue\022\n\n" +
+      "\002id\030\001 \002(\r\022\r\n\005level\030\002 \002(\r\0226\n\005equip\030\003 \003(\0132" +
+      "\'.com.trans.pixel.protoc.LadderTeamEquip" +
+      "\022@\n\tskilllist\030\004 \003(\0132-.com.trans.pixel.pr" +
+      "otoc.LadderTeamZhujueSkill\"A\n\025LadderTeam" +
+      "ZhujueSkill\022\r\n\005order\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022\r" +
+      "\n\005level\030\003 \002(\r\"M\n\017LadderTeamEquip\022\020\n\010posi" +
+      "tion\030\001 \001(\r\022\n\n\002id\030\002 \002(\r\022\r\n\005order\030\003 \002(\r\022\r\n",
+      "\005level\030\004 \002(\r\"\341\001\n\016LadderTeamHero\022\020\n\010posit" +
+      "ion\030\001 \002(\r\022\n\n\002id\030\002 \002(\r\022\014\n\004star\030\003 \002(\r\022\014\n\004r" +
+      "ank\030\004 \002(\r\022\r\n\005level\030\005 \002(\r\022\016\n\006skill1\030\006 \002(\r" +
+      "\022\016\n\006skill2\030\007 \002(\r\022\016\n\006skill3\030\010 \002(\r\022\016\n\006skil" +
+      "l4\030\t \002(\r\022\016\n\006skill5\030\n \002(\r\0226\n\005equip\030\013 \002(\0132" +
+      "\'.com.trans.pixel.protoc.LadderTeamEquip" +
+      "\"H\n\010LadderLd\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002" +
+      " \001(\t\022\013\n\003des\030\003 \001(\t\022\017\n\007equipid\030\004 \001(\r\">\n\014La" +
+      "dderLdList\022.\n\004data\030\001 \003(\0132 .com.trans.pix" +
+      "el.protoc.LadderLd\"\325\001\n\022LadderSeasonConfi",
+      "g\022\016\n\006season\030\001 \002(\r\022\021\n\tstarttime\030\002 \002(\t\022\016\n\006" +
+      "taskid\030\003 \002(\r\022*\n\004task\030\004 \003(\0132\034.com.trans.p" +
+      "ixel.protoc.Task\0222\n\006ladder\030\005 \003(\0132\".com.t" +
+      "rans.pixel.protoc.LadderMode\022,\n\002ld\030\006 \003(\013" +
+      "2 .com.trans.pixel.protoc.LadderLd\"R\n\026La" +
+      "dderSeasonConfigList\0228\n\004data\030\001 \003(\0132*.com" +
+      ".trans.pixel.protoc.LadderSeasonConfig\"B" +
+      "\n\014LadderSeason\022\016\n\006season\030\001 \002(\r\022\021\n\tstartT" +
+      "ime\030\002 \002(\t\022\017\n\007endTime\030\003 \001(\t\"\210\002\n\nUserLadde" +
+      "r\022\014\n\004type\030\001 \001(\r\022\r\n\005score\030\002 \001(\r\022\016\n\006season",
+      "\030\003 \001(\r\022\023\n\013taskProcess\030\004 \001(\r\022\031\n\021taskRewar" +
+      "dProcess\030\005 \001(\r\022*\n\004team\030\006 \001(\0132\034.com.trans" +
+      ".pixel.protoc.Team\022\020\n\010position\030\007 \001(\r\022\021\n\t" +
+      "lastScore\030\t \001(\r\022\r\n\005grade\030\n \001(\r\022\r\n\005level\030" +
+      "\013 \001(\r\022\032\n\022seasonRewardStatus\030\014 \001(\r\022\022\n\nlas" +
+      "tSeason\030\r \001(\r\"\"\n RequestLadderSeasonRewa" +
+      "rdCommand\")\n\031RequestLadderEnemyCommand\022\014" +
+      "\n\004type\030\001 \001(\r\"\032\n\030RequestLadderInfoCommand" +
+      "\"0\n RequestRefreshLadderEnemyCommand\022\014\n\004" +
+      "type\030\001 \002(\r\"O\n\032ResponseEnemyLadderCommand",
+      "\0221\n\005enemy\030\001 \003(\0132\".com.trans.pixel.protoc" +
+      ".UserLadder\"O\n RequestSubmitLadderResult" +
+      "Command\022\020\n\010position\030\001 \002(\r\022\013\n\003ret\030\002 \002(\r\022\014" +
+      "\n\004type\030\003 \002(\r\" \n\036RequestLadderTaskRewardC" +
+      "ommand\"M\n\031ResponseUserLadderCommand\0220\n\004u" +
+      "ser\030\001 \003(\0132\".com.trans.pixel.protoc.UserL" +
+      "adder\",\n\032RequestGetFightInfoCommand\022\016\n\006i" +
+      "sSave\030\001 \001(\010\"Y\n\027RequestFightInfoCommand\022/" +
+      "\n\004info\030\001 \002(\0132!.com.trans.pixel.protoc.Fi" +
+      "ghtInfo\022\r\n\005score\030\002 \001(\r\"`\n\034RequestQueryFi",
+      "ghtInfoCommand\0224\n\004type\030\001 \002(\0162&.com.trans" +
+      ".pixel.protoc.FIGHTINFO_TYPE\022\n\n\002id\030\002 \002(\r" +
+      "\"W\n\030ResponseFightInfoCommand\022/\n\004info\030\001 \003" +
+      "(\0132!.com.trans.pixel.protoc.FightInfo\022\n\n" +
+      "\002id\030\002 \003(\r\"\254\001\n\033RequestSaveFightInfoComman" +
+      "d\0220\n\005fight\030\001 \001(\0132!.com.trans.pixel.proto" +
+      "c.FightInfo\022\020\n\010isDelete\030\002 \001(\010\022\023\n\013fightin" +
+      "foId\030\003 \001(\r\0224\n\004type\030\004 \001(\0162&.com.trans.pix" +
+      "el.protoc.FIGHTINFO_TYPE\"!\n\037RequestGetLa" +
+      "dderRankListCommand\"%\n#RequestGetUserLad",
+      "derRankListCommand\"V\n ResponseGetLadderR" +
+      "ankListCommand\0222\n\010userRank\030\001 \003(\0132 .com.t" +
+      "rans.pixel.protoc.UserRank\"Z\n$ResponseGe" +
+      "tUserLadderRankListCommand\0222\n\010userRank\030\001" +
+      " \003(\0132 .com.trans.pixel.protoc.UserRank\"a" +
+      "\n\036RequestAttackLadderModeCommand\022\014\n\004rank" +
+      "\030\001 \002(\003\022\013\n\003ret\030\002 \002(\010\022\016\n\006teamId\030\003 \002(\003\022\024\n\014a" +
+      "ttackUserId\030\004 \001(\003\";\n\037ResponseAttackLadde" +
+      "rModeCommand\022\013\n\003ret\030\001 \002(\010\022\013\n\003msg\030\002 \002(\t\"!" +
+      "\n\037RequestReadyAttackLadderCommand\"/\n\037Req",
+      "uestGetLadderUserInfoCommand\022\014\n\004rank\030\001 \002" +
+      "(\004\"\"\n RequestPurchaseLadderTimeCommand\"V" +
+      "\n ResponseGetLadderUserInfoCommand\0222\n\010us" +
+      "erRank\030\001 \002(\0132 .com.trans.pixel.protoc.Us" +
+      "erRank"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -39099,7 +39189,7 @@ public final class LadderProto {
           internal_static_com_trans_pixel_protoc_LadderTeam_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_LadderTeam_descriptor,
-              new java.lang.String[] { "Id", "Name", "Touxiang", "Engine", "Zhujue", "Hero", });
+              new java.lang.String[] { "Id", "Name", "Touxiang", "Engine", "Zhujue", "Hero", "Zhanli", });
           internal_static_com_trans_pixel_protoc_LadderTeamEngine_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_LadderTeamEngine_fieldAccessorTable = new
