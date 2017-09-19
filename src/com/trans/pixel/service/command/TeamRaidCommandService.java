@@ -93,11 +93,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 		for(TeamRaid.Builder myraid : raidlist.getRaidBuilderList()) {
 			if(myraid.getId() != raidconfig.getId())
 				continue;
-			myraid.clearRoomInfo();
-			myraid.clearEvent();
-			myraid.addAllEvent(raidconfig.getEventList());
-			if(myraid.getLeftcount() > 0)
-				myraid.setLeftcount(myraid.getLeftcount()-1);
+			open(myraid);
 			redis.saveTeamRaid(user, myraid);
 			responseBuilder.setTeamRaidCommand(raidlist);
 //			pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
@@ -120,8 +116,18 @@ public class TeamRaidCommandService extends BaseCommandService{
 //		}
 	}
 	
+	private void open(TeamRaid.Builder myraid) {
+		TeamRaid raidconfig = redis.getTeamRaid(myraid.getId());
+		myraid.clearRoomInfo();
+		myraid.clearEvent();
+		myraid.addAllEvent(raidconfig.getEventList());
+		if(myraid.getLeftcount() > 0)
+			myraid.setLeftcount(myraid.getLeftcount()-1);
+	}
+	
 	public void getTeamRaidRoom(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
+		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
+		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, cmd.getIndex()/redis.INDEX_SIZE);
 		
 		if (myraid == null || myraid.getRoomInfo() == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
@@ -166,7 +172,8 @@ public class TeamRaidCommandService extends BaseCommandService{
 	}
 		
 	public void createTeamRaidRoom(RequestCreateTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
-		TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getId());
+		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
+		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, cmd.getId());
 		if (myraid == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.BOSS_ROOM_CREATE_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_CREATE_ERROR);
@@ -216,7 +223,8 @@ public class TeamRaidCommandService extends BaseCommandService{
 	public void quitTeamRaidRoom(RequestQuitTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 //		UserRewardTask.Builder myraid = UserRewardTask.newBuilder();
 //		ResultConst ret = rewardTaskService.quitRoom(user, cmd.getUserId(), cmd.getIndex(), rewardTaskBuilder, roomBuilder);
-		TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), cmd.getIndex()/redis.INDEX_SIZE);
+		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
+		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, cmd.getIndex()/redis.INDEX_SIZE);
 		
 		if (myraid.getRoomInfo() == null) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
@@ -295,7 +303,8 @@ public class TeamRaidCommandService extends BaseCommandService{
 //		int id = cmd.getId();
 		long createUserId = cmd.getCreateUserId();
 		int index = cmd.getIndex();
-		TeamRaid.Builder myraid = redis.getTeamRaid(user.getId(), index/redis.INDEX_SIZE);
+		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
+		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, index/redis.INDEX_SIZE);
 		
 //		UserRewardTask.Builder userRewardTaskBuilder = rewardTaskService.inviteFightRewardTask(user, createUserId, userIds, index);
 		if (userIds.isEmpty()) {//接收邀请
@@ -309,9 +318,9 @@ public class TeamRaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.BOSS_ROOM_HASIN);
 	            responseBuilder.setErrorCommand(errorCommand);
 				return;
-			}else if(myraid.getEventCount() == 0 || !hasEventStatus0(myraid)) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_NOTOPEN_ERROR);
-				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_NOTOPEN_ERROR);
+			}else if(myraid.getEventCount() == 0 && myraid.getLeftcount() <= 0) {
+				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.RAID_TIMEOUT_ERROR);
+				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.RAID_TIMEOUT_ERROR);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
 			}
@@ -373,6 +382,10 @@ public class TeamRaidCommandService extends BaseCommandService{
 				ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ERROR_LOCKED);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
+			}
+			if(myraid.getEventCount() == 0 && myraid.getLeftcount() > 0) {
+				open(myraid);
+				redis.saveTeamRaid(user, myraid);
 			}
 			for (int i = 0; i < room.getRoomInfoCount(); ++i) {
 				if (room.getRoomInfo(i).getUser().getId() == createUserId) {
