@@ -128,11 +128,11 @@ public class TeamRaidCommandService extends BaseCommandService{
 	public void getTeamRaidRoom(RequestTeamRaidRoomCommand cmd, Builder responseBuilder, UserBean user) {
 		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
 		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, cmd.getIndex()/redis.INDEX_SIZE);
-		
-		if (myraid == null || myraid.getRoomInfo() == null) {
+		if (myraid == null || !myraid.hasRoomInfo()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+            getTeamRaid(responseBuilder, user);
 			return;
 		}
 		UserRoom.Builder room = redis.getUserRoom(myraid.getRoomInfo().getUser().getId(), myraid.getRoomInfo().getIndex());
@@ -141,8 +141,8 @@ public class TeamRaidCommandService extends BaseCommandService{
 			myraid.clearRoomInfo();
 			redis.saveTeamRaid(user, myraid);
 			getTeamRaid(responseBuilder, user);
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_ERROR);
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_ERROR);
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
 		}else {
 			if(!UserRewardTaskService.hasMeInRoom(user, room)) {//非法：我不在房间中
@@ -226,10 +226,11 @@ public class TeamRaidCommandService extends BaseCommandService{
 		ResponseTeamRaidCommand.Builder raidlist = redis.getTeamRaid(user);
 		TeamRaid.Builder myraid = getMyTeamRaid(raidlist, cmd.getIndex()/redis.INDEX_SIZE);
 		
-		if (myraid.getRoomInfo() == null) {
+		if (!myraid.hasRoomInfo()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+            getTeamRaid(responseBuilder, user);
 			return;
 		}
 		
@@ -238,6 +239,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.ROOM_IS_NOT_EXIST_ERROR);
             responseBuilder.setErrorCommand(errorCommand);
+            getTeamRaid(responseBuilder, user);
 			return;
 		}
 		if (user.getId() != cmd.getUserId() && room.getCreateUserId() != user.getId()) {

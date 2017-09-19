@@ -307,7 +307,7 @@ public class RewardTaskService {
 	
 	public UserRoom.Builder getUserRoom(UserBean user, int index) {
 		UserRewardTask.Builder ut = userRewardTaskService.getUserRewardTask(user, index);
-		if (ut == null || ut.getRoomInfo() == null) {
+		if (ut == null || !ut.hasRoomInfo()) {
 			rewardTaskRedisService.delUserRewardTaskRoom(user, index);
 			return null;
 		}
@@ -409,7 +409,7 @@ public class RewardTaskService {
 	public ResultConst quitRoom(UserBean user, long quitUserId, int index, UserRewardTask.Builder rewardTaskBuilder, UserRoom.Builder builder) {
 		UserRewardTask.Builder userRewardTask = userRewardTaskService.getUserRewardTask(user.getId(), index);
 		
-		if (userRewardTask.getRoomInfo() == null)
+		if (!userRewardTask.hasRoomInfo())
 			return ErrorConst.ROOM_IS_NOT_EXIST_ERROR;
 		
 		UserRoom.Builder room = rewardTaskRedisService.getUserRewardTaskRoom(userRewardTask.getRoomInfo().getUser().getId(), userRewardTask.getRoomInfo().getIndex());
