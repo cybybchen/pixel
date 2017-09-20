@@ -1,5 +1,6 @@
 package com.trans.pixel.service.redis;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -69,9 +70,21 @@ public class TeamRaidRedisService extends RedisService{
 		return null;
 	}
 	
+	private int getRaidStatus(List<TeamRaidBean> list, int id) {
+		for(TeamRaidBean bean : list) {
+			if(bean.getId() == id)
+				return bean.getStatus();
+		}
+		return 0;
+	}
+	
 	public ResponseTeamRaidCommand.Builder getTeamRaid(UserBean user){
 		ResponseTeamRaidCommand.Builder builder = getTeamRaidList();
 		Map<String, String> keyvalue = hget(RedisKey.USERTEAMRAID_PREFIX+user.getId(), user.getId());
+		List<TeamRaidBean> list = new ArrayList<TeamRaidBean>();
+		if(keyvalue.isEmpty()) {
+			list = mapper.getRaids(user.getId());
+		}
 		long endtime = nextDay(0);
 		for(int i = builder.getRaidCount()-1; i >= 0; i--) {
 			TeamRaid.Builder raid = builder.getRaidBuilder(i);
@@ -92,7 +105,7 @@ public class TeamRaidRedisService extends RedisService{
 				}
 			}else {
 				raid.clearEvent();
-				raid.setStatus(0);
+				raid.setStatus(getRaidStatus(list, raid.getId()));
 			}
 			if(raid.getEndtime() < endtime) {//刷新次数
 				raid.setLeftcount(raid.getCount());
