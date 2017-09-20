@@ -123,8 +123,8 @@ public class UserLadderService {
 		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
-//		if (userLadder.getGrade() == 8) {
-		if (user.getLadderModeRewardCount() > 0 ) {
+		if (user.getLadderModeRewardCount() < 5 && userLadder.getGrade() == 8) {
+//		if (user.getLadderModeRewardCount() < 5) {
 			UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
 			if (robotLadder != null)
 				map.put(0, robotLadder);

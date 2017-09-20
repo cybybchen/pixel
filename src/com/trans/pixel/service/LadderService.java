@@ -153,9 +153,9 @@ public class LadderService {
 		}
 
 		//最佳阵容奖励
-		if (ret == 0 && enemy.getPosition() == 0 && enemy.getTeam().getUser().getId() < 0 && user.getLadderModeRewardCount() > 0) {
+		if (ret == 0 && enemy.getPosition() == 0 && enemy.getTeam().getUser().getId() < 0 && user.getLadderModeRewardCount() < 5) {
 			rewards.addAllLoot(userLadderService.getLadderTeamReward());
-			user.setLadderModeRewardCount(user.getLadderModeRewardCount() - 1);
+			user.setLadderModeRewardCount(user.getLadderModeRewardCount() + 1);
 		}
 		
 		Map<String, String> params = new HashMap<String, String>();
