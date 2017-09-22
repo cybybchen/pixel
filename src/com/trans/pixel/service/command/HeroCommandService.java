@@ -185,10 +185,12 @@ public class HeroCommandService extends BaseCommandService {
 				responseBuilder.setDeleteHeroCommand(deleteHeroBuilder.build());
 			}
 		}
-		ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
-		builder.setHeroId(heroId);
-		builder.addHeroInfo(heroInfo.buildHeroInfo());
-		responseBuilder.setHeroResultCommand(builder.build());
+		if(heroInfo != null) {
+			ResponseHeroResultCommand.Builder builder = ResponseHeroResultCommand.newBuilder();
+			builder.setHeroId(heroId);
+			builder.addHeroInfo(heroInfo.buildHeroInfo());
+			responseBuilder.setHeroResultCommand(builder.build());
+		}
 			
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
 		if (equipList.size() > 0)
