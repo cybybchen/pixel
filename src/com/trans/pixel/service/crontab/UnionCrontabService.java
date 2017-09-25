@@ -42,9 +42,9 @@ public class UnionCrontabService {
 		if (!ConfigUtil.CRONTAB_STATUS)
 			return;
 		
-		List<Integer> serverIds = serverService.getServerIdList();
-		for (int serverId : serverIds)
-			unionService.doUndeadUnionBossRankReward(serverId);
+//		List<Integer> serverIds = serverService.getServerIdList();
+//		for (int serverId : serverIds)
+//			unionService.doUndeadUnionBossRankReward(serverId);
 	}
 	
 	@Scheduled(cron = "0 0 0 * * ? ")

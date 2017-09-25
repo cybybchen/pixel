@@ -939,6 +939,7 @@ public class UnionService extends FightService{
 	}
 	
 	public List<UnionBossRecord> getUnionBossList(UserBean user, Union.Builder union) {
+		doUndeadUnionBossRankReward(union, user.getServerId());
 		Map<Integer, UnionBoss> map = redis.getUnionBossConfig();
 		Iterator<Entry<Integer, UnionBoss>> it = map.entrySet().iterator();
 		while (it.hasNext()) {
@@ -963,6 +964,7 @@ public class UnionService extends FightService{
 	}
 	
 	public UnionBossRecord attackUnionBoss(UserBean user, Union.Builder union, int bossId, long hp, int percent, MultiReward.Builder rewards) {
+		doUndeadUnionBossRankReward(union, user.getServerId());
 		UnionBossRecord.Builder unionBossRecord = UnionBossRecord.newBuilder(redis.getUnionBoss(user.getUnionId(), bossId));
 		if (DateUtil.timeIsOver(unionBossRecord.getEndTime())) {
 			unionBossRecord.setStatus(UNIONBOSSSTATUS.UNION_BOSS_IS_END_VALUE);
@@ -1090,14 +1092,17 @@ public class UnionService extends FightService{
 		}
 	}
 	
-	public void doUndeadUnionBossRankReward(int serverId) {//type == 4
-		List<Union> unions = redis.getBaseUnions(serverId);
+	public void doUndeadUnionBossRankReward(Union.Builder union, int serverId) {//type == 4
+		if (redis.hasSendUnionUndeadBossReward(union.getId()))
+			return;
+//		List<Union> unions = redis.getBaseUnions(serverId);
 		Map<Integer, UnionBoss> bossMap = redis.getUnionBossConfig();
 		for (UnionBoss unionBoss : bossMap.values()) {
 			if (unionBoss.getType() != 4)
 				continue;
 			
-			for (Union union : unions) {
+//			for (Union union : unions) {
+				redis.setLock("UnionBoss_" + union.getId() + ":" + unionBoss.getId(), 10);
 				/**
 				 * 累计击败工会boss的活动
 				 */
@@ -1107,14 +1112,18 @@ public class UnionService extends FightService{
 				}
 				doUnionBossRankReward(union.getId(), unionBoss.getId(), serverId);
 				redis.delUnionBoss(union.getId(), unionBoss.getId());
-				Union.Builder builder = Union.newBuilder(union);
-				if (calUnionBossRefresh(builder, unionBoss, union.getId(), serverId)) {
-					redis.waitLock("Union_"+builder.getId());
-					redis.saveUnion(builder.build(), serverId);
-					redis.clearLock("Union_"+builder.getId());
+//				Union.Builder builder = Union.newBuilder(union);
+				if (calUnionBossRefresh(union, unionBoss, union.getId(), serverId)) {
+					redis.waitLock("Union_"+union.getId());
+					redis.saveUnion(union.build(), serverId);
+					redis.clearLock("Union_"+union.getId());
 				}
-			}
+				
+				redis.clearLock("UnionBoss_" + union.getId() + ":" + unionBoss.getId());
+//			}
 		}
+		
+		redis.setUnionUndeadBossReward(union.getId());
 		
 	}
 	

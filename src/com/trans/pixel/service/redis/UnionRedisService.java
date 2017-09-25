@@ -989,4 +989,15 @@ public class UnionRedisService extends RedisService{
 		
 		return map;
 	}
+	
+	public boolean hasSendUnionUndeadBossReward(int unionId) {
+		String key = RedisKey.UNION_BOSS_UNDEAD_SEND_REWARD_PREFIX + unionId;
+		return exists(key);
+	}
+	
+	public void setUnionUndeadBossReward(int unionId) {
+		String key = RedisKey.UNION_BOSS_UNDEAD_SEND_REWARD_PREFIX + unionId;
+		set(key, "1");
+		expireAt(key, DateUtil.getEndDateOfD());
+	}
 }
