@@ -142,6 +142,7 @@ import com.trans.pixel.protoc.RewardTaskProto.RequestGetTeamRaidRewardCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGiveupRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToRewardTaskRoomCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestInviteToTeamRaidRoomCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestLootRaidRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestOpenRaidCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestOpenTeamRaidCommand;
@@ -1518,7 +1519,6 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
-		// TODO RequestRecommandCommand method
 		userCommandService.recommand(cmd, responseBuilder, user);
 		return true;
 	}
@@ -1729,6 +1729,12 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestGetTeamRaidRewardCommand cmd, Builder responseBuilder, UserBean user) {
 		teamRaidCommandService.getTeamRaidReward(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestLootRaidRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
+		lootRewardTaskCommandService.lootRaidRewardTask(cmd, responseBuilder, user);
 		return true;
 	}
 }

@@ -3745,11 +3745,11 @@ message UserRoom {
 }
 
 message LootShenyuan {
-	required uint32 id = 1;
-	required uint32 time = 2;
-	required uint32 targetid = 3;
-	required uint32 limit = 4;
-	required RewardInfo cost = 5;
+	optional uint32 id = 1;
+	optional uint32 time = 2;
+	optional uint32 targetid = 3;
+	optional uint32 limit = 4;
+	optional RewardInfo cost = 5;
 	repeated RewardInfo lootlist = 6;
 }
 
@@ -3757,19 +3757,37 @@ message LootShenyuanList {
 	repeated LootShenyuan data = 1;
 }
 
+message LootRaid {
+	optional uint32 id = 1;
+        optional uint32 targetid = 3;
+        optional uint32 targetlv = 4;
+	repeated LootShenyuan fuben = 5;
+}
+message LootRaidList {
+        repeated LootRaid data = 1;
+}
+
 message UserLootRewardTask {
 	required uint32 id = 1;
+	optional uint32 raidid = 4;
 	required uint32 count = 2;//深渊票的数量
 	required uint32 lootTime = 3;//已经挂机的时间 
 }
 
 message RequestLootRewardTaskCommand {
 	optional uint32 id = 2;
-	optional uint32 count = 1;//count 为空时拉取列表，不为空时补充深渊票
+	optional uint32 count = 1;//count 为空时拉取列表，不为空时补充票
+}
+
+message RequestLootRaidRewardTaskCommand {
+        optional uint32 id = 2;
+	optional uint32 raidid = 3;
+        optional uint32 count = 1;//count 为空时拉取列表，不为空时补充票
 }
 
 message ResponseLootRewardTaskCommand {
 	repeated UserLootRewardTask loot = 1;
+	repeated UserLootRewardTask fuben = 2;
 }
 
 message RequestCreateRewardTaskRoomCommand {
@@ -4101,6 +4119,7 @@ message RequestCommand {
 	optional RequestTeamRaidRoomChangePositionCommand teamRaidRoomChangePositionCommand = 181;
 	optional RequestTeamRaidRoomCommand teamRaidRoomCommand = 182;
 	optional RequestGetTeamRaidRewardCommand getTeamRaidRewardCommand = 183;
+	optional RequestLootRaidRewardTaskCommand lootRaidRewardTaskCommand = 184;
 	//////////////////////////////////////////////////////
 	optional RequestMessageBoardListCommand messageBoardListCommand = 36;
 	optional RequestCreateMessageBoardCommand createMessageBoardCommand = 37;

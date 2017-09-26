@@ -77,6 +77,7 @@ import com.trans.pixel.protoc.RechargeProto.RequestSevenLoginSignCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestRichangRewardCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipComposeCommand;
+import com.trans.pixel.protoc.RewardTaskProto.RequestLootRaidRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestGetTeamRaidRewardCommand;
 import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.RequestPVPInbreakListCommand;
@@ -321,6 +322,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestRichangRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipPokedeDisplayCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipComposeCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestLootRaidRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGetTeamRaidRewardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnlockPVPMapCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPInbreakListCommand cmd, Builder responseBuilder, UserBean user);
@@ -830,6 +832,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasEquipComposeCommand()) {
 			RequestEquipComposeCommand cmd = request.getEquipComposeCommand();
 			if (isFuncAvailable(responseBuilder, "EquipComposeCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasLootRaidRewardTaskCommand()) {
+			RequestLootRaidRewardTaskCommand cmd = request.getLootRaidRewardTaskCommand();
+			if (isFuncAvailable(responseBuilder, "LootRaidRewardTaskCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasGetTeamRaidRewardCommand()) {
 			RequestGetTeamRaidRewardCommand cmd = request.getGetTeamRaidRewardCommand();

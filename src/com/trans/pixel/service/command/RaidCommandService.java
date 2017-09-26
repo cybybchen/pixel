@@ -186,7 +186,7 @@ public class RaidCommandService extends BaseCommandService{
 //						myraid.setLeftcount(myraid.getLeftcount()-1);
 //					}
 					if(raidconfig.getMaxlevel() <= 3)
-						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
+						myraid.setMaxlevel(Math.min(182, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
 					myraid.clearLevel();
 					if(myraid.getId() == 20) {
 						teamraidredis.unlock(user, 20);

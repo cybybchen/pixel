@@ -383,6 +383,7 @@ public class RedisKey {
 	public static final String TEAMRAID_ROOM_PREFIX = PREFIX + "teamraid_room_";
 //	public static final String REWARDTASKDAILY_KEY = PREFIX + CONFIG_PREFIX + "RewardTaskDaily";
 	public static final String LOOT_SHENYUAN_KEY = PREFIX + CONFIG_PREFIX+"loot_shenyuan";
+	public static final String LOOT_RAID_KEY = PREFIX + CONFIG_PREFIX+"loot_raid";
 	
 	//union
 	public static final String UNION_BOSS_KEY = PREFIX + CONFIG_PREFIX + "union_boss";
@@ -443,4 +444,5 @@ public class RedisKey {
 	public static final String USER_REWARD_TASK_PREFIX = PREFIX + "rewardtask_";
 	public static final String USER_REWARDTASK_EVENTID_STATUS_PREFIX = PREFIX + "rewardtask_eventid_status_";
 	public static final String USER_REWARDTASK_LOOT_PREFIX = PREFIX + "rewardtask_loot_";
+	public static final String USER_LOOTRAID_PREFIX = PREFIX + "lootraid_";
 }
