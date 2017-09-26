@@ -268,7 +268,8 @@ public class RewardService {
 		for(int i = rewards.getLootCount()-1; i >= 0; i--) {
 			for(int j = i-1; j >= 0; j--) {
 				if(rewards.getLootBuilder(i).getItemid() == rewards.getLootBuilder(j).getItemid()) {
-					rewards.getLootBuilder(j).setCount(rewards.getLootBuilder(i).getCount()+rewards.getLootBuilder(j).getCount());
+					if(rewards.getLootBuilder(j).getItemid()/10000*10000 != RewardConst.EQUIPMENT)
+						rewards.getLootBuilder(j).setCount(rewards.getLootBuilder(i).getCount()+rewards.getLootBuilder(j).getCount());
 					rewards.removeLoot(i);
 					break;
 				}

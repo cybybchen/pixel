@@ -263,6 +263,8 @@ function buildUserJson(key, value){
             json["rewardTask"] = 1;
             json["teamraid"] = 1;
             json["raid"] = 1;
+            json["lootRaid"] = 1;
+            json["lootRewardTask"] = 1;
             json["pvpMonster"] = 1;
             json["pvpMine"] = 1;
             json["pvpBuff"] = 1;
@@ -376,6 +378,12 @@ function appendUserDatas(message, dirty){
     }
     if(message["raid"]!=null){
         appendUserData("raid", message["raid"]);
+    }
+    if(message["lootRaid"]!=null){
+        appendUserData("lootRaid", message["lootRaid"]);
+    }
+    if(message["lootRewardTask"]!=null){
+        appendUserData("lootRewardTask", message["lootRewardTask"]);
     }
     if(message["pvpMonster"]!=null){
         appendUserData("pvpMonster", message["pvpMonster"]);

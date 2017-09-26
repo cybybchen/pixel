@@ -1350,6 +1350,71 @@ public class ManagerService extends RedisService{
 			result.put("pvpBuff", object);
 		}
 
+
+		if(req.containsKey("update-lootRewardTask") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId, userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-lootRewardTask"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId, key, userId);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-lootRewardTask", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId, map, userId);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-lootRewardTask", map.toString());
+			}
+			req.put("lootRewardTask", 1);
+		}else if(req.containsKey("del-lootRewardTask") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId, userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-lootRewardTask", "");
+			req.put("lootRewardTask", 1);
+		}
+		if(req.containsKey("lootRewardTask") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USER_REWARDTASK_LOOT_PREFIX+userId, userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("lootRewardTask", object);
+		}
+
+		if(req.containsKey("update-lootRaid") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USER_LOOTRAID_PREFIX + userId, userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-lootRaid"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					hdelete(RedisKey.USER_LOOTRAID_PREFIX + userId, key, userId);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-lootRaid", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USER_LOOTRAID_PREFIX + userId, map, userId);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-lootRaid", map.toString());
+			}
+			req.put("lootRaid", 1);
+		}else if(req.containsKey("del-lootRaid") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USER_LOOTRAID_PREFIX + userId, userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-lootRaid", "");
+			req.put("lootRaid", 1);
+		}
+		if(req.containsKey("lootRaid") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USER_LOOTRAID_PREFIX+userId, userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("lootRaid", object);
+		}
+
 		if(req.containsKey("update-talent") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.USER_TALENT_PREFIX + userId, userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-talent"));
