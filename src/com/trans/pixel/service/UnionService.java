@@ -1093,7 +1093,7 @@ public class UnionService extends FightService{
 	}
 	
 	public void doUndeadUnionBossRankReward(Union.Builder union, int serverId) {//type == 4
-		if (redis.hasSendUnionUndeadBossReward(union.getId()))
+		if (redis.hasSendUnionUndeadBossReward(union.getId()) || DateUtil.timeIsBefore(DateUtil.getCurrentDateString(), "2017-09-27 00:00:00"))
 			return;
 //		List<Union> unions = redis.getBaseUnions(serverId);
 		Map<Integer, UnionBoss> bossMap = redis.getUnionBossConfig();
