@@ -227,11 +227,17 @@ public class UserCrontabService {
 			int id = Integer.parseInt(keys[1]);
 			teamRaidService.updateToDB(userId, id);
 		}
-		while ((key = userLootRewardTaskService.popDBKey()) != null) {
+		while ((key = userLootRewardTaskService.popRewardTaskDBKey()) != null) {
 			String keys[] = key.split("#");
 			long userId = Long.parseLong(keys[0]);
 			int id = Integer.parseInt(keys[1]);
-			userLootRewardTaskService.updateToDB(userId, id);
+			userLootRewardTaskService.updateRewardTaskToDB(userId, id);
+		}
+		while ((key = userLootRewardTaskService.popRaidDBKey()) != null) {
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int id = Integer.parseInt(keys[1]);
+			userLootRewardTaskService.updateRaidToDB(userId, id);
 		}
 		}catch(Exception e){
 			logger.error(e.getMessage(), e);

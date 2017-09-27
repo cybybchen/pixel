@@ -50,13 +50,25 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 		ResponseLootRewardTaskCommand.Builder builder = ResponseLootRewardTaskCommand.newBuilder();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		MultiReward.Builder costs = MultiReward.newBuilder();
-		if (cmd.hasCount() && cmd.getCount() > 0) {
+		if (cmd.getCount() > 0) {
 			ResultConst ret = lootRewardTaskService.addLootRewardTaskCount(user, cmd.getId(), cmd.getCount(), rewards, costs);
 			if (ret instanceof ErrorConst) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 				ErrorCommand errorCommand = buildErrorCommand(ret);
 	            responseBuilder.setErrorCommand(errorCommand);
 	            return;
+			}
+			if (rewards.getLootCount() > 0) {
+				rewards = propService.rewardsHandle(user, rewards.getLootList());
+				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = rewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							rewards.getLootBuilder(i).setItemid(24010);
+						}
+					}
+				}
 			}
 
 			Map<String, String> params = new HashMap<String, String>();
@@ -70,19 +82,8 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 		
 		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
 		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
-		
-		rewardService.mergeReward(rewards);
 		if (rewards.getLootCount() > 0) {
-			rewards = propService.rewardsHandle(user, rewards.getLootList());
-			for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-				int itemid = rewards.getLoot(i).getItemid();
-				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-					if(bean != null){
-						rewards.getLootBuilder(i).setItemid(24010);
-					}
-				}
-			}
+			rewardService.mergeReward(rewards);
 			handleRewards(responseBuilder, user, rewards);
 		}
 		
@@ -117,19 +118,8 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 		
 		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
 		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
-		
-		rewardService.mergeReward(rewards);
 		if (rewards.getLootCount() > 0) {
-			rewards = propService.rewardsHandle(user, rewards.getLootList());
-//			for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-//				int itemid = rewards.getLoot(i).getItemid();
-//				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-//					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-//					if(bean != null){
-//						rewards.getLootBuilder(i).setItemid(24010);
-//					}
-//				}
-//			}
+			rewardService.mergeReward(rewards);
 			handleRewards(responseBuilder, user, rewards);
 		}
 		

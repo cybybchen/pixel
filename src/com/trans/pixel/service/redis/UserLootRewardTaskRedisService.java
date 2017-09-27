@@ -40,6 +40,22 @@ public class UserLootRewardTaskRedisService extends RedisService {
 		}
 		return null;
 	}
+	
+	public boolean isExistLootRewardTaskKey(long userId) {
+		String key = RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId;
+		return exists(key, userId);
+	}
+	
+	public void updateLoot(long userId, UserLootRewardTask loot) {
+		String key = RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId;
+		hput(key, "" + loot.getId(), RedisService.formatJson(loot), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARDTASK_LOOT_PREFIX, userId + "#" + loot.getId());
+	}
+	
+	public String popRewardTaskDBKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARDTASK_LOOT_PREFIX);
+	}
 
 	public List<UserLootRewardTask> getRaidList(long userId) {
 		List<UserLootRewardTask> raidList = new ArrayList<UserLootRewardTask>();
@@ -77,19 +93,7 @@ public class UserLootRewardTaskRedisService extends RedisService {
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_LOOTRAID_PREFIX, userId + "#" + loot.getId());
 	}
 	
-	public boolean isExistLootRewardTaskKey(long userId) {
-		String key = RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId;
-		return exists(key, userId);
-	}
-	
-	public void updateLoot(long userId, UserLootRewardTask loot) {
-		String key = RedisKey.USER_REWARDTASK_LOOT_PREFIX + userId;
-		hput(key, "" + loot.getId(), RedisService.formatJson(loot), userId);
-		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
-		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARDTASK_LOOT_PREFIX, userId + "#" + loot.getId());
-	}
-	
-	public String popDBKey() {
-		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_REWARDTASK_LOOT_PREFIX);
+	public String popRaidDBKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_LOOTRAID_PREFIX);
 	}
 }

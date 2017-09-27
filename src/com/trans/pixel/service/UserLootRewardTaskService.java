@@ -11,8 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
+import com.trans.pixel.model.mapper.UserLootRaidMapper;
 import com.trans.pixel.model.mapper.UserLootRewardTaskMapper;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLootRaidBean;
 import com.trans.pixel.model.userinfo.UserLootRewardTaskBean;
 import com.trans.pixel.protoc.RewardTaskProto.LootRaid;
 import com.trans.pixel.protoc.RewardTaskProto.LootShenyuan;
@@ -31,6 +33,8 @@ public class UserLootRewardTaskService {
 	private UserLootRewardTaskRedisService redis;
 	@Resource
 	private UserLootRewardTaskMapper mapper;
+	@Resource
+	private UserLootRaidMapper raidmapper;
 	
 	public List<UserLootRewardTask> getLootList(UserBean user) {
 		List<UserLootRewardTask> lootList = redis.getLootList(user.getId());
@@ -46,13 +50,14 @@ public class UserLootRewardTaskService {
 			}
 		}
 		
-		if (lootList == null || lootList.isEmpty()) {
-			lootList = new ArrayList<UserLootRewardTask>();
+//		if (lootList == null || lootList.isEmpty()) {
+//			lootList = new ArrayList<UserLootRewardTask>();
 			Map<Integer, LootShenyuan> config = lootRewardTaskRedisService.getLootShenyuanConfig();
 			for (LootShenyuan loot : config.values()) {
-				lootList.add(initLootRewardTask(user, loot.getId()));
+				if(!hasTask(lootList, loot.getId()))
+					lootList.add(initLootRewardTask(user, loot.getId()));
 			}
-		}
+//		}
 		
 		return lootList;
 	}
@@ -81,41 +86,47 @@ public class UserLootRewardTaskService {
 	
 	public List<UserLootRewardTask> getRaidList(UserBean user) {
 		List<UserLootRewardTask> raidList = redis.getRaidList(user.getId());
-		if (raidList == null || raidList.isEmpty()) {
-//			lootList = new ArrayList<UserLootRewardTask>();
-//			List<UserLootRewardTaskBean> beanList = mapper.selectUserLootList(user.getId());
-//			if (beanList != null && !beanList.isEmpty()) {
-//				for (UserLootRewardTaskBean bean : beanList) {
-//					UserLootRewardTask loot = bean.build();
-//					redis.updateLoot(user.getId(), loot);
-//					lootList.add(loot);
-//				}
-//			}
+		if (raidList.isEmpty()) {
+			List<UserLootRaidBean> beanList = raidmapper.selectUserLootList(user.getId());
+			if (beanList != null && !beanList.isEmpty()) {
+				for (UserLootRaidBean bean : beanList) {
+					UserLootRewardTask loot = bean.build();
+					redis.updateLootRaid(user.getId(), loot);
+					raidList.add(loot);
+				}
+			}
 		}
 		
-		if (raidList == null || raidList.isEmpty()) {
-			raidList = new ArrayList<UserLootRewardTask>();
-			Map<Integer, LootRaid> config = CacheService.hgetcache(RedisKey.LOOT_RAID_KEY);
-			for (LootRaid loot : config.values()) {
+		Map<Integer, LootRaid> config = CacheService.hgetcache(RedisKey.LOOT_RAID_KEY);
+		for (LootRaid loot : config.values()) {
+			if(!hasTask(raidList, loot.getId()))
 				raidList.add(initLootRaid(user, loot.getId()));
-			}
 		}
 		
 		return raidList;
 	}
+	
+	private boolean hasTask(List<UserLootRewardTask> raidList, int id) {
+		for (UserLootRewardTask loot : raidList) {
+			if(loot.getId() == id)
+				return true;
+		}
+		return false;
+	}
+	
 	public UserLootRewardTask getLootRaid(UserBean user, int id) {
 		UserLootRewardTask raid = redis.getLootRaid(user.getId(), id);
 		if (raid == null && !redis.isExistLootRaidKey(user.getId())) {
-//			List<UserLootRewardTaskBean> beanList = mapper.selectUserLootList(user.getId());
-//			if (beanList != null && !beanList.isEmpty()) {
-//				for (UserLootRewardTaskBean bean : beanList) {
-//					UserLootRewardTask builder = bean.build();
-//					redis.updateLoot(user.getId(), loot);
-//					
-//					if (builder.getId() == id)
-//						loot = builder;
-//				}
-//			}
+			List<UserLootRaidBean> beanList = raidmapper.selectUserLootList(user.getId());
+			if (beanList != null && !beanList.isEmpty()) {
+				for (UserLootRaidBean bean : beanList) {
+					UserLootRewardTask builder = bean.build();
+					redis.updateLootRaid(user.getId(), builder);
+					
+					if (builder.getId() == id)
+						raid = builder;
+				}
+			}
 		}
 		
 		if (raid == null) {
@@ -134,14 +145,25 @@ public class UserLootRewardTaskService {
 		redis.updateLoot(user.getId(), loot);
 	}
 	
-	public String popDBKey() {
-		return redis.popDBKey();
+	public String popRewardTaskDBKey() {
+		return redis.popRewardTaskDBKey();
 	}
 	
-	public void updateToDB(long userId, int id) {
+	public void updateRewardTaskToDB(long userId, int id) {
 		UserLootRewardTask loot = redis.getLootRewardTask(userId, id);
 		if (loot != null)
 			mapper.updateUserLoot(new UserLootRewardTaskBean(loot, userId));
+			
+	}
+	
+	public String popRaidDBKey() {
+		return redis.popRaidDBKey();
+	}
+	
+	public void updateRaidToDB(long userId, int id) {
+		UserLootRewardTask loot = redis.getLootRaid(userId, id);
+		if (loot != null)
+			raidmapper.updateUserLoot(new UserLootRaidBean(loot, userId));
 			
 	}
 	

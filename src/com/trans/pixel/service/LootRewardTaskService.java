@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
@@ -17,6 +19,7 @@ import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.Event;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -36,6 +39,7 @@ import com.trans.pixel.utils.DateUtil;
 
 @Service
 public class LootRewardTaskService {
+	private static final Logger log = LoggerFactory.getLogger(LootRewardTaskService.class);
 
 	@Resource
 	private LootRewardTaskRedisService redis;
@@ -51,6 +55,10 @@ public class LootRewardTaskService {
 	private UserService userService;
 	@Resource
 	private RewardService rewardService;
+	@Resource
+	private UserEquipPokedeService userEquipPokedeService;
+	@Resource
+	private PropService propService;
 	
 	public ResultConst addLootRewardTaskCount(UserBean user, int id, int count, MultiReward.Builder rewards, MultiReward.Builder costs) {
 		UserLootRewardTask loot = userLootRewardTaskService.getRewardTaskLoot(user, id);
@@ -241,16 +249,31 @@ public class LootRewardTaskService {
 			
 			if (lootCount <= 0)
 				continue;
-			
+			MultiReward.Builder newrewards = MultiReward.newBuilder();
 			for (RewardInfo reward : shenyuan.getLootlistList()) {
 				RewardInfo.Builder rewardBuilder = RewardInfo.newBuilder(reward);
 				rewardBuilder.setCount(rewardBuilder.getCount() * lootCount);
-				rewards.addLoot(rewardBuilder.build());
+				newrewards.addLoot(rewardBuilder.build());
 			}
 			
 			List<RewardInfo> extra = calShenyuanPRD(user, loot.getId(), lootCount);
 			if (!extra.isEmpty())
-				rewards.addAllLoot(extra);
+				newrewards.addAllLoot(extra);
+			
+			if (newrewards.getLootCount() > 0) {
+				rewardService.mergeReward(newrewards);
+				newrewards = propService.rewardsHandle(user, newrewards.getLootList());
+				for(int i = newrewards.getLootCount() - 1; i >= 0; i--) {
+					int itemid = newrewards.getLoot(i).getItemid();
+					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+						if(bean != null){
+							newrewards.getLootBuilder(i).setItemid(24010);
+						}
+					}
+				}
+				rewards.addAllLoot(newrewards.getLootList());
+			}
 			
 			UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
 			builder.setCount(builder.getCount() - (int)(lootCount * shenyuan.getCost().getCount()));
