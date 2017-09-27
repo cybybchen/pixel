@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.trans.pixel.constants.RedisExpiredConst;
@@ -12,6 +14,7 @@ import com.trans.pixel.protoc.RewardTaskProto.UserLootRewardTask;
 
 @Repository
 public class UserLootRewardTaskRedisService extends RedisService {
+	private static final Logger log = LoggerFactory.getLogger(UserLootRewardTaskRedisService.class);
 
 	public List<UserLootRewardTask> getLootList(long userId) {
 		List<UserLootRewardTask> lootList = new ArrayList<UserLootRewardTask>();

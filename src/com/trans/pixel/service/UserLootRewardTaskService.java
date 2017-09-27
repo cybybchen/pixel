@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.RedisKey;
@@ -21,6 +23,7 @@ import com.trans.pixel.service.redis.UserLootRewardTaskRedisService;
 
 @Service
 public class UserLootRewardTaskService {
+	private static final Logger log = LoggerFactory.getLogger(UserLootRewardTaskService.class);
 
 	@Resource
 	private LootRewardTaskRedisService lootRewardTaskRedisService;
@@ -148,7 +151,7 @@ public class UserLootRewardTaskService {
 		builder.setId(id);
 		builder.setLootTime(0);
 		
-		redis.updateLoot(user.getId(), builder.build());
+		redis.updateLootRaid(user.getId(), builder.build());
 		
 		return builder.build();
 	}
