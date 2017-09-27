@@ -138,9 +138,9 @@ public class LootRewardTaskService {
 		
 		if(raidconfig == null)
 			return ErrorConst.NOT_ENEMY;
-		if(ticket % raidconfig.getCost().getCount() != 0){
-			return ErrorConst.TICKET_COUNT_ERROR;
-		}
+//		if(ticket % raidconfig.getCost().getCount() != 0){
+//			return ErrorConst.TICKET_COUNT_ERROR;
+//		}
 		int lootCount = (int) Math.min((RedisService.now() - loot.getLootTime()) / raidconfig.getTime(), 
 				loot.getCount() / raidconfig.getCost().getCount());
 		
