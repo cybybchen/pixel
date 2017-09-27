@@ -23,6 +23,8 @@ public class RewardConst {
 	
 	public static final int ENGINE = 18000;
 	
+	public static final int PET = 19000;
+	
 	public static final int CHIP = 20000;
 	
 	public static final int CAILIAO = 24000;

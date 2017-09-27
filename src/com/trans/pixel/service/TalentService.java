@@ -363,14 +363,14 @@ public class TalentService {
 			return null;
 		
 		if (userTalent.getEquipCount() == 0) {
-			for (int i = 0; i < 10; ++i) {
+			for (int i = 0; i < UserTalentService.TALENT_EQUIP_COUNT; ++i) {
 				UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
 				equipBuilder.setPosition(i);
 				equipBuilder.setItemId(0);
 				userTalent.addEquip(equipBuilder.build());
 			}
 		}
-		for (int i = 0; i < userTalent.getEquipCount(); ++i) {
+		for (int i = 0; i < UserTalentService.TALENT_EQUIP_COUNT; ++i) {
 			UserTalentEquip.Builder equipBuilder = userTalent.getEquipBuilder(i);
 			if (equipBuilder.getPosition() == position) {
 				equipBuilder.setItemId(itemId);
