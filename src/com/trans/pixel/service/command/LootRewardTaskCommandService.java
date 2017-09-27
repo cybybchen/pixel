@@ -69,7 +69,7 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 		}
 		
 		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
-		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
+//		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
 		
 		rewardService.mergeReward(rewards);
 		if (rewards.getLootCount() > 0) {
@@ -94,49 +94,49 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 	}
 	
 	public void lootRaidRewardTask(RequestLootRaidRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
-		ResponseLootRewardTaskCommand.Builder builder = ResponseLootRewardTaskCommand.newBuilder();
-		MultiReward.Builder rewards = MultiReward.newBuilder();
-		MultiReward.Builder costs = MultiReward.newBuilder();
-		if (cmd.getCount() > 0) {
-			ResultConst ret = lootRewardTaskService.addLootRaidCount(user, cmd.getId(), cmd.getRaidid(), cmd.getCount(), rewards, costs);
-			if (ret instanceof ErrorConst) {
-				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
-				ErrorCommand errorCommand = buildErrorCommand(ret);
-	            responseBuilder.setErrorCommand(errorCommand);
-	            return;
-			}
-
-//			Map<String, String> params = new HashMap<String, String>();
-//			params.put(LogString.USERID, "" + user.getId());
-//			params.put(LogString.SERVERID, "" + user.getServerId());
-//			params.put(LogString.TYPE, cmd.getId()+"");
-//			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
-//			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
-			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
-		}
-		
-		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
-		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
-		
-		rewardService.mergeReward(rewards);
-		if (rewards.getLootCount() > 0) {
-			rewards = propService.rewardsHandle(user, rewards.getLootList());
-//			for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-//				int itemid = rewards.getLoot(i).getItemid();
-//				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-//					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-//					if(bean != null){
-//						rewards.getLootBuilder(i).setItemid(24010);
-//					}
-//				}
+//		ResponseLootRewardTaskCommand.Builder builder = ResponseLootRewardTaskCommand.newBuilder();
+//		MultiReward.Builder rewards = MultiReward.newBuilder();
+//		MultiReward.Builder costs = MultiReward.newBuilder();
+//		if (cmd.getCount() > 0) {
+//			ResultConst ret = lootRewardTaskService.addLootRaidCount(user, cmd.getId(), cmd.getRaidid(), cmd.getCount(), rewards, costs);
+//			if (ret instanceof ErrorConst) {
+//				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
+//				ErrorCommand errorCommand = buildErrorCommand(ret);
+//	            responseBuilder.setErrorCommand(errorCommand);
+//	            return;
 //			}
-			handleRewards(responseBuilder, user, rewards);
-		}
-		
-		responseBuilder.setLootRewardTaskCommand(builder.build());
-		
-		ResponseUserRewardTaskCommand.Builder rewardTask = ResponseUserRewardTaskCommand.newBuilder();
-		rewardTask.addAllStatus(userRewardTaskService.getEventStatus(user.getId()));
-		responseBuilder.setUserRewardTaskCommand(rewardTask.build());
+//
+////			Map<String, String> params = new HashMap<String, String>();
+////			params.put(LogString.USERID, "" + user.getId());
+////			params.put(LogString.SERVERID, "" + user.getServerId());
+////			params.put(LogString.TYPE, cmd.getId()+"");
+////			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
+////			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
+//			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
+//		}
+//		
+//		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
+//		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
+//		
+//		rewardService.mergeReward(rewards);
+//		if (rewards.getLootCount() > 0) {
+//			rewards = propService.rewardsHandle(user, rewards.getLootList());
+////			for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+////				int itemid = rewards.getLoot(i).getItemid();
+////				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+////					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+////					if(bean != null){
+////						rewards.getLootBuilder(i).setItemid(24010);
+////					}
+////				}
+////			}
+//			handleRewards(responseBuilder, user, rewards);
+//		}
+//		
+//		responseBuilder.setLootRewardTaskCommand(builder.build());
+//		
+//		ResponseUserRewardTaskCommand.Builder rewardTask = ResponseUserRewardTaskCommand.newBuilder();
+//		rewardTask.addAllStatus(userRewardTaskService.getEventStatus(user.getId()));
+//		responseBuilder.setUserRewardTaskCommand(rewardTask.build());
 	}
 }
