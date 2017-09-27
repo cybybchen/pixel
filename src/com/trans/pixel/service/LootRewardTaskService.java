@@ -145,7 +145,7 @@ public class LootRewardTaskService {
 		LootShenyuan raidconfig = redis.getLootRaid(id, raidid);
 		
 		if(raidconfig == null)
-			return ErrorConst.NOT_ENEMY;
+			return ErrorConst.RAID_NOT_OPEN;
 //		if(ticket % raidconfig.getCost().getCount() != 0){
 //			return ErrorConst.TICKET_COUNT_ERROR;
 //		}

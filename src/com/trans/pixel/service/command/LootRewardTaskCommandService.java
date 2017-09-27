@@ -98,7 +98,7 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 		ResponseLootRewardTaskCommand.Builder builder = ResponseLootRewardTaskCommand.newBuilder();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		MultiReward.Builder costs = MultiReward.newBuilder();
-		if (cmd.getCount() > 0) {
+//		if (cmd.getCount() > 0) {
 			ResultConst ret = lootRewardTaskService.addLootRaidCount(user, cmd.getId(), cmd.getRaidid(), cmd.getCount(), rewards, costs);
 			if (ret instanceof ErrorConst) {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
@@ -114,7 +114,7 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 //			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
 //			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
 			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
-		}
+//		}
 		
 		builder.addAllLoot(lootRewardTaskService.getLootList(user, rewards));
 		builder.addAllFuben(lootRewardTaskService.getRaidList(user, rewards));
