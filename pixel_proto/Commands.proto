@@ -1168,6 +1168,19 @@ message Chip {
 	optional int32 count = 9;
 }
 
+message Pet {
+	required uint32 id = 1;
+	required uint32 level = 2;
+	required string name = 3;
+	required string des = 4;
+	required uint32 handbook = 5;
+	required uint32 rare = 6;
+}
+
+message PetList {
+	repeated Pet data = 1;
+}
+
 message MaterialList {
 	repeated Material data = 1;
 }
