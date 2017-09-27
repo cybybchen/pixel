@@ -21,8 +21,6 @@ import com.trans.pixel.protoc.EquipProto.Equipup;
 import com.trans.pixel.protoc.EquipProto.EquipupList;
 import com.trans.pixel.protoc.EquipProto.Material;
 import com.trans.pixel.protoc.EquipProto.MaterialList;
-import com.trans.pixel.protoc.EquipProto.Pet;
-import com.trans.pixel.protoc.EquipProto.PetList;
 import com.trans.pixel.service.cache.CacheService;
 
 @Service
@@ -35,7 +33,6 @@ public class EquipRedisService extends CacheService {
 	private static final String ARMOR_FILE_NAME = "ld_armor.xml";
 	private static final String MATERIAL_FILE_NAME = "ld_material.xml";
 	private static final String ENGINE_FILE_NAME = "ld_engine.xml";
-	private static final String PET_FILE_NAME = "ld_pet.xml";
 	
 	public EquipRedisService() {
 		buildChipConfig();
@@ -45,7 +42,6 @@ public class EquipRedisService extends CacheService {
 		buildArmorConfig();
 		buildMaterialConfig();
 		buildEngineConfig();
-		buildPetConfig();
 	}
 	
 	public Chip getChip(int itemId) {
@@ -66,28 +62,6 @@ public class EquipRedisService extends CacheService {
 			map.put(chip.getItemid(), chip.build());
 		}
 		hputcacheAll(RedisKey.CHIP_CONFIG, map);
-		
-		return map;
-	}
-	
-	public Pet getPet(int itemId) {
-		Map<Integer, Pet> map = hgetcache(RedisKey.PET_CONFIG);
-		return map.get(itemId);
-	}
-	
-	private Map<Integer, Pet> buildPetConfig(){
-		String xml = RedisService.ReadConfig(PET_FILE_NAME);
-		PetList.Builder builder = PetList.newBuilder();
-		if(!RedisService.parseXml(xml, builder)){
-			logger.warn("cannot build " + PET_FILE_NAME);
-			return null;
-		}
-		
-		Map<Integer, Pet> map = new HashMap<Integer, Pet>();
-		for(Pet.Builder config : builder.getDataBuilderList()){
-			map.put(config.getId(), config.build());
-		}
-		hputcacheAll(RedisKey.PET_CONFIG, map);
 		
 		return map;
 	}

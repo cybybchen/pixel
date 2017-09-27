@@ -52,9 +52,6 @@ public class EquipPokedeService {
 		if (pokede == null)
 			return ErrorConst.EQUIP_IS_NOT_EXIST_ERROR;
 		
-		if (pokede.getItemId() > RewardConst.ENGINE)
-			return ErrorConst.EQUIP_LEVELUP_ERROR;
-		
 		EquipIncrease equipIncrease = equipPokedeRedisService.getEquipIncrease(pokede.getLevel() + 1);
 		if (equipIncrease == null)
 			return ErrorConst.EQUIP_LEVEL_IS_LIMIT_ERROR;

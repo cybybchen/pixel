@@ -47,8 +47,6 @@ public class UserTalentService {
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
 
-	public static final int TALENT_EQUIP_COUNT = 11;
-	
 	public UserTalent.Builder getOtherTalent(UserBean user, int id) {
 		UserTalent.Builder userTalent = getUserTalent(user, id);
 		if (userTalent != null) {
@@ -293,7 +291,7 @@ public class UserTalentService {
 			unlockUserTalentSkill(user, id, talentunlock);
 		}
 		
-		for (int i = 0; i < TALENT_EQUIP_COUNT; ++i) {
+		for (int i = 0; i < 10; ++i) {
 			UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
 			equipBuilder.setPosition(i);
 			equipBuilder.setItemId(0);
