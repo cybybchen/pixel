@@ -102,7 +102,7 @@ public class RaidCommandService extends BaseCommandService{
 				if(raidconfig.getMaxlevel() > 3)
 					level = raidconfig.getMaxlevel();
 				else
-					level = Math.min(cmd.getLevel(), myraid.getMaxlevel());
+					level = Math.min(180, Math.min(cmd.getLevel(), myraid.getMaxlevel()));
 				myraid.setLevel(level);
 				if(myraid.getLeftcount() > 0)
 					myraid.setLeftcount(myraid.getLeftcount()-1);
