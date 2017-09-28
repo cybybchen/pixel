@@ -12,6 +12,13 @@ var json = {
     }}
 };
 
+var userstorage = localStorage.getItem("userstorage");
+if(!userstorage) {
+	userstorage = {};
+}else {
+	userstorage = JSON.parse(userstorage);
+}
+
 function showReloadBtn(){
     dom = $(".reload-btn:hidden");
     dom.show();
@@ -105,6 +112,19 @@ function addUserTab(){
         $( "#user-controlgroup" ).controlgroup( "refresh" );
         $(".nav-userbtn").removeClass("nav-btn-active");
         $($(".nav-userbtn")[0]).addClass("nav-btn-active");
+        
+        userstorage[userid] = {"username": username, "time": new Date().getTime()};
+        var storagesize = 0;
+        var delkey = userid;
+        for(var key in userstorage){
+        	storagesize += 1;
+        	if(userstorage[key]["time"] < userstorage[delkey]["time"]) {
+        		delkey = key;
+        	}
+        }
+        if(storagesize > 30)
+        	delete userstorage[delkey];
+        localStorage.setItem("userstorage", JSON.stringify(userstorage));
     }
 
     $("#current-userid").text("id "+userid);
@@ -112,6 +132,8 @@ function addUserTab(){
 
 function closeUserTab(id){
     var navs =  $(".nav-userbtn");
+    delete userstorage[id];
+    localStorage.setItem("userstorage", JSON.stringify(userstorage));
     for (var i =navs.length - 1; i >= 0; i--) {
      if($(navs[i]).attr("userid") == id){
          $(navs[i]).remove();
@@ -122,10 +144,13 @@ function closeUserTab(id){
 
 function popupUsersPanel(){
     var content = "";
-    $.each($(".nav-userbtn"), function () {
-        var id = $(this).attr("userid");
-        content += '<li class="ui-li-has-alt"><a href="#" userid="'+id+'" title="userId:'+id+'" onclick="requestUserJson('+id+')" class="ui-btn">'+$(this).text()+'</a><a href="#" userid="'+id+'" onclick="closeUserTab('+id+')" class="ui-btn ui-btn-icon-notext ui-icon-delete" title="close '+id+'"></a></li>'
-    });
+//    $.each($(".nav-userbtn"), function () {
+//        var id = $(this).attr("userid");
+//        content += '<li class="ui-li-has-alt"><a href="#" userid="'+id+'" title="userId:'+id+'" onclick="requestUserJson('+id+')" class="ui-btn">'+$(this).text()+'</a><a href="#" userid="'+id+'" onclick="closeUserTab('+id+')" class="ui-btn ui-btn-icon-notext ui-icon-delete" title="close '+id+'"></a></li>'
+//    });
+    for(var key in userstorage){
+    	content += '<li class="ui-li-has-alt"><a href="#" userid="'+key+'" title="userId:'+key+'" onclick="requestUserJson('+key+')" class="ui-btn">'+userstorage[key]["username"]+'</a><a href="#" userid="'+key+'" onclick="closeUserTab('+key+')" class="ui-btn ui-btn-icon-notext ui-icon-delete" title="close '+key+'"></a></li>'
+	}
     if(content == "")
         content = '<li><a href="#" class="ui-btn">Empty</a></li>';
     else{
