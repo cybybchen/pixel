@@ -158,7 +158,7 @@ public class LootRewardTaskService {
 		UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
 		builder.setCount(builder.getCount() - (int)(lootCount * raidconfig.getCost().getCount()));
 		if (builder.getCount() < raidconfig.getCost().getCount())
-			builder.setLootTime(0);
+			builder.setLootTime(RedisService.now());
 		else
 			builder.setLootTime(builder.getLootTime() + lootCount * raidconfig.getTime());
 		
@@ -210,7 +210,7 @@ public class LootRewardTaskService {
 			UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
 			builder.setCount(builder.getCount() - (int)(lootCount * shenyuan.getCost().getCount()));
 			if (builder.getCount() < shenyuan.getCost().getCount())
-				builder.setLootTime(0);
+				builder.setLootTime(RedisService.now());
 			else
 				builder.setLootTime(builder.getLootTime() + lootCount * shenyuan.getTime());
 			
