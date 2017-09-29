@@ -149,18 +149,21 @@ public class LootRewardTaskService {
 //		if(ticket % raidconfig.getCost().getCount() != 0){
 //			return ErrorConst.TICKET_COUNT_ERROR;
 //		}
-		int lootCount = (int) Math.min((RedisService.now() - loot.getLootTime()) / raidconfig.getTime(), 
-				loot.getCount() / raidconfig.getCost().getCount());
-		
-		if(lootCount > 0)
-			rewards.addAllLoot(getRaidReward(user, raidid, lootCount).getLootList());
 		
 		UserLootRewardTask.Builder builder = UserLootRewardTask.newBuilder(loot);
-		builder.setCount(builder.getCount() - (int)(lootCount * raidconfig.getCost().getCount()));
-		if (builder.getCount() < raidconfig.getCost().getCount())
-			builder.setLootTime(RedisService.now());
-		else
-			builder.setLootTime(builder.getLootTime() + lootCount * raidconfig.getTime());
+		LootShenyuan lastraidconfig = redis.getLootRaid(id, loot.getRaidid());
+		if(lastraidconfig != null) {
+			int lootCount = (int) Math.min((RedisService.now() - loot.getLootTime()) / lastraidconfig.getTime(), 
+					loot.getCount() / lastraidconfig.getCost().getCount());
+			
+			if(lootCount > 0)
+				rewards.addAllLoot(getRaidReward(user, raidid, lootCount).getLootList());
+			builder.setCount(builder.getCount() - (int)(lootCount * lastraidconfig.getCost().getCount()));
+			if (builder.getCount() < lastraidconfig.getCost().getCount())
+				builder.setLootTime(RedisService.now());
+			else
+				builder.setLootTime(builder.getLootTime() + lootCount * lastraidconfig.getTime());
+		}
 		
 		if (builder.getCount() + ticket > raidconfig.getLimit()) {
 			userLootRewardTaskService.updateLootRaid(user, builder.build());
