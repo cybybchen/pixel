@@ -556,7 +556,7 @@ public class PvpMapService {
 		 * PVP攻击玩家的活动
 		 */
 		if(mine.hasOwner()){
-			activityService.pvpAttackEnemyActivity(user, ret);
+			activityService.pvpAttackEnemyActivity(user, ret, id);
 			enemyId = mine.getOwner().getId();
 			
 			//全服通告

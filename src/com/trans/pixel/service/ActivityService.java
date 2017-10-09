@@ -308,7 +308,7 @@ public class ActivityService {
 		sendRichangScore(user, ACTIVITY_TYPE.TYPE_LADDER_ATTACK_VALUE);
 	}
 	
-	public void pvpAttackEnemyActivity(UserBean user, boolean ret) {
+	public void pvpAttackEnemyActivity(UserBean user, boolean ret, int id) {
 		/**
 		 * achieve type 110
 		 */
@@ -319,8 +319,12 @@ public class ActivityService {
 		 * 参与pk
 		 */
 //		sendRichangScore(user, ActivityConst.RICHANG_PVP_ATTACK_ENEMY);
-		if (ret)
-			sendRichangScore(user, ACTIVITY_TYPE.TYPE_PVP_ATTACK_SUCCESS_VALUE);
+		if (ret) {
+			if (id > 1000)
+				sendRichangScore(user, ACTIVITY_TYPE.TYPE_ATTACK_PVP_INBREAK_VALUE);
+			else
+				sendRichangScore(user, ACTIVITY_TYPE.TYPE_PVP_ATTACK_SUCCESS_VALUE);
+		}
 		
 		if (ret)
 			taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_DUOHUI_MINE_VALUE);
