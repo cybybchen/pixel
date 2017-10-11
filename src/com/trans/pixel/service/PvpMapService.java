@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -20,15 +19,11 @@ import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.mapper.UserPvpBuffMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
-import com.trans.pixel.model.userinfo.UserRankBean;
 import com.trans.pixel.protoc.Base.HeroInfo;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
-import com.trans.pixel.protoc.Base.UnionBossRecord.UNIONBOSSSTATUS;
-import com.trans.pixel.protoc.Base.UnionBossUserRecord;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.PVPProto.Mowu;
@@ -37,16 +32,12 @@ import com.trans.pixel.protoc.PVPProto.PVPMap;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand;
-import com.trans.pixel.protoc.UnionProto.RankItem;
-import com.trans.pixel.protoc.UnionProto.UnionBoss;
-import com.trans.pixel.protoc.UnionProto.UnionBosswin;
 import com.trans.pixel.service.command.PushCommandService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
-import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class PvpMapService {
@@ -79,8 +70,6 @@ public class PvpMapService {
 	private RewardService rewardService;
 	@Resource
 	private LevelRedisService levelRedisService;
-	@Resource
-	private UserPvpBuffMapper mapper;
 
 	private int getTarget(int fieldid) {
 		if(fieldid > 1)

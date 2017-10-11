@@ -24,6 +24,7 @@ import com.trans.pixel.service.UserTalentService;
 import com.trans.pixel.service.UserTaskService;
 import com.trans.pixel.service.UserTeamService;
 import com.trans.pixel.service.redis.LevelRedisService;
+import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.TeamRaidRedisService;
@@ -70,6 +71,8 @@ public class UserCrontabService {
 	private UserLadderService userLadderService;
 	@Resource
 	private RaidRedisService raidService;
+	@Resource
+	private PvpMapRedisService pvpMapRedisService;
 	@Resource
 	private TeamRaidRedisService teamRaidService;
 	@Resource
@@ -214,6 +217,12 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int type = Integer.parseInt(keys[1]);
 			userLadderService.updateToDB(userId, type);
+		}
+		while((key=pvpMapRedisService.popDBKey()) != null){
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			int id = Integer.parseInt(keys[1]);
+			pvpMapRedisService.updateToDB(userId, id);
 		}
 		while((key=raidService.popDBKey()) != null){
 			String keys[] = key.split("#");

@@ -10,7 +10,7 @@
 	</resultMap>
 
 	<update id="updateUserPvpBuff" parameterType="com.trans.pixel.model.userinfo.UserPvpBuffBean">
-		INSERT INTO user_level(userid, buffid, buff, maxbuff)
+		INSERT INTO user_pvpbuff(userid, buffid, buff, maxbuff)
 	    VALUES(#{userid}, #{buffid}, #{buff}, #{maxbuff})
 	    ON 
 	    duplicate key update
@@ -19,6 +19,6 @@
 
 	<select id="getUserPvpBuff" parameterType="long" resultMap="resultMap">
 		SELECT *
-		from user_level where userid = #{userid}
+		from user_pvpbuff where userid = #{userid}
 	</select>
 </mapper>

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.MailBean;
+import com.trans.pixel.model.mapper.UserPvpBuffMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserPvpBuffBean;
 import com.trans.pixel.model.userinfo.UserRankBean;
@@ -54,6 +55,8 @@ public class PvpMapRedisService extends RedisService{
 	private UserService userService;
 	@Resource
 	private MailService mailService;
+	@Resource
+	private UserPvpBuffMapper mapper;
 	
 	public PvpMapRedisService() {
 		buildPvpMapConfig();
@@ -83,7 +86,8 @@ public class PvpMapRedisService extends RedisService{
 			 if(map.getFieldid() <= pvpUnlock)
 				map.setOpened(true);
 		}
-		saveMapList(maplist.build(), userId);
+		if(pvpUnlock > 0)
+			saveMapList(maplist.build(), userId);
 		return maplist;
 	}
 	
@@ -121,6 +125,13 @@ public class PvpMapRedisService extends RedisService{
 			}
 			buffmap.put(bean.getBuffid(), bean);
 		}
+		if(buffmap.isEmpty()) {
+			List<UserPvpBuffBean> list = mapper.getUserPvpBuff(user.getId());
+			for(UserPvpBuffBean bean : list) {
+				buffmap.put(bean.getBuffid(), bean);
+				saveUserBuff(user, bean);
+			}
+		}
 		return buffmap;
 	}
 
@@ -152,15 +163,27 @@ public class PvpMapRedisService extends RedisService{
 		Map<String, String> keyvalue = hget(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), user.getId());
 		for(String value : keyvalue.values()) {
 			UserPvpBuffBean bean = (UserPvpBuffBean)RedisService.fromJson(value, UserPvpBuffBean.class);
-			bean.setBuff(0);
-			keyvalue.put(bean.getBuffid()+"", RedisService.toJson(bean));
+			bean.setBuff(1);
+			saveUserBuff(user, bean);
+//			keyvalue.put(bean.getBuffid()+"", RedisService.toJson(bean));
 		}
-		hputAll(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), keyvalue, user.getId());
+//		hputAll(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), keyvalue, user.getId());
 	}
 	
 	public void saveUserBuff(UserBean user, UserPvpBuffBean buff) {
 		hput(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), buff.getBuffid()+"", RedisService.toJson(buff), user.getId());
 		expire(RedisKey.PVPMAPBUFF_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
+		sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.PVPMAPBUFF_PREFIX, user.getId()+"#"+buff.getBuffid());
+	}
+	
+	public String popDBKey() {
+		return spop(RedisKey.PUSH_MYSQL_KEY+RedisKey.PVPMAPBUFF_PREFIX);
+	}
+	public void updateToDB(long userId, int id){
+		String value = hget(RedisKey.PVPMAPBUFF_PREFIX+userId, id+"", userId);
+		UserPvpBuffBean bean = UserPvpBuffBean.fromJson(value);
+		if(bean != null)
+			mapper.updateUserPvpBuff(bean);
 	}
 
 	public Map<String, PVPMine> getUserMines(long userId) {
