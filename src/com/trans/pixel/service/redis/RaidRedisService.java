@@ -68,10 +68,10 @@ public class RaidRedisService extends RedisService{
 				if(raid.hasClearlevel()){//普通副本
 					if(myraid.hasClearlevel()){
 						raid.setClearlevel(myraid.getClearlevel());
-						raid.setMaxlevel(Math.min(180, myraid.getClearlevel()+RaidRedisService.EXTRA_LEVEL));
+						raid.setMaxlevel(Math.min(180, raid.getClearlevel()+EXTRA_LEVEL));
 					}else {//修复旧数据
 						raid.setClearlevel(myraid.getMaxlevel()-2);
-						raid.setMaxlevel(myraid.getClearlevel()+EXTRA_LEVEL);
+						raid.setMaxlevel(Math.min(180, raid.getClearlevel()+EXTRA_LEVEL));
 					}
 				}
 			}
