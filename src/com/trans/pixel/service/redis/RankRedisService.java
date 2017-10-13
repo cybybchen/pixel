@@ -14,6 +14,7 @@ import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.FightInfo;
 import com.trans.pixel.protoc.Base.UserInfo;
+import com.trans.pixel.service.command.ZhanliCommandService;
 
 @Service
 public class RankRedisService extends RedisService{
@@ -36,6 +37,10 @@ public class RankRedisService extends RedisService{
 		Long rank = zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
 		if(rank == null)
 			rank = -1L;
+		if(user.getZhanliMax() > ZhanliCommandService.RANK_BASEZHANLI && rank == -1L) {
+			zadd(RedisKey.ZHANLI_RANK+user.getServerId(), user.getZhanliMax(), user.getId()+"");
+			rank = zrank(RedisKey.ZHANLI_RANK+user.getServerId(), user.getId()+"");
+		}
 		return rank;
 	}
 	

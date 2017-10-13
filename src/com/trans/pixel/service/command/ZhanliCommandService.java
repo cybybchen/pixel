@@ -21,7 +21,8 @@ import com.trans.pixel.service.redis.ZhanliRedisService;
 
 @Service
 public class ZhanliCommandService extends BaseCommandService {
-	private static Logger log = Logger.getLogger(ZhanliCommandService.class);	
+	private static Logger log = Logger.getLogger(ZhanliCommandService.class);
+	public static int RANK_BASEZHANLI = 1000;
 	@Resource
 	private UserService userService;
 	@Resource
@@ -89,7 +90,7 @@ public class ZhanliCommandService extends BaseCommandService {
 					activityService.merLevel(user, user.getMerlevel());
 				}
 			}
-			if(!blackService.isNoranklist(user.getId()) && zhanli > 1000) {
+			if(!blackService.isNoranklist(user.getId()) && zhanli > RANK_BASEZHANLI) {
 				rankRedisService.updateZhanliRank(user);
 				/**
 				 * zhanli activity
