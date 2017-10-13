@@ -92,21 +92,21 @@ public class RaidCommandService extends BaseCommandService{
 				myraid.clearEventid();
 				myraid.clearTurn();
 				myraid.clearLevel();
-				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+				redis.saveRaid(user, myraid);
 			}
 			for(Raid.Builder myraid : raidlist.getRaidBuilderList()) {
 				if(myraid.getId() != raidconfig.getId())
 					continue;
 				myraid.setEventid(raidconfig.getEventList().get(0).getEventid());
 				myraid.clearTurn();
-				if(raidconfig.getMaxlevel() > 3)
+				if(!raidconfig.hasClearlevel())//溶火高塔
 					level = raidconfig.getMaxlevel();
 				else
 					level = Math.min(180, Math.min(cmd.getLevel(), myraid.getMaxlevel()));
 				myraid.setLevel(level);
 				if(myraid.getLeftcount() > 0)
 					myraid.setLeftcount(myraid.getLeftcount()-1);
-				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+				redis.saveRaid(user, myraid);
 				responseBuilder.setRaidCommand(raidlist);
 				pusher.pushUserDataByRewardId(responseBuilder, user, raidconfig.getCost().getItemid());
 				break;
@@ -174,31 +174,34 @@ public class RaidCommandService extends BaseCommandService{
 					/**
 					 * 副本排行榜
 					 */
-					if(raidconfig.getMaxlevel() <= 3)
-					rankService.addRaidRank(user, myraid.build());
+					if(raidconfig.hasClearlevel()){
+						rankService.addRaidRank(user, myraid.build());
+					}
 					/**
 					 * 通关副本的活动
 					 */
-					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getMaxlevel()-2, myraid.getLevel()));
+					activityService.raidKill(user, myraid.getId(), Math.max(myraid.getClearlevel(), myraid.getLevel()));
 					myraid.clearEventid();
 //					myraid.clearTurn();
 //					if(myraid.getCount() > 0 && myraid.getLeftcount() > 0) {
 //						myraid.setLeftcount(myraid.getLeftcount()-1);
 //					}
-					if(raidconfig.getMaxlevel() <= 3)
-						myraid.setMaxlevel(Math.min(182, Math.max(myraid.getMaxlevel(), myraid.getLevel()+2)));
+					if(raidconfig.hasClearlevel()){
+						myraid.setClearlevel(Math.min(180, Math.max(myraid.getClearlevel(), myraid.getLevel())));
+						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+RaidRedisService.EXTRA_LEVEL)));
+					}
 					myraid.clearLevel();
 					if(myraid.getId() == 20) {
 						teamraidredis.unlock(user, 20);
 					}
 				}
 				
-				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+				redis.saveRaid(user, myraid);
 			}else if(!cmd.getRet() && cmd.getTurn() == 0){
 				myraid.clearEventid();
 				myraid.clearTurn();
 				myraid.clearLevel();
-				redis.saveRaid(user, myraid, raidconfig.getMaxlevel() <= 3);
+				redis.saveRaid(user, myraid);
 			}
 			if(!responseBuilder.hasErrorCommand()) {
 			Map<String, String> params = new HashMap<String, String>();

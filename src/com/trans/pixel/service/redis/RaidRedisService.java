@@ -29,6 +29,7 @@ import com.trans.pixel.utils.DateUtil;
 @Repository
 public class RaidRedisService extends RedisService{
 	Logger logger = Logger.getLogger(RaidRedisService.class);
+	public static int EXTRA_LEVEL = 3;
 	@Resource
 	private RaidMapper mapper;
 	
@@ -64,8 +65,14 @@ public class RaidRedisService extends RedisService{
 					raid.setLeftcount(myraid.getLeftcount());
 					raid.setEndtime(myraid.getEndtime());
 				}
-				if(raid.getMaxlevel() <= 3){
-					raid.setMaxlevel(myraid.getMaxlevel());
+				if(raid.hasClearlevel()){//普通副本
+					if(myraid.hasClearlevel()){
+						raid.setClearlevel(myraid.getClearlevel());
+						raid.setMaxlevel(Math.min(180, myraid.getClearlevel()+RaidRedisService.EXTRA_LEVEL));
+					}else {//修复旧数据
+						raid.setClearlevel(myraid.getMaxlevel()-2);
+						raid.setMaxlevel(myraid.getClearlevel()+EXTRA_LEVEL);
+					}
 				}
 			}
 			if(raid.getCount() > 0) {
@@ -77,7 +84,7 @@ public class RaidRedisService extends RedisService{
 					if(endtime.before(nextDate)) {//刷新次数
 						raid.setLeftcount(raid.getCount());
 						raid.setEndtime(df.format(nextDate));
-						saveRaid(user, raid, false);
+						saveRaid(user, raid);
 					}
 				} catch (ParseException e) {
 					e.printStackTrace();
@@ -87,11 +94,11 @@ public class RaidRedisService extends RedisService{
 		return builder;
 	}
 
-	public void saveRaid(UserBean user, Raid.Builder raid, boolean updateDB){
+	public void saveRaid(UserBean user, Raid.Builder raid){
 		hput(RedisKey.USERRAID_PREFIX+user.getId(), raid.getId()+"", formatJson(raid.build()), user.getId());
 		expire(RedisKey.USERRAID_PREFIX+user.getId(), RedisExpiredConst.EXPIRED_USERINFO_7DAY, user.getId());
 //		if(raid.getId() < 50)
-		if(updateDB)
+		if(raid.hasClearlevel())
 			sadd(RedisKey.PUSH_MYSQL_KEY+RedisKey.USERRAID_PREFIX, user.getId()+"#"+raid.getId());
 	}
 
@@ -148,14 +155,6 @@ public class RaidRedisService extends RedisService{
 		for(Raid.Builder raid : list.getDataBuilderList()) {
 			raid.clearEvent();
 			raid.clearCost();
-//			raid.setEventid(0);
-//			raid.clearTurn();
-//			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
-//			raid.setLevel(0);
-//			if("".equals(raid.getStarttime()))
-//				raid.clearStarttime();
-//			if("".equals(raid.getEndtime()))
-//				raid.clearEndtime();
 		}
 		builder.addAllRaid(list.getDataList());
 		CacheService.setcache(RedisKey.RAIDLIST_CONFIG, builder.build());
@@ -168,7 +167,9 @@ public class RaidRedisService extends RedisService{
 		for(Raid.Builder raid : list.getDataBuilderList()) {
 			raid.setEventid(0);
 //			raid.clearTurn();
-			raid.setMaxlevel(Math.max(raid.getLevel(), 3));
+			if(raid.getLevel() == 0)//普通副本
+				raid.setClearlevel(1);
+			raid.setMaxlevel(Math.max(raid.getLevel(), EXTRA_LEVEL+1));
 			raid.setLevel(0);
 			if("".equals(raid.getStarttime()))
 				raid.clearStarttime();
