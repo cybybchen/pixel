@@ -60,15 +60,16 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 			}
 			if (rewards.getLootCount() > 0) {
 				rewards = propService.rewardsHandle(user, rewards.getLootList());
-				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = rewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							rewards.getLootBuilder(i).setItemid(24010);
-						}
-					}
-				}
+				//deal in propService
+//				for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+//					int itemid = rewards.getLoot(i).getItemid();
+//					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+//						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+//						if(bean != null){
+//							rewards.getLootBuilder(i).setItemid(24010);
+//						}
+//					}
+//				}
 			}
 
 			Map<String, String> params = new HashMap<String, String>();

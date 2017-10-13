@@ -263,15 +263,15 @@ public class LootRewardTaskService {
 			if (newrewards.getLootCount() > 0) {
 				rewardService.mergeReward(newrewards);
 				newrewards = propService.rewardsHandle(user, newrewards.getLootList());
-				for(int i = newrewards.getLootCount() - 1; i >= 0; i--) {
-					int itemid = newrewards.getLoot(i).getItemid();
-					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-						if(bean != null){
-							newrewards.getLootBuilder(i).setItemid(24010);
-						}
-					}
-				}
+//				for(int i = newrewards.getLootCount() - 1; i >= 0; i--) {
+//					int itemid = newrewards.getLoot(i).getItemid();
+//					if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+//						UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+//						if(bean != null){
+//							newrewards.getLootBuilder(i).setItemid(24010);
+//						}
+//					}
+//				}
 				rewards.addAllLoot(newrewards.getLootList());
 			}
 			

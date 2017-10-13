@@ -347,9 +347,20 @@ public class PropService {
 			randomReward(rewards, reward.getItemid(), (int)reward.getCount(), map);
 		}
 		
-		rewardService.mergeReward(rewards);
 		if (isShenyuan) {
+			for(int i = rewards.getLootCount() - 1; i >= 0; i--) {
+				int itemid = rewards.getLoot(i).getItemid();
+				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+					if(bean != null){
+						rewards.getLootBuilder(i).setItemid(24010);
+					}
+				}
+			}
+			rewardService.mergeReward(rewards);
 			noticeMessageService.handlerShenyuanEquipMessage(user, rewards.build());
+		}else{
+			rewardService.mergeReward(rewards);
 		}
 		return rewards;
 	}

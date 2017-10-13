@@ -110,17 +110,18 @@ public class RewardTaskService {
 				}
 			}
 		}else if(rewardTask.getType() == 2){//深渊
-			for(int i = rewardlist.size() - 1; i >= 0; i--) {
-				int itemid = rewardlist.get(i).getItemid();
-				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
-					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
-					if(bean != null){
-						RewardInfo.Builder builder = RewardInfo.newBuilder(rewardlist.get(i));
-						builder.setItemid(24010);
-						rewardlist.set(i, builder.build());
-					}
-				}
-			}
+			//deal in propService
+//			for(int i = rewardlist.size() - 1; i >= 0; i--) {
+//				int itemid = rewardlist.get(i).getItemid();
+//				if(itemid/10000*10000 == RewardConst.EQUIPMENT) {
+//					UserEquipPokedeBean bean = userEquipPokedeService.selectUserEquipPokede(user, itemid);
+//					if(bean != null){
+//						RewardInfo.Builder builder = RewardInfo.newBuilder(rewardlist.get(i));
+//						builder.setItemid(24010);
+//						rewardlist.set(i, builder.build());
+//					}
+//				}
+//			}
 		}
 		
 		return rewardlist;
