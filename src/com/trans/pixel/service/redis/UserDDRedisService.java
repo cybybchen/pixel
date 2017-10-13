@@ -13,6 +13,7 @@ import com.trans.pixel.protoc.Base.UserDD;
 import com.trans.pixel.protoc.ExtraProto.Dingding;
 import com.trans.pixel.protoc.ExtraProto.DingdingList;
 import com.trans.pixel.protoc.ExtraProto.Fanqie;
+import com.trans.pixel.protoc.ExtraProto.FanqieList;
 import com.trans.pixel.service.cache.CacheService;
 
 @Repository
@@ -63,11 +64,13 @@ public class UserDDRedisService extends RedisService{
 	
 	private void buildFanqieConfig(){
 		String xml = RedisService.ReadConfig(FANQIE_FILE_NAME);
-		Fanqie.Builder builder = Fanqie.newBuilder();
+		FanqieList.Builder builder = FanqieList.newBuilder();
 		RedisService.parseXml(xml, builder);
 		Map<Integer, Fanqie> map = new HashMap<Integer, Fanqie>();
 		
-		map.put(builder.getOrder(), builder.build());
+		for(Fanqie.Builder config : builder.getDataBuilderList()){
+			map.put(config.getOrder(), config.build());
+		}
 		CacheService.hputcacheAll(RedisKey.FANQIE_KEY, map);
 	}
 	
@@ -87,7 +90,7 @@ public class UserDDRedisService extends RedisService{
 		RedisService.parseXml(xml, builder);
 		Map<Integer, Dingding> map = new HashMap<Integer, Dingding>();
 		for(Dingding.Builder config : builder.getDataBuilderList()){
-			map.put(config.getItemId(), config.build());
+			map.put(config.getItemid(), config.build());
 		}
 		CacheService.hputcacheAll(RedisKey.DINGDING_KEY, map);
 	}

@@ -648,7 +648,7 @@ message FenjieList {
 }
 
 message Dingding {
-	required uint32 itemId = 1;
+	required uint32 itemid = 1;
 	repeated RewardInfo reward = 2;
 }
 
@@ -664,6 +664,10 @@ message FanqieLoot {
 message Fanqie {
 	required uint32 order = 1;
 	repeated FanqieLoot loot = 2;
+}
+
+message FanqieList {
+	repeated Fanqie data = 1;
 }
 
 message RequestUserDDCommand {
