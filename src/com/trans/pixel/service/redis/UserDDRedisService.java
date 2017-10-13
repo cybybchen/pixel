@@ -19,7 +19,7 @@ import com.trans.pixel.service.cache.CacheService;
 public class UserDDRedisService extends RedisService{
 	Logger logger = LoggerFactory.getLogger(UserDDRedisService.class);
 	
-	private static final String FANQIE_FILE_NAME = "ld_fanqiu.xml";
+	private static final String FANQIE_FILE_NAME = "ld_fanqie.xml";
 	private static final String DINGDING_FILE_NAME = "ld_dingding.xml";
 	
 	public UserDDRedisService() {
