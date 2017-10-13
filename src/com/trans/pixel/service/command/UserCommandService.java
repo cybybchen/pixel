@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
@@ -22,10 +21,12 @@ import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.TeamEngine;
+import com.trans.pixel.protoc.Base.UserDD;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
+import com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestBindAccountCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestSubmitIconCommand;
@@ -54,6 +55,7 @@ import com.trans.pixel.service.RewardService;
 import com.trans.pixel.service.ServerService;
 import com.trans.pixel.service.ServerTitleService;
 import com.trans.pixel.service.ShopService;
+import com.trans.pixel.service.UserDDService;
 import com.trans.pixel.service.UserHeadService;
 import com.trans.pixel.service.UserHeroService;
 import com.trans.pixel.service.UserService;
@@ -109,6 +111,8 @@ public class UserCommandService extends BaseCommandService {
 	private RewardService rewardService;
 	@Resource
 	private ServerTitleService serverTitleService;
+	@Resource
+	private UserDDService userDDService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -395,26 +399,35 @@ public class UserCommandService extends BaseCommandService {
 
 	public void extra(RequestExtraRewardCommand cmd, Builder responseBuilder,
 			UserBean user) {
+		int itemId = cmd.getExtraItemId();
 		int status = cmd.getStatus();
 		int type = 0;
 		if (cmd.hasExtraType())
 			type = cmd.getExtraType();
-		List<RewardBean> rewardList = new ArrayList<RewardBean>();
-		ResultConst ret = userService.handleExtra(user, status, type,
-				rewardList);
-		if (ret instanceof ErrorConst) {
-			logService.sendErrorLog(user.getId(), user.getServerId(),
-					cmd.getClass(), RedisService.formatJson(cmd), ret);
-
-			ErrorCommand errorCommand = buildErrorCommand(ret);
-			responseBuilder.setErrorCommand(errorCommand);
+		MultiReward.Builder rewards = MultiReward.newBuilder();
+		List<Integer> costs = new ArrayList<Integer>();
+		UserDD userdd = userDDService.handleExtra(user, status, type, itemId, 
+				rewards, costs);
+//		if (ret instanceof ErrorConst) {
+//			logService.sendErrorLog(user.getId(), user.getServerId(),
+//					cmd.getClass(), RedisService.formatJson(cmd), ret);
+//
+//			ErrorCommand errorCommand = buildErrorCommand(ret);
+//			responseBuilder.setErrorCommand(errorCommand);
+//		}
+		if (rewards.getLootCount() != 0) {
+			handleRewards(responseBuilder, user, rewards);
 		}
-		if (!rewardList.isEmpty()) {
-			handleRewards(responseBuilder, user, rewardList);
-		}
-		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		pushCommandService.pushUserDDCommand(responseBuilder, user, userdd);
+		if (!costs.isEmpty())
+			pushCommandService.pushUserDataByRewardId(responseBuilder, user, costs.get(0), false);
 	}
 
+	public void dingdingInfo(RequestUserDDCommand cmd, Builder responseBuilder,
+			UserBean user) {
+		pushCommandService.pushUserDDCommand(responseBuilder, user);
+	}
+	
 	public void bindRecommand(RequestBindRecommandCommand cmd,
 			Builder responseBuilder, UserBean user) {
 		if (user.getRecommandUserId() != 0) {
@@ -608,6 +621,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserEquipPokedeList(responseBuilder, user);
 		pushCommandService.pushUserRaid(responseBuilder, user);
 		pushCommandService.pushUserUnion(responseBuilder, user);
+		pushCommandService.pushUserDDCommand(responseBuilder, user);
 	}
 
 	private void handlerServerTitle(ResponseCommand.Builder responseBuilder, int serverId) {

@@ -28504,12 +28504,38 @@ public final class RewardTaskProto {
     // optional int32 level = 8;
     /**
      * <code>optional int32 level = 8;</code>
+     *
+     * <pre>
+     *当前层数
+     * </pre>
      */
     boolean hasLevel();
     /**
      * <code>optional int32 level = 8;</code>
+     *
+     * <pre>
+     *当前层数
+     * </pre>
      */
     int getLevel();
+
+    // optional int32 clearlevel = 14;
+    /**
+     * <code>optional int32 clearlevel = 14;</code>
+     *
+     * <pre>
+     *通关层数
+     * </pre>
+     */
+    boolean hasClearlevel();
+    /**
+     * <code>optional int32 clearlevel = 14;</code>
+     *
+     * <pre>
+     *通关层数
+     * </pre>
+     */
+    int getClearlevel();
 
     // optional int32 maxlevel = 9;
     /**
@@ -28673,17 +28699,17 @@ public final class RewardTaskProto {
               break;
             }
             case 72: {
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               maxlevel_ = input.readInt32();
               break;
             }
             case 82: {
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               starttime_ = input.readBytes();
               break;
             }
             case 90: {
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               endtime_ = input.readBytes();
               break;
             }
@@ -28695,6 +28721,11 @@ public final class RewardTaskProto {
             case 104: {
               bitField0_ |= 0x00000010;
               count_ = input.readInt32();
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00000080;
+              clearlevel_ = input.readInt32();
               break;
             }
           }
@@ -28936,15 +28967,47 @@ public final class RewardTaskProto {
     private int level_;
     /**
      * <code>optional int32 level = 8;</code>
+     *
+     * <pre>
+     *当前层数
+     * </pre>
      */
     public boolean hasLevel() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional int32 level = 8;</code>
+     *
+     * <pre>
+     *当前层数
+     * </pre>
      */
     public int getLevel() {
       return level_;
+    }
+
+    // optional int32 clearlevel = 14;
+    public static final int CLEARLEVEL_FIELD_NUMBER = 14;
+    private int clearlevel_;
+    /**
+     * <code>optional int32 clearlevel = 14;</code>
+     *
+     * <pre>
+     *通关层数
+     * </pre>
+     */
+    public boolean hasClearlevel() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional int32 clearlevel = 14;</code>
+     *
+     * <pre>
+     *通关层数
+     * </pre>
+     */
+    public int getClearlevel() {
+      return clearlevel_;
     }
 
     // optional int32 maxlevel = 9;
@@ -28958,7 +29021,7 @@ public final class RewardTaskProto {
      * </pre>
      */
     public boolean hasMaxlevel() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional int32 maxlevel = 9;</code>
@@ -28978,7 +29041,7 @@ public final class RewardTaskProto {
      * <code>optional string starttime = 10;</code>
      */
     public boolean hasStarttime() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional string starttime = 10;</code>
@@ -29021,7 +29084,7 @@ public final class RewardTaskProto {
      * <code>optional string endtime = 11;</code>
      */
     public boolean hasEndtime() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional string endtime = 11;</code>
@@ -29067,6 +29130,7 @@ public final class RewardTaskProto {
       eventid_ = 0;
       turn_ = java.util.Collections.emptyList();
       level_ = 0;
+      clearlevel_ = 0;
       maxlevel_ = 0;
       starttime_ = "";
       endtime_ = "";
@@ -29104,13 +29168,13 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeInt32(8, level_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         output.writeInt32(9, maxlevel_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeBytes(10, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeBytes(11, getEndtimeBytes());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
@@ -29118,6 +29182,9 @@ public final class RewardTaskProto {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(13, count_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(14, clearlevel_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -29161,15 +29228,15 @@ public final class RewardTaskProto {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(8, level_);
       }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, maxlevel_);
       }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10, getStarttimeBytes());
       }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(11, getEndtimeBytes());
       }
@@ -29180,6 +29247,10 @@ public final class RewardTaskProto {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, count_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, clearlevel_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -29325,12 +29396,14 @@ public final class RewardTaskProto {
         bitField0_ = (bitField0_ & ~0x00000080);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000100);
-        maxlevel_ = 0;
+        clearlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        starttime_ = "";
+        maxlevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000400);
-        endtime_ = "";
+        starttime_ = "";
         bitField0_ = (bitField0_ & ~0x00000800);
+        endtime_ = "";
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -29408,13 +29481,17 @@ public final class RewardTaskProto {
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000080;
         }
-        result.maxlevel_ = maxlevel_;
+        result.clearlevel_ = clearlevel_;
         if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
           to_bitField0_ |= 0x00000100;
         }
-        result.starttime_ = starttime_;
+        result.maxlevel_ = maxlevel_;
         if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
           to_bitField0_ |= 0x00000200;
+        }
+        result.starttime_ = starttime_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00000400;
         }
         result.endtime_ = endtime_;
         result.bitField0_ = to_bitField0_;
@@ -29492,16 +29569,19 @@ public final class RewardTaskProto {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
+        if (other.hasClearlevel()) {
+          setClearlevel(other.getClearlevel());
+        }
         if (other.hasMaxlevel()) {
           setMaxlevel(other.getMaxlevel());
         }
         if (other.hasStarttime()) {
-          bitField0_ |= 0x00000400;
+          bitField0_ |= 0x00000800;
           starttime_ = other.starttime_;
           onChanged();
         }
         if (other.hasEndtime()) {
-          bitField0_ |= 0x00000800;
+          bitField0_ |= 0x00001000;
           endtime_ = other.endtime_;
           onChanged();
         }
@@ -30165,18 +30245,30 @@ public final class RewardTaskProto {
       private int level_ ;
       /**
        * <code>optional int32 level = 8;</code>
+       *
+       * <pre>
+       *当前层数
+       * </pre>
        */
       public boolean hasLevel() {
         return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional int32 level = 8;</code>
+       *
+       * <pre>
+       *当前层数
+       * </pre>
        */
       public int getLevel() {
         return level_;
       }
       /**
        * <code>optional int32 level = 8;</code>
+       *
+       * <pre>
+       *当前层数
+       * </pre>
        */
       public Builder setLevel(int value) {
         bitField0_ |= 0x00000100;
@@ -30186,10 +30278,63 @@ public final class RewardTaskProto {
       }
       /**
        * <code>optional int32 level = 8;</code>
+       *
+       * <pre>
+       *当前层数
+       * </pre>
        */
       public Builder clearLevel() {
         bitField0_ = (bitField0_ & ~0x00000100);
         level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 clearlevel = 14;
+      private int clearlevel_ ;
+      /**
+       * <code>optional int32 clearlevel = 14;</code>
+       *
+       * <pre>
+       *通关层数
+       * </pre>
+       */
+      public boolean hasClearlevel() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 clearlevel = 14;</code>
+       *
+       * <pre>
+       *通关层数
+       * </pre>
+       */
+      public int getClearlevel() {
+        return clearlevel_;
+      }
+      /**
+       * <code>optional int32 clearlevel = 14;</code>
+       *
+       * <pre>
+       *通关层数
+       * </pre>
+       */
+      public Builder setClearlevel(int value) {
+        bitField0_ |= 0x00000200;
+        clearlevel_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 clearlevel = 14;</code>
+       *
+       * <pre>
+       *通关层数
+       * </pre>
+       */
+      public Builder clearClearlevel() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        clearlevel_ = 0;
         onChanged();
         return this;
       }
@@ -30204,7 +30349,7 @@ public final class RewardTaskProto {
        * </pre>
        */
       public boolean hasMaxlevel() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional int32 maxlevel = 9;</code>
@@ -30224,7 +30369,7 @@ public final class RewardTaskProto {
        * </pre>
        */
       public Builder setMaxlevel(int value) {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         maxlevel_ = value;
         onChanged();
         return this;
@@ -30237,7 +30382,7 @@ public final class RewardTaskProto {
        * </pre>
        */
       public Builder clearMaxlevel() {
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         maxlevel_ = 0;
         onChanged();
         return this;
@@ -30249,7 +30394,7 @@ public final class RewardTaskProto {
        * <code>optional string starttime = 10;</code>
        */
       public boolean hasStarttime() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional string starttime = 10;</code>
@@ -30289,7 +30434,7 @@ public final class RewardTaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000800;
         starttime_ = value;
         onChanged();
         return this;
@@ -30298,7 +30443,7 @@ public final class RewardTaskProto {
        * <code>optional string starttime = 10;</code>
        */
       public Builder clearStarttime() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         starttime_ = getDefaultInstance().getStarttime();
         onChanged();
         return this;
@@ -30311,7 +30456,7 @@ public final class RewardTaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000400;
+  bitField0_ |= 0x00000800;
         starttime_ = value;
         onChanged();
         return this;
@@ -30323,7 +30468,7 @@ public final class RewardTaskProto {
        * <code>optional string endtime = 11;</code>
        */
       public boolean hasEndtime() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional string endtime = 11;</code>
@@ -30363,7 +30508,7 @@ public final class RewardTaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00001000;
         endtime_ = value;
         onChanged();
         return this;
@@ -30372,7 +30517,7 @@ public final class RewardTaskProto {
        * <code>optional string endtime = 11;</code>
        */
       public Builder clearEndtime() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         endtime_ = getDefaultInstance().getEndtime();
         onChanged();
         return this;
@@ -30385,7 +30530,7 @@ public final class RewardTaskProto {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000800;
+  bitField0_ |= 0x00001000;
         endtime_ = value;
         onChanged();
         return this;
@@ -43258,52 +43403,52 @@ public final class RewardTaskProto {
       "\0223\n\tuserTask3\030\003 \003(\0132 .com.trans.pixel.pr",
       "otoc.UserTask\"J\n\033RequestGetTaskRewardCom" +
       "mand\022\014\n\004type\030\001 \002(\005\022\r\n\005order\030\002 \001(\005\022\016\n\006her" +
-      "oid\030\003 \001(\005\"\206\002\n\004Raid\022\n\n\002id\030\001 \001(\005\0220\n\004cost\030\002" +
+      "oid\030\003 \001(\005\"\232\002\n\004Raid\022\n\n\002id\030\001 \001(\005\0220\n\004cost\030\002" +
       " \001(\0132\".com.trans.pixel.protoc.RewardInfo" +
       "\022\014\n\004name\030\004 \001(\t\022\021\n\tleftcount\030\014 \001(\005\022\r\n\005cou" +
       "nt\030\r \001(\005\022,\n\005event\030\005 \003(\0132\035.com.trans.pixe" +
       "l.protoc.Event\022\017\n\007eventid\030\006 \001(\005\022\014\n\004turn\030" +
-      "\007 \003(\005\022\r\n\005level\030\010 \001(\005\022\020\n\010maxlevel\030\t \001(\005\022\021" +
-      "\n\tstarttime\030\n \001(\t\022\017\n\007endtime\030\013 \001(\t\"6\n\010Ra" +
-      "idList\022*\n\004data\030\001 \003(\0132\034.com.trans.pixel.p",
-      "rotoc.Raid\"\024\n\022RequestRaidCommand\"3\n\026Requ" +
-      "estOpenRaidCommand\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030" +
-      "\002 \001(\005\"v\n\027RequestStartRaidCommand\022\n\n\002id\030\001" +
-      " \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(" +
-      "\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030" +
-      "\006 \001(\005\"A\n\023ResponseRaidCommand\022*\n\004raid\030\001 \003" +
-      "(\0132\034.com.trans.pixel.protoc.Raid\"0\n\rEven" +
-      "tProgress\022\017\n\007eventid\030\001 \001(\005\022\016\n\006status\030\002 \001" +
-      "(\005\"\302\002\n\010TeamRaid\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
-      "\t\022\021\n\tleftcount\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\0224\n\005e",
-      "vent\030\005 \003(\0132%.com.trans.pixel.protoc.Even" +
-      "tProgress\022\r\n\005level\030\010 \001(\005\022\016\n\006unlock\030\t \001(\005" +
-      "\022\017\n\007members\030\n \001(\005\0222\n\010roomInfo\030\013 \001(\0132 .co" +
-      "m.trans.pixel.protoc.RoomInfo\022\017\n\007endtime" +
-      "\030\014 \001(\003\022\r\n\005index\030\r \001(\r\0220\n\004cost\030\016 \001(\0132\".co" +
-      "m.trans.pixel.protoc.RewardInfo\022\016\n\006statu" +
-      "s\030\017 \001(\005\">\n\014TeamRaidList\022.\n\004data\030\001 \003(\0132 ." +
-      "com.trans.pixel.protoc.TeamRaid\"\030\n\026Reque" +
-      "stTeamRaidCommand\"7\n\032RequestOpenTeamRaid" +
-      "Command\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\".\n Re",
-      "questCreateTeamRaidRoomCommand\022\n\n\002id\030\001 \002" +
-      "(\r\"?\n\036RequestQuitTeamRaidRoomCommand\022\r\n\005" +
-      "index\030\001 \001(\r\022\016\n\006userId\030\002 \001(\004\"e\n\"RequestIn" +
-      "viteToTeamRaidRoomCommand\022\n\n\002id\030\001 \001(\r\022\016\n" +
-      "\006userId\030\002 \003(\004\022\024\n\014createUserId\030\003 \001(\004\022\r\n\005i" +
-      "ndex\030\004 \001(\r\"z\n\033RequestStartTeamRaidComman" +
-      "d\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(\t\022\021\n\tfight" +
-      "Info\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n" +
-      "\007eventid\030\006 \001(\005\">\n\037RequestGetTeamRaidRewa" +
-      "rdCommand\022\n\n\002id\030\001 \001(\005\022\017\n\007eventid\030\006 \001(\005\"I",
-      "\n\027ResponseTeamRaidCommand\022.\n\004raid\030\001 \003(\0132" +
-      " .com.trans.pixel.protoc.TeamRaid\"+\n\032Req" +
-      "uestTeamRaidRoomCommand\022\r\n\005index\030\001 \002(\r\"_" +
-      "\n(RequestTeamRaidRoomChangePositionComma" +
-      "nd\022\021\n\tposition1\030\001 \002(\r\022\021\n\tposition2\030\002 \002(\r" +
-      "\022\r\n\005index\030\003 \002(\r\"M\n\033ResponseTeamRaidRoomC" +
-      "ommand\022.\n\004room\030\001 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.UserRoom"
+      "\007 \003(\005\022\r\n\005level\030\010 \001(\005\022\022\n\nclearlevel\030\016 \001(\005" +
+      "\022\020\n\010maxlevel\030\t \001(\005\022\021\n\tstarttime\030\n \001(\t\022\017\n" +
+      "\007endtime\030\013 \001(\t\"6\n\010RaidList\022*\n\004data\030\001 \003(\013",
+      "2\034.com.trans.pixel.protoc.Raid\"\024\n\022Reques" +
+      "tRaidCommand\"3\n\026RequestOpenRaidCommand\022\n" +
+      "\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"v\n\027RequestStar" +
+      "tRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001" +
+      "(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\013\n\003r" +
+      "et\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\"A\n\023ResponseRai" +
+      "dCommand\022*\n\004raid\030\001 \003(\0132\034.com.trans.pixel" +
+      ".protoc.Raid\"0\n\rEventProgress\022\017\n\007eventid" +
+      "\030\001 \001(\005\022\016\n\006status\030\002 \001(\005\"\302\002\n\010TeamRaid\022\n\n\002i" +
+      "d\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tleftcount\030\003 \001(\005",
+      "\022\r\n\005count\030\004 \001(\005\0224\n\005event\030\005 \003(\0132%.com.tra" +
+      "ns.pixel.protoc.EventProgress\022\r\n\005level\030\010" +
+      " \001(\005\022\016\n\006unlock\030\t \001(\005\022\017\n\007members\030\n \001(\005\0222\n" +
+      "\010roomInfo\030\013 \001(\0132 .com.trans.pixel.protoc" +
+      ".RoomInfo\022\017\n\007endtime\030\014 \001(\003\022\r\n\005index\030\r \001(" +
+      "\r\0220\n\004cost\030\016 \001(\0132\".com.trans.pixel.protoc" +
+      ".RewardInfo\022\016\n\006status\030\017 \001(\005\">\n\014TeamRaidL" +
+      "ist\022.\n\004data\030\001 \003(\0132 .com.trans.pixel.prot" +
+      "oc.TeamRaid\"\030\n\026RequestTeamRaidCommand\"7\n" +
+      "\032RequestOpenTeamRaidCommand\022\n\n\002id\030\001 \001(\005\022",
+      "\r\n\005level\030\002 \001(\005\".\n RequestCreateTeamRaidR" +
+      "oomCommand\022\n\n\002id\030\001 \002(\r\"?\n\036RequestQuitTea" +
+      "mRaidRoomCommand\022\r\n\005index\030\001 \001(\r\022\016\n\006userI" +
+      "d\030\002 \001(\004\"e\n\"RequestInviteToTeamRaidRoomCo" +
+      "mmand\022\n\n\002id\030\001 \001(\r\022\016\n\006userId\030\002 \003(\004\022\024\n\014cre" +
+      "ateUserId\030\003 \001(\004\022\r\n\005index\030\004 \001(\r\"z\n\033Reques" +
+      "tStartTeamRaidCommand\022\n\n\002id\030\001 \001(\005\022\020\n\010tea" +
+      "mInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004" +
+      " \001(\005\022\013\n\003ret\030\005 \001(\010\022\017\n\007eventid\030\006 \001(\005\">\n\037Re" +
+      "questGetTeamRaidRewardCommand\022\n\n\002id\030\001 \001(",
+      "\005\022\017\n\007eventid\030\006 \001(\005\"I\n\027ResponseTeamRaidCo" +
+      "mmand\022.\n\004raid\030\001 \003(\0132 .com.trans.pixel.pr" +
+      "otoc.TeamRaid\"+\n\032RequestTeamRaidRoomComm" +
+      "and\022\r\n\005index\030\001 \002(\r\"_\n(RequestTeamRaidRoo" +
+      "mChangePositionCommand\022\021\n\tposition1\030\001 \002(" +
+      "\r\022\021\n\tposition2\030\002 \002(\r\022\r\n\005index\030\003 \002(\r\"M\n\033R" +
+      "esponseTeamRaidRoomCommand\022.\n\004room\030\001 \003(\013" +
+      "2 .com.trans.pixel.protoc.UserRoom"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43537,7 +43682,7 @@ public final class RewardTaskProto {
           internal_static_com_trans_pixel_protoc_Raid_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Raid_descriptor,
-              new java.lang.String[] { "Id", "Cost", "Name", "Leftcount", "Count", "Event", "Eventid", "Turn", "Level", "Maxlevel", "Starttime", "Endtime", });
+              new java.lang.String[] { "Id", "Cost", "Name", "Leftcount", "Count", "Event", "Eventid", "Turn", "Level", "Clearlevel", "Maxlevel", "Starttime", "Endtime", });
           internal_static_com_trans_pixel_protoc_RaidList_descriptor =
             getDescriptor().getMessageTypes().get(37);
           internal_static_com_trans_pixel_protoc_RaidList_fieldAccessorTable = new

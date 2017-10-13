@@ -37,6 +37,7 @@ import com.trans.pixel.protoc.UnionProto.RequestBosskillCommand;
 import com.trans.pixel.protoc.MailProto.RequestGetUserFriendListCommand;
 import com.trans.pixel.protoc.MailProto.RequestAddFriendCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
+import com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand;
 import com.trans.pixel.protoc.UnionProto.RequestUnionFightApplyCommand;
 import com.trans.pixel.protoc.EquipProto.RequestEquipStrenthenCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestQueryRechargeCommand;
@@ -282,6 +283,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestGetUserFriendListCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAddFriendCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestSubmitZhanliCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestUserDDCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionFightApplyCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestEquipStrenthenCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestQueryRechargeCommand cmd, Builder responseBuilder, UserBean user);
@@ -672,6 +674,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasSubmitZhanliCommand()) {
 			RequestSubmitZhanliCommand cmd = request.getSubmitZhanliCommand();
 			if (isFuncAvailable(responseBuilder, "SubmitZhanliCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasRequestUserDDCommand()) {
+			RequestUserDDCommand cmd = request.getRequestUserDDCommand();
+			if (isFuncAvailable(responseBuilder, "RequestUserDDCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUnionFightApplyCommand()) {
 			RequestUnionFightApplyCommand cmd = request.getUnionFightApplyCommand();

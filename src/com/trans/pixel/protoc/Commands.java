@@ -2431,6 +2431,20 @@ public final class Commands {
      * <code>optional .com.trans.pixel.protoc.ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;</code>
      */
     com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommandOrBuilder getLootRewardTaskCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    boolean hasUserDDCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand getUserDDCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder getUserDDCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.ResponseCommand}
@@ -3211,6 +3225,19 @@ public final class Commands {
                 lootRewardTaskCommand_ = subBuilder.buildPartial();
               }
               bitField2_ |= 0x00100000;
+              break;
+            }
+            case 586: {
+              com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder subBuilder = null;
+              if (((bitField2_ & 0x00200000) == 0x00200000)) {
+                subBuilder = userDDCommand_.toBuilder();
+              }
+              userDDCommand_ = input.readMessage(com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(userDDCommand_);
+                userDDCommand_ = subBuilder.buildPartial();
+              }
+              bitField2_ |= 0x00200000;
               break;
             }
             case 810: {
@@ -5514,6 +5541,28 @@ public final class Commands {
       return lootRewardTaskCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;
+    public static final int USERDDCOMMAND_FIELD_NUMBER = 73;
+    private com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand userDDCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    public boolean hasUserDDCommand() {
+      return ((bitField2_ & 0x00200000) == 0x00200000);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand getUserDDCommand() {
+      return userDDCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder getUserDDCommandOrBuilder() {
+      return userDDCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.ServerProto.HeadInfo.getDefaultInstance();
       title_ = com.trans.pixel.protoc.ServerProto.ServerTitleInfo.getDefaultInstance();
@@ -5600,6 +5649,7 @@ public final class Commands {
       recommandCommand_ = com.trans.pixel.protoc.UserInfoProto.ResponseRecommandCommand.getDefaultInstance();
       unionFightApplyRecordCommand_ = com.trans.pixel.protoc.UnionProto.ResponseUnionFightApplyRecordCommand.getDefaultInstance();
       lootRewardTaskCommand_ = com.trans.pixel.protoc.RewardTaskProto.ResponseLootRewardTaskCommand.getDefaultInstance();
+      userDDCommand_ = com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6143,6 +6193,9 @@ public final class Commands {
       if (((bitField2_ & 0x00100000) == 0x00100000)) {
         output.writeMessage(72, lootRewardTaskCommand_);
       }
+      if (((bitField2_ & 0x00200000) == 0x00200000)) {
+        output.writeMessage(73, userDDCommand_);
+      }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(101, rewardCommand_);
       }
@@ -6463,6 +6516,10 @@ public final class Commands {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(72, lootRewardTaskCommand_);
       }
+      if (((bitField2_ & 0x00200000) == 0x00200000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(73, userDDCommand_);
+      }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(101, rewardCommand_);
@@ -6772,6 +6829,7 @@ public final class Commands {
           getRecommandCommandFieldBuilder();
           getUnionFightApplyRecordCommandFieldBuilder();
           getLootRewardTaskCommandFieldBuilder();
+          getUserDDCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -7290,6 +7348,12 @@ public final class Commands {
           lootRewardTaskCommandBuilder_.clear();
         }
         bitField2_ = (bitField2_ & ~0x00100000);
+        if (userDDCommandBuilder_ == null) {
+          userDDCommand_ = com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.getDefaultInstance();
+        } else {
+          userDDCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00200000);
         return this;
       }
 
@@ -8002,6 +8066,14 @@ public final class Commands {
         } else {
           result.lootRewardTaskCommand_ = lootRewardTaskCommandBuilder_.build();
         }
+        if (((from_bitField2_ & 0x00200000) == 0x00200000)) {
+          to_bitField2_ |= 0x00200000;
+        }
+        if (userDDCommandBuilder_ == null) {
+          result.userDDCommand_ = userDDCommand_;
+        } else {
+          result.userDDCommand_ = userDDCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -8274,6 +8346,9 @@ public final class Commands {
         }
         if (other.hasLootRewardTaskCommand()) {
           mergeLootRewardTaskCommand(other.getLootRewardTaskCommand());
+        }
+        if (other.hasUserDDCommand()) {
+          mergeUserDDCommand(other.getUserDDCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -18647,6 +18722,123 @@ public final class Commands {
         return lootRewardTaskCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;
+      private com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand userDDCommand_ = com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder> userDDCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public boolean hasUserDDCommand() {
+        return ((bitField2_ & 0x00200000) == 0x00200000);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand getUserDDCommand() {
+        if (userDDCommandBuilder_ == null) {
+          return userDDCommand_;
+        } else {
+          return userDDCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public Builder setUserDDCommand(com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand value) {
+        if (userDDCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          userDDCommand_ = value;
+          onChanged();
+        } else {
+          userDDCommandBuilder_.setMessage(value);
+        }
+        bitField2_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public Builder setUserDDCommand(
+          com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder builderForValue) {
+        if (userDDCommandBuilder_ == null) {
+          userDDCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          userDDCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField2_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public Builder mergeUserDDCommand(com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand value) {
+        if (userDDCommandBuilder_ == null) {
+          if (((bitField2_ & 0x00200000) == 0x00200000) &&
+              userDDCommand_ != com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.getDefaultInstance()) {
+            userDDCommand_ =
+              com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.newBuilder(userDDCommand_).mergeFrom(value).buildPartial();
+          } else {
+            userDDCommand_ = value;
+          }
+          onChanged();
+        } else {
+          userDDCommandBuilder_.mergeFrom(value);
+        }
+        bitField2_ |= 0x00200000;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public Builder clearUserDDCommand() {
+        if (userDDCommandBuilder_ == null) {
+          userDDCommand_ = com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          userDDCommandBuilder_.clear();
+        }
+        bitField2_ = (bitField2_ & ~0x00200000);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder getUserDDCommandBuilder() {
+        bitField2_ |= 0x00200000;
+        onChanged();
+        return getUserDDCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder getUserDDCommandOrBuilder() {
+        if (userDDCommandBuilder_ != null) {
+          return userDDCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return userDDCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.ResponseUserDDCommand userDDCommand = 73;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder> 
+          getUserDDCommandFieldBuilder() {
+        if (userDDCommandBuilder_ == null) {
+          userDDCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommandOrBuilder>(
+                  userDDCommand_,
+                  getParentForChildren(),
+                  isClean());
+          userDDCommand_ = null;
+        }
+        return userDDCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseCommand)
     }
 
@@ -18693,7 +18885,7 @@ public final class Commands {
       "to\032\025RewardTaskProto.proto\"-\n\014ErrorComman" +
       "d\022\014\n\004code\030\001 \002(\t\022\017\n\007message\030\002 \002(\t\"3\n\026Resp",
       "onseMessageCommand\022\014\n\004code\030\001 \002(\005\022\013\n\003msg\030" +
-      "\002 \002(\t\"\2574\n\017ResponseCommand\022.\n\004head\030\001 \002(\0132" +
+      "\002 \002(\t\"\3654\n\017ResponseCommand\022.\n\004head\030\001 \002(\0132" +
       " .com.trans.pixel.protoc.HeadInfo\0227\n\005tit" +
       "le\030\221N \001(\0132\'.com.trans.pixel.protoc.Serve" +
       "rTitleInfo\022:\n\014errorCommand\030\002 \001(\0132$.com.t" +
@@ -18860,7 +19052,9 @@ public final class Commands {
       "\001(\0132<.com.trans.pixel.protoc.ResponseUni" +
       "onFightApplyRecordCommand\022T\n\025lootRewardT" +
       "askCommand\030H \001(\01325.com.trans.pixel.proto" +
-      "c.ResponseLootRewardTaskCommand"
+      "c.ResponseLootRewardTaskCommand\022D\n\ruserD" +
+      "DCommand\030I \001(\0132-.com.trans.pixel.protoc.",
+      "ResponseUserDDCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18884,7 +19078,7 @@ public final class Commands {
           internal_static_com_trans_pixel_protoc_ResponseCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseCommand_descriptor,
-              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "TeamRaidCommand", "EventCommand", "CanRechargeCommand", "TeamRaidRoomCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", "UnionFightApplyRecordCommand", "LootRewardTaskCommand", });
+              new java.lang.String[] { "Head", "Title", "ErrorCommand", "RewardCommand", "ExtraRewardCommand", "DailyShopCommand", "ShopCommand", "BlackShopCommand", "UnionShopCommand", "PVPShopCommand", "RaidShopCommand", "ExpeditionShopCommand", "LadderShopCommand", "LibaoShopCommand", "FirstRechargeStatusCommand", "PurchaseCoinCommand", "TeamCommand", "PvpMapListCommand", "PvpInbreakListCommand", "AreaEquipCommand", "PvpMineInfoCommand", "FightInfoCommand", "RaidCommand", "TeamRaidCommand", "EventCommand", "CanRechargeCommand", "TeamRaidRoomCommand", "NeedRegisterCommand", "UserInfoCommand", "EventResultCommand", "LevelLootCommand", "HeroResultCommand", "GetUserHeroCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "SendRewardCommand", "MessageCommand", "GetUserFriendListCommand", "UserEquipCommand", "AreaCommand", "AreaResourceCommand", "ResourceMineInfoCommand", "UnionInfoCommand", "UnionListCommand", "MessageBoardListCommand", "MessageBoardCommand", "UserTeamListCommand", "LadderUserInfoCommand", "EquipComposeCommand", "UserPropCommand", "UsePropCommand", "SignCommand", "MohuaUserDataCommand", "AchieveListCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "EquipResultCommand", "DeleteHeroCommand", "UserHeadCommand", "NoticeCommand", "UserFoodCommand", "ClearInfoCommand", "BosskillCommand", "UnionBossCommand", "IsAreaOwnerCommand", "UserTaskCommand", "UserBattletowerCommand", "BattletowerShopCommand", "BossRoomRecordCommand", "UserTalentCommand", "EquipPokedeCommand", "UserRewardTaskCommand", "UserRewardTaskRoomCommand", "OtherUserInfoCommand", "EnemyLadderCommand", "UserLadderCommand", "RecommandCommand", "UnionFightApplyRecordCommand", "LootRewardTaskCommand", "UserDDCommand", });
           return null;
         }
       };

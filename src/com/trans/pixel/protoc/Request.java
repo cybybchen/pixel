@@ -3228,6 +3228,20 @@ public final class Request {
      * <code>optional .com.trans.pixel.protoc.RequestEquipPokedeDisplayCommand equipPokedeDisplayCommand = 274;</code>
      */
     com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommandOrBuilder getEquipPokedeDisplayCommandOrBuilder();
+
+    // optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    boolean hasRequestUserDDCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand getRequestUserDDCommand();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder getRequestUserDDCommandOrBuilder();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestCommand}
@@ -6266,6 +6280,19 @@ public final class Request {
                 equipPokedeDisplayCommand_ = subBuilder.buildPartial();
               }
               bitField7_ |= 0x00000010;
+              break;
+            }
+            case 2202: {
+              com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder subBuilder = null;
+              if (((bitField7_ & 0x00000020) == 0x00000020)) {
+                subBuilder = requestUserDDCommand_.toBuilder();
+              }
+              requestUserDDCommand_ = input.readMessage(com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(requestUserDDCommand_);
+                requestUserDDCommand_ = subBuilder.buildPartial();
+              }
+              bitField7_ |= 0x00000020;
               break;
             }
           }
@@ -11365,6 +11392,28 @@ public final class Request {
       return equipPokedeDisplayCommand_;
     }
 
+    // optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;
+    public static final int REQUESTUSERDDCOMMAND_FIELD_NUMBER = 275;
+    private com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand requestUserDDCommand_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    public boolean hasRequestUserDDCommand() {
+      return ((bitField7_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand getRequestUserDDCommand() {
+      return requestUserDDCommand_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+     */
+    public com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder getRequestUserDDCommandOrBuilder() {
+      return requestUserDDCommand_;
+    }
+
     private void initFields() {
       head_ = com.trans.pixel.protoc.ServerProto.HeadInfo.getDefaultInstance();
       registerCommand_ = com.trans.pixel.protoc.UserInfoProto.RequestRegisterCommand.getDefaultInstance();
@@ -11595,6 +11644,7 @@ public final class Request {
       heroFoodComposeCommand_ = com.trans.pixel.protoc.EquipProto.RequestHeroFoodComposeCommand.getDefaultInstance();
       queryFightInfoCommand_ = com.trans.pixel.protoc.LadderProto.RequestQueryFightInfoCommand.getDefaultInstance();
       equipPokedeDisplayCommand_ = com.trans.pixel.protoc.EquipProto.RequestEquipPokedeDisplayCommand.getDefaultInstance();
+      requestUserDDCommand_ = com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13035,6 +13085,9 @@ public final class Request {
       if (((bitField7_ & 0x00000010) == 0x00000010)) {
         output.writeMessage(274, equipPokedeDisplayCommand_);
       }
+      if (((bitField7_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(275, requestUserDDCommand_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -13960,6 +14013,10 @@ public final class Request {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(274, equipPokedeDisplayCommand_);
       }
+      if (((bitField7_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(275, requestUserDDCommand_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -14301,6 +14358,7 @@ public final class Request {
           getHeroFoodComposeCommandFieldBuilder();
           getQueryFightInfoCommandFieldBuilder();
           getEquipPokedeDisplayCommandFieldBuilder();
+          getRequestUserDDCommandFieldBuilder();
         }
       }
       private static Builder create() {
@@ -15683,6 +15741,12 @@ public final class Request {
           equipPokedeDisplayCommandBuilder_.clear();
         }
         bitField7_ = (bitField7_ & ~0x00000010);
+        if (requestUserDDCommandBuilder_ == null) {
+          requestUserDDCommand_ = com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.getDefaultInstance();
+        } else {
+          requestUserDDCommandBuilder_.clear();
+        }
+        bitField7_ = (bitField7_ & ~0x00000020);
         return this;
       }
 
@@ -17557,6 +17621,14 @@ public final class Request {
         } else {
           result.equipPokedeDisplayCommand_ = equipPokedeDisplayCommandBuilder_.build();
         }
+        if (((from_bitField7_ & 0x00000020) == 0x00000020)) {
+          to_bitField7_ |= 0x00000020;
+        }
+        if (requestUserDDCommandBuilder_ == null) {
+          result.requestUserDDCommand_ = requestUserDDCommand_;
+        } else {
+          result.requestUserDDCommand_ = requestUserDDCommandBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         result.bitField2_ = to_bitField2_;
@@ -18266,6 +18338,9 @@ public final class Request {
         }
         if (other.hasEquipPokedeDisplayCommand()) {
           mergeEquipPokedeDisplayCommand(other.getEquipPokedeDisplayCommand());
+        }
+        if (other.hasRequestUserDDCommand()) {
+          mergeRequestUserDDCommand(other.getRequestUserDDCommand());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -45870,6 +45945,123 @@ public final class Request {
         return equipPokedeDisplayCommandBuilder_;
       }
 
+      // optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;
+      private com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand requestUserDDCommand_ = com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder> requestUserDDCommandBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public boolean hasRequestUserDDCommand() {
+        return ((bitField7_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand getRequestUserDDCommand() {
+        if (requestUserDDCommandBuilder_ == null) {
+          return requestUserDDCommand_;
+        } else {
+          return requestUserDDCommandBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public Builder setRequestUserDDCommand(com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand value) {
+        if (requestUserDDCommandBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          requestUserDDCommand_ = value;
+          onChanged();
+        } else {
+          requestUserDDCommandBuilder_.setMessage(value);
+        }
+        bitField7_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public Builder setRequestUserDDCommand(
+          com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder builderForValue) {
+        if (requestUserDDCommandBuilder_ == null) {
+          requestUserDDCommand_ = builderForValue.build();
+          onChanged();
+        } else {
+          requestUserDDCommandBuilder_.setMessage(builderForValue.build());
+        }
+        bitField7_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public Builder mergeRequestUserDDCommand(com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand value) {
+        if (requestUserDDCommandBuilder_ == null) {
+          if (((bitField7_ & 0x00000020) == 0x00000020) &&
+              requestUserDDCommand_ != com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.getDefaultInstance()) {
+            requestUserDDCommand_ =
+              com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.newBuilder(requestUserDDCommand_).mergeFrom(value).buildPartial();
+          } else {
+            requestUserDDCommand_ = value;
+          }
+          onChanged();
+        } else {
+          requestUserDDCommandBuilder_.mergeFrom(value);
+        }
+        bitField7_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public Builder clearRequestUserDDCommand() {
+        if (requestUserDDCommandBuilder_ == null) {
+          requestUserDDCommand_ = com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.getDefaultInstance();
+          onChanged();
+        } else {
+          requestUserDDCommandBuilder_.clear();
+        }
+        bitField7_ = (bitField7_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder getRequestUserDDCommandBuilder() {
+        bitField7_ |= 0x00000020;
+        onChanged();
+        return getRequestUserDDCommandFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      public com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder getRequestUserDDCommandOrBuilder() {
+        if (requestUserDDCommandBuilder_ != null) {
+          return requestUserDDCommandBuilder_.getMessageOrBuilder();
+        } else {
+          return requestUserDDCommand_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RequestUserDDCommand requestUserDDCommand = 275;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder> 
+          getRequestUserDDCommandFieldBuilder() {
+        if (requestUserDDCommandBuilder_ == null) {
+          requestUserDDCommandBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand.Builder, com.trans.pixel.protoc.ExtraProto.RequestUserDDCommandOrBuilder>(
+                  requestUserDDCommand_,
+                  getParentForChildren(),
+                  isClean());
+          requestUserDDCommand_ = null;
+        }
+        return requestUserDDCommandBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestCommand)
     }
 
@@ -45903,7 +46095,7 @@ public final class Request {
       ".proto\032\023ActivityProto.proto\032\021LadderProto" +
       ".proto\032\021ServerProto.proto\032\023UserInfoProto" +
       ".proto\032\017MailProto.proto\032\020UnionProto.prot" +
-      "o\032\025RewardTaskProto.proto\"\362\224\001\n\016RequestCom" +
+      "o\032\025RewardTaskProto.proto\"\277\225\001\n\016RequestCom" +
       "mand\022.\n\004head\030\001 \002(\0132 .com.trans.pixel.pro",
       "toc.HeadInfo\022G\n\017registerCommand\030\002 \001(\0132.." +
       "com.trans.pixel.protoc.RequestRegisterCo" +
@@ -46380,7 +46572,9 @@ public final class Request {
       "toc.RequestQueryFightInfoCommand\022\\\n\031equi" +
       "pPokedeDisplayCommand\030\222\002 \001(\01328.com.trans" +
       ".pixel.protoc.RequestEquipPokedeDisplayC" +
-      "ommand"
+      "ommand\022K\n\024requestUserDDCommand\030\223\002 \001(\0132,." +
+      "com.trans.pixel.protoc.RequestUserDDComm" +
+      "and"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -46392,7 +46586,7 @@ public final class Request {
           internal_static_com_trans_pixel_protoc_RequestCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCommand_descriptor,
-              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "TakeUnionLeaderCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "StartRaidCommand", "CanRechargeCommand", "AttackMowuCommand", "OpenTeamRaidCommand", "TeamRaidCommand", "StartTeamRaidCommand", "CreateTeamRaidRoomCommand", "QuitTeamRaidRoomCommand", "InviteToTeamRaidRoomCommand", "TeamRaidRoomChangePositionCommand", "TeamRaidRoomCommand", "GetTeamRaidRewardCommand", "LootRaidRewardTaskCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ChaijieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", "UserTeamCommand", "SpecialTalentChangeUseCommand", "HeroFoodComposeCommand", "QueryFightInfoCommand", "EquipPokedeDisplayCommand", });
+              new java.lang.String[] { "Head", "RegisterCommand", "LoginCommand", "EventResultCommand", "EventCommand", "UpdateTeamCommand", "LevelStartCommand", "LevelLootResultCommand", "HeroLevelUpCommand", "HeroLevelUpToCommand", "LockHeroCommand", "AddHeroEquipCommand", "LotteryCommand", "GetLadderRankListCommand", "GetUserLadderRankListCommand", "AttackLadderModeCommand", "GetUserMailListCommand", "ReadMailCommand", "DeleteMailCommand", "AddFriendCommand", "ReceiveFriendCommand", "AreaCommand", "RefreshAreaCommand", "UseAreaEquipCommand", "AreaResourceCommand", "UnlockAreaCommand", "AttackMonsterCommand", "AttackBossCommand", "AttackResourceCommand", "AttackResourceMineCommand", "AttackResourceMineInfoCommand", "CollectResourceMineCommand", "QuitUnionCommand", "UnionInfoCommand", "UnionListCommand", "SearchUnionCommand", "CreateUnionCommand", "ApplyUnionCommand", "ReplyUnionCommand", "HandleUnionCommand", "TakeUnionLeaderCommand", "UpgradeUnionCommand", "AttackUnionCommand", "DefendUnionCommand", "UnionAnnounceCommand", "DailyShopCommand", "DailyShopPurchaseCommand", "DailyShopRefreshCommand", "ShopCommand", "ShopPurchaseCommand", "BlackShopCommand", "BlackShopPurchaseCommand", "BlackShopRefreshCommand", "UnionShopCommand", "UnionShopPurchaseCommand", "UnionShopRefreshCommand", "PVPShopCommand", "PVPShopPurchaseCommand", "PVPShopRefreshCommand", "RaidShopCommand", "RaidShopPurchaseCommand", "RaidShopRefreshCommand", "ExpeditionShopCommand", "ExpeditionShopPurchaseCommand", "ExpeditionShopRefreshCommand", "LadderShopCommand", "LadderShopPurchaseCommand", "LadderShopRefreshCommand", "LibaoShopCommand", "PurchaseCoinCommand", "TeamCommand", "RefreshPvpMapCommand", "PvpMapListCommand", "PvpInbreakListCommand", "UnlockPvpMapCommand", "AttackPVPMonsterCommand", "PvpMineInfoCommand", "AttackPVPMineCommand", "RefreshPVPMineCommand", "CdkeyCommand", "CheatrechargeCommand", "PurchaseVipLibaoCommand", "GetGrowJewelCommand", "GetGrowExpCommand", "PurchaseLadderTimeCommand", "PurchaseContractCommand", "FightInfoCommand", "GetFightInfoCommand", "OpenRaidCommand", "RaidCommand", "StartRaidCommand", "CanRechargeCommand", "AttackMowuCommand", "OpenTeamRaidCommand", "TeamRaidCommand", "StartTeamRaidCommand", "CreateTeamRaidRoomCommand", "QuitTeamRaidRoomCommand", "InviteToTeamRaidRoomCommand", "TeamRaidRoomChangePositionCommand", "TeamRaidRoomCommand", "GetTeamRaidRewardCommand", "LootRaidRewardTaskCommand", "MessageBoardListCommand", "CreateMessageBoardCommand", "ReplyMessageCommand", "UserTeamListCommand", "LadderUserInfoCommand", "UserFriendListCommand", "EquipComposeCommand", "UsePropCommand", "FenjieEquipCommand", "SignCommand", "HelpAttackPVPMineCommand", "FenjieHeroCommand", "ChaijieHeroCommand", "ResetHeroSkillCommand", "HeroSpUpCommand", "SendMailCommand", "BrotherMineInfoCommand", "EnterMohuaMapCommand", "StartMohuaMapCommand", "UseMohuaCardCommand", "MohuaStageRewardCommand", "MohuaHpRewardCommand", "MohuaSubmitStageCommand", "EndMohuaMapCommand", "SaleEquipCommand", "DelFriendCommand", "SubmitZhanliCommand", "AchieveRewardCommand", "AchieveListCommand", "RichangRewardCommand", "RichangListCommand", "Kaifu2ActivityCommand", "KaifuRewardCommand", "KaifuListCommand", "UserPokedeCommand", "RankCommand", "BuyHeroPackageCommand", "SubmitComposeSkillCommand", "SubmitIconCommand", "ReadyAttackLadderCommand", "BindAccountCommand", "QueryRechargeCommand", "ShouchongRewardCommand", "HeartBeatCommand", "GreenhandCommand", "LogCommand", "FeedFoodCommand", "ClearHeroCommand", "ChoseClearInfoCommand", "SubmitBosskillCommand", "BosskillCommand", "UnionBossFightCommand", "HeroStrengthenCommand", "SevenLoginSignCommand", "IsAreaOwnerCommand", "OpenFetterCommand", "UserTaskCommand", "GetTaskRewardCommand", "SubmitBattletowerCommand", "ResetBattletowerCommand", "GetBattletowerCommand", "BattletowerShopCommand", "BattletowerShopPurchaseCommand", "BattletowerShopRefreshCommand", "BloodEnterCommand", "BloodXiazhuCommand", "QueryNoticeBoardCommand", "HelpLevelCommand", "InviteFightBossCommand", "QuitFightBossCommand", "SubmitBossScoreCommand", "UserInfoCommand", "RechargeCommand", "TalentupgradeCommand", "TalentChangeUseCommand", "TalentChangeSkillCommand", "StartBossRoomCommand", "CreateBossRoomCommand", "BossRoomInfoCommand", "EquipStrenthenCommand", "EquipPokedeCommand", "TalentChangeEquipCommand", "ZanHeroMessageBoardCommand", "CreateRewardTaskRoomCommand", "QuitRewardTaskRoomCommand", "InviteToRewardTaskRoomCommand", "SubmitRewardTaskScoreCommand", "UserRewardTaskCommand", "RewardTaskRewardCommand", "UserRewardTaskRoomCommand", "SynthetiseComposeCommand", "GiveupRewardTaskCommand", "ExtraRewardCommand", "EventBuyCommand", "LadderInfoCommand", "RefreshLadderEnemyCommand", "SubmitLadderResultCommand", "LadderTaskRewardCommand", "LadderSeasonRewardCommand", "LadderEnemyCommand", "BuySavingBoxCommand", "EquipupCommand", "MaterialComposeCommand", "UseMaterialCommand", "ChangePositionCommand", "TalentSpUpCommand", "TalentSkillLevelupCommand", "TalentResetSkillCommand", "BindRecommandCommand", "RecommandCommand", "ChangeUserNameCommand", "CipherRewardCommand", "EventQuickFightCommand", "SignNameCommand", "SubmitRiteCommand", "RemoveRecommandCommand", "SaveFightInfoCommand", "UnionFightApplyCommand", "LootRewardTaskCommand", "UnionFightCommand", "ViewUnionFightFightInfoCommand", "UserTeamCommand", "SpecialTalentChangeUseCommand", "HeroFoodComposeCommand", "QueryFightInfoCommand", "EquipPokedeDisplayCommand", "RequestUserDDCommand", });
           return null;
         }
       };

@@ -42,6 +42,7 @@ import com.trans.pixel.protoc.EquipProto.RequestSubmitZhanliCommand;
 import com.trans.pixel.protoc.EquipProto.RequestSynthetiseComposeCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUseMaterialCommand;
 import com.trans.pixel.protoc.EquipProto.RequestUsePropCommand;
+import com.trans.pixel.protoc.ExtraProto.RequestUserDDCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChaijieHeroCommand;
 import com.trans.pixel.protoc.HeroProto.RequestChoseClearInfoCommand;
@@ -1735,6 +1736,13 @@ public class GameDataScreen extends RequestScreen {
 	@Override
 	protected boolean handleCommand(RequestLootRaidRewardTaskCommand cmd, Builder responseBuilder, UserBean user) {
 		lootRewardTaskCommandService.lootRaidRewardTask(cmd, responseBuilder, user);
+		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestUserDDCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		userCommandService.dingdingInfo(cmd, responseBuilder, user);
 		return true;
 	}
 }

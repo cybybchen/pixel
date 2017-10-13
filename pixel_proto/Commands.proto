@@ -65,13 +65,6 @@ message UserInfo {
 	optional uint32 vipExp = 76;
 	optional int32 merlevel = 77;
 	optional uint32 useTalentId = 78;
-	optional int64 extraTimeStamp = 79;
-	optional uint32 extraCount1 = 80;
-	optional uint32 extraCount2 = 81;
-	optional uint32 extraCount3 = 82;
-	optional int64 extraHasLootTime = 83;
-	optional uint32 extraType = 84;
-	optional int64 extraLastTimeStamp = 85;
 	optional uint32 userType = 86;//0:普通， 1:非R， 2：小R  3，中R， 4：大R
 	optional uint32 goldSavingBox = 87;
 	optional uint32 expSavingBox = 88;
@@ -89,6 +82,19 @@ message UserInfo {
 	optional uint32 lotteryExpCount = 100;
 	optional uint32 mohe = 101;
 	optional uint32 heilong = 102;
+}
+
+message UserDD {
+	optional uint64 extraTimeStamp = 1;//当次dingding结束所需时间
+	optional uint64 extraHasLootTime = 5;//暂时用不到，该次dingding已经过的时间
+	optional uint32 extraType = 6;//暂时用不到
+	optional uint64 extraLastTimeStamp = 7;//暂时用不到，上次dingding结束的时间
+	optional uint32 ddDaily = 8;//当天dingding次数
+        optional uint32 ddWeekly = 9;//当周dingding次数
+        optional uint32 ddMonthly = 10;//当月dingding次数
+        optional uint32 ddTotal = 11;//总的dingding次数
+        optional uint32 ddExtraItemId = 12;//dingding之前选择的道具
+	optional uint32 limit = 13;//限定奖励已领取次数
 }
 
 message JewelPool {
@@ -639,6 +645,33 @@ message Fenjie {
 }
 message FenjieList {
 	repeated Fenjie data = 1;
+}
+
+message Dingding {
+	required uint32 itemId = 1;
+	repeated RewardInfo reward = 2;
+}
+
+message DingdingList {
+	repeated Dingding data = 1;
+}
+
+message FanqieLoot {
+	required uint32 limit = 1;
+	required RewardInfo reward = 2;
+}
+
+message Fanqie {
+	required uint32 order = 1;
+	repeated FanqieLoot loot = 2;
+}
+
+message RequestUserDDCommand {
+
+}
+
+message ResponseUserDDCommand {
+	optional UserDD userdd = 1;
 }
 ////////// HeroProto
 message UserHero {
@@ -2380,6 +2413,7 @@ enum ACTIVITY_TYPE{
 	TYPE_FUBEN_KILL_BOSS = 210;
 	TYPE_DAILY_ALL = 211;
 	TYPE_QUERY_FIGHTINFO = 212;
+	TYPE_COMPLETE_DINGDING = 213;
 	TYPE_LADDER_RANK = 41;
 	TYPE_ZHANLI_RANK = 42;
 }
@@ -3048,6 +3082,7 @@ message RequestUserInfoCommand {
 message RequestExtraRewardCommand {
 	required uint32 status = 1;//1：start 2:end 3:pause 4:continue 5:giveup
 	optional uint32 extraType = 2; //1,2,3
+	optional uint32 extraItemId = 3;
 }
 
 message RequestLoginCommand {
@@ -3933,7 +3968,8 @@ message Raid {
 	repeated Event event = 5;
 	optional int32 eventid = 6;
 	repeated int32 turn = 7;
-	optional int32 level = 8;
+        optional int32 level = 8;//当前层数
+        optional int32 clearlevel = 14;//通关层数
 	optional int32 maxlevel = 9;//可选的最大层数
 	optional string starttime = 10;
 	optional string endtime = 11;
@@ -4261,6 +4297,7 @@ message RequestCommand {
 	optional RequestHeroFoodComposeCommand heroFoodComposeCommand = 272;
 	optional RequestQueryFightInfoCommand queryFightInfoCommand = 273;
 	optional RequestEquipPokedeDisplayCommand equipPokedeDisplayCommand = 274;
+	optional RequestUserDDCommand requestUserDDCommand = 275;
 }
 ////////// Commands
 message ErrorCommand {
@@ -4359,6 +4396,7 @@ message ResponseCommand {
 	optional ResponseRecommandCommand recommandCommand = 70;
 	optional ResponseUnionFightApplyRecordCommand unionFightApplyRecordCommand = 71;
 	optional ResponseLootRewardTaskCommand lootRewardTaskCommand = 72;
+	optional ResponseUserDDCommand userDDCommand = 73;
 }
 
 ////////// End

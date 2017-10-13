@@ -1289,6 +1289,13 @@ public class ActivityService {
 	}
 	
 	/**
+	 * 完成dingding的活动
+	 */
+	public void completeDingding(UserBean user) {
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_COMPLETE_DINGDING_VALUE);
+	}
+	
+	/**
 	 * activity and achieve log
 	 */
 	public void sendLog(long userId, int serverId, int type, int id, int step) {

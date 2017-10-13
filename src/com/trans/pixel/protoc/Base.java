@@ -1050,76 +1050,6 @@ public final class Base {
      */
     int getUseTalentId();
 
-    // optional int64 extraTimeStamp = 79;
-    /**
-     * <code>optional int64 extraTimeStamp = 79;</code>
-     */
-    boolean hasExtraTimeStamp();
-    /**
-     * <code>optional int64 extraTimeStamp = 79;</code>
-     */
-    long getExtraTimeStamp();
-
-    // optional uint32 extraCount1 = 80;
-    /**
-     * <code>optional uint32 extraCount1 = 80;</code>
-     */
-    boolean hasExtraCount1();
-    /**
-     * <code>optional uint32 extraCount1 = 80;</code>
-     */
-    int getExtraCount1();
-
-    // optional uint32 extraCount2 = 81;
-    /**
-     * <code>optional uint32 extraCount2 = 81;</code>
-     */
-    boolean hasExtraCount2();
-    /**
-     * <code>optional uint32 extraCount2 = 81;</code>
-     */
-    int getExtraCount2();
-
-    // optional uint32 extraCount3 = 82;
-    /**
-     * <code>optional uint32 extraCount3 = 82;</code>
-     */
-    boolean hasExtraCount3();
-    /**
-     * <code>optional uint32 extraCount3 = 82;</code>
-     */
-    int getExtraCount3();
-
-    // optional int64 extraHasLootTime = 83;
-    /**
-     * <code>optional int64 extraHasLootTime = 83;</code>
-     */
-    boolean hasExtraHasLootTime();
-    /**
-     * <code>optional int64 extraHasLootTime = 83;</code>
-     */
-    long getExtraHasLootTime();
-
-    // optional uint32 extraType = 84;
-    /**
-     * <code>optional uint32 extraType = 84;</code>
-     */
-    boolean hasExtraType();
-    /**
-     * <code>optional uint32 extraType = 84;</code>
-     */
-    int getExtraType();
-
-    // optional int64 extraLastTimeStamp = 85;
-    /**
-     * <code>optional int64 extraLastTimeStamp = 85;</code>
-     */
-    boolean hasExtraLastTimeStamp();
-    /**
-     * <code>optional int64 extraLastTimeStamp = 85;</code>
-     */
-    long getExtraLastTimeStamp();
-
     // optional uint32 userType = 86;
     /**
      * <code>optional uint32 userType = 86;</code>
@@ -1718,123 +1648,88 @@ public final class Base {
               useTalentId_ = input.readUInt32();
               break;
             }
-            case 632: {
-              bitField1_ |= 0x10000000;
-              extraTimeStamp_ = input.readInt64();
-              break;
-            }
-            case 640: {
-              bitField1_ |= 0x20000000;
-              extraCount1_ = input.readUInt32();
-              break;
-            }
-            case 648: {
-              bitField1_ |= 0x40000000;
-              extraCount2_ = input.readUInt32();
-              break;
-            }
-            case 656: {
-              bitField1_ |= 0x80000000;
-              extraCount3_ = input.readUInt32();
-              break;
-            }
-            case 664: {
-              bitField2_ |= 0x00000001;
-              extraHasLootTime_ = input.readInt64();
-              break;
-            }
-            case 672: {
-              bitField2_ |= 0x00000002;
-              extraType_ = input.readUInt32();
-              break;
-            }
-            case 680: {
-              bitField2_ |= 0x00000004;
-              extraLastTimeStamp_ = input.readInt64();
-              break;
-            }
             case 688: {
-              bitField2_ |= 0x00000008;
+              bitField1_ |= 0x10000000;
               userType_ = input.readUInt32();
               break;
             }
             case 696: {
-              bitField2_ |= 0x00000010;
+              bitField1_ |= 0x20000000;
               goldSavingBox_ = input.readUInt32();
               break;
             }
             case 704: {
-              bitField2_ |= 0x00000020;
+              bitField1_ |= 0x40000000;
               expSavingBox_ = input.readUInt32();
               break;
             }
             case 712: {
-              bitField2_ |= 0x00000040;
+              bitField1_ |= 0x80000000;
               title_ = input.readUInt32();
               break;
             }
             case 720: {
-              bitField2_ |= 0x00000080;
+              bitField2_ |= 0x00000001;
               frame_ = input.readUInt32();
               break;
             }
             case 728: {
-              bitField2_ |= 0x00000100;
+              bitField2_ |= 0x00000002;
               recommandUserId_ = input.readUInt64();
               break;
             }
             case 736: {
-              bitField2_ |= 0x00000200;
+              bitField2_ |= 0x00000004;
               friendVip_ = input.readUInt32();
               break;
             }
             case 744: {
-              bitField2_ |= 0x00000400;
+              bitField2_ |= 0x00000008;
               talentsp_ = input.readInt32();
               break;
             }
             case 752: {
-              bitField2_ |= 0x00000800;
+              bitField2_ |= 0x00000010;
               unionExp_ = input.readUInt32();
               break;
             }
             case 762: {
-              bitField2_ |= 0x00001000;
+              bitField2_ |= 0x00000020;
               markId_ = input.readBytes();
               break;
             }
             case 770: {
-              bitField2_ |= 0x00002000;
+              bitField2_ |= 0x00000040;
               recommandMarkId_ = input.readBytes();
               break;
             }
             case 776: {
-              bitField2_ |= 0x00004000;
+              bitField2_ |= 0x00000080;
               titleOrder_ = input.readUInt32();
               break;
             }
             case 786: {
-              bitField2_ |= 0x00008000;
+              bitField2_ |= 0x00000100;
               signName_ = input.readBytes();
               break;
             }
             case 792: {
-              bitField2_ |= 0x00010000;
+              bitField2_ |= 0x00000200;
               rite_ = input.readUInt32();
               break;
             }
             case 800: {
-              bitField2_ |= 0x00020000;
+              bitField2_ |= 0x00000400;
               lotteryExpCount_ = input.readUInt32();
               break;
             }
             case 808: {
-              bitField2_ |= 0x00040000;
+              bitField2_ |= 0x00000800;
               mohe_ = input.readUInt32();
               break;
             }
             case 816: {
-              bitField2_ |= 0x00080000;
+              bitField2_ |= 0x00001000;
               heilong_ = input.readUInt32();
               break;
             }
@@ -3428,118 +3323,6 @@ public final class Base {
       return useTalentId_;
     }
 
-    // optional int64 extraTimeStamp = 79;
-    public static final int EXTRATIMESTAMP_FIELD_NUMBER = 79;
-    private long extraTimeStamp_;
-    /**
-     * <code>optional int64 extraTimeStamp = 79;</code>
-     */
-    public boolean hasExtraTimeStamp() {
-      return ((bitField1_ & 0x10000000) == 0x10000000);
-    }
-    /**
-     * <code>optional int64 extraTimeStamp = 79;</code>
-     */
-    public long getExtraTimeStamp() {
-      return extraTimeStamp_;
-    }
-
-    // optional uint32 extraCount1 = 80;
-    public static final int EXTRACOUNT1_FIELD_NUMBER = 80;
-    private int extraCount1_;
-    /**
-     * <code>optional uint32 extraCount1 = 80;</code>
-     */
-    public boolean hasExtraCount1() {
-      return ((bitField1_ & 0x20000000) == 0x20000000);
-    }
-    /**
-     * <code>optional uint32 extraCount1 = 80;</code>
-     */
-    public int getExtraCount1() {
-      return extraCount1_;
-    }
-
-    // optional uint32 extraCount2 = 81;
-    public static final int EXTRACOUNT2_FIELD_NUMBER = 81;
-    private int extraCount2_;
-    /**
-     * <code>optional uint32 extraCount2 = 81;</code>
-     */
-    public boolean hasExtraCount2() {
-      return ((bitField1_ & 0x40000000) == 0x40000000);
-    }
-    /**
-     * <code>optional uint32 extraCount2 = 81;</code>
-     */
-    public int getExtraCount2() {
-      return extraCount2_;
-    }
-
-    // optional uint32 extraCount3 = 82;
-    public static final int EXTRACOUNT3_FIELD_NUMBER = 82;
-    private int extraCount3_;
-    /**
-     * <code>optional uint32 extraCount3 = 82;</code>
-     */
-    public boolean hasExtraCount3() {
-      return ((bitField1_ & 0x80000000) == 0x80000000);
-    }
-    /**
-     * <code>optional uint32 extraCount3 = 82;</code>
-     */
-    public int getExtraCount3() {
-      return extraCount3_;
-    }
-
-    // optional int64 extraHasLootTime = 83;
-    public static final int EXTRAHASLOOTTIME_FIELD_NUMBER = 83;
-    private long extraHasLootTime_;
-    /**
-     * <code>optional int64 extraHasLootTime = 83;</code>
-     */
-    public boolean hasExtraHasLootTime() {
-      return ((bitField2_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional int64 extraHasLootTime = 83;</code>
-     */
-    public long getExtraHasLootTime() {
-      return extraHasLootTime_;
-    }
-
-    // optional uint32 extraType = 84;
-    public static final int EXTRATYPE_FIELD_NUMBER = 84;
-    private int extraType_;
-    /**
-     * <code>optional uint32 extraType = 84;</code>
-     */
-    public boolean hasExtraType() {
-      return ((bitField2_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional uint32 extraType = 84;</code>
-     */
-    public int getExtraType() {
-      return extraType_;
-    }
-
-    // optional int64 extraLastTimeStamp = 85;
-    public static final int EXTRALASTTIMESTAMP_FIELD_NUMBER = 85;
-    private long extraLastTimeStamp_;
-    /**
-     * <code>optional int64 extraLastTimeStamp = 85;</code>
-     */
-    public boolean hasExtraLastTimeStamp() {
-      return ((bitField2_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional int64 extraLastTimeStamp = 85;</code>
-     */
-    public long getExtraLastTimeStamp() {
-      return extraLastTimeStamp_;
-    }
-
     // optional uint32 userType = 86;
     public static final int USERTYPE_FIELD_NUMBER = 86;
     private int userType_;
@@ -3551,7 +3334,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasUserType() {
-      return ((bitField2_ & 0x00000008) == 0x00000008);
+      return ((bitField1_ & 0x10000000) == 0x10000000);
     }
     /**
      * <code>optional uint32 userType = 86;</code>
@@ -3571,7 +3354,7 @@ public final class Base {
      * <code>optional uint32 goldSavingBox = 87;</code>
      */
     public boolean hasGoldSavingBox() {
-      return ((bitField2_ & 0x00000010) == 0x00000010);
+      return ((bitField1_ & 0x20000000) == 0x20000000);
     }
     /**
      * <code>optional uint32 goldSavingBox = 87;</code>
@@ -3587,7 +3370,7 @@ public final class Base {
      * <code>optional uint32 expSavingBox = 88;</code>
      */
     public boolean hasExpSavingBox() {
-      return ((bitField2_ & 0x00000020) == 0x00000020);
+      return ((bitField1_ & 0x40000000) == 0x40000000);
     }
     /**
      * <code>optional uint32 expSavingBox = 88;</code>
@@ -3607,7 +3390,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasTitle() {
-      return ((bitField2_ & 0x00000040) == 0x00000040);
+      return ((bitField1_ & 0x80000000) == 0x80000000);
     }
     /**
      * <code>optional uint32 title = 89;</code>
@@ -3627,7 +3410,7 @@ public final class Base {
      * <code>optional uint32 frame = 90;</code>
      */
     public boolean hasFrame() {
-      return ((bitField2_ & 0x00000080) == 0x00000080);
+      return ((bitField2_ & 0x00000001) == 0x00000001);
     }
     /**
      * <code>optional uint32 frame = 90;</code>
@@ -3643,7 +3426,7 @@ public final class Base {
      * <code>optional uint64 recommandUserId = 91;</code>
      */
     public boolean hasRecommandUserId() {
-      return ((bitField2_ & 0x00000100) == 0x00000100);
+      return ((bitField2_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional uint64 recommandUserId = 91;</code>
@@ -3663,7 +3446,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasFriendVip() {
-      return ((bitField2_ & 0x00000200) == 0x00000200);
+      return ((bitField2_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional uint32 friendVip = 92;</code>
@@ -3683,7 +3466,7 @@ public final class Base {
      * <code>optional int32 talentsp = 93;</code>
      */
     public boolean hasTalentsp() {
-      return ((bitField2_ & 0x00000400) == 0x00000400);
+      return ((bitField2_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional int32 talentsp = 93;</code>
@@ -3699,7 +3482,7 @@ public final class Base {
      * <code>optional uint32 unionExp = 94;</code>
      */
     public boolean hasUnionExp() {
-      return ((bitField2_ & 0x00000800) == 0x00000800);
+      return ((bitField2_ & 0x00000010) == 0x00000010);
     }
     /**
      * <code>optional uint32 unionExp = 94;</code>
@@ -3715,7 +3498,7 @@ public final class Base {
      * <code>optional string markId = 95;</code>
      */
     public boolean hasMarkId() {
-      return ((bitField2_ & 0x00001000) == 0x00001000);
+      return ((bitField2_ & 0x00000020) == 0x00000020);
     }
     /**
      * <code>optional string markId = 95;</code>
@@ -3758,7 +3541,7 @@ public final class Base {
      * <code>optional string recommandMarkId = 96;</code>
      */
     public boolean hasRecommandMarkId() {
-      return ((bitField2_ & 0x00002000) == 0x00002000);
+      return ((bitField2_ & 0x00000040) == 0x00000040);
     }
     /**
      * <code>optional string recommandMarkId = 96;</code>
@@ -3801,7 +3584,7 @@ public final class Base {
      * <code>optional uint32 titleOrder = 97;</code>
      */
     public boolean hasTitleOrder() {
-      return ((bitField2_ & 0x00004000) == 0x00004000);
+      return ((bitField2_ & 0x00000080) == 0x00000080);
     }
     /**
      * <code>optional uint32 titleOrder = 97;</code>
@@ -3817,7 +3600,7 @@ public final class Base {
      * <code>optional string signName = 98;</code>
      */
     public boolean hasSignName() {
-      return ((bitField2_ & 0x00008000) == 0x00008000);
+      return ((bitField2_ & 0x00000100) == 0x00000100);
     }
     /**
      * <code>optional string signName = 98;</code>
@@ -3864,7 +3647,7 @@ public final class Base {
      * </pre>
      */
     public boolean hasRite() {
-      return ((bitField2_ & 0x00010000) == 0x00010000);
+      return ((bitField2_ & 0x00000200) == 0x00000200);
     }
     /**
      * <code>optional uint32 rite = 99;</code>
@@ -3884,7 +3667,7 @@ public final class Base {
      * <code>optional uint32 lotteryExpCount = 100;</code>
      */
     public boolean hasLotteryExpCount() {
-      return ((bitField2_ & 0x00020000) == 0x00020000);
+      return ((bitField2_ & 0x00000400) == 0x00000400);
     }
     /**
      * <code>optional uint32 lotteryExpCount = 100;</code>
@@ -3900,7 +3683,7 @@ public final class Base {
      * <code>optional uint32 mohe = 101;</code>
      */
     public boolean hasMohe() {
-      return ((bitField2_ & 0x00040000) == 0x00040000);
+      return ((bitField2_ & 0x00000800) == 0x00000800);
     }
     /**
      * <code>optional uint32 mohe = 101;</code>
@@ -3916,7 +3699,7 @@ public final class Base {
      * <code>optional uint32 heilong = 102;</code>
      */
     public boolean hasHeilong() {
-      return ((bitField2_ & 0x00080000) == 0x00080000);
+      return ((bitField2_ & 0x00001000) == 0x00001000);
     }
     /**
      * <code>optional uint32 heilong = 102;</code>
@@ -3989,13 +3772,6 @@ public final class Base {
       vipExp_ = 0;
       merlevel_ = 0;
       useTalentId_ = 0;
-      extraTimeStamp_ = 0L;
-      extraCount1_ = 0;
-      extraCount2_ = 0;
-      extraCount3_ = 0;
-      extraHasLootTime_ = 0L;
-      extraType_ = 0;
-      extraLastTimeStamp_ = 0L;
       userType_ = 0;
       goldSavingBox_ = 0;
       expSavingBox_ = 0;
@@ -4226,75 +4002,54 @@ public final class Base {
         output.writeUInt32(78, useTalentId_);
       }
       if (((bitField1_ & 0x10000000) == 0x10000000)) {
-        output.writeInt64(79, extraTimeStamp_);
-      }
-      if (((bitField1_ & 0x20000000) == 0x20000000)) {
-        output.writeUInt32(80, extraCount1_);
-      }
-      if (((bitField1_ & 0x40000000) == 0x40000000)) {
-        output.writeUInt32(81, extraCount2_);
-      }
-      if (((bitField1_ & 0x80000000) == 0x80000000)) {
-        output.writeUInt32(82, extraCount3_);
-      }
-      if (((bitField2_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(83, extraHasLootTime_);
-      }
-      if (((bitField2_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(84, extraType_);
-      }
-      if (((bitField2_ & 0x00000004) == 0x00000004)) {
-        output.writeInt64(85, extraLastTimeStamp_);
-      }
-      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         output.writeUInt32(86, userType_);
       }
-      if (((bitField2_ & 0x00000010) == 0x00000010)) {
+      if (((bitField1_ & 0x20000000) == 0x20000000)) {
         output.writeUInt32(87, goldSavingBox_);
       }
-      if (((bitField2_ & 0x00000020) == 0x00000020)) {
+      if (((bitField1_ & 0x40000000) == 0x40000000)) {
         output.writeUInt32(88, expSavingBox_);
       }
-      if (((bitField2_ & 0x00000040) == 0x00000040)) {
+      if (((bitField1_ & 0x80000000) == 0x80000000)) {
         output.writeUInt32(89, title_);
       }
-      if (((bitField2_ & 0x00000080) == 0x00000080)) {
+      if (((bitField2_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(90, frame_);
       }
-      if (((bitField2_ & 0x00000100) == 0x00000100)) {
+      if (((bitField2_ & 0x00000002) == 0x00000002)) {
         output.writeUInt64(91, recommandUserId_);
       }
-      if (((bitField2_ & 0x00000200) == 0x00000200)) {
+      if (((bitField2_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(92, friendVip_);
       }
-      if (((bitField2_ & 0x00000400) == 0x00000400)) {
+      if (((bitField2_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(93, talentsp_);
       }
-      if (((bitField2_ & 0x00000800) == 0x00000800)) {
+      if (((bitField2_ & 0x00000010) == 0x00000010)) {
         output.writeUInt32(94, unionExp_);
       }
-      if (((bitField2_ & 0x00001000) == 0x00001000)) {
+      if (((bitField2_ & 0x00000020) == 0x00000020)) {
         output.writeBytes(95, getMarkIdBytes());
       }
-      if (((bitField2_ & 0x00002000) == 0x00002000)) {
+      if (((bitField2_ & 0x00000040) == 0x00000040)) {
         output.writeBytes(96, getRecommandMarkIdBytes());
       }
-      if (((bitField2_ & 0x00004000) == 0x00004000)) {
+      if (((bitField2_ & 0x00000080) == 0x00000080)) {
         output.writeUInt32(97, titleOrder_);
       }
-      if (((bitField2_ & 0x00008000) == 0x00008000)) {
+      if (((bitField2_ & 0x00000100) == 0x00000100)) {
         output.writeBytes(98, getSignNameBytes());
       }
-      if (((bitField2_ & 0x00010000) == 0x00010000)) {
+      if (((bitField2_ & 0x00000200) == 0x00000200)) {
         output.writeUInt32(99, rite_);
       }
-      if (((bitField2_ & 0x00020000) == 0x00020000)) {
+      if (((bitField2_ & 0x00000400) == 0x00000400)) {
         output.writeUInt32(100, lotteryExpCount_);
       }
-      if (((bitField2_ & 0x00040000) == 0x00040000)) {
+      if (((bitField2_ & 0x00000800) == 0x00000800)) {
         output.writeUInt32(101, mohe_);
       }
-      if (((bitField2_ & 0x00080000) == 0x00080000)) {
+      if (((bitField2_ & 0x00001000) == 0x00001000)) {
         output.writeUInt32(102, heilong_);
       }
       getUnknownFields().writeTo(output);
@@ -4560,97 +4315,69 @@ public final class Base {
       }
       if (((bitField1_ & 0x10000000) == 0x10000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(79, extraTimeStamp_);
+          .computeUInt32Size(86, userType_);
       }
       if (((bitField1_ & 0x20000000) == 0x20000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(80, extraCount1_);
+          .computeUInt32Size(87, goldSavingBox_);
       }
       if (((bitField1_ & 0x40000000) == 0x40000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(81, extraCount2_);
+          .computeUInt32Size(88, expSavingBox_);
       }
       if (((bitField1_ & 0x80000000) == 0x80000000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(82, extraCount3_);
+          .computeUInt32Size(89, title_);
       }
       if (((bitField2_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(83, extraHasLootTime_);
+          .computeUInt32Size(90, frame_);
       }
       if (((bitField2_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(84, extraType_);
+          .computeUInt64Size(91, recommandUserId_);
       }
       if (((bitField2_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(85, extraLastTimeStamp_);
+          .computeUInt32Size(92, friendVip_);
       }
       if (((bitField2_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(86, userType_);
+          .computeInt32Size(93, talentsp_);
       }
       if (((bitField2_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(87, goldSavingBox_);
+          .computeUInt32Size(94, unionExp_);
       }
       if (((bitField2_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(88, expSavingBox_);
+          .computeBytesSize(95, getMarkIdBytes());
       }
       if (((bitField2_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(89, title_);
+          .computeBytesSize(96, getRecommandMarkIdBytes());
       }
       if (((bitField2_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(90, frame_);
+          .computeUInt32Size(97, titleOrder_);
       }
       if (((bitField2_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(91, recommandUserId_);
+          .computeBytesSize(98, getSignNameBytes());
       }
       if (((bitField2_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(92, friendVip_);
+          .computeUInt32Size(99, rite_);
       }
       if (((bitField2_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(93, talentsp_);
+          .computeUInt32Size(100, lotteryExpCount_);
       }
       if (((bitField2_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(94, unionExp_);
-      }
-      if (((bitField2_ & 0x00001000) == 0x00001000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(95, getMarkIdBytes());
-      }
-      if (((bitField2_ & 0x00002000) == 0x00002000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(96, getRecommandMarkIdBytes());
-      }
-      if (((bitField2_ & 0x00004000) == 0x00004000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(97, titleOrder_);
-      }
-      if (((bitField2_ & 0x00008000) == 0x00008000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(98, getSignNameBytes());
-      }
-      if (((bitField2_ & 0x00010000) == 0x00010000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(99, rite_);
-      }
-      if (((bitField2_ & 0x00020000) == 0x00020000)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(100, lotteryExpCount_);
-      }
-      if (((bitField2_ & 0x00040000) == 0x00040000)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(101, mohe_);
       }
-      if (((bitField2_ & 0x00080000) == 0x00080000)) {
+      if (((bitField2_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(102, heilong_);
       }
@@ -4915,54 +4642,40 @@ public final class Base {
         bitField1_ = (bitField1_ & ~0x20000000);
         useTalentId_ = 0;
         bitField1_ = (bitField1_ & ~0x40000000);
-        extraTimeStamp_ = 0L;
-        bitField1_ = (bitField1_ & ~0x80000000);
-        extraCount1_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000001);
-        extraCount2_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000002);
-        extraCount3_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000004);
-        extraHasLootTime_ = 0L;
-        bitField2_ = (bitField2_ & ~0x00000008);
-        extraType_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000010);
-        extraLastTimeStamp_ = 0L;
-        bitField2_ = (bitField2_ & ~0x00000020);
         userType_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x80000000);
         goldSavingBox_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000080);
+        bitField2_ = (bitField2_ & ~0x00000001);
         expSavingBox_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000100);
+        bitField2_ = (bitField2_ & ~0x00000002);
         title_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000200);
+        bitField2_ = (bitField2_ & ~0x00000004);
         frame_ = 0;
-        bitField2_ = (bitField2_ & ~0x00000400);
+        bitField2_ = (bitField2_ & ~0x00000008);
         recommandUserId_ = 0L;
-        bitField2_ = (bitField2_ & ~0x00000800);
+        bitField2_ = (bitField2_ & ~0x00000010);
         friendVip_ = 0;
-        bitField2_ = (bitField2_ & ~0x00001000);
+        bitField2_ = (bitField2_ & ~0x00000020);
         talentsp_ = 0;
-        bitField2_ = (bitField2_ & ~0x00002000);
+        bitField2_ = (bitField2_ & ~0x00000040);
         unionExp_ = 0;
-        bitField2_ = (bitField2_ & ~0x00004000);
+        bitField2_ = (bitField2_ & ~0x00000080);
         markId_ = "";
-        bitField2_ = (bitField2_ & ~0x00008000);
+        bitField2_ = (bitField2_ & ~0x00000100);
         recommandMarkId_ = "";
-        bitField2_ = (bitField2_ & ~0x00010000);
+        bitField2_ = (bitField2_ & ~0x00000200);
         titleOrder_ = 0;
-        bitField2_ = (bitField2_ & ~0x00020000);
+        bitField2_ = (bitField2_ & ~0x00000400);
         signName_ = "";
-        bitField2_ = (bitField2_ & ~0x00040000);
+        bitField2_ = (bitField2_ & ~0x00000800);
         rite_ = 0;
-        bitField2_ = (bitField2_ & ~0x00080000);
+        bitField2_ = (bitField2_ & ~0x00001000);
         lotteryExpCount_ = 0;
-        bitField2_ = (bitField2_ & ~0x00100000);
+        bitField2_ = (bitField2_ & ~0x00002000);
         mohe_ = 0;
-        bitField2_ = (bitField2_ & ~0x00200000);
+        bitField2_ = (bitField2_ & ~0x00004000);
         heilong_ = 0;
-        bitField2_ = (bitField2_ & ~0x00400000);
+        bitField2_ = (bitField2_ & ~0x00008000);
         return this;
       }
 
@@ -5265,97 +4978,69 @@ public final class Base {
         if (((from_bitField1_ & 0x80000000) == 0x80000000)) {
           to_bitField1_ |= 0x10000000;
         }
-        result.extraTimeStamp_ = extraTimeStamp_;
+        result.userType_ = userType_;
         if (((from_bitField2_ & 0x00000001) == 0x00000001)) {
           to_bitField1_ |= 0x20000000;
         }
-        result.extraCount1_ = extraCount1_;
+        result.goldSavingBox_ = goldSavingBox_;
         if (((from_bitField2_ & 0x00000002) == 0x00000002)) {
           to_bitField1_ |= 0x40000000;
         }
-        result.extraCount2_ = extraCount2_;
+        result.expSavingBox_ = expSavingBox_;
         if (((from_bitField2_ & 0x00000004) == 0x00000004)) {
           to_bitField1_ |= 0x80000000;
         }
-        result.extraCount3_ = extraCount3_;
+        result.title_ = title_;
         if (((from_bitField2_ & 0x00000008) == 0x00000008)) {
           to_bitField2_ |= 0x00000001;
         }
-        result.extraHasLootTime_ = extraHasLootTime_;
+        result.frame_ = frame_;
         if (((from_bitField2_ & 0x00000010) == 0x00000010)) {
           to_bitField2_ |= 0x00000002;
         }
-        result.extraType_ = extraType_;
+        result.recommandUserId_ = recommandUserId_;
         if (((from_bitField2_ & 0x00000020) == 0x00000020)) {
           to_bitField2_ |= 0x00000004;
         }
-        result.extraLastTimeStamp_ = extraLastTimeStamp_;
+        result.friendVip_ = friendVip_;
         if (((from_bitField2_ & 0x00000040) == 0x00000040)) {
           to_bitField2_ |= 0x00000008;
         }
-        result.userType_ = userType_;
+        result.talentsp_ = talentsp_;
         if (((from_bitField2_ & 0x00000080) == 0x00000080)) {
           to_bitField2_ |= 0x00000010;
         }
-        result.goldSavingBox_ = goldSavingBox_;
+        result.unionExp_ = unionExp_;
         if (((from_bitField2_ & 0x00000100) == 0x00000100)) {
           to_bitField2_ |= 0x00000020;
         }
-        result.expSavingBox_ = expSavingBox_;
+        result.markId_ = markId_;
         if (((from_bitField2_ & 0x00000200) == 0x00000200)) {
           to_bitField2_ |= 0x00000040;
         }
-        result.title_ = title_;
+        result.recommandMarkId_ = recommandMarkId_;
         if (((from_bitField2_ & 0x00000400) == 0x00000400)) {
           to_bitField2_ |= 0x00000080;
         }
-        result.frame_ = frame_;
+        result.titleOrder_ = titleOrder_;
         if (((from_bitField2_ & 0x00000800) == 0x00000800)) {
           to_bitField2_ |= 0x00000100;
         }
-        result.recommandUserId_ = recommandUserId_;
+        result.signName_ = signName_;
         if (((from_bitField2_ & 0x00001000) == 0x00001000)) {
           to_bitField2_ |= 0x00000200;
         }
-        result.friendVip_ = friendVip_;
+        result.rite_ = rite_;
         if (((from_bitField2_ & 0x00002000) == 0x00002000)) {
           to_bitField2_ |= 0x00000400;
         }
-        result.talentsp_ = talentsp_;
+        result.lotteryExpCount_ = lotteryExpCount_;
         if (((from_bitField2_ & 0x00004000) == 0x00004000)) {
           to_bitField2_ |= 0x00000800;
         }
-        result.unionExp_ = unionExp_;
+        result.mohe_ = mohe_;
         if (((from_bitField2_ & 0x00008000) == 0x00008000)) {
           to_bitField2_ |= 0x00001000;
-        }
-        result.markId_ = markId_;
-        if (((from_bitField2_ & 0x00010000) == 0x00010000)) {
-          to_bitField2_ |= 0x00002000;
-        }
-        result.recommandMarkId_ = recommandMarkId_;
-        if (((from_bitField2_ & 0x00020000) == 0x00020000)) {
-          to_bitField2_ |= 0x00004000;
-        }
-        result.titleOrder_ = titleOrder_;
-        if (((from_bitField2_ & 0x00040000) == 0x00040000)) {
-          to_bitField2_ |= 0x00008000;
-        }
-        result.signName_ = signName_;
-        if (((from_bitField2_ & 0x00080000) == 0x00080000)) {
-          to_bitField2_ |= 0x00010000;
-        }
-        result.rite_ = rite_;
-        if (((from_bitField2_ & 0x00100000) == 0x00100000)) {
-          to_bitField2_ |= 0x00020000;
-        }
-        result.lotteryExpCount_ = lotteryExpCount_;
-        if (((from_bitField2_ & 0x00200000) == 0x00200000)) {
-          to_bitField2_ |= 0x00040000;
-        }
-        result.mohe_ = mohe_;
-        if (((from_bitField2_ & 0x00400000) == 0x00400000)) {
-          to_bitField2_ |= 0x00080000;
         }
         result.heilong_ = heilong_;
         result.bitField0_ = to_bitField0_;
@@ -5652,27 +5337,6 @@ public final class Base {
         if (other.hasUseTalentId()) {
           setUseTalentId(other.getUseTalentId());
         }
-        if (other.hasExtraTimeStamp()) {
-          setExtraTimeStamp(other.getExtraTimeStamp());
-        }
-        if (other.hasExtraCount1()) {
-          setExtraCount1(other.getExtraCount1());
-        }
-        if (other.hasExtraCount2()) {
-          setExtraCount2(other.getExtraCount2());
-        }
-        if (other.hasExtraCount3()) {
-          setExtraCount3(other.getExtraCount3());
-        }
-        if (other.hasExtraHasLootTime()) {
-          setExtraHasLootTime(other.getExtraHasLootTime());
-        }
-        if (other.hasExtraType()) {
-          setExtraType(other.getExtraType());
-        }
-        if (other.hasExtraLastTimeStamp()) {
-          setExtraLastTimeStamp(other.getExtraLastTimeStamp());
-        }
         if (other.hasUserType()) {
           setUserType(other.getUserType());
         }
@@ -5701,12 +5365,12 @@ public final class Base {
           setUnionExp(other.getUnionExp());
         }
         if (other.hasMarkId()) {
-          bitField2_ |= 0x00008000;
+          bitField2_ |= 0x00000100;
           markId_ = other.markId_;
           onChanged();
         }
         if (other.hasRecommandMarkId()) {
-          bitField2_ |= 0x00010000;
+          bitField2_ |= 0x00000200;
           recommandMarkId_ = other.recommandMarkId_;
           onChanged();
         }
@@ -5714,7 +5378,7 @@ public final class Base {
           setTitleOrder(other.getTitleOrder());
         }
         if (other.hasSignName()) {
-          bitField2_ |= 0x00040000;
+          bitField2_ |= 0x00000800;
           signName_ = other.signName_;
           onChanged();
         }
@@ -9358,237 +9022,6 @@ public final class Base {
         return this;
       }
 
-      // optional int64 extraTimeStamp = 79;
-      private long extraTimeStamp_ ;
-      /**
-       * <code>optional int64 extraTimeStamp = 79;</code>
-       */
-      public boolean hasExtraTimeStamp() {
-        return ((bitField1_ & 0x80000000) == 0x80000000);
-      }
-      /**
-       * <code>optional int64 extraTimeStamp = 79;</code>
-       */
-      public long getExtraTimeStamp() {
-        return extraTimeStamp_;
-      }
-      /**
-       * <code>optional int64 extraTimeStamp = 79;</code>
-       */
-      public Builder setExtraTimeStamp(long value) {
-        bitField1_ |= 0x80000000;
-        extraTimeStamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int64 extraTimeStamp = 79;</code>
-       */
-      public Builder clearExtraTimeStamp() {
-        bitField1_ = (bitField1_ & ~0x80000000);
-        extraTimeStamp_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 extraCount1 = 80;
-      private int extraCount1_ ;
-      /**
-       * <code>optional uint32 extraCount1 = 80;</code>
-       */
-      public boolean hasExtraCount1() {
-        return ((bitField2_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>optional uint32 extraCount1 = 80;</code>
-       */
-      public int getExtraCount1() {
-        return extraCount1_;
-      }
-      /**
-       * <code>optional uint32 extraCount1 = 80;</code>
-       */
-      public Builder setExtraCount1(int value) {
-        bitField2_ |= 0x00000001;
-        extraCount1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 extraCount1 = 80;</code>
-       */
-      public Builder clearExtraCount1() {
-        bitField2_ = (bitField2_ & ~0x00000001);
-        extraCount1_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 extraCount2 = 81;
-      private int extraCount2_ ;
-      /**
-       * <code>optional uint32 extraCount2 = 81;</code>
-       */
-      public boolean hasExtraCount2() {
-        return ((bitField2_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional uint32 extraCount2 = 81;</code>
-       */
-      public int getExtraCount2() {
-        return extraCount2_;
-      }
-      /**
-       * <code>optional uint32 extraCount2 = 81;</code>
-       */
-      public Builder setExtraCount2(int value) {
-        bitField2_ |= 0x00000002;
-        extraCount2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 extraCount2 = 81;</code>
-       */
-      public Builder clearExtraCount2() {
-        bitField2_ = (bitField2_ & ~0x00000002);
-        extraCount2_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 extraCount3 = 82;
-      private int extraCount3_ ;
-      /**
-       * <code>optional uint32 extraCount3 = 82;</code>
-       */
-      public boolean hasExtraCount3() {
-        return ((bitField2_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint32 extraCount3 = 82;</code>
-       */
-      public int getExtraCount3() {
-        return extraCount3_;
-      }
-      /**
-       * <code>optional uint32 extraCount3 = 82;</code>
-       */
-      public Builder setExtraCount3(int value) {
-        bitField2_ |= 0x00000004;
-        extraCount3_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 extraCount3 = 82;</code>
-       */
-      public Builder clearExtraCount3() {
-        bitField2_ = (bitField2_ & ~0x00000004);
-        extraCount3_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int64 extraHasLootTime = 83;
-      private long extraHasLootTime_ ;
-      /**
-       * <code>optional int64 extraHasLootTime = 83;</code>
-       */
-      public boolean hasExtraHasLootTime() {
-        return ((bitField2_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional int64 extraHasLootTime = 83;</code>
-       */
-      public long getExtraHasLootTime() {
-        return extraHasLootTime_;
-      }
-      /**
-       * <code>optional int64 extraHasLootTime = 83;</code>
-       */
-      public Builder setExtraHasLootTime(long value) {
-        bitField2_ |= 0x00000008;
-        extraHasLootTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int64 extraHasLootTime = 83;</code>
-       */
-      public Builder clearExtraHasLootTime() {
-        bitField2_ = (bitField2_ & ~0x00000008);
-        extraHasLootTime_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 extraType = 84;
-      private int extraType_ ;
-      /**
-       * <code>optional uint32 extraType = 84;</code>
-       */
-      public boolean hasExtraType() {
-        return ((bitField2_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>optional uint32 extraType = 84;</code>
-       */
-      public int getExtraType() {
-        return extraType_;
-      }
-      /**
-       * <code>optional uint32 extraType = 84;</code>
-       */
-      public Builder setExtraType(int value) {
-        bitField2_ |= 0x00000010;
-        extraType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 extraType = 84;</code>
-       */
-      public Builder clearExtraType() {
-        bitField2_ = (bitField2_ & ~0x00000010);
-        extraType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional int64 extraLastTimeStamp = 85;
-      private long extraLastTimeStamp_ ;
-      /**
-       * <code>optional int64 extraLastTimeStamp = 85;</code>
-       */
-      public boolean hasExtraLastTimeStamp() {
-        return ((bitField2_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>optional int64 extraLastTimeStamp = 85;</code>
-       */
-      public long getExtraLastTimeStamp() {
-        return extraLastTimeStamp_;
-      }
-      /**
-       * <code>optional int64 extraLastTimeStamp = 85;</code>
-       */
-      public Builder setExtraLastTimeStamp(long value) {
-        bitField2_ |= 0x00000020;
-        extraLastTimeStamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional int64 extraLastTimeStamp = 85;</code>
-       */
-      public Builder clearExtraLastTimeStamp() {
-        bitField2_ = (bitField2_ & ~0x00000020);
-        extraLastTimeStamp_ = 0L;
-        onChanged();
-        return this;
-      }
-
       // optional uint32 userType = 86;
       private int userType_ ;
       /**
@@ -9599,7 +9032,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasUserType() {
-        return ((bitField2_ & 0x00000040) == 0x00000040);
+        return ((bitField1_ & 0x80000000) == 0x80000000);
       }
       /**
        * <code>optional uint32 userType = 86;</code>
@@ -9619,7 +9052,7 @@ public final class Base {
        * </pre>
        */
       public Builder setUserType(int value) {
-        bitField2_ |= 0x00000040;
+        bitField1_ |= 0x80000000;
         userType_ = value;
         onChanged();
         return this;
@@ -9632,7 +9065,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearUserType() {
-        bitField2_ = (bitField2_ & ~0x00000040);
+        bitField1_ = (bitField1_ & ~0x80000000);
         userType_ = 0;
         onChanged();
         return this;
@@ -9644,7 +9077,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public boolean hasGoldSavingBox() {
-        return ((bitField2_ & 0x00000080) == 0x00000080);
+        return ((bitField2_ & 0x00000001) == 0x00000001);
       }
       /**
        * <code>optional uint32 goldSavingBox = 87;</code>
@@ -9656,7 +9089,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public Builder setGoldSavingBox(int value) {
-        bitField2_ |= 0x00000080;
+        bitField2_ |= 0x00000001;
         goldSavingBox_ = value;
         onChanged();
         return this;
@@ -9665,7 +9098,7 @@ public final class Base {
        * <code>optional uint32 goldSavingBox = 87;</code>
        */
       public Builder clearGoldSavingBox() {
-        bitField2_ = (bitField2_ & ~0x00000080);
+        bitField2_ = (bitField2_ & ~0x00000001);
         goldSavingBox_ = 0;
         onChanged();
         return this;
@@ -9677,7 +9110,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public boolean hasExpSavingBox() {
-        return ((bitField2_ & 0x00000100) == 0x00000100);
+        return ((bitField2_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional uint32 expSavingBox = 88;</code>
@@ -9689,7 +9122,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public Builder setExpSavingBox(int value) {
-        bitField2_ |= 0x00000100;
+        bitField2_ |= 0x00000002;
         expSavingBox_ = value;
         onChanged();
         return this;
@@ -9698,7 +9131,7 @@ public final class Base {
        * <code>optional uint32 expSavingBox = 88;</code>
        */
       public Builder clearExpSavingBox() {
-        bitField2_ = (bitField2_ & ~0x00000100);
+        bitField2_ = (bitField2_ & ~0x00000002);
         expSavingBox_ = 0;
         onChanged();
         return this;
@@ -9714,7 +9147,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasTitle() {
-        return ((bitField2_ & 0x00000200) == 0x00000200);
+        return ((bitField2_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional uint32 title = 89;</code>
@@ -9734,7 +9167,7 @@ public final class Base {
        * </pre>
        */
       public Builder setTitle(int value) {
-        bitField2_ |= 0x00000200;
+        bitField2_ |= 0x00000004;
         title_ = value;
         onChanged();
         return this;
@@ -9747,7 +9180,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearTitle() {
-        bitField2_ = (bitField2_ & ~0x00000200);
+        bitField2_ = (bitField2_ & ~0x00000004);
         title_ = 0;
         onChanged();
         return this;
@@ -9759,7 +9192,7 @@ public final class Base {
        * <code>optional uint32 frame = 90;</code>
        */
       public boolean hasFrame() {
-        return ((bitField2_ & 0x00000400) == 0x00000400);
+        return ((bitField2_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional uint32 frame = 90;</code>
@@ -9771,7 +9204,7 @@ public final class Base {
        * <code>optional uint32 frame = 90;</code>
        */
       public Builder setFrame(int value) {
-        bitField2_ |= 0x00000400;
+        bitField2_ |= 0x00000008;
         frame_ = value;
         onChanged();
         return this;
@@ -9780,7 +9213,7 @@ public final class Base {
        * <code>optional uint32 frame = 90;</code>
        */
       public Builder clearFrame() {
-        bitField2_ = (bitField2_ & ~0x00000400);
+        bitField2_ = (bitField2_ & ~0x00000008);
         frame_ = 0;
         onChanged();
         return this;
@@ -9792,7 +9225,7 @@ public final class Base {
        * <code>optional uint64 recommandUserId = 91;</code>
        */
       public boolean hasRecommandUserId() {
-        return ((bitField2_ & 0x00000800) == 0x00000800);
+        return ((bitField2_ & 0x00000010) == 0x00000010);
       }
       /**
        * <code>optional uint64 recommandUserId = 91;</code>
@@ -9804,7 +9237,7 @@ public final class Base {
        * <code>optional uint64 recommandUserId = 91;</code>
        */
       public Builder setRecommandUserId(long value) {
-        bitField2_ |= 0x00000800;
+        bitField2_ |= 0x00000010;
         recommandUserId_ = value;
         onChanged();
         return this;
@@ -9813,7 +9246,7 @@ public final class Base {
        * <code>optional uint64 recommandUserId = 91;</code>
        */
       public Builder clearRecommandUserId() {
-        bitField2_ = (bitField2_ & ~0x00000800);
+        bitField2_ = (bitField2_ & ~0x00000010);
         recommandUserId_ = 0L;
         onChanged();
         return this;
@@ -9829,7 +9262,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasFriendVip() {
-        return ((bitField2_ & 0x00001000) == 0x00001000);
+        return ((bitField2_ & 0x00000020) == 0x00000020);
       }
       /**
        * <code>optional uint32 friendVip = 92;</code>
@@ -9849,7 +9282,7 @@ public final class Base {
        * </pre>
        */
       public Builder setFriendVip(int value) {
-        bitField2_ |= 0x00001000;
+        bitField2_ |= 0x00000020;
         friendVip_ = value;
         onChanged();
         return this;
@@ -9862,7 +9295,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearFriendVip() {
-        bitField2_ = (bitField2_ & ~0x00001000);
+        bitField2_ = (bitField2_ & ~0x00000020);
         friendVip_ = 0;
         onChanged();
         return this;
@@ -9874,7 +9307,7 @@ public final class Base {
        * <code>optional int32 talentsp = 93;</code>
        */
       public boolean hasTalentsp() {
-        return ((bitField2_ & 0x00002000) == 0x00002000);
+        return ((bitField2_ & 0x00000040) == 0x00000040);
       }
       /**
        * <code>optional int32 talentsp = 93;</code>
@@ -9886,7 +9319,7 @@ public final class Base {
        * <code>optional int32 talentsp = 93;</code>
        */
       public Builder setTalentsp(int value) {
-        bitField2_ |= 0x00002000;
+        bitField2_ |= 0x00000040;
         talentsp_ = value;
         onChanged();
         return this;
@@ -9895,7 +9328,7 @@ public final class Base {
        * <code>optional int32 talentsp = 93;</code>
        */
       public Builder clearTalentsp() {
-        bitField2_ = (bitField2_ & ~0x00002000);
+        bitField2_ = (bitField2_ & ~0x00000040);
         talentsp_ = 0;
         onChanged();
         return this;
@@ -9907,7 +9340,7 @@ public final class Base {
        * <code>optional uint32 unionExp = 94;</code>
        */
       public boolean hasUnionExp() {
-        return ((bitField2_ & 0x00004000) == 0x00004000);
+        return ((bitField2_ & 0x00000080) == 0x00000080);
       }
       /**
        * <code>optional uint32 unionExp = 94;</code>
@@ -9919,7 +9352,7 @@ public final class Base {
        * <code>optional uint32 unionExp = 94;</code>
        */
       public Builder setUnionExp(int value) {
-        bitField2_ |= 0x00004000;
+        bitField2_ |= 0x00000080;
         unionExp_ = value;
         onChanged();
         return this;
@@ -9928,7 +9361,7 @@ public final class Base {
        * <code>optional uint32 unionExp = 94;</code>
        */
       public Builder clearUnionExp() {
-        bitField2_ = (bitField2_ & ~0x00004000);
+        bitField2_ = (bitField2_ & ~0x00000080);
         unionExp_ = 0;
         onChanged();
         return this;
@@ -9940,7 +9373,7 @@ public final class Base {
        * <code>optional string markId = 95;</code>
        */
       public boolean hasMarkId() {
-        return ((bitField2_ & 0x00008000) == 0x00008000);
+        return ((bitField2_ & 0x00000100) == 0x00000100);
       }
       /**
        * <code>optional string markId = 95;</code>
@@ -9980,7 +9413,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00008000;
+  bitField2_ |= 0x00000100;
         markId_ = value;
         onChanged();
         return this;
@@ -9989,7 +9422,7 @@ public final class Base {
        * <code>optional string markId = 95;</code>
        */
       public Builder clearMarkId() {
-        bitField2_ = (bitField2_ & ~0x00008000);
+        bitField2_ = (bitField2_ & ~0x00000100);
         markId_ = getDefaultInstance().getMarkId();
         onChanged();
         return this;
@@ -10002,7 +9435,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00008000;
+  bitField2_ |= 0x00000100;
         markId_ = value;
         onChanged();
         return this;
@@ -10014,7 +9447,7 @@ public final class Base {
        * <code>optional string recommandMarkId = 96;</code>
        */
       public boolean hasRecommandMarkId() {
-        return ((bitField2_ & 0x00010000) == 0x00010000);
+        return ((bitField2_ & 0x00000200) == 0x00000200);
       }
       /**
        * <code>optional string recommandMarkId = 96;</code>
@@ -10054,7 +9487,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00010000;
+  bitField2_ |= 0x00000200;
         recommandMarkId_ = value;
         onChanged();
         return this;
@@ -10063,7 +9496,7 @@ public final class Base {
        * <code>optional string recommandMarkId = 96;</code>
        */
       public Builder clearRecommandMarkId() {
-        bitField2_ = (bitField2_ & ~0x00010000);
+        bitField2_ = (bitField2_ & ~0x00000200);
         recommandMarkId_ = getDefaultInstance().getRecommandMarkId();
         onChanged();
         return this;
@@ -10076,7 +9509,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00010000;
+  bitField2_ |= 0x00000200;
         recommandMarkId_ = value;
         onChanged();
         return this;
@@ -10088,7 +9521,7 @@ public final class Base {
        * <code>optional uint32 titleOrder = 97;</code>
        */
       public boolean hasTitleOrder() {
-        return ((bitField2_ & 0x00020000) == 0x00020000);
+        return ((bitField2_ & 0x00000400) == 0x00000400);
       }
       /**
        * <code>optional uint32 titleOrder = 97;</code>
@@ -10100,7 +9533,7 @@ public final class Base {
        * <code>optional uint32 titleOrder = 97;</code>
        */
       public Builder setTitleOrder(int value) {
-        bitField2_ |= 0x00020000;
+        bitField2_ |= 0x00000400;
         titleOrder_ = value;
         onChanged();
         return this;
@@ -10109,7 +9542,7 @@ public final class Base {
        * <code>optional uint32 titleOrder = 97;</code>
        */
       public Builder clearTitleOrder() {
-        bitField2_ = (bitField2_ & ~0x00020000);
+        bitField2_ = (bitField2_ & ~0x00000400);
         titleOrder_ = 0;
         onChanged();
         return this;
@@ -10121,7 +9554,7 @@ public final class Base {
        * <code>optional string signName = 98;</code>
        */
       public boolean hasSignName() {
-        return ((bitField2_ & 0x00040000) == 0x00040000);
+        return ((bitField2_ & 0x00000800) == 0x00000800);
       }
       /**
        * <code>optional string signName = 98;</code>
@@ -10161,7 +9594,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00040000;
+  bitField2_ |= 0x00000800;
         signName_ = value;
         onChanged();
         return this;
@@ -10170,7 +9603,7 @@ public final class Base {
        * <code>optional string signName = 98;</code>
        */
       public Builder clearSignName() {
-        bitField2_ = (bitField2_ & ~0x00040000);
+        bitField2_ = (bitField2_ & ~0x00000800);
         signName_ = getDefaultInstance().getSignName();
         onChanged();
         return this;
@@ -10183,7 +9616,7 @@ public final class Base {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField2_ |= 0x00040000;
+  bitField2_ |= 0x00000800;
         signName_ = value;
         onChanged();
         return this;
@@ -10199,7 +9632,7 @@ public final class Base {
        * </pre>
        */
       public boolean hasRite() {
-        return ((bitField2_ & 0x00080000) == 0x00080000);
+        return ((bitField2_ & 0x00001000) == 0x00001000);
       }
       /**
        * <code>optional uint32 rite = 99;</code>
@@ -10219,7 +9652,7 @@ public final class Base {
        * </pre>
        */
       public Builder setRite(int value) {
-        bitField2_ |= 0x00080000;
+        bitField2_ |= 0x00001000;
         rite_ = value;
         onChanged();
         return this;
@@ -10232,7 +9665,7 @@ public final class Base {
        * </pre>
        */
       public Builder clearRite() {
-        bitField2_ = (bitField2_ & ~0x00080000);
+        bitField2_ = (bitField2_ & ~0x00001000);
         rite_ = 0;
         onChanged();
         return this;
@@ -10244,7 +9677,7 @@ public final class Base {
        * <code>optional uint32 lotteryExpCount = 100;</code>
        */
       public boolean hasLotteryExpCount() {
-        return ((bitField2_ & 0x00100000) == 0x00100000);
+        return ((bitField2_ & 0x00002000) == 0x00002000);
       }
       /**
        * <code>optional uint32 lotteryExpCount = 100;</code>
@@ -10256,7 +9689,7 @@ public final class Base {
        * <code>optional uint32 lotteryExpCount = 100;</code>
        */
       public Builder setLotteryExpCount(int value) {
-        bitField2_ |= 0x00100000;
+        bitField2_ |= 0x00002000;
         lotteryExpCount_ = value;
         onChanged();
         return this;
@@ -10265,7 +9698,7 @@ public final class Base {
        * <code>optional uint32 lotteryExpCount = 100;</code>
        */
       public Builder clearLotteryExpCount() {
-        bitField2_ = (bitField2_ & ~0x00100000);
+        bitField2_ = (bitField2_ & ~0x00002000);
         lotteryExpCount_ = 0;
         onChanged();
         return this;
@@ -10277,7 +9710,7 @@ public final class Base {
        * <code>optional uint32 mohe = 101;</code>
        */
       public boolean hasMohe() {
-        return ((bitField2_ & 0x00200000) == 0x00200000);
+        return ((bitField2_ & 0x00004000) == 0x00004000);
       }
       /**
        * <code>optional uint32 mohe = 101;</code>
@@ -10289,7 +9722,7 @@ public final class Base {
        * <code>optional uint32 mohe = 101;</code>
        */
       public Builder setMohe(int value) {
-        bitField2_ |= 0x00200000;
+        bitField2_ |= 0x00004000;
         mohe_ = value;
         onChanged();
         return this;
@@ -10298,7 +9731,7 @@ public final class Base {
        * <code>optional uint32 mohe = 101;</code>
        */
       public Builder clearMohe() {
-        bitField2_ = (bitField2_ & ~0x00200000);
+        bitField2_ = (bitField2_ & ~0x00004000);
         mohe_ = 0;
         onChanged();
         return this;
@@ -10310,7 +9743,7 @@ public final class Base {
        * <code>optional uint32 heilong = 102;</code>
        */
       public boolean hasHeilong() {
-        return ((bitField2_ & 0x00400000) == 0x00400000);
+        return ((bitField2_ & 0x00008000) == 0x00008000);
       }
       /**
        * <code>optional uint32 heilong = 102;</code>
@@ -10322,7 +9755,7 @@ public final class Base {
        * <code>optional uint32 heilong = 102;</code>
        */
       public Builder setHeilong(int value) {
-        bitField2_ |= 0x00400000;
+        bitField2_ |= 0x00008000;
         heilong_ = value;
         onChanged();
         return this;
@@ -10331,7 +9764,7 @@ public final class Base {
        * <code>optional uint32 heilong = 102;</code>
        */
       public Builder clearHeilong() {
-        bitField2_ = (bitField2_ & ~0x00400000);
+        bitField2_ = (bitField2_ & ~0x00008000);
         heilong_ = 0;
         onChanged();
         return this;
@@ -10346,6 +9779,1451 @@ public final class Base {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserInfo)
+  }
+
+  public interface UserDDOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional uint64 extraTimeStamp = 1;
+    /**
+     * <code>optional uint64 extraTimeStamp = 1;</code>
+     *
+     * <pre>
+     *当次dingding结束所需时间
+     * </pre>
+     */
+    boolean hasExtraTimeStamp();
+    /**
+     * <code>optional uint64 extraTimeStamp = 1;</code>
+     *
+     * <pre>
+     *当次dingding结束所需时间
+     * </pre>
+     */
+    long getExtraTimeStamp();
+
+    // optional uint64 extraHasLootTime = 5;
+    /**
+     * <code>optional uint64 extraHasLootTime = 5;</code>
+     *
+     * <pre>
+     *暂时用不到，该次dingding已经过的时间
+     * </pre>
+     */
+    boolean hasExtraHasLootTime();
+    /**
+     * <code>optional uint64 extraHasLootTime = 5;</code>
+     *
+     * <pre>
+     *暂时用不到，该次dingding已经过的时间
+     * </pre>
+     */
+    long getExtraHasLootTime();
+
+    // optional uint32 extraType = 6;
+    /**
+     * <code>optional uint32 extraType = 6;</code>
+     *
+     * <pre>
+     *暂时用不到
+     * </pre>
+     */
+    boolean hasExtraType();
+    /**
+     * <code>optional uint32 extraType = 6;</code>
+     *
+     * <pre>
+     *暂时用不到
+     * </pre>
+     */
+    int getExtraType();
+
+    // optional uint64 extraLastTimeStamp = 7;
+    /**
+     * <code>optional uint64 extraLastTimeStamp = 7;</code>
+     *
+     * <pre>
+     *暂时用不到，上次dingding结束的时间
+     * </pre>
+     */
+    boolean hasExtraLastTimeStamp();
+    /**
+     * <code>optional uint64 extraLastTimeStamp = 7;</code>
+     *
+     * <pre>
+     *暂时用不到，上次dingding结束的时间
+     * </pre>
+     */
+    long getExtraLastTimeStamp();
+
+    // optional uint32 ddDaily = 8;
+    /**
+     * <code>optional uint32 ddDaily = 8;</code>
+     *
+     * <pre>
+     *当天dingding次数
+     * </pre>
+     */
+    boolean hasDdDaily();
+    /**
+     * <code>optional uint32 ddDaily = 8;</code>
+     *
+     * <pre>
+     *当天dingding次数
+     * </pre>
+     */
+    int getDdDaily();
+
+    // optional uint32 ddWeekly = 9;
+    /**
+     * <code>optional uint32 ddWeekly = 9;</code>
+     *
+     * <pre>
+     *当周dingding次数
+     * </pre>
+     */
+    boolean hasDdWeekly();
+    /**
+     * <code>optional uint32 ddWeekly = 9;</code>
+     *
+     * <pre>
+     *当周dingding次数
+     * </pre>
+     */
+    int getDdWeekly();
+
+    // optional uint32 ddMonthly = 10;
+    /**
+     * <code>optional uint32 ddMonthly = 10;</code>
+     *
+     * <pre>
+     *当月dingding次数
+     * </pre>
+     */
+    boolean hasDdMonthly();
+    /**
+     * <code>optional uint32 ddMonthly = 10;</code>
+     *
+     * <pre>
+     *当月dingding次数
+     * </pre>
+     */
+    int getDdMonthly();
+
+    // optional uint32 ddTotal = 11;
+    /**
+     * <code>optional uint32 ddTotal = 11;</code>
+     *
+     * <pre>
+     *总的dingding次数
+     * </pre>
+     */
+    boolean hasDdTotal();
+    /**
+     * <code>optional uint32 ddTotal = 11;</code>
+     *
+     * <pre>
+     *总的dingding次数
+     * </pre>
+     */
+    int getDdTotal();
+
+    // optional uint32 ddExtraItemId = 12;
+    /**
+     * <code>optional uint32 ddExtraItemId = 12;</code>
+     *
+     * <pre>
+     *dingding之前选择的道具
+     * </pre>
+     */
+    boolean hasDdExtraItemId();
+    /**
+     * <code>optional uint32 ddExtraItemId = 12;</code>
+     *
+     * <pre>
+     *dingding之前选择的道具
+     * </pre>
+     */
+    int getDdExtraItemId();
+
+    // optional uint32 limit = 13;
+    /**
+     * <code>optional uint32 limit = 13;</code>
+     *
+     * <pre>
+     *限定奖励已领取次数
+     * </pre>
+     */
+    boolean hasLimit();
+    /**
+     * <code>optional uint32 limit = 13;</code>
+     *
+     * <pre>
+     *限定奖励已领取次数
+     * </pre>
+     */
+    int getLimit();
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.UserDD}
+   */
+  public static final class UserDD extends
+      com.google.protobuf.GeneratedMessage
+      implements UserDDOrBuilder {
+    // Use UserDD.newBuilder() to construct.
+    private UserDD(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private UserDD(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final UserDD defaultInstance;
+    public static UserDD getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public UserDD getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserDD(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              extraTimeStamp_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000002;
+              extraHasLootTime_ = input.readUInt64();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000004;
+              extraType_ = input.readUInt32();
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000008;
+              extraLastTimeStamp_ = input.readUInt64();
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000010;
+              ddDaily_ = input.readUInt32();
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000020;
+              ddWeekly_ = input.readUInt32();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000040;
+              ddMonthly_ = input.readUInt32();
+              break;
+            }
+            case 88: {
+              bitField0_ |= 0x00000080;
+              ddTotal_ = input.readUInt32();
+              break;
+            }
+            case 96: {
+              bitField0_ |= 0x00000100;
+              ddExtraItemId_ = input.readUInt32();
+              break;
+            }
+            case 104: {
+              bitField0_ |= 0x00000200;
+              limit_ = input.readUInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_UserDD_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_UserDD_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.Base.UserDD.class, com.trans.pixel.protoc.Base.UserDD.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<UserDD> PARSER =
+        new com.google.protobuf.AbstractParser<UserDD>() {
+      public UserDD parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserDD(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserDD> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional uint64 extraTimeStamp = 1;
+    public static final int EXTRATIMESTAMP_FIELD_NUMBER = 1;
+    private long extraTimeStamp_;
+    /**
+     * <code>optional uint64 extraTimeStamp = 1;</code>
+     *
+     * <pre>
+     *当次dingding结束所需时间
+     * </pre>
+     */
+    public boolean hasExtraTimeStamp() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional uint64 extraTimeStamp = 1;</code>
+     *
+     * <pre>
+     *当次dingding结束所需时间
+     * </pre>
+     */
+    public long getExtraTimeStamp() {
+      return extraTimeStamp_;
+    }
+
+    // optional uint64 extraHasLootTime = 5;
+    public static final int EXTRAHASLOOTTIME_FIELD_NUMBER = 5;
+    private long extraHasLootTime_;
+    /**
+     * <code>optional uint64 extraHasLootTime = 5;</code>
+     *
+     * <pre>
+     *暂时用不到，该次dingding已经过的时间
+     * </pre>
+     */
+    public boolean hasExtraHasLootTime() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint64 extraHasLootTime = 5;</code>
+     *
+     * <pre>
+     *暂时用不到，该次dingding已经过的时间
+     * </pre>
+     */
+    public long getExtraHasLootTime() {
+      return extraHasLootTime_;
+    }
+
+    // optional uint32 extraType = 6;
+    public static final int EXTRATYPE_FIELD_NUMBER = 6;
+    private int extraType_;
+    /**
+     * <code>optional uint32 extraType = 6;</code>
+     *
+     * <pre>
+     *暂时用不到
+     * </pre>
+     */
+    public boolean hasExtraType() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional uint32 extraType = 6;</code>
+     *
+     * <pre>
+     *暂时用不到
+     * </pre>
+     */
+    public int getExtraType() {
+      return extraType_;
+    }
+
+    // optional uint64 extraLastTimeStamp = 7;
+    public static final int EXTRALASTTIMESTAMP_FIELD_NUMBER = 7;
+    private long extraLastTimeStamp_;
+    /**
+     * <code>optional uint64 extraLastTimeStamp = 7;</code>
+     *
+     * <pre>
+     *暂时用不到，上次dingding结束的时间
+     * </pre>
+     */
+    public boolean hasExtraLastTimeStamp() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint64 extraLastTimeStamp = 7;</code>
+     *
+     * <pre>
+     *暂时用不到，上次dingding结束的时间
+     * </pre>
+     */
+    public long getExtraLastTimeStamp() {
+      return extraLastTimeStamp_;
+    }
+
+    // optional uint32 ddDaily = 8;
+    public static final int DDDAILY_FIELD_NUMBER = 8;
+    private int ddDaily_;
+    /**
+     * <code>optional uint32 ddDaily = 8;</code>
+     *
+     * <pre>
+     *当天dingding次数
+     * </pre>
+     */
+    public boolean hasDdDaily() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint32 ddDaily = 8;</code>
+     *
+     * <pre>
+     *当天dingding次数
+     * </pre>
+     */
+    public int getDdDaily() {
+      return ddDaily_;
+    }
+
+    // optional uint32 ddWeekly = 9;
+    public static final int DDWEEKLY_FIELD_NUMBER = 9;
+    private int ddWeekly_;
+    /**
+     * <code>optional uint32 ddWeekly = 9;</code>
+     *
+     * <pre>
+     *当周dingding次数
+     * </pre>
+     */
+    public boolean hasDdWeekly() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional uint32 ddWeekly = 9;</code>
+     *
+     * <pre>
+     *当周dingding次数
+     * </pre>
+     */
+    public int getDdWeekly() {
+      return ddWeekly_;
+    }
+
+    // optional uint32 ddMonthly = 10;
+    public static final int DDMONTHLY_FIELD_NUMBER = 10;
+    private int ddMonthly_;
+    /**
+     * <code>optional uint32 ddMonthly = 10;</code>
+     *
+     * <pre>
+     *当月dingding次数
+     * </pre>
+     */
+    public boolean hasDdMonthly() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional uint32 ddMonthly = 10;</code>
+     *
+     * <pre>
+     *当月dingding次数
+     * </pre>
+     */
+    public int getDdMonthly() {
+      return ddMonthly_;
+    }
+
+    // optional uint32 ddTotal = 11;
+    public static final int DDTOTAL_FIELD_NUMBER = 11;
+    private int ddTotal_;
+    /**
+     * <code>optional uint32 ddTotal = 11;</code>
+     *
+     * <pre>
+     *总的dingding次数
+     * </pre>
+     */
+    public boolean hasDdTotal() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional uint32 ddTotal = 11;</code>
+     *
+     * <pre>
+     *总的dingding次数
+     * </pre>
+     */
+    public int getDdTotal() {
+      return ddTotal_;
+    }
+
+    // optional uint32 ddExtraItemId = 12;
+    public static final int DDEXTRAITEMID_FIELD_NUMBER = 12;
+    private int ddExtraItemId_;
+    /**
+     * <code>optional uint32 ddExtraItemId = 12;</code>
+     *
+     * <pre>
+     *dingding之前选择的道具
+     * </pre>
+     */
+    public boolean hasDdExtraItemId() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional uint32 ddExtraItemId = 12;</code>
+     *
+     * <pre>
+     *dingding之前选择的道具
+     * </pre>
+     */
+    public int getDdExtraItemId() {
+      return ddExtraItemId_;
+    }
+
+    // optional uint32 limit = 13;
+    public static final int LIMIT_FIELD_NUMBER = 13;
+    private int limit_;
+    /**
+     * <code>optional uint32 limit = 13;</code>
+     *
+     * <pre>
+     *限定奖励已领取次数
+     * </pre>
+     */
+    public boolean hasLimit() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional uint32 limit = 13;</code>
+     *
+     * <pre>
+     *限定奖励已领取次数
+     * </pre>
+     */
+    public int getLimit() {
+      return limit_;
+    }
+
+    private void initFields() {
+      extraTimeStamp_ = 0L;
+      extraHasLootTime_ = 0L;
+      extraType_ = 0;
+      extraLastTimeStamp_ = 0L;
+      ddDaily_ = 0;
+      ddWeekly_ = 0;
+      ddMonthly_ = 0;
+      ddTotal_ = 0;
+      ddExtraItemId_ = 0;
+      limit_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, extraTimeStamp_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt64(5, extraHasLootTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt32(6, extraType_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(7, extraLastTimeStamp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt32(8, ddDaily_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeUInt32(9, ddWeekly_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeUInt32(10, ddMonthly_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeUInt32(11, ddTotal_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(12, ddExtraItemId_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeUInt32(13, limit_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(1, extraTimeStamp_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, extraHasLootTime_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(6, extraType_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(7, extraLastTimeStamp_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(8, ddDaily_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(9, ddWeekly_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, ddMonthly_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(11, ddTotal_);
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(12, ddExtraItemId_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(13, limit_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.Base.UserDD parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.Base.UserDD prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.UserDD}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.Base.UserDDOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_UserDD_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_UserDD_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.Base.UserDD.class, com.trans.pixel.protoc.Base.UserDD.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.Base.UserDD.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        extraTimeStamp_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        extraHasLootTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        extraType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        extraLastTimeStamp_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        ddDaily_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        ddWeekly_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        ddMonthly_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        ddTotal_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000080);
+        ddExtraItemId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        limit_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.Base.internal_static_com_trans_pixel_protoc_UserDD_descriptor;
+      }
+
+      public com.trans.pixel.protoc.Base.UserDD getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.Base.UserDD.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.Base.UserDD build() {
+        com.trans.pixel.protoc.Base.UserDD result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.Base.UserDD buildPartial() {
+        com.trans.pixel.protoc.Base.UserDD result = new com.trans.pixel.protoc.Base.UserDD(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.extraTimeStamp_ = extraTimeStamp_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.extraHasLootTime_ = extraHasLootTime_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.extraType_ = extraType_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.extraLastTimeStamp_ = extraLastTimeStamp_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.ddDaily_ = ddDaily_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.ddWeekly_ = ddWeekly_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.ddMonthly_ = ddMonthly_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.ddTotal_ = ddTotal_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.ddExtraItemId_ = ddExtraItemId_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.limit_ = limit_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.Base.UserDD) {
+          return mergeFrom((com.trans.pixel.protoc.Base.UserDD)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.Base.UserDD other) {
+        if (other == com.trans.pixel.protoc.Base.UserDD.getDefaultInstance()) return this;
+        if (other.hasExtraTimeStamp()) {
+          setExtraTimeStamp(other.getExtraTimeStamp());
+        }
+        if (other.hasExtraHasLootTime()) {
+          setExtraHasLootTime(other.getExtraHasLootTime());
+        }
+        if (other.hasExtraType()) {
+          setExtraType(other.getExtraType());
+        }
+        if (other.hasExtraLastTimeStamp()) {
+          setExtraLastTimeStamp(other.getExtraLastTimeStamp());
+        }
+        if (other.hasDdDaily()) {
+          setDdDaily(other.getDdDaily());
+        }
+        if (other.hasDdWeekly()) {
+          setDdWeekly(other.getDdWeekly());
+        }
+        if (other.hasDdMonthly()) {
+          setDdMonthly(other.getDdMonthly());
+        }
+        if (other.hasDdTotal()) {
+          setDdTotal(other.getDdTotal());
+        }
+        if (other.hasDdExtraItemId()) {
+          setDdExtraItemId(other.getDdExtraItemId());
+        }
+        if (other.hasLimit()) {
+          setLimit(other.getLimit());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.Base.UserDD parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.Base.UserDD) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional uint64 extraTimeStamp = 1;
+      private long extraTimeStamp_ ;
+      /**
+       * <code>optional uint64 extraTimeStamp = 1;</code>
+       *
+       * <pre>
+       *当次dingding结束所需时间
+       * </pre>
+       */
+      public boolean hasExtraTimeStamp() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional uint64 extraTimeStamp = 1;</code>
+       *
+       * <pre>
+       *当次dingding结束所需时间
+       * </pre>
+       */
+      public long getExtraTimeStamp() {
+        return extraTimeStamp_;
+      }
+      /**
+       * <code>optional uint64 extraTimeStamp = 1;</code>
+       *
+       * <pre>
+       *当次dingding结束所需时间
+       * </pre>
+       */
+      public Builder setExtraTimeStamp(long value) {
+        bitField0_ |= 0x00000001;
+        extraTimeStamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 extraTimeStamp = 1;</code>
+       *
+       * <pre>
+       *当次dingding结束所需时间
+       * </pre>
+       */
+      public Builder clearExtraTimeStamp() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        extraTimeStamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 extraHasLootTime = 5;
+      private long extraHasLootTime_ ;
+      /**
+       * <code>optional uint64 extraHasLootTime = 5;</code>
+       *
+       * <pre>
+       *暂时用不到，该次dingding已经过的时间
+       * </pre>
+       */
+      public boolean hasExtraHasLootTime() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint64 extraHasLootTime = 5;</code>
+       *
+       * <pre>
+       *暂时用不到，该次dingding已经过的时间
+       * </pre>
+       */
+      public long getExtraHasLootTime() {
+        return extraHasLootTime_;
+      }
+      /**
+       * <code>optional uint64 extraHasLootTime = 5;</code>
+       *
+       * <pre>
+       *暂时用不到，该次dingding已经过的时间
+       * </pre>
+       */
+      public Builder setExtraHasLootTime(long value) {
+        bitField0_ |= 0x00000002;
+        extraHasLootTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 extraHasLootTime = 5;</code>
+       *
+       * <pre>
+       *暂时用不到，该次dingding已经过的时间
+       * </pre>
+       */
+      public Builder clearExtraHasLootTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        extraHasLootTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 extraType = 6;
+      private int extraType_ ;
+      /**
+       * <code>optional uint32 extraType = 6;</code>
+       *
+       * <pre>
+       *暂时用不到
+       * </pre>
+       */
+      public boolean hasExtraType() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional uint32 extraType = 6;</code>
+       *
+       * <pre>
+       *暂时用不到
+       * </pre>
+       */
+      public int getExtraType() {
+        return extraType_;
+      }
+      /**
+       * <code>optional uint32 extraType = 6;</code>
+       *
+       * <pre>
+       *暂时用不到
+       * </pre>
+       */
+      public Builder setExtraType(int value) {
+        bitField0_ |= 0x00000004;
+        extraType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 extraType = 6;</code>
+       *
+       * <pre>
+       *暂时用不到
+       * </pre>
+       */
+      public Builder clearExtraType() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        extraType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 extraLastTimeStamp = 7;
+      private long extraLastTimeStamp_ ;
+      /**
+       * <code>optional uint64 extraLastTimeStamp = 7;</code>
+       *
+       * <pre>
+       *暂时用不到，上次dingding结束的时间
+       * </pre>
+       */
+      public boolean hasExtraLastTimeStamp() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint64 extraLastTimeStamp = 7;</code>
+       *
+       * <pre>
+       *暂时用不到，上次dingding结束的时间
+       * </pre>
+       */
+      public long getExtraLastTimeStamp() {
+        return extraLastTimeStamp_;
+      }
+      /**
+       * <code>optional uint64 extraLastTimeStamp = 7;</code>
+       *
+       * <pre>
+       *暂时用不到，上次dingding结束的时间
+       * </pre>
+       */
+      public Builder setExtraLastTimeStamp(long value) {
+        bitField0_ |= 0x00000008;
+        extraLastTimeStamp_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 extraLastTimeStamp = 7;</code>
+       *
+       * <pre>
+       *暂时用不到，上次dingding结束的时间
+       * </pre>
+       */
+      public Builder clearExtraLastTimeStamp() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        extraLastTimeStamp_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 ddDaily = 8;
+      private int ddDaily_ ;
+      /**
+       * <code>optional uint32 ddDaily = 8;</code>
+       *
+       * <pre>
+       *当天dingding次数
+       * </pre>
+       */
+      public boolean hasDdDaily() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional uint32 ddDaily = 8;</code>
+       *
+       * <pre>
+       *当天dingding次数
+       * </pre>
+       */
+      public int getDdDaily() {
+        return ddDaily_;
+      }
+      /**
+       * <code>optional uint32 ddDaily = 8;</code>
+       *
+       * <pre>
+       *当天dingding次数
+       * </pre>
+       */
+      public Builder setDdDaily(int value) {
+        bitField0_ |= 0x00000010;
+        ddDaily_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 ddDaily = 8;</code>
+       *
+       * <pre>
+       *当天dingding次数
+       * </pre>
+       */
+      public Builder clearDdDaily() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        ddDaily_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 ddWeekly = 9;
+      private int ddWeekly_ ;
+      /**
+       * <code>optional uint32 ddWeekly = 9;</code>
+       *
+       * <pre>
+       *当周dingding次数
+       * </pre>
+       */
+      public boolean hasDdWeekly() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional uint32 ddWeekly = 9;</code>
+       *
+       * <pre>
+       *当周dingding次数
+       * </pre>
+       */
+      public int getDdWeekly() {
+        return ddWeekly_;
+      }
+      /**
+       * <code>optional uint32 ddWeekly = 9;</code>
+       *
+       * <pre>
+       *当周dingding次数
+       * </pre>
+       */
+      public Builder setDdWeekly(int value) {
+        bitField0_ |= 0x00000020;
+        ddWeekly_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 ddWeekly = 9;</code>
+       *
+       * <pre>
+       *当周dingding次数
+       * </pre>
+       */
+      public Builder clearDdWeekly() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        ddWeekly_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 ddMonthly = 10;
+      private int ddMonthly_ ;
+      /**
+       * <code>optional uint32 ddMonthly = 10;</code>
+       *
+       * <pre>
+       *当月dingding次数
+       * </pre>
+       */
+      public boolean hasDdMonthly() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional uint32 ddMonthly = 10;</code>
+       *
+       * <pre>
+       *当月dingding次数
+       * </pre>
+       */
+      public int getDdMonthly() {
+        return ddMonthly_;
+      }
+      /**
+       * <code>optional uint32 ddMonthly = 10;</code>
+       *
+       * <pre>
+       *当月dingding次数
+       * </pre>
+       */
+      public Builder setDdMonthly(int value) {
+        bitField0_ |= 0x00000040;
+        ddMonthly_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 ddMonthly = 10;</code>
+       *
+       * <pre>
+       *当月dingding次数
+       * </pre>
+       */
+      public Builder clearDdMonthly() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        ddMonthly_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 ddTotal = 11;
+      private int ddTotal_ ;
+      /**
+       * <code>optional uint32 ddTotal = 11;</code>
+       *
+       * <pre>
+       *总的dingding次数
+       * </pre>
+       */
+      public boolean hasDdTotal() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional uint32 ddTotal = 11;</code>
+       *
+       * <pre>
+       *总的dingding次数
+       * </pre>
+       */
+      public int getDdTotal() {
+        return ddTotal_;
+      }
+      /**
+       * <code>optional uint32 ddTotal = 11;</code>
+       *
+       * <pre>
+       *总的dingding次数
+       * </pre>
+       */
+      public Builder setDdTotal(int value) {
+        bitField0_ |= 0x00000080;
+        ddTotal_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 ddTotal = 11;</code>
+       *
+       * <pre>
+       *总的dingding次数
+       * </pre>
+       */
+      public Builder clearDdTotal() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        ddTotal_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 ddExtraItemId = 12;
+      private int ddExtraItemId_ ;
+      /**
+       * <code>optional uint32 ddExtraItemId = 12;</code>
+       *
+       * <pre>
+       *dingding之前选择的道具
+       * </pre>
+       */
+      public boolean hasDdExtraItemId() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional uint32 ddExtraItemId = 12;</code>
+       *
+       * <pre>
+       *dingding之前选择的道具
+       * </pre>
+       */
+      public int getDdExtraItemId() {
+        return ddExtraItemId_;
+      }
+      /**
+       * <code>optional uint32 ddExtraItemId = 12;</code>
+       *
+       * <pre>
+       *dingding之前选择的道具
+       * </pre>
+       */
+      public Builder setDdExtraItemId(int value) {
+        bitField0_ |= 0x00000100;
+        ddExtraItemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 ddExtraItemId = 12;</code>
+       *
+       * <pre>
+       *dingding之前选择的道具
+       * </pre>
+       */
+      public Builder clearDdExtraItemId() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        ddExtraItemId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 limit = 13;
+      private int limit_ ;
+      /**
+       * <code>optional uint32 limit = 13;</code>
+       *
+       * <pre>
+       *限定奖励已领取次数
+       * </pre>
+       */
+      public boolean hasLimit() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional uint32 limit = 13;</code>
+       *
+       * <pre>
+       *限定奖励已领取次数
+       * </pre>
+       */
+      public int getLimit() {
+        return limit_;
+      }
+      /**
+       * <code>optional uint32 limit = 13;</code>
+       *
+       * <pre>
+       *限定奖励已领取次数
+       * </pre>
+       */
+      public Builder setLimit(int value) {
+        bitField0_ |= 0x00000200;
+        limit_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 limit = 13;</code>
+       *
+       * <pre>
+       *限定奖励已领取次数
+       * </pre>
+       */
+      public Builder clearLimit() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        limit_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.UserDD)
+    }
+
+    static {
+      defaultInstance = new UserDD(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.UserDD)
   }
 
   public interface JewelPoolOrBuilder
@@ -34596,6 +35474,11 @@ public final class Base {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_UserDD_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_UserDD_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_JewelPool_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -34724,7 +35607,7 @@ public final class Base {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\206\017\n" +
+      "\n\nBase.proto\022\026com.trans.pixel.protoc\"\346\r\n" +
       "\010UserInfo\022\n\n\002id\030\001 \002(\003\022\017\n\007account\030\002 \001(\t\022\017" +
       "\n\007session\030  \001(\t\022\014\n\004icon\030\r \001(\005\022\014\n\004name\030\003 " +
       "\001(\t\022\020\n\010serverId\030\004 \001(\005\022\017\n\007unionId\030\016 \001(\005\022\021" +
@@ -34761,102 +35644,104 @@ public final class Base {
       "d\030H \001(\005\022\023\n\013questStatus\030I \001(\005\022\023\n\013zhaohuan" +
       "shi\030J \001(\005\022\021\n\tzhujueExp\030K \001(\r\022\016\n\006vipExp\030L" +
       " \001(\r\022\020\n\010merlevel\030M \001(\005\022\023\n\013useTalentId\030N " +
-      "\001(\r\022\026\n\016extraTimeStamp\030O \001(\003\022\023\n\013extraCoun" +
-      "t1\030P \001(\r\022\023\n\013extraCount2\030Q \001(\r\022\023\n\013extraCo" +
-      "unt3\030R \001(\r\022\030\n\020extraHasLootTime\030S \001(\003\022\021\n\t",
-      "extraType\030T \001(\r\022\032\n\022extraLastTimeStamp\030U " +
-      "\001(\003\022\020\n\010userType\030V \001(\r\022\025\n\rgoldSavingBox\030W" +
+      "\001(\r\022\020\n\010userType\030V \001(\r\022\025\n\rgoldSavingBox\030W" +
       " \001(\r\022\024\n\014expSavingBox\030X \001(\r\022\r\n\005title\030Y \001(" +
-      "\r\022\r\n\005frame\030Z \001(\r\022\027\n\017recommandUserId\030[ \001(" +
+      "\r\022\r\n\005frame\030Z \001(\r\022\027\n\017recommandUserId\030[ \001(",
       "\004\022\021\n\tfriendVip\030\\ \001(\r\022\020\n\010talentsp\030] \001(\005\022\020" +
       "\n\010unionExp\030^ \001(\r\022\016\n\006markId\030_ \001(\t\022\027\n\017reco" +
       "mmandMarkId\030` \001(\t\022\022\n\ntitleOrder\030a \001(\r\022\020\n" +
       "\010signName\030b \001(\t\022\014\n\004rite\030c \001(\r\022\027\n\017lottery" +
       "ExpCount\030d \001(\r\022\014\n\004mohe\030e \001(\r\022\017\n\007heilong\030" +
-      "f \001(\r\"\210\001\n\tJewelPool\022\r\n\005order\030\001 \001(\005\022\023\n\013ta",
-      "rgetcount\030\002 \001(\005\0222\n\006reward\030\004 \001(\0132\".com.tr" +
-      "ans.pixel.protoc.RewardInfo\022\020\n\010rewarded\030" +
-      "\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"M\n\rJewelPoolLis" +
-      "t\022\n\n\002id\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!.com.trans" +
-      ".pixel.protoc.JewelPool\"E\n\016JewelPoolList" +
-      "s\0223\n\004data\030\001 \003(\0132%.com.trans.pixel.protoc" +
-      ".JewelPoolList\"Z\n\005Enemy\022\017\n\007enemyid\030\002 \001(\005" +
-      "\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001(\005\022\022\n\nloot" +
-      "weight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"I\n\nEnemyGroup" +
-      "\022,\n\005enemy\030\001 \003(\0132\035.com.trans.pixel.protoc",
-      ".Enemy\022\r\n\005hpbar\030\002 \001(\005\"6\n\023UnionBossUserRe" +
-      "cord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percent\030\002 \001(\005\"\221\003" +
-      "\n\017UnionBossRecord\022\016\n\006bossId\030\001 \001(\005\022\n\n\002hp\030" +
-      "\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAttackHp\030\004 \001" +
-      "(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans.pixel.prot" +
-      "oc.UserRank\022\021\n\tstartTime\030\006 \001(\t\022\r\n\005count\030" +
-      "\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuserRecord\030\t \003" +
-      "(\0132+.com.trans.pixel.protoc.UnionBossUse" +
-      "rRecord\022\016\n\006status\030\n \001(\r\"\207\001\n\017UNIONBOSSSTA" +
-      "TUS\022\033\n\027UNION_ZHANLI_NOT_ENOUGH\020\001\022!\n\035UNIO",
-      "N_BOSS_USER_HAS_NOT_TIMES\020\002\022\025\n\021UNION_BOS" +
-      "S_IS_END\020\003\022\035\n\031UNION_BOSS_IS_BEING_FIGHT\020" +
-      "\004\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com.trans.pixe" +
-      "l.protoc.UserInfo\022\r\n\005score\030\002 \002(\005\022\014\n\004rank" +
-      "\030\003 \001(\005\"\260\001\n\nUserTalent\022\n\n\002id\030\001 \002(\005\022\r\n\005lev" +
-      "el\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com.trans.pixe" +
-      "l.protoc.UserTalentOrder\0226\n\005equip\030\005 \003(\0132" +
-      "\'.com.trans.pixel.protoc.UserTalentEquip" +
-      "\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 \001(\r\".\n\nTeamEngine\022" +
-      "\n\n\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 \001(\t\"\360\001\n\004Te",
-      "am\022.\n\004user\030\001 \001(\0132 .com.trans.pixel.proto" +
-      "c.UserInfo\0222\n\010heroInfo\030\002 \003(\0132 .com.trans" +
-      ".pixel.protoc.HeroInfo\0226\n\nuserTalent\030\004 \001" +
-      "(\0132\".com.trans.pixel.protoc.UserTalent\022\024" +
-      "\n\014rolePosition\030\005 \001(\005\0226\n\nteamEngine\030\006 \003(\013" +
-      "2\".com.trans.pixel.protoc.TeamEngine\"@\n\017" +
-      "UserTalentOrder\022\r\n\005order\030\001 \002(\005\022\017\n\007skillI" +
-      "d\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"Q\n\017UserTalentEqui" +
-      "p\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030\002 \001(\005\022\r\n\005l" +
-      "evel\030\003 \001(\005\022\r\n\005order\030\004 \001(\r\"\241\001\n\010UserRank\022\014",
-      "\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\003\022*\n\004team\030\003 \001(\0132" +
-      "\034.com.trans.pixel.protoc.Team\022\016\n\006zhanli\030" +
-      "\006 \001(\r\022\016\n\006score2\030\t \001(\r\022.\n\004user\030\n \001(\0132 .co" +
-      "m.trans.pixel.protoc.UserInfo\"W\n\tClearIn" +
-      "fo\022\020\n\010position\030\001 \002(\005\022\017\n\007clearId\030\002 \002(\005\022\r\n" +
-      "\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004rare\030\005 \001(\005\"0" +
-      "\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022\n\nskillLev" +
-      "el\030\002 \002(\005\"b\n\017UserEquipPokede\022\016\n\006itemId\030\001 " +
-      "\002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 \001(\r\022\020\n\010las" +
-      "tTime\030\004 \001(\r\022\017\n\007display\030\005 \001(\r\"\207\003\n\010HeroInf",
-      "o\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001(\005\022\014\n\004rare" +
-      "\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005skill\030\005 \003(\0132!" +
-      ".com.trans.pixel.protoc.SkillInfo\022\r\n\005val" +
-      "ue\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006heroId\030\010 \001(\005\022\020" +
-      "\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001(\010\022\r\n\005coun" +
-      "t\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.trans.pixel" +
-      ".protoc.ClearInfo\022\022\n\nstrengthen\030\r \001(\005\022\014\n" +
-      "\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<\n\013equipPok" +
-      "ede\030\020 \001(\0132\'.com.trans.pixel.protoc.UserE" +
-      "quipPokede\022\n\n\002sp\030\021 \001(\005\"\314\001\n\nRewardInfo\022\016\n",
-      "\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005count\030\003 \001" +
-      "(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030\013 \001(\002\022\021\n\ts" +
-      "tartloot\030\014 \001(\005\022\016\n\006counta\030\005 \001(\002\022\016\n\006countb" +
-      "\030\006 \001(\002\022\014\n\004item\030\007 \001(\t\022\017\n\007eventid\030\010 \001(\r\022\r\n" +
-      "\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"k\n\013RewardI" +
-      "nfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005co" +
-      "unt\030\003 \001(\002\022\016\n\006weight\030\004 \001(\002\022\017\n\007weightb\030\013 \001" +
-      "(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013MultiReward\022\n\n\002id\030" +
-      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 \003(\0132\".com." +
-      "trans.pixel.protoc.RewardInfo\"|\n\004Task\022\020\n",
-      "\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003des\030\003 \001" +
-      "(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006reward\030\005 \003(\0132" +
-      "\".com.trans.pixel.protoc.RewardInfo\"\205\001\n\005" +
-      "Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventid\030\002 \001(\005\022\014\n" +
-      "\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n\010targetid\030" +
-      "\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level\030\n \001(\005\022\r\n\005" +
-      "count\030\013 \001(\005\"\310\001\n\tFightInfo\022\n\n\002id\030\003 \001(\005\022/\n" +
-      "\005enemy\030\004 \001(\0132 .com.trans.pixel.protoc.Us" +
-      "erInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tfightData\030\002" +
-      " \001(\t\022.\n\004user\030\005 \001(\0132 .com.trans.pixel.pro",
-      "toc.UserInfo\022\014\n\004time\030\006 \001(\t\022\r\n\005score\030\007 \001(" +
-      "\r\022\013\n\003win\030\010 \001(\010*=\n\016FIGHTINFO_TYPE\022\r\n\tTYPE" +
-      "_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022\r\n\tTYPE_RANK\020\002"
+      "f \001(\r\"\326\001\n\006UserDD\022\026\n\016extraTimeStamp\030\001 \001(\004" +
+      "\022\030\n\020extraHasLootTime\030\005 \001(\004\022\021\n\textraType\030" +
+      "\006 \001(\r\022\032\n\022extraLastTimeStamp\030\007 \001(\004\022\017\n\007ddD" +
+      "aily\030\010 \001(\r\022\020\n\010ddWeekly\030\t \001(\r\022\021\n\tddMonthl" +
+      "y\030\n \001(\r\022\017\n\007ddTotal\030\013 \001(\r\022\025\n\rddExtraItemI",
+      "d\030\014 \001(\r\022\r\n\005limit\030\r \001(\r\"\210\001\n\tJewelPool\022\r\n\005" +
+      "order\030\001 \001(\005\022\023\n\013targetcount\030\002 \001(\005\0222\n\006rewa" +
+      "rd\030\004 \001(\0132\".com.trans.pixel.protoc.Reward" +
+      "Info\022\020\n\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(" +
+      "\005\"M\n\rJewelPoolList\022\n\n\002id\030\001 \001(\005\0220\n\005order\030" +
+      "\002 \003(\0132!.com.trans.pixel.protoc.JewelPool" +
+      "\"E\n\016JewelPoolLists\0223\n\004data\030\001 \003(\0132%.com.t" +
+      "rans.pixel.protoc.JewelPoolList\"Z\n\005Enemy" +
+      "\022\017\n\007enemyid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007enem" +
+      "ylv\030\004 \001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 ",
+      "\001(\005\"I\n\nEnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com.t" +
+      "rans.pixel.protoc.Enemy\022\r\n\005hpbar\030\002 \001(\005\"6" +
+      "\n\023UnionBossUserRecord\022\016\n\006userId\030\001 \001(\003\022\017\n" +
+      "\007percent\030\002 \001(\005\"\221\003\n\017UnionBossRecord\022\016\n\006bo" +
+      "ssId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022" +
+      "\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com" +
+      ".trans.pixel.protoc.UserRank\022\021\n\tstartTim" +
+      "e\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022" +
+      "?\n\nuserRecord\030\t \003(\0132+.com.trans.pixel.pr" +
+      "otoc.UnionBossUserRecord\022\016\n\006status\030\n \001(\r",
+      "\"\207\001\n\017UNIONBOSSSTATUS\022\033\n\027UNION_ZHANLI_NOT" +
+      "_ENOUGH\020\001\022!\n\035UNION_BOSS_USER_HAS_NOT_TIM" +
+      "ES\020\002\022\025\n\021UNION_BOSS_IS_END\020\003\022\035\n\031UNION_BOS" +
+      "S_IS_BEING_FIGHT\020\004\"S\n\004Rank\022.\n\004user\030\001 \002(\013" +
+      "2 .com.trans.pixel.protoc.UserInfo\022\r\n\005sc" +
+      "ore\030\002 \002(\005\022\014\n\004rank\030\003 \001(\005\"\260\001\n\nUserTalent\022\n" +
+      "\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\013" +
+      "2\'.com.trans.pixel.protoc.UserTalentOrde" +
+      "r\0226\n\005equip\030\005 \003(\0132\'.com.trans.pixel.proto" +
+      "c.UserTalentEquip\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 \001",
+      "(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014composeS" +
+      "kill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\0222\n\010heroInfo\030" +
+      "\002 \003(\0132 .com.trans.pixel.protoc.HeroInfo\022" +
+      "6\n\nuserTalent\030\004 \001(\0132\".com.trans.pixel.pr" +
+      "otoc.UserTalent\022\024\n\014rolePosition\030\005 \001(\005\0226\n" +
+      "\nteamEngine\030\006 \003(\0132\".com.trans.pixel.prot" +
+      "oc.TeamEngine\"@\n\017UserTalentOrder\022\r\n\005orde" +
+      "r\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"" +
+      "Q\n\017UserTalentEquip\022\020\n\010position\030\001 \001(\005\022\016\n\006",
+      "itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022\r\n\005order\030\004 \001" +
+      "(\r\"\241\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001" +
+      "(\003\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.proto" +
+      "c.Team\022\016\n\006zhanli\030\006 \001(\r\022\016\n\006score2\030\t \001(\r\022." +
+      "\n\004user\030\n \001(\0132 .com.trans.pixel.protoc.Us" +
+      "erInfo\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n" +
+      "\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(" +
+      "\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030" +
+      "\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"b\n\017UserEquipPo" +
+      "kede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005o",
+      "rder\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\022\017\n\007display\030" +
+      "\005 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005le" +
+      "vel\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005" +
+      "\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.protoc" +
+      ".SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022" +
+      "\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isL" +
+      "ock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132" +
+      "!.com.trans.pixel.protoc.ClearInfo\022\022\n\nst" +
+      "rengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030" +
+      "\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.trans.p",
+      "ixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"" +
+      "\314\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002" +
+      " \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007w" +
+      "eightb\030\013 \001(\002\022\021\n\tstartloot\030\014 \001(\005\022\016\n\006count" +
+      "a\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004item\030\007 \001(\t\022\017\n" +
+      "\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime" +
+      "\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n\006weight\030\004 \001" +
+      "(\002\022\017\n\007weightb\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013M" +
+      "ultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004",
+      "loot\030\003 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name" +
+      "\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r" +
+      "\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo\"\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n" +
+      "\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004" +
+      " \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r" +
+      "\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"\310\001\n\tFightIn" +
+      "fo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com.tran" +
+      "s.pixel.protoc.UserInfo\022\021\n\tfightInfo\030\001 \002",
+      "(\t\022\021\n\tfightData\030\002 \001(\t\022.\n\004user\030\005 \001(\0132 .co" +
+      "m.trans.pixel.protoc.UserInfo\022\014\n\004time\030\006 " +
+      "\001(\t\022\r\n\005score\030\007 \001(\r\022\013\n\003win\030\010 \001(\010*=\n\016FIGHT" +
+      "INFO_TYPE\022\r\n\tTYPE_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022" +
+      "\r\n\tTYPE_RANK\020\002"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -34868,147 +35753,153 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserInfo_descriptor,
-              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "ExtraTimeStamp", "ExtraCount1", "ExtraCount2", "ExtraCount3", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", "Frame", "RecommandUserId", "FriendVip", "Talentsp", "UnionExp", "MarkId", "RecommandMarkId", "TitleOrder", "SignName", "Rite", "LotteryExpCount", "Mohe", "Heilong", });
-          internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
+              new java.lang.String[] { "Id", "Account", "Session", "Icon", "Name", "ServerId", "UnionId", "UnionName", "UnionJob", "Vip", "Jewel", "Coin", "Exp", "PointPVP", "PointLadder", "PointExpedition", "PointUnion", "AreaEnergy", "AreaEnergyTime", "FreeLotteryCoinTime", "FreeLotteryCoinLeftTime", "FreeLotteryJewelTime", "FreeContractTime", "LadderPurchaseTimes", "LadderModeLeftTimes", "PVPMineLeftTime", "PVPInbreakTime", "SignCount", "LoginDays", "LastSignTime", "Zhanli", "LastLoginTime", "HeroLimit", "ComposeSkill", "RechargeRecord", "VipLibao1", "VipLibao2", "RegisterTime", "TotalSignCount", "FirstGetHeroId", "Greenhand", "Advance", "ShouchongIsComplete", "ShouchongIsGetReward", "GrowJewelCount", "GrowExpCount", "Skill", "Failed", "PurchaseContractLeft", "ZhanliMax", "SevenLoginDays", "SevenSignStatus", "UnionBossRecord", "UnionIcon", "LotteryCoinCount", "Task1Order", "Task2Record", "QuestStatus", "Zhaohuanshi", "ZhujueExp", "VipExp", "Merlevel", "UseTalentId", "UserType", "GoldSavingBox", "ExpSavingBox", "Title", "Frame", "RecommandUserId", "FriendVip", "Talentsp", "UnionExp", "MarkId", "RecommandMarkId", "TitleOrder", "SignName", "Rite", "LotteryExpCount", "Mohe", "Heilong", });
+          internal_static_com_trans_pixel_protoc_UserDD_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_com_trans_pixel_protoc_UserDD_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_UserDD_descriptor,
+              new java.lang.String[] { "ExtraTimeStamp", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "DdDaily", "DdWeekly", "DdMonthly", "DdTotal", "DdExtraItemId", "Limit", });
+          internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPool_descriptor,
               new java.lang.String[] { "Order", "Targetcount", "Reward", "Rewarded", "Recharged", });
           internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_com_trans_pixel_protoc_JewelPoolList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPoolList_descriptor,
               new java.lang.String[] { "Id", "Order", });
           internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_com_trans_pixel_protoc_JewelPoolLists_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_JewelPoolLists_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Enemy_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_com_trans_pixel_protoc_Enemy_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Enemy_descriptor,
               new java.lang.String[] { "Enemyid", "Count", "Enemylv", "Lootweight", "Loot", });
           internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_com_trans_pixel_protoc_EnemyGroup_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_EnemyGroup_descriptor,
               new java.lang.String[] { "Enemy", "Hpbar", });
           internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_com_trans_pixel_protoc_UnionBossUserRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossUserRecord_descriptor,
               new java.lang.String[] { "UserId", "Percent", });
           internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_com_trans_pixel_protoc_UnionBossRecord_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UnionBossRecord_descriptor,
               new java.lang.String[] { "BossId", "Hp", "EndTime", "MyAttackHp", "Ranks", "StartTime", "Count", "Percent", "UserRecord", "Status", });
           internal_static_com_trans_pixel_protoc_Rank_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_com_trans_pixel_protoc_Rank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Rank_descriptor,
               new java.lang.String[] { "User", "Score", "Rank", });
           internal_static_com_trans_pixel_protoc_UserTalent_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_com_trans_pixel_protoc_UserTalent_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalent_descriptor,
               new java.lang.String[] { "Id", "Level", "Skill", "Equip", "Exp", "Sp", });
           internal_static_com_trans_pixel_protoc_TeamEngine_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_com_trans_pixel_protoc_TeamEngine_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_TeamEngine_descriptor,
               new java.lang.String[] { "Id", "ComposeSkill", });
           internal_static_com_trans_pixel_protoc_Team_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_com_trans_pixel_protoc_Team_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Team_descriptor,
               new java.lang.String[] { "User", "HeroInfo", "UserTalent", "RolePosition", "TeamEngine", });
           internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_com_trans_pixel_protoc_UserTalentOrder_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentOrder_descriptor,
               new java.lang.String[] { "Order", "SkillId", "Level", });
           internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_com_trans_pixel_protoc_UserTalentEquip_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserTalentEquip_descriptor,
               new java.lang.String[] { "Position", "ItemId", "Level", "Order", });
           internal_static_com_trans_pixel_protoc_UserRank_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_com_trans_pixel_protoc_UserRank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserRank_descriptor,
               new java.lang.String[] { "Rank", "Dps", "Team", "Zhanli", "Score2", "User", });
           internal_static_com_trans_pixel_protoc_ClearInfo_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_com_trans_pixel_protoc_ClearInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ClearInfo_descriptor,
               new java.lang.String[] { "Position", "ClearId", "Count", "Id", "Rare", });
           internal_static_com_trans_pixel_protoc_SkillInfo_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_SkillInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_SkillInfo_descriptor,
               new java.lang.String[] { "SkillId", "SkillLevel", });
           internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_UserEquipPokede_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserEquipPokede_descriptor,
               new java.lang.String[] { "ItemId", "Level", "Order", "LastTime", "Display", });
           internal_static_com_trans_pixel_protoc_HeroInfo_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_HeroInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_HeroInfo_descriptor,
               new java.lang.String[] { "InfoId", "Level", "Rare", "EquipId", "Skill", "Value", "Star", "HeroId", "Position", "IsLock", "Count", "Clear", "Strengthen", "Rank", "Fetters", "EquipPokede", "Sp", });
           internal_static_com_trans_pixel_protoc_RewardInfo_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RewardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo_descriptor,
               new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Startloot", "Counta", "Countb", "Item", "Eventid", "Rmbid", "Lastime", });
           internal_static_com_trans_pixel_protoc_RewardInfo2_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_RewardInfo2_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RewardInfo2_descriptor,
               new java.lang.String[] { "Itemid", "Name", "Count", "Weight", "Weightb", "Countb", });
           internal_static_com_trans_pixel_protoc_MultiReward_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_MultiReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MultiReward_descriptor,
               new java.lang.String[] { "Id", "Name", "Loot", });
           internal_static_com_trans_pixel_protoc_Task_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_Task_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Task_descriptor,
               new java.lang.String[] { "Targetid", "Name", "Des", "Targetcount", "Reward", });
           internal_static_com_trans_pixel_protoc_Event_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_Event_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Event_descriptor,
               new java.lang.String[] { "Order", "Eventid", "Name", "Daguan", "Targetid", "Weight", "Level", "Count", });
           internal_static_com_trans_pixel_protoc_FightInfo_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_FightInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_FightInfo_descriptor,

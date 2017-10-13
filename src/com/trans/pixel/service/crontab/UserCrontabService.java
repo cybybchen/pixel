@@ -2,6 +2,8 @@ package com.trans.pixel.service.crontab;
 
 import javax.annotation.Resource;
 
+import net.sf.json.JSONObject;
+
 import org.apache.log4j.Logger;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.UserAchieveService;
 import com.trans.pixel.service.UserActivityService;
 import com.trans.pixel.service.UserClearService;
+import com.trans.pixel.service.UserDDService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFoodService;
 import com.trans.pixel.service.UserHeroService;
@@ -29,8 +32,6 @@ import com.trans.pixel.service.redis.RaidRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
 import com.trans.pixel.service.redis.TeamRaidRedisService;
 import com.trans.pixel.utils.ConfigUtil;
-
-import net.sf.json.JSONObject;
 
 @Service
 public class UserCrontabService {
@@ -77,6 +78,8 @@ public class UserCrontabService {
 	private TeamRaidRedisService teamRaidService;
 	@Resource
 	private UserLootRewardTaskService userLootRewardTaskService;
+	@Resource
+	private UserDDService userDDService;
 	
 	@Scheduled(cron = "0 0/5 * * * ? ")
 //	@Transactional(rollbackFor=Exception.class)
@@ -247,6 +250,11 @@ public class UserCrontabService {
 			long userId = Long.parseLong(keys[0]);
 			int id = Integer.parseInt(keys[1]);
 			userLootRewardTaskService.updateRaidToDB(userId, id);
+		}
+		while ((key = userDDService.popDBKey()) != null) {
+			String keys[] = key.split("#");
+			long userId = Long.parseLong(keys[0]);
+			userDDService.updateToDB(userId);
 		}
 		}catch(Exception e){
 			logger.error(e.getMessage(), e);

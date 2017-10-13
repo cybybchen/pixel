@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.protoc.Base.JewelPool;
 import com.trans.pixel.protoc.Base.UnionBossRecord;
+import com.trans.pixel.protoc.Base.UserDD;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.service.LibaoService;
 import com.trans.pixel.service.redis.RedisService;
@@ -126,13 +127,6 @@ public class UserBean {
 	private int rewardTaskIndex = 0;
 	private int merlevel = 1;
 	private int useTalentId = 0;
-	private long extraTimeStamp = 0;
-	private int extraCount1 = 0;
-	private int extraCount2 = 0;
-	private int extraCount3 = 0;
-	private long extraHasLootTime = 0;
-	private int extraType = 0;
-	private long extraLastTimeStamp = 0;
 	private int userType = 0;
 	private int goldSavingBox = 0;
 	private int expSavingBox = 0;
@@ -1265,53 +1259,11 @@ public class UserBean {
 	public void setUseTalentId(int useTalentId) {
 		this.useTalentId = useTalentId;
 	}
-	public long getExtraTimeStamp() {
-		return extraTimeStamp;
-	}
-	public void setExtraTimeStamp(long extraTimeStamp) {
-		this.extraTimeStamp = extraTimeStamp;
-	}
-	public int getExtraCount1() {
-		return extraCount1;
-	}
-	public void setExtraCount1(int extraCount1) {
-		this.extraCount1 = extraCount1;
-	}
-	public int getExtraCount2() {
-		return extraCount2;
-	}
-	public void setExtraCount2(int extraCount2) {
-		this.extraCount2 = extraCount2;
-	}
-	public int getExtraCount3() {
-		return extraCount3;
-	}
-	public void setExtraCount3(int extraCount3) {
-		this.extraCount3 = extraCount3;
-	}
-	public long getExtraHasLootTime() {
-		return extraHasLootTime;
-	}
-	public void setExtraHasLootTime(long extraHasLootTime) {
-		this.extraHasLootTime = extraHasLootTime;
-	}
-	public int getExtraType() {
-		return extraType;
-	}
-	public void setExtraType(int extraType) {
-		this.extraType = extraType;
-	}
 //	public String getName() {
 ////		return name;
 //	}
 	public void setName(String name) {
 //		this.name = name;
-	}
-	public long getExtraLastTimeStamp() {
-		return extraLastTimeStamp;
-	}
-	public void setExtraLastTimeStamp(long extraLastTimeStamp) {
-		this.extraLastTimeStamp = extraLastTimeStamp;
 	}
 	public int getUserType() {
 		if(userType < 1)
@@ -1585,16 +1537,7 @@ public class UserBean {
 		builder.setVipExp(vipExp);
 		builder.setMerlevel(merlevel);
 		builder.setUseTalentId(useTalentId);
-		if (extraTimeStamp == 0)
-			builder.setExtraTimeStamp(0);
-		else
-			builder.setExtraTimeStamp(extraTimeStamp + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - extraHasLootTime);
-		builder.setExtraCount1(extraCount1);
-		builder.setExtraCount2(extraCount2);
-		builder.setExtraCount3(extraCount3);
-		builder.setExtraType(extraType);
-		builder.setExtraHasLootTime(extraHasLootTime);
-		builder.setExtraLastTimeStamp(extraLastTimeStamp + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
+		
 		builder.setUserType(userType);
 		builder.setGoldSavingBox(goldSavingBox);
 		builder.setExpSavingBox(expSavingBox);

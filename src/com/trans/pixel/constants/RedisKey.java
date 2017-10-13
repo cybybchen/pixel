@@ -67,6 +67,7 @@ public class RedisKey {
 	public static final String USERTEAMRAID_PREFIX = PREFIX+"UserTeamRaid_";
 	public static final String USER_RECOMMAND_PREFIX = PREFIX + "UserRecommand_";
 	public final static String USER_SAVE_FIGHT_PREFIX = PREFIX + "user_save_fight_";
+	public final static String USER_DD_PREFIX = PREFIX + "user_dd_";
 
 
 	public final static String VIP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
@@ -446,4 +447,8 @@ public class RedisKey {
 	public static final String USER_REWARDTASK_EVENTID_STATUS_PREFIX = PREFIX + "rewardtask_eventid_status_";
 	public static final String USER_REWARDTASK_LOOT_PREFIX = PREFIX + "rewardtask_loot_";
 	public static final String USER_LOOTRAID_PREFIX = PREFIX + "lootraid_";
+	
+	//fanqie
+	public static final String FANQIE_KEY = PREFIX + CONFIG_PREFIX + "fanqie";
+	public static final String DINGDING_KEY = PREFIX + CONFIG_PREFIX + "dingding";
 }

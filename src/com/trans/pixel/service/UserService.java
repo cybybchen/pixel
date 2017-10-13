@@ -20,14 +20,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.ZSetOperations.TypedTuple;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
-import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.mapper.UserLibaoMapper;
 import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -95,6 +91,8 @@ public class UserService {
 	private RewardService rewardService;
 	@Resource
 	private UserRecommandService userRecommandService;
+	@Resource
+	private UserDDService userDDService;
 	
 	/**
 	 * 只能自己调用，不要调用其他用户
@@ -162,6 +160,12 @@ public class UserService {
 		}
 		logger.info(user.getId()+":"+user.getRedisTime() +"<"+ today0+" init data!");
 		//每日首次登陆
+		
+		/**
+		 * 刷新dingding
+		 */
+		userDDService.refreshUserDD(user);
+		
 		user.setLastLoginTime(DateUtil.getCurrentDate(TimeConst.DEFAULT_DATETIME_FORMAT));
 		user.setRedisTime(today0);
 		user.setNextactive(100);
@@ -183,11 +187,6 @@ public class UserService {
 		user.setLotteryExpCount(0);
 		user.setBlackShopRefreshTime(0);
 		user.setUnionBossMap(new HashMap<String, Integer>());
-		
-		user.setExtraCount1(4);
-		user.setExtraCount2(4);
-		user.setExtraCount3(4);
-		
 		user.setLadderModeRewardCount(0);//竞技场额外奖励每天5次
 		
 		handleVipDailyReward(user);
@@ -618,56 +617,6 @@ public class UserService {
 	}
 	public long nextDay(int hour){
 		return RedisService.nextDay(hour);
-	}
-	
-	public ResultConst handleExtra(UserBean user, int status, int type, List<RewardBean> rewardList) {
-		long current = System.currentTimeMillis();
-		if (status == 5) {//giveup
-			user.setExtraTimeStamp(0);
-			user.setExtraHasLootTime(0);
-			user.setExtraLastTimeStamp(0);
-			user.setExtraType(0);
-		} else if (status == 4) {//continue
-			user.setExtraTimeStamp(current);;
-		} else if (status == 3) {//pause
-			user.setExtraHasLootTime(current - user.getExtraTimeStamp());
-			user.setExtraTimeStamp(0);
-		} else if (status == 2) {//end
-			if (System.currentTimeMillis() + user.getExtraHasLootTime() - user.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
-				
-				switch (user.getExtraType()) {
-				case 1:
-					user.setExtraCount1(user.getExtraCount1() - 1);
-					break;
-				case 2:
-					user.setExtraCount2(user.getExtraCount2() - 1);
-					break;
-				case 3:
-					user.setExtraCount3(user.getExtraCount3() - 1);
-					break;
-				default:
-					break;
-				}
-				if (user.getExtraCount1() < 0 || user.getExtraCount2() < 0 || user.getExtraCount3() < 0)
-					return ErrorConst.NOT_ENOUGH_PROP;
-				
-				rewardList.add(RewardBean.init(35003, 1));
-			}
-			
-			user.setExtraTimeStamp(0);
-			user.setExtraHasLootTime(0);
-			user.setExtraLastTimeStamp(current);
-			user.setExtraType(0);
-		} else if (status == 1) {//start
-			if (user.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() > 0)
-				return ErrorConst.TIME_IS_NOT_OVER_ERROR;
-			
-			user.setExtraType(type);
-			user.setExtraTimeStamp(current);
-		}
-		
-		updateUser(user);
-		return SuccessConst.ACTIVITY_REWARD_SUCCESS;
 	}
 	
 	private int randomUserType() {

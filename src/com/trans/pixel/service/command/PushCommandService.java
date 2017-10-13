@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RewardConst;
+import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.HeroInfoBean;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.MessageBoardBean;
@@ -27,12 +28,14 @@ import com.trans.pixel.model.userinfo.UserTeamBean;
 import com.trans.pixel.protoc.ActivityProto.ResponseAchieveListCommand;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.UserDD;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.EquipProto.ResponseEquipPokedeCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseGetUserEquipCommand;
 import com.trans.pixel.protoc.EquipProto.ResponseUserPropCommand;
+import com.trans.pixel.protoc.ExtraProto.ResponseUserDDCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserFoodCommand;
 import com.trans.pixel.protoc.HeroProto.ResponseUserPokedeCommand;
@@ -69,6 +72,7 @@ import com.trans.pixel.service.MessageService;
 import com.trans.pixel.service.PvpMapService;
 import com.trans.pixel.service.UnionService;
 import com.trans.pixel.service.UserAchieveService;
+import com.trans.pixel.service.UserDDService;
 import com.trans.pixel.service.UserEquipPokedeService;
 import com.trans.pixel.service.UserEquipService;
 import com.trans.pixel.service.UserFoodService;
@@ -126,6 +130,8 @@ public class PushCommandService extends BaseCommandService {
 	private UserRewardTaskService userRewardTaskService;
 	@Resource
 	private UnionService unionService;
+	@Resource
+	private UserDDService userDDService;
 	
 //	public void pushLootResultCommand(Builder responseBuilder, UserBean user) {
 //		user = lootService.updateLootResult(user);
@@ -229,6 +235,33 @@ public class PushCommandService extends BaseCommandService {
 //		}
 		builder.setUser(userInfo);
 		responseBuilder.setUserInfoCommand(builder.build());
+	}
+	
+	public void pushUserDDCommand(Builder responseBuilder, UserBean user, UserDD userdd) {
+		ResponseUserDDCommand.Builder builder = ResponseUserDDCommand.newBuilder();
+		UserDD.Builder ddBuilder = UserDD.newBuilder();
+		if (userdd != null)
+			ddBuilder = UserDD.newBuilder(userdd);
+		if (ddBuilder.getExtraTimeStamp() == 0)
+			ddBuilder.setExtraTimeStamp(0);
+		else
+			ddBuilder.setExtraTimeStamp(ddBuilder.getExtraTimeStamp() + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - ddBuilder.getExtraHasLootTime());
+//		ddBuilder.setExtraCount1(ddBuilder.getExtraCount1());
+//		ddBuilder.setExtraCount2(ddBuilder.getExtraCount2());
+//		ddBuilder.setExtraCount3(ddBuilder.getExtraCount3());
+//		ddBuilder.setExtraType(ddBuilder.getExtraType());
+//		ddBuilder.setExtraHasLootTime(ddBuilder.getExtraHasLootTime());
+		ddBuilder.setExtraLastTimeStamp(ddBuilder.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
+		
+		builder.setUserdd(ddBuilder.build());
+		responseBuilder.setUserDDCommand(builder.build());
+	}
+	
+	public void pushUserDDCommand(Builder responseBuilder, UserBean user) {
+		UserDD userdd = userDDService.getUserDD(user.getId());
+		if (userdd != null) {
+			pushUserDDCommand(responseBuilder, user, userdd);
+		}
 	}
 	
 	public void pushOtherUserInfoCommand(Builder responseBuilder, List<UserInfo> userList) {

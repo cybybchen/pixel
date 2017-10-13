@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trans.pixel.model.mapper.UserDDMapper">
+
+	<resultMap id="resultMap" type="com.trans.pixel.model.userinfo.UserDDBean">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="extraTimeStamp" column="extra_time_stamp" />
+		<result property="extraCount1" column="extra_count1" />
+		<result property="extraCount2" column="extra_count2" />
+		<result property="extraCount3" column="extra_count3" />
+		<result property="extraHasLootTime" column="extra_has_loot_time" />
+		<result property="extraType" column="extra_type" />
+		<result property="extraLastTimeStamp" column="extra_last_time_stamp" />
+		<result property="ddDaily" column="dd_daily" />
+		<result property="ddWeekly" column="dd_weekly" />
+		<result property="ddMonthly" column="dd_monthly" />
+		<result property="ddTotal" column="dd_total" />
+		<result property="ddExtraItemId" column="dd_extra_item_id" />
+	</resultMap>
+
+	<select id="queryById" parameterType="long" resultMap="resultMap">
+		SELECT *
+		from user_dd where id = #{userId}
+	</select>
+	
+	<insert id="updateUserDD" parameterType="com.trans.pixel.model.userinfo.UserDDBean">
+	    INSERT INTO user_dd(user_id, extra_time_stamp, extra_count1, extra_count2, extra_count3,
+	    extra_has_loot_time, extra_type, extra_last_time_stamp, dd_daily, dd_weekly, dd_monthly,
+	    dd_total, dd_extra_item_id)
+	    VALUES(#{userId}, #{extraTimeStamp}, #{extraCount1}, #{extraCount2}, #{extraCount3},
+	    #{extraHasLootTime}, #{extraType}, #{extraLastTimeStamp}, #{ddDaily}, #{ddWeekly},
+	    #{ddMonthly}, #{ddTotal}, #{ddExtraItemId})
+	    ON 
+	    duplicate key update
+	    extra_time_stamp=#{extraTimeStamp}, extra_count1=#{extraCount1}, extra_count2=#{extraCount2}, 
+	    extra_count3=#{extraCount3}, extra_has_loot_tim=#{extraHasLootTime}, extra_type=#{extraType},
+	    extra_last_time_stamp=#{extraLastTimeStamp}, dd_daily=#{ddDaily}, dd_weekly=#{ddWeekly},
+	    dd_monthly=#{ddMonthly}, dd_total=#{ddTotal}, dd_extra_item_id=#{ddExtraItemId}
+	</insert>
+
+</mapper>

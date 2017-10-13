@@ -755,6 +755,26 @@ public class DateUtil {
 
 		return false;
 	}
+	
+	public static boolean isNextMonth(String lastLoginTime) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(new Date());
+		int now = c.get(Calendar.MONTH);
+
+		SimpleDateFormat df = new SimpleDateFormat(
+				TimeConst.DEFAULT_DATE_FORMAT);
+		try {
+			c.setTime(df.parse(lastLoginTime));
+		} catch (ParseException e) {
+			return false;
+		}
+		int last = c.get(Calendar.MONTH);
+
+		if (now != last)
+			return true;
+
+		return false;
+	}
 
 	public static Date getEndDateOfD() {
 		return setToDayEndTime(getDate());
