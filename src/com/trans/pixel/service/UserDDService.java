@@ -90,7 +90,7 @@ public class UserDDService {
 				userdd.setExtraTimeStamp(0);
 			}
 		} else if (status == 2) {//end
-			if (System.currentTimeMillis() + userdd.getExtraHasLootTime() - userdd.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
+			if (userdd.getExtraTimeStamp() > 0 && (System.currentTimeMillis() + userdd.getExtraHasLootTime() - userdd.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000))) {
 				
 //				switch (userdd.getExtraType()) {
 //				case 1:
