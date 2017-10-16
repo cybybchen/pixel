@@ -251,7 +251,7 @@ public class PushCommandService extends BaseCommandService {
 //		ddBuilder.setExtraCount3(ddBuilder.getExtraCount3());
 //		ddBuilder.setExtraType(ddBuilder.getExtraType());
 //		ddBuilder.setExtraHasLootTime(ddBuilder.getExtraHasLootTime());
-		ddBuilder.setExtraLastTimeStamp(ddBuilder.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
+//		ddBuilder.setExtraLastTimeStamp(ddBuilder.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
 		
 		builder.setUserdd(ddBuilder.build());
 		responseBuilder.setUserDDCommand(builder.build());

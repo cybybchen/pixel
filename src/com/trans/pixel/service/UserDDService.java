@@ -83,10 +83,12 @@ public class UserDDService {
 			userdd.setExtraType(0);
 			userdd.setDdExtraItemId(0);
 		} else if (status == 4) {//continue
-			userdd.setExtraTimeStamp(current);;
+			userdd.setExtraTimeStamp(current);
 		} else if (status == 3) {//pause
-			userdd.setExtraHasLootTime(current - userdd.getExtraTimeStamp());
-			userdd.setExtraTimeStamp(0);
+			if (userdd.getExtraTimeStamp() != 0) {
+				userdd.setExtraHasLootTime(userdd.getExtraHasLootTime() + current - userdd.getExtraTimeStamp());
+				userdd.setExtraTimeStamp(0);
+			}
 		} else if (status == 2) {//end
 			if (System.currentTimeMillis() + userdd.getExtraHasLootTime() - userdd.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000)) {
 				
@@ -135,6 +137,7 @@ public class UserDDService {
 			userdd.setExtraType(type);
 			userdd.setExtraTimeStamp(current);
 			userdd.setDdExtraItemId(itemId);
+			userdd.setExtraHasLootTime(0);
 		}
 		
 		updateUserDD(userdd.build(), user.getId());

@@ -39,7 +39,7 @@ public class UserDDRedisService extends RedisService{
 
 	public void updateUserDD(final UserDD userDD, final long userId) {
 		String key = RedisKey.USERDATA + userId;
-		hput(key, RedisKey.USER_DD_PREFIX, RedisService.formatJson(userDD));
+		hput(key, RedisKey.USER_DD_PREFIX, RedisService.formatJson(userDD), userId);
 		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
 		sadd(RedisKey.PUSH_MYSQL_KEY + RedisKey.USER_DD_PREFIX, userId + "");
 	}
