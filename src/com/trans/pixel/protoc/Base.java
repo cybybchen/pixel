@@ -9807,7 +9807,7 @@ public final class Base {
      * <code>optional uint64 extraHasLootTime = 5;</code>
      *
      * <pre>
-     *暂时用不到，该次dingding已经过的时间
+     *暂停时已经挂机的时间
      * </pre>
      */
     boolean hasExtraHasLootTime();
@@ -9815,7 +9815,7 @@ public final class Base {
      * <code>optional uint64 extraHasLootTime = 5;</code>
      *
      * <pre>
-     *暂时用不到，该次dingding已经过的时间
+     *暂停时已经挂机的时间
      * </pre>
      */
     long getExtraHasLootTime();
@@ -9963,6 +9963,51 @@ public final class Base {
      * </pre>
      */
     int getLimit();
+
+    // optional bool canReward = 14;
+    /**
+     * <code>optional bool canReward = 14;</code>
+     *
+     * <pre>
+     *是否可以领奖
+     * </pre>
+     */
+    boolean hasCanReward();
+    /**
+     * <code>optional bool canReward = 14;</code>
+     *
+     * <pre>
+     *是否可以领奖
+     * </pre>
+     */
+    boolean getCanReward();
+
+    // optional string name = 15;
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.UserDD}
@@ -10065,6 +10110,16 @@ public final class Base {
               limit_ = input.readUInt32();
               break;
             }
+            case 112: {
+              bitField0_ |= 0x00000400;
+              canReward_ = input.readBool();
+              break;
+            }
+            case 122: {
+              bitField0_ |= 0x00000800;
+              name_ = input.readBytes();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -10136,7 +10191,7 @@ public final class Base {
      * <code>optional uint64 extraHasLootTime = 5;</code>
      *
      * <pre>
-     *暂时用不到，该次dingding已经过的时间
+     *暂停时已经挂机的时间
      * </pre>
      */
     public boolean hasExtraHasLootTime() {
@@ -10146,7 +10201,7 @@ public final class Base {
      * <code>optional uint64 extraHasLootTime = 5;</code>
      *
      * <pre>
-     *暂时用不到，该次dingding已经过的时间
+     *暂停时已经挂机的时间
      * </pre>
      */
     public long getExtraHasLootTime() {
@@ -10345,6 +10400,85 @@ public final class Base {
       return limit_;
     }
 
+    // optional bool canReward = 14;
+    public static final int CANREWARD_FIELD_NUMBER = 14;
+    private boolean canReward_;
+    /**
+     * <code>optional bool canReward = 14;</code>
+     *
+     * <pre>
+     *是否可以领奖
+     * </pre>
+     */
+    public boolean hasCanReward() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional bool canReward = 14;</code>
+     *
+     * <pre>
+     *是否可以领奖
+     * </pre>
+     */
+    public boolean getCanReward() {
+      return canReward_;
+    }
+
+    // optional string name = 15;
+    public static final int NAME_FIELD_NUMBER = 15;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 15;</code>
+     *
+     * <pre>
+     *任务名
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       extraTimeStamp_ = 0L;
       extraHasLootTime_ = 0L;
@@ -10356,6 +10490,8 @@ public final class Base {
       ddTotal_ = 0;
       ddExtraItemId_ = 0;
       limit_ = 0;
+      canReward_ = false;
+      name_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -10398,6 +10534,12 @@ public final class Base {
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeUInt32(13, limit_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBool(14, canReward_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeBytes(15, getNameBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -10447,6 +10589,14 @@ public final class Base {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(13, limit_);
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(14, canReward_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(15, getNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -10584,6 +10734,10 @@ public final class Base {
         bitField0_ = (bitField0_ & ~0x00000100);
         limit_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
+        canReward_ = false;
+        bitField0_ = (bitField0_ & ~0x00000400);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
 
@@ -10652,6 +10806,14 @@ public final class Base {
           to_bitField0_ |= 0x00000200;
         }
         result.limit_ = limit_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.canReward_ = canReward_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.name_ = name_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10697,6 +10859,14 @@ public final class Base {
         }
         if (other.hasLimit()) {
           setLimit(other.getLimit());
+        }
+        if (other.hasCanReward()) {
+          setCanReward(other.getCanReward());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000800;
+          name_ = other.name_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -10780,7 +10950,7 @@ public final class Base {
        * <code>optional uint64 extraHasLootTime = 5;</code>
        *
        * <pre>
-       *暂时用不到，该次dingding已经过的时间
+       *暂停时已经挂机的时间
        * </pre>
        */
       public boolean hasExtraHasLootTime() {
@@ -10790,7 +10960,7 @@ public final class Base {
        * <code>optional uint64 extraHasLootTime = 5;</code>
        *
        * <pre>
-       *暂时用不到，该次dingding已经过的时间
+       *暂停时已经挂机的时间
        * </pre>
        */
       public long getExtraHasLootTime() {
@@ -10800,7 +10970,7 @@ public final class Base {
        * <code>optional uint64 extraHasLootTime = 5;</code>
        *
        * <pre>
-       *暂时用不到，该次dingding已经过的时间
+       *暂停时已经挂机的时间
        * </pre>
        */
       public Builder setExtraHasLootTime(long value) {
@@ -10813,7 +10983,7 @@ public final class Base {
        * <code>optional uint64 extraHasLootTime = 5;</code>
        *
        * <pre>
-       *暂时用不到，该次dingding已经过的时间
+       *暂停时已经挂机的时间
        * </pre>
        */
       public Builder clearExtraHasLootTime() {
@@ -11211,6 +11381,153 @@ public final class Base {
       public Builder clearLimit() {
         bitField0_ = (bitField0_ & ~0x00000200);
         limit_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bool canReward = 14;
+      private boolean canReward_ ;
+      /**
+       * <code>optional bool canReward = 14;</code>
+       *
+       * <pre>
+       *是否可以领奖
+       * </pre>
+       */
+      public boolean hasCanReward() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional bool canReward = 14;</code>
+       *
+       * <pre>
+       *是否可以领奖
+       * </pre>
+       */
+      public boolean getCanReward() {
+        return canReward_;
+      }
+      /**
+       * <code>optional bool canReward = 14;</code>
+       *
+       * <pre>
+       *是否可以领奖
+       * </pre>
+       */
+      public Builder setCanReward(boolean value) {
+        bitField0_ |= 0x00000400;
+        canReward_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool canReward = 14;</code>
+       *
+       * <pre>
+       *是否可以领奖
+       * </pre>
+       */
+      public Builder clearCanReward() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        canReward_ = false;
+        onChanged();
+        return this;
+      }
+
+      // optional string name = 15;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 15;</code>
+       *
+       * <pre>
+       *任务名
+       * </pre>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -35652,96 +35969,97 @@ public final class Base {
       "mmandMarkId\030` \001(\t\022\022\n\ntitleOrder\030a \001(\r\022\020\n" +
       "\010signName\030b \001(\t\022\014\n\004rite\030c \001(\r\022\027\n\017lottery" +
       "ExpCount\030d \001(\r\022\014\n\004mohe\030e \001(\r\022\017\n\007heilong\030" +
-      "f \001(\r\"\326\001\n\006UserDD\022\026\n\016extraTimeStamp\030\001 \001(\004" +
+      "f \001(\r\"\367\001\n\006UserDD\022\026\n\016extraTimeStamp\030\001 \001(\004" +
       "\022\030\n\020extraHasLootTime\030\005 \001(\004\022\021\n\textraType\030" +
       "\006 \001(\r\022\032\n\022extraLastTimeStamp\030\007 \001(\004\022\017\n\007ddD" +
       "aily\030\010 \001(\r\022\020\n\010ddWeekly\030\t \001(\r\022\021\n\tddMonthl" +
       "y\030\n \001(\r\022\017\n\007ddTotal\030\013 \001(\r\022\025\n\rddExtraItemI",
-      "d\030\014 \001(\r\022\r\n\005limit\030\r \001(\r\"\210\001\n\tJewelPool\022\r\n\005" +
-      "order\030\001 \001(\005\022\023\n\013targetcount\030\002 \001(\005\0222\n\006rewa" +
-      "rd\030\004 \001(\0132\".com.trans.pixel.protoc.Reward" +
-      "Info\022\020\n\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(" +
-      "\005\"M\n\rJewelPoolList\022\n\n\002id\030\001 \001(\005\0220\n\005order\030" +
-      "\002 \003(\0132!.com.trans.pixel.protoc.JewelPool" +
-      "\"E\n\016JewelPoolLists\0223\n\004data\030\001 \003(\0132%.com.t" +
-      "rans.pixel.protoc.JewelPoolList\"Z\n\005Enemy" +
-      "\022\017\n\007enemyid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007enem" +
-      "ylv\030\004 \001(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 ",
-      "\001(\005\"I\n\nEnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com.t" +
-      "rans.pixel.protoc.Enemy\022\r\n\005hpbar\030\002 \001(\005\"6" +
-      "\n\023UnionBossUserRecord\022\016\n\006userId\030\001 \001(\003\022\017\n" +
-      "\007percent\030\002 \001(\005\"\221\003\n\017UnionBossRecord\022\016\n\006bo" +
-      "ssId\030\001 \001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022" +
-      "\022\n\nmyAttackHp\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com" +
-      ".trans.pixel.protoc.UserRank\022\021\n\tstartTim" +
-      "e\030\006 \001(\t\022\r\n\005count\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022" +
-      "?\n\nuserRecord\030\t \003(\0132+.com.trans.pixel.pr" +
-      "otoc.UnionBossUserRecord\022\016\n\006status\030\n \001(\r",
-      "\"\207\001\n\017UNIONBOSSSTATUS\022\033\n\027UNION_ZHANLI_NOT" +
-      "_ENOUGH\020\001\022!\n\035UNION_BOSS_USER_HAS_NOT_TIM" +
-      "ES\020\002\022\025\n\021UNION_BOSS_IS_END\020\003\022\035\n\031UNION_BOS" +
-      "S_IS_BEING_FIGHT\020\004\"S\n\004Rank\022.\n\004user\030\001 \002(\013" +
-      "2 .com.trans.pixel.protoc.UserInfo\022\r\n\005sc" +
-      "ore\030\002 \002(\005\022\014\n\004rank\030\003 \001(\005\"\260\001\n\nUserTalent\022\n" +
-      "\n\002id\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\013" +
-      "2\'.com.trans.pixel.protoc.UserTalentOrde" +
-      "r\0226\n\005equip\030\005 \003(\0132\'.com.trans.pixel.proto" +
-      "c.UserTalentEquip\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 \001",
-      "(\r\".\n\nTeamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014composeS" +
-      "kill\030\002 \001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132 .com." +
-      "trans.pixel.protoc.UserInfo\0222\n\010heroInfo\030" +
-      "\002 \003(\0132 .com.trans.pixel.protoc.HeroInfo\022" +
-      "6\n\nuserTalent\030\004 \001(\0132\".com.trans.pixel.pr" +
-      "otoc.UserTalent\022\024\n\014rolePosition\030\005 \001(\005\0226\n" +
-      "\nteamEngine\030\006 \003(\0132\".com.trans.pixel.prot" +
-      "oc.TeamEngine\"@\n\017UserTalentOrder\022\r\n\005orde" +
-      "r\030\001 \002(\005\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"" +
-      "Q\n\017UserTalentEquip\022\020\n\010position\030\001 \001(\005\022\016\n\006",
-      "itemId\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022\r\n\005order\030\004 \001" +
-      "(\r\"\241\001\n\010UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001" +
-      "(\003\022*\n\004team\030\003 \001(\0132\034.com.trans.pixel.proto" +
-      "c.Team\022\016\n\006zhanli\030\006 \001(\r\022\016\n\006score2\030\t \001(\r\022." +
-      "\n\004user\030\n \001(\0132 .com.trans.pixel.protoc.Us" +
-      "erInfo\"W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n" +
-      "\007clearId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(" +
-      "\005\022\014\n\004rare\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030" +
-      "\001 \002(\005\022\022\n\nskillLevel\030\002 \002(\005\"b\n\017UserEquipPo" +
-      "kede\022\016\n\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005o",
-      "rder\030\003 \001(\r\022\020\n\010lastTime\030\004 \001(\r\022\017\n\007display\030" +
-      "\005 \001(\r\"\207\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005le" +
-      "vel\030\002 \001(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005" +
-      "\0220\n\005skill\030\005 \003(\0132!.com.trans.pixel.protoc" +
-      ".SkillInfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022" +
-      "\016\n\006heroId\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isL" +
-      "ock\030\n \001(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132" +
-      "!.com.trans.pixel.protoc.ClearInfo\022\022\n\nst" +
-      "rengthen\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030" +
-      "\017 \001(\t\022<\n\013equipPokede\030\020 \001(\0132\'.com.trans.p",
-      "ixel.protoc.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"" +
-      "\314\001\n\nRewardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002" +
-      " \001(\t\022\r\n\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007w" +
-      "eightb\030\013 \001(\002\022\021\n\tstartloot\030\014 \001(\005\022\016\n\006count" +
-      "a\030\005 \001(\002\022\016\n\006countb\030\006 \001(\002\022\014\n\004item\030\007 \001(\t\022\017\n" +
-      "\007eventid\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime" +
-      "\030\n \001(\r\"k\n\013RewardInfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n\006weight\030\004 \001" +
-      "(\002\022\017\n\007weightb\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013M" +
-      "ultiReward\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004",
-      "loot\030\003 \003(\0132\".com.trans.pixel.protoc.Rewa" +
-      "rdInfo\"|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name" +
-      "\030\002 \001(\t\022\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r" +
-      "\0222\n\006reward\030\005 \003(\0132\".com.trans.pixel.proto" +
-      "c.RewardInfo\"\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n" +
-      "\007eventid\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004" +
-      " \001(\005\022\020\n\010targetid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r" +
-      "\n\005level\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"\310\001\n\tFightIn" +
-      "fo\022\n\n\002id\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com.tran" +
-      "s.pixel.protoc.UserInfo\022\021\n\tfightInfo\030\001 \002",
-      "(\t\022\021\n\tfightData\030\002 \001(\t\022.\n\004user\030\005 \001(\0132 .co" +
-      "m.trans.pixel.protoc.UserInfo\022\014\n\004time\030\006 " +
-      "\001(\t\022\r\n\005score\030\007 \001(\r\022\013\n\003win\030\010 \001(\010*=\n\016FIGHT" +
-      "INFO_TYPE\022\r\n\tTYPE_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022" +
-      "\r\n\tTYPE_RANK\020\002"
+      "d\030\014 \001(\r\022\r\n\005limit\030\r \001(\r\022\021\n\tcanReward\030\016 \001(" +
+      "\010\022\014\n\004name\030\017 \001(\t\"\210\001\n\tJewelPool\022\r\n\005order\030\001" +
+      " \001(\005\022\023\n\013targetcount\030\002 \001(\005\0222\n\006reward\030\004 \001(" +
+      "\0132\".com.trans.pixel.protoc.RewardInfo\022\020\n" +
+      "\010rewarded\030\006 \001(\005\022\021\n\trecharged\030\007 \001(\005\"M\n\rJe" +
+      "welPoolList\022\n\n\002id\030\001 \001(\005\0220\n\005order\030\002 \003(\0132!" +
+      ".com.trans.pixel.protoc.JewelPool\"E\n\016Jew" +
+      "elPoolLists\0223\n\004data\030\001 \003(\0132%.com.trans.pi" +
+      "xel.protoc.JewelPoolList\"Z\n\005Enemy\022\017\n\007ene" +
+      "myid\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\017\n\007enemylv\030\004 \001",
+      "(\005\022\022\n\nlootweight\030\005 \001(\005\022\014\n\004loot\030\006 \001(\005\"I\n\n" +
+      "EnemyGroup\022,\n\005enemy\030\001 \003(\0132\035.com.trans.pi" +
+      "xel.protoc.Enemy\022\r\n\005hpbar\030\002 \001(\005\"6\n\023Union" +
+      "BossUserRecord\022\016\n\006userId\030\001 \001(\003\022\017\n\007percen" +
+      "t\030\002 \001(\005\"\221\003\n\017UnionBossRecord\022\016\n\006bossId\030\001 " +
+      "\001(\005\022\n\n\002hp\030\002 \001(\005\022\017\n\007endTime\030\003 \001(\t\022\022\n\nmyAt" +
+      "tackHp\030\004 \001(\005\022/\n\005ranks\030\005 \003(\0132 .com.trans." +
+      "pixel.protoc.UserRank\022\021\n\tstartTime\030\006 \001(\t" +
+      "\022\r\n\005count\030\007 \001(\005\022\017\n\007percent\030\010 \001(\005\022?\n\nuser" +
+      "Record\030\t \003(\0132+.com.trans.pixel.protoc.Un",
+      "ionBossUserRecord\022\016\n\006status\030\n \001(\r\"\207\001\n\017UN" +
+      "IONBOSSSTATUS\022\033\n\027UNION_ZHANLI_NOT_ENOUGH" +
+      "\020\001\022!\n\035UNION_BOSS_USER_HAS_NOT_TIMES\020\002\022\025\n" +
+      "\021UNION_BOSS_IS_END\020\003\022\035\n\031UNION_BOSS_IS_BE" +
+      "ING_FIGHT\020\004\"S\n\004Rank\022.\n\004user\030\001 \002(\0132 .com." +
+      "trans.pixel.protoc.UserInfo\022\r\n\005score\030\002 \002" +
+      "(\005\022\014\n\004rank\030\003 \001(\005\"\260\001\n\nUserTalent\022\n\n\002id\030\001 " +
+      "\002(\005\022\r\n\005level\030\002 \002(\005\0226\n\005skill\030\004 \003(\0132\'.com." +
+      "trans.pixel.protoc.UserTalentOrder\0226\n\005eq" +
+      "uip\030\005 \003(\0132\'.com.trans.pixel.protoc.UserT",
+      "alentEquip\022\013\n\003exp\030\006 \001(\r\022\n\n\002sp\030\007 \001(\r\".\n\nT" +
+      "eamEngine\022\n\n\002id\030\001 \001(\r\022\024\n\014composeSkill\030\002 " +
+      "\001(\t\"\360\001\n\004Team\022.\n\004user\030\001 \001(\0132 .com.trans.p" +
+      "ixel.protoc.UserInfo\0222\n\010heroInfo\030\002 \003(\0132 " +
+      ".com.trans.pixel.protoc.HeroInfo\0226\n\nuser" +
+      "Talent\030\004 \001(\0132\".com.trans.pixel.protoc.Us" +
+      "erTalent\022\024\n\014rolePosition\030\005 \001(\005\0226\n\nteamEn" +
+      "gine\030\006 \003(\0132\".com.trans.pixel.protoc.Team" +
+      "Engine\"@\n\017UserTalentOrder\022\r\n\005order\030\001 \002(\005" +
+      "\022\017\n\007skillId\030\002 \002(\005\022\r\n\005level\030\003 \001(\005\"Q\n\017User",
+      "TalentEquip\022\020\n\010position\030\001 \001(\005\022\016\n\006itemId\030" +
+      "\002 \001(\005\022\r\n\005level\030\003 \001(\005\022\r\n\005order\030\004 \001(\r\"\241\001\n\010" +
+      "UserRank\022\014\n\004rank\030\001 \001(\003\022\013\n\003dps\030\002 \001(\003\022*\n\004t" +
+      "eam\030\003 \001(\0132\034.com.trans.pixel.protoc.Team\022" +
+      "\016\n\006zhanli\030\006 \001(\r\022\016\n\006score2\030\t \001(\r\022.\n\004user\030" +
+      "\n \001(\0132 .com.trans.pixel.protoc.UserInfo\"" +
+      "W\n\tClearInfo\022\020\n\010position\030\001 \002(\005\022\017\n\007clearI" +
+      "d\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\n\n\002id\030\004 \001(\005\022\014\n\004ra" +
+      "re\030\005 \001(\005\"0\n\tSkillInfo\022\017\n\007skillId\030\001 \002(\005\022\022" +
+      "\n\nskillLevel\030\002 \002(\005\"b\n\017UserEquipPokede\022\016\n",
+      "\006itemId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\022\r\n\005order\030\003 " +
+      "\001(\r\022\020\n\010lastTime\030\004 \001(\r\022\017\n\007display\030\005 \001(\r\"\207" +
+      "\003\n\010HeroInfo\022\016\n\006infoId\030\001 \001(\003\022\r\n\005level\030\002 \001" +
+      "(\005\022\014\n\004rare\030\003 \001(\005\022\017\n\007equipId\030\004 \001(\005\0220\n\005ski" +
+      "ll\030\005 \003(\0132!.com.trans.pixel.protoc.SkillI" +
+      "nfo\022\r\n\005value\030\006 \001(\005\022\014\n\004star\030\007 \001(\005\022\016\n\006hero" +
+      "Id\030\010 \001(\005\022\020\n\010position\030\t \001(\005\022\016\n\006isLock\030\n \001" +
+      "(\010\022\r\n\005count\030\013 \001(\005\0220\n\005clear\030\014 \003(\0132!.com.t" +
+      "rans.pixel.protoc.ClearInfo\022\022\n\nstrengthe" +
+      "n\030\r \001(\005\022\014\n\004rank\030\016 \001(\005\022\017\n\007fetters\030\017 \001(\t\022<",
+      "\n\013equipPokede\030\020 \001(\0132\'.com.trans.pixel.pr" +
+      "otoc.UserEquipPokede\022\n\n\002sp\030\021 \001(\005\"\314\001\n\nRew" +
+      "ardInfo\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n" +
+      "\005count\030\003 \001(\003\022\016\n\006weight\030\004 \001(\005\022\017\n\007weightb\030" +
+      "\013 \001(\002\022\021\n\tstartloot\030\014 \001(\005\022\016\n\006counta\030\005 \001(\002" +
+      "\022\016\n\006countb\030\006 \001(\002\022\014\n\004item\030\007 \001(\t\022\017\n\007eventi" +
+      "d\030\010 \001(\r\022\r\n\005rmbid\030\t \001(\r\022\017\n\007lastime\030\n \001(\r\"" +
+      "k\n\013RewardInfo2\022\016\n\006itemid\030\001 \001(\005\022\014\n\004name\030\002" +
+      " \001(\t\022\r\n\005count\030\003 \001(\002\022\016\n\006weight\030\004 \001(\002\022\017\n\007w" +
+      "eightb\030\013 \001(\002\022\016\n\006countb\030\006 \001(\002\"Y\n\013MultiRew",
+      "ard\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\0220\n\004loot\030\003 " +
+      "\003(\0132\".com.trans.pixel.protoc.RewardInfo\"" +
+      "|\n\004Task\022\020\n\010targetid\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022" +
+      "\013\n\003des\030\003 \001(\t\022\023\n\013targetcount\030\004 \001(\r\0222\n\006rew" +
+      "ard\030\005 \003(\0132\".com.trans.pixel.protoc.Rewar" +
+      "dInfo\"\205\001\n\005Event\022\r\n\005order\030\001 \001(\005\022\017\n\007eventi" +
+      "d\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\016\n\006daguan\030\004 \001(\005\022\020\n" +
+      "\010targetid\030\007 \001(\005\022\016\n\006weight\030\t \001(\005\022\r\n\005level" +
+      "\030\n \001(\005\022\r\n\005count\030\013 \001(\005\"\310\001\n\tFightInfo\022\n\n\002i" +
+      "d\030\003 \001(\005\022/\n\005enemy\030\004 \001(\0132 .com.trans.pixel",
+      ".protoc.UserInfo\022\021\n\tfightInfo\030\001 \002(\t\022\021\n\tf" +
+      "ightData\030\002 \001(\t\022.\n\004user\030\005 \001(\0132 .com.trans" +
+      ".pixel.protoc.UserInfo\022\014\n\004time\030\006 \001(\t\022\r\n\005" +
+      "score\030\007 \001(\r\022\013\n\003win\030\010 \001(\010*=\n\016FIGHTINFO_TY" +
+      "PE\022\r\n\tTYPE_SELF\020\000\022\r\n\tTYPE_SAVE\020\001\022\r\n\tTYPE" +
+      "_RANK\020\002"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -35759,7 +36077,7 @@ public final class Base {
           internal_static_com_trans_pixel_protoc_UserDD_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_UserDD_descriptor,
-              new java.lang.String[] { "ExtraTimeStamp", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "DdDaily", "DdWeekly", "DdMonthly", "DdTotal", "DdExtraItemId", "Limit", });
+              new java.lang.String[] { "ExtraTimeStamp", "ExtraHasLootTime", "ExtraType", "ExtraLastTimeStamp", "DdDaily", "DdWeekly", "DdMonthly", "DdTotal", "DdExtraItemId", "Limit", "CanReward", "Name", });
           internal_static_com_trans_pixel_protoc_JewelPool_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_com_trans_pixel_protoc_JewelPool_fieldAccessorTable = new

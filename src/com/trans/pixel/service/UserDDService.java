@@ -72,7 +72,7 @@ public class UserDDService {
 		}
 	}
 	
-	public UserDD handleExtra(UserBean user, int status, int type, int itemId, MultiReward.Builder rewards,
+	public UserDD handleExtra(UserBean user, int status, int type, int itemId, String name, MultiReward.Builder rewards,
 			List<Integer> costs) {
 		UserDD.Builder userdd = UserDD.newBuilder(getUserDD(user.getId()));
 		long current = System.currentTimeMillis();
@@ -138,6 +138,7 @@ public class UserDDService {
 			userdd.setExtraTimeStamp(current);
 			userdd.setDdExtraItemId(itemId);
 			userdd.setExtraHasLootTime(0);
+			userdd.setName(name);
 		}
 		
 		updateUserDD(userdd.build(), user.getId());

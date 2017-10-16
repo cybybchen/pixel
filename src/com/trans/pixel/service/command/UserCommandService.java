@@ -404,10 +404,11 @@ public class UserCommandService extends BaseCommandService {
 		int type = 0;
 		if (cmd.hasExtraType())
 			type = cmd.getExtraType();
+		String name = cmd.getName();
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		List<Integer> costs = new ArrayList<Integer>();
 		UserDD userdd = userDDService.handleExtra(user, status, type, itemId, 
-				rewards, costs);
+				name, rewards, costs);
 //		if (ret instanceof ErrorConst) {
 //			logService.sendErrorLog(user.getId(), user.getServerId(),
 //					cmd.getClass(), RedisService.formatJson(cmd), ret);

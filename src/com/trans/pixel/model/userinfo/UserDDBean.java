@@ -14,6 +14,7 @@ public class UserDDBean {
 	private int ddMonthly = 0;
 	private int ddTotal = 0;
 	private int ddExtraItemId = 0;
+	private String name = "";
 	public UserDDBean() {
 		
 	}
@@ -28,6 +29,7 @@ public class UserDDBean {
 		setExtraLastTimeStamp(builder.getExtraLastTimeStamp());
 		setExtraTimeStamp(builder.getExtraTimeStamp());
 		setExtraType(builder.getExtraType());
+		setName(builder.getName());
 	}
 	public UserDD build() {
 		UserDD.Builder builder = UserDD.newBuilder();
@@ -40,6 +42,7 @@ public class UserDDBean {
 		builder.setExtraLastTimeStamp(extraLastTimeStamp);
 		builder.setExtraTimeStamp(extraTimeStamp);
 		builder.setExtraType(extraType);
+		builder.setName(name);
 		
 		return builder.build();
 	}
@@ -108,5 +111,11 @@ public class UserDDBean {
 	}
 	public void setDdExtraItemId(int ddExtraItemId) {
 		this.ddExtraItemId = ddExtraItemId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }

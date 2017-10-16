@@ -5434,13 +5434,13 @@ public final class ExtraProto {
   public interface FanqieLootOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 limit = 1;
+    // required int32 limit = 1;
     /**
-     * <code>required uint32 limit = 1;</code>
+     * <code>required int32 limit = 1;</code>
      */
     boolean hasLimit();
     /**
-     * <code>required uint32 limit = 1;</code>
+     * <code>required int32 limit = 1;</code>
      */
     int getLimit();
 
@@ -5511,7 +5511,7 @@ public final class ExtraProto {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              limit_ = input.readUInt32();
+              limit_ = input.readInt32();
               break;
             }
             case 18: {
@@ -5567,17 +5567,17 @@ public final class ExtraProto {
     }
 
     private int bitField0_;
-    // required uint32 limit = 1;
+    // required int32 limit = 1;
     public static final int LIMIT_FIELD_NUMBER = 1;
     private int limit_;
     /**
-     * <code>required uint32 limit = 1;</code>
+     * <code>required int32 limit = 1;</code>
      */
     public boolean hasLimit() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 limit = 1;</code>
+     * <code>required int32 limit = 1;</code>
      */
     public int getLimit() {
       return limit_;
@@ -5630,7 +5630,7 @@ public final class ExtraProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, limit_);
+        output.writeInt32(1, limit_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, reward_);
@@ -5646,7 +5646,7 @@ public final class ExtraProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, limit_);
+          .computeInt32Size(1, limit_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -5874,22 +5874,22 @@ public final class ExtraProto {
       }
       private int bitField0_;
 
-      // required uint32 limit = 1;
+      // required int32 limit = 1;
       private int limit_ ;
       /**
-       * <code>required uint32 limit = 1;</code>
+       * <code>required int32 limit = 1;</code>
        */
       public boolean hasLimit() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 limit = 1;</code>
+       * <code>required int32 limit = 1;</code>
        */
       public int getLimit() {
         return limit_;
       }
       /**
-       * <code>required uint32 limit = 1;</code>
+       * <code>required int32 limit = 1;</code>
        */
       public Builder setLimit(int value) {
         bitField0_ |= 0x00000001;
@@ -5898,7 +5898,7 @@ public final class ExtraProto {
         return this;
       }
       /**
-       * <code>required uint32 limit = 1;</code>
+       * <code>required int32 limit = 1;</code>
        */
       public Builder clearLimit() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -8404,7 +8404,7 @@ public final class ExtraProto {
       "id\030\001 \002(\r\0222\n\006reward\030\002 \003(\0132\".com.trans.pix" +
       "el.protoc.RewardInfo\">\n\014DingdingList\022.\n\004" +
       "data\030\001 \003(\0132 .com.trans.pixel.protoc.Ding" +
-      "ding\"O\n\nFanqieLoot\022\r\n\005limit\030\001 \002(\r\0222\n\006rew" +
+      "ding\"O\n\nFanqieLoot\022\r\n\005limit\030\001 \002(\005\0222\n\006rew" +
       "ard\030\002 \002(\0132\".com.trans.pixel.protoc.Rewar" +
       "dInfo\"I\n\006Fanqie\022\r\n\005order\030\001 \002(\r\0220\n\004loot\030\002" +
       " \003(\0132\".com.trans.pixel.protoc.FanqieLoot" +

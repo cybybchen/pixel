@@ -14,6 +14,7 @@
 		<result property="ddMonthly" column="dd_monthly" />
 		<result property="ddTotal" column="dd_total" />
 		<result property="ddExtraItemId" column="dd_extra_item_id" />
+		<result property="name" column="name" />
 	</resultMap>
 
 	<select id="queryById" parameterType="long" resultMap="resultMap">
@@ -24,15 +25,15 @@
 	<insert id="updateUserDD" parameterType="com.trans.pixel.model.userinfo.UserDDBean">
 	    INSERT INTO user_dd(user_id, extra_time_stamp,
 	    extra_has_loot_time, extra_type, extra_last_time_stamp, dd_daily, dd_weekly, dd_monthly,
-	    dd_total, dd_extra_item_id)
+	    dd_total, dd_extra_item_id, name)
 	    VALUES(#{userId}, #{extraTimeStamp},
 	    #{extraHasLootTime}, #{extraType}, #{extraLastTimeStamp}, #{ddDaily}, #{ddWeekly},
-	    #{ddMonthly}, #{ddTotal}, #{ddExtraItemId})
+	    #{ddMonthly}, #{ddTotal}, #{ddExtraItemId}, #{name})
 	    ON 
 	    duplicate key update
 	    extra_time_stamp=#{extraTimeStamp}, extra_has_loot_time=#{extraHasLootTime}, extra_type=#{extraType},
 	    extra_last_time_stamp=#{extraLastTimeStamp}, dd_daily=#{ddDaily}, dd_weekly=#{ddWeekly},
-	    dd_monthly=#{ddMonthly}, dd_total=#{ddTotal}, dd_extra_item_id=#{ddExtraItemId}
+	    dd_monthly=#{ddMonthly}, dd_total=#{ddTotal}, dd_extra_item_id=#{ddExtraItemId}, name=#{name}
 	</insert>
 
 </mapper>

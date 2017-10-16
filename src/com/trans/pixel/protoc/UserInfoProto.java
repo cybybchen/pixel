@@ -9111,6 +9111,21 @@ public final class UserInfoProto {
      * <code>optional uint32 extraItemId = 3;</code>
      */
     int getExtraItemId();
+
+    // optional string name = 4;
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.RequestExtraRewardCommand}
@@ -9176,6 +9191,11 @@ public final class UserInfoProto {
             case 24: {
               bitField0_ |= 0x00000004;
               extraItemId_ = input.readUInt32();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              name_ = input.readBytes();
               break;
             }
           }
@@ -9282,10 +9302,54 @@ public final class UserInfoProto {
       return extraItemId_;
     }
 
+    // optional string name = 4;
+    public static final int NAME_FIELD_NUMBER = 4;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       status_ = 0;
       extraType_ = 0;
       extraItemId_ = 0;
+      name_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9312,6 +9376,9 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(3, extraItemId_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getNameBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -9332,6 +9399,10 @@ public final class UserInfoProto {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, extraItemId_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getNameBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9455,6 +9526,8 @@ public final class UserInfoProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         extraItemId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -9495,6 +9568,10 @@ public final class UserInfoProto {
           to_bitField0_ |= 0x00000004;
         }
         result.extraItemId_ = extraItemId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.name_ = name_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9519,6 +9596,11 @@ public final class UserInfoProto {
         }
         if (other.hasExtraItemId()) {
           setExtraItemId(other.getExtraItemId());
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000008;
+          name_ = other.name_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9678,6 +9760,80 @@ public final class UserInfoProto {
       public Builder clearExtraItemId() {
         bitField0_ = (bitField0_ & ~0x00000004);
         extraItemId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string name = 4;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -36057,82 +36213,82 @@ public final class UserInfoProto {
       "and\"\031\n\027RequestRecommandCommand\"Y\n\030Respon" +
       "seRecommandCommand\022.\n\004user\030\001 \001(\0132 .com.t" +
       "rans.pixel.protoc.UserInfo\022\r\n\005count\030\002 \001(" +
-      "\r\"\030\n\026RequestUserInfoCommand\"S\n\031RequestEx" +
+      "\r\"\030\n\026RequestUserInfoCommand\"a\n\031RequestEx" +
       "traRewardCommand\022\016\n\006status\030\001 \002(\r\022\021\n\textr" +
-      "aType\030\002 \001(\r\022\023\n\013extraItemId\030\003 \001(\r\"\025\n\023Requ" +
-      "estLoginCommand\"*\n\026RequestSignNameComman",
-      "d\022\020\n\010signName\030\001 \002(\t\"I\n\027ResponseUserInfoC" +
-      "ommand\022.\n\004user\030\001 \002(\0132 .com.trans.pixel.p" +
-      "rotoc.UserInfo\"N\n\034ResponseOtherUserInfoC" +
-      "ommand\022.\n\004user\030\001 \003(\0132 .com.trans.pixel.p" +
-      "rotoc.UserInfo\"\032\n\010UserHead\022\016\n\006headId\030\002 \002" +
-      "(\005\"M\n\027ResponseUserHeadCommand\0222\n\010userHea" +
-      "d\030\001 \003(\0132 .com.trans.pixel.protoc.UserHea" +
-      "d\"\201\001\n\024ResponsePopupCommand\022\021\n\tpopScreen\030" +
-      "\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004text\030\003 \002(\t\022\017\n\007h" +
-      "eading\030\004 \001(\t\022\023\n\013yesButtonID\030\005 \001(\t\022\022\n\nnoB",
-      "uttonID\030\006 \001(\t\"(\n\010Merlevel\022\r\n\005level\030\001 \001(\005" +
-      "\022\r\n\005score\030\002 \001(\005\"?\n\014MerlevelList\022/\n\005level" +
-      "\030\001 \003(\0132 .com.trans.pixel.protoc.Merlevel" +
-      "\"f\n\004Area\022\016\n\006areaid\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022." +
-      "\n\006daguan\030\003 \003(\0132\036.com.trans.pixel.protoc." +
-      "Daguan\022\020\n\010merlevel\030\004 \001(\005\"6\n\010AreaList\022*\n\004" +
-      "data\030\001 \003(\0132\034.com.trans.pixel.protoc.Area" +
-      "\"\263\001\n\006Daguan\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n" +
-      "\005level\030\003 \001(\005\022\r\n\005count\030\004 \001(\005\022\014\n\004gold\030\005 \001(" +
-      "\005\022\013\n\003exp\030\006 \001(\005\022\016\n\006areaid\030\t \001(\005\022\020\n\010merlev",
-      "el\030\013 \001(\005\0224\n\010lootlist\030\020 \003(\0132\".com.trans.p" +
-      "ixel.protoc.RewardInfo\":\n\nDaguanList\022,\n\004" +
-      "data\030\001 \003(\0132\036.com.trans.pixel.protoc.Dagu" +
-      "an\"*\n\nEventLevel\022\r\n\005level\030\001 \001(\005\022\r\n\005count" +
-      "\030\002 \001(\005\"B\n\016EventLevelList\0220\n\004data\030\001 \003(\0132\"" +
-      ".com.trans.pixel.protoc.EventLevel\"\215\001\n\013E" +
-      "ventRandom\022\016\n\006level1\030\001 \001(\005\022\016\n\006count1\030\002 \001" +
-      "(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006count2\030\004 \001(\005\022\016\n\006le" +
-      "vel3\030\005 \001(\005\022\016\n\006count3\030\006 \001(\005\022\016\n\006level4\030\007 \001" +
-      "(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014EventRandoms\022\n\n\002id",
-      "\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#.com.trans.pixel." +
-      "protoc.EventRandom\"D\n\020EventRandomsList\0220" +
-      "\n\002id\030\001 \003(\0132$.com.trans.pixel.protoc.Even" +
-      "tRandoms\"J\n\010EventExp\022\n\n\002id\030\001 \001(\005\0222\n\006rewa" +
-      "rd\030\002 \003(\0132\".com.trans.pixel.protoc.Reward" +
-      "Info\">\n\014EventExpList\022.\n\004data\030\001 \003(\0132 .com" +
-      ".trans.pixel.protoc.EventExp\"0\n\rEventQue" +
-      "stion\022\016\n\006answer\030\002 \001(\t\022\017\n\007eventid\030\003 \001(\005\"8" +
-      "\n\tEnemyList\022+\n\004data\030\001 \003(\0132\035.com.trans.pi" +
-      "xel.protoc.Enemy\"\254\002\n\013EventConfig\022\n\n\002id\030\001",
-      " \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\005\022\016\n\006dagu" +
-      "an\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\".com.trans.pixel" +
-      ".protoc.RewardInfo\0224\n\010lootlist\030\006 \003(\0132\".c" +
-      "om.trans.pixel.protoc.RewardInfo\0227\n\010ques" +
-      "tion\030\007 \003(\0132%.com.trans.pixel.protoc.Even" +
-      "tQuestion\0226\n\nenemygroup\030\010 \001(\0132\".com.tran" +
-      "s.pixel.protoc.EnemyGroup\022\014\n\004call\030\t \001(\005\"" +
-      "D\n\017EventConfigList\0221\n\004data\030\001 \003(\0132#.com.t" +
-      "rans.pixel.protoc.EventConfig\"U\n\tAreaEve" +
-      "nt\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 \003(\0132\035.com.tran",
-      "s.pixel.protoc.Event\022\016\n\006weight\030\003 \001(\005\"@\n\r" +
-      "AreaEventList\022/\n\004data\030\001 \003(\0132!.com.trans." +
-      "pixel.protoc.AreaEvent\"G\n\004Loot\022\r\n\005order\030" +
-      "\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com.trans.pixel.pr" +
-      "otoc.RewardInfo\"4\n\010LootList\022(\n\002id\030\001 \003(\0132" +
-      "\034.com.trans.pixel.protoc.Loot\"&\n\030Request" +
-      "LevelStartCommand\022\n\n\002id\030\001 \001(\005\"4\n\023Request" +
-      "EventCommand\022\016\n\006userId\030\001 \001(\005\022\r\n\005order\030\002 " +
-      "\001(\005\"D\n\024ResponseEventCommand\022,\n\005event\030\001 \003" +
-      "(\0132\035.com.trans.pixel.protoc.Event\"\037\n\035Req",
-      "uestLevelLootResultCommand\"\037\n\035RequestEve" +
-      "ntQuickFightCommand\"{\n\031RequestEventResul" +
-      "tCommand\022\r\n\005order\030\001 \001(\005\022\020\n\010teamInfo\030\002 \001(" +
-      "\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004turn\030\004 \001(\005\022\017\n\007fi" +
-      "nalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P\n\032ResponseEven" +
-      "tResultCommand\0222\n\006reward\030\001 \003(\0132\".com.tra" +
-      "ns.pixel.protoc.RewardInfo\"\226\001\n\030ResponseL" +
-      "evelLootCommand\022\024\n\014unlockDaguan\030\001 \001(\005\022\023\n" +
-      "\013unlockOrder\030\002 \001(\005\022\022\n\nlootDaguan\030\003 \001(\005\022\020" +
-      "\n\010lootTime\030\004 \001(\005\022\021\n\teventTime\030\005 \001(\005\022\026\n\016l",
-      "ootTimeNormal\030\007 \001(\r\"\030\n\026RequestEventBuyCo" +
-      "mmand"
+      "aType\030\002 \001(\r\022\023\n\013extraItemId\030\003 \001(\r\022\014\n\004name" +
+      "\030\004 \001(\t\"\025\n\023RequestLoginCommand\"*\n\026Request",
+      "SignNameCommand\022\020\n\010signName\030\001 \002(\t\"I\n\027Res" +
+      "ponseUserInfoCommand\022.\n\004user\030\001 \002(\0132 .com" +
+      ".trans.pixel.protoc.UserInfo\"N\n\034Response" +
+      "OtherUserInfoCommand\022.\n\004user\030\001 \003(\0132 .com" +
+      ".trans.pixel.protoc.UserInfo\"\032\n\010UserHead" +
+      "\022\016\n\006headId\030\002 \002(\005\"M\n\027ResponseUserHeadComm" +
+      "and\0222\n\010userHead\030\001 \003(\0132 .com.trans.pixel." +
+      "protoc.UserHead\"\201\001\n\024ResponsePopupCommand" +
+      "\022\021\n\tpopScreen\030\001 \002(\005\022\016\n\006flowID\030\002 \001(\t\022\014\n\004t" +
+      "ext\030\003 \002(\t\022\017\n\007heading\030\004 \001(\t\022\023\n\013yesButtonI",
+      "D\030\005 \001(\t\022\022\n\nnoButtonID\030\006 \001(\t\"(\n\010Merlevel\022" +
+      "\r\n\005level\030\001 \001(\005\022\r\n\005score\030\002 \001(\005\"?\n\014Merleve" +
+      "lList\022/\n\005level\030\001 \003(\0132 .com.trans.pixel.p" +
+      "rotoc.Merlevel\"f\n\004Area\022\016\n\006areaid\030\001 \001(\005\022\014" +
+      "\n\004name\030\002 \001(\t\022.\n\006daguan\030\003 \003(\0132\036.com.trans" +
+      ".pixel.protoc.Daguan\022\020\n\010merlevel\030\004 \001(\005\"6" +
+      "\n\010AreaList\022*\n\004data\030\001 \003(\0132\034.com.trans.pix" +
+      "el.protoc.Area\"\263\001\n\006Daguan\022\n\n\002id\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\r\n\005level\030\003 \001(\005\022\r\n\005count\030\004 \001(" +
+      "\005\022\014\n\004gold\030\005 \001(\005\022\013\n\003exp\030\006 \001(\005\022\016\n\006areaid\030\t",
+      " \001(\005\022\020\n\010merlevel\030\013 \001(\005\0224\n\010lootlist\030\020 \003(\013" +
+      "2\".com.trans.pixel.protoc.RewardInfo\":\n\n" +
+      "DaguanList\022,\n\004data\030\001 \003(\0132\036.com.trans.pix" +
+      "el.protoc.Daguan\"*\n\nEventLevel\022\r\n\005level\030" +
+      "\001 \001(\005\022\r\n\005count\030\002 \001(\005\"B\n\016EventLevelList\0220" +
+      "\n\004data\030\001 \003(\0132\".com.trans.pixel.protoc.Ev" +
+      "entLevel\"\215\001\n\013EventRandom\022\016\n\006level1\030\001 \001(\005" +
+      "\022\016\n\006count1\030\002 \001(\005\022\016\n\006level2\030\003 \001(\005\022\016\n\006coun" +
+      "t2\030\004 \001(\005\022\016\n\006level3\030\005 \001(\005\022\016\n\006count3\030\006 \001(\005" +
+      "\022\016\n\006level4\030\007 \001(\005\022\016\n\006count4\030\010 \001(\005\"N\n\014Even",
+      "tRandoms\022\n\n\002id\030\001 \001(\005\0222\n\005order\030\002 \003(\0132#.co" +
+      "m.trans.pixel.protoc.EventRandom\"D\n\020Even" +
+      "tRandomsList\0220\n\002id\030\001 \003(\0132$.com.trans.pix" +
+      "el.protoc.EventRandoms\"J\n\010EventExp\022\n\n\002id" +
+      "\030\001 \001(\005\0222\n\006reward\030\002 \003(\0132\".com.trans.pixel" +
+      ".protoc.RewardInfo\">\n\014EventExpList\022.\n\004da" +
+      "ta\030\001 \003(\0132 .com.trans.pixel.protoc.EventE" +
+      "xp\"0\n\rEventQuestion\022\016\n\006answer\030\002 \001(\t\022\017\n\007e" +
+      "ventid\030\003 \001(\005\"8\n\tEnemyList\022+\n\004data\030\001 \003(\0132" +
+      "\035.com.trans.pixel.protoc.Enemy\"\254\002\n\013Event",
+      "Config\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\014\n\004type" +
+      "\030\003 \001(\005\022\016\n\006daguan\030\004 \001(\005\0220\n\004cost\030\005 \001(\0132\".c" +
+      "om.trans.pixel.protoc.RewardInfo\0224\n\010loot" +
+      "list\030\006 \003(\0132\".com.trans.pixel.protoc.Rewa" +
+      "rdInfo\0227\n\010question\030\007 \003(\0132%.com.trans.pix" +
+      "el.protoc.EventQuestion\0226\n\nenemygroup\030\010 " +
+      "\001(\0132\".com.trans.pixel.protoc.EnemyGroup\022" +
+      "\014\n\004call\030\t \001(\005\"D\n\017EventConfigList\0221\n\004data" +
+      "\030\001 \003(\0132#.com.trans.pixel.protoc.EventCon" +
+      "fig\"U\n\tAreaEvent\022\n\n\002id\030\001 \001(\005\022,\n\005event\030\002 ",
+      "\003(\0132\035.com.trans.pixel.protoc.Event\022\016\n\006we" +
+      "ight\030\003 \001(\005\"@\n\rAreaEventList\022/\n\004data\030\001 \003(" +
+      "\0132!.com.trans.pixel.protoc.AreaEvent\"G\n\004" +
+      "Loot\022\r\n\005order\030\001 \001(\005\0220\n\004item\030\002 \003(\0132\".com." +
+      "trans.pixel.protoc.RewardInfo\"4\n\010LootLis" +
+      "t\022(\n\002id\030\001 \003(\0132\034.com.trans.pixel.protoc.L" +
+      "oot\"&\n\030RequestLevelStartCommand\022\n\n\002id\030\001 " +
+      "\001(\005\"4\n\023RequestEventCommand\022\016\n\006userId\030\001 \001" +
+      "(\005\022\r\n\005order\030\002 \001(\005\"D\n\024ResponseEventComman" +
+      "d\022,\n\005event\030\001 \003(\0132\035.com.trans.pixel.proto",
+      "c.Event\"\037\n\035RequestLevelLootResultCommand" +
+      "\"\037\n\035RequestEventQuickFightCommand\"{\n\031Req" +
+      "uestEventResultCommand\022\r\n\005order\030\001 \001(\005\022\020\n" +
+      "\010teamInfo\030\002 \001(\t\022\021\n\tfightInfo\030\003 \001(\t\022\014\n\004tu" +
+      "rn\030\004 \001(\005\022\017\n\007finalid\030\006 \001(\005\022\013\n\003ret\030\005 \001(\010\"P" +
+      "\n\032ResponseEventResultCommand\0222\n\006reward\030\001" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
+      "\"\226\001\n\030ResponseLevelLootCommand\022\024\n\014unlockD" +
+      "aguan\030\001 \001(\005\022\023\n\013unlockOrder\030\002 \001(\005\022\022\n\nloot" +
+      "Daguan\030\003 \001(\005\022\020\n\010lootTime\030\004 \001(\005\022\021\n\teventT",
+      "ime\030\005 \001(\005\022\026\n\016lootTimeNormal\030\007 \001(\r\"\030\n\026Req" +
+      "uestEventBuyCommand"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -36240,7 +36396,7 @@ public final class UserInfoProto {
           internal_static_com_trans_pixel_protoc_RequestExtraRewardCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestExtraRewardCommand_descriptor,
-              new java.lang.String[] { "Status", "ExtraType", "ExtraItemId", });
+              new java.lang.String[] { "Status", "ExtraType", "ExtraItemId", "Name", });
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestLoginCommand_fieldAccessorTable = new

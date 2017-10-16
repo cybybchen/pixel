@@ -245,13 +245,16 @@ public class PushCommandService extends BaseCommandService {
 		if (ddBuilder.getExtraTimeStamp() == 0)
 			ddBuilder.setExtraTimeStamp(0);
 		else
-			ddBuilder.setExtraTimeStamp(ddBuilder.getExtraTimeStamp() + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - ddBuilder.getExtraHasLootTime());
+			ddBuilder.setExtraTimeStamp(Math.max(0, ddBuilder.getExtraTimeStamp() + 25 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis() - ddBuilder.getExtraHasLootTime()));
 //		ddBuilder.setExtraCount1(ddBuilder.getExtraCount1());
 //		ddBuilder.setExtraCount2(ddBuilder.getExtraCount2());
 //		ddBuilder.setExtraCount3(ddBuilder.getExtraCount3());
 //		ddBuilder.setExtraType(ddBuilder.getExtraType());
 //		ddBuilder.setExtraHasLootTime(ddBuilder.getExtraHasLootTime());
 //		ddBuilder.setExtraLastTimeStamp(ddBuilder.getExtraLastTimeStamp() + 5 * TimeConst.MILLION_SECOND_PER_MINUTE - System.currentTimeMillis());
+		
+		if (ddBuilder.getExtraTimeStamp() == 0 && userdd.getExtraTimeStamp() > 0)
+			ddBuilder.setCanReward(true);
 		
 		builder.setUserdd(ddBuilder.build());
 		responseBuilder.setUserDDCommand(builder.build());

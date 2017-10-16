@@ -86,7 +86,7 @@ message UserInfo {
 
 message UserDD {
 	optional uint64 extraTimeStamp = 1;//当次dingding结束所需时间
-	optional uint64 extraHasLootTime = 5;//暂时用不到，该次dingding已经过的时间
+	optional uint64 extraHasLootTime = 5;//暂停时已经挂机的时间
 	optional uint32 extraType = 6;//暂时用不到
 	optional uint64 extraLastTimeStamp = 7;//暂时用不到，上次dingding结束的时间
 	optional uint32 ddDaily = 8;//当天dingding次数
@@ -95,6 +95,8 @@ message UserDD {
         optional uint32 ddTotal = 11;//总的dingding次数
         optional uint32 ddExtraItemId = 12;//dingding之前选择的道具
 	optional uint32 limit = 13;//限定奖励已领取次数
+	optional bool canReward = 14;//是否可以领奖
+	optional string name = 15;//任务名
 }
 
 message JewelPool {
@@ -657,7 +659,7 @@ message DingdingList {
 }
 
 message FanqieLoot {
-	required uint32 limit = 1;
+	required int32 limit = 1;
 	required RewardInfo reward = 2;
 }
 
@@ -3087,6 +3089,7 @@ message RequestExtraRewardCommand {
 	required uint32 status = 1;//1：start 2:end 3:pause 4:continue 5:giveup
 	optional uint32 extraType = 2; //1,2,3
 	optional uint32 extraItemId = 3;
+	optional string name = 4;
 }
 
 message RequestLoginCommand {
