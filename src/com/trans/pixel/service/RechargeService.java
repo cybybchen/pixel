@@ -509,7 +509,7 @@ public class RechargeService {
 			return null;
 		}
 		
-		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getOrder(0).getReward().getItemid(), rmb.getOrder(0).getCost().getItemid(), (int)rmb.getOrder(0).getCost().getCount());
+		logService.sendShopLog(user.getServerId(), user.getId(), 4, rmb.getOrder(0).getReward().getItemid(), 1, rmb.getOrder(0).getCost().getItemid(), (int)rmb.getOrder(0).getCost().getCount());
 //		if(serverService.getOnlineStatus(user.getVersion()) == 0){
 //			
 ////			UserLevelBean userLevel = userLevelService.selectUserLevelRecord(user.getId());

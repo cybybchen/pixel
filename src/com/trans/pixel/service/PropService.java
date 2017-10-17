@@ -26,6 +26,7 @@ import com.trans.pixel.protoc.EquipProto.Chip;
 import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.EquipProto.Prop;
 import com.trans.pixel.protoc.EquipProto.Synthetise;
+import com.trans.pixel.protoc.HeroProto.Hero;
 import com.trans.pixel.protoc.HeroProto.ResponseGetUserHeroCommand;
 import com.trans.pixel.protoc.HeroProto.Talentupgrade;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -63,6 +64,10 @@ public class PropService {
 	private TalentRedisService talentRedisService;
 	@Resource
 	private UserPokedeService userPokedeService;
+	@Resource
+	private HeroService heroService;
+	@Resource
+	private LogService logService;
 	
 	public Prop getProp(int itemId) {
 		Prop prop = propRedisService.getPackage(itemId);
@@ -178,6 +183,11 @@ public class PropService {
 			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 			builder.addUserHero(heroInfo.buildHeroInfo());
 			responseBuilder.setGetUserHeroCommand(builder.build());
+			/**
+			 * send starup log
+			 */
+			Hero heroconfig = heroService.getHero(heroInfo.getHeroId());
+			logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), 1, heroconfig.getQuality(), heroconfig.getPosition(), "");
 			
 			return SuccessConst.USE_PROP;
 		}else if(propId >= 39016 && propId <= 39026) {
@@ -193,6 +203,12 @@ public class PropService {
 			ResponseGetUserHeroCommand.Builder builder = ResponseGetUserHeroCommand.newBuilder();
 			builder.addUserHero(heroInfo.buildHeroInfo());
 			responseBuilder.setGetUserHeroCommand(builder.build());
+			/**
+			 * send rareup log
+			 */
+			Hero hero = heroService.getHero(heroInfo.getHeroId());
+			logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), 1, heroInfo.getRank(), hero.getPosition());
+			
 			
 			return SuccessConst.USE_PROP;
 		}else if(propId >= 39101 && propId <= 39105) {

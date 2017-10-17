@@ -266,7 +266,7 @@ public class HeroLevelUpService {
 		/**
 		 * send starup log
 		 */
-		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), heroInfo.getValue(), addValue, heroconfig.getQuality(), heroconfig.getPosition(), costIds);
+		logService.sendStarupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), heroInfo.getStarLevel(), 0, heroconfig.getQuality(), heroconfig.getPosition(), costIds);
 		
 		return SuccessConst.STAR_LEVELUP_SUCCESS;
 	}
@@ -321,7 +321,7 @@ public class HeroLevelUpService {
 		 * send rareup log
 		 */
 		Hero hero = heroService.getHero(heroInfo.getHeroId());
-		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), heroInfo.getRank(), hero.getPosition());
+		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), 0, heroInfo.getRank(), hero.getPosition());
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}

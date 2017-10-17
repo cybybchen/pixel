@@ -94,8 +94,10 @@ public class LogString {
 	public static final String HEROID = "heroid";
 	public static final String RARE = "rare";
 	public static final String GRADE = "grade";
+	public static final String GRADETYPE = "gradetype";
 	public static final String HEROTYPE = "herotype";
 	public static final String STAR = "star";
+	public static final String STARUPTYPE = "staruptype";
 	public static final String VALUE = "value";
 	public static final String SKILLID = "skillid";
 	public static final String EQUIPID = "equipid";
