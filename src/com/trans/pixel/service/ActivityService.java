@@ -1292,7 +1292,9 @@ public class ActivityService {
 	 * 完成dingding的活动
 	 */
 	public void completeDingding(UserBean user) {
-		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_COMPLETE_DINGDING_VALUE);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_COMPLETE_DINGDING_3_VALUE);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_COMPLETE_DINGDING_6_VALUE);
+		taskService.sendTask3Score(user, ACTIVITY_TYPE.TYPE_COMPLETE_DINGDING_10_VALUE);
 	}
 	
 	/**
