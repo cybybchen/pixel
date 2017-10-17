@@ -419,13 +419,6 @@ public class UserCommandService extends BaseCommandService {
 //			ErrorCommand errorCommand = buildErrorCommand(ret);
 //			responseBuilder.setErrorCommand(errorCommand);
 //		}
-		Map<String, String> params = new HashMap<String, String>();
-		params.put(LogString.USERID, "" + user.getId());
-		params.put(LogString.SERVERID, "" + user.getServerId());
-		params.put(LogString.ITEMID, "" + (itemId > 0 ? itemId : userdd.getDdExtraItemId()));
-		params.put(LogString.DINGCNT, "" + userdd.getDdDaily());
-		params.put(LogString.TYPE, "" + status);
-		logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		if (rewards.getLootCount() != 0) {
 			handleRewards(responseBuilder, user, rewards);
 		}

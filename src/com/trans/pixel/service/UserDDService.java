@@ -1,7 +1,9 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,9 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.trans.pixel.constants.ErrorConst;
-import com.trans.pixel.constants.ResultConst;
-import com.trans.pixel.constants.SuccessConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.mapper.UserDDMapper;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -40,6 +40,8 @@ public class UserDDService {
 	private ActivityService activityService;
 	@Resource
 	private CostService costService;
+	@Resource
+	private LogService logService;
 	
 	public UserDD getUserDD(long userId) {
 		UserDD userdd = redis.getUserDD(userId);
@@ -75,6 +77,14 @@ public class UserDDService {
 	public UserDD handleExtra(UserBean user, int status, int type, int itemId, String name, MultiReward.Builder rewards,
 			List<Integer> costs) {
 		UserDD.Builder userdd = UserDD.newBuilder(getUserDD(user.getId()));
+		int ddExtraItemId = userdd.getDdExtraItemId();
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.ITEMID, "" + (itemId > 0 ? itemId : ddExtraItemId));
+		params.put(LogString.DINGCNT, "" + (userdd.getDdDaily()+1));
+		params.put(LogString.TYPE, "" + status);
+		logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		long current = System.currentTimeMillis();
 		if (status == 5) {//giveup
 			userdd.setExtraTimeStamp(0);
