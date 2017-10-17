@@ -165,6 +165,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.ITEMID));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.DINGCNT));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
 				break;

@@ -161,6 +161,7 @@ public class LogString {
 	public static final String TICKETCOUNT = "ticketcount";
 	public static final String IMBAID = "imbaid";
 	public static final String LOOTID = "lootid";
+	public static final String DINGCNT = "dingcnt";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
