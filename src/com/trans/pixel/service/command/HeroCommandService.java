@@ -307,6 +307,7 @@ public class HeroCommandService extends BaseCommandService {
 			params.put(LogString.SERVERID, "" + user.getServerId());
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.HEROID, "" + heroInfo.getHeroId());
+			params.put(LogString.TYPE, "2");
 			params.put(LogString.LEVEL, "" + heroInfo.getLevel());
 			params.put(LogString.GRADE, "" + heroInfo.getRank());
 			params.put(LogString.STAR, "" + heroInfo.getStarLevel());
@@ -314,7 +315,7 @@ public class HeroCommandService extends BaseCommandService {
 			params.put(LogString.RARE, "" + heroconfig.getQuality());
 			params.put(LogString.HEROTYPE, "" + heroconfig.getPosition());
 			
-			logService.sendLog(params, LogString.LOGTYPE_RECYCLE);
+			logService.sendLog(params, LogString.LOGTYPE_HERORES);
 		}else{
 			isError = true;
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.HERO_HAS_FENJIE);
@@ -401,6 +402,10 @@ public class HeroCommandService extends BaseCommandService {
 					params.put(LogString.SERVERID, "" + user.getServerId());
 					params.put(LogString.USERID, "" + user.getId());
 					params.put(LogString.HEROID, "" + heroInfo.getHeroId());
+					if(cmd.hasType())
+						params.put(LogString.TYPE, "" + cmd.getType().getNumber());
+					else
+						params.put(LogString.TYPE, "0");
 					params.put(LogString.LEVEL, "" + heroInfo.getLevel());
 					params.put(LogString.GRADE, "" + heroInfo.getRank());
 					params.put(LogString.STAR, "" + heroInfo.getStarLevel());

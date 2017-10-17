@@ -76,6 +76,7 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.SERVERID, "" + user.getServerId());
 			params.put(LogString.TYPE, cmd.getId()+"");
+			params.put(LogString.LOOTID, "0");
 			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
 			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
 			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
@@ -108,12 +109,15 @@ public class LootRewardTaskCommandService extends BaseCommandService {
 	            return;
 			}
 
-//			Map<String, String> params = new HashMap<String, String>();
-//			params.put(LogString.USERID, "" + user.getId());
-//			params.put(LogString.SERVERID, "" + user.getServerId());
-//			params.put(LogString.TYPE, cmd.getId()+"");
-//			params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
-//			logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
+			if (cmd.getCount() > 0) {
+				Map<String, String> params = new HashMap<String, String>();
+				params.put(LogString.USERID, "" + user.getId());
+				params.put(LogString.SERVERID, "" + user.getServerId());
+				params.put(LogString.TYPE, cmd.getId()+10+"");
+				params.put(LogString.LOOTID, "" + cmd.getRaidid());
+				params.put(LogString.TICKETCOUNT, "" + cmd.getCount());
+				logService.sendLog(params, LogString.LOGTYPE_LOOTREWARDBOSS);
+			}
 			pusher.pushRewardCommand(responseBuilder, user, costs.build(), false);
 //		}
 		

@@ -1,7 +1,9 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.RewardBean;
@@ -416,6 +419,12 @@ public class UserCommandService extends BaseCommandService {
 //			ErrorCommand errorCommand = buildErrorCommand(ret);
 //			responseBuilder.setErrorCommand(errorCommand);
 //		}
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.ITEMID, "" + user.getServerId());
+		params.put(LogString.TYPE, "" + user.getServerId());
+		logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		if (rewards.getLootCount() != 0) {
 			handleRewards(responseBuilder, user, rewards);
 		}
@@ -590,6 +599,11 @@ public class UserCommandService extends BaseCommandService {
 		rewards.addAllLoot(rewardList);
 		handleRewards(responseBuilder, user, rewards.build());
 		pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		logService.sendLog(params, LogString.LOGTYPE_GRADUATE);
 	}
 	
 	private void pushCommand(Builder responseBuilder, UserBean user) {

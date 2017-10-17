@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.NoticeConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
@@ -1524,6 +1525,16 @@ public class UnionService extends FightService{
 		redis.clearLock(lockKey);
 		redis.clearLock(selfLockKey);
 		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.UNIONID, "" + user.getUnionId());
+		params.put(LogString.TYPE, "2");
+		params.put(LogString.UNIONID2, "" + enemyUnionId);
+		params.put(LogString.USERID2, "" + userId);
+		params.put(LogString.RESULT, "" + (ret.equals(UNION_FIGHT_RET.WIN) ? 2 : 1));
+		logService.sendLog(params, LogString.LOGTYPE_UNIONPVP);
+		
 		return SuccessConst.ATTACK_SUCCESS;
 	}
 	
@@ -1696,6 +1707,18 @@ public class UnionService extends FightService{
 				sendUnionFightDrwaReward(unionId1);
 				sendUnionFightDrwaReward(unionId2);
 			}
+
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.USERID, "0");
+			params.put(LogString.SERVERID, "1");
+			params.put(LogString.UNIONID, unionId1);
+			params.put(LogString.TYPE, "0");
+			params.put(LogString.UNIONID2, unionId2);
+			params.put(LogString.USERID2, "0");
+			params.put(LogString.RESULT, "" + (winStar > 0 ? 2 : 1));
+			if(winStar == 0)
+				params.put(LogString.RESULT, "3");
+			logService.sendLog(params, LogString.LOGTYPE_UNIONPVP);
 			
 		}
 	}

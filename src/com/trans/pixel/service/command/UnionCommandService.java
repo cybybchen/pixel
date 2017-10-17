@@ -1,7 +1,9 @@
 package com.trans.pixel.service.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
@@ -403,6 +406,16 @@ public class UnionCommandService extends BaseCommandService {
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ret);
 				responseBuilder.setErrorCommand(buildErrorCommand(ret));
 				return;
+			}else {
+				Map<String, String> params = new HashMap<String, String>();
+				params.put(LogString.USERID, "" + user.getId());
+				params.put(LogString.SERVERID, "" + user.getServerId());
+				params.put(LogString.UNIONID, "" + user.getUnionId());
+				params.put(LogString.TYPE, "1");
+				params.put(LogString.UNIONID2, "0");
+				params.put(LogString.USERID2, "0");
+				params.put(LogString.RESULT, "0");
+				logService.sendLog(params, LogString.LOGTYPE_UNIONPVP);
 			}
 		}else if (cmd.getStatus().equals(UNIONFIGHTAPPLY_STATUS.HANDLER_FIGHT_MEMBER)) {
 			if (!status.equals(UNION_FIGHT_STATUS.HUIZHANG_TIME)) {

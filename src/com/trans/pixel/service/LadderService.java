@@ -166,6 +166,7 @@ public class LadderService {
 		params.put(LogString.RESULT, ret == 0? "1" : "0");
 		params.put(LogString.GETBONUS, builder.getScore() - score+"");
 		params.put(LogString.BONUS, "" + builder.getScore());
+		params.put(LogString.IMBAID, "" + (enemy.getTeam().getUser().getId() < 0 ? -enemy.getTeam().getUser().getId() : 0));
 		logService.sendLog(params, LogString.LOGTYPE_ARENA);
 		return builder.build();
 	}

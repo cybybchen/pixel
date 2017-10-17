@@ -1,13 +1,16 @@
 package com.trans.pixel.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
@@ -15,6 +18,8 @@ import com.trans.pixel.model.userinfo.UserEquipPokedeBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.Base.UserTalent;
+import com.trans.pixel.protoc.EquipProto.Armor;
+import com.trans.pixel.protoc.EquipProto.Equip;
 import com.trans.pixel.protoc.HeroProto.Heroloot;
 import com.trans.pixel.service.redis.HeroRedisService;
 import com.trans.pixel.service.redis.PropRedisService;
@@ -57,6 +62,10 @@ public class RewardService {
 	private UnionService unionService;
 	@Resource
 	private PropService propService;
+	@Resource
+	private LogService logService;
+	@Resource
+	private EquipService equipService;
 	
 //	public void doReward(long userId, RewardBean reward) {
 //		UserBean bean = userService.getOther(userId);
@@ -119,6 +128,21 @@ public class RewardService {
 			userEquipService.addUserEquip(user, rewardId, (int)rewardCount, lasttime);
 		} else if (rewardId > RewardConst.EQUIPMENT) {
 			userEquipService.addUserEquip(user, rewardId, (int)rewardCount, lasttime);
+			
+			Map<String, String> params = new HashMap<String, String>();
+			params.put(LogString.SERVERID, "" + user.getServerId());
+			params.put(LogString.USERID, "" + user.getId());
+			params.put(LogString.EQUIPID, "" + rewardId);
+			params.put(LogString.LEVEL, "0");
+			if(rewardId < RewardConst.ARMOR){
+				Equip equip = equipService.getEquip(rewardId);
+				params.put(LogString.RARE, "" + equip.getIrare());
+			}else{
+				Armor equip = equipService.getArmor(rewardId);
+				params.put(LogString.RARE, "" + equip.getIrare());
+			}
+			params.put(LogString.TYPE, "0");
+			logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:

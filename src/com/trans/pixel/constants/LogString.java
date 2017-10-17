@@ -101,6 +101,7 @@ public class LogString {
 	public static final String EQUIPID = "equipid";
 	public static final String SKILLLEVEL = "skilllevel";
 	public static final String UNIONID = "unionid";
+	public static final String UNIONID2 = "unionid2";
 	public static final String BOSSID = "bossid";
 	public static final String TEAM = "team";
 	public static final String DPS = "dps";
@@ -156,6 +157,8 @@ public class LogString {
 	public static final String STONEID = "stoneid";
 	public static final String STONECOUNT = "stonecount";
 	public static final String TICKETCOUNT = "ticketcount";
+	public static final String IMBAID = "imbaid";
+	public static final String LOOTID = "lootid";
 	
 	// 日志类型
 	public static final int LOGTYPE_LOGIN = 0;
@@ -197,6 +200,10 @@ public class LogString {
 	public static final int LOGTYPE_SKILLSTONE = 36;
 	public static final int LOGTYPE_RECYCLE = 37;
 	public static final int LOGTYPE_LOOTREWARDBOSS = 38;
+	public static final int LOGTYPE_UNIONPVP = 39;
+	public static final int LOGTYPE_EQUIPGET = 40;
+	public static final int LOGTYPE_GRADUATE = 41;
+	public static final int LOGTYPE_DINGDING = 42;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -237,6 +244,10 @@ public class LogString {
 	public static final String LOGTYPE_ARENA_STR = "Arena";
 	public static final String LOGTYPE_SKILLSTONE_STR = "Skillstone";
 	public static final String LOGTYPE_LOOTREWARDBOSS_STR = "Lootrewardboss";
+	public static final String LOGTYPE_UNIONPVP_STR = "Unionpvp";
+	public static final String LOGTYPE_EQUIPGET_STR = "Equipget";
+	public static final String LOGTYPE_GRADUATE_STR = "Graduate";
+	public static final String LOGTYPE_DINGDING_STR = "Dingding";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

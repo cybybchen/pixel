@@ -59,6 +59,27 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				break;
 
+			case LogString.LOGTYPE_UNIONPVP:
+				sb.append(LogString.LOGTYPE_UNIONPVP_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.UNIONID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.UNIONID2));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID2));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				break;
+
 			case LogString.LOGTYPE_ARENA:
 				sb.append(LogString.LOGTYPE_ARENA_STR);
 				sb.append(LogString.SPLITER);
@@ -77,6 +98,8 @@ public class LogService {
 				sb.append(params.get(LogString.GETBONUS));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.BONUS));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.IMBAID));
 				sb.append(LogString.SPLITER);
 				break;
 				
@@ -114,7 +137,35 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LOOTID));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.TICKETCOUNT));
+				sb.append(LogString.SPLITER);
+				break;
+
+			case LogString.LOGTYPE_GRADUATE:
+				sb.append(LogString.LOGTYPE_GRADUATE_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				break;
+
+			case LogString.LOGTYPE_DINGDING:
+				sb.append(LogString.LOGTYPE_DINGDING_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ITEMID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
 				break;
 				
@@ -549,6 +600,8 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.HEROID));
 				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
+				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.LEVEL));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.GRADE));
@@ -558,6 +611,25 @@ public class LogService {
 				sb.append(params.get(LogString.RARE));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.HEROTYPE));
+				sb.append(LogString.SPLITER);
+				break;
+
+			case LogString.LOGTYPE_EQUIPGET:
+				sb.append(LogString.LOGTYPE_EQUIPGET_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.EQUIPID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
 				break;
 				
