@@ -587,11 +587,11 @@ public class LogService {
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.STAR));
 				sb.append(LogString.SPLITER);
-				sb.append(params.get(LogString.VALUE));
-				sb.append(LogString.SPLITER);
-				sb.append(params.get(LogString.CONSUMEVALUE));
+				sb.append(params.get(LogString.STARUPTYPE));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.RARE));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.CONSUMEVALUE));
 				sb.append(LogString.SPLITER);
 				sb.append(params.get(LogString.HEROTYPE));
 				sb.append(LogString.SPLITER);
