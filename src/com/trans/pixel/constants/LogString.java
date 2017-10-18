@@ -207,6 +207,7 @@ public class LogString {
 	public static final int LOGTYPE_EQUIPGET = 40;
 	public static final int LOGTYPE_GRADUATE = 41;
 	public static final int LOGTYPE_DINGDING = 42;
+	public static final int LOGTYPE_TEAMRAID = 43;
 	
 	public static final String LOGTYPE_LOGIN_STR = "Login";
 	public static final String LOGTYPE_LADDER_STR = "Ladder";
@@ -251,6 +252,7 @@ public class LogString {
 	public static final String LOGTYPE_EQUIPGET_STR = "Equipget";
 	public static final String LOGTYPE_GRADUATE_STR = "Graduate";
 	public static final String LOGTYPE_DINGDING_STR = "Dingding";
+	public static final String LOGTYPE_TEAMRAID_STR = "Teamraid";
 	
 	//monitor type
 	public static final int TYPE_MONITOR_LADDERDAILY = 1;

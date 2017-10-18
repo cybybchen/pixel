@@ -170,6 +170,29 @@ public class LogService {
 				sb.append(params.get(LogString.TYPE));
 				sb.append(LogString.SPLITER);
 				break;
+
+			case LogString.LOGTYPE_TEAMRAID:
+				sb.append(LogString.LOGTYPE_TEAMRAID_STR);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.USERID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.SERVERID));
+				sb.append(LogString.SPLITER);
+				sb.append(now);
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.BOSSID));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.TEAM));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.RESULT));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.LEVEL));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.ZHANLI));
+				sb.append(LogString.SPLITER);
+				sb.append(params.get(LogString.VIPLEVEL));
+				sb.append(LogString.SPLITER);
+				break;
 				
 			case LogString.LOGTYPE_SKILLSTONE:
 				sb.append(LogString.LOGTYPE_SKILLSTONE_STR);

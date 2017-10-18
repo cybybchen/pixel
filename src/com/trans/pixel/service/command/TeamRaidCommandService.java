@@ -1,6 +1,8 @@
 package com.trans.pixel.service.command;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -8,7 +10,9 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.ErrorConst;
+import com.trans.pixel.constants.LogString;
 import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.userinfo.UserLevelBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
@@ -464,7 +468,30 @@ public class TeamRaidCommandService extends BaseCommandService{
 			responseBuilder.setTeamRaidCommand(raidlist);
 			return;
 		}
+
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		for(EventProgress progress : myraid.getEventList()) {
+			if(progress.getStatus() == 0) {
+				int eventid = progress.getEventid();
+				params.put(LogString.BOSSID, "" + eventid);
+				break;
+			}
+		}
+		if(cmd.getEventid() != 0)
+			params.put(LogString.BOSSID, "" + cmd.getEventid());
+		params.put(LogString.TEAM, "0");
+		params.put(LogString.RESULT, "0");
+		UserLevelBean userLevel = levelRedisService.getUserLevel(user);
+		params.put(LogString.LEVEL, "" + userLevel.getUnlockDaguan());
+		params.put(LogString.ZHANLI, "" + user.getZhanli());
+		params.put(LogString.VIPLEVEL, "" + user.getVip());
+		
 		if(!cmd.getRet() && cmd.getTurn() == 0){//give up
+			params.put(LogString.TEAM, "0");
+			params.put(LogString.RESULT, "3");
+			
 			myraid.clearEvent();
 			if(myraid.hasRoomInfo()) {
 				if(myraid.getRoomInfo().getUser().getId() == user.getId()) {//解散房间
@@ -480,6 +507,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 						}
 					}
 					redis.delUserRoom(user, myraid.getRoomInfo().getIndex());
+					params.put(LogString.TEAM, "2");
 				}else {//退出房间
 					UserRoom.Builder room = redis.getUserRoom(myraid.getRoomInfo().getUser().getId(), myraid.getRoomInfo().getIndex());
 					if(!redis.setLock("TeamRaidRoom_"+room.getCreateUserId()+"_"+room.getIndex())) {
@@ -497,11 +525,14 @@ public class TeamRaidCommandService extends BaseCommandService{
 							break;
 						}
 					}
+					params.put(LogString.TEAM, "1");
 				}
 				myraid.clearRoomInfo();
 			}
 			redis.saveTeamRaid(user, myraid);
 			responseBuilder.setTeamRaidCommand(raidlist);
+
+			logService.sendLog(params, LogString.LOGTYPE_TEAMRAID);
 			return;
 		}
 		for(int i = 0; i < myraid.getEventCount(); i++) {
@@ -548,6 +579,7 @@ public class TeamRaidCommandService extends BaseCommandService{
 							redis.saveTeamRaid(roominfo.getUser().getId(), hisraid);
 						}
 					}
+					params.put(LogString.TEAM, "1");
 				}
 				if(isAllClear) {
 					myraid.clearEvent();
@@ -558,6 +590,9 @@ public class TeamRaidCommandService extends BaseCommandService{
 				}
 				redis.saveTeamRaid(user, myraid);
 			}
+
+			params.put(LogString.RESULT, "" + (cmd.getRet() ? 1 : 0));
+			logService.sendLog(params, LogString.LOGTYPE_TEAMRAID);
 //				if(!responseBuilder.hasErrorCommand()) {
 //				Map<String, String> params = new HashMap<String, String>();
 //				params.put(LogString.USERID, "" + user.getId());
@@ -640,6 +675,17 @@ public class TeamRaidCommandService extends BaseCommandService{
 			responseBuilder.setTeamRaidCommand(raidlist);
 			return;
 		}
+		
+		Map<String, String> params = new HashMap<String, String>();
+		params.put(LogString.USERID, "" + user.getId());
+		params.put(LogString.SERVERID, "" + user.getServerId());
+		params.put(LogString.BOSSID, "" + cmd.getEventid());
+		params.put(LogString.TEAM, "0");
+		params.put(LogString.RESULT, "1");
+		UserLevelBean userLevel = levelRedisService.getUserLevel(user);
+		params.put(LogString.LEVEL, "" + userLevel.getUnlockDaguan());
+		params.put(LogString.ZHANLI, "" + user.getZhanli());
+		params.put(LogString.VIPLEVEL, "" + user.getVip());
 		for(int i = 0; i < myraid.getEventCount(); i++) {
 			if(cmd.getEventid() != myraid.getEvent(i).getEventid())
 				continue;
@@ -671,9 +717,11 @@ public class TeamRaidCommandService extends BaseCommandService{
 							redis.delUserRoom(user, myraid.getRoomInfo().getIndex());
 						}
 						myraid.clearRoomInfo();
+						params.put(LogString.TEAM, "2");
 					}
 				}
 				redis.saveTeamRaid(user, myraid);
+				logService.sendLog(params, LogString.LOGTYPE_TEAMRAID);
 			}else{
 				pusher.pushUserDataByRewardId(responseBuilder, user, event.getCost().getItemid());
 				logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.NOT_ENOUGH);
