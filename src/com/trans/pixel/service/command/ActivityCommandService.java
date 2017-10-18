@@ -10,8 +10,6 @@ import com.trans.pixel.constants.ActivityConst;
 import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.ResultConst;
 import com.trans.pixel.model.userinfo.UserBean;
-import com.trans.pixel.model.userinfo.UserPropBean;
-import com.trans.pixel.protoc.ActivityProto.ActivityOrder;
 import com.trans.pixel.protoc.ActivityProto.Kaifu;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifuListCommand;
@@ -27,7 +25,6 @@ import com.trans.pixel.protoc.ActivityProto.UserRichang;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Commands.ErrorCommand;
 import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
-import com.trans.pixel.protoc.EquipProto.ResponseUsePropCommand;
 import com.trans.pixel.protoc.RechargeProto.RequestShouchongRewardCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
@@ -71,7 +68,7 @@ public class ActivityCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
+//			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
 		}
 		ResponseKaifuListCommand.Builder builder = ResponseKaifuListCommand.newBuilder();
 		builder.addAllUserKaifu(userActivityService.selectUserKaifuList(user));
@@ -130,7 +127,7 @@ public class ActivityCommandService extends BaseCommandService {
 			/**
 			 * send log
 			 */
-			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
+//			activityService.sendLog(user.getId(), user.getServerId(), ActivityConst.LOG_TYPE_ACTIVITY, id, order);
 		}
 		
 		
