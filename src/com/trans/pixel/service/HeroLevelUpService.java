@@ -321,7 +321,7 @@ public class HeroLevelUpService {
 		 * send rareup log
 		 */
 		Hero hero = heroService.getHero(heroInfo.getHeroId());
-		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), 0, heroInfo.getRank(), hero.getPosition());
+		logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), heroInfo.getRank(), 0, hero.getPosition());
 		
 		return SuccessConst.LEVELUP_RARE_SUCCESS;
 	}

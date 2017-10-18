@@ -207,7 +207,7 @@ public class PropService {
 			 * send rareup log
 			 */
 			Hero hero = heroService.getHero(heroInfo.getHeroId());
-			logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), 1, heroInfo.getRank(), hero.getPosition());
+			logService.sendRareupLog(user.getServerId(), user.getId(), heroInfo.getHeroId(), hero.getQuality(), heroInfo.getRank(), 1, hero.getPosition());
 			
 			
 			return SuccessConst.USE_PROP;
