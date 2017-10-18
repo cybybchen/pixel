@@ -84,7 +84,6 @@ public class UserDDService {
 		params.put(LogString.ITEMID, "" + (itemId > 0 ? itemId : ddExtraItemId));
 		params.put(LogString.DINGCNT, "" + (userdd.getDdDaily()+1));
 		params.put(LogString.TYPE, "" + status);
-		logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		long current = System.currentTimeMillis();
 		if (status == 5) {//giveup
 			userdd.setExtraTimeStamp(0);
@@ -92,13 +91,16 @@ public class UserDDService {
 			userdd.setExtraLastTimeStamp(0);
 			userdd.setExtraType(0);
 			userdd.setDdExtraItemId(0);
+			logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		} else if (status == 4) {//continue
 			userdd.setExtraTimeStamp(current);
+			logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		} else if (status == 3) {//pause
 			if (userdd.getExtraTimeStamp() != 0) {
 				userdd.setExtraHasLootTime(userdd.getExtraHasLootTime() + current - userdd.getExtraTimeStamp());
 				userdd.setExtraTimeStamp(0);
 			}
+			logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		} else if (status == 2) {//end
 			if (userdd.getExtraTimeStamp() > 0 && (System.currentTimeMillis() + userdd.getExtraHasLootTime() - userdd.getExtraTimeStamp() >= (25 * TimeConst.MILLION_SECOND_PER_MINUTE - 1000))) {
 				
@@ -133,6 +135,7 @@ public class UserDDService {
 				userdd.setDdWeekly(userdd.getDdWeekly() + 1);
 				userdd.setDdMonthly(userdd.getDdMonthly() + 1);
 				userdd.setDdTotal(userdd.getDdTotal() + 1);
+				logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 			}
 			
 			userdd.setExtraTimeStamp(0);
@@ -149,6 +152,8 @@ public class UserDDService {
 			userdd.setDdExtraItemId(itemId);
 			userdd.setExtraHasLootTime(0);
 			userdd.setName(name);
+
+			logService.sendLog(params, LogString.LOGTYPE_DINGDING);
 		}
 		
 		updateUserDD(userdd.build(), user.getId());
