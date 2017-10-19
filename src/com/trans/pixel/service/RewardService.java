@@ -134,15 +134,20 @@ public class RewardService {
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.EQUIPID, "" + rewardId);
 			params.put(LogString.LEVEL, "0");
+			params.put(LogString.TYPE, "0");
 			if(rewardId < RewardConst.ARMOR){
 				Equip equip = equipService.getEquip(rewardId);
-				params.put(LogString.RARE, "" + equip.getIrare());
-			}else{
+				if(equip != null) {
+					params.put(LogString.RARE, "" + equip.getIrare());
+					logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
+				}
+			}else if(rewardId < RewardConst.ENGINE){
 				Armor equip = equipService.getArmor(rewardId);
-				params.put(LogString.RARE, "" + equip.getIrare());
+				if(equip != null) {
+					params.put(LogString.RARE, "" + equip.getIrare());
+					logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
+				}
 			}
-			params.put(LogString.TYPE, "0");
-			logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
 		} else {
 			switch (rewardId) {
 				case RewardConst.RECHARGE:

@@ -192,15 +192,20 @@ public class EquipPokedeCommandService extends BaseCommandService {
 			params.put(LogString.USERID, "" + user.getId());
 			params.put(LogString.EQUIPID, "" + pokede.getItemId());
 			params.put(LogString.LEVEL, "" + pokede.getOrder());
+			params.put(LogString.TYPE, "2");
 			if(pokede.getItemId() < RewardConst.ARMOR){
 				Equip equip = equipService.getEquip(pokede.getItemId());
-				params.put(LogString.RARE, "" + equip.getIrare());
-			}else{
+				if(equip != null) {
+					params.put(LogString.RARE, "" + equip.getIrare());
+					logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
+				}
+			}else if(pokede.getItemId() < RewardConst.ENGINE){
 				Armor equip = equipService.getArmor(pokede.getItemId());
-				params.put(LogString.RARE, "" + equip.getIrare());
+				if(equip != null) {
+					params.put(LogString.RARE, "" + equip.getIrare());
+					logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
+				}
 			}
-			params.put(LogString.TYPE, "2");
-			logService.sendLog(params, LogString.LOGTYPE_EQUIPGET);
 		}
 		
 		if (costs.getLootCount() > 0) {
