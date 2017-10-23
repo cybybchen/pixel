@@ -47,6 +47,7 @@ import com.trans.pixel.protoc.LadderProto.LadderMode;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderSeason;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
+import com.trans.pixel.protoc.LadderProto.LadderShilian;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.UserLadder;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
@@ -124,39 +125,19 @@ public class LadderService {
 	
 	public UserLadder submitLadderResult(UserBean user, int ret, int type, int position, MultiReward.Builder rewards) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, type);
-		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
 		Map<Integer, UserLadder> map = userLadderRedisService.getUserEnemy(user.getId(), type);
 		UserLadder enemy = map.get(position);
 		if (enemy == null)
 			return null;
+		
 		int score = userLadder.getScore();
-		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret, enemy));
-		builder.setGrade(userLadderService.calGrade(builder.getScore()));
-		/**
-		 * 竞技场段位的活动
-		 */
-		if (builder.getGrade() > userLadder.getGrade())
-			activityService.ladderModeLevelup(user, builder.getGrade());
-		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
-		builder.setPosition(position);
-//		if (type == LadderConst.TYPE_LADDER_NORMAL && ret == 0)
-		if (type == LadderConst.TYPE_LADDER_NORMAL)
-			builder.setTaskProcess(builder.getTaskProcess() + 1);
+		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+		if (type == LadderConst.TYPE_LADDER_NORMAL) {
+			builder = handlerLadderResult(user, userLadder, ret, type, position, enemy, rewards);
+		}
+		
+		builder.setTaskProcess(builder.getTaskProcess() + 1);
 		userLadderService.updateUserLadder(builder.build());
-		
-		Team team = userTeamService.getTeamCache(user);
-		builder.setTeam(team);
-		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
-		
-		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
-			userLadderService.addLadderRank(user, builder.build());
-		}
-
-		//最佳阵容奖励
-		if (ret == 0 && enemy.getPosition() == 0 && enemy.getTeam().getUser().getId() < 0 && user.getLadderModeRewardCount() < 5) {
-			rewards.addAllLoot(userLadderService.getLadderTeamReward());
-			user.setLadderModeRewardCount(user.getLadderModeRewardCount() + 1);
-		}
 		
 		Map<String, String> params = new HashMap<String, String>();
 		params.put(LogString.USERID, "" + user.getId());
@@ -168,15 +149,46 @@ public class LadderService {
 		params.put(LogString.BONUS, "" + builder.getScore());
 		params.put(LogString.IMBAID, "" + (enemy.getTeam().getUser().getId() < 0 ? -enemy.getTeam().getUser().getId() : 0));
 		logService.sendLog(params, LogString.LOGTYPE_ARENA);
+		
 		return builder.build();
 	}
 	
-	public List<RewardInfo> ladderTaskReward(UserBean user) {
-		UserLadder userLadder = userLadderService.getUserLadder(user, LadderConst.TYPE_LADDER_NORMAL);
-		LadderSeason ladderSeason = userLadderService.getLadderSeason();
-		LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
+	private UserLadder.Builder handlerLadderResult(UserBean user, UserLadder userLadder, int ret, int type, int position,
+			UserLadder enemy, MultiReward.Builder rewards) {
+		UserLadder.Builder builder = UserLadder.newBuilder(userLadder);
+		builder.setScore(userLadderService.calScore(user, userLadder, type, position, ret, enemy));
+		builder.setGrade(userLadderService.calGrade(builder.getScore()));
+		/**
+		 * 竞技场段位的活动
+		 */
+		if (builder.getGrade() > userLadder.getGrade())
+			activityService.ladderModeLevelup(user, builder.getGrade());
+		builder.setLevel(userLadderService.calLevel(builder.getScore(), builder.getGrade()));
+		builder.setPosition(position);
+		
+		if (builder.getScore() > userLadder.getScore()) {//插入排行榜
+			userLadderService.addLadderRank(user, builder.build());
+		}
+
+		//最佳阵容奖励
+		if (ret == 0 && enemy.getPosition() == 0 && enemy.getTeam().getUser().getId() < 0 && user.getLadderModeRewardCount() < 5) {
+			rewards.addAllLoot(userLadderService.getLadderTeamReward());
+			user.setLadderModeRewardCount(user.getLadderModeRewardCount() + 1);
+		}
+		
+		Team team = userTeamService.getTeamCache(user);
+		builder.setTeam(team);
+		
+		userLadderService.storeRoomData(builder.build(), type, userLadder.getGrade());
+		
+		return builder;
+	}
+	
+	public List<RewardInfo> ladderTaskReward(UserBean user, int type) {
+		UserLadder userLadder = userLadderService.getUserLadder(user, type);
+		List<Task> taskList = getTaskListByType(type);
 		int rewardProcess = 0;
-		for (Task task : ladderSeasonConfig.getTaskList()) {
+		for (Task task : taskList) {
 			if (task.getTargetcount() > userLadder.getTaskRewardProcess())
 				rewardProcess = rewardProcess == 0 ? task.getTargetcount() : Math.min(rewardProcess, task.getTargetcount());
 		}
@@ -192,12 +204,23 @@ public class LadderService {
 		builder.setTaskRewardProcess(rewardProcess);
 		userLadderService.updateUserLadder(builder.build());
 		
-		for (Task task : ladderSeasonConfig.getTaskList()) {
+		for (Task task : taskList) {
 			if (task.getTargetcount() == rewardProcess)
 				return task.getRewardList();
 		}
 		
 		return null;
+	}
+	
+	private List<Task> getTaskListByType(int type) {
+		if (type == LadderConst.TYPE_LADDER_SHILIAN) {
+			LadderShilian ladderShilian = ladderRedisService.getLadderShilian(1);
+			return ladderShilian.getTaskList();
+		} else {
+			LadderSeason ladderSeason = userLadderService.getLadderSeason();
+			LadderSeasonConfig ladderSeasonConfig = ladderRedisService.getLadderSeason(ladderSeason.getSeason());
+			return ladderSeasonConfig.getTaskList();
+		}
 	}
 	
 	public List<RewardInfo> handleLadderSeasonReward(UserBean user) {

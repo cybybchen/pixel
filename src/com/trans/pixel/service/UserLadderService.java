@@ -112,7 +112,6 @@ public class UserLadderService {
 	}
 	
 	public Map<Integer, UserLadder> getUserEnemy(UserBean user, int type, boolean isRefresh) {
-		UserLadder userLadder = getUserLadder(user, type);
 		Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
 		if (!isRefresh)
 			map = userLadderRedisService.getUserEnemy(user.getId(), type);
@@ -120,11 +119,54 @@ public class UserLadderService {
 		if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
 			return map;
 		
-		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
 		map = new HashMap<Integer, UserLadder>();
 		
+		if (type != 2) {
+			map = getUserEnemyNormal(user, type);
+		} else {
+			map = getUserEnemyShilian(user, type);
+		}
+		
+		userLadderRedisService.addUserEnemyUserId(user, map.values());
+		userLadderRedisService.storeUserEnemy(user.getId(), type, map);
+		
+		return map;
+	}
+	
+	private Map<Integer, UserLadder> getUserEnemyShilian(UserBean user, int type) {
+		Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
+		UserLadder userLadder = getUserLadder(user, type);
+		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
+		int randomStart = -6 + RandomUtils.nextInt(12);
+		List<UserInfo> randomUserList = userService.getRandUserByNodelete(randomStart, 12 + randomStart, user);
+		for (UserInfo userinfo : randomUserList) {
+			if (enemyUserIdList.contains(userinfo.getId()))
+				continue;
+			Team team = userTeamService.getTeamCache(userinfo.getId());
+			UserLadder enemyLadder = initUserLadder(type, Math.max(userLadder.getGrade() - 1, 1), team, false, userLadder.getScore());
+			if (enemyLadder != null) {
+				int position = userLadderRedisService.storeRoomData(enemyLadder, type, userLadder.getGrade());
+				if (position != enemyLadder.getPosition() && !isExists(map, enemyLadder)) {
+					UserLadder.Builder builder = UserLadder.newBuilder(enemyLadder);
+					builder.setPosition(position);
+					map.put(builder.getPosition(), builder.build());
+				}
+			}
+			
+			if (map.size() >= LadderConst.RANDOM_ENEMY_COUNT)
+				break;
+		}
+		
+		return map;
+	}
+	
+	private Map<Integer, UserLadder> getUserEnemyNormal(UserBean user, int type) {
+		UserLadder userLadder = getUserLadder(user, type);
+		Map<Integer, UserLadder> map = new HashMap<Integer, UserLadder>();
+		
+		List<Long> enemyUserIdList = userLadderRedisService.getUserEnemyUserIds(user);
+		
 		if (user.getLadderModeRewardCount() < 5 && userLadder.getGrade() == 8) {
-//		if (user.getLadderModeRewardCount() < 5) {
 			UserLadder robotLadder = randomRobotLadder(userLadder.getGrade(), userLadder.getScore());
 			if (robotLadder != null)
 				map.put(0, robotLadder);
@@ -167,9 +209,6 @@ public class UserLadderService {
 					break;
 			}
 		}
-		
-		userLadderRedisService.addUserEnemyUserId(user, map.values());
-		userLadderRedisService.storeUserEnemy(user.getId(), type, map);
 		
 		return map;
 	}

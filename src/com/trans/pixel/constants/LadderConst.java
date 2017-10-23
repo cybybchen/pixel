@@ -7,6 +7,7 @@ public class LadderConst {
 	
 	public static final int TYPE_LADDER_NORMAL = 0;
 	public static final int TYPE_LADDER_LD = 1;
+	public static final int TYPE_LADDER_SHILIAN = 2;
 	
 	public static final int LADDER_LAST_DAYS = 21;
 }

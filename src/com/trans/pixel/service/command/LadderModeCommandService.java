@@ -85,6 +85,27 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void ladderenemy(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
+		int type = cmd.getType();
+		if (type != LadderConst.TYPE_LADDER_SHILIAN && handlerNormalNextSeason(cmd, responseBuilder, user)) {
+			return;
+		}
+		
+		Map<Integer, UserLadder> enemyMap = new HashMap<Integer, UserLadder>();
+		List<UserLadder> userLadderList = ladderService.ladderInfo(enemyMap, user, false, type);
+		
+		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
+		userLadderBuilder.addAllUser(userLadderList);
+		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
+		
+		ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
+		enemyBuilder.addAllEnemy(enemyMap.values());
+		responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
+		
+		
+		
+	}
+	
+	private boolean handlerNormalNextSeason(RequestLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
 		UserLadder userLadder = userLadderService.getUserLadder(user, cmd.getType());
 		if (userLadderService.isNextSeason(userLadder)) {
 			List<UserLadder> userLadderList = userLadderService.getUserLadderList(user);
@@ -99,7 +120,7 @@ public class LadderModeCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_END_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-			return;
+			return true;
 		}
 		
 		//赛季奖励
@@ -117,24 +138,10 @@ public class LadderModeCommandService extends BaseCommandService {
 			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
 			responseBuilder.setErrorCommand(errorCommand);
 			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-			return;
+			return true;
 		}
 		
-		int type = cmd.getType();
-		
-		Map<Integer, UserLadder> enemyMap = new HashMap<Integer, UserLadder>();
-		List<UserLadder> userLadderList = ladderService.ladderInfo(enemyMap, user, false, type);
-		
-		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
-		userLadderBuilder.addAllUser(userLadderList);
-		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
-		
-		ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
-		enemyBuilder.addAllEnemy(enemyMap.values());
-		responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
-		
-		
-		
+		return false;
 	}
 	
 	public void refreshLadderEnemy(RequestRefreshLadderEnemyCommand cmd, Builder responseBuilder, UserBean user) {
@@ -189,7 +196,7 @@ public class LadderModeCommandService extends BaseCommandService {
 			return;
 		}
 		
-		List<RewardInfo> rewardList = ladderService.ladderTaskReward(user);
+		List<RewardInfo> rewardList = ladderService.ladderTaskReward(user, 0);
 		if (rewardList == null || rewardList.isEmpty()) {
 			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.REWARD_ERROR);
 			
@@ -211,25 +218,11 @@ public class LadderModeCommandService extends BaseCommandService {
 	}
 	
 	public void submitLadderResult(RequestSubmitLadderResultCommand cmd, Builder responseBuilder, UserBean user) {
-		LadderSeason ladderSeason = userLadderService.getLadderSeason();
-		if (ladderSeason == null || !DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime())) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
-			responseBuilder.setErrorCommand(errorCommand);
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+		int type = cmd.getType();
+		if (type != LadderConst.TYPE_LADDER_SHILIAN && !canSubmitResult(cmd, responseBuilder, user)) {
 			return;
 		}
-		
-		UserLadder userLadder = userLadderService.getUserLadder(user,cmd.getType());
-		if (userLadderService.isNextSeason(userLadder)) {
-			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
-			
-			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_END_ERROR);
-			responseBuilder.setErrorCommand(errorCommand);
-			pushCommandService.pushUserInfoCommand(responseBuilder, user);
-			return;
-		}
+		UserLadder userLadder = userLadderService.getUserLadder(user, type);
 		
 		MultiReward.Builder rewards = MultiReward.newBuilder();
 		ResponseUserLadderCommand.Builder userLadderBuilder = ResponseUserLadderCommand.newBuilder();
@@ -240,8 +233,8 @@ public class LadderModeCommandService extends BaseCommandService {
 			userLadderBuilder.addUser(userLadder);
 		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
 		
-		//获得赛季段位装备奖励
-//		if (cmd.getRet() == 0) {
+		//获得赛季段位装备奖励，试炼模式无法获得
+		if (type != LadderConst.TYPE_LADDER_SHILIAN) {
 			Map<Integer, UserLadder> enemyMap = ladderService.refreshEnemy(user, cmd.getType());
 			ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
 			enemyBuilder.addAllEnemy(enemyMap.values());
@@ -258,12 +251,12 @@ public class LadderModeCommandService extends BaseCommandService {
 					pushCommandService.pushUserDataByRewardId(responseBuilder, user, pokede.getItemId(), true);
 				}
 			}
-//		}
+		}
 
 		//任务奖励
-		if (cmd.getType() == LadderConst.TYPE_LADDER_NORMAL) {
+		if (type == LadderConst.TYPE_LADDER_NORMAL || type == LadderConst.TYPE_LADDER_SHILIAN) {
 			List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
-			List<RewardInfo> list = ladderService.ladderTaskReward(user);
+			List<RewardInfo> list = ladderService.ladderTaskReward(user, type);
 			if (list != null && !list.isEmpty()) {
 				rewardList.addAll(list);
 				if(user.getVip() >= 12)
@@ -288,6 +281,30 @@ public class LadderModeCommandService extends BaseCommandService {
 		}
 		
 		handleRewards(responseBuilder, user, rewards);
+	}
+	
+	private boolean canSubmitResult(RequestSubmitLadderResultCommand cmd, Builder responseBuilder, UserBean user) {
+		LadderSeason ladderSeason = userLadderService.getLadderSeason();
+		if (ladderSeason == null || !DateUtil.timeIsAvailable(ladderSeason.getStartTime(), ladderSeason.getEndTime())) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_NOT_OPEN_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return false;
+		}
+		   
+		UserLadder userLadder = userLadderService.getUserLadder(user,cmd.getType());
+		if (userLadderService.isNextSeason(userLadder)) {
+			logService.sendErrorLog(user.getId(), user.getServerId(), cmd.getClass(), RedisService.formatJson(cmd), ErrorConst.LADDER_SEASON_IS_END_ERROR);
+			
+			ErrorCommand errorCommand = buildErrorCommand(ErrorConst.LADDER_SEASON_IS_END_ERROR);
+			responseBuilder.setErrorCommand(errorCommand);
+			pushCommandService.pushUserInfoCommand(responseBuilder, user);
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public void ladderSeasonReward(RequestLadderSeasonRewardCommand cmd, Builder responseBuilder, UserBean user) {

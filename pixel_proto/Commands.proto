@@ -2755,6 +2755,15 @@ message LadderModeLevel {
 	required uint32 score = 2;
 }
 
+message LadderShilian {
+	required uint32 order = 1;
+	repeated Task task = 2;
+}
+
+message LadderShilianList {
+	repeated LadderShilian data = 1;
+}
+
 message LadderTeamRewardList {
 	repeated LadderTeamReward data = 1;
 }
@@ -2854,7 +2863,7 @@ message LadderSeason {
 }
 
 message UserLadder {
-	optional uint32 type = 1;//0：普通 1：乱斗
+	optional uint32 type = 1;//0：普通 1：乱斗 2:试炼
 	optional uint32 score = 2;
 	optional uint32 season = 3;//赛季
 	optional uint32 taskProcess = 4;
@@ -2873,7 +2882,7 @@ message RequestLadderSeasonRewardCommand {
 }
 
 message RequestLadderEnemyCommand {
-	optional uint32 type = 1;//0:normal 1:ld
+	optional uint32 type = 1;//0:normal 1:ld 2:shilian
 }
 
 message RequestLadderInfoCommand {

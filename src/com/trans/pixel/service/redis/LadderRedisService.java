@@ -26,6 +26,8 @@ import com.trans.pixel.protoc.LadderProto.LadderNameList;
 import com.trans.pixel.protoc.LadderProto.LadderReward;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfig;
 import com.trans.pixel.protoc.LadderProto.LadderSeasonConfigList;
+import com.trans.pixel.protoc.LadderProto.LadderShilian;
+import com.trans.pixel.protoc.LadderProto.LadderShilianList;
 import com.trans.pixel.protoc.LadderProto.LadderWinReward;
 import com.trans.pixel.protoc.LadderProto.LadderWinRewardList;
 import com.trans.pixel.protoc.ShopProto.LadderChongzhi;
@@ -44,6 +46,7 @@ public class LadderRedisService extends RedisService{
 //	private static final String LADDER_LD_FILE_NAME = "ld_ladderld.xml";
 	private static final String LADDER_EQUIP_FILE_NAME = "ld_ladderequip.xml";
 	private static final String LADDER_SEASON_FILE_NAME = "ld_ladderseason.xml";
+	private static final String LADDER_SHILIAN_FILE_NAME = "ld_laddershilian.xml";
 	
 	public LadderRedisService() {
 		buildLadderChongzhi();
@@ -56,6 +59,7 @@ public class LadderRedisService extends RedisService{
 		buildLadderNameConfig();
 		buildLadderNameConfig2();
 		buildLadderDailyList();
+		buildLadderShilianConfig();
 	}
 	
 	@Resource
@@ -332,6 +336,34 @@ public class LadderRedisService extends RedisService{
 			map.put(ladder.getSeason(), ladder.build());
 		}
 		CacheService.hputcacheAll(RedisKey.LADDER_SEASON_CONFIG_KEY, map);
+		
+		return map;
+	}
+	
+	//shilian
+	public LadderShilian getLadderShilian(int id) {
+		Map<Integer, LadderShilian> map = CacheService.hgetcache(RedisKey.LADDER_SHILIAN_CONFIG_KEY);
+		return map.get(id);
+	}
+	
+	public Map<Integer, LadderShilian> getLadderShilianConfig() {
+		Map<Integer, LadderShilian> map = CacheService.hgetcache(RedisKey.LADDER_SHILIAN_CONFIG_KEY);
+		return map;
+	}
+	
+	private Map<Integer, LadderShilian> buildLadderShilianConfig(){
+		String xml = RedisService.ReadConfig(LADDER_SHILIAN_FILE_NAME);
+		LadderShilianList.Builder builder = LadderShilianList.newBuilder();
+		if(!RedisService.parseXml(xml, builder)){
+			logger.warn("cannot build " + LADDER_SHILIAN_FILE_NAME);
+			return null;
+		}
+		
+		Map<Integer, LadderShilian> map = new HashMap<Integer, LadderShilian>();
+		for(LadderShilian.Builder ladder : builder.getDataBuilderList()){
+			map.put(ladder.getOrder(), ladder.build());
+		}
+		CacheService.hputcacheAll(RedisKey.LADDER_SHILIAN_CONFIG_KEY, map);
 		
 		return map;
 	}

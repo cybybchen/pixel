@@ -306,6 +306,7 @@ public class RedisKey {
 	public static final String LADDER_USER_HISTORY_ENEMY_KEY = PREFIX + "ladder_history_enemy_";
 	public static final String LADDER_RANK_PREFIX = PREFIX + "ladder:rank";
 	public static final String LADDER_RANK_VAULUE_PREFIX = PREFIX + "ladder:rank_value";
+	public static final String LADDER_SHILIAN_CONFIG_KEY = PREFIX + CONFIG_PREFIX + "ladder_shilian";
 	
 	//team unlock redis
 	public static final String TEAM_UNLOCK_KEY = PREFIX + CONFIG_PREFIX + "team_unlock";
