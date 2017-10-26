@@ -1293,6 +1293,13 @@ public class ActivityService {
 	}
 	
 	/**
+	 * 试炼场完成9次试炼
+	 */
+	public void ladderShilian(UserBean user) {
+		achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_LADDERSHILIAN_9_VALUE);
+	}
+	
+	/**
 	 * 完成dingding的活动
 	 */
 	public void completeDingding(UserBean user) {

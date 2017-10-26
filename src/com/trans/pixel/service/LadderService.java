@@ -205,8 +205,14 @@ public class LadderService {
 		userLadderService.updateUserLadder(builder.build());
 		
 		for (Task task : taskList) {
-			if (task.getTargetcount() == rewardProcess)
+			if (task.getTargetcount() == rewardProcess) {
+				if (type == LadderConst.TYPE_LADDER_SHILIAN && rewardProcess == 9) {
+					activityService.ladderShilian(user);
+				}
+				
+				
 				return task.getRewardList();
+			}
 		}
 		
 		return null;
