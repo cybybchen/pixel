@@ -191,7 +191,7 @@ public class RaidCommandService extends BaseCommandService{
 						myraid.setMaxlevel(Math.min(180, Math.max(myraid.getMaxlevel(), myraid.getLevel()+RaidRedisService.EXTRA_LEVEL)));
 					}
 					myraid.clearLevel();
-					if(myraid.getId()/10 == 2) {
+					if(!raidconfig.hasClearlevel()){
 						teamraidredis.unlock(user, myraid.getId());
 					}
 				}
