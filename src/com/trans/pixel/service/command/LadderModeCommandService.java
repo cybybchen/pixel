@@ -232,14 +232,13 @@ public class LadderModeCommandService extends BaseCommandService {
 		}else
 			userLadderBuilder.addUser(userLadder);
 		responseBuilder.setUserLadderCommand(userLadderBuilder.build());
-		
+
+		Map<Integer, UserLadder> enemyMap = ladderService.refreshEnemy(user, cmd.getType());
+		ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
+		enemyBuilder.addAllEnemy(enemyMap.values());
+		responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
 		//获得赛季段位装备奖励，试炼模式无法获得
 		if (type != LadderConst.TYPE_LADDER_SHILIAN) {
-			Map<Integer, UserLadder> enemyMap = ladderService.refreshEnemy(user, cmd.getType());
-			ResponseEnemyLadderCommand.Builder enemyBuilder = ResponseEnemyLadderCommand.newBuilder();
-			enemyBuilder.addAllEnemy(enemyMap.values());
-			responseBuilder.setEnemyLadderCommand(enemyBuilder.build());
-			
 			if (newUserLadder != null) {
 				UserEquipPokedeBean pokede = ladderService.handleLadderEquip(user, newUserLadder);
 				if (pokede != null) {
