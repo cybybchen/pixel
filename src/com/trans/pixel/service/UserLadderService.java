@@ -98,6 +98,13 @@ public class UserLadderService {
 			builder.setTaskRewardProcess(0);
 			updateUserLadder(builder.build());
 		}
+		UserLadder userLadder_sl = userLadderRedisService.getUserLadder(user.getId(), LadderConst.TYPE_LADDER_SHILIAN);
+		if (userLadder_sl != null) {
+			UserLadder.Builder builder = UserLadder.newBuilder(userLadder_sl);
+			builder.setTaskProcess(0);
+			builder.setTaskRewardProcess(0);
+			updateUserLadder(builder.build());
+		}
 	}
 	
 	public void updateToDB(long userId, int type) {
