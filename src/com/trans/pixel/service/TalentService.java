@@ -370,6 +370,15 @@ public class TalentService {
 				userTalent.addEquip(equipBuilder.build());
 			}
 		}
+		if (position >= userTalent.getEquipCount()) {//新增的
+			UserTalentEquip.Builder equipBuilder = UserTalentEquip.newBuilder();
+			equipBuilder.setItemId(itemId);
+			equipBuilder.setPosition(position);
+			userTalent.addEquip(equipBuilder.build());
+			changeTitleEquip(user, position, equipBuilder.build());
+			
+			return userTalent.build();
+		}
 		for (int i = 0; i < UserTalentService.TALENT_EQUIP_COUNT; ++i) {
 			UserTalentEquip.Builder equipBuilder = userTalent.getEquipBuilder(i);
 			if (equipBuilder.getPosition() == position) {

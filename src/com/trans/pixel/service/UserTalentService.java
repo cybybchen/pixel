@@ -47,7 +47,7 @@ public class UserTalentService {
 	@Resource
 	private UserEquipPokedeService userEquipPokedeService;
 
-	public static final int TALENT_EQUIP_COUNT = 10;
+	public static final int TALENT_EQUIP_COUNT = 11;
 	
 	public UserTalent.Builder getOtherTalent(UserBean user, int id) {
 		UserTalent.Builder userTalent = getUserTalent(user, id);
