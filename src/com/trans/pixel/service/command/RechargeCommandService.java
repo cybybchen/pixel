@@ -1,5 +1,7 @@
 package com.trans.pixel.service.command;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -46,21 +48,34 @@ public class RechargeCommandService extends BaseCommandService {
 	public void canRecharge(RequestCanRechargeCommand cmd, Builder responseBuilder, UserBean user) {
 		int rechargeid = cmd.getRechargeid();
 		boolean canrecharge = true;
+		rechargeService.clearCanRecharge(user);
 		Libao mylibao = userService.getLibao(user.getId(), rechargeid);
 		if(rechargeid == 23) {
 			canrecharge = Math.max(user.getGrowJewelCount(), mylibao.getPurchase()) < 4;
 		}else if(rechargeid == 24) {
 			canrecharge = Math.max(user.getGrowExpCount(), mylibao.getPurchase()) < 4;
 		}else {
-//			Libao libaoconfig = shopService.getLibaoConfig(rechargeid);
-			LibaoList libaolist = shopService.getLibaoShop(user, false);
-			for(Libao libaoconfig : libaolist.getDataList()) {
-				if(libaoconfig.getRechargeid() == rechargeid) {
-					canrecharge = libaoconfig.getMaxlimit() < 0 || mylibao.getPurchase() < libaoconfig.getMaxlimit();
-					if(cmd.hasOrder()){
-						canrecharge = canrecharge && cmd.getOrder() == libaoconfig.getOrder();
+			if(cmd.getType() == 1) {
+				Map<Integer, Libao> libaoMap = shopService.getDailyLibaoShop(user);
+				for(Libao libao : libaoMap.values()) {
+					if(libao.getRechargeid() == rechargeid) {
+						canrecharge = libao.getMaxlimit() < 0 || libao.getPurchase() > 0;
+						canrecharge = canrecharge && cmd.getOrder() == libao.getOrder();
+						if(canrecharge)
+							rechargeService.saveCanRecharge(user, libao);
+						break;
 					}
-					break;
+				}
+			}else {
+				LibaoList libaolist = shopService.getLibaoShop(user, false);
+				for(Libao libaoconfig : libaolist.getDataList()) {
+					if(libaoconfig.getRechargeid() == rechargeid) {
+						canrecharge = libaoconfig.getMaxlimit() < 0 || mylibao.getPurchase() < libaoconfig.getMaxlimit();
+						if(cmd.hasOrder()){
+							canrecharge = canrecharge && cmd.getOrder() == libaoconfig.getOrder();
+						}
+						break;
+					}
 				}
 			}
 		}

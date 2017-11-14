@@ -631,6 +631,7 @@ public class UserCommandService extends BaseCommandService {
 		pushCommandService.pushUserRaid(responseBuilder, user);
 		pushCommandService.pushUserUnion(responseBuilder, user);
 		pushCommandService.pushUserDDCommand(responseBuilder, user);
+		pushCommandService.pushDailyLibaoShopCommand(responseBuilder, user);
 	}
 
 	private void handlerServerTitle(ResponseCommand.Builder responseBuilder, int serverId) {

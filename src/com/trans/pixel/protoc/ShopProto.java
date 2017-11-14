@@ -37018,6 +37018,49 @@ public final class ShopProto {
      * </pre>
      */
     boolean getIsOut();
+
+    // optional int32 type = 10;
+    /**
+     * <code>optional int32 type = 10;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 10;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    int getType();
+
+    // repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfo> 
+        getRewardsList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getRewards(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    int getRewardsCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardsOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code com.trans.pixel.protoc.Libao}
@@ -37115,6 +37158,19 @@ public final class ShopProto {
               order_ = input.readInt32();
               break;
             }
+            case 80: {
+              bitField0_ |= 0x00000200;
+              type_ = input.readInt32();
+              break;
+            }
+            case 90: {
+              if (!((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+                rewards_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>();
+                mutable_bitField0_ |= 0x00000400;
+              }
+              rewards_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -37123,6 +37179,9 @@ public final class ShopProto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000400) == 0x00000400)) {
+          rewards_ = java.util.Collections.unmodifiableList(rewards_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -37389,6 +37448,66 @@ public final class ShopProto {
       return isOut_;
     }
 
+    // optional int32 type = 10;
+    public static final int TYPE_FIELD_NUMBER = 10;
+    private int type_;
+    /**
+     * <code>optional int32 type = 10;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional int32 type = 10;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;
+    public static final int REWARDS_FIELD_NUMBER = 11;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> rewards_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardsList() {
+      return rewards_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+        getRewardsOrBuilderList() {
+      return rewards_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    public int getRewardsCount() {
+      return rewards_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getRewards(int index) {
+      return rewards_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardsOrBuilder(
+        int index) {
+      return rewards_.get(index);
+    }
+
     private void initFields() {
       id_ = 0;
       order_ = 0;
@@ -37399,6 +37518,8 @@ public final class ShopProto {
       validtime_ = "";
       refresh_ = 0;
       isOut_ = false;
+      type_ = 0;
+      rewards_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -37438,6 +37559,12 @@ public final class ShopProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(9, order_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeInt32(10, type_);
+      }
+      for (int i = 0; i < rewards_.size(); i++) {
+        output.writeMessage(11, rewards_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -37483,6 +37610,14 @@ public final class ShopProto {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(9, order_);
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(10, type_);
+      }
+      for (int i = 0; i < rewards_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(11, rewards_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -37592,6 +37727,7 @@ public final class ShopProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getRewardsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -37618,6 +37754,14 @@ public final class ShopProto {
         bitField0_ = (bitField0_ & ~0x00000080);
         isOut_ = false;
         bitField0_ = (bitField0_ & ~0x00000100);
+        type_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
+        if (rewardsBuilder_ == null) {
+          rewards_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+        } else {
+          rewardsBuilder_.clear();
+        }
         return this;
       }
 
@@ -37682,6 +37826,19 @@ public final class ShopProto {
           to_bitField0_ |= 0x00000100;
         }
         result.isOut_ = isOut_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.type_ = type_;
+        if (rewardsBuilder_ == null) {
+          if (((bitField0_ & 0x00000400) == 0x00000400)) {
+            rewards_ = java.util.Collections.unmodifiableList(rewards_);
+            bitField0_ = (bitField0_ & ~0x00000400);
+          }
+          result.rewards_ = rewards_;
+        } else {
+          result.rewards_ = rewardsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -37728,6 +37885,35 @@ public final class ShopProto {
         }
         if (other.hasIsOut()) {
           setIsOut(other.getIsOut());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (rewardsBuilder_ == null) {
+          if (!other.rewards_.isEmpty()) {
+            if (rewards_.isEmpty()) {
+              rewards_ = other.rewards_;
+              bitField0_ = (bitField0_ & ~0x00000400);
+            } else {
+              ensureRewardsIsMutable();
+              rewards_.addAll(other.rewards_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.rewards_.isEmpty()) {
+            if (rewardsBuilder_.isEmpty()) {
+              rewardsBuilder_.dispose();
+              rewardsBuilder_ = null;
+              rewards_ = other.rewards_;
+              bitField0_ = (bitField0_ & ~0x00000400);
+              rewardsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getRewardsFieldBuilder() : null;
+            } else {
+              rewardsBuilder_.addAllMessages(other.rewards_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -38205,6 +38391,295 @@ public final class ShopProto {
         isOut_ = false;
         onChanged();
         return this;
+      }
+
+      // optional int32 type = 10;
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 10;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional int32 type = 10;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 10;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000200;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 10;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfo> rewards_ =
+        java.util.Collections.emptyList();
+      private void ensureRewardsIsMutable() {
+        if (!((bitField0_ & 0x00000400) == 0x00000400)) {
+          rewards_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfo>(rewards_);
+          bitField0_ |= 0x00000400;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> rewardsBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo> getRewardsList() {
+        if (rewardsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(rewards_);
+        } else {
+          return rewardsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public int getRewardsCount() {
+        if (rewardsBuilder_ == null) {
+          return rewards_.size();
+        } else {
+          return rewardsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getRewards(int index) {
+        if (rewardsBuilder_ == null) {
+          return rewards_.get(index);
+        } else {
+          return rewardsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder setRewards(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardsIsMutable();
+          rewards_.set(index, value);
+          onChanged();
+        } else {
+          rewardsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder setRewards(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardsBuilder_ == null) {
+          ensureRewardsIsMutable();
+          rewards_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder addRewards(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardsIsMutable();
+          rewards_.add(value);
+          onChanged();
+        } else {
+          rewardsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder addRewards(
+          int index, com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (rewardsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRewardsIsMutable();
+          rewards_.add(index, value);
+          onChanged();
+        } else {
+          rewardsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder addRewards(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardsBuilder_ == null) {
+          ensureRewardsIsMutable();
+          rewards_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rewardsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder addRewards(
+          int index, com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (rewardsBuilder_ == null) {
+          ensureRewardsIsMutable();
+          rewards_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rewardsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder addAllRewards(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfo> values) {
+        if (rewardsBuilder_ == null) {
+          ensureRewardsIsMutable();
+          super.addAll(values, rewards_);
+          onChanged();
+        } else {
+          rewardsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder clearRewards() {
+        if (rewardsBuilder_ == null) {
+          rewards_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000400);
+          onChanged();
+        } else {
+          rewardsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public Builder removeRewards(int index) {
+        if (rewardsBuilder_ == null) {
+          ensureRewardsIsMutable();
+          rewards_.remove(index);
+          onChanged();
+        } else {
+          rewardsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getRewardsBuilder(
+          int index) {
+        return getRewardsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getRewardsOrBuilder(
+          int index) {
+        if (rewardsBuilder_ == null) {
+          return rewards_.get(index);  } else {
+          return rewardsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+           getRewardsOrBuilderList() {
+        if (rewardsBuilder_ != null) {
+          return rewardsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(rewards_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardsBuilder() {
+        return getRewardsFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder addRewardsBuilder(
+          int index) {
+        return getRewardsFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfo rewards = 11;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfo.Builder> 
+           getRewardsBuilderList() {
+        return getRewardsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getRewardsFieldBuilder() {
+        if (rewardsBuilder_ == null) {
+          rewardsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  rewards_,
+                  ((bitField0_ & 0x00000400) == 0x00000400),
+                  getParentForChildren(),
+                  isClean());
+          rewards_ = null;
+        }
+        return rewardsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.Libao)
@@ -39993,6 +40468,3282 @@ public final class ShopProto {
     }
 
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseLibaoShopCommand)
+  }
+
+  public interface DailyLibaoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // optional int32 id = 1;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    int getId();
+
+    // optional int32 rechargeid = 2;
+    /**
+     * <code>optional int32 rechargeid = 2;</code>
+     */
+    boolean hasRechargeid();
+    /**
+     * <code>optional int32 rechargeid = 2;</code>
+     */
+    int getRechargeid();
+
+    // optional string img = 3;
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    boolean hasImg();
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    java.lang.String getImg();
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getImgBytes();
+
+    // optional string name = 4;
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    boolean hasName();
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    // optional string des = 5;
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    boolean hasDes();
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    java.lang.String getDes();
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getDesBytes();
+
+    // optional .com.trans.pixel.protoc.RewardInfo cost = 6;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    boolean hasCost();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfo getCost();
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder();
+
+    // repeated .com.trans.pixel.protoc.RewardInfos order = 7;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.Base.RewardInfos> 
+        getOrderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfos getOrder(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    int getOrderCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfosOrBuilder> 
+        getOrderOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    com.trans.pixel.protoc.Base.RewardInfosOrBuilder getOrderOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.DailyLibao}
+   */
+  public static final class DailyLibao extends
+      com.google.protobuf.GeneratedMessage
+      implements DailyLibaoOrBuilder {
+    // Use DailyLibao.newBuilder() to construct.
+    private DailyLibao(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DailyLibao(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DailyLibao defaultInstance;
+    public static DailyLibao getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DailyLibao getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DailyLibao(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              rechargeid_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              img_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              name_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              des_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              com.trans.pixel.protoc.Base.RewardInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = cost_.toBuilder();
+              }
+              cost_ = input.readMessage(com.trans.pixel.protoc.Base.RewardInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(cost_);
+                cost_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 58: {
+              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+                order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfos>();
+                mutable_bitField0_ |= 0x00000040;
+              }
+              order_.add(input.readMessage(com.trans.pixel.protoc.Base.RewardInfos.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
+          order_ = java.util.Collections.unmodifiableList(order_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibao_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibao_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.DailyLibao.class, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DailyLibao> PARSER =
+        new com.google.protobuf.AbstractParser<DailyLibao>() {
+      public DailyLibao parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DailyLibao(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DailyLibao> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // optional int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    // optional int32 rechargeid = 2;
+    public static final int RECHARGEID_FIELD_NUMBER = 2;
+    private int rechargeid_;
+    /**
+     * <code>optional int32 rechargeid = 2;</code>
+     */
+    public boolean hasRechargeid() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional int32 rechargeid = 2;</code>
+     */
+    public int getRechargeid() {
+      return rechargeid_;
+    }
+
+    // optional string img = 3;
+    public static final int IMG_FIELD_NUMBER = 3;
+    private java.lang.Object img_;
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    public boolean hasImg() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    public java.lang.String getImg() {
+      java.lang.Object ref = img_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          img_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string img = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getImgBytes() {
+      java.lang.Object ref = img_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        img_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string name = 4;
+    public static final int NAME_FIELD_NUMBER = 4;
+    private java.lang.Object name_;
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string name = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string des = 5;
+    public static final int DES_FIELD_NUMBER = 5;
+    private java.lang.Object des_;
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    public boolean hasDes() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    public java.lang.String getDes() {
+      java.lang.Object ref = des_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          des_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string des = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDesBytes() {
+      java.lang.Object ref = des_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        des_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional .com.trans.pixel.protoc.RewardInfo cost = 6;
+    public static final int COST_FIELD_NUMBER = 6;
+    private com.trans.pixel.protoc.Base.RewardInfo cost_;
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    public boolean hasCost() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfo getCost() {
+      return cost_;
+    }
+    /**
+     * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder() {
+      return cost_;
+    }
+
+    // repeated .com.trans.pixel.protoc.RewardInfos order = 7;
+    public static final int ORDER_FIELD_NUMBER = 7;
+    private java.util.List<com.trans.pixel.protoc.Base.RewardInfos> order_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.Base.RewardInfos> getOrderList() {
+      return order_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfosOrBuilder> 
+        getOrderOrBuilderList() {
+      return order_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    public int getOrderCount() {
+      return order_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfos getOrder(int index) {
+      return order_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+     */
+    public com.trans.pixel.protoc.Base.RewardInfosOrBuilder getOrderOrBuilder(
+        int index) {
+      return order_.get(index);
+    }
+
+    private void initFields() {
+      id_ = 0;
+      rechargeid_ = 0;
+      img_ = "";
+      name_ = "";
+      des_ = "";
+      cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      order_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, rechargeid_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getImgBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getDesBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, cost_);
+      }
+      for (int i = 0; i < order_.size(); i++) {
+        output.writeMessage(7, order_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, rechargeid_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getImgBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getDesBytes());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, cost_);
+      }
+      for (int i = 0; i < order_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, order_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibao parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.DailyLibao prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.DailyLibao}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibao_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibao_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.DailyLibao.class, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.DailyLibao.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getCostFieldBuilder();
+          getOrderFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        rechargeid_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        img_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        des_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (costBuilder_ == null) {
+          cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+        } else {
+          costBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          orderBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibao_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibao getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.DailyLibao.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibao build() {
+        com.trans.pixel.protoc.ShopProto.DailyLibao result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibao buildPartial() {
+        com.trans.pixel.protoc.ShopProto.DailyLibao result = new com.trans.pixel.protoc.ShopProto.DailyLibao(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.rechargeid_ = rechargeid_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.img_ = img_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.des_ = des_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (costBuilder_ == null) {
+          result.cost_ = cost_;
+        } else {
+          result.cost_ = costBuilder_.build();
+        }
+        if (orderBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            order_ = java.util.Collections.unmodifiableList(order_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.order_ = order_;
+        } else {
+          result.order_ = orderBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.DailyLibao) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.DailyLibao)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.DailyLibao other) {
+        if (other == com.trans.pixel.protoc.ShopProto.DailyLibao.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasRechargeid()) {
+          setRechargeid(other.getRechargeid());
+        }
+        if (other.hasImg()) {
+          bitField0_ |= 0x00000004;
+          img_ = other.img_;
+          onChanged();
+        }
+        if (other.hasName()) {
+          bitField0_ |= 0x00000008;
+          name_ = other.name_;
+          onChanged();
+        }
+        if (other.hasDes()) {
+          bitField0_ |= 0x00000010;
+          des_ = other.des_;
+          onChanged();
+        }
+        if (other.hasCost()) {
+          mergeCost(other.getCost());
+        }
+        if (orderBuilder_ == null) {
+          if (!other.order_.isEmpty()) {
+            if (order_.isEmpty()) {
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureOrderIsMutable();
+              order_.addAll(other.order_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.order_.isEmpty()) {
+            if (orderBuilder_.isEmpty()) {
+              orderBuilder_.dispose();
+              orderBuilder_ = null;
+              order_ = other.order_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              orderBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getOrderFieldBuilder() : null;
+            } else {
+              orderBuilder_.addAllMessages(other.order_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.DailyLibao parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.DailyLibao) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // optional int32 id = 1;
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional int32 rechargeid = 2;
+      private int rechargeid_ ;
+      /**
+       * <code>optional int32 rechargeid = 2;</code>
+       */
+      public boolean hasRechargeid() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional int32 rechargeid = 2;</code>
+       */
+      public int getRechargeid() {
+        return rechargeid_;
+      }
+      /**
+       * <code>optional int32 rechargeid = 2;</code>
+       */
+      public Builder setRechargeid(int value) {
+        bitField0_ |= 0x00000002;
+        rechargeid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 rechargeid = 2;</code>
+       */
+      public Builder clearRechargeid() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rechargeid_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string img = 3;
+      private java.lang.Object img_ = "";
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public boolean hasImg() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public java.lang.String getImg() {
+        java.lang.Object ref = img_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          img_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getImgBytes() {
+        java.lang.Object ref = img_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          img_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public Builder setImg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        img_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public Builder clearImg() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        img_ = getDefaultInstance().getImg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string img = 3;</code>
+       */
+      public Builder setImgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        img_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string name = 4;
+      private java.lang.Object name_ = "";
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string name = 4;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string des = 5;
+      private java.lang.Object des_ = "";
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public boolean hasDes() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public java.lang.String getDes() {
+        java.lang.Object ref = des_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          des_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDesBytes() {
+        java.lang.Object ref = des_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          des_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public Builder setDes(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        des_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public Builder clearDes() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        des_ = getDefaultInstance().getDes();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string des = 5;</code>
+       */
+      public Builder setDesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        des_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional .com.trans.pixel.protoc.RewardInfo cost = 6;
+      private com.trans.pixel.protoc.Base.RewardInfo cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> costBuilder_;
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public boolean hasCost() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo getCost() {
+        if (costBuilder_ == null) {
+          return cost_;
+        } else {
+          return costBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public Builder setCost(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (costBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          cost_ = value;
+          onChanged();
+        } else {
+          costBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public Builder setCost(
+          com.trans.pixel.protoc.Base.RewardInfo.Builder builderForValue) {
+        if (costBuilder_ == null) {
+          cost_ = builderForValue.build();
+          onChanged();
+        } else {
+          costBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public Builder mergeCost(com.trans.pixel.protoc.Base.RewardInfo value) {
+        if (costBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              cost_ != com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance()) {
+            cost_ =
+              com.trans.pixel.protoc.Base.RewardInfo.newBuilder(cost_).mergeFrom(value).buildPartial();
+          } else {
+            cost_ = value;
+          }
+          onChanged();
+        } else {
+          costBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public Builder clearCost() {
+        if (costBuilder_ == null) {
+          cost_ = com.trans.pixel.protoc.Base.RewardInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          costBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfo.Builder getCostBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getCostFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfoOrBuilder getCostOrBuilder() {
+        if (costBuilder_ != null) {
+          return costBuilder_.getMessageOrBuilder();
+        } else {
+          return cost_;
+        }
+      }
+      /**
+       * <code>optional .com.trans.pixel.protoc.RewardInfo cost = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder> 
+          getCostFieldBuilder() {
+        if (costBuilder_ == null) {
+          costBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfo, com.trans.pixel.protoc.Base.RewardInfo.Builder, com.trans.pixel.protoc.Base.RewardInfoOrBuilder>(
+                  cost_,
+                  getParentForChildren(),
+                  isClean());
+          cost_ = null;
+        }
+        return costBuilder_;
+      }
+
+      // repeated .com.trans.pixel.protoc.RewardInfos order = 7;
+      private java.util.List<com.trans.pixel.protoc.Base.RewardInfos> order_ =
+        java.util.Collections.emptyList();
+      private void ensureOrderIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          order_ = new java.util.ArrayList<com.trans.pixel.protoc.Base.RewardInfos>(order_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfos, com.trans.pixel.protoc.Base.RewardInfos.Builder, com.trans.pixel.protoc.Base.RewardInfosOrBuilder> orderBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfos> getOrderList() {
+        if (orderBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(order_);
+        } else {
+          return orderBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public int getOrderCount() {
+        if (orderBuilder_ == null) {
+          return order_.size();
+        } else {
+          return orderBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfos getOrder(int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);
+        } else {
+          return orderBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.Base.RewardInfos value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.set(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder setOrder(
+          int index, com.trans.pixel.protoc.Base.RewardInfos.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder addOrder(com.trans.pixel.protoc.Base.RewardInfos value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.Base.RewardInfos value) {
+        if (orderBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureOrderIsMutable();
+          order_.add(index, value);
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder addOrder(
+          com.trans.pixel.protoc.Base.RewardInfos.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder addOrder(
+          int index, com.trans.pixel.protoc.Base.RewardInfos.Builder builderForValue) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          orderBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder addAllOrder(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.Base.RewardInfos> values) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          super.addAll(values, order_);
+          onChanged();
+        } else {
+          orderBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder clearOrder() {
+        if (orderBuilder_ == null) {
+          order_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          orderBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public Builder removeOrder(int index) {
+        if (orderBuilder_ == null) {
+          ensureOrderIsMutable();
+          order_.remove(index);
+          onChanged();
+        } else {
+          orderBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfos.Builder getOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfosOrBuilder getOrderOrBuilder(
+          int index) {
+        if (orderBuilder_ == null) {
+          return order_.get(index);  } else {
+          return orderBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.Base.RewardInfosOrBuilder> 
+           getOrderOrBuilderList() {
+        if (orderBuilder_ != null) {
+          return orderBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(order_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfos.Builder addOrderBuilder() {
+        return getOrderFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.Base.RewardInfos.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public com.trans.pixel.protoc.Base.RewardInfos.Builder addOrderBuilder(
+          int index) {
+        return getOrderFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.Base.RewardInfos.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.RewardInfos order = 7;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.Base.RewardInfos.Builder> 
+           getOrderBuilderList() {
+        return getOrderFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.Base.RewardInfos, com.trans.pixel.protoc.Base.RewardInfos.Builder, com.trans.pixel.protoc.Base.RewardInfosOrBuilder> 
+          getOrderFieldBuilder() {
+        if (orderBuilder_ == null) {
+          orderBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.Base.RewardInfos, com.trans.pixel.protoc.Base.RewardInfos.Builder, com.trans.pixel.protoc.Base.RewardInfosOrBuilder>(
+                  order_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          order_ = null;
+        }
+        return orderBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.DailyLibao)
+    }
+
+    static {
+      defaultInstance = new DailyLibao(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.DailyLibao)
+  }
+
+  public interface DailyLibaoListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.DailyLibao data = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao> 
+        getDataList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    com.trans.pixel.protoc.ShopProto.DailyLibao getData(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    int getDataCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder> 
+        getDataOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder getDataOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.DailyLibaoList}
+   */
+  public static final class DailyLibaoList extends
+      com.google.protobuf.GeneratedMessage
+      implements DailyLibaoListOrBuilder {
+    // Use DailyLibaoList.newBuilder() to construct.
+    private DailyLibaoList(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private DailyLibaoList(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final DailyLibaoList defaultInstance;
+    public static DailyLibaoList getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public DailyLibaoList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DailyLibaoList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                data_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.DailyLibao>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              data_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.DailyLibao.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibaoList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.DailyLibaoList.class, com.trans.pixel.protoc.ShopProto.DailyLibaoList.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<DailyLibaoList> PARSER =
+        new com.google.protobuf.AbstractParser<DailyLibaoList>() {
+      public DailyLibaoList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new DailyLibaoList(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DailyLibaoList> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.DailyLibao data = 1;
+    public static final int DATA_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao> data_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    public java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao> getDataList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder> 
+        getDataOrBuilderList() {
+      return data_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    public int getDataCount() {
+      return data_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ShopProto.DailyLibao getData(int index) {
+      return data_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+     */
+    public com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder getDataOrBuilder(
+        int index) {
+      return data_.get(index);
+    }
+
+    private void initFields() {
+      data_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < data_.size(); i++) {
+        output.writeMessage(1, data_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < data_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, data_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.DailyLibaoList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.DailyLibaoList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.DailyLibaoList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.DailyLibaoListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibaoList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.DailyLibaoList.class, com.trans.pixel.protoc.ShopProto.DailyLibaoList.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.DailyLibaoList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getDataFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibaoList getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.DailyLibaoList.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibaoList build() {
+        com.trans.pixel.protoc.ShopProto.DailyLibaoList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.DailyLibaoList buildPartial() {
+        com.trans.pixel.protoc.ShopProto.DailyLibaoList result = new com.trans.pixel.protoc.ShopProto.DailyLibaoList(this);
+        int from_bitField0_ = bitField0_;
+        if (dataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            data_ = java.util.Collections.unmodifiableList(data_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.data_ = data_;
+        } else {
+          result.data_ = dataBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.DailyLibaoList) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.DailyLibaoList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.DailyLibaoList other) {
+        if (other == com.trans.pixel.protoc.ShopProto.DailyLibaoList.getDefaultInstance()) return this;
+        if (dataBuilder_ == null) {
+          if (!other.data_.isEmpty()) {
+            if (data_.isEmpty()) {
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureDataIsMutable();
+              data_.addAll(other.data_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.data_.isEmpty()) {
+            if (dataBuilder_.isEmpty()) {
+              dataBuilder_.dispose();
+              dataBuilder_ = null;
+              data_ = other.data_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              dataBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getDataFieldBuilder() : null;
+            } else {
+              dataBuilder_.addAllMessages(other.data_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.DailyLibaoList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.DailyLibaoList) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.DailyLibao data = 1;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao> data_ =
+        java.util.Collections.emptyList();
+      private void ensureDataIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          data_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.DailyLibao>(data_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.DailyLibao, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder, com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder> dataBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao> getDataList() {
+        if (dataBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(data_);
+        } else {
+          return dataBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public int getDataCount() {
+        if (dataBuilder_ == null) {
+          return data_.size();
+        } else {
+          return dataBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ShopProto.DailyLibao getData(int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);
+        } else {
+          return dataBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ShopProto.DailyLibao value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.set(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder setData(
+          int index, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder addData(com.trans.pixel.protoc.ShopProto.DailyLibao value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ShopProto.DailyLibao value) {
+        if (dataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureDataIsMutable();
+          data_.add(index, value);
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder addData(
+          com.trans.pixel.protoc.ShopProto.DailyLibao.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder addData(
+          int index, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder builderForValue) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          dataBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder addAllData(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.DailyLibao> values) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          super.addAll(values, data_);
+          onChanged();
+        } else {
+          dataBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder clearData() {
+        if (dataBuilder_ == null) {
+          data_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          dataBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public Builder removeData(int index) {
+        if (dataBuilder_ == null) {
+          ensureDataIsMutable();
+          data_.remove(index);
+          onChanged();
+        } else {
+          dataBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ShopProto.DailyLibao.Builder getDataBuilder(
+          int index) {
+        return getDataFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder getDataOrBuilder(
+          int index) {
+        if (dataBuilder_ == null) {
+          return data_.get(index);  } else {
+          return dataBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder> 
+           getDataOrBuilderList() {
+        if (dataBuilder_ != null) {
+          return dataBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(data_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ShopProto.DailyLibao.Builder addDataBuilder() {
+        return getDataFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ShopProto.DailyLibao.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public com.trans.pixel.protoc.ShopProto.DailyLibao.Builder addDataBuilder(
+          int index) {
+        return getDataFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ShopProto.DailyLibao.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.DailyLibao data = 1;</code>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.DailyLibao.Builder> 
+           getDataBuilderList() {
+        return getDataFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.DailyLibao, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder, com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder> 
+          getDataFieldBuilder() {
+        if (dataBuilder_ == null) {
+          dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ShopProto.DailyLibao, com.trans.pixel.protoc.ShopProto.DailyLibao.Builder, com.trans.pixel.protoc.ShopProto.DailyLibaoOrBuilder>(
+                  data_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        return dataBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.DailyLibaoList)
+    }
+
+    static {
+      defaultInstance = new DailyLibaoList(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.DailyLibaoList)
+  }
+
+  public interface RequestDailyLibaoShopCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestDailyLibaoShopCommand}
+   *
+   * <pre>
+   *每日礼包商店
+   * </pre>
+   */
+  public static final class RequestDailyLibaoShopCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestDailyLibaoShopCommandOrBuilder {
+    // Use RequestDailyLibaoShopCommand.newBuilder() to construct.
+    private RequestDailyLibaoShopCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestDailyLibaoShopCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestDailyLibaoShopCommand defaultInstance;
+    public static RequestDailyLibaoShopCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestDailyLibaoShopCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestDailyLibaoShopCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.class, com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestDailyLibaoShopCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestDailyLibaoShopCommand>() {
+      public RequestDailyLibaoShopCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestDailyLibaoShopCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestDailyLibaoShopCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestDailyLibaoShopCommand}
+     *
+     * <pre>
+     *每日礼包商店
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.class, com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand build() {
+        com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand result = new com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestDailyLibaoShopCommand)
+    }
+
+    static {
+      defaultInstance = new RequestDailyLibaoShopCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestDailyLibaoShopCommand)
+  }
+
+  public interface ResponseDailyLibaoShopCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // repeated .com.trans.pixel.protoc.Libao items = 1;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    java.util.List<com.trans.pixel.protoc.ShopProto.Libao> 
+        getItemsList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    com.trans.pixel.protoc.ShopProto.Libao getItems(int index);
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    int getItemsCount();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
+        getItemsOrBuilderList();
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getItemsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.ResponseDailyLibaoShopCommand}
+   */
+  public static final class ResponseDailyLibaoShopCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements ResponseDailyLibaoShopCommandOrBuilder {
+    // Use ResponseDailyLibaoShopCommand.newBuilder() to construct.
+    private ResponseDailyLibaoShopCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private ResponseDailyLibaoShopCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final ResponseDailyLibaoShopCommand defaultInstance;
+    public static ResponseDailyLibaoShopCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public ResponseDailyLibaoShopCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ResponseDailyLibaoShopCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+                items_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              items_.add(input.readMessage(com.trans.pixel.protoc.ShopProto.Libao.PARSER, extensionRegistry));
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
+          items_ = java.util.Collections.unmodifiableList(items_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.class, com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<ResponseDailyLibaoShopCommand> PARSER =
+        new com.google.protobuf.AbstractParser<ResponseDailyLibaoShopCommand>() {
+      public ResponseDailyLibaoShopCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ResponseDailyLibaoShopCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResponseDailyLibaoShopCommand> getParserForType() {
+      return PARSER;
+    }
+
+    // repeated .com.trans.pixel.protoc.Libao items = 1;
+    public static final int ITEMS_FIELD_NUMBER = 1;
+    private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> items_;
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getItemsList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
+        getItemsOrBuilderList() {
+      return items_;
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public int getItemsCount() {
+      return items_.size();
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public com.trans.pixel.protoc.ShopProto.Libao getItems(int index) {
+      return items_.get(index);
+    }
+    /**
+     * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+     *
+     * <pre>
+     *商品列表
+     * </pre>
+     */
+    public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getItemsOrBuilder(
+        int index) {
+      return items_.get(index);
+    }
+
+    private void initFields() {
+      items_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      for (int i = 0; i < items_.size(); i++) {
+        output.writeMessage(1, items_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < items_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, items_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.ResponseDailyLibaoShopCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.class, com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getItemsFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.ShopProto.internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand build() {
+        com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand buildPartial() {
+        com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand result = new com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand(this);
+        int from_bitField0_ = bitField0_;
+        if (itemsBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
+            items_ = java.util.Collections.unmodifiableList(items_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.items_ = items_;
+        } else {
+          result.items_ = itemsBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand) {
+          return mergeFrom((com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand other) {
+        if (other == com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand.getDefaultInstance()) return this;
+        if (itemsBuilder_ == null) {
+          if (!other.items_.isEmpty()) {
+            if (items_.isEmpty()) {
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureItemsIsMutable();
+              items_.addAll(other.items_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.items_.isEmpty()) {
+            if (itemsBuilder_.isEmpty()) {
+              itemsBuilder_.dispose();
+              itemsBuilder_ = null;
+              items_ = other.items_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              itemsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getItemsFieldBuilder() : null;
+            } else {
+              itemsBuilder_.addAllMessages(other.items_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // repeated .com.trans.pixel.protoc.Libao items = 1;
+      private java.util.List<com.trans.pixel.protoc.ShopProto.Libao> items_ =
+        java.util.Collections.emptyList();
+      private void ensureItemsIsMutable() {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
+          items_ = new java.util.ArrayList<com.trans.pixel.protoc.ShopProto.Libao>(items_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> itemsBuilder_;
+
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Libao> getItemsList() {
+        if (itemsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(items_);
+        } else {
+          return itemsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public int getItemsCount() {
+        if (itemsBuilder_ == null) {
+          return items_.size();
+        } else {
+          return itemsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Libao getItems(int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);
+        } else {
+          return itemsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.trans.pixel.protoc.ShopProto.Libao value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.set(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder setItems(
+          int index, com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(com.trans.pixel.protoc.ShopProto.Libao value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.trans.pixel.protoc.ShopProto.Libao value) {
+        if (itemsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureItemsIsMutable();
+          items_.add(index, value);
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addItems(
+          int index, com.trans.pixel.protoc.ShopProto.Libao.Builder builderForValue) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          itemsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder addAllItems(
+          java.lang.Iterable<? extends com.trans.pixel.protoc.ShopProto.Libao> values) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          super.addAll(values, items_);
+          onChanged();
+        } else {
+          itemsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder clearItems() {
+        if (itemsBuilder_ == null) {
+          items_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          itemsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public Builder removeItems(int index) {
+        if (itemsBuilder_ == null) {
+          ensureItemsIsMutable();
+          items_.remove(index);
+          onChanged();
+        } else {
+          itemsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder getItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.LibaoOrBuilder getItemsOrBuilder(
+          int index) {
+        if (itemsBuilder_ == null) {
+          return items_.get(index);  } else {
+          return itemsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<? extends com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
+           getItemsOrBuilderList() {
+        if (itemsBuilder_ != null) {
+          return itemsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(items_);
+        }
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder addItemsBuilder() {
+        return getItemsFieldBuilder().addBuilder(
+            com.trans.pixel.protoc.ShopProto.Libao.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public com.trans.pixel.protoc.ShopProto.Libao.Builder addItemsBuilder(
+          int index) {
+        return getItemsFieldBuilder().addBuilder(
+            index, com.trans.pixel.protoc.ShopProto.Libao.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .com.trans.pixel.protoc.Libao items = 1;</code>
+       *
+       * <pre>
+       *商品列表
+       * </pre>
+       */
+      public java.util.List<com.trans.pixel.protoc.ShopProto.Libao.Builder> 
+           getItemsBuilderList() {
+        return getItemsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder> 
+          getItemsFieldBuilder() {
+        if (itemsBuilder_ == null) {
+          itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.trans.pixel.protoc.ShopProto.Libao, com.trans.pixel.protoc.ShopProto.Libao.Builder, com.trans.pixel.protoc.ShopProto.LibaoOrBuilder>(
+                  items_,
+                  ((bitField0_ & 0x00000001) == 0x00000001),
+                  getParentForChildren(),
+                  isClean());
+          items_ = null;
+        }
+        return itemsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.ResponseDailyLibaoShopCommand)
+    }
+
+    static {
+      defaultInstance = new ResponseDailyLibaoShopCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.ResponseDailyLibaoShopCommand)
   }
 
   public interface StatusOrBuilder
@@ -42838,6 +46589,26 @@ public final class ShopProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_ResponseLibaoShopCommand_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_DailyLibao_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_DailyLibao_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_DailyLibaoList_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_Status_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -42978,22 +46749,33 @@ public final class ShopProto {
       "hCommand\"x\n\036ResponseBattletowerShopComma" +
       "nd\0220\n\005items\030\001 \003(\0132!.com.trans.pixel.prot" +
       "oc.Commodity\022\017\n\007endTime\030\002 \001(\003\022\023\n\013refresh" +
-      "Cost\030\003 \001(\005\"\240\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\r\n\005orde" +
+      "Cost\030\003 \001(\005\"\343\001\n\005Libao\022\n\n\002id\030\001 \001(\005\022\r\n\005orde" +
       "r\030\t \001(\005\022\022\n\nrechargeid\030\002 \001(\005\022\020\n\010purchase\030" +
       "\003 \001(\005\022\020\n\010maxlimit\030\005 \001(\005\022\021\n\tstarttime\030\004 \001",
       "(\t\022\021\n\tvalidtime\030\006 \001(\t\022\017\n\007refresh\030\007 \001(\005\022\r" +
-      "\n\005isOut\030\010 \001(\010\"8\n\tLibaoList\022+\n\004data\030\001 \003(\013" +
-      "2\035.com.trans.pixel.protoc.Libao\"\031\n\027Reque" +
-      "stLibaoShopCommand\"H\n\030ResponseLibaoShopC" +
-      "ommand\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel." +
-      "protoc.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013ca" +
-      "npurchase\030\002 \001(\010\"T\n\"ResponseFirstRecharge" +
-      "StatusCommand\022.\n\006status\030\001 \003(\0132\036.com.tran" +
-      "s.pixel.protoc.Status\"0\n\036RequestPurchase" +
-      "ContractCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032Reque",
-      "stPurchaseCoinCommand\"Q\n\033ResponsePurchas" +
-      "eCoinCommand\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030" +
-      "\004 \001(\005\022\021\n\ttotalTime\030\005 \001(\005"
+      "\n\005isOut\030\010 \001(\010\022\014\n\004type\030\n \001(\005\0223\n\007rewards\030\013" +
+      " \003(\0132\".com.trans.pixel.protoc.RewardInfo" +
+      "\"8\n\tLibaoList\022+\n\004data\030\001 \003(\0132\035.com.trans." +
+      "pixel.protoc.Libao\"\031\n\027RequestLibaoShopCo" +
+      "mmand\"H\n\030ResponseLibaoShopCommand\022,\n\005ite" +
+      "ms\030\001 \003(\0132\035.com.trans.pixel.protoc.Libao\"" +
+      "\272\001\n\nDailyLibao\022\n\n\002id\030\001 \001(\005\022\022\n\nrechargeid" +
+      "\030\002 \001(\005\022\013\n\003img\030\003 \001(\t\022\014\n\004name\030\004 \001(\t\022\013\n\003des" +
+      "\030\005 \001(\t\0220\n\004cost\030\006 \001(\0132\".com.trans.pixel.p",
+      "rotoc.RewardInfo\0222\n\005order\030\007 \003(\0132#.com.tr" +
+      "ans.pixel.protoc.RewardInfos\"B\n\016DailyLib" +
+      "aoList\0220\n\004data\030\001 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.DailyLibao\"\036\n\034RequestDailyLibaoSho" +
+      "pCommand\"M\n\035ResponseDailyLibaoShopComman" +
+      "d\022,\n\005items\030\001 \003(\0132\035.com.trans.pixel.proto" +
+      "c.Libao\")\n\006Status\022\n\n\002id\030\001 \001(\005\022\023\n\013canpurc" +
+      "hase\030\002 \001(\010\"T\n\"ResponseFirstRechargeStatu" +
+      "sCommand\022.\n\006status\030\001 \003(\0132\036.com.trans.pix" +
+      "el.protoc.Status\"0\n\036RequestPurchaseContr",
+      "actCommand\022\016\n\006heroid\030\001 \002(\005\"\034\n\032RequestPur" +
+      "chaseCoinCommand\"Q\n\033ResponsePurchaseCoin" +
+      "Command\022\r\n\005jewel\030\003 \001(\005\022\020\n\010leftTime\030\004 \001(\005" +
+      "\022\021\n\ttotalTime\030\005 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -43341,7 +47123,7 @@ public final class ShopProto {
           internal_static_com_trans_pixel_protoc_Libao_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Libao_descriptor,
-              new java.lang.String[] { "Id", "Order", "Rechargeid", "Purchase", "Maxlimit", "Starttime", "Validtime", "Refresh", "IsOut", });
+              new java.lang.String[] { "Id", "Order", "Rechargeid", "Purchase", "Maxlimit", "Starttime", "Validtime", "Refresh", "IsOut", "Type", "Rewards", });
           internal_static_com_trans_pixel_protoc_LibaoList_descriptor =
             getDescriptor().getMessageTypes().get(57);
           internal_static_com_trans_pixel_protoc_LibaoList_fieldAccessorTable = new
@@ -43360,32 +47142,56 @@ public final class ShopProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseLibaoShopCommand_descriptor,
               new java.lang.String[] { "Items", });
-          internal_static_com_trans_pixel_protoc_Status_descriptor =
+          internal_static_com_trans_pixel_protoc_DailyLibao_descriptor =
             getDescriptor().getMessageTypes().get(60);
+          internal_static_com_trans_pixel_protoc_DailyLibao_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_DailyLibao_descriptor,
+              new java.lang.String[] { "Id", "Rechargeid", "Img", "Name", "Des", "Cost", "Order", });
+          internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor =
+            getDescriptor().getMessageTypes().get(61);
+          internal_static_com_trans_pixel_protoc_DailyLibaoList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_DailyLibaoList_descriptor,
+              new java.lang.String[] { "Data", });
+          internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor =
+            getDescriptor().getMessageTypes().get(62);
+          internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestDailyLibaoShopCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor =
+            getDescriptor().getMessageTypes().get(63);
+          internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_ResponseDailyLibaoShopCommand_descriptor,
+              new java.lang.String[] { "Items", });
+          internal_static_com_trans_pixel_protoc_Status_descriptor =
+            getDescriptor().getMessageTypes().get(64);
           internal_static_com_trans_pixel_protoc_Status_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Status_descriptor,
               new java.lang.String[] { "Id", "Canpurchase", });
           internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_descriptor =
-            getDescriptor().getMessageTypes().get(61);
+            getDescriptor().getMessageTypes().get(65);
           internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponseFirstRechargeStatusCommand_descriptor,
               new java.lang.String[] { "Status", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_descriptor =
-            getDescriptor().getMessageTypes().get(62);
+            getDescriptor().getMessageTypes().get(66);
           internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseContractCommand_descriptor,
               new java.lang.String[] { "Heroid", });
           internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_descriptor =
-            getDescriptor().getMessageTypes().get(63);
+            getDescriptor().getMessageTypes().get(67);
           internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPurchaseCoinCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_descriptor =
-            getDescriptor().getMessageTypes().get(64);
+            getDescriptor().getMessageTypes().get(68);
           internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePurchaseCoinCommand_descriptor,

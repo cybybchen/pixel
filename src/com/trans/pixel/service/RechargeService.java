@@ -215,7 +215,9 @@ public class RechargeService {
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 //		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 
-		if (itemId == RewardConst.JEWEL) {
+		if(!recharge.getRewards().isEmpty()) {
+			rewardList.addAll(recharge.getRewards());
+		}else if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
 //			if(libaobuilder.getPurchase() == 1 && serverService.getOnlineStatus(user.getVersion()) == 0){
@@ -369,6 +371,17 @@ public class RechargeService {
 	}
 	
 	public void addUserRecharge(long userId, RechargeBean recharge) {
+		Libao libaocanrecharge = rechargeRedisService.getCanRecharge(userId);
+		if(libaocanrecharge != null && libaocanrecharge.getRechargeid() == recharge.getProductId()) {
+			recharge.setRewards(libaocanrecharge.getRewardsList());
+			rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
+			rechargeRedisService.clearCanRecharge(userId);
+			Libao.Builder libaobuilder = Libao.newBuilder(userService.getDailyLibao(userId, recharge.getProductId()));
+			libaobuilder.clearRewards();
+			libaobuilder.addAllRewards(libaocanrecharge.getRewardsList());
+			libaobuilder.setPurchase(0);
+			userService.saveDailyLibao(userId, libaobuilder.build());
+		}else {
 		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(userId, recharge.getProductId()));
 		Libao config = shopService.getLibaoConfig(recharge.getProductId());
@@ -413,6 +426,7 @@ public class RechargeService {
 		}
 		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
 		userService.saveLibao(userId, libaobuilder.build());
+		}
 	}
 	
 	public List<RechargeBean> getRechargeRecord(long userId) {
@@ -446,8 +460,9 @@ public class RechargeService {
 	public MultiReward handlerRecharge(UserBean user) {
 		List<RechargeBean> rechargeList = rechargeRedisService.getUserRecharge(user.getId());
 		MultiReward.Builder rewards = MultiReward.newBuilder();
-		for (RechargeBean recharge : rechargeList)
+		for (RechargeBean recharge : rechargeList) {
 			rewards.addAllLoot(recharge(user, recharge, false));
+		}
 		
 		return rewards.build();
 	}
@@ -464,6 +479,15 @@ public class RechargeService {
 		
 		return recharge;
 	}
+	public void clearCanRecharge(UserBean user){
+		rechargeRedisService.clearCanRecharge(user.getId());
+	}
+	public void saveCanRecharge(UserBean user, Libao libao){
+		rechargeRedisService.saveCanRecharge(user.getId(), libao);
+	}
+//	public Libao getCanRecharge(UserBean user){
+//		return rechargeRedisService.getCanRecharge(user);
+//	}
 	
 	//不是充值，是用游戏里的货币购买
 	public MultiReward buy(UserBean user, int productid){

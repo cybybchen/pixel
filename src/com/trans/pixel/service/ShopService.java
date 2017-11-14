@@ -28,6 +28,7 @@ import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.ShopProto.PurchaseCoinCost;
 import com.trans.pixel.protoc.ShopProto.PurchaseCoinCostList;
 import com.trans.pixel.protoc.ShopProto.PurchaseCoinReward;
+import com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseFirstRechargeStatusCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.ShopList;
@@ -316,6 +317,19 @@ public class ShopService {
 			rechargestatus.addStatus(builder);
 		}
 		responseBuilder.setFirstRechargeStatusCommand(rechargestatus);
+	}
+
+	public Map<Integer, Libao> getDailyLibaoShop(UserBean user){
+		return userService.getDailyLibaos(user.getId());
+	}
+	public void getDailyLibaoShop(Builder responseBuilder, UserBean user){
+		Map<Integer, Libao> libaoMap = userService.getDailyLibaos(user.getId());
+		ResponseDailyLibaoShopCommand.Builder shop = ResponseDailyLibaoShopCommand.newBuilder();
+		for(Libao libao : libaoMap.values()) {
+			shop.addItems(libao);
+			break;
+		}
+		responseBuilder.setDailyLibaoShopCommand(shop);
 	}
 
 	public ShopList getShop(){

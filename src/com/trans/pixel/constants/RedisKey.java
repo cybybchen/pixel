@@ -56,6 +56,8 @@ public class RedisKey {
 //	public final static String PVPMONSTERREWARD_CONFIG = PREFIX+CONFIG_PREFIX+"PVPMonsterReward";
 	public static final String USER_POKEDE_PREFIX = PREFIX + "user_pokede_"; 
 	public final static String USER_LIBAOCOUNT_PREFIX = PREFIX+"UserLibaoCount_";
+	public final static String USER_DAILYLIBAO_PREFIX = PREFIX+"UserDailyLibao_";
+	public final static String USER_LIBAOCANRECHARGE_PREFIX = PREFIX+"UserLibaoCanRecharge_";
 	public static final String USER_FOOD_PREFIX = PREFIX + "user_food_";
 	public static final String USER_CLEAR_PREFIX = PREFIX + "user_clear_";
 	public static final String USER_LAST_CLEAR_PREFIX = PREFIX + "user_last_clear_";
@@ -70,6 +72,8 @@ public class RedisKey {
 	public final static String USER_DD_PREFIX = PREFIX + "user_dd_";
 
 
+
+	public final static String DAILYLIBAO_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"DailyLibao";
 	public final static String VIP_CONFIG = RedisKey.PREFIX+RedisKey.CONFIG_PREFIX+"Vip";
 	public final static String AREAMONSTER_CONFIG = PREFIX+CONFIG_PREFIX+"AreaMonster";
 	public final static String AREABOSS_CONFIG = PREFIX+CONFIG_PREFIX+"AreaBoss";

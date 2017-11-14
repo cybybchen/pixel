@@ -171,6 +171,7 @@ import com.trans.pixel.protoc.UnionProto.RequestUpgradeUnionCommand;
 import com.trans.pixel.protoc.RewardTaskProto.RequestLootRewardTaskCommand;
 import com.trans.pixel.protoc.MessageBoardProto.RequestGreenhandCommand;
 import com.trans.pixel.protoc.HeroProto.RequestBuyHeroPackageCommand;
+import com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestPVPShopCommand;
 import com.trans.pixel.protoc.HeroProto.RequestHeroLevelUpToCommand;
 import com.trans.pixel.protoc.LadderProto.RequestRefreshLadderEnemyCommand;
@@ -417,6 +418,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestLootRewardTaskCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestGreenhandCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBuyHeroPackageCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestDailyLibaoShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestPVPShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestHeroLevelUpToCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestRefreshLadderEnemyCommand cmd, Builder responseBuilder, UserBean user);
@@ -1210,6 +1212,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasBuyHeroPackageCommand()) {
 			RequestBuyHeroPackageCommand cmd = request.getBuyHeroPackageCommand();
 			if (isFuncAvailable(responseBuilder, "BuyHeroPackageCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasDailyLibaoShopCommand()) {
+			RequestDailyLibaoShopCommand cmd = request.getDailyLibaoShopCommand();
+			if (isFuncAvailable(responseBuilder, "DailyLibaoShopCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasPVPShopCommand()) {
 			RequestPVPShopCommand cmd = request.getPVPShopCommand();

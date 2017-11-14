@@ -51,6 +51,7 @@ import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.RewardTaskProto.ResponseUserRewardTaskCommand;
 import com.trans.pixel.protoc.RewardTaskProto.UserRewardTask;
 import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopCommand;
+import com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestExpeditionShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopCommand;
@@ -358,6 +359,10 @@ public class PushCommandService extends BaseCommandService {
 	public void pushShopCommand(Builder responseBuilder, UserBean user) {
 		RequestShopCommand.Builder cmd = RequestShopCommand.newBuilder();
 		shopCommandService.Shop(cmd.build(), responseBuilder, user);
+	}
+	public void pushDailyLibaoShopCommand(Builder responseBuilder, UserBean user) {
+		RequestDailyLibaoShopCommand.Builder cmd = RequestDailyLibaoShopCommand.newBuilder();
+		shopCommandService.DailyLibaoShop(cmd.build(), responseBuilder, user);
 	}
 	
 	public void pushDailyShopCommand(Builder responseBuilder, UserBean user) {

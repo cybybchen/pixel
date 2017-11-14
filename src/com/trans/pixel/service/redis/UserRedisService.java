@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,8 @@ import com.trans.pixel.model.userinfo.UserLibaoBean;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
 import com.trans.pixel.protoc.RechargeProto.VipList;
+import com.trans.pixel.protoc.ShopProto.DailyLibao;
+import com.trans.pixel.protoc.ShopProto.DailyLibaoList;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.service.cache.CacheService;
 
@@ -29,6 +32,7 @@ public class UserRedisService extends RedisService{
 	
 	public UserRedisService() {
 		buildVip();
+		buildDailyLibao();
 	}
 	
 	public <T> UserBean getUser(T userId) {
@@ -128,6 +132,51 @@ public class UserRedisService extends RedisService{
 		}
 		return null;
 	}
+	
+
+
+	// public boolean existDailyLibao(long userId) {
+	// 	return exists(RedisKey.USER_DAILYLIBAO_PREFIX+userId, userId);
+	// }
+	
+	public Libao getDailyLibao(long userId, int rechargeid) {
+		Map<Integer, Libao> map = getDailyLibaos(userId);
+		for(Libao libao : map.values()) {
+			if(libao.getRechargeid() == rechargeid)
+				return libao;
+		}
+		return null;
+	}
+	
+	public Map<Integer, Libao> getDailyLibaos(long userId) {
+		Map<String, String> keyvalue = hget(RedisKey.USER_DAILYLIBAO_PREFIX + userId, userId);
+		expire(RedisKey.USER_DAILYLIBAO_PREFIX + userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+		Map<Integer, Libao> map = new TreeMap<Integer, Libao>();
+		for(Entry<String, String> entry : keyvalue.entrySet()){
+			Libao.Builder builder = Libao.newBuilder();
+			if(parseJson(entry.getValue(), builder))
+				map.put(Integer.parseInt(entry.getKey()), builder.build());
+		}
+		return map;
+	}
+	
+	public void saveDailyLibao(long userId, Libao libao) {
+		hput(RedisKey.USER_DAILYLIBAO_PREFIX+userId, libao.getId()+"", formatJson(libao), userId);
+		expire(RedisKey.USER_DAILYLIBAO_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
+
+	public void clearDailyLibaos(long userId) {
+		delete(RedisKey.USER_DAILYLIBAO_PREFIX+userId, userId);
+	}
+	
+	public void saveDailyLibaos(long userId, Map<Integer, Libao> libaos) {
+		Map<String, String> keyvalue = new HashMap<String, String>();
+		for(Libao libao : libaos.values())
+			keyvalue.put(libao.getId()+"", formatJson(libao));
+		
+		hputAll(RedisKey.USER_DAILYLIBAO_PREFIX+userId, keyvalue, userId);
+		expire(RedisKey.USER_DAILYLIBAO_PREFIX+userId, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
 
 	public String getUserIdByAccount(final int serverId, final String account) {
 		return hget(RedisKey.PREFIX+RedisKey.ACCOUNT_PREFIX+serverId, account);
@@ -209,6 +258,17 @@ public class UserRedisService extends RedisService{
 	public VipInfo getVip(int id){
 		Map<Integer, VipInfo> map = CacheService.hgetcache(RedisKey.VIP_CONFIG);
 		return map.get(id);
+	}
+
+	private void buildDailyLibao(){
+		String xml = ReadConfig("ld_dailylibao.xml");
+		DailyLibaoList.Builder builder = DailyLibaoList.newBuilder();
+		parseXml(xml, builder);
+		Map<Integer, DailyLibao> map = new HashMap<Integer, DailyLibao>();
+		for(DailyLibao libao : builder.getDataList()){
+			map.put(libao.getId(), libao);
+		}
+		CacheService.hputcacheAll(RedisKey.DAILYLIBAO_CONFIG, map);
 	}
 	
 	private void buildVip(){

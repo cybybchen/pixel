@@ -8,7 +8,6 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.SuccessConst;
 import com.trans.pixel.constants.TimeConst;
-import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
@@ -25,6 +24,7 @@ import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
@@ -970,6 +970,10 @@ public class ShopCommandService extends BaseCommandService{
 	
 	public void LibaoShop(RequestLibaoShopCommand cmd, Builder responseBuilder, UserBean user){
 		service.getLibaoShop(responseBuilder, user);
+	}
+	
+	public void DailyLibaoShop(RequestDailyLibaoShopCommand cmd, Builder responseBuilder, UserBean user){
+		service.getDailyLibaoShop(responseBuilder, user);
 	}
 
 	public void purchaseContract(RequestPurchaseContractCommand cmd, Builder responseBuilder, UserBean user){

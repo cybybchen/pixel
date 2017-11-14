@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import com.trans.pixel.constants.MailConst;
 import com.trans.pixel.constants.RedisExpiredConst;
+import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.constants.TimeConst;
 import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.mapper.UserLibaoMapper;
@@ -29,13 +30,17 @@ import com.trans.pixel.model.mapper.UserMapper;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserEquipBean;
 import com.trans.pixel.model.userinfo.UserLibaoBean;
+import com.trans.pixel.protoc.Base.RewardInfo;
+import com.trans.pixel.protoc.Base.RewardInfos;
 import com.trans.pixel.protoc.Base.UserInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
 import com.trans.pixel.protoc.RechargeProto.VipInfo;
+import com.trans.pixel.protoc.ShopProto.DailyLibao;
 import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.protoc.ShopProto.LibaoList;
 import com.trans.pixel.protoc.UserInfoProto.Merlevel;
 import com.trans.pixel.protoc.UserInfoProto.MerlevelList;
+import com.trans.pixel.service.cache.CacheService;
 import com.trans.pixel.service.redis.LevelRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RechargeRedisService;
@@ -444,6 +449,128 @@ public class UserService {
 	}
 	public UserLibaoBean getLibaoBean(long userId, int rechargeid) {
 		return userRedisService.getLibaoBean(userId, rechargeid);
+	}
+
+	public Libao getDailyLibao(long userId, int rechargeid) {
+		return userRedisService.getDailyLibao(userId, rechargeid);
+	}
+	public Map<Integer, Libao> getDailyLibaos(long userId) {
+		Map<Integer, Libao> map = userRedisService.getDailyLibaos(userId);
+		boolean isTimeOut = false;
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+		Iterator<Map.Entry<Integer, Libao>> it = map.entrySet().iterator();
+		while(it.hasNext()){
+			Libao libao = it.next().getValue();
+			Date date2 = new Date();
+			try {
+				date2 = df.parse(libao.getValidtime());
+			} catch (Exception e) {
+				
+			}
+			if(date.after(date2)){//礼包已过期
+				isTimeOut = true;
+				it.remove();
+			}
+		}
+		if(map.isEmpty()){
+			Map<Integer, DailyLibao> configmap = CacheService.hgetcache(RedisKey.DAILYLIBAO_CONFIG);
+			String nextday = df.format(RedisService.nextDay());
+			int order = (int)(RedisService.now()/3600/24%365);
+			int index = RedisService.nextInt(configmap.size());
+			for(DailyLibao config : configmap.values()){
+				index--;
+				if(index < 0) {
+					Libao.Builder libao = Libao.newBuilder();
+					libao.setId(config.getId());
+					libao.setOrder(order);
+					libao.setRechargeid(config.getRechargeid());
+					libao.setPurchase(1);
+					libao.setMaxlimit(1);
+					libao.setValidtime(nextday);
+					libao.setIsOut(false);
+					libao.setType(1);
+					for(RewardInfos rewards : config.getOrderList()) {
+						int weight = 0;
+						for(RewardInfo reward : rewards.getRewardList())
+							weight += reward.getWeight();
+						weight = RedisService.nextInt(weight);
+						for(RewardInfo reward : rewards.getRewardList()) {
+							weight -= reward.getWeight();
+							if(weight < 0) {
+								libao.addRewards(reward);
+								libao.getRewardsBuilder(libao.getRewardsCount()-1).clearWeight();
+								break;
+							}
+						}
+					}
+					map.put(libao.getId(), libao.build());
+					break;
+				}
+			}
+			userRedisService.clearDailyLibaos(userId);
+			userRedisService.saveDailyLibaos(userId, map);
+		}
+		return map;
+	}
+//	public Map<Integer, Libao> getDailyLibaos(long userId) {
+//		Map<Integer, Libao> map = userRedisService.getDailyLibaos(userId);
+//		boolean isTimeOut = false;
+//		Date date = new Date();
+//		SimpleDateFormat df = new SimpleDateFormat(TimeConst.DEFAULT_DATETIME_FORMAT);
+//		Iterator<Map.Entry<Integer, Libao>> it = map.entrySet().iterator();
+//		while(it.hasNext()){
+//			Libao libao = it.next().getValue();
+//			Date date2 = new Date();
+//			try {
+//				date2 = df.parse(libao.getValidtime());
+//			} catch (Exception e) {
+//				
+//			}
+//			if(!date.after(date2)){//礼包已过期
+//				isTimeOut = true;
+//				it.remove();
+//			}
+//		}
+//		if(map.isEmpty() || isTimeOut){
+//			Map<Integer, DailyLibao> configmap = CacheService.hgetcache(RedisKey.DAILYLIBAO_CONFIG);
+//			String nextday = df.format(RedisService.nextDay());
+//			int order = (int)(RedisService.now()/3600/24%365);
+//			for(DailyLibao config : configmap.values()){
+//				if(!map.containsKey(config.getId())) {
+//					Libao.Builder libao = Libao.newBuilder();
+//					libao.setId(config.getId());
+//					libao.setOrder(order);
+//					libao.setRechargeid(config.getRechargeid());
+//					libao.setPurchase(1);
+//					libao.setMaxlimit(1);
+//					libao.setValidtime(nextday);
+//					libao.setIsOut(false);
+//					libao.setType(1);
+//					for(RewardInfos rewards : config.getOrderList()) {
+//						int weight = 0;
+//						for(RewardInfo reward : rewards.getRewardList())
+//							weight += reward.getWeight();
+//						weight = RedisService.nextInt(weight);
+//						for(RewardInfo reward : rewards.getRewardList()) {
+//							weight -= reward.getWeight();
+//							if(weight < 0) {
+//								libao.addRewards(reward);
+//								libao.getRewardsBuilder(libao.getRewardsCount()-1).clearWeight();
+//								break;
+//							}
+//						}
+//					}
+//					map.put(libao.getId(), libao.build());
+//				}
+//			}
+//			userRedisService.saveDailyLibaos(userId, map);
+//		}
+//		return map;
+//	}
+	
+	public void saveDailyLibao(long userId, Libao libao) {
+		userRedisService.saveDailyLibao(userId, libao);
 	}
 
 	public List<UserBean> getUserByUnionId(int unionId) {

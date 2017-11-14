@@ -97,7 +97,11 @@ public class TeamRaidRedisService extends RedisService{
 				if(myraid.hasRoomInfo())
 					raid.setRoomInfo(myraid.getRoomInfo());
 				raid.setIndex(myraid.getIndex());
-				raid.setStatus(myraid.getStatus());
+				if(raid.getUnlock()/1000 == 1){//佣兵团等级解锁
+					raid.setStatus(user.getMerlevel() >= raid.getUnlock()%100 ? 1 : 0);
+				}else{
+					raid.setStatus(myraid.getStatus());
+				}
 				if(myraid.getEventCount() == 0)
 					raid.clearEvent();
 				for(int j = 0; j < raid.getEventCount() && j < myraid.getEventCount(); j++) {
@@ -105,7 +109,11 @@ public class TeamRaidRedisService extends RedisService{
 				}
 			}else {
 				raid.clearEvent();
-				raid.setStatus(getRaidStatus(list, raid.getId()));
+				if(raid.getUnlock()/1000 == 1){//佣兵团等级解锁
+					raid.setStatus(user.getMerlevel() >= raid.getUnlock()%100 ? 1 : 0);
+				}else{
+					raid.setStatus(getRaidStatus(list, raid.getId()));
+				}
 			}
 			if(raid.getEndtime() < endtime) {//刷新次数
 				raid.setLeftcount(raid.getCount());

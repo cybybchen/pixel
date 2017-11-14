@@ -7,6 +7,7 @@ import com.trans.pixel.protoc.Request.RequestCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
@@ -27,6 +28,7 @@ import com.trans.pixel.protoc.ShopProto.RequestUnionShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestUnionShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseBlackShopCommand;
+import com.trans.pixel.protoc.ShopProto.ResponseDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseExpeditionShopCommand;
 import com.trans.pixel.protoc.ShopProto.ResponseLadderShopCommand;
@@ -44,25 +46,26 @@ public class ShopTest extends BaseTest {
 	}
 	
 	public void testShop(RequestCommand request) {
-		getLibaoShop(request);
-		getDailyShop(request);
-		DailyShopRefresh(request);
-		DailyShopPurchase(request, 0);
-		getBlackShop(request);
-		BlackShopRefresh(request);
-		BlackShopPurchase(request, 0);
-//		getUnionShop(request);
-//		UnionShopRefresh(request);
-//		UnionShopPurchase(request, 0);
-		getPVPShop(request);
-		PVPShopRefresh(request);
-		PVPShopPurchase(request, 0);
-//		getExpeditionShop(request);
-//		ExpeditionShopRefresh(request);
-//		ExpeditionShopPurchase(request, 0);
-		getLadderShop(request);
-		LadderShopRefresh(request);
-		LadderShopPurchase(request, 0);
+		getDailyLibaoShop(request);
+//		getLibaoShop(request);
+//		getDailyShop(request);
+//		DailyShopRefresh(request);
+//		DailyShopPurchase(request, 0);
+//		getBlackShop(request);
+//		BlackShopRefresh(request);
+//		BlackShopPurchase(request, 0);
+////		getUnionShop(request);
+////		UnionShopRefresh(request);
+////		UnionShopPurchase(request, 0);
+//		getPVPShop(request);
+//		PVPShopRefresh(request);
+//		PVPShopPurchase(request, 0);
+////		getExpeditionShop(request);
+////		ExpeditionShopRefresh(request);
+////		ExpeditionShopPurchase(request, 0);
+//		getLadderShop(request);
+//		LadderShopRefresh(request);
+//		LadderShopPurchase(request, 0);
 //		getShop(request);
 //		ShopPurchase(request);
 //		ContractPurchase(request);
@@ -75,6 +78,15 @@ public class ShopTest extends BaseTest {
         
         if(response != null && response.hasLibaoShopCommand())
         	libaoshop = response.getLibaoShopCommand();
+	}
+	
+	private ResponseDailyLibaoShopCommand dailylibaoshop = null;
+	private void getDailyLibaoShop(RequestCommand request) {
+		RequestDailyLibaoShopCommand.Builder builder = RequestDailyLibaoShopCommand.newBuilder();
+        ResponseCommand response = request("dailyLibaoShopCommand", builder.build(), request);
+        
+        if(response != null && response.hasDailyLibaoShopCommand())
+        	dailylibaoshop = response.getDailyLibaoShopCommand();
 	}
 	
 	private ResponseDailyShopCommand dailyshop = null;

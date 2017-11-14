@@ -27,9 +27,9 @@ public class BaseTest {
     protected static int GAME_VERSION = 1;
     protected static int VERSION = 1;
     protected static int SERVER_ID = 1;
-    protected static String ACCOUNT = "cyb1";
+    protected static String ACCOUNT = "fedora";
     protected static String USER_NAME = ACCOUNT;
-    protected static long USER_ID = 545;
+    protected static long USER_ID = 4;
     protected static String DEVICE_ID = "iphone5";
     protected static String SESSION = "6779bbedbba76e817f5b3e20614a38db";
 //    protected static final String TOKEN = "";
@@ -145,6 +145,12 @@ public class BaseTest {
         }else{
         	System.out.println("登陆错误");
         }
+        try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         return response;
 	}
 	
@@ -176,6 +182,7 @@ public class BaseTest {
 		byte[] reqData = reqcmd.toByteArray();
         InputStream input = new ByteArrayInputStream(reqData);
         ResponseCommand response = http.post(url, input);
+        System.out.println("finish command "+name);
         if(response == null)
         	addRequestTime(name, 0);
         else if(response.hasErrorCommand()){

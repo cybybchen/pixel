@@ -13461,6 +13461,24 @@ public final class RechargeProto {
   public interface RequestCanRechargeCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
+    // optional int32 type = 3;
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    boolean hasType();
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    int getType();
+
     // optional int32 rechargeid = 1;
     /**
      * <code>optional int32 rechargeid = 1;</code>
@@ -13533,13 +13551,18 @@ public final class RechargeProto {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+              bitField0_ |= 0x00000002;
               rechargeid_ = input.readInt32();
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               order_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000001;
+              type_ = input.readInt32();
               break;
             }
           }
@@ -13582,6 +13605,30 @@ public final class RechargeProto {
     }
 
     private int bitField0_;
+    // optional int32 type = 3;
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private int type_;
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional int32 type = 3;</code>
+     *
+     * <pre>
+     *每日礼包type=1
+     * </pre>
+     */
+    public int getType() {
+      return type_;
+    }
+
     // optional int32 rechargeid = 1;
     public static final int RECHARGEID_FIELD_NUMBER = 1;
     private int rechargeid_;
@@ -13589,7 +13636,7 @@ public final class RechargeProto {
      * <code>optional int32 rechargeid = 1;</code>
      */
     public boolean hasRechargeid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
      * <code>optional int32 rechargeid = 1;</code>
@@ -13605,7 +13652,7 @@ public final class RechargeProto {
      * <code>optional int32 order = 2;</code>
      */
     public boolean hasOrder() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>optional int32 order = 2;</code>
@@ -13615,6 +13662,7 @@ public final class RechargeProto {
     }
 
     private void initFields() {
+      type_ = 0;
       rechargeid_ = 0;
       order_ = 0;
     }
@@ -13630,11 +13678,14 @@ public final class RechargeProto {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeInt32(1, rechargeid_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(2, order_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(3, type_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -13645,13 +13696,17 @@ public final class RechargeProto {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, rechargeid_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, order_);
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, type_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -13769,10 +13824,12 @@ public final class RechargeProto {
 
       public Builder clear() {
         super.clear();
-        rechargeid_ = 0;
+        type_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        order_ = 0;
+        rechargeid_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
+        order_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -13804,9 +13861,13 @@ public final class RechargeProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.rechargeid_ = rechargeid_;
+        result.type_ = type_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
+        }
+        result.rechargeid_ = rechargeid_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
         }
         result.order_ = order_;
         result.bitField0_ = to_bitField0_;
@@ -13825,6 +13886,9 @@ public final class RechargeProto {
 
       public Builder mergeFrom(com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand other) {
         if (other == com.trans.pixel.protoc.RechargeProto.RequestCanRechargeCommand.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
         if (other.hasRechargeid()) {
           setRechargeid(other.getRechargeid());
         }
@@ -13858,13 +13922,62 @@ public final class RechargeProto {
       }
       private int bitField0_;
 
+      // optional int32 type = 3;
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public Builder setType(int value) {
+        bitField0_ |= 0x00000001;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 3;</code>
+       *
+       * <pre>
+       *每日礼包type=1
+       * </pre>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
       // optional int32 rechargeid = 1;
       private int rechargeid_ ;
       /**
        * <code>optional int32 rechargeid = 1;</code>
        */
       public boolean hasRechargeid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
        * <code>optional int32 rechargeid = 1;</code>
@@ -13876,7 +13989,7 @@ public final class RechargeProto {
        * <code>optional int32 rechargeid = 1;</code>
        */
       public Builder setRechargeid(int value) {
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         rechargeid_ = value;
         onChanged();
         return this;
@@ -13885,7 +13998,7 @@ public final class RechargeProto {
        * <code>optional int32 rechargeid = 1;</code>
        */
       public Builder clearRechargeid() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         rechargeid_ = 0;
         onChanged();
         return this;
@@ -13897,7 +14010,7 @@ public final class RechargeProto {
        * <code>optional int32 order = 2;</code>
        */
       public boolean hasOrder() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>optional int32 order = 2;</code>
@@ -13909,7 +14022,7 @@ public final class RechargeProto {
        * <code>optional int32 order = 2;</code>
        */
       public Builder setOrder(int value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         order_ = value;
         onChanged();
         return this;
@@ -13918,7 +14031,7 @@ public final class RechargeProto {
        * <code>optional int32 order = 2;</code>
        */
       public Builder clearOrder() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         order_ = 0;
         onChanged();
         return this;
@@ -18606,20 +18719,21 @@ public final class RechargeProto {
       "\"\n\023RequestCdkeyCommand\022\013\n\003key\030\001 \002(\t\"7\n\030R" +
       "equestSubmitIconCommand\022\014\n\004icon\030\001 \001(\r\022\r\n" +
       "\005frame\030\002 \001(\r\"-\n\033RequestCheatRechargeComm",
-      "and\022\016\n\006itemid\030\001 \001(\005\">\n\031RequestCanRecharg" +
-      "eCommand\022\022\n\nrechargeid\030\001 \001(\005\022\r\n\005order\030\002 " +
-      "\001(\005\"(\n\026RequestRechargeCommand\022\016\n\006itemid\030" +
-      "\001 \002(\005\"1\n\032ResponseCanRechargeCommand\022\023\n\013c" +
-      "anrecharge\030\001 \001(\005\"C\n\031RequestBindAccountCo" +
-      "mmand\022\022\n\noldAccount\030\001 \002(\t\022\022\n\nnewAccount\030" +
-      "\002 \002(\t\"-\n\036RequestPurchaseVipLibaoCommand\022" +
-      "\013\n\003vip\030\001 \002(\005\".\n\033RequestQueryRechargeComm" +
-      "and\022\017\n\007orderId\030\001 \001(\t\"\037\n\035RequestShouchong" +
-      "RewardCommand\"+\n\032RequestGetGrowJewelComm",
-      "and\022\r\n\005order\030\001 \002(\005\")\n\030RequestGetGrowExpC" +
-      "ommand\022\r\n\005order\030\001 \002(\005\"\024\n\022RequestSignComm" +
-      "and\"I\n\023ResponseSignCommand\0222\n\006reward\030\001 \003" +
-      "(\0132\".com.trans.pixel.protoc.RewardInfo"
+      "and\022\016\n\006itemid\030\001 \001(\005\"L\n\031RequestCanRecharg" +
+      "eCommand\022\014\n\004type\030\003 \001(\005\022\022\n\nrechargeid\030\001 \001" +
+      "(\005\022\r\n\005order\030\002 \001(\005\"(\n\026RequestRechargeComm" +
+      "and\022\016\n\006itemid\030\001 \002(\005\"1\n\032ResponseCanRechar" +
+      "geCommand\022\023\n\013canrecharge\030\001 \001(\005\"C\n\031Reques" +
+      "tBindAccountCommand\022\022\n\noldAccount\030\001 \002(\t\022" +
+      "\022\n\nnewAccount\030\002 \002(\t\"-\n\036RequestPurchaseVi" +
+      "pLibaoCommand\022\013\n\003vip\030\001 \002(\005\".\n\033RequestQue" +
+      "ryRechargeCommand\022\017\n\007orderId\030\001 \001(\t\"\037\n\035Re" +
+      "questShouchongRewardCommand\"+\n\032RequestGe",
+      "tGrowJewelCommand\022\r\n\005order\030\001 \002(\005\")\n\030Requ" +
+      "estGetGrowExpCommand\022\r\n\005order\030\001 \002(\005\"\024\n\022R" +
+      "equestSignCommand\"I\n\023ResponseSignCommand" +
+      "\0222\n\006reward\030\001 \003(\0132\".com.trans.pixel.proto" +
+      "c.RewardInfo"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18733,7 +18847,7 @@ public final class RechargeProto {
           internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestCanRechargeCommand_descriptor,
-              new java.lang.String[] { "Rechargeid", "Order", });
+              new java.lang.String[] { "Type", "Rechargeid", "Order", });
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_descriptor =
             getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestRechargeCommand_fieldAccessorTable = new

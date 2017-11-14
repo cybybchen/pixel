@@ -260,6 +260,11 @@ message RewardInfo {
 	optional uint32 lastime = 10;
 }
 
+message RewardInfos {
+	optional int32 order = 1;
+	repeated RewardInfo reward = 2;
+}
+
 message RewardInfo2 {
 	optional int32 itemid = 1;
 	optional string name = 2;
@@ -589,6 +594,8 @@ message Libao {
 	optional string validtime = 6;
 	optional int32 refresh = 7;
 	optional bool isOut = 8;//是否已售完
+	optional int32 type = 10;//每日礼包type=1
+	repeated RewardInfo rewards = 11;
 }
 message LibaoList {
 	repeated Libao data = 1;
@@ -597,6 +604,24 @@ message RequestLibaoShopCommand {//vip礼包商店
 }
 message ResponseLibaoShopCommand {
 	repeated Libao items = 1;//商品列表
+}
+
+message DailyLibao {
+	optional int32 id = 1;
+	optional int32 rechargeid = 2;
+	optional string img = 3;
+	optional string name = 4;
+	optional string des = 5;
+	optional RewardInfo cost = 6;
+	repeated RewardInfos order = 7;
+}
+message DailyLibaoList {
+	repeated DailyLibao data = 1;
+}
+message RequestDailyLibaoShopCommand {//每日礼包商店
+}
+message ResponseDailyLibaoShopCommand {
+        repeated Libao items = 1;//商品列表
 }
 
 message Status {
@@ -2194,6 +2219,7 @@ message RequestCheatRechargeCommand {
 	optional int32 itemid = 1;
 }
 message RequestCanRechargeCommand {
+	optional int32 type = 3;//每日礼包type=1
 	optional int32 rechargeid = 1;
 	optional int32 order = 2;
 }
@@ -4155,6 +4181,7 @@ message RequestCommand {
 	optional RequestLadderShopPurchaseCommand ladderShopPurchaseCommand = 120;
 	optional RequestLadderShopRefreshCommand ladderShopRefreshCommand = 121;
 	optional RequestLibaoShopCommand libaoShopCommand = 142;
+	optional RequestDailyLibaoShopCommand dailyLibaoShopCommand = 186;
 	optional RequestPurchaseCoinCommand purchaseCoinCommand = 122;
 	optional RequestGetTeamCommand teamCommand = 123;
 	optional RequestRefreshPVPMapCommand refreshPvpMapCommand = 140;
@@ -4343,6 +4370,7 @@ message ResponseCommand {
 	optional ResponseExpeditionShopCommand expeditionShopCommand = 107;
 	optional ResponseLadderShopCommand ladderShopCommand = 108;
 	optional ResponseLibaoShopCommand libaoShopCommand = 142;
+	optional ResponseDailyLibaoShopCommand dailyLibaoShopCommand = 179;
 	optional ResponseFirstRechargeStatusCommand firstRechargeStatusCommand = 143;
 	optional ResponsePurchaseCoinCommand purchaseCoinCommand = 122;
 	optional ResponseGetTeamCommand teamCommand = 123;

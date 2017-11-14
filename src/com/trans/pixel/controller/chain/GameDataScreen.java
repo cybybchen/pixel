@@ -166,6 +166,7 @@ import com.trans.pixel.protoc.ShopProto.RequestBattletowerShopRefreshCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestBlackShopRefreshCommand;
+import com.trans.pixel.protoc.ShopProto.RequestDailyLibaoShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopPurchaseCommand;
 import com.trans.pixel.protoc.ShopProto.RequestDailyShopRefreshCommand;
@@ -1744,5 +1745,11 @@ public class GameDataScreen extends RequestScreen {
 			Builder responseBuilder, UserBean user) {
 		userCommandService.dingdingInfo(cmd, responseBuilder, user);
 		return true;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestDailyLibaoShopCommand cmd, Builder responseBuilder, UserBean user) {
+		shopCommandService.DailyLibaoShop(cmd, responseBuilder, user);
+		return false;
 	}
 }

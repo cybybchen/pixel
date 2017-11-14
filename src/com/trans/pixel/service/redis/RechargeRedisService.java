@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RechargeBean;
+import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
@@ -18,6 +19,7 @@ import com.trans.pixel.protoc.RechargeProto.RmbOrder;
 import com.trans.pixel.protoc.RechargeProto.VipLibao;
 import com.trans.pixel.protoc.RechargeProto.VipLibaoList;
 import com.trans.pixel.protoc.RechargeProto.VipReward;
+import com.trans.pixel.protoc.ShopProto.Libao;
 import com.trans.pixel.service.cache.CacheService;
 
 import net.sf.json.JSONObject;
@@ -29,6 +31,26 @@ public class RechargeRedisService extends RedisService {
 	public RechargeRedisService() {
 		buildRmbConfig(RedisKey.RMB_KEY);
 		buildRmbConfig(RedisKey.RMB1_KEY);
+	}
+
+	public void clearCanRecharge(long userId){
+		String key = RedisKey.USER_LIBAOCANRECHARGE_PREFIX+userId;
+		delete(key, userId);
+	}
+	
+	public void saveCanRecharge(long userId, Libao libao){
+		String key = RedisKey.USER_LIBAOCANRECHARGE_PREFIX+userId;
+		set(key, RedisService.formatJson(libao), userId);
+		expire(key, RedisExpiredConst.EXPIRED_USERINFO_7DAY, userId);
+	}
+
+	public Libao getCanRecharge(long userId){
+		String key = RedisKey.USER_LIBAOCANRECHARGE_PREFIX+userId;
+		String value = get(key, userId);
+		Libao.Builder libao = Libao.newBuilder();
+		if(value != null && RedisService.parseJson(value, libao))
+			return libao.build();
+		return null;
 	}
 	
 	public Rmb getRmb(int id) {
