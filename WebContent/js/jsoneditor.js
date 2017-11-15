@@ -302,6 +302,7 @@ function buildUserJson(key, value){
             json["talentskill"] = 1;
         }else if (datatype == "recharge") {
         	json["LibaoCount"] = 1;
+            json["dailyLibao"] = 1;
         	json["rechargeToAdd"] = 1;
         	json["recharge"] = 1;
         } else{
@@ -382,6 +383,9 @@ function appendUserDatas(message, dirty){
     }
     if(message["LibaoCount"]!=null){
         appendUserData("LibaoCount", message["LibaoCount"]);
+    }
+    if(message["dailyLibao"]!=null){
+        appendUserData("dailyLibao", message["dailyLibao"]);
     }
     if(message["rechargeToAdd"]!=null){
         appendUserData("rechargeToAdd", message["rechargeToAdd"]);

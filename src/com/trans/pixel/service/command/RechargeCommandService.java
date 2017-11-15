@@ -103,6 +103,7 @@ public class RechargeCommandService extends BaseCommandService {
 		}
 		
 		shopService.getLibaoShop(responseBuilder, user);
+		shopService.getDailyLibaoShop(responseBuilder, user);
 	}
 	
 	public void recharge(RequestRechargeCommand cmd, Builder responseBuilder, UserBean user) {

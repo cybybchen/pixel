@@ -1415,6 +1415,39 @@ public class ManagerService extends RedisService{
 			result.put("lootRaid", object);
 		}
 
+		if(req.containsKey("update-dailyLibao") && gmaccountBean.getCanwrite() == 1){
+			Map<String, String> map = hget(RedisKey.USER_DAILYLIBAO_PREFIX + userId, userId);
+			JSONObject object = JSONObject.fromObject(req.get("update-dailyLibao"));
+			for(String key : map.keySet()){
+				if(!object.keySet().contains(key)){
+					areaFightService.delAreaEquip(userId, Integer.parseInt(key));
+//					hdelete(RedisKey.USER_DAILYLIBAO_PREFIX + userId, key);
+					logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-dailyLibao", map.get(key));
+				}else if(map.get(key).equals(object.getString(key))){
+					object.remove(key);
+				}
+			}
+			map = new HashMap<String, String>();
+			for(Object key : object.keySet()){
+				map.put(key.toString(), object.get(key).toString());
+			}
+			if(!map.isEmpty()){
+				hputAll(RedisKey.USER_DAILYLIBAO_PREFIX + userId, map, userId);
+				logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "update-dailyLibao", map.toString());
+			}
+			req.put("dailyLibao", 1);
+		}else if(req.containsKey("del-dailyLibao") && gmaccountBean.getCanwrite() == 1){
+			delete(RedisKey.USER_DAILYLIBAO_PREFIX + userId, userId);
+			logService.sendGmLog(userId, serverId, gmaccountBean.getAccount(), "del-dailyLibao", "");
+			req.put("dailyLibao", 1);
+		}
+		if(req.containsKey("dailyLibao") && gmaccountBean.getCanview() == 1){
+			Map<String, String> map = hget(RedisKey.USER_DAILYLIBAO_PREFIX+userId, userId);
+			JSONObject object = new JSONObject();
+			object.putAll(map);
+			result.put("dailyLibao", object);
+		}
+
 		if(req.containsKey("update-talent") && gmaccountBean.getCanwrite() == 1){
 			Map<String, String> map = hget(RedisKey.USER_TALENT_PREFIX + userId, userId);
 			JSONObject object = JSONObject.fromObject(req.get("update-talent"));
