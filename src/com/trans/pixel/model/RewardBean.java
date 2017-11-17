@@ -91,6 +91,17 @@ public class RewardBean {
 		return reward.build();
 	}
 
+	public static RewardBean fromRewardInfo(RewardInfo reward) {
+		RewardBean bean = new RewardBean();
+		bean.setItemid(reward.getItemid());
+//		bean.setItemname(name);
+		bean.setCount(reward.getCount());
+		if(reward.hasLastime())
+			bean.setLasttime(reward.getLastime());
+		
+		return bean;
+	}
+
 	public String toJson() {
 		JSONObject json = new JSONObject();
 		json.put(ID, id);

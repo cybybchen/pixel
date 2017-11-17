@@ -1344,9 +1344,14 @@ public class RedisService {
 		return json.toString();
 	}
 
-	public static Object fromJson(String value, Class<?> beanClass) {
+	public static <T> T fromJson(String value, Class<T> beanClass) {
 		JSONObject json = JSONObject.fromObject(value);
-		return JSONObject.toBean(json, beanClass);
+		return (T)JSONObject.toBean(json, beanClass);
+	}
+	
+	public static <T> T fromJson(String value, Class<T> beanClass, Map<String, Class> classMap) {
+		JSONObject json = JSONObject.fromObject(value);
+		return (T)JSONObject.toBean(json, beanClass, classMap);
 	}
 
 	protected RedisTemplate<String, String> getRedis(long userId) {

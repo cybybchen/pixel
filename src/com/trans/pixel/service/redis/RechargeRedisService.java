@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.trans.pixel.constants.RedisExpiredConst;
 import com.trans.pixel.constants.RedisKey;
 import com.trans.pixel.model.RechargeBean;
-import com.trans.pixel.model.userinfo.UserBean;
+import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.protoc.Base.MultiReward;
 import com.trans.pixel.protoc.Base.RewardInfo;
 import com.trans.pixel.protoc.RechargeProto.Rmb;
@@ -141,7 +141,10 @@ public class RechargeRedisService extends RedisService {
 		this.delete(key, userId);//查询之后删除，防止又一次查询
 		List<RechargeBean> rechargeList = new ArrayList<RechargeBean>();
 		for (String value : map.values()) {
-			Object object = RedisService.fromJson(value, RechargeBean.class);
+			JSONObject json = JSONObject.fromObject(value);
+			Map<String, Class> classMap = new HashMap<String, Class>();  
+			classMap.put("rewards", RewardBean.class);
+			Object object = JSONObject.toBean(json, RechargeBean.class, classMap);
 			if (object != null)
 				rechargeList.add((RechargeBean)object);
 		}

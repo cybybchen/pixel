@@ -70,6 +70,7 @@ public class HttpUtil<T> {
     }
 
     public T get(String url) {
+    	System.out.println(url);
         GetMethod httpMethod = new GetMethod(url);
         // 使用系统提供的默认的恢复策略
         httpMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());

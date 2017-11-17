@@ -3,8 +3,6 @@ package com.trans.pixel.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.trans.pixel.protoc.Base.RewardInfo;
-
 public class RechargeBean {
 	private long id = 0;
 	private long userId = 0;
@@ -14,11 +12,11 @@ public class RechargeBean {
 	private String orderTime = "";
 	private int serverId = 0;
 	private int rmb = 0;
-	private List<RewardInfo> rewards = new ArrayList<RewardInfo>();
-	public List<RewardInfo> getRewards() {
+	private List<RewardBean> rewards = new ArrayList<RewardBean>();
+	public List<RewardBean> getRewards() {
 		return rewards;
 	}
-	public void setRewards(List<RewardInfo> rewards) {
+	public void setRewards(List<RewardBean> rewards) {
 		this.rewards = rewards;
 	}
 	public long getId() {

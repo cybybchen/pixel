@@ -214,9 +214,10 @@ public class RechargeService {
 		
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(user.getId(), productid));
 //		libaobuilder.setPurchase(libaobuilder.getPurchase()+1);
-
 		if(!recharge.getRewards().isEmpty()) {
-			rewardList.addAll(recharge.getRewards());
+			for(RewardBean rewardbean : recharge.getRewards()) {
+				rewardList.add(rewardbean.buildRewardInfo());
+			}
 		}else if (itemId == RewardConst.JEWEL) {
 			RewardInfo.Builder reward = RewardInfo.newBuilder();
 			reward.setItemid(itemId);
@@ -373,14 +374,20 @@ public class RechargeService {
 	public void addUserRecharge(long userId, RechargeBean recharge) {
 		Libao libaocanrecharge = rechargeRedisService.getCanRecharge(userId);
 		if(libaocanrecharge != null && libaocanrecharge.getRechargeid() == recharge.getProductId()) {
-			recharge.setRewards(libaocanrecharge.getRewardsList());
+			for(RewardInfo reward : libaocanrecharge.getRewardsList()) {
+				recharge.getRewards().add(RewardBean.fromRewardInfo(reward));
+			}
 			rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
 			rechargeRedisService.clearCanRecharge(userId);
-			Libao.Builder libaobuilder = Libao.newBuilder(userService.getDailyLibao(userId, recharge.getProductId()));
-			libaobuilder.clearRewards();
-			libaobuilder.addAllRewards(libaocanrecharge.getRewardsList());
-			libaobuilder.setPurchase(0);
-			userService.saveDailyLibao(userId, libaobuilder.build());
+			Libao libao = userService.getDailyLibao(userId, recharge.getProductId());
+			if(libao != null && libao.getOrder() == libaocanrecharge.getOrder()) {
+				Libao.Builder libaobuilder = Libao.newBuilder(libao);
+				libaobuilder.clearRewards();
+				libaobuilder.addAllRewards(libaocanrecharge.getRewardsList());
+				libaobuilder.setPurchase(0);
+				libaobuilder.setIsOut(true);
+				userService.saveDailyLibao(userId, libaobuilder.build());
+			}
 		}else {
 		rechargeRedisService.addUserRecharge(recharge.getUserId(), recharge);
 		Libao.Builder libaobuilder = Libao.newBuilder(userService.getLibao(userId, recharge.getProductId()));
@@ -463,7 +470,6 @@ public class RechargeService {
 		for (RechargeBean recharge : rechargeList) {
 			rewards.addAllLoot(recharge(user, recharge, false));
 		}
-		
 		return rewards.build();
 	}
 	
