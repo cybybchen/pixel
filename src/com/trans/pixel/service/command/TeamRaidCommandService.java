@@ -587,6 +587,11 @@ public class TeamRaidCommandService extends BaseCommandService{
 						redis.delUserRoom(user, myraid.getRoomInfo().getIndex());
 						myraid.clearRoomInfo();
 					}
+					
+					/**
+					 * 通关团本的成就
+					 */
+					activityService.teamRaid(user, myraid.getId());
 				}
 				redis.saveTeamRaid(user, myraid);
 			}
@@ -719,6 +724,11 @@ public class TeamRaidCommandService extends BaseCommandService{
 						myraid.clearRoomInfo();
 						params.put(LogString.TEAM, "2");
 					}
+					
+					/**
+					 * 通关团本的成就
+					 */
+					activityService.teamRaid(user, myraid.getId());
 				}
 				redis.saveTeamRaid(user, myraid);
 				logService.sendLog(params, LogString.LOGTYPE_TEAMRAID);

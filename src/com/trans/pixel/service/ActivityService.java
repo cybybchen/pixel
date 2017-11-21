@@ -1309,6 +1309,14 @@ public class ActivityService {
 	}
 	
 	/**
+	 * 通关团本的活动
+	 */
+	public void teamRaid(UserBean user, int id) {
+		if (id == 3)//三眼会
+			achieveService.sendAchieveScore(user.getId(), ACTIVITY_TYPE.TYPE_TEAMRAID_3_VALUE);
+	}
+	
+	/**
 	 * activity and achieve log
 	 */
 	public void sendLog(long userId, int serverId, int type, int id, int step) {
