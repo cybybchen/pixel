@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.junit.Test;
+
 import com.google.protobuf.Message;
 import com.googlecode.protobuf.format.JsonFormat;
 import com.googlecode.protobuf.format.JsonFormat.ParseException;
@@ -111,7 +113,7 @@ public class BaseTest {
 		return builder.build();
     }
     
-//    @Test
+    @Test
     public void test(){
     	login();
     }
@@ -125,6 +127,11 @@ public class BaseTest {
         ResponseCommand response = request("loginCommand", b.build(), request);
         if(response.hasErrorCommand() && response.getErrorCommand().getCode().equals("1000")){
         	if(extraLog)	System.out.println(request.getHead().getAccount()+":"+response.getErrorCommand().getMessage()+"，重新注册");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
     		RequestRegisterCommand.Builder registerbuilder = RequestRegisterCommand.newBuilder();
     		registerbuilder.setUserName(head().getAccount());
     		registerbuilder.setHeroId(1);
@@ -146,7 +153,7 @@ public class BaseTest {
         	System.out.println("登陆错误");
         }
         try {
-			Thread.sleep(4000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

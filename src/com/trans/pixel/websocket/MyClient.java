@@ -27,28 +27,39 @@ public class MyClient {
 	}
 	
 	protected boolean start() {
-		WebSocketContainer Container = ContainerProvider
-				.getWebSocketContainer();
-		String uri = "ws://localhost:8080/pixel/websocket/anti/" + deviceId;
-		// System.out.println("Connecting to " + uri);
-		try {
-			session = Container
-					.connectToServer(MyClient.class, URI.create(uri));
-			// System.out.println("count: " + deviceId);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+		new Thread(new Runnable() {
+		    @Override
+		    public void run() {
+				WebSocketContainer Container = ContainerProvider
+						.getWebSocketContainer();
+				String uri = "ws://localhost:8080/pixel/websocket/chat/" + deviceId;
+				// System.out.println("Connecting to " + uri);
+				try {
+					session = Container
+							.connectToServer(MyClient.class, URI.create(uri));
+					// System.out.println("count: " + deviceId);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		    }
+		}).start();
+		
 		return true;
 	}
 	
 	public static void main(String[] args) {
-		for (int i = 1; i< 50000; i++) {
+		for (int i = 1; i< 2; i++) {
 			MyClient wSocketTest = new MyClient(String.valueOf(i));
 			if (!wSocketTest.start()) {
 //				System.out.println("测试结束！");
 				break;
 			}
+		}
+		try {
+			Thread.sleep(20000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

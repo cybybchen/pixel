@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -47,11 +47,13 @@ public class ChatAction {
 	// connections就是ClientSet
 	private static final Map<String, Object> connections = new HashMap<String, Object>();
 
-	private static final CopyOnWriteArraySet<ChatAction> onlineUsers = new CopyOnWriteArraySet<ChatAction>();
+//	private static final CopyOnWriteArraySet<ChatAction> onlineUsers = new CopyOnWriteArraySet<ChatAction>();
+	private static final ConcurrentHashMap<Long, ChatAction> onlineUsers = new ConcurrentHashMap<Long, ChatAction>();
 	private String nickname;
 	private Session session;
 //	private HttpSession httpSession;
 	private int serverId;
+	private long userId;
 
 	private static final UserService userService = (UserService) ContextLoader
 			.getCurrentWebApplicationContext().getBean("userService");
@@ -76,29 +78,23 @@ public class ChatAction {
 		if (user != null) {
 			this.nickname = user.getUserName();
 			this.serverId = user.getServerId();
+			this.userId = user.getId();
 		}
 
 		log.debug("start websocket");
 		// this.httpSession = (HttpSession) config.getUserProperties()
 		// .get(HttpSession.class.getName());
 		// this.nickname = (String) httpSession.getAttribute("loginOperatorId");
-		onlineUsers.add(this);
+		onlineUsers.put(userId, this);
 		sendHistory(this, serverId);
 		String message = String.format("%s %s", nickname,
 				" :from websocket 上线了...");
 		broadcast(message, serverId);
-		
-		long i = 0;
-		while (true) {
-			try {
-				log.debug("i is:" + i);
-				set("haha", "" + i, i);
-				++i;
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		String users = "";
+		for(ChatAction action : onlineUsers.values()) {
+			users += action.userId+",";
 		}
+		log.debug("start:"+users);
 	}
 
 	private void set(final String key, final String value, final long i) {
@@ -146,8 +142,15 @@ public class ChatAction {
 		}
 		sb.put(filteredMessage);
 		msgBuffer.put(serverId, sb);
-		
-		broadcast(filteredMessage, serverId);
+		if(onlineUsers.get(userId) != this) {
+			try {
+				this.session.getBasicRemote().sendText("你在其他地方登录！");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else{
+			broadcast(filteredMessage, serverId);
+		}
 	}
 
 	@OnMessage
@@ -164,11 +167,11 @@ public class ChatAction {
 
 	@OnError
 	public void onError(Throwable t) throws Throwable {
-		log.error("Chat Error: " + t.toString(), t);
+		log.error("Chat Error: onError"+ t.getMessage());
 	}
 
 	private static void broadcast(String msg, int serverId) {
-		for (ChatAction client : onlineUsers) {
+		for (ChatAction client : onlineUsers.values()) {
 			try {
 				synchronized (client) {
 					if (client.serverId == serverId)
@@ -207,7 +210,7 @@ public class ChatAction {
 //						"<---------history--------->");
 			}
 		} catch (IOException e) {
-			log.error("Chat Error: Failed to send message to client", e);
+			log.error("Chat Error: Failed to send message to client"+e.getMessage());
 			onlineUsers.remove(newClient);
 			try {
 				newClient.session.close();
