@@ -20,7 +20,7 @@ public class MailUtils {
 	public static void main(String[] args) {
 		MailUtils util = new MailUtils();
 		System.out.println("start test");
-		util.sendMail("xinji.wang@transmension.com", "帐号异常通知", "test from java!");
+		util.sendMail("xinji.wang@transmension.com", "帐号异常通知测试", "test from java!");
 		System.out.println("end test");
 	}
 	/**
@@ -56,29 +56,32 @@ public class MailUtils {
 	 * @throws UnsupportedEncodingException
 	 *             异常
 	 */
-	public void sendMail(String to, String subject, String content) {
-//			throws MessagingException, UnsupportedEncodingException {
-		MimeMessage mimeMessage = mailSender.createMimeMessage();
-		// 设置utf-8或GBK编码，否则邮件会有乱码
-		MimeMessageHelper messageHelper;
-		try {
-			messageHelper = new MimeMessageHelper(mimeMessage,
-					true, "UTF-8");
-			try {
-				messageHelper.setFrom(EMAILFORM, "系统名称");
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	public void sendMail(final String to, final String subject, final String content) {
+		Thread t = new Thread(){
+			public void  run(){
+				MimeMessage mimeMessage = mailSender.createMimeMessage();
+				// 设置utf-8或GBK编码，否则邮件会有乱码
+				MimeMessageHelper messageHelper;
+				try {
+					messageHelper = new MimeMessageHelper(mimeMessage,
+							true, "UTF-8");
+					try {
+						messageHelper.setFrom(EMAILFORM, "系统名称");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					messageHelper.setTo(USERNAME);
+					messageHelper.addCc(to);
+		//			messageHelper.addCc("lolzj@transmension.com");
+					messageHelper.setSubject(subject);
+					messageHelper.setText(content, true);
+					mailSender.send(mimeMessage);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-			messageHelper.setTo(USERNAME);
-			messageHelper.addCc(to);
-//			messageHelper.addCc("lolzj@transmension.com");
-			messageHelper.setSubject(subject);
-			messageHelper.setText(content, true);
-			mailSender.send(mimeMessage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		};
+		t.start();
 	}
 }
