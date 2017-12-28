@@ -799,7 +799,11 @@ public class UserService {
 	}
 	
 	public void sendMail(String mail) {
+		try{
 		MailUtils cn = new MailUtils();
 		cn.sendMail("xinji.wang@transmension.com", "帐号异常通知", mail);
+		}catch(Exception e) {
+			logger.error(mail, e);
+		}
 	}
 }

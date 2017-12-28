@@ -17,6 +17,12 @@ public class MailUtils {
 	private static final String EMAILFORM = "yanbin.chen@transmension.com";
 	private static JavaMailSenderImpl mailSender = createMailSender();
 
+	public static void main(String[] args) {
+		MailUtils util = new MailUtils();
+		System.out.println("start test");
+		util.sendMail("xinji.wang@transmension.com", "帐号异常通知", "test from java!");
+		System.out.println("end test");
+	}
 	/**
 	 * 邮件发送器
 	 *
@@ -70,8 +76,7 @@ public class MailUtils {
 			messageHelper.setSubject(subject);
 			messageHelper.setText(content, true);
 			mailSender.send(mimeMessage);
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
