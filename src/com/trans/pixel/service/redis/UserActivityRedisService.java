@@ -40,7 +40,7 @@ public class UserActivityRedisService extends RedisService {
 	public void updateUserKaifu(long userId, UserKaifu uk, int cycle, int lastTime) {
 		String key = buildKaifuRedisKey(uk.getType(), userId);
 		set(key, formatJson(uk), userId);
-		if (cycle == 1)
+		if (cycle > 0/*== 1*/)
 			expireAt(key, DateUtil.setToDayEndTime(DateUtil.getDate()), userId);
 		else
 			expire(key, RedisExpiredConst.EXPIRED_USERINFO_30DAY, userId);
