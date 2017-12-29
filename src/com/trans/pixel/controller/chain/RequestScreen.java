@@ -499,8 +499,6 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestUnionShopCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUnionInfoCommand cmd, Builder responseBuilder, UserBean user);
 	private HeadInfo buildHeadInfo(HeadInfo head) {
-		log.info("build head:"+head);
-		System.out.println("heading");
 		HeadInfo.Builder nHead = HeadInfo.newBuilder(head);
 		ServerBean server = serverService.getServer(head.getServerId());
 		if (ConfigUtil.IS_MASTER)

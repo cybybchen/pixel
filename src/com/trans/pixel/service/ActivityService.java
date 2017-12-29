@@ -785,6 +785,7 @@ public class ActivityService {
 		 * 累计充值的开服活动
 		 */
 		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LEIJI_RECHARGE_VALUE, count);
+		sendKaifuScore(user, ACTIVITY_TYPE.TYPE_LEIJI_RECHARGERMB_VALUE, count/10);
 		/**
 		 * 累计充值的日常
 		 */
