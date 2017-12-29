@@ -248,6 +248,17 @@ public class UserCommandService extends BaseCommandService {
 						ActivityConst.ACTIVITY_TYPE_REGISTER);
 
 				userService.refreshUserDailyData(user);
+				
+				//老区中所有的付费用户根据之前的充值金额，去新区注册新角色，即赠送老区充值金额双倍的钻石数+1000钻；老区的免费用户则增送1000钻的奖励
+				if(user.getServerId() > 1) {
+					final UserBean oldAccount = userService.getUserByAccount(1, head.getAccount());
+					if(oldAccount != null) {
+						int rewardCount = 1000;
+						rewardCount += oldAccount.getRechargeRecord()*2;
+						handleRewards(responseBuilder, user, 1002, rewardCount);
+						responseBuilder.getRewardCommandBuilder().setTitle("老玩家奖励");
+					}
+				}
 			}
 		}
 
