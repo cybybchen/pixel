@@ -285,6 +285,8 @@ public class HeroLevelUpService {
 		for (UserEquipBean userEquip : equipList) {
 			if (userEquip.getEquipCount() < 0) {
 				Material material = equipRedisService.getMaterial(userEquip.getEquipId());
+				if(material.getFordiamond() == 0)
+					return ErrorConst.LEVELUP_RARE_NOT_ENOUGH_EQUIP_ERROR;
 				//EquipCount为负所以用-=
 				fordiamond -= material.getFordiamond() * userEquip.getEquipCount();
 				userEquip.setEquipCount(0);
