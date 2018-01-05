@@ -15,7 +15,6 @@ import com.trans.pixel.test.PvpMapTest;
 import com.trans.pixel.test.ShopTest;
 
 public class PressureTest extends BaseTest {
-	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
 	public static final int THREAD_COUNT = 100;//最大并发数量
 	public static final int TEST_TIME = 100;//脚本执行秒数
 	
@@ -200,17 +199,5 @@ public class PressureTest extends BaseTest {
 	private void equipTest(RequestCommand request, ResponseCommand loginResponse) {
 		EquipTest equipTest = new EquipTest();
 		equipTest.testFenjieEquip(request, loginResponse);
-	}
-	
-	private String randomAccount() {
-		int ckdCodeLength = RANDOM_CODE.length();
-		String str = "";
-		Random rand = new Random();
-		while (str.length() < 8) {
-			int randNum = rand.nextInt(ckdCodeLength);
-			str += RANDOM_CODE.charAt(randNum);
-		}
-		
-		return str;
 	}
 }

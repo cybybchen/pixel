@@ -18,6 +18,7 @@ public class LoginTest extends BaseTest {
 	public void testLogin() {
 		RequestCommand.Builder builder = RequestCommand.newBuilder();
 		builder.setHead(head());
+//		builder.getHeadBuilder().setAccount(randomAccount());
 		RequestLoginCommand.Builder b = RequestLoginCommand.newBuilder();
 		builder.setLoginCommand(b.build());
 		
@@ -31,7 +32,10 @@ public class LoginTest extends BaseTest {
     		registerbuilder.setUserName(head().getAccount());
     		registerbuilder.setHeroId(42);
     		builder.clearLoginCommand().setRegisterCommand(registerbuilder.build());
-    		
+    		try {
+    			Thread.sleep(5000);
+    		} catch (InterruptedException e) {
+    		}
     		reqcmd = builder.build();
     		reqData = reqcmd.toByteArray();
             input = new ByteArrayInputStream(reqData);

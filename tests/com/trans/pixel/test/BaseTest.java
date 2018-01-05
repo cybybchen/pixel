@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.junit.Test;
@@ -28,7 +29,7 @@ public class BaseTest {
     //define device user
     protected static int GAME_VERSION = 1;
     protected static int VERSION = 1;
-    protected static int SERVER_ID = 1;
+    protected static int SERVER_ID = 2;
     protected static String ACCOUNT = "fedora";
     protected static String USER_NAME = ACCOUNT;
     protected static long USER_ID = 4;
@@ -216,5 +217,18 @@ public class BaseTest {
 			return false;
 		}
 		return true;
+	}
+
+	public static final String RANDOM_CODE = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890";
+	public static String randomAccount() {
+		int ckdCodeLength = RANDOM_CODE.length();
+		String str = "";
+		Random rand = new Random();
+		while (str.length() < 8) {
+			int randNum = rand.nextInt(ckdCodeLength);
+			str += RANDOM_CODE.charAt(randNum);
+		}
+		
+		return str;
 	}
 }
