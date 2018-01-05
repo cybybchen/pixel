@@ -31,7 +31,7 @@ public class UserDDRedisService extends RedisService{
 	public UserDD getUserDD(long userId) {
 		String value = hget(RedisKey.USERDATA + userId, RedisKey.USER_DD_PREFIX, userId);
 		UserDD.Builder builder = UserDD.newBuilder();
-		if (RedisService.parseJson(value, builder))
+		if (value != null && RedisService.parseJson(value, builder))
 			return builder.build();
 
 		return null;

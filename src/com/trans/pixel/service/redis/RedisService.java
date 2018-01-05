@@ -59,6 +59,8 @@ public class RedisService {
 	 * 只有当返回true才能使用builder
 	 */
 	public static boolean parseJson(CharSequence input, Message.Builder builder) {
+		if(input == null)
+			return false;
 		try {
 			JsonFormat.merge(input, builder);
 		} catch (ParseException e) {
