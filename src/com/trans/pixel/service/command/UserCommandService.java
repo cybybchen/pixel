@@ -17,6 +17,7 @@ import com.trans.pixel.constants.ErrorConst;
 import com.trans.pixel.constants.LogString;
 import com.trans.pixel.constants.RewardConst;
 import com.trans.pixel.constants.TimeConst;
+import com.trans.pixel.model.MailBean;
 import com.trans.pixel.model.RewardBean;
 import com.trans.pixel.model.userinfo.UserBean;
 import com.trans.pixel.model.userinfo.UserHeadBean;
@@ -52,6 +53,7 @@ import com.trans.pixel.service.BlackListService;
 import com.trans.pixel.service.CostService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.LootService;
+import com.trans.pixel.service.MailService;
 import com.trans.pixel.service.NoticeMessageService;
 import com.trans.pixel.service.RechargeService;
 import com.trans.pixel.service.RewardService;
@@ -116,6 +118,8 @@ public class UserCommandService extends BaseCommandService {
 	private ServerTitleService serverTitleService;
 	@Resource
 	private UserDDService userDDService;
+	@Resource
+	private MailService mailService;
 	
 	public void login(RequestCommand request, Builder responseBuilder) {
 		HeadInfo head = request.getHead();
@@ -250,13 +254,20 @@ public class UserCommandService extends BaseCommandService {
 				userService.refreshUserDailyData(user);
 				
 				//老区中所有的付费用户根据之前的充值金额，去新区注册新角色，即赠送老区充值金额双倍的钻石数+1000钻；老区的免费用户则增送1000钻的奖励
-				if(user.getServerId() > 1) {
+				if(user.getServerId() == 2) {
 					final UserBean oldAccount = userService.getUserByAccount(1, head.getAccount());
 					if(oldAccount != null) {
 						int rewardCount = 1000;
 						rewardCount += oldAccount.getRechargeRecord()*2;
-						handleRewards(responseBuilder, user, 1002, rewardCount);
-						responseBuilder.getRewardCommandBuilder().setTitle("老玩家奖励");
+//						handleRewards(responseBuilder, user, 1002, rewardCount);
+//						responseBuilder.getRewardCommandBuilder().setTitle("老玩家奖励");
+						RewardInfo.Builder reward = RewardInfo.newBuilder();
+						reward.setItemid(1002);
+						reward.setCount(rewardCount);
+						List<RewardInfo> rewardList = new ArrayList<RewardInfo>();
+						rewardList.add(reward.build());
+						MailBean mail = MailBean.buildSystemMail(user.getId(), "老玩家奖励", rewardList);
+						mailService.addMail(mail);
 					}
 				}
 			}
