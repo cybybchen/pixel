@@ -559,7 +559,7 @@ public class PvpMapService {
 			/**
 			 * 抢矿排行榜
 			 */
-			if (redis.addAttackMineRecord(user, enemyId)) {
+			if (ret && redis.addAttackMineRecord(user, enemyId)) {
 				rankService.addAttackMineRank(user);
 			}
 		}
