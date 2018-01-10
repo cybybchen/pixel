@@ -219,6 +219,10 @@ public class RankService {
 		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_VIP_HUOYUE, count, true);
 	}
 	
+	public void addAttackMineRank(UserBean user) {
+		rankRedisService.addRankScore(user.getId(), user.getServerId(), RankConst.TYPE_ATTACKMINE, 1, true);
+	}
+	
 	public void addFightInfoRank(FightInfo fight) {
 		List<FightInfo> fightList = getFightInfoList();
 		FightInfo removeFight = null;

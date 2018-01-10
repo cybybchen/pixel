@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -38,6 +39,7 @@ import com.trans.pixel.service.redis.PvpMapRedisService;
 import com.trans.pixel.service.redis.RankRedisService;
 import com.trans.pixel.service.redis.RedisService;
 import com.trans.pixel.utils.DateUtil;
+import com.trans.pixel.utils.TypeTranslatedUtil;
 
 @Service
 public class PvpMapService {
@@ -70,6 +72,8 @@ public class PvpMapService {
 	private RewardService rewardService;
 	@Resource
 	private LevelRedisService levelRedisService;
+	@Resource
+	private RankService rankService;
 
 	private int getTarget(int fieldid) {
 		if(fieldid > 1)
@@ -551,6 +555,13 @@ public class PvpMapService {
 			//全服通告
 			if (!isme && ret)
 				noticeMessageService.composeCallbrotherHelpAttackMine(my, mine.getOwner().getName());
+			
+			/**
+			 * 抢矿排行榜
+			 */
+			if (redis.addAttackMineRecord(user, enemyId)) {
+				rankService.addAttackMineRank(user);
+			}
 		}
 		if(ret){
 			if(mine.hasOwner()){
@@ -628,6 +639,19 @@ public class PvpMapService {
 		sendLog(user, time, logType, ret, userTeamService.getTeamCache(user.getId()).getHeroInfoList(), userTeamService.getTeamCache(enemyId).getHeroInfoList(), enemyId, mine.getLevel());
 		
 		return reward.build();
+	}
+	
+	public List<UserInfo> getAttackMineRecord(UserBean user) {
+		Set<String> userIds = redis.getAttackMineRecord(user);
+		List<UserInfo> userList = new ArrayList<UserInfo>();
+		for (String userIdStr : userIds) {
+			UserInfo userinfo = userService.getCache(user.getServerId(), TypeTranslatedUtil.stringToLong(userIdStr));
+			if (userinfo != null) {
+				userList.add(userinfo);
+			}
+		}
+		
+		return userList;
 	}
 	
 	public boolean refreshMap(UserBean user){

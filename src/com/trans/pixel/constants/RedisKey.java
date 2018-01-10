@@ -70,6 +70,7 @@ public class RedisKey {
 	public static final String USER_RECOMMAND_PREFIX = PREFIX + "UserRecommand_";
 	public final static String USER_SAVE_FIGHT_PREFIX = PREFIX + "user_save_fight_";
 	public final static String USER_DD_PREFIX = PREFIX + "user_dd_";
+	public final static String USER_MINE_RECORD_PREFIX = PREFIX + "user_mine_record_";
 
 
 

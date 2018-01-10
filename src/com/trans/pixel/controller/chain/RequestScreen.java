@@ -236,6 +236,7 @@ import com.trans.pixel.protoc.HeroProto.RequestTalentChangeSkillCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestKaifu2ActivityCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
 import com.trans.pixel.protoc.ShopProto.RequestLadderShopRefreshCommand;
+import com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand;
 import com.trans.pixel.protoc.HeroProto.RequestUserTeamCommand;
 import com.trans.pixel.protoc.UnionProto.RequestBossRoomInfoCommand;
 import com.trans.pixel.protoc.ActivityProto.RequestAchieveRewardCommand;
@@ -483,6 +484,7 @@ public abstract class RequestScreen implements RequestHandle {
 	protected abstract boolean handleCommand(RequestKaifu2ActivityCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUseMohuaCardCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestLadderShopRefreshCommand cmd, Builder responseBuilder, UserBean user);
+	protected abstract boolean handleCommand(RequestAttackMineRecordCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestUserTeamCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestBossRoomInfoCommand cmd, Builder responseBuilder, UserBean user);
 	protected abstract boolean handleCommand(RequestAchieveRewardCommand cmd, Builder responseBuilder, UserBean user);
@@ -1472,6 +1474,10 @@ public abstract class RequestScreen implements RequestHandle {
 		if (request.hasLadderShopRefreshCommand()) {
 			RequestLadderShopRefreshCommand cmd = request.getLadderShopRefreshCommand();
 			if (isFuncAvailable(responseBuilder, "LadderShopRefreshCommand") && result) result = handleCommand(cmd, responseBuilder, user);
+		}
+		if (request.hasAttackMineRecordCommand()) {
+			RequestAttackMineRecordCommand cmd = request.getAttackMineRecordCommand();
+			if (isFuncAvailable(responseBuilder, "AttackMineRecordCommand") && result) result = handleCommand(cmd, responseBuilder, user);
 		}
 		if (request.hasUserTeamCommand()) {
 			RequestUserTeamCommand cmd = request.getUserTeamCommand();

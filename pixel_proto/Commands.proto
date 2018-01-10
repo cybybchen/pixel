@@ -1590,6 +1590,10 @@ message PVPMapList {
 	optional int32 buff = 2;
 }
 
+message RequestAttackMineRecordCommand {
+	
+}
+
 message RequestUnlockPVPMapCommand {//解锁PVP区域
 	required int32 fieldid = 1;
 	required int32 zhanli = 2;
@@ -2358,7 +2362,6 @@ message ResponseMessageBoardCommand {
 enum ACTIVITY_TYPE{
 	TYPE_LEIJI_LOGIN = 1;
 	TYPE_LEIJI_RECHARGE = 2;
-	TYPE_LEIJI_RECHARGERMB = 43;
 	TYPE_LEIJI_COST_JEWEL = 3;
 	TYPE_VIP = 4;
 	TYPE_LOTTERY = 5;
@@ -4346,6 +4349,7 @@ message RequestCommand {
 	optional RequestQueryFightInfoCommand queryFightInfoCommand = 273;
 	optional RequestEquipPokedeDisplayCommand equipPokedeDisplayCommand = 274;
 	optional RequestUserDDCommand requestUserDDCommand = 275;
+	optional RequestAttackMineRecordCommand attackMineRecordCommand = 276;
 }
 ////////// Commands
 message ErrorCommand {

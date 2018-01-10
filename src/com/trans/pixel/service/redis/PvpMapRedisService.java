@@ -688,6 +688,22 @@ public class PvpMapRedisService extends RedisService{
 //		return map;
 //	}
 
+	public boolean addAttackMineRecord(UserBean user, long enemyId) {
+		String key = RedisKey.USER_MINE_RECORD_PREFIX + user.getId();
+		if (sismember(key, "" + enemyId, user.getId()))
+			return false;
+		
+		sadd(key, "" + enemyId, user.getId());
+		
+		return true;
+	}
+	
+	public Set<String> getAttackMineRecord(UserBean user) {
+		String key = RedisKey.USER_MINE_RECORD_PREFIX + user.getId();
+		
+		return smember(key, user.getId());
+	}
+	
 	private void buildPositionConfig(){
 		String xml = RedisService.ReadConfig("ld_pvpposition.xml");
 		PVPPositionLists.Builder builder = PVPPositionLists.newBuilder();

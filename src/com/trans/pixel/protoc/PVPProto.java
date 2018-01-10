@@ -15525,6 +15525,315 @@ public final class PVPProto {
     // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.PVPMapList)
   }
 
+  public interface RequestAttackMineRecordCommandOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code com.trans.pixel.protoc.RequestAttackMineRecordCommand}
+   */
+  public static final class RequestAttackMineRecordCommand extends
+      com.google.protobuf.GeneratedMessage
+      implements RequestAttackMineRecordCommandOrBuilder {
+    // Use RequestAttackMineRecordCommand.newBuilder() to construct.
+    private RequestAttackMineRecordCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RequestAttackMineRecordCommand(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RequestAttackMineRecordCommand defaultInstance;
+    public static RequestAttackMineRecordCommand getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RequestAttackMineRecordCommand getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RequestAttackMineRecordCommand(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.class, com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RequestAttackMineRecordCommand> PARSER =
+        new com.google.protobuf.AbstractParser<RequestAttackMineRecordCommand>() {
+      public RequestAttackMineRecordCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RequestAttackMineRecordCommand(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RequestAttackMineRecordCommand> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.trans.pixel.protoc.RequestAttackMineRecordCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.class, com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.Builder.class);
+      }
+
+      // Construct using com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.trans.pixel.protoc.PVPProto.internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand getDefaultInstanceForType() {
+        return com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.getDefaultInstance();
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand build() {
+        com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand buildPartial() {
+        com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand result = new com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand) {
+          return mergeFrom((com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand other) {
+        if (other == com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.trans.pixel.protoc.RequestAttackMineRecordCommand)
+    }
+
+    static {
+      defaultInstance = new RequestAttackMineRecordCommand(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.trans.pixel.protoc.RequestAttackMineRecordCommand)
+  }
+
   public interface RequestUnlockPVPMapCommandOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -28705,6 +29014,11 @@ public final class PVPProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_trans_pixel_protoc_PVPMapList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28859,49 +29173,50 @@ public final class PVPProto {
       "rotoc.PVPEvent\022*\n\004boss\030\020 \003(\0132\034.com.trans" +
       ".pixel.protoc.Mowu\"H\n\nPVPMapList\022,\n\004data" +
       "\030\001 \003(\0132\036.com.trans.pixel.protoc.PVPMap\022\014" +
-      "\n\004buff\030\002 \001(\005\"=\n\032RequestUnlockPVPMapComma" +
-      "nd\022\017\n\007fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033R" +
-      "equestRefreshPVPMapCommand\"\032\n\030RequestPVP" +
-      "MapListCommand\"\036\n\034RequestPVPInbreakListC",
-      "ommand\"S\n\035ResponsePVPInbreakListCommand\022" +
-      "2\n\tkuangdian\030\001 \003(\0132\037.com.trans.pixel.pro" +
-      "toc.PVPMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n" +
-      "\006reward\030\002 \003(\0132\".com.trans.pixel.protoc.R" +
-      "ewardInfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(" +
-      "\0132\".com.trans.pixel.protoc.MowuReward\"\204\002" +
-      "\n\004Mowu\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005cou" +
-      "nt\030\003 \001(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.p" +
-      "ixel.protoc.RewardInfo\0226\n\nenemygroup\030\005 \001" +
-      "(\0132\".com.trans.pixel.protoc.EnemyGroup\022\016",
-      "\n\006status\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\022\017\n\007endti" +
-      "me\030\010 \001(\005\0222\n\010userRank\030\t \003(\0132 .com.trans.p" +
-      "ixel.protoc.UserRank\"6\n\010MowuList\022*\n\004data" +
-      "\030\001 \003(\0132\034.com.trans.pixel.protoc.Mowu\"C\n\030" +
-      "RequestAttackMowuCommand\022\n\n\002id\030\001 \001(\005\022\n\n\002" +
-      "hp\030\002 \001(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestAtta" +
-      "ckPVPMonsterCommand\022\022\n\npositionid\030\001 \001(\005\022" +
-      "\013\n\003ret\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVP" +
-      "MineInfoCommand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponseP" +
-      "VPMineInfoCommand\022*\n\004team\030\005 \001(\0132\034.com.tr",
-      "ans.pixel.protoc.Team\0221\n\010mineInfo\030\003 \001(\0132" +
-      "\037.com.trans.pixel.protoc.PVPMine\"T\n\033Requ" +
-      "estAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006t" +
-      "eamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h" +
-      "\n\037RequestHelpAttackPVPMineCommand\022\n\n\002id\030" +
-      "\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006us" +
-      "erId\030\004 \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpL" +
-      "evelCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022" +
-      "\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"\247\001\n\026Request" +
-      "SendMailCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007con",
-      "tent\030\002 \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 " +
-      "\002(\005\022\017\n\007fightId\030\005 \001(\r\0228\n\010infotype\030\006 \001(\0162&" +
-      ".com.trans.pixel.protoc.FIGHTINFO_TYPE\">" +
-      "\n\035RequestBrotherMineInfoCommand\022\n\n\002id\030\001 " +
-      "\002(\005\022\021\n\tbrotherId\030\002 \002(\003\"*\n\034RequestRefresh" +
-      "PVPMineCommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePV" +
-      "PMapListCommand\022-\n\005field\030\001 \003(\0132\036.com.tra" +
-      "ns.pixel.protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022" +
-      "\014\n\004buff\030\003 \001(\005"
+      "\n\004buff\030\002 \001(\005\" \n\036RequestAttackMineRecordC" +
+      "ommand\"=\n\032RequestUnlockPVPMapCommand\022\017\n\007" +
+      "fieldid\030\001 \002(\005\022\016\n\006zhanli\030\002 \002(\005\"\035\n\033Request" +
+      "RefreshPVPMapCommand\"\032\n\030RequestPVPMapLis",
+      "tCommand\"\036\n\034RequestPVPInbreakListCommand" +
+      "\"S\n\035ResponsePVPInbreakListCommand\0222\n\tkua" +
+      "ngdian\030\001 \003(\0132\037.com.trans.pixel.protoc.PV" +
+      "PMine\"L\n\nMowuReward\022\n\n\002id\030\001 \001(\005\0222\n\006rewar" +
+      "d\030\002 \003(\0132\".com.trans.pixel.protoc.RewardI" +
+      "nfo\"B\n\016MowuRewardList\0220\n\004data\030\001 \003(\0132\".co" +
+      "m.trans.pixel.protoc.MowuReward\"\204\002\n\004Mowu" +
+      "\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\r\n\005count\030\003 \001" +
+      "(\005\0224\n\010lootlist\030\004 \003(\0132\".com.trans.pixel.p" +
+      "rotoc.RewardInfo\0226\n\nenemygroup\030\005 \001(\0132\".c",
+      "om.trans.pixel.protoc.EnemyGroup\022\016\n\006stat" +
+      "us\030\006 \001(\005\022\017\n\007percent\030\007 \001(\005\022\017\n\007endtime\030\010 \001" +
+      "(\005\0222\n\010userRank\030\t \003(\0132 .com.trans.pixel.p" +
+      "rotoc.UserRank\"6\n\010MowuList\022*\n\004data\030\001 \003(\013" +
+      "2\034.com.trans.pixel.protoc.Mowu\"C\n\030Reques" +
+      "tAttackMowuCommand\022\n\n\002id\030\001 \001(\005\022\n\n\002hp\030\002 \001" +
+      "(\003\022\017\n\007percent\030\003 \001(\005\"O\n\036RequestAttackPVPM" +
+      "onsterCommand\022\022\n\npositionid\030\001 \001(\005\022\013\n\003ret" +
+      "\030\002 \001(\010\022\014\n\004time\030\003 \001(\005\"\'\n\031RequestPVPMineIn" +
+      "foCommand\022\n\n\002id\030\001 \002(\005\"{\n\032ResponsePVPMine",
+      "InfoCommand\022*\n\004team\030\005 \001(\0132\034.com.trans.pi" +
+      "xel.protoc.Team\0221\n\010mineInfo\030\003 \001(\0132\037.com." +
+      "trans.pixel.protoc.PVPMine\"T\n\033RequestAtt" +
+      "ackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030" +
+      "\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\014\n\004time\030\004 \001(\005\"h\n\037Requ" +
+      "estHelpAttackPVPMineCommand\022\n\n\002id\030\001 \002(\005\022" +
+      "\016\n\006teamid\030\002 \002(\003\022\013\n\003ret\030\003 \001(\010\022\016\n\006userId\030\004" +
+      " \002(\003\022\014\n\004time\030\005 \001(\005\"R\n\027RequestHelpLevelCo" +
+      "mmand\022\n\n\002id\030\001 \002(\005\022\016\n\006teamid\030\002 \002(\003\022\013\n\003ret" +
+      "\030\003 \001(\010\022\016\n\006userId\030\004 \002(\003\"\247\001\n\026RequestSendMa",
+      "ilCommand\022\020\n\010toUserId\030\001 \002(\003\022\017\n\007content\030\002" +
+      " \002(\t\022\021\n\trelatedId\030\003 \001(\005\022\014\n\004type\030\004 \002(\005\022\017\n" +
+      "\007fightId\030\005 \001(\r\0228\n\010infotype\030\006 \001(\0162&.com.t" +
+      "rans.pixel.protoc.FIGHTINFO_TYPE\">\n\035Requ" +
+      "estBrotherMineInfoCommand\022\n\n\002id\030\001 \002(\005\022\021\n" +
+      "\tbrotherId\030\002 \002(\003\"*\n\034RequestRefreshPVPMin" +
+      "eCommand\022\n\n\002id\030\001 \002(\005\"i\n\031ResponsePVPMapLi" +
+      "stCommand\022-\n\005field\030\001 \003(\0132\036.com.trans.pix" +
+      "el.protoc.PVPMap\022\017\n\007endTime\030\002 \001(\003\022\014\n\004buf" +
+      "f\030\003 \001(\005"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -29004,122 +29319,128 @@ public final class PVPProto {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_PVPMapList_descriptor,
               new java.lang.String[] { "Data", "Buff", });
-          internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor =
+          internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor =
             getDescriptor().getMessageTypes().get(16);
+          internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_trans_pixel_protoc_RequestAttackMineRecordCommand_descriptor,
+              new java.lang.String[] { });
+          internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor =
+            getDescriptor().getMessageTypes().get(17);
           internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestUnlockPVPMapCommand_descriptor,
               new java.lang.String[] { "Fieldid", "Zhanli", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMapCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMapListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPInbreakListCommand_descriptor,
               new java.lang.String[] { });
           internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPInbreakListCommand_descriptor,
               new java.lang.String[] { "Kuangdian", });
           internal_static_com_trans_pixel_protoc_MowuReward_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_com_trans_pixel_protoc_MowuReward_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MowuReward_descriptor,
               new java.lang.String[] { "Id", "Reward", });
           internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_com_trans_pixel_protoc_MowuRewardList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MowuRewardList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_Mowu_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_com_trans_pixel_protoc_Mowu_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_Mowu_descriptor,
               new java.lang.String[] { "Id", "Level", "Count", "Lootlist", "Enemygroup", "Status", "Percent", "Endtime", "UserRank", });
           internal_static_com_trans_pixel_protoc_MowuList_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_com_trans_pixel_protoc_MowuList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_MowuList_descriptor,
               new java.lang.String[] { "Data", });
           internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackMowuCommand_descriptor,
               new java.lang.String[] { "Id", "Hp", "Percent", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMonsterCommand_descriptor,
               new java.lang.String[] { "Positionid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestPVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMineInfoCommand_descriptor,
               new java.lang.String[] { "Team", "MineInfo", });
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpAttackPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", "Time", });
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestHelpLevelCommand_descriptor,
               new java.lang.String[] { "Id", "Teamid", "Ret", "UserId", });
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_com_trans_pixel_protoc_RequestSendMailCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestSendMailCommand_descriptor,
               new java.lang.String[] { "ToUserId", "Content", "RelatedId", "Type", "FightId", "Infotype", });
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestBrotherMineInfoCommand_descriptor,
               new java.lang.String[] { "Id", "BrotherId", });
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_RequestRefreshPVPMineCommand_descriptor,
               new java.lang.String[] { "Id", });
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_trans_pixel_protoc_ResponsePVPMapListCommand_descriptor,

@@ -108,6 +108,7 @@ import com.trans.pixel.protoc.MohuaProto.RequestMohuaStageRewardCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestMohuaSubmitStageCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestStartMohuaMapCommand;
 import com.trans.pixel.protoc.MohuaProto.RequestUseMohuaCardCommand;
+import com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
@@ -1751,5 +1752,12 @@ public class GameDataScreen extends RequestScreen {
 	protected boolean handleCommand(RequestDailyLibaoShopCommand cmd, Builder responseBuilder, UserBean user) {
 		shopCommandService.DailyLibaoShop(cmd, responseBuilder, user);
 		return false;
+	}
+
+	@Override
+	protected boolean handleCommand(RequestAttackMineRecordCommand cmd,
+			Builder responseBuilder, UserBean user) {
+		pvpCommandService.attackMineRecord(cmd, responseBuilder, user);
+		return true;
 	}
 }

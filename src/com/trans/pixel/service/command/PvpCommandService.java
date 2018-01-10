@@ -24,6 +24,7 @@ import com.trans.pixel.protoc.Commands.ResponseCommand.Builder;
 import com.trans.pixel.protoc.HeroProto.ResponseGetTeamCommand;
 import com.trans.pixel.protoc.PVPProto.PVPMapList;
 import com.trans.pixel.protoc.PVPProto.PVPMine;
+import com.trans.pixel.protoc.PVPProto.RequestAttackMineRecordCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackMowuCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMineCommand;
 import com.trans.pixel.protoc.PVPProto.RequestAttackPVPMonsterCommand;
@@ -38,6 +39,7 @@ import com.trans.pixel.protoc.PVPProto.RequestUnlockPVPMapCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPInbreakListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMapListCommand;
 import com.trans.pixel.protoc.PVPProto.ResponsePVPMineInfoCommand;
+import com.trans.pixel.protoc.UserInfoProto.ResponseOtherUserInfoCommand;
 import com.trans.pixel.service.ActivityService;
 import com.trans.pixel.service.LogService;
 import com.trans.pixel.service.MailService;
@@ -290,6 +292,12 @@ public class PvpCommandService extends BaseCommandService {
 			}
 		}
 		getMapList(RequestPVPMapListCommand.newBuilder().build(), responseBuilder, user);		
+	}
+	
+	public void attackMineRecord(RequestAttackMineRecordCommand cmd, Builder responseBuilder, UserBean user) {
+		ResponseOtherUserInfoCommand.Builder builder = ResponseOtherUserInfoCommand.newBuilder();
+		builder.addAllUser(pvpMapService.getAttackMineRecord(user));
+		responseBuilder.setOtherUserInfoCommand(builder.build());
 	}
 	
 	private void sendHelpMail(UserBean friend, UserBean user) {
